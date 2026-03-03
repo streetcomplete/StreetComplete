@@ -1,74 +1,69 @@
 package de.westnordost.streetcomplete.overlays.surface
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import androidx.core.view.children
-import androidx.core.view.isGone
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.databinding.FragmentOverlaySurfaceSelectBinding
-import de.westnordost.streetcomplete.databinding.ViewImageSelectBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.applyTo
-import de.westnordost.streetcomplete.osm.surface.asItem
+import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.parseSurface
-import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndCyclewaySurface
+import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
+import de.westnordost.streetcomplete.overlays.ItemPairSelectOverlayForm
+import de.westnordost.streetcomplete.overlays.ItemSelectOverlayForm
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
-import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import de.westnordost.streetcomplete.view.image_select.ImageListPickerDialog
-import de.westnordost.streetcomplete.view.image_select.ItemViewHolder
-import de.westnordost.streetcomplete.view.setImage
+import de.westnordost.streetcomplete.util.takeFavorites
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 class SurfaceOverlayForm : AbstractOverlayForm() {
-    override val contentLayoutResId = R.layout.fragment_overlay_surface_select
-    private val binding by contentViewBinding(FragmentOverlaySurfaceSelectBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     private val prefs: Preferences by inject()
 
-    private val selectableItems: List<DisplayItem<Surface>> get() =
-        Surface.selectableValuesForWays.map { it.asItem() }
+    private val selectableItems: List<Surface> get() = Surface.selectableValuesForWays
 
-    private val lastPickedSurface: Surface? get() =
-        prefs.getLastPicked(this::class.simpleName!!)
-            .map { valueOfOrNull<Surface>(it) }
-            .firstOrNull()
+    private val lastPickedSingleSurfaces: List<Surface> get() =
+        prefs.getLastPicked<SurfaceOverlayAnswer>(this::class.simpleName!!)
+            .filterIsInstance<SingleSurface>()
+            .takeFavorites(n = 5, first = 1)
+            .map { it.value!! }
 
-    private var originalSurface: Surface? = null
-    private var originalFootwaySurface: Surface? = null
-    private var originalCyclewaySurface: Surface? = null
+    private val lastPickedSegregatedSurfaces: List<Pair<Surface, Surface>> get() =
+        prefs.getLastPicked<SurfaceOverlayAnswer>(this::class.simpleName!!)
+            .filterIsInstance<SegregatedSurface>()
+            .filter { it.isComplete() }
+            .takeFavorites(n = 3, first = 1)
+            .map { Pair(it.footway!!, it.cycleway!!) }
 
-    private var selectedSurface: Surface? = null
-        set(value) {
-            field = value
-            updateSelectedCell(binding.main, value)
-        }
-    private var selectedFootwaySurface: Surface? = null
-        set(value) {
-            field = value
-            updateSelectedCell(binding.footway, value)
-        }
-    private var selectedCyclewaySurface: Surface? = null
-        set(value) {
-            field = value
-            updateSelectedCell(binding.cycleway, value)
-        }
-
-    private val cellLayoutId: Int = R.layout.cell_labeled_image_select
-
-    private var isSegregatedLayout = false
+    private lateinit var originalItem: SurfaceOverlayAnswer
+    private lateinit var selectedItem: MutableState<SurfaceOverlayAnswer>
 
     override val otherAnswers: List<IAnswerItem> get() = listOfNotNull(
         createSegregatedAnswer(),
@@ -85,149 +80,108 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     private fun isBothFootAndBicycleTraffic(element: Element): Boolean =
         isBothFootAndBicycleTrafficFilter.matches(element)
 
-    private fun switchToFootwayCyclewaySurfaceLayout() {
-        isSegregatedLayout = true
-        binding.main.root.isGone = true
-        binding.cyclewaySurfaceContainer.isGone = false
-        binding.footwaySurfaceContainer.isGone = false
-        binding.lastPickedButton.isGone = true
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val tags = element!!.tags
-        originalSurface = parseSurface(tags["surface"])
-        originalCyclewaySurface = parseSurface(tags["cycleway:surface"])
-        originalFootwaySurface = parseSurface(tags["footway:surface"])
+        val originalSurface = parseSurface(tags["surface"])
+        val originalCyclewaySurface = parseSurface(tags["cycleway:surface"])
+        val originalFootwaySurface = parseSurface(tags["footway:surface"])
+        val isSegregated =
+            tags["highway"] in ALL_PATHS &&
+                (tags["segregated"] == "yes" || originalCyclewaySurface != null || originalFootwaySurface != null)
+
+        originalItem = if (isSegregated) {
+            SegregatedSurface(footway = originalFootwaySurface, cycleway = originalCyclewaySurface)
+        } else {
+            SingleSurface(originalSurface)
+        }
+        selectedItem = mutableStateOf(originalItem)
     }
 
-    private fun updateSelectedCell(cellBinding: ViewImageSelectBinding, item: Surface?) {
-        cellBinding.selectTextView.isGone = item != null
-        cellBinding.selectedCellView.isGone = item == null
-        if (item != null) {
-            ItemViewHolder(cellBinding.selectedCellView).bind(item.asItem())
+    @Composable private fun ItemContent(item: Surface) {
+        val icon = item.icon?.let { painterResource(it) }
+        ImageWithLabel(icon, stringResource(item.title))
+    }
+
+    @Composable private fun LastPickedItemContent(item: Surface) {
+        val icon = item.icon
+        if (icon != null) {
+            Image(painterResource(icon), stringResource(item.title), Modifier.height(32.dp))
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.main.selectedCellView, true)
-        binding.main.selectedCellView.children.first().background = null
-        binding.main.selectButton.setOnClickListener {
-            ImageListPickerDialog(requireContext(), selectableItems, cellLayoutId) { item ->
-                if (item.value != selectedSurface) {
-                    selectedSurface = item.value
-                    checkIsFormComplete()
-                }
-            }.show()
-        }
-
-        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.cycleway.selectedCellView, true)
-        binding.cycleway.selectedCellView.children.first().background = null
-        binding.cycleway.selectButton.setOnClickListener {
-            ImageListPickerDialog(requireContext(), selectableItems, cellLayoutId) { item ->
-                if (item.value != selectedCyclewaySurface) {
-                    selectedCyclewaySurface = item.value
-                    checkIsFormComplete()
-                }
-            }.show()
-        }
-
-        LayoutInflater.from(requireContext()).inflate(cellLayoutId, binding.footway.selectedCellView, true)
-        binding.footway.selectedCellView.children.first().background = null
-        binding.footway.selectButton.setOnClickListener {
-            ImageListPickerDialog(requireContext(), selectableItems, cellLayoutId) { item ->
-                if (item.value != selectedFootwaySurface) {
-                    selectedFootwaySurface = item.value
-                    checkIsFormComplete()
-                }
-            }.show()
-        }
-
-        if (savedInstanceState != null) {
-            onLoadInstanceState(savedInstanceState)
-        } else {
-            initStateFromTags()
-        }
-
-        binding.lastPickedButton.isGone = lastPickedSurface == null
-        binding.lastPickedButton.setImage(lastPickedSurface?.asItem()?.image)
-        binding.lastPickedButton.setOnClickListener {
-            selectedSurface = lastPickedSurface
-            binding.lastPickedButton.isGone = true
-            checkIsFormComplete()
-        }
-
-        val isSegregated = element!!.tags["segregated"] == "yes"
-        val isPath = element!!.tags["highway"] in ALL_PATHS
-        if (isPath && (isSegregated || originalCyclewaySurface != null || originalFootwaySurface != null)) {
-            switchToFootwayCyclewaySurfaceLayout()
-        }
-
         val languages = getLanguagesForFeatureDictionary(resources.configuration)
-        binding.cyclewaySurfaceLabel.text =
-            featureDictionary.getById("highway/cycleway", languages)?.name
-        binding.footwaySurfaceLabel.text =
-            featureDictionary.getById("highway/footway", languages)?.name
+        val footwayLabel = featureDictionary.getById("highway/footway", languages)?.name.orEmpty()
+        val cyclewayLabel = featureDictionary.getById("highway/cycleway", languages)?.name.orEmpty()
+
+        binding.composeViewBase.content { Surface {
+            val item = selectedItem.value
+
+            when (item) {
+                is SingleSurface -> {
+                    val lastPickedSingleSurfaces = remember { lastPickedSingleSurfaces }
+                    ItemSelectOverlayForm(
+                        itemsPerRow = 3,
+                        items = selectableItems,
+                        itemContent = { ItemContent(it) },
+                        selectedItem = item.value,
+                        lastPickedItems = lastPickedSingleSurfaces,
+                        lastPickedItemContent = { LastPickedItemContent(it) },
+                        onSelectItem = {
+                            selectedItem.value = SingleSurface(it)
+                            checkIsFormComplete()
+                        },
+                    )
+                }
+                is SegregatedSurface -> {
+                    val lastPickedSegregatedSurfaces = remember { lastPickedSegregatedSurfaces }
+                    ItemPairSelectOverlayForm(
+                        itemsPerRow = 3,
+                        items = selectableItems,
+                        itemContent = { ItemContent(it) },
+                        selectedItems = Pair(item.footway, item.cycleway),
+                        lastPickedItemPair = lastPickedSegregatedSurfaces,
+                        lastPickedItemPairContent = {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(2.dp)
+                            ) {
+                                LastPickedItemContent(it.first)
+                                LastPickedItemContent(it.second)
+                            }
+                        },
+                        onSelectItem = {
+                            selectedItem.value = SegregatedSurface(footway = it.first, cycleway = it.second)
+                            checkIsFormComplete()
+                        },
+                        labels = Pair(footwayLabel, cyclewayLabel),
+                    )
+                }
+            }
+        } }
 
         checkIsFormComplete()
     }
 
-    private fun initStateFromTags() {
-        selectedSurface = originalSurface
-        selectedCyclewaySurface = originalCyclewaySurface
-        selectedFootwaySurface = originalFootwaySurface
-    }
-
-    /* ------------------------------------- instance state ------------------------------------- */
-
-    private fun onLoadInstanceState(inState: Bundle) {
-        selectedSurface = parseSurface(inState.getString(SURFACE))
-        selectedCyclewaySurface = parseSurface(inState.getString(CYCLEWAY_SURFACE))
-        selectedFootwaySurface = parseSurface(inState.getString(FOOTWAY_SURFACE))
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(SURFACE, selectedSurface?.osmValue)
-        outState.putString(CYCLEWAY_SURFACE, selectedCyclewaySurface?.osmValue)
-        outState.putString(FOOTWAY_SURFACE, selectedFootwaySurface?.osmValue)
-    }
-
-    /* -------------------------------------- apply answer -------------------------------------- */
-
     override fun isFormComplete(): Boolean =
-        if (isSegregatedLayout) {
-            selectedCyclewaySurface != null && selectedFootwaySurface != null
-        } else {
-            selectedSurface != null
-        }
+        selectedItem.value.isComplete()
 
     override fun hasChanges(): Boolean =
-        selectedSurface != originalSurface ||
-        selectedCyclewaySurface != originalCyclewaySurface ||
-        selectedFootwaySurface != originalFootwaySurface
+        selectedItem.value != originalItem
 
     override fun onClickOk() {
         val changesBuilder = StringMapChangesBuilder(element!!.tags)
-
-        if (isSegregatedLayout) {
-            changesBuilder["segregated"] = "yes"
-            selectedCyclewaySurface?.applyTo(changesBuilder, "cycleway")
-            selectedFootwaySurface?.applyTo(changesBuilder, "footway")
-            updateCommonSurfaceFromFootAndCyclewaySurface(changesBuilder)
-        } else {
-            selectedSurface?.let { prefs.addLastPicked(this::class.simpleName!!, it.name) }
-            selectedSurface?.applyTo(changesBuilder)
-        }
-
+        prefs.addLastPicked(this::class.simpleName!!, selectedItem.value)
+        selectedItem.value.applyTo(changesBuilder)
         applyEdit(UpdateElementTagsAction(element!!, changesBuilder.create()))
     }
 
     private fun createSegregatedAnswer(): AnswerItem? =
-        if (isSegregatedLayout) {
+        if (selectedItem.value is SegregatedSurface) {
             /*
                 No option to switch back to single surface. Removing info about separate cycleway is
                 too complicated.
@@ -252,9 +206,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
                 mapper can leave a note
              */
             AnswerItem(R.string.overlay_path_surface_segregated) {
-                // reset previous data
-                selectedSurface = originalSurface
-                switchToFootwayCyclewaySurfaceLayout()
+                selectedItem.value = SegregatedSurface(null, null)
             }
         } else {
             null
@@ -271,11 +223,5 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
         val tagChanges = StringMapChangesBuilder(element!!.tags)
         tagChanges.changeToSteps()
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
-    }
-
-    companion object {
-        private const val SURFACE = "selected_surface"
-        private const val CYCLEWAY_SURFACE = "cycleway_surface"
-        private const val FOOTWAY_SURFACE = "footway_surface"
     }
 }

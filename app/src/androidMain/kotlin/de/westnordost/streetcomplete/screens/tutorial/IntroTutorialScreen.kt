@@ -44,7 +44,7 @@ import de.westnordost.streetcomplete.ui.theme.titleLarge
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Shows a short tutorial for first-time users */
 @Composable
@@ -146,7 +146,7 @@ private fun BoxScope.IntroTutorialIllustration(
 
         val pinDropHeight = 200.dp
         Pin(
-            iconPainter = painterResource(R.drawable.ic_quest_traffic_lights),
+            iconPainter = painterResource(R.drawable.quest_traffic_lights),
             modifier = Modifier
                 .absolutePadding(left = 0.dp, top = 25.dp)
                 .graphicsLayer {
@@ -155,7 +155,7 @@ private fun BoxScope.IntroTutorialIllustration(
                 }
         )
         Pin(
-            iconPainter = painterResource(R.drawable.ic_quest_street),
+            iconPainter = painterResource(R.drawable.quest_street),
             modifier = Modifier
                 .absolutePadding(left = 45.dp, top = 110.dp)
                 .graphicsLayer {
@@ -164,7 +164,7 @@ private fun BoxScope.IntroTutorialIllustration(
                 }
         )
         Pin(
-            iconPainter = painterResource(R.drawable.ic_quest_recycling),
+            iconPainter = painterResource(R.drawable.quest_recycling),
             modifier = Modifier
                 .absolutePadding(left = 160.dp, top = 70.dp)
                 .graphicsLayer {

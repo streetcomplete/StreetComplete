@@ -12,6 +12,8 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.EditsOfTypeCount
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.TotalEditCount
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.action_settings
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
@@ -255,7 +257,7 @@ private fun achievement(
     unlockedLinks: Map<Int, List<Link>> = emptyMap(),
     maxLevel: Int = -1
 ): Achievement =
-    Achievement(id, null, 0, 0, condition, func, unlockedLinks, maxLevel)
+    Achievement(id, null, Res.string.action_settings, null, condition, func, unlockedLinks, maxLevel)
 
 private fun links(vararg ids: String): List<Link> =
     ids.map { id -> Link(id, "url", "title", LinkCategory.INTRO, null, null) }

@@ -10,13 +10,16 @@ import de.westnordost.streetcomplete.resources.quest_board_type_plants
 import de.westnordost.streetcomplete.resources.quest_board_type_public_transport
 import de.westnordost.streetcomplete.resources.quest_board_type_sport
 import de.westnordost.streetcomplete.resources.quest_board_type_wildlife
+import de.westnordost.streetcomplete.resources.quest_board_type_rules
+
 import org.jetbrains.compose.resources.StringResource
 
 sealed interface BoardTypeAnswer {
     data object NoBoardJustMap : BoardTypeAnswer
+    data class BoardTypes(val boardTypes: Set<BoardType>) : BoardTypeAnswer
 }
 
-enum class BoardType(val osmValue: String) : BoardTypeAnswer {
+enum class BoardType(val osmValue: String) {
     HISTORY("history"),
     GEOLOGY("geology"),
     PLANTS("plants"),
@@ -24,7 +27,8 @@ enum class BoardType(val osmValue: String) : BoardTypeAnswer {
     NATURE("nature"),
     PUBLIC_TRANSPORT("public_transport"),
     NOTICE("notice"),
-    SPORT("sport")
+    SPORT("sport"),
+    RULES("rules")
 }
 
 val BoardType.text: StringResource get() = when (this) {
@@ -36,4 +40,5 @@ val BoardType.text: StringResource get() = when (this) {
     PUBLIC_TRANSPORT -> Res.string.quest_board_type_public_transport
     NOTICE -> Res.string.quest_board_type_notice_board
     SPORT -> Res.string.quest_board_type_sport
+    RULES -> Res.string.quest_board_type_rules
 }

@@ -14,10 +14,13 @@ import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.access_point_ref.AddAccessPointRef
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
+import de.westnordost.streetcomplete.quests.aerialway.AddAerialwayBicycleAccess
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
 import de.westnordost.streetcomplete.quests.air_pump.AddAirCompressor
+import de.westnordost.streetcomplete.quests.amenities.AddHotWater
 import de.westnordost.streetcomplete.quests.amenity_cover.AddAmenityCover
 import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
+import de.westnordost.streetcomplete.quests.artwork.AddArtworkType
 import de.westnordost.streetcomplete.quests.atm_cashin.AddAtmCashIn
 import de.westnordost.streetcomplete.quests.atm_operator.AddAtmOperator
 import de.westnordost.streetcomplete.quests.baby_changing_table.AddBabyChangingTable
@@ -59,8 +62,12 @@ import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
 import de.westnordost.streetcomplete.quests.camping.AddCampDrinkingWater
 import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
-import de.westnordost.streetcomplete.quests.camping.AddCampType
+import de.westnordost.streetcomplete.quests.camping.AddTents
+import de.westnordost.streetcomplete.quests.camping.AddCabins
+import de.westnordost.streetcomplete.quests.camping.AddCaravans
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
+import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
+import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationBicycleCapacity
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
@@ -81,12 +88,16 @@ import de.westnordost.streetcomplete.quests.diet_type.AddVegetarian
 import de.westnordost.streetcomplete.quests.drinking_water.AddDrinkingWater
 import de.westnordost.streetcomplete.quests.drinking_water_type.AddDrinkingWaterType
 import de.westnordost.streetcomplete.quests.existence.CheckExistence
+import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessBicycle
+import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessHgv
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessMotorVehicle
 import de.westnordost.streetcomplete.quests.ferry.AddFerryAccessPedestrian
 import de.westnordost.streetcomplete.quests.fire_hydrant.AddFireHydrantType
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.AddFireHydrantDiameter
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrantPosition
 import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
+import de.westnordost.streetcomplete.quests.firewood.AddFirewood
+import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
@@ -98,10 +109,12 @@ import de.westnordost.streetcomplete.quests.incline_direction.AddBicycleIncline
 import de.westnordost.streetcomplete.quests.incline_direction.AddStepsIncline
 import de.westnordost.streetcomplete.quests.internet_access.AddInternetAccess
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeight
+import de.westnordost.streetcomplete.quests.lane_markings.AddLaneMarkings
 import de.westnordost.streetcomplete.quests.lanes.AddLanes
 import de.westnordost.streetcomplete.quests.leaf_detail.AddForestLeafType
 import de.westnordost.streetcomplete.quests.leaf_detail.AddTreeLeafType
 import de.westnordost.streetcomplete.quests.level.AddLevel
+import de.westnordost.streetcomplete.quests.level.AddLevelThing
 import de.westnordost.streetcomplete.quests.max_height.AddMaxHeight
 import de.westnordost.streetcomplete.quests.max_height.AddMaxPhysicalHeight
 import de.westnordost.streetcomplete.quests.max_speed.AddMaxSpeed
@@ -112,6 +125,7 @@ import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotor
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
 import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
+import de.westnordost.streetcomplete.quests.oneway.AddOnewayAerialway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
 import de.westnordost.streetcomplete.quests.opening_hours_signed.CheckOpeningHoursSigned
 import de.westnordost.streetcomplete.quests.orchard_produce.AddOrchardProduce
@@ -119,6 +133,7 @@ import de.westnordost.streetcomplete.quests.parcel_locker_brand.AddParcelLockerB
 import de.westnordost.streetcomplete.quests.parking_access.AddBikeParkingAccess
 import de.westnordost.streetcomplete.quests.parking_access.AddParkingAccess
 import de.westnordost.streetcomplete.quests.parking_fee.AddBikeParkingFee
+import de.westnordost.streetcomplete.quests.parking_fee.AddMotorcycleParkingFee
 import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
@@ -156,6 +171,7 @@ import de.westnordost.streetcomplete.quests.step_count.AddStepCountStile
 import de.westnordost.streetcomplete.quests.steps_ramp.AddStepsRamp
 import de.westnordost.streetcomplete.quests.summit.AddSummitCross
 import de.westnordost.streetcomplete.quests.summit.AddSummitRegister
+import de.westnordost.streetcomplete.quests.surface.AddBeachSurface
 import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
@@ -169,6 +185,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingSteps
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
+import de.westnordost.streetcomplete.quests.tower_access.AddTowerAccess
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmingType
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
@@ -300,6 +317,7 @@ fun questTypeRegistry(
     // motorcycle parking
     30 to AddMotorcycleParkingCover(),
     31 to AddMotorcycleParkingCapacity(), // counting + number input required but usually well visible
+    180 to AddMotorcycleParkingFee(),
 
     // air pump, may require some checking within a garage forecourt
     32 to AddAirCompressor(),
@@ -338,11 +356,15 @@ fun questTypeRegistry(
 
     47 to AddPlaygroundAccess(),
 
+    191 to AddBeachSurface(),
+
     /* pulled up in priority to be before CheckExistence because this is basically the check
        whether the postbox is still there in countries in which it is enabled */
     48 to AddPostboxCollectionTimes(),
     49 to CheckExistence(getFeature),
     155 to AddGritBinSeasonal(),
+
+    190 to AddArtworkType(),
 
     50 to AddBoardType(),
     171 to AddBoardName(),
@@ -374,6 +396,8 @@ fun questTypeRegistry(
     67 to AddFireHydrantRef(),
 
     160 to AddBbqFuel(),
+    182 to AddTowerAccess(),
+    185 to AddFirewood(),
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
     // bike parking/rental: would be higher up if not for bike parking/rental capacity which is usually not solvable when moving past
@@ -399,7 +423,7 @@ fun questTypeRegistry(
     79 to CheckShopType(),
     80 to AddPlaceName(getFeature),
     77 to CheckOpeningHoursSigned(getFeature),
-    81 to AddOpeningHours(getFeature),
+    81 to AddOpeningHours(),
     83 to AddBicyclePump(), // visible from the outside, but only during opening hours
 
     84 to AddAtmOperator(),
@@ -407,7 +431,9 @@ fun questTypeRegistry(
 
     86 to AddClothingBinOperator(),
 
-    87 to AddChargingStationCapacity(),
+    186 to AddChargingStationBicycles(),
+    87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
+    179 to AddChargingStationBicycleCapacity(),
     88 to AddChargingStationOperator(),
 
     // postboxes (collection times are further up, see comment)
@@ -435,6 +461,12 @@ fun questTypeRegistry(
     // ferry: usually visible from looking at the boat, but not always...
     101 to AddFerryAccessPedestrian(),
     102 to AddFerryAccessMotorVehicle(),
+    196 to AddFerryAccessBicycle(),
+    197 to AddFerryAccessHgv(),
+
+    // aerial way: usually visible from looking at the aerial way, but not always...
+    184 to AddAerialwayBicycleAccess(),
+    187 to AddOnewayAerialway(),
 
     103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
 
@@ -449,6 +481,7 @@ fun questTypeRegistry(
     108 to AddOrchardProduce(), // difficult to find out if the orchard does not carry fruits right now
 
     109 to AddLevel(), // requires to search for the place on several levels (or at least find a mall map)
+    178 to AddLevelThing(), // requires to search for the place on several levels (or at least find a mall map)
 
     110 to AddAirConditioning(), // often visible from the outside across the street, if not, visible/feelable inside
 
@@ -463,12 +496,18 @@ fun questTypeRegistry(
     113 to AddIsAmenityIndoor(getFeature), // need to go inside in case it is inside (or gone)
     161 to AddDefibrillatorLocation(), // need to go inside in case it is inside (or gone)
 
+    183 to AddFirstAidKitLocation(), // need to go inside in case it is inside (or gone)
+
     // inside camping sites
-    114 to AddCampType(),
+    114 to AddCaravans(),
+    188 to AddTents(),
+    189 to AddCabins(),
     115 to AddCampDrinkingWater(),
     116 to AddCampShower(),
     117 to AddCampPower(),
     162 to AddSanitaryDumpStation(),
+
+    192 to AddHotWater(),
 
     177 to AddShelterCapacity(),
 
@@ -505,6 +544,7 @@ fun questTypeRegistry(
     135 to AddRoadSurface(), // used by BRouter, OsmAnd, OSRM, graphhopper, HOT map style... - sometimes requires way to be split
     136 to AddTracktype(), // widely used in map rendering - OSM Carto, OsmAnd...
     137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
+    181 to AddLaneMarkings(),
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
 
     140 to AddRoadWidth(arSupportChecker),

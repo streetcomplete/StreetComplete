@@ -3,7 +3,6 @@ additionalStreetsignLanguages: [en]
 atmOperators: [HSBC, BISB, NBB, Ithmaar Bank, BBK Online, BBK, Kuwait Finance House]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
-firstDayOfWorkweek: Su
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 426
 noParkingSignStyle: vienna variant
@@ -13,3 +12,4 @@ orchardProduces: [date, lemon, lime, banana, tomato, grape, chilli_pepper, sweet
 popularReligions: [muslim]
 postboxesHaveRoyalCypher: true
 roofsAreUsuallyFlat: true
+workweek: Su-Th

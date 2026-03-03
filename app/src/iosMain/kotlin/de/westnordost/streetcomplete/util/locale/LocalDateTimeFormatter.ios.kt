@@ -11,8 +11,8 @@ import platform.Foundation.NSDateFormatter
 actual class LocalDateTimeFormatter actual constructor(
     locale: Locale?,
     timeZone: TimeZone,
-    dateStyle: DateFormatStyle,
-    timeStyle: DateFormatStyle,
+    dateStyle: DateTimeFormatStyle,
+    timeStyle: DateTimeFormatStyle,
 ) {
     private val formatter = NSDateFormatter().also {
         if (locale != null) it.locale = locale.platformLocale

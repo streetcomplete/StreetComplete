@@ -37,8 +37,15 @@ fun EditDetails(
 
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
+        Text(
+            text = DateFormat
+                .getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
+                .format(edit.createdTimestamp),
+            style = MaterialTheme.typography.body2,
+            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
+        )
         Row(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically
@@ -47,34 +54,27 @@ fun EditDetails(
                 edit = edit,
                 modifier = Modifier.size(64.dp)
             )
-            Column {
+            Text(
+                text = edit.getTitle(element?.tags),
+                style = MaterialTheme.typography.body1,
+                color = LocalContentColor.current.copy(alpha = ContentAlpha.high),
+            )
+        }
+
+        if (element != null) {
+            val nameAndLocation = remember(element, context.resources) {
+                getNameAndLocationHtml(element, context.resources, featureDictionaryLazy.value)
+                    ?.let { parseHtml(it) }
+            }
+            if (nameAndLocation != null) {
                 Text(
-                    text = DateFormat
-                        .getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT)
-                        .format(edit.createdTimestamp),
+                    text = nameAndLocation.toAnnotatedString(),
                     style = MaterialTheme.typography.body2,
                     color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                 )
-                Text(
-                    text = edit.getTitle(element?.tags),
-                    style = MaterialTheme.typography.body1,
-                    color = LocalContentColor.current.copy(alpha = ContentAlpha.high),
-                )
-                if (element != null) {
-                    val nameAndLocation = remember(element, context.resources) {
-                        getNameAndLocationHtml(element, context.resources, featureDictionaryLazy.value)
-                            ?.let { parseHtml(it) }
-                    }
-                    if (nameAndLocation != null) {
-                        Text(
-                            text = nameAndLocation.toAnnotatedString(),
-                            style = MaterialTheme.typography.body2,
-                            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
-                        )
-                    }
-                }
             }
         }
+
         Divider()
         SelectionContainer {
             EditDescription(edit)

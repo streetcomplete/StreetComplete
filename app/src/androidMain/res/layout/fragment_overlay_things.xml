@@ -21,6 +21,7 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             tools:src="@drawable/preset_fas_flask"
+            app:tint="@color/text"
             android:padding="4dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"

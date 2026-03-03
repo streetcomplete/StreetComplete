@@ -22,7 +22,7 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>(), Andro
     """
     override val changesetComment = "Specify wheelchair accessibility of toilets"
     override val wikiLink = "Key:wheelchair"
-    override val icon = R.drawable.ic_quest_toilets_wheelchair
+    override val icon = R.drawable.quest_toilets_wheelchair
     override val isDeleteElementEnabled = true
     override val achievements = listOf(WHEELCHAIR)
 

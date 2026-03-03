@@ -39,7 +39,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import kotlin.math.abs
 
 /** Dialog that shows a message that the user has X unread messages in his OSM inbox */
@@ -102,6 +102,7 @@ fun UnreadMessagesDialog(
         }
     }
 }
+
 @Composable
 private fun Envelope(
     opening: Float,

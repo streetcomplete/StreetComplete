@@ -34,7 +34,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** A text that animates changes to the number displayed like a mechanical  tally counter
  *  (https://en.wikipedia.org/wiki/Tally_counter).
@@ -62,18 +62,28 @@ fun Counter(
 
     val digits = count.toString().toCharArray().reversed()
 
-    CompositionLocalProvider(LocalLayoutDirection provides LocalLayoutDirection.current.reversed()) {
+    // numbers are always least-significant-digits-from-right, independent of locale. Or in other
+    // words, always from left to right. (We build the row from right-to-left, though, i.e. of
+    // the number 123, first the three, then 2, then 1 - for animation)
+    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
         Row(modifier = modifier) {
             digits.forEachIndexed { index, digit ->
                 AnimatedContent(
                     targetState = digit,
                     transitionSpec = {
-                        val contentTransform = if (count > oldCount) {
-                            slideInVertically { -it } + fadeIn() togetherWith slideOutVertically { it } + fadeOut()
+                        if (count > oldCount) {
+                            (
+                                slideInVertically { -it } + fadeIn()
+                            ).togetherWith(
+                                slideOutVertically { it } + fadeOut()
+                            )
                         } else {
-                            slideInVertically { it } + fadeIn() togetherWith slideOutVertically { -it } + fadeOut()
-                        }
-                        contentTransform.using(SizeTransform(clip))
+                            (
+                                slideInVertically { it } + fadeIn()
+                            ).togetherWith(
+                                slideOutVertically { -it } + fadeOut()
+                            )
+                        }.using(SizeTransform(clip))
                     },
                     label = "CounterAnimation$index"
                 ) {
@@ -99,11 +109,6 @@ fun Counter(
             }
         }
     }
-}
-
-private fun LayoutDirection.reversed() = when (this) {
-    LayoutDirection.Ltr -> LayoutDirection.Rtl
-    LayoutDirection.Rtl -> LayoutDirection.Ltr
 }
 
 @Preview

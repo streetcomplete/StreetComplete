@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.sidewalk
 
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
@@ -16,7 +17,7 @@ class SidewalkParserKtTest {
 
     @Test
     fun `invalid because unknown values`() {
-        val invalid = sidewalk(INVALID, INVALID)
+        val invalid = Sides(INVALID, INVALID)
         assertEquals(invalid, parse("sidewalk" to "something"))
         assertEquals(invalid, parse("sidewalk:both" to "something"))
         assertEquals(invalid, parse(
@@ -27,7 +28,7 @@ class SidewalkParserKtTest {
 
     @Test
     fun `invalid because contradictory or duplicate values`() {
-        val invalid = sidewalk(INVALID, INVALID)
+        val invalid = Sides(INVALID, INVALID)
         assertEquals(invalid, parse(
             "sidewalk:left" to "yes",
             "sidewalk" to "left"))
@@ -62,7 +63,7 @@ class SidewalkParserKtTest {
 
     @Test fun `left invalid, right yes`() {
         assertEquals(
-            sidewalk(INVALID, YES),
+            Sides(INVALID, YES),
             parse(
                 "sidewalk:left" to "something",
                 "sidewalk:right" to "yes"
@@ -72,7 +73,7 @@ class SidewalkParserKtTest {
 
     @Test fun `left invalid, right no`() {
         assertEquals(
-            sidewalk(INVALID, NO),
+            Sides(INVALID, NO),
             parse(
                 "sidewalk:left" to "something",
                 "sidewalk:right" to "no"
@@ -82,7 +83,7 @@ class SidewalkParserKtTest {
 
     @Test fun `left invalid, right separate`() {
         assertEquals(
-            sidewalk(INVALID, SEPARATE),
+            Sides(INVALID, SEPARATE),
             parse(
                 "sidewalk:left" to "something",
                 "sidewalk:right" to "separate"
@@ -92,7 +93,7 @@ class SidewalkParserKtTest {
 
     @Test fun `right invalid, left yes`() {
         assertEquals(
-            sidewalk(YES, INVALID),
+            Sides(YES, INVALID),
             parse(
                 "sidewalk:right" to "something",
                 "sidewalk:left" to "yes"
@@ -102,7 +103,7 @@ class SidewalkParserKtTest {
 
     @Test fun `right invalid, left no`() {
         assertEquals(
-            sidewalk(NO, INVALID),
+            Sides(NO, INVALID),
             parse(
                 "sidewalk:right" to "something",
                 "sidewalk:left" to "no"
@@ -112,7 +113,7 @@ class SidewalkParserKtTest {
 
     @Test fun `right invalid, left separate`() {
         assertEquals(
-            sidewalk(SEPARATE, INVALID),
+            Sides(SEPARATE, INVALID),
             parse(
                 "sidewalk:right" to "something",
                 "sidewalk:left" to "separate"
@@ -124,21 +125,21 @@ class SidewalkParserKtTest {
 
     @Test fun `sidewalk both`() {
         assertEquals(
-            sidewalk(YES, YES),
+            Sides(YES, YES),
             parse("sidewalk" to "both")
         )
     }
 
     @Test fun `both sidewalk`() {
         assertEquals(
-            sidewalk(YES, YES),
+            Sides(YES, YES),
             parse("sidewalk:both" to "yes")
         )
     }
 
     @Test fun `left and right yes`() {
         assertEquals(
-            sidewalk(YES, YES),
+            Sides(YES, YES),
             parse(
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "yes"
@@ -150,34 +151,34 @@ class SidewalkParserKtTest {
 
     @Test fun `no sidewalk`() {
         assertEquals(
-            sidewalk(NO, NO),
+            Sides(NO, NO),
             parse("sidewalk" to "no")
         )
         assertEquals(
-            sidewalk(NO, NO),
+            Sides(NO, NO),
             parse("sidewalk" to "none")
         )
 
         assertEquals(
-            sidewalk(NO, NO),
+            Sides(NO, NO),
             parse("sidewalk:both" to "no")
         )
         assertEquals(
-            sidewalk(NO, NO),
+            Sides(NO, NO),
             parse("sidewalk:both" to "none")
         )
     }
 
     @Test fun `left and right no`() {
         assertEquals(
-            sidewalk(NO, NO),
+            Sides(NO, NO),
             parse(
                 "sidewalk:left" to "no",
                 "sidewalk:right" to "no"
             )
         )
         assertEquals(
-            sidewalk(NO, NO),
+            Sides(NO, NO),
             parse(
                 "sidewalk:left" to "none",
                 "sidewalk:right" to "none"
@@ -189,14 +190,14 @@ class SidewalkParserKtTest {
 
     @Test fun `left sidewalk`() {
         assertEquals(
-            sidewalk(YES, NO),
+            Sides(YES, NO),
             parse("sidewalk" to "left")
         )
     }
 
     @Test fun `left sidewalk, right no`() {
         assertEquals(
-            sidewalk(YES, NO),
+            Sides(YES, NO),
             parse(
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "no"
@@ -206,7 +207,7 @@ class SidewalkParserKtTest {
 
     @Test fun `left sidewalk, right separate`() {
         assertEquals(
-            sidewalk(YES, SEPARATE),
+            Sides(YES, SEPARATE),
             parse(
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "separate"
@@ -216,7 +217,7 @@ class SidewalkParserKtTest {
 
     @Test fun `left sidewalk, right invalid`() {
         assertEquals(
-            sidewalk(YES, INVALID),
+            Sides(YES, INVALID),
             parse(
                 "sidewalk:left" to "yes",
                 "sidewalk:right" to "something"
@@ -228,14 +229,14 @@ class SidewalkParserKtTest {
 
     @Test fun `right sidewalk`() {
         assertEquals(
-            sidewalk(NO, YES),
+            Sides(NO, YES),
             parse("sidewalk" to "right")
         )
     }
 
     @Test fun `right sidewalk, left no`() {
         assertEquals(
-            sidewalk(NO, YES),
+            Sides(NO, YES),
             parse(
                 "sidewalk:right" to "yes",
                 "sidewalk:left" to "no"
@@ -245,7 +246,7 @@ class SidewalkParserKtTest {
 
     @Test fun `right sidewalk, left separate`() {
         assertEquals(
-            sidewalk(SEPARATE, YES),
+            Sides(SEPARATE, YES),
             parse(
                 "sidewalk:right" to "yes",
                 "sidewalk:left" to "separate"
@@ -255,7 +256,7 @@ class SidewalkParserKtTest {
 
     @Test fun `right sidewalk, left invalid`() {
         assertEquals(
-            sidewalk(INVALID, YES),
+            Sides(INVALID, YES),
             parse(
                 "sidewalk:right" to "yes",
                 "sidewalk:left" to "something"
@@ -267,18 +268,18 @@ class SidewalkParserKtTest {
 
     @Test fun `both separate`() {
         assertEquals(
-            sidewalk(SEPARATE, SEPARATE),
+            Sides(SEPARATE, SEPARATE),
             parse("sidewalk" to "separate")
         )
         assertEquals(
-            sidewalk(SEPARATE, SEPARATE),
+            Sides(SEPARATE, SEPARATE),
             parse("sidewalk:both" to "separate")
         )
     }
 
     @Test fun `left and right separate`() {
         assertEquals(
-            sidewalk(SEPARATE, SEPARATE),
+            Sides(SEPARATE, SEPARATE),
             parse(
                 "sidewalk:left" to "separate",
                 "sidewalk:right" to "separate"
@@ -290,25 +291,25 @@ class SidewalkParserKtTest {
 
     @Test fun `left separate, right undefined`() {
         assertEquals(
-            sidewalk(SEPARATE, null),
+            Sides(SEPARATE, null),
             parse("sidewalk:left" to "separate")
         )
     }
 
     @Test fun `left no, right undefined`() {
         assertEquals(
-            sidewalk(NO, null),
+            Sides(NO, null),
             parse("sidewalk:left" to "no")
         )
         assertEquals(
-            sidewalk(NO, null),
+            Sides(NO, null),
             parse("sidewalk:left" to "none")
         )
     }
 
     @Test fun `left yes, right undefined`() {
         assertEquals(
-            sidewalk(YES, null),
+            Sides(YES, null),
             parse(
                 "sidewalk:left" to "yes"
             )
@@ -317,7 +318,7 @@ class SidewalkParserKtTest {
 
     @Test fun `left invalid, right undefined`() {
         assertEquals(
-            sidewalk(INVALID, null),
+            Sides(INVALID, null),
             parse(
                 "sidewalk:left" to "something"
             )
@@ -326,25 +327,25 @@ class SidewalkParserKtTest {
 
     @Test fun `left undefined, right separate`() {
         assertEquals(
-            sidewalk(null, SEPARATE),
+            Sides(null, SEPARATE),
             parse("sidewalk:right" to "separate")
         )
     }
 
     @Test fun `left undefined, right no`() {
         assertEquals(
-            sidewalk(null, NO),
+            Sides(null, NO),
             parse("sidewalk:right" to "no")
         )
         assertEquals(
-            sidewalk(null, NO),
+            Sides(null, NO),
             parse("sidewalk:right" to "none")
         )
     }
 
     @Test fun `left undefined, right yes`() {
         assertEquals(
-            sidewalk(null, YES),
+            Sides(null, YES),
             parse(
                 "sidewalk:right" to "yes"
             )
@@ -353,16 +354,13 @@ class SidewalkParserKtTest {
 
     @Test fun `left undefined, right invalid`() {
         assertEquals(
-            sidewalk(null, INVALID),
+            Sides(null, INVALID),
             parse(
                 "sidewalk:right" to "something"
             )
         )
     }
 }
-
-private fun sidewalk(left: Sidewalk?, right: Sidewalk?) =
-    LeftAndRightSidewalk(left, right)
 
 private fun parse(vararg tags: Pair<String, String>) =
     parseSidewalkSides(mapOf(*tags))

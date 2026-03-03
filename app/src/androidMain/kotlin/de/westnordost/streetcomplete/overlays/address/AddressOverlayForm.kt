@@ -100,9 +100,9 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         val positionOnWay = positionOnWay
         if (positionOnWay != null) {
             setMarkerPosition(positionOnWay.position)
-            setMarkerIcon(if (addEntrance) R.drawable.ic_quest_door else R.drawable.ic_quest_housenumber)
+            setMarkerIcon(if (addEntrance) R.drawable.quest_door else R.drawable.quest_housenumber)
         } else {
-            setMarkerIcon(R.drawable.ic_quest_housenumber)
+            setMarkerIcon(R.drawable.quest_housenumber)
             setMarkerPosition(null)
         }
     }
@@ -145,7 +145,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
                 showHouseNumber = false
             ))
         }
-        setMarkerIcon(R.drawable.ic_quest_housenumber)
+        setMarkerIcon(R.drawable.quest_housenumber)
 
         binding.composeViewBase.content { Surface(Modifier.padding(bottom = 48.dp)) {
             addressNumberAndName = rememberSerializable { mutableStateOf(originalAddressNumberAndName) }
@@ -255,6 +255,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             ?: return true
 
         streetOrPlaceName.value = StreetName(name)
+        checkIsFormComplete()
         return true
     }
 
@@ -264,7 +265,8 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
     override fun isFormComplete(): Boolean =
         addressNumberAndName.value.isComplete()
-        && streetOrPlaceName.value.name.isNotEmpty()
+        // street is optional as in new developments sometimes the street names are not posted yet,
+        // or it is not clear on-site, see #6528
 
     override fun onClickOk() {
         val number = addressNumberAndName.value.number
@@ -306,7 +308,9 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         streetOrPlaceName: StreetOrPlaceName?
     ) {
         number?.applyTo(tagChanges, countryInfo.countryCode)
-        name?.let { tagChanges["addr:housename"] = it }
+        if (!name.isNullOrEmpty()) {
+            tagChanges["addr:housename"] = name
+        }
         streetOrPlaceName?.applyTo(tagChanges)
         tagChanges.remove("noaddress")
         tagChanges.remove("nohousenumber")
@@ -318,11 +322,11 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         if (countryInfo.countryCode in listOf("JP", "CZ", "SK")) return null
         return when (addressNumberAndName.value.number) {
             is BlockAndHouseNumber ->
-                AnswerItem(R.string.quest_address_answer_no_block) {
+                AnswerItem(R.string.quest_address_answer_no_block2) {
                     addressNumberAndName.value = addressNumberAndName.value.copy(number = HouseNumber(""))
                 }
             else ->
-                AnswerItem(R.string.quest_address_answer_block) {
+                AnswerItem(R.string.quest_address_answer_block2) {
                     addressNumberAndName.value = addressNumberAndName.value.copy(number = BlockAndHouseNumber("", ""))
                 }
         }

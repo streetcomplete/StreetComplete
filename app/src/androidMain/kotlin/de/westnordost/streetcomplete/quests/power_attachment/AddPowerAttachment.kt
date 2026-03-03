@@ -16,10 +16,11 @@ class AddPowerAttachment : OsmFilterQuestType<PowerAttachment>(), AndroidQuest {
         nodes with
           power ~ tower|pole|insulator
           and !line_attachment
+          and disused != yes and ruined != yes and abandoned != yes
     """
     override val changesetComment = "Specify line_attachment power support"
     override val wikiLink = "Key:line_attachment"
-    override val icon = R.drawable.ic_quest_power
+    override val icon = R.drawable.quest_power
     override val achievements = listOf(BUILDING)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_powerAttachment_title

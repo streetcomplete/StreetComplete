@@ -13,12 +13,8 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.ferry.wayIdsInFerryRoutes
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_AXLE_LOAD
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_GROSS_VEHICLE_MASS
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_TANDEM_AXLE_LOAD
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightSign.MAX_WEIGHT
 
-class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
+class AddMaxWeight : OsmElementQuestType<List<MaxWeight>>, AndroidQuest {
 
     // We ask for the maximum weight of bridges and ferries.
     // The general filter is used for both:
@@ -51,7 +47,7 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
 
     override val changesetComment = "Specify maximum allowed weights"
     override val wikiLink = "Key:maxweight"
-    override val icon = R.drawable.ic_quest_max_weight
+    override val icon = R.drawable.quest_max_weight
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
 
@@ -59,14 +55,13 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
 
     override fun createForm() = AddMaxWeightForm()
 
-    override fun applyAnswerTo(answer: MaxWeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            is MaxWeight -> {
-                tags[answer.sign.osmKey] = answer.weight.toString()
+    override fun applyAnswerTo(answer: List<MaxWeight>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.isNotEmpty()) {
+            for (maxweight in answer) {
+                maxweight.applyTo(tags)
             }
-            is NoMaxWeightSign -> {
-                tags["maxweight:signed"] = "no"
-            }
+        } else {
+            tags["maxweight:signed"] = "no"
         }
     }
 
@@ -94,11 +89,4 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
         }
         return false
     }
-}
-
-private val MaxWeightSign.osmKey get() = when (this) {
-    MAX_WEIGHT             -> "maxweight"
-    MAX_GROSS_VEHICLE_MASS -> "maxweightrating"
-    MAX_AXLE_LOAD          -> "maxaxleload"
-    MAX_TANDEM_AXLE_LOAD   -> "maxbogieweight"
 }

@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Napsat poznámku</string>
     <string name="quest_leave_new_note_no">Skrýt</string>
     <string name="quest_streetName_title">Jak se jmenuje tato ulice?</string>
-    <string name="quest_streetName_description">přesně tak, jak je napsáno na ceduli se jménem, zkratky se vypisují celým slovem:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Cedule se jmény ulic někdy můžou být jen na jednom konci ulice. Pamatujte, že boční ulice, které patří k větší ulici, nemusí mít cedule se jménem. Ulice s domy jsou obvykle pojmenované.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Pokud jde jméno zapsat bez zkratek, tak by se měly rozepsat. Pár obvyklých zkratek se během jejich psaní automaticky rozepisuje, ale ne všechny.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Žádná zkratka</string>
     <string name="quest_openingHours_start_time">otevírací čas</string>
     <string name="quest_openingHours_end_time">Zavírá v</string>
     <string name="quest_openingHours_add_months">Přidat měsíce</string>
@@ -57,12 +54,10 @@
     <string name="version_banned_message">Tato verze StreetComplete je příliš stará. Prosím aktualizujte ji!</string>
     <string name="no_gps_no_quests">Pro automatické vyhledávání úkolů ve vašem okolí zapněte určování polohy</string>
     <string name="later">Později</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Jen to spojuje dvě ulice</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Něco jiného (napište do poznámky)</string>
     <string name="about_title_privacy_statement">Prohlášení o ochraně soukromí</string>
     <string name="quest_openingHours_public_holidays">Státní svátky</string>
     <string name="quest_openingHours_public_holidays_short">St. sv.</string>
-    <string name="quest_openingHours_open_end">do odchodu posledního návštěvníka</string>
     <string name="quest_openingHours_answer_247">Otevřeno nonstop</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Liší se podle měsíce…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Nepravidelná otevírací doba…</string>
@@ -197,7 +192,6 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
     <string name="quest_sport_roller_skating">Kolečkové bruslení</string>
     <string name="quest_wheelchairAccess_limited_description_business">Částečně znamená, že tu není víc než jeden schod bránící v přístupu a že většina místností v budově je přístupná na invalidním vozíku.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Částečně znamená, že tu není víc než jeden schod bránící v přístupu.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Je v názvu %1$s zkratka?</string>
     <string name="quest_recycling_type_title">Jaký je toto typ recyklačního zařízení?</string>
     <string name="recycling_centre">Středisko</string>
     <string name="overground_recycling_container">Kontejner</string>
@@ -323,12 +317,7 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_housenumber_conscription_number">Číslo popisné</string>
     <string name="quest_housenumber_street_number_optional">Orientační číslo (volitelné)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Cyklostezka je i na druhé straně…</string>
-    <string name="quest_openingHours_emptyAnswer">Musíte opsat informace z cedulky s otevírací dobou. Pokud tu žádná není, měli byste se zeptat na otevírací hodiny uvnitř.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">žádná, ale cyklisti můžou použít cestu v obou směrech</string>
-    <string name="quest_streetName_answer_noName_question">Proč nemá žádné jméno?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Je to něco jako příjezdová cesta nebo cesta na parkovišti</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Je to polní nebo lesní cesta, kam se dá zajet</string>
-    <string name="quest_streetName_answer_noName_noname">Nic z výše uvedeného, prostě nemá jméno</string>
     <string name="quest_wheelchairAccess_description_toilets">Pokud jsou toalety přístupné, můžete na nich vidět podobnou značku vozíčkáře.
 Částečně znamená, že se lze na toaletu dostat a používat ji i na kolečkovém křesle, ale nejsou na ní držáky, nebo upravené umývadlo.</string>
     <string name="map_btn_create_note">Vytvořit novou poznámku</string>
@@ -479,7 +468,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="privacy_html_image_upload2">&lt;p&gt;Fotografie připojené k poznámce jsou nahrané na můj server a smazány několik dnů po vyřešení poznámky. Metadata fotografií jsou odstraněna před jejich nahráním.&lt;/p&gt;</string>
     <string name="action_deselect_all">Odznačit vše</string>
     <string name="quest_buildingType_retail_description">včetně budov pro restaurace, kavárny, obchodní domy…</string>
-    <string name="quest_openingHours_timeSelect_next">Další</string>
     <string name="quest_tracktype_title">Jak pevný je povrch této stezky/cesty?</string>
     <string name="quest_tracktype_grade1">Pevný</string>
     <string name="quest_tracktype_grade4">Spíše měkký</string>
@@ -505,7 +493,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="action_open_location">Otevřít lokaci v jiné aplikaci</string>
     <string name="map_application_missing">Nemáte nainstalovanou žádnou jinou mapovou aplikaci</string>
     <string name="label_housenumber">číslo domu</string>
-    <string name="label_blocknumber">číslo bloku</string>
     <string name="quest_busStopShelter_covered">Celá zastávka je zastřešená</string>
     <string name="quest_ferry_pedestrian_title">Převáží chodce?</string>
     <string name="quest_ferry_motor_vehicle_title">Převáží motorová vozidla?</string>
@@ -539,7 +526,6 @@ Chcete cestu rozdělit?</string>
     <string name="quest_recycling_type_glass_bottles">Skleněné láhve a jiné nádoby</string>
     <string name="quest_recycling_type_glass_bottles_short">Láhve a nádoby</string>
     <string name="quest_recycling_type_paper">Papír</string>
-    <string name="quest_recycling_type_plastic_generic">Plasty</string>
     <string name="quest_recycling_type_plastic">Jakékoliv plasty</string>
     <string name="quest_recycling_type_shoes">Obuv</string>
     <string name="quest_recycling_type_electric_appliances">Elektrické spotřebiče</string>
@@ -660,7 +646,7 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="achievement_veg_solved_X">Vyřešili jste %1$d úkolů, které by mohly zajímat lidi na bezmasé dietě!</string>
     <string name="achievement_car_title">Cesťák</string>
     <string name="achievement_car_solved_X">Vyřešili jste %1$d úkolů, které vylepšují informace o infrastruktuře ulic.</string>
-    <string name="unread_messages_message">Máte %1$d  nepřečtené příchozí zprávy</string>
+    <string name="unread_messages_message">Máte %1$d nepřečtené příchozí zprávy</string>
     <string name="unread_messages_button">Otevřít příchozí zprávy</string>
     <string name="action_about2">O aplikaci</string>
     <string name="map_btn_menu">Nabídka</string>
@@ -711,12 +697,11 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="resurvey_intervals_default">Výchozí</string>
     <string name="resurvey_intervals_more_often">Ptát se častěji</string>
     <string name="about_title_translate">Pomozte přeložit tuto aplikaci</string>
-    <string name="about_description_translate">%1$s je přeloženo %2$d%%
+    <string name="about_description_translate">%1$s je přeloženo %2$d%
 </string>
     <string name="quest_oneway2_title">Je tohle jednosměrná ulice? V jakém směru?</string>
     <string name="quest_oneway2_dir">Je jednosměrná v tomto směru</string>
     <string name="quest_oneway2_no_oneway">Není jednosměrná</string>
-    <string name="quest_maxweight_select_sign">Vyberte značku</string>
     <string name="quest_steps_incline_title">Který směr vede na těchto schodech nahoru?</string>
     <string name="quest_steps_incline_up">Toto je směr nahoru</string>
     <string name="quest_step_count_title">Kolik je tu schodů</string>
@@ -758,7 +743,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="quest_charging_station_capacity_title">Kolik vozidel může být na této dobíjecí stanici najednou dobíjeno?</string>
     <string name="link_disaster_ninja_description">Mapa, která zobrazuje aktuální přírodní katastrofy, zajímavá pro humanitární mapéry. Dále jsou tu zajímavé statistiky, podle kterých lze analyzovat, jak jsou místa dobře zmapovaná a aktuální.</string>
     <string name="quest_lanes_title">Kolik jízdních pruhů pro auta má tato cesta?</string>
-    <string name="quest_lanes_answer_lanes">Vyznačené pruhy</string>
     <string name="quest_lanes_answer_noLanes">Bez vyznačených pruhů</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Má obousměrný pruh pro odbočení vlevo (v ČR není)</string>
     <string name="quest_address_answer_no_housenumber_message2b">Je to správně?</string>
@@ -770,8 +754,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="quest_kerb_height_lowered">Trochu vyšší než povrch cesty</string>
     <string name="quest_kerb_height_raised">Vysoký obrubník (jako schod)</string>
     <string name="quest_kerb_height_lowered_ramp">Obrubník s nájezdem</string>
-    <string name="quest_lanes_answer_lanes_description2">Určete celkový počet vyznačených jízdních pruhů (v obou směrech), na kterých mohou jezdit auta. Pruhy pro kola a parkování nepočítejte.
-Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Určete tady celkový počet vyznačených jízdních pruhů, na kterých mohou jezdit auta. Pruhy pro kola a parkování nepočítejte.
 Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky.</string>
     <string name="quest_surface_value_rock">Skála</string>
@@ -786,7 +768,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky.</string>
     <string name="quest_shop_gone_replaced_answer">…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Napište druh místa/obchodu</string>
     <string name="quest_shop_vacant_type_title">Tento obchod byl prázdný. Co tu je nyní?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Počet pruhů je na každé straně jiný</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Tento typ úkolů je ve výchozím nastavení zakázán, protože v některých regionech nemá použití, a protože pravděpodobně budete muset na místo vstoupit, abyste na otázku mohli odpovědět.</string>
     <string name="quest_dietType_explanation_kosher">Košer produkty se musí připravovat podle zvláštních pravidel s označením kašrut od certifikační agentury.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Není tu žádná cyklostezka</string>
@@ -805,7 +786,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky.</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">The Crown of Scotland</string>
     <string name="quest_buildingType_fire_station">Hasičská stanice</string>
     <string name="quest_recycling_type_beverage_cartons">Pouze kartonové obaly od nápojů</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Pouze plastové láhve a kartonové obaly</string>
     <string name="team_mode">Týmový režim</string>
     <string name="team_mode_exit">Opustit týmový režim</string>
     <string name="team_mode_description">Pokud mapujete tutéž oblast společně ve skupině, můžete si zapnout týmový režim a rozdělit úkoly mezi všechny členy týmu.</string>
@@ -1159,13 +1139,8 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna.</string>
     <string name="quest_camp_drinking_water_title">Mají tu táborníci volně k dispozici pitnou vodu?</string>
     <string name="quest_camp_shower_title">Jsou tu sprchy?</string>
     <string name="quest_camp_power_supply_title">Mohou si tu zákazníci nabíjet telefon, notebook apod.?</string>
-    <string name="quest_camp_type_title">Kdo tu může tábořit?</string>
-    <string name="quest_camp_type_tents_and_caravans">Jak stany, tak obytné vozy, cestovní přívěsy, …</string>
-    <string name="quest_camp_type_caravans_only">Pouze obytné vozy, cestovní přívěsy, …</string>
-    <string name="quest_camp_type_tents_only">Pouze stany</string>
     <string name="quest_camp_type_backcountry">Táboření v přírodě (bez zázemí)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Tento průměr vypadá nepravděpodobně, obvykle se pohybuje mezi %1$d a %2$d.</string>
-    <string name="quest_recycling_type_pet">Jen PET</string>
     <string name="street_parking_street_width">Šířka ulice: %1$s</string>
     <string name="overlay_street_parking">Parkování na ulici</string>
     <string name="link_ohsomehex_description">Objevujte data OSM napříč měřítky, od velkého obrázku po jednotlivé objekty, v prostoru a čase</string>
@@ -1254,9 +1229,6 @@ Chcete ho posunout?</string>
     <string name="street_parking_staggered_half_on_kerb">Částečně na chodníku střídavě na obou stranách</string>
     <string name="quest_traffic_signals_sound_description">Nápověda: Hledejte reproduktory. Ne všechny zvukové signály lze aktivovat tlačítkem.</string>
     <string name="quest_presets_duplicate">Duplikovat</string>
-    <string name="label_block">blok</string>
-    <string name="quest_address_answer_block">Je uvnitř bloku…</string>
-    <string name="quest_address_answer_no_block">Není uvnitř bloku…</string>
     <string name="quest_surface_value_mud">Trvalé bláto</string>
     <string name="quest_wheelchairAccessPat_noToilet">Není tu žádná toaleta</string>
     <string name="unknown_surface_title">Jiný druh povrchu</string>
@@ -1360,7 +1332,7 @@ Informace o dárcovství najdete na našem webu nebo na stránce projektu, Googl
     <string name="quest_moped_access_designated">Je tu značka, která povoluje přístup mopedů na tuto cyklostezku</string>
     <string name="quest_moped_access_forbidden">Je tu značka zakazující mopedy</string>
     <string name="default_disabled_msg_visible_sign_moped">Tento typ úkolů je ve výchozím stavu zakázán, protože přístup mopedů je indikován jen specifickými značkami na začátku/konci cyklostezky.</string>
-    <string name="quest_arrow_tutorial">Šipky v ilustraci ukazují do směrů, kam cesta na mapě vede od centrální pozice. Zkuste otočit mapu a dostanete to.</string>
+    <string name="quest_arrow_tutorial">Šipky v ilustraci ukazují do směrů, kam cesta na mapě vede od centrální pozice. Zkuste otočit mapu a pochopíte to.</string>
     <string name="info">Více informací</string>
     <string name="quest_accessible_for_pedestrians_prohibited">Je zakázán.</string>
     <string name="quest_accessible_for_pedestrians_allowed">Je povolen.</string>
@@ -1468,4 +1440,29 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_housenumber_multiple_numbers_description2">Můžete vložit čísla domů oddělená čárkou.\nNapříklad 1,3 nebo 2b,4,6.</string>
     <string name="quest_drinking_water_potable_unsigned2">Bez rozboru</string>
     <string name="or">nebo</string>
+    <string name="action_copy">Kopírovat</string>
+    <string name="quest_stopName_hint">Stejný název jako u jiné zastávky můžete použít klepnutím na ni na mapě.</string>
+    <string name="quest_shelter_capacity_title">Kolik lidí tu může spát?</string>
+    <string name="quest_handwashing_title">Můžete si tu umýt ruce?</string>
+    <string name="quest_openingHours_delete">Smazat</string>
+    <string name="quest_streetName_hint">Stejný název jako u přilehlé sekce můžete použít klepnutím na ni na mapě.</string>
+    <string name="quest_streetName_abbreviation_instruction">U zkratek jako např. „Rd“ by se měla použít plné podoba.</string>
+    <string name="quest_streetName_add_language">Přidat jazyk</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Zrušit</string>
+    <string name="quest_aerialway_bicycle_title">Přepravuje tato lanovka jízdní kola?</string>
+    <string name="quest_aerialway_bicycle_summer">Jen v létě</string>
+    <string name="quest_board_type_rules">Pravidla</string>
+    <string name="quest_firewood_provided_title">Je tu k dispozici palivové dřevo?</string>
+    <string name="quest_first_aid_kit_location">Kde se nachází tato lékárnička?</string>
+    <string name="quest_lane_markings_title">Má tato cesta značení jízdních pruhů?</string>
+    <string name="quest_level_thing_title">Na kterém podlaží se nachází tato věc?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Kolik jízdních kol tu lze současně nabíjet?</string>
+    <string name="quest_charging_station_bicycles_title">Lze tu nabíjet i jízdní kola?</string>
+    <string name="quest_charging_station_bicycles_hint">Adaptéry pro nabíjení jízdních kol se zapojují do běžné zásuvky jako v domácnosti.</string>
+    <string name="quest_tower_access_title">Kdo má přístup na tuto věž? Může být zdarma nebo placený.</string>
+    <string name="quest_charging_station_bicycles_answer_only">Je to jen pro jízdní kola</string>
+    <string name="quest_recycling_type_pet_bottles">Láhve PET</string>
+    <string name="quest_maxweight_add_sign">Přidat značku</string>
+    <string name="quest_maxweight_remove_sign">Odebrat značku</string>
 </resources>

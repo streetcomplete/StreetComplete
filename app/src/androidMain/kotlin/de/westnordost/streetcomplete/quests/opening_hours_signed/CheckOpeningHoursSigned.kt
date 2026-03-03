@@ -45,7 +45,7 @@ class CheckOpeningHoursSigned(
 
     override val changesetComment = "Survey whether opening hours are signed"
     override val wikiLink = "Key:opening_hours:signed"
-    override val icon = R.drawable.ic_quest_opening_hours_signed
+    override val icon = R.drawable.quest_opening_hours_signed
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 

@@ -11,21 +11,21 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 
+// capacity for cars, actually
 class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with
           amenity = charging_station
           and !capacity
-          and bicycle !~ yes|designated
-          and scooter !~ yes|designated
+          and !capacity:motorcar
           and motorcar != no
           and motor_vehicle != no
           and access !~ private|no
     """
     override val changesetComment = "Specify charging stations capacities"
     override val wikiLink = "Tag:amenity=charging_station"
-    override val icon = R.drawable.ic_quest_car_charger_capacity
+    override val icon = R.drawable.quest_charger_capacity
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR)
 
@@ -37,6 +37,6 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override fun createForm() = AddChargingStationCapacityForm()
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("capacity", answer.toString())
+        tags.updateWithCheckDate("capacity:motorcar", answer.toString())
     }
 }

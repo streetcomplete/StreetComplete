@@ -95,7 +95,7 @@ open class QLeverCountValueByCountryTask : DefaultTask() {
     }
 
     private fun queryQLeverTsv(query: String): List<String> {
-        val url = URL("https://qlever.cs.uni-freiburg.de/api/osm-planet?query=${URLEncoder.encode(query, "UTF-8")}&action=tsv_export")
+        val url = URL("https://qlever.dev/api/osm-planet?query=${URLEncoder.encode(query, "UTF-8")}&action=tsv_export")
         val connection = url.openConnection() as HttpURLConnection
         try {
             connection.setRequestProperty("User-Agent", "StreetComplete")

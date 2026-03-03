@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Hatton National Bank, BOC, Commercial Bank of Ceylon, Bank of Ceylon, Sampath Bank, People's Bank, Commercial Bank, HNB, NSB, Seylan Bank, BOC ATM, Union Bank, Peoples Bank, Nations Trust Bank, People’s Bank, Sampath ATM, HSBC, People‘s Bank, LOLC Finance, HNB ATM, Commercial Bank ATM]
-chargingStationOperators: [Spark EV]
+atmOperators: [Hatton National Bank, Commercial Bank of Ceylon, BOC, Bank of Ceylon, Sampath Bank, People's Bank, Commercial Bank, HNB, NSB, Seylan Bank, BOC ATM, Union Bank, Peoples Bank, People’s Bank, Nations Trust Bank, HSBC, Sampath ATM, People‘s Bank, LOLC Finance, HNB ATM, Commercial Bank ATM]
+chargingStationOperators: [Ather Energy, Spark EV]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasDailyAlternateSideParkingSign: true

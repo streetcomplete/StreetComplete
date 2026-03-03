@@ -4,6 +4,11 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.height
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.core.view.doOnLayout
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -18,23 +23,30 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.traffic_calming.applyTo
-import de.westnordost.streetcomplete.osm.traffic_calming.asItem
+import de.westnordost.streetcomplete.osm.traffic_calming.icon
+import de.westnordost.streetcomplete.osm.traffic_calming.title
 import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
-import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
+import de.westnordost.streetcomplete.overlays.AItemSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 class LaneNarrowingTrafficCalmingForm :
-    AImageSelectOverlayForm<LaneNarrowingTrafficCalming>(), IsMapPositionAware {
+    AItemSelectOverlayForm<LaneNarrowingTrafficCalming>(), IsMapPositionAware {
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
 
-    override val items get() = LaneNarrowingTrafficCalming.entries.map { it.asItem() }
+    override val items get() = LaneNarrowingTrafficCalming.entries
+
+    override val serializer = serializer<LaneNarrowingTrafficCalming>()
 
     private var originalLaneNarrowingTrafficCalming: LaneNarrowingTrafficCalming? = null
 
@@ -64,6 +76,22 @@ class LaneNarrowingTrafficCalmingForm :
         }
     )
 
+    @Composable override fun ItemContent(item: LaneNarrowingTrafficCalming) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+    }
+
+    @Composable
+    override fun LastPickedItemContent(item: LaneNarrowingTrafficCalming) {
+        Image(painterResource(item.icon), stringResource(item.title), Modifier.height(32.dp))
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        originalLaneNarrowingTrafficCalming = element?.tags?.let { parseNarrowingTrafficCalming(it) }
+        selectedItem.value = originalLaneNarrowingTrafficCalming
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -74,11 +102,8 @@ class LaneNarrowingTrafficCalmingForm :
             }
         }
 
-        setMarkerIcon(R.drawable.ic_quest_choker)
+        setMarkerIcon(R.drawable.quest_choker)
         setMarkerVisibility(false)
-
-        originalLaneNarrowingTrafficCalming = element?.tags?.let { parseNarrowingTrafficCalming(it) }
-        selectedItem = originalLaneNarrowingTrafficCalming?.asItem()
     }
 
     private fun initCreatingPointOnWay() {
@@ -115,18 +140,17 @@ class LaneNarrowingTrafficCalmingForm :
         super.isFormComplete() && (element != null || positionOnWay != null)
 
     override fun hasChanges(): Boolean =
-        selectedItem?.value != originalLaneNarrowingTrafficCalming
+        selectedItem.value != originalLaneNarrowingTrafficCalming
 
-    override fun onClickOk() {
-        val answer = selectedItem!!.value!!
+    override fun onClickOk(selectedItem: LaneNarrowingTrafficCalming) {
         val element = element
         val positionOnWay = positionOnWay
         if (element != null) {
             val tagChanges = StringMapChangesBuilder(element.tags)
-            answer.applyTo(tagChanges)
+            selectedItem.applyTo(tagChanges)
             applyEdit(UpdateElementTagsAction(element, tagChanges.create()))
         } else if (positionOnWay != null) {
-            val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { answer.applyTo(it) } ?: return
+            val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { selectedItem.applyTo(it) } ?: return
             val geometry = ElementPointGeometry(positionOnWay.position)
             applyEdit(action, geometry)
         }

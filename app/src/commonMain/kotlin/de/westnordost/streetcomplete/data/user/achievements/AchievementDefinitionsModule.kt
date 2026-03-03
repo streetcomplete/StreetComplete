@@ -56,6 +56,7 @@ import de.westnordost.streetcomplete.resources.link_brouter_description
 import de.westnordost.streetcomplete.resources.link_calendar_description
 import de.westnordost.streetcomplete.resources.link_city_roads
 import de.westnordost.streetcomplete.resources.link_city_roads_description
+import de.westnordost.streetcomplete.resources.link_co_maps
 import de.westnordost.streetcomplete.resources.link_cyclosm
 import de.westnordost.streetcomplete.resources.link_cyclosm_description
 import de.westnordost.streetcomplete.resources.link_disaster_ninja_description
@@ -111,7 +112,6 @@ import de.westnordost.streetcomplete.resources.link_openstreetmap
 import de.westnordost.streetcomplete.resources.link_openvegemap_description
 import de.westnordost.streetcomplete.resources.link_opnvkarte
 import de.westnordost.streetcomplete.resources.link_opnvkarte_description
-import de.westnordost.streetcomplete.resources.link_organic_maps
 import de.westnordost.streetcomplete.resources.link_organic_maps_description
 import de.westnordost.streetcomplete.resources.link_osm_buildings
 import de.westnordost.streetcomplete.resources.link_osm_buildings_description
@@ -336,11 +336,11 @@ val links = listOf(
         Res.string.link_osmapp_description
     ),
     Link(
-        "organic_maps",
-        "https://organicmaps.app/",
-        "Organic Maps",
+        "co_maps",
+        "https://comaps.app/",
+        "CoMaps",
         LinkCategory.MAPS,
-        Res.drawable.link_organic_maps,
+        Res.drawable.link_co_maps,
         Res.string.link_organic_maps_description
     ),
     Link(
@@ -680,8 +680,8 @@ val achievements = listOf(
                user to the community and other editors. Introducing editors should be delayed
                because users should not get sidetracked too early - best first show community
                intro links */
-            1 to links("weeklyosm"), // newspaper first
-            2 to links("calendar"),
+            1 to links("calendar"), // means to connect with others first
+            2 to links("weeklyosm"),
             3 to links("neis-one"), // who-is-around-me, leaderboards etc fits into "community intro"
             4 to links("ideditor"),
             5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
@@ -837,7 +837,7 @@ val achievements = listOf(
         mapOf(
             1 to links("openstreetbrowser"),
             2 to links("osmapp"),
-            3 to links("organic_maps"),
+            3 to links("co_maps"),
             4 to links("indoorequal"),
             5 to links("osmand"),
             6 to links("sunders"),

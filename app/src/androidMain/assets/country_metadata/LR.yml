@@ -9,4 +9,4 @@ noParkingSignStyle: mutcd
 noStoppingSignStyle: mutcd
 officialLanguages: [en]
 orchardProduces: [cacao, rubber, banana, coffee, coconut, orange, pineapple, tomato]
-speedUnits: [miles per hour, kilometers per hour]
+speedUnits: [kilometers per hour, miles per hour]

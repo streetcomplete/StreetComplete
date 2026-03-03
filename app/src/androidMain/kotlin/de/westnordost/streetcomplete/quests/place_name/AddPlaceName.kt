@@ -25,8 +25,8 @@ class AddPlaceName(
           or craft
           or amenity = recycling and recycling_type = centre
           or amenity = shelter and shelter_type = basic_hut
-          or tourism = information and information = office
-          or natural = cave_entrance and fee=yes
+          or tourism = information and information ~ office|visitor_centre
+          or natural = cave_entrance and fee = yes
           or """ +
 
         // The common list is shared by the opening hours quest and the wheelchair quest.
@@ -52,7 +52,7 @@ class AddPlaceName(
                 "coworking_space",                                                                  // work
 
                 // name & opening hours
-                "boat_rental",
+                "boat_rental", "vehicle_inspection", "motorcycle_rental", "crematorium",
 
                 // name & wheelchair
                 "theatre",                                        // culture
@@ -65,8 +65,8 @@ class AddPlaceName(
 
                 // name only
                 "studio",                                                                // culture
-                "events_venue", "exhibition_centre", "music_venue",                      // events
-                "prison", "fire_station",                                                // civic
+                "events_venue", "exhibition_centre", "music_venue", "funeral_hall",      // events
+                "prison", "fire_station", "bus_station", "refugee_site",                 // civic
                 "social_facility", "nursing_home", "childcare", "retirement_home", "social_centre", // social
                 "monastery",                                                             // religious
                 "kindergarten", "school", "college", "university", "research_institute", // education
@@ -89,6 +89,7 @@ class AddPlaceName(
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
+                "indoor_play",
 
                 // name & wheelchair
                 "sports_centre", "stadium",
@@ -97,14 +98,14 @@ class AddPlaceName(
                 "trampoline_park",
 
                 // name only
-                "dance", "nature_reserve", "marina", "horse_riding", "trampoline_park",
+                "dance", "nature_reserve", "marina", "horse_riding",
                 "bathing_place", "escape_game",
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"
             ),
             "military" to arrayOf(
-                "airfield", "barracks", "training_area"
+                "airfield", "barracks", "training_area", "base",
             ),
             "healthcare" to arrayOf(
                 // common
@@ -117,6 +118,15 @@ class AddPlaceName(
                 // name & wheelchair
                 "rehabilitation", "hospice", "midwife", "birthing_centre"
             ),
+            "historic" to arrayOf(
+                // name only
+                "castle", "church", "farm", "fort", "manor", "monument", "mosque", "temple",
+                "ship",
+            ),
+            "waterway" to arrayOf(
+                // name & opening hours
+                "fuel",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
         and !name and !brand and noname != yes and name:signed != no
@@ -124,7 +134,7 @@ class AddPlaceName(
 
     override val changesetComment = "Determine place names"
     override val wikiLink = "Key:name"
-    override val icon = R.drawable.ic_quest_label
+    override val icon = R.drawable.quest_label
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 

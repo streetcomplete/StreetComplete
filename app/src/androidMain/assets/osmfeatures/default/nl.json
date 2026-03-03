@@ -247,6 +247,9 @@
           "name": "Koffiehuis",
           "terms": "koffie,bistro"
         },
+        "amenity/cafe/teahouse": {
+          "name": "Theehuisje"
+        },
         "amenity/car_pooling": {
           "name": "Carpoolparking",
           "terms": "autodelen,carpoolen"
@@ -303,10 +306,6 @@
         "amenity/clock/sundial": {
           "name": "Zonnewijzer",
           "terms": "zonnewijzer,zonnetijd"
-        },
-        "amenity/college": {
-          "name": "Campus van beroepsschool",
-          "terms": "bso,buo,buso,vmbo,speciaal onderwijs,bijzonder onderwijs,onderwijs,middelbaar,secundair onderwijs"
         },
         "amenity/community_centre": {
           "name": "Buurthuis",
@@ -366,6 +365,9 @@
         "amenity/dentist": {
           "name": "Tandarts",
           "terms": "tandheelkundige,mond,tanden"
+        },
+        "amenity/device_charging_station": {
+          "name": "Apparaatoplader"
         },
         "amenity/dive_centre": {
           "name": "Duikcentrum",
@@ -506,10 +508,6 @@
         "amenity/driver_training": {
           "name": "Rijvaardigheidscentrum",
           "terms": "slipcursus,rijles,trainingscentrum,rijtraining"
-        },
-        "amenity/driving_school": {
-          "name": "Rijschool",
-          "terms": "autorijschool,autoschool,rijlessen,rijinstructeur"
         },
         "amenity/embassy": {
           "name": "Ambassade"
@@ -653,16 +651,9 @@
           "name": "Karaokehokje",
           "terms": "karaoke"
         },
-        "amenity/kindergarten": {
-          "name": "Gebied van Crèche/Kleuterschool"
-        },
         "amenity/kneipp_water_cure": {
           "name": "Kneipp-faciliteit",
           "terms": "kneipp,voetbad,hydrotherapie"
-        },
-        "amenity/language_school": {
-          "name": "Taalschool",
-          "terms": "taal,vertalen,school"
         },
         "amenity/lavoir": {
           "name": "Openbare wasplaats",
@@ -718,10 +709,6 @@
         "amenity/motorcycle_rental": {
           "name": "Motorfietsverhuur",
           "terms": "motorfiets,moto,verhuur,verhuurder"
-        },
-        "amenity/music_school": {
-          "name": "Muziekschool",
-          "terms": "muziekacademie,conservatorium"
         },
         "amenity/nightclub": {
           "name": "Nachtclub",
@@ -855,10 +842,6 @@
         "amenity/post_office": {
           "name": "Postkantoor",
           "terms": "postbus,brievenbus,bpost,posterijen,postnl"
-        },
-        "amenity/prep_school": {
-          "name": "Studiebegeleiding",
-          "terms": "voorbereidingsschool,huiswerk,begeleiding"
         },
         "amenity/prison": {
           "name": "Gevangenisgebied",
@@ -1022,10 +1005,6 @@
           "name": "Kampeerauto-toilet-afvoer",
           "terms": "kampeerauto,beerput,camper,kampeerwagen,mobilhome,zwerfwagen,motorhome,uitwerpselen,urine,toilet"
         },
-        "amenity/school": {
-          "name": "School",
-          "terms": "school,onderwijs,secundair onderwijs,lager onderwijs,basisschool,middelbaar,voortgezet onderwijs"
-        },
         "amenity/shelter": {
           "name": "Beschutting",
           "terms": "afdak,schuilplaats,bescherming,beschutting,wachthuisje,wachthokje,bushokje,buskotje"
@@ -1181,10 +1160,6 @@
         "amenity/trolley_bay": {
           "name": "Winkelwagenstalling",
           "terms": "opstelplaats,winkelwagen,karretjes,winkelkar,overkapping,terugbrengen"
-        },
-        "amenity/university": {
-          "name": "Campus van universiteit of hogeschool",
-          "terms": "universiteit,hogeschool,onderwijs,hoger onderwijs"
         },
         "amenity/vacuum_cleaner": {
           "name": "Stofzuiger",
@@ -2106,6 +2081,33 @@
         "disused/shop": {
           "name": "Ongebruikte winkel"
         },
+        "education/dancing_school": {
+          "name": "Dansschool"
+        },
+        "education/driving_school": {
+          "name": "Rijschool"
+        },
+        "education/kindergarten": {
+          "name": "Kleuterschool"
+        },
+        "education/language_school": {
+          "name": "Taalschool"
+        },
+        "education/music_school": {
+          "name": "Muziekschool"
+        },
+        "education/prep_school": {
+          "name": "Bijlesinstituut"
+        },
+        "education/school": {
+          "name": "Schoolgebied"
+        },
+        "education/university": {
+          "name": "Gebied van universiteit of hogeschool"
+        },
+        "education/yes": {
+          "name": "Educatieve instelling (ongespecificeerd)"
+        },
         "embankment": {
           "name": "Dijk"
         },
@@ -2123,12 +2125,6 @@
         "emergency/defibrillator": {
           "name": "Defibrillator",
           "terms": "aed,hartritme,groene doos,externe defibrillator,schok,elektrische schok,reanimeren"
-        },
-        "emergency/designated": {
-          "name": "Toegang voor hulpdiensten: geadviseerd"
-        },
-        "emergency/destination": {
-          "name": "Toegang voor hulpdiensten: bestemmingsverkeer"
         },
         "emergency/disaster_response": {
           "name": "Kazerne van noodhulpeenheden",
@@ -2183,18 +2179,9 @@
           "name": "Bergredding",
           "terms": "reddingsdienst,redding,bergredders"
         },
-        "emergency/no": {
-          "name": "Toegang voor hulpdiensten: nee"
-        },
-        "emergency/official": {
-          "name": "Toegang voor hulpdiensten: officiële voorkeursweg"
-        },
         "emergency/phone": {
           "name": "Praatpaal",
           "terms": "noodtelefoon"
-        },
-        "emergency/private": {
-          "name": "Toegang voor hulpdiensten: privé"
         },
         "emergency/siren": {
           "name": "Sirene",
@@ -2211,9 +2198,6 @@
         "emergency/water_tank": {
           "name": "Noodwatertank",
           "terms": "watertank,wateropslag,noodwateropslag,reservoir,noodreservoir,brandweerreservoir,brandweertank"
-        },
-        "emergency/yes": {
-          "name": "Toegang voor hulpdiensten: ja"
         },
         "entrance": {
           "name": "Ingang/Uitgang",
@@ -2418,6 +2402,9 @@
           "name": "Oversteekplaats",
           "terms": "kruispunt,oversteken"
         },
+        "highway/crossing/informal": {
+          "name": "Informele oversteekplaats"
+        },
         "highway/crossing/traffic_signals": {
           "name": "Oversteekplaats met voetgangersverkeerslichten",
           "terms": "verkeerslichten,zebra,oversteekplaats,zebrapad,stoplicht"
@@ -2546,10 +2533,6 @@
         "highway/motorway": {
           "name": "Autosnelweg",
           "terms": "autostrade,snelweg"
-        },
-        "highway/motorway_junction": {
-          "name": "Op-/Afrit van autosnelweg",
-          "terms": "afslag,afrit,kruispunt,autostrade,snelweg,autosnelweg"
         },
         "highway/motorway_link": {
           "name": "Verbindingsweg van autosnelweg",
@@ -2742,6 +2725,9 @@
           "name": "Geschiedskundige plaats",
           "terms": "historische site,geschiedkundige site,historische plaats"
         },
+        "historic/aircraft": {
+          "name": "Historisch luchtvaartuig"
+        },
         "historic/archaeological_site": {
           "name": "Archeologische opgraving",
           "terms": "archeologische site,archeologische plaats"
@@ -2902,10 +2888,6 @@
         "landuse/construction": {
           "name": "Bouwterrein",
           "terms": "werfzone,werf"
-        },
-        "landuse/education": {
-          "name": "Gebied van een onderwijsinstelling",
-          "terms": "campus,schoolgebied,kindcentrum,educatie"
         },
         "landuse/farm": {
           "name": "Landbouwgrond"
@@ -3100,10 +3082,6 @@
         "leisure/dance": {
           "name": "Danszaal",
           "terms": "ballroom,jive,swing,tango,wals"
-        },
-        "leisure/dancing_school": {
-          "name": "Dansschool",
-          "terms": "dansonderwijs,dansconservatorium,conservatorium"
         },
         "leisure/disc_golf_course": {
           "name": "Discgolfparcours",
@@ -3791,10 +3769,6 @@
         },
         "man_made/telescope/radio": {
           "name": "Radiotelescoop"
-        },
-        "man_made/torii": {
-          "name": "Torii",
-          "terms": "japanse poort,vogelzitstok,shintō schrijn"
         },
         "man_made/tower": {
           "name": "Toren"
@@ -4534,9 +4508,6 @@
         },
         "playground/tunnel_tube": {
           "name": "Speeltunnel"
-        },
-        "playground/water": {
-          "name": "Speelwaterpomp/schroef"
         },
         "playground/zipwire": {
           "name": "Tokkelbaan",
@@ -5844,10 +5815,6 @@
           "name": "Kaart",
           "terms": "plan,plattegrond,informatie"
         },
-        "tourism/information/office": {
-          "name": "Toerismekantoor",
-          "terms": "bezoekerscentrum"
-        },
         "tourism/information/route_marker": {
           "name": "Routemarkering",
           "terms": "routebordje"
@@ -6126,6 +6093,9 @@
         "type/site": {
           "name": "Site",
           "terms": "terrein"
+        },
+        "type/site/climbing/area": {
+          "name": "Klimgebied"
         },
         "type/waterway": {
           "name": "Waterloop",

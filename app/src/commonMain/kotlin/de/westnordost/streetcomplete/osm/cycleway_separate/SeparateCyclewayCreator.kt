@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.osm.cycleway_separate
 
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.any
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.sidewalk.KNOWN_SIDEWALK_KEYS
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
-import de.westnordost.streetcomplete.osm.sidewalk.any
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 

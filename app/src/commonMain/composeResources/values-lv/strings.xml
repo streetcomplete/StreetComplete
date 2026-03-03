@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">Atstāt piezīmi</string>
     <string name="quest_leave_new_note_no">Paslēpt</string>
     <string name="quest_streetName_title">Kāds ir šīs ielas nosaukums?</string>
-    <string name="quest_streetName_description">kā rakstīts uz ielas zīmes, saīsinājumus var izvērst:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Reizēm zīme ar ielas nosaukumu ir atrodama tikai vienā ielas galā. Ne vienmēr ielām, kuras atrodas blakus lielākām ielām, ir atsevišķas zīmes ar ielas nosaukumu. Lielākoties jebkurai ielai, kurai ir pievienotas ēkas, ir nosaukums.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Ja nosaukumu var uzrakstīt bez saīsinājuma, to vajadzētu izvērts. Daudzi biežāk izmantotie saīsinājumi jau rakstot tiek izvērsti, bet ne visi.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Nav saīsinājuma</string>
     <string name="quest_openingHours_start_time">atvēršanas laiks</string>
     <string name="quest_openingHours_end_time">slēgšanas laiks</string>
     <string name="quest_openingHours_add_months">Pievienot mēnešus</string>
@@ -57,12 +54,10 @@
     <string name="version_banned_message">Šī StreetComplete versija ir pārāk veca. Lūdzu, atjauniniet to!</string>
     <string name="no_gps_no_quests">Lai uzdevumus pārlūkotu automātiski, ieslēdziet atrašanās vietu</string>
     <string name="later">Vēlāk</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Tas vienkārši savieno divus ceļus</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Kaut kas cits (atstāt piezīmi)</string>
     <string name="about_title_privacy_statement">Paziņojums par konfidencialitāti</string>
     <string name="quest_openingHours_public_holidays">Svētku dienas</string>
     <string name="quest_openingHours_public_holidays_short">SD</string>
-    <string name="quest_openingHours_open_end">līdz pēdējam</string>
     <string name="quest_openingHours_answer_247">Atvērts diennakti</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Mainās atkarībā no mēneša…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Nav regulāri atvēršanas laiki...</string>
@@ -196,7 +191,6 @@ Ja nav zīmes, kas iezīmētajā ceļa daļā norāda ātruma ierobežojumu, tie
     <string name="quest_sport_roller_skating">Skrituļošana</string>
     <string name="quest_wheelchairAccess_limited_description_business">“Daļēji” nozīmē, ka piekļuvi vietai nebloķē pakāpieni, kas būtu augstāki par potīti un ka vairums istabu ir pieejami ar ratiņkrēsliem.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">“Daļēji” nozīmē, ka piekļuvi vietai nebloķē pakāpieni, kas būtu augstāki par potīti.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Nosaukumā %1$s ir saīsinājums?</string>
     <string name="quest_recycling_type_title">Kāda veida šķirošanas iestāde/vieta šī ir?</string>
     <string name="recycling_centre">Šķirošanas centrs</string>
     <string name="overground_recycling_container">Konteineris</string>
@@ -321,12 +315,7 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_housenumber_conscription_number">Konskripcijas numurs</string>
     <string name="quest_housenumber_street_number_optional">Orientācijas skaitlis (neobligāts)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Veloceliņš arī otrā pusē…</string>
-    <string name="quest_openingHours_emptyAnswer">Jums jāapraksta, kas ir rakstīts uz zīmes. Ja zīmes nav, darba laiks ir jāprasa iekšā.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">nav, bet velosipēdisti var izmantot ceļu abos virzienos</string>
-    <string name="quest_streetName_answer_noName_question">Kāpēc tam nav nosaukuma?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">Tas ir iebraucamais vai stāvietas ceļš</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">Tas ir lauksaimniecības vai meža ceļš</string>
-    <string name="quest_streetName_answer_noName_noname">Neviens no iepriekš minētajiem, tam vienkārši nav nosaukuma</string>
     <string name="quest_wheelchairAccess_description_toilets">Šādu ratiņkrēsla zīmi varētu redzēt, ja labierīcības ir pieejamas. “Daļēji” nozīmē, ka ar ratiņkrēslu labierīcībās var iekļūt un tās izmantot, bet tajās nav margu vai pielāgotu izlietņu.</string>
     <string name="map_btn_create_note">Izveidot jaunu piezīmi</string>
     <string name="create_new_note_unprecise">Tuviniet vēl vairāk, lai izveidotu piezīmi</string>
@@ -474,7 +463,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="privacy_html_image_upload2">&lt;p&gt;Fotogrāfijas, kuras jūs pievienojat piezīmēm, tiek augšupielādētas uz manu serveri un tiek dzēstas dažas dienas pēc tam, kad piezīme ir atrisināta. Pirms augšupielādēšanas fotogrāfijas metadati tiek izdzēsti.&lt;/p&gt;</string>
     <string name="action_deselect_all">Atlasīt neko</string>
     <string name="quest_buildingType_retail_description">tai skaitā ēkas restorāniem, kafejnīcām, veikaliem…</string>
-    <string name="quest_openingHours_timeSelect_next">Nākamais</string>
     <string name="quest_tracktype_title">Kāda ir šī celiņa virsmas cietība?</string>
     <string name="quest_tracktype_grade1">Noklāts</string>
     <string name="quest_tracktype_grade4">Pārsvarā mīksts</string>
@@ -500,7 +488,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="action_open_location">Atvērt vietu citā lietotnē</string>
     <string name="map_application_missing">Nav instalētas citas karšu lietotnes</string>
     <string name="label_housenumber">mājas numurs</string>
-    <string name="label_blocknumber">kvartāla numurs</string>
     <string name="quest_busStopShelter_covered">Visa pietura ir nosegta</string>
     <string name="quest_ferry_pedestrian_title">Vai šajā prāmju maršrutā pārvadā gājējus?</string>
     <string name="quest_ferry_motor_vehicle_title">Vai šajā prāmju maršrutā pārvadā autotransportu?</string>
@@ -533,7 +520,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_recycling_type_glass_bottles">Stikla pudeles un burkas</string>
     <string name="quest_recycling_type_glass_bottles_short">Pudeles un burkas</string>
     <string name="quest_recycling_type_paper">Papīru</string>
-    <string name="quest_recycling_type_plastic_generic">Plastmasu</string>
     <string name="quest_recycling_type_plastic">Jebkāda veida plastmasu</string>
     <string name="quest_recycling_type_shoes">Kurpes</string>
     <string name="quest_recycling_type_electric_appliances">Elektroierīces</string>
@@ -706,11 +692,10 @@ līmeņi</string>
     <string name="resurvey_intervals_default">Noklusējuma</string>
     <string name="resurvey_intervals_more_often">Prasīt biežāk</string>
     <string name="about_title_translate">Palīdzi tulkot šo lietotni</string>
-    <string name="about_description_translate">%1$s valodai ir iztulkoti %2$d%%</string>
+    <string name="about_description_translate">%1$s valodai ir iztulkoti %2$d%</string>
     <string name="quest_oneway2_title">Vai šī ir vienvirziena iela? Kurā virzienā?</string>
     <string name="quest_oneway2_dir">Vienvirziena šajā virzienā</string>
     <string name="quest_oneway2_no_oneway">Nav vienvirziena</string>
-    <string name="quest_maxweight_select_sign">Izvēlieties zīmi</string>
     <string name="quest_steps_incline_title">Šīm kāpnēm, kurš virziens ir augšup?</string>
     <string name="quest_steps_incline_up">Šajā virzienā iet augšup</string>
     <string name="quest_step_count_title">Cik šeit ir soļu?</string>
@@ -752,7 +737,6 @@ līmeņi</string>
     <string name="quest_charging_station_capacity_title">Cik automašīnas šeit var vienlaicīgi uzlādēt?</string>
     <string name="link_disaster_ninja_description">Karte, kas rāda nesenās dabas katastrofas, kas var noderēt humanitārajiem kartētājiem. Rāda arī daudz interesantas statistikas par to, cik labi kartēta un aktuāla ir informācija par vietām.</string>
     <string name="quest_lanes_title">Cik daudz automašīnu joslas ir šim ceļam?</string>
-    <string name="quest_lanes_answer_lanes">Iezīmētas joslas</string>
     <string name="quest_lanes_answer_noLanes">Nav iezīmētu joslu</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Ir divvirzienu kreisā pagrieziena josla</string>
     <string name="quest_address_answer_no_housenumber_message2b">Vai tas ir pareizi?</string>
@@ -764,8 +748,6 @@ līmeņi</string>
     <string name="quest_kerb_height_lowered">Nedaudz virs ceļa virsmas</string>
     <string name="quest_kerb_height_raised">Augsta apmale</string>
     <string name="quest_kerb_height_lowered_ramp">Apmales rampa</string>
-    <string name="quest_lanes_answer_lanes_description2">Norādiet kopējo iezīmēto joslu skaitu (abos virzienos), ko var izmantot autotransports. Velojoslas un stāvvietu joslas neskaitās.
-Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Norādiet kopējo iezīmēto joslu skaitu, ko satiksmē var izmantot autotransports. Velo un stāvvietu joslas neskaitās.
 Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi.</string>
     <string name="quest_surface_value_rock">Akmens</string>
@@ -780,7 +762,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi.</string
     <string name="quest_shop_gone_replaced_answer">Ir…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Ierakstiet šeit, kāda veida vieta</string>
     <string name="quest_shop_vacant_type_title">Šis veikals ir bijis vakants. Kas šeit ir tagad?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Katrai pusei ir cits joslu skaits</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Šis uzdevumu veids pēc noklusējuma ir izslēgts, jo dažos reģionos tas nav noderīgs un jums visdrīzāk būtu jāapmeklē vieta, lai varētu izpildīt uz šāda veida uzdevumus.</string>
     <string name="quest_dietType_explanation_kosher">Košera ēdienus jāpagatavo pēc noteiktiem noteikumiem; kašruta sertifikācijas aģentūras apzīmē atbilstošus produktus.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nav ne velojoslas, ne veloceliņa</string>
@@ -801,7 +782,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi.</string
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Skotijas kronis</string>
     <string name="quest_buildingType_fire_station">Ugunsdzēsēju depo ēka</string>
     <string name="quest_recycling_type_beverage_cartons">Tikai dzērienu kartona iepakojumi</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Tikai plastmasas pudeles un kartona iepakojumi</string>
     <string name="team_mode">Pāriet uz komandas režīmu</string>
     <string name="team_mode_exit">Iziet ko komandas režīma</string>
     <string name="team_mode_description">Kad grupa kopā kartē vienu un to pašu apgabalu, jūs varat sadalīt uzdevumus starp komandas biedriem.</string>
@@ -1152,13 +1132,8 @@ Dariet to arī otrai pusei, ja tāda ir.</string>
     <string name="quest_camp_drinking_water_title">Vai šeit ir brīvi pieejams dzeramais ūdens?</string>
     <string name="quest_camp_shower_title">Vai šeit ir dušas?</string>
     <string name="quest_camp_power_supply_title">Vai klientiem šeit ir iespēja uzlādēt tālruņus, klēpjdatorus utt.?</string>
-    <string name="quest_camp_type_title">Kas var šeit apmesties?</string>
-    <string name="quest_camp_type_tents_and_caravans">Gan teltis gan treileri, motormājas, ...</string>
-    <string name="quest_camp_type_caravans_only">Tikai motormājas, treileri, ...</string>
-    <string name="quest_camp_type_tents_only">Tikai teltis</string>
     <string name="quest_camp_type_backcountry">Nomaļš kempings (nav labiekārtots)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Šis diametrs izskatās neticams, tas parasti ir starp %1$d un %2$d.</string>
-    <string name="quest_recycling_type_pet">Tikai PET</string>
     <string name="street_parking_street_width">Ielas platums: %1$s</string>
     <string name="overlay_street_parking">Stāvvieta pie ielas</string>
     <string name="link_ohsomehex_description">Izpētiet OSM datus dažādos mērogos — no lielās ainas līdz atsevišķiem objektiem telpā un laikā</string>
@@ -1247,9 +1222,6 @@ Pārvietot tagad?</string>
     <string name="street_parking_staggered_half_on_kerb">Daļēji uz ielas pārmijus dažādās pusēs</string>
     <string name="quest_traffic_signals_sound_description">Padoms: skatieties, vai ir skaļruņi. Ne visus skaņas signālus var aktivizēt ar pogu.</string>
     <string name="quest_presets_duplicate">Dublēt</string>
-    <string name="label_block">kvartāls</string>
-    <string name="quest_address_answer_block">Ir kvartālā…</string>
-    <string name="quest_address_answer_no_block">Nav kvartālā…</string>
     <string name="quest_surface_value_mud">Pastāvīgi dubļi</string>
     <string name="quest_wheelchairAccessPat_noToilet">Šeit nav labierīcību</string>
     <string name="unknown_surface_title">Cita veida virsma</string>
@@ -1426,4 +1398,21 @@ Stāvs tiek uzskatīts par jumta stāvu, ja tā logi atrodas jumtā. Attiecīgi,
     <string name="pedestrian_zone_no_sign">Nav zīmes par riteņbraukšanu</string>
     <string name="team_mode_description_overlay_hint">Ja izmantojat pārklājumus, katram no jums vajadzētu izmantot citu, jo tikai uzdevumi tiek sadalīti.</string>
     <string name="quest_dietType_glutenfree_name_title">Vai šeit piedāvā bezglutēna produktus?</string>
+    <string name="quest_construction_minor_title">Vai ceļu remontdarbi šeit ir pabeigti?</string>
+    <string name="map_attribution">MTB grūtības pakāpe</string>
+    <string name="pref_title_zoom_buttons">Rādīt kartes tālummaiņas pogas</string>
+    <string name="overlay_mtb_scale">MTB grūtības pakāpe</string>
+    <string name="pref_overlays_reset">Atiestatīt pārklājumu iespējošanu uz noklusējumu?</string>
+    <string name="overlay">Pārklājums</string>
+    <string name="compass">Kompass</string>
+    <string name="quest_tracktype_grade3">Vienmērīgs ciets un mīksts zemes ceļš.</string>
+    <string name="or">vai</string>
+    <string name="action_copy">Kopēt</string>
+    <string name="quest_shelter_capacity_title">Cik cilvēku šeit var nakšņot?</string>
+    <string name="quest_openingHours_delete">Dzēst darba laiku</string>
+    <string name="quest_streetName_add_language">Pievienot ielas nosaukumu izvēlētajā valodā</string>
+    <string name="ok">Labi</string>
+    <string name="cancel">Atcelt</string>
+    <string name="quest_lane_markings_title">Vai šim ceļam ir joslu marķējums?</string>
+    <string name="quest_level_thing_title">Kurā stāvā šī lieta atrodas?</string>
 </resources>

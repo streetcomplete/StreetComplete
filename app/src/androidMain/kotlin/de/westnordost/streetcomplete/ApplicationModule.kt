@@ -30,7 +30,8 @@ val appModule = module {
         }
         install(ContentEncoding) {
             gzip()
-            deflate()
+            // deflate is broken in KTOR, see https://youtrack.jetbrains.com/issue/KTOR-6999/Deflate-ContentEncoder-incorrectly-uses-raw-DEFLATE
+            // deflate()
             identity()
         }
     } }

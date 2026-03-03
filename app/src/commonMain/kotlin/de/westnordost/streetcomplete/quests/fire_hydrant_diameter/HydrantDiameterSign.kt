@@ -30,7 +30,7 @@ import de.westnordost.streetcomplete.ui.theme.TrafficSignColor.Blue
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor.Black
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** A box of fixed size showing a hydrant diameter sign in the background, places its content at the
  *  correct position */

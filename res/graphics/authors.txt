@@ -272,6 +272,7 @@ italian police type/
 quest/
     access_point.svg
     apple.svg
+    artwork.svg
     baby.svg                         modified from Twemoji: U+1F6BC
     barrier.svg                      Tobias Zwick (CC-BY-SA 4.0) (based on road_construction.svg)
     barrier_on_path.svg              Tobias Zwick (CC-BY-SA 4.0), adding road line by Mateusz Konieczny
@@ -315,14 +316,16 @@ quest/
     bus_stop_lit.svg                 parts taken from Twemoji: U+1F68D
     bus_stop_shelter.svg             parts taken from Twemoji: U+1F68D
     bus_stop_name.svg                parts taken from Twemoji: U+1F68D
+    cabin.svg
     calendar.svg                     Flo Edelmann (CC0)
     camp_power.svg
     car.svg                          modified from Twemoji: U+1F698
     car_bumpy.svg                    modified from Twemoji: U+1F698
     car_wash.svg                     modified from Twemoji: U+1F698
     car_air_compressor.svg
-    car_charger.svg                  parts taken from Twemoji: U+1F698 and U+1F50C
-    car_charger_capacity.svg         parts taken from Twemoji: U+1F50C
+    charger_operator.svg             parts taken from Twemoji: U+1FAF4
+    car_charger_capacity.svg         parts taken from Twemoji: U+1F698 and U+1F50C
+    charger.svg                      parts taken from Twemoji: U+1F50C
     caravan.svg
     card.svg
     cash.svg
@@ -354,10 +357,12 @@ quest/
     kerb_type.svg
     kosher.svg                       Mateusz Konieczny (CC0, if even qualifies for copyright)
     label.svg
+    label_thing.svg
     lantern.svg
     laundry.svg
     leaf.svg
     level.svg
+    level_thing.svg
     mail.svg
     mail_ref.svg
     max_width.svg
@@ -400,6 +405,7 @@ quest/
     pitch_lantern.svg
     pitch_surface.svg
     playground.svg
+    poo.svg                          modified from Twemoji: U+1f4a9
     power.svg
     quest.svg
     railway.svg
@@ -440,6 +446,7 @@ quest/
     surveillance.svg
     surveillance_camera.svg
     tent.svg
+    thermometer.svg
     toilets.svg
     toilet_fee.svg
     toilets_wheelchair.svg
@@ -509,7 +516,6 @@ recycling/
     plastic.svg
     plastic_bottles.svg
     plastic_packaging.svg
-    plastic_bottles_and_cartons.svg
     scrap_metal.svg
     shoes.svg                        modified from EmojiOne 2: U+1F45F
     small_electrical_appliances.svg  EmojiOne 2: U+1F50C
@@ -598,7 +604,7 @@ smoothness/
     scooter.svg                      Twemoji: U+1F6F4
     skateboard.svg                   Twemoji: U+1F6F9
     suv.svg                          modified from Twemoji: U+1F699
-    tractor.svg                      Twemoji: U+1F69C
+    tractor.svg
 
 speech bubbles/
     speech_bubble_left.9.svg

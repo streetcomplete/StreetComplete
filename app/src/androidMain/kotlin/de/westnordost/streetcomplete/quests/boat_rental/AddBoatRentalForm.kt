@@ -1,23 +1,24 @@
 package de.westnordost.streetcomplete.quests.boat_rental
 
-import android.os.Bundle
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddBoatRentalForm : AImageListQuestForm<BoatRental, List<BoatRental>>() {
+class AddBoatRentalForm : AItemsSelectQuestForm<BoatRental, Set<BoatRental>>() {
 
-    override val items = BoatRental.entries.map { it.asItem() }
+    override val items = BoatRental.entries
     override val itemsPerRow = 3
-
-    override val maxSelectableItems = -1
     override val moveFavoritesToFront = false
+    override val serializer = serializer<BoatRental>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
+    @Composable override fun ItemContent(item: BoatRental) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<BoatRental>) {
+    override fun onClickOk(selectedItems: Set<BoatRental>) {
         applyAnswer(selectedItems)
     }
 }

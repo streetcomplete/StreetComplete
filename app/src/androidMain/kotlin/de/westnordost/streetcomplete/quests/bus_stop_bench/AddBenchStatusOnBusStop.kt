@@ -17,6 +17,7 @@ class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
         (
           public_transport = platform
           or (highway = bus_stop and public_transport != stop_position)
+          or highway = hitchhiking
         )
         and physically_present != no and naptan:BusStopType != HAR
         and access !~ no|private
@@ -24,7 +25,7 @@ class AddBenchStatusOnBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Specify whether public transport stops have benches"
     override val wikiLink = "Key:bench"
-    override val icon = R.drawable.ic_quest_bench_public_transport
+    override val icon = R.drawable.quest_bench_public_transport
     override val achievements = listOf(PEDESTRIAN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopBench_title2

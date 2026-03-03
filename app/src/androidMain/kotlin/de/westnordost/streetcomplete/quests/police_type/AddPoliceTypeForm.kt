@@ -1,20 +1,23 @@
 package de.westnordost.streetcomplete.quests.police_type
 
-import android.os.Bundle
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddPoliceTypeForm : AImageListQuestForm<PoliceType, PoliceType>() {
+class AddPoliceTypeForm : AItemSelectQuestForm<PoliceType, PoliceType>() {
 
-    override val items = PoliceType.entries.map { it.asItem() }
+    override val items = PoliceType.entries
     override val itemsPerRow = 3
+    override val serializer = serializer<PoliceType>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
+    @Composable override fun ItemContent(item: PoliceType) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<PoliceType>) {
-        applyAnswer(selectedItems.single())
+    override fun onClickOk(selectedItem: PoliceType) {
+        applyAnswer(selectedItem)
     }
 }

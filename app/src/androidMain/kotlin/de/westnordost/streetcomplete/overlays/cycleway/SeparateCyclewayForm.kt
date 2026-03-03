@@ -1,79 +1,56 @@
 package de.westnordost.streetcomplete.overlays.cycleway
 
 import android.os.Bundle
-import android.view.View
-import de.westnordost.streetcomplete.R
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.height
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.applyTo
-import de.westnordost.streetcomplete.osm.cycleway_separate.asItem
+import de.westnordost.streetcomplete.osm.cycleway_separate.getIcon
 import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
-import de.westnordost.streetcomplete.overlays.AImageSelectOverlayForm
-import de.westnordost.streetcomplete.util.ktx.valueOfOrNull
-import de.westnordost.streetcomplete.view.image_select.DisplayItem
-import org.koin.android.ext.android.inject
+import de.westnordost.streetcomplete.osm.cycleway_separate.title
+import de.westnordost.streetcomplete.overlays.AItemSelectOverlayForm
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class SeparateCyclewayForm : AImageSelectOverlayForm<SeparateCycleway>() {
+class SeparateCyclewayForm : AItemSelectOverlayForm<SeparateCycleway>() {
 
-    override val items: List<DisplayItem<SeparateCycleway>> get() =
-        SeparateCycleway.entries.map {
-            it.asItem(countryInfo.isLeftHandTraffic)
-        }
-
-    private val prefs: Preferences by inject()
-
-    override val lastPickedItem: DisplayItem<SeparateCycleway>? get() =
-        prefs.getLastPicked(this::class.simpleName!!)
-            .map { valueOfOrNull<SeparateCycleway>(it)?.asItem(countryInfo.isLeftHandTraffic) }
-            .firstOrNull()
-
+    override val items = SeparateCycleway.entries
     override val itemsPerRow = 1
-    override val cellLayoutId = R.layout.cell_labeled_icon_select_right
+    override val serializer = serializer<SeparateCycleway>()
+
+    @Composable override fun ItemContent(item: SeparateCycleway) {
+        ImageWithDescription(
+            painter = painterResource(item.getIcon(countryInfo.isLeftHandTraffic)),
+            title = null,
+            description = stringResource(item.title)
+        )
+    }
+
+    @Composable override fun LastPickedItemContent(item: SeparateCycleway) {
+        val icon = item.getIcon(countryInfo.isLeftHandTraffic)
+        Image(painterResource(icon), stringResource(item.title), Modifier.height(32.dp))
+    }
 
     private var originalCycleway: SeparateCycleway? = null
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         originalCycleway = parseSeparateCycleway(element!!.tags)
-
-        /*
-            Not displaying bicycle=yes and bicycle=no on footways and treating it the same because
-            whether riding a bike on a footway is allowed by default (without requiring signs) or
-            only under certain conditions (e.g. certain minimum width of sidewalk) is very much
-            dependent on the country or state one is in.
-
-            Hence, it is not verifiable well for the on-site surveyor: If there is no sign that
-            specifically allows or forbids cycling on a footway, the user is left with his loose
-            (mis)understanding of the local legislation to decide. After all, bicycle=yes/no
-            is (usually) nothing physical, but merely describes what is legal. It is in that sense
-            then not information surveyable on-the-ground, unless specifically signed.
-            bicycle=yes/no does however not make a statement about from where this info is derived.
-
-            So, from an on-site surveyor point of view, it is always better to record what is signed,
-            instead of what follows from that signage.
-
-            Signage, however, is out of scope of this overlay because while the physical presence of
-            a cycleway can be validated at a glance, the presence of a sign requires to walk a bit up
-            or down the street in order to find (or not find) a sign.
-            More importantly, at the time of writing, there is no way to tag the information that a
-            bicycle=* access restriction is derived from the presence of a sign. This however is a
-            prerequisite for it being  displayed as a selectable option due to the reasons stated
-            above.
-         */
-        if (savedInstanceState == null) {
-            selectedItem = originalCycleway?.asItem(countryInfo.isLeftHandTraffic)
-        }
+        selectedItem.value = originalCycleway
     }
 
-    override fun hasChanges(): Boolean =
-        selectedItem?.value != originalCycleway
+    override fun hasChanges(): Boolean = selectedItem.value != originalCycleway
 
-    override fun onClickOk() {
-        prefs.addLastPicked(this::class.simpleName!!, selectedItem!!.value!!.name)
+    override fun onClickOk(selectedItem: SeparateCycleway) {
         val tagChanges = StringMapChangesBuilder(element!!.tags)
-        selectedItem!!.value!!.applyTo(tagChanges)
+        selectedItem.applyTo(tagChanges)
         applyEdit(UpdateElementTagsAction(element!!, tagChanges.create()))
     }
 }

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 
-class AddSport : OsmFilterQuestType<List<Sport>>(), AndroidQuest {
+class AddSport : OsmFilterQuestType<Set<Sport>>(), AndroidQuest {
 
     override val elementFilter = """
         ways with
@@ -18,14 +18,14 @@ class AddSport : OsmFilterQuestType<List<Sport>>(), AndroidQuest {
     // treat ambiguous values as if it is not set
     override val changesetComment = "Specify sport played on pitches"
     override val wikiLink = "Key:sport"
-    override val icon = R.drawable.ic_quest_sport
+    override val icon = R.drawable.quest_sport
     override val achievements = listOf(OUTDOORS)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_sport_title
 
     override fun createForm() = AddSportForm()
 
-    override fun applyAnswerTo(answer: List<Sport>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: Set<Sport>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["sport"] = answer.joinToString(";") { it.osmValue }
     }
 }

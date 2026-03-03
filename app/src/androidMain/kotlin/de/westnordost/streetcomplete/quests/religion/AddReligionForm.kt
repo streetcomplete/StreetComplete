@@ -1,20 +1,25 @@
 package de.westnordost.streetcomplete.quests.religion
 
-import android.os.Bundle
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.religion.Religion.MULTIFAITH
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
+class AddReligionForm : AItemSelectQuestForm<Religion, Religion>() {
+
+    override val serializer = serializer<Religion>()
+
+    override val items get() = (Religion.entries - MULTIFAITH)
+        .sortedBy { religionPosition(it.osmValue) }
 
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
     )
-
-    override val items get() = Religion.entries
-        .mapNotNull { it.asItem() }
-        .sortedBy { religionPosition(it.value!!.osmValue) }
 
     fun religionPosition(osmValue: String): Int {
         val position = countryInfo.popularReligions.indexOf(osmValue)
@@ -25,12 +30,11 @@ class AddReligionForm : AImageListQuestForm<Religion, Religion>() {
         return position
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        imageSelector.cellLayoutId = R.layout.cell_icon_select_with_label_below
+    @Composable override fun ItemContent(item: Religion) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<Religion>) {
-        applyAnswer(selectedItems.single())
+    override fun onClickOk(selectedItem: Religion) {
+        applyAnswer(selectedItem)
     }
 }

@@ -146,6 +146,7 @@ private val IS_THING_EXPRESSION by lazy {
             // "bus_stop", handled in filter below to skip some common bad tagging
             "cyclist_waiting_aid",
             "emergency_access_point",
+            "hitchhiking",
             "milestone",
             // "speed_camera", - while not directly a sign, it definitely belongs into the traffic
             //                   signals/controls category
@@ -161,6 +162,7 @@ private val IS_THING_EXPRESSION by lazy {
             "cannon",
             "locomotive",
             "milestone",
+            "millstone",
             "memorial",
             // "monument" - it's rather a structure. Small monuments are tagged as "memorial"
             "railway_car",
@@ -168,6 +170,7 @@ private val IS_THING_EXPRESSION by lazy {
             // "ship" - too big, more like a structure/building
             "stone",
             "tank",
+            "pillory",
             "vehicle",
             // "wreck" - too big, and usually quite off-shore anyway
             "wayside_cross",
@@ -189,12 +192,14 @@ private val IS_THING_EXPRESSION by lazy {
         ),
         "man_made" to listOf(
             // larger structures are rather alike buildings, they shouldn't be editable here
-            // e.g. "water_tower", "watermill", "windmill", "tower", "telescope", "stupa" ...
+            // e.g. "water_tower", "watermill", "windmill", "tower", "telescope", "stupa", "mast"
+            // ...
             // "antenna" - I think those small-ish antennas for cellular network would be fine
             //             but quite large structures also fall under this tag
             "beehive",
             "cairn",
             "carpet_hanger",
+            "charge_point",
             "column",
             "compass_rose",
             "cross",
@@ -229,6 +234,12 @@ private val IS_THING_EXPRESSION by lazy {
             "tree",
             "tree_stump",
         ),
+        "seamark:type" to listOf(
+            "buoy_isolated_danger",
+            "buoy_lateral",
+            "mooring",
+            "buoy_safe_water",
+        ),
         "power" to listOf(
             "pole",
         ),
@@ -236,7 +247,11 @@ private val IS_THING_EXPRESSION by lazy {
             "artwork",
             // "information", only if it is not an office, see below
             "viewpoint",
-        )
+        ),
+        "waterway" to listOf(
+            "sanitary_dump_station",
+            "water_point",
+        ),
     )
     .map { it.key + " ~ " + it.value.joinToString("|") }
     .joinToString("\n    or ")
@@ -248,7 +263,10 @@ private val IS_THING_EXPRESSION by lazy {
         or amenity = recycling and recycling_type = container
         or attraction
         or boundary = marker
+        or cemetery = grave
+        or disc_golf
         or fitness_station
+        or marker
         or leisure = pitch and sport ~ chess|table_soccer|table_tennis|teqball
         or playground
         or public_transport = platform and (

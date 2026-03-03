@@ -5,4 +5,4 @@ import de.westnordost.osmfeatures.Feature
 sealed interface ShopTypeAnswer
 
 data object IsShopVacant : ShopTypeAnswer
-data class ShopType(val feature: Feature) : ShopTypeAnswer
+data class ShopType(val feature: Feature, val isStillSamePlace: Boolean) : ShopTypeAnswer

@@ -21,7 +21,7 @@ open class UpdateNsiPresetsTask : DefaultTask() {
 
     @TaskAction
     fun run() {
-        val presetsUrl = URL("https://raw.githubusercontent.com/osmlab/name-suggestion-index/$version/dist/presets/nsi-id-presets.min.json")
+        val presetsUrl = URL("https://cdn.jsdelivr.net/npm/name-suggestion-index@$version/dist/presets/nsi-id-presets.min.json")
         val nsiPresetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
         /* NSI uses (atm) a slightly different format than the normal presets: The presets are in
            a sub-object called "presets" */

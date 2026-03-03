@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.resources.ic_up_24
 import de.westnordost.streetcomplete.ui.common.button_group.ButtonGroup
 import de.westnordost.streetcomplete.ui.common.button_group.ButtonGroupButton
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** A [stepper](https://developer.apple.com/design/human-interface-guidelines/steppers) similar to
  *  the one from Apple's design */

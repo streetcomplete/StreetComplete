@@ -49,7 +49,7 @@ class AddSidewalkSurfaceTest {
                 StringMapEntryDelete("sidewalk:right", "yes")
             ),
             questType.answerAppliedTo(
-                SidewalkIsDifferent,
+                SidewalkSurfaceAnswer.SidewalkIsDifferent,
                 mapOf("sidewalk:left:surface" to "asphalt",
                     "sidewalk:right:surface" to "concrete",
                     "sidewalk:left:smoothness" to "excellent",

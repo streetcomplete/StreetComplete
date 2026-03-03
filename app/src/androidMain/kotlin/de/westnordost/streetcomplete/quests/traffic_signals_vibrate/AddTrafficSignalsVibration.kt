@@ -36,7 +36,7 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean>, AndroidQuest {
 
     override val changesetComment = "Specify whether traffic signals have tactile indications that it's safe to cross"
     override val wikiLink = "Key:$VIBRATING_BUTTON"
-    override val icon = R.drawable.ic_quest_blind_traffic_lights
+    override val icon = R.drawable.quest_blind_traffic_lights
     override val achievements = listOf(BLIND)
     override val enabledInCountries = AllCountriesExcept(
         "BG", // see https://github.com/streetcomplete/StreetComplete/issues/5846

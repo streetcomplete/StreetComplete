@@ -21,11 +21,10 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
           and (name or brand or noname = yes or name:signed = no)
           and (
             shop and shop !~ no|vacant
-            or amenity = parking and parking = multi-storey
+            or amenity = parking and parking ~ multi-storey|underground|rooftop
             or amenity = recycling and recycling_type = centre
             or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
-            or tourism = information and information = office
-            or natural = cave_entrance and fee=yes
+            or tourism = information and information ~ office|visitor_centre
             or """ +
 
         // The common list is shared by the opening hours quest and the wheelchair quest.
@@ -65,7 +64,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
 
                 // name & wheelchair
                 "attraction",
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
+                "hotel", "motel", "hostel", "alpine_hut", "resort", "camp_site", "caravan_site", "chalet", // accommodations
 
                 // wheelchair only
                 "viewpoint"
@@ -76,17 +75,19 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
+                "indoor_play",
 
                 // name & wheelchair
                 "sports_centre", "stadium"
             ),
             "office" to arrayOf(
-                // common
+                // common (AddPlaceName has catchall)
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
                 "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
-                "bail_bond_agent", "financial_advisor",
+                "bail_bond_agent", "financial_advisor", "political_party",
+                "private_investigator", "adoption_agency",
 
                 // name & wheelchair
                 "political_party", "therapist"
@@ -95,7 +96,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason", "bookbinder",
-                "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
+                "jeweller", "sailmaker", "watchmaker", "clockmaker",
                 "locksmith",  "window_construction", "signmaker", "upholsterer",
                 "electrician", "boatbuilder",
 
@@ -118,7 +119,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
 
     override val changesetComment = "Survey wheelchair accessibility of places"
     override val wikiLink = "Key:wheelchair"
-    override val icon = R.drawable.ic_quest_wheelchair_shop
+    override val icon = R.drawable.quest_wheelchair_shop
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(WHEELCHAIR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside

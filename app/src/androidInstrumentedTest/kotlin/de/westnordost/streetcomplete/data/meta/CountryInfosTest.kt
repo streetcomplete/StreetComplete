@@ -1,20 +1,16 @@
 package de.westnordost.streetcomplete.data.meta
 
 import androidx.test.platform.app.InstrumentationRegistry
-import de.westnordost.streetcomplete.osm.opening_hours.model.Weekdays.Companion.getWeekdayIndex
+import de.westnordost.streetcomplete.osm.opening_hours.toWeekdaysSelectors
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 class CountryInfosTest {
-    private val validWeekdays = listOf("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")
-
-    private fun checkFirstDayOfWorkweekIsValid(info: CountryInfo) {
-        assertNotNull(info.firstDayOfWorkweek)
-        assertTrue(validWeekdays.contains(info.firstDayOfWorkweek))
-        assertTrue(getWeekdayIndex(info.firstDayOfWorkweek) > -1)
-        assertTrue(getWeekdayIndex(info.firstDayOfWorkweek) < 7)
+    private fun checkWorkweekIsValid(info: CountryInfo) {
+        assertNotNull(info.workweek)
+        assertTrue(info.workweek.toWeekdaysSelectors().isNotEmpty())
     }
 
     private fun checkAdditionalValidHousenumberRegexes(infos: Map<String, CountryInfo>) {
@@ -33,7 +29,7 @@ class CountryInfosTest {
         for ((key, countryInfo) in infos) {
             try {
                 assertEquals(key.split("-").first(), countryInfo.countryCode)
-                checkFirstDayOfWorkweekIsValid(countryInfo)
+                checkWorkweekIsValid(countryInfo)
                 checkRegularShoppingDaysIsBetween0And7(countryInfo)
             } catch (e: Throwable) {
                 throw RuntimeException("Error for $key", e)

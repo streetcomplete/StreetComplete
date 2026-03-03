@@ -24,7 +24,7 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
         nodes with
           (
             emergency ~ defibrillator|fire_extinguisher|fire_hose|first_aid_kit
-            or amenity ~ atm|drinking_water|telephone|parcel_locker|luggage_locker|locker|post_box|public_bookcase|give_box|ticket_validator|shower|vending_machine
+            or amenity ~ atm|drinking_water|telephone|parcel_locker|library_dropoff|luggage_locker|locker|post_box|public_bookcase|give_box|ticket_validator|shower|vending_machine
             or amenity = clock and display != sundial
           )
           and access !~ private|no
@@ -47,7 +47,7 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
 
     override val changesetComment = "Determine whether amenities are inside buildings"
     override val wikiLink = "Key:indoor"
-    override val icon = R.drawable.ic_quest_building_inside
+    override val icon = R.drawable.quest_building_inside
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_is_amenity_inside_title

@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg version="1.1" viewBox="0 0 26 26" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><defs>
-	
-	
-	
-	
-	
-	
 <mask id="mask2695" maskUnits="userSpaceOnUse"><rect x="2.5" y="1" width="20" height="4" ry="1" fill="#fff"/></mask></defs>
 <path d="m12.5 14v-3l12-2v-5h-23" fill="none" stroke="#788ca4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
 <path d="m12.25 13.625v-3l12-2v-5h-23" fill="none" stroke="#9baabb" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5"/>

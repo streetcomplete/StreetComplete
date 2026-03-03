@@ -17,8 +17,9 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways with (
-          amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar
+          amenity ~ restaurant|cafe|fast_food|ice_cream|pub|bar|luggage_locker
           or (shop and shop !~ no|vacant|mall)
+          or tourism = alpine_hut
         )
         and !payment:credit_cards and !payment:debit_cards and payment:others != no
         and !brand and !wikipedia:brand and !wikidata:brand
@@ -29,7 +30,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>(), AndroidQuest {
     """
     override val changesetComment = "Survey whether payment with cards is accepted"
     override val wikiLink = "Key:payment"
-    override val icon = R.drawable.ic_quest_card
+    override val icon = R.drawable.quest_card
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside

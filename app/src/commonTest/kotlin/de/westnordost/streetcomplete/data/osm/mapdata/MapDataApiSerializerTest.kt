@@ -54,7 +54,7 @@ class MapDataApiSerializerTest {
                 <osmChange>
                 <modify>
                 <node id="1" version="2" changeset="1" timestamp="2019-03-15T01:52:26Z" lat="53.0" lon="9.0">
-                <tag k="inscription" v="BRETT S. HALL&#10;July 4, 1962" />
+                <tag k="inscription" v="BRETT S. HALL&#xa;July 4, 1962" />
                 </node>
                 </modify>
                 </osmChange>

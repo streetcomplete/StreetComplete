@@ -13,6 +13,8 @@ import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.MutableFloatState
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
 import androidx.core.view.isGone
@@ -54,6 +56,7 @@ import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
@@ -94,6 +97,10 @@ abstract class AbstractOverlayForm :
             return field
         }
     protected val countryInfo get() = _countryInfo!!
+
+    protected val geometryRotation: MutableFloatState = mutableFloatStateOf(0f)
+    protected val mapRotation: MutableFloatState = mutableFloatStateOf(0f)
+    protected val mapTilt: MutableFloatState = mutableFloatStateOf(0f)
 
     /** either DE or US-NY (or null), depending on what countryBoundaries returns */
     protected val countryOrSubdivisionCode: String? get() {
@@ -174,9 +181,6 @@ abstract class AbstractOverlayForm :
         initialMapRotation = args.getDouble(ARG_MAP_ROTATION)
         initialMapTilt = args.getDouble(ARG_MAP_TILT)
         _countryInfo = null // reset lazy field
-
-        /* deliberately did not copy the mobile-country-code hack from AbstractQuestForm because
-           this is kind of deprecated and should not be used for new code */
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -187,6 +191,9 @@ abstract class AbstractOverlayForm :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        geometryRotation.floatValue =
+            (geometry as? ElementPolylinesGeometry)?.getOrientationAtCenterLineInDegrees() ?: 0f
 
         setMarkerVisibility(_geometry == null)
         binding.pin.root.doOnLayout { setMarkerPosition(null) }
@@ -238,7 +245,8 @@ abstract class AbstractOverlayForm :
     }
 
     override fun onMapOrientation(rotation: Double, tilt: Double) {
-        // default empty implementation
+        mapRotation.floatValue = rotation.toFloat()
+        mapTilt.floatValue = tilt.toFloat()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

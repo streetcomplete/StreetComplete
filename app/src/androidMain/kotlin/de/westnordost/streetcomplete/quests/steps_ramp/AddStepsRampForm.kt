@@ -1,44 +1,39 @@
 package de.westnordost.streetcomplete.quests.steps_ramp
 
-import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.BICYCLE
-import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.NONE
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
-import de.westnordost.streetcomplete.view.image_select.ImageSelectAdapter
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddStepsRampForm : AImageListQuestForm<StepsRamp, StepsRampAnswer>() {
+class AddStepsRampForm : AItemsSelectQuestForm<StepsRamp, StepsRampAnswer>() {
 
-    override val items = StepsRamp.entries.map { it.asItem() }
+    override val items = StepsRamp.entries
     override val itemsPerRow = 2
-    override val maxSelectableItems = -1
     override val moveFavoritesToFront = false
+    override val serializer = serializer<StepsRamp>()
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // NONE is exclusive with the other options
-        imageSelector.listeners.add(object : ImageSelectAdapter.OnItemSelectionListener {
-            override fun onIndexSelected(index: Int) {
-                val noneIndex = imageSelector.indexOf(NONE)
-                if (index == noneIndex) {
-                    for (selectedIndex in imageSelector.selectedIndices) {
-                        if (selectedIndex != index) imageSelector.deselect(selectedIndex)
-                    }
-                } else {
-                    imageSelector.deselect(noneIndex)
-                }
-            }
-
-            override fun onIndexDeselected(index: Int) {}
-        })
+    @Composable override fun ItemContent(item: StepsRamp) {
+        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
     }
 
-    override fun onClickOk(selectedItems: List<StepsRamp>) {
+    override fun onSelect(item: StepsRamp, selected: Boolean) {
+        selectedItems.value = if (selected) {
+            if (item == StepsRamp.NONE) setOf(item)
+            else selectedItems.value + item - StepsRamp.NONE
+        } else {
+            selectedItems.value - item
+        }
+        checkIsFormComplete()
+    }
+
+    override fun onClickOk(selectedItems: Set<StepsRamp>) {
         if (selectedItems.contains(WHEELCHAIR)) {
             confirmWheelchairRampIsSeparate { isSeparate ->
                 val wheelchairRampStatus =

@@ -56,14 +56,14 @@ fun TextWithHalo(
     val haloColor2 = LocalElevationOverlay.current?.apply(haloColor, elevation) ?: haloColor
     // * 2 because the stroke is painted half outside and half inside of the text shape
     val stroke = Stroke(haloWidth.toPx() * 2, cap = StrokeCap.Round, join = StrokeJoin.Round)
-    Box {
+    Box(modifier) {
         Text(
-            text, modifier, haloColor2, fontSize, fontStyle, fontWeight, fontFamily,
+            text, Modifier, haloColor2, fontSize, fontStyle, fontWeight, fontFamily,
             letterSpacing, textDecoration, textAlign, lineHeight, overflow, softWrap, maxLines,
             minLines, onTextLayout, style.copy(drawStyle = stroke)
         )
         Text(
-            text, modifier, color, fontSize, fontStyle, fontWeight, fontFamily, letterSpacing,
+            text, Modifier, color, fontSize, fontStyle, fontWeight, fontFamily, letterSpacing,
             textDecoration, textAlign, lineHeight, overflow, softWrap, maxLines, minLines,
             null, style
         )

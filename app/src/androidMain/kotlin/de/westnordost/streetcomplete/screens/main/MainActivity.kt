@@ -38,6 +38,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.FeedsUpdater
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -166,6 +167,7 @@ class MainActivity :
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
     private val questsHiddenSource: QuestsHiddenSource by inject()
+    private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
 
@@ -219,6 +221,7 @@ class MainActivity :
         supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
 
         lifecycle.addObserver(questAutoSyncer)
+        feedsUpdater.updateDaily()
 
         locationManager = FineLocationManager(this, this::onLocationChanged)
 
@@ -235,6 +238,7 @@ class MainActivity :
                     editHistoryViewModel = editHistoryViewModel,
                     onClickZoomIn = ::onClickZoomIn,
                     onClickZoomOut = ::onClickZoomOut,
+                    onZoomDrag = ::onZoomDrag,
                     onClickCompass = ::onClickCompassButton,
                     onClickLocation = ::onClickLocationButton,
                     onClickLocationPointer = ::onClickLocationPointer,
@@ -531,7 +535,7 @@ class MainActivity :
     /* ------------------------------- CreateNoteFragment.Listener ------------------------------ */
 
     override fun onCreatedNote(position: LatLon) {
-        showQuestSolvedAnimation(R.drawable.ic_quest_create_note, position)
+        showQuestSolvedAnimation(R.drawable.quest_create_note, position)
         closeBottomSheet()
     }
 
@@ -683,6 +687,10 @@ class MainActivity :
 
     private fun onClickZoomIn() {
         mapFragment?.updateCameraPosition(300) { zoomBy = +1.0 }
+    }
+
+    private fun onZoomDrag(dp: Float) {
+        mapFragment?.updateCameraPosition(300) { zoomBy = dp / 20.0 }
     }
 
     private fun onClickTracksStop() {

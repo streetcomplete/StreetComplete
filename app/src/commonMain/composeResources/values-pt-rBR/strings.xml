@@ -20,10 +20,7 @@
     <string name="quest_leave_new_note_yes">OK</string>
     <string name="quest_leave_new_note_no">Não, apenas esconda</string>
     <string name="quest_streetName_title">Qual o nome desta rua?</string>
-    <string name="quest_streetName_description">como escrito na placa, abreviaturas são expandidas:</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Às vezes a placa está apenas em uma das extremidades da rua. Além disso, note que pode não haver placas extra para ruas laterais que pertencem a uma rua maior. Normalmente, qualquer rua com casas tem um nome.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_description">Se o nome pode ser escrito sem uma abreviação, então ele deve ser expandido. Muitas abreviaturas comuns são expandidas automaticamente enquanto você digita, mas provavelmente não todas.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_positive">Sem abreviação</string>
     <string name="quest_openingHours_start_time">horário de abertura</string>
     <string name="quest_openingHours_end_time">horário de fechamento</string>
     <string name="quest_openingHours_add_months">Adicionar meses</string>
@@ -57,12 +54,10 @@
     <string name="version_banned_message">Esta versão do StreetComplete é muito antiga. Por favor atualize!</string>
     <string name="no_gps_no_quests">Para escanear por missões em torno de você automaticamente, ative a localização</string>
     <string name="later">Mais tarde</string>
-    <string name="quest_streetName_answer_noProperStreet_link">Apenas liga duas estradas</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Alguma outra coisa (deixar uma nota)</string>
     <string name="about_title_privacy_statement">Declaração de privacidade</string>
     <string name="quest_openingHours_public_holidays">Feriados públicos</string>
     <string name="quest_openingHours_public_holidays_short">Feriados</string>
-    <string name="quest_openingHours_open_end">até último cliente</string>
     <string name="quest_openingHours_answer_247">Sempre aberto</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Varia por mês…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Sem horários regulares…</string>
@@ -196,7 +191,6 @@ Se não há placas ao longo de toda a rua que se apliquem à seção destacada, 
     <string name="quest_sport_roller_skating">Patinação</string>
     <string name="quest_wheelchairAccess_limited_description_business">Parcialmente significa que para acessar o local não há mais do que um degrau com meio palmo de altura e que a maioria das salas internas é acessível com cadeira de rodas.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Parcialmente significa que para acessá-lo não há mais do que um degrau com meio palmo de altura.</string>
-    <string name="quest_streetName_nameWithAbbreviations_confirmation_title_name">Abreviação no nome %1$s?</string>
     <string name="quest_recycling_type_title">Que tipo de instalação de reciclagem é esta?</string>
     <string name="recycling_centre">Centro</string>
     <string name="overground_recycling_container">Container</string>
@@ -321,12 +315,7 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Teclados popu
     <string name="quest_housenumber_conscription_number">Número de alistamento</string>
     <string name="quest_housenumber_street_number_optional">Número de orientação (opcional)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Ciclovia presente do outro lado…</string>
-    <string name="quest_openingHours_emptyAnswer">Você precisa descrever o que está na placa. Se não houver placa, deveria perguntar dentro do local pelos horários de funcionamento.</string>
-    <string name="quest_cycleway_value_none_but_no_oneway">nenhum, mas ciclistas podem usar a fia em ambos sentidos</string>
-    <string name="quest_streetName_answer_noName_question">Por que não há nome?</string>
-    <string name="quest_streetName_answer_noProperStreet_service2">É algo como uma via de acesso ou de estacionamento</string>
-    <string name="quest_streetName_answer_noProperStreet_track2">É uma via agrícola ou florestal</string>
-    <string name="quest_streetName_answer_noName_noname">Nenhuma das opções, simplesmente não tem nome</string>
+    <string name="quest_cycleway_value_none_but_no_oneway">nenhum, mas ciclistas podem usar a via em ambos sentidos</string>
     <string name="quest_wheelchairAccess_description_toilets">Um símbolo de cadeirante como esse pode estar visível se o banheiro é acessível.
 Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não há barras ou cubas adaptadas.</string>
     <string name="map_btn_create_note">Criar nova nota</string>
@@ -475,7 +464,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="privacy_html_image_upload2">&lt;p&gt;As fotos que você anexar a uma nota são enviadas para o meu servidor e excluídas alguns dias após a nota ser resolvida. Seus metadados são retirados antes do envio.&lt;/p&gt;</string>
     <string name="action_deselect_all">Desmarcar todos</string>
     <string name="quest_buildingType_retail_description">incluindo edificações para restaurantes, cafés, lojas…</string>
-    <string name="quest_openingHours_timeSelect_next">Próximo</string>
     <string name="quest_tracktype_title">Qual a firmeza da superfície dessa trilha?</string>
     <string name="quest_tracktype_grade1">Pavimentada</string>
     <string name="quest_tracktype_grade4">Predominantemente macia</string>
@@ -501,7 +489,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="action_open_location">Abrir localização em outro aplicativo</string>
     <string name="map_application_missing">Nenhum outro aplicativo de mapa instalado</string>
     <string name="label_housenumber">número da casa</string>
-    <string name="label_blocknumber">número da quadra</string>
     <string name="quest_busStopShelter_covered">Toda a parada é coberta</string>
     <string name="quest_ferry_pedestrian_title">Esta rota de balsa transporta pedestres?</string>
     <string name="quest_ferry_motor_vehicle_title">Esta rota de balsa transporta veículos automotores?</string>
@@ -535,7 +522,6 @@ Dividir agora?</string>
     <string name="quest_recycling_type_glass_bottles">Garrafas e potes de vidro</string>
     <string name="quest_recycling_type_glass_bottles_short">Garrafas e jarros</string>
     <string name="quest_recycling_type_paper">Papel</string>
-    <string name="quest_recycling_type_plastic_generic">Plástico</string>
     <string name="quest_recycling_type_plastic">Qualquer plástico</string>
     <string name="quest_recycling_type_shoes">Calçados</string>
     <string name="quest_recycling_type_electric_appliances">Eletrodomésticos</string>
@@ -709,11 +695,10 @@ conquista</string>
     <string name="resurvey_intervals_default">Padrão</string>
     <string name="resurvey_intervals_more_often">Pergunte com mais frequência</string>
     <string name="about_title_translate">Ajude a traduzir</string>
-    <string name="about_description_translate">%1$s está %2$d%% traduzido</string>
+    <string name="about_description_translate">%1$s está %2$d% traduzido</string>
     <string name="quest_oneway2_title">Esta é uma rua de mão única? Em que direção?</string>
     <string name="quest_oneway2_dir">Direção única nesta direção</string>
     <string name="quest_oneway2_no_oneway">Não é uma direção única</string>
-    <string name="quest_maxweight_select_sign">Selecione o sinal</string>
     <string name="quest_steps_incline_title">Qual direção dos degraus leva para cima?</string>
     <string name="quest_steps_incline_up">Dessa forma</string>
     <string name="quest_step_count_title">Quantos degraus possui aqui?</string>
@@ -755,7 +740,6 @@ conquista</string>
     <string name="quest_charging_station_capacity_title">Quantos carros podem ser carregados nesta estação de carregamento ao mesmo tempo?</string>
     <string name="link_disaster_ninja_description">Mapa que mostra desastres naturais recentes, interessante para mapeadores humanitários. Além disso, mostra muitas estatísticas interessantes para analisar como os lugares estão bem mapeados e atualizados.</string>
     <string name="quest_lanes_title">Quantas faixas para carros essa estrada tem?</string>
-    <string name="quest_lanes_answer_lanes">Pistas marcadas</string>
     <string name="quest_lanes_answer_noLanes">Sem pistas marcadas</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Tem uma via de mão dupla para virar à esquerda</string>
     <string name="quest_address_answer_no_housenumber_message2b">Isso está correto?</string>
@@ -767,8 +751,6 @@ conquista</string>
     <string name="quest_kerb_height_lowered">Um pouco mais alto que a superfície da estrada</string>
     <string name="quest_kerb_height_raised">Meio-fio alto</string>
     <string name="quest_kerb_height_lowered_ramp">Rampa de meio-fio</string>
-    <string name="quest_lanes_answer_lanes_description2">Especifique o número total de pistas marcadas (ambas as direções) que podem ser utilizadas pelo tráfego de automóveis. Portanto, as faixas de bicicletas e de estacionamento não contam.
-Se alguma faixa for reservada para ônibus, deixe uma nota.</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">Especifique o número de faixas marcadas que podem ser utilizadas para tráfego de automóveis aqui. Faixas para bicicletas e dedicadas a estacionamento não contam.
 Se alguma faixa for reservada para ônibus, deixe uma nota.</string>
     <string name="quest_surface_value_rock">Rocha</string>
@@ -783,7 +765,6 @@ Se alguma faixa for reservada para ônibus, deixe uma nota.</string>
     <string name="quest_shop_gone_replaced_answer">Um(a)…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Digite o tipo de lugar aqui</string>
     <string name="quest_shop_vacant_type_title">Esta loja está vaga. O que há aqui agora?</string>
-    <string name="quest_lanes_answer_lanes_odd2">Cada lado tem um número de faixas diferente</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Este tipo de missão é desativado por padrão porque não é útil em algumas regiões e você provavelmente terá que entrar no local para poder responder a uma missão deste tipo.</string>
     <string name="quest_dietType_explanation_kosher">Os produtos kosher devem ser preparados de acordo com regras especiais, com agências de certificação de Kashrut marcando produtos em conformidade.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Absolutamente nenhuma ciclofaixa ou ciclofaixa</string>
@@ -804,7 +785,6 @@ Observe todas as opções disponíveis: alguns casos não são óbvios, como uma
     <string name="quest_postboxRoyalCypher_type_scottish_crown">A coroa da Escócia</string>
     <string name="quest_buildingType_fire_station">Prédio de bombeiros</string>
     <string name="quest_recycling_type_beverage_cartons">Apenas embalagens para bebidas</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Apenas garrafas de plástico e caixas</string>
     <string name="team_mode">Entrar no Modo de Equipe</string>
     <string name="team_mode_exit">Sair do modo de equipe</string>
     <string name="team_mode_description">Ao mapear a mesma área juntos em um grupo, você pode entrar no modo de equipe para dividir as missões entre todos os membros da equipe.</string>
@@ -1155,13 +1135,8 @@ Faça o mesmo para o outro lado, se houver.</string>
     <string name="quest_camp_drinking_water_title">A água potável está disponível gratuitamente para os campistas aqui?</string>
     <string name="quest_camp_shower_title">Há chuveiros aqui?</string>
     <string name="quest_camp_power_supply_title">Existe alguma maneira de os clientes carregarem seus telefones, laptops etc. aqui?</string>
-    <string name="quest_camp_type_title">Quem pode acampar aqui?</string>
-    <string name="quest_camp_type_tents_and_caravans">Tanto barracas e motorhomes, trailers de viagem, …</string>
-    <string name="quest_camp_type_caravans_only">Apenas motorhomes, trailers de viagem, …</string>
-    <string name="quest_camp_type_tents_only">Apenas barracas</string>
     <string name="quest_camp_type_backcountry">Camping no interior (sem instalações)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Este diâmetro parece implausível, geralmente está entre %1$d e %2$d.</string>
-    <string name="quest_recycling_type_pet">Apenas PET</string>
     <string name="street_parking_street_width">Largura da rua: %1$s</string>
     <string name="overlay_street_parking">Estacionamento na rua</string>
     <string name="link_ohsomehex_description">Explore os dados do OSM em escalas desde o panorama geral até objetos individuais no espaço e no tempo</string>
@@ -1250,9 +1225,6 @@ Movê-lo agora?</string>
     <string name="street_parking_staggered_half_on_kerb">Parcialmente na rua em lados alternados</string>
     <string name="quest_traffic_signals_sound_description">Dica: observe se existe algum altofalante. Nem todos os sinais sonoros são ativados por um botão.</string>
     <string name="quest_presets_duplicate">Duplicar</string>
-    <string name="label_block">Quarteirão</string>
-    <string name="quest_address_answer_block">Está em uma quadra…</string>
-    <string name="quest_address_answer_no_block">Não está em uma quadra...</string>
     <string name="quest_surface_value_mud">Lama persistente</string>
     <string name="quest_wheelchairAccessPat_noToilet">Não há banheiro aqui</string>
     <string name="unknown_surface_title">Superfície desconhecida</string>

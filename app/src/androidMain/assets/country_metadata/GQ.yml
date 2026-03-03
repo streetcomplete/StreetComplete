@@ -6,4 +6,4 @@ edgeLineStyle: white
 mobileCountryCode: 627
 officialLanguages: [es, fr, pt, fan]
 orchardProduces: [coffee, cacao, banana, coconut]
-workweekDays: 6
+workweek: Mo-Sa

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
+import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale.Value.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -22,31 +23,35 @@ class MtbScaleKtTest {
     @Test fun `parse scale`() {
         for (modifier in MtbScale.Mod.entries) {
             val mod = modifier.value?.toString().orEmpty()
-            for (i in 0..6) {
-                assertEquals(MtbScale(i, modifier), parse("$i$mod"))
-            }
+            assertEquals(MtbScale(ZERO, modifier), parse("0$mod"))
+            assertEquals(MtbScale(ONE, modifier), parse("1$mod"))
+            assertEquals(MtbScale(TWO, modifier), parse("2$mod"))
+            assertEquals(MtbScale(THREE, modifier), parse("3$mod"))
+            assertEquals(MtbScale(FOUR, modifier), parse("4$mod"))
+            assertEquals(MtbScale(FIVE, modifier), parse("5$mod"))
+            assertEquals(MtbScale(SIX, modifier), parse("6$mod"))
         }
     }
 
     @Test fun `applyTo normally`() {
         assertEquals(
             setOf(StringMapEntryAdd("mtb:scale", "6")),
-            MtbScale(6).appliedTo(mapOf())
+            MtbScale(SIX).appliedTo(mapOf())
         )
         assertEquals(
             setOf(StringMapEntryAdd("mtb:scale", "3+")),
-            MtbScale(3, MtbScale.Mod.PLUS).appliedTo(mapOf())
+            MtbScale(THREE, MtbScale.Mod.PLUS).appliedTo(mapOf())
         )
         assertEquals(
             setOf(StringMapEntryModify("mtb:scale", "grade2", "2")),
-            MtbScale(2).appliedTo(mapOf("mtb:scale" to "grade2"))
+            MtbScale(TWO).appliedTo(mapOf("mtb:scale" to "grade2"))
         )
         assertEquals(
             setOf(
                 StringMapEntryModify("mtb:scale", "2", "2"),
                 StringMapEntryAdd("check_date:mtb:scale", nowAsCheckDateString())
             ),
-            MtbScale(2).appliedTo(mapOf("mtb:scale" to "2"))
+            MtbScale(TWO).appliedTo(mapOf("mtb:scale" to "2"))
         )
     }
 
@@ -56,14 +61,14 @@ class MtbScaleKtTest {
                 StringMapEntryModify("mtb:scale", "2+", "2+"),
                 StringMapEntryAdd("check_date:mtb:scale", nowAsCheckDateString())
             ),
-            MtbScale(2).appliedTo(mapOf("mtb:scale" to "2+"))
+            MtbScale(TWO).appliedTo(mapOf("mtb:scale" to "2+"))
         )
     }
 
     @Test fun `applyTo with specified modifier overwrites modifier`() {
         assertEquals(
             setOf(StringMapEntryModify("mtb:scale", "2+", "2")),
-            MtbScale(2, MtbScale.Mod.NONE).appliedTo(mapOf("mtb:scale" to "2+"))
+            MtbScale(TWO, MtbScale.Mod.NONE).appliedTo(mapOf("mtb:scale" to "2+"))
         )
     }
 }

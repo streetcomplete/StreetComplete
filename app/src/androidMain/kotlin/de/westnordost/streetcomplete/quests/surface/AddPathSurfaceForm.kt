@@ -1,25 +1,35 @@
 package de.westnordost.streetcomplete.quests.surface
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.osm.surface.toItems
-import de.westnordost.streetcomplete.quests.AImageListQuestForm
+import de.westnordost.streetcomplete.osm.surface.icon
+import de.westnordost.streetcomplete.osm.surface.title
+import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
+import kotlinx.serialization.serializer
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddPathSurfaceForm : AImageListQuestForm<Surface, SurfaceOrIsStepsAnswer>() {
-    override val items get() = Surface.selectableValuesForWays.toItems()
+class AddPathSurfaceForm : AItemSelectQuestForm<Surface, SurfaceOrIsStepsAnswer>() {
+    override val items get() = Surface.selectableValuesForWays
+    override val itemsPerRow = 3
+    override val serializer = serializer<Surface>()
 
     override val otherAnswers get() = listOfNotNull(
         createConvertToStepsAnswer(),
         createMarkAsIndoorsAnswer(),
     )
 
-    override val itemsPerRow = 3
+    @Composable override fun ItemContent(item: Surface) {
+        ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
+    }
 
-    override fun onClickOk(selectedItems: List<Surface>) {
-        applyAnswer(SurfaceAnswer(selectedItems.single()))
+    override fun onClickOk(selectedItem: Surface) {
+        applyAnswer(SurfaceAnswer(selectedItem))
     }
 
     private fun createConvertToStepsAnswer(): AnswerItem? =

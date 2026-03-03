@@ -30,7 +30,7 @@ Before each [release](res/documentation/creating%20new%20release.md), translatio
 
 Once 100% or close to 100% of text is translated, the given language becomes enabled. Translations which are not maintained are removed. Typically languages which are less than 60% translated will be considered as not maintained and such translation will be disabled.
 
-The source translation is in US English (in [app/src/main/res/values/strings.xml](app/src/main/res/values/strings.xml)). POEditor has a list of modifications in dialects such as UK English and Australian English, listed as separate languages.
+The source translation is in US English (in [app/src/androidMain/res/values/strings.xml](app/src/androidMain/res/values/strings.xml)). POEditor has a list of modifications in dialects such as UK English and Australian English, listed as separate languages.
 
 ### iD presets
 
@@ -102,7 +102,7 @@ See also [this far more detailed guide to making a new quest](CONTRIBUTING_A_NEW
 
 ### Code style
 
-Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/main/java/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
+Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
 
 It is recommended to install the [*Ktlint* Android Studio plugin](https://plugins.jetbrains.com/plugin/15057-ktlint) which highlights lint issues (e.g. inconsistent spacing) directly inline while writing code.
 
@@ -138,12 +138,12 @@ Materials in [`res/documentation`](res/documentation) also may be useful, it inc
 * [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement
 * [sc-photo-service](https://github.com/streetcomplete/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
 * [sc-statistics-service](https://github.com/streetcomplete/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
-* [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/main/java/de/westnordost/streetcomplete/osm/Place.kt#L244)
+* [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/Places.kt#L248)
+* [detect_missing_value_support_in_streetcomplete](https://codeberg.org/matkoniecz/detect_missing_value_support_in_streetcomplete.git) may manage to list tags missing from [opening_hours](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt), [name](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt), [wheelchair](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) quests and [places](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/Places.kt) overlay - and some of tags listed there may be in fact worth supporting in this parts of StreetComplete.
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
 
 #### Retired
 
 * [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
-* [parser](https://github.com/matkoniecz/Zazolc/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for [taginfo](https://taginfo.openstreetmap.org/projects/streetcomplete#tags)
-
+* [parser](https://github.com/matkoniecz/abandoned-StreetComplete-branches/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for taginfo

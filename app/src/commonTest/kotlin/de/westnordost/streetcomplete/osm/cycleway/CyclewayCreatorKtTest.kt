@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.oneway.Direction
@@ -18,7 +19,7 @@ class CyclewayCreatorKtTest {
     @Test fun `apply nothing`() {
         assertEquals(
             setOf(),
-            LeftAndRightCycleway(null, null).appliedTo(mapOf(
+            Sides<CyclewayAndDirection>(null, null).appliedTo(mapOf(
                 "cycleway:left" to "track",
                 "cycleway" to "no",
                 "cycleway:right" to "track"
@@ -882,20 +883,23 @@ class CyclewayCreatorKtTest {
     }
 }
 
-private fun LeftAndRightCycleway.appliedTo(tags: Map<String, String>, isLeftHandTraffic: Boolean = false): Set<StringMapEntryChange> {
+private fun Sides<CyclewayAndDirection>.appliedTo(
+    tags: Map<String, String>,
+    isLeftHandTraffic: Boolean = false
+): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(tags)
     applyTo(cb, isLeftHandTraffic)
     return cb.create().changes
 }
 
 private fun cycleway(left: Pair<Cycleway, Direction>?, right: Pair<Cycleway, Direction>?) =
-    LeftAndRightCycleway(
+    Sides(
         left?.let { CyclewayAndDirection(it.first, it.second) },
         right?.let { CyclewayAndDirection(it.first, it.second) },
     )
 
 private fun cycleway(left: Cycleway?, right: Cycleway?, isLeftHandTraffic: Boolean = false) =
-    LeftAndRightCycleway(
+    Sides(
         left?.let { CyclewayAndDirection(it, if (isLeftHandTraffic) FORWARD else BACKWARD) },
         right?.let { CyclewayAndDirection(it, if (isLeftHandTraffic) BACKWARD else FORWARD) },
     )

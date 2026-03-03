@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
-import kotlin.lazy
 
 /** Information on the geometry of a quest  */
 @Serializable

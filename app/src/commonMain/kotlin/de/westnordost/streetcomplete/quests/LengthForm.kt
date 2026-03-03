@@ -28,12 +28,12 @@ import de.westnordost.streetcomplete.resources.or
 import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
 import de.westnordost.streetcomplete.ui.common.MeasurementIcon
-import de.westnordost.streetcomplete.ui.common.SelectButton
+import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Displays a form to input and/or measure the length, in meter or feet+inch */
 @Composable
@@ -62,7 +62,7 @@ fun LengthForm(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             if (selectableUnits.size > 1) {
-                SelectButton(
+                DropdownButton(
                     items = selectableUnits,
                     selectedItem = selectedUnit,
                     onSelectedItem = { unit ->

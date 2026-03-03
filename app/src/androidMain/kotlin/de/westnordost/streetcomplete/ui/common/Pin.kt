@@ -11,7 +11,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun Pin(
@@ -47,5 +47,5 @@ fun Pin(
 @Composable
 @Preview
 private fun PinPreview() {
-    Pin(painterResource(R.drawable.ic_quest_recycling))
+    Pin(painterResource(R.drawable.quest_recycling))
 }

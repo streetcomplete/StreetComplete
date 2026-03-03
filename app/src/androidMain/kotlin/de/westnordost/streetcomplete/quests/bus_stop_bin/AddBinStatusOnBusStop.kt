@@ -17,6 +17,7 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
         (
           public_transport = platform
           or (highway = bus_stop and public_transport != stop_position)
+          or highway = hitchhiking
         )
         and physically_present != no and naptan:BusStopType != HAR
         and access !~ no|private
@@ -24,7 +25,7 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
     """
     override val changesetComment = "Specify whether public transport stops have bins"
     override val wikiLink = "Key:bin"
-    override val icon = R.drawable.ic_quest_bin_public_transport
+    override val icon = R.drawable.quest_bin_public_transport
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopBin_title2

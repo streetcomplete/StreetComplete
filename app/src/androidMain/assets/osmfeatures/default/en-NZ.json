@@ -309,9 +309,6 @@
         },
         "tourism/chalet": {
           "terms": "bach,crib"
-        },
-        "tourism/information/office": {
-          "name": "Visitor Centre"
         }
       }
     }

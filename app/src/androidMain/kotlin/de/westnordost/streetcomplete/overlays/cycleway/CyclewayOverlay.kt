@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.oneway.Direction
-import de.westnordost.streetcomplete.osm.oneway.isInContraflowOfOneway
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 
@@ -33,7 +32,7 @@ class CyclewayOverlay(
 ) : Overlay, AndroidOverlay {
 
     override val title = R.string.overlay_cycleway
-    override val icon = R.drawable.ic_quest_bicycleway
+    override val icon = R.drawable.quest_bicycleway
     override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink: String = "Key:cycleway"
     override val achievements = listOf(EditTypeAchievement.BICYCLIST)
@@ -152,7 +151,7 @@ private fun cyclewayTaggingNotExpected(
     cyclewayTaggingNotExpectedFilter.matches(element)
     || isPrivateOnFoot(element)
     || (
-        isInContraflowOfOneway(element.tags, Direction.getDefault(isRightSide, isLeftHandTraffic))
+        Direction.from(element.tags).isReverseOf(Direction.getDefault(isRightSide, isLeftHandTraffic))
         && cyclewayTaggingInContraflowNotExpectedFilter.matches(element)
     )
 

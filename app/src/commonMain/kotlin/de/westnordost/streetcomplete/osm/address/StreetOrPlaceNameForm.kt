@@ -17,14 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.style.TextAlign
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_address_street_hint2
 import de.westnordost.streetcomplete.resources.quest_address_street_place_name_label
 import de.westnordost.streetcomplete.resources.quest_address_street_street_name_label
 import de.westnordost.streetcomplete.resources.town_silhouette
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
-import de.westnordost.streetcomplete.ui.common.SelectButton
+import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -42,11 +41,9 @@ fun StreetOrPlaceNameForm(
 ) {
     val selections = remember { listOf(StreetName(""), PlaceName("")) }
 
-    val textStyle = MaterialTheme.typography.largeInput.copy(textAlign = TextAlign.Center)
-
     Column(modifier = modifier) {
         if (showSelect) {
-            SelectButton(
+            DropdownButton(
                 items = selections,
                 selectedItem = value,
                 onSelectedItem = onValueChange,
@@ -70,7 +67,7 @@ fun StreetOrPlaceNameForm(
                     onValueChange = { onValueChange(StreetName(it)) },
                     modifier = Modifier.fillMaxWidth(),
                     suggestion = streetNameSuggestion,
-                    textStyle = textStyle,
+                    textStyle = MaterialTheme.typography.largeInput,
                 )
                 Text(
                     text = stringResource(Res.string.quest_address_street_hint2),
@@ -91,7 +88,7 @@ fun StreetOrPlaceNameForm(
                             alpha = 0.15f,
                         ),
                     suggestion = placeNameSuggestion,
-                    textStyle = textStyle,
+                    textStyle = MaterialTheme.typography.largeInput,
                 )
             }
         }

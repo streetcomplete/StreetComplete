@@ -44,7 +44,7 @@ class AddRoadSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
 
     override val changesetComment = "Specify road surfaces"
     override val wikiLink = "Key:surface"
-    override val icon = R.drawable.ic_quest_street_surface
+    override val icon = R.drawable.quest_street_surface
     override val achievements = listOf(CAR, BICYCLIST)
 
     override fun getTitle(tags: Map<String, String>) =

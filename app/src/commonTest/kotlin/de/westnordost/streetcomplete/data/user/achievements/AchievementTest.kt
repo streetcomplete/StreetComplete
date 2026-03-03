@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.DaysActive
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.action_settings
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -26,5 +28,5 @@ class AchievementTest {
     }
 
     private fun achievement(func: (Int) -> Int): Achievement =
-        Achievement("abc", null, 0, 0, DaysActive, func, mapOf(), -1)
+        Achievement("abc", null, Res.string.action_settings, null, DaysActive, func, mapOf(), -1)
 }

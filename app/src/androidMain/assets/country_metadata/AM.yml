@@ -1,7 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [ԱԿԲԱ, Ամերիաբանկ, Կոնվերս Բանկ, ՎՏԲ, Արդշինբանկ, Արարատբանկ, Հայէկոնոմբանկ, Հայբիզնեսբանկ, Էվոկաբանկ, Ardshininvestbank, Յունիբանկ, ԱյԴի Բանկ, Ինեկոբանկ, Էյչ-Էս-Բի-Սի, Արցախբանկ, Ամիօ բանկ, Բիբլոս Բանկ Արմենիա, VTB, Cryptomat, Ardshinbank, Ameriabank]
+atmOperators: [ԱԿԲԱ, Ամերիաբանկ, Արդշինբանկ, Կոնվերս Բանկ, ՎՏԲ, Արարատբանկ, Հայէկոնոմբանկ, Էվոկաբանկ, Ամիօ Բանկ, ԱյԴի Բանկ, Յունիբանկ, Ինեկոբանկ, Ardshininvestbank, Արցախբանկ, Ամիօ բանկ, Բիբլոս Բանկ Արմենիա, VTB, Cryptomat, Ameriabank, Ardshinbank]
+chargingStationOperators: [Team Energy, EVAN]
 defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

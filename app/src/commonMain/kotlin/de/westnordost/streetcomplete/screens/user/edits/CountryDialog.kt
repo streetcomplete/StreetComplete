@@ -34,7 +34,7 @@ import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import de.westnordost.streetcomplete.util.ktx.displayRegion
 import de.westnordost.streetcomplete.util.ktx.getDisplayRegion
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Shows the details for a certain country as a dialog. */
 @Composable

@@ -7,8 +7,14 @@ import com.russhwolf.settings.double
 import com.russhwolf.settings.int
 import com.russhwolf.settings.long
 import com.russhwolf.settings.nullableString
+import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.putStringOrNull
+import kotlinx.datetime.LocalDate
+import kotlinx.serialization.KSerializer
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.serializer
+import kotlin.reflect.KClass
 
 class Preferences(private val prefs: ObservableSettings) {
     // application settings
@@ -114,6 +120,27 @@ class Preferences(private val prefs: ObservableSettings) {
     // main screen UI
     var hasShownTutorial: Boolean by prefs.boolean(HAS_SHOWN_TUTORIAL, false)
     var hasShownOverlaysTutorial: Boolean by prefs.boolean(HAS_SHOWN_OVERLAYS_TUTORIAL, false)
+
+    // update feed
+    var lastFeedUpdate: LocalDate?
+        set(value) { prefs.putStringOrNull(LAST_FEED_UPDATE, value?.toString()) }
+        get() = prefs.getStringOrNull(LAST_FEED_UPDATE)?.let { LocalDate.parse(it) }
+
+    // messages
+    var disabledMessageTypes: Set<KClass<out Message>>
+        set(value) {
+            prefs.putStringOrNull(
+                DISABLED_MESSAGE_TYPES,
+                value.joinToString(";") { it.simpleName!! }.takeIf { it.isNotEmpty() }
+            )
+        }
+        get() = prefs.getStringOrNull(DISABLED_MESSAGE_TYPES)
+            ?.let { it.split(';').mapNotNull { Message.classFromSimpleName(it) }.toSet() }
+            ?: emptySet()
+
+    fun onDisabledMessageTypesChanged(callback: () -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(DISABLED_MESSAGE_TYPES) { callback() }
+
     var questSelectionHintState: QuestSelectionHintState
         set(value) { prefs.putString(QUEST_SELECTION_HINT_STATE, value.name) }
         get() = prefs.getStringOrNull(QUEST_SELECTION_HINT_STATE)?.let { QuestSelectionHintState.valueOf(it) }
@@ -123,6 +150,20 @@ class Preferences(private val prefs: ObservableSettings) {
         prefs.addStringOrNullListener(QUEST_SELECTION_HINT_STATE) {
             callback(it?.let { QuestSelectionHintState.valueOf(it) } ?: QuestSelectionHintState.NOT_SHOWN)
         }
+
+    var weeklyOsmLastPublishDate: LocalDate?
+        set(value) { prefs.putStringOrNull(WEEKLY_OSM_LAST_PUB_DATE, value?.toString()) }
+        get() = prefs.getStringOrNull(WEEKLY_OSM_LAST_PUB_DATE)?.let { LocalDate.parse(it) }
+
+    fun onWeeklyOsmLastPublishDateChanged(callback: () -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(WEEKLY_OSM_LAST_PUB_DATE) { callback() }
+
+    var weeklyOsmLastNotifiedPublishDate: LocalDate?
+        set(value) { prefs.putStringOrNull(WEEKLY_OSM_LAST_NOTIFIED_PUB_DATE, value?.toString()) }
+        get() = prefs.getStringOrNull(WEEKLY_OSM_LAST_NOTIFIED_PUB_DATE)?.let { LocalDate.parse(it) }
+
+    fun onWeeklyOsmLastNotifiedPublishDateChanged(callback: () -> Unit): SettingsListener =
+        prefs.addStringOrNullListener(WEEKLY_OSM_LAST_NOTIFIED_PUB_DATE) { callback() }
 
     // quest & overlay UI
     var preferredLanguageForNames: String? by prefs.nullableString(PREFERRED_LANGUAGE_FOR_NAMES)
@@ -137,45 +178,27 @@ class Preferences(private val prefs: ObservableSettings) {
 
     var lastEditTime: Long by prefs.long(LAST_EDIT_TIME, 0L)
 
-    fun getLastPicked(key: String): List<String> =
-        prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.split(',') ?: listOf()
+    inline fun <reified T> getLastPicked(key: String): List<T> = getLastPicked(serializer(), key)
+    inline fun <reified T> setLastPicked(key: String, values: List<T>) = setLastPicked(serializer(), key, values)
+    inline fun <reified T> addLastPicked(key: String, value: T) = addLastPicked(serializer(), key, value)
 
-    fun addLastPicked(key: String, value: String, maxValueCount: Int = 100) {
-        addLastPicked(key, listOf(value), maxValueCount)
+    fun <T> getLastPicked(serializer: KSerializer<List<T>>, key: String): List<T> =
+        try {
+            prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.let { Json.decodeFromString(serializer, it) } ?: emptyList()
+        } catch (_: Exception) { emptyList() }
+
+    fun <T> addLastPicked(serializer: KSerializer<List<T>>, key: String, value: T, maxValueCount: Int = 100) {
+        addLastPicked(serializer, key, listOf(value), maxValueCount)
     }
 
-    fun addLastPicked(key: String, values: List<String>, maxValueCount: Int = 100) {
-        val lastValues = values + getLastPicked(key)
-        setLastPicked(key, lastValues.take(maxValueCount))
+    fun <T> addLastPicked(serializer: KSerializer<List<T>>, key: String, values: List<T>, maxValueCount: Int = 100) {
+        val lastValues = values + getLastPicked(serializer, key)
+        setLastPicked(serializer, key, lastValues.take(maxValueCount))
     }
 
-    fun setLastPicked(key: String, values: List<String>) {
-        prefs.putString(LAST_PICKED_PREFIX + key, values.joinToString(","))
+    fun <T> setLastPicked(serializer: KSerializer<List<T>>, key: String, values: List<T>) {
+        prefs.putString(LAST_PICKED_PREFIX + key, Json.encodeToString(serializer, values))
     }
-
-    fun getLastPickedLeft(key: String): String? =
-        prefs.getStringOrNull(getLastPickedSideKey(key, "left"))
-
-    fun setLastPickedLeft(key: String, value: String?) {
-        prefs.putStringOrNull(getLastPickedSideKey(key, "left"), value)
-    }
-
-    fun getLastPickedRight(key: String): String? =
-        prefs.getStringOrNull(getLastPickedSideKey(key, "right"))
-
-    fun setLastPickedRight(key: String, value: String?) {
-        prefs.putStringOrNull(getLastPickedSideKey(key, "right"), value)
-    }
-
-    fun getLastPickedOneSide(key: String): String? =
-        prefs.getStringOrNull(getLastPickedSideKey(key, "oneSide"))
-
-    fun setLastPickedOneSide(key: String, value: String?) {
-        prefs.putStringOrNull(getLastPickedSideKey(key, "oneSide"), value)
-    }
-
-    private fun getLastPickedSideKey(key: String, side: String): String =
-        "$LAST_PICKED_PREFIX$key.$side"
 
     // profile & statistics screen UI
     var userGlobalRank: Int by prefs.int(USER_GLOBAL_RANK, -1)
@@ -236,7 +259,15 @@ class Preferences(private val prefs: ObservableSettings) {
         // main screen UI
         private const val HAS_SHOWN_TUTORIAL = "hasShownTutorial"
         private const val HAS_SHOWN_OVERLAYS_TUTORIAL = "hasShownOverlaysTutorial"
+
+        // update feed
+        private const val LAST_FEED_UPDATE = "lastFeedUpdate"
+
+        // messages
+        private const val DISABLED_MESSAGE_TYPES = "disabledMessageTypes"
         private const val QUEST_SELECTION_HINT_STATE = "questSelectionHintState"
+        private const val WEEKLY_OSM_LAST_PUB_DATE = "weeklyOsmLastPubDate"
+        private const val WEEKLY_OSM_LAST_NOTIFIED_PUB_DATE = "weeklyOsmLastNotifiedPubDate"
 
         // map state
         private const val MAP_LATITUDE = "map.latitude"

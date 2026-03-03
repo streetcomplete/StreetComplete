@@ -6,7 +6,9 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.FlowRowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalTextStyle
@@ -66,6 +68,8 @@ fun AlertDialogLayout(
                         .align(Alignment.End),
                     horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
                 ) { buttons() }
+            } else {
+                Spacer(Modifier.size(24.dp))
             }
         }
     }

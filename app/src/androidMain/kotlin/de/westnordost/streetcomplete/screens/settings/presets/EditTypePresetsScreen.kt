@@ -44,6 +44,7 @@ import de.westnordost.streetcomplete.resources.quest_presets_preset_name
 import de.westnordost.streetcomplete.resources.quest_presets_selected
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
+import de.westnordost.streetcomplete.ui.ktx.plus
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -65,13 +66,15 @@ import org.jetbrains.compose.resources.stringResource
         val insets = WindowInsets.safeDrawing.only(
             WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
         ).asPaddingValues()
+
         Box(Modifier
             .fillMaxHeight()
             .consumeWindowInsets(insets)
         ) {
             EditTypePresetsList(
                 viewModel = viewModel,
-                contentPadding = insets,
+                // add additional bottom padding because of the floating action button
+                contentPadding = insets + PaddingValues(bottom = (56 + 16).dp),
             )
             FloatingActionButton(
                 onClick = { showAddDialog = true },
