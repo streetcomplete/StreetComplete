@@ -57,6 +57,7 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
                     maxSpeedAnswer.value = it
                     checkIsFormComplete()
                 },
+                initialZoneSpeedValue = LAST_INPUT_SLOW_ZONE,
             )
         } }
     }
@@ -100,6 +101,10 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     }
 
     private fun applySpeedLimitFormAnswer() {
+        val maxSpeedSign = maxSpeedAnswer.value as? MaxSpeedSign
+        if (maxSpeedSign?.type == ZONE) {
+            LAST_INPUT_SLOW_ZONE = maxSpeedSign.speed.value
+        }
         applyAnswer(maxSpeedAnswer.value!!)
     }
 
@@ -140,5 +145,9 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
                 .setNegativeButton(R.string.quest_generic_confirmation_no, null)
                 .show()
         }
+    }
+
+    companion object {
+        private var LAST_INPUT_SLOW_ZONE: Int? = null
     }
 }

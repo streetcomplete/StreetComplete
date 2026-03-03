@@ -34,9 +34,11 @@ fun MaxSpeedForm(
     answer: MaxSpeedAnswer?,
     onAnswer: (MaxSpeedAnswer?) -> Unit,
     modifier: Modifier = Modifier,
+    initialZoneSpeedValue: Int? = null,
 ) {
     val selectableMaxSpeedTypes = remember(countryInfo) {
-        val initialSpeed = Speed(null, countryInfo.speedUnits.first())
+        val speedUnit = countryInfo.speedUnits.first()
+        val initialSpeed = Speed(null, speedUnit)
         buildList {
             add(MaxSpeedSign(initialSpeed, MaxSpeedSign.Type.NORMAL))
             // we only need to ask the user for the road type if the current road is not
@@ -49,7 +51,7 @@ fun MaxSpeedForm(
                 add(MaxSpeedAnswer.NoSignWithRoadType(null))
             }
             if (countryInfo.hasSlowZone && highwayValue !in ROADS_WHERE_SLOW_ZONE_IS_NOT_POSSIBLE) {
-                add(MaxSpeedSign(initialSpeed, MaxSpeedSign.Type.ZONE))
+                add(MaxSpeedSign(Speed(initialZoneSpeedValue, speedUnit), MaxSpeedSign.Type.ZONE))
             }
             if (countryInfo.hasLivingStreet && highwayValue in ROADS_THAT_MAY_BE_LIVING_STREETS) {
                 add(MaxSpeedAnswer.IsLivingStreet)
