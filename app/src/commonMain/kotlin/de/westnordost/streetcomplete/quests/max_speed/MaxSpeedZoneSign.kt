@@ -1,12 +1,10 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -18,42 +16,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.ui.common.RectangularSign
 import de.westnordost.streetcomplete.ui.ktx.dpToSp
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
-import de.westnordost.streetcomplete.ui.theme.headlineLarge
-import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor
-
-/** Max speed zone input, resembling (somewhat) the speed limit zone sign in the given country.
- * */
-@Composable
-fun MaxSpeedZoneInput(
-    maxSpeedZone: MaxSpeedZone?,
-    onMaxSpeedZone: (MaxSpeedZone?) -> Unit,
-    countryInfo: CountryInfo,
-    modifier: Modifier = Modifier,
-) {
-    MaxSpeedZoneSign(
-        countryInfo = countryInfo,
-        modifier = modifier,
-    ) {
-        SpeedInput(
-            speed = maxSpeedZone?.speed,
-            onSpeedChange = { speed ->
-                onMaxSpeedZone(speed?.let { MaxSpeedZone(it) })
-            },
-            selectableUnits = countryInfo.speedUnits,
-        )
-    }
-}
 
 /** Surface that looks like generic a max speed zone sign (rectangle with a prohibitory sign in the
  *  middle and a label above or below)
@@ -83,11 +54,11 @@ fun MaxSpeedZoneSign(
     RectangularSign(
         modifier = modifier.size(192.dp),
         color = when (countryInfo.countryCode) {
-            "IL" ->                   TrafficSignColor.Blue
-            "FI", "IS", "SE" ->       TrafficSignColor.Yellow
+            "IL" ->             TrafficSignColor.Blue
+            "FI", "IS", "SE" -> TrafficSignColor.Yellow
             // https://commons.wikimedia.org/wiki/File:Luxembourg_road_sign_H,1-1.svg
-            "LU" ->                   TrafficSignColor.Yellow
-            else ->                   TrafficSignColor.White
+            "LU" ->             TrafficSignColor.Yellow
+            else ->             TrafficSignColor.White
         }
     ) {
         Column(

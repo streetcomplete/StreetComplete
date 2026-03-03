@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
 import de.westnordost.streetcomplete.data.meta.SpeedMeasurementUnit.*
+import de.westnordost.streetcomplete.quests.max_speed.MaxSpeedSign.Type.*
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
@@ -13,15 +14,15 @@ class MaxSpeedAnswerTest {
     @Test fun `apply no sign answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxspeed:type", "XX:urban")),
-            DefaultMaxSpeed(RoadType.URBAN).appliedTo(mapOf())
+            MaxSpeedAnswer.NoSignWithRoadType(RoadType.URBAN).appliedTo(mapOf())
         )
         assertEquals(
             setOf(StringMapEntryAdd("maxspeed:type", "XX:rural")),
-            DefaultMaxSpeed(RoadType.RURAL).appliedTo(mapOf())
+            MaxSpeedAnswer.NoSignWithRoadType(RoadType.RURAL).appliedTo(mapOf())
         )
         assertEquals(
             setOf(StringMapEntryAdd("maxspeed:type", "XX:motorway")),
-            DefaultMaxSpeed(null).appliedTo(mapOf("highway" to "motorway"))
+            MaxSpeedAnswer.NoSign.appliedTo(mapOf("highway" to "motorway"))
         )
     }
 
@@ -31,14 +32,14 @@ class MaxSpeedAnswerTest {
                 StringMapEntryAdd("maxspeed", "123"),
                 StringMapEntryAdd("maxspeed:type", "sign")
             ),
-            MaxSpeedSign(Speed(123, KILOMETERS_PER_HOUR)).appliedTo(mapOf())
+            MaxSpeedSign(Speed(123, KILOMETERS_PER_HOUR), NORMAL).appliedTo(mapOf())
         )
         assertEquals(
             setOf(
                 StringMapEntryAdd("maxspeed", "123 mph"),
                 StringMapEntryAdd("maxspeed:type", "sign")
             ),
-            MaxSpeedSign(Speed(123, MILES_PER_HOUR)).appliedTo(mapOf())
+            MaxSpeedSign(Speed(123, MILES_PER_HOUR), NORMAL).appliedTo(mapOf())
         )
     }
 
@@ -48,14 +49,14 @@ class MaxSpeedAnswerTest {
                 StringMapEntryAdd("maxspeed:advisory", "123"),
                 StringMapEntryAdd("maxspeed:type:advisory", "sign")
             ),
-            AdvisorySpeedSign(Speed(123, KILOMETERS_PER_HOUR)).appliedTo(mapOf())
+            MaxSpeedSign(Speed(123, KILOMETERS_PER_HOUR), ADVISORY).appliedTo(mapOf())
         )
         assertEquals(
             setOf(
                 StringMapEntryAdd("maxspeed:advisory", "123 mph"),
                 StringMapEntryAdd("maxspeed:type:advisory", "sign")
             ),
-            AdvisorySpeedSign(Speed(123, MILES_PER_HOUR)).appliedTo(mapOf())
+            MaxSpeedSign(Speed(123, MILES_PER_HOUR), ADVISORY).appliedTo(mapOf())
         )
     }
 
@@ -65,14 +66,14 @@ class MaxSpeedAnswerTest {
                 StringMapEntryAdd("maxspeed", "123"),
                 StringMapEntryAdd("maxspeed:type", "XX:zone123")
             ),
-            MaxSpeedZone(Speed(123, KILOMETERS_PER_HOUR)).appliedTo(mapOf())
+            MaxSpeedSign(Speed(123, KILOMETERS_PER_HOUR), ZONE).appliedTo(mapOf())
         )
         assertEquals(
             setOf(
                 StringMapEntryAdd("maxspeed", "15 mph"),
                 StringMapEntryAdd("maxspeed:type", "ZZ:zone15")
             ),
-            MaxSpeedZone(Speed(15, MILES_PER_HOUR)).appliedTo(mapOf())
+            MaxSpeedSign(Speed(15, MILES_PER_HOUR), ZONE).appliedTo(mapOf())
         )
     }
 
@@ -97,14 +98,14 @@ class MaxSpeedAnswerTest {
                 StringMapEntryAdd("maxspeed:type", "XX:nsl_restricted"),
                 StringMapEntryAdd("lit", "yes"),
             ),
-            DefaultMaxSpeed(RoadType.RESTRICTED).appliedTo(mapOf())
+            MaxSpeedAnswer.NoSignWithRoadType(RoadType.RESTRICTED).appliedTo(mapOf())
         )
         assertEquals(
             setOf(
                 StringMapEntryAdd("maxspeed:type", "XX:nsl_single"),
                 StringMapEntryAdd("lit", "no"),
             ),
-            DefaultMaxSpeed(RoadType.SINGLE).appliedTo(mapOf())
+            MaxSpeedAnswer.NoSignWithRoadType(RoadType.SINGLE).appliedTo(mapOf())
         )
         assertEquals(
             setOf(
@@ -112,18 +113,18 @@ class MaxSpeedAnswerTest {
                 StringMapEntryAdd("lit", "no"),
                 StringMapEntryAdd("dual_carriageway", "yes"),
             ),
-            DefaultMaxSpeed(RoadType.DUAL).appliedTo(mapOf())
+            MaxSpeedAnswer.NoSignWithRoadType(RoadType.DUAL).appliedTo(mapOf())
         )
     }
 
     @Test fun `use subdivision (only) in regions where it matters`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxspeed:type", "BE-VLG:urban")),
-            DefaultMaxSpeed(RoadType.URBAN).appliedTo(mapOf(), "BE-VLG")
+            MaxSpeedAnswer.NoSignWithRoadType(RoadType.URBAN).appliedTo(mapOf(), "BE-VLG")
         )
         assertEquals(
             setOf(StringMapEntryAdd("maxspeed:type", "DE:urban")),
-            DefaultMaxSpeed(RoadType.URBAN).appliedTo(mapOf(), "DE-HH")
+            MaxSpeedAnswer.NoSignWithRoadType(RoadType.URBAN).appliedTo(mapOf(), "DE-HH")
         )
     }
 }

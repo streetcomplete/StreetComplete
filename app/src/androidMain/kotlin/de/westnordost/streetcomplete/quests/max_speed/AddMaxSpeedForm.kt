@@ -13,14 +13,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.quests.max_speed.MaxSpeedSign.Type.*
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
-import de.westnordost.streetcomplete.osm.maxspeed.COUNTRY_SUBDIVISIONS_WITH_OWN_DEFAULT_MAX_SPEEDS
 import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WHERE_SLOW_ZONE_IS_LIKELY
+import de.westnordost.streetcomplete.osm.maxspeed.Speed
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
@@ -35,12 +34,11 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     private var maxSpeedAnswer = mutableStateOf<MaxSpeedAnswer?>(null)
-    private var initialSelectedMaxSpeedType = mutableStateOf<MaxSpeedType?>(null)
 
     override val otherAnswers: List<AnswerItem> get() = buildList {
         if (countryInfo.hasAdvisorySpeedLimitSign) {
             add(AnswerItem(R.string.quest_maxspeed_answer_advisory_speed_limit) {
-                initialSelectedMaxSpeedType.value = MaxSpeedType.ADVISORY
+                maxSpeedAnswer.value = MaxSpeedSign(Speed(null, countryInfo.speedUnits.first()), ADVISORY)
             })
         }
     }
@@ -50,11 +48,10 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
 
         binding.composeViewBase.content { Surface {
             MaxSpeedForm(
-                initialSelectedMaxSpeedType = initialSelectedMaxSpeedType.value,
                 countryInfo = countryInfo,
                 highwayValue = element.tags["highway"]!!,
-                maxSpeed = maxSpeedAnswer.value,
-                onMaxSpeed = {
+                answer = maxSpeedAnswer.value,
+                onAnswer = {
                     maxSpeedAnswer.value = it
                     checkIsFormComplete()
                 },
@@ -63,7 +60,7 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
     }
 
     override fun onClickOk() {
-        if (maxSpeedAnswer.value is DefaultMaxSpeed) {
+        if (maxSpeedAnswer.value is MaxSpeedAnswer.NoSignWithRoadType) {
             if (countryInfo.hasSlowZone && element.tags["highway"] in ROADS_WHERE_SLOW_ZONE_IS_LIKELY) {
                 confirmNoSignSlowZone { applySpeedLimitFormAnswer() }
             } else {
@@ -76,17 +73,17 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         }
     }
 
-    override fun isFormComplete() = maxSpeedAnswer.value != null
+    override fun isFormComplete() = maxSpeedAnswer.value?.isComplete() == true
 
     private fun userSelectedUnusualSpeed(): Boolean {
-        val speed = maxSpeedAnswer.value?.getSpeedOrNull() ?: return false
-        val isDividableByFive = speed.value % 5 == 0
-        val kmh = speed.toKilometersPerHour()
-        return when (maxSpeedAnswer.value) {
-            is AdvisorySpeedSign,
-            is MaxSpeedSign -> kmh > 140 || kmh > 20 && !isDividableByFive || kmh < 5
-            is MaxSpeedZone -> kmh > 40 || kmh > 20 && !isDividableByFive || kmh < 5
-            else -> false
+        val maxSpeedSign = maxSpeedAnswer.value as? MaxSpeedSign ?: return false
+        val isDividableByFive =  (maxSpeedSign.speed.value ?: 0) % 5 == 0
+        val kmh = maxSpeedSign.speed.toKilometersPerHour()
+        return when (maxSpeedSign.type) {
+            NORMAL, ADVISORY ->
+                kmh > 140 || kmh > 20 && !isDividableByFive || kmh < 5
+            ZONE ->
+                kmh > 40 || kmh > 20 && !isDividableByFive || kmh < 5
         }
     }
 

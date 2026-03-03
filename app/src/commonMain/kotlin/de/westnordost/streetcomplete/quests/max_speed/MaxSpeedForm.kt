@@ -2,18 +2,14 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -21,6 +17,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.maxspeed.ROADS_THAT_MAY_BE_LIVING_STREETS
 import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WHERE_SLOW_ZONE_IS_NOT_POSSIBLE
 import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WITH_DEFINITE_SPEED_LIMIT
+import de.westnordost.streetcomplete.osm.maxspeed.Speed
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_maxspeed_type_description
 import de.westnordost.streetcomplete.ui.common.DropdownButton
@@ -31,32 +28,35 @@ import org.jetbrains.compose.resources.stringResource
 /** Form to select the max speed and how it is defined */
 @Composable
 fun MaxSpeedForm(
-    initialSelectedMaxSpeedType: MaxSpeedType?,
     countryInfo: CountryInfo,
     highwayValue: String,
-    maxSpeed: MaxSpeedAnswer?,
-    onMaxSpeed: (MaxSpeedAnswer?) -> Unit,
+    answer: MaxSpeedAnswer?,
+    onAnswer: (MaxSpeedAnswer?) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    val selectableMaxSpeedTypes = remember(initialSelectedMaxSpeedType, countryInfo) { buildList {
-        add(MaxSpeedType.SIGN)
-        add(MaxSpeedType.DEFAULT)
-        if (countryInfo.hasSlowZone && highwayValue !in ROADS_WHERE_SLOW_ZONE_IS_NOT_POSSIBLE) {
-            add(MaxSpeedType.ZONE)
+    val selectableMaxSpeedTypes = remember(countryInfo) {
+        val initialSpeed = Speed(null, countryInfo.speedUnits.first())
+        buildList {
+            add(MaxSpeedSign(initialSpeed, MaxSpeedSign.Type.NORMAL))
+            // we only need to ask the user for the road type if the current road is not
+            // assumed to have always a definite default speed limit, because then we can
+            // tag e.g. maxspeed:type=XX:motorway as "road type" to denote that the default
+            // speed limit is in effect
+            if (highwayValue in ROADS_WITH_DEFINITE_SPEED_LIMIT) {
+                add(MaxSpeedAnswer.NoSign)
+            } else {
+                add(MaxSpeedAnswer.NoSignWithRoadType(null))
+            }
+            if (countryInfo.hasSlowZone && highwayValue !in ROADS_WHERE_SLOW_ZONE_IS_NOT_POSSIBLE) {
+                add(MaxSpeedSign(initialSpeed, MaxSpeedSign.Type.ZONE))
+            }
+            if (countryInfo.hasLivingStreet && highwayValue in ROADS_THAT_MAY_BE_LIVING_STREETS) {
+                add(MaxSpeedAnswer.IsLivingStreet)
+            }
+            if (countryInfo.hasAdvisorySpeedLimitSign && (answer as? MaxSpeedSign)?.type == MaxSpeedSign.Type.ADVISORY) {
+                add(MaxSpeedSign(initialSpeed, MaxSpeedSign.Type.ADVISORY))
+            }
         }
-        if (countryInfo.hasLivingStreet && highwayValue in ROADS_THAT_MAY_BE_LIVING_STREETS) {
-            add(MaxSpeedType.LIVING_STREET)
-        }
-        // show only if initially selected (= from other answer)
-        if (countryInfo.hasAdvisorySpeedLimitSign &&
-            initialSelectedMaxSpeedType == MaxSpeedType.ADVISORY
-        ) {
-            add(MaxSpeedType.ADVISORY)
-        }
-    } }
-
-    var selectedMaxSpeedType by remember(initialSelectedMaxSpeedType) {
-        mutableStateOf<MaxSpeedType?>(initialSelectedMaxSpeedType)
     }
 
     Column(
@@ -71,60 +71,35 @@ fun MaxSpeedForm(
         )
         DropdownButton(
             items = selectableMaxSpeedTypes,
-            onSelectedItem = {
-                selectedMaxSpeedType = it
-                onMaxSpeed(null)
-            },
-            selectedItem = selectedMaxSpeedType,
+            onSelectedItem = { onAnswer(it) },
+            selectedItem = answer,
             itemContent = { Text(stringResource(it.text)) }
         )
-        selectedMaxSpeedType?.let { selectedMaxSpeedType ->
-            when (selectedMaxSpeedType) {
-                MaxSpeedType.SIGN -> MaxSpeedSignInput(
-                    maxSpeedSign = maxSpeed as? MaxSpeedSign,
-                    onMaxSpeedSign = onMaxSpeed,
+        when (answer) {
+            is MaxSpeedSign -> {
+                MaxSpeedInput(
+                    type = answer.type,
+                    speed = answer.speed,
+                    onChangeSpeed = { onAnswer(answer.copy(speed = it)) },
                     countryInfo = countryInfo,
-                    modifier = modifier,
+                    modifier = modifier.fillMaxWidth()
                 )
-                MaxSpeedType.ZONE -> MaxSpeedZoneInput(
-                    maxSpeedZone = maxSpeed as? MaxSpeedZone,
-                    onMaxSpeedZone = onMaxSpeed,
-                    countryInfo = countryInfo,
-                    modifier = modifier,
-                )
-                MaxSpeedType.ADVISORY -> AdvisorySpeedSignInput(
-                    advisorySpeedSign = maxSpeed as? AdvisorySpeedSign,
-                    onAdvisorySpeedSign = onMaxSpeed,
-                    countryInfo = countryInfo,
-                    modifier = modifier,
-                )
-                // literally every living street sign in every country looks different, however,
-                // they look somewhat similar and can be grouped into different categories that look
-                // at least alike the actual sign. So, we do that here
-                MaxSpeedType.LIVING_STREET -> Image(
-                    painter = painterResource(countryInfo.livingStreetSignDrawable),
-                    contentDescription = null,
-                    modifier = modifier,
-                )
-                MaxSpeedType.DEFAULT -> {
-                    // we only need to ask the user for the road type if the current road is not
-                    // assumed to have always a definite default speed limit, because then we can
-                    // tag e.g. maxspeed:type=XX:motorway as "road type" to denote that the default
-                    // speed limit is in effect
-                    if (highwayValue in ROADS_WITH_DEFINITE_SPEED_LIMIT) {
-                        LaunchedEffect(selectedMaxSpeedType) {
-                            onMaxSpeed(DefaultMaxSpeed(null))
-                        }
-                    } else {
-                        RoadTypeSelect(
-                            roadType = (maxSpeed as? DefaultMaxSpeed)?.roadType,
-                            onRoadType = { onMaxSpeed(it?.let { DefaultMaxSpeed(it) }) },
-                            countryCode = countryInfo.countryCode,
-                            modifier = modifier,
-                        )
-                    }
-                }
             }
+            // literally every living street sign in every country looks different, however,
+            // they look somewhat similar and can be grouped into different categories that look
+            // at least alike the actual sign. So, we do that here
+            MaxSpeedAnswer.IsLivingStreet -> Image(
+                painter = painterResource(countryInfo.livingStreetSignDrawable),
+                contentDescription = null,
+            )
+            is MaxSpeedAnswer.NoSignWithRoadType -> {
+                RoadTypeSelect(
+                    roadType = answer.roadType,
+                    onRoadType = { onAnswer(it?.let { MaxSpeedAnswer.NoSignWithRoadType(it) }) },
+                    countryCode = countryInfo.countryCode,
+                )
+            }
+            MaxSpeedAnswer.NoSign, null -> { /* nothing */ }
         }
     }
 }

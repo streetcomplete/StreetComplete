@@ -7,16 +7,18 @@ import kotlin.math.roundToInt
 
 @Serializable
 data class Speed(
-    val value: Int,
+    val value: Int?,
     val unit: SpeedMeasurementUnit,
 ) {
-    fun toKilometersPerHour(): Double = value * when (unit) {
+    fun toKilometersPerHour(): Double = (value ?: 0) * when (unit) {
         KILOMETERS_PER_HOUR -> 1.0
         MILES_PER_HOUR -> 1.60934
     }
 
     fun toOsmString(): String = when (unit) {
-        KILOMETERS_PER_HOUR -> value.toString()
+        KILOMETERS_PER_HOUR -> value!!.toString()
         MILES_PER_HOUR -> "$value mph"
     }
+
+    fun isComplete(): Boolean = value != null
 }
