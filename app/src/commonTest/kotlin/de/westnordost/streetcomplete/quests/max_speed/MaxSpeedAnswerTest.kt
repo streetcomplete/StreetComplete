@@ -71,7 +71,7 @@ class MaxSpeedAnswerTest {
         assertEquals(
             setOf(
                 StringMapEntryAdd("maxspeed", "15 mph"),
-                StringMapEntryAdd("maxspeed:type", "ZZ:zone15")
+                StringMapEntryAdd("maxspeed:type", "XX:zone15")
             ),
             MaxSpeedSign(Speed(15, MILES_PER_HOUR), ZONE).appliedTo(mapOf())
         )
