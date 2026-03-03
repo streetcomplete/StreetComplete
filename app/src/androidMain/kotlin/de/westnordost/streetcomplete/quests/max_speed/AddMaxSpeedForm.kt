@@ -14,6 +14,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.quests.max_speed.MaxSpeedSign.Type.*
 import de.westnordost.streetcomplete.R
@@ -25,6 +26,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_noSign_confirmation
 import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_noSign_info_zone
+import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.content
 import org.jetbrains.compose.resources.stringResource
 
@@ -124,7 +126,9 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
                 ProvideTextStyle(MaterialTheme.typography.body2) {
                     Text(stringResource(Res.string.quest_maxspeed_answer_noSign_confirmation))
                     Text(stringResource(Res.string.quest_maxspeed_answer_noSign_info_zone))
-                    MaxSpeedZoneSign(countryInfo = countryInfo) { Text("××") }
+                    MaxSpeedZoneSign(countryInfo = countryInfo) {
+                        Text("××", style = MaterialTheme.typography.extraLargeInput.copy(fontWeight = FontWeight.Bold))
+                    }
                 }
             }
         }
