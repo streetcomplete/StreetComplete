@@ -2,78 +2,7 @@ package de.westnordost.streetcomplete.util.ktx
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.cycleway_lane_dashed_both_white
-import de.westnordost.streetcomplete.resources.cycleway_lane_dashed_both_white_l
-import de.westnordost.streetcomplete.resources.cycleway_lane_dashed_white
-import de.westnordost.streetcomplete.resources.cycleway_lane_dashed_white_l
-import de.westnordost.streetcomplete.resources.cycleway_lane_dashed_yellow
-import de.westnordost.streetcomplete.resources.cycleway_lane_dashed_yellow_l
-import de.westnordost.streetcomplete.resources.cycleway_lane_dotted_white
-import de.westnordost.streetcomplete.resources.cycleway_lane_dotted_white_l
-import de.westnordost.streetcomplete.resources.cycleway_lane_white
-import de.westnordost.streetcomplete.resources.cycleway_lane_white_dual
-import de.westnordost.streetcomplete.resources.cycleway_lane_white_dual_l
-import de.westnordost.streetcomplete.resources.cycleway_lane_white_l
-import de.westnordost.streetcomplete.resources.cycleway_lane_yellow
-import de.westnordost.streetcomplete.resources.cycleway_lane_yellow_dual
-import de.westnordost.streetcomplete.resources.cycleway_lane_yellow_dual_l
-import de.westnordost.streetcomplete.resources.cycleway_lane_yellow_l
-import de.westnordost.streetcomplete.resources.cycleway_pictograms_white
-import de.westnordost.streetcomplete.resources.cycleway_pictograms_white_l
-import de.westnordost.streetcomplete.resources.cycleway_pictograms_yellow
-import de.westnordost.streetcomplete.resources.cycleway_pictograms_yellow_l
-import de.westnordost.streetcomplete.resources.cycleway_shared_lane_no_pictograms
-import de.westnordost.streetcomplete.resources.cycleway_shared_lane_orchre_background
-import de.westnordost.streetcomplete.resources.cycleway_shared_lane_white_dashed
-import de.westnordost.streetcomplete.resources.cycleway_shared_lane_white_dashed_l
-import de.westnordost.streetcomplete.resources.no_entry_sign_arrow
-import de.westnordost.streetcomplete.resources.no_entry_sign_default
-import de.westnordost.streetcomplete.resources.no_entry_sign_do_not_enter
-import de.westnordost.streetcomplete.resources.no_entry_sign_no_entre
-import de.westnordost.streetcomplete.resources.no_entry_sign_no_entry
-import de.westnordost.streetcomplete.resources.no_entry_sign_no_entry_on_white
-import de.westnordost.streetcomplete.resources.no_entry_sign_yellow
-import de.westnordost.streetcomplete.resources.no_parking
-import de.westnordost.streetcomplete.resources.no_parking_australia
-import de.westnordost.streetcomplete.resources.no_parking_mutcd
-import de.westnordost.streetcomplete.resources.no_parking_mutcd_latin_america
-import de.westnordost.streetcomplete.resources.no_parking_mutcd_text
-import de.westnordost.streetcomplete.resources.no_parking_mutcd_text_spanish
-import de.westnordost.streetcomplete.resources.no_parking_sadc
-import de.westnordost.streetcomplete.resources.no_parking_taiwan
-import de.westnordost.streetcomplete.resources.no_parking_vienna_variant
-import de.westnordost.streetcomplete.resources.no_standing_mutcd_text
-import de.westnordost.streetcomplete.resources.no_stopping
-import de.westnordost.streetcomplete.resources.no_stopping_australia
-import de.westnordost.streetcomplete.resources.no_stopping_canada
-import de.westnordost.streetcomplete.resources.no_stopping_colombia
-import de.westnordost.streetcomplete.resources.no_stopping_israel
-import de.westnordost.streetcomplete.resources.no_stopping_mutcd
-import de.westnordost.streetcomplete.resources.no_stopping_mutcd_latin_america
-import de.westnordost.streetcomplete.resources.no_stopping_mutcd_text
-import de.westnordost.streetcomplete.resources.no_stopping_mutcd_text_spanish
-import de.westnordost.streetcomplete.resources.no_stopping_sadc
-import de.westnordost.streetcomplete.resources.no_waiting_mutcd_text
-import de.westnordost.streetcomplete.resources.shoulder_short_white_dashes
-import de.westnordost.streetcomplete.resources.shoulder_short_yellow_dashes
-import de.westnordost.streetcomplete.resources.shoulder_two_yellow_lines
-import de.westnordost.streetcomplete.resources.shoulder_white_dashes
-import de.westnordost.streetcomplete.resources.shoulder_white_line
-import de.westnordost.streetcomplete.resources.shoulder_yellow_line
-import de.westnordost.streetcomplete.resources.street_marking_double_yellow_zig_zag
-import de.westnordost.streetcomplete.resources.street_marking_red
-import de.westnordost.streetcomplete.resources.street_marking_red_double
-import de.westnordost.streetcomplete.resources.street_marking_red_on_curb
-import de.westnordost.streetcomplete.resources.street_marking_red_white_dashes_on_curb
-import de.westnordost.streetcomplete.resources.street_marking_white_on_curb
-import de.westnordost.streetcomplete.resources.street_marking_yellow
-import de.westnordost.streetcomplete.resources.street_marking_yellow_dash_x
-import de.westnordost.streetcomplete.resources.street_marking_yellow_dashes
-import de.westnordost.streetcomplete.resources.street_marking_yellow_dashes_on_curb
-import de.westnordost.streetcomplete.resources.street_marking_yellow_double
-import de.westnordost.streetcomplete.resources.street_marking_yellow_on_curb
-import de.westnordost.streetcomplete.resources.street_marking_yellow_white_dashes_on_curb
-import de.westnordost.streetcomplete.resources.street_marking_yellow_zig_zag
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 
 val CountryInfo.noEntrySignDrawable: DrawableResource get() = when (noEntrySignStyle) {
@@ -214,3 +143,14 @@ val CountryInfo.pictogramCycleLaneMirroredDrawable: DrawableResource get() = whe
     "yellow" -> Res.drawable.cycleway_pictograms_yellow_l
     else ->     Res.drawable.cycleway_pictograms_white_l
 }
+
+val CountryInfo.livingStreetSignDrawable: DrawableResource get() = when (livingStreetSignStyle) {
+    "vienna"    -> Res.drawable.living_street
+    "sadc"      -> Res.drawable.living_street_sadc
+    "russia"    -> Res.drawable.living_street_russia
+    "shared"    -> Res.drawable.living_street_shared
+    "australia" -> Res.drawable.living_street_australia
+    "columbia"  -> Res.drawable.living_street_columbia
+    else        -> Res.drawable.living_street
+}
+

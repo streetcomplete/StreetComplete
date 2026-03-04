@@ -13,7 +13,7 @@ enum class LengthUnit(private val abbr: String) {
 }
 
 @Serializable
-enum class SpeedMeasurementUnit(private val displayString: String) {
+enum class SpeedMeasurementUnit(val displayString: String) {
     @SerialName("kilometers per hour") KILOMETERS_PER_HOUR("km/h"),
     @SerialName("miles per hour") MILES_PER_HOUR("mph");
 
