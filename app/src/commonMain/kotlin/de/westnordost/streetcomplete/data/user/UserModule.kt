@@ -47,11 +47,14 @@ val userModule = module {
     single<UserDataSource> { get<UserDataController>() }
     single { UserDataController(get(), get()) }
 
+    single { OAuthApiClient(get()) }
+    single { OAuthCallbackHandler() }
+
     single<UserLoginSource> { get<UserLoginController>() }
     single<UserAccessTokenSource> { get<UserLoginController>() }
-    single { UserLoginController(get()) }
+    single { UserLoginController(get(), get()) }
 
     single { UserUpdater(get(), get(), get(), get(), get(), get()) }
 
-    single { OAuthApiClient(get()) }
+    single { OAuthLoginCompleter(get(), get(), get()) }
 }

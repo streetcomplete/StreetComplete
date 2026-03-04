@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.util.Listeners
 
 class UserLoginController(
     private val prefs: Preferences,
+    private val oAuthCallbackHandler: OAuthCallbackHandler,
 ) : UserLoginSource {
 
     private val listeners = Listeners<UserLoginSource.Listener>()
@@ -22,6 +23,8 @@ class UserLoginController(
     fun logOut() {
         prefs.oAuth2AccessToken = null
         prefs.removeOAuth1Data()
+        oAuthCallbackHandler.consumeCallback()
+        oAuthCallbackHandler.clearStoredParams()
         listeners.forEach { it.onLoggedOut() }
     }
 
