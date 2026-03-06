@@ -70,6 +70,7 @@ import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargin
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationBicycleCapacity
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
+import de.westnordost.streetcomplete.quests.charging_station_socket.AddChargingStationSocket
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
@@ -435,6 +436,7 @@ fun questTypeRegistry(
     87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
     179 to AddChargingStationBicycleCapacity(),
     88 to AddChargingStationOperator(),
+    197 to AddChargingStationSocket(),
 
     // postboxes (collection times are further up, see comment)
     89 to AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
