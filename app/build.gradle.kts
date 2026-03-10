@@ -414,10 +414,13 @@ tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
     group = "streetcomplete"
     version = presetsVersion
-    targetDir = "$projectDir/src/androidMain/res/drawable/"
+    targetDirs = listOf(
+        "$projectDir/src/androidMain/res/drawable/", // necessary as long as map is not compose based yet
+        "$projectDir/src/commonMain/composeResources/drawable/",
+    )
     iconSize = 34
     transformName = { "preset_" + it.replace('-', '_') }
-    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
+    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt" // necessary as long as map is not compose based yet
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {

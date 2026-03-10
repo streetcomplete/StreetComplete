@@ -20,7 +20,7 @@ import kotlin.math.max
 /** Download the SVG preset icons referred to by the iD presets and convert them to Android
  *  drawables. */
 open class DownloadAndConvertPresetIconsTask : DefaultTask() {
-    @get:Input lateinit var targetDir: String
+    @get:Input lateinit var targetDirs: List<String>
     @get:Input lateinit var version: String
     @get:Input var iconSize: Int = 14
     @get:Input var transformName: (String) -> String = { it }
@@ -34,16 +34,19 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         indexTargetFile.parentFile.mkdirs()
 
         val prefix = transformName("").lowercase()
-        for (file in File(targetDir).listFiles { _, s -> s.startsWith(prefix) }!!) {
-            file.delete()
+        for (targetDir in targetDirs) {
+            for (file in File(targetDir).listFiles { _, s -> s.startsWith(prefix) }!!) {
+                file.delete()
+            }
         }
 
         for (icon in icons) {
             val urls = getDownloadUrls(icon) ?: continue
 
             val fileName = transformName(icon).lowercase()
-            val targetFile = File("$targetDir/$fileName.xml")
-            targetFile.parentFile.mkdirs()
+            for (targetDir in targetDirs) {
+                File("$targetDir/$fileName.xml").parentFile.mkdirs()
+            }
 
             var message: String = ""
             var iconWasFound = false
@@ -56,7 +59,9 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
 
                         val drawable = createAndroidDrawable(svg)
 
-                        writeXml(drawable, targetFile)
+                        for (targetDir in targetDirs) {
+                            writeXml(drawable, File("$targetDir/$fileName.xml"))
+                        }
                     }
                     index.add(icon to fileName)
                     iconWasFound = true
