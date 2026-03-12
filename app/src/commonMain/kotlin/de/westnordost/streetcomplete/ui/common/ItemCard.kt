@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays
+package de.westnordost.streetcomplete.ui
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.PaddingValues
