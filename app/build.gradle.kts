@@ -396,13 +396,13 @@ tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"
     version = presetsVersion
     languageCodes = bcp47ExportLanguages
-    targetDir = "$projectDir/src/androidMain/assets/osmfeatures/default"
+    targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/default"
 }
 
 tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
     group = "streetcomplete"
     version = nsiVersion
-    targetDir = "$projectDir/src/androidMain/assets/osmfeatures/brands"
+    targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/brands"
 }
 
 // tasks.register<DownloadBrandLogosTask>("downloadBrandLogos") {
