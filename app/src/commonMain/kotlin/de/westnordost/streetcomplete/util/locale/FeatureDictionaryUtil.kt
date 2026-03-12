@@ -1,11 +1,11 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.util.locale
 
-import android.content.res.Configuration
-import de.westnordost.streetcomplete.util.ktx.toList
+import androidx.compose.ui.text.intl.LocaleList
 
-fun getLanguagesForFeatureDictionary(configuration: Configuration): List<String?> {
-    val result = ArrayList<String?>()
-    result.addAll(configuration.locales.toList().map { it.toLanguageTag() })
+fun getLanguagesForFeatureDictionary(): List<String?> {
+    val localeList = LocaleList.current.localeList
+    val result = ArrayList<String?>(localeList.size + 2)
+    result.addAll(localeList.map { it.toLanguageTag() })
     /* add fallback to English if (some) English is not part of the locale list already as the
        fallback for text is also always English in this app (strings.xml) independent of, or rather
        additionally to what is in the user's LocaleList. */
