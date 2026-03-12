@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.util.html.replaceHtmlEntities
 import de.westnordost.streetcomplete.util.ktx.getFeature
+import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 
 fun getNameAndLocationSpanned(
     element: Element,
@@ -25,7 +26,7 @@ fun getNameAndLocationHtml(
     featureDictionary: FeatureDictionary?,
     showHouseNumber: Boolean? = null
 ): String? {
-    val languages = getLanguagesForFeatureDictionary(resources.configuration)
+    val languages = getLanguagesForFeatureDictionary()
     val feature = featureDictionary
         ?.getFeature(element, languages)
         ?.name
