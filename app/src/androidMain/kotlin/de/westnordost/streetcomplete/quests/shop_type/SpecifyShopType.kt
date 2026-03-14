@@ -50,7 +50,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>(), AndroidQuest {
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.removeCheckDates()
         when (answer) {
-            is IsShopVacant -> {
+            is ShopTypeAnswer.IsShopVacant -> {
                 val shopTag = tags["shop"]
                 removePlaceRelatedTags(tags)
                 tags["disused:shop"] = shopTag ?: "yes"
@@ -62,6 +62,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>(), AndroidQuest {
                     answer.feature.applyReplacePlaceTo(tags)
                 }
             }
+            is ShopTypeAnswer.LeaveNote -> { /* already handled by form */ }
         }
     }
 }

@@ -64,16 +64,15 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
                 val hasSomeName = getNameLabel(element.tags) != null
                 applyAnswer(ShopType(feature.value!!, hasSomeName))
             }
-            ShopTypeFormOption.VACANT -> applyAnswer(IsShopVacant)
+            ShopTypeFormOption.VACANT -> applyAnswer(ShopTypeAnswer.IsShopVacant)
             ShopTypeFormOption.LEAVE_NOTE -> composeNote()
             null -> { }
         }
     }
 
     override fun isFormComplete() = when (option.value) {
-        ShopTypeFormOption.FEATURE -> feature.value != null
-        ShopTypeFormOption.VACANT -> true
-        ShopTypeFormOption.LEAVE_NOTE -> true
         null -> false
+        ShopTypeFormOption.FEATURE -> feature.value != null
+        else -> true
     }
 }

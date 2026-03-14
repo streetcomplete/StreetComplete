@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -53,7 +54,7 @@ fun ShopTypeForm(
         onSelectionChange = onSelectedOption,
         selectedOption = option,
         itemContent = {
-            Row {
+            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                 Text(stringResource(it.text))
                 if (it == FEATURE) {
                     FeatureSelect(

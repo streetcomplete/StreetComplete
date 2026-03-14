@@ -65,12 +65,13 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer>, AndroidQuest {
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is IsShopVacant -> {
+            is ShopTypeAnswer.IsShopVacant -> {
                 tags.updateCheckDate()
             }
             is ShopType -> {
                 answer.feature.applyReplacePlaceTo(tags)
             }
+            is ShopTypeAnswer.LeaveNote -> { /* already handled by form */ }
         }
     }
 }

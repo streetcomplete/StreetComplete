@@ -283,6 +283,13 @@
         android:visibility="gone"
         />
 
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose_view_dialog_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom">
+    </androidx.compose.ui.platform.ComposeView>
+
 </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
 
 

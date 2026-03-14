@@ -40,14 +40,16 @@ fun <T> RadioGroup(
 ) {
     Column(modifier.selectableGroup()) {
         options.forEach { option ->
-            Row(Modifier
-                .clip(MaterialTheme.shapes.small)
-                .selectable(
-                    selected = (option == selectedOption),
-                    onClick = { onSelectionChange(option) },
-                    role = Role.RadioButton
-                )
-                .padding(8.dp)
+            Row(
+                modifier = Modifier
+                    .clip(MaterialTheme.shapes.small)
+                    .selectable(
+                        selected = (option == selectedOption),
+                        onClick = { onSelectionChange(option) },
+                        role = Role.RadioButton
+                    )
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 RadioButton(
                     selected = option == selectedOption,
@@ -55,8 +57,7 @@ fun <T> RadioGroup(
                     onClick = null,
                 )
                 Box(Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.CenterVertically)
+                    .weight(1f)
                     .padding(horizontal = 16.dp),
                 ) {
                     itemContent(option)

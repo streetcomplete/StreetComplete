@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentColor
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -19,6 +20,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.LocaleList
+import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -76,7 +78,7 @@ fun FeatureItem(
     }
 
     Row(
-        modifier = modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+        modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -85,7 +87,10 @@ fun FeatureItem(
             contentDescription = iconResourceName,
             modifier = Modifier.size(iconSize)
         )
-        Text(annotatedText)
+        Text(
+            text = annotatedText,
+            style = LocalTextStyle.current.copy(hyphens = Hyphens.Auto)
+        )
     }
 }
 
@@ -99,9 +104,8 @@ private fun Feature.buildAnnotatedName(
     searchText: String?,
     color: Color
 ): AnnotatedString = buildAnnotatedString {
-    // no search: just show name in bold
+    // no search: just show name
     if (searchText.isNullOrEmpty()) {
-        pushStyle(SpanStyle(fontWeight = FontWeight.Bold))
         append(name)
         return@buildAnnotatedString
     }
