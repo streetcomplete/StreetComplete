@@ -97,8 +97,8 @@ fun FeatureItem(
 private val Feature.iconResourceName: String? get() =
     icon?.let { "preset_" + it.replace('-', '_') }
 
-/** The feature's name but with the search text highlighted. Also, when the feature has several
- *  names (aliases), the name that matches the search text is displayed instead of the "primary"
+/** The feature's name but with the [searchText] highlighted. Also, when the feature has several
+ *  names (aliases), the name that matches the [searchText] is displayed instead of the "primary"
  *  name. */
 private fun Feature.buildAnnotatedName(
     searchText: String?,
