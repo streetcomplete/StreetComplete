@@ -8,8 +8,12 @@ import de.westnordost.streetcomplete.data.ConflictAlgorithm.FAIL
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.IGNORE
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.REPLACE
 import de.westnordost.streetcomplete.data.ConflictAlgorithm.ROLLBACK
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 
 class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) : Database {
+    private val lock = ReentrantLock()
+
     init {
         val oldVersion = databaseConnection.prepare("PRAGMA user_version").use { statement ->
             statement.toSequence { it.getInt("user_version") }.single()
@@ -24,7 +28,7 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         }
     }
 
-    override fun exec(sql: String, args: Array<Any>?) {
+    override fun exec(sql: String, args: Array<Any>?): Unit = lock.withLock {
         databaseConnection.prepare(sql).use { statement ->
             statement.bindAll(args)
             statement.step()
@@ -35,11 +39,12 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         sql: String,
         args: Array<Any>?,
         transform: (CursorPosition) -> T,
-    ): List<T> =
+    ): List<T> = lock.withLock {
         databaseConnection.prepare(sql).use { statement ->
             statement.bindAll(args)
             statement.toSequence(transform).toList()
         }
+    }
 
     override fun <T> queryOne(
         table: String,
@@ -50,11 +55,12 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         having: String?,
         orderBy: String?,
         transform: (CursorPosition) -> T,
-    ): T? =
+    ): T? = lock.withLock {
         databaseConnection.prepareQuery(false, table, columns, where, groupBy, having, orderBy, 1).use { statement ->
             statement.bindAll(args)
             statement.toSequence(transform).firstOrNull()
         }
+    }
 
     override fun <T> query(
         table: String,
@@ -67,28 +73,30 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         limit: Int?,
         distinct: Boolean,
         transform: (CursorPosition) -> T,
-    ): List<T> =
+    ): List<T> = lock.withLock {
         databaseConnection.prepareQuery(distinct, table, columns, where, groupBy, having, orderBy, limit).use { statement ->
             statement.bindAll(args)
             statement.toSequence(transform).toList()
         }
+    }
 
     override fun insert(
         table: String,
         values: Collection<Pair<String, Any?>>,
         conflictAlgorithm: ConflictAlgorithm?,
-    ): Long =
+    ): Long = lock.withLock {
         databaseConnection.prepareInsert(table, values.map { it.first }, conflictAlgorithm).use { statement ->
             statement.bindAll(values.map { it.second }.toTypedArray())
             statement.executeInsert()
         }
+    }
 
     override fun insertMany(
         table: String,
         columnNames: Array<String>,
         valuesList: Iterable<Array<Any?>>,
         conflictAlgorithm: ConflictAlgorithm?,
-    ): List<Long> {
+    ): List<Long> = lock.withLock {
         val statement = databaseConnection.prepareInsert(table, columnNames.toList(), conflictAlgorithm)
         val result = ArrayList<Long>()
         transaction {
@@ -111,19 +119,21 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         where: String?,
         args: Array<Any>?,
         conflictAlgorithm: ConflictAlgorithm?,
-    ): Int =
+    ): Int = lock.withLock {
         databaseConnection.prepareUpdate(table, values, where, conflictAlgorithm).use { statement ->
             statement.bindAll(args)
             statement.toSequence { }.count()
         }
+    }
 
-    override fun delete(table: String, where: String?, args: Array<Any>?): Int =
+    override fun delete(table: String, where: String?, args: Array<Any>?): Int = lock.withLock {
         databaseConnection.prepareDelete(table, where).use { statement ->
             statement.bindAll(args)
             statement.toSequence { }.count()
         }
+    }
 
-    override fun <T> transaction(block: () -> T): T {
+    override fun <T> transaction(block: () -> T): T = lock.withLock {
         databaseConnection.execSQL("BEGIN IMMEDIATE TRANSACTION")
         try {
             val result = block()
