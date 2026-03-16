@@ -147,7 +147,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
                         filterFn = { it.toElement().isThing() },
                         codesOfDefaultFeatures = POPULAR_THING_FEATURE_IDS,
                     )
-                    if(lastPickedFeatures.isNotEmpty()) {
+                    if (lastPickedFeatures.isNotEmpty()) {
                         LastPickedChipsRow(
                             items = lastPickedFeatures,
                             onClick = {
