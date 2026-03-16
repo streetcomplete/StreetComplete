@@ -219,7 +219,7 @@ private fun SQLiteConnection.prepareUpdate(
     val conflictSql = conflictAlgorithm.toSql()
     val placeholders = values.map { it.first + "=?" }
     val whereClause = if (where.isNullOrBlank()) "" else "WHERE $where"
-    val sql = "UPDATE $conflictSql $table SET $placeholders $whereClause"
+    val sql = "UPDATE $conflictSql $table SET $placeholders $whereClause RETURNING 1"
 
     return prepare(sql)
 }
@@ -229,7 +229,7 @@ private fun SQLiteConnection.prepareDelete(
     where: String?,
 ): SQLiteStatement {
     val whereClause = if (where.isNullOrBlank()) "" else "WHERE $where"
-    val sql = "DELETE FROM $table $whereClause"
+    val sql = "DELETE FROM $table $whereClause RETURNING 1"
 
     return prepare(sql)
 }
