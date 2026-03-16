@@ -149,7 +149,6 @@ class PlacesOverlayForm : AbstractOverlayForm() {
             Column(
                 modifier = Modifier.defaultMinSize(minHeight = 96.dp).padding(bottom = 48.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
-
             ) {
                 val feature = selectedFeature.value
 
