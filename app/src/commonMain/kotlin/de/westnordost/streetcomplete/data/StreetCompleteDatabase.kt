@@ -204,7 +204,7 @@ private fun SQLiteConnection.prepareQuery(
     limit: Int?,
 ): SQLiteStatement {
     require (having.isNullOrBlank() || !groupBy.isNullOrBlank()) {
-        "`having` clauses are only permitted when using a `groupBy clause"
+        "`having` clauses are only permitted when using a `groupBy` clause"
     }
 
     val columnNames = if (columns.isNullOrEmpty()) "*" else columns.joinToString(", ")
