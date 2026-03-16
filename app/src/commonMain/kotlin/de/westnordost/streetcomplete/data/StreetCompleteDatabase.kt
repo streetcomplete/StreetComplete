@@ -266,7 +266,7 @@ private fun SQLiteStatement.bind(i: Int, value: Any?) {
         is Int -> bindInt(i, value)
         is Float -> bindFloat(i, value)
         else -> {
-            val valueType = value.javaClass.canonicalName
+            val valueType = value::class.simpleName
             throw IllegalArgumentException("Illegal value type $valueType at column $i")
         }
     }
