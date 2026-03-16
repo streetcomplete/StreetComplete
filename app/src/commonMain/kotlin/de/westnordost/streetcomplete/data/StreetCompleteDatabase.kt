@@ -22,10 +22,12 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         }
         val newVersion = DatabaseInitializer.DB_VERSION
 
-        if (oldVersion == 0) {
-            DatabaseInitializer.onCreate(this)
-        } else if (oldVersion < newVersion) {
-            DatabaseInitializer.onUpgrade(this, oldVersion, newVersion)
+        if (oldVersion < newVersion) {
+            if (oldVersion == 0) {
+                DatabaseInitializer.onCreate(this)
+            } else {
+                DatabaseInitializer.onUpgrade(this, oldVersion, newVersion)
+            }
             databaseConnection.execSQL("PRAGMA user_version = $newVersion")
         }
     }
