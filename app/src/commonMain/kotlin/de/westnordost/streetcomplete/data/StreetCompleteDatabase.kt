@@ -182,16 +182,16 @@ private fun SQLiteConnection.prepareQuery(
     }
 
     val columnNames = if (columns.isNullOrEmpty()) "*" else columns.joinToString(", ")
-    var sql = "SELECT"
-    sql += if (distinct) " DISTINCT" else ""
-    sql += " $columnNames FROM $table"
-    where?.let { sql += " WHERE $it" }
-    groupBy?.let { sql += " GROUP BY $it" }
-    having?.let { sql += " HAVING $it" }
-    orderBy?.let { sql += " ORDER BY $it" }
-    limit?.let { sql += " LIMIT $limit" }
+    val sql = StringBuilder("SELECT")
+    if (distinct) sql.append(" DISTINCT")
+    sql.append(" $columnNames FROM $table")
+    where?.let { sql.append(" WHERE $it") }
+    groupBy?.let { sql.append(" GROUP BY $it") }
+    having?.let { sql.append(" HAVING $it") }
+    orderBy?.let { sql.append(" ORDER BY $it") }
+    limit?.let { sql.append(" LIMIT $it") }
 
-    return prepare(sql)
+    return prepare(sql.toString())
 }
 
 private fun getPlaceholdersString(count: Int) =
