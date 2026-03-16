@@ -65,7 +65,7 @@ fun FeatureItem(
         buildAnnotatedString {
             withStyle(SpanStyle(fontStyle = FontStyle.Italic)) { append(annotatedName) }
             append("\n")
-            append(parentFeature.name)
+            withStyle(SpanStyle(fontWeight = FontWeight.Normal)) { append(parentFeature.name) }
         }
     } else {
         annotatedName

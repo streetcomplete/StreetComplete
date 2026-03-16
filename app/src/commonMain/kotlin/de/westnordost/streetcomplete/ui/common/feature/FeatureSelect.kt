@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.common.feature
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -10,15 +9,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.font.FontWeight
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
-import de.westnordost.streetcomplete.osm.POPULAR_THING_FEATURE_IDS
-import de.westnordost.streetcomplete.osm.isThing
-import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.ui.ItemCard
-import de.westnordost.streetcomplete.util.ktx.geometryType
 
 /** Shows the currently selected feature and lets user change it */
 @Composable
@@ -40,12 +35,11 @@ fun FeatureSelect(
         onExpandChange = { showDialog = it },
         modifier = modifier,
     ) { item ->
-        CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.button) {
+        CompositionLocalProvider(LocalTextStyle provides LocalTextStyle.current.copy(fontWeight = FontWeight.Bold)) {
             FeatureItem(
                 feature = item,
                 featureDictionary = featureDictionary,
                 countryCode = countryCode,
-                modifier = Modifier.padding(4.dp)
             )
         }
     }

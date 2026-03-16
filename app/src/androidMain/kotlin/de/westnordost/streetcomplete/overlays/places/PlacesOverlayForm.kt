@@ -6,9 +6,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.LocalTextStyle
@@ -51,7 +53,9 @@ import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.name_label
 import de.westnordost.streetcomplete.resources.quest_placeName_no_name_answer
+import de.westnordost.streetcomplete.ui.common.feature.FeatureIcon
 import de.westnordost.streetcomplete.ui.common.feature.FeatureSelect
+import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -59,6 +63,7 @@ import de.westnordost.streetcomplete.util.getLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
+import de.westnordost.streetcomplete.util.takeFavorites
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import org.jetbrains.compose.resources.stringResource
@@ -78,6 +83,20 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     private var selectedFeature: MutableState<Feature?> = mutableStateOf(null)
     private var localizedNames: MutableState<List<LocalizedName>> = mutableStateOf(emptyList())
     private var isNoName: MutableState<Boolean> = mutableStateOf(false)
+
+    private val lastPickedFeatures: List<Feature> by lazy {
+        val languages = getLanguagesForFeatureDictionary()
+        prefs.getLastPicked<String>(this::class.simpleName!!)
+            .takeFavorites(n = 5, first = 1)
+            .mapNotNull { featureId ->
+                featureDictionary.getById(
+                    id = featureId,
+                    languages = languages,
+                    country = countryOrSubdivisionCode,
+                )
+            }
+    }
+
 
     private lateinit var vacantShopFeature: Feature
 
@@ -147,25 +166,23 @@ class PlacesOverlayForm : AbstractOverlayForm() {
             isNoName = rememberSaveable { mutableStateOf(originalNoName) }
 
             Column(
-                modifier = Modifier.defaultMinSize(minHeight = 96.dp).padding(bottom = 48.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier
+                    .defaultMinSize(minHeight = 96.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
             ) {
                 val feature = selectedFeature.value
 
-                Box(
-                    modifier = Modifier.fillMaxWidth(),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    FeatureSelect(
-                        feature = feature,
-                        onSelectedFeature = ::onSelectedFeature,
-                        featureDictionary = featureDictionary,
-                        geometryType = element?.geometryType ?: GeometryType.POINT,
-                        countryCode = countryOrSubdivisionCode,
-                        filterFn = { it.toElement().isPlace() || it.id == "shop/vacant" },
-                        codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS,
-                    )
-                }
+                FeatureSelect(
+                    feature = feature,
+                    onSelectedFeature = ::onSelectedFeature,
+                    featureDictionary = featureDictionary,
+                    geometryType = element?.geometryType ?: GeometryType.POINT,
+                    countryCode = countryOrSubdivisionCode,
+                    filterFn = { it.toElement().isPlace() || it.id == "shop/vacant" },
+                    codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS,
+                )
                 if (feature != null && !feature.hasFixedName) {
                     Column {
                         Text(
@@ -196,6 +213,26 @@ class PlacesOverlayForm : AbstractOverlayForm() {
                             languageTags = selectableLanguages,
                         )
                     }
+                }
+                // show only for adding new POIs becaues it gets too busy with also the name form
+                // being displayed
+                if(lastPickedFeatures.isNotEmpty() && element == null && selectedFeature.value == null) {
+                    LastPickedChipsRow(
+                        items = lastPickedFeatures,
+                        onClick = {
+                            selectedFeature.value = it
+                            checkIsFormComplete()
+                        },
+                        modifier = Modifier.padding(start = 48.dp, end = 56.dp),
+                        itemContent = {
+                            FeatureIcon(
+                                feature = it,
+                                modifier = Modifier.size(22.5.dp)
+                            )
+                        }
+                    )
+                } else {
+                    Spacer(Modifier.size(48.dp))
                 }
             }
         } }
@@ -256,6 +293,11 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         val inputNames = localizedNames.value.filter { it.name.isNotEmpty() }
         val firstLanguage = inputNames.firstOrNull()?.languageTag
         if (!firstLanguage.isNullOrEmpty()) prefs.preferredLanguageForNames = firstLanguage
+
+        val feature = selectedFeature.value!!
+        if (!feature.isSuggestion) {
+            prefs.addLastPicked(this::class.simpleName!!, feature.id)
+        }
 
         viewLifecycleScope.launch {
             applyEdit(createEditAction(
