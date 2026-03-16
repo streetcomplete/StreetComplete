@@ -57,12 +57,6 @@ fun FeatureItem(
         )
     } else null
 
-    // brand features usually don't have an own icon, so, we fall back to parent feature, e.g. for
-    // Aldi, use icon of shop/supermarket. Finally, if there is no icon at all, use a
-    // placeholder
-    val iconResourceName = feature.iconResourceName ?: parentFeature?.iconResourceName
-    val icon = Res.allDrawableResources[iconResourceName] ?: Res.drawable.preset_maki_marker_stroked
-
     val annotatedName = remember(searchText, color) {
         feature.buildAnnotatedName(searchText = searchText, color = color)
     }
@@ -82,10 +76,10 @@ fun FeatureItem(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Icon(
-            painter = painterResource(icon),
-            contentDescription = iconResourceName,
-            modifier = Modifier.size(iconSize)
+        FeatureIcon(
+            feature = feature,
+            parentFeature = parentFeature,
+            modifier = Modifier.size(iconSize),
         )
         Text(
             text = annotatedText,
@@ -93,9 +87,6 @@ fun FeatureItem(
         )
     }
 }
-
-private val Feature.iconResourceName: String? get() =
-    icon?.let { "preset_" + it.replace('-', '_') }
 
 /** The feature's name but with the [searchText] highlighted. Also, when the feature has several
  *  names (aliases), the name that matches the [searchText] is displayed instead of the "primary"
