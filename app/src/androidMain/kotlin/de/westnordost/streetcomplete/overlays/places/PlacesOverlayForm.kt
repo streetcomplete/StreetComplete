@@ -132,7 +132,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
         val selectableLanguages = (
             countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages
-            ).distinct().toMutableList()
+        ).distinct().toMutableList()
         val preferredLanguage = prefs.preferredLanguageForNames
         if (preferredLanguage != null) {
             if (selectableLanguages.remove(preferredLanguage)) {
