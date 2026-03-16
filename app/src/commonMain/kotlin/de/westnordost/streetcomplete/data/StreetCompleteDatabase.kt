@@ -150,13 +150,12 @@ class SQLiteCursorPosition(private val statement: SQLiteStatement) : CursorPosit
     override fun getBlobOrNull(columnName: String): ByteArray? = statement.getBlobOrNull(index(columnName))
     override fun getStringOrNull(columnName: String): String? = statement.getTextOrNull(index(columnName))
 
-    private val columnNames by lazy { statement.getColumnNames() }
-
-    private fun index(columnName: String): Int {
-        val index = columnNames.indexOf(columnName)
-        require(index != -1) { "Column $columnName not found" }
-        return index
+    private val columnIndices: Map<String, Int> by lazy {
+        statement.getColumnNames().withIndex().associate { (i, name) -> name to i }
     }
+
+    private fun index(columnName: String): Int =
+        columnIndices[columnName] ?: throw IllegalArgumentException("Column $columnName not found")
 }
 
 private fun ConflictAlgorithm?.toSql() = when (this) {
