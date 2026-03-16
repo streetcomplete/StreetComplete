@@ -123,7 +123,9 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         conflictAlgorithm: ConflictAlgorithm?,
     ): Int = lock.withLock {
         databaseConnection.prepareUpdate(table, values, where, conflictAlgorithm).use { statement ->
-            statement.bindAll(args)
+            val valueArgs = values.map { it.second }
+            val allArgs = (valueArgs + args.orEmpty()).toTypedArray()
+            statement.bindAll(allArgs)
             statement.toSequence { }.count()
         }
     }
@@ -239,7 +241,7 @@ private fun SQLiteConnection.prepareUpdate(
     conflictAlgorithm: ConflictAlgorithm?,
 ): SQLiteStatement {
     val conflictSql = conflictAlgorithm.toSql()
-    val placeholders = values.map { it.first + "=?" }
+    val placeholders = values.joinToString(", ") { it.first + "=?" }
     val whereClause = if (where.isNullOrBlank()) "" else "WHERE $where"
     val sql = "UPDATE $conflictSql $table SET $placeholders $whereClause RETURNING 1"
 
