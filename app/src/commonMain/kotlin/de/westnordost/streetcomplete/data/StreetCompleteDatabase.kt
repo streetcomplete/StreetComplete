@@ -287,9 +287,7 @@ private fun <T> SQLiteStatement.toSequence(transform: (CursorPosition) -> T): Se
         }
     }
 }
-private fun SQLiteStatement.executeInsert(): Long =
-    toSequence { it.getLong("rowid") }.single()
-
+private fun SQLiteStatement.executeInsert(): Long = if (step()) getLong(0) else -1
 private fun SQLiteStatement.getIntOrNull(index: Int) = if (isNull(index)) null else getInt(index)
 private fun SQLiteStatement.getLongOrNull(index: Int) = if (isNull(index)) null else getLong(index)
 private fun SQLiteStatement.getDoubleOrNull(index: Int) = if (isNull(index)) null else getDouble(index)
