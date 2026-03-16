@@ -16,6 +16,7 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
     private var transactionDepth = 0
 
     init {
+        databaseConnection.execSQL("PRAGMA journal_mode=WAL")
         val oldVersion = databaseConnection.prepare("PRAGMA user_version").use { statement ->
             statement.toSequence { it.getInt("user_version") }.single()
         }
