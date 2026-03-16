@@ -1,11 +1,16 @@
 package de.westnordost.streetcomplete.ui.common.feature
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
@@ -32,13 +37,17 @@ fun FeatureSelect(
     ItemCard(
         item = feature,
         expanded = showDialog,
-        onExpandChange = { showDialog = it }
+        onExpandChange = { showDialog = it },
+        modifier = modifier,
     ) { item ->
-        FeatureItem(
-            feature = item,
-            featureDictionary = featureDictionary,
-            countryCode = countryCode,
-        )
+        CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.button) {
+            FeatureItem(
+                feature = item,
+                featureDictionary = featureDictionary,
+                countryCode = countryCode,
+                modifier = Modifier.padding(4.dp)
+            )
+        }
     }
     if (showDialog) {
         FeatureSearchDialog(

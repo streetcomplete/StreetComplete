@@ -103,6 +103,7 @@ private fun Feature.buildAnnotatedName(
     val matchedName = findMatchedName(searchText)
     // search but no match with name (likely, match with term): show name not in bold
     if (matchedName == null) {
+        pushStyle(SpanStyle(fontWeight = FontWeight.Normal))
         append(name)
         return@buildAnnotatedString
     }
