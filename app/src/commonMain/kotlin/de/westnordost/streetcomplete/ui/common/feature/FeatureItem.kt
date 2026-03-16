@@ -162,7 +162,7 @@ private fun Feature.findMatchedName(searchText: String): String? {
     return null
 }
 
-/** Returns the feature associated with the parent of the given id or null if it does not exist.
+/** Returns the feature associated with the parent of the given [id] or null if it does not exist.
  *  Otherwise, same parameters as getById */
 private fun FeatureDictionary.getParentOfById(
     id: String,
