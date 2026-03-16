@@ -13,6 +13,7 @@ import kotlinx.atomicfu.locks.withLock
 
 class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) : Database {
     private val lock = ReentrantLock()
+    private var transactionDepth = 0
 
     init {
         val oldVersion = databaseConnection.prepare("PRAGMA user_version").use { statement ->
@@ -97,20 +98,20 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         valuesList: Iterable<Array<Any?>>,
         conflictAlgorithm: ConflictAlgorithm?,
     ): List<Long> = lock.withLock {
-        val statement = databaseConnection.prepareInsert(table, columnNames.toList(), conflictAlgorithm)
-        val result = ArrayList<Long>()
-        transaction {
-            for (values in valuesList) {
-                require(values.size == columnNames.size)
-                statement.bindAll(values)
-                val rowId = statement.executeInsert()
-                result.add(rowId)
-                statement.clearBindings()
-                statement.reset()
+        databaseConnection.prepareInsert(table, columnNames.toList(), conflictAlgorithm).use { statement ->
+            val result = ArrayList<Long>()
+            transaction {
+                for (values in valuesList) {
+                    require(values.size == columnNames.size)
+                    statement.bindAll(values)
+                    val rowId = statement.executeInsert()
+                    result.add(rowId)
+                    statement.clearBindings()
+                    statement.reset()
+                }
             }
-            statement.close()
+            result
         }
-        return result
     }
 
     override fun update(
@@ -134,14 +135,24 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
     }
 
     override fun <T> transaction(block: () -> T): T = lock.withLock {
-        databaseConnection.execSQL("BEGIN IMMEDIATE TRANSACTION")
+        val isOutermost = transactionDepth == 0
+        transactionDepth++
         try {
+            if (isOutermost) {
+                databaseConnection.execSQL("BEGIN IMMEDIATE TRANSACTION")
+            }
             val result = block()
-            databaseConnection.execSQL("END TRANSACTION")
+            if (isOutermost) {
+                databaseConnection.execSQL("END TRANSACTION")
+            }
             return result
         } catch (t: Throwable) {
-            databaseConnection.execSQL("ROLLBACK TRANSACTION")
+            if (isOutermost) {
+                databaseConnection.execSQL("ROLLBACK TRANSACTION")
+            }
             throw t
+        } finally {
+            transactionDepth--
         }
     }
 }
