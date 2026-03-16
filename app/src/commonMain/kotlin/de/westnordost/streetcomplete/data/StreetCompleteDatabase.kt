@@ -226,7 +226,7 @@ private fun SQLiteConnection.prepareInsert(
     val conflictSql = conflictAlgorithm.toSql()
     val columnNames = columns.joinToString(", ")
     val placeholders = getPlaceholdersString(columns.size)
-    val sql = "INSERT $conflictSql INTO $table ($columnNames) VALUES ($placeholders) RETURNING RowId"
+    val sql = "INSERT $conflictSql INTO $table ($columnNames) VALUES ($placeholders) RETURNING ROWID"
 
     return prepare(sql)
 }
