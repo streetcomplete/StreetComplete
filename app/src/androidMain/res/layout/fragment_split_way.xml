@@ -6,14 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/splitWayRoot">
 
-    <ImageView
-        android:id="@+id/scissors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:rotation="-45"
-        android:alpha="0"
-        app:srcCompat="@drawable/scissors_animation"/>
-
     <de.westnordost.streetcomplete.view.SlidingRelativeLayout
         android:layout_width="@dimen/quest_form_width"
         android:layout_height="match_parent"

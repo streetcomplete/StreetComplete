@@ -204,7 +204,7 @@ class SplitWayFragment :
         } else {
             splits.add(Pair(splitWay, splitPosition))
             animateButtonVisibilities()
-            animateScissors()
+            //animateScissors() todo
             showsGeometryMarkersListener?.putMarkersForCurrentHighlighting(listOf(
                 Marker(
                     ElementPointGeometry(splitPosition),
@@ -215,23 +215,6 @@ class SplitWayFragment :
 
         // always consume event. User should press the cancel button to exit
         return true
-    }
-
-    private fun animateScissors() {
-        val scissorsPos = clickPos ?: return
-
-        (binding.scissors.drawable as? Animatable)?.start()
-
-        binding.scissors.updateLayoutParams<RelativeLayout.LayoutParams> {
-            leftMargin = (scissorsPos.x - binding.scissors.width / 2).toInt()
-            topMargin = (scissorsPos.y - binding.scissors.height / 2).toInt()
-        }
-        binding.scissors.alpha = 1f
-        val animator = AnimatorInflater.loadAnimator(context, R.animator.scissors_snip)
-        animator.setTarget(binding.scissors)
-        animator.start()
-
-        viewLifecycleScope.launch { soundFx.play(R.raw.snip) }
     }
 
     private fun createSplits(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitPolylineAtPosition> {
