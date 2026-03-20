@@ -38,8 +38,8 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
 
     override fun createForm() = AddBicycleRepairStationServicesForm()
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             nodes, ways with
             amenity ~ bicycle_repair_station|compressed_air
         """)

@@ -25,8 +25,8 @@ class AddCameraType : OsmFilterQuestType<CameraType>(), AndroidQuest {
     override val title = Res.string.quest_camera_type_title
     override val achievements = listOf(CITIZEN)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with surveillance and surveillance:type = camera")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with surveillance and surveillance:type = camera")
 
     override fun createForm() = AddCameraTypeForm()
 

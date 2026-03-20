@@ -30,8 +30,8 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>(), AndroidQuest {
     override val title = Res.string.quest_board_name_title
     override val achievements = listOf(OUTDOORS)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways, relations with tourism = information and information = board")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways, relations with tourism = information and information = board")
 
     override fun createForm() = AddBoardNameForm()
 

@@ -33,8 +33,8 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>(), AndroidQuest
     override val isDeleteElementEnabled = true
     override val achievements = listOf(PEDESTRIAN, OUTDOORS)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = bench or leisure = picnic_table")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = bench or leisure = picnic_table")
 
     override fun createForm() = AddBenchBackrestForm()
 

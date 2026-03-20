@@ -42,8 +42,8 @@ class AddFirewood : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with leisure = firepit or amenity = bbq or tourism = wilderness_hut")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with leisure = firepit or amenity = bbq or tourism = wilderness_hut")
 
     override fun createForm() = YesNoQuestForm()
 

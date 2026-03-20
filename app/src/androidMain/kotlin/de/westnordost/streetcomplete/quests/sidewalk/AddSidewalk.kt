@@ -36,8 +36,8 @@ class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>>, AndroidQuest {
         roadsFilter.matches(element)
         && (untaggedRoadsFilter.matches(element) || element.hasInvalidOrIncompleteSidewalkTags())
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             ways with (
                 highway ~ path|footway|steps
                 or highway ~ cycleway|bridleway and foot ~ yes|designated

@@ -39,8 +39,8 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
     override val achievements = listOf(CAR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_maxspeed
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with traffic_sign = city_limit")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with traffic_sign = city_limit")
 
     override fun createForm() = AddMaxSpeedForm()
 

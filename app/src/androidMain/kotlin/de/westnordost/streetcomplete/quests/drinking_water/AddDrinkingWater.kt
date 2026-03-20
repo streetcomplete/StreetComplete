@@ -38,8 +38,8 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             nodes with
              (
                  man_made = water_tap

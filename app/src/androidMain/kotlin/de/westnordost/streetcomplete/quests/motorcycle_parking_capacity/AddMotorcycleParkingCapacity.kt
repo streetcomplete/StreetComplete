@@ -29,8 +29,8 @@ class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
 
     override fun createForm() = AddMotorcycleParkingCapacityForm()
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = motorcycle_parking")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = motorcycle_parking")
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("capacity", answer.toString())

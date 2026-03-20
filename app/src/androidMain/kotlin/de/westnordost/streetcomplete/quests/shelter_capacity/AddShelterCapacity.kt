@@ -34,8 +34,8 @@ class AddShelterCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = shelter")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = shelter")
 
     override fun createForm() = AddShelterCapacityForm()
 

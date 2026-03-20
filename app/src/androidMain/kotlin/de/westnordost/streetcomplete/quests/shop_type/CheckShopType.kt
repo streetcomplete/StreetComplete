@@ -58,8 +58,8 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer>, AndroidQuest {
          *  this element being cleared when the quest is answered */
         !element.isPlace()
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = ShopTypeForm()
 

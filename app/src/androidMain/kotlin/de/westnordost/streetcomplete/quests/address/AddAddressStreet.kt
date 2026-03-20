@@ -63,8 +63,8 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName>, AndroidQuest {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!filter.matches(element)) false else null
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             nodes, ways, relations with
             (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
             and !name and !brand and !operator and !ref

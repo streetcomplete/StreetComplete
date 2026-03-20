@@ -26,8 +26,8 @@ class AddBikeParkingType : OsmFilterQuestType<BikeParkingType>(), AndroidQuest {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = bicycle_parking")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = bicycle_parking")
 
     override fun createForm() = AddBikeParkingTypeForm()
 

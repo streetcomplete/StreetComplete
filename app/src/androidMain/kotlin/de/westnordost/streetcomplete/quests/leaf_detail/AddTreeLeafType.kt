@@ -27,8 +27,8 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>(), AndroidQuest {
     override val achievements = listOf(OUTDOORS)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with natural = tree".toElementFilterExpression())
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with natural = tree".toElementFilterExpression())
 
     override fun createForm() = AddTreeLeafTypeForm()
 

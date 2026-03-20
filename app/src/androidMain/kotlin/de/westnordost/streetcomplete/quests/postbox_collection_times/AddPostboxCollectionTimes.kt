@@ -86,8 +86,8 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
         return oh.isSupported(allowTimePoints = true, allowAmbiguity = true)
     }
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = post_box")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = post_box")
 
     override fun createForm() = AddPostboxCollectionTimesForm()
 

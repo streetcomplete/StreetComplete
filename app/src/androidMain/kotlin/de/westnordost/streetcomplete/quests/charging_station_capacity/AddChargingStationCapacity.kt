@@ -31,8 +31,8 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = charging_station and motorcar != no")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = charging_station and motorcar != no")
 
     override fun createForm() = AddChargingStationCapacityForm()
 

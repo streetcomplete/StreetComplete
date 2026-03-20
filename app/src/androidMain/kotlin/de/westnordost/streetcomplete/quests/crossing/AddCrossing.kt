@@ -41,8 +41,8 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer>, AndroidQuest {
         R.drawable.informal_crossing,
     )
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter { it.isCrossing() }.asSequence()
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter { it.isCrossing() }.asSequence()
 
     override fun isApplicableTo(element: Element): Boolean? =
         if (element is Node && element.tags.isEmpty()) null else false

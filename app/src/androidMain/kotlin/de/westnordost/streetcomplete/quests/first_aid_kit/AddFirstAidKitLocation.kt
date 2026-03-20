@@ -27,8 +27,8 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override val isDeleteElementEnabled = false
     override val achievements = listOf(LIFESAVER)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with emergency = first_aid_kit")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with emergency = first_aid_kit")
 
     override fun createForm() = AddLocationDescriptionForm()
 

@@ -34,8 +34,8 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>(), AndroidQue
     override val achievements = listOf(CITIZEN)
     override val hint = R.string.quest_determineRecyclingGlass_description_any_glass
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = recycling")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = recycling")
 
     override fun createForm() = DetermineRecyclingGlassForm()
 

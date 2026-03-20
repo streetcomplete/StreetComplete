@@ -28,8 +28,8 @@ class AddCabins : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val title = Res.string.quest_camp_cabin_title
     override val achievements = listOf(OUTDOORS)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with tourism ~ caravan_site|camp_site")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with tourism ~ caravan_site|camp_site")
 
     override fun applyAnswerTo(
         answer: Boolean,

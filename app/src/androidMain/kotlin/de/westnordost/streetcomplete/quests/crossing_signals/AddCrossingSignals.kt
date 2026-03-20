@@ -38,8 +38,8 @@ class AddCrossingSignals : OsmElementQuestType<Boolean>, AndroidQuest {
     override val title = Res.string.quest_pedestrian_crossing_signals2
     override val achievements = listOf(PEDESTRIAN)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter { it.isCrossing() }.asSequence()
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter { it.isCrossing() }.asSequence()
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways

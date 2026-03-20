@@ -28,8 +28,8 @@ class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val title = Res.string.quest_traffic_signals_button_title
     override val achievements = listOf(PEDESTRIAN)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter { it.isCrossingWithTrafficSignals() }.asSequence()
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter { it.isCrossingWithTrafficSignals() }.asSequence()
 
     override fun createForm() = YesNoQuestForm()
 

@@ -21,8 +21,8 @@ class AddAtmOperator : OsmFilterQuestType<String>(), AndroidQuest {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = atm")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = atm")
 
     override fun createForm() = AddAtmOperatorForm()
 

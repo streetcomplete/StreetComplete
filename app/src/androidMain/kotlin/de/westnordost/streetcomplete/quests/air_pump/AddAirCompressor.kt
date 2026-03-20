@@ -33,8 +33,8 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val achievements = listOf(CAR, BICYCLIST)
     override val isReplacePlaceEnabled = true
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             nodes, ways with
             compressed_air = yes
             or amenity ~ compressed_air|fuel

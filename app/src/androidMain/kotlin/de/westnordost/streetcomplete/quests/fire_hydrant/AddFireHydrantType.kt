@@ -21,8 +21,8 @@ class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>(), AndroidQuest {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(LIFESAVER)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with emergency = fire_hydrant")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with emergency = fire_hydrant")
 
     override fun createForm() = AddFireHydrantTypeForm()
 

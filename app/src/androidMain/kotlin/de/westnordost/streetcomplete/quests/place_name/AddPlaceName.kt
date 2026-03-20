@@ -146,8 +146,8 @@ class AddPlaceName(
     override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) && getFeature(element) != null
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddPlaceNameForm()
 

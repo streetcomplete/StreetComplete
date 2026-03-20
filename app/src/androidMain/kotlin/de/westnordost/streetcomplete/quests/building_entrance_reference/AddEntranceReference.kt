@@ -98,8 +98,8 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer>, Andro
         return result
     }
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter { it.tags.containsKey("entrance") }.asSequence()
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter { it.tags.containsKey("entrance") }.asSequence()
 
     override fun createForm() = AddEntranceReferenceForm()
 

@@ -21,8 +21,8 @@ class AddParcelLockerBrand : OsmFilterQuestType<String>(), AndroidQuest {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = parcel_locker")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = parcel_locker")
 
     override fun createForm() = AddParcelLockerBrandForm()
 

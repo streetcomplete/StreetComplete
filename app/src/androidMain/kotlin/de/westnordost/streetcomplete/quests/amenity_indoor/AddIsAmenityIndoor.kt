@@ -95,11 +95,11 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
             false
         }
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
            e.g. it's a ticket validator? -> display other ticket validators. Etc. */
         val feature = getFeature(element) ?: return emptySequence()
-        return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
+        return mapData.filter { it.tags.containsAll(feature.tags) }.asSequence()
     }
 
     override fun createForm() = IsAmenityIndoorForm()

@@ -32,8 +32,8 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>(), AndroidQ
         // Not New Zealand: https://wiki.openstreetmap.org/w/index.php?title=Talk:StreetComplete/Quests&oldid=2599288#Quests_in_New_Zealand
     )
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = post_box")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = post_box")
 
     override fun createForm() = AddPostboxRoyalCypherForm()
 

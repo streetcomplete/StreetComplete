@@ -27,8 +27,8 @@ class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallat
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST, LIFESAVER)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with barrier = cycle_barrier")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with barrier = cycle_barrier")
 
     override fun createForm() = AddBicycleBarrierInstallationForm()
 

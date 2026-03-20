@@ -48,8 +48,8 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>(), AndroidQuest {
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside_regional_warning
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = SmokingAllowedForm()
 

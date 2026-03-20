@@ -35,8 +35,8 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside_regional_warning
     override val hint = R.string.quest_dietType_explanation_kosher
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddDietTypeForm()
 

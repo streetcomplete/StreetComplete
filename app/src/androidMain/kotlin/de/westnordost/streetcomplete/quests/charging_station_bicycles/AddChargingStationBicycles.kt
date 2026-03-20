@@ -27,8 +27,8 @@ class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>()
     override val achievements = listOf(BICYCLIST)
     override val hint = R.string.quest_charging_station_bicycles_hint
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = charging_station")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = charging_station")
 
     override fun createForm() = AddChargingStationBicyclesForm()
 

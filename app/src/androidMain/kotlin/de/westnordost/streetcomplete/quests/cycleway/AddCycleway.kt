@@ -93,8 +93,8 @@ class AddCycleway(
         return element.hasOldInvalidOrAmbiguousCyclewayTags(null)
     }
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             ways with (
                 highway ~ cycleway|path
                 or highway ~ footway|bridleway and bicycle ~ yes|designated

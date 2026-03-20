@@ -70,8 +70,8 @@ class AddRoadWidth(
     override fun isApplicableTo(element: Element) =
         nodeFilter.matches(element) || wayFilter.matches(element)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table")
 
     override fun createForm() = AddWidthForm()
 

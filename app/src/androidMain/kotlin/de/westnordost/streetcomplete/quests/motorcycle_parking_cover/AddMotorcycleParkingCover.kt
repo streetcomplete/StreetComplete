@@ -28,8 +28,8 @@ class AddMotorcycleParkingCover : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = motorcycle_parking")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = motorcycle_parking")
 
     override fun createForm() = YesNoQuestForm()
 

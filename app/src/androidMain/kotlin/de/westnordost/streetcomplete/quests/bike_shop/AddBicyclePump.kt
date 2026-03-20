@@ -31,8 +31,8 @@ class AddBicyclePump : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val title = Res.string.quest_air_pump_bicycle_shop_title
     override val achievements = listOf(BICYCLIST)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = YesNoQuestForm()
 

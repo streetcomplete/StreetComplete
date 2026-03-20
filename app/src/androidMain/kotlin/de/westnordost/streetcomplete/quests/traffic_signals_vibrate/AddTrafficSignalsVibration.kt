@@ -49,8 +49,8 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean>, AndroidQuest {
     override val hint = R.string.quest_traffic_signals_vibrate_description
     override val hintImages = listOf(R.drawable.vibrating_button_illustration)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter { it.isCrossingWithTrafficSignals() }.asSequence()
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter { it.isCrossingWithTrafficSignals() }.asSequence()
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways

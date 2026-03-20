@@ -26,8 +26,8 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>(), AndroidQuest {
     override val title = Res.string.quest_bbq_fuel_title
     override val achievements = listOf(OUTDOORS)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = bbq")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = bbq")
 
     override fun createForm() = AddBbqFuelForm()
 

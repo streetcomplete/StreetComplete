@@ -47,8 +47,8 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer>, AndroidQuest {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!bollardNodeFilter.matches(element)) false else null
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with barrier = bollard")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with barrier = bollard")
 
     override fun createForm() = AddBollardTypeForm()
 

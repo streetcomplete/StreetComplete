@@ -35,8 +35,8 @@ class AddCampShower : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val title = Res.string.quest_camp_shower_title
     override val achievements = listOf(OUTDOORS)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with tourism = camp_site")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with tourism = camp_site")
 
     override fun createForm() = YesNoQuestForm()
 

@@ -29,8 +29,8 @@ class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>(), AndroidQuest {
     override val isDeleteElementEnabled = true
     override val achievements = listOf(RARE, CITIZEN, OUTDOORS)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with tourism = information and information = board")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with tourism = information and information = board")
 
     override fun createForm() = AddBoardTypeForm()
 

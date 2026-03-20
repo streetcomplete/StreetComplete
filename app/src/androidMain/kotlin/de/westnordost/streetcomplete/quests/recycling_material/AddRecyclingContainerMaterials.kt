@@ -47,8 +47,8 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 
     override fun createForm() = AddRecyclingContainerMaterialsForm()
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")
 
     override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer is RecyclingMaterials) {

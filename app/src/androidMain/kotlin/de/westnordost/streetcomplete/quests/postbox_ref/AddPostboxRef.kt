@@ -31,8 +31,8 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>(), AndroidQuest {
         "JP", // https://github.com/streetcomplete/StreetComplete/issues/6680
     )
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = post_box")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = post_box")
 
     override fun createForm() = AddPostboxRefForm()
 

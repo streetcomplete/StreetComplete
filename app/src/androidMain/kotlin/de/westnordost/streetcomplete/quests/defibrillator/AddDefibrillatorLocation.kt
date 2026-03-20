@@ -26,8 +26,8 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override val isDeleteElementEnabled = false
     override val achievements = listOf(LIFESAVER)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with emergency = defibrillator")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with emergency = defibrillator")
 
     override fun createForm() = AddLocationDescriptionForm()
 

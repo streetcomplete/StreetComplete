@@ -46,8 +46,8 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer>, A
             && value == "yes"
         }
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = recycling")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = recycling")
 
     override fun createForm() = AddClothingBinOperatorForm()
 

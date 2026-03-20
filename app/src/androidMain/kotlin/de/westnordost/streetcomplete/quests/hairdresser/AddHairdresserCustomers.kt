@@ -29,8 +29,8 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>(), Andr
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddHairdresserCustomersForm()
 
