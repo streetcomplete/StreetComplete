@@ -17,6 +17,6 @@ interface QuestType : EditType {
     /** Hint pictures to be shown when the user taps on the ℹ️ button */
     val hintImages: List<Int> get() = emptyList()
 
-    /** The quest type can clean it's metadata that is older than the given timestamp here, if any  */
+    /** The quest type can clean its metadata that is older than the given timestamp here, if any  */
     fun deleteMetadataOlderThan(timestamp: Long) {}
 }

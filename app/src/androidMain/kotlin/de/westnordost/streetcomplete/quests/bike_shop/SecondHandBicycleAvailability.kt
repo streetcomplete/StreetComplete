@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.quests.bike_shop
 
 import de.westnordost.streetcomplete.quests.bike_shop.SecondHandBicycleAvailability.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_bicycle_shop_second_hand_new_and_used
-import de.westnordost.streetcomplete.resources.quest_bicycle_shop_second_hand_no_bicycles
-import de.westnordost.streetcomplete.resources.quest_bicycle_shop_second_hand_only_new
-import de.westnordost.streetcomplete.resources.quest_bicycle_shop_second_hand_only_used
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 enum class SecondHandBicycleAvailability(val osmValue: String?) {

@@ -1,11 +1,15 @@
 package de.westnordost.streetcomplete.quests
 
+import android.R.attr.text
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableFloatState
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.core.os.bundleOf
@@ -26,6 +30,8 @@ import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractBottomSheetFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
+import de.westnordost.streetcomplete.ui.theme.titleLarge
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -36,6 +42,8 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setText
 import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 
@@ -127,10 +135,18 @@ abstract class AbstractQuestForm :
         return binding.root
     }
 
+    protected open fun getTitle(): StringResource =
+        questType.title
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitle(resources.getString(questType.title))
+        binding.titleLabel.content {
+            ProvideTextStyle(MaterialTheme.typography.titleLarge) {
+                androidx.compose.material.Text(stringResource(questType.title))
+            }
+        }
+
         setTitleHintLabel(null)
         setHint(questType.hint?.let { resources.getString(it) })
         setHintImages(questType.hintImages.mapNotNull { requireContext().getDrawable(it) })
@@ -165,10 +181,6 @@ abstract class AbstractQuestForm :
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    protected fun setTitle(text: CharSequence?) {
-        binding.titleLabel.text = text
     }
 
     protected fun setTitleHintLabel(text: CharSequence?) {

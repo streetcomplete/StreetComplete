@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddChargingStationOperator : OsmFilterQuestType<String>(), AndroidQuest {
 
@@ -23,10 +24,9 @@ class AddChargingStationOperator : OsmFilterQuestType<String>(), AndroidQuest {
     override val changesetComment = "Specify charging station operators"
     override val wikiLink = "Tag:amenity=charging_station"
     override val icon = R.drawable.quest_charger_operator
+    override val title = Res.string.quest_charging_station_operator_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_charging_station_operator_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with amenity = charging_station")

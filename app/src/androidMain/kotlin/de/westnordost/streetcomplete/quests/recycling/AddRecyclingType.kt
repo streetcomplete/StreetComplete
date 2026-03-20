@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.OVERGROUND_CONTAINER
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.RECYCLING_CENTRE
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.UNDERGROUND_CONTAINER
+import de.westnordost.streetcomplete.resources.*
 
 class AddRecyclingType : OsmFilterQuestType<RecyclingType>(), AndroidQuest {
 
@@ -19,10 +20,9 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>(), AndroidQuest {
     override val changesetComment = "Specify type of recycling amenities"
     override val wikiLink = "Key:recycling_type"
     override val icon = R.drawable.quest_recycling
+    override val title = Res.string.quest_recycling_type_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_type_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")

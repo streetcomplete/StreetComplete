@@ -11,8 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.MOTORWAYS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_no_ar
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import org.jetbrains.compose.resources.StringResource
 
@@ -62,20 +61,22 @@ class AddMaxPhysicalHeight(
     override val changesetComment = "Specify maximum physical heights"
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.quest_max_height_measure
+    override val title = Res.string.quest_maxheight_title
     override val achievements = listOf(EditTypeAchievement.CAR)
     override val defaultDisabledMessage: StringResource?
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
 
-    override fun getTitle(tags: Map<String, String>): Int {
+    override fun getTitle(tags: Map<String, String>): StringResource {
         val isBelowBridge = tags["amenity"] != "parking_entrance"
             && tags["barrier"] != "height_restrictor"
             && tags["tunnel"] == null
             && tags["covered"] == null
             && tags["man_made"] != "pipeline"
         // only the "below the bridge" situation may need some context
-        return when {
-            isBelowBridge -> R.string.quest_maxheight_below_bridge_title
-            else          -> R.string.quest_maxheight_title
+        return if (isBelowBridge) {
+            Res.string.quest_maxheight_below_bridge_title
+        } else {
+            Res.string.quest_maxheight_title
         }
     }
 

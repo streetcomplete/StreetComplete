@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddTrafficSignalsVibration : OsmElementQuestType<Boolean>, AndroidQuest {
@@ -37,6 +38,7 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean>, AndroidQuest {
     override val changesetComment = "Specify whether traffic signals have tactile indications that it's safe to cross"
     override val wikiLink = "Key:$VIBRATING_BUTTON"
     override val icon = R.drawable.quest_blind_traffic_lights
+    override val title = Res.string.quest_traffic_signals_vibrate_title
     override val achievements = listOf(BLIND)
     override val enabledInCountries = AllCountriesExcept(
         "BG", // see https://github.com/streetcomplete/StreetComplete/issues/5846
@@ -44,11 +46,8 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean>, AndroidQuest {
         "RU", // see https://github.com/streetcomplete/StreetComplete/issues/4021
         "CZ"
     )
-
     override val hint = R.string.quest_traffic_signals_vibrate_description
     override val hintImages = listOf(R.drawable.vibrating_button_illustration)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_vibrate_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter { it.isCrossingWithTrafficSignals() }.asSequence()

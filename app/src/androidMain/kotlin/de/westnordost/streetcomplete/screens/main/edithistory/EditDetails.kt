@@ -22,6 +22,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.ui.util.toAnnotatedString
 import de.westnordost.streetcomplete.util.getNameAndLocationHtml
 import de.westnordost.streetcomplete.util.html.parseHtml
+import org.jetbrains.compose.resources.stringResource
 import java.text.DateFormat
 
 /** Shows details for an edit. I.e. image, title, name and location of edited element (if any),
@@ -55,7 +56,7 @@ fun EditDetails(
                 modifier = Modifier.size(64.dp)
             )
             Text(
-                text = edit.getTitle(element?.tags),
+                text = stringResource(edit.getTitle(element?.tags)),
                 style = MaterialTheme.typography.body1,
                 color = LocalContentColor.current.copy(alpha = ContentAlpha.high),
             )

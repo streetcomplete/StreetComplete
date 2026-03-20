@@ -9,8 +9,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>(), AndroidQuest {
@@ -31,11 +30,10 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>(), AndroidQuest {
     override val changesetComment = "Survey whether payment with cards is accepted"
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.quest_card
+    override val title = Res.string.quest_accepts_cards
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cards
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }

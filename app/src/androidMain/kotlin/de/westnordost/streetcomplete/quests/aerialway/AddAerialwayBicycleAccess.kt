@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnsw
 import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.NO_SIGN
 import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.SUMMER
 import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.YES
+import de.westnordost.streetcomplete.resources.*
+
 class AddAerialwayBicycleAccess : OsmFilterQuestType<AerialwayBicycleAccessAnswer>(), AndroidQuest {
 
     override val elementFilter = """
@@ -26,9 +28,8 @@ class AddAerialwayBicycleAccess : OsmFilterQuestType<AerialwayBicycleAccessAnswe
     override val changesetComment = "Specify whether bicycles can be taken on aerialway"
     override val wikiLink = "Tag:aerialway"
     override val icon = R.drawable.quest_aerialway_bicycle
+    override val title = Res.string.quest_aerialway_bicycle_title
     override val achievements = listOf(RARE, BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_aerialway_bicycle_title
 
     override fun createForm() = AerialwayBicycleAccessForm()
 

@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class AddShelterCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
 
@@ -29,10 +30,9 @@ class AddShelterCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val changesetComment = "Specify shelter capacities"
     override val wikiLink = "Tag:amenity=shelter"
     override val icon = R.drawable.quest_shelter_capacity
+    override val title = Res.string.quest_shelter_capacity_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_shelter_capacity_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with amenity = shelter")

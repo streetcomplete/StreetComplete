@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddArtworkType : OsmFilterQuestType<ArtworkType>(), AndroidQuest {
 
@@ -17,9 +18,8 @@ class AddArtworkType : OsmFilterQuestType<ArtworkType>(), AndroidQuest {
     override val changesetComment = "Survey artwork type"
     override val wikiLink = "Key:artwork_type"
     override val icon = R.drawable.quest_artwork
+    override val title = Res.string.quest_artwork_title
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_artwork_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with tourism = artwork")

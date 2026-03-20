@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>(), AndroidQuest {
 
@@ -28,17 +29,15 @@ class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>(), An
     override val changesetComment = "Survey tactile paving on steps"
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.quest_steps_tactile_paving
+    override val title = Res.string.quest_tactilePaving_title_steps
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
     override val achievements = listOf(BLIND)
-
     override val hint = R.string.quest_generic_looks_like_this
     override val hintImages = listOf(
         R.drawable.tactile_paving1,
         R.drawable.tactile_paving2,
         R.drawable.tactile_paving3
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_tactilePaving_title_steps
 
     override fun createForm() = TactilePavingStepsForm()
 

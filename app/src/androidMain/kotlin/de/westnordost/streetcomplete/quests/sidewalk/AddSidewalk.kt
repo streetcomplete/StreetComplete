@@ -18,15 +18,23 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.INVALID
 import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_overlay
+import de.westnordost.streetcomplete.resources.*
 
 class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>>, AndroidQuest {
     override val changesetComment = "Specify whether roads have sidewalks"
     override val wikiLink = "Key:sidewalk"
     override val icon = R.drawable.quest_sidewalk
+    override val title = Res.string.quest_sidewalk_title
     override val achievements = listOf(PEDESTRIAN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
+    override val hint = R.string.quest_street_side_puzzle_tutorial
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.filter { isApplicableTo(it) }
+
+    override fun isApplicableTo(element: Element): Boolean =
+        roadsFilter.matches(element)
+        && (untaggedRoadsFilter.matches(element) || element.hasInvalidOrIncompleteSidewalkTags())
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("""
@@ -37,17 +45,6 @@ class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>>, AndroidQuest {
               and foot !~ no|private
               and access !~ no|private
         """)
-
-    override val hint = R.string.quest_street_side_puzzle_tutorial
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_sidewalk_title
-
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.filter { isApplicableTo(it) }
-
-    override fun isApplicableTo(element: Element): Boolean =
-        roadsFilter.matches(element)
-        && (untaggedRoadsFilter.matches(element) || element.hasInvalidOrIncompleteSidewalkTags())
 
     override fun createForm() = AddSidewalkForm()
 

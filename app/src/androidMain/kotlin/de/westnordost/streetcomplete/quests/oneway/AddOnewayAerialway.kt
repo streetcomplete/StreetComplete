@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
+import de.westnordost.streetcomplete.resources.*
 
 class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
 
@@ -25,12 +26,10 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
     override val changesetComment = "Specify whether aerial ways can be used both ways"
     override val wikiLink = "Key:oneway"
     override val icon = R.drawable.quest_aerialway_oneway
+    override val title = Res.string.quest_bothway_title
     override val hasMarkersAtEnds = true
     override val achievements = listOf(EditTypeAchievement.PEDESTRIAN)
-
     override val hint = R.string.quest_arrow_tutorial
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bothway_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> = mapData.ways.filter { elementFilter.matches(it) }
 

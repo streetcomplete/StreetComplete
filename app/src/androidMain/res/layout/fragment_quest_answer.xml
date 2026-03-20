@@ -59,11 +59,10 @@
                         android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <TextView
+                        <androidx.compose.ui.platform.ComposeView
                             android:id="@+id/titleLabel"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.TitleLarge"/>
+                            android:layout_height="wrap_content"/>
 
                         <TextView
                             android:id="@+id/titleHintLabel"

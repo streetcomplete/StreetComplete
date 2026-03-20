@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndCyclewaySurface
+import de.westnordost.streetcomplete.resources.*
 
 class AddCyclewayPartSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
 
@@ -42,9 +43,8 @@ class AddCyclewayPartSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
     override val changesetComment = "Specify cycleway path surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.quest_bicycleway_surface
+    override val title = Res.string.quest_cyclewayPartSurface_title
     override val achievements = listOf(BICYCLIST, OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_cyclewayPartSurface_title
 
     override fun createForm() = AddPathPartSurfaceForm()
 

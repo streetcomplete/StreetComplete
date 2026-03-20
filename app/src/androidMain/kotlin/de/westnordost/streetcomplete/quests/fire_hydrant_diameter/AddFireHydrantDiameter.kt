@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>(), AndroidQuest {
 
@@ -24,6 +25,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>(), 
     override val changesetComment = "Specify fire hydrant diameters"
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.quest_fire_hydrant_diameter
+    override val title = Res.string.quest_fireHydrant_diameter_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(LIFESAVER)
 
@@ -40,8 +42,6 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>(), 
         "NL",
         "UA",
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_diameter_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = fire_hydrant")

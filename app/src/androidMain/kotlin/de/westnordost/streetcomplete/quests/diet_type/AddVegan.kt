@@ -11,8 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
+import de.westnordost.streetcomplete.resources.*
 
 class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
 
@@ -36,13 +35,11 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
     override val changesetComment = "Survey whether places have vegan food"
     override val wikiLink = "Key:diet"
     override val icon = R.drawable.quest_restaurant_vegan
+    override val title = Res.string.quest_dietType_vegan_title2
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(VEG, CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
-
     override val hint = R.string.quest_dietType_explanation_vegan
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_vegan_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }

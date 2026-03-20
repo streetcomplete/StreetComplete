@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.ANY
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTLES
+import de.westnordost.streetcomplete.resources.*
 
 class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>(), AndroidQuest {
 
@@ -26,14 +27,12 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>(), AndroidQue
     override val changesetComment = "Determine whether any glass or just glass bottles can be recycled here"
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.quest_recycling_glass
+    override val title = Res.string.quest_recycling_glass_title
     // see isUsuallyAnyGlassRecyclableInContainers.yml
     override val enabledInCountries = AllCountriesExcept("CZ")
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
-
     override val hint = R.string.quest_determineRecyclingGlass_description_any_glass
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_glass_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with amenity = recycling")

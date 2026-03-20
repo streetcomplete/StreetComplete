@@ -11,51 +11,44 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAcceptsCash : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
-    override val elementFilter: String get() {
-        val amenities = listOf(
+    override val elementFilter = """
+        nodes, ways with
+        (
+          (shop and shop !~ no|vacant|mall)
+          or amenity ~ ${arrayOf(
             "bar", "cafe", "fast_food", "ice_cream", "pub", "biergarten", "restaurant", "fuel",
             "cinema", "nightclub", "planetarium", "theatre", "internet_cafe", "car_wash",
             "pharmacy", "telephone", "vending_machine", "luggage_locker"
-        )
-        val tourismsWithImpliedFees = listOf(
-            "theme_park", "hotel", "hostel", "motel", "guest_house",
-            "apartment", "camp_site"
-        )
-        val tourismsWithoutImpliedFees = listOf(
-            "attraction", "museum", "gallery", "zoo", "aquarium"
-        )
-        val leisures = listOf(
-            "adult_gaming_centre", "amusement_arcade", "bowling_alley", "escape_game", "miniature_golf",
-            "sauna", "trampoline_park", "tanning_salon"
-        )
-        val crafts = listOf(
+          ).joinToString("|")}
+          or leisure ~ ${arrayOf(
+            "adult_gaming_centre", "amusement_arcade", "bowling_alley", "escape_game",
+            "miniature_golf","sauna", "trampoline_park", "tanning_salon"
+          ).joinToString("|")}
+          or craft ~ ${arrayOf(
             "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
             "electronics_repair", "key_cutter", "stonemason"
+          ).joinToString("|")}
+          or tourism ~ ${arrayOf(
+            "theme_park", "hotel", "hostel", "motel", "guest_house",
+            "apartment", "camp_site"
+          ).joinToString("|")}
+          or tourism ~ ${arrayOf(
+            "attraction", "museum", "gallery", "zoo", "aquarium"
+          ).joinToString("|")} and fee = yes
         )
-        return """
-            nodes, ways with
-            (
-              (shop and shop !~ no|vacant|mall)
-              or amenity ~ ${amenities.joinToString("|")}
-              or leisure ~ ${leisures.joinToString("|")}
-              or craft ~ ${crafts.joinToString("|")}
-              or tourism ~ ${tourismsWithImpliedFees.joinToString("|")}
-              or tourism ~ ${tourismsWithoutImpliedFees.joinToString("|")} and fee = yes
-            )
-            and !payment:cash and !payment:coins and !payment:notes and payment:others != no
-            and (name or brand or noname = yes or name:signed = no)
-        """
-    }
+        and !payment:cash and !payment:coins and !payment:notes and payment:others != no
+        and (name or brand or noname = yes or name:signed = no)
+    """
 
     override val changesetComment = "Survey whether payment with cash is accepted"
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.quest_cash
+    override val title = Res.string.quest_accepts_cash_title2
     override val isReplacePlaceEnabled = true
     override val enabledInCountries = NoCountriesExcept(
         "FI", // https://github.com/streetcomplete/StreetComplete/issues/5500
@@ -65,8 +58,6 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>(), AndroidQuest {
     )
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_accepts_cash_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }

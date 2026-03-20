@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCampPower : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -26,11 +27,9 @@ class AddCampPower : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify whether there is electricity available"
     override val wikiLink = "Key:power_supply"
     override val icon = R.drawable.quest_camp_power
+    override val title = Res.string.quest_camp_power_supply_title
     override val achievements = listOf(OUTDOORS)
-
     override val hint = R.string.quest_camp_power_supply_hint
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_power_supply_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with tourism ~ camp_site|caravan_site")

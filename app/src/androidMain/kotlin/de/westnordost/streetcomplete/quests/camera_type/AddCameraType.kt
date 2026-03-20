@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddCameraType : OsmFilterQuestType<CameraType>(), AndroidQuest {
 
@@ -21,9 +22,8 @@ class AddCameraType : OsmFilterQuestType<CameraType>(), AndroidQuest {
     override val changesetComment = "Specify camera types"
     override val wikiLink = "Tag:surveillance:type"
     override val icon = R.drawable.quest_surveillance_camera
+    override val title = Res.string.quest_camera_type_title
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_camera_type_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with surveillance and surveillance:type = camera")

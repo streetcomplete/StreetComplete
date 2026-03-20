@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
+import de.westnordost.streetcomplete.resources.*
 
 class AddRoadName : OsmFilterQuestType<RoadNameAnswer>(), AndroidQuest {
 
@@ -32,12 +33,10 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>(), AndroidQuest {
     override val changesetComment = "Determine road names and types"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.quest_street_name2
+    override val title = Res.string.quest_streetName_title
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR, PEDESTRIAN, POSTMAN)
-
     override val hint = R.string.quest_streetName_hint
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_streetName_title
 
     override fun createForm() = AddRoadNameForm()
 

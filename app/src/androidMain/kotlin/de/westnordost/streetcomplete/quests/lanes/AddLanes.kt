@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddLanes : OsmFilterQuestType<LanesAnswer>(), AndroidQuest {
 
@@ -24,10 +25,9 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>(), AndroidQuest {
     override val changesetComment = "Determine roads lane count"
     override val wikiLink = "Key:lanes"
     override val icon = R.drawable.quest_street_lanes
+    override val title = Res.string.quest_lanes_title
     override val achievements = listOf(CAR)
     override val hint = R.string.quest_street_side_puzzle_tutorial
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_lanes_title
 
     override fun createForm() = AddLanesForm()
 

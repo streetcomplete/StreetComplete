@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class AddBikeParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
 
@@ -33,11 +34,10 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val changesetComment = "Specify bicycle parking capacities"
     override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.quest_bicycle_parking_capacity
+    override val title = Res.string.quest_bikeParkingCapacity_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
     override val hint = R.string.quest_bikeParkingCapacity_hint
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bikeParkingCapacity_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with amenity = bicycle_parking")

@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -28,17 +29,15 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify whether public transport stops have tactile paving"
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.quest_blind_bus
+    override val title = Res.string.quest_busStopTactilePaving_title
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
     override val achievements = listOf(BLIND)
-
     override val hint = R.string.quest_generic_looks_like_this
     override val hintImages = listOf(
         R.drawable.tactile_paving1,
         R.drawable.tactile_paving2,
         R.drawable.tactile_paving3
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopTactilePaving_title
 
     override fun createForm() = TactilePavingForm()
 

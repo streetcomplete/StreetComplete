@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>(), AndroidQuest {
 
@@ -24,10 +25,9 @@ class AddBoardType : OsmFilterQuestType<BoardTypeAnswer>(), AndroidQuest {
     override val changesetComment = "Specify board types"
     override val wikiLink = "Key:board_type"
     override val icon = R.drawable.quest_board_type
+    override val title = Res.string.quest_board_type_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(RARE, CITIZEN, OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_board_type_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with tourism = information and information = board")

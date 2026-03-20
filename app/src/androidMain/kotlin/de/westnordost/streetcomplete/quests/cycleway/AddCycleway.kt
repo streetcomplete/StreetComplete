@@ -24,8 +24,8 @@ import de.westnordost.streetcomplete.osm.cycleway.isAmbiguous
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.maxspeed.FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_overlay
+import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.StringResource
 
 class AddCycleway(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
@@ -34,19 +34,9 @@ class AddCycleway(
     override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink = "Key:cycleway"
     override val icon = R.drawable.quest_bicycleway
+    override val title = Res.string.quest_cycleway_title2
     override val achievements = listOf(BICYCLIST)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
-            ways with (
-                highway ~ cycleway|path
-                or highway ~ footway|bridleway and bicycle ~ yes|designated
-              )
-              and bicycle !~ no|private
-              and access !~ no|private
-        """)
-
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:
     // Google Street View (driving around in virtual car)
@@ -74,12 +64,15 @@ class AddCycleway(
         "US-MN", "US-MI", "US-IL", "US-WI", "US-IN",
         "US-AZ", "US-TX"
     )
-
     override val hint = R.string.quest_street_side_puzzle_tutorial
 
-    override fun getTitle(tags: Map<String, String>) = when {
-        parseCyclewaySides(tags, false) != null -> R.string.quest_cycleway_resurvey_title
-        else -> R.string.quest_cycleway_title2
+    override fun getTitle(tags: Map<String, String>): StringResource {
+        val hasCycleway = parseCyclewaySides(tags, false) != null
+        return if (hasCycleway) {
+            Res.string.quest_cycleway_resurvey_title
+        } else {
+            Res.string.quest_cycleway_title2
+        }
     }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
@@ -99,6 +92,16 @@ class AddCycleway(
         if (untaggedRoadsFilter.matches(element)) return true
         return element.hasOldInvalidOrAmbiguousCyclewayTags(null)
     }
+
+    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
+        getMapData().filter("""
+            ways with (
+                highway ~ cycleway|path
+                or highway ~ footway|bridleway and bicycle ~ yes|designated
+              )
+              and bicycle !~ no|private
+              and access !~ no|private
+        """)
 
     override fun createForm() = AddCyclewayForm()
 

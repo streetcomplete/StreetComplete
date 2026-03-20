@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCampDrinkingWater : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -27,9 +28,8 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify whether there is drinking water"
     override val wikiLink = "Key:drinking_water"
     override val icon = R.drawable.quest_drinking_water
+    override val title = Res.string.quest_camp_drinking_water_title
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_drinking_water_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with tourism ~ camp_site|caravan_site")

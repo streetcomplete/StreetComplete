@@ -68,6 +68,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.getSystemResourceEnvironment
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 import java.util.Locale
@@ -107,14 +108,6 @@ abstract class AbstractOverlayForm :
         val latLon = geometry.center
         return countryBoundaries.value.getIds(latLon.longitude, latLon.latitude).firstOrNull()
     }
-
-    private val englishResources: Resources
-        get() {
-            val conf = Configuration(resources.configuration)
-            conf.setLocale(Locale.ENGLISH)
-            val localizedContext = super.requireContext().createConfigurationContext(conf)
-            return localizedContext.resources
-        }
 
     // used to enable testing via ShowQuestFormsScreen! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
@@ -421,14 +414,16 @@ abstract class AbstractOverlayForm :
     }
 
     protected fun composeNote(element: Element) {
-        val overlayTitle = englishResources.getString(overlay.title)
-        val hintLabel = getNameAndLocationSpanned(element, englishResources, featureDictionary)
-        val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
-            "In context of overlay \"$overlayTitle\""
-        } else {
-            "In context of overlay \"$overlayTitle\" – $hintLabel"
+        viewLifecycleScope.launch {
+            val overlayTitle = org.jetbrains.compose.resources.getString(getSystemResourceEnvironment(), overlay.title)
+            val hintLabel = getNameAndLocationSpanned(element, requireContext().resources, featureDictionary)
+            val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
+                "In context of overlay \"$overlayTitle\""
+            } else {
+                "In context of overlay \"$overlayTitle\" – $hintLabel"
+            }
+            listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
         }
-        listener?.onComposeNote(overlay, element, geometry, leaveNoteContext)
     }
 
     /* -------------------------------------- Apply edit  -------------------------------------- */

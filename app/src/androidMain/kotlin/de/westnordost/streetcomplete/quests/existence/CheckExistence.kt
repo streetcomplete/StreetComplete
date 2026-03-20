@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.containsAll
 
 class CheckExistence(
@@ -96,9 +97,8 @@ class CheckExistence(
     override val changesetComment = "Survey if places still exist"
     override val wikiLink: String? = null
     override val icon = R.drawable.quest_check
+    override val title = Res.string.quest_existence_title2
     override val achievements = listOf(CITIZEN, OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_existence_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }

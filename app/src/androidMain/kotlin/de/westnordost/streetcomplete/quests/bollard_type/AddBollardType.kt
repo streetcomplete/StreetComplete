@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddBollardType : OsmElementQuestType<BollardTypeAnswer>, AndroidQuest {
 
@@ -29,10 +30,9 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer>, AndroidQuest {
     override val changesetComment = "Specify bollard types"
     override val wikiLink = "Key:bollard"
     override val icon = R.drawable.quest_no_cars
+    override val title = Res.string.quest_bollard_type_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR, LIFESAVER)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bollard_type_title
 
     // exclude free-floating nodes
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {

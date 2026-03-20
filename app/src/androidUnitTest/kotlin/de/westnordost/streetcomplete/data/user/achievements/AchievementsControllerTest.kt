@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.action_settings
+import de.westnordost.streetcomplete.resources.quest_address_title
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on
@@ -271,21 +272,21 @@ private fun editTypeAchievements(achievementIds: List<String>): List<EditTypeAch
 
 private object QuestOne : QuestType {
     override val icon = 0
-    override val title = 0
+    override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
     override val achievements = editTypeAchievements(listOf("thisAchievement", "mixedAchievement"))
 }
 
 private object QuestTwo : QuestType {
     override val icon = 0
-    override val title = 0
+    override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
     override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
 }
 
 private object OverlayOne : Overlay {
     override val icon = 0
-    override val title = 0
+    override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
     override val changesetComment = ""
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, OverlayStyle>>()

@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
+import de.westnordost.streetcomplete.resources.*
 
 class AddBoardName : OsmFilterQuestType<BoardNameAnswer>(), AndroidQuest {
 
@@ -26,9 +27,8 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>(), AndroidQuest {
     override val changesetComment = "Determine information board names"
     override val wikiLink = "Tag:information=board"
     override val icon = R.drawable.quest_label_thing
+    override val title = Res.string.quest_board_name_title
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_board_name_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways, relations with tourism = information and information = board")

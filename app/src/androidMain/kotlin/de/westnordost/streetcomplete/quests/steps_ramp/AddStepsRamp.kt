@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>(), AndroidQuest {
@@ -32,9 +33,8 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>(), AndroidQuest {
     override val changesetComment = "Specify whether steps have a ramp"
     override val wikiLink = "Key:ramp"
     override val icon = R.drawable.quest_steps_ramp
+    override val title = Res.string.quest_steps_ramp_title
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_ramp_title
 
     override fun createForm() = AddStepsRampForm()
 

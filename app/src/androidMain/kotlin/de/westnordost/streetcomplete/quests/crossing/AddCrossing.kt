@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.findNodesAtCrossingsOf
 import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
+import de.westnordost.streetcomplete.resources.*
 
 class AddCrossing : OsmElementQuestType<CrossingAnswer>, AndroidQuest {
 
@@ -33,14 +34,12 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer>, AndroidQuest {
     override val changesetComment = "Specify whether there are crossings at intersections of paths and roads"
     override val wikiLink = "Tag:highway=crossing"
     override val icon = R.drawable.quest_pedestrian
+    override val title = Res.string.quest_crossing_title2
     override val achievements = listOf(PEDESTRIAN)
-
     override val hint =  R.string.quest_crossing_hint
     override val hintImages = listOf(
         R.drawable.informal_crossing,
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_title2
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter { it.isCrossing() }.asSequence()

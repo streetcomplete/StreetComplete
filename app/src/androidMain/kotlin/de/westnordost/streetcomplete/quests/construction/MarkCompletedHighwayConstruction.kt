@@ -9,6 +9,9 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.StringResource
 
 class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructionAnswer>(), AndroidQuest {
 
@@ -21,23 +24,24 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
     override val changesetComment = "Determine whether road construction is now completed"
     override val wikiLink = "Tag:highway=construction"
     override val icon = R.drawable.quest_road_construction
+    override val title = Res.string.quest_construction_road_title
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
 
     override fun getTitle(tags: Map<String, String>) =
         when (tags["construction"]) {
-            "minor" -> R.string.quest_construction_minor_title
+            "minor" -> Res.string.quest_construction_minor_title
             /*
               Alternative could be "Is this construction finished?" and just display the feature
               name (e.g. "cycleway under construction") of the element above, but there are no iD
               presets for "highway=construction + construction=*" so such road would just be named
               "Road closed". Hence, keeping this (for now).
              */
-            in ALL_ROADS -> R.string.quest_construction_road_title
-            "cycleway" -> R.string.quest_construction_cycleway_title
-            "footway" -> R.string.quest_construction_footway_title
-            "steps" -> R.string.quest_construction_steps_title
-            else -> R.string.quest_construction_generic_title
+            in ALL_ROADS -> Res.string.quest_construction_road_title
+            "cycleway" -> Res.string.quest_construction_cycleway_title
+            "footway" -> Res.string.quest_construction_footway_title
+            "steps" -> Res.string.quest_construction_steps_title
+            else -> Res.string.quest_construction_generic_title
         }
 
     override fun createForm() = MarkCompletedConstructionForm()

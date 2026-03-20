@@ -25,10 +25,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.assembly_point
-import de.westnordost.streetcomplete.resources.quest_accessPointRef_answer_assembly_point
-import de.westnordost.streetcomplete.resources.quest_accessPointRef_detailed_answer_impossible_confirmation
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.content
 import org.jetbrains.compose.resources.painterResource

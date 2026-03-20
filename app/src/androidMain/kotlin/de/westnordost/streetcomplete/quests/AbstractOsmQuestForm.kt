@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.quests
 
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.location.Location
 import android.os.Bundle
 import android.view.Menu
@@ -9,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.core.os.bundleOf
 import androidx.core.view.children
 import de.westnordost.osmfeatures.Feature
@@ -48,9 +48,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.getSystemResourceEnvironment
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.Locale
 
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDetails {
@@ -72,14 +74,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     // passed in parameters
     private val osmElementQuestType: OsmElementQuestType<T> get() = questType as OsmElementQuestType<T>
     protected lateinit var element: Element private set
-
-    private val englishResources: Resources
-        get() {
-            val conf = Configuration(resources.configuration)
-            conf.setLocale(Locale.ENGLISH)
-            val localizedContext = super.requireContext().createConfigurationContext(conf)
-            return localizedContext.resources
-        }
 
     // overridable by child classes
     open val otherAnswers = listOf<IAnswerItem>()
@@ -115,11 +109,12 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setTitle(getString(osmElementQuestType.getTitle(element.tags)))
         setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary))
         setObjNote(element.tags["note"])
     }
+
+    override protected fun getTitle(): StringResource =
+        osmElementQuestType.getTitle(element.tags) ?: questType.title
 
     override fun onStart() {
         super.onStart()
@@ -234,15 +229,17 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun composeNote() {
-
-        val questTitle = englishResources.getString(osmElementQuestType.getTitle(element.tags))
-        val hintLabel = getNameAndLocationSpanned(element, englishResources, featureDictionary)
-        val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
-            "Unable to answer \"$questTitle\""
-        } else {
-            "Unable to answer \"$questTitle\" – $hintLabel"
+        viewLifecycleScope.launch {
+            val questTitleResource = osmElementQuestType.getTitle(element.tags) ?: questType.title
+            val questTitle = org.jetbrains.compose.resources.getString(getSystemResourceEnvironment(), questTitleResource)
+            val hintLabel = getNameAndLocationSpanned(element, requireContext().resources, featureDictionary)
+            val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
+                "Unable to answer \"$questTitle\""
+            } else {
+                "Unable to answer \"$questTitle\" – $hintLabel"
+            }
+            listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
         }
-        listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
     }
 
     protected fun hideQuest() {
@@ -298,7 +295,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
         withContext(Dispatchers.IO) {
             if (action is UpdateElementTagsAction && !action.changes.isValid()) {
-                val questTitle = englishResources.getString(osmElementQuestType.getTitle(element.tags))
+                val questTitleResource = osmElementQuestType.getTitle(element.tags) ?: questType.title
+                val questTitle = org.jetbrains.compose.resources.getString(getSystemResourceEnvironment(), questTitleResource)
                 val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
                 noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
             } else {
@@ -307,6 +305,20 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
         listener?.onEdited(osmElementQuestType, geometry)
     }
+
+
+    /* Unfortunately, ResourceEnviornment's constructor is internal, so we cannot use this
+       see https://youtrack.jetbrains.com/issue/CMP-9959/Access-resources-in-specific-language-outside-of-composition
+
+    /** get English resource environment */
+    @OptIn(InternalResourceApi::class)
+    fun getEnglishResourceEnvironment() = ResourceEnvironment(
+        language = LanguageQualifier("en"),
+        region = RegionQualifier(""),
+        theme = ThemeQualifier.LIGHT,
+        density = DensityQualifier.MDPI,
+    )
+    */
 
     companion object {
         private const val ARG_ELEMENT = "element"

@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>(), AndroidQuest {
 
@@ -21,10 +22,9 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>(), Androi
     override val changesetComment = "Specify fire hydrant positions"
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.quest_fire_hydrant_grass
+    override val title = Res.string.quest_fireHydrant_position_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(LIFESAVER)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_fireHydrant_position_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes with emergency = fire_hydrant")

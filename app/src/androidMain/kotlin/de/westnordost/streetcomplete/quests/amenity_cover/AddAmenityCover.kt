@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
@@ -20,8 +21,7 @@ class AddAmenityCover(
 
     private val nodesFilter by lazy { """
         nodes with
-          (leisure = picnic_table
-           or amenity = bbq)
+          (leisure = picnic_table or amenity = bbq)
           and access !~ private|no
           and !covered
           and (!seasonal or seasonal = no)
@@ -29,10 +29,9 @@ class AddAmenityCover(
     override val changesetComment = "Specify whether various amenities are covered"
     override val wikiLink = "Key:covered"
     override val icon = R.drawable.quest_picnic_table_cover
+    override val title = Res.string.quest_amenityCover_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_amenityCover_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }

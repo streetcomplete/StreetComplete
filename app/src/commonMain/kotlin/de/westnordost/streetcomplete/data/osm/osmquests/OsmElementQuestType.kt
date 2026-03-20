@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.osm.Tags
+import org.jetbrains.compose.resources.StringResource
 
 /** Quest type where each quest refers to one OSM element.
  *
@@ -55,11 +56,9 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      */
     val isReplacePlaceEnabled: Boolean get() = false
 
-    override val title: Int get() = getTitle(emptyMap())
-
     /** the string resource used to display the quest's question for when the element has the
-     *  specified [tags] */
-    fun getTitle(tags: Map<String, String>): Int
+     *  specified [tags]. If null, `title` is used instead */
+    fun getTitle(tags: Map<String, String>): StringResource? = null
 
     /** All elements within the given map data that are applicable to this quest type, i.e. for
      *  which a quest of this type should be created.

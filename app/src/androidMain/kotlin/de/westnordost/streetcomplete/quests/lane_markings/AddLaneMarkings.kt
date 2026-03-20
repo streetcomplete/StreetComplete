@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.maxspeed.FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddLaneMarkings : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -35,9 +36,8 @@ class AddLaneMarkings : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify whether roads have lane markings"
     override val wikiLink = "Key:lane_markings"
     override val icon = R.drawable.quest_street
+    override val title = Res.string.quest_lane_markings_title
     override val achievements = listOf(EditTypeAchievement.CAR)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_lane_markings_title
 
     override fun createForm() = YesNoQuestForm()
 

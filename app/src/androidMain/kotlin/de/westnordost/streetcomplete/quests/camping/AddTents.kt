@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddTents : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -23,9 +24,8 @@ class AddTents : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Survey whether tents may be used here"
     override val wikiLink = "Key:tents"
     override val icon = R.drawable.quest_tent
+    override val title = Res.string.quest_camp_tent_title
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_tent_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter("nodes, ways with tourism ~ caravan_site|camp_site")

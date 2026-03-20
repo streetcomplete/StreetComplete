@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.resources.*
 
 class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess>, AndroidQuest {
 
@@ -23,10 +24,9 @@ class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess>, AndroidQu
     override val changesetComment = "Specify ferry access for bicycles"
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.quest_ferry_bicycle
+    override val title = Res.string.quest_ferry_bicycle_title
     override val hasMarkersAtEnds = true
     override val achievements = listOf(RARE, BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_ferry_bicycle_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)

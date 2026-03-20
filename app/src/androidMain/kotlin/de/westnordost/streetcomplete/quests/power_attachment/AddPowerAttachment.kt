@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddPowerAttachment : OsmFilterQuestType<PowerAttachment>(), AndroidQuest {
 
@@ -21,9 +22,8 @@ class AddPowerAttachment : OsmFilterQuestType<PowerAttachment>(), AndroidQuest {
     override val changesetComment = "Specify line_attachment power support"
     override val wikiLink = "Key:line_attachment"
     override val icon = R.drawable.quest_power
+    override val title = Res.string.quest_powerAttachment_title
     override val achievements = listOf(BUILDING)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_powerAttachment_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
         val mapData = getMapData()

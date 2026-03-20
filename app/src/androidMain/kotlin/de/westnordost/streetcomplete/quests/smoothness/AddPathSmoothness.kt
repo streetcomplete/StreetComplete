@@ -7,8 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_difficult_and_time_consuming
+import de.westnordost.streetcomplete.resources.*
 
 class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
 
@@ -31,11 +30,10 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
     override val changesetComment = "Specify paths smoothness"
     override val wikiLink = "Key:smoothness"
     override val icon = R.drawable.quest_way_surface_detail
+    override val title = Res.string.quest_smoothness_title
     override val achievements = listOf(WHEELCHAIR, BICYCLIST)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
     override val hint = R.string.quest_smoothness_hint
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_smoothness_title
 
     override fun createForm() = AddSmoothnessForm()
 

@@ -8,22 +8,16 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.COMMENT
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.quests.getTitle
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.commented_note_action_title
-import de.westnordost.streetcomplete.resources.created_note_action_title
-import de.westnordost.streetcomplete.resources.quest_noteDiscussion_title
-import de.westnordost.streetcomplete.resources.undo_delete
-import de.westnordost.streetcomplete.resources.undo_move_node
-import de.westnordost.streetcomplete.resources.undo_split
-import de.westnordost.streetcomplete.resources.undo_visibility
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 val Edit.icon: Int get() = when (this) {
@@ -53,27 +47,19 @@ val Edit.overlayIcon: DrawableResource? get() = when (this) {
     else -> null
 }
 
-// TODO compose should convert to returning StringResource when migrated to compose
-@Composable
-fun Edit.getTitle(elementTags: Map<String, String>?): String = when (this) {
+fun Edit.getTitle(elementTags: Map<String, String>?): StringResource = when (this) {
     is ElementEdit -> {
-        if (type is QuestType) {
-            stringResource(type.getTitle(elementTags.orEmpty()))
-        } else {
-            stringResource(type.title)
-        }
+        (type as? OsmElementQuestType<*>)?.getTitle(elementTags.orEmpty()) ?: type.title
     }
-    is NoteEdit -> {
-        stringResource(when (action) {
-            CREATE -> Res.string.created_note_action_title
-            COMMENT -> Res.string.commented_note_action_title
-        })
+    is NoteEdit -> when (action) {
+        CREATE -> Res.string.created_note_action_title
+        COMMENT -> Res.string.commented_note_action_title
     }
     is OsmQuestHidden -> {
-        stringResource(questType.getTitle(elementTags.orEmpty()))
+        questType.getTitle(elementTags.orEmpty()) ?: questType.title
     }
     is OsmNoteQuestHidden -> {
-        stringResource(Res.string.quest_noteDiscussion_title)
+        Res.string.quest_noteDiscussion_title
     }
     else -> throw IllegalArgumentException()
 }

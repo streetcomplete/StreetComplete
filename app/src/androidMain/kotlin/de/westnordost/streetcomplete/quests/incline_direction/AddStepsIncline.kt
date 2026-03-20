@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddStepsIncline : OsmFilterQuestType<Incline>(), AndroidQuest {
 
@@ -19,11 +20,9 @@ class AddStepsIncline : OsmFilterQuestType<Incline>(), AndroidQuest {
     override val changesetComment = "Specify which way leads up for steps"
     override val wikiLink = "Key:incline"
     override val icon = R.drawable.quest_steps
+    override val title = Res.string.quest_steps_incline_title
     override val achievements = listOf(PEDESTRIAN)
-
     override val hint = R.string.quest_arrow_tutorial
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_steps_incline_title
 
     override fun createForm() = AddInclineForm()
 

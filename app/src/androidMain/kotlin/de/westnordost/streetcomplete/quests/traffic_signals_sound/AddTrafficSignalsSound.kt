@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddTrafficSignalsSound : OsmElementQuestType<Boolean>, AndroidQuest {
@@ -37,11 +38,9 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean>, AndroidQuest {
     override val changesetComment = "Specify whether traffic signals have sound signals"
     override val wikiLink = "Key:$SOUND_SIGNALS"
     override val icon = R.drawable.quest_blind_traffic_lights_sound
+    override val title = Res.string.quest_traffic_signals_sound_title
     override val achievements = listOf(BLIND)
-
     override val hint = R.string.quest_traffic_signals_sound_description
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_signals_sound_title
 
     override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
         getMapData().filter { it.isCrossingWithTrafficSignals() }.asSequence()
