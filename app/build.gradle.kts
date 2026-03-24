@@ -422,10 +422,7 @@ tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
     group = "streetcomplete"
     version = presetsVersion
-    targetDirs = listOf(
-        "$projectDir/src/androidMain/res/drawable/", // necessary as long as map is not compose based yet
-        "$projectDir/src/commonMain/composeResources/drawable/",
-    )
+    targetDir = "$projectDir/src/commonMain/composeResources/drawable/"
     iconSize = 34
     transformName = { "preset_" + it.replace('-', '_') }
     indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt" // necessary as long as map is not compose based yet
@@ -479,12 +476,14 @@ tasks.register("copyDefaultStringsToEnStrings") {
     }
 }
 
+// necessary as long as map hasn't been converted to compose yet
 val copySharedResToAndroid by tasks.registering(Copy::class) {
     val target = "build/generated/androidMain/res/drawable"
     from("src/commonMain/composeResources/drawable")
     into(target)
     include {
         it.name.startsWith("building_") ||
+        it.name.startsWith("preset_") ||
         it.name == "sport_volleyball.xml" ||
         it.name == "religion_christian.xml" ||
         it.name == "religion_jewish.xml" ||
