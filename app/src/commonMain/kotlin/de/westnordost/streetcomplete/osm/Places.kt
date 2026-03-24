@@ -145,6 +145,17 @@ private val IS_PLACE_EXPRESSION by lazy {
             "place_of_worship",
             "public_bath",
         ),
+        "education" to listOf(
+            "college",
+            "dancing_school",
+            "driving_school",
+            "kindergarten",
+            "language_school",
+            "music_school",
+            "prep_school",
+            "school",
+            "university",
+        ),
         "emergency" to listOf(
             "air_rescue_service",
             "ambulance_station",
