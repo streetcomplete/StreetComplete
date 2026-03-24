@@ -2,66 +2,55 @@ package de.westnordost.streetcomplete.quests.shop_type
 
 import android.os.Bundle
 import android.view.View
-import android.widget.RadioButton
+import androidx.compose.material.Surface
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.ViewShopTypeBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
-import de.westnordost.streetcomplete.view.controller.FeatureViewController
-import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 
 class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
 
-    override val contentLayoutResId = R.layout.view_shop_type
-    private val binding by contentViewBinding(ViewShopTypeBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
-    private lateinit var radioButtons: List<RadioButton>
-    private var selectedRadioButtonId: Int = 0
-    private lateinit var featureCtrl: FeatureViewController
+    private val feature: MutableState<Feature?> = mutableStateOf(null)
+    private val option: MutableState<ShopTypeFormOption?> = mutableStateOf(null)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        radioButtons = listOf(binding.vacantRadioButton, binding.replaceRadioButton, binding.leaveNoteRadioButton)
-        for (radioButton in radioButtons) {
-            radioButton.setOnClickListener { selectRadioButton(it) }
-        }
-
-        featureCtrl = FeatureViewController(featureDictionary, binding.featureView.textView, binding.featureView.iconView)
-        featureCtrl.countryOrSubdivisionCode = countryOrSubdivisionCode
-
-        binding.featureView.root.background = null
-        binding.featureContainer.setOnClickListener {
-            selectRadioButton(binding.replaceRadioButton)
-
-            SearchFeaturesDialog(
-                requireContext(),
-                featureDictionary,
-                element.geometryType,
-                countryOrSubdivisionCode,
-                featureCtrl.feature?.name,
-                { it.toElement().isPlace() },
-                ::onSelectedFeature,
-                POPULAR_PLACE_FEATURE_IDS,
-            ).show()
-        }
-    }
-
-    private fun onSelectedFeature(feature: Feature) {
-        featureCtrl.feature = feature
-        checkIsFormComplete()
+        binding.composeViewBase.content { Surface {
+            ShopTypeForm(
+                feature = feature.value,
+                option = option.value,
+                onSelectedFeature = {
+                    feature.value = it
+                    checkIsFormComplete()
+                },
+                onSelectedOption = {
+                    option.value = it
+                    checkIsFormComplete()
+                },
+                featureDictionary = featureDictionary,
+                geometryType = element.geometryType,
+                countryCode = countryOrSubdivisionCode,
+                filterFn = { it.toElement().isPlace() },
+                codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS
+            )
+        } }
     }
 
     override fun onClickOk() {
-        when (selectedRadioButtonId) {
-            R.id.vacantRadioButton    -> applyAnswer(IsShopVacant)
-            R.id.leaveNoteRadioButton -> composeNote()
-            R.id.replaceRadioButton   -> {
+        when (option.value) {
+            ShopTypeFormOption.FEATURE -> {
                 // if the shop has **some** name (that is displayed to the user), we just want to
                 // update the shop, not replace it. The train of thought is:
                 // 1. when the user is asked about what kind of shop <named thing> is, but doesn't
@@ -73,23 +62,17 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
                 //    to answer whether the place is now a different one than before, so we rather
                 //    replace it. (#6675)
                 val hasSomeName = getNameLabel(element.tags) != null
-                applyAnswer(ShopType(featureCtrl.feature!!, hasSomeName))
+                applyAnswer(ShopType(feature.value!!, hasSomeName))
             }
+            ShopTypeFormOption.VACANT -> applyAnswer(ShopTypeAnswer.IsShopVacant)
+            ShopTypeFormOption.LEAVE_NOTE -> composeNote()
+            null -> { }
         }
     }
 
-    override fun isFormComplete() = when (selectedRadioButtonId) {
-        R.id.vacantRadioButton,
-        R.id.leaveNoteRadioButton -> true
-        R.id.replaceRadioButton   -> featureCtrl.feature != null
-        else                      -> false
-    }
-
-    private fun selectRadioButton(radioButton: View) {
-        selectedRadioButtonId = radioButton.id
-        for (b in radioButtons) {
-            b.isChecked = selectedRadioButtonId == b.id
-        }
-        checkIsFormComplete()
+    override fun isFormComplete() = when (option.value) {
+        null -> false
+        ShopTypeFormOption.FEATURE -> feature.value != null
+        else -> true
     }
 }

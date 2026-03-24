@@ -163,7 +163,12 @@ abstract class AbstractQuestForm :
         if (binding.content.childCount == 0) {
             binding.content.visibility = View.GONE
         }
+
+        binding.composeViewDialogContainer.content { DialogContainer() }
     }
+
+    @Composable
+    open fun DialogContainer() {}
 
     override fun onStart() {
         super.onStart()

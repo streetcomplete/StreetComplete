@@ -20,7 +20,8 @@ val metadataModule = module {
     }
     single<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")) {
         lazy {
-            FeatureDictionary.create(get<AssetManager>(), "osmfeatures/default", "osmfeatures/brands")
+            val p = "composeResources/de.westnordost.streetcomplete.resources/files/"
+            FeatureDictionary.create(get<AssetManager>(), p+"osmfeatures/default", p+"osmfeatures/brands")
         }
     }
 }
