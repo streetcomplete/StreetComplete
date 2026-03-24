@@ -228,15 +228,22 @@ private val IS_VACANT_PLACE_EXPRESSION = """
 /** iD preset ids of popular place types */
 val POPULAR_PLACE_FEATURE_IDS = listOf(
     // ordered roughly by usage number according to taginfo
-    "amenity/restaurant", // 1.4 M
-    "amenity/cafe", // 0.5 M
-    "amenity/fast_food", // 0.5 M
-    "shop/convenience", // 0.7 M
+    "amenity/restaurant", // 1.5 M
+    "amenity/cafe", // 0.6 M
+    "amenity/fast_food", // 0.6 M
+
+    "shop/convenience", // 0.8 M
     "shop/supermarket", // 0.5 M
+
     "shop/clothes", // 0.4 M
-    "shop/hairdresser", // 0.3 M
-    "tourism/hotel", // 0.4 M
-    "amenity/pharmacy", // 0.3 M
+    "shop/hairdresser", // 0.4 M
+    "amenity/pharmacy", // 0.4 M
+    "amenity/bank", // 0.4 M
+
+    // More:
+    // mostly found only along main roads or certain districts
+    //"amenity/fuel", // 0.6 M
+    //"tourism/hotel", // 0.4 M
 )
 
 /** Apply replacing a place feature to the given [tags]

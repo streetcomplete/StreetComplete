@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.core.os.bundleOf
 import androidx.core.view.children
 import de.westnordost.osmfeatures.Feature
@@ -37,11 +40,18 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.visiblequests.HideQuestController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
+import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.toElement
+import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
+import de.westnordost.streetcomplete.quests.shop_type.ShopType
+import de.westnordost.streetcomplete.quests.shop_type.ShopTypeAnswer
 import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
+import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
+import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.view.add
 import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.coroutines.Dispatchers
@@ -85,6 +95,8 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     open val otherAnswers = listOf<IAnswerItem>()
     open val buttonPanelAnswers = listOf<IAnswerItem>()
 
+    private val showReplacePlaceDialog: MutableState<Boolean> = mutableStateOf(false)
+
     interface Listener {
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
@@ -119,6 +131,26 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         setTitle(getString(osmElementQuestType.getTitle(element.tags)))
         setTitleHintLabel(getNameAndLocationSpanned(element, resources, featureDictionary))
         setObjNote(element.tags["note"])
+    }
+
+    @Composable
+    override fun DialogContainer() {
+        if (showReplacePlaceDialog.value) {
+            ShopGoneDialog(
+                onDismissRequest = { showReplacePlaceDialog.value = false },
+                onSelectAnswer = { answer ->
+                    when (answer) {
+                        is ShopType -> onShopReplacementSelected(answer.feature)
+                        ShopTypeAnswer.IsShopVacant -> onShopDisusedSelected()
+                        ShopTypeAnswer.LeaveNote -> composeNote()
+                    }
+                },
+                featureDictionary = featureDictionary,
+                geometryType = element.geometryType,
+                countryCode = countryOrSubdivisionCode,
+
+            )
+        }
     }
 
     override fun onStart() {
@@ -254,17 +286,20 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     protected fun replacePlace() {
         if (element.isPlaceOrDisusedPlace()) {
-            ShopGoneDialog(
-                requireContext(),
-                element,
-                countryOrSubdivisionCode,
-                featureDictionary,
-                onSelectedFeatureFn = this::onShopReplacementSelected,
-                onLeaveNoteFn = this::composeNote
-            ).show()
+            showReplacePlaceDialog.value = true
         } else {
             composeNote()
         }
+    }
+
+    private fun onShopDisusedSelected() {
+        val languages = getLanguagesForFeatureDictionary()
+        val vacantShop = featureDictionary
+            .getByTags(element.tags)
+            .firstOrNull { it.toElement().isPlace() }
+            ?.toPrefixedFeature("disused")
+            ?: featureDictionary.getById("shop/vacant", languages)!!
+        onShopReplacementSelected(vacantShop)
     }
 
     private fun onShopReplacementSelected(feature: Feature) {
