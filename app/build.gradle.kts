@@ -297,6 +297,14 @@ android {
         }
     }
 
+    // we need to copy some resources from composeResources to android resources, see task
+    // copySharedResToAndroid. This can be removed when the map has been migrated to compose
+    sourceSets {
+        getByName("main") {
+            res.srcDir(layout.buildDirectory.dir("generated/androidMain/res"))
+        }
+    }
+
     buildFeatures {
         viewBinding = true
         compose = true
@@ -465,5 +473,27 @@ tasks.register("copyDefaultStringsToEnStrings") {
         sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
         sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
         sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values/strings.xml"), true)
+    }
+}
+
+val copySharedResToAndroid by tasks.registering(Copy::class) {
+    val target = "build/generated/androidMain/res/drawable"
+    from("src/commonMain/composeResources/drawable")
+    into(target)
+    include {
+        it.name.startsWith("building_") ||
+        it.name == "sport_volleyball.xml" ||
+        it.name == "religion_christian.xml" ||
+        it.name == "religion_jewish.xml" ||
+        it.name == "religion_muslim.xml"
+    }
+    doFirst {
+        File(target).mkdirs()
+    }
+}
+
+project.afterEvaluate {
+    tasks.named("preBuild") {
+        dependsOn(copySharedResToAndroid)
     }
 }
