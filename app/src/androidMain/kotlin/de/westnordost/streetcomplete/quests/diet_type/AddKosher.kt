@@ -33,7 +33,7 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside_regional_warning
-    override val hint = R.string.quest_dietType_explanation_kosher
+    override val hint = Res.string.quest_dietType_explanation_kosher
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }

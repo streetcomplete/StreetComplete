@@ -27,10 +27,10 @@ class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val icon = R.drawable.quest_poo
     override val title = Res.string.quest_sanitary_dump_station_title
     override val achievements = listOf(EditTypeAchievement.OUTDOORS)
-    override val hint = R.string.quest_sanitary_dump_station_description
+    override val hint = Res.string.quest_sanitary_dump_station_description
     override val hintImages = listOf(
-        R.drawable.sanitary_dump_station_sign1,
-        R.drawable.sanitary_dump_station_sign2
+        Res.drawable.sanitary_dump_station_sign1,
+        Res.drawable.sanitary_dump_station_sign2
     )
 
     override fun createForm() = YesNoQuestForm()

@@ -64,7 +64,7 @@ class AddCycleway(
         "US-MN", "US-MI", "US-IL", "US-WI", "US-IN",
         "US-AZ", "US-TX"
     )
-    override val hint = R.string.quest_street_side_puzzle_tutorial
+    override val hint = Res.string.quest_street_side_puzzle_tutorial
 
     override fun getTitle(tags: Map<String, String>): StringResource {
         val hasCycleway = parseCyclewaySides(tags, false) != null

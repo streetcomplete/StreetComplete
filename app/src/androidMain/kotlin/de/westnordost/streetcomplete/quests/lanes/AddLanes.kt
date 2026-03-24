@@ -27,7 +27,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>(), AndroidQuest {
     override val icon = R.drawable.quest_street_lanes
     override val title = Res.string.quest_lanes_title
     override val achievements = listOf(CAR)
-    override val hint = R.string.quest_street_side_puzzle_tutorial
+    override val hint = Res.string.quest_street_side_puzzle_tutorial
 
     override fun createForm() = AddLanesForm()
 

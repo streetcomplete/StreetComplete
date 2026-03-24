@@ -34,7 +34,7 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
     override val icon = R.drawable.quest_bus_stop_name
     override val title = Res.string.quest_busStopName_title2
     override val achievements = listOf(PEDESTRIAN)
-    override val hint = R.string.quest_stopName_hint
+    override val hint = Res.string.quest_stopName_hint
 
     override fun createForm() = AddBusStopNameForm()
 

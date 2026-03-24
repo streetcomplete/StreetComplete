@@ -123,7 +123,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(WHEELCHAIR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
-    override val hint = R.string.quest_wheelchairAccess_limited_description_business
+    override val hint = Res.string.quest_wheelchairAccess_limited_description_business
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }

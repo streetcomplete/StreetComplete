@@ -36,9 +36,9 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer>, AndroidQuest {
     override val icon = R.drawable.quest_pedestrian
     override val title = Res.string.quest_crossing_title2
     override val achievements = listOf(PEDESTRIAN)
-    override val hint =  R.string.quest_crossing_hint
+    override val hint =  Res.string.quest_crossing_hint
     override val hintImages = listOf(
-        R.drawable.informal_crossing,
+        Res.drawable.informal_crossing,
     )
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

@@ -30,7 +30,7 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>(), AndroidQuest {
     override val title = Res.string.quest_buildingLevels_title2
     override val achievements = listOf(BUILDING)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
-    override val hint = R.string.quest_buildingLevels_hint
+    override val hint = Res.string.quest_buildingLevels_hint
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags.containsKey("building:part")) {

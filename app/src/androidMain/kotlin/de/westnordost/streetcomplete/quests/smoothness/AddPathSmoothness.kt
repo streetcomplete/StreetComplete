@@ -33,7 +33,7 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
     override val title = Res.string.quest_smoothness_title
     override val achievements = listOf(WHEELCHAIR, BICYCLIST)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
-    override val hint = R.string.quest_smoothness_hint
+    override val hint = Res.string.quest_smoothness_hint
 
     override fun createForm() = AddSmoothnessForm()
 

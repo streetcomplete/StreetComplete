@@ -27,8 +27,8 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>(), Andro
     override val title = Res.string.quest_wheelchairAccess_outside_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(WHEELCHAIR)
-    override val hint = R.string.quest_wheelchairAccess_description_toilets
-    override val hintImages = listOf(R.drawable.wheelchair_sign)
+    override val hint = Res.string.quest_wheelchairAccess_description_toilets
+    override val hintImages = listOf(Res.drawable.wheelchair_sign)
 
     override fun createForm() = WheelchairAccessForm()
 

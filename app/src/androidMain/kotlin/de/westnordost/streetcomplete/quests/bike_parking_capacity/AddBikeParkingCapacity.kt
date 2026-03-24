@@ -37,7 +37,7 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val title = Res.string.quest_bikeParkingCapacity_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
-    override val hint = R.string.quest_bikeParkingCapacity_hint
+    override val hint = Res.string.quest_bikeParkingCapacity_hint
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with amenity = bicycle_parking")

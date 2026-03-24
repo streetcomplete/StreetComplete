@@ -29,7 +29,7 @@ class AddCampPower : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val icon = R.drawable.quest_camp_power
     override val title = Res.string.quest_camp_power_supply_title
     override val achievements = listOf(OUTDOORS)
-    override val hint = R.string.quest_camp_power_supply_hint
+    override val hint = Res.string.quest_camp_power_supply_hint
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with tourism ~ camp_site|caravan_site")

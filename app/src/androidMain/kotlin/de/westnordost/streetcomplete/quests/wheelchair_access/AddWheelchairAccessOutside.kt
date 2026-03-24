@@ -28,7 +28,7 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>(), Andro
     override val icon = R.drawable.quest_toilets_wheelchair
     override val title = Res.string.quest_wheelchairAccess_outside_title
     override val achievements = listOf(RARE, WHEELCHAIR)
-    override val hint = R.string.quest_wheelchairAccess_limited_description_outside
+    override val hint = Res.string.quest_wheelchairAccess_limited_description_outside
 
     override fun createForm() = WheelchairAccessForm()
 

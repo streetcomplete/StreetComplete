@@ -45,7 +45,7 @@ class AddStepCountStile : OsmElementQuestType<Int>, AndroidQuest {
     override val title = Res.string.quest_step_count_title
     override val achievements = listOf(OUTDOORS)
     override val isDeleteElementEnabled = true
-    override val hint = R.string.quest_step_count_stile_hint
+    override val hint = Res.string.quest_step_count_stile_hint
 
     override fun createForm() = AddStepCountForm()
 

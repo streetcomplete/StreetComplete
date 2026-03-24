@@ -27,7 +27,7 @@ class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>>, AndroidQuest {
     override val title = Res.string.quest_sidewalk_title
     override val achievements = listOf(PEDESTRIAN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
-    override val hint = R.string.quest_street_side_puzzle_tutorial
+    override val hint = Res.string.quest_street_side_puzzle_tutorial
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }

@@ -32,7 +32,7 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>(), AndroidQue
     override val enabledInCountries = AllCountriesExcept("CZ")
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
-    override val hint = R.string.quest_determineRecyclingGlass_description_any_glass
+    override val hint = Res.string.quest_determineRecyclingGlass_description_any_glass
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with amenity = recycling")

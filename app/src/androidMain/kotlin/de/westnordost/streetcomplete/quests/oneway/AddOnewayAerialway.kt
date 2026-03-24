@@ -29,7 +29,7 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
     override val title = Res.string.quest_bothway_title
     override val hasMarkersAtEnds = true
     override val achievements = listOf(EditTypeAchievement.PEDESTRIAN)
-    override val hint = R.string.quest_arrow_tutorial
+    override val hint = Res.string.quest_arrow_tutorial
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> = mapData.ways.filter { elementFilter.matches(it) }
 

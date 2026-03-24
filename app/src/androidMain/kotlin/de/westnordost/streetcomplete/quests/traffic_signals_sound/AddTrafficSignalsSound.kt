@@ -40,7 +40,7 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean>, AndroidQuest {
     override val icon = R.drawable.quest_blind_traffic_lights_sound
     override val title = Res.string.quest_traffic_signals_sound_title
     override val achievements = listOf(BLIND)
-    override val hint = R.string.quest_traffic_signals_sound_description
+    override val hint = Res.string.quest_traffic_signals_sound_description
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter { it.isCrossingWithTrafficSignals() }.asSequence()

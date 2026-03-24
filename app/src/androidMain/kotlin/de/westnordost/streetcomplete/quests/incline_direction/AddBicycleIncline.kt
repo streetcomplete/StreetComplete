@@ -31,7 +31,7 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer>, AndroidQues
     override val title = Res.string.quest_bicycle_incline_title
     override val achievements = listOf(BICYCLIST)
     override val hasMarkersAtEnds = false
-    override val hint = R.string.quest_arrow_tutorial
+    override val hint = Res.string.quest_arrow_tutorial
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // sadly for very long ways shape may be complex and it may be confusing which answer should be given

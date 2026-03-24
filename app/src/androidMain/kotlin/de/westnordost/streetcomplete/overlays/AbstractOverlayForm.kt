@@ -13,8 +13,17 @@ import android.widget.PopupMenu
 import android.widget.RelativeLayout
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.MutableFloatState
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
 import androidx.core.view.isGone
@@ -48,8 +57,10 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
+import de.westnordost.streetcomplete.ui.theme.titleMedium
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
-import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
+import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -57,6 +68,7 @@ import de.westnordost.streetcomplete.util.ktx.setMargins
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.view.CharSequenceText
 import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
@@ -199,9 +211,15 @@ abstract class AbstractOverlayForm :
         )
         binding.speechbubbleContentContainer.clipToOutline = true
 
-        setTitleHintLabel(
-            element?.let { getNameAndLocationSpanned(it, resources, featureDictionary) }
-        )
+        binding.titleHint.content {
+            val label =
+            CompositionLocalProvider(
+                LocalTextStyle provides MaterialTheme.typography.titleMedium,
+                LocalContentAlpha provides ContentAlpha.medium
+            ) {
+                getSubTitle()?.let { Text(it) }
+            }
+        }
         setObjNote(element?.tags?.get("note"))
 
         binding.moreButton.setOnClickListener {
@@ -215,6 +233,10 @@ abstract class AbstractOverlayForm :
             }
         }
     }
+
+    @Composable
+    protected open fun getSubTitle(): AnnotatedString? =
+        element?.let { nameAndLocationLabel(it, featureDictionary) }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
@@ -290,11 +312,6 @@ abstract class AbstractOverlayForm :
     }
 
     /* ------------------------------- Interface for subclasses  ------------------------------- */
-
-    protected fun setTitleHintLabel(text: CharSequence?) {
-        binding.titleHintLabel.text = text
-        binding.titleHintLabelContainer.isGone = text == null
-    }
 
     /** Inflate given layout resource id into the content view and return the inflated view */
     protected fun setContentView(resourceId: Int): View {
@@ -415,8 +432,9 @@ abstract class AbstractOverlayForm :
 
     protected fun composeNote(element: Element) {
         viewLifecycleScope.launch {
-            val overlayTitle = org.jetbrains.compose.resources.getString(getSystemResourceEnvironment(), overlay.title)
-            val hintLabel = getNameAndLocationSpanned(element, requireContext().resources, featureDictionary)
+            val resourceEnvironment = getSystemResourceEnvironment()
+            val overlayTitle = org.jetbrains.compose.resources.getString(resourceEnvironment, overlay.title)
+            val hintLabel = getNameAndLocationLabel(resourceEnvironment, LayoutDirection.Ltr, element, featureDictionary)
             val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
                 "In context of overlay \"$overlayTitle\""
             } else {

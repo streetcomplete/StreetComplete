@@ -42,11 +42,11 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnsw
     override val title = Res.string.quest_tactilePaving_title_crosswalk
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
     override val achievements = listOf(BLIND)
-    override val hint = R.string.quest_generic_looks_like_this
+    override val hint = Res.string.quest_generic_looks_like_this
     override val hintImages = listOf(
-        R.drawable.tactile_paving1,
-        R.drawable.tactile_paving2,
-        R.drawable.tactile_paving3
+        Res.drawable.tactile_paving1,
+        Res.drawable.tactile_paving2,
+        Res.drawable.tactile_paving3
     )
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

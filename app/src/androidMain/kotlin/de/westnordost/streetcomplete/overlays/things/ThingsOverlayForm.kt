@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.overlays.things
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.AnnotatedString
 import androidx.core.view.isGone
 import de.westnordost.osmfeatures.BaseFeature
 import de.westnordost.osmfeatures.Feature
@@ -26,8 +28,8 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
 import de.westnordost.streetcomplete.overlays.IAnswerItem
 import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
-import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.view.controller.FeatureViewController
 import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
 
@@ -82,11 +84,14 @@ class ThingsOverlayForm : AbstractOverlayForm() {
         ).firstOrNull { it.toElement().isThing() }
     }
 
+    @Composable
+    override fun getSubTitle(): AnnotatedString? =
+        // title hint label with name is a duplication, it is displayed in the UI already
+        element?.let { nameAndLocationLabel(it, featureDictionary = null) }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // title hint label with name is a duplication, it is displayed in the UI already
-        setTitleHintLabel(element?.let { getNameAndLocationSpanned(it, resources, null) })
         setMarkerIcon(R.drawable.quest_dot)
 
         featureCtrl = FeatureViewController(featureDictionary, binding.featureTextView, binding.featureIconView)

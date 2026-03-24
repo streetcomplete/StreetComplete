@@ -36,7 +36,7 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>(), AndroidQuest {
     override val title = Res.string.quest_streetName_title
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR, PEDESTRIAN, POSTMAN)
-    override val hint = R.string.quest_streetName_hint
+    override val hint = Res.string.quest_streetName_hint
 
     override fun createForm() = AddRoadNameForm()
 

@@ -102,7 +102,7 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
             binding.markerCreateLayout.markerLayoutContainer.startAnimation(createFallDownAnimation())
         }
 
-        bottomSheetBinding.titleLabel.content {
+        bottomSheetBinding.questHeader.content {
             ProvideTextStyle(MaterialTheme.typography.titleLarge) {
                 Text(stringResource(Res.string.map_btn_create_note))
             }

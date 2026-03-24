@@ -46,8 +46,8 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean>, AndroidQuest {
         "RU", // see https://github.com/streetcomplete/StreetComplete/issues/4021
         "CZ"
     )
-    override val hint = R.string.quest_traffic_signals_vibrate_description
-    override val hintImages = listOf(R.drawable.vibrating_button_illustration)
+    override val hint = Res.string.quest_traffic_signals_vibrate_description
+    override val hintImages = listOf(Res.drawable.vibrating_button_illustration)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter { it.isCrossingWithTrafficSignals() }.asSequence()

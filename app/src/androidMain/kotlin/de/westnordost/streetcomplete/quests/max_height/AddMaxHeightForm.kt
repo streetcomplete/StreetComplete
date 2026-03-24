@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
@@ -14,8 +15,13 @@ import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_generic_answer_differs_along_the_way
+import de.westnordost.streetcomplete.resources.quest_maxheight_split_way_hint
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
 
@@ -27,17 +33,17 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
         AnswerItem(R.string.quest_maxheight_answer_noSign) { confirmNoSign() }
     )
 
+    @Composable
+    override fun getHint(): String? {
+        return if (element.type == ElementType.WAY) {
+            stringResource(Res.string.quest_maxheight_split_way_hint,
+                stringResource(Res.string.quest_generic_answer_differs_along_the_way)
+            )
+        } else super.getHint()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        if (element.type == ElementType.WAY) {
-            setHint(
-                getString(
-                    R.string.quest_maxheight_split_way_hint,
-                    getString(R.string.quest_generic_answer_differs_along_the_way)
-                )
-            )
-        }
 
         binding.composeViewBase.content { Surface {
             height = rememberSerializable { mutableStateOf(null) }

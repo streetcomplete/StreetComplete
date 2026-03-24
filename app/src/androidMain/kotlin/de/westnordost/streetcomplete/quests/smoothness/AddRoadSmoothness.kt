@@ -31,7 +31,7 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
     override val title = Res.string.quest_smoothness_road_title
     override val achievements = listOf(CAR, BICYCLIST)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
-    override val hint = R.string.quest_smoothness_hint
+    override val hint = Res.string.quest_smoothness_hint
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["area"] == "yes") {

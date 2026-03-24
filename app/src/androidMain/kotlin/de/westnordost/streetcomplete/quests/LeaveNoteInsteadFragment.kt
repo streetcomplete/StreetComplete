@@ -83,7 +83,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonPanel.isGone = true
         contentBinding.descriptionLabel.isGone = true
-        binding.titleLabel.content {
+        binding.questHeader.content {
             ProvideTextStyle(MaterialTheme.typography.titleLarge) {
                 Text(stringResource(Res.string.map_btn_create_note))
             }

@@ -36,8 +36,8 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(RARE, WHEELCHAIR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
-    override val hint = R.string.quest_wheelchairAccess_description_toilets
-    override val hintImages = listOf(R.drawable.wheelchair_sign)
+    override val hint = Res.string.quest_wheelchairAccess_description_toilets
+    override val hintImages = listOf(Res.drawable.wheelchair_sign)
 
     override fun createForm() = AddWheelchairAccessToiletsPartForm()
 
