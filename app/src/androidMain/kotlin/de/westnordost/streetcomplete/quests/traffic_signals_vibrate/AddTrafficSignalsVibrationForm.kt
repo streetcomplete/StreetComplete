@@ -1,19 +1,18 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
 
-import android.os.Bundle
-import android.view.View
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.vibrating_button_illustration
+import de.westnordost.streetcomplete.resources.vibrating_button_illustration_au
+import de.westnordost.streetcomplete.resources.vibrating_button_illustration_gb
+import org.jetbrains.compose.resources.DrawableResource
 
 class AddTrafficSignalsVibrationForm : AbstractOsmQuestForm<Boolean>() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val illustrationResId = getVibratingButtonIllustrationResId(countryInfo.countryCode)
-        setHintImages(listOfNotNull(requireContext().getDrawable(illustrationResId)))
-    }
+    override fun getHintImages(): List<DrawableResource> =
+        listOf(getVibratingButtonIllustration(countryInfo.countryCode))
 
     override val buttonPanelAnswers = listOf(
         AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(false) },
@@ -21,8 +20,9 @@ class AddTrafficSignalsVibrationForm : AbstractOsmQuestForm<Boolean>() {
     )
 }
 
-private fun getVibratingButtonIllustrationResId(countryCode: String): Int = when (countryCode) {
-    "AU" -> R.drawable.vibrating_button_illustration_au
-    "GB" -> R.drawable.vibrating_button_illustration_gb
-    else -> R.drawable.vibrating_button_illustration
-}
+private fun getVibratingButtonIllustration(countryCode: String): DrawableResource =
+    when (countryCode) {
+        "AU" -> Res.drawable.vibrating_button_illustration_au
+        "GB" -> Res.drawable.vibrating_button_illustration_gb
+        else -> Res.drawable.vibrating_button_illustration
+    }

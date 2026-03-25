@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCampShower : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -31,12 +32,11 @@ class AddCampShower : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify whether there are showers available"
     override val wikiLink = "Key:shower"
     override val icon = R.drawable.quest_shower
+    override val title = Res.string.quest_camp_shower_title
     override val achievements = listOf(OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_camp_shower_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with tourism = camp_site")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with tourism = camp_site")
 
     override fun createForm() = YesNoQuestForm()
 

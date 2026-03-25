@@ -8,8 +8,8 @@ interface EditType {
      *  applicable, ...) */
     val icon: Int
 
-    /** the string resource id used to display this edit type (in edit history, statistics, ...) */
-    val title: Int
+    /** the string resource used to display this edit type (in edit history, statistics, ...) */
+    val title: StringResource
 
     /** the name that is recorded as StreetComplete:quest_type=<name> in the changeset and to
      *  identify it in the database, statistics etc. , i.e. used to attribute in which context a

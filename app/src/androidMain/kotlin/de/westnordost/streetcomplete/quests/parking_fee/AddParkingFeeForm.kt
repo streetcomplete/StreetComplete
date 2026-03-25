@@ -21,9 +21,7 @@ import de.westnordost.streetcomplete.osm.time_restriction.TimeRestriction
 import de.westnordost.streetcomplete.osm.time_restriction.TimeRestrictionInput
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_fee_answer_no_but_maxstay
-import de.westnordost.streetcomplete.resources.quest_fee_answer_yes_but
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.util.content
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

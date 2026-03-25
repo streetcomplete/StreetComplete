@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>(), AndroidQuest {
 
@@ -19,9 +20,8 @@ class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>(), AndroidQuest {
     override val changesetComment = "Specify bridge structures"
     override val wikiLink = "Key:bridge:structure"
     override val icon = R.drawable.quest_bridge
+    override val title = Res.string.quest_bridge_structure_title
     override val achievements = listOf(BUILDING)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bridge_structure_title
 
     override fun createForm() = AddBridgeStructureForm()
 

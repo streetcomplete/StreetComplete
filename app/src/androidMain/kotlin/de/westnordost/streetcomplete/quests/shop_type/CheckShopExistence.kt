@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class CheckShopExistence(
     private val getFeature: (Element) -> Feature?
@@ -41,9 +42,8 @@ class CheckShopExistence(
     override val changesetComment = "Survey if places still exist"
     override val wikiLink = "Key:disused:"
     override val icon = R.drawable.quest_check_shop
+    override val title = Res.string.quest_existence_title2
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_existence_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
@@ -53,8 +53,8 @@ class CheckShopExistence(
         element.isPlace() &&
         hasName(element)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = CheckShopExistenceForm()
 

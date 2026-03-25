@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(), AndroidQuest {
 
@@ -23,11 +24,9 @@ class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(
     override val changesetComment = "Survey wheelchair accessibility of public transport platforms"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.quest_wheelchair
+    override val title = Res.string.quest_wheelchairAccess_outside_title
     override val achievements = listOf(WHEELCHAIR)
-
-    override val hint = R.string.quest_wheelchairAccess_limited_description_public_transport
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
+    override val hint = Res.string.quest_wheelchairAccess_limited_description_public_transport
 
     override fun createForm() = WheelchairAccessForm()
 

@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.overlays.things
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -42,8 +44,8 @@ import de.westnordost.streetcomplete.ui.common.feature.FeatureItem
 import de.westnordost.streetcomplete.ui.common.feature.FeatureSelect
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.koin.android.ext.android.inject
@@ -114,11 +116,14 @@ class ThingsOverlayForm : AbstractOverlayForm() {
         ).firstOrNull { it.toElement().isThing() }
     }
 
+    @Composable
+    override fun getSubtitle(): AnnotatedString? =
+        // title hint label with name is a duplication, it is displayed in the UI already
+        element?.let { nameAndLocationLabel(it, featureDictionary = null) }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // title hint label with name is a duplication, it is displayed in the UI already
-        setTitleHintLabel(element?.let { getNameAndLocationSpanned(it, resources, null) })
         setMarkerIcon(R.drawable.quest_dot)
 
         // editing an existing feature is disabled because unlike shops, they don't just change

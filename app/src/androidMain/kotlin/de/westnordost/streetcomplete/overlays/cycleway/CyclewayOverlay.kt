@@ -26,12 +26,13 @@ import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
+import de.westnordost.streetcomplete.resources.*
 
 class CyclewayOverlay(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
 ) : Overlay, AndroidOverlay {
 
-    override val title = R.string.overlay_cycleway
+    override val title = Res.string.overlay_cycleway
     override val icon = R.drawable.quest_bicycleway
     override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink: String = "Key:cycleway"

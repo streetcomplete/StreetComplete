@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.math.measuredMultiPolygonArea
 
 class AddForestLeafType : OsmElementQuestType<ForestLeafType>, AndroidQuest {
@@ -24,9 +25,8 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType>, AndroidQuest {
     override val changesetComment = "Specify leaf types"
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.quest_leaf
+    override val title = Res.string.quest_leafType_title
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_leafType_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val forests = mapData

@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.quests.barrier_type.StileTypeAnswer.*
+import de.westnordost.streetcomplete.resources.*
 import kotlin.IllegalStateException
 
 class AddStileType : OsmElementQuestType<StileTypeAnswer>, AndroidQuest {
@@ -43,10 +44,9 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer>, AndroidQuest {
     override val changesetComment = "Specify stile types"
     override val wikiLink = "Key:stile"
     override val icon = R.drawable.quest_no_cow
+    override val title = Res.string.quest_stile_type_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_stile_type_title
 
     override fun createForm() = AddStileTypeForm()
 

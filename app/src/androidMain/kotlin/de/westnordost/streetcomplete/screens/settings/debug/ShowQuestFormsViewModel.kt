@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.util.ResourceProvider
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers.Default
@@ -14,6 +13,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
+import org.jetbrains.compose.resources.getString
 
 @Stable
 abstract class ShowQuestFormsViewModel : ViewModel() {
@@ -26,7 +26,6 @@ abstract class ShowQuestFormsViewModel : ViewModel() {
 @Stable
 class ShowQuestFormsViewModelImpl(
     private val questTypeRegistry: QuestTypeRegistry,
-    private val resourceProvider: ResourceProvider,
 ) : ShowQuestFormsViewModel() {
     override val searchText = MutableStateFlow("")
 
@@ -50,8 +49,7 @@ class ShowQuestFormsViewModelImpl(
         // are not reloaded automatically since there is no listenable callback from the
         // system for when the language changes
         launch(Default) {
-            questTitles.value = questTypeRegistry
-                .associate { it.name to resourceProvider.getString(it.title) }
+            questTitles.value = questTypeRegistry.associate { it.name to getString(it.title) }
         }
     }
 

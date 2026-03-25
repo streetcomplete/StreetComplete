@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.isDisusedPlace
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class CheckShopType : OsmElementQuestType<ShopTypeAnswer>, AndroidQuest {
 
@@ -43,9 +44,8 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer>, AndroidQuest {
     override val changesetComment = "Survey if vacant places are still vacant"
     override val wikiLink = "Key:disused:"
     override val icon = R.drawable.quest_check_shop
+    override val title = Res.string.quest_shop_vacant_type_title
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_shop_vacant_type_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
@@ -58,8 +58,8 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer>, AndroidQuest {
          *  this element being cleared when the quest is answered */
         !element.isPlace()
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = ShopTypeForm()
 
