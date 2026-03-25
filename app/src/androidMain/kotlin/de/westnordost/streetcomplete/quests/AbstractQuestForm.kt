@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableFloatState
 import androidx.compose.runtime.mutableFloatStateOf
@@ -142,14 +143,14 @@ abstract class AbstractQuestForm :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.questHeader.content {
+        binding.questHeader.content { Surface {
             QuestHeader(
                 title = stringResource(getTitle()),
                 subtitle = getSubtitle(),
                 hintText = getHint(),
                 hintImages = getHintImages()
             )
-        }
+        } }
 
         binding.okButton.setOnClickListener {
             if (!isFormComplete()) {

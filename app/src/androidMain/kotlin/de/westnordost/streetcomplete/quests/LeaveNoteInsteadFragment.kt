@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
@@ -82,11 +83,11 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonPanel.isGone = true
         contentBinding.descriptionLabel.isGone = true
-        binding.questHeader.content {
+        binding.questHeader.content { Surface {
             ProvideTextStyle(MaterialTheme.typography.titleLarge) {
                 Text(stringResource(Res.string.map_btn_create_note))
             }
-        }
+        } }
     }
 
     override fun onDestroyView() {

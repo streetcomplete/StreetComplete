@@ -16,6 +16,7 @@ import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -209,15 +210,14 @@ abstract class AbstractOverlayForm :
         )
         binding.speechbubbleContentContainer.clipToOutline = true
 
-        binding.titleHint.content {
-            val label =
+        binding.titleHint.content { Surface {
             CompositionLocalProvider(
                 LocalTextStyle provides MaterialTheme.typography.titleMedium,
                 LocalContentAlpha provides ContentAlpha.medium
             ) {
                 getSubtitle()?.let { Text(it) }
             }
-        }
+        } }
         setObjNote(element?.tags?.get("note"))
 
         binding.moreButton.setOnClickListener {
