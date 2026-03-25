@@ -15,11 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.action_reset
-import de.westnordost.streetcomplete.resources.pref_overlays_reset
-import de.westnordost.streetcomplete.resources.pref_subtitle_quests_preset_name
-import de.westnordost.streetcomplete.resources.pref_title_overlays
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.common.MoreIcon

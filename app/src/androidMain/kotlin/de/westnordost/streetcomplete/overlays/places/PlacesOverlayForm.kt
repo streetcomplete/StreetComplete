@@ -52,9 +52,7 @@ import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.name_label
-import de.westnordost.streetcomplete.resources.quest_placeName_no_name_answer
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.feature.FeatureIcon
 import de.westnordost.streetcomplete.ui.common.feature.FeatureSelect
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow

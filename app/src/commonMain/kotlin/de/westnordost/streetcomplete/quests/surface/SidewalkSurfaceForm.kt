@@ -11,10 +11,7 @@ import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.sidewalk_illustration_yes
-import de.westnordost.streetcomplete.resources.floating_question
-import de.westnordost.streetcomplete.resources.sidewalk_illustration_no
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side

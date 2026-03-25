@@ -24,10 +24,7 @@ import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.overlays.mtb_scale.MtbScaleOverlay
 import de.westnordost.streetcomplete.overlays.street_parking.StreetParkingOverlay
 import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.enable_overlay_confirmation_title
-import de.westnordost.streetcomplete.resources.overlay
-import de.westnordost.streetcomplete.resources.quest_enabled
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.stringResource

@@ -17,10 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.cancel
-import de.westnordost.streetcomplete.resources.ok
-import de.westnordost.streetcomplete.resources.quest_select_hint_most_specific
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColumn
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges

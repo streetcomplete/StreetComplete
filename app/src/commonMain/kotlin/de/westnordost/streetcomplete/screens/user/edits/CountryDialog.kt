@@ -20,11 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.user_profile_all_time_title
-import de.westnordost.streetcomplete.resources.user_profile_current_week_title
-import de.westnordost.streetcomplete.resources.user_statistics_country_rank2
-import de.westnordost.streetcomplete.resources.user_statistics_country_wiki_link
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.screens.user.profile.LaurelWreathBadge
 import de.westnordost.streetcomplete.screens.user.profile.getLocalRankCurrentWeekProgress

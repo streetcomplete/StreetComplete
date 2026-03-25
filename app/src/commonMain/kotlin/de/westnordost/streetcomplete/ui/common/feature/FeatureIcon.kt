@@ -8,9 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import de.westnordost.osmfeatures.Feature
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.allDrawableResources
-import de.westnordost.streetcomplete.resources.preset_maki_marker_stroked
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.painterResource
 
 /** Icon for a [feature]. Some features, i.e. brand features usually don't have an icon, so a

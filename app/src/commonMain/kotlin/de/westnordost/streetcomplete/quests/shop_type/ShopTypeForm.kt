@@ -24,10 +24,7 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.quests.shop_type.ShopTypeFormOption.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_shop_gone_replaced_answer
-import de.westnordost.streetcomplete.resources.quest_shop_gone_vacant_answer
-import de.westnordost.streetcomplete.resources.quest_streetName_answer_noProperStreet_leaveNote
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.RadioGroup
 import de.westnordost.streetcomplete.ui.common.feature.FeatureSelect
 import de.westnordost.streetcomplete.ui.util.rememberSerializable

@@ -26,9 +26,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.allDrawableResources
-import de.westnordost.streetcomplete.resources.preset_maki_marker_stroked
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.feature.buildAnnotatedName
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import org.jetbrains.compose.resources.painterResource

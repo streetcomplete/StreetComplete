@@ -12,9 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.EditsOfTypeCount
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.TotalEditCount
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.action_settings
-import de.westnordost.streetcomplete.resources.quest_address_title
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.testutils.any
 import de.westnordost.streetcomplete.testutils.mock
 import de.westnordost.streetcomplete.testutils.on

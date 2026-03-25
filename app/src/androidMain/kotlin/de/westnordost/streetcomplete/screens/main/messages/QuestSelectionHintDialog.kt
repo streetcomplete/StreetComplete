@@ -26,11 +26,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ok
-import de.westnordost.streetcomplete.resources.quest_selection_hint_message
-import de.westnordost.streetcomplete.resources.quest_selection_hint_title
-import de.westnordost.streetcomplete.resources.quest_streetName_cantType_open_settings
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BubblePile
 import de.westnordost.streetcomplete.ui.common.dialogs.AlertDialogLayout
 import de.westnordost.streetcomplete.ui.ktx.proportionalAbsoluteOffset

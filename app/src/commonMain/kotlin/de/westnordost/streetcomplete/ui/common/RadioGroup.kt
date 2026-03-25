@@ -21,11 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_credit_only
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_debit_and_credit
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_dedit_only
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_unavailable
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 

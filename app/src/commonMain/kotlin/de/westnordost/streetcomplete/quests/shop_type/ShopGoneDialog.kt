@@ -19,10 +19,7 @@ import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.toElement
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.cancel
-import de.westnordost.streetcomplete.resources.ok
-import de.westnordost.streetcomplete.resources.quest_shop_gone_title
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import org.jetbrains.compose.resources.stringResource

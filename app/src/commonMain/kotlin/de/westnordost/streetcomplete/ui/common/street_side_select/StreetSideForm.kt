@@ -14,9 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.Sides
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.street_side_unknown
-import de.westnordost.streetcomplete.resources.street_side_unknown_l
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import org.jetbrains.compose.resources.painterResource
 

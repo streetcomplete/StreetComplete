@@ -27,8 +27,7 @@ import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
 import de.westnordost.streetcomplete.quests.note_discussion.AttachPhotoFragment
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.map_btn_create_note
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.childFragmentManagerOrNull

@@ -38,13 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.allDrawableResources
-import de.westnordost.streetcomplete.resources.team_mode
-import de.westnordost.streetcomplete.resources.team_mode_choose_color2
-import de.westnordost.streetcomplete.resources.team_mode_description
-import de.westnordost.streetcomplete.resources.team_mode_description_overlay_hint
-import de.westnordost.streetcomplete.resources.team_mode_team_size_label2
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.tutorial.TutorialScreen
 import de.westnordost.streetcomplete.ui.common.BubblePile
 import de.westnordost.streetcomplete.ui.common.WheelPicker

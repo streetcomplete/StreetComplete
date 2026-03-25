@@ -29,12 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_open_in_browser_24
-import de.westnordost.streetcomplete.resources.mail_back
-import de.westnordost.streetcomplete.resources.mail_front
-import de.westnordost.streetcomplete.resources.unread_messages_button
-import de.westnordost.streetcomplete.resources.unread_messages_message
+import de.westnordost.streetcomplete.resources.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource

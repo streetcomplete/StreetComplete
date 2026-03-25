@@ -18,13 +18,7 @@ import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.quests.address.AnAddressNumberInput
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_entrance_reference_flat_range_label
-import de.westnordost.streetcomplete.resources.quest_entrance_reference_flat_range_to
-import de.westnordost.streetcomplete.resources.quest_entrance_reference_reference_label
-import de.westnordost.streetcomplete.resources.quest_entrance_reference_select_code_only
-import de.westnordost.streetcomplete.resources.quest_entrance_reference_select_flat_range_and_code
-import de.westnordost.streetcomplete.resources.quest_entrance_reference_select_flat_range_only
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.StringResource

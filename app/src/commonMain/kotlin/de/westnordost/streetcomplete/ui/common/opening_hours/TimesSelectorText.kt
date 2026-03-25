@@ -25,9 +25,7 @@ import de.westnordost.osm_opening_hours.model.Time
 import de.westnordost.osm_opening_hours.model.TimeIntervals
 import de.westnordost.osm_opening_hours.model.TimeSpan
 import de.westnordost.osm_opening_hours.model.TimesSelector
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_openingHours_from
-import de.westnordost.streetcomplete.resources.quest_openingHours_until_late
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.datetime.LocalTime
