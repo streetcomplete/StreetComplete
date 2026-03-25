@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.quests.max_speed
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
@@ -15,7 +15,9 @@ import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
+class AddMaxSpeed (
+    private val getCountryOrSubdivisionCode: (LatLon) -> String?
+) : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with
@@ -24,6 +26,7 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
          and ${MAX_SPEED_TYPE_KEYS.joinToString(" and ") { "!$it" }}
          and surface !~ ${UNPAVED_SURFACES.joinToString("|")}
          and cyclestreet != yes and bicycle_road != yes
+         and living_street != yes
          and motor_vehicle !~ private|no
          and vehicle !~ private|no
          and area != yes
@@ -34,8 +37,6 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
     override val icon = R.drawable.quest_max_speed
     override val title = Res.string.quest_maxspeed_title_short2
     override val hasMarkersAtEnds = true
-    // see #813: US has different rules for each different state which need to be respected
-    override val enabledInCountries = AllCountriesExcept("US")
     override val achievements = listOf(CAR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_maxspeed
 
@@ -45,27 +46,6 @@ class AddMaxSpeed : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
     override fun createForm() = AddMaxSpeedForm()
 
     override fun applyAnswerTo(answer: MaxSpeedAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            is MaxSpeedSign -> {
-                tags["maxspeed"] = answer.value.toString()
-                tags["maxspeed:type"] = "sign"
-            }
-            is MaxSpeedZone -> {
-                tags["maxspeed"] = answer.value.toString()
-                tags["maxspeed:type"] = answer.countryCode + ":" + answer.roadType
-            }
-            is AdvisorySpeedSign -> {
-                tags["maxspeed:advisory"] = answer.value.toString()
-                tags["maxspeed:type:advisory"] = "sign"
-            }
-            is IsLivingStreet -> {
-                tags["highway"] = "living_street"
-            }
-            is ImplicitMaxSpeed -> {
-                tags["maxspeed:type"] = answer.countryCode + ":" + answer.roadType
-                // Lit is either already set or has been answered by the user, so this wouldn't change the value of the lit tag
-                answer.lit?.let { tags["lit"] = it.toYesNo() }
-            }
-        }
+        answer.applyTo(tags, getCountryOrSubdivisionCode(geometry.center) ?: "??")
     }
 }

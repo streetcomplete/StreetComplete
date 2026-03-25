@@ -142,3 +142,14 @@ val CountryInfo.pictogramCycleLaneMirroredDrawable: DrawableResource get() = whe
     "yellow" -> Res.drawable.cycleway_pictograms_yellow_l
     else ->     Res.drawable.cycleway_pictograms_white_l
 }
+
+val CountryInfo.livingStreetSignDrawable: DrawableResource get() = when (livingStreetSignStyle) {
+    "vienna"    -> Res.drawable.living_street
+    "sadc"      -> Res.drawable.living_street_sadc
+    "russia"    -> Res.drawable.living_street_russia
+    "shared"    -> Res.drawable.living_street_shared
+    "australia" -> Res.drawable.living_street_australia
+    "columbia"  -> Res.drawable.living_street_columbia
+    else        -> Res.drawable.living_street
+}
+
