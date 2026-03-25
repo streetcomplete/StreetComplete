@@ -20,9 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_down_24
-import de.westnordost.streetcomplete.resources.ic_up_24
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.button_group.ButtonGroup
 import de.westnordost.streetcomplete.ui.common.button_group.ButtonGroupButton
 import org.jetbrains.compose.resources.painterResource

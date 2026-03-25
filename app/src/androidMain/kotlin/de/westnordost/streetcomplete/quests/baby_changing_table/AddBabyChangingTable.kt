@@ -7,8 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBabyChangingTable : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -29,11 +28,10 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Survey availability of baby changing tables"
     override val wikiLink = "Key:changing_table"
     override val icon = R.drawable.quest_baby
+    override val title = Res.string.quest_baby_changing_table_title2
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_baby_changing_table_title2
 
     override fun createForm() = YesNoQuestForm()
 

@@ -13,9 +13,7 @@ import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_difficult_and_time_consuming
-import de.westnordost.streetcomplete.resources.default_disabled_msg_no_ar
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import org.jetbrains.compose.resources.StringResource
 
@@ -59,12 +57,12 @@ class AddRoadWidth(
     override val changesetComment = "Determine road widths"
     override val wikiLink = "Key:width"
     override val icon = R.drawable.quest_street_width
+    override val title = Res.string.quest_road_width_title
     override val achievements = listOf(EditTypeAchievement.CAR)
     override val defaultDisabledMessage: StringResource? get() =
         if (!checkArSupport()) Res.string.default_disabled_msg_no_ar
         else Res.string.default_disabled_msg_difficult_and_time_consuming
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_road_width_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.nodes.filter { nodeFilter.matches(it) } + mapData.ways.filter { wayFilter.matches(it) }
@@ -72,8 +70,8 @@ class AddRoadWidth(
     override fun isApplicableTo(element: Element) =
         nodeFilter.matches(element) || wayFilter.matches(element)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table")
 
     override fun createForm() = AddWidthForm()
 

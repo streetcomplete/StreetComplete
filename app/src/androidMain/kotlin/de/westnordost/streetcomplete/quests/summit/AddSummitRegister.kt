@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 import de.westnordost.streetcomplete.util.math.distanceToArcs
 
@@ -28,6 +29,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean>, AndroidQuest {
     override val changesetComment = "Specify whether summit registers are present"
     override val wikiLink = "Key:summit:register"
     override val icon = R.drawable.quest_peak
+    override val title = Res.string.quest_summit_register_title2
     override val achievements = listOf(RARE, OUTDOORS)
     override val enabledInCountries = NoCountriesExcept(
         // regions gathered in
@@ -53,8 +55,6 @@ class AddSummitRegister : OsmElementQuestType<Boolean>, AndroidQuest {
         "PE", // https://es.wikipedia.org/wiki/Cruz_de_la_cumbre#Ejemplos
         "US", // https://de.wikipedia.org/wiki/Gipfelkreuz
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_summit_register_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val peaks = mapData.nodes.filter { filter.matches(it) }

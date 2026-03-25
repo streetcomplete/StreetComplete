@@ -19,8 +19,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.MonthRange
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
 import de.westnordost.osm_opening_hours.model.SingleMonth
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_openingHours_unspecified_range
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
 import org.jetbrains.compose.resources.stringResource
 

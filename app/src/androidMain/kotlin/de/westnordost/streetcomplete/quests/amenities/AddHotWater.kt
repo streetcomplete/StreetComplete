@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddHotWater : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -25,12 +26,11 @@ class AddHotWater : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify whether a shower has hot water"
     override val wikiLink = "Key:hot_water"
     override val icon = R.drawable.quest_thermometer
+    override val title = Res.string.quest_shower_hot_water_title
     override val achievements = listOf(OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_shower_hot_water_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = shower")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = shower")
 
     override fun createForm() = YesNoQuestForm()
 

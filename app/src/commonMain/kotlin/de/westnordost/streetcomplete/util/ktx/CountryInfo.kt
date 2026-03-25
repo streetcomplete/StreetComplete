@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.util.ktx
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 

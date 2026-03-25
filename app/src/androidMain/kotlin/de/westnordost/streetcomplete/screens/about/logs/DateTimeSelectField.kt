@@ -11,8 +11,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_calendar_month_24
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.ClearIcon
 import de.westnordost.streetcomplete.util.ktx.now
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle

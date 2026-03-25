@@ -12,8 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_maxspeed
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddMaxSpeed (
@@ -36,14 +35,13 @@ class AddMaxSpeed (
     override val changesetComment = "Specify speed limits"
     override val wikiLink = "Key:maxspeed"
     override val icon = R.drawable.quest_max_speed
+    override val title = Res.string.quest_maxspeed_title_short2
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_maxspeed
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_maxspeed_title_short2
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with traffic_sign = city_limit")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with traffic_sign = city_limit")
 
     override fun createForm() = AddMaxSpeedForm()
 

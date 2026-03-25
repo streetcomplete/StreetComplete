@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddStepCount : OsmFilterQuestType<Int>(), AndroidQuest {
 
@@ -25,11 +26,10 @@ class AddStepCount : OsmFilterQuestType<Int>(), AndroidQuest {
     override val changesetComment = "Specify step counts"
     override val wikiLink = "Key:step_count"
     override val icon = R.drawable.quest_steps_count
+    override val title = Res.string.quest_step_count_title
     // because the user needs to start counting at the start of the steps
     override val hasMarkersAtEnds = true
     override val achievements = listOf(PEDESTRIAN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_title
 
     override fun createForm() = AddStepCountForm()
 

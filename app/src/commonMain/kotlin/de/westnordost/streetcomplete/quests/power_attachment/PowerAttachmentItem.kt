@@ -1,13 +1,7 @@
 package de.westnordost.streetcomplete.quests.power_attachment
 
 import de.westnordost.streetcomplete.quests.power_attachment.PowerAttachment.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.power_attachment_anchor
-import de.westnordost.streetcomplete.resources.power_attachment_pin
-import de.westnordost.streetcomplete.resources.power_attachment_suspension
-import de.westnordost.streetcomplete.resources.quest_powerAttachment_anchor
-import de.westnordost.streetcomplete.resources.quest_powerAttachment_pin
-import de.westnordost.streetcomplete.resources.quest_powerAttachment_suspension
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

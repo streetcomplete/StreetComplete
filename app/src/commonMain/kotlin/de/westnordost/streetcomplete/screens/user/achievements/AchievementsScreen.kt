@@ -19,9 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.achievements_empty
-import de.westnordost.streetcomplete.resources.stats_are_syncing
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.plus
 import org.jetbrains.compose.resources.stringResource

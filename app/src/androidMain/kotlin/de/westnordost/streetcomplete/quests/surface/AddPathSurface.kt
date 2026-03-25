@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.applyTo
+import de.westnordost.streetcomplete.resources.*
 
 class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>(), AndroidQuest {
 
@@ -38,9 +39,8 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>(), AndroidQues
     override val changesetComment = "Specify path surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.quest_way_surface
+    override val title = Res.string.quest_surface_title
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_surface_title
 
     override fun createForm() = AddPathSurfaceForm()
 

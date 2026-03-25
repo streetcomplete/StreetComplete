@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFirewood : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -37,13 +38,12 @@ class AddFirewood : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specified if firewood is provided"
     override val wikiLink = "Tag:leisure=firepit"
     override val icon = R.drawable.quest_firewood
+    override val title = Res.string.quest_firewood_provided_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_firewood_provided_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with leisure = firepit or amenity = bbq or tourism = wilderness_hut")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with leisure = firepit or amenity = bbq or tourism = wilderness_hut")
 
     override fun createForm() = YesNoQuestForm()
 

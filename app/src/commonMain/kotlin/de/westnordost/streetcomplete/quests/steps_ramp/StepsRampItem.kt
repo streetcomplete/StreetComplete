@@ -1,15 +1,7 @@
 package de.westnordost.streetcomplete.quests.steps_ramp
 
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_steps_ramp_bicycle
-import de.westnordost.streetcomplete.resources.quest_steps_ramp_none
-import de.westnordost.streetcomplete.resources.quest_steps_ramp_stroller
-import de.westnordost.streetcomplete.resources.quest_steps_ramp_wheelchair
-import de.westnordost.streetcomplete.resources.ramp_bicycle
-import de.westnordost.streetcomplete.resources.ramp_none
-import de.westnordost.streetcomplete.resources.ramp_stroller
-import de.westnordost.streetcomplete.resources.ramp_wheelchair
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

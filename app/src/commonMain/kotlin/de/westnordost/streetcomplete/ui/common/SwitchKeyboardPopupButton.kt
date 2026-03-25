@@ -26,8 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupPositionProvider
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_keyboard_24
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.painterResource
 
 /** Popup button to switch keyboard between ABC and 123, displayed in some corner of the screen.

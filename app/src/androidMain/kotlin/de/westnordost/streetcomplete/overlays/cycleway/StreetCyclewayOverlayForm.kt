@@ -108,11 +108,11 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
                 .filter { sides -> sides.all { it?.isSelectable(countryInfo) != false } }
         }
 
-        snapshotFlow { bicycleInPedestrianStreet }
+        snapshotFlow { bicycleInPedestrianStreet.value }
             .onEach { checkIsFormComplete() }
             .launchIn(lifecycleScope)
 
-        snapshotFlow { bicycleBoulevard }
+        snapshotFlow { bicycleBoulevard.value }
             .onEach { checkIsFormComplete() }
             .launchIn(lifecycleScope)
 

@@ -49,11 +49,6 @@ suspend fun View.awaitNextLayout() = suspendCancellableCoroutine { cont ->
     addOnLayoutChangeListener(listener)
 }
 
-suspend fun View.awaitPreDraw() = suspendCancellableCoroutine { cont ->
-    val listener = doOnPreDraw { cont.resume(Unit) }
-    cont.invokeOnCancellation { listener.removeListener() }
-}
-
 fun View.getLocationInWindow(): Point {
     val pos = IntArray(2)
     getLocationInWindow(pos)

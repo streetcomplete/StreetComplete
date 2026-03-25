@@ -40,13 +40,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.logs.format
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.about_title_logs
-import de.westnordost.streetcomplete.resources.action_filter
-import de.westnordost.streetcomplete.resources.action_share
-import de.westnordost.streetcomplete.resources.ic_filter_list_24
-import de.westnordost.streetcomplete.resources.ic_share_24
-import de.westnordost.streetcomplete.resources.no_search_results
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.isScrolledToEnd

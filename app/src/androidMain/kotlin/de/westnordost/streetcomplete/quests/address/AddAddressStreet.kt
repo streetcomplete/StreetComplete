@@ -15,13 +15,26 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.applyTo
+import de.westnordost.streetcomplete.resources.*
 
 class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName>, AndroidQuest {
 
     private val filter by lazy { """
         nodes, ways, relations with
-          (addr:housenumber or addr:housename) and !addr:street and !addr:place and !addr:block_number and !addr:substreet and !addr:parentstreet
-          or addr:streetnumber and !addr:street and !addr:substreet and !addr:parentstreet
+          (
+            (addr:housenumber or addr:housename)
+            and !addr:street
+            and !addr:place
+            and !addr:block_number
+            and !addr:block
+            and !addr:substreet
+            and !addr:parentstreet
+          ) or (
+            addr:streetnumber
+            and !addr:street
+            and !addr:substreet
+            and !addr:parentstreet
+          )
     """.toElementFilterExpression() }
 
     // #2112 - exclude indirect addr:street
@@ -32,14 +45,12 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName>, AndroidQuest {
 
     override val changesetComment = "Specify street/place names to addresses"
     override val icon = R.drawable.quest_housenumber_street
+    override val title = Res.string.quest_address_street_title2
     override val wikiLink = "Key:addr"
     // In Japan, housenumbers usually have block numbers, not streets
     override val enabledInCountries = AllCountriesExcept("JP")
     override val achievements = listOf(POSTMAN)
-
-    override val hint = R.string.quest_streetName_hint
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_address_street_title2
+    override val hint = Res.string.quest_streetName_hint
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways
@@ -64,12 +75,12 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName>, AndroidQuest {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!filter.matches(element)) false else null
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             nodes, ways, relations with
             (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
             and !name and !brand and !operator and !ref
-        """.toElementFilterExpression())
+        """)
 
     override fun createForm() = AddAddressStreetForm()
 
