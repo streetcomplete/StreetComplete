@@ -34,13 +34,12 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
     )
 
     @Composable
-    override fun getHint(): String? {
-        return if (element.type == ElementType.WAY) {
+    override fun getHint(): String? =
+        if (element.type == ElementType.WAY) {
             stringResource(Res.string.quest_maxheight_split_way_hint,
                 stringResource(Res.string.quest_generic_answer_differs_along_the_way)
             )
         } else super.getHint()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

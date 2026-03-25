@@ -146,7 +146,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     }
 
     @Composable
-    override fun getSubTitle(): AnnotatedString? =
+    override fun getSubtitle(): AnnotatedString? =
         // title hint label with name is a duplication, it is displayed in the UI already
         element?.let { nameAndLocationLabel(it, featureDictionary = null) }
 

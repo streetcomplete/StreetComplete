@@ -50,7 +50,7 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnsw
     )
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter { it.isCrossing() }.asSequence()
+        mapData.asSequence().filter { it.isCrossing() }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways

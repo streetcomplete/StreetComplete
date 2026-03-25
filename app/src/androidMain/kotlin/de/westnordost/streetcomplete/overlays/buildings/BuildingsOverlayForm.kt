@@ -66,7 +66,7 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
     }
 
     @Composable
-    override fun getSubTitle(): AnnotatedString? =
+    override fun getSubtitle(): AnnotatedString? =
         element?.let { nameAndLocationLabel(it, featureDictionary = null, showHouseNumber = true) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

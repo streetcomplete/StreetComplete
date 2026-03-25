@@ -118,7 +118,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
     )
 
     @Composable
-    override fun getSubTitle(): AnnotatedString? =
+    override fun getSubtitle(): AnnotatedString? =
         element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

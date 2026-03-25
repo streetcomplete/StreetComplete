@@ -21,8 +21,20 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName>, AndroidQuest {
 
     private val filter by lazy { """
         nodes, ways, relations with
-          (addr:housenumber or addr:housename) and !addr:street and !addr:place and !addr:block_number and !addr:substreet and !addr:parentstreet
-          or addr:streetnumber and !addr:street and !addr:substreet and !addr:parentstreet
+          (
+            (addr:housenumber or addr:housename)
+            and !addr:street
+            and !addr:place
+            and !addr:block_number
+            and !addr:block
+            and !addr:substreet
+            and !addr:parentstreet
+          ) or (
+            addr:streetnumber
+            and !addr:street
+            and !addr:substreet
+            and !addr:parentstreet
+          )
     """.toElementFilterExpression() }
 
     // #2112 - exclude indirect addr:street
@@ -68,7 +80,7 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName>, AndroidQuest {
             nodes, ways, relations with
             (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
             and !name and !brand and !operator and !ref
-        """.toElementFilterExpression())
+        """)
 
     override fun createForm() = AddAddressStreetForm()
 

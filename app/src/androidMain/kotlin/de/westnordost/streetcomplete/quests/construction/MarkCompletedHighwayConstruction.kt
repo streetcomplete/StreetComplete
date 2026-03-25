@@ -10,7 +10,6 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructionAnswer>(), AndroidQuest {

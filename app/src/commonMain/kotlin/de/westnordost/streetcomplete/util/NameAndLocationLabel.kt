@@ -56,6 +56,10 @@ fun nameAndLocationLabel(
  *  - house name *OpenStreetMap Center*, outside: **Commerzbank** (*ATM*)
  *
  *  or any subset of that.
+ *
+ *  When [featureDictionary] is null, the feature name will not be included (same as if no feature
+ *  name is found). When [showHouseNumber] is null, the house number is only shown if the element
+ *  doesn't have a name, and it's not located in some mall or something (has a `level` tag).
  *  */
 suspend fun getNameAndLocationLabel(
     resourceEnvironment: ResourceEnvironment,
@@ -249,7 +253,7 @@ private suspend fun getHouseNumberLabel(
     return null
 }
 
-/** Returns just the house number as it would be signed if set, e.g. "123" */
+/** Returns just the house number as it would be signed, e.g. "123", if set */
 fun getShortHouseNumber(tags: Map<String, String>): String? {
     val houseName = tags["addr:housename"]
     val conscriptionNumber = tags["addr:conscriptionnumber"]

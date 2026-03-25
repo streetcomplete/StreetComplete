@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
-import org.jetbrains.compose.resources.StringResource
 
 class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
 

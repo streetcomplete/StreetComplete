@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -28,7 +27,7 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>(), AndroidQuest {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes with natural = tree".toElementFilterExpression())
+        mapData.filter("nodes with natural = tree")
 
     override fun createForm() = AddTreeLeafTypeForm()
 

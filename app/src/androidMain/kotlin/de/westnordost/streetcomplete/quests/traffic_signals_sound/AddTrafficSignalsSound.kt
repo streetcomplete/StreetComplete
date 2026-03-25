@@ -43,7 +43,7 @@ class AddTrafficSignalsSound : OsmElementQuestType<Boolean>, AndroidQuest {
     override val hint = Res.string.quest_traffic_signals_sound_description
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter { it.isCrossingWithTrafficSignals() }.asSequence()
+        mapData.asSequence().filter { it.isCrossingWithTrafficSignals() }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways

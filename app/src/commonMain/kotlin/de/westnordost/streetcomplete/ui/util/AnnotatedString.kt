@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.ui.util
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.buildAnnotatedString
 
-/** Replace placeholders like %1$s etc. with the [formatArgs] which may be a AnnotatedStrings */
+/** Replace placeholders like %1$s etc. with [formatArgs] which may be `AnnotatedString`s */
 fun String.formatAnnotated(vararg formatArgs: Any): AnnotatedString =
     buildAnnotatedString {
         val regex = Regex("%([0-9]+)\\$[sd]")
@@ -14,7 +14,7 @@ fun String.formatAnnotated(vararg formatArgs: Any): AnnotatedString =
         for (match in matches) {
             append(this@formatAnnotated.substring(lastIndex, match.range.first))
 
-            val argIndex = match.groupValues[1].toInt()
+            val argIndex = match.groupValues[1].toInt() - 1
             when (val arg = formatArgs.getOrNull(argIndex)) {
                 is AnnotatedString -> append(arg)
                 else -> append(arg?.toString().orEmpty())

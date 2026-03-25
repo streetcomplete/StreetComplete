@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays
 
 import android.content.res.Configuration
-import android.content.res.Resources
 import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
@@ -83,7 +82,6 @@ import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.getSystemResourceEnvironment
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
-import java.util.Locale
 
 /** Abstract base class for any form displayed for an overlay */
 abstract class AbstractOverlayForm :
@@ -217,7 +215,7 @@ abstract class AbstractOverlayForm :
                 LocalTextStyle provides MaterialTheme.typography.titleMedium,
                 LocalContentAlpha provides ContentAlpha.medium
             ) {
-                getSubTitle()?.let { Text(it) }
+                getSubtitle()?.let { Text(it) }
             }
         }
         setObjNote(element?.tags?.get("note"))
@@ -235,7 +233,7 @@ abstract class AbstractOverlayForm :
     }
 
     @Composable
-    protected open fun getSubTitle(): AnnotatedString? =
+    protected open fun getSubtitle(): AnnotatedString? =
         element?.let { nameAndLocationLabel(it, featureDictionary) }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
