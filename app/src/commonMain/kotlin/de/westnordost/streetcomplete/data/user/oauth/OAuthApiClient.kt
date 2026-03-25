@@ -107,8 +107,9 @@ class OAuthApiClient(private val httpClient: HttpClient) {
      * Creates the URL to be opened in the browser or a web view in which the user agrees to
      * authorize the requested permissions.
      */
-    val authorizationRequestUrl get() =
-        URLBuilder().takeFrom(authorizationUrl).apply {
+    val authorizationRequestUrl: String get() {
+        // Build the OAuth authorize URL with all parameters
+        val oAuthUrl = URLBuilder().takeFrom(authorizationUrl).apply {
             parameters.append("response_type", "code")
             parameters.append("client_id", clientId)
             parameters.append("scope", scopes.joinToString(" "))
@@ -117,6 +118,9 @@ class OAuthApiClient(private val httpClient: HttpClient) {
             parameters.append("code_challenge", createPKCE_S256CodeChallenge(codeVerifier))
             state?.let { parameters.append("state", it) }
         }.build().toString()
+
+        return oAuthUrl
+    }
 
     /**
      * Checks whether the given callback uri is meant for this instance
