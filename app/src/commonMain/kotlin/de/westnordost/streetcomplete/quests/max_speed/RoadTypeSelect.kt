@@ -10,8 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.cheonjaeung.compose.grid.SimpleGridCells
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_roadtype_description
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
 import org.jetbrains.compose.resources.painterResource

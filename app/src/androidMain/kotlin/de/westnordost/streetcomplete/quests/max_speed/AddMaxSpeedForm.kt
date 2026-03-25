@@ -23,9 +23,7 @@ import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WHERE_SLOW_ZONE_IS_LIKEL
 import de.westnordost.streetcomplete.osm.maxspeed.Speed
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_noSign_confirmation
-import de.westnordost.streetcomplete.resources.quest_maxspeed_answer_noSign_info_zone
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.content
 import org.jetbrains.compose.resources.stringResource
