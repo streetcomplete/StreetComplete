@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
@@ -60,6 +61,7 @@ fun Preference(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     description: String? = null,
+    useFixedValueWidth: Boolean = false,
     value: @Composable (RowScope.() -> Unit)? = null,
 ) {
     Column(
@@ -80,7 +82,11 @@ fun Preference(
         ) {
             Text(
                 text = name,
-                modifier = Modifier.weight(2 / 3f)
+                modifier = if (value != null && useFixedValueWidth) {
+                    Modifier.weight(0.55f)
+                } else {
+                    Modifier.weight(1f)
+                }
             )
             if (value != null) {
                 CompositionLocalProvider(
@@ -96,7 +102,11 @@ fun Preference(
                             alignment = Alignment.End
                         ),
                         verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.weight(1 / 3f)
+                        modifier = if (useFixedValueWidth) {
+                            Modifier.weight(0.45f)
+                        } else {
+                            Modifier.wrapContentWidth()
+                        }
                     ) { value() }
                 }
             }
@@ -140,6 +150,7 @@ private fun PreferencePreview() {
         Preference(
             name = "Long preference name that wraps",
             onClick = {},
+            useFixedValueWidth = true,
         ) {
             Text("Long preference value")
         }

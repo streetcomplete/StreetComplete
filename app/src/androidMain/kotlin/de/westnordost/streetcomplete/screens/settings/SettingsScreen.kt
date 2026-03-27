@@ -96,7 +96,8 @@ fun SettingsScreen(
                 Preference(
                     name = stringResource(Res.string.action_manage_presets),
                     onClick = onClickPresetSelection,
-                    description = stringResource(Res.string.action_manage_presets_summary)
+                    description = stringResource(Res.string.action_manage_presets_summary),
+                    useFixedValueWidth = true,
                 ) {
                     Text(
                         text = selectedPresetName ?: stringResource(Res.string.quest_presets_default_name),
@@ -124,7 +125,8 @@ fun SettingsScreen(
                 Preference(
                     name = stringResource(Res.string.pref_title_resurvey_intervals),
                     onClick = { showResurveyIntervalsSelect = true },
-                    description = stringResource(Res.string.pref_title_resurvey_intervals_summary)
+                    description = stringResource(Res.string.pref_title_resurvey_intervals_summary),
+                    useFixedValueWidth = true,
                 ) {
                     Select(
                         items = ResurveyIntervals.entries,
@@ -152,7 +154,8 @@ fun SettingsScreen(
             PreferenceCategory(stringResource(Res.string.pref_category_communication)) {
                 Preference(
                     name = stringResource(Res.string.pref_title_sync2),
-                    onClick = { showAutosyncSelect = true }
+                    onClick = { showAutosyncSelect = true },
+                    useFixedValueWidth = true,
                 ) {
                     Select(
                         items = Autosync.entries,
@@ -174,6 +177,7 @@ fun SettingsScreen(
                 Preference(
                     name = stringResource(Res.string.pref_title_language_select2),
                     onClick = onClickLanguageSelection,
+                    useFixedValueWidth = true,
                 ) {
                     Text(
                         text = selectedLanguage?.let { getLanguageDisplayName(it) }
@@ -186,6 +190,7 @@ fun SettingsScreen(
                 Preference(
                     name = stringResource(Res.string.pref_title_theme_select),
                     onClick = { showThemeSelect = true },
+                    useFixedValueWidth = true,
                 ) {
                     Select(
                         items = Theme.entries,
