@@ -142,7 +142,7 @@ private fun BigMenuButton(
         modifier = modifier
             .width(160.dp)
             .clickable { onClick() }
-            .padding(16.dp),
+            .padding(10.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         icon()
