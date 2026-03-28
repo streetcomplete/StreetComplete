@@ -38,7 +38,9 @@ import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-/** displays a single note comment */
+/** displays a single note comment. The text is selectable, links within that text are clickable and
+ *  the username (if not anonymous) is clickable. If available, the avatar of the user is shown,
+ *  otherwise, a placeholder is shown. */
 @Composable
 fun NoteComment(
     noteComment: NoteComment,

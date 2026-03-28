@@ -83,21 +83,8 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
         viewLifecycleScope.launch {
             val comments = withContext(Dispatchers.IO) { noteSource.get(noteId) }!!.comments
-            inflateNoteDiscussion(comments)
+            // TODO inflateNoteDiscussion(comments)
         }
-    }
-
-    private fun inflateNoteDiscussion(comments: List<NoteComment>) {
-        val discussionView = QuestNoteDiscussionItemsBinding.inflate(layoutInflater, scrollViewChild, false).root
-
-        discussionView.isNestedScrollingEnabled = false
-        discussionView.layoutManager = LinearLayoutManager(
-            context,
-            RecyclerView.VERTICAL,
-            false
-        )
-
-        scrollViewChild.addView(discussionView, 0)
     }
 
     override fun onClickOk() {
