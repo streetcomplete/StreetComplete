@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.note_comments
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,6 +12,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -77,10 +79,10 @@ fun NoteComment(
         if (annotatedCommentText != null) {
             Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 Surface(
-                    // half the size of OSM avatar images in pixels, so, shouldn't be too blurry
-                    modifier = Modifier.size(50.dp),
+                    modifier = Modifier.size(64.dp),
                     elevation = 16.dp,
-                    shape = CircleShape
+                    shape = CircleShape,
+                    border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
                 ) {
                     Image(
                         painter = avatarPainter ?: painterResource(Res.drawable.osm_anon_avatar),
@@ -90,10 +92,13 @@ fun NoteComment(
 
                 val speechBubbleShape = SpeechBubbleShape(
                     arrowDirection = SpeechBubbleArrowDirection.Start,
+                    cornerRadius = 16.dp,
+                    arrowSize = 16.dp,
                 )
                 Surface(
                     elevation = 16.dp,
-                    shape = speechBubbleShape
+                    shape = speechBubbleShape,
+                    border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
                 ) {
                     Column(
                         modifier = Modifier
@@ -117,7 +122,8 @@ fun NoteComment(
         if (actionTextResource != null) {
             Surface(
                 elevation = 16.dp,
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(16.dp),
+                border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
             ) {
                 Text(
                     text = stringResource(actionTextResource)
