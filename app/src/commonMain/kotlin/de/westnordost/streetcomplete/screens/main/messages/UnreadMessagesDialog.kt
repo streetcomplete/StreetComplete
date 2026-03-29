@@ -110,7 +110,9 @@ private fun Envelope(
     ) {
         Image(painterResource(Res.drawable.mail_back), null)
         if (opening > 0.5f) Image(openMailPainter(progress = opening), null)
-        content()
+        Box(Modifier.align(Alignment.BottomCenter).padding(bottom = 112.dp)) {
+            content()
+        }
         Image(painterResource(Res.drawable.mail_front), null)
         if (opening <= 0.5f) Image(openMailPainter(progress = opening), null)
     }
