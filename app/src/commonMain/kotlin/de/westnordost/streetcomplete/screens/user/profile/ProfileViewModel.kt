@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.user.profile
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
@@ -12,6 +13,7 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
+import de.westnordost.streetcomplete.util.image.loadImageBitmap
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -25,7 +27,7 @@ import kotlinx.io.files.Path
 @Stable
 abstract class ProfileViewModel : ViewModel() {
     abstract val userName: StateFlow<String?>
-    abstract val userAvatarFile: StateFlow<Path?>
+    abstract val userAvatarImageBitmap: StateFlow<ImageBitmap?>
 
     abstract val achievementLevels: StateFlow<Int>
 
@@ -62,7 +64,7 @@ class ProfileViewModelImpl(
 ) : ProfileViewModel() {
 
     override val userName = MutableStateFlow<String?>(null)
-    override val userAvatarFile = MutableStateFlow(getUserAvatarFile())
+    override val userAvatarImageBitmap = MutableStateFlow(loadUserAvatarImageBitmap())
     override val achievementLevels = MutableStateFlow(0)
     override val unsyncedChangesCount = MutableStateFlow(0)
     override val datesActive = MutableStateFlow(DatesActiveInRange(emptyList(), 0))
@@ -106,12 +108,12 @@ class ProfileViewModelImpl(
     private val userListener = object : UserDataSource.Listener {
         override fun onUpdated() {
             userName.value = userDataSource.userName
-            userAvatarFile.value = getUserAvatarFile()
+            userAvatarImageBitmap.value = loadUserAvatarImageBitmap()
         }
     }
     private val userAvatarListener = object : UserUpdater.Listener {
         override fun onUserAvatarUpdated() {
-            userAvatarFile.value = getUserAvatarFile()
+            userAvatarImageBitmap.value = loadUserAvatarImageBitmap()
         }
     }
 
@@ -174,9 +176,9 @@ class ProfileViewModelImpl(
         }
     }
 
-    private fun getUserAvatarFile(): Path? {
+    private fun loadUserAvatarImageBitmap(): ImageBitmap? {
         val path = Path(avatarsCacheDirectory, userDataSource.userId.toString())
-        return if (fileSystem.exists(path)) path else null
+        return fileSystem.loadImageBitmap(path)
     }
 
     override fun onCleared() {

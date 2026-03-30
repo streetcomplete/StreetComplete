@@ -32,6 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.coerceAtMost
@@ -41,7 +42,6 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.toDp
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.util.image.fileBitmapPainter
 import de.westnordost.streetcomplete.util.ktx.displayRegion
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -51,7 +51,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun ProfileScreen(viewModel: ProfileViewModel) {
     val userName by viewModel.userName.collectAsState()
-    val userAvatarFile by viewModel.userAvatarFile.collectAsState()
+    val userAvatarImageBitmap by viewModel.userAvatarImageBitmap.collectAsState()
 
     val editCount by viewModel.editCount.collectAsState()
     val editCountCurrentWeek by viewModel.editCountCurrentWeek.collectAsState()
@@ -81,8 +81,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Image(
-                painter =
-                    userAvatarFile?.let { fileBitmapPainter(it.toString()) }
+                painter = userAvatarImageBitmap?.let { BitmapPainter(it) }
                     ?: painterResource(Res.drawable.avatar_osm_anonymous),
                 contentDescription = null,
                 modifier = Modifier

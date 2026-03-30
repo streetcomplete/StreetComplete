@@ -42,7 +42,7 @@ import org.jetbrains.compose.resources.stringResource
  *  the username (if not anonymous) is clickable. If available, the avatar of the user is shown,
  *  otherwise, a placeholder is shown. */
 @Composable
-fun NoteComment(
+fun NoteCommentItem(
     noteComment: NoteComment,
     avatarPainter: Painter?,
     modifier: Modifier = Modifier,
@@ -76,7 +76,7 @@ fun NoteComment(
 
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         if (annotatedCommentText != null) {
             Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -87,7 +87,7 @@ fun NoteComment(
                     border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
                 ) {
                     Image(
-                        painter = avatarPainter ?: painterResource(Res.drawable.osm_anon_avatar),
+                        painter = avatarPainter ?: painterResource(Res.drawable.avatar_osm_anonymous),
                         contentDescription = annotatedUserName.text
                     )
                 }
@@ -102,13 +102,13 @@ fun NoteComment(
                     shape = speechBubbleShape,
                     border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
                 ) {
-                    Column(
-                        modifier = Modifier
-                            .padding(speechBubbleShape.contentPadding)
-                            .padding(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(4.dp)
-                    ) {
-                        SelectionContainer {
+                    SelectionContainer {
+                        Column(
+                            modifier = Modifier
+                                .padding(speechBubbleShape.contentPadding)
+                                .padding(horizontal = 16.dp, vertical = 12.dp),
+                            verticalArrangement = Arrangement.spacedBy(4.dp)
+                        ) {
                             Text(annotatedCommentText)
                             Divider()
                             Text(
@@ -130,7 +130,9 @@ fun NoteComment(
                 Text(
                     text = stringResource(actionTextResource)
                         .formatAnnotated(annotatedUserName, dateText),
-                    modifier = Modifier.padding(16.dp).alpha(ContentAlpha.medium),
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
+                        .alpha(ContentAlpha.medium),
                     fontStyle = FontStyle.Italic,
                 )
             }

@@ -1,20 +1,39 @@
 package de.westnordost.streetcomplete.ui.common
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Button
+import androidx.compose.material.Slider
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.LayoutDirection.Ltr
 import androidx.compose.ui.unit.LayoutDirection.Rtl
 import androidx.compose.ui.unit.dp
-import kotlin.math.sqrt
 
 enum class SpeechBubbleArrowDirection { Start, Top, End, Bottom }
 
@@ -90,37 +109,66 @@ data class SpeechBubbleShape(
             }
         }
 
-        val path = Path().apply {
-            addRoundRect(RoundRect(bubble, cornerPx, cornerPx))
+        val cornerDiameter = cornerPx * 2f
+        val cornerCircle = Size(cornerDiameter, cornerDiameter)
 
-            when (direction) {
-                SpeechBubbleArrowAbsoluteDirection.Left -> {
-                    val pos = (innerBubble.height - arrowWidthPx) * absoluteBias
-                    moveTo(bubble.left, innerBubble.top + pos)
-                    relativeLineTo(-arrowHeightPx, arrowWidthPx / 2f)
-                    relativeLineTo(arrowHeightPx, arrowWidthPx / 2f)
-                }
-                SpeechBubbleArrowAbsoluteDirection.Top -> {
-                    val pos = (innerBubble.width - arrowWidthPx) * absoluteBias
-                    moveTo(innerBubble.left + pos, bubble.top)
-                    relativeLineTo(arrowWidthPx / 2f, -arrowHeightPx)
-                    relativeLineTo(arrowWidthPx / 2f, arrowHeightPx)
-                }
-                SpeechBubbleArrowAbsoluteDirection.Right -> {
-                    val pos = (innerBubble.height - arrowWidthPx) * absoluteBias
-                    moveTo(bubble.right, innerBubble.top + pos)
-                    relativeLineTo(arrowHeightPx, arrowWidthPx / 2f)
-                    relativeLineTo(-arrowHeightPx, arrowWidthPx / 2f)
-                }
-                SpeechBubbleArrowAbsoluteDirection.Bottom -> {
-                    val pos = (innerBubble.width - arrowWidthPx) * absoluteBias
-                    moveTo(innerBubble.left + pos, bubble.bottom)
-                    relativeLineTo(arrowWidthPx / 2f, arrowHeightPx)
-                    relativeLineTo(arrowWidthPx / 2f, -arrowHeightPx)
-                }
+        val path = Path().apply {
+            moveTo(innerBubble.left, bubble.top)
+            arcTo(Rect(bubble.topLeft, cornerCircle), 270f, -90f, false)
+            if (direction == SpeechBubbleArrowAbsoluteDirection.Left) {
+                val pos = (innerBubble.height - arrowWidthPx) * absoluteBias
+                lineTo(bubble.left, innerBubble.top + pos)
+                relativeLineTo(-arrowHeightPx, arrowWidthPx / 2f)
+                relativeLineTo(arrowHeightPx, arrowWidthPx / 2f)
+            }
+            arcTo(Rect(bubble.bottomLeft - Offset(0f, cornerDiameter), cornerCircle), 180f, -90f, false)
+            if (direction == SpeechBubbleArrowAbsoluteDirection.Bottom) {
+                val pos = (innerBubble.width - arrowWidthPx) * absoluteBias
+                lineTo(innerBubble.left + pos, bubble.bottom)
+                relativeLineTo(arrowWidthPx / 2f, arrowHeightPx)
+                relativeLineTo(arrowWidthPx / 2f, -arrowHeightPx)
+            }
+            arcTo(Rect(bubble.bottomRight - Offset(cornerDiameter, cornerDiameter), cornerCircle), 90f, -90f, false)
+            if (direction == SpeechBubbleArrowAbsoluteDirection.Right) {
+                val pos = (innerBubble.height - arrowWidthPx) * absoluteBias + arrowWidthPx
+                lineTo(bubble.right, innerBubble.top + pos)
+                relativeLineTo(arrowHeightPx, -arrowWidthPx / 2f)
+                relativeLineTo(-arrowHeightPx, -arrowWidthPx / 2f)
+            }
+            arcTo(Rect(bubble.topRight - Offset(cornerDiameter, 0f), cornerCircle), 0f, -90f, false)
+            if (direction == SpeechBubbleArrowAbsoluteDirection.Top) {
+                val pos = (innerBubble.width - arrowWidthPx) * absoluteBias + arrowWidthPx
+                lineTo(innerBubble.left + pos, bubble.top)
+                relativeLineTo(-arrowWidthPx / 2f, -arrowHeightPx)
+                relativeLineTo(-arrowWidthPx / 2f, arrowHeightPx)
             }
             close()
         }
         return Outline.Generic(path)
+    }
+}
+
+@Preview
+@Composable
+private fun SpeechBubbleShapePreview() {
+    var cornerRadius by remember { mutableFloatStateOf(32f) }
+    var arrowSize by remember { mutableFloatStateOf(16f) }
+    var arrowDirection by remember { mutableStateOf(SpeechBubbleArrowDirection.Start) }
+    var arrowPlacementBias by remember { mutableFloatStateOf(0.333f) }
+    val shape = SpeechBubbleShape(cornerRadius.dp, arrowSize.dp, arrowDirection, arrowPlacementBias)
+    Column {
+        Slider(cornerRadius, onValueChange = { cornerRadius = it }, valueRange = 0f..50f)
+        Slider(arrowSize, onValueChange = { arrowSize = it }, valueRange = 0f..50f)
+        Slider(arrowPlacementBias, onValueChange = { arrowPlacementBias = it }, valueRange = 0f..1f)
+        Row {
+            SpeechBubbleArrowDirection.entries.forEach {
+                Button(onClick = { arrowDirection = it }) { Text(it.name) }
+            }
+        }
+        Box(Modifier
+            .size(200.dp)
+            .background(color = Color.White, shape = shape)
+            .border(2.dp, color = Color.Black, shape = shape)
+        )
     }
 }

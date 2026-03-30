@@ -10,13 +10,18 @@ import androidx.compose.ui.graphics.painter.Painter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
+import kotlinx.io.buffered
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
+import kotlinx.io.readByteArray
+import org.jetbrains.compose.resources.decodeToImageBitmap
 
-expect fun loadBitmapFromFile(filePath: String): ImageBitmap?
-
-@Composable
-fun fileBitmapPainter(filePath: String): Painter? {
-    val imageBitmap by produceState<ImageBitmap?>(initialValue = null, key1 = filePath) {
-        value = withContext(Dispatchers.IO) { loadBitmapFromFile(filePath) }
+fun FileSystem.loadImageBitmap(path: Path): ImageBitmap? = try {
+    if (exists(path)) {
+        source(path).buffered().use { it.readByteArray() }.decodeToImageBitmap()
+    } else {
+        null
     }
-    return remember(imageBitmap) { imageBitmap?.let { BitmapPainter(it) } }
+} catch (e: Exception) {
+    null
 }

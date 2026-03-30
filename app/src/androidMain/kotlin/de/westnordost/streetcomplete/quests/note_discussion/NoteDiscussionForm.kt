@@ -1,36 +1,40 @@
 package de.westnordost.streetcomplete.quests.note_discussion
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.text.format.DateUtils
-import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.view.isGone
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.BitmapPainter
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.dp
 import androidx.core.widget.doAfterTextChanged
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osmnotes.NoteComment
+import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionContentBinding
-import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemsBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.ktx.createBitmap
+import de.westnordost.streetcomplete.quests.note_comments.NoteCommentItem
+import de.westnordost.streetcomplete.util.image.loadImageBitmap
 import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.view.ListAdapter
-import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -59,6 +63,9 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
     private val noteId: Long get() = (questKey as OsmNoteQuestKey).noteId
 
+    private val note: MutableState<Note?> = mutableStateOf(null)
+    private val avatars: MutableState<Map<Long, ImageBitmap?>?> = mutableStateOf(null)
+
     interface Listener {
         /** Called when the user successfully answered the quest */
         fun onNoteQuestSolved(questType: QuestType, noteId: Long, position: LatLon)
@@ -81,9 +88,41 @@ class NoteDiscussionForm : AbstractQuestForm() {
 
         binding.noteInput.doAfterTextChanged { checkIsFormComplete() }
 
-        viewLifecycleScope.launch {
-            val comments = withContext(Dispatchers.IO) { noteSource.get(noteId) }!!.comments
-            // TODO inflateNoteDiscussion(comments)
+        viewLifecycleScope.launch(Dispatchers.IO) {
+            note.value = noteSource.get(noteId)
+            avatars.value = note.value?.comments
+                ?.mapNotNull { it.user?.id }
+                ?.associateWith { fileSystem.loadImageBitmap(Path(avatarsCacheDir, it.toString())) }
+        }
+    }
+
+    @Composable
+    override fun ContentBeforeSpeechbubbleContent() {
+        val textLinkStyles = TextLinkStyles(
+            style = SpanStyle(
+                color = MaterialTheme.colors.primary,
+                textDecoration = TextDecoration.Underline
+            ),
+            focusedStyle = SpanStyle(
+                color = MaterialTheme.colors.secondary,
+            )
+        )
+        ProvideTextStyle(MaterialTheme.typography.body2) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.padding(horizontal = 12.dp).padding(bottom = 8.dp),
+            ) {
+                for (comment in note.value?.comments.orEmpty()) {
+                    NoteCommentItem(
+                        noteComment = comment,
+                        avatarPainter = comment.user?.id
+                            ?.let { avatars.value?.get(it) }
+                            ?.let { BitmapPainter(it) },
+                        modifier = Modifier.fillMaxWidth(),
+                        textLinkStyles = textLinkStyles
+                    )
+                }
+            }
         }
     }
 
@@ -116,9 +155,4 @@ class NoteDiscussionForm : AbstractQuestForm() {
         noteText != null || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
 
     override fun isFormComplete(): Boolean = noteText != null
-
-    private val User.avatar: Bitmap? get() {
-        val file = Path(avatarsCacheDir, id.toString())
-        return if (fileSystem.exists(file)) BitmapFactory.decodeFile(file.toString()) else null
-    }
 }

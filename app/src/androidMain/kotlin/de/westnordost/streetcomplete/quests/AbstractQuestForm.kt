@@ -140,6 +140,9 @@ abstract class AbstractQuestForm :
 
     protected open fun getHintImages(): List<DrawableResource> = questType.hintImages
 
+    @Composable
+    protected open fun ContentBeforeSpeechbubbleContent() {}
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -151,6 +154,10 @@ abstract class AbstractQuestForm :
                 hintImages = getHintImages()
             )
         } }
+
+        binding.contentBeforeSpeechbubbleContent.content {
+            ContentBeforeSpeechbubbleContent()
+        }
 
         binding.okButton.setOnClickListener {
             if (!isFormComplete()) {
