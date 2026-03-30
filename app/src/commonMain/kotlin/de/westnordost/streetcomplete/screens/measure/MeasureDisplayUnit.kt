@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.measure
 
+import de.westnordost.streetcomplete.util.locale.NumberFormatter
 import kotlinx.serialization.Serializable
 import kotlin.math.floor
 import kotlin.math.round
@@ -23,7 +24,8 @@ data class MeasureDisplayUnitMeter(val cmStep: Int) : MeasureDisplayUnit() {
             cmStep % 10 == 0 -> 1
             else -> 2
         }
-        return "%.${decimals}f m".format(getRounded(distanceMeters))
+        val formatter = NumberFormatter(minFractionDigits = decimals, maxFractionDigits = decimals)
+        return "${formatter.format(getRounded(distanceMeters))} m"
     }
 
     /** Returns the given distance in meters rounded to the given precision */
@@ -40,7 +42,7 @@ data class MeasureDisplayUnitFeetInch(val inchStep: Int) : MeasureDisplayUnit() 
 
     override fun format(distanceMeters: Float): String {
         val (feet, inches) = getRounded(distanceMeters)
-        return if (inches < 10) "$feet′ $inches″" else "$feet′$inches″"
+        return if (inches < 10) "$feet′ $inches″" else "$feet′$inches″"
     }
 
     /** Returns the given distance in meters as feet + inch */
