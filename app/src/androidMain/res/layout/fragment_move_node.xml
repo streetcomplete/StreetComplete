@@ -63,6 +63,13 @@
 
         </FrameLayout>
 
+        <androidx.compose.ui.platform.ComposeView
+            android:id="@+id/okButtonComposeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true" />
+
     </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
 
 </RelativeLayout>

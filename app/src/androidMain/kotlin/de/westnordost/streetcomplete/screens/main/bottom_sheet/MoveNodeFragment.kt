@@ -7,7 +7,10 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -32,6 +35,7 @@ import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitFeetInch
 import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitMeter
+import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.awaitLayout
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
@@ -67,7 +71,7 @@ class MoveNodeFragment :
 
     private lateinit var arrowDrawable: ArrowDrawable
 
-    private val distanceState = mutableStateOf<MoveNodeDistanceState>(MoveNodeDistanceState.TooClose)
+    private val distance = mutableFloatStateOf(0f)
 
     private val hasChanges get() = getMarkerPosition() != node.position
 
@@ -118,9 +122,17 @@ class MoveNodeFragment :
 
         binding.composeView.content {
             MoveNodeForm(
-                distanceState = distanceState.value,
-                onClickOk = { onClickOk() },
+                distance = distance.floatValue,
+                displayUnit = displayUnit,
                 onClickCancel = { activity?.onBackPressed() },
+            )
+        }
+
+        binding.okButtonComposeView.content {
+            FloatingOkButton(
+                visible = distance.floatValue.toDouble() in MIN_MOVE_DISTANCE..MAX_MOVE_DISTANCE,
+                onClick = { onClickOk() },
+                modifier = Modifier.padding(8.dp),
             )
         }
 
@@ -172,12 +184,7 @@ class MoveNodeFragment :
     @UiThread override fun onMapMoved(position: LatLon) {
         updateArrowDrawable()
 
-        val moveDistance = position.distanceTo(node.position)
-        distanceState.value = when {
-            moveDistance < MIN_MOVE_DISTANCE -> MoveNodeDistanceState.TooClose
-            moveDistance > MAX_MOVE_DISTANCE -> MoveNodeDistanceState.TooFar
-            else -> MoveNodeDistanceState.InRange(displayUnit.format(moveDistance.toFloat()))
-        }
+        distance.floatValue = position.distanceTo(node.position).toFloat()
     }
 
     private fun updateArrowDrawable() {
