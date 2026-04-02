@@ -42,7 +42,7 @@ data class MeasureDisplayUnitFeetInch(val inchStep: Int) : MeasureDisplayUnit() 
 
     override fun format(distanceMeters: Float): String {
         val (feet, inches) = getRounded(distanceMeters)
-        return if (inches < 10) "$feet′ $inches″" else "$feet′$inches″"
+        return if (inches < 10) "$feet′\u2007$inches″" else "$feet′$inches″"
     }
 
     /** Returns the given distance in meters as feet + inch */
