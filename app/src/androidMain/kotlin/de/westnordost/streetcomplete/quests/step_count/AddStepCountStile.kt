@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddStepCountStile : OsmElementQuestType<Int>, AndroidQuest {
 
@@ -41,12 +42,10 @@ class AddStepCountStile : OsmElementQuestType<Int>, AndroidQuest {
     override val changesetComment = "Specify stiles step count"
     override val wikiLink = "Key:step_count"
     override val icon = R.drawable.quest_steps_count_brown
+    override val title = Res.string.quest_step_count_title
     override val achievements = listOf(OUTDOORS)
     override val isDeleteElementEnabled = true
-
-    override val hint = R.string.quest_step_count_stile_hint
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_step_count_title
+    override val hint = Res.string.quest_step_count_stile_hint
 
     override fun createForm() = AddStepCountForm()
 

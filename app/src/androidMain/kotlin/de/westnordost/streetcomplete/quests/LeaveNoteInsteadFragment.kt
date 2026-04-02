@@ -4,6 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -14,7 +18,10 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractCreateNoteFragment
+import de.westnordost.streetcomplete.ui.theme.titleLarge
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +30,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 /** Bottom sheet fragment with which the user can leave a note instead of solving the quest/edit */
@@ -75,7 +83,11 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonPanel.isGone = true
         contentBinding.descriptionLabel.isGone = true
-        binding.titleLabel.text = getString(R.string.map_btn_create_note)
+        binding.questHeader.content { Surface {
+            ProvideTextStyle(MaterialTheme.typography.titleLarge) {
+                Text(stringResource(Res.string.map_btn_create_note))
+            }
+        } }
     }
 
     override fun onDestroyView() {

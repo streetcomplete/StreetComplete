@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
+import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 

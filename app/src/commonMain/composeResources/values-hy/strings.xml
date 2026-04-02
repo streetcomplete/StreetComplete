@@ -57,7 +57,6 @@
     <string name="about_title_privacy_statement">Գաղտնիության քաղաքականությունը</string>
     <string name="quest_openingHours_public_holidays">Հասարակական տոներ</string>
     <string name="quest_openingHours_public_holidays_short">PH</string>
-    <string name="quest_openingHours_open_end">Աշխատում է մինչև վերջին հաճախորդը</string>
     <string name="quest_openingHours_answer_247">Բաց 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Կախված ամսից…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Մշտական ​​աշխատանք չկա…</string>
@@ -294,7 +293,6 @@
     <string name="quest_housenumber_conscription_number">Զորակոչի համարը</string>
     <string name="quest_housenumber_street_number_optional">Կողմնորոշման համարը (ըստ ցանկության)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Նաեւ ցիկլը մյուս կողմից…</string>
-    <string name="quest_openingHours_emptyAnswer">Դուք պետք է նկարագրեք, թե ինչ է նշանը: Եթե ​​նշան չկա, ապա ներսից պետք է խնդրեք բացման ժամեր:</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ոչ մեկը, բայց հեծանվորդները կարող են ճանապարհային ճանապարհ օգտագործել երկու ուղղություններով</string>
     <string name="quest_wheelchairAccess_description_toilets">Նման սայլակով նշան կարող է երեւում, եթե զուգարանը հասանելի է:
 Մասամբ նշանակում է, որ սայլակը կարող է մուտք գործել եւ օգտագործել զուգարանը, բայց առկա է ձեռքի կամ հարմարեցված ձեռքի ավազան:</string>
@@ -439,7 +437,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt;Լուսանկարները, որոնք դուք կցում եք գրառմանը, վերբեռնվում են իմ սերվերում և ջնջվում գրառման լուծումից մի քանի օր անց: Նրանց մետատվյալները հեռացվում են վերբեռնումից առաջ:&lt;/p&gt;</string>
     <string name="action_deselect_all">Ապամոնտաժել բոլորին</string>
     <string name="quest_buildingType_retail_description">Ներառյալ շենքեր ռեստորանների, սրճարանների, մեծ խանութների համար…</string>
-    <string name="quest_openingHours_timeSelect_next">Հաջորդ</string>
     <string name="quest_tracktype_title">Որն է այս ուղու մակերեսային ամրությունը:</string>
     <string name="quest_tracktype_grade1">Ամուր</string>
     <string name="quest_tracktype_grade4">Հիմնականում փափուկ</string>
@@ -465,7 +462,6 @@
     <string name="action_open_location">Բաց տեղադրություն մեկ այլ հավելվածում</string>
     <string name="map_application_missing">Այլ քարտեզի դիմում չի տեղադրվել</string>
     <string name="label_housenumber">Տնային համարը</string>
-    <string name="label_blocknumber">Բլոկի համարը</string>
     <string name="quest_busStopShelter_covered">Ամբողջ կանգառը ծածկված է</string>
     <string name="quest_ferry_pedestrian_title">Արդյոք այս լաստանավը տրանսպորտում է հետիոտները:</string>
     <string name="quest_ferry_motor_vehicle_title">Արդյոք այս լաստանավը տրանսպորտում է ավտոմեքենաները:</string>
@@ -1082,7 +1078,6 @@
     <string name="quest_camp_drinking_water_title">Այստեղ կա՞ անվճար խմելու ջուր։</string>
     <string name="quest_camp_shower_title">Այստեղ ցնցուղ կա՞:</string>
     <string name="quest_camp_power_supply_title">Այստեղ կարելի՞ է լիցքավորել հեռախոս կամ այլ բաներ։</string>
-    <string name="quest_camp_type_tents_only">Միայն վրաններ</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Տրամագիծը սովորաբար լինում է %1$d-ի և %2$d-ի միջև։</string>
     <string name="street_parking_street_width">Փողոցի լայնություն` %1$s</string>
     <string name="overlay_street_parking">Կայանատեղիներ</string>

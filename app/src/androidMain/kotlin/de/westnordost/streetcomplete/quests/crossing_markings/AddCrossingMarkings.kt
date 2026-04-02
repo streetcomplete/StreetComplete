@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCrossingMarkings : OsmElementQuestType<Boolean>, AndroidQuest {
@@ -39,12 +40,11 @@ class AddCrossingMarkings : OsmElementQuestType<Boolean>, AndroidQuest {
     override val changesetComment = "Specify whether pedestrian crossings have markings"
     override val wikiLink = "Key:crossing:markings"
     override val icon = R.drawable.quest_pedestrian_crossing
+    override val title = Res.string.quest_pedestrian_crossing_markings
     override val achievements = listOf(PEDESTRIAN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_pedestrian_crossing_markings
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter { it.isCrossing() }.asSequence()
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter { it.isCrossing() }.asSequence()
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways

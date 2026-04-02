@@ -19,13 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.delete_confirmation
-import de.westnordost.streetcomplete.resources.quest_presets_default_name
-import de.westnordost.streetcomplete.resources.quest_presets_delete_message
-import de.westnordost.streetcomplete.resources.quest_presets_duplicate
-import de.westnordost.streetcomplete.resources.quest_presets_preset_name
-import de.westnordost.streetcomplete.resources.quest_presets_rename
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.MoreIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog

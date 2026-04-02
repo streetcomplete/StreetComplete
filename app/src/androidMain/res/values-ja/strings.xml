@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"プライバシーに関する声明"</string>
     <string name="quest_openingHours_public_holidays">"祝日"</string>
     <string name="quest_openingHours_public_holidays_short">"祝日"</string>
-    <string name="quest_openingHours_open_end">"無期限"</string>
     <string name="quest_openingHours_answer_247">"24時間 年中無休"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"月ごとに異なる…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"定期営業時間なし…"</string>
@@ -318,7 +317,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_housenumber_conscription_number">"徴収番号"</string>
     <string name="quest_housenumber_street_number_optional">"オリエンテーション番号 (オプション)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"反対側も自転車道…"</string>
-    <string name="quest_openingHours_emptyAnswer">"看板に何があるか説明してください。看板がない場合は中で開店時間を訪ねてください。"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"なし。ただし、サイクリストは両方向を使用する可能性があります"</string>
     <string name="quest_wheelchairAccess_description_toilets">"トイレがアクセス可能な場合、このような車いすサインが見えることがあります。
  車椅子がトイレに入り、使用することができるが、手すりや適合した洗面台が存在しないことがあります。"</string>
@@ -468,11 +466,10 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="privacy_html_image_upload2">"&lt;p&gt;メモに添付した写真は開発者のサーバにアップロードされ、メモが解決されれば数日後に削除されます。写真のメタデータはアップロードの前に除去されます。&lt;/p&gt;"</string>
     <string name="action_deselect_all">"全て選択解除"</string>
     <string name="quest_buildingType_retail_description">"レストランやカフェなどの建物を含む"</string>
-    <string name="quest_openingHours_timeSelect_next">"次"</string>
     <string name="quest_tracktype_title">"この農道の路面の硬さは?"</string>
     <string name="quest_tracktype_grade1">"舗装"</string>
-    <string name="quest_tracktype_grade4">"ほとんどが柔らかい"</string>
-    <string name="quest_tracktype_grade5">"Soft"</string>
+    <string name="quest_tracktype_grade4">"やや柔らかい"</string>
+    <string name="quest_tracktype_grade5">"柔らかい"</string>
     <string name="quest_building_underground_title">"この建物は全体が地下にありますか?"</string>
     <string name="quest_wheelchairAccess_limited_description_outside">"部分的とは、アクセスするためにの 2 つ以上の階段がないことを意味します。"</string>
     <string name="quest_wheelchairAccess_outside_title">"この場所は車椅子でアクセスできますか?"</string>
@@ -494,7 +491,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="action_open_location">"他のアプリでこの場所を開く"</string>
     <string name="map_application_missing">"他の地図アプリがインストールされていません"</string>
     <string name="label_housenumber">"住居番号(号)"</string>
-    <string name="label_blocknumber">"街区符号(番)"</string>
     <string name="quest_busStopShelter_covered">"バス停全体が屋根で覆われている"</string>
     <string name="quest_ferry_pedestrian_title">"このフェリー航路は歩行者を運びますか？"</string>
     <string name="quest_ferry_motor_vehicle_title">"このフェリールートでは自動車を移動できますか？"</string>
@@ -1140,10 +1136,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_camp_drinking_water_title">"ここではキャンパーが自由に水を飲むことができますか。"</string>
     <string name="quest_camp_shower_title">"ここにシャワーはありますか?"</string>
     <string name="quest_camp_power_supply_title">"ここには、お客様が携帯電話やノートパソコンなどを充電できる方法はありますか?"</string>
-    <string name="quest_camp_type_title">"誰がここでキャンプできますか?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"テントとキャンピングカーの両方、旅行用トレーラー、..."</string>
-    <string name="quest_camp_type_caravans_only">"キャンピングカー、トラベルトレーラー、..."</string>
-    <string name="quest_camp_type_tents_only">"テントのみ"</string>
     <string name="quest_camp_type_backcountry">"バックカントリーキャンプ(施設なし)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"この直径は信じがたいように見えます。通常は%1$dから%2$dの間です。"</string>
     <string name="street_parking_street_width">"通りの幅: %1$s"</string>
@@ -1234,9 +1226,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="street_parking_staggered_half_on_kerb">"部分的に交互の通りにあります"</string>
     <string name="quest_traffic_signals_sound_description">"ヒント:スピーカーに注意しましょう。すべての音声信号がボタンからアクティブになるわけではありません。"</string>
     <string name="quest_presets_duplicate">"複製"</string>
-    <string name="label_block">"地番"</string>
-    <string name="quest_address_answer_block">"1ブロック以内です…"</string>
-    <string name="quest_address_answer_no_block">"It isn’t within a block…"</string>
     <string name="quest_surface_value_mud">"Persistent mud"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"ここにはトイレがありません"</string>
     <string name="unknown_surface_title">"他の種類の表面"</string>
@@ -1326,20 +1315,41 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_moped_access_designated">"この自転車道には原付の通行を認める標識があります"</string>
     <string name="quest_moped_access_forbidden">"原付を禁止する標識があります"</string>
     <string name="default_disabled_msg_visible_sign_moped">"このクエストタイプはデフォルトでは無効になっています。原付の通行可否は、通常自転車道の始点や終点に特定の標識でのみ示されるためです。"</string>
+    <string name="info">"詳細情報"</string>
+    <string name="quest_accessible_for_pedestrians_prohibited">"禁じられている。"</string>
     <string name="quest_buildingLevels_hint">"傾斜地に建つ建物の場合、階数は最も低い側の地面を基準に数えます。
 
 屋根部分に窓がある階は屋根の階数として扱われます。なお、屋根の階数が0でもその屋根が平らであるとは限らず、単に屋根の高さが1階分に満たないだけの場合もあります。"</string>
+    <string name="action_open_in_browser">"ブラウザで開く"</string>
+    <string name="pref_category_quests">"クエスト"</string>
+    <string name="pref_title_language_select2">"言語"</string>
+    <string name="bridge">"橋の上"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"それはただの木の切り株です"</string>
     <string name="quest_board_name_title">"この掲示板のタイトルは何ですか？"</string>
+    <string name="auth_error">"認証エラー。再ログインして下さい。"</string>
+    <string name="quest_bicycle_repair_station_pump">"ポンプ"</string>
     <string name="quest_boat_rental_title">"ここではどのタイプのボートをレンタルできますか？"</string>
     <string name="quest_boat_rental_motorboat">"モーターボート"</string>
     <string name="quest_boat_rental_jetski">"ジェットスキー"</string>
+    <string name="quest_boat_rental_sailboat">"帆船"</string>
+    <string name="quest_boat_rental_pedalboat">"足漕ぎボート"</string>
     <string name="quest_boat_rental_kayak">"カヤック"</string>
     <string name="quest_boat_rental_canoe">"カヌー"</string>
+    <string name="quest_boat_rental_houseboat">"ハウスボート"</string>
+    <string name="quest_boat_rental_rowboat">"漕艇"</string>
+    <string name="quest_boat_rental_raft">"いかだ"</string>
     <string name="quest_boat_rental_surfboard">"サーフボード"</string>
+    <string name="quest_boat_rental_sailboard">"セイルボード"</string>
+    <string name="quest_boat_rental_yacht">"ヨット"</string>
+    <string name="quest_dietType_glutenfree_name_title">"ここでグルテンフリーの製品を頼めますか？"</string>
     <string name="pref_title_zoom_buttons">"マップ上にズームボタンを表示する"</string>
     <string name="pref_title_overlays">"オーバーレイの選択"</string>
     <string name="pref_overlays_reset">"オーバーレイの有効/無効を既定値にリセットしますか？"</string>
     <string name="overlay">"オーバーレイ"</string>
     <string name="enable_overlay_confirmation_title">"このオーバーレイを有効にしますか？"</string>
+    <string name="quest_tracktype_grade2">"やや硬い"</string>
+    <string name="quest_tracktype_grade3">"混合"</string>
+    <string name="quest_streetName_add_language">"言語を追加"</string>
+    <string name="cancel">"キャンセル"</string>
+    <string name="label_block2">"街区"</string>
 </resources>

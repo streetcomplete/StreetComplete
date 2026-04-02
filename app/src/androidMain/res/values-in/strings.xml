@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Privasi"</string>
     <string name="quest_openingHours_public_holidays">"Hari libur nasional"</string>
     <string name="quest_openingHours_public_holidays_short">"LN"</string>
-    <string name="quest_openingHours_open_end">"hanya tutup setelah pelanggan terakhir pergi"</string>
     <string name="quest_openingHours_answer_247">"Buka 24 jam"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Bergantung sesuai bulan..."</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Tidak ada jam buka yang tetap..."</string>
@@ -317,7 +316,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="quest_housenumber_conscription_number">"Nomor rumah"</string>
     <string name="quest_housenumber_street_number_optional">"Nomor orientasi (opsional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Jalur sepeda di sisi lain juga…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Kamu perlu menjelaskan apa yang ada di tanda. Jika tidak ada tanda, kamu harus bertanya jam bukanya ke dalam."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"tidak ada, tetapi pesepeda boleh menggunakan jalan di dua arah"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Tanda kursi roda seperti ini mungkin terlihat apabila toilet dapat diakses.
 Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegangan tangan atau cuci tangan khusus."</string>
@@ -467,7 +465,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="privacy_html_image_upload2">"&lt;p&gt;Foto yang kamu lampirkan ke catatan diunggah ke serverku dan dihapus beberapa hari setelah catatan diselesaikan. Metadata foto dihapus sebelum diunggah.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Batalkan pilihan"</string>
     <string name="quest_buildingType_retail_description">"termasuk bangunan untuk restoran, kafe, …"</string>
-    <string name="quest_openingHours_timeSelect_next">"Lanjut"</string>
     <string name="quest_tracktype_title">"Apa tingkat kepadatan jalan ini?"</string>
     <string name="quest_tracktype_grade1">"Padat"</string>
     <string name="quest_tracktype_grade4">"Sebagian lemah"</string>
@@ -493,7 +490,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="action_open_location">"Buka lokasi di aplikasi lain"</string>
     <string name="map_application_missing">"Tidak ada aplikasi peta lain terinstal"</string>
     <string name="label_housenumber">"nomor rumah"</string>
-    <string name="label_blocknumber">"nomor blok"</string>
     <string name="quest_busStopShelter_covered">"Seluruhnya tertutup"</string>
     <string name="quest_ferry_pedestrian_title">"Apa rute feri ini mengantar pejalan kaki?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Apa rute feri ini mengantar kendaraan bermotor?"</string>
@@ -1134,10 +1130,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="quest_camp_drinking_water_title">"Apa air minum tersedia secara bebas ke orang yang berkemah di sini?"</string>
     <string name="quest_camp_shower_title">"Apa ada shower di sini?"</string>
     <string name="quest_camp_power_supply_title">"Apakah pelanggan dapat mengisi daya ponsel, laptop, dsb di sini?"</string>
-    <string name="quest_camp_type_title">"Siapa yang diizinkan untuk berkemah di sini?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Baik tenda maupun rumah mobil, trailer perjalanan,…"</string>
-    <string name="quest_camp_type_caravans_only">"Hanya rumah motor, trailer perjalanan,…"</string>
-    <string name="quest_camp_type_tents_only">"Hanya tenda"</string>
     <string name="quest_camp_type_backcountry">"Berkemah di pedalaman (tidak ada fasilitas)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameter ini terlihat tidak mungkin, biasanya antara %1$d hingga %2$d."</string>
     <string name="street_parking_street_width">"Lebar jalan: %1$s"</string>
@@ -1227,9 +1219,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto)."</string>
     <string name="street_parking_staggered_half_on_kerb">"Sebagian di jalan pada sisi bergantian"</string>
     <string name="quest_traffic_signals_sound_description">"Petunjuk: Carilah pengeras suara/speaker. Tak semua suara perlu diaktifkan melalui tombol."</string>
     <string name="quest_presets_duplicate">"Duplikasi"</string>
-    <string name="label_block">"Blok"</string>
-    <string name="quest_address_answer_block">"Ini terletak di suatu blok…"</string>
-    <string name="quest_address_answer_no_block">"Ini tidak terletak di suatu blok…"</string>
     <string name="quest_surface_value_mud">"Lumpur yang persisten"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Tidak ada toilet di sini"</string>
     <string name="unknown_surface_title">"Jenis permukaan lainnya"</string>

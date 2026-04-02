@@ -136,8 +136,8 @@ internal fun <T> Set<T>.toOrdinalRanges(entries: List<T>): List<IntRange> {
     if (ranges.size >= 2) {
         if (ranges.first().start == 0 && ranges.last().endInclusive == entries.lastIndex) {
             val loopingRange = ranges.last().start .. ranges.first().endInclusive
-            ranges.removeLast()
-            ranges.removeFirst()
+            ranges.removeAt(ranges.lastIndex)
+            ranges.removeAt(0)
             ranges.add(0, loopingRange)
         }
     }

@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">隱私聲明</string>
     <string name="quest_openingHours_public_holidays">國定假日</string>
     <string name="quest_openingHours_public_holidays_short">PH</string>
-    <string name="quest_openingHours_open_end">開放/關閉</string>
     <string name="quest_openingHours_answer_247">24小時營業</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">以月份分別…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">沒有規律的營業時間…</string>
@@ -316,7 +315,6 @@
     <string name="quest_housenumber_conscription_number">兵籍號碼</string>
     <string name="quest_housenumber_street_number_optional">定位號碼 (選填)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">另一側也有單車道…</string>
-    <string name="quest_openingHours_emptyAnswer">你必須描述標示狀況。如果沒有標示，那麼你必須到店裡詢問。</string>
     <string name="quest_cycleway_value_none_but_no_oneway">無，但單車騎士可能兩個方向都能騎乘</string>
     <string name="quest_wheelchairAccess_description_toilets">如果有無障礙廁所，則會看到無障礙指示牌。
 通常意味輪椅可以進入並使用該間廁所，但沒有手桿或是改良的洗手台。</string>
@@ -467,7 +465,6 @@
 </string>
     <string name="action_deselect_all">取消選取全部</string>
     <string name="quest_buildingType_retail_description">包含有餐廳、咖啡廳等的建築</string>
-    <string name="quest_openingHours_timeSelect_next">下一個</string>
     <string name="quest_tracktype_title">這一段路徑的表面硬度為何？</string>
     <string name="quest_tracktype_grade1">剛性路面</string>
     <string name="quest_tracktype_grade4">偏柔性路面</string>
@@ -493,7 +490,6 @@
     <string name="action_open_location">在其他 app 開啟地點</string>
     <string name="map_application_missing">沒有安裝其他地圖應用程式</string>
     <string name="label_housenumber">房屋門牌號碼</string>
-    <string name="label_blocknumber">街區號碼</string>
     <string name="quest_busStopShelter_covered">整個站牌都有遮蓋</string>
     <string name="quest_ferry_pedestrian_title">這邊的輪船是行人可到達嗎？</string>
     <string name="quest_ferry_motor_vehicle_title">這邊的輪船是能載運機動車輛嗎？ </string>
@@ -1136,10 +1132,6 @@
     <string name="quest_camp_drinking_water_title">這邊的飲水是否免費提供給露營者？</string>
     <string name="quest_camp_shower_title">這裡有淋浴設施嗎？</string>
     <string name="quest_camp_power_supply_title">這裡有任何提供顧客充手機、筆電等的地方嗎？</string>
-    <string name="quest_camp_type_title">誰可以在這邊露營？</string>
-    <string name="quest_camp_type_tents_and_caravans">帳篷、房車、露營拖車，都可以…</string>
-    <string name="quest_camp_type_caravans_only">只有房車、露營拖車，…</string>
-    <string name="quest_camp_type_tents_only">只有帳篷</string>
     <string name="quest_camp_type_backcountry">野外露營 (沒有設施)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">這個直徑看起來不可能，通常是 %1$d 與 %2$d 之間。</string>
     <string name="street_parking_street_width">道路寬度：%1$s</string>
@@ -1230,9 +1222,6 @@
     <string name="street_parking_staggered_half_on_kerb">部分道路的另一側</string>
     <string name="quest_traffic_signals_sound_description">提示：檢查是否有擴音器，不是所有的警示音都是透過按鈕啟用。</string>
     <string name="quest_presets_duplicate">重覆</string>
-    <string name="label_block">街區</string>
-    <string name="quest_address_answer_block">一個街區以內…</string>
-    <string name="quest_address_answer_no_block">超過一個街區距離…</string>
     <string name="quest_surface_value_mud">強固泥巴</string>
     <string name="quest_wheelchairAccessPat_noToilet">這裡沒有廁所</string>
     <string name="unknown_surface_title">其他種類的舖面</string>

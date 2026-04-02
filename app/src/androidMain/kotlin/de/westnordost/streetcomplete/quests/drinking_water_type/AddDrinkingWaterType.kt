@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>(), AndroidQuest {
 
@@ -25,10 +26,9 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>(), AndroidQue
     override val changesetComment = "Specify drinking water types"
     override val wikiLink = "Tag:amenity=drinking_water"
     override val icon = R.drawable.quest_drinking_water // another icon?
+    override val title = Res.string.quest_drinking_water_type_title2
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN, OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_type_title2
 
     override fun createForm() = AddDrinkingWaterTypeForm()
 

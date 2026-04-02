@@ -1,21 +1,7 @@
 package de.westnordost.streetcomplete.osm.cycleway_separate
 
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.separate_cycleway_allowed
-import de.westnordost.streetcomplete.resources.separate_cycleway_disallowed
-import de.westnordost.streetcomplete.resources.separate_cycleway_exclusive
-import de.westnordost.streetcomplete.resources.separate_cycleway_footway_allowed_sign
-import de.westnordost.streetcomplete.resources.separate_cycleway_no
-import de.westnordost.streetcomplete.resources.separate_cycleway_no_or_allowed
-import de.westnordost.streetcomplete.resources.separate_cycleway_no_signed
-import de.westnordost.streetcomplete.resources.separate_cycleway_non_segregated
-import de.westnordost.streetcomplete.resources.separate_cycleway_not_segregated
-import de.westnordost.streetcomplete.resources.separate_cycleway_path
-import de.westnordost.streetcomplete.resources.separate_cycleway_segregated
-import de.westnordost.streetcomplete.resources.separate_cycleway_segregated_l
-import de.westnordost.streetcomplete.resources.separate_cycleway_with_sidewalk
-import de.westnordost.streetcomplete.resources.separate_cycleway_with_sidewalk_l
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

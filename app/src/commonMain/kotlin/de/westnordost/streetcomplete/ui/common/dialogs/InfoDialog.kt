@@ -10,8 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ok
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 /** Slight specialization of an alert dialog: AlertDialog with just an OK button which just also

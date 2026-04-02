@@ -10,8 +10,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.crosshair
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.getOpenQuestFormMapPadding
 import org.jetbrains.compose.resources.painterResource

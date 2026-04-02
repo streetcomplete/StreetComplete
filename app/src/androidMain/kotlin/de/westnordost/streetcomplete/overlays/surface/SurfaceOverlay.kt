@@ -20,10 +20,11 @@ import de.westnordost.streetcomplete.quests.surface.AddCyclewayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddFootwayPartSurface
 import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
+import de.westnordost.streetcomplete.resources.*
 
 class SurfaceOverlay : Overlay, AndroidOverlay {
 
-    override val title = R.string.overlay_surface
+    override val title = Res.string.overlay_surface
     override val icon = R.drawable.quest_street_surface
     override val changesetComment = "Specify surfaces"
     override val wikiLink: String = "Key:surface"

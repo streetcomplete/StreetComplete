@@ -1,13 +1,14 @@
 package de.westnordost.streetcomplete.quests
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableFloatState
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.ui.text.AnnotatedString
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.widget.NestedScrollView
@@ -26,6 +27,7 @@ import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractBottomSheetFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
+import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -36,6 +38,9 @@ import de.westnordost.streetcomplete.view.ResText
 import de.westnordost.streetcomplete.view.Text
 import de.westnordost.streetcomplete.view.setText
 import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 
@@ -96,8 +101,6 @@ abstract class AbstractQuestForm :
     protected val mapRotation: MutableFloatState = mutableFloatStateOf(0f)
     protected val mapTilt: MutableFloatState = mutableFloatStateOf(0f)
 
-    private var infoIsExpanded: Boolean = false
-
     // overridable by child classes
     open val contentLayoutResId: Int? = null
     open val contentPadding = true
@@ -117,7 +120,6 @@ abstract class AbstractQuestForm :
 
         // reset lazy field
         _countryInfo = null
-
     }
 
 
@@ -127,13 +129,28 @@ abstract class AbstractQuestForm :
         return binding.root
     }
 
+    protected open fun getTitle(): StringResource =
+        questType.title
+
+    @Composable
+    protected open fun getSubtitle(): AnnotatedString? = null
+
+    @Composable
+    protected open fun getHint(): String? = questType.hint?.let { stringResource(it) }
+
+    protected open fun getHintImages(): List<DrawableResource> = questType.hintImages
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setTitle(resources.getString(questType.title))
-        setTitleHintLabel(null)
-        setHint(questType.hint?.let { resources.getString(it) })
-        setHintImages(questType.hintImages.mapNotNull { requireContext().getDrawable(it) })
+        binding.questHeader.content { Surface {
+            QuestHeader(
+                title = stringResource(getTitle()),
+                subtitle = getSubtitle(),
+                hintText = getHint(),
+                hintImages = getHintImages()
+            )
+        } }
 
         binding.okButton.setOnClickListener {
             if (!isFormComplete()) {
@@ -143,15 +160,16 @@ abstract class AbstractQuestForm :
             }
         }
 
-        infoIsExpanded = false
-        binding.infoButton.setOnClickListener { toggleInfoArea() }
-        binding.infoArea.setOnClickListener { toggleInfoArea() }
-
         // no content? -> hide the content container
         if (binding.content.childCount == 0) {
             binding.content.visibility = View.GONE
         }
+
+        binding.composeViewDialogContainer.content { DialogContainer() }
     }
+
+    @Composable
+    open fun DialogContainer() {}
 
     override fun onStart() {
         super.onStart()
@@ -167,49 +185,9 @@ abstract class AbstractQuestForm :
         _binding = null
     }
 
-    protected fun setTitle(text: CharSequence?) {
-        binding.titleLabel.text = text
-    }
-
-    protected fun setTitleHintLabel(text: CharSequence?) {
-        binding.titleHintLabel.isGone = text == null
-        binding.titleHintLabel.text = text
-    }
-
-    protected fun setHint(text: CharSequence?) {
-        binding.infoText.isGone = text == null
-        binding.infoText.text = text
-        updateInfoButtonVisibility()
-    }
-
     protected fun setObjNote(text: CharSequence?) {
         binding.noteLabel.text = text
         binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
-    }
-    protected fun setHintImages(images: List<Drawable>) {
-        binding.infoPictures.isGone = images.isEmpty()
-        binding.infoPictures.removeAllViews()
-        for (image in images) {
-            val imageView = ImageView(requireContext())
-            imageView.setImageDrawable(image)
-            imageView.scaleType
-            binding.infoPictures.addView(imageView)
-        }
-        updateInfoButtonVisibility()
-    }
-
-    private fun toggleInfoArea() {
-        infoIsExpanded = !infoIsExpanded
-        binding.infoButton.setImageResource(
-            if (infoIsExpanded) R.drawable.ic_info_filled_24dp
-            else R.drawable.ic_info_outline_24dp
-        )
-        binding.infoButton.isActivated = infoIsExpanded
-        binding.infoArea.isGone = !infoIsExpanded
-    }
-
-    private fun updateInfoButtonVisibility() {
-        binding.infoButton.isGone = binding.infoText.isGone && binding.infoPictures.isGone
     }
 
     /** Inflate given layout resource id into the content view and return the inflated view */

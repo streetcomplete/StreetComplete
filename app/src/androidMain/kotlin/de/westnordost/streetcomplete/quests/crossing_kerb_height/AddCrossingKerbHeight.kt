@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
+import de.westnordost.streetcomplete.resources.*
 
 class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
 
@@ -51,9 +52,8 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
     override val changesetComment = "Determine the heights of kerbs at crossings"
     override val wikiLink = "Key:kerb"
     override val icon = R.drawable.quest_wheelchair_crossing
+    override val title = Res.string.quest_crossing_kerb_height_title
     override val achievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_crossing_kerb_height_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways

@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddEntrance : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
 
@@ -45,9 +46,8 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
     override val changesetComment = "Specify type of entrances"
     override val wikiLink = "Key:entrance"
     override val icon = R.drawable.quest_door
+    override val title = Res.string.quest_building_entrance_title
     override val achievements = listOf(PEDESTRIAN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_building_entrance_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val buildingsWayNodeIds = mapData

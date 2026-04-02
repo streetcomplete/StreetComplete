@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesControll
 import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osmcal.CalendarEventsController
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.ktx.format
@@ -25,6 +26,7 @@ class Cleaner(
     private val downloadedTilesController: DownloadedTilesController,
     private val logsController: LogsController,
     private val mapTilesDownloader: MapTilesDownloader,
+    private val calendarEventsController: CalendarEventsController,
 ) {
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Cleaner") + Dispatchers.IO)
 
@@ -40,6 +42,8 @@ class Cleaner(
 
         val oldLogTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_LOG_AFTER
         logsController.deleteOlderThan(oldLogTimestamp)
+
+        calendarEventsController.deleteOld()
 
         Log.i(TAG, "Cleaning took ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s")
     }

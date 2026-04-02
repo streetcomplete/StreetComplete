@@ -21,9 +21,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.create_new_note_hint
-import de.westnordost.streetcomplete.resources.quest_defibrillator_location_description
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.common.TextFieldStyle
 import de.westnordost.streetcomplete.ui.util.content

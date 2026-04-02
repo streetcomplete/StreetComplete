@@ -26,7 +26,8 @@ data class NoteEdit(
     /** attached photos */
     val imagePaths: List<String>,
 
-    /** timestamp when this edit was made. Used to order the (unsynced) edits in a queue */
+    /** timestamp when this edit was made. Used to order the (unsynced) edits in a queue. In epoch
+     *  milliseconds. */
     override val createdTimestamp: Long,
 
     /** whether this edit has been uploaded already */

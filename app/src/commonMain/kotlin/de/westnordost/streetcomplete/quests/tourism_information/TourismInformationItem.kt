@@ -5,17 +5,7 @@ import de.westnordost.streetcomplete.quests.tourism_information.TourismInformati
 import de.westnordost.streetcomplete.quests.tourism_information.TourismInformation.MAP
 import de.westnordost.streetcomplete.quests.tourism_information.TourismInformation.OFFICE
 import de.westnordost.streetcomplete.quests.tourism_information.TourismInformation.TERMINAL
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_tourism_information_board
-import de.westnordost.streetcomplete.resources.quest_tourism_information_guidepost
-import de.westnordost.streetcomplete.resources.quest_tourism_information_map
-import de.westnordost.streetcomplete.resources.quest_tourism_information_office
-import de.westnordost.streetcomplete.resources.quest_tourism_information_terminal
-import de.westnordost.streetcomplete.resources.tourism_information_board
-import de.westnordost.streetcomplete.resources.tourism_information_guidepost
-import de.westnordost.streetcomplete.resources.tourism_information_map
-import de.westnordost.streetcomplete.resources.tourism_information_office
-import de.westnordost.streetcomplete.resources.tourism_information_terminal
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

@@ -9,11 +9,10 @@ import kotlinx.io.buffered
 
 class WeeklyOsmApiClient(
     private val httpClient: HttpClient,
-    private val rssFeedUrl: String,
     private val parser: WeeklyOsmRssFeedParser,
 ) {
     suspend fun getLastPublishDate(): Instant? {
-        val response = httpClient.get(rssFeedUrl)
+        val response = httpClient.get("https://weeklyosm.eu/feed")
         val source = response.bodyAsChannel().asSource().buffered()
         return parser.parseLastPublishDate(source)
     }

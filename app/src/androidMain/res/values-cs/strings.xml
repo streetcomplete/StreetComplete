@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Prohlášení o ochraně soukromí"</string>
     <string name="quest_openingHours_public_holidays">"Státní svátky"</string>
     <string name="quest_openingHours_public_holidays_short">"St. sv."</string>
-    <string name="quest_openingHours_open_end">"do odchodu posledního návštěvníka"</string>
     <string name="quest_openingHours_answer_247">"Otevřeno nonstop"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Liší se podle měsíce…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nepravidelná otevírací doba…"</string>
@@ -318,7 +317,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_housenumber_conscription_number">"Číslo popisné"</string>
     <string name="quest_housenumber_street_number_optional">"Orientační číslo (volitelné)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Cyklostezka je i na druhé straně…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Musíte opsat informace z cedulky s otevírací dobou. Pokud tu žádná není, měli byste se zeptat na otevírací hodiny uvnitř."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"žádná, ale cyklisti můžou použít cestu v obou směrech"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Pokud jsou toalety přístupné, můžete na nich vidět podobnou značku vozíčkáře.
 Částečně znamená, že se lze na toaletu dostat a používat ji i na kolečkovém křesle, ale nejsou na ní držáky, nebo upravené umývadlo."</string>
@@ -470,7 +468,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="privacy_html_image_upload2">"&lt;p&gt;Fotografie připojené k poznámce jsou nahrané na můj server a smazány několik dnů po vyřešení poznámky. Metadata fotografií jsou odstraněna před jejich nahráním.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Odznačit vše"</string>
     <string name="quest_buildingType_retail_description">"včetně budov pro restaurace, kavárny, obchodní domy…"</string>
-    <string name="quest_openingHours_timeSelect_next">"Další"</string>
     <string name="quest_tracktype_title">"Jak pevný je povrch této stezky/cesty?"</string>
     <string name="quest_tracktype_grade1">"Pevný"</string>
     <string name="quest_tracktype_grade4">"Spíše měkký"</string>
@@ -496,7 +493,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="action_open_location">"Otevřít lokaci v jiné aplikaci"</string>
     <string name="map_application_missing">"Nemáte nainstalovanou žádnou jinou mapovou aplikaci"</string>
     <string name="label_housenumber">"číslo domu"</string>
-    <string name="label_blocknumber">"číslo bloku"</string>
     <string name="quest_busStopShelter_covered">"Celá zastávka je zastřešená"</string>
     <string name="quest_ferry_pedestrian_title">"Převáží chodce?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Převáží motorová vozidla?"</string>
@@ -1143,10 +1139,6 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna."</string>
     <string name="quest_camp_drinking_water_title">"Mají tu táborníci volně k dispozici pitnou vodu?"</string>
     <string name="quest_camp_shower_title">"Jsou tu sprchy?"</string>
     <string name="quest_camp_power_supply_title">"Mohou si tu zákazníci nabíjet telefon, notebook apod.?"</string>
-    <string name="quest_camp_type_title">"Kdo tu může tábořit?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Jak stany, tak obytné vozy, cestovní přívěsy, …"</string>
-    <string name="quest_camp_type_caravans_only">"Pouze obytné vozy, cestovní přívěsy, …"</string>
-    <string name="quest_camp_type_tents_only">"Pouze stany"</string>
     <string name="quest_camp_type_backcountry">"Táboření v přírodě (bez zázemí)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tento průměr vypadá nepravděpodobně, obvykle se pohybuje mezi %1$d a %2$d."</string>
     <string name="street_parking_street_width">"Šířka ulice: %1$s"</string>
@@ -1237,9 +1229,6 @@ Chcete ho posunout?"</string>
     <string name="street_parking_staggered_half_on_kerb">"Částečně na chodníku střídavě na obou stranách"</string>
     <string name="quest_traffic_signals_sound_description">"Nápověda: Hledejte reproduktory. Ne všechny zvukové signály lze aktivovat tlačítkem."</string>
     <string name="quest_presets_duplicate">"Duplikovat"</string>
-    <string name="label_block">"blok"</string>
-    <string name="quest_address_answer_block">"Je uvnitř bloku…"</string>
-    <string name="quest_address_answer_no_block">"Není uvnitř bloku…"</string>
     <string name="quest_surface_value_mud">"Trvalé bláto"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Není tu žádná toaleta"</string>
     <string name="unknown_surface_title">"Jiný druh povrchu"</string>

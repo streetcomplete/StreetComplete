@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"بیانیهٔ حریم شخصی"</string>
     <string name="quest_openingHours_public_holidays">"تعطیلات رسمی"</string>
     <string name="quest_openingHours_public_holidays_short">"تعطیلات رسمی"</string>
-    <string name="quest_openingHours_open_end">"پایان کار"</string>
     <string name="quest_openingHours_answer_247">"همیشه باز"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"ماهیانه یا فصلی …"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"زمان کاری منظمی ندارد…"</string>
@@ -315,7 +314,6 @@
     <string name="quest_housenumber_conscription_number">"شماره اداری (پلاک خانه)"</string>
     <string name="quest_housenumber_street_number_optional">"شماره جهت‌یابی (اختیاری)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"مسیر رفت و برگشت دوچرخه سواری مجزا است…"</string>
-    <string name="quest_openingHours_emptyAnswer">"آنچه را که روی علائم نگاشته شده درج کنید. اگر علائمی وجود ندارد، ساعت کاری را از داخل بپرسید."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"هیچ‌کدام، اما دوچرخه‌سواران می‌توانند از جاده در هر دو جهت استفاده کنند"</string>
     <string name="quest_wheelchairAccess_description_toilets">"اگر سرویس‌بهداشتی برای صندلی چرخدار قابل دسترسی است، علائمی مانند این شاید نصب شده باشد.
 تا اندازه‌ای یعنی صندلی چرخدار می‌تواند وارد سرویس بهداشتی شود و از آن استفاده کند، اما دست‌نرده ندارد یا دست‌شویی مناسب‌سازی نشده است."</string>
@@ -465,7 +463,6 @@
     <string name="privacy_html_image_upload2">"&lt;p&gt;تصاویری که به یادداشت اضافه می‌نمایید روی سرور ما بارگذاری می‌شوند و چند روز بعد از حل‌شدن یادداشت حذف می‌شوند. فرادادهٔ آن‌ها قبل از بارگذاری حذف می‌شود.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"بدون انتخاب"</string>
     <string name="quest_buildingType_retail_description">"شامل ساختمان‌هایی برای رستوران‌ها، کافه‌ها، فروشگاه‌ها…"</string>
-    <string name="quest_openingHours_timeSelect_next">"بعدی"</string>
     <string name="quest_tracktype_title">"استحکام سطح این مسیر چگونه است؟"</string>
     <string name="quest_tracktype_grade1">"سخت"</string>
     <string name="quest_tracktype_grade4">"اغلب نرم"</string>
@@ -491,7 +488,6 @@
     <string name="action_open_location">"مکان را در برنامه دیگری باز نمایید"</string>
     <string name="map_application_missing">"برنامه نقشه دیگری نصب نگردیده‌است"</string>
     <string name="label_housenumber">"شماره خانه"</string>
-    <string name="label_blocknumber">"شماره مجتمع"</string>
     <string name="quest_busStopShelter_covered">"سراسر ایستگاه سرپوشیده است"</string>
     <string name="quest_ferry_pedestrian_title">"آیا این مسیر دریایی برای حمل‌ونقل پیاده‌ها استفاده می‌شود؟"</string>
     <string name="quest_ferry_motor_vehicle_title">"آیا این مسیر دریایی برای حمل‌ونقل خودروها استفاده می‌شود؟"</string>
@@ -1135,10 +1131,6 @@
     <string name="quest_camp_drinking_water_title">"آیا اینجا آب آشامیدنی رایگان در اختیار چادرنشینان قرار می‌گیرد؟"</string>
     <string name="quest_camp_shower_title">"آیا اینجا حمام دارد؟"</string>
     <string name="quest_camp_power_supply_title">"آیا راهی وجود دارد که مشتریان گوشی همراه، رایانه و... خود را اینجا شارژ کنند؟"</string>
-    <string name="quest_camp_type_title">"چه کسی می‌تواند اینجا چادر بزند؟"</string>
-    <string name="quest_camp_type_tents_and_caravans">"هم چادرها و هم خانه‌های متحرک، یدک‌‌کش‌های مسافرتی و…"</string>
-    <string name="quest_camp_type_caravans_only">"فقط کاوران‌ها، خانه‌های متحرک، یدک‌کش‌های مسافرتی و…"</string>
-    <string name="quest_camp_type_tents_only">"فقط چادر"</string>
     <string name="quest_camp_type_backcountry">"چادر زنی در خارج شهر (بدون امکانات)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"به نظر می‌رسد این قطر درست نباشد، معمولاً اندازهٔ آن بین %1$d و %2$d است."</string>
     <string name="street_parking_street_width">"پهنای‌ خیابان: %s"</string>
@@ -1229,9 +1221,6 @@
     <string name="street_parking_staggered_half_on_kerb">"اغلب به صورت متناوب در دو طرف خیابان"</string>
     <string name="quest_traffic_signals_sound_description">"نکته: مراقب بلندگوها باشید. تمام هشدارهای صوتی را نمی‌توان از طریق یک دکمه فعال کرد."</string>
     <string name="quest_presets_duplicate">"رونوشت برداشتن"</string>
-    <string name="label_block">"بلوک"</string>
-    <string name="quest_address_answer_block">"در داخل یک بلوک است..."</string>
-    <string name="quest_address_answer_no_block">"در یک بلوک نیست..."</string>
     <string name="quest_surface_value_mud">"خاک سخت"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"اینجا سرویس بهداشتی نیست"</string>
     <string name="unknown_surface_title">"نوع دیگری از سطح"</string>
@@ -1470,4 +1459,44 @@
     <string name="quest_recycling_type_pet_bottles">"بطری‌های PET"</string>
     <string name="quest_maxweight_add_sign">"اضافه‌کردن علامت"</string>
     <string name="quest_maxweight_remove_sign">"حذف‌کردن علامت"</string>
+    <string name="dialog_dont_notify_again">"دیگر اطلاع نده"</string>
+    <string name="weekly_osm_new_edition_title">"نسخه جدید!"</string>
+    <string name="pref_title_messages">"پیام‌های درون‌برنامه‌ای"</string>
+    <string name="pref_title_message_achievements">"دستاوردهای قفل‌گشایی‌شده"</string>
+    <string name="pref_title_message_weekly_osm">"نسخه‌های جدید weeklyOSM"</string>
+    <string name="pref_title_message_changelog">"نسخه‌های جدید برنامه"</string>
+    <string name="label_block2">"بلوک شهری"</string>
+    <string name="quest_address_answer_block2">"درون یک بلوک شهری است…"</string>
+    <string name="quest_address_answer_no_block2">"درون یک بلوک شهری نیست…"</string>
+    <string name="quest_artwork_title">"این چه نوع اثری هنری است؟"</string>
+    <string name="quest_artwork_sculpture">"مجسمه"</string>
+    <string name="quest_artwork_statue">"تندیس"</string>
+    <string name="quest_artwork_mural">"دیوارنگاره"</string>
+    <string name="quest_artwork_graffiti">"دیوار‌نوشته"</string>
+    <string name="quest_artwork_installation">"چیدمان"</string>
+    <string name="quest_artwork_bust">"نیم‌تنه"</string>
+    <string name="quest_artwork_stone">"سنگ‌چیدمان (یا اثر سنگی)"</string>
+    <string name="quest_artwork_painting">"نقاشی"</string>
+    <string name="quest_artwork_street_art">"سایر هنرهای خیابانی"</string>
+    <string name="quest_artwork_architecture">"معماری"</string>
+    <string name="quest_artwork_mosaic">"موزائیک"</string>
+    <string name="quest_artwork_relief">"نقش‌برجسته"</string>
+    <string name="quest_artwork_fountain">"آبنما"</string>
+    <string name="quest_bothway_title">"در چه جهتی می‌توانید از این مسیر حرکت کنید؟"</string>
+    <string name="quest_camp_tent_title">"آیا می‌توانید اینجا در چادر کمپ کنید؟"</string>
+    <string name="quest_camp_cabin_title">"آیا کلبه‌هایی برای اقامت در اینجا وجود دارد؟"</string>
+    <string name="quest_camp_caravan_title">"آیا می‌توانید اینجا با کاروان یا تریلر مسافرتی کمپ کنید؟"</string>
+    <string name="quest_ferry_bicycle_title">"آیا دوچرخه در این کشتی مجاز است؟"</string>
+    <string name="quest_openingHours_add_time">"افزودن زمان"</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">"انتخاب زمان شروع"</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">"انتخاب زمان پایان"</string>
+    <string name="quest_openingHours_chooseTimeTitle">"انتخاب زمان"</string>
+    <string name="quest_openingHours_no_fixed_end">"بدون زمان پایان ثابت"</string>
+    <string name="quest_openingHours_from">"از %1$s"</string>
+    <string name="quest_openingHours_until_late">"%1$s تا دیروقت"</string>
+    <string name="quest_collectionTimes_answer_time_spans">"در یک بازه زمانی…"</string>
+    <string name="quest_collectionTimes_answer_time_points">"در زمان‌های مشخص…"</string>
+    <string name="quest_shower_hot_water_title">"آیا آب گرم در اینجا وجود دارد؟"</string>
+    <string name="calendar_new_event_title">"رویداد جدید OSM در منطقه شما!"</string>
+    <string name="pref_title_message_calendar">"رویدادهای جدید OSM در منطقه شما"</string>
 </resources>

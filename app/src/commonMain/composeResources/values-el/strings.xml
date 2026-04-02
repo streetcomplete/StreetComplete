@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Δήλωση Ιδιωτικότητας</string>
     <string name="quest_openingHours_public_holidays">Αργίες</string>
     <string name="quest_openingHours_public_holidays_short">Αργίες</string>
-    <string name="quest_openingHours_open_end">ανοιχτό τέλος</string>
     <string name="quest_openingHours_answer_247">Ανοιχτά 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Διαφέρει με τον μήνα…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Χωρίς κανονικές ώρες λειτουργίας…</string>
@@ -316,7 +315,6 @@
     <string name="quest_housenumber_conscription_number">Αριθμός συνταγογράφησης</string>
     <string name="quest_housenumber_street_number_optional">Αριθμός προσανατολισμού (προαιρετικό)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Επίσης ποδηλατόδρομος από την άλλη πλευρά…</string>
-    <string name="quest_openingHours_emptyAnswer">Πρέπει να περιγράψετε τι υπάρχει στην πινακίδα. Εάν δεν υπάρχει καμία πινακίδα, θα πρέπει να ρωτήσετε μέσα για τις ώρες λειτουργίας.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">κανένας, αλλά οι ποδηλάτες μπορούν να χρησιμοποιούν το δρόμο και προς τις δύο κατευθύνσεις</string>
     <string name="quest_wheelchairAccess_description_toilets">Μία πινακίδα αναπηρικού αμαξιδίου όπως αυτή μπορεί να είναι ορατή εάν οι τουαλέτες είναι προσβάσιμες.
      Εν μέρει αυτό σημαίνει ότι ένα αναπηρικό αμαξίδιο μπορεί να εισέλθει και να χρησιμοποιήσει τις τουαλέτες, αλλά δεν υπάρχει χειρολαβή ή προσαρμοσμένος νιπτήρας.</string>
@@ -466,7 +464,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt;Οι φωτογραφίες που επισυνάπτετε σε μια σημείωση μεταφορτώνονται στον διακομιστή μου και διαγράφονται μερικές ημέρες μετά την επίλυση αυτής της σημείωσης. Τα μεταδεδομένα τους έχουν αφαιρεθεί πριν μεταφορτωθούν.&lt;/p&gt;</string>
     <string name="action_deselect_all">Αποεπιλογή όλων</string>
     <string name="quest_buildingType_retail_description">συμπεριλαμβανομένων κτιρίων για εστιατόρια, καφέ, …</string>
-    <string name="quest_openingHours_timeSelect_next">Επόμενο</string>
     <string name="quest_tracktype_title">Ποια είναι η επιφανειακή σταθερότητα αυτού του δρόμου;</string>
     <string name="quest_tracktype_grade1">Στερεό</string>
     <string name="quest_tracktype_grade4">Κυρίως μαλακό</string>
@@ -492,7 +489,6 @@
     <string name="action_open_location">Ανοίξτε την τοποθεσία σε άλλη εφαρμογή</string>
     <string name="map_application_missing">Δεν έχει εγκατασταθεί άλλη εφαρμογή χάρτη</string>
     <string name="label_housenumber">αριθμός σπιτιού</string>
-    <string name="label_blocknumber">αριθμός οικοδομικού τετραγώνου</string>
     <string name="quest_busStopShelter_covered">Ολόκληρη η στάση καλύπτεται</string>
     <string name="quest_ferry_pedestrian_title">Αυτή η πορθμειακή διαδρομή μεταφέρει πεζούς;</string>
     <string name="quest_ferry_motor_vehicle_title">Αυτή η πορθμειακή διαδρομή μεταφέρει μηχανοκίνητα οχήματα;</string>
@@ -1125,10 +1121,6 @@
     <string name="quest_camp_drinking_water_title">Είναι το πόσιμο νερό ελεύθερα διαθέσιμο για τους κατασκηνωτές εδώ;</string>
     <string name="quest_camp_shower_title">Υπάρχουν ντους εδώ;</string>
     <string name="quest_camp_power_supply_title">Υπάρχει τρόπος να φορτίσουν οι πελάτες το τηλέφωνό τους, το λάπτοπ τους κ.λπ. εδώ;</string>
-    <string name="quest_camp_type_title">Ποιος μπορεί να κατασκηνώσει εδώ;</string>
-    <string name="quest_camp_type_tents_and_caravans">Τόσο σκηνές όσο και αυτοκινούμενα σπίτια, τροχόσπιτα, ...</string>
-    <string name="quest_camp_type_caravans_only">Μόνο αυτοκινούμενα σπίτια, τροχόσπιτα, ...</string>
-    <string name="quest_camp_type_tents_only">Μόνο σκηνές</string>
     <string name="quest_camp_type_backcountry">Υπαίθριο κάμπινγκ (χωρίς εγκαταστάσεις)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Αυτή η διάμετρος φαίνεται απίθανη, είναι συνήθως μεταξύ %1$d και %2$d.</string>
     <string name="street_parking_street_width">Πλάτος δρόμου: %1$s</string>
@@ -1219,9 +1211,6 @@
     <string name="street_parking_staggered_half_on_kerb">Μερικώς στο δρόμο σε εναλλασσόμενες πλευρές</string>
     <string name="quest_traffic_signals_sound_description">Συμβουλή: Προσέξτε για ηχεία. Δεν λειτουργούν όλα τα ηχητικά σήματα μέσω ενός κουμπιού.</string>
     <string name="quest_presets_duplicate">Διπλότυπο</string>
-    <string name="label_block">οικοδομικό τετράγωνο</string>
-    <string name="quest_address_answer_block">Είναι μέσα σε ένα οικοδομικό τετράγωνο...</string>
-    <string name="quest_address_answer_no_block">Δεν είναι μέσα σε ένα οικοδομικό τετράγωνο... </string>
     <string name="quest_surface_value_mud">Διαρκής λάσπη</string>
     <string name="quest_wheelchairAccessPat_noToilet">Δεν υπάρχει τουαλέτα εδώ</string>
     <string name="unknown_surface_title">Άλλο είδος επιφάνειας</string>
@@ -1457,4 +1446,44 @@
     <string name="quest_recycling_type_pet_bottles">Φιάλες PET</string>
     <string name="quest_maxweight_add_sign">Προσθήκη πινακίδας</string>
     <string name="quest_maxweight_remove_sign">Αφαίρεση πινακίδας</string>
+    <string name="dialog_dont_notify_again">Να μην ειδοποιηθώ ξανά</string>
+    <string name="weekly_osm_new_edition_title">Νέα Κυκλοφορία!</string>
+    <string name="pref_title_messages">Μηνύματα Εντός Εφαρμογής</string>
+    <string name="pref_title_message_achievements">Ξεκλείδωτα επιτεύγματα</string>
+    <string name="pref_title_message_weekly_osm">Νέες κυκλοφορίες του weeklyOSM</string>
+    <string name="pref_title_message_changelog">Νέες εκδόσεις εφαρμογής</string>
+    <string name="label_block2">οικοδομικό τετράγωνο</string>
+    <string name="quest_address_answer_block2">Είναι εντός ενός οικοδομικού τετραγώνου…</string>
+    <string name="quest_address_answer_no_block2">Δεν είναι εντός ενός οικοδομικού τετραγώνου…</string>
+    <string name="quest_artwork_title">Τι είδους έργο τέχνης είναι αυτό;</string>
+    <string name="quest_artwork_sculpture">Γλυπτό</string>
+    <string name="quest_artwork_statue">Άγαλμα</string>
+    <string name="quest_artwork_mural">Τοιχογραφία</string>
+    <string name="quest_artwork_graffiti">Γκράφιτι</string>
+    <string name="quest_artwork_installation">Εγκατάσταση</string>
+    <string name="quest_artwork_bust">Προτομή</string>
+    <string name="quest_artwork_stone">Πέτρα</string>
+    <string name="quest_artwork_painting">Πίνακας ζωγραφικής</string>
+    <string name="quest_artwork_street_art">Άλλη τέχνη του δρόμου</string>
+    <string name="quest_artwork_architecture">Αρχιτεκτονική</string>
+    <string name="quest_artwork_mosaic">Ψηφιδωτό</string>
+    <string name="quest_artwork_relief">Ανάγλυφο</string>
+    <string name="quest_artwork_fountain">Συντριβάνι</string>
+    <string name="quest_bothway_title">Προς ποια κατεύθυνση μπορείτε να οδηγήσετε εδώ;</string>
+    <string name="quest_camp_tent_title">Μπορείτε να κατασκηνώσετε σε αντίσκηνο εδώ;</string>
+    <string name="quest_camp_cabin_title">Υπάρχουν σπιτάκια στα οποία μπορείτε να μείνετε εδώ;</string>
+    <string name="quest_camp_caravan_title">Μπορείτε να κατασκηνώσετε σε τροχόσπιτο ή τρέϊλερ εδώ;</string>
+    <string name="quest_ferry_bicycle_title">Επιτρέπονται τα ποδήλατα στο πορθμείο;</string>
+    <string name="quest_openingHours_add_time">Προσθήκη ώρας</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">Επιλέξτε ώρα ανοίγματος</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">Επιλέξτε ώρα κλεισίματος</string>
+    <string name="quest_openingHours_chooseTimeTitle">Επιλέξτε ώρα</string>
+    <string name="quest_openingHours_no_fixed_end">όχι σταθερή ώρα κλεισίματος</string>
+    <string name="quest_openingHours_from">από %1$s</string>
+    <string name="quest_openingHours_until_late">%1$s μέχρι αργά</string>
+    <string name="quest_collectionTimes_answer_time_spans">Εντός ενός χρονικού εύρους…</string>
+    <string name="quest_collectionTimes_answer_time_points">Σε συγκεκριμένες ώρες…</string>
+    <string name="quest_shower_hot_water_title">Υπάρχει ζεστό νερό εδώ;</string>
+    <string name="calendar_new_event_title">Νέα εκδήλωση OSM στην περιοχή σας!</string>
+    <string name="pref_title_message_calendar">Νέες εκδηλώσεις OSM στην περιοχή σας</string>
 </resources>

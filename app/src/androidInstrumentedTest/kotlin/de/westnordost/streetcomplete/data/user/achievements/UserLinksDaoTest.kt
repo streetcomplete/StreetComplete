@@ -4,6 +4,8 @@ import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class UserLinksDaoTest : ApplicationDbTestCase() {
     private lateinit var dao: UserLinksDao
@@ -17,6 +19,10 @@ class UserLinksDaoTest : ApplicationDbTestCase() {
         dao.add(ONE)
         dao.add(TWO)
         assertEquals(listOf(ONE, TWO), dao.getAll())
+
+        assertTrue(dao.has(ONE))
+        assertTrue(dao.has(TWO))
+        assertFalse(dao.has(THREE))
     }
 
     @Test fun addAll() {

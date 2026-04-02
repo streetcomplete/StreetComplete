@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
+import de.westnordost.streetcomplete.resources.*
 
 class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
 
@@ -31,11 +32,9 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
     override val changesetComment = "Determine public transport stop names"
     override val wikiLink = "Tag:public_transport=platform"
     override val icon = R.drawable.quest_bus_stop_name
+    override val title = Res.string.quest_busStopName_title2
     override val achievements = listOf(PEDESTRIAN)
-
-    override val hint = R.string.quest_stopName_hint
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopName_title2
+    override val hint = Res.string.quest_stopName_hint
 
     override fun createForm() = AddBusStopNameForm()
 

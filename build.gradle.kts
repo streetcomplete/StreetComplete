@@ -6,7 +6,7 @@ plugins {
     id("com.android.application") version "8.11.2" apply false
     id("com.android.library") version "8.11.2" apply false
     id("org.jetbrains.compose") version "1.10.0" apply false
-    id("org.jetbrains.kotlinx.atomicfu") version "0.29.0" apply false
+    id("org.jetbrains.kotlinx.atomicfu") version "0.31.0" apply false
 }
 
 val poEditorProjectId = "97843"

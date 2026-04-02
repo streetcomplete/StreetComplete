@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.messages.Message.NewVersion
 import de.westnordost.streetcomplete.data.messages.Message.NewWeeklyOsm
 import de.westnordost.streetcomplete.data.messages.Message.OsmUnreadMessages
 import de.westnordost.streetcomplete.data.messages.Message.QuestSelectionHint
+import de.westnordost.streetcomplete.data.osmcal.CalendarEvent
 import de.westnordost.streetcomplete.data.user.achievements.Achievement
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import kotlinx.datetime.LocalDate
@@ -31,6 +32,9 @@ sealed interface Message {
     /** New edition of weekly OSM */
     data class NewWeeklyOsm(val date: LocalDate) : Message
 
+    /** Notification for an event newarby */
+    data class NewCalendarEvent(val event: CalendarEvent) : Message
+
     companion object {
         fun classFromSimpleName(name: String): KClass<out Message>? = when (name) {
             OsmUnreadMessages::class.simpleName -> OsmUnreadMessages::class
@@ -38,6 +42,7 @@ sealed interface Message {
             NewVersion::class.simpleName -> NewVersion::class
             QuestSelectionHint::class.simpleName -> QuestSelectionHint::class
             NewWeeklyOsm::class.simpleName -> NewWeeklyOsm::class
+            NewCalendarEvent::class.simpleName -> NewCalendarEvent::class
             else -> null
         }
     }

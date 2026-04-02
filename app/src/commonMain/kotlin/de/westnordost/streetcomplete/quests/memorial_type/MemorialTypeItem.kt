@@ -1,25 +1,7 @@
 package de.westnordost.streetcomplete.quests.memorial_type
 
 import de.westnordost.streetcomplete.quests.memorial_type.MemorialType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.memorial_type_bust
-import de.westnordost.streetcomplete.resources.memorial_type_obelisk
-import de.westnordost.streetcomplete.resources.memorial_type_plaque
-import de.westnordost.streetcomplete.resources.memorial_type_sculpture
-import de.westnordost.streetcomplete.resources.memorial_type_statue
-import de.westnordost.streetcomplete.resources.memorial_type_stele_stone
-import de.westnordost.streetcomplete.resources.memorial_type_stele_wooden
-import de.westnordost.streetcomplete.resources.memorial_type_stone
-import de.westnordost.streetcomplete.resources.memorial_type_war_memorial
-import de.westnordost.streetcomplete.resources.quest_memorialType_bust
-import de.westnordost.streetcomplete.resources.quest_memorialType_obelisk
-import de.westnordost.streetcomplete.resources.quest_memorialType_plaque
-import de.westnordost.streetcomplete.resources.quest_memorialType_sculpture
-import de.westnordost.streetcomplete.resources.quest_memorialType_statue
-import de.westnordost.streetcomplete.resources.quest_memorialType_stele_stone
-import de.westnordost.streetcomplete.resources.quest_memorialType_stele_wooden
-import de.westnordost.streetcomplete.resources.quest_memorialType_stone
-import de.westnordost.streetcomplete.resources.quest_memorialType_war_memorial
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

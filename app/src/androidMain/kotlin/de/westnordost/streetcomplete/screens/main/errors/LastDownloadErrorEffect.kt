@@ -11,10 +11,7 @@ import androidx.compose.ui.platform.LocalContext
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.auth_error
-import de.westnordost.streetcomplete.resources.download_error
-import de.westnordost.streetcomplete.resources.download_server_error
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.jetbrains.compose.resources.stringResource
 

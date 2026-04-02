@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Privacy"</string>
     <string name="quest_openingHours_public_holidays">"Feste pubbliche"</string>
     <string name="quest_openingHours_public_holidays_short">"Giorni festivi"</string>
-    <string name="quest_openingHours_open_end">"fine apertura"</string>
     <string name="quest_openingHours_answer_247">"Aperto 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Diverso per mese…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nessuna apertura regolare…"</string>
@@ -316,7 +315,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="quest_housenumber_conscription_number">"Numero di coscrizione"</string>
     <string name="quest_housenumber_street_number_optional">"Orientamento del numero (opzionale)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Corsia ciclabile anche sull'altro lato…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Devi descrivere cosa c'è sul cartello. Se non trovi nulla, dovresti chiedere gli orari di apertura all'interno."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nessuna, ma i ciclisti possono usare la strada in entrambe le direzioni"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Se i servizi igienici sono accessibili con la sedia a rotelle potrebbe esserci un simbolo come questo.
 \"Parzialmente\" significa che con la sedia a rotelle si può entrare e utilizzare i servizi igienici, ma non ci sono barre d'appoggio o sanitari per disabili."</string>
@@ -466,7 +464,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="privacy_html_image_upload2">"&lt;p&gt;Le foto che alleghi a una nota sono caricate sul mio server e cancellate alcuni giorni dopo che la nota è stata risolta. I metadati vengono eliminati prima del caricamento.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deseleziona tutto"</string>
     <string name="quest_buildingType_retail_description">"inclusi edifici per ristoranti, bar, negozi, ecc…"</string>
-    <string name="quest_openingHours_timeSelect_next">"Prossimo"</string>
     <string name="quest_tracktype_title">"Com'è il grado di solidità della superficie di questa strada?"</string>
     <string name="quest_tracktype_grade1">"Pavimentato"</string>
     <string name="quest_tracktype_grade4">"Per lo più soffice"</string>
@@ -492,7 +489,6 @@ Altrimenti, è possibile scaricare un'altra tastiera. Le tastiere popolari che s
     <string name="action_open_location">"Apri posizione in un'altra applicazione"</string>
     <string name="map_application_missing">"Nessun'altra applicazione di mappe installata"</string>
     <string name="label_housenumber">"numero civico"</string>
-    <string name="label_blocknumber">"numero del quartiere"</string>
     <string name="quest_busStopShelter_covered">"Tutta la fermata è coperta"</string>
     <string name="quest_ferry_pedestrian_title">"Questa linea di traghetti trasporta pedoni?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Questa linea di traghetti trasporta veicoli a motore?"</string>
@@ -1137,10 +1133,6 @@ Fai la stessa cosa per l'altro lato, se presente."</string>
     <string name="quest_camp_drinking_water_title">"L'acqua potabile è disponibile gratuitamente per i camper qui?"</string>
     <string name="quest_camp_shower_title">"Ci sono docce qui?"</string>
     <string name="quest_camp_power_supply_title">"Ci sono prese di corrente a disposizione dei clienti?"</string>
-    <string name="quest_camp_type_title">"Chi può campeggiare qui?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Sia tende che camper, roulotte, etc."</string>
-    <string name="quest_camp_type_caravans_only">"Solo camper, roulotte, etc."</string>
-    <string name="quest_camp_type_tents_only">"Solo tende"</string>
     <string name="quest_camp_type_backcountry">"Campeggio fuoripista (niente strutture)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Questo diametro non sembra plausibile, è solitamente tra %1$d e %2$d."</string>
     <string name="street_parking_street_width">"Larghezza strada: %1$s"</string>
@@ -1231,9 +1223,6 @@ Spostarlo ora?"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parzialmente sulla strada su lati alterni"</string>
     <string name="quest_traffic_signals_sound_description">"Consiglio: cerca degli altoparlanti. Non tutti i segnali sonori sono attivabili tramite pulsante."</string>
     <string name="quest_presets_duplicate">"Duplicato"</string>
-    <string name="label_block">"isolato"</string>
-    <string name="quest_address_answer_block">"È nel raggio di un isolato…"</string>
-    <string name="quest_address_answer_no_block">"Non è nel raggio di un isolato…"</string>
     <string name="quest_surface_value_mud">"Fango persistente"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Non c'è un bagno qui"</string>
     <string name="unknown_surface_title">"Altri tipi di supeficie"</string>

@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Декларация за поверителност</string>
     <string name="quest_openingHours_public_holidays">Почивни дни</string>
     <string name="quest_openingHours_public_holidays_short">ПД</string>
-    <string name="quest_openingHours_open_end">няма определен край</string>
     <string name="quest_openingHours_answer_247">Денонощно</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Различно е през различните месеци</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Няма постоянно работно време</string>
@@ -315,7 +314,6 @@
     <string name="quest_housenumber_conscription_number">Кадастрален номер</string>
     <string name="quest_housenumber_street_number_optional">Допълнителен номер (незадължително)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Също и велоалея от другата страна…</string>
-    <string name="quest_openingHours_emptyAnswer">Трябва да опишете какво има на табелата. Ако няма поставено работно време, ще се наложи да попитате персонала.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">няма, но велосипедистите могат да ползват пътя и в двете посоки</string>
     <string name="quest_wheelchairAccess_description_toilets">Ако тоалетните са достъпни, може да видите посочения знак. Частично означава, че инвалидни колички могат да влизат, но няма някои принадлежности за инвалиди.</string>
     <string name="map_btn_create_note">Създайте нова бележка</string>
@@ -464,7 +462,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt;Снимките, които правите се качват на собствен сървър и се изтриват няколко дена след като бележката е била закрита. При качване не се запазват лични данни.&lt;/p&gt;</string>
     <string name="action_deselect_all">Нищо да не е избрано</string>
     <string name="quest_buildingType_retail_description">включително сгради за ресторанти, кафенета…</string>
-    <string name="quest_openingHours_timeSelect_next">Следващ</string>
     <string name="quest_tracktype_title">Каква е твърдостта на този черен път?</string>
     <string name="quest_tracktype_grade1">Твърд</string>
     <string name="quest_tracktype_grade4">Предимно мека</string>
@@ -490,7 +487,6 @@
     <string name="action_open_location">Отваряне на мястото с друго приложение</string>
     <string name="map_application_missing">Няма инсталирано друго приложение за карти</string>
     <string name="label_housenumber">номер на къща</string>
-    <string name="label_blocknumber">номер на блок</string>
     <string name="quest_busStopShelter_covered">Цялата спирка е покрита</string>
     <string name="quest_ferry_pedestrian_title">Този ферибот превозва ли хора?</string>
     <string name="quest_ferry_motor_vehicle_title">Този ферибот превозва ли МПС?</string>
@@ -1124,10 +1120,6 @@
     <string name="quest_camp_drinking_water_title">Достъпна ли е питейна вода за кемперите?</string>
     <string name="quest_camp_shower_title">Има ли тук душове?</string>
     <string name="quest_camp_power_supply_title">Възможно ли е зареждането на телефони, лаптопи и др.?</string>
-    <string name="quest_camp_type_title">Кой може да къмпингува тук?</string>
-    <string name="quest_camp_type_tents_and_caravans">Може и на палатка и с кемпер.</string>
-    <string name="quest_camp_type_caravans_only">Само моторизирани кемпери и каравани.</string>
-    <string name="quest_camp_type_tents_only">Само на палатки</string>
     <string name="quest_camp_type_backcountry">Няма удобства</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Този диаметър изглежда неправдоподобен, обикновено е между %1$d и %2$d.</string>
     <string name="street_parking_street_width">Ширина на пътя: %1$s</string>
@@ -1218,9 +1210,6 @@
     <string name="street_parking_staggered_half_on_kerb">Частично на улицата, редуващи се страни</string>
     <string name="quest_traffic_signals_sound_description">Съвет: Огледайте се за високоговорители. Не всички звукови сигнали се задействат чрез бутон.</string>
     <string name="quest_presets_duplicate">Дубликат</string>
-    <string name="label_block">квартал (блок)</string>
-    <string name="quest_address_answer_block">Вътре в квартала</string>
-    <string name="quest_address_answer_no_block">Извън квартала</string>
     <string name="quest_surface_value_mud">Постоянна кал</string>
     <string name="quest_wheelchairAccessPat_noToilet">Тук няма тоалетни</string>
     <string name="unknown_surface_title">Друга повърхност</string>

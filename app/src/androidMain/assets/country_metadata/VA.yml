@@ -1,4 +1,10 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 chargingStationOperators: [Enel X]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+hasAdvisorySpeedLimitSign: true
+hasLivingStreet: false
+hasSlowZone: true
 mobileCountryCode: 225
 officialLanguages: [it]
+slowZoneLabelPosition: top
+slowZoneLabelText: zona

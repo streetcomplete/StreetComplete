@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestTable
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenTable
+import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable
@@ -29,7 +30,7 @@ import de.westnordost.streetcomplete.util.logs.Log
 
 /** Creates the database and upgrades it */
 object DatabaseInitializer {
-    const val DB_VERSION = 19
+    const val DB_VERSION = 20
 
     fun onCreate(db: Database) {
         // OSM notes
@@ -99,6 +100,9 @@ object DatabaseInitializer {
         // logs
         db.exec(LogsTable.CREATE)
         db.exec(LogsTable.INDEX_CREATE)
+
+        // OSM calendar events
+        db.exec(CalendarEventsTable.CREATE)
     }
 
     fun onUpgrade(db: Database, oldVersion: Int, newVersion: Int) {
@@ -253,6 +257,9 @@ object DatabaseInitializer {
             db.deleteQuest("AddParcelLockerMailIn")
             db.deleteQuest("AddParcelLockerPickup")
             db.deleteQuest("AddShoulder")
+        }
+        if (oldVersion <= 19 && newVersion > 19) {
+            db.exec(CalendarEventsTable.CREATE)
         }
     }
 }

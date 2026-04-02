@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Protection de la vie privée</string>
     <string name="quest_openingHours_public_holidays">Jours fériés</string>
     <string name="quest_openingHours_public_holidays_short">JF</string>
-    <string name="quest_openingHours_open_end">dernier client</string>
     <string name="quest_openingHours_answer_247">Ouvert 24h/24, 7j/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Varie selon les mois…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Pas d’horaires fixes…</string>
@@ -316,7 +315,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_housenumber_conscription_number">Numéro de conscription</string>
     <string name="quest_housenumber_street_number_optional">Numéro d’orientation (optionnel)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Piste cyclable également de l’autre côté…</string>
-    <string name="quest_openingHours_emptyAnswer">Vous devez décrire ce qui se trouve sur la pancarte. S’il n’y a pas de pancarte, vous devriez demander les horaires d’ouverture à l’intérieur.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">aucune, mais les cyclistes peuvent utiliser la route dans les deux sens</string>
     <string name="quest_wheelchairAccess_description_toilets">Un pictogramme de personne en fauteuil roulant comme celui-ci peut être visible si les toilettes sont accessibles.
 « En partie » signifie qu’un fauteuil roulant peut entrer et utiliser les toilettes, mais qu’il n’y a pas de main courante ou de lavabo adapté.</string>
@@ -466,7 +464,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="privacy_html_image_upload2">&lt;p&gt; Les photos que vous joignez à une note sont enregistrées sur mon serveur et supprimées quelques jours après la résolution de cette note. Leurs méta-données sont effacées avant l’envoi.&lt;/p&gt;</string>
     <string name="action_deselect_all">Désélectionner tout</string>
     <string name="quest_buildingType_retail_description">y compris les bâtiments pour restaurants, cafés, magasins…</string>
-    <string name="quest_openingHours_timeSelect_next">Suivant</string>
     <string name="quest_tracktype_title">Quelle est la fermeté du revêtement de ce tronçon ?</string>
     <string name="quest_tracktype_grade1">Pavé</string>
     <string name="quest_tracktype_grade4">Plutôt mou, essentiellement terre</string>
@@ -492,7 +489,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="action_open_location">Ouvrir cette position dans une autre app</string>
     <string name="map_application_missing">Aucune autre application de cartographie n’est installée</string>
     <string name="label_housenumber">Numéro de rue</string>
-    <string name="label_blocknumber">numéro d’entrée d’immeuble</string>
     <string name="quest_busStopShelter_covered">Tout l’arrêt de bus est couvert</string>
     <string name="quest_ferry_pedestrian_title">Cette ligne de ferry transporte-t-elle des piétons ?</string>
     <string name="quest_ferry_motor_vehicle_title">Cette ligne de ferry transporte-t-elle des véhicules à moteur ?</string>
@@ -1142,10 +1138,6 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="quest_camp_drinking_water_title">L’eau potable est elle disponible librement pour les hôtes ?</string>
     <string name="quest_camp_shower_title">Y a-t-il des douches ici ?</string>
     <string name="quest_camp_power_supply_title">Y a-t-il des prises électriques disponibles pour les clients ?</string>
-    <string name="quest_camp_type_title">Qui peut camper ici ?</string>
-    <string name="quest_camp_type_tents_and_caravans">Tentes et camping-cars, caravanes, …</string>
-    <string name="quest_camp_type_caravans_only">Seulement les camping-cars, caravanes, …</string>
-    <string name="quest_camp_type_tents_only">Tentes seulement</string>
     <string name="quest_camp_type_backcountry">Camping sauvage (sans commodités)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Ce diamètre ne paraît pas correct. En général, il est compris entre %1$d et %2$d.</string>
     <string name="street_parking_street_width">Largeur de la rue : %1$s</string>
@@ -1235,9 +1227,6 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="street_parking_staggered_half_on_kerb">Partiellement sur la chaussée, en alternance</string>
     <string name="quest_traffic_signals_sound_description">Indice : cherchez les haut-parleurs. Tous les signaux sonores ne sont pas activés via un bouton.</string>
     <string name="quest_presets_duplicate">Dupliquer</string>
-    <string name="label_block">bloc</string>
-    <string name="quest_address_answer_block">Cela fait partie d’un bloc…</string>
-    <string name="quest_address_answer_no_block">Cela ne fait pas partie d’un bloc…</string>
     <string name="quest_surface_value_mud">Boue persistante</string>
     <string name="quest_wheelchairAccessPat_noToilet">Il n’y a pas de toilettes ici</string>
     <string name="unknown_surface_title">Autre type de surface</string>

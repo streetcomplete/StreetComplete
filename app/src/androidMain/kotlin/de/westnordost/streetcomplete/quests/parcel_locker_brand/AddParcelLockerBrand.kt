@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddParcelLockerBrand : OsmFilterQuestType<String>(), AndroidQuest {
 
@@ -16,13 +17,12 @@ class AddParcelLockerBrand : OsmFilterQuestType<String>(), AndroidQuest {
     override val changesetComment = "Specify parcel locker brand"
     override val wikiLink = "Tag:amenity=parcel_locker"
     override val icon = R.drawable.quest_parcel_locker_brand
+    override val title = Res.string.quest_parcel_locker_brand
     override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_parcel_locker_brand
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = parcel_locker")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = parcel_locker")
 
     override fun createForm() = AddParcelLockerBrandForm()
 
