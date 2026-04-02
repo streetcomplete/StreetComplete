@@ -29,9 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -53,13 +51,13 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun LogsScreen(
     viewModel: LogsViewModel,
+    onClickFilters: () -> Unit,
     onClickBack: () -> Unit,
 ) {
     val logs by viewModel.logs.collectAsState()
     val filters by viewModel.filters.collectAsState()
     val filtersCount = remember(filters) { filters.count() }
 
-    var showFiltersDialog by remember { mutableStateOf(false) }
     val listState = rememberLazyListState()
 
     LaunchedEffect(logs.size) {
@@ -72,7 +70,7 @@ fun LogsScreen(
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
             actions = {
-                IconButton(onClick = { showFiltersDialog = true }) {
+                IconButton(onClick = onClickFilters) {
                     Box {
                         Icon(
                             painter = painterResource(Res.drawable.ic_filter_list_24),
@@ -109,17 +107,6 @@ fun LogsScreen(
                 }
             }
         }
-    }
-
-    if (showFiltersDialog) {
-        LogsFiltersDialog(
-            initialFilters = filters,
-            onDismissRequest = { showFiltersDialog = false },
-            onApplyFilters = {
-                showFiltersDialog = false
-                viewModel.setFilters(it)
-            }
-        )
     }
 }
 
