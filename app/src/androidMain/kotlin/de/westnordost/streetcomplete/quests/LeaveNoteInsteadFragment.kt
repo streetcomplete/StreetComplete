@@ -1,13 +1,19 @@
 package de.westnordost.streetcomplete.quests
 
+import android.content.pm.PackageManager.FEATURE_CAMERA_ANY
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.platform.ComposeView
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -16,8 +22,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
-import de.westnordost.streetcomplete.databinding.FormLeaveNoteBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
+import de.westnordost.streetcomplete.quests.note_comments.NoteForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractCreateNoteFragment
 import de.westnordost.streetcomplete.ui.theme.titleLarge
@@ -27,6 +33,7 @@ import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.io.files.FileSystem
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -37,6 +44,7 @@ import org.koin.android.ext.android.inject
 class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
 
     private val noteEditsController: NoteEditsController by inject()
+    private val fileSystem: FileSystem by inject()
 
     private var _binding: FragmentQuestAnswerBinding? = null
     private val binding: FragmentQuestAnswerBinding get() = _binding!!
@@ -49,10 +57,7 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
     override val floatingBottomView get() = binding.okButtonContainer
     override val okButton get() = binding.okButton
     override val okButtonContainer get() = binding.okButtonContainer
-
-    private val contentBinding by viewBinding(FormLeaveNoteBinding::bind, R.id.content)
-
-    override val noteInput get() = contentBinding.noteInput
+    private lateinit var content: ComposeView
 
     interface Listener {
         fun onCreatedNote(position: LatLon)
@@ -75,18 +80,39 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentQuestAnswerBinding.inflate(inflater, container, false)
-        inflater.inflate(R.layout.form_leave_note, binding.content)
+        content = ComposeView(inflater.context)
+        binding.content.addView(content)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val addImagesEnabled = requireContext().packageManager.hasSystemFeature(FEATURE_CAMERA_ANY)
+
         binding.buttonPanel.isGone = true
-        contentBinding.descriptionLabel.isGone = true
         binding.questHeader.content { Surface {
-            ProvideTextStyle(MaterialTheme.typography.titleLarge) {
-                Text(stringResource(Res.string.map_btn_create_note))
-            }
+            QuestHeader(
+                title = stringResource(Res.string.map_btn_create_note),
+                subtitle = null,
+                hintText = stringResource(Res.string.create_new_note_hint),
+                hintImages = emptyList()
+            )
+        } }
+        content.content { Surface {
+            NoteForm(
+                text = noteText.value,
+                onTextChange = {
+                    noteText.value = it
+                    updateOkButtonEnablement()
+                },
+                isGpxAttached = false,
+                addImagesEnabled = addImagesEnabled,
+                onDeleteImage = ::deleteImage,
+                onTakePhoto = { takePhoto() },
+                fileSystem = fileSystem,
+                imagePaths = noteImagePaths.value,
+            )
         } }
     }
 

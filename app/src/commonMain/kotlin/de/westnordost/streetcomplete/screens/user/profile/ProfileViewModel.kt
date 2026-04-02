@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.user.profile
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.user.UserDataSource
@@ -13,7 +12,6 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatistics
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
-import de.westnordost.streetcomplete.util.image.loadImageBitmap
 import de.westnordost.streetcomplete.util.ktx.launch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -27,7 +25,8 @@ import kotlinx.io.files.Path
 @Stable
 abstract class ProfileViewModel : ViewModel() {
     abstract val userName: StateFlow<String?>
-    abstract val userAvatarImageBitmap: StateFlow<ImageBitmap?>
+    abstract val fileSystem: FileSystem
+    abstract val userAvatarFile: StateFlow<Path?>
 
     abstract val achievementLevels: StateFlow<Int>
 
@@ -59,12 +58,12 @@ class ProfileViewModelImpl(
     private val statisticsSource: StatisticsSource,
     private val achievementsSource: AchievementsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val fileSystem: FileSystem,
+    override val fileSystem: FileSystem,
     private val avatarsCacheDirectory: Path
 ) : ProfileViewModel() {
 
     override val userName = MutableStateFlow<String?>(null)
-    override val userAvatarImageBitmap = MutableStateFlow(loadUserAvatarImageBitmap())
+    override val userAvatarFile = MutableStateFlow(getUserAvatarFile())
     override val achievementLevels = MutableStateFlow(0)
     override val unsyncedChangesCount = MutableStateFlow(0)
     override val datesActive = MutableStateFlow(DatesActiveInRange(emptyList(), 0))
@@ -108,12 +107,12 @@ class ProfileViewModelImpl(
     private val userListener = object : UserDataSource.Listener {
         override fun onUpdated() {
             userName.value = userDataSource.userName
-            userAvatarImageBitmap.value = loadUserAvatarImageBitmap()
+            userAvatarFile.value = getUserAvatarFile()
         }
     }
     private val userAvatarListener = object : UserUpdater.Listener {
         override fun onUserAvatarUpdated() {
-            userAvatarImageBitmap.value = loadUserAvatarImageBitmap()
+            userAvatarFile.value = getUserAvatarFile()
         }
     }
 
@@ -176,10 +175,8 @@ class ProfileViewModelImpl(
         }
     }
 
-    private fun loadUserAvatarImageBitmap(): ImageBitmap? {
-        val path = Path(avatarsCacheDirectory, userDataSource.userId.toString())
-        return fileSystem.loadImageBitmap(path)
-    }
+    private fun getUserAvatarFile(): Path =
+        Path(avatarsCacheDirectory, userDataSource.userId.toString())
 
     override fun onCleared() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)

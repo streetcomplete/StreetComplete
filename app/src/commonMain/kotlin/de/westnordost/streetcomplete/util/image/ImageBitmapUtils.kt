@@ -16,6 +16,14 @@ import kotlinx.io.files.Path
 import kotlinx.io.readByteArray
 import org.jetbrains.compose.resources.decodeToImageBitmap
 
+@Composable
+fun fileBitmapPainter(fileSystem: FileSystem, file: Path): Painter? {
+    val imageBitmap by produceState<ImageBitmap?>(initialValue = null, key1 = file) {
+        value = withContext(Dispatchers.IO) { fileSystem.loadImageBitmap(file) }
+    }
+    return remember(imageBitmap) { imageBitmap?.let { BitmapPainter(it) } }
+}
+
 fun FileSystem.loadImageBitmap(path: Path): ImageBitmap? = try {
     if (exists(path)) {
         source(path).buffered().use { it.readByteArray() }.decodeToImageBitmap()

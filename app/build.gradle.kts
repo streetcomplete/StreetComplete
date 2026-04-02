@@ -46,8 +46,6 @@ plugins {
 repositories {
     google()
     mavenCentral()
-    // for com.github.chrisbaines:PhotoView
-    maven { url = uri("https://www.jitpack.io") }
 }
 
 buildkonfig {
@@ -209,7 +207,6 @@ kotlin {
 
                 // widgets
                 implementation("com.google.android.flexbox:flexbox:3.0.0")
-                implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
                 // map and location
                 implementation("org.maplibre.gl:android-sdk:12.3.1")

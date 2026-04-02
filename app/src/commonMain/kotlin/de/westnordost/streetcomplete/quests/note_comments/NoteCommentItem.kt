@@ -81,7 +81,7 @@ fun NoteCommentItem(
         if (annotatedCommentText != null) {
             Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 Surface(
-                    modifier = Modifier.size(64.dp),
+                    modifier = Modifier.size(50.dp),
                     elevation = 16.dp,
                     shape = CircleShape,
                     border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
@@ -95,7 +95,7 @@ fun NoteCommentItem(
                 val speechBubbleShape = SpeechBubbleShape(
                     arrowDirection = SpeechBubbleArrowDirection.Start,
                     cornerRadius = 16.dp,
-                    arrowSize = 16.dp,
+                    arrowSize = 10.dp,
                 )
                 Surface(
                     elevation = 16.dp,
