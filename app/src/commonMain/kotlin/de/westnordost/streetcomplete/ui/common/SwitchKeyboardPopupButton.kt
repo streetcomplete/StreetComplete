@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -47,13 +48,10 @@ fun SwitchKeyboardPopupButton(
         windowPaddingLeft = screenPadding.getLeft(density, layoutDirection),
         windowPaddingTop = screenPadding.getTop(density),
     )) {
-        Surface(
+        FloatingActionButton(
             onClick = { onChange(!isAbc) },
-            modifier = Modifier.size(64.dp)
-                .padding(8.dp),
-            color = Color.Black,
-            contentColor = Color.White,
-            shape = CircleShape,
+            modifier = Modifier.size(64.dp).padding(8.dp),
+            backgroundColor = MaterialTheme.colors.primary,
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,

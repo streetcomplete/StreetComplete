@@ -69,6 +69,7 @@ fun NoteImagesRow(
             val state = rememberLazyListState()
             LazyRow(
                 state = state,
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
                 modifier = Modifier.fadingHorizontalScrollEdges(state.scrollIndicatorState, 32.dp)
             ) {
                 items(imagePaths) { imagePath ->
