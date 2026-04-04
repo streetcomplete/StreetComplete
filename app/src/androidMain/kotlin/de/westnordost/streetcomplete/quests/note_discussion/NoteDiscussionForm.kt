@@ -116,7 +116,6 @@ class NoteDiscussionForm : AbstractQuestForm(), TakePhotoFragment.Listener {
                     noteText.value = it
                     checkIsFormComplete()
                 },
-                isGpxAttached = false,
                 addImagesEnabled = addImagesEnabled,
                 onDeleteImage = ::deleteImage,
                 onTakePhoto = { takePhoto() },

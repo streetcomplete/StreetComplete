@@ -25,13 +25,13 @@ import org.jetbrains.compose.resources.stringResource
 fun NoteForm(
     text: String,
     onTextChange: (String) -> Unit,
-    isGpxAttached: Boolean,
     addImagesEnabled: Boolean,
     onDeleteImage: (imagePath: String) -> Unit,
     onTakePhoto: () -> Unit,
     fileSystem: FileSystem,
     imagePaths: List<String>,
     modifier: Modifier = Modifier,
+    isGpxAttached: Boolean = false,
 ) {
     Column(
         modifier = modifier,

@@ -106,7 +106,6 @@ class LeaveNoteInsteadFragment : AbstractCreateNoteFragment() {
                     noteText.value = it
                     updateOkButtonEnablement()
                 },
-                isGpxAttached = false,
                 addImagesEnabled = addImagesEnabled,
                 onDeleteImage = ::deleteImage,
                 onTakePhoto = { takePhoto() },
