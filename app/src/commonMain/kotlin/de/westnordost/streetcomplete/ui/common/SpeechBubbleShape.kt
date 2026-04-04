@@ -51,7 +51,8 @@ data class SpeechBubbleShape(
     private val arrowPlacementBias: Float = 0f,
 ) : Shape {
 
-    /** Content padding for content to appear inside the speech bubble */
+    /** Content padding for content to appear inside the speech bubble. I.e., the padding caused
+     *  by the speech bubble arrow. */
     val contentPadding: PaddingValues by lazy {
         PaddingValues(
             start =  if (arrowDirection == SpeechBubbleArrowDirection.Start) arrowSize else 0.dp,
@@ -67,6 +68,7 @@ data class SpeechBubbleShape(
         density: Density
     ): Outline {
         val cornerPx = with(density) { cornerRadius.toPx() }.coerceIn(0f, size.minDimension / 2f)
+        // arrow can only be as big as the gap left between the rounded corners
         val maxArrowWidthPx = when (arrowDirection) {
             SpeechBubbleArrowDirection.Start, SpeechBubbleArrowDirection.End -> size.height
             SpeechBubbleArrowDirection.Top, SpeechBubbleArrowDirection.Bottom -> size.width
