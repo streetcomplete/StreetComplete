@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.visiblequests.HideQuestController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
+import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
 import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
@@ -71,6 +72,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     private val elementEditsController: ElementEditsController by inject()
     private val noteEditsController: NoteEditsController by inject()
     private val hiddenQuestsController: QuestsHiddenController by inject()
+    private val visibleEditTypeController: VisibleEditTypeController by inject()
     private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val surveyChecker: SurveyChecker by inject()
@@ -177,6 +179,10 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             answers.add(AnswerItem(R.string.move_node) { onClickMoveNodeAnswer() })
         }
 
+        if (questType.visibilityEditable) {
+            answers.add(AnswerItem(R.string.quest_generic_answer_disable_this_quest_type) { onClickDisableQuestType() })
+        }
+
         answers.addAll(otherAnswers)
         return answers
     }
@@ -242,6 +248,19 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(android.R.string.ok) { _, _ ->
                 listener?.onMoveNode(osmElementQuestType, element as Node)
+            }
+            .show()
+        }
+    }
+
+    private fun onClickDisableQuestType() {
+        context?.let { AlertDialog.Builder(it)
+            .setTitle(R.string.quest_disable_quest_type_title)
+            .setMessage(R.string.quest_disable_quest_type_message)
+            .setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(R.string.quest_disable_quest_type_yes) { _, _ ->
+                visibleEditTypeController.setVisibility(questType, false)
+                hideQuest()
             }
             .show()
         }
