@@ -34,6 +34,7 @@ import de.westnordost.streetcomplete.ui.util.formatAnnotated
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalDateTimeFormatter
+import io.ktor.http.encodeURLParameter
 import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -51,7 +52,7 @@ fun NoteCommentItem(
     val annotatedUserName = buildAnnotatedString {
         val name = noteComment.user?.displayName
         if (name != null) {
-            val url = "https://www.openstreetmap.org/user/$name"
+            val url = "https://www.openstreetmap.org/user/${name.encodeURLParameter()}"
             withLink(LinkAnnotation.Url(url, textLinkStyles)) { append(name) }
         } else {
             append(stringResource(Res.string.quest_noteDiscussion_anonymous))
@@ -121,6 +122,8 @@ fun NoteCommentItem(
                 }
             }
         }
+        // the action (if anything else than a normal comment) is shown in a separate bubble, just
+        // like for example in github ("comment and close")
         if (actionTextResource != null) {
             Surface(
                 elevation = 16.dp,
