@@ -15,6 +15,7 @@ import android.view.animation.BounceInterpolator
 import android.view.animation.TranslateAnimation
 import androidx.compose.material.Surface
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
@@ -161,6 +162,13 @@ class CreateNoteFragment : AbstractCreateNoteFragment() {
     }
 
     override fun onComposedNote(text: String, imagePaths: List<String>) {
+        /* pressing once on "OK" should first only close the keyboard, so that the user can review
+           the position of the note he placed */
+        // TODO Compose: When layout including OK button has been migrated to Compose, uncomment
+        //if (isImeVisible()) {
+        //    LocalSoftwareKeyboardController.current?.hide()
+        //}
+
         val createNoteMarker = binding.markerCreateLayout.pin.root
         val screenPos = createNoteMarker.getLocationInWindow()
         screenPos.offset(createNoteMarker.width / 2, createNoteMarker.height / 2)
