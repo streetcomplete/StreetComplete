@@ -5,7 +5,7 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -211,7 +211,7 @@ val questsModule = module {
         val featureDictionaryLazy = get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy"))
         questTypeRegistry(
             get(),
-            { countryInfos.getByLocation(countryBoundariesLazy.value, it.longitude, it.latitude) },
+            { countryInfos.get(countryBoundariesLazy.value, it) },
             { countryBoundariesLazy.value.getIds(it.longitude, it.latitude).firstOrNull() },
             { featureDictionaryLazy.value.getFeature(it) }
         )

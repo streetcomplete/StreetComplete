@@ -459,7 +459,7 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
-    targetDir = "$projectDir/src/androidMain/assets/country_metadata"
+    targetDir = "$projectDir/src/commonMain/composeResources/files/country_metadata"
 }
 
 tasks.register("copyDefaultStringsToEnStrings") {
