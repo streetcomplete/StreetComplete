@@ -179,10 +179,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             answers.add(AnswerItem(R.string.move_node) { onClickMoveNodeAnswer() })
         }
 
-        if (questType.visibilityEditable) {
-            answers.add(AnswerItem(R.string.quest_generic_answer_disable_this_quest_type) { onClickDisableQuestType() })
-        }
-
         answers.addAll(otherAnswers)
         return answers
     }
@@ -225,8 +221,9 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         context?.let { AlertDialog.Builder(it)
             .setTitle(R.string.quest_leave_new_note_title)
             .setMessage(R.string.quest_leave_new_note_description)
-            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> hideQuest() }
-            .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
+            .setNegativeButton(R.string.quest_cant_say_hide_quest) { _, _ -> hideQuest() }
+            .setPositiveButton(R.string.leave_note) { _, _ -> composeNote() }
+            .setNeutralButton(R.string.quest_generic_answer_disable_this_quest_type) { _, _ -> onClickDisableQuestType() }
             .show()
         }
     }
