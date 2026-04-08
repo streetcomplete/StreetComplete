@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Street­Complete</string>
-
-    <string name="quest_maxspeed_answer_nsl">"National Speed Limit"</string>
 </resources>

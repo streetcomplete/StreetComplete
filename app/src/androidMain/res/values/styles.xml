@@ -68,21 +68,4 @@
         <item name="android:insetBottom">0dp</item>
     </style>
 
-    <!-- ++++++++++++++++++++++++++++++++++ Note discussion ++++++++++++++++++++++++++++++++++++ -->
-
-    <style name="NoteDiscussion">
-        <item name="android:textAlignment">viewStart</item>
-    </style>
-
-    <style name="NoteDiscussion.Comment">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:textIsSelectable">true</item>
-    </style>
-
-    <style name="NoteDiscussion.Info"/>
-
-    <style name="NoteDiscussion.Status">
-        <item name="android:textStyle">italic</item>
-    </style>
-
 </resources>

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.util.photo
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -16,22 +16,20 @@ fun decodeScaledBitmapAndNormalize(imagePath: String, desiredMaxWidth: Int, desi
 
     // Calculate the correct inSampleSize/resize value. This helps reduce memory use. It should be a power of 2
     // from: https://stackoverflow.com/questions/477572/android-strange-out-of-memory-issue/823966#823966
-    var inSampleSize = 1
+    var sampleSize = 1
     while (width / 2 > maxWidth || height / 2 > maxHeight) {
         width /= 2
         height /= 2
-        inSampleSize *= 2
+        sampleSize *= 2
     }
 
     val desiredScale = min(maxWidth.toFloat() / width, maxHeight.toFloat() / height)
 
     // Decode with inSampleSize
-    val options = BitmapFactory.Options().also {
-        it.inJustDecodeBounds = false
-        it.inDither = false
-        it.inSampleSize = inSampleSize
-        it.inScaled = false
-        it.inPreferredConfig = Bitmap.Config.ARGB_8888
+    val options = BitmapFactory.Options().apply {
+        inJustDecodeBounds = false
+        inSampleSize = sampleSize
+        inScaled = false
     }
     val sampledSrcBitmap = BitmapFactory.decodeFile(imagePath, options)
 
@@ -56,7 +54,7 @@ private fun getImageSize(imagePath: String): Size? {
     return Size(width, height)
 }
 
-fun getRotationMatrix(imagePath: String): Matrix =
+private fun getRotationMatrix(imagePath: String): Matrix =
     try {
         ExifInterface(imagePath).rotationMatrix
     } catch (ignore: IOException) {
@@ -65,7 +63,7 @@ fun getRotationMatrix(imagePath: String): Matrix =
 
 private data class Size(val width: Int, val height: Int)
 
-val ExifInterface.rotationMatrix: Matrix
+private val ExifInterface.rotationMatrix: Matrix
     get() {
         val orientation = getAttributeInt(
             ExifInterface.TAG_ORIENTATION,
