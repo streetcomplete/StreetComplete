@@ -37,7 +37,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -100,11 +100,7 @@ abstract class AbstractOverlayForm :
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
             if (field == null) {
-                field = countryInfos.getByLocation(
-                    countryBoundaries.value,
-                    geometry.center.longitude,
-                    geometry.center.latitude,
-                )
+                field = countryInfos.get(countryBoundaries.value, geometry.center)
             }
             return field
         }

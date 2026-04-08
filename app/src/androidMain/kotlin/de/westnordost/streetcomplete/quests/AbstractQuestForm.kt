@@ -17,7 +17,7 @@ import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -74,11 +74,7 @@ abstract class AbstractQuestForm :
     private var _countryInfo: CountryInfo? = null // lazy but resettable because based on lateinit var
         get() {
             if (field == null) {
-                field = countryInfos.getByLocation(
-                    countryBoundaries.value,
-                    geometry.center.longitude,
-                    geometry.center.latitude,
-                )
+                field = countryInfos.get(countryBoundaries.value, geometry.center)
             }
             return field
         }

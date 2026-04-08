@@ -1,4 +1,16 @@
-File                           License / Source (if not given, follow link for license info)
+files/*                        License           Author / Source
+===============================================================================
+boundaries.ser                 ODbL-1.0          from https://josm.openstreetmap.de/browser/josm/trunk/resources/data/boundaries.osm
+                                                 which is traced from the OpenStreetMap
+
+country_metadata/*             CC-0 1.0          from https://github.com/streetcomplete/countrymetadata
+
+osmfeatures/brands/*           BSD-3-Clause      from https://github.com/osmlab/name-suggestion-index/ downloaded at https://cdn.jsdelivr.net/npm/name-suggestion-index@latest/dist/presets/nsi-id-presets.min.json
+
+osmfeatures/default/*          ISC               from https://github.com/openstreetmap/id-tagging-schema/tree/main/dist
+
+
+drawable*/*                    License           Author / Source
 ===============================================================================
 
 artwork_sculpture.png          PD                David Castor https://commons.wikimedia.org/wiki/File:Begynnelse-4.jpg
@@ -14,6 +26,7 @@ artwork_relief.jpg             PD                Andy Hay https://commons.wikime
 artwork_stone.jpg              CC-BY-SA 3.0      Petr Štefek https://commons.wikimedia.org/wiki/File:Kuncicky_bludny_balvan.jpg
 artwork_fountain.jpg           CC-BY-SA 3.0      Pierre-Louis FERRER https://commons.wikimedia.org/wiki/File:Fontaine_des_Fleuves.jpg
 artwork_installation.jpg       CC-BY-SA 3.0      Lienhard Schulz https://commons.wikimedia.org/wiki/File:Soccer1_Walk_of_Ideas_Berlin.JPG
+
 barrier_passage.jpg            CC-BY-SA 2.0      Meirion https://www.geograph.org.uk/photo/5401039
 barrier_gate.jpg               CC-BY-SA 4.0      Acabashi https://commons.wikimedia.org/wiki/File:Abbess_Roding_-_roadside_white_gate_-_Essex_England.jpg
 barrier_gate_pedestrian.jpg    CC-BY-SA 2.0      Eric Jones https://www.geograph.org.uk/photo/5858269
@@ -79,6 +92,8 @@ car_wash_automated.jpg         CC-BY-SA 3.0      Michiel1972 https://commons.wik
 car_wash_self_service.jpg      CC-BY-SA 4.0      Jacek Halicki https://commons.wikimedia.org/wiki/File:2015_K%C5%82odzko,_ul._Dusznicka,_myjnia_samochodowa_02.jpg
 car_wash_service.jpg           Public Domain     https://commons.wikimedia.org/wiki/File:US_Navy_110831-N-NT881-079_Sailors_assigned_to_the_guided-missile_submarine_USS_Ohio_(SSGN_726)_and_Navy_Operational_Support_Center_Cincinnati_part.jpg
 
+car_nyan.png                   fair use          see https://en.wikipedia.org/wiki/Nyan_Cat for context
+
 drinking_water_type_jet_water… CC-BY-SA 3.0      crop of image by Sulfur https://commons.wikimedia.org/wiki/File:Bubbler.jpg
 drinking_water_type_generic... CC-BY-SA 4.0      crop of image by Basotxerri https://commons.wikimedia.org/wiki/File:Bielerh%C3%B6he_-_Barbarakapelle_-_Brunnen_01.jpg
 drinking_water_type_bottle_re… CC-BY-SA 4.0      crop of image by Fantaglobe11 https://commons.wikimedia.org/wiki/File:Station_Alkmaar_watertappunt.jpg
@@ -107,6 +122,19 @@ ic_trophy.xml                  SIL OFL-1.1       Doug C. Hardester  (https://mat
 ic_notification.png            GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
 ic_launcher.png                GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
 ic_launcher_round.png          GPL-2.0-only      https://www.elegantthemes.com/blog/freebie-of-the-week/beautiful-flat-icons-for-free
+
+informal_crossing.jpg          CC-SA 2.0         https://wiki.openstreetmap.org/wiki/File:West_Highland_Way_crossing_road_-_geograph.org.uk_-_3986498_(cropped).jpg
+
+kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
+kerb_height_lowered.jpg        CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_lowered_original.jpg)
+kerb_height_flush.jpg          CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_flush_original.jpg)
+kerb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
+kerb_height_no.jpg             Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
+
+leaf_type_broadleaved.jpg      CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Populus_tremuloides_(5002308731).jpg (Matt Lavin)
+leaf_type_mixed.jpg            CC0               https://commons.wikimedia.org/wiki/File:Needleleaved_and_broadleaved_leaves_on_one_image_20190709_181925.jpg (Mateusz Konieczny)
+leaf_type_needleleaved.jpg     CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Whitebark_pine_Pinus_albicaulis_needle_clusters.jpg (Jane Richardson)
+
 link_josm.png                  CC0               Diamond00744 https://wiki.openstreetmap.org/wiki/File:JOSM_Logotype_2019.svg
 link_ideditor.png              WTFPL             https://wiki.openstreetmap.org/wiki/File:ID.svg
 link_pic4review.png            CC-BY-SA 4.0      PanierAvide https://wiki.openstreetmap.org/wiki/File:Pic4Review.png
@@ -138,21 +166,7 @@ link_wiki.png                  fair use          used while linking and promotin
 link_graphhopper.png           fair use          used while linking and promoting this project https://wiki.openstreetmap.org/wiki/GraphHopper
 link_co_maps.png               fair use          used while linking and promoting this project
 
-preset_far-*                   CC-BY 4.0         from https://fontawesome.com/license/free
-preset_fas-*                     and             from https://fontawesome.com/license/free
-preset_fab-*                   SIL OFL-1.1       from https://fontawesome.com/license/free
-
-preset_iD-*                    ISC license       from https://github.com/openstreetmap/iD/tree/develop/svg/iD-sprite/presets
-
-preset_maki-*                  CC0-1.0           from https://github.com/mapbox/maki/tree/main/icons
-
-preset_temaki-*                CC0 1.0           from https://github.com/ideditor/temaki/tree/main/icons
-
-kerb_height_raised.jpg         CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_raised_original.jpg)
-kerb_height_lowered.jpg        CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_lowered_original.jpg)
-kerb_height_flush.jpg          CC0               Mateusz Konieczny (see res/graphics/kerbs/kerb_height_flush_original.jpg)
-kerb_height_lowered_ramp.jpg   CC0               https://commons.wikimedia.org/wiki/File:Pram_Ramp.jpg (Michael3)
-kerb_height_no.jpg             Public Domain     https://commons.wikimedia.org/wiki/File:Ground_frost_damages.JPG (SeppVei)
+location_nyan.png              fair use          see https://en.wikipedia.org/wiki/Nyan_Cat for context
 
 memorial_type_statue.jpg       CC-BY-SA 4.0      Rabax63 https://commons.wikimedia.org/wiki/File:Garibaldi_Monument.jpg
 memorial_type_bust.jpg         CC0               Jebulon https://commons.wikimedia.org/wiki/File:Aristotelis_Valaoritis_bust_National_Garden_Athens,_Greece.jpg
@@ -163,11 +177,6 @@ memorial_type_obelisk.jpg      CC-BY-SA 4.0      Leserättin https://commons.wik
 memorial_type_stele_wooden.j…  CC-BY-SA 3.0      Assenmacher https://commons.wikimedia.org/wiki/File:Infostele_Chronik_der_Mauer_mit_Adolph_Philipp.JPG
 memorial_type_stele_stone.jpg  CC-BY-SA 4.0      Alta Falisa https://commons.wikimedia.org/wiki/File:18_June_1815_%E2%80%93_Waterloo_%E2%80%93_27th_(Inniskilling)_Regiment_of_Foot,_stele.jpg modified by Matija Nalis to remove wreath
 memorial_type_sculpture.jpg    CC-BY-SA 4.0      Adrian Tync https://commons.wikimedia.org/wiki/File:Katowice_alpinists_monument.jpg
-
-location_nyan.png              fair use          see https://en.wikipedia.org/wiki/Nyan_Cat for context
-car_nyan.png                   fair use          see https://en.wikipedia.org/wiki/Nyan_Cat for context
-
-
 
 parking_type_lane.jpg          CC0               https://wiki.openstreetmap.org/wiki/File:20201001-parking-streetside_01.jpg
 parking_type_multistorey.jpg   CC-BY-SA 3.0      https://commons.wikimedia.org/wiki/File:Hradec_Kr%C3%A1lov%C3%A9,_Resslova,_parkovac%C3%AD_d%C5%AFm.jpg
@@ -182,6 +191,13 @@ power_pole_wood.jpg            CC-BY 3.0         https://commons.wikimedia.org/w
 power_attachment_anchor.jpg    CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Power_pole_anchor.jpg
 power_attachment_pin.jpg       CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Power_pole_pin.jpg
 power_attachment_suspension... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Power_pole_suspension.jpg
+
+preset_far-*                   CC-BY 4.0         from https://fontawesome.com/license/free
+preset_fas-*                     and             from https://fontawesome.com/license/free
+preset_fab-*                   SIL OFL-1.1       from https://fontawesome.com/license/free
+preset_iD-*                    ISC license       from https://github.com/openstreetmap/iD/tree/develop/svg/iD-sprite/presets
+preset_maki-*                  CC0-1.0           from https://github.com/mapbox/maki/tree/main/icons
+preset_temaki-*                CC0 1.0           from https://github.com/ideditor/temaki/tree/main/icons
 
 produce_agave.jpg              CC-BY-SA 3.0      Marc Ryckaert, under username MJJR https://commons.wikimedia.org/wiki/File:Agave_americana_R01.jpg
 produce_almond.jpg             CC-BY-SA 2.0      antcaesar https://commons.wikimedia.org/wiki/File:Madrigueras_(20578932389)_(cropped).jpg
@@ -313,6 +329,12 @@ tactile_paving1.jpg            CC-0 1.0          https://commons.wikimedia.org/w
 tactile_paving2.jpg            CC-0 1.0          https://commons.wikimedia.org/wiki/File:Tactile_paving_in_a_Mass_Rapid_Transit_station_in_Singapore_-_20131105.jpg
 tactile_paving3.jpg            CC-BY 2.0         https://commons.wikimedia.org/wiki/File:Bande_podotactile_clout%C3%A9e%2C_rue_Saint_Florent_(ORANGE%2CFR84)_(10473021344).jpg
 
+tourism_information_board.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Avon_Valley_Nature_Reserve_Information_Board.jpg (Richard Avery)
+tourism_information_guidepo... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Swiss_Hiking_Network_-_Guidepost_-_Tannmattegg.jpg (Gubaer)
+tourism_information_map.jpg    CC0               https://commons.wikimedia.org/wiki/File:Myrstigen_track_information_board.jpg (W.carter)
+tourism_information_office.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tourist_information_shop,_Delft_(2018).jpg (Donald Trung)
+tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/wiki/File:Uh%C5%99%C3%ADn%C4%9Bves,_Nov%C3%A9_n%C3%A1m%C4%9Bst%C3%AD,_informa%C4%8Dn%C3%AD_stojan.jpg (ŠJů)
+
 traffic_calming_bump.jpg       Public Domain     Goldfinger https://commons.wikimedia.org/wiki/File%3ALe%C5%BEe%C4%87i%5Fpolicajac%5F016%2Ejpg
 traffic_calming_chicane.jpg    CC-BY-SA 2.0      Richard Drdul https://commons.wikimedia.org/wiki/File:One-lane_chicane_1.jpg
 traffic_calming_choker.jpg     CC-BY-SA 2.0      Mike Faherty https://www.geograph.ie/photo/2350574
@@ -322,25 +344,12 @@ traffic_calming_island.jpg     Public Domain     MetiorErgoSum https://wiki.open
 traffic_calming_rumble_strip...CC-BY-SA 3.0      Koolah https://commons.wikimedia.org/wiki/File%3AZebra%5Fzone%5Fat%5Firiomote%2Ejpg
 traffic_calming_table.jpg      CC-BY-SA 2.5      noebse https://commons.wikimedia.org/wiki/File%3ABremsschwelle%2EJPG
 
-
 tracktype_grade1.jpg           Public Domain     https://github.com/streetcomplete/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
 tracktype_grade2.jpg           CC-0 1.0          https://commons.wikimedia.org/wiki/File:Track_in_Schwinkendorf_2021-09-07_20.jpg (Leonhard Lenz)
 tracktype_grade3.jpg           CC-BY-SA 2.0?     https://wiki.openstreetmap.org/wiki/File:Tracktype.jpg (unconfirmed author)
 tracktype_grade4.jpg           Public Domain     https://github.com/streetcomplete/StreetComplete/pull/959#issuecomment-427905219 (Bjorn Rasmussen)
 tracktype_grade5.jpg           CC-0 1.0          https://commons.wikimedia.org/wiki/File:Track_in_Schwinkendorf_2021-09-07_04.jpg (Leonhard Lenz)
 
-leaf_type_broadleaved.jpg      CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Populus_tremuloides_(5002308731).jpg (Matt Lavin)
-leaf_type_mixed.jpg            CC0               https://commons.wikimedia.org/wiki/File:Needleleaved_and_broadleaved_leaves_on_one_image_20190709_181925.jpg (Mateusz Konieczny)
-leaf_type_needleleaved.jpg     CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Whitebark_pine_Pinus_albicaulis_needle_clusters.jpg (Jane Richardson)
-
-tourism_information_board.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Avon_Valley_Nature_Reserve_Information_Board.jpg (Richard Avery)
-tourism_information_guidepo... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Swiss_Hiking_Network_-_Guidepost_-_Tannmattegg.jpg (Gubaer)
-tourism_information_map.jpg    CC0               https://commons.wikimedia.org/wiki/File:Myrstigen_track_information_board.jpg (W.carter)
-tourism_information_office.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tourist_information_shop,_Delft_(2018).jpg (Donald Trung)
-tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/wiki/File:Uh%C5%99%C3%ADn%C4%9Bves,_Nov%C3%A9_n%C3%A1m%C4%9Bst%C3%AD,_informa%C4%8Dn%C3%AD_stojan.jpg (ŠJů)
-
 vibrating_button_illustrati... CC-BY 4.0         Tobias Zwick
 vibrating_button_i... (MCC234) CC0               CJ Malone
 vibrating_button_i... (MCC505) CC0               https://commons.wikimedia.org/wiki/File:An_Australian_pedestrian_crossing_button.jpg (James Cridland)
-
-informal_crossing.jpg          CC-SA 2.0         https://wiki.openstreetmap.org/wiki/File:West_Highland_Way_crossing_road_-_geograph.org.uk_-_3986498_(cropped).jpg
