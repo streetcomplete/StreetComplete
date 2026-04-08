@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="sequentially">
+    <objectAnimator
+        android:propertyName="rotation"
+        android:valueFrom="0"
+        android:valueTo="-29"
+        android:duration="60"
+        android:interpolator="@android:anim/decelerate_interpolator"/>
+    <objectAnimator
+        android:propertyName="rotation"
+        android:valueFrom="-29"
+        android:valueTo="0"
+        android:duration="220"
+        android:interpolator="@android:anim/accelerate_interpolator"/>
+</set>
