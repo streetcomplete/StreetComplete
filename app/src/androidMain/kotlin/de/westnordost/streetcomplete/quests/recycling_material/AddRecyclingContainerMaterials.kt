@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
 import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
+import de.westnordost.streetcomplete.resources.*
 
 class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMaterialsAnswer>, AndroidQuest {
 
@@ -28,10 +29,9 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override val changesetComment = "Specify what can be recycled in recycling containers"
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.quest_recycling_container
+    override val title = Res.string.quest_recycling_materials_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_recycling_materials_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
@@ -47,8 +47,8 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 
     override fun createForm() = AddRecyclingContainerMaterialsForm()
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")
 
     override fun applyAnswerTo(answer: RecyclingContainerMaterialsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer is RecyclingMaterials) {

@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructionAnswer>(), AndroidQuest {
 
@@ -20,9 +21,8 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructi
     override val changesetComment = "Determine whether building construction is now completed"
     override val wikiLink = "Tag:building=construction"
     override val icon = R.drawable.quest_building_construction
+    override val title = Res.string.quest_construction_building_title
     override val achievements = listOf(BUILDING)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_construction_building_title
 
     override fun createForm() = MarkCompletedConstructionForm()
 

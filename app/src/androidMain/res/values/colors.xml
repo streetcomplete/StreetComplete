@@ -31,17 +31,5 @@
 
     <color name="divider">#66999999</color>
 
-    <color name="traffic_red">#C1121C</color>
-    <color name="traffic_blue">#2255BB</color>
-    <color name="traffic_green">#008351</color>
-    <color name="traffic_yellow">#ffd520</color>
-    <color name="traffic_brown">#73411f</color>
-
-    <color name="traffic_white">#fff</color>
-    <color name="traffic_black">#000</color>
-
-    <color name="traffic_gray_a">#8e9291</color>
-    <color name="traffic_gray_b">#4f5250</color>
-
     <color name="pressed">#ddd</color>
 </resources>

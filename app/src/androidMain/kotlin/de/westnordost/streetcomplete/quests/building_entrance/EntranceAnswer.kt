@@ -1,15 +1,7 @@
 package de.westnordost.streetcomplete.quests.building_entrance
 
 import de.westnordost.streetcomplete.quests.building_entrance.EntranceType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_building_entrance_dead_end
-import de.westnordost.streetcomplete.resources.quest_building_entrance_emergency_exit
-import de.westnordost.streetcomplete.resources.quest_building_entrance_exit
-import de.westnordost.streetcomplete.resources.quest_building_entrance_main
-import de.westnordost.streetcomplete.resources.quest_building_entrance_service
-import de.westnordost.streetcomplete.resources.quest_building_entrance_shop
-import de.westnordost.streetcomplete.resources.quest_building_entrance_staircase
-import de.westnordost.streetcomplete.resources.quest_building_entrance_yes
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 sealed interface EntranceAnswer {

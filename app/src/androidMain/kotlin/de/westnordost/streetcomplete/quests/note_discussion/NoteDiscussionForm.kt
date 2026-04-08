@@ -1,38 +1,47 @@
 package de.westnordost.streetcomplete.quests.note_discussion
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.content.pm.PackageManager.FEATURE_CAMERA_ANY
 import android.os.Bundle
-import android.text.format.DateUtils
-import android.text.format.DateUtils.MINUTE_IN_MILLIS
 import android.view.View
-import android.view.ViewGroup
-import androidx.core.view.isGone
-import androidx.core.widget.doAfterTextChanged
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
+import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.BitmapPainter
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.unit.dp
+import androidx.fragment.app.commit
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osmnotes.NoteComment
+import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
-import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionContentBinding
-import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemBinding
-import de.westnordost.streetcomplete.databinding.QuestNoteDiscussionItemsBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.util.ktx.createBitmap
-import de.westnordost.streetcomplete.util.ktx.nonBlankTextOrNull
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.quests.note_comments.NoteCommentItem
+import de.westnordost.streetcomplete.quests.note_comments.NoteForm
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractCreateNoteFragment
+import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.image.loadImageBitmap
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.view.CircularOutlineProvider
-import de.westnordost.streetcomplete.view.ListAdapter
-import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
+import de.westnordost.streetcomplete.util.photo.TakePhotoFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -40,15 +49,12 @@ import kotlinx.io.files.FileSystem
 import kotlinx.io.files.Path
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
+import java.io.File
 
-class NoteDiscussionForm : AbstractQuestForm() {
-
-    override val contentLayoutResId = R.layout.quest_note_discussion_content
-    private val binding by contentViewBinding(QuestNoteDiscussionContentBinding::bind)
-
+class NoteDiscussionForm : AbstractQuestForm(), TakePhotoFragment.Listener {
+    final override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
     override val defaultExpanded = false
-
-    private lateinit var anonAvatar: Bitmap
 
     private val noteSource: NotesWithEditsSource by inject()
     private val noteEditsController: NoteEditsController by inject()
@@ -56,12 +62,13 @@ class NoteDiscussionForm : AbstractQuestForm() {
     private val fileSystem: FileSystem by inject()
     private val avatarsCacheDir: Path by inject(named("AvatarsCacheDirectory"))
 
-    private val attachPhotoFragment get() =
-        childFragmentManager.findFragmentById(R.id.attachPhotoFragment) as? AttachPhotoFragment
-
-    private val noteText: String? get() = binding.noteInput.nonBlankTextOrNull
-
     private val noteId: Long get() = (questKey as OsmNoteQuestKey).noteId
+
+    private val note: MutableState<Note?> = mutableStateOf(null)
+    private val avatars: MutableState<Map<Long, ImageBitmap?>?> = mutableStateOf(null)
+
+    private var noteText: MutableState<String> = mutableStateOf("")
+    private var noteImagePaths: MutableState<List<String>> = mutableStateOf(emptyList())
 
     interface Listener {
         /** Called when the user successfully answered the quest */
@@ -71,8 +78,17 @@ class NoteDiscussionForm : AbstractQuestForm() {
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+        override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (childFragmentManager.findFragmentByTag(TAG_TAKE_PHOTO) == null) {
+            childFragmentManager.commit { add(TakePhotoFragment(), TAG_TAKE_PHOTO) }
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val addImagesEnabled = requireContext().packageManager.hasSystemFeature(FEATURE_CAMERA_ANY)
 
         val alreadyHidden = hiddenQuestsController.get(questKey) != null
         setButtonPanelAnswers(listOf(
@@ -83,36 +99,82 @@ class NoteDiscussionForm : AbstractQuestForm() {
             }
         ))
 
-        binding.noteInput.doAfterTextChanged { checkIsFormComplete() }
+        viewLifecycleScope.launch(Dispatchers.IO) {
+            note.value = noteSource.get(noteId)
+            avatars.value = note.value?.comments
+                ?.mapNotNull { it.user?.id }
+                ?.associateWith { fileSystem.loadImageBitmap(Path(avatarsCacheDir, it.toString())) }
+        }
 
-        anonAvatar = requireContext().getDrawable(R.drawable.ic_osm_anon_avatar)!!.createBitmap()
+        binding.composeViewBase.content { Surface {
+            noteText = rememberSaveable { mutableStateOf("") }
+            noteImagePaths = rememberSerializable { mutableStateOf(emptyList()) }
 
-        viewLifecycleScope.launch {
-            val comments = withContext(Dispatchers.IO) { noteSource.get(noteId) }!!.comments
-            inflateNoteDiscussion(comments)
+            NoteForm(
+                text = noteText.value,
+                onTextChange = {
+                    noteText.value = it
+                    checkIsFormComplete()
+                },
+                addImagesEnabled = addImagesEnabled,
+                onDeleteImage = ::deleteImage,
+                onTakePhoto = { takePhoto() },
+                fileSystem = fileSystem,
+                imagePaths = noteImagePaths.value
+            )
+        } }
+    }
+
+    @Composable
+    override fun ContentBeforeSpeechbubbleContent() {
+        val textLinkStyles = TextLinkStyles(
+            style = SpanStyle(
+                color = MaterialTheme.colors.primary,
+                textDecoration = TextDecoration.Underline
+            ),
+            focusedStyle = SpanStyle(
+                color = MaterialTheme.colors.secondary,
+            )
+        )
+        ProvideTextStyle(MaterialTheme.typography.body2) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier
+                    .padding(horizontal = 12.dp)
+                    .padding(bottom = 8.dp),
+            ) {
+                for (comment in note.value?.comments.orEmpty()) {
+                    NoteCommentItem(
+                        noteComment = comment,
+                        avatarPainter = comment.user?.id
+                            ?.let { avatars.value?.get(it) }
+                            ?.let { BitmapPainter(it) },
+                        modifier = Modifier.fillMaxWidth(),
+                        textLinkStyles = textLinkStyles
+                    )
+                }
+            }
         }
     }
 
-    private fun inflateNoteDiscussion(comments: List<NoteComment>) {
-        val discussionView = QuestNoteDiscussionItemsBinding.inflate(layoutInflater, scrollViewChild, false).root
+    private fun takePhoto() {
+        (childFragmentManager.findFragmentByTag(TAG_TAKE_PHOTO) as? TakePhotoFragment)?.takePhoto()
+    }
 
-        discussionView.isNestedScrollingEnabled = false
-        discussionView.layoutManager = LinearLayoutManager(
-            context,
-            RecyclerView.VERTICAL,
-            false
-        )
-        discussionView.adapter = NoteCommentListAdapter(comments)
+    override fun onTookPhoto(path: String) {
+        noteImagePaths.value += path
+    }
 
-        scrollViewChild.addView(discussionView, 0)
+    private fun deleteImage(path: String) {
+        fileSystem.delete(Path(path), mustExist = false)
+        noteImagePaths.value = noteImagePaths.value.filter { it != path }
     }
 
     override fun onClickOk() {
-        require(noteText != null) { "NoteQuest has been answered with an empty comment!" }
-        val imagePaths = attachPhotoFragment?.imagePaths.orEmpty()
+        require(noteText.value.isNotBlank()) { "NoteQuest has been answered with an empty comment!" }
         viewLifecycleScope.launch {
             withContext(Dispatchers.IO) {
-                noteEditsController.add(noteId, NoteEditAction.COMMENT, geometry.center, noteText, imagePaths)
+                noteEditsController.add(noteId, NoteEditAction.COMMENT, geometry.center, noteText.value, noteImagePaths.value)
             }
             listener?.onNoteQuestSolved(questType, noteId, geometry.center)
         }
@@ -129,72 +191,17 @@ class NoteDiscussionForm : AbstractQuestForm() {
     }
 
     override fun onDiscard() {
-        attachPhotoFragment?.deleteImages()
+        for (path in noteImagePaths.value) {
+            fileSystem.delete(Path(path), mustExist = false)
+        }
     }
 
     override fun isRejectingClose(): Boolean =
-        noteText != null || attachPhotoFragment?.imagePaths?.isNotEmpty() == true
+        noteText.value.isNotBlank() || noteImagePaths.value.isNotEmpty()
 
-    override fun isFormComplete(): Boolean = noteText != null
+    override fun isFormComplete(): Boolean = noteText.value.isNotBlank()
 
-    private inner class NoteCommentListAdapter(list: List<NoteComment>) : ListAdapter<NoteComment>(list) {
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder<NoteComment> =
-            NoteCommentViewHolder(
-                QuestNoteDiscussionItemBinding.inflate(layoutInflater, parent, false)
-            )
-    }
-
-    private inner class NoteCommentViewHolder(private val itemBinding: QuestNoteDiscussionItemBinding) :
-        ListAdapter.ViewHolder<NoteComment>(itemBinding) {
-
-        init {
-            val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
-            val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
-            val marginStart = -resources.getDimensionPixelSize(R.dimen.quest_form_speech_bubble_top_margin)
-            itemBinding.commentStatusText.outlineProvider = RoundRectOutlineProvider(cornerRadius)
-
-            val isRTL = itemView.resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL
-            val marginLeft = if (isRTL) 0 else marginStart
-            val marginRight = if (isRTL) marginStart else 0
-            itemBinding.commentBubble.outlineProvider = RoundRectOutlineProvider(
-                cornerRadius, marginLeft, margin, marginRight, margin
-            )
-            itemBinding.commentAvatarImageContainer.outlineProvider = CircularOutlineProvider
-        }
-
-        override fun onBind(with: NoteComment) {
-            val dateDescription = DateUtils.getRelativeTimeSpanString(with.timestamp, nowAsEpochMilliseconds(), MINUTE_IN_MILLIS)
-            val userName = if (with.user != null) with.user.displayName else getString(R.string.quest_noteDiscussion_anonymous)
-
-            val commentActionResourceId = with.action.actionResourceId
-            val hasNoteAction = commentActionResourceId != 0
-            itemBinding.commentStatusText.isGone = !hasNoteAction
-            if (hasNoteAction) {
-                itemBinding.commentStatusText.text = getString(commentActionResourceId, userName, dateDescription)
-            }
-
-            val hasComment = with.text?.isNotEmpty() == true
-            itemBinding.commentView.isGone = !hasComment
-            if (hasComment) {
-                itemBinding.commentText.text = with.text
-                itemBinding.commentInfoText.text = getString(R.string.quest_noteDiscussion_comment2, userName, dateDescription)
-
-                val bitmap = with.user?.avatar ?: anonAvatar
-                itemBinding.commentAvatarImage.setImageBitmap(bitmap)
-            }
-        }
-
-        private val User.avatar: Bitmap? get() {
-            val file = Path(avatarsCacheDir, id.toString())
-            return if (fileSystem.exists(file)) BitmapFactory.decodeFile(file.toString()) else null
-        }
-
-        private val NoteComment.Action.actionResourceId get() = when (this) {
-            NoteComment.Action.CLOSED -> R.string.quest_noteDiscussion_closed2
-            NoteComment.Action.REOPENED -> R.string.quest_noteDiscussion_reopen2
-            NoteComment.Action.HIDDEN -> R.string.quest_noteDiscussion_hide2
-            else -> 0
-        }
+    companion object {
+        private const val TAG_TAKE_PHOTO = "TakePhotoFragment"
     }
 }

@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>(), AndroidQuest {
 
@@ -19,6 +20,7 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>(), AndroidQ
     override val changesetComment = "Specify postbox royal cyphers"
     override val wikiLink = "Key:royal_cypher"
     override val icon = R.drawable.quest_crown
+    override val title = Res.string.quest_postboxRoyalCypher_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
     override val enabledInCountries = NoCountriesExcept(
@@ -30,10 +32,8 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>(), AndroidQ
         // Not New Zealand: https://wiki.openstreetmap.org/w/index.php?title=Talk:StreetComplete/Quests&oldid=2599288#Quests_in_New_Zealand
     )
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_postboxRoyalCypher_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = post_box")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = post_box")
 
     override fun createForm() = AddPostboxRoyalCypherForm()
 

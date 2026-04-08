@@ -46,8 +46,6 @@ plugins {
 repositories {
     google()
     mavenCentral()
-    // for com.github.chrisbaines:PhotoView
-    maven { url = uri("https://www.jitpack.io") }
 }
 
 buildkonfig {
@@ -209,7 +207,6 @@ kotlin {
 
                 // widgets
                 implementation("com.google.android.flexbox:flexbox:3.0.0")
-                implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
                 // map and location
                 implementation("org.maplibre.gl:android-sdk:12.3.1")
@@ -294,6 +291,14 @@ android {
         }
         getByName("release") {
             signingConfig = signingConfigs.getByName("release")
+        }
+    }
+
+    // we need to copy some resources from composeResources to android resources, see task
+    // copySharedResToAndroid. This can be removed when the map has been migrated to compose
+    sourceSets {
+        getByName("main") {
+            res.srcDir(layout.buildDirectory.dir("generated/androidMain/res"))
         }
     }
 
@@ -396,13 +401,13 @@ tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"
     version = presetsVersion
     languageCodes = bcp47ExportLanguages
-    targetDir = "$projectDir/src/androidMain/assets/osmfeatures/default"
+    targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/default"
 }
 
 tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
     group = "streetcomplete"
     version = nsiVersion
-    targetDir = "$projectDir/src/androidMain/assets/osmfeatures/brands"
+    targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/brands"
 }
 
 // tasks.register<DownloadBrandLogosTask>("downloadBrandLogos") {
@@ -414,10 +419,10 @@ tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
     group = "streetcomplete"
     version = presetsVersion
-    targetDir = "$projectDir/src/androidMain/res/drawable/"
+    targetDir = "$projectDir/src/commonMain/composeResources/drawable/"
     iconSize = 34
     transformName = { "preset_" + it.replace('-', '_') }
-    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
+    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt" // necessary as long as map is not compose based yet
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
@@ -454,7 +459,7 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
-    targetDir = "$projectDir/src/androidMain/assets/country_metadata"
+    targetDir = "$projectDir/src/commonMain/composeResources/files/country_metadata"
 }
 
 tasks.register("copyDefaultStringsToEnStrings") {
@@ -465,5 +470,29 @@ tasks.register("copyDefaultStringsToEnStrings") {
         sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
         sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
         sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values/strings.xml"), true)
+    }
+}
+
+// necessary as long as map hasn't been converted to compose yet
+val copySharedResToAndroid by tasks.registering(Copy::class) {
+    val target = "build/generated/androidMain/res/drawable"
+    from("src/commonMain/composeResources/drawable")
+    into(target)
+    include {
+        it.name.startsWith("building_") ||
+        it.name.startsWith("preset_") ||
+        it.name == "sport_volleyball.xml" ||
+        it.name == "religion_christian.xml" ||
+        it.name == "religion_jewish.xml" ||
+        it.name == "religion_muslim.xml"
+    }
+    doFirst {
+        File(target).mkdirs()
+    }
+}
+
+project.afterEvaluate {
+    tasks.named("preBuild") {
+        dependsOn(copySharedResToAndroid)
     }
 }

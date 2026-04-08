@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddParkingAccess : OsmFilterQuestType<ParkingAccess>(), AndroidQuest {
 
@@ -35,9 +36,8 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>(), AndroidQuest {
     override val changesetComment = "Specify parking access"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.quest_parking_access
+    override val title = Res.string.quest_parking_access_title2
     override val achievements = listOf(CAR)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_access_title2
 
     override fun createForm() = AddParkingAccessForm()
 

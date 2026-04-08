@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.estimateUsableRoadwayWidth
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
+import de.westnordost.streetcomplete.resources.*
 
 class AddOneway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
 
@@ -34,12 +35,10 @@ class AddOneway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
     override val changesetComment = "Specify whether narrow roads are one-ways"
     override val wikiLink = "Key:oneway"
     override val icon = R.drawable.quest_oneway
+    override val title = Res.string.quest_oneway2_title
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
-
-    override val hint = R.string.quest_arrow_tutorial
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_oneway2_title
+    override val hint = Res.string.quest_arrow_tutorial
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val allRoads = mapData.ways.filter { allRoadsFilter.matches(it) && it.nodeIds.size >= 2 }

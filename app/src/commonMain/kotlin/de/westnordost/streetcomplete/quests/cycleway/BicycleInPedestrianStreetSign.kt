@@ -10,10 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.bicycle_boulevard
-import de.westnordost.streetcomplete.resources.sign_icon_bicycle
-import de.westnordost.streetcomplete.resources.sign_icon_pedestrian_and_bicycle
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.RectangularSign
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.titleLarge

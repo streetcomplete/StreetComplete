@@ -1,38 +1,22 @@
 package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.empty_128
-import de.westnordost.streetcomplete.resources.postbox_royal_cypher_ciiir
-import de.westnordost.streetcomplete.resources.postbox_royal_cypher_eiir
-import de.westnordost.streetcomplete.resources.postbox_royal_cypher_eviiir
-import de.westnordost.streetcomplete.resources.postbox_royal_cypher_eviir
-import de.westnordost.streetcomplete.resources.postbox_royal_cypher_gr
-import de.westnordost.streetcomplete.resources.postbox_royal_cypher_gvir
-import de.westnordost.streetcomplete.resources.postbox_royal_cypher_scottish_crown
-import de.westnordost.streetcomplete.resources.postbox_royal_cypher_vr
-import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_ciiir
-import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_eiir
-import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_eviiir
-import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_eviir
-import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_gr
-import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_gvir
-import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_none
-import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_scottish_crown
-import de.westnordost.streetcomplete.resources.quest_postboxRoyalCypher_type_vr
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
-val PostboxRoyalCypher.title: StringResource get() = when (this) {
-    ELIZABETH_II ->   Res.string.quest_postboxRoyalCypher_type_eiir
-    GEORGE_V ->       Res.string.quest_postboxRoyalCypher_type_gr
-    GEORGE_VI ->      Res.string.quest_postboxRoyalCypher_type_gvir
-    VICTORIA ->       Res.string.quest_postboxRoyalCypher_type_vr
-    EDWARD_VII ->     Res.string.quest_postboxRoyalCypher_type_eviir
-    SCOTTISH_CROWN -> Res.string.quest_postboxRoyalCypher_type_scottish_crown
-    EDWARD_VIII ->    Res.string.quest_postboxRoyalCypher_type_eviiir
-    CHARLES_III ->    Res.string.quest_postboxRoyalCypher_type_ciiir
-    NONE ->           Res.string.quest_postboxRoyalCypher_type_none
+val PostboxRoyalCypher.title: String @Composable get() = when (this) {
+    ELIZABETH_II ->   "E II R"
+    GEORGE_V ->       "G R"
+    GEORGE_VI ->      "G VI R"
+    VICTORIA ->       "V R"
+    EDWARD_VII ->     "E VII R"
+    SCOTTISH_CROWN -> stringResource(Res.string.quest_postboxRoyalCypher_type_scottish_crown)
+    EDWARD_VIII ->    "E VIII R"
+    CHARLES_III ->    "C III R"
+    NONE ->           stringResource(Res.string.quest_postboxRoyalCypher_type_none)
 }
 
 val PostboxRoyalCypher.icon: DrawableResource get() = when (this) {

@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 open class TestQuestType : OsmElementQuestType<String> {
 
@@ -12,7 +13,7 @@ open class TestQuestType : OsmElementQuestType<String> {
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {}
     override val icon = 0
     override val changesetComment = ""
-    override fun getTitle(tags: Map<String, String>) = 0
+    override val title = Res.string.quest_address_title
     override fun getApplicableElements(mapData: MapDataWithGeometry) = emptyList<Element>()
     override val wikiLink: String? = null
     override val achievements = emptyList<EditTypeAchievement>()

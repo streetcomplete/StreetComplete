@@ -20,12 +20,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.about_title_privacy_statement
-import de.westnordost.streetcomplete.resources.privacy_html
-import de.westnordost.streetcomplete.resources.privacy_html_image_upload2
-import de.westnordost.streetcomplete.resources.privacy_html_statistics
-import de.westnordost.streetcomplete.resources.privacy_html_tileserver2
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.util.html.tryParseHtml

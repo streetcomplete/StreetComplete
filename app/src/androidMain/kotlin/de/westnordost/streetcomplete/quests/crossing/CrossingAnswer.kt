@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.quests.crossing
 
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_crossing_no
-import de.westnordost.streetcomplete.resources.quest_crossing_prohibited
-import de.westnordost.streetcomplete.resources.quest_crossing_yes
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 enum class CrossingAnswer {

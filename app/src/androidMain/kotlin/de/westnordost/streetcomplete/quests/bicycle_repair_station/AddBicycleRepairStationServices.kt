@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStationService>>(), AndroidQuest {
@@ -31,15 +32,14 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
     override val changesetComment = "Specify features of bicycle repair stations"
     override val wikiLink = "Tag:amenity=bicycle_repair_station"
     override val icon = R.drawable.quest_bicycle_repair_amenity
+    override val title = Res.string.quest_bicycle_repair_station_services_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_repair_station_services_title
-
     override fun createForm() = AddBicycleRepairStationServicesForm()
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             nodes, ways with
             amenity ~ bicycle_repair_station|compressed_air
         """)

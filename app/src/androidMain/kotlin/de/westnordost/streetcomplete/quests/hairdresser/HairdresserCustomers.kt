@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.quests.hairdresser
 
 import de.westnordost.streetcomplete.quests.hairdresser.HairdresserCustomers.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_hairdresser_female_only
-import de.westnordost.streetcomplete.resources.quest_hairdresser_male_and_female
-import de.westnordost.streetcomplete.resources.quest_hairdresser_male_only
-import de.westnordost.streetcomplete.resources.quest_hairdresser_not_signed
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 enum class HairdresserCustomers(val isMale: Boolean, val isFemale: Boolean) {

@@ -6,8 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_no_ar
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import org.jetbrains.compose.resources.StringResource
 
@@ -41,11 +40,10 @@ class AddCyclewayWidth(
     override val changesetComment = "Specify cycleways width"
     override val wikiLink = "Key:width"
     override val icon = R.drawable.quest_bicycleway_width
+    override val title = Res.string.quest_cycleway_width_title
     override val achievements = listOf(BICYCLIST)
     override val defaultDisabledMessage: StringResource?
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_cycleway_width_title
 
     override fun createForm() = AddWidthForm()
 

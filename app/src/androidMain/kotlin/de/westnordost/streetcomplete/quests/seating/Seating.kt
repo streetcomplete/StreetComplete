@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.quests.seating
 
 import de.westnordost.streetcomplete.quests.seating.Seating.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_seating_indoor_and_outdoor
-import de.westnordost.streetcomplete.resources.quest_seating_indoor_only
-import de.westnordost.streetcomplete.resources.quest_seating_outdoor_only
-import de.westnordost.streetcomplete.resources.quest_seating_takeaway
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 enum class Seating(val hasOutdoorSeating: Boolean, val hasIndoorSeating: Boolean) {

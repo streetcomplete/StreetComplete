@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddToiletsFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -22,11 +23,10 @@ class AddToiletsFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify toilet fees"
     override val wikiLink = "Key:fee"
     override val icon = R.drawable.quest_toilet_fee
+    override val title = Res.string.quest_toiletsFee_title
     override val enabledInCountries = AllCountriesExcept("US", "CA")
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_toiletsFee_title
 
     override fun createForm() = YesNoQuestForm()
 

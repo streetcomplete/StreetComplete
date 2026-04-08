@@ -30,8 +30,7 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.location_dot_small
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.proportionalAbsoluteOffset
 import de.westnordost.streetcomplete.ui.ktx.proportionalPadding
 import org.jetbrains.compose.resources.painterResource

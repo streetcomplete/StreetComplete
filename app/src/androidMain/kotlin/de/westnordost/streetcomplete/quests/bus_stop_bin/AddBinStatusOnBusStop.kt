@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -26,9 +27,8 @@ class AddBinStatusOnBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify whether public transport stops have bins"
     override val wikiLink = "Key:bin"
     override val icon = R.drawable.quest_bin_public_transport
+    override val title = Res.string.quest_busStopBin_title2
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopBin_title2
 
     override fun createForm() = YesNoQuestForm()
 

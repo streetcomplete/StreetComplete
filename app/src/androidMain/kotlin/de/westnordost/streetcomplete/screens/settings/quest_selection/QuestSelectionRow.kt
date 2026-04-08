@@ -31,10 +31,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_drag_vertical_24
-import de.westnordost.streetcomplete.resources.questList_disabled_by_default
-import de.westnordost.streetcomplete.resources.questList_disabled_in_country
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview

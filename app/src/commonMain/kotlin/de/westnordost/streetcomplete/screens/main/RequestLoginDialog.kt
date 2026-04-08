@@ -5,10 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.confirmation_authorize_now
-import de.westnordost.streetcomplete.resources.confirmation_authorize_now_note2
-import de.westnordost.streetcomplete.resources.later
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import org.jetbrains.compose.resources.stringResource
 

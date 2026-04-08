@@ -23,9 +23,7 @@ import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.label_block2
-import de.westnordost.streetcomplete.resources.label_housenumber
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.stringResource

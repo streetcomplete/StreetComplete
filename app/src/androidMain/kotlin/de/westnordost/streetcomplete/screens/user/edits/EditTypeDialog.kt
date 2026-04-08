@@ -26,8 +26,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.user_statistics_quest_wiki_link
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.theme.headlineSmall

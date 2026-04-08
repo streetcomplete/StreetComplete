@@ -29,10 +29,7 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.enable_quest_confirmation_title
-import de.westnordost.streetcomplete.resources.quest_enabled
-import de.westnordost.streetcomplete.resources.quest_type
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.stringResource

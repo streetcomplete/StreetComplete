@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>(), AndroidQuest {
 
@@ -38,9 +39,8 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>(), AndroidQuest {
     override val changesetComment = "Determine bus/tram stop refs"
     override val wikiLink = "Tag:public_transport=platform"
     override val icon = R.drawable.quest_bus_stop_name
+    override val title = Res.string.quest_busStopRef_title2
     override val achievements = listOf(PEDESTRIAN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopRef_title2
 
     override fun createForm() = AddBusStopRefForm()
 

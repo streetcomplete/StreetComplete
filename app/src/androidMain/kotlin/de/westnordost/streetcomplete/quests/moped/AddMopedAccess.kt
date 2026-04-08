@@ -7,8 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_visible_sign_moped
+import de.westnordost.streetcomplete.resources.*
 
 class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>(), AndroidQuest {
 
@@ -30,10 +29,8 @@ class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>(), AndroidQuest {
     override val changesetComment = "Specify if a moped is allowed on the cycleway"
     override val wikiLink = "Key:moped"
     override val icon = R.drawable.quest_moped_access
-
+    override val title = Res.string.quest_moped_access_title
     override val achievements = listOf(EditTypeAchievement.BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_moped_access_title
 
     override fun createForm() = AddMopedAccessForm()
 

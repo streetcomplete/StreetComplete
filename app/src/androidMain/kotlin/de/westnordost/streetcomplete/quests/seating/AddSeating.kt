@@ -9,8 +9,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_seasonal
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddSeating : OsmFilterQuestType<Seating>(), AndroidQuest {
@@ -27,14 +26,13 @@ class AddSeating : OsmFilterQuestType<Seating>(), AndroidQuest {
     override val changesetComment = "Survey whether places have seating"
     override val wikiLink = "Key:outdoor_seating"
     override val icon = R.drawable.quest_seating
+    override val title = Res.string.quest_seating_name_title
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_seasonal
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_seating_name_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddSeatingForm()
 

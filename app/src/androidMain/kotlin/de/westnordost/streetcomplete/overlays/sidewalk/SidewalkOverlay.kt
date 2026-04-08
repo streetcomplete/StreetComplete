@@ -21,10 +21,11 @@ import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
+import de.westnordost.streetcomplete.resources.*
 
 class SidewalkOverlay : Overlay, AndroidOverlay {
 
-    override val title = R.string.overlay_sidewalk
+    override val title = Res.string.overlay_sidewalk
     override val icon = R.drawable.quest_sidewalk
     override val changesetComment = "Specify whether roads have sidewalks"
     override val wikiLink: String = "Key:sidewalk"

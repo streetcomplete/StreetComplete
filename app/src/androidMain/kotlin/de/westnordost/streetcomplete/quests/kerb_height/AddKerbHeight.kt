@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
 import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class AddKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
 
@@ -29,9 +30,8 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
     override val changesetComment = "Determine the heights of kerbs"
     override val wikiLink = "Key:kerb"
     override val icon = R.drawable.quest_kerb_type
+    override val title = Res.string.quest_kerb_height_title
     override val achievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_kerb_height_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }

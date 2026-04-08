@@ -1,17 +1,7 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.kerb_height_flush
-import de.westnordost.streetcomplete.resources.kerb_height_lowered
-import de.westnordost.streetcomplete.resources.kerb_height_lowered_ramp
-import de.westnordost.streetcomplete.resources.kerb_height_no
-import de.westnordost.streetcomplete.resources.kerb_height_raised
-import de.westnordost.streetcomplete.resources.quest_kerb_height_flush
-import de.westnordost.streetcomplete.resources.quest_kerb_height_lowered
-import de.westnordost.streetcomplete.resources.quest_kerb_height_lowered_ramp
-import de.westnordost.streetcomplete.resources.quest_kerb_height_no
-import de.westnordost.streetcomplete.resources.quest_kerb_height_raised
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

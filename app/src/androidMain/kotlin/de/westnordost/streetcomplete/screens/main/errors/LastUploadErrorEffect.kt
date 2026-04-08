@@ -12,8 +12,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.upload_error
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.jetbrains.compose.resources.stringResource
 

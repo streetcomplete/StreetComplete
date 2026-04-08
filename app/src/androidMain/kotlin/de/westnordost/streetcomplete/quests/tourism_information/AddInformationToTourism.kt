@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddInformationToTourism : OsmFilterQuestType<TourismInformation>(), AndroidQuest {
 
@@ -15,10 +16,9 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>(), Androi
     override val changesetComment = "Specify type of tourist informations"
     override val wikiLink = "Tag:tourism=information"
     override val icon = R.drawable.quest_information
+    override val title = Res.string.quest_tourism_information_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(RARE, CITIZEN, OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_tourism_information_title
 
     override fun createForm() = AddInformationForm()
 

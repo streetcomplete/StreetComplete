@@ -37,20 +37,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.coerceAtMost
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.avatar_osm_anonymous
-import de.westnordost.streetcomplete.resources.ic_open_in_browser_24
-import de.westnordost.streetcomplete.resources.ic_star_48
-import de.westnordost.streetcomplete.resources.osm_profile
-import de.westnordost.streetcomplete.resources.unsynced_quests_description
-import de.westnordost.streetcomplete.resources.user_logout
-import de.westnordost.streetcomplete.resources.user_profile_achievement_levels
-import de.westnordost.streetcomplete.resources.user_profile_all_time_title
-import de.westnordost.streetcomplete.resources.user_profile_current_week_title
-import de.westnordost.streetcomplete.resources.user_profile_dates_mapped
-import de.westnordost.streetcomplete.resources.user_profile_days_active
-import de.westnordost.streetcomplete.resources.user_profile_global_rank
-import de.westnordost.streetcomplete.resources.user_profile_local_rank
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.toDp
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
@@ -94,8 +81,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Image(
-                painter =
-                    userAvatarFile?.let { fileBitmapPainter(it.toString()) }
+                painter = userAvatarFile?.let { fileBitmapPainter(viewModel.fileSystem, it) }
                     ?: painterResource(Res.drawable.avatar_osm_anonymous),
                 contentDescription = null,
                 modifier = Modifier

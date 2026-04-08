@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddParkingFee : OsmFilterQuestType<ParkingFeeAnswer>(), AndroidQuest {
 
@@ -20,9 +21,8 @@ class AddParkingFee : OsmFilterQuestType<ParkingFeeAnswer>(), AndroidQuest {
     override val changesetComment = "Specify whether parking requires a fee"
     override val wikiLink = "Tag:amenity=parking"
     override val icon = R.drawable.quest_parking_fee
+    override val title = Res.string.quest_parking_fee_title
     override val achievements = listOf(CAR)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_fee_title
 
     override fun createForm() = AddParkingFeeForm()
 

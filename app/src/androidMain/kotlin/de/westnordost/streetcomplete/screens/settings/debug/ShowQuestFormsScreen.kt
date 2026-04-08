@@ -37,8 +37,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.no_search_results
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.ExpandableSearchField
