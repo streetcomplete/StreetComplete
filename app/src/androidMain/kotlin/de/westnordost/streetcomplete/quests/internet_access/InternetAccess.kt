@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.quests.internet_access
 
 import de.westnordost.streetcomplete.quests.internet_access.InternetAccess.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_internet_access_terminal
-import de.westnordost.streetcomplete.resources.quest_internet_access_wired
-import de.westnordost.streetcomplete.resources.quest_internet_access_wlan
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 enum class InternetAccess(val osmValue: String) {

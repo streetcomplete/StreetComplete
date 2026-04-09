@@ -13,13 +13,14 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.opening_hours.isLikelyIncorrect
 import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.StringResource
 
-class AddOpeningHours() : OsmElementQuestType<OpeningHoursAnswer>, AndroidQuest {
+class AddOpeningHours : OsmElementQuestType<OpeningHoursAnswer>, AndroidQuest {
 
     /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
        be ordered in the same way for better overview */
@@ -104,6 +105,10 @@ mapOf(
         "occupational_therapist", "dialysis", "vaccination_centre", "audiologist",
         "blood_bank", "nutrition_counselling",
     ),
+    "waterway" to arrayOf(
+        // name & opening hours
+        "fuel",
+    ),
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
                 )
                 and (!opening_hours or opening_hours older today -1 years)
@@ -155,19 +160,20 @@ mapOf(
     override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.quest_opening_hours
+    override val title = Res.string.quest_openingHours_title
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
     private val olderThan1Year = TagOlderThan("opening_hours", RelativeDate(-365f))
 
-    override fun getTitle(tags: Map<String, String>): Int {
+    override fun getTitle(tags: Map<String, String>): StringResource {
         // treat invalid opening hours like it is not set at all
         val oh = tags["opening_hours"]?.toOpeningHoursOrNull(lenient = true)
         val hasSupportedOpeningHours = oh != null && oh.isSupported()
         return if (hasSupportedOpeningHours) {
-            R.string.quest_openingHours_resurvey_title
+            Res.string.quest_openingHours_resurvey_title
         } else {
-            R.string.quest_openingHours_title
+            Res.string.quest_openingHours_title
         }
     }
 
@@ -184,12 +190,11 @@ mapOf(
         // invalid opening_hours rules -> applicable because we want to ask for opening hours again
         // be strict
         val oh = ohStr.toOpeningHoursOrNull(lenient = false) ?: return true
-        // only display supported rules, or ambiguous rules that should be corrected
-        return oh.isSupported(allowTimePoints = false) || oh.isLikelyIncorrect()
+        return oh.isSupported(allowTimePoints = false, allowAmbiguity = true)
     }
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddOpeningHoursForm()
 

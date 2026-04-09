@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Personvernerklæring"</string>
     <string name="quest_openingHours_public_holidays">"Offentlige høytidsdager"</string>
     <string name="quest_openingHours_public_holidays_short">"Helligdager"</string>
-    <string name="quest_openingHours_open_end">"Ingen fast stengetid"</string>
     <string name="quest_openingHours_answer_247">"Åpent 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Varierer fra måned til måned…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Ingen faste åpningstider…"</string>
@@ -316,7 +315,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_housenumber_conscription_number">"Konskripsjons-nummer"</string>
     <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valgfritt)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Også sykkelvei på motsatt side…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Du må gjengi det som står på skiltet. Hvis det ikke fins noe skilt kan du spørre betjeningen."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ingen, men man kan sykle i begge retninger"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Hvis toalettene er tilgjengelige for rullestolbrukere er det gjerne merket med et slikt skilt.
 «Delvis» betyr at en rullestolbruker kan komme seg inn på og bruke toalettet, men at det ikke er tilrettelagt med støttehåndtak eller tilpasset håndvask."</string>
@@ -466,7 +464,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="privacy_html_image_upload2">"&lt;p&gt;Bilder som legges ved en merknad blir lastet opp på serveren min og slettet noen dager etter at merknaden er løst. Metadata blir fjernet fra bildet før opplasting.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Opphev alle"</string>
     <string name="quest_buildingType_retail_description">"inkludert bygninger for restauranter, kafeer, store butikker…"</string>
-    <string name="quest_openingHours_timeSelect_next">"Neste"</string>
     <string name="quest_tracktype_title">"Hvor fast er overflaten på denne stien?"</string>
     <string name="quest_tracktype_grade1">"Fast"</string>
     <string name="quest_tracktype_grade4">"Mest mykt"</string>
@@ -492,7 +489,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="action_open_location">"Vis posisjonen i en annen app"</string>
     <string name="map_application_missing">"Ingen andre kartprogram installert"</string>
     <string name="label_housenumber">"Husnummer"</string>
-    <string name="label_blocknumber">"Kvartalsnummer"</string>
     <string name="quest_busStopShelter_covered">"Hele stoppet er under tak"</string>
     <string name="quest_ferry_pedestrian_title">"Frakter denne fergen fotgjengere?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Transporterer denne fergen kjøretøy?"</string>
@@ -1140,10 +1136,6 @@ Om mulig, gjør det samme for den andre siden."</string>
     <string name="quest_camp_drinking_water_title">"Er drikkevann fritt tilgjengelig for campere her?"</string>
     <string name="quest_camp_shower_title">"Er det dusjer her?"</string>
     <string name="quest_camp_power_supply_title">"Er det mulig for kunder å lade telefon, laptop ol. her?"</string>
-    <string name="quest_camp_type_title">"Hvem kan campe her?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Både telt og bobiler, campingvogner, …"</string>
-    <string name="quest_camp_type_caravans_only">"Kun bobiler, campingvogner, …"</string>
-    <string name="quest_camp_type_tents_only">"Kun telt"</string>
     <string name="quest_camp_type_backcountry">"Friluftscamping (ingen fasiliteter)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameteren virker usannsynlig da den vanligvis er mellom %1$d og %2$d."</string>
     <string name="street_parking_street_width">"Gatebredde: %1$s"</string>
@@ -1234,9 +1226,6 @@ Vil du flytte den nå?"</string>
     <string name="street_parking_staggered_half_on_kerb">"Delvis i veien på vekslende side"</string>
     <string name="quest_traffic_signals_sound_description">"Hint: Se etter høyttalere. Ikke alle lydsignaler kan aktiveres med en knapp."</string>
     <string name="quest_presets_duplicate">"Duplikat"</string>
-    <string name="label_block">"Kvartal"</string>
-    <string name="quest_address_answer_block">"Innenfor et kvartal"</string>
-    <string name="quest_address_answer_no_block">"Ikke innenfor et kvartal"</string>
     <string name="quest_surface_value_mud">"Gjørme"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Det er ingen toalett her"</string>
     <string name="unknown_surface_title">"Annen type overflate"</string>

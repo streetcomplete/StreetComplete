@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
-import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
@@ -83,11 +83,9 @@ class MoveNodeFragment :
         node = Json.decodeFromString(args.getString(ARG_NODE)!!)
         editType = allEditTypes.getByName(args.getString(ARG_QUEST_TYPE)!!) as ElementEditType
 
-        val isFeetAndInch = countryInfos.getByLocation(
-            countryBoundaries.value,
-            node.position.longitude,
-            node.position.latitude
-        ).lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH
+        val isFeetAndInch = countryInfos
+            .get(countryBoundaries.value, node.position)
+            .lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH
         displayUnit = if (isFeetAndInch) MeasureDisplayUnitFeetInch(4) else MeasureDisplayUnitMeter(10)
     }
 

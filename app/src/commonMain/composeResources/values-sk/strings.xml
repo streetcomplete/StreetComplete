@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Vyhlásenie o ochrane súkromia</string>
     <string name="quest_openingHours_public_holidays">Sviatky</string>
     <string name="quest_openingHours_public_holidays_short">Št. sviatok</string>
-    <string name="quest_openingHours_open_end">Do odchodu posledného návštevníka</string>
     <string name="quest_openingHours_answer_247">Otvorené 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Líši sa podľa mesiaca…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Nemá pravidelné otváracie hodiny…</string>
@@ -316,7 +315,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_housenumber_conscription_number">Súpisné číslo</string>
     <string name="quest_housenumber_street_number_optional">Orientačné číslo (voliteľné)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Cyklocestička je aj na druhej strane…</string>
-    <string name="quest_openingHours_emptyAnswer">Je potrebné aby ste opísali čo je na označení otváracích hodín. Ak tam nie je označenie, mali by ste sa opýtať vo vnútri.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">žiadne, ale cyklisti môžu využívať cestu v oboch smeroch</string>
     <string name="quest_wheelchairAccess_description_toilets">Ak sú toalety bezbariérové, malo by byť vidno značku podobnú tejto.
     Čiastočne znamená, že sa do toalety dá vojsť na vozíku a použiť ju, ale nemá držiaky alebo upravené umývadlo.</string>
@@ -466,7 +464,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="privacy_html_image_upload2">&lt;p&gt;Fotky, ktoré priložíte k poznámke sú nahrané na moj server a vymazané pár dní po tom, čo je poznámka označená ako vyriešená. Ich metadáta sú odstránené pre nahraním.&lt;/p&gt;</string>
     <string name="action_deselect_all">Odznačiť všetko</string>
     <string name="quest_buildingType_retail_description">vrátane budov pre reštaurácie, kaviarne, …</string>
-    <string name="quest_openingHours_timeSelect_next">Ďalej</string>
     <string name="quest_tracktype_title">Aký pevný je povrch tejto cesty?</string>
     <string name="quest_tracktype_grade1">Pevný</string>
     <string name="quest_tracktype_grade4">Zväčša mäkký</string>
@@ -492,7 +489,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="action_open_location">Otvoriť polohu v inej aplikácii</string>
     <string name="map_application_missing">Nemáte nainštalovanú žiadnu inú mapovou aplikáciu</string>
     <string name="label_housenumber">číslo domu</string>
-    <string name="label_blocknumber">číslo bloku</string>
     <string name="quest_busStopShelter_covered">Celá zastávka je zastrešená</string>
     <string name="quest_ferry_pedestrian_title">Preváža chodcov?</string>
     <string name="quest_ferry_motor_vehicle_title">Preváža motorové vozidlá?</string>
@@ -1133,10 +1129,6 @@ To isté urobte pre druhú stranu, ak tu je.</string>
     <string name="quest_camp_drinking_water_title">Je tu voľne dostupná pitná voda pre kemperov?</string>
     <string name="quest_camp_shower_title">Sú tu sprchy?</string>
     <string name="quest_camp_power_supply_title">Môžu si tu zákazníci nabiť telefón, notebook atď.?</string>
-    <string name="quest_camp_type_title">Kto tu môže kempovať?</string>
-    <string name="quest_camp_type_tents_and_caravans">Ako stany, tak obytné vozy, cestovné prívesy, …</string>
-    <string name="quest_camp_type_caravans_only">Iba obytné autá, cestovné prívesy, ...</string>
-    <string name="quest_camp_type_tents_only">Iba stany</string>
     <string name="quest_camp_type_backcountry">Kempovanie v prírode (bez zázemia)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Tento priemer vyzerá nepravdepodobne, obvykle sa pohybuje medzi %1$d a %2$d.</string>
     <string name="street_parking_street_width">Šírka ulice: %1$s</string>
@@ -1227,9 +1219,6 @@ Presunúť ho teraz?</string>
     <string name="street_parking_staggered_half_on_kerb">Čiastočne na ulici na striedajúcich sa stranách</string>
     <string name="quest_traffic_signals_sound_description">Tip: Pozrite sa po reproduktoroch. Nie všetky zvukové signály sa dajú aktivovať pomocou tlačidla.</string>
     <string name="quest_presets_duplicate">Duplikovať</string>
-    <string name="label_block">Blok</string>
-    <string name="quest_address_answer_block">Je to v rámci bloku</string>
-    <string name="quest_address_answer_no_block">Nie je to v rámci bloku...</string>
     <string name="quest_surface_value_mud">Trvalé blato</string>
     <string name="quest_wheelchairAccessPat_noToilet">Nie je tu žiadna toaleta</string>
     <string name="unknown_surface_title">Iný druh povrchu</string>

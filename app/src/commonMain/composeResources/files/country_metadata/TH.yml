@@ -1,0 +1,17 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [en, th-Latn]
+advisorySpeedLimitSignStyle: yellow
+atmOperators: [ธนาคารกรุงเทพ, ธนาคารกสิกรไทย, ธนาคารกรุงไทย, ธนาคารไทยพาณิชย์, Krungsri, Bangkok Bank, กรุงศรี, ธนาคารทหารไทย, SCB, Siam Commercial Bank, Krungthai Bank, Krungthai, KTB, ธนาคารออมสิน, Kasikorn Bank, Kasikorn, KBank, Krungsri Bank, Government Savings Bank, GSB, UOB, TMB, Kasikornbank, KBANK, ATM, Thanachart Bank, Bank of Ayudhya, krungsri, Siam Commercial, K-Bank, ธนาคารกรุงศรีอยุธยา, Siam City Bank, Omsin, Kasikornthai, Goverment Savings Bank, ธนาคารเพื่อการเกษตรและสหกรณ์การเกษตร, K-bank, ธนาคารธนชาต, Easybank, กสิกรไทย, Kbank, Aeon, Thanachart, Krung Thai Bank, Baac, BBL, ไทยพาณิชย์, ออมสิน, ttb, government savings bank, Siam Commercial Bank (SCB), Krungsi, Krung Thai, Kasikornthai Bank, 'KBANK, SCB, KTB', K Bank, Easy Bank, CIMB Thai, Bangkok, ธนาคารซีไอเอ็มบีไทย, ธนาคารกรุงไทย (Krungthai Bank), ธ.ไทยพาณิชย์, ธ.ออมสิน, kbank, bike park, bangkok bank, TCAP, Siam, SNA, Oomsin, LH Bank, Ktb, Krungthai Bank ธนาคารกรุงไทย, Krungsri Bay, Krungsiri, Krung Thai Bank (KTB), Kasikorn Thai, Kaiserkornbank, 'KTB, BBL, GSB', 'KBANK, SCB', GHB, Cimb, Bankok Bank, Bangkok Bank (BBL), BAY, ATM ธนาคารกรุงเทพ, ATM Siam Commercial Bank, ATM Krungsri, AEON]
+centerLineStyle: yellow
+chargingStationOperators: [Tesla, PTT, Charge+, MG, EVlink, EGAT]
+defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisorySpeedLimitSign: true
+isLeftHandTraffic: true
+mobileCountryCode: 520
+noParkingLineStyle: yellow-white on curb
+noStoppingLineStyle: red-white on curb
+officialLanguages: [th]
+orchardProduces: [rubber, guava, mango, mangosteen, coconut, pineapple, banana, coffee, areca_nut, tea, lemon, lime, grapefruit, cashew_nut, orange, tomato, grape, papaya]
+popularReligions: [buddhist, animist, muslim, chinese_folk, taoist]
+popularSports: [tennis, soccer, golf, basketball, badminton, sepak_takraw]
+postboxesHaveCollectionTimes: true

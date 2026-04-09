@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
 
@@ -22,15 +23,14 @@ class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val changesetComment = "Specify motorcycle parking capacities"
     override val wikiLink = "Tag:amenity=motorcycle_parking"
     override val icon = R.drawable.quest_motorcycle_parking_capacity
+    override val title = Res.string.quest_motorcycleParkingCapacity_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_motorcycleParkingCapacity_title
-
     override fun createForm() = AddMotorcycleParkingCapacityForm()
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = motorcycle_parking")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = motorcycle_parking")
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("capacity", answer.toString())

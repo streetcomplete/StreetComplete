@@ -42,15 +42,16 @@ open class GenerateQuestListTask : DefaultTask() {
         wikiQuests = parseWikiTable(getWikiTableContent())
 
         val questFileContent = questsModuleFile.readText()
-        val questNameRegex = Regex("(?<=^ {4}\\d+ to )[A-Z][a-zA-Z]+(?=\\()", RegexOption.MULTILINE)
+        val questNameRegex = Regex("^ {4}\\d+ to ([A-Z][a-zA-Z0-9_])+\\(\\)", RegexOption.MULTILINE)
         val questNames =
-            listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.value }
+            listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.groupValues[1] }
 
         val questFiles = questsDirectory.listFilesRecursively()
         val strings = getStrings()
-        val repoQuests = questNames.mapIndexed { defaultPriority, name ->
-            getRepoQuest(name, defaultPriority, questFiles, strings)
-        }.sortedBy { it.wikiOrder }
+        val repoQuests = questNames
+            .mapIndexed { defaultPriority, name ->
+                getRepoQuest(name, defaultPriority, questFiles, strings)
+            }.sortedBy { it.wikiOrder }
 
         writeCsvFile(repoQuests)
     }

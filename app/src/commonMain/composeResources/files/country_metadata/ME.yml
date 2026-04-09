@@ -1,0 +1,17 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [sr-Latn]
+atmOperators: [Payten, Prva Banka CG, Euronet Worldwide, NLB, CKB, NLB Banka, MoneyGet, Euronet, Erste Bank, CKB Banka, Hipotekarna banka, Addiko Bank, Erste, Crnogorska Komercijalna Banka, Prva Banka, Lovćen Banka, ERSTE Bank, Atlas Banka, Hipotekarna Banka]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+hasAdvisorySpeedLimitSign: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 297
+officialLanguages: [sr, bs, sq, hr]
+orchardProduces: [grape, fig, cherry, walnut, plum, apple, chilli_pepper, sweet_pepper, olive, raspberry, orange, tea, tomato, peach, pear, kiwi]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: bottom
+slowZoneLabelText: |-
+   ЗОНА
+   ZONA

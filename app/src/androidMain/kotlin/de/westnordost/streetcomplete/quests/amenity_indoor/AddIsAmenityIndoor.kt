@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.contains
@@ -48,9 +49,8 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
     override val changesetComment = "Determine whether amenities are inside buildings"
     override val wikiLink = "Key:indoor"
     override val icon = R.drawable.quest_building_inside
+    override val title = Res.string.quest_is_amenity_inside_title
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_is_amenity_inside_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return listOf()
@@ -95,11 +95,11 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
             false
         }
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> {
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry): Sequence<Element> {
         /* put markers for objects that are exactly the same as for which this quest is asking for
            e.g. it's a ticket validator? -> display other ticket validators. Etc. */
         val feature = getFeature(element) ?: return emptySequence()
-        return getMapData().filter { it.tags.containsAll(feature.tags) }.asSequence()
+        return mapData.asSequence().filter { it.tags.containsAll(feature.tags) }
     }
 
     override fun createForm() = IsAmenityIndoorForm()

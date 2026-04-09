@@ -24,8 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.questList_disabled_by_default
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 /** Single item in the overlay selection list. Shows icon + title, whether it is enabled and

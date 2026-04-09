@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Заявление о конфиденциальности</string>
     <string name="quest_openingHours_public_holidays">Праздничные дни</string>
     <string name="quest_openingHours_public_holidays_short">праздники</string>
-    <string name="quest_openingHours_open_end">может закрыться и позже</string>
     <string name="quest_openingHours_answer_247">Открыто 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Зависит от месяца…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Плавающий график работы…</string>
@@ -317,7 +316,6 @@
     <string name="quest_housenumber_conscription_number">Сквозная нумерация</string>
     <string name="quest_housenumber_street_number_optional">Ориентировочный номер (необязательно)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Также велосипедная дорожка на встречной полосе…</string>
-    <string name="quest_openingHours_emptyAnswer">Вам надо описать, что на вывеске. Если нет вывески, вы должны спросить о режиме работы внутри.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">никаких, но велосипедисты могут ехать во всех направлениях</string>
     <string name="quest_wheelchairAccess_description_toilets">Подобный знак инвалидной коляски означает, что туалет доступен для инвалидов-колясочников.
 "Частично" означает, что инвалид может заехать и воспользоваться туалетом, но туалет не оборудован поручнями и пониженной раковиной.</string>
@@ -467,7 +465,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt;Приложенные фотографии загружаются на мой сервер и удаляются через несколько дней после того, как заметка будет рассмотрена. Все метаданные фотографий удаляются.&lt;/p&gt;</string>
     <string name="action_deselect_all">Снять выделение со всех</string>
     <string name="quest_buildingType_retail_description">включая здания ресторанов, кафе, …</string>
-    <string name="quest_openingHours_timeSelect_next">Следующий</string>
     <string name="quest_tracktype_title">Насколько мягкая поверхность этой колеи?</string>
     <string name="quest_tracktype_grade1">Твёрдая</string>
     <string name="quest_tracktype_grade4">Преимущественно мягкая</string>
@@ -489,11 +486,10 @@
     <string name="pref_title_theme_select">Выбор темы</string>
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Тёмная</string>
-    <string name="theme_system_default">Согласно настройкам системы</string>
+    <string name="theme_system_default">Как в системе</string>
     <string name="action_open_location">Посмотреть местоположение в другом приложении</string>
     <string name="map_application_missing">Другие картографические приложения не установлены</string>
     <string name="label_housenumber">номер дома</string>
-    <string name="label_blocknumber">номер корпуса</string>
     <string name="quest_busStopShelter_covered">У остановки есть навес</string>
     <string name="quest_ferry_pedestrian_title">Этот паром перевозит пешеходов?</string>
     <string name="quest_ferry_motor_vehicle_title">Этот паром перевозит механические транспортные средства?</string>
@@ -917,7 +913,7 @@
     <string name="quest_barrier_bicycle_type_single">Проход между двумя барьерами</string>
     <string name="quest_barrier_bicycle_type_double">Шикана - барьер на каждой стороне</string>
     <string name="quest_barrier_bicycle_type_multiple">Шикана - больше двух барьеров</string>
-    <string name="language_default">Системный по умолчанию</string>
+    <string name="language_default">Как в системе</string>
     <string name="on_floor">на этаже %1$s</string>
     <string name="select_street_parking_orientation">Выберите ориентацию по отношению к проезжей части:</string>
     <string name="select_street_parking_position">Выберите позицию:</string>
@@ -1142,10 +1138,6 @@
     <string name="quest_camp_drinking_water_title">Есть ли здесь в свободном доступе питьевая вода для отдыхающих?</string>
     <string name="quest_camp_shower_title">Здесь есть душевые?</string>
     <string name="quest_camp_power_supply_title">Есть ли какой-либо способ для клиентов зарядить свой телефон, ноутбук и т.п. здесь?</string>
-    <string name="quest_camp_type_title">Кто может разбить здесь лагерь?</string>
-    <string name="quest_camp_type_tents_and_caravans">Как палатки, так и дома на колёсах, туристические трейлеры, …</string>
-    <string name="quest_camp_type_caravans_only">Только дома на колёсах, туристические трейлеры, …</string>
-    <string name="quest_camp_type_tents_only">Только палатки</string>
     <string name="quest_camp_type_backcountry">Кемпинг в сельской местности (без удобств)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Этот диаметр выглядит неправдоподобным, обычно он находится между %1$d и %2$d.</string>
     <string name="street_parking_street_width">Ширина улицы: %1$s</string>
@@ -1234,9 +1226,6 @@
     <string name="street_parking_staggered_half_on_kerb">Частично на проезжей части, если оставляет возможность проехать</string>
     <string name="quest_traffic_signals_sound_description">Подсказка: обратите внимание на динамики.  Не все звуковые сигналы можно активировать с помощью кнопки.</string>
     <string name="quest_presets_duplicate">Дублировать</string>
-    <string name="label_block">блок</string>
-    <string name="quest_address_answer_block">Это внутри одного квартала (домовладения)...</string>
-    <string name="quest_address_answer_no_block">Это находится за пределами одного квартала...</string>
     <string name="quest_surface_value_mud">Стойкая грязь</string>
     <string name="quest_wheelchairAccessPat_noToilet">Здесь нет туалета</string>
     <string name="unknown_surface_title">Другой вид поверхности</string>
@@ -1454,18 +1443,36 @@
     <string name="quest_handwashing_title">Можно ли здесь помыть руки?</string>
     <string name="quest_openingHours_delete">Удалить</string>
     <string name="quest_streetName_hint">Вы можете присвоить соседнему участку то же имя, нажав на него на карте.</string>
+    <string name="quest_streetName_abbreviation_instruction">Сокращения, например, «Rd», следует расшифровывать.</string>
     <string name="quest_streetName_add_language">Добавить язык</string>
     <string name="ok">ОК</string>
     <string name="cancel">Отмена</string>
+    <string name="quest_aerialway_bicycle_title">Этот подъемник используется для перевозки велосипедов?</string>
     <string name="quest_aerialway_bicycle_summer">Только летом</string>
     <string name="quest_board_type_rules">Правила</string>
+    <string name="quest_firewood_provided_title">Здесь предоставляются дрова?</string>
     <string name="quest_first_aid_kit_location">Где находится эта аптечка?</string>
     <string name="quest_lane_markings_title">Есть ли у этой дороги разметка?</string>
     <string name="quest_level_thing_title">На каком уровне это расположено?</string>
     <string name="quest_bicycle_charging_station_capacity_title">Сколько велосипедов можно заряжать здесь одновременно?</string>
     <string name="quest_charging_station_bicycles_title">Можно ли здесь также заряжать велосипеды?</string>
+    <string name="quest_charging_station_bicycles_hint">Адаптеры питания для велосипедных зарядных устройств подключаются к обычным бытовым розеткам.</string>
+    <string name="quest_tower_access_title">Кто может получить доступ к этой башне? Доступ может быть бесплатным или платным.</string>
     <string name="quest_charging_station_bicycles_answer_only">Только для велосипедов</string>
     <string name="quest_recycling_type_pet_bottles">Пластиковые бутылки</string>
     <string name="quest_maxweight_add_sign">Добавить знак</string>
     <string name="quest_maxweight_remove_sign">Убрать знак</string>
+    <string name="dialog_dont_notify_again">Не уведомлять снова</string>
+    <string name="weekly_osm_new_edition_title">Новое изменение!</string>
+    <string name="pref_title_messages">Уведомления внутри приложения</string>
+    <string name="pref_title_message_achievements">Разблокирование достижения</string>
+    <string name="pref_title_message_weekly_osm">Новые выпуски еженедельника OSM</string>
+    <string name="pref_title_message_changelog">Новые версии приложения</string>
+    <string name="quest_artwork_sculpture">Скульптура</string>
+    <string name="quest_artwork_statue">Статуя</string>
+    <string name="quest_artwork_graffiti">Граффити</string>
+    <string name="quest_artwork_installation">Инсталляция</string>
+    <string name="quest_artwork_bust">Бюст</string>
+    <string name="quest_artwork_stone">Камень</string>
+    <string name="quest_artwork_painting">Картина</string>
 </resources>

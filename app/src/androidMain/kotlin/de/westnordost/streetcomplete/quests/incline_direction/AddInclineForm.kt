@@ -2,8 +2,7 @@ package de.westnordost.streetcomplete.quests.incline_direction
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_steps_incline_up
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource

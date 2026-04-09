@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Tietosuojalausunto"</string>
     <string name="quest_openingHours_public_holidays">"Julkiset lomat"</string>
     <string name="quest_openingHours_public_holidays_short">"Vapaapäivä"</string>
-    <string name="quest_openingHours_open_end">"joustava sulkemisaika"</string>
     <string name="quest_openingHours_answer_247">"Auki 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Vaihtelee kuukausittain…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Ei säännöllisiä aukioloaikoja…"</string>
@@ -316,7 +315,6 @@ Muussa tapauksessa voit ladata toisen näppäimistön sovelluskaupasta. Suosittu
     <string name="quest_housenumber_conscription_number">"Rekisteri-numero"</string>
     <string name="quest_housenumber_street_number_optional">"Suuntaus-numero (valinnainen)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Toisella puolella myös pyörätie…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Sinun täytyy kuvailla mitä kyltissä näkyy. Jos kylttiä ei ole, kysy aukioloajat sisältä."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ei, mutta pyöräilijät voivat käyttää tietä molempiin suntiin"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Tällainen merkki voi olla näkyvissä, jos WC:hen pääsee pyörätuolilla. 
 Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei välttämättä ole apuvälineitä, kuten apurautoja, laskettavaa allasta tms."</string>
@@ -466,7 +464,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="privacy_html_image_upload2">"&lt;p&gt;Liittämäsi kuvat ladataan palvelimelleni ja poistetaan muutamien päivien sisällä ilmoituksen ratkaisusta. Kuvien metadata poistetaan ennen latausta.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Poista kaikki valinnat"</string>
     <string name="quest_buildingType_retail_description">"Sisältää ravintolat, kahvilat, yms kaupalliset rakennukset"</string>
-    <string name="quest_openingHours_timeSelect_next">"Seuraava"</string>
     <string name="quest_tracktype_title">"Millainen on tienpinnan kovuus?"</string>
     <string name="quest_tracktype_grade1">"Päällystetty"</string>
     <string name="quest_tracktype_grade4">"Enimmäkseen pehmeä"</string>
@@ -492,7 +489,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="action_open_location">"Avaa sijainti toisessa sovelluksessa"</string>
     <string name="map_application_missing">"Muita karttasovelluksia ei ole asennettu"</string>
     <string name="label_housenumber">"talon numero"</string>
-    <string name="label_blocknumber">"korttelin numero"</string>
     <string name="quest_busStopShelter_covered">"Koko pysäkki on katettu"</string>
     <string name="quest_ferry_pedestrian_title">"Sopiiko tämä lauttareitti jalankulkijoille?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Sopiiko tämä lautta moottoriajoneuvojen reitiksi?"</string>
@@ -1140,10 +1136,6 @@ Tee sama toiselle puolelle mikäli tarpeellista."</string>
     <string name="quest_camp_drinking_water_title">"Onko juomavettä vapaasti vierailijoiden saatavissa täällä?"</string>
     <string name="quest_camp_shower_title">"Onko täällä suihkuja?"</string>
     <string name="quest_camp_power_supply_title">"Onko täällä pistorasioita vieraille?"</string>
-    <string name="quest_camp_type_title">"Kuka saa leiriytyä täällä?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Sekä teltat että matkailuautot, matkailuvaunut, ..."</string>
-    <string name="quest_camp_type_caravans_only">"Vain matkailuautot, matkailuvaunut, ..."</string>
-    <string name="quest_camp_type_tents_only">"Vain teltat"</string>
     <string name="quest_camp_type_backcountry">"Erämaatelttailu (ei palveluja)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Tämä halkaisija vaikuttaa epätodennäköiseltä, se on yleensä välillä %1$d - %2$d."</string>
     <string name="street_parking_street_width">"Kadun leveys: %1$s"</string>
@@ -1234,9 +1226,6 @@ Haluatko siirtää nyt?"</string>
     <string name="street_parking_staggered_half_on_kerb">"Osittain kadulla vastakkaisin puolin"</string>
     <string name="quest_traffic_signals_sound_description">"Vihje: etsi kaiuttimia/äänentoistolaitteita. Kaikkia äänisignaaleja ei ole mahdollista aktivoida painikkeella."</string>
     <string name="quest_presets_duplicate">"Kaksoiskappale"</string>
-    <string name="label_block">"este"</string>
-    <string name="quest_address_answer_block">"Se on korttelissa"</string>
-    <string name="quest_address_answer_no_block">"Ei ole korttelissa"</string>
     <string name="quest_surface_value_mud">"Pysyvää mutaa"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Täällä ei ole WC:tä"</string>
     <string name="unknown_surface_title">"Muunkaltainen pinta"</string>
@@ -1455,4 +1444,33 @@ Esimerkiksi 1,3 tai 2b,4,6."</string>
     <string name="quest_tower_access_title">"Kenellä on pääsy tähän torniin? Pääsy voi olla ilmainen tai maksullinen."</string>
     <string name="quest_charging_station_bicycles_answer_only">"Se on vain polkupyörille"</string>
     <string name="quest_recycling_type_pet_bottles">"PET-pullot"</string>
+    <string name="pref_title_message_changelog">"Uudet sovellusjulkaisut"</string>
+    <string name="quest_artwork_title">"Minkälainen taideteos tämä on?"</string>
+    <string name="quest_artwork_sculpture">"Veistos"</string>
+    <string name="quest_artwork_statue">"Patsas"</string>
+    <string name="quest_artwork_mural">"Seinämaalaus"</string>
+    <string name="quest_artwork_graffiti">"Graffiti"</string>
+    <string name="quest_artwork_installation">"Installaatio"</string>
+    <string name="quest_artwork_bust">"Rintakuva"</string>
+    <string name="quest_artwork_stone">"Kivi"</string>
+    <string name="quest_artwork_painting">"Maalaus"</string>
+    <string name="quest_artwork_street_art">"Muu katutaide"</string>
+    <string name="quest_artwork_architecture">"Arkkitehtuuri"</string>
+    <string name="quest_artwork_mosaic">"Mosaiikki"</string>
+    <string name="quest_artwork_relief">"Kohokuvio"</string>
+    <string name="quest_artwork_fountain">"Suihkulähde"</string>
+    <string name="quest_camp_tent_title">"Voiko täällä leireillä teltassa?"</string>
+    <string name="quest_camp_cabin_title">"Onko täällä majoitukseen tarkoitettuja mökkejä?"</string>
+    <string name="quest_camp_caravan_title">"Voiko täällä oleskella matkailuautossa tai -trailerissa?"</string>
+    <string name="quest_ferry_bicycle_title">"Ovatko polkupyörät sallittuja tällä lautalla?"</string>
+    <string name="quest_openingHours_add_time">"Lisää aika"</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">"Valitse alkuaika"</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">"Valitse loppuaika"</string>
+    <string name="quest_openingHours_chooseTimeTitle">"Valitse aika"</string>
+    <string name="quest_openingHours_no_fixed_end">"ei kiinteää loppuaikaa"</string>
+    <string name="quest_collectionTimes_answer_time_spans">"Aikavälillä…"</string>
+    <string name="quest_collectionTimes_answer_time_points">"Tiettyinä aikoina…"</string>
+    <string name="quest_shower_hot_water_title">"Onko täällä lämmintä vettä?"</string>
+    <string name="calendar_new_event_title">"Uusi OSM-tapahtuma alueellasi!"</string>
+    <string name="pref_title_message_calendar">"Uudet OSM-tapahtumat alueellasi"</string>
 </resources>

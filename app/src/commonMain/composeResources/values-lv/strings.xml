@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Paziņojums par konfidencialitāti</string>
     <string name="quest_openingHours_public_holidays">Svētku dienas</string>
     <string name="quest_openingHours_public_holidays_short">SD</string>
-    <string name="quest_openingHours_open_end">līdz pēdējam</string>
     <string name="quest_openingHours_answer_247">Atvērts diennakti</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Mainās atkarībā no mēneša…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Nav regulāri atvēršanas laiki...</string>
@@ -316,7 +315,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_housenumber_conscription_number">Konskripcijas numurs</string>
     <string name="quest_housenumber_street_number_optional">Orientācijas skaitlis (neobligāts)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Veloceliņš arī otrā pusē…</string>
-    <string name="quest_openingHours_emptyAnswer">Jums jāapraksta, kas ir rakstīts uz zīmes. Ja zīmes nav, darba laiks ir jāprasa iekšā.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">nav, bet velosipēdisti var izmantot ceļu abos virzienos</string>
     <string name="quest_wheelchairAccess_description_toilets">Šādu ratiņkrēsla zīmi varētu redzēt, ja labierīcības ir pieejamas. “Daļēji” nozīmē, ka ar ratiņkrēslu labierīcībās var iekļūt un tās izmantot, bet tajās nav margu vai pielāgotu izlietņu.</string>
     <string name="map_btn_create_note">Izveidot jaunu piezīmi</string>
@@ -465,7 +463,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="privacy_html_image_upload2">&lt;p&gt;Fotogrāfijas, kuras jūs pievienojat piezīmēm, tiek augšupielādētas uz manu serveri un tiek dzēstas dažas dienas pēc tam, kad piezīme ir atrisināta. Pirms augšupielādēšanas fotogrāfijas metadati tiek izdzēsti.&lt;/p&gt;</string>
     <string name="action_deselect_all">Atlasīt neko</string>
     <string name="quest_buildingType_retail_description">tai skaitā ēkas restorāniem, kafejnīcām, veikaliem…</string>
-    <string name="quest_openingHours_timeSelect_next">Nākamais</string>
     <string name="quest_tracktype_title">Kāda ir šī celiņa virsmas cietība?</string>
     <string name="quest_tracktype_grade1">Noklāts</string>
     <string name="quest_tracktype_grade4">Pārsvarā mīksts</string>
@@ -491,7 +488,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="action_open_location">Atvērt vietu citā lietotnē</string>
     <string name="map_application_missing">Nav instalētas citas karšu lietotnes</string>
     <string name="label_housenumber">mājas numurs</string>
-    <string name="label_blocknumber">kvartāla numurs</string>
     <string name="quest_busStopShelter_covered">Visa pietura ir nosegta</string>
     <string name="quest_ferry_pedestrian_title">Vai šajā prāmju maršrutā pārvadā gājējus?</string>
     <string name="quest_ferry_motor_vehicle_title">Vai šajā prāmju maršrutā pārvadā autotransportu?</string>
@@ -1136,10 +1132,6 @@ Dariet to arī otrai pusei, ja tāda ir.</string>
     <string name="quest_camp_drinking_water_title">Vai šeit ir brīvi pieejams dzeramais ūdens?</string>
     <string name="quest_camp_shower_title">Vai šeit ir dušas?</string>
     <string name="quest_camp_power_supply_title">Vai klientiem šeit ir iespēja uzlādēt tālruņus, klēpjdatorus utt.?</string>
-    <string name="quest_camp_type_title">Kas var šeit apmesties?</string>
-    <string name="quest_camp_type_tents_and_caravans">Gan teltis gan treileri, motormājas, ...</string>
-    <string name="quest_camp_type_caravans_only">Tikai motormājas, treileri, ...</string>
-    <string name="quest_camp_type_tents_only">Tikai teltis</string>
     <string name="quest_camp_type_backcountry">Nomaļš kempings (nav labiekārtots)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Šis diametrs izskatās neticams, tas parasti ir starp %1$d un %2$d.</string>
     <string name="street_parking_street_width">Ielas platums: %1$s</string>
@@ -1230,9 +1222,6 @@ Pārvietot tagad?</string>
     <string name="street_parking_staggered_half_on_kerb">Daļēji uz ielas pārmijus dažādās pusēs</string>
     <string name="quest_traffic_signals_sound_description">Padoms: skatieties, vai ir skaļruņi. Ne visus skaņas signālus var aktivizēt ar pogu.</string>
     <string name="quest_presets_duplicate">Dublēt</string>
-    <string name="label_block">kvartāls</string>
-    <string name="quest_address_answer_block">Ir kvartālā…</string>
-    <string name="quest_address_answer_no_block">Nav kvartālā…</string>
     <string name="quest_surface_value_mud">Pastāvīgi dubļi</string>
     <string name="quest_wheelchairAccessPat_noToilet">Šeit nav labierīcību</string>
     <string name="unknown_surface_title">Cita veida virsma</string>

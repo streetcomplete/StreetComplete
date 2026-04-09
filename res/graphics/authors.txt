@@ -446,6 +446,7 @@ quest/
     surveillance.svg
     surveillance_camera.svg
     tent.svg
+    thermometer.svg
     toilets.svg
     toilet_fee.svg
     toilets_wheelchair.svg

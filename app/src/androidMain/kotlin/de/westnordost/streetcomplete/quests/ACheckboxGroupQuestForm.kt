@@ -22,8 +22,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_multiselect_hint
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 abstract class ACheckboxGroupQuestForm<I, T> : AbstractOsmQuestForm<T>() {
@@ -42,9 +41,9 @@ abstract class ACheckboxGroupQuestForm<I, T> : AbstractOsmQuestForm<T>() {
 
             val onSelectionChange = { option: I, selected: Boolean ->
                 selectedOptions.value = if (selected) {
-                    selectedOptions.value - option
-                } else {
                     selectedOptions.value + option
+                } else {
+                    selectedOptions.value - option
                 }
                 checkIsFormComplete()
                 updateButtonPanel()

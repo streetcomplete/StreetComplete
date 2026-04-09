@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Privatumas"</string>
     <string name="quest_openingHours_public_holidays">"Valstybinės šventės"</string>
     <string name="quest_openingHours_public_holidays_short">"VŠ"</string>
-    <string name="quest_openingHours_open_end">"užsidarymas pagal situaciją"</string>
     <string name="quest_openingHours_answer_247">"Atidaryta 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Skiriasi priklausomai nuo mėnesio…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nėra pastovaus darbo laiko…"</string>
@@ -317,7 +316,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_housenumber_conscription_number">"Užsakymo numeris"</string>
     <string name="quest_housenumber_street_number_optional">"Orientacijos numeris (pasirinktinai)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Taip pat dviračių takas kitoje pusėje…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Turite aprašyti, kas yra ženkle. Jei ženklo nėra, darbo laiko turėtumėte paklausti viduje."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nėra, bet dviratininkai gali važiuoti į abi puses"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Neįgaliųjų vežimėlio ženklas panašus į šį gali būti matomas, jei tualetai prieinami.
 Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėra turėklų."</string>
@@ -467,7 +465,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="privacy_html_image_upload2">"&lt;p&gt;Nuotraukos, kurias pridedate prie pastabos, įkeliamos į mano serverį ir ištrinamos po kelių dienų, kai pastaba išsprendžiama. Įkėlimo metu ištrinami metaduomenys.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Viską nužymėti"</string>
     <string name="quest_buildingType_retail_description">"įskaitant pastatus restoranams, kavinėms, …"</string>
-    <string name="quest_openingHours_timeSelect_next">"Kitas"</string>
     <string name="quest_tracktype_title">"Koks šio kelio dangos standumas?"</string>
     <string name="quest_tracktype_grade1">"Tvirtas"</string>
     <string name="quest_tracktype_grade4">"Daugiausia minkštas"</string>
@@ -493,7 +490,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="action_open_location">"Atverti vietą kitoje programėlėje"</string>
     <string name="map_application_missing">"Nėra įdiegtų kitų žemėlapių programėlių"</string>
     <string name="label_housenumber">"namo numeris"</string>
-    <string name="label_blocknumber">"bloko numeris"</string>
     <string name="quest_busStopShelter_covered">"Visa stotelė uždengta"</string>
     <string name="quest_ferry_pedestrian_title">"Ar šis kelto maršrutas perveža pėsčiuosius?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Ar šis kelto maršrutas perveža motorines transporto priemones?"</string>
@@ -1137,7 +1133,6 @@ Tą patį padarykite ir kitoje pusėje, jei yra."</string>
     <string name="quest_camp_drinking_water_title">"Ar geriamas vanduo yra laisvai prieinamas stovyklautojams?"</string>
     <string name="quest_camp_shower_title">"Ar čia yra dušų?"</string>
     <string name="quest_camp_power_supply_title">"Ar yra galimybė klientams pasikrauti savo telefoną, kompiuterį ar kt.?"</string>
-    <string name="quest_camp_type_title">"Kas galėtų čia stovyklauti?"</string>
     <string name="street_parking_street_width">"Gatvės plotis: %1$s"</string>
     <string name="overlay_street_parking">"Parkavimas gatvėje"</string>
     <string name="link_opencampingmap_description">"Stovyklaviečių žemėlapis"</string>

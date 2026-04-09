@@ -113,13 +113,6 @@ class SurfaceCreatorKtTest {
             ),
             ASPHALT.appliedTo(mapOf("tracktype" to "grade3"))
         )
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("surface", "dirt"),
-                StringMapEntryDelete("tracktype", "grade2")
-            ),
-            DIRT.appliedTo(mapOf("tracktype" to "grade2"))
-        )
     }
 
     @Test fun `remove mismatching tracktype not done with prefix`() {

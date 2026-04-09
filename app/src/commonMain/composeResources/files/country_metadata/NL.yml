@@ -1,0 +1,25 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+advisoryCycleLaneStyle: white dashes without pictogram
+atmOperators: [Geldmaat, Euronet, Byelex Data Solutions B.V., GWK Travelex, YourCash, AllTransact, In2Retail, Global ATM Network, jOuw geldautomaat, GWK]
+chargingStationOperators: [Samenwerkende Gemeenten Zuid-Holland, Gemeente Den Haag, Allego, Vattenfall InCharge, TotalEnergies, Park&Charge, Equans, Shell Recharge Solutions, EVBox, Rotterdam elektrisch, Ecotap, NUON, Fastned, PowerGo, Vattenfall, Opcharge, EVnetNL, City Charging, We Drive Solar, OK, Rotterdam Elektrisch, LEAP24, 'Tesla, Inc.', Gemeente Utrecht, Eneco, ChargePoint, Last Mile Solutions, Agri Go Charge, Engie, E-Flux, Alfen, GreenFlux, PNB, Equans;Samenwerkende Gemeenten Zuid-Holland;RotterdamsElectrisch.nl;Samenwerkende gemeenten Zuid Holland. Equans, PitPoint, Gemeente Rotterdam, Park n Charge, Shell, Park 'n Charge, Qwello, Qbuzz, Joulz, Tesla, Smoov, Shell Recharge, Ionity, evnetnl, Van der Valk Energy, Samenwerkende Gemeenten Zuid-Holland;RotterdamsElectrisch.nl;Samenwerkende gemeenten Zuid Holland. Equans, SMOOV, Pitpoint, IKEA Delft]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+clothesContainerOperators: [Avalex, Leger des Heils, Sympany, Gemeente Zoetermeer, Gemeente Amsterdam, Den Haag, ROVA, Leger des Heils ReShare, Irado, Meerlanden, Gemeente Katwijk, Curitas, dar, Restore kringloop, ReShare, HVC, Stichting Sympany, Restore, Opnieuw & Co, Cure, Circulus, Twente Milieu, RD4, RAD, Twiddus, Regain, RMN, Noppes kringloopwinkel, Gemeente Rotterdam, Gemeente Leiden, DAR, Care4Care, 2Switch, Reinis, Omrin, Noppes, Gemeente Tilburg, Avri, Afvalstoffendienst, Waardlanden, Vrienden van de Thuiszorg, UMC Utrecht, Synpany, Stichting Kringloop Alphen, Spaarnelanden, Second Life, Rotary International, Rode Kruis, RWM, Middelburg, MC Texcycle, Leger das Heils, HergebruikPlus, Gemeente Zoetermeer;gemeente Zoetermeer, Dar, DAR nv, Bim Bam]
+defaultSpeedLimitHasUrbanOrRural: true
+exclusiveCycleLaneStyle: white dashes
+hasAdvisoryCycleLane: true
+hasAdvisorySpeedLimitSign: true
+hasBicycleBoulevard: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 204
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
+officialLanguages: [nl]
+orchardProduces: [pear, apple, tomato, strawberry, chilli_pepper, sweet_pepper, blueberry, plum, raspberry, cherry, grape]
+parcelLockerBrand: [PostNL, DHL, Budbee, de Buren, DPD Pickup Station, DHL Packstation, De Buren, Hub, DPD, Vinted Go, Service Apotheek, MyPup, DHL; DHL Express; DPD; UPS, DHL Parcelstation]
+popularReligions: [christian, muslim, jewish]
+popularSports: [soccer, tennis, equestrian, basketball, field_hockey]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONE

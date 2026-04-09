@@ -1,5 +1,0 @@
-# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [PNC Bank, Fifth Third Bank, Chase, Farmers National Bank, U.S. Bank, PNC]
-chargingStationOperators: ['Tesla, Inc.', ChargePoint, Tesla, TownePlace Suites, Electrify America]
-defaultSpeedLimitHasUrbanOrRural: true
-parcelLockerBrand: [Amazon Locker]

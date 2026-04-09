@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.artwork
 
 import de.westnordost.streetcomplete.quests.artwork.ArtworkType.*
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.resources.Res
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

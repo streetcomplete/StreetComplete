@@ -1,0 +1,17 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [international, en]
+atmOperators: [Шпаркасе, Охридска Банка, NLB, Halkbank, УНИБанка, ТТК банка, Стопанска банка Скопје, Комерцијална банка, Стопанска Банка АД - Скопје, Шпаркасе Банка Македонија АД Скопје, НЛБ - Тутунска Банка, Уни Банка, Стопанска Банка, Комерцијална Банка АД Скопје, Stopanska Banka, Sparkasse, ТТК Банка, НЛБ Тутунска Банка, ProCredit Bank, Komercijalna banka, Komercijalna Banka]
+chargingStationOperators: [EVN]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisorySpeedLimitSign: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 294
+officialLanguages: [mk, sq]
+orchardProduces: [grape, apple, walnut, plum, olive, tomato, pear, cherry, peach, chestnut, strawberry, chilli_pepper, sweet_pepper, apricot, almond, raspberry]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ЗОНА

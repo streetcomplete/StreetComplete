@@ -46,80 +46,12 @@
                 android:divider="@drawable/space_16dp"
                 android:elevation="@dimen/speech_bubble_elevation">
 
-                <LinearLayout
+                <androidx.compose.ui.platform.ComposeView
+                    android:id="@+id/questHeader"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layoutDirection="locale">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/titleLabel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.TitleLarge"/>
-
-                        <TextView
-                            android:id="@+id/titleHintLabel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAppearance="@style/TextAppearance.TitleLarge.Hint"
-                            android:visibility="gone"/>
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:id="@+id/infoButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat = "@drawable/ic_info_outline_24dp"
-                        android:background="?android:attr/selectableItemBackgroundBorderless"
-                        app:tint="@color/activated_tint"
-                        android:visibility="visible"
-                        android:contentDescription="@string/info"
-                        android:padding="12dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/infoArea"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    android:showDividers="middle"
-                    android:divider="@drawable/space_8dp">
-
-                    <TextView
-                        android:id="@+id/infoText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="@style/TextAppearance.Body"/>
-
-                    <HorizontalScrollView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <LinearLayout
-                            android:id="@+id/infoPictures"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:showDividers="middle"
-                            android:divider="@drawable/space_8dp" />
-
-                    </HorizontalScrollView>
-
-                </LinearLayout>
+                    android:layout_height="wrap_content"/>
 
             </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/speechbubbleNoteContainer"
@@ -186,6 +118,11 @@
                     android:orientation="vertical"
                     android:clipChildren="false"
                     android:clipToPadding="false">
+
+                    <androidx.compose.ui.platform.ComposeView
+                        android:id="@+id/contentBeforeSpeechbubbleContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
                     <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
                             android:layout_width="match_parent"
@@ -282,6 +219,13 @@
         android:focusable="true"
         android:visibility="gone"
         />
+
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/compose_view_dialog_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom">
+    </androidx.compose.ui.platform.ComposeView>
 
 </de.westnordost.streetcomplete.view.SlidingRelativeLayout>
 

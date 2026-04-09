@@ -28,16 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.min
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_achievements_24
-import de.westnordost.streetcomplete.resources.ic_bookmarks_24
-import de.westnordost.streetcomplete.resources.ic_profile_24
-import de.westnordost.streetcomplete.resources.ic_star_24
-import de.westnordost.streetcomplete.resources.user_achievements_title
-import de.westnordost.streetcomplete.resources.user_links_title
-import de.westnordost.streetcomplete.resources.user_profile
-import de.westnordost.streetcomplete.resources.user_profile_title
-import de.westnordost.streetcomplete.resources.user_quests_title
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsScreen
 import de.westnordost.streetcomplete.screens.user.edits.EditStatisticsScreen
 import de.westnordost.streetcomplete.screens.user.links.LinksScreen

@@ -67,6 +67,10 @@ class AchievementsController(
     override fun getLinks(): List<Link> =
         userLinksDao.getAll().mapNotNull { linksById[it] }
 
+    /** Whether the given link has been unlocked */
+    override fun hasLink(id: String): Boolean =
+        userLinksDao.has(id)
+
     override fun addListener(listener: AchievementsSource.Listener) {
         listeners.add(listener)
     }

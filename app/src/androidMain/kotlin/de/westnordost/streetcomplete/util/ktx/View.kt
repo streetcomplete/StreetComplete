@@ -49,11 +49,6 @@ suspend fun View.awaitNextLayout() = suspendCancellableCoroutine { cont ->
     addOnLayoutChangeListener(listener)
 }
 
-suspend fun View.awaitPreDraw() = suspendCancellableCoroutine { cont ->
-    val listener = doOnPreDraw { cont.resume(Unit) }
-    cont.invokeOnCancellation { listener.removeListener() }
-}
-
 fun View.getLocationInWindow(): Point {
     val pos = IntArray(2)
     getLocationInWindow(pos)
@@ -99,6 +94,3 @@ fun View.updateMargins(left: Int? = null, top: Int? = null, right: Int? = null, 
 fun View.showKeyboard(): Unit = SoftwareKeyboardControllerCompat(this).show()
 
 fun View.hideKeyboard(): Unit = SoftwareKeyboardControllerCompat(this).hide()
-
-val View.isKeyboardOpen: Boolean
-    get() = ViewCompat.getRootWindowInsets(this)?.isVisible(WindowInsetsCompat.Type.ime()) == true

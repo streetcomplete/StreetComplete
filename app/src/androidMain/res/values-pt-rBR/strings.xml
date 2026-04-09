@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Declaração de privacidade"</string>
     <string name="quest_openingHours_public_holidays">"Feriados públicos"</string>
     <string name="quest_openingHours_public_holidays_short">"Feriados"</string>
-    <string name="quest_openingHours_open_end">"até último cliente"</string>
     <string name="quest_openingHours_answer_247">"Sempre aberto"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Varia por mês…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Sem horários regulares…"</string>
@@ -316,7 +315,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Teclados popu
     <string name="quest_housenumber_conscription_number">"Número de alistamento"</string>
     <string name="quest_housenumber_street_number_optional">"Número de orientação (opcional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Ciclovia presente do outro lado…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Você precisa descrever o que está na placa. Se não houver placa, deveria perguntar dentro do local pelos horários de funcionamento."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nenhum, mas ciclistas podem usar a via em ambos sentidos"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Um símbolo de cadeirante como esse pode estar visível se o banheiro é acessível.
 Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não há barras ou cubas adaptadas."</string>
@@ -466,7 +464,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="privacy_html_image_upload2">"&lt;p&gt;As fotos que você anexar a uma nota são enviadas para o meu servidor e excluídas alguns dias após a nota ser resolvida. Seus metadados são retirados antes do envio.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Desmarcar todos"</string>
     <string name="quest_buildingType_retail_description">"incluindo edificações para restaurantes, cafés, lojas…"</string>
-    <string name="quest_openingHours_timeSelect_next">"Próximo"</string>
     <string name="quest_tracktype_title">"Qual a firmeza da superfície dessa trilha?"</string>
     <string name="quest_tracktype_grade1">"Pavimentada"</string>
     <string name="quest_tracktype_grade4">"Predominantemente macia"</string>
@@ -492,7 +489,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="action_open_location">"Abrir localização em outro aplicativo"</string>
     <string name="map_application_missing">"Nenhum outro aplicativo de mapa instalado"</string>
     <string name="label_housenumber">"número da casa"</string>
-    <string name="label_blocknumber">"número da quadra"</string>
     <string name="quest_busStopShelter_covered">"Toda a parada é coberta"</string>
     <string name="quest_ferry_pedestrian_title">"Esta rota de balsa transporta pedestres?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Esta rota de balsa transporta veículos automotores?"</string>
@@ -1139,10 +1135,6 @@ Faça o mesmo para o outro lado, se houver."</string>
     <string name="quest_camp_drinking_water_title">"A água potável está disponível gratuitamente para os campistas aqui?"</string>
     <string name="quest_camp_shower_title">"Há chuveiros aqui?"</string>
     <string name="quest_camp_power_supply_title">"Existe alguma maneira de os clientes carregarem seus telefones, laptops etc. aqui?"</string>
-    <string name="quest_camp_type_title">"Quem pode acampar aqui?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Tanto barracas e motorhomes, trailers de viagem, …"</string>
-    <string name="quest_camp_type_caravans_only">"Apenas motorhomes, trailers de viagem, …"</string>
-    <string name="quest_camp_type_tents_only">"Apenas barracas"</string>
     <string name="quest_camp_type_backcountry">"Camping no interior (sem instalações)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diâmetro parece implausível, geralmente está entre %1$d e %2$d."</string>
     <string name="street_parking_street_width">"Largura da rua: %1$s"</string>
@@ -1233,9 +1225,6 @@ Movê-lo agora?"</string>
     <string name="street_parking_staggered_half_on_kerb">"Parcialmente na rua em lados alternados"</string>
     <string name="quest_traffic_signals_sound_description">"Dica: observe se existe algum altofalante. Nem todos os sinais sonoros são ativados por um botão."</string>
     <string name="quest_presets_duplicate">"Duplicar"</string>
-    <string name="label_block">"Quarteirão"</string>
-    <string name="quest_address_answer_block">"Está em uma quadra…"</string>
-    <string name="quest_address_answer_no_block">"Não está em uma quadra..."</string>
     <string name="quest_surface_value_mud">"Lama persistente"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Não há banheiro aqui"</string>
     <string name="unknown_surface_title">"Superfície desconhecida"</string>

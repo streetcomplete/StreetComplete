@@ -350,4 +350,16 @@ class AddOpeningHoursTest {
             timestamp = "2000-11-11".toCheckDate()?.toEpochMilli()
         )))
     }
+
+    @Test fun `isApplicableTo returns false for valid but not supported opening hours with ranges that are also colliding`() {
+        val millisecondsFor400Days: Long = 1000L * 60 * 60 * 24 * 400
+        assertFalse(questType.isApplicableTo(node(
+            tags = mapOf(
+                "shop" to "sports",
+                "name" to "Atze's Angelladen",
+                "opening_hours" to "\"by appointment, see timetable\"; PH \"by appointment\""
+            ),
+            timestamp = nowAsEpochMilliseconds() - millisecondsFor400Days
+        )))
+    }
 }

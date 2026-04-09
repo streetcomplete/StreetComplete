@@ -11,9 +11,7 @@ import de.westnordost.osm_opening_hours.model.Holiday
 import de.westnordost.osm_opening_hours.model.Month
 import de.westnordost.osm_opening_hours.model.Time
 import de.westnordost.osm_opening_hours.model.Weekday
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_openingHours_public_holidays
-import de.westnordost.streetcomplete.resources.quest_openingHours_public_holidays_short
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter

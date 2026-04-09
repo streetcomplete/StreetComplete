@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.COVERED
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.NO_SHELTER
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.SHELTER
+import de.westnordost.streetcomplete.resources.*
 
 class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>(), AndroidQuest {
 
@@ -18,6 +19,7 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>(), AndroidQue
         (
           public_transport = platform
           or (highway = bus_stop and public_transport != stop_position)
+          or highway = hitchhiking
         )
         and physically_present != no and naptan:BusStopType != HAR
         and access !~ no|private
@@ -34,9 +36,8 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>(), AndroidQue
     override val changesetComment = "Specify whether public transport stops have shelters"
     override val wikiLink = "Key:shelter"
     override val icon = R.drawable.quest_bus_stop_shelter
+    override val title = Res.string.quest_busStopShelter_title2
     override val achievements = listOf(PEDESTRIAN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopShelter_title2
 
     override fun createForm() = AddBusStopShelterForm()
 

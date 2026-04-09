@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -35,9 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.language_default
-import de.westnordost.streetcomplete.resources.pref_title_language_select2
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.ExpandableSearchField
 import de.westnordost.streetcomplete.ui.common.SearchIcon
@@ -142,6 +141,7 @@ private fun LanguageSelectionList(
                     .animateItem()
                     .selectable(isSelected) { onSelect(language) }
                     .padding(horizontal = 24.dp)
+                    .defaultMinSize(minHeight = 48.dp)
             ) {
                 Box(modifier = Modifier.weight(1f)) {
                     Text(
@@ -149,10 +149,7 @@ private fun LanguageSelectionList(
                             ?: stringResource(Res.string.language_default)
                     )
                 }
-                RadioButton(
-                    selected = isSelected,
-                    onClick = { onSelect(language) }
-                )
+                RadioButton(selected = isSelected, onClick = null)
             }
         }
     }

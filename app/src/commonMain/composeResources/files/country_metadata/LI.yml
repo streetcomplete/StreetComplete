@@ -1,0 +1,19 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Liechtensteinische Landesbank AG, Liechtensteinische Landesbank]
+chargingStationOperators: [LKW]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+defaultSpeedLimitHasUrbanOrRural: true
+exclusiveCycleLaneStyle: yellow
+hasAdvisoryCycleLane: false
+hasAdvisorySpeedLimitSign: false
+hasBicycleBoulevard: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 295
+noParkingLineStyle: dashed yellow line with Xs
+noStoppingLineStyle: yellow
+officialLanguages: [de]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONE

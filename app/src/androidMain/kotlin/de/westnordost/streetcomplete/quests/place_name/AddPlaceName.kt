@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
+import de.westnordost.streetcomplete.resources.*
 
 class AddPlaceName(
     private val getFeature: (Element) -> Feature?
@@ -123,6 +124,10 @@ class AddPlaceName(
                 "castle", "church", "farm", "fort", "manor", "monument", "mosque", "temple",
                 "ship",
             ),
+            "waterway" to arrayOf(
+                // name & opening hours
+                "fuel",
+            ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
         and !name and !brand and noname != yes and name:signed != no
@@ -131,10 +136,9 @@ class AddPlaceName(
     override val changesetComment = "Determine place names"
     override val wikiLink = "Key:name"
     override val icon = R.drawable.quest_label
+    override val title = Res.string.quest_placeName_title
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_placeName_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
@@ -142,8 +146,8 @@ class AddPlaceName(
     override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) && getFeature(element) != null
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddPlaceNameForm()
 

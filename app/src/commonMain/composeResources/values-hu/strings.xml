@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Adatvédelmi nyilatkozat</string>
     <string name="quest_openingHours_public_holidays">Nemzeti ünnepek</string>
     <string name="quest_openingHours_public_holidays_short">NÜ</string>
-    <string name="quest_openingHours_open_end">rugalmas zárás</string>
     <string name="quest_openingHours_answer_247">Éjjel-nappal nyitva</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Hónaptól függően változik…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Nincs rendszeres nyitvatartás…</string>
@@ -316,7 +315,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_housenumber_conscription_number">Helyrajzi szám</string>
     <string name="quest_housenumber_street_number_optional">Házszám (cseh/szlovák, nem kötelező)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Van kerékpárút a másik oldalon is…</string>
-    <string name="quest_openingHours_emptyAnswer">Azt add meg, hogy mi van kiírva az üzletre. Ha semmi, akkor odabent kérdezd meg a nyitvatartást.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">nincs, de az úton mindkét irányba szabad kerékpározni</string>
     <string name="quest_wheelchairAccess_description_toilets">Ha akadálymentes, akkor valószínűleg látható rajta egy ehhez hasonló jel.
 A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehet használni, de nincs korlát vagy megfelelő mosdókagyló.</string>
@@ -466,7 +464,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="privacy_html_image_upload2">&lt;p&gt;A jegyzethez csatolt fényképek feltöltődnek a StreetComplete szerverére, a jegyzet megoldása után pár nappal pedig törlődnek. A metaadataikat feltöltés előtt eltávolítjuk.&lt;/p&gt;</string>
     <string name="action_deselect_all">Összes kiválasztás megszüntetése</string>
     <string name="quest_buildingType_retail_description">többek között éttermek, kávéházak stb. épületei</string>
-    <string name="quest_openingHours_timeSelect_next">Következő</string>
     <string name="quest_tracktype_title">Mennyire szilárd a mezőgazdasági út a felülete?</string>
     <string name="quest_tracktype_grade1">Szilárd</string>
     <string name="quest_tracktype_grade4">Viszonylag puha</string>
@@ -492,7 +489,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="action_open_location">Hely megnyitása egy másik alkalmazásban</string>
     <string name="map_application_missing">Nincs telepítve másik térképalkalmazás</string>
     <string name="label_housenumber">házszám</string>
-    <string name="label_blocknumber">háztömb szám</string>
     <string name="quest_busStopShelter_covered">Az egész megálló fedett</string>
     <string name="quest_ferry_pedestrian_title">Ez a komp szállít gyalogosokat?</string>
     <string name="quest_ferry_motor_vehicle_title">Ez a komp szállít gépjárműveket?</string>
@@ -1141,10 +1137,6 @@ Tedd meg a másiknál is, ha van olyan.</string>
     <string name="quest_camp_drinking_water_title">A vendégek számára szabadon hozzáférhető az ivóvíz?</string>
     <string name="quest_camp_shower_title">Vannak itt zuhanyzók?</string>
     <string name="quest_camp_power_supply_title">Vannak a vendégek számára használható konnektorok?</string>
-    <string name="quest_camp_type_title">Kik táborozhatnak itt?</string>
-    <string name="quest_camp_type_tents_and_caravans">Sátrazók, lakóautósok, lakókocsisok, …</string>
-    <string name="quest_camp_type_caravans_only">Csak lakóautósok, lakókocsisok, …</string>
-    <string name="quest_camp_type_tents_only">Csak sátrazók</string>
     <string name="quest_camp_type_backcountry">Vadkemping (létesítmények nélküli)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Ez az átmérő valószínűtlennek tűnik, általában %1$d és %2$d között szokott lenni.</string>
     <string name="street_parking_street_width">Az utca szélessége: %1$s</string>
@@ -1235,9 +1227,6 @@ Elmozdítod?</string>
     <string name="street_parking_staggered_half_on_kerb">Félig a járdaszegélyen, felváltva a két oldalon</string>
     <string name="quest_traffic_signals_sound_description">Tipp: Keresd a hangszórókat! Nem minden hangjelzés aktiválható gombnyomással.</string>
     <string name="quest_presets_duplicate">Másolat</string>
-    <string name="label_block">tömb</string>
-    <string name="quest_address_answer_block">Egy háztömbön belül található…</string>
-    <string name="quest_address_answer_no_block">Nem egy háztömbön belül található…</string>
     <string name="quest_surface_value_mud">Tartós sár</string>
     <string name="quest_wheelchairAccessPat_noToilet">Itt nincsen mellékhelyiség</string>
     <string name="unknown_surface_title">Egyéb felület</string>
@@ -1445,16 +1434,21 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="compass">Iránytű</string>
     <string name="quest_tracktype_grade2">Többnyire szilárd</string>
     <string name="quest_tracktype_grade3">Keverék</string>
+    <string name="quest_housenumber_multiple_numbers_description2">A házszámokat vesszővel elválasztva adhatja meg.
+ Például 1,3 vagy 2b,4,6.</string>
     <string name="quest_drinking_water_potable_unsigned2">Nincs kitáblázva</string>
     <string name="or">vagy</string>
     <string name="action_copy">Másolás</string>
+    <string name="quest_stopName_hint">A térképen rákattintva ugyanazt a nevet alkalmazhatja, mint egy másik megálló esetében.</string>
     <string name="quest_shelter_capacity_title">Hány ember tud itt aludni?</string>
     <string name="quest_handwashing_title">Van itt lehetőség kézmosásra?</string>
     <string name="quest_openingHours_delete">Töröl</string>
+    <string name="quest_streetName_hint">A térképen rákattintva ugyanazt a nevet alkalmazhatja, mint a szomszédos szakaszra.</string>
     <string name="quest_streetName_abbreviation_instruction">A rövidítések, mint pl. „u.”, legyenek kiírva.</string>
     <string name="quest_streetName_add_language">Nyelv hozzáadása</string>
     <string name="ok">OK</string>
     <string name="cancel">Mégsem</string>
+    <string name="quest_aerialway_bicycle_title">Ez a légi lift kerékpárokat szállít?</string>
     <string name="quest_aerialway_bicycle_summer">Csak nyáron</string>
     <string name="quest_board_type_rules">Szabályok</string>
     <string name="quest_firewood_provided_title">Biztosítanak itt tűzifát?</string>
@@ -1464,6 +1458,9 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_bicycle_charging_station_capacity_title">Hány kerékpárt lehet itt egyszerre tölteni?</string>
     <string name="quest_charging_station_bicycles_title">Kerékpárt is lehet itt tölteni?</string>
     <string name="quest_charging_station_bicycles_hint">A kerékpártöltő adapterek normál háztartási aljzatokba csatlakoztathatók.</string>
+    <string name="quest_tower_access_title">Ki férhet hozzá ehhez a toronyhoz? Lehet ingyenes vagy fizetős.</string>
     <string name="quest_charging_station_bicycles_answer_only">Csak kerékpárok számára</string>
     <string name="quest_recycling_type_pet_bottles">PET-palackok</string>
+    <string name="quest_maxweight_add_sign">A tábla hozzáadása</string>
+    <string name="quest_maxweight_remove_sign">A tábla eltávolítása</string>
 </resources>

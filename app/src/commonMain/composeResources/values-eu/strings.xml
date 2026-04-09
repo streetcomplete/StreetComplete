@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Pribatutasun adierazpena</string>
     <string name="quest_openingHours_public_holidays">Jai egunak</string>
     <string name="quest_openingHours_public_holidays_short">JE</string>
-    <string name="quest_openingHours_open_end">Ixteko ordu zehatzik gabe</string>
     <string name="quest_openingHours_answer_247">24/7 irekita</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Hilabetearen arabera…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Ez du ordutegi zehatzik…</string>
@@ -315,7 +314,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_housenumber_conscription_number">Konskripzio zenbakia</string>
     <string name="quest_housenumber_street_number_optional">Orientazio zenbakia (aukerazkoa)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Bidegorria beste aldean ere…</string>
-    <string name="quest_openingHours_emptyAnswer">Seinalean dagoena deskribatu behar duzu. Seinalerik ez badago, irekiera orduak barruan galdetu beharko dituzu.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">bat ere ez, baina txirrindulariek errepidea erabili dezakete norabide bietan</string>
     <string name="quest_wheelchairAccess_description_toilets">Honen antzeko seinale bat egon daiteke komunak irisgarriak badira.
   Partzialki esan nahi du gurpil-aulkia sartzen dela baina ez dagoela barrarik edo heldu-lekurik.</string>
@@ -465,7 +463,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="privacy_html_image_upload2">&lt;p&gt;Ohar batetara gehitzen dituzun argazkiak nire zerbitzarira igotzen dira eta oharra ebatzi eta egun batzuetara ezabatzen dira. Igo aurretik metadatuak kentzen zaizkie.&lt;/p&gt;</string>
     <string name="action_deselect_all">Desautatu guztiak</string>
     <string name="quest_buildingType_retail_description">jatetxe, kafetegi eta abarrentzako eraikinak barne</string>
-    <string name="quest_openingHours_timeSelect_next">Hurrengoa</string>
     <string name="quest_tracktype_title">Zein da bide honen zoladuraren irmotasuna</string>
     <string name="quest_tracktype_grade1">Trinkoa</string>
     <string name="quest_tracktype_grade4">Gehienbat malgua</string>
@@ -491,7 +488,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="action_open_location">Ireki kokalekua beste aplikazio batekin</string>
     <string name="map_application_missing">Ez dago beste mapa aplikaziorik instalatuta</string>
     <string name="label_housenumber">etxe zenbakia</string>
-    <string name="label_blocknumber">bloke zenbakia</string>
     <string name="quest_busStopShelter_covered">Geltoki osoa estalita dago</string>
     <string name="quest_ferry_pedestrian_title">Ferry ibilbide honek oinezkoak garraiatzen ditu?</string>
     <string name="quest_ferry_motor_vehicle_title">Ferry ibilbide honek motorrezko ibilgailuak garraiatzen ditu?</string>
@@ -1137,10 +1133,6 @@ Egin gauza bera beste aldean egonez gero.</string>
     <string name="quest_camp_drinking_water_title">Edateko ura doan eskura al dute hemen kanpinzaleek?</string>
     <string name="quest_camp_shower_title">Hemen ba al dago dutxarik?</string>
     <string name="quest_camp_power_supply_title">Ba al dute bezeroek telefonoa, ordenagailu eramangarria eta abar kargatzeko modurik hemen?</string>
-    <string name="quest_camp_type_title">Nork kanpatu dezake hemen?</string>
-    <string name="quest_camp_type_tents_and_caravans">Kanpin-denda zein autokarabanak, bidai-atoiak, …</string>
-    <string name="quest_camp_type_caravans_only">Bakarrik autokarabanak, bidai-atoiak, …</string>
-    <string name="quest_camp_type_tents_only">Bakarrik kanpin-dendak</string>
     <string name="quest_camp_type_backcountry">Kanpina (instalaziorik gabe)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Diametro honek sinesgaitza dirudi, %1$d eta %2$d artean egon ohi da.</string>
     <string name="street_parking_street_width">Kalearen zabalera: %1$s</string>
@@ -1231,9 +1223,6 @@ Orain mugitu?</string>
     <string name="street_parking_staggered_half_on_kerb">Partzialki kalean alde txandakatuetan</string>
     <string name="quest_traffic_signals_sound_description">Aholkua: bilatu bozgorailuak. Soinu-seinale guztiak ezin dira botoi baten bidez aktibatu.</string>
     <string name="quest_presets_duplicate">Bikoiztu</string>
-    <string name="label_block">blokea</string>
-    <string name="quest_address_answer_block">Bloke baten barruan dago...</string>
-    <string name="quest_address_answer_no_block">Ez dago bloke baten barruan...</string>
     <string name="quest_surface_value_mud">Lokatza iraunkorra</string>
     <string name="quest_wheelchairAccessPat_noToilet">Hemen ez dago komunik</string>
     <string name="unknown_surface_title">Beste azalera mota bat</string>

@@ -14,10 +14,11 @@ import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
+import de.westnordost.streetcomplete.resources.*
 
 class BuildingsOverlay : Overlay, AndroidOverlay {
 
-    override val title = R.string.overlay_buildings
+    override val title = Res.string.overlay_buildings
     override val icon = R.drawable.quest_building
     override val changesetComment = "Survey buildings"
     override val wikiLink = "Key:building"

@@ -72,8 +72,8 @@ class AddSidewalkSurfaceForm : AbstractOsmQuestForm<SidewalkSurfaceAnswer>() {
                 mapTilt = mapTilt.floatValue,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,
                 lastPicked = lastPicked,
-                isLeftSideVisible = hasSidewalkLeft,
-                isRightSideVisible = hasSidewalkRight,
+                hasSidewalkLeft = hasSidewalkLeft,
+                hasSidewalkRight = hasSidewalkRight,
             )
             checkIsFormComplete()
         } }

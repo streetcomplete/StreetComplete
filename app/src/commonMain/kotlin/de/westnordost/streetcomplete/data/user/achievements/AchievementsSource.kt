@@ -16,6 +16,9 @@ interface AchievementsSource {
     /** Get the user's unlocked links */
     fun getLinks(): List<Link>
 
+    /** Whether the given link has been unlocked */
+    fun hasLink(id: String): Boolean
+
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)
 }

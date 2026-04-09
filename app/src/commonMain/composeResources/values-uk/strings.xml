@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Заява про конфіденційність</string>
     <string name="quest_openingHours_public_holidays">святкові дні</string>
     <string name="quest_openingHours_public_holidays_short">святкові дні</string>
-    <string name="quest_openingHours_open_end">до останнього клієнта</string>
     <string name="quest_openingHours_answer_247">Цілодобово</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Залежить від місяця…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Немає встановленого графіку роботи…</string>
@@ -316,7 +315,6 @@
     <string name="quest_housenumber_conscription_number">Наскрізна нумерація</string>
     <string name="quest_housenumber_street_number_optional">Номер орієнтації (необов'язково)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Також велодоріжка з іншого боку…</string>
-    <string name="quest_openingHours_emptyAnswer">Потрібно описати, що вказано у розкладі. Якщо він не вивішаний, дізнайтеся час роботи усередині.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ніхто, але велосипедисти можуть їздити по дорозі в обох напрямках</string>
     <string name="quest_wheelchairAccess_description_toilets">Знак інвалідного візка, який може бути вказаний, якщо туалети доступні.
 «Частково» означає, що на інвалідному візку можна в'їхати та користуватись туалетом, але поручні та адаптований рукомийник відсутні.</string>
@@ -467,7 +465,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt;Фото, які ви додаєте до нотатки завантажуються на мій сервер і видаляються через деякий час після її розв'язання. Метадані видаляються перед надсиланням&lt;/p&gt;</string>
     <string name="action_deselect_all">Зняти вибір з усіх</string>
     <string name="quest_buildingType_retail_description">Включаючи будівлі для ресторанів, кафе, …</string>
-    <string name="quest_openingHours_timeSelect_next">Далі</string>
     <string name="quest_tracktype_title">Наскільки тверде покриття цього шляху?</string>
     <string name="quest_tracktype_grade1">Тверде</string>
     <string name="quest_tracktype_grade4">В основному м'яке</string>
@@ -493,7 +490,6 @@
     <string name="action_open_location">Відкрити локацію в іншому застосунку</string>
     <string name="map_application_missing">Жодного застосунку для роботи з мапами не встановлено</string>
     <string name="label_housenumber">номер будинку</string>
-    <string name="label_blocknumber">номер блоку</string>
     <string name="quest_busStopShelter_covered">Зупинка вкрита повністю</string>
     <string name="quest_ferry_pedestrian_title">Чи переправляє цей поромний маршрут пішоходів?</string>
     <string name="quest_ferry_motor_vehicle_title">Чи перевозить цей поромний маршрут автотранспорт?</string>
@@ -1131,10 +1127,6 @@
     <string name="quest_camp_drinking_water_title">Чи доступна тут питна вода для туристів?</string>
     <string name="quest_camp_shower_title">Тут є душ?</string>
     <string name="quest_camp_power_supply_title">Чи можуть клієнти зарядити свої смартфони, лептопи… тут?</string>
-    <string name="quest_camp_type_title">Хто може тут таборувати?</string>
-    <string name="quest_camp_type_tents_and_caravans">Як намети, так і будинки на колесах, трейлери, …</string>
-    <string name="quest_camp_type_caravans_only">Тільки будинки на колесах, трейлери, …</string>
-    <string name="quest_camp_type_tents_only">Лише намети</string>
     <string name="quest_camp_type_backcountry">Кемпінг без облаштунків</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Діаметр виглядає помилковим, зазвичай він від %1$d до %2$d.</string>
     <string name="street_parking_street_width">Ширина дороги: %1$s</string>
@@ -1225,9 +1217,6 @@
     <string name="street_parking_staggered_half_on_kerb">Частково на дорозі, бік чергується</string>
     <string name="quest_traffic_signals_sound_description">Підказка: зверніть увагу на динаміки. Не всі звукові сигнали можна активувати кнопкою.</string>
     <string name="quest_presets_duplicate">Копіювати</string>
-    <string name="label_block">блок</string>
-    <string name="quest_address_answer_block">Це в межах блоку…</string>
-    <string name="quest_address_answer_no_block">Це за межами блоку…</string>
     <string name="quest_surface_value_mud">Постійно багно</string>
     <string name="quest_wheelchairAccessPat_noToilet">Тут немає вбиральні</string>
     <string name="unknown_surface_title">Інший тип поверхні</string>

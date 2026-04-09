@@ -9,11 +9,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.core.view.doOnLayout
 import de.westnordost.streetcomplete.R
@@ -55,12 +57,12 @@ import de.westnordost.streetcomplete.quests.address.AddressNumberAndNameForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.koin.android.ext.android.inject
 
 class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
@@ -115,6 +117,10 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         if (element == null && addEntrance) AnswerItem(R.string.overlay_addresses_no_entrance) { addEntrance = false } else null
     )
 
+    @Composable
+    override fun getSubtitle(): AnnotatedString? =
+        element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -139,12 +145,6 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             }
         }
 
-        if (element != null) {
-            setTitleHintLabel(getNameAndLocationSpanned(
-                element, resources, featureDictionary,
-                showHouseNumber = false
-            ))
-        }
         setMarkerIcon(R.drawable.quest_housenumber)
 
         binding.composeViewBase.content { Surface(Modifier.padding(bottom = 48.dp)) {
