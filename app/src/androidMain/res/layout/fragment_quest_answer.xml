@@ -119,6 +119,11 @@
                     android:clipChildren="false"
                     android:clipToPadding="false">
 
+                    <androidx.compose.ui.platform.ComposeView
+                        android:id="@+id/contentBeforeSpeechbubbleContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
                     <de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

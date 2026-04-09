@@ -32,7 +32,7 @@ class NameAndLocationLabelTest {
         brandPresetsBasePath = "osmfeatures/brands"
     )
     /*
-    TODO KMP upstream
+    TODO Compose Multiplatform upstream
     Unfortunately, ResourceEnvironment's constructor is internal, so we cannot use this
     see https://youtrack.jetbrains.com/issue/CMP-9959/Access-resources-in-specific-language-outside-of-composition
     Without using specifically English resources, most tests will fail
