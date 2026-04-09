@@ -435,7 +435,7 @@ fun questTypeRegistry(
     87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
     179 to AddChargingStationBicycleCapacity(),
     88 to AddChargingStationOperator(),
-    197 to AddChargingStationSocket(),
+    198 to AddChargingStationSocket(),
 
     // postboxes (collection times are further up, see comment)
     89 to AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)

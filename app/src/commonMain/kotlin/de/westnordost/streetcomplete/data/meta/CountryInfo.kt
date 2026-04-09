@@ -41,7 +41,6 @@ data class IncompleteCountryInfo(
     val atmOperators: List<String>? = null,
     val centerLineStyle: String? = null,
     val chargingStationOperators: List<String>? = null,
-    val chargingStationSocket: List<String>? = null,
     val clothesContainerOperators: List<String>? = null,
     val edgeLineStyle: String? = null,
     val exclusiveCycleLaneStyle: String? = null,
@@ -150,42 +149,6 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
          infos.firstNotNullOf { it.weightLimitUnits }
 
     // may be null
-    val additionalStreetsignLanguages: List<String>
-        get() = infos.firstNotNullOfOrNull { it.additionalStreetsignLanguages } ?: emptyList()
-    val additionalValidHousenumberRegex: String?
-        get() = infos.firstNotNullOfOrNull { it.additionalValidHousenumberRegex }
-    val advisoryCycleLaneStyle: String?
-        get() = infos.firstNotNullOfOrNull { it.advisoryCycleLaneStyle }
-    val atmOperators: List<String>?
-        get() = infos.firstNotNullOfOrNull { it.atmOperators }
-    val chargingStationOperators: List<String>?
-        get() = infos.firstNotNullOfOrNull { it.chargingStationOperators }
-    val chargingStationSocket: List<String>?
-        get() = infos.firstNotNullOfOrNull { it.chargingStationSocket }
-    val clothesContainerOperators: List<String>?
-        get() = infos.firstNotNullOfOrNull { it.clothesContainerOperators }
-    val livingStreetSignStyle: String?
-        get() = infos.firstNotNullOfOrNull { it.livingStreetSignStyle }
-    val mobileCountryCode: Int?
-        get() = infos.firstNotNullOfOrNull { it.mobileCountryCode }
-    val noParkingLineStyle: String?
-        get() = infos.firstNotNullOfOrNull { it.noParkingLineStyle }
-    val noStandingLineStyle: String?
-        get() = infos.firstNotNullOfOrNull { it.noStandingLineStyle }
-    val noStandingSignStyle: String?
-        get() = infos.firstNotNullOfOrNull { it.noStandingSignStyle }
-    val noStoppingLineStyle: String?
-        get() = infos.firstNotNullOfOrNull { it.noStoppingLineStyle }
-    val orchardProduces: List<String>
-        get() = infos.firstNotNullOfOrNull { it.orchardProduces } ?: emptyList()
-    val parcelLockerBrand: List<String>?
-        get() = infos.firstNotNullOfOrNull { it.parcelLockerBrand }
-    val popularSports: List<String>
-        get() = infos.firstNotNullOfOrNull { it.popularSports } ?: emptyList()
-    val slowZoneLabelPosition: String?
-        get() = infos.firstNotNullOfOrNull { it.slowZoneLabelPosition }
-    val slowZoneLabelText: String?
-        get() = infos.firstNotNullOfOrNull { it.slowZoneLabelText }
     val additionalStreetsignLanguages: List<String> =
          infos.firstNotNullOfOrNull { it.additionalStreetsignLanguages } ?: emptyList()
     val additionalValidHousenumberRegex: String? =

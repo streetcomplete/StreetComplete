@@ -47,7 +47,7 @@ class AddChargingStationSocketForm :
         activity?.let {
             AlertDialog.Builder(it)
                 .setTitle(R.string.quest_generic_confirmation_title)
-                .setMessage(R.string.quest_maxweight_unusualInput_confirmation_description)
+                .setMessage(R.string.quest_charging_station_socket_unusualInput_confirmation_description)
                 .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
                     applyAnswer(counts.toMap())
                 }

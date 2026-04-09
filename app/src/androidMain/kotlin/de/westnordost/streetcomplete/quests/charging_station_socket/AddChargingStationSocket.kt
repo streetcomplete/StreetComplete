@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_charging_station_socket_title
 import de.westnordost.streetcomplete.util.math.contains
 
 class AddChargingStationSocket :
@@ -37,8 +39,7 @@ class AddChargingStationSocket :
     override val icon = R.drawable.quest_charger_socket
     override val achievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>) =
-        R.string.quest_charging_station_socket_title
+    override val title = Res.string.quest_charging_station_socket_title
 
     override fun createForm() = AddChargingStationSocketForm()
 
