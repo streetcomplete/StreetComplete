@@ -84,7 +84,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragmen
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel

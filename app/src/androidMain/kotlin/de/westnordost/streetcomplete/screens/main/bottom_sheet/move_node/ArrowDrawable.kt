@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.bottom_sheet
+package de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node
 
 import android.content.res.Resources
 import android.graphics.Canvas
