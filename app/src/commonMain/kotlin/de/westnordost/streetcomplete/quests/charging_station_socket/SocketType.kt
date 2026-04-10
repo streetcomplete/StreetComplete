@@ -34,13 +34,19 @@ val SocketType.icon: DrawableResource
    Each socket gets its own EU-label icon.
    ---------------------------------------------------------- */
 
-val SocketType.euLabel: DrawableResource
+val SocketType.euLabels: List<DrawableResource>
     get() = when (this) {
-        SocketType.TYPE2 ->        Res.drawable.socket_eu_type2
-        SocketType.TYPE2_CABLE ->  Res.drawable.socket_eu_type2
-        SocketType.TYPE2_COMBO ->  Res.drawable.socket_eu_type2_combo
-        SocketType.CHADEMO ->      Res.drawable.socket_eu_chademo
-        SocketType.DOMESTIC ->     Res.drawable.socket_eu_domestic
+        SocketType.TYPE2 -> listOf(Res.drawable.socket_eu_c_white)
+        SocketType.TYPE2_CABLE -> listOf(Res.drawable.socket_eu_c_black)
+        SocketType.TYPE2_COMBO -> listOf(
+            Res.drawable.socket_eu_k_black,
+            Res.drawable.socket_eu_l_black
+        )
+        SocketType.CHADEMO -> listOf(
+            Res.drawable.socket_eu_m_black,
+            Res.drawable.socket_eu_n_black
+        )
+        SocketType.DOMESTIC -> emptyList()
     }
 
 /* ----------------------------------------------------------

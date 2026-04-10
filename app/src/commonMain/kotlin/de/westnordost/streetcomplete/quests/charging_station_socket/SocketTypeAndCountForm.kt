@@ -80,17 +80,27 @@ private fun SocketRow(
                 Icon(
                     painter = painterResource(type.icon),
                     contentDescription = null,
-                    modifier = Modifier.size(60.dp)
+                    modifier = Modifier.size(60.dp),
+                    tint = Color.Unspecified
                 )
 
                 Spacer(Modifier.width(4.dp))
 
                 // EU Hex (smaller)
-                Icon(
-                    painter = painterResource(type.euLabel),
-                    contentDescription = null,
-                    modifier = Modifier.size(32.dp)
-                )
+                if (type.euLabels.isNotEmpty()) {
+                    Spacer(Modifier.width(2.dp))
+
+                    Row(horizontalArrangement = Arrangement.spacedBy(1.dp)) {
+                        type.euLabels.forEach { label ->
+                            Icon(
+                                painter = painterResource(label),
+                                contentDescription = null,
+                                modifier = Modifier.size(32.dp),
+                                tint = Color.Unspecified
+                            )
+                        }
+                    }
+                }
 
                 Spacer(Modifier.width(12.dp))
 
