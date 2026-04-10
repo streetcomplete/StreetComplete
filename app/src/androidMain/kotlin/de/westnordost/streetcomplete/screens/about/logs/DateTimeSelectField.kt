@@ -3,12 +3,22 @@ package de.westnordost.streetcomplete.screens.about.logs
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.PressInteraction
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.*
@@ -37,27 +47,36 @@ fun DateTimeSelectField(
         timeStyle = DateTimeFormatStyle.Short
     )
     val context = LocalContext.current
+
+    // a little hack: Compose text fields swallow the click event, so adding Modifier.clickable
+    // will not work making it clickable. But we can listen in to the interaction source and when
+    // it is clicked, do something...
+    val interactionSource = remember { MutableInteractionSource() }
+    LaunchedEffect(interactionSource) {
+        interactionSource.interactions.collect { interaction ->
+            when (interaction) {
+                is PressInteraction.Release -> {
+                    scope.launch {
+                        onValueChange(context.pickDateTime(value ?: LocalDateTime.now()))
+                    }
+                }
+            }
+        }
+    }
+
     OutlinedTextField(
         value = value?.let { dateFormatter.format(it) }.orEmpty(),
         onValueChange = { },
-        // TODO Compose modifier.clickable { } does not work, so, need to click on icon
         modifier = modifier,
         readOnly = true,
         label = label,
-        leadingIcon = {
-            IconButton(onClick = {
-                scope.launch {
-                    onValueChange(context.pickDateTime(value ?: LocalDateTime.now()))
-                }
-            }) {
-                Icon(painterResource(Res.drawable.ic_calendar_month_24), null)
-            }
-        },
+        leadingIcon = { Icon(painterResource(Res.drawable.ic_calendar_month_24), null) },
         trailingIcon = if (value != null) {
             { IconButton(onClick = { onValueChange(null) }) { ClearIcon() } }
         } else {
             null
-        }
+        },
+        interactionSource = interactionSource
     )
 }
 
@@ -71,7 +90,7 @@ private suspend fun Context.pickDateTime(initialDateTime: LocalDateTime): LocalD
 }
 
 private suspend fun Context.pickDate(initialDate: LocalDate): LocalDate =
-    // LocalDate works with with month *number* (1-12), while Android date picker dialog works
+    // LocalDate works with month *number* (1-12), while Android date picker dialog works
     // with month *index*, hence the +1 / -1
     suspendCancellableCoroutine { cont ->
         DatePickerDialog(
