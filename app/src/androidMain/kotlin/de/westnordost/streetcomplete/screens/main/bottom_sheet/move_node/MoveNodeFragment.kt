@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.bottom_sheet
+package de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node
 
 import android.content.res.Configuration
 import android.graphics.PointF
@@ -32,9 +32,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.databinding.FragmentMoveNodeBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
-import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
-import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitFeetInch
-import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnitMeter
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.awaitLayout

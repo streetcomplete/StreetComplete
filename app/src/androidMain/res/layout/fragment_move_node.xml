@@ -57,7 +57,11 @@
             <androidx.compose.ui.platform.ComposeView
                 android:id="@+id/composeView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="24dp" />
 
         </de.westnordost.streetcomplete.view.MaskSpeechbubbleCornersFrameLayout>
 

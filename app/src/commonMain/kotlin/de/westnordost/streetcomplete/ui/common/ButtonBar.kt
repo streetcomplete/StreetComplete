@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
-/** Horizontal button bar for bottom sheets. Add [VerticalDivider] between buttons as needed. */
+/** Horizontal button bar for bottom sheets. Add [HorizontalDivider] between buttons as needed. */
 @Composable
 fun ButtonBar(
     modifier: Modifier = Modifier,

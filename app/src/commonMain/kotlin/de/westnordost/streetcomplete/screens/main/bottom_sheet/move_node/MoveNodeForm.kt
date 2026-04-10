@@ -1,17 +1,18 @@
-package de.westnordost.streetcomplete.screens.main.bottom_sheet
+package de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.measure.MeasureDisplayUnit
 import de.westnordost.streetcomplete.ui.common.ButtonBar
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import org.jetbrains.compose.resources.stringResource
@@ -35,29 +36,26 @@ fun MoveNodeForm(
     onClickCancel: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier = modifier) {
-        // content area
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 16.dp, end = 16.dp, top = 10.dp, bottom = 24.dp)
-        ) {
-            Text(
-                text = when {
-                    distance < MIN_MOVE_DISTANCE ->
-                        stringResource(Res.string.node_moved_not_far_enough)
-                    distance > MAX_MOVE_DISTANCE ->
-                        stringResource(Res.string.node_moved_too_far)
-                    else ->
-                        stringResource(Res.string.node_moved, displayUnit.format(distance))
-                },
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier.padding(bottom = 8.dp)
-            )
-            Text(
-                text = stringResource(Res.string.move_node_description),
-            )
-        }
+    Column(
+        modifier = modifier.fillMaxWidth()
+    ) {
+        Text(
+            text = when {
+                distance < MIN_MOVE_DISTANCE ->
+                    stringResource(Res.string.node_moved_not_far_enough)
+                distance > MAX_MOVE_DISTANCE ->
+                    stringResource(Res.string.node_moved_too_far)
+                else ->
+                    stringResource(Res.string.node_moved, displayUnit.format(distance))
+            },
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(bottom = 8.dp)
+        )
+        Text(
+            text = stringResource(Res.string.move_node_description),
+            style = MaterialTheme.typography.body2,
+            modifier = Modifier.alpha(ContentAlpha.medium)
+        )
 
         Divider()
 

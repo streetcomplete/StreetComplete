@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.measure
+package de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node
 
 import de.westnordost.streetcomplete.util.locale.NumberFormatter
 import kotlinx.serialization.Serializable

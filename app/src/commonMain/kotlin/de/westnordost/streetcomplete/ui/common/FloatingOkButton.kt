@@ -16,8 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-/** Floating OK (check) button with animated pop-in/pop-out matching the View-based animations. */
+/** Floating OK (check) button with animated pop-in/pop-out*/
 @Composable
 fun FloatingOkButton(
     visible: Boolean,
@@ -37,8 +38,8 @@ fun FloatingOkButton(
             modifier = Modifier.size(72.dp),
         ) {
             Icon(
-                painter = painterResource(Res.drawable.ic_check_48dp),
-                contentDescription = null,
+                painter = painterResource(Res.drawable.ic_check_48),
+                contentDescription = stringResource(Res.string.ok),
                 tint = MaterialTheme.colors.onSecondary,
             )
         }
