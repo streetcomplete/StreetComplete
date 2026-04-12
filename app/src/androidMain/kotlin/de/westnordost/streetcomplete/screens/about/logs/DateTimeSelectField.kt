@@ -1,34 +1,30 @@
 package de.westnordost.streetcomplete.screens.about.logs
 
-import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
-import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.ClearIcon
+import de.westnordost.streetcomplete.ui.common.DateSelectDialog
 import de.westnordost.streetcomplete.util.ktx.now
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalDateTimeFormatter
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import org.jetbrains.compose.resources.painterResource
@@ -48,6 +44,9 @@ fun DateTimeSelectField(
     )
     val context = LocalContext.current
 
+    var showDateDialog by remember { mutableStateOf(false) }
+    val initialDateTime = value ?: LocalDateTime.now()
+
     // a little hack: Compose text fields swallow the click event, so adding Modifier.clickable
     // will not work making it clickable. But we can listen in to the interaction source and when
     // it is clicked, do something...
@@ -56,12 +55,23 @@ fun DateTimeSelectField(
         interactionSource.interactions.collect { interaction ->
             when (interaction) {
                 is PressInteraction.Release -> {
-                    scope.launch {
-                        onValueChange(context.pickDateTime(value ?: LocalDateTime.now()))
-                    }
+                    showDateDialog = true
                 }
             }
         }
+    }
+
+    if (showDateDialog) {
+        DateSelectDialog(
+            onDismissRequest = { showDateDialog = false },
+            onSelect = { date ->
+                scope.launch {
+                    val time = context.pickTime(initialDateTime.time)
+                    onValueChange(LocalDateTime(date, time))
+                }
+            },
+            initialDate = initialDateTime.date,
+        )
     }
 
     OutlinedTextField(
@@ -80,30 +90,7 @@ fun DateTimeSelectField(
     )
 }
 
-// TODO Compose - Jetpack Compose is still lacking Date and Time Pickers and dialogs
-
-private suspend fun Context.pickDateTime(initialDateTime: LocalDateTime): LocalDateTime {
-    val date = pickDate(initialDateTime.date)
-    val time = pickTime(initialDateTime.time)
-
-    return LocalDateTime(date, time)
-}
-
-private suspend fun Context.pickDate(initialDate: LocalDate): LocalDate =
-    // LocalDate works with month *number* (1-12), while Android date picker dialog works
-    // with month *index*, hence the +1 / -1
-    suspendCancellableCoroutine { cont ->
-        DatePickerDialog(
-            this,
-            R.style.Theme_Bubble_Dialog_DatePicker,
-            { _, year, monthIndex, dayOfMonth ->
-                cont.resume(LocalDate(year, monthIndex + 1, dayOfMonth))
-            },
-            initialDate.year,
-            initialDate.monthNumber - 1,
-            initialDate.dayOfMonth
-        ).show()
-    }
+// TODO Compose - replace with a TimeSelectDialog using the custom TimePicker composable
 
 private suspend fun Context.pickTime(initialTime: LocalTime): LocalTime =
     suspendCancellableCoroutine { cont ->
