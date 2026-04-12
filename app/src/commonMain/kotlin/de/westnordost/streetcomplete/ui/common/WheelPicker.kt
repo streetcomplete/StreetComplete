@@ -29,6 +29,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.SubcomposeLayout
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastFirstOrNull
@@ -85,7 +87,6 @@ class WheelPickerState(selectedItemIndex: Int = 0) : ScrollableState {
  *  vertical wheel, the item displayed in the center is selected.
  *  [visibleAdjacentItems] determines how many adjacent items to the one that is selected should
  *  be displayed. */
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun <T> WheelPicker(
     items: List<T>,
@@ -94,6 +95,47 @@ fun <T> WheelPicker(
     key: ((T) -> Any)? = null,
     visibleAdjacentItems: Int = 1,
     horizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
+    content: @Composable (item: T) -> Unit
+) {
+    SubcomposeLayout(modifier = modifier) { constraints ->
+        val maxItemWidth = subcompose("measurement") {
+            for (item in items) {
+                Box(Modifier.padding(horizontal = 8.dp, vertical = 4.dp)) {
+                    content(item)
+                }
+            }
+        }.maxOfOrNull { it.measure(Constraints()).width } ?: 0
+
+        val placeable = subcompose("main") {
+            WheelPickerContent(
+                items = items,
+                state = state,
+                key = key,
+                visibleAdjacentItems = visibleAdjacentItems,
+                horizontalAlignment = horizontalAlignment,
+                content = content,
+            )
+        }.first().measure(
+            constraints.copy(
+                minWidth = maxItemWidth,
+                maxWidth = maxItemWidth.coerceAtMost(constraints.maxWidth),
+            )
+        )
+
+        layout(placeable.width, placeable.height) {
+            placeable.place(0, 0)
+        }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun <T> WheelPickerContent(
+    items: List<T>,
+    state: WheelPickerState,
+    key: ((T) -> Any)?,
+    visibleAdjacentItems: Int,
+    horizontalAlignment: Alignment.Horizontal,
     content: @Composable (item: T) -> Unit
 ) {
     val scope = rememberCoroutineScope()
@@ -107,7 +149,7 @@ fun <T> WheelPicker(
     val visibleItemsCount = visibleAdjacentItems * 2 + 1
 
     LazyColumn(
-        modifier = modifier
+        modifier = Modifier
             .height(selectedItemHeight * visibleItemsCount)
             .fadingEdges(
                 top = selectedItemHeight * visibleAdjacentItems,
