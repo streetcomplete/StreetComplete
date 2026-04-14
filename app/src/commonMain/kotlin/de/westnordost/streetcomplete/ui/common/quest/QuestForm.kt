@@ -1,79 +1,64 @@
 package de.westnordost.streetcomplete.ui.common.quest
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
-import androidx.compose.material.BottomSheetScaffold
-import androidx.compose.material.Button
 import androidx.compose.material.ContentAlpha
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.FabPosition
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.MaterialTheme.colors
-import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
-import androidx.compose.material.TopAppBar
-import androidx.compose.material.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocal
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_arrow_drop_down_24
-import de.westnordost.streetcomplete.resources.note_for_object
-import de.westnordost.streetcomplete.resources.quest_generic_otherAnswers2
-import de.westnordost.streetcomplete.resources.quest_maxweight_title
-import de.westnordost.streetcomplete.resources.quest_streetName_hint
-import de.westnordost.streetcomplete.resources.quest_streetName_title
-import de.westnordost.streetcomplete.screens.main.messages.LoremIpsumLines
-import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.FloatingOkButton
+import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheet
+import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetState
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
+import de.westnordost.streetcomplete.ui.ktx.isLandscape
+import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.ui.util.annotateLinks
-import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.StringResource
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+
+/** A quest form can **either** have an OK button for confirmation **or** a list of button answers
+ *  at-a-time */
+sealed interface QuestAnswer
+
+data class Answers(val answers: List<Answer>) : QuestAnswer {
+    // convenience constructors
+    constructor() : this(emptyList())
+    constructor(vararg answers: Answer) : this(answers.toList())
+}
+data class Confirm(
+    val isVisible: Boolean,
+    val onClick: () -> Unit,
+) : QuestAnswer
+
 
 /** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
@@ -84,53 +69,82 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun QuestForm(
     questType: QuestType,
+    answers: QuestAnswer,
     modifier: Modifier = Modifier,
     title: String = stringResource(questType.title),
     subtitle: AnnotatedString? = null,
     hintText: String? = questType.hint?.let { stringResource(it) },
     hintImages: List<DrawableResource> = questType.hintImages,
     note: String? = null,
-    answers: List<Answer> = emptyList(),
-    otherAnswers: List<Answer> = emptyList(),
-    contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
+    otherAnswers: Answers = Answers(),
+    contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
-    val elevation = 16.dp
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+    val windowInfo = LocalWindowInfo.current
+
+    val initialState =
+        if (LocalWindowInfo.current.isLandscape) BottomSheetState.Expanded
+        else BottomSheetState.Collapsed
+
+    val elevation = 4.dp
+
+    Box(modifier = modifier.sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))
     ) {
-        SpeechBubble(
-            elevation = elevation,
-            arrowDirection = SpeechBubbleArrowDirection.Top,
-            arrowPlacementBias = 0.1f,
-            modifier = Modifier.padding(horizontal = 4.dp)
+        BottomSheet(
+            initialState = initialState,
+            peekHeight = Dimensions.QuestFormPeekHeight
         ) {
-            QuestHeader(
-                title = title,
-                subtitle = subtitle,
-                hintText = hintText,
-                hintImages = hintImages,
-                modifier = Modifier.fillMaxWidth(),
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .safeDrawingPadding(),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                SpeechBubble(
+                    elevation = elevation,
+                    arrowDirection = SpeechBubbleArrowDirection.Top,
+                    arrowPlacementBias = 0.1f,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                ) {
+                    QuestHeader(
+                        title = title,
+                        subtitle = subtitle,
+                        hintText = hintText,
+                        hintImages = hintImages,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+
+                if (note != null) {
+                    NoteBubble(
+                        text = note,
+                        elevation = elevation,
+                        modifier = Modifier
+                            .padding(horizontal = 8.dp)
+                            .fillMaxWidth()
+                    )
+                }
+
+                QuestAnswerBubble(
+                    modifier = Modifier.fillMaxWidth(),
+                    elevation = elevation,
+                    answers = (answers as? Answers)?.answers ?: emptyList(),
+                    otherAnswers = otherAnswers.answers,
+                    contentPadding = contentPadding,
+                    content = content,
+                )
+            }
+        }
+        if (answers is Confirm) {
+            FloatingOkButton(
+                visible = answers.isVisible,
+                onClick = answers.onClick,
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .safeDrawingPadding()
+                    .padding(8.dp)
             )
         }
-
-        if (note != null) {
-            NoteBubble(
-                text = note,
-                elevation = elevation,
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 4.dp)
-            )
-        }
-
-        QuestAnswerBubble(
-            modifier = Modifier.fillMaxWidth(),
-            elevation = elevation,
-            answers = answers,
-            otherAnswers = otherAnswers,
-            contentPadding = contentPadding,
-            content = content,
-        )
     }
 }
 
@@ -144,6 +158,7 @@ private fun NoteBubble(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
         elevation = elevation,
+        border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
     ) {
         Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
             Text(
@@ -164,6 +179,7 @@ private fun NoteBubble(
 @Preview
 @Composable
 private fun QuestFormPreview() {
+    Box(Modifier.fillMaxSize().background(Color.Green)) {
     QuestForm(
         questType = object : QuestType {
             override val icon = 0
@@ -174,16 +190,13 @@ private fun QuestFormPreview() {
         },
         subtitle = AnnotatedString("Tertiary Road"),
         note = "unpaved",
-        answers = listOf(
-            Answer("Yes") {},
-            Answer("No") {},
-            Answer("Perhaps") {},
-        ),
-        otherAnswers = listOf(
+        answers = Confirm(true, onClick = {}),
+        otherAnswers = Answers(
             Answer("Can't say") {},
             Answer("Can say") {},
         )
     ) {
-        Text("Some content")
+        Text(LoremIpsum(500).values.joinToString(" "))
+    }
     }
 }

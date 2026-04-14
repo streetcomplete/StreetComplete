@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
@@ -19,6 +21,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
+import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 
 /** Speech bubble for the quest answer, i.e. content and/or button bar answers */
 @Composable
@@ -30,6 +33,7 @@ fun QuestAnswerBubble(
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
+    val scrollState = rememberScrollState()
     Surface(
         modifier = modifier,
         shape = RoundedCornerShape(16.dp),
@@ -37,7 +41,10 @@ fun QuestAnswerBubble(
         border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
     ) {
         ProvideTextStyle(MaterialTheme.typography.body1) {
-            Column {
+            Column(Modifier
+                .fadingVerticalScrollEdges(scrollState, 32.dp)
+                .verticalScroll(scrollState),
+            ) {
                 if (content != null) {
                     Box(
                         modifier = Modifier.fillMaxWidth().padding(contentPadding),
