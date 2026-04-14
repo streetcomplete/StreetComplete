@@ -49,7 +49,7 @@ fun BottomSheet(
     }
     val flingBehavior = AnchoredDraggableDefaults.flingBehavior(state)
     val nestedScrollConnection = remember(state, flingBehavior) {
-        ConsumeNestedScrollConnection(
+        ConsumeSwipeWithinBottomSheetBoundsNestedScrollConnection(
             state = state,
             flingBehavior = flingBehavior,
             orientation = Orientation.Vertical
@@ -90,7 +90,7 @@ fun BottomSheet(
     }
 }
 
-private fun ConsumeNestedScrollConnection(
+private fun ConsumeSwipeWithinBottomSheetBoundsNestedScrollConnection(
     state: AnchoredDraggableState<*>,
     flingBehavior: FlingBehavior,
     orientation: Orientation,
@@ -118,6 +118,15 @@ private fun ConsumeNestedScrollConnection(
         val currentOffset = state.requireOffset()
         return if (toFling < 0 && currentOffset > state.anchors.minPosition()) {
             // since we go to the anchor with tween settling, consume all for the best UX
+            state.anchoredDrag {
+                val scrollFlingScope = object : ScrollScope {
+                    override fun scrollBy(pixels: Float): Float {
+                        dragTo(state.offset + pixels)
+                        return pixels
+                    }
+                }
+                with(flingBehavior) { scrollFlingScope.performFling(toFling) }
+            }
             available
         } else {
             Velocity.Zero
@@ -125,7 +134,7 @@ private fun ConsumeNestedScrollConnection(
     }
 
     override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
-        // this API is batshit crazy. Do I understand it? No. I got it from the example at
+        // this API is crazy. Do I understand it? No. I got it from the example at
         // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:compose/foundation/foundation/samples/src/main/java/androidx/compose/foundation/samples/AnchoredDraggableSample.kt;l=416-432;drc=7440f70755e3735dbd8f04718d12dfeec7584dc8
         // pointed at from the comment of the now deprecated `state.settle(velocity)` API.
         state.anchoredDrag {
@@ -135,7 +144,7 @@ private fun ConsumeNestedScrollConnection(
                     return pixels
                 }
             }
-            with(flingBehavior) { scrollFlingScope.performFling(consumed.toFloat()) }
+            with(flingBehavior) { scrollFlingScope.performFling(available.toFloat()) }
         }
         return available
     }
