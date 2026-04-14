@@ -13,14 +13,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.theme.speechBubbleCornerRadius
 
 /** Surface in the shape of a speech bubble with a border stroke and a default inner padding by
  *  default. */
 @Composable
 fun SpeechBubble(
     modifier: Modifier = Modifier,
-    cornerRadius: Dp = 16.dp,
-    arrowSize: Dp = 12.dp,
+    cornerRadius: Dp = MaterialTheme.shapes.speechBubbleCornerRadius,
+    arrowSize: Dp = cornerRadius * 0.75f,
     arrowDirection: SpeechBubbleArrowDirection = SpeechBubbleArrowDirection.Bottom,
     arrowPlacementBias: Float = 0f,
     color: Color = MaterialTheme.colors.surface,

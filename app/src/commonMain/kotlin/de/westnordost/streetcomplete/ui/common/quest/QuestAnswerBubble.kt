@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
+import de.westnordost.streetcomplete.ui.theme.speechBubbleCornerRadius
 
 /** Speech bubble for the quest answer, i.e. content and/or button bar answers */
 @Composable
@@ -36,7 +37,7 @@ fun QuestAnswerBubble(
     val scrollState = rememberScrollState()
     Surface(
         modifier = modifier,
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(MaterialTheme.shapes.speechBubbleCornerRadius),
         elevation = elevation,
         border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
     ) {

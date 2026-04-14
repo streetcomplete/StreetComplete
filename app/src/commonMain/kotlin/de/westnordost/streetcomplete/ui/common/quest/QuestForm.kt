@@ -91,8 +91,7 @@ fun QuestForm(
 
     val elevation = 4.dp
 
-    Box(modifier = modifier.sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))
-    ) {
+    Box(modifier = modifier.sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))) {
         BottomSheet(
             initialState = initialState,
             peekHeight = Dimensions.QuestFormPeekHeight

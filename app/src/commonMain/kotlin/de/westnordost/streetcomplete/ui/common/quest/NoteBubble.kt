@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
+import de.westnordost.streetcomplete.ui.theme.speechBubbleCornerRadius
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.ui.util.annotateLinks
 import org.jetbrains.compose.resources.stringResource
@@ -30,7 +31,7 @@ fun NoteBubble(
 ) {
     Surface(
         modifier = modifier,
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(MaterialTheme.shapes.speechBubbleCornerRadius),
         elevation = elevation,
         border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
     ) {
