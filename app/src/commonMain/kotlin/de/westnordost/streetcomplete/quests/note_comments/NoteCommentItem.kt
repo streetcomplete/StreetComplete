@@ -24,11 +24,12 @@ import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.withLink
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.SpeechBubbleArrowDirection
-import de.westnordost.streetcomplete.ui.common.SpeechBubbleShape
+import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
+import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
 import de.westnordost.streetcomplete.ui.util.annotateLinks
 import de.westnordost.streetcomplete.ui.util.formatAnnotated
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
@@ -47,6 +48,7 @@ fun NoteCommentItem(
     noteComment: NoteComment,
     avatarPainter: Painter?,
     modifier: Modifier = Modifier,
+    elevation: Dp = 16.dp,
     textLinkStyles: TextLinkStyles? = null
 ) {
     val annotatedUserName = buildAnnotatedString {
@@ -83,9 +85,8 @@ fun NoteCommentItem(
             Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
                 Surface(
                     modifier = Modifier.size(50.dp),
-                    elevation = 16.dp,
+                    elevation = elevation,
                     shape = CircleShape,
-                    border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
                 ) {
                     Image(
                         painter = avatarPainter ?: painterResource(Res.drawable.avatar_osm_anonymous),
@@ -93,23 +94,12 @@ fun NoteCommentItem(
                     )
                 }
 
-                val speechBubbleShape = SpeechBubbleShape(
+                SpeechBubble(
                     arrowDirection = SpeechBubbleArrowDirection.Start,
-                    cornerRadius = 16.dp,
-                    arrowSize = 10.dp,
-                )
-                Surface(
-                    elevation = 16.dp,
-                    shape = speechBubbleShape,
-                    border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
+                    elevation = elevation,
                 ) {
                     SelectionContainer {
-                        Column(
-                            modifier = Modifier
-                                .padding(speechBubbleShape.contentPadding)
-                                .padding(horizontal = 16.dp, vertical = 12.dp),
-                            verticalArrangement = Arrangement.spacedBy(4.dp)
-                        ) {
+                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                             Text(annotatedCommentText)
                             Divider()
                             Text(

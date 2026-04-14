@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.common
+package de.westnordost.streetcomplete.ui.common.speech_bubble
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Slider
 import androidx.compose.material.Text
