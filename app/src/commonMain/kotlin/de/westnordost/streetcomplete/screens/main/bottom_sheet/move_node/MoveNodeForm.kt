@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.ButtonBar
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import org.jetbrains.compose.resources.stringResource
 
@@ -60,10 +59,8 @@ fun MoveNodeForm(
         Divider()
 
         // button panel
-        ButtonBar {
-            TextButton(onClick = onClickCancel) {
-                Text(stringResource(Res.string.cancel))
-            }
+        Column(Modifier.fillMaxWidth()) {
+            TextButton(onClickCancel) { Text(stringResource(Res.string.cancel)) }
         }
     }
 }
