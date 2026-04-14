@@ -66,8 +66,9 @@ data class Confirm(
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
  *  [contentPadding] (if there is any content) and below a row of text buttons showing different
- *  [answers]. At the very start of the text button row, there's a text button labeled "Uh…" that,
- *  when tapped, opens a dropdown menu containing [otherAnswers]. */
+ *  [answers] (defined from start to end). At the very start of the text button row, there's a text
+ *  button labeled "Uh…" that, when tapped, opens a dropdown menu containing [otherAnswers]
+ *  (defined from start to bottom). */
 @Composable
 fun QuestForm(
     questType: QuestType,
@@ -153,7 +154,6 @@ fun QuestForm(
 @Preview
 @Composable
 private fun QuestFormPreview() {
-    Box(Modifier.fillMaxSize().background(Color.Green)) {
     QuestForm(
         questType = object : QuestType {
             override val icon = 0
@@ -165,9 +165,9 @@ private fun QuestFormPreview() {
         subtitle = AnnotatedString("Tertiary Road"),
         note = "unpaved",
         answers = Answers(
-            Answer("Yes") {},
-            Answer("Maybe") {},
             Answer("No") {},
+            Answer("Maybe") {},
+            Answer("Yes") {},
         ),
         otherAnswers = Answers(
             Answer("Can't say") {},
@@ -175,6 +175,5 @@ private fun QuestFormPreview() {
         )
     ) {
         Text(LoremIpsum(200).values.joinToString(" "))
-    }
     }
 }
