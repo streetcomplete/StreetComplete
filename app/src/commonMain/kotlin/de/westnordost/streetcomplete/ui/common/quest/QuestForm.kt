@@ -65,7 +65,7 @@ data class Confirm(
 /** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
- *  [contentPadding] (if there is any content) and below a row oftext buttons showing different
+ *  [contentPadding] (if there is any content) and below a row of text buttons showing different
  *  [answers]. At the very start of the text button row, there's a text button labeled "Uh…" that,
  *  when tapped, opens a dropdown menu containing [otherAnswers]. */
 @Composable
@@ -150,35 +150,6 @@ fun QuestForm(
     }
 }
 
-@Composable
-private fun NoteBubble(
-    text: String,
-    modifier: Modifier = Modifier,
-    elevation: Dp = 0.dp,
-) {
-    Surface(
-        modifier = modifier,
-        shape = RoundedCornerShape(16.dp),
-        elevation = elevation,
-        border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
-    ) {
-        Column(Modifier.padding(horizontal = 16.dp, vertical = 12.dp)) {
-            Text(
-                text = stringResource(Res.string.note_for_object),
-                style = MaterialTheme.typography.titleSmall
-            )
-            CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                SelectionContainer {
-                    Text(
-                        text = text.annotateLinks(MaterialTheme.typography.defaultTextLinkStyles()),
-                        style = MaterialTheme.typography.body2,
-                    )
-                }
-            }
-        }
-    }
-}
-
 @Preview
 @Composable
 private fun QuestFormPreview() {
@@ -193,13 +164,17 @@ private fun QuestFormPreview() {
         },
         subtitle = AnnotatedString("Tertiary Road"),
         note = "unpaved",
-        answers = Confirm(true, onClick = {}),
+        answers = Answers(
+            Answer("Yes") {},
+            Answer("Maybe") {},
+            Answer("No") {},
+        ),
         otherAnswers = Answers(
             Answer("Can't say") {},
             Answer("Can say") {},
         )
     ) {
-        Text(LoremIpsum(500).values.joinToString(" "))
+        Text(LoremIpsum(200).values.joinToString(" "))
     }
     }
 }
