@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.common.bottom_sheet
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.AnchoredDraggableDefaults
 import androidx.compose.foundation.gestures.AnchoredDraggableState
 import androidx.compose.foundation.gestures.DraggableAnchors
@@ -10,35 +9,26 @@ import androidx.compose.foundation.gestures.ScrollScope
 import androidx.compose.foundation.gestures.anchoredDraggable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
 import androidx.compose.ui.input.nestedscroll.NestedScrollSource
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onSizeChanged
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetState.*
+import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetState.Collapsed
+import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetState.Expanded
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import kotlin.jvm.JvmName
 import kotlin.math.max
@@ -86,6 +76,9 @@ fun BottomSheet(
                 // flickering
                 .alpha(if (state.offset.isNaN()) 0f else 1f)
                 .offset { IntOffset(0, state.offset.toInt()) }
+                // necessary because drag events are usually dispatched to nested scroll views
+                // first, we need to steal back control of it so we can first expand the sheet up
+                // via drag before allowing to scroll in the nested view
                 .nestedScroll(nestedScrollConnection)
                 .anchoredDraggable(
                     state = state,
@@ -132,6 +125,9 @@ private fun ConsumeNestedScrollConnection(
     }
 
     override suspend fun onPostFling(consumed: Velocity, available: Velocity): Velocity {
+        // this API is batshit crazy. Do I understand it? No. I got it from the example at
+        // https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main:compose/foundation/foundation/samples/src/main/java/androidx/compose/foundation/samples/AnchoredDraggableSample.kt;l=416-432;drc=7440f70755e3735dbd8f04718d12dfeec7584dc8
+        // pointed at from the comment of the now deprecated `state.settle(velocity)` API.
         state.anchoredDrag {
             val scrollFlingScope = object : ScrollScope {
                 override fun scrollBy(pixels: Float): Float {
@@ -154,22 +150,4 @@ private fun ConsumeNestedScrollConnection(
 
     @JvmName("offsetToFloat")
     private fun Offset.toFloat(): Float = if (orientation == Orientation.Horizontal) x else y
-}
-
-@Preview
-@Composable
-private fun BottomSheetPreview() {
-    BottomSheet {
-        Column(Modifier
-            .fillMaxWidth()
-            .height(300.dp)
-            .background(Color.Green)
-        ) {
-            Box(Modifier.fillMaxWidth().height(50.dp).background(Color.Blue))
-            Text(
-                text = LoremIpsum(1000).values.joinToString(" "),
-                modifier = Modifier.verticalScroll(state = rememberScrollState())
-            )
-        }
-    }
 }
