@@ -1,8 +1,13 @@
 package de.westnordost.streetcomplete.ui.theme
 
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Typography
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 
 private val material2 = Typography()
 
@@ -30,3 +35,14 @@ val Typography.headlineSmall get() = h5
 val Typography.titleLarge get() = h6
 val Typography.titleMedium get() = subtitle1
 val Typography.titleSmall get() = subtitle2
+
+@Composable
+fun Typography.defaultTextLinkStyles() = TextLinkStyles(
+    style = SpanStyle(
+        color = MaterialTheme.colors.primary,
+        textDecoration = TextDecoration.Underline
+    ),
+    focusedStyle = SpanStyle(
+        color = MaterialTheme.colors.secondary,
+    )
+)
