@@ -100,7 +100,7 @@ import org.jetbrains.compose.resources.stringResource
 private fun EditTypePresetsList(
     viewModel: EditTypePresetsViewModel,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    contentPadding: PaddingValues = PaddingValues.Zero
 ) {
     val presets by viewModel.presets.collectAsState()
 

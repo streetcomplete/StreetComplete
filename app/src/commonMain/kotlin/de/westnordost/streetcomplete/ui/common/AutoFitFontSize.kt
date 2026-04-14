@@ -16,7 +16,7 @@ fun AutoFitFontSize(
     value: String,
     modifier: Modifier = Modifier,
     maxLines: Int = 1,
-    contentPadding: PaddingValues = PaddingValues(0.dp),
+    contentPadding: PaddingValues = PaddingValues.Zero,
     content: @Composable () -> Unit,
 ) {
     val textStyle = LocalTextStyle.current
