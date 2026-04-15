@@ -26,7 +26,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 
 /** Same as the normal FloatingActionButton, but the FloatingActionButton from Material2 doesn't
- *  have an `enabled` parameter … */
+ *  have an [enabled] parameter … */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun FloatingActionButton(

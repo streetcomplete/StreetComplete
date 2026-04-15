@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 
-/** Speech bubble for the quest answer, i.e. content and/or button bar answers */
+/** Speech bubble for the quest answer, i.e. [content] and/or button bar answers */
 @Composable
 fun QuestAnswerBubble(
     modifier: Modifier = Modifier,
