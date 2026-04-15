@@ -270,7 +270,7 @@ private fun CalendarPageContent(
                     },
                 )
                 Text(
-                    text = stringResource(Res.string.dialog_dont_notify_again),
+                    text = stringResource(Res.string.dialog_dont_notify_again2),
                     style = MaterialTheme.typography.body1
                 )
             }
