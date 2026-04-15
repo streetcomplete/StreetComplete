@@ -222,7 +222,7 @@ class MainActivity :
         supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
 
         lifecycle.addObserver(questAutoSyncer)
-        feedsUpdater.updateDaily()
+        feedsUpdater.updateAtMostDaily()
 
         locationManager = FineLocationManager(this, this::onLocationChanged)
 

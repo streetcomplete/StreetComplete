@@ -18,12 +18,15 @@ class FeedsUpdater(
     private val achievementsSource: AchievementsSource,
 ) {
     /** update at most daily */
-    fun updateDaily() {
+    fun updateAtMostDaily() {
         val today = LocalDate.now()
         val lastUpdate = prefs.lastFeedUpdate
         if (lastUpdate != null && lastUpdate >= today) return
+    }
 
-        prefs.lastFeedUpdate = today
+    /** (force) update now */
+    fun updateNow() {
+        prefs.lastFeedUpdate = LocalDate.now()
 
         userUpdater.update()
         val disabledMessageTypes = prefs.disabledMessageTypes

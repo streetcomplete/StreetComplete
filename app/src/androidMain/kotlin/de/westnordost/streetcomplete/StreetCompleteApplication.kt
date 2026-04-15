@@ -2,10 +2,8 @@ package de.westnordost.streetcomplete
 
 import android.app.Application
 import android.content.ComponentCallbacks2
-import android.net.ConnectivityManager
 import android.os.LocaleList
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.getSystemService
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
@@ -43,7 +41,6 @@ import de.westnordost.streetcomplete.data.quest.questModule
 import de.westnordost.streetcomplete.data.upload.uploadModule
 import de.westnordost.streetcomplete.data.urlconfig.urlConfigModule
 import de.westnordost.streetcomplete.data.user.UserLoginController
-import de.westnordost.streetcomplete.data.user.UserUpdater
 import de.westnordost.streetcomplete.data.user.achievements.achievementDefinitionsModule
 import de.westnordost.streetcomplete.data.user.achievements.achievementsModule
 import de.westnordost.streetcomplete.data.user.achievements.editTypeAliasesModule
@@ -165,7 +162,7 @@ class StreetCompleteApplication : Application() {
             editHistoryController.deleteSyncedOlderThan(nowAsEpochMilliseconds() - ApplicationConstants.MAX_UNDO_HISTORY_AGE)
         }
 
-        feedsUpdater.updateDaily()
+        feedsUpdater.updateNow()
 
         enqueuePeriodicCleanupWork()
 
