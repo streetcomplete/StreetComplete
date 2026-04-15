@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheet
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetState
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
+import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
 import de.westnordost.streetcomplete.ui.ktx.isLandscape
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
@@ -66,9 +67,10 @@ data class Confirm(
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
  *  [contentPadding] (if there is any content) and below a row of text buttons showing different
- *  [answers] (defined from start to end). At the very start of the text button row, there's a text
- *  button labeled "Uh…" that, when tapped, opens a dropdown menu containing [otherAnswers]
- *  (defined from start to bottom). */
+ *  [answers] (defined from start to end).
+ *
+ *  At the very start of the text button row, there's a text button labeled "Uh…" that, when tapped,
+ *  opens a dropdown menu containing [otherAnswers] (defined from start to bottom). */
 @Composable
 fun QuestForm(
     questType: QuestType,
@@ -149,6 +151,35 @@ fun QuestForm(
         }
     }
 }
+
+/** Speech bubble (without arrow) that contains a note another user left for this object */
+@Composable
+private fun NoteBubble(
+    text: String,
+    modifier: Modifier = Modifier,
+    elevation: Dp = 0.dp,
+) {
+    SpeechBubbleNoArrow(
+        modifier = modifier,
+        elevation = elevation
+    ) {
+        Column {
+            Text(
+                text = stringResource(Res.string.note_for_object),
+                style = MaterialTheme.typography.titleSmall
+            )
+            CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+                SelectionContainer {
+                    Text(
+                        text = text.annotateLinks(MaterialTheme.typography.defaultTextLinkStyles()),
+                        style = MaterialTheme.typography.body2,
+                    )
+                }
+            }
+        }
+    }
+}
+
 
 @Preview
 @Composable
