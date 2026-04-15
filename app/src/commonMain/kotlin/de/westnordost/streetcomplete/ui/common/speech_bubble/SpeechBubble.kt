@@ -16,8 +16,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.divider
 
-/** Surface in the shape of a speech bubble with a border stroke and a default inner padding by
- *  default. */
+/** Surface in the shape of a speech bubble with a default border stroke and inner padding. */
 @Composable
 fun SpeechBubble(
     modifier: Modifier = Modifier,
