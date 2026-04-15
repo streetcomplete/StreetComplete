@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.common.overlay
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.sizeIn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
 import androidx.compose.material.DropdownMenu
@@ -19,9 +17,7 @@ import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -36,8 +32,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_generic_otherAnswers2
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.MoreIcon
@@ -46,8 +40,6 @@ import de.westnordost.streetcomplete.ui.common.quest.Answers
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.titleMedium
-import de.westnordost.streetcomplete.ui.theme.titleSmall
-import org.jetbrains.compose.resources.stringResource
 
 /** A generic overlay form containing the center-aligned [content], padded with [contentPadding].
  *  Above it, an optional bubble with a [label] (in which the element is usually named).
@@ -94,7 +86,7 @@ fun OverlayForm(
                 }
             }
 
-            OverlayAnswerBubble(
+            OverlayContentBubble(
                 modifier = Modifier.fillMaxWidth(),
                 elevation = elevation,
                 otherAnswers = otherAnswers.answers,
@@ -114,8 +106,9 @@ fun OverlayForm(
     }
 }
 
+/** Speech bubble for the overlay form content answer, i.e. content and more-button */
 @Composable
-private fun OverlayAnswerBubble(
+private fun OverlayContentBubble(
     modifier: Modifier = Modifier,
     elevation: Dp = 0.dp,
     otherAnswers: List<Answer> = emptyList(),
@@ -143,6 +136,7 @@ private fun OverlayAnswerBubble(
     }
 }
 
+/** …-button that opens a dropdown with the provided [answers]  */
 @Composable
 private fun MoreButton(
     answers: List<Answer>,

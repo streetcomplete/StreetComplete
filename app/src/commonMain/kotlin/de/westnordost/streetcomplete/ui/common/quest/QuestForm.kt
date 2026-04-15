@@ -66,8 +66,8 @@ data class Confirm(
 /** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
- *  [contentPadding] (if there is any content) and below a row of text buttons showing different
- *  [answers] (defined from start to end).
+ *  [contentPadding] (if there is any content) and below *either* a row of text buttons showing
+ *  different [answers] (defined from start to end) *or* an OK confirmation button.
  *
  *  At the very start of the text button row, there's a text button labeled "Uh…" that, when tapped,
  *  opens a dropdown menu containing [otherAnswers] (defined from start to bottom). */
