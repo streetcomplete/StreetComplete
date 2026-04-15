@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.note_comments
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -8,11 +7,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -30,7 +27,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
-import de.westnordost.streetcomplete.ui.theme.divider
+import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
 import de.westnordost.streetcomplete.ui.util.annotateLinks
 import de.westnordost.streetcomplete.ui.util.formatAnnotated
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
@@ -116,11 +113,7 @@ fun NoteCommentItem(
         // the action (if anything else than a normal comment) is shown in a separate bubble, just
         // like for example in github ("comment and close")
         if (actionTextResource != null) {
-            Surface(
-                elevation = 16.dp,
-                shape = RoundedCornerShape(16.dp),
-                border = BorderStroke(1.dp, MaterialTheme.colors.divider)
-            ) {
+            SpeechBubbleNoArrow(elevation = elevation) {
                 Text(
                     text = stringResource(actionTextResource)
                         .formatAnnotated(annotatedUserName, dateText),
