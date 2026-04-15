@@ -62,9 +62,7 @@ private fun getMonthsString(
     locale: Locale,
     layoutDirection: LayoutDirection,
 ): String {
-    if (months.isEmpty()) {
-        return "(" + stringResource(Res.string.quest_openingHours_unspecified_range) + ")"
-    }
+    if (months.isEmpty()) return ""
     val style = DateTimeTextSymbolStyle.Short
 
     return months

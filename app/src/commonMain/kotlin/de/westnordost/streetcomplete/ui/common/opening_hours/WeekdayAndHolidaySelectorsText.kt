@@ -74,9 +74,7 @@ private fun getWeekdaysAndHolidaysString(
     locale: Locale,
     layoutDirection: LayoutDirection,
 ): String {
-    if (weekdays.isEmpty() && holidays.isEmpty()) {
-        return "(" + stringResource(Res.string.quest_openingHours_unspecified_range) + ")"
-    }
+    if (weekdays.isEmpty() && holidays.isEmpty()) return ""
 
     val style = DateTimeTextSymbolStyle.Short
     val sb = StringBuilder()
