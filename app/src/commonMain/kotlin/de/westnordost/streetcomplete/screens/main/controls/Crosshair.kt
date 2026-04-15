@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.ui.theme.Dimensions
 /** A crosshair at the position at which a new POI should be created */
 @Composable
 fun Crosshair(modifier: Modifier = Modifier) {
-    Box(modifier) {
+    Box(modifier.fillMaxSize()) {
         Icon(
             painter = painterResource(Res.drawable.crosshair),
             contentDescription = null,
