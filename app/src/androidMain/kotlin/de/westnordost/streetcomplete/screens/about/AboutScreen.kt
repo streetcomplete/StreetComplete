@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
 import de.westnordost.streetcomplete.util.ktx.displayLanguage
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 
 @Composable
 fun AboutScreen(
@@ -80,7 +81,7 @@ fun AboutScreen(
 
                 Preference(
                     name = stringResource(Res.string.about_title_license),
-                    onClick = { uriHandler.openUri("https://www.gnu.org/licenses/gpl-3.0.html") },
+                    onClick = { uriHandler.tryOpenUri("https://www.gnu.org/licenses/gpl-3.0.html") },
                 ) {
                     Text("GPLv3")
                     OpenInBrowserIcon()
@@ -100,12 +101,12 @@ fun AboutScreen(
 
                 Preference(
                     name = stringResource(Res.string.about_title_faq),
-                    onClick = { uriHandler.openUri("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ") },
+                    onClick = { uriHandler.tryOpenUri("https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ") },
                 ) { OpenInBrowserIcon() }
 
                 Preference(
                     name = stringResource(Res.string.about_title_report_error),
-                    onClick = { uriHandler.openUri("https://github.com/streetcomplete/StreetComplete/issues") },
+                    onClick = { uriHandler.tryOpenUri("https://github.com/streetcomplete/StreetComplete/issues") },
                 ) { OpenInBrowserIcon() }
 
                 Preference(
@@ -125,7 +126,7 @@ fun AboutScreen(
 
                 Preference(
                     name = stringResource(Res.string.about_title_translate),
-                    onClick = { uriHandler.openUri("https://poeditor.com/join/project/IE4GC127Ki") },
+                    onClick = { uriHandler.tryOpenUri("https://poeditor.com/join/project/IE4GC127Ki") },
                     description = stringResource(
                         Res.string.about_description_translate,
                         Locale.current.displayLanguage ?: Locale.current.language,
@@ -135,7 +136,7 @@ fun AboutScreen(
 
                 Preference(
                     name = stringResource(Res.string.about_title_repository),
-                    onClick = { uriHandler.openUri("https://github.com/streetcomplete/StreetComplete") },
+                    onClick = { uriHandler.tryOpenUri("https://github.com/streetcomplete/StreetComplete") },
                 ) { OpenInBrowserIcon() }
             }
 
@@ -144,13 +145,13 @@ fun AboutScreen(
                 if (context.isInstalledViaGooglePlay()) {
                     Preference(
                         name = stringResource(Res.string.about_title_rate),
-                        onClick = { uriHandler.openUri("market://details?id=${context.packageName}") },
+                        onClick = { uriHandler.tryOpenUri("market://details?id=${context.packageName}") },
                     ) { OpenInBrowserIcon() }
                 }
 
                 Preference(
                     name = stringResource(Res.string.about_title_feedback),
-                    onClick = { uriHandler.openUri("https://github.com/streetcomplete/StreetComplete/discussions") },
+                    onClick = { uriHandler.tryOpenUri("https://github.com/streetcomplete/StreetComplete/discussions") },
                 ) { OpenInBrowserIcon() }
             }
         }
@@ -162,7 +163,7 @@ fun AboutScreen(
         } else {
             DonationsDialog(
                 onDismissRequest = { showDonateDialog = false },
-                onClickLink = { uriHandler.openUri(it) }
+                onClickLink = { uriHandler.tryOpenUri(it) }
             )
         }
     }

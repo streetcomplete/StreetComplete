@@ -39,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.toDp
+import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.image.fileBitmapPainter
@@ -116,7 +117,7 @@ fun ProfileScreen(viewModel: ProfileViewModel) {
         ) {
             val uriHandler = LocalUriHandler.current
             Button(onClick = {
-                uriHandler.openUri("https://www.openstreetmap.org/user/" + viewModel.userName.value)
+                uriHandler.tryOpenUri("https://www.openstreetmap.org/user/" + viewModel.userName.value)
             }) {
                 Icon(painterResource(Res.drawable.ic_open_in_browser_24), null)
                 Spacer(Modifier.width(8.dp))

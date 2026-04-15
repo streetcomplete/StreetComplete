@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 
 /** Shows the details for a certain quest type in a custom dialog. */
 @Composable
@@ -91,7 +92,7 @@ private fun EditTypeDetails(
 
         editType.wikiLink?.let { wikiLink ->
             OutlinedButton(
-                onClick = { uriHandler.openUri("https://wiki.openstreetmap.org/wiki/$wikiLink") }
+                onClick = { uriHandler.tryOpenUri("https://wiki.openstreetmap.org/wiki/$wikiLink") }
             ) {
                 OpenInBrowserIcon()
                 Text(

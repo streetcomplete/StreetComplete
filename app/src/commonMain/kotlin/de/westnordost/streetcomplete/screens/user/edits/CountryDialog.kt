@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.util.ktx.displayRegion
 import de.westnordost.streetcomplete.util.ktx.getDisplayRegion
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 
 /** Shows the details for a certain country as a dialog. */
 @Composable
@@ -112,7 +113,7 @@ private fun CountryInfoDetails(
             onClick = {
                 val britishCountryName = countryLocale.getDisplayRegion(Locale("en-GB"))
                 if (britishCountryName != null) {
-                    uriHandler.openUri("https://wiki.openstreetmap.org/wiki/$britishCountryName")
+                    uriHandler.tryOpenUri("https://wiki.openstreetmap.org/wiki/$britishCountryName")
                 }
             }
         ) {

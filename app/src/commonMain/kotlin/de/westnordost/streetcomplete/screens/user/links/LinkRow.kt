@@ -25,6 +25,7 @@ import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 
 /** Display a single link category from the link collection */
 @Composable
@@ -58,7 +59,7 @@ fun LinkRow(link: Link, modifier: Modifier = Modifier) {
     val uriHandler = LocalUriHandler.current
     Row(
         modifier = modifier
-            .clickable { uriHandler.openUri(link.url) }
+            .clickable { uriHandler.tryOpenUri(link.url) }
             .padding(8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
