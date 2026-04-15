@@ -52,6 +52,7 @@ import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.theme.divider
 
 /** Wizard which enables team mode */
 @Composable
@@ -200,7 +201,7 @@ private fun SplitQuestsIllustration(
     }
 
     val arrangement = Arrangement.spacedBy((-48 + 64 * padding.value).dp)
-    val dividerColor = MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
+    val dividerColor = MaterialTheme.colors.divider
     val dividerWidth = 4.dp.toPx()
     Column(
         modifier = Modifier

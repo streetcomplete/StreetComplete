@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.Dimensions
+import de.westnordost.streetcomplete.ui.theme.divider
 
 /** A spech bubble without an arrow, so basically mostly a surface with rounded corners. However,
  *  there are some common defaults, so it makes sense to put it into an own composable. */
@@ -25,7 +26,7 @@ fun SpeechBubbleNoArrow(
     color: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(color),
     elevation: Dp = 0.dp,
-    border: BorderStroke? = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
+    border: BorderStroke? = BorderStroke(1.dp, MaterialTheme.colors.divider),
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
     content: @Composable () -> Unit,
 ) {

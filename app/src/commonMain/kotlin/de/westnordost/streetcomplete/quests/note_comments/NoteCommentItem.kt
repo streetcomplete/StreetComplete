@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
+import de.westnordost.streetcomplete.ui.theme.divider
 import de.westnordost.streetcomplete.ui.util.annotateLinks
 import de.westnordost.streetcomplete.ui.util.formatAnnotated
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
@@ -118,7 +119,7 @@ fun NoteCommentItem(
             Surface(
                 elevation = 16.dp,
                 shape = RoundedCornerShape(16.dp),
-                border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f))
+                border = BorderStroke(1.dp, MaterialTheme.colors.divider)
             ) {
                 Text(
                     text = stringResource(actionTextResource)

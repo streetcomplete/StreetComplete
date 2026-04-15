@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.Dimensions
+import de.westnordost.streetcomplete.ui.theme.divider
 
 /** Surface in the shape of a speech bubble with a border stroke and a default inner padding by
  *  default. */
@@ -26,7 +27,7 @@ fun SpeechBubble(
     arrowPlacementBias: Float = 0f,
     color: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(color),
-    border: BorderStroke? = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
+    border: BorderStroke? = BorderStroke(1.dp, MaterialTheme.colors.divider),
     elevation: Dp = 0.dp,
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
     content: @Composable () -> Unit,

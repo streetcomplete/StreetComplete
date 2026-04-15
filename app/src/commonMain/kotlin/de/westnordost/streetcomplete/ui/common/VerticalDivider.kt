@@ -10,12 +10,13 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.theme.divider
 
 /** Same as a Divider, only vertical. (In Material3, this is already available.) */
 @Composable
 fun VerticalDivider(
     modifier: Modifier = Modifier,
-    color: Color = MaterialTheme.colors.onSurface.copy(alpha = DividerAlpha),
+    color: Color = MaterialTheme.colors.divider,
     thickness: Dp = 1.dp
 ) {
     Canvas(modifier.fillMaxHeight().width(thickness)) {
@@ -30,4 +31,3 @@ fun VerticalDivider(
     }
 }
 
-private const val DividerAlpha = 0.12f
