@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.ui.theme
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material.Shapes
 import androidx.compose.ui.platform.WindowInfo
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.ktx.isLandscape
 
 object Dimensions {
+
+    val speechBubbleCornerRadius: Dp get() = 16.dp
+
     val QuestFormPeekHeight = 400.dp
 
     fun getMaxQuestFormWidth(windowInfo: WindowInfo): Dp =

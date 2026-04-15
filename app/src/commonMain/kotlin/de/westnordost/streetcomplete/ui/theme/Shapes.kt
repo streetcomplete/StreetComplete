@@ -10,5 +10,3 @@ val Shapes = Shapes(
     medium = RoundedCornerShape(12.dp),
     large = RoundedCornerShape(12.dp)
 )
-
-val Shapes.speechBubbleCornerRadius: Dp get() = 16.dp
