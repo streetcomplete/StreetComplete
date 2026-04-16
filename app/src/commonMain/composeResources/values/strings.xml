@@ -1315,7 +1315,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_oneway2_title">Is this a one-way street? In which direction?</string>
     <string name="quest_oneway2_dir">Oneway in this direction</string>
     <string name="quest_oneway2_no_oneway">Not a oneway</string>
-    <string name="quest_cycleway_direction_title">In what direction are you allowed to ride this path?</string>
+    <string name="quest_cycleway_direction_title">In what direction are you allowed to cycle on this sidewalk?</string>
     <string name="quest_cycleway_direction_dir">Only this way</string>
     <string name="quest_cycleway_direction_no_oneway">In both directions</string>
 
