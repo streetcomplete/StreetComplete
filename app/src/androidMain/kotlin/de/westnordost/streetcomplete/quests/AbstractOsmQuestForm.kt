@@ -218,13 +218,18 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
     protected fun onClickCantSay() {
-        context?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_leave_new_note_title)
-            .setMessage(R.string.quest_leave_new_note_description)
-            .setNegativeButton(R.string.quest_cant_say_hide_quest) { _, _ -> hideQuest() }
-            .setPositiveButton(R.string.leave_note) { _, _ -> composeNote() }
-            .setNeutralButton(R.string.quest_generic_answer_disable_this_quest_type) { _, _ -> onClickDisableQuestType() }
-            .show()
+        context?.let { ctx ->
+            AlertDialog.Builder(ctx)
+                .setTitle(R.string.quest_leave_new_note_title)
+                .setMessage(
+                    ctx.getString(R.string.quest_leave_new_note_description) +
+                        "\n\n" +
+                        ctx.getString(R.string.quest_leave_new_note_disable_info)
+                )
+                .setNegativeButton(R.string.quest_cant_say_hide_quest) { _, _ -> hideQuest() }
+                .setPositiveButton(R.string.leave_note) { _, _ -> composeNote() }
+                .setNeutralButton(R.string.quest_generic_answer_disable_this_quest_type) { _, _ -> onClickDisableQuestType() }
+                .show()
         }
     }
 
