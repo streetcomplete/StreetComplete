@@ -699,8 +699,8 @@ Erfolge</string>
     <string name="quest_oneway2_title">Ist dies eine Einbahnstraße? In welche Richtung?</string>
     <string name="quest_oneway2_dir">Einbahn­straße in diese Richtung</string>
     <string name="quest_oneway2_no_oneway">Keine Einbahn­straße</string>
-    <string name="quest_cycleway_direction_title">In welche Richtung darf man hier mit dem Fahrrad fahren?</string>
-    <string name="quest_cycleway_direction_dir">Nur in die Richtung</string>
+    <string name="quest_cycleway_direction_title">In welche Richtung darf man mit dem Fahrrad auf diesem Bürgersteig fahren?</string>
+    <string name="quest_cycleway_direction_dir">Nur in diese Richtung</string>
     <string name="quest_cycleway_direction_no_oneway">In beide Richtungen</string>
     <string name="default_disabled_msg_visible_sign_bicycle_sidewalk_access">Dieser Aufgabentyp ist standardmäßig deaktiviert, da der Zugang für für Fahrräder auf dem Bürgersteig nur durch bestimmte Schilder am Anfang/Ende einer Straße gekennzeichnet ist.</string>
     <string name="quest_steps_incline_title">Welche Richtung führt hier nach oben?</string>
