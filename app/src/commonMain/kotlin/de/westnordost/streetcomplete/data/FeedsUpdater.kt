@@ -22,6 +22,8 @@ class FeedsUpdater(
         val today = LocalDate.now()
         val lastUpdate = prefs.lastFeedUpdate
         if (lastUpdate != null && lastUpdate >= today) return
+
+        updateNow()
     }
 
     /** (force) update now */
