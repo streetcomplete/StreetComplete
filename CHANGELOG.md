@@ -9,7 +9,7 @@
 
 ### Quest improvements
 
-- Max speed: Redid UI. The quest is now activated also in the United States (#6758)
+- Max speed: Redid UI. The quest is now activated also in the United States (#6758, #813)
 - Redid UI for quest title speech bubble with smoother ℹ️ area (#6784)
 - Redid UI for forms creating a note, especially attaching images (#6804)
 - Power line attachment: Don't ask when several power lines go through one power pole or tower (#6547)
