@@ -1319,6 +1319,8 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_cycleway_direction_dir">Only this way</string>
     <string name="quest_cycleway_direction_no_oneway">In both directions</string>
 
+    <string name="default_disabled_msg_visible_sign_bicycle_sidewalk_access">This quest type is disabled by default because bicycle access on sidewalks is only indicated by specific signs at start/end of a sidewalk.</string>
+
     <string name="quest_openingHours_title">What are the opening hours here?</string>
     <string name="quest_openingHours_signed_title">Are the opening hours here signed?</string>
     <string name="quest_openingHours_resurvey_title">Are these opening hours still correct?</string>
