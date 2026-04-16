@@ -20,12 +20,9 @@ class AddCyclewayDirection : OsmFilterQuestType<OnewayAnswer>(), AndroidQuest {
     override val elementFilter = """
         ways with
           (
-            highway = cycleway
-            or (
-              highway ~ path|footway
+              (highway ~ path|footway) or (highway = cycleway)
               and (footway = sidewalk or is_sidepath = yes)
               and bicycle ~ yes|designated
-            )
           )
           and !oneway
           and !oneway:bicycle
