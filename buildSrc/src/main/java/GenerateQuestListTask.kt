@@ -104,7 +104,7 @@ open class GenerateQuestListTask : DefaultTask() {
     }
 
     private fun getQuestTitleStringNames(questName: String, questFileContent: String): List<String> {
-        val regex = Regex("(?<=R\\.string\\.)quest_\\w+")
+        val regex = Regex("(?<=Res\\.string\\.)quest_\\w+")
         val stringResourceNames = regex.findAll(questFileContent).toList().map { it.value }
 
         if (stringResourceNames.isEmpty()) {
