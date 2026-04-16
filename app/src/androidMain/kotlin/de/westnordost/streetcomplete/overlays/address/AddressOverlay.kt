@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.overlays.address
 
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -15,7 +16,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getShortHouseNumber
 
 class AddressOverlay(
-    private val getCountryCodeByLocation: (location: LatLon) -> String?
+    private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo
 ) : Overlay, AndroidOverlay {
 
     override val title = Res.string.overlay_addresses
@@ -40,19 +41,20 @@ class AddressOverlay(
                   or entrance
             """)
             .map {
-                val label = getShortHouseNumber(it.tags) // or ▫
+                val center = mapData.getGeometry(it.type, it.id)?.center
+                val countryCode = center?.let { getCountryInfoByLocation(center).countryCode }
+                val label = getShortHouseNumber(it.tags, countryCode) // or ▫
                 val icon = if (label != null) R.drawable.ic_address_dot else null
                 it to OverlayStyle.Point(icon = icon, label = label ?: "◽")
             } +
         mapData
             .filter("ways, relations with building")
-            .filter {
-                val center = mapData.getGeometry(it.type, it.id)?.center ?: return@filter false
-                val country = getCountryCodeByLocation(center)
-                country !in noAddressesOnBuildings
-            }
-            .map {
-                val label = getShortHouseNumber(it.tags)
+            .mapNotNull {
+                val center = mapData.getGeometry(it.type, it.id)?.center ?: return@mapNotNull null
+                val countryCode = getCountryInfoByLocation(center).countryCode
+                if (countryCode in noAddressesOnBuildings) return@mapNotNull null
+
+                val label = getShortHouseNumber(it.tags, countryCode)
                 val color = if (label != null) OverlayColor.Blue else OverlayColor.Invisible
                 it to OverlayStyle.Polygon(color = color, label = label)
             }

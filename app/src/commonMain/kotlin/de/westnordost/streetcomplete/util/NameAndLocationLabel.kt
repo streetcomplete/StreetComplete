@@ -31,6 +31,7 @@ import org.jetbrains.compose.resources.getSystemResourceEnvironment
 fun nameAndLocationLabel(
     element: Element,
     featureDictionary: FeatureDictionary?,
+    countryCode: String?,
     showHouseNumber: Boolean? = null
 ): AnnotatedString? {
     val locale = Locale.current
@@ -42,6 +43,7 @@ fun nameAndLocationLabel(
         value = getNameAndLocationLabel(
             resourceEnvironment = resourceEnvironment,
             layoutDirection = layoutDirection,
+            countryCode = countryCode,
             element = element,
             featureDictionary = featureDictionary,
             showHouseNumber = showHouseNumber
@@ -64,6 +66,7 @@ fun nameAndLocationLabel(
 suspend fun getNameAndLocationLabel(
     resourceEnvironment: ResourceEnvironment,
     layoutDirection: LayoutDirection,
+    countryCode: String?,
     element: Element,
     featureDictionary: FeatureDictionary?,
     showHouseNumber: Boolean? = null
@@ -99,7 +102,7 @@ suspend fun getNameAndLocationLabel(
     }
 
     // only show house number if there is no name
-    val location = getLocationLabel(resourceEnvironment, layoutDirection, element.tags,
+    val location = getLocationLabel(resourceEnvironment, layoutDirection, countryCode, element.tags,
         showHouseNumber = if (showHouseNumber == null && name != null) false else showHouseNumber
     )
 
@@ -119,13 +122,14 @@ suspend fun getNameAndLocationLabel(
 suspend fun getLocationLabel(
     resourceEnvironment: ResourceEnvironment,
     layoutDirection: LayoutDirection,
+    countryCode: String?,
     tags: Map<String, String>,
     showHouseNumber: Boolean? = null,
 ): AnnotatedString? {
     val level = getLevelLabel(resourceEnvironment, tags)
     // by default only show house number if no level is given
     val houseNumber =
-        if (showHouseNumber ?: (level == null)) getHouseNumberLabel(resourceEnvironment, tags)
+        if (showHouseNumber ?: (level == null)) getHouseNumberLabel(resourceEnvironment, countryCode, tags)
         else null
     val location = level ?: getIndoorOutdoorLabel(resourceEnvironment, tags)
 
@@ -228,6 +232,7 @@ suspend fun getLevelLabel(
 /** Returns a text that describes the house number, e.g. "house number 123" */
 private suspend fun getHouseNumberLabel(
     resourceEnvironment: ResourceEnvironment,
+    countryCode: String?,
     tags: Map<String, String>
 ): AnnotatedString? {
     val houseName = tags["addr:housename"]
@@ -246,7 +251,15 @@ private suspend fun getHouseNumberLabel(
             .formatAnnotated(number)
     }
     if (houseNumber != null) {
-        val houseNumberEx = if (subHouseNumber != null) "$houseNumber $subHouseNumber" else houseNumber
+        val houseNumberEx = if (subHouseNumber != null) {
+            if (countryCode in listOf("AU", "NZ")) {
+                "$subHouseNumber $houseNumber"
+            } else {
+                "$houseNumber $subHouseNumber"
+            }
+        } else {
+            houseNumber
+        }
         return getString(resourceEnvironment, Res.string.at_housenumber)
             .formatAnnotated(houseNumberEx)
     }
@@ -254,7 +267,7 @@ private suspend fun getHouseNumberLabel(
 }
 
 /** Returns just the house number as it would be signed, e.g. "123", if set */
-fun getShortHouseNumber(tags: Map<String, String>): String? {
+fun getShortHouseNumber(tags: Map<String, String>, countryCode: String?): String? {
     val houseName = tags["addr:housename"]
     val conscriptionNumber = tags["addr:conscriptionnumber"]
     val streetNumber = tags["addr:streetnumber"]
@@ -265,7 +278,13 @@ fun getShortHouseNumber(tags: Map<String, String>): String? {
         houseName != null -> houseName
         conscriptionNumber != null && streetNumber != null -> "$conscriptionNumber / $streetNumber"
         conscriptionNumber != null -> conscriptionNumber
-        houseNumber != null && subHouseNumber != null -> "$houseNumber $subHouseNumber"
+        houseNumber != null && subHouseNumber != null -> {
+            if (countryCode in listOf("AU", "NZ")) {
+                "$subHouseNumber $houseNumber"
+            } else {
+                "$houseNumber $subHouseNumber"
+            }
+        }
         houseNumber != null -> houseNumber
         else -> null
     }

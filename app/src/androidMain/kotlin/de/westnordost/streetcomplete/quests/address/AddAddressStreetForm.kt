@@ -47,7 +47,12 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
 
     @Composable
     override fun getSubtitle(): AnnotatedString? =
-        nameAndLocationLabel(element, featureDictionary, showHouseNumber = true)
+        nameAndLocationLabel(
+            element = element,
+            featureDictionary = featureDictionary,
+            countryCode = countryInfo.countryCode,
+            showHouseNumber = true
+        )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

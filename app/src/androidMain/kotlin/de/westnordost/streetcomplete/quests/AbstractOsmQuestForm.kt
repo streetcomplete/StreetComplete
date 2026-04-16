@@ -149,7 +149,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
 
     @Composable
     override protected fun getSubtitle(): AnnotatedString? =
-        nameAndLocationLabel(element, featureDictionary)
+        nameAndLocationLabel(element, featureDictionary, countryInfo.countryCode)
 
     override fun onStart() {
         super.onStart()
@@ -268,7 +268,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             val questTitleResource = osmElementQuestType.getTitle(element.tags) ?: questType.title
             val resourceEnvironment = getSystemResourceEnvironment()
             val questTitle = org.jetbrains.compose.resources.getString(resourceEnvironment, questTitleResource)
-            val hintLabel = getNameAndLocationLabel(resourceEnvironment, LayoutDirection.Ltr, element, featureDictionary)
+            val hintLabel = getNameAndLocationLabel(resourceEnvironment, LayoutDirection.Ltr, countryInfo.countryCode, element, featureDictionary)
             val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
                 "Unable to answer \"$questTitle\""
             } else {

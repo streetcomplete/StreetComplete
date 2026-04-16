@@ -230,7 +230,7 @@ abstract class AbstractOverlayForm :
 
     @Composable
     protected open fun getSubtitle(): AnnotatedString? =
-        element?.let { nameAndLocationLabel(it, featureDictionary) }
+        element?.let { nameAndLocationLabel(it, featureDictionary, countryInfo.countryCode) }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
@@ -428,7 +428,7 @@ abstract class AbstractOverlayForm :
         viewLifecycleScope.launch {
             val resourceEnvironment = getSystemResourceEnvironment()
             val overlayTitle = org.jetbrains.compose.resources.getString(resourceEnvironment, overlay.title)
-            val hintLabel = getNameAndLocationLabel(resourceEnvironment, LayoutDirection.Ltr, element, featureDictionary)
+            val hintLabel = getNameAndLocationLabel(resourceEnvironment, LayoutDirection.Ltr, countryInfo.countryCode, element, featureDictionary)
             val leaveNoteContext = if (hintLabel.isNullOrBlank()) {
                 "In context of overlay \"$overlayTitle\""
             } else {

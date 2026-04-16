@@ -10,6 +10,7 @@ import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -25,6 +26,7 @@ fun UndoDialog(
     edit: Edit,
     element: Element?,
     featureDictionaryLazy: Lazy<FeatureDictionary>,
+    countryBoundariesLazy: Lazy<CountryBoundaries>,
     onDismissRequest: () -> Unit,
     onConfirmed: () -> Unit,
 ) {
@@ -38,7 +40,7 @@ fun UndoDialog(
                 .verticalScroll(state)
                 .padding(horizontal = 24.dp, vertical = 16.dp)
             ) {
-                EditDetails(edit, element, featureDictionaryLazy)
+                EditDetails(edit, element, featureDictionaryLazy, countryBoundariesLazy)
             }
         },
         buttons = {

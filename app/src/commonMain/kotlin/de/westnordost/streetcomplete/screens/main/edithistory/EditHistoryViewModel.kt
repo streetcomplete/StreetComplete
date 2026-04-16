@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.edithistory
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
@@ -42,6 +43,7 @@ abstract class EditHistoryViewModel : ViewModel() {
     abstract fun undo(editKey: EditKey)
 
     abstract val featureDictionaryLazy: Lazy<FeatureDictionary>
+    abstract val countryBoundariesLazy: Lazy<CountryBoundaries>
 
     /* edit sidebar */
     // TODO could maybe be just a boolean in the composable when there's no communication between
@@ -62,6 +64,7 @@ class EditHistoryViewModelImpl(
     private val mapDataSource: MapDataWithEditsSource,
     private val editHistoryController: EditHistoryController,
     override val featureDictionaryLazy: Lazy<FeatureDictionary>,
+    override val countryBoundariesLazy: Lazy<CountryBoundaries>
 ) : EditHistoryViewModel() {
 
     private val edits = MutableStateFlow<List<Edit>>(emptyList())

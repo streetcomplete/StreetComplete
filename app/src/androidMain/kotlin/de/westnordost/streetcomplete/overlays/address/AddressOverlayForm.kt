@@ -119,7 +119,12 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
 
     @Composable
     override fun getSubtitle(): AnnotatedString? =
-        element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) }
+        element?.let { nameAndLocationLabel(
+            element = it,
+            featureDictionary = featureDictionary,
+            countryCode = countryInfo.countryCode,
+            showHouseNumber = false
+        ) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

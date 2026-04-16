@@ -13,12 +13,12 @@ import de.westnordost.streetcomplete.view.presetIconIndex
     val icon = featureDictionary.getFeature(element)?.let { presetIconIndex[it.icon] }
     if (icon != null) return icon
 
-    if (getShortHouseNumber(element.tags) != null && getNameLabel(element.tags) == null) {
+    if (getShortHouseNumber(element.tags, null) != null && getNameLabel(element.tags) == null) {
         return R.drawable.ic_none
     }
 
     return null
 }
 
-fun getTitle(tags: Map<String, String>): String? =
-    getNameLabel(tags) ?: getShortHouseNumber(tags)
+fun getTitle(tags: Map<String, String>, countryCode: String?): String? =
+    getNameLabel(tags) ?: getShortHouseNumber(tags, countryCode)

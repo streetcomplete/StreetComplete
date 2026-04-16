@@ -15,9 +15,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalDateTimeFormatter
@@ -32,6 +34,7 @@ fun EditDetails(
     edit: Edit,
     element: Element?,
     featureDictionaryLazy: Lazy<FeatureDictionary>,
+    countryBoundariesLazy: Lazy<CountryBoundaries>,
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
@@ -66,7 +69,12 @@ fun EditDetails(
         }
 
         if (element != null) {
-            val nameAndLocation = nameAndLocationLabel(element, featureDictionaryLazy.value)
+            val countryCode = countryBoundariesLazy.value.getIds(edit.position)
+                .firstOrNull()
+                ?.split("-")
+                ?.first()
+
+            val nameAndLocation = nameAndLocationLabel(element, featureDictionaryLazy.value, countryCode)
             if (nameAndLocation != null) {
                 Text(
                     text = nameAndLocation,

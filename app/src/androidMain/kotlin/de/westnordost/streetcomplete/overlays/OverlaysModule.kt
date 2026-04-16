@@ -34,10 +34,6 @@ val overlaysModule = module {
                 val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
                 countryInfos.get(countryBoundaries, location)
             },
-            { location ->
-                val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
-                countryBoundaries.getIds(location).firstOrNull()
-            },
             { element ->
                 get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")).value.getFeature(element)
             }
@@ -47,7 +43,6 @@ val overlaysModule = module {
 
 fun overlaysRegistry(
     getCountryInfoByLocation: (LatLon) -> CountryInfo,
-    getCountryCodeByLocation: (LatLon) -> String?,
     getFeature: (Element) -> Feature?,
 ) = OverlayRegistry(listOf(
 
@@ -56,7 +51,7 @@ fun overlaysRegistry(
     1 to SidewalkOverlay(),
     5 to CyclewayOverlay(getCountryInfoByLocation),
     2 to StreetParkingOverlay(),
-    3 to AddressOverlay(getCountryCodeByLocation),
+    3 to AddressOverlay(getCountryInfoByLocation),
     4 to PlacesOverlay(getFeature),
     8 to ThingsOverlay(getFeature),
     7 to BuildingsOverlay(),

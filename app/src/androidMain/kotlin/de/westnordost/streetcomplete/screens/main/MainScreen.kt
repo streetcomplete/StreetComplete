@@ -41,6 +41,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
+import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.resources.*
@@ -403,6 +404,7 @@ fun MainScreen(
                 onUndoEdit = { editHistoryViewModel.undo(it.key) },
                 onDismissRequest = { editHistoryViewModel.hideSidebar() },
                 featureDictionaryLazy = editHistoryViewModel.featureDictionaryLazy,
+                countryBoundariesLazy = editHistoryViewModel.countryBoundariesLazy,
                 getEditElement = editHistoryViewModel::getEditElement,
             )
         }

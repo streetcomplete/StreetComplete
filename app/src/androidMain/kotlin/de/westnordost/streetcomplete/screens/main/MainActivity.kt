@@ -1027,7 +1027,7 @@ class MainActivity :
 
                 val geometry = lazyMapData.getGeometry(e.type, e.id) ?: return@mapNotNull null
                 val icon = getIcon(featureDictionary.value, e)
-                val title = getTitle(e.tags)
+                val title = getTitle(e.tags, countryCode) // TODO get country code for each marker!
                 Marker(geometry, icon, title)
             }.toList()
 

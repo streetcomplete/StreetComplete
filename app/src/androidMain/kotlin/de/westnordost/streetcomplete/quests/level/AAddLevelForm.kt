@@ -92,7 +92,7 @@ abstract class AAddLevelForm : AbstractOsmQuestForm<String>() {
         val markers = elementsAndGeometry.mapNotNull { (element, geometry) ->
             if (!parseLevelsOrNull(element.tags).levelsIntersect(levels)) return@mapNotNull null
             val icon = getIcon(featureDictionary, element)
-            val title = getTitle(element.tags)
+            val title = getTitle(element.tags, countryCode) // TODO get country code for each marker!
             Marker(geometry, icon, title)
         }
         showsGeometryMarkersListener?.putMarkersForCurrentHighlighting(markers)
