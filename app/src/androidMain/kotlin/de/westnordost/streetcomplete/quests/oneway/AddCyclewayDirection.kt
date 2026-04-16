@@ -38,7 +38,7 @@ class AddCyclewayDirection : OsmFilterQuestType<OnewayAnswer>(), AndroidQuest {
     override val hasMarkersAtEnds = true
     override val achievements = listOf(BICYCLIST)
     override val hint = Res.string.quest_arrow_tutorial
-    override val defaultDisabledMessage = Res.string.default_disabled_msg_maxspeed
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_visible_sign_bicycle_sidewalk_access
     override val enabledInCountries = NoCountriesExcept("DE")
 
     override fun createForm() = AddCyclewayDirectionForm()
