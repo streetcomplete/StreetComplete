@@ -331,7 +331,7 @@ tactile_paving3.jpg            CC-BY 2.0         https://commons.wikimedia.org/w
 
 tourism_information_board.jpg  CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Avon_Valley_Nature_Reserve_Information_Board.jpg (Richard Avery)
 tourism_information_guidepo... CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Swiss_Hiking_Network_-_Guidepost_-_Tannmattegg.jpg (Gubaer)
-tourism_information_map.jpg    CC0               https://commons.wikimedia.org/wiki/File:Myrstigen_track_information_board.jpg (W.carter)
+tourism_information_map.jpg    CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Wanderkarte_Ebelsbacher_Runden_beim_Schloss_Gleisenau.jpg (Stephan van Helden)
 tourism_information_office.jpg CC-BY-SA 4.0      https://commons.wikimedia.org/wiki/File:Tourist_information_shop,_Delft_(2018).jpg (Donald Trung)
 tourism_information_termina... CC-BY 4.0         https://wiki.openstreetmap.org/wiki/File:Uh%C5%99%C3%ADn%C4%9Bves,_Nov%C3%A9_n%C3%A1m%C4%9Bst%C3%AD,_informa%C4%8Dn%C3%AD_stojan.jpg (ŠJů)
 
