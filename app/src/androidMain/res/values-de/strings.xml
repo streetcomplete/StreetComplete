@@ -1365,6 +1365,7 @@ Eine Ebene zählt als Dachebene, wenn sich die Fenster im Dach befinden. Dächer
     <string name="user_profile_all_time_title">"Gesamt"</string>
     <string name="user_statistics_country_rank2">"Rang in %1$s"</string>
     <string name="quest_leafType_tree_is_just_a_stump">"Es ist bloß ein Baumstumpf"</string>
+    <string name="quest_leafType_dead_tree">"Dieser Baum ist tod"</string>
     <string name="quest_board_name_title">"Wie lautet der Titel dieser Informationstafel?"</string>
     <string name="quest_crossing_hint">"Ein Trampelpfad, der eine Straße kreuzt:"</string>
     <string name="note_for_object">"Jemand merkte an:"</string>

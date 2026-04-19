@@ -497,6 +497,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_leafType_title">Haben die Bäume hier Nadeln oder Blätter?</string>
     <string name="quest_leaf_type_needles">Nadeln</string>
     <string name="quest_leaf_type_broadleaved">Blätter</string>
+    <string name="quest_leaf_type_leafless">Blattlos</string>
     <string name="quest_leaf_type_mixed">Gibt hier beide</string>
     <string name="quest_cyclewayPartSurface_title">Welche Oberfläche hat der Radweg hier?</string>
     <string name="quest_generic_answer_differs_along_the_way">Entlang des Weges unterschiedlich …</string>
