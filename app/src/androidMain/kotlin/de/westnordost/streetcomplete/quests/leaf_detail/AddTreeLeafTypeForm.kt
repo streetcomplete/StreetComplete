@@ -18,6 +18,9 @@ class AddTreeLeafTypeForm : AItemSelectQuestForm<TreeLeafType, TreeLeafTypeAnswe
         AnswerItem(R.string.quest_leafType_tree_is_just_a_stump) {
             applyAnswer(NotTreeButStump)
         },
+        AnswerItem(R.string.quest_leafType_dead_tree) {
+            applyAnswer(DeadTree)
+        }
     )
 
     @Composable override fun ItemContent(item: TreeLeafType) {

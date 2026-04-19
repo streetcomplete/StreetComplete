@@ -9,3 +9,4 @@ enum class TreeLeafType(val osmValue: String) : TreeLeafTypeAnswer {
 }
 
 data object NotTreeButStump : TreeLeafTypeAnswer
+data object DeadTree : TreeLeafTypeAnswer

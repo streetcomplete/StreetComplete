@@ -35,6 +35,7 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>(), AndroidQuest {
         when (answer) {
             is TreeLeafType -> tags["leaf_type"] = answer.osmValue
             NotTreeButStump -> tags["natural"] = "tree_stump"
+            DeadTree ->        tags["denotation"] = "dead"
         }
     }
 }
