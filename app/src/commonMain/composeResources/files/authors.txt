@@ -134,7 +134,7 @@ kerb_height_no.jpg             Public Domain     https://commons.wikimedia.org/w
 leaf_type_broadleaved.jpg      CC-BY-SA 2.0      https://commons.wikimedia.org/wiki/File:Populus_tremuloides_(5002308731).jpg (Matt Lavin)
 leaf_type_mixed.jpg            CC0               https://commons.wikimedia.org/wiki/File:Needleleaved_and_broadleaved_leaves_on_one_image_20190709_181925.jpg (Mateusz Konieczny)
 leaf_type_needleleaved.jpg     CC-BY 3.0         https://commons.wikimedia.org/wiki/File:Whitebark_pine_Pinus_albicaulis_needle_clusters.jpg (Jane Richardson)
-leaf_type_leafless.jpg         CC-BY-SA-2.0      https://commons.wikimedia.org/wiki/File:Dead_tree_near_Molly_Carr_Wood_-_geograph.org.uk_-_4468094.jpg
+leaf_type_leafless.jpg         Public Domain     https://commons.wikimedia.org/wiki/File:Saguaro_jul04_38.jpg (NobbiP)
 
 link_josm.png                  CC0               Diamond00744 https://wiki.openstreetmap.org/wiki/File:JOSM_Logotype_2019.svg
 link_ideditor.png              WTFPL             https://wiki.openstreetmap.org/wiki/File:ID.svg
