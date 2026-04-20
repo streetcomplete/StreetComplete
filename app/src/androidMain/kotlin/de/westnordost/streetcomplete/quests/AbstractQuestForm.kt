@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
 import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractBottomSheetFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
+import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
 import de.westnordost.streetcomplete.util.ktx.popIn
@@ -137,7 +138,7 @@ abstract class AbstractQuestForm :
     protected open fun getHintImages(): List<DrawableResource> = questType.hintImages
 
     @Composable
-    protected open fun ContentBeforeSpeechbubbleContent() {}
+    protected open fun ContentBeforeSpeechBubbleContent() {}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -152,7 +153,7 @@ abstract class AbstractQuestForm :
         } }
 
         binding.contentBeforeSpeechbubbleContent.content {
-            ContentBeforeSpeechbubbleContent()
+            ContentBeforeSpeechBubbleContent()
         }
 
         binding.okButton.setOnClickListener {

@@ -2,10 +2,12 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,11 +35,12 @@ fun RoadTypeSelect(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier,
     ) {
-        Text(
-            text = stringResource(Res.string.quest_maxspeed_answer_roadtype_description),
-            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
-            style = MaterialTheme.typography.body2,
-        )
+        CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+            Text(
+                text = stringResource(Res.string.quest_maxspeed_answer_roadtype_description),
+                style = MaterialTheme.typography.body2,
+            )
+        }
         ItemSelectGrid(
             columns = SimpleGridCells.Fixed(cells),
             items = selectable,

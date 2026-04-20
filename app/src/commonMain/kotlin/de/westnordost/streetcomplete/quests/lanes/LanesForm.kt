@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.WheelPickerDialog
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import de.westnordost.streetcomplete.ui.common.street_side_select.MiniCompass
+import de.westnordost.streetcomplete.ui.theme.divider
 import org.jetbrains.compose.resources.stringResource
 
 /** Form to input how many lanes a road has */
@@ -80,7 +81,7 @@ fun LanesForm(
                 modifier = Modifier
                     .padding(horizontal = 8.dp)
                     .align(Alignment.BottomStart),
-                chipBorder = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
+                chipBorder = BorderStroke(1.dp, MaterialTheme.colors.divider),
             ) { laneCount ->
                 LanesButtonContent(
                     laneCount = laneCount,

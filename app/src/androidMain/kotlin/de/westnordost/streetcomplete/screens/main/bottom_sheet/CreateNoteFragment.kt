@@ -26,9 +26,9 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.databinding.FragmentCreateNoteBinding
-import de.westnordost.streetcomplete.quests.QuestHeader
 import de.westnordost.streetcomplete.quests.note_comments.NoteForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope

@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -66,11 +68,12 @@ fun MaxSpeedForm(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        Text(
-            text = stringResource(Res.string.quest_maxspeed_type_description),
-            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
-            style = MaterialTheme.typography.body2,
-        )
+        CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+            Text(
+                text = stringResource(Res.string.quest_maxspeed_type_description),
+                style = MaterialTheme.typography.body2,
+            )
+        }
         DropdownButton(
             items = selectableMaxSpeedTypes,
             onSelectedItem = { onAnswer(it) },

@@ -56,7 +56,7 @@ fun StepperButton(
                 onClick = onIncrease,
                 style = style,
                 enabled = increaseEnabled,
-                contentPadding = PaddingValues(0.dp),
+                contentPadding = PaddingValues.Zero,
                 content = increaseContent
             )
             Divider()
@@ -65,7 +65,7 @@ fun StepperButton(
                 onClick = onDecrease,
                 style = style,
                 enabled = decreaseEnabled,
-                contentPadding = PaddingValues(0.dp),
+                contentPadding = PaddingValues.Zero,
                 content = decreaseContent
             )
         }

@@ -45,7 +45,7 @@ fun QuestSelectionList(
     onSelect: (questType: QuestType, selected: Boolean) -> Unit,
     onReorder: (questType: QuestType, toAfter: QuestType) -> Unit,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp),
+    contentPadding: PaddingValues = PaddingValues.Zero,
 ) {
     var showEnableQuestDialog by remember { mutableStateOf<QuestType?>(null) }
 

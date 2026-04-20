@@ -7,10 +7,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
+import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -45,11 +47,12 @@ fun EditDetails(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(
-            text = dateTimeFormatter.format(createdTime),
-            style = MaterialTheme.typography.body2,
-            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
-        )
+        CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+            Text(
+                text = dateTimeFormatter.format(createdTime),
+                style = MaterialTheme.typography.body2,
+            )
+        }
         Row(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically

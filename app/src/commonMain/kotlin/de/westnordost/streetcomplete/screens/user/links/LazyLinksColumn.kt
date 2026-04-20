@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 fun LazyGroupedLinksColumn(
     allLinks: List<Link>,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    contentPadding: PaddingValues = PaddingValues.Zero
 ) {
     val groupedLinks = remember(allLinks) {
         allLinks.groupBy { it.category }.map { (k, v) -> k to v }
@@ -46,7 +46,7 @@ fun LazyGroupedLinksColumn(
 fun LazyLinksColumn(
     links: List<Link>,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    contentPadding: PaddingValues = PaddingValues.Zero
 ) {
     LazyLinksGrid(modifier, contentPadding = contentPadding) {
         items(links) { link ->
@@ -58,7 +58,7 @@ fun LazyLinksColumn(
 @Composable
 private fun LazyLinksGrid(
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp),
+    contentPadding: PaddingValues = PaddingValues.Zero,
     content: LazyGridScope.() -> Unit
 ) {
     LazyVerticalGrid(

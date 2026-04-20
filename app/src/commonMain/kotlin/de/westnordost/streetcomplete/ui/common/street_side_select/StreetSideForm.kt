@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
+import de.westnordost.streetcomplete.ui.theme.divider
 import org.jetbrains.compose.resources.painterResource
 
 /** Form to input the something for the left and right side of a street */
@@ -78,7 +79,7 @@ import org.jetbrains.compose.resources.painterResource
                     .padding(8.dp)
                     .align(Alignment.BottomStart)
                     .padding(lastPickedContentPadding),
-                chipBorder = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
+                chipBorder = BorderStroke(1.dp, MaterialTheme.colors.divider),
                 chipContentPadding = PaddingValues.Zero,
             ) { value ->
                 StreetSideIllustration(

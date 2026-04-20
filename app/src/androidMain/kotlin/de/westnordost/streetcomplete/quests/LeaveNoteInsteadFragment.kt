@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.quests.note_comments.NoteForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractCreateNoteFragment
+import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope

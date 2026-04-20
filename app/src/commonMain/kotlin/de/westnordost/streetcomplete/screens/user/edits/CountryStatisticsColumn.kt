@@ -29,7 +29,7 @@ fun CountryStatisticsColumn(
     flagAlignments: FlagAlignments,
     isCurrentWeek: Boolean,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp),
+    contentPadding: PaddingValues = PaddingValues.Zero,
 ) {
     var showInfo by remember { mutableStateOf<CountryStatistics?>(null) }
 
