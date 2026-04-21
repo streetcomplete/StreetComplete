@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.osmcal
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import kotlinx.datetime.Instant
 import kotlinx.io.Source
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.SerialName
@@ -9,6 +8,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.io.decodeFromSource
+import kotlin.time.Instant
 
 class OsmCalParser() {
     private val jsonParser = Json { ignoreUnknownKeys = true }

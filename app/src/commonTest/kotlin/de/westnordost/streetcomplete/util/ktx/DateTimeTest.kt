@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.util.ktx
 
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.time.Instant
 
 class DateTimeTest {
     @Test fun `check parsing of ISO timestamp with offset`() {

@@ -24,8 +24,8 @@ import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalDateTimeFormatter
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
-import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.stringResource
+import kotlin.time.Instant
 
 /** Shows details for an edit. I.e. image, title, name and location of edited element (if any),
  *  edit description */

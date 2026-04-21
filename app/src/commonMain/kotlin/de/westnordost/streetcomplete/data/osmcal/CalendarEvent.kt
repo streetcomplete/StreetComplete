@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osmcal
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 data class CalendarEvent(
     val id: Long,

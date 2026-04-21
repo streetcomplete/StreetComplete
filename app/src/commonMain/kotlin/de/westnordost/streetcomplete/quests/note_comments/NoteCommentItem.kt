@@ -34,9 +34,9 @@ import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalDateTimeFormatter
 import io.ktor.http.encodeURLParameter
-import kotlinx.datetime.Instant
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import kotlin.time.Instant
 
 /** displays a single note comment. The text is selectable, links within that text are clickable and
  *  the username (if not anonymous) is clickable. If available, the avatar of the user is shown,

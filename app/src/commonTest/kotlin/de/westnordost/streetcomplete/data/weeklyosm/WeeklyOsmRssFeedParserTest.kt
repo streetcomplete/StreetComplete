@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.weeklyosm
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
+import kotlinx.datetime.number
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.io.Buffer
 import kotlinx.io.writeString
@@ -59,7 +60,7 @@ class WeeklyOsmRssFeedParserTest {
         val dateTime = instant.toLocalDateTime(TimeZone.UTC)
         assertEquals(2026, dateTime.year)
         assertEquals(Month.FEBRUARY, dateTime.month)
-        assertEquals(1, dateTime.dayOfMonth)
+        assertEquals(1, dateTime.month.number)
         assertEquals(12, dateTime.hour)
         assertEquals(14, dateTime.minute)
         assertEquals(16, dateTime.second)
