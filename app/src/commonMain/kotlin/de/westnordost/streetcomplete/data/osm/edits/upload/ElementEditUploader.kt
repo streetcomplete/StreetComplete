@@ -113,7 +113,9 @@ class ElementEditUploader(
 
         val nodeIdsThatMustBePresentInLocalData = nodeIdsOfUpdatedWays - idsOfUpdatedNodes
 
-        val presentNodeIds = mapDataController.getNodes(nodeIdsOfUpdatedWays).mapTo(HashSet()) { it.id }
+        val presentNodeIds = mapDataController
+            .getNodes(nodeIdsThatMustBePresentInLocalData)
+            .mapTo(HashSet()) { it.id }
 
         val nodesThatMustBeFetchedFromRemote = nodeIdsThatMustBePresentInLocalData - presentNodeIds
 
