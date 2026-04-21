@@ -262,7 +262,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             .setNegativeButton(android.R.string.cancel, null)
             .setPositiveButton(R.string.quest_disable_quest_type_yes) { _, _ ->
                 visibleEditTypeController.setVisibility(questType, false)
-                hideQuest()
             }
             .show()
         }
