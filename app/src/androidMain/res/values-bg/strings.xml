@@ -109,7 +109,6 @@
     <string name="quest_surface_value_sett">"Паваж"</string>
     <string name="quest_surface_value_wood">"Дърво"</string>
     <string name="quest_sidewalk_title">"Тази улица има ли тротоари?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Къде е тази улица?"</string>
     <string name="quest_address_title">"Тази сграда какъв номер има?"</string>
     <string name="store_listing_short_description">"Приложение за подобряване на OpenStreetMap"</string>
     <string name="store_listing_full_description">"Помогнете за подобряване на OpenStreetMap със StreetComplete!
@@ -175,9 +174,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Сигурни ли сте, че няма указано ограничение?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Проверихте ли в двата края на улицата? Ако няма знаци по цялата дължина на улица, то се прилагат стандартните ограничения."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Не, няма знак"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Пътищата в застроените райони имат по-ниска разрешена скорост отколкото тези извън тях."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"В населено място"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Междуградски"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Ако на кръстовището има знак като този, то на други места няма да има знаци, тъй като знакът в началото е валиден за цялата зона."</string>
     <string name="quest_sport_softball">"Софтбол"</string>
     <string name="quest_sport_racquet">"Ракетбол"</string>
@@ -211,7 +207,6 @@
     <string name="credits_contributors_title">"Програмисти"</string>
     <string name="credits_author_title">"Автор на проекта"</string>
     <string name="quest_maxspeed_answer_living_street">"В жилищна зона - до 20 км/ч за BG"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"И има знак като този?"</string>
     <string name="quest_orchard_produce_title">"Какво се отглежда тук?"</string>
     <string name="produce_grapes">"Грозде"</string>
     <string name="produce_agaves">"Агаве (столетник)"</string>
@@ -283,7 +278,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"обикновени етажи (без покрива)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Различни са в различните части на сградата"</string>
     <string name="quest_buildingLevels_answer_description">"В този случай, просто въведете стойностите за най-високата част на сградата."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Пътните платна имат ли някакво разделение (като преграда например)? Ограничението на скоростта по подразбиране се влияе от това."</string>
     <string name="about_category_feedback">"Обратна връзка"</string>
     <string name="quest_leave_new_note_photo">"Добавете снимка"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Искате ли да изтриете тази снимка?"</string>
@@ -447,7 +441,6 @@
     <string name="quest_openingHours_no_sign">"Няма посочено работно време"</string>
     <string name="quest_buildingType_sports_centre">"Спортен център"</string>
     <string name="quest_buildingType_toilets">"Тоалетни"</string>
-    <string name="quest_maxspeed_sign_question">"Кое определя ограничението на скоростта?"</string>
     <string name="quest_segregated_title">"Как са разположени пешеходната пътека и велоалеята?"</string>
     <string name="dialog_tutorial_upload">"За да качите вашите промени ръчно, използвайте бутона който изглежда като посочения."</string>
     <string name="quest_segregated_separated">"Разделени са една от друга"</string>
@@ -676,7 +669,6 @@
     <string name="at_housenumber">"номер на сграда %s"</string>
     <string name="quest_openingHours_add_off_days">"Добавете почивни дни"</string>
     <string name="quest_openingHours_off_day">"Почивен ден"</string>
-    <string name="quest_openingHours_unspecified_range">"Не е указано"</string>
     <string name="quest_cycleway_resurvey_title">"Велоалеята същата ли е тук?"</string>
     <string name="pref_title_resurvey_intervals">"Интервали за повторно изследване"</string>
     <string name="resurvey_intervals_less_often">"Да се пита по-рядко"</string>

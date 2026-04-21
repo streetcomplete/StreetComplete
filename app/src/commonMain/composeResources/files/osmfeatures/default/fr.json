@@ -29,6 +29,10 @@
           "name": "Caisson publicitaire",
           "terms": "panneau publicitaire,publicité,informations,caisson publicitaire"
         },
+        "advertising/sign": {
+          "name": "Panneau publicitaire",
+          "terms": "panneau publicitaire,affiche,pub,publicité"
+        },
         "advertising/totem": {
           "name": "Totem publicitaire",
           "terms": "panneau publicitaire,publicité,affichage des prix,prix,informations"
@@ -187,8 +191,8 @@
           "terms": "gay,bar,lesbien,lgbtq"
         },
         "amenity/bbq": {
-          "name": "Barbecue, grill",
-          "terms": "bbq,barbecue,grill,grillades,mechoui,méchoui,foyer,feu"
+          "name": "Barbecue / Grill",
+          "terms": "bbq,barbecue,grill,grillades,méchoui,foyer,feu"
         },
         "amenity/bench": {
           "name": "Banc",
@@ -285,8 +289,8 @@
           "terms": "station de recharge,borne de recharge,recharge électrique,recharge,batterie,charging station,chargeur"
         },
         "amenity/childcare": {
-          "name": "Déprécié, ne pas utiliser",
-          "terms": "déprécié,ne pas utiliser"
+          "name": "Crèche",
+          "terms": "crèche,garderie"
         },
         "amenity/cinema": {
           "name": "Cinéma",
@@ -319,6 +323,11 @@
         "amenity/community_centre": {
           "name": "Centre communautaire",
           "terms": "maison de quartier,maison des associations,salle des associations,centre d'animation,centre communautaire,salle polyvalente,salle des fêtes,salle festive"
+        },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "Tchitalichté",
+          "terms": "tchitalichté,tchitalichta,chitalishte,bulgare",
+          "aliases": "Tchitalichta"
         },
         "amenity/community_centre/club_home": {
           "name": "Salle de club",
@@ -365,9 +374,6 @@
           "name": "Tribunal",
           "terms": "palais de justice,cour de justice,cour d'assises,courthouse,court house"
         },
-        "amenity/coworking_space": {
-          "name": "Espace de bureaux partagés, coworking"
-        },
         "amenity/crematorium": {
           "name": "Crématorium",
           "terms": "crématorium,crematorium,crémation,incinération,incineration,four crématoire,four de crémation,funérailles,crematoria,cimetière"
@@ -375,6 +381,10 @@
         "amenity/dentist": {
           "name": "Dentiste",
           "terms": "dentiste,cabinet dentaire,soins dentaires,dents,clinique dentaire,médecin-dentiste,orthodontie"
+        },
+        "amenity/device_charging_station": {
+          "name": "Point de recharge pour appareils mobiles",
+          "terms": "point de recharge pour appareils mobiles,chargeur téléphone,recharge,prise électrique"
         },
         "amenity/dive_centre": {
           "name": "Centre de plongée",
@@ -409,8 +419,8 @@
           "terms": "médecin,médecine,docteur,soignant,soin,généraliste,générale"
         },
         "amenity/doctors/gynaecology": {
-          "name": "Gynécologue",
-          "terms": "obstétricien,gynécologue,obstétricienne"
+          "name": "Gynécologue / Obstétricien",
+          "terms": "gynécologue,obstétricien,obstétricienne,grossesse,contraception"
         },
         "amenity/doctors/haematology": {
           "name": "Hématologue",
@@ -656,6 +666,11 @@
         "amenity/karaoke_box": {
           "name": "Karaoke",
           "terms": "karaoke,karaoké"
+        },
+        "amenity/kitchen": {
+          "name": "Cuisine partagée",
+          "terms": "cuisine partagée,cuisine publique,cuisine collective",
+          "aliases": "Cuisine publique\nCuisine collective"
         },
         "amenity/kneipp_water_cure": {
           "name": "Bain Kneipp",
@@ -1684,7 +1699,7 @@
           "terms": "résidence étudiante,résidence universitaire,residence etudiante,residence universitaire,dortoir,foyer,dormitorium,lieu de vie,étudiants,dormitory"
         },
         "building/entrance": {
-          "name": "Entrée/Sortie"
+          "name": "Entrée / Sortie"
         },
         "building/farm": {
           "name": "Corps de ferme",
@@ -1875,10 +1890,12 @@
           "name": "Rocher de grimpe"
         },
         "climbing/route": {
-          "name": "Voie d'escalade"
+          "name": "Voie d'escalade",
+          "terms": "voie d'escalade,bloc,grimpe,relais,falaise,moulinette"
         },
         "climbing/route_bottom": {
-          "name": "Départ d'une voie d'escalade"
+          "name": "Départ d'une voie d'escalade",
+          "terms": "départ,voie d'escalade,bloc,début de voie,escalade,grimpe"
         },
         "club": {
           "name": "Club",
@@ -2140,7 +2157,8 @@
           "name": "École de danse"
         },
         "education/driving_school": {
-          "name": "Auto-école"
+          "name": "Auto-école",
+          "terms": "ecole de conduite,auto-école,autoécole,voiture,permis de conduire"
         },
         "education/kindergarten": {
           "name": "Crèche, garderie, jardin d'enfants (terrain)"
@@ -2610,6 +2628,9 @@
           "name": "Autoroute",
           "terms": "autoroute,voie rapide"
         },
+        "highway/motorway_junction": {
+          "name": "Sortie autoroutière"
+        },
         "highway/motorway_link": {
           "name": "Bretelle d'autoroute",
           "terms": "bretelle,accès,entrée,sortie,voie,autoroute"
@@ -2796,8 +2817,7 @@
           "terms": "boucle de manœuvre (îlot central)"
         },
         "highway/unclassified": {
-          "name": "Route mineure ou non classifiée",
-          "terms": "route non classée;voie communale"
+          "name": "Route mineure"
         },
         "historic": {
           "name": "Site historique",
@@ -3081,6 +3101,9 @@
           "name": "Zone d'entraînement militaire",
           "terms": "armée,entrainement,manœuvres,manoeuvres"
         },
+        "landuse/olive_grove": {
+          "name": "Oliveraie"
+        },
         "landuse/orchard": {
           "name": "Verger",
           "terms": "verger"
@@ -3360,10 +3383,6 @@
           "name": "Terrain de lancer de marteau",
           "terms": "terrain de lancer de marteau,zone,secteur,lancer de marteau"
         },
-        "leisure/pitch/athletics/high_jump": {
-          "name": "Terrain de saut en hauteur",
-          "terms": "terrain de saut en hauteur"
-        },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "Terrain de lancer de javelot",
           "terms": "terrain de lancer de javelot"
@@ -3404,10 +3423,8 @@
           "name": "Terrain de Beach-volley",
           "terms": "terrain de beach-volley"
         },
-        "leisure/pitch/boules": {
-          "name": "Terrain de boules (Pétanque, Bocce...)",
-          "terms": "pétanque,bocce,lyonnaise",
-          "aliases": "Terrain de Pétanque\nTerrain de Bocce"
+        "leisure/pitch/biathlon": {
+          "name": "Stand de tire de biathlon"
         },
         "leisure/pitch/bowls": {
           "name": "Terrain de boulingrin",
@@ -4871,10 +4888,6 @@
           "name": "Centrale hydroélectrique",
           "terms": "centrale hydroélectrique,centrale hydroelectrique,turbine"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Parc solaire",
-          "terms": "parc solaire,ferme solaire,énergie solaire,énergie verte,énergie renouvelable,photovoltaïque,centrale électrique,électricité"
-        },
         "power/plant/source/nuclear": {
           "name": "Centrale nucléaire",
           "terms": "centrale nucléaire,centrale nucleaire,centrale atomique"
@@ -5294,10 +5307,6 @@
           "name": "Magasin de produits pour bébés",
           "terms": "magasin de puériculture"
         },
-        "shop/bag": {
-          "name": "Bagagerie",
-          "terms": "vente de bagages"
-        },
         "shop/bakery": {
           "name": "Boulangerie",
           "terms": "boulangerie"
@@ -5595,7 +5604,8 @@
           "terms": "boutique de souvenirs"
         },
         "shop/gold_buyer": {
-          "name": "Acheteur d'or"
+          "name": "Acheteur d'or",
+          "terms": "achat d'or"
         },
         "shop/greengrocer": {
           "name": "Primeur",
@@ -5818,10 +5828,6 @@
           "name": "Magasin de feux d'artifice",
           "terms": "magasin de feux d'artifice"
         },
-        "shop/radiotechnics": {
-          "name": "Magasin de composants électroniques et de radio",
-          "terms": "magasin de composants électroniques et de radio"
-        },
         "shop/religion": {
           "name": "Magasin d'articles religieux",
           "terms": "boutique d'une église,d'un monastère"
@@ -5969,10 +5975,6 @@
         "shop/water": {
           "name": "Magasin d'eau potable",
           "terms": "eau potable"
-        },
-        "shop/water_sports": {
-          "name": "Vente d'équipements et d'articles pour sports nautiques",
-          "terms": "vente d'équipements et d'articles pour sports nautiques"
         },
         "shop/weapons": {
           "name": "Armurerie",
@@ -6367,10 +6369,6 @@
         "type/route/pipeline": {
           "name": "Itinéraire de pipeline",
           "terms": "pipeline,gazoduc,oléoduc"
-        },
-        "type/route/piste": {
-          "name": "Itinéraire de Ski",
-          "terms": "itinéraire de ski"
         },
         "type/route/power": {
           "name": "Itinéraire électrique",

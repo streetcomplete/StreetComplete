@@ -20,6 +20,13 @@
 - More effective usage of available screen space in settings & about screen (#6787), thanks @deevroman
 - Move logs filter selection in logs screen into own screen (#6772)
 
+### New Translations
+
+- Vietnamese by tsklxiv, Minh Nguyễn and more
+- Irish by Brian Affenstark
+- Welsh by dreigiau, fin-w
+- Cornish by Flynn
+
 ### Fixes
 
 - Bike paths overlay: OK button didn't always show (#6644) (wasn't fixed in v62.1 after all)

@@ -109,7 +109,6 @@ Antes de enviar suas alterações, o aplicativo confere um &lt;a href="https://w
     <string name="quest_surface_value_sett">Paralelepípedos</string>
     <string name="quest_surface_value_wood">Madeira</string>
     <string name="quest_sidewalk_title">Esta rua tem calçada?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Onde é esta rua?</string>
     <string name="quest_address_title">Qual é o número desta edificação?</string>
     <string name="store_listing_short_description">Aplicativo de levantamentos para OpenStreetMap</string>
     <string name="store_listing_full_description">Ajude a melhorar o OpenStreetMap com StreetComplete!
@@ -176,9 +175,6 @@ As informações inseridas são adicionadas diretamente ao OpenStreetMap em seu 
     <string name="quest_maxspeed_answer_noSign_confirmation">Você conferiu as extremidades da rua?
 Se não há placas ao longo de toda a rua que se apliquem à seção destacada, os limites padrão de velocidade se aplicam.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Sim, sem placa</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Vias em áreas urbanizadas têm um limite de velocidade padrão menor que o de vias rurais.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Área urbanizada</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Rural</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Se há uma placa como esta na interseção com a via principal, você pode não encontrar placas individuais dentro dessa zona, já que o limite de velocidade ali sinalizado se aplica à zona toda.</string>
     <string name="quest_sport_softball">Softbol</string>
     <string name="quest_sport_racquet">Raquetebol</string>
@@ -212,7 +208,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Teclados popu
     <string name="credits_contributors_title">Contribuidores de código</string>
     <string name="credits_author_title">Autor e mantenedor</string>
     <string name="quest_maxspeed_answer_living_street">É uma rua compartilhada</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Então, há uma placa como esta?</string>
     <string name="quest_orchard_produce_title">O que é cultivado aqui?</string>
     <string name="produce_grapes">Uvas</string>
     <string name="produce_agaves">Agaves</string>
@@ -284,7 +279,6 @@ Caso contrário, pode baixar outro teclado na loja de aplicativos. Teclados popu
     <string name="quest_buildingLevels_levelsLabel2">níveis comuns (sem contar o telhado)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Difere por parte do edifício</string>
     <string name="quest_buildingLevels_answer_description">Neste caso, simplesmente insira os valores da parte mais alta da edificação.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Os sentidos opostos de tráfego são separados por uma barreira física ou espaço verde? O limite padrão de velocidade depende de isto ser o caso.</string>
     <string name="about_category_feedback">Envie um comentário</string>
     <string name="quest_leave_new_note_photo">Anexar foto</string>
     <string name="quest_leave_new_note_photo_delete_title">Deseja excluir esta figura?</string>
@@ -449,7 +443,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="quest_openingHours_no_sign">Sem placa de horário de funcionamento</string>
     <string name="quest_buildingType_sports_centre">Centro esportivo</string>
     <string name="quest_buildingType_toilets">Toaletes</string>
-    <string name="quest_maxspeed_sign_question">O que define o limite de velocidade?</string>
     <string name="quest_segregated_title">Como são alocados aqui os caminhos de pedestre e ciclismo?</string>
     <string name="dialog_tutorial_upload">Para enviar suas alterações manualmente, use o botão da barra de ferramentas que se parece com isso.</string>
     <string name="quest_segregated_separated">Segregados um do outro</string>
@@ -688,7 +681,6 @@ conquista</string>
     <string name="at_housenumber">número da casa %1$s</string>
     <string name="quest_openingHours_add_off_days">Adicionar dias fechados</string>
     <string name="quest_openingHours_off_day">Dia fechado</string>
-    <string name="quest_openingHours_unspecified_range">Não especificado</string>
     <string name="quest_cycleway_resurvey_title">Esta ainda é a situação da ciclovia aqui?</string>
     <string name="pref_title_resurvey_intervals">Intervalos de novas perguntas</string>
     <string name="resurvey_intervals_less_often">Pergunte com menos frequência</string>

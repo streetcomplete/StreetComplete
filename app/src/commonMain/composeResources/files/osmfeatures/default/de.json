@@ -34,6 +34,10 @@
           "terms": "city-light-poster,city light,city-light",
           "aliases": "Posterbox"
         },
+        "advertising/sign": {
+          "name": "Werbeschild",
+          "terms": "werbeschild,werbetafel,schild,werbung,banner,logo,ladenfront,werbelogo,reklameschild"
+        },
         "advertising/totem": {
           "name": "Werbemast",
           "terms": "werbemasten"
@@ -310,8 +314,8 @@
           "terms": "ladestation für elektrofahrzeuge,ladestation,e-tankstelle,stromtankstelle,ladestation für elektroautos,plug-in hybridfahrzeuge,pedelecs und e-bikes,normalladepunkt,schnellladepunkt,ladesäule,normalladesäule,schnellladesäule,ladestelle,normalladestelle,schnellladestelle"
         },
         "amenity/childcare": {
-          "name": "Kinderkrippenbetreuung, Kindertagesstätte",
-          "terms": "kinderkrippe,kindergarten"
+          "name": "Kinderbetreuung",
+          "terms": "kinderkrippe,hort"
         },
         "amenity/cinema": {
           "name": "Kino",
@@ -394,9 +398,6 @@
           "name": "Gericht",
           "terms": "gericht,amtsgericht"
         },
-        "amenity/coworking_space": {
-          "name": "Coworking-Räumlichkeiten"
-        },
         "amenity/crematorium": {
           "name": "Krematorium",
           "terms": "krematorium,feuerhalle,einäscherungshalle"
@@ -445,8 +446,8 @@
         },
         "amenity/doctors/gynaecology": {
           "name": "Gynäkologe",
-          "terms": "gynäkologe,gynäkologie",
-          "aliases": "Frauenarzt\nFacharzt für Frauenheilkunde"
+          "terms": "gynäkologe,gynäkologie,geburtshilfe,geburtshelfer,hebarzt,geburtskunde,tokologie,obstetrik,frauenmedizin,frauenheilkunde",
+          "aliases": "Frauenarzt\nFacharzt für Frauenheilkunde\nFacharzt für Frauenheilkunde und Geburtshilfe"
         },
         "amenity/doctors/haematology": {
           "name": "Hämatologe",
@@ -696,6 +697,10 @@
         "amenity/karaoke_box": {
           "name": "Karaoke-Box",
           "terms": "karaoke club,karaoke raum,karaoke tv"
+        },
+        "amenity/kitchen": {
+          "name": "Gemeinschaftsküche",
+          "terms": "küche,kochen,koch"
         },
         "amenity/kneipp_water_cure": {
           "name": "Kneipp-Anlage",
@@ -1359,6 +1364,10 @@
           "name": "Brückenwaage, LKW-Waage",
           "terms": "wiegeanlage,brückenwaage"
         },
+        "animal/horse_walker": {
+          "name": "Führanlage",
+          "terms": "pferdeführanlage"
+        },
         "area": {
           "name": "Fläche",
           "terms": "fläche,areal"
@@ -1731,7 +1740,7 @@
           "terms": "wohnheim,studentenwohnheim,dormitorium"
         },
         "building/entrance": {
-          "name": "Eingang/Ausgang (veralteter Tag)"
+          "name": "Eingang / Ausgang"
         },
         "building/farm": {
           "name": "Bauernhaus",
@@ -3493,6 +3502,10 @@
           "name": "Beachvolleyballfeld",
           "terms": "beachvolleyballplatz,beachvolleyballfeld"
         },
+        "leisure/pitch/biathlon": {
+          "name": "Biathlon Schießstand",
+          "terms": "schießstand,biathlon,schießbahn,stehendschießen,liegendschießen,zielscheibe,schießen,schussbahn"
+        },
         "leisure/pitch/boules": {
           "name": "Boccia-Platz",
           "terms": "boccia-platz,boule-feld,bouleplatz"
@@ -4198,6 +4211,10 @@
           "name": "Natursteinbogen",
           "terms": "natürlicher bogen,felsbogen,natursteinbogen,naturbrücke,felstor,steinbogen,felsdurchbruch,steinbrücke"
         },
+        "natural/arete": {
+          "name": "Grat",
+          "terms": "gebirgsgrat,berggrat,firngrat"
+        },
         "natural/bare_rock": {
           "name": "Felsgestein",
           "terms": "blanker fels,anstehender fels,nackter felsen"
@@ -4794,7 +4811,8 @@
           "terms": "dorf"
         },
         "playground": {
-          "name": "Spielplatzgerät"
+          "name": "Spielplatzgerät",
+          "terms": "spielgeräte,spielplatzgeräte,spielplatzausstattung,kinderspielgeräte"
         },
         "playground/activitypanel": {
           "name": "Spielwand",
@@ -4996,10 +5014,6 @@
           "name": "Wasserkraftwerk",
           "terms": "wasserkraftanlage,wasserkraft,pumpspeicher,wellenkraftwerk,strömungskraftwerk,gezeitenkraftwerk,meeresströmungskraftwerk,wasserturbine,turbine,stauanlage,staumauer,staustufe,talsperre,wasserrad,laufwasserkraftwerk,stausee,flusskraftwerk,speicherkraftwerk"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Photovoltaikanlage",
-          "terms": "photovoltaik-freiflächenanlage,photovoltaikanlage,solaranlage,solarpaneel,pv,pv-anlage,pva,solarstromanlage,freiflächensolaranlagen,solarmodul,solargenerator,solarpark,sonnenenergie"
-        },
         "power/plant/source/nuclear": {
           "name": "Atomkraftwerk",
           "terms": "kernkraftwerk,atom,kraftwerk,nuklear,kernkraft,akw,kkw,reaktor,fission,kernenergie,atomenergie,atommeiler,kernmeiler,kernspaltung"
@@ -5011,6 +5025,11 @@
         "power/plant/source/solar": {
           "name": "Solaranlage",
           "terms": "solaranlage,solarpaneel,solarstromanlage,freiflächensolaranlagen,solarmodul,solargenerator,solarpark,solarthermie,sonnenenergie"
+        },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "Solarpark",
+          "terms": "solarpark,photovoltaik-freiflächenanlage,photovoltaikanlage,pv-anlage,photovoltaikkraftwerk,fotovoltaikkraftwerk,pv-kraftwerk,photovoltaische solaranlage",
+          "aliases": "Photovoltaik-Freiflächenanlage"
         },
         "power/plant/source/waste": {
           "name": "Müllverbrennungsanlage",
@@ -5425,9 +5444,8 @@
           "terms": "babysachengeschäft,babybekleidungsgeschäft,babygeschäft,babyfachmarkt"
         },
         "shop/bag": {
-          "name": "Taschengeschäft",
-          "terms": "taschen,koffer,reisegepäck,rollkoffer,reisetaschen,handtaschen,umhängetaschen",
-          "aliases": "Koffergeschäft"
+          "name": "Taschen / Koffergeschäft",
+          "terms": "taschen,koffer,reisegepäck,rollkoffer,reisetaschen,handtaschen,umhängetaschen"
         },
         "shop/bakery": {
           "name": "Bäckerei",
@@ -5454,7 +5472,7 @@
           "terms": "sonnenstudio,bräunungsstudio,solarium"
         },
         "shop/bed": {
-          "name": "Betten/Matratzengeschäft",
+          "name": "Betten / Matratzengeschäft",
           "terms": "matratzengeschäft,schlafzimmerbedarf,bettengeschäft,schlafzimmereinrichtungsgeschäft,matratzenladen"
         },
         "shop/beverages": {
@@ -5939,6 +5957,10 @@
           "name": "Fotofachgeschäft",
           "terms": "fotoladen,fotograf,fotogeschäft"
         },
+        "shop/piercing": {
+          "name": "Piercing-Studio",
+          "terms": "piercing,ohrstechen,ohrstecker,ohrloch,nase,bauchnabel,durchbohren,bohren,durchstechen,stechen,durchdringen,körperschmuck"
+        },
         "shop/pottery": {
           "name": "Keramikladen",
           "terms": "töpferwarenladen,töpferladen,keramik,topf,vase"
@@ -5956,8 +5978,8 @@
           "terms": "feuerwerksartikelladen,feuerwerkskörpergeschäft"
         },
         "shop/radiotechnics": {
-          "name": "Radio/Elektronik-Geschäft",
-          "terms": "elektronikladen,radio/elektro-laden"
+          "name": "Radio / Elektronik-Geschäft",
+          "terms": "elektronikladen,radio / elektro-laden"
         },
         "shop/religion": {
           "name": "Devotionalienhandlung",
@@ -6109,7 +6131,7 @@
         },
         "shop/water_sports": {
           "name": "Wassersportgeschäft",
-          "terms": "wassersportladen,schwimmbedarf"
+          "terms": "wassersportladen,schwimmbedarf,schwimmsport"
         },
         "shop/weapons": {
           "name": "Waffengeschäft",

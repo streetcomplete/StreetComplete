@@ -109,7 +109,6 @@ Bet, pirms jūsu veikto izmaiņu augšupielādes, lietotne uz mana servera pārb
     <string name="quest_surface_value_sett">"Bruģakmens"</string>
     <string name="quest_surface_value_wood">"Koks"</string>
     <string name="quest_sidewalk_title">"Vai šai ielai ir ietve?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kur atrodas šī iela?"</string>
     <string name="quest_address_title">"Kāds ir šīs ēkas mājas numurs?"</string>
     <string name="store_listing_short_description">"OpenStreetMap mērnieka lietotne"</string>
     <string name="store_listing_full_description">"Palīdziet uzlabot OpenStreetMap, izmantojot StreetComplete!
@@ -176,9 +175,6 @@ Informācija, ko jūs ievadiet, tiek pievienota OpenStreetMap jūsu lietotājvā
     <string name="quest_maxspeed_answer_noSign_confirmation">"Vai jūs pārbaudījāt abus ielas galus?
 Ja nav zīmes, kas iezīmētajā ceļa daļā norāda ātruma ierobežojumu, tiek lietoti standarta ātruma ierobežojumi."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Jā, zīmes nav"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Apbūvēto rajonu ceļiem parasti ir zemāks ātruma ierobežojums nekā lauku ceļiem."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Apbūvēts rajons"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Lauki"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Ja galvenā ceļa krustojumā ir šāda zīme, šajā zonā jūs neatradīsiet atsevišķas zīmes, jo šeit norādītie ātruma ierobežojumi attiecas uz visu zonu."</string>
     <string name="quest_sport_softball">"Softbols"</string>
     <string name="quest_sport_racquet">"Raketbumba"</string>
@@ -212,7 +208,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="credits_contributors_title">"Programmējuši"</string>
     <string name="credits_author_title">"Autors un uzturētāji"</string>
     <string name="quest_maxspeed_answer_living_street">"Tā ir dzīvojamā iela"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Vai šeit ir šāda zīme?"</string>
     <string name="quest_orchard_produce_title">"Kas šeit tiek audzēts?"</string>
     <string name="produce_grapes">"Vīnogas"</string>
     <string name="produce_agaves">"Agaves"</string>
@@ -284,7 +279,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_buildingLevels_levelsLabel2">"parastie stāvi (neskaitot jumtu)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Atšķiras dažādās ēkas daļās"</string>
     <string name="quest_buildingLevels_answer_description">"Šādā gadījumā ievadiet vērtības augstākajā ēkas daļā."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Vai šīs ielas braucamās daļas ir fiziski nodalītas ar barjeru vai zaļu joslu? No tā ir atkarīgs, kādi ir noklusējuma ātruma ierobežojumi."</string>
     <string name="about_category_feedback">"Atsauksmes"</string>
     <string name="quest_leave_new_note_photo">"Pievienot fotogrāfiju"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Vai vēlaties šo fotogrāfiju dzēst?"</string>
@@ -448,7 +442,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_openingHours_no_sign">"Nav zīmes ar darba laikiem"</string>
     <string name="quest_buildingType_sports_centre">"Sporta centrs"</string>
     <string name="quest_buildingType_toilets">"Tualetes"</string>
-    <string name="quest_maxspeed_sign_question">"Kas nosaka ātruma ierobežojumu?"</string>
     <string name="quest_segregated_title">"Kā šeit ir izkārtoti gājēju un veloceliņi?"</string>
     <string name="dialog_tutorial_upload">"Lai augšupielādētu izmaiņas manuāli, pieskarieties pogai, kas izskatās šādi."</string>
     <string name="quest_segregated_separated">"Nodalīts viens no otra"</string>
@@ -685,7 +678,6 @@ līmeņi"</string>
     <string name="at_housenumber">"mājas numurs %s"</string>
     <string name="quest_openingHours_add_off_days">"Pievienot brīvdienas"</string>
     <string name="quest_openingHours_off_day">"Brīvdiena"</string>
-    <string name="quest_openingHours_unspecified_range">"Nav norādīts"</string>
     <string name="quest_cycleway_resurvey_title">"Vai šeit vēl aizvien ir tā pati velobraukšanas situācija?"</string>
     <string name="pref_title_resurvey_intervals">"Atkārtotas apsekošanas intervāls"</string>
     <string name="resurvey_intervals_less_often">"Prasīt retāk"</string>

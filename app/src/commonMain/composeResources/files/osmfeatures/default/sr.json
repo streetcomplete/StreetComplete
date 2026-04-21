@@ -142,9 +142,6 @@
           "name": "ЛГБТК+ бар",
           "terms": "лгбт бар,геј бар"
         },
-        "amenity/bbq": {
-          "name": "Роштиљ/печењара"
-        },
         "amenity/bench": {
           "name": "Клупа"
         },
@@ -172,7 +169,7 @@
           "name": "Пивска башта"
         },
         "amenity/binoculars": {
-          "name": "Монтирани двоглед",
+          "name": "Панорамски двоглед",
           "terms": "причвшћеви двоглед,двоглед за осматрање"
         },
         "amenity/boat_rental": {
@@ -215,9 +212,6 @@
         "amenity/charging_station": {
           "name": "Станица за пуњење електричних возила",
           "terms": "станица за пуњење"
-        },
-        "amenity/childcare": {
-          "name": "Обданиште"
         },
         "amenity/cinema": {
           "name": "Биоскоп"
@@ -276,9 +270,6 @@
         "amenity/courthouse": {
           "name": "Судница"
         },
-        "amenity/coworking_space": {
-          "name": "Заједнички радни простор"
-        },
         "amenity/crematorium": {
           "name": "Крематоријум"
         },
@@ -308,9 +299,6 @@
         },
         "amenity/doctors/general": {
           "name": "Лекар опште праксе"
-        },
-        "amenity/doctors/gynaecology": {
-          "name": "Акушер/Гинеколог"
         },
         "amenity/doctors/haematology": {
           "name": "Хематолог"
@@ -1232,9 +1220,6 @@
           "name": "Студентски дом",
           "terms": "спаваоница,студентски дом"
         },
-        "building/entrance": {
-          "name": "Улаз/излаз"
-        },
         "building/farm": {
           "name": "Сеоска кућа"
         },
@@ -2020,9 +2005,6 @@
         "highway/turning_loop": {
           "name": "Окретница (с острвом)"
         },
-        "highway/unclassified": {
-          "name": "Мањи / некласификовани пут"
-        },
         "historic": {
           "name": "Историјско место"
         },
@@ -2440,9 +2422,6 @@
         },
         "leisure/pitch/athletics/hammer_throw": {
           "name": "Сектор за бацање кладива"
-        },
-        "leisure/pitch/athletics/high_jump": {
-          "name": "Јама за скок увис"
         },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "Сектор за бацање копља"
@@ -3535,9 +3514,6 @@
         "power/plant/source/hydro": {
           "name": "Хидроелектрана"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Фотонапонска електрана"
-        },
         "power/plant/source/nuclear": {
           "name": "Нуклеарна електрана"
         },
@@ -3862,9 +3838,6 @@
         },
         "shop/beauty/tanning": {
           "name": "Соларијум"
-        },
-        "shop/bed": {
-          "name": "Продавница душека"
         },
         "shop/beverages": {
           "name": "Продавница пића"
@@ -4232,9 +4205,6 @@
         "shop/pyrotechnics": {
           "name": "Продавница пиротехнике"
         },
-        "shop/radiotechnics": {
-          "name": "Продавница електронских делова"
-        },
         "shop/religion": {
           "name": "Продавница верских предмета"
         },
@@ -4349,9 +4319,6 @@
         },
         "shop/water": {
           "name": "Продавница пијаће воде"
-        },
-        "shop/water_sports": {
-          "name": "Продавница пливачке опреме"
         },
         "shop/weapons": {
           "name": "Оружарница"
@@ -4629,9 +4596,6 @@
         },
         "type/route/pipeline": {
           "name": "Цевоводна путања"
-        },
-        "type/route/piste": {
-          "name": "Ски-рута"
         },
         "type/route/power": {
           "name": "Високонапонска путања"

@@ -29,6 +29,10 @@
           "name": "廣告燈箱",
           "terms": "廣告燈箱"
         },
+        "advertising/sign": {
+          "name": "廣告標誌",
+          "terms": "廣告標誌"
+        },
         "advertising/totem": {
           "name": "廣告立牌",
           "terms": "廣告立牌"
@@ -322,7 +326,7 @@
           "terms": "社區中心,活動中心,社區發展協會"
         },
         "amenity/community_centre/chitalishte_BG": {
-          "name": "Chitalishte",
+          "name": "社區文教中心",
           "terms": "chitalishte"
         },
         "amenity/community_centre/club_home": {
@@ -368,9 +372,6 @@
         "amenity/courthouse": {
           "name": "法院",
           "terms": "法院,法庭"
-        },
-        "amenity/coworking_space": {
-          "name": "共同工作空間,共用工作空間"
         },
         "amenity/crematorium": {
           "name": "火葬場",
@@ -664,6 +665,10 @@
         "amenity/karaoke_box": {
           "name": "卡拉 OK 店",
           "terms": "卡拉 ok 店,ktv"
+        },
+        "amenity/kitchen": {
+          "name": "公共廚房",
+          "terms": "社區廚房"
         },
         "amenity/kneipp_water_cure": {
           "name": "水療設施",
@@ -1323,6 +1328,10 @@
           "name": "地磅",
           "terms": "地磅"
         },
+        "animal/horse_walker": {
+          "name": "遛馬機",
+          "terms": "遛馬機"
+        },
         "area": {
           "name": "區域",
           "terms": "區域"
@@ -1693,7 +1702,7 @@
           "terms": "宿舍,學生宿舍,學寮"
         },
         "building/entrance": {
-          "name": "入口/出口"
+          "name": "入口 / 出口"
         },
         "building/farm": {
           "name": "農舍",
@@ -3394,8 +3403,8 @@
           "terms": "鏈球投擲場"
         },
         "leisure/pitch/athletics/high_jump": {
-          "name": "跳高場",
-          "terms": "跳高場"
+          "name": "跳高區域",
+          "terms": "跳高區"
         },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "標槍投擲場",
@@ -3436,6 +3445,10 @@
         "leisure/pitch/beachvolleyball": {
           "name": "沙灘排球場",
           "terms": "沙灘排球場"
+        },
+        "leisure/pitch/biathlon": {
+          "name": "冬季兩項射擊場",
+          "terms": "冬季兩項射擊場"
         },
         "leisure/pitch/boules": {
           "name": "法式滾球場",
@@ -4131,6 +4144,10 @@
           "name": "天然拱門",
           "terms": "天然拱門"
         },
+        "natural/arete": {
+          "name": "刃脊",
+          "terms": "刃脊"
+        },
         "natural/bare_rock": {
           "name": "裸岩",
           "terms": "裸岩"
@@ -4723,7 +4740,8 @@
           "terms": "村莊"
         },
         "playground": {
-          "name": "遊具"
+          "name": "遊具",
+          "terms": "遊具"
         },
         "playground/activitypanel": {
           "name": "智慧學習面板",
@@ -4923,10 +4941,6 @@
           "name": "水力發電廠",
           "terms": "水力發電廠,水力電廠"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "太陽能發電場",
-          "terms": "太陽能發電場,太陽能板"
-        },
         "power/plant/source/nuclear": {
           "name": "核能發電廠",
           "terms": "核能發電廠,核能電廠"
@@ -4936,6 +4950,10 @@
           "terms": "燃油電廠"
         },
         "power/plant/source/solar": {
+          "name": "太陽能發電廠",
+          "terms": "太陽能發電廠,太陽能電廠"
+        },
+        "power/plant/source/solar/photovoltaic": {
           "name": "太陽能發電廠",
           "terms": "太陽能發電廠,太陽能電廠"
         },
@@ -5863,6 +5881,10 @@
         "shop/photo": {
           "name": "攝影用品店",
           "terms": "照相館"
+        },
+        "shop/piercing": {
+          "name": "穿孔店",
+          "terms": "穿孔店"
         },
         "shop/pottery": {
           "name": "陶器店",

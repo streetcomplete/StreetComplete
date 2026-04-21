@@ -29,6 +29,10 @@
           "name": "ตู้ไปรษณีย์",
           "terms": "ตู้ไปรษณีย์,ตู้ส่ง"
         },
+        "advertising/sign": {
+          "name": "ป้ายโฆษณา",
+          "terms": "ป้ายการโฆษณา"
+        },
         "advertising/totem": {
           "name": "ป้ายตั้งโฆษณา",
           "terms": "ป้ายตั้งโฆษณา"
@@ -187,8 +191,8 @@
           "terms": "บาร์สำหรับกลุ่ม lgbtq+"
         },
         "amenity/bbq": {
-          "name": "เตาย่าง",
-          "terms": "เตาบาร์บีคิว"
+          "name": "เตาบาร์บีคิว / เตาย่าง",
+          "terms": "เตาเผา"
         },
         "amenity/bench": {
           "name": "ม้านั่ง",
@@ -287,7 +291,7 @@
         },
         "amenity/childcare": {
           "name": "สถานรับเลี้ยงเด็ก",
-          "terms": "สถานรับเลี้ยงเด็ก,สถานบริบาลทารก,เนิสเซอรี่,เนอสเซอรี่"
+          "terms": "สถานรับเลี้ยงดูแลเด็ก"
         },
         "amenity/cinema": {
           "name": "โรงภาพยนตร์",
@@ -320,6 +324,10 @@
         "amenity/community_centre": {
           "name": "ศูนย์ชุมชน",
           "terms": "ศูนย์ชุมชน,ศาลาชุมชน,ศาลาประชาคม,ศูนย์ประชาคม"
+        },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "ศูนย์วัฒนธรรมชุมชน",
+          "terms": "ชิตาลิชเต"
         },
         "amenity/community_centre/club_home": {
           "name": "คลับโฮม",
@@ -364,9 +372,6 @@
         "amenity/courthouse": {
           "name": "ศาล",
           "terms": "ศาล"
-        },
-        "amenity/coworking_space": {
-          "name": "พื้นที่ทำงานร่วมกัน"
         },
         "amenity/crematorium": {
           "name": "ฌาปนสถาน",
@@ -414,7 +419,7 @@
         },
         "amenity/doctors/gynaecology": {
           "name": "สูติแพทย์/สูตินารีแพทย์",
-          "terms": "สูติแพทย์/สูตินารีแพทย์,หมอตำแย"
+          "terms": "สูติแพทย์/สูตินารีแพทย์"
         },
         "amenity/doctors/haematology": {
           "name": "นักโลหิตวิทยา",
@@ -953,6 +958,10 @@
           "name": "ร้านอาหารกรีก",
           "terms": "ร้านอาหารกรีก"
         },
+        "amenity/restaurant/hotpot": {
+          "name": "ร้านอาหารหม้อไฟ",
+          "terms": "ร้านอาหารฮอตพอต"
+        },
         "amenity/restaurant/indian": {
           "name": "ร้านอาหารอินเดีย",
           "terms": "ร้านอาหารอินเดีย"
@@ -1316,6 +1325,10 @@
         "amenity/weighbridge": {
           "name": "เครื่องชั่งรถบรรทุก",
           "terms": "เครื่องชั่งรถบรรทุก"
+        },
+        "animal/horse_walker": {
+          "name": "คนจูงม้า",
+          "terms": "นักจูงม้า"
         },
         "area": {
           "name": "พื้นที่",
@@ -1844,7 +1857,8 @@
           "terms": "แถวของบ้านแถว"
         },
         "building/train_station": {
-          "name": "อาคารสถานีรถไฟ"
+          "name": "อาคารสถานีรถไฟ",
+          "terms": "อาคารสถานีรถไฟ"
         },
         "building/transportation": {
           "name": "อาคารสถานีขนส่ง",
@@ -2625,6 +2639,10 @@
           "name": "ทางพิเศษ",
           "terms": "มอเตอร์เวย์,ทางด่วน"
         },
+        "highway/motorway_junction": {
+          "name": "ทางออกทางพิเศษ",
+          "terms": "ทางออกทางด่วน"
+        },
         "highway/motorway_link": {
           "name": "ทางเชื่อมทางพิเศษ",
           "terms": "ทางเชื่อมทางหลวงพิเศษ"
@@ -2810,7 +2828,7 @@
         },
         "highway/unclassified": {
           "name": "ถนนพื้นฐาน",
-          "terms": "ถนนพื้นฐาน,ถนนสาธารณะ"
+          "terms": "ถนนพื้นฐาน"
         },
         "historic": {
           "name": "พื้นที่ประวัติศาสตร์",
@@ -2986,6 +3004,10 @@
         "landuse/construction": {
           "name": "พื้นที่ก่อสร้าง",
           "terms": "พื้นที่ก่อสร้าง"
+        },
+        "landuse/education": {
+          "name": "พื้นที่การศึกษา",
+          "terms": "พื้นที่ของการศึกษา"
         },
         "landuse/farm": {
           "name": "ไร่นา"
@@ -3374,10 +3396,6 @@
           "name": "แหวนจักรขว้างค้อน/เซกเตอร์",
           "terms": "แหวนจักรขว้างค้อน/เซกเตอร์"
         },
-        "leisure/pitch/athletics/high_jump": {
-          "name": "สนามกระโดดสูง",
-          "terms": "สนามกระโดดสูง"
-        },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "สนามหอกซัด",
           "terms": "สนามหอกซัด"
@@ -3417,10 +3435,6 @@
         "leisure/pitch/beachvolleyball": {
           "name": "สนามวอลเลย์บอลชายหาด",
           "terms": "สนามวอลเลย์บอลชายหาด"
-        },
-        "leisure/pitch/boules": {
-          "name": "สนามเปตอง",
-          "terms": "สนามเปตอง"
         },
         "leisure/pitch/bowls": {
           "name": "โบว์ลิ่งกรีน",
@@ -4899,10 +4913,6 @@
           "name": "โรงงานพลังงานน้ำ",
           "terms": "โรงงานพลังงานน้ำ"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "ฟาร์มพลังงานแสงอาทิตย์",
-          "terms": "ฟาร์มพลังงานแสงอาทิตย์,โซลาร์ฟาร์ม"
-        },
         "power/plant/source/nuclear": {
           "name": "โรงงานพลังงานนิวเคลียร์",
           "terms": "โรงงานพลังงานนิวเคลียร์"
@@ -5323,10 +5333,6 @@
           "name": "ร้านสินค้าสำหรับแม่และเด็ก",
           "terms": "ร้านสินค้าเด็กอ่อน"
         },
-        "shop/bag": {
-          "name": "ร้านกระเป๋า",
-          "terms": "ร้านกระเป๋า"
-        },
         "shop/bakery": {
           "name": "เบเกอรี่",
           "terms": "เบเกอรี่,ร้านขายขนมปัง"
@@ -5350,10 +5356,6 @@
         "shop/beauty/tanning": {
           "name": "ร้านทำผิวสีแทน",
           "terms": "ร้านทำผิวสีแทน,ร้าแทนผิว"
-        },
-        "shop/bed": {
-          "name": "ร้านเครื่องนอน",
-          "terms": "ร้านเครื่องนอน,ร้านขายฟูก,ร้านขายที่นอน"
         },
         "shop/beverages": {
           "name": "ร้านเครื่องดื่ม",
@@ -5848,10 +5850,6 @@
           "name": "ร้านดอกไม้ไฟ",
           "terms": "ร้านดอกไม้ไฟ,ร้านพลุ"
         },
-        "shop/radiotechnics": {
-          "name": "ร้านวิทยุ/อุปกรณ์อิเล็กทรอนิกส์",
-          "terms": "ร้านวิทยุ/อุปกรณ์อิเล็กทรอนิกส์"
-        },
         "shop/religion": {
           "name": "ร้านขายของทางศาสนา",
           "terms": "ร้านขายของทางศาสนา. ร้านสังฆภัณฑ์"
@@ -5999,10 +5997,6 @@
         "shop/water": {
           "name": "ร้านน้ำดื่ม",
           "terms": "ร้านน้ำดื่ม"
-        },
-        "shop/water_sports": {
-          "name": "ร้านกีฬาทางน้ำ/ว่ายน้ำ",
-          "terms": "ร้านกีฬาทางน้ำ/ว่ายน้ำ"
         },
         "shop/weapons": {
           "name": "ร้านอาวุธ",
@@ -6390,10 +6384,6 @@
         "type/route/pipeline": {
           "name": "เส้นทางท่อ",
           "terms": "เส้นทางท่อ"
-        },
-        "type/route/piste": {
-          "name": "เส้นทางหิมะอัด/สกี",
-          "terms": "เส้นทางหิมะอัด/สกี"
         },
         "type/route/power": {
           "name": "เส้นทางพลังงาน",

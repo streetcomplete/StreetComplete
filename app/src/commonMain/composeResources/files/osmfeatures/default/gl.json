@@ -168,10 +168,6 @@
           "name": "Bar de copas LGBTQ+",
           "terms": "bar gay,bar lésbico,bar lgbtq,bar lgbt,bar lgb,homosexual"
         },
-        "amenity/bbq": {
-          "name": "Barbacoa/Grella",
-          "terms": "barbacoa,grella,asador,lume"
-        },
         "amenity/bench": {
           "name": "Banco",
           "terms": "asento,banco,bancada,banquillo,banqueta,banca"
@@ -255,10 +251,6 @@
           "name": "Estación de carga",
           "terms": "carga,batería,eléctrico,punto de recarga"
         },
-        "amenity/childcare": {
-          "name": "Gardaría",
-          "terms": "coidadora,niñera,niñeira,neneira,gardería,guardería,xardín de infancia,bebés,nenos,nenas,infantil,gardaria,coidado,gardaría infantil,coidado infantil,preescolar,párvulos,garderia,parvulos,gardaría,párvulo,xardin de infancia,xardín infantil,xardin infantil,zona,area,área"
-        },
         "amenity/cinema": {
           "name": "Cine",
           "terms": "cine,cinema,película,filme,pantalla"
@@ -302,9 +294,6 @@
         "amenity/courthouse": {
           "name": "Xulgado",
           "terms": "xulgado,pazo de xustiza,xustiza,xulgados,xudicial,tribunal,audiencia"
-        },
-        "amenity/coworking_space": {
-          "name": "Espacio de cotraballo"
         },
         "amenity/crematorium": {
           "name": "Crematorio",
@@ -1162,9 +1151,6 @@
           "name": "Residencia",
           "terms": "residencia,dormitorios,habitacións"
         },
-        "building/entrance": {
-          "name": "Entrada/Saída"
-        },
         "building/farm": {
           "name": "Casa de campo"
         },
@@ -1913,9 +1899,6 @@
         "highway/turning_loop": {
           "name": "Círculo de xiro (illa)"
         },
-        "highway/unclassified": {
-          "name": "Estrada menor/Sen clasificar"
-        },
         "historic": {
           "name": "Lugar histórico"
         },
@@ -2336,9 +2319,6 @@
         },
         "leisure/pitch/beachvolleyball": {
           "name": "Cancha de voleibol praia"
-        },
-        "leisure/pitch/boules": {
-          "name": "Pista de birlos"
         },
         "leisure/pitch/bowls": {
           "name": "Campo de bolos",
@@ -3242,9 +3222,6 @@
         "power/plant/source/gas": {
           "name": "Planta de enerxía a gas"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Planta de enerxía solar"
-        },
         "power/plant/source/nuclear": {
           "name": "Planta de enerxía nuclear"
         },
@@ -3577,9 +3554,6 @@
           "name": "Tenda de produtos para meniños",
           "terms": "meniños,bebés"
         },
-        "shop/bag": {
-          "name": "Tenda de maletas"
-        },
         "shop/bakery": {
           "name": "Panadaría"
         },
@@ -3594,9 +3568,6 @@
         },
         "shop/beauty/tanning": {
           "name": "Salón de bronceado"
-        },
-        "shop/bed": {
-          "name": "Tenda de colchóns/roupa de cama"
         },
         "shop/beverages": {
           "name": "Tenda de bebidas"
@@ -3953,10 +3924,6 @@
           "name": "Tenda de fogos artificiais",
           "terms": "pirotecnia,fogos artificiais,fogos de artificio"
         },
-        "shop/radiotechnics": {
-          "name": "Tenda de compoñentes electrónicos",
-          "terms": "compoñentes,electrónica,radio"
-        },
         "shop/religion": {
           "name": "Tenda relixiosa"
         },
@@ -4065,10 +4032,6 @@
         "shop/water": {
           "name": "Tenda de auga potábel",
           "terms": "auga,agua,potable,bebible,potábel"
-        },
-        "shop/water_sports": {
-          "name": "Tenda de deportes acuáticos / natación",
-          "terms": "acuático,natación,goggles,lentes natación,bañador,bikini,biquini,neopreno,auga"
         },
         "shop/weapons": {
           "name": "Armaría"
@@ -4330,9 +4293,6 @@
         "type/route/pipeline": {
           "name": "Ruta de tubaxe",
           "terms": "ruta,rota,tubería,tubaría,gasoduto,oleoduto,conduto,cañería,duto,ducto,tubaxe,tubo"
-        },
-        "type/route/piste": {
-          "name": "Ruta / Pista de esquí"
         },
         "type/route/power": {
           "name": "Ruta de rede eléctrica",

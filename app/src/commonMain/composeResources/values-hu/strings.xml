@@ -34,7 +34,7 @@
     <string name="quest_noteDiscussion_anonymous">Névtelen</string>
     <string name="confirmation_discard_title">Elveted a bevitelt?</string>
     <string name="confirmation_discard_positive">Elvetés</string>
-    <string name="action_download">Küldetések letöltése itt</string>
+    <string name="action_download">Adatok letöltése itt</string>
     <string name="action_upload">Válaszok feltöltése</string>
     <string name="no_changes">Nem válaszoltál</string>
     <string name="download_error">Letöltési hiba</string>
@@ -52,7 +52,7 @@
     <string name="confirmation_authorize_now">Válaszaid közzétételéhez azonosítanod kell magad az OSM-fiókoddal. Hitelesíted most?</string>
     <string name="not_authorized">Nem hitelesített</string>
     <string name="version_banned_message">A StreetComplete ezen verziója túl régi. Frissítsd az alkalmazást!</string>
-    <string name="no_gps_no_quests">A környék küldetéseinek automatikus letöltéséhez kapcsold be a pontos helymeghatározást</string>
+    <string name="no_gps_no_quests">A környező adatok automatikus letöltéséhez kapcsold be a pontos helymeghatározást</string>
     <string name="later">Később</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Valami más (leírom jegyzetben)</string>
     <string name="about_title_privacy_statement">Adatvédelmi nyilatkozat</string>
@@ -109,12 +109,11 @@ A módosításaid feltöltése előtt azonban az alkalmazás először leellenő
     <string name="quest_surface_value_sett">Macskakő</string>
     <string name="quest_surface_value_wood">Fa</string>
     <string name="quest_sidewalk_title">Van járda ebben az utcában?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Hol található ez az utca?</string>
     <string name="quest_address_title">Mi a házszáma ennek az épületnek?</string>
     <string name="store_listing_short_description">OpenStreetMap-felmérő alkalmazás</string>
     <string name="store_listing_full_description">Segítsd fejleszteni az OpenStreetMapet a StreetComplete-tel!
 
-Ez az alkalmazás hiányos és bővíthető adatokat keres a környékeden, és megjeleníti őket térképen. Oldd meg a küldetéseket úgy, hogy ellátogatsz a helyszínre, és egy egyszerű kérdés megválaszolásával frissíted a térképet.
+Ez az alkalmazás hiányos és kiegészíthető adatokat keres a környékeden, és megjeleníti őket térképen. Oldd meg a küldetéseket úgy, hogy ellátogatsz a helyszínre, és egy egyszerű kérdés megválaszolásával frissíted a térképet.
 
 A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez nincs szükség más szerkesztőprogramra.</string>
     <string name="quest_name_answer_noName">Nincs neve…</string>
@@ -176,9 +175,6 @@ A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez n
     <string name="quest_maxspeed_answer_noSign_confirmation">Megnézted az utca végein?
 Ha az utcában az egész kijelölt szakaszon nincs jelzőtábla, akkor az alapértelmezett sebességkorlátozás érvényes.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Igen, nincs tábla</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Lakott területen alacsonyabb az alapértelmezett sebességkorlátozás, mint országúton.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Lakott terület</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Lakott területen kívül</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Ha ilyen tábla található egy magasabb rendű út kereszteződésénél, akkor a zónán belül nem feltétlenül lesznek táblák, mivel a jelzett sebességkorlátozás az egész zónára vonatkozik.</string>
     <string name="quest_sport_softball">Softball</string>
     <string name="quest_sport_racquet">Raketball</string>
@@ -212,7 +208,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="credits_contributors_title">A kódolásban közreműködők</string>
     <string name="credits_author_title">Szerző és karbantartó</string>
     <string name="quest_maxspeed_answer_living_street">Ez lakó-pihenő övezet</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Tehát ki van téve egy ilyen tábla?</string>
     <string name="quest_orchard_produce_title">Mit termesztenek itt?</string>
     <string name="produce_grapes">Szőlő</string>
     <string name="produce_agaves">Agávé</string>
@@ -284,7 +279,6 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_buildingLevels_levelsLabel2">normál szintek (tetőtér nélkül)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Épületrészenként különböző</string>
     <string name="quest_buildingLevels_answer_description">Ebben az esetben a legmagasabb épületrész emeleteit add meg.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Az úttest két iránya itt el van választva fizikailag akadállyal vagy zöldsávval? Az alapértelmezett sebességkorlátozás ennek meglététől függ.</string>
     <string name="about_category_feedback">Visszajelzés</string>
     <string name="quest_leave_new_note_photo">Fénykép csatolása</string>
     <string name="quest_leave_new_note_photo_delete_title">Törölni szeretnéd ezt a fényképet?</string>
@@ -311,7 +305,7 @@ Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű bil
     <string name="quest_carWashType_selfService">Önkiszolgáló</string>
     <string name="quest_carWashType_service">Személyzet mossa az autót</string>
     <string name="enable_quest_confirmation_title">Engedélyezed az ilyen típusú küldetéseket?</string>
-    <string name="default_disabled_msg_go_inside">Ez a küldetéstípus azért van alapértelmezésben letiltva, mert megoldásához valószínűleg be kell menned az adott helyre.</string>
+    <string name="default_disabled_msg_go_inside">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert megoldásához valószínűleg be kell menned az adott helyre.</string>
     <string name="quest_housenumber_conscription_number">Helyrajzi szám</string>
     <string name="quest_housenumber_street_number_optional">Házszám (cseh/szlovák, nem kötelező)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Van kerékpárút a másik oldalon is…</string>
@@ -449,7 +443,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_openingHours_no_sign">Nincs kiírva nyitvatartás</string>
     <string name="quest_buildingType_sports_centre">Sportközpont</string>
     <string name="quest_buildingType_toilets">WC</string>
-    <string name="quest_maxspeed_sign_question">Mi határozza meg a sebességkorlátozást?</string>
     <string name="quest_segregated_title">Hogyan van kialakítva itt a gyalog- és a kerékpárút?</string>
     <string name="dialog_tutorial_upload">Módosításaid kézi feltöltéséhez használd a főmenüben található gombot, amely így néz ki.</string>
     <string name="quest_segregated_separated">El vannak választva egymástól</string>
@@ -474,7 +467,7 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_traffic_signals_button_title">Van ezen a jelzőlámpán olyan gomb, amellyel zöld jelzés kérhető?</string>
     <string name="quest_motorcycleParkingCapacity_title">Hány motorkerékpár parkolhat itt?</string>
     <string name="quest_motorcycleParkingCoveredStatus_title">Fedett (esőtől védett) ez a motorkerékpár-parkoló?</string>
-    <string name="default_disabled_msg_maxspeed">Ez a küldetéstípus alapértelmezésben ki van kapcsolva, mert általában nem csak a kiemelt szakaszt, hanem az egész utcát végig kellene nézni a sebességkorlátozások szempontjából. Ez eléggé elnyújthatja ennek az egyetlen küldetésnek a megoldását.</string>
+    <string name="default_disabled_msg_maxspeed">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert általában nem csak a kiemelt szakaszt, hanem az egész utcát végig kellene nézni a sebességkorlátozások szempontjából. Ez eléggé elnyújthatja ennek az egyetlen küldetésnek a megoldását.</string>
     <string name="pref_title_quests_restore_hidden">Elrejtett küldetések visszaállítása</string>
     <string name="on_level">a(z) %1$s. szinten</string>
     <string name="underground">föld alatt</string>
@@ -687,7 +680,6 @@ szintje</string>
     <string name="at_housenumber">házszám: %1$s</string>
     <string name="quest_openingHours_add_off_days">Szabadnapok hozzáadása</string>
     <string name="quest_openingHours_off_day">Szabadnap</string>
-    <string name="quest_openingHours_unspecified_range">Nincs megadva</string>
     <string name="quest_cycleway_resurvey_title">Itt még mindig ez a kerékpáros helyzet?</string>
     <string name="pref_title_resurvey_intervals">Újbóli felmérések intervalluma</string>
     <string name="resurvey_intervals_less_often">Kérdezzen rá ritkábban</string>
@@ -717,7 +709,7 @@ szintje</string>
     <string name="quest_charging_station_operator_title">Ki az üzemeltetője ennek a töltőállomásnak?</string>
     <string name="link_indoorequal_description">Plázák, vasútállomások, stb. beltéri térképei</string>
     <string name="achievement_rare_title">Kincsvadász</string>
-    <string name="achievement_rare_solved_X">%1$d olyanküldetést megtaláltál és megoldottál, amiket nagyon ritkán szoktak megoldani, gratulálok!</string>
+    <string name="achievement_rare_solved_X">Megtaláltál és megoldottál %1$d olyan küldetést, amelyet nagyon ritkán szoktak megoldani, gratulálok!</string>
     <string name="achievement_citizen_title">Városlakó</string>
     <string name="achievement_citizen_solved_X">%1$d olyan küldetést megoldottál, amik a városi mindennapi élethez hasznosak!</string>
     <string name="achievement_outdoors_title">Túrázó</string>
@@ -765,7 +757,7 @@ Ha vannak buszok számára fenntartott sávok is, akkor inkább írj jegyzetet.<
     <string name="quest_shop_gone_replaced_answer">Ez egy…</string>
     <string name="quest_shop_gone_replaced_answer_hint">Add meg a hely típusát</string>
     <string name="quest_shop_vacant_type_title">Ez az üzlet üresen állt. Mi található most itt?</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">Ez a küldetéstípus alapértelmezésben ki van kapcsolva, mivel egyes régiókban kevésbé hasznos, valamint a küldetés megoldásához jó eséllyel be kell menni az adott helyre.</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert egyes régiókban kevésbé hasznos, valamint a küldetés megoldásához jó eséllyel be kell menni az adott helyre.</string>
     <string name="quest_dietType_explanation_kosher">A kóser termékeknek különleges szabályok szerint kell készülniük, valamint rendelkezniük kell a megfelelő intézmények hitelesítésével.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nincs kerékpárút vagy kerékpársáv egyáltalán</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Érintsd meg az ábra egyik oldalát, válaszd ki a megfelelő választ, majd tedd ugyanezt a másik oldalon is.
@@ -851,7 +843,7 @@ Az adatok %1$s nap után frissülnek, a nem használt adatok pedig %2$s nap utá
     <string name="quest_buildingLevels_title2">A pince fölött hány szintje van az épületnek?</string>
     <string name="quest_buildingLevels_title_buildingPart2">A pince fölött hány szintje van az épületrésznek?</string>
     <string name="pref_subtitle_quests_preset_name">tárolt beállítás: %1$s</string>
-    <string name="default_disabled_msg_roofShape">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert a tetőformák az utcáról gyakran nehezen láthatók. Ez a küldetésttípus ráadásul meglehetősen időigényes is; az esetek többségében könnyebb és hatékonyabb ezt otthon légi felvételek segítségével feltérképezni.</string>
+    <string name="default_disabled_msg_roofShape">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert a tetőformák az utcáról gyakran nehezen láthatók. Megoldása ráadásul meglehetősen időigényes is; általában könnyebb és hatékonyabb ezt otthon légi felvételek segítségével feltérképezni.</string>
     <string name="quest_religion_animist">Animista</string>
     <string name="quest_construction_steps_title">Elkészült már ez a lépcső?</string>
     <string name="pref_quests_deselect_all">Visszavonod az összes küldetés kijelölését?</string>
@@ -1004,7 +996,7 @@ Másik megoldásként írhatsz egy jegyzetet (fényképpel).</string>
 Tedd meg a másiknál is, ha van olyan.</string>
     <string name="ar_measure">Mérés</string>
     <string name="ar_core_tracking_error_too_steep_angle">Túl meredek a szög, állj egy kicsit távolabb</string>
-    <string name="default_disabled_msg_no_ar">Szükséged lesz egy mérőszalagra ezen küldetés megoldásához, mert ez az eszköz nem támogatja a kamerás mérést.</string>
+    <string name="default_disabled_msg_no_ar">A küldetés megoldásához mérőszalagra lesz szükséged, mert ez az eszköz nem támogatja a kamerás mérést.</string>
     <string name="quest_cycleway_width_title">Milyen széles itt a kerékpárút?</string>
     <string name="quest_road_width_title">Milyen széles itt az út?</string>
     <string name="quest_road_width_explanation">Az úttest szélessége a két járdaszegély között: Ide tartozik minden, ami az úttesten van, beleértve a parkolásra használt részt vagy a kerékpársávokat, de nem tartoznak bele a járdaszegélyen túli részek, mint például a járdák, az úttesten kívüli parkolók vagy a szomszédos kerékpárutak.</string>
@@ -1133,7 +1125,7 @@ Tedd meg a másiknál is, ha van olyan.</string>
     <string name="quest_entrance_reference_reference_label">Bejárat azonosítója:</string>
     <string name="quest_entrance_reference_flat_range_label">Lakásszámok:</string>
     <string name="quest_entrance_reference_flat_range_to">eddig:</string>
-    <string name="default_disabled_msg_overlay">Ez a küldetéstípus alapértelmezés szerint ki van kapcsolva, mivel van olyan rátét, amellyel hatékonyabb ilyen adatok bevitele és frissítése.</string>
+    <string name="default_disabled_msg_overlay">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert van olyan fedőréteg, amellyel hatékonyabb ilyen adatok bevitele és frissítése.</string>
     <string name="quest_camp_drinking_water_title">A vendégek számára szabadon hozzáférhető az ivóvíz?</string>
     <string name="quest_camp_shower_title">Vannak itt zuhanyzók?</string>
     <string name="quest_camp_power_supply_title">Vannak a vendégek számára használható konnektorok?</string>
@@ -1221,7 +1213,7 @@ Elmozdítod?</string>
 &lt;p&gt;A vízszintes méréseknél ennek a problémának a teljes kiküszöböléséhez állítsd be a kezdő- és végpontokat úgy, hogy közben a telefont egyenesen lefelé irányítod (úgy, hogy felülről a fehér nyilat lásd).&lt;/p&gt;
 &lt;p&gt;Függőleges méréseknél ehelyett azt ellenőrizd, hogy a kezdőpont nem mozdul-e el a talajhoz képest, ha különböző irányokból nézed.&lt;/p&gt;</string>
     <string name="privacy_html_arcore">Ez az alkalmazás a &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;Google Play Services for AR&lt;/a&gt; (ARCore) kiterjesztettvalóság-rendszeren fut, amelyet a Google biztosít, és amelyre a &lt;a href="https://policies.google.com/privacy"&gt;Google adatvédelmi irányelvei&lt;/a&gt; vonatkoznak.</string>
-    <string name="default_disabled_msg_seasonal">Ez a küldetéstípus alapból ki van kapcsolva, mivel az év különböző időszakaiban szükség lehet az újbóli ellenőrzésre.</string>
+    <string name="default_disabled_msg_seasonal">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert az év különböző időszakaiban szükség lehet az újbóli ellenőrzésre.</string>
     <string name="quest_gritBinSeasonal_title">Ez nem csak télen van itt?</string>
     <string name="street_parking_staggered_on_street">Az úttesten, felváltva a két oldalon</string>
     <string name="street_parking_staggered_half_on_kerb">Félig a járdaszegélyen, felváltva a két oldalon</string>
@@ -1329,7 +1321,7 @@ Támogatással kapcsolatos információkat a honlapunkon vagy a projekt kezdőol
     <string name="quest_moped_access_allowed">Nincs tábla</string>
     <string name="quest_moped_access_designated">Tábla engedélyezi a segédmotoros kerékpárok közlekedését ezen a kerékpárúton</string>
     <string name="quest_moped_access_forbidden">Tábla tiltja a segédmotoros kerékpárok közlekedését ezen a kerékpárúton</string>
-    <string name="default_disabled_msg_visible_sign_moped">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mivel a segédmotoros kerékpárok behajtását csak a kerékpárút elején és végén jelölik táblával.</string>
+    <string name="default_disabled_msg_visible_sign_moped">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert a segédmotoros kerékpárok közlekedését csak a kerékpárút kezdeténél/végénél található jelzőtáblák jelzik.</string>
     <string name="quest_arrow_tutorial">Az ábrán látható nyilak a térképen lévő út irányát mutatják a jelölő pozíciójában. Próbáld meg elforgatni a térképet, és meg fogod érteni.</string>
     <string name="info">További információ</string>
     <string name="quest_accessible_for_pedestrians_prohibited">Tiltott.</string>
@@ -1425,7 +1417,7 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="overlay_mtb_scale_5_description">Ultra-meredek, tömbös terep sziklamezőkkel, földcsuszamlásokkal, akadályokkal tarkított lendületváltásokkal, egymás utáni magas ugratókkal és kidőlt fákkal. A kerékpárhordozás az akadályok körül lehetetlen; elkerülhetetlen a lovaglás. Mesteri tudás szükséges.</string>
     <string name="overlay_mtb_scale_6">6 fokozat</string>
     <string name="overlay_mtb_scale_6_description">Veszélyes és járhatatlan terep, hegyi kerékpározásra nem alkalmas.</string>
-    <string name="default_disabled_overlay_domain_expert">Ez a rátét alapértelmezés szerint le van tiltva, mivel az adatok precíz felvételéhez a téma szakértőjének kell lenni.</string>
+    <string name="default_disabled_overlay_domain_expert">Ez a fedőréteg alapértelmezés szerint le van tiltva, mivel az adatok precíz felvételéhez a téma szakértőjének kell lenni.</string>
     <string name="pref_title_overlays">Rátétek kiválasztása</string>
     <string name="pref_overlays_reset">Alapértelmezettre állítod az engedélyezett rátéteket?</string>
     <string name="overlay">Rátét</string>
@@ -1463,4 +1455,39 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_recycling_type_pet_bottles">PET-palackok</string>
     <string name="quest_maxweight_add_sign">A tábla hozzáadása</string>
     <string name="quest_maxweight_remove_sign">A tábla eltávolítása</string>
+    <string name="weekly_osm_new_edition_title">Új kiadás!</string>
+    <string name="pref_title_messages">Alkalmazáson belüli üzenetek</string>
+    <string name="pref_title_message_achievements">Feloldott kitüntetések</string>
+    <string name="pref_title_message_weekly_osm">A weeklyOSM új számai</string>
+    <string name="pref_title_message_changelog">Az alkalmazás új kiadásai</string>
+    <string name="quest_artwork_title">Milyen fajta műalkotás ez?</string>
+    <string name="quest_artwork_sculpture">Absztrakt szobor</string>
+    <string name="quest_artwork_statue">Figuratív szobor</string>
+    <string name="quest_artwork_mural">Fali műalkotás</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Installáció</string>
+    <string name="quest_artwork_bust">Mellszobor</string>
+    <string name="quest_artwork_stone">Kő</string>
+    <string name="quest_artwork_painting">Festmény</string>
+    <string name="quest_artwork_street_art">Más köztéri műalkotás</string>
+    <string name="quest_artwork_architecture">Építészeti alkotás</string>
+    <string name="quest_artwork_mosaic">Mozaik</string>
+    <string name="quest_artwork_relief">Dombormű</string>
+    <string name="quest_artwork_fountain">Szökőkút</string>
+    <string name="quest_camp_tent_title">Lehet-e itt sátrazni?</string>
+    <string name="quest_camp_cabin_title">Vannak-e itt bungalókban, amelyekben megszállhatsz?</string>
+    <string name="quest_camp_caravan_title">Lehet-e itt lakókocsival vagy lakóautóval kempingezni?</string>
+    <string name="quest_ferry_bicycle_title">Lehet-e kerékpárt szállítani ezen a kompon?</string>
+    <string name="quest_openingHours_add_time">Idő hozzáadása</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">Nyitás megadása</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">Zárás megadása</string>
+    <string name="quest_openingHours_chooseTimeTitle">Idő megadása</string>
+    <string name="quest_openingHours_no_fixed_end">nincs rögzített záróra</string>
+    <string name="quest_openingHours_from">ettől: %1$s</string>
+    <string name="quest_collectionTimes_answer_time_spans">Időtartományon belül…</string>
+    <string name="quest_collectionTimes_answer_time_points">Adott időben…</string>
+    <string name="quest_shower_hot_water_title">Van-e itt meleg víz?</string>
+    <string name="calendar_new_event_title">Új OSM-rendezvény a környéken!</string>
+    <string name="pref_title_message_calendar">Új OSM-rendezvények a környéken</string>
+    <string name="quest_ferry_hgv_title">Szállít-e nehéz tehergépjárművet ez a kompjárat?</string>
 </resources>

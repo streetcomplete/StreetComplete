@@ -185,11 +185,6 @@
           "name": "LGBTQ+ Bar",
           "terms": "lgbtq+ bar"
         },
-        "amenity/bbq": {
-          "name": "Churrasqueira",
-          "terms": "forno,churrasco,grill,barbecue",
-          "aliases": "Grelhador\nAssador\nBarbecue\nGrill\nGrelha\nBBQ"
-        },
         "amenity/bench": {
           "name": "Assento",
           "terms": "assento,banco de praça"
@@ -286,10 +281,6 @@
           "name": "Estação de carregamento",
           "terms": "estação de carregamento,estação de recarga,estação de carga elétrica,tomada de cargamento,tomada de recarga"
         },
-        "amenity/childcare": {
-          "name": "Berçário ou creche",
-          "terms": "berçário,creche,maternal,jardim de infância,cuidados infantis"
-        },
         "amenity/cinema": {
           "name": "Cinema",
           "terms": "cinema,sala de cinema"
@@ -356,9 +347,6 @@
           "name": "Tribunal",
           "terms": "tribunal,fórum,justiça"
         },
-        "amenity/coworking_space": {
-          "name": "Espaço de coworking"
-        },
         "amenity/crematorium": {
           "name": "Crematório",
           "terms": "funeral,cemitério,cremação"
@@ -398,10 +386,6 @@
         "amenity/doctors/general": {
           "name": "Clínico Geral",
           "terms": "cuidados de saúde primários,atenção primária à saúde,cuidados primários,médico de cuidados primários"
-        },
-        "amenity/doctors/gynaecology": {
-          "name": "Ginecologista / Obstetra",
-          "terms": "medicina,médico,ginecológico,ginecologia,médica,consultório,reprodutivo,reprodução,obstétrico"
         },
         "amenity/doctors/haematology": {
           "name": "Hematologista",
@@ -1303,7 +1287,7 @@
         },
         "area/footway": {
           "name": "Área de pedestres",
-          "terms": "área pedonal,área pedestre,limite do pavimento,pavimento,área do passeio,forma do passeio,peão,peões"
+          "terms": "área de pedestres,área pedestre,área pedonal,limite do pavimento,pavimento,área do passeio,forma do passeio,peão,peões,pedestre,pedestres"
         },
         "area/highway": {
           "name": "Área da estrada",
@@ -1412,7 +1396,7 @@
           "terms": "barreira,drive-through gate,porta"
         },
         "barrier/bus_trap": {
-          "name": "Armadilha de autocarro",
+          "name": "Barreira seletiva para ônibus",
           "terms": "trap,bus,barreira,ônibus,carreira,expresso,autocarro,veículo,retenção"
         },
         "barrier/cable_barrier": {
@@ -1669,7 +1653,7 @@
           "terms": "alojamento estudantil,república estudantil,dormitório"
         },
         "building/entrance": {
-          "name": "Entrada/Saída"
+          "name": "Entrada/saída"
         },
         "building/farm": {
           "name": "Casa de fazenda",
@@ -2522,8 +2506,8 @@
           "terms": "island,travessia,bicicletas,bicla,ciclistas,crossing,parada,bina,bicycle"
         },
         "highway/cycleway/traffic_island_shared": {
-          "name": "Travessia de refúgio p/ciclistas e peões",
-          "terms": "island,ilha,rodoviária,travessia,bicicletas,bicla,ciclistas,crossing,parada,bina,bicycle,peões,caminho"
+          "name": "Ilha de travessia p/ ciclistas e pedestres",
+          "terms": "island,ilha,rodoviária,travessia,bicicletas,bicla,ciclistas,crossing,parada,bina,bicycle,peões,caminho,pedestre,pedestres,faixa de pedestres"
         },
         "highway/cyclist_waiting_aid": {
           "name": "Apoio para ciclistas",
@@ -2565,7 +2549,7 @@
         },
         "highway/footway/crossing": {
           "name": "Travessia de pedestres",
-          "terms": "passadeira pedonal,faixa de segurança,zebra,cross,marcas transversais,passadeira com marcas transversais,travessia,peões,peão,pedestre"
+          "terms": "passadeira pedonal,faixa de segurança,zebra,cross,marcas transversais,passadeira com marcas transversais,travessia,peões,peão,pedestre,pedestres,faixa de pedestres"
         },
         "highway/footway/crossing/traffic_signals": {
           "name": "Travessia de pedestres marcada com semáforo",
@@ -2617,6 +2601,9 @@
           "name": "Autoestrada",
           "terms": "autoestrada,via expressa,via rápida"
         },
+        "highway/motorway_junction": {
+          "name": "Saída de autoestrada"
+        },
         "highway/motorway_link": {
           "name": "Ligação de autoestrada",
           "terms": "acesso à autoestrada,acesso à via expressa,ligação de via expressa,saída de autoestrada,saída,acesso"
@@ -2638,13 +2625,13 @@
           "name": "Travessia de pedestres com ciclovia"
         },
         "highway/path/crossing/traffic_signals": {
-          "name": "Passadeira p/ ciclistas e peões c/semáforos"
+          "name": "Faixa de travessia p/ ciclistas e pedestres c/ semáforos"
         },
         "highway/path/crossing/uncontrolled": {
-          "name": "Passadeira marcada p/ ciclistas e peões"
+          "name": "Faixa de travessia marcada p/ ciclistas e pedestres"
         },
         "highway/path/crossing/unmarked": {
-          "name": "Travessia p/ ciclistas e peões"
+          "name": "Travessia não-marcada p/ ciclistas e pedestres"
         },
         "highway/path/informal": {
           "name": "Caminho Informal",
@@ -2801,10 +2788,6 @@
         "highway/turning_loop": {
           "name": "Balão de Retorno (com ilha central)",
           "terms": "retorno"
-        },
-        "highway/unclassified": {
-          "name": "Via local ou estrada vicinal",
-          "terms": "via sem classificação,estrada de terra,rodovia sem pavimentação,via local,vicinal,estrada"
         },
         "historic": {
           "name": "Local histórico",
@@ -2979,6 +2962,9 @@
         "landuse/construction": {
           "name": "Área de construção",
           "terms": "área de construção"
+        },
+        "landuse/education": {
+          "name": "Área educacional"
         },
         "landuse/farm": {
           "name": "Área de lavoura",
@@ -3365,10 +3351,6 @@
           "name": "Área de lançamento do martelo",
           "terms": "martelo,sector,setor,lançamento,arremesso,hammer"
         },
-        "leisure/pitch/athletics/high_jump": {
-          "name": "Colchão de salto em altura",
-          "terms": "salto,altura,jump,high,areia,pit,atletismo,atleta,saltador,saltadora,saltar"
-        },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "Área de lançamento de dardo",
           "terms": "dardo,sector,setor,lançamento,arremesso,javelin,atletismo,atleta"
@@ -3408,10 +3390,6 @@
         "leisure/pitch/beachvolleyball": {
           "name": "Quadra de voleibol de praia",
           "terms": "vôlei,voleibol,praia,arena,areia"
-        },
-        "leisure/pitch/boules": {
-          "name": "Quadra de boules/bocha",
-          "terms": "cancha de bocha,pista de bocha,boules,bocha,bocce,boccia,boule lyonnaise,pètanque,petanca,raffa,bowls"
         },
         "leisure/pitch/bowls": {
           "name": "Campo de Lawn Bowls",
@@ -4888,10 +4866,6 @@
           "name": "Usina Hidrelétrica",
           "terms": "usina hidrelétrica"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Fazenda solar",
-          "terms": "central fotovoltaica"
-        },
         "power/plant/source/nuclear": {
           "name": "Usina nuclear",
           "terms": "usina nuclear"
@@ -5324,8 +5298,7 @@
           "terms": "loja de artigos infantis,loja de roupas infantis,crianças,bebês"
         },
         "shop/bag": {
-          "name": "Loja de Bolsas/Malas",
-          "terms": "loja de malas,loja de bagagens"
+          "name": "Loja de malas/bagagem"
         },
         "shop/bakery": {
           "name": "Padaria",
@@ -5350,10 +5323,6 @@
         "shop/beauty/tanning": {
           "name": "Salão de Bronzeamento",
           "terms": "clínica de bronzeamento"
-        },
-        "shop/bed": {
-          "name": "Loja de Camas e Colchões",
-          "terms": "loja de colchões,loja de camas,móveis"
         },
         "shop/beverages": {
           "name": "Loja de Bebidas",
@@ -5851,10 +5820,6 @@
           "name": "Loja de Fogos de Artifício",
           "terms": "loja de fogos de artifício"
         },
-        "shop/radiotechnics": {
-          "name": "Loja de Componentes Eletrônicos",
-          "terms": "loja de componentes eletrônicos,rádio e tv,televisão"
-        },
         "shop/religion": {
           "name": "Loja de Artigos Religiosos",
           "terms": "loja de artigos religiosos"
@@ -6003,10 +5968,6 @@
         "shop/water": {
           "name": "Loja de Água Potável",
           "terms": "loja de água potável"
-        },
-        "shop/water_sports": {
-          "name": "Loja de esportes aquáticos",
-          "terms": "loja de artigos para natação,loja de equipamentos para esportes áquáticos,loja de esportes áquáticos"
         },
         "shop/weapons": {
           "name": "Loja de armas",
@@ -6389,10 +6350,6 @@
         "type/route/pipeline": {
           "name": "Rota de Tubulação",
           "terms": "rota de tubulação,faixa de dutos"
-        },
-        "type/route/piste": {
-          "name": "Rota de Ski",
-          "terms": "ski,pista de esqui,esqui,snowboarding"
         },
         "type/route/power": {
           "name": "Rota de Energia Elétrica",

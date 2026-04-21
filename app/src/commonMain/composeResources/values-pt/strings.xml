@@ -91,7 +91,6 @@
     <string name="quest_surface_value_sett">Paralelos / paralelepípedos</string>
     <string name="quest_surface_value_wood">Madeira</string>
     <string name="quest_sidewalk_title">Esta estrada tem passeio?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Onde fica esta rua?</string>
     <string name="quest_address_title">Qual é o número de porta deste edifício?</string>
     <string name="store_listing_short_description">Aplicação de mapeamento no OpenStreetMap</string>
     <string name="store_listing_full_description">Ajude a melhorar o OpenStreetMap com o StreetComplete! Esta aplicação encontra dados cartográficos em falta na sua vizinhança e mostra-os num mapa como missões. Resolva cada missão visitando o local e responda a uma pergunta simples para atualizar o mapa. As informações que introduzir são adicionadas diretamente ao OpenStreetMap em seu nome, sem necessidade de utilizar outro editor.</string>
@@ -153,9 +152,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Não existem mesmo nenhum sinal?</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">Verificou nas extremidades da rua? Se não existir sinalização ao longo da estrada selecionada, por omissão é aplicado o limite geral de velocidade.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Sim, sem sinal de limite de velocidade</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Dentro das localidades, os limites de velocidade são inferiores aos limites de fora das localidades.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Dentro de uma localidade</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Fora das localidades</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Se existir um sinal como este no cruzamento principal da rua, pode não encontrar mais sinais dentro da zona, porque o limite de velocidade indicado aqui aplica-se a toda a zona.</string>
     <string name="quest_sport_softball">Softbol</string>
     <string name="quest_sport_racquet">Raquetebol</string>
@@ -187,7 +183,6 @@
     <string name="credits_contributors_title">Contribuidores de código</string>
     <string name="credits_author_title">Autoria e manutenção</string>
     <string name="quest_maxspeed_answer_living_street">É uma zona de coexistência</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Então, há um sinal como este?</string>
     <string name="quest_orchard_produce_title">O que é cultivado aqui?</string>
     <string name="produce_grapes">Uvas</string>
     <string name="produce_agaves">Agaves</string>
@@ -259,7 +254,6 @@
     <string name="quest_buildingLevels_levelsLabel2">nº de pisos (sem o telhado)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Difere em diferentes partes do edifício</string>
     <string name="quest_buildingLevels_answer_description">Neste caso, coloque o valor da parte mais alta do edifício</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Existe separação física entre as vias de trânsito, como por ex. um separador central? A velocidade máxima por ausência de sinalética depende da existência da separação.</string>
     <string name="about_category_feedback">Reportar erros e comentários</string>
     <string name="quest_leave_new_note_photo">Anexar fotografia</string>
     <string name="quest_leave_new_note_photo_delete_title">Quer eliminar esta fotografia?</string>
@@ -423,7 +417,6 @@
     <string name="quest_openingHours_no_sign">Não tem o horário de abertura afixado</string>
     <string name="quest_buildingType_sports_centre">Complexo desportivo</string>
     <string name="quest_buildingType_toilets">Casa de banho</string>
-    <string name="quest_maxspeed_sign_question">O que define o limite de velocidade?</string>
     <string name="quest_segregated_title">Esta ciclovia e via pedonal são separadas?</string>
     <string name="dialog_tutorial_upload">Para enviar as suas alterações manualmente, use o botão do menu principal com o seguinte aspeto.</string>
     <string name="quest_segregated_separated">São separadas uma da outra</string>
@@ -662,7 +655,6 @@ conquista</string>
     <string name="at_housenumber">número de porta %1$s</string>
     <string name="quest_openingHours_add_off_days">Adicionar dias que está fechado</string>
     <string name="quest_openingHours_off_day">Dia que está fechado</string>
-    <string name="quest_openingHours_unspecified_range">Não especificado</string>
     <string name="quest_cycleway_resurvey_title">A ciclovia continua a ter este perfil aqui?</string>
     <string name="pref_title_resurvey_intervals">Frequência das missões de confirmação</string>
     <string name="resurvey_intervals_less_often">Menos frequência</string>

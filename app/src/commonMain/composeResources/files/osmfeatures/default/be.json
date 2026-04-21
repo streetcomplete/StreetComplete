@@ -8,8 +8,14 @@
         "amenity/atm": {
           "name": "Банкамат"
         },
+        "amenity/doctors": {
+          "name": "Доктар"
+        },
         "area": {
           "name": "Мясцовасць"
+        },
+        "area/highway": {
+          "name": "Зона дарогі"
         },
         "highway/bridleway": {
           "name": "Шлях для вершнікаў"
@@ -53,6 +59,9 @@
         "highway/cycleway/traffic_island_shared": {
           "name": "Роварны і пешаходны астравок бяспекі"
         },
+        "highway/elevator": {
+          "name": "Ліфт"
+        },
         "highway/footway": {
           "name": "Пешаходны шлях"
         },
@@ -85,6 +94,12 @@
         },
         "tourism/information/map": {
           "name": "Мапа"
+        },
+        "tourism/viewpoint": {
+          "name": "Аглядная пляцоўка"
+        },
+        "type/site": {
+          "name": "Сайт"
         }
       }
     }

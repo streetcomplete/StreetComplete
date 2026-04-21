@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Westpac, ANZ, Bankwest, NAB, Commonwealth Bank, Bendigo Bank, atmx, Commonwealth, Next Payments, BOQ, Next, DCATM, DC payments, CBA]
+atmOperators: [ANZ, Westpac, Bankwest, NAB, Commonwealth Bank, Bendigo Bank, atmx, Commonwealth, Next Payments, BOQ, OTR Group, Next, DCATM, DC payments, CBA]
 chargingStationOperators: [Chargefox, Tesla, Wevolt, 'Tesla, Inc.', RAC, Evie Networks]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Australia Post]

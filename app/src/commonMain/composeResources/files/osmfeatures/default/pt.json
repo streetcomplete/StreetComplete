@@ -186,11 +186,6 @@
           "name": "Bar LGBTQ+",
           "terms": "bar gay,bar lésbico,bar lgbt,bar lgbtq,bar lgb,bar homosexual,bar homossexual,homossexuais,lésbicas"
         },
-        "amenity/bbq": {
-          "name": "Grelhador",
-          "terms": "grill,barbacue,carne assada,churrasqueira,churrasco",
-          "aliases": "Assador\nChurrasqueira\nBarbecue\nGrill\nBBQ"
-        },
         "amenity/bench": {
           "name": "Banco",
           "terms": "bench,assento,sentar,lugar"
@@ -288,7 +283,7 @@
         },
         "amenity/childcare": {
           "name": "Berçário / Creche",
-          "terms": "nursery,childcare,cuidados infantis,berçário,jardim infantil,infantil,crianças"
+          "terms": "nursery,childcare,cuidados infantis,berçário,jardim infantil,infantil,crianças,children"
         },
         "amenity/cinema": {
           "name": "Cinema",
@@ -350,9 +345,6 @@
           "name": "Tribunal",
           "terms": "casa da justiça,justiça"
         },
-        "amenity/coworking_space": {
-          "name": "Espaço de trabalho partilhado"
-        },
         "amenity/crematorium": {
           "name": "Crematório",
           "terms": "crematorium,cremação,cremar,cremado"
@@ -394,7 +386,7 @@
           "terms": "cuidados de saúde primários,atenção primária à saúde,cuidados primários,médico de cuidados primários"
         },
         "amenity/doctors/gynaecology": {
-          "name": "Ginecologista / Obstetra",
+          "name": "Obstetra / Ginecologista",
           "terms": "medicina,médico,ginecológico,ginecologia,médica,consultório,reprodutivo,reprodução,obstétrico"
         },
         "amenity/doctors/haematology": {
@@ -2790,8 +2782,7 @@
           "terms": "inversão de marcha,ilha,manobra,beco,sem saída,sem-saída"
         },
         "highway/unclassified": {
-          "name": "Estrada menor / sem classificação",
-          "terms": "estrada não-classificada,sem referência,rua"
+          "name": "Estrada menor / sem classificação"
         },
         "historic": {
           "name": "Local histórico",
@@ -2967,6 +2958,10 @@
         "landuse/construction": {
           "name": "Área de construção",
           "terms": "obras,em curso,construir,reconstrução,renovações,renovação,construção civil,demolição"
+        },
+        "landuse/education": {
+          "name": "Complexo educativo",
+          "terms": "campus,escolas,educacional,educação,centro,área"
         },
         "landuse/farm": {
           "name": "Terreno agrícola"
@@ -3398,6 +3393,10 @@
         "leisure/pitch/beachvolleyball": {
           "name": "Campo de voleibol de praia",
           "terms": "vólei,campo,praia,voleibol,volley,areia,desporto,exercício,bola"
+        },
+        "leisure/pitch/biathlon": {
+          "name": "Campo de tiro de biatlo",
+          "terms": "biathlon firing range,biathlon shooting gallery,biathlon shooting range,desporto"
         },
         "leisure/pitch/boules": {
           "name": "Campo de boccia",
@@ -4867,10 +4866,6 @@
           "name": "Central hidroelétrica",
           "terms": "estação de produção energética,energia,central de energia,eletricidade,elétrica,barragem,água,turbina hidroelétrica"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Central solar fotovoltaica",
-          "terms": "fotovoltaica,painéis,solares,painel,fotovoltaico,estação de produção energética,eletricidade,elétrica,parque,energia"
-        },
         "power/plant/source/nuclear": {
           "name": "Central nuclear",
           "terms": "atómica,fissão,estação de produção energética,energia,reator nuclear,central de energia atómica,eletricidade,elétrica"
@@ -5292,8 +5287,7 @@
           "terms": "baby goods store,loja de roupa,carrinho,brinquedos,bébé,bébe,bebe,bébés"
         },
         "shop/bag": {
-          "name": "Loja de malas / bagagem",
-          "terms": "bag,luggage,mala,malas,bolsa,bolsas"
+          "name": "Loja de malas / bagagem"
         },
         "shop/bakery": {
           "name": "Padaria",
@@ -6372,8 +6366,8 @@
           "terms": "rota de gasoduto,tubo,tubos,tubagem,pipeline,gasoduto,oleoduto,canalização,canos"
         },
         "type/route/piste": {
-          "name": "Rota de pista de desporto de inverno",
-          "terms": "esqui,sky,trilhos,ski,neve,esquiar,downhill"
+          "name": "Rota / pista de esqui",
+          "terms": "esqui,sky,trilhos,ski,neve,esquiar,downhill,route,piste,snow"
         },
         "type/route/power": {
           "name": "Rota de transmissão de energia",

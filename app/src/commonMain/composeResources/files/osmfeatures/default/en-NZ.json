@@ -5,10 +5,6 @@
         "amenity/arts_centre": {
           "name": "Arts Centre"
         },
-        "amenity/bbq": {
-          "name": "Barbeque/Grill",
-          "terms": "bbq,grill,barbecue"
-        },
         "amenity/cafe": {
           "name": "Café",
           "terms": "bistro,coffee,tea,cafe"
@@ -268,9 +264,6 @@
         },
         "shop/alcohol": {
           "terms": "alcohol,beer,booze,wine,off licence,off-license,bottle-o,bottle shop"
-        },
-        "shop/bed": {
-          "name": "Bedding/Mattress Shop"
         },
         "shop/caravan": {
           "name": "Caravan Shop"

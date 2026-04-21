@@ -2,7 +2,7 @@
 <resources>
     <string name="action_settings">Paramètres</string>
     <string name="oauth_communication_error">Impossible de se connecter au serveur d’authentification</string>
-    <string name="oauth_failed_permissions">Autorisation échouée : toutes les permissions listées doivent être accordées</string>
+    <string name="oauth_failed_permissions">Autorisation refusée : toutes les permissions listées doivent être accordées</string>
     <string name="pref_category_communication">Communication</string>
     <string name="pref_category_display">Affichage</string>
     <string name="pref_title_show_notes_not_phrased_as_questions">Montrer toutes les notes</string>
@@ -11,8 +11,8 @@
     <string name="map_btn_gps_tracking">Me suivre</string>
     <string name="map_attribution_osm">© Contributeurs d’OpenStreetMap</string>
     <string name="quest_generic_otherAnswers">Autres réponses…</string>
-    <string name="quest_generic_answer_notApplicable">Je ne sais pas</string>
-    <string name="quest_generic_confirmation_title">Es-tu sûr ?</string>
+    <string name="quest_generic_answer_notApplicable">Je ne sais pas...</string>
+    <string name="quest_generic_confirmation_title">Êtes-vous sûr ?</string>
     <string name="quest_generic_confirmation_yes">Oui, je confirme</string>
     <string name="quest_generic_confirmation_no">Je vais vérifier</string>
     <string name="quest_leave_new_note_title">Laisser une note à la place ?</string>
@@ -20,9 +20,9 @@
     <string name="quest_leave_new_note_yes">Laisser une note</string>
     <string name="quest_leave_new_note_no">Cacher</string>
     <string name="quest_streetName_title">Quel est le nom de cette voie ?</string>
-    <string name="quest_streetName_answer_noName_confirmation_description">Parfois le panneau ne se trouve qu’à une seule extrémité de la rue. Souvent, il n’y a pas de panneau dans les petites voies annexes qui font partie de rues plus grandes. D’habitude, toutes les rues avec des maisons portent un nom.</string>
-    <string name="quest_openingHours_start_time">horaires d’ouverture</string>
-    <string name="quest_openingHours_end_time">horaires de fermeture</string>
+    <string name="quest_streetName_answer_noName_confirmation_description">Parfois le panneau ne se trouve qu’à une seule extrémité de la rue. Souvent, il n’y a pas de panneau dans les petites voies annexes qui font partie de rues plus grandes. Généralement, toutes les rues avec des maisons portent un nom.</string>
+    <string name="quest_openingHours_start_time">Horaire d’ouverture</string>
+    <string name="quest_openingHours_end_time">Horaire de fermeture</string>
     <string name="quest_openingHours_add_months">Ajouter des mois</string>
     <string name="quest_openingHours_add_hours">Ajouter des heures</string>
     <string name="quest_openingHours_add_weekdays">Ajouter des jours de la semaine</string>
@@ -51,7 +51,7 @@
     <string name="offline">Vous êtes hors ligne</string>
     <string name="confirmation_authorize_now">Vous devez autoriser la publication de vos réponses avec votre compte utilisateur OSM. Autoriser maintenant ?</string>
     <string name="not_authorized">Non autorisé</string>
-    <string name="version_banned_message">Cette version de StreetComplete est trop vielle. Veuillez la mettre à jour !</string>
+    <string name="version_banned_message">Cette version de StreetComplete est trop vieille. Veuillez la mettre à jour !</string>
     <string name="no_gps_no_quests">Pour télécharger automatiquement les données autour de vous, activez la localisation exacte</string>
     <string name="later">Plus tard</string>
     <string name="quest_streetName_answer_noProperStreet_leaveNote">Autre chose (laisser une note)</string>
@@ -64,7 +64,7 @@
     <string name="quest_openingHours_comment_title">Indiquez les horaires d’ouverture</string>
     <string name="quest_openingHours_comment_description">Soyez concis, utilisez de préférence la formulation de la pancarte, p. ex. « sur rendez-vous ». L’absence de pancarte ne signifie pas forcément qu’il n’y a pas d’horaires d’ouverture réguliers.</string>
     <string name="quest_roofShape_title">Quelle forme a le toit de ce bâtiment ?</string>
-    <string name="quest_roofShape_select_one">Sélectionner une :</string>
+    <string name="quest_roofShape_select_one">Sélectionner une forme :</string>
     <string name="quest_roofShape_show_more">Plus de formes…</string>
     <string name="quest_roofShape_answer_many">Il a plusieurs formes différentes</string>
     <string name="map_btn_zoom_out">Zoom arrière</string>
@@ -76,7 +76,7 @@ Tout d’abord, comprenez qu’avec cette application, vous apportez des contrib
 Toute contribution que vous apportez depuis cette application est directement ajoutée à la carte, il n’y a pas de tiers entre l’application et l’infrastructure d’OSM.
 &lt;/p&gt;
 &lt;p&gt;
-Il n’est pas possible de modifier OpenStreetMap de manière anonyme. Toutes les modifications que vous apportez (ainsi que leur date et leur emplacement) sont attribuées à votre compte d’utilisateur OSM et visibles publiquement sur le site web openstreetmap.org. StreetComplete ne devant être utilisé que pour des relevés sur le terrain, cela permet de savoir où et quand vous avez utilisé l’application.
+Il n’est pas possible de modifier OpenStreetMap de manière anonyme. Toutes les modifications que vous apportez (ainsi que leur date et leur emplacement) sont attribuées à votre compte d’utilisateur OSM et visibles publiquement sur le site web openstreetmap.org. StreetComplete ne devant être utilisée que pour des relevés sur le terrain, cela permet de savoir où et quand vous avez utilisé l’application.
 &lt;/p&gt;
 
 &lt;h2&gt;Localisation&lt;/h2&gt;
@@ -87,7 +87,7 @@ L’application ne partage votre position GPS avec personne. Elle est utilisée 
 &lt;h2&gt;Utilisation des données&lt;/h2&gt;
 &lt;p&gt;
 Comme mentionné, l’application communique directement avec l’infrastructure d’OSM.&lt;br/&gt;
-Toutefois, avant de télécharger vos modifications, l’application vérifie, à l’aide d’un &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;fichier texte simple&lt;/a&gt; sur mon serveur, si la version de l’application n’est pas interdite de téléversement. Il s’agit d’une mesure de précaution pour éviter que les versions qui présentent des bogues critiques ne corrompent les données d’OSM.&lt;/p&gt;</string>
+Toutefois, avant de téléverser vos modifications, l’application vérifie, à l’aide d’un &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;simple fichier texte&lt;/a&gt; sur mon serveur, que la version de l’application ne soit pas interdite de téléversement. Il s’agit d’une mesure de précaution pour éviter que les versions qui présentent des bogues critiques ne corrompent les données d’OSM.&lt;/p&gt;</string>
     <string name="autosync_on">Toujours</string>
     <string name="autosync_only_on_wifi">Seulement en Wi-Fi</string>
     <string name="autosync_off">Jamais</string>
@@ -109,14 +109,13 @@ Toutefois, avant de télécharger vos modifications, l’application vérifie, �
     <string name="quest_surface_value_sett">Pavés taillés</string>
     <string name="quest_surface_value_wood">Bois</string>
     <string name="quest_sidewalk_title">Cette rue a-t-elle un trottoir ?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Où se trouve cette voie ?</string>
-    <string name="quest_address_title">Quel est le numéro de maison de ce bâtiment ?</string>
+    <string name="quest_address_title">Quel est le numéro de rue de ce bâtiment ?</string>
     <string name="store_listing_short_description">Application d’arpentage OpenStreetMap</string>
     <string name="store_listing_full_description">Aidez à améliorer OpenStreetMap avec StreetComplete !
 
 Cette application recense les informations incomplètes autour de vous et les affiche sur une carte sous forme de quêtes. Résolvez chaque quête en vous rendant sur place et en répondant à une question simple pour mettre à jour la carte. 
 
-Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap via votre compte, sans utiliser un autre éditeur de carte.</string>
+Les informations que vous saisissez sont ensuite directement ajoutées à OpenStreetMap via votre compte, sans avoir besoin d'utiliser un autre éditeur de carte.</string>
     <string name="quest_name_answer_noName">Il n’y a pas de nom…</string>
     <string name="quest_name_answer_noName_confirmation_title">Vraiment aucun nom ?</string>
     <string name="quest_name_noName_confirmation_positive">Oui, pas de nom</string>
@@ -125,7 +124,7 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="crash_title">Oh non, StreetComplete a planté la dernière fois !</string>
     <string name="crash_compose_email">Rédiger un courriel</string>
     <string name="no_email_client">Vous n’avez pas de client de messagerie installé.</string>
-    <string name="pref_title_keep_screen_on">Conserver l’écran allumé</string>
+    <string name="pref_title_keep_screen_on">Garder l’écran allumé</string>
     <string name="download_server_error">Erreur de connexion lors du téléchargement des données. Réessayez plus tard.</string>
     <string name="upload_server_error">Erreur de connexion lors de l’envoi des réponses. Réessayez plus tard.</string>
     <string name="quest_generic_hasFeature_yes">Oui</string>
@@ -166,7 +165,7 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="quest_manySports_confirmation_generic">Tous types d’activités</string>
     <string name="quest_sport_manySports_confirmation_title">Vous avez sélectionné plusieurs sports</string>
     <string name="quest_toiletsFee_title">Ces toilettes sont-elles payantes ?</string>
-    <string name="quest_tactilePaving_title_crosswalk">Ce passage piéton a-t-il un revêtement podotactile des deux côtés ?</string>
+    <string name="quest_tactilePaving_title_crosswalk">Ce passage piéton a-t-il une bande podotactile de chaque côté ?</string>
     <string name="quest_source_dialog_title">Confirmez-vous avoir vérifié cela sur place ?</string>
     <string name="quest_source_dialog_note">Seules des informations vérifiées sur place devraient être saisies.</string>
     <string name="quest_bicycleParkingCoveredStatus_title">Ce parking à vélos est-il couvert (protégé de la pluie) ?</string>
@@ -176,9 +175,6 @@ Les informations que vous saisissez sont ensuite directement ajoutées à OpenSt
     <string name="quest_maxspeed_answer_noSign_confirmation">Avez-vous vérifié aux extrémités de la voie ?
 S’il n’y a pas de panneau applicable à ce tronçon le long de la voie, les limites de vitesse par défaut s’appliquent.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Oui, aucun panneau</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">La limite de vitesse par défaut en agglomération est inférieure à celle hors agglomération.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">En agglomération</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Hors agglomération</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">S’il y a un panneau de ce type au carrefour avec la rue principale, vous ne trouverez pas forcément d’autres panneaux de limitation dans la zone car cette limite de vitesse s’applique à toute la zone.</string>
     <string name="quest_sport_softball">Softball</string>
     <string name="quest_sport_racquet">Racquetball</string>
@@ -190,8 +186,8 @@ S’il n’y a pas de panneau applicable à ce tronçon le long de la voie, les 
     <string name="quest_bikeParkingCapacity_hint">Notez que la plupart des arceaux peuvent accueillir un vélo de chaque côté, et pour les râteliers, vous devrez peut-être estimer combien vous pouvez en garer.</string>
     <string name="quest_sport_roller_skating">Patin à roulettes</string>
     <string name="quest_wheelchairAccess_limited_description_business">Partiellement signifie qu’il n’y a pas plus d’une marche haute de 5 cm pour accéder au lieu. La plupart des pièces à l’intérieur sont accessibles en fauteuil roulant.</string>
-    <string name="quest_wheelchairAccess_limited_description_public_transport">Partiellement signifie qu’il n’y a qu’une seule marche  à hauteur de cheville pour y accéder.</string>
-    <string name="quest_recycling_type_title">De quel type d’installation de recyclage s’agit-il ?</string>
+    <string name="quest_wheelchairAccess_limited_description_public_transport">Partiellement signifie qu’il n’y a qu’une seule marche à hauteur de cheville pour y accéder.</string>
+    <string name="quest_recycling_type_title">De quel type de point de recyclage s’agit-il ?</string>
     <string name="recycling_centre">Déchèterie</string>
     <string name="overground_recycling_container">Conteneur de recyclage</string>
     <string name="underground_recycling_container">Conteneur de recyclage enterré</string>
@@ -212,7 +208,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="credits_contributors_title">Contributeurs au code</string>
     <string name="credits_author_title">Auteur et mainteneur</string>
     <string name="quest_maxspeed_answer_living_street">C’est une zone de rencontre</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Alors, y a-t-il un panneau comme celui-ci ?</string>
     <string name="quest_orchard_produce_title">Qu’est-ce qui est cultivé ici ?</string>
     <string name="produce_grapes">Raisins</string>
     <string name="produce_agaves">Agaves</string>
@@ -231,7 +226,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="produce_cranberries">Canneberge</string>
     <string name="produce_dates">Dattes</string>
     <string name="produce_figs">Figues</string>
-    <string name="produce_grapefruits">Pamplemousse</string>
+    <string name="produce_grapefruits">Pamplemousses</string>
     <string name="produce_guavas">Goyaves</string>
     <string name="produce_hazelnuts">Noisettes</string>
     <string name="produce_hops">Houblon</string>
@@ -262,7 +257,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="produce_vanilla">Vanille</string>
     <string name="produce_walnuts">Noix</string>
     <string name="produce_sisal">Sisal</string>
-    <string name="cannot_find_bbox_or_reduce_tilt">Impossible de rechercher ici. Essayez de zoomer ou de moins incliner la carte.</string>
+    <string name="cannot_find_bbox_or_reduce_tilt">Impossible de télécharger les données ici. Essayez de zoomer ou de moins incliner la carte.</string>
     <string name="action_undo">Confirmer</string>
     <string name="produce_mangosteen">Mangoustan</string>
     <string name="produce_tomatoes">Tomates</string>
@@ -284,7 +279,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingLevels_levelsLabel2">étages ordinaires (sans toit)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Diffère selon la partie du bâtiment</string>
     <string name="quest_buildingLevels_answer_description">Dans ce cas, il suffit de saisir les valeurs de la partie la plus élevée du bâtiment.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Les chaussées de cette route sont-elles séparées physiquement par une barrière ou un terre-plein ? La limite de vitesse par défaut en dépend.</string>
     <string name="about_category_feedback">Commentaire</string>
     <string name="quest_leave_new_note_photo">Joindre une photo</string>
     <string name="quest_leave_new_note_photo_delete_title">Voulez-vous supprimer cette photo ?</string>
@@ -308,7 +302,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_dietType_explanation">Ne répondez « oui » que si l’endroit offre des choix de plats adaptés à ce régime</string>
     <string name="quest_carWashType_title">De quel type de station de lavage s’agit-il ?</string>
     <string name="quest_carWashType_automated">Automatisée</string>
-    <string name="quest_carWashType_selfService">Libre service</string>
+    <string name="quest_carWashType_selfService">Libre-service</string>
     <string name="quest_carWashType_service">Le personnel nettoie la voiture</string>
     <string name="enable_quest_confirmation_title">Activer ce type de quête ?</string>
     <string name="default_disabled_msg_go_inside">Ce type de quête est désactivé par défaut, car vous devrez probablement entrer dans le lieu pour pouvoir y répondre.</string>
@@ -317,10 +311,10 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_cycleway_answer_contraflow_cycleway">Piste cyclable également de l’autre côté…</string>
     <string name="quest_cycleway_value_none_but_no_oneway">aucune, mais les cyclistes peuvent utiliser la route dans les deux sens</string>
     <string name="quest_wheelchairAccess_description_toilets">Un pictogramme de personne en fauteuil roulant comme celui-ci peut être visible si les toilettes sont accessibles.
-« En partie » signifie qu’un fauteuil roulant peut entrer et utiliser les toilettes, mais qu’il n’y a pas de main courante ou de lavabo adapté.</string>
+« En partie » signifie qu’une personne en fauteuil roulant peut entrer et utiliser les toilettes, mais qu’il n’y a pas de main courante ou de lavabo adapté.</string>
     <string name="map_btn_create_note">Ajouter une nouvelle note</string>
-    <string name="create_new_note_unprecise">Zoomer pour créer une note</string>
-    <string name="create_new_note_description">Vous pouvez laisser une note pour informer les autres cartographes d’un problème à cet endroit. Ajustez la position de la note en déplaçant la carte :</string>
+    <string name="create_new_note_unprecise">Veuillez zoomer un peu plus pour créer une note</string>
+    <string name="create_new_note_description">Vous pouvez laisser une note pour informer les autres cartographes d’un problème à cet endroit. Ajustez la position de la note en déplaçant la carte.</string>
     <string name="quest_generic_looks_like_this">En général, cela ressemble à cela :</string>
     <string name="quest_surface_value_metal">Métal</string>
     <string name="quest_cycleway_title2">Y a-t-il une voie cyclable ici ? De quel type ?</string>
@@ -352,7 +346,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_fee_answer_hours">Dépend du jour et de l’heure…</string>
     <string name="quest_fee_add_times">Ajouter des horaires</string>
     <string name="quest_housenumber_multiple_numbers">Il y a plusieurs numéros de maison</string>
-    <string name="quest_bicycle_parking_type_stand">Arceaux (soutient le cadre du vélo)</string>
+    <string name="quest_bicycle_parking_type_stand">Arceaux (soutenant le cadre du vélo)</string>
     <string name="quest_bicycle_parking_type_wheelbender">Râteliers (pince-roues)</string>
     <string name="quest_bicycle_parking_type_shed">Abri collectif</string>
     <string name="quest_bicycle_parking_type_locker">Casiers individuels</string>
@@ -371,7 +365,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_generic_item_confirmation">Êtes-vous sûr que vous ne pouvez pas le déterminer plus précisément ?</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Pour certaines quêtes, des données supplémentaires provenant de tiers sont téléchargées.&lt;/p&gt;</string>
     <string name="quest_generic_hasFeature_no_leave_note">Non (laisser une note)</string>
-    <string name="pref_quests_reset">Réinitialiser les types quêtes à afficher et leur ordre d’affichage ?</string>
+    <string name="pref_quests_reset">Réinitialiser les types de quêtes à afficher et leur ordre d’affichage ?</string>
     <string name="quest_generic_item_invalid_value">Sélectionnez une valeur plus précise.</string>
     <string name="quest_buildingType_answer_multiple_types">Plusieurs usages</string>
     <string name="quest_buildingType_answer_multiple_types_description">Indiquez l’usage principal du bâtiment. Par exemple : s’il y a des magasins aux rez-de-chaussée et des appartements au-dessus, il s’agit d’un immeuble résidentiel.</string>
@@ -388,7 +382,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_hotel">Hôtel</string>
     <string name="quest_buildingType_dormitory">Résidence étudiante, internat</string>
     <string name="quest_buildingType_houseboat">Maison flottante</string>
-    <string name="quest_buildingType_bungalow">Bâtiment de bungalow</string>
+    <string name="quest_buildingType_bungalow">Bungalow</string>
     <string name="quest_buildingType_static_caravan">Mobile-home</string>
     <string name="quest_buildingType_commercial">Bâtiment commercial</string>
     <string name="quest_buildingType_commercial_generic_description">bâtiment où les gens travaillent, font des achats ou exercent toute autre activité professionnelle commerciale</string>
@@ -397,16 +391,16 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_office">Bureaux</string>
     <string name="quest_buildingType_retail">Bâtiment commercial</string>
     <string name="quest_buildingType_warehouse">Entrepôt</string>
-    <string name="quest_buildingType_kiosk">Bâtiment du kiosque</string>
+    <string name="quest_buildingType_kiosk">Kiosque</string>
     <string name="quest_buildingType_storage_tank">Réservoir de stockage</string>
     <string name="quest_buildingType_religious">Bâtiment religieux</string>
-    <string name="quest_buildingType_church">Église (bâtiment)</string>
+    <string name="quest_buildingType_church">Église</string>
     <string name="quest_buildingType_chapel">Chapelle</string>
     <string name="quest_buildingType_cathedral">Cathédrale</string>
     <string name="quest_buildingType_mosque">Mosquée</string>
-    <string name="quest_buildingType_temple">Bâtiment du temple</string>
-    <string name="quest_buildingType_pagoda">Bâtiment de la pagode</string>
-    <string name="quest_buildingType_synagogue">Bâtiment de la synagogue</string>
+    <string name="quest_buildingType_temple">Temple</string>
+    <string name="quest_buildingType_pagoda">Pagode</string>
+    <string name="quest_buildingType_synagogue">Synagogue</string>
     <string name="quest_buildingType_civic">Bâtiment public</string>
     <string name="quest_buildingType_civic_description">abrite d’ordinaire un service public</string>
     <string name="quest_buildingType_kindergarten">École maternelle ou crèche</string>
@@ -444,12 +438,11 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_buildingType_shrine">Bâtiment du sanctuaire</string>
     <string name="quest_maxspeed_title_short2">Quelle est la limite de vitesse pour ce tronçon ?</string>
     <string name="quest_maxspeed_answer_sign">Un panneau</string>
-    <string name="quest_maxspeed_answer_zone2">Est dans une zone de limitation de vitesse</string>
+    <string name="quest_maxspeed_answer_zone2">C'est dans une zone de limitation de vitesse</string>
     <string name="quest_maxspeed_answer_noSign2">Pas de panneau, vitesse par défaut</string>
     <string name="quest_openingHours_no_sign">Pas d’horaires d’ouverture affichés</string>
-    <string name="quest_buildingType_sports_centre">Centre sportif</string>
+    <string name="quest_buildingType_sports_centre">Complexe sportif</string>
     <string name="quest_buildingType_toilets">Toilettes</string>
-    <string name="quest_maxspeed_sign_question">Qu’est-ce qui indique la limite de vitesse ?</string>
     <string name="quest_segregated_title">Comment sont aménagées les voies piétonnes et cyclables ici ?</string>
     <string name="dialog_tutorial_upload">Pour envoyer vos modifications manuellement, utilisez le bouton du menu principal qui ressemble à ceci.</string>
     <string name="quest_segregated_separated">Séparés l’un de l’autre</string>
@@ -480,7 +473,7 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="underground">en sous-sol</string>
     <string name="quest_sidewalk_value_yes">trottoir</string>
     <string name="quest_sidewalk_value_no">pas de trottoir</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Les piétons ont-ils l’interdiction de marcher sur cette voie à cet endroit ?</string>
+    <string name="quest_accessible_for_pedestrians_title_prohibited">Est-ce que cette route sans trottoir est interdite aux piétons ?</string>
     <string name="quest_buildingType_title">Quel est le type de ce bâtiment ?</string>
     <string name="pref_title_theme_select">Thème</string>
     <string name="theme_light">Clair</string>
@@ -500,10 +493,10 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="quest_leaf_type_mixed">Les deux sont présents</string>
     <string name="quest_cyclewayPartSurface_title">Quel est le revêtement de la piste cyclable ici ?</string>
     <string name="quest_generic_answer_differs_along_the_way">Cela varie en cours de route</string>
-    <string name="quest_split_way_description">S’il varie en cours de route, la première étape consiste à découper la piste en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon. 
+    <string name="quest_split_way_description">Si cela varie en cours de route, la première étape consiste à découper la voie en plusieurs tronçons. Ensuite, il est possible de répondre à la quête séparément pour chaque tronçon. 
 Découper maintenant ?</string>
-    <string name="quest_split_way_tutorial">Appuyez sur le chemin pour le découper au(x) point(s) où la réponse diffère. Utilisez la fonction zoom et essayez d’être aussi précis que possible.</string>
-    <string name="quest_split_way_too_imprecise">Veuillez zoomer</string>
+    <string name="quest_split_way_tutorial">Appuyez sur le chemin pour le découper au(x) point(s) où la réponse diffère. Utilisez le zoom et essayez d’être aussi précis que possible.</string>
+    <string name="quest_split_way_too_imprecise">Veuillez zoomer un peu plus</string>
     <string name="quest_split_way_many_splits_confirmation_description">Il y a eu plusieurs découpages. Vous pouvez toujours redécouper le chemin ultérieurement.</string>
     <string name="quest_footwayPartSurface_title">Quel est le revêtement du chemin piéton ici ?</string>
     <string name="quest_maxweight_title">Quelle est la limite de poids ici ?</string>
@@ -512,11 +505,11 @@ Découper maintenant ?</string>
     <string name="quest_maxweight_unsupported_sign_request_photo">Souhaitez-vous laisser une note ? Une note avec une photo permettra à d’autres cartographes de s’en occuper.</string>
     <string name="quest_handrail_title">Ces marches ont-elles une main courante ?</string>
     <string name="quest_ref_answer_noRef">Aucun numéro ou code visible…</string>
-    <string name="quest_street_side_puzzle_tutorial">La route de l’illustration est tournée dans le même sens que sur la carte, à l’emplacement du marqueur. Faites pivoter la carte et vous verrez bien.</string>
+    <string name="quest_street_side_puzzle_tutorial">La route de l’illustration est orientée de la même façon que sur la carte, à l’emplacement du marqueur. Faites pivoter la carte et vous verrez bien.</string>
     <string name="quest_recycling_materials_title">Qu’est-ce qui peut être déposé ici pour le recyclage ?</string>
     <string name="quest_recycling_materials_note">S’il est possible de recycler autre chose ici que ce qui est présent sur la liste, veuillez laisser une note à la place.</string>
     <string name="quest_recycling_type_batteries">Batteries</string>
-    <string name="quest_recycling_type_cans">Boîtes de conserve, canettes,…</string>
+    <string name="quest_recycling_type_cans">Boîtes de conserve, canettes…</string>
     <string name="quest_recycling_type_clothes">Vêtements</string>
     <string name="quest_recycling_type_green_waste">Déchets compostables</string>
     <string name="quest_recycling_type_glass_bottles">Bouteilles et bocaux en verre</string>
@@ -529,15 +522,15 @@ Découper maintenant ?</string>
     <string name="quest_recycling_type_plastic_packaging">Tout emballage en plastique</string>
     <string name="quest_recycling_type_scrap_metal">Ferraille</string>
     <string name="quest_recycling_type_any_glass">Tout type de verre</string>
-    <string name="quest_recycling_glass_title">Seuls les bouteilles en verre et pots en verre peuvent-ils être recyclés ici, ou tout type de verre ?</string>
+    <string name="quest_recycling_glass_title">Seuls les bouteilles et bocaux en verre peuvent être recyclés ici, ou bien tout type de verre ?</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">Exemples de verre souvent refusé : verre trempé, vitres, verrerie, ampoules ou miroirs.</string>
     <string name="about_title_changelog">Version</string>
     <string name="title_whats_new">Quoi de neuf ?</string>
-    <string name="about_title_rate">Évaluez cette application</string>
-    <string name="about_title_donate">Faites un don</string>
+    <string name="about_title_rate">Évaluer cette application</string>
+    <string name="about_title_donate">Faire un don</string>
     <string name="about_summary_donate">Exprimez votre gratitude ! ❤️</string>
-    <string name="about_description_donate">Merci de penser à soutenir cette application ! Pour voir l’état actuel des dons et pour faire un don, appuyez sur la plateforme correspondante :</string>
-    <string name="confirmation_cancel_prev_download_confirmed">Téléchargez plutôt ici</string>
+    <string name="about_description_donate">Merci de penser à soutenir cette application ! Pour voir l’état actuel des dons et pour faire un don, sélectionnez la plateforme correspondante :</string>
+    <string name="confirmation_cancel_prev_download_confirmed">Télécharger plutôt ici</string>
     <string name="confirmation_cancel_prev_download_cancel">Continuer le téléchargement actuel</string>
     <string name="quest_buildingType_garages_description">espaces séparés pour différents propriétaires ou locataires</string>
     <string name="quest_tourism_information_title">De quel type d’information touristique s’agit-il ?</string>
@@ -600,7 +593,7 @@ Enfin, n’oubliez pas de rester prudent : soyez attentifs à votre environnemen
     <string name="link_opnvkarte_description">Une carte des itinéraires et des arrêts des transports en commun</string>
     <string name="link_wiki_description">Le wiki est votre point d’entrée pour tout ce qui concerne OpenStreetMap</string>
     <string name="link_learnosm_description">Vous êtes nouveau sur OpenStreetMap ? Voici le guide pour débuter</string>
-    <string name="link_neis_one_description">Une vaste collection de statistiques concernant les contributeurs d’OpenStreetMap telles que le lieu et la manière dont vous avez contribué, les contributeurs proches de vous ainsi que des classements</string>
+    <string name="link_neis_one_description">Une vaste collection de statistiques concernant les contributeurs d’OpenStreetMap telles que le lieu et la manière dont vous avez contribué, les contributeurs proches de vous, ainsi que des classements</string>
     <string name="link_welcome_mat_description">Informations générales sur OpenStreetMap et sur la façon de travailler avec OSM en tant qu’organisation</string>
     <string name="link_mapillary_description">Application et service de partage de photos géolocalisées de rues et de routes. Celles-ci peuvent être utilisées pour contribuer à OSM (autorisation explicite des auteurs nécessaire). Service proposé par l’entreprise Mapillary.</string>
     <string name="link_openstreetcam_description">Application et service de partage de photos géolocalisées de rues et de routes. Celles-ci peuvent être utilisées pour contribuer à OSM (autorisation explicite des auteurs nécessaire). Service proposé par l’entreprise Telenav.</string>
@@ -619,7 +612,7 @@ Enfin, n’oubliez pas de rester prudent : soyez attentifs à votre environnemen
     <string name="link_weeklyosm_description">Blog de nouvelles hebdomadaires sur ce qui se passe dans la communauté d’OpenStreetMap</string>
     <string name="link_figuregrounder_description">Créer des affiches à partir des surfaces bâties d’une ville ou d’un quartier</string>
     <string name="achievement_first_edit_title">Première quête résolue</string>
-    <string name="achievement_first_edit_description">Bienvenue dans la communauté OpenStreetMap ! Dans votre profil, vous pouvez en savoir plus sur chaque type de quête que vous avez résolue.</string>
+    <string name="achievement_first_edit_description">Bienvenue dans la communauté OpenStreetMap ! Dans votre profil, vous pouvez en savoir plus sur chaque type de quête que vous avez résolu.</string>
     <string name="achievement_surveyor_title">Détective</string>
     <string name="achievement_surveyor_solved_X">Vous avez résolu %1$d quêtes ! Continuez pour débloquer d’autres succès en lien avec OSM et d’autres projets et applications de cartographie !</string>
     <string name="achievement_regular_title">Habitué</string>
@@ -632,10 +625,10 @@ Enfin, n’oubliez pas de rester prudent : soyez attentifs à votre environnemen
     <string name="achievement_postman_solved_X">Vous avez aidé à localiser %1$d adresses !
 Ces données sont essentielles non seulement pour le facteur mais aussi pour tout système de navigation.</string>
     <string name="achievement_building_title">Gratte-ciel</string>
-    <string name="achievement_building_solved_X">Vous avez résolu %1$d quêtes liées aux bâtiments.
-Remarquez que cette appli ne vous demandera les numéros de rues qu’après avoir indiqué le type de bâtiment.</string>
+    <string name="achievement_building_solved_X">Vous avez résolu %1$d quêtes liées aux bâtiments !
+Notez que cette application ne vous demandera le numéro de rue d'un bâtiment qu'après avoir déterminé son type.</string>
     <string name="achievement_blind_title">Sixième sens</string>
-    <string name="achievement_blind_solved_X">Vous avez résolu %1$d quêtes utiles pour les déficients visuel.</string>
+    <string name="achievement_blind_solved_X">Vous avez résolu %1$d quêtes utiles pour les déficients visuels !</string>
     <string name="achievement_pedestrian_title">Course à pied</string>
     <string name="achievement_pedestrian_solved_X">Vous avez résolu %1$d quêtes utiles pour les piétons !</string>
     <string name="achievement_veg_title">Bienveillance animale</string>
@@ -649,7 +642,7 @@ Remarquez que cette appli ne vous demandera les numéros de rues qu’après avo
     <string name="privacy_html_statistics">&lt;p&gt;Les données figurant dans votre profil sont agrégées à partir de l’historique de vos contributions sur OpenStreetMap accessibles publiquement, puis hébergées sur mon serveur.&lt;/p&gt;</string>
     <string name="confirmation_authorize_now_note2">Vous pouvez aussi le faire plus tard, depuis votre profil.</string>
     <string name="credits_art_contributors_title">Graphistes</string>
-    <string name="credits_projects_contributors_title">Autres projets réalisés dans le cadre de StreetComplete</string>
+    <string name="credits_projects_contributors_title">Autres projets réalisés pour StreetComplete</string>
     <string name="credits_main_contributors_title">Contributeurs principaux</string>
     <string name="stats_are_syncing">Vos statistiques sont en train de se synchroniser. Vérifiez cette page plus tard.</string>
     <string name="user_statistics_country_wiki_link">Portail cartographique %1$s</string>
@@ -688,14 +681,13 @@ accomplis</string>
     <string name="at_housenumber">numéro de rue %1$s</string>
     <string name="quest_openingHours_add_off_days">Ajouter des jours de fermeture</string>
     <string name="quest_openingHours_off_day">Jour de fermeture</string>
-    <string name="quest_openingHours_unspecified_range">Non spécifié</string>
     <string name="quest_cycleway_resurvey_title">Est-ce toujours l’état de l’infrastructure cyclable ici ?</string>
     <string name="pref_title_resurvey_intervals">Intervalles d’enquête</string>
     <string name="resurvey_intervals_less_often">Moins souvent</string>
     <string name="resurvey_intervals_default">Défaut</string>
     <string name="resurvey_intervals_more_often">Plus souvent</string>
     <string name="about_title_translate">Traduire cette application</string>
-    <string name="about_description_translate">%1$s est traduit par %2$d%</string>
+    <string name="about_description_translate">Traduite en %1$s à %2$d%.</string>
     <string name="quest_oneway2_title">Est-ce une rue à sens unique ? Dans quel sens ?</string>
     <string name="quest_oneway2_dir">Sens unique, dans cette direction</string>
     <string name="quest_oneway2_no_oneway">Pas à sens unique</string>
@@ -725,7 +717,7 @@ accomplis</string>
     <string name="achievement_outdoors_solved_X">Vous avez résolu %1$d quêtes utiles aux amateurs de plein air !</string>
     <string name="quest_pedestrian_crossing_island">Est-ce que ce passage piéton est équipé d’un îlot de refuge ?</string>
     <string name="quest_generic_answer_noSign">Il n’y a pas de panneau</string>
-    <string name="quest_steps_ramp_separate_wheelchair">Y a t’il une rampe pour fauteuils roulants représentée comme une voie séparée sur la carte ?</string>
+    <string name="quest_steps_ramp_separate_wheelchair">Est-ce que la rampe pour fauteuils roulants est affichée comme une voie séparée sur la carte ?</string>
     <string name="quest_steps_ramp_separate_wheelchair_confirm">Séparée</string>
     <string name="quest_steps_ramp_separate_wheelchair_decline">Non séparée</string>
     <string name="pref_title_sync2">Envoyer les réponses automatiquement</string>
@@ -739,42 +731,42 @@ accomplis</string>
     <string name="quest_buildingType_ruins_description">bâtiment abandonné, en ruines et non identifiable</string>
     <string name="quest_charging_station_capacity_title">Combien de véhicules peuvent être chargés simultanément à ce point de recharge ?</string>
     <string name="link_disaster_ninja_description">Carte montrant les catastrophes naturelles récentes, d’intérêt pour les cartographes humanitaires, ainsi que plusieurs statistiques intéressantes pour analyser l’état de la cartographie (récence, avancement, …)</string>
-    <string name="quest_lanes_title">Combien y a t-il de voies pour voitures sur cette route ?</string>
+    <string name="quest_lanes_title">Combien y a-t-il de voies pour voitures sur cette route ?</string>
     <string name="quest_lanes_answer_noLanes">Pas de voies peintes</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Il y a une voie à double sens pour le tourne-à-gauche</string>
     <string name="quest_address_answer_no_housenumber_message2b">Est-ce correct ?</string>
     <string name="quest_maxheight_below_bridge_title">Quelle est la hauteur mesurée sous le pont ?</string>
     <string name="quest_maxheight_split_way_hint">Cette question est aussi posée pour les routes qui passent sous des ponts, des toits, des tuyauteries aériennes, etc.
 Si cela ne concerne pas la totalité de la voie, vous pouvez répondre « %1$s ».</string>
-    <string name="quest_tactile_paving_kerb_title">Y a t-il un revêtement podotactile à cet endroit ?</string>
-    <string name="quest_kerb_height_title">Quelle est la hauteur de ce ressaut ?</string>
+    <string name="quest_tactile_paving_kerb_title">Y a-t-il une bande podotactile sur le bord du trottoir à cet endroit ?</string>
+    <string name="quest_kerb_height_title">Quelle est la hauteur de ce rebord ?</string>
     <string name="quest_kerb_height_flush">Au niveau de la route</string>
     <string name="quest_kerb_height_lowered">Basse</string>
     <string name="quest_kerb_height_raised">Haute</string>
     <string name="quest_kerb_height_lowered_ramp">Il s’agit d’une pente douce</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">Spécifiez le nombre de voies délimitées utilisables par le trafic routier. Les voies cyclables et emplacements de parking ne comptent pas.
+    <string name="quest_lanes_answer_lanes_description_one_side2">Spécifiez le nombre de voies délimitées utilisables par le trafic routier. Les voies cyclables et les places de parking ne comptent pas.
 Si certaines voies sont réservées aux bus, laissez plutôt une note.</string>
-    <string name="quest_surface_value_rock">Rocher</string>
-    <string name="quest_parkingType_street_side">Stationnement à coté de la chaussée</string>
+    <string name="quest_surface_value_rock">Pierre</string>
+    <string name="quest_parkingType_street_side">Stationnement à côté de la chaussée</string>
     <string name="quest_parkingType_lane">Stationnement sur la chaussée</string>
     <string name="quest_generic_answer_does_not_exist">Ça n’existe pas…</string>
     <string name="osm_element_gone_description">Êtes-vous sûr que ça n’existe pas, même pas à un endroit un peu différent ? En cas de doute, il vaut mieux laisser une note à la place.</string>
     <string name="osm_element_gone_confirmation">Ça n’existe pas</string>
     <string name="leave_note">Laisser une note</string>
-    <string name="quest_shop_gone_title">Qu’y a-t’il à la place maintenant ?</string>
-    <string name="quest_shop_gone_vacant_answer">L’emplacement est vacant</string>
+    <string name="quest_shop_gone_title">Qu’y a-t-il à la place maintenant ?</string>
+    <string name="quest_shop_gone_vacant_answer">L’emplacement est vacant...</string>
     <string name="quest_shop_gone_replaced_answer">Un(e) …</string>
     <string name="quest_shop_gone_replaced_answer_hint">Écrire un type de lieu ici</string>
     <string name="quest_shop_vacant_type_title">Cet emplacement de magasin a été vacant. Qu’y a-t-il ici maintenant ?</string>
-    <string name="default_disabled_msg_go_inside_regional_warning">Cette quête est désactivée par défaut car elle n’est pas utile dans certaines régions et vous auriez certainement besoin de rentrer à l’intérieur du bâtiment pour y répondre.</string>
+    <string name="default_disabled_msg_go_inside_regional_warning">Ce type de quête est désactivé par défaut car il n’est pas utile dans certaines régions, et car vous auriez certainement besoin de rentrer à l’intérieur du bâtiment pour y répondre.</string>
     <string name="quest_dietType_explanation_kosher">Les produits casher doivent être préparés selon certaines règles, avec un certificat produit par un organisme de certification.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Aucune bande ou piste cyclable</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Comme d’habitude, cliquez sur un côté de l’illustration, sélectionnez la bonne réponse, et faîtes de même pour l’autre côté.
+    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Comme d’habitude, cliquez sur un côté de l’illustration, sélectionnez la bonne réponse, puis faites de même pour l’autre côté.
 
-Prenez garde de voire toutes les options, certains cas sont non triviaux, comme une rue à sens unique pour les voitures mais à double sens pour les cyclistes !</string>
+Prenez en compte toutes les options : certains cas sont non triviaux, comme une rue à sens unique pour les voitures mais à double sens pour les cyclistes !</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Renseignez qu’il n’y a pas de voies cyclables</string>
     <string name="quest_construction_completed_at_known_date">Cela sera fini le …</string>
-    <string name="quest_construction_completion_date_title">Quand cela sera-t’il fini ?</string>
+    <string name="quest_construction_completion_date_title">Quand cela sera-t-il fini ?</string>
     <string name="quest_surface_value_clay">Terre battue</string>
     <string name="quest_surface_value_artificial_turf">Gazon synthétique</string>
     <string name="quest_bicycle_parking_fee_title">Doit-on payer pour garer son vélo ici ?</string>
@@ -786,27 +778,27 @@ Prenez garde de voire toutes les options, certains cas sont non triviaux, comme 
     <string name="quest_postboxRoyalCypher_type_scottish_crown">La Couronne d’Écosse</string>
     <string name="quest_buildingType_fire_station">Caserne de pompiers</string>
     <string name="quest_recycling_type_beverage_cartons">Briques de boisson</string>
-    <string name="team_mode">Entrez le mode équipe</string>
-    <string name="team_mode_exit">Quitter le mode par équipe</string>
+    <string name="team_mode">Passer en mode équipe</string>
+    <string name="team_mode_exit">Quitter le mode équipe</string>
     <string name="team_mode_description">Quand vous cartographiez la même zone avec un groupe, vous pouvez entrer le mode équipe pour répartir les quêtes entre tous les membres de l’équipe. Chacun d’entre vous verra alors des quêtes différentes.</string>
-    <string name="team_mode_active">Le mode par équipe est activé</string>
-    <string name="team_mode_deactivated">Le mode par équipe est désactivé</string>
+    <string name="team_mode_active">Le mode équipe est activé</string>
+    <string name="team_mode_deactivated">Le mode équipe est désactivé</string>
     <string name="undo_confirm_title2">Annuler cette contribution ?</string>
     <string name="toast_undo_unavailable">Cette contribution est déjà téléversée et ne peut pas être annulée</string>
     <string name="quest_cycleway_value_separate">affichée distinctement sur la carte</string>
-    <string name="created_note_action_title">Créer une note</string>
-    <string name="commented_note_action_title">Commenter une note</string>
+    <string name="created_note_action_title">Note créée</string>
+    <string name="commented_note_action_title">Note commentée</string>
     <string name="hid_action_description">Vous l’avez caché</string>
-    <string name="split_way_action_description">Vous avez divisé cette voie</string>
+    <string name="split_way_action_description">Vous avez découpé cette voie</string>
     <string name="deleted_poi_action_description">Vous l’avez supprimé</string>
     <string name="added_tag_action_title">Ajouté %1$s</string>
     <string name="removed_tag_action_title">Retiré %1$s</string>
-    <string name="changed_tag_action_title">Mettre à jour à %1$s</string>
+    <string name="changed_tag_action_title">Mis à jour à %1$s</string>
     <string name="pref_title_delete_cache">Vider le cache</string>
     <string name="pref_title_delete_cache_summary">Si vous pensez que certaines données sont périmées</string>
     <string name="delete_confirmation">Supprimer</string>
-    <string name="delete_cache_dialog_message">Supprimer toutes les données de cartes téléchargées, y compris les quêtes ?
-Les données sont automatiquement mises à jour au bout de %1$s jours et les données inutilisées sont supprimées au bout de %2$s jours.</string>
+    <string name="delete_cache_dialog_message">Supprimer toutes les données cartographiques téléchargées, y compris les quêtes ?
+Les données sont automatiquement mises à jour au bout de %1$s jours, et les données inutilisées sont supprimées au bout de %2$s jours.</string>
     <string name="pref_background_type_select">Sélectionner le type de fond</string>
     <string name="background_type_map">Carte</string>
     <string name="background_type_aerial_esri">Aérienne (par Esri)</string>
@@ -839,14 +831,14 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="pref_subtitle_quests">%1$d sur %2$d activées</string>
     <string name="no_location_permission_warning_title">Permission de localisation</string>
     <string name="quest_surface_value_woodchips">Copeaux de bois</string>
-    <string name="no_camera_app">Pas d’application caméra disponible</string>
-    <string name="quest_bollard_type_title">De quel type de borne est-ce ?</string>
+    <string name="no_camera_app">Pas d’application appareil photo disponible</string>
+    <string name="quest_bollard_type_title">Quel type de plot est-ce ?</string>
     <string name="quest_bollard_type_rising">Escamotable</string>
     <string name="quest_bollard_type_flexible">Flexible</string>
     <string name="quest_bollard_type_fixed">Fixé (non démontable)</string>
     <string name="quest_camera_type_title">Quel type de caméra de surveillance est-ce ?</string>
     <string name="quest_camera_type_dome">Dôme</string>
-    <string name="quest_camera_type_fixed">Fixé</string>
+    <string name="quest_camera_type_fixed">Fixe</string>
     <string name="quest_camera_type_panning">Panoramique</string>
     <string name="about_title_faq">FAQ</string>
     <string name="quest_buildingLevels_title2">Combien d’étages au-dessus du sous-sol compte ce bâtiment ?</string>
@@ -873,12 +865,12 @@ Les données sont automatiquement mises à jour au bout de %1$s jours et les don
     <string name="quest_selection_hint_title">Trop de choses à faire ?</string>
     <string name="quest_selection_hint_message">Contribuer doit rester agréable !
 
-Si vous êtes submergé par le nombre de quêtes, vous pouvez choisir quelles quêtes sont affichées et dans quel ordre dans les réglages.</string>
-    <string name="quest_presets_preset_add">Ajouter le préréglage</string>
+Si vous êtes submergé par le nombre de quêtes, vous pouvez choisir quelles quêtes sont affichées et dans quel ordre dans les paramètres.</string>
+    <string name="quest_presets_preset_add">Ajouter un préréglage</string>
     <string name="quest_presets_preset_name">Nom du préréglage</string>
     <string name="quest_presets_default_name">Par défaut</string>
     <string name="quest_presets_selected">Sélectionné</string>
-    <string name="quest_presets_delete_message">Supprimer le préréglage « %1$s » ? Les quêtes sélectionnées et leur ordre sera perdu.</string>
+    <string name="quest_presets_delete_message">Supprimer le préréglage « %1$s » ? Les quêtes sélectionnées et leur ordre seront perdus.</string>
     <string name="notification_syncing">Synchronisation des données…</string>
     <string name="notification_channel_sync">Synchroniser les données</string>
     <string name="quest_board_type_sport">Sport, Exercices</string>
@@ -895,10 +887,10 @@ Si vous êtes submergé par le nombre de quêtes, vous pouvez choisir quelles qu
     <string name="quest_traffic_calming_type_table">Ralentisseur trapézoïdal</string>
     <string name="quest_traffic_calming_type_cushion">Coussin berlinois</string>
     <string name="quest_traffic_calming_type_choker">Rétrécissement de la chaussée</string>
-    <string name="quest_traffic_calming_type_island">Ilot</string>
+    <string name="quest_traffic_calming_type_island">Îlot</string>
     <string name="quest_traffic_calming_type_chicane">Chicane(s)</string>
     <string name="quest_traffic_calming_type_rumble_strip">Bande(s) rugueuse(s)</string>
-    <string name="quest_surface_value_concrete_lanes">Voies en béton</string>
+    <string name="quest_surface_value_concrete_lanes">Bandes en béton</string>
     <string name="quest_fireHydrant_diameter_title">Quel est le diamètre indiqué sur le panneau de cette bouche d’incendie ?</string>
     <string name="quest_diet_answer_no_food">Pas de nourriture</string>
     <string name="short_no_answer_on_button">Non</string>
@@ -908,9 +900,9 @@ Si vous êtes submergé par le nombre de quêtes, vous pouvez choisir quelles qu
     <string name="quest_access_yes">Tout membre du grand public</string>
     <string name="quest_access_customers">Toute personne visitant un endroit spécifique (ex. clients uniquement)</string>
     <string name="quest_access_private">Seulement les personnes autorisées</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Les horaires de levée de cette boîte aux lettres sont-ils toujours correctes ?</string>
+    <string name="quest_postboxCollectionTimes_resurvey_title">Les horaires de levée de cette boîte aux lettres sont-ils toujours corrects ?</string>
     <string name="quest_bicycle_barrier_type_title">Quel type de barrière à vélos est-ce ?</string>
-    <string name="quest_barrier_bicycle_type_diagonal">En diagonal du chemin</string>
+    <string name="quest_barrier_bicycle_type_diagonal">En diagonale du chemin</string>
     <string name="quest_barrier_bicycle_type_tilted">Passage étroit, plus petit vers le haut</string>
     <string name="quest_barrier_bicycle_type_single">Passage entre barrières</string>
     <string name="quest_barrier_bicycle_type_double">Chicane - barrière de chaque côté</string>
@@ -945,7 +937,7 @@ Alternativement, vous pouvez laisser une note (avec une photo).</string>
     <string name="quest_fireHydrant_position_sidewalk">Sur le trottoir</string>
     <string name="quest_fireHydrant_position_parking_lot">Sur une place de stationnement</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Oui (laissez une note)</string>
-    <string name="quest_smoothness_square_title">Quel est l’état de surface de cette place ?</string>
+    <string name="quest_smoothness_square_title">Quel est l’état de la surface de cette place ?</string>
     <string name="quest_smoothness_road_title">Quel est l’état du revêtement de cette route ?</string>
     <string name="quest_smoothness_title_excellent">Lisse et uniforme</string>
     <string name="quest_smoothness_title_good">Généralement uniforme</string>
@@ -982,13 +974,13 @@ Alternativement, vous pouvez laisser une note (avec une photo).</string>
     <string name="quest_smoothness_hint">Les icônes indique pour quel véhicule la surface est adaptée. Cela concerne l’état global, et non pas les dommages unitaires éventuels.</string>
     <string name="link_osmhydrant_description">Chercher, ajouter et éditer des casernes de pompiers et des poteaux incendie</string>
     <string name="achievement_lifesaver_title">Sauveteur</string>
-    <string name="achievement_lifesaver_solved_X">Vous avez résolu %1$d quêtes aidant les services d’urgence et de premier secours !</string>
+    <string name="achievement_lifesaver_solved_X">Vous avez résolu %1$d quêtes aidant les services d’urgence et de premiers secours !</string>
     <string name="quest_fuelSelfService_title">Les pompes sont-elles en libre-service dans cette station-essence ?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Ce type de quête est désactivé par défaut car elles sont chronophages ou qu’il est difficile d’y répondre correctement. N’activez ce type de quête que si vous êtes certain de vouloir ajouter ce type d’informations à la carte.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Gravier ou sable compacté, avec quelques irrégularités</string>
-    <string name="quest_barrier_path_intersection">De quelle façon ce chemin croise t’il cette barrière ?</string>
-    <string name="quest_barrier_road_intersection">De quelle façon cette route croise t’elle cette barrière ?</string>
-    <string name="quest_sidewalk_value_separate">trottoir indiqué séparément sur la carte</string>
+    <string name="quest_barrier_path_intersection">De quelle façon ce chemin croise-t-il cette barrière ?</string>
+    <string name="quest_barrier_road_intersection">De quelle façon cette route croise-t-elle cette barrière ?</string>
+    <string name="quest_sidewalk_value_separate">trottoir affiché séparément sur la carte</string>
     <string name="no_camera_permission_warning_title">Permission d’accès à la caméra</string>
     <string name="no_camera_permission_warning">L’autorisation est requise pour mesurer des distances avec l’appareil photo.</string>
     <string name="ar_core_error_sdk_too_old">Cette application est trop ancienne, essayez de la mettre à jour.</string>
@@ -998,17 +990,17 @@ Alternativement, vous pouvez laisser une note (avec une photo).</string>
     <string name="ar_core_tracking_error_insufficient_features">Pas assez de caractéristiques visuelles ici</string>
     <string name="ar_core_tracking_error_camera_unavailable">La caméra est déjà utilisée par une autre application</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Support de guidon</string>
-    <string name="quest_bicycle_parking_access_title2">Qui est autorisé à stationner un vélo ici ? Le parking peut être gratuit ou payant.</string>
+    <string name="quest_bicycle_parking_access_title2">Qui est autorisé à garer un vélo ici ? Le parking peut être gratuit ou payant.</string>
     <string name="quest_playground_access_title2">Qui est autorisé à utiliser cette aire de jeux ?</string>
     <string name="quest_sidewalk_answer_none_title">Sélectionner que les trottoirs sont manquants</string>
     <string name="quest_side_select_interface_explanation">Sélectionnez un côté et précisez sa situation.
 Faites la même chose pour l’autre côté, si présent.</string>
     <string name="ar_measure">Prendre une mesure</string>
     <string name="ar_core_tracking_error_too_steep_angle">Angle trop important, reculez un peu</string>
-    <string name="default_disabled_msg_no_ar">Vous aurez besoin d’un mètre mesureur pour résoudre cette quête, la mesure via la caméra n’est pas supporté sur cet appareil.</string>
+    <string name="default_disabled_msg_no_ar">Vous aurez besoin d’un mètre mesureur pour résoudre cette quête, car la mesure via l'appareil photo n’est pas prise en charge sur cet appareil.</string>
     <string name="quest_cycleway_width_title">Quelle est la largeur de cette piste cyclable ici ?</string>
     <string name="quest_road_width_title">Quelle est la largeur de la route ici ?</string>
-    <string name="quest_road_width_explanation">La taille de la route de bord à bord : ceci inclut tout ce qui se trouve sur la surface de la rue comme les emplacements de stationnement et les bandes cyclables, mais exclut tout ce qui se trouve au delà, comme les pistes cyclables ou les places de parking.</string>
+    <string name="quest_road_width_explanation">La largeur de la route de bord à bord : ceci inclut tout ce qui se trouve sur la chaussée, comme les emplacements de stationnement et les bandes cyclables, mais exclut tout ce qui se trouve au delà des bordures de trottoirs, comme les pistes cyclables adjacentes ou les places de parking en-dehors de la chaussée.</string>
     <string name="quest_sidewalk_answer_none">Pas de trottoir du tout</string>
     <string name="link_osmand_description">Application mobile pour la visualisation de carte et la navigation, hors ligne ou en ligne</string>
     <string name="link_sunders_description">Une carte des caméras et équipements de surveillance</string>
@@ -1023,8 +1015,8 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="at_any_time">tout le temps</string>
     <string name="only_at_hours">seulement à ces horaires :</string>
     <string name="except_at_hours">excepté à ces horaires :</string>
-    <string name="quest_bollard_type_not_bollard">Pas un bollard, mais une autre barrière</string>
-    <string name="quest_barrier_bicycle_type_not_cycle_barrier">Pas une barrière à vélo, mais une autre barrière</string>
+    <string name="quest_bollard_type_not_bollard">Pas un plot, mais un autre type de barrière</string>
+    <string name="quest_barrier_bicycle_type_not_cycle_barrier">Pas une barrière à vélo, mais un autre type de barrière</string>
     <string name="quest_smoking_no">Non, interdit</string>
     <string name="quest_smoking_outside">Seulement à l’extérieur</string>
     <string name="quest_smoking_separated">Seulement dans des zones séparées</string>
@@ -1051,26 +1043,26 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="quest_dietType_vegan_title2">Y a-t-il des éléments végan au menu de ce lieu ?</string>
     <string name="quest_dietType_vegetarian_title2">Y a-t-il des éléments végétariens au menu de ce lieu ?</string>
     <string name="quest_drinking_water_title2">L’eau est-elle potable à cet endroit ?</string>
-    <string name="quest_existence_title2">Est-ce toujours ici ?</string>
+    <string name="quest_existence_title2">Est-ce toujours là ?</string>
     <string name="quest_generalFee_title2">Doit-on payer pour rentrer ici ?</string>
-    <string name="quest_internet_access_title">Quel type de connexion internet est proposée ici ?</string>
+    <string name="quest_internet_access_title">Quel type de connexion internet est proposé ici ?</string>
     <string name="quest_level_title2">À quel niveau se trouve cet endroit ?</string>
     <string name="quest_lit_title">Est-ce éclairé ?</string>
     <string name="quest_openingHours_title">Quels sont les horaires d’ouverture à cet endroit ?</string>
-    <string name="quest_openingHours_signed_title">Les heures d’ouverture sont-elles signalées ici ?</string>
+    <string name="quest_openingHours_signed_title">Les heures d’ouverture sont-elles affichées ici ?</string>
     <string name="quest_openingHours_resurvey_title">Les horaires d’ouverture sont-ils toujours corrects ?</string>
     <string name="quest_placeName_title">Quel est le nom de ce lieu ?</string>
     <string name="quest_shop_type_title2">De quel type de commerce s’agit-il ?</string>
-    <string name="quest_smoking_title2">Peut-on fumer à cet endroit ?</string>
+    <string name="quest_smoking_title2">Peut-on fumer ici ?</string>
     <string name="quest_smoothness_title">Quelle est la qualité de la surface ?</string>
-    <string name="quest_summit_register_title2">Y a-t-il un registre d’ascenscion de sommet de montagne ?</string>
+    <string name="quest_summit_register_title2">Y a-t-il un livre de sommet ici ?</string>
     <string name="quest_surface_title">Quel est le matériau qui compose la surface ?</string>
     <string name="quest_toiletAvailability_title">Y a-t-il des toilettes ici ?</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">Les toilettes de ce lieu sont-elles accessibles aux fauteuils roulants ?</string>
-    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">Êtes-vous certain que les cyclistes ne sont pas autorisés à utiliser cette rue à sens unique dans le deux sens ? En cas de doute, vérifiez qu’un panneau ne se trouve pas en bout de rue.</string>
+    <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">Êtes-vous certain que les cyclistes ne sont pas autorisés à utiliser cette rue à sens unique dans les deux sens ? En cas de doute, vérifiez qu’un panneau ne se trouve pas en bout de rue.</string>
     <string name="link_valhalla_description">Moteur de routage à faible empreinte mémoire, routage multimodal, isochrones, et plus encore.</string>
-    <string name="link_backofyourhand_description">Connaissez vous bien votre secteur ? Testez votre connaissance en localisant les rues.</string>
-    <string name="link_notesreview_description">Trouvez, filtrez et commentez facilement vos notes et celles des autres. Beaucoup de notes peuvent être résolues en reportant leurs informations sur la carte via iD ou JOSM</string>
+    <string name="link_backofyourhand_description">Connaissez-vous bien votre secteur ? Testez votre connaissance en localisant les rues.</string>
+    <string name="link_notesreview_description">Trouvez, filtrez et commentez facilement vos notes et celles des autres. Beaucoup de notes peuvent être résolues en reportant leurs informations sur la carte via iD ou JOSM.</string>
     <string name="quest_accepts_cards">Est-ce que les cartes de crédit ou de débit sont acceptées ici ?</string>
     <string name="quest_accepts_cards_debit_and_credit">Cartes de débit et de crédit</string>
     <string name="quest_accepts_cards_credit_only">Seulement les cartes de crédit</string>
@@ -1082,9 +1074,9 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="quest_cycleway_value_none_and_oneway">aucun, circulation en vélo interdite dans cette direction</string>
     <string name="map_btn_create_track">Créer un enregistrement de trace GPS</string>
     <string name="map_btn_stop_track">Arrêter l’enregistrement</string>
-    <string name="quest_bicycle_rental_capacity_title">Combien d’espaces de location de vélos il y a-il ici ?</string>
-    <string name="quest_bicycle_rental_type_title">Quel type de location de vélos est ceci ?</string>
-    <string name="quest_bicycle_rental_type_docking_station">Station où les vélos sont verrouillés</string>
+    <string name="quest_bicycle_rental_capacity_title">Combien de places pour vélos de location y a-t-il ici ?</string>
+    <string name="quest_bicycle_rental_type_title">Quel type de location de vélos est-ce ?</string>
+    <string name="quest_bicycle_rental_type_docking_station">Station où les vélos sont verrouillés sur des bornettes</string>
     <string name="quest_bicycle_rental_type_dropoff_point">Endroit dédié (vélos verrouillés individuellement)</string>
     <string name="quest_bicycle_rental_type_human">Location de vélo avec personnel</string>
     <string name="quest_bicycle_rental_type_shop_with_rental">Magasin de vélos qui propose des vélos à louer</string>
@@ -1104,9 +1096,9 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="quest_building_entrance_yes">Autre type d’entrée</string>
     <string name="quest_building_entrance_dead_end">Cul-de-sac, pas d’entrée</string>
     <string name="ar_core_tracking_hint_tap_to_measure">Appuyez sur l’écran pour commencer la mesure</string>
-    <string name="quest_air_pump_bicycle_shop_title">Y a-t’il une pompe à vélo ici (au moins quand c’est ouvert) ?</string>
+    <string name="quest_air_pump_bicycle_shop_title">Y a-t-il une pompe à vélo ici (au moins quand c’est ouvert) ?</string>
     <string name="action_overlays">Surcouches</string>
-    <string name="split_way">Couper le chemin</string>
+    <string name="split_way">Découper la voie</string>
     <string name="quest_memorialType_title">De quel type de mémorial s’agit-il ?</string>
     <string name="quest_memorialType_statue">Statue</string>
     <string name="quest_memorialType_bust">Buste</string>
@@ -1121,11 +1113,11 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="overlay_lit">Éclairage public</string>
     <string name="lit_value_yes">Éclairé</string>
     <string name="lit_value_no">Non éclairé</string>
-    <string name="lit_value_24_7">Éclairage jour et nuit</string>
-    <string name="lit_value_automatic">Éclairage lorsque quelqu’un passe</string>
+    <string name="lit_value_24_7">Éclairé jour et nuit</string>
+    <string name="lit_value_automatic">Éclairé lorsque quelqu’un passe</string>
     <string name="overlay_sidewalk">Trottoirs</string>
     <string name="quest_generic_answer_is_indoors">C’est à l’intérieur</string>
-    <string name="quest_summit_cross_title">Y a-t’il une croix à ce sommet ?</string>
+    <string name="quest_summit_cross_title">Y a-t-il une croix à ce sommet ?</string>
     <string name="quest_entrance_reference">Qu’est-il indiqué à cette entrée ?</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">Inscription à l’entrée et rangée d’appartements</string>
     <string name="quest_entrance_reference_select_flat_range_only">Rangée d’appartements</string>
@@ -1134,7 +1126,7 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="quest_entrance_reference_reference_label">Inscription à l’entrée :</string>
     <string name="quest_entrance_reference_flat_range_label">Rangée d’appartements :</string>
     <string name="quest_entrance_reference_flat_range_to">à</string>
-    <string name="default_disabled_msg_overlay">Cette quête est désactivée par défaut car il existe une surcouche qui est plus facile à réaliser et plus efficace pour mettre à jour ces données.</string>
+    <string name="default_disabled_msg_overlay">Ce type de quête est désactivé par défaut car il existe une surcouche qui est plus facile à utiliser et plus efficace pour mettre à jour ces données.</string>
     <string name="quest_camp_drinking_water_title">L’eau potable est elle disponible librement pour les hôtes ?</string>
     <string name="quest_camp_shower_title">Y a-t-il des douches ici ?</string>
     <string name="quest_camp_power_supply_title">Y a-t-il des prises électriques disponibles pour les clients ?</string>
@@ -1145,22 +1137,22 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="link_ohsomehex_description">Explorez les données d’OSM à différentes échelles, du plan large jusqu’aux objets individuels, à travers le temps et l’espace</string>
     <string name="link_opencampingmap_description">Une carte des terrains de camping</string>
     <string name="quest_atm_cashin_title">Est-il possible de déposer de l’argent dans ce distributeur ?</string>
-    <string name="create_node_action_description">Vous avez crée un noeud avec …</string>
+    <string name="create_node_action_description">Vous avez crée un nœud avec …</string>
     <string name="quest_accessPointRef_answer_assembly_point">C’est un point de rassemblement</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">Un point de rassemblement est un endroit où les gens se regroupent en cas d’urgence. Cela ressemble généralement à ceci :</string>
     <string name="quest_address_answer_house_name2">La maison possède un nom…</string>
     <string name="quest_address_street_street_name_label">Nom de rue :</string>
     <string name="quest_address_street_hint2">Touchez la rue sur la carte pour la sélectionner</string>
-    <string name="quest_bicycle_incline_title">Dans quelle direction cela monte t’il ?</string>
+    <string name="quest_bicycle_incline_title">Dans quelle direction cela monte-t-il ?</string>
     <string name="quest_bicycle_incline_up_and_down">Alternance de montées et descentes</string>
     <string name="quest_drinking_water_type_generic_water_fountain">Autre type de fontaine</string>
     <string name="quest_drinking_water_type_jet_water_fountain">Fontaine avec un petit jet</string>
     <string name="quest_drinking_water_type_bottle_refill_only_fountain">Remplissage de bouteilles uniquement</string>
     <string name="quest_drinking_water_type_tap">Robinet</string>
     <string name="quest_drinking_water_type_hand_pump">Pompe à main</string>
-    <string name="quest_drinking_water_type_water_well_no_pump">Puit sans pompe</string>
+    <string name="quest_drinking_water_type_water_well_no_pump">Puits sans pompe</string>
     <string name="quest_drinking_water_type_spring">Source</string>
-    <string name="quest_drinking_water_type_disused">Objet abandonné</string>
+    <string name="quest_drinking_water_type_disused">Équipement désaffecté</string>
     <string name="overlay_addresses">Adresses</string>
     <string name="name_label">Nom :</string>
     <string name="unknown_shop_title">Type de lieu non défini</string>
@@ -1176,7 +1168,7 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="quest_presets_rename">Renommer</string>
     <string name="quest_presets_share">Partager</string>
     <string name="quest_presets_delete">Supprimer</string>
-    <string name="urlconfig_qr_code_description">Partagez vos préréglages en partageant ce QR code.</string>
+    <string name="urlconfig_qr_code_description">Partagez votre préréglage à l'aide de ce QR code.</string>
     <string name="urlconfig_as_url">Ou avec une URL :</string>
     <string name="urlconfig_url_copied">URL copiée dans le presse-papier</string>
     <string name="urlconfig_apply_title">Appliquer le préréglage</string>
@@ -1187,7 +1179,7 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="user_profile_current_week_title">7 derniers jours</string>
     <string name="user_profile_dates_mapped">Jours récents où vous avez cartographié</string>
     <string name="quest_cycleway_value_advisory_lane">Chaucidou (chaussée à voie centrale banalisée)</string>
-    <string name="urlconfig_scan_qr_code_again2">Après avoir installé l’application, re-scannez le code QR ou cliquez sur &lt;a href="%1$s"&gt;ce lien&lt;/a&gt; pour appliquer les préréglages.</string>
+    <string name="urlconfig_scan_qr_code_again2">Après avoir installé l’application, re-scannez le QR code ou cliquez sur &lt;a href="%1$s"&gt;ce lien&lt;/a&gt; pour appliquer le préréglage.</string>
     <string name="confirmation_replace_shop_title">Est-ce un lieu différent aujourd’hui ?</string>
     <string name="confirmation_replace_shop_message">Dans ce cas, les horaires d’ouverture, informations de contact, etc, ont également changé.</string>
     <string name="confirmation_replace_shop_yes">Lieu différent</string>
@@ -1198,7 +1190,7 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="node_moved_too_far">Déplacé trop loin. Pensez à laisser une note</string>
     <string name="node_moved">Déplacé par %1$s</string>
     <string name="move_node_description">Déplacez la carte pour pour placer l’objet à l’emplacement correct. Utilisez le zoom et essayez d’être aussi précis que possible. Notez également que votre position affichée peut manquer de précision.</string>
-    <string name="move_node_action_description">Vous avez déplacé le noeud</string>
+    <string name="move_node_action_description">Vous avez déplacé le nœud</string>
     <string name="quest_cycleway_value_shoulder">aucune, mais bande d’arrêt d’urgence cyclable</string>
     <string name="quest_placeName_no_name_answer">Il n’y a pas de signe de nom…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Cette largeur semble suspecte. Pour rappel, cela doit concerner la largeur de bord à bord, en incluant le parking sur la chaussée, les voies cyclables, etc.</string>
@@ -1206,22 +1198,22 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="bicycle_boulevard_is_a">C’est un(e) %1$s</string>
     <string name="bicycle_boulevard_is_not_a">Ce n’est pas un(e) %1$s</string>
     <string name="bicycle_boulevard">Rue cyclable</string>
-    <string name="separate_cycleway_no_or_allowed">Non désigné pour les cyclistes (le cyclisme peut encore être autorisé)</string>
+    <string name="separate_cycleway_no_or_allowed">Chemin piéton, sans panneau concernant la circulation à vélo (qui peut quand même être autorisée)</string>
     <string name="separate_cycleway_non_segregated">Chemin à usage partagé</string>
     <string name="separate_cycleway_segregated">Voie ségréguée piétons et cycles</string>
     <string name="separate_cycleway_exclusive">Voie cyclable</string>
-    <string name="separate_cycleway_with_sidewalk">Chemin pour vélos uniquement avec chemin piéton mitoyen (séparé par une bordure)</string>
+    <string name="separate_cycleway_with_sidewalk">Chemin pour vélos uniquement avec chemin piéton adjacent (séparé par une bordure)</string>
     <string name="cycleway_reverse_direction">Voie cyclable en sens inverse</string>
     <string name="cycleway_reverse_direction_warning">Qu’une voie cyclable aille dans le sens opposé est extrêmement rare.</string>
-    <string name="cycleway_reverse_direction_toast">Tapez sur le côté à inverser</string>
+    <string name="cycleway_reverse_direction_toast">Sélectionnez le côté à inverser</string>
     <string name="separate_cycleway_path">Chemin ou piste</string>
     <string name="quest_fireHydrant_type_pipe">Colonne</string>
     <string name="measure_info_title">Améliorer la précision de mesure</string>
-    <string name="measure_info_html_description">&lt;p&gt;ARCore présume parfois (à l’initialisation) que le sol est plus bas ou plus haut qu’il ne l’est vraiment. Cela introduit une erreur de mesure qui s’accroit lorsque vous inclinez votre téléphone vers l’horizon.&lt;/p&gt;
+    <string name="measure_info_html_description">&lt;p&gt;ARCore présume parfois (à l’initialisation) que le sol est plus bas ou plus haut qu’il ne l’est vraiment. Cela induit une erreur de mesure qui s’accroît lorsque vous inclinez votre téléphone vers l’horizon.&lt;/p&gt;
 &lt;p&gt;Réglez les points de départ et d’arrivée en pointant le téléphone vers le bas (de manière à voir la flèche blanche du dessus) pour remédier au problème pour les mesures horizontales.&lt;/p&gt;
 &lt;p&gt;Pour les mesures verticales, vous devez vérifier manuellement que le point de départ n’est pas en mouvement par rapport au sol, en regardant depuis des directions différentes.&lt;/p&gt;</string>
     <string name="privacy_html_arcore">Cette application utilise les &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;Services Google Play pour RA&lt;/a&gt; (ARCore), qui sont fournis par Google et sont soumis aux &lt;a href="https://policies.google.com/privacy"&gt;règles de confidentialité de Google&lt;/a&gt;.</string>
-    <string name="default_disabled_msg_seasonal">Ce type de quête est désactivé par défaut car il peut nécessiter une re-vérification de la situation à différentes périodes de l’année.</string>
+    <string name="default_disabled_msg_seasonal">Ce type de quête est désactivé par défaut car il peut nécessiter une revérification de la situation à différentes périodes de l’année.</string>
     <string name="quest_gritBinSeasonal_title">Est-ce là même hors hiver ?</string>
     <string name="street_parking_staggered_on_street">Sur la chaussée, en alternance</string>
     <string name="street_parking_staggered_half_on_kerb">Partiellement sur la chaussée, en alternance</string>
@@ -1247,7 +1239,7 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="lane_narrowing_traffic_calming_chicane">Chicane</string>
     <string name="lane_narrowing_traffic_calming_choked_island">Extension de trottoir + îlot de circulation</string>
     <string name="lane_narrowing_traffic_calming_none">Pas de voie rétrécie ici</string>
-    <string name="quest_tactilePaving_title_steps">Y a-t-il des pavés tactiles en haut et en bas de ces marches ?</string>
+    <string name="quest_tactilePaving_title_steps">Y a-t-il des bandes podotactiles en haut et en bas de ces marches ?</string>
     <string name="quest_tactilePaving_steps_top">Seulement en haut</string>
     <string name="quest_tactilePaving_steps_bottom">Seulement en bas</string>
     <string name="overlay_addresses_no_entrance">Ce n’est pas une entrée…</string>
@@ -1259,7 +1251,7 @@ Faites la même chose pour l’autre côté, si présent.</string>
 
 Les données sont mises en évidence dans différentes couleurs pour vous donner un bon aperçu de ce qui a été enregistré jusqu’à présent.
 Les données manquantes sont toujours affichées en rouge.</string>
-    <string name="overlays_tutorial_edit">Appuyez sur les données en surbrillance pour les afficher ou les modifier. Vous pouvez également diviser les chemins ou rapporter des notes, comme avec les quêtes.
+    <string name="overlays_tutorial_edit">Appuyez sur les données en surbrillance pour les afficher ou les modifier. Vous pouvez également découper les chemins ou ajouter des notes, comme avec les quêtes.
 
 De plus, certaines surcouches vous permettent d’ajouter de nouvelles données à la position d’un réticule affiché, comme la surcouche des adresses.</string>
     <string name="quest_crossing_kerb_height_title">Quelle est la hauteur des bordures à ce croisement ?</string>
@@ -1267,7 +1259,7 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_leave_new_note_as_answer">Dans ce cas, vous devez laisser une note dans laquelle vous expliquez la situation.</string>
     <string name="quest_drinking_water_type_title2">L’eau potable est-elle disponible ici ? Si oui, quelle est sa source ?</string>
     <string name="quest_is_amenity_inside_title">Est-ce à l’intérieur d’un bâtiment ?</string>
-    <string name="quest_bbq_fuel_title">Quel est le moteur de ce gril ?</string>
+    <string name="quest_bbq_fuel_title">Ce grill fonctionne avec quoi ?</string>
     <string name="quest_bbq_fuel_wood">Bois</string>
     <string name="quest_bbq_fuel_electric">Électrique</string>
     <string name="quest_bbq_fuel_charcoal">Charbon</string>
@@ -1277,12 +1269,12 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="quest_defibrillator_location">Où se trouve ce défibrillateur ?</string>
     <string name="quest_defibrillator_location_description">Veuillez fournir une description concise de son emplacement (ex. « dans la bagagerie »).</string>
     <string name="quest_sanitary_dump_station_title">Y a-t-il une station de vidange ?</string>
-    <string name="quest_sanitary_dump_station_description">Installation permettant de déverser des déchets organiques provenant du réservoir des toilettes d’un camping-car, d’une camionnette, etc. Généralement indiqué par un panneau comme celui-ci :</string>
+    <string name="quest_sanitary_dump_station_description">Une station de vidange permet de déverser des déchets organiques provenant du réservoir des toilettes d’un camping-car, d’une camionnette, etc. Généralement indiquée par un panneau comme celui-ci :</string>
     <string name="quest_generalFee_title">Doit-on payer pour l’utiliser ?</string>
     <string name="quest_bbq_fuel_not_a_bbq">C’est un foyer pour le feu</string>
     <string name="quest_bbq_fuel_not_a_bbq_confirmation">Les foyers n’ont pas de surface de cuisson (ex. grille/plaque), contrairement aux grills.</string>
     <string name="about_title_logs">Logs (%1$d)</string>
-    <string name="about_summary_logs">A utiliser dans les rapports d’erreur.</string>
+    <string name="about_summary_logs">À utiliser dans les rapports d'erreur.</string>
     <string name="action_filter">Filtre</string>
     <string name="action_share">Partager les logs</string>
     <string name="about_title_show_logs">Afficher les logs</string>
@@ -1292,14 +1284,14 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="label_log_message_contains">Le message contient</string>
     <string name="title_logs_filters">Filtrer les messages</string>
     <string name="pref_title_quests_restore_hidden_summary">Nombre de quêtes cachées : %1$d</string>
-    <string name="link_every_door_description">Editeur de point d’intérêt pour Android et iOS</string>
+    <string name="link_every_door_description">Éditeur de point d’intérêt pour Android et iOS</string>
     <string name="link_mapcomplete_description">Collection de cartes OSM thématiques qui permettent de modifier un type d’élément.</string>
     <string name="link_forum_description">Besoin d’aide ? Vous voulez savoir ce qui se passe ? Venez voir, c’est plein d’activités pour les communautés du monde entier !</string>
     <string name="link_calendar_description">Y a-t-il des évènements ou des rassemblements de communautés OpenStreetMap près de vous ? (Si non, vous pouvez ajouter les vôtres !)</string>
     <string name="link_prettymapp_description">Créer de jolies affiches de cartes multicolores des quartiers</string>
     <string name="quest_disable_action">Désactiver</string>
     <string name="quest_disable_title">Désactiver cette quête ?</string>
-    <string name="quest_disable_message_not_installed">StreetMeasure n’est pas installé</string>
+    <string name="quest_disable_message_not_installed">StreetMeasure n’est pas installée.</string>
     <string name="quest_disable_message_not_working">StreetMeasure n’a pas renvoyé de mesure.</string>
     <string name="quest_disable_message_tape_measure">Vous pourriez utiliser un mètre ruban à la place, mais c’est un peu plus gênant.</string>
     <string name="quest_buildingType_outbuilding">Dépendance</string>
@@ -1322,26 +1314,26 @@ De plus, certaines surcouches vous permettent d’ajouter de nouvelles données 
     <string name="about_description_donate_google_play3">Merci d’envisager de soutenir cette application !
 Vous pouvez trouver des informations sur les dons sur notre site web ou sur la page d’accueil du projet. Les politiques des boutiques d’applications ne nous permettent pas de fournir le lien dans l’application.</string>
     <string name="quest_isAmenityIndoor_outside_covered">Pas à l’intérieur, mais couvert</string>
-    <string name="lit_value_unsupported">État éclairé spécifique qui ne peut pas être sélectionné dans cette application</string>
+    <string name="lit_value_unsupported">Statut d'éclairage spécifique qui ne peut pas être sélectionné dans cette application</string>
     <string name="quest_generic_otherAnswers2">Euh…</string>
     <string name="quest_pedestrian_crossing_signals2">Existe-t-il des feux de signalisation indiquant quand il faut traverser à cet endroit ?</string>
-    <string name="quest_moped_access_title">Y a-t-il un panneau indiquant l’accès aux cyclomoteurs sur cette piste cyclable ?</string>
-    <string name="quest_moped_access_allowed">Il n’y a aucun panneau</string>
-    <string name="quest_moped_access_designated">Un panneau indique que cette piste cyclable est réservée aux cyclomoteurs.</string>
+    <string name="quest_moped_access_title">Y a-t-il un panneau concernant l’accès des cyclomoteurs à cette piste cyclable ?</string>
+    <string name="quest_moped_access_allowed">Il n’y a pas de panneau.</string>
+    <string name="quest_moped_access_designated">Un panneau indique que les cyclomoteurs peuvent emprunter cette piste.</string>
     <string name="quest_moped_access_forbidden">Un panneau interdit les cyclomoteurs.</string>
     <string name="default_disabled_msg_visible_sign_moped">Ce type de quête est désactivé par défaut car l’accès des cyclomoteurs n’est indiqué que par des panneaux spécifiques au début et à la fin d’une piste cyclable.</string>
     <string name="quest_arrow_tutorial">Les flèches de l’illustration indiquent les directions dans lesquelles le chemin est tracé sur la carte à l’emplacement de l’épingle centrale. Essayez de faire pivoter la carte et vous comprendrez.</string>
     <string name="info">Plus d’informations</string>
     <string name="quest_accessible_for_pedestrians_prohibited">C’est interdit.</string>
     <string name="quest_accessible_for_pedestrians_allowed">C’est autorisé.</string>
-    <string name="quest_buildingLevels_hint">Pour les bâtiments en pente, le décompte des niveaux commence à partir du niveau du sol du côté le plus bas.
+    <string name="quest_buildingLevels_hint">Pour les bâtiments construits dans une pente, le décompte des niveaux commence à partir du niveau du sol du côté le plus bas.
 
-Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans le toit. Par conséquent, les toits dont le niveau est nul ne sont pas nécessairement plats, mais ne sont pas assez hauts pour contenir un niveau entier.</string>
-    <string name="quest_parcel_locker_brand">Quelle est la marque de cette consignes automatiques de colis?</string>
+Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans le toit. Par conséquent, les toits sans niveaux ne sont pas nécessairement plats, mais ne sont pas assez hauts pour contenir un niveau entier.</string>
+    <string name="quest_parcel_locker_brand">Quelle est la marque de cette consigne automatique de colis?</string>
     <string name="quest_powerPolesMaterial_is_terminal">La ligne électrique est ancrée au bâtiment</string>
     <string name="quest_cycleway_value_sidewalk_ok">aucun, mais un panneau autorise les cyclistes à circuler sur le trottoir</string>
-    <string name="separate_cycleway_no_signed">Un panneau interdit explicitement le vélo</string>
-    <string name="separate_cycleway_footway_allowed_sign">Voie piétonne, mais un panneau autorise la circulation des cyclistes</string>
+    <string name="separate_cycleway_no_signed">Un panneau interdit explicitement la circulation à vélo</string>
+    <string name="separate_cycleway_footway_allowed_sign">Voie piétonne, mais un panneau autorise la circulation à vélo</string>
     <string name="quest_bicycle_parking_type_floor">Zone dédiée</string>
     <string name="link_osmapp_description">Une carte avec différentes couches, par exemple pour l’escalade ou le ski</string>
     <string name="action_back">Retour</string>
@@ -1351,9 +1343,9 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="about_category_contribute">Contribuer</string>
     <string name="pref_category_quests">Quêtes</string>
     <string name="pref_title_language_select2">Langue</string>
-    <string name="pref_title_resurvey_intervals_summary">A quelle fréquence vous sera demandé de confirmer la véracité d’une information déjà connue.</string>
+    <string name="pref_title_resurvey_intervals_summary">À quelle fréquence il vous sera demandé de confirmer la véracité d’une information déjà connue.</string>
     <string name="questList_disabled_by_default">Désactivé par défaut</string>
-    <string name="action_manage_presets_summary">Sous quel nom est enregistré la sélection de quête ci-dessous.</string>
+    <string name="action_manage_presets_summary">Sous quel nom est enregistrée la sélection de quête ci-dessous.</string>
     <string name="quest_multiselect_hint">Sélectionner tous ceux qui correspondent :</string>
     <string name="quest_barrier_opening_width_gate">Quelle est la largeur de l’ouverture ?</string>
     <string name="bridge">sur le pont</string>
@@ -1366,8 +1358,8 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="quest_leafType_tree_is_just_a_stump">C’est une souche</string>
     <string name="quest_board_name_title">Quel est le titre de ce panneau d’information ?</string>
     <string name="quest_crossing_hint">Un chemin non défini traversant une route :</string>
-    <string name="note_for_object">Quelqu’un d’autre a noté:</string>
-    <string name="quest_bicycle_parking_type_safeloops">Râteliers sécurisés (attaches pour roue et cadre)</string>
+    <string name="note_for_object">Quelqu’un d’autre a noté :</string>
+    <string name="quest_bicycle_parking_type_safeloops">Râteliers sécurisés (soutenant roue et cadre)</string>
     <string name="quest_cycleway_value_sidewalk_ok_dual">aucun, mais un panneau autorise les cyclistes à circuler sur le trottoir, dans les deux sens</string>
     <string name="quest_surface_value_rubber">Granulats de caoutchouc</string>
     <string name="quest_surface_value_acrylic">Résine synthétique</string>
@@ -1375,14 +1367,14 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="action_create_new_poi">Créer un nouveau</string>
     <string name="auth_error">Erreur d’authentification. Essayez de vous connecter à nouveau.</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">En réalité, il y a une voie piétonne.</string>
-    <string name="quest_bicycle_repair_station_services_title">Quel type d’équipements pour vélo disponible ici ?</string>
+    <string name="quest_bicycle_repair_station_services_title">Quels équipements pour vélo sont disponibles ici ?</string>
     <string name="quest_bicycle_repair_station_pump">Pompe</string>
     <string name="quest_bicycle_repair_station_tools">Différents outils</string>
     <string name="quest_bicycle_repair_station_stand">Support de travail</string>
-    <string name="quest_bicycle_repair_station_chain_tool">Réparation de chaines</string>
+    <string name="quest_bicycle_repair_station_chain_tool">Dérive-chaîne</string>
     <string name="quest_boat_rental_title">Quel type de bateaux est en location ici ?</string>
     <string name="quest_boat_rental_motorboat">Bateau à moteur</string>
-    <string name="quest_boat_rental_jetski">Jetski</string>
+    <string name="quest_boat_rental_jetski">Jet Ski</string>
     <string name="quest_boat_rental_sailboat">Voilier</string>
     <string name="quest_boat_rental_pedalboat">Pédalo</string>
     <string name="quest_boat_rental_kayak">Kayak</string>
@@ -1393,15 +1385,15 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="quest_boat_rental_surfboard">Surf</string>
     <string name="quest_boat_rental_sailboard">Planche à voile</string>
     <string name="quest_boat_rental_yacht">Yacht</string>
-    <string name="quest_boat_rental_standup_paddleboard">Paddle debout</string>
-    <string name="quest_powerAttachment_title">Comment cette ligne électrique est attachée ?</string>
+    <string name="quest_boat_rental_standup_paddleboard">Stand up paddle</string>
+    <string name="quest_powerAttachment_title">Comment cette ligne électrique est-elle fixée ?</string>
     <string name="quest_powerAttachment_suspension">Fixée par dessus</string>
     <string name="quest_powerAttachment_anchor">Fixée horizontalement</string>
     <string name="quest_powerAttachment_pin">Fixée par dessous</string>
     <string name="pedestrian_zone_designated">Conçu pour les vélos</string>
     <string name="pedestrian_zone_allowed_sign">Un panneau autorise les vélos ici</string>
-    <string name="pedestrian_zone_no_sign">Aucune indication panticulière concernant les vélos</string>
-    <string name="team_mode_description_overlay_hint">Si vous utilisez des overlays, chacun d’entre vous doit en utiliser un différent, car seules les quêtes sont réparties.</string>
+    <string name="pedestrian_zone_no_sign">Aucune indication particulière concernant les vélos</string>
+    <string name="team_mode_description_overlay_hint">Si vous utilisez des surcouches, chacun d’entre vous doit en utiliser une différente, car seules les quêtes sont réparties.</string>
     <string name="quest_dietType_glutenfree_name_title">Des produits sans gluten sont-ils proposés ici ?</string>
     <string name="quest_dietType_explanation_glutenfree">La préparation de produits sans gluten nécessite des connaissances, car les épices et les sauces courantes peuvent contenir du gluten. Les aliments sans gluten doivent être explicitement étiquetés comme tels.</string>
     <string name="quest_construction_minor_title">Les petits travaux routiers sont-ils terminés ?</string>
@@ -1410,7 +1402,7 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="link_opengeofiction_description">Fatigué de cartographier la réalité ? Créez collaborativement des cartes fictives !</string>
     <string name="link_openclimbing_description">Une carte des endroits de grimpe</string>
     <string name="pref_title_zoom_buttons">Afficher les boutons de zoom</string>
-    <string name="overlay_mtb_scale">Difficulté MTB</string>
+    <string name="overlay_mtb_scale">Difficulté VTT</string>
     <string name="overlay_mtb_scale_0">Niveau 0</string>
     <string name="overlay_mtb_scale_0_description">Surface ferme, adhérente, compact ou naturelle; aucun obstacle; pente douce; virages larges.</string>
     <string name="overlay_mtb_scale_1">Niveau 1</string>
@@ -1425,30 +1417,30 @@ Un niveau compte comme un niveau de toit lorsque ses fenêtres se trouvent dans 
     <string name="overlay_mtb_scale_5_description">Terrain très escarpé et accidenté avec contre-pentes, champs de rochers, glissements de terrain, virages en épingle à cheveux avec obstacles, dénivelés vertigineux et arbres tombés. Impossible de contourner les obstacles avec son vélo; le pilotage est inévitable. Maîtrise du trial requise.</string>
     <string name="overlay_mtb_scale_6">Niveau 6</string>
     <string name="overlay_mtb_scale_6_description">Terrain dangereux et impraticable, non adapté à la pratique du VTT.</string>
-    <string name="default_disabled_overlay_domain_expert">Cette superposition est désactivée par défaut car vous devez être un expert du domaine pour enregistrer ces données.</string>
-    <string name="pref_title_overlays">Sélection de superposition</string>
-    <string name="pref_overlays_reset">Réinitialiser la superposition à la valeur par défaut ?</string>
-    <string name="overlay">Superposition</string>
-    <string name="enable_overlay_confirmation_title">Activer cette superposition ?</string>
+    <string name="default_disabled_overlay_domain_expert">Cette surcouche est désactivée par défaut car vous devez être un spécialiste du sujet pour renseigner correctement ces données.</string>
+    <string name="pref_title_overlays">Sélection des surcouches</string>
+    <string name="pref_overlays_reset">Rétablir les surcouches activées par défaut ?</string>
+    <string name="overlay">Surcouche</string>
+    <string name="enable_overlay_confirmation_title">Activer cette surcouche ?</string>
     <string name="link_transitous_description">Itinéraire de transport public libre, gratuit et open source, indépendant du fournisseur</string>
     <string name="compass">Boussole</string>
     <string name="quest_tracktype_grade2">Plutôt solide</string>
     <string name="quest_tracktype_grade3">Mixte</string>
     <string name="quest_housenumber_multiple_numbers_description2">Vous pouvez saisir des numéros de maison séparés par des virgules.
 Par exemple, 1,3 ou 2b,4,6.</string>
-    <string name="quest_drinking_water_potable_unsigned2">Aucun signe</string>
+    <string name="quest_drinking_water_potable_unsigned2">Aucun panneau</string>
     <string name="or">ou</string>
     <string name="action_copy">Copier</string>
     <string name="quest_stopName_hint">Vous pouvez appliquer le même nom qu’un autre arrêt en cliquant dessus sur la carte.</string>
     <string name="quest_shelter_capacity_title">Combien de personnes peuvent dormir dans ce lieu ?</string>
     <string name="quest_handwashing_title">Est-ce qu’il est possible de se laver les mains à cet endroit ?</string>
     <string name="quest_openingHours_delete">Supprimer</string>
-    <string name="quest_streetName_hint">Vous pouvez appliquer le même nom à une section adjacente en cliquant dessus sur la carte.</string>
+    <string name="quest_streetName_hint">Vous pouvez appliquer le même nom qu'une section adjacente en cliquant dessus sur la carte.</string>
     <string name="quest_streetName_abbreviation_instruction">Les abréviations comme « Bd » doivent être développées.</string>
     <string name="quest_streetName_add_language">Ajouter une langue</string>
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
-    <string name="quest_aerialway_bicycle_title">Ce téléporté peut-il transporter des vélos ?</string>
+    <string name="quest_aerialway_bicycle_title">Cette remontée mécanique accepte-t-elle les vélos ?</string>
     <string name="quest_aerialway_bicycle_summer">Uniquement l’été</string>
     <string name="quest_board_type_rules">Règles</string>
     <string name="quest_firewood_provided_title">Le bois est-il fourni ici ?</string>
@@ -1463,4 +1455,45 @@ Par exemple, 1,3 ou 2b,4,6.</string>
     <string name="quest_recycling_type_pet_bottles">Bouteilles en PET</string>
     <string name="quest_maxweight_add_sign">Ajouter un panneau</string>
     <string name="quest_maxweight_remove_sign">Supprimer un panneau</string>
+    <string name="weekly_osm_new_edition_title">Nouvelle Édition !</string>
+    <string name="pref_title_messages">Messages dans l'application</string>
+    <string name="pref_title_message_achievements">Succès obtenus</string>
+    <string name="pref_title_message_weekly_osm">Nouvelles éditions de weeklyOSM</string>
+    <string name="pref_title_message_changelog">Nouvelles versions de l'application</string>
+    <string name="label_block2">îlot urbain</string>
+    <string name="quest_address_answer_block2">C'est dans un îlot urbain...</string>
+    <string name="quest_address_answer_no_block2">Ce n'est pas dans un îlot urbain...</string>
+    <string name="quest_artwork_title">De quelle sorte d'œuvre d'art s'agit-il?</string>
+    <string name="quest_artwork_sculpture">Sculpture</string>
+    <string name="quest_artwork_statue">Statue</string>
+    <string name="quest_artwork_mural">Peinture murale</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Installation artistique</string>
+    <string name="quest_artwork_bust">Buste</string>
+    <string name="quest_artwork_stone">Rocher</string>
+    <string name="quest_artwork_painting">Peinture</string>
+    <string name="quest_artwork_street_art">Autre type de street art</string>
+    <string name="quest_artwork_architecture">Architecture</string>
+    <string name="quest_artwork_mosaic">Mosaïque</string>
+    <string name="quest_artwork_relief">Relief</string>
+    <string name="quest_artwork_fountain">Fontaine</string>
+    <string name="quest_bothway_title">Dans quelle direction peut-on emprunter ceci ?</string>
+    <string name="quest_camp_tent_title">Peut-on camper ici avec une tente ?</string>
+    <string name="quest_camp_cabin_title">Y a-t-il des bungalows où l'on peut séjourner ici ?</string>
+    <string name="quest_camp_caravan_title">Peut-on camper ici avec un camping-car ou une caravane ?</string>
+    <string name="quest_ferry_bicycle_title">Les vélos sont-ils autorisés sur ce ferry ?</string>
+    <string name="quest_openingHours_add_time">Ajouter un horaire</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">Sélectionner l'heure d'ouverture</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">Sélectionner l'heure de fermeture</string>
+    <string name="quest_openingHours_chooseTimeTitle">Sélectionner l'heure</string>
+    <string name="quest_openingHours_no_fixed_end">Pas d'heure de fermeture fixe</string>
+    <string name="quest_openingHours_from">à partir de %1$s</string>
+    <string name="quest_openingHours_until_late">%1$s jusqu'à tard</string>
+    <string name="quest_collectionTimes_answer_time_spans">Dans un certain créneau horaire...</string>
+    <string name="quest_collectionTimes_answer_time_points">À certaines heures...</string>
+    <string name="quest_shower_hot_water_title">Y a-t-il de l'eau chaude ici ?</string>
+    <string name="calendar_new_event_title">Nouvel évènement OSM près de vous !</string>
+    <string name="pref_title_message_calendar">Nouveaux évènements OSM près de vous</string>
+    <string name="quest_ferry_hgv_title">Ce ferry transporte-t-il des poids lourds ?</string>
+    <string name="quest_leave_new_note_photo_delete">Supprimer</string>
 </resources>

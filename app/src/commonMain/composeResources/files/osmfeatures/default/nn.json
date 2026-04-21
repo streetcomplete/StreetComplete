@@ -20,6 +20,9 @@
         "amenity/telephone": {
           "name": "Telefon"
         },
+        "amenity/townhall": {
+          "name": "Rådhus"
+        },
         "area": {
           "name": "Område"
         },
@@ -34,6 +37,9 @@
         },
         "building": {
           "name": "Bygning"
+        },
+        "building/greenhouse": {
+          "name": "Drivhus"
         },
         "building/school": {
           "name": "Skulebugning"
@@ -70,6 +76,9 @@
         },
         "place/square": {
           "name": "Kvadrat"
+        },
+        "place/town": {
+          "name": "Tettstad"
         },
         "point": {
           "name": "Punkt"

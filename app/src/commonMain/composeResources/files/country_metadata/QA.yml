@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [en]
 advisorySpeedLimitSignStyle: white
 atmOperators: [QNB, Doha Bank, بنك الدوحة, QIB, Commercial Bank of Qatar]
 centerLineStyle: yellow
+chargingStationOperators: [Tesla]
 mobileCountryCode: 427
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

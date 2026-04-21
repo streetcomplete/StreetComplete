@@ -89,7 +89,6 @@
     <string name="quest_surface_value_sett">"Հաստատել"</string>
     <string name="quest_surface_value_wood">"Փայտ"</string>
     <string name="quest_sidewalk_title">"Այս փողոցը մայթ ունի:"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Որտեղ է այս փողոցը:"</string>
     <string name="quest_address_title">"Որն է այս շենքի տան թիվը:"</string>
     <string name="store_listing_short_description">"OpenstreetMap Surveyor ծրագիրը"</string>
     <string name="store_listing_full_description">"Օգնեք բարելավել OpenStreetMap-ը StreetComplete-ի միջոցով:
@@ -156,9 +155,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"Ստուգել եք փողոցի ծայրերը:
 Եթե ​​ամբողջ փողոցի երկայնքով նշաններ չկան, որոնք դիմում են ընդգծված հատվածի համար, կիրառվում են լռելյայն արագության սահմաններ:"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Այո, ոչ մի նշան"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Ներկառուցված տարածքներում ճանապարհները ունեն ավելի ցածր լռելյայն արագության սահման, քան գյուղական ճանապարհները:"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Ներկառուցված տարածք"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Գյուղական"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Եթե ​​գլխավոր փողոցային խաչմերուկում այսպիսի նշան կա, դուք չեք գտնի գոտու ներսում անհատական ​​նշաններ, քանի որ այնտեղ տեղադրված արագության սահմանը տարածվում է ամբողջ գոտի:"</string>
     <string name="quest_sport_softball">"Սափրվել"</string>
     <string name="quest_sport_racquet">"Ռասետբոլ"</string>
@@ -192,7 +188,6 @@
     <string name="credits_contributors_title">"Կոդ ներդրողներ"</string>
     <string name="credits_author_title">"Հեղինակ եւ պահպանող"</string>
     <string name="quest_maxspeed_answer_living_street">"Դա կենդանի փողոց է"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Այսպիսով, այսպիսի նշան կա:"</string>
     <string name="quest_orchard_produce_title">"Ինչ է մշակվում այստեղ:"</string>
     <string name="produce_grapes">"Խաղող"</string>
     <string name="produce_agaves">"Agaves"</string>
@@ -262,7 +257,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"կանոնավոր մակարդակներ (տանիքը չհաշված)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Տարբերվում է շենքում"</string>
     <string name="quest_buildingLevels_answer_description">"Այս դեպքում պարզապես մուտքագրեք բարձրագույն շենքի արժեքները:"</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Այս ճանապարհի ճանապարհներն այստեղ ֆիզիկապես առանձնացված են (I.E. պատնեշի միջոցով): Լռելյայն արագության սահմանը կախված է նրանից, թե արդյոք դա այդպես է, թե ոչ:"</string>
     <string name="about_category_feedback">"Հետադարձ կապ"</string>
     <string name="quest_leave_new_note_photo">"Կցեք լուսանկարը"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Do անկանում եք ջնջել այս նկարը:"</string>
@@ -426,7 +420,6 @@
     <string name="quest_openingHours_no_sign">"Բացման ժամերի բացման նշան չկա"</string>
     <string name="quest_buildingType_sports_centre">"Մարզական կենտրոն"</string>
     <string name="quest_buildingType_toilets">"Զուգարաններ"</string>
-    <string name="quest_maxspeed_sign_question">"Ինչն է սահմանում արագության սահմանը:"</string>
     <string name="quest_segregated_title">"Ինչպես են դրված եզրափակումն ու ցիկլը այստեղ:"</string>
     <string name="dialog_tutorial_upload">"Ձեր փոփոխությունները ձեռքով վերբեռնելու համար օգտագործեք կոճակը գործիքագոտում, որը նման է այսպիսին:"</string>
     <string name="quest_segregated_separated">"Առանձնացված միմյանցից"</string>
@@ -661,7 +654,6 @@
     <string name="at_housenumber">"Տան համարը %s"</string>
     <string name="quest_openingHours_add_off_days">"Ավելացնել օրեր"</string>
     <string name="quest_openingHours_off_day">"Անշարժ"</string>
-    <string name="quest_openingHours_unspecified_range">"Նշված չէ"</string>
     <string name="quest_cycleway_resurvey_title">"Սա դեռ այստեղ ցիկլի ճանապարհի իրավիճակն է:"</string>
     <string name="pref_title_resurvey_intervals">"Վերականգնել ընդմիջումներով"</string>
     <string name="resurvey_intervals_less_often">"Ավելի քիչ հարցրեք"</string>

@@ -31,6 +31,10 @@
           "terms": "skrzynka plakatowa,citylight,skrzynka reklamowa",
           "aliases": "Citylight"
         },
+        "advertising/sign": {
+          "name": "Znak reklamowy",
+          "terms": "znak reklamowy,logo"
+        },
         "advertising/totem": {
           "name": "Totem reklamowy",
           "terms": "totem,totem reklamowy,stacja paliw,stacja benzynowa"
@@ -371,9 +375,6 @@
           "name": "Sąd",
           "terms": "sąd,sprawiedliwość,trybunał"
         },
-        "amenity/coworking_space": {
-          "name": "Przestrzeń coworkingowa"
-        },
         "amenity/crematorium": {
           "name": "Krematorium",
           "terms": "krematorium,spopielarnia"
@@ -671,6 +672,10 @@
         "amenity/karaoke_box": {
           "name": "Budka karaoke",
           "terms": "budka karaoke,pokój karaoke,klub karaoke"
+        },
+        "amenity/kitchen": {
+          "name": "Kuchnia",
+          "terms": "kuchnia,wspólna kuchnia"
         },
         "amenity/kneipp_water_cure": {
           "name": "Basen Kneippa",
@@ -1338,6 +1343,10 @@
           "name": "Waga samochodowa",
           "terms": "waga samochodowa,waga dla pojazdów"
         },
+        "animal/horse_walker": {
+          "name": "Karuzela dla koni",
+          "terms": "karuzela dla koni"
+        },
         "area": {
           "name": "Obszar",
           "terms": "obszar,obręb,powierzchnia"
@@ -1717,7 +1726,7 @@
           "terms": "dom studencki,akademik,bursa,internat,student"
         },
         "building/entrance": {
-          "name": "Wejście/Wyjście"
+          "name": "Wejście / Wyjście"
         },
         "building/farm": {
           "name": "Dom mieszkalny gospodarstwa rolnego",
@@ -3483,6 +3492,10 @@
           "name": "Boisko do siatkówki plażowej",
           "terms": "boisko do siatkówki plażowej,siatkówka plażowa"
         },
+        "leisure/pitch/biathlon": {
+          "name": "Strzelnica biatlonowa",
+          "terms": "strzelnica biatlonowa"
+        },
         "leisure/pitch/boules": {
           "name": "Bulodrom",
           "terms": "bulodrom,boisko do gry w bule,boisko do pétanque,bule,petanka",
@@ -4195,6 +4208,10 @@
         "natural/arch": {
           "name": "Most skalny",
           "terms": "most skalny,łuk skalny"
+        },
+        "natural/arete": {
+          "name": "Grań",
+          "terms": "grań"
         },
         "natural/bare_rock": {
           "name": "Odkryte skały",
@@ -4997,10 +5014,6 @@
           "name": "Elektrownia wodna",
           "terms": "elektrownia wodna,hydroelektrownia przepływowa,zapora wodna,elektrownia szczytowo-pompowa"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Farma fotowoltaiczna",
-          "terms": "farma fotowoltaiczna"
-        },
         "power/plant/source/nuclear": {
           "name": "Elektrownia jądrowa",
           "terms": "elektrownia jądrowa,elektrownia atomowa,reaktor jądrowy"
@@ -5427,7 +5440,7 @@
           "terms": "sklep z artykułami dla dzieci i niemowląt,akcesoria dla dzieci i niemowląt,sklep dziecięcy,artykuły dziecięce,wózki dziecięce,dzieci"
         },
         "shop/bag": {
-          "name": "Sklep z torebkami/walizkami",
+          "name": "Sklep z torebkami / walizkami",
           "terms": "sklep z torebkami,sklep z walizkami,torebki,torby,walizki,galanteria"
         },
         "shop/bakery": {
@@ -5456,8 +5469,8 @@
           "terms": "solarium"
         },
         "shop/bed": {
-          "name": "Sklep z łóżkami/materacami",
-          "terms": "sklep z łóżkami/materacami,łóżka,materace,pościel,poduszki,sypialnia,sypialnie"
+          "name": "Sklep z łóżkami / materacami",
+          "terms": "sklep z łóżkami,sklep z materacami,łóżka,materace,pościel,poduszki,sypialnia,sypialnie"
         },
         "shop/beverages": {
           "name": "Sklep z napojami",

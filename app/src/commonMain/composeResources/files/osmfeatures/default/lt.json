@@ -54,9 +54,6 @@
           "name": "Baras",
           "terms": "baras,aludė"
         },
-        "amenity/bbq": {
-          "name": "Barbekiu/Grilis"
-        },
         "amenity/bench": {
           "name": "Suolas",
           "terms": "suoliukas,suolas"
@@ -425,9 +422,6 @@
         "building/dormitory": {
           "name": "Bendrabutis",
           "terms": "bendrabutis"
-        },
-        "building/entrance": {
-          "name": "Įėjimas/Išėjimas"
         },
         "building/farm": {
           "name": "Fermos namas"
@@ -806,9 +800,6 @@
         },
         "highway/turning_circle": {
           "name": "Apsisukimo žiedas"
-        },
-        "highway/unclassified": {
-          "name": "Mažas/Neklasifikuotas Kelias"
         },
         "historic": {
           "name": "Istorinė vietovė",
@@ -1404,9 +1395,6 @@
         "shop/baby_goods": {
           "name": "Vaikų prekių parduotuvė"
         },
-        "shop/bag": {
-          "name": "Kuprinių/lagaminų parduotuvė"
-        },
         "shop/bakery": {
           "name": "Kepykla",
           "terms": "kepykla"
@@ -1630,9 +1618,6 @@
         },
         "shop/pyrotechnics": {
           "name": "Fejerverkų parduotuvė"
-        },
-        "shop/radiotechnics": {
-          "name": "Radijo/elektroninių dalių parduotuvė"
         },
         "shop/religion": {
           "name": "Religinė parduotuvė"

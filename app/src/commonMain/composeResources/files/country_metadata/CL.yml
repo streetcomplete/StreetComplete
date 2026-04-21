@@ -1,7 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Banco Estado, Banco Santander, Banco de Chile, BCI, Banco Falabella, Itaú Corpbanca, Santander, Scotiabank, BancoEstado, Redbanc, Caja Vecina, Shitcoins.club, REDBANC, Citibank, Banco Internacional, Banco Estado / Caja Vecina, BBVA]
 centerLineStyle: white
-chargingStationOperators: [Enel X, Copec, CGE, Shell, Tesla, Enel, Copec Voltex]
+chargingStationOperators: [Enel X, Copec, CGE, Shell, Copec Voltex, Tesla, Enel]
 defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 730
 noEntrySignStyle: arrow

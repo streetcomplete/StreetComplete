@@ -8,27 +8,27 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "63.0"
-val appVersionCode = 6302
+val appVersionName = "63.1"
+val appVersionCode = 6303
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
-    "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
-    "en", "en-AU", "en-GB", "eo", "es", "es-AR", "et", "eu",
-    "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
-    "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
-    "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
+    "ar", "ast", "be", "bg", "bs", "ca", "cs", "cy", "da", "de", "el",
+    "en", "en-AU", "en-CA", "en-GB", "eo", "es", "es-AR", "et", "eu",
+    "fa", "fi", "fr", "ga", "gl", "he", "hr", "hu", "hy",
+    "id", "it", "ja", "ko", "kw", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
+    "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk", "vi",
     "zh", "zh-CN", "zh-HK", "zh-TW"
 )
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v6.14.0"
+val presetsVersion = "v6.16.0"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
  *  */
-val nsiVersion = "7.0.20260126"
+val nsiVersion = "7.0.20260414"
 
 /** Project ID of the crowdsource translation platform (from where to pull translations from) */
 val poEditorProjectId = "97843"
@@ -334,7 +334,7 @@ compose {
 }
 
 dependencies {
-    debugImplementation("org.jetbrains.compose.ui:ui-tooling:1.10.0")
+    debugImplementation("org.jetbrains.compose.ui:ui-tooling:1.10.3")
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }

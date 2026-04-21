@@ -29,6 +29,10 @@
           "name": "Soporte para carteles",
           "terms": "póster,cartel,afiche,soporte,caja"
         },
+        "advertising/sign": {
+          "name": "Señal publicitaria",
+          "terms": "señal publicitaria,cartel publicitario,anuncio publicitario"
+        },
         "advertising/totem": {
           "name": "Tótem publicitario",
           "terms": "tótem,totem,publicidad"
@@ -187,8 +191,8 @@
           "terms": "bar gay,bar lésbico,bar lesbico,bar lgbtq,bar lgbt,bar lgb"
         },
         "amenity/bbq": {
-          "name": "Parrilla",
-          "terms": "barbacoa,asador,parrilla,asado,parrillada,carne asada"
+          "name": "Parrilla / asador",
+          "terms": "parrilla,asador,barbacoa"
         },
         "amenity/bench": {
           "name": "Banco / Asiento",
@@ -286,8 +290,8 @@
           "terms": "recarga,electricidad,eléctrico,electrico,estación de carga para vehículo eléctrico,punto de recarga,electrolinera"
         },
         "amenity/childcare": {
-          "name": "Guardería/Cuidado de niños",
-          "terms": "bebés,bebes,niños,niñas,infantil,guardería,cuidado,guardería infantil,cuidado infantil"
+          "name": "Guardería / Cuidado infantil",
+          "terms": "guardería,jardín infantil,centro de cuidado infantil"
         },
         "amenity/cinema": {
           "name": "Cine",
@@ -369,9 +373,6 @@
           "name": "Juzgado",
           "terms": "palacio de justicia,juzgado,corte judicial,corte,oficina judicial,tribunal,magistratura,judicatura,audiencia,justicia"
         },
-        "amenity/coworking_space": {
-          "name": "Espacio de trabajo compartido"
-        },
         "amenity/crematorium": {
           "name": "Crematorio",
           "terms": "cremación,cenizas de huesos,cementerio,horno crematorio,incineración,incinerar restos,incinerador,horno,funeral"
@@ -417,8 +418,8 @@
           "terms": "médico de atención primaria,médico de familia,médico de cabecera,médico primario"
         },
         "amenity/doctors/gynaecology": {
-          "name": "Obstetra / ginecólogo",
-          "terms": "ginecólogo,ginecóloga,ginecología,gine,obstetricia,ovulación,ovarios,reproductivo,reproductor"
+          "name": "Obstetra / Ginecólogo",
+          "terms": "obstetra,ginecólogo,médico obstetra,médico ginecólogo"
         },
         "amenity/doctors/haematology": {
           "name": "Hematólogo",
@@ -664,6 +665,10 @@
         "amenity/karaoke_box": {
           "name": "Karaoke Box",
           "terms": "club de karaoke,sala de karaoke,televisión de karaoke,ktv,karaoke"
+        },
+        "amenity/kitchen": {
+          "name": "Cocina comunitaria",
+          "terms": "cocina comunitaria,cocina compartida,cocina común"
         },
         "amenity/kneipp_water_cure": {
           "name": "Instalación Kneipp",
@@ -1323,6 +1328,10 @@
           "name": "Báscula de camiones",
           "terms": "estación de pesaje,báscula"
         },
+        "animal/horse_walker": {
+          "name": "Caminador para caballos",
+          "terms": "caminador para caballos,andador para caballos,caminador ecuestre"
+        },
         "area": {
           "name": "Área",
           "terms": "superficie,extensión,espacio,zona,sector,campo,dominio,territorio,tierra,parcela,terreno"
@@ -1693,7 +1702,7 @@
           "terms": "dormitorio,residencia universitaria,dormitorio universitario"
         },
         "building/entrance": {
-          "name": "Entrada/Salida"
+          "name": "Entrada / Salida"
         },
         "building/farm": {
           "name": "Casa rural",
@@ -2819,8 +2828,8 @@
           "terms": "bucle de giro,cul-de-sac,cul de sac,calle sin salida,callejón sin salida"
         },
         "highway/unclassified": {
-          "name": "Carretera menor",
-          "terms": "carretera menor,carretera sin clasificar,carretera,camino,sendero,vía,menor,no clasificada,sin clasificación"
+          "name": "Carretera menor / Sin clasificar",
+          "terms": "vía menor,carretera secundaria menor,vía sin clasificar"
         },
         "historic": {
           "name": "Lugar histórico",
@@ -3393,8 +3402,8 @@
           "terms": "anillo de lanzamiento de martillo,círculo de lanzamiento de martillo,zona de lanzamiento de martillo,sector de lanzamiento de martillo"
         },
         "leisure/pitch/athletics/high_jump": {
-          "name": "Campo de salto de altura",
-          "terms": "pista de salto de altura,recinto de salto de altura"
+          "name": "Área de salto alto",
+          "terms": "zona de salto alto,área de salto alto,sector de salto alto"
         },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "Sector de jabalina",
@@ -3436,9 +3445,13 @@
           "name": "Cancha de voleibol de playa",
           "terms": "voleibol,vóleibol,volibol,vólibol,balonvolea,vóley,voley,pelota,playa,playero"
         },
+        "leisure/pitch/biathlon": {
+          "name": "Campo de biatlón",
+          "terms": "campo de biatlón,pista de biatlón,polígono de biatlón"
+        },
         "leisure/pitch/boules": {
-          "name": "Cancha de bolos / bochas",
-          "terms": "bolera,bochas,bolos,cancha"
+          "name": "Cancha de bochas / petanca",
+          "terms": "cancha de bochas,cancha de petanca,pista de bochas"
         },
         "leisure/pitch/bowls": {
           "name": "Campo de bolos",
@@ -4130,6 +4143,10 @@
           "name": "Arco natural",
           "terms": "arco natural,puente de roca,formación rocosa arqueada."
         },
+        "natural/arete": {
+          "name": "Arista",
+          "terms": "arista,cresta,filo"
+        },
         "natural/bare_rock": {
           "name": "Roca desnuda",
           "terms": "roca,roca desnuda,roca descubierta,costa rocosa,montaña"
@@ -4724,7 +4741,8 @@
           "terms": "población,aldea,pueblo,poblado"
         },
         "playground": {
-          "name": "Equipo del patio de juegos"
+          "name": "Equipo del patio de juegos",
+          "terms": "equipo de juegos infantiles,juegos de plaza,equipamiento de parque infantil"
         },
         "playground/activitypanel": {
           "name": "Panel de actividades para jugar",
@@ -4924,10 +4942,6 @@
           "name": "Estación de energía hidroeléctrica",
           "terms": "represa,presa,central eléctrica,central electrica,escurrimiento del río,marea,turbina de agua"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Granja solar",
-          "terms": "central fotovoltaica,paneles solares,parque solar,granja solar,solar a gran escala"
-        },
         "power/plant/source/nuclear": {
           "name": "Planta de energía nuclear",
           "terms": "atómica,fisión,fision,central eléctrica,central electrica,reactor nuclear"
@@ -4939,6 +4953,10 @@
         "power/plant/source/solar": {
           "name": "Planta de energía solar",
           "terms": "planta,energía,solar"
+        },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "Parque solar",
+          "terms": "parque solar,planta solar,granja solar"
         },
         "power/plant/source/waste": {
           "name": "Planta de energía de incineración de residuos",
@@ -5354,7 +5372,7 @@
         },
         "shop/bag": {
           "name": "Tienda de bolsos / equipaje",
-          "terms": "cartera,billetera,monedero,equipaje,maleta,valija,mochila,equipajes,maletas,bolsos"
+          "terms": "tienda de bolsos,tienda de equipaje,tienda de maletas,tienda de valijas"
         },
         "shop/bakery": {
           "name": "Panadería",
@@ -5381,8 +5399,8 @@
           "terms": "cama solar,salón de bronceo,rayos uva,rayos ultravioleta,centro de bronceado"
         },
         "shop/bed": {
-          "name": "Tienda de ropa de cama / Colchonería",
-          "terms": "almohada,sábanas,cama,colchón,ropa de cama"
+          "name": "Tienda de ropa de cama / colchones",
+          "terms": "tienda de ropa de cama,tienda de colchones,colchonería"
         },
         "shop/beverages": {
           "name": "Tienda de bebidas",
@@ -5865,6 +5883,10 @@
           "name": "Tienda de fotografía",
           "terms": "fotografía,fotógrafo,cámara,retratista,revelado,film,rollo,impresión,fotos"
         },
+        "shop/piercing": {
+          "name": "Estudio de piercings",
+          "terms": "estudio de piercings,estudio de perforaciones,local de piercings"
+        },
         "shop/pottery": {
           "name": "Tienda de alfarería",
           "terms": "cerámica,florero,vasija,maceta"
@@ -5882,8 +5904,8 @@
           "terms": "fuegos artificiales,pirotecnia"
         },
         "shop/radiotechnics": {
-          "name": "Tienda de componentes radio electrónicos",
-          "terms": "electrónica,radio,componentes,radioelectrónica"
+          "name": "Tienda de radios / componentes electrónicos",
+          "terms": "tienda de radios,tienda de componentes electrónicos,tienda de electrónica"
         },
         "shop/religion": {
           "name": "Tienda religiosa",
@@ -6034,8 +6056,8 @@
           "terms": "agua,potable,bebible"
         },
         "shop/water_sports": {
-          "name": "Tienda de deporte acuático / natación",
-          "terms": "acuático,natación,goggles,lentes natación,bañador,bikini"
+          "name": "Tienda de deportes acuáticos / natación",
+          "terms": "tienda de deportes acuáticos,tienda de natación,tienda de artículos de natación"
         },
         "shop/weapons": {
           "name": "Armería",
@@ -6433,8 +6455,8 @@
           "terms": "ruta,tubería,gasoducto,oleoducto,conducto,cañería,ducto"
         },
         "type/route/piste": {
-          "name": "Ruta de pista / esquí",
-          "terms": "pista,ruta,esquí,esqui,ski,esquiar"
+          "name": "Pista / Ruta de esquí",
+          "terms": "pista de esquí,ruta de esquí,pista de nieve"
         },
         "type/route/power": {
           "name": "Ruta de red elécrica",

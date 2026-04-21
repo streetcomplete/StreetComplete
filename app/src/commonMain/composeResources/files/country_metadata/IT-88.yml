@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [sc]
 atmOperators: [Poste Italiane, Banco di Sardegna, Euronet, UniCredit Bank, Bancomat]
-chargingStationOperators: [Enel X, Repower, Enel, GaraGeeks, DriWe, evWay, 'Tesla, Inc.', Enel X Way, ChargePoint]
+chargingStationOperators: [Enel X, Repower, Enel, GaraGeeks, Enel X Way, DriWe, evWay, Tesla, ChargePoint]
 parcelLockerBrand: [Amazon Locker]

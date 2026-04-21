@@ -62,9 +62,6 @@
         "amenity/bar": {
           "name": "Bārs"
         },
-        "amenity/bbq": {
-          "name": "Barbekjū/Grills"
-        },
         "amenity/bench": {
           "name": "Sols"
         },
@@ -106,9 +103,6 @@
         "amenity/charging_station": {
           "name": "Uzlādes stacija",
           "terms": "elektriskā,uzlāde,elektroauto,superlāde,zemsprieguma uzlāde"
-        },
-        "amenity/childcare": {
-          "name": "Bērnistaba / Bērnu aprūpe"
         },
         "amenity/cinema": {
           "name": "Kino",
@@ -591,9 +585,6 @@
         "building/dormitory": {
           "name": "Kopmītnes"
         },
-        "building/entrance": {
-          "name": "Ieeja/Izeja"
-        },
         "building/farm_auxiliary": {
           "name": "Fermas Ēka"
         },
@@ -1019,9 +1010,6 @@
         },
         "highway/turning_circle": {
           "name": "Apgriešanās riņķis"
-        },
-        "highway/unclassified": {
-          "name": "Mazs/Neklasificēts ceļš"
         },
         "historic": {
           "name": "Vēsturiska vieta"
@@ -1677,9 +1665,6 @@
         "shop/art": {
           "name": "Mākslas veikals"
         },
-        "shop/bag": {
-          "name": "Somu/Bagāžas veikals"
-        },
         "shop/bakery": {
           "name": "Konditoreja"
         },
@@ -1692,10 +1677,6 @@
         "shop/beauty/tanning": {
           "name": "Solārija Salons",
           "terms": "solārija,solārijs"
-        },
-        "shop/bed": {
-          "name": "Gultasveļas / Matraču veikals",
-          "terms": "gultas preces,gulta"
         },
         "shop/beverages": {
           "name": "Dzērienu veikals"
@@ -1887,9 +1868,6 @@
         },
         "shop/photo": {
           "name": "Fotogrāfijas veikals"
-        },
-        "shop/radiotechnics": {
-          "name": "Radio / Elektronisko komponenšu veikals"
         },
         "shop/shoes": {
           "name": "Apavu veikals"

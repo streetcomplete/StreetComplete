@@ -62,9 +62,6 @@
         "amenity/charging_station": {
           "name": "Benzinărie"
         },
-        "amenity/childcare": {
-          "name": "Grădiniță"
-        },
         "amenity/cinema": {
           "name": "Cinema"
         },
@@ -344,9 +341,6 @@
         "building/dormitory": {
           "name": "Dormitoriu"
         },
-        "building/entrance": {
-          "name": "Intrare/Ieșire"
-        },
         "building/farm": {
           "name": "Casă la fermă"
         },
@@ -586,9 +580,6 @@
         },
         "highway/turning_circle": {
           "name": "Cerc de Cotitură"
-        },
-        "highway/unclassified": {
-          "name": "Stradă Minoră/Neclasificată"
         },
         "historic": {
           "name": "Sit Istoric"
@@ -1077,9 +1068,6 @@
         "shop/baby_goods": {
           "name": "Magazin de Produse pentru Bebeluși"
         },
-        "shop/bag": {
-          "name": "Magazin de Bagaje"
-        },
         "shop/bakery": {
           "name": "Brutărie"
         },
@@ -1094,9 +1082,6 @@
         },
         "shop/beauty/tanning": {
           "name": "Salon de Bronzat"
-        },
-        "shop/bed": {
-          "name": "Magazin de Saltele"
         },
         "shop/beverages": {
           "name": "Magazin de Băuturi"

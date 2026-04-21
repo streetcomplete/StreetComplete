@@ -104,10 +104,6 @@
           "name": "Bar",
           "terms": "bife,kava,pivnica"
         },
-        "amenity/bbq": {
-          "name": "Okrepčevalnica",
-          "terms": "bife,okrepčevalnica,grill,jedi z žara"
-        },
         "amenity/bench": {
           "name": "Klop",
           "terms": "klopca,sedišče"
@@ -155,10 +151,6 @@
           "name": "Polnilna postaja",
           "terms": "polnilnica,elektro,črpalka,polnilni terminal"
         },
-        "amenity/childcare": {
-          "name": "Jasli / Vrtec",
-          "terms": "jaslice,otroški vrtec,ciciban"
-        },
         "amenity/cinema": {
           "name": "Kino",
           "terms": "kinematograf,kino dvorana"
@@ -181,9 +173,6 @@
         "amenity/courthouse": {
           "name": "Sodišče",
           "terms": "sodnija,sodna palača"
-        },
-        "amenity/coworking_space": {
-          "name": "Prostor za sodelanje"
         },
         "amenity/crematorium": {
           "name": "Krematorij",
@@ -582,9 +571,6 @@
         "building/dormitory": {
           "name": "Študentski/Dijaški dom",
           "terms": "študentski dom,dijaški dom"
-        },
-        "building/entrance": {
-          "name": "Vhod/Izhod"
         },
         "building/garage": {
           "name": "Garaža",
@@ -1082,9 +1068,6 @@
         "highway/turning_loop": {
           "name": "Obračališče (otok)",
           "terms": "obračališče (otok),obračalni krog,obračalni otok"
-        },
-        "highway/unclassified": {
-          "name": "Ožja/Neopredeljena cestna povezava"
         },
         "historic": {
           "name": "Zgodovinska znamenitost",
@@ -1865,9 +1848,6 @@
           "name": "Trgovina za otroke",
           "terms": "babycenter,dojenčki,otroci,igrače"
         },
-        "shop/bag": {
-          "name": "Trgovina za prtljago"
-        },
         "shop/bakery": {
           "name": "Pekarna",
           "terms": "pekarija,pek,kruh,pecivo,hrana"
@@ -1881,9 +1861,6 @@
         },
         "shop/beauty/tanning": {
           "name": "Solarij"
-        },
-        "shop/bed": {
-          "name": "Trgovina s posteljnino in žimnicami"
         },
         "shop/beverages": {
           "name": "Trgovina s pijačami",
@@ -2107,9 +2084,6 @@
         "shop/photo": {
           "name": "Foto trgovina",
           "terms": "foto delavnica,prodajalna fotografske opreme"
-        },
-        "shop/radiotechnics": {
-          "name": "Trgovina z elektroniko"
         },
         "shop/scuba_diving": {
           "name": "Trgovina s potapljaško opremo"

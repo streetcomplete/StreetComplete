@@ -110,7 +110,6 @@ Namun, sebelum perubahan kamu diunggah, aplikasi diperiksa dengan &lt;a href="ht
     <string name="quest_surface_value_sett">Berangkal</string>
     <string name="quest_surface_value_wood">Kayu</string>
     <string name="quest_sidewalk_title">Apa jalan ini memiliki trotoar?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Jalan ini ada di mana?</string>
     <string name="quest_address_title">Nomor berapa bangunan ini?</string>
     <string name="store_listing_short_description">Aplikasi surveyor OpenStreetMap</string>
     <string name="store_listing_full_description">Bantu sempurnakan OpenStreetMap dengan StreetComplete!
@@ -177,9 +176,6 @@ Informasi yang dimasukkan langsung ditambahkan ke OpenStreetMap atas namamu, tan
     <string name="quest_maxspeed_answer_noSign_confirmation">Apa kamu sudah memeriksa ujung jalan?
 Jika tidak ada tanda di sepanjang jalan yang berlaku untuk bagian yang disorot, batas kecepatan standar berlaku.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Ya, tanpa rambu</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Jalan yang dibangun di area padat bangunan batas kecepatannya lebih rendah dibandingkan jalan pedesaan.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Area padat bangunan (kota)</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Pedesaan</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Jika ada tanda seperti ini di persimpangan jalan utama, kamu tidak akan menemukan rambu satuan di daerah ini karena batas kecepatan itu dipakai untuk seluruh daerah tersebut.</string>
     <string name="quest_sport_softball">Sofbal</string>
     <string name="quest_sport_racquet">Bola raket</string>
@@ -213,7 +209,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="credits_contributors_title">Kontributor kode</string>
     <string name="credits_author_title">Pencipta dan pemelihara</string>
     <string name="quest_maxspeed_answer_living_street">Ini adalah jalan tinggal</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Jadi, ada rambu seperti ini?</string>
     <string name="quest_orchard_produce_title">Apa yang dibudidayakan di sini?</string>
     <string name="produce_grapes">Anggur</string>
     <string name="produce_agaves">Agave</string>
@@ -285,7 +280,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="quest_buildingLevels_levelsLabel2">Jumlah lantai (atap tidak dihitung)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Beda tiap bagian bangunan</string>
     <string name="quest_buildingLevels_answer_description">Kalau begitu, cukup masukkan nilai lantai paling tinggi.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Apakah masing-masing arah pada jalan ini dipisahkan pembatas fisik atau rumput? Batas kecepatan bawaan bergantung pada ini.</string>
     <string name="about_category_feedback">Umpan balik</string>
     <string name="quest_leave_new_note_photo">Lampirkan foto</string>
     <string name="quest_leave_new_note_photo_delete_title">Hapus gambar ini?</string>
@@ -450,7 +444,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_openingHours_no_sign">Tidak ada tanda jam buka</string>
     <string name="quest_buildingType_sports_centre">Pusat olahraga</string>
     <string name="quest_buildingType_toilets">Toilet</string>
-    <string name="quest_maxspeed_sign_question">Apa yang menandai batas kecepatan?</string>
     <string name="quest_segregated_title">Bagaimana trotoar dan jalan sepeda ditata di sini?</string>
     <string name="dialog_tutorial_upload">Untuk mengunggah perubahanmu scr manual, gunakan tombol di toolbar yang terlihat seperti ini.</string>
     <string name="quest_segregated_separated">Terpisah dari yang lain</string>
@@ -684,7 +677,6 @@ Data ini tidak hanya berguna untuk pengirim pos tapi juga untuk sistem navigasi 
     <string name="at_housenumber">nomor rumah %1$s</string>
     <string name="quest_openingHours_add_off_days">Tambahkan hari libur</string>
     <string name="quest_openingHours_off_day">Hari libur</string>
-    <string name="quest_openingHours_unspecified_range">Tidak ditetapkan</string>
     <string name="quest_cycleway_resurvey_title">Apakah situasi bersepeda masih seperti ini di sini?</string>
     <string name="pref_title_resurvey_intervals">Interval survei ulang</string>
     <string name="resurvey_intervals_less_often">Tanyakan lebih jarang</string>

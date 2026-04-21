@@ -40,6 +40,13 @@
     "tags": {},
     "matchScore": 0.1
   },
+  "playground": {
+    "icon": "maki-playground",
+    "geometry": ["point", "vertex", "line", "area"],
+    "tags": {
+      "playground": "*"
+    }
+  },
   "office": {
     "icon": "maki-suitcase",
     "geometry": ["point", "vertex", "area"],
@@ -213,14 +220,6 @@
     },
     "searchable": false
   },
-  "playground": {
-    "icon": "maki-playground",
-    "geometry": ["point", "vertex", "line", "area"],
-    "tags": {
-      "playground": "*"
-    },
-    "searchable": false
-  },
   "place": {
     "geometry": ["point", "vertex", "area"],
     "tags": {
@@ -363,7 +362,7 @@
     }
   },
   "waterway/waterfall": {
-    "icon": "maki-waterfall",
+    "icon": "roentgen-waterfall",
     "geometry": ["vertex"],
     "tags": {
       "waterway": "waterfall"
@@ -997,7 +996,7 @@
     }
   },
   "tourism/viewpoint": {
-    "icon": "temaki-spotting_scope",
+    "icon": "temaki-viewpoint",
     "geometry": ["point", "vertex", "area"],
     "tags": {
       "tourism": "viewpoint"
@@ -1328,7 +1327,7 @@
     }
   },
   "shop/wigs": {
-    "icon": "maki-shop",
+    "icon": "roentgen-wig_on_stand",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "wigs"
@@ -1552,7 +1551,7 @@
     }
   },
   "shop/second_hand": {
-    "icon": "maki-shop",
+    "icon": "fas-hand-holding-hand",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "second_hand"
@@ -1635,6 +1634,13 @@
       "shop": "pottery"
     }
   },
+  "shop/piercing": {
+    "tags": {
+      "shop": "piercing"
+    },
+    "geometry": ["point", "area"],
+    "icon": "roentgen-circle_empty"
+  },
   "shop/photo": {
     "icon": "fas-camera-retro",
     "geometry": ["point", "area"],
@@ -1699,7 +1705,7 @@
     }
   },
   "shop/outpost": {
-    "icon": "maki-shop",
+    "icon": "fas-box-open",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "outpost"
@@ -1723,7 +1729,7 @@
     "tags": {
       "shop": "nuts"
     },
-    "icon": "maki-shop",
+    "icon": "roentgen-hazelnut_with_leaves",
     "geometry": ["point", "area"]
   },
   "shop/nutrition_supplements": {
@@ -1909,7 +1915,7 @@
     }
   },
   "shop/honey": {
-    "icon": "maki-shop",
+    "icon": "fas-jar",
     "geometry": ["point", "area"],
     "tags": {
       "shop": "honey"
@@ -3625,7 +3631,7 @@
       "plant:output:electricity": "*"
     }
   },
-  "power/plant/source/method/photovoltaic": {
+  "power/plant/source/solar/photovoltaic": {
     "icon": "fas-solar-panel",
     "geometry": ["area"],
     "tags": {
@@ -3766,7 +3772,7 @@
     }
   },
   "playground/tunnel_tube": {
-    "icon": "maki-playground",
+    "icon": "maki-tunnel",
     "geometry": ["point", "line", "area"],
     "tags": {
       "playground": "tunnel_tube"
@@ -4309,7 +4315,7 @@
     }
   },
   "office/guide": {
-    "icon": "maki-suitcase",
+    "icon": "temaki-briefcase_info",
     "geometry": ["point", "area"],
     "tags": {
       "office": "guide"
@@ -4400,7 +4406,7 @@
     }
   },
   "office/coworking": {
-    "icon": "maki-suitcase",
+    "icon": "fas-users",
     "geometry": ["point", "area"],
     "tags": {
       "office": "coworking"
@@ -4718,6 +4724,7 @@
     }
   },
   "natural/mud": {
+    "icon": "fas-water",
     "geometry": ["area"],
     "tags": {
       "natural": "mud"
@@ -4752,7 +4759,7 @@
     }
   },
   "natural/geyser": {
-    "icon": "maki-water",
+    "icon": "temaki-geyser_from_ground",
     "geometry": ["point"],
     "tags": {
       "natural": "geyser"
@@ -4811,6 +4818,13 @@
     "geometry": ["area"],
     "tags": {
       "natural": "bare_rock"
+    }
+  },
+  "natural/arete": {
+    "icon": "temaki-mountain_range",
+    "geometry": ["line"],
+    "tags": {
+      "natural": "arete"
     }
   },
   "natural/arch": {
@@ -5079,10 +5093,6 @@
     "geometry": ["point", "area"],
     "tags": {
       "military": "bunker"
-    },
-    "addTags": {
-      "building": "bunker",
-      "military": "bunker"
     }
   },
   "marker/utility": {
@@ -5208,7 +5218,7 @@
     }
   },
   "man_made/tailings_pond": {
-    "icon": "maki-water",
+    "icon": "roentgen-water_from_pipe",
     "geometry": ["area"],
     "tags": {
       "man_made": "tailings_pond"
@@ -5264,7 +5274,7 @@
     }
   },
   "man_made/reservoir_covered": {
-    "icon": "maki-water",
+    "icon": "fas-house-flood-water",
     "geometry": ["area", "point"],
     "tags": {
       "man_made": "reservoir_covered"
@@ -5672,7 +5682,7 @@
     }
   },
   "man_made/telescope/radio": {
-    "icon": "roentgen-telescope-radio",
+    "icon": "roentgen-telescope_radio",
     "geometry": ["point", "area"],
     "tags": {
       "man_made": "telescope",
@@ -6433,6 +6443,7 @@
     }
   },
   "leisure/pitch/table_soccer": {
+    "icon": "temaki-table_soccer",
     "geometry": ["area", "point"],
     "tags": {
       "leisure": "pitch",
@@ -6496,7 +6507,7 @@
     }
   },
   "leisure/pitch/pickleball": {
-    "icon": "maki-tennis",
+    "icon": "temaki-pickleball",
     "geometry": ["area", "point"],
     "tags": {
       "leisure": "pitch",
@@ -6621,6 +6632,14 @@
     "tags": {
       "leisure": "pitch",
       "sport": "boules"
+    }
+  },
+  "leisure/pitch/biathlon": {
+    "icon": "fas-crosshairs",
+    "geometry": ["area", "point"],
+    "tags": {
+      "leisure": "pitch",
+      "sport": "biathlon"
     }
   },
   "leisure/pitch/beachvolleyball": {
@@ -6827,7 +6846,7 @@
     }
   },
   "leisure/fitness_station/sit-up": {
-    "icon": "maki-pitch",
+    "icon": "roentgen-sit_up",
     "geometry": ["point", "area"],
     "tags": {
       "leisure": "fitness_station",
@@ -8911,7 +8930,7 @@
     }
   },
   "emergency/water_reservoir_covered": {
-    "icon": "maki-water",
+    "icon": "fas-house-flood-water",
     "geometry": ["point", "vertex", "area"],
     "tags": {
       "emergency": "water_tank",
@@ -9735,7 +9754,7 @@
     "matchScore": 0.5
   },
   "building/service": {
-    "icon": "maki-building",
+    "icon": "roentgen-building_door",
     "geometry": ["area"],
     "tags": {
       "building": "service"
@@ -9982,7 +10001,7 @@
     "matchScore": 0.5
   },
   "building/construction": {
-    "icon": "maki-building",
+    "icon": "roentgen-building_construction",
     "geometry": ["area"],
     "tags": {
       "building": "construction"
@@ -10098,7 +10117,7 @@
     "matchScore": 0.5
   },
   "building/allotment_house": {
-    "icon": "maki-building",
+    "icon": "roentgen-apartments_1_story",
     "geometry": ["area"],
     "tags": {
       "building": "allotment_house"
@@ -10121,6 +10140,16 @@
       "building": "manufacture"
     },
     "matchScore": 0.5,
+    "searchable": false
+  },
+  "building/glasshouse": {
+    "icon": "maki-garden-centre",
+    "geometry": ["area"],
+    "tags": {
+      "building": "glasshouse"
+    },
+    "matchScore": 0.5,
+    "name": "{building/greenhouse}",
     "searchable": false
   },
   "building/entrance": {
@@ -10294,7 +10323,7 @@
     }
   },
   "barrier/log": {
-    "icon": "maki-roadblock",
+    "icon": "roentgen-log_lying",
     "geometry": ["vertex", "point", "line"],
     "tags": {
       "barrier": "log"
@@ -10698,6 +10727,13 @@
       "area:highway": "traffic_island"
     }
   },
+  "animal/horse_walker": {
+    "icon": "temaki-amusement_park",
+    "geometry": ["area", "point"],
+    "tags": {
+      "animal": "horse_walker"
+    }
+  },
   "amenity/weighbridge": {
     "icon": "fas-weight",
     "geometry": ["point", "vertex", "line"],
@@ -11096,7 +11132,7 @@
     }
   },
   "amenity/motorcycle_parking": {
-    "icon": "fas-motorcycle",
+    "icon": "temaki-motorcycle_parked",
     "geometry": ["point", "vertex", "area"],
     "tags": {
       "amenity": "motorcycle_parking"
@@ -11191,6 +11227,13 @@
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "kneipp_water_cure"
+    }
+  },
+  "amenity/kitchen": {
+    "icon": "fas-kitchen-set",
+    "geometry": ["point", "vertex", "area"],
+    "tags": {
+      "amenity": "kitchen"
     }
   },
   "amenity/karaoke_box": {
@@ -11750,11 +11793,12 @@
     "searchable": false
   },
   "amenity/coworking_space": {
-    "icon": "maki-commercial",
+    "icon": "fas-users",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "coworking_space"
     },
+    "name": "{office/coworking}",
     "searchable": false
   },
   "amenity/college": {
@@ -11946,7 +11990,7 @@
     }
   },
   "amenity/vending_machine/bottle_return": {
-    "icon": "temaki-vending_machine",
+    "icon": "roentgen-vending_bottle",
     "geometry": ["point", "vertex"],
     "tags": {
       "amenity": "vending_machine",
@@ -12279,7 +12323,7 @@
     }
   },
   "amenity/restaurant/hotpot": {
-    "icon": "maki-restaurant-noodle",
+    "icon": "temaki-hotpot",
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "restaurant",
@@ -13399,6 +13443,13 @@
     "geometry": ["point", "line"],
     "tags": {
       "advertising": "totem"
+    }
+  },
+  "advertising/sign": {
+    "icon": "fas-sign-hanging",
+    "geometry": ["point", "vertex", "line", "area"],
+    "tags": {
+      "advertising": "sign"
     }
   },
   "advertising/poster_box": {

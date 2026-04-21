@@ -29,6 +29,10 @@
           "name": "广告箱",
           "terms": "广告箱,宣传箱,海报箱,告示箱"
         },
+        "advertising/sign": {
+          "name": "标志广告牌",
+          "terms": "标志,标识,徽标,徽章,logo,广告,广告牌,广告板"
+        },
         "advertising/totem": {
           "name": "精神堡垒",
           "terms": "精神堡垒,品牌立柱,广告立板"
@@ -188,7 +192,7 @@
         },
         "amenity/bbq": {
           "name": "烧烤设施",
-          "terms": "烧烤设施"
+          "terms": "烧烤,烤肉,烤架,设施"
         },
         "amenity/bench": {
           "name": "长椅",
@@ -368,9 +372,6 @@
         "amenity/courthouse": {
           "name": "法院",
           "terms": "法院,法庭"
-        },
-        "amenity/coworking_space": {
-          "name": "共享办公空间"
         },
         "amenity/crematorium": {
           "name": "火葬场",
@@ -664,6 +665,9 @@
         "amenity/karaoke_box": {
           "name": "KTV",
           "terms": "卡拉ok,卡拉,ktv,迷你ktv,迷你卡拉ok,k歌,点唱,唱歌,唱吧,点唱亭,唱"
+        },
+        "amenity/kitchen": {
+          "name": "社区厨房"
         },
         "amenity/kneipp_water_cure": {
           "name": "克奈圃水疗",
@@ -1323,6 +1327,10 @@
           "name": "汽车衡",
           "terms": "汽车衡,地磅,磅秤,汽车,货车"
         },
+        "animal/horse_walker": {
+          "name": "遛马机",
+          "terms": "遛马机"
+        },
         "area": {
           "name": "区域",
           "terms": "区域,面"
@@ -1470,8 +1478,8 @@
           "name": "入口"
         },
         "barrier/fence": {
-          "name": "篱笆",
-          "terms": "篱笆"
+          "name": "围栏",
+          "terms": "围栏,篱笆,栅栏"
         },
         "barrier/fence/railing": {
           "name": "围栏",
@@ -1693,7 +1701,7 @@
           "terms": "宿舍,寝室,学生公寓"
         },
         "building/entrance": {
-          "name": "入口/出口"
+          "name": "入口 / 出口"
         },
         "building/farm": {
           "name": "农舍",
@@ -2820,7 +2828,7 @@
           "terms": "回车场 (o形),回车场,路末环岛"
         },
         "highway/unclassified": {
-          "name": "小型/等级外道路",
+          "name": "小型 / 等级外道路",
           "terms": "道路,路,公路,街道,马路,小型道路,未分级道路,小型/未分级道路,无等级道路,未知等级"
         },
         "historic": {
@@ -3394,7 +3402,7 @@
           "terms": "链球,投掷"
         },
         "leisure/pitch/athletics/high_jump": {
-          "name": "跳高场",
+          "name": "跳高场地",
           "terms": "跳高,跳高场"
         },
         "leisure/pitch/athletics/javelin_throw": {
@@ -3436,6 +3444,10 @@
         "leisure/pitch/beachvolleyball": {
           "name": "沙滩排球场",
           "terms": "沙滩排球,沙,沙滩,海滩,球,排球,沙排"
+        },
+        "leisure/pitch/biathlon": {
+          "name": "冬季两项射击场",
+          "terms": "冬季两项,射击场"
         },
         "leisure/pitch/boules": {
           "name": "地掷球场",
@@ -4925,10 +4937,6 @@
           "name": "水力发电厂",
           "terms": "水电,水力"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "光伏发电厂",
-          "terms": "太阳能,电,光伏"
-        },
         "power/plant/source/nuclear": {
           "name": "核能发电厂",
           "terms": "核电"
@@ -5383,7 +5391,7 @@
         },
         "shop/bed": {
           "name": "床上用品店",
-          "terms": "床上用品店"
+          "terms": "床上用品"
         },
         "shop/beverages": {
           "name": "饮料店",
@@ -5883,8 +5891,8 @@
           "terms": "烟花爆竹店"
         },
         "shop/radiotechnics": {
-          "name": "音像制品店",
-          "terms": "音像制品店"
+          "name": "电子设备店",
+          "terms": "电子设备"
         },
         "shop/religion": {
           "name": "宗教商店",
@@ -6035,8 +6043,8 @@
           "terms": "饮用水,桶装水,瓶装水,包装水,门店"
         },
         "shop/water_sports": {
-          "name": "水上运动/泳具店",
-          "terms": "水上运动/泳装店"
+          "name": "水上运动用品店",
+          "terms": "水上运动用品,泳具,桨板,船,泳衣,泳装"
         },
         "shop/weapons": {
           "name": "武器店",

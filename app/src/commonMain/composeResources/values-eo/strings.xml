@@ -109,7 +109,6 @@ Tamen, antaŭ alŝuto de viaj ŝanĝoj, la aplikaĵo kontrolas kun &lt;a href="h
     <string name="quest_surface_value_sett">Pavimaj ŝtonoj</string>
     <string name="quest_surface_value_wood">Ligno</string>
     <string name="quest_sidewalk_title">Ĉu ĉi tiu vojo havas flankan paŝadvojon?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Kie estas ĉi tiu vojo?</string>
     <string name="quest_address_title">Kio estas la domnumero de tiu konstruaĵo?</string>
     <string name="store_listing_short_description">Esplora aplikaĵo de OpenStreetMap</string>
     <string name="store_listing_full_description">Helpu plibonigi OpenStreetMap per StreetComplete!
@@ -176,9 +175,6 @@ La informo, kiun vi donas estas direkte aldonata al OpenStreetMap nome de vi, se
     <string name="quest_maxspeed_answer_noSign_confirmation">Ĉu vi kontrolis en ambaŭ finoj de la strato?
 Se nenia indikilo kiu aplikiĝus por la ĉi-montrita parto aperas en la tuta strato, la defaŭlta rapidlimo aplikiĝas.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Jes, sen ŝildo</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Vojoj en enkonstruitaj areoj havas pli malaltan defaŭltan rapidan limon ol kamparaj vojoj.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Konstruaĵara areo</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Kampara</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Se estas tia signo ĉe la intersekciĝo kun la ĉefa vojo, vi eble ne trovos individuajn signojn en la zono, ĉar la rapideca limo afiŝita tie validas por la tuta zono.</string>
     <string name="quest_sport_softball">Softbalo</string>
     <string name="quest_sport_racquet">Rakedopilkado</string>
@@ -212,7 +208,6 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="credits_contributors_title">Kontribuintoj de kodo</string>
     <string name="credits_author_title">Aŭtoro kaj prozorganto</string>
     <string name="quest_maxspeed_answer_living_street">Ĝi estas vivanta strato</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Do, ĉu estas tia ŝildo?</string>
     <string name="quest_orchard_produce_title">Kion oni produktas ĉi tie?</string>
     <string name="produce_grapes">Vinberojn</string>
     <string name="produce_agaves">Agavoj</string>
@@ -284,7 +279,6 @@ Alie, vi povas alŝuti alian klavaron de aplikaĵvendejo. Popularaj klavaroj, ki
     <string name="quest_buildingLevels_levelsLabel2">Maltegmentaj etaĝoj</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Diferencas per konstrua parto</string>
     <string name="quest_buildingLevels_answer_description">En ĉi tiu kazo, simple enigu la valorojn de la plej alta konstrua parto.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Ĉu kontraŭaj direktoj de trafiko estas apartigitaj per fizika baro aŭ grejspaco? La defaŭlta rapideca limo dependas de tio, ĉu ĉi tio estas la kazo.</string>
     <string name="about_category_feedback">Prikomentado</string>
     <string name="quest_leave_new_note_photo">Kunligu foton</string>
     <string name="quest_leave_new_note_photo_delete_title">Ĉu vi volas forigi ĉi tiun bildon?</string>
@@ -449,7 +443,6 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="quest_openingHours_no_sign">Neniu signo de malfermaj horoj</string>
     <string name="quest_buildingType_sports_centre">Sportcentro</string>
     <string name="quest_buildingType_toilets">Necesejoj</string>
-    <string name="quest_maxspeed_sign_question">Kio difinas la limon de rapideco?</string>
     <string name="quest_segregated_title">Kiel la trotuaro kaj biciklovojo estas aranĝitaj ĉi tie?</string>
     <string name="dialog_tutorial_upload">Por alŝuti viajn ŝanĝojn permane, uzu la butonon en la ilobreto, kiu aspektas tiel.</string>
     <string name="quest_segregated_separated">Apartigitaj unu de la alia</string>
@@ -681,7 +674,6 @@ aktiva</string>
     <string name="at_housenumber">domnumero %1$s</string>
     <string name="quest_openingHours_add_off_days">Aldonu fermitajn tagojn</string>
     <string name="quest_openingHours_off_day">Fermita tago</string>
-    <string name="quest_openingHours_unspecified_range">Ne specifita</string>
     <string name="quest_cycleway_resurvey_title">Ĉu ĉi tio ankoraŭ estas la ciklovoja situacio ĉi tie?</string>
     <string name="pref_title_resurvey_intervals">Intervaloj de enketo</string>
     <string name="resurvey_intervals_less_often">Demandu malpli ofte</string>

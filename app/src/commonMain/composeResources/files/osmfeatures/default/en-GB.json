@@ -124,7 +124,8 @@
           "name": "Arts Centre"
         },
         "amenity/atm": {
-          "name": "Cash Machine"
+          "name": "Cash Machine",
+          "terms": "atm,cash,machine,money,withdrawal"
         },
         "amenity/baking_oven": {
           "name": "Baking Oven"
@@ -137,9 +138,6 @@
         },
         "amenity/bar/lgbtq": {
           "name": "LGBTQ+ Bar"
-        },
-        "amenity/bbq": {
-          "name": "Barbecue/Grill"
         },
         "amenity/bicycle_parking": {
           "name": "Bicycle Parking"
@@ -204,9 +202,6 @@
         "amenity/charging_station": {
           "name": "Charging Station"
         },
-        "amenity/childcare": {
-          "name": "Nursery/Childcare"
-        },
         "amenity/cinema": {
           "name": "Cinema"
         },
@@ -246,9 +241,6 @@
         "amenity/courthouse": {
           "name": "Courthouse"
         },
-        "amenity/coworking_space": {
-          "name": "Coworking Space"
-        },
         "amenity/crematorium": {
           "name": "Crematorium"
         },
@@ -278,9 +270,6 @@
         },
         "amenity/doctors/general": {
           "name": "General Practitioner"
-        },
-        "amenity/doctors/gynaecology": {
-          "name": "Obstetrician/Gynecologist"
         },
         "amenity/doctors/paediatrics": {
           "name": "Pediatrician"
@@ -1155,9 +1144,6 @@
         "building/dormitory": {
           "name": "Dormitory"
         },
-        "building/entrance": {
-          "name": "Entrance/Exit"
-        },
         "building/farm": {
           "name": "Farm House"
         },
@@ -1926,9 +1912,6 @@
         "highway/turning_loop": {
           "name": "Turning Loop (Island)"
         },
-        "highway/unclassified": {
-          "name": "Minor/Unclassified Road"
-        },
         "historic": {
           "name": "Historic Site"
         },
@@ -2326,9 +2309,6 @@
         "leisure/pitch/athletics/hammer_throw": {
           "name": "Hammer Throw Ring / Sector"
         },
-        "leisure/pitch/athletics/high_jump": {
-          "name": "High Jump Pit"
-        },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "Javelin Sector"
         },
@@ -2358,9 +2338,6 @@
         },
         "leisure/pitch/beachvolleyball": {
           "name": "Beach Volleyball Court"
-        },
-        "leisure/pitch/boules": {
-          "name": "Boules/Bocce Court"
         },
         "leisure/pitch/bowls": {
           "name": "Bowling Green"
@@ -3377,9 +3354,6 @@
         "power/plant/source/hydro": {
           "name": "Hydroelectric Power Station"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Solar Farm"
-        },
         "power/plant/source/nuclear": {
           "name": "Nuclear Power Plant"
         },
@@ -3688,9 +3662,6 @@
         "shop/baby_goods": {
           "name": "Baby Goods Shop"
         },
-        "shop/bag": {
-          "name": "Bag/Luggage Shop"
-        },
         "shop/bakery": {
           "name": "Bakery"
         },
@@ -3705,9 +3676,6 @@
         },
         "shop/beauty/tanning": {
           "name": "Tanning Salon"
-        },
-        "shop/bed": {
-          "name": "Bed Shop"
         },
         "shop/beverages": {
           "name": "Beverages Shop"
@@ -4066,9 +4034,6 @@
         "shop/pyrotechnics": {
           "name": "Fireworks Shop"
         },
-        "shop/radiotechnics": {
-          "name": "Radio/Electronic Component Shop"
-        },
         "shop/religion": {
           "name": "Religious Shop"
         },
@@ -4179,9 +4144,6 @@
         },
         "shop/water": {
           "name": "Drinking Water Shop"
-        },
-        "shop/water_sports": {
-          "name": "Watersport/Swim Shop"
         },
         "shop/weapons": {
           "name": "Weapon Shop"
@@ -4464,9 +4426,6 @@
         },
         "type/route/pipeline": {
           "name": "Pipeline Route"
-        },
-        "type/route/piste": {
-          "name": "Piste/Ski Route"
         },
         "type/route/power": {
           "name": "Power Route"

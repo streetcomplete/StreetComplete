@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Ecobank, BNI, UBA, Société générale Côte d’Ivoire, SGCI, NSIA Banque]
+atmOperators: [BNI, Ecobank, UBA, Société générale Côte d’Ivoire, Société Ivoirienne de Banque, SGCI, NSIA Banque, NSIA, AFG]
 defaultSpeedLimitHasUrbanOrRural: true
 mobileCountryCode: 612
 noParkingSignStyle: vienna

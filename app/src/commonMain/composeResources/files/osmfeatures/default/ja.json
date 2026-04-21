@@ -29,6 +29,10 @@
           "name": "広告(ポスター掲示ボックス)",
           "terms": "広告(ポスター掲示ボックス),ポスター掲示ボックス,掲示板,広告,宣伝,ロリポップ,ショーショー,ポスター,広場,歩道"
         },
+        "advertising/sign": {
+          "name": "広告看板",
+          "terms": "広告看板,看板,掲示板"
+        },
         "advertising/totem": {
           "name": "広告(トーテム)",
           "terms": "広告(トーテム),トーテム広告,トーテム看板,看板,広告,宣伝,ガソリンスタンド,ガソリン価格,トーテム"
@@ -187,8 +191,8 @@
           "terms": "lgbtq+なバー,バー,lgbt,ゲイ,レズビアン,トランスジェンダー,レインボー,酒,お酒,焼酎,カラオケ,スナック,飲食店,飲む,呑む,アルコール,ショットバーウイスキー,ブランデー,ワイン"
         },
         "amenity/bbq": {
-          "name": "バーベキュー場/グリル",
-          "terms": "バーベキュー,グリル,bbq,飯盒炊爨,アウトドア,娯楽,レジャー"
+          "name": "バーベキュー場 / グリル",
+          "terms": "バーベキュー,グリル,bbq,飯盒炊爨,焼き肉,焼肉,食事"
         },
         "amenity/bench": {
           "name": "ベンチ",
@@ -287,7 +291,7 @@
         },
         "amenity/childcare": {
           "name": "保育所",
-          "terms": "保育園,幼稚園,チャイルドケア,ナーセリー,育児,学童保育,ナーサリー,保育所"
+          "terms": "保育所,保育園,幼稚園,こども園,託児所,育児,児童,学童,子供"
         },
         "amenity/cinema": {
           "name": "映画館",
@@ -320,6 +324,10 @@
         "amenity/community_centre": {
           "name": "コミュニティセンター",
           "terms": "公民館,市民センター,市民活動,コミュニティセンター,集会所,自治会館,町内会館,区民センター,地区センター"
+        },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "チタリシテ",
+          "terms": "チタリシテ,公民館"
         },
         "amenity/community_centre/club_home": {
           "name": "親睦団体の施設",
@@ -366,9 +374,6 @@
           "name": "裁判所",
           "terms": "裁判所,法廷,法律,司法"
         },
-        "amenity/coworking_space": {
-          "name": "コワーキングスペース"
-        },
         "amenity/crematorium": {
           "name": "火葬場",
           "terms": "火葬場,葬儀"
@@ -414,8 +419,8 @@
           "terms": "総合診療科,診療科目,ヘルスケア,医療分野,診察科目,専門医"
         },
         "amenity/doctors/gynaecology": {
-          "name": "産婦人科医",
-          "terms": "産科医,婦人科医,産科,婦人科,産婦人科"
+          "name": "産婦人科",
+          "terms": "産婦人科,婦人科,産科,ヘルスケア,医療分野,診察科目,専門医"
         },
         "amenity/doctors/haematology": {
           "name": "血液科",
@@ -661,6 +666,10 @@
         "amenity/karaoke_box": {
           "name": "カラオケボックス",
           "terms": "カラオケボックス,カラオケ"
+        },
+        "amenity/kitchen": {
+          "name": "共同キッチン",
+          "terms": "共同キッチン,共有キッチン,公共キッチン,コミュニティキッチン,キッチン,厨房,台所"
         },
         "amenity/kneipp_water_cure": {
           "name": "クナイプ療法施設",
@@ -952,6 +961,10 @@
         "amenity/restaurant/greek": {
           "name": "レストラン・ギリシャ料理",
           "terms": "レストラン,ギリシャ料理,ギリシャ,飲食店,食事,食べる,料理,ランチ,ディナー"
+        },
+        "amenity/restaurant/hotpot": {
+          "name": "レストラン・火鍋",
+          "terms": "レストラン,火鍋,中華,飲食店,食事,食べる,料理,鍋,ランチ,ディナー"
         },
         "amenity/restaurant/indian": {
           "name": "レストラン・インド料理",
@@ -1316,6 +1329,9 @@
         "amenity/weighbridge": {
           "name": "トラックスケール",
           "terms": "トラックスケール,車両計量台"
+        },
+        "animal/horse_walker": {
+          "name": "馬用の運動器具"
         },
         "area": {
           "name": "エリア",
@@ -1687,7 +1703,7 @@
           "terms": "寮,独身寮,住宅,住居"
         },
         "building/entrance": {
-          "name": "出入口（非推奨）"
+          "name": "出入口（建物）"
         },
         "building/farm": {
           "name": "農家（居住用）",
@@ -1804,8 +1820,8 @@
           "terms": "校舎,学校の建物,学校"
         },
         "building/semidetached_house": {
-          "name": "二世帯住宅",
-          "terms": "セミデタッチドハウス,二世帯住宅,住居,住宅,民家"
+          "name": "二戸長屋",
+          "terms": "セミデタッチドハウス,二戸一棟,二軒長屋,二世帯住宅,住居,住宅,民家"
         },
         "building/service": {
           "name": "機械室（建物）",
@@ -1845,7 +1861,8 @@
           "terms": "タウンハウス,テラスハウス,長屋,住居,住宅,民家,家"
         },
         "building/train_station": {
-          "name": "駅舎"
+          "name": "駅舎",
+          "terms": "駅舎,駅,駅ビル,鉄道,電車,列車,ステーション"
         },
         "building/transportation": {
           "name": "公共交通機関（建物）",
@@ -2626,6 +2643,10 @@
           "name": "自動車専用道路",
           "terms": "自動車専用道路,高速道路,車道,幹線,公道"
         },
+        "highway/motorway_junction": {
+          "name": "自動車専用道路の出口",
+          "terms": "自動車専用道路,出口,車道,幹線,公道"
+        },
         "highway/motorway_link": {
           "name": "自動車専用道路の接続路",
           "terms": "自動車専用道路,接続路,車道,幹線,公道"
@@ -2870,7 +2891,8 @@
           "terms": "記念碑,石碑,石仏,像,歴史,銅像,彫刻,公園"
         },
         "historic/memorial/blue_plaque-GB-IE": {
-          "name": "ブルー・プラーク"
+          "name": "ブルー・プラーク",
+          "terms": "ブルー・プラーク,ブループラーク,史跡案内板,銘板,看板,記念碑"
         },
         "historic/memorial/plaque": {
           "name": "銘板",
@@ -2962,7 +2984,8 @@
           "terms": "養殖場,養魚場,いけす,生簀"
         },
         "landuse/aquaculture/fish": {
-          "name": "養殖場"
+          "name": "養殖場",
+          "terms": "養殖場,養魚場"
         },
         "landuse/basin": {
           "name": "遊水地"
@@ -2985,6 +3008,10 @@
         "landuse/construction": {
           "name": "建設用地",
           "terms": "工事中用地,建設用地,工事現場,建設予定地"
+        },
+        "landuse/education": {
+          "name": "教育機関の敷地",
+          "terms": "教育機関,学校,大学,高等学校,高校,中学校,小学校,幼稚園,キャンパス"
         },
         "landuse/farm": {
           "name": "農地（非推奨）"
@@ -3092,6 +3119,10 @@
         "landuse/military/training_area": {
           "name": "軍事演習場",
           "terms": "練習場,トレーニングエリア,訓練場"
+        },
+        "landuse/olive_grove": {
+          "name": "オリーブ園",
+          "terms": "オリーブ園"
         },
         "landuse/orchard": {
           "name": "果樹園",
@@ -3374,8 +3405,7 @@
           "terms": "投擲場,投てき場,陸上競技場"
         },
         "leisure/pitch/athletics/high_jump": {
-          "name": "走高跳ピット",
-          "terms": "跳躍場,陸上競技場"
+          "name": "高跳びエリア"
         },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "槍投擲場",
@@ -3416,6 +3446,9 @@
         "leisure/pitch/beachvolleyball": {
           "name": "ビーチバレーコート",
           "terms": "ビーチバレーコート,スポーツ,運動,競技,砂浜"
+        },
+        "leisure/pitch/biathlon": {
+          "name": "バイアスロン競技場"
         },
         "leisure/pitch/boules": {
           "name": "ブールスポーツ",
@@ -3530,7 +3563,7 @@
           "terms": "バレーボールコート,スポーツ"
         },
         "leisure/playground": {
-          "name": "児童公園",
+          "name": "遊び場",
           "terms": "児童公園,遊び場,児童遊園,公園,遊具,子供,子ども,児童,キッズ"
         },
         "leisure/playground/indoor": {
@@ -4813,6 +4846,9 @@
           "name": "トンネル(遊具)",
           "terms": "トンネル(遊具),遊具,トンネル,子供,児童,公園,子ども,児童遊園,児童公園,遊び,キッズ"
         },
+        "playground/water": {
+          "name": "水遊び遊具"
+        },
         "playground/zipwire": {
           "name": "ジップライン",
           "terms": "ジップライン,ロープ,アウトドア,遊具,児童,子供,子ども,児童遊園,児童公園,遊び,キッズ"
@@ -4894,10 +4930,6 @@
         "power/plant/source/hydro": {
           "name": "水力発電所",
           "terms": "水力発電所,水力,発電,発電所,電力"
-        },
-        "power/plant/source/method/photovoltaic": {
-          "name": "太陽光発電所",
-          "terms": "太陽光発電所,メガソーラー"
         },
         "power/plant/source/nuclear": {
           "name": "原子力発電所",
@@ -5198,6 +5230,10 @@
           "name": "鉄道信号機",
           "terms": "鉄道信号機,信号機,信号"
         },
+        "railway/signal_box": {
+          "name": "信号扱所",
+          "terms": "信号扱所"
+        },
         "railway/station": {
           "name": "鉄道駅"
         },
@@ -5320,7 +5356,7 @@
           "terms": "赤ちゃん用品店,ベビー用品店"
         },
         "shop/bag": {
-          "name": "バッグ/カバン店",
+          "name": "カバン店",
           "terms": "バッグ,カバン,鞄"
         },
         "shop/bakery": {
@@ -5391,8 +5427,8 @@
           "terms": "キャンドル,ロウソク,蝋燭,蠟燭,インテリア,店舗,お店"
         },
         "shop/cannabis": {
-          "name": "Cannabis Shop(illegal in Japan)",
-          "terms": "cannabis shop(illegal in japan)"
+          "name": "大麻店（日本では違法）",
+          "terms": "大麻,薬物"
         },
         "shop/car": {
           "name": "カーディーラー",
@@ -5545,6 +5581,10 @@
         "shop/erotic/lgbtq": {
           "name": "LGBTQ+なポルノショップ",
           "terms": "lgbtq+なポルノショップ,ポルノショップ,lgbt,アダルトショップ,ゲイ,レズビアン,トランスジェンダー,レインボー,ポルノ"
+        },
+        "shop/esoteric": {
+          "name": "スピリチュアルショップ",
+          "terms": "パワーストーン,アロマ,占い,瞑想,神秘"
         },
         "shop/fabric": {
           "name": "生地屋",
@@ -6141,6 +6181,10 @@
           "name": "地図板",
           "terms": "地図板,案内地図"
         },
+        "tourism/information/office": {
+          "name": "観光案内所",
+          "terms": "観光案内所,案内,観光,インフォメーション"
+        },
         "tourism/information/route_marker": {
           "name": "経路マーカー",
           "terms": "経路マーカー,マーカー,目印,ハイキング"
@@ -6148,6 +6192,10 @@
         "tourism/information/terminal": {
           "name": "情報端末",
           "terms": "情報端末,観光案内,インフォメーション"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "ビジターセンター",
+          "terms": "観光案内所,案内,観光,インフォメーション"
         },
         "tourism/motel": {
           "name": "モーテル",
@@ -6386,7 +6434,7 @@
         },
         "type/route/piste": {
           "name": "スキールート",
-          "terms": "スキールート"
+          "terms": "スキー,ゲレンデ"
         },
         "type/route/power": {
           "name": "電力線ルート",
@@ -6424,6 +6472,10 @@
           "name": "区域",
           "terms": "区域"
         },
+        "type/site/climbing/area": {
+          "name": "クライミングエリア",
+          "terms": "クライミング,ボルダリング"
+        },
         "type/site/climbing/crag": {
           "name": "クラッグ",
           "terms": "岩場"
@@ -6434,6 +6486,10 @@
         },
         "waterway": {
           "name": "水域関連"
+        },
+        "waterway/access_point": {
+          "name": "水域のアクセスポイント",
+          "terms": "水域,アクセス,出入口,入口,出口"
         },
         "waterway/boatyard": {
           "name": "小型船造船所",

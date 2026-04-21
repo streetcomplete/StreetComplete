@@ -92,7 +92,6 @@
     <string name="quest_surface_value_sett">"حجارة مرصوفة"</string>
     <string name="quest_surface_value_wood">"خشب"</string>
     <string name="quest_sidewalk_title">"هل يحتوي هذا الشارع على رصيف جانبي؟"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"أين يقع هذا الشارع؟"</string>
     <string name="quest_address_title">"ما هو رقم المنزل لهذا المبنى؟"</string>
     <string name="store_listing_short_description">"تطبيق مساح الأراضي لمشروع الخرائط المفتوحة OpenStreetMap"</string>
     <string name="store_listing_full_description">"ساعد في تحسين خرائط OpenStreetMap مع تطبيق StreetComplete!
@@ -160,9 +159,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"هل تحققت من نهايتي الشارع؟
 إذا لم تكن هناك أي لافتات على طول الشارع بأكمله والتي تنطبق على القسم المضيء في الخريطة، يتم تطبيق حدود السرعة الافتراضية."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"نعم، لا توجد لافتة"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"إن الطرق في المناطق المدنية (البلدات والمناطق ذات الكثافة السكانية العالية) لها حدود للسرعة الافتراضية مختلفة عن الطرق الريفية."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"مدنية"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"ريفية"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"إذا كانت هناك علامة مثل هذه عند تقاطع الشارع الرئيسي، فلن تجد لافتات فردية داخل المنطقة لأن حد السرعة المنشور هناك ينطبق على المنطقة بأكملها."</string>
     <string name="quest_sport_softball">"الكرة لينة (سوفتبول)"</string>
     <string name="quest_sport_racquet">"كرة الراكت"</string>
@@ -196,7 +192,6 @@
     <string name="credits_contributors_title">"المساهمين في البرمجة"</string>
     <string name="credits_author_title">"المؤلف والمشرف"</string>
     <string name="quest_maxspeed_answer_living_street">"إنه شارع معيشة بين المساكن ويتواجد به الناس أكثر من السيارات"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"إذًا، هل هناك لافتةٌ مثل هذه؟"</string>
     <string name="quest_orchard_produce_title">"ما الذي يتم زراعته هنا؟"</string>
     <string name="produce_grapes">"عنب"</string>
     <string name="produce_agaves">"الأغاف/الأجاف"</string>
@@ -268,7 +263,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"الطوابق (لا تحسب السطح)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"يختلف حسب جزء المبنى"</string>
     <string name="quest_buildingLevels_answer_description">"في هذه الحالة، يكفي إدخال قيم أعلى جزء من المبنى."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"هل طرق هذا الطريق مفصولة ماديًا (بحاجز)؟ يعتمد حد السرعة الافتراضي على ذلك."</string>
     <string name="about_category_feedback">"تعليق"</string>
     <string name="quest_leave_new_note_photo">"إرفاق صورة"</string>
     <string name="quest_leave_new_note_photo_delete_title">"هل تريد حذف هذه الصورة؟"</string>
@@ -433,7 +427,6 @@
     <string name="quest_openingHours_no_sign">"لا توجد لافتة تحدد ساعات العمل"</string>
     <string name="quest_buildingType_sports_centre">"مركز الرياضة"</string>
     <string name="quest_buildingType_toilets">"مراحيض ودورات مياة"</string>
-    <string name="quest_maxspeed_sign_question">"ما الذي يحدد السرعة القصوى؟"</string>
     <string name="quest_segregated_title">"كيف تم ترتيب مسارات المشاة والدراجات هنا؟"</string>
     <string name="dialog_tutorial_upload">"لإرسال التغييرات يدويًا، استخدم زر شريط الأدوات الذي يشبه هذا."</string>
     <string name="quest_segregated_separated">"منفصلة عن بعضها البعض"</string>
@@ -670,7 +663,6 @@
     <string name="at_housenumber">"رقم المنزل %1$s"</string>
     <string name="quest_openingHours_add_off_days">"أضف أيام إجازة"</string>
     <string name="quest_openingHours_off_day">"يوم عطلة"</string>
-    <string name="quest_openingHours_unspecified_range">"غير محدد"</string>
     <string name="quest_cycleway_resurvey_title">"هل ما زالت هذه الحالة مع مسار الدراجات؟"</string>
     <string name="pref_title_resurvey_intervals">"فترات إعادة المسح"</string>
     <string name="resurvey_intervals_less_often">"اسأل في كثير من الأحيان"</string>
@@ -1358,7 +1350,6 @@
     <string name="quest_charging_station_bicycles_answer_only">"إنه مخصّص للدراجات فقط"</string>
     <string name="quest_maxweight_add_sign">"أضف علامة"</string>
     <string name="quest_maxweight_remove_sign">"أزل العلامة"</string>
-    <string name="dialog_dont_notify_again">"عدم الإشعار مرة أخرى"</string>
     <string name="weekly_osm_new_edition_title">"إصدار جديد!"</string>
     <string name="pref_title_messages">"رسائل داخل التطبيق"</string>
     <string name="pref_title_message_achievements">"إنجازات فُتحت"</string>

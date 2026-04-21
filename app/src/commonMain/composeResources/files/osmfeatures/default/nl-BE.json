@@ -173,10 +173,6 @@
           "name": "LGBTQ+-bar",
           "terms": "homobar,lesbobar,lgb-bar,lgbt-bar,lgbq-bar,lgbqt-bar"
         },
-        "amenity/bbq": {
-          "name": "Barbecue/Grill",
-          "terms": "barbecue,grill,steengrill,bbq,spit"
-        },
         "amenity/bench": {
           "name": "Bank",
           "terms": "bank,bankje,picnicktafel"
@@ -269,10 +265,6 @@
           "terms": "elektrisch,elektriciteit,oplaadpaal,tankstation,laadpaal,laadstation",
           "aliases": "Laadpaal"
         },
-        "amenity/childcare": {
-          "name": "Kinderdagverblijf",
-          "terms": "crèche,kribbe,kinderkribbe,baby,peuter"
-        },
         "amenity/cinema": {
           "name": "Bioscoop",
           "terms": "cinema,film,theater"
@@ -349,9 +341,6 @@
           "name": "Rechtbank",
           "terms": "rechtszaal,rechtbank,gerechtshof,paleis van justitie,justitiepaleis"
         },
-        "amenity/coworking_space": {
-          "name": "Gedeelde kantoorruimte"
-        },
         "amenity/crematorium": {
           "name": "Crematorium",
           "terms": "verassingscentrum,uitvaartcentrum,verbrandingsoven"
@@ -391,10 +380,6 @@
         "amenity/doctors/general": {
           "name": "Huisarts",
           "terms": "huisarts,dokter,huisdokter"
-        },
-        "amenity/doctors/gynaecology": {
-          "name": "Verloskundige/Gynaecoloog",
-          "terms": "gynaecoloog,vrouw,vrouwenarts,bevalling"
         },
         "amenity/doctors/haematology": {
           "name": "Hematoloog",
@@ -1649,9 +1634,6 @@
           "name": "Studentenhuisvesting",
           "terms": "peda,kot,home,studentenkot"
         },
-        "building/entrance": {
-          "name": "Ingang/Uitgang"
-        },
         "building/farm": {
           "name": "Boerderijhuis",
           "terms": "gebouw van boerderij,boerderijgebouw"
@@ -2674,10 +2656,6 @@
           "name": "Keerlus (met eiland)",
           "terms": "keerplein,draaicirkel,pijpekop,pijpenkop,einde van een doodlopende straat,cul-de-sac"
         },
-        "highway/unclassified": {
-          "name": "Kleine openbare weg",
-          "terms": "ongeclassificeerde weg,niet-geclassificeerde weg,gemeenteweg,gemeentelijke weg,straat"
-        },
         "historic": {
           "name": "Geschiedskundige plaats",
           "terms": "historische site,geschiedkundige site,historische plaats"
@@ -3203,9 +3181,6 @@
         "leisure/pitch/athletics/hammer_throw": {
           "name": "Baan voor kogelslingeren"
         },
-        "leisure/pitch/athletics/high_jump": {
-          "name": "Hoogspringmat"
-        },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "Speerwerpsector"
         },
@@ -3239,10 +3214,6 @@
         "leisure/pitch/beachvolleyball": {
           "name": "Beachvolleybalveld",
           "terms": "strandvolleybalveld,volleybalveld,zandveld"
-        },
-        "leisure/pitch/boules": {
-          "name": "Jeu-de-boules-veld",
-          "terms": "petanqueveld,petanquebaan,jeu de boules,bocce,lyonnaise,pétanque"
         },
         "leisure/pitch/bowls": {
           "name": "Bowls-baan",
@@ -4541,10 +4512,6 @@
           "name": "Hydro-elektrische centrale",
           "terms": "hydro-elektrische elektriciteitscentrale"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Zonnepark",
-          "terms": "zonnepaneelpark"
-        },
         "power/plant/source/nuclear": {
           "name": "Nucleaire centrale",
           "terms": "nucleaire elektriciteitscentrale"
@@ -4956,10 +4923,6 @@
           "name": "Babyartikelenwinkel",
           "terms": "kledijwinkel,fopspeenwinkel,tutters,knuffels,babyspullenwinkel,babykledijwinkel"
         },
-        "shop/bag": {
-          "name": "Zak-/Reiskofferwinkel",
-          "terms": "zakken,bagage,kofferwinkel,zakwinkel,reiskofferwinkel"
-        },
         "shop/bakery": {
           "name": "Bakker",
           "terms": "banketbakkerij,patisserie"
@@ -4982,10 +4945,6 @@
         "shop/beauty/tanning": {
           "name": "Zonnebank",
           "terms": "zonnecentrum,bruinen,zonnebankcentrum"
-        },
-        "shop/bed": {
-          "name": "Bed-/Matrassenwinkel",
-          "terms": "beddenzaak,matrassenzaak,beddenwinkel,bedwinkel,matrassenwinkel"
         },
         "shop/beverages": {
           "name": "Drankenwinkel",
@@ -5467,10 +5426,6 @@
           "name": "Vuurwerkwinkel",
           "terms": "vuurpijlen,buskruit,nieuwjaar"
         },
-        "shop/radiotechnics": {
-          "name": "Winkel voor radio- en elektronische componenten",
-          "terms": "radiotechniek,satelliet-tv"
-        },
         "shop/religion": {
           "name": "Religieuze winkel",
           "terms": "liturgisch centrum,kerk,godsdienstwinkel,kruisbeelden,souvenirwinkel"
@@ -5618,10 +5573,6 @@
         "shop/water": {
           "name": "Drinkwaterwinkel",
           "terms": "waterwinkel,flessenwaterwinkel,waterflessenwinkel"
-        },
-        "shop/water_sports": {
-          "name": "Watersport-/Zwemwinkel",
-          "terms": "watersportwinkel,zwemwinkel,watersportzaak,zwemgerief,watersportgerief"
         },
         "shop/weapons": {
           "name": "Wapenwinkel",
@@ -6001,10 +5952,6 @@
         "type/route/pipeline": {
           "name": "Pijpleidingstraject",
           "terms": "pijplijnroute,pijplijntraject,pijpleidingsroute"
-        },
-        "type/route/piste": {
-          "name": "Piste of skiroute",
-          "terms": "skipiste"
         },
         "type/route/power": {
           "name": "Elektriciteitsleidingstraject",

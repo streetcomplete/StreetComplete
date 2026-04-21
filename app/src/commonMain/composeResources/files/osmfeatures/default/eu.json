@@ -36,9 +36,6 @@
         "amenity/bar": {
           "name": "Taberna"
         },
-        "amenity/bbq": {
-          "name": "Barbakoa/Parrila"
-        },
         "amenity/bench": {
           "name": "Bankua",
           "terms": "banku,aulki,eserleku"
@@ -79,9 +76,6 @@
         "amenity/charging_station": {
           "name": "Kargatzeko geltokia"
         },
-        "amenity/childcare": {
-          "name": "Haurtzendegi/ Ume zaintza"
-        },
         "amenity/cinema": {
           "name": "Zinema"
         },
@@ -105,9 +99,6 @@
         },
         "amenity/courthouse": {
           "name": "Epaitegia"
-        },
-        "amenity/coworking_space": {
-          "name": "Coworking espazioa"
         },
         "amenity/crematorium": {
           "name": "Errausketa-labe"
@@ -417,9 +408,6 @@
         },
         "building/dormitory": {
           "name": "Erresidentzia"
-        },
-        "building/entrance": {
-          "name": "Sarrera/Irteera"
         },
         "building/farm": {
           "name": "Baserria",

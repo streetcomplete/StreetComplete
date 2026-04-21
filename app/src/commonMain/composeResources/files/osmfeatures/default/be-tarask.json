@@ -2,11 +2,1175 @@
   "be@tarask": {
     "presets": {
       "presets": {
+        "address": {
+          "name": "Адрас"
+        },
+        "advertising/billboard": {
+          "name": "Більборд"
+        },
+        "aeroway/aerodrome": {
+          "name": "Аэрапорт"
+        },
+        "aeroway/hangar": {
+          "name": "Ангар"
+        },
+        "aeroway/helipad": {
+          "name": "Гэлікоптэрны пляц"
+        },
+        "aeroway/jet_bridge": {
+          "name": "Пасажырскі трап"
+        },
+        "aeroway/runway": {
+          "name": "Узьлётная паласа"
+        },
+        "aeroway/spaceport": {
+          "name": "Касмадром"
+        },
+        "aeroway/taxiway": {
+          "name": "Рулёжная дарога"
+        },
+        "aeroway/windsock": {
+          "name": "Ветраньнік"
+        },
+        "amenity": {
+          "name": "Паслугі"
+        },
+        "amenity/atm": {
+          "name": "Банкамат"
+        },
+        "amenity/bank": {
+          "name": "Банк"
+        },
+        "amenity/bar": {
+          "name": "Бар"
+        },
+        "amenity/bench": {
+          "name": "Лаўка"
+        },
+        "amenity/bicycle_parking/building": {
+          "name": "Роварны ґараж"
+        },
+        "amenity/biergarten": {
+          "name": "Піўны двор"
+        },
+        "amenity/boat_rental": {
+          "name": "Арэнда чоўнаў"
+        },
+        "amenity/boat_storage": {
+          "name": "Сховішча чоўнаў"
+        },
+        "amenity/cafe": {
+          "name": "Кафэ"
+        },
+        "amenity/cafe/coffee_shop": {
+          "name": "Кавярня"
+        },
+        "amenity/casino": {
+          "name": "Казіно"
+        },
+        "amenity/cinema": {
+          "name": "Кінатэатр"
+        },
+        "amenity/clinic": {
+          "name": "Паліклініка"
+        },
+        "amenity/clock": {
+          "name": "Гадзіньнік"
+        },
+        "amenity/clock/sundial": {
+          "name": "Сонечны гадзіньнік"
+        },
+        "amenity/courthouse": {
+          "name": "Суд"
+        },
+        "amenity/crematorium": {
+          "name": "Крэматорый"
+        },
+        "amenity/dentist": {
+          "name": "Стаматалёґія"
+        },
+        "amenity/doctors": {
+          "name": "Доктар"
+        },
+        "amenity/embassy": {
+          "name": "Амбасада"
+        },
+        "amenity/fountain": {
+          "name": "Фантан"
+        },
+        "amenity/grave_yard": {
+          "name": "Цьвінтар"
+        },
+        "amenity/lavoir": {
+          "name": "Лавуар"
+        },
+        "amenity/library": {
+          "name": "Бібліятэка"
+        },
+        "amenity/loading_dock": {
+          "name": "Ладавальны док"
+        },
+        "amenity/lounger": {
+          "name": "Шэзлонг"
+        },
+        "amenity/marketplace": {
+          "name": "Базар"
+        },
+        "amenity/mortuary": {
+          "name": "Морґ"
+        },
+        "amenity/nightclub": {
+          "name": "Начны клюб"
+        },
+        "amenity/parking/multi-storey": {
+          "name": "Шматпавярховы ґараж"
+        },
+        "amenity/parking_entrance": {
+          "name": "Уезд і выезд з ґаражнага паркінґу"
+        },
+        "amenity/planetarium": {
+          "name": "Плянэтарыюм"
+        },
+        "amenity/police": {
+          "name": "Паліцыя"
+        },
+        "amenity/pub": {
+          "name": "Шынок"
+        },
+        "amenity/pub/irish": {
+          "name": "Ірляндзкі шынок"
+        },
+        "amenity/pub/lgbtq": {
+          "name": "LGBTQ+ шынок"
+        },
+        "amenity/pub/microbrewery": {
+          "name": "Шынок-бровар"
+        },
+        "amenity/public_bath": {
+          "name": "Грамадзкая лазьня"
+        },
+        "amenity/public_bookcase": {
+          "name": "Грамадзкая кніжная шафа"
+        },
+        "amenity/recycling": {
+          "name": "Перапрацоўка"
+        },
+        "amenity/restaurant": {
+          "name": "Рэстарацыя"
+        },
+        "amenity/restaurant/steakhouse": {
+          "name": "Грыль-рэстарацыя"
+        },
+        "amenity/shelter": {
+          "name": "Сховішча"
+        },
+        "amenity/shelter/gazebo": {
+          "name": "Альтанка"
+        },
+        "amenity/shelter/lean_to": {
+          "name": "Павець"
+        },
+        "amenity/shower": {
+          "name": "Душ"
+        },
+        "amenity/studio": {
+          "name": "Студыя"
+        },
+        "amenity/telephone": {
+          "name": "Тэлефон"
+        },
+        "amenity/theatre": {
+          "name": "Тэатар"
+        },
+        "amenity/theatre/type/amphi": {
+          "name": "Амфітэатар"
+        },
+        "amenity/toilets": {
+          "name": "Прыбіральня"
+        },
+        "amenity/veterinary": {
+          "name": "Вэтэрынар"
+        },
         "area": {
           "name": "Зона"
         },
+        "area/highway": {
+          "name": "Зона дарогі"
+        },
+        "attraction": {
+          "name": "Славутасьць"
+        },
+        "attraction/carousel": {
+          "name": "Карусэль"
+        },
+        "attraction/maze": {
+          "name": "Лябірынт"
+        },
+        "barrier": {
+          "name": "Агароджа"
+        },
+        "barrier/block": {
+          "name": "Блёк"
+        },
+        "barrier/bollard": {
+          "name": "Слупок"
+        },
+        "barrier/chain": {
+          "name": "Ланцуг"
+        },
+        "barrier/ditch": {
+          "name": "Траншэя"
+        },
+        "barrier/entrance": {
+          "name": "Уваход"
+        },
+        "barrier/fence": {
+          "name": "Плот"
+        },
+        "barrier/fence/railing": {
+          "name": "Агароджа"
+        },
+        "barrier/gate": {
+          "name": "Брама"
+        },
+        "barrier/hedge": {
+          "name": "Жываплот"
+        },
+        "barrier/kerb": {
+          "name": "Бардзюр"
+        },
+        "barrier/stile": {
+          "name": "Пералаз"
+        },
+        "barrier/turnstile": {
+          "name": "Турнікет"
+        },
+        "barrier/wall": {
+          "name": "Мур"
+        },
+        "boundary": {
+          "name": "Мяжа"
+        },
+        "building": {
+          "name": "Будынак"
+        },
+        "building/barn": {
+          "name": "Гумно"
+        },
+        "building/boathouse": {
+          "name": "Дом на вадзе"
+        },
+        "building/bungalow": {
+          "name": "Бунґала"
+        },
+        "building/bunker": {
+          "name": "Бункэр"
+        },
+        "building/cabin": {
+          "name": "Хатка"
+        },
+        "building/carport": {
+          "name": "Павець для аўто"
+        },
+        "building/cowshed": {
+          "name": "Кароўнік"
+        },
+        "building/dormitory": {
+          "name": "Інтэрнат"
+        },
+        "building/farm": {
+          "name": "Дом на фэрме"
+        },
+        "building/farm_auxiliary": {
+          "name": "Пабудова на фэрме"
+        },
+        "building/garage": {
+          "name": "Ґараж"
+        },
+        "building/garages": {
+          "name": "Ґаражы"
+        },
+        "building/grandstand": {
+          "name": "Трыбуна"
+        },
+        "building/greenhouse": {
+          "name": "Цяпліца"
+        },
+        "building/house": {
+          "name": "Дом"
+        },
+        "building/houseboat": {
+          "name": "Плывучы дом"
+        },
+        "building/hut": {
+          "name": "Хата"
+        },
+        "building/public": {
+          "name": "Грамадзкі будынак"
+        },
+        "building/roof": {
+          "name": "Дах"
+        },
+        "building/shed": {
+          "name": "Пуня"
+        },
+        "building/stable": {
+          "name": "Стайня"
+        },
+        "building/sty": {
+          "name": "Сьвінарнік"
+        },
+        "building/warehouse": {
+          "name": "Сховішча"
+        },
+        "building_point": {
+          "name": "Будынак"
+        },
+        "club": {
+          "name": "Клюб"
+        },
+        "craft": {
+          "name": "Рамяство"
+        },
+        "craft/beekeeper": {
+          "name": "Пчаляр"
+        },
+        "craft/blacksmith": {
+          "name": "Каваль"
+        },
+        "craft/boatbuilder": {
+          "name": "Будоўля чоўнаў"
+        },
+        "craft/bookbinder": {
+          "name": "Кнігавяз"
+        },
+        "craft/carpenter": {
+          "name": "Цясьляр"
+        },
+        "craft/carpet_layer": {
+          "name": "Дываны"
+        },
+        "craft/caterer": {
+          "name": "Забясьпечнік харчаваньня"
+        },
+        "craft/clockmaker": {
+          "name": "Гадзіньнікавая"
+        },
+        "craft/distillery": {
+          "name": "Самагон"
+        },
+        "craft/dressmaker": {
+          "name": "Швачка"
+        },
+        "craft/electrician": {
+          "name": "Электрык"
+        },
+        "craft/floorer": {
+          "name": "Укладчык падлогі"
+        },
+        "craft/gardener": {
+          "name": "Садоўнік"
+        },
+        "craft/glaziery": {
+          "name": "Шклярня"
+        },
+        "craft/insulator": {
+          "name": "Электрычны ізалятар"
+        },
+        "craft/joiner": {
+          "name": "Сталяр"
+        },
+        "craft/locksmith": {
+          "name": "Ключны майстар"
+        },
+        "craft/metal_construction": {
+          "name": "Мэталаапрацоўка"
+        },
+        "craft/painter": {
+          "name": "Маляр"
+        },
+        "craft/parquet_layer": {
+          "name": "Паркэт"
+        },
+        "craft/photographer": {
+          "name": "Фатоґраф"
+        },
+        "craft/plasterer": {
+          "name": "Тынкоўнік"
+        },
+        "craft/plumber": {
+          "name": "Сантэхнік"
+        },
+        "craft/rigger": {
+          "name": "Мантажнік"
+        },
+        "craft/roofer": {
+          "name": "Страхар"
+        },
+        "craft/saddler": {
+          "name": "Рымар"
+        },
+        "craft/sailmaker": {
+          "name": "Ветразьнік"
+        },
+        "craft/sawmill": {
+          "name": "Лесапільня"
+        },
+        "craft/scaffolder": {
+          "name": "Рыштавальнік"
+        },
+        "craft/sculptor": {
+          "name": "Скульптар"
+        },
+        "craft/shoemaker": {
+          "name": "Шавец"
+        },
+        "craft/signmaker": {
+          "name": "Вытворца шыльдаў"
+        },
+        "craft/stonemason": {
+          "name": "Муляр"
+        },
+        "craft/tailor": {
+          "name": "Кравец"
+        },
+        "craft/tiler": {
+          "name": "Кафляр"
+        },
+        "craft/tinsmith": {
+          "name": "Бляхар"
+        },
+        "craft/upholsterer": {
+          "name": "Абівальнік"
+        },
+        "craft/watchmaker": {
+          "name": "Гадзіньнікар"
+        },
+        "craft/winery": {
+          "name": "Вінаробная"
+        },
+        "embankment": {
+          "name": "Насып"
+        },
+        "emergency/defibrillator": {
+          "name": "Дэфібрылятар"
+        },
+        "emergency/lifeboat_station": {
+          "name": "Ратавальная станцыя"
+        },
+        "emergency/lifeguard": {
+          "name": "Ратавальнік"
+        },
+        "emergency/siren": {
+          "name": "Сырэна"
+        },
+        "ford": {
+          "name": "Брод"
+        },
+        "ford_line": {
+          "name": "Брод"
+        },
+        "golf/fairway": {
+          "name": "Фэрўэй (кошаная трава)"
+        },
+        "golf/rough": {
+          "name": "Раф (зарослая зона)"
+        },
+        "healthcare/alternative/chiropractic": {
+          "name": "Хірапрактык"
+        },
+        "healthcare/audiologist": {
+          "name": "Спэцыяліст па слыху"
+        },
+        "healthcare/dentist/orthodontics": {
+          "name": "Артадонт"
+        },
+        "healthcare/hospice": {
+          "name": "Госьпіс"
+        },
+        "healthcare/midwife": {
+          "name": "Павітуха"
+        },
+        "healthcare/optometrist": {
+          "name": "Аптамэтрыст"
+        },
+        "healthcare/physiotherapist": {
+          "name": "Фізыятэрапэўт"
+        },
+        "healthcare/podiatrist": {
+          "name": "Падаляґ"
+        },
+        "healthcare/psychotherapist": {
+          "name": "Псыхатэрапэўт"
+        },
+        "highway/construction": {
+          "name": "Будоўля дарогі"
+        },
+        "highway/crossing": {
+          "name": "Пераход"
+        },
+        "highway/crossing/traffic_signals": {
+          "name": "Пераход зь сьвятлафорам"
+        },
+        "highway/cycleway/crossing/traffic_signals": {
+          "name": "Роварны пераезд зь сьвятлафорам"
+        },
+        "highway/elevator": {
+          "name": "Ліфт"
+        },
+        "highway/footway/crossing/traffic_signals": {
+          "name": "Пераход зь сьвятлафорам"
+        },
+        "highway/footway/sidewalk": {
+          "name": "Ходнік"
+        },
+        "highway/mini_roundabout": {
+          "name": "Малое кола"
+        },
+        "highway/motorway": {
+          "name": "Аўтамагістраль"
+        },
+        "highway/path": {
+          "name": "Сьцежка"
+        },
+        "highway/path/boardwalk": {
+          "name": "Драўляная сьцяжына"
+        },
+        "highway/primary": {
+          "name": "Галоўная дарога"
+        },
+        "highway/residential": {
+          "name": "Дарога жылога раёну"
+        },
+        "highway/road": {
+          "name": "Невядомая дарога"
+        },
+        "highway/road/bridge": {
+          "name": "Невядомы мост"
+        },
+        "highway/secondary": {
+          "name": "Другарадная дарога"
+        },
+        "highway/service": {
+          "name": "Службовая дарога"
+        },
+        "highway/service/alley": {
+          "name": "Завулак"
+        },
+        "highway/service/drive-through": {
+          "name": "Аўтакаса"
+        },
+        "highway/service/driveway": {
+          "name": "Пад’язная дарога"
+        },
+        "highway/steps": {
+          "name": "Сходы"
+        },
+        "highway/steps/conveying": {
+          "name": "Эскалятар"
+        },
+        "highway/tertiary": {
+          "name": "Трэцярадная дарога"
+        },
+        "highway/traffic_signals": {
+          "name": "Сьвятлафор"
+        },
+        "highway/trailhead": {
+          "name": "Пачатак трэйлу"
+        },
+        "highway/trunk": {
+          "name": "Шаша"
+        },
+        "historic/castle": {
+          "name": "Замак"
+        },
+        "historic/castle/palace": {
+          "name": "Палац"
+        },
+        "historic/castle/stately": {
+          "name": "Шато"
+        },
+        "historic/memorial": {
+          "name": "Мэмарыял"
+        },
+        "historic/monument": {
+          "name": "Манумэнт"
+        },
+        "historic/ruins": {
+          "name": "Руіны"
+        },
+        "historic/tomb": {
+          "name": "Магіла"
+        },
+        "historic/wreck": {
+          "name": "Рэшткі карабля"
+        },
+        "indoor/room": {
+          "name": "Пакой"
+        },
+        "junction": {
+          "name": "Скрыжаваньне"
+        },
+        "landuse/aquaculture": {
+          "name": "Аквакультура"
+        },
+        "landuse/basin": {
+          "name": "Тэхнічны басэйн"
+        },
+        "landuse/brownfield": {
+          "name": "Закінута"
+        },
+        "landuse/cemetery": {
+          "name": "Могілкі"
+        },
+        "landuse/churchyard": {
+          "name": "Царкоўны пляц"
+        },
+        "landuse/farm": {
+          "name": "Ральля"
+        },
+        "landuse/farmland": {
+          "name": "Ральля"
+        },
+        "landuse/farmyard": {
+          "name": "Гаспадарчае падвор’е"
+        },
+        "landuse/flowerbed": {
+          "name": "Кветнік"
+        },
+        "landuse/garages": {
+          "name": "Ґаражны масіў"
+        },
+        "landuse/grass": {
+          "name": "Трава"
+        },
+        "landuse/greenfield": {
+          "name": "Незабудавана"
+        },
+        "landuse/harbour": {
+          "name": "Порт"
+        },
+        "landuse/industrial/slaughterhouse": {
+          "name": "Мясакамбінат"
+        },
+        "landuse/landfill": {
+          "name": "Сьметнішча"
+        },
+        "landuse/meadow": {
+          "name": "Луг"
+        },
+        "landuse/military/barracks": {
+          "name": "Баракі"
+        },
+        "landuse/olive_grove": {
+          "name": "Аліўкавая плянтацыя"
+        },
+        "landuse/orchard": {
+          "name": "Прамысловы сад"
+        },
+        "landuse/pond": {
+          "name": "Сажалка"
+        },
+        "landuse/quarry": {
+          "name": "Кар’ер"
+        },
+        "landuse/reservoir": {
+          "name": "Вадасховішча"
+        },
+        "landuse/vineyard": {
+          "name": "Вінаграднік"
+        },
+        "leisure/bandstand": {
+          "name": "Кацнэртная альтанка"
+        },
+        "leisure/bleachers": {
+          "name": "Адкрытая трыбуна"
+        },
+        "leisure/common": {
+          "name": "Грамадзкая зямля"
+        },
+        "leisure/garden": {
+          "name": "Сад"
+        },
+        "leisure/hackerspace": {
+          "name": "Тэхнамайстэрня"
+        },
+        "leisure/marina": {
+          "name": "Прыстань для яхтаў"
+        },
+        "leisure/park": {
+          "name": "Парк"
+        },
+        "leisure/playground": {
+          "name": "Дзіцячая пляцоўка"
+        },
+        "leisure/resort": {
+          "name": "Курорт"
+        },
+        "leisure/sauna": {
+          "name": "Саўна"
+        },
+        "leisure/slipway": {
+          "name": "Спуск на воду"
+        },
+        "leisure/sports_hall": {
+          "name": "Спартовая заля"
+        },
+        "leisure/stadium": {
+          "name": "Стадыён"
+        },
+        "line": {
+          "name": "Лінія"
+        },
+        "man_made/adit": {
+          "name": "Штольня"
+        },
+        "man_made/antenna": {
+          "name": "Антэна"
+        },
+        "man_made/beacon": {
+          "name": "Сьве́тач"
+        },
+        "man_made/beehive": {
+          "name": "Пчаліны вулей"
+        },
+        "man_made/breakwater": {
+          "name": "Хвалялом"
+        },
+        "man_made/cairn": {
+          "name": "Піраміда камянёў"
+        },
+        "man_made/chimney": {
+          "name": "Комін"
+        },
+        "man_made/courtyard": {
+          "name": "Унутраны дворык"
+        },
+        "man_made/crane": {
+          "name": "Кран"
+        },
+        "man_made/cross": {
+          "name": "Крыж"
+        },
+        "man_made/dovecote": {
+          "name": "Галубятня"
+        },
+        "man_made/dyke": {
+          "name": "Вал"
+        },
+        "man_made/embankment": {
+          "name": "Насып"
+        },
+        "man_made/flagpole": {
+          "name": "Слуп для сьцягу"
+        },
+        "man_made/gasometer": {
+          "name": "Ґазавы рэзэрвуар"
+        },
+        "man_made/groyne": {
+          "name": "Ґройна"
+        },
+        "man_made/lighthouse": {
+          "name": "Маяк"
+        },
+        "man_made/manhole": {
+          "name": "Лаз каналізацыйны"
+        },
+        "man_made/mast": {
+          "name": "Мачта"
+        },
+        "man_made/mineshaft": {
+          "name": "Шахтавы ствол"
+        },
+        "man_made/obelisk": {
+          "name": "Абэліск"
+        },
+        "man_made/observatory": {
+          "name": "Абсэрваторыя"
+        },
+        "man_made/pier": {
+          "name": "Прыстань"
+        },
+        "man_made/pipeline": {
+          "name": "Трубаправод"
+        },
+        "man_made/silo": {
+          "name": "Сілас"
+        },
+        "man_made/surveillance": {
+          "name": "Назіраньне"
+        },
+        "man_made/tower": {
+          "name": "Вежа"
+        },
+        "man_made/tower/minaret": {
+          "name": "Мінарэт"
+        },
+        "man_made/tower/pagoda": {
+          "name": "Паґода"
+        },
+        "man_made/watermill": {
+          "name": "Вадзяны млын"
+        },
+        "man_made/windmill": {
+          "name": "Вятрак"
+        },
+        "man_made/windpump": {
+          "name": "Ветравая помпа"
+        },
+        "man_made/works": {
+          "name": "Фабрыка"
+        },
+        "marker": {
+          "name": "Пазнака"
+        },
+        "natural/bay": {
+          "name": "Затока"
+        },
+        "natural/beach": {
+          "name": "Пляж"
+        },
+        "natural/cape": {
+          "name": "Мыс"
+        },
+        "natural/cliff": {
+          "name": "Абрыў"
+        },
+        "natural/coastline": {
+          "name": "Узьбярэжжа"
+        },
+        "natural/fell": {
+          "name": "Горнае ўзвышша"
+        },
+        "natural/geyser": {
+          "name": "Ґэйзэр"
+        },
+        "natural/glacier": {
+          "name": "Ледавік"
+        },
+        "natural/grassland": {
+          "name": "Поплаў"
+        },
+        "natural/heath": {
+          "name": "Верасовая пустэча"
+        },
+        "natural/mud": {
+          "name": "Гразь"
+        },
+        "natural/peak": {
+          "name": "Вяршыня"
+        },
+        "natural/reef": {
+          "name": "Рыф"
+        },
+        "natural/ridge": {
+          "name": "Горны хрыбет"
+        },
+        "natural/saddle": {
+          "name": "Седлавіна"
+        },
+        "natural/sand": {
+          "name": "Пясок"
+        },
+        "natural/scree": {
+          "name": "Каменны схіл"
+        },
+        "natural/scrub": {
+          "name": "Хмызьняк"
+        },
+        "natural/shingle": {
+          "name": "Ґалька"
+        },
+        "natural/shrub": {
+          "name": "Куст"
+        },
+        "natural/spring": {
+          "name": "Крыніца"
+        },
+        "natural/tree": {
+          "name": "Дрэва"
+        },
+        "natural/valley": {
+          "name": "Даліна"
+        },
+        "natural/volcano": {
+          "name": "Вулькан"
+        },
+        "natural/water": {
+          "name": "Вада"
+        },
+        "natural/water/basin": {
+          "name": "Тэхнічны басэйн"
+        },
+        "natural/water/lake": {
+          "name": "Возера"
+        },
+        "natural/water/moat": {
+          "name": "Абарончы роў"
+        },
+        "natural/water/pond": {
+          "name": "Сажалка"
+        },
+        "natural/water/reservoir": {
+          "name": "Вадасховішча"
+        },
+        "natural/wetland": {
+          "name": "Дрыгва"
+        },
+        "office": {
+          "name": "Офіс"
+        },
+        "office/diplomatic/consulate": {
+          "name": "Консульства"
+        },
+        "office/diplomatic/embassy": {
+          "name": "Амбасада"
+        },
+        "office/government/prosecutor": {
+          "name": "Пракуратура"
+        },
+        "office/physician": {
+          "name": "Лекар"
+        },
+        "place": {
+          "name": "Месца"
+        },
+        "place/city": {
+          "name": "Горад"
+        },
+        "place/farm": {
+          "name": "Фэрма"
+        },
+        "place/hamlet": {
+          "name": "Хутар"
+        },
+        "place/island": {
+          "name": "Выспа"
+        },
+        "place/islet": {
+          "name": "Выспачка"
+        },
+        "place/locality": {
+          "name": "Урочышча"
+        },
+        "place/neighbourhood": {
+          "name": "Суседзтва"
+        },
+        "place/plot": {
+          "name": "Дзялянка"
+        },
+        "place/square": {
+          "name": "Пляц"
+        },
+        "place/town": {
+          "name": "Мястэчка"
+        },
+        "place/village": {
+          "name": "Вёска"
+        },
+        "playground/seesaw": {
+          "name": "Арэлі"
+        },
+        "playground/slide": {
+          "name": "Горка"
+        },
+        "playground/swing": {
+          "name": "Гойданка"
+        },
+        "playground/trampoline": {
+          "name": "Трамплін"
+        },
+        "point": {
+          "name": "Пункт"
+        },
+        "power/substation": {
+          "name": "Трансфарматарная"
+        },
+        "power/transformer": {
+          "name": "Трансфарматар"
+        },
+        "railway/level_crossing": {
+          "name": "Чыгуначны пераезд"
+        },
         "relation": {
           "name": "Зьвязак"
+        },
+        "seamark": {
+          "name": "Марскі знак"
+        },
+        "seamark/mooring": {
+          "name": "Гідрамэтэараляґічны бакен"
+        },
+        "shop/bakery": {
+          "name": "Пякарня"
+        },
+        "shop/boat": {
+          "name": "Крама чоўнаў"
+        },
+        "shop/bookmaker": {
+          "name": "Букмэкэр"
+        },
+        "shop/books": {
+          "name": "Кнігарня"
+        },
+        "shop/boutique": {
+          "name": "Буцік"
+        },
+        "shop/butcher": {
+          "name": "Мясная крама"
+        },
+        "shop/chemist": {
+          "name": "Аптэка"
+        },
+        "shop/deli": {
+          "name": "Дэлікатэсы"
+        },
+        "shop/florist": {
+          "name": "Кветкі"
+        },
+        "shop/greengrocer": {
+          "name": "Садавіна, гародніна"
+        },
+        "shop/hairdresser": {
+          "name": "Цырульня"
+        },
+        "shop/herbalist": {
+          "name": "Зёлкавая"
+        },
+        "shop/kiosk": {
+          "name": "Шапік"
+        },
+        "shop/laundry": {
+          "name": "Пральня"
+        },
+        "shop/locksmith": {
+          "name": "Ключны майстар"
+        },
+        "shop/mall": {
+          "name": "Гандлёвы цэнтар"
+        },
+        "shop/newsagent": {
+          "name": "Ґазэтны шапік"
+        },
+        "shop/optician": {
+          "name": "Оптыка"
+        },
+        "shop/pawnbroker": {
+          "name": "Лямбард"
+        },
+        "shop/psychic": {
+          "name": "Мэдыюм"
+        },
+        "shop/supermarket": {
+          "name": "Супэрмаркэт"
+        },
+        "shop/tailor": {
+          "name": "Кравец"
+        },
+        "tourism/aquarium": {
+          "name": "Акварыюм"
+        },
+        "tourism/artwork": {
+          "name": "Твор мастацтва"
+        },
+        "tourism/artwork/bust": {
+          "name": "Бюст"
+        },
+        "tourism/artwork/graffiti": {
+          "name": "Ґрафіці"
+        },
+        "tourism/artwork/mural": {
+          "name": "Мурал"
+        },
+        "tourism/artwork/sculpture": {
+          "name": "Скульптура"
+        },
+        "tourism/artwork/statue": {
+          "name": "Статуя"
+        },
+        "tourism/camp_site": {
+          "name": "Кэмпінґ"
+        },
+        "tourism/hostel": {
+          "name": "Гостэл"
+        },
+        "tourism/hotel": {
+          "name": "Гатэль"
+        },
+        "tourism/information": {
+          "name": "Інфармацыя"
+        },
+        "tourism/information/guidepost": {
+          "name": "Паказальнік"
+        },
+        "tourism/information/map": {
+          "name": "Мапа"
+        },
+        "tourism/motel": {
+          "name": "Матэль"
+        },
+        "tourism/museum": {
+          "name": "Музэй"
+        },
+        "tourism/viewpoint": {
+          "name": "Аглядны пляц"
+        },
+        "tourism/zoo": {
+          "name": "Заапарк"
+        },
+        "traffic_calming/dip": {
+          "name": "Упадзіна"
+        },
+        "type/boundary": {
+          "name": "Мяжа"
+        },
+        "type/enforcement": {
+          "name": "Кантроль"
+        },
+        "type/enforcement/maxspeed": {
+          "name": "Кантроль хуткасьці"
+        },
+        "type/multipolygon": {
+          "name": "Шматкутнік"
+        },
+        "type/restriction": {
+          "name": "Абмежаваньне"
+        },
+        "type/route": {
+          "name": "Маршрут"
+        },
+        "type/site": {
+          "name": "Пляцоўка"
+        },
+        "type/waterway": {
+          "name": "Водны шлях"
+        },
+        "waterway/boatyard": {
+          "name": "Майстэрня чоўнаў"
+        },
+        "waterway/canal": {
+          "name": "Канал"
+        },
+        "waterway/dam": {
+          "name": "Дамба"
+        },
+        "waterway/ditch": {
+          "name": "Роў"
+        },
+        "waterway/drain": {
+          "name": "Сьцёкавы канал"
+        },
+        "waterway/river": {
+          "name": "Рака"
+        },
+        "waterway/stream": {
+          "name": "Струмень"
+        },
+        "waterway/waterfall": {
+          "name": "Вадаспад"
+        },
+        "waterway/weir": {
+          "name": "Плаціна"
         }
       }
     }

@@ -29,6 +29,10 @@
           "name": "Väike kahepoolne reklaamtahvel",
           "terms": "välireklaam,väike reklaamtahvel"
         },
+        "advertising/sign": {
+          "name": "Reklaamsilt",
+          "terms": "reklaamtahvel,valgusreklaam"
+        },
         "advertising/totem": {
           "name": "Püstine reklaamsilt",
           "terms": "reklaamisammas,reklaamsilt"
@@ -325,7 +329,8 @@
           "name": "Külamaja"
         },
         "amenity/community_centre/youth_centre": {
-          "name": "Noortekeskus"
+          "name": "Noortekeskus",
+          "terms": "noorte klubid,huviklubi,huviring,huviringid"
         },
         "amenity/compressed_air": {
           "name": "Suruõhk",
@@ -338,9 +343,6 @@
         "amenity/courthouse": {
           "name": "Kohtumaja",
           "terms": "kohus"
-        },
-        "amenity/coworking_space": {
-          "name": "Ühiskasutatavad kontoriruumid"
         },
         "amenity/crematorium": {
           "name": "Krematoorium",
@@ -385,7 +387,7 @@
         },
         "amenity/doctors/gynaecology": {
           "name": "Sünnitusarst/günekoloog",
-          "terms": "naistearst"
+          "terms": "sünnitamine"
         },
         "amenity/doctors/haematology": {
           "name": "Hematoloog",
@@ -506,13 +508,15 @@
           "terms": "hamburger,burks"
         },
         "amenity/fast_food/cafeteria": {
-          "name": "Söökla"
+          "name": "Söökla",
+          "terms": "lobila,lõunasöögikoht,söökla"
         },
         "amenity/fast_food/chicken": {
           "name": "kiirtoit kanalihast"
         },
         "amenity/fast_food/chinese": {
-          "name": "hiina kiirtoit"
+          "name": "hiina kiirtoit",
+          "terms": "hiinakas"
         },
         "amenity/fast_food/donut": {
           "name": "Sõõrikukohvik",
@@ -611,6 +615,10 @@
         "amenity/karaoke_box": {
           "name": "Karaokebaar",
           "terms": "karaokemasin"
+        },
+        "amenity/kitchen": {
+          "name": "Kogukonna köök",
+          "terms": "ühisköök"
         },
         "amenity/kneipp_water_cure": {
           "name": "Kneipp-ravi keskus"
@@ -876,14 +884,16 @@
           "name": "Saksa restoran"
         },
         "amenity/restaurant/greek": {
-          "name": "Kreeka restoran"
+          "name": "Kreeka restoran",
+          "terms": "moussaka,dolma,halloumi,stifado,tzatziki,meze"
         },
         "amenity/restaurant/hotpot": {
           "name": "Iseteenindusliku toiduvalmistamise restoran (hot pot)",
           "terms": "beijing,peking,budae jjigae,canton,kanton,chhnang pleurng,china,hiina,fondue,guangdong,hotpot,hot pot,jeongol,jjigae,kimchi jjigae,lau,mu kratha,nabemono,shabu shabu,sichaun,sin jum,sukiyaki,teochew,teoswa,yao hon"
         },
         "amenity/restaurant/indian": {
-          "name": "India restoran"
+          "name": "India restoran",
+          "terms": "karri"
         },
         "amenity/restaurant/italian": {
           "name": "Itaalia restoran",
@@ -900,10 +910,12 @@
           "terms": "tako,taco,guacamole,quesadilla,kesadilja,torta,tamale"
         },
         "amenity/restaurant/noodle": {
-          "name": "Nuudlirestoran"
+          "name": "Nuudlirestoran",
+          "terms": "nuudlid,soba,nuudlisupp"
         },
         "amenity/restaurant/pizza": {
-          "name": "Pitsarestoran"
+          "name": "Pitsarestoran",
+          "terms": "napoletana"
         },
         "amenity/restaurant/ramen": {
           "name": "jaapani nuudlirestoran",
@@ -934,7 +946,8 @@
           "terms": "vareenikud,boršš,kapsasupp,rassolnik,kapsarullid,holubtsõ,kartulipannkoogid,derunõ,kiievi kotlett,paljanõtsja"
         },
         "amenity/restaurant/vietnamese": {
-          "name": "Vietnami restoran"
+          "name": "Vietnami restoran",
+          "terms": "pho"
         },
         "amenity/sanitary_dump_station": {
           "name": "Maismaatranspordivahendite heitvee purgimiskoht",
@@ -1188,6 +1201,10 @@
           "name": "Autokaal",
           "aliases": "Platvormkaal"
         },
+        "animal/horse_walker": {
+          "name": "Hobuste jalutusaedik",
+          "terms": "jalutusaed,jalutusplats,jooksuaed,jooksuplats"
+        },
         "area": {
           "name": "Ala"
         },
@@ -1217,7 +1234,8 @@
           "terms": "ilmaratas,kuradiratas"
         },
         "attraction/bumper_car": {
-          "name": "Põrkavad elektriautod"
+          "name": "Põrkavad elektriautod",
+          "terms": "elektrodroom"
         },
         "attraction/bungee_jumping": {
           "name": "Bendžihüpped"
@@ -1329,7 +1347,8 @@
           "terms": "elavtara,elustara,põõsasaed,põõsashekk,põõsastara"
         },
         "barrier/height_restrictor": {
-          "name": "Kõrguspiiraja"
+          "name": "Kõrguspiiraja",
+          "terms": "kõrguse kontroll,kõrguskontroll"
         },
         "barrier/jersey_barrier": {
           "name": "Teetõkkeplokk",
@@ -1500,7 +1519,7 @@
           "name": "Ühiselamu"
         },
         "building/entrance": {
-          "name": "Sissepääs"
+          "name": "Sissepääs ja/või väljapääs"
         },
         "building/farm": {
           "name": "Talumaja",
@@ -2298,7 +2317,8 @@
           "terms": "tõstetool"
         },
         "highway/emergency_access_point": {
-          "name": "Asukohatuvastuspunkt hädaolukorras"
+          "name": "Asukohatuvastuspunkt hädaolukorras",
+          "terms": "päästmine,päästeaadress,päästemarker"
         },
         "highway/emergency_bay": {
           "name": "Hädapeatumise ala",
@@ -2537,7 +2557,7 @@
           "terms": "ümberpöörd,pöördering,tagasipööre"
         },
         "highway/unclassified": {
-          "name": "Väike/klassifitseerimata tee",
+          "name": "Väike või klassifitseerimata tee",
           "terms": "klassifitseerimata tee,väike tee,kitsas tee,kohalik tee"
         },
         "historic": {
@@ -3118,8 +3138,8 @@
           "terms": "vasaraheide"
         },
         "leisure/pitch/athletics/high_jump": {
-          "name": "Kõrgushüppe maandumismatt",
-          "terms": "kõrgushüpe"
+          "name": "Kõrgushüppeala",
+          "terms": "kõrgushüppe kast"
         },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "Odaviske sektor",
@@ -3160,6 +3180,10 @@
           "name": "Rannavõrkpalli väljak",
           "terms": "rannavolle plats",
           "aliases": "Rannavolle väljak"
+        },
+        "leisure/pitch/biathlon": {
+          "name": "Kahevõistluse lasketiir",
+          "terms": "kahevõistluse laskmine"
         },
         "leisure/pitch/boules": {
           "name": "Puu- ja metallkuulimängude väljak",
@@ -3807,6 +3831,10 @@
         "natural/arch": {
           "name": "Looduslik kaar või võlv",
           "terms": "võlv,kaar,võlvkäik,kivikaar,kaljukaar"
+        },
+        "natural/arete": {
+          "name": "Karling",
+          "terms": "kitsas ja teravaharjaline jäänukahelik"
         },
         "natural/bare_rock": {
           "name": "Paljand",
@@ -4502,10 +4530,6 @@
           "name": "Hüdroelektrijaam",
           "terms": "hüdro,tamm,veeturbiin"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Päikeseelektrijaam",
-          "terms": "päikesejaam,päikesepark"
-        },
         "power/plant/source/nuclear": {
           "name": "Tuumaelektrijaam",
           "terms": "tuumajaam,aatom,reaktor"
@@ -4559,7 +4583,8 @@
           "terms": "bussiplatvorm,bussioote platvorm"
         },
         "public_transport/platform/bus_point": {
-          "name": "Bussipeatus"
+          "name": "Bussipeatus",
+          "terms": "peatus"
         },
         "public_transport/platform/bus_tram_point": {
           "name": "Bussi- ja trammipeatus"
@@ -4885,8 +4910,8 @@
           "terms": "lastepood,tita pood"
         },
         "shop/bag": {
-          "name": "Kotipood",
-          "terms": "käekoti pood"
+          "name": "Koti- ja kohvripood",
+          "terms": "käekott,seljakott,õlakott,pagas"
         },
         "shop/bakery": {
           "name": "Pagariäri"
@@ -4911,7 +4936,7 @@
         },
         "shop/bed": {
           "name": "Magamistoamööbli ja -tarvikute pood",
-          "terms": "voodipood,madratsipood,padjapood,mööblipood"
+          "terms": "voodipood,madratsipood,padjapood,mööblipood,voodilinad,linad"
         },
         "shop/beverages": {
           "name": "Joogikauplus",
@@ -5394,6 +5419,10 @@
           "terms": "fotopood,fototarbed,pildid,fotod,ilmutus",
           "aliases": "Fotograafiapood"
         },
+        "shop/piercing": {
+          "name": "Augustamisteenus",
+          "terms": "augustus,piercing"
+        },
         "shop/pottery": {
           "name": "Keraamikapood"
         },
@@ -5639,7 +5668,7 @@
           "terms": "kuju,postament,kunstiteos,installatsioon"
         },
         "tourism/artwork/statue": {
-          "name": "Kuju",
+          "name": "Kuju/ausammas",
           "terms": "ausammas"
         },
         "tourism/attraction": {
@@ -5763,12 +5792,17 @@
         "tourism/zoo/safari": {
           "name": "Safaripark"
         },
+        "tourism/zoo/wildlife": {
+          "name": "Loomapark",
+          "terms": "looduspark,autoga läbitav loomaaed"
+        },
         "traffic_calming": {
           "name": "Liikluse aeglustamine"
         },
         "traffic_calming/bump": {
-          "name": "Kiirusepiiraja",
-          "terms": "künnis,lamav politseinik,kiirustõke,tõke,liikluskünnis"
+          "name": "Teekünnis",
+          "terms": "künnis,lamav politseinik,kiirustõke,tõke,liikluskünnis",
+          "aliases": "Kiirusepiiraja"
         },
         "traffic_calming/chicane": {
           "name": "Suunamuutetakistus",
@@ -5794,7 +5828,9 @@
           "name": "Eraldussaar"
         },
         "traffic_calming/mini_bumps": {
-          "name": "Väikesed liikluskünnised"
+          "name": "Väikesed teekünnised",
+          "terms": "väike kiirusepiiraja",
+          "aliases": "Väikesed liikluskünnised"
         },
         "traffic_calming/rumble_strip": {
           "name": "Täristi",
@@ -5930,7 +5966,8 @@
           "terms": "gaasijuhe,naftajuhe,kanalisatsioonitoru,veetoru"
         },
         "type/route/piste": {
-          "name": "Suusaraja marsruut"
+          "name": "Suusarada",
+          "terms": "suusatamine"
         },
         "type/route/power": {
           "name": "Elektriliini marsruut"
@@ -6011,7 +6048,7 @@
           "terms": "kamberkalapääs"
         },
         "waterway/fuel": {
-          "name": "Laevakütuse tankla",
+          "name": "Väikelaevade tankla",
           "terms": "kütus,bensiin,diisel,gaas,paat,paadi,mere"
         },
         "waterway/lock_gate": {

@@ -12,11 +12,17 @@
           "name": "Летище",
           "terms": "аерогара"
         },
+        "aeroway/gate": {
+          "name": "Изход на летище"
+        },
         "aeroway/hangar": {
           "name": "Хангар"
         },
         "aeroway/helipad": {
           "name": "Хеликоптерна площадка"
+        },
+        "aeroway/jet_bridge": {
+          "name": "Мост за качване"
         },
         "aeroway/runway": {
           "name": "Летателна писта"
@@ -24,8 +30,23 @@
         "aeroway/taxiway": {
           "name": "Рульожка"
         },
+        "aeroway/terminal": {
+          "name": "Летищен терминал"
+        },
+        "aeroway/windsock": {
+          "name": "Въздушен чорап"
+        },
         "amenity": {
           "name": "Услуги"
+        },
+        "amenity/animal_boarding": {
+          "name": "Хотел за домашни любимци"
+        },
+        "amenity/animal_breeding": {
+          "name": "Развъдник за животни"
+        },
+        "amenity/animal_shelter": {
+          "name": "Приют за животни"
         },
         "amenity/atm": {
           "name": "Банкомат"
@@ -42,8 +63,24 @@
         "amenity/bicycle_parking": {
           "name": "Паркинг за велосипеди"
         },
+        "amenity/bicycle_parking/lockers": {
+          "name": "Шкафчета за велосипеди"
+        },
+        "amenity/bicycle_parking/shed": {
+          "name": "Навес за велосипеди"
+        },
         "amenity/bicycle_rental": {
           "name": "Наем на велосипеди"
+        },
+        "amenity/bicycle_repair_station": {
+          "name": "Стойка с инструменти за ремонт на велосипеди"
+        },
+        "amenity/bicycle_wash": {
+          "name": "Мивка за велосипеди"
+        },
+        "amenity/bureau_de_change": {
+          "name": "Обменно бюро",
+          "terms": "чейндж,чейндж бюро"
         },
         "amenity/bus_station": {
           "name": "Автостанция / терминал"
@@ -60,21 +97,133 @@
         "amenity/casino": {
           "name": "Казино"
         },
+        "amenity/charging_station": {
+          "name": "Зарядна станция"
+        },
         "amenity/childcare": {
           "name": "Детска ясла"
         },
         "amenity/cinema": {
           "name": "Кино"
         },
+        "amenity/clinic/dialysis": {
+          "name": "Диализен център"
+        },
+        "amenity/clinic/fertility": {
+          "name": "Клиника за репродуктивно здраве"
+        },
+        "amenity/clock": {
+          "name": "Часовник"
+        },
+        "amenity/clock/sundial": {
+          "name": "Слънчев часовник"
+        },
+        "amenity/community_centre": {
+          "name": "Общностен център"
+        },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "Читалище"
+        },
+        "amenity/community_centre/community_hall": {
+          "name": "Общностна зала"
+        },
+        "amenity/community_centre/cultural_centre": {
+          "name": "Културен център"
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Семеен център"
+        },
+        "amenity/community_centre/lgbtq": {
+          "name": "Център на LGBTQ+ общността"
+        },
+        "amenity/community_centre/parish_hall": {
+          "name": "Енорийски център"
+        },
+        "amenity/community_centre/village_hall": {
+          "name": "Селски център"
+        },
+        "amenity/community_centre/youth_centre": {
+          "name": "Младежки център"
+        },
         "amenity/courthouse": {
           "name": "Съд"
+        },
+        "amenity/crematorium": {
+          "name": "Крематориум"
         },
         "amenity/dentist": {
           "name": "Стоматолог",
           "terms": "зъб,зъби,зъболекар"
         },
+        "amenity/doctors": {
+          "name": "Доктор"
+        },
+        "amenity/doctors/allergology": {
+          "name": "Алерголог"
+        },
+        "amenity/doctors/cardiology": {
+          "name": "Кардиолог"
+        },
+        "amenity/doctors/child_psychiatry": {
+          "name": "Детски психиатър"
+        },
+        "amenity/doctors/dermatology": {
+          "name": "Дерматолог"
+        },
+        "amenity/doctors/gastroenterology": {
+          "name": "Гастроентеролог"
+        },
+        "amenity/doctors/general": {
+          "name": "Личен лекар",
+          "terms": "семеен лекар,gp"
+        },
+        "amenity/doctors/gynaecology": {
+          "name": "Акушер-гинеколог"
+        },
+        "amenity/doctors/haematology": {
+          "name": "Хематолог"
+        },
+        "amenity/doctors/internal": {
+          "name": "Вътрешен лекар (интернист)"
+        },
+        "amenity/doctors/nephrology": {
+          "name": "Нефролог",
+          "terms": "бъбрек,бъбреци,нефрология"
+        },
+        "amenity/doctors/neurology": {
+          "name": "Невролог"
+        },
+        "amenity/doctors/neurosurgery": {
+          "name": "Неврохирург"
+        },
+        "amenity/doctors/oncology": {
+          "name": "Онколог"
+        },
+        "amenity/doctors/ophthalmology": {
+          "name": "Офтамолог",
+          "terms": "очен лекар,очи,очила"
+        },
+        "amenity/doctors/otolaryngology": {
+          "name": "УНГ",
+          "terms": "уши,нос,гърло,отоларинголог"
+        },
+        "amenity/doctors/paediatrics": {
+          "name": "Педиатър"
+        },
+        "amenity/doctors/pathology": {
+          "name": "Патолог"
+        },
         "amenity/doctors/podiatry": {
           "name": "Ортопед"
+        },
+        "amenity/doctors/rheumatology": {
+          "name": "Ревматолог"
+        },
+        "amenity/doctors/urology": {
+          "name": "Уролог"
+        },
+        "amenity/dressing_room": {
+          "name": "Съблекалня"
         },
         "amenity/drinking_water": {
           "name": "Чешма"
@@ -88,6 +237,21 @@
         },
         "amenity/fast_food": {
           "name": "Бърза закуска"
+        },
+        "amenity/fast_food/bagel": {
+          "name": "Багети"
+        },
+        "amenity/fast_food/burger": {
+          "name": "Бургери"
+        },
+        "amenity/fast_food/donut": {
+          "name": "Донъти"
+        },
+        "amenity/fast_food/hot_dog": {
+          "name": "Хот дог"
+        },
+        "amenity/fast_food/ice_cream": {
+          "name": "Сладолед"
         },
         "amenity/fire_station": {
           "name": "Пожарна"
@@ -383,9 +547,6 @@
         "building/cowshed": {
           "name": "Краварник",
           "terms": "обор,кравеферма"
-        },
-        "building/entrance": {
-          "name": "Вход/изход"
         },
         "building/garage": {
           "name": "Гараж"
@@ -1228,10 +1389,6 @@
           "name": "ВЕЦ",
           "terms": "водноелектрическа централа,водно-електрическа централа,водно електрическа централа"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Фотоволтаична ферма",
-          "terms": "фотоволтаици,фотоволтаична централа"
-        },
         "power/plant/source/nuclear": {
           "name": "АЕЦ"
         },
@@ -1406,9 +1563,6 @@
         "shop/beauty/tanning": {
           "name": "Солариум",
           "terms": "солариум"
-        },
-        "shop/bed": {
-          "name": "Магазин за легла/матраци"
         },
         "shop/beverages": {
           "name": "Магазин за алкохол и цигари"

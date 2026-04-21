@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Commonwealth Bank, ANZ, NAB, Westpac, Bendigo Bank, BOM, Bankwest, Next Payments, Next, atmx, NEXT Payments, HSBC, CBA, atmX, Precinct ATM, Precinct, RediATM, Commonwealth, Bank of Melbourne, Bank Australia, ATMx]
+atmOperators: [Commonwealth Bank, ANZ, NAB, Westpac, Bendigo Bank, BOM, Bankwest, Next Payments, Next, atmx, NEXT Payments, HSBC, CBA, Armaguard, atmX, Precinct, RediATM, Precinct ATM, Commonwealth, Bank of Melbourne, Bank Australia]
 chargingStationOperators: [Evie Networks, Chargefox, Tesla, Central Victorian Greenhouse Alliance, Exploren, AmpCharge, Jolt, BP Pulse, NRMA, 'Tesla, Inc.', ChargePoint, Toyota, The District Docklands, Secure Parking, RACV, Linga Network, Foxcharger]
 clothesContainerOperators: [SCRgroup]
 defaultSpeedLimitHasUrbanOrRural: true

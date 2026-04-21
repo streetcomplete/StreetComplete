@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [PNC Bank, Wells Fargo, Bank of America, Citizens Bank, Pay Depot, First National Bank, Santander, Fulton Bank, Bitstop, Chase, PSECU, Athena Bitcoin, Huntington Bank, Diebold Nixdorf, Wells Fargo ATM, S&T Bank, PNC, Northwest Bank, M&T Bank, Freedom Gateway, WesBanco, Truist, Somerset Trust Co, Penn Community Bank, Marion Center Bank, Jersey Shore State Bank, First Commonwealth Bank, First Commonweaith, Coinhub, Citibank, Cardtronics, Cal-Ed Federal Credit Union]
-chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Volta, Tesla, Blink, Electrify America, EVgo, eVgo, FLO, Whole Foods, Tru by Hilton Chambersburg, 'Tesla, Inc', SemaConnect]
+atmOperators: [PNC Bank, Wells Fargo, Bank of America, Citizens Bank, Pay Depot, First National Bank, Santander, Fulton Bank, Bitstop, PSECU, Chase, Huntington Bank, Athena Bitcoin, Diebold Nixdorf, Wells Fargo ATM, S&T Bank, PNC, Northwest Bank, M&T Bank, WesBanco, Truist, Somerset Trust Co, Penn Community Bank, Marion Center Bank, Jersey Shore State Bank, Freedom Gateway, First Commonwealth Bank, First Commonweaith, Coinhub, Citibank, Cardtronics, Cal-Ed Federal Credit Union]
+chargingStationOperators: [ChargePoint, 'Tesla, Inc.', Volta, Tesla, Blink, Electrify America, EVgo, eVgo, FLO, Whole Foods, Tru by Hilton Chambersburg, SemaConnect]
 clothesContainerOperators: [USAgain, Salvation Army]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Amazon Hub, Amazon Locker, Amazon Hub Locker]

@@ -127,9 +127,6 @@
           "name": "LHBTQ+-bar",
           "terms": "homsebar"
         },
-        "amenity/bbq": {
-          "name": "Grill"
-        },
         "amenity/bench": {
           "name": "Benk"
         },
@@ -221,9 +218,6 @@
         "amenity/courthouse": {
           "name": "Tinghus"
         },
-        "amenity/coworking_space": {
-          "name": "Rom for medarbeider"
-        },
         "amenity/crematorium": {
           "name": "Krematorium"
         },
@@ -238,9 +232,6 @@
         },
         "amenity/doctors/dermatology": {
           "name": "Hudlege"
-        },
-        "amenity/doctors/gynaecology": {
-          "name": "Fødselslege/Gynekolog"
         },
         "amenity/doctors/plastic_surgery": {
           "name": "Plastisk kirurg"
@@ -928,9 +919,6 @@
         "building/dormitory": {
           "name": "Sovesal"
         },
-        "building/entrance": {
-          "name": "Inngang/utgang"
-        },
         "building/farm": {
           "name": "Gårdshus"
         },
@@ -1599,9 +1587,6 @@
         "highway/turning_loop": {
           "name": "Snuplass"
         },
-        "highway/unclassified": {
-          "name": "Mindre/uklassifisert vei"
-        },
         "historic": {
           "name": "Historisk sted"
         },
@@ -1916,9 +1901,6 @@
         },
         "leisure/pitch/beachvolleyball": {
           "name": "Strandvolleyballbane"
-        },
-        "leisure/pitch/boules": {
-          "name": "Boule-/bocciabane"
         },
         "leisure/pitch/chess": {
           "name": "Stort sjakkbrett"
@@ -2665,9 +2647,6 @@
         "power/plant/source/hydro": {
           "name": "Vannkraftverk"
         },
-        "power/plant/source/method/photovoltaic": {
-          "name": "Solcellepark"
-        },
         "power/plant/source/nuclear": {
           "name": "Atomkraftverk"
         },
@@ -2963,9 +2942,6 @@
         "shop/baby_goods": {
           "name": "Babyutstyrsbutikk"
         },
-        "shop/bag": {
-          "name": "Veskebutikk"
-        },
         "shop/bakery": {
           "name": "Bakeri"
         },
@@ -2983,9 +2959,6 @@
         },
         "shop/beauty/tanning": {
           "name": "Solstudio"
-        },
-        "shop/bed": {
-          "name": "Sengebutikk"
         },
         "shop/beverages": {
           "name": "Øl- og vinutsalg"
@@ -3348,9 +3321,6 @@
         "shop/pyrotechnics": {
           "name": "Fyrverkerihandel"
         },
-        "shop/radiotechnics": {
-          "name": "Elektronikkbutikk"
-        },
         "shop/religion": {
           "name": "Religiøs butikk"
         },
@@ -3456,9 +3426,6 @@
         },
         "shop/water": {
           "name": "Drikkevannbutikk"
-        },
-        "shop/water_sports": {
-          "name": "Vannsport/Svømmebutikk"
         },
         "shop/weapons": {
           "name": "Våpenbutikk"
@@ -3746,9 +3713,6 @@
         },
         "type/route/pipeline": {
           "name": "Rørledningsrute"
-        },
-        "type/route/piste": {
-          "name": "Skiløype"
         },
         "type/route/power": {
           "name": "Kraftlinje"
