@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddHandrail : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -29,9 +30,8 @@ class AddHandrail : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify whether steps have handrails"
     override val wikiLink = "Key:handrail"
     override val icon = R.drawable.quest_steps_handrail
+    override val title = Res.string.quest_handrail_title
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_handrail_title
 
     override fun createForm() = YesNoQuestForm()
 

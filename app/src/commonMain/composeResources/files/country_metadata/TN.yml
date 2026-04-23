@@ -1,0 +1,11 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [fr, en]
+atmOperators: [الاتحاد البنكي للتجارة والصناعة, STB Bank, Banque de Tunisie, بنك تونس العربي الدولي, UBCI, Amen Bank, مصرف الزيتونة, البنك الوطني الفلاحي, UIB, STB, Poste Tunisienne, BNA Bank, Attijari bank]
+defaultSpeedLimitHasUrbanOrRural: true
+mobileCountryCode: 605
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
+officialLanguages: [ar]
+orchardProduces: [olive, almond, date, pistachio, tomato, apple, grape, chilli_pepper, sweet_pepper, fig, orange, peach, apricot, grapefruit, pear, lemon, lime]
+popularReligions: [muslim]
+roofsAreUsuallyFlat: true

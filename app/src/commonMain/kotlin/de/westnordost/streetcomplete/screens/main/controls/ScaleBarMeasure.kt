@@ -2,12 +2,7 @@ package de.westnordost.streetcomplete.screens.main.controls
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.intl.Locale
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.feet_symbol
-import de.westnordost.streetcomplete.resources.kilometers_symbol
-import de.westnordost.streetcomplete.resources.meters_symbol
-import de.westnordost.streetcomplete.resources.miles_symbol
-import de.westnordost.streetcomplete.resources.yards_symbol
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.FeetAndMiles
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.Metric
 import de.westnordost.streetcomplete.screens.main.controls.ScaleBarMeasure.YardsAndMiles

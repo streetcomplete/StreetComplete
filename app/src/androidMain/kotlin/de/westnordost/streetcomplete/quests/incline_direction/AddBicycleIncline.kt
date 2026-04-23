@@ -10,12 +10,14 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.math.measuredLength
 
 class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer>, AndroidQuest {
 
     private val tagFilter by lazy { """
-        ways with mtb:scale:uphill
+        ways with
+         mtb:scale:uphill
          and highway ~ footway|cycleway|path|bridleway|track
          and (!indoor or indoor = no)
          and area != yes
@@ -26,8 +28,10 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer>, AndroidQues
     override val changesetComment = "Specify which way leads up (where mtb:scale:uphill is present)"
     override val wikiLink = "Key:incline"
     override val icon = R.drawable.quest_bicycle_incline
+    override val title = Res.string.quest_bicycle_incline_title
     override val achievements = listOf(BICYCLIST)
     override val hasMarkersAtEnds = false
+    override val hint = Res.string.quest_arrow_tutorial
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // sadly for very long ways shape may be complex and it may be confusing which answer should be given
@@ -46,10 +50,6 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer>, AndroidQues
         if (!tagFilter.matches(element)) return false
         return null
     }
-
-    override val hint = R.string.quest_arrow_tutorial
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_incline_title
 
     override fun createForm() = AddBicycleInclineForm()
 

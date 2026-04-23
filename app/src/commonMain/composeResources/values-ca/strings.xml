@@ -59,7 +59,6 @@
     <string name="about_title_privacy_statement">Declaració de privadesa</string>
     <string name="quest_openingHours_public_holidays">Festius públics</string>
     <string name="quest_openingHours_public_holidays_short">FP</string>
-    <string name="quest_openingHours_open_end">final de l'obertura</string>
     <string name="quest_openingHours_answer_247">Obert 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Depèn del mes…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">No té horari d'obertura habitual…</string>
@@ -111,7 +110,6 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
     <string name="quest_surface_value_sett">Llambordes no ajustades</string>
     <string name="quest_surface_value_wood">Fusta</string>
     <string name="quest_sidewalk_title">Aquest carrer té vorera?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">On és aquest carrer?</string>
     <string name="quest_address_title">Quin número de portal té aquest edifici?</string>
     <string name="store_listing_short_description">Aplicació de cartògraf de camp per a l'OpenStreetMap</string>
     <string name="store_listing_full_description">Ajudeu a millorar l'OpenStreetMap amb StreetComplete!
@@ -178,9 +176,6 @@ Aleshores, la informació que introduïu s'afegeix directament a l'OpenStreetMap
     <string name="quest_maxspeed_answer_noSign_confirmation">Heu comprovat els caps del carrer?
 Si no hi ha cap senyal en tot el carrer que s'apliqui en l'àrea realçada, s'apliquen els límits de velocitat predeterminats.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Sí, no hi ha cap senyal</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Les vies urbanes tenen límits de velocitat diferents que els vies rurals.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Dins el nucli urbà</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Fora del nucli urbà</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Si hi ha un signe d'aquest tipus a la intersecció del carrer principal, no trobareu indicis individuals a la zona perquè el límit de velocitat publicat allà s'aplica a tota la zona.</string>
     <string name="quest_sport_softball">Softbol</string>
     <string name="quest_sport_racquet">Raquetbol</string>
@@ -214,7 +209,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="credits_contributors_title">Contribuïdors al codi</string>
     <string name="credits_author_title">Autor i mantenidor</string>
     <string name="quest_maxspeed_answer_living_street">És una via residencial</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Per tant, hi ha un senyal com aquest?</string>
     <string name="quest_orchard_produce_title">Què hi cultiven aquí?</string>
     <string name="produce_grapes">Raïm</string>
     <string name="produce_agaves">Agaves</string>
@@ -286,7 +280,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_buildingLevels_levelsLabel2">nivells normals (sense comptar la teulada)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">És diferent a vàries parts de l'edifici</string>
     <string name="quest_buildingLevels_answer_description">En aquest cas, senzillament entreu els valors de la part de l'edifici més alta.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Els carrils d'aquesta carretera  estan físicament separats (és a dir, a través d'una barrera)? El límit de velocitat per defecte depèn de si aquest és el cas o no.</string>
     <string name="about_category_feedback">Comentaris</string>
     <string name="quest_leave_new_note_photo">Adjunta la foto</string>
     <string name="quest_leave_new_note_photo_delete_title">Voleu eliminar aquesta foto?</string>
@@ -317,7 +310,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_housenumber_conscription_number">Número de circumscripció</string>
     <string name="quest_housenumber_street_number_optional">Número d'orientació (opcional)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">També hi ha carril bici a l'altre costat…</string>
-    <string name="quest_openingHours_emptyAnswer">Cal que descriviu què hi ha al cartell. Si no hi ha cap cartell, hauríeu de demanar l'horari d'obertura en l'interior.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">cap, però els ciclistes poden usar la via en ambdós sentits</string>
     <string name="quest_wheelchairAccess_description_toilets">Pot ser que un senyal de cadira de rodes com aquest sigui visible si el lavabo és accessible.
 Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos, però no hi ha barana o un rentamans adaptat.</string>
@@ -452,7 +444,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_openingHours_no_sign">No hi ha cartell amb horaris</string>
     <string name="quest_buildingType_sports_centre">Centre d'esports</string>
     <string name="quest_buildingType_toilets">Lavabos</string>
-    <string name="quest_maxspeed_sign_question">Què defineix el límit de velocitat?</string>
     <string name="quest_segregated_title">Com estan separats el carril bici i la vorera?</string>
     <string name="dialog_tutorial_upload">Per pujar els vostres canvis manualment, useu el botó a la barra d'eines que és així.</string>
     <string name="quest_segregated_separated">Segregat l'un de l'altre</string>
@@ -467,7 +458,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="privacy_html_image_upload2">&lt;p&gt;Les fotografies que adjunteu a una nota es carreguen al meu servidor i se suprimeixen uns dies després que la nota s'hagi resolt. Les metadades dels fitxers s'eliminen abans de pujar-los.&lt;/p&gt;</string>
     <string name="action_deselect_all">Desselecciona-ho tot</string>
     <string name="quest_buildingType_retail_description">incloent-hi els edificis de restaurants, cafès, botigues grans…</string>
-    <string name="quest_openingHours_timeSelect_next">Següent</string>
     <string name="quest_tracktype_title">Quina fermesa té la superfície d'aquesta pista?</string>
     <string name="quest_tracktype_grade1">Sòlida</string>
     <string name="quest_tracktype_grade4">Principalment tova</string>
@@ -493,7 +483,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="action_open_location">Obre la ubicació en una altra aplicació</string>
     <string name="map_application_missing">No hi ha cap altra aplicació de mapes instal·lada</string>
     <string name="label_housenumber">número de casa</string>
-    <string name="label_blocknumber">número de bloc</string>
     <string name="quest_busStopShelter_covered">Cobreix tota la parada</string>
     <string name="quest_ferry_pedestrian_title">Aquesta ruta de ferri transporta vianants?</string>
     <string name="quest_ferry_motor_vehicle_title">Aquest ferri transporta vehicles a motor?</string>
@@ -526,7 +515,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_recycling_type_glass_bottles">Ampolles i gerres de vidre</string>
     <string name="quest_recycling_type_glass_bottles_short">Ampolles i gerres</string>
     <string name="quest_recycling_type_paper">Paper</string>
-    <string name="quest_recycling_type_plastic_generic">Plàstic</string>
     <string name="quest_recycling_type_plastic">Qualsevol tipus de plàstic</string>
     <string name="quest_recycling_type_shoes">Calçat</string>
     <string name="quest_recycling_type_electric_appliances">Aparells elèctrics</string>
@@ -634,7 +622,8 @@ Finalment, ves amb compte: para atenció al que t'envolta i no entris en propiet
     <string name="achievement_wheelchair_title">Mobilitat</string>
     <string name="achievement_wheelchair_solved_X">Heu resolt %1$d missions que ajuden usuaris amb cadira de rodes a anar pel poble!</string>
     <string name="achievement_postman_title">Carter</string>
-    <string name="achievement_postman_solved_X">Heu ajudat a ubicar %1$d adreces! Aquests dades són essencials, no només per al carter sinó també per a qualsevol sistema de navegació.</string>
+    <string name="achievement_postman_solved_X">Heu ajudat a localitzar %1$d adreces i altres serveis postals!
+Aquestes dades són essencials no només per al transportista de correu, sinó també per a qualsevol sistema de navegació.</string>
     <string name="achievement_building_title">Alçades</string>
     <string name="achievement_building_solved_X">Heu resolt %1$d missions relacionades amb edificis.
 Tingueu en compte que aquesta aplicació només pregunta pel número de l'edifici sols després que el tipus hagi sigut determinat.</string>
@@ -686,11 +675,10 @@ d'acompliment</string>
     <string name="quest_board_type_map_description">Si el tauler tracta sobre un tema en particular, especifiqueu-ho, independentment de si també inclou un mapa. Per exemple, un consell de transport públic pot tenir un mapa de ruta d'autobús. Si el tema no està llistat entre les respostes disponibles, considereu deixar una nota en el seu lloc.</string>
     <string name="quest_streetName_menuItem_international">internacional</string>
     <string name="quest_buildingType_terrace2">Files de cases</string>
-    <string name="at_housename">Nom de la casa %1$s</string>
+    <string name="at_housename">nom de la casa %1$s</string>
     <string name="at_housenumber">número de casa %1$s</string>
     <string name="quest_openingHours_add_off_days">Afegeix els dies de descans</string>
     <string name="quest_openingHours_off_day">Dia de descans</string>
-    <string name="quest_openingHours_unspecified_range">Sense especificar</string>
     <string name="quest_cycleway_resurvey_title">Aquesta és encara la situació del carril bici aquí?</string>
     <string name="pref_title_resurvey_intervals">Intervals de reenquesta</string>
     <string name="resurvey_intervals_less_often">Demana-ho menys sovint</string>
@@ -701,7 +689,6 @@ d'acompliment</string>
     <string name="quest_oneway2_title">Aquest és un carrer de sentit únic? En quin sentit?</string>
     <string name="quest_oneway2_dir">Sentit únic en aquesta direcció</string>
     <string name="quest_oneway2_no_oneway">No és de sentit únic</string>
-    <string name="quest_maxweight_select_sign">Seleccioneu un senyal</string>
     <string name="quest_steps_incline_title">Quin sentit porta cap amunt per aquestes escales?</string>
     <string name="quest_steps_incline_up">Puja en aquest sentit</string>
     <string name="quest_step_count_title">Quants graons hi ha aquí?</string>
@@ -788,7 +775,6 @@ Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Corona d'Escòcia</string>
     <string name="quest_buildingType_fire_station">Parc de bombers</string>
     <string name="quest_recycling_type_beverage_cartons">Només cartons de beguda</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Només ampolles i cartons plàstics</string>
     <string name="team_mode">Mode d'equip</string>
     <string name="team_mode_exit">Sortir del mode d'equip</string>
     <string name="team_mode_description">Quan mapegeu la mateixa àrea en un grup, podeu entrar en el mode equip per dividir les cerques entre tots els membres de l'equip.</string>
@@ -987,7 +973,7 @@ Alternativament, pots deixar una nota (amb foto).</string>
     <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indica quin vehicle pot utilitzar bé la superfície. El que importa és el panorama general en lloc de danys individuals.</string>
     <string name="link_osmhydrant_description">Cerca, afegeix i edita estacions de bombers i hidrants</string>
     <string name="achievement_lifesaver_title">Salvavides</string>
-    <string name="achievement_lifesaver_solved_X">Has resolt %1$d missions que ajuden als serveis d'emergència!</string>
+    <string name="achievement_lifesaver_solved_X">Heu resolt %1$d missions que ajuden als serveis d'emergència!</string>
     <string name="quest_fuelSelfService_title">A aquesta benzinera pots repostar tu mateix?</string>
     <string name="default_disabled_msg_difficult_and_time_consuming">Aquest tipus de missió està desactivada per defecte perquè consumeix temps i a vegades és difícil de triar l’opció correcta. Només hauríeu d’activar-la si realment esteu compromès a afegir aquest tipus de dades.</string>
     <string name="quest_smoothness_description_good_compacted_gravel">Molt compactat, poca grava o sorra solta</string>
@@ -1144,13 +1130,8 @@ Feu el mateix per a l'altre costat.</string>
     <string name="quest_camp_drinking_water_title">Els campistes poden beure aigua debades?</string>
     <string name="quest_camp_shower_title">Hi ha dutxes aquí?</string>
     <string name="quest_camp_power_supply_title">Els clients poden carregar ací el seu mòbil, portàtil, etc.?</string>
-    <string name="quest_camp_type_title">Qui hi pot acampar aquí?</string>
-    <string name="quest_camp_type_tents_and_caravans">Tant tendes com autocaravanes, caravanes, ...</string>
-    <string name="quest_camp_type_caravans_only">Només autocaravanes, caravanes, ...</string>
-    <string name="quest_camp_type_tents_only">Només tendes</string>
     <string name="quest_camp_type_backcountry">Zona d'acampada lliure (sense instal·lacions)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Aquest diàmetre sembla inversemblant, normalment es troba entre %1$d i %2$d.</string>
-    <string name="quest_recycling_type_pet">Només PET</string>
     <string name="street_parking_street_width">Amplada del carrer: %1$s</string>
     <string name="overlay_street_parking">Aparcament al carrer
 </string>
@@ -1244,9 +1225,6 @@ Menejar ara?</string>
     <string name="street_parking_staggered_half_on_kerb">Parcialment al carrer alternant el costat</string>
     <string name="quest_traffic_signals_sound_description">Pista: Busca altaveus (poden ser grans o menuts). No sempre el so sona permanentment.</string>
     <string name="quest_presets_duplicate">Duplicat</string>
-    <string name="label_block">Bloc</string>
-    <string name="quest_address_answer_block">Es troba a un bloc...</string>
-    <string name="quest_address_answer_no_block">No és a un bloc...</string>
     <string name="quest_surface_value_mud">Fang persistent</string>
     <string name="quest_wheelchairAccessPat_noToilet">Aquí no hi ha lavabo</string>
     <string name="unknown_surface_title">Un altre tipus de superfície</string>
@@ -1468,4 +1446,16 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="quest_streetName_add_language">Afegiu idioma</string>
     <string name="ok">D'acord</string>
     <string name="cancel">Cancel·lar</string>
+    <string name="quest_aerialway_bicycle_title">Aquest ascensor aeri transporta bicicletes?</string>
+    <string name="quest_aerialway_bicycle_summer">Només l'estiu</string>
+    <string name="quest_board_type_rules">Regles</string>
+    <string name="quest_firewood_provided_title">Es proporciona llenya aquí?</string>
+    <string name="quest_first_aid_kit_location">On es troba aquest kit de primers auxilis?</string>
+    <string name="quest_lane_markings_title">Aquesta carretera té marques de carril?</string>
+    <string name="quest_level_thing_title">En quin número de nivell es troba això?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Quantes bicicletes es poden carregar aquí alhora?</string>
+    <string name="quest_charging_station_bicycles_title">També es poden carregar bicicletes aquí?</string>
+    <string name="quest_charging_station_bicycles_hint">Els adaptadors de carregador de bicicletes es connecten a endolls domèstics normals.</string>
+    <string name="quest_tower_access_title">Qui pot accedir a aquesta torre? Pot ser gratuït o de pagament.</string>
+    <string name="quest_charging_station_bicycles_answer_only">És només per a bicicletes</string>
 </resources>

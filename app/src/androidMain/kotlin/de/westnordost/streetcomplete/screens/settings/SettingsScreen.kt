@@ -32,48 +32,7 @@ import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.ResurveyIntervals
 import de.westnordost.streetcomplete.data.preferences.Theme
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.action_manage_presets
-import de.westnordost.streetcomplete.resources.action_manage_presets_summary
-import de.westnordost.streetcomplete.resources.action_settings
-import de.westnordost.streetcomplete.resources.autosync_off
-import de.westnordost.streetcomplete.resources.autosync_on
-import de.westnordost.streetcomplete.resources.autosync_only_on_wifi
-import de.westnordost.streetcomplete.resources.delete_cache_dialog_message
-import de.westnordost.streetcomplete.resources.delete_confirmation
-import de.westnordost.streetcomplete.resources.dialog_tutorial_upload
-import de.westnordost.streetcomplete.resources.ic_file_upload_48
-import de.westnordost.streetcomplete.resources.language_default
-import de.westnordost.streetcomplete.resources.pref_category_advanced
-import de.westnordost.streetcomplete.resources.pref_category_communication
-import de.westnordost.streetcomplete.resources.pref_category_display
-import de.westnordost.streetcomplete.resources.pref_category_quests
-import de.westnordost.streetcomplete.resources.pref_subtitle_quests
-import de.westnordost.streetcomplete.resources.pref_summaryOff_show_notes_not_phrased_as_questions
-import de.westnordost.streetcomplete.resources.pref_summaryOn_show_notes_not_phrased_as_questions
-import de.westnordost.streetcomplete.resources.pref_title_delete_cache
-import de.westnordost.streetcomplete.resources.pref_title_delete_cache_summary
-import de.westnordost.streetcomplete.resources.pref_title_keep_screen_on
-import de.westnordost.streetcomplete.resources.pref_title_language_select2
-import de.westnordost.streetcomplete.resources.pref_title_overlays
-import de.westnordost.streetcomplete.resources.pref_title_quests2
-import de.westnordost.streetcomplete.resources.pref_title_quests_restore_hidden
-import de.westnordost.streetcomplete.resources.pref_title_quests_restore_hidden_summary
-import de.westnordost.streetcomplete.resources.pref_title_resurvey_intervals
-import de.westnordost.streetcomplete.resources.pref_title_resurvey_intervals_summary
-import de.westnordost.streetcomplete.resources.pref_title_show_notes_not_phrased_as_questions
-import de.westnordost.streetcomplete.resources.pref_title_sync2
-import de.westnordost.streetcomplete.resources.pref_title_theme_select
-import de.westnordost.streetcomplete.resources.pref_title_zoom_buttons
-import de.westnordost.streetcomplete.resources.quest_presets_default_name
-import de.westnordost.streetcomplete.resources.restore_confirmation
-import de.westnordost.streetcomplete.resources.restore_dialog_message
-import de.westnordost.streetcomplete.resources.resurvey_intervals_default
-import de.westnordost.streetcomplete.resources.resurvey_intervals_less_often
-import de.westnordost.streetcomplete.resources.resurvey_intervals_more_often
-import de.westnordost.streetcomplete.resources.theme_dark
-import de.westnordost.streetcomplete.resources.theme_light
-import de.westnordost.streetcomplete.resources.theme_system_default
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
@@ -96,6 +55,7 @@ fun SettingsScreen(
     onClickQuestSelection: () -> Unit,
     onClickOverlaySelection: () -> Unit,
     onClickLanguageSelection: () -> Unit,
+    onClickMessagesSelection: () -> Unit,
     onClickBack: () -> Unit,
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
@@ -185,10 +145,7 @@ fun SettingsScreen(
                         else Res.string.pref_summaryOff_show_notes_not_phrased_as_questions
                     )
                 ) {
-                    Switch(
-                        checked = showAllNotes,
-                        onCheckedChange = { viewModel.setShowAllNotes(it) }
-                    )
+                    Switch(checked = showAllNotes, onCheckedChange = null)
                 }
             }
 
@@ -240,23 +197,22 @@ fun SettingsScreen(
                 }
 
                 Preference(
+                    name = stringResource(Res.string.pref_title_messages),
+                    onClick = onClickMessagesSelection,
+                ) { NextScreenIcon() }
+
+                Preference(
                     name = stringResource(Res.string.pref_title_zoom_buttons),
                     onClick = { viewModel.setShowZoomButtons(!showZoomButtons) },
                 ) {
-                    Switch(
-                        checked = showZoomButtons,
-                        onCheckedChange = { viewModel.setShowZoomButtons(it) }
-                    )
+                    Switch(checked = showZoomButtons, onCheckedChange = null)
                 }
 
                 Preference(
                     name = stringResource(Res.string.pref_title_keep_screen_on),
                     onClick = { viewModel.setKeepScreenOn(!keepScreenOn) },
                 ) {
-                    Switch(
-                        checked = keepScreenOn,
-                        onCheckedChange = { viewModel.setKeepScreenOn(it) }
-                    )
+                    Switch(checked = keepScreenOn, onCheckedChange = null)
                 }
             }
 

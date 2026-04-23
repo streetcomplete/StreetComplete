@@ -20,9 +20,9 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
-// TODO Compose
+// TODO Compose:
 //  AlertDialog does not support scrollable content (yet) https://issuetracker.google.com/issues/217151230
 //  This widget and probably SimpleListPickerDialog can be removed/replaced by a normal AlertDialog
 //  as soon as that ticket is solved (which really is a bug, considering that Material design

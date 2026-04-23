@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Declaración de privacidá"</string>
     <string name="quest_openingHours_public_holidays">"Díes festivos"</string>
     <string name="quest_openingHours_public_holidays_short">"Festivos"</string>
-    <string name="quest_openingHours_open_end">"Hora de pieslle flexible"</string>
     <string name="quest_openingHours_answer_247">"Abierto 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Según el mes…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Nun tien horariu d'apertura fixu…"</string>
@@ -110,7 +109,6 @@ Sicasí, primero de facer cualquier cambéu l'aplicación comprueba si la versi�
     <string name="quest_surface_value_sett">"Adoquín de piedra natural"</string>
     <string name="quest_surface_value_wood">"Madera"</string>
     <string name="quest_sidewalk_title">"¿La cai tien cera?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"¿Ónde ta la cai?"</string>
     <string name="quest_address_title">"¿Cuál ye'l númberu de puerta del edificiu?"</string>
     <string name="store_listing_short_description">"Aplicación de mapéu pa OpenStreetMap"</string>
     <string name="store_listing_full_description">"¡Ayuda a ameyorar OpenStreetMap con StreetComplete!
@@ -177,9 +175,6 @@ La información añadida inclúise directo n'OpenStreetMap col to nome ensin pre
     <string name="quest_maxspeed_answer_noSign_confirmation">"¿Mirasti nos dos estremos de la cai?
 Si nun hai señales na parte seleccionada va aplicase la velocidá máxima predeterminada."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Mirélo, nun hai señal"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les víes urbanes tienen una velocidá máxima distinta a la de les rurales."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Urbana"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Rural"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Si hai una señal como ésta na intersexción cola cai principal nun vas alcontrar otres señales porque la velocidá máxima ye la mesma en tola zona."</string>
     <string name="quest_sport_softball">"Sóftbol"</string>
     <string name="quest_sport_racquet">"Ráquetbol"</string>
@@ -213,7 +208,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="credits_contributors_title">"Collaboraciones col códigu"</string>
     <string name="credits_author_title">"Autor y encargáu principal"</string>
     <string name="quest_maxspeed_answer_living_street">"Ye una cai peonil"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"¿Hai una señal como ésta?"</string>
     <string name="quest_orchard_produce_title">"¿Qué se planta equí?"</string>
     <string name="produce_grapes">"Uves"</string>
     <string name="produce_agaves">"Agaves"</string>
@@ -285,7 +279,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_buildingLevels_levelsLabel2">"pisos (ensin contar el teyáu pero sí los baxos)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"el númberu de pisos nun ye uniforme"</string>
     <string name="quest_buildingLevels_answer_description">"Nesi casu conseña namás el pisu de la parte más alta del edificiu."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"¿Sabes si les calzaes tán separtaes ente sí? (exemplu: por una barrera) Nesi casu, la velocidá máxima puede ser diferente."</string>
     <string name="about_category_feedback">"Suxerencies"</string>
     <string name="quest_leave_new_note_photo">"Axuntar foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"¿Quies borrar esta imaxe?"</string>
@@ -316,7 +309,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_housenumber_conscription_number">"Númberu de «conscripción»"</string>
     <string name="quest_housenumber_street_number_optional">"Númberu d'«orientación» (opcional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Tamién carril bici al otru llau…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Describi lo que pon na rotulación. Si nun ves nada puedes preguntar dientro los horarios."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"nun hai nada, pero los ciclistes pueden dir per dambos sentíos de la vía"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Una señal con una siella de ruedes como la que ves puede dar a entender que los llavabos tán adaptaos de manera especial. Parcial ye que se pueda entrar cola siella y usar los llavabos, pero ensin pasamanes o llavabos específicos."</string>
     <string name="map_btn_create_note">"Crear una nota"</string>
@@ -450,7 +442,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_openingHours_no_sign">"Nun hai lletreru coles hores d'apertura"</string>
     <string name="quest_buildingType_sports_centre">"Centru deportivu"</string>
     <string name="quest_buildingType_toilets">"Llavabos"</string>
-    <string name="quest_maxspeed_sign_question">"¿Qué establez la velocidá máxima?"</string>
     <string name="quest_segregated_title">"¿Como tán dispuestos equí'l camín y el carril bici?"</string>
     <string name="dialog_tutorial_upload">"Pa xubir los cambeos de manera manual, usa esti botón na barra de ferramientes."</string>
     <string name="quest_segregated_separated">"Separtáu ún del otru"</string>
@@ -465,7 +456,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="privacy_html_image_upload2">"&lt;p&gt;Les fotos qu'axuntes a una nota xúbense al mio sirvidor y desaníciense unos díes depués de que la nota se resuelva. Los metadatos esbórrense primero de xubila.&lt;p&gt;"</string>
     <string name="action_deselect_all">"Quitar la selección a too"</string>
     <string name="quest_buildingType_retail_description">"incluyendo edificios pa restoranes, cafés…"</string>
-    <string name="quest_openingHours_timeSelect_next">"Siguiente"</string>
     <string name="quest_tracktype_title">"¿Cómo ye'l pisu d'esta vía?"</string>
     <string name="quest_tracktype_grade1">"Sólido y firme"</string>
     <string name="quest_tracktype_grade4">"Suave bastante, un poco suelto"</string>
@@ -491,7 +481,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="action_open_location">"Abrir llugar n'otra app"</string>
     <string name="map_application_missing">"Nun hai otra aplicación pa mapes instalada"</string>
     <string name="label_housenumber">"númberu de casa"</string>
-    <string name="label_blocknumber">"númberu de bloque"</string>
     <string name="quest_busStopShelter_covered">"Tola parada ta sotechada"</string>
     <string name="quest_ferry_pedestrian_title">"¿Tresporta persones?"</string>
     <string name="quest_ferry_motor_vehicle_title">"¿Tresporta vehículos motorizaos?"</string>
@@ -524,7 +513,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_recycling_type_glass_bottles">"Botelles de cristal y vidru"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Botelles y frascos"</string>
     <string name="quest_recycling_type_paper">"Papel"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plásticu"</string>
     <string name="quest_recycling_type_plastic">"Cualquier plásticu"</string>
     <string name="quest_recycling_type_shoes">"Zapatos"</string>
     <string name="quest_recycling_type_electric_appliances">"Aparatos eléctricos"</string>
@@ -687,7 +675,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="at_housenumber">"númberu de la casa %s"</string>
     <string name="quest_openingHours_add_off_days">"Añader díes llibres"</string>
     <string name="quest_openingHours_off_day">"Día llibre"</string>
-    <string name="quest_openingHours_unspecified_range">"Ensin especificar"</string>
     <string name="quest_cycleway_resurvey_title">"¿El carril bici sigue bien marcáu?"</string>
     <string name="pref_title_resurvey_intervals">"Repreguntar pa tener los datos al día"</string>
     <string name="resurvey_intervals_less_often">"Repreguntar menos veces"</string>
@@ -698,7 +685,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_oneway2_title">"¿Ye una cai de sentíu únicu? ¿En qué dirección?"</string>
     <string name="quest_oneway2_dir">"Dirección única nesta dirección"</string>
     <string name="quest_oneway2_no_oneway">"Nun ye d'una sola dirección"</string>
-    <string name="quest_maxweight_select_sign">"Escueyi una señal"</string>
     <string name="quest_steps_incline_title">"¿En qué dirección xube la escalera?"</string>
     <string name="quest_steps_incline_up">"Xube nesta dirección"</string>
     <string name="quest_step_count_title">"¿Cuántos pasos hai?"</string>
@@ -784,7 +770,6 @@ Repara en toles opciones disponibles: a veces nun ye tan obvio, como en víes d'
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La corona d'Escocia"</string>
     <string name="quest_buildingType_fire_station">"Estación de bomberos"</string>
     <string name="quest_recycling_type_beverage_cartons">"Namás caxes de bebíes"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Namás botelles y caxes de plásticu"</string>
     <string name="team_mode">"Mou equipu"</string>
     <string name="team_mode_exit">"Salir del mou equipu"</string>
     <string name="team_mode_description">"Cuando teais dellos meyorando una zona a la vez podéis usar el mou «n'equipu» y dividir asina les xeres ente los miembros."</string>
@@ -1134,13 +1119,8 @@ Tamién puedes dexar una nota (con foto)."</string>
     <string name="quest_camp_drinking_water_title">"¿Hai agua potable de baldre pa campistes?"</string>
     <string name="quest_camp_shower_title">"¿Hai duches?"</string>
     <string name="quest_camp_power_supply_title">"¿Hai manera de cargar teléfonos o dispositivos?"</string>
-    <string name="quest_camp_type_title">"¿Quién puede acampar equí?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Mesmo tiendes de campaña qu'autocaravanes o caravanes"</string>
-    <string name="quest_camp_type_caravans_only">"Namás autocaravanes o caravanes"</string>
-    <string name="quest_camp_type_tents_only">"Namás tiendes de campaña"</string>
     <string name="quest_camp_type_backcountry">"Campamentu al aire llibre (ensin instalaciones)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Esti diámetru nun paez mui realista, suel tar ente %1$d y %2$d."</string>
-    <string name="quest_recycling_type_pet">"Namás polietilenu"</string>
     <string name="street_parking_street_width">"Anchor de la cai: %1$s"</string>
     <string name="overlay_street_parking">"Aparcaderu"</string>
     <string name="link_ohsomehex_description">"Esplora los datos d'OSM en toles categoríes, dende la perspectiva xeneral hasta los oxetos individuales nel espaciu y el tiempu"</string>
@@ -1229,9 +1209,6 @@ Tamién puedes dexar una nota (con foto)."</string>
     <string name="street_parking_staggered_half_on_kerb">"Parcialmente na cai en llaos alternos"</string>
     <string name="quest_traffic_signals_sound_description">"Pista: Busca altavoces (pueden ser grandes o pequeños). Non siempre suenen permanentemente."</string>
     <string name="quest_presets_duplicate">"Duplicao"</string>
-    <string name="label_block">"Bloque"</string>
-    <string name="quest_address_answer_block">"Ta a un bloque"</string>
-    <string name="quest_address_answer_no_block">"Nun ta a un bloque"</string>
     <string name="quest_surface_value_mud">"Barru permanente"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Equí nun hai bañu"</string>
     <string name="unknown_surface_title">"Otru tipu de superficie"</string>

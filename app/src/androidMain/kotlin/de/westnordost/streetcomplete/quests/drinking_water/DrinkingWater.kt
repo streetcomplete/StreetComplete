@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.quests.drinking_water
 
 import de.westnordost.streetcomplete.quests.drinking_water.DrinkingWater.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_drinking_water_not_potable_signed
-import de.westnordost.streetcomplete.resources.quest_drinking_water_potable_signed
-import de.westnordost.streetcomplete.resources.quest_drinking_water_potable_unsigned2
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 enum class DrinkingWater {

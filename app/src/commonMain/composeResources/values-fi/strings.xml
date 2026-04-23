@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Tietosuojalausunto</string>
     <string name="quest_openingHours_public_holidays">Julkiset lomat</string>
     <string name="quest_openingHours_public_holidays_short">Vapaapäivä</string>
-    <string name="quest_openingHours_open_end">joustava sulkemisaika</string>
     <string name="quest_openingHours_answer_247">Auki 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Vaihtelee kuukausittain…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Ei säännöllisiä aukioloaikoja…</string>
@@ -110,7 +109,6 @@ Ennen muutoksien lähettämistä sovellus tarkistaa &lt;a href="https://www.west
     <string name="quest_surface_value_sett">Nupukivi</string>
     <string name="quest_surface_value_wood">Puu</string>
     <string name="quest_sidewalk_title">Onko tällä tiellä jalkakäytävää?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Missä tämä katu on?</string>
     <string name="quest_address_title">Mikä on tämän rakennuksen numero?</string>
     <string name="store_listing_short_description">OpenStreetMap-kartoitussovellus</string>
     <string name="store_listing_full_description">Auta parantamaan OpenStreetMapia StreetCompletella!
@@ -177,9 +175,6 @@ Syöttämäsi tieto lisätään suoraan OpenStreetMapiin omalla nimelläsi, ilma
     <string name="quest_maxspeed_answer_noSign_confirmation">Tarkistitko tien päistä?
 Jos koko tien varrella ei ole nopeusrajoitusmerkiä, joka pätee korostettuun kohtaan, sovelletaan yleistä nopeusrajoitusta.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Olen varma, ei liikennemerkkiä</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Taajama-alueella vakionopeusrajoitukset ovat alhaisemmat kuin taajama-alueen ulkopuolella.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Taajama-alueella</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Taajama-alueen ulkopuolella</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Jos risteyksessä on tämänkaltainen merkki, erillisiä kylttejä ei välttämättä ole, koska siinä ilmoitettu nopeusrajoitus koskee koko aluetta.</string>
     <string name="quest_sport_softball">Softball</string>
     <string name="quest_sport_racquet">Racketball-kenttä</string>
@@ -213,7 +208,6 @@ Muussa tapauksessa voit ladata toisen näppäimistön sovelluskaupasta. Suosittu
     <string name="credits_contributors_title">Koodaajat</string>
     <string name="credits_author_title">Tekijä ja ylläpitäjä</string>
     <string name="quest_maxspeed_answer_living_street">Se on pihakatu</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Eli siellä on tämän näköinen merkki?</string>
     <string name="quest_orchard_produce_title">Mitä tässä viljellään?</string>
     <string name="produce_grapes">Viinirypäleet</string>
     <string name="produce_agaves">Agaavet</string>
@@ -285,7 +279,6 @@ Muussa tapauksessa voit ladata toisen näppäimistön sovelluskaupasta. Suosittu
     <string name="quest_buildingLevels_levelsLabel2">tavallisia kerroksia (ilman kattoa)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Vaihtelee rakennuksen osan mukaan</string>
     <string name="quest_buildingLevels_answer_description">Siinä tapauksessa syötä korkeimman osan mukaan.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Onko vastakkaiset kulkusuunnat erotettu fyysisesti seinämällä tai viheralueella? Oletusnopeusrajoitus riippuu tästä.</string>
     <string name="about_category_feedback">Palaute</string>
     <string name="quest_leave_new_note_photo">Liitä valokuva</string>
     <string name="quest_leave_new_note_photo_delete_title">Haluatko poistaa tämän kuvan?</string>
@@ -316,7 +309,6 @@ Muussa tapauksessa voit ladata toisen näppäimistön sovelluskaupasta. Suosittu
     <string name="quest_housenumber_conscription_number">Rekisteri-numero</string>
     <string name="quest_housenumber_street_number_optional">Suuntaus-numero (valinnainen)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Toisella puolella myös pyörätie…</string>
-    <string name="quest_openingHours_emptyAnswer">Sinun täytyy kuvailla mitä kyltissä näkyy. Jos kylttiä ei ole, kysy aukioloajat sisältä.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ei, mutta pyöräilijät voivat käyttää tietä molempiin suntiin</string>
     <string name="quest_wheelchairAccess_description_toilets">Tällainen merkki voi olla näkyvissä, jos WC:hen pääsee pyörätuolilla. 
 Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei välttämättä ole apuvälineitä, kuten apurautoja, laskettavaa allasta tms.</string>
@@ -451,7 +443,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_openingHours_no_sign">Ei aukioloaikamerkintöjä</string>
     <string name="quest_buildingType_sports_centre">Urheilukeskus</string>
     <string name="quest_buildingType_toilets">Vessat</string>
-    <string name="quest_maxspeed_sign_question">Mikä määrittää nopeusrajoituksen?</string>
     <string name="quest_segregated_title">Miten jalan- ja pyörällä kulku on järjestetty täällä?</string>
     <string name="dialog_tutorial_upload">Tallentaaksesi muutoksesi manuaalisesti, käytä viereistä nappia työkalurivillä.</string>
     <string name="quest_segregated_separated">Rinnakkain erillään toisista</string>
@@ -466,7 +457,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="privacy_html_image_upload2">&lt;p&gt;Liittämäsi kuvat ladataan palvelimelleni ja poistetaan muutamien päivien sisällä ilmoituksen ratkaisusta. Kuvien metadata poistetaan ennen latausta.&lt;/p&gt;</string>
     <string name="action_deselect_all">Poista kaikki valinnat</string>
     <string name="quest_buildingType_retail_description">Sisältää ravintolat, kahvilat, yms kaupalliset rakennukset</string>
-    <string name="quest_openingHours_timeSelect_next">Seuraava</string>
     <string name="quest_tracktype_title">Millainen on tienpinnan kovuus?</string>
     <string name="quest_tracktype_grade1">Päällystetty</string>
     <string name="quest_tracktype_grade4">Enimmäkseen pehmeä</string>
@@ -492,7 +482,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="action_open_location">Avaa sijainti toisessa sovelluksessa</string>
     <string name="map_application_missing">Muita karttasovelluksia ei ole asennettu</string>
     <string name="label_housenumber">talon numero</string>
-    <string name="label_blocknumber">korttelin numero</string>
     <string name="quest_busStopShelter_covered">Koko pysäkki on katettu</string>
     <string name="quest_ferry_pedestrian_title">Sopiiko tämä lauttareitti jalankulkijoille?</string>
     <string name="quest_ferry_motor_vehicle_title">Sopiiko tämä lautta moottoriajoneuvojen reitiksi?</string>
@@ -526,7 +515,6 @@ Jaetaanko nyt?</string>
     <string name="quest_recycling_type_glass_bottles">Lasipulloja ja -purkkeja</string>
     <string name="quest_recycling_type_glass_bottles_short">Pulloja ja purkkeja</string>
     <string name="quest_recycling_type_paper">Paperia</string>
-    <string name="quest_recycling_type_plastic_generic">Muovia</string>
     <string name="quest_recycling_type_plastic">Mitä tahansa muovia</string>
     <string name="quest_recycling_type_shoes">Kenkiä</string>
     <string name="quest_recycling_type_electric_appliances">Elektroniikka</string>
@@ -693,7 +681,6 @@ taso</string>
     <string name="at_housenumber">talon numero %1$s</string>
     <string name="quest_openingHours_add_off_days">Lisää kiinniolopäivät</string>
     <string name="quest_openingHours_off_day">Suljettu</string>
-    <string name="quest_openingHours_unspecified_range">Ei määritelty</string>
     <string name="quest_cycleway_resurvey_title">Ovatko pyöräilyolosuhteet edelleen tämänlaiset?</string>
     <string name="pref_title_resurvey_intervals">Uudelleenkyselyn tiheys</string>
     <string name="resurvey_intervals_less_often">Harvemmin</string>
@@ -704,7 +691,6 @@ taso</string>
     <string name="quest_oneway2_title">Onko tämä yksisuuntainen tie? Mihin suuntaan?</string>
     <string name="quest_oneway2_dir">Yksisuuntainen tähän suuntaan</string>
     <string name="quest_oneway2_no_oneway">Ei yksisuuntainen</string>
-    <string name="quest_maxweight_select_sign">Valitse merkki</string>
     <string name="quest_steps_incline_title">Kumpi suunta johtaa ylöspäin täällä?</string>
     <string name="quest_steps_incline_up">Tähän suuntaan ylös</string>
     <string name="quest_step_count_title">Kuinka monta askelmaa tässä on?</string>
@@ -791,7 +777,6 @@ Huomioi kaikki vaihtoehdot: jotkut tapaukset eivät ole ilmiselviä, kuten yksis
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Skotlannin kruunu</string>
     <string name="quest_buildingType_fire_station">Paloasema</string>
     <string name="quest_recycling_type_beverage_cartons">Vain juomakartongit</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Vain muovipullot ja kartongit</string>
     <string name="team_mode">Siirry Työryhmätilaan</string>
     <string name="team_mode_exit">Poistu työryhmätilasta</string>
     <string name="team_mode_description">Kun kartoitatte samaa aluetta yhtenä ryhmänä, voitte mennä työryhmätilaan ja jakaa tehtävät ryhmän jäsenten kesken.
@@ -1143,13 +1128,8 @@ Tee sama toiselle puolelle mikäli tarpeellista.</string>
     <string name="quest_camp_drinking_water_title">Onko juomavettä vapaasti vierailijoiden saatavissa täällä?</string>
     <string name="quest_camp_shower_title">Onko täällä suihkuja?</string>
     <string name="quest_camp_power_supply_title">Onko täällä pistorasioita vieraille?</string>
-    <string name="quest_camp_type_title">Kuka saa leiriytyä täällä?</string>
-    <string name="quest_camp_type_tents_and_caravans">Sekä teltat että matkailuautot, matkailuvaunut, ...</string>
-    <string name="quest_camp_type_caravans_only">Vain matkailuautot, matkailuvaunut, ...</string>
-    <string name="quest_camp_type_tents_only">Vain teltat</string>
     <string name="quest_camp_type_backcountry">Erämaatelttailu (ei palveluja)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Tämä halkaisija vaikuttaa epätodennäköiseltä, se on yleensä välillä %1$d - %2$d.</string>
-    <string name="quest_recycling_type_pet">Vain PET-muovi</string>
     <string name="street_parking_street_width">Kadun leveys: %1$s</string>
     <string name="overlay_street_parking">Katupysäköinti</string>
     <string name="link_ohsomehex_description">Tutki OSM-tietoja eri mittakaavassa kokonaisuudesta yksittäisiin objekteihin tilan ja ajan yli</string>
@@ -1238,9 +1218,6 @@ Haluatko siirtää nyt?</string>
     <string name="street_parking_staggered_half_on_kerb">Osittain kadulla vastakkaisin puolin</string>
     <string name="quest_traffic_signals_sound_description">Vihje: etsi kaiuttimia/äänentoistolaitteita. Kaikkia äänisignaaleja ei ole mahdollista aktivoida painikkeella.</string>
     <string name="quest_presets_duplicate">Kaksoiskappale</string>
-    <string name="label_block">este</string>
-    <string name="quest_address_answer_block">Se on korttelissa</string>
-    <string name="quest_address_answer_no_block">Ei ole korttelissa</string>
     <string name="quest_surface_value_mud">Pysyvää mutaa</string>
     <string name="quest_wheelchairAccessPat_noToilet">Täällä ei ole WC:tä</string>
     <string name="unknown_surface_title">Muunkaltainen pinta</string>
@@ -1383,6 +1360,7 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="quest_crossing_hint">Tien yli kulkeva epävirallinen reitti:</string>
     <string name="note_for_object">Merkintä toiselta henkilöltä:</string>
     <string name="quest_cycleway_value_sidewalk_ok_dual">Ei ole, mutta kyltti sallii pyöräilyn jalkakäytävällä molempiin suuntiin</string>
+    <string name="quest_surface_value_rubber">Kumirouhe</string>
     <string name="quest_surface_value_acrylic">Synteettinen hartsi</string>
     <string name="action_messages">Näytä viestit</string>
     <string name="action_create_new_poi">Luo uusi</string>
@@ -1429,6 +1407,7 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="overlay_mtb_scale_5">Luokka 5</string>
     <string name="overlay_mtb_scale_6">Luokka 6</string>
     <string name="overlay_mtb_scale_6_description">Vaarallinen ja läpäisemätön maasto, ei sovellu maastopyöräilyyn.</string>
+    <string name="default_disabled_overlay_domain_expert">Tämä taso on poistettu käytöstä oletuksena, koska sinun tulee olla aihealueen asiantuntija tuottaaksesi tarkkaa tietoa.</string>
     <string name="pref_title_overlays">Tasovalinta</string>
     <string name="pref_overlays_reset">Palautetaanko käytettävät tasot oletusarvoihin?</string>
     <string name="overlay">Taso</string>
@@ -1436,6 +1415,7 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="compass">Kompassi</string>
     <string name="quest_housenumber_multiple_numbers_description2">Voit kirjoittaa pilkuin erotellut talonumerot.
 Esimerkiksi 1,3 tai 2b,4,6.</string>
+    <string name="quest_drinking_water_potable_unsigned2">Ei merkkiä</string>
     <string name="or">tai</string>
     <string name="action_copy">Kopioi</string>
     <string name="quest_shelter_capacity_title">Kuinka moni ihminen voi nukkua täällä?</string>
@@ -1445,4 +1425,63 @@ Esimerkiksi 1,3 tai 2b,4,6.</string>
     <string name="quest_streetName_add_language">Lisää kieli</string>
     <string name="ok">OK</string>
     <string name="cancel">Peruuta</string>
+    <string name="quest_aerialway_bicycle_title">Kuljettaako tämä ilmaköysirata polkupyöriä?</string>
+    <string name="quest_aerialway_bicycle_summer">Vain kesällä</string>
+    <string name="quest_board_type_rules">Säännöt</string>
+    <string name="quest_firewood_provided_title">Saako täältä polttopuuta?</string>
+    <string name="quest_first_aid_kit_location">Missä tämä ensiapupakkaus sijaitsee?</string>
+    <string name="quest_lane_markings_title">Onko tässä tiessä kaistamerkinnät?</string>
+    <string name="quest_level_thing_title">Missä kerrosnumerossa tämä asia sijaitsee?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Kuinka montaa polkupyörää täällä voi ladata samanaikaisesti?</string>
+    <string name="quest_charging_station_bicycles_title">Voiko täällä ladata myös polkupyöriä?</string>
+    <string name="quest_tower_access_title">Kenellä on pääsy tähän torniin? Pääsy voi olla ilmainen tai maksullinen.</string>
+    <string name="quest_charging_station_bicycles_answer_only">Se on vain polkupyörille</string>
+    <string name="quest_recycling_type_pet_bottles">PET-pullot</string>
+    <string name="quest_maxweight_add_sign">Lisää merkki</string>
+    <string name="quest_maxweight_remove_sign">Poista merkki</string>
+    <string name="weekly_osm_new_edition_title">Uusi painos!</string>
+    <string name="pref_title_messages">Sovelluksen sisäiset viestit</string>
+    <string name="pref_title_message_achievements">Avatut saavutukset</string>
+    <string name="pref_title_message_weekly_osm">Uudet painokset weeklyOSM:stä</string>
+    <string name="pref_title_message_changelog">Uudet sovellusjulkaisut</string>
+    <string name="quest_artwork_title">Minkälainen taideteos tämä on?</string>
+    <string name="quest_artwork_sculpture">Veistos</string>
+    <string name="quest_artwork_statue">Patsas</string>
+    <string name="quest_artwork_mural">Seinämaalaus</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Installaatio</string>
+    <string name="quest_artwork_bust">Rintakuva</string>
+    <string name="quest_artwork_stone">Kivi</string>
+    <string name="quest_artwork_painting">Maalaus</string>
+    <string name="quest_artwork_street_art">Muu katutaide</string>
+    <string name="quest_artwork_architecture">Arkkitehtuuri</string>
+    <string name="quest_artwork_mosaic">Mosaiikki</string>
+    <string name="quest_artwork_relief">Kohokuvio</string>
+    <string name="quest_artwork_fountain">Suihkulähde</string>
+    <string name="quest_bothway_title">Mihin suuntaan voit matkustaa tällä?</string>
+    <string name="quest_camp_tent_title">Voiko täällä leireillä teltassa?</string>
+    <string name="quest_camp_cabin_title">Onko täällä majoitukseen tarkoitettuja mökkejä?</string>
+    <string name="quest_camp_caravan_title">Voiko täällä oleskella matkailuautossa tai -trailerissa?</string>
+    <string name="quest_ferry_bicycle_title">Ovatko polkupyörät sallittuja tällä lautalla?</string>
+    <string name="quest_openingHours_add_time">Lisää aika</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">Valitse alkuaika</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">Valitse loppuaika</string>
+    <string name="quest_openingHours_chooseTimeTitle">Valitse aika</string>
+    <string name="quest_openingHours_no_fixed_end">ei kiinteää loppuaikaa</string>
+    <string name="quest_collectionTimes_answer_time_spans">Aikavälillä…</string>
+    <string name="quest_collectionTimes_answer_time_points">Tiettyinä aikoina…</string>
+    <string name="quest_shower_hot_water_title">Onko täällä lämmintä vettä?</string>
+    <string name="calendar_new_event_title">Uusi OSM-tapahtuma alueellasi!</string>
+    <string name="pref_title_message_calendar">Uudet OSM-tapahtumat alueellasi</string>
+    <string name="quest_ferry_hgv_title">Kuljettaako tämä lauttareitti raskasta liikennettä?</string>
+    <string name="dialog_dont_notify_again2">Lopeta tilaus</string>
+    <string name="quest_leave_new_note_photo_delete">Poista</string>
+    <string name="quest_maxspeed_type_description">Nopeusrajoituksen määrittää…</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">Enimmäisnopeussuosituksen merkki</string>
+    <string name="quest_maxspeed_answer_roadtype_description">Katu on…</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">rakennetun ympäristön alueella</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">rakennetun ympäristön ulkopuolella</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">valaistu</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">valaisematon</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Valaisematon ja moottoritie</string>
 </resources>

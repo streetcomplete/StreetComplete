@@ -3,19 +3,27 @@ package de.westnordost.streetcomplete.overlays.places
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.core.view.isGone
@@ -31,7 +39,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.databinding.FragmentOverlayPlacesBinding
+import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.applyTo
@@ -44,18 +52,19 @@ import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.AnswerItem
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.name_label
-import de.westnordost.streetcomplete.resources.quest_placeName_no_name_answer
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.feature.FeatureIcon
+import de.westnordost.streetcomplete.ui.common.feature.FeatureSelect
+import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
-import de.westnordost.streetcomplete.util.getLocationSpanned
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.view.controller.FeatureViewController
-import de.westnordost.streetcomplete.view.dialogs.SearchFeaturesDialog
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
+import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
+import de.westnordost.streetcomplete.util.takeFavorites
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
 import org.jetbrains.compose.resources.stringResource
@@ -64,19 +73,31 @@ import kotlin.coroutines.resume
 
 class PlacesOverlayForm : AbstractOverlayForm() {
 
-    override val contentLayoutResId = R.layout.fragment_overlay_places
-    private val binding by contentViewBinding(FragmentOverlayPlacesBinding::bind)
+    override val contentLayoutResId = R.layout.compose_view
+    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     private val prefs: Preferences by inject()
 
     private var originalFeature: Feature? = null
     private var originalNoName: Boolean = false
     private var originalNames: List<LocalizedName> = emptyList()
+    private var selectedFeature: MutableState<Feature?> = mutableStateOf(null)
+    private var localizedNames: MutableState<List<LocalizedName>> = mutableStateOf(emptyList())
+    private var isNoName: MutableState<Boolean> = mutableStateOf(false)
 
-    private lateinit var localizedNames: MutableState<List<LocalizedName>>
-    private lateinit var isNoName: MutableState<Boolean>
+    private val lastPickedFeatures: List<Feature> by lazy {
+        val languages = getLanguagesForFeatureDictionary()
+        prefs.getLastPicked<String>(this::class.simpleName!!)
+            .takeFavorites(n = 5, first = 1)
+            .mapNotNull { featureId ->
+                featureDictionary.getById(
+                    id = featureId,
+                    languages = languages,
+                    country = countryOrSubdivisionCode,
+                )
+            }
+    }
 
-    private lateinit var featureCtrl: FeatureViewController
 
     private lateinit var vacantShopFeature: Feature
 
@@ -88,10 +109,11 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        val languages = getLanguagesForFeatureDictionary()
         vacantShopFeature = featureDictionary.getById("shop/vacant", languages)!!
         originalNames = parseLocalizedNames(element?.tags.orEmpty()).orEmpty()
         originalFeature = getOriginalFeature()
+        selectedFeature.value = originalFeature
         originalNoName = element?.tags?.get("name:signed") == "no" || element?.tags?.get("noname") == "yes"
     }
 
@@ -110,7 +132,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
     }
 
     private fun getFeatureDictionaryFeature(element: Element): Feature? {
-        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        val languages = getLanguagesForFeatureDictionary()
         val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
 
         return featureDictionary.getByTags(
@@ -121,30 +143,15 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         ).firstOrNull { it.toElement().isPlace() }
     }
 
+    @Composable
+    override fun getSubtitle(): AnnotatedString? =
+        // title hint label with name is a duplication, it is displayed in the UI already
+        element?.let { nameAndLocationLabel(it, featureDictionary = null) }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // title hint label with name is a duplication, it is displayed in the UI already
-        setTitleHintLabel(element?.tags?.let { getLocationSpanned(it, resources) })
         setMarkerIcon(R.drawable.quest_shop)
-
-        featureCtrl = FeatureViewController(featureDictionary, binding.featureTextView, binding.featureIconView)
-        featureCtrl.countryOrSubdivisionCode = countryOrSubdivisionCode
-        featureCtrl.feature = originalFeature
-
-        binding.featureView.setOnClickListener {
-            SearchFeaturesDialog(
-                requireContext(),
-                featureDictionary,
-                element?.geometryType ?: GeometryType.POINT,
-                countryOrSubdivisionCode,
-                featureCtrl.feature?.name,
-                { it.toElement().isPlace() || it.id == "shop/vacant" },
-                ::onSelectedFeature,
-                POPULAR_PLACE_FEATURE_IDS,
-            ).show()
-        }
-
 
         val selectableLanguages = (
             countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages
@@ -156,66 +163,105 @@ class PlacesOverlayForm : AbstractOverlayForm() {
             }
         }
 
-        binding.names.composeViewBase.content { Surface {
+        binding.composeViewBase.content { Surface {
             localizedNames = rememberSerializable {
                 mutableStateOf(originalNames.takeIf { it.isNotEmpty() } ?: defaultNames())
             }
             isNoName = rememberSaveable { mutableStateOf(originalNoName) }
 
-            Column {
-                Text(
-                    text = stringResource(Res.string.name_label),
-                    style = MaterialTheme.typography.caption.copy(
-                        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
-                    )
+            Column(
+                modifier = Modifier
+                    .defaultMinSize(minHeight = 96.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
+            ) {
+                val feature = selectedFeature.value
+
+                FeatureSelect(
+                    feature = feature,
+                    onSelectedFeature = ::onSelectedFeature,
+                    featureDictionary = featureDictionary,
+                    geometryType = element?.geometryType ?: GeometryType.POINT,
+                    countryCode = countryOrSubdivisionCode,
+                    filterFn = { it.toElement().isPlace() || it.id == "shop/vacant" },
+                    codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS,
                 )
-                if (isNoName.value && localizedNames.value.isEmpty()) {
-                    Text(
-                        text = stringResource(Res.string.quest_placeName_no_name_answer),
-                        style = LocalTextStyle.current.copy(
-                            fontWeight = FontWeight.Bold,
-                            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
-                        ),
-                        modifier = Modifier
-                            .padding(20.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
+                if (feature != null && !feature.hasFixedName) {
+                    Column {
+                        Text(
+                            text = stringResource(Res.string.name_label),
+                            style = MaterialTheme.typography.caption.copy(
+                                color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
+                            )
+                        )
+                        if (isNoName.value && localizedNames.value.isEmpty()) {
+                            Text(
+                                text = stringResource(Res.string.quest_placeName_no_name_answer),
+                                style = LocalTextStyle.current.copy(
+                                    fontWeight = FontWeight.Bold,
+                                    color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
+                                ),
+                                modifier = Modifier
+                                    .padding(20.dp)
+                                    .align(Alignment.CenterHorizontally)
+                            )
+                        }
+                        LocalizedNamesForm(
+                            localizedNames = localizedNames.value,
+                            onChanged = {
+                                localizedNames.value = it
+                                if (it.isNotEmpty()) isNoName.value = false
+                                checkIsFormComplete()
+                            },
+                            languageTags = selectableLanguages,
+                        )
+                    }
                 }
-                LocalizedNamesForm(
-                    localizedNames = localizedNames.value,
-                    onChanged = {
-                        localizedNames.value = it
-                        if (it.isNotEmpty()) isNoName.value = false
-                        checkIsFormComplete()
-                    },
-                    languageTags = selectableLanguages,
-                )
+                // show only for adding new POIs becaues it gets too busy with also the name form
+                // being displayed
+                if (lastPickedFeatures.isNotEmpty() && element == null && selectedFeature.value == null) {
+                    LastPickedChipsRow(
+                        items = lastPickedFeatures,
+                        onClick = {
+                            selectedFeature.value = it
+                            checkIsFormComplete()
+                        },
+                        modifier = Modifier.padding(start = 48.dp, end = 56.dp),
+                        itemContent = {
+                            FeatureIcon(
+                                feature = it,
+                                modifier = Modifier.size(22.5.dp)
+                            )
+                        }
+                    )
+                } else {
+                    Spacer(Modifier.size(48.dp))
+                }
             }
         } }
-
-        updateNameContainerVisibility()
+        checkIsFormComplete()
     }
 
     private fun onSelectedFeature(feature: Feature) {
-        featureCtrl.feature = feature
+        selectedFeature.value = feature
         isNoName.value = false
         // clear previous names (if necessary, and if any)
-        if (feature.hasFixedName) {
+        if (feature.hasFixedName == true) {
             localizedNames.value = listOf()
         } else {
             localizedNames.value = defaultNames()
         }
-        updateNameContainerVisibility()
         checkIsFormComplete()
     }
 
     private fun setVacant() {
-        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        val languages = getLanguagesForFeatureDictionary()
         onSelectedFeature(featureDictionary.getById("shop/vacant", languages)!!)
     }
 
     private fun createNoNameAnswer(): AnswerItem? {
-        val feature = featureCtrl.feature
+        val feature = selectedFeature.value
         return if (feature == null || isNoName.value || feature.hasFixedName) {
             null
         } else {
@@ -235,33 +281,33 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         checkIsFormComplete()
     }
 
-    private fun updateNameContainerVisibility() {
-        val feature = featureCtrl.feature
-        val isNameInputInvisible = feature == null || feature.hasFixedName
-        binding.names.root.isGone = isNameInputInvisible
-    }
-
     private fun defaultNames(): List<LocalizedName> =
         listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
 
     override fun hasChanges(): Boolean =
-        originalFeature != featureCtrl.feature
-        || originalNames != localizedNames.value
+        originalFeature != selectedFeature.value
+        || originalNames != localizedNames.value.filter { it.name.isNotEmpty() }
         || originalNoName != isNoName.value
 
     override fun isFormComplete(): Boolean =
-        featureCtrl.feature != null
-        && localizedNames.value.all { it.name.isNotBlank() }
+        selectedFeature.value != null
+        // name is not necessary
 
     override fun onClickOk() {
-        val firstLanguage = localizedNames.value.firstOrNull()?.languageTag
+        val inputNames = localizedNames.value.filter { it.name.isNotEmpty() }
+        val firstLanguage = inputNames.firstOrNull()?.languageTag
         if (!firstLanguage.isNullOrEmpty()) prefs.preferredLanguageForNames = firstLanguage
+
+        val feature = selectedFeature.value!!
+        if (!feature.isSuggestion) {
+            prefs.addLastPicked(this::class.simpleName!!, feature.id)
+        }
 
         viewLifecycleScope.launch {
             applyEdit(createEditAction(
                 element, geometry,
-                localizedNames.value, originalNames,
-                featureCtrl.feature!!, originalFeature,
+                inputNames, originalNames,
+                selectedFeature.value!!, originalFeature,
                 isNoName.value,
                 ::confirmReplaceShop
             ))

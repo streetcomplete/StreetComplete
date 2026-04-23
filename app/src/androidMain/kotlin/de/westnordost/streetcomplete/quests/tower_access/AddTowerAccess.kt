@@ -6,13 +6,17 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddTowerAccess : OsmFilterQuestType<TowerAccess>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways, relations with
             man_made = tower
-            and tower:type = observation
+            and (
+                tower:type = observation
+                or tower:type = watchtower and historic=yes
+            )
             and disused != yes
             and !emergency
             and !military
@@ -21,9 +25,8 @@ class AddTowerAccess : OsmFilterQuestType<TowerAccess>(), AndroidQuest {
     override val changesetComment = "Specify access to observation towers"
     override val wikiLink = "Tag:man_made=tower"
     override val icon = R.drawable.quest_tower
+    override val title = Res.string.quest_tower_access_title
     override val achievements = listOf(BUILDING)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_tower_access_title
 
     override fun createForm() = AddTowerAccessForm()
 

@@ -21,13 +21,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_credit_only
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_debit_and_credit
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_dedit_only
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_unavailable
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** A radio button group composed of a list of [options]. */
 @Composable
@@ -38,17 +34,18 @@ fun <T> RadioGroup(
     itemContent: @Composable BoxScope.(T) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier) {
+    Column(modifier.selectableGroup()) {
         options.forEach { option ->
-            Row(Modifier
-                .clip(MaterialTheme.shapes.small)
-                .selectable(
-                    selected = (option == selectedOption),
-                    onClick = { onSelectionChange(option) },
-                    role = Role.RadioButton
-                )
-                .selectableGroup()
-                .padding(8.dp)
+            Row(
+                modifier = Modifier
+                    .clip(MaterialTheme.shapes.small)
+                    .selectable(
+                        selected = (option == selectedOption),
+                        onClick = { onSelectionChange(option) },
+                        role = Role.RadioButton
+                    )
+                    .padding(8.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 RadioButton(
                     selected = option == selectedOption,
@@ -56,8 +53,7 @@ fun <T> RadioGroup(
                     onClick = null,
                 )
                 Box(Modifier
-                    .fillMaxWidth()
-                    .align(Alignment.CenterVertically)
+                    .weight(1f)
                     .padding(horizontal = 16.dp),
                 ) {
                     itemContent(option)
@@ -69,7 +65,7 @@ fun <T> RadioGroup(
 
 @Composable
 @Preview
-private fun TextItemRadioGroupFormPreview() {
+private fun RadioGroupPreview() {
     var selectedOption by remember { mutableStateOf<Int?>(null) }
     RadioGroup(
         options = listOf(0,1,2,3),

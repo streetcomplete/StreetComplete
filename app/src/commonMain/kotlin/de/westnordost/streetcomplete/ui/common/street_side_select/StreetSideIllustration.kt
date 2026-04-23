@@ -48,7 +48,8 @@ import kotlin.math.cos
     modifier: Modifier = Modifier,
     getFloatingPainter: @Composable (T?, Side) -> Painter? = { _, _ -> null },
     onClickSide: ((Side) -> Unit)? = null,
-    enabled: Boolean = true,
+    isLeftSideEnabled: Boolean = true,
+    isRightSideEnabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
 ) {
@@ -71,7 +72,7 @@ import kotlin.math.cos
                     getFloatingPainter = getFloatingPainter,
                     rotation = rotation,
                     onClickSide = onClickSide,
-                    enabled = enabled,
+                    enabled = isLeftSideEnabled,
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
             }
@@ -83,7 +84,7 @@ import kotlin.math.cos
                     getFloatingPainter = getFloatingPainter,
                     rotation = rotation,
                     onClickSide = onClickSide,
-                    enabled = enabled,
+                    enabled = isRightSideEnabled,
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
             }

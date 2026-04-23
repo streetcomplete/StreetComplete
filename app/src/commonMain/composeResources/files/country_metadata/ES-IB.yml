@@ -1,0 +1,6 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Euronet, Banca March, Caixabank, Banco Santander, ING, Euro Automatic Cash, Banco Sabadell, Targobank, Kurant, Telebanco, Cashzone, BitBase, cashzone, Telebanco 4B, Shitcoins.club, Sa Nostra, Cash Zone, BancaMarch]
+chargingStationOperators: [MELIB, Endesa, Endesa X, eMallorca, Iberdrola, Feníe Energía, Lidl, Repsol, Iberdrola BP Pulse, Hotel Mimosa, Govern de les Illes Balears (melib.es), ENDESA CPO]
+clothesContainerOperators: [Caritas]
+officialLanguages: [ca, es]
+parcelLockerBrand: [Amazon Hub]

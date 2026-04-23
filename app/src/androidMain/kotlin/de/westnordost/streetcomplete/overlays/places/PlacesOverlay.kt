@@ -16,18 +16,18 @@ import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.view.presetIconIndex
 
 class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, AndroidOverlay {
 
-    override val title = R.string.overlay_places
+    override val title = Res.string.overlay_places
     override val icon = R.drawable.quest_shop
     override val changesetComment = "Survey shops, places etc."
     override val wikiLink = "StreetComplete/Overlays#Places"
     override val achievements = listOf(EditTypeAchievement.CITIZEN)
     override val hidesQuestTypes = setOf(
-        AddPlaceName::class.simpleName!!,
         SpecifyShopType::class.simpleName!!,
         CheckShopType::class.simpleName!!
     )
@@ -40,7 +40,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, An
             .map { element ->
                 // show disused places always with the icon for "disused shop" icon
                 val icon = getFeature(element)?.icon?.let { presetIconIndex[it] }
-                    ?: if (element.isDisusedPlace()) R.drawable.preset_fas_store_alt_slash else null
+                    ?: (if (element.isDisusedPlace()) R.drawable.preset_fas_store_alt_slash else null)
                     ?: R.drawable.preset_maki_shop
 
                 val label = getNameLabel(element.tags)

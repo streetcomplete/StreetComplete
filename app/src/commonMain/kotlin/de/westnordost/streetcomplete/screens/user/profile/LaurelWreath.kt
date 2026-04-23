@@ -12,17 +12,15 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.drawscope.withTransform
 import androidx.compose.ui.graphics.painter.Painter
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.laurel_leaf_ending
-import de.westnordost.streetcomplete.resources.laurel_leaf_pair
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.LeafGreen
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun LaurelWreath(
     modifier: Modifier = Modifier,
-    color: Color = LeafGreen,
+    color: Color = Color.LeafGreen,
     progress: Float = 1f
 ) {
     if (progress < 0.1f) return

@@ -29,14 +29,11 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.seating.AddSeating
 import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingBusStop
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.enable_quest_confirmation_title
-import de.westnordost.streetcomplete.resources.quest_enabled
-import de.westnordost.streetcomplete.resources.quest_type
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
@@ -48,7 +45,7 @@ fun QuestSelectionList(
     onSelect: (questType: QuestType, selected: Boolean) -> Unit,
     onReorder: (questType: QuestType, toAfter: QuestType) -> Unit,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp),
+    contentPadding: PaddingValues = PaddingValues.Zero,
 ) {
     var showEnableQuestDialog by remember { mutableStateOf<QuestType?>(null) }
 

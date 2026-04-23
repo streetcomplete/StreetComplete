@@ -1,0 +1,5 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Bank of America, Wells Fargo, PNC Bank, Truist, Chase, United Bank, Citibank, Capital One]
+chargingStationOperators: [ChargePoint, Blink, Tesla, EVgo]
+defaultSpeedLimitHasUrbanOrRural: false
+parcelLockerBrand: [Amazon Hub]

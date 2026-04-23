@@ -1,0 +1,5 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Wells Fargo, Chase, First Bank, U.S. Bank, KeyBank, Huntington Bank, Bank of the West, Bank of America, Ent Credit Union, Canvas Credit Union, Bank of Colorado, BMO, FNBO, Academy Bank, PNC Bank, First National Bank, Elevations Credit Union, BBVA, Western Union, UMB Bank, Security Service, Public Service Credit Union, North Valley Bank, Independent Financial, First Interstate Bank, First Interstate BancSystem, First Citizens Bank, ENT, Credit Union of Colorado, Community Banks of Colorado, Citywide Banks, Citibank, CardTronics, Bellco Credit Union, Bellco, Alpine Bank]
+chargingStationOperators: [ChargePoint, Tesla, Electrify America, Blink, EVgo, Hampton Inn, eVgo, Regis University, EVGateway, EVCS, rivian, Volta, SemaConnect, Rivian, CommonSpirit, City of Boulder]
+defaultSpeedLimitHasUrbanOrRural: true
+parcelLockerBrand: [Amazon Locker, Amazon Hub, Parcel Pending, USPS]

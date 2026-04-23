@@ -38,6 +38,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.FeedsUpdater
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -48,6 +49,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.LazyMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -82,7 +84,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragmen
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.MoveNodeFragment
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
@@ -166,6 +168,7 @@ class MainActivity :
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
     private val questsHiddenSource: QuestsHiddenSource by inject()
+    private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val soundFx: SoundFx by inject()
 
@@ -219,6 +222,7 @@ class MainActivity :
         supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
 
         lifecycle.addObserver(questAutoSyncer)
+        feedsUpdater.updateAtMostDaily()
 
         locationManager = FineLocationManager(this, this::onLocationChanged)
 
@@ -235,6 +239,7 @@ class MainActivity :
                     editHistoryViewModel = editHistoryViewModel,
                     onClickZoomIn = ::onClickZoomIn,
                     onClickZoomOut = ::onClickZoomOut,
+                    onZoomDrag = ::onZoomDrag,
                     onClickCompass = ::onClickCompassButton,
                     onClickLocation = ::onClickLocationButton,
                     onClickLocationPointer = ::onClickLocationPointer,
@@ -685,6 +690,10 @@ class MainActivity :
         mapFragment?.updateCameraPosition(300) { zoomBy = +1.0 }
     }
 
+    private fun onZoomDrag(dp: Float) {
+        mapFragment?.updateCameraPosition(300) { zoomBy = dp / 20.0 }
+    }
+
     private fun onClickTracksStop() {
         // hide the track information
         viewModel.isRecordingTracks.value = false
@@ -999,21 +1008,14 @@ class MainActivity :
 
     private fun showHighlightedElements(quest: OsmQuest, element: Element) {
         val bbox = quest.geometry.bounds.enlargedBy(quest.type.highlightedElementsRadius)
-        var mapData: MapDataWithGeometry? = null
-
-        fun getMapData(): MapDataWithGeometry {
-            val data = mapDataWithEditsSource.getMapDataWithGeometry(bbox)
-            mapData = data
-            return data
-        }
+        val lazyMapData = LazyMapDataWithGeometry(bbox, mapDataWithEditsSource)
 
         val levels = parseLevelsOrNull(element.tags)
 
         lifecycleScope.launch(Dispatchers.Default) {
             val elements = withContext(Dispatchers.IO) {
-                quest.type.getHighlightedElements(element, ::getMapData)
+                quest.type.getHighlightedElements(element, lazyMapData)
             }
-
             val markers = elements.mapNotNull { e ->
                 // don't highlight "this" element
                 if (element == e) return@mapNotNull null
@@ -1023,7 +1025,7 @@ class MainActivity :
                 // include only elements with the same layer, if any
                 if (element.tags["layer"] != e.tags["layer"]) return@mapNotNull null
 
-                val geometry = mapData?.getGeometry(e.type, e.id) ?: return@mapNotNull null
+                val geometry = lazyMapData.getGeometry(e.type, e.id) ?: return@mapNotNull null
                 val icon = getIcon(featureDictionary.value, e)
                 val title = getTitle(e.tags)
                 Marker(geometry, icon, title)

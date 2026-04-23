@@ -9,8 +9,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
+import de.westnordost.streetcomplete.resources.*
 
 class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), AndroidQuest {
 
@@ -64,7 +63,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
 
                 // name & wheelchair
                 "attraction",
-                "hotel", "guest_house", "motel", "hostel", "alpine_hut", "apartment", "resort", "camp_site", "caravan_site", "chalet", // accommodations
+                "hotel", "motel", "hostel", "alpine_hut", "resort", "camp_site", "caravan_site", "chalet", // accommodations
 
                 // wheelchair only
                 "viewpoint"
@@ -75,17 +74,19 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 // common
                 "fitness_centre", "golf_course", "water_park", "miniature_golf", "bowling_alley",
                 "amusement_arcade", "adult_gaming_centre", "tanning_salon", "sauna",
+                "indoor_play",
 
                 // name & wheelchair
                 "sports_centre", "stadium"
             ),
             "office" to arrayOf(
-                // common
+                // common (AddPlaceName has catchall)
                 "insurance", "government", "travel_agent", "tax_advisor", "religion",
                 "employment_agency", "diplomatic", "coworking", "energy_supplier",
                 "estate_agent", "lawyer", "telecommunication", "educational_institution",
                 "association", "ngo", "it", "accountant", "property_management",
-                "bail_bond_agent", "financial_advisor",
+                "bail_bond_agent", "financial_advisor", "political_party",
+                "private_investigator", "adoption_agency",
 
                 // name & wheelchair
                 "political_party", "therapist"
@@ -94,7 +95,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 // common
                 "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
                 "electronics_repair", "key_cutter", "stonemason", "bookbinder",
-                "jeweller", "sailmaker", "jeweller", "watchmaker", "clockmaker",
+                "jeweller", "sailmaker", "watchmaker", "clockmaker",
                 "locksmith",  "window_construction", "signmaker", "upholsterer",
                 "electrician", "boatbuilder",
 
@@ -118,16 +119,14 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
     override val changesetComment = "Survey wheelchair accessibility of places"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.quest_wheelchair_shop
+    override val title = Res.string.quest_wheelchairAccess_outside_title
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(WHEELCHAIR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
+    override val hint = Res.string.quest_wheelchairAccess_limited_description_business
 
-    override val hint = R.string.quest_wheelchairAccess_limited_description_business
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = WheelchairAccessForm()
 

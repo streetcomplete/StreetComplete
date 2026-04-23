@@ -15,7 +15,7 @@ import kotlinx.datetime.TimeZone
 expect class LocalTimeFormatter(
     locale: Locale? = null,
     timeZone: TimeZone = TimeZone.currentSystemDefault(),
-    style: DateFormatStyle = DateFormatStyle.Medium,
+    style: DateTimeFormatStyle = DateTimeFormatStyle.Medium,
 ) {
     fun format(time: LocalTime): String
 }

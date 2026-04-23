@@ -1,0 +1,26 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+advisoryCycleLaneStyle: white dashes
+atmOperators: [Raiffeisen, BAWAG PSK, Raiffeisenbank, Euronet, Sparkasse, Volksbank, BAWAG, Erste Bank, Kurant, bank99, PSA Payment Services Austria GmbH, Oberbank, ICCash, PSA, Bank Austria, Raiffeisen Bank, Bawag, BTV, Global ATM Network, First Data, Spar, PSA Payment Services Austria, BKS Bank, Sparkasse Oberösterreich, ICCash Services, Euronet Worldwide, Denizbank, Salzburger Sparkasse, Raiffeisen Wien, Kremser Bank und Sparkassen AG, IC Cash, Hypo Tirol, Hypo Salzburg, Hypo, Bawag PSK, Bankomat, VKB-Bank, Tiroler Sparkasse, Sparkasse Imst AG, Sparda Bank, Raika, Raiffeisenbank Wr. Neustadt-Schneebergland, Raiffeisenbank Sillian, Raiffeisen Landesbank, Bank Burgenland, Volksbank Vorarlberg, Steiermärkische Sparkasse, Sparkasse der Stadt Kitzbühel, Sparkasse Niederösterreich, Sparkasse Imst, Reiffeisenbank, Raiffeisenbank Innkreis Mitte, RLB, NCR, Marchfelder Bank, Maestro, Bankhaus Spängler, BAWAG P.S.K., fiserv, Volksbank Tirol AG, Volksbank Kufstein, Steiermärkische Bank, Sparkasse Kufstein, Sparda-Bank, Salzburger Sparkasse Bank AG, SPAR, Raiffeisenkasse, Raiffeisenbank am Hofsteig, Raiffeisenbank Ybbstal, Raiffeisenbank Wipptal, Raiffeisenbank Stockerau eGen, Raiffeisenbank Region Baden, Raiffeisenbank Amstetten-Ybbs, Posojilnica Bank eGen, PSK, Kärntner Sparkasse, Hypo Vorarlberg, Dolomitenbank, DenizBank, Billa Plus, Bankhaus Schelhammer & Schattera, BTV Vier Länder Bank, ATM]
+chargingStationOperators: [illwerke vkw, Wien Energie, EVN, Wien Energie GmbH, SMATRICS, Energie Steiermark, Energie AG, Salzburg AG, Linz AG, bike-energy, da emobil, Lidl, Tesla, Bosch eBike Systems, Kelag, TIWAG, ÖAMTC, Ionity, ChargePoint, Burgenland Energie AG, Ella, illwerke vkw AG, Mer, Turmstrom, Smatrics, Stadtwerke Klagenfurt, KEBA, OMV, Moon, Wels Strom E-Mobil, MOON POWER, IKB, Energieversorgung Kleinwalsertal GesmbH, Eni, 'Tesla, Inc.', Shell Recharge Solutions, Linz AG Strom, ella, Stadtwerke Hartberg, Shell Recharge, Shell, Lidl Österreich GmbH, Energie Graz, ÖBB-Infrastruktur, Tesla Motors Austria GmbH, Stadtwerke Wörgl, Stadtwerke Kufstein, Spar, Smartrics, SMATRICS GmbH & Co KG, Lebensland Kärnten, Evn, Energie Klagenfurt, max.center, has.to.be gmbh, e-laden Tirol GmbH, da emobil GmbH & Co KG, be.ENERGISED, IAM – Institut für Technologie und alternative Mobilität, Eurospar, ELLA GmbH & Co KG, vkw vlotte, da emobil GmbH, Telekom Austria, TIWAG-Tiroler Wasserkraft AG, Stadtwerke Kitzbühel, Innsbrucker Kommunalbetriebe, Energie AG Oberösterreich, AT*GOE, A1, Öko Styria, tim, TIM, Stadtwerke Trofaiach 22 kW, Mer Germany GmbH, MOON POWER GmbH, Illwerke VKW AG, Energie Burgenland, EnerCharge, EVN AG, AAE Naturstrom]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+clothesContainerOperators: [Humana, Caritas, Kolping, Holding Graz, MA 48, Öpula, Rotes Kreuz, Wiener Rotes Kreuz, Wams, Volkshilfe, TAO, MA48, Verein Humana, TEXAID Austria, Stadt Wien / Kolping, HUMANA, Verein Wams, Linz AG Abfall, WAMS, Graz Holding, Textil Verwertung GmbH, GABL, Carla, Pongauer ArbeitsProjekt, GVU Melk, GVA Baden, ÖPULA, Stadtbetriebe Steyr, Stadt Wien, Stadt Graz, Pongauer Arbeitsprojekt, PAP, Marktgemeinde Hard]
+defaultSpeedLimitHasUrbanOrRural: true
+exclusiveCycleLaneStyle: white
+hasAdvisoryCycleLane: true
+hasAdvisorySpeedLimitSign: false
+hasBicycleBoulevard: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 232
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
+officialLanguages: [de]
+orchardProduces: [grape, apple, strawberry, apricot, pear, hop, plum, blueberry, tomato, peach, walnut, chilli_pepper, sweet_pepper, raspberry, cherry]
+parcelLockerBrand: [Myflexbox, Post Abholstation, Amazon Hub, Tamburi, Amazon Locker, MYFLEXBOX, Österreichische Post, myflexbox, Post, DHL Packstation, AlzaBox, tamburi, GLS, DHL, Amazon, Amazon Hub Locker, A1]
+popularSports: [soccer, tennis, equestrian, beachvolleyball]
+postboxesHaveCollectionTimes: true
+regularShoppingDays: 5
+slowZoneLabelPosition: bottom
+slowZoneLabelText: Zone

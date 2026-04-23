@@ -4,8 +4,6 @@ import android.content.res.AssetManager
 import android.content.res.Resources
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
-import de.westnordost.streetcomplete.util.DefaultResourceProvider
-import de.westnordost.streetcomplete.util.ResourceProvider
 import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import io.ktor.client.HttpClient
@@ -30,11 +28,11 @@ val appModule = module {
         }
         install(ContentEncoding) {
             gzip()
-            deflate()
+            // deflate is broken in KTOR, see https://youtrack.jetbrains.com/issue/KTOR-6999/Deflate-ContentEncoder-incorrectly-uses-raw-DEFLATE
+            // deflate()
             identity()
         }
     } }
     single<Res> { Res }
     single<FileSystem> { SystemFileSystem }
-    single<ResourceProvider> { DefaultResourceProvider(androidContext(), get()) }
 }

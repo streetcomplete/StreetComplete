@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -18,7 +19,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** A surface in the appearance of a prohibitory traffic sign (Vienna convention).
  *  Should define a fixed size.
@@ -27,16 +28,18 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 fun ProhibitorySign(
     modifier: Modifier = Modifier,
     color: Color = TrafficSignColor.White,
+    borderWidth: Dp = 32.dp,
     content: @Composable BoxScope.() -> Unit
 ) {
     val contentColor = trafficSignContentColorFor(color)
     Box(
         modifier = modifier
+            .aspectRatio(1f)
             .border(Dp.Hairline, Color.LightGray, CircleShape)
             .background(color, CircleShape)
             .padding(4.dp)
             .background(TrafficSignColor.Red, CircleShape)
-            .padding(32.dp)
+            .padding(borderWidth)
             .background(color, CircleShape),
         contentAlignment = Alignment.Center
     ) {

@@ -23,24 +23,24 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Matrix
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.graphics.vector.toPath
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.location_dot_small
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.proportionalAbsoluteOffset
 import de.westnordost.streetcomplete.ui.ktx.proportionalPadding
-import de.westnordost.streetcomplete.ui.util.svgPath
+import de.westnordost.streetcomplete.ui.theme.divider
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
 /** A view for the pointer pin that ought to be displayed at the edge of the screen. The upper left
- *  corner is always the the position at which it is pointing to, i.e. it will be drawn outside of
+ *  corner is always the position at which it is pointing to, i.e. it will be drawn outside of
  *  its bounds when pointing to the right.
  *  [rotate] rotates the pin. As opposed to normal rotation, the content always stays upright */
 @OptIn(ExperimentalMaterialApi::class)
@@ -58,6 +58,7 @@ fun PointerPinButton(
 ) {
     val pointerPinShape = remember(rotate) { PointerPinShape(rotate) }
     val a = rotate * PI / 180f
+    val pointySize = 14f / 76f
     Surface(
         onClick = onClick,
         modifier = modifier
@@ -69,7 +70,7 @@ fun PointerPinButton(
         shape = pointerPinShape,
         color = colors.backgroundColor(enabled).value,
         contentColor = colors.contentColor(enabled).value,
-        border = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
+        border = BorderStroke(1.dp, MaterialTheme.colors.divider),
         elevation = 4.dp
     ) {
         Box(Modifier
@@ -80,6 +81,12 @@ fun PointerPinButton(
 }
 
 private class PointerPinShape(val rotation: Float = 0f) : Shape {
+
+    private val pathSize = 76f
+    private val path = PathParser()
+        .parsePathString("M 38,62 C 24.745,62 14,51.255 14,38 14.003,32.6405 15.7995,27.4365 19.1035,23.217 L 38,0 56.914,23.2715 C 60.2005,27.4785 61.99,32.6615 62,38 62,51.255 51.255,62 38,62 Z")
+        .toNodes()
+
     override fun createOutline(
         size: Size,
         layoutDirection: LayoutDirection,
@@ -100,10 +107,6 @@ private class PointerPinShape(val rotation: Float = 0f) : Shape {
         return Outline.Generic(p)
     }
 }
-
-private const val pathSize = 76f
-private val path = svgPath("M 38,62 C 24.745,62 14,51.255 14,38 14.003,32.6405 15.7995,27.4365 19.1035,23.217 L 38,0 56.914,23.2715 C 60.2005,27.4785 61.99,32.6615 62,38 62,51.255 51.255,62 38,62 Z")
-private const val pointySize = 14f / 76f
 
 @Preview
 @Composable

@@ -1,0 +1,12 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [en]
+atmOperators: [Trade Bank of Iraq, مصرف التنمية الدولي, صراف TBI, بطاقة ذكية, NBI, Cihan Bank, Baghdad, سيلفي, ذكية, الوسام, النور, المرتضى, العزي, العبادي, الساحل, اسامة, ابراهيم حقي, Kerkuk]
+chargingStationOperators: [محطة وزن]
+mobileCountryCode: 418
+noParkingSignStyle: vienna
+noStoppingSignStyle: vienna
+officialLanguages: [ar]
+orchardProduces: [date, orange, tomato, apple, grape, olive, apricot, chilli_pepper, sweet_pepper, lemon, lime, pear, plum, fig, walnut, peach, almond]
+popularReligions: [muslim]
+roofsAreUsuallyFlat: true
+workweek: Su-Th

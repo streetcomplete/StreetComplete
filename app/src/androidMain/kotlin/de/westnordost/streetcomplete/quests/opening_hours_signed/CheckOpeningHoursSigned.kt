@@ -16,9 +16,10 @@ import de.westnordost.streetcomplete.osm.setCheckDateForKey
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
-import kotlinx.datetime.Instant
+import de.westnordost.streetcomplete.resources.*
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Instant
 
 class CheckOpeningHoursSigned(
     private val getFeature: (Element) -> Feature?
@@ -46,10 +47,9 @@ class CheckOpeningHoursSigned(
     override val changesetComment = "Survey whether opening hours are signed"
     override val wikiLink = "Key:opening_hours:signed"
     override val icon = R.drawable.quest_opening_hours_signed
+    override val title = Res.string.quest_openingHours_signed_title
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_openingHours_signed_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
@@ -57,8 +57,8 @@ class CheckOpeningHoursSigned(
     override fun isApplicableTo(element: Element): Boolean =
         filter.matches(element) && hasName(element)
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = YesNoQuestForm()
 

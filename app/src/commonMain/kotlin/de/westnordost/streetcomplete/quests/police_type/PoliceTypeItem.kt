@@ -1,29 +1,17 @@
 package de.westnordost.streetcomplete.quests.police_type
 
 import de.westnordost.streetcomplete.quests.police_type.PoliceType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.italian_police_type_carabinieri
-import de.westnordost.streetcomplete.resources.italian_police_type_costiera
-import de.westnordost.streetcomplete.resources.italian_police_type_finanza
-import de.westnordost.streetcomplete.resources.italian_police_type_locale
-import de.westnordost.streetcomplete.resources.italian_police_type_municipale
-import de.westnordost.streetcomplete.resources.italian_police_type_polizia
-import de.westnordost.streetcomplete.resources.quest_policeType_type_it_carabinieri
-import de.westnordost.streetcomplete.resources.quest_policeType_type_it_guardia_costiera
-import de.westnordost.streetcomplete.resources.quest_policeType_type_it_guardia_di_finanza
-import de.westnordost.streetcomplete.resources.quest_policeType_type_it_polizia_di_stato
-import de.westnordost.streetcomplete.resources.quest_policeType_type_it_polizia_locale
-import de.westnordost.streetcomplete.resources.quest_policeType_type_it_polizia_municipale
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
-val PoliceType.title: StringResource get() = when (this) {
-    CARABINIERI ->        Res.string.quest_policeType_type_it_carabinieri
-    POLIZIA_DI_STATO ->   Res.string.quest_policeType_type_it_polizia_di_stato
-    GUARDIA_DI_FINANZA -> Res.string.quest_policeType_type_it_guardia_di_finanza
-    POLIZIA_MUNICIPALE -> Res.string.quest_policeType_type_it_polizia_municipale
-    POLIZIA_LOCALE ->     Res.string.quest_policeType_type_it_polizia_locale
-    GUARDIA_COSTIERA ->   Res.string.quest_policeType_type_it_guardia_costiera
+val PoliceType.title: String get() = when (this) {
+    CARABINIERI ->        "Carabinieri"
+    POLIZIA_DI_STATO ->   "Polizia di Stato"
+    GUARDIA_DI_FINANZA -> "Guardia di Finanza"
+    POLIZIA_MUNICIPALE -> "Polizia Municipale"
+    POLIZIA_LOCALE ->     "Polizia Locale"
+    GUARDIA_COSTIERA ->   "Guardia Costiera"
 }
 
 val PoliceType.icon: DrawableResource get() = when (this) {

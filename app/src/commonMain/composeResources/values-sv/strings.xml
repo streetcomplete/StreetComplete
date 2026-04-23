@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Integritet</string>
     <string name="quest_openingHours_public_holidays">Allmänna helgdagar</string>
     <string name="quest_openingHours_public_holidays_short">Röda dagar</string>
-    <string name="quest_openingHours_open_end">Ingen fast stängningstid</string>
     <string name="quest_openingHours_answer_247">Öppet dygnet runt</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Varierar från månad till månad…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Inga regelbundna öppettider…</string>
@@ -110,7 +109,6 @@ Innan appen laddar upp dina ändringar så kollar den en &lt;a href="https://www
     <string name="quest_surface_value_sett">Gatsten</string>
     <string name="quest_surface_value_wood">Trä</string>
     <string name="quest_sidewalk_title">Finns det en trottoar längs den här gatan?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Var ligger den här gatan?</string>
     <string name="quest_address_title">Vad har den här byggnaden för husnummer?</string>
     <string name="store_listing_short_description">Kartläggningsapp för OpenStreetMap</string>
     <string name="store_listing_full_description">Bidra till att förbättra OpenStreetMap med StreetComplete!
@@ -177,9 +175,6 @@ Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, ut
     <string name="quest_maxspeed_answer_noSign_confirmation">Kontrollerade du i början och slutet av vägen?
 Om det inte finns några skyltar längs hela vägen som gäller för den markerade sektionen kan det vara så att bashastighet gäller.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Ja, det finns inte någon skylt</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Det är olika bashastighet i tätbebyggt område och på landsvägar (50 och 70 km/h i Sverige).</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Tätbebyggt område</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Landsväg</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Om det finns en skylt som ser ut så här vid huvudvägen kommer det kanske inte finnas individuella skyltar inom zonen, eftersom hastighetsbegränsningen gäller för hela zonen.</string>
     <string name="quest_sport_softball">Softboll</string>
     <string name="quest_sport_racquet">Racketboll</string>
@@ -213,7 +208,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="credits_contributors_title">Kodbidragsgivare</string>
     <string name="credits_author_title">Upphovsman och förvaltare</string>
     <string name="quest_maxspeed_answer_living_street">Det är gångfartsområde</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Så det finns en skylt som ser ut så här?</string>
     <string name="quest_orchard_produce_title">Vad odlas här?</string>
     <string name="produce_grapes">Vindruvor</string>
     <string name="produce_agaves">Agave</string>
@@ -285,7 +279,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_buildingLevels_levelsLabel2">vanliga våningar (utan takvåningar)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Varierar mellan olika husdelar</string>
     <string name="quest_buildingLevels_answer_description">I sådana fall, fyll i värdet för den högsta husdelen.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Är körbanorna separerade av en fysisk barriär eller grönområde? Bashastigheten beror på om så är fallet eller inte.</string>
     <string name="about_category_feedback">Återkoppling</string>
     <string name="quest_leave_new_note_photo">Bifoga foto</string>
     <string name="quest_leave_new_note_photo_delete_title">Vill du ta bort den här bilden?</string>
@@ -316,7 +309,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_housenumber_conscription_number">Konskriptions-nummer</string>
     <string name="quest_housenumber_street_number_optional">Orienterings-nummer (valfritt)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Cykelbana även på andra sidan…</string>
-    <string name="quest_openingHours_emptyAnswer">Beskriv vad som står på skylten. Saknas skylt, fråga om öppettiderna.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ingen, men cyklister får cykla i båda riktningarna</string>
     <string name="quest_wheelchairAccess_description_toilets">Om toaletten är tillgänglig för rullstolsanvändare finns det oftast en sådan skylt.
 Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men att det inte finns stödhandtag eller anpassad tvättho.</string>
@@ -451,7 +443,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_openingHours_no_sign">Ingen öppettider-skylt</string>
     <string name="quest_buildingType_sports_centre">Idrottsanläggning</string>
     <string name="quest_buildingType_toilets">Toalett</string>
-    <string name="quest_maxspeed_sign_question">Vad bestämmer hastighetsbegränsningen?</string>
     <string name="quest_segregated_title">Hur är gångbanan och cykelvägen utformad här?</string>
     <string name="dialog_tutorial_upload">För att ladda upp ändringarna manuellt, använd knappen som ser ut så här.</string>
     <string name="quest_segregated_separated">Separerade från varandra</string>
@@ -466,7 +457,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="privacy_html_image_upload2">&lt;p&gt;Foton som du bifogar en anteckning laddas upp till min server och tas bort några dagar efter att anteckningen är avklarad. Metadatan tas bort innan uppladdning.&lt;/p&gt;</string>
     <string name="action_deselect_all">Avmarkera alla</string>
     <string name="quest_buildingType_retail_description">även restaurang- och kafébyggnader, butiksbyggnader…</string>
-    <string name="quest_openingHours_timeSelect_next">Nästa</string>
     <string name="quest_tracktype_title">Hur fast är underlaget i detta spår?</string>
     <string name="quest_tracktype_grade1">Fast</string>
     <string name="quest_tracktype_grade4">Mestadels mjuk</string>
@@ -492,7 +482,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="action_open_location">Öppna plats i en annan app</string>
     <string name="map_application_missing">Ingen annan kartapplikation installerad</string>
     <string name="label_housenumber">husnummer</string>
-    <string name="label_blocknumber">kvartersnummer</string>
     <string name="quest_busStopShelter_covered">Hela hållplatsen har tak</string>
     <string name="quest_ferry_pedestrian_title">Transporterar denna färjelinje fotgängare?</string>
     <string name="quest_ferry_motor_vehicle_title">Transporterar denna färjelinje motorfordon?</string>
@@ -526,7 +515,6 @@ Dela den nu?</string>
     <string name="quest_recycling_type_glass_bottles">Glasflaskor och burkar</string>
     <string name="quest_recycling_type_glass_bottles_short">Flaskor och burkar</string>
     <string name="quest_recycling_type_paper">Papper</string>
-    <string name="quest_recycling_type_plastic_generic">Plast</string>
     <string name="quest_recycling_type_plastic">Vilka plaster som helst</string>
     <string name="quest_recycling_type_shoes">Skor</string>
     <string name="quest_recycling_type_electric_appliances">Elektriska apparater</string>
@@ -693,7 +681,6 @@ nivåer</string>
     <string name="at_housenumber">husnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Lägg till lediga dagar</string>
     <string name="quest_openingHours_off_day">Ledig dag</string>
-    <string name="quest_openingHours_unspecified_range">Inte angivet</string>
     <string name="quest_cycleway_resurvey_title">Gäller detta fortfarande för cykelvägen här?</string>
     <string name="pref_title_resurvey_intervals">Undersökningsintervall</string>
     <string name="resurvey_intervals_less_often">Fråga mindre ofta</string>
@@ -704,7 +691,6 @@ nivåer</string>
     <string name="quest_oneway2_title">Är detta en enkelriktad gata? I vilken riktning?</string>
     <string name="quest_oneway2_dir">Enkelriktad i denna riktning</string>
     <string name="quest_oneway2_no_oneway">Inte enkelriktad</string>
-    <string name="quest_maxweight_select_sign">Välj symbol</string>
     <string name="quest_steps_incline_title">Vilken riktning leder uppåt i denna trappa?</string>
     <string name="quest_steps_incline_up">Denna väg upp</string>
     <string name="quest_step_count_title">Hur många trappsteg finns här?</string>
@@ -792,7 +778,6 @@ Undersök alla tillgängliga alternativ: vissa fall är inte uppenbara, som en e
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Skottlands krona</string>
     <string name="quest_buildingType_fire_station">Brandstation</string>
     <string name="quest_recycling_type_beverage_cartons">Endast dryckeskartonger</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Endast plastflaskor och kartonger</string>
     <string name="team_mode">Gruppläge</string>
     <string name="team_mode_exit">Avsluta gruppläget</string>
     <string name="team_mode_description">När man i en grupp tillsammans kartlägger samma område kan man använda gruppläget för att dela upp uppdrag mellan alla gruppmedlemmar.
@@ -1144,13 +1129,8 @@ Gör detta för varje sida som finns.</string>
     <string name="quest_camp_drinking_water_title">Finns det gratis tillgång till dricksvatten för campare här?</string>
     <string name="quest_camp_shower_title">Finns det duschar här?</string>
     <string name="quest_camp_power_supply_title">Finns det några eluttag för gäster?</string>
-    <string name="quest_camp_type_title">Hur får man campa här?</string>
-    <string name="quest_camp_type_tents_and_caravans">Både tält och husvagn/husbil</string>
-    <string name="quest_camp_type_caravans_only">Bara husvagn/husbil</string>
-    <string name="quest_camp_type_tents_only">Bara med tält</string>
     <string name="quest_camp_type_backcountry">Vildmarkscamping (inga faciliteter)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Diametern verkar osannolik, den brukar vanligtvis vara mellan %1$d och %2$d.</string>
-    <string name="quest_recycling_type_pet">Endast PET</string>
     <string name="street_parking_street_width">Gatubredd: %1$s</string>
     <string name="overlay_street_parking">Gatuparkering</string>
     <string name="link_ohsomehex_description">Utforska OSM-data från stort till smått och genom tid och rum</string>
@@ -1239,9 +1219,6 @@ Flytta den?</string>
     <string name="street_parking_staggered_half_on_kerb">Delvis på trottaren men bara en sida åt gången</string>
     <string name="quest_traffic_signals_sound_description">Tips: Leta efter högtalare. Inte alla ljudsignaler kan aktiveras med en knapp.</string>
     <string name="quest_presets_duplicate">Skapa kopia</string>
-    <string name="label_block">kvarter</string>
-    <string name="quest_address_answer_block">Det ligger i ett namngivet kvarter</string>
-    <string name="quest_address_answer_no_block">Det ligger inte i ett namngivet kvarter</string>
     <string name="quest_surface_value_mud">Beständig lera</string>
     <string name="quest_wheelchairAccessPat_noToilet">Det finns ingen toalett här</string>
     <string name="unknown_surface_title">Annan slags beläggning</string>
@@ -1420,6 +1397,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_dietType_glutenfree_name_title">Erbjuds glutenfria produkter här?</string>
     <string name="quest_dietType_explanation_glutenfree">Att tillaga glutenfria produkter kräver kunskap, eftersom vanliga kryddor och såser kan innehålla gluten. Glutenfria livsmedel märks tydligt som sådana.</string>
     <string name="quest_construction_minor_title">Är de mindre vägarbetena här avslutade?</string>
+    <string name="map_attribution">Kartattribution</string>
     <string name="link_panoramax_description">En gratis och öppen källkodsprogramvara och ideell tjänst för delning av crowdsourcade street-level-foton</string>
     <string name="link_openclimbing_description">En karta över klättringsplatser</string>
     <string name="pref_title_zoom_buttons">Visa kartzoomknappar</string>
@@ -1448,4 +1426,36 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_streetName_add_language">Lägg till språk</string>
     <string name="ok">OK</string>
     <string name="cancel">Avbryt</string>
+    <string name="quest_aerialway_bicycle_title">Kan denna linbana transportera cyklar?</string>
+    <string name="quest_aerialway_bicycle_summer">Bara på sommaren</string>
+    <string name="quest_board_type_rules">Regler</string>
+    <string name="quest_firewood_provided_title">Finns det brännved här?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Hur många cyklar kan laddas här samtidigt?</string>
+    <string name="quest_charging_station_bicycles_title">Kan man ladda cyklar här också?</string>
+    <string name="quest_charging_station_bicycles_answer_only">Det är bara för cyklar</string>
+    <string name="quest_recycling_type_pet_bottles">PET flaska</string>
+    <string name="quest_maxweight_add_sign">Lägg till skylt</string>
+    <string name="quest_maxweight_remove_sign">Ta bort skylt</string>
+    <string name="pref_title_message_weekly_osm">Nya utgåvor av weeklyOSM</string>
+    <string name="quest_artwork_title">Vad är det här för slags konstverk?</string>
+    <string name="quest_artwork_sculpture">Skulptur</string>
+    <string name="quest_artwork_statue">Statyn</string>
+    <string name="quest_artwork_mural">Väggmålning</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Konstinstallation</string>
+    <string name="quest_artwork_stone">Sten</string>
+    <string name="quest_artwork_painting">Målning</string>
+    <string name="quest_artwork_street_art">Annan gatukonst</string>
+    <string name="quest_artwork_architecture">Arkitektur</string>
+    <string name="quest_artwork_mosaic">Mosaik</string>
+    <string name="quest_artwork_relief">Relief</string>
+    <string name="quest_artwork_fountain">Fontän</string>
+    <string name="quest_bothway_title">I vilken riktning kan du åka med den här?</string>
+    <string name="quest_camp_tent_title">Får man campa här i tält?</string>
+    <string name="quest_camp_cabin_title">Finns det stugor som man kan bo i här?</string>
+    <string name="quest_openingHours_add_time">Lägg till tid</string>
+    <string name="quest_collectionTimes_answer_time_points">Vid specifika tidpunkter…</string>
+    <string name="quest_shower_hot_water_title">Finns det varmvatten här?</string>
+    <string name="calendar_new_event_title">Nytt OSM-evenemang i ditt område!</string>
+    <string name="pref_title_message_calendar">Nytt OSM-evenemang i ditt område</string>
 </resources>

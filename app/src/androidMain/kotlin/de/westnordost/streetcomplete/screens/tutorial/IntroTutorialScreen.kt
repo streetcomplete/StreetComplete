@@ -25,17 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.logo_osm_magnifier
-import de.westnordost.streetcomplete.resources.logo_osm_map
-import de.westnordost.streetcomplete.resources.logo_osm_map_lighting
-import de.westnordost.streetcomplete.resources.no_location_permission_warning
-import de.westnordost.streetcomplete.resources.tutorial_happy_mapping
-import de.westnordost.streetcomplete.resources.tutorial_intro
-import de.westnordost.streetcomplete.resources.tutorial_solving_quests
-import de.westnordost.streetcomplete.resources.tutorial_stay_safe
-import de.westnordost.streetcomplete.resources.tutorial_welcome_to_osm
-import de.westnordost.streetcomplete.resources.tutorial_welcome_to_osm_subtitle
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.ui.common.Pin
@@ -44,7 +34,7 @@ import de.westnordost.streetcomplete.ui.theme.titleLarge
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Shows a short tutorial for first-time users */
 @Composable

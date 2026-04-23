@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Заявление о конфиденциальности</string>
     <string name="quest_openingHours_public_holidays">Праздничные дни</string>
     <string name="quest_openingHours_public_holidays_short">праздники</string>
-    <string name="quest_openingHours_open_end">может закрыться и позже</string>
     <string name="quest_openingHours_answer_247">Открыто 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Зависит от месяца…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Плавающий график работы…</string>
@@ -111,7 +110,6 @@
     <string name="quest_surface_value_sett">Брусчатка</string>
     <string name="quest_surface_value_wood">Дерево</string>
     <string name="quest_sidewalk_title">На этой улице есть тротуар?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Где находится эта улица?</string>
     <string name="quest_address_title">Какой номер дома у этого здания?</string>
     <string name="store_listing_short_description">Приложение-топограф для OpenStreetMap</string>
     <string name="store_listing_full_description">Помогите улучшить OpenStreetMap с помощью StreetComplete!
@@ -178,9 +176,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">Вы проверили на обоих концах улицы?
 Если вдоль всей улицы нет ни одного знака, относящегося к выбранному участку дороги, укажите стандартное ограничение скорости.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Да, знаков нет</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">На дорогах в городе и вне города по умолчанию действуют разные скоростные режимы.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">В городе</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Вне города</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Если на перекрёстке главной улицы есть такой знак, то других знаков внутри зоны не будет, так как ограничение скорости распространяется на всю зону.</string>
     <string name="quest_sport_softball">Софтбол</string>
     <string name="quest_sport_racquet">Ракетбол</string>
@@ -214,7 +209,6 @@
     <string name="credits_contributors_title">Вклад в код внесли</string>
     <string name="credits_author_title">Автор и сопровождающий</string>
     <string name="quest_maxspeed_answer_living_street">Это жилая улица</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Значит здесь есть такой знак?</string>
     <string name="quest_orchard_produce_title">Что здесь выращивают?</string>
     <string name="produce_grapes">Виноград</string>
     <string name="produce_agaves">Агава</string>
@@ -286,7 +280,6 @@
     <string name="quest_buildingLevels_levelsLabel2">обычные этажи (исключая крышу)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Отличается для разных частей здания</string>
     <string name="quest_buildingLevels_answer_description">В этом случае просто введите значения для самой высокой части здания.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Полосы противоположных направлений разделены физически (барьером) или островком безопасности? От этого зависит ограничение скорости по умолчанию.</string>
     <string name="about_category_feedback">Обратная связь</string>
     <string name="quest_leave_new_note_photo">Прикрепить фото</string>
     <string name="quest_leave_new_note_photo_delete_title">Удалить это изображение?</string>
@@ -317,7 +310,6 @@
     <string name="quest_housenumber_conscription_number">Сквозная нумерация</string>
     <string name="quest_housenumber_street_number_optional">Ориентировочный номер (необязательно)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Также велосипедная дорожка на встречной полосе…</string>
-    <string name="quest_openingHours_emptyAnswer">Вам надо описать, что на вывеске. Если нет вывески, вы должны спросить о режиме работы внутри.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">никаких, но велосипедисты могут ехать во всех направлениях</string>
     <string name="quest_wheelchairAccess_description_toilets">Подобный знак инвалидной коляски означает, что туалет доступен для инвалидов-колясочников.
 "Частично" означает, что инвалид может заехать и воспользоваться туалетом, но туалет не оборудован поручнями и пониженной раковиной.</string>
@@ -452,7 +444,6 @@
     <string name="quest_openingHours_no_sign">Часы работы не указаны</string>
     <string name="quest_buildingType_sports_centre">Спортивный центр</string>
     <string name="quest_buildingType_toilets">Туалеты</string>
-    <string name="quest_maxspeed_sign_question">Чем установлено ограничение скорости?</string>
     <string name="quest_segregated_title">Как здесь расположены пешеходная и велосипедная дорожки?</string>
     <string name="dialog_tutorial_upload">Чтобы отправить правки вручную, используйте кнопку на панели инструментов, которая выглядит так.</string>
     <string name="quest_segregated_separated">Отделены друг от друга</string>
@@ -467,7 +458,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt;Приложенные фотографии загружаются на мой сервер и удаляются через несколько дней после того, как заметка будет рассмотрена. Все метаданные фотографий удаляются.&lt;/p&gt;</string>
     <string name="action_deselect_all">Снять выделение со всех</string>
     <string name="quest_buildingType_retail_description">включая здания ресторанов, кафе, …</string>
-    <string name="quest_openingHours_timeSelect_next">Следующий</string>
     <string name="quest_tracktype_title">Насколько мягкая поверхность этой колеи?</string>
     <string name="quest_tracktype_grade1">Твёрдая</string>
     <string name="quest_tracktype_grade4">Преимущественно мягкая</string>
@@ -489,11 +479,10 @@
     <string name="pref_title_theme_select">Выбор темы</string>
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Тёмная</string>
-    <string name="theme_system_default">Согласно настройкам системы</string>
+    <string name="theme_system_default">Как в системе</string>
     <string name="action_open_location">Посмотреть местоположение в другом приложении</string>
     <string name="map_application_missing">Другие картографические приложения не установлены</string>
     <string name="label_housenumber">номер дома</string>
-    <string name="label_blocknumber">номер корпуса</string>
     <string name="quest_busStopShelter_covered">У остановки есть навес</string>
     <string name="quest_ferry_pedestrian_title">Этот паром перевозит пешеходов?</string>
     <string name="quest_ferry_motor_vehicle_title">Этот паром перевозит механические транспортные средства?</string>
@@ -527,7 +516,6 @@
     <string name="quest_recycling_type_glass_bottles">Стеклянные бутылки и банки</string>
     <string name="quest_recycling_type_glass_bottles_short">Бутылки и банки</string>
     <string name="quest_recycling_type_paper">Бумага</string>
-    <string name="quest_recycling_type_plastic_generic">Пластик</string>
     <string name="quest_recycling_type_plastic">Любой пластик</string>
     <string name="quest_recycling_type_shoes">Обувь</string>
     <string name="quest_recycling_type_electric_appliances">Электроприборы</string>
@@ -694,7 +682,6 @@
     <string name="at_housenumber">номер дома %1$s</string>
     <string name="quest_openingHours_add_off_days">Добавить выходные дни</string>
     <string name="quest_openingHours_off_day">Выходной</string>
-    <string name="quest_openingHours_unspecified_range">Не указано</string>
     <string name="quest_cycleway_resurvey_title">Здесь всё ещё есть велосипедная дорожка?</string>
     <string name="pref_title_resurvey_intervals">Интервалы повторного обследования</string>
     <string name="resurvey_intervals_less_often">Спрашивать реже</string>
@@ -705,7 +692,6 @@
     <string name="quest_oneway2_title">Это улица с односторонним движением? Если да, то в каком направлении?</string>
     <string name="quest_oneway2_dir">Одностороннее в этом направлении</string>
     <string name="quest_oneway2_no_oneway">Не одностороннее</string>
-    <string name="quest_maxweight_select_sign">Выберите знак</string>
     <string name="quest_steps_incline_title">Какое направление ведёт вверх по этим ступеням?</string>
     <string name="quest_steps_incline_up">Подъём в эту сторону</string>
     <string name="quest_step_count_title">Сколько здесь ступеней?</string>
@@ -790,7 +776,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Корона Шотландии</string>
     <string name="quest_buildingType_fire_station">Пожарная часть</string>
     <string name="quest_recycling_type_beverage_cartons">Только картонные упаковки от напитков</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Только пластиковые бутылки и картон</string>
     <string name="team_mode">Командный режим</string>
     <string name="team_mode_exit">Отключить командный режим</string>
     <string name="team_mode_description">Если вы обследуете местность группой, вы можете включить командный режим, чтобы распределить квесты между всеми участниками.</string>
@@ -920,7 +905,7 @@
     <string name="quest_barrier_bicycle_type_single">Проход между двумя барьерами</string>
     <string name="quest_barrier_bicycle_type_double">Шикана - барьер на каждой стороне</string>
     <string name="quest_barrier_bicycle_type_multiple">Шикана - больше двух барьеров</string>
-    <string name="language_default">Системный по умолчанию</string>
+    <string name="language_default">Как в системе</string>
     <string name="on_floor">на этаже %1$s</string>
     <string name="select_street_parking_orientation">Выберите ориентацию по отношению к проезжей части:</string>
     <string name="select_street_parking_position">Выберите позицию:</string>
@@ -1145,13 +1130,8 @@
     <string name="quest_camp_drinking_water_title">Есть ли здесь в свободном доступе питьевая вода для отдыхающих?</string>
     <string name="quest_camp_shower_title">Здесь есть душевые?</string>
     <string name="quest_camp_power_supply_title">Есть ли какой-либо способ для клиентов зарядить свой телефон, ноутбук и т.п. здесь?</string>
-    <string name="quest_camp_type_title">Кто может разбить здесь лагерь?</string>
-    <string name="quest_camp_type_tents_and_caravans">Как палатки, так и дома на колёсах, туристические трейлеры, …</string>
-    <string name="quest_camp_type_caravans_only">Только дома на колёсах, туристические трейлеры, …</string>
-    <string name="quest_camp_type_tents_only">Только палатки</string>
     <string name="quest_camp_type_backcountry">Кемпинг в сельской местности (без удобств)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Этот диаметр выглядит неправдоподобным, обычно он находится между %1$d и %2$d.</string>
-    <string name="quest_recycling_type_pet">только ПЭТ</string>
     <string name="street_parking_street_width">Ширина улицы: %1$s</string>
     <string name="overlay_street_parking">Уличная парковка</string>
     <string name="link_ohsomehex_description">Изучайте данные OSM в масштабе всего мира или отдельных объектов в пространстве и времени.</string>
@@ -1238,9 +1218,6 @@
     <string name="street_parking_staggered_half_on_kerb">Частично на проезжей части, если оставляет возможность проехать</string>
     <string name="quest_traffic_signals_sound_description">Подсказка: обратите внимание на динамики.  Не все звуковые сигналы можно активировать с помощью кнопки.</string>
     <string name="quest_presets_duplicate">Дублировать</string>
-    <string name="label_block">блок</string>
-    <string name="quest_address_answer_block">Это внутри одного квартала (домовладения)...</string>
-    <string name="quest_address_answer_no_block">Это находится за пределами одного квартала...</string>
     <string name="quest_surface_value_mud">Стойкая грязь</string>
     <string name="quest_wheelchairAccessPat_noToilet">Здесь нет туалета</string>
     <string name="unknown_surface_title">Другой вид поверхности</string>
@@ -1452,4 +1429,41 @@
     <string name="quest_housenumber_multiple_numbers_description2">Вы можете вводить несколько номеров, разделяя их запятыми. Например: 1,3 или 2Б,4,6.</string>
     <string name="quest_drinking_water_potable_unsigned2">Знака нет</string>
     <string name="or">или</string>
+    <string name="action_copy">Копировать</string>
+    <string name="quest_stopName_hint">Вы можете использовать то же название, что и у другой остановки нажав на нее на карте.</string>
+    <string name="quest_shelter_capacity_title">Сколько людей могут спать здесь?</string>
+    <string name="quest_handwashing_title">Можно ли здесь помыть руки?</string>
+    <string name="quest_openingHours_delete">Удалить</string>
+    <string name="quest_streetName_hint">Вы можете присвоить соседнему участку то же имя, нажав на него на карте.</string>
+    <string name="quest_streetName_abbreviation_instruction">Сокращения, например, «Rd», следует расшифровывать.</string>
+    <string name="quest_streetName_add_language">Добавить язык</string>
+    <string name="ok">ОК</string>
+    <string name="cancel">Отмена</string>
+    <string name="quest_aerialway_bicycle_title">Этот подъемник используется для перевозки велосипедов?</string>
+    <string name="quest_aerialway_bicycle_summer">Только летом</string>
+    <string name="quest_board_type_rules">Правила</string>
+    <string name="quest_firewood_provided_title">Здесь предоставляются дрова?</string>
+    <string name="quest_first_aid_kit_location">Где находится эта аптечка?</string>
+    <string name="quest_lane_markings_title">Есть ли у этой дороги разметка?</string>
+    <string name="quest_level_thing_title">На каком уровне это расположено?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">Сколько велосипедов можно заряжать здесь одновременно?</string>
+    <string name="quest_charging_station_bicycles_title">Можно ли здесь также заряжать велосипеды?</string>
+    <string name="quest_charging_station_bicycles_hint">Адаптеры питания для велосипедных зарядных устройств подключаются к обычным бытовым розеткам.</string>
+    <string name="quest_tower_access_title">Кто может получить доступ к этой башне? Доступ может быть бесплатным или платным.</string>
+    <string name="quest_charging_station_bicycles_answer_only">Только для велосипедов</string>
+    <string name="quest_recycling_type_pet_bottles">Пластиковые бутылки</string>
+    <string name="quest_maxweight_add_sign">Добавить знак</string>
+    <string name="quest_maxweight_remove_sign">Убрать знак</string>
+    <string name="weekly_osm_new_edition_title">Новое изменение!</string>
+    <string name="pref_title_messages">Уведомления внутри приложения</string>
+    <string name="pref_title_message_achievements">Разблокирование достижения</string>
+    <string name="pref_title_message_weekly_osm">Новые выпуски еженедельника OSM</string>
+    <string name="pref_title_message_changelog">Новые версии приложения</string>
+    <string name="quest_artwork_sculpture">Скульптура</string>
+    <string name="quest_artwork_statue">Статуя</string>
+    <string name="quest_artwork_graffiti">Граффити</string>
+    <string name="quest_artwork_installation">Инсталляция</string>
+    <string name="quest_artwork_bust">Бюст</string>
+    <string name="quest_artwork_stone">Камень</string>
+    <string name="quest_artwork_painting">Картина</string>
 </resources>

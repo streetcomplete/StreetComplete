@@ -3,16 +3,7 @@ package de.westnordost.streetcomplete.osm.sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.NO
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.floating_separate
-import de.westnordost.streetcomplete.resources.quest_sidewalk_value_no
-import de.westnordost.streetcomplete.resources.quest_sidewalk_value_separate
-import de.westnordost.streetcomplete.resources.quest_sidewalk_value_yes
-import de.westnordost.streetcomplete.resources.sidewalk_illustration_no
-import de.westnordost.streetcomplete.resources.sidewalk_illustration_yes
-import de.westnordost.streetcomplete.resources.sidewalk_no
-import de.westnordost.streetcomplete.resources.sidewalk_separate
-import de.westnordost.streetcomplete.resources.sidewalk_yes
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
@@ -32,6 +23,7 @@ val Sidewalk.image: DrawableResource? get() = when (this) {
 
 val Sidewalk.floatingIcon: DrawableResource? get() = when (this) {
     SEPARATE -> Res.drawable.floating_separate
+    NO -> Res.drawable.floating_no
     else -> null
 }
 

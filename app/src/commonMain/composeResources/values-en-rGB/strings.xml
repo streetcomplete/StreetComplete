@@ -21,8 +21,8 @@
     <string name="quest_leave_new_note_no">Hide</string>
     <string name="quest_streetName_title">What’s the name of this road?</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Sometimes the street sign is only at one end of the street. Also, note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name.</string>
-    <string name="quest_openingHours_start_time">opening time</string>
-    <string name="quest_openingHours_end_time">closing time</string>
+    <string name="quest_openingHours_start_time">Start time</string>
+    <string name="quest_openingHours_end_time">End time</string>
     <string name="quest_openingHours_add_months">Add months</string>
     <string name="quest_openingHours_add_hours">Add hours</string>
     <string name="quest_openingHours_add_weekdays">Add days of the week</string>
@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Privacy</string>
     <string name="quest_openingHours_public_holidays">Public holidays</string>
     <string name="quest_openingHours_public_holidays_short">PH</string>
-    <string name="quest_openingHours_open_end">open end</string>
     <string name="quest_openingHours_answer_247">Open 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Differs by month…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">No regular opening hours…</string>
@@ -92,7 +91,6 @@
     <string name="quest_surface_value_sett">Sett</string>
     <string name="quest_surface_value_wood">Wood</string>
     <string name="quest_sidewalk_title">Is there a pavement along this street?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Where is this street?</string>
     <string name="quest_address_title">What’s the house number of this building?</string>
     <string name="store_listing_short_description">OpenStreetMap surveyor app</string>
     <string name="store_listing_full_description">Help improve OpenStreetMap with StreetComplete! This app finds missing map data in your vicinity and displays it on a map as quests. Solve each quest by visiting the location on-site and answering a simple question to update the map. The info you enter is directly added to OpenStreetMap in your name, without the need to use another editor.</string>
@@ -154,9 +152,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Are you sure no limit is posted?</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">Did you check at the ends of the street? If there are no signs along the whole street which apply for the highlighted section, default speed limits apply.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Yes, no sign</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Roads in built-up areas have a lower default speed limit than rural roads.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Built-up area</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Rural</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">If there is a sign like this at the main street junction, you might not find individual signs within the zone, as the speed limit posted there applies to the whole zone.</string>
     <string name="quest_sport_softball">Softball</string>
     <string name="quest_sport_racquet">Racquetball</string>
@@ -188,7 +183,6 @@
     <string name="credits_contributors_title">Code contributors</string>
     <string name="credits_author_title">Author and maintainer</string>
     <string name="quest_maxspeed_answer_living_street">It is a Home Zone</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">So, there is a sign like this?</string>
     <string name="quest_orchard_produce_title">What’s being grown here?</string>
     <string name="produce_grapes">Grapes</string>
     <string name="produce_agaves">Agaves</string>
@@ -260,7 +254,6 @@
     <string name="quest_buildingLevels_levelsLabel2">regular levels (without roof)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Are the carriageways of this road separated by a physical barrier or green space? The default speed limit depends on whether this is the case.</string>
     <string name="about_category_feedback">Feedback</string>
     <string name="quest_leave_new_note_photo">Attach photo</string>
     <string name="quest_leave_new_note_photo_delete_title">Do you want to delete this picture?</string>
@@ -291,7 +284,6 @@
     <string name="quest_housenumber_conscription_number">Conscription number</string>
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also cycle path on the other side…</string>
-    <string name="quest_openingHours_emptyAnswer">You need to describe what is on the sign. If there is no sign, you should ask for the opening hours inside.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
     <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the toilet is accessible. Partially means that a wheelchair can enter and use the toilet, but no handrail or adapted hand basin is present.</string>
     <string name="map_btn_create_note">Create new note</string>
@@ -425,7 +417,6 @@
     <string name="quest_openingHours_no_sign">No opening hours sign</string>
     <string name="quest_buildingType_sports_centre">Sports centre</string>
     <string name="quest_buildingType_toilets">Toilets</string>
-    <string name="quest_maxspeed_sign_question">What defines the speed limit?</string>
     <string name="quest_segregated_title">How are the footpath and cycle path laid out here?</string>
     <string name="dialog_tutorial_upload">To upload your changes manually, use the button in the main menu that looks like this.</string>
     <string name="quest_segregated_separated">Segregated from one another</string>
@@ -440,7 +431,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;</string>
     <string name="action_deselect_all">Deselect all</string>
     <string name="quest_buildingType_retail_description">including buildings for restaurants, cafés, supermarkets, shops…</string>
-    <string name="quest_openingHours_timeSelect_next">Next</string>
     <string name="quest_tracktype_title">What’s the surface firmness of this track?</string>
     <string name="quest_tracktype_grade1">Solid</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
@@ -466,7 +456,6 @@
     <string name="action_open_location">Open location in another app</string>
     <string name="map_application_missing">No other map application installed</string>
     <string name="label_housenumber">house number</string>
-    <string name="label_blocknumber">block number</string>
     <string name="quest_busStopShelter_covered">Whole stop is covered</string>
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
@@ -500,12 +489,11 @@ Split it now?</string>
     <string name="quest_recycling_type_glass_bottles">Glass bottles and jars</string>
     <string name="quest_recycling_type_glass_bottles_short">Bottles and jars</string>
     <string name="quest_recycling_type_paper">Paper</string>
-    <string name="quest_recycling_type_plastic_generic">Plastic</string>
     <string name="quest_recycling_type_plastic">Any plastic</string>
     <string name="quest_recycling_type_shoes">Shoes</string>
     <string name="quest_recycling_type_electric_appliances">Electric appliances</string>
-    <string name="quest_recycling_type_plastic_bottles">Plastic bottles only</string>
-    <string name="quest_recycling_type_plastic_packaging">Plastic packaging only</string>
+    <string name="quest_recycling_type_plastic_bottles">Plastic bottles</string>
+    <string name="quest_recycling_type_plastic_packaging">Any plastic packaging</string>
     <string name="quest_recycling_type_scrap_metal">Scrap metal</string>
     <string name="quest_recycling_type_any_glass">Any glass</string>
     <string name="quest_recycling_glass_title">Can only glass bottles and jars be recycled here, or any type of glass?</string>
@@ -607,9 +595,9 @@ Finally, remember to stay safe: Be aware of your surroundings and don’t enter 
     <string name="achievement_bicyclist_solved_X">You solved %1$d quests that help cyclists!</string>
     <string name="achievement_wheelchair_title">Mobility</string>
     <string name="achievement_wheelchair_solved_X">You solved %1$d quests that help wheelchair users get around town!</string>
-    <string name="achievement_postman_title">Postman</string>
+    <string name="achievement_postman_title">Going postal</string>
     <string name="achievement_postman_solved_X">You helped to locate %1$d addresses and other postal amenities!
-This data is essential not only for the postman but also for any navigation system.</string>
+This data is essential not only for the postal worker but also for any navigation system.</string>
     <string name="achievement_building_title">High-Rise</string>
     <string name="achievement_building_solved_X">You solved %1$d building related quests.
 Note that this app asks for the house number of a building only after its type has been determined.</string>
@@ -667,7 +655,6 @@ levels</string>
     <string name="at_housenumber">house number %1$s</string>
     <string name="quest_openingHours_add_off_days">Add off days</string>
     <string name="quest_openingHours_off_day">Off day</string>
-    <string name="quest_openingHours_unspecified_range">Not specified</string>
     <string name="quest_cycleway_resurvey_title">Is this still the cycling situation here?</string>
     <string name="pref_title_resurvey_intervals">Resurvey frequency</string>
     <string name="resurvey_intervals_less_often">Less often</string>
@@ -678,7 +665,6 @@ levels</string>
     <string name="quest_oneway2_title">Is this a one-way street? In which direction?</string>
     <string name="quest_oneway2_dir">One-way in this direction</string>
     <string name="quest_oneway2_no_oneway">Not a one-way</string>
-    <string name="quest_maxweight_select_sign">Select sign</string>
     <string name="quest_steps_incline_title">Which direction leads upwards here?</string>
     <string name="quest_steps_incline_up">This way up</string>
     <string name="quest_step_count_title">How many steps are here?</string>
@@ -761,11 +747,10 @@ Note all the available options: some cases are not obvious, like a one way road 
     <string name="quest_drinking_water_potable_signed">Drinking water (with a sign)</string>
     <string name="quest_drinking_water_not_potable_signed">Non-potable water (with a sign)</string>
     <string name="quest_postboxRoyalCypher_title">What’s the royal cypher on this postbox?</string>
-    <string name="quest_postboxRoyalCypher_type_none">No royal cypher is visible</string>
+    <string name="quest_postboxRoyalCypher_type_none">None is visible</string>
     <string name="quest_postboxRoyalCypher_type_scottish_crown">The Crown of Scotland</string>
     <string name="quest_buildingType_fire_station">Fire station building</string>
-    <string name="quest_recycling_type_beverage_cartons">Drinks cartons only</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Plastic bottles and cartons only</string>
+    <string name="quest_recycling_type_beverage_cartons">Drinks cartons</string>
     <string name="team_mode">Enter Team Mode</string>
     <string name="team_mode_exit">Exit Team Mode</string>
     <string name="team_mode_description">When mapping the same area together in a group, you can enter team mode to split up quests between all team members. Each of you will then see different quests.</string>
@@ -955,7 +940,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_smoothness_surface_value">The surface was tagged as:</string>
     <string name="quest_smoothness_obstacle">There is an obstacle</string>
     <string name="quest_smoothness_obstacle_hint">Please provide an answer for the overall smoothness. Single obstacles like kerbs, speed bumps or cattle grids can be ignored. Repeated or unexpected obstacles should count towards the answer.</string>
-    <string name="quest_smoothness_hint">🚲, 🚗, 🚙, … indicate for which vehicles the surface should usable. What matters is the big picture, rather than single hazards.</string>
+    <string name="quest_smoothness_hint">The icons indicate for which vehicles the surface should usable. What matters is the big picture, rather than single hazards.</string>
     <string name="link_osmhydrant_description">Lookup, add and edit fire stations and fire hydrants</string>
     <string name="achievement_lifesaver_title">Lifesaver</string>
     <string name="achievement_lifesaver_solved_X">You solved %1$d quests that help emergency services and first responders!</string>
@@ -964,7 +949,7 @@ Data is refreshed after %1$s days and unused data is deleted after %2$s days aut
     <string name="quest_smoothness_description_good_compacted_gravel">Hard-packed, very little loose gravel or sand</string>
     <string name="quest_barrier_path_intersection">How does this path cross the barrier here?</string>
     <string name="quest_barrier_road_intersection">How does this road cross the barrier here?</string>
-    <string name="quest_sidewalk_value_separate">pavement, but displayed separately on map</string>
+    <string name="quest_sidewalk_value_separate">pavement displayed separately on map</string>
     <string name="no_camera_permission_warning_title">Camera permission</string>
     <string name="no_camera_permission_warning">The permission is required to measure distances with the camera.</string>
     <string name="ar_core_error_sdk_too_old">This app is too old, try updating.</string>
@@ -1044,7 +1029,7 @@ Do the same for the other side if present.</string>
     <string name="quest_toiletAvailability_title">Are there any toilets here?</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">Is the toilet at this place wheelchair accessible?</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">Are you sure that cyclists are not allowed to use this one-way street in both directions? If you’re unsure, look for a sign at the end of the street.</string>
-    <string name="link_valhalla_description">Routeing engine with a very small memory footprint, multi-modal routing, isochrones and more.</string>
+    <string name="link_valhalla_description">Routing engine with a very small memory footprint, multi-modal routing, isochrones and more.</string>
     <string name="link_backofyourhand_description">How well do you know your area? Test your knowledge by locating streets.</string>
     <string name="link_notesreview_description">Conveniently see, filter and comment on notes created by you and others. Many notes can be solved by putting the information contained in them on the map with iD or JOSM</string>
     <string name="quest_accepts_cards">Are credit or debit cards accepted here?</string>
@@ -1114,13 +1099,8 @@ Do the same for the other side if present.</string>
     <string name="quest_camp_drinking_water_title">Is drinking water freely available for guests here?</string>
     <string name="quest_camp_shower_title">Are there showers here?</string>
     <string name="quest_camp_power_supply_title">Are there any power outlets available for guests?</string>
-    <string name="quest_camp_type_title">Who may camp here?</string>
-    <string name="quest_camp_type_tents_and_caravans">Both tents and motor homes, caravans, …</string>
-    <string name="quest_camp_type_caravans_only">Only motor homes, caravans, …</string>
-    <string name="quest_camp_type_tents_only">Only tents</string>
     <string name="quest_camp_type_backcountry">Backcountry camping (no facilities)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">This diameter looks implausible, it is usually between %1$d and %2$d.</string>
-    <string name="quest_recycling_type_pet">PET only</string>
     <string name="street_parking_street_width">Street width: %1$s</string>
     <string name="overlay_street_parking">Street parking</string>
     <string name="link_ohsomehex_description">Explore OSM data across scales from the “big picture” up to individual objects over space and time</string>
@@ -1207,9 +1187,6 @@ Move it now?</string>
     <string name="street_parking_staggered_half_on_kerb">Partially on street on alternating sides</string>
     <string name="quest_traffic_signals_sound_description">Hint: Look out for speakers. Not all sound signals can be activated through a button.</string>
     <string name="quest_presets_duplicate">Duplicate</string>
-    <string name="label_block">block</string>
-    <string name="quest_address_answer_block">It’s within a block…</string>
-    <string name="quest_address_answer_no_block">It isn’t within a block…</string>
     <string name="quest_surface_value_mud">Persistent mud</string>
     <string name="quest_wheelchairAccessPat_noToilet">There is no toilet here</string>
     <string name="unknown_surface_title">Other kind of surface</string>
@@ -1244,7 +1221,7 @@ Move it now?</string>
     <string name="quest_maxheight_sign_title">What height limit is indicated here?</string>
     <string name="quest_leave_new_note_as_answer">In this case, you need to leave a note in which you explain the situation.</string>
     <string name="quest_drinking_water_type_title2">Is drinking water available here? If so, what is its source?</string>
-    <string name="quest_is_amenity_inside_title">Is this inside a building?</string>
+    <string name="quest_is_amenity_inside_title">Is this indoors?</string>
     <string name="quest_bbq_fuel_title">What is this grill powered by?</string>
     <string name="quest_bbq_fuel_wood">Wood</string>
     <string name="quest_bbq_fuel_electric">Electric</string>
@@ -1405,7 +1382,7 @@ Move it now?</string>
     <string name="pref_overlays_reset">Reset overlay enablement to the default?</string>
     <string name="overlay">Overlay</string>
     <string name="enable_overlay_confirmation_title">Enable this overlay?</string>
-    <string name="link_transitous_description">Provider neutral free and open source public transport routing</string>
+    <string name="link_transitous_description">Provider-neutral, free, and open source public transport routing.</string>
     <string name="compass">Compass</string>
     <string name="quest_tracktype_grade2">Mostly solid</string>
     <string name="quest_tracktype_grade3">Mixture</string>
@@ -1430,4 +1407,51 @@ For example 1,3 or 2b,4,6.</string>
     <string name="quest_first_aid_kit_location">Where is this first aid kit located?</string>
     <string name="quest_lane_markings_title">Does this road have lane markings?</string>
     <string name="quest_level_thing_title">On which level number is this thing located?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">How many bicycles can be charged here at the same time?</string>
+    <string name="quest_charging_station_bicycles_title">Can bicycles be charged here, too?</string>
+    <string name="quest_charging_station_bicycles_hint">Bicycle charger power adapters plug into normal household sockets.</string>
+    <string name="quest_tower_access_title">Who may access this tower? It may be free or paid.</string>
+    <string name="quest_charging_station_bicycles_answer_only">It’s only for bicycles</string>
+    <string name="quest_recycling_type_pet_bottles">PET bottles</string>
+    <string name="quest_maxweight_add_sign">Add sign</string>
+    <string name="quest_maxweight_remove_sign">Remove sign</string>
+    <string name="weekly_osm_new_edition_title">New Edition!</string>
+    <string name="pref_title_messages">In-App Messages</string>
+    <string name="pref_title_message_achievements">Unlocked achievements</string>
+    <string name="pref_title_message_weekly_osm">New editions of weeklyOSM</string>
+    <string name="pref_title_message_changelog">New app releases</string>
+    <string name="label_block2">city block</string>
+    <string name="quest_address_answer_block2">It’s within a city block…</string>
+    <string name="quest_address_answer_no_block2">It isn’t within a city block…</string>
+    <string name="quest_artwork_title">What kind of artwork is this?</string>
+    <string name="quest_artwork_sculpture">Sculpture</string>
+    <string name="quest_artwork_statue">Statue</string>
+    <string name="quest_artwork_mural">Mural</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Installation</string>
+    <string name="quest_artwork_bust">Bust</string>
+    <string name="quest_artwork_stone">Stone</string>
+    <string name="quest_artwork_painting">Painting</string>
+    <string name="quest_artwork_street_art">Other Street Art</string>
+    <string name="quest_artwork_architecture">Architecture</string>
+    <string name="quest_artwork_mosaic">Mosaic</string>
+    <string name="quest_artwork_relief">Relief</string>
+    <string name="quest_artwork_fountain">Fountain</string>
+    <string name="quest_bothway_title">In what direction can you ride this?</string>
+    <string name="quest_camp_tent_title">May you camp here in a tent?</string>
+    <string name="quest_camp_cabin_title">Are there cabins that you may stay in here?</string>
+    <string name="quest_camp_caravan_title">May you camp here in a motor home or travel trailer?</string>
+    <string name="quest_ferry_bicycle_title">Are bicycles allowed on this ferry?</string>
+    <string name="quest_openingHours_add_time">Add time</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">Select start time</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">Select end time</string>
+    <string name="quest_openingHours_chooseTimeTitle">Select time</string>
+    <string name="quest_openingHours_no_fixed_end">no fixed end time</string>
+    <string name="quest_openingHours_from">from %1$s</string>
+    <string name="quest_openingHours_until_late">%1$s until late</string>
+    <string name="quest_collectionTimes_answer_time_spans">Within a time range…</string>
+    <string name="quest_collectionTimes_answer_time_points">At specific times…</string>
+    <string name="quest_shower_hot_water_title">Is there hot water here?</string>
+    <string name="calendar_new_event_title">New OSM event in your area!</string>
+    <string name="pref_title_message_calendar">New OSM events in your area</string>
 </resources>

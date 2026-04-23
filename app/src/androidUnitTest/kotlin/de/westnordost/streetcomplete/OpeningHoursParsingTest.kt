@@ -21,11 +21,10 @@ import de.westnordost.osm_opening_hours.model.TwentyFourSeven
 import de.westnordost.osm_opening_hours.model.VariableDate
 import de.westnordost.osm_opening_hours.model.VariableTime
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
-import de.westnordost.streetcomplete.osm.opening_hours.parser.hasCollidingWeekdays
-import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupported
-import de.westnordost.streetcomplete.osm.opening_hours.parser.isSupportedOpeningHours
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHours
-import de.westnordost.streetcomplete.osm.opening_hours.parser.toOpeningHoursRows
+import de.westnordost.streetcomplete.osm.opening_hours.hasCollidingWeekdays
+import de.westnordost.streetcomplete.osm.opening_hours.isSupported
+import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
+import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
@@ -85,7 +84,7 @@ fun main() {
         val rules = oh.toOpeningHoursOrNull(lenient = true)
         if (rules != null) {
             parsed += count
-            val rows = rules.toOpeningHoursRows()?.toOpeningHours()?.toString()
+            val rows = rules.toHierarchicOpeningHours()?.toOpeningHours()?.toString()
             if (rows != null) {
                 supported += count
             } else {
@@ -139,7 +138,7 @@ fun main() {
                 }) {
                     complicatedDates += count
                 }
-                if (r.all { it.isSupportedOpeningHours() } && r.hasCollidingWeekdays()) {
+                if (r.all { it.isSupported() } && r.hasCollidingWeekdays()) {
                     selfColliding += count
                 }
             }

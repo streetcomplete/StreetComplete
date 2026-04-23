@@ -35,13 +35,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_overlay_24
-import de.westnordost.streetcomplete.resources.logo_osm_map
-import de.westnordost.streetcomplete.resources.overlays_tutorial_display
-import de.westnordost.streetcomplete.resources.overlays_tutorial_edit
-import de.westnordost.streetcomplete.resources.overlays_tutorial_intro
-import de.westnordost.streetcomplete.resources.overlays_tutorial_title
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.screens.user.achievements.AnimatedTadaShine
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
@@ -49,7 +43,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun OverlaysTutorialScreen(

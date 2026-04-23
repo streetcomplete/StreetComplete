@@ -57,7 +57,6 @@
     <string name="about_title_privacy_statement">Գաղտնիության քաղաքականությունը</string>
     <string name="quest_openingHours_public_holidays">Հասարակական տոներ</string>
     <string name="quest_openingHours_public_holidays_short">PH</string>
-    <string name="quest_openingHours_open_end">Աշխատում է մինչև վերջին հաճախորդը</string>
     <string name="quest_openingHours_answer_247">Բաց 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Կախված ամսից…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Մշտական ​​աշխատանք չկա…</string>
@@ -90,7 +89,6 @@
     <string name="quest_surface_value_sett">Հաստատել</string>
     <string name="quest_surface_value_wood">Փայտ</string>
     <string name="quest_sidewalk_title">Այս փողոցը մայթ ունի:</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Որտեղ է այս փողոցը:</string>
     <string name="quest_address_title">Որն է այս շենքի տան թիվը:</string>
     <string name="store_listing_short_description">OpenstreetMap Surveyor ծրագիրը</string>
     <string name="store_listing_full_description">Օգնեք բարելավել OpenStreetMap-ը StreetComplete-ի միջոցով:
@@ -157,9 +155,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">Ստուգել եք փողոցի ծայրերը:
 Եթե ​​ամբողջ փողոցի երկայնքով նշաններ չկան, որոնք դիմում են ընդգծված հատվածի համար, կիրառվում են լռելյայն արագության սահմաններ:</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Այո, ոչ մի նշան</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Ներկառուցված տարածքներում ճանապարհները ունեն ավելի ցածր լռելյայն արագության սահման, քան գյուղական ճանապարհները:</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Ներկառուցված տարածք</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Գյուղական</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Եթե ​​գլխավոր փողոցային խաչմերուկում այսպիսի նշան կա, դուք չեք գտնի գոտու ներսում անհատական ​​նշաններ, քանի որ այնտեղ տեղադրված արագության սահմանը տարածվում է ամբողջ գոտի:</string>
     <string name="quest_sport_softball">Սափրվել</string>
     <string name="quest_sport_racquet">Ռասետբոլ</string>
@@ -193,7 +188,6 @@
     <string name="credits_contributors_title">Կոդ ներդրողներ</string>
     <string name="credits_author_title">Հեղինակ եւ պահպանող</string>
     <string name="quest_maxspeed_answer_living_street">Դա կենդանի փողոց է</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Այսպիսով, այսպիսի նշան կա:</string>
     <string name="quest_orchard_produce_title">Ինչ է մշակվում այստեղ:</string>
     <string name="produce_grapes">Խաղող</string>
     <string name="produce_agaves">Agaves</string>
@@ -263,7 +257,6 @@
     <string name="quest_buildingLevels_levelsLabel2">կանոնավոր մակարդակներ (տանիքը չհաշված)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Տարբերվում է շենքում</string>
     <string name="quest_buildingLevels_answer_description">Այս դեպքում պարզապես մուտքագրեք բարձրագույն շենքի արժեքները:</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Այս ճանապարհի ճանապարհներն այստեղ ֆիզիկապես առանձնացված են (I.E. պատնեշի միջոցով): Լռելյայն արագության սահմանը կախված է նրանից, թե արդյոք դա այդպես է, թե ոչ:</string>
     <string name="about_category_feedback">Հետադարձ կապ</string>
     <string name="quest_leave_new_note_photo">Կցեք լուսանկարը</string>
     <string name="quest_leave_new_note_photo_delete_title">Do անկանում եք ջնջել այս նկարը:</string>
@@ -294,7 +287,6 @@
     <string name="quest_housenumber_conscription_number">Զորակոչի համարը</string>
     <string name="quest_housenumber_street_number_optional">Կողմնորոշման համարը (ըստ ցանկության)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Նաեւ ցիկլը մյուս կողմից…</string>
-    <string name="quest_openingHours_emptyAnswer">Դուք պետք է նկարագրեք, թե ինչ է նշանը: Եթե ​​նշան չկա, ապա ներսից պետք է խնդրեք բացման ժամեր:</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ոչ մեկը, բայց հեծանվորդները կարող են ճանապարհային ճանապարհ օգտագործել երկու ուղղություններով</string>
     <string name="quest_wheelchairAccess_description_toilets">Նման սայլակով նշան կարող է երեւում, եթե զուգարանը հասանելի է:
 Մասամբ նշանակում է, որ սայլակը կարող է մուտք գործել եւ օգտագործել զուգարանը, բայց առկա է ձեռքի կամ հարմարեցված ձեռքի ավազան:</string>
@@ -428,7 +420,6 @@
     <string name="quest_openingHours_no_sign">Բացման ժամերի բացման նշան չկա</string>
     <string name="quest_buildingType_sports_centre">Մարզական կենտրոն</string>
     <string name="quest_buildingType_toilets">Զուգարաններ</string>
-    <string name="quest_maxspeed_sign_question">Ինչն է սահմանում արագության սահմանը:</string>
     <string name="quest_segregated_title">Ինչպես են դրված եզրափակումն ու ցիկլը այստեղ:</string>
     <string name="dialog_tutorial_upload">Ձեր փոփոխությունները ձեռքով վերբեռնելու համար օգտագործեք կոճակը գործիքագոտում, որը նման է այսպիսին:</string>
     <string name="quest_segregated_separated">Առանձնացված միմյանցից</string>
@@ -439,7 +430,6 @@
     <string name="privacy_html_image_upload2">&lt;p&gt;Լուսանկարները, որոնք դուք կցում եք գրառմանը, վերբեռնվում են իմ սերվերում և ջնջվում գրառման լուծումից մի քանի օր անց: Նրանց մետատվյալները հեռացվում են վերբեռնումից առաջ:&lt;/p&gt;</string>
     <string name="action_deselect_all">Ապամոնտաժել բոլորին</string>
     <string name="quest_buildingType_retail_description">Ներառյալ շենքեր ռեստորանների, սրճարանների, մեծ խանութների համար…</string>
-    <string name="quest_openingHours_timeSelect_next">Հաջորդ</string>
     <string name="quest_tracktype_title">Որն է այս ուղու մակերեսային ամրությունը:</string>
     <string name="quest_tracktype_grade1">Ամուր</string>
     <string name="quest_tracktype_grade4">Հիմնականում փափուկ</string>
@@ -465,7 +455,6 @@
     <string name="action_open_location">Բաց տեղադրություն մեկ այլ հավելվածում</string>
     <string name="map_application_missing">Այլ քարտեզի դիմում չի տեղադրվել</string>
     <string name="label_housenumber">Տնային համարը</string>
-    <string name="label_blocknumber">Բլոկի համարը</string>
     <string name="quest_busStopShelter_covered">Ամբողջ կանգառը ծածկված է</string>
     <string name="quest_ferry_pedestrian_title">Արդյոք այս լաստանավը տրանսպորտում է հետիոտները:</string>
     <string name="quest_ferry_motor_vehicle_title">Արդյոք այս լաստանավը տրանսպորտում է ավտոմեքենաները:</string>
@@ -499,7 +488,6 @@
     <string name="quest_recycling_type_glass_bottles">Ապակե շշեր եւ բանկաներ</string>
     <string name="quest_recycling_type_glass_bottles_short">Շշեր եւ բանկաներ</string>
     <string name="quest_recycling_type_paper">Թուղթ</string>
-    <string name="quest_recycling_type_plastic_generic">Պլաստիկ</string>
     <string name="quest_recycling_type_plastic">Ցանկացած պլաստիկ</string>
     <string name="quest_recycling_type_shoes">Կոշիկներ</string>
     <string name="quest_recycling_type_electric_appliances">Էլեկտրական սարքեր</string>
@@ -666,7 +654,6 @@
     <string name="at_housenumber">Տան համարը %1$s</string>
     <string name="quest_openingHours_add_off_days">Ավելացնել օրեր</string>
     <string name="quest_openingHours_off_day">Անշարժ</string>
-    <string name="quest_openingHours_unspecified_range">Նշված չէ</string>
     <string name="quest_cycleway_resurvey_title">Սա դեռ այստեղ ցիկլի ճանապարհի իրավիճակն է:</string>
     <string name="pref_title_resurvey_intervals">Վերականգնել ընդմիջումներով</string>
     <string name="resurvey_intervals_less_often">Ավելի քիչ հարցրեք</string>
@@ -677,7 +664,6 @@
     <string name="quest_oneway2_title">Սա միակողմանի փողոց է: Որ ուղղությամբ:</string>
     <string name="quest_oneway2_dir">Մի ճանապարհ այս ուղղությամբ</string>
     <string name="quest_oneway2_no_oneway">Ոչ մի քայլ</string>
-    <string name="quest_maxweight_select_sign">Ընտրեք նշան</string>
     <string name="quest_steps_incline_title">Որ ուղղությամբ է տանում դեպի վեր, այս քայլերի համար:</string>
     <string name="quest_steps_incline_up">Այս ճանապարհը</string>
     <string name="quest_step_count_title">Քանի քայլ կա այստեղ:</string>
@@ -764,7 +750,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Շոտլանդիայի պսակը</string>
     <string name="quest_buildingType_fire_station">Հրշեջ ծառայություն</string>
     <string name="quest_recycling_type_beverage_cartons">Նյուրակի ստվարաթուղթը միայն</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Միայն պլաստիկ շշեր եւ ստվարաթուղթ</string>
     <string name="team_mode">Թիմային ռեժիմ</string>
     <string name="team_mode_exit">Ելքի թիմային ռեժիմ</string>
     <string name="team_mode_description">Միեւնույն տարածքը խմբով քարտեզագրելու համար կարող եք մուտքագրել թիմային ռեժիմ` թիմի բոլոր անդամների միջեւ որոնումները բաժանելու համար:</string>
@@ -1085,9 +1070,7 @@
     <string name="quest_camp_drinking_water_title">Այստեղ կա՞ անվճար խմելու ջուր։</string>
     <string name="quest_camp_shower_title">Այստեղ ցնցուղ կա՞:</string>
     <string name="quest_camp_power_supply_title">Այստեղ կարելի՞ է լիցքավորել հեռախոս կամ այլ բաներ։</string>
-    <string name="quest_camp_type_tents_only">Միայն վրաններ</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Տրամագիծը սովորաբար լինում է %1$d-ի և %2$d-ի միջև։</string>
-    <string name="quest_recycling_type_pet">Միայն PET</string>
     <string name="street_parking_street_width">Փողոցի լայնություն` %1$s</string>
     <string name="overlay_street_parking">Կայանատեղիներ</string>
     <string name="link_opencampingmap_description">Ճամբարների քարտեզ</string>

@@ -67,7 +67,7 @@ Since mid 2020, **JawgMaps** provides their vector map tiles service to StreetCo
 ## Past Sponsors
 
 <a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="140"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="140"/></a><br/>
-Within the frame of **Prototype Fund** <a href="https://prototypefund.de/en/project/streetcomplete-for-ios/">round 15</a> (March 2024 to August 2024), the German Federal Ministry of Education and Research sponsored Tobias Zwick to work on StreetComplete for iOS (see [progress report](https://github.com/streetcomplete/StreetComplete/issues/5421#issuecomment-2332402123))<br/><br>
+Within the frame of **Prototype Fund** <a href="https://www.prototypefund.de/projects/streetcomplete-fuer-ios">round 15</a> (March 2024 to August 2024), the German Federal Ministry of Education and Research sponsored Tobias Zwick to work on StreetComplete for iOS (see [progress report](https://github.com/streetcomplete/StreetComplete/issues/5421#issuecomment-2332402123))<br/><br>
 Development on this app was also sponsored in <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (September 2020 to February 2021) of the Prototype fund, with focus on collecting more data points and on general improvements of this app.<br/>
 <br/>
 

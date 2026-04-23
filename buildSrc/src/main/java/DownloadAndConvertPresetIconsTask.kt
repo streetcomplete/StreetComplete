@@ -42,8 +42,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
             val urls = getDownloadUrls(icon) ?: continue
 
             val fileName = transformName(icon).lowercase()
-            val targetFile = File("$targetDir/$fileName.xml")
-            targetFile.parentFile.mkdirs()
+            File("$targetDir/$fileName.xml").parentFile.mkdirs()
 
             var message: String = ""
             var iconWasFound = false
@@ -55,8 +54,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
                         val svg = factory.newDocumentBuilder().parse(input)
 
                         val drawable = createAndroidDrawable(svg)
-
-                        writeXml(drawable, targetFile)
+                        writeXml(drawable, File("$targetDir/$fileName.xml"))
                     }
                     index.add(icon to fileName)
                     iconWasFound = true

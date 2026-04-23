@@ -20,11 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.user_profile_all_time_title
-import de.westnordost.streetcomplete.resources.user_profile_current_week_title
-import de.westnordost.streetcomplete.resources.user_statistics_country_rank2
-import de.westnordost.streetcomplete.resources.user_statistics_country_wiki_link
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.screens.user.profile.LaurelWreathBadge
 import de.westnordost.streetcomplete.screens.user.profile.getLocalRankCurrentWeekProgress
@@ -34,7 +30,8 @@ import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import de.westnordost.streetcomplete.util.ktx.displayRegion
 import de.westnordost.streetcomplete.util.ktx.getDisplayRegion
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 
 /** Shows the details for a certain country as a dialog. */
 @Composable
@@ -116,7 +113,7 @@ private fun CountryInfoDetails(
             onClick = {
                 val britishCountryName = countryLocale.getDisplayRegion(Locale("en-GB"))
                 if (britishCountryName != null) {
-                    uriHandler.openUri("https://wiki.openstreetmap.org/wiki/$britishCountryName")
+                    uriHandler.tryOpenUri("https://wiki.openstreetmap.org/wiki/$britishCountryName")
                 }
             }
         ) {

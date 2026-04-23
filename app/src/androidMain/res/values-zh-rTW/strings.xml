@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"隱私聲明"</string>
     <string name="quest_openingHours_public_holidays">"國定假日"</string>
     <string name="quest_openingHours_public_holidays_short">"PH"</string>
-    <string name="quest_openingHours_open_end">"開放/關閉"</string>
     <string name="quest_openingHours_answer_247">"24小時營業"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"以月份分別…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"沒有規律的營業時間…"</string>
@@ -110,7 +109,6 @@
     <string name="quest_surface_value_sett">"四方型的鋪路石"</string>
     <string name="quest_surface_value_wood">"木頭"</string>
     <string name="quest_sidewalk_title">"這條道路有人行道嗎?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"此條街道位在?"</string>
     <string name="quest_address_title">"此棟建築物的門牌號碼是？"</string>
     <string name="store_listing_short_description">"開放街圖 調測APP"</string>
     <string name="store_listing_full_description">"使用 StreetComplete 改善開放街圖的圖資！
@@ -177,9 +175,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"你有到街尾檢查嗎？
 如果整條路都沒有標示的區塊，那麼會套用預設限制。"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"對，並沒有速限牌"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"市區道路跟鄉村的預設速限並不相同。"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"市區"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"市區之外"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"如果在幹道交匯處有指標，那麼你不會在這一帶找到個別的速限牌，因此整區將用同一個預設速限。"</string>
     <string name="quest_sport_softball">"壘球"</string>
     <string name="quest_sport_racquet">"壁球"</string>
@@ -213,7 +208,6 @@
     <string name="credits_contributors_title">"程式碼貢獻者"</string>
     <string name="credits_author_title">"作者及維護者"</string>
     <string name="quest_maxspeed_answer_living_street">"社區街道"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"所以那裡有一個像這樣的道路標識嗎？"</string>
     <string name="quest_orchard_produce_title">"這裡栽種了些什麼？"</string>
     <string name="produce_grapes">"葡萄"</string>
     <string name="produce_agaves">"龍舌蘭"</string>
@@ -285,7 +279,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"一般的樓層數 (不計算屋頂)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"每個建築部分不同"</string>
     <string name="quest_buildingLevels_answer_description">"在這一個例子，簡單填寫建築部分最高樓層數值。"</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"這條路的車道是否實體分隔(例如有障礙物)？預設速限依照上述設定決定或為否。"</string>
     <string name="about_category_feedback">"回饋"</string>
     <string name="quest_leave_new_note_photo">"附件照片"</string>
     <string name="quest_leave_new_note_photo_delete_title">"你想要刪除這張照片嗎？"</string>
@@ -316,7 +309,6 @@
     <string name="quest_housenumber_conscription_number">"兵籍號碼"</string>
     <string name="quest_housenumber_street_number_optional">"定位號碼 (選填)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"另一側也有單車道…"</string>
-    <string name="quest_openingHours_emptyAnswer">"你必須描述標示狀況。如果沒有標示，那麼你必須到店裡詢問。"</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"無，但單車騎士可能兩個方向都能騎乘"</string>
     <string name="quest_wheelchairAccess_description_toilets">"如果有無障礙廁所，則會看到無障礙指示牌。
 通常意味輪椅可以進入並使用該間廁所，但沒有手桿或是改良的洗手台。"</string>
@@ -451,7 +443,6 @@
     <string name="quest_openingHours_no_sign">"沒有營業時間告示"</string>
     <string name="quest_buildingType_sports_centre">"運動中心"</string>
     <string name="quest_buildingType_toilets">"洗手間"</string>
-    <string name="quest_maxspeed_sign_question">"速度限制是由什麼介定的？"</string>
     <string name="quest_segregated_title">"這裡的人行道和自行車道是如何編排的？"</string>
     <string name="dialog_tutorial_upload">"要手動上傳更改，使用位於工具列如圖所示的按鈕"</string>
     <string name="quest_segregated_separated">"與那一種道路分隔"</string>
@@ -467,7 +458,6 @@
 "</string>
     <string name="action_deselect_all">"取消選取全部"</string>
     <string name="quest_buildingType_retail_description">"包含有餐廳、咖啡廳等的建築"</string>
-    <string name="quest_openingHours_timeSelect_next">"下一個"</string>
     <string name="quest_tracktype_title">"這一段路徑的表面硬度為何？"</string>
     <string name="quest_tracktype_grade1">"剛性路面"</string>
     <string name="quest_tracktype_grade4">"偏柔性路面"</string>
@@ -493,7 +483,6 @@
     <string name="action_open_location">"在其他 app 開啟地點"</string>
     <string name="map_application_missing">"沒有安裝其他地圖應用程式"</string>
     <string name="label_housenumber">"房屋門牌號碼"</string>
-    <string name="label_blocknumber">"街區號碼"</string>
     <string name="quest_busStopShelter_covered">"整個站牌都有遮蓋"</string>
     <string name="quest_ferry_pedestrian_title">"這邊的輪船是行人可到達嗎？"</string>
     <string name="quest_ferry_motor_vehicle_title">"這邊的輪船是能載運機動車輛嗎？ "</string>
@@ -526,7 +515,6 @@
     <string name="quest_recycling_type_glass_bottles">"玻璃瓶罐"</string>
     <string name="quest_recycling_type_glass_bottles_short">"瓶瓶罐罐"</string>
     <string name="quest_recycling_type_paper">"紙張"</string>
-    <string name="quest_recycling_type_plastic_generic">"塑膠"</string>
     <string name="quest_recycling_type_plastic">"任何塑膠類"</string>
     <string name="quest_recycling_type_shoes">"鞋子"</string>
     <string name="quest_recycling_type_electric_appliances">"電子產品"</string>
@@ -690,7 +678,6 @@
     <string name="at_housenumber">"房屋門牌號碼 %s"</string>
     <string name="quest_openingHours_add_off_days">"增加休息時間"</string>
     <string name="quest_openingHours_off_day">"休息時間"</string>
-    <string name="quest_openingHours_unspecified_range">"並沒有特別時間"</string>
     <string name="quest_cycleway_resurvey_title">"這裡仍然是單車道情形嗎？"</string>
     <string name="pref_title_resurvey_intervals">"重新探察的時間區間"</string>
     <string name="resurvey_intervals_less_often">"詢問更少資訊"</string>
@@ -701,7 +688,6 @@
     <string name="quest_oneway2_title">"這是單行道嗎？哪個方向呢？"</string>
     <string name="quest_oneway2_dir">"單行道是這個方向"</string>
     <string name="quest_oneway2_no_oneway">"不是單行道"</string>
-    <string name="quest_maxweight_select_sign">"選擇指標"</string>
     <string name="quest_steps_incline_title">"這階梯的方向是？"</string>
     <string name="quest_steps_incline_up">"這個方向往上"</string>
     <string name="quest_step_count_title">"這裡有幾階？"</string>
@@ -788,7 +774,6 @@
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"蘇格蘭皇冠"</string>
     <string name="quest_buildingType_fire_station">"消防局"</string>
     <string name="quest_recycling_type_beverage_cartons">"僅限飲料紙盒"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"僅限塑膠瓶罐與盒子"</string>
     <string name="team_mode">"協作模式"</string>
     <string name="team_mode_exit">"離開協作模式"</string>
     <string name="team_mode_description">"當一群人在同一地點mapping時，您可以開啟協作模式來分配任務。"</string>
@@ -1139,13 +1124,8 @@
     <string name="quest_camp_drinking_water_title">"這邊的飲水是否免費提供給露營者？"</string>
     <string name="quest_camp_shower_title">"這裡有淋浴設施嗎？"</string>
     <string name="quest_camp_power_supply_title">"這裡有任何提供顧客充手機、筆電等的地方嗎？"</string>
-    <string name="quest_camp_type_title">"誰可以在這邊露營？"</string>
-    <string name="quest_camp_type_tents_and_caravans">"帳篷、房車、露營拖車，都可以…"</string>
-    <string name="quest_camp_type_caravans_only">"只有房車、露營拖車，…"</string>
-    <string name="quest_camp_type_tents_only">"只有帳篷"</string>
     <string name="quest_camp_type_backcountry">"野外露營 (沒有設施)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"這個直徑看起來不可能，通常是 %1$d 與 %2$d 之間。"</string>
-    <string name="quest_recycling_type_pet">"只有 PET"</string>
     <string name="street_parking_street_width">"道路寬度：%1$s"</string>
     <string name="overlay_street_parking">"路邊停車"</string>
     <string name="link_ohsomehex_description">"跨越時空，大尺度到單一物件探就 OSM 資料"</string>
@@ -1234,9 +1214,6 @@
     <string name="street_parking_staggered_half_on_kerb">"部分道路的另一側"</string>
     <string name="quest_traffic_signals_sound_description">"提示：檢查是否有擴音器，不是所有的警示音都是透過按鈕啟用。"</string>
     <string name="quest_presets_duplicate">"重覆"</string>
-    <string name="label_block">"街區"</string>
-    <string name="quest_address_answer_block">"一個街區以內…"</string>
-    <string name="quest_address_answer_no_block">"超過一個街區距離…"</string>
     <string name="quest_surface_value_mud">"強固泥巴"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"這裡沒有廁所"</string>
     <string name="unknown_surface_title">"其他種類的舖面"</string>
@@ -1436,9 +1413,9 @@
     <string name="overlay_mtb_scale_6">"第6級"</string>
     <string name="overlay_mtb_scale_6_description">"危險且無法通行的地形，不適合進行山地自行車活動。"</string>
     <string name="default_disabled_overlay_domain_expert">"此覆蓋圖層預設為關閉，因為需要具備領域專家知識才能準確記錄此資料。"</string>
-    <string name="pref_title_overlays">"選擇圖層"</string>
-    <string name="pref_overlays_reset">"將圖層啟用設定重置為預設值嗎？"</string>
-    <string name="overlay">"圖層"</string>
+    <string name="pref_title_overlays">"選擇套疊圖層"</string>
+    <string name="pref_overlays_reset">"將套疊圖層啟用設定重置為預設值嗎？"</string>
+    <string name="overlay">"套疊圖層"</string>
     <string name="enable_overlay_confirmation_title">"要啟用這個圖層嗎？"</string>
     <string name="link_transitous_description">"不依賴特定供應商的免費開源大眾運輸路線規劃"</string>
     <string name="compass">"羅盤"</string>
@@ -1457,4 +1434,19 @@
     <string name="quest_streetName_add_language">"新增語言"</string>
     <string name="ok">"確定"</string>
     <string name="cancel">"取消"</string>
+    <string name="quest_aerialway_bicycle_title">"這個纜車是否能運輸單車？"</string>
+    <string name="quest_aerialway_bicycle_summer">"只有在夏天"</string>
+    <string name="quest_board_type_rules">"規則"</string>
+    <string name="quest_firewood_provided_title">"這裡有提供薪柴嗎？"</string>
+    <string name="quest_first_aid_kit_location">"這裡的急救包在那裡？"</string>
+    <string name="quest_lane_markings_title">"這條路有標線嗎？"</string>
+    <string name="quest_level_thing_title">"這東西位於那個樓層號碼？"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"這邊同一時間可以充幾台單車的電？"</string>
+    <string name="quest_charging_station_bicycles_title">"這裡是否也可以為單單充電嗎？"</string>
+    <string name="quest_charging_station_bicycles_hint">"單車充電座能夠插入一般家戶插座。"</string>
+    <string name="quest_tower_access_title">"誰可以進入這個塔？免費或是付費。"</string>
+    <string name="quest_charging_station_bicycles_answer_only">"只有為了單車"</string>
+    <string name="quest_recycling_type_pet_bottles">"PET瓶罐"</string>
+    <string name="quest_maxweight_add_sign">"新增告示牌"</string>
+    <string name="quest_maxweight_remove_sign">"移除告示牌"</string>
 </resources>

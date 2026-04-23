@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.math.intersects
 
@@ -55,7 +56,13 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
     """.toElementFilterExpression() }
 
     private val tunnelFilter by lazy { """
-        ways with highway and (covered = yes or tunnel ~ yes|building_passage|avalanche_protector)
+        ways with
+          highway
+          and (
+            covered = yes
+            or tunnel ~ yes|building_passage|avalanche_protector
+            or bridge = covered
+          )
     """.toElementFilterExpression() }
 
     private val bridgeFilter by lazy { """
@@ -83,9 +90,8 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
     override val changesetComment = "Specify maximum heights"
     override val wikiLink = "Key:maxheight"
     override val icon = R.drawable.quest_max_height
+    override val title = Res.string.quest_maxheight_sign_title
     override val achievements = listOf(CAR)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_maxheight_sign_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // amenity = parking_entrance nodes etc. only if they are a vertex in a road

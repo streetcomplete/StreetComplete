@@ -38,13 +38,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.allDrawableResources
-import de.westnordost.streetcomplete.resources.team_mode
-import de.westnordost.streetcomplete.resources.team_mode_choose_color2
-import de.westnordost.streetcomplete.resources.team_mode_description
-import de.westnordost.streetcomplete.resources.team_mode_description_overlay_hint
-import de.westnordost.streetcomplete.resources.team_mode_team_size_label2
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.tutorial.TutorialScreen
 import de.westnordost.streetcomplete.ui.common.BubblePile
 import de.westnordost.streetcomplete.ui.common.WheelPicker
@@ -57,7 +51,8 @@ import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.theme.divider
 
 /** Wizard which enables team mode */
 @Composable
@@ -206,7 +201,7 @@ private fun SplitQuestsIllustration(
     }
 
     val arrangement = Arrangement.spacedBy((-48 + 64 * padding.value).dp)
-    val dividerColor = MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
+    val dividerColor = MaterialTheme.colors.divider
     val dividerWidth = 4.dp.toPx()
     Column(
         modifier = Modifier

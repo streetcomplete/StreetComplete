@@ -1,0 +1,21 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+advisoryCycleLaneStyle: white dashes without pictogram
+atmOperators: [Danske Bank, Nordea, Euronet, Sydbank, Nokas, Jyske Bank, Arbejdernes Landsbank, Sparekassen Danmark, Spar Nord, Kontanten, Euronet Worldwide, Nordjyske Bank, Lån & Spar Bank, Djurslands Bank, Sparekassen Thy, Middelfart Sparekasse, Lån & Spar, Sparekassen Vendsyssel, Ringkøbing Landbobank, Nykredit, Nokas Verdihåndtering AS, vestjysk bank, Vestjysk Bank, SparekassenThy, Sparekassen Sjælland-Fyn, Sparekassen Sjælland, Sparekassen Kronjylland, SparNord, Skjern Bank, Ringkjøbing Landbobank, Loomis, Lollands Bank, Handelsbanken, Fynske Bank, DKK, Andelskassen]
+chargingStationOperators: [Clever, E.ON, OK, Norlys, Circle K, EWII, Spirii, Tesla, Monta, Q8, Shell Recharge Solutions, Uno-X, Allego, Sperto, Eviny, Ionity, Lidl, Base2Charge, Ringkøbing-Skjern Kommune, Sønderborg Kommune, Shell, PowerGo, Ø Strøm, Spirii Go, Shell Recharge, ChargePoint, Électricité de France, ViggoEnergy, Recharge, Q8 Danmark, Merkur, Fastned, e-on, drivee, Spar Nord, SEF, MoveAbout, Københavns Kommune, Drivee]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+clothesContainerOperators: [Dansk Røde Kors, Kredsløb, Red Barnet, Københavns Kommune, Røde Kors, Frelsens Hær, Trasborg, UFF, Folkekirkens Nødhjælp, Red Cross, Kirkens Korshær, Blå Kors Genbrug, Blå Kors, Kirkens Korshær Genbrug, Humana, Blå Kors Danmark]
+defaultSpeedLimitHasUrbanOrRural: true
+exclusiveCycleLaneStyle: white
+hasAdvisoryCycleLane: true
+hasAdvisorySpeedLimitSign: true
+hasBicycleBoulevard: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 238
+officialLanguages: [da]
+orchardProduces: [apple, strawberry, pear, cherry, blueberry, plum, raspberry, tomato]
+parcelLockerBrand: [Pakkeboksen, PostNord, Instabox, Nærboks, postnord]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: bottom
+slowZoneLabelText: Zone

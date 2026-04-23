@@ -27,18 +27,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.action_about2
-import de.westnordost.streetcomplete.resources.action_download
-import de.westnordost.streetcomplete.resources.action_settings
-import de.westnordost.streetcomplete.resources.action_upload
-import de.westnordost.streetcomplete.resources.ic_info_outline_48
-import de.westnordost.streetcomplete.resources.ic_profile_48
-import de.westnordost.streetcomplete.resources.ic_settings_48
-import de.westnordost.streetcomplete.resources.team_mode
-import de.westnordost.streetcomplete.resources.team_mode_exit
-import de.westnordost.streetcomplete.resources.user_login
-import de.westnordost.streetcomplete.resources.user_profile
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.NotificationBox
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircle
 import de.westnordost.streetcomplete.ui.common.DownloadIcon
@@ -46,7 +35,7 @@ import de.westnordost.streetcomplete.ui.common.TeamModeIcon
 import de.westnordost.streetcomplete.ui.common.UploadIcon
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

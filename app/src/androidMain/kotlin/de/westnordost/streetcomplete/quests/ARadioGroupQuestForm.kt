@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.ui.common.RadioGroup
 import de.westnordost.streetcomplete.ui.util.content
 
-abstract class ARadioGroupQuestForm<T, I : T> : AbstractOsmQuestForm<T>() {
+abstract class ARadioGroupQuestForm<I : T, T> : AbstractOsmQuestForm<T>() {
     final override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
     override val defaultExpanded = false

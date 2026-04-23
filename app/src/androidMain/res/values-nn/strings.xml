@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Personvernerklæring"</string>
     <string name="quest_openingHours_public_holidays">"Offentlege fridagar"</string>
     <string name="quest_openingHours_public_holidays_short">"OF"</string>
-    <string name="quest_openingHours_open_end">"Ikkje fast stengjetid"</string>
     <string name="quest_openingHours_answer_247">"Open 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Varierer frå månad til månad …"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Ingen faste opningstider …"</string>
@@ -108,7 +107,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_surface_value_sett">"Brustein"</string>
     <string name="quest_surface_value_wood">"Tredekke"</string>
     <string name="quest_sidewalk_title">"Har denne gata fortau?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kor er denne gata?"</string>
     <string name="quest_address_title">"Kva er husnummeret til denne bygningen?"</string>
     <string name="store_listing_short_description">"Kartleggingsapp for OpenStreetMap"</string>
     <string name="store_listing_full_description">"Gjer dugnads­kartet OpenStreetMap betre med StreetComplete! Denne appen leitar opp manglande kart­opplysningar i nærleiken av deg og viser desse som «oppdrag» på kartet. Du kan løysa oppdraga, og såleis forbetra kart­grunnlaget, ved å gå til den tilhøyrande staden og svara på eit enkelt spørsmål i appen. Informasjonen frå svara dine vert send direkte til OpenStreetMap i ditt namn, utan at du treng bruka noko eksternt redigerings­program."</string>
@@ -170,9 +168,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Er du sikker på at det ikkje finst noko fartsskilt?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Såg du etter ved begge endene av gata? Viss det ikkje finst noko fartsskilt for heile gata, som òg gjeld for den avmerkte strekninga, gjeld standardfartsgrensa."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, det finst ikkje noko skilt"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Tettbygde strøk har lågare fartsgrense enn landevegar (50 og 80 km/t i Noreg)."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Tettbygd strøk"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Landeveg"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Viss det finst eit slikt skilt ved krysset til hovudgata, finn du ikkje eigne fartsskilt innanfor sona, då fartsgrensa gjeld for heile sona."</string>
     <string name="quest_sport_softball">"Softball"</string>
     <string name="quest_sport_racquet">"Racquetball"</string>
@@ -204,7 +199,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="credits_contributors_title">"Kodebidrag"</string>
     <string name="credits_author_title">"Opphavsperson og vedlikehaldar"</string>
     <string name="quest_maxspeed_answer_living_street">"Det er eit gatetun"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Finst det altså eit slikt skilt?"</string>
     <string name="quest_orchard_produce_title">"Kva vert dyrka her?"</string>
     <string name="produce_grapes">"Druer"</string>
     <string name="produce_agaves">"Agave"</string>
@@ -276,7 +270,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_buildingLevels_levelsLabel2">"vanlege etasjar (utanom taketasjar)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Forskjellig for ulike bygningsdelar"</string>
     <string name="quest_buildingLevels_answer_description">"Skriv i så fall inn talet på etasjar til den høgaste bygningsdelen."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Er køyrebanene til vegen fysisk skilde (med midtrabatt)? Standardfartsgrensa avheng av dette."</string>
     <string name="about_category_feedback">"Tilbakemelding"</string>
     <string name="quest_leave_new_note_photo">"Legg ved bilete"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Ønskjer du å sletta dette biletet?"</string>
@@ -307,7 +300,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_housenumber_conscription_number">"Konskripsjons-nummer"</string>
     <string name="quest_housenumber_street_number_optional">"Orienterings-nummer (valfritt)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Òg sykkelveg på motsett side …"</string>
-    <string name="quest_openingHours_emptyAnswer">"Du må skildra kva som står på skiltet. Viss det ikkje finst noko skilt, kan du prøva å spørja om opningstidene inne."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"ingen, men syklistar kan bruka vegen i begge retningar"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Viss toaletta er tilgjengelege for rullestolbrukarar, står det gjerne eit slikt skilt. Delvis tyder at ein rullestolbrukar kan komma seg inn på og bruka toalettet men at det ikkje er tilrettelagt med støttehandtak eller tilpassa handvask."</string>
     <string name="map_btn_create_note">"Legg til ny merknad"</string>
@@ -441,7 +433,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_openingHours_no_sign">"Manglar skilt med opningstider"</string>
     <string name="quest_buildingType_sports_centre">"Idrettshall"</string>
     <string name="quest_buildingType_toilets">"Toalett"</string>
-    <string name="quest_maxspeed_sign_question">"Kva fastset fartsgrensa?"</string>
     <string name="quest_segregated_title">"Korleis er gang- og sykkelvegen utforma her?"</string>
     <string name="dialog_tutorial_upload">"For å lasta opp endringane manuelt kan du bruka verktøylinje­knappen som ser slik ut."</string>
     <string name="quest_segregated_separated">"Syklistar og fotgjengarar har kvar sitt felt"</string>
@@ -456,7 +447,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="privacy_html_image_upload2">"&lt;p&gt;Eventuelle foto som du legg ved, vert lasta opp til tenaren min og sletta nokre dagar etter at merknaden vert lukka. Bilet­metadata vert sletta før opplasting.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Fjern merking"</string>
     <string name="quest_buildingType_retail_description">"omfattar òg restaurant- og kafébygningar, butikkar, …"</string>
-    <string name="quest_openingHours_timeSelect_next">"Neste"</string>
     <string name="quest_tracktype_title">"Kor fast er vegdekket her?"</string>
     <string name="quest_tracktype_grade1">"Fast"</string>
     <string name="quest_tracktype_grade4">"Stort sett mjukt"</string>
@@ -482,7 +472,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="action_open_location">"Opna staden i ein annan app"</string>
     <string name="map_application_missing">"Du har ikkje noko anna kartprogram installert."</string>
     <string name="label_housenumber">"husnummer"</string>
-    <string name="label_blocknumber">"kvartalsnummer"</string>
     <string name="quest_busStopShelter_covered">"Heile stoppet har tak"</string>
     <string name="quest_ferry_pedestrian_title">"Tek denne ferjeruta fotgjengarar?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Tek denne ferjeruta motorkøyretøy?"</string>
@@ -515,7 +504,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_recycling_type_glass_bottles">"Glas­flasker og syltetøy­glas"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Flasker og syltetøyglas"</string>
     <string name="quest_recycling_type_paper">"Papir"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plast"</string>
     <string name="quest_recycling_type_plastic">"Alle typar plast"</string>
     <string name="quest_recycling_type_shoes">"Sko"</string>
     <string name="quest_recycling_type_electric_appliances">"EE-avfall"</string>
@@ -671,7 +659,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="at_housenumber">"husnummer %s"</string>
     <string name="quest_openingHours_add_off_days">"Legg til unntaksdagar"</string>
     <string name="quest_openingHours_off_day">"Dag stengd"</string>
-    <string name="quest_openingHours_unspecified_range">"Ikkje oppgjeve"</string>
     <string name="quest_cycleway_resurvey_title">"Er sykkelvegen framleis slik?"</string>
     <string name="pref_title_resurvey_intervals">"Tid mellom nykartlegging"</string>
     <string name="resurvey_intervals_less_often">"Spør sjeldnare"</string>
@@ -682,7 +669,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_oneway2_title">"Er dette ei einvegskøyrd gate? I kva retning?"</string>
     <string name="quest_oneway2_dir">"Einvegskøyrd i denne retninga"</string>
     <string name="quest_oneway2_no_oneway">"Ikkje einvegskøyrd"</string>
-    <string name="quest_maxweight_select_sign">"Vel skilt"</string>
     <string name="quest_steps_incline_title">"Kva retning leier oppover i denne trappa?"</string>
     <string name="quest_steps_incline_up">"Denne vegen leier oppover"</string>
     <string name="quest_step_count_title">"Kor mange trappesteg har trappa?"</string>
@@ -766,7 +752,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Skottlands krone"</string>
     <string name="quest_buildingType_fire_station">"Brannstasjon"</string>
     <string name="quest_recycling_type_beverage_cartons">"Berre drikkekartong"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Berre plastflasker og kartongar"</string>
     <string name="team_mode">"Lag­modus"</string>
     <string name="team_mode_exit">"Avslutt lagmodus"</string>
     <string name="team_mode_description">"Når fleire kartleggjer eit område saman, kan de bruka lagmodus for å fordela oppdraga mellom dykk."</string>
@@ -995,9 +980,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="overlay_lit">"Gatelys"</string>
     <string name="quest_summit_cross_title">"Har toppen eit kross?"</string>
     <string name="quest_camp_shower_title">"Er det dusj her?"</string>
-    <string name="quest_camp_type_caravans_only">"Berre bobil, campingvogner, …"</string>
-    <string name="quest_camp_type_tents_only">"Berre telt"</string>
-    <string name="quest_recycling_type_pet">"Berre PET"</string>
     <string name="street_parking_street_width">"Vegbreidde: %1$s"</string>
     <string name="quest_drinking_water_type_tap">"Vasskran"</string>
     <string name="quest_drinking_water_type_hand_pump">"Handpumpe"</string>

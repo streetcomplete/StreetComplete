@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Personvernerklæring</string>
     <string name="quest_openingHours_public_holidays">Offentlige høytidsdager</string>
     <string name="quest_openingHours_public_holidays_short">Helligdager</string>
-    <string name="quest_openingHours_open_end">Ingen fast stengetid</string>
     <string name="quest_openingHours_answer_247">Åpent 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Varierer fra måned til måned…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Ingen faste åpningstider…</string>
@@ -110,7 +109,6 @@ Før endringene dine lastes opp sjekkes versjonen av denne appen mot en &lt;a hr
     <string name="quest_surface_value_sett">Brostein</string>
     <string name="quest_surface_value_wood">Tre</string>
     <string name="quest_sidewalk_title">Er det et fortau langs denne veien?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Hvor er denne veien?</string>
     <string name="quest_address_title">Hvilket husnummer har denne bygningen?</string>
     <string name="store_listing_short_description">Kartleggingsapp for OpenStreetMap</string>
     <string name="store_listing_full_description">Hjelp til med å forbedre OpenStreetMap med StreetComplete!
@@ -177,9 +175,6 @@ Informasjonen du legger til blir automatisk lastet opp til OpenStreetMap i ditt 
     <string name="quest_maxspeed_answer_noSign_confirmation">Undersøkte du i begge ender av veien?
 Hvis det ikke fins noe fartsgrenseskilt for veien som den markerte strekningen er del av, gjelder den generelle fartsgrensen.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Ja, det fins ikke noe skilt</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Den generelle fartsgrensen i tettbygde strøk er lavere enn på landeveier.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Tettbygd strøk</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Landevei</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Hvis det fins et sone-skilt ved innkjøringen fra hovedveien blir det ikke skiltet ytterligere, da fartsgrensen gjelder for hele sonen.</string>
     <string name="quest_sport_softball">Softball</string>
     <string name="quest_sport_racquet">Racquetball</string>
@@ -213,7 +208,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="credits_contributors_title">Programmerere</string>
     <string name="credits_author_title">Opphavsmann og vedlikeholder</string>
     <string name="quest_maxspeed_answer_living_street">Det er et gatetun</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Så det er et slikt skilt?</string>
     <string name="quest_orchard_produce_title">Hva dyrkes her?</string>
     <string name="produce_grapes">Druer</string>
     <string name="produce_agaves">Agave</string>
@@ -285,7 +279,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_buildingLevels_levelsLabel2">Vanlige etasjer (utenom loftsetasjer)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Varierer for ulike bygningsdeler</string>
     <string name="quest_buildingLevels_answer_description">Skriv i så fall antall etasjer i den høyeste bygningsdelen.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Er feltene fysisk adskilt med en fysisk barriere eller et grøntområde? Den generelle fartsgrensen er avhengig av dette.</string>
     <string name="about_category_feedback">Tilbakemelding</string>
     <string name="quest_leave_new_note_photo">Legg ved bilde</string>
     <string name="quest_leave_new_note_photo_delete_title">Ønsker du å slette dette bildet?</string>
@@ -316,7 +309,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_housenumber_conscription_number">Konskripsjons-nummer</string>
     <string name="quest_housenumber_street_number_optional">Orienterings-nummer (valgfritt)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Også sykkelvei på motsatt side…</string>
-    <string name="quest_openingHours_emptyAnswer">Du må gjengi det som står på skiltet. Hvis det ikke fins noe skilt kan du spørre betjeningen.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">ingen, men man kan sykle i begge retninger</string>
     <string name="quest_wheelchairAccess_description_toilets">Hvis toalettene er tilgjengelige for rullestolbrukere er det gjerne merket med et slikt skilt.
 «Delvis» betyr at en rullestolbruker kan komme seg inn på og bruke toalettet, men at det ikke er tilrettelagt med støttehåndtak eller tilpasset håndvask.</string>
@@ -451,7 +443,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_openingHours_no_sign">Ingen skilt med åpningstider</string>
     <string name="quest_buildingType_sports_centre">Idrettsanlegg</string>
     <string name="quest_buildingType_toilets">Toalett</string>
-    <string name="quest_maxspeed_sign_question">Hva definerer fartsgrensen?</string>
     <string name="quest_segregated_title">Hvordan er gang- og sykkelveien organisert her?</string>
     <string name="dialog_tutorial_upload">For å laste opp endringene dine manuelt, bruk knappen i verktøylinja som ser slik ut.</string>
     <string name="quest_segregated_separated">Adskilt fra hverandre</string>
@@ -466,7 +457,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="privacy_html_image_upload2">&lt;p&gt;Bilder som legges ved en merknad blir lastet opp på serveren min og slettet noen dager etter at merknaden er løst. Metadata blir fjernet fra bildet før opplasting.&lt;/p&gt;</string>
     <string name="action_deselect_all">Opphev alle</string>
     <string name="quest_buildingType_retail_description">inkludert bygninger for restauranter, kafeer, store butikker…</string>
-    <string name="quest_openingHours_timeSelect_next">Neste</string>
     <string name="quest_tracktype_title">Hvor fast er overflaten på denne stien?</string>
     <string name="quest_tracktype_grade1">Fast</string>
     <string name="quest_tracktype_grade4">Mest mykt</string>
@@ -492,7 +482,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="action_open_location">Vis posisjonen i en annen app</string>
     <string name="map_application_missing">Ingen andre kartprogram installert</string>
     <string name="label_housenumber">Husnummer</string>
-    <string name="label_blocknumber">Kvartalsnummer</string>
     <string name="quest_busStopShelter_covered">Hele stoppet er under tak</string>
     <string name="quest_ferry_pedestrian_title">Frakter denne fergen fotgjengere?</string>
     <string name="quest_ferry_motor_vehicle_title">Transporterer denne fergen kjøretøy?</string>
@@ -526,7 +515,6 @@ Vil du dele opp nå?</string>
     <string name="quest_recycling_type_glass_bottles">Glassflasker og syltetøyglass</string>
     <string name="quest_recycling_type_glass_bottles_short">Glassembalasje</string>
     <string name="quest_recycling_type_paper">Papir</string>
-    <string name="quest_recycling_type_plastic_generic">Plast</string>
     <string name="quest_recycling_type_plastic">Alle typer plast</string>
     <string name="quest_recycling_type_shoes">Sko</string>
     <string name="quest_recycling_type_electric_appliances">EE-avfall</string>
@@ -693,7 +681,6 @@ nivåer</string>
     <string name="at_housenumber">Husnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Hvilke dager er det stengt?</string>
     <string name="quest_openingHours_off_day">Stengt</string>
-    <string name="quest_openingHours_unspecified_range">Ikke spesifisert</string>
     <string name="quest_cycleway_resurvey_title">Er sykkelveien fortsatt slik?</string>
     <string name="pref_title_resurvey_intervals">Undersøkelsesintervall</string>
     <string name="resurvey_intervals_less_often">Spør sjeldnere</string>
@@ -704,7 +691,6 @@ nivåer</string>
     <string name="quest_oneway2_title">Er dette en enveiskjøring? I hvilken retning?</string>
     <string name="quest_oneway2_dir">Enveiskjøring denne retningen</string>
     <string name="quest_oneway2_no_oneway">Ikke enveiskjøring</string>
-    <string name="quest_maxweight_select_sign">Velg skilt</string>
     <string name="quest_steps_incline_title">Hvilken vei leder oppover for disse trappene?</string>
     <string name="quest_steps_incline_up">Denne veien er oppover</string>
     <string name="quest_step_count_title">Hvor mange trappetrinn er det her?</string>
@@ -792,7 +778,6 @@ Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Skottlands krone</string>
     <string name="quest_buildingType_fire_station">Brannstasjon</string>
     <string name="quest_recycling_type_beverage_cartons">Kun drikkekartonger</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Kun plastflasker og kartonger</string>
     <string name="team_mode">Gruppemodus</string>
     <string name="team_mode_exit">Avslutt gruppemodus</string>
     <string name="team_mode_description">Når du kartlegger det samme området sammen med en gruppe kan du starte gruppemodus for å dele oppgavene mellom dere.</string>
@@ -1143,13 +1128,8 @@ Om mulig, gjør det samme for den andre siden.</string>
     <string name="quest_camp_drinking_water_title">Er drikkevann fritt tilgjengelig for campere her?</string>
     <string name="quest_camp_shower_title">Er det dusjer her?</string>
     <string name="quest_camp_power_supply_title">Er det mulig for kunder å lade telefon, laptop ol. her?</string>
-    <string name="quest_camp_type_title">Hvem kan campe her?</string>
-    <string name="quest_camp_type_tents_and_caravans">Både telt og bobiler, campingvogner, …</string>
-    <string name="quest_camp_type_caravans_only">Kun bobiler, campingvogner, …</string>
-    <string name="quest_camp_type_tents_only">Kun telt</string>
     <string name="quest_camp_type_backcountry">Friluftscamping (ingen fasiliteter)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Diameteren virker usannsynlig da den vanligvis er mellom %1$d og %2$d.</string>
-    <string name="quest_recycling_type_pet">Kun PET</string>
     <string name="street_parking_street_width">Gatebredde: %1$s</string>
     <string name="overlay_street_parking">Gateparkering</string>
     <string name="link_ohsomehex_description">Utforsk OSM data fra det store bildet og ned til detaljene gjennom rom og tid</string>
@@ -1238,9 +1218,6 @@ Vil du flytte den nå?</string>
     <string name="street_parking_staggered_half_on_kerb">Delvis i veien på vekslende side</string>
     <string name="quest_traffic_signals_sound_description">Hint: Se etter høyttalere. Ikke alle lydsignaler kan aktiveres med en knapp.</string>
     <string name="quest_presets_duplicate">Duplikat</string>
-    <string name="label_block">Kvartal</string>
-    <string name="quest_address_answer_block">Innenfor et kvartal</string>
-    <string name="quest_address_answer_no_block">Ikke innenfor et kvartal</string>
     <string name="quest_surface_value_mud">Gjørme</string>
     <string name="quest_wheelchairAccessPat_noToilet">Det er ingen toalett her</string>
     <string name="unknown_surface_title">Annen type overflate</string>

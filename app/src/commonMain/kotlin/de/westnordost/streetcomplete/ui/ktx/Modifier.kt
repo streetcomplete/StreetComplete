@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.ui.ktx
 
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.ScrollIndicatorState
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -165,32 +166,60 @@ fun Modifier.selectionFrame(
 fun Modifier.fadingHorizontalScrollEdges(
     scrollState: ScrollState,
     maxWidth: Dp,
-): Modifier = this
-    .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
-    .drawWithContent {
-        drawContent()
-        drawFadingEdges(
-            start = min(maxWidth.toPx(), scrollState.value.toFloat()),
-            end =
-                if (scrollState.maxValue == Int.MAX_VALUE) 0f
-                else min(maxWidth.toPx(), (scrollState.maxValue - scrollState.value).toFloat()),
-        )
-    }
+    startAlpha: Float = 1f,
+    endAlpha: Float = 0f,
+): Modifier =
+    fadingHorizontalScrollEdges(scrollState.scrollIndicatorState, maxWidth, startAlpha, endAlpha)
 
 /** Adds fading edges of [maxHeight] to a vertical scroll to indicate that one can continue
  *  scrolling in a direction */
 fun Modifier.fadingVerticalScrollEdges(
     scrollState: ScrollState,
     maxHeight: Dp,
-): Modifier = this
+    startAlpha: Float = 1f,
+    endAlpha: Float = 0f,
+): Modifier =
+    fadingVerticalScrollEdges(scrollState.scrollIndicatorState, maxHeight, startAlpha, endAlpha)
+
+/** Adds fading edges of [maxWidth] to a horizontal scroll to indicate that one can continue
+ *  scrolling in a direction */
+fun Modifier.fadingHorizontalScrollEdges(
+    state: ScrollIndicatorState?,
+    maxWidth: Dp,
+    startAlpha: Float = 1f,
+    endAlpha: Float = 0f,
+): Modifier = if (state == null) this else this
     .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
     .drawWithContent {
         drawContent()
         drawFadingEdges(
-            top = min(maxHeight.toPx(), scrollState.value.toFloat()),
+            start = min(maxWidth.toPx(), state.scrollOffset.toFloat()),
+            end =
+                if (state.contentSize == Int.MAX_VALUE || state.viewportSize == Int.MAX_VALUE) 0f
+                else min(maxWidth.toPx(), state.contentSize - state.viewportSize - state.scrollOffset.toFloat()),
+            startAlpha = startAlpha,
+            endAlpha = endAlpha,
+        )
+    }
+
+/** Adds fading edges of [maxHeight] to a vertical scroll to indicate that one can continue
+ *  scrolling in a direction */
+fun Modifier.fadingVerticalScrollEdges(
+    state: ScrollIndicatorState?,
+    maxHeight: Dp,
+    startAlpha: Float = 1f,
+    endAlpha: Float = 0f,
+): Modifier = if (state == null) this else this
+    .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
+    .drawWithContent {
+        drawContent()
+        drawFadingEdges(
+            top = min(maxHeight.toPx(), state.scrollOffset.toFloat()),
             bottom =
-                if (scrollState.maxValue == Int.MAX_VALUE) 0f
-                else min(maxHeight.toPx(), (scrollState.maxValue - scrollState.value).toFloat()),
+                if (state.contentSize == Int.MAX_VALUE || state.viewportSize == Int.MAX_VALUE) 0f
+                else min(maxHeight.toPx(), state.contentSize - state.viewportSize - state.scrollOffset.toFloat()),
+            startAlpha = startAlpha,
+            endAlpha = endAlpha,
         )
     }
 
@@ -199,7 +228,9 @@ fun Modifier.fadingEdges(
     start: Dp = 0.dp,
     top: Dp = 0.dp,
     end: Dp = 0.dp,
-    bottom: Dp = 0.dp
+    bottom: Dp = 0.dp,
+    startAlpha: Float = 1f,
+    endAlpha: Float = 0f,
 ): Modifier = this
     .graphicsLayer(compositingStrategy = CompositingStrategy.Offscreen)
     .drawWithContent {
@@ -209,6 +240,8 @@ fun Modifier.fadingEdges(
             top = top.toPx(),
             end = end.toPx(),
             bottom = bottom.toPx(),
+            startAlpha = startAlpha,
+            endAlpha = endAlpha,
         )
     }
 
@@ -216,15 +249,20 @@ private fun ContentDrawScope.drawFadingEdges(
     start: Float = 0f,
     top: Float = 0f,
     end: Float = 0f,
-    bottom: Float = 0f
+    bottom: Float = 0f,
+    startAlpha: Float = 1f,
+    endAlpha: Float = 0f,
 ) {
     val left = if (layoutDirection == LayoutDirection.Ltr) start else end
     val right = if (layoutDirection == LayoutDirection.Ltr) end else start
 
+    val endColor = Color(0f, 0f, 0f, endAlpha)
+    val startColor = Color(0f, 0f, 0f, startAlpha)
+
     if (top != 0f) {
         drawRect(
             brush = Brush.verticalGradient(
-                colors = listOf(Color.Transparent, Color.Black),
+                colors = listOf(endColor, startColor),
                 startY = 0f,
                 endY = top
             ),
@@ -237,7 +275,7 @@ private fun ContentDrawScope.drawFadingEdges(
     if (bottom != 0f) {
         drawRect(
             brush = Brush.verticalGradient(
-                colors = listOf(Color.Black, Color.Transparent),
+                colors = listOf(startColor, endColor),
                 startY = size.height - bottom,
                 endY = size.height
             ),
@@ -250,7 +288,7 @@ private fun ContentDrawScope.drawFadingEdges(
     if (left != 0f) {
         drawRect(
             brush = Brush.horizontalGradient(
-                colors = listOf(Color.Transparent, Color.Black),
+                colors = listOf(endColor, startColor),
                 startX = 0f,
                 endX = left
             ),
@@ -263,7 +301,7 @@ private fun ContentDrawScope.drawFadingEdges(
     if (right != 0f) {
         drawRect(
             brush = Brush.horizontalGradient(
-                colors = listOf(Color.Black, Color.Transparent),
+                colors = listOf(startColor, endColor),
                 startX = size.width - right,
                 endX = size.width
             ),

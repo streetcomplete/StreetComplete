@@ -1,6 +1,110 @@
 # Changelog
 
-## v62.0-beta1
+## v63.1
+
+### Overlay improvements
+
+- Places & things overlay: Redid and improved UI, added quick access to previous selections (#6773, #5622)
+- Places overlay: (All) education-related places are now selectable (#6782), by @mcliquid
+
+### Quest improvements
+
+- Max speed: Redid UI. The quest is now activated also in the United States (#6758, #813)
+- Redid UI for quest title speech bubble with smoother ℹ️ area (#6784)
+- Redid UI for forms creating a note, especially attaching images (#6804)
+- Power line attachment: Don't ask when several power lines go through one power pole or tower (#6547)
+- Other minor improvements (#6770, #6810, #6798, #6771…), thanks @mnalis
+
+### General Improvements
+
+- More effective usage of available screen space in settings & about screen (#6787), thanks @deevroman
+- Move logs filter selection in logs screen into own screen (#6772)
+
+### New Translations
+
+- Vietnamese by tsklxiv, Minh Nguyễn and more
+- Irish by Brian Affenstark
+- Welsh by dreigiau, fin-w
+- Cornish by Flynn
+
+### Fixes
+
+- Bike paths overlay: OK button didn't always show (#6644) (wasn't fixed in v62.1 after all)
+- Fix layout for "New OSM message" dialog (#6791)
+- Fix crash caused by automatic conflict resolution on upload under certain circumstances (#6825, #6779, #6419)
+
+## v63.0
+
+### General Improvements
+
+- You’ll now get in-app notifications when a new issue of weeklyOSM is out, the news blog about what’s happening in the OpenStreetMap world (#1796, #6728, #5977)
+- You’ll also get in-app notifications about local OSM community events in your area (#6743, #1798)
+- You can now change in settings which in-app notifications you want to receive (#6493)
+- You can now also zoom by dragging the zoom button up or down (#6719, #6716), by @Helium314
+- Redid the UI for opening hours, postbox collection times and parking fee quests with slight improvements, especially in regards to localization (#6691, #6175)
+- Other small improvements (#6748, …)
+- Added language Malayalam, translated by Rabah Assainar
+
+### New Quests
+
+- _"In what direction can you ride this?"_, asked for lifts (#6583), by @NariaReynhard
+- _"What kind of artwork is this?"_ (#6605, #2125), by @paulklie and @vfosnar
+- _"Are there cabins that you may stay in here?"_ asked for campsites (#6685, #6447), by @paulklie
+- _"What’s the surface here?"_, asked for beaches (#6729, #1098), by @mcliquid
+- _"Are bicycles allowed on this ferry?"_ (#6718, #6509), by @mcliquid
+- _"Does this ferry route transport heavy goods vehicles?"_ (#6734, #6737), by @mcliquid
+
+### Quest improvements
+
+- Postbox collection times: Allow input of time ranges (#6646)
+- Information board topics: Allow to select multiple topics (#6148), thanks @paulklie
+- Campsite type: Split the quest up into several quests (#6685, #6447), by @paulklie
+- Other small improvements on quests (#6704, #6705, #6696, #6710, #6598…), thanks @matkoniecz, @paulklie, @mcliquid
+
+### Fixes
+
+- Parking overlay: Specifying only one side is enabled again (#6721)
+- Achievement dialog now displays well on square screen (#6702)
+- Fix that some icons were black on black background in dark mode (#6453, #6717), by @Helium314
+
+## v62.2
+
+### Fixes
+
+- Recycling type: Images were tiny (#6683)
+- Places overlay: OK button didn't show when selecting "no name" (#6657)
+- Address overlay: OK button didn't show when tapping on a road (#6669), by @paulklie
+
+### Quest improvements
+
+- Postbox ref: Enable for Japan (#6680)
+- Internet access: Allow selecting multiple values (#6676), by @paulklie
+- Bus stop ref: Enable for Singapore (#6656), by @arrival-spring
+- Max weight: Weight limit signs in France need special handling (#6686)
+- Self-service at fuel stations: Ask in a few more countries (#6690)
+- Specify shop type: Only clear previous information about shop if we can't say whether it is still the same shop (#6675)
+- Ask for some more things on some quests (#6670), by @paulklie
+- Other small refinements (#6672, #6677, #6657, #6611…), thanks @mnalis, @matkoniecz
+
+## v62.1
+
+### Fixes
+
+- Fix crash in stile type and bike rental quest (#6629)
+- Bike paths overlay: OK button didn't always show (#6644)
+- Address overlay: Don't tag empty housename if user leaves input field empty (#6640)
+- Sidewalk overlay: Allow user to only specify one side (#6636)
+- Sidewalk surface: Only ask for sides that actually have a sidewalk (#6625)
+- Star counter display was incorrect in languages that are written from right to left (#6627)
+- Road names: OK button didn't show after selecting a name from the map (#6631), by @paulklie
+- Fix communication with OSM API (#6628), by @Firefishy
+- Surface overlay: Fix last-picked-button was not shown
+
+### Quest improvements
+
+- Ask for some more things on some quests (#6645, #6641, #6623, #6642, #6621, #6643, #6620), by @paulklie
+
+## v62.0
 
 ### New quests
 
@@ -20,6 +124,7 @@
 
 - Address and name quests and overlay look different now, with a few improvements (#6403, #5479)
 - Max weight form quest looks different now, with a few improvements (#6490)
+- Recycling quest form looks a bit different now (#6613)
 - Any quest or overlay that shows an image picker or an illustration of a street looks different now, with many improvements (#6490, #6239, #6560) such as showing several apply last-picked buttons like in the building levels quest (#5605)
 - Replace app suggestion Organic Maps with CoMaps (#6451)
 - Language selection is now in a separate screen, with search function (#6490)
@@ -28,7 +133,7 @@
 
 ### Quest improvements
 
-- Refine which quests to ask for the different places and things (#6481, #6475, #6428, #6474, #6463, #6402, #6498, #6499, #6523, #6522, #6521, #6520, #6529, #6519, #6492, #6534, #6549, #6576…), by @paulklie
+- Refine which quests to ask for the different places and things (#6481, #6475, #6428, #6474, #6463, #6402, #6498, #6499, #6523, #6522, #6521, #6520, #6529, #6519, #6492, #6534, #6549, #6576, #6601…), by @paulklie
 - Housenumbers: Ask for some buildings that were previously excluded (#6533)
 - Place name: Ask for some historic things, such as monuments (#6042)
 - Postbox collection times: Disable in Denmark (#6455), by @matkoniecz
@@ -36,12 +141,14 @@
 - Mopeds on bike paths: Enable in Sweden (#6516), by @paulklie
 - Information board topics: Add "rules" (#6580), by @NicodeH
 - Postbox royal cypher: Show "None" as normal answer option (#6490)
+- Max weight: Allow selecting multiple signs (#6589), by @paulklie
 - Other small refinements (#6445, #6511…)
 
 ### Overlay improvements
 
 - Things: Added exercise equipment, moorings, buoys, disc golf, graves and pillory as things (#6546), by @paulklie
 - Places: don't show "it's vacant" option for already vacant places (#6462), by @paulklie
+- Places: Can now search for brands by terms (#6604)
 - Addresses: Allow omitting the street name (#6528)
 
 ## v61.3

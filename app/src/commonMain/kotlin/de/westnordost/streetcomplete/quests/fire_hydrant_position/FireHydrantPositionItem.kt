@@ -1,19 +1,7 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
 import de.westnordost.streetcomplete.quests.fire_hydrant_position.FireHydrantPosition.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.fire_hydrant_position_pillar_green
-import de.westnordost.streetcomplete.resources.fire_hydrant_position_pillar_lane
-import de.westnordost.streetcomplete.resources.fire_hydrant_position_pillar_parking
-import de.westnordost.streetcomplete.resources.fire_hydrant_position_pillar_sidewalk
-import de.westnordost.streetcomplete.resources.fire_hydrant_position_underground_green
-import de.westnordost.streetcomplete.resources.fire_hydrant_position_underground_lane
-import de.westnordost.streetcomplete.resources.fire_hydrant_position_underground_parking
-import de.westnordost.streetcomplete.resources.fire_hydrant_position_underground_sidewalk
-import de.westnordost.streetcomplete.resources.quest_fireHydrant_position_green
-import de.westnordost.streetcomplete.resources.quest_fireHydrant_position_lane
-import de.westnordost.streetcomplete.resources.quest_fireHydrant_position_parking_lot
-import de.westnordost.streetcomplete.resources.quest_fireHydrant_position_sidewalk
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

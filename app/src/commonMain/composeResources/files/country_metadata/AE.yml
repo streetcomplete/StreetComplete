@@ -1,0 +1,14 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [en]
+atmOperators: [Emirates NBD, ADIB, Dubai Islamic Bank, Al Masraf Bank ATM, ADCB, Mashreq, HSBC, Abu Dhabi Commercial Bank, FAB, Al Hilal, Union National Bank, RAKBANK, NBAD, UNION NATIONAL BANK, Commercial Bank of Dubai, mashreq, RAK BANK, al hilal bank, RAK Bank, Standard Chartered, Sharjah Islamic Bank, Rak Bank, Mashreq Bank, Emirates Islamic, Abu Dhabi Islamic Bank, National Bank of Abu Dhabi, EMIRATES ISLAMIC, Citibank, CBI, union national bank, nbf, RAK Bank ATM, FGB, Emirates islamic atm, Emirates Islamic Bank, Dubai Islamic bank, City Bank, Bank of Sharjah, Abu Dhabi Distribution Co.]
+centerLineStyle: yellow
+chargingStationOperators: [Tesla, DEWA, Wifi UAE, 'Tesla, Inc.', Dubai Electricity and Water Authority]
+clothesContainerOperators: [Operation Smile UAE]
+defaultSpeedLimitHasUrbanOrRural: true
+edgeLineStyle: yellow
+mobileCountryCode: 424
+officialLanguages: [ar]
+orchardProduces: [date, tomato, guava, mango, mangosteen, lemon, lime, fig, chilli_pepper, sweet_pepper, almond, grape, banana]
+popularReligions: [muslim]
+popularSports: [tennis, golf]
+roofsAreUsuallyFlat: true

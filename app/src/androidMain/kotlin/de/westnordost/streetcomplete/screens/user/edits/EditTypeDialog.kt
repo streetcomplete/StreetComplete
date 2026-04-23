@@ -26,13 +26,13 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.data.osm.edits.EditType
 import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.user_statistics_quest_wiki_link
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 
 /** Shows the details for a certain quest type in a custom dialog. */
 @Composable
@@ -92,7 +92,7 @@ private fun EditTypeDetails(
 
         editType.wikiLink?.let { wikiLink ->
             OutlinedButton(
-                onClick = { uriHandler.openUri("https://wiki.openstreetmap.org/wiki/$wikiLink") }
+                onClick = { uriHandler.tryOpenUri("https://wiki.openstreetmap.org/wiki/$wikiLink") }
             ) {
                 OpenInBrowserIcon()
                 Text(

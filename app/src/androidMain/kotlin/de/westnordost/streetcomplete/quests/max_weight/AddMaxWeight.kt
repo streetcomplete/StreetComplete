@@ -13,13 +13,14 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.ferry.wayIdsInFerryRoutes
+import de.westnordost.streetcomplete.resources.*
 
-class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
+class AddMaxWeight : OsmElementQuestType<List<MaxWeight>>, AndroidQuest {
 
     // We ask for the maximum weight of bridges and ferries.
     // The general filter is used for both:
-    private val generalFilter by lazy {
-        """ways, relations with
+    private val generalFilter by lazy { """
+        ways, relations with
          !maxweight and maxweight:signed != no
          and !maxaxleload
          and !maxbogieweight
@@ -31,38 +32,36 @@ class AddMaxWeight : OsmElementQuestType<MaxWeightAnswer>, AndroidQuest {
          and area != yes
     """.toElementFilterExpression() }
 
-    private val highwayFilter by lazy {
-        """ways with
+    private val highwayFilter by lazy { """
+        ways with
          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service|busway
          and bridge and bridge != no
          and service != driveway
          and motor_vehicle !~ private|no
     """.toElementFilterExpression() }
 
-    private val ferryFilter by lazy {
-        """ways, relations with
+    private val ferryFilter by lazy { """
+        ways, relations with
          route = ferry
          and motor_vehicle = yes
-        """.toElementFilterExpression() }
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Specify maximum allowed weights"
     override val wikiLink = "Key:maxweight"
     override val icon = R.drawable.quest_max_weight
+    override val title = Res.string.quest_maxweight_title
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_maxweight_title
-
     override fun createForm() = AddMaxWeightForm()
 
-    override fun applyAnswerTo(answer: MaxWeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            is MaxWeight -> {
-                answer.applyTo(tags)
+    override fun applyAnswerTo(answer: List<MaxWeight>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.isNotEmpty()) {
+            for (maxweight in answer) {
+                maxweight.applyTo(tags)
             }
-            is MaxWeightAnswer.NoSign -> {
-                tags["maxweight:signed"] = "no"
-            }
+        } else {
+            tags["maxweight:signed"] = "no"
         }
     }
 

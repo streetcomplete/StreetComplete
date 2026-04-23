@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.AUTOMATED
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.SELF_SERVICE
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCarWashType : OsmFilterQuestType<Set<CarWashType>>(), AndroidQuest {
@@ -16,9 +17,8 @@ class AddCarWashType : OsmFilterQuestType<Set<CarWashType>>(), AndroidQuest {
     override val changesetComment = "Specify car wash types"
     override val wikiLink = "Tag:amenity=car_wash"
     override val icon = R.drawable.quest_car_wash
+    override val title = Res.string.quest_carWashType_title
     override val achievements = listOf(CAR)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_carWashType_title
 
     override fun createForm() = AddCarWashTypeForm()
 

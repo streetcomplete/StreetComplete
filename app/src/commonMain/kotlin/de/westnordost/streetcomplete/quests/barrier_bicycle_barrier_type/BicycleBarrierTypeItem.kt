@@ -1,17 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type.BicycleBarrierType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.barrier_bicycle_barrier_diagonal
-import de.westnordost.streetcomplete.resources.barrier_bicycle_barrier_double
-import de.westnordost.streetcomplete.resources.barrier_bicycle_barrier_single
-import de.westnordost.streetcomplete.resources.barrier_bicycle_barrier_tilted
-import de.westnordost.streetcomplete.resources.barrier_bicycle_barrier_triple
-import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_type_diagonal
-import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_type_double
-import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_type_multiple
-import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_type_single
-import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_type_tilted
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

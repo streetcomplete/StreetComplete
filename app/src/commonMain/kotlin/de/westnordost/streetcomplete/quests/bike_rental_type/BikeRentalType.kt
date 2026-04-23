@@ -1,14 +1,8 @@
 package de.westnordost.streetcomplete.quests.bike_rental_type
 
-import kotlinx.serialization.Serializable
-
-@Serializable
-sealed interface BikeRentalTypeAnswer {
-    data object BikeShopWithRental : BikeRentalTypeAnswer
-}
-
-enum class BikeRentalType(val osmValue: String) : BikeRentalTypeAnswer {
-    DOCKING_STATION("docking_station"),
-    DROPOFF_POINT("dropoff_point"),
-    HUMAN("shop"),
+enum class BikeRentalTypeAnswer {
+    DOCKING_STATION,
+    DROPOFF_POINT,
+    HUMAN,
+    BIKE_SHOP_WITH_RENTAL
 }

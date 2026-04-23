@@ -1,0 +1,24 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [international, en]
+atmOperators: [Euronet, Τράπεζα Πειραιώς, Alpha Bank, Eurobank, Εθνική Τράπεζα, Euronet Worldwide, Piraeus, Εθνική Τράπεζα της Ελλάδος, Piraeus Bank, Cashzone, Bcash, ATM, National Bank, Attica Bank, ΤΡΑΠΕΖΑ ΠΕΙΡΑΙΩΣ, Εθνική, Πειραιώς / Piraeus, Euronext, Citibank, Bank of Chania, Cashflex, Τράπεζα Eurobank, Πειραιώς, Εθνική Τράπεζα της Ελλάδος - National Bank of Greece NBG, Shitcoins.club, Piräus Bank, NBG GROUP, NBG, EuroNet, Ethniki Bank, CashFlex, Alpha, Τράπεζας Πειραιώς, Εθνική Τράπεζα | National Bank of Greece, ΕΘΝΙΚΗ ΤΡΑΠΕΖΑ, i-bank, Pyraeus Bank, Pireus Bank, Pireaus Bank, Piraeus bank, Hellenic Post, Cooperative Bank of Dodecanese, CashZone, Bitcoinmat, ATM Τράπεζας Πειραιώς]
+chargingStationOperators: [Σκλαβενίτης, ΑΒ Βασιλόπουλος, My Market, Μασούτης, Lidl, Δήμος Βάρης Βούλας Βουλιαγμένης, METRO Cash & Carry, Γαλαξίας, My market, Γαλαξίας supermarket, Κωτσόβολος, AVIN, Δήμος Αθηναίων, Ενεργειακή Κοινότητα Λοκρών Π.Ε., Avin, Δήμος Ξυλόκαστρου, ALTERLIFE, Costa Navarino, Χαλκιαδάκης Max supermarket, Δήμος Ανωγείων, Δήμος Αστυπάλαιας, The Mart, Κρητικός Supermarket, Καυκάς ηλεκτρολογικό υλικό, Γ. ΚΑΨΙΩΧΑΣ ΑΕΒΕ, Βιολογικό Χωριό, Tesla, ENA FOOD Cash & Carry, Δήμος Ραφήνας - Πικερμίου, Δήμος Κύθνου, McDonald's, Astir Marina, Χαλκιαδάκης supermarket, Δήμος Ανδραβίδας-Κυλλήνης, ΔΕΗ, Shell, Praktiker, Eurobank, EKO Καλυψώ, ΣYN.KA Σούπερ Μάρκετ, Νοσοκομείο Σωτηρία, Μαρίνα Φλοίσβου, Ελαστικά Οικονόμου, Δήμος Βέλου Βόχας, Piraeus Bank, Peugeot, EKO ΔΕΛΗΓΙΑΝΝΗΣ, Chargespot, AVIS, Πανεπιστήμιο Πατρών, ΟΤΟ Parking, Δήμος Τήλου, Δήμος Σίφνου, Δήμος Ρεθύμνου, Δήμος Καλαβρύτων, Δήμος Ηγουμενίτσας, Δήμος Αλίμου, Zap Taxi Club, Market In, Igoumenitsa Port Authority, IKEA, Gruppo Cucine, Grecotel Olympia Riviera, Ford Velmar, BP ΚΑΛΥΨΩ]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+clothesContainerOperators: [Recycom, RECYCOM, Δήμος Ηλιούπολης, Δήμος Αθηναίων, Texcycle, Δήμος Κέρκυρας, Δήμος Ζωγράφου, ΙΝ Αγίας Μαύρας, Δήμος Γαλατσίου, East-West Greece]
+defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisorySpeedLimitSign: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 202
+noParkingLineStyle: dashed yellow
+noParkingSignStyle: vienna
+noStoppingLineStyle: yellow
+noStoppingSignStyle: vienna
+officialLanguages: [el]
+orchardProduces: [olive, grape, peach, orange, almond, walnut, tomato, apple, kiwi, apricot, chestnut, pear, fig, lemon, lime, chilli_pepper, sweet_pepper]
+parcelLockerBrand: [Box Now, Skroutz Point, Skroutz, ACS, ACS SmartPoint, ACS Smartpoint, BoxNow, Skroutz point]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: ΠΕΡΙΟΧΗ
+workweek: Mo-Sa

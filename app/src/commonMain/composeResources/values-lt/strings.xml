@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Privatumas</string>
     <string name="quest_openingHours_public_holidays">Valstybinės šventės</string>
     <string name="quest_openingHours_public_holidays_short">VŠ</string>
-    <string name="quest_openingHours_open_end">užsidarymas pagal situaciją</string>
     <string name="quest_openingHours_answer_247">Atidaryta 24/7</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Skiriasi priklausomai nuo mėnesio…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Nėra pastovaus darbo laiko…</string>
@@ -111,7 +110,6 @@ Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. 
     <string name="quest_surface_value_sett">Trinkelės</string>
     <string name="quest_surface_value_wood">Medis</string>
     <string name="quest_sidewalk_title">Ar ši gatvė turi šaligatvį?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Kur yra ši gatvė?</string>
     <string name="quest_address_title">Koks šio pastato namo numeris?</string>
     <string name="store_listing_short_description">OpenStreetMap matininko aplikacija</string>
     <string name="store_listing_full_description">Padėkite tobulinti OpenStreetMap su StreetComplete!
@@ -178,9 +176,6 @@ Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be k
     <string name="quest_maxspeed_answer_noSign_confirmation">Ar patikrinote gatvės pradžioje ir pabaigoje?
 Jei visoje gatvėje nėra ženklų, kurie galioja pažymėtoje dalyje, taikomas numatytasis greičio apribojimas.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Taip, nėra ženklo</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Miesto keliai turi kitokį numatytąjį maksimalų greitį, nei užmiesčio.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Mieste</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Užmiestyje</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Jei tokio ženklo nėra pagrindinės gatvės sankryžoje, nerasite atskirų ženklų ir pačioje zonoje, nes greičio apribojimas taikomas visai zonai.</string>
     <string name="quest_sport_softball">Softball</string>
     <string name="quest_sport_racquet">Racquetball</string>
@@ -214,7 +209,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="credits_contributors_title">Kodo talkininkai</string>
     <string name="credits_author_title">Autorius ir prižiūrėtojas</string>
     <string name="quest_maxspeed_answer_living_street">Tai gyvenamoji zona</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Taigi yra toks kelio ženklas?</string>
     <string name="quest_orchard_produce_title">Kas čia auginama?</string>
     <string name="produce_grapes">Vynuogės</string>
     <string name="produce_agaves">Agavos</string>
@@ -286,7 +280,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_buildingLevels_levelsLabel2">paprasti aukštai (neskaičiuojant stogo)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">skiriasi skirtingose pastato dalyse</string>
     <string name="quest_buildingLevels_answer_description">Tokiu atveju tiesiog įveskite aukščiausios pastato dalies reikšmę.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Ar šio kelio juostos yra fiziškai atskirtos borteliu arba žalia juosta? Nuo to priklauso numatytasis greičio apribojimas.</string>
     <string name="about_category_feedback">Atsiliepimai</string>
     <string name="quest_leave_new_note_photo">Prisegti nuotrauką</string>
     <string name="quest_leave_new_note_photo_delete_title">Ar norite ištrinti šią nuotrauką?</string>
@@ -317,7 +310,6 @@ Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuv�
     <string name="quest_housenumber_conscription_number">Užsakymo numeris</string>
     <string name="quest_housenumber_street_number_optional">Orientacijos numeris (pasirinktinai)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Taip pat dviračių takas kitoje pusėje…</string>
-    <string name="quest_openingHours_emptyAnswer">Turite aprašyti, kas yra ženkle. Jei ženklo nėra, darbo laiko turėtumėte paklausti viduje.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">nėra, bet dviratininkai gali važiuoti į abi puses</string>
     <string name="quest_wheelchairAccess_description_toilets">Neįgaliųjų vežimėlio ženklas panašus į šį gali būti matomas, jei tualetai prieinami.
 Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėra turėklų.</string>
@@ -452,7 +444,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_openingHours_no_sign">Nėra darbo laiko ženklo</string>
     <string name="quest_buildingType_sports_centre">Sporto centras</string>
     <string name="quest_buildingType_toilets">Tualetai</string>
-    <string name="quest_maxspeed_sign_question">Kas nustato greičio ribojimą?</string>
     <string name="quest_segregated_title">Kaip čia išdėstyti pėsčiųjų ir dviračių takai?</string>
     <string name="dialog_tutorial_upload">Kad įkeltumėte pakeitimus rankiniu būdu, naudokite įrankinės mygtuką, atrodantį štai taip.</string>
     <string name="quest_segregated_separated">Atskirti vienas nuo kito</string>
@@ -467,7 +458,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="privacy_html_image_upload2">&lt;p&gt;Nuotraukos, kurias pridedate prie pastabos, įkeliamos į mano serverį ir ištrinamos po kelių dienų, kai pastaba išsprendžiama. Įkėlimo metu ištrinami metaduomenys.&lt;/p&gt;</string>
     <string name="action_deselect_all">Viską nužymėti</string>
     <string name="quest_buildingType_retail_description">įskaitant pastatus restoranams, kavinėms, …</string>
-    <string name="quest_openingHours_timeSelect_next">Kitas</string>
     <string name="quest_tracktype_title">Koks šio kelio dangos standumas?</string>
     <string name="quest_tracktype_grade1">Tvirtas</string>
     <string name="quest_tracktype_grade4">Daugiausia minkštas</string>
@@ -493,7 +483,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="action_open_location">Atverti vietą kitoje programėlėje</string>
     <string name="map_application_missing">Nėra įdiegtų kitų žemėlapių programėlių</string>
     <string name="label_housenumber">namo numeris</string>
-    <string name="label_blocknumber">bloko numeris</string>
     <string name="quest_busStopShelter_covered">Visa stotelė uždengta</string>
     <string name="quest_ferry_pedestrian_title">Ar šis kelto maršrutas perveža pėsčiuosius?</string>
     <string name="quest_ferry_motor_vehicle_title">Ar šis kelto maršrutas perveža motorines transporto priemones?</string>
@@ -526,7 +515,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_recycling_type_glass_bottles">Stikliniai buteliai ir stiklainiai</string>
     <string name="quest_recycling_type_glass_bottles_short">Buteliai ir stiklainiai</string>
     <string name="quest_recycling_type_paper">Popierius</string>
-    <string name="quest_recycling_type_plastic_generic">Plastikas</string>
     <string name="quest_recycling_type_plastic">Bet koks plastikas</string>
     <string name="quest_recycling_type_shoes">Batai</string>
     <string name="quest_recycling_type_electric_appliances">Elektros įrenginiai</string>
@@ -691,7 +679,6 @@ dienų</string>
     <string name="at_housenumber">namo numeris %1$s</string>
     <string name="quest_openingHours_add_off_days">Pridėti nedarbo dienas</string>
     <string name="quest_openingHours_off_day">Nedarbo diena</string>
-    <string name="quest_openingHours_unspecified_range">Nenurodyta</string>
     <string name="quest_cycleway_resurvey_title">Ar čia vis dar vyrauja tokia dviračių sporto situacija?</string>
     <string name="pref_title_resurvey_intervals">Tyrimų intervalai</string>
     <string name="resurvey_intervals_less_often">Klausti rečiau</string>
@@ -702,7 +689,6 @@ dienų</string>
     <string name="quest_oneway2_title">Ar ši gatvė vienpusė? Į kurią kryptį?</string>
     <string name="quest_oneway2_dir">Vienpusė į šia kryptį</string>
     <string name="quest_oneway2_no_oneway">Ne vienpusė</string>
-    <string name="quest_maxweight_select_sign">Parinkti ženklą</string>
     <string name="quest_steps_incline_title">Kuri kryptis veda aukštyn šiais laiptais?</string>
     <string name="quest_steps_incline_up">Šia kryptimi aukšyn</string>
     <string name="quest_step_count_title">Kiek pakopų čia yra?</string>
@@ -789,7 +775,6 @@ Atkreipkite dėmesį į visas galimas parinktis: kai kurie atvejai nėra akivaiz
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Škotijos karūna</string>
     <string name="quest_buildingType_fire_station">Gaisrinės pastatas</string>
     <string name="quest_recycling_type_beverage_cartons">Tik gėrimų dėžutės</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Tik plastikiniai buteliai ir kartoninės dėžutės</string>
     <string name="team_mode">Komandinis režimas</string>
     <string name="team_mode_exit">Palikti komandinį režimą</string>
     <string name="team_mode_description">Kai kartu su grupe kartografuojate tą pačią vietovę, galite įjungti komandinį režimą, kad užduotys būtų padalytos visiems komandos nariams.</string>
@@ -1140,8 +1125,6 @@ Tą patį padarykite ir kitoje pusėje, jei yra.</string>
     <string name="quest_camp_drinking_water_title">Ar geriamas vanduo yra laisvai prieinamas stovyklautojams?</string>
     <string name="quest_camp_shower_title">Ar čia yra dušų?</string>
     <string name="quest_camp_power_supply_title">Ar yra galimybė klientams pasikrauti savo telefoną, kompiuterį ar kt.?</string>
-    <string name="quest_camp_type_title">Kas galėtų čia stovyklauti?</string>
-    <string name="quest_recycling_type_pet">Tik PET plastikas</string>
     <string name="street_parking_street_width">Gatvės plotis: %1$s</string>
     <string name="overlay_street_parking">Parkavimas gatvėje</string>
     <string name="link_opencampingmap_description">Stovyklaviečių žemėlapis</string>

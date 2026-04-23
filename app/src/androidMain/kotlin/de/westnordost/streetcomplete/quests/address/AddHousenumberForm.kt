@@ -28,9 +28,7 @@ import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.IAnswerItem
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_address_answer_no_housenumber_message1
-import de.westnordost.streetcomplete.resources.quest_address_answer_no_housenumber_message2b
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -81,11 +79,11 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         if (countryInfo.countryCode in listOf("JP", "CZ", "SK")) return null
         return when (addressNumberAndName.value.number) {
             is BlockAndHouseNumber ->
-                AnswerItem(R.string.quest_address_answer_no_block) {
+                AnswerItem(R.string.quest_address_answer_no_block2) {
                     addressNumberAndName.value = addressNumberAndName.value.copy(number = HouseNumber(""))
                 }
             else ->
-                AnswerItem(R.string.quest_address_answer_block) {
+                AnswerItem(R.string.quest_address_answer_block2) {
                     addressNumberAndName.value = addressNumberAndName.value.copy(number = BlockAndHouseNumber("", ""))
                 }
         }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36" height="56" version="1.1" viewBox="0 0 36 56" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <radialGradient id="radialGradient10" cx="24" cy="29.714" r="8" gradientTransform="matrix(4 .00012465 -.00012465 4 -75.996 -98.86)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#c7c7c7" offset="0"/>
+   <stop stop-color="#535353" offset="1"/>
+  </radialGradient>
+  <linearGradient id="linearGradient11" x1="21.889" x2="30.111" y1="33.333" y2="33.389" gradientTransform="translate(-4,-4)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#454545" stop-opacity="0" offset="0"/>
+   <stop stop-color="#262626" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g fill-rule="evenodd">
+  <circle cx="18" cy="46" r="10" fill-opacity=".2"/>
+  <rect x="12" width="12" height="52" ry="6" fill="url(#radialGradient10)"/>
+  <rect x="12" width="12" height="52" ry="6" fill="url(#linearGradient11)"/>
+ </g>
+</svg>

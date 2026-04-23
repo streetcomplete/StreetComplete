@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndCyclewaySurface
 import kotlinx.serialization.Serializable
-import kotlin.jvm.JvmInline
 
 @Serializable
 sealed interface SurfaceOverlayAnswer {
@@ -13,7 +12,7 @@ sealed interface SurfaceOverlayAnswer {
 }
 
 @Serializable
-@JvmInline value class SingleSurface(val value: Surface?) : SurfaceOverlayAnswer {
+data class SingleSurface(val value: Surface?) : SurfaceOverlayAnswer {
     override fun isComplete(): Boolean =
         value != null
 }

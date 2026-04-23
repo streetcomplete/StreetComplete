@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -23,16 +24,14 @@ class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override val changesetComment = "Specify if there is a sanitary dump station at camp or caravan site"
     override val wikiLink = "Key:sanitary_dump_station"
-    override val icon = R.drawable.quest_caravan
+    override val icon = R.drawable.quest_poo
+    override val title = Res.string.quest_sanitary_dump_station_title
     override val achievements = listOf(EditTypeAchievement.OUTDOORS)
-
-    override val hint = R.string.quest_sanitary_dump_station_description
+    override val hint = Res.string.quest_sanitary_dump_station_description
     override val hintImages = listOf(
-        R.drawable.sanitary_dump_station_sign1,
-        R.drawable.sanitary_dump_station_sign2
+        Res.drawable.sanitary_dump_station_sign1,
+        Res.drawable.sanitary_dump_station_sign2
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_sanitary_dump_station_title
 
     override fun createForm() = YesNoQuestForm()
 

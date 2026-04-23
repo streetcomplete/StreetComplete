@@ -110,7 +110,7 @@ class NotesApiClient(
     /**
      * Retrieve all open notes in the given area
      *
-     * @param bounds the area within the notes should be queried. This is usually limited at 25
+     * @param bounds within this area notes will be queried. This is usually limited at 25
      *               square degrees. Check the server capabilities.
      * @param limit number of entries returned at maximum. Any value between 1 and 10000
      *

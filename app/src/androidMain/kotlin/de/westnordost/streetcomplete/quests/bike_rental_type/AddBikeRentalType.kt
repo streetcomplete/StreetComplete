@@ -9,6 +9,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.bike_rental_type.BikeRentalTypeAnswer.*
+import de.westnordost.streetcomplete.resources.*
 
 class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>(), AndroidQuest {
 
@@ -22,25 +24,28 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>(), AndroidQue
     override val changesetComment = "Specify bicycle rental types"
     override val wikiLink = "Key:bicycle_rental"
     override val icon = R.drawable.quest_bicycle_rental
+    override val title = Res.string.quest_bicycle_rental_type_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_rental_type_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = bicycle_rental")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = bicycle_rental")
 
     override fun createForm() = AddBikeRentalTypeForm()
 
     override fun applyAnswerTo(answer: BikeRentalTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is BikeRentalType -> {
-                tags["bicycle_rental"] = answer.osmValue
-                if (answer == BikeRentalType.HUMAN) {
-                    tags["shop"] = "rental"
-                }
+            DOCKING_STATION -> {
+                tags["bicycle_rental"] = "docking_station"
             }
-            is BikeRentalTypeAnswer.BikeShopWithRental -> {
+            DROPOFF_POINT -> {
+                tags["bicycle_rental"] = "dropoff_point"
+            }
+            HUMAN -> {
+                tags["bicycle_rental"] = "shop"
+                tags["shop"] = "rental"
+            }
+            BIKE_SHOP_WITH_RENTAL -> {
                 tags.remove("amenity")
                 tags["shop"] = "bicycle"
                 tags["service:bicycle:rental"] = "yes"

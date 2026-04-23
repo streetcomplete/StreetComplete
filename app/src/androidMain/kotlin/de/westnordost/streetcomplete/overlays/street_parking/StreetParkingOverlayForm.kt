@@ -74,7 +74,7 @@ class StreetParkingOverlayForm : AbstractOverlayForm() {
         parking.value != originalParking
 
     override fun isFormComplete(): Boolean =
-        parking.value.left != null && parking.value.right != null
+        parking.value.left != null || parking.value.right != null
 
     override fun onClickOk() {
         prefs.setLastPicked(this::class.simpleName!!, listOf(parking.value))

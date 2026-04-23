@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"הצהרת פרטיות"</string>
     <string name="quest_openingHours_public_holidays">"חגים ומועדים"</string>
     <string name="quest_openingHours_public_holidays_short">"חגים"</string>
-    <string name="quest_openingHours_open_end">"יכול להסגר מאוחר יותר"</string>
     <string name="quest_openingHours_answer_247">"פתוח 24/7"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"תלוי בחודש"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"אין שעות פתיחה קבועים"</string>
@@ -110,7 +109,6 @@
     <string name="quest_surface_value_sett">"לבנים מלבניות"</string>
     <string name="quest_surface_value_wood">"עץ"</string>
     <string name="quest_sidewalk_title">"האם יש מדרכה ברחוב הזה?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"איפה הרחוב הזה?"</string>
     <string name="quest_address_title">"מה הוא המספר של המבנה הזה?"</string>
     <string name="store_listing_short_description">"אפליקציית סקירה של OpenStreetMap"</string>
     <string name="store_listing_full_description">"עזרו לשפר את OpenStreetMap עם StreetComplete!
@@ -177,9 +175,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"האם בדקת בשני קצוות הרחוב?
 אם אין שלטים לאורך כל הרחוב המתייחסים לחלק המסומן, מגבלות המהירות הרגילות חלות."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"כן, אין שלט"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"בכבישים באזורים בנויים יש מגבלת מהירות נמוכה יותר מאשר בכבישים באזורי ספר."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"אזור בנוי"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"כפרי"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"אם קיים שלט כזה בצומת עם רחוב מרכזי, לא יהיו שלטים נוספים באזור והגבלת המהירות תחול על כל האזור."</string>
     <string name="quest_sport_softball">"כדור בסיס"</string>
     <string name="quest_sport_racquet">"כדור מחבט (Racquetball)"</string>
@@ -213,7 +208,6 @@
     <string name="credits_contributors_title">"תורמי קוד"</string>
     <string name="credits_author_title">"היוצר והמתחזק"</string>
     <string name="quest_maxspeed_answer_living_street">"זהו רחוב משולב"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"אז יש כאן תמרור כזה?"</string>
     <string name="quest_orchard_produce_title">"מה מגדלים כאן?"</string>
     <string name="produce_grapes">"ענבים"</string>
     <string name="produce_agaves">"אגאבה"</string>
@@ -285,7 +279,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"קומות רגילות (לא כולל הגג)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"משתנה בין חלקי המבנה"</string>
     <string name="quest_buildingLevels_answer_description">"במקרה זה יש להזין את הערכים עבור חלק המבנה הגבוה ביותר."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"האם כיווני תנועה מנוגדים מופרדים בעזרת שטח הפרדה בנוי או מפרדה? נתון זה משפיע על מהירות מרבית מותרת בהעדר תמרור אחר."</string>
     <string name="about_category_feedback">"משוב"</string>
     <string name="quest_leave_new_note_photo">"צרף/י תמונה"</string>
     <string name="quest_leave_new_note_photo_delete_title">"האם ברצונך למחוק תמונה זו?"</string>
@@ -314,7 +307,6 @@
     <string name="enable_quest_confirmation_title">"לאפשר סוג משימות זה?"</string>
     <string name="default_disabled_msg_go_inside">"סוג משימות זה אינו פעיל בברירת מחדל, כיוון שסביר שצריך יהיה להיכנס אל המקום כדי לענות על משימה מסוג זה."</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"בנוסף יש שביל אופניים בצד השני..."</string>
-    <string name="quest_openingHours_emptyAnswer">"תאר מה נמצא על השלט. אם אין שלט, צריך להכנס למקום ולשאול מהן שעות פתיחה."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"אין, אבל רוכבי אופניים יכולים לנסוע בשני הכיוונים"</string>
     <string name="quest_wheelchairAccess_description_toilets">"שלט כסא גלגלים כזה עשוי להיות מוצג אם השירותים מונגשים.
 חלקית פירושו שניתן להיכנס עם כסא גלגלים ולהשתמש בשירותים, אבל אין מעקה או כיור מותאם."</string>
@@ -447,7 +439,6 @@
     <string name="quest_openingHours_no_sign">"אין שלט המציין שעות פתיחה"</string>
     <string name="quest_buildingType_sports_centre">"מרכז ספורט"</string>
     <string name="quest_buildingType_toilets">"בתי שימוש"</string>
-    <string name="quest_maxspeed_sign_question">"מה קובע את המהירות המותרת?"</string>
     <string name="quest_segregated_title">"איך מוצבים כאן שביל ההליכה ונתיב האופניים?"</string>
     <string name="dialog_tutorial_upload">"כדי להעלות את השינויים שלך ידנית, יש להשתמש בכפתור בסרגל הכלים שנראה ככה."</string>
     <string name="quest_segregated_separated">"מופרדים זה מזה"</string>
@@ -462,7 +453,6 @@
     <string name="privacy_html_image_upload2">"&lt;p&gt;תמונות שתצרפ/י להערה מועלות לשרת שלי ונמחקות כמה ימים אחרי שההערה מטופלת. המטא-נתונים של התמונות מוסרים לפני ההעלאה.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"לאפס את הסימון"</string>
     <string name="quest_buildingType_retail_description">"כולל מבנים של מסעדות, בתי קפה, חנויות גדולות …"</string>
-    <string name="quest_openingHours_timeSelect_next">"הבא"</string>
     <string name="quest_tracktype_title">"מה מידת הקשיות של המסלול הזה?"</string>
     <string name="quest_tracktype_grade1">"סלול"</string>
     <string name="quest_tracktype_grade4">"סלול ברובו"</string>
@@ -488,7 +478,6 @@
     <string name="action_open_location">"פתיחת המיקום באפליקציה אחרת"</string>
     <string name="map_application_missing">"לא מותקנת אפליקציית מפות אחרת"</string>
     <string name="label_housenumber">"מספר בית"</string>
-    <string name="label_blocknumber">"מספר בלוק"</string>
     <string name="quest_busStopShelter_covered">"כל התחנה מקורה"</string>
     <string name="quest_ferry_pedestrian_title">"האם המעבורת מעבירה הולכי רגל?"</string>
     <string name="quest_ferry_motor_vehicle_title">"האם המעבורת מעבירה רכבים ממונעים?"</string>
@@ -521,7 +510,6 @@
     <string name="quest_recycling_type_glass_bottles">"בקבוקי זכוכית וצנצנות"</string>
     <string name="quest_recycling_type_glass_bottles_short">"בקבוקים וצנצנות"</string>
     <string name="quest_recycling_type_paper">"נייר"</string>
-    <string name="quest_recycling_type_plastic_generic">"פלסטיק"</string>
     <string name="quest_recycling_type_plastic">"פלסטיק מכל הסוגים"</string>
     <string name="quest_recycling_type_shoes">"נעליים"</string>
     <string name="quest_recycling_type_electric_appliances">"מכשירי אלקטרוניקה"</string>
@@ -675,7 +663,6 @@
     <string name="at_housenumber">"מספר בית %s"</string>
     <string name="quest_openingHours_add_off_days">"הוספת ימי חופשה"</string>
     <string name="quest_openingHours_off_day">"ימי חופשה"</string>
-    <string name="quest_openingHours_unspecified_range">"לא מוגדר"</string>
     <string name="quest_cycleway_resurvey_title">"האם זה עדיין מצב המיחזור כאן?"</string>
     <string name="resurvey_intervals_less_often">"שאל בתדירות נמוכה יותר"</string>
     <string name="resurvey_intervals_default">"ברירת מחדל"</string>
@@ -685,7 +672,6 @@
     <string name="quest_oneway2_title">"האם זה רחוב חד-סטרי? באיזה כיוון?"</string>
     <string name="quest_oneway2_dir">"חד-סטרי בכיוון זה"</string>
     <string name="quest_oneway2_no_oneway">"לא חד-סטרי"</string>
-    <string name="quest_maxweight_select_sign">"בחר/י תמרור"</string>
     <string name="quest_steps_incline_title">"באיזה כיוון עולות המדרגות?"</string>
     <string name="quest_steps_incline_up">"כיוון זה לעלייה"</string>
     <string name="quest_step_count_title">"כמה מדרגות יש כאן?"</string>
@@ -768,7 +754,6 @@
     <string name="quest_drinking_water_not_potable_signed">"לא בטוח לשתייה (עם שילוט)"</string>
     <string name="quest_buildingType_fire_station">"תחנת כיבוי אש"</string>
     <string name="quest_recycling_type_beverage_cartons">"קרטוני משקה בלבד"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"בקבוקי פלסטיק וקרטון בלבד"</string>
     <string name="team_mode">"כניסה למוד קבוצתי"</string>
     <string name="team_mode_exit">"יציאה ממוד קבוצתי"</string>
     <string name="team_mode_description">"כאשר מבצעים מיפוי של אותו אזור ביחד כקבוצה, ניתן להיכנס למוד קבוצתי על מנת לחלק את משימות המחקר בין חברי הקבוצה."</string>
@@ -1072,10 +1057,6 @@
     <string name="quest_camp_drinking_water_title">"האם יש מי שתייה זמינים למי שישן כאן?"</string>
     <string name="quest_camp_shower_title">"האם יש כאן מקלחות?"</string>
     <string name="quest_camp_power_supply_title">"האם יש כאן אפשרות ללקוחות להטעין טלפון, לפטופ וכו'?"</string>
-    <string name="quest_camp_type_title">"מי יכול לעשות כאן קמפינג?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"גם אוהלים וגם קרוואנים, נגררים, ..."</string>
-    <string name="quest_camp_type_caravans_only">"רק קרוואנים, נגררים, ..."</string>
-    <string name="quest_camp_type_tents_only">"אוהלים בלבד"</string>
     <string name="quest_camp_type_backcountry">"לינת שטח (אין מתקנים תומכים)"</string>
     <string name="street_parking_street_width">"רוחב רחוב: %s"</string>
     <string name="overlay_street_parking">"חניה ברחוב"</string>
@@ -1147,9 +1128,6 @@
     <string name="quest_gritBinSeasonal_title">"האם זה כאן גם מעבר לעונת החורף?"</string>
     <string name="quest_traffic_signals_sound_description">"רמז: נא לחפש רמקולים. לא כל ההתראות הקוליות מופעלות על ידי כפתור."</string>
     <string name="quest_presets_duplicate">"שכפל"</string>
-    <string name="label_block">"חסימה"</string>
-    <string name="quest_address_answer_block">"זה חלק מבלוק..."</string>
-    <string name="quest_address_answer_no_block">"זה לא חלק מבלוק..."</string>
     <string name="quest_wheelchairAccessPat_noToilet">"אין כאן שירותים"</string>
     <string name="unknown_surface_title">"סוג אחר של משטח"</string>
     <string name="overlay_surface">"משטחים"</string>

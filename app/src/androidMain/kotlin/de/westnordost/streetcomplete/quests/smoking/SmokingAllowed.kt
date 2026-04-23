@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.quests.smoking
 
 import de.westnordost.streetcomplete.quests.smoking.SmokingAllowed.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_smoking_no
-import de.westnordost.streetcomplete.resources.quest_smoking_outside
-import de.westnordost.streetcomplete.resources.quest_smoking_separated
-import de.westnordost.streetcomplete.resources.quest_smoking_yes
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 enum class SmokingAllowed(val osmValue: String) {

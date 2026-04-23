@@ -21,10 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.logs.LogLevel
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_check_circle_24
-import de.westnordost.streetcomplete.resources.ic_circle_outline_24
-import de.westnordost.streetcomplete.resources.label_log_level
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.logDebug
 import de.westnordost.streetcomplete.ui.theme.logError
@@ -33,7 +30,7 @@ import de.westnordost.streetcomplete.ui.theme.logVerbose
 import de.westnordost.streetcomplete.ui.theme.logWarning
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

@@ -1,0 +1,20 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [sr-Latn, en]
+atmOperators: [AIK banka, Payten, Поштанска штедионица, Yettel bank, НЛБ Комерцијална банка, UniCredit Bank, Addiko Bank, OTP banka, Banca Intesa, Raiffeisen bank, Erste Bank, Halkbank, Eurobank, 3 Банка, Beograd, Sokobanja, Poštanska štedionica, NLB]
+chargingStationOperators: [Putevi Srbije, Tesla, Газпром]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+defaultSpeedLimitHasUrbanOrRural: true
+hasAdvisorySpeedLimitSign: true
+hasDailyAlternateSideParkingSign: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 220
+noParkingLineStyle: dashed yellow with Xs
+noStoppingLineStyle: yellow
+officialLanguages: [sr]
+orchardProduces: [plum, apple, raspberry, grape, cherry, tomato, peach, strawberry, apricot, chilli_pepper, sweet_pepper, pear, hazelnut, walnut, hop]
+parcelLockerBrand: [Поштин пакетомат, DExpress]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: bottom
+slowZoneLabelText: ЗОНА

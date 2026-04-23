@@ -13,13 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.user.achievements.Link
 import de.westnordost.streetcomplete.data.user.achievements.links
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun LazyGroupedLinksColumn(
     allLinks: List<Link>,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    contentPadding: PaddingValues = PaddingValues.Zero
 ) {
     val groupedLinks = remember(allLinks) {
         allLinks.groupBy { it.category }.map { (k, v) -> k to v }
@@ -46,7 +46,7 @@ fun LazyGroupedLinksColumn(
 fun LazyLinksColumn(
     links: List<Link>,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    contentPadding: PaddingValues = PaddingValues.Zero
 ) {
     LazyLinksGrid(modifier, contentPadding = contentPadding) {
         items(links) { link ->
@@ -58,7 +58,7 @@ fun LazyLinksColumn(
 @Composable
 private fun LazyLinksGrid(
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp),
+    contentPadding: PaddingValues = PaddingValues.Zero,
     content: LazyGridScope.() -> Unit
 ) {
     LazyVerticalGrid(

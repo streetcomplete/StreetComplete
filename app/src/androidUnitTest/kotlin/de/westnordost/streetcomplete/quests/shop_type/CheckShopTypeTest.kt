@@ -72,7 +72,7 @@ class CheckShopTypeTest {
     @Test fun `apply shop vacant answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("check_date", nowAsCheckDateString())),
-            questType.answerApplied(IsShopVacant)
+            questType.answerApplied(ShopTypeAnswer.IsShopVacant)
         )
     }
 
@@ -87,7 +87,7 @@ class CheckShopTypeTest {
                 tags = mapOf("a" to "b", "c" to "d"),
                 names = listOf(),
                 geometry = listOf(GeometryType.POINT),
-            )))
+            ), isStillSamePlace = false))
         )
     }
 }

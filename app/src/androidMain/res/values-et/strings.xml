@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Privaatsus"</string>
     <string name="quest_openingHours_public_holidays">"Riiklikud pühad"</string>
     <string name="quest_openingHours_public_holidays_short">"Rp"</string>
-    <string name="quest_openingHours_open_end">"Avatud kuni vaja"</string>
     <string name="quest_openingHours_answer_247">"Alati avatud"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Sõltub kuust…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Pole regulaarseid lahtiolekuaegu"</string>
@@ -110,7 +109,6 @@ Enne muudatuste üleslaadimist rakendus kontrollib minu serveris seda &lt;a href
     <string name="quest_surface_value_sett">"Munakivid (tahutud, kandilised)"</string>
     <string name="quest_surface_value_wood">"Puit"</string>
     <string name="quest_sidewalk_title">"Kas sellel teel on kõnnitee?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Kus see tänav asub?"</string>
     <string name="quest_address_title">"Mis on selle maja number?"</string>
     <string name="store_listing_short_description">"Rakendus OpenStreetMapi parandamiseks"</string>
     <string name="store_listing_full_description">"Aita StreetComplete'i abil OpenStreetMapi täiendada!
@@ -177,9 +175,6 @@ Sinu sisestatud teave lisatakse sinu kasutajakonto nimel otse, ilma vahepealse t
     <string name="quest_maxspeed_answer_noSign_confirmation">"Kas sa kontrollisid tee otspunkte?
 Kui esiletõstetud teelõigul pole kogu tee ulatuses piirkiiruse liiklusmärke, siis kehtib vaikimisi piirkiirus."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Jah, kiiruspiirangu märki pole"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Asulateedel on väiksem vaikimisi piirkiirus, kui väljaspool asulaid."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Asula"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Väljaspool asulat"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Kui ristumisel peateega on selline liiklusmärk, siis sa piirkonna sees ei pruugi leida täiendavaid liiklusmärke - antud liiklusmärk käib ju kogu ala kohta."</string>
     <string name="quest_sport_softball">"Pehmepall"</string>
     <string name="quest_sport_racquet">"Racquet-pall"</string>
@@ -213,7 +208,6 @@ Vastasel juhul saad rakendustepoest laadida alla vajaliku klahvistikurakenduse. 
     <string name="credits_contributors_title">"Kaasautorid koodi kirjutamisel"</string>
     <string name="credits_author_title">"Autor ja haldaja"</string>
     <string name="quest_maxspeed_answer_living_street">"See on õueala tee"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Kas liiklusmärk on sarnane?"</string>
     <string name="quest_orchard_produce_title">"Mida siin kasvatatakse?"</string>
     <string name="produce_grapes">"Viinamarju"</string>
     <string name="produce_agaves">"Agaave"</string>
@@ -285,7 +279,6 @@ Vastasel juhul saad rakendustepoest laadida alla vajaliku klahvistikurakenduse. 
     <string name="quest_buildingLevels_levelsLabel2">"tavalised korrused (katus ei loe)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Sõltub hoone osast"</string>
     <string name="quest_buildingLevels_answer_description">"Kui nii, siis lihtsalt pane hoone kõrgeima osa väärtused."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Kas vastupidised liiklussuunad on eraldatud barjääri või rohealaga? Vaikimisi piirkiirus sõltub sellest."</string>
     <string name="about_category_feedback">"Tagasiside"</string>
     <string name="quest_leave_new_note_photo">"Lisa foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Kas soovid pildi kustutada?"</string>
@@ -316,7 +309,6 @@ Vastasel juhul saad rakendustepoest laadida alla vajaliku klahvistikurakenduse. 
     <string name="quest_housenumber_conscription_number">"Sissekirjutuse number (CZ, SK, HU)"</string>
     <string name="quest_housenumber_street_number_optional">"Suunanumber (mittekohustuslik ja see pole postiindeks)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"Jalgrattarada ka teisel pool…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Palun märgi üles see, mida tööaegade sildil näed. Kui silti pole, siis palun astu sisse ja küsi teavet sealt."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"puudub, aga ratturid võivad põhiteel sõita mõlemas suunas"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Kui on olemas ligipääs ratastooliga, siis võid sarnast silti näha.
 Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse sõita ja seda kasutada, aga puuduvad käetoed, kohandatud kraanikauss ja muud lisatarvikud."</string>
@@ -451,7 +443,6 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="quest_openingHours_no_sign">"Tööaegade silti pole"</string>
     <string name="quest_buildingType_sports_centre">"Spordikeskus"</string>
     <string name="quest_buildingType_toilets">"Tualettruumid"</string>
-    <string name="quest_maxspeed_sign_question">"Mis määrab kiiruspiirangu?"</string>
     <string name="quest_segregated_title">"Kuidas jalgtee ja rattarada siin paiknevad?"</string>
     <string name="dialog_tutorial_upload">"Kui soovid oma muudatused käsitsi üles laadida, siis kasuta tööribal asuvat nuppu, mis näeb välja nii:"</string>
     <string name="quest_segregated_separated">"Nad on üksteisest eraldatud"</string>
@@ -466,7 +457,6 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="privacy_html_image_upload2">"&lt;p&gt;Märkusele lisatud foto laaditakse minu serverisse ja kustutatakse paar päeva peale märkuse lahendamist/sulgemist. Rakendus eemaldab enne üleslaadimist fotost kõik metainfo.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Tühista kõik valikud"</string>
     <string name="quest_buildingType_retail_description">"sealhulgas restoranide, kohvikute, poodide hooned..."</string>
-    <string name="quest_openingHours_timeSelect_next">"Edasi"</string>
     <string name="quest_tracktype_title">"Mis on selle tee pinnakatte tugevus?"</string>
     <string name="quest_tracktype_grade1">"Kõva ja sillutatud"</string>
     <string name="quest_tracktype_grade4">"Peamiselt pehme: suurem osa muld, liiv või rohi, osaliselt kõva pinnas"</string>
@@ -492,7 +482,6 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="action_open_location">"Ava asukoht muus rakenduses"</string>
     <string name="map_application_missing">"Nutiseadmes pole ühtegi teist kaardirakendust"</string>
     <string name="label_housenumber">"maja number"</string>
-    <string name="label_blocknumber">"majadegrupi numper"</string>
     <string name="quest_busStopShelter_covered">"Kogu peatus on kaetud"</string>
     <string name="quest_ferry_pedestrian_title">"Kas see praamiliin teenindab jalakäijaid?"</string>
     <string name="quest_ferry_motor_vehicle_title">"Kas see praamiliin teenindab mootorsõidukeid?"</string>
@@ -525,7 +514,6 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="quest_recycling_type_glass_bottles">"Klaaspudelid ja purgid"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Pudelid ja purgid"</string>
     <string name="quest_recycling_type_paper">"Paber"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plastik"</string>
     <string name="quest_recycling_type_plastic">"Igasugune plastik"</string>
     <string name="quest_recycling_type_shoes">"Kingad"</string>
     <string name="quest_recycling_type_electric_appliances">"Elektriseadmed"</string>
@@ -691,7 +679,6 @@ tasemeid"</string>
     <string name="at_housenumber">"majanumber %s"</string>
     <string name="quest_openingHours_add_off_days">"Lisa vabad päevad"</string>
     <string name="quest_openingHours_off_day">"Vaba päev"</string>
-    <string name="quest_openingHours_unspecified_range">"Määratlemata"</string>
     <string name="quest_cycleway_resurvey_title">"Kas rattasõiduvõimalused on jätkuvalt samad?"</string>
     <string name="pref_title_resurvey_intervals">"Kordusvaatluse sagedus"</string>
     <string name="resurvey_intervals_less_often">"Harvemini"</string>
@@ -702,7 +689,6 @@ tasemeid"</string>
     <string name="quest_oneway2_title">"Kas see on ühesuunaline tänav? Kui jah, siis mis suunas?"</string>
     <string name="quest_oneway2_dir">"Ühesuunaline selles suunas"</string>
     <string name="quest_oneway2_no_oneway">"Pole ühesuunaline"</string>
-    <string name="quest_maxweight_select_sign">"Vali märk"</string>
     <string name="quest_steps_incline_title">"Mis suund viib sellel trepil ülespoole?"</string>
     <string name="quest_steps_incline_up">"See suund viib üles"</string>
     <string name="quest_step_count_title">"Mitu trepiastet siin leidub?"</string>
@@ -790,7 +776,6 @@ Palub vaata hoolega kõiki valikuid: mõned neist pole esimesel pilgul ilmselged
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"Šoti kroon"</string>
     <string name="quest_buildingType_fire_station">"Päästeteenistuse depoo"</string>
     <string name="quest_recycling_type_beverage_cartons">"Vaid joogipakid"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Vaid plastikpudeli ja joogipakid"</string>
     <string name="team_mode">"Sisene tiimitöö režiimi"</string>
     <string name="team_mode_exit">"Välju tiimitöö režiimist"</string>
     <string name="team_mode_description">"Kui rühmaga kaardistate sama piirkonda, siis sa võid avada tiimitöö režiimi, mispuhul ülesanded jagatakse tiimi vahel.
@@ -1142,13 +1127,8 @@ Kui sama on ka teisel teepoolel, siis korda tegevust."</string>
     <string name="quest_camp_drinking_water_title">"Kas joogivesi on laagripaigas peatujatele vabalt saadaval?"</string>
     <string name="quest_camp_shower_title">"Kas siin on dušširuumid?"</string>
     <string name="quest_camp_power_supply_title">"Kas külaliste kasutuses on pistikupesad?"</string>
-    <string name="quest_camp_type_title">"Kes võivad siin laagripaigas peatuda?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Nii telkijad, matkaautod kui haagissuvilad…"</string>
-    <string name="quest_camp_type_caravans_only">"Vaid matkaautod ja haagissuvilad…"</string>
-    <string name="quest_camp_type_tents_only">"Vaid telkijad"</string>
     <string name="quest_camp_type_backcountry">"Kämping kõnnumaal (teenused puuduvad)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Diameeter tundub ebaloogiline, tavaliselt see jääb %1$d ja %2$d vahele."</string>
-    <string name="quest_recycling_type_pet">"Vaid PET-plastikust pudelid ja pakid"</string>
     <string name="street_parking_street_width">"Tänava laius: %1$s"</string>
     <string name="overlay_street_parking">"Parkimine tänaval"</string>
     <string name="link_ohsomehex_description">"Uuri OSMi andmeid ajas ja ruumis alates väga suurest üldpildist kuni üksikute objektideni"</string>
@@ -1237,9 +1217,6 @@ Kas nihutame kohe?"</string>
     <string name="street_parking_staggered_half_on_kerb">"Osaliselt tänaval vaheldumisi pooltel"</string>
     <string name="quest_traffic_signals_sound_description">"Vihje: vaata, kas märkad väikeseid kõlareid. Lisaks ei pruugi helisignaalide käivitamine alati toimida nupuvajutusega."</string>
     <string name="quest_presets_duplicate">"Tee duplikaat"</string>
-    <string name="label_block">"plokk"</string>
-    <string name="quest_address_answer_block">"See on kvartali piires…"</string>
-    <string name="quest_address_answer_no_block">"See pole kvartali piires…"</string>
     <string name="quest_surface_value_mud">"Alatine muda"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Siin pole tualettruumi"</string>
     <string name="unknown_surface_title">"Muu pinnakate"</string>
@@ -1470,4 +1447,63 @@ Näiteks 1,3 või 2b,4,6."</string>
     <string name="quest_first_aid_kit_location">"Kus asub esmaabikomplekt?"</string>
     <string name="quest_lane_markings_title">"Kas sellel teel on sõiduread märgitud?"</string>
     <string name="quest_level_thing_title">"Mis korrusel see objekt asub?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"Kui mitut jalgratast saab siin samaaegselt laadida?"</string>
+    <string name="quest_charging_station_bicycles_title">"Kas siin saab ka laadida jalgrattaid?"</string>
+    <string name="quest_charging_station_bicycles_hint">"Jalgratta laadimiskaabli pistikuid saab ühendada tavalistesse soklitesse."</string>
+    <string name="quest_tower_access_title">"Kes võivad siia torni siseneda? Pääs võib olla tasuta või tasuline."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"See on vaid jalgrataste jaoks"</string>
+    <string name="quest_recycling_type_pet_bottles">"Plastpudelid"</string>
+    <string name="quest_maxweight_add_sign">"Lisa silt"</string>
+    <string name="quest_maxweight_remove_sign">"Eemalda silt"</string>
+    <string name="weekly_osm_new_edition_title">"Uus versioon!"</string>
+    <string name="pref_title_messages">"Rakendusesisesed sõnumid"</string>
+    <string name="pref_title_message_achievements">"Avamata saavutused"</string>
+    <string name="pref_title_message_weekly_osm">"weeklyOSM-i uued versioonid"</string>
+    <string name="pref_title_message_changelog">"Rakenduse uued versioonid"</string>
+    <string name="label_block2">"linnakvartal"</string>
+    <string name="quest_address_answer_block2">"Ta asub linnakvartali piires…"</string>
+    <string name="quest_address_answer_no_block2">"Ta ei asu linnakvartali piires…"</string>
+    <string name="quest_artwork_title">"Missuguse kunstiteosega on siin tegemist?"</string>
+    <string name="quest_artwork_sculpture">"Skulptuur"</string>
+    <string name="quest_artwork_statue">"Ausammas"</string>
+    <string name="quest_artwork_mural">"Seinamaal"</string>
+    <string name="quest_artwork_graffiti">"Grafiti"</string>
+    <string name="quest_artwork_installation">"Kunstiinstallatsioon"</string>
+    <string name="quest_artwork_bust">"Rinnakuju/büst"</string>
+    <string name="quest_artwork_stone">"Kunstilisel eesmärgil töödeldud kivi"</string>
+    <string name="quest_artwork_painting">"Maal"</string>
+    <string name="quest_artwork_street_art">"Muu tänavakunst"</string>
+    <string name="quest_artwork_architecture">"Arhitektuuriteos"</string>
+    <string name="quest_artwork_mosaic">"Mosaiik"</string>
+    <string name="quest_artwork_relief">"Reljeef/bareljeef"</string>
+    <string name="quest_artwork_fountain">"Purskkaev"</string>
+    <string name="quest_bothway_title">"Mis suunas saad sellega sõita?"</string>
+    <string name="quest_camp_tent_title">"Kas siin saab telgiga laagrisse jääda?"</string>
+    <string name="quest_camp_cabin_title">"Kas siin leidub majakesi, kus saab elada?"</string>
+    <string name="quest_camp_caravan_title">"Kas siin saab matkaauto või sarnase järelhaagisega laagrisse jääda?"</string>
+    <string name="quest_ferry_bicycle_title">"Kas jalgrattad on sellele praamile lubatud?"</string>
+    <string name="quest_openingHours_add_time">"Lisa tööaeg"</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">"Vali algus"</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">"Vali lõpp"</string>
+    <string name="quest_openingHours_chooseTimeTitle">"Vali tööaeg"</string>
+    <string name="quest_openingHours_no_fixed_end">"Kindlat tööaja lõppu pole"</string>
+    <string name="quest_openingHours_from">"alates %1$s"</string>
+    <string name="quest_openingHours_until_late">"%1$s kuni mingi ajani"</string>
+    <string name="quest_collectionTimes_answer_time_spans">"Ajavahemikus…"</string>
+    <string name="quest_collectionTimes_answer_time_points">"Kindlatel aegadel…"</string>
+    <string name="quest_shower_hot_water_title">"Kas siin on soe vesi saadaval?"</string>
+    <string name="calendar_new_event_title">"Sinu piirkonnas toimub uus OSM-i sündmus!"</string>
+    <string name="pref_title_message_calendar">"Uued OSM-i sündmused sinu piirkonnas"</string>
+    <string name="quest_ferry_hgv_title">"Kas see praamiliin lubab raskeveokite ülevedu?"</string>
+    <string name="dialog_dont_notify_again2">"Lõpeta tellimus"</string>
+    <string name="quest_leave_new_note_track_recording">"Raja salvestus saab olema lisatud."</string>
+    <string name="quest_leave_new_note_photo_delete">"Kustuta"</string>
+    <string name="quest_maxspeed_type_description">"Kiiruspiirangut määratleb…"</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">"Soovitatava piirkiiruse märk"</string>
+    <string name="quest_maxspeed_answer_roadtype_description">"Tänav on…"</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">"ehitiste piirkonnas"</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">"väljaspool ehitiste piirkonda"</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">"valgustatud"</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">"pole valgustatud"</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">"Pole valgustatud ja kaherealine tänav"</string>
 </resources>

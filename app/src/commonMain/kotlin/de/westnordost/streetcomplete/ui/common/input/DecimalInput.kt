@@ -30,7 +30,7 @@ import de.westnordost.streetcomplete.ui.common.colors
 import de.westnordost.streetcomplete.ui.common.getContentPadding
 import de.westnordost.streetcomplete.ui.common.shape
 import de.westnordost.streetcomplete.util.locale.NumberFormatter
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 import kotlin.math.absoluteValue
 
 /**

@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Declaración de privacidad</string>
     <string name="quest_openingHours_public_holidays">Feriados</string>
     <string name="quest_openingHours_public_holidays_short">Feriados</string>
-    <string name="quest_openingHours_open_end">Hora de cierre flexible</string>
     <string name="quest_openingHours_answer_247">Abierto todo el día</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Depende del mes…</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Sin horario de apertura fijo…</string>
@@ -106,7 +105,6 @@ Sin embargo, antes de subir cualquier cambio, la aplicación comprueba si la ver
     <string name="quest_surface_value_sett">Adoquín de piedra natural</string>
     <string name="quest_surface_value_wood">Madera</string>
     <string name="quest_sidewalk_title">¿La calle tiene vereda?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">¿Dónde está la calle?</string>
     <string name="quest_address_title">¿Cuál es el número de este edificio?</string>
     <string name="store_listing_short_description">App para mapear en OpenStreetMap</string>
     <string name="store_listing_full_description">¡Ayudá a mejorar OpenStreetMap con StreetComplete!
@@ -173,9 +171,6 @@ La información que agregues se sube directamente a OpenStreetMap con tu nombre,
     <string name="quest_maxspeed_answer_noSign_confirmation">¿Miraste a ambos lados de la calle?
 Si no hay carteles en la parte seleccionada se usarán los límites de velocidad generales.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Lo miré, no hay cartel</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Los caminos urbanos tienen un límite de velocidad distinto al de los rurales.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Dentro de la ciudad</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Fuera de la ciudad</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Si hay un cartel como este en la intersección con la calle principal no encontrarás otros carteles porque el límite de velocidad es el mismo en toda la zona.
 </string>
     <string name="quest_sport_softball">Sóftbol</string>
@@ -210,7 +205,6 @@ Pero recordá que siempre podés descargar aplicaciones de teclado alternativas 
     <string name="credits_contributors_title">Aportaciones de código</string>
     <string name="credits_author_title">Autor y encargado principal</string>
     <string name="quest_maxspeed_answer_living_street">Es una calle peatonal</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">¿Hay un cartel como este?</string>
     <string name="quest_orchard_produce_title">¿Qué es lo que se cultiva acá?</string>
     <string name="produce_grapes">Uvas</string>
     <string name="produce_agaves">Agaves</string>
@@ -282,7 +276,6 @@ Pero recordá que siempre podés descargar aplicaciones de teclado alternativas 
     <string name="quest_buildingLevels_levelsLabel2">pisos regulares (sin contar el techo)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">el número de pisos no es uniforme</string>
     <string name="quest_buildingLevels_answer_description">En ese caso limitate a poner el piso de la parte más alta del edificio.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">¿Sabés si las calzadas están separadas entre sí? (ejemplo: por una barrera) El límite de velocidad estándar es distinto si es el caso.</string>
     <string name="about_category_feedback">Sugerencias</string>
     <string name="quest_leave_new_note_photo">Adjuntar foto</string>
     <string name="quest_leave_new_note_photo_delete_title">¿Querés borrar esta imagen?</string>
@@ -313,7 +306,6 @@ Pero recordá que siempre podés descargar aplicaciones de teclado alternativas 
     <string name="quest_housenumber_conscription_number">Número de «conscripción»</string>
     <string name="quest_housenumber_street_number_optional">Número de «orientación» (opcional)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">El carril bici va en ambos sentidos…</string>
-    <string name="quest_openingHours_emptyAnswer">Describí lo que dice el cartel. Si no ves nada podés preguntar los horarios adentro.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">no hay nada, pero los ciclistas pueden ir por ambos sentidos del camino</string>
     <string name="quest_wheelchairAccess_description_toilets">Un cartel con una silla de ruedas como el que ves puede indicar que los baños están adaptados.
 Parcial significa que se puede entrar con la silla y usar los baños, pero sin barrales ni lavabos especiales.</string>
@@ -448,7 +440,6 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="quest_openingHours_no_sign">El horario no está escrito</string>
     <string name="quest_buildingType_sports_centre">Centro deportivo</string>
     <string name="quest_buildingType_toilets">Baños</string>
-    <string name="quest_maxspeed_sign_question">¿Qué define el límite de velocidad?</string>
     <string name="quest_segregated_title">¿Cómo están dispuestos acá el camino peatonal y el carril bici?</string>
     <string name="dialog_tutorial_upload">Para subir tus cambios manualmente, usá el botón del menú principal que se ve así.</string>
     <string name="quest_segregated_separated">Separados el uno del otro</string>
@@ -463,7 +454,6 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="privacy_html_image_upload2">&lt;p&gt;Las fotos que adjuntes a una nota se suben a mi servidor y se borran en cuestión de días tras su resolución. No se incluye ningún metadato en las fotos subidas.&lt;/p&gt;</string>
     <string name="action_deselect_all">Deseleccionar todo</string>
     <string name="quest_buildingType_retail_description">incluyendo edificios para restaurantes, cafés…</string>
-    <string name="quest_openingHours_timeSelect_next">Siguiente</string>
     <string name="quest_tracktype_title">¿Cuál es el nivel de rugosidad de este camino?</string>
     <string name="quest_tracktype_grade1">Firme</string>
     <string name="quest_tracktype_grade4">Bastante suave, un poco suelto</string>
@@ -489,7 +479,6 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="action_open_location">Abrir lugar en otra app</string>
     <string name="map_application_missing">No hay otra aplicación para mapas instalada</string>
     <string name="label_housenumber">número de casa</string>
-    <string name="label_blocknumber">número de manzana</string>
     <string name="quest_busStopShelter_covered">Toda la parada está cubierta</string>
     <string name="quest_ferry_pedestrian_title">¿Transporta personas?</string>
     <string name="quest_ferry_motor_vehicle_title">¿Transporta vehículos motorizados?</string>
@@ -522,7 +511,6 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="quest_recycling_type_glass_bottles">Botellas y frascos de vidrio</string>
     <string name="quest_recycling_type_glass_bottles_short">Botellas y frascos</string>
     <string name="quest_recycling_type_paper">Papel</string>
-    <string name="quest_recycling_type_plastic_generic">Plástico</string>
     <string name="quest_recycling_type_plastic">Cualquier plástico</string>
     <string name="quest_recycling_type_shoes">Zapatos</string>
     <string name="quest_recycling_type_electric_appliances">Electrodomésticos</string>
@@ -685,7 +673,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="at_housenumber">número de casa %1$s</string>
     <string name="quest_openingHours_add_off_days">Agregar días libres</string>
     <string name="quest_openingHours_off_day">Día libre</string>
-    <string name="quest_openingHours_unspecified_range">Sin especificar</string>
     <string name="quest_cycleway_resurvey_title">¿El carril bici sigue bien marcado?</string>
     <string name="pref_title_resurvey_intervals">Repreguntar para mantener los datos al día</string>
     <string name="resurvey_intervals_less_often">Repreguntar con menos frecuencia</string>
@@ -696,7 +683,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_oneway2_title">¿Es una calle de un solo sentido? ¿En qué dirección?</string>
     <string name="quest_oneway2_dir">Dirección única en esta dirección</string>
     <string name="quest_oneway2_no_oneway">No es de una sola dirección</string>
-    <string name="quest_maxweight_select_sign">Elegí un cartel</string>
     <string name="quest_steps_incline_title">¿En qué dirección sube la escalera?</string>
     <string name="quest_steps_incline_up">Sube en esta dirección</string>
     <string name="quest_step_count_title">¿Cuántos escalones hay?</string>
@@ -781,7 +767,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_postboxRoyalCypher_type_scottish_crown">La corona de Escocia</string>
     <string name="quest_buildingType_fire_station">Estación de bomberos</string>
     <string name="quest_recycling_type_beverage_cartons">Solo cajas de bebidas</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Solo botellas y cajas de plástico</string>
     <string name="team_mode">Modo equipo</string>
     <string name="team_mode_exit">Salir del modo equipo</string>
     <string name="team_mode_description">Al mapear una zona en grupo, pueden usar el modo equipo para repartir las misiones. Así, cada miembro verá misiones diferentes.</string>
@@ -1131,13 +1116,8 @@ También podés dejar una nota (con foto).</string>
     <string name="quest_camp_drinking_water_title">¿Hay agua potable gratuita para los huéspedes aquí?</string>
     <string name="quest_camp_shower_title">¿Tienen duchas?</string>
     <string name="quest_camp_power_supply_title">¿Los clientes pueden cargar sus celulares y dispositivos electrónicos?</string>
-    <string name="quest_camp_type_title">¿Quién puede acampar acá?</string>
-    <string name="quest_camp_type_tents_and_caravans">Tanto carpas como casas rodantes, motorhomes, …</string>
-    <string name="quest_camp_type_caravans_only">Solo casas rodantes, motorhomes, ...</string>
-    <string name="quest_camp_type_tents_only">Solo carpas</string>
     <string name="quest_camp_type_backcountry">Campamento al aire libre (sin instalaciones)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Este diámetro no parece muy realista, suele estar entre %1$d y %2$d.</string>
-    <string name="quest_recycling_type_pet">Solo polietileno</string>
     <string name="street_parking_street_width">Ancho de la calle: %1$s</string>
     <string name="overlay_street_parking">Estacionamiento</string>
     <string name="link_ohsomehex_description">Explorá datos de OSM a distintas escalas: desde el panorama general hasta objetos individuales.</string>
@@ -1225,9 +1205,6 @@ También podés dejar una nota (con foto).</string>
     <string name="street_parking_staggered_half_on_kerb">Alternándose a ambos lados de la calzada, ocupando solo parte del camino</string>
     <string name="quest_traffic_signals_sound_description">Consejo: Buscá altavoces, tené en cuenta que hay otras señales auditivas más allá de las de apretar un botón.</string>
     <string name="quest_presets_duplicate">Duplicar</string>
-    <string name="label_block">manzana</string>
-    <string name="quest_address_answer_block">Está en una manzana</string>
-    <string name="quest_address_answer_no_block">No está en una manzana</string>
     <string name="quest_surface_value_mud">Embarrado todo el año</string>
     <string name="quest_wheelchairAccessPat_noToilet">Acá no hay ningún baño</string>
     <string name="unknown_surface_title">Otro tipo de superficie</string>
@@ -1433,4 +1410,72 @@ Un nivel cuenta como altura del techo cuando sus ventanas están en el techo. Po
     <string name="compass">Brújula</string>
     <string name="quest_tracktype_grade2">Mayormente firme</string>
     <string name="quest_tracktype_grade3">Mixto</string>
+    <string name="quest_housenumber_multiple_numbers_description2">Podés ingresar números de casa separados por comas.
+Por ejemplo 1,3 o 2b,4,6.</string>
+    <string name="quest_drinking_water_potable_unsigned2">Sin letrero</string>
+    <string name="or">o</string>
+    <string name="action_copy">Copiar</string>
+    <string name="quest_stopName_hint">Podés aplicar el mismo nombre que otra parada tocándola en el mapa.</string>
+    <string name="quest_shelter_capacity_title">¿Cuántas personas pueden dormir acá?</string>
+    <string name="quest_handwashing_title">¿Podés lavarte las manos acá?</string>
+    <string name="quest_openingHours_delete">Eliminar</string>
+    <string name="quest_streetName_hint">Podés aplicar el mismo nombre que una sección adyacente tocándola en el mapa.</string>
+    <string name="quest_streetName_abbreviation_instruction">Las abreviaturas, como por ejemplo “Av.”, deben escribirse completas.</string>
+    <string name="quest_streetName_add_language">Agregar idioma</string>
+    <string name="ok">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="quest_aerialway_bicycle_title">¿Este teleférico transporta bicicletas?</string>
+    <string name="quest_aerialway_bicycle_summer">Solo en verano</string>
+    <string name="quest_board_type_rules">Reglas</string>
+    <string name="quest_firewood_provided_title">¿Se proporciona leña acá?</string>
+    <string name="quest_first_aid_kit_location">¿Dónde se encuentra este botiquín de primeros auxilios?</string>
+    <string name="quest_lane_markings_title">¿Esta vía tiene marcas de carriles?</string>
+    <string name="quest_level_thing_title">¿En qué número de nivel se encuentra esto?</string>
+    <string name="quest_bicycle_charging_station_capacity_title">¿Cuántas bicicletas se pueden cargar acá al mismo tiempo?</string>
+    <string name="quest_charging_station_bicycles_title">¿También se pueden cargar bicicletas acá?</string>
+    <string name="quest_charging_station_bicycles_hint">Los adaptadores de corriente para bicicletas se enchufan en tomas domésticas normales.</string>
+    <string name="quest_tower_access_title">¿Quién puede acceder a esta torre? Puede ser gratis o de pago.</string>
+    <string name="quest_charging_station_bicycles_answer_only">Es solo para bicicletas</string>
+    <string name="quest_recycling_type_pet_bottles">Botellas de PET</string>
+    <string name="quest_maxweight_add_sign">Agregar señal</string>
+    <string name="quest_maxweight_remove_sign">Eliminar señal</string>
+    <string name="weekly_osm_new_edition_title">¡Nueva edición!</string>
+    <string name="pref_title_messages">Mensajes en la aplicación</string>
+    <string name="pref_title_message_achievements">Logros desbloqueados</string>
+    <string name="pref_title_message_weekly_osm">Nuevas ediciones de weeklyOSM</string>
+    <string name="pref_title_message_changelog">Nuevas versiones de la app</string>
+    <string name="label_block2">Manzana</string>
+    <string name="quest_address_answer_block2">Está dentro de una manzana…</string>
+    <string name="quest_address_answer_no_block2">No está dentro de una manzana…</string>
+    <string name="quest_artwork_title">¿Qué tipo de obra de arte es esta?</string>
+    <string name="quest_artwork_sculpture">Escultura</string>
+    <string name="quest_artwork_statue">Estatua</string>
+    <string name="quest_artwork_mural">Mural</string>
+    <string name="quest_artwork_graffiti">Graffiti</string>
+    <string name="quest_artwork_installation">Instalación</string>
+    <string name="quest_artwork_bust">Busto</string>
+    <string name="quest_artwork_stone">Piedra</string>
+    <string name="quest_artwork_painting">Pintura</string>
+    <string name="quest_artwork_street_art">Otro arte callejero</string>
+    <string name="quest_artwork_architecture">Arquitectura</string>
+    <string name="quest_artwork_mosaic">Mosaico</string>
+    <string name="quest_artwork_relief">Relieve</string>
+    <string name="quest_artwork_fountain">Fuente</string>
+    <string name="quest_bothway_title">¿En qué sentido se puede circular por acá?</string>
+    <string name="quest_camp_tent_title">¿Se puede acampar acá con carpa?</string>
+    <string name="quest_camp_cabin_title">¿Hay cabañas donde alojarse acá?</string>
+    <string name="quest_camp_caravan_title">¿Se puede acampar acá en casa rodante o motorhome?</string>
+    <string name="quest_ferry_bicycle_title">¿Se permiten bicicletas en este ferry?</string>
+    <string name="quest_openingHours_add_time">Agregar horario</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">Seleccionar hora de inicio</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">Seleccionar hora de cierre</string>
+    <string name="quest_openingHours_chooseTimeTitle">Seleccionar hora</string>
+    <string name="quest_openingHours_no_fixed_end">sin hora de cierre fija</string>
+    <string name="quest_openingHours_from">desde %1$s</string>
+    <string name="quest_openingHours_until_late">%1$s hasta tarde</string>
+    <string name="quest_collectionTimes_answer_time_spans">Dentro de una franja horaria…</string>
+    <string name="quest_collectionTimes_answer_time_points">En horarios específicos…</string>
+    <string name="quest_shower_hot_water_title">¿Hay agua caliente acá?</string>
+    <string name="calendar_new_event_title">¡Nuevo evento de OSM en tu zona!</string>
+    <string name="pref_title_message_calendar">Nuevos eventos de OSM en tu zona</string>
 </resources>

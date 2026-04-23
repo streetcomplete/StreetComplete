@@ -10,17 +10,23 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val metadataModule = module {
+    val dir = "composeResources/de.westnordost.streetcomplete.resources/files/"
+
     single { NameSuggestionsSource(get()) }
     single { CountryInfos(get()) }
     single<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")) {
         lazy {
-            val source = get<AssetManager>().open("boundaries.ser").asSource().buffered()
+            val source = get<AssetManager>().open(dir + "boundaries.ser").asSource().buffered()
             CountryBoundaries.deserializeFrom(source)
         }
     }
     single<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")) {
         lazy {
-            FeatureDictionary.create(get<AssetManager>(), "osmfeatures/default", "osmfeatures/brands")
+            FeatureDictionary.create(
+                assetManager = get<AssetManager>(),
+                presetsBasePath = dir + "osmfeatures/default",
+                brandPresetsBasePath = dir + "osmfeatures/brands"
+            )
         }
     }
 }

@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">Privasi</string>
     <string name="quest_openingHours_public_holidays">Hari libur nasional</string>
     <string name="quest_openingHours_public_holidays_short">LN</string>
-    <string name="quest_openingHours_open_end">hanya tutup setelah pelanggan terakhir pergi</string>
     <string name="quest_openingHours_answer_247">Buka 24 jam</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">Bergantung sesuai bulan...</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">Tidak ada jam buka yang tetap...</string>
@@ -111,7 +110,6 @@ Namun, sebelum perubahan kamu diunggah, aplikasi diperiksa dengan &lt;a href="ht
     <string name="quest_surface_value_sett">Berangkal</string>
     <string name="quest_surface_value_wood">Kayu</string>
     <string name="quest_sidewalk_title">Apa jalan ini memiliki trotoar?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Jalan ini ada di mana?</string>
     <string name="quest_address_title">Nomor berapa bangunan ini?</string>
     <string name="store_listing_short_description">Aplikasi surveyor OpenStreetMap</string>
     <string name="store_listing_full_description">Bantu sempurnakan OpenStreetMap dengan StreetComplete!
@@ -178,9 +176,6 @@ Informasi yang dimasukkan langsung ditambahkan ke OpenStreetMap atas namamu, tan
     <string name="quest_maxspeed_answer_noSign_confirmation">Apa kamu sudah memeriksa ujung jalan?
 Jika tidak ada tanda di sepanjang jalan yang berlaku untuk bagian yang disorot, batas kecepatan standar berlaku.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Ya, tanpa rambu</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Jalan yang dibangun di area padat bangunan batas kecepatannya lebih rendah dibandingkan jalan pedesaan.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Area padat bangunan (kota)</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Pedesaan</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Jika ada tanda seperti ini di persimpangan jalan utama, kamu tidak akan menemukan rambu satuan di daerah ini karena batas kecepatan itu dipakai untuk seluruh daerah tersebut.</string>
     <string name="quest_sport_softball">Sofbal</string>
     <string name="quest_sport_racquet">Bola raket</string>
@@ -214,7 +209,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="credits_contributors_title">Kontributor kode</string>
     <string name="credits_author_title">Pencipta dan pemelihara</string>
     <string name="quest_maxspeed_answer_living_street">Ini adalah jalan tinggal</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Jadi, ada rambu seperti ini?</string>
     <string name="quest_orchard_produce_title">Apa yang dibudidayakan di sini?</string>
     <string name="produce_grapes">Anggur</string>
     <string name="produce_agaves">Agave</string>
@@ -286,7 +280,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="quest_buildingLevels_levelsLabel2">Jumlah lantai (atap tidak dihitung)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Beda tiap bagian bangunan</string>
     <string name="quest_buildingLevels_answer_description">Kalau begitu, cukup masukkan nilai lantai paling tinggi.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Apakah masing-masing arah pada jalan ini dipisahkan pembatas fisik atau rumput? Batas kecepatan bawaan bergantung pada ini.</string>
     <string name="about_category_feedback">Umpan balik</string>
     <string name="quest_leave_new_note_photo">Lampirkan foto</string>
     <string name="quest_leave_new_note_photo_delete_title">Hapus gambar ini?</string>
@@ -317,7 +310,6 @@ Jika tidak, kamu dapat mengunduh papan ketik lain di app store. Papan ketik popu
     <string name="quest_housenumber_conscription_number">Nomor rumah</string>
     <string name="quest_housenumber_street_number_optional">Nomor orientasi (opsional)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Jalur sepeda di sisi lain juga…</string>
-    <string name="quest_openingHours_emptyAnswer">Kamu perlu menjelaskan apa yang ada di tanda. Jika tidak ada tanda, kamu harus bertanya jam bukanya ke dalam.</string>
     <string name="quest_cycleway_value_none_but_no_oneway">tidak ada, tetapi pesepeda boleh menggunakan jalan di dua arah</string>
     <string name="quest_wheelchairAccess_description_toilets">Tanda kursi roda seperti ini mungkin terlihat apabila toilet dapat diakses.
 Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegangan tangan atau cuci tangan khusus.</string>
@@ -452,7 +444,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="quest_openingHours_no_sign">Tidak ada tanda jam buka</string>
     <string name="quest_buildingType_sports_centre">Pusat olahraga</string>
     <string name="quest_buildingType_toilets">Toilet</string>
-    <string name="quest_maxspeed_sign_question">Apa yang menandai batas kecepatan?</string>
     <string name="quest_segregated_title">Bagaimana trotoar dan jalan sepeda ditata di sini?</string>
     <string name="dialog_tutorial_upload">Untuk mengunggah perubahanmu scr manual, gunakan tombol di toolbar yang terlihat seperti ini.</string>
     <string name="quest_segregated_separated">Terpisah dari yang lain</string>
@@ -467,7 +458,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="privacy_html_image_upload2">&lt;p&gt;Foto yang kamu lampirkan ke catatan diunggah ke serverku dan dihapus beberapa hari setelah catatan diselesaikan. Metadata foto dihapus sebelum diunggah.&lt;/p&gt;</string>
     <string name="action_deselect_all">Batalkan pilihan</string>
     <string name="quest_buildingType_retail_description">termasuk bangunan untuk restoran, kafe, …</string>
-    <string name="quest_openingHours_timeSelect_next">Lanjut</string>
     <string name="quest_tracktype_title">Apa tingkat kepadatan jalan ini?</string>
     <string name="quest_tracktype_grade1">Padat</string>
     <string name="quest_tracktype_grade4">Sebagian lemah</string>
@@ -493,7 +483,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="action_open_location">Buka lokasi di aplikasi lain</string>
     <string name="map_application_missing">Tidak ada aplikasi peta lain terinstal</string>
     <string name="label_housenumber">nomor rumah</string>
-    <string name="label_blocknumber">nomor blok</string>
     <string name="quest_busStopShelter_covered">Seluruhnya tertutup</string>
     <string name="quest_ferry_pedestrian_title">Apa rute feri ini mengantar pejalan kaki?</string>
     <string name="quest_ferry_motor_vehicle_title">Apa rute feri ini mengantar kendaraan bermotor?</string>
@@ -527,7 +516,6 @@ Pisah sekarang?</string>
     <string name="quest_recycling_type_glass_bottles">Botol kaca dan toples</string>
     <string name="quest_recycling_type_glass_bottles_short">Botol dan toples</string>
     <string name="quest_recycling_type_paper">Kertas</string>
-    <string name="quest_recycling_type_plastic_generic">Plastik</string>
     <string name="quest_recycling_type_plastic">Plastik apa saja</string>
     <string name="quest_recycling_type_shoes">Sepatu</string>
     <string name="quest_recycling_type_electric_appliances">Alat elektronik</string>
@@ -689,7 +677,6 @@ Data ini tidak hanya berguna untuk pengirim pos tapi juga untuk sistem navigasi 
     <string name="at_housenumber">nomor rumah %1$s</string>
     <string name="quest_openingHours_add_off_days">Tambahkan hari libur</string>
     <string name="quest_openingHours_off_day">Hari libur</string>
-    <string name="quest_openingHours_unspecified_range">Tidak ditetapkan</string>
     <string name="quest_cycleway_resurvey_title">Apakah situasi bersepeda masih seperti ini di sini?</string>
     <string name="pref_title_resurvey_intervals">Interval survei ulang</string>
     <string name="resurvey_intervals_less_often">Tanyakan lebih jarang</string>
@@ -700,7 +687,6 @@ Data ini tidak hanya berguna untuk pengirim pos tapi juga untuk sistem navigasi 
     <string name="quest_oneway2_title">Apakah jalan ini satu arah? Ke arah mana?</string>
     <string name="quest_oneway2_dir">Satu arah di jalan ini</string>
     <string name="quest_oneway2_no_oneway">Bukan satu-arah</string>
-    <string name="quest_maxweight_select_sign">Pilih tanda</string>
     <string name="quest_steps_incline_title">Arah mana yang naik ke atas pada tangga ini?</string>
     <string name="quest_steps_incline_up">Ini arah ke atas</string>
     <string name="quest_step_count_title">Ada berapa anak tangga di sini?</string>
@@ -788,7 +774,6 @@ Lihat semua opsi yang tersedia: beberapa kasus tidak terlihat jelas, seperti jal
     <string name="quest_postboxRoyalCypher_type_scottish_crown">Mahkota Skotlandia</string>
     <string name="quest_buildingType_fire_station">Stasiun damkar</string>
     <string name="quest_recycling_type_beverage_cartons">Hanya karton minuman</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">Hanya botol plastik dan karton</string>
     <string name="team_mode">Masuk ke Mode Kelompok</string>
     <string name="team_mode_exit">Tinggalkan Mode Kelompok</string>
     <string name="team_mode_description">Ketika memetakan daerah yang sama bersama-sama dalam sebuah kelompok, kamu bisa masuk ke mode kelompok untuk membagi pencarian ke semua anggota kelompok. Masing-masing akan melihat misi yang berbeda.</string>
@@ -1137,13 +1122,8 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto).</string>
     <string name="quest_camp_drinking_water_title">Apa air minum tersedia secara bebas ke orang yang berkemah di sini?</string>
     <string name="quest_camp_shower_title">Apa ada shower di sini?</string>
     <string name="quest_camp_power_supply_title">Apakah pelanggan dapat mengisi daya ponsel, laptop, dsb di sini?</string>
-    <string name="quest_camp_type_title">Siapa yang diizinkan untuk berkemah di sini?</string>
-    <string name="quest_camp_type_tents_and_caravans">Baik tenda maupun rumah mobil, trailer perjalanan,…</string>
-    <string name="quest_camp_type_caravans_only">Hanya rumah motor, trailer perjalanan,…</string>
-    <string name="quest_camp_type_tents_only">Hanya tenda</string>
     <string name="quest_camp_type_backcountry">Berkemah di pedalaman (tidak ada fasilitas)</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">Diameter ini terlihat tidak mungkin, biasanya antara %1$d hingga %2$d.</string>
-    <string name="quest_recycling_type_pet">Hanya PET</string>
     <string name="street_parking_street_width">Lebar jalan: %1$s</string>
     <string name="overlay_street_parking">Parkir jalanan</string>
     <string name="link_ohsomehex_description">Jelajahi data OSM lintas skala dari gambaran besar hingga objek individual melintasi ruang dan waktu</string>
@@ -1231,9 +1211,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto).</string>
     <string name="street_parking_staggered_half_on_kerb">Sebagian di jalan pada sisi bergantian</string>
     <string name="quest_traffic_signals_sound_description">Petunjuk: Carilah pengeras suara/speaker. Tak semua suara perlu diaktifkan melalui tombol.</string>
     <string name="quest_presets_duplicate">Duplikasi</string>
-    <string name="label_block">Blok</string>
-    <string name="quest_address_answer_block">Ini terletak di suatu blok…</string>
-    <string name="quest_address_answer_no_block">Ini tidak terletak di suatu blok…</string>
     <string name="quest_surface_value_mud">Lumpur yang persisten</string>
     <string name="quest_wheelchairAccessPat_noToilet">Tidak ada toilet di sini</string>
     <string name="unknown_surface_title">Jenis permukaan lainnya</string>

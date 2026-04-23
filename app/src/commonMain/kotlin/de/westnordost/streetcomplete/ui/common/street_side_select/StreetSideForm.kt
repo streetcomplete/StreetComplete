@@ -14,10 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.Sides
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.street_side_unknown
-import de.westnordost.streetcomplete.resources.street_side_unknown_l
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
+import de.westnordost.streetcomplete.ui.theme.divider
 import org.jetbrains.compose.resources.painterResource
 
 /** Form to input the something for the left and right side of a street */
@@ -37,6 +36,8 @@ import org.jetbrains.compose.resources.painterResource
     enabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
+    isLeftSideEnabled: Boolean = true,
+    isRightSideEnabled: Boolean = true,
 ) {
     val rotation = geometryRotation - mapRotation
 
@@ -58,8 +59,10 @@ import org.jetbrains.compose.resources.painterResource
             rotation = rotation,
             modifier = Modifier.align(Alignment.Center),
             getFloatingPainter = getFloatingPainter,
-            enabled = enabled,
+            isLeftSideEnabled = isLeftSideEnabled && enabled,
+            isRightSideEnabled = isRightSideEnabled && enabled,
             isLeftSideVisible = isLeftSideVisible,
+            isRightSideVisible = isRightSideVisible,
         )
 
         MiniCompass(
@@ -76,7 +79,7 @@ import org.jetbrains.compose.resources.painterResource
                     .padding(8.dp)
                     .align(Alignment.BottomStart)
                     .padding(lastPickedContentPadding),
-                chipBorder = BorderStroke(1.dp, MaterialTheme.colors.onSurface.copy(alpha = 0.12f)),
+                chipBorder = BorderStroke(1.dp, MaterialTheme.colors.divider),
                 chipContentPadding = PaddingValues.Zero,
             ) { value ->
                 StreetSideIllustration(
@@ -87,6 +90,7 @@ import org.jetbrains.compose.resources.painterResource
                     rotation = rotation,
                     modifier = Modifier.size(56.dp, 40.dp),
                     getFloatingPainter = getFloatingPainter,
+                    isLeftSideVisible = isLeftSideVisible,
                     isRightSideVisible = isRightSideVisible,
                 )
             }

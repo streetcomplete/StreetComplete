@@ -44,9 +44,7 @@ import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSelection
 import de.westnordost.streetcomplete.osm.street_parking.dialogPainter
 import de.westnordost.streetcomplete.osm.street_parking.painter
 import de.westnordost.streetcomplete.osm.street_parking.title
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.select_street_parking_orientation
-import de.westnordost.streetcomplete.resources.select_street_parking_position
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
@@ -117,11 +115,11 @@ fun StreetParkingSelectionDialog(
                             verticalAlignment = Alignment.CenterVertically,
                             modifier = Modifier.fillMaxWidth().defaultMinSize(minHeight = 48.dp)
                         ) {
-                            if (orientation != null) {
+                            if (orientation == null) {
+                                Text(stringResource(Res.string.select_street_parking_orientation))
+                            } else {
                                 IconButton(onClick = { parkingOrientation = null }) { BackIcon() }
                                 Text(stringResource(Res.string.select_street_parking_position))
-                            } else {
-                                Text(stringResource(Res.string.select_street_parking_orientation))
                             }
                         }
                     }
@@ -131,16 +129,16 @@ fun StreetParkingSelectionDialog(
                         .fadingVerticalScrollEdges(scrollState, 32.dp)
                         .verticalScroll(scrollState),
                     ) {
-                        if (orientation != null) {
+                        if (orientation == null) {
+                            StreetParkingSelectionSelectGrid(
+                                isUpsideDown = isUpsideDown,
+                                onSelect = ::selectStreetParkingSelection,
+                            )
+                        } else {
                             StreetParkingPositionSelectGrid(
                                 orientation = orientation,
                                 isUpsideDown = isUpsideDown,
                                 onSelect = ::select,
-                            )
-                        } else {
-                            StreetParkingSelectionSelectGrid(
-                                isUpsideDown = isUpsideDown,
-                                onSelect = ::selectStreetParkingSelection,
                             )
                         }
                     }

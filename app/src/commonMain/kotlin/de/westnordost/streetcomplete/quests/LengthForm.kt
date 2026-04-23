@@ -22,9 +22,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.unit
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ar_measure
-import de.westnordost.streetcomplete.resources.or
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
 import de.westnordost.streetcomplete.ui.common.MeasurementIcon
@@ -33,7 +31,7 @@ import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** Displays a form to input and/or measure the length, in meter or feet+inch */
 @Composable

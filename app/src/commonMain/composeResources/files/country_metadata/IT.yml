@@ -1,0 +1,20 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Poste Italiane, Intesa Sanpaolo, UniCredit Bank, Euronet, Monte dei Paschi di Siena, BPER Banca, Banco BPM, Crédit Agricole, Credem, BNL, Unicredit, Banca Popolare di Sondrio, Banca di Asti, Carige, Banco Desio, BCC, UBI Banca, BCC Roma, Shitcoins.club, Postamat, Euronet Worldwide, Banca Sella, Banca Popolare di Milano, Poste, Banca Popolare Pugliese, Deutsche Bank, Intesa San Paolo, BPER, UniCredit, Banca Popolare di Novara, Poste Italiane SpA, Credito Bergamasco, Banca Popolare di Lodi, Western Union, Banca Popolare di Fondi, BPM, Poste italiane, BancoPosta, Banca Intesa San Paolo, Banca Carige, Credito Valtellinese, BdM Banca, Bancomat, Banca di Credito Cooperativo, ATM, Monte dei Paschi, Cassa Padana, Carisbo, Banca Toscana, Banca Popolare di Bari, UBI, Posteitaliane, La Cassa di Ravenna, Cassa di Risparmio di Volterra, Bitomat, Banco di Napoli, Banco di Brescia, Banca di Piacenza, Banca Tercas, Banca Popolare di Verona, BCC Fano, Volksbank, Unipol, UBI Banca Popolare di Bergamo, San Paolo, Poste Italiane S.p.a., ChiantiBanca, Cassa di Risparmio del Veneto, Bper, Banco Popolare, Banca di Credito Popolare, Banca Intesa]
+chargingStationOperators: [Enel X, Be Charge, Enel, Repower, Pradella Sistemi srl, Enel X Way, Plenitude, a2a, Tesla, Ionity, Lidl, Ewiva, GaraGeeks, Duferco Energia, Poste Italiane, Umbria Energy, A2A, Free To X, Duferco, Hera, Electrip, Enel-X, Atlante, Agsm Verona Spa, Eni, Eni Plenitude, Drivalia, enel x, Evway, Free to X, Italia Vento Power Corporation, ABB, Leasys, EnelX, ChargePoint, BeCharge, Acea energia, 'https://www.ecospazio.it', e-distribuzione S.p.A., Zeus, ENEL X, Neogy, Eniwa, EnelX Way, Porsche, IrenGo, Iren, BlueTorino, bike-energy, EuroSpin, Etraction, Enel Way, Electra, ENEL, E-corner, SEMM, Enel Distribuzione, Comune di Trezzo sull'Adda, Bikef - Enjoy your Energy, Becharge, Be Charge S.r.l., Ressolar, Emobitaly, EVlink, Comune di Torre di Mosto, Comune di Firenze, Aldi, Acea Energia, Acea, ALDI]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo, type3c, type3a]
+clothesContainerOperators: [Humana, Caritas Ambrosiana, SEA, HERA, Veritas, Caritas, AMA, Cooperativa Sociale Centro di Lavoro San Giovanni Calabria, UIC, Cooperativa Lavoro e Solidarietà (Amiat S.p.a.), Aamps, AMIU, Cooperativa Lavoro e Solidarietà (Amiat S.p.a), Consac, Amsa, Dona Valore, HUMANA, COSMARI, Umanitaria Padana onlus, Hera, Exodus, Cooperativa Sociale Lavoro e Solidarietà, Cannone srl, Profiltek, www.tessutosociale.it, geovest, SEI Toscana, Nuova Promozione Umana, Nicoletti servizi, Cooperativa Sociale Città e Salute, Comune di Vanzago, Comune di Pescara, 'Cauto cooperativa sociale onlus, Caritas diocesana di Brescia', Caritas di Concordia - Pordenone, Caritas Lusciano, Caritas Diocesana di Tortona, CONAU – Consorzio Nazionale Abiti e Accessori Usati]
+defaultSpeedLimitHasUrbanOrRural: true
+exclusiveCycleLaneStyle: white
+hasAdvisoryCycleLane: false
+hasAdvisorySpeedLimitSign: true
+hasDailyAlternateSideParkingSign: false
+hasLivingStreet: false
+hasSlowZone: true
+mobileCountryCode: 222
+noParkingLineStyle: yellow-black on curb
+officialLanguages: [it]
+orchardProduces: [olive, grape, tomato, hazelnut, peach, apple, almond, chestnut, orange, cherry, pear, kiwi, lemon, lime, apricot, plum]
+parcelLockerBrand: [Amazon Locker, InPost, Amazon Hub, Amazon Hub Locker, PuntoPoste, Lockeritalia, Locker InPost, Esselunga, Amazon, BRT, LockerItalia, GLS, Conad]
+postboxesHaveCollectionTimes: true
+slowZoneLabelPosition: top
+slowZoneLabelText: zona

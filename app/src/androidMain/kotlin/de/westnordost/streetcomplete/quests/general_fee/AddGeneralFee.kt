@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -25,9 +26,10 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
            )
            or tourism ~ museum|gallery|caravan_site|zoo|aquarium|wilderness_hut
            or leisure ~ beach_resort|disc_golf_course
-           or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash|binoculars
+           or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash|binoculars|device_charging_station
            or natural = cave_entrance and access=yes
            or man_made = tower and tower:type = observation and access=yes
+           or historic = castle and access = yes
          )
          and access !~ private|no
          and !fee
@@ -35,13 +37,14 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify whether places take fees to visit"
     override val wikiLink = "Key:fee"
     override val icon = R.drawable.quest_fee
+    override val title = Res.string.quest_generalFee_title
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["amenity"] != null) {
-            R.string.quest_generalFee_title
+            Res.string.quest_generalFee_title
         } else {
-            R.string.quest_generalFee_title2
+            Res.string.quest_generalFee_title2
         }
 
     override fun createForm() = YesNoQuestForm()

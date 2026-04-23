@@ -1,0 +1,43 @@
+package de.westnordost.streetcomplete.quests.camping
+
+import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.quest.AndroidQuest
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.toYesNo
+
+class AddTents : OsmFilterQuestType<Boolean>(), AndroidQuest {
+
+    override val elementFilter = """
+        nodes, ways with
+          tourism ~ caravan_site|camp_site
+          and !tents
+    """
+    override val changesetComment = "Survey whether tents may be used here"
+    override val wikiLink = "Key:tents"
+    override val icon = R.drawable.quest_tent
+    override val title = Res.string.quest_camp_tent_title
+    override val achievements = listOf(OUTDOORS)
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with tourism ~ caravan_site|camp_site")
+
+    override fun applyAnswerTo(
+        answer: Boolean,
+        tags: Tags,
+        geometry: ElementGeometry,
+        timestampEdited: Long,
+    ) {
+        tags["tents"] = answer.toYesNo()
+    }
+
+    override fun createForm() = YesNoQuestForm()
+}

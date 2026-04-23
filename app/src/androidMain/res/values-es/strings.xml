@@ -58,7 +58,6 @@
     <string name="about_title_privacy_statement">"Declaración de privacidad"</string>
     <string name="quest_openingHours_public_holidays">"Días festivos"</string>
     <string name="quest_openingHours_public_holidays_short">"Festivos"</string>
-    <string name="quest_openingHours_open_end">"Hora de cierre flexible"</string>
     <string name="quest_openingHours_answer_247">"Abierto todo el día"</string>
     <string name="quest_openingHours_answer_seasonal_opening_hours">"Depende del mes…"</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">"Sin horario de apertura fijo…"</string>
@@ -106,7 +105,6 @@ No obstante, antes de subir cualquier cambio, la aplicación comprueba si la ver
     <string name="quest_surface_value_sett">"Adoquín de piedra natural"</string>
     <string name="quest_surface_value_wood">"Madera"</string>
     <string name="quest_sidewalk_title">"¿La calle tiene acera?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"¿Dónde está la calle?"</string>
     <string name="quest_address_title">"¿Cuál es el número de este edificio?"</string>
     <string name="store_listing_short_description">"Aplicación de mapeo para OpenStreetMap"</string>
     <string name="store_listing_full_description">"¡Ayuda a mejorar OpenStreetMap con StreetComplete!
@@ -173,9 +171,6 @@ La información añadida se incluye directamente en OpenStreetMap con tu nombre 
     <string name="quest_maxspeed_answer_noSign_confirmation">"¿Has mirado a ambos lados de la calle?
 Si no hay señales en la parte seleccionada se utilizarán los límites de velocidad generales."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Lo he mirado, no hay señal"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Las vías urbanas tienen un límite de velocidad distinto al de las rurales."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Dentro de la ciudad"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Rural"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Si hay una señal como ésta en la intersección con la calle principal no encontrarás otras señales porque el límite de velocidad es el mismo en toda la zona.
 "</string>
     <string name="quest_sport_softball">"Sóftbol"</string>
@@ -210,7 +205,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="credits_contributors_title">"Aportaciones de código"</string>
     <string name="credits_author_title">"Autor y encargado principal"</string>
     <string name="quest_maxspeed_answer_living_street">"Es una calle peatonal"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"¿Hay una señal como ésta?"</string>
     <string name="quest_orchard_produce_title">"¿Qué es lo que se cultiva aquí?"</string>
     <string name="produce_grapes">"Uvas"</string>
     <string name="produce_agaves">"Agaves"</string>
@@ -282,7 +276,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_buildingLevels_levelsLabel2">"plantas (sin contar el tejado)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"el número de plantas no es uniforme"</string>
     <string name="quest_buildingLevels_answer_description">"En ese caso limítate a poner la planta de la parte más alta del edificio."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"¿Sabes si las calzadas están separadas entre sí? (ejemplo: por una barrera) El límite de velocidad estándar es distinto si es el caso."</string>
     <string name="about_category_feedback">"Sugerencias"</string>
     <string name="quest_leave_new_note_photo">"Adjuntar foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"¿Quieres borrar esta imagen?"</string>
@@ -313,7 +306,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas 
     <string name="quest_housenumber_conscription_number">"Número de «conscripción»"</string>
     <string name="quest_housenumber_street_number_optional">"Número de «orientación» (opcional)"</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">"El carril bici va en ambos sentidos…"</string>
-    <string name="quest_openingHours_emptyAnswer">"Describe lo que pone en la rotulación. Si no ves nada puedes preguntar los horarios dentro."</string>
     <string name="quest_cycleway_value_none_but_no_oneway">"no hay nada, pero los ciclistas pueden ir por ambos sentidos de la vía"</string>
     <string name="quest_wheelchairAccess_description_toilets">"Una señal con una silla de ruedas como la que ves puede dar a entender que los baños están adaptados de forma especial.
 Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasamanos o lavabos específicos."</string>
@@ -448,7 +440,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_openingHours_no_sign">"El horario no está escrito"</string>
     <string name="quest_buildingType_sports_centre">"Centro deportivo"</string>
     <string name="quest_buildingType_toilets">"Baños o aseos"</string>
-    <string name="quest_maxspeed_sign_question">"¿Qué define el límite de velocidad?"</string>
     <string name="quest_segregated_title">"¿Cómo están dispuestos aquí el camino peatonal y el carril bici?"</string>
     <string name="dialog_tutorial_upload">"Para subir los cambios manualmente usa este botón en la barra de herramientas."</string>
     <string name="quest_segregated_separated">"Separados el uno del otro"</string>
@@ -463,7 +454,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="privacy_html_image_upload2">"&lt;p&gt;Las fotos que adjuntes a una nota se suben a mi servidor y se borran en cuestión de días tras su resolución. No se incluye ningún metadato en las fotos subidas.&lt;/p&gt;"</string>
     <string name="action_deselect_all">"Deseleccionar todo"</string>
     <string name="quest_buildingType_retail_description">"incluye edificios para restaurantes, cafés, tiendas…"</string>
-    <string name="quest_openingHours_timeSelect_next">"Siguiente"</string>
     <string name="quest_tracktype_title">"¿Cuál es el nivel de firmeza de esta pista?"</string>
     <string name="quest_tracktype_grade1">"Pavimentado"</string>
     <string name="quest_tracktype_grade4">"Principalmente blando"</string>
@@ -489,7 +479,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="action_open_location">"Abrir lugar en otra app"</string>
     <string name="map_application_missing">"No hay otra aplicación para mapas instalada"</string>
     <string name="label_housenumber">"número de casa"</string>
-    <string name="label_blocknumber">"número de bloque"</string>
     <string name="quest_busStopShelter_covered">"Toda la parada esta cubierta"</string>
     <string name="quest_ferry_pedestrian_title">"¿Esta ruta de ferry transporta peatones?"</string>
     <string name="quest_ferry_motor_vehicle_title">"¿Esta ruta de ferry transporta vehículos a motor?"</string>
@@ -522,7 +511,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_recycling_type_glass_bottles">"Botellas y frascos de vidrio"</string>
     <string name="quest_recycling_type_glass_bottles_short">"Botellas y frascos"</string>
     <string name="quest_recycling_type_paper">"Papel"</string>
-    <string name="quest_recycling_type_plastic_generic">"Plástico"</string>
     <string name="quest_recycling_type_plastic">"Cualquier plástico"</string>
     <string name="quest_recycling_type_shoes">"Zapatos"</string>
     <string name="quest_recycling_type_electric_appliances">"Aparatos eléctricos"</string>
@@ -685,7 +673,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="at_housenumber">"número de casa %s"</string>
     <string name="quest_openingHours_add_off_days">"Añadir días libres"</string>
     <string name="quest_openingHours_off_day">"Día libre"</string>
-    <string name="quest_openingHours_unspecified_range">"Sin especificar"</string>
     <string name="quest_cycleway_resurvey_title">"¿El carril bici sigue bien marcado?"</string>
     <string name="pref_title_resurvey_intervals">"Repreguntar para mantener los datos al día"</string>
     <string name="resurvey_intervals_less_often">"Repreguntar con menos frecuencia"</string>
@@ -696,7 +683,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_oneway2_title">"¿Es una calle de sentido único? ¿En qué dirección?"</string>
     <string name="quest_oneway2_dir">"Dirección única en esta dirección"</string>
     <string name="quest_oneway2_no_oneway">"No es de una sola dirección"</string>
-    <string name="quest_maxweight_select_sign">"Elige una señal"</string>
     <string name="quest_steps_incline_title">"¿En qué dirección asciende la escalera?"</string>
     <string name="quest_steps_incline_up">"Sube en esta dirección"</string>
     <string name="quest_step_count_title">"¿Cuántos escalones hay?"</string>
@@ -781,7 +767,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_postboxRoyalCypher_type_scottish_crown">"La corona de Escocia"</string>
     <string name="quest_buildingType_fire_station">"Estación de bomberos"</string>
     <string name="quest_recycling_type_beverage_cartons">"Solo cajas de bebidas"</string>
-    <string name="quest_recycling_type_plastic_bottles_and_cartons">"Solo botellas y cajas de plástico"</string>
     <string name="team_mode">"Modo equipo"</string>
     <string name="team_mode_exit">"Salir del modo equipo"</string>
     <string name="team_mode_description">"Cuando estéis varios mejorando una zona a la vez podéis utilizar el modo «en equipo» y así dividir las tareas entre los miembros. Cada uno de vosotros entonces verá diferentes tareas."</string>
@@ -1131,13 +1116,8 @@ También puedes dejar una nota (con foto)."</string>
     <string name="quest_camp_drinking_water_title">"¿Hay agua potable gratis para campistas?"</string>
     <string name="quest_camp_shower_title">"¿Tienen duchas?"</string>
     <string name="quest_camp_power_supply_title">"¿Los clientes pueden cargar sus teléfonos y dispositivos electrónicos?"</string>
-    <string name="quest_camp_type_title">"¿Quién puede acampar aquí?"</string>
-    <string name="quest_camp_type_tents_and_caravans">"Tanto tiendas de campaña como autocaravanas, caravanas, …"</string>
-    <string name="quest_camp_type_caravans_only">"Solo autocaravanas, caravanas, ..."</string>
-    <string name="quest_camp_type_tents_only">"Solo tiendas de campaña"</string>
     <string name="quest_camp_type_backcountry">"Campamento al aire libre (sin instalaciones)"</string>
     <string name="quest_fireHydrant_diameter_unusualInput_confirmation_description2">"Este diámetro no parece muy realista, suele estar entre %1$d y %2$d."</string>
-    <string name="quest_recycling_type_pet">"Solo polietileno"</string>
     <string name="street_parking_street_width">"Anchura de la calle: %1$s"</string>
     <string name="overlay_street_parking">"Aparcamiento/Estacionamiento"</string>
     <string name="link_ohsomehex_description">"Explora los datos de OSM en todas las categorías, desde la perspectiva general hasta los objetos individuales en el espacio y el tiempo"</string>
@@ -1225,9 +1205,6 @@ También puedes dejar una nota (con foto)."</string>
     <string name="street_parking_staggered_half_on_kerb">"Alternándose a ambos lados de la calzada, ocupando solo parte de la vía"</string>
     <string name="quest_traffic_signals_sound_description">"Consejo: Busca altavoces, ten en cuenta que hay otras señales auditivas más allá de las de apretar un botón."</string>
     <string name="quest_presets_duplicate">"Duplicar"</string>
-    <string name="label_block">"manzana"</string>
-    <string name="quest_address_answer_block">"Está a una manzana"</string>
-    <string name="quest_address_answer_no_block">"No está a una manzana"</string>
     <string name="quest_surface_value_mud">"Embarrado todo el año"</string>
     <string name="quest_wheelchairAccessPat_noToilet">"Aquí no hay ningún baño"</string>
     <string name="unknown_surface_title">"Otro tipo de superficie"</string>
@@ -1401,6 +1378,102 @@ La planta de arriba cuenta como «tejado» si el tejado tiene ventanas. Por lo q
     <string name="pedestrian_zone_allowed_sign">"Hay señales que permiten ir en bici"</string>
     <string name="pedestrian_zone_no_sign">"Sin señales sobre ir en bici"</string>
     <string name="team_mode_description_overlay_hint">"Si utilizáis superposiciones, cada persona debe utilizar una diferente, ya que sólo se dividen las misiones."</string>
+    <string name="quest_dietType_glutenfree_name_title">"¿Aquí se ofrecen productos sin gluten? "</string>
+    <string name="quest_dietType_explanation_glutenfree">"La preparación de productos sin gluten requiere conocimientos, ya que las especias y salsas comunes pueden contener gluten. Los alimentos sin gluten se etiquetarán explícitamente como tales."</string>
+    <string name="quest_construction_minor_title">"¿Se han completado las obras viales menores aquí?"</string>
     <string name="map_attribution">"Atribución del mapa"</string>
+    <string name="link_panoramax_description">"A free and open source software and nonprofit service for sharing crowdsourced street-level photos"</string>
+    <string name="link_opengeofiction_description">"¿Cansado de cartografiar la realidad? ¡Crea mapas ficticios de forma colaborativa!"</string>
+    <string name="link_openclimbing_description">"Un mapa de lugares para practicar escalada"</string>
+    <string name="pref_title_zoom_buttons">"Mostrar botones en mapa botones de zoom"</string>
+    <string name="overlay_mtb_scale">"Dificultad MTB"</string>
+    <string name="overlay_mtb_scale_0">"Grado 0"</string>
+    <string name="overlay_mtb_scale_0_description">"Superficie firme, compacta o natural con buen agarre; sin obstáculos; pendiente suave; curvas amplias."</string>
+    <string name="overlay_mtb_scale_1">"Grado 1"</string>
+    <string name="overlay_mtb_scale_1_description">"Terreno parcialmente suelto con pequeñas raíces, piedras, erosión o surcos de agua; pendiente ≤ 40 %; obstáculos rodantes; se requiere técnica básica de conducción."</string>
+    <string name="overlay_mtb_scale_2">"Grado 2"</string>
+    <string name="overlay_mtb_scale_2_description">"Terreno suelto con raíces y rocas grandes, desniveles planos/escalones pequeños, pendiente de hasta el 70 %; curvas cerradas fáciles; se requiere frenado avanzado y desplazamiento del peso."</string>
+    <string name="overlay_mtb_scale_3">"Grado 3"</string>
+    <string name="overlay_mtb_scale_3_description">"Terreno resbaladizo y suelto con pedregales, cantos rodados, raíces grandes y rocas, escalones altos y travesías difíciles; curvas cerradas, pendiente superior al 70 %; se requiere muy buen equilibrio y frenado preciso."</string>
+    <string name="overlay_mtb_scale_4">"Grado 4"</string>
+    <string name="overlay_mtb_scale_4_description">"Obstáculos técnicos y desafiantes: grandes rocas, raíces, pedregales, rampas empinadas; curvas cerradas, descensos planos con golpes de pedal; se requiere equilibrio perfecto, frenado preciso y reposicionamiento de la rueda trasera."</string>
+    <string name="overlay_mtb_scale_5">"Grado 5"</string>
+    <string name="overlay_mtb_scale_5_description">"Terreno muy escarpado y accidentado con contrapendientes, campos de rocas, desprendimientos, curvas cerradas con obstáculos, descensos pronunciados consecutivos y árboles caídos. Imposible transportar la bicicleta para sortear los obstáculos; inevitable montarla. Se requiere dominio de la ruta."</string>
+    <string name="overlay_mtb_scale_6">"Grado 6"</string>
+    <string name="overlay_mtb_scale_6_description">"Terreno peligroso e intransitable, no apto para ciclismo de montaña."</string>
+    <string name="default_disabled_overlay_domain_expert">"Esta superposición está desactivada de forma predeterminada porque es necesario ser un experto en la materia para registrar estos datos con precisión."</string>
+    <string name="pref_title_overlays">"Selección de superposición"</string>
+    <string name="pref_overlays_reset">"¿Restablecer la habilitación de la superposición al valor predeterminado?"</string>
+    <string name="overlay">"Superposición"</string>
+    <string name="enable_overlay_confirmation_title">"¿Habilitar esta superposición?"</string>
+    <string name="link_transitous_description">"Rutas de transporte público independientes del proveedor, gratuitas y de código abierto."</string>
     <string name="compass">"Brújula"</string>
+    <string name="quest_tracktype_grade2">"Mayormente sólido"</string>
+    <string name="quest_tracktype_grade3">"Mezcla"</string>
+    <string name="quest_housenumber_multiple_numbers_description2">"Puede introducir números de casa separados por comas. Por ejemplo, 1,3 o 2b,4,6.
+"</string>
+    <string name="quest_drinking_water_potable_unsigned2">"No hay señal"</string>
+    <string name="or">"O"</string>
+    <string name="action_copy">"Copia"</string>
+    <string name="quest_stopName_hint">"Puede aplicar el mismo nombre que otra parada tocándola en el mapa."</string>
+    <string name="quest_shelter_capacity_title">"¿Cuantas personas pueden dormir aquí?"</string>
+    <string name="quest_handwashing_title">"¿Puedes lavar tus manos aquí?"</string>
+    <string name="quest_openingHours_delete">"Borrar"</string>
+    <string name="quest_streetName_hint">"Puede aplicar el mismo nombre que una sección adyacente tocándola en el mapa.
+"</string>
+    <string name="quest_streetName_abbreviation_instruction">"Las abreviaturas como, por ejemplo, «Rd» deben expandirse. "</string>
+    <string name="quest_streetName_add_language">"Agregar idioma"</string>
+    <string name="ok">"Ok"</string>
+    <string name="cancel">"Cancelar"</string>
+    <string name="quest_aerialway_bicycle_title">"¿Este elevador aéreo transporta bicicletas?"</string>
+    <string name="quest_aerialway_bicycle_summer">"Sólo en verano"</string>
+    <string name="quest_board_type_rules">"Reglas"</string>
+    <string name="quest_firewood_provided_title">"¿Se proporciona leña aquí?"</string>
+    <string name="quest_first_aid_kit_location">"¿Dónde se encuentra este botiquín de primeros auxilios?"</string>
+    <string name="quest_lane_markings_title">"¿Este camino tiene marcas de carril?"</string>
+    <string name="quest_level_thing_title">"¿En qué planta se encuentra esto?"</string>
+    <string name="quest_bicycle_charging_station_capacity_title">"¿Cuántas bicicletas se pueden cargar aquí al mismo tiempo?"</string>
+    <string name="quest_charging_station_bicycles_title">"¿Se pueden cargar bicicletas aquí también?"</string>
+    <string name="quest_charging_station_bicycles_hint">"Los adaptadores de corriente para cargadores de bicicletas se enchufan en tomas de corriente domésticas normales."</string>
+    <string name="quest_tower_access_title">"¿Quién puede acceder a esta torre? Puede ser gratuito o de pago."</string>
+    <string name="quest_charging_station_bicycles_answer_only">"Sólo para bicicletas"</string>
+    <string name="quest_recycling_type_pet_bottles">"Botellas PET"</string>
+    <string name="quest_maxweight_add_sign">"Agregar señal"</string>
+    <string name="quest_maxweight_remove_sign">"Remover señal"</string>
+    <string name="weekly_osm_new_edition_title">"¡Nueva edición!"</string>
+    <string name="pref_title_messages">"Mensajes dentro de la aplicación"</string>
+    <string name="pref_title_message_achievements">"Logros desbloqueados"</string>
+    <string name="pref_title_message_weekly_osm">"Nuevas ediciones de weeklyOSM"</string>
+    <string name="pref_title_message_changelog">"Nueva versión de la app"</string>
+    <string name="label_block2">"Manzana"</string>
+    <string name="quest_address_answer_block2">"Está dentro de la manzana"</string>
+    <string name="quest_address_answer_no_block2">"No está dentro de la manzana"</string>
+    <string name="quest_artwork_title">"¿Qué tipo de obra de arte es esta?"</string>
+    <string name="quest_artwork_sculpture">"Escultura"</string>
+    <string name="quest_artwork_statue">"Estatua"</string>
+    <string name="quest_artwork_mural">"Mural"</string>
+    <string name="quest_artwork_graffiti">"Graffiti"</string>
+    <string name="quest_artwork_installation">"Instalación"</string>
+    <string name="quest_artwork_bust">"Busto"</string>
+    <string name="quest_artwork_stone">"Piedra"</string>
+    <string name="quest_artwork_painting">"Pintura"</string>
+    <string name="quest_artwork_street_art">"Otro tipo de arte"</string>
+    <string name="quest_artwork_architecture">"Arquitectura"</string>
+    <string name="quest_artwork_mosaic">"Mosaico"</string>
+    <string name="quest_artwork_relief">"Relieve"</string>
+    <string name="quest_artwork_fountain">"Fuente"</string>
+    <string name="quest_bothway_title">"¿En qué dirección puedes conducir esto?"</string>
+    <string name="quest_camp_tent_title">"¿Se puede acampar aquí en una tienda de campaña?"</string>
+    <string name="quest_camp_cabin_title">"¿Hay cabañas en las que se pueda alojar aquí?"</string>
+    <string name="quest_camp_caravan_title">"¿Se puede acampar aquí en autocaravana o caravana?"</string>
+    <string name="quest_ferry_bicycle_title">"¿Se permiten bicicletas en este ferry?"</string>
+    <string name="quest_openingHours_add_time">"Agregar hora"</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">"Seleccionar hora de inicio"</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">"Seleccionar hora de cierre"</string>
+    <string name="quest_openingHours_chooseTimeTitle">"Seleccionar hora"</string>
+    <string name="quest_openingHours_no_fixed_end">"sin hora de cierre fija"</string>
+    <string name="quest_openingHours_from">"
+"</string>
+    <string name="quest_collectionTimes_answer_time_spans">"Dentro de un intervalo de tiempo..."</string>
+    <string name="quest_collectionTimes_answer_time_points">"En momentos específicos..."</string>
 </resources>

@@ -17,15 +17,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.maxweight_axleload
-import de.westnordost.streetcomplete.resources.maxweight_bogieweight
-import de.westnordost.streetcomplete.resources.maxweight_hgv
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /** A form to input the [weight] for a single max weight sign [type]. The signs shown
  *  should look similar to how the signs actually look in the country with the given [countryCode]
@@ -89,6 +86,11 @@ fun MaxWeightSignForm(
                     MaxWeightSign(color = color) {
                         WeightInput(value, onValueChange)
                         Text("m g w")
+                    }
+                // French max weight sign is actually a max weight rating sign
+                "FR" ->
+                    MaxWeightSign(color = color) {
+                        WeightInput(value, onValueChange)
                     }
             }
             MAX_WEIGHT_RATING_HGV -> when (countryCode) {

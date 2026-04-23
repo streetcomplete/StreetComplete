@@ -1,0 +1,8 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Absa Bank Ghana Limited, Standard Chartered Ghana, Ecobank, GCB Bank, CalBank, Fidelity Bank, Stanbic Bank, Access Bank, Standard Chartered, UBA, SG-SSB, Prudential Bank, GT Bank, Absa, Republic Bank, GCB, Zenith Bank, Stanbic, ADB, Société Générale, UMB, Republic Bank (Ghana) Limited, Cal Bank, Barclays, Absa Group Limited]
+defaultSpeedLimitHasUrbanOrRural: true
+mobileCountryCode: 620
+noParkingSignStyle: vienna variant
+noStoppingSignStyle: vienna
+officialLanguages: [en, ak, ee]
+orchardProduces: [cacao, cashew_nut, kola_nut, coconut, rubber, tomato, orange, chilli_pepper, sweet_pepper, pineapple, banana, guava, mango, mangosteen, lemon, lime, pepper, avocado, papaya]
