@@ -12,88 +12,10 @@
         <item name="colorOnSecondary">@color/on_secondary</item>
         <item name="colorAccent">@color/accent</item>
 
-        <item name="colorControlNormal">@color/text</item>
-
-        <item name="alertDialogTheme">@style/Theme.Bubble.Dialog.Alert</item>
         <item name="dialogTheme">@style/Theme.Bubble.Dialog</item>
-        <item name="titleTextAppearance">@style/TextAppearance.TitleLarge</item>
-        <item name="buttonBarStyle">@style/ButtonBar</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="dividerVertical">@drawable/button_bar_divider</item>
-        <item name="dividerHorizontal">@drawable/button_bar_divider</item>
 
-        <item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>
-
-        <item name="android:popupMenuStyle">@style/Theme.Bubble.Popup</item>
-        <item name="popupMenuStyle">@style/Theme.Bubble.Popup</item>
-        <item name="android:listPopupWindowStyle">@style/Theme.Bubble.Popup</item>
-        <item name="listPopupWindowStyle">@style/Theme.Bubble.Popup</item>
-
-        <item name="materialButtonStyle">@style/Theme.Button</item>
-    </style>
-
-    <style name="Theme.Bubble.ToolbarPopup"  parent="Theme.MaterialComponents.DayNight.NoActionBar"/>
-
-    <style name="Theme.Bubble.Popup" parent="Widget.AppCompat.Light.PopupMenu">
-        <item name="android:popupBackground">@drawable/speech_bubble_none</item>
-        <item name="android:popupAnimationStyle">@style/Animation.Popup.Bubble</item>
-    </style>
-
-    <style name="Theme.Bubble.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog">
-        <!-- The colors need to be set another time here because this theme does not inherit
-             from AppTheme, but the material components theme. Not sure if there is an easier way -->
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_variant</item>
-        <item name="colorSecondary">@color/accent</item>
-        <item name="colorSecondaryVariant">@color/accent_variant</item>
-        <item name="colorOnPrimary">@color/on_primary</item>
-        <item name="colorOnSecondary">@color/on_secondary</item>
-        <item name="colorAccent">@color/accent</item>
-
-        <item name="buttonBarPositiveButtonStyle">@style/Dialog.Button</item>
-        <item name="buttonBarNegativeButtonStyle">@style/Dialog.Button</item>
-        <item name="buttonBarNeutralButtonStyle">@style/Dialog.Button</item>
-
-        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Bubble</item>
-        <item name="buttonBarStyle">@style/ButtonBar</item>
-        <item name="android:windowBackground">@drawable/speech_bubble_none</item>
-        <item name="android:windowAnimationStyle">@style/Animation.Dialog.Bubble</item>
-        <item name="android:windowMinWidthMajor">50%</item>
-        <item name="android:windowMinWidthMinor">75%</item>
-        <!-- There is a rare crash that suggests that both the listener for the positive button
-             and the listener for the cancel event is called. This may be due to a fat (or two)
-             fingers pressing both on "OK" and outside the dialog (=cancelling it).
-             Documentation is sparse, but it looks like with this setting, such multi-touch behavior
-             can be disabled for dialogs - which would be the behavior one (=the developer) would
-             expect. -->
-        <item name="android:splitMotionEvents">false</item>
-        <item name="android:textAllCaps">false</item>
-    </style>
-
-    <style name="Theme.Bubble.Dialog.Alert"/>
-
-    <style name="Theme.Bubble.Dialog.DatePicker" parent="Theme.Bubble.Dialog">
-        <item name="android:buttonBarPositiveButtonStyle">@style/Theme.Button.Alert</item>
-        <item name="android:buttonBarNegativeButtonStyle">@style/Theme.Button.Alert</item>
-        <item name="android:buttonBarNeutralButtonStyle">@style/Theme.Button.Alert</item>
-    </style>
-
-    <style name="Theme.CustomDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
-        <item name="android:windowBackground">@color/background_transparent</item>
-        <item name="android:windowAnimationStyle">@style/Animation.Dialog.Custom</item>
-    </style>
-
-    <style name="Theme.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:textAllCaps">false</item>
-    </style>
-
-    <style name="Theme.Button.Alert" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:textColor">@color/accent</item>
-    </style>
-
-    <style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">
-        <item name="tint">?attr/colorControlNormal</item>
     </style>
 
 </resources>

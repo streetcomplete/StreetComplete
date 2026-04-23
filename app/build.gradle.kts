@@ -183,10 +183,8 @@ kotlin {
                 implementation("com.google.android.material:material:1.13.0")
                 implementation("androidx.core:core-ktx:1.18.0")
                 implementation("androidx.appcompat:appcompat:1.7.1")
-                implementation("androidx.constraintlayout:constraintlayout:2.2.1")
                 implementation("androidx.annotation:annotation:1.10.0")
                 implementation("androidx.fragment:fragment-ktx:1.8.9")
-                implementation("androidx.recyclerview:recyclerview:1.4.0")
                 implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
                 // Compose
@@ -204,9 +202,6 @@ kotlin {
 
                 // HTTP Client
                 implementation("io.ktor:ktor-client-android:3.4.2")
-
-                // widgets
-                implementation("com.google.android.flexbox:flexbox:3.0.0")
 
                 // map and location
                 implementation("org.maplibre.gl:android-sdk:13.0.2")
