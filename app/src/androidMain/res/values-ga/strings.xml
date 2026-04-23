@@ -69,7 +69,7 @@
     <string name="quest_roofShape_answer_many">"Tá cruthanna éagsúla ann"</string>
     <string name="map_btn_zoom_out">"Zúmáil amach"</string>
     <string name="map_btn_zoom_in">"Zúmáil isteach"</string>
-    <string name="privacy_html">"&lt;p&gt;Á, duine a bhfuil spéis aige sa príobháideachas, ar fheabhas! Is dóigh liom nach bhfuil ach deascéala agam duitse:&lt;/p&gt; &lt;h2&gt;Ranníocaíocht Díreach&lt;/h2&gt; &lt;p&gt;Anois, ar dtús, tuig go bhfuil tú, leis an aip seo, ag cur le hOpenStreetMap (OSM) go fíor agus go díreach.&lt;br/&gt; Cuirfidh go díreach ar an léarscáil aon rud a chuireann tú leis agus tú ag úsáid an aip seo. Níl aon thríú páirtí idir an aip agus an bonneagar OSM. &lt;/p&gt; &lt;p&gt;Ní féidir aon rud a athrú ar OSM go hanaithnid. Bíonn gach athruithe a dhéanann tú (⁊ a ndáta ⁊ a suíomh) ceangailte le do chuntas OSM agus le feiceáil go poiblí ar an suíomh gréasáin openstreetmap.org. Toisc gur cheart nach úsáidfí StreetComplete ach ar an láthair amháin, nochtfar cá agus cathain a d'úsáid tú an aip. &lt;/p&gt; &lt;h2&gt;Suíomh&lt;/h2&gt; &lt;p&gt;Ní roineann an aip do shuíomh GPS le haon duine. Úsáidtear é chun sonraí in aice leat a íoslódáil go huathoibríoch, agus chun an léarscáil a chur ar d'áit féin. &lt;/p&gt; &lt;h2&gt;Úsáid na Sonraí&lt;/h2&gt; &lt;p&gt; Tá cumarsáid díreach idir an aip seo agus na freastalaithe OSM.&lt;br/&gt; Sular uaslódáladh do chuid athruithe, déanann an aip seiceáil ar  &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;chomhad téacs simplí&lt;/a&gt; ar mo fhreastalaí, chun cinntiú nach bhfuil cosc ar uaslódáil athrithe ar an leagan amach na haipe seo. Is beart réamhchúraim í seo"</string>
+    <string name="privacy_html">"&lt;p&gt;Á, duine a bhfuil spéis aige sa príobháideachas, ar fheabhas! Is dóigh liom nach bhfuil ach deascéala agam duitse:&lt;/p&gt; &lt;h2&gt;Ranníocaíocht Díreach&lt;/h2&gt; &lt;p&gt;Anois, ar dtús, tuig go bhfuil tú, leis an aip seo, ag cur le hOpenStreetMap (OSM) go fíor agus go díreach.&lt;br/&gt; Cuirfidh go díreach ar an léarscáil aon rud a chuireann tú leis agus tú ag úsáid an aip seo. Níl aon thríú páirtí idir an aip agus an bonneagar OSM. &lt;/p&gt; &lt;p&gt;Ní féidir aon rud a athrú ar OSM go hanaithnid. Bíonn gach athruithe a dhéanann tú (⁊ a ndáta ⁊ a suíomh) ceangailte le do chuntas OSM agus le feiceáil go poiblí ar an suíomh gréasáin openstreetmap.org. Toisc gur cheart nach úsáidfí StreetComplete ach ar an láthair amháin, nochtfar cá agus cathain a d'úsáid tú an aip. &lt;/p&gt; &lt;h2&gt;Suíomh&lt;/h2&gt; &lt;p&gt;Ní roineann an aip do shuíomh GPS le haon duine. Úsáidtear é chun sonraí in aice leat a íoslódáil go huathoibríoch, agus chun an léarscáil a chur ar d'áit féin. &lt;/p&gt; &lt;h2&gt;Úsáid na Sonraí&lt;/h2&gt; &lt;p&gt; Tá cumarsáid díreach idir an aip seo agus na freastalaithe OSM.&lt;br/&gt; Sula uaslódáiltear do chuid athruithe, déanann an aip seiceáil ar  &lt;a href=\"https://www.westnordost.de/streetcomplete/banned_versions.txt\"&gt;chomhad téacs simplí&lt;/a&gt; ar mo fhreastalaí, chun cinntiú nach bhfuil cosc ar uaslódáil athruithe ar an leagan na haipe seo. Is beart réamhchúraim é seo, chun bheith in ann bac a chur ar leaganacha an aip a raibh ardfhabhtanna acu, ionas nach uaslódálfar sonraí truaillithe chuig OSM.&lt;/p&gt;"</string>
     <string name="autosync_on">"Ar"</string>
     <string name="autosync_only_on_wifi">"Ar Wi-Fi amháin"</string>
     <string name="autosync_off">"As"</string>
@@ -116,7 +116,7 @@
     <string name="quest_sport_baseball">"Daorchluiche"</string>
     <string name="quest_sport_basketball">"Cispheil"</string>
     <string name="quest_sport_golf">"Galf"</string>
-    <string name="quest_sport_equestrian">"Cluichí eachaíochta / Spóirt eachaíochta ?"</string>
+    <string name="quest_sport_equestrian">"Cluichí eachaíochta"</string>
     <string name="quest_sport_athletics">"Lúthchleasaíocht"</string>
     <string name="quest_sport_volleyball">"Eitpheil"</string>
     <string name="quest_sport_beachvolleyball">"Eitpheil trá"</string>
@@ -542,8 +542,8 @@ Mar fhocal scoir, ná déan dearmad bheith slán sábháilte: Bí ar d'airdeall 
     <string name="user_links_title">"Bailiúchán nasc"</string>
     <string name="user_profile_title">"Próifíl"</string>
     <string name="user_statistics_quest_wiki_link">"Cáipéisíocht"</string>
-    <string name="achievements_unlocked_link">"Nasc bainte amach"</string>
-    <string name="achievements_unlocked_links">"Naisc bainte amach"</string>
+    <string name="achievements_unlocked_link">"Nasc díghlasáilte:"</string>
+    <string name="achievements_unlocked_links">"Naisc dhíghlasáilte:"</string>
     <string name="link_category_intro_title">"Buntreoir"</string>
     <string name="link_category_intro_description">"Tuilleadh foghlama faoi OSM agus a phobal"</string>
     <string name="link_category_editors_title">"Tuilleadh cuidiú"</string>
@@ -600,7 +600,7 @@ Mar fhocal scoir, ná déan dearmad bheith slán sábháilte: Bí ar d'airdeall 
 Is tábhachtach iad na sonraí seo, ní hamháin don fhear poist ach d'aon inneall ródaithe ar fad freisin."</string>
     <string name="achievement_building_title">"Ardstórach"</string>
     <string name="achievement_building_solved_X">"Réitigh tú %1$d (d)t(h)asc a bhaineann le foirgnimh.
-Tabhair faoi deara nach iarann an aip ort uimhir tí an fhoirgnimh mura bhfuil a chineál socraithe."</string>
+Tabhair faoi deara nach iarann an aip seo ort uimhir tí an fhoirgnimh mura bhfuil a chineál socraithe."</string>
     <string name="achievement_blind_title">"An Séú Céadfa"</string>
     <string name="achievement_blind_solved_X">"Réitigh tú %1$d (d)t(h)asc a bhfuil tábhachtach don lucht lagamhairc."</string>
     <string name="achievement_pedestrian_title">"Reathaí"</string>
@@ -660,8 +660,8 @@ na n-éachtaí"</string>
     <string name="resurvey_intervals_less_often">"Níos annamh"</string>
     <string name="resurvey_intervals_default">"Mar is gnách"</string>
     <string name="resurvey_intervals_more_often">"Níos minice"</string>
-    <string name="about_title_translate">"Aistrigh an aip"</string>
-    <string name="about_description_translate">"%1$s - aistrithe %2$d%"</string>
+    <string name="about_title_translate">"Aistrigh an aip seo"</string>
+    <string name="about_description_translate">"Tá%1$s aistrithe %2$d%"</string>
     <string name="quest_oneway2_title">"An bóthar aontreo é seo? Cén treo atá air?"</string>
     <string name="quest_oneway2_dir">"Aontreo, sa treo seo"</string>
     <string name="quest_oneway2_no_oneway">"Ní haontreo é"</string>
@@ -1273,7 +1273,7 @@ Bog anois í?"</string>
     <string name="unknown_object">"Rud anaithnid"</string>
     <string name="quest_leafType_tree_title">"An spíonach nó leathan iad na duillí atá ar an gcrann seo?"</string>
     <string name="quest_bbq_fuel_gas">"Gás"</string>
-    <string name="about_description_donate_google_play3">"Go raibh maith agat as do smaoineamh ar tacaíocht a thabhairt don aip seo! Is féidir leat tuilleadh eolais a fháil faoi shíntiús ar ár suíomh nó ar GitHub an tionscadail. Ní féidir linn an nasc a thabhairt daoibh laistigh den aip, de réir polasaí an aipmharagaidh."</string>
+    <string name="about_description_donate_google_play3">"Go raibh maith agat as do smaoineamh ar tacaíocht a thabhairt don aip seo! Is féidir leat tuilleadh eolais a fháil faoi shíntiús ar ár suíomh nó ar baile an tionscadail ar GitHub. Ní féidir linn an nasc a thabhairt daoibh laistigh den aip, de réir polasaí an aipmharagaidh."</string>
     <string name="quest_isAmenityIndoor_outside_covered">"Ní thaobh istigh, ach faoi dhíon"</string>
     <string name="lit_value_unsupported">"Staid soilsithe faoi leith eile nach bhfuil ann mar rogha san aip seo"</string>
     <string name="quest_generic_otherAnswers2">"Eile…"</string>
@@ -1356,6 +1356,7 @@ Bog anois í?"</string>
     <string name="quest_dietType_glutenfree_name_title">"An bhfuil bia gan ghlútan ar fáil anseo?"</string>
     <string name="quest_dietType_explanation_glutenfree">"Is gá a bheith mioneolas agat chun táirgí gan ghlútan a ullmhú, de bhrí go d'fhéadfadh glútan a bheith ann sna spíosraí is sna hanlainn choitianta. Chuirfí lipéad soléir ar bia dá mbeadh sé saor ó ghlútan."</string>
     <string name="quest_construction_minor_title">"An bhfuil na mionoibreacha bóthair seo críochnaithe?"</string>
+    <string name="map_attribution">"Admháil Léarscáile"</string>
     <string name="link_panoramax_description">"Bogearra saor agus foinse oscailte agus seirbhís neamhbhrabúis chun grianghraif sluafhoinsithe ar leibhéal na sráide a chomhroinnt"</string>
     <string name="link_opengeofiction_description">"An bhfuil tú féin bréan den léarscáiliú sa saol mar atá? Is féidir leat comhoibrigh ar léarscáileanna ficsin a chruthú!"</string>
     <string name="link_openclimbing_description">"Léarscáil de láithreacha dreapadóireachta"</string>
