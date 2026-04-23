@@ -13,7 +13,7 @@
 - Redid UI for quest title speech bubble with smoother ℹ️ area (#6784)
 - Redid UI for forms creating a note, especially attaching images (#6804)
 - Power line attachment: Don't ask when several power lines go through one power pole or tower (#6547)
-- Other minor improvements (#6770, #6810, #6798…), thanks @mnalis
+- Other minor improvements (#6770, #6810, #6798, #6771…), thanks @mnalis
 
 ### General Improvements
 
@@ -31,7 +31,7 @@
 
 - Bike paths overlay: OK button didn't always show (#6644) (wasn't fixed in v62.1 after all)
 - Fix layout for "New OSM message" dialog (#6791)
-
+- Fix crash caused by automatic conflict resolution on upload under certain circumstances (#6825, #6779, #6419)
 
 ## v63.0
 
