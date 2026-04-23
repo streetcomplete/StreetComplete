@@ -33,7 +33,6 @@ class MapDataApiClient(
      *
      * @param changesetId id of the changeset to upload changes into
      * @param changes changes to upload.
-```suggestion
      * @param ignoreRelation omit any relations for which the given function returns true.
      *                       Such relations can still be referred to as relation members,
      *                       though, the relations themselves are just not included
