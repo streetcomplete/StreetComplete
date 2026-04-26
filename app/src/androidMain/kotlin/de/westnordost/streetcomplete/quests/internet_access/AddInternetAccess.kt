@@ -41,11 +41,6 @@ class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>(), AndroidQues
     override fun createForm() = AddInternetAccessForm()
 
     override fun applyAnswerTo(answer: Set<InternetAccess>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        val osmValue = if (answer.isEmpty()) {
-            "no"
-        } else {
-            answer.joinToString(";") { it.osmValue }
-        }
-        tags.updateWithCheckDate("internet_access", osmValue)
+        tags.updateWithCheckDate("internet_access", answer.joinToString(";") { it.osmValue })
     }
 }

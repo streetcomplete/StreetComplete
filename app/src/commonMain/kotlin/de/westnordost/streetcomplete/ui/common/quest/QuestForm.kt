@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.resources.*
@@ -45,6 +46,7 @@ import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.ui.util.annotateLinks
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -52,16 +54,19 @@ import org.jetbrains.compose.resources.stringResource
  *  at-a-time */
 sealed interface QuestAnswer
 
+/** The user can select from a number of [answers] */
 data class Answers(val answers: List<Answer>) : QuestAnswer {
     // convenience constructors
     constructor() : this(emptyList())
     constructor(vararg answers: Answer) : this(answers.toList())
 }
+/** Confirm the form with an OK button. The OK button is only clickable if the form [isComplete].
+ *  When the form [hasChanges], the user will be asked for confirmation before closing this form. */
 data class Confirm(
-    val isVisible: Boolean,
+    val isComplete: Boolean,
+    val hasChanges: Boolean = isComplete,
     val onClick: () -> Unit,
 ) : QuestAnswer
-
 
 /** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
@@ -69,19 +74,22 @@ data class Confirm(
  *  [contentPadding] (if there is any content) and below *either* a row of text buttons showing
  *  different [answers] (defined from start to end) *or* an OK confirmation button.
  *
+ *  **This composable requires the `LocalQuestType` composition local to be set!**
+ *
  *  At the very start of the text button row, there's a text button labeled "Uh…" that, when tapped,
  *  opens a dropdown menu containing [otherAnswers] (defined from start to bottom). */
 @Composable
 fun QuestForm(
-    questType: QuestType,
     answers: QuestAnswer,
     modifier: Modifier = Modifier,
-    title: String = stringResource(questType.title),
-    subtitle: AnnotatedString? = null,
-    hintText: String? = questType.hint?.let { stringResource(it) },
-    hintImages: List<DrawableResource> = questType.hintImages,
-    note: String? = null,
-    otherAnswers: Answers = Answers(),
+    title: String = stringResource(LocalQuestType.current!!.title),
+    subtitle: AnnotatedString? = LocalElement.current?.let { element ->
+        nameAndLocationLabel(element, featureDictionary)
+    } ,
+    hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
+    hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
+    note: String? = LocalElement.current?.tags?.get("note"),
+    otherAnswers: List<Answer> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
@@ -133,7 +141,7 @@ fun QuestForm(
                     modifier = Modifier.fillMaxWidth(),
                     elevation = elevation,
                     answers = (answers as? Answers)?.answers ?: emptyList(),
-                    otherAnswers = otherAnswers.answers,
+                    otherAnswers = otherAnswers,
                     contentPadding = contentPadding,
                     content = content,
                 )
@@ -141,7 +149,7 @@ fun QuestForm(
         }
         if (answers is Confirm) {
             FloatingOkButton(
-                visible = answers.isVisible,
+                visible = answers.isComplete,
                 onClick = answers.onClick,
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
@@ -184,26 +192,29 @@ private fun NoteBubble(
 @Preview
 @Composable
 private fun QuestFormPreview() {
-    QuestForm(
-        questType = object : QuestType {
+    CompositionLocalProvider(
+        LocalQuestType provides object : QuestType {
             override val icon = 0
             override val title = Res.string.quest_streetName_title
             override val wikiLink = null
             override val achievements = emptyList<EditTypeAchievement>()
             override val hint = Res.string.quest_streetName_hint
-        },
-        subtitle = AnnotatedString("Tertiary Road"),
-        note = "unpaved",
-        answers = Answers(
-            Answer("No") {},
-            Answer("Maybe") {},
-            Answer("Yes") {},
-        ),
-        otherAnswers = Answers(
-            Answer("Can't say") {},
-            Answer("Can say") {},
-        )
+        }
     ) {
-        Text(LoremIpsum(200).values.joinToString(" "))
+        QuestForm(
+            subtitle = AnnotatedString("Tertiary Road"),
+            note = "unpaved",
+            answers = Answers(
+                Answer("No") {},
+                Answer("Maybe") {},
+                Answer("Yes") {},
+            ),
+            otherAnswers = listOf(
+                Answer("Can't say") {},
+                Answer("Can say") {},
+            )
+        ) {
+            Text(LoremIpsum(200).values.joinToString(" "))
+        }
     }
 }

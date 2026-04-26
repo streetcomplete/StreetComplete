@@ -1,20 +1,26 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
-import de.westnordost.streetcomplete.R
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.INCORRECT
-import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.NO
-import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.YES
+import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.*
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Answers
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class TactilePavingCrosswalkForm : AbstractOsmQuestForm<TactilePavingCrosswalkAnswer>() {
 
-    override val otherAnswers get() = listOf(
-        AnswerItem(R.string.quest_tactilePaving_incorrect) { applyAnswer(INCORRECT) }
-    )
-
-    override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },
-        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES) }
-    )
+    @Composable
+    override fun Content() {
+        QuestForm(
+            answers = Answers(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { applyAnswer(NO) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { applyAnswer(YES) }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_tactilePaving_incorrect)) { applyAnswer(INCORRECT) }
+            )
+        )
+    }
 }

@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
 import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
@@ -39,7 +40,7 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean>, AndroidQuest {
         Res.drawable.tactile_paving3
     )
 
-    override fun createForm() = TactilePavingForm()
+    override fun createForm() = YesNoQuestForm()
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }

@@ -16,7 +16,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.children
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.osm.edits.AddElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -47,13 +47,14 @@ import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.quests.shop_type.ShopType
 import de.westnordost.streetcomplete.quests.shop_type.ShopTypeAnswer
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
-import de.westnordost.streetcomplete.view.add
 import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -61,6 +62,7 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.getSystemResourceEnvironment
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 
@@ -84,10 +86,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     // passed in parameters
     private val osmElementQuestType: OsmElementQuestType<T> get() = questType as OsmElementQuestType<T>
     protected lateinit var element: Element private set
-
-    // overridable by child classes
-    open val otherAnswers = listOf<IAnswerItem>()
-    open val buttonPanelAnswers = listOf<IAnswerItem>()
 
     private val showReplacePlaceDialog: MutableState<Boolean> = mutableStateOf(false)
 
@@ -119,11 +117,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         element = Json.decodeFromString(args.getString(ARG_ELEMENT)!!)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setObjNote(element.tags["note"])
-    }
-
     @Composable
     override fun DialogContainer() {
         if (showReplacePlaceDialog.value) {
@@ -144,44 +137,29 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
         }
     }
 
-    override protected fun getTitle(): StringResource =
-        osmElementQuestType.getTitle(element.tags) ?: questType.title
-
     @Composable
-    override protected fun getSubtitle(): AnnotatedString? =
-        nameAndLocationLabel(element, featureDictionary)
+    private fun assembleOtherAnswers(): List<Answer> {
+        val answers = mutableListOf<Answer>()
 
-    override fun onStart() {
-        super.onStart()
-        updateButtonPanel()
-    }
-
-    protected fun updateButtonPanel() {
-        val otherAnswersItem = AnswerItem(R.string.quest_generic_otherAnswers2) { showOtherAnswers() }
-        setButtonPanelAnswers(listOf(otherAnswersItem) + buttonPanelAnswers)
-    }
-
-    private fun assembleOtherAnswers(): List<IAnswerItem> {
-        val answers = mutableListOf<IAnswerItem>()
-
-        answers.add(AnswerItem(R.string.quest_generic_answer_notApplicable) { onClickCantSay() })
+        answers.add(Answer(stringResource(Res.string.quest_generic_answer_notApplicable)) { onClickCantSay() })
 
         if (element.isSplittable()) {
-            answers.add(AnswerItem(R.string.quest_generic_answer_differs_along_the_way) { onClickSplitWayAnswer() })
+            answers.add(Answer(stringResource(Res.string.quest_generic_answer_differs_along_the_way)) { onClickSplitWayAnswer() })
         }
         createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
 
         if (element is Node // add moveNodeAnswer only if it's a free floating node
             && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
-            && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()) {
-            answers.add(AnswerItem(R.string.move_node) { onClickMoveNodeAnswer() })
+            && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()
+        ) {
+            answers.add(Answer(stringResource(Res.string.move_node)) { onClickMoveNodeAnswer() })
         }
 
-        answers.addAll(otherAnswers)
         return answers
     }
 
-    private fun createDeleteOrReplaceElementAnswer(): AnswerItem? {
+    @Composable
+    private fun createDeleteOrReplaceElementAnswer(): Answer? {
         val isDeletePoiEnabled = osmElementQuestType.isDeleteElementEnabled && element.type == ElementType.NODE
         val isReplacePlaceEnabled = osmElementQuestType.isReplacePlaceEnabled
         if (!isDeletePoiEnabled && !isReplacePlaceEnabled) return null
@@ -189,29 +167,12 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
         }
 
-        return AnswerItem(R.string.quest_generic_answer_does_not_exist) {
+        return Answer(stringResource(Res.string.quest_generic_answer_does_not_exist)) {
             if (isDeletePoiEnabled) {
                 deletePoiNode()
             } else if (isReplacePlaceEnabled) {
                 replacePlace()
             }
-        }
-    }
-
-    private fun showOtherAnswers() {
-        val otherAnswersButton = view?.findViewById<ViewGroup>(R.id.buttonPanel)?.children?.firstOrNull() ?: return
-        val answers = assembleOtherAnswers()
-        val popup = PopupMenu(requireContext(), otherAnswersButton)
-        for (i in answers.indices) {
-            val otherAnswer = answers[i]
-            val order = answers.size - i
-            popup.menu.add(Menu.NONE, i, order, otherAnswer.title)
-        }
-        popup.show()
-
-        popup.setOnMenuItemClickListener { item ->
-            answers[item.itemId].action()
-            true
         }
     }
 
@@ -346,7 +307,7 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     }
 
 
-    /* Unfortunately, ResourceEnviornment's constructor is internal, so we cannot use this
+    /* Unfortunately, ResourceEnvironment's constructor is internal, so we cannot use this
        see https://youtrack.jetbrains.com/issue/CMP-9959/Access-resources-in-specific-language-outside-of-composition
 
     /** get English resource environment */

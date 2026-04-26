@@ -1,20 +1,15 @@
 package de.westnordost.streetcomplete.quests.address
 
-import android.os.Bundle
-import android.view.View
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.AnnotatedString
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.address.PlaceName
@@ -22,15 +17,16 @@ import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameForm
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_address_street_no_named_streets
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
-    override val contentLayoutResId = R.layout.compose_view
-    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
@@ -38,38 +34,35 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
         "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
             .toElementFilterExpression()
 
-    private lateinit var streetOrPlaceName: MutableState<StreetOrPlaceName>
-    private lateinit var showSelect: MutableState<Boolean>
-
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() }
+    private var streetOrPlaceName = mutableStateOf<StreetOrPlaceName>(
+        if (lastWasPlaceName) PlaceName("") else StreetName("")
     )
 
     @Composable
-    override fun getSubtitle(): AnnotatedString? =
-        nameAndLocationLabel(element, featureDictionary, showHouseNumber = true)
+    override fun Content() {
+        var showSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.composeViewBase.content { Surface {
-            streetOrPlaceName = rememberSerializable { mutableStateOf(
-                if (lastWasPlaceName) PlaceName("") else StreetName("")
-            ) }
-            showSelect = rememberSaveable { mutableStateOf(lastWasPlaceName) }
-
+        QuestForm(
+            answers = Confirm(isComplete = streetOrPlaceName.value.name.isNotEmpty()) {
+                lastWasPlaceName = streetOrPlaceName.value is PlaceName
+                applyAnswer(streetOrPlaceName.value)
+            },
+            subtitle = nameAndLocationLabel(element, featureDictionary, showHouseNumber = true),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_address_street_no_named_streets)) {
+                    streetOrPlaceName.value = PlaceName("")
+                    showSelect = true
+                }
+            ),
+        ) {
             StreetOrPlaceNameForm(
                 value = streetOrPlaceName.value,
-                onValueChange = {
-                    streetOrPlaceName.value = it
-                    checkIsFormComplete()
-                },
+                onValueChange = { streetOrPlaceName.value = it },
                 modifier = Modifier.fillMaxWidth(),
-                showSelect = showSelect.value
+                showSelect = showSelect
             )
-        } }
+        }
     }
-
 
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         if (streetOrPlaceName.value !is StreetName) return false
@@ -82,22 +75,7 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
             ?: return false
 
         streetOrPlaceName.value = StreetName(name)
-        checkIsFormComplete()
         return true
-    }
-
-    override fun onClickOk() {
-        lastWasPlaceName = streetOrPlaceName.value is PlaceName
-        applyAnswer(streetOrPlaceName.value)
-    }
-
-    override fun isFormComplete(): Boolean =
-        streetOrPlaceName.value.name.isNotEmpty()
-
-    private fun showPlaceName() {
-        streetOrPlaceName.value = PlaceName("")
-        showSelect.value = true
-        checkIsFormComplete()
     }
 
     companion object {

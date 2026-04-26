@@ -1,15 +1,23 @@
 package de.westnordost.streetcomplete.quests.recycling_glass
 
-import de.westnordost.streetcomplete.R
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.ANY
-import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTLES
+import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.*
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Answers
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class DetermineRecyclingGlassForm : AbstractOsmQuestForm<RecyclingGlass>() {
 
-    override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_recycling_type_any_glass) { applyAnswer(ANY) },
-        AnswerItem(R.string.quest_recycling_type_glass_bottles_short) { applyAnswer(BOTTLES) }
-    )
+    @Composable
+    override fun Content() {
+        QuestForm(
+            answers = Answers(
+                Answer(stringResource(Res.string.quest_recycling_type_any_glass)) { applyAnswer(ANY) },
+                Answer(stringResource(Res.string.quest_recycling_type_glass_bottles_short)) { applyAnswer(BOTTLES) }
+            )
+        )
+    }
 }

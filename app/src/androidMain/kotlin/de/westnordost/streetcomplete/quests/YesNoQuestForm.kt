@@ -1,11 +1,21 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.R
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Answers
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class YesNoQuestForm : AbstractOsmQuestForm<Boolean>() {
 
-    override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(false) },
-        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(true) }
-    )
+    @Composable
+    override fun Content() {
+        QuestForm(
+            answers = Answers(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { applyAnswer(false) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { applyAnswer(true) }
+            )
+        )
+    }
 }

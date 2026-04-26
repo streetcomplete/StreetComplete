@@ -4,6 +4,8 @@ import de.westnordost.osm_opening_hours.model.HolidaySelector
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
 import de.westnordost.osm_opening_hours.model.TimesSelector
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
+import de.westnordost.streetcomplete.util.serialization.HierarchicOpeningHoursSerializer
+import kotlinx.serialization.Serializable
 
 /**
  * Opening hours model that is hierarchical:
@@ -21,6 +23,7 @@ import de.westnordost.osm_opening_hours.model.WeekdaysSelector
  *         10:00 - 12:00
  * ```
  */
+@Serializable(with = HierarchicOpeningHoursSerializer::class)
 data class HierarchicOpeningHours(
     val monthsList: List<Months>
 ) {

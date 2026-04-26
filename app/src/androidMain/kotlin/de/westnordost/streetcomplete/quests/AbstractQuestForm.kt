@@ -8,13 +8,14 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableFloatState
 import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.AnnotatedString
 import androidx.core.os.bundleOf
 import androidx.core.view.isGone
 import androidx.core.widget.NestedScrollView
 import androidx.viewbinding.ViewBinding
 import de.westnordost.countryboundaries.CountryBoundaries
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.get
@@ -23,8 +24,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
-import de.westnordost.streetcomplete.databinding.ButtonPanelButtonBinding
-import de.westnordost.streetcomplete.databinding.FragmentQuestAnswerBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.AbstractBottomSheetFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
@@ -34,10 +33,6 @@ import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
-import de.westnordost.streetcomplete.view.CharSequenceText
-import de.westnordost.streetcomplete.view.ResText
-import de.westnordost.streetcomplete.view.Text
-import de.westnordost.streetcomplete.view.setText
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
@@ -58,17 +53,6 @@ abstract class AbstractQuestForm :
     private val countryInfos: CountryInfos by inject()
     private val countryBoundaries: Lazy<CountryBoundaries> by inject(named("CountryBoundariesLazy"))
     private val questTypeRegistry: QuestTypeRegistry by inject()
-
-    private var _binding: FragmentQuestAnswerBinding? = null
-    private val binding get() = _binding!!
-
-    override val bottomSheetContainer get() = binding.bottomSheetContainer
-    override val bottomSheet get() = binding.bottomSheet
-    override val scrollViewChild get() = binding.scrollViewChild
-    override val bottomSheetTitle get() = binding.speechBubbleTitleContainer
-    override val bottomSheetContent get() = binding.speechbubbleContentContainer
-    override val floatingBottomView get() = binding.okButtonContainer
-    protected val scrollView: NestedScrollView get() = binding.scrollView
 
     private var startedOnce = false
 
@@ -98,10 +82,6 @@ abstract class AbstractQuestForm :
     protected val mapRotation: MutableFloatState = mutableFloatStateOf(0f)
     protected val mapTilt: MutableFloatState = mutableFloatStateOf(0f)
 
-    // overridable by child classes
-    open val contentLayoutResId: Int? = null
-    open val contentPadding = true
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -119,61 +99,16 @@ abstract class AbstractQuestForm :
         _countryInfo = null
     }
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentQuestAnswerBinding.inflate(inflater, container, false)
-        contentLayoutResId?.let { setContentView(it) }
-        return binding.root
-    }
-
-    protected open fun getTitle(): StringResource =
-        questType.title
-
-    @Composable
-    protected open fun getSubtitle(): AnnotatedString? = null
-
-    @Composable
-    protected open fun getHint(): String? = questType.hint?.let { stringResource(it) }
-
-    protected open fun getHintImages(): List<DrawableResource> = questType.hintImages
-
-    @Composable
-    protected open fun ContentBeforeSpeechBubbleContent() {}
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.questHeader.content { Surface {
-            QuestHeader(
-                title = stringResource(getTitle()),
-                subtitle = getSubtitle(),
-                hintText = getHint(),
-                hintImages = getHintImages()
-            )
-        } }
-
-        binding.contentBeforeSpeechbubbleContent.content {
-            ContentBeforeSpeechBubbleContent()
+        val view = ComposeView(inflater.context)
+        view.content {
+            Content()
         }
-
-        binding.okButton.setOnClickListener {
-            if (!isFormComplete()) {
-                activity?.toast(R.string.no_changes)
-            } else {
-                onClickOk()
-            }
-        }
-
-        // no content? -> hide the content container
-        if (binding.content.childCount == 0) {
-            binding.content.visibility = View.GONE
-        }
-
-        binding.composeViewDialogContainer.content { DialogContainer() }
+        return view
     }
 
     @Composable
-    open fun DialogContainer() {}
+    abstract fun Content()
 
     override fun onStart() {
         super.onStart()
@@ -184,72 +119,12 @@ abstract class AbstractQuestForm :
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    protected fun setObjNote(text: CharSequence?) {
-        binding.noteLabel.text = text
-        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
-    }
-
-    /** Inflate given layout resource id into the content view and return the inflated view */
-    protected fun setContentView(resourceId: Int): View {
-        if (binding.content.childCount > 0) {
-            binding.content.removeAllViews()
-        }
-        binding.content.visibility = View.VISIBLE
-        updateContentPadding()
-        layoutInflater.inflate(resourceId, binding.content)
-        return binding.content.getChildAt(0)
-    }
-
-    protected fun setLocked(locked: Boolean) {
-        binding.glassPane.isGone = !locked
-    }
-
-    protected fun updateContentPadding() {
-        if (!contentPadding) {
-            binding.content.setPadding(0, 0, 0, 0)
-        } else {
-            val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)
-            val vertical = resources.getDimensionPixelSize(R.dimen.quest_form_vertical_padding)
-            binding.content.setPadding(horizontal, vertical, horizontal, vertical)
-        }
-    }
-
-    protected fun setButtonPanelAnswers(buttonPanelAnswers: List<IAnswerItem>) {
-        binding.buttonPanel.removeAllViews()
-        for (buttonPanelAnswer in buttonPanelAnswers) {
-            val button = ButtonPanelButtonBinding.inflate(layoutInflater, binding.buttonPanel, true).root
-            button.setText(buttonPanelAnswer.title)
-            button.setOnClickListener { buttonPanelAnswer.action() }
-        }
-    }
-
-    protected fun checkIsFormComplete() {
-        if (isFormComplete()) {
-            binding.okButtonContainer.popIn()
-        } else {
-            binding.okButtonContainer.popOut()
-        }
-    }
-
     override fun isRejectingClose() = isFormComplete()
-
-    protected open fun isFormComplete(): Boolean = false
 
     override fun onMapOrientation(rotation: Double, tilt: Double) {
         mapRotation.floatValue = rotation.toFloat()
         mapTilt.floatValue = tilt.toFloat()
     }
-
-    protected open fun onClickOk() {}
-
-    protected inline fun <reified T : ViewBinding> contentViewBinding(
-        noinline viewBinder: (View) -> T
-    ) = FragmentViewBindingPropertyDelegate(this, viewBinder, R.id.content)
 
     companion object {
         private const val ARG_QUEST_KEY = "quest_key"
@@ -266,17 +141,4 @@ abstract class AbstractQuestForm :
             ARG_MAP_TILT to tilt
         )
     }
-}
-
-interface IAnswerItem {
-    val title: Text
-    val action: () -> Unit
-}
-
-data class AnswerItem(val titleResourceId: Int, override val action: () -> Unit) : IAnswerItem {
-    override val title: Text get() = ResText(titleResourceId)
-}
-
-data class AnswerItem2(val titleString: String, override val action: () -> Unit) : IAnswerItem {
-    override val title: Text get() = CharSequenceText(titleString)
 }

@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.quests.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
@@ -39,7 +40,7 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>(), AndroidQuest {
         Res.drawable.tactile_paving3
     )
 
-    override fun createForm() = TactilePavingForm()
+    override fun createForm() = YesNoQuestForm()
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("tactile_paving", answer.toYesNo())

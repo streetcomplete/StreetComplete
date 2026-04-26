@@ -5,15 +5,19 @@ import de.westnordost.streetcomplete.osm.fee.Fee
 import de.westnordost.streetcomplete.osm.fee.applyTo
 import de.westnordost.streetcomplete.osm.maxstay.MaxStay
 import de.westnordost.streetcomplete.osm.maxstay.applyTo
+import kotlinx.serialization.Serializable
 
+@Serializable
 sealed interface ParkingFeeAnswer {
     fun isComplete(): Boolean
 
+    @Serializable
     data class NoFeeButMaxStay(val maxstay: MaxStay) : ParkingFeeAnswer {
         override fun isComplete(): Boolean = maxstay.isComplete()
     }
 }
 
+@Serializable
 data class ParkingFee(val fee: Fee) : ParkingFeeAnswer {
     override fun isComplete(): Boolean = fee.isComplete()
 }

@@ -8,10 +8,12 @@ enum class InternetAccess(val osmValue: String) {
     WIFI("wlan"),
     TERMINAL("terminal"),
     WIRED("wired"),
+    NO("no"),
 }
 
 val InternetAccess.text: StringResource get() = when (this) {
     WIFI -> Res.string.quest_internet_access_wlan
     TERMINAL -> Res.string.quest_internet_access_terminal
     WIRED -> Res.string.quest_internet_access_wired
+    NO -> Res.string.quest_internet_access_no
 }

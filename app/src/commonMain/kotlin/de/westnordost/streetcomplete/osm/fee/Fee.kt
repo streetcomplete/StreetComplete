@@ -4,14 +4,18 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.time_restriction.TimeRestriction
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import kotlinx.serialization.Serializable
 
+@Serializable
 sealed interface Fee {
     fun isComplete(): Boolean = when (this) {
         No -> true
         is Yes ->  timeRestriction?.isComplete() != false
     }
 
+    @Serializable
     data class Yes(val timeRestriction: TimeRestriction? = null) : Fee
+    @Serializable
     data object No : Fee
 }
 

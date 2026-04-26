@@ -1,20 +1,27 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
 
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answers
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddTrafficSignalsVibrationForm : AbstractOsmQuestForm<Boolean>() {
 
-    override fun getHintImages(): List<DrawableResource> =
-        listOf(getVibratingButtonIllustration(countryInfo.countryCode))
-
-    override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(false) },
-        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(true) }
-    )
+    @Composable
+    override fun Content() {
+        QuestForm(
+            answers = Answers(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { applyAnswer(false) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { applyAnswer(true) }
+            ),
+            hintImages = listOf(getVibratingButtonIllustration(countryInfo.countryCode))
+        )
+    }
 }
 
 private fun getVibratingButtonIllustration(countryCode: String): DrawableResource =

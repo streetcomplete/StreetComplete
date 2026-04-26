@@ -1,16 +1,26 @@
 package de.westnordost.streetcomplete.quests.amenity_indoor
 
-import de.westnordost.streetcomplete.R
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.amenity_indoor.IsAmenityIndoorAnswer.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Answers
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class IsAmenityIndoorForm : AbstractOsmQuestForm<IsAmenityIndoorAnswer>() {
-    override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(IsAmenityIndoorAnswer.OUTDOOR) },
-        AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(IsAmenityIndoorAnswer.INDOOR) }
-    )
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_isAmenityIndoor_outside_covered) { applyAnswer(IsAmenityIndoorAnswer.COVERED) }
-    )
+    @Composable
+    override fun Content() {
+        QuestForm(
+            answers = Answers(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { applyAnswer(OUTDOOR) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { applyAnswer(INDOOR) }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_isAmenityIndoor_outside_covered)) { applyAnswer(COVERED) }
+            )
+        )
+    }
 }
