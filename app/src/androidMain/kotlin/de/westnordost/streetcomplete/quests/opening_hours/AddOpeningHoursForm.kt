@@ -30,10 +30,10 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
 
     @Composable
     override fun Content() {
-        var originalOpeningHours by rememberSerializable {
-            mutableStateOf(element.tags["opening_hours"]
+        val originalOpeningHours = remember {
+            element.tags["opening_hours"]
                 ?.toOpeningHoursOrNull(lenient = true)
-                ?.toHierarchicOpeningHours())
+                ?.toHierarchicOpeningHours()
         }
         var openingHours by rememberSerializable {
             mutableStateOf(originalOpeningHours ?: HierarchicOpeningHours())

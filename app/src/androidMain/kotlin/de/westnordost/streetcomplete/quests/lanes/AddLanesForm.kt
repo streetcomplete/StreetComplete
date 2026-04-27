@@ -1,75 +1,71 @@
 package de.westnordost.streetcomplete.quests.lanes
 
-import android.os.Bundle
-import android.view.View
-import androidx.compose.material.Surface
-import androidx.compose.runtime.MutableState
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import org.jetbrains.compose.resources.stringResource
 
 class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
 
-    override val contentLayoutResId = R.layout.compose_view
-    private val binding by contentViewBinding(ComposeViewBinding::bind)
+    @Composable
+    override fun Content() {
+        var answer by rememberSerializable { mutableStateOf(Lanes()) }
 
-    private lateinit var answer: MutableState<Lanes>
-
-    override val contentPadding = false
-
-    // just some shortcuts
-
-    private val edgeLineStyle by lazy {
-        when {
-            countryInfo.edgeLineStyle.contains("short dashes") -> LineStyle.SHORT_DASHES
-            countryInfo.edgeLineStyle.contains("dashes") -> LineStyle.DASHES
-            else -> LineStyle.CONTINUOUS
+        val edgeLineStyle = remember {
+            when {
+                countryInfo.edgeLineStyle.contains("short dashes") -> LineStyle.SHORT_DASHES
+                countryInfo.edgeLineStyle.contains("dashes") -> LineStyle.DASHES
+                else -> LineStyle.CONTINUOUS
+            }
         }
-    }
-
-    private val edgeLineColor by lazy {
-        if (countryInfo.edgeLineStyle.contains("yellow")) Color.Yellow else Color.White
-    }
-
-    private val centerLineColor by lazy {
-        if (countryInfo.centerLineStyle.contains("yellow")) Color.Yellow else Color.White
-    }
-
-    private val isOneway by lazy { isOneway(element.tags) }
-
-    private val isReversedOneway by lazy { isReversedOneway(element.tags) }
-
-    override val otherAnswers: List<AnswerItem> get() = buildList {
-        if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
-            add(AnswerItem(R.string.quest_lanes_answer_lanes_center_left_turn_lane) {
-                answer.value = answer.value.copy(centerLeftTurnLane = true)
-                checkIsFormComplete()
-            })
+        val edgeLineColor = remember {
+            if (countryInfo.edgeLineStyle.contains("yellow")) Color.Yellow else Color.White
         }
-        add(AnswerItem(R.string.quest_lanes_answer_noLanes) {
-            applyAnswer(LanesAnswer.IsUnmarked)
-        })
-    }
+        val centerLineColor = remember {
+            if (countryInfo.centerLineStyle.contains("yellow")) Color.Yellow else Color.White
+        }
+        val isOneway = remember { isOneway(element.tags) }
+        val isReversedOneway = remember { isReversedOneway(element.tags) }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.composeViewBase.content { Surface {
-            answer = rememberSerializable { mutableStateOf(Lanes()) }
-
+        QuestForm(
+            answers = Confirm(
+                isComplete =
+                    if (!isOneway) {
+                        answer.forward != null && answer.backward != null
+                    } else {
+                        answer.forward != null || answer.backward != null
+                    },
+                hasChanges = answer.forward != null || answer.backward != null
+            ) {
+                applyAnswer(answer)
+            },
+            otherAnswers = buildList {
+                if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
+                    add(Answer(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
+                        answer = answer.copy(centerLeftTurnLane = true)
+                    })
+                }
+                add(Answer(stringResource(Res.string.quest_lanes_answer_noLanes)) {
+                    applyAnswer(LanesAnswer.IsUnmarked)
+                })
+            },
+            contentPadding = PaddingValues.Zero,
+        ) {
             LanesForm(
-                value = answer.value,
-                onValueChanged = {
-                    answer.value = it
-                    checkIsFormComplete()
-                },
+                value = answer,
+                onValueChanged = { answer = it },
                 wayRotation = geometryRotation.floatValue,
                 mapRotation = mapRotation.floatValue,
                 mapTilt = mapTilt.floatValue,
@@ -80,20 +76,6 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
                 edgeLineColor = edgeLineColor,
                 edgeLineStyle = edgeLineStyle,
             )
-        } }
-    }
-
-    override fun isFormComplete(): Boolean =
-        if (!isOneway) {
-            answer.value.forward != null && answer.value.backward != null
-        } else {
-            answer.value.forward != null || answer.value.backward != null
         }
-
-    override fun isRejectingClose(): Boolean =
-        answer.value.forward != null || answer.value.backward != null
-
-    override fun onClickOk() {
-        applyAnswer(answer.value)
     }
 }

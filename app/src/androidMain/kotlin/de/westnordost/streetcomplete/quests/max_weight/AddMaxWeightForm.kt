@@ -1,107 +1,120 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
-import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.compose.material.Surface
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.snapshotFlow
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.lifecycle.lifecycleScope
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import androidx.compose.material.AlertDialog
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.ui.util.content
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import org.jetbrains.compose.resources.stringResource
 
 class AddMaxWeightForm : AbstractOsmQuestForm<List<MaxWeight>>() {
 
-    override val contentLayoutResId = R.layout.compose_view
-    private val binding by contentViewBinding(ComposeViewBinding::bind)
+    @Composable
+    override fun Content() {
+        var signs by rememberSerializable { mutableStateOf(emptyList<MaxWeight>()) }
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_maxweight_answer_other_sign) { onUnsupportedSign() },
-        AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
-    )
+        var confirmUnusualInput by remember { mutableStateOf(false) }
+        var confirmNoSign by remember { mutableStateOf(false) }
+        var showUnsupportedSignDialog by remember { mutableStateOf(false) }
 
-    private var signs: SnapshotStateList<MaxWeight> = mutableStateListOf()
-
-    private val weightLimitUnits get() = countryInfo.weightLimitUnits
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        snapshotFlow { signs.toList() }
-            .onEach { checkIsFormComplete() }
-            .launchIn(lifecycleScope)
-
-        binding.composeViewBase.content { Surface {
+        QuestForm(
+            answers = Confirm(
+                isComplete = signs.isNotEmpty() && signs.all { it.weight != null },
+                hasChanges = signs.isNotEmpty()
+            ) {
+                if (isUnrealisticWeight(signs)) {
+                    confirmUnusualInput = true
+                } else {
+                    applyAnswer(signs)
+                }
+            },
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_maxweight_answer_other_sign)) {
+                    showUnsupportedSignDialog = true
+                },
+                Answer(stringResource(Res.string.quest_generic_answer_noSign)) {
+                    confirmNoSign = true
+                }
+            )
+        ) {
             MaxWeightForm(
                 signs = signs,
                 countryCode = countryInfo.countryCode,
-                selectableUnits = weightLimitUnits,
+                selectableUnits = countryInfo.weightLimitUnits,
                 onSignAdded = { maxweight ->
-                    signs.add(maxweight)
+                    signs = signs.toMutableList().also { it.add(maxweight) }
                 },
                 onSignRemoved = { index ->
-                    signs.removeAt(index)
+                    signs = signs.toMutableList().also { it.removeAt(index) }
                 },
                 onSignChanged = { index, maxweight ->
-                    signs[index] = maxweight
+                    signs = signs.toMutableList().also { it[index] = maxweight }
                 },
             )
-        } }
-    }
+        }
 
-    override fun onClickOk() {
-        if (userSelectedUnrealisticWeight()) {
-            confirmUnusualInput { applyAnswer(signs) }
-        } else {
-            applyAnswer(signs)
+        if (confirmNoSign) {
+            QuestConfirmationDialog(
+                onDismissRequest = { confirmNoSign = false },
+                onConfirmed = { applyAnswer(emptyList()) }
+            )
+        }
+        if (confirmUnusualInput) {
+            QuestConfirmationDialog(
+                onDismissRequest = { confirmUnusualInput = false },
+                onConfirmed = { applyAnswer(signs) },
+                text = { Text(stringResource(Res.string.quest_maxweight_unusualInput_confirmation_description)) }
+            )
+        }
+        if (showUnsupportedSignDialog) {
+            UnsupportedSignDialog(
+                onDismissRequest = { showUnsupportedSignDialog = false },
+                onComposeNote = ::composeNote,
+                onHideQuest = ::hideQuest
+            )
         }
     }
+}
 
-    private fun userSelectedUnrealisticWeight(): Boolean {
-        for (sign in signs) {
-            val w = sign.weight?.toMetricTons() ?: continue
-            if (w > 30 || w < 2) return true
-        }
-        return false
+private fun isUnrealisticWeight(signs: List<MaxWeight>): Boolean {
+    for (sign in signs) {
+        val w = sign.weight?.toMetricTons() ?: continue
+        if (w > 30 || w < 2) return true
     }
+    return false
+}
 
-    private fun onUnsupportedSign() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_maxweight_unsupported_sign_request_photo)
-            .setPositiveButton(android.R.string.ok) { _, _ -> composeNote() }
-            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> hideQuest() }
-            .show()
-        }
-    }
-
-    private fun confirmNoSign() {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(emptyList()) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
-        }
-    }
-
-    private fun confirmUnusualInput(callback: () -> (Unit)) {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setMessage(R.string.quest_maxweight_unusualInput_confirmation_description)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> callback() }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
-        }
-    }
-
-    override fun isFormComplete(): Boolean =
-        signs.isNotEmpty() && signs.all { it.weight != null }
-
-    override fun isRejectingClose(): Boolean =
-        signs.isNotEmpty()
+@Composable
+private fun UnsupportedSignDialog(
+    onDismissRequest: () -> Unit,
+    onComposeNote: () -> Unit,
+    onHideQuest: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    AlertDialog(
+        onDismissRequest = onDismissRequest,
+        confirmButton = {
+            TextButton(onClick = { onComposeNote(); onDismissRequest() }) {
+                Text(stringResource(Res.string.ok))
+            }
+        },
+        modifier = modifier,
+        dismissButton = {
+            TextButton(onClick = { onHideQuest(); onDismissRequest() }) {
+                Text(stringResource(Res.string.quest_leave_new_note_no))
+            }
+        },
+        text = { Text(stringResource(Res.string.quest_maxweight_unsupported_sign_request_photo)) },
+    )
 }
