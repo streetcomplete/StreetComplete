@@ -1,79 +1,67 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
-import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.compose.material.Surface
-import androidx.compose.runtime.MutableState
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import de.westnordost.streetcomplete.R
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 class AddSidewalkForm : AbstractOsmQuestForm<Sides<Sidewalk>>() {
 
-    override val contentLayoutResId = R.layout.compose_view
-    private val binding by contentViewBinding(ComposeViewBinding::bind)
-
     private val prefs: Preferences by inject()
 
-    override val contentPadding = false
+    @Composable
+    override fun Content() {
+        val lastPicked = remember { prefs.getLastPicked<Sides<Sidewalk>>(this::class.simpleName!!) }
+        var sidewalks by rememberSerializable { mutableStateOf(Sides<Sidewalk>(null, null)) }
 
-    override val otherAnswers: List<AnswerItem> = listOf(
-        AnswerItem(R.string.quest_sidewalk_answer_none) { noSidewalksHereHint() }
-    )
+        var showNoSidewalksHint by remember { mutableStateOf(false) }
 
-    private lateinit var sidewalks: MutableState<Sides<Sidewalk>>
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val lastPicked by lazy { prefs.getLastPicked<Sides<Sidewalk>>(this::class.simpleName!!) }
-
-        binding.composeViewBase.content { Surface {
-            sidewalks = rememberSerializable { mutableStateOf(Sides(null, null)) }
-
+        QuestForm(
+            answers = Confirm(
+                isComplete = sidewalks.left != null && sidewalks.right != null,
+                hasChanges = sidewalks.left != null || sidewalks.right != null,
+                onClick = {
+                    applyAnswer(sidewalks)
+                    prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalks))
+                }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_sidewalk_answer_none)) { showNoSidewalksHint = true }
+            ),
+            contentPadding = PaddingValues.Zero,
+        ) {
             SidewalkForm(
-                value = sidewalks.value,
-                onValueChanged = {
-                    sidewalks.value = it
-                    checkIsFormComplete()
-                },
+                value = sidewalks,
+                onValueChanged = { sidewalks = it },
                 geometryRotation = geometryRotation.floatValue,
                 mapRotation = mapRotation.floatValue,
                 mapTilt = mapTilt.floatValue,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,
                 lastPicked = lastPicked
             )
-
-            checkIsFormComplete()
-        } }
-    }
-
-    private fun noSidewalksHereHint() {
-        activity?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_sidewalk_answer_none_title)
-            .setMessage(R.string.quest_side_select_interface_explanation)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
         }
-    }
 
-    override fun isFormComplete() =
-        sidewalks.value.left != null && sidewalks.value.right != null
-
-    override fun isRejectingClose() =
-        sidewalks.value.left != null || sidewalks.value.right != null
-
-    override fun onClickOk() {
-        applyAnswer(sidewalks.value)
-        prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalks.value))
+        if (showNoSidewalksHint) {
+            InfoDialog(
+                onDismissRequest = { showNoSidewalksHint = false },
+                title = { Text(stringResource(Res.string.quest_sidewalk_answer_none_title)) },
+                text = { Text(stringResource(Res.string.quest_side_select_interface_explanation)) },
+            )
+        }
     }
 }
