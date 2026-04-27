@@ -1,60 +1,44 @@
 package de.westnordost.streetcomplete.quests.building_entrance_reference
 
-import android.os.Bundle
-import android.view.View
-import androidx.compose.material.Surface
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import org.jetbrains.compose.resources.stringResource
 
 class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceReferenceAnswer>() {
 
-    override val contentLayoutResId = R.layout.compose_view
-    private val binding by contentViewBinding(ComposeViewBinding::bind)
+    @Composable
+    override fun Content() {
+        var entranceReference by rememberSerializable { mutableStateOf(lastEntranceReference?.clear()) }
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_entrance_reference_nothing_signed) { onNothingSigned() },
-    )
-
-    private lateinit var entranceReference: MutableState<EntranceReference?>
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.composeViewBase.content { Surface {
-            entranceReference = rememberSerializable { mutableStateOf(lastEntranceReference?.clear()) }
-
-            EntranceReferenceForm(
-                value = entranceReference.value,
-                onValueChange = {
-                    entranceReference.value = it
-                    checkIsFormComplete()
+        QuestForm(
+            answers = Confirm(
+                isComplete = entranceReference?.isComplete() == true,
+                hasChanges = entranceReference != null,
+            ) {
+                lastEntranceReference = entranceReference
+                applyAnswer(entranceReference!!)
+            },
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_entrance_reference_nothing_signed)) {
+                    applyAnswer(EntranceReferenceAnswer.NotSigned)
                 },
             )
-        } }
+        ) {
+            EntranceReferenceForm(
+                value = entranceReference,
+                onValueChange = { entranceReference = it },
+            )
+        }
     }
 
-    /* ----------------------------------- Commit answer ---------------------------------------- */
-
-    private fun onNothingSigned() {
-        applyAnswer(EntranceReferenceAnswer.NotSigned)
-    }
-
-    override fun onClickOk() {
-        lastEntranceReference = entranceReference.value
-        applyAnswer(entranceReference.value!!)
-    }
-
-    override fun isFormComplete(): Boolean =
-        entranceReference.value?.isComplete() == true
-
-    override fun isRejectingClose(): Boolean =
-        entranceReference.value != null
 
     companion object {
         private var lastEntranceReference: EntranceReference? = null

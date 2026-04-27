@@ -1,17 +1,24 @@
 package de.westnordost.streetcomplete.quests.self_service
 
-import de.westnordost.streetcomplete.R
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.NO
-import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.ONLY
-import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.OPTIONAL
+import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.*
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Answers
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class AddSelfServiceLaundryForm : AbstractOsmQuestForm<SelfServiceLaundry>() {
 
-    override val buttonPanelAnswers = listOf(
-        AnswerItem(R.string.quest_generic_hasFeature_no) { applyAnswer(NO) },
-        AnswerItem(R.string.quest_generic_hasFeature_optional) { applyAnswer(OPTIONAL) },
-        AnswerItem(R.string.quest_hasFeature_only) { applyAnswer(ONLY) }
-    )
+    @Composable
+    override fun Content() {
+        QuestForm(
+            answers = Answers(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { applyAnswer(NO) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_optional)) { applyAnswer(OPTIONAL) },
+                Answer(stringResource(Res.string.quest_hasFeature_only)) { applyAnswer(ONLY) }
+            )
+        )
+    }
 }

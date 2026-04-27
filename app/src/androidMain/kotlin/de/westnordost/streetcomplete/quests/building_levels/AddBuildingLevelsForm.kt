@@ -1,32 +1,26 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
-import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.compose.material.Surface
-import androidx.compose.runtime.MutableState
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
-import de.westnordost.streetcomplete.R
+import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.takeFavorites
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
 
-    override val contentLayoutResId = R.layout.compose_view
-    private val binding by contentViewBinding(ComposeViewBinding::bind)
-
     private val prefs: Preferences by inject()
-    private lateinit var levels: MutableState<String>
-    private lateinit var roofLevels: MutableState<String>
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_buildingLevels_answer_multipleLevels) { showMultipleLevelsHint() }
-    )
 
     private val lastPickedAnswers by lazy {
         prefs.getLastPicked<BuildingLevels>(this::class.simpleName!!)
@@ -34,59 +28,49 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
             .sortedWith(compareBy<BuildingLevels> { it.levels }.thenBy { it.roofLevels })
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.composeViewBase.content {
-            levels = rememberSaveable { mutableStateOf(element.tags["building:levels"] ?: "") }
-            roofLevels = rememberSaveable { mutableStateOf(element.tags["roof:levels"] ?: "") }
-            Surface {
-                BuildingLevelsForm(
-                    levels = levels.value,
-                    onLevelsChange = {
-                        levels.value = it
-                        checkIsFormComplete()
-                    },
-                    roofLevels = roofLevels.value,
-                    onRoofLevelsChange = {
-                        roofLevels.value = it
-                        checkIsFormComplete()
-                    },
-                    previousBuildingLevels = lastPickedAnswers
-                )
-            }
+    @Composable
+    override fun Content() {
+        var levels by rememberSaveable {
+            mutableStateOf(element.tags["building:levels"]?.toIntOrNull()?.takeIf { it >= 0 })
         }
-    }
-
-    override fun onClickOk() {
-        val answer = BuildingLevels(
-            levels.value.toInt(),
-            roofLevels.value.takeIf { it.isNotEmpty() }?.toInt()
-        )
-        prefs.addLastPicked(this::class.simpleName!!, answer)
-        applyAnswer(answer)
-    }
-
-    private fun showMultipleLevelsHint() {
-        activity?.let {
-            AlertDialog.Builder(it)
-                .setMessage(R.string.quest_buildingLevels_answer_description)
-                .setPositiveButton(android.R.string.ok, null)
-                .show()
+        var roofLevels by rememberSaveable {
+            mutableStateOf(element.tags["roof:levels"]?.toIntOrNull()?.takeIf { it >= 0 })
         }
-    }
+        var showMultipleLevelsHint by remember { mutableStateOf(false) }
 
-    override fun isFormComplete(): Boolean {
-        val roofShape = element.tags["roof:shape"]
-        val hasNonFlatRoofShape = roofShape != null && roofShape != "flat"
-        val roofLevelsAreOptional = countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
+        val roofLevelsAreOptional = remember {
+            val roofShape = element.tags["roof:shape"]
+            val hasNonFlatRoofShape = roofShape != null && roofShape != "flat"
+            countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
+        }
 
-        return levels.value.isValidLevel()
-            && (
-                roofLevelsAreOptional && roofLevels.value.isEmpty()
-                || roofLevels.value.isValidLevel()
+        QuestForm(
+            answers = Confirm(
+                isComplete = levels != null && (roofLevelsAreOptional || roofLevels != null),
+                hasChanges = levels != null || roofLevels != null
+            ) {
+                val answer = BuildingLevels(levels!!, roofLevels)
+                prefs.addLastPicked(this::class.simpleName!!, answer)
+                applyAnswer(answer)
+            },
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_buildingLevels_answer_multipleLevels)) { showMultipleLevelsHint = true }
             )
-    }
+        ) {
+            BuildingLevelsForm(
+                levels = levels,
+                onLevelsChange = { levels = it },
+                roofLevels = roofLevels,
+                onRoofLevelsChange = { roofLevels = it },
+                previousBuildingLevels = lastPickedAnswers
+            )
+        }
 
-    private fun String.isValidLevel(): Boolean =
-        toIntOrNull()?.takeIf { it >= 0 } != null
+        if (showMultipleLevelsHint) {
+            InfoDialog(
+                onDismissRequest = { showMultipleLevelsHint = false },
+                text = { Text(stringResource(Res.string.quest_buildingLevels_answer_description)) }
+            )
+        }
+    }
 }
