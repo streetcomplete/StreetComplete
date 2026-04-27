@@ -1,38 +1,27 @@
 package de.westnordost.streetcomplete.quests.address
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.AlertDialog
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.DpSize
-import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
 import de.westnordost.streetcomplete.osm.address.looksInvalid
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.createBuildingType
-import de.westnordost.streetcomplete.osm.building.description
-import de.westnordost.streetcomplete.osm.building.icon
-import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Confirm
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
@@ -150,44 +139,4 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         private var lastHouseNumber: String? = null
         private var lastWasBlock: Boolean = false
     }
-}
-
-@Composable
-private fun NoHouseNumberDialog(
-    onDismissRequest: () -> Unit,
-    onNoHouseNumber: () -> Unit,
-    onWrongBuildingType: () -> Unit,
-    buildingType: BuildingType,
-    modifier: Modifier = Modifier,
-) {
-    AlertDialog(
-        onDismissRequest = onDismissRequest,
-        confirmButton = {
-            TextButton(onClick = {
-                onNoHouseNumber()
-                onDismissRequest()
-            }) { Text(stringResource(Res.string.quest_generic_hasFeature_yes)) }
-        },
-        modifier = modifier,
-        dismissButton = {
-            TextButton(onClick = {
-                onWrongBuildingType()
-                onDismissRequest()
-            }) { Text(stringResource(Res.string.quest_generic_hasFeature_no)) }
-        },
-        text = {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                Text(stringResource(Res.string.quest_address_answer_no_housenumber_message1))
-                ImageWithDescription(
-                    painter = painterResource(buildingType.icon),
-                    title = stringResource(buildingType.title),
-                    description = buildingType.description?.let { stringResource(it) },
-                    imageSize = DpSize(48.dp, 48.dp),
-                )
-                Text(stringResource(Res.string.quest_address_answer_no_housenumber_message2b))
-            }
-        }
-    )
 }
