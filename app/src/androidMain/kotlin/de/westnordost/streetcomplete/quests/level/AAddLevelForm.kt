@@ -5,11 +5,12 @@ import android.view.View
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -24,6 +25,8 @@ import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
+import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.toShortString
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -34,9 +37,6 @@ import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 
 abstract class AAddLevelForm : AbstractOsmQuestForm<String>() {
-
-    override val contentLayoutResId = R.layout.compose_view
-    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     abstract fun filter(mapData: MapDataWithGeometry): List<Element>
 
@@ -49,6 +49,25 @@ abstract class AAddLevelForm : AbstractOsmQuestForm<String>() {
 
     private val level: MutableState<Double?> = mutableStateOf(null)
     private val selectableLevels: MutableState<List<Double>> = mutableStateOf(emptyList())
+
+    @Composable
+    override fun Content() {
+        QuestForm(
+            answers = Confirm(
+                isComplete = level.value != null,
+                onClick = { applyAnswer(level.value!!.toShortString()) }
+            )
+        ) {
+            LevelForm(
+                level = level.value,
+                onLevelChange = {
+                    level.value = it
+                    updateMarkers(level.value)
+                },
+                selectableLevels = selectableLevels.value,
+            )
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -66,23 +85,6 @@ abstract class AAddLevelForm : AbstractOsmQuestForm<String>() {
 
             selectableLevels.value = parseSelectableLevels(elementsWithLevels.map { it.tags })
         }
-
-        binding.composeViewBase.content { Surface {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center,
-            ) {
-                LevelForm(
-                    level = level.value,
-                    onLevelChange = {
-                        level.value = it
-                        checkIsFormComplete()
-                        updateMarkers(level.value)
-                    },
-                    selectableLevels = selectableLevels.value,
-                )
-            }
-        } }
     }
 
     private fun updateMarkers(level: Double?) {
@@ -97,10 +99,4 @@ abstract class AAddLevelForm : AbstractOsmQuestForm<String>() {
         }
         showsGeometryMarkersListener?.putMarkersForCurrentHighlighting(markers)
     }
-
-    override fun onClickOk() {
-        applyAnswer(level.value!!.toShortString())
-    }
-
-    override fun isFormComplete() = level.value != null
 }

@@ -6,6 +6,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.screens.measure.ArQuestsDisabler
