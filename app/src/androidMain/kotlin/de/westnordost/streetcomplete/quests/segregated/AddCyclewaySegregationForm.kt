@@ -10,32 +10,40 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddCyclewaySegregationForm : AItemSelectQuestForm<CyclewaySegregation, CyclewaySegregation>() {
+class AddCyclewaySegregationForm : AbstractOsmQuestForm<CyclewaySegregation>() {
 
-    override val items = CyclewaySegregation.entries
-    override val itemsPerRow = 1
-    override val serializer = serializer<CyclewaySegregation>()
+    private val prefs: Preferences by inject()
 
-    @Composable override fun ItemContent(item: CyclewaySegregation) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            Image(painterResource(item.getIcon(countryInfo.isLeftHandTraffic)), null)
-            Text(
-                text = stringResource(item.title),
-                style = MaterialTheme.typography.body2,
-                modifier = Modifier.weight(1f).padding(4.dp)
-            )
-        }
-    }
-
-    override fun onClickOk(selectedItem: CyclewaySegregation) {
-        applyAnswer(selectedItem)
+    @Composable
+    override fun Content() {
+        ItemSelectQuestForm(
+            items = CyclewaySegregation.entries,
+            itemContent = { item ->
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(4.dp)
+                ) {
+                    Image(painterResource(item.getIcon(countryInfo.isLeftHandTraffic)), null)
+                    Text(
+                        text = stringResource(item.title),
+                        style = MaterialTheme.typography.body2,
+                        modifier = Modifier.weight(1f).padding(4.dp)
+                    )
+                }
+            },
+            onClickOk = { applyAnswer(it) },
+            prefs = prefs,
+            serializer = serializer(),
+            favoriteKey = "AddCyclewaySegregationForm",
+            itemsPerRow = 1,
+        )
     }
 }

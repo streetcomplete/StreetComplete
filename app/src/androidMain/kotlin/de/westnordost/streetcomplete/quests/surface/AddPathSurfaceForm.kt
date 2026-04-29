@@ -1,52 +1,49 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
-import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddPathSurfaceForm : AItemSelectQuestForm<Surface, SurfaceOrIsStepsAnswer>() {
-    override val items get() = Surface.selectableValuesForWays
-    override val itemsPerRow = 3
-    override val serializer = serializer<Surface>()
+class AddPathSurfaceForm : AbstractOsmQuestForm<SurfaceOrIsStepsAnswer>() {
 
-    override val otherAnswers get() = listOfNotNull(
-        createConvertToStepsAnswer(),
-        createMarkAsIndoorsAnswer(),
-    )
+    private val prefs: Preferences by inject()
 
-    @Composable override fun ItemContent(item: Surface) {
-        ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
-    }
-
-    override fun onClickOk(selectedItem: Surface) {
-        applyAnswer(SurfaceAnswer(selectedItem))
-    }
-
-    private fun createConvertToStepsAnswer(): AnswerItem? =
-        if (element.couldBeSteps()) {
-            AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
-                applyAnswer(IsActuallyStepsAnswer)
+    @Composable
+    override fun Content() {
+        ItemSelectQuestForm(
+            items = Surface.selectableValuesForWays,
+            itemContent = { item ->
+                ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
+            },
+            onClickOk = { applyAnswer(SurfaceAnswer(it)) },
+            prefs = prefs,
+            serializer = serializer(),
+            favoriteKey = "AddPathSurfaceForm",
+            itemsPerRow = 3,
+            otherAnswers = buildList {
+                if (element.couldBeSteps()) {
+                    add(Answer(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
+                        applyAnswer(IsActuallyStepsAnswer)
+                    })
+                }
+                if (element.tags["indoor"] != "yes") {
+                    add(Answer(stringResource(Res.string.quest_generic_answer_is_indoors)) {
+                        applyAnswer(IsIndoorsAnswer)
+                    })
+                }
             }
-        } else {
-            null
-        }
-
-    private fun createMarkAsIndoorsAnswer(): AnswerItem? {
-        val way = element as? Way ?: return null
-        if (way.tags["indoor"] == "yes") return null
-
-        return AnswerItem(R.string.quest_generic_answer_is_indoors) {
-            applyAnswer(IsIndoorsAnswer)
-        }
+        )
     }
 }

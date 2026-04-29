@@ -2,26 +2,38 @@ package de.westnordost.streetcomplete.quests.roof_shape
 
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import androidx.compose.runtime.remember
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.MANY
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddRoofShapeForm : AItemSelectQuestForm<RoofShape, RoofShape>() {
+class AddRoofShapeForm : AbstractOsmQuestForm<RoofShape>() {
 
-    override val serializer = serializer<RoofShape>()
-    override val items = RoofShape.entries - MANY
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_roofShape_answer_many) { applyAnswer(MANY) }
-    )
+    private val prefs: Preferences by inject()
 
-    @Composable override fun ItemContent(item: RoofShape) {
-        Image(painterResource(item.icon), null)
-    }
-
-    override fun onClickOk(selectedItem: RoofShape) {
-        applyAnswer(selectedItem)
+    @Composable
+    override fun Content() {
+        val items = remember { RoofShape.entries - MANY }
+        ItemSelectQuestForm(
+            items = items,
+            itemContent = { item ->
+                Image(painterResource(item.icon), null)
+            },
+            onClickOk = { applyAnswer(it) },
+            prefs = prefs,
+            serializer = serializer(),
+            favoriteKey = "AddRoofShapeForm",
+            itemsPerRow = 3,
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_roofShape_answer_many)) { applyAnswer(MANY) }
+            )
+        )
     }
 }

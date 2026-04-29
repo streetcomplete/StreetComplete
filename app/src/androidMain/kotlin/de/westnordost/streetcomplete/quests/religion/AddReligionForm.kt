@@ -1,40 +1,51 @@
 package de.westnordost.streetcomplete.quests.religion
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import androidx.compose.runtime.remember
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.religion.Religion.MULTIFAITH
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddReligionForm : AItemSelectQuestForm<Religion, Religion>() {
+class AddReligionForm : AbstractOsmQuestForm<Religion>() {
 
-    override val serializer = serializer<Religion>()
+    private val prefs: Preferences by inject()
 
-    override val items get() = (Religion.entries - MULTIFAITH)
-        .sortedBy { religionPosition(it.osmValue) }
+    @Composable
+    override fun Content() {
+        val items = remember {
+            (Religion.entries - MULTIFAITH).sortedBy { religionPosition(it.osmValue) }
+        }
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_religion_for_place_of_worship_answer_multi) { applyAnswer(MULTIFAITH) }
-    )
+        ItemSelectQuestForm(
+            items = items,
+            itemContent = { item ->
+                ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+            },
+            onClickOk = { applyAnswer(it) },
+            prefs = prefs,
+            serializer = serializer(),
+            favoriteKey = "AddReligionForm",
+            itemsPerRow = 3,
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_religion_for_place_of_worship_answer_multi)) { applyAnswer(MULTIFAITH) }
+            )
+        )
+    }
 
-    fun religionPosition(osmValue: String): Int {
+    private fun religionPosition(osmValue: String): Int {
         val position = countryInfo.popularReligions.indexOf(osmValue)
         if (position < 0) {
             // not present at all in config, so should be put at the end
             return Integer.MAX_VALUE
         }
         return position
-    }
-
-    @Composable override fun ItemContent(item: Religion) {
-        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
-    }
-
-    override fun onClickOk(selectedItem: Religion) {
-        applyAnswer(selectedItem)
     }
 }
