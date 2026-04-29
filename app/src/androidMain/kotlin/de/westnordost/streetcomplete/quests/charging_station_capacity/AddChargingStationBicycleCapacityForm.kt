@@ -1,8 +1,18 @@
 package de.westnordost.streetcomplete.quests.charging_station_capacity
 
-import de.westnordost.streetcomplete.quests.AAddCountInput
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.CountInputQuestForm
+import org.jetbrains.compose.resources.painterResource
 
-class AddChargingStationBicycleCapacityForm : AAddCountInput() {
-    override val icon = Res.drawable.count_bicycle
+class AddChargingStationBicycleCapacityForm : AbstractOsmQuestForm<Int>() {
+
+    @Composable
+    override fun Content() {
+        CountInputQuestForm(
+            icon = painterResource(Res.drawable.count_bicycle),
+            onClickOk = { applyAnswer(it) }
+        )
+    }
 }
