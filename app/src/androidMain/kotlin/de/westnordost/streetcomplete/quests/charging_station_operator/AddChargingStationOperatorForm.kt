@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.quests.charging_station_operator
 
-import de.westnordost.streetcomplete.quests.ANameWithSuggestionsForm
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm
 
-class AddChargingStationOperatorForm : ANameWithSuggestionsForm<String>() {
+class AddChargingStationOperatorForm : AbstractOsmQuestForm<String>() {
 
-    override val suggestions: List<String>? get() = countryInfo.chargingStationOperators
-
-    override fun onClickOk() {
-        applyAnswer(name)
+    @Composable
+    override fun Content() {
+        NameWithSuggestionsQuestForm(
+            suggestions = countryInfo.chargingStationOperators,
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }

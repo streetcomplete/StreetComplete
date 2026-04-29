@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.quests.atm_operator
 
-import de.westnordost.streetcomplete.quests.ANameWithSuggestionsForm
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm
 
-class AddAtmOperatorForm : ANameWithSuggestionsForm<String>() {
+class AddAtmOperatorForm : AbstractOsmQuestForm<String>() {
 
-    override val suggestions: List<String>? get() = countryInfo.atmOperators
-
-    override fun onClickOk() {
-        applyAnswer(name)
+    @Composable
+    override fun Content() {
+        NameWithSuggestionsQuestForm(
+            suggestions = countryInfo.atmOperators,
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }

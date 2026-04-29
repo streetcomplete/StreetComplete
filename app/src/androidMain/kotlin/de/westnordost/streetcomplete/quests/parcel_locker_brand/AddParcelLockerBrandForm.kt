@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.quests.parcel_locker_brand
 
-import de.westnordost.streetcomplete.quests.ANameWithSuggestionsForm
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm
 
-class AddParcelLockerBrandForm : ANameWithSuggestionsForm<String>() {
+class AddParcelLockerBrandForm : AbstractOsmQuestForm<String>() {
 
-    override val suggestions: List<String>? get() = countryInfo.parcelLockerBrand
-
-    override fun onClickOk() {
-        applyAnswer(name)
+    @Composable
+    override fun Content() {
+        NameWithSuggestionsQuestForm(
+            suggestions = countryInfo.parcelLockerBrand,
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }

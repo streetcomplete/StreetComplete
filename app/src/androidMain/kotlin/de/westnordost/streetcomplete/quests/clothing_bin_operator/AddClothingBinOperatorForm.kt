@@ -1,28 +1,36 @@
 package de.westnordost.streetcomplete.quests.clothing_bin_operator
 
-import androidx.appcompat.app.AlertDialog
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.ANameWithSuggestionsForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm
+import org.jetbrains.compose.resources.stringResource
 
-class AddClothingBinOperatorForm : ANameWithSuggestionsForm<ClothingBinOperatorAnswer>() {
+class AddClothingBinOperatorForm : AbstractOsmQuestForm<ClothingBinOperatorAnswer>() {
 
-    override val suggestions: List<String>? get() = countryInfo.clothesContainerOperators
+    @Composable
+    override fun Content() {
+        var confirmNoSign by remember { mutableStateOf(false) }
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_generic_answer_noSign) { confirmNoSign() }
-    )
+        NameWithSuggestionsQuestForm(
+            suggestions = countryInfo.clothesContainerOperators,
+            onClickOk = { applyAnswer(ClothingBinOperator(it)) },
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_generic_answer_noSign)) { confirmNoSign = true }
+            )
+        )
 
-    override fun onClickOk() {
-        applyAnswer(ClothingBinOperator(name))
-    }
-
-    private fun confirmNoSign() {
-        activity?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(ClothingBinOperatorAnswer.NoneSigned) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        if (confirmNoSign) {
+            QuestConfirmationDialog(
+                onDismissRequest = { confirmNoSign = false },
+                onConfirmed = { applyAnswer(ClothingBinOperatorAnswer.NoneSigned) }
+            )
         }
     }
 }
