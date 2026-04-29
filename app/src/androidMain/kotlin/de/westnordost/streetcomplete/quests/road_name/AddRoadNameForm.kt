@@ -1,26 +1,57 @@
 package de.westnordost.streetcomplete.quests.road_name
 
-import androidx.appcompat.app.AlertDialog
-import de.westnordost.streetcomplete.R
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
-import de.westnordost.streetcomplete.quests.AAddLocalizedNameForm
-import de.westnordost.streetcomplete.quests.AnswerItem
-import de.westnordost.streetcomplete.view.localized_name.showKeyboardInfo
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
-class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
+class AddRoadNameForm : AbstractOsmQuestForm<RoadNameAnswer>() {
 
+    private val prefs: Preferences by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_name_answer_noName) { confirmNoStreetName() },
-        AnswerItem(R.string.quest_streetName_answer_cantType) { showKeyboardInfo(requireContext()) }
-    )
+    private val initialLocalizedNames = mutableStateOf<List<LocalizedName>?>(null)
+
+    @Composable
+    override fun Content() {
+        var confirmNoStreetName by remember { mutableStateOf(false) }
+
+        LocalizedNameQuestForm(
+            prefs = prefs,
+            countryInfo = countryInfo,
+            initialLocalizedNames = initialLocalizedNames.value,
+            onClickOk = { applyAnswer(RoadName(it)) },
+            onNoNameSign = { confirmNoStreetName = true },
+            hint = {
+                Text(stringResource(Res.string.quest_streetName_abbreviation_instruction))
+            }
+        )
+
+        if (confirmNoStreetName) {
+            QuestConfirmationDialog(
+                onDismissRequest = { confirmNoStreetName = false },
+                onConfirmed = { applyAnswer(RoadNameAnswer.NoName) },
+                titleText = stringResource(Res.string.quest_name_answer_noName_confirmation_title),
+                text = { Text(stringResource(Res.string.quest_streetName_answer_noName_confirmation_description)) },
+                confirmButtonText = stringResource(Res.string.quest_name_noName_confirmation_positive),
+            )
+        }
+    }
 
     private val roadsWithNamesFilter =
         "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
@@ -29,25 +60,7 @@ class AddRoadNameForm : AAddLocalizedNameForm<RoadNameAnswer>() {
     override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         nameSuggestionsSource.getNames(position, clickAreaSizeInMeters, roadsWithNamesFilter)
             .firstOrNull()
-            ?.let {
-                localizedNames.value = it
-                checkIsFormComplete()
-            }
+            ?.let { initialLocalizedNames.value = it }
         return true
-    }
-
-    override fun showAbbreviationsHint(): Boolean = true
-
-    override fun onClickOk(names: List<LocalizedName>) {
-        applyAnswer(RoadName(names))
-    }
-
-    private fun confirmNoStreetName() {
-        AlertDialog.Builder(requireContext())
-            .setTitle(R.string.quest_name_answer_noName_confirmation_title)
-            .setMessage(R.string.quest_streetName_answer_noName_confirmation_description)
-            .setPositiveButton(R.string.quest_name_noName_confirmation_positive) { _, _ -> applyAnswer(RoadNameAnswer.NoName) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
     }
 }

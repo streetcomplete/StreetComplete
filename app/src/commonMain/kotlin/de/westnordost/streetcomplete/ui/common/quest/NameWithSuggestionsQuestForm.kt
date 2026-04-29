@@ -38,6 +38,7 @@ fun NameWithSuggestionsQuestForm(
             onClick = { onClickOk(value.text) }
         ),
         modifier = modifier,
+        otherAnswers = otherAnswers
     ) {
         AutoCompleteTextField(
             value = value,
