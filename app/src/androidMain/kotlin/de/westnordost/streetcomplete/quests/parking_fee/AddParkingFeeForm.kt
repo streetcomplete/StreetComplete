@@ -45,10 +45,9 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
                 } else {
                     Confirm(
                         isComplete = answer?.isComplete() == true,
-                        hasChanges = answer != null
-                    ) {
-                        answer?.let { applyAnswer(it) }
-                    }
+                        hasChanges = answer != null,
+                        onClick = { answer?.let { applyAnswer(it) } }
+                    )
                 },
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_fee_answer_hours)) {

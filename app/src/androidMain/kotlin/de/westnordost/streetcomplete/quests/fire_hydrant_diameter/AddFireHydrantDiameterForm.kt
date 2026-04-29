@@ -28,14 +28,17 @@ class AddFireHydrantDiameterForm : AbstractOsmQuestForm<FireHydrantDiameterAnswe
         var confirmUnusualInput by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(isComplete = diameter != null) {
-                val answer = createAnswer(diameter!!)
-                if (answer.isUnusual()) {
-                    confirmUnusualInput = true
-                } else {
-                    applyAnswer(answer)
+            answers = Confirm(
+                isComplete = diameter != null,
+                onClick = {
+                    val answer = createAnswer(diameter!!)
+                    if (answer.isUnusual()) {
+                        confirmUnusualInput = true
+                    } else {
+                        applyAnswer(answer)
+                    }
                 }
-            },
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_generic_answer_noSign)) { confirmNoSign = true }
             )

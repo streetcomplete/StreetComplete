@@ -43,10 +43,13 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
         var showSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
         QuestForm(
-            answers = Confirm(isComplete = streetOrPlaceName.value.name.isNotEmpty()) {
-                lastWasPlaceName = streetOrPlaceName.value is PlaceName
-                applyAnswer(streetOrPlaceName.value)
-            },
+            answers = Confirm(
+                isComplete = streetOrPlaceName.value.name.isNotEmpty(),
+                onClick = {
+                    lastWasPlaceName = streetOrPlaceName.value is PlaceName
+                    applyAnswer(streetOrPlaceName.value)
+                }
+            ),
             subtitle = nameAndLocationLabel(element, featureDictionary, showHouseNumber = true),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_address_street_no_named_streets)) {

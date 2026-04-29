@@ -32,9 +32,10 @@ class AddBoardTypeForm : AbstractOsmQuestForm<BoardTypeAnswer>() {
         var confirmIsMap by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(isComplete = selectedOptions.isNotEmpty()) {
-                applyAnswer(BoardTypeAnswer.BoardTypes(selectedOptions))
-            },
+            answers = Confirm(
+                isComplete = selectedOptions.isNotEmpty(),
+                onClick = { applyAnswer(BoardTypeAnswer.BoardTypes(selectedOptions)) }
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_board_type_map)) { confirmIsMap = true }
             )

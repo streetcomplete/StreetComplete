@@ -55,10 +55,9 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
                 } else {
                     Confirm(
                         isComplete = openingHours.isComplete(),
-                        hasChanges = openingHours.monthsList.isNotEmpty()
-                    ) {
-                        applyAnswer(CollectionTimes(openingHours))
-                    }
+                        hasChanges = openingHours.monthsList.isNotEmpty(),
+                        onClick = { applyAnswer(CollectionTimes(openingHours)) }
+                    )
                 },
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {

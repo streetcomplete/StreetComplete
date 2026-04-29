@@ -25,9 +25,10 @@ class AddPostboxRefForm : AbstractOsmQuestForm<PostboxRefAnswer>() {
         var confirmNoRef by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(isComplete = ref.isNotEmpty()) {
-                applyAnswer(PostboxRef(ref))
-            },
+            answers = Confirm(
+                isComplete = ref.isNotEmpty(),
+                onClick = { applyAnswer(PostboxRef(ref)) }
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = false }
             )

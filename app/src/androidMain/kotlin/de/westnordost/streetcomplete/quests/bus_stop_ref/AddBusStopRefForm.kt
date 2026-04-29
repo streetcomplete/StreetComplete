@@ -25,9 +25,10 @@ class AddBusStopRefForm : AbstractOsmQuestForm<BusStopRefAnswer>() {
         var confirmNoRef by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(isComplete = ref.isNotEmpty()) {
-                applyAnswer(BusStopRef(ref))
-            },
+            answers = Confirm(
+                isComplete = ref.isNotEmpty(),
+                onClick = { applyAnswer(BusStopRef(ref)) }
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true }
             ),

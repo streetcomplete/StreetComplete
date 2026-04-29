@@ -48,13 +48,14 @@ class AddSidewalkSurfaceForm : AbstractOsmQuestForm<SidewalkSurfaceAnswer>() {
                     (!hasSidewalkLeft || sidewalkSurfaces.left != null) &&
                     (!hasSidewalkRight || sidewalkSurfaces.right != null),
                 hasChanges =
-                    sidewalkSurfaces.any { it != null }
-            ) {
-                applyAnswer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces)))
-                if (hasSidewalkLeft && hasSidewalkRight) {
-                    prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalkSurfaces))
+                    sidewalkSurfaces.any { it != null },
+                onClick = {
+                    applyAnswer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces)))
+                    if (hasSidewalkLeft && hasSidewalkRight) {
+                        prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalkSurfaces))
+                    }
                 }
-            },
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_sidewalk_answer_different)) {
                     applyAnswer(SidewalkSurfaceAnswer.SidewalkIsDifferent)

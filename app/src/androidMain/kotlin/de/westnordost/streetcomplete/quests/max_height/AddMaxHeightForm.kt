@@ -29,13 +29,16 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
         var confirmNoSign by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(isComplete = height != null) {
-                if (isUnrealisticHeight(height!!)) {
-                    confirmUnusualInput = true
-                } else {
-                    applyAnswer(MaxHeight(height!!))
+            answers = Confirm(
+                isComplete = height != null,
+                onClick = {
+                    if (isUnrealisticHeight(height!!)) {
+                        confirmUnusualInput = true
+                    } else {
+                        applyAnswer(MaxHeight(height!!))
+                    }
                 }
-            },
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_maxheight_answer_noSign)) { confirmNoSign = true }
             ),

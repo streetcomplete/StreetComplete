@@ -22,10 +22,11 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceReferenceAnswer>()
             answers = Confirm(
                 isComplete = entranceReference?.isComplete() == true,
                 hasChanges = entranceReference != null,
-            ) {
-                lastEntranceReference = entranceReference
-                applyAnswer(entranceReference!!)
-            },
+                onClick = {
+                    lastEntranceReference = entranceReference
+                    applyAnswer(entranceReference!!)
+                }
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_entrance_reference_nothing_signed)) {
                     applyAnswer(EntranceReferenceAnswer.NotSigned)

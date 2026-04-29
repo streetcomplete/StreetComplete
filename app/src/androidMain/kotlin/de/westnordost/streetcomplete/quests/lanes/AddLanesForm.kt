@@ -47,10 +47,9 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
                     } else {
                         answer.forward != null || answer.backward != null
                     },
-                hasChanges = answer.forward != null || answer.backward != null
-            ) {
-                applyAnswer(answer)
-            },
+                hasChanges = answer.forward != null || answer.backward != null,
+                onClick =  { applyAnswer(answer) }
+            ),
             otherAnswers = buildList {
                 if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
                     add(Answer(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {

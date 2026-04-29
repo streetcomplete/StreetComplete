@@ -60,10 +60,9 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
                 } else {
                     Confirm(
                         isComplete = openingHours.isComplete(),
-                        hasChanges = openingHours.monthsList.isNotEmpty()
-                    ) {
-                        applyAnswer(RegularOpeningHours(openingHours))
-                    }
+                        hasChanges = openingHours.monthsList.isNotEmpty(),
+                        onClick = { applyAnswer(RegularOpeningHours(openingHours)) }
+                    )
                 },
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_openingHours_no_sign)) { confirmNoSign = true },

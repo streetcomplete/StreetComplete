@@ -30,9 +30,10 @@ class AddLocationDescriptionForm : AbstractOsmQuestForm<String>() {
         var description by rememberSaveable { mutableStateOf("") }
 
         QuestForm(
-            answers = Confirm(isComplete = description.isNotEmpty()) {
-                applyAnswer(description)
-            }
+            answers = Confirm(
+                isComplete = description.isNotEmpty(),
+                onClick = { applyAnswer(description) }
+            )
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
                 CompositionLocalProvider(

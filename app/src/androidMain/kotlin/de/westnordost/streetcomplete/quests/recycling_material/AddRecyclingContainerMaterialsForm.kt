@@ -37,10 +37,13 @@ class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContain
         var confirmJustTrash by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(isComplete = selectedItems.isNotEmpty()) {
-                prefs.addLastPicked(this::class.simpleName!!, selectedItems.toList())
-                applyAnswer(RecyclingMaterials(selectedItems))
-            },
+            answers = Confirm(
+                isComplete = selectedItems.isNotEmpty(),
+                onClick = {
+                    prefs.addLastPicked(this::class.simpleName!!, selectedItems.toList())
+                    applyAnswer(RecyclingMaterials(selectedItems))
+                }
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_recycling_materials_answer_waste)) { confirmJustTrash = true }
             )

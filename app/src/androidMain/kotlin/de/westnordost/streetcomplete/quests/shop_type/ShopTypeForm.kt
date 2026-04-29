@@ -37,27 +37,30 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
         }
 
         QuestForm(
-            answers = Confirm(isComplete = isComplete) {
-                when (option) {
-                    ShopTypeFormOption.FEATURE -> {
-                        // if the shop has **some** name (that is displayed to the user), we just want to
-                        // update the shop, not replace it. The train of thought is:
-                        // 1. when the user is asked about what kind of shop <named thing> is, but doesn't
-                        //    see any shop by that name, he will just answer that it doesn't exist via
-                        //    Uh.. -> Doesn't exist.
-                        // 2. When on the other hand he *does* see a shop by that name, it is quite clear
-                        //    that it is still the same shop, so we only update it, not replace it.
-                        // 3. On the other hand, if the place has no name, the user will also not be able
-                        //    to answer whether the place is now a different one than before, so we rather
-                        //    replace it. (#6675)
-                        val hasSomeName = getNameLabel(element.tags) != null
-                        applyAnswer(ShopType(feature!!, hasSomeName))
+            answers = Confirm(
+                isComplete = isComplete,
+                onClick = {
+                    when (option) {
+                        ShopTypeFormOption.FEATURE -> {
+                            // if the shop has **some** name (that is displayed to the user), we just want to
+                            // update the shop, not replace it. The train of thought is:
+                            // 1. when the user is asked about what kind of shop <named thing> is, but doesn't
+                            //    see any shop by that name, he will just answer that it doesn't exist via
+                            //    Uh.. -> Doesn't exist.
+                            // 2. When on the other hand he *does* see a shop by that name, it is quite clear
+                            //    that it is still the same shop, so we only update it, not replace it.
+                            // 3. On the other hand, if the place has no name, the user will also not be able
+                            //    to answer whether the place is now a different one than before, so we rather
+                            //    replace it. (#6675)
+                            val hasSomeName = getNameLabel(element.tags) != null
+                            applyAnswer(ShopType(feature!!, hasSomeName))
+                        }
+                        ShopTypeFormOption.VACANT -> applyAnswer(ShopTypeAnswer.IsShopVacant)
+                        ShopTypeFormOption.LEAVE_NOTE -> composeNote()
+                        null -> { }
                     }
-                    ShopTypeFormOption.VACANT -> applyAnswer(ShopTypeAnswer.IsShopVacant)
-                    ShopTypeFormOption.LEAVE_NOTE -> composeNote()
-                    null -> { }
                 }
-            }
+            )
         ) {
             ShopTypeForm(
                 feature = feature,

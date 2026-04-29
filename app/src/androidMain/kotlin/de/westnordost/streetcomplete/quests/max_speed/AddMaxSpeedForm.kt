@@ -39,19 +39,22 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         }
 
         QuestForm(
-            answers = Confirm(isComplete = maxSpeedAnswer?.isComplete() == true) {
-                if (maxSpeedAnswer is MaxSpeedAnswer.NoSignWithRoadType) {
-                    if (countryInfo.hasSlowZone && element.tags["highway"] in ROADS_WHERE_SLOW_ZONE_IS_LIKELY) {
-                        confirmNoSignSlowZone = true
+            answers = Confirm(
+                isComplete = maxSpeedAnswer?.isComplete() == true,
+                onClick = {
+                    if (maxSpeedAnswer is MaxSpeedAnswer.NoSignWithRoadType) {
+                        if (countryInfo.hasSlowZone && element.tags["highway"] in ROADS_WHERE_SLOW_ZONE_IS_LIKELY) {
+                            confirmNoSignSlowZone = true
+                        } else {
+                            confirmNoSign = true
+                        }
+                    } else if ((maxSpeedAnswer as? MaxSpeedSign)?.isUnusualSpeed() == true) {
+                        confirmUnusualInput = true
                     } else {
-                        confirmNoSign = true
+                        maxSpeedAnswer?.let { applySpeedLimitFormAnswer(it) }
                     }
-                } else if ((maxSpeedAnswer as? MaxSpeedSign)?.isUnusualSpeed() == true) {
-                    confirmUnusualInput = true
-                } else {
-                    maxSpeedAnswer?.let { applySpeedLimitFormAnswer(it) }
                 }
-            },
+            ),
             otherAnswers = buildList {
                 if (countryInfo.hasAdvisorySpeedLimitSign) {
                     add(advisorySpeedLimitAnswer)

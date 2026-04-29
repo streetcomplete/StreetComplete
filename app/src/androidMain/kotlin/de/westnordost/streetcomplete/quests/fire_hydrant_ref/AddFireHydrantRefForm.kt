@@ -25,9 +25,10 @@ class AddFireHydrantRefForm : AbstractOsmQuestForm<FireHydrantRefAnswer>() {
         var confirmNoRef by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(isComplete = ref.isNotEmpty()) {
-                applyAnswer(FireHydrantRef(ref))
-            },
+            answers = Confirm(
+                isComplete = ref.isNotEmpty(),
+                onClick = { applyAnswer(FireHydrantRef(ref)) }
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = false }
             )

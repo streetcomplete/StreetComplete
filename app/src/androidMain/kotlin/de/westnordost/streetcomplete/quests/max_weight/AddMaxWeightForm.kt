@@ -31,14 +31,15 @@ class AddMaxWeightForm : AbstractOsmQuestForm<List<MaxWeight>>() {
         QuestForm(
             answers = Confirm(
                 isComplete = signs.isNotEmpty() && signs.all { it.weight != null },
-                hasChanges = signs.isNotEmpty()
-            ) {
-                if (isUnrealisticWeight(signs)) {
-                    confirmUnusualInput = true
-                } else {
-                    applyAnswer(signs)
+                hasChanges = signs.isNotEmpty(),
+                onClick = {
+                    if (isUnrealisticWeight(signs)) {
+                        confirmUnusualInput = true
+                    } else {
+                        applyAnswer(signs)
+                    }
                 }
-            },
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_maxweight_answer_other_sign)) {
                     showUnsupportedSignDialog = true

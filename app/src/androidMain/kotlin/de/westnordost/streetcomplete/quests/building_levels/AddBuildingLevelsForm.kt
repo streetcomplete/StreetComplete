@@ -47,12 +47,13 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
         QuestForm(
             answers = Confirm(
                 isComplete = levels != null && (roofLevelsAreOptional || roofLevels != null),
-                hasChanges = levels != null || roofLevels != null
-            ) {
-                val answer = BuildingLevels(levels!!, roofLevels)
-                prefs.addLastPicked(this::class.simpleName!!, answer)
-                applyAnswer(answer)
-            },
+                hasChanges = levels != null || roofLevels != null,
+                onClick = {
+                    val answer = BuildingLevels(levels!!, roofLevels)
+                    prefs.addLastPicked(this::class.simpleName!!, answer)
+                    applyAnswer(answer)
+                }
+            ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_buildingLevels_answer_multipleLevels)) { showMultipleLevelsHint = true }
             )

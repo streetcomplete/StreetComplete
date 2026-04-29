@@ -29,9 +29,10 @@ class AddInternetAccessForm : AbstractOsmQuestForm<Set<InternetAccess>>() {
         var selectedOptions by rememberSerializable { mutableStateOf(emptySet<InternetAccess>()) }
 
         QuestForm(
-            answers = Confirm(isComplete = selectedOptions.isNotEmpty()) {
-                applyAnswer(selectedOptions)
-            }
+            answers = Confirm(
+                isComplete = selectedOptions.isNotEmpty(),
+                onClick =  { applyAnswer(selectedOptions) }
+            )
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 CompositionLocalProvider(
