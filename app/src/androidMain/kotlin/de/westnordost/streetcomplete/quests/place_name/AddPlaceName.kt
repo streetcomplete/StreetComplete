@@ -54,6 +54,7 @@ class AddPlaceName(
 
                 // name & opening hours
                 "boat_rental", "vehicle_inspection", "motorcycle_rental", "crematorium",
+                "public_bath",
 
                 // name & wheelchair
                 "theatre",                                        // culture
