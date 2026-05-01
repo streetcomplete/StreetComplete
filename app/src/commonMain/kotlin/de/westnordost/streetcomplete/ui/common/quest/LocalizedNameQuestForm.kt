@@ -25,7 +25,13 @@ import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 
-/** Quest form in which the user inputs a set of names in possibly different languages.
+/** Quest form in which the user inputs a set of names in possibly different languages. Selectable
+ *  are only (locally) official languages and languages commonly seen on street signs that are not
+ *  official, determined by the given [countryInfo].
+ *  This quest form always has two other answer options: An info dialog that explains what to do
+ *  when the IME doesn't have the characters necessary to type what is on the sign, and an option to
+ *  answer that there is no name sign. The latter can be responded to in [onNoNameSign].
+ *  The form can be (pre) filled by specifying [initialLocalizedNames].
  *  */
 @Composable
 fun LocalizedNameQuestForm(
