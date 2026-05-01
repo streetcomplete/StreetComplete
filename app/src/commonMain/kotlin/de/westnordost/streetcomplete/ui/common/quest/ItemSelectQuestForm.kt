@@ -34,13 +34,13 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun <I> ItemSelectQuestForm (
     items: List<I>,
+    itemsPerRow: Int,
     itemContent: @Composable (item: I) -> Unit,
     onClickOk: (item: I) -> Unit,
     prefs: Preferences,
     serializer: KSerializer<I>,
     favoriteKey: String,
     modifier: Modifier = Modifier,
-    itemsPerRow: Int = 4,
     moveFavoritesToFront: Boolean = true,
     otherAnswers: List<Answer> = emptyList(),
 ) {
@@ -49,6 +49,7 @@ fun <I> ItemSelectQuestForm (
             val favourites = prefs
                 .getLastPicked(ListSerializer(serializer), favoriteKey)
                 .takeFavorites<I>(n = itemsPerRow)
+                .filter { it in items } // only those actually in items
             (favourites + items).distinct()
         } else {
             items
