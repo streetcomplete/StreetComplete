@@ -50,16 +50,16 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
                 hasChanges = answer.forward != null || answer.backward != null,
                 onClick =  { applyAnswer(answer) }
             ),
-            otherAnswers = buildList {
+            otherAnswers = listOfNotNull(
                 if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
-                    add(Answer(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
+                    Answer(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
                         answer = answer.copy(centerLeftTurnLane = true)
-                    })
-                }
-                add(Answer(stringResource(Res.string.quest_lanes_answer_noLanes)) {
+                    }
+                } else null,
+                Answer(stringResource(Res.string.quest_lanes_answer_noLanes)) {
                     applyAnswer(LanesAnswer.IsUnmarked)
-                })
-            },
+                }
+            ),
             contentPadding = PaddingValues.Zero,
         ) {
             LanesForm(

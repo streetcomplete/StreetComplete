@@ -32,18 +32,18 @@ class AddPathSurfaceForm : AbstractOsmQuestForm<SurfaceOrIsStepsAnswer>() {
             prefs = prefs,
             serializer = serializer(),
             favoriteKey = "AddPathSurfaceForm",
-            otherAnswers = buildList {
+            otherAnswers = listOfNotNull(
                 if (element.couldBeSteps()) {
-                    add(Answer(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
+                    Answer(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
                         applyAnswer(IsActuallyStepsAnswer)
-                    })
-                }
+                    }
+                } else null,
                 if (element.tags["indoor"] != "yes") {
-                    add(Answer(stringResource(Res.string.quest_generic_answer_is_indoors)) {
+                    Answer(stringResource(Res.string.quest_generic_answer_is_indoors)) {
                         applyAnswer(IsIndoorsAnswer)
-                    })
-                }
-            }
+                    }
+                } else null,
+            )
         )
     }
 }

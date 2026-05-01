@@ -34,10 +34,6 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
         var confirmUnusualInput by remember { mutableStateOf(false) }
         var confirmNoSignSlowZone by remember { mutableStateOf(false) }
 
-        val advisorySpeedLimitAnswer = Answer(stringResource(Res.string.quest_maxspeed_answer_advisory_speed_limit)) {
-            maxSpeedAnswer = MaxSpeedSign(Speed(null, countryInfo.speedUnits.first()), ADVISORY)
-        }
-
         QuestForm(
             answers = Confirm(
                 isComplete = maxSpeedAnswer?.isComplete() == true,
@@ -55,11 +51,13 @@ class AddMaxSpeedForm : AbstractOsmQuestForm<MaxSpeedAnswer>() {
                     }
                 }
             ),
-            otherAnswers = buildList {
+            otherAnswers = listOfNotNull(
                 if (countryInfo.hasAdvisorySpeedLimitSign) {
-                    add(advisorySpeedLimitAnswer)
-                }
-            }
+                    Answer(stringResource(Res.string.quest_maxspeed_answer_advisory_speed_limit)) {
+                        maxSpeedAnswer = MaxSpeedSign(Speed(null, countryInfo.speedUnits.first()), ADVISORY)
+                    }
+                } else null
+            )
         ) {
             MaxSpeedForm(
                 countryInfo = countryInfo,

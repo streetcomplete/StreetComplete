@@ -39,9 +39,7 @@ class AddSmoothnessForm : AbstractOsmQuestForm<SmoothnessAnswer>() {
     @Composable
     override fun Content() {
         val surfaceTag = element.tags["surface"]
-        val items = remember {
-            Smoothness.entries.filter { it.getImage(surfaceTag) != null }
-        }
+        val items = remember { Smoothness.entries.filter { it.getImage(surfaceTag) != null } }
         ItemSelectQuestForm(
             items = items,
             itemsPerRow = 1,
@@ -64,15 +62,19 @@ class AddSmoothnessForm : AbstractOsmQuestForm<SmoothnessAnswer>() {
             serializer = serializer(),
             favoriteKey = "AddSmoothnessForm",
             moveFavoritesToFront = false,
-            otherAnswers = buildList {
-                add(Answer(stringResource(Res.string.quest_smoothness_wrong_surface)) { surfaceWrong() })
+            otherAnswers = listOfNotNull(
+                Answer(stringResource(Res.string.quest_smoothness_wrong_surface)) {
+                    surfaceWrong()
+                },
                 if (element.couldBeSteps()) {
-                    add(Answer(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
+                    Answer(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
                         applyAnswer(IsActuallyStepsAnswer)
-                    })
+                    }
+                } else null,
+                Answer(stringResource(Res.string.quest_smoothness_obstacle)) {
+                    showObstacleHint()
                 }
-                add(Answer(stringResource(Res.string.quest_smoothness_obstacle)) { showObstacleHint() })
-            }
+            )
         )
     }
 
