@@ -18,6 +18,7 @@ class AddTracktypeForm : AbstractOsmQuestForm<Tracktype>() {
     override fun Content() {
         ItemSelectQuestForm(
             items = Tracktype.entries,
+            itemsPerRow = 3,
             itemContent = { item ->
                 ImageWithLabel(painterResource(item.icon), stringResource(item.title))
             },
@@ -26,7 +27,6 @@ class AddTracktypeForm : AbstractOsmQuestForm<Tracktype>() {
             serializer = serializer(),
             favoriteKey = "AddTracktypeForm",
             moveFavoritesToFront = false,
-            itemsPerRow = 3,
         )
     }
 }

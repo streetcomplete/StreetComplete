@@ -21,6 +21,7 @@ class AddRoadSurfaceForm : AbstractOsmQuestForm<Surface>() {
     override fun Content() {
         ItemSelectQuestForm(
             items = Surface.selectableValuesForWays,
+            itemsPerRow = 3,
             itemContent = { item ->
                 ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
             },
@@ -28,7 +29,6 @@ class AddRoadSurfaceForm : AbstractOsmQuestForm<Surface>() {
             prefs = prefs,
             serializer = serializer(),
             favoriteKey = "AddRoadSurfaceForm",
-            itemsPerRow = 3,
         )
     }
 }

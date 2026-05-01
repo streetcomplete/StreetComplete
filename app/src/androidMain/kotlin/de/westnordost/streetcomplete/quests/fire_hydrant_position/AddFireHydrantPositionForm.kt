@@ -1,24 +1,32 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddFireHydrantPositionForm : AItemSelectQuestForm<FireHydrantPosition, FireHydrantPosition>() {
+class AddFireHydrantPositionForm : AbstractOsmQuestForm<FireHydrantPosition>() {
 
-    override val items = FireHydrantPosition.entries
-    override val itemsPerRow = 2
-    override val serializer = serializer<FireHydrantPosition>()
+    private val prefs: Preferences by inject()
 
-    @Composable override fun ItemContent(item: FireHydrantPosition) {
-        val isPillar = element.tags["fire_hydrant:type"] == "pillar"
-        ImageWithLabel(painterResource(item.getIcon(isPillar)), stringResource(item.title))
-    }
-
-    override fun onClickOk(selectedItem: FireHydrantPosition) {
-        applyAnswer(selectedItem)
+    @Composable
+    override fun Content() {
+        ItemSelectQuestForm(
+            items = FireHydrantPosition.entries,
+            itemsPerRow = 2,
+            itemContent = {
+                val isPillar = element.tags["fire_hydrant:type"] == "pillar"
+                ImageWithLabel(painterResource(it.getIcon(isPillar)), stringResource(it.title))
+            },
+            onClickOk = { applyAnswer(it) },
+            prefs = prefs,
+            serializer = serializer(),
+            favoriteKey = "AddFireHydrantPositionForm",
+        )
     }
 }

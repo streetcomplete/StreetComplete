@@ -26,6 +26,7 @@ class AddReligionForm : AbstractOsmQuestForm<Religion>() {
 
         ItemSelectQuestForm(
             items = items,
+            itemsPerRow = 3,
             itemContent = { item ->
                 ImageWithLabel(painterResource(item.icon), stringResource(item.title))
             },
@@ -33,7 +34,6 @@ class AddReligionForm : AbstractOsmQuestForm<Religion>() {
             prefs = prefs,
             serializer = serializer(),
             favoriteKey = "AddReligionForm",
-            itemsPerRow = 3,
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_religion_for_place_of_worship_answer_multi)) { applyAnswer(MULTIFAITH) }
             )

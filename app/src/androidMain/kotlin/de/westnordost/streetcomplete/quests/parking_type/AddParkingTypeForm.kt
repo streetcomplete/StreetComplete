@@ -1,23 +1,29 @@
 package de.westnordost.streetcomplete.quests.parking_type
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddParkingTypeForm : AItemSelectQuestForm<ParkingType, ParkingType>() {
+class AddParkingTypeForm : AbstractOsmQuestForm<ParkingType>() {
 
-    override val items = ParkingType.entries
-    override val itemsPerRow = 3
-    override val serializer = serializer<ParkingType>()
+    private val prefs: Preferences by inject()
 
-    @Composable override fun ItemContent(item: ParkingType) {
-        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
-    }
-
-    override fun onClickOk(selectedItem: ParkingType) {
-        applyAnswer(selectedItem)
+    @Composable
+    override fun Content() {
+        ItemSelectQuestForm(
+            items = ParkingType.entries,
+            itemsPerRow = 3,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = { applyAnswer(it) },
+            prefs = prefs,
+            serializer = serializer(),
+            favoriteKey = "AddParkingTypeForm",
+        )
     }
 }

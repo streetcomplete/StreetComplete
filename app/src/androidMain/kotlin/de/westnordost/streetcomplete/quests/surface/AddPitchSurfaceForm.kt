@@ -21,6 +21,7 @@ class AddPitchSurfaceForm : AbstractOsmQuestForm<Surface>() {
     override fun Content() {
         ItemSelectQuestForm(
             items = Surface.selectableValuesForPitches,
+            itemsPerRow = 3,
             itemContent = { item ->
                 ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
             },
@@ -28,7 +29,6 @@ class AddPitchSurfaceForm : AbstractOsmQuestForm<Surface>() {
             prefs = prefs,
             serializer = serializer(),
             favoriteKey = "AddPitchSurfaceForm",
-            itemsPerRow = 3,
         )
     }
 }

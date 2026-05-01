@@ -24,6 +24,7 @@ class AddPathSurfaceForm : AbstractOsmQuestForm<SurfaceOrIsStepsAnswer>() {
     override fun Content() {
         ItemSelectQuestForm(
             items = Surface.selectableValuesForWays,
+            itemsPerRow = 3,
             itemContent = { item ->
                 ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
             },
@@ -31,7 +32,6 @@ class AddPathSurfaceForm : AbstractOsmQuestForm<SurfaceOrIsStepsAnswer>() {
             prefs = prefs,
             serializer = serializer(),
             favoriteKey = "AddPathSurfaceForm",
-            itemsPerRow = 3,
             otherAnswers = buildList {
                 if (element.couldBeSteps()) {
                     add(Answer(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {

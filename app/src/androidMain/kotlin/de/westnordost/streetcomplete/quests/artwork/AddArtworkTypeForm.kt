@@ -1,22 +1,31 @@
 package de.westnordost.streetcomplete.quests.artwork
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddArtworkTypeForm : AItemSelectQuestForm<ArtworkType, ArtworkType>() {
-    override val items = ArtworkType.entries
-    override val itemsPerRow = 3
-    override val serializer = serializer<ArtworkType>()
+class AddArtworkTypeForm : AbstractOsmQuestForm<ArtworkType>() {
 
-    @Composable override fun ItemContent(item: ArtworkType) {
-        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
-    }
+    private val prefs: Preferences by inject()
 
-    override fun onClickOk(selectedItem: ArtworkType) {
-        applyAnswer(selectedItem)
+    @Composable
+    override fun Content() {
+        ItemSelectQuestForm(
+            items = ArtworkType.entries,
+            itemsPerRow = 3,
+            itemContent = { item ->
+                ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+            },
+            onClickOk = { applyAnswer(it) },
+            prefs = prefs,
+            serializer = serializer(),
+            favoriteKey = "AddArtworkTypeForm",
+        )
     }
 }

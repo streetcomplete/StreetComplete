@@ -21,14 +21,14 @@ class AddPathPartSurfaceForm : AbstractOsmQuestForm<Surface>() {
     override fun Content() {
         ItemSelectQuestForm(
             items = Surface.selectableValuesForWays,
+            itemsPerRow = 3,
             itemContent = { item ->
                 ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
             serializer = serializer(),
-            favoriteKey = "AddPathPartSurfaceForm",
-            itemsPerRow = 3
+            favoriteKey = "AddPathPartSurfaceForm"
         )
     }
 }

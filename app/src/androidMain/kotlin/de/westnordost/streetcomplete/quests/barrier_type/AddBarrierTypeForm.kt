@@ -1,23 +1,31 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddBarrierTypeForm : AItemSelectQuestForm<BarrierType, BarrierType>() {
+class AddBarrierTypeForm : AbstractOsmQuestForm<BarrierType>() {
 
-    override val items = BarrierType.entries
-    override val itemsPerRow = 3
-    override val serializer = serializer<BarrierType>()
+    private val prefs: Preferences by inject()
 
-    @Composable override fun ItemContent(item: BarrierType) {
-        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
-    }
-
-    override fun onClickOk(selectedItem: BarrierType) {
-        applyAnswer(selectedItem)
+    @Composable
+    override fun Content() {
+        ItemSelectQuestForm(
+            items = BarrierType.entries,
+            itemsPerRow = 3,
+            itemContent = { item ->
+                ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+            },
+            onClickOk = { applyAnswer(it) },
+            prefs = prefs,
+            serializer = serializer(),
+            favoriteKey = "AddBarrierTypeForm",
+        )
     }
 }

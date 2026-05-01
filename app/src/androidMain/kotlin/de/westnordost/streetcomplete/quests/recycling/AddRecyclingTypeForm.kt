@@ -18,6 +18,7 @@ class AddRecyclingTypeForm : AbstractOsmQuestForm<RecyclingType>() {
     override fun Content() {
         ItemSelectQuestForm(
             items = RecyclingType.entries,
+            itemsPerRow = 3,
             itemContent = { item ->
                 ImageWithLabel(painterResource(item.icon), stringResource(item.title))
             },
@@ -25,7 +26,6 @@ class AddRecyclingTypeForm : AbstractOsmQuestForm<RecyclingType>() {
             prefs = prefs,
             serializer = serializer(),
             favoriteKey = "AddRecyclingTypeForm",
-            itemsPerRow = 3,
         )
     }
 }

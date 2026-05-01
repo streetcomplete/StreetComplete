@@ -23,6 +23,7 @@ class AddRoofShapeForm : AbstractOsmQuestForm<RoofShape>() {
         val items = remember { RoofShape.entries - MANY }
         ItemSelectQuestForm(
             items = items,
+            itemsPerRow = 3,
             itemContent = { item ->
                 Image(painterResource(item.icon), null)
             },
@@ -30,7 +31,6 @@ class AddRoofShapeForm : AbstractOsmQuestForm<RoofShape>() {
             prefs = prefs,
             serializer = serializer(),
             favoriteKey = "AddRoofShapeForm",
-            itemsPerRow = 3,
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_roofShape_answer_many)) { applyAnswer(MANY) }
             )

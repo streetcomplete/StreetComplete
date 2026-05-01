@@ -9,58 +9,71 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.parseSurface
 import de.westnordost.streetcomplete.osm.surface.title
-import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddSmoothnessForm : AItemSelectQuestForm<Smoothness, SmoothnessAnswer>() {
+class AddSmoothnessForm : AbstractOsmQuestForm<SmoothnessAnswer>() {
 
-    private val surfaceTag get() = element.tags["surface"]
-    override val items get() = Smoothness.entries.filter { it.getImage(surfaceTag) != null }
+    private val prefs: Preferences by inject()
 
-    override val itemsPerRow = 1
-    override val moveFavoritesToFront = false
-    override val serializer = serializer<Smoothness>()
-
-    override val otherAnswers get() = listOfNotNull(
-        AnswerItem(R.string.quest_smoothness_wrong_surface) { surfaceWrong() },
-        createConvertToStepsAnswer(),
-        AnswerItem(R.string.quest_smoothness_obstacle) { showObstacleHint() }
-    )
-
-    @Composable override fun ItemContent(item: Smoothness) {
-        Box {
-            ImageWithDescription(
-                painter = item.getImage(surfaceTag)?.let { painterResource(it) },
-                title = stringResource(item.title),
-                description = item.getDescription(surfaceTag)?.let { stringResource(it) }
-            )
-            Image(
-                painter = painterResource(item.icon),
-                contentDescription = item.emoji,
-                modifier = Modifier.padding(8.dp)
-            )
+    @Composable
+    override fun Content() {
+        val surfaceTag = element.tags["surface"]
+        val items = remember {
+            Smoothness.entries.filter { it.getImage(surfaceTag) != null }
         }
-    }
-
-    override fun onClickOk(selectedItem: Smoothness) {
-        applyAnswer(SmoothnessValueAnswer(selectedItem))
+        ItemSelectQuestForm(
+            items = items,
+            itemsPerRow = 1,
+            itemContent = { item ->
+                Box {
+                    ImageWithDescription(
+                        painter = item.getImage(surfaceTag)?.let { painterResource(it) },
+                        title = stringResource(item.title),
+                        description = item.getDescription(surfaceTag)?.let { stringResource(it) }
+                    )
+                    Image(
+                        painter = painterResource(item.icon),
+                        contentDescription = item.emoji,
+                        modifier = Modifier.padding(8.dp)
+                    )
+                }
+            },
+            onClickOk = { applyAnswer(SmoothnessValueAnswer(it)) },
+            prefs = prefs,
+            serializer = serializer(),
+            favoriteKey = "AddSmoothnessForm",
+            moveFavoritesToFront = false,
+            otherAnswers = buildList {
+                add(Answer(stringResource(Res.string.quest_smoothness_wrong_surface)) { surfaceWrong() })
+                if (element.couldBeSteps()) {
+                    add(Answer(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
+                        applyAnswer(IsActuallyStepsAnswer)
+                    })
+                }
+                add(Answer(stringResource(Res.string.quest_smoothness_obstacle)) { showObstacleHint() })
+            }
+        )
     }
 
     private fun showObstacleHint() {
@@ -98,13 +111,4 @@ class AddSmoothnessForm : AItemSelectQuestForm<Smoothness, SmoothnessAnswer>() {
             .setNegativeButton(R.string.quest_generic_hasFeature_no) { _, _ -> applyAnswer(WrongSurfaceAnswer) }
             .show()
     }
-
-    private fun createConvertToStepsAnswer(): AnswerItem? =
-        if (element.couldBeSteps()) {
-            AnswerItem(R.string.quest_generic_answer_is_actually_steps) {
-                applyAnswer(IsActuallyStepsAnswer)
-            }
-        } else {
-            null
-        }
 }

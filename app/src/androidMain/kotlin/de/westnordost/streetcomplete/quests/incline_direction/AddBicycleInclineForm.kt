@@ -1,44 +1,56 @@
 package de.westnordost.streetcomplete.quests.incline_direction
 
-import androidx.appcompat.app.AlertDialog
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddBicycleInclineForm : AItemSelectQuestForm<Incline, BicycleInclineAnswer>() {
+class AddBicycleInclineForm : AbstractOsmQuestForm<BicycleInclineAnswer>() {
 
-    override val items = Incline.entries
-    override val itemsPerRow = 2
-    override val serializer = serializer<Incline>()
+    private val prefs: Preferences by inject()
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_bicycle_incline_up_and_down) { confirmUpAndDown() }
-    )
+    @Composable
+    override fun Content() {
+        var confirmUpAndDown by remember { mutableStateOf(false) }
 
-    private fun confirmUpAndDown() {
-        val ctx = context ?: return
-        AlertDialog.Builder(ctx)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(UpdAndDownHopsAnswer) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
-    }
-
-    @Composable override fun ItemContent(item: Incline) {
-        ImageWithLabel(
-            painter = painterResource(item.icon),
-            label = stringResource(Res.string.quest_steps_incline_up),
-            imageRotation = geometryRotation.floatValue - mapRotation.floatValue
+        ItemSelectQuestForm(
+            items = Incline.entries,
+            itemsPerRow = 2,
+            itemContent = { item ->
+                ImageWithLabel(
+                    painter = painterResource(item.icon),
+                    label = stringResource(Res.string.quest_steps_incline_up),
+                    imageRotation = geometryRotation.floatValue - mapRotation.floatValue
+                )
+            },
+            onClickOk = { applyAnswer(RegularBicycleInclineAnswer(it)) },
+            prefs = prefs,
+            serializer = serializer(),
+            favoriteKey = "AddBicycleInclineForm",
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_bicycle_incline_up_and_down)) {
+                    confirmUpAndDown = true
+                }
+            )
         )
-    }
 
-    override fun onClickOk(selectedItem: Incline) {
-        applyAnswer(RegularBicycleInclineAnswer(selectedItem))
+        if (confirmUpAndDown) {
+            QuestConfirmationDialog(
+                onDismissRequest = { confirmUpAndDown = false },
+                onConfirmed = { applyAnswer(UpdAndDownHopsAnswer) }
+            )
+        }
     }
 }

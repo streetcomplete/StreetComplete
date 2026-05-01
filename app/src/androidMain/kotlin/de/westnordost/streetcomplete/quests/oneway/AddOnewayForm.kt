@@ -20,6 +20,7 @@ class AddOnewayForm : AbstractOsmQuestForm<OnewayAnswer>() {
     override fun Content() {
         ItemSelectQuestForm(
             items = OnewayAnswer.entries,
+            itemsPerRow = 3,
             itemContent = { item ->
                 val painter = painterResource(item.icon)
                 ImageWithLabel(
@@ -31,8 +32,7 @@ class AddOnewayForm : AbstractOsmQuestForm<OnewayAnswer>() {
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
             serializer = serializer(),
-            favoriteKey = "AddOnewayForm",
-            itemsPerRow = 3
+            favoriteKey = "AddOnewayForm"
         )
     }
 }

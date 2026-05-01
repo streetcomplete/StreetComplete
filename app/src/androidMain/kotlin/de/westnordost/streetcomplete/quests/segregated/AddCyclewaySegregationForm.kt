@@ -26,6 +26,7 @@ class AddCyclewaySegregationForm : AbstractOsmQuestForm<CyclewaySegregation>() {
     override fun Content() {
         ItemSelectQuestForm(
             items = CyclewaySegregation.entries,
+            itemsPerRow = 1,
             itemContent = { item ->
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -43,7 +44,6 @@ class AddCyclewaySegregationForm : AbstractOsmQuestForm<CyclewaySegregation>() {
             prefs = prefs,
             serializer = serializer(),
             favoriteKey = "AddCyclewaySegregationForm",
-            itemsPerRow = 1,
         )
     }
 }
