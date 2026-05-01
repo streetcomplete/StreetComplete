@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installatio
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.barrier_type.icon
+import de.westnordost.streetcomplete.quests.barrier_type.title
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.Answer
@@ -21,9 +23,7 @@ class AddBicycleBarrierInstallationForm : AbstractOsmQuestForm<BicycleBarrierIns
         ItemSelectQuestForm(
             items = BicycleBarrierInstallation.entries,
             itemsPerRow = 3,
-            itemContent = { item ->
-                ImageWithLabel(painterResource(item.icon), stringResource(item.title))
-            },
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
             serializer = serializer(),

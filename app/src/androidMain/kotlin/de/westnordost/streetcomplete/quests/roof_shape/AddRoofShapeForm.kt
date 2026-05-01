@@ -24,9 +24,7 @@ class AddRoofShapeForm : AbstractOsmQuestForm<RoofShape>() {
         ItemSelectQuestForm(
             items = items,
             itemsPerRow = 3,
-            itemContent = { item ->
-                Image(painterResource(item.icon), null)
-            },
+            itemContent = {   Image(painterResource(it.icon), null) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
             serializer = serializer(),

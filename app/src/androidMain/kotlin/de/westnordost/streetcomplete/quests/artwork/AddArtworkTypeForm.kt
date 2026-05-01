@@ -19,9 +19,7 @@ class AddArtworkTypeForm : AbstractOsmQuestForm<ArtworkType>() {
         ItemSelectQuestForm(
             items = ArtworkType.entries,
             itemsPerRow = 3,
-            itemContent = { item ->
-                ImageWithLabel(painterResource(item.icon), stringResource(item.title))
-            },
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
             serializer = serializer(),

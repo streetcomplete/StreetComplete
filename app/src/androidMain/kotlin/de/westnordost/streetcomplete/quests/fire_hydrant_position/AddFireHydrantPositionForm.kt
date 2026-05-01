@@ -19,9 +19,9 @@ class AddFireHydrantPositionForm : AbstractOsmQuestForm<FireHydrantPosition>() {
         ItemSelectQuestForm(
             items = FireHydrantPosition.entries,
             itemsPerRow = 2,
-            itemContent = {
+            itemContent = { item ->
                 val isPillar = element.tags["fire_hydrant:type"] == "pillar"
-                ImageWithLabel(painterResource(it.getIcon(isPillar)), stringResource(it.title))
+                ImageWithLabel(painterResource(item.getIcon(isPillar)), stringResource(item.title))
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,

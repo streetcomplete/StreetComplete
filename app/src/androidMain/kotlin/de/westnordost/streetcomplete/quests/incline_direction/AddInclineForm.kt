@@ -21,9 +21,9 @@ class AddInclineForm : AbstractOsmQuestForm<Incline>() {
         ItemSelectQuestForm(
             items = Incline.entries,
             itemsPerRow = 2,
-            itemContent = {
+            itemContent = { item ->
                 ImageWithLabel(
-                    painter = painterResource(it.icon),
+                    painter = painterResource(item.icon),
                     label = stringResource(Res.string.quest_steps_incline_up),
                     imageRotation = geometryRotation.floatValue - mapRotation.floatValue
                 )
