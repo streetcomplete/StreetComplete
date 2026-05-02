@@ -23,6 +23,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>(), AndroidQuest {
         )
         and (access !~ private|no or (foot and foot !~ private|no))
         and !bridge
+        and ice_road != yes
     """
     // ~paved tracks are less likely to change the surface type
     override val changesetComment = "Specify tracktypes"
