@@ -112,6 +112,10 @@ kotlin {
                 // I/O
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.0")
 
+                // SQLite
+                implementation("androidx.sqlite:sqlite:2.6.2")
+                implementation("androidx.sqlite:sqlite-bundled:2.6.2")
+
                 // HTTP client
                 implementation("io.ktor:ktor-client-core:3.4.2")
                 implementation("io.ktor:ktor-client-encoding:3.4.2")
