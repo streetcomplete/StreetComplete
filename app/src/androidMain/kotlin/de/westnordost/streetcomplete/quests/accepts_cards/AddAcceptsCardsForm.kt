@@ -1,16 +1,19 @@
 package de.westnordost.streetcomplete.quests.accepts_cards
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddAcceptsCardsForm : ARadioGroupQuestForm<CardAcceptance, CardAcceptance>() {
+class AddAcceptsCardsForm : AbstractOsmQuestForm<CardAcceptance>() {
 
-    override val items = CardAcceptance.entries
-
-    @Composable override fun BoxScope.ItemContent(item: CardAcceptance) {
-        Text(stringResource(item.text))
+    @Composable
+    override fun Content() {
+        RadioGroupQuestForm(
+            items = CardAcceptance.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }

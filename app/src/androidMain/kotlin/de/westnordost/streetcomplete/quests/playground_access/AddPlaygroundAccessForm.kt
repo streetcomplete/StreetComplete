@@ -1,16 +1,19 @@
 package de.westnordost.streetcomplete.quests.playground_access
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddPlaygroundAccessForm : ARadioGroupQuestForm<PlaygroundAccess, PlaygroundAccess>() {
+class AddPlaygroundAccessForm : AbstractOsmQuestForm<PlaygroundAccess>() {
 
-    override val items = PlaygroundAccess.entries
-
-    @Composable override fun BoxScope.ItemContent(item: PlaygroundAccess) {
-        Text(stringResource(item.text))
+    @Composable
+    override fun Content() {
+        RadioGroupQuestForm(
+            items = PlaygroundAccess.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }

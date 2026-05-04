@@ -1,16 +1,18 @@
 package de.westnordost.streetcomplete.quests.tower_access
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddTowerAccessForm : ARadioGroupQuestForm<TowerAccess, TowerAccess>() {
-
-    override val items = TowerAccess.entries
-
-    @Composable override fun BoxScope.ItemContent(item: TowerAccess) {
-        Text(stringResource(item.text))
+class AddTowerAccessForm : AbstractOsmQuestForm<TowerAccess>() {
+    @Composable
+    override fun Content() {
+        RadioGroupQuestForm(
+            items = TowerAccess.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }

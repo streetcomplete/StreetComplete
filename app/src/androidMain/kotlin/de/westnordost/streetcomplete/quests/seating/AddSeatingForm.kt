@@ -3,13 +3,20 @@ package de.westnordost.streetcomplete.quests.seating
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.moped.MopedAccessAnswer
+import de.westnordost.streetcomplete.quests.moped.text
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddSeatingForm : ARadioGroupQuestForm<Seating, Seating>() {
-    override val items = Seating.entries
+class AddSeatingForm : AbstractOsmQuestForm<Seating>() {
 
-    @Composable override fun BoxScope.ItemContent(item: Seating) {
-        Text(stringResource(item.text))
+    @Composable
+    override fun Content() {
+        RadioGroupQuestForm(
+            items = Seating.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }

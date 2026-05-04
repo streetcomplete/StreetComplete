@@ -1,16 +1,19 @@
 package de.westnordost.streetcomplete.quests.hairdresser
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddHairdresserCustomersForm : ARadioGroupQuestForm<HairdresserCustomers, HairdresserCustomers>() {
+class AddHairdresserCustomersForm : AbstractOsmQuestForm<HairdresserCustomers>() {
 
-    override val items = HairdresserCustomers.entries
-
-    @Composable override fun BoxScope.ItemContent(item: HairdresserCustomers) {
-        Text(stringResource(item.text))
+    @Composable
+    override fun Content() {
+        RadioGroupQuestForm(
+            items = HairdresserCustomers.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }

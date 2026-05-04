@@ -1,45 +1,59 @@
 package de.westnordost.streetcomplete.quests.crossing
 
-import androidx.appcompat.app.AlertDialog
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.resources.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
-import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.PROHIBITED
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
-class AddCrossingForm : ARadioGroupQuestForm<CrossingAnswer, CrossingAnswer>() {
+class AddCrossingForm : AbstractOsmQuestForm<CrossingAnswer>() {
     private val mapDataSource: MapDataWithEditsSource by inject()
 
-    override val items = CrossingAnswer.entries
+    @Composable
+    override fun Content() {
+        var confirmLeaveNote by remember { mutableStateOf(false) }
 
-    @Composable override fun BoxScope.ItemContent(item: CrossingAnswer) {
-        Text(stringResource(item.text))
-    }
-    /*
-        PROHIBITED is not possible for sidewalks or crossings (=separately mapped sidewalk
-        infrastructure) because if the crossing does not exist, it would require to also
-        delete/adapt the crossing ways, rather than just tagging crossing=no on the vertex.
+        RadioGroupQuestForm(
+            items = CrossingAnswer.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = { selectedItem ->
+                /*
+                PROHIBITED is not possible for sidewalks or crossings (=separately mapped sidewalk
+                infrastructure) because if the crossing does not exist, it would require to also
+                delete/adapt the crossing ways, rather than just tagging crossing=no on the vertex.
 
-        This situation needs to be solved in a different editor, so we ask the user to leave a note.
-        See https://github.com/streetcomplete/StreetComplete/pull/2999#discussion_r681516203
-        and https://github.com/streetcomplete/StreetComplete/issues/5160
+                This situation needs to be solved in a different editor, so we ask the user to leave
+                a note.
+                See https://github.com/streetcomplete/StreetComplete/pull/2999#discussion_r681516203
+                and https://github.com/streetcomplete/StreetComplete/issues/5160
 
-        INFORMAL on the other hand would be okay because crossing=informal would not require
-        deleting the crossing ways (I would say... it is in edge case...)
-     */
-    override fun onClickOk() {
-        if (checkedItem.value == PROHIBITED && isOnSidewalkOrCrossing()) {
-            AlertDialog.Builder(requireContext())
-                .setMessage(R.string.quest_leave_new_note_as_answer)
-                .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
-        } else {
-            super.onClickOk()
+                INFORMAL on the other hand would be okay because crossing=informal would not require
+                deleting the crossing ways (I would say... it is in edge case...)
+                */
+                if (selectedItem == PROHIBITED && isOnSidewalkOrCrossing()) {
+                    confirmLeaveNote = true
+                } else {
+                    applyAnswer(selectedItem)
+                }
+            }
+        )
+
+        if (confirmLeaveNote) {
+            ConfirmationDialog(
+                onDismissRequest = { confirmLeaveNote = false },
+                onConfirmed = { composeNote() },
+                confirmButtonText = stringResource(Res.string.quest_leave_new_note_yes),
+                text = { Text(stringResource(Res.string.quest_leave_new_note_as_answer)) }
+            )
         }
     }
 

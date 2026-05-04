@@ -1,16 +1,19 @@
 package de.westnordost.streetcomplete.quests.bike_shop
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddSecondHandBicycleAvailabilityForm : ARadioGroupQuestForm<SecondHandBicycleAvailability, SecondHandBicycleAvailability>() {
+class AddSecondHandBicycleAvailabilityForm : AbstractOsmQuestForm<SecondHandBicycleAvailability>() {
 
-    override val items = SecondHandBicycleAvailability.entries
-
-    @Composable override fun BoxScope.ItemContent(item: SecondHandBicycleAvailability) {
-        Text(stringResource(item.text))
+    @Composable
+    override fun Content() {
+        RadioGroupQuestForm(
+            items = SecondHandBicycleAvailability.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }

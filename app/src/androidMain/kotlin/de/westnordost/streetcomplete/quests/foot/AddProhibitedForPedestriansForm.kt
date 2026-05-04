@@ -1,16 +1,19 @@
 package de.westnordost.streetcomplete.quests.foot
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddProhibitedForPedestriansForm : ARadioGroupQuestForm<ProhibitedForPedestriansAnswer, ProhibitedForPedestriansAnswer>() {
+class AddProhibitedForPedestriansForm : AbstractOsmQuestForm<ProhibitedForPedestriansAnswer>() {
 
-    override val items = ProhibitedForPedestriansAnswer.entries
-
-    @Composable override fun BoxScope.ItemContent(item: ProhibitedForPedestriansAnswer) {
-        Text(stringResource(item.text))
+    @Composable
+    override fun Content() {
+        RadioGroupQuestForm(
+            items = ProhibitedForPedestriansAnswer.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }

@@ -1,32 +1,39 @@
 package de.westnordost.streetcomplete.quests.bbq_fuel
 
-import androidx.appcompat.app.AlertDialog
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddBbqFuelForm : ARadioGroupQuestForm<BbqFuel, BbqFuelAnswer>() {
-    override val items = BbqFuel.entries
+class AddBbqFuelForm : AbstractOsmQuestForm<BbqFuelAnswer>() {
 
-    @Composable override fun BoxScope.ItemContent(item: BbqFuel) {
-        Text(stringResource(item.text))
-    }
+    @Composable
+    override fun Content() {
+        var confirmNotBbq by remember { mutableStateOf(false) }
 
-    override val otherAnswers = listOf(
-        Answer(stringResource(Res.string.quest_bbq_fuel_not_a_bbq)) { confirmNotBbq() },
-    )
+        RadioGroupQuestForm(
+            items = BbqFuel.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = { applyAnswer(it) },
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_bbq_fuel_not_a_bbq)) { confirmNotBbq = true },
+            )
+        )
 
-    private fun confirmNotBbq() {
-        val ctx = context ?: return
-        AlertDialog.Builder(ctx)
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setMessage(R.string.quest_bbq_fuel_not_a_bbq_confirmation)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ -> applyAnswer(BbqFuelAnswer.IsFirePit) }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
+        if (confirmNotBbq) {
+            QuestConfirmationDialog(
+                onDismissRequest = { confirmNotBbq = false },
+                onConfirmed = { applyAnswer(BbqFuelAnswer.IsFirePit) },
+                text = { Text(stringResource(Res.string.quest_bbq_fuel_not_a_bbq_confirmation)) }
+            )
+        }
     }
 }

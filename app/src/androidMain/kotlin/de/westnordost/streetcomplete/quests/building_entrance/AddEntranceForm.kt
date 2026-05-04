@@ -1,16 +1,21 @@
 package de.westnordost.streetcomplete.quests.building_entrance
 
-import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
+import androidx.compose.runtime.remember
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddEntranceForm : ARadioGroupQuestForm<EntranceAnswer, EntranceAnswer>() {
+class AddEntranceForm : AbstractOsmQuestForm<EntranceAnswer>() {
 
-    override val items = EntranceType.entries + EntranceAnswer.IsDeadEnd
-
-    @Composable override fun BoxScope.ItemContent(item: EntranceAnswer) {
-        Text(stringResource(item.text))
+    @Composable
+    override fun Content() {
+        val items = remember { EntranceType.entries + EntranceAnswer.IsDeadEnd }
+        RadioGroupQuestForm(
+            items = items,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = { applyAnswer(it) }
+        )
     }
 }
