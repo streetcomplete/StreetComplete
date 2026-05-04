@@ -10,11 +10,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -22,8 +20,8 @@ import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.takeFavorites
-import kotlinx.serialization.KSerializer
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.stringResource
@@ -50,16 +48,12 @@ inline fun <reified I> ItemSelectQuestForm(
             val favourites = prefs
                 .getLastPicked(ListSerializer(serializer<I>()), favoriteKey)
                 .takeFavorites<I>(n = itemsPerRow)
-                .filter { it in items } // only those actually in items
             (favourites + items).distinct()
         } else {
             items
         }
     }
-    var selectedItemIndex by rememberSaveable(items) { mutableStateOf(-1) }
-    val selectedItem by remember {
-        derivedStateOf { selectedItemIndex.takeIf { it >= 0 }?.let { items[it] } }
-    }
+    var selectedItem by rememberSerializable { mutableStateOf<I?>(null) }
 
     QuestForm(
         answers = Confirm(
@@ -84,7 +78,7 @@ inline fun <reified I> ItemSelectQuestForm(
                 columns = SimpleGridCells.Fixed(itemsPerRow),
                 items = reorderedItems,
                 selectedItem = selectedItem,
-                onSelect = { selectedItemIndex = items.indexOf(it) },
+                onSelect = { selectedItem = it },
                 modifier = Modifier.fillMaxWidth(),
                 itemContent = itemContent
             )
