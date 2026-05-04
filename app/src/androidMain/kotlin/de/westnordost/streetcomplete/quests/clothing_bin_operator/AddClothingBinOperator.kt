@@ -56,7 +56,7 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer>, A
             is ClothingBinOperator -> {
                 tags["operator"] = answer.name
             }
-            is NoClothingBinOperatorSigned -> {
+            is ClothingBinOperatorAnswer.NoneSigned -> {
                 tags["operator:signed"] = "no"
             }
         }
