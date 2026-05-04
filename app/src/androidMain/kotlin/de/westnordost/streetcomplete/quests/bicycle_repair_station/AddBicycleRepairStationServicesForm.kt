@@ -1,23 +1,27 @@
 package de.westnordost.streetcomplete.quests.bicycle_repair_station
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import kotlinx.serialization.serializer
+import de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddBicycleRepairStationServicesForm : AItemsSelectQuestForm<BicycleRepairStationService, Set<BicycleRepairStationService>>() {
+class AddBicycleRepairStationServicesForm : AbstractOsmQuestForm<Set<BicycleRepairStationService>>() {
 
-    override val items = BicycleRepairStationService.entries
-    override val itemsPerRow = 3
-    override val serializer = serializer<BicycleRepairStationService>()
+    private val prefs: Preferences by inject()
 
-    @Composable override fun ItemContent(item: BicycleRepairStationService) {
-        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
-    }
-
-    override fun onClickOk(selectedItems: Set<BicycleRepairStationService>) {
-        applyAnswer(selectedItems)
+    @Composable
+    override fun Content() {
+        ItemsSelectQuestForm(
+            items = BicycleRepairStationService.entries,
+            itemsPerRow = 3,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = { applyAnswer(it) },
+            prefs = prefs,
+            favoriteKey = "AddBicycleRepairStationServicesForm",
+        )
     }
 }

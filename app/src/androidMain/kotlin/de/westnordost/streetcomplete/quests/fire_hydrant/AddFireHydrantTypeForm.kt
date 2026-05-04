@@ -22,7 +22,6 @@ class AddFireHydrantTypeForm : AbstractOsmQuestForm<FireHydrantType>() {
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddFireHydrantTypeForm",
         )
     }

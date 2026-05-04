@@ -67,6 +67,12 @@ enum class Surface(val osmValue: String?) {
             PAVED, UNPAVED, GROUND
         )
 
+        val selectableValuesForBeaches: List<Surface> = listOf(
+            SAND, PEBBLES, GRAVEL,
+            GRASS, ROCK, FINE_GRAVEL,
+            GROUND
+        )
+
         /** A map of tag value to Surface type that should be treated as aliases of known Surface
          *  types, i.e. that are displayed as that Surface but whose tag is not modified when saving
          *  it again. */

@@ -21,7 +21,6 @@ class AddBridgeStructureForm : AbstractOsmQuestForm<BridgeStructure>() {
             itemContent = { Image(painterResource(it.icon), null) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddBridgeStructureForm",
         )
     }

@@ -25,7 +25,6 @@ class AddFireHydrantPositionForm : AbstractOsmQuestForm<FireHydrantPosition>() {
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddFireHydrantPositionForm",
         )
     }

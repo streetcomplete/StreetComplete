@@ -4,14 +4,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
 import de.westnordost.streetcomplete.osm.building.description
 import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.quests.AGroupedItemSelectQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
@@ -20,8 +20,8 @@ import org.jetbrains.compose.resources.stringResource
 class AddBuildingTypeForm : AGroupedItemSelectQuestForm<BuildingTypeCategory, BuildingType, BuildingType>() {
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_buildingType_answer_multiple_types) { showMultipleTypesHint() },
-        AnswerItem(R.string.quest_buildingType_answer_construction_site) { applyAnswer(BuildingType.CONSTRUCTION) }
+        Answer(stringResource(Res.string.quest_buildingType_answer_multiple_types)) { showMultipleTypesHint() },
+        Answer(stringResource(Res.string.quest_buildingType_answer_construction_site)) { applyAnswer(BuildingType.CONSTRUCTION) }
     )
 
     override val topItems = BuildingType.topSelectableValues

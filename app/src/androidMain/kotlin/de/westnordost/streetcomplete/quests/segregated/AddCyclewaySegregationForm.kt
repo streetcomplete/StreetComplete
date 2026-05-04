@@ -42,7 +42,6 @@ class AddCyclewaySegregationForm : AbstractOsmQuestForm<CyclewaySegregation>() {
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddCyclewaySegregationForm",
         )
     }

@@ -37,7 +37,6 @@ class AddBicycleInclineForm : AbstractOsmQuestForm<BicycleInclineAnswer>() {
             },
             onClickOk = { applyAnswer(RegularBicycleInclineAnswer(it)) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddBicycleInclineForm",
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_bicycle_incline_up_and_down)) {

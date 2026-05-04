@@ -24,7 +24,6 @@ class AddRecyclingTypeForm : AbstractOsmQuestForm<RecyclingType>() {
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddRecyclingTypeForm",
         )
     }

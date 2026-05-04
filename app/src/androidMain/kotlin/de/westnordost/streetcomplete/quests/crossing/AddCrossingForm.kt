@@ -4,7 +4,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*

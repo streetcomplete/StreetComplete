@@ -1,44 +1,63 @@
 package de.westnordost.streetcomplete.quests.sport
 
-import androidx.appcompat.app.AlertDialog
+import androidx.compose.material.AlertDialog
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.sport.Sport.MULTI
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import kotlinx.serialization.serializer
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
+import kotlin.getValue
 
-class AddSportForm : AItemsSelectQuestForm<Sport, Set<Sport>>() {
+class AddSportForm : AbstractOsmQuestForm<Set<Sport>>() {
 
-    override val items get() = (Sport.entries - MULTI).sortedBy { sportPosition(it.osmValue) }
-    override val serializer = serializer<Sport>()
+    private val prefs: Preferences by inject()
 
-    override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_sport_answer_multi) { applyMultiAnswer() }
-    )
+    @Composable
+    override fun Content() {
+        val items = remember { (Sport.entries - MULTI).sortedBy { sportPosition(it.osmValue) } }
+        var confirmManySports by remember { mutableStateOf<Set<Sport>?>(null) }
 
-    @Composable override fun ItemContent(item: Sport) {
-        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
-    }
+        ItemsSelectQuestForm(
+            items = items,
+            itemsPerRow = 4,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = { selectedItems ->
+                if (selectedItems.size > 3) {
+                    confirmManySports = selectedItems
+                } else {
+                    applyAnswer(selectedItems)
+                }
+            },
+            prefs = prefs,
+            favoriteKey = "AddSportForm",
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_sport_answer_multi)) {
+                    applyAnswer(setOf(MULTI))
+                }
+            )
+        )
 
-    override fun onClickOk(selectedItems: Set<Sport>) {
-        if (selectedItems.size > 3) {
-            AlertDialog.Builder(requireContext())
-                .setTitle(R.string.quest_sport_manySports_confirmation_title)
-                .setMessage(R.string.quest_sport_manySports_confirmation_description)
-                .setPositiveButton(R.string.quest_manySports_confirmation_specific) { _, _ -> applyAnswer(selectedItems) }
-                .setNegativeButton(R.string.quest_manySports_confirmation_generic) { _, _ -> applyMultiAnswer() }
-                .show()
-        } else {
-            applyAnswer(selectedItems)
+        confirmManySports?.let { sports ->
+            ConfirmManySportsDialog(
+                onDismissRequest = { confirmManySports = null },
+                onSpecificSports = { applyAnswer(sports) },
+                onGeneralPurpose = { applyAnswer(setOf(MULTI)) },
+                sports = sports
+            )
         }
-    }
-
-    private fun applyMultiAnswer() {
-        applyAnswer(setOf(MULTI))
     }
 
     private fun sportPosition(osmValue: String): Int {
@@ -50,3 +69,34 @@ class AddSportForm : AItemsSelectQuestForm<Sport, Set<Sport>>() {
         return position
     }
 }
+
+@Composable
+private fun ConfirmManySportsDialog(
+    onDismissRequest: () -> Unit,
+    onSpecificSports: () -> Unit,
+    onGeneralPurpose: () -> Unit,
+    sports: Collection<Sport>,
+    modifier: Modifier = Modifier,
+) {
+    AlertDialog(
+        onDismissRequest = onDismissRequest,
+        buttons = {
+            TextButton(onClick = {
+                onGeneralPurpose()
+                onDismissRequest()
+            }) {
+                Text(stringResource(Res.string.quest_manySports_confirmation_generic))
+            }
+            TextButton(onClick = {
+                onSpecificSports()
+                onDismissRequest()
+            }) {
+                Text(stringResource(Res.string.quest_manySports_confirmation_specific))
+            }
+        },
+        title = { Text(stringResource(Res.string.quest_sport_manySports_confirmation_title)) },
+        text = { Text(stringResource(Res.string.quest_sport_manySports_confirmation_description)) },
+        modifier = modifier
+    )
+}
+

@@ -4,9 +4,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.quests.ARadioGroupQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.Answer
 import org.jetbrains.compose.resources.stringResource
 
 class AddBbqFuelForm : ARadioGroupQuestForm<BbqFuel, BbqFuelAnswer>() {
@@ -17,7 +17,7 @@ class AddBbqFuelForm : ARadioGroupQuestForm<BbqFuel, BbqFuelAnswer>() {
     }
 
     override val otherAnswers = listOf(
-        AnswerItem(R.string.quest_bbq_fuel_not_a_bbq) { confirmNotBbq() },
+        Answer(stringResource(Res.string.quest_bbq_fuel_not_a_bbq)) { confirmNotBbq() },
     )
 
     private fun confirmNotBbq() {

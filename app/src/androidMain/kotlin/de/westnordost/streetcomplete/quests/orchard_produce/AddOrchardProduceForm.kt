@@ -1,25 +1,34 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
+import androidx.compose.runtime.remember
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import kotlinx.serialization.serializer
+import de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddOrchardProduceForm : AItemsSelectQuestForm<OrchardProduce, Set<OrchardProduce>>() {
+class AddOrchardProduceForm : AbstractOsmQuestForm<Set<OrchardProduce>>() {
 
-    private val producesMap = OrchardProduce.entries.associateBy { it.osmValue }
-    // only include what is given for that country
-    override val items get() = countryInfo.orchardProduces.mapNotNull { producesMap[it] }
-    override val itemsPerRow = 3
-    override val serializer = serializer<OrchardProduce>()
+    private val prefs: Preferences by inject()
 
-    @Composable override fun ItemContent(item: OrchardProduce) {
-        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
-    }
+    @Composable
+    override fun Content() {
+        val items = remember {
+            val producesMap = OrchardProduce.entries.associateBy { it.osmValue }
+            // only include what is given for that country
+            countryInfo.orchardProduces.mapNotNull { producesMap[it] }
+        }
 
-    override fun onClickOk(selectedItems: Set<OrchardProduce>) {
-        applyAnswer(selectedItems)
+        ItemsSelectQuestForm(
+            items = items,
+            itemsPerRow = 3,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = { applyAnswer(it) },
+            prefs = prefs,
+            favoriteKey = "AddOrchardProduceForm",
+        )
     }
 }

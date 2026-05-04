@@ -27,7 +27,6 @@ class AddPathPartSurfaceForm : AbstractOsmQuestForm<Surface>() {
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddPathPartSurfaceForm"
         )
     }

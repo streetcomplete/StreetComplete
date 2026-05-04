@@ -30,7 +30,6 @@ class AddPathSurfaceForm : AbstractOsmQuestForm<SurfaceOrIsStepsAnswer>() {
             },
             onClickOk = { applyAnswer(SurfaceAnswer(it)) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddPathSurfaceForm",
             otherAnswers = listOfNotNull(
                 if (element.couldBeSteps()) {

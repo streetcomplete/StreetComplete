@@ -30,7 +30,6 @@ class AddInclineForm : AbstractOsmQuestForm<Incline>() {
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddInclineForm",
         )
     }

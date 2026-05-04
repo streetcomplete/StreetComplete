@@ -27,7 +27,6 @@ class AddRoofShapeForm : AbstractOsmQuestForm<RoofShape>() {
             itemContent = {   Image(painterResource(it.icon), null) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddRoofShapeForm",
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_roofShape_answer_many)) { applyAnswer(MANY) }

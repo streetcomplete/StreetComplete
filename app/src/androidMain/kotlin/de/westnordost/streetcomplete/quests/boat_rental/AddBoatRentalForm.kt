@@ -1,24 +1,28 @@
 package de.westnordost.streetcomplete.quests.boat_rental
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.quests.AItemsSelectQuestForm
+import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import kotlinx.serialization.serializer
+import de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.android.ext.android.inject
 
-class AddBoatRentalForm : AItemsSelectQuestForm<BoatRental, Set<BoatRental>>() {
+class AddBoatRentalForm : AbstractOsmQuestForm<Set<BoatRental>>() {
 
-    override val items = BoatRental.entries
-    override val itemsPerRow = 3
-    override val moveFavoritesToFront = false
-    override val serializer = serializer<BoatRental>()
+    private val prefs: Preferences by inject()
 
-    @Composable override fun ItemContent(item: BoatRental) {
-        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
-    }
-
-    override fun onClickOk(selectedItems: Set<BoatRental>) {
-        applyAnswer(selectedItems)
+    @Composable
+    override fun Content() {
+        ItemsSelectQuestForm(
+            items = BoatRental.entries,
+            itemsPerRow = 3,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = { applyAnswer(it) },
+            prefs = prefs,
+            favoriteKey = "AddBoatRentalForm",
+            moveFavoritesToFront = false,
+        )
     }
 }

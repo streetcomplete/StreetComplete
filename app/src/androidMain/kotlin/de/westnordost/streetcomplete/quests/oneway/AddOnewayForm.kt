@@ -31,7 +31,6 @@ class AddOnewayForm : AbstractOsmQuestForm<OnewayAnswer>() {
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddOnewayForm"
         )
     }

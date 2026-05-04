@@ -27,7 +27,6 @@ class AddBeachSurfaceForm : AbstractOsmQuestForm<Surface>() {
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddBeachSurfaceForm",
         )
     }

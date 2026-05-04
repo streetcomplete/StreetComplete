@@ -65,7 +65,6 @@ class AddSmoothnessForm : AbstractOsmQuestForm<SmoothnessAnswer>() {
             },
             onClickOk = { applyAnswer(SmoothnessValueAnswer(it)) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddSmoothnessForm",
             moveFavoritesToFront = false,
             otherAnswers = listOfNotNull(

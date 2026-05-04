@@ -27,7 +27,6 @@ class AddPitchSurfaceForm : AbstractOsmQuestForm<Surface>() {
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddPitchSurfaceForm",
         )
     }

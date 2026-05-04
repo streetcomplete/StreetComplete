@@ -22,7 +22,6 @@ class AddCameraTypeForm : AbstractOsmQuestForm<CameraType>() {
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddCameraTypeForm",
         )
     }

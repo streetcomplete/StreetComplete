@@ -24,7 +24,6 @@ class AddTreeLeafTypeForm : AbstractOsmQuestForm<TreeLeafTypeAnswer>() {
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddTreeLeafTypeForm",
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_leafType_tree_is_just_a_stump)) {

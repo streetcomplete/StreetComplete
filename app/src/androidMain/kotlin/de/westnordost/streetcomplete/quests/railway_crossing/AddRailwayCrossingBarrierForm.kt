@@ -33,7 +33,6 @@ class AddRailwayCrossingBarrierForm : AbstractOsmQuestForm<RailwayCrossingBarrie
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddRailwayCrossingBarrierForm",
         )
     }

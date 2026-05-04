@@ -21,7 +21,6 @@ class AddPoliceTypeForm : AbstractOsmQuestForm<PoliceType>() {
             itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddPoliceTypeForm",
         )
     }

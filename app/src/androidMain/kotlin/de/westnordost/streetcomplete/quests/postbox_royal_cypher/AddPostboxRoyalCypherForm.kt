@@ -21,7 +21,6 @@ class AddPostboxRoyalCypherForm : AbstractOsmQuestForm<PostboxRoyalCypher>() {
             itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddPostboxRoyalCypherForm",
         )
     }

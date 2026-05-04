@@ -27,7 +27,6 @@ class AddRoadSurfaceForm : AbstractOsmQuestForm<Surface>() {
             },
             onClickOk = { applyAnswer(it) },
             prefs = prefs,
-            serializer = serializer(),
             favoriteKey = "AddRoadSurfaceForm",
         )
     }
