@@ -1155,6 +1155,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>
 
     <string name="quest_ferry_motor_vehicle_title">Does this ferry route transport motor vehicles?</string>
+    <string name="quest_ferry_toll_title">Do you generally have to pay to use this ferry?</string>
 
     <string name="quest_ferry_bicycle_title">Are bicycles allowed on this ferry?</string>
 
