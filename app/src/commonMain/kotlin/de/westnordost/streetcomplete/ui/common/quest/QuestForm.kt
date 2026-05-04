@@ -85,7 +85,7 @@ fun QuestForm(
     title: String = stringResource(LocalQuestType.current!!.title),
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
-    } ,
+    },
     hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
     hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
     note: String? = LocalElement.current?.tags?.get("note"),
