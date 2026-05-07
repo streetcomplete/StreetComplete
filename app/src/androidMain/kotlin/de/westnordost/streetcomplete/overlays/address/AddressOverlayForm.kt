@@ -3,16 +3,15 @@ package de.westnordost.streetcomplete.overlays.address
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
@@ -36,7 +35,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.address.AddressNumber
@@ -50,12 +48,14 @@ import de.westnordost.streetcomplete.osm.address.applyTo
 import de.westnordost.streetcomplete.osm.address.parseAddressNumber
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.overlays.AnswerItem
-import de.westnordost.streetcomplete.overlays.IAnswerItem
+import de.westnordost.streetcomplete.quests.address.AddAddressStreetForm
 import de.westnordost.streetcomplete.quests.address.AddressNumberAndName
 import de.westnordost.streetcomplete.quests.address.AddressNumberAndNameForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
-import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
+import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isArea
@@ -63,12 +63,11 @@ import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
+import kotlin.collections.copy
 
 class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
-
-    override val contentLayoutResId = R.layout.compose_view
-    private val binding by contentViewBinding(ComposeViewBinding::bind)
 
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val nameSuggestionsSource: NameSuggestionsSource by inject()
@@ -77,12 +76,156 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
             .toElementFilterExpression()
 
-    private lateinit var originalAddressNumberAndName: AddressNumberAndName
-    private lateinit var originalStreetOrPlaceName: StreetOrPlaceName
+    var originalStreetOrPlaceName: StreetOrPlaceName = if (lastWasPlaceName) PlaceName("") else StreetName("")
+    var streetOrPlaceName = mutableStateOf(originalStreetOrPlaceName)
 
-    private lateinit var addressNumberAndName: MutableState<AddressNumberAndName>
-    private lateinit var streetOrPlaceName: MutableState<StreetOrPlaceName>
-    private lateinit var showSelect: MutableState<Boolean>
+    @Composable
+    override fun Content() {
+        val originalAddressNumberAndName = remember {
+            AddressNumberAndName(
+                number = element?.tags?.let { parseAddressNumber(it) },
+                name = element?.tags?.get("addr:housename")
+            )
+        }
+
+        var addressNumberAndName by rememberSerializable { mutableStateOf(originalAddressNumberAndName) }
+        var streetOrPlaceName by rememberSerializable {  mutableStateOf(originalStreetOrPlaceName) }
+        var showSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
+
+        var confirmRemoveAddress by remember { mutableStateOf(false) }
+
+        OverlayForm(
+            isComplete =
+                // street is optional as in new developments sometimes the street names are not
+                // posted yet, or it is not clear on-site, see #6528
+                addressNumberAndName.isComplete(),
+            hasChanges =
+                originalStreetOrPlaceName != streetOrPlaceName ||
+                originalAddressNumberAndName != addressNumberAndName,
+            onClickOk = {
+                val number = addressNumberAndName.number
+                val name = addressNumberAndName.name
+
+                lastWasPlaceName = streetOrPlaceName is PlaceName
+                number?.streetHouseNumber?.let { lastHouseNumber = it }
+                lastBlock = if (number is BlockAndHouseNumber) number.block else null
+                lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
+                lastStreetName = if (streetOrPlaceName is StreetName) streetOrPlaceName.name else null
+
+                val element = element
+                val positionOnWay = positionOnWay
+
+                if (element != null) {
+                    val tagChanges = StringMapChangesBuilder(element.tags)
+                    addChanges(tagChanges, number, name, streetOrPlaceName)
+                    applyEdit(UpdateElementTagsAction(element, tagChanges.create()))
+                } else if (positionOnWay != null) {
+                    val geometry = ElementPointGeometry(positionOnWay.position)
+                    val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { tagChanges ->
+                        addChanges(tagChanges, number, name, streetOrPlaceName)
+                        if (addEntrance && !tagChanges.containsKey("entrance")) tagChanges["entrance"] = "yes"
+                    }
+                    if (action != null) {
+                        applyEdit(action, geometry)
+                    }
+                } else {
+                    val tagChanges = StringMapChangesBuilder(mapOf())
+                    addChanges(tagChanges, number, name, streetOrPlaceName)
+                    applyEdit(CreateNodeAction(geometry.center, tagChanges))
+                }
+            },
+            label = element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
+            otherAnswers = listOfNotNull(
+                Answer(stringResource(Res.string.quest_address_answer_house_name2)) {
+                    addressNumberAndName = AddressNumberAndName(
+                        name = "",
+                        number = addressNumberAndName.number?.takeIf { !it.isEmpty() }
+                    )
+                },
+                Answer(stringResource(Res.string.quest_address_street_no_named_streets)) {
+                    streetOrPlaceName = PlaceName("")
+                    showSelect = true
+                },
+                when {
+                    countryInfo.countryCode in listOf("JP", "CZ", "SK") -> {
+                        null
+                    }
+                    addressNumberAndName.number is BlockAndHouseNumber ->
+                        Answer(stringResource(Res.string.quest_address_answer_no_block2)) {
+                            addressNumberAndName = addressNumberAndName.copy(number = HouseNumber(""))
+                        }
+                    else ->
+                        Answer(stringResource(Res.string.quest_address_answer_block2)) {
+                            addressNumberAndName = addressNumberAndName.copy(number = BlockAndHouseNumber("", ""))
+                        }
+                },
+                if (element != null) {
+                    Answer(stringResource(Res.string.quest_address_answer_no_address)) {
+                        confirmRemoveAddress = true
+                    }
+                } else {
+                    null
+                },
+                if (element == null && addEntrance) {
+                    Answer(stringResource(Res.string.overlay_addresses_no_entrance)) {
+                        addEntrance = false
+                    }
+                } else {
+                    null
+                }
+            )
+        ) {
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                StreetOrPlaceNameForm(
+                    value = streetOrPlaceName,
+                    onValueChange = { streetOrPlaceName = it },
+                    modifier = Modifier.fillMaxWidth(),
+                    streetNameSuggestion = lastStreetName,
+                    placeNameSuggestion = lastPlaceName,
+                    showSelect = showSelect
+                )
+                AddressNumberAndNameForm(
+                    value = addressNumberAndName,
+                    onValueChange = {
+                        addressNumberAndName = it
+
+                        // apply suggestion
+                        if (streetOrPlaceName.name.isEmpty()) {
+                            when (streetOrPlaceName) {
+                                is PlaceName -> {
+                                    val name = lastPlaceName
+                                    if (!name.isNullOrEmpty()) {
+                                        streetOrPlaceName = PlaceName(name)
+                                    }
+                                }
+                                is StreetName -> {
+                                    val name = lastStreetName
+                                    if (!name.isNullOrEmpty()) {
+                                        streetOrPlaceName = StreetName(name)
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    countryCode = countryInfo.countryCode,
+                    modifier = Modifier.fillMaxWidth(),
+                    houseNumberSuggestion = lastHouseNumber,
+                    blockSuggestion = lastBlock,
+                )
+            }
+        }
+
+        if (confirmRemoveAddress) {
+            QuestConfirmationDialog(
+                onDismissRequest = { confirmRemoveAddress = false },
+                onConfirmed = { applyEdit(createRemoveAddressElementEditAction(element!!)) }
+            )
+        }
+    }
 
     private var addEntrance: Boolean = true
         set(value) {
@@ -109,29 +252,12 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         }
     }
 
-    override val otherAnswers get() = listOfNotNull(
-        AnswerItem(R.string.quest_address_answer_house_name2) { showHouseName() },
-        AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() },
-        createBlockAnswerItem(),
-        if (element != null) AnswerItem(R.string.quest_address_answer_no_address) { confirmRemoveAddress() } else null,
-        if (element == null && addEntrance) AnswerItem(R.string.overlay_addresses_no_entrance) { addEntrance = false } else null
-    )
-
-    @Composable
-    override fun getSubtitle(): AnnotatedString? =
-        element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        originalAddressNumberAndName = AddressNumberAndName(
-            number = element?.tags?.let { parseAddressNumber(it) },
-            name = element?.tags?.get("addr:housename")
-        )
         originalStreetOrPlaceName =
             element?.tags?.get("addr:street")?.let { StreetName(it) }
-            ?: element?.tags?.get("addr:place")?.let { PlaceName(it) }
-            ?: if (lastWasPlaceName) PlaceName("") else StreetName("")
+                ?: element?.tags?.get("addr:place")?.let { PlaceName(it) }
+                ?: if (lastWasPlaceName) PlaceName("") else StreetName("")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -146,60 +272,6 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         }
 
         setMarkerIcon(R.drawable.quest_housenumber)
-
-        binding.composeViewBase.content { Surface(Modifier.padding(bottom = 48.dp)) {
-            addressNumberAndName = rememberSerializable { mutableStateOf(originalAddressNumberAndName) }
-            streetOrPlaceName = rememberSerializable { mutableStateOf(originalStreetOrPlaceName) }
-            showSelect = rememberSaveable { mutableStateOf(lastWasPlaceName) }
-
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                StreetOrPlaceNameForm(
-                    value = streetOrPlaceName.value,
-                    onValueChange = {
-                        streetOrPlaceName.value = it
-                        checkIsFormComplete()
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    streetNameSuggestion = lastStreetName,
-                    placeNameSuggestion = lastPlaceName,
-                    showSelect = showSelect.value
-                )
-                AddressNumberAndNameForm(
-                    value = addressNumberAndName.value,
-                    onValueChange = {
-                        addressNumberAndName.value = it
-
-                        // apply suggestion
-                        if (streetOrPlaceName.value.name.isEmpty()) {
-                            when (streetOrPlaceName.value) {
-                                is PlaceName -> {
-                                    val name = lastPlaceName
-                                    if (!name.isNullOrEmpty()) {
-                                        streetOrPlaceName.value = PlaceName(name)
-                                    }
-                                }
-                                is StreetName -> {
-                                    val name = lastStreetName
-                                    if (!name.isNullOrEmpty()) {
-                                        streetOrPlaceName.value = StreetName(name)
-                                    }
-                                }
-                            }
-                        }
-                        checkIsFormComplete()
-                    },
-                    countryCode = countryInfo.countryCode,
-                    modifier = Modifier.fillMaxWidth(),
-                    houseNumberSuggestion = lastHouseNumber,
-                    blockSuggestion = lastBlock,
-                )
-            }
-        } }
     }
 
     private fun initCreatingPointOnWay() {
@@ -255,50 +327,7 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
             ?: return true
 
         streetOrPlaceName.value = StreetName(name)
-        checkIsFormComplete()
         return true
-    }
-
-    override fun hasChanges(): Boolean =
-        originalStreetOrPlaceName != streetOrPlaceName.value
-        || originalAddressNumberAndName != addressNumberAndName.value
-
-    override fun isFormComplete(): Boolean =
-        addressNumberAndName.value.isComplete()
-        // street is optional as in new developments sometimes the street names are not posted yet,
-        // or it is not clear on-site, see #6528
-
-    override fun onClickOk() {
-        val number = addressNumberAndName.value.number
-        val name = addressNumberAndName.value.name
-        val streetOrPlaceName = streetOrPlaceName.value
-
-        lastWasPlaceName = streetOrPlaceName is PlaceName
-        number?.streetHouseNumber?.let { lastHouseNumber = it }
-        lastBlock = if (number is BlockAndHouseNumber) number.block else null
-        lastPlaceName = if (streetOrPlaceName is PlaceName) streetOrPlaceName.name else null
-        lastStreetName = if (streetOrPlaceName is StreetName) streetOrPlaceName.name else null
-
-        val element = element
-        val positionOnWay = positionOnWay
-
-        if (element != null) {
-            val tagChanges = StringMapChangesBuilder(element.tags)
-            addChanges(tagChanges, number, name, streetOrPlaceName)
-            applyEdit(UpdateElementTagsAction(element, tagChanges.create()))
-        } else if (positionOnWay != null) {
-            val geometry = ElementPointGeometry(positionOnWay.position)
-            val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { tagChanges ->
-                addChanges(tagChanges, number, name, streetOrPlaceName)
-                if (addEntrance && !tagChanges.containsKey("entrance")) tagChanges["entrance"] = "yes"
-            } ?: return
-
-            applyEdit(action, geometry)
-        } else {
-            val tagChanges = StringMapChangesBuilder(mapOf())
-            addChanges(tagChanges, number, name, streetOrPlaceName)
-            applyEdit(CreateNodeAction(geometry.center, tagChanges))
-        }
     }
 
     private fun addChanges(
@@ -314,48 +343,6 @@ class AddressOverlayForm : AbstractOverlayForm(), IsMapPositionAware {
         streetOrPlaceName?.applyTo(tagChanges)
         tagChanges.remove("noaddress")
         tagChanges.remove("nohousenumber")
-    }
-
-    /* --------------------------------- Show/Toggle block input -------------------------------- */
-
-    private fun createBlockAnswerItem(): IAnswerItem? {
-        if (countryInfo.countryCode in listOf("JP", "CZ", "SK")) return null
-        return when (addressNumberAndName.value.number) {
-            is BlockAndHouseNumber ->
-                AnswerItem(R.string.quest_address_answer_no_block2) {
-                    addressNumberAndName.value = addressNumberAndName.value.copy(number = HouseNumber(""))
-                }
-            else ->
-                AnswerItem(R.string.quest_address_answer_block2) {
-                    addressNumberAndName.value = addressNumberAndName.value.copy(number = BlockAndHouseNumber("", ""))
-                }
-        }
-    }
-
-    /* ------------------------------ Show house name / place name ------------------------------ */
-
-    private fun showHouseName() {
-        addressNumberAndName.value = AddressNumberAndName(
-            name = "",
-            number = addressNumberAndName.value.number?.takeIf { !it.isEmpty() }
-        )
-    }
-
-    private fun showPlaceName() {
-        streetOrPlaceName.value = PlaceName("")
-        showSelect.value = true
-    }
-
-    /* -------------------------------------- Remove address ------------------------------------ */
-
-    private fun confirmRemoveAddress() {
-        AlertDialog.Builder(requireContext())
-            .setTitle(R.string.quest_generic_confirmation_title)
-            .setPositiveButton(R.string.quest_generic_confirmation_yes) { _, _ ->
-                applyEdit(createRemoveAddressElementEditAction(element!!))
-            }
-            .setNegativeButton(R.string.quest_generic_confirmation_no, null)
-            .show()
     }
 
     companion object {
