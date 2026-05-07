@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.osm.cycleway_separate
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class SeparateCycleway {
     /** Just a path, not designated to anyone in particular */
     PATH,

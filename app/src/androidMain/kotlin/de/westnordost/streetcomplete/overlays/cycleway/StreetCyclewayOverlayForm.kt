@@ -62,10 +62,10 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
                 .filter { sides -> sides.all { it?.isSelectable(countryInfo) != false } }
         }
         val tags = element!!.tags
-
-        val originalCycleway = remember { parseCyclewaySides(tags, isLeftHandTraffic)
-            ?.selectableOrNullValues(countryInfo)
-            ?: Sides<CyclewayAndDirection>(null, null)
+        val originalCycleway = remember {
+            parseCyclewaySides(tags, isLeftHandTraffic)
+                ?.selectableOrNullValues(countryInfo)
+                ?: Sides<CyclewayAndDirection>(null, null)
         }
         val originalBicycleBoulevard = remember { parseBicycleBoulevard(tags) }
         val originalBicycleInPedestrianStreet = remember { parseBicycleInPedestrianStreet(tags) }
@@ -216,7 +216,7 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
             // the default, the user should select this specifically. Simply carrying over the
             // non-default direction to the next answer might result in mistakes
             val cycleways = Sides(left = sides.left.cycleway, right = sides.right.cycleway)
-            prefs.setLastPicked(this::class.simpleName!!, listOf(cycleways))
+            prefs.setLastPicked("StreetCyclewayOverlayForm", listOf(cycleways))
         }
         applyEdit(UpdateElementTagsAction(element!!, tags.create()))
     }

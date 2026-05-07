@@ -3,13 +3,17 @@ package de.westnordost.streetcomplete.osm.mtb_scale
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale.*
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class MtbScale(
     val value: Value,
     val modifier: Mod? = null
 ) {
+    @Serializable
     enum class Value { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX }
 
+    @Serializable
     enum class Mod(val value: Char?) {
         PLUS('+'),
         MINUS('-'),

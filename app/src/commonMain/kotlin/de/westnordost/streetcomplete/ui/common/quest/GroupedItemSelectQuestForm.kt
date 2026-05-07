@@ -29,8 +29,10 @@ import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.stringResource
 
-/** Quest form that lets the user select one item from a set of items arranged in [groups]. At the
- *  top, ungrouped [topItems] are shown for a quick selection. */
+/** Quest form that lets the user select one item from a set of items arranged in [groups].
+ *  At the top, ungrouped [topItems] are shown as a quick selection. These items are replaced by
+ *  previous selections, using the [prefs] and [favoriteKey] for persistence, and then only padded
+ *  by [topItems]. */
 @Composable
 inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     groups: List<G>,
@@ -45,7 +47,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
 ) {
     val actualTopItems = remember(topItems) {
         prefs.getLastPicked(ListSerializer(serializer<I>()), favoriteKey)
-            .takeFavorites(n = 6, first = 1, pad = topItems)
+            .takeFavorites(n = topItems.size, first = 1, pad = topItems)
     }
     var selectedGroup by rememberSerializable { mutableStateOf<G?>(null) }
     var selectedItem by rememberSerializable { mutableStateOf<I?>(null) }
