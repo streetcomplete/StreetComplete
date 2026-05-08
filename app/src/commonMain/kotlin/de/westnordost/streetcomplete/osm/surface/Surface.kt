@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.osm.surface
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class Surface(val osmValue: String?) {
     // paved
     ASPHALT("asphalt"),

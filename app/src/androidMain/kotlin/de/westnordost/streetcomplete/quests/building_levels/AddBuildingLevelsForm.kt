@@ -22,14 +22,15 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
 
     private val prefs: Preferences by inject()
 
-    private val lastPickedAnswers by lazy {
-        prefs.getLastPicked<BuildingLevels>(this::class.simpleName!!)
-            .takeFavorites(n = 5, history = 15, first = 1)
-            .sortedWith(compareBy<BuildingLevels> { it.levels }.thenBy { it.roofLevels })
-    }
-
     @Composable
     override fun Content() {
+        val key = "AddBuildingLevelsForm"
+        val lastPicked = remember {
+            prefs.getLastPicked<BuildingLevels>(key)
+                .takeFavorites(n = 5, history = 15, first = 1)
+                .sortedWith(compareBy<BuildingLevels> { it.levels }.thenBy { it.roofLevels })
+        }
+
         var levels by rememberSaveable {
             mutableStateOf(element.tags["building:levels"]?.toIntOrNull()?.takeIf { it >= 0 })
         }
@@ -50,7 +51,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
                 hasChanges = levels != null || roofLevels != null,
                 onClick = {
                     val answer = BuildingLevels(levels!!, roofLevels)
-                    prefs.addLastPicked(this::class.simpleName!!, answer)
+                    prefs.addLastPicked(key, answer)
                     applyAnswer(answer)
                 }
             ),
@@ -63,7 +64,7 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
                 onLevelsChange = { levels = it },
                 roofLevels = roofLevels,
                 onRoofLevelsChange = { roofLevels = it },
-                previousBuildingLevels = lastPickedAnswers
+                previousBuildingLevels = lastPicked
             )
         }
 

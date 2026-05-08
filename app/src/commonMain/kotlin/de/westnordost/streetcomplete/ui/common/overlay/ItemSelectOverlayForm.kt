@@ -24,8 +24,6 @@ import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.takeFavorites
-import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.serializer
 
 /** Overlay form to select an item from a list of [selectableItems] (some [items] may not be
  *  selectable).
@@ -48,18 +46,21 @@ inline fun <reified I> ItemSelectOverlayForm(
     selectableItems: List<I> = items,
     otherAnswers: List<Answer> = emptyList(),
 ) {
-    val lastPickedItems = remember {
-        prefs.getLastPicked(ListSerializer(serializer<I>()), favoriteKey)
-            .takeFavorites(n = 5, first = 1)
+    val lastPicked = remember {
+        prefs.getLastPicked<I>(favoriteKey).takeFavorites(n = 5, first = 1)
     }
-    var selectedItem by rememberSerializable { mutableStateOf<I?>(initialSelectedItem) }
+    var selectedItem by rememberSerializable(initialSelectedItem) {
+        mutableStateOf<I?>(initialSelectedItem)
+    }
+
+    var expanded by remember { mutableStateOf(false) }
 
     OverlayForm(
         isComplete = selectedItem != null && selectedItem in selectableItems,
         hasChanges = selectedItem != initialSelectedItem,
         onClickOk = {
             val value = selectedItem!!
-            prefs.addLastPicked(ListSerializer(serializer()), favoriteKey, value)
+            prefs.addLastPicked(favoriteKey, value)
             onClickOk(value)
         },
         modifier = modifier,
@@ -74,27 +75,16 @@ inline fun <reified I> ItemSelectOverlayForm(
                 modifier = Modifier.defaultMinSize(minHeight = 96.dp),
                 contentAlignment = Alignment.Center,
             ) {
-                var expanded by remember { mutableStateOf(false) }
-
                 ItemCard(
                     item = selectedItem,
                     expanded = expanded,
                     onExpandChange = { expanded = it },
                     content = itemContent,
                 )
-                if (expanded) {
-                    SimpleItemSelectDialog(
-                        onDismissRequest = { expanded = false },
-                        columns = SimpleGridCells.Fixed(itemsPerRow),
-                        items = items,
-                        onSelected = { selectedItem = it },
-                        itemContent = itemContent
-                    )
-                }
             }
-            if(lastPickedItems.isNotEmpty()) {
+            if(lastPicked.isNotEmpty()) {
                 LastPickedChipsRow(
-                    items = lastPickedItems,
+                    items = lastPicked,
                     onClick = { selectedItem = it },
                     modifier = Modifier.padding(start = 48.dp, end = 56.dp),
                     itemContent = lastPickedItemContent
@@ -103,5 +93,14 @@ inline fun <reified I> ItemSelectOverlayForm(
                 Spacer(Modifier.size(48.dp))
             }
         }
+    }
+    if (expanded) {
+        SimpleItemSelectDialog(
+            onDismissRequest = { expanded = false },
+            columns = SimpleGridCells.Fixed(itemsPerRow),
+            items = items,
+            onSelected = { selectedItem = it },
+            itemContent = itemContent
+        )
     }
 }

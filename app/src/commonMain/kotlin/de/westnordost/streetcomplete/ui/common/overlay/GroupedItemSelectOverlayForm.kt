@@ -27,8 +27,6 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.util.takeFavorites
-import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.serializer
 
 /** Overlay form to select an item from a list of items grouped by [groups].
  *  It initially displays the [initialSelectedItem], clicking on it opens a dialog in which another
@@ -53,9 +51,8 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
     },
     otherAnswers: List<Answer> = emptyList(),
 ) {
-    val lastPickedItems = remember {
-        prefs.getLastPicked(ListSerializer(serializer<I>()), favoriteKey)
-            .takeFavorites(n = 6, first = 1, pad = topSelectableItems)
+    val lastPicked = remember {
+        prefs.getLastPicked<I>(favoriteKey).takeFavorites(n = 6, first = 1, pad = topSelectableItems)
     }
     var selectedItem by rememberSerializable { mutableStateOf(initialSelectedItem) }
 
@@ -64,7 +61,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
         hasChanges = selectedItem != initialSelectedItem,
         onClickOk = {
             val value = selectedItem!!
-            prefs.addLastPicked(ListSerializer(serializer()), favoriteKey, value)
+            prefs.addLastPicked(favoriteKey, value)
             onClickOk(value)
         },
         modifier = modifier,
@@ -98,9 +95,9 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
                     )
                 }
             }
-            if (lastPickedItems.isNotEmpty()) {
+            if (lastPicked.isNotEmpty()) {
                 LastPickedChipsRow(
-                    items = lastPickedItems,
+                    items = lastPicked,
                     onClick = { selectedItem = it },
                     modifier = Modifier.padding(start = 48.dp, end = 56.dp),
                     itemContent = lastPickedItemContent

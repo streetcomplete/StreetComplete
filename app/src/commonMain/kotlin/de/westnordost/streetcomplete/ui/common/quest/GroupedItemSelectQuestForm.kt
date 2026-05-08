@@ -17,16 +17,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_generic_item_confirmation
-import de.westnordost.streetcomplete.resources.quest_select_hint_most_specific
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColumn
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.takeFavorites
-import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.stringResource
 
 /** Quest form that lets the user select one item from a set of items arranged in [groups].
@@ -46,8 +42,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     otherAnswers: List<Answer> = emptyList(),
 ) {
     val actualTopItems = remember(topItems) {
-        prefs.getLastPicked(ListSerializer(serializer<I>()), favoriteKey)
-            .takeFavorites(n = topItems.size, first = 1, pad = topItems)
+        prefs.getLastPicked<I>(favoriteKey).takeFavorites(n = topItems.size, first = 1, pad = topItems)
     }
     var selectedGroup by rememberSerializable { mutableStateOf<G?>(null) }
     var selectedItem by rememberSerializable { mutableStateOf<I?>(null) }
@@ -62,7 +57,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
                 val groupItem = group?.item
                 val item = selectedItem
                 if (item != null) {
-                    prefs.addLastPicked(ListSerializer(serializer()), favoriteKey, item)
+                    prefs.addLastPicked(favoriteKey, item)
                     onClickOk(item)
                 }
                 else if (groupItem != null) {
@@ -100,7 +95,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
         QuestConfirmationDialog(
             onDismissRequest = { confirmSelectionOfGroupItem = null },
             onConfirmed = {
-                prefs.addLastPicked(ListSerializer(serializer()), favoriteKey, groupItem)
+                prefs.addLastPicked(favoriteKey, groupItem)
                 onClickOk(groupItem)
             },
             text = { Text(stringResource(Res.string.quest_generic_item_confirmation)) }

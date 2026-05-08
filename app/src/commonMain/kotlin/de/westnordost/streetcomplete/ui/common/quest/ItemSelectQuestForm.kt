@@ -18,12 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_roofShape_select_one
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.takeFavorites
-import kotlinx.serialization.builtins.ListSerializer
-import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.stringResource
 
 /** Quest form that lets the user select one item from a set of [items], displayed in a grid with a
@@ -45,9 +44,7 @@ inline fun <reified I> ItemSelectQuestForm(
 ) {
     val reorderedItems = remember(items, itemsPerRow, moveFavoritesToFront) {
         if (items.size > itemsPerRow && moveFavoritesToFront) {
-            val favourites = prefs
-                .getLastPicked(ListSerializer(serializer<I>()), favoriteKey)
-                .takeFavorites<I>(n = itemsPerRow)
+            val favourites = prefs.getLastPicked<I>(favoriteKey).takeFavorites(n = itemsPerRow)
             (favourites + items).distinct()
         } else {
             items
@@ -60,7 +57,7 @@ inline fun <reified I> ItemSelectQuestForm(
             isComplete = selectedItem != null,
             onClick = {
                 val value = selectedItem!!
-                prefs.addLastPicked(ListSerializer(serializer<I>()), favoriteKey, value)
+                prefs.addLastPicked(favoriteKey, value)
                 onClickOk(value)
             }
         ),
