@@ -37,9 +37,11 @@ import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.MoreIcon
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Answers
+import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.titleMedium
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
 
 /** A generic overlay form containing the center-aligned [content], padded with [contentPadding].
  *  Above it, an optional bubble with a [label] (in which the element is usually named).
@@ -47,17 +49,19 @@ import de.westnordost.streetcomplete.ui.theme.titleMedium
  *  Below the content, there's an empty bar that contains only a "more" icon button on the start
  *  that, when tapped, opens a dropdown menu containing [otherAnswers].
  *
- *  Floating in the lower end corner, an OK button for confirmation. [okIsVisible] should be true
- *  when the form is complete, while [okIsEnabled] should be true when any changes have been made.
+ *  Floating in the lower end corner, an OK button for confirmation. [isComplete] should be true
+ *  when the form is complete, while [hasChanges] should be true when any changes have been made.
  *  */
 @Composable
 fun OverlayForm(
-    okIsVisible: Boolean,
-    okIsEnabled: Boolean,
+    isComplete: Boolean,
+    hasChanges: Boolean,
     onClickOk: () -> Unit,
     modifier: Modifier = Modifier,
-    label: AnnotatedString? = null,
-    otherAnswers: Answers = Answers(),
+    label: AnnotatedString? = LocalElement.current?.let { element ->
+        nameAndLocationLabel(element, featureDictionary)
+    },
+    otherAnswers: List<Answer> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable BoxScope.() -> Unit
 ) {
@@ -89,14 +93,14 @@ fun OverlayForm(
             OverlayContentBubble(
                 modifier = Modifier.fillMaxWidth(),
                 elevation = elevation,
-                otherAnswers = otherAnswers.answers,
+                otherAnswers = otherAnswers,
                 contentPadding = contentPadding,
                 content = content
             )
         }
         FloatingOkButton(
-            visible = okIsVisible,
-            enabled = okIsEnabled,
+            visible = isComplete,
+            enabled = hasChanges,
             onClick = onClickOk,
             modifier = Modifier
                 .align(Alignment.BottomEnd)
@@ -165,11 +169,11 @@ private fun MoreButton(
 @Composable
 private fun OverlayFormPreview() {
     OverlayForm(
-        okIsVisible = true,
-        okIsEnabled = false,
+        isComplete = true,
+        hasChanges = false,
         onClickOk = {},
         label = AnnotatedString("some text"),
-        otherAnswers = Answers(
+        otherAnswers = listOf(
             Answer("Can't say") {},
             Answer("Can say") {},
         )
