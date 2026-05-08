@@ -3,6 +3,9 @@ package de.westnordost.streetcomplete.osm
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
+import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
+import kotlin.collections.orEmpty
 
 /** Return whether this element is a kind of place, regardless whether it is currently vacant or
  *  not */
@@ -245,6 +248,56 @@ val POPULAR_PLACE_FEATURE_IDS = listOf(
     //"amenity/fuel", // 0.6 M
     //"tourism/hotel", // 0.4 M
 )
+
+/** Return whether the newly selected [newFeature] with [newNames] should replace or should not
+ *  replace the [previousFeature] with [previousNames]. Returns null if it can not be ascertained
+ *  with certainty. */
+fun shouldReplacePlace(
+    element: Element?,
+    newFeature: Feature,
+    newNames: List<LocalizedName>,
+    previousFeature: Feature?,
+    previousNames: List<LocalizedName>,
+): Boolean? {
+    val hasAddedNames = newNames.isNotEmpty() && newNames.containsAll(previousNames)
+    val hasChangedNames = previousNames != newNames
+    val hasChangedId = newFeature.id != previousFeature?.id
+    val hasChangedFeatureId = previousFeature?.featureId != newFeature.featureId
+    val isFeatureSubtype =
+        previousFeature != null
+            && (newFeature.isChildOf(previousFeature) || previousFeature.isChildOf(newFeature))
+    val wasVacant = element != null && element.isDisusedPlace()
+    val isVacant = newFeature.id == "shop/vacant"
+    val wasBrand =  previousFeature?.isSuggestion == true
+    val isBrand =  newFeature.isSuggestion
+
+    val shouldNotReplaceShop =
+        // a brand preset was applied, but neither names nor feature type changed (see #5940)
+        !hasChangedNames && !hasChangedFeatureId
+        // name(s) were added but feature wasn't changed at all; user wouldn't be able to answer if
+        // the place changed or not anyway, so rather keep previous information
+        || hasAddedNames && !hasChangedId
+        // place has been added, nothing to replace
+        || element == null
+    if (shouldNotReplaceShop) return false
+
+    val shouldAlwaysReplaceShop =
+        // the feature is or was a brand feature and the type has changed -> definitely different
+        // place now; If the name and/or feature changed, the user might just have corrected the
+        // spelling or corrected the type (e.g. kindergarten -> childcare), so it is better to ask.
+        // Also, a place might have been tagged as fast food before and now it is pizza fast food,
+        // this should not lead to auto-replacing (see #6406)
+        (isBrand || wasBrand) && !isFeatureSubtype
+        // was vacant before but not anymore (-> cleans up any previous tags that may be
+        // associated with the old place)
+        || wasVacant && hasChangedId
+        // it's vacant now
+        || isVacant
+
+    if (shouldAlwaysReplaceShop) return true
+
+    return null
+}
 
 /** Apply replacing a place feature to the given [tags]
  *  Removes any place-related tags before applying this feature to the given [tags]. */

@@ -46,5 +46,18 @@ fun Feature.toElement(): Element {
     }
 }
 
+/** return the id of the feature, without any brand stuff */
+val Feature.featureId get() = if (isSuggestion) id.substringBeforeLast("/") else id
+
+/** Whether this feature is a subtype of another feature */
+fun Feature.isChildOf(other: Feature): Boolean =
+    id.startsWith(other.id)
+
+/** return whether the feature has a fixed name which should not be changed */
+val Feature.hasFixedName get() =
+    addTags.containsKey("name") && preserveTags.none { it.containsMatchIn("name") }
+        || id == "shop/vacant"
+        || id == "shop/unknown"
+
 private val NULL_ISLAND = LatLon(0.0, 0.0)
 private val NULL_ISLAND_NODES = listOf(-1L, -2L, -3L, -1L)
