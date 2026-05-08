@@ -19,7 +19,7 @@ fun <I> RadioGroupQuestForm(
     modifier: Modifier = Modifier,
     otherAnswers: List<Answer> = emptyList(),
 ) {
-    var checkedItemIndex by rememberSaveable { mutableStateOf<Int>(-1) }
+    var checkedItemIndex by rememberSaveable(items) { mutableStateOf<Int>(-1) }
     val checkedItem by remember {
         derivedStateOf { checkedItemIndex.takeIf { it != -1 }?.let { items[it] } }
     }
