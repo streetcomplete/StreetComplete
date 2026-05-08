@@ -67,10 +67,10 @@ fun LocalizedNameQuestForm(
     var showKeyboardInfo by remember { mutableStateOf(false) }
 
     QuestForm(
-        answers = Confirm(
+        answers = Form(
             isComplete = localizedNames.isNotEmpty() && localizedNames.all { it.name.isNotBlank() },
             hasChanges = localizedNames.isNotEmpty() && localizedNames.any { it.name.isNotBlank() },
-            onClick = {
+            onClickOk = {
                 onClickOk(localizedNames)
 
                 val firstLanguage = localizedNames

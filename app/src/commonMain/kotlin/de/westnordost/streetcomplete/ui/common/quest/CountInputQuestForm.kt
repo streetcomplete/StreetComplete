@@ -24,9 +24,9 @@ fun CountInputQuestForm(
     var count by rememberSaveable { mutableStateOf<Int?>(null) }
 
     QuestForm(
-        answers = Confirm(
+        answers = Form(
             isComplete = count?.let { it > 0 } == true,
-            onClick = { onClickOk(count!!) }
+            onClickOk = { onClickOk(count!!) }
         ),
         modifier = modifier,
         otherAnswers = otherAnswers,

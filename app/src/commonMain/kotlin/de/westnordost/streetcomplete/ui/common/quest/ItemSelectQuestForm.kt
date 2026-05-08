@@ -53,9 +53,9 @@ inline fun <reified I> ItemSelectQuestForm(
     var selectedItem by rememberSerializable { mutableStateOf<I?>(null) }
 
     QuestForm(
-        answers = Confirm(
+        answers = Form(
             isComplete = selectedItem != null,
-            onClick = {
+            onClickOk = {
                 val value = selectedItem!!
                 prefs.addLastPicked(favoriteKey, value)
                 onClickOk(value)

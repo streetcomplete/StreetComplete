@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Answers
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -43,10 +43,10 @@ class AddParkingFeeForm : AbstractOsmQuestForm<ParkingFeeAnswer>() {
                         }
                     )
                 } else {
-                    Confirm(
+                    Form(
                         isComplete = answer?.isComplete() == true,
                         hasChanges = answer != null,
-                        onClick = { answer?.let { applyAnswer(it) } }
+                        onClickOk = { answer?.let { applyAnswer(it) } }
                     )
                 },
             otherAnswers = listOf(

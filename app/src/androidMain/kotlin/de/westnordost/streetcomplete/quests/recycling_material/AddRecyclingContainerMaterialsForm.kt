@@ -1,9 +1,5 @@
 package de.westnordost.streetcomplete.quests.recycling_material
 
-import android.os.Bundle
-import android.view.View
-import androidx.appcompat.app.AlertDialog
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -12,13 +8,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
@@ -37,9 +31,9 @@ class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContain
         var confirmJustTrash by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = selectedItems.isNotEmpty(),
-                onClick = {
+                onClickOk = {
                     prefs.addLastPicked(this::class.simpleName!!, selectedItems.toList())
                     applyAnswer(RecyclingMaterials(selectedItems))
                 }

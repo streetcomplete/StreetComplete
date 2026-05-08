@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.CheckboxGroup
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -32,9 +32,9 @@ class AddBoardTypeForm : AbstractOsmQuestForm<BoardTypeAnswer>() {
         var confirmIsMap by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = selectedOptions.isNotEmpty(),
-                onClick = { applyAnswer(BoardTypeAnswer.BoardTypes(selectedOptions)) }
+                onClickOk = { applyAnswer(BoardTypeAnswer.BoardTypes(selectedOptions)) }
             ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_board_type_map)) { confirmIsMap = true }

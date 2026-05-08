@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Answers
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -58,10 +58,10 @@ class AddOpeningHoursForm : AbstractOsmQuestForm<OpeningHoursAnswer>() {
                         }
                     )
                 } else {
-                    Confirm(
+                    Form(
                         isComplete = openingHours.isComplete(),
                         hasChanges = openingHours.monthsList.isNotEmpty(),
-                        onClick = { applyAnswer(RegularOpeningHours(openingHours)) }
+                        onClickOk = { applyAnswer(RegularOpeningHours(openingHours)) }
                     )
                 },
             otherAnswers = listOf(

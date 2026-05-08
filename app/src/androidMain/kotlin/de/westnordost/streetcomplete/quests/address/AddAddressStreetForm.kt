@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_address_street_no_named_streets
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.stringResource
@@ -43,9 +43,9 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
         var showSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = streetOrPlaceName.value.name.isNotEmpty(),
-                onClick = {
+                onClickOk = {
                     lastWasPlaceName = streetOrPlaceName.value is PlaceName
                     applyAnswer(streetOrPlaceName.value)
                 }

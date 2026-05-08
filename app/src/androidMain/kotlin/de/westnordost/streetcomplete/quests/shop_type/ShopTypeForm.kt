@@ -1,25 +1,17 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
-import android.os.Bundle
-import android.view.View
-import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import de.westnordost.osmfeatures.Feature
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 
@@ -37,9 +29,9 @@ class ShopTypeForm : AbstractOsmQuestForm<ShopTypeAnswer>() {
         }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = isComplete,
-                onClick = {
+                onClickOk = {
                     when (option) {
                         ShopTypeFormOption.FEATURE -> {
                             // if the shop has **some** name (that is displayed to the user), we just want to

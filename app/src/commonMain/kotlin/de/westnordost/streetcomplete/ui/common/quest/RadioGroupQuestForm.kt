@@ -9,7 +9,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.ui.common.RadioGroup
-import de.westnordost.streetcomplete.ui.util.rememberSerializable
 
 /** Quest form in which the [items] are displayed as a list of radio buttons */
 @Composable
@@ -25,9 +24,9 @@ fun <I> RadioGroupQuestForm(
         derivedStateOf { checkedItemIndex.takeIf { it != -1 }?.let { items[it] } }
     }
     QuestForm(
-        answers = Confirm(
+        answers = Form(
             isComplete = checkedItem != null,
-            onClick = { onClickOk(checkedItem!!) }
+            onClickOk = { onClickOk(checkedItem!!) }
         ),
         modifier = modifier,
         otherAnswers = otherAnswers,

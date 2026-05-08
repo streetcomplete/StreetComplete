@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import org.jetbrains.compose.resources.stringResource
@@ -25,9 +25,9 @@ class AddFireHydrantRefForm : AbstractOsmQuestForm<FireHydrantRefAnswer>() {
         var confirmNoRef by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = ref.isNotEmpty(),
-                onClick = { applyAnswer(FireHydrantRef(ref)) }
+                onClickOk = { applyAnswer(FireHydrantRef(ref)) }
             ),
             otherAnswers = listOf(
                 Answer(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = false }

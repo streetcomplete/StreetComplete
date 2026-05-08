@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -29,10 +29,10 @@ class AddMaxWeightForm : AbstractOsmQuestForm<List<MaxWeight>>() {
         var showUnsupportedSignDialog by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = signs.isNotEmpty() && signs.all { it.weight != null },
                 hasChanges = signs.isNotEmpty(),
-                onClick = {
+                onClickOk = {
                     if (isUnrealisticWeight(signs)) {
                         confirmUnusualInput = true
                     } else {

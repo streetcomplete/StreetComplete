@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -44,9 +44,9 @@ class AddStepsRampForm : AbstractOsmQuestForm<StepsRampAnswer>() {
         var confirmWheelchairRampIsSeparate by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = selectedItems.isNotEmpty(),
-                onClick = {
+                onClickOk = {
                     if (selectedItems.contains(WHEELCHAIR)) {
                         confirmWheelchairRampIsSeparate = true
                     } else {

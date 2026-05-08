@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -64,10 +64,10 @@ class AddHousenumberForm : AbstractOsmQuestForm<HouseNumberAnswer>() {
         }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = addressNumberAndName.isComplete(),
                 hasChanges = !addressNumberAndName.isEmpty(),
-                onClick = {
+                onClickOk = {
                     val isUnusual = addressNumberAndName
                         .number?.takeIf { !it.isEmpty() }
                         ?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true

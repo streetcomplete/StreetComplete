@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Answers
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -53,10 +53,10 @@ class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer
                         }
                     )
                 } else {
-                    Confirm(
+                    Form(
                         isComplete = openingHours.isComplete(),
                         hasChanges = openingHours.monthsList.isNotEmpty(),
-                        onClick = { applyAnswer(CollectionTimes(openingHours)) }
+                        onClickOk = { applyAnswer(CollectionTimes(openingHours)) }
                     )
                 },
             otherAnswers = listOf(

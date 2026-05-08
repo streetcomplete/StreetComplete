@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.quests.LengthForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
@@ -38,9 +38,9 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         val arIsSupported = remember { checkArSupport() }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = length.value != null,
-                onClick = {
+                onClickOk = {
                     val length = length.value!!
                     val newTags = element.tags + ("width" to length.toMeters().toString())
                     if (hasDubiousRoadWidth(newTags) != true) {

@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -43,13 +43,13 @@ class AddSidewalkSurfaceForm : AbstractOsmQuestForm<SidewalkSurfaceAnswer>() {
         var sidewalkSurfaces by rememberSerializable { mutableStateOf(Sides<Surface>(null, null)) }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete =
                     (!hasSidewalkLeft || sidewalkSurfaces.left != null) &&
                     (!hasSidewalkRight || sidewalkSurfaces.right != null),
                 hasChanges =
                     sidewalkSurfaces.any { it != null },
-                onClick = {
+                onClickOk = {
                     applyAnswer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces)))
                     if (hasSidewalkLeft && hasSidewalkRight) {
                         prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalkSurfaces))

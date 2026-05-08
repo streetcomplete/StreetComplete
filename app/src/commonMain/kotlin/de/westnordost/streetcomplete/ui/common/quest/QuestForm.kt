@@ -1,37 +1,29 @@
 package de.westnordost.streetcomplete.ui.common.quest
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.sizeIn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
@@ -61,12 +53,13 @@ data class Answers(val answers: List<Answer>) : QuestAnswer {
     constructor() : this(emptyList())
     constructor(vararg answers: Answer) : this(answers.toList())
 }
-/** Confirm the form with an OK button. The OK button is only clickable if the form [isComplete].
- *  When the form [hasChanges], the user will be asked for confirmation before closing this form. */
-data class Confirm(
+/** The user fills a form. The OK button is only clickable if the form [isComplete].
+ *  When the form [hasChanges], the user will be asked for confirmation before dismissing this form.
+ */
+data class Form(
     val isComplete: Boolean,
     val hasChanges: Boolean = isComplete,
-    val onClick: () -> Unit,
+    val onClickOk: () -> Unit,
 ) : QuestAnswer
 
 /** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
@@ -151,10 +144,10 @@ fun QuestForm(
                 )
             }
         }
-        if (answers is Confirm) {
+        if (answers is Form) {
             FloatingOkButton(
                 visible = answers.isComplete,
-                onClick = answers.onClick,
+                onClick = answers.onClickOk,
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .safeDrawingPadding()

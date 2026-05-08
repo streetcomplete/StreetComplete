@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -19,10 +19,10 @@ class AddEntranceReferenceForm : AbstractOsmQuestForm<EntranceReferenceAnswer>()
         var entranceReference by rememberSerializable { mutableStateOf(lastEntranceReference?.clear()) }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = entranceReference?.isComplete() == true,
                 hasChanges = entranceReference != null,
-                onClick = {
+                onClickOk = {
                     lastEntranceReference = entranceReference
                     applyAnswer(entranceReference!!)
                 }

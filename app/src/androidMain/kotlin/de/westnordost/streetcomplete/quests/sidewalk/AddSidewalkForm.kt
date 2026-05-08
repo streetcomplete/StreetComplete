@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -32,10 +32,10 @@ class AddSidewalkForm : AbstractOsmQuestForm<Sides<Sidewalk>>() {
         var showNoSidewalksHint by remember { mutableStateOf(false) }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = sidewalks.left != null && sidewalks.right != null,
                 hasChanges = sidewalks.left != null || sidewalks.right != null,
-                onClick = {
+                onClickOk = {
                     applyAnswer(sidewalks)
                     prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalks))
                 }

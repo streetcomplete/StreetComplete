@@ -50,9 +50,9 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     var confirmSelectionOfGroupItem by remember { mutableStateOf<I?>(null) }
 
     QuestForm(
-        answers = Confirm(
+        answers = Form(
             isComplete = selectedItem != null || selectedGroup?.item != null,
-            onClick = {
+            onClickOk = {
                 val group = selectedGroup
                 val groupItem = group?.item
                 val item = selectedItem

@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_multiselect_hint
 import de.westnordost.streetcomplete.ui.common.CheckboxGroup
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -29,9 +29,9 @@ class AddInternetAccessForm : AbstractOsmQuestForm<Set<InternetAccess>>() {
         var selectedOptions by rememberSerializable { mutableStateOf(emptySet<InternetAccess>()) }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = selectedOptions.isNotEmpty(),
-                onClick =  { applyAnswer(selectedOptions) }
+                onClickOk =  { applyAnswer(selectedOptions) }
             )
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {

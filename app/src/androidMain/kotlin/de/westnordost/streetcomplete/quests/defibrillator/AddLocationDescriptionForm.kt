@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -30,9 +30,9 @@ class AddLocationDescriptionForm : AbstractOsmQuestForm<String>() {
         var description by rememberSaveable { mutableStateOf("") }
 
         QuestForm(
-            answers = Confirm(
+            answers = Form(
                 isComplete = description.isNotEmpty(),
-                onClick = { applyAnswer(description) }
+                onClickOk = { applyAnswer(description) }
             )
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {

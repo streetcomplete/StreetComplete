@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Answers
-import de.westnordost.streetcomplete.ui.common.quest.Confirm
+import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -103,13 +103,13 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
                     Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { applyAnswer(cycleways) }
                 )
             } else {
-                Confirm(
+                Form(
                     isComplete =
                         (cycleways.left != null || !isLeftSideVisible) &&
                         (cycleways.right != null || !isRightSideVisible),
                     hasChanges =
                         cycleways.left != null || cycleways.right != null,
-                    onClick = {
+                    onClickOk = {
                         if (cycleways.wasNoOnewayForCyclistsButNowItIs(element.tags, countryInfo.isLeftHandTraffic)) {
                             confirmNotOnewayForCyclists = true
                         } else {

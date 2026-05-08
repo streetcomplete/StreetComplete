@@ -56,9 +56,9 @@ inline fun <reified I> ItemsSelectQuestForm(
     var selectedItems by rememberSerializable { mutableStateOf<Set<I>>(emptySet()) }
 
     QuestForm(
-        answers = Confirm(
+        answers = Form(
             isComplete = selectedItems.isNotEmpty(),
-            onClick = {
+            onClickOk = {
                 prefs.addLastPicked(favoriteKey, selectedItems.toList())
                 onClickOk(selectedItems)
             }
