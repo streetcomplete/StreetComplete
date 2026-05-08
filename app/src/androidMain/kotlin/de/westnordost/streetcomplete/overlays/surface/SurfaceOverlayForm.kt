@@ -17,17 +17,13 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
-import de.westnordost.streetcomplete.osm.surface.parseSurface
 import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.overlays.ItemPairSelectOverlayForm
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.overlay_path_surface_segregated
-import de.westnordost.streetcomplete.resources.quest_generic_answer_is_actually_steps
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.overlay.ItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.Answer
@@ -43,21 +39,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
 
     @Composable
     override fun Content() {
-        val originalItem = remember {
-            val tags = element!!.tags
-            val originalSurface = parseSurface(tags["surface"])
-            val originalCyclewaySurface = parseSurface(tags["cycleway:surface"])
-            val originalFootwaySurface = parseSurface(tags["footway:surface"])
-            val isSegregated =
-                tags["highway"] in ALL_PATHS &&
-                (tags["segregated"] == "yes" || originalCyclewaySurface != null || originalFootwaySurface != null)
-
-            if (isSegregated) {
-                SegregatedSurface(footway = originalFootwaySurface, cycleway = originalCyclewaySurface)
-            } else {
-                SingleSurface(originalSurface)
-            }
-        }
+        val originalItem = remember { parseSurfaceOverlayAnswer(element!!.tags) }
         val couldBeSteps = remember { element!!.couldBeSteps() }
         var selectedItem by rememberSerializable { mutableStateOf(originalItem) }
 
