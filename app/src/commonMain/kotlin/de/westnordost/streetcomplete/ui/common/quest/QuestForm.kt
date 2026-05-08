@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.resources.*
@@ -82,7 +83,10 @@ data class Confirm(
 fun QuestForm(
     answers: QuestAnswer,
     modifier: Modifier = Modifier,
-    title: String = stringResource(LocalQuestType.current!!.title),
+    title: String = stringResource(
+        (LocalQuestType.current as? OsmElementQuestType<*>)?.getTitle(LocalElement.current!!.tags)
+            ?: LocalQuestType.current!!.title
+    ),
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
