@@ -33,7 +33,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -57,6 +57,7 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.databinding.FragmentOverlayBinding
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
+import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.FragmentViewBindingPropertyDelegate
@@ -69,11 +70,6 @@ import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
-import de.westnordost.streetcomplete.view.CharSequenceText
-import de.westnordost.streetcomplete.view.ResText
-import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
-import de.westnordost.streetcomplete.view.Text
-import de.westnordost.streetcomplete.view.add
 import de.westnordost.streetcomplete.view.confirmIsSurvey
 import de.westnordost.streetcomplete.view.insets_animation.respectSystemInsets
 import kotlinx.coroutines.Dispatchers
@@ -81,6 +77,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import org.jetbrains.compose.resources.getSystemResourceEnvironment
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import org.koin.core.qualifier.named
 
@@ -139,11 +136,6 @@ abstract class AbstractOverlayForm :
 
     protected val metersPerPixel: Double? get() = listener?.metersPerPixel
 
-    // overridable by child classes
-    open val contentLayoutResId: Int? = null
-    open val contentPadding = true
-    open val otherAnswers = listOf<IAnswerItem>()
-
     interface Listener {
         /** The GPS position at which the user is displayed at */
         val displayedMapLocation: Location?
@@ -168,6 +160,9 @@ abstract class AbstractOverlayForm :
     }
     private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
 
+    @Composable
+    abstract fun Content()
+
     /* --------------------------------------- Lifecycle --------------------------------------- */
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -185,7 +180,6 @@ abstract class AbstractOverlayForm :
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentOverlayBinding.inflate(inflater, container, false)
-        contentLayoutResId?.let { setContentView(it) }
         return binding.root
     }
 
@@ -197,55 +191,15 @@ abstract class AbstractOverlayForm :
 
         setMarkerVisibility(_geometry == null)
         binding.pin.root.doOnLayout { setMarkerPosition(null) }
-        binding.bottomSheetContainer.respectSystemInsets(View::setMargins)
-
-        val cornerRadius = resources.getDimension(R.dimen.speech_bubble_rounded_corner_radius)
-        val margin = resources.getDimensionPixelSize(R.dimen.horizontal_speech_bubble_margin)
-        binding.speechbubbleContentContainer.outlineProvider = RoundRectOutlineProvider(
-            cornerRadius, margin, margin, margin, margin
-        )
-        binding.speechbubbleContentContainer.clipToOutline = true
-
-        binding.titleHint.content { Surface {
-            CompositionLocalProvider(
-                LocalTextStyle provides MaterialTheme.typography.titleMedium,
-                LocalContentAlpha provides ContentAlpha.medium
-            ) {
-                getSubtitle()?.let { Text(it) }
-            }
-        } }
-        setObjNote(element?.tags?.get("note"))
-
-        binding.moreButton.setOnClickListener {
-            showOtherAnswers()
-        }
-        binding.okButton.setOnClickListener {
-            if (!isFormComplete()) {
-                activity?.toast(R.string.no_changes)
-            } else {
-                onClickOk()
-            }
-        }
     }
-
-    @Composable
-    protected open fun getSubtitle(): AnnotatedString? =
-        element?.let { nameAndLocationLabel(it, featureDictionary) }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-        // see rant comment in AbstractBottomSheetFragment
-        resources.updateConfiguration(newConfig, resources.displayMetrics)
-
-        binding.bottomSheetContainer.updateLayoutParams { width = resources.getDimensionPixelSize(R.dimen.quest_form_width) }
-
         setMarkerPosition(null)
     }
 
     override fun onStart() {
         super.onStart()
-
-        checkIsFormComplete()
 
         if (!startedOnce) {
             onMapOrientation(initialMapRotation, initialMapTilt)
@@ -266,19 +220,6 @@ abstract class AbstractOverlayForm :
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    protected fun setObjNote(text: CharSequence?) {
-        binding.noteLabel.text = text
-        val titleHintLayout = (binding.titleHintLabelContainer.layoutParams as? RelativeLayout.LayoutParams)
-        titleHintLayout?.removeRule(RelativeLayout.ABOVE)
-        titleHintLayout?.addRule(RelativeLayout.ABOVE,
-            if (binding.noteLabel.text.isEmpty())
-                binding.speechbubbleContentContainer.id
-            else
-                binding.speechbubbleNoteContainer.id
-        )
-        binding.speechbubbleNoteContainer.isGone = binding.noteLabel.text.isEmpty()
     }
 
     /* --------------------------------- IsCloseableBottomSheet  ------------------------------- */
@@ -307,17 +248,6 @@ abstract class AbstractOverlayForm :
 
     /* ------------------------------- Interface for subclasses  ------------------------------- */
 
-    /** Inflate given layout resource id into the content view and return the inflated view */
-    protected fun setContentView(resourceId: Int): View {
-        if (binding.content.childCount > 0) {
-            binding.content.removeAllViews()
-        }
-        binding.content.visibility = View.VISIBLE
-        updateContentPadding()
-        layoutInflater.inflate(resourceId, binding.content)
-        return binding.content.getChildAt(0)
-    }
-
     protected fun setMarkerIcon(iconResId: Int) {
         binding.pin.pinIconView.setImageResource(iconResId)
     }
@@ -336,79 +266,31 @@ abstract class AbstractOverlayForm :
         binding.pin.root.y = point.y - binding.pin.root.height / 2
     }
 
-    private fun updateContentPadding() {
-        if (!contentPadding) {
-            binding.content.setPadding(0, 0, 0, 0)
-        } else {
-            val horizontal = resources.getDimensionPixelSize(R.dimen.quest_form_horizontal_padding)
-            val vertical = resources.getDimensionPixelSize(R.dimen.quest_form_vertical_padding)
-            binding.content.setPadding(horizontal, vertical, horizontal, vertical)
-        }
-    }
-
     protected fun applyEdit(answer: ElementEditAction, geometry: ElementGeometry = this.geometry) {
         viewLifecycleScope.launch {
             solve(answer, geometry)
         }
     }
 
-    protected fun checkIsFormComplete() {
-        val isComplete = isFormComplete()
-        binding.okButton.isEnabled = hasChanges() && isComplete
-        if (isComplete) {
-            binding.okButtonContainer.popIn()
-        } else {
-            binding.okButtonContainer.popOut()
-        }
-    }
-
-    private fun isRejectingClose(): Boolean = hasChanges()
-
-    protected abstract fun hasChanges(): Boolean
-
     protected open fun onDiscard() {}
 
-    protected abstract fun isFormComplete(): Boolean
-
-    protected abstract fun onClickOk()
-
-    protected inline fun <reified T : ViewBinding> contentViewBinding(
-        noinline viewBinder: (View) -> T,
-    ) = FragmentViewBindingPropertyDelegate(this, viewBinder, R.id.content)
-
     /* -------------------------------------- ...-Button -----------------------------------------*/
-
-    private fun showOtherAnswers() {
-        val answers = assembleOtherAnswers()
-        val popup = PopupMenu(requireContext(), binding.moreButton)
-        for (i in answers.indices) {
-            val otherAnswer = answers[i]
-            val order = answers.size - i
-            popup.menu.add(Menu.NONE, i, order, otherAnswer.title)
-        }
-        popup.show()
-
-        popup.setOnMenuItemClickListener { item ->
-            answers[item.itemId].action()
-            true
-        }
-    }
 
     private fun assembleOtherAnswers(): List<IAnswerItem> {
         val answers = mutableListOf<IAnswerItem>()
 
         val element = element
         if (element != null) {
-            answers.add(AnswerItem(R.string.leave_note) { composeNote(element) })
+            answers.add(Answer(stringResource(Res.string.leave_note)) { composeNote(element) })
 
             if (element.isSplittable()) {
-                answers.add(AnswerItem(R.string.split_way) { splitWay(element) })
+                answers.add(Answer(stringResource(Res.string.split_way)) { splitWay(element) })
             }
 
             if (element is Node // add moveNodeAnswer only if it's a free floating node
                 && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
                 && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()) {
-                answers.add(AnswerItem(R.string.move_node) { moveNode() })
+                answers.add(Answer(stringResource(Res.string.move_node)) { moveNode() })
             }
         }
 
@@ -441,10 +323,8 @@ abstract class AbstractOverlayForm :
     /* -------------------------------------- Apply edit  -------------------------------------- */
 
     private suspend fun solve(action: ElementEditAction, geometry: ElementGeometry) {
-        setLocked(true)
         val isSurvey = surveyChecker.checkIsSurvey(geometry)
         if (!isSurvey && !confirmIsSurvey(requireContext())) {
-            setLocked(false)
             return
         }
 
@@ -452,10 +332,6 @@ abstract class AbstractOverlayForm :
             addElementEditsController.add(overlay, geometry, "survey", action, isSurvey)
         }
         listener?.onEdited(overlay, geometry)
-    }
-
-    private fun setLocked(locked: Boolean) {
-        binding.glassPane.isGone = !locked
     }
 
     /* ------------------------------------- marker position ------------------------------------ */
@@ -491,17 +367,4 @@ abstract class AbstractOverlayForm :
             ARG_MAP_TILT to tilt
         )
     }
-}
-
-interface IAnswerItem {
-    val title: Text
-    val action: () -> Unit
-}
-
-data class AnswerItem(val titleResourceId: Int, override val action: () -> Unit) : IAnswerItem {
-    override val title: Text get() = ResText(titleResourceId)
-}
-
-data class AnswerItem2(val titleString: String, override val action: () -> Unit) : IAnswerItem {
-    override val title: Text get() = CharSequenceText(titleString)
 }
