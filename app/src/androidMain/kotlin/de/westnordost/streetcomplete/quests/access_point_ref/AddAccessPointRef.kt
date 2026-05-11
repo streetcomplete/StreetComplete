@@ -23,7 +23,6 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>(), AndroidQue
     override val icon = R.drawable.quest_access_point
     override val title = Res.string.quest_genericRef_title
     override val achievements = listOf(EditTypeAchievement.LIFESAVER, EditTypeAchievement.RARE)
-    override val isDeleteElementEnabled = true
 
     override fun createForm() = AddAccessPointRefForm()
 

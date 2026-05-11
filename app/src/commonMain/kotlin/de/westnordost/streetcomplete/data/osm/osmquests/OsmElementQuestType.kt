@@ -38,18 +38,6 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * makes sense if the pins are in the middle. */
     val hasMarkersAtEnds: Boolean get() = false
 
-    /** Whether the user should be able to delete this element instead. Only elements that
-     *  are not expected...
-     *  - to be part of a relation
-     *  - to be part of a network (e.g. roads, power lines, ...)
-     *  - to house a second POI on the same element
-     *  - to be a kind of element where deletion is not recommended, (e.g. a shop should rather
-     *    be set to disused:shop=yes until there is another one)
-     *  ...should be deletable.
-     *
-     *  By default: false.*/
-    val isDeleteElementEnabled: Boolean get() = false
-
     /** Whether the user should be able to replace this element with another preset. Only
      *  elements that are expected to be some kind of shop/amenity should be replaceable this way,
      *  i.e. anything that when it's gone, there is a vacant shop then.

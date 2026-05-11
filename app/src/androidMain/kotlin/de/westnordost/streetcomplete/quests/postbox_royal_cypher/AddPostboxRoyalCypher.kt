@@ -21,7 +21,6 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>(), AndroidQ
     override val wikiLink = "Key:royal_cypher"
     override val icon = R.drawable.quest_crown
     override val title = Res.string.quest_postboxRoyalCypher_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
     override val enabledInCountries = NoCountriesExcept(
         // United Kingdom and some former nations of the British Empire, members of the Commonwealth of Nations and British overseas territories etc.

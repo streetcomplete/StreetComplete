@@ -24,7 +24,6 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override val wikiLink = "Tag:emergency=first_aid_kit"
     override val icon = R.drawable.quest_first_aid_kit
     override val title = Res.string.quest_first_aid_kit_location
-    override val isDeleteElementEnabled = false
     override val achievements = listOf(LIFESAVER)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

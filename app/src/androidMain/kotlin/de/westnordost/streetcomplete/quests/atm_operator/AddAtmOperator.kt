@@ -18,7 +18,6 @@ class AddAtmOperator : OsmFilterQuestType<String>(), AndroidQuest {
     override val wikiLink = "Tag:amenity=atm"
     override val icon = R.drawable.quest_money
     override val title = Res.string.quest_atm_operator_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

@@ -18,7 +18,6 @@ class AddParcelLockerBrand : OsmFilterQuestType<String>(), AndroidQuest {
     override val wikiLink = "Tag:amenity=parcel_locker"
     override val icon = R.drawable.quest_parcel_locker_brand
     override val title = Res.string.quest_parcel_locker_brand
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

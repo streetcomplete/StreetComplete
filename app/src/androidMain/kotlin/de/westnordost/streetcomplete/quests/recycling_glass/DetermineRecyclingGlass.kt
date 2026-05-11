@@ -30,7 +30,6 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>(), AndroidQue
     override val title = Res.string.quest_recycling_glass_title
     // see isUsuallyAnyGlassRecyclableInContainers.yml
     override val enabledInCountries = AllCountriesExcept("CZ")
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
     override val hint = Res.string.quest_determineRecyclingGlass_description_any_glass
 

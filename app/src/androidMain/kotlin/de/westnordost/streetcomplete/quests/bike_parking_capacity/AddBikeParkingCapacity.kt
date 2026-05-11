@@ -35,7 +35,6 @@ class AddBikeParkingCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.quest_bicycle_parking_capacity
     override val title = Res.string.quest_bikeParkingCapacity_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
     override val hint = Res.string.quest_bikeParkingCapacity_hint
 

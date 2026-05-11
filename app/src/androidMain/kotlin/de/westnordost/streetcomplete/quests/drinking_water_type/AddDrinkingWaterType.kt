@@ -27,7 +27,6 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>(), AndroidQue
     override val wikiLink = "Tag:amenity=drinking_water"
     override val icon = R.drawable.quest_drinking_water // another icon?
     override val title = Res.string.quest_drinking_water_type_title2
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN, OUTDOORS)
 
     override fun createForm() = AddDrinkingWaterTypeForm()

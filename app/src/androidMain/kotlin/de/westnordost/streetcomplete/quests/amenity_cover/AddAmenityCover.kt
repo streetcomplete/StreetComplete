@@ -30,7 +30,6 @@ class AddAmenityCover(
     override val wikiLink = "Key:covered"
     override val icon = R.drawable.quest_picnic_table_cover
     override val title = Res.string.quest_amenityCover_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

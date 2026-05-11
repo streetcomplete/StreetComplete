@@ -23,7 +23,6 @@ class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>()
     override val wikiLink = "Tag:amenity=charging_station"
     override val icon = R.drawable.quest_bicycle_charger
     override val title = Res.string.quest_charging_station_bicycles_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
     override val hint = Res.string.quest_charging_station_bicycles_hint
 

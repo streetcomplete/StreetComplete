@@ -45,7 +45,6 @@ class AddLevel : OsmElementQuestType<String>, AndroidQuest {
      * it really makes no sense to tag something as vacant if the level is not known. Instead, if
      * the user cannot find the place on any level in the mall, delete the element completely. */
     override val isReplacePlaceEnabled = false
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {

@@ -17,7 +17,6 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>(), Androi
     override val wikiLink = "Tag:tourism=information"
     override val icon = R.drawable.quest_information
     override val title = Res.string.quest_tourism_information_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(RARE, CITIZEN, OUTDOORS)
 
     override fun createForm() = AddInformationForm()

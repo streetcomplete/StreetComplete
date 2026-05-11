@@ -25,7 +25,6 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>(), Andro
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.quest_toilets_wheelchair
     override val title = Res.string.quest_wheelchairAccess_outside_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(WHEELCHAIR)
     override val hint = Res.string.quest_wheelchairAccess_description_toilets
     override val hintImages = listOf(Res.drawable.wheelchair_sign)

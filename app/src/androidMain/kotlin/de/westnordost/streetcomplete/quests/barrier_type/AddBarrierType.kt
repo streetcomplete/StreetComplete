@@ -36,7 +36,6 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>(), AndroidQuest {
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.quest_barrier
     override val title = Res.string.quest_barrier_type_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR, PEDESTRIAN, BLIND, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
     override fun createForm() = AddBarrierTypeForm()

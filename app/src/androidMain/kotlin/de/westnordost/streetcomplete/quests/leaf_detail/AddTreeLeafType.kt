@@ -22,7 +22,6 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>(), AndroidQuest {
     override val wikiLink = "Key:leaf_type"
     override val icon = R.drawable.quest_leaf
     override val title = Res.string.quest_leafType_tree_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 

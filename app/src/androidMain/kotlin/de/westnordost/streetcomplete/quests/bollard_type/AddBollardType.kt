@@ -31,7 +31,6 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer>, AndroidQuest {
     override val wikiLink = "Key:bollard"
     override val icon = R.drawable.quest_no_cars
     override val title = Res.string.quest_bollard_type_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR, LIFESAVER)
 
     // exclude free-floating nodes

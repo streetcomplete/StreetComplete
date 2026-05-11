@@ -21,7 +21,6 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>(), AndroidQuest {
     override val wikiLink = "Key:recycling_type"
     override val icon = R.drawable.quest_recycling
     override val title = Res.string.quest_recycling_type_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

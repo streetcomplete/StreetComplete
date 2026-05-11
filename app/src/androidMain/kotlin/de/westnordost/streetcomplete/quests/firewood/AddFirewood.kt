@@ -39,7 +39,6 @@ class AddFirewood : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val wikiLink = "Tag:leisure=firepit"
     override val icon = R.drawable.quest_firewood
     override val title = Res.string.quest_firewood_provided_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

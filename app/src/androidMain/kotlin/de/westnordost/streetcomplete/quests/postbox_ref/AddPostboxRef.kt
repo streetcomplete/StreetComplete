@@ -23,7 +23,6 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>(), AndroidQuest {
     override val wikiLink = "Tag:amenity=post_box"
     override val icon = R.drawable.quest_mail_ref
     override val title = Res.string.quest_genericRef_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
     override val enabledInCountries = NoCountriesExcept(
         // source: https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country

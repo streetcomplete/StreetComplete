@@ -20,7 +20,6 @@ class AddAtmCashIn : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val wikiLink = "Key:cash_in"
     override val icon = R.drawable.quest_money
     override val title = Res.string.quest_atm_cashin_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

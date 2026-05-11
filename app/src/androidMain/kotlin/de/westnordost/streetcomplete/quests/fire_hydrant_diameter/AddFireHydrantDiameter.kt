@@ -26,7 +26,6 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>(), 
     override val wikiLink = "Tag:emergency=fire_hydrant"
     override val icon = R.drawable.quest_fire_hydrant_diameter
     override val title = Res.string.quest_fireHydrant_diameter_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(LIFESAVER)
 
     /* NOTE: if any countries that (sometimes) use anything else than millimeters as hydrant

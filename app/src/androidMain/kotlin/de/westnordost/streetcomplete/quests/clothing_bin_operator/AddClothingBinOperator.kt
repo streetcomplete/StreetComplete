@@ -29,7 +29,6 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer>, A
     override val wikiLink = "Tag:amenity=recycling"
     override val icon = R.drawable.quest_recycling_clothes
     override val title = Res.string.quest_clothes_container_operator_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

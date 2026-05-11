@@ -25,7 +25,6 @@ class AddToiletsFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val icon = R.drawable.quest_toilet_fee
     override val title = Res.string.quest_toiletsFee_title
     override val enabledInCountries = AllCountriesExcept("US", "CA")
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun createForm() = YesNoQuestForm()

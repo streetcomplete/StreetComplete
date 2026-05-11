@@ -23,7 +23,6 @@ class AddBikeParkingType : OsmFilterQuestType<BikeParkingType>(), AndroidQuest {
     override val wikiLink = "Key:bicycle_parking"
     override val icon = R.drawable.quest_bicycle_parking
     override val title = Res.string.quest_bicycle_parking_type_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

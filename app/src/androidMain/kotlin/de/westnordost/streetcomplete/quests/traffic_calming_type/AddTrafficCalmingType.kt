@@ -16,7 +16,6 @@ class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>(), AndroidQ
     override val wikiLink = "Key:traffic_calming"
     override val icon = R.drawable.quest_car_bumpy
     override val title = Res.string.quest_traffic_calming_type_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(PEDESTRIAN, CAR)
 
     override fun createForm() = AddTrafficCalmingTypeForm()

@@ -27,7 +27,6 @@ class AddBikeRentalCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val wikiLink = "Tag:amenity=bicycle_rental"
     override val icon = R.drawable.quest_bicycle_rental_capacity
     override val title = Res.string.quest_bicycle_rental_capacity_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

@@ -23,7 +23,6 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override val wikiLink = "Tag:emergency=defibrillator"
     override val icon = R.drawable.quest_defibrillator
     override val title = Res.string.quest_defibrillator_location
-    override val isDeleteElementEnabled = false
     override val achievements = listOf(LIFESAVER)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

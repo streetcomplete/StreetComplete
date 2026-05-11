@@ -35,7 +35,6 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
     override val wikiLink = "Key:drinking_water"
     override val icon = R.drawable.quest_drinking_water
     override val title = Res.string.quest_drinking_water_title2
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

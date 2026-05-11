@@ -25,7 +25,6 @@ class AddMotorcycleParkingCover : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val wikiLink = "Tag:amenity=motorcycle_parking"
     override val icon = R.drawable.quest_motorcycle_parking_cover
     override val title = Res.string.quest_motorcycleParkingCoveredStatus_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

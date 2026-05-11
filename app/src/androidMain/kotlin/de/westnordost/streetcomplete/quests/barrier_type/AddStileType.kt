@@ -45,7 +45,6 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer>, AndroidQuest {
     override val wikiLink = "Key:stile"
     override val icon = R.drawable.quest_no_cow
     override val title = Res.string.quest_stile_type_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
     override fun createForm() = AddStileTypeForm()

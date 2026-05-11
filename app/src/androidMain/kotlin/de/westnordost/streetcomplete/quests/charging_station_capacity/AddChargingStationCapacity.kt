@@ -28,7 +28,6 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val wikiLink = "Tag:amenity=charging_station"
     override val icon = R.drawable.quest_charger_capacity
     override val title = Res.string.quest_charging_station_capacity_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

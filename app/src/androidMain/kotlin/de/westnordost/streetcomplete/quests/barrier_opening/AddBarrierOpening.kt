@@ -45,7 +45,6 @@ class AddBarrierOpening(
     override val icon = R.drawable.quest_wheelchair_width
     override val title = Res.string.quest_barrier_opening_width_gate
     override val achievements = listOf(BICYCLIST, WHEELCHAIR)
-    override val isDeleteElementEnabled = true
     override val defaultDisabledMessage: StringResource?
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
 

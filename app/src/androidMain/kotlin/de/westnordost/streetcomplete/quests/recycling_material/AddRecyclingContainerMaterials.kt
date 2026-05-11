@@ -30,7 +30,6 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
     override val wikiLink = "Key:recycling"
     override val icon = R.drawable.quest_recycling_container
     override val title = Res.string.quest_recycling_materials_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

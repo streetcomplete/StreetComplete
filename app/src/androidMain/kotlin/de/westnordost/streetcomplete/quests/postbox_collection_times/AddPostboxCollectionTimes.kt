@@ -34,7 +34,6 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
     override val wikiLink = "Key:collection_times"
     override val icon = R.drawable.quest_mail
     override val title = Res.string.quest_postboxCollectionTimes_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
 
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=postbox_collection_times/AddPostboxCollectionTimes.kt

@@ -30,7 +30,6 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>(), AndroidQuest
     override val wikiLink = "Tag:amenity=bench"
     override val icon = R.drawable.quest_bench_poi
     override val title = Res.string.quest_bench_backrest_title
-    override val isDeleteElementEnabled = true
     override val achievements = listOf(PEDESTRIAN, OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

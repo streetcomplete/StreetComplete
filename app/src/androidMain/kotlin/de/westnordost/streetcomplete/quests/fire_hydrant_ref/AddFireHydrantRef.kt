@@ -21,7 +21,6 @@ class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>(), AndroidQue
     override val icon = R.drawable.quest_fire_hydrant_ref
     override val title = Res.string.quest_genericRef_title
     override val achievements = listOf(EditTypeAchievement.LIFESAVER)
-    override val isDeleteElementEnabled = true
     override val enabledInCountries = NoCountriesExcept(
         "CH", "FR", "LI"
     )
