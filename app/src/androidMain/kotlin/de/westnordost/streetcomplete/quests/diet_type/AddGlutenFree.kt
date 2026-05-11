@@ -31,7 +31,6 @@ class AddGlutenFree : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest
     override val wikiLink = "Key:diet:gluten_free"
     override val icon = R.drawable.quest_glutenfree
     override val title = Res.string.quest_dietType_glutenfree_name_title
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
     override val hint = Res.string.quest_dietType_explanation_glutenfree

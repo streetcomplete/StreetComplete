@@ -29,7 +29,6 @@ class AddHalal : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
     override val wikiLink = "Key:diet:halal"
     override val icon = R.drawable.quest_halal
     override val title = Res.string.quest_dietType_halal_name_title2
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside_regional_warning
     override val hint = Res.string.quest_dietType_explanation_halal

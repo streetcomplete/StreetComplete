@@ -37,7 +37,6 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
     override val wikiLink = "Key:level"
     override val icon = R.drawable.quest_level_thing
     override val title = Res.string.quest_level_thing_title
-    override val isReplacePlaceEnabled = false
     override val achievements = listOf(CITIZEN)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {

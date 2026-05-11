@@ -18,7 +18,6 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>(), AndroidQ
     override val wikiLink = "Tag:shop=laundry"
     override val icon = R.drawable.quest_laundry
     override val title = Res.string.quest_laundrySelfService_title2
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun createForm() = AddSelfServiceLaundryForm()

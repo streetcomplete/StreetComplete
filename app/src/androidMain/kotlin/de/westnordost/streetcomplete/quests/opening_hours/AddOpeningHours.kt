@@ -161,7 +161,6 @@ mapOf(
     override val wikiLink = "Key:opening_hours"
     override val icon = R.drawable.quest_opening_hours
     override val title = Res.string.quest_openingHours_title
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
     private val olderThan1Year = TagOlderThan("opening_hours", RelativeDate(-365f))

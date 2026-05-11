@@ -120,7 +120,6 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.quest_wheelchair_shop
     override val title = Res.string.quest_wheelchairAccess_outside_title
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(WHEELCHAIR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
     override val hint = Res.string.quest_wheelchairAccess_limited_description_business

@@ -31,7 +31,6 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val icon = R.drawable.quest_car_air_compressor
     override val title = Res.string.quest_air_pump_compressor_title
     override val achievements = listOf(CAR, BICYCLIST)
-    override val isReplacePlaceEnabled = true
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""

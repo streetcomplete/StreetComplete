@@ -33,7 +33,6 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
     override val wikiLink = "Key:toilets:wheelchair"
     override val icon = R.drawable.quest_toilets_wheelchair
     override val title = Res.string.quest_wheelchairAccess_toiletsPart_title2
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(RARE, WHEELCHAIR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
     override val hint = Res.string.quest_wheelchairAccess_description_toilets

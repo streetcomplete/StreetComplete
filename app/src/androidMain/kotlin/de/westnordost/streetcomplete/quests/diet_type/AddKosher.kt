@@ -30,7 +30,6 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
     override val wikiLink = "Key:diet:kosher"
     override val icon = R.drawable.quest_kosher
     override val title = Res.string.quest_dietType_kosher_name_title2
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside_regional_warning
     override val hint = Res.string.quest_dietType_explanation_kosher

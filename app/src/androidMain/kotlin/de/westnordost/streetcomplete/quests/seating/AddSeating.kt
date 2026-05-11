@@ -27,7 +27,6 @@ class AddSeating : OsmFilterQuestType<Seating>(), AndroidQuest {
     override val wikiLink = "Key:outdoor_seating"
     override val icon = R.drawable.quest_seating
     override val title = Res.string.quest_seating_name_title
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_seasonal
 

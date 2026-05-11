@@ -36,7 +36,6 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
     override val wikiLink = "Key:diet"
     override val icon = R.drawable.quest_restaurant_vegan
     override val title = Res.string.quest_dietType_vegan_title2
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(VEG, CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
     override val hint = Res.string.quest_dietType_explanation_vegan

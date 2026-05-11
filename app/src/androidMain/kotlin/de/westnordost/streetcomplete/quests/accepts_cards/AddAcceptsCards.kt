@@ -31,7 +31,6 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>(), AndroidQuest {
     override val wikiLink = "Key:payment"
     override val icon = R.drawable.quest_card
     override val title = Res.string.quest_accepts_cards
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 

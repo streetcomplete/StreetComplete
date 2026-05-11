@@ -31,7 +31,6 @@ class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAva
     override val wikiLink = "Tag:service:bicycle:second_hand"
     override val icon = R.drawable.quest_bicycle_second_hand
     override val title = Res.string.quest_bicycle_shop_second_hand_title
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(BICYCLIST)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 

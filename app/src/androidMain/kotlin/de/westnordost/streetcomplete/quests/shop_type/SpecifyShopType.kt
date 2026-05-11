@@ -39,7 +39,6 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>(), AndroidQuest {
     override val wikiLink = "Key:shop"
     override val icon = R.drawable.quest_shop
     override val title = Res.string.quest_shop_type_title2
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

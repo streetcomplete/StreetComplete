@@ -41,10 +41,6 @@ class AddLevel : OsmElementQuestType<String>, AndroidQuest {
     override val wikiLink = "Key:level"
     override val icon = R.drawable.quest_level
     override val title = Res.string.quest_level_title2
-    /* disabled because in a mall with multiple levels, if there are nodes with no level defined,
-     * it really makes no sense to tag something as vacant if the level is not known. Instead, if
-     * the user cannot find the place on any level in the mall, delete the element completely. */
-    override val isReplacePlaceEnabled = false
     override val achievements = listOf(CITIZEN)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {

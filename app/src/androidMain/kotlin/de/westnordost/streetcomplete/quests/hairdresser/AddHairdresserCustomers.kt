@@ -26,7 +26,6 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>(), Andr
     override val wikiLink = "Tag:shop=hairdresser"
     override val icon = R.drawable.quest_hairdresser
     override val title = Res.string.quest_hairdresser_title
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =

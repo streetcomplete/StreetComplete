@@ -38,12 +38,6 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * makes sense if the pins are in the middle. */
     val hasMarkersAtEnds: Boolean get() = false
 
-    /** Whether the user should be able to replace this element with another preset. Only
-     *  elements that are expected to be some kind of shop/amenity should be replaceable this way,
-     *  i.e. anything that when it's gone, there is a vacant shop then.
-     */
-    val isReplacePlaceEnabled: Boolean get() = false
-
     /** the string resource used to display the quest's question for when the element has the
      *  specified [tags]. If null, `title` is used instead */
     fun getTitle(tags: Map<String, String>): StringResource? = null

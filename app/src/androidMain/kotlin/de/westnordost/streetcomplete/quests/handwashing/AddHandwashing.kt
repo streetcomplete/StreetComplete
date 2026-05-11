@@ -23,7 +23,6 @@ class AddHandwashing : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val wikiLink = "Key:toilets:handwashing"
     override val icon = R.drawable.quest_washing_hands
     override val title = Res.string.quest_handwashing_title
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
