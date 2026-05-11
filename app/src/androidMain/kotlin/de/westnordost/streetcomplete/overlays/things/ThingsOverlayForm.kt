@@ -45,6 +45,7 @@ import de.westnordost.streetcomplete.ui.common.feature.FeatureSelect
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.ConfirmDeleteDialog
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -198,35 +199,4 @@ class ThingsOverlayForm : AbstractOverlayForm() {
         super.onViewCreated(view, savedInstanceState)
         setMarkerIcon(R.drawable.quest_dot)
     }
-}
-
-@Composable
-private fun ConfirmDeleteDialog(
-    onDismissRequest: () -> Unit,
-    onConfirmDelete: () -> Unit,
-    onLeaveNote: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    AlertDialog(
-        onDismissRequest = onDismissRequest,
-        buttons = {
-            TextButton(onClick = onDismissRequest) {
-                Text(stringResource(Res.string.quest_generic_confirmation_no))
-            }
-            TextButton(onClick = {
-                onDismissRequest()
-                onLeaveNote()
-            }) {
-                Text(stringResource(Res.string.leave_note))
-            }
-            TextButton(onClick = {
-                onDismissRequest()
-                onConfirmDelete()
-            }) {
-                Text(stringResource(Res.string.osm_element_gone_confirmation))
-            }
-        },
-        modifier = modifier,
-        text = { Text(stringResource(Res.string.osm_element_gone_description)) },
-    )
 }
