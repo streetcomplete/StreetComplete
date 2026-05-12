@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Form
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -66,8 +68,8 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
                 value = answer,
                 onValueChanged = { answer = it },
                 wayRotation = geometryRotation.floatValue,
-                mapRotation = mapRotation.floatValue,
-                mapTilt = mapTilt.floatValue,
+                mapRotation = LocalMapRotation.current,
+                mapTilt = LocalMapTilt.current,
                 isOneway = isOneway,
                 isReversedOneway = isReversedOneway,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,

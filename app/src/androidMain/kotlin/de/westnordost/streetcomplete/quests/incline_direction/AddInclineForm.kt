@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_steps_incline_up
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -25,7 +26,7 @@ class AddInclineForm : AbstractOsmQuestForm<Incline>() {
                 ImageWithLabel(
                     painter = painterResource(item.icon),
                     label = stringResource(Res.string.quest_steps_incline_up),
-                    imageRotation = geometryRotation.floatValue - mapRotation.floatValue
+                    imageRotation = geometryRotation.floatValue - LocalMapRotation.current
                 )
             },
             onClickOk = { applyAnswer(it) },

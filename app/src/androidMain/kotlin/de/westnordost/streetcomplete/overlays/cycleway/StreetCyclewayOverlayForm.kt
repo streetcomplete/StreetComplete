@@ -44,6 +44,8 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toast
 import org.jetbrains.compose.resources.stringResource
@@ -159,8 +161,8 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
                     },
                     selectionMode = selectionMode,
                     geometryRotation = geometryRotation.floatValue,
-                    mapRotation = mapRotation.floatValue,
-                    mapTilt = mapTilt.floatValue,
+                    mapRotation = LocalMapRotation.current,
+                    mapTilt = LocalMapTilt.current,
                     countryInfo = countryInfo,
                     roadDirection = Direction.from(element!!.tags),
                     lastPicked = lastPicked,

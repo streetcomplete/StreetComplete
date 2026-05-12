@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.util.ClipCirclePainter
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
@@ -26,7 +27,7 @@ class AddOnewayForm : AbstractOsmQuestForm<OnewayAnswer>() {
                 ImageWithLabel(
                     painter = remember(painter) { ClipCirclePainter(painter) },
                     label = stringResource(item.title),
-                    imageRotation = geometryRotation.floatValue - mapRotation.floatValue
+                    imageRotation = geometryRotation.floatValue - LocalMapRotation.current
                 )
             },
             onClickOk = { applyAnswer(it) },

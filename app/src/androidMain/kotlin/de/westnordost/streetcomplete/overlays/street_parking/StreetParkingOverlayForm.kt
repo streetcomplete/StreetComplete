@@ -18,6 +18,8 @@ import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.street_parking.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.koin.android.ext.android.inject
 
@@ -55,8 +57,8 @@ class StreetParkingOverlayForm : AbstractOverlayForm() {
                 onValueChanged = { parking = it },
                 width = tags["width"],
                 geometryRotation = geometryRotation.floatValue,
-                mapRotation = mapRotation.floatValue,
-                mapTilt = mapTilt.floatValue,
+                mapRotation = LocalMapRotation.current,
+                mapTilt = LocalMapTilt.current,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,
                 isForwardOneway = isForwardOneway(tags),
                 isReversedOneway = isReversedOneway(tags),

@@ -28,6 +28,8 @@ import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Answers
 import de.westnordost.streetcomplete.ui.common.quest.Form
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toast
@@ -144,8 +146,8 @@ class AddCyclewayForm : AbstractOsmQuestForm<Sides<CyclewayAndDirection>>() {
                 },
                 selectionMode = selectionMode,
                 geometryRotation = geometryRotation.floatValue,
-                mapRotation = mapRotation.floatValue,
-                mapTilt = mapTilt.floatValue,
+                mapRotation = LocalMapRotation.current,
+                mapTilt = LocalMapTilt.current,
                 countryInfo = countryInfo,
                 roadDirection = Direction.from(element.tags),
                 lastPicked = lastPicked,

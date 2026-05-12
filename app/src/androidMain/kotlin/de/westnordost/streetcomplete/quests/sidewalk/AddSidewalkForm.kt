@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Form
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -49,8 +51,8 @@ class AddSidewalkForm : AbstractOsmQuestForm<Sides<Sidewalk>>() {
                 value = sidewalks,
                 onValueChanged = { sidewalks = it },
                 geometryRotation = geometryRotation.floatValue,
-                mapRotation = mapRotation.floatValue,
-                mapTilt = mapTilt.floatValue,
+                mapRotation = LocalMapRotation.current,
+                mapTilt = LocalMapTilt.current,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,
                 lastPicked = lastPicked
             )

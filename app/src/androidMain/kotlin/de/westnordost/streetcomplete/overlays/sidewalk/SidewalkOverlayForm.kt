@@ -18,6 +18,8 @@ import de.westnordost.streetcomplete.osm.sidewalk.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.sidewalk.SidewalkForm
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.koin.android.ext.android.inject
 
@@ -52,8 +54,8 @@ class SidewalkOverlayForm : AbstractOverlayForm() {
                 value = sidewalks,
                 onValueChanged = { sidewalks = it },
                 geometryRotation = geometryRotation.floatValue,
-                mapRotation = mapRotation.floatValue,
-                mapTilt = mapTilt.floatValue,
+                mapRotation = LocalMapRotation.current,
+                mapTilt = LocalMapTilt.current,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,
                 lastPicked = lastPicked,
                 lastPickedContentPadding = PaddingValues(start = 48.dp, end = 56.dp),
