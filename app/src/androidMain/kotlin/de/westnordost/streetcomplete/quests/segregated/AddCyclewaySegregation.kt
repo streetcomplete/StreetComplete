@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.segregated
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.segregated.CyclewaySegregation.*
 import de.westnordost.streetcomplete.resources.*
 
-class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>(), AndroidQuest {
+class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
 
     override val elementFilter = """
         ways with
@@ -39,7 +39,10 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>(), Androi
     override val title = Res.string.quest_segregated_title
     override val achievements = listOf(BICYCLIST, OUTDOORS)
 
-    override fun createForm() = AddCyclewaySegregationForm()
+    @Composable
+    override fun Form(onAnswer: (CyclewaySegregation) -> Unit) {
+        AddCyclewaySegregationForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: CyclewaySegregation, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

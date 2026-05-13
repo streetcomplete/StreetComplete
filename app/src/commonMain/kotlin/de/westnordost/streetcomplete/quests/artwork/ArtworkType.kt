@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.quests.artwork
 
 import de.westnordost.streetcomplete.osm.Tags
 
-enum class ArtworkType(val osmValue: String, val osmArtworkTypeValue: String? = null) {
+enum class ArtworkType(val osmValue: String) {
     SCULPTURE("sculpture"),
     STATUE("statue"),
     MURAL("mural"),

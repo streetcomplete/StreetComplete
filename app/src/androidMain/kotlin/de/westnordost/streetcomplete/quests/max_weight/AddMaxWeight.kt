@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -9,13 +10,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.ferry.wayIdsInFerryRoutes
 import de.westnordost.streetcomplete.resources.*
 
-class AddMaxWeight : OsmElementQuestType<List<MaxWeight>>, AndroidQuest {
+class AddMaxWeight : OsmElementQuestType<List<MaxWeight>> {
 
     // We ask for the maximum weight of bridges and ferries.
     // The general filter is used for both:
@@ -53,18 +53,6 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>>, AndroidQuest {
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
 
-    override fun createForm() = AddMaxWeightForm()
-
-    override fun applyAnswerTo(answer: List<MaxWeight>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        if (answer.isNotEmpty()) {
-            for (maxweight in answer) {
-                maxweight.applyTo(tags)
-            }
-        } else {
-            tags["maxweight:signed"] = "no"
-        }
-    }
-
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // copied from AddFerryAccessMotorVehicle - see comment there why this filtering is necessary
         val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)
@@ -88,5 +76,20 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>>, AndroidQuest {
             return ferryFilter.matches(element)
         }
         return false
+    }
+
+    @Composable
+    override fun Form(onAnswer: (List<MaxWeight>) -> Unit) {
+        AddMaxWeightForm(onAnswer)
+    }
+
+    override fun applyAnswerTo(answer: List<MaxWeight>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.isNotEmpty()) {
+            for (maxweight in answer) {
+                maxweight.applyTo(tags)
+            }
+        } else {
+            tags["maxweight:signed"] = "no"
+        }
     }
 }

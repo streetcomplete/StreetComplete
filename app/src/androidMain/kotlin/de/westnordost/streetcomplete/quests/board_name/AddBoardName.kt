@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.quests.board_name
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddBoardName : OsmFilterQuestType<BoardNameAnswer>(), AndroidQuest {
+class AddBoardName : OsmFilterQuestType<BoardNameAnswer>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -33,7 +33,10 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways, relations with tourism = information and information = board")
 
-    override fun createForm() = AddBoardNameForm()
+    @Composable
+    override fun Form(onAnswer: (BoardNameAnswer) -> Unit) {
+        AddBoardNameForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BoardNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

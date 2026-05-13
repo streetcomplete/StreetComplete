@@ -1,17 +1,17 @@
 package de.westnordost.streetcomplete.quests.defibrillator
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddDefibrillatorLocation : OsmFilterQuestType<String>(), AndroidQuest {
+class AddDefibrillatorLocation : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes with
@@ -28,7 +28,10 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with emergency = defibrillator")
 
-    override fun createForm() = AddLocationDescriptionForm()
+    @Composable
+    override fun Form(onAnswer: (String) -> Unit) {
+        AddLocationDescriptionForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["defibrillator:location"] = answer

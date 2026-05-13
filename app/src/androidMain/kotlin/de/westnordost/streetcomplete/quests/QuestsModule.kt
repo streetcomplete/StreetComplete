@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.quests.accepts_cards.AddAcceptsCards
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.access_point_ref.AddAccessPointRef
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
+import de.westnordost.streetcomplete.quests.address.AddAddressStreetFormViewModel
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.aerialway.AddAerialwayBicycleAccess
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
@@ -56,6 +57,7 @@ import de.westnordost.streetcomplete.quests.bus_stop_bench.AddBenchStatusOnBusSt
 import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
 import de.westnordost.streetcomplete.quests.bus_stop_lit.AddBusStopLit
 import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
+import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopNameFormViewModel
 import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
@@ -203,6 +205,7 @@ import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.koin.core.module.dsl.viewModel
 
 val questsModule = module {
     single {
@@ -216,6 +219,9 @@ val questsModule = module {
             { featureDictionaryLazy.value.getFeature(it) }
         )
     }
+
+    viewModel { AddAddressStreetFormViewModel(get()) }
+    viewModel { AddBusStopNameFormViewModel(get()) }
 }
 
 fun questTypeRegistry(

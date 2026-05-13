@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.surface
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndCyclewaySurface
 import de.westnordost.streetcomplete.resources.*
 
-class AddFootwayPartSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
+class AddFootwayPartSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
         ways with (
@@ -46,7 +46,10 @@ class AddFootwayPartSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
     override val title = Res.string.quest_footwayPartSurface_title
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, OUTDOORS)
 
-    override fun createForm() = AddPathPartSurfaceForm()
+    @Composable
+    override fun Form(onAnswer: (Surface) -> Unit) {
+        AddPathPartSurfaceForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Surface, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags, "footway")

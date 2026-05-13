@@ -18,37 +18,32 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_multiselect_hint
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
-import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 /** Quest form that lets the user select several items from a set of [items], displayed in a grid
  *  with a width of [itemsPerRow].
- *  If [moveFavoritesToFront] is true, moves the last picked items saved for [favoriteKey] to the
- *  front, but only if the items do not all fit into one line.
+ *  If [favoriteKey] is not null, moves the last picked items saved for that key to the front in the
+ *  first row.
  *  */
 @Composable
 inline fun <reified I> ItemsSelectQuestForm(
     items: List<I>,
-    itemsPerRow: Int,
     noinline itemContent: @Composable (item: I) -> Unit,
     crossinline onClickOk: (selectedItems: Set<I>) -> Unit,
-    prefs: Preferences,
-    favoriteKey: String,
     modifier: Modifier = Modifier,
-    moveFavoritesToFront: Boolean = true,
+    itemsPerRow: Int = 3,
+    favoriteKey: String? = null,
     otherAnswers: List<Answer> = emptyList(),
 ) {
-    val reorderedItems = remember(items, itemsPerRow, moveFavoritesToFront) {
-        if (items.size > itemsPerRow && moveFavoritesToFront) {
-            val favourites = prefs
-                .getLastPicked<I>(favoriteKey)
-                .takeFavorites(n = itemsPerRow)
-                .filter { it in items } // only those actually in items
-            (favourites + items).distinct()
+    val viewModel = koinViewModel<ItemSelectViewModel>()
+
+    val reorderedItems = remember(items, itemsPerRow, favoriteKey) {
+        if (favoriteKey != null) {
+            viewModel.getItemsWithFavoritesFirst(key = favoriteKey, items = items, n = itemsPerRow)
         } else {
             items
         }
@@ -59,7 +54,9 @@ inline fun <reified I> ItemsSelectQuestForm(
         answers = Form(
             isComplete = selectedItems.isNotEmpty(),
             onClickOk = {
-                prefs.addLastPicked(favoriteKey, selectedItems.toList())
+                if (favoriteKey != null) {
+                    viewModel.saveFavorites(favoriteKey, selectedItems.toList())
+                }
                 onClickOk(selectedItems)
             }
         ),

@@ -1,21 +1,19 @@
 package de.westnordost.streetcomplete.quests.bench_backrest
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.NO
-import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.PICNIC_TABLE
-import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.YES
+import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.*
 import de.westnordost.streetcomplete.resources.*
 
-class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>(), AndroidQuest {
+class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -35,7 +33,9 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>(), AndroidQuest
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with amenity = bench or leisure = picnic_table")
 
-    override fun createForm() = AddBenchBackrestForm()
+    @Composable
+    override fun Form(onAnswer: (BenchBackrestAnswer) -> Unit) =
+        AddBenchBackrestForm(onAnswer)
 
     override fun applyAnswerTo(answer: BenchBackrestAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

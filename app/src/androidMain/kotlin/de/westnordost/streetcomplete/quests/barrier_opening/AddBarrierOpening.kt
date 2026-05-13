@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.barrier_opening
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.ALL_PATHS
@@ -19,7 +19,7 @@ import org.jetbrains.compose.resources.StringResource
 
 class AddBarrierOpening(
     private val checkArSupport: ArSupportChecker
-) : OsmElementQuestType<WidthAnswer>, AndroidQuest {
+) : OsmElementQuestType<WidthAnswer> {
 
     private val nodeFilter by lazy { """
         nodes with
@@ -73,7 +73,10 @@ class AddBarrierOpening(
     override fun isApplicableTo(element: Element) =
         if (nodeFilter.matches(element)) null else false
 
-    override fun createForm() = AddWidthForm()
+    @Composable
+    override fun Form(onAnswer: (WidthAnswer) -> Unit) {
+        AddWidthForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val key = "maxwidth:physical"

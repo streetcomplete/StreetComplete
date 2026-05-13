@@ -1,17 +1,18 @@
 package de.westnordost.streetcomplete.quests.charging_station_operator
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm
 
-class AddChargingStationOperator : OsmFilterQuestType<String>(), AndroidQuest {
+class AddChargingStationOperator : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -30,7 +31,13 @@ class AddChargingStationOperator : OsmFilterQuestType<String>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with amenity = charging_station")
 
-    override fun createForm() = AddChargingStationOperatorForm()
+    @Composable
+    override fun Form(onAnswer: (String) -> Unit) {
+        NameWithSuggestionsQuestForm(
+            suggestions = countryInfo.chargingStationOperators,
+            onClickOk = onAnswer
+        )
+    }
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["operator"] = answer

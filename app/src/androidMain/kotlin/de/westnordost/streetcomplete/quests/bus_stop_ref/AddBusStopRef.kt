@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.bus_stop_ref
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>(), AndroidQuest {
+class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
 
     override val elementFilter = """
         nodes with
@@ -42,7 +42,10 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>(), AndroidQuest {
     override val title = Res.string.quest_busStopRef_title2
     override val achievements = listOf(PEDESTRIAN)
 
-    override fun createForm() = AddBusStopRefForm()
+    @Composable
+    override fun Form(onAnswer: (BusStopRefAnswer) -> Unit) {
+        AddBusStopRefForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BusStopRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

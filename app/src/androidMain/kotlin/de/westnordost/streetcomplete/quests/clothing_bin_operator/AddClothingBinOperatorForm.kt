@@ -5,32 +5,30 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddClothingBinOperatorForm : AbstractOsmQuestForm<ClothingBinOperatorAnswer>() {
+@Composable
+fun AddClothingBinOperatorForm(
+    onAnswer: (ClothingBinOperatorAnswer) -> Unit
+) {
+    var confirmNoSign by remember { mutableStateOf(false) }
 
-    @Composable
-    override fun Content() {
-        var confirmNoSign by remember { mutableStateOf(false) }
-
-        NameWithSuggestionsQuestForm(
-            suggestions = countryInfo.clothesContainerOperators,
-            onClickOk = { applyAnswer(ClothingBinOperator(it)) },
-            otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_generic_answer_noSign)) { confirmNoSign = true }
-            )
+    NameWithSuggestionsQuestForm(
+        suggestions = countryInfo.clothesContainerOperators,
+        onClickOk = { onAnswer(ClothingBinOperator(it)) },
+        otherAnswers = listOf(
+            Answer(stringResource(Res.string.quest_generic_answer_noSign)) { confirmNoSign = true }
         )
+    )
 
-        if (confirmNoSign) {
-            QuestConfirmationDialog(
-                onDismissRequest = { confirmNoSign = false },
-                onConfirmed = { applyAnswer(ClothingBinOperatorAnswer.NoneSigned) }
-            )
-        }
+    if (confirmNoSign) {
+        QuestConfirmationDialog(
+            onDismissRequest = { confirmNoSign = false },
+            onConfirmed = { onAnswer(ClothingBinOperatorAnswer.NoneSigned) }
+        )
     }
 }

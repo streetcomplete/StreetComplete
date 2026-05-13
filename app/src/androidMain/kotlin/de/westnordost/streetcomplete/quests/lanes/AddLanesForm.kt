@@ -9,7 +9,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Form
@@ -19,64 +18,63 @@ import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 
-class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
+@Composable
+fun AddLanesForm(
+    onAnswer: (LanesAnswer) -> Unit
+) {
+    var answer by rememberSerializable { mutableStateOf(Lanes()) }
 
-    @Composable
-    override fun Content() {
-        var answer by rememberSerializable { mutableStateOf(Lanes()) }
+    val edgeLineStyle = remember {
+        when {
+            countryInfo.edgeLineStyle.contains("short dashes") -> LineStyle.SHORT_DASHES
+            countryInfo.edgeLineStyle.contains("dashes") -> LineStyle.DASHES
+            else -> LineStyle.CONTINUOUS
+        }
+    }
+    val edgeLineColor = remember {
+        if (countryInfo.edgeLineStyle.contains("yellow")) Color.Yellow else Color.White
+    }
+    val centerLineColor = remember {
+        if (countryInfo.centerLineStyle.contains("yellow")) Color.Yellow else Color.White
+    }
+    val isOneway = remember { isOneway(element.tags) }
+    val isReversedOneway = remember { isReversedOneway(element.tags) }
 
-        val edgeLineStyle = remember {
-            when {
-                countryInfo.edgeLineStyle.contains("short dashes") -> LineStyle.SHORT_DASHES
-                countryInfo.edgeLineStyle.contains("dashes") -> LineStyle.DASHES
-                else -> LineStyle.CONTINUOUS
-            }
-        }
-        val edgeLineColor = remember {
-            if (countryInfo.edgeLineStyle.contains("yellow")) Color.Yellow else Color.White
-        }
-        val centerLineColor = remember {
-            if (countryInfo.centerLineStyle.contains("yellow")) Color.Yellow else Color.White
-        }
-        val isOneway = remember { isOneway(element.tags) }
-        val isReversedOneway = remember { isReversedOneway(element.tags) }
-
-        QuestForm(
-            answers = Form(
-                isComplete =
-                    if (!isOneway) {
-                        answer.forward != null && answer.backward != null
-                    } else {
-                        answer.forward != null || answer.backward != null
-                    },
-                hasChanges = answer.forward != null || answer.backward != null,
-                onClickOk =  { applyAnswer(answer) }
-            ),
-            otherAnswers = listOfNotNull(
-                if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
-                    Answer(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
-                        answer = answer.copy(centerLeftTurnLane = true)
-                    }
-                } else null,
-                Answer(stringResource(Res.string.quest_lanes_answer_noLanes)) {
-                    applyAnswer(LanesAnswer.IsUnmarked)
+    QuestForm(
+        answers = Form(
+            isComplete =
+                if (!isOneway) {
+                    answer.forward != null && answer.backward != null
+                } else {
+                    answer.forward != null || answer.backward != null
+                },
+            hasChanges = answer.forward != null || answer.backward != null,
+            onClickOk =  { onAnswer(answer) }
+        ),
+        otherAnswers = listOfNotNull(
+            if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
+                Answer(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
+                    answer = answer.copy(centerLeftTurnLane = true)
                 }
-            ),
-            contentPadding = PaddingValues.Zero,
-        ) {
-            LanesForm(
-                value = answer,
-                onValueChanged = { answer = it },
-                wayRotation = geometryRotation.floatValue,
-                mapRotation = LocalMapRotation.current,
-                mapTilt = LocalMapTilt.current,
-                isOneway = isOneway,
-                isReversedOneway = isReversedOneway,
-                isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-                centerLineColor = centerLineColor,
-                edgeLineColor = edgeLineColor,
-                edgeLineStyle = edgeLineStyle,
-            )
-        }
+            } else null,
+            Answer(stringResource(Res.string.quest_lanes_answer_noLanes)) {
+                onAnswer(LanesAnswer.IsUnmarked)
+            }
+        ),
+        contentPadding = PaddingValues.Zero,
+    ) {
+        LanesForm(
+            value = answer,
+            onValueChanged = { answer = it },
+            wayRotation = geometryRotation.floatValue,
+            mapRotation = LocalMapRotation.current,
+            mapTilt = LocalMapTilt.current,
+            isOneway = isOneway,
+            isReversedOneway = isReversedOneway,
+            isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+            centerLineColor = centerLineColor,
+            edgeLineColor = edgeLineColor,
+            edgeLineStyle = edgeLineStyle,
+        )
     }
 }

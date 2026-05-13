@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddBarrierType : OsmFilterQuestType<BarrierType>(), AndroidQuest {
+class AddBarrierType : OsmFilterQuestType<BarrierType>() {
 
     override val elementFilter = """
         nodes with barrier = yes
@@ -38,7 +38,10 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>(), AndroidQuest {
     override val title = Res.string.quest_barrier_type_title
     override val achievements = listOf(CAR, PEDESTRIAN, BLIND, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
-    override fun createForm() = AddBarrierTypeForm()
+    @Composable
+    override fun Form(onAnswer: (BarrierType) -> Unit) {
+        AddBarrierTypeForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BarrierType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)

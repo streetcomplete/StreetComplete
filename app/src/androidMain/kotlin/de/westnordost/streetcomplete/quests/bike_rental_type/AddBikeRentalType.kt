@@ -1,18 +1,22 @@
 package de.westnordost.streetcomplete.quests.bike_rental_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.bike_rental_type.BikeRentalTypeAnswer.*
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>(), AndroidQuest {
+class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -30,7 +34,15 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>(), AndroidQue
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with amenity = bicycle_rental")
 
-    override fun createForm() = AddBikeRentalTypeForm()
+    @Composable
+    override fun Form(onAnswer: (BikeRentalTypeAnswer) -> Unit) {
+        ItemSelectQuestForm(
+            items = BikeRentalTypeAnswer.entries,
+            itemsPerRow = 2,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+        )
+    }
 
     override fun applyAnswerTo(answer: BikeRentalTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

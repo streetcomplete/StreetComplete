@@ -1,17 +1,17 @@
 package de.westnordost.streetcomplete.quests.fuel_service
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddFuelSelfService : OsmFilterQuestType<Boolean>(), AndroidQuest {
+class AddFuelSelfService : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -31,7 +31,10 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>(), AndroidQuest {
         "US-OR", // see e.g. https://www.oregon.gov/osfm/Pages/Self-Serve-Fueling.aspx
     )
 
-    override fun createForm() = YesNoQuestForm()
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit) {
+        YesNoQuestForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["self_service"] = answer.toYesNo()

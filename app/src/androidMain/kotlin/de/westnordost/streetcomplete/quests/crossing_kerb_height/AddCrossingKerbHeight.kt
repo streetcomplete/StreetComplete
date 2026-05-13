@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.crossing_kerb_height
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
@@ -14,9 +14,10 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_crossing_kerb_height_title
 
-class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
+class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
 
     private val crossingFilter by lazy { """
         nodes with
@@ -67,7 +68,10 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!crossingFilter.matches(element)) false else null
 
-    override fun createForm() = AddKerbHeightForm()
+    @Composable
+    override fun Form(onAnswer: (KerbHeight) -> Unit) {
+        AddKerbHeightForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: KerbHeight, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("kerb", answer.osmValue)

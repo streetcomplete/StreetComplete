@@ -1,17 +1,20 @@
 package de.westnordost.streetcomplete.quests.drinking_water
 
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import org.jetbrains.compose.resources.stringResource
 
-class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
+class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
     override val elementFilter = """
         nodes, ways with (
@@ -49,7 +52,14 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
              and access !~ private|no
         """)
 
-    override fun createForm() = AddDrinkingWaterForm()
+    @Composable
+    override fun Form(onAnswer: (DrinkingWater) -> Unit) {
+        RadioGroupQuestForm(
+            items = DrinkingWater.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = onAnswer
+        )
+    }
 
     override fun applyAnswerTo(answer: DrinkingWater, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

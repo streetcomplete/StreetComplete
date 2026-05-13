@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddBarrierOnPath : OsmElementQuestType<BarrierType>, AndroidQuest {
+class AddBarrierOnPath : OsmElementQuestType<BarrierType> {
 
     private val barrierFilter by lazy { """
         ways with
@@ -43,7 +43,10 @@ class AddBarrierOnPath : OsmElementQuestType<BarrierType>, AndroidQuest {
     override fun isApplicableTo(element: Element): Boolean? =
         if (element !is Node || element.tags.isNotEmpty()) false else null
 
-    override fun createForm() = AddBarrierTypeForm()
+    @Composable
+    override fun Form(onAnswer: (BarrierType) -> Unit) {
+        AddBarrierTypeForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BarrierType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)

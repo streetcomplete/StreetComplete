@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>(), AndroidQuest {
+class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>() {
 
     override val elementFilter = "nodes with barrier = cycle_barrier and !cycle_barrier"
     override val changesetComment = "Specify cycle barrier types"
@@ -19,7 +19,10 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>(), An
     override val title = Res.string.quest_bicycle_barrier_type_title
     override val achievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
 
-    override fun createForm() = AddBicycleBarrierTypeForm()
+    @Composable
+    override fun Form(onAnswer: (BicycleBarrierTypeAnswer) -> Unit) {
+        AddBicycleBarrierTypeForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BicycleBarrierTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

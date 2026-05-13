@@ -1,14 +1,17 @@
 package de.westnordost.streetcomplete.quests.parking_access
 
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import org.jetbrains.compose.resources.stringResource
 
-class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>(), AndroidQuest {
+class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>() {
 
     // Only include these bicycle_parking types, because access for these types is needed for
     // AddBikeParkingFee and because those are uncontroversial. See #2496 and #2517
@@ -24,7 +27,10 @@ class AddBikeParkingAccess : OsmFilterQuestType<ParkingAccess>(), AndroidQuest {
     override val title = Res.string.quest_bicycle_parking_access_title2
     override val achievements = listOf(BICYCLIST)
 
-    override fun createForm() = AddParkingAccessForm()
+    @Composable
+    override fun Form(onAnswer: (ParkingAccess) -> Unit) {
+        AddParkingAccessForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: ParkingAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["access"] = answer.osmValue

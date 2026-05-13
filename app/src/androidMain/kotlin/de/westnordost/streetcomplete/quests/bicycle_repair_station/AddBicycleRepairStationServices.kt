@@ -1,19 +1,23 @@
 package de.westnordost.streetcomplete.quests.bicycle_repair_station
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStationService>>(), AndroidQuest {
+class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStationService>>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -35,7 +39,14 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
     override val title = Res.string.quest_bicycle_repair_station_services_title
     override val achievements = listOf(BICYCLIST)
 
-    override fun createForm() = AddBicycleRepairStationServicesForm()
+    @Composable
+    override fun Form(onAnswer: (Set<BicycleRepairStationService>) -> Unit) {
+        ItemsSelectQuestForm(
+            items = BicycleRepairStationService.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+        )
+    }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""

@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallationAnswer>(), AndroidQuest {
+class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallationAnswer>() {
 
     override val elementFilter = """
         nodes, ways with barrier = cycle_barrier
@@ -29,7 +29,10 @@ class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallat
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with barrier = cycle_barrier")
 
-    override fun createForm() = AddBicycleBarrierInstallationForm()
+    @Composable
+    override fun Form(onAnswer: (BicycleBarrierInstallationAnswer) -> Unit) {
+        AddBicycleBarrierInstallationForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BicycleBarrierInstallationAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

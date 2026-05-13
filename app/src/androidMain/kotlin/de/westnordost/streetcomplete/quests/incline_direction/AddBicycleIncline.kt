@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.incline_direction
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,13 +8,12 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.math.measuredLength
 
-class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer>, AndroidQuest {
+class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
 
     private val tagFilter by lazy { """
         ways with
@@ -51,7 +51,10 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer>, AndroidQues
         return null
     }
 
-    override fun createForm() = AddBicycleInclineForm()
+    @Composable
+    override fun Form(onAnswer: (BicycleInclineAnswer) -> Unit) {
+        AddBicycleInclineForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BicycleInclineAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)

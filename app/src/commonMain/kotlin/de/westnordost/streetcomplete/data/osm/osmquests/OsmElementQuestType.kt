@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -72,6 +73,25 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  30m is the default because this is about "across this large street". There shouldn't be
      *  any misunderstandings which element is meant that far apart. */
     val highlightedElementsRadius: Double get() = 30.0
+
+    /** Composable form in which to enter the requested information. Use
+     *  [QuestForm][de.westnordost.streetcomplete.ui.common.quest.QuestForm] to define a custom
+     *  (or simple button-based) one, or any of the pre-defined generic forms like…
+     *  - [ItemSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm]
+     *  - [ItemsSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm]
+     *  - [RadioGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm]
+     *  - [CheckboxGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.CheckboxGroupQuestForm]
+     *  - [YesNoQuestForm][de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm]
+     *  - [CountInputQuestForm][de.westnordost.streetcomplete.ui.common.quest.CountInputQuestForm]
+     *  - [LocalizedNameQuestForm][de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm]
+     *  - [NameWithSuggestionsQuestForm][de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm]
+     *
+     *  A good practice is that if the form definition is purely declarative and there's no mutable
+     *  state, it's fine to have the form definition inline in the quest type class, otherwise,
+     *  better put it into an own file.
+     *  */
+    @Composable
+    fun Form(onAnswer: (T) -> Unit)
 
     /** Applies the data from [answer] to the element that has last been edited at [timestampEdited]
      * with the given [tags] and the given [geometry].

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.amenity_indoor
 
+import androidx.compose.runtime.Composable
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -8,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -18,8 +18,9 @@ import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
-    OsmElementQuestType<IsAmenityIndoorAnswer>, AndroidQuest {
+class AddIsAmenityIndoor(
+    private val getFeature: (Element) -> Feature?
+) : OsmElementQuestType<IsAmenityIndoorAnswer> {
 
     private val nodesFilter by lazy { """
         nodes with
@@ -102,7 +103,10 @@ class AddIsAmenityIndoor(private val getFeature: (Element) -> Feature?) :
         return mapData.asSequence().filter { it.tags.containsAll(feature.tags) }
     }
 
-    override fun createForm() = IsAmenityIndoorForm()
+    @Composable
+    override fun Form(onAnswer: (IsAmenityIndoorAnswer) -> Unit) {
+        AddIsAmenityIndoorForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: IsAmenityIndoorAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

@@ -55,6 +55,7 @@ import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.screens.measure.arModule
 import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.screens.user.userScreenModule
+import de.westnordost.streetcomplete.ui.common.quest.questFormsViewModelsModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.deleteRecursively
@@ -142,7 +143,8 @@ class StreetCompleteApplication : Application() {
                 weeklyOsmModule,
                 calendarEventsModule,
                 feedsModule,
-                androidModule
+                androidModule,
+                questFormsViewModelsModule,
             )
         }
 

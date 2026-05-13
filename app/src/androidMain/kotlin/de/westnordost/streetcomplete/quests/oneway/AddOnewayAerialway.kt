@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.oneway
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
 import de.westnordost.streetcomplete.resources.*
 
-class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
+class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
 
     private val elementFilter by lazy { """
         ways with
@@ -31,11 +31,21 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
     override val achievements = listOf(EditTypeAchievement.PEDESTRIAN)
     override val hint = Res.string.quest_arrow_tutorial
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> = mapData.ways.filter { elementFilter.matches(it) }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.ways.filter { elementFilter.matches(it) }
 
-    override fun isApplicableTo(element: Element): Boolean? = elementFilter.matches(element)
+    override fun isApplicableTo(element: Element): Boolean =
+        elementFilter.matches(element)
 
-    override fun createForm() = AddOnewayForm()
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+            nodes, ways with aerialway
+        """.toElementFilterExpression())
+
+    @Composable
+    override fun Form(onAnswer: (OnewayAnswer) -> Unit) {
+        AddOnewayForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["oneway"] = when (answer) {
@@ -44,9 +54,4 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
             NO_ONEWAY -> "no"
         }
     }
-
-    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("""
-            nodes, ways with aerialway
-        """.toElementFilterExpression())
 }

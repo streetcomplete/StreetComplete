@@ -1,14 +1,17 @@
 package de.westnordost.streetcomplete.quests.bridge_structure
 
+import androidx.compose.foundation.Image
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
 
-class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>(), AndroidQuest {
+class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>() {
 
     override val elementFilter = """
         ways with
@@ -23,7 +26,16 @@ class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>(), AndroidQuest {
     override val title = Res.string.quest_bridge_structure_title
     override val achievements = listOf(BUILDING)
 
-    override fun createForm() = AddBridgeStructureForm()
+    @Composable
+    override fun Form(onAnswer: (BridgeStructure) -> Unit) {
+        ItemSelectQuestForm(
+            items = BridgeStructure.entries,
+            itemsPerRow = 1,
+            itemContent = { Image(painterResource(it.icon), null) },
+            onClickOk = onAnswer,
+            favoriteKey = "AddBridgeStructureForm",
+        )
+    }
 
     override fun applyAnswerTo(answer: BridgeStructure, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["bridge:structure"] = answer.osmValue

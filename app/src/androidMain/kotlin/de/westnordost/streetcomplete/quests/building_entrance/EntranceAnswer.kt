@@ -8,7 +8,6 @@ sealed interface EntranceAnswer {
     data object IsDeadEnd : EntranceAnswer
 }
 
-
 enum class EntranceType(val osmValue: String) : EntranceAnswer {
     MAIN("main"),
     STAIRCASE("staircase"),

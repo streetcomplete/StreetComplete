@@ -17,17 +17,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 /** Quest form in which the user inputs a set of names in possibly different languages. Selectable
  *  are only (locally) official languages and languages commonly seen on street signs that are not
  *  official, determined by the given [countryInfo].
+ *
  *  This quest form always has two other answer options: An info dialog that explains what to do
  *  when the IME doesn't have the characters necessary to type what is on the sign, and an option to
  *  answer that there is no name sign. The latter can be responded to in [onNoNameSign].
@@ -35,7 +36,6 @@ import org.jetbrains.compose.resources.stringResource
  *  */
 @Composable
 fun LocalizedNameQuestForm(
-    prefs: Preferences,
     countryInfo: CountryInfo,
     initialLocalizedNames: List<LocalizedName>?,
     onClickOk: (List<LocalizedName>) -> Unit,
@@ -44,17 +44,12 @@ fun LocalizedNameQuestForm(
     hint: @Composable (() -> Unit)? = null,
     otherAnswers: List<Answer> = emptyList(),
 ) {
+    val viewModel = koinViewModel<LocalizedNameViewModel>()
+
     val selectableLanguages = remember {
-        val languages = (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages)
-            .distinct()
-            .toMutableList()
-        val preferredLanguageTag = prefs.preferredLanguageForNames
-        if (preferredLanguageTag != null) {
-            if (languages.remove(preferredLanguageTag)) {
-                languages.add(0, preferredLanguageTag)
-            }
-        }
-        languages
+        viewModel.getLanguagesWithPreferredFirst(
+            countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages
+        )
     }
 
     var localizedNames by rememberSerializable(initialLocalizedNames) {
@@ -71,15 +66,8 @@ fun LocalizedNameQuestForm(
             isComplete = localizedNames.isNotEmpty() && localizedNames.all { it.name.isNotBlank() },
             hasChanges = localizedNames.isNotEmpty() && localizedNames.any { it.name.isNotBlank() },
             onClickOk = {
+                viewModel.savePreferredLanguage(localizedNames)
                 onClickOk(localizedNames)
-
-                val firstLanguage = localizedNames
-                    .firstOrNull()
-                    ?.languageTag
-                    ?.takeIf { it.isNotBlank() }
-                if (firstLanguage != null) {
-                    prefs.preferredLanguageForNames = firstLanguage
-                }
             }
         ),
         modifier = modifier,

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.address
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -14,7 +15,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.address.applyTo
@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.util.math.measuredMultiPolygonArea
 
 class AddHousenumber(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
-) : OsmElementQuestType<HouseNumberAnswer>, AndroidQuest {
+) : OsmElementQuestType<HouseNumberAnswer> {
 
     override val changesetComment = "Survey housenumbers"
     override val wikiLink = "Key:addr"
@@ -161,7 +161,10 @@ class AddHousenumber(
             and !name and !brand and !operator and !ref
         """.toElementFilterExpression())
 
-    override fun createForm() = AddHousenumberForm()
+    @Composable
+    override fun Form(onAnswer: (HouseNumberAnswer) -> Unit) {
+        AddHousenumberForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddMaxSpeed (
     private val getCountryOrSubdivisionCode: (LatLon) -> String?
-) : OsmFilterQuestType<MaxSpeedAnswer>(), AndroidQuest {
+) : OsmFilterQuestType<MaxSpeedAnswer>() {
 
     override val elementFilter = """
         ways with
@@ -43,7 +43,10 @@ class AddMaxSpeed (
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with traffic_sign = city_limit")
 
-    override fun createForm() = AddMaxSpeedForm()
+    @Composable
+    override fun Form(onAnswer: (MaxSpeedAnswer) -> Unit) {
+        AddMaxSpeedForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: MaxSpeedAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags, getCountryOrSubdivisionCode(geometry.center) ?: "??")

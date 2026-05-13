@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.max_height
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.MOTORWAYS
@@ -17,7 +17,7 @@ import org.jetbrains.compose.resources.StringResource
 
 class AddMaxPhysicalHeight(
     private val checkArSupport: ArSupportChecker
-) : OsmElementQuestType<MaxPhysicalHeightAnswer>, AndroidQuest {
+) : OsmElementQuestType<MaxPhysicalHeightAnswer> {
 
     private val nodeFilter by lazy { """
         nodes with (
@@ -86,7 +86,10 @@ class AddMaxPhysicalHeight(
     override fun isApplicableTo(element: Element): Boolean =
         nodeFilter.matches(element) || wayFilter.matches(element)
 
-    override fun createForm() = AddMaxPhysicalHeightForm()
+    @Composable
+    override fun Form(onAnswer: (MaxPhysicalHeightAnswer) -> Unit) {
+        AddMaxPhysicalHeightForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: MaxPhysicalHeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         // overwrite maxheight value but retain the info that there is no sign onto another tag

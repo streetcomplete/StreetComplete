@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.general_fee
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
+class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
     // Bicycle charging station are amenity=charging_station with bicycle=yes/designated.
     // We further exclude dual use charging stations as payment may be waived only for cyclists increasing risk of incorrect answers
@@ -47,7 +47,10 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
             Res.string.quest_generalFee_title2
         }
 
-    override fun createForm() = YesNoQuestForm()
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit) {
+        YesNoQuestForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["fee"] = answer.toYesNo()

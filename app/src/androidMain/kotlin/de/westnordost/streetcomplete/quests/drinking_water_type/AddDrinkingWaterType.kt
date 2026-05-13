@@ -1,15 +1,19 @@
 package de.westnordost.streetcomplete.quests.drinking_water_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>(), AndroidQuest {
+class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>() {
 
     override val elementFilter = """
         nodes with
@@ -29,7 +33,15 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>(), AndroidQue
     override val title = Res.string.quest_drinking_water_type_title2
     override val achievements = listOf(CITIZEN, OUTDOORS)
 
-    override fun createForm() = AddDrinkingWaterTypeForm()
+    @Composable
+    override fun Form(onAnswer: (DrinkingWaterType) -> Unit) {
+        ItemSelectQuestForm(
+            items = DrinkingWaterType.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+            favoriteKey = "AddDrinkingWaterTypeForm",
+        )
+    }
 
     override fun applyAnswerTo(answer: DrinkingWaterType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)

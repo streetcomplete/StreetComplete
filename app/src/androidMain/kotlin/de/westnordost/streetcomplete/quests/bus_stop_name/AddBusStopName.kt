@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.bus_stop_name
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
+class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
 
     // this filter needs to be kept somewhat in sync with the filter in AddBusStopNameForm https://github.com/streetcomplete/StreetComplete/issues/6390#issuecomment-3057235984
     override val elementFilter = """
@@ -36,7 +36,10 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>(), AndroidQuest {
     override val achievements = listOf(PEDESTRIAN)
     override val hint = Res.string.quest_stopName_hint
 
-    override fun createForm() = AddBusStopNameForm()
+    @Composable
+    override fun Form(onAnswer: (BusStopNameAnswer) -> Unit) {
+        AddBusStopNameForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

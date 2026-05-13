@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
+class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override val elementFilter = """
         ways with
@@ -35,7 +35,10 @@ class AddPathSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
     override val hint = Res.string.quest_smoothness_hint
 
-    override fun createForm() = AddSmoothnessForm()
+    @Composable
+    override fun Form(onAnswer: (SmoothnessAnswer) -> Unit) {
+        AddSmoothnessForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)

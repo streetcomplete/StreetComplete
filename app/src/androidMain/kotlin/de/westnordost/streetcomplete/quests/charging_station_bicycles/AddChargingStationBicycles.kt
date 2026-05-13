@@ -1,17 +1,17 @@
 package de.westnordost.streetcomplete.quests.charging_station_bicycles
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>(), AndroidQuest {
+class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -29,7 +29,10 @@ class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>()
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with amenity = charging_station")
 
-    override fun createForm() = AddChargingStationBicyclesForm()
+    @Composable
+    override fun Form(onAnswer: (ChargingStationBicycles) -> Unit) {
+        AddChargingStationBicyclesForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: ChargingStationBicycles, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

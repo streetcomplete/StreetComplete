@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.leaf_detail
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,13 +8,16 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import de.westnordost.streetcomplete.util.math.measuredMultiPolygonArea
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddForestLeafType : OsmElementQuestType<ForestLeafType>, AndroidQuest {
+class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     private val areaFilter by lazy { """
         ways, relations with (landuse = forest or natural = wood) and !leaf_type
     """.toElementFilterExpression() }
@@ -47,7 +51,14 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType>, AndroidQuest {
         return null
     }
 
-    override fun createForm() = AddForestLeafTypeForm()
+    @Composable
+    override fun Form(onAnswer: (ForestLeafType) -> Unit) {
+        ItemSelectQuestForm(
+            items = ForestLeafType.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+        )
+    }
 
     override fun applyAnswerTo(answer: ForestLeafType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["leaf_type"] = answer.osmValue

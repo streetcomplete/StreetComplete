@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.level
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -8,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlace
@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddLevel : OsmElementQuestType<String>, AndroidQuest {
+class AddLevel : OsmElementQuestType<String> {
 
     /* only nodes because ways/relations are not likely to be floating around freely in a mall
      * outline */
@@ -84,7 +84,10 @@ class AddLevel : OsmElementQuestType<String>, AndroidQuest {
         return null
     }
 
-    override fun createForm() = AddLevelForm()
+    @Composable
+    override fun Form(onAnswer: (String) -> Unit) {
+        AddLevelForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["level"] = answer

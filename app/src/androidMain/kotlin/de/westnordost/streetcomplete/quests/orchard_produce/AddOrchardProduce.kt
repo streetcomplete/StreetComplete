@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddOrchardProduce : OsmFilterQuestType<Set<OrchardProduce>>(), AndroidQuest {
+class AddOrchardProduce : OsmFilterQuestType<Set<OrchardProduce>>() {
 
     override val elementFilter = """
         ways, relations with landuse = orchard
@@ -22,7 +22,10 @@ class AddOrchardProduce : OsmFilterQuestType<Set<OrchardProduce>>(), AndroidQues
     override val achievements = listOf(OUTDOORS)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 
-    override fun createForm() = AddOrchardProduceForm()
+    @Composable
+    override fun Form(onAnswer: (Set<OrchardProduce>) -> Unit) {
+        AddOrchardProduceForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Set<OrchardProduce>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["produce"] = answer.joinToString(";") { it.osmValue }

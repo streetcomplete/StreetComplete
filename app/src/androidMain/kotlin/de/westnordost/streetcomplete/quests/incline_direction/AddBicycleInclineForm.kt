@@ -5,52 +5,43 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
-import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.koin.android.ext.android.inject
 
-class AddBicycleInclineForm : AbstractOsmQuestForm<BicycleInclineAnswer>() {
+@Composable
+fun AddBicycleInclineForm(
+    onAnswer: (BicycleInclineAnswer) -> Unit,
+) {
+    var confirmUpAndDown by remember { mutableStateOf(false) }
 
-    private val prefs: Preferences by inject()
-
-    @Composable
-    override fun Content() {
-        var confirmUpAndDown by remember { mutableStateOf(false) }
-
-        ItemSelectQuestForm(
-            items = Incline.entries,
-            itemsPerRow = 2,
-            itemContent = { item ->
-                ImageWithLabel(
-                    painter = painterResource(item.icon),
-                    label = stringResource(Res.string.quest_steps_incline_up),
-                    imageRotation = geometryRotation.floatValue - LocalMapRotation.current
-                )
-            },
-            onClickOk = { applyAnswer(RegularBicycleInclineAnswer(it)) },
-            prefs = prefs,
-            favoriteKey = "AddBicycleInclineForm",
-            otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_bicycle_incline_up_and_down)) {
-                    confirmUpAndDown = true
-                }
+    ItemSelectQuestForm(
+        items = Incline.entries,
+        itemsPerRow = 2,
+        itemContent = { item ->
+            ImageWithLabel(
+                painter = painterResource(item.icon),
+                label = stringResource(Res.string.quest_steps_incline_up),
+                imageRotation = geometryRotation.floatValue - LocalMapRotation.current
             )
+        },
+        onClickOk = { onAnswer(RegularBicycleInclineAnswer(it)) },
+        otherAnswers = listOf(
+            Answer(stringResource(Res.string.quest_bicycle_incline_up_and_down)) {
+                confirmUpAndDown = true
+            }
         )
+    )
 
-        if (confirmUpAndDown) {
-            QuestConfirmationDialog(
-                onDismissRequest = { confirmUpAndDown = false },
-                onConfirmed = { applyAnswer(UpdAndDownHopsAnswer) }
-            )
-        }
+    if (confirmUpAndDown) {
+        QuestConfirmationDialog(
+            onDismissRequest = { confirmUpAndDown = false },
+            onConfirmed = { onAnswer(UpdAndDownHopsAnswer) }
+        )
     }
 }

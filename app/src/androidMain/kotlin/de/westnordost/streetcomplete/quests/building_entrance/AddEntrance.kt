@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.building_entrance
 
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -10,12 +13,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import org.jetbrains.compose.resources.stringResource
 
-class AddEntrance : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
+class AddEntrance : OsmElementQuestType<EntranceAnswer> {
 
     private val withoutEntranceFilter by lazy { """
         nodes with !entrance and !barrier and noexit != yes and !railway
@@ -80,7 +84,14 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer>, AndroidQuest {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!withoutEntranceFilter.matches(element) || element !is Node || !element.couldBeAnEntrance()) false else null
 
-    override fun createForm() = AddEntranceForm()
+    @Composable
+    override fun Form(onAnswer: (EntranceAnswer) -> Unit) {
+        RadioGroupQuestForm(
+            items = remember { EntranceType.entries + EntranceAnswer.IsDeadEnd },
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = onAnswer
+        )
+    }
 
     override fun applyAnswerTo(answer: EntranceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

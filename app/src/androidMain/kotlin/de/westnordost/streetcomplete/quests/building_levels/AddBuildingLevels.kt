@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.building_levels
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>(), AndroidQuest {
+class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>() {
 
     override val elementFilter = """
         ways, relations with
@@ -39,7 +39,10 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>(), AndroidQuest {
             Res.string.quest_buildingLevels_title2
         }
 
-    override fun createForm() = AddBuildingLevelsForm()
+    @Composable
+    override fun Form(onAnswer: (BuildingLevels) -> Unit) {
+        AddBuildingLevelsForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BuildingLevels, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["building:levels"] = answer.levels.toString()

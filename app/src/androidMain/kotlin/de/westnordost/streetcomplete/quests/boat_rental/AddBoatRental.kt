@@ -1,15 +1,19 @@
 package de.westnordost.streetcomplete.quests.boat_rental
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>(), AndroidQuest {
+class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -25,7 +29,15 @@ class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>(), AndroidQuest {
     override val title = Res.string.quest_boat_rental_title
     override val achievements = listOf(OUTDOORS, RARE)
 
-    override fun createForm() = AddBoatRentalForm()
+    @Composable
+    override fun Form(onAnswer: (Set<BoatRental>) -> Unit) {
+        ItemsSelectQuestForm(
+            items = BoatRental.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+            favoriteKey = "AddBoatRentalForm",
+        )
+    }
 
     override fun applyAnswerTo(answer: Set<BoatRental>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.forEach { tags[it.osmValue] = "yes" }

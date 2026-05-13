@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.address
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -10,14 +11,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName>, AndroidQuest {
+class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
 
     private val filter by lazy { """
         nodes, ways, relations with
@@ -82,7 +82,10 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName>, AndroidQuest {
             and !name and !brand and !operator and !ref
         """)
 
-    override fun createForm() = AddAddressStreetForm()
+    @Composable
+    override fun Form(onAnswer: (StreetOrPlaceName) -> Unit) {
+        AddAddressStreetForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: StreetOrPlaceName, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)

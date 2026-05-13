@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.clothing_bin_operator
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,12 +8,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer>, AndroidQuest {
+class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer> {
 
     /* not the complete filter, see below: we want to filter out additionally all elements that
        contain any recycling:* = yes that is not shoes or clothes but this can not be expressed
@@ -48,7 +48,10 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer>, A
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with amenity = recycling")
 
-    override fun createForm() = AddClothingBinOperatorForm()
+    @Composable
+    override fun Form(onAnswer: (ClothingBinOperatorAnswer) -> Unit) {
+        AddClothingBinOperatorForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: ClothingBinOperatorAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

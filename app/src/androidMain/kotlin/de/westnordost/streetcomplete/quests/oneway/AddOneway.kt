@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.oneway
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
 import de.westnordost.streetcomplete.resources.*
 
-class AddOneway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
+class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     /** find all roads */
     private val allRoadsFilter by lazy { """
@@ -81,7 +81,10 @@ class AddOneway : OsmElementQuestType<OnewayAnswer>, AndroidQuest {
         return usableWidth <= 4f
     }
 
-    override fun createForm() = AddOnewayForm()
+    @Composable
+    override fun Form(onAnswer: (OnewayAnswer) -> Unit) {
+        AddOnewayForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["oneway"] = when (answer) {

@@ -14,7 +14,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.CheckboxGroup
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
@@ -24,44 +23,43 @@ import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 
-class AddBoardTypeForm : AbstractOsmQuestForm<BoardTypeAnswer>() {
+@Composable
+fun AddBoardTypeForm(
+    onAnswer: (BoardTypeAnswer) -> Unit
+) {
+    var selectedOptions by rememberSerializable { mutableStateOf(emptySet<BoardType>()) }
+    var confirmIsMap by remember { mutableStateOf(false) }
 
-    @Composable
-    override fun Content() {
-        var selectedOptions by rememberSerializable { mutableStateOf(emptySet<BoardType>()) }
-        var confirmIsMap by remember { mutableStateOf(false) }
-
-        QuestForm(
-            answers = Form(
-                isComplete = selectedOptions.isNotEmpty(),
-                onClickOk = { applyAnswer(BoardTypeAnswer.BoardTypes(selectedOptions)) }
-            ),
-            otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_board_type_map)) { confirmIsMap = true }
-            )
-        ) {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CompositionLocalProvider(
-                    LocalContentAlpha provides ContentAlpha.medium,
-                    LocalTextStyle provides MaterialTheme.typography.body2
-                ) {
-                    Text(stringResource(Res.string.quest_multiselect_hint))
-                }
-                CheckboxGroup(
-                    options = BoardType.entries,
-                    onSelectionsChange = { selectedOptions = it },
-                    selectedOptions = selectedOptions,
-                    itemContent = { Text(stringResource(it.text)) },
-                )
+    QuestForm(
+        answers = Form(
+            isComplete = selectedOptions.isNotEmpty(),
+            onClickOk = { onAnswer(BoardTypeAnswer.BoardTypes(selectedOptions)) }
+        ),
+        otherAnswers = listOf(
+            Answer(stringResource(Res.string.quest_board_type_map)) { confirmIsMap = true }
+        )
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.medium,
+                LocalTextStyle provides MaterialTheme.typography.body2
+            ) {
+                Text(stringResource(Res.string.quest_multiselect_hint))
             }
-        }
-        if (confirmIsMap) {
-            QuestConfirmationDialog(
-                onDismissRequest = { confirmIsMap = false },
-                onConfirmed = { applyAnswer(BoardTypeAnswer.NoBoardJustMap) },
-                titleText = stringResource(Res.string.quest_board_type_map_title),
-                text = { Text(stringResource(Res.string.quest_board_type_map_description)) },
+            CheckboxGroup(
+                options = BoardType.entries,
+                onSelectionsChange = { selectedOptions = it },
+                selectedOptions = selectedOptions,
+                itemContent = { Text(stringResource(it.text)) },
             )
         }
+    }
+    if (confirmIsMap) {
+        QuestConfirmationDialog(
+            onDismissRequest = { confirmIsMap = false },
+            onConfirmed = { onAnswer(BoardTypeAnswer.NoBoardJustMap) },
+            titleText = stringResource(Res.string.quest_board_type_map_title),
+            text = { Text(stringResource(Res.string.quest_board_type_map_description)) },
+        )
     }
 }

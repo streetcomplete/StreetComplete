@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.lanes
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddLanes : OsmFilterQuestType<LanesAnswer>(), AndroidQuest {
+class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
     override val elementFilter = """
         ways with
@@ -29,7 +29,10 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>(), AndroidQuest {
     override val achievements = listOf(CAR)
     override val hint = Res.string.quest_street_side_puzzle_tutorial
 
-    override fun createForm() = AddLanesForm()
+    @Composable
+    override fun Form(onAnswer: (LanesAnswer) -> Unit) {
+        AddLanesForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: LanesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

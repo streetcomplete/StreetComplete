@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.building_entrance_reference
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -10,14 +11,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer>, AndroidQuest {
+class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer> {
 
     private val buildingFilter by lazy { """
         ways, relations with
@@ -101,7 +101,9 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer>, Andro
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter { it.tags.containsKey("entrance") }.asSequence()
 
-    override fun createForm() = AddEntranceReferenceForm()
+    @Composable
+    override fun Form(onAnswer: (EntranceReferenceAnswer) -> Unit) =
+        AddEntranceReferenceForm(onAnswer)
 
     override fun applyAnswerTo(answer: EntranceReferenceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

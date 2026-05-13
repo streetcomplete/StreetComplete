@@ -24,11 +24,13 @@ import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColu
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 /** Quest form that lets the user select one item from a set of items arranged in [groups].
- *  At the top, ungrouped [topItems] are shown as a quick selection. These items are replaced by
- *  previous selections, using the [prefs] and [favoriteKey] for persistence, and then only padded
- *  by [topItems]. */
+ *
+ *  At the top, ungrouped [topItems] are shown as a quick selection.
+ *  If [favoriteKey] is not null, the last picked items saved for that key supplant the [topItems],
+ *  i.e. are only padded by them. */
 @Composable
 inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     groups: List<G>,
@@ -36,13 +38,18 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     noinline groupContent: @Composable (group: G) -> Unit,
     noinline itemContent: @Composable (item: I) -> Unit,
     crossinline onClickOk: (selectedItem: I) -> Unit,
-    prefs: Preferences,
-    favoriteKey: String,
     modifier: Modifier = Modifier,
+    favoriteKey: String? = null,
     otherAnswers: List<Answer> = emptyList(),
 ) {
+    val viewModel = koinViewModel<ItemSelectViewModel>()
+
     val actualTopItems = remember(topItems) {
-        prefs.getLastPicked<I>(favoriteKey).takeFavorites(n = topItems.size, first = 1, pad = topItems)
+        if (favoriteKey != null) {
+            viewModel.getTopItemsWithFavoritesFirst(favoriteKey, topItems)
+        } else {
+            topItems
+        }
     }
     var selectedGroup by rememberSerializable { mutableStateOf<G?>(null) }
     var selectedItem by rememberSerializable { mutableStateOf<I?>(null) }
@@ -57,7 +64,9 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
                 val groupItem = group?.item
                 val item = selectedItem
                 if (item != null) {
-                    prefs.addLastPicked(favoriteKey, item)
+                    if (favoriteKey != null) {
+                        viewModel.saveFavorite(favoriteKey, item)
+                    }
                     onClickOk(item)
                 }
                 else if (groupItem != null) {
@@ -95,7 +104,9 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
         QuestConfirmationDialog(
             onDismissRequest = { confirmSelectionOfGroupItem = null },
             onConfirmed = {
-                prefs.addLastPicked(favoriteKey, groupItem)
+                if (favoriteKey != null) {
+                    viewModel.saveFavorite(favoriteKey, groupItem)
+                }
                 onClickOk(groupItem)
             },
             text = { Text(stringResource(Res.string.quest_generic_item_confirmation)) }

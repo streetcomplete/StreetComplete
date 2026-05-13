@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.access_point_ref
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>(), AndroidQuest {
+class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
 
     override val elementFilter = """
         nodes with
@@ -24,7 +24,10 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>(), AndroidQue
     override val title = Res.string.quest_genericRef_title
     override val achievements = listOf(EditTypeAchievement.LIFESAVER, EditTypeAchievement.RARE)
 
-    override fun createForm() = AddAccessPointRefForm()
+    @Composable
+    override fun Form(onAnswer: (AccessPointRefAnswer) -> Unit) {
+        AddAccessPointRefForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: AccessPointRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

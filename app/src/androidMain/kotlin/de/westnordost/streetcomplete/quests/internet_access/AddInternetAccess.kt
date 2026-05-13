@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.internet_access
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 
-class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>(), AndroidQuest {
+class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -38,7 +38,10 @@ class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>(), AndroidQues
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
-    override fun createForm() = AddInternetAccessForm()
+    @Composable
+    override fun Form(onAnswer: (Set<InternetAccess>) -> Unit) {
+        AddInternetAccessForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Set<InternetAccess>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("internet_access", answer.joinToString(";") { it.osmValue })

@@ -56,6 +56,7 @@ import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameViewModel
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -63,6 +64,7 @@ import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionar
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
+import org.koin.compose.viewmodel.koinViewModel
 
 class PlacesOverlayForm : AbstractOverlayForm() {
 
@@ -70,6 +72,8 @@ class PlacesOverlayForm : AbstractOverlayForm() {
 
     @Composable
     override fun Content() {
+        val namesViewModel = koinViewModel<LocalizedNameViewModel>()
+
         val lastPickedFeatures = remember {
             val languages = getLanguagesForFeatureDictionary()
             prefs.getLastPicked<String>(this::class.simpleName!!)
@@ -84,16 +88,9 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         }
 
         val selectableLanguages = remember {
-            val languages = (countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages)
-                .distinct()
-                .toMutableList()
-            val preferredLanguageTag = prefs.preferredLanguageForNames
-            if (preferredLanguageTag != null) {
-                if (languages.remove(preferredLanguageTag)) {
-                    languages.add(0, preferredLanguageTag)
-                }
-            }
-            languages
+            namesViewModel.getLanguagesWithPreferredFirst(
+                countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages
+            )
         }
 
         val vacantShopFeature = remember {
@@ -141,11 +138,10 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         }
 
         fun onClickOk(replacePlace: Boolean) {
+            namesViewModel.savePreferredLanguage(localizedNames)
+
             val newFeature = selectedFeature!!
             val inputNames = localizedNames.filter { it.name.isNotEmpty() }
-
-            val firstLanguage = inputNames.firstOrNull()?.languageTag
-            if (!firstLanguage.isNullOrEmpty()) prefs.preferredLanguageForNames = firstLanguage
 
             if (!newFeature.isSuggestion) {
                 prefs.addLastPicked(this::class.simpleName!!, newFeature.id)

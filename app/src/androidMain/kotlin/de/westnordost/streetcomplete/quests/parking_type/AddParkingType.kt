@@ -1,14 +1,18 @@
 package de.westnordost.streetcomplete.quests.parking_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddParkingType : OsmFilterQuestType<ParkingType>(), AndroidQuest {
+class AddParkingType : OsmFilterQuestType<ParkingType>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -21,7 +25,14 @@ class AddParkingType : OsmFilterQuestType<ParkingType>(), AndroidQuest {
     override val title = Res.string.quest_parkingType_title
     override val achievements = listOf(CAR)
 
-    override fun createForm() = AddParkingTypeForm()
+    @Composable
+    override fun Form(onAnswer: (ParkingType) -> Unit) {
+        ItemSelectQuestForm(
+            items = ParkingType.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+        )
+    }
 
     override fun applyAnswerTo(answer: ParkingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["parking"] = answer.osmValue

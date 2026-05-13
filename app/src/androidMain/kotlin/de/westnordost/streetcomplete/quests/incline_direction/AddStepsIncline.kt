@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.incline_direction
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddStepsIncline : OsmFilterQuestType<Incline>(), AndroidQuest {
+class AddStepsIncline : OsmFilterQuestType<Incline>() {
 
     override val elementFilter = """
         ways with highway = steps
@@ -24,7 +24,10 @@ class AddStepsIncline : OsmFilterQuestType<Incline>(), AndroidQuest {
     override val achievements = listOf(PEDESTRIAN)
     override val hint = Res.string.quest_arrow_tutorial
 
-    override fun createForm() = AddInclineForm()
+    @Composable
+    override fun Form(onAnswer: (Incline) -> Unit) {
+        AddInclineForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Incline, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =
         answer.applyTo(tags)

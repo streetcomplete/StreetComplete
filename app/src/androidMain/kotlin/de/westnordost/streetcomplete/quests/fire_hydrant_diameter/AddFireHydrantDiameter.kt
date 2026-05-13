@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>(), AndroidQuest {
+class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
 
     override val elementFilter = """
         nodes with
@@ -45,7 +45,10 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>(), 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with emergency = fire_hydrant")
 
-    override fun createForm() = AddFireHydrantDiameterForm()
+    @Composable
+    override fun Form(onAnswer: (FireHydrantDiameterAnswer) -> Unit) {
+        AddFireHydrantDiameterForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

@@ -1,17 +1,17 @@
 package de.westnordost.streetcomplete.quests.bbq_fuel
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>(), AndroidQuest {
+class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -29,7 +29,10 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with amenity = bbq")
 
-    override fun createForm() = AddBbqFuelForm()
+    @Composable
+    override fun Form(onAnswer: (BbqFuelAnswer) -> Unit) {
+        AddBbqFuelForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BbqFuelAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

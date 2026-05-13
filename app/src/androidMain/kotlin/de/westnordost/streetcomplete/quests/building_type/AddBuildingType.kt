@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.building_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.building.BuildingType
@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIB
 import de.westnordost.streetcomplete.osm.building.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddBuildingType : OsmFilterQuestType<BuildingType>(), AndroidQuest {
+class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
     override val elementFilter = """
         ways, relations with
@@ -30,7 +30,10 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>(), AndroidQuest {
     override val achievements = listOf(BUILDING)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
-    override fun createForm() = AddBuildingTypeForm()
+    @Composable
+    override fun Form(onAnswer: (BuildingType) -> Unit) {
+        AddBuildingTypeForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BuildingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)

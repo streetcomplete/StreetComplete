@@ -6,34 +6,32 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 
-class AddBbqFuelForm : AbstractOsmQuestForm<BbqFuelAnswer>() {
+@Composable
+fun AddBbqFuelForm(
+    onAnswer: (BbqFuelAnswer) -> Unit
+) {
+    var confirmNotBbq by remember { mutableStateOf(false) }
 
-    @Composable
-    override fun Content() {
-        var confirmNotBbq by remember { mutableStateOf(false) }
-
-        RadioGroupQuestForm(
-            items = BbqFuel.entries,
-            itemContent = { Text(stringResource(it.text)) },
-            onClickOk = { applyAnswer(it) },
-            otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_bbq_fuel_not_a_bbq)) { confirmNotBbq = true },
-            )
+    RadioGroupQuestForm(
+        items = BbqFuel.entries,
+        itemContent = { Text(stringResource(it.text)) },
+        onClickOk = onAnswer,
+        otherAnswers = listOf(
+            Answer(stringResource(Res.string.quest_bbq_fuel_not_a_bbq)) { confirmNotBbq = true },
         )
+    )
 
-        if (confirmNotBbq) {
-            QuestConfirmationDialog(
-                onDismissRequest = { confirmNotBbq = false },
-                onConfirmed = { applyAnswer(BbqFuelAnswer.IsFirePit) },
-                text = { Text(stringResource(Res.string.quest_bbq_fuel_not_a_bbq_confirmation)) }
-            )
-        }
+    if (confirmNotBbq) {
+        QuestConfirmationDialog(
+            onDismissRequest = { confirmNotBbq = false },
+            onConfirmed = { onAnswer(BbqFuelAnswer.IsFirePit) },
+            text = { Text(stringResource(Res.string.quest_bbq_fuel_not_a_bbq_confirmation)) }
+        )
     }
 }

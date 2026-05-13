@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
@@ -11,7 +12,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Sides
@@ -29,7 +29,7 @@ import org.jetbrains.compose.resources.StringResource
 
 class AddCycleway(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
-) : OsmElementQuestType<Sides<CyclewayAndDirection>>, AndroidQuest {
+) : OsmElementQuestType<Sides<CyclewayAndDirection>> {
 
     override val changesetComment = "Specify whether there are cycleways"
     override val wikiLink = "Key:cycleway"
@@ -103,7 +103,10 @@ class AddCycleway(
               and access !~ no|private
         """)
 
-    override fun createForm() = AddCyclewayForm()
+    @Composable
+    override fun Form(onAnswer: (Sides<CyclewayAndDirection>) -> Unit) {
+        AddCyclewayForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Sides<CyclewayAndDirection>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val countryInfo = getCountryInfoByLocation(geometry.center)

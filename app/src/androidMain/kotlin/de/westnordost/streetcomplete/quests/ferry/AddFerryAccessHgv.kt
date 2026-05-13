@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.ferry
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -8,12 +9,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.resources.*
 
-class AddFerryAccessHgv : OsmElementQuestType<FerryHgvAccess>, AndroidQuest {
+class AddFerryAccessHgv : OsmElementQuestType<FerryHgvAccess> {
 
     private val filter by lazy {
         "ways, relations with route = ferry and !hgv and !hgv:signed"
@@ -40,7 +40,10 @@ class AddFerryAccessHgv : OsmElementQuestType<FerryHgvAccess>, AndroidQuest {
         return true
     }
 
-    override fun createForm() = AddFerryAccessHgvForm()
+    @Composable
+    override fun Form(onAnswer: (FerryHgvAccess) -> Unit) {
+        AddFerryAccessHgvForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: FerryHgvAccess, tags: StringMapChangesBuilder, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

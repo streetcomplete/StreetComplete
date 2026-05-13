@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.crossing
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.findNodesAtCrossingsOf
@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.*
 import de.westnordost.streetcomplete.resources.*
 
-class AddCrossing : OsmElementQuestType<CrossingAnswer>, AndroidQuest {
+class AddCrossing : OsmElementQuestType<CrossingAnswer> {
 
     private val roadsFilter by lazy { """
         ways with
@@ -70,7 +70,10 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer>, AndroidQuest {
         return crossings.map { it.node }.filter { it.tags.isEmpty() }
     }
 
-    override fun createForm() = AddCrossingForm()
+    @Composable
+    override fun Form(onAnswer: (CrossingAnswer) -> Unit) {
+        AddCrossingForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: CrossingAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

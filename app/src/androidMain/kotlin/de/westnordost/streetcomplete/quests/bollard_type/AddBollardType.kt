@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.bollard_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,13 +8,12 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddBollardType : OsmElementQuestType<BollardTypeAnswer>, AndroidQuest {
+class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
 
     private val bollardNodeFilter by lazy { """
         nodes with
@@ -49,7 +49,10 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer>, AndroidQuest {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with barrier = bollard")
 
-    override fun createForm() = AddBollardTypeForm()
+    @Composable
+    override fun Form(onAnswer: (BollardTypeAnswer) -> Unit) {
+        AddBollardTypeForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: BollardTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

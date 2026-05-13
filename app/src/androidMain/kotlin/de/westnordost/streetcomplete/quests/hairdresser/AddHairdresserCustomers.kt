@@ -1,17 +1,20 @@
 package de.westnordost.streetcomplete.quests.hairdresser
 
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import org.jetbrains.compose.resources.stringResource
 
-class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>(), AndroidQuest {
+class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -31,7 +34,14 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>(), Andr
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
-    override fun createForm() = AddHairdresserCustomersForm()
+    @Composable
+    override fun Form(onAnswer: (HairdresserCustomers) -> Unit) {
+        RadioGroupQuestForm(
+            items = HairdresserCustomers.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = onAnswer
+        )
+    }
 
     override fun applyAnswerTo(answer: HairdresserCustomers, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer == HairdresserCustomers.NOT_SIGNED) {

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.max_height
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.math.intersects
 
-class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
+class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     private val nodeFilter by lazy { """
         nodes with
@@ -157,7 +157,10 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
         return false
     }
 
-    override fun createForm() = AddMaxHeightForm()
+    @Composable
+    override fun Form(onAnswer: (MaxHeightAnswer) -> Unit) {
+        AddMaxHeightForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: MaxHeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

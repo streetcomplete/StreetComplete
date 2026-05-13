@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.width
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -12,7 +12,7 @@ import org.jetbrains.compose.resources.StringResource
 
 class AddCyclewayWidth(
     private val checkArSupport: ArSupportChecker
-) : OsmFilterQuestType<WidthAnswer>(), AndroidQuest {
+) : OsmFilterQuestType<WidthAnswer>() {
 
     /* All either exclusive cycleways or ways that are cycleway + footway (or bridleway) but
      *  segregated */
@@ -45,7 +45,10 @@ class AddCyclewayWidth(
     override val defaultDisabledMessage: StringResource?
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
 
-    override fun createForm() = AddWidthForm()
+    @Composable
+    override fun Form(onAnswer: (WidthAnswer) -> Unit) {
+        AddWidthForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val isExclusive = tags["highway"] == "cycleway" && tags["foot"] != "yes" && tags["foot"] != "designated"

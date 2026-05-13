@@ -1,15 +1,18 @@
 package de.westnordost.streetcomplete.quests.moped
 
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import org.jetbrains.compose.resources.stringResource
 
-class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>(), AndroidQuest {
+class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>() {
 
     override val elementFilter = """
         ways with (
@@ -32,7 +35,14 @@ class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>(), AndroidQuest {
     override val title = Res.string.quest_moped_access_title
     override val achievements = listOf(EditTypeAchievement.BICYCLIST)
 
-    override fun createForm() = AddMopedAccessForm()
+    @Composable
+    override fun Form(onAnswer: (MopedAccessAnswer) -> Unit) {
+        RadioGroupQuestForm(
+            items = MopedAccessAnswer.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = onAnswer
+        )
+    }
 
     override fun applyAnswerTo(answer: MopedAccessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

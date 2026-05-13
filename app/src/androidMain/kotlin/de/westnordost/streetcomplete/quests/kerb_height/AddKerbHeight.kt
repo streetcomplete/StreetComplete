@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 
-class AddKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
+class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
     private val eligibleKerbsFilter by lazy { """
         nodes with
@@ -43,7 +43,10 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight>, AndroidQuest {
             null
         }
 
-    override fun createForm() = AddKerbHeightForm()
+    @Composable
+    override fun Form(onAnswer: (KerbHeight) -> Unit) {
+        AddKerbHeightForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: KerbHeight, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("kerb", answer.osmValue)
