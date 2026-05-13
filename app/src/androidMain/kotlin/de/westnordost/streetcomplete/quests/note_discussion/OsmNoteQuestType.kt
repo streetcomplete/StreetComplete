@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.quests.note_discussion
 
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.resources.*
 
-object OsmNoteQuestType : QuestType, AndroidQuest {
+object OsmNoteQuestType : QuestType {
     override val icon = R.drawable.quest_notes
     override val title = Res.string.quest_noteDiscussion_title
     override val wikiLink = "Notes"

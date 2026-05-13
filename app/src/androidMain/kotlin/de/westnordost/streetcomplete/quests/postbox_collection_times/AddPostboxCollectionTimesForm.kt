@@ -11,7 +11,6 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
@@ -23,77 +22,76 @@ import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 
-class AddPostboxCollectionTimesForm : AbstractOsmQuestForm<CollectionTimesAnswer>() {
+@Composable
+fun AddPostboxCollectionTimesForm(
+    onAnswer: (CollectionTimesAnswer) -> Unit,
+) {
+    val oh = remember { element.tags["collection_times"]?.toOpeningHoursOrNull(lenient = true) }
+    val originalOpeningHours = remember { oh?.toHierarchicOpeningHours(allowTimePoints = true) }
+    var openingHours by rememberSerializable {
+        mutableStateOf(originalOpeningHours ?: HierarchicOpeningHours())
+    }
+    var isDisplayingPrevious by rememberSaveable {
+        mutableStateOf(originalOpeningHours != null)
+    }
+    var timeMode by rememberSerializable {
+        mutableStateOf(if (oh?.containsTimeSpans() == true) TimeMode.Spans else TimeMode.Points)
+    }
 
-    @Composable
-    override fun Content() {
-        val oh = remember { element.tags["collection_times"]?.toOpeningHoursOrNull(lenient = true) }
-        val originalOpeningHours = remember { oh?.toHierarchicOpeningHours(allowTimePoints = true) }
-        var openingHours by rememberSerializable {
-            mutableStateOf(originalOpeningHours ?: HierarchicOpeningHours())
-        }
-        var isDisplayingPrevious by rememberSaveable {
-            mutableStateOf(originalOpeningHours != null)
-        }
-        var timeMode by rememberSerializable {
-            mutableStateOf(if (oh?.containsTimeSpans() == true) TimeMode.Spans else TimeMode.Points)
-        }
+    var confirmNoSign by remember { mutableStateOf(false) }
 
-        var confirmNoSign by remember { mutableStateOf(false) }
-
-        QuestForm(
-            answers =
-                if (isDisplayingPrevious) {
-                    Answers(
-                        Answer(stringResource(Res.string.quest_generic_hasFeature_no)) {
-                            isDisplayingPrevious = false
-                        },
-                        Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) {
-                            applyAnswer(CollectionTimes(originalOpeningHours!!))
-                        }
-                    )
-                } else {
-                    Form(
-                        isComplete = openingHours.isComplete(),
-                        hasChanges = openingHours.monthsList.isNotEmpty(),
-                        onClickOk = { applyAnswer(CollectionTimes(openingHours)) }
-                    )
-                },
-            otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
-                    confirmNoSign = true
-                },
-                when (timeMode) {
-                    TimeMode.Points -> {
-                        Answer(stringResource(Res.string.quest_collectionTimes_answer_time_spans)) {
-                            timeMode = TimeMode.Spans
-                        }
+    QuestForm(
+        answers =
+            if (isDisplayingPrevious) {
+                Answers(
+                    Answer(stringResource(Res.string.quest_generic_hasFeature_no)) {
+                        isDisplayingPrevious = false
+                    },
+                    Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) {
+                        onAnswer(CollectionTimes(originalOpeningHours!!))
                     }
-                    TimeMode.Spans -> {
-                        Answer(stringResource(Res.string.quest_collectionTimes_answer_time_points)) {
-                            timeMode = TimeMode.Points
-                        }
+                )
+            } else {
+                Form(
+                    isComplete = openingHours.isComplete(),
+                    hasChanges = openingHours.monthsList.isNotEmpty(),
+                    onClickOk = { onAnswer(CollectionTimes(openingHours)) }
+                )
+            },
+        otherAnswers = listOf(
+            Answer(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
+                confirmNoSign = true
+            },
+            when (timeMode) {
+                TimeMode.Points -> {
+                    Answer(stringResource(Res.string.quest_collectionTimes_answer_time_spans)) {
+                        timeMode = TimeMode.Spans
                     }
                 }
-            )
-        ) {
-            OpeningHoursTable(
-                openingHours = openingHours,
-                onChange = { openingHours = it },
-                timeMode = timeMode,
-                countryInfo = countryInfo,
-                addButtonContent = { Text(stringResource(Res.string.quest_collectionTimes_add_times)) },
-                locale = countryInfo.userPreferredLocale,
-                userLocale = Locale.current,
-                enabled = !isDisplayingPrevious,
-            )
-        }
-        if (confirmNoSign) {
-            QuestConfirmationDialog(
-                onDismissRequest = { confirmNoSign = false },
-                onConfirmed = { applyAnswer(NoCollectionTimesSign) },
-                titleText = stringResource(Res.string.quest_generic_confirmation_title)
-            )
-        }
+                TimeMode.Spans -> {
+                    Answer(stringResource(Res.string.quest_collectionTimes_answer_time_points)) {
+                        timeMode = TimeMode.Points
+                    }
+                }
+            }
+        )
+    ) {
+        OpeningHoursTable(
+            openingHours = openingHours,
+            onChange = { openingHours = it },
+            timeMode = timeMode,
+            countryInfo = countryInfo,
+            addButtonContent = { Text(stringResource(Res.string.quest_collectionTimes_add_times)) },
+            locale = countryInfo.userPreferredLocale,
+            userLocale = Locale.current,
+            enabled = !isDisplayingPrevious,
+        )
+    }
+    if (confirmNoSign) {
+        QuestConfirmationDialog(
+            onDismissRequest = { confirmNoSign = false },
+            onConfirmed = { onAnswer(NoCollectionTimesSign) },
+            titleText = stringResource(Res.string.quest_generic_confirmation_title)
+        )
     }
 }

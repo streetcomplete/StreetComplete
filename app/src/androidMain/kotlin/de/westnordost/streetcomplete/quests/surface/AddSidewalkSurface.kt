@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.surface
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.sidewalk_surface.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>(), AndroidQuest {
+class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
 
     // Only roads with 'complete' sidewalk tagging (at least one side has sidewalk, other side specified)
     override val elementFilter = """
@@ -37,7 +37,10 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>(), AndroidQ
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
     override val hint = Res.string.quest_street_side_puzzle_tutorial
 
-    override fun createForm() = AddSidewalkSurfaceForm()
+    @Composable
+    override fun Form(onAnswer: (SidewalkSurfaceAnswer) -> Unit) {
+        AddSidewalkSurfaceForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

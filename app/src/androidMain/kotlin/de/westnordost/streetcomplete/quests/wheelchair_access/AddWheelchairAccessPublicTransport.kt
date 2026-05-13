@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 
-class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(), AndroidQuest {
+class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -28,7 +28,10 @@ class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(
     override val achievements = listOf(WHEELCHAIR)
     override val hint = Res.string.quest_wheelchairAccess_limited_description_public_transport
 
-    override fun createForm() = WheelchairAccessForm()
+    @Composable
+    override fun Form(onAnswer: (WheelchairAccess) -> Unit) {
+        AddWheelchairAccessForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("wheelchair", answer.osmValue)

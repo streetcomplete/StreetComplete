@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
+import androidx.compose.runtime.Composable
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -8,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
-class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, AndroidQuest {
+class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
 
     private val filter by lazy { """
         nodes with amenity = post_box
@@ -88,7 +88,9 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with amenity = post_box")
 
-    override fun createForm() = AddPostboxCollectionTimesForm()
+    @Composable
+    override fun Form(onAnswer: (CollectionTimesAnswer) -> Unit) =
+        AddPostboxCollectionTimesForm(onAnswer)
 
     override fun applyAnswerTo(answer: CollectionTimesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

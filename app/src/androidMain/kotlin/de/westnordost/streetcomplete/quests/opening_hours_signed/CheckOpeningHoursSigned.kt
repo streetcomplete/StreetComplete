@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours_signed
 
+import androidx.compose.runtime.Composable
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.setCheckDateForKey
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
-import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -23,7 +23,7 @@ import kotlin.time.Instant
 
 class CheckOpeningHoursSigned(
     private val getFeature: (Element) -> Feature?
-) : OsmElementQuestType<Boolean>, AndroidQuest {
+) : OsmElementQuestType<Boolean> {
 
     private val filter by lazy { """
         nodes, ways with
@@ -59,7 +59,10 @@ class CheckOpeningHoursSigned(
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
-    override fun createForm() = YesNoQuestForm()
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit) {
+        YesNoQuestForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer) {
@@ -73,9 +76,10 @@ class CheckOpeningHoursSigned(
                 .any { tags[it]?.toCheckDate() != null }
 
             if (!hasCheckDate) {
-                tags.setCheckDateForKey("opening_hours", Instant.fromEpochMilliseconds(timestampEdited)
+                val newCheckDate = Instant.fromEpochMilliseconds(timestampEdited)
                     .toLocalDateTime(TimeZone.currentSystemDefault())
-                    .date)
+                    .date
+                tags.setCheckDateForKey("opening_hours", newCheckDate)
             }
         } else {
             tags["opening_hours:signed"] = "no"

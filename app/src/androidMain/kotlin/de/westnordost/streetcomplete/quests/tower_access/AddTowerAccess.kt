@@ -1,14 +1,17 @@
 package de.westnordost.streetcomplete.quests.tower_access
 
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import org.jetbrains.compose.resources.stringResource
 
-class AddTowerAccess : OsmFilterQuestType<TowerAccess>(), AndroidQuest {
+class AddTowerAccess : OsmFilterQuestType<TowerAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -28,7 +31,14 @@ class AddTowerAccess : OsmFilterQuestType<TowerAccess>(), AndroidQuest {
     override val title = Res.string.quest_tower_access_title
     override val achievements = listOf(BUILDING)
 
-    override fun createForm() = AddTowerAccessForm()
+    @Composable
+    override fun Form(onAnswer: (TowerAccess) -> Unit) {
+        RadioGroupQuestForm(
+            items = TowerAccess.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = onAnswer
+        )
+    }
 
     override fun applyAnswerTo(answer: TowerAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["access"] = answer.osmValue

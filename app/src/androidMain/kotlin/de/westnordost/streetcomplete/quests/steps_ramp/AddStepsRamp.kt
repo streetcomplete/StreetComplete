@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.steps_ramp
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>(), AndroidQuest {
+class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
 
     override val elementFilter = """
         ways with highway = steps
@@ -36,7 +36,10 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>(), AndroidQuest {
     override val title = Res.string.quest_steps_ramp_title
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST)
 
-    override fun createForm() = AddStepsRampForm()
+    @Composable
+    override fun Form(onAnswer: (StepsRampAnswer) -> Unit) {
+        AddStepsRampForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: StepsRampAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         // special tagging if the wheelchair ramp is separate

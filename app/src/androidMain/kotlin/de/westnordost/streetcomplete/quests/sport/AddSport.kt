@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.quests.sport
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddSport : OsmFilterQuestType<Set<Sport>>(), AndroidQuest {
+class AddSport : OsmFilterQuestType<Set<Sport>>() {
 
     override val elementFilter = """
         ways with
@@ -23,7 +23,10 @@ class AddSport : OsmFilterQuestType<Set<Sport>>(), AndroidQuest {
     override val title = Res.string.quest_sport_title
     override val achievements = listOf(OUTDOORS)
 
-    override fun createForm() = AddSportForm()
+    @Composable
+    override fun Form(onAnswer: (Set<Sport>) -> Unit) {
+        AddSportForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Set<Sport>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["sport"] = answer.joinToString(";") { it.osmValue }

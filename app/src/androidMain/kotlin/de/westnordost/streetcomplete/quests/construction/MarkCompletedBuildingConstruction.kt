@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.construction
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.resources.*
 
-class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructionAnswer>(), AndroidQuest {
+class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {
 
     override val elementFilter = """
         ways with
@@ -24,14 +24,17 @@ class MarkCompletedBuildingConstruction : OsmFilterQuestType<CompletedConstructi
     override val title = Res.string.quest_construction_building_title
     override val achievements = listOf(BUILDING)
 
-    override fun createForm() = MarkCompletedConstructionForm()
+    @Composable
+    override fun Form(onAnswer: (CompletedConstructionAnswer) -> Unit) {
+        MarkCompletedConstructionForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: CompletedConstructionAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is OpeningDateAnswer -> {
+            is OpeningDate -> {
                 tags["opening_date"] = answer.date.toCheckDateString()
             }
-            is StateAnswer -> {
+            is ConstructionState -> {
                 if (answer.value) {
                     tags["building"] = tags["construction"] ?: "yes"
                     removeTagsDescribingConstruction(tags)

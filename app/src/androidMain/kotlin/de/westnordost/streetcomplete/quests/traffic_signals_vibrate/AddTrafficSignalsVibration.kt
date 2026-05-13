@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddTrafficSignalsVibration : OsmElementQuestType<Boolean>, AndroidQuest {
+class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
 
     private val crossingFilter by lazy { """
         nodes with
@@ -64,7 +64,10 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean>, AndroidQuest {
     override fun isApplicableTo(element: Element): Boolean? =
         if (!crossingFilter.matches(element)) false else null
 
-    override fun createForm() = AddTrafficSignalsVibrationForm()
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit) {
+        AddTrafficSignalsVibrationForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate(VIBRATING_BUTTON, answer.toYesNo())

@@ -1,20 +1,24 @@
 package de.westnordost.streetcomplete.quests.recycling
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.OVERGROUND_CONTAINER
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.RECYCLING_CENTRE
 import de.westnordost.streetcomplete.quests.recycling.RecyclingType.UNDERGROUND_CONTAINER
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddRecyclingType : OsmFilterQuestType<RecyclingType>(), AndroidQuest {
+class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
     override val elementFilter = "nodes, ways with amenity = recycling and !recycling_type"
     override val changesetComment = "Specify type of recycling amenities"
@@ -26,7 +30,14 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")
 
-    override fun createForm() = AddRecyclingTypeForm()
+    @Composable
+    override fun Form(onAnswer: (RecyclingType) -> Unit) {
+        ItemSelectQuestForm(
+            items = RecyclingType.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+        )
+    }
 
     override fun applyAnswerTo(answer: RecyclingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

@@ -1,17 +1,19 @@
 package de.westnordost.streetcomplete.quests.step_count
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.CountInputQuestForm
+import org.jetbrains.compose.resources.painterResource
 
-class AddStepCountStile : OsmElementQuestType<Int>, AndroidQuest {
+class AddStepCountStile : OsmElementQuestType<Int> {
 
     private val stileNodeFilter by lazy { """
         nodes with
@@ -46,7 +48,13 @@ class AddStepCountStile : OsmElementQuestType<Int>, AndroidQuest {
     override val achievements = listOf(OUTDOORS)
     override val hint = Res.string.quest_step_count_stile_hint
 
-    override fun createForm() = AddStepCountForm()
+    @Composable
+    override fun Form(onAnswer: (Int) -> Unit) {
+        CountInputQuestForm(
+            icon = painterResource(Res.drawable.count_step),
+            onClickOk = onAnswer
+        )
+    }
 
     override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["step_count"] = answer.toString()

@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.toilet_availability
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddToiletAvailability : OsmFilterQuestType<Boolean>(), AndroidQuest {
+class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
 
     // only for malls, big stores and rest areas because users should not need to go inside a non-public
     // place to solve the quest. (Considering malls and department stores public enough)
@@ -30,7 +30,10 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val title = Res.string.quest_toiletAvailability_title
     override val achievements = listOf(CITIZEN)
 
-    override fun createForm() = YesNoQuestForm()
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit) {
+        YesNoQuestForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["toilets"] = answer.toYesNo()

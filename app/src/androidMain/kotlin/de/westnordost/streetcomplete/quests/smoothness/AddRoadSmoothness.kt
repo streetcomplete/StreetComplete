@@ -1,15 +1,15 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
+class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override val elementFilter = """
         ways with (
@@ -40,7 +40,10 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>(), AndroidQuest {
             Res.string.quest_smoothness_road_title
         }
 
-    override fun createForm() = AddSmoothnessForm()
+    @Composable
+    override fun Form(onAnswer: (SmoothnessAnswer) -> Unit) {
+        AddSmoothnessForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer is IsActuallyStepsAnswer) throw IllegalStateException()

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.recycling_glass
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -7,14 +8,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.ANY
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTLES
 import de.westnordost.streetcomplete.resources.*
 
-class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>(), AndroidQuest {
+class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -36,7 +36,10 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>(), AndroidQue
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with amenity = recycling")
 
-    override fun createForm() = DetermineRecyclingGlassForm()
+    @Composable
+    override fun Form(onAnswer: (RecyclingGlass) -> Unit) {
+        DetermineRecyclingGlassForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: RecyclingGlass, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

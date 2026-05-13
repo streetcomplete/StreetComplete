@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.quests.foot
 
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
@@ -13,8 +14,10 @@ import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.ALLOWED
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.PROHIBITED
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import org.jetbrains.compose.resources.stringResource
 
-class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>(), AndroidQuest {
+class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {
     override val elementFilter = """
         ways with (
           sidewalk:both ~ none|no
@@ -53,7 +56,14 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
         "GB" // see https://community.openstreetmap.org/t/poll-should-streetcomplete-disable-the-are-pedestrians-forbidden-to-walk-on-this-road-without-sidewalk-here-quest-in-the-uk/118387
     )
 
-    override fun createForm() = AddProhibitedForPedestriansForm()
+    @Composable
+    override fun Form(onAnswer: (ProhibitedForPedestriansAnswer) -> Unit) {
+        RadioGroupQuestForm(
+            items = ProhibitedForPedestriansAnswer.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = onAnswer
+        )
+    }
 
     override fun applyAnswerTo(answer: ProhibitedForPedestriansAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

@@ -1,19 +1,19 @@
 package de.westnordost.streetcomplete.quests.traffic_signals_button
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
-import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>(), AndroidQuest {
+class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes with
@@ -31,7 +31,10 @@ class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.asSequence().filter { it.isCrossingWithTrafficSignals() }
 
-    override fun createForm() = YesNoQuestForm()
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit) {
+        YesNoQuestForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["button_operated"] = answer.toYesNo()

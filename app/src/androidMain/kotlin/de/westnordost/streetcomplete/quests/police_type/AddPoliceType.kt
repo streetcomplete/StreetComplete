@@ -1,15 +1,18 @@
 package de.westnordost.streetcomplete.quests.police_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
 
-class AddPoliceType : OsmFilterQuestType<PoliceType>(), AndroidQuest {
+class AddPoliceType : OsmFilterQuestType<PoliceType>() {
 
     override val elementFilter = "nodes, ways with amenity = police and !operator"
     override val changesetComment = "Specify Italian police types"
@@ -19,7 +22,15 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>(), AndroidQuest {
     override val enabledInCountries = NoCountriesExcept("IT")
     override val achievements = listOf(CITIZEN)
 
-    override fun createForm() = AddPoliceTypeForm()
+    @Composable
+    override fun Form(onAnswer: (PoliceType) -> Unit) {
+        ItemSelectQuestForm(
+            items = PoliceType.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },
+            onClickOk = onAnswer,
+            favoriteKey = "AddPoliceTypeForm",
+        )
+    }
 
     override fun applyAnswerTo(answer: PoliceType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["operator"] = answer.operatorName

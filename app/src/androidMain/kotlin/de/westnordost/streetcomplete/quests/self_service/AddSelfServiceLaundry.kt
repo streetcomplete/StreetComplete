@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.self_service
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.NO
@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.ONLY
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.OPTIONAL
 import de.westnordost.streetcomplete.resources.*
 
-class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>(), AndroidQuest {
+class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
 
     override val elementFilter = "nodes, ways with shop = laundry and !self_service"
     override val changesetComment = "Survey whether laundries provide self-service"
@@ -20,7 +20,10 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>(), AndroidQ
     override val title = Res.string.quest_laundrySelfService_title2
     override val achievements = listOf(CITIZEN)
 
-    override fun createForm() = AddSelfServiceLaundryForm()
+    @Composable
+    override fun Form(onAnswer: (SelfServiceLaundry) -> Unit) {
+        AddSelfServiceLaundryForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: SelfServiceLaundry, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

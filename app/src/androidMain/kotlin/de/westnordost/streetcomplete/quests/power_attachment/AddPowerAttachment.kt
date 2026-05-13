@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.power_attachment
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -8,12 +9,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddPowerAttachment : OsmElementQuestType<PowerAttachment>, AndroidQuest {
+class AddPowerAttachment : OsmElementQuestType<PowerAttachment> {
 
     private val polesFilter by lazy { """
         nodes with
@@ -67,7 +71,14 @@ class AddPowerAttachment : OsmElementQuestType<PowerAttachment>, AndroidQuest {
     // when looking at them from afar
     override val highlightedElementsRadius get() = 100.0
 
-    override fun createForm() = AddPowerAttachmentForm()
+    @Composable
+    override fun Form(onAnswer: (PowerAttachment) -> Unit) {
+        ItemSelectQuestForm(
+            items = PowerAttachment.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+        )
+    }
 
     override fun applyAnswerTo(answer: PowerAttachment, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["line_attachment"] = answer.osmValue

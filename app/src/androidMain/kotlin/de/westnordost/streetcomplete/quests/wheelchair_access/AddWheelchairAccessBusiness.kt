@@ -1,17 +1,17 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.resources.*
 
-class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), AndroidQuest {
+class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -127,7 +127,10 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
-    override fun createForm() = WheelchairAccessForm()
+    @Composable
+    override fun Form(onAnswer: (WheelchairAccess) -> Unit) {
+        AddWheelchairAccessForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["wheelchair"] = answer.osmValue

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
+import androidx.compose.foundation.Image
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -8,15 +11,19 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.MANY
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddRoofShape(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
-) : OsmElementQuestType<RoofShape>, AndroidQuest {
+) : OsmElementQuestType<RoofShape> {
 
     private val filter by lazy { """
         ways, relations with
@@ -34,8 +41,6 @@ class AddRoofShape(
     override val title = Res.string.quest_roofShape_title
     override val achievements = listOf(BUILDING)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_roofShape
-
-    override fun createForm() = AddRoofShapeForm()
 
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.filter { element ->
@@ -57,6 +62,20 @@ class AddRoofShape(
     private fun roofsAreUsuallyFlatAt(element: Element, mapData: MapDataWithGeometry): Boolean? {
         val center = mapData.getGeometry(element.type, element.id)?.center ?: return null
         return getCountryInfoByLocation(center).roofsAreUsuallyFlat
+    }
+
+    @Composable
+    override fun Form(onAnswer: (RoofShape) -> Unit) {
+        ItemSelectQuestForm(
+            items = remember { RoofShape.entries - MANY },
+            itemsPerRow = 4,
+            itemContent = { Image(painterResource(it.icon), null) },
+            onClickOk = onAnswer,
+            favoriteKey = "AddRoofShapeForm",
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_roofShape_answer_many)) { onAnswer(MANY) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: RoofShape, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

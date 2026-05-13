@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.quests.road_name
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddRoadName : OsmFilterQuestType<RoadNameAnswer>(), AndroidQuest {
+class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
 
     override val elementFilter = """
         ways with
@@ -38,7 +38,10 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>(), AndroidQuest {
     override val achievements = listOf(CAR, PEDESTRIAN, POSTMAN)
     override val hint = Res.string.quest_streetName_hint
 
-    override fun createForm() = AddRoadNameForm()
+    @Composable
+    override fun Form(onAnswer: (RoadNameAnswer) -> Unit) {
+        AddRoadNameForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: RoadNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

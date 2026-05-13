@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.way_lit
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.changeToSteps
@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.osm.lit.applyTo
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.resources.*
 
-class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>(), AndroidQuest {
+class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
 
     /* Using sidewalk, source:maxspeed=*urban etc and a urban-like maxspeed as tell-tale tags for
        (urban) streets which reached a certain level of development. I.e. non-urban streets will
@@ -55,7 +55,10 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>(), AndroidQuest {
     override val achievements = listOf(PEDESTRIAN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
-    override fun createForm() = WayLitForm()
+    @Composable
+    override fun Form(onAnswer: (WayLitOrIsStepsAnswer) -> Unit) {
+        AddWayLitForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: WayLitOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

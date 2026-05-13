@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.surface
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
@@ -12,9 +12,15 @@ import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES_FOR_TRACKTYPES
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.surface.applyTo
+import de.westnordost.streetcomplete.osm.surface.icon
+import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-class AddRoadSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
+class AddRoadSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
         ways with (
@@ -56,7 +62,17 @@ class AddRoadSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
             Res.string.quest_streetSurface_title
         }
 
-    override fun createForm() = AddRoadSurfaceForm()
+    @Composable
+    override fun Form(onAnswer: (Surface) -> Unit) {
+        ItemSelectQuestForm(
+            items = Surface.selectableValuesForWays,
+            itemContent = { item ->
+                ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
+            },
+            onClickOk = onAnswer,
+            favoriteKey = "AddRoadSurfaceForm",
+        )
+    }
 
     override fun applyAnswerTo(answer: Surface, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         answer.applyTo(tags)

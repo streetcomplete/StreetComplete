@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.surface
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>(), AndroidQuest {
+class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
 
     override val elementFilter = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
@@ -42,7 +42,10 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>(), AndroidQues
     override val title = Res.string.quest_surface_title
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
-    override fun createForm() = AddPathSurfaceForm()
+    @Composable
+    override fun Form(onAnswer: (SurfaceOrIsStepsAnswer) -> Unit) {
+        AddPathSurfaceForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

@@ -1,18 +1,21 @@
 package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
 
-class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>(), AndroidQuest {
+class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
 
     override val elementFilter = """
         nodes with amenity = post_box and (!royal_cypher or royal_cypher = yes)
@@ -34,7 +37,15 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>(), AndroidQ
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with amenity = post_box")
 
-    override fun createForm() = AddPostboxRoyalCypherForm()
+    @Composable
+    override fun Form(onAnswer: (PostboxRoyalCypher) -> Unit) {
+        ItemSelectQuestForm(
+            items = PostboxRoyalCypher.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },
+            onClickOk = onAnswer,
+            favoriteKey = "AddPostboxRoyalCypherForm",
+        )
+    }
 
     override fun applyAnswerTo(answer: PostboxRoyalCypher, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["royal_cypher"] = answer.osmValue

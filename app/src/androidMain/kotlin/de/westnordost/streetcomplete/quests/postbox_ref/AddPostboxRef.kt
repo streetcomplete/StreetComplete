@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.quests.postbox_ref
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>(), AndroidQuest {
+class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
 
     override val elementFilter = """
         nodes with
@@ -33,7 +33,10 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with amenity = post_box")
 
-    override fun createForm() = AddPostboxRefForm()
+    @Composable
+    override fun Form(onAnswer: (PostboxRefAnswer) -> Unit) {
+        AddPostboxRefForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: PostboxRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

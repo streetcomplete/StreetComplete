@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.width
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
@@ -19,7 +19,7 @@ import org.jetbrains.compose.resources.StringResource
 
 class AddRoadWidth(
     private val checkArSupport: ArSupportChecker
-) : OsmElementQuestType<WidthAnswer>, AndroidQuest {
+) : OsmElementQuestType<WidthAnswer> {
 
     private val nodeFilter by lazy { """
        nodes with
@@ -73,7 +73,10 @@ class AddRoadWidth(
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table")
 
-    override fun createForm() = AddWidthForm()
+    @Composable
+    override fun Form(onAnswer: (WidthAnswer) -> Unit) {
+        AddWidthForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         val key = if (tags["traffic_calming"] in ROAD_NARROWERS) "maxwidth" else "width"

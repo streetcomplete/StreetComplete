@@ -1,68 +1,103 @@
 package de.westnordost.streetcomplete.quests.recycling_material
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.Form
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectViewModel
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.takeFavorites
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.koin.android.ext.android.inject
-import kotlin.getValue
+import org.koin.compose.viewmodel.koinViewModel
 
-class AddRecyclingContainerMaterialsForm : AbstractOsmQuestForm<RecyclingContainerMaterialsAnswer>() {
+@Composable
+fun AddRecyclingContainerMaterialsForm(
+    onAnswer: (RecyclingContainerMaterialsAnswer) -> Unit,
+) {
+    val favKey = "AddRecyclingContainerMaterialsForm"
+    val viewModel = koinViewModel<ItemSelectViewModel>()
 
-    private val prefs: Preferences by inject()
+    val reorderedItems = remember {
+        viewModel.getItemsWithFavoritesFirst(favKey, RecyclingMaterial.entries, 4)
+    }
+    var selectedItems by rememberSerializable { mutableStateOf(emptySet<RecyclingMaterial>()) }
 
-    @Composable
-    override fun Content() {
-        val reorderedItems = remember { moveFavouritesToFront(RecyclingMaterial.entries) }
-        var selectedItems by rememberSerializable { mutableStateOf(emptySet<RecyclingMaterial>()) }
+    var confirmJustTrash by remember { mutableStateOf(false) }
 
-        var confirmJustTrash by remember { mutableStateOf(false) }
-
-        QuestForm(
-            answers = Form(
-                isComplete = selectedItems.isNotEmpty(),
-                onClickOk = {
-                    prefs.addLastPicked(this::class.simpleName!!, selectedItems.toList())
-                    applyAnswer(RecyclingMaterials(selectedItems))
-                }
-            ),
-            otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_recycling_materials_answer_waste)) { confirmJustTrash = true }
-            )
+    QuestForm(
+        answers = Form(
+            isComplete = selectedItems.isNotEmpty(),
+            onClickOk = {
+                viewModel.saveFavorites(favKey, selectedItems.toList())
+                onAnswer(RecyclingMaterials(selectedItems))
+            }
+        ),
+        otherAnswers = listOf(
+            Answer(stringResource(Res.string.quest_recycling_materials_answer_waste)) { confirmJustTrash = true }
+        )
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            RecyclingContainerMaterialsForm(
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.medium,
+                LocalTextStyle provides MaterialTheme.typography.body2
+            ) {
+                Text(stringResource(Res.string.quest_recycling_materials_note))
+                Text(stringResource(Res.string.quest_multiselect_hint))
+            }
+            ItemsSelectGrid(
+                columns = SimpleGridCells.Fixed(4),
                 items = reorderedItems,
-                tree = RecyclingMaterial.tree,
                 selectedItems = selectedItems,
-                onSelectedItems = { selectedItems = it },
-            )
-        }
-
-        if (confirmJustTrash) {
-            QuestConfirmationDialog(
-                onDismissRequest = { confirmJustTrash = false },
-                onConfirmed = { applyAnswer(IsWasteContainer) },
-                text = { Text(stringResource(Res.string.quest_recycling_materials_answer_waste_description)) },
-            )
+                onSelect = { item, selected ->
+                    // this here is the reason why it can't be just a normal ItemsSelectQuestForm:
+                    // certain values are actually sub-categories of other values.
+                    if (!selected) {
+                        selectedItems -= item
+                    } else {
+                        val newSelectedItems = selectedItems.toMutableSet()
+                        val tree = RecyclingMaterial.tree
+                        val parentItems = tree.yieldParentValues(item).orEmpty()
+                        val childItems = tree.yieldChildValues(item).orEmpty()
+                        newSelectedItems.removeAll(parentItems)
+                        newSelectedItems.removeAll(childItems)
+                        newSelectedItems.add(item)
+                        selectedItems = selectedItems
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                ImageWithLabel(painterResource(it.icon), stringResource(it.title))
+            }
         }
     }
 
-    private fun moveFavouritesToFront(originalList: List<RecyclingMaterial>): List<RecyclingMaterial> {
-        val favourites = prefs
-            .getLastPicked<RecyclingMaterial>(this::class.simpleName!!)
-            .takeFavorites(4)
-        return (favourites + originalList).distinct()
+    if (confirmJustTrash) {
+        QuestConfirmationDialog(
+            onDismissRequest = { confirmJustTrash = false },
+            onConfirmed = { onAnswer(IsWasteContainer) },
+            text = { Text(stringResource(Res.string.quest_recycling_materials_answer_waste_description)) },
+        )
     }
 }

@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.sanitary_dump_station
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>(), AndroidQuest {
+class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -33,7 +33,10 @@ class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>(), AndroidQuest {
         Res.drawable.sanitary_dump_station_sign2
     )
 
-    override fun createForm() = YesNoQuestForm()
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit) {
+        YesNoQuestForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["sanitary_dump_station"] = answer.toYesNo()

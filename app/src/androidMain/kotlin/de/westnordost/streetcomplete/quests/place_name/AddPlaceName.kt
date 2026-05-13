@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.place_name
 
+import androidx.compose.runtime.Composable
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.resources.*
 
 class AddPlaceName(
     private val getFeature: (Element) -> Feature?
-) : OsmElementQuestType<PlaceNameAnswer>, AndroidQuest {
+) : OsmElementQuestType<PlaceNameAnswer> {
 
     private val filter by lazy { ("""
         nodes, ways with
@@ -137,7 +137,6 @@ class AddPlaceName(
     override val wikiLink = "Key:name"
     override val icon = R.drawable.quest_label
     override val title = Res.string.quest_placeName_title
-    override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
@@ -149,7 +148,10 @@ class AddPlaceName(
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
-    override fun createForm() = AddPlaceNameForm()
+    @Composable
+    override fun Form(onAnswer: (PlaceNameAnswer) -> Unit) {
+        AddPlaceNameForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: PlaceNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

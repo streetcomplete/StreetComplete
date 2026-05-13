@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.recycling_material
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
@@ -9,7 +10,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDateForKey
@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.osm.removeCheckDatesForKey
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.resources.*
 
-class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMaterialsAnswer>, AndroidQuest {
+class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMaterialsAnswer> {
 
     private val filter by lazy { """
         nodes, ways with
@@ -44,7 +44,10 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
             || recyclingOlderThan2Years.matches(element) && !element.hasUnknownRecyclingMaterials()
         )
 
-    override fun createForm() = AddRecyclingContainerMaterialsForm()
+    @Composable
+    override fun Form(onAnswer: (RecyclingContainerMaterialsAnswer) -> Unit) {
+        AddRecyclingContainerMaterialsForm(onAnswer)
+    }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")

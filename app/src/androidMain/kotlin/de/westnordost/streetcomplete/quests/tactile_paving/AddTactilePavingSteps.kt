@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 
-class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>(), AndroidQuest {
+class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>() {
 
     override val elementFilter = """
         ways with highway = steps
@@ -39,7 +39,10 @@ class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>(), An
         Res.drawable.tactile_paving3
     )
 
-    override fun createForm() = TactilePavingStepsForm()
+    @Composable
+    override fun Form(onAnswer: (TactilePavingStepsAnswer) -> Unit) {
+        AddTactilePavingStepsForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: TactilePavingStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("tactile_paving", answer.osmValue)

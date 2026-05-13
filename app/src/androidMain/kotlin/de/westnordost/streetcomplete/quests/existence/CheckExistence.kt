@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.existence
 
+import androidx.compose.runtime.Composable
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.util.ktx.containsAll
 
 class CheckExistence(
     private val getFeature: (Element) -> Feature?
-) : OsmElementQuestType<Unit>, AndroidQuest {
+) : OsmElementQuestType<Unit> {
 
     private val nodesFilter by lazy { """
         nodes with ((
@@ -113,7 +113,10 @@ class CheckExistence(
         return mapData.filter { it.tags.containsAll(feature.tags) }.asSequence()
     }
 
-    override fun createForm() = CheckExistenceForm()
+    @Composable
+    override fun Form(onAnswer: (Unit) -> Unit) {
+        CheckExistenceForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: Unit, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateCheckDate()

@@ -1,19 +1,19 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 
-class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnswer>, AndroidQuest {
+class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnswer> {
 
     private val crossingFilter by lazy { """
         nodes with
@@ -64,7 +64,10 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnsw
     override fun isApplicableTo(element: Element): Boolean? =
         if (!crossingFilter.matches(element)) false else null
 
-    override fun createForm() = TactilePavingCrosswalkForm()
+    @Composable
+    override fun Form(onAnswer: (TactilePavingCrosswalkAnswer) -> Unit) {
+        AddTactilePavingCrosswalkForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: TactilePavingCrosswalkAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.updateWithCheckDate("tactile_paving", answer.osmValue)

@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.quests.railway_crossing
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 
-class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier>, AndroidQuest {
+class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
 
     private val crossingFilter by lazy { """
         nodes with
@@ -51,7 +51,10 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier>, A
     override fun isApplicableTo(element: Element): Boolean? =
         if (!crossingFilter.matches(element)) false else null
 
-    override fun createForm() = AddRailwayCrossingBarrierForm()
+    @Composable
+    override fun Form(onAnswer: (RailwayCrossingBarrier) -> Unit) {
+        AddRailwayCrossingBarrierForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: RailwayCrossingBarrier, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         if (answer.osmValue != null) {

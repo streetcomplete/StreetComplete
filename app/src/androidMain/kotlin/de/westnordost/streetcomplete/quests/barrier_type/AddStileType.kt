@@ -1,21 +1,25 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.quests.barrier_type.StileTypeAnswer.*
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import kotlin.IllegalStateException
 
-class AddStileType : OsmElementQuestType<StileTypeAnswer>, AndroidQuest {
+class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
     private val stileNodeFilter by lazy { """
         nodes with
@@ -47,7 +51,16 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer>, AndroidQuest {
     override val title = Res.string.quest_stile_type_title
     override val achievements = listOf(OUTDOORS)
 
-    override fun createForm() = AddStileTypeForm()
+    @Composable
+    override fun Form(onAnswer: (StileTypeAnswer) -> Unit) {
+        ItemSelectQuestForm(
+            items = StileTypeAnswer.entries,
+            itemsPerRow = 2,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+            favoriteKey = "AddStileTypeForm",
+        )
+    }
 
     override fun applyAnswerTo(answer: StileTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

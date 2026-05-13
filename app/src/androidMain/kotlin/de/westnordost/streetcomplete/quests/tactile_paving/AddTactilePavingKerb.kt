@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -7,17 +8,16 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
 import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddTactilePavingKerb : OsmElementQuestType<Boolean>, AndroidQuest {
+class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
 
     private val eligibleKerbsFilter by lazy { """
         nodes with
@@ -40,7 +40,10 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean>, AndroidQuest {
         Res.drawable.tactile_paving3
     )
 
-    override fun createForm() = YesNoQuestForm()
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit) {
+        YesNoQuestForm(onAnswer)
+    }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }

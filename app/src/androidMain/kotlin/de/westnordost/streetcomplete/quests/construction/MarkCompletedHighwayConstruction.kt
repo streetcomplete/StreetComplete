@@ -1,18 +1,17 @@
 package de.westnordost.streetcomplete.quests.construction
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.StringResource
 
-class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructionAnswer>(), AndroidQuest {
+class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {
 
     override val elementFilter = """
         ways with
@@ -43,14 +42,17 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
             else -> Res.string.quest_construction_generic_title
         }
 
-    override fun createForm() = MarkCompletedConstructionForm()
+    @Composable
+    override fun Form(onAnswer: (CompletedConstructionAnswer) -> Unit) {
+        MarkCompletedConstructionForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: CompletedConstructionAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is OpeningDateAnswer -> {
+            is OpeningDate -> {
                 tags["opening_date"] = answer.date.toCheckDateString()
             }
-            is StateAnswer -> {
+            is ConstructionState -> {
                 if (answer.value) {
                     // construction = minor has a special meaning: it is tagged *additionally to*
                     // the normal highway tag, because it denotes just minor construction works,
