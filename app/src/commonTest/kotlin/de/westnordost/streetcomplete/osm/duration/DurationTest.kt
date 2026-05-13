@@ -12,6 +12,19 @@ class DurationTest() {
         assertEquals("1 day", Duration(1.0, DurationUnit.DAYS).toOsmValue())
         assertEquals("12 days", Duration(12.0, DurationUnit.DAYS).toOsmValue())
 
-        // TODO: test new boolean values
+        assertEquals("day", Duration(14.0, DurationUnit.DAYS).toOsmValue(
+            alwaysSingular = true,
+            ignoreValue = true
+        ))
+
+        assertEquals("3 day", Duration(3.0, DurationUnit.DAYS).toOsmValue(
+            alwaysSingular = true,
+            ignoreValue = false
+        ))
+
+        assertEquals("days", Duration(5.0, DurationUnit.DAYS).toOsmValue(
+            alwaysSingular = false,
+            ignoreValue = true
+        ))
     }
 }

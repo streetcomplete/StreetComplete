@@ -7,10 +7,9 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.duration.Duration
-import de.westnordost.streetcomplete.osm.duration.DurationUnit
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_artwork_title
+import de.westnordost.streetcomplete.resources.quest_crossing_title2
 
 class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>(), AndroidQuest {
 
@@ -29,9 +28,10 @@ class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>(), AndroidQuest
     override val icon = R.drawable.quest_parking_charge
     override val achievements = listOf(CAR)
     // for now, this hint is just a proposal
-    override val hint = R.string.quest_parking_charge_hint
+    // override val hint = Res.string.quest_parking_charge_hint // TODO FIX THE HINT
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_parking_charge_title
+    // override val title = Res.string.quest_parking_charge_title // TODO FIX THE TITLE
+    override val title = Res.string.quest_crossing_title2
 
     override fun createForm() = AddParkingChargeForm()
 
