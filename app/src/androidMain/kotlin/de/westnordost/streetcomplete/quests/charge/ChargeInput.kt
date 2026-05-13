@@ -16,14 +16,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.duration.DurationUnit
+import de.westnordost.streetcomplete.ui.common.input.DecimalInput
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
 // import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** A composable for inputting a charge amount with currency symbol and time unit selector */
 @Composable
 fun ChargeInput(
-    amount: String,
-    onAmountChange: (String) -> Unit,
+    amount: Double,
+    onAmountChange: (Double?) -> Unit,
     currencyFormatInfo: CurrencyFormatElements,
     durationUnit: DurationUnit,
     onDurationUnitChange: (DurationUnit) -> Unit,
@@ -45,7 +46,7 @@ fun ChargeInput(
             )
         }
 
-        TextField(
+        DecimalInput(
             value = amount,
             onValueChange = onAmountChange,
             placeholder = {
@@ -65,7 +66,6 @@ fun ChargeInput(
                 }
             ),
             modifier = Modifier.width(150.dp),
-            singleLine = true,
         )
 
         if (!currencyFormatInfo.isSymbolBeforeAmount) {

@@ -8,6 +8,7 @@ import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -32,7 +33,7 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
     override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
 
-    private lateinit var amountState: MutableState<String>
+    private lateinit var amountState: MutableState<Double>
     private lateinit var durationUnitState: MutableState<DurationUnit>
 
     private lateinit var showDialogState: MutableState<Boolean>
@@ -48,7 +49,7 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
 
         binding.composeViewBase.content {
             Surface {
-                amountState = rememberSaveable { mutableStateOf("") }
+                amountState = rememberSaveable { mutableDoubleStateOf(0.0) }
                 durationUnitState = rememberSaveable { mutableStateOf(DurationUnit.HOURS) }
                 showDialogState = rememberSaveable { mutableStateOf(false) }
 
@@ -60,7 +61,9 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
                     ChargeInput(
                         amount = amountState.value,
                         onAmountChange = {
-                            amountState.value = it
+                            if (it != null) {
+                                amountState.value = it
+                            }
                             checkIsFormComplete()
                         },
                         currencyFormatInfo = currencyFormatInfo,
@@ -90,19 +93,21 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
     }
 
     override fun isFormComplete(): Boolean {
-        val amount = amountState.value.replace(',', '.')
-        return amount.isNotEmpty() && amount.toDoubleOrNull() != null && amount.toDouble() > 0
+        val amount = amountState.value
+        return amount != 0.0 && amount > 0.0
     }
 
     override fun onClickOk() {
-        val amount = amountState.value.replace(',', '.')
+        val amount = amountState.value
         val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "???"
+        /*
         val timeUnit = when (durationUnitState.value) { // TODO: This could be removed if DurationUnit implements toOSMValue().
             DurationUnit.HOURS -> "hour"
             DurationUnit.DAYS -> "day"
             DurationUnit.MINUTES -> "minute"
         }
-        applyAnswer(SimpleCharge(amount, currency, timeUnit))
+         */
+        applyAnswer(SimpleCharge(amount, currency, durationUnitState.value))
     }
 }
 
