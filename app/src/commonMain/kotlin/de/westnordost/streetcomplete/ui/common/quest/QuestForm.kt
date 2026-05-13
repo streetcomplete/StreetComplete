@@ -20,13 +20,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheet
@@ -43,30 +39,10 @@ import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 
-/** A quest form can **either** have an OK button for confirmation **or** a list of button answers
- *  at-a-time */
-sealed interface QuestAnswer
-
-/** The user can select from a number of [answers] */
-data class Answers(val answers: List<Answer>) : QuestAnswer {
-    // convenience constructors
-    constructor() : this(emptyList())
-    constructor(vararg answers: Answer) : this(answers.toList())
-}
-/** The user fills a form. The OK button is only clickable if the form [isComplete].
- *  When the form [hasChanges], the user will be asked for confirmation before dismissing this form.
- */
-data class Form(
-    val isComplete: Boolean,
-    val hasChanges: Boolean = isComplete,
-    val onClickOk: () -> Unit,
-) : QuestAnswer
-
 /** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
- *  [contentPadding] (if there is any content) and below *either* a row of text buttons showing
- *  different [answers] (defined from start to end) *or* an OK confirmation button.
+ *  [contentPadding] (if there is any content) and an OK button to confirm the input.
  *
  *  **This composable requires the `LocalQuestType` composition local to be set!**
  *
@@ -74,8 +50,10 @@ data class Form(
  *  opens a dropdown menu containing [otherAnswers] (defined from start to bottom). */
 @Composable
 fun QuestForm(
-    answers: QuestAnswer,
+    isComplete: Boolean,
+    onClickOk: () -> Unit,
     modifier: Modifier = Modifier,
+    hasChanges: Boolean = isComplete,
     title: String = stringResource(
         (LocalQuestType.current as? OsmElementQuestType<*>)?.getTitle(LocalElement.current!!.tags)
             ?: LocalQuestType.current!!.title
@@ -88,7 +66,85 @@ fun QuestForm(
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: List<Answer> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
+    content: @Composable BoxScope.() -> Unit
+) {
+    QuestForm(
+        title = title,
+        subtitle = subtitle,
+        hintText = hintText,
+        hintImages = hintImages,
+        note = note,
+        isComplete = isComplete,
+        hasChanges = hasChanges,
+        onClickOk = onClickOk,
+        answers = emptyList(),
+        otherAnswers = otherAnswers,
+        contentPadding = contentPadding,
+        modifier = modifier,
+        content = content,
+    )
+}
+
+/** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
+ *  header speech bubble, then an optional [note] by another mapper shown below as another speech
+ *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
+ *  [contentPadding] (if there is any content) and below a row of text buttons showing
+ *  different [answers] (defined from start to end).
+ *
+ *  **This composable requires the `LocalQuestType` composition local to be set!**
+ *
+ *  At the very start of the text button row, there's a text button labeled "Uh…" that, when tapped,
+ *  opens a dropdown menu containing [otherAnswers] (defined from start to bottom). */
+@Composable
+fun QuestForm(
+    answers: List<Answer>,
+    modifier: Modifier = Modifier,
+    title: String = stringResource(
+        (LocalQuestType.current as? OsmElementQuestType<*>)?.getTitle(LocalElement.current!!.tags)
+        ?: LocalQuestType.current!!.title
+    ),
+    subtitle: AnnotatedString? = LocalElement.current?.let { element ->
+        nameAndLocationLabel(element, featureDictionary)
+    },
+    hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
+    hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
+    note: String? = LocalElement.current?.tags?.get("note"),
+    otherAnswers: List<Answer> = emptyList(),
+    contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable (BoxScope.() -> Unit)? = null
+) {
+    QuestForm(
+        title = title,
+        subtitle = subtitle,
+        hintText = hintText,
+        hintImages = hintImages,
+        note = note,
+        isComplete = true,
+        hasChanges = false,
+        onClickOk = null,
+        answers = answers,
+        otherAnswers = otherAnswers,
+        contentPadding = contentPadding,
+        modifier = modifier,
+        content = content,
+    )
+}
+
+@Composable
+private fun QuestForm(
+    title: String,
+    subtitle: AnnotatedString?,
+    hintText: String?,
+    hintImages: List<DrawableResource>,
+    note: String?,
+    isComplete: Boolean,
+    hasChanges: Boolean,
+    onClickOk: (() -> Unit)?,
+    answers: List<Answer>,
+    otherAnswers: List<Answer>,
+    contentPadding: PaddingValues,
+    modifier: Modifier = Modifier,
+    content: @Composable (BoxScope.() -> Unit)?,
 ) {
     val windowInfo = LocalWindowInfo.current
 
@@ -137,17 +193,17 @@ fun QuestForm(
                 QuestAnswerBubble(
                     modifier = Modifier.fillMaxWidth(),
                     elevation = elevation,
-                    answers = (answers as? Answers)?.answers ?: emptyList(),
+                    answers = answers,
                     otherAnswers = otherAnswers,
                     contentPadding = contentPadding,
                     content = content,
                 )
             }
         }
-        if (answers is Form) {
+        if (onClickOk != null) {
             FloatingOkButton(
-                visible = answers.isComplete,
-                onClick = answers.onClickOk,
+                visible = isComplete,
+                onClick = onClickOk,
                 modifier = Modifier
                     .align(Alignment.BottomEnd)
                     .safeDrawingPadding()
@@ -186,32 +242,100 @@ private fun NoteBubble(
 }
 
 
-@Preview
+/*
 @Composable
-private fun QuestFormPreview() {
-    CompositionLocalProvider(
-        LocalQuestType provides object : QuestType {
-            override val icon = 0
-            override val title = Res.string.quest_streetName_title
-            override val wikiLink = null
-            override val achievements = emptyList<EditTypeAchievement>()
-            override val hint = Res.string.quest_streetName_hint
-        }
-    ) {
-        QuestForm(
-            subtitle = AnnotatedString("Tertiary Road"),
-            note = "unpaved",
-            answers = Answers(
-                Answer("No") {},
-                Answer("Maybe") {},
-                Answer("Yes") {},
-            ),
-            otherAnswers = listOf(
-                Answer("Can't say") {},
-                Answer("Can say") {},
-            )
+fun QuestForm(
+    viewModel: OsmQuestViewModel,
+    answers: QuestAnswer,
+    modifier: Modifier = Modifier,
+    otherAnswers: List<Answer> = emptyList(),
+    contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
+    content: @Composable (BoxScope.() -> Unit)? = null
+) {
+    var confirmCantSay by remember { mutableStateOf(false) }
+    var confirmSplitWay by remember { mutableStateOf(false) }
+    var confirmMoveNode by remember { mutableStateOf(false) }
+    var confirmDeletePoi by remember { mutableStateOf(false) }
+    var confirmReplacePlace by remember { mutableStateOf(false) }
+
+    val defaultOtherAnswers = listOfNotNull(
+        if (element is Node // add moveNodeAnswer only if it's a free floating node
+            && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+            && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()
         ) {
-            Text(LoremIpsum(200).values.joinToString(" "))
-        }
+            Answer(stringResource(Res.string.move_node)) { confirmMoveNode = true }
+        } else null,
+        if (element.isPlaceOrDisusedPlace()) {
+            Answer(stringResource(Res.string.quest_generic_answer_does_not_exist)) {
+                confirmReplacePlace = true
+            }
+        } else if (element.isDeletable()) {
+            Answer(stringResource(Res.string.quest_generic_answer_does_not_exist)) {
+                confirmDeletePoi = true
+            }
+        } else null,
+        if (element.isSplittable()) {
+            Answer(stringResource(Res.string.quest_generic_answer_differs_along_the_way)) { confirmSplitWay = true }
+        } else null,
+        Answer(stringResource(Res.string.quest_generic_answer_notApplicable)) { confirmCantSay = true }
+    )
+
+    QuestForm(
+        title = stringResource(
+            viewModel.questType.getTitle(viewModel.element.tags) ?: viewModel.questType.title
+        ),
+        answers = answers,
+        subtitle = nameAndLocationLabel(viewModel.element, viewModel.featureDictionary),
+        hintText = viewModel.questType.hint?.let { stringResource(it) },
+        hintImages = viewModel.questType.hintImages,
+        note = viewModel.element.tags["note"],
+        otherAnswers = otherAnswers,
+        contentPadding = contentPadding,
+        content = content
+    )
+
+    if (confirmCantSay) {
+        CantSayDialog(
+            onDismissRequest = { confirmCantSay = false },
+            onLeaveNote = { TODO },
+            onHideQuest = { TODO },
+        )
+    }
+    if (confirmSplitWay) {
+        ConfirmationDialog(
+            onDismissRequest = { confirmSplitWay = false },
+            onConfirmed = { TODO },
+            text = { Text(stringResource(Res.string.quest_split_way_description)) }
+        )
+    }
+    if (confirmMoveNode) {
+        ConfirmationDialog(
+            onDismissRequest = { confirmMoveNode = false },
+            onConfirmed = { TODO },
+            text = { Text(stringResource(Res.string.quest_move_node_message)) }
+        )
+    }
+    if (confirmReplacePlace) {
+        ShopGoneDialog(
+            onDismissRequest = { confirmReplacePlace = false },
+            onSelectAnswer = { answer ->
+                when (answer) {
+                    is ShopType -> onShopReplacementSelected(answer.feature)
+                    ShopTypeAnswer.IsShopVacant -> onShopDisusedSelected()
+                    ShopTypeAnswer.LeaveNote -> composeNote()
+                }
+            },
+            featureDictionary = featureDictionary,
+            geometryType = element.geometryType,
+            countryCode = countryOrSubdivisionCode,
+        )
+    }
+    if (confirmDeletePoi) {
+        ConfirmDeleteDialog(
+            onDismissRequest = { confirmDeletePoi = false },
+            onConfirmDelete = { TODO },
+            onLeaveNote = { TODO }
+        )
     }
 }
+*/

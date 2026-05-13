@@ -6,7 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -18,25 +17,24 @@ fun AddEntranceReferenceForm(
     var entranceReference by rememberSerializable { mutableStateOf(lastEntranceReference?.clear()) }
 
     QuestForm(
-        answers = Form(
-            isComplete = entranceReference?.isComplete() == true,
-            hasChanges = entranceReference != null,
-            onClickOk = {
-                lastEntranceReference = entranceReference
-                onAnswer(entranceReference!!)
-            }
-        ),
+        isComplete = entranceReference?.isComplete() == true,
+        hasChanges = entranceReference != null,
+        onClickOk = {
+            lastEntranceReference = entranceReference
+            onAnswer(entranceReference!!)
+        },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_entrance_reference_nothing_signed)) {
                 onAnswer(EntranceReferenceAnswer.NotSigned)
             },
-        )
-    ) {
-        EntranceReferenceForm(
-            value = entranceReference,
-            onValueChange = { entranceReference = it },
-        )
-    }
+        ),
+        content = {
+            EntranceReferenceForm(
+                value = entranceReference,
+                onValueChange = { entranceReference = it },
+            )
+        }
+    )
 }
 
 private var lastEntranceReference: EntranceReference? = null

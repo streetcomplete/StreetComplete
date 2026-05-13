@@ -16,13 +16,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColumn
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -57,55 +55,54 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     var confirmSelectionOfGroupItem by remember { mutableStateOf<I?>(null) }
 
     QuestForm(
-        answers = Form(
-            isComplete = selectedItem != null || selectedGroup?.item != null,
-            onClickOk = {
-                val group = selectedGroup
-                val groupItem = group?.item
-                val item = selectedItem
-                if (item != null) {
-                    if (favoriteKey != null) {
-                        viewModel.saveFavorite(favoriteKey, item)
-                    }
-                    onClickOk(item)
+        isComplete = selectedItem != null || selectedGroup?.item != null,
+        onClickOk = {
+            val group = selectedGroup
+            val groupItem = group?.item
+            val item = selectedItem
+            if (item != null) {
+                if (favoriteKey != null) {
+                    viewModel.addFavorite(favoriteKey, item)
                 }
-                else if (groupItem != null) {
-                    confirmSelectionOfGroupItem = groupItem
-                }
+                onClickOk(item)
             }
-        ),
+            else if (groupItem != null) {
+                confirmSelectionOfGroupItem = groupItem
+            }
+        },
         modifier = modifier,
         otherAnswers = otherAnswers,
-    ) {
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            CompositionLocalProvider(
-                LocalContentAlpha provides ContentAlpha.medium,
-                LocalTextStyle provides MaterialTheme.typography.body2
-            ) {
-                Text(stringResource(Res.string.quest_select_hint_most_specific))
+        content = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                CompositionLocalProvider(
+                    LocalContentAlpha provides ContentAlpha.medium,
+                    LocalTextStyle provides MaterialTheme.typography.body2
+                ) {
+                    Text(stringResource(Res.string.quest_select_hint_most_specific))
+                }
+                GroupedItemSelectColumn(
+                    groups = groups,
+                    topItems = actualTopItems,
+                    selectedItem = selectedItem,
+                    selectedGroup = selectedGroup,
+                    onSelect = { group, item ->
+                        selectedGroup = group
+                        selectedItem = item
+                    },
+                    groupContent = groupContent,
+                    itemContent = itemContent,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
-            GroupedItemSelectColumn(
-                groups = groups,
-                topItems = actualTopItems,
-                selectedItem = selectedItem,
-                selectedGroup = selectedGroup,
-                onSelect = { group, item ->
-                    selectedGroup = group
-                    selectedItem = item
-                },
-                groupContent = groupContent,
-                itemContent = itemContent,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
-    }
+        },
+    )
 
     confirmSelectionOfGroupItem?.let { groupItem ->
         QuestConfirmationDialog(
             onDismissRequest = { confirmSelectionOfGroupItem = null },
             onConfirmed = {
                 if (favoriteKey != null) {
-                    viewModel.saveFavorite(favoriteKey, groupItem)
+                    viewModel.addFavorite(favoriteKey, groupItem)
                 }
                 onClickOk(groupItem)
             },

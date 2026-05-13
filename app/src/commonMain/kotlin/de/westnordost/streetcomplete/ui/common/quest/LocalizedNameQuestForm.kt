@@ -62,37 +62,36 @@ fun LocalizedNameQuestForm(
     var showKeyboardInfo by remember { mutableStateOf(false) }
 
     QuestForm(
-        answers = Form(
-            isComplete = localizedNames.isNotEmpty() && localizedNames.all { it.name.isNotBlank() },
-            hasChanges = localizedNames.isNotEmpty() && localizedNames.any { it.name.isNotBlank() },
-            onClickOk = {
-                viewModel.savePreferredLanguage(localizedNames)
-                onClickOk(localizedNames)
-            }
-        ),
+        isComplete = localizedNames.isNotEmpty() && localizedNames.all { it.name.isNotBlank() },
+        hasChanges = localizedNames.isNotEmpty() && localizedNames.any { it.name.isNotBlank() },
+        onClickOk = {
+            viewModel.savePreferredLanguage(localizedNames)
+            onClickOk(localizedNames)
+        },
         modifier = modifier,
         otherAnswers = otherAnswers + listOf(
             Answer(stringResource(Res.string.quest_streetName_answer_cantType)) { showKeyboardInfo = true },
             Answer(stringResource(Res.string.quest_placeName_no_name_answer)) { onNoNameSign() },
-        )
-    ) {
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            if (hint != null) {
-                CompositionLocalProvider(
-                    LocalTextStyle provides MaterialTheme.typography.body2,
-                    LocalContentAlpha provides ContentAlpha.medium
-                ) {
-                    hint()
+        ),
+        content = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                if (hint != null) {
+                    CompositionLocalProvider(
+                        LocalTextStyle provides MaterialTheme.typography.body2,
+                        LocalContentAlpha provides ContentAlpha.medium
+                    ) {
+                        hint()
+                    }
                 }
+                LocalizedNamesForm(
+                    localizedNames = localizedNames,
+                    onChanged = { localizedNames = it },
+                    languageTags = selectableLanguages,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
-            LocalizedNamesForm(
-                localizedNames = localizedNames,
-                onChanged = { localizedNames = it },
-                languageTags = selectableLanguages,
-                modifier = Modifier.fillMaxWidth()
-            )
         }
-    }
+    )
 
     if (showKeyboardInfo) {
         InfoDialog(

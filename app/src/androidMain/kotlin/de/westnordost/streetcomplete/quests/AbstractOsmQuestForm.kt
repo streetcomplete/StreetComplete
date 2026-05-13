@@ -51,11 +51,11 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.util.getNameAndLocationLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import de.westnordost.streetcomplete.util.ktx.isDeletable
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
-import de.westnordost.streetcomplete.view.confirmIsSurvey
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -83,147 +83,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
     var addElementEditsController: AddElementEditsController = elementEditsController
     var hideQuestController: HideQuestController = hiddenQuestsController
 
-    // passed in parameters
-    private val osmElementQuestType: OsmElementQuestType<T> get() = questType as OsmElementQuestType<T>
-    protected lateinit var element: Element private set
-
-    private val showReplacePlaceDialog: MutableState<Boolean> = mutableStateOf(false)
-
-    interface Listener {
-        /** The GPS position at which the user is displayed at */
-        val displayedMapLocation: Location?
-
-        /** Called when the user successfully answered the quest */
-        fun onEdited(editType: ElementEditType, geometry: ElementGeometry)
-
-        /** Called when the user chose to leave a note instead */
-        fun onComposeNote(editType: ElementEditType, element: Element, geometry: ElementGeometry, leaveNoteContext: String)
-
-        /** Called when the user chose to split the way */
-        fun onSplitWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry)
-
-        /** Called when the user chose to move the node */
-        fun onMoveNode(editType: ElementEditType, node: Node)
-
-        /** Called when the user chose to hide the quest instead */
-        fun onQuestHidden(questKey: QuestKey)
-    }
-    private val listener: Listener? get() = parentFragment as? Listener ?: activity as? Listener
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val args = requireArguments()
-        element = Json.decodeFromString(args.getString(ARG_ELEMENT)!!)
-    }
-
-    @Composable
-    override fun DialogContainer() {
-        if (showReplacePlaceDialog.value) {
-            ShopGoneDialog(
-                onDismissRequest = { showReplacePlaceDialog.value = false },
-                onSelectAnswer = { answer ->
-                    when (answer) {
-                        is ShopType -> onShopReplacementSelected(answer.feature)
-                        ShopTypeAnswer.IsShopVacant -> onShopDisusedSelected()
-                        ShopTypeAnswer.LeaveNote -> composeNote()
-                    }
-                },
-                featureDictionary = featureDictionary,
-                geometryType = element.geometryType,
-                countryCode = countryOrSubdivisionCode,
-
-            )
-        }
-    }
-
-    @Composable
-    private fun assembleOtherAnswers(): List<Answer> {
-        val answers = mutableListOf<Answer>()
-
-        answers.add(Answer(stringResource(Res.string.quest_generic_answer_notApplicable)) { onClickCantSay() })
-
-        if (element.isSplittable()) {
-            answers.add(Answer(stringResource(Res.string.quest_generic_answer_differs_along_the_way)) { onClickSplitWayAnswer() })
-        }
-        createDeleteOrReplaceElementAnswer()?.let { answers.add(it) }
-
-        if (element is Node // add moveNodeAnswer only if it's a free floating node
-            && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
-            && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()
-        ) {
-            answers.add(Answer(stringResource(Res.string.move_node)) { onClickMoveNodeAnswer() })
-        }
-
-        return answers
-    }
-
-    @Composable
-    private fun createDeleteOrReplaceElementAnswer(): Answer? {
-        val isDeletePoiEnabled = osmElementQuestType.isDeleteElementEnabled && element.type == ElementType.NODE
-        val isReplacePlaceEnabled = osmElementQuestType.isReplacePlaceEnabled
-        if (!isDeletePoiEnabled && !isReplacePlaceEnabled) return null
-        check(!(isDeletePoiEnabled && isReplacePlaceEnabled)) {
-            "Only isDeleteElementEnabled OR isReplaceShopEnabled may be true at the same time"
-        }
-
-        return Answer(stringResource(Res.string.quest_generic_answer_does_not_exist)) {
-            if (isDeletePoiEnabled) {
-                deletePoiNode()
-            } else if (isReplacePlaceEnabled) {
-                replacePlace()
-            }
-        }
-    }
-
-    protected fun onClickCantSay() {
-        context?.let { AlertDialog.Builder(it)
-            .setTitle(R.string.quest_leave_new_note_title)
-            .setMessage(R.string.quest_leave_new_note_description)
-            .setNegativeButton(R.string.quest_leave_new_note_no) { _, _ -> hideQuest() }
-            .setPositiveButton(R.string.quest_leave_new_note_yes) { _, _ -> composeNote() }
-            .show()
-        }
-    }
-
-    private fun onClickSplitWayAnswer() {
-        context?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_split_way_description)
-            .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                listener?.onSplitWay(osmElementQuestType, element as Way, geometry as ElementPolylinesGeometry)
-            }
-            .show()
-        }
-    }
-
-    private fun onClickMoveNodeAnswer() {
-        context?.let { AlertDialog.Builder(it)
-            .setMessage(R.string.quest_move_node_message)
-            .setNegativeButton(android.R.string.cancel, null)
-            .setPositiveButton(android.R.string.ok) { _, _ ->
-                listener?.onMoveNode(osmElementQuestType, element as Node)
-            }
-            .show()
-        }
-    }
-
-    protected fun applyAnswer(answer: T) {
-        viewLifecycleScope.launch {
-            solve(UpdateElementTagsAction(element, createQuestChanges(answer)))
-        }
-    }
-
-    private fun createQuestChanges(answer: T): StringMapChanges {
-        val changesBuilder = StringMapChangesBuilder(element.tags)
-        osmElementQuestType.applyAnswerTo(answer, changesBuilder, geometry, element.timestampEdited)
-        val changes = changesBuilder.create()
-        require(!changes.isEmpty()) {
-            "${osmElementQuestType.name} was answered by the user but there are no changes!"
-        }
-        return changes
-    }
-
     protected fun composeNote() {
         viewLifecycleScope.launch {
             val questTitleResource = osmElementQuestType.getTitle(element.tags) ?: questType.title
@@ -236,21 +95,6 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
                 "Unable to answer \"$questTitle\" – $hintLabel"
             }
             listener?.onComposeNote(osmElementQuestType, element, geometry, leaveNoteContext)
-        }
-    }
-
-    protected fun hideQuest() {
-        viewLifecycleScope.launch {
-            withContext(Dispatchers.IO) { hideQuestController.hide(questKey) }
-            listener?.onQuestHidden(questKey)
-        }
-    }
-
-    protected fun replacePlace() {
-        if (element.isPlaceOrDisusedPlace()) {
-            showReplacePlaceDialog.value = true
-        } else {
-            composeNote()
         }
     }
 
@@ -278,53 +122,5 @@ abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDeta
             .setPositiveButton(R.string.osm_element_gone_confirmation) { _, _ -> onDeletePoiNodeConfirmed() }
             .setNeutralButton(R.string.leave_note) { _, _ -> composeNote() }
             .show()
-    }
-
-    private fun onDeletePoiNodeConfirmed() {
-        viewLifecycleScope.launch {
-            solve(DeletePoiNodeAction(element as Node))
-        }
-    }
-
-    private suspend fun solve(action: ElementEditAction) {
-        setLocked(true)
-        val isSurvey = surveyChecker.checkIsSurvey(geometry)
-        if (!isSurvey && !confirmIsSurvey(requireContext())) {
-            setLocked(false)
-            return
-        }
-        withContext(Dispatchers.IO) {
-            if (action is UpdateElementTagsAction && !action.changes.isValid()) {
-                val questTitleResource = osmElementQuestType.getTitle(element.tags) ?: questType.title
-                val questTitle = org.jetbrains.compose.resources.getString(getSystemResourceEnvironment(), questTitleResource)
-                val text = createNoteTextForTooLongTags(questTitle, element.type, element.id, action.changes.changes)
-                noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
-            } else {
-                addElementEditsController.add(osmElementQuestType, geometry, "survey", action, isSurvey)
-            }
-        }
-        listener?.onEdited(osmElementQuestType, geometry)
-    }
-
-
-    /* Unfortunately, ResourceEnvironment's constructor is internal, so we cannot use this
-       see https://youtrack.jetbrains.com/issue/CMP-9959/Access-resources-in-specific-language-outside-of-composition
-
-    /** get English resource environment */
-    @OptIn(InternalResourceApi::class)
-    fun getEnglishResourceEnvironment() = ResourceEnvironment(
-        language = LanguageQualifier("en"),
-        region = RegionQualifier(""),
-        theme = ThemeQualifier.LIGHT,
-        density = DensityQualifier.MDPI,
-    )
-    */
-
-    companion object {
-        private const val ARG_ELEMENT = "element"
-
-        fun createArguments(element: Element) = bundleOf(
-            ARG_ELEMENT to Json.encodeToString(element)
-        )
     }
 }

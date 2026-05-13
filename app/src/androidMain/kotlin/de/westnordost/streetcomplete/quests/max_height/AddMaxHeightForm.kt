@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -28,16 +27,14 @@ fun AddMaxHeightForm(
     var confirmNoSign by remember { mutableStateOf(false) }
 
     QuestForm(
-        answers = Form(
-            isComplete = height != null,
-            onClickOk = {
-                if (isUnrealisticHeight(height!!)) {
-                    confirmUnusualInput = true
-                } else {
-                    onAnswer(MaxHeight(height!!))
-                }
+        isComplete = height != null,
+        onClickOk = {
+            if (isUnrealisticHeight(height!!)) {
+                confirmUnusualInput = true
+            } else {
+                onAnswer(MaxHeight(height!!))
             }
-        ),
+        },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_maxheight_answer_noSign)) { confirmNoSign = true }
         ),

@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import org.jetbrains.compose.resources.painterResource
@@ -32,21 +31,20 @@ fun AddAccessPointRefForm(
     var confirmNoRef by remember { mutableStateOf(false) }
 
     QuestForm(
-        answers = Form(
-            isComplete = ref.isNotEmpty(),
-            onClickOk = { onAnswer(AccessPointRef(ref)) }
-        ),
+        isComplete = ref.isNotEmpty(),
+        onClickOk = { onAnswer(AccessPointRef(ref)) },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true },
             Answer(stringResource(Res.string.quest_accessPointRef_answer_assembly_point)) { confirmAssemblyPoint = true }
-        )
-    ) {
-        TextField(
-            value = ref,
-            onValueChange = { ref = it },
-            textStyle = MaterialTheme.typography.extraLargeInput,
-        )
-    }
+        ),
+        content = {
+            TextField(
+                value = ref,
+                onValueChange = { ref = it },
+                textStyle = MaterialTheme.typography.extraLargeInput,
+            )
+        }
+    )
 
     if (confirmAssemblyPoint) {
         QuestConfirmationDialog(

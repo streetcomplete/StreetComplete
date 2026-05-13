@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -28,17 +27,15 @@ fun AddMaxWeightForm(
     var showUnsupportedSignDialog by remember { mutableStateOf(false) }
 
     QuestForm(
-        answers = Form(
-            isComplete = signs.isNotEmpty() && signs.all { it.weight != null },
-            hasChanges = signs.isNotEmpty(),
-            onClickOk = {
-                if (isUnrealisticWeight(signs)) {
-                    confirmUnusualInput = true
-                } else {
-                    onAnswer(signs)
-                }
+        isComplete = signs.isNotEmpty() && signs.all { it.weight != null },
+        hasChanges = signs.isNotEmpty(),
+        onClickOk = {
+            if (isUnrealisticWeight(signs)) {
+                confirmUnusualInput = true
+            } else {
+                onAnswer(signs)
             }
-        ),
+        },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_maxweight_answer_other_sign)) {
                 showUnsupportedSignDialog = true

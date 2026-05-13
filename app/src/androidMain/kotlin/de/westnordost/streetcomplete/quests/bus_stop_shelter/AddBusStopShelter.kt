@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswe
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.BusStopShelterAnswer.SHELTER
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Answers
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 

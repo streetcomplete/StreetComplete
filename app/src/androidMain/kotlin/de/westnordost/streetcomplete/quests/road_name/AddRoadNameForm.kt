@@ -13,54 +13,51 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopNameFormViewModel
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
+import org.koin.androidx.compose.koinViewModel
 
-class AddRoadNameForm : AbstractOsmQuestForm<RoadNameAnswer>() {
+@Composable
+fun AddRoadNameForm(
+    onAnswer: (RoadNameAnswer) -> Unit,
+) {
+    val viewModel = koinViewModel<AddRoadNameFormViewModel>()
 
-    private val prefs: Preferences by inject()
-    private val nameSuggestionsSource: NameSuggestionsSource by inject()
+    var initialLocalizedNames by rememberSerializable { mutableStateOf<List<LocalizedName>?>(null) }
 
-    private val initialLocalizedNames = mutableStateOf<List<LocalizedName>?>(null)
+    var confirmNoStreetName by remember { mutableStateOf(false) }
 
-    @Composable
-    override fun Content() {
-        var confirmNoStreetName by remember { mutableStateOf(false) }
-
-        LocalizedNameQuestForm(
-            prefs = prefs,
-            countryInfo = countryInfo,
-            initialLocalizedNames = initialLocalizedNames.value,
-            onClickOk = { applyAnswer(RoadName(it)) },
-            onNoNameSign = { confirmNoStreetName = true },
-            hint = {
-                Text(stringResource(Res.string.quest_streetName_abbreviation_instruction))
-            }
-        )
-
-        if (confirmNoStreetName) {
-            QuestConfirmationDialog(
-                onDismissRequest = { confirmNoStreetName = false },
-                onConfirmed = { applyAnswer(RoadNameAnswer.NoName) },
-                titleText = stringResource(Res.string.quest_name_answer_noName_confirmation_title),
-                text = { Text(stringResource(Res.string.quest_streetName_answer_noName_confirmation_description)) },
-                confirmButtonText = stringResource(Res.string.quest_name_noName_confirmation_positive),
-            )
+    // TODO compose-quest-form this is actually not called anywhere yet!
+    fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
+        val names = viewModel.getNameSuggestionAt(position, clickAreaSizeInMeters)
+        if (names != null) {
+            initialLocalizedNames = names
         }
+        return true
     }
 
-    private val roadsWithNamesFilter =
-        "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
-            .toElementFilterExpression()
+    LocalizedNameQuestForm(
+        countryInfo = countryInfo,
+        initialLocalizedNames = initialLocalizedNames,
+        onClickOk = { onAnswer(RoadName(it)) },
+        onNoNameSign = { confirmNoStreetName = true },
+        hint = {
+            Text(stringResource(Res.string.quest_streetName_abbreviation_instruction))
+        }
+    )
 
-    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        nameSuggestionsSource.getNames(position, clickAreaSizeInMeters, roadsWithNamesFilter)
-            .firstOrNull()
-            ?.let { initialLocalizedNames.value = it }
-        return true
+    if (confirmNoStreetName) {
+        QuestConfirmationDialog(
+            onDismissRequest = { confirmNoStreetName = false },
+            onConfirmed = { onAnswer(RoadNameAnswer.NoName) },
+            titleText = stringResource(Res.string.quest_name_answer_noName_confirmation_title),
+            text = { Text(stringResource(Res.string.quest_streetName_answer_noName_confirmation_description)) },
+            confirmButtonText = stringResource(Res.string.quest_name_noName_confirmation_positive),
+        )
     }
 }

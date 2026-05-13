@@ -8,11 +8,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
-import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.osm.ALL_PATHS
-import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
@@ -20,11 +16,9 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameForm
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_address_street_no_named_streets
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.stringResource
-import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -55,13 +49,11 @@ fun AddAddressStreetForm(
     }
 
     QuestForm(
-        answers = Form(
-            isComplete = streetOrPlaceName.name.isNotEmpty(),
-            onClickOk = {
-                lastWasPlaceName = streetOrPlaceName is PlaceName
-                onAnswer(streetOrPlaceName)
-            }
-        ),
+        isComplete = streetOrPlaceName.name.isNotEmpty(),
+        onClickOk = {
+            lastWasPlaceName = streetOrPlaceName is PlaceName
+            onAnswer(streetOrPlaceName)
+        },
         subtitle = nameAndLocationLabel(element, featureDictionary, showHouseNumber = true),
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_address_street_no_named_streets)) {
@@ -69,14 +61,15 @@ fun AddAddressStreetForm(
                 showSelect = true
             }
         ),
-    ) {
-        StreetOrPlaceNameForm(
-            value = streetOrPlaceName,
-            onValueChange = { streetOrPlaceName = it },
-            modifier = Modifier.fillMaxWidth(),
-            showSelect = showSelect
-        )
-    }
+        content = {
+            StreetOrPlaceNameForm(
+                value = streetOrPlaceName,
+                onValueChange = { streetOrPlaceName = it },
+                modifier = Modifier.fillMaxWidth(),
+                showSelect = showSelect
+            )
+        },
+    )
 }
 
 /** Whether user answered that the housenumber does not belong to a named street the last time

@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.quests.LengthForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
@@ -38,37 +37,36 @@ class AddWidthForm : AbstractArMeasureQuestForm<WidthAnswer>() {
         val arIsSupported = remember { checkArSupport() }
 
         QuestForm(
-            answers = Form(
-                isComplete = length.value != null,
-                onClickOk = {
-                    val length = length.value!!
-                    val newTags = element.tags + ("width" to length.toMeters().toString())
-                    if (hasDubiousRoadWidth(newTags) != true) {
-                        applyAnswer(WidthAnswer(length, isARMeasurement))
-                    } else {
-                        confirmDubiousRoadWidth = true
+            isComplete = length.value != null,
+            onClickOk = {
+                val length = length.value!!
+                val newTags = element.tags + ("width" to length.toMeters().toString())
+                if (hasDubiousRoadWidth(newTags) != true) {
+                    applyAnswer(WidthAnswer(length, isARMeasurement))
+                } else {
+                    confirmDubiousRoadWidth = true
+                }
+            },
+            content = {
+                Column {
+                    if(isRoad) {
+                        Text(stringResource(Res.string.quest_road_width_explanation))
                     }
-                }
-            ),
-        ) {
-            Column {
-                if(isRoad) {
-                    Text(stringResource(Res.string.quest_road_width_explanation))
-                }
 
-                LengthForm(
-                    length = length.value,
-                    onChange = {
-                        isARMeasurement = false
-                        length.value = it
-                    },
-                    selectableUnits = countryInfo.lengthUnits,
-                    showMeasureButton = arIsSupported,
-                    onClickMeasure = { takeMeasurement(it, measureVertical = false) },
-                    modifier = Modifier.fillMaxWidth(),
-                )
-            }
-        }
+                    LengthForm(
+                        length = length.value,
+                        onChange = {
+                            isARMeasurement = false
+                            length.value = it
+                        },
+                        selectableUnits = countryInfo.lengthUnits,
+                        showMeasureButton = arIsSupported,
+                        onClickMeasure = { takeMeasurement(it, measureVertical = false) },
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
+            },
+        )
 
         if (confirmDubiousRoadWidth) {
             QuestConfirmationDialog(

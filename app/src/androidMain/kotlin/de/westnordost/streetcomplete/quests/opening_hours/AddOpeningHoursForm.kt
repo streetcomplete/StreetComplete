@@ -19,8 +19,6 @@ import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursComment
 import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Answers
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -45,43 +43,7 @@ fun AddOpeningHoursForm(
     var confirmNoSign by remember { mutableStateOf(false) }
     var confirm24_7 by remember { mutableStateOf(false) }
 
-    QuestForm(
-        answers =
-            if (isDisplayingPrevious) {
-                Answers(
-                    Answer(stringResource(Res.string.quest_generic_hasFeature_no)) {
-                        isDisplayingPrevious = false
-                    },
-                    Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) {
-                        onAnswer(RegularOpeningHours(originalOpeningHours!!))
-                    }
-                )
-            } else {
-                Form(
-                    isComplete = openingHours.isComplete(),
-                    hasChanges = openingHours.monthsList.isNotEmpty(),
-                    onClickOk = { onAnswer(RegularOpeningHours(openingHours)) }
-                )
-            },
-        otherAnswers = listOf(
-            Answer(stringResource(Res.string.quest_openingHours_no_sign)) { confirmNoSign = true },
-            Answer(stringResource(Res.string.quest_openingHours_answer_no_regular_opening_hours)) { showCommentDialog = true },
-            Answer(stringResource(Res.string.quest_openingHours_answer_247)) { confirm24_7 = true },
-            Answer(stringResource(Res.string.quest_openingHours_answer_seasonal_opening_hours)) {
-                isDisplayingPrevious = false
-                val allMonths = listOf(MonthRange(Month.January, Month.December))
-                openingHours = HierarchicOpeningHours(
-                    openingHours.monthsList.map { months ->
-                        if (months.selectors.isEmpty()) {
-                            months.copy(selectors = allMonths)
-                        } else {
-                            months
-                        }
-                    }
-                )
-            }
-        )
-    ) {
+    val openingHoursTable: @Composable () -> Unit = {
         OpeningHoursTable(
             openingHours = openingHours,
             onChange = { openingHours = it },
@@ -91,6 +53,48 @@ fun AddOpeningHoursForm(
             locale = countryInfo.userPreferredLocale,
             userLocale = Locale.current,
             enabled = !isDisplayingPrevious,
+        )
+    }
+
+    if (isDisplayingPrevious) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) {
+                    isDisplayingPrevious = false
+                },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) {
+                    onAnswer(RegularOpeningHours(originalOpeningHours!!))
+                }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_openingHours_no_sign)) { confirmNoSign = true },
+            ),
+            content = { openingHoursTable() }
+        )
+    } else {
+        QuestForm(
+            isComplete = openingHours.isComplete(),
+            hasChanges = openingHours.monthsList.isNotEmpty(),
+            onClickOk = { onAnswer(RegularOpeningHours(openingHours)) },
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_openingHours_no_sign)) { confirmNoSign = true },
+                Answer(stringResource(Res.string.quest_openingHours_answer_no_regular_opening_hours)) { showCommentDialog = true },
+                Answer(stringResource(Res.string.quest_openingHours_answer_247)) { confirm24_7 = true },
+                Answer(stringResource(Res.string.quest_openingHours_answer_seasonal_opening_hours)) {
+                    isDisplayingPrevious = false
+                    val allMonths = listOf(MonthRange(Month.January, Month.December))
+                    openingHours = HierarchicOpeningHours(
+                        openingHours.monthsList.map { months ->
+                            if (months.selectors.isEmpty()) {
+                                months.copy(selectors = allMonths)
+                            } else {
+                                months
+                            }
+                        }
+                    )
+                }
+            ),
+            content = { openingHoursTable() }
         )
     }
 

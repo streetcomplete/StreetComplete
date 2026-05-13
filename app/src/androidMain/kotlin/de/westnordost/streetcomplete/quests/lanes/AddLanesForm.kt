@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
@@ -41,16 +40,14 @@ fun AddLanesForm(
     val isReversedOneway = remember { isReversedOneway(element.tags) }
 
     QuestForm(
-        answers = Form(
-            isComplete =
-                if (!isOneway) {
-                    answer.forward != null && answer.backward != null
-                } else {
-                    answer.forward != null || answer.backward != null
-                },
-            hasChanges = answer.forward != null || answer.backward != null,
-            onClickOk =  { onAnswer(answer) }
-        ),
+        isComplete =
+            if (!isOneway) {
+                answer.forward != null && answer.backward != null
+            } else {
+                answer.forward != null || answer.backward != null
+            },
+        hasChanges = answer.forward != null || answer.backward != null,
+        onClickOk =  { onAnswer(answer) },
         otherAnswers = listOfNotNull(
             if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
                 Answer(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
@@ -62,19 +59,20 @@ fun AddLanesForm(
             }
         ),
         contentPadding = PaddingValues.Zero,
-    ) {
-        LanesForm(
-            value = answer,
-            onValueChanged = { answer = it },
-            wayRotation = geometryRotation.floatValue,
-            mapRotation = LocalMapRotation.current,
-            mapTilt = LocalMapTilt.current,
-            isOneway = isOneway,
-            isReversedOneway = isReversedOneway,
-            isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-            centerLineColor = centerLineColor,
-            edgeLineColor = edgeLineColor,
-            edgeLineStyle = edgeLineStyle,
-        )
-    }
+        content = {
+            LanesForm(
+                value = answer,
+                onValueChanged = { answer = it },
+                wayRotation = geometryRotation.floatValue,
+                mapRotation = LocalMapRotation.current,
+                mapTilt = LocalMapTilt.current,
+                isOneway = isOneway,
+                isReversedOneway = isReversedOneway,
+                isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+                centerLineColor = centerLineColor,
+                edgeLineColor = edgeLineColor,
+                edgeLineStyle = edgeLineStyle,
+            )
+        },
+    )
 }

@@ -51,39 +51,38 @@ inline fun <reified I> ItemsSelectQuestForm(
     var selectedItems by rememberSerializable { mutableStateOf<Set<I>>(emptySet()) }
 
     QuestForm(
-        answers = Form(
-            isComplete = selectedItems.isNotEmpty(),
-            onClickOk = {
-                if (favoriteKey != null) {
-                    viewModel.saveFavorites(favoriteKey, selectedItems.toList())
-                }
-                onClickOk(selectedItems)
+        isComplete = selectedItems.isNotEmpty(),
+        onClickOk = {
+            if (favoriteKey != null) {
+                viewModel.addFavorites(favoriteKey, selectedItems.toList())
             }
-        ),
+            onClickOk(selectedItems)
+        },
         modifier = modifier,
         otherAnswers = otherAnswers,
-    ) {
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            CompositionLocalProvider(
-                LocalContentAlpha provides ContentAlpha.medium,
-                LocalTextStyle provides MaterialTheme.typography.body2
-            ) {
-                Text(stringResource(Res.string.quest_multiselect_hint))
+        content = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                CompositionLocalProvider(
+                    LocalContentAlpha provides ContentAlpha.medium,
+                    LocalTextStyle provides MaterialTheme.typography.body2
+                ) {
+                    Text(stringResource(Res.string.quest_multiselect_hint))
+                }
+                ItemsSelectGrid(
+                    columns = SimpleGridCells.Fixed(itemsPerRow),
+                    items = reorderedItems,
+                    selectedItems = selectedItems,
+                    onSelect = { item, selected ->
+                        if (selected) {
+                            selectedItems += item
+                        } else {
+                            selectedItems -= item
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    itemContent = itemContent
+                )
             }
-            ItemsSelectGrid(
-                columns = SimpleGridCells.Fixed(itemsPerRow),
-                items = reorderedItems,
-                selectedItems = selectedItems,
-                onSelect = { item, selected ->
-                    if (selected) {
-                        selectedItems += item
-                    } else {
-                        selectedItems -= item
-                    }
-                },
-                modifier = Modifier.fillMaxWidth(),
-                itemContent = itemContent
-            )
-        }
-    }
+        },
+    )
 }

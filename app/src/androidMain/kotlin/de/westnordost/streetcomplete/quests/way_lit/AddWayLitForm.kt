@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.osm.lit.LitStatus.NIGHT_AND_DAY
 import de.westnordost.streetcomplete.osm.lit.LitStatus.NO
 import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Answers
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import org.jetbrains.compose.resources.stringResource
@@ -17,7 +16,7 @@ fun AddWayLitForm(
     onAnswer: (WayLitOrIsStepsAnswer) -> Unit
 ) {
     QuestForm(
-        answers = Answers(
+        answers = listOf(
             Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(WayLit(NO)) },
             Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(WayLit(YES)) }
         ),

@@ -76,6 +76,7 @@ import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBin
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
 import de.westnordost.streetcomplete.quests.crossing.AddCrossing
+import de.westnordost.streetcomplete.quests.crossing.CrossingViewModel
 import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.crossing_kerb_height.AddCrossingKerbHeight
 import de.westnordost.streetcomplete.quests.crossing_markings.AddCrossingMarkings
@@ -154,6 +155,7 @@ import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingConta
 import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
+import de.westnordost.streetcomplete.quests.road_name.AddRoadNameFormViewModel
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.sanitary_dump_station.AddSanitaryDumpStation
 import de.westnordost.streetcomplete.quests.seating.AddSeating
@@ -222,6 +224,8 @@ val questsModule = module {
 
     viewModel { AddAddressStreetFormViewModel(get()) }
     viewModel { AddBusStopNameFormViewModel(get()) }
+    viewModel { AddRoadNameFormViewModel(get()) }
+    viewModel { CrossingViewModel(get()) }
 }
 
 fun questTypeRegistry(

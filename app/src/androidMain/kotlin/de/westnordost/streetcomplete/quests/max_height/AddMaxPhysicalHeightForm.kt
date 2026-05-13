@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.koin.android.ext.android.inject
 
@@ -26,12 +25,10 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
         val arIsSupported = remember { checkArSupport() }
 
         QuestForm(
-            answers = Form(
-                isComplete = length.value != null,
-                onClickOk = {
-                    applyAnswer(MaxPhysicalHeightAnswer(length.value!!, isARMeasurement))
-                }
-            )
+            isComplete = length.value != null,
+            onClickOk = {
+                applyAnswer(MaxPhysicalHeightAnswer(length.value!!, isARMeasurement))
+            }
         ) {
             LengthForm(
                 length = length.value,

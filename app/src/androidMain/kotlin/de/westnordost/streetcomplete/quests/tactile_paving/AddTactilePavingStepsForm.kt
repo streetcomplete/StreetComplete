@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingStepsAns
 import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingStepsAnswer.NO
 import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingStepsAnswer.TOP
 import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingStepsAnswer.YES
-import de.westnordost.streetcomplete.ui.common.quest.Answers
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -16,7 +15,7 @@ fun AddTactilePavingStepsForm(
     onAnswer: (TactilePavingStepsAnswer) -> Unit,
 ) {
     QuestForm(
-        answers = Answers(
+        answers = listOf(
             Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
             Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) }
         ),

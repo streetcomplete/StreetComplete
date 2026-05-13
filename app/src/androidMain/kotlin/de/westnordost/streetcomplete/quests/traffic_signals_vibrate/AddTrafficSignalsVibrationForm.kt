@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Answers
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
@@ -13,7 +12,7 @@ fun AddTrafficSignalsVibrationForm(
     onAnswer: (Boolean) -> Unit,
 ) {
     QuestForm(
-        answers = Answers(
+        answers = listOf(
             Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(false) },
             Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(true) }
         ),

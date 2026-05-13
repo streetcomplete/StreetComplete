@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -63,21 +62,19 @@ fun AddHousenumberForm(
     }
 
     QuestForm(
-        answers = Form(
-            isComplete = addressNumberAndName.isComplete(),
-            hasChanges = !addressNumberAndName.isEmpty(),
-            onClickOk = {
-                val isUnusual = addressNumberAndName
-                    .number?.takeIf { !it.isEmpty() }
-                    ?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
+        isComplete = addressNumberAndName.isComplete(),
+        hasChanges = !addressNumberAndName.isEmpty(),
+        onClickOk = {
+            val isUnusual = addressNumberAndName
+                .number?.takeIf { !it.isEmpty() }
+                ?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
 
-                if (isUnusual) {
-                    confirmUnusualHouseNumber = true
-                } else {
-                    applyHousenumberAnswer()
-                }
+            if (isUnusual) {
+                confirmUnusualHouseNumber = true
+            } else {
+                applyHousenumberAnswer()
             }
-        ),
+        },
         otherAnswers = listOfNotNull(
             Answer(stringResource(Res.string.quest_address_answer_no_housenumber)) { onNoHouseNumber() },
             Answer(stringResource(Res.string.quest_address_answer_house_name2)) { showHouseName() },
@@ -94,17 +91,18 @@ fun AddHousenumberForm(
                 }
             } else null,
             Answer(stringResource(Res.string.quest_housenumber_multiple_numbers)) { showMultipleNumbersHint = true }
-        )
-    ) {
-        AddressNumberAndNameForm(
-            value = addressNumberAndName,
-            onValueChange = { addressNumberAndName = it },
-            countryCode = countryInfo.countryCode,
-            modifier = Modifier.fillMaxWidth(),
-            houseNumberSuggestion = lastHouseNumber,
-            blockSuggestion = lastBlock,
-        )
-    }
+        ),
+        content = {
+            AddressNumberAndNameForm(
+                value = addressNumberAndName,
+                onValueChange = { addressNumberAndName = it },
+                countryCode = countryInfo.countryCode,
+                modifier = Modifier.fillMaxWidth(),
+                houseNumberSuggestion = lastHouseNumber,
+                blockSuggestion = lastBlock,
+            )
+        }
+    )
 
     showNoHouseNumberDialogForBuildingType?.let { buildingType ->
         NoHouseNumberDialog(

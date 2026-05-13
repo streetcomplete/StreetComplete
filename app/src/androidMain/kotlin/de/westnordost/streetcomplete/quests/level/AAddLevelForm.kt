@@ -13,12 +13,10 @@ import de.westnordost.streetcomplete.osm.level.Level
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.parseSelectableLevels
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.ktx.toShortString
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
@@ -45,20 +43,19 @@ abstract class AAddLevelForm : AbstractOsmQuestForm<String>() {
     @Composable
     override fun Content() {
         QuestForm(
-            answers = Form(
-                isComplete = level.value != null,
-                onClickOk = { applyAnswer(level.value!!.toShortString()) }
-            )
-        ) {
-            LevelForm(
-                level = level.value,
-                onLevelChange = {
-                    level.value = it
-                    updateMarkers(level.value)
-                },
-                selectableLevels = selectableLevels.value,
-            )
-        }
+            isComplete = level.value != null,
+            onClickOk = { applyAnswer(level.value!!.toShortString()) },
+            content = {
+                LevelForm(
+                    level = level.value,
+                    onLevelChange = {
+                        level.value = it
+                        updateMarkers(level.value)
+                    },
+                    selectableLevels = selectableLevels.value,
+                )
+            },
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

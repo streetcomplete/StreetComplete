@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
@@ -54,23 +53,22 @@ fun ShopTypeQuestForm(
     }
 
     QuestForm(
-        answers = Form(
-            isComplete = isComplete,
-            onClickOk = ::onClickOk
-        ),
+        isComplete = isComplete,
+        onClickOk = ::onClickOk,
         modifier = modifier,
-        otherAnswers = otherAnswers
-    ) {
-        ShopTypeForm(
-            feature = feature,
-            option = option,
-            onSelectedFeature = { feature = it },
-            onSelectedOption = { option = it },
-            featureDictionary = featureDictionary,
-            geometryType = element.geometryType,
-            countryCode = countryOrSubdivisionCode,
-            filterFn = { it.toElement().isPlace() },
-            codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS
-        )
-    }
+        otherAnswers = otherAnswers,
+        content = {
+            ShopTypeForm(
+                feature = feature,
+                option = option,
+                onSelectedFeature = { feature = it },
+                onSelectedOption = { option = it },
+                featureDictionary = featureDictionary,
+                geometryType = element.geometryType,
+                countryCode = countryOrSubdivisionCode,
+                filterFn = { it.toElement().isPlace() },
+                codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS
+            )
+        }
+    )
 }

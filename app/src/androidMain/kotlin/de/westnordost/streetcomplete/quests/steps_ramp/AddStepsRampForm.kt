@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -43,51 +42,50 @@ fun AddStepsRampForm(
     var confirmWheelchairRampIsSeparate by remember { mutableStateOf(false) }
 
     QuestForm(
-        answers = Form(
-            isComplete = selectedItems.isNotEmpty(),
-            onClickOk = {
-                if (selectedItems.contains(WHEELCHAIR)) {
-                    confirmWheelchairRampIsSeparate = true
-                } else {
-                    onAnswer(
-                        StepsRampAnswer(
-                            bicycleRamp = selectedItems.contains(BICYCLE),
-                            strollerRamp = selectedItems.contains(STROLLER),
-                            wheelchairRamp = WheelchairRampStatus.NO
-                        )
+        isComplete = selectedItems.isNotEmpty(),
+        onClickOk = {
+            if (selectedItems.contains(WHEELCHAIR)) {
+                confirmWheelchairRampIsSeparate = true
+            } else {
+                onAnswer(
+                    StepsRampAnswer(
+                        bicycleRamp = selectedItems.contains(BICYCLE),
+                        strollerRamp = selectedItems.contains(STROLLER),
+                        wheelchairRamp = WheelchairRampStatus.NO
                     )
+                )
+            }
+        },
+        content = {
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                CompositionLocalProvider(
+                    LocalContentAlpha provides ContentAlpha.medium,
+                    LocalTextStyle provides MaterialTheme.typography.body2
+                ) {
+                    Text(stringResource(Res.string.quest_multiselect_hint))
                 }
-            }
-        ),
-    ) {
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            CompositionLocalProvider(
-                LocalContentAlpha provides ContentAlpha.medium,
-                LocalTextStyle provides MaterialTheme.typography.body2
-            ) {
-                Text(stringResource(Res.string.quest_multiselect_hint))
-            }
-            ItemsSelectGrid(
-                columns = SimpleGridCells.Fixed(2),
-                items = StepsRamp.entries,
-                selectedItems = selectedItems,
-                onSelect = { item, selected ->
-                    val itemIndex = items.indexOf(item)
-                    // "no ramp" is exclusive to the other options
-                    selectedItemIndices = if (selected) {
-                        if (item == StepsRamp.NONE) setOf(itemIndex)
-                        else selectedItemIndices + itemIndex - items.indexOf(StepsRamp.NONE)
-                    } else {
-                        selectedItemIndices - itemIndex
+                ItemsSelectGrid(
+                    columns = SimpleGridCells.Fixed(2),
+                    items = StepsRamp.entries,
+                    selectedItems = selectedItems,
+                    onSelect = { item, selected ->
+                        val itemIndex = items.indexOf(item)
+                        // "no ramp" is exclusive to the other options
+                        selectedItemIndices = if (selected) {
+                            if (item == StepsRamp.NONE) setOf(itemIndex)
+                            else selectedItemIndices + itemIndex - items.indexOf(StepsRamp.NONE)
+                        } else {
+                            selectedItemIndices - itemIndex
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    itemContent = {
+                        ImageWithLabel(painterResource(it.icon), stringResource(it.title))
                     }
-                },
-                modifier = Modifier.fillMaxWidth(),
-                itemContent = {
-                    ImageWithLabel(painterResource(it.icon), stringResource(it.title))
-                }
-            )
-        }
-    }
+                )
+            }
+        },
+    )
 
     if (confirmWheelchairRampIsSeparate) {
         WheelchairRampIsSeparateDialog(

@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.*
-import de.westnordost.streetcomplete.ui.common.quest.Answers
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -13,7 +12,7 @@ fun AddAerialwayBicycleAccessForm(
     onAnswer: (AerialwayBicycleAccessAnswer) -> Unit
 ) {
     QuestForm(
-        answers = Answers(
+        answers = listOf(
             Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
             Answer(stringResource(Res.string.quest_aerialway_bicycle_summer)) { onAnswer(SUMMER) },
             Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) }

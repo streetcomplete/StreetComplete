@@ -21,11 +21,11 @@ class ItemSelectViewModel(
             .takeFavorites(n = topItems.size, first = 1, pad = topItems)
     }
 
-    inline fun <reified T> saveFavorite(key: String, selection: T) {
+    inline fun <reified T> addFavorite(key: String, selection: T) {
         preferences.addLastPicked(key, selection)
     }
 
-    inline fun <reified T> saveFavorites(key: String, selection: List<T>) {
+    inline fun <reified T> addFavorites(key: String, selection: List<T>) {
         preferences.addLastPicked(key, selection)
     }
 }

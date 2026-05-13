@@ -13,58 +13,58 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk_surface.SidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.Surface
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
+import de.westnordost.streetcomplete.ui.common.quest.LastPickedChipsRowViewModel
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
+import org.koin.androidx.compose.koinViewModel
+import kotlin.collections.emptyList
 
-class AddSidewalkSurfaceForm : AbstractOsmQuestForm<SidewalkSurfaceAnswer>() {
+@Composable
+fun AddSidewalkSurfaceForm(
+    onAnswer: (SidewalkSurfaceAnswer) -> Unit,
+) {
+    val favKey = "AddSidewalkSurfaceForm"
+    val lastPickedViewModel = koinViewModel<LastPickedChipsRowViewModel>()
 
-    private val prefs: Preferences by inject()
+    val sidewalk = remember { parseSidewalkSides(element.tags) }
+    val hasSidewalkLeft = sidewalk?.left == Sidewalk.YES
+    val hasSidewalkRight = sidewalk?.right == Sidewalk.YES
 
-    @Composable
-    override fun Content() {
-        val sidewalk = remember { parseSidewalkSides(element.tags) }
-        val hasSidewalkLeft = sidewalk?.left == Sidewalk.YES
-        val hasSidewalkRight = sidewalk?.right == Sidewalk.YES
-
-        val lastPicked = remember {
-            if (hasSidewalkLeft && hasSidewalkRight) {
-                prefs.getLastPicked<Sides<Surface>>(this::class.simpleName!!)
-            } else {
-                emptyList()
-            }
+    val lastPicked = remember {
+        if (hasSidewalkLeft && hasSidewalkRight) {
+            lastPickedViewModel.getFavorites<Sides<Surface>>(favKey)
+        } else {
+            emptyList()
         }
+    }
 
-        var sidewalkSurfaces by rememberSerializable { mutableStateOf(Sides<Surface>(null, null)) }
+    var sidewalkSurfaces by rememberSerializable { mutableStateOf(Sides<Surface>(null, null)) }
 
-        QuestForm(
-            answers = Form(
-                isComplete =
-                    (!hasSidewalkLeft || sidewalkSurfaces.left != null) &&
-                    (!hasSidewalkRight || sidewalkSurfaces.right != null),
-                hasChanges =
-                    sidewalkSurfaces.any { it != null },
-                onClickOk = {
-                    applyAnswer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces)))
-                    if (hasSidewalkLeft && hasSidewalkRight) {
-                        prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalkSurfaces))
-                    }
-                }
-            ),
-            otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_sidewalk_answer_different)) {
-                    applyAnswer(SidewalkSurfaceAnswer.SidewalkIsDifferent)
-                }
-            ),
-            contentPadding = PaddingValues.Zero
-        ) {
+    QuestForm(
+        isComplete =
+            (!hasSidewalkLeft || sidewalkSurfaces.left != null) &&
+            (!hasSidewalkRight || sidewalkSurfaces.right != null),
+        hasChanges =
+            sidewalkSurfaces.any { it != null },
+        onClickOk = {
+            if (hasSidewalkLeft && hasSidewalkRight) {
+                lastPickedViewModel.setFavorites(favKey, listOf(sidewalkSurfaces))
+            }
+            onAnswer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces)))
+        },
+        otherAnswers = listOf(
+            Answer(stringResource(Res.string.quest_sidewalk_answer_different)) {
+                onAnswer(SidewalkSurfaceAnswer.SidewalkIsDifferent)
+            }
+        ),
+        contentPadding = PaddingValues.Zero,
+        content = {
             SidewalkSurfaceForm(
                 value = sidewalkSurfaces,
                 onValueChanged = { sidewalkSurfaces = it },
@@ -77,5 +77,5 @@ class AddSidewalkSurfaceForm : AbstractOsmQuestForm<SidewalkSurfaceAnswer>() {
                 hasSidewalkRight = hasSidewalkRight,
             )
         }
-    }
+    )
 }

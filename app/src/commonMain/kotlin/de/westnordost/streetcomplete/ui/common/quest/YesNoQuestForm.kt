@@ -11,7 +11,7 @@ fun YesNoQuestForm(
     onAnswer: (Boolean) -> Unit,
 ) {
     QuestForm(
-        answers = Answers(
+        answers = listOf(
             Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(false) },
             Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(true) }
         )

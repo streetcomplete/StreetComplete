@@ -7,58 +7,53 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
+import de.westnordost.streetcomplete.ui.common.quest.LastPickedChipsRowViewModel
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
-import org.koin.android.ext.android.inject
+import org.koin.androidx.compose.koinViewModel
 
-class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
+@Composable
+fun AddBuildingLevelsForm(
+    onAnswer: (BuildingLevels) -> Unit,
+) {
+    val viewModel = koinViewModel<LastPickedChipsRowViewModel>()
 
-    private val prefs: Preferences by inject()
+    val key = "AddBuildingLevelsForm"
+    val lastPicked = remember {
+        viewModel
+            .getFavorites<BuildingLevels>(key)
+            .sortedWith(compareBy<BuildingLevels> { it.levels }.thenBy { it.roofLevels })
+    }
 
-    @Composable
-    override fun Content() {
-        val key = "AddBuildingLevelsForm"
-        val lastPicked = remember {
-            prefs.getLastPicked<BuildingLevels>(key)
-                .takeFavorites(n = 5, history = 15, first = 1)
-                .sortedWith(compareBy<BuildingLevels> { it.levels }.thenBy { it.roofLevels })
-        }
+    var levels by rememberSaveable {
+        mutableStateOf(element.tags["building:levels"]?.toIntOrNull()?.takeIf { it >= 0 })
+    }
+    var roofLevels by rememberSaveable {
+        mutableStateOf(element.tags["roof:levels"]?.toIntOrNull()?.takeIf { it >= 0 })
+    }
+    var showMultipleLevelsHint by remember { mutableStateOf(false) }
 
-        var levels by rememberSaveable {
-            mutableStateOf(element.tags["building:levels"]?.toIntOrNull()?.takeIf { it >= 0 })
-        }
-        var roofLevels by rememberSaveable {
-            mutableStateOf(element.tags["roof:levels"]?.toIntOrNull()?.takeIf { it >= 0 })
-        }
-        var showMultipleLevelsHint by remember { mutableStateOf(false) }
+    val roofLevelsAreOptional = remember {
+        val roofShape = element.tags["roof:shape"]
+        val hasNonFlatRoofShape = roofShape != null && roofShape != "flat"
+        countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
+    }
 
-        val roofLevelsAreOptional = remember {
-            val roofShape = element.tags["roof:shape"]
-            val hasNonFlatRoofShape = roofShape != null && roofShape != "flat"
-            countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
-        }
-
-        QuestForm(
-            answers = Form(
-                isComplete = levels != null && (roofLevelsAreOptional || roofLevels != null),
-                hasChanges = levels != null || roofLevels != null,
-                onClickOk = {
-                    val answer = BuildingLevels(levels!!, roofLevels)
-                    prefs.addLastPicked(key, answer)
-                    applyAnswer(answer)
-                }
-            ),
-            otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_buildingLevels_answer_multipleLevels)) { showMultipleLevelsHint = true }
-            )
-        ) {
+    QuestForm(
+        isComplete = levels != null && (roofLevelsAreOptional || roofLevels != null),
+        hasChanges = levels != null || roofLevels != null,
+        onClickOk = {
+            val answer = BuildingLevels(levels!!, roofLevels)
+            viewModel.addFavorite(key, answer)
+            onAnswer(answer)
+        },
+        otherAnswers = listOf(
+            Answer(stringResource(Res.string.quest_buildingLevels_answer_multipleLevels)) { showMultipleLevelsHint = true }
+        ),
+        content = {
             BuildingLevelsForm(
                 levels = levels,
                 onLevelsChange = { levels = it },
@@ -67,12 +62,12 @@ class AddBuildingLevelsForm : AbstractOsmQuestForm<BuildingLevels>() {
                 previousBuildingLevels = lastPicked
             )
         }
+    )
 
-        if (showMultipleLevelsHint) {
-            InfoDialog(
-                onDismissRequest = { showMultipleLevelsHint = false },
-                text = { Text(stringResource(Res.string.quest_buildingLevels_answer_description)) }
-            )
-        }
+    if (showMultipleLevelsHint) {
+        InfoDialog(
+            onDismissRequest = { showMultipleLevelsHint = false },
+            text = { Text(stringResource(Res.string.quest_buildingLevels_answer_description)) }
+        )
     }
 }

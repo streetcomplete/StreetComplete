@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDia
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -32,28 +31,27 @@ fun AddFireHydrantDiameterForm(
     }
 
     QuestForm(
-        answers = Form(
-            isComplete = diameter != null,
-            onClickOk = {
-                val answer = createAnswer(diameter!!)
-                if (answer.isUnusual()) {
-                    confirmUnusualInput = true
-                } else {
-                    onAnswer(answer)
-                }
+        isComplete = diameter != null,
+        onClickOk = {
+            val answer = createAnswer(diameter!!)
+            if (answer.isUnusual()) {
+                confirmUnusualInput = true
+            } else {
+                onAnswer(answer)
             }
-        ),
+        },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_generic_answer_noSign)) { confirmNoSign = true }
-        )
-    ) {
-        HydrantDiameterForm(
-            value = diameter,
-            onValueChange = { diameter = it },
-            countryCode = countryInfo.countryCode,
-            modifier = Modifier.fillMaxWidth(),
-        )
-    }
+        ),
+        content = {
+            HydrantDiameterForm(
+                value = diameter,
+                onValueChange = { diameter = it },
+                countryCode = countryInfo.countryCode,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+    )
 
     if (confirmNoSign) {
         QuestConfirmationDialog(

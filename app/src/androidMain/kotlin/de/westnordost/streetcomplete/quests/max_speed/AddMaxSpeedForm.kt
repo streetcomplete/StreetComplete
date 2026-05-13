@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.quests.max_speed.MaxSpeedSign.Type.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -42,22 +41,20 @@ fun AddMaxSpeedForm(
     }
 
     QuestForm(
-        answers = Form(
-            isComplete = maxSpeedAnswer?.isComplete() == true,
-            onClickOk = {
-                if (maxSpeedAnswer is MaxSpeedAnswer.NoSignWithRoadType) {
-                    if (countryInfo.hasSlowZone && element.tags["highway"] in ROADS_WHERE_SLOW_ZONE_IS_LIKELY) {
-                        confirmNoSignSlowZone = true
-                    } else {
-                        confirmNoSign = true
-                    }
-                } else if ((maxSpeedAnswer as? MaxSpeedSign)?.isUnusualSpeed() == true) {
-                    confirmUnusualInput = true
+        isComplete = maxSpeedAnswer?.isComplete() == true,
+        onClickOk = {
+            if (maxSpeedAnswer is MaxSpeedAnswer.NoSignWithRoadType) {
+                if (countryInfo.hasSlowZone && element.tags["highway"] in ROADS_WHERE_SLOW_ZONE_IS_LIKELY) {
+                    confirmNoSignSlowZone = true
                 } else {
-                    maxSpeedAnswer?.let { applySpeedLimitFormAnswer(it) }
+                    confirmNoSign = true
                 }
+            } else if ((maxSpeedAnswer as? MaxSpeedSign)?.isUnusualSpeed() == true) {
+                confirmUnusualInput = true
+            } else {
+                maxSpeedAnswer?.let { applySpeedLimitFormAnswer(it) }
             }
-        ),
+        },
         otherAnswers = listOfNotNull(
             if (countryInfo.hasAdvisorySpeedLimitSign) {
                 Answer(stringResource(Res.string.quest_maxspeed_answer_advisory_speed_limit)) {

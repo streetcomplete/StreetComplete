@@ -16,8 +16,6 @@ import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Answers
-import de.westnordost.streetcomplete.ui.common.quest.Form
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -40,42 +38,7 @@ fun AddPostboxCollectionTimesForm(
 
     var confirmNoSign by remember { mutableStateOf(false) }
 
-    QuestForm(
-        answers =
-            if (isDisplayingPrevious) {
-                Answers(
-                    Answer(stringResource(Res.string.quest_generic_hasFeature_no)) {
-                        isDisplayingPrevious = false
-                    },
-                    Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) {
-                        onAnswer(CollectionTimes(originalOpeningHours!!))
-                    }
-                )
-            } else {
-                Form(
-                    isComplete = openingHours.isComplete(),
-                    hasChanges = openingHours.monthsList.isNotEmpty(),
-                    onClickOk = { onAnswer(CollectionTimes(openingHours)) }
-                )
-            },
-        otherAnswers = listOf(
-            Answer(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
-                confirmNoSign = true
-            },
-            when (timeMode) {
-                TimeMode.Points -> {
-                    Answer(stringResource(Res.string.quest_collectionTimes_answer_time_spans)) {
-                        timeMode = TimeMode.Spans
-                    }
-                }
-                TimeMode.Spans -> {
-                    Answer(stringResource(Res.string.quest_collectionTimes_answer_time_points)) {
-                        timeMode = TimeMode.Points
-                    }
-                }
-            }
-        )
-    ) {
+    val openingHoursTable: @Composable () -> Unit = {
         OpeningHoursTable(
             openingHours = openingHours,
             onChange = { openingHours = it },
@@ -87,6 +50,50 @@ fun AddPostboxCollectionTimesForm(
             enabled = !isDisplayingPrevious,
         )
     }
+
+    if (isDisplayingPrevious) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) {
+                    isDisplayingPrevious = false
+                },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) {
+                    onAnswer(CollectionTimes(originalOpeningHours!!))
+                }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
+                    confirmNoSign = true
+                },
+            ),
+            content = { openingHoursTable() }
+        )
+    } else {
+        QuestForm(
+            isComplete = openingHours.isComplete(),
+            hasChanges = openingHours.monthsList.isNotEmpty(),
+            onClickOk = { onAnswer(CollectionTimes(openingHours)) },
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
+                    confirmNoSign = true
+                },
+                when (timeMode) {
+                    TimeMode.Points -> {
+                        Answer(stringResource(Res.string.quest_collectionTimes_answer_time_spans)) {
+                            timeMode = TimeMode.Spans
+                        }
+                    }
+                    TimeMode.Spans -> {
+                        Answer(stringResource(Res.string.quest_collectionTimes_answer_time_points)) {
+                            timeMode = TimeMode.Points
+                        }
+                    }
+                }
+            ),
+            content = { openingHoursTable() }
+        )
+    }
+
     if (confirmNoSign) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoSign = false },

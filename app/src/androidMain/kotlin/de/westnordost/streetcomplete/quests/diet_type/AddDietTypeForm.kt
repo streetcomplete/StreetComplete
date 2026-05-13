@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Answers
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -26,7 +25,7 @@ fun AddDietTypeForm(
     var confirmNoFood by remember { mutableStateOf(false) }
 
     QuestForm(
-        answers = Answers(
+        answers = listOf(
             Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(DIET_NO) },
             Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(DIET_YES) },
             Answer(stringResource(Res.string.quest_hasFeature_only)) { onAnswer(DIET_ONLY) },

@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.osm.removePlaceRelatedTags
 import de.westnordost.streetcomplete.resources.*
 
-class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>(), AndroidQuest {
+class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override val elementFilter = """
         nodes, ways with (
@@ -44,7 +44,10 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>(), AndroidQuest {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
-    override fun createForm() = ShopTypeForm()
+    @Composable
+    override fun Form(onAnswer: (ShopTypeAnswer) -> Unit) {
+        ShopTypeQuestForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.removeCheckDates()

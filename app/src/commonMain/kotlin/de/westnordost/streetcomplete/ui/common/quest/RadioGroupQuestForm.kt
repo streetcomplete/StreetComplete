@@ -24,18 +24,17 @@ fun <I> RadioGroupQuestForm(
         derivedStateOf { checkedItemIndex.takeIf { it != -1 }?.let { items[it] } }
     }
     QuestForm(
-        answers = Form(
-            isComplete = checkedItem != null,
-            onClickOk = { onClickOk(checkedItem!!) }
-        ),
+        isComplete = checkedItem != null,
+        onClickOk = { onClickOk(checkedItem!!) },
         modifier = modifier,
         otherAnswers = otherAnswers,
-    ) {
-        RadioGroup(
-            options = items,
-            onSelectionChange = { checkedItemIndex = items.indexOf(it) },
-            selectedOption = checkedItem,
-            itemContent = { itemContent(it) }
-        )
-    }
+        content = {
+            RadioGroup(
+                options = items,
+                onSelectionChange = { checkedItemIndex = items.indexOf(it) },
+                selectedOption = checkedItem,
+                itemContent = { itemContent(it) }
+            )
+        },
+    )
 }

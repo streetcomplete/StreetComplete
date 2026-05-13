@@ -10,7 +10,6 @@ import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.Answers
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.common.DateSelectDialog
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
@@ -29,7 +28,7 @@ fun MarkCompletedConstructionForm(
     var showDateSelectDialog by remember { mutableStateOf(false) }
 
     QuestForm(
-        answers = Answers(
+        answers = listOf(
             Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(ConstructionState(false)) },
             Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(ConstructionState(true)) }
         ),
