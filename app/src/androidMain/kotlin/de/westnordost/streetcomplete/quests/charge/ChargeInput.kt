@@ -49,15 +49,6 @@ fun ChargeInput(
         DecimalInput(
             value = amount,
             onValueChange = onAmountChange,
-            placeholder = {
-                // Generate placeholder based on decimal places
-                val placeholderValue = when (currencyFormatInfo.decimalDigits) {
-                    0 -> "150"
-                    1 -> "15.0"
-                    else -> "1.50"
-                }
-                Text(placeholderValue)
-            },
             keyboardOptions = KeyboardOptions(
                 keyboardType = if (currencyFormatInfo.decimalDigits > 0) {
                     KeyboardType.Decimal

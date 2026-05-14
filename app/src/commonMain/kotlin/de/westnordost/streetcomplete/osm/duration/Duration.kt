@@ -7,22 +7,22 @@ import kotlinx.serialization.Serializable
 /** A duration, as used in OSM for e.g. maxstay or charge */
 @Serializable
 data class Duration(val value: Double, val unit: DurationUnit) {
-    fun toOsmValue(alwaysSingular: Boolean = false, ignoreValue: Boolean = false): String {
-        var result = ""
-        if (!ignoreValue) {
-            result += value.toShortString() + " "
+    fun toOsmValue(): String =
+        value.toShortString() + " " + when (unit) {
+            MINUTES -> if (value != 1.0) "minutes" else "minute"
+            HOURS -> if (value != 1.0) "hours" else "hour"
+            DAYS -> if (value != 1.0) "days" else "day"
         }
-        result += when (unit) {
-            MINUTES -> if (value != 1.0 && !alwaysSingular) "minutes" else "minute"
-            HOURS -> if (value != 1.0 && !alwaysSingular) "hours" else "hour"
-            DAYS -> if (value != 1.0 && !alwaysSingular) "days" else "day"
-        }
-        return result
-    }
 }
 
 enum class DurationUnit {
     MINUTES,
     HOURS,
-    DAYS,
+    DAYS;
+
+    fun toOsmValue(usePlural: Boolean = false): String = when (this) {
+        MINUTES -> if (usePlural) "minutes" else "minute"
+        HOURS -> if (usePlural) "hours" else "hour"
+        DAYS -> if (usePlural) "days" else "day"
+    }
 }
