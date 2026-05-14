@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableDoubleStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -18,15 +17,11 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.duration.DurationUnit
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.common.ChargeInput
-import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatter
-import java.util.Currency
-import java.util.Locale
 
 class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
 
@@ -37,12 +32,6 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
     private lateinit var durationUnitState: MutableState<DurationUnit>
 
     private lateinit var showDialogState: MutableState<Boolean>
-
-    override val otherAnswers: List<AnswerItem> get() = listOf(
-        AnswerItem(R.string.quest_parking_charge_varies) {
-            showDialogState.value = true
-        }
-    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -75,17 +64,6 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
                         perLabel = getString(R.string.quest_parking_charge_time_unit_label),
                         durationUnitDisplayNames = { unit -> unit.getDisplayName(this@AddParkingChargeForm) },
                         modifier = Modifier.padding(16.dp)
-                    )
-                }
-
-                if (showDialogState.value) {
-                    TextInputDialog(
-                        onDismissRequest = { showDialogState.value = false },
-                        onConfirmed = { description ->
-                            applyAnswer(ItVaries(description))
-                        },
-                        title = { Text(getString(R.string.quest_parking_charge_varies_title)) },
-                        textInputLabel = { Text(getString(R.string.quest_parking_charge_varies_description)) }
                     )
                 }
             }

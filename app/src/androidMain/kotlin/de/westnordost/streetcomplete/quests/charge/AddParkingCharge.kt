@@ -41,10 +41,6 @@ class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>(), AndroidQuest
                 tags["charge"] = "${answer.amount} ${answer.currency}/${answer.timeUnit.toOsmValue(false)}"
                 tags.updateCheckDateForKey("charge")
             }
-            is ItVaries -> {
-                tags["charge:conditional"] = answer.conditional
-                tags.updateCheckDateForKey("charge:conditional")
-            }
         }
     }
 }

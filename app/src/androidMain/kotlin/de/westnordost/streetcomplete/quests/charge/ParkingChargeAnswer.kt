@@ -12,7 +12,3 @@ data class SimpleCharge(
     // either "day", "hour" or "minute"
     val timeUnit: DurationUnit
 ) : ParkingChargeAnswer
-
-data class ItVaries(
-    val conditional: String
-) : ParkingChargeAnswer
