@@ -12,19 +12,17 @@ class DurationTest() {
         assertEquals("1 day", Duration(1.0, DurationUnit.DAYS).toOsmValue())
         assertEquals("12 days", Duration(12.0, DurationUnit.DAYS).toOsmValue())
 
-        assertEquals("day", Duration(14.0, DurationUnit.DAYS).toOsmValue(
-            alwaysSingular = true,
-            ignoreValue = true
+        assertEquals("day", DurationUnit.DAYS.toOsmValue(
+            usePlural = false
         ))
-
-        assertEquals("3 day", Duration(3.0, DurationUnit.DAYS).toOsmValue(
-            alwaysSingular = true,
-            ignoreValue = false
+        assertEquals("days", DurationUnit.DAYS.toOsmValue(
+            usePlural = true
         ))
-
-        assertEquals("days", Duration(5.0, DurationUnit.DAYS).toOsmValue(
-            alwaysSingular = false,
-            ignoreValue = true
+        assertEquals("minute", DurationUnit.MINUTES.toOsmValue(
+            usePlural = false
+        ))
+        assertEquals("hours", DurationUnit.HOURS.toOsmValue(
+            usePlural = true
         ))
     }
 }
