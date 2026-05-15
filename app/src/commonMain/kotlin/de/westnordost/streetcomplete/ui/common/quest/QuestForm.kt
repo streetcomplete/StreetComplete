@@ -54,10 +54,7 @@ fun QuestForm(
     onClickOk: () -> Unit,
     modifier: Modifier = Modifier,
     hasChanges: Boolean = isComplete,
-    title: String = stringResource(
-        (LocalQuestType.current as? OsmElementQuestType<*>)?.getTitle(LocalElement.current!!.tags)
-            ?: LocalQuestType.current!!.title
-    ),
+    title: String = stringResource(LocalQuestType.current!!.title),
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
@@ -99,10 +96,7 @@ fun QuestForm(
 fun QuestForm(
     answers: List<Answer>,
     modifier: Modifier = Modifier,
-    title: String = stringResource(
-        (LocalQuestType.current as? OsmElementQuestType<*>)?.getTitle(LocalElement.current!!.tags)
-        ?: LocalQuestType.current!!.title
-    ),
+    title: String = stringResource(LocalQuestType.current!!.title),
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },

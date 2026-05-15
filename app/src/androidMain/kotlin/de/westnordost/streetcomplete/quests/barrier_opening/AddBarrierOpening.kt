@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.quests.width.WidthAnswer
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddBarrierOpening(
     private val checkArSupport: ArSupportChecker
@@ -48,19 +49,6 @@ class AddBarrierOpening(
     override val defaultDisabledMessage: StringResource?
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
 
-    override fun getTitle(tags: Map<String, String>): StringResource {
-        val isSomeKindOfBollard =
-            tags["barrier"] == "bollard" ||
-            tags["barrier"] == "block" ||
-            tags["cycle_barrier"] == "diagonal"
-
-        return if (isSomeKindOfBollard) {
-            Res.string.quest_barrier_opening_width_bollard
-        } else {
-            Res.string.quest_barrier_opening_width_gate
-        }
-    }
-
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val wayNodeIds = mapData.ways
             .filter { waysFilter.matches(it) }
@@ -75,7 +63,18 @@ class AddBarrierOpening(
 
     @Composable
     override fun Form(onAnswer: (WidthAnswer) -> Unit) {
-        AddWidthForm(onAnswer)
+        val isSomeKindOfBollard =
+            element.tags["barrier"] == "bollard" ||
+            element.tags["barrier"] == "block" ||
+            element.tags["cycle_barrier"] == "diagonal"
+
+        AddWidthForm(
+            onAnswer = onAnswer,
+            title = stringResource(
+                if (isSomeKindOfBollard) Res.string.quest_barrier_opening_width_bollard
+                else Res.string.quest_barrier_opening_width_gate
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

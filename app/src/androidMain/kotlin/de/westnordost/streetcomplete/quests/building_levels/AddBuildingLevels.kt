@@ -32,13 +32,6 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
     override val hint = Res.string.quest_buildingLevels_hint
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags.containsKey("building:part")) {
-            Res.string.quest_buildingLevels_title_buildingPart2
-        } else {
-            Res.string.quest_buildingLevels_title2
-        }
-
     @Composable
     override fun Form(onAnswer: (BuildingLevels) -> Unit) {
         AddBuildingLevelsForm(onAnswer)

@@ -42,7 +42,13 @@ fun AddBuildingLevelsForm(
         countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
     }
 
+    val isBuildingPart = element.tags.containsKey("building:part")
+
     QuestForm(
+        title = stringResource(
+            if (isBuildingPart) Res.string.quest_buildingLevels_title_buildingPart2
+            else Res.string.quest_buildingLevels_title2
+        ),
         isComplete = levels != null && (roofLevelsAreOptional || roofLevels != null),
         hasChanges = levels != null || roofLevels != null,
         onClickOk = {

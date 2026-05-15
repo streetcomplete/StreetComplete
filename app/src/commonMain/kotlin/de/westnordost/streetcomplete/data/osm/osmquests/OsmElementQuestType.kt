@@ -39,10 +39,6 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * makes sense if the pins are in the middle. */
     val hasMarkersAtEnds: Boolean get() = false
 
-    /** the string resource used to display the quest's question for when the element has the
-     *  specified [tags]. If null, `title` is used instead */
-    fun getTitle(tags: Map<String, String>): StringResource? = null
-
     /** All elements within the given map data that are applicable to this quest type, i.e. for
      *  which a quest of this type should be created.
      *

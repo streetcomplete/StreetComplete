@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.common.DateSelectDialog
+import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toInstant
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
@@ -24,6 +25,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun MarkCompletedConstructionForm(
     onAnswer: (CompletedConstructionAnswer) -> Unit,
+    title: String = stringResource(LocalQuestType.current!!.title),
 ) {
     var showDateSelectDialog by remember { mutableStateOf(false) }
 
@@ -32,6 +34,7 @@ fun MarkCompletedConstructionForm(
             Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(ConstructionState(false)) },
             Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(ConstructionState(true)) }
         ),
+        title = title,
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_construction_completed_at_known_date)) { showDateSelectDialog = true }
         )

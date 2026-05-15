@@ -165,17 +165,6 @@ mapOf(
 
     private val olderThan1Year = TagOlderThan("opening_hours", RelativeDate(-365f))
 
-    override fun getTitle(tags: Map<String, String>): StringResource {
-        // treat invalid opening hours like it is not set at all
-        val oh = tags["opening_hours"]?.toOpeningHoursOrNull(lenient = true)
-        val hasSupportedOpeningHours = oh != null && oh.isSupported()
-        return if (hasSupportedOpeningHours) {
-            Res.string.quest_openingHours_resurvey_title
-        } else {
-            Res.string.quest_openingHours_title
-        }
-    }
-
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 

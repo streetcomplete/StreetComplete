@@ -58,6 +58,7 @@ fun AddOpeningHoursForm(
 
     if (isDisplayingPrevious) {
         QuestForm(
+            title = stringResource(Res.string.quest_openingHours_resurvey_title),
             answers = listOf(
                 Answer(stringResource(Res.string.quest_generic_hasFeature_no)) {
                     isDisplayingPrevious = false

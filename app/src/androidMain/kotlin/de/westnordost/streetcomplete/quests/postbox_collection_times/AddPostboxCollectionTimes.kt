@@ -57,19 +57,6 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
         // apparently mostly not in Latin America and in Arabic world and unknown in Africa
     )
 
-    override fun getTitle(tags: Map<String, String>): StringResource {
-        /* treat invalid collection times like it is not set at all. Any opening hours are
-           legal tagging for collection times, even though they are not supported in
-           this app, i.e. are never asked again */
-        val oh = tags["collection_times"]?.toOpeningHoursOrNull(lenient = true)
-        val hasSupportedCollectionTimes = oh != null && oh.isSupported(allowTimePoints = true)
-        return if (hasSupportedCollectionTimes) {
-            Res.string.quest_postboxCollectionTimes_resurvey_title
-        } else {
-            Res.string.quest_postboxCollectionTimes_title
-        }
-    }
-
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 

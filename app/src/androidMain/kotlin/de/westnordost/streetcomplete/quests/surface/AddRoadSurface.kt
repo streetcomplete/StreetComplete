@@ -55,16 +55,13 @@ class AddRoadSurface : OsmFilterQuestType<Surface>() {
     override val title = Res.string.quest_streetSurface_title
     override val achievements = listOf(CAR, BICYCLIST)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags["area"] == "yes") {
-            Res.string.quest_streetSurface_square_title
-        } else {
-            Res.string.quest_streetSurface_title
-        }
-
     @Composable
     override fun Form(onAnswer: (Surface) -> Unit) {
         ItemSelectQuestForm(
+            title = stringResource(
+                if (element.tags["area"] == "yes") Res.string.quest_streetSurface_square_title
+                else Res.string.quest_streetSurface_title
+            ),
             items = Surface.selectableValuesForWays,
             itemContent = { item ->
                 ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))

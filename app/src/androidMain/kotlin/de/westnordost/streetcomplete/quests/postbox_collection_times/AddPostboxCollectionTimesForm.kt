@@ -53,6 +53,7 @@ fun AddPostboxCollectionTimesForm(
 
     if (isDisplayingPrevious) {
         QuestForm(
+            title = stringResource(Res.string.quest_postboxCollectionTimes_resurvey_title),
             answers = listOf(
                 Answer(stringResource(Res.string.quest_generic_hasFeature_no)) {
                     isDisplayingPrevious = false

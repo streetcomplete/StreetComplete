@@ -133,6 +133,7 @@ fun AddCyclewayForm(
 
     if (isDisplayingPrevious) {
         QuestForm(
+            title = stringResource(Res.string.quest_cycleway_resurvey_title),
             answers = listOf(
                 Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { isDisplayingPrevious = false },
                 Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(cycleways) }

@@ -66,20 +66,6 @@ class AddMaxPhysicalHeight(
     override val defaultDisabledMessage: StringResource?
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
 
-    override fun getTitle(tags: Map<String, String>): StringResource {
-        val isBelowBridge = tags["amenity"] != "parking_entrance"
-            && tags["barrier"] != "height_restrictor"
-            && tags["tunnel"] == null
-            && tags["covered"] == null
-            && tags["man_made"] != "pipeline"
-        // only the "below the bridge" situation may need some context
-        return if (isBelowBridge) {
-            Res.string.quest_maxheight_below_bridge_title
-        } else {
-            Res.string.quest_maxheight_title
-        }
-    }
-
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.nodes.filter { nodeFilter.matches(it) } + mapData.ways.filter { wayFilter.matches(it) }
 

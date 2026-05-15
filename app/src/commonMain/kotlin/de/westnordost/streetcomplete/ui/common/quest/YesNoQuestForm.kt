@@ -9,11 +9,13 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun YesNoQuestForm(
     onAnswer: (Boolean) -> Unit,
+    title: String = stringResource(LocalQuestType.current!!.title),
 ) {
     QuestForm(
         answers = listOf(
             Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(false) },
             Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(true) }
-        )
+        ),
+        title = title
     )
 }

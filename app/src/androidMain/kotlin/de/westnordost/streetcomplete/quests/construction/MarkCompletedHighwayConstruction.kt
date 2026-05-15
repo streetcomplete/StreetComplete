@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.stringResource
 
 class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructionAnswer>() {
 
@@ -26,25 +27,27 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
     override val hasMarkersAtEnds = true
     override val achievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>) =
-        when (tags["construction"]) {
-            "minor" -> Res.string.quest_construction_minor_title
-            /*
-              Alternative could be "Is this construction finished?" and just display the feature
-              name (e.g. "cycleway under construction") of the element above, but there are no iD
-              presets for "highway=construction + construction=*" so such road would just be named
-              "Road closed". Hence, keeping this (for now).
-             */
-            in ALL_ROADS -> Res.string.quest_construction_road_title
-            "cycleway" -> Res.string.quest_construction_cycleway_title
-            "footway" -> Res.string.quest_construction_footway_title
-            "steps" -> Res.string.quest_construction_steps_title
-            else -> Res.string.quest_construction_generic_title
-        }
-
     @Composable
     override fun Form(onAnswer: (CompletedConstructionAnswer) -> Unit) {
-        MarkCompletedConstructionForm(onAnswer)
+        MarkCompletedConstructionForm(
+            title = stringResource(
+                when (element.tags["construction"]) {
+                    "minor" -> Res.string.quest_construction_minor_title
+                    /*
+                      Alternative could be "Is this construction finished?" and just display the feature
+                      name (e.g. "cycleway under construction") of the element above, but there are no iD
+                      presets for "highway=construction + construction=*" so such road would just be named
+                      "Road closed". Hence, keeping this (for now).
+                     */
+                    in ALL_ROADS -> Res.string.quest_construction_road_title
+                    "cycleway" -> Res.string.quest_construction_cycleway_title
+                    "footway" -> Res.string.quest_construction_footway_title
+                    "steps" -> Res.string.quest_construction_steps_title
+                    else -> Res.string.quest_construction_generic_title
+                }
+            ),
+            onAnswer = onAnswer,
+        )
     }
 
     override fun applyAnswerTo(answer: CompletedConstructionAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

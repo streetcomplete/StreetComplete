@@ -66,15 +66,6 @@ class AddCycleway(
     )
     override val hint = Res.string.quest_street_side_puzzle_tutorial
 
-    override fun getTitle(tags: Map<String, String>): StringResource {
-        val hasCycleway = parseCyclewaySides(tags, false) != null
-        return if (hasCycleway) {
-            Res.string.quest_cycleway_resurvey_title
-        } else {
-            Res.string.quest_cycleway_title2
-        }
-    }
-
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val eligibleRoads = mapData.ways.filter { roadsFilter.matches(it) }
         val roadsWithMissingCycleway = eligibleRoads.filter { untaggedRoadsFilter.matches(it) }

@@ -36,6 +36,7 @@ inline fun <reified I> ItemSelectQuestForm(
     modifier: Modifier = Modifier,
     itemsPerRow: Int = 3,
     favoriteKey: String? = null,
+    title: String = stringResource(LocalQuestType.current!!.title),
     otherAnswers: List<Answer> = emptyList(),
 ) {
     val viewModel = koinViewModel<ItemSelectViewModel>()
@@ -59,6 +60,7 @@ inline fun <reified I> ItemSelectQuestForm(
             onClickOk(value)
         },
         modifier = modifier,
+        title = title,
         otherAnswers = otherAnswers,
         content = {
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {

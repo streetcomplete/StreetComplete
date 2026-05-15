@@ -50,6 +50,10 @@ fun AddSmoothnessForm(
             }
         },
         onClickOk = { onAnswer(SmoothnessValueAnswer(it)) },
+        title = stringResource(
+            if (element.tags["area"] == "yes") Res.string.quest_smoothness_square_title
+            else Res.string.quest_smoothness_road_title
+        ),
         otherAnswers = listOfNotNull(
             Answer(stringResource(Res.string.quest_smoothness_wrong_surface)) {
                 confirmSurface = surfaceTag?.let { parseSurface(it) }

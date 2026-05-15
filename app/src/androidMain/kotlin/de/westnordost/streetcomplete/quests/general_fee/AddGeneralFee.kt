@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
+import org.jetbrains.compose.resources.stringResource
 
 class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
@@ -40,16 +41,15 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
     override val title = Res.string.quest_generalFee_title
     override val achievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags["amenity"] != null) {
-            Res.string.quest_generalFee_title
-        } else {
-            Res.string.quest_generalFee_title2
-        }
-
     @Composable
     override fun Form(onAnswer: (Boolean) -> Unit) {
-        YesNoQuestForm(onAnswer)
+        YesNoQuestForm(
+            title = stringResource(
+                if (tags["amenity"] != null) Res.string.quest_generalFee_title
+                else Res.string.quest_generalFee_title2
+            ),
+            onAnswer = onAnswer,
+        )
     }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
