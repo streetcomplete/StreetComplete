@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.quests.accepts_cards.AddAcceptsCards
 import de.westnordost.streetcomplete.quests.accepts_cash.AddAcceptsCash
 import de.westnordost.streetcomplete.quests.access_point_ref.AddAccessPointRef
 import de.westnordost.streetcomplete.quests.address.AddAddressStreet
-import de.westnordost.streetcomplete.quests.address.AddAddressStreetFormViewModel
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.quests.aerialway.AddAerialwayBicycleAccess
 import de.westnordost.streetcomplete.quests.air_conditioning.AddAirConditioning
@@ -57,7 +56,6 @@ import de.westnordost.streetcomplete.quests.bus_stop_bench.AddBenchStatusOnBusSt
 import de.westnordost.streetcomplete.quests.bus_stop_bin.AddBinStatusOnBusStop
 import de.westnordost.streetcomplete.quests.bus_stop_lit.AddBusStopLit
 import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
-import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopNameFormViewModel
 import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
@@ -76,7 +74,6 @@ import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBin
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedHighwayConstruction
 import de.westnordost.streetcomplete.quests.crossing.AddCrossing
-import de.westnordost.streetcomplete.quests.crossing.CrossingViewModel
 import de.westnordost.streetcomplete.quests.crossing_island.AddCrossingIsland
 import de.westnordost.streetcomplete.quests.crossing_kerb_height.AddCrossingKerbHeight
 import de.westnordost.streetcomplete.quests.crossing_markings.AddCrossingMarkings
@@ -155,7 +152,6 @@ import de.westnordost.streetcomplete.quests.recycling_material.AddRecyclingConta
 import de.westnordost.streetcomplete.quests.religion.AddReligionToPlaceOfWorship
 import de.westnordost.streetcomplete.quests.religion.AddReligionToWaysideShrine
 import de.westnordost.streetcomplete.quests.road_name.AddRoadName
-import de.westnordost.streetcomplete.quests.road_name.AddRoadNameFormViewModel
 import de.westnordost.streetcomplete.quests.roof_shape.AddRoofShape
 import de.westnordost.streetcomplete.quests.sanitary_dump_station.AddSanitaryDumpStation
 import de.westnordost.streetcomplete.quests.seating.AddSeating
@@ -221,11 +217,6 @@ val questsModule = module {
             { featureDictionaryLazy.value.getFeature(it) }
         )
     }
-
-    viewModel { AddAddressStreetFormViewModel(get()) }
-    viewModel { AddBusStopNameFormViewModel(get()) }
-    viewModel { AddRoadNameFormViewModel(get()) }
-    viewModel { CrossingViewModel(get()) }
 }
 
 fun questTypeRegistry(

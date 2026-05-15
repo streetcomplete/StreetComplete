@@ -15,14 +15,20 @@ import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun AddCrossingForm(
     onAnswer: (CrossingAnswer) -> Unit,
+    mapDataSource: MapDataWithEditsSource = koinInject()
 ) {
-    val viewModel = koinViewModel<CrossingViewModel>()
-
     var confirmLeaveNote by remember { mutableStateOf(false) }
+
+    fun isNodeOnSidewalkOrCrossing(node: Node): Boolean =
+        mapDataSource.getWaysForNode(node.id).any {
+            val footway = it.tags["footway"]
+            footway == "sidewalk" || footway == "crossing"
+        }
 
     RadioGroupQuestForm(
         items = CrossingAnswer.entries,
@@ -41,7 +47,7 @@ fun AddCrossingForm(
             INFORMAL on the other hand would be okay because crossing=informal would not require
             deleting the crossing ways (I would say... it is in edge case...)
             */
-            if (selectedItem == PROHIBITED && viewModel.isNodeOnSidewalkOrCrossing(element as Node)) {
+            if (selectedItem == PROHIBITED && isNodeOnSidewalkOrCrossing(element as Node)) {
                 confirmLeaveNote = true
             } else {
                 onAnswer(selectedItem)

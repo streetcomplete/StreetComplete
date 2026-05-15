@@ -21,23 +21,24 @@ import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun AddRoadNameForm(
     onAnswer: (RoadNameAnswer) -> Unit,
+    nameSuggestionsSource: NameSuggestionsSource = koinInject()
 ) {
-    val viewModel = koinViewModel<AddRoadNameFormViewModel>()
-
     var initialLocalizedNames by rememberSerializable { mutableStateOf<List<LocalizedName>?>(null) }
 
     var confirmNoStreetName by remember { mutableStateOf(false) }
 
     // TODO compose-quest-form this is actually not called anywhere yet!
     fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        val names = viewModel.getNameSuggestionAt(position, clickAreaSizeInMeters)
-        if (names != null) {
-            initialLocalizedNames = names
-        }
+        nameSuggestionsSource
+            .getNames(position, clickAreaSizeInMeters, roadsWithNamesFilter)
+            .firstOrNull()
+            ?.let { initialLocalizedNames = it }
+
         return true
     }
 
@@ -60,4 +61,9 @@ fun AddRoadNameForm(
             confirmButtonText = stringResource(Res.string.quest_name_noName_confirmation_positive),
         )
     }
+}
+
+private val roadsWithNamesFilter by lazy {
+    "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
+        .toElementFilterExpression()
 }

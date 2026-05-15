@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.isThing
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.math.contains
@@ -82,7 +83,14 @@ class AddLevelThing : OsmElementQuestType<String> {
 
     @Composable
     override fun Form(onAnswer: (String) -> Unit) {
-        AddLevelThingForm(onAnswer)
+        AddLevelForm(
+            onAnswer = onAnswer,
+            filterPredicate = {
+                // The AddLevel quest only shows places on the same level, while the AddLevelThing quest
+                // shows Things AND Places
+                it.tags["level"] != null && (it.isPlaceOrDisusedPlace() || it.isThing())
+            }
+        )
     }
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

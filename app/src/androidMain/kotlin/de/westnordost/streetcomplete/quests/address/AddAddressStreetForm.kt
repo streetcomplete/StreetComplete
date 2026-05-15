@@ -8,25 +8,28 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameForm
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_address_street_no_named_streets
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun AddAddressStreetForm(
-    onAnswer: (StreetOrPlaceName) -> Unit
+    onAnswer: (StreetOrPlaceName) -> Unit,
+    nameSuggestionsSource: NameSuggestionsSource = koinInject()
 ) {
-    val viewModel = koinViewModel<AddAddressStreetFormViewModel>()
-
     /* if user specified last time that a housenumber does not belong to a named street in this
        session, already pre-select this. It is likely that the next housenumber he'll answer this
        quest for also doesn't belong to a named street */
@@ -41,10 +44,12 @@ fun AddAddressStreetForm(
     fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
         if (streetOrPlaceName !is StreetName) return false
 
-        val name = viewModel.getNameSuggestionAt(position, clickAreaSizeInMeters)
-        if (name != null) {
-            streetOrPlaceName = StreetName(name)
-        }
+        nameSuggestionsSource
+            .getNames(position, clickAreaSizeInMeters, roadsWithNamesFilter)
+            .firstOrNull()
+            ?.find { it.languageTag.isEmpty() }
+            ?.name
+            ?.let { streetOrPlaceName = StreetName(it) }
         return true
     }
 
@@ -75,3 +80,8 @@ fun AddAddressStreetForm(
 /** Whether user answered that the housenumber does not belong to a named street the last time
  *  he answered it in this session */
 private var lastWasPlaceName = false
+
+private val roadsWithNamesFilter by lazy {
+    "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
+        .toElementFilterExpression()
+}
