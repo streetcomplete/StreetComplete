@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.baby_changing_table
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
@@ -33,7 +34,7 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit) {
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
         YesNoQuestForm(onAnswer)
     }
 

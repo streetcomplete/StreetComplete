@@ -53,7 +53,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
         """)
 
     @Composable
-    override fun Form(onAnswer: (DrinkingWater) -> Unit) {
+    override fun Form(onAnswer: (DrinkingWater) -> Unit, element: Element) {
         RadioGroupQuestForm(
             items = DrinkingWater.entries,
             itemContent = { Text(stringResource(it.text)) },

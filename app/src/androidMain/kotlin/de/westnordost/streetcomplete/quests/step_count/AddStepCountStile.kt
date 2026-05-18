@@ -49,7 +49,7 @@ class AddStepCountStile : OsmElementQuestType<Int> {
     override val hint = Res.string.quest_step_count_stile_hint
 
     @Composable
-    override fun Form(onAnswer: (Int) -> Unit) {
+    override fun Form(onAnswer: (Int) -> Unit, element: Element) {
         CountInputQuestForm(
             icon = painterResource(Res.drawable.count_step),
             onClickOk = onAnswer

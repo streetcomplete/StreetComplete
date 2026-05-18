@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.maxspeed.FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.StringResource
 
 class AddCycleway(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
@@ -95,8 +94,8 @@ class AddCycleway(
         """)
 
     @Composable
-    override fun Form(onAnswer: (Sides<CyclewayAndDirection>) -> Unit) {
-        AddCyclewayForm(onAnswer)
+    override fun Form(onAnswer: (Sides<CyclewayAndDirection>) -> Unit, element: Element) {
+        AddCyclewayForm(onAnswer, element,)
     }
 
     override fun applyAnswerTo(answer: Sides<CyclewayAndDirection>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

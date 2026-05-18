@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.pitch_lit
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
@@ -34,7 +35,7 @@ class AddPitchLit : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit) {
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
         YesNoQuestForm(onAnswer)
     }
 

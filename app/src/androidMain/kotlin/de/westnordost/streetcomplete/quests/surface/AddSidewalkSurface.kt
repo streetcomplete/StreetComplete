@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.surface
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
@@ -38,8 +39,8 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override val hint = Res.string.quest_street_side_puzzle_tutorial
 
     @Composable
-    override fun Form(onAnswer: (SidewalkSurfaceAnswer) -> Unit) {
-        AddSidewalkSurfaceForm(onAnswer)
+    override fun Form(onAnswer: (SidewalkSurfaceAnswer) -> Unit, element: Element) {
+        AddSidewalkSurfaceForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

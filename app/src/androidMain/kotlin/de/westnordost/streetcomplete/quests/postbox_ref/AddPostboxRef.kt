@@ -34,7 +34,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
         mapData.filter("nodes with amenity = post_box")
 
     @Composable
-    override fun Form(onAnswer: (PostboxRefAnswer) -> Unit) {
+    override fun Form(onAnswer: (PostboxRefAnswer) -> Unit, element: Element) {
         AddPostboxRefForm(onAnswer)
     }
 

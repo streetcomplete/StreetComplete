@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.surface
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
@@ -59,7 +60,7 @@ class AddPitchSurface : OsmFilterQuestType<Surface>() {
     override val achievements = listOf(OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (Surface) -> Unit) {
+    override fun Form(onAnswer: (Surface) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = Surface.selectableValuesForPitches,
             itemContent = { item ->

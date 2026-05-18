@@ -73,8 +73,8 @@ class AddMaxPhysicalHeight(
         nodeFilter.matches(element) || wayFilter.matches(element)
 
     @Composable
-    override fun Form(onAnswer: (MaxPhysicalHeightAnswer) -> Unit) {
-        AddMaxPhysicalHeightForm(onAnswer)
+    override fun Form(onAnswer: (MaxPhysicalHeightAnswer) -> Unit, element: Element) {
+        AddMaxPhysicalHeightForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: MaxPhysicalHeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

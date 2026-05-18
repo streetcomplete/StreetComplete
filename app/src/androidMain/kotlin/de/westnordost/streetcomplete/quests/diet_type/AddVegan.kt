@@ -44,8 +44,8 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (DietAvailabilityAnswer) -> Unit) {
-        AddDietTypeForm(onAnswer)
+    override fun Form(onAnswer: (DietAvailabilityAnswer) -> Unit, element: Element) {
+        AddDietTypeForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

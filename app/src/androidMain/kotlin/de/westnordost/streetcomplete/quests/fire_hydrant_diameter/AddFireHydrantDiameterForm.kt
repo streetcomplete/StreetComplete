@@ -64,7 +64,7 @@ fun AddFireHydrantDiameterForm(
             onDismissRequest = { confirmUnusualInput = false },
             onConfirmed = { onAnswer(createAnswer(diameter!!)) },
             text = {
-                val range = onAnswer(diameter!!).unit.usualRange()
+                val range = createAnswer(diameter!!).unit.usualRange()
                 Text(stringResource(Res.string.quest_fireHydrant_diameter_unusualInput_confirmation_description2, range.first, range.last))
             }
         )

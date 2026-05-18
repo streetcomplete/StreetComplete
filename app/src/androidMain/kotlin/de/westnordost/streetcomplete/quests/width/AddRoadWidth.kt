@@ -74,8 +74,8 @@ class AddRoadWidth(
         mapData.filter("nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table")
 
     @Composable
-    override fun Form(onAnswer: (WidthAnswer) -> Unit) {
-        AddWidthForm(onAnswer)
+    override fun Form(onAnswer: (WidthAnswer) -> Unit, element: Element) {
+        AddWidthForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

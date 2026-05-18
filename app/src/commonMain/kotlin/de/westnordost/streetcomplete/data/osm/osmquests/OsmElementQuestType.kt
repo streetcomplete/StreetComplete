@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.osm.Tags
-import org.jetbrains.compose.resources.StringResource
 
 /** Quest type where each quest refers to one OSM element.
  *
@@ -73,21 +72,29 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
     /** Composable form in which to enter the requested information. Use
      *  [QuestForm][de.westnordost.streetcomplete.ui.common.quest.QuestForm] to define a custom
      *  (or simple button-based) one, or any of the pre-defined generic forms like…
-     *  - [ItemSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm]
-     *  - [ItemsSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm]
-     *  - [RadioGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm]
-     *  - [CheckboxGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.CheckboxGroupQuestForm]
-     *  - [YesNoQuestForm][de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm]
-     *  - [CountInputQuestForm][de.westnordost.streetcomplete.ui.common.quest.CountInputQuestForm]
-     *  - [LocalizedNameQuestForm][de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm]
-     *  - [NameWithSuggestionsQuestForm][de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm]
+     *  - [ItemSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm] -
+     *    Select one from a grid of images
+     *  - [ItemsSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm] -
+     *    Select any number from a grid of images
+     *  - [RadioGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm] -
+     *    Select one from a list
+     *  - [CheckboxGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.CheckboxGroupQuestForm] -
+     *    Select any number from a list
+     *  - [YesNoQuestForm][de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm] -
+     *    Answer "yes" or "no"
+     *  - [CountInputQuestForm][de.westnordost.streetcomplete.ui.common.quest.CountInputQuestForm] -
+     *    Input an (integer) number
+     *  - [LocalizedNameQuestForm][de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm] -
+     *    Input name(s in potentially different languages)
+     *  - [NameWithSuggestionsQuestForm][de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm] -
+     *    Input a name with auto-complete.
      *
      *  A good practice is that if the form definition is purely declarative and there's no mutable
      *  state, it's fine to have the form definition inline in the quest type class, otherwise,
      *  better put it into an own file.
      *  */
     @Composable
-    fun Form(onAnswer: (T) -> Unit)
+    fun Form(onAnswer: (T) -> Unit, element: Element)
 
     /** Applies the data from [answer] to the element that has last been edited at [timestampEdited]
      * with the given [tags] and the given [geometry].

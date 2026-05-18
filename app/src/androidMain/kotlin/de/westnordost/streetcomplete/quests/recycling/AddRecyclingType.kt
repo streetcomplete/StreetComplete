@@ -31,7 +31,7 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
         mapData.filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")
 
     @Composable
-    override fun Form(onAnswer: (RecyclingType) -> Unit) {
+    override fun Form(onAnswer: (RecyclingType) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = RecyclingType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

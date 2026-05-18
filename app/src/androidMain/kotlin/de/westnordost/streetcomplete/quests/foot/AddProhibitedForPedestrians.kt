@@ -4,6 +4,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -57,7 +58,7 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
     )
 
     @Composable
-    override fun Form(onAnswer: (ProhibitedForPedestriansAnswer) -> Unit) {
+    override fun Form(onAnswer: (ProhibitedForPedestriansAnswer) -> Unit, element: Element) {
         RadioGroupQuestForm(
             items = ProhibitedForPedestriansAnswer.entries,
             itemContent = { Text(stringResource(it.text)) },

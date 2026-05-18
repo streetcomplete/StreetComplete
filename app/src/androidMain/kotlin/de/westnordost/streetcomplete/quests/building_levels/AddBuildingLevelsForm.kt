@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.quest.LastPickedChipsRowViewModel
@@ -18,6 +19,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun AddBuildingLevelsForm(
     onAnswer: (BuildingLevels) -> Unit,
+    element: Element,
 ) {
     val viewModel = koinViewModel<LastPickedChipsRowViewModel>()
 

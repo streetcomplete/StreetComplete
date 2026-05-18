@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.parking_type
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
@@ -26,7 +27,7 @@ class AddParkingType : OsmFilterQuestType<ParkingType>() {
     override val achievements = listOf(CAR)
 
     @Composable
-    override fun Form(onAnswer: (ParkingType) -> Unit) {
+    override fun Form(onAnswer: (ParkingType) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = ParkingType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

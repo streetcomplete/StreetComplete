@@ -25,7 +25,7 @@ class AddAtmOperator : OsmFilterQuestType<String>() {
         mapData.filter("nodes with amenity = atm")
 
     @Composable
-    override fun Form(onAnswer: (String) -> Unit) {
+    override fun Form(onAnswer: (String) -> Unit, element: Element) {
         NameWithSuggestionsQuestForm(
             suggestions = countryInfo.atmOperators,
             onClickOk = onAnswer

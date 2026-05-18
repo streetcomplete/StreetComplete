@@ -15,6 +15,9 @@ import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class CheckShopExistence(
     private val getFeature: (Element) -> Feature?
@@ -57,8 +60,13 @@ class CheckShopExistence(
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (Unit) -> Unit) {
-        CheckShopExistenceForm(onAnswer)
+    override fun Form(onAnswer: (Unit) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { replacePlace() },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Unit) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: Unit, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

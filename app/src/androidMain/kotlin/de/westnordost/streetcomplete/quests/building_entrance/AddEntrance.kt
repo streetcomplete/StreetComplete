@@ -85,7 +85,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
         if (!withoutEntranceFilter.matches(element) || element !is Node || !element.couldBeAnEntrance()) false else null
 
     @Composable
-    override fun Form(onAnswer: (EntranceAnswer) -> Unit) {
+    override fun Form(onAnswer: (EntranceAnswer) -> Unit, element: Element) {
         RadioGroupQuestForm(
             items = remember { EntranceType.entries + EntranceAnswer.IsDeadEnd },
             itemContent = { Text(stringResource(it.text)) },

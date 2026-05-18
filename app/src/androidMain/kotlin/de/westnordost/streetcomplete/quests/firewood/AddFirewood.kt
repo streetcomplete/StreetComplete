@@ -45,7 +45,7 @@ class AddFirewood : OsmFilterQuestType<Boolean>() {
         mapData.filter("nodes, ways with leisure = firepit or amenity = bbq or tourism = wilderness_hut")
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit) {
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
         YesNoQuestForm(onAnswer)
     }
 

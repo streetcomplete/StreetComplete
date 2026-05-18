@@ -52,7 +52,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
     override val achievements = listOf(OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (StileTypeAnswer) -> Unit) {
+    override fun Form(onAnswer: (StileTypeAnswer) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = StileTypeAnswer.entries,
             itemsPerRow = 2,
@@ -70,7 +70,6 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
                     LADDER -> "ladder"
                     STEPOVER_WOODEN -> "stepover"
                     STEPOVER_STONE -> "stepover"
-                    else -> throw IllegalStateException()
                 }
                 val newMaterial = when (answer) {
                     STEPOVER_STONE -> "stone"
@@ -97,7 +96,6 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
                     KISSING_GATE -> "kissing_gate"
                     PASSAGE -> "entrance"
                     GATE -> "gate"
-                    else -> throw IllegalStateException()
                 }
                 tags.remove("stile")
                 STILE_PROPERTIES.forEach { tags.remove(it) }

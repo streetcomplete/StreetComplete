@@ -28,7 +28,7 @@ class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
         mapData.filter("nodes with emergency = fire_hydrant")
 
     @Composable
-    override fun Form(onAnswer: (FireHydrantType) -> Unit) {
+    override fun Form(onAnswer: (FireHydrantType) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = FireHydrantType.entries,
             itemsPerRow = 2,

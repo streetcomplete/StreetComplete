@@ -32,7 +32,7 @@ class AddChargingStationOperator : OsmFilterQuestType<String>() {
         mapData.filter("nodes, ways with amenity = charging_station")
 
     @Composable
-    override fun Form(onAnswer: (String) -> Unit) {
+    override fun Form(onAnswer: (String) -> Unit, element: Element) {
         NameWithSuggestionsQuestForm(
             suggestions = countryInfo.chargingStationOperators,
             onClickOk = onAnswer

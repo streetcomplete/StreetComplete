@@ -4,6 +4,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
@@ -25,7 +26,7 @@ class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>() {
     override val achievements = listOf(CITIZEN)
 
     @Composable
-    override fun Form(onAnswer: (PlaygroundAccess) -> Unit) {
+    override fun Form(onAnswer: (PlaygroundAccess) -> Unit, element: Element) {
         RadioGroupQuestForm(
             items = PlaygroundAccess.entries,
             itemContent = { Text(stringResource(it.text)) },

@@ -65,7 +65,7 @@ class AddRoofShape(
     }
 
     @Composable
-    override fun Form(onAnswer: (RoofShape) -> Unit) {
+    override fun Form(onAnswer: (RoofShape) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = remember { RoofShape.entries - MANY },
             itemsPerRow = 4,

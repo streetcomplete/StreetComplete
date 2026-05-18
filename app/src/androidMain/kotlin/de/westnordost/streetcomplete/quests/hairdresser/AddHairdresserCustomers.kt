@@ -35,7 +35,7 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (HairdresserCustomers) -> Unit) {
+    override fun Form(onAnswer: (HairdresserCustomers) -> Unit, element: Element) {
         RadioGroupQuestForm(
             items = HairdresserCustomers.entries,
             itemContent = { Text(stringResource(it.text)) },

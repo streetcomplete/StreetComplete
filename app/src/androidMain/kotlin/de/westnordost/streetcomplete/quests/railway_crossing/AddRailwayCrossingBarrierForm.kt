@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.railway_crossing
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
@@ -10,6 +11,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun AddRailwayCrossingBarrierForm(
     onAnswer: (RailwayCrossingBarrier) -> Unit,
+    element: Element,
 ) {
     val items = remember {
         val isPedestrian = element.tags["railway"] == "crossing"

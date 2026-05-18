@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.smoothness
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
@@ -34,8 +35,8 @@ class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
     override val hint = Res.string.quest_smoothness_hint
 
     @Composable
-    override fun Form(onAnswer: (SmoothnessAnswer) -> Unit) {
-        AddSmoothnessForm(onAnswer)
+    override fun Form(onAnswer: (SmoothnessAnswer) -> Unit, element: Element) {
+        AddSmoothnessForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: SmoothnessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

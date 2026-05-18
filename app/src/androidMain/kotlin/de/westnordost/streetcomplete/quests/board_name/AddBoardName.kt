@@ -34,7 +34,7 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>() {
         mapData.filter("nodes, ways, relations with tourism = information and information = board")
 
     @Composable
-    override fun Form(onAnswer: (BoardNameAnswer) -> Unit) {
+    override fun Form(onAnswer: (BoardNameAnswer) -> Unit, element: Element) {
         AddBoardNameForm(onAnswer)
     }
 

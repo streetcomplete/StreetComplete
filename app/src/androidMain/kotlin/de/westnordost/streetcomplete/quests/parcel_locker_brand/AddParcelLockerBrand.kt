@@ -25,7 +25,7 @@ class AddParcelLockerBrand : OsmFilterQuestType<String>() {
         mapData.filter("nodes with amenity = parcel_locker")
 
     @Composable
-    override fun Form(onAnswer: (String) -> Unit) {
+    override fun Form(onAnswer: (String) -> Unit, element: Element) {
         NameWithSuggestionsQuestForm(
             suggestions = countryInfo.parcelLockerBrand,
             onClickOk = onAnswer

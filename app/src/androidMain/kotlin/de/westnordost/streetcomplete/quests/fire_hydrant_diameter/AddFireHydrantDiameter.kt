@@ -46,7 +46,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
         mapData.filter("nodes with emergency = fire_hydrant")
 
     @Composable
-    override fun Form(onAnswer: (FireHydrantDiameterAnswer) -> Unit) {
+    override fun Form(onAnswer: (FireHydrantDiameterAnswer) -> Unit, element: Element) {
         AddFireHydrantDiameterForm(onAnswer)
     }
 

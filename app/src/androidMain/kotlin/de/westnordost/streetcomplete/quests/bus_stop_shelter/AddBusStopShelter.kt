@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.bus_stop_shelter
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
@@ -43,8 +44,16 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
     override val achievements = listOf(PEDESTRIAN)
 
     @Composable
-    override fun Form(onAnswer: (BusStopShelterAnswer) -> Unit) {
-        AddBusStopShelterForm(onAnswer)
+    override fun Form(onAnswer: (BusStopShelterAnswer) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO_SHELTER) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(SHELTER) }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_busStopShelter_covered)) { onAnswer(COVERED) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: BusStopShelterAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

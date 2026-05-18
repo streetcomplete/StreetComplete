@@ -14,8 +14,14 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.kerb_height.AddKerbHeightForm
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
+import de.westnordost.streetcomplete.quests.kerb_height.icon
+import de.westnordost.streetcomplete.quests.kerb_height.title
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_crossing_kerb_height_title
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
 
@@ -69,8 +75,13 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
         if (!crossingFilter.matches(element)) false else null
 
     @Composable
-    override fun Form(onAnswer: (KerbHeight) -> Unit) {
-        AddKerbHeightForm(onAnswer)
+    override fun Form(onAnswer: (KerbHeight) -> Unit, element: Element) {
+        ItemSelectQuestForm(
+            items = KerbHeight.entries,
+            itemsPerRow = 2,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer
+        )
     }
 
     override fun applyAnswerTo(answer: KerbHeight, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

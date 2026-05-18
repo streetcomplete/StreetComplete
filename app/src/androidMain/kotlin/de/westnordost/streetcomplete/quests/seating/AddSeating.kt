@@ -37,7 +37,7 @@ class AddSeating : OsmFilterQuestType<Seating>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (Seating) -> Unit) {
+    override fun Form(onAnswer: (Seating) -> Unit, element: Element) {
         RadioGroupQuestForm(
             items = Seating.entries,
             itemContent = { Text(stringResource(it.text)) },

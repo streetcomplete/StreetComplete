@@ -32,7 +32,7 @@ class AddChargingStationBicycleCapacity : OsmFilterQuestType<Int>() {
         mapData.filter("nodes, ways with amenity = charging_station and bicycle ~ yes|designated")
 
     @Composable
-    override fun Form(onAnswer: (Int) -> Unit) {
+    override fun Form(onAnswer: (Int) -> Unit, element: Element) {
         CountInputQuestForm(
             icon = painterResource(Res.drawable.count_bicycle),
             onClickOk = onAnswer

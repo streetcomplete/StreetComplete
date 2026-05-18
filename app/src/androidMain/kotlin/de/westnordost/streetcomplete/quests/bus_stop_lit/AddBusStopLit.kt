@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.bus_stop_lit
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
@@ -37,7 +38,7 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(PEDESTRIAN)
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit) {
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
         YesNoQuestForm(onAnswer)
     }
 

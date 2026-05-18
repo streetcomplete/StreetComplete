@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.lane_markings
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
@@ -40,7 +41,7 @@ class AddLaneMarkings : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(EditTypeAchievement.CAR)
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit) {
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
         YesNoQuestForm(onAnswer)
     }
 

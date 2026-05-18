@@ -158,8 +158,8 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     }
 
     @Composable
-    override fun Form(onAnswer: (MaxHeightAnswer) -> Unit) {
-        AddMaxHeightForm(onAnswer)
+    override fun Form(onAnswer: (MaxHeightAnswer) -> Unit, element: Element) {
+        AddMaxHeightForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: MaxHeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

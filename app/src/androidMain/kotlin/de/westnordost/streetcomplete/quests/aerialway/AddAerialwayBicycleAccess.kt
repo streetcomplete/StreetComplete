@@ -13,6 +13,9 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.aerialway.AerialwayBicycleAccessAnswer.*
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class AddAerialwayBicycleAccess : OsmFilterQuestType<AerialwayBicycleAccessAnswer>() {
 
@@ -29,8 +32,17 @@ class AddAerialwayBicycleAccess : OsmFilterQuestType<AerialwayBicycleAccessAnswe
     override val achievements = listOf(RARE, BICYCLIST)
 
     @Composable
-    override fun Form(onAnswer: (AerialwayBicycleAccessAnswer) -> Unit) {
-        AddAerialwayBicycleAccessForm(onAnswer)
+    override fun Form(onAnswer: (AerialwayBicycleAccessAnswer) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
+                Answer(stringResource(Res.string.quest_aerialway_bicycle_summer)) { onAnswer(SUMMER) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_hairdresser_not_signed)) { onAnswer(NO_SIGN) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: AerialwayBicycleAccessAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

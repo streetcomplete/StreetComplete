@@ -11,12 +11,18 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.amenity_indoor.IsAmenityIndoorAnswer.COVERED
+import de.westnordost.streetcomplete.quests.amenity_indoor.IsAmenityIndoorAnswer.INDOOR
+import de.westnordost.streetcomplete.quests.amenity_indoor.IsAmenityIndoorAnswer.OUTDOOR
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
+import org.jetbrains.compose.resources.stringResource
 
 class AddIsAmenityIndoor(
     private val getFeature: (Element) -> Feature?
@@ -104,8 +110,16 @@ class AddIsAmenityIndoor(
     }
 
     @Composable
-    override fun Form(onAnswer: (IsAmenityIndoorAnswer) -> Unit) {
-        AddIsAmenityIndoorForm(onAnswer)
+    override fun Form(onAnswer: (IsAmenityIndoorAnswer) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(OUTDOOR) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(INDOOR) }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_isAmenityIndoor_outside_covered)) { onAnswer(COVERED) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: IsAmenityIndoorAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

@@ -39,7 +39,7 @@ class AddCampShower : OsmFilterQuestType<Boolean>() {
         mapData.filter("nodes, ways with tourism = camp_site")
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit) {
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
         YesNoQuestForm(onAnswer)
     }
 

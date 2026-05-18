@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.barrier_type
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
@@ -39,7 +40,7 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
     override val achievements = listOf(CAR, PEDESTRIAN, BLIND, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (BarrierType) -> Unit) {
+    override fun Form(onAnswer: (BarrierType) -> Unit, element: Element) {
         AddBarrierTypeForm(onAnswer)
     }
 

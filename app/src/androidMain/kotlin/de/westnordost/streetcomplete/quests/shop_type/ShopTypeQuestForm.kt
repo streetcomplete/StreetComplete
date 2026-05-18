@@ -7,6 +7,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.toElement
@@ -14,12 +16,16 @@ import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
+import org.koin.compose.koinInject
+import org.koin.core.qualifier.named
 
 @Composable
 fun ShopTypeQuestForm(
     onClickOk: (ShopTypeAnswer) -> Unit,
+    element: Element,
     modifier: Modifier = Modifier,
     otherAnswers: List<Answer> = emptyList(),
+    featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
 ) {
     var feature by remember { mutableStateOf<Feature?>(null) }
     var option by remember { mutableStateOf<ShopTypeFormOption?>(null) }
@@ -63,7 +69,7 @@ fun ShopTypeQuestForm(
                 option = option,
                 onSelectedFeature = { feature = it },
                 onSelectedOption = { option = it },
-                featureDictionary = featureDictionary,
+                featureDictionary = featureDictionary.value,
                 geometryType = element.geometryType,
                 countryCode = countryOrSubdivisionCode,
                 filterFn = { it.toElement().isPlace() },

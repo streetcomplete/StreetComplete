@@ -52,7 +52,7 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
     }
 
     @Composable
-    override fun Form(onAnswer: (BicycleInclineAnswer) -> Unit) {
+    override fun Form(onAnswer: (BicycleInclineAnswer) -> Unit, element: Element) {
         AddBicycleInclineForm(onAnswer)
     }
 

@@ -14,7 +14,10 @@ import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.ktx.containsAll
+import org.jetbrains.compose.resources.stringResource
 
 class CheckExistence(
     private val getFeature: (Element) -> Feature?
@@ -114,8 +117,13 @@ class CheckExistence(
     }
 
     @Composable
-    override fun Form(onAnswer: (Unit) -> Unit) {
-        CheckExistenceForm(onAnswer)
+    override fun Form(onAnswer: (Unit) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { deletePoiNode() },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Unit) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: Unit, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

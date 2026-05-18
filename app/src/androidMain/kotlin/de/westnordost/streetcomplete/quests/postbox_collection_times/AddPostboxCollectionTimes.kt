@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.StringResource
 
 class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
 
@@ -76,8 +75,8 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
         mapData.filter("nodes with amenity = post_box")
 
     @Composable
-    override fun Form(onAnswer: (CollectionTimesAnswer) -> Unit) =
-        AddPostboxCollectionTimesForm(onAnswer)
+    override fun Form(onAnswer: (CollectionTimesAnswer) -> Unit, element: Element) =
+        AddPostboxCollectionTimesForm(onAnswer, element)
 
     override fun applyAnswerTo(answer: CollectionTimesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

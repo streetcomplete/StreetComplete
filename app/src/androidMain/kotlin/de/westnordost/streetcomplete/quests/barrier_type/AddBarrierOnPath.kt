@@ -44,7 +44,7 @@ class AddBarrierOnPath : OsmElementQuestType<BarrierType> {
         if (element !is Node || element.tags.isNotEmpty()) false else null
 
     @Composable
-    override fun Form(onAnswer: (BarrierType) -> Unit) {
+    override fun Form(onAnswer: (BarrierType) -> Unit, element: Element) {
         AddBarrierTypeForm(onAnswer)
     }
 

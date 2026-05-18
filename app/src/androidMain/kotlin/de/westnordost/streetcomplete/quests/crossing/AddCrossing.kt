@@ -71,8 +71,8 @@ class AddCrossing : OsmElementQuestType<CrossingAnswer> {
     }
 
     @Composable
-    override fun Form(onAnswer: (CrossingAnswer) -> Unit) {
-        AddCrossingForm(onAnswer)
+    override fun Form(onAnswer: (CrossingAnswer) -> Unit, element: Element) {
+        AddCrossingForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: CrossingAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

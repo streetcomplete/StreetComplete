@@ -79,7 +79,7 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>> {
     }
 
     @Composable
-    override fun Form(onAnswer: (List<MaxWeight>) -> Unit) {
+    override fun Form(onAnswer: (List<MaxWeight>) -> Unit, element: Element) {
         AddMaxWeightForm(onAnswer)
     }
 

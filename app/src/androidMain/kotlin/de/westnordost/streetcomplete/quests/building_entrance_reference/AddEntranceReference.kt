@@ -102,7 +102,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer> {
         mapData.filter { it.tags.containsKey("entrance") }.asSequence()
 
     @Composable
-    override fun Form(onAnswer: (EntranceReferenceAnswer) -> Unit) =
+    override fun Form(onAnswer: (EntranceReferenceAnswer) -> Unit, element: Element) =
         AddEntranceReferenceForm(onAnswer)
 
     override fun applyAnswerTo(answer: EntranceReferenceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

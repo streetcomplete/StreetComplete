@@ -16,6 +16,10 @@ import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
 import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddKerbHeight : OsmElementQuestType<KerbHeight> {
 
@@ -44,8 +48,13 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
         }
 
     @Composable
-    override fun Form(onAnswer: (KerbHeight) -> Unit) {
-        AddKerbHeightForm(onAnswer)
+    override fun Form(onAnswer: (KerbHeight) -> Unit, element: Element) {
+        ItemSelectQuestForm(
+            items = KerbHeight.entries,
+            itemsPerRow = 2,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer
+        )
     }
 
     override fun applyAnswerTo(answer: KerbHeight, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

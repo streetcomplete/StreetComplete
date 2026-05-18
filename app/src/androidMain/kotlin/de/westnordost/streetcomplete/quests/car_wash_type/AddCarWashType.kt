@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.car_wash_type
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
@@ -25,7 +26,7 @@ class AddCarWashType : OsmFilterQuestType<Set<CarWashType>>() {
     override val achievements = listOf(CAR)
 
     @Composable
-    override fun Form(onAnswer: (Set<CarWashType>) -> Unit) {
+    override fun Form(onAnswer: (Set<CarWashType>) -> Unit, element: Element) {
         ItemsSelectQuestForm(
             items = CarWashType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

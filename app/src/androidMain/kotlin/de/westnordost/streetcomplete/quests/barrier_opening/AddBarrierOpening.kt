@@ -62,7 +62,7 @@ class AddBarrierOpening(
         if (nodeFilter.matches(element)) null else false
 
     @Composable
-    override fun Form(onAnswer: (WidthAnswer) -> Unit) {
+    override fun Form(onAnswer: (WidthAnswer) -> Unit, element: Element) {
         val isSomeKindOfBollard =
             element.tags["barrier"] == "bollard" ||
             element.tags["barrier"] == "block" ||
@@ -70,6 +70,7 @@ class AddBarrierOpening(
 
         AddWidthForm(
             onAnswer = onAnswer,
+            element = element,
             title = stringResource(
                 if (isSomeKindOfBollard) Res.string.quest_barrier_opening_width_bollard
                 else Res.string.quest_barrier_opening_width_gate

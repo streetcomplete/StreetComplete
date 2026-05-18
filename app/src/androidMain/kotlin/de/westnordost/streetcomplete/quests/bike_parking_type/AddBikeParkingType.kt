@@ -33,7 +33,7 @@ class AddBikeParkingType : OsmFilterQuestType<BikeParkingType>() {
         mapData.filter("nodes, ways with amenity = bicycle_parking")
 
     @Composable
-    override fun Form(onAnswer: (BikeParkingType) -> Unit) {
+    override fun Form(onAnswer: (BikeParkingType) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = BikeParkingType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

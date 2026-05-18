@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
 import de.westnordost.streetcomplete.resources.*
@@ -19,7 +20,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddLanesForm(
-    onAnswer: (LanesAnswer) -> Unit
+    onAnswer: (LanesAnswer) -> Unit,
+    element: Element,
 ) {
     var answer by rememberSerializable { mutableStateOf(Lanes()) }
 

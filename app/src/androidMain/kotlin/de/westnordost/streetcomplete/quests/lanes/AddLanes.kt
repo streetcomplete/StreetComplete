@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.lanes
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -30,7 +31,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
     override val hint = Res.string.quest_street_side_puzzle_tutorial
 
     @Composable
-    override fun Form(onAnswer: (LanesAnswer) -> Unit) {
+    override fun Form(onAnswer: (LanesAnswer) -> Unit, element: Element) {
         AddLanesForm(onAnswer)
     }
 

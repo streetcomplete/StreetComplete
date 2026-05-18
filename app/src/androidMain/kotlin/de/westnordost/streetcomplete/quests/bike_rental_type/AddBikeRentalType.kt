@@ -35,7 +35,7 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>() {
         mapData.filter("nodes, ways with amenity = bicycle_rental")
 
     @Composable
-    override fun Form(onAnswer: (BikeRentalTypeAnswer) -> Unit) {
+    override fun Form(onAnswer: (BikeRentalTypeAnswer) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = BikeRentalTypeAnswer.entries,
             itemsPerRow = 2,

@@ -83,7 +83,7 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
         """)
 
     @Composable
-    override fun Form(onAnswer: (StreetOrPlaceName) -> Unit) {
+    override fun Form(onAnswer: (StreetOrPlaceName) -> Unit, element: Element) {
         AddAddressStreetForm(onAnswer)
     }
 

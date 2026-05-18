@@ -41,7 +41,7 @@ class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAva
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (SecondHandBicycleAvailability) -> Unit) {
+    override fun Form(onAnswer: (SecondHandBicycleAvailability) -> Unit, element: Element) {
         RadioGroupQuestForm(
             items = SecondHandBicycleAvailability.entries,
             itemContent = { Text(stringResource(it.text)) },

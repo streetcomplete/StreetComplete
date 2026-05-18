@@ -13,6 +13,9 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.ANY
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTLES
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
 
@@ -37,8 +40,13 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
         mapData.filter("nodes with amenity = recycling")
 
     @Composable
-    override fun Form(onAnswer: (RecyclingGlass) -> Unit) {
-        DetermineRecyclingGlassForm(onAnswer)
+    override fun Form(onAnswer: (RecyclingGlass) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_recycling_type_any_glass)) { onAnswer(ANY) },
+                Answer(stringResource(Res.string.quest_recycling_type_glass_bottles_short)) { onAnswer(BOTTLES) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: RecyclingGlass, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

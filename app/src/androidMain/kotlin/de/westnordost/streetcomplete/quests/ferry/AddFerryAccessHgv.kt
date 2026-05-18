@@ -11,7 +11,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.quests.ferry.FerryHgvAccess.NO
+import de.westnordost.streetcomplete.quests.ferry.FerryHgvAccess.NOT_SIGNED
+import de.westnordost.streetcomplete.quests.ferry.FerryHgvAccess.YES
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class AddFerryAccessHgv : OsmElementQuestType<FerryHgvAccess> {
 
@@ -41,8 +47,16 @@ class AddFerryAccessHgv : OsmElementQuestType<FerryHgvAccess> {
     }
 
     @Composable
-    override fun Form(onAnswer: (FerryHgvAccess) -> Unit) {
-        AddFerryAccessHgvForm(onAnswer)
+    override fun Form(onAnswer: (FerryHgvAccess) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_generic_answer_noSign)) { onAnswer(NOT_SIGNED) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: FerryHgvAccess, tags: StringMapChangesBuilder, geometry: ElementGeometry, timestampEdited: Long) {

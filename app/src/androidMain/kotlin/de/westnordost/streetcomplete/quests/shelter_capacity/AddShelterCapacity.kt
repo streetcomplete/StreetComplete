@@ -39,7 +39,7 @@ class AddShelterCapacity : OsmFilterQuestType<Int>() {
         mapData.filter("nodes, ways with amenity = shelter")
 
     @Composable
-    override fun Form(onAnswer: (Int) -> Unit) {
+    override fun Form(onAnswer: (Int) -> Unit, element: Element) {
         CountInputQuestForm(
             icon = painterResource(Res.drawable.count_sleeping_bag),
             onClickOk = onAnswer

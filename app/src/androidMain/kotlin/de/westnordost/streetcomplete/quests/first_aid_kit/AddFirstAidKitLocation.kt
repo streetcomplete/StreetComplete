@@ -30,7 +30,7 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>() {
         mapData.filter("nodes with emergency = first_aid_kit")
 
     @Composable
-    override fun Form(onAnswer: (String) -> Unit) {
+    override fun Form(onAnswer: (String) -> Unit, element: Element) {
         AddLocationDescriptionForm(onAnswer)
     }
 

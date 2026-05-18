@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.orchard_produce
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
@@ -23,7 +24,7 @@ class AddOrchardProduce : OsmFilterQuestType<Set<OrchardProduce>>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming
 
     @Composable
-    override fun Form(onAnswer: (Set<OrchardProduce>) -> Unit) {
+    override fun Form(onAnswer: (Set<OrchardProduce>) -> Unit, element: Element) {
         AddOrchardProduceForm(onAnswer)
     }
 

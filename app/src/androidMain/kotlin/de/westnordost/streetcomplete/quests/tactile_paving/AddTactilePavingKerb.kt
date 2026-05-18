@@ -41,7 +41,7 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
     )
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit) {
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
         YesNoQuestForm(onAnswer)
     }
 

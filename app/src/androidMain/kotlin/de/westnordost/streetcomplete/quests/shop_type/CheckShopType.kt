@@ -62,8 +62,8 @@ class CheckShopType : OsmElementQuestType<ShopTypeAnswer> {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (ShopTypeAnswer) -> Unit) {
-        ShopTypeQuestForm(onAnswer)
+    override fun Form(onAnswer: (ShopTypeAnswer) -> Unit, element: Element) {
+        ShopTypeQuestForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

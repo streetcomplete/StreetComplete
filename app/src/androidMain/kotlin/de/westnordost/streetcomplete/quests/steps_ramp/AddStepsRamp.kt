@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.steps_ramp
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -37,7 +38,7 @@ class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST)
 
     @Composable
-    override fun Form(onAnswer: (StepsRampAnswer) -> Unit) {
+    override fun Form(onAnswer: (StepsRampAnswer) -> Unit, element: Element) {
         AddStepsRampForm(onAnswer)
     }
 

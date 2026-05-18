@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.tourism_information
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
@@ -24,7 +25,7 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
     override val achievements = listOf(RARE, CITIZEN, OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (TourismInformation) -> Unit) {
+    override fun Form(onAnswer: (TourismInformation) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = TourismInformation.entries,
             itemsPerRow = 2,

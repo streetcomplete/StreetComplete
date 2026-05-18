@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.self_service
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
@@ -10,6 +11,9 @@ import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.NO
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.ONLY
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.OPTIONAL
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
 
@@ -21,8 +25,14 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
     override val achievements = listOf(CITIZEN)
 
     @Composable
-    override fun Form(onAnswer: (SelfServiceLaundry) -> Unit) {
-        AddSelfServiceLaundryForm(onAnswer)
+    override fun Form(onAnswer: (SelfServiceLaundry) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_optional)) { onAnswer(OPTIONAL) },
+                Answer(stringResource(Res.string.quest_hasFeature_only)) { onAnswer(ONLY) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: SelfServiceLaundry, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

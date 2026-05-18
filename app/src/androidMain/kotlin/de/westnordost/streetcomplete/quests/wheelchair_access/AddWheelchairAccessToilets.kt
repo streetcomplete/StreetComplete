@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
@@ -30,7 +31,7 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>() {
     override val hintImages = listOf(Res.drawable.wheelchair_sign)
 
     @Composable
-    override fun Form(onAnswer: (WheelchairAccess) -> Unit) {
+    override fun Form(onAnswer: (WheelchairAccess) -> Unit, element: Element) {
         AddWheelchairAccessForm(onAnswer)
     }
 

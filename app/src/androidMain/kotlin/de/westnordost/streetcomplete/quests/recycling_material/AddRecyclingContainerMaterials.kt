@@ -45,7 +45,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         )
 
     @Composable
-    override fun Form(onAnswer: (RecyclingContainerMaterialsAnswer) -> Unit) {
+    override fun Form(onAnswer: (RecyclingContainerMaterialsAnswer) -> Unit, element: Element) {
         AddRecyclingContainerMaterialsForm(onAnswer)
     }
 

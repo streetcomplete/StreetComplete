@@ -128,7 +128,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (WheelchairAccess) -> Unit) {
+    override fun Form(onAnswer: (WheelchairAccess) -> Unit, element: Element) {
         AddWheelchairAccessForm(onAnswer)
     }
 

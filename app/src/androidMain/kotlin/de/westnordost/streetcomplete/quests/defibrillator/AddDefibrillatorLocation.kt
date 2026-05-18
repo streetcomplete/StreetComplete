@@ -29,7 +29,7 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>() {
         mapData.filter("nodes with emergency = defibrillator")
 
     @Composable
-    override fun Form(onAnswer: (String) -> Unit) {
+    override fun Form(onAnswer: (String) -> Unit, element: Element) {
         AddLocationDescriptionForm(onAnswer)
     }
 

@@ -3,12 +3,19 @@ package de.westnordost.streetcomplete.quests.wheelchair_access
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.LIMITED
+import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.NO
+import de.westnordost.streetcomplete.quests.wheelchair_access.WheelchairAccess.YES
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToiletsPartAnswer>() {
 
@@ -39,8 +46,17 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
     override val hintImages = listOf(Res.drawable.wheelchair_sign)
 
     @Composable
-    override fun Form(onAnswer: (WheelchairAccessToiletsPartAnswer) -> Unit) {
-        AddWheelchairAccessToiletsPartForm(onAnswer)
+    override fun Form(onAnswer: (WheelchairAccessToiletsPartAnswer) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(WheelchairAccessToiletsPart(NO)) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(WheelchairAccessToiletsPart(YES)) },
+                Answer(stringResource(Res.string.quest_wheelchairAccess_limited)) { onAnswer(WheelchairAccessToiletsPart(LIMITED)) },
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) { onAnswer(WheelchairAccessToiletsPartAnswer.NoToilet) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: WheelchairAccessToiletsPartAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

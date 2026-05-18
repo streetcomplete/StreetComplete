@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.StringResource
 
 class AddOpeningHours : OsmElementQuestType<OpeningHoursAnswer> {
 
@@ -185,8 +184,8 @@ mapOf(
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (OpeningHoursAnswer) -> Unit) {
-        AddOpeningHoursForm(onAnswer)
+    override fun Form(onAnswer: (OpeningHoursAnswer) -> Unit, element: Element) {
+        AddOpeningHoursForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: OpeningHoursAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

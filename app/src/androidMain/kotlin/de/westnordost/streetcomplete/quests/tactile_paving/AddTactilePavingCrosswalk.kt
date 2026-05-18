@@ -11,7 +11,13 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.INCORRECT
+import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.NO
+import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.YES
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnswer> {
 
@@ -65,8 +71,16 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnsw
         if (!crossingFilter.matches(element)) false else null
 
     @Composable
-    override fun Form(onAnswer: (TactilePavingCrosswalkAnswer) -> Unit) {
-        AddTactilePavingCrosswalkForm(onAnswer)
+    override fun Form(onAnswer: (TactilePavingCrosswalkAnswer) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_tactilePaving_incorrect)) { onAnswer(INCORRECT) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: TactilePavingCrosswalkAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

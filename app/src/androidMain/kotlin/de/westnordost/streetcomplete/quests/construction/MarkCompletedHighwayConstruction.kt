@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.construction
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -28,7 +29,7 @@ class MarkCompletedHighwayConstruction : OsmFilterQuestType<CompletedConstructio
     override val achievements = listOf(CAR)
 
     @Composable
-    override fun Form(onAnswer: (CompletedConstructionAnswer) -> Unit) {
+    override fun Form(onAnswer: (CompletedConstructionAnswer) -> Unit, element: Element) {
         MarkCompletedConstructionForm(
             title = stringResource(
                 when (element.tags["construction"]) {

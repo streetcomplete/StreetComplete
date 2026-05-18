@@ -12,6 +12,9 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.*
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
 
@@ -34,8 +37,17 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
         mapData.filter("nodes, ways with amenity = bench or leisure = picnic_table")
 
     @Composable
-    override fun Form(onAnswer: (BenchBackrestAnswer) -> Unit) =
-        AddBenchBackrestForm(onAnswer)
+    override fun Form(onAnswer: (BenchBackrestAnswer) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) }
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_bench_answer_picnic_table)) { onAnswer(PICNIC_TABLE) }
+            )
+        )
+    }
 
     override fun applyAnswerTo(answer: BenchBackrestAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

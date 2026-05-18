@@ -11,6 +11,7 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.osm_opening_hours.model.Month
 import de.westnordost.osm_opening_hours.model.MonthRange
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import de.westnordost.streetcomplete.resources.*
@@ -26,6 +27,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun AddOpeningHoursForm(
     onAnswer: (OpeningHoursAnswer) -> Unit,
+    element: Element,
 ) {
     val originalOpeningHours = remember {
         element.tags["opening_hours"]

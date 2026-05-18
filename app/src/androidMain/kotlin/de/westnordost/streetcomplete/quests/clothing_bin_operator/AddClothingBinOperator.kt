@@ -49,7 +49,7 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer> {
         mapData.filter("nodes with amenity = recycling")
 
     @Composable
-    override fun Form(onAnswer: (ClothingBinOperatorAnswer) -> Unit) {
+    override fun Form(onAnswer: (ClothingBinOperatorAnswer) -> Unit, element: Element) {
         AddClothingBinOperatorForm(onAnswer)
     }
 

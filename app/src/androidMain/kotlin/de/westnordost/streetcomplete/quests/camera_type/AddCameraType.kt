@@ -33,7 +33,7 @@ class AddCameraType : OsmFilterQuestType<CameraType>() {
         mapData.filter("nodes with surveillance and surveillance:type = camera")
 
     @Composable
-    override fun Form(onAnswer: (CameraType) -> Unit) {
+    override fun Form(onAnswer: (CameraType) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = CameraType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

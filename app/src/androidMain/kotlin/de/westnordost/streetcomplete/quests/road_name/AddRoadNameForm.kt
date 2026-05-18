@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
-import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopNameFormViewModel
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm

@@ -26,7 +26,7 @@ class AddAtmCashIn : OsmFilterQuestType<Boolean>() {
         mapData.filter("nodes with amenity = atm")
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit) {
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
         YesNoQuestForm(onAnswer)
     }
 

@@ -95,7 +95,7 @@ class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>> {
         """)
 
     @Composable
-    override fun Form(onAnswer: (Sides<Sidewalk>) -> Unit) {
+    override fun Form(onAnswer: (Sides<Sidewalk>) -> Unit, element: Element) {
         AddSidewalkForm(onAnswer)
     }
 

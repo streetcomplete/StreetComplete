@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.traffic_calming_type
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -23,7 +24,7 @@ class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>() {
     override val achievements = listOf(PEDESTRIAN, CAR)
 
     @Composable
-    override fun Form(onAnswer: (TrafficCalmingType) -> Unit) {
+    override fun Form(onAnswer: (TrafficCalmingType) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = TrafficCalmingType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

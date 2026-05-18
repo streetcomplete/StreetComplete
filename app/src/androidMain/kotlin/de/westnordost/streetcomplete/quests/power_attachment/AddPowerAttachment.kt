@@ -8,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -72,7 +71,7 @@ class AddPowerAttachment : OsmElementQuestType<PowerAttachment> {
     override val highlightedElementsRadius get() = 100.0
 
     @Composable
-    override fun Form(onAnswer: (PowerAttachment) -> Unit) {
+    override fun Form(onAnswer: (PowerAttachment) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = PowerAttachment.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

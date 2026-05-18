@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.PROHIBITED
 import de.westnordost.streetcomplete.resources.*
@@ -20,6 +21,7 @@ import org.koin.compose.koinInject
 @Composable
 fun AddCrossingForm(
     onAnswer: (CrossingAnswer) -> Unit,
+    element: Element,
     mapDataSource: MapDataWithEditsSource = koinInject()
 ) {
     var confirmLeaveNote by remember { mutableStateOf(false) }

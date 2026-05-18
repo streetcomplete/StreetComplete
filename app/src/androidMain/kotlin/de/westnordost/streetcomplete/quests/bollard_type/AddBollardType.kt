@@ -12,6 +12,11 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
 
@@ -50,8 +55,15 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
         mapData.filter("nodes with barrier = bollard")
 
     @Composable
-    override fun Form(onAnswer: (BollardTypeAnswer) -> Unit) {
-        AddBollardTypeForm(onAnswer)
+    override fun Form(onAnswer: (BollardTypeAnswer) -> Unit, element: Element) {
+        ItemSelectQuestForm(
+            items = BollardType.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_bollard_type_not_bollard)) { onAnswer(BarrierTypeIsNotBollard) },
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: BollardTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

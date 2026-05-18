@@ -30,7 +30,7 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
         mapData.filter("nodes with amenity = bbq")
 
     @Composable
-    override fun Form(onAnswer: (BbqFuelAnswer) -> Unit) {
+    override fun Form(onAnswer: (BbqFuelAnswer) -> Unit, element: Element) {
         AddBbqFuelForm(onAnswer)
     }
 

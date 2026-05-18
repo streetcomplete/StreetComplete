@@ -52,8 +52,8 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
         if (!crossingFilter.matches(element)) false else null
 
     @Composable
-    override fun Form(onAnswer: (RailwayCrossingBarrier) -> Unit) {
-        AddRailwayCrossingBarrierForm(onAnswer)
+    override fun Form(onAnswer: (RailwayCrossingBarrier) -> Unit, element: Element) {
+        AddRailwayCrossingBarrierForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: RailwayCrossingBarrier, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

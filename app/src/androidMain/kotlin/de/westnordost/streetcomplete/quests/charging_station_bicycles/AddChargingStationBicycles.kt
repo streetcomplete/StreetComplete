@@ -9,7 +9,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.quests.charging_station_bicycles.ChargingStationBicycles.NO
+import de.westnordost.streetcomplete.quests.charging_station_bicycles.ChargingStationBicycles.ONLY
+import de.westnordost.streetcomplete.quests.charging_station_bicycles.ChargingStationBicycles.YES
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>() {
 
@@ -30,8 +36,16 @@ class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>()
         mapData.filter("nodes, ways with amenity = charging_station")
 
     @Composable
-    override fun Form(onAnswer: (ChargingStationBicycles) -> Unit) {
-        AddChargingStationBicyclesForm(onAnswer)
+    override fun Form(onAnswer: (ChargingStationBicycles) -> Unit, element: Element) {
+        QuestForm(
+            answers = listOf(
+                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
+                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) },
+            ),
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_charging_station_bicycles_answer_only)) { onAnswer(ONLY) }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: ChargingStationBicycles, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

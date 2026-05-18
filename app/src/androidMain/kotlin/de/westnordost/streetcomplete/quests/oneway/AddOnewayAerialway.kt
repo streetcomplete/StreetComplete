@@ -43,7 +43,7 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
         """.toElementFilterExpression())
 
     @Composable
-    override fun Form(onAnswer: (OnewayAnswer) -> Unit) {
+    override fun Form(onAnswer: (OnewayAnswer) -> Unit, element: Element) {
         AddOnewayForm(onAnswer)
     }
 

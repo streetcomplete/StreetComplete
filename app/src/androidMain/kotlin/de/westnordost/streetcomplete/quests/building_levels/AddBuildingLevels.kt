@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.building_levels
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
@@ -33,8 +34,8 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>() {
     override val hint = Res.string.quest_buildingLevels_hint
 
     @Composable
-    override fun Form(onAnswer: (BuildingLevels) -> Unit) {
-        AddBuildingLevelsForm(onAnswer)
+    override fun Form(onAnswer: (BuildingLevels) -> Unit, element: Element) {
+        AddBuildingLevelsForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: BuildingLevels, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

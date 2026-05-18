@@ -38,7 +38,7 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
         mapData.filter("nodes with amenity = post_box")
 
     @Composable
-    override fun Form(onAnswer: (PostboxRoyalCypher) -> Unit) {
+    override fun Form(onAnswer: (PostboxRoyalCypher) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = PostboxRoyalCypher.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },

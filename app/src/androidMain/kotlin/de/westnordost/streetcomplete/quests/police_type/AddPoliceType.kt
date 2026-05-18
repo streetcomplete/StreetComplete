@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.police_type
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
@@ -23,7 +24,7 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>() {
     override val achievements = listOf(CITIZEN)
 
     @Composable
-    override fun Form(onAnswer: (PoliceType) -> Unit) {
+    override fun Form(onAnswer: (PoliceType) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = PoliceType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },

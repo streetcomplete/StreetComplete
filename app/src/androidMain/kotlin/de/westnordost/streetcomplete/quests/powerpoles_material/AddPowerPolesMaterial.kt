@@ -39,8 +39,17 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterialAnswer>() {
     override val highlightedElementsRadius get() = 100.0
 
     @Composable
-    override fun Form(onAnswer: (PowerPolesMaterialAnswer) -> Unit) {
-        AddPowerPolesMaterialForm(onAnswer)
+    override fun Form(onAnswer: (PowerPolesMaterialAnswer) -> Unit, element: Element) {
+        ItemSelectQuestForm(
+            items = PowerPolesMaterial.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_powerPolesMaterial_is_terminal)) {
+                    onAnswer(PowerLineAnchoredToBuilding)
+                }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: PowerPolesMaterialAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

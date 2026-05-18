@@ -28,7 +28,7 @@ class AddArtworkType : OsmFilterQuestType<ArtworkType>() {
         mapData.filter("nodes, ways with tourism = artwork")
 
     @Composable
-    override fun Form(onAnswer: (ArtworkType) -> Unit) {
+    override fun Form(onAnswer: (ArtworkType) -> Unit, element: Element) {
         ItemSelectQuestForm(
             items = ArtworkType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

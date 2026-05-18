@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
@@ -30,17 +29,12 @@ class AddTents : OsmFilterQuestType<Boolean>() {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with tourism ~ caravan_site|camp_site")
 
-    override fun applyAnswerTo(
-        answer: Boolean,
-        tags: Tags,
-        geometry: ElementGeometry,
-        timestampEdited: Long,
-    ) {
-        tags["tents"] = answer.toYesNo()
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
+        YesNoQuestForm(onAnswer)
     }
 
-    @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit) {
-        YesNoQuestForm(onAnswer)
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["tents"] = answer.toYesNo()
     }
 }

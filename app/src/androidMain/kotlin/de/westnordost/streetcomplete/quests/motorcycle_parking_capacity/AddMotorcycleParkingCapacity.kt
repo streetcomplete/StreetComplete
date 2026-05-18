@@ -29,7 +29,7 @@ class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>() {
     override val achievements = listOf(CAR)
 
     @Composable
-    override fun Form(onAnswer: (Int) -> Unit) {
+    override fun Form(onAnswer: (Int) -> Unit, element: Element) {
         CountInputQuestForm(
             icon = painterResource(Res.drawable.count_motorcycle),
             onClickOk = onAnswer

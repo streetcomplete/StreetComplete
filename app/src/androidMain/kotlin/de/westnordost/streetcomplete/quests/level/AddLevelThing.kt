@@ -82,7 +82,7 @@ class AddLevelThing : OsmElementQuestType<String> {
     }
 
     @Composable
-    override fun Form(onAnswer: (String) -> Unit) {
+    override fun Form(onAnswer: (String) -> Unit, element: Element) {
         AddLevelForm(
             onAnswer = onAnswer,
             filterPredicate = {

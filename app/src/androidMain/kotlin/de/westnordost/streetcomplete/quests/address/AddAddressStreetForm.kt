@@ -8,6 +8,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -19,16 +20,19 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
+import org.koin.core.qualifier.named
 
 @Composable
 fun AddAddressStreetForm(
     onAnswer: (StreetOrPlaceName) -> Unit,
-    nameSuggestionsSource: NameSuggestionsSource = koinInject()
+    nameSuggestionsSource: NameSuggestionsSource = koinInject(),
+    featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
 ) {
     /* if user specified last time that a housenumber does not belong to a named street in this
        session, already pre-select this. It is likely that the next housenumber he'll answer this
@@ -59,7 +63,7 @@ fun AddAddressStreetForm(
             lastWasPlaceName = streetOrPlaceName is PlaceName
             onAnswer(streetOrPlaceName)
         },
-        subtitle = nameAndLocationLabel(element, featureDictionary, showHouseNumber = true),
+        subtitle = nameAndLocationLabel(LocalElement.current!!, featureDictionary.value, showHouseNumber = true),
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_address_street_no_named_streets)) {
                 streetOrPlaceName = PlaceName("")

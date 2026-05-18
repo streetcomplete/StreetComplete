@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddMaxSpeed (
     private val getCountryOrSubdivisionCode: (LatLon) -> String?
@@ -44,8 +43,8 @@ class AddMaxSpeed (
         mapData.filter("nodes with traffic_sign = city_limit")
 
     @Composable
-    override fun Form(onAnswer: (MaxSpeedAnswer) -> Unit) {
-        AddMaxSpeedForm(onAnswer)
+    override fun Form(onAnswer: (MaxSpeedAnswer) -> Unit, element: Element) {
+        AddMaxSpeedForm(onAnswer, element)
     }
 
     override fun applyAnswerTo(answer: MaxSpeedAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

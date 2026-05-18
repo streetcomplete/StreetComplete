@@ -11,6 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.parseSurface
 import de.westnordost.streetcomplete.resources.*
@@ -25,6 +26,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun AddSmoothnessForm(
     onAnswer: (SmoothnessAnswer) -> Unit,
+    element: Element,
 ) {
     val surfaceTag = element.tags["surface"]
     val items = remember { Smoothness.entries.filter { it.getImage(surfaceTag) != null } }

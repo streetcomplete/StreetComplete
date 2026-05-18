@@ -36,7 +36,7 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
         mapData.filter("nodes, ways with amenity = charging_station and motorcar != no")
 
     @Composable
-    override fun Form(onAnswer: (Int) -> Unit) {
+    override fun Form(onAnswer: (Int) -> Unit, element: Element) {
         CountInputQuestForm(
             icon = painterResource(Res.drawable.count_electric_car),
             onClickOk = onAnswer

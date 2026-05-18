@@ -11,6 +11,11 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallationAnswer>() {
 
@@ -30,8 +35,17 @@ class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallat
         mapData.filter("nodes, ways with barrier = cycle_barrier")
 
     @Composable
-    override fun Form(onAnswer: (BicycleBarrierInstallationAnswer) -> Unit) {
-        AddBicycleBarrierInstallationForm(onAnswer)
+    override fun Form(onAnswer: (BicycleBarrierInstallationAnswer) -> Unit, element: Element) {
+        ItemSelectQuestForm(
+            items = BicycleBarrierInstallation.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer,
+            otherAnswers = listOf(
+                Answer(stringResource(Res.string.quest_barrier_bicycle_type_not_cycle_barrier)) {
+                    onAnswer(BarrierTypeIsNotBicycleBarrier)
+                }
+            )
+        )
     }
 
     override fun applyAnswerTo(answer: BicycleBarrierInstallationAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

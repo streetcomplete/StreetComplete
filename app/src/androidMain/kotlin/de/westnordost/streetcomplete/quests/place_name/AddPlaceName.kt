@@ -149,7 +149,7 @@ class AddPlaceName(
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (PlaceNameAnswer) -> Unit) {
+    override fun Form(onAnswer: (PlaceNameAnswer) -> Unit, element: Element) {
         AddPlaceNameForm(onAnswer)
     }
 

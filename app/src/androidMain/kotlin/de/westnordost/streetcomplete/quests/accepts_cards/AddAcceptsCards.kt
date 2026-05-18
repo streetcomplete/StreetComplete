@@ -41,7 +41,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (CardAcceptance) -> Unit) {
+    override fun Form(onAnswer: (CardAcceptance) -> Unit, element: Element) {
         RadioGroupQuestForm(
             items = CardAcceptance.entries,
             itemContent = { Text(stringResource(it.text)) },

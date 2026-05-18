@@ -1,13 +1,16 @@
 package de.westnordost.streetcomplete.quests.parking_access
 
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFeeForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import org.jetbrains.compose.resources.stringResource
 
 class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
 
@@ -41,8 +44,12 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
     override val achievements = listOf(CAR)
 
     @Composable
-    override fun Form(onAnswer: (ParkingAccess) -> Unit) {
-        AddParkingAccessForm(onAnswer)
+    override fun Form(onAnswer: (ParkingAccess) -> Unit, element: Element) {
+        RadioGroupQuestForm(
+            items = ParkingAccess.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = onAnswer
+        )
     }
 
     override fun applyAnswerTo(answer: ParkingAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

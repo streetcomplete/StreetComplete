@@ -12,6 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WHERE_SLOW_ZONE_IS_LIKELY
 import de.westnordost.streetcomplete.osm.maxspeed.Speed
 import de.westnordost.streetcomplete.quests.max_speed.MaxSpeedSign.Type.*
@@ -25,7 +26,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddMaxSpeedForm(
-    onAnswer: (MaxSpeedAnswer) -> Unit
+    onAnswer: (MaxSpeedAnswer) -> Unit,
+    element: Element,
 ) {
     var maxSpeedAnswer by rememberSerializable { mutableStateOf<MaxSpeedAnswer?>(null) }
     var confirmNoSign by remember { mutableStateOf(false) }
