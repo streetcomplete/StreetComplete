@@ -82,7 +82,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
                     featureDictionary.getById(
                         id = featureId,
                         languages = languages,
-                        country = countryOrSubdivisionCode,
+                        country = countryInfo.countryOrSubdivisionCode,
                     )
                 }
         }
@@ -242,7 +242,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
                     onSelectedFeature = ::onSelectedFeature,
                     featureDictionary = featureDictionary,
                     geometryType = element?.geometryType ?: GeometryType.POINT,
-                    countryCode = countryOrSubdivisionCode,
+                    countryCode = countryInfo.countryOrSubdivisionCode,
                     filterFn = { it.toElement().isPlace() || it.id == "shop/vacant" },
                     codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS,
                 )
@@ -311,7 +311,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         return featureDictionary.getByTags(
             tags = element.tags,
             languages = languages,
-            country = countryOrSubdivisionCode,
+            country = countryInfo.countryOrSubdivisionCode,
             geometry = geometryType,
         ).firstOrNull { it.toElement().isPlace() }
     }

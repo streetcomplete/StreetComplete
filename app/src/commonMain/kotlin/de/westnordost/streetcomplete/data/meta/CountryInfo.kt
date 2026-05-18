@@ -83,8 +83,13 @@ data class IncompleteCountryInfo(
     val workweek: String? = null,
 )
 
-data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
-    val countryCode get() = infos.first().countryCode
+data class CountryInfo(
+    /** e.g. US-AL */
+    val countryOrSubdivisionCode: String,
+    private val infos: List<IncompleteCountryInfo>
+) {
+    /** e.g. US */
+    val countryCode = countryOrSubdivisionCode.substringBefore('-')
 
     // part of default.yml, so cannot be null
     val advisorySpeedLimitSignStyle: String =

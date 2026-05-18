@@ -24,7 +24,7 @@ import kotlin.test.assertNull
 
 class AddHousenumberTest {
 
-    private val questType = AddHousenumber({ CountryInfo(listOf(IncompleteCountryInfo("DE"))) })
+    private val questType = AddHousenumber({ CountryInfo("DE", listOf(IncompleteCountryInfo("DE"))) })
 
     @Test fun `does not create quest for generic building`() {
         val building = way(1L, NODES1, mapOf("building" to "yes"))

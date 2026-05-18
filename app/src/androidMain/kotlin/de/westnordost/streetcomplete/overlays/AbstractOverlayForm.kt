@@ -107,12 +107,6 @@ abstract class AbstractOverlayForm :
     protected val mapRotation: MutableFloatState = mutableFloatStateOf(0f)
     protected val mapTilt: MutableFloatState = mutableFloatStateOf(0f)
 
-    /** either DE or US-NY (or null), depending on what countryBoundaries returns */
-    protected val countryOrSubdivisionCode: String? get() {
-        val latLon = geometry.center
-        return countryBoundaries.value.getIds(latLon.longitude, latLon.latitude).firstOrNull()
-    }
-
     // used to enable testing via ShowQuestFormsScreen! Found no better way to do this
     var addElementEditsController: AddElementEditsController = elementEditsController
 

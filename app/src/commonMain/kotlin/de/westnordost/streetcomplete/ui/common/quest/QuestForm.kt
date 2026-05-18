@@ -321,7 +321,7 @@ fun QuestForm(
             },
             featureDictionary = featureDictionary,
             geometryType = element.geometryType,
-            countryCode = countryOrSubdivisionCode,
+            countryCode = countryInfo.countryOrSubdivisionCode,
         )
     }
     if (confirmDeletePoi) {

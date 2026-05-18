@@ -69,20 +69,6 @@ import org.koin.core.qualifier.named
 /** Abstract base class for any bottom sheet with which the user answers a specific quest(ion)  */
 abstract class AbstractOsmQuestForm<T> : AbstractQuestForm(), IsShowingQuestDetails {
 
-    // dependencies
-    private val elementEditsController: ElementEditsController by inject()
-    private val noteEditsController: NoteEditsController by inject()
-    private val hiddenQuestsController: QuestsHiddenController by inject()
-    private val featureDictionaryLazy: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
-    private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
-    private val surveyChecker: SurveyChecker by inject()
-
-    protected val featureDictionary: FeatureDictionary get() = featureDictionaryLazy.value
-
-    // only used for testing / only used for ShowQuestFormsScreen! Found no better way to do this
-    var addElementEditsController: AddElementEditsController = elementEditsController
-    var hideQuestController: HideQuestController = hiddenQuestsController
-
     protected fun composeNote() {
         viewLifecycleScope.launch {
             val questTitleResource = osmElementQuestType.getTitle(element.tags) ?: questType.title

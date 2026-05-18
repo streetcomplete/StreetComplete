@@ -65,12 +65,6 @@ abstract class AbstractQuestForm :
         }
     protected val countryInfo get() = _countryInfo!!
 
-    /** either DE or US-NY (or null), depending on what countryBoundaries returns */
-    protected val countryOrSubdivisionCode: String? get() {
-        val latLon = geometry.center
-        return countryBoundaries.value.getIds(latLon.longitude, latLon.latitude).firstOrNull()
-    }
-
     // passed in parameters
     override lateinit var questKey: QuestKey
     protected lateinit var questType: QuestType

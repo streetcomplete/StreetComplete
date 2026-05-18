@@ -123,7 +123,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
                         onSelectedFeature = { selectedFeature = it },
                         featureDictionary = featureDictionary,
                         geometryType = element?.geometryType ?: GeometryType.POINT, // for new features: always POINT
-                        countryCode = countryOrSubdivisionCode,
+                        countryCode = countryInfo.countryOrSubdivisionCode,
                         filterFn = { it.toElement().isThing() },
                         codesOfDefaultFeatures = POPULAR_THING_FEATURE_IDS,
                     )
@@ -147,7 +147,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
                         FeatureItem(
                             feature = item,
                             featureDictionary = featureDictionary,
-                            countryCode = countryOrSubdivisionCode,
+                            countryCode = countryInfo.countryOrSubdivisionCode,
                         )
                     }
                 }
@@ -171,7 +171,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
                 featureDictionary.getById(
                     id = featureId,
                     languages = languages,
-                    country = countryOrSubdivisionCode,
+                    country = countryInfo.countryOrSubdivisionCode,
                 )
             }
     }
@@ -190,7 +190,7 @@ class ThingsOverlayForm : AbstractOverlayForm() {
         return featureDictionary.getByTags(
             tags = element.tags,
             languages = languages,
-            country = countryOrSubdivisionCode,
+            country = countryInfo.countryOrSubdivisionCode,
             geometry = geometryType
         ).firstOrNull { it.toElement().isThing() }
     }

@@ -71,7 +71,7 @@ fun ShopTypeQuestForm(
                 onSelectedOption = { option = it },
                 featureDictionary = featureDictionary.value,
                 geometryType = element.geometryType,
-                countryCode = countryOrSubdivisionCode,
+                countryCode = countryInfo.countryOrSubdivisionCode,
                 filterFn = { it.toElement().isPlace() },
                 codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS
             )
