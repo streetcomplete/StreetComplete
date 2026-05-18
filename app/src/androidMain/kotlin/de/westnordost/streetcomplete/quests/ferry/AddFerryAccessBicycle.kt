@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.ferry
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -49,7 +50,7 @@ class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess> {
     }
 
     @Composable
-    override fun Form(onAnswer: (FerryBicycleAccess) -> Unit, element: Element) {
+    override fun Form(onAnswer: (FerryBicycleAccess) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
                 Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },

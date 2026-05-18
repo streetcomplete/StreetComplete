@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.quests.sport.Sport.MULTI
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
@@ -19,7 +20,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddSportForm(
-    onAnswer: (Set<Sport>) -> Unit
+    onAnswer: (Set<Sport>) -> Unit,
+    countryInfo: CountryInfo
 ) {
     val items = remember {
         val order = countryInfo.popularSports

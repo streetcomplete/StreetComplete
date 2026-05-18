@@ -22,33 +22,22 @@ import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.ItemSelectViewModel
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun AddRecyclingContainerMaterialsForm(
     onAnswer: (RecyclingContainerMaterialsAnswer) -> Unit,
 ) {
-    val favKey = "AddRecyclingContainerMaterialsForm"
-    val viewModel = koinViewModel<ItemSelectViewModel>()
-
-    val reorderedItems = remember {
-        viewModel.getItemsWithFavoritesFirst(favKey, RecyclingMaterial.entries, 4)
-    }
     var selectedItems by rememberSerializable { mutableStateOf(emptySet<RecyclingMaterial>()) }
 
     var confirmJustTrash by remember { mutableStateOf(false) }
 
     QuestForm(
         isComplete = selectedItems.isNotEmpty(),
-        onClickOk = {
-            viewModel.addFavorites(favKey, selectedItems.toList())
-            onAnswer(RecyclingMaterials(selectedItems))
-        },
+        onClickOk = { onAnswer(RecyclingMaterials(selectedItems)) },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_recycling_materials_answer_waste)) { confirmJustTrash = true }
         ),
@@ -65,7 +54,7 @@ fun AddRecyclingContainerMaterialsForm(
                 }
                 ItemsSelectGrid(
                     columns = SimpleGridCells.Fixed(4),
-                    items = reorderedItems,
+                    items = RecyclingMaterial.entries,
                     selectedItems = selectedItems,
                     onSelect = { item, selected ->
                         // this here is the reason why it can't be just a normal ItemsSelectQuestForm:

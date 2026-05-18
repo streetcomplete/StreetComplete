@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.diet_type
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -44,7 +45,7 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (DietAvailabilityAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (DietAvailabilityAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddDietTypeForm(onAnswer, element)
     }
 

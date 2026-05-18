@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.postbox_ref
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -34,7 +35,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>() {
         mapData.filter("nodes with amenity = post_box")
 
     @Composable
-    override fun Form(onAnswer: (PostboxRefAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (PostboxRefAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddPostboxRefForm(onAnswer)
     }
 

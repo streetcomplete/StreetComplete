@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.sidewalk
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -95,8 +96,8 @@ class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>> {
         """)
 
     @Composable
-    override fun Form(onAnswer: (Sides<Sidewalk>) -> Unit, element: Element) {
-        AddSidewalkForm(onAnswer, geometry)
+    override fun Form(onAnswer: (Sides<Sidewalk>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddSidewalkForm(onAnswer, geometry, countryInfo)
     }
 
     override fun applyAnswerTo(answer: Sides<Sidewalk>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

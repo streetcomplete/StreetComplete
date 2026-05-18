@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.barrier_opening
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -62,7 +63,7 @@ class AddBarrierOpening(
         if (nodeFilter.matches(element)) null else false
 
     @Composable
-    override fun Form(onAnswer: (WidthAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (WidthAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         val isSomeKindOfBollard =
             element.tags["barrier"] == "bollard" ||
             element.tags["barrier"] == "block" ||
@@ -74,7 +75,8 @@ class AddBarrierOpening(
             title = stringResource(
                 if (isSomeKindOfBollard) Res.string.quest_barrier_opening_width_bollard
                 else Res.string.quest_barrier_opening_width_gate
-            )
+            ),
+            countryInfo = countryInfo,
         )
     }
 

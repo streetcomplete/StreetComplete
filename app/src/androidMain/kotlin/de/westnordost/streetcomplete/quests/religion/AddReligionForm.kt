@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.religion
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.quests.religion.Religion.MULTIFAITH
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
@@ -12,7 +13,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddReligionForm(
-    onAnswer: (Religion) -> Unit
+    onAnswer: (Religion) -> Unit,
+    countryInfo: CountryInfo,
 ) {
     val items = remember {
         val order = countryInfo.popularReligions

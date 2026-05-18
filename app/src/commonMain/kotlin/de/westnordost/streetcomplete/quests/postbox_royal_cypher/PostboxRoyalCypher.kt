@@ -6,8 +6,8 @@ enum class PostboxRoyalCypher(val osmValue: String) {
     GEORGE_VI("GVIR"),
     VICTORIA("VR"),
     EDWARD_VII("EVIIR"),
-    SCOTTISH_CROWN("scottish_crown"),
     EDWARD_VIII("EVIIIR"),
     CHARLES_III("CIIIR"),
+    SCOTTISH_CROWN("scottish_crown"),
     NONE("no")
 }

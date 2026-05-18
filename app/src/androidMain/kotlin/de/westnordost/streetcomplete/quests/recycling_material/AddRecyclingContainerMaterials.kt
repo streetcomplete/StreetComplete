@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.filters.TagOlderThan
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -45,7 +46,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
         )
 
     @Composable
-    override fun Form(onAnswer: (RecyclingContainerMaterialsAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (RecyclingContainerMaterialsAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddRecyclingContainerMaterialsForm(onAnswer)
     }
 

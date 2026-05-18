@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.air_pump
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -40,7 +41,7 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
         """)
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         YesNoQuestForm(onAnswer)
     }
 

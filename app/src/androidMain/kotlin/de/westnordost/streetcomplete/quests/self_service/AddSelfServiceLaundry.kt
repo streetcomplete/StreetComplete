@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.self_service
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -25,7 +26,7 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
     override val achievements = listOf(CITIZEN)
 
     @Composable
-    override fun Form(onAnswer: (SelfServiceLaundry) -> Unit, element: Element) {
+    override fun Form(onAnswer: (SelfServiceLaundry) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
                 Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },

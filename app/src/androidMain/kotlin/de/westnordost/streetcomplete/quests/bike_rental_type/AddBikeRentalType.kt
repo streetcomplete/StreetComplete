@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bike_rental_type
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -35,7 +36,7 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>() {
         mapData.filter("nodes, ways with amenity = bicycle_rental")
 
     @Composable
-    override fun Form(onAnswer: (BikeRentalTypeAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (BikeRentalTypeAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = BikeRentalTypeAnswer.entries,
             itemsPerRow = 2,

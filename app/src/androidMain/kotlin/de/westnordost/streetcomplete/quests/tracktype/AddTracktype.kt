@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.tracktype
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -37,7 +38,7 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
     override val achievements = listOf(CAR, BICYCLIST)
 
     @Composable
-    override fun Form(onAnswer: (Tracktype) -> Unit, element: Element) {
+    override fun Form(onAnswer: (Tracktype) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = Tracktype.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

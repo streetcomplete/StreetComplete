@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.osm.Length
@@ -22,6 +23,7 @@ import org.jetbrains.compose.resources.stringResource
 fun AddMaxHeightForm(
     onAnswer: (MaxHeightAnswer) -> Unit,
     element: Element,
+    countryInfo: CountryInfo
 ) {
     var height by rememberSerializable { mutableStateOf<Length?>(null) }
 

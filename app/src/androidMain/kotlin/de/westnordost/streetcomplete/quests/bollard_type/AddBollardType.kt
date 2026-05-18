@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.bollard_type
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -55,7 +56,7 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
         mapData.filter("nodes with barrier = bollard")
 
     @Composable
-    override fun Form(onAnswer: (BollardTypeAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (BollardTypeAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = BollardType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

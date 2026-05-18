@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.shop_type
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -45,8 +46,8 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (ShopTypeAnswer) -> Unit, element: Element) {
-        ShopTypeQuestForm(onAnswer, element)
+    override fun Form(onAnswer: (ShopTypeAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        ShopTypeQuestForm(onAnswer, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

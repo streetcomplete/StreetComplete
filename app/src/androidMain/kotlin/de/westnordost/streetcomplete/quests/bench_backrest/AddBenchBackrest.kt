@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bench_backrest
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -37,7 +38,7 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
         mapData.filter("nodes, ways with amenity = bench or leisure = picnic_table")
 
     @Composable
-    override fun Form(onAnswer: (BenchBackrestAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (BenchBackrestAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
                 Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },

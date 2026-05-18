@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
 import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -94,7 +95,12 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  better put it into an own file.
      *  */
     @Composable
-    fun Form(onAnswer: (T) -> Unit, element: Element)
+    fun Form(
+        onAnswer: (T) -> Unit,
+        element: Element,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    )
 
     /** Applies the data from [answer] to the element that has last been edited at [timestampEdited]
      * with the given [tags] and the given [geometry].

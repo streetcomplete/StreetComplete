@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.powerpoles_material
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -39,7 +40,7 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterialAnswer>() {
     override val highlightedElementsRadius get() = 100.0
 
     @Composable
-    override fun Form(onAnswer: (PowerPolesMaterialAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (PowerPolesMaterialAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = PowerPolesMaterial.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

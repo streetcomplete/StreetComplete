@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bus_stop_ref
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -44,7 +45,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
     override val achievements = listOf(PEDESTRIAN)
 
     @Composable
-    override fun Form(onAnswer: (BusStopRefAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (BusStopRefAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddBusStopRefForm(onAnswer)
     }
 

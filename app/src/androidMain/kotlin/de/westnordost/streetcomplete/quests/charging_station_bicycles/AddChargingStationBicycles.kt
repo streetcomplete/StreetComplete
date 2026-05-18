@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.charging_station_bicycles
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -36,7 +37,7 @@ class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>()
         mapData.filter("nodes, ways with amenity = charging_station")
 
     @Composable
-    override fun Form(onAnswer: (ChargingStationBicycles) -> Unit, element: Element) {
+    override fun Form(onAnswer: (ChargingStationBicycles) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
                 Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },

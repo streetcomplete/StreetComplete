@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.parcel_locker_brand
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -25,7 +26,7 @@ class AddParcelLockerBrand : OsmFilterQuestType<String>() {
         mapData.filter("nodes with amenity = parcel_locker")
 
     @Composable
-    override fun Form(onAnswer: (String) -> Unit, element: Element) {
+    override fun Form(onAnswer: (String) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         NameWithSuggestionsQuestForm(
             suggestions = countryInfo.parcelLockerBrand,
             onClickOk = onAnswer

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.memorial_type
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -28,7 +29,7 @@ class AddMemorialType : OsmFilterQuestType<MemorialType>() {
     override val achievements = listOf(CITIZEN)
 
     @Composable
-    override fun Form(onAnswer: (MemorialType) -> Unit, element: Element) {
+    override fun Form(onAnswer: (MemorialType) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = MemorialType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

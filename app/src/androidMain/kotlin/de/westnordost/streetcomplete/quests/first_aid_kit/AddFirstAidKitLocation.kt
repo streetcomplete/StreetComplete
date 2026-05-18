@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.first_aid_kit
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -30,7 +31,7 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>() {
         mapData.filter("nodes with emergency = first_aid_kit")
 
     @Composable
-    override fun Form(onAnswer: (String) -> Unit, element: Element) {
+    override fun Form(onAnswer: (String) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddLocationDescriptionForm(onAnswer)
     }
 

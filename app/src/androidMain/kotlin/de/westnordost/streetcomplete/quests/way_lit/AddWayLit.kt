@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.way_lit
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -65,7 +66,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
     @Composable
-    override fun Form(onAnswer: (WayLitOrIsStepsAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (WayLitOrIsStepsAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
                 Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(WayLit(NO)) },

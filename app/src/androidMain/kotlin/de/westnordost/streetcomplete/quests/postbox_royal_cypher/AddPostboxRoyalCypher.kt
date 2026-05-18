@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -38,7 +39,7 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
         mapData.filter("nodes with amenity = post_box")
 
     @Composable
-    override fun Form(onAnswer: (PostboxRoyalCypher) -> Unit, element: Element) {
+    override fun Form(onAnswer: (PostboxRoyalCypher) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = PostboxRoyalCypher.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.max_speed
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -43,8 +44,8 @@ class AddMaxSpeed (
         mapData.filter("nodes with traffic_sign = city_limit")
 
     @Composable
-    override fun Form(onAnswer: (MaxSpeedAnswer) -> Unit, element: Element) {
-        AddMaxSpeedForm(onAnswer, element)
+    override fun Form(onAnswer: (MaxSpeedAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddMaxSpeedForm(onAnswer, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: MaxSpeedAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

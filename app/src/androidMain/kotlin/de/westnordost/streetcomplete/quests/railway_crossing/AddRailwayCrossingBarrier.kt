@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.railway_crossing
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -52,8 +53,8 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier> {
         if (!crossingFilter.matches(element)) false else null
 
     @Composable
-    override fun Form(onAnswer: (RailwayCrossingBarrier) -> Unit, element: Element) {
-        AddRailwayCrossingBarrierForm(onAnswer, element)
+    override fun Form(onAnswer: (RailwayCrossingBarrier) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddRailwayCrossingBarrierForm(onAnswer, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: RailwayCrossingBarrier, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

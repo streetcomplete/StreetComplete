@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
@@ -13,7 +14,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddClothingBinOperatorForm(
-    onAnswer: (ClothingBinOperatorAnswer) -> Unit
+    onAnswer: (ClothingBinOperatorAnswer) -> Unit,
+    countryInfo: CountryInfo,
 ) {
     var confirmNoSign by remember { mutableStateOf(false) }
 

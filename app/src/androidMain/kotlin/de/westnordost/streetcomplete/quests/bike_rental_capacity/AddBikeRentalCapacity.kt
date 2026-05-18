@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bike_rental_capacity
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -34,7 +35,7 @@ class AddBikeRentalCapacity : OsmFilterQuestType<Int>() {
         mapData.filter("nodes, ways with amenity = bicycle_rental")
 
     @Composable
-    override fun Form(onAnswer: (Int) -> Unit, element: Element) {
+    override fun Form(onAnswer: (Int) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         CountInputQuestForm(
             icon = painterResource(Res.drawable.count_bicycle),
             onClickOk = onAnswer

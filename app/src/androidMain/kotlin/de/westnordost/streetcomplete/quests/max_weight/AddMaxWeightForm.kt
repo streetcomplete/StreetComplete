@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
@@ -19,6 +20,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun AddMaxWeightForm(
     onAnswer: (List<MaxWeight>) -> Unit,
+    countryInfo: CountryInfo,
 ) {
     var signs by rememberSerializable { mutableStateOf(emptyList<MaxWeight>()) }
 

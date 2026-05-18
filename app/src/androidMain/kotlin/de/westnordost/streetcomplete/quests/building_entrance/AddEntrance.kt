@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -85,7 +86,7 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
         if (!withoutEntranceFilter.matches(element) || element !is Node || !element.couldBeAnEntrance()) false else null
 
     @Composable
-    override fun Form(onAnswer: (EntranceAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (EntranceAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
             items = remember { EntranceType.entries + EntranceAnswer.IsDeadEnd },
             itemContent = { Text(stringResource(it.text)) },

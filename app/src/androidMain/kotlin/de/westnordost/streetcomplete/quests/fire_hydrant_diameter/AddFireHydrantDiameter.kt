@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.fire_hydrant_diameter
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -46,8 +47,8 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
         mapData.filter("nodes with emergency = fire_hydrant")
 
     @Composable
-    override fun Form(onAnswer: (FireHydrantDiameterAnswer) -> Unit, element: Element) {
-        AddFireHydrantDiameterForm(onAnswer)
+    override fun Form(onAnswer: (FireHydrantDiameterAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddFireHydrantDiameterForm(onAnswer, countryInfo)
     }
 
     override fun applyAnswerTo(answer: FireHydrantDiameterAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

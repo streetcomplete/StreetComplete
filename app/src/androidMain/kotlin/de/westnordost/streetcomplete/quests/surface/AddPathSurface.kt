@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -44,7 +45,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (SurfaceOrIsStepsAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (SurfaceOrIsStepsAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddPathSurfaceForm(onAnswer, element)
     }
 

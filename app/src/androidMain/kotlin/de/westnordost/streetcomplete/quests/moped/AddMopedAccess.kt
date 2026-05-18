@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.moped
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -37,7 +38,7 @@ class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>() {
     override val achievements = listOf(EditTypeAchievement.BICYCLIST)
 
     @Composable
-    override fun Form(onAnswer: (MopedAccessAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (MopedAccessAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
             items = MopedAccessAnswer.entries,
             itemContent = { Text(stringResource(it.text)) },

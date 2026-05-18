@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.leaf_detail
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -52,7 +53,7 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     }
 
     @Composable
-    override fun Form(onAnswer: (ForestLeafType) -> Unit, element: Element) {
+    override fun Form(onAnswer: (ForestLeafType) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = ForestLeafType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.seating
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -37,7 +38,7 @@ class AddSeating : OsmFilterQuestType<Seating>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (Seating) -> Unit, element: Element) {
+    override fun Form(onAnswer: (Seating) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
             items = Seating.entries,
             itemContent = { Text(stringResource(it.text)) },

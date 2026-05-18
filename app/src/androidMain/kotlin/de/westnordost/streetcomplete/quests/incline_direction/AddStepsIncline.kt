@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.incline_direction
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -26,7 +27,7 @@ class AddStepsIncline : OsmFilterQuestType<Incline>() {
     override val hint = Res.string.quest_arrow_tutorial
 
     @Composable
-    override fun Form(onAnswer: (Incline) -> Unit, element: Element) {
+    override fun Form(onAnswer: (Incline) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddInclineForm(onAnswer, geometry)
     }
 

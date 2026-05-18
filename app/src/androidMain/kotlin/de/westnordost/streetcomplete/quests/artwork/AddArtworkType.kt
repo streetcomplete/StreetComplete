@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.artwork
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -28,7 +29,7 @@ class AddArtworkType : OsmFilterQuestType<ArtworkType>() {
         mapData.filter("nodes, ways with tourism = artwork")
 
     @Composable
-    override fun Form(onAnswer: (ArtworkType) -> Unit, element: Element) {
+    override fun Form(onAnswer: (ArtworkType) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = ArtworkType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

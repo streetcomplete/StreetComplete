@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.fee.Fee
 import de.westnordost.streetcomplete.osm.maxstay.MaxStay
 import de.westnordost.streetcomplete.osm.maxstay.MaxStayInput
@@ -22,7 +23,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddParkingFeeForm(
-    onAnswer: (ParkingFeeAnswer) -> Unit
+    onAnswer: (ParkingFeeAnswer) -> Unit,
+    countryInfo: CountryInfo
 ) {
     var answer by rememberSerializable { mutableStateOf<ParkingFeeAnswer?>(null) }
 

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -75,8 +76,9 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
         mapData.filter("nodes with amenity = post_box")
 
     @Composable
-    override fun Form(onAnswer: (CollectionTimesAnswer) -> Unit, element: Element) =
-        AddPostboxCollectionTimesForm(onAnswer, element)
+    override fun Form(onAnswer: (CollectionTimesAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddPostboxCollectionTimesForm(onAnswer, element, countryInfo)
+    }
 
     override fun applyAnswerTo(answer: CollectionTimesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

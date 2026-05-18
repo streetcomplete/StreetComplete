@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.barrier_type
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -43,7 +44,7 @@ class AddBarrierOnRoad : OsmElementQuestType<BarrierType> {
         if (element !is Node || element.tags.isNotEmpty()) false else null
 
     @Composable
-    override fun Form(onAnswer: (BarrierType) -> Unit, element: Element) {
+    override fun Form(onAnswer: (BarrierType) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddBarrierTypeForm(onAnswer)
     }
 

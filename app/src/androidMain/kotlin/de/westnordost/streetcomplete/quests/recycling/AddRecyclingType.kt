@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.recycling
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -31,7 +32,7 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
         mapData.filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")
 
     @Composable
-    override fun Form(onAnswer: (RecyclingType) -> Unit, element: Element) {
+    override fun Form(onAnswer: (RecyclingType) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = RecyclingType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

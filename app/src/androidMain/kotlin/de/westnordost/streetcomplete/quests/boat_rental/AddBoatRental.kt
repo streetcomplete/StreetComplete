@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.boat_rental
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -31,12 +32,11 @@ class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>() {
     override val achievements = listOf(OUTDOORS, RARE)
 
     @Composable
-    override fun Form(onAnswer: (Set<BoatRental>) -> Unit, element: Element) {
+    override fun Form(onAnswer: (Set<BoatRental>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemsSelectQuestForm(
             items = BoatRental.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = onAnswer,
-            favoriteKey = "AddBoatRentalForm",
         )
     }
 

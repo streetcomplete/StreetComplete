@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_height
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -158,8 +159,8 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
     }
 
     @Composable
-    override fun Form(onAnswer: (MaxHeightAnswer) -> Unit, element: Element) {
-        AddMaxHeightForm(onAnswer, element)
+    override fun Form(onAnswer: (MaxHeightAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddMaxHeightForm(onAnswer, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: MaxHeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

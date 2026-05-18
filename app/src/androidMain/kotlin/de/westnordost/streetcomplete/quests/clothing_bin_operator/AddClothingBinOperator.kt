@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.clothing_bin_operator
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -49,8 +50,8 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer> {
         mapData.filter("nodes with amenity = recycling")
 
     @Composable
-    override fun Form(onAnswer: (ClothingBinOperatorAnswer) -> Unit, element: Element) {
-        AddClothingBinOperatorForm(onAnswer)
+    override fun Form(onAnswer: (ClothingBinOperatorAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddClothingBinOperatorForm(onAnswer, countryInfo)
     }
 
     override fun applyAnswerTo(answer: ClothingBinOperatorAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

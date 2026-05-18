@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.kerb_height
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -48,7 +49,7 @@ class AddKerbHeight : OsmElementQuestType<KerbHeight> {
         }
 
     @Composable
-    override fun Form(onAnswer: (KerbHeight) -> Unit, element: Element) {
+    override fun Form(onAnswer: (KerbHeight) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = KerbHeight.entries,
             itemsPerRow = 2,

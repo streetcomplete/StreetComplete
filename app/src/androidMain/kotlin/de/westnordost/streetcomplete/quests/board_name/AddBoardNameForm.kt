@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
@@ -12,7 +13,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddBoardNameForm(
-    onAnswer: (BoardNameAnswer) -> Unit
+    onAnswer: (BoardNameAnswer) -> Unit,
+    countryInfo: CountryInfo
 ) {
     var confirmNoName by remember { mutableStateOf(false) }
 

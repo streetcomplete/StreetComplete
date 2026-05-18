@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.orchard_produce
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm
@@ -11,7 +12,8 @@ import org.koin.android.ext.android.inject
 
 @Composable
 fun AddOrchardProduceForm(
-    onAnswer: (Set<OrchardProduce>) -> Unit
+    onAnswer: (Set<OrchardProduce>) -> Unit,
+    countryInfo: CountryInfo
 ) {
     val items = remember {
         val order = countryInfo.orchardProduces

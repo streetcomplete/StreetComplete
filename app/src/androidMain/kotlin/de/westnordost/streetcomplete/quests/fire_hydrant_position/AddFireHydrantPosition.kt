@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.fire_hydrant_position
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -33,7 +34,7 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
         mapData.filter("nodes with emergency = fire_hydrant")
 
     @Composable
-    override fun Form(onAnswer: (FireHydrantPosition) -> Unit, element: Element) {
+    override fun Form(onAnswer: (FireHydrantPosition) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = FireHydrantPosition.entries,
             itemsPerRow = 2,

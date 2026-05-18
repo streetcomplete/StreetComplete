@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
@@ -27,6 +28,7 @@ import org.jetbrains.compose.resources.stringResource
 fun AddHousenumberForm(
     onAnswer: (HouseNumberAnswer) -> Unit,
     element: Element,
+    countryInfo: CountryInfo,
 ) {
     var addressNumberAndName by rememberSerializable {
         val number = if (lastWasBlock) BlockAndHouseNumber("", "") else HouseNumber("")

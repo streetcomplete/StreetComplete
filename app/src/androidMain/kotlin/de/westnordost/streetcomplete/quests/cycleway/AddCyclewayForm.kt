@@ -11,6 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -44,6 +45,7 @@ fun AddCyclewayForm(
     onAnswer: (Sides<CyclewayAndDirection>) -> Unit,
     element: Element,
     geometry: ElementGeometry,
+    countryInfo: CountryInfo,
 )  {
     val favKey = "AddCyclewayForm"
     val lastPickedViewModel = koinViewModel<LastPickedChipsRowViewModel>()

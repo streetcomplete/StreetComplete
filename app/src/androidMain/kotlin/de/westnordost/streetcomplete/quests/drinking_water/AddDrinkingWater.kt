@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.drinking_water
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -53,7 +54,7 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
         """)
 
     @Composable
-    override fun Form(onAnswer: (DrinkingWater) -> Unit, element: Element) {
+    override fun Form(onAnswer: (DrinkingWater) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
             items = DrinkingWater.entries,
             itemContent = { Text(stringResource(it.text)) },

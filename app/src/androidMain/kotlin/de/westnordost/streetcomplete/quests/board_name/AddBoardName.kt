@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.board_name
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -34,8 +35,8 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>() {
         mapData.filter("nodes, ways, relations with tourism = information and information = board")
 
     @Composable
-    override fun Form(onAnswer: (BoardNameAnswer) -> Unit, element: Element) {
-        AddBoardNameForm(onAnswer)
+    override fun Form(onAnswer: (BoardNameAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddBoardNameForm(onAnswer, countryInfo)
     }
 
     override fun applyAnswerTo(answer: BoardNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

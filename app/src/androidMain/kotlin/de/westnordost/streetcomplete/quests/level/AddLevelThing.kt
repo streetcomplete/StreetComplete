@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.level
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -82,14 +83,15 @@ class AddLevelThing : OsmElementQuestType<String> {
     }
 
     @Composable
-    override fun Form(onAnswer: (String) -> Unit, element: Element) {
+    override fun Form(onAnswer: (String) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddLevelForm(
             onAnswer = onAnswer,
             filterPredicate = {
                 // The AddLevel quest only shows places on the same level, while the AddLevelThing quest
                 // shows Things AND Places
                 it.tags["level"] != null && (it.isPlaceOrDisusedPlace() || it.isThing())
-            }
+            },
+            geometry = geometry
         )
     }
 

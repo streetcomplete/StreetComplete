@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.parking_fee
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -32,8 +33,8 @@ class AddBikeParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
     override val achievements = listOf(BICYCLIST)
 
     @Composable
-    override fun Form(onAnswer: (ParkingFeeAnswer) -> Unit, element: Element) {
-        AddParkingFeeForm(onAnswer)
+    override fun Form(onAnswer: (ParkingFeeAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddParkingFeeForm(onAnswer, countryInfo)
     }
 
     override fun applyAnswerTo(answer: ParkingFeeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.firewood
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -45,7 +46,7 @@ class AddFirewood : OsmFilterQuestType<Boolean>() {
         mapData.filter("nodes, ways with leisure = firepit or amenity = bbq or tourism = wilderness_hut")
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit, element: Element) {
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         YesNoQuestForm(onAnswer)
     }
 

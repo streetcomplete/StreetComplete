@@ -94,7 +94,7 @@ class AddCycleway(
         """)
 
     @Composable
-    override fun Form(onAnswer: (Sides<CyclewayAndDirection>) -> Unit, element: Element) {
+    override fun Form(onAnswer: (Sides<CyclewayAndDirection>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddCyclewayForm(onAnswer, element, geometry)
     }
 

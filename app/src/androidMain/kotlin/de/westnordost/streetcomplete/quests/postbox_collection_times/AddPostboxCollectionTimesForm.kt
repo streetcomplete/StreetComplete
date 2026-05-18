@@ -9,6 +9,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
@@ -25,6 +26,7 @@ import org.jetbrains.compose.resources.stringResource
 fun AddPostboxCollectionTimesForm(
     onAnswer: (CollectionTimesAnswer) -> Unit,
     element: Element,
+    countryInfo: CountryInfo,
 ) {
     val oh = remember { element.tags["collection_times"]?.toOpeningHoursOrNull(lenient = true) }
     val originalOpeningHours = remember { oh?.toHierarchicOpeningHours(allowTimePoints = true) }

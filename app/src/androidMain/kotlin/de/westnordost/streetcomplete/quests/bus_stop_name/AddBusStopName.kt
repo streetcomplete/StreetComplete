@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bus_stop_name
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -38,8 +39,8 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
     override val hint = Res.string.quest_stopName_hint
 
     @Composable
-    override fun Form(onAnswer: (BusStopNameAnswer) -> Unit, element: Element) {
-        AddBusStopNameForm(onAnswer)
+    override fun Form(onAnswer: (BusStopNameAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddBusStopNameForm(onAnswer, countryInfo)
     }
 
     override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

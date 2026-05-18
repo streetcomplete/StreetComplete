@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.atm_operator
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -25,7 +26,7 @@ class AddAtmOperator : OsmFilterQuestType<String>() {
         mapData.filter("nodes with amenity = atm")
 
     @Composable
-    override fun Form(onAnswer: (String) -> Unit, element: Element) {
+    override fun Form(onAnswer: (String) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         NameWithSuggestionsQuestForm(
             suggestions = countryInfo.atmOperators,
             onClickOk = onAnswer

@@ -162,8 +162,8 @@ class AddHousenumber(
         """.toElementFilterExpression())
 
     @Composable
-    override fun Form(onAnswer: (HouseNumberAnswer) -> Unit, element: Element) {
-        AddHousenumberForm(onAnswer, element,)
+    override fun Form(onAnswer: (HouseNumberAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddHousenumberForm(onAnswer, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

@@ -10,13 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddCyclewaySegregationForm(
-    onAnswer: (CyclewaySegregation) -> Unit
+    onAnswer: (CyclewaySegregation) -> Unit,
+    countryInfo: CountryInfo,
 ) {
     ItemSelectQuestForm(
         items = CyclewaySegregation.entries,
@@ -35,6 +37,5 @@ fun AddCyclewaySegregationForm(
             }
         },
         onClickOk = onAnswer,
-        favoriteKey = "AddCyclewaySegregationForm",
     )
 }

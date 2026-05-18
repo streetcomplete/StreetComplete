@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.oneway
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -43,8 +44,8 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
         """.toElementFilterExpression())
 
     @Composable
-    override fun Form(onAnswer: (OnewayAnswer) -> Unit, element: Element) {
-        AddOnewayForm(onAnswer, geometry, )
+    override fun Form(onAnswer: (OnewayAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddOnewayForm(onAnswer, geometry)
     }
 
     override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

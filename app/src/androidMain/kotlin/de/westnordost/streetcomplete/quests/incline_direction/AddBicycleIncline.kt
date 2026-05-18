@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.incline_direction
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -52,7 +53,7 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
     }
 
     @Composable
-    override fun Form(onAnswer: (BicycleInclineAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (BicycleInclineAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddBicycleInclineForm(onAnswer, geometry, )
     }
 

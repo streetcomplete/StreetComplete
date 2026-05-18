@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -26,7 +27,7 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>() {
     override val achievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
 
     @Composable
-    override fun Form(onAnswer: (BicycleBarrierTypeAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (BicycleBarrierTypeAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = BicycleBarrierType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

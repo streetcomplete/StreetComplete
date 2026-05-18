@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.access_point_ref
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -26,7 +27,7 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
     override val achievements = listOf(EditTypeAchievement.LIFESAVER, EditTypeAchievement.RARE)
 
     @Composable
-    override fun Form(onAnswer: (AccessPointRefAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (AccessPointRefAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddAccessPointRefForm(onAnswer)
     }
 

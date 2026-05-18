@@ -9,6 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameter.Unit.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
@@ -18,7 +19,8 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddFireHydrantDiameterForm(
-    onAnswer: (FireHydrantDiameterAnswer) -> Unit
+    onAnswer: (FireHydrantDiameterAnswer) -> Unit,
+    countryInfo: CountryInfo
 ) {
     var diameter by rememberSaveable() { mutableStateOf<Int?>(null) }
 

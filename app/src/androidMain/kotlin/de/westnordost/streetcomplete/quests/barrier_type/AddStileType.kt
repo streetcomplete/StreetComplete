@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.barrier_type
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -17,7 +18,6 @@ import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import kotlin.IllegalStateException
 
 class AddStileType : OsmElementQuestType<StileTypeAnswer> {
 
@@ -52,7 +52,7 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
     override val achievements = listOf(OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (StileTypeAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (StileTypeAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = StileTypeAnswer.entries,
             itemsPerRow = 2,

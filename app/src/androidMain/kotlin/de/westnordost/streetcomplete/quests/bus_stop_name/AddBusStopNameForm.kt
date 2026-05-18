@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
@@ -21,6 +22,7 @@ import org.koin.compose.koinInject
 @Composable
 fun AddBusStopNameForm(
     onAnswer: (BusStopNameAnswer) -> Unit,
+    countryInfo: CountryInfo,
     nameSuggestionsSource: NameSuggestionsSource = koinInject()
 ) {
     var initialLocalizedNames by rememberSerializable { mutableStateOf<List<LocalizedName>?>(null) }

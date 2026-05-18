@@ -22,6 +22,7 @@ import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
@@ -38,6 +39,8 @@ import de.westnordost.streetcomplete.ui.util.annotateLinks
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
+import org.koin.core.qualifier.named
 
 /** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
@@ -56,13 +59,14 @@ fun QuestForm(
     hasChanges: Boolean = isComplete,
     title: String = stringResource(LocalQuestType.current!!.title),
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
-        nameAndLocationLabel(element, featureDictionary)
+        nameAndLocationLabel(element, featureDictionary.value)
     },
     hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
     hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: List<Answer> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
+    featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
     content: @Composable BoxScope.() -> Unit
 ) {
     QuestForm(
@@ -98,13 +102,14 @@ fun QuestForm(
     modifier: Modifier = Modifier,
     title: String = stringResource(LocalQuestType.current!!.title),
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
-        nameAndLocationLabel(element, featureDictionary)
+        nameAndLocationLabel(element, featureDictionary.value)
     },
     hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
     hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: List<Answer> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
+    featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
     QuestForm(

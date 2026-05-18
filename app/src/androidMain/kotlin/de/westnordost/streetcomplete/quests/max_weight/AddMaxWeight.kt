@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_weight
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -79,8 +80,8 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>> {
     }
 
     @Composable
-    override fun Form(onAnswer: (List<MaxWeight>) -> Unit, element: Element) {
-        AddMaxWeightForm(onAnswer)
+    override fun Form(onAnswer: (List<MaxWeight>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddMaxWeightForm(onAnswer, countryInfo)
     }
 
     override fun applyAnswerTo(answer: List<MaxWeight>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.segregated
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -41,8 +42,8 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
     override val achievements = listOf(BICYCLIST, OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (CyclewaySegregation) -> Unit, element: Element) {
-        AddCyclewaySegregationForm(onAnswer)
+    override fun Form(onAnswer: (CyclewaySegregation) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddCyclewaySegregationForm(onAnswer, countryInfo)
     }
 
     override fun applyAnswerTo(answer: CyclewaySegregation, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

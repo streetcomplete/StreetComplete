@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -39,8 +40,8 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
     override val hint = Res.string.quest_street_side_puzzle_tutorial
 
     @Composable
-    override fun Form(onAnswer: (SidewalkSurfaceAnswer) -> Unit, element: Element) {
-        AddSidewalkSurfaceForm(onAnswer, element, geometry)
+    override fun Form(onAnswer: (SidewalkSurfaceAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddSidewalkSurfaceForm(onAnswer, element, geometry, countryInfo)
     }
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

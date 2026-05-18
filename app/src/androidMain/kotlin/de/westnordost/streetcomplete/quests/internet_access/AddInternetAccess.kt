@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.internet_access
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -40,7 +41,7 @@ class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     @Composable
-    override fun Form(onAnswer: (Set<InternetAccess>) -> Unit, element: Element) {
+    override fun Form(onAnswer: (Set<InternetAccess>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddInternetAccessForm(onAnswer)
     }
 

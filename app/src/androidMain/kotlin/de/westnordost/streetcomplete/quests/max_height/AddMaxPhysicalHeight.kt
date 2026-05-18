@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.max_height
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -73,8 +74,8 @@ class AddMaxPhysicalHeight(
         nodeFilter.matches(element) || wayFilter.matches(element)
 
     @Composable
-    override fun Form(onAnswer: (MaxPhysicalHeightAnswer) -> Unit, element: Element) {
-        AddMaxPhysicalHeightForm(onAnswer, element)
+    override fun Form(onAnswer: (MaxPhysicalHeightAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddMaxPhysicalHeightForm(onAnswer, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: MaxPhysicalHeightAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.isPlace
@@ -23,6 +24,7 @@ import org.koin.core.qualifier.named
 fun ShopTypeQuestForm(
     onClickOk: (ShopTypeAnswer) -> Unit,
     element: Element,
+    countryInfo: CountryInfo,
     modifier: Modifier = Modifier,
     otherAnswers: List<Answer> = emptyList(),
     featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),

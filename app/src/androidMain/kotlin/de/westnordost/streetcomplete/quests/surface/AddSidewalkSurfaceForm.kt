@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -33,6 +34,7 @@ fun AddSidewalkSurfaceForm(
     onAnswer: (SidewalkSurfaceAnswer) -> Unit,
     element: Element,
     geometry: ElementGeometry,
+    countryInfo: CountryInfo,
 ) {
     val favKey = "AddSidewalkSurfaceForm"
     val lastPickedViewModel = koinViewModel<LastPickedChipsRowViewModel>()

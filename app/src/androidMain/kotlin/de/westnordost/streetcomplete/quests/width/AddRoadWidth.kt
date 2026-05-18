@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.width
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -74,8 +75,8 @@ class AddRoadWidth(
         mapData.filter("nodes with traffic_calming ~ choker|chicane|island|choked_island|choked_table")
 
     @Composable
-    override fun Form(onAnswer: (WidthAnswer) -> Unit, element: Element) {
-        AddWidthForm(onAnswer, element)
+    override fun Form(onAnswer: (WidthAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddWidthForm(onAnswer, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

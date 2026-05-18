@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.address
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -83,7 +84,7 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
         """)
 
     @Composable
-    override fun Form(onAnswer: (StreetOrPlaceName) -> Unit, element: Element) {
+    override fun Form(onAnswer: (StreetOrPlaceName) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddAddressStreetForm(onAnswer)
     }
 

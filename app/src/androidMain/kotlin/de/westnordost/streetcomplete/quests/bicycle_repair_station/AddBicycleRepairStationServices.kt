@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.bicycle_repair_station
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -40,7 +41,7 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
     override val achievements = listOf(BICYCLIST)
 
     @Composable
-    override fun Form(onAnswer: (Set<BicycleRepairStationService>) -> Unit, element: Element) {
+    override fun Form(onAnswer: (Set<BicycleRepairStationService>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemsSelectQuestForm(
             items = BicycleRepairStationService.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

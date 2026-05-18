@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.road_name
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -40,8 +41,8 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
     override val hint = Res.string.quest_streetName_hint
 
     @Composable
-    override fun Form(onAnswer: (RoadNameAnswer) -> Unit, element: Element) {
-        AddRoadNameForm(onAnswer)
+    override fun Form(onAnswer: (RoadNameAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddRoadNameForm(onAnswer, countryInfo)
     }
 
     override fun applyAnswerTo(answer: RoadNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

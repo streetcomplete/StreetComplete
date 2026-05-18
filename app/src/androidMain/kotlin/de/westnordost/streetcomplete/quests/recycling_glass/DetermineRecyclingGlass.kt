@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.recycling_glass
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -40,7 +41,7 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
         mapData.filter("nodes with amenity = recycling")
 
     @Composable
-    override fun Form(onAnswer: (RecyclingGlass) -> Unit, element: Element) {
+    override fun Form(onAnswer: (RecyclingGlass) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
                 Answer(stringResource(Res.string.quest_recycling_type_any_glass)) { onAnswer(ANY) },

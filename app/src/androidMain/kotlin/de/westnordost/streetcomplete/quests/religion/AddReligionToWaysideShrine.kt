@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.religion
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -24,8 +25,8 @@ class AddReligionToWaysideShrine : OsmFilterQuestType<Religion>() {
     override val achievements = listOf(OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (Religion) -> Unit, element: Element) {
-        AddReligionForm(onAnswer)
+    override fun Form(onAnswer: (Religion) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddReligionForm(onAnswer, countryInfo)
     }
 
     override fun applyAnswerTo(answer: Religion, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

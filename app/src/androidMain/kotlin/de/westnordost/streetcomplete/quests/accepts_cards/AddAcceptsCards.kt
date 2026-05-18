@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.accepts_cards
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -41,7 +42,7 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (CardAcceptance) -> Unit, element: Element) {
+    override fun Form(onAnswer: (CardAcceptance) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
             items = CardAcceptance.entries,
             itemContent = { Text(stringResource(it.text)) },

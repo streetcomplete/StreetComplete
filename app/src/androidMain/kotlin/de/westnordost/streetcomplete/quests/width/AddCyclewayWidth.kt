@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.width
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
@@ -47,8 +48,8 @@ class AddCyclewayWidth(
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
 
     @Composable
-    override fun Form(onAnswer: (WidthAnswer) -> Unit, element: Element) {
-        AddWidthForm(onAnswer, element)
+    override fun Form(onAnswer: (WidthAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddWidthForm(onAnswer, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: WidthAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

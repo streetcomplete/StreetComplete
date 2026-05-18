@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installatio
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -35,7 +36,7 @@ class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallat
         mapData.filter("nodes, ways with barrier = cycle_barrier")
 
     @Composable
-    override fun Form(onAnswer: (BicycleBarrierInstallationAnswer) -> Unit, element: Element) {
+    override fun Form(onAnswer: (BicycleBarrierInstallationAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = BicycleBarrierInstallation.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },

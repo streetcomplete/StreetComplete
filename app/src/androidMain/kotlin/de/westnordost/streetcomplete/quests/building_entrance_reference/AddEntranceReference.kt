@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.building_entrance_reference
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -102,8 +103,9 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer> {
         mapData.filter { it.tags.containsKey("entrance") }.asSequence()
 
     @Composable
-    override fun Form(onAnswer: (EntranceReferenceAnswer) -> Unit, element: Element) =
+    override fun Form(onAnswer: (EntranceReferenceAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddEntranceReferenceForm(onAnswer)
+    }
 
     override fun applyAnswerTo(answer: EntranceReferenceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
