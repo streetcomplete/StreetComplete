@@ -147,7 +147,7 @@ fun AddCyclewayForm(
         QuestForm(
             isComplete =
                 (cycleways.left != null || !isLeftSideVisible) &&
-                    (cycleways.right != null || !isRightSideVisible),
+                (cycleways.right != null || !isRightSideVisible),
             hasChanges =
                 cycleways.left != null || cycleways.right != null,
             onClickOk = {

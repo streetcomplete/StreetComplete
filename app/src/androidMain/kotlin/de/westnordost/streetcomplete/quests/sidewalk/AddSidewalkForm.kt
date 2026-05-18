@@ -12,17 +12,21 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.LastPickedChipsRowViewModel
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun AddSidewalkForm(
     onAnswer: (Sides<Sidewalk>) -> Unit,
 ) {
-    val lastPicked = remember { prefs.getLastPicked<Sides<Sidewalk>>(this::class.simpleName!!) }
+    val favKey = "AddSidewalkForm"
+    val lastPickedViewModel = koinViewModel<LastPickedChipsRowViewModel>()
+    val lastPicked = remember { lastPickedViewModel.getFavorites<Sides<Sidewalk>>(favKey) }
     var sidewalks by rememberSerializable { mutableStateOf(Sides<Sidewalk>(null, null)) }
 
     var showNoSidewalksHint by remember { mutableStateOf(false) }
@@ -32,7 +36,7 @@ fun AddSidewalkForm(
         hasChanges = sidewalks.left != null || sidewalks.right != null,
         onClickOk = {
             onAnswer(sidewalks)
-            prefs.setLastPicked(this::class.simpleName!!, listOf(sidewalks))
+            lastPickedViewModel.setFavorites(favKey, listOf(sidewalks))
         },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_sidewalk_answer_none)) { showNoSidewalksHint = true }
