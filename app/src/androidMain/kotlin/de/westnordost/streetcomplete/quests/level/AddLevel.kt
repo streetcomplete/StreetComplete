@@ -93,7 +93,8 @@ class AddLevel : OsmElementQuestType<String> {
                 // The AddLevel quest only shows places on the same level, while the AddLevelThing quest
                 // shows Things AND Places
                 it.tags["level"] != null && it.isPlaceOrDisusedPlace()
-            }
+            },
+            geometry = geometry,
         )
     }
 

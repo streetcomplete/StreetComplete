@@ -7,6 +7,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.resources.*
@@ -17,16 +18,21 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun AddSidewalkForm(
     onAnswer: (Sides<Sidewalk>) -> Unit,
+    geometry: ElementGeometry,
 ) {
     val favKey = "AddSidewalkForm"
     val lastPickedViewModel = koinViewModel<LastPickedChipsRowViewModel>()
     val lastPicked = remember { lastPickedViewModel.getFavorites<Sides<Sidewalk>>(favKey) }
+
+    val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
+
     var sidewalks by rememberSerializable { mutableStateOf(Sides<Sidewalk>(null, null)) }
 
     var showNoSidewalksHint by remember { mutableStateOf(false) }
@@ -46,7 +52,7 @@ fun AddSidewalkForm(
             SidewalkForm(
                 value = sidewalks,
                 onValueChanged = { sidewalks = it },
-                geometryRotation = geometryRotation.floatValue,
+                geometryRotation = geometryRotation,
                 mapRotation = LocalMapRotation.current,
                 mapTilt = LocalMapTilt.current,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,

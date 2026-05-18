@@ -32,7 +32,7 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
 
     @Composable
     override fun Form(onAnswer: (LanesAnswer) -> Unit, element: Element) {
-        AddLanesForm(onAnswer)
+        AddLanesForm(onAnswer, geometry)
     }
 
     override fun applyAnswerTo(answer: LanesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

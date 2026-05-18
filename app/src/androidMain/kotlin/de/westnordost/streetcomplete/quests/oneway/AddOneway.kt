@@ -83,7 +83,7 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     @Composable
     override fun Form(onAnswer: (OnewayAnswer) -> Unit, element: Element) {
-        AddOnewayForm(onAnswer)
+        AddOnewayForm(onAnswer, geometry)
     }
 
     override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

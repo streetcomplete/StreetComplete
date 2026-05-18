@@ -30,6 +30,7 @@ import org.koin.core.qualifier.named
 fun AddLevelForm(
     onAnswer: (String) -> Unit,
     filterPredicate: (element: Element) -> Boolean,
+    geometry: ElementGeometry,
     mapDataSource: MapDataWithEditsSource = koinInject(),
     featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
 ) {

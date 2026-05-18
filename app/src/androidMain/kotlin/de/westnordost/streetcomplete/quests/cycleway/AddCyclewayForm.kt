@@ -11,6 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalContext
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
@@ -33,6 +34,7 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
@@ -41,6 +43,7 @@ import org.koin.androidx.compose.koinViewModel
 fun AddCyclewayForm(
     onAnswer: (Sides<CyclewayAndDirection>) -> Unit,
     element: Element,
+    geometry: ElementGeometry,
 )  {
     val favKey = "AddCyclewayForm"
     val lastPickedViewModel = koinViewModel<LastPickedChipsRowViewModel>()
@@ -80,6 +83,8 @@ fun AddCyclewayForm(
             emptyList()
         }
     }
+
+    val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 
     val isRoundabout = remember {
         element.tags["junction"] == "roundabout" || element.tags["junction"] == "circular"
@@ -121,7 +126,7 @@ fun AddCyclewayForm(
                 selectionMode = CyclewayFormSelectionMode.SELECT
             },
             selectionMode = selectionMode,
-            geometryRotation = geometryRotation.floatValue,
+            geometryRotation = geometryRotation,
             mapRotation = LocalMapRotation.current,
             mapTilt = LocalMapTilt.current,
             countryInfo = countryInfo,

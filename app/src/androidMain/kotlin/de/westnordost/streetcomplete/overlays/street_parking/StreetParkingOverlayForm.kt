@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
@@ -21,6 +22,8 @@ import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.math.getOrientationAtCenterLineInDegrees
+import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import org.koin.android.ext.android.inject
 
 class StreetParkingOverlayForm : AbstractOverlayForm() {
@@ -32,6 +35,8 @@ class StreetParkingOverlayForm : AbstractOverlayForm() {
         val lastPicked = remember {
             prefs.getLastPicked<Sides<StreetParking>>("StreetParkingOverlayForm")
         }
+
+        val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 
         val tags = element!!.tags
         val originalParking = remember {
@@ -52,11 +57,12 @@ class StreetParkingOverlayForm : AbstractOverlayForm() {
             },
             contentPadding = PaddingValues.Zero
         ) {
+
             StreetParkingForm(
                 value = parking,
                 onValueChanged = { parking = it },
                 width = tags["width"],
-                geometryRotation = geometryRotation.floatValue,
+                geometryRotation = geometryRotation,
                 mapRotation = LocalMapRotation.current,
                 mapTilt = LocalMapTilt.current,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,

@@ -40,7 +40,7 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
 
     @Composable
     override fun Form(onAnswer: (SidewalkSurfaceAnswer) -> Unit, element: Element) {
-        AddSidewalkSurfaceForm(onAnswer, element)
+        AddSidewalkSurfaceForm(onAnswer, element, geometry)
     }
 
     override fun applyAnswerTo(answer: SidewalkSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

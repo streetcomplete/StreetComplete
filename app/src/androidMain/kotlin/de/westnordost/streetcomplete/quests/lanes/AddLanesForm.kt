@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
@@ -16,12 +17,14 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddLanesForm(
     onAnswer: (LanesAnswer) -> Unit,
     element: Element,
+    geometry: ElementGeometry,
 ) {
     var answer by rememberSerializable { mutableStateOf(Lanes()) }
 
@@ -40,6 +43,7 @@ fun AddLanesForm(
     }
     val isOneway = remember { isOneway(element.tags) }
     val isReversedOneway = remember { isReversedOneway(element.tags) }
+    val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 
     QuestForm(
         isComplete =
@@ -65,7 +69,7 @@ fun AddLanesForm(
             LanesForm(
                 value = answer,
                 onValueChanged = { answer = it },
-                wayRotation = geometryRotation.floatValue,
+                wayRotation = geometryRotation,
                 mapRotation = LocalMapRotation.current,
                 mapTilt = LocalMapTilt.current,
                 isOneway = isOneway,

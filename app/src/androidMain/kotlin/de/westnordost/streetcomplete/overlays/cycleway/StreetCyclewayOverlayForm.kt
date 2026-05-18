@@ -48,6 +48,7 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
@@ -71,6 +72,8 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
         }
         val originalBicycleBoulevard = remember { parseBicycleBoulevard(tags) }
         val originalBicycleInPedestrianStreet = remember { parseBicycleInPedestrianStreet(tags) }
+
+        val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 
         var cycleways by rememberSerializable { mutableStateOf(originalCycleway) }
         var bicycleBoulevard by rememberSerializable { mutableStateOf(originalBicycleBoulevard) }
@@ -160,7 +163,7 @@ class StreetCyclewayOverlayForm : AbstractOverlayForm() {
                         selectionMode = CyclewayFormSelectionMode.SELECT
                     },
                     selectionMode = selectionMode,
-                    geometryRotation = geometryRotation.floatValue,
+                    geometryRotation = geometryRotation,
                     mapRotation = LocalMapRotation.current,
                     mapTilt = LocalMapTilt.current,
                     countryInfo = countryInfo,

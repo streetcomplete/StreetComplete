@@ -27,7 +27,7 @@ class AddStepsIncline : OsmFilterQuestType<Incline>() {
 
     @Composable
     override fun Form(onAnswer: (Incline) -> Unit, element: Element) {
-        AddInclineForm(onAnswer)
+        AddInclineForm(onAnswer, geometry)
     }
 
     override fun applyAnswerTo(answer: Incline, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =

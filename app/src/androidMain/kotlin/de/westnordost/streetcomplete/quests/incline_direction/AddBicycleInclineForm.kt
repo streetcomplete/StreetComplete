@@ -5,20 +5,25 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
+import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddBicycleInclineForm(
     onAnswer: (BicycleInclineAnswer) -> Unit,
+    geometry: ElementGeometry,
 ) {
+    val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
     var confirmUpAndDown by remember { mutableStateOf(false) }
+
 
     ItemSelectQuestForm(
         items = Incline.entries,
@@ -27,7 +32,7 @@ fun AddBicycleInclineForm(
             ImageWithLabel(
                 painter = painterResource(item.icon),
                 label = stringResource(Res.string.quest_steps_incline_up),
-                imageRotation = geometryRotation.floatValue - LocalMapRotation.current
+                imageRotation = geometryRotation - LocalMapRotation.current
             )
         },
         onClickOk = { onAnswer(RegularBicycleInclineAnswer(it)) },

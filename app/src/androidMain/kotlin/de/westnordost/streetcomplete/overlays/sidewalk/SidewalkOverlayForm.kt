@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import org.koin.android.ext.android.inject
 
 class SidewalkOverlayForm : AbstractOverlayForm() {
@@ -37,6 +38,8 @@ class SidewalkOverlayForm : AbstractOverlayForm() {
                 ?.validOrNullValues()
                 ?: Sides<Sidewalk>(null, null)
         }
+        val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
+
         var sidewalks by rememberSerializable { mutableStateOf(originalSidewalks) }
 
         OverlayForm(
@@ -53,7 +56,7 @@ class SidewalkOverlayForm : AbstractOverlayForm() {
             SidewalkForm(
                 value = sidewalks,
                 onValueChanged = { sidewalks = it },
-                geometryRotation = geometryRotation.floatValue,
+                geometryRotation = geometryRotation,
                 mapRotation = LocalMapRotation.current,
                 mapTilt = LocalMapTilt.current,
                 isLeftHandTraffic = countryInfo.isLeftHandTraffic,
