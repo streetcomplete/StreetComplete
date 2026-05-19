@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.width
 
-import android.os.Bundle
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,37 +17,45 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
-import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import de.westnordost.streetcomplete.screens.measure.ArMeasureViewModel
+import de.westnordost.streetcomplete.screens.measure.LastArMeasurementResultEffect
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
-import org.koin.android.ext.android.inject
-import org.koin.compose.koinInject
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun AddWidthForm(
     onAnswer: (WidthAnswer) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
-    checkArSupport: ArSupportChecker = koinInject()
 ) {
-    var confirmDubiousRoadWidth by remember { mutableStateOf(false) }
+    val viewModel = koinViewModel<ArMeasureViewModel>()
+    val arIsSupported = remember { viewModel.isSupported() }
+    val lastArMeasurementResult by viewModel.measurementResult.collectAsState()
 
     val isRoad = remember(element) { element.tags["highway"] in ALL_ROADS }
-    val arIsSupported = remember { checkArSupport() }
 
     var length by rememberSerializable { mutableStateOf<Length?>(null) }
     var isArMeasurement by rememberSaveable { mutableStateOf<Boolean>(false) }
 
-    // TODO compose-quest-form not called from anywhere yet
-    fun onTookMeasurement(len: Length) {
-        length = len
-        isArMeasurement = true
-    }
+    var confirmDubiousRoadWidth by remember { mutableStateOf(false) }
+
+    LastArMeasurementResultEffect(
+        lastResult = lastArMeasurementResult,
+        onMeasureSuccess = {
+            length = it
+            isArMeasurement = true
+            viewModel.resetMeasurementResult()
+        },
+        onConfirmDisableArQuests = {
+            viewModel.disableArQuests()
+            viewModel.resetMeasurementResult()
+        }
+    )
 
     QuestForm(
         isComplete = length != null,
@@ -59,27 +67,26 @@ fun AddWidthForm(
             } else {
                 confirmDubiousRoadWidth = true
             }
-        },
-        content = {
-            Column {
-                if(isRoad) {
-                    Text(stringResource(Res.string.quest_road_width_explanation))
-                }
-
-                LengthForm(
-                    length = length,
-                    onChange = {
-                        isArMeasurement = false
-                        length = it
-                    },
-                    selectableUnits = countryInfo.lengthUnits,
-                    showMeasureButton = arIsSupported,
-                    onClickMeasure = { takeMeasurement(it, measureVertical = false) },
-                    modifier = Modifier.fillMaxWidth(),
-                )
+        }
+    ) {
+        Column {
+            if (isRoad) {
+                Text(stringResource(Res.string.quest_road_width_explanation))
             }
-        },
-    )
+
+            LengthForm(
+                length = length,
+                onChange = {
+                    isArMeasurement = false
+                    length = it
+                },
+                selectableUnits = countryInfo.lengthUnits,
+                showMeasureButton = arIsSupported,
+                onClickMeasure = { viewModel.measure(lengthUnit = it, measureVertical = false) },
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+    }
 
     if (confirmDubiousRoadWidth) {
         QuestConfirmationDialog(

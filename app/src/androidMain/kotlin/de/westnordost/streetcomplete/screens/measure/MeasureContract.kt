@@ -21,16 +21,12 @@ class MeasureContract : ActivityResultContract<MeasureContract.Params, Length?>(
         val intent = context.packageManager.getLaunchIntentForPackage(ApplicationConstants.STREETMEASURE)
             ?: throw ActivityNotFoundException()
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-        val attributes = context.obtainStyledAttributes(intArrayOf(android.R.attr.colorAccent))
-        val argb = attributes.getColor(0, 0)
-        attributes.recycle()
         intent.putExtras(bundleOf(
             "request_result" to       true,
             "unit" to                 unit,
             "precision_cm" to         10,
             "precision_inch" to       4,
             "measure_vertical" to     input.measureVertical,
-            "measuring_tape_color" to argb
         ))
         return intent
     }
