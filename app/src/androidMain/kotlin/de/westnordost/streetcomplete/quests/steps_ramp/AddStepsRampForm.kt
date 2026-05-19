@@ -12,16 +12,17 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.*
+import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
+import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
@@ -34,10 +35,7 @@ fun AddStepsRampForm(
     onAnswer: (StepsRampAnswer) -> Unit
 ) {
     val items = StepsRamp.entries
-    var selectedItemIndices by rememberSaveable { mutableStateOf<Set<Int>>(emptySet()) }
-    val selectedItems by remember {
-        derivedStateOf { selectedItemIndices.mapTo(HashSet()) { items[it] } }
-    }
+    var selectedItems by rememberSerializable { mutableStateOf<Set<StepsRamp>>(emptySet()) }
 
     var confirmWheelchairRampIsSeparate by remember { mutableStateOf(false) }
 
@@ -69,13 +67,12 @@ fun AddStepsRampForm(
                 items = StepsRamp.entries,
                 selectedItems = selectedItems,
                 onSelect = { item, selected ->
-                    val itemIndex = items.indexOf(item)
                     // "no ramp" is exclusive to the other options
-                    selectedItemIndices = if (selected) {
-                        if (item == StepsRamp.NONE) setOf(itemIndex)
-                        else selectedItemIndices + itemIndex - items.indexOf(StepsRamp.NONE)
+                    selectedItems = if (selected) {
+                        if (item == StepsRamp.NONE) setOf(item)
+                        else selectedItems + item - StepsRamp.NONE
                     } else {
-                        selectedItemIndices - itemIndex
+                        selectedItems - item
                     }
                 },
                 modifier = Modifier.fillMaxWidth(),

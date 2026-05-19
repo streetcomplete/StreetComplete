@@ -32,7 +32,6 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
             itemsPerRow = 2,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = onAnswer,
-            favoriteKey = "AddInformationForm",
         )
     }
 

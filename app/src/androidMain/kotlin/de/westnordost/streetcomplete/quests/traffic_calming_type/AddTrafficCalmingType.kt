@@ -30,7 +30,6 @@ class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>() {
             items = TrafficCalmingType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = onAnswer,
-            favoriteKey = "AddTrafficCalmingTypeForm",
         )
     }
 

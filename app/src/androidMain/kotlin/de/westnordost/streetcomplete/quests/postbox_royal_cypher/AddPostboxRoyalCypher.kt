@@ -44,7 +44,6 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
             items = PostboxRoyalCypher.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },
             onClickOk = onAnswer,
-            favoriteKey = "AddPostboxRoyalCypherForm",
         )
     }
 

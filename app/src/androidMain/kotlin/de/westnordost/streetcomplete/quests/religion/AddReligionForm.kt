@@ -27,7 +27,6 @@ fun AddReligionForm(
         items = items,
         itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
         onClickOk = onAnswer,
-        favoriteKey = "AddReligionForm",
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_religion_for_place_of_worship_answer_multi)) { onAnswer(MULTIFAITH) }
         )

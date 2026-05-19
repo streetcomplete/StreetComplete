@@ -34,7 +34,6 @@ class AddArtworkType : OsmFilterQuestType<ArtworkType>() {
             items = ArtworkType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = onAnswer,
-            favoriteKey = "AddArtworkTypeForm",
         )
     }
 

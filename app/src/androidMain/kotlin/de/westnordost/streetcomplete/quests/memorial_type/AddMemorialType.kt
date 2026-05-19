@@ -34,7 +34,6 @@ class AddMemorialType : OsmFilterQuestType<MemorialType>() {
             items = MemorialType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             onClickOk = onAnswer,
-            favoriteKey = "AddMemorialTypeForm"
         )
     }
 

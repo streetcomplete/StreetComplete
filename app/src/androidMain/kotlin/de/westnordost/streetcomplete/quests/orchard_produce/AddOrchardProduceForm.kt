@@ -26,6 +26,5 @@ fun AddOrchardProduceForm(
         items = items,
         itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
         onClickOk = onAnswer,
-        favoriteKey = "AddOrchardProduceForm",
     )
 }

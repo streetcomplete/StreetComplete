@@ -35,7 +35,6 @@ class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>() {
             itemsPerRow = 1,
             itemContent = { Image(painterResource(it.icon), null) },
             onClickOk = onAnswer,
-            favoriteKey = "AddBridgeStructureForm",
         )
     }
 

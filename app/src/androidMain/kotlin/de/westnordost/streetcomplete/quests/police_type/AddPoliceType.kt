@@ -30,7 +30,6 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>() {
             items = PoliceType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },
             onClickOk = onAnswer,
-            favoriteKey = "AddPoliceTypeForm",
         )
     }
 

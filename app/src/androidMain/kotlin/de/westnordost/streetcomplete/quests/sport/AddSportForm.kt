@@ -42,7 +42,6 @@ fun AddSportForm(
                 onAnswer(selectedItems)
             }
         },
-        favoriteKey = "AddSportForm",
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_sport_answer_multi)) {
                 onAnswer(setOf(MULTI))

@@ -19,6 +19,5 @@ fun AddBarrierTypeForm(
         items = BarrierType.entries,
         itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
         onClickOk = onAnswer,
-        favoriteKey = "AddBarrierTypeForm",
     )
 }
