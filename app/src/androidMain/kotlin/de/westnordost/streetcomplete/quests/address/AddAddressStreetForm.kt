@@ -69,16 +69,15 @@ fun AddAddressStreetForm(
                 streetOrPlaceName = PlaceName("")
                 showSelect = true
             }
-        ),
-        content = {
-            StreetOrPlaceNameForm(
-                value = streetOrPlaceName,
-                onValueChange = { streetOrPlaceName = it },
-                modifier = Modifier.fillMaxWidth(),
-                showSelect = showSelect
-            )
-        },
-    )
+        )
+    ) {
+        StreetOrPlaceNameForm(
+            value = streetOrPlaceName,
+            onValueChange = { streetOrPlaceName = it },
+            modifier = Modifier.fillMaxWidth(),
+            showSelect = showSelect
+        )
+    }
 }
 
 /** Whether user answered that the housenumber does not belong to a named street the last time

@@ -71,31 +71,30 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
             }
         },
         modifier = modifier,
-        otherAnswers = otherAnswers,
-        content = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CompositionLocalProvider(
-                    LocalContentAlpha provides ContentAlpha.medium,
-                    LocalTextStyle provides MaterialTheme.typography.body2
-                ) {
-                    Text(stringResource(Res.string.quest_select_hint_most_specific))
-                }
-                GroupedItemSelectColumn(
-                    groups = groups,
-                    topItems = actualTopItems,
-                    selectedItem = selectedItem,
-                    selectedGroup = selectedGroup,
-                    onSelect = { group, item ->
-                        selectedGroup = group
-                        selectedItem = item
-                    },
-                    groupContent = groupContent,
-                    itemContent = itemContent,
-                    modifier = Modifier.fillMaxWidth()
-                )
+        otherAnswers = otherAnswers
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.medium,
+                LocalTextStyle provides MaterialTheme.typography.body2
+            ) {
+                Text(stringResource(Res.string.quest_select_hint_most_specific))
             }
-        },
-    )
+            GroupedItemSelectColumn(
+                groups = groups,
+                topItems = actualTopItems,
+                selectedItem = selectedItem,
+                selectedGroup = selectedGroup,
+                onSelect = { group, item ->
+                    selectedGroup = group
+                    selectedItem = item
+                },
+                groupContent = groupContent,
+                itemContent = itemContent,
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+    }
 
     confirmSelectionOfGroupItem?.let { groupItem ->
         QuestConfirmationDialog(

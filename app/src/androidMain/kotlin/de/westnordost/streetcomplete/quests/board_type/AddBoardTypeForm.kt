@@ -34,24 +34,24 @@ fun AddBoardTypeForm(
         onClickOk = { onAnswer(BoardTypeAnswer.BoardTypes(selectedOptions)) },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_board_type_map)) { confirmIsMap = true }
-        ),
-        content = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CompositionLocalProvider(
-                    LocalContentAlpha provides ContentAlpha.medium,
-                    LocalTextStyle provides MaterialTheme.typography.body2
-                ) {
-                    Text(stringResource(Res.string.quest_multiselect_hint))
-                }
-                CheckboxGroup(
-                    options = BoardType.entries,
-                    onSelectionsChange = { selectedOptions = it },
-                    selectedOptions = selectedOptions,
-                    itemContent = { Text(stringResource(it.text)) },
-                )
+        )
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.medium,
+                LocalTextStyle provides MaterialTheme.typography.body2
+            ) {
+                Text(stringResource(Res.string.quest_multiselect_hint))
             }
+            CheckboxGroup(
+                options = BoardType.entries,
+                onSelectionsChange = { selectedOptions = it },
+                selectedOptions = selectedOptions,
+                itemContent = { Text(stringResource(it.text)) },
+            )
         }
-    )
+    }
+
     if (confirmIsMap) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmIsMap = false },

@@ -29,17 +29,16 @@ fun NameWithSuggestionsQuestForm(
         isComplete = value.text.isNotEmpty(),
         onClickOk = { onClickOk(value.text) },
         modifier = modifier,
-        otherAnswers = otherAnswers,
-        content = {
-            AutoCompleteTextField(
-                value = value,
-                onValueChange = { value = it },
-                suggestions = suggestions
-                    ?.takeIf { value.text.length >= 3 }
-                    ?.filter { it.startsWith(value.text, ignoreCase = true) }
-                    .orEmpty(),
-                textStyle = MaterialTheme.typography.largeInput,
-            )
-        }
-    )
+        otherAnswers = otherAnswers
+    ) {
+        AutoCompleteTextField(
+            value = value,
+            onValueChange = { value = it },
+            suggestions = suggestions
+                ?.takeIf { value.text.length >= 3 }
+                ?.filter { it.startsWith(value.text, ignoreCase = true) }
+                .orEmpty(),
+            textStyle = MaterialTheme.typography.largeInput,
+        )
+    }
 }

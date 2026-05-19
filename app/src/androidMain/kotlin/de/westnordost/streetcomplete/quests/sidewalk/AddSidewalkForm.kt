@@ -50,18 +50,17 @@ fun AddSidewalkForm(
             Answer(stringResource(Res.string.quest_sidewalk_answer_none)) { showNoSidewalksHint = true }
         ),
         contentPadding = PaddingValues.Zero,
-        content = {
-            SidewalkForm(
-                value = sidewalks,
-                onValueChanged = { sidewalks = it },
-                geometryRotation = geometryRotation,
-                mapRotation = LocalMapRotation.current,
-                mapTilt = LocalMapTilt.current,
-                isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-                lastPicked = lastPicked
-            )
-        },
-    )
+    ) {
+        SidewalkForm(
+            value = sidewalks,
+            onValueChanged = { sidewalks = it },
+            geometryRotation = geometryRotation,
+            mapRotation = LocalMapRotation.current,
+            mapTilt = LocalMapTilt.current,
+            isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+            lastPicked = lastPicked
+        )
+    }
 
     if (showNoSidewalksHint) {
         InfoDialog(

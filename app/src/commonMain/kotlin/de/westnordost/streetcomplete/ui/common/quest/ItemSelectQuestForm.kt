@@ -61,24 +61,23 @@ inline fun <reified I> ItemSelectQuestForm(
         },
         modifier = modifier,
         title = title,
-        otherAnswers = otherAnswers,
-        content = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CompositionLocalProvider(
-                    LocalContentAlpha provides ContentAlpha.medium,
-                    LocalTextStyle provides MaterialTheme.typography.body2
-                ) {
-                    Text(stringResource(Res.string.quest_roofShape_select_one))
-                }
-                ItemSelectGrid(
-                    columns = SimpleGridCells.Fixed(itemsPerRow),
-                    items = reorderedItems,
-                    selectedItem = selectedItem,
-                    onSelect = { selectedItem = it },
-                    modifier = Modifier.fillMaxWidth(),
-                    itemContent = itemContent
-                )
+        otherAnswers = otherAnswers
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.medium,
+                LocalTextStyle provides MaterialTheme.typography.body2
+            ) {
+                Text(stringResource(Res.string.quest_roofShape_select_one))
             }
-        },
-    )
+            ItemSelectGrid(
+                columns = SimpleGridCells.Fixed(itemsPerRow),
+                items = reorderedItems,
+                selectedItem = selectedItem,
+                onSelect = { selectedItem = it },
+                modifier = Modifier.fillMaxWidth(),
+                itemContent = itemContent
+            )
+        }
+    }
 }

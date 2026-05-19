@@ -63,16 +63,15 @@ fun AddBuildingLevelsForm(
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_buildingLevels_answer_multipleLevels)) { showMultipleLevelsHint = true }
         ),
-        content = {
-            BuildingLevelsForm(
-                levels = levels,
-                onLevelsChange = { levels = it },
-                roofLevels = roofLevels,
-                onRoofLevelsChange = { roofLevels = it },
-                previousBuildingLevels = lastPicked
-            )
-        }
-    )
+    ) {
+        BuildingLevelsForm(
+            levels = levels,
+            onLevelsChange = { levels = it },
+            roofLevels = roofLevels,
+            onRoofLevelsChange = { roofLevels = it },
+            previousBuildingLevels = lastPicked
+        )
+    }
 
     if (showMultipleLevelsHint) {
         InfoDialog(

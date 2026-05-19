@@ -36,15 +36,14 @@ fun AddAccessPointRefForm(
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true },
             Answer(stringResource(Res.string.quest_accessPointRef_answer_assembly_point)) { confirmAssemblyPoint = true }
-        ),
-        content = {
-            TextField(
-                value = ref,
-                onValueChange = { ref = it },
-                textStyle = MaterialTheme.typography.extraLargeInput,
-            )
-        }
-    )
+        )
+    ) {
+        TextField(
+            value = ref,
+            onValueChange = { ref = it },
+            textStyle = MaterialTheme.typography.extraLargeInput,
+        )
+    }
 
     if (confirmAssemblyPoint) {
         QuestConfirmationDialog(

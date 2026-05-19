@@ -64,19 +64,18 @@ fun ShopTypeQuestForm(
         isComplete = isComplete,
         onClickOk = ::onClickOk,
         modifier = modifier,
-        otherAnswers = otherAnswers,
-        content = {
-            ShopTypeForm(
-                feature = feature,
-                option = option,
-                onSelectedFeature = { feature = it },
-                onSelectedOption = { option = it },
-                featureDictionary = featureDictionary.value,
-                geometryType = element.geometryType,
-                countryCode = countryInfo.countryOrSubdivisionCode,
-                filterFn = { it.toElement().isPlace() },
-                codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS
-            )
-        }
-    )
+        otherAnswers = otherAnswers
+    ) {
+        ShopTypeForm(
+            feature = feature,
+            option = option,
+            onSelectedFeature = { feature = it },
+            onSelectedOption = { option = it },
+            featureDictionary = featureDictionary.value,
+            geometryType = element.geometryType,
+            countryCode = countryInfo.countryOrSubdivisionCode,
+            filterFn = { it.toElement().isPlace() },
+            codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS
+        )
+    }
 }

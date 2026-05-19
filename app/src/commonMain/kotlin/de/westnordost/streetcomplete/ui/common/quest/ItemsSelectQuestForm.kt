@@ -59,30 +59,29 @@ inline fun <reified I> ItemsSelectQuestForm(
             onClickOk(selectedItems)
         },
         modifier = modifier,
-        otherAnswers = otherAnswers,
-        content = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CompositionLocalProvider(
-                    LocalContentAlpha provides ContentAlpha.medium,
-                    LocalTextStyle provides MaterialTheme.typography.body2
-                ) {
-                    Text(stringResource(Res.string.quest_multiselect_hint))
-                }
-                ItemsSelectGrid(
-                    columns = SimpleGridCells.Fixed(itemsPerRow),
-                    items = reorderedItems,
-                    selectedItems = selectedItems,
-                    onSelect = { item, selected ->
-                        if (selected) {
-                            selectedItems += item
-                        } else {
-                            selectedItems -= item
-                        }
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    itemContent = itemContent
-                )
+        otherAnswers = otherAnswers
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.medium,
+                LocalTextStyle provides MaterialTheme.typography.body2
+            ) {
+                Text(stringResource(Res.string.quest_multiselect_hint))
             }
-        },
-    )
+            ItemsSelectGrid(
+                columns = SimpleGridCells.Fixed(itemsPerRow),
+                items = reorderedItems,
+                selectedItems = selectedItems,
+                onSelect = { item, selected ->
+                    if (selected) {
+                        selectedItems += item
+                    } else {
+                        selectedItems -= item
+                    }
+                },
+                modifier = Modifier.fillMaxWidth(),
+                itemContent = itemContent
+            )
+        }
+    }
 }

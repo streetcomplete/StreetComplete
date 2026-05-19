@@ -27,15 +27,15 @@ fun AddFireHydrantRefForm(
         onClickOk = { onAnswer(FireHydrantRef(ref)) },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = false }
-        ),
-        content = {
-            TextField(
-                value = ref,
-                onValueChange = { ref = it },
-                textStyle = MaterialTheme.typography.extraLargeInput,
-            )
-        }
-    )
+        )
+    ) {
+        TextField(
+            value = ref,
+            onValueChange = { ref = it },
+            textStyle = MaterialTheme.typography.extraLargeInput,
+        )
+    }
+
 
     if (confirmNoRef) {
         QuestConfirmationDialog(

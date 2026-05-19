@@ -27,14 +27,13 @@ fun AddEntranceReferenceForm(
             Answer(stringResource(Res.string.quest_entrance_reference_nothing_signed)) {
                 onAnswer(EntranceReferenceAnswer.NotSigned)
             },
-        ),
-        content = {
-            EntranceReferenceForm(
-                value = entranceReference,
-                onValueChange = { entranceReference = it },
-            )
-        }
-    )
+        )
+    ) {
+        EntranceReferenceForm(
+            value = entranceReference,
+            onValueChange = { entranceReference = it },
+        )
+    }
 }
 
 private var lastEntranceReference: EntranceReference? = null

@@ -40,28 +40,27 @@ fun <I> CheckboxGroupQuestForm(
         isComplete = selectedItemIndices.isNotEmpty(),
         onClickOk =  { onClickOk(selectedItems) },
         modifier = modifier,
-        otherAnswers = otherAnswers,
-        content = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CompositionLocalProvider(
-                    LocalContentAlpha provides ContentAlpha.medium,
-                    LocalTextStyle provides MaterialTheme.typography.body2
-                ) {
-                    Text(stringResource(Res.string.quest_multiselect_hint))
-                }
-                CheckboxGroup(
-                    options = items,
-                    onSelectionChange = { option, selected ->
-                        val index = items.indexOf(option)
-                        if (index != -1) {
-                            selectedItemIndices =
-                                if (selected) { selectedItemIndices + index } else { selectedItemIndices - index }
-                        }
-                    },
-                    selectedOptions = selectedItems,
-                    itemContent = { itemContent(it) }
-                )
+        otherAnswers = otherAnswers
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.medium,
+                LocalTextStyle provides MaterialTheme.typography.body2
+            ) {
+                Text(stringResource(Res.string.quest_multiselect_hint))
             }
-        },
-    )
+            CheckboxGroup(
+                options = items,
+                onSelectionChange = { option, selected ->
+                    val index = items.indexOf(option)
+                    if (index != -1) {
+                        selectedItemIndices =
+                            if (selected) { selectedItemIndices + index } else { selectedItemIndices - index }
+                    }
+                },
+                selectedOptions = selectedItems,
+                itemContent = { itemContent(it) }
+            )
+        }
+    }
 }

@@ -71,19 +71,18 @@ fun AddSidewalkSurfaceForm(
                 onAnswer(SidewalkSurfaceAnswer.SidewalkIsDifferent)
             }
         ),
-        contentPadding = PaddingValues.Zero,
-        content = {
-            SidewalkSurfaceForm(
-                value = sidewalkSurfaces,
-                onValueChanged = { sidewalkSurfaces = it },
-                geometryRotation = geometryRotation,
-                mapRotation = LocalMapRotation.current,
-                mapTilt = LocalMapTilt.current,
-                isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-                lastPicked = lastPicked,
-                hasSidewalkLeft = hasSidewalkLeft,
-                hasSidewalkRight = hasSidewalkRight,
-            )
-        }
-    )
+        contentPadding = PaddingValues.Zero
+    ) {
+        SidewalkSurfaceForm(
+            value = sidewalkSurfaces,
+            onValueChanged = { sidewalkSurfaces = it },
+            geometryRotation = geometryRotation,
+            mapRotation = LocalMapRotation.current,
+            mapTilt = LocalMapTilt.current,
+            isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+            lastPicked = lastPicked,
+            hasSidewalkLeft = hasSidewalkLeft,
+            hasSidewalkRight = hasSidewalkRight,
+        )
+    }
 }

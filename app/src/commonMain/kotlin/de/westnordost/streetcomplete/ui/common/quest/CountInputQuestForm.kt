@@ -27,15 +27,14 @@ fun CountInputQuestForm(
         isComplete = count?.let { it > 0 } == true,
         onClickOk = { onClickOk(count!!) },
         modifier = modifier,
-        otherAnswers = otherAnswers,
-        content = {
-            ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
-                CountInput(
-                    count = count,
-                    onCountChange = { count = it },
-                    iconPainter = icon,
-                )
-            }
-        },
-    )
+        otherAnswers = otherAnswers
+    ) {
+        ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
+            CountInput(
+                count = count,
+                onCountChange = { count = it },
+                iconPainter = icon,
+            )
+        }
+    }
 }

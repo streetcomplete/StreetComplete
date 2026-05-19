@@ -40,45 +40,44 @@ fun AddRecyclingContainerMaterialsForm(
         onClickOk = { onAnswer(RecyclingMaterials(selectedItems)) },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_recycling_materials_answer_waste)) { confirmJustTrash = true }
-        ),
-        content = {
-            Column(
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+        )
+    ) {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.medium,
+                LocalTextStyle provides MaterialTheme.typography.body2
             ) {
-                CompositionLocalProvider(
-                    LocalContentAlpha provides ContentAlpha.medium,
-                    LocalTextStyle provides MaterialTheme.typography.body2
-                ) {
-                    Text(stringResource(Res.string.quest_recycling_materials_note))
-                    Text(stringResource(Res.string.quest_multiselect_hint))
-                }
-                ItemsSelectGrid(
-                    columns = SimpleGridCells.Fixed(4),
-                    items = RecyclingMaterial.entries,
-                    selectedItems = selectedItems,
-                    onSelect = { item, selected ->
-                        // this here is the reason why it can't be just a normal ItemsSelectQuestForm:
-                        // certain values are actually sub-categories of other values.
-                        if (!selected) {
-                            selectedItems -= item
-                        } else {
-                            val newSelectedItems = selectedItems.toMutableSet()
-                            val tree = RecyclingMaterial.tree
-                            val parentItems = tree.yieldParentValues(item).orEmpty()
-                            val childItems = tree.yieldChildValues(item).orEmpty()
-                            newSelectedItems.removeAll(parentItems)
-                            newSelectedItems.removeAll(childItems)
-                            newSelectedItems.add(item)
-                            selectedItems = selectedItems
-                        }
-                    },
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    ImageWithLabel(painterResource(it.icon), stringResource(it.title))
-                }
+                Text(stringResource(Res.string.quest_recycling_materials_note))
+                Text(stringResource(Res.string.quest_multiselect_hint))
+            }
+            ItemsSelectGrid(
+                columns = SimpleGridCells.Fixed(4),
+                items = RecyclingMaterial.entries,
+                selectedItems = selectedItems,
+                onSelect = { item, selected ->
+                    // this here is the reason why it can't be just a normal ItemsSelectQuestForm:
+                    // certain values are actually sub-categories of other values.
+                    if (!selected) {
+                        selectedItems -= item
+                    } else {
+                        val newSelectedItems = selectedItems.toMutableSet()
+                        val tree = RecyclingMaterial.tree
+                        val parentItems = tree.yieldParentValues(item).orEmpty()
+                        val childItems = tree.yieldChildValues(item).orEmpty()
+                        newSelectedItems.removeAll(parentItems)
+                        newSelectedItems.removeAll(childItems)
+                        newSelectedItems.add(item)
+                        selectedItems = selectedItems
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                ImageWithLabel(painterResource(it.icon), stringResource(it.title))
             }
         }
-    )
+    }
 
     if (confirmJustTrash) {
         QuestConfirmationDialog(

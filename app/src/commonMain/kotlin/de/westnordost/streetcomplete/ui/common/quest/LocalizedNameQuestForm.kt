@@ -72,26 +72,25 @@ fun LocalizedNameQuestForm(
         otherAnswers = otherAnswers + listOf(
             Answer(stringResource(Res.string.quest_streetName_answer_cantType)) { showKeyboardInfo = true },
             Answer(stringResource(Res.string.quest_placeName_no_name_answer)) { onNoNameSign() },
-        ),
-        content = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                if (hint != null) {
-                    CompositionLocalProvider(
-                        LocalTextStyle provides MaterialTheme.typography.body2,
-                        LocalContentAlpha provides ContentAlpha.medium
-                    ) {
-                        hint()
-                    }
+        )
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            if (hint != null) {
+                CompositionLocalProvider(
+                    LocalTextStyle provides MaterialTheme.typography.body2,
+                    LocalContentAlpha provides ContentAlpha.medium
+                ) {
+                    hint()
                 }
-                LocalizedNamesForm(
-                    localizedNames = localizedNames,
-                    onChanged = { localizedNames = it },
-                    languageTags = selectableLanguages,
-                    modifier = Modifier.fillMaxWidth()
-                )
             }
+            LocalizedNamesForm(
+                localizedNames = localizedNames,
+                onChanged = { localizedNames = it },
+                languageTags = selectableLanguages,
+                modifier = Modifier.fillMaxWidth()
+            )
         }
-    )
+    }
 
     if (showKeyboardInfo) {
         InfoDialog(

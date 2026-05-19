@@ -67,20 +67,19 @@ fun AddLanesForm(
             }
         ),
         contentPadding = PaddingValues.Zero,
-        content = {
-            LanesForm(
-                value = answer,
-                onValueChanged = { answer = it },
-                wayRotation = geometryRotation,
-                mapRotation = LocalMapRotation.current,
-                mapTilt = LocalMapTilt.current,
-                isOneway = isOneway,
-                isReversedOneway = isReversedOneway,
-                isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-                centerLineColor = centerLineColor,
-                edgeLineColor = edgeLineColor,
-                edgeLineStyle = edgeLineStyle,
-            )
-        },
-    )
+    ) {
+        LanesForm(
+            value = answer,
+            onValueChanged = { answer = it },
+            wayRotation = geometryRotation,
+            mapRotation = LocalMapRotation.current,
+            mapTilt = LocalMapTilt.current,
+            isOneway = isOneway,
+            isReversedOneway = isReversedOneway,
+            isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+            centerLineColor = centerLineColor,
+            edgeLineColor = edgeLineColor,
+            edgeLineStyle = edgeLineStyle,
+        )
+    }
 }

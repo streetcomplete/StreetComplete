@@ -27,14 +27,13 @@ fun <I> RadioGroupQuestForm(
         isComplete = checkedItem != null,
         onClickOk = { onClickOk(checkedItem!!) },
         modifier = modifier,
-        otherAnswers = otherAnswers,
-        content = {
-            RadioGroup(
-                options = items,
-                onSelectionChange = { checkedItemIndex = items.indexOf(it) },
-                selectedOption = checkedItem,
-                itemContent = { itemContent(it) }
-            )
-        },
-    )
+        otherAnswers = otherAnswers
+    ) {
+        RadioGroup(
+            options = items,
+            onSelectionChange = { checkedItemIndex = items.indexOf(it) },
+            selectedOption = checkedItem,
+            itemContent = { itemContent(it) }
+        )
+    }
 }

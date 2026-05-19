@@ -44,16 +44,15 @@ fun AddFireHydrantDiameterForm(
         },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_generic_answer_noSign)) { confirmNoSign = true }
-        ),
-        content = {
-            HydrantDiameterForm(
-                value = diameter,
-                onValueChange = { diameter = it },
-                countryCode = countryInfo.countryCode,
-                modifier = Modifier.fillMaxWidth(),
-            )
-        }
-    )
+        )
+    ) {
+        HydrantDiameterForm(
+            value = diameter,
+            onValueChange = { diameter = it },
+            countryCode = countryInfo.countryCode,
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
 
     if (confirmNoSign) {
         QuestConfirmationDialog(

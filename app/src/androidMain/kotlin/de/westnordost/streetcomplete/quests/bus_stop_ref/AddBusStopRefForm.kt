@@ -27,15 +27,14 @@ fun AddBusStopRefForm(
         onClickOk = { onAnswer(BusStopRef(ref)) },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true }
-        ),
-        content = {
-            TextField(
-                value = ref,
-                onValueChange = { ref = it },
-                textStyle = MaterialTheme.typography.extraLargeInput,
-            )
-        },
-    )
+        )
+    ) {
+        TextField(
+            value = ref,
+            onValueChange = { ref = it },
+            textStyle = MaterialTheme.typography.extraLargeInput,
+        )
+    }
 
     if (confirmNoRef) {
         QuestConfirmationDialog(

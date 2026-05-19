@@ -55,37 +55,36 @@ fun AddStepsRampForm(
                     )
                 )
             }
-        },
-        content = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CompositionLocalProvider(
-                    LocalContentAlpha provides ContentAlpha.medium,
-                    LocalTextStyle provides MaterialTheme.typography.body2
-                ) {
-                    Text(stringResource(Res.string.quest_multiselect_hint))
-                }
-                ItemsSelectGrid(
-                    columns = SimpleGridCells.Fixed(2),
-                    items = StepsRamp.entries,
-                    selectedItems = selectedItems,
-                    onSelect = { item, selected ->
-                        val itemIndex = items.indexOf(item)
-                        // "no ramp" is exclusive to the other options
-                        selectedItemIndices = if (selected) {
-                            if (item == StepsRamp.NONE) setOf(itemIndex)
-                            else selectedItemIndices + itemIndex - items.indexOf(StepsRamp.NONE)
-                        } else {
-                            selectedItemIndices - itemIndex
-                        }
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    itemContent = {
-                        ImageWithLabel(painterResource(it.icon), stringResource(it.title))
-                    }
-                )
+        }
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.medium,
+                LocalTextStyle provides MaterialTheme.typography.body2
+            ) {
+                Text(stringResource(Res.string.quest_multiselect_hint))
             }
-        },
-    )
+            ItemsSelectGrid(
+                columns = SimpleGridCells.Fixed(2),
+                items = StepsRamp.entries,
+                selectedItems = selectedItems,
+                onSelect = { item, selected ->
+                    val itemIndex = items.indexOf(item)
+                    // "no ramp" is exclusive to the other options
+                    selectedItemIndices = if (selected) {
+                        if (item == StepsRamp.NONE) setOf(itemIndex)
+                        else selectedItemIndices + itemIndex - items.indexOf(StepsRamp.NONE)
+                    } else {
+                        selectedItemIndices - itemIndex
+                    }
+                },
+                modifier = Modifier.fillMaxWidth(),
+                itemContent = {
+                    ImageWithLabel(painterResource(it.icon), stringResource(it.title))
+                }
+            )
+        }
+    }
 
     if (confirmWheelchairRampIsSeparate) {
         WheelchairRampIsSeparateDialog(

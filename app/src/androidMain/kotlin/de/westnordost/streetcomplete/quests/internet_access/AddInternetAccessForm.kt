@@ -28,30 +28,29 @@ fun AddInternetAccessForm(
 
     QuestForm(
         isComplete = selectedOptions.isNotEmpty(),
-        onClickOk =  { onAnswer(selectedOptions) },
-        content = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CompositionLocalProvider(
-                    LocalContentAlpha provides ContentAlpha.medium,
-                    LocalTextStyle provides MaterialTheme.typography.body2
-                ) {
-                    Text(stringResource(Res.string.quest_multiselect_hint))
-                }
-                CheckboxGroup(
-                    options = InternetAccess.entries,
-                    onSelectionChange = { option, selected ->
-                        // "no" is exclusive
-                        if (option == InternetAccess.NO && selected) {
-                            selectedOptions = setOf(InternetAccess.NO)
-                        } else {
-                            selectedOptions =
-                                if (selected) { selectedOptions + option } else { selectedOptions - option }
-                        }
-                    },
-                    selectedOptions = selectedOptions,
-                    itemContent = { Text(stringResource(it.text)) }
-                )
+        onClickOk =  { onAnswer(selectedOptions) }
+    ) {
+        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            CompositionLocalProvider(
+                LocalContentAlpha provides ContentAlpha.medium,
+                LocalTextStyle provides MaterialTheme.typography.body2
+            ) {
+                Text(stringResource(Res.string.quest_multiselect_hint))
             }
-        },
-    )
+            CheckboxGroup(
+                options = InternetAccess.entries,
+                onSelectionChange = { option, selected ->
+                    // "no" is exclusive
+                    if (option == InternetAccess.NO && selected) {
+                        selectedOptions = setOf(InternetAccess.NO)
+                    } else {
+                        selectedOptions =
+                            if (selected) { selectedOptions + option } else { selectedOptions - option }
+                    }
+                },
+                selectedOptions = selectedOptions,
+                itemContent = { Text(stringResource(it.text)) }
+            )
+        }
+    }
 }

@@ -95,18 +95,17 @@ fun AddHousenumberForm(
                 }
             } else null,
             Answer(stringResource(Res.string.quest_housenumber_multiple_numbers)) { showMultipleNumbersHint = true }
-        ),
-        content = {
-            AddressNumberAndNameForm(
-                value = addressNumberAndName,
-                onValueChange = { addressNumberAndName = it },
-                countryCode = countryInfo.countryCode,
-                modifier = Modifier.fillMaxWidth(),
-                houseNumberSuggestion = lastHouseNumber,
-                blockSuggestion = lastBlock,
-            )
-        }
-    )
+        )
+    ) {
+        AddressNumberAndNameForm(
+            value = addressNumberAndName,
+            onValueChange = { addressNumberAndName = it },
+            countryCode = countryInfo.countryCode,
+            modifier = Modifier.fillMaxWidth(),
+            houseNumberSuggestion = lastHouseNumber,
+            blockSuggestion = lastBlock,
+        )
+    }
 
     showNoHouseNumberDialogForBuildingType?.let { buildingType ->
         NoHouseNumberDialog(
