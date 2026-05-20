@@ -40,7 +40,6 @@ import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
-import org.koin.core.qualifier.named
 
 /** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
@@ -56,17 +55,17 @@ fun QuestForm(
     isComplete: Boolean,
     onClickOk: () -> Unit,
     modifier: Modifier = Modifier,
+    featureDictionary: FeatureDictionary = koinInject(),
     hasChanges: Boolean = isComplete,
     title: String = stringResource(LocalQuestType.current!!.title),
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
-        nameAndLocationLabel(element, featureDictionary.value)
+        nameAndLocationLabel(element, featureDictionary)
     },
     hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
     hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: List<Answer> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
-    featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
     content: @Composable BoxScope.() -> Unit
 ) {
     QuestForm(
@@ -100,16 +99,17 @@ fun QuestForm(
 fun QuestForm(
     answers: List<Answer>,
     modifier: Modifier = Modifier,
+    featureDictionary: FeatureDictionary = koinInject(),
     title: String = stringResource(LocalQuestType.current!!.title),
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
-        nameAndLocationLabel(element, featureDictionary.value)
+        nameAndLocationLabel(element, featureDictionary)
     },
     hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
     hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: List<Answer> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
-    featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
+
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
     QuestForm(

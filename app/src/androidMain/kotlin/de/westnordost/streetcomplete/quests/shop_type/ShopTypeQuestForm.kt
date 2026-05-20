@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import org.koin.compose.koinInject
-import org.koin.core.qualifier.named
 
 @Composable
 fun ShopTypeQuestForm(
@@ -27,7 +26,7 @@ fun ShopTypeQuestForm(
     countryInfo: CountryInfo,
     modifier: Modifier = Modifier,
     otherAnswers: List<Answer> = emptyList(),
-    featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
+    featureDictionary: FeatureDictionary = koinInject(),
 ) {
     var feature by remember { mutableStateOf<Feature?>(null) }
     var option by remember { mutableStateOf<ShopTypeFormOption?>(null) }
@@ -71,7 +70,7 @@ fun ShopTypeQuestForm(
             option = option,
             onSelectedFeature = { feature = it },
             onSelectedOption = { option = it },
-            featureDictionary = featureDictionary.value,
+            featureDictionary = featureDictionary,
             geometryType = element.geometryType,
             countryCode = countryInfo.countryOrSubdivisionCode,
             filterFn = { it.toElement().isPlace() },

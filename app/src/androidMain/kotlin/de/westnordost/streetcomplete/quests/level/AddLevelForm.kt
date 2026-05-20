@@ -24,7 +24,6 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.koin.compose.koinInject
-import org.koin.core.qualifier.named
 
 @Composable
 fun AddLevelForm(
@@ -32,7 +31,7 @@ fun AddLevelForm(
     filterPredicate: (element: Element) -> Boolean,
     geometry: ElementGeometry,
     mapDataSource: MapDataWithEditsSource = koinInject(),
-    featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
+    featureDictionary: FeatureDictionary = koinInject(),
 ) {
 
     var level by rememberSaveable { mutableStateOf<Double?>(null) }
@@ -59,7 +58,7 @@ fun AddLevelForm(
         val levels = listOf(Level.Single(lvl))
         return elementsAndGeometry.mapNotNull { (element, geometry) ->
             if (!parseLevelsOrNull(element.tags).levelsIntersect(levels)) return@mapNotNull null
-            val icon = getIcon(featureDictionary.value, element)
+            val icon = getIcon(featureDictionary, element)
             val title = getTitle(element.tags)
             Marker(geometry, icon, title)
         }

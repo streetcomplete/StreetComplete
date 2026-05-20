@@ -14,19 +14,25 @@ val metadataModule = module {
 
     single { NameSuggestionsSource(get()) }
     single { CountryInfos(get()) }
-    single<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")) {
-        lazy {
-            val source = get<AssetManager>().open(dir + "boundaries.ser").asSource().buffered()
-            CountryBoundaries.deserializeFrom(source)
-        }
+
+    single<CountryBoundaries> {
+        val source = get<AssetManager>().open(dir + "boundaries.ser").asSource().buffered()
+        CountryBoundaries.deserializeFrom(source)
     }
+
+    single<FeatureDictionary> {
+        FeatureDictionary.create(
+            assetManager = get<AssetManager>(),
+            presetsBasePath = dir + "osmfeatures/default",
+            brandPresetsBasePath = dir + "osmfeatures/brands"
+        )
+    }
+
+    single<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")) {
+        lazy { get<CountryBoundaries>() }
+    }
+
     single<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")) {
-        lazy {
-            FeatureDictionary.create(
-                assetManager = get<AssetManager>(),
-                presetsBasePath = dir + "osmfeatures/default",
-                brandPresetsBasePath = dir + "osmfeatures/brands"
-            )
-        }
+        lazy { get<FeatureDictionary>() }
     }
 }

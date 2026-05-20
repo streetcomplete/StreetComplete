@@ -26,13 +26,12 @@ import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
-import org.koin.core.qualifier.named
 
 @Composable
 fun AddAddressStreetForm(
     onAnswer: (StreetOrPlaceName) -> Unit,
     nameSuggestionsSource: NameSuggestionsSource = koinInject(),
-    featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
+    featureDictionary: FeatureDictionary = koinInject(),
 ) {
     /* if user specified last time that a housenumber does not belong to a named street in this
        session, already pre-select this. It is likely that the next housenumber he'll answer this
