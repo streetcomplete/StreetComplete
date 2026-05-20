@@ -17,12 +17,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 /** Quest form in which the user inputs a set of names in possibly different languages. Selectable
@@ -43,11 +45,10 @@ fun LocalizedNameQuestForm(
     modifier: Modifier = Modifier,
     hint: @Composable (() -> Unit)? = null,
     otherAnswers: List<Answer> = emptyList(),
+    preferences: Preferences = koinInject(),
 ) {
-    val viewModel = koinViewModel<LocalizedNameViewModel>()
-
     val selectableLanguages = remember {
-        viewModel.getLanguagesWithPreferredFirst(
+        preferences.getLanguagesWithPreferredFirst(
             countryInfo.officialLanguages + countryInfo.additionalStreetsignLanguages
         )
     }
@@ -65,7 +66,8 @@ fun LocalizedNameQuestForm(
         isComplete = localizedNames.isNotEmpty() && localizedNames.all { it.name.isNotBlank() },
         hasChanges = localizedNames.isNotEmpty() && localizedNames.any { it.name.isNotBlank() },
         onClickOk = {
-            viewModel.savePreferredLanguage(localizedNames)
+            preferences.preferredLanguageForNames =
+                localizedNames.firstOrNull()?.languageTag?.takeIf { it.isNotEmpty() }
             onClickOk(localizedNames)
         },
         modifier = modifier,

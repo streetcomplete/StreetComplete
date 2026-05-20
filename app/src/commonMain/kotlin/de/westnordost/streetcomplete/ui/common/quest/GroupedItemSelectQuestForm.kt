@@ -16,12 +16,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColumn
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 /** Quest form that lets the user select one item from a set of items arranged in [groups].
@@ -39,12 +42,12 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     modifier: Modifier = Modifier,
     favoriteKey: String? = null,
     otherAnswers: List<Answer> = emptyList(),
+    preferences: Preferences = koinInject()
 ) {
-    val viewModel = koinViewModel<ItemSelectViewModel>()
-
     val actualTopItems = remember(topItems) {
         if (favoriteKey != null) {
-            viewModel.getTopItemsWithFavoritesFirst(favoriteKey, topItems)
+            preferences.getLastPicked<I>(favoriteKey)
+                .takeFavorites(n = topItems.size, first = 1, pad = topItems)
         } else {
             topItems
         }
@@ -62,7 +65,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
             val item = selectedItem
             if (item != null) {
                 if (favoriteKey != null) {
-                    viewModel.addFavorite(favoriteKey, item)
+                    preferences.addLastPicked(favoriteKey, item)
                 }
                 onClickOk(item)
             }
@@ -101,7 +104,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
             onDismissRequest = { confirmSelectionOfGroupItem = null },
             onConfirmed = {
                 if (favoriteKey != null) {
-                    viewModel.addFavorite(favoriteKey, groupItem)
+                    preferences.addLastPicked(favoriteKey, groupItem)
                 }
                 onClickOk(groupItem)
             },

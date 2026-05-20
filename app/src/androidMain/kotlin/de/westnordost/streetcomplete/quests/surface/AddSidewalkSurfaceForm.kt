@@ -18,15 +18,16 @@ import de.westnordost.streetcomplete.osm.sidewalk_surface.SidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.LastPickedChipsRowViewModel
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.math.getOrientationOrZero
+import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 import kotlin.collections.emptyList
 
 @Composable
@@ -35,10 +36,9 @@ fun AddSidewalkSurfaceForm(
     element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
+    preferences: Preferences = koinInject(),
 ) {
     val favKey = "AddSidewalkSurfaceForm"
-    val lastPickedViewModel = koinViewModel<LastPickedChipsRowViewModel>()
-
     val sidewalk = remember { parseSidewalkSides(element.tags) }
     val hasSidewalkLeft = sidewalk?.left == Sidewalk.YES
     val hasSidewalkRight = sidewalk?.right == Sidewalk.YES
@@ -46,7 +46,8 @@ fun AddSidewalkSurfaceForm(
 
     val lastPicked = remember {
         if (hasSidewalkLeft && hasSidewalkRight) {
-            lastPickedViewModel.getFavorites<Sides<Surface>>(favKey)
+            preferences.getLastPicked<Sides<Surface>>(favKey)
+                .takeFavorites(n = 5, history = 15, first = 1)
         } else {
             emptyList()
         }
@@ -62,7 +63,7 @@ fun AddSidewalkSurfaceForm(
             sidewalkSurfaces.any { it != null },
         onClickOk = {
             if (hasSidewalkLeft && hasSidewalkRight) {
-                lastPickedViewModel.setFavorites(favKey, listOf(sidewalkSurfaces))
+                preferences.setLastPicked(favKey, listOf(sidewalkSurfaces))
             }
             onAnswer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces)))
         },

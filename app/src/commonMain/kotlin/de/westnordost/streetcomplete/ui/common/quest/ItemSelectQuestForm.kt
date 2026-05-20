@@ -17,11 +17,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
-import org.koin.compose.viewmodel.koinViewModel
+import org.koin.compose.koinInject
 
 /** Quest form that lets the user select one item from a set of [items], displayed in a grid with a
  *  width of [itemsPerRow].
@@ -38,12 +40,13 @@ inline fun <reified I> ItemSelectQuestForm(
     favoriteKey: String? = null,
     title: String = stringResource(LocalQuestType.current!!.title),
     otherAnswers: List<Answer> = emptyList(),
+    preferences: Preferences = koinInject()
 ) {
-    val viewModel = koinViewModel<ItemSelectViewModel>()
-
     val reorderedItems = remember(items, itemsPerRow, favoriteKey) {
         if (favoriteKey != null) {
-            viewModel.getItemsWithFavoritesFirst(key = favoriteKey, items = items, n = itemsPerRow)
+            val favourites = preferences.getLastPicked<I>(favoriteKey)
+                .takeFavorites(n = itemsPerRow)
+            (favourites + items).distinct()
         } else {
             items
         }
@@ -55,7 +58,7 @@ inline fun <reified I> ItemSelectQuestForm(
         onClickOk = {
             val value = selectedItem!!
             if (favoriteKey != null) {
-                viewModel.addFavorite(favoriteKey, value)
+                preferences.addLastPicked(favoriteKey, value)
             }
             onClickOk(value)
         },

@@ -9,29 +9,34 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.LastPickedChipsRowViewModel
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.math.getOrientationOrZero
+import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun AddSidewalkForm(
     onAnswer: (Sides<Sidewalk>) -> Unit,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
+    preferences: Preferences = koinInject(),
 ) {
     val favKey = "AddSidewalkForm"
-    val lastPickedViewModel = koinViewModel<LastPickedChipsRowViewModel>()
-    val lastPicked = remember { lastPickedViewModel.getFavorites<Sides<Sidewalk>>(favKey) }
+    val lastPicked = remember {
+        preferences.getLastPicked<Sides<Sidewalk>>(favKey)
+            .takeFavorites(n = 5, history = 15, first = 1)
+    }
 
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 
@@ -44,7 +49,7 @@ fun AddSidewalkForm(
         hasChanges = sidewalks.left != null || sidewalks.right != null,
         onClickOk = {
             onAnswer(sidewalks)
-            lastPickedViewModel.setFavorites(favKey, listOf(sidewalks))
+            preferences.setLastPicked(favKey, listOf(sidewalks))
         },
         otherAnswers = listOf(
             Answer(stringResource(Res.string.quest_sidewalk_answer_none)) { showNoSidewalksHint = true }

@@ -29,16 +29,17 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Answer
-import de.westnordost.streetcomplete.ui.common.quest.LastPickedChipsRowViewModel
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.math.getOrientationOrZero
+import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun AddCyclewayForm(
@@ -46,9 +47,9 @@ fun AddCyclewayForm(
     element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
+    preferences: Preferences = koinInject(),
 )  {
     val favKey = "AddCyclewayForm"
-    val lastPickedViewModel = koinViewModel<LastPickedChipsRowViewModel>()
     val context = LocalContext.current
 
     val originalCycleway = remember {
@@ -77,8 +78,8 @@ fun AddCyclewayForm(
 
     val lastPicked = remember {
         if (showBothSides) {
-            lastPickedViewModel
-                .getFavorites<Sides<Cycleway>>(favKey)
+            preferences.getLastPicked<Sides<Cycleway>>(favKey)
+                .takeFavorites(n = 5, history = 15, first = 1)
                 .map { it.withDefaultDirection(countryInfo.isLeftHandTraffic) }
                 .filter { sides -> sides.all { it?.isSelectable(countryInfo) != false } }
         } else {
@@ -115,7 +116,7 @@ fun AddCyclewayForm(
             // the default, the user should select this specifically. Simply carrying over the
             // non-default direction to the next answer might result in mistakes
             val cycleways = Sides(left = sides.left.cycleway, right = sides.right.cycleway)
-            lastPickedViewModel.setFavorites(favKey, listOf(cycleways))
+            preferences.setLastPicked(favKey, listOf(cycleways))
         }
         onAnswer(sides)
     }

@@ -9,26 +9,27 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
-import de.westnordost.streetcomplete.ui.common.quest.LastPickedChipsRowViewModel
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
 import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.koinInject
 
 @Composable
 fun AddBuildingLevelsForm(
     onAnswer: (BuildingLevels) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
+    preferences: Preferences = koinInject(),
 ) {
-    val viewModel = koinViewModel<LastPickedChipsRowViewModel>()
-
     val key = "AddBuildingLevelsForm"
     val lastPicked = remember {
-        viewModel
-            .getFavorites<BuildingLevels>(key)
+        preferences.getLastPicked<BuildingLevels>(key)
+            .takeFavorites(n = 5, history = 15, first = 1)
             .sortedWith(compareBy<BuildingLevels> { it.levels }.thenBy { it.roofLevels })
     }
 
@@ -57,7 +58,7 @@ fun AddBuildingLevelsForm(
         hasChanges = levels != null || roofLevels != null,
         onClickOk = {
             val answer = BuildingLevels(levels!!, roofLevels)
-            viewModel.addFavorite(key, answer)
+            preferences.addLastPicked(key, answer)
             onAnswer(answer)
         },
         otherAnswers = listOf(
