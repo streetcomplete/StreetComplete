@@ -23,10 +23,10 @@ fun ConfirmDeleteDialog(
             TextButton(onClick = onDismissRequest) {
                 Text(stringResource(Res.string.quest_generic_confirmation_no))
             }
-            TextButton(onClick = { onDismissRequest();onLeaveNote() }) {
+            TextButton(onClick = { onDismissRequest(); onLeaveNote() }) {
                 Text(stringResource(Res.string.leave_note))
             }
-            TextButton(onClick = { onDismissRequest();onConfirmDelete() }) {
+            TextButton(onClick = { onDismissRequest(); onConfirmDelete() }) {
                 Text(stringResource(Res.string.osm_element_gone_confirmation))
             }
         },

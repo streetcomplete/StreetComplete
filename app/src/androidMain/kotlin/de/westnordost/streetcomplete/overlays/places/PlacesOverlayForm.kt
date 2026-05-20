@@ -1,45 +1,23 @@
 package de.westnordost.streetcomplete.overlays.places
 
-import android.os.Bundle
-import android.view.View
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.material.AlertDialog
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.BaseFeature
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.hasFixedName
@@ -51,37 +29,33 @@ import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
 import de.westnordost.streetcomplete.osm.shouldReplacePlace
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.ui.common.feature.FeatureIcon
-import de.westnordost.streetcomplete.ui.common.feature.FeatureSelect
-import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
-import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.ktx.geometryType
-import de.westnordost.streetcomplete.util.nameAndLocationLabel
+import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
-import org.koin.android.ext.android.inject
 import org.koin.compose.koinInject
-import org.koin.compose.viewmodel.koinViewModel
 
 @Composable fun PlacesOverlayForm(
+    onEdit: (ElementEditAction) -> Unit,
     element: Element?,
+    geometry: ElementGeometry,
     countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
 ) {
+    val favKey = "PlacesOverlayForm"
     val lastPickedFeatures = remember {
-        val languages = getLanguagesForFeatureDictionary()
-        prefs.getLastPicked<String>(this::class.simpleName!!)
+        preferences.getLastPicked<String>(favKey)
             .takeFavorites(n = 5, first = 1)
             .mapNotNull { featureId ->
                 featureDictionary.getById(
                     id = featureId,
-                    languages = languages,
+                    languages = getLanguagesForFeatureDictionary(),
                     country = countryInfo.countryOrSubdivisionCode,
                 )
             }
@@ -98,31 +72,39 @@ import org.koin.compose.viewmodel.koinViewModel
     }
 
     val unknownThingString = stringResource(Res.string.unknown_shop_title)
-    val originalFeature = remember {
-        element?.let { element ->
-            getFeatureDictionaryFeature(element)
-            ?: (if (element.isDisusedPlace()) vacantShopFeature else null)
-            ?: BaseFeature(
-                id = "shop/unknown",
-                names = listOf(unknownThingString),
-                icon = "maki-shop",
-                tags = element.tags,
-                geometry = GeometryType.entries.toList()
-            )
-        }
+    val originalFeature = remember(element) {
+        if (element == null) return@remember null
+
+        // either a regular place-feature
+        featureDictionary.getFeature(
+            element = element,
+            country = countryInfo.countryOrSubdivisionCode,
+            isSuggestion = null // include brands
+        )?.takeIf { it.toElement().isPlace() }
+        // or vacant
+        ?: (if (element.isDisusedPlace()) vacantShopFeature else null)
+        // or unknown
+        ?: BaseFeature(
+            id = "shop/unknown",
+            names = listOf(unknownThingString),
+            icon = "maki-shop",
+            tags = element.tags,
+            geometry = GeometryType.entries.toList()
+        )
     }
-    val originalNoName = remember {
+    val originalNoName = remember(element) {
         element?.tags?.get("name:signed") == "no" || element?.tags?.get("noname") == "yes"
     }
-    val originalNames = remember {
+    val originalNames = remember(element) {
         parseLocalizedNames(element?.tags.orEmpty()).orEmpty()
     }
+    val defaultNames = remember { listOf(LocalizedName(countryInfo.language.orEmpty(), "")) }
 
-    var localizedNames by rememberSerializable {
-        mutableStateOf(originalNames .takeIf { it.isNotEmpty() } ?: defaultNames())
+    var localizedNames by rememberSerializable(originalNames) {
+        mutableStateOf(originalNames.takeIf { it.isNotEmpty() } ?: defaultNames)
     }
-    var isNoName by rememberSaveable { mutableStateOf(originalNoName) }
-    var selectedFeature by remember { mutableStateOf(originalFeature) }
+    var isNoName by rememberSaveable(originalNoName) { mutableStateOf(originalNoName) }
+    var selectedFeature by remember(originalFeature) { mutableStateOf(originalFeature) }
 
     var askReplacePlace by remember { mutableStateOf(false) }
 
@@ -133,7 +115,7 @@ import org.koin.compose.viewmodel.koinViewModel
         if (feature.hasFixedName == true) {
             localizedNames = listOf()
         } else {
-            localizedNames = defaultNames()
+            localizedNames = defaultNames
         }
     }
 
@@ -145,7 +127,7 @@ import org.koin.compose.viewmodel.koinViewModel
         val inputNames = localizedNames.filter { it.name.isNotEmpty() }
 
         if (!newFeature.isSuggestion) {
-            preferences.addLastPicked(this::class.simpleName!!, newFeature.id)
+            preferences.addLastPicked(favKey, newFeature.id)
         }
 
         val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
@@ -172,12 +154,12 @@ import org.koin.compose.viewmodel.koinViewModel
         }
 
         val edit = if (element != null) {
-            UpdateElementTagsAction(element!!, tagChanges.create())
+            UpdateElementTagsAction(element, tagChanges.create())
         } else {
             CreateNodeAction(geometry.center, tagChanges)
         }
 
-        applyEdit(edit)
+        onEdit(edit)
     }
 
     OverlayForm(
@@ -229,72 +211,21 @@ import org.koin.compose.viewmodel.koinViewModel
 
         )
     ) {
-        Column(
-            modifier = Modifier
-                .defaultMinSize(minHeight = 96.dp)
-                .fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
-        ) {
-            val feature = selectedFeature
-
-            FeatureSelect(
-                feature = feature,
-                onSelectedFeature = ::onSelectedFeature,
-                featureDictionary = featureDictionary,
-                geometryType = element?.geometryType ?: GeometryType.POINT,
-                countryCode = countryInfo.countryOrSubdivisionCode,
-                filterFn = { it.toElement().isPlace() || it.id == "shop/vacant" },
-                codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS,
-            )
-            if (feature != null && !feature.hasFixedName) {
-                Column {
-                    Text(
-                        text = stringResource(Res.string.name_label),
-                        style = MaterialTheme.typography.caption.copy(
-                            color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
-                        )
-                    )
-                    if (isNoName && localizedNames.isEmpty()) {
-                        Text(
-                            text = stringResource(Res.string.quest_placeName_no_name_answer),
-                            style = LocalTextStyle.current.copy(
-                                fontWeight = FontWeight.Bold,
-                                color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
-                            ),
-                            modifier = Modifier
-                                .padding(20.dp)
-                                .align(Alignment.CenterHorizontally)
-                        )
-                    }
-                    LocalizedNamesForm(
-                        localizedNames = localizedNames,
-                        onChanged = {
-                            localizedNames = it
-                            if (it.isNotEmpty()) isNoName = false
-                        },
-                        languageTags = selectableLanguages,
-                    )
-                }
-            }
-            // show only for adding new POIs becaues it gets too busy with also the name form
-            // being displayed
-            if (lastPickedFeatures.isNotEmpty() && element == null && selectedFeature == null) {
-                LastPickedChipsRow(
-                    items = lastPickedFeatures,
-                    onClick = { selectedFeature = it },
-                    modifier = Modifier.padding(start = 48.dp, end = 56.dp),
-                    itemContent = {
-                        FeatureIcon(
-                            feature = it,
-                            modifier = Modifier.size(22.5.dp)
-                        )
-                    }
-                )
-            } else {
-                Spacer(Modifier.size(48.dp))
-            }
-        }
+        PlaceForm(
+            selectedFeature = selectedFeature,
+            onSelectedFeature = ::onSelectedFeature,
+            lastPickedFeatures = lastPickedFeatures,
+            localizedNames = localizedNames,
+            isNoName = isNoName,
+            selectableLanguages = selectableLanguages,
+            onLocalizedNamesChanged = {
+                localizedNames = it
+                if (it.isNotEmpty()) isNoName = false
+            },
+            element = element,
+            countryCode = countryInfo.countryOrSubdivisionCode,
+            featureDictionary = featureDictionary,
+        )
     }
 
     if (askReplacePlace) {
@@ -305,45 +236,5 @@ import org.koin.compose.viewmodel.koinViewModel
     }
 }
 
-    private fun getFeatureDictionaryFeature(element: Element): Feature? {
-        val languages = getLanguagesForFeatureDictionary()
-        val geometryType = if (element.type == ElementType.NODE) null else element.geometryType
-
-        return featureDictionary.getByTags(
-            tags = element.tags,
-            languages = languages,
-            country = countryInfo.countryOrSubdivisionCode,
-            geometry = geometryType,
-        ).firstOrNull { it.toElement().isPlace() }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setMarkerIcon(R.drawable.quest_shop)
-    }
-
-    private fun defaultNames(): List<LocalizedName> =
-        listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
-
-
-@Composable
-private fun AskReplacePlaceDialog(
-    onDismissRequest: () -> Unit,
-    onAnswer: (Boolean) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    AlertDialog(
-        onDismissRequest = onDismissRequest,
-        buttons = {
-            TextButton(onClick = { onDismissRequest(); onAnswer(false) }) {
-                Text(stringResource(Res.string.confirmation_replace_shop_no))
-            }
-            TextButton(onClick = { onDismissRequest(); onAnswer(true) }) {
-                Text(stringResource(Res.string.confirmation_replace_shop_yes))
-            }
-        },
-        title = { Text(stringResource(Res.string.confirmation_replace_shop_title)) },
-        text = { Text(stringResource(Res.string.confirmation_replace_shop_message)) },
-        modifier = modifier
-    )
-}
+// TODO compose-quest-form need to set marker icon
+// setMarkerIcon(Res.drawable.quest_shop)
