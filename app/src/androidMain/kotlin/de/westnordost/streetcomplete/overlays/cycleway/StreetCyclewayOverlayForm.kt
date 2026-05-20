@@ -35,11 +35,11 @@ import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowIt
 import de.westnordost.streetcomplete.osm.cycleway.withDefaultDirection
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.quests.cycleway.BicycleBoulevardSign
-import de.westnordost.streetcomplete.quests.cycleway.BicycleInPedestrianStreetAllowedSign
-import de.westnordost.streetcomplete.quests.cycleway.BicycleInPedestrianStreetDesignatedSign
-import de.westnordost.streetcomplete.quests.cycleway.CyclewayForm
-import de.westnordost.streetcomplete.quests.cycleway.CyclewayFormSelectionMode
+import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleBoulevardSign
+import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInPedestrianStreetAllowedSign
+import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInPedestrianStreetDesignatedSign
+import de.westnordost.streetcomplete.osm.cycleway.CyclewayForm
+import de.westnordost.streetcomplete.osm.cycleway.CyclewayFormSelectionMode
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm

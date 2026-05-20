@@ -50,7 +50,7 @@ import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.address.AddAddressStreetForm
 import de.westnordost.streetcomplete.quests.address.AddressNumberAndName
-import de.westnordost.streetcomplete.quests.address.AddressNumberAndNameForm
+import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog

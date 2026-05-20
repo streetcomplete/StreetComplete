@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.applyTo
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk.validOrNullValues
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.quests.sidewalk.SidewalkForm
+import de.westnordost.streetcomplete.osm.sidewalk.SidewalkForm
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt

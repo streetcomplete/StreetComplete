@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.quests.address.AnAddressNumberInput
+import de.westnordost.streetcomplete.osm.address.AnAddressNumberInput
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.largeInput
