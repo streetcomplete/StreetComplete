@@ -1,11 +1,15 @@
 package de.westnordost.streetcomplete.overlays.sidewalk
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
@@ -23,7 +27,7 @@ import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.resources.*
 
-class SidewalkOverlay : Overlay, AndroidOverlay {
+class SidewalkOverlay : Overlay {
 
     override val title = Res.string.overlay_sidewalk
     override val icon = R.drawable.quest_sidewalk
@@ -47,17 +51,27 @@ class SidewalkOverlay : Overlay, AndroidOverlay {
             ) and area != yes
         """).map { it to getFootwayStyle(it) }
 
-    override fun createForm(element: Element?): AbstractOverlayForm? {
-        if (element == null) return null
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    ) {
+        if (element == null) return
 
-        // allow editing of all roads and all exclusive cycleways
-        return if (
-            element.tags["highway"] in ALL_ROADS ||
-            parseSeparateCycleway(element.tags) in listOf(SeparateCycleway.EXCLUSIVE, SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK)
-        ) {
-            SidewalkOverlayForm()
-        } else {
-            null
+        val isRoadOrExclusiveCycleway = remember(element) {
+            if (element.tags["highway"] in ALL_ROADS) {
+                true
+            } else {
+                val separateCycleway = parseSeparateCycleway(element.tags)
+                val exclusiveCycelways = listOf(SeparateCycleway.EXCLUSIVE, SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK)
+                separateCycleway in exclusiveCycelways
+            }
+        }
+
+        if (isRoadOrExclusiveCycleway) {
+            SidewalkOverlayForm(onEdit, element, geometry, countryInfo)
         }
     }
 }

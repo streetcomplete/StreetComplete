@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.overlays.way_lit
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
@@ -17,7 +20,7 @@ import de.westnordost.streetcomplete.osm.lit.parseLitStatus
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.resources.*
 
-class WayLitOverlay : Overlay, AndroidOverlay {
+class WayLitOverlay : Overlay {
 
     override val title = Res.string.overlay_lit
     override val icon = R.drawable.quest_lantern
@@ -31,7 +34,16 @@ class WayLitOverlay : Overlay, AndroidOverlay {
             .filter("ways, relations with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}")
             .map { it to getStyle(it) }
 
-    override fun createForm(element: Element?) = WayLitOverlayForm()
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    ) {
+        if (element == null) return
+        WayLitOverlayForm(onEdit, element)
+    }
 }
 
 private fun getStyle(element: Element): OverlayStyle {

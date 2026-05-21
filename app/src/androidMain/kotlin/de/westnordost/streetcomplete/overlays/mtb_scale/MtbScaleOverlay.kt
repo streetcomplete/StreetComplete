@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.overlays.mtb_scale
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
@@ -15,7 +18,7 @@ import de.westnordost.streetcomplete.osm.mtb_scale.parseMtbScale
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.resources.*
 
-class MtbScaleOverlay : Overlay, AndroidOverlay {
+class MtbScaleOverlay : Overlay {
 
     override val title = Res.string.overlay_mtb_scale
     override val icon = R.drawable.quest_mtb
@@ -40,7 +43,17 @@ class MtbScaleOverlay : Overlay, AndroidOverlay {
               )
         """).map { it to getStyle(it) }
 
-    override fun createForm(element: Element?) = MtbScaleOverlayForm()
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    ) {
+        if (element != null) {
+            MtbScaleOverlayForm(onEdit, element)
+        }
+    }
 
     private fun getStyle(element: Element): OverlayStyle {
         val mtbScale = parseMtbScale(element.tags)

@@ -73,20 +73,31 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
     /** Composable form in which to enter the requested information. Use
      *  [QuestForm][de.westnordost.streetcomplete.ui.common.quest.QuestForm] to define a custom
      *  (or simple button-based) one, or any of the pre-defined generic forms like…
+     *
      *  - [ItemSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm] -
-     *    Select one from a grid of images
+     *    Select one from a grid of (image) items
+     *
      *  - [ItemsSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm] -
-     *    Select any number from a grid of images
+     *    Select any number from a grid of (image) items
+     *
+     *  - [GroupedItemSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.GroupedItemSelectQuestForm] -
+     *    Select one from a grouped list of (image) items
+     *
      *  - [RadioGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm] -
-     *    Select one from a list
+     *    Select one from a (text) list
+     *
      *  - [CheckboxGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.CheckboxGroupQuestForm] -
-     *    Select any number from a list
+     *    Select any number from a (text) list
+     *
      *  - [YesNoQuestForm][de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm] -
      *    Answer "yes" or "no"
+     *
      *  - [CountInputQuestForm][de.westnordost.streetcomplete.ui.common.quest.CountInputQuestForm] -
      *    Input an (integer) number
+     *
      *  - [LocalizedNameQuestForm][de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm] -
      *    Input name(s in potentially different languages)
+     *
      *  - [NameWithSuggestionsQuestForm][de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm] -
      *    Input a name with auto-complete.
      *
