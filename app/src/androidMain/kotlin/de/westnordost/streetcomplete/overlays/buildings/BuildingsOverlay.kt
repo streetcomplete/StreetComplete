@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.overlays.buildings
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
@@ -16,7 +19,7 @@ import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.resources.*
 
-class BuildingsOverlay : Overlay, AndroidOverlay {
+class BuildingsOverlay : Overlay {
 
     override val title = Res.string.overlay_buildings
     override val icon = R.drawable.quest_building
@@ -71,7 +74,17 @@ class BuildingsOverlay : Overlay, AndroidOverlay {
             )
         }
 
-    override fun createForm(element: Element?) = BuildingsOverlayForm()
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    ) {
+        if (element != null) {
+            BuildingsOverlayForm(onEdit, element)
+        }
+    }
 
     private val BuildingType.color get() = when (this) {
         // ~detached homes
