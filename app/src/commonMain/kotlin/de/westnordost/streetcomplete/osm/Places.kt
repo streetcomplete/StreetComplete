@@ -164,6 +164,10 @@ private val IS_PLACE_EXPRESSION by lazy {
             "mountain_rescue",
             "water_rescue",
         ),
+        "industrial" to listOf(
+            "scrap_yard",
+            "slaughterhouse",
+        ),
         "leisure" to listOf(
             "adult_gaming_centre",
             "amusement_arcade",

@@ -64,6 +64,10 @@ mapOf(
         // a bank that might be just next door because the app does not tell the user what
         // kind of object this is about
     ),
+    "industrial" to arrayOf(
+        // name & opening hours
+        "scrap_yard"
+    ),
     "tourism" to arrayOf(
         // common
         "zoo", "aquarium", "theme_park", "gallery", "museum"

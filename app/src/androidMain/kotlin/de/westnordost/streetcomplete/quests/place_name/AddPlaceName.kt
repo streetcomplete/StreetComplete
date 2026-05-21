@@ -74,6 +74,12 @@ class AddPlaceName(
                 "kindergarten", "school", "college", "university", "research_institute", // education
                 "dojo",                                                                  // sport
             ),
+            "industrial" to arrayOf(
+                // name & opening hours
+                "scrap_yard",
+                // name only
+                "slaughterhouse"
+            ),
             "tourism" to arrayOf(
                 // common
                 "zoo", "aquarium", "theme_park", "gallery", "museum",
