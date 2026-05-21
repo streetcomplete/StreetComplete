@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.overlays.places
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
@@ -20,7 +24,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.view.presetIconIndex
 
-class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, AndroidOverlay {
+class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
     override val title = Res.string.overlay_places
     override val icon = R.drawable.quest_shop
@@ -61,7 +65,18 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, An
             """)
             .map { it to OverlayStyle.Point(icon = null, label = "◽") }
 
-    override fun createForm(element: Element?) =
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    ) {
         // this check is necessary because the form shall not be shown for entrances
-        if (element == null || element.isPlaceOrDisusedPlace()) PlacesOverlayForm() else null
+        val isNewOrPlace = remember(element) { element == null || element.isPlaceOrDisusedPlace() }
+
+        if (isNewOrPlace) {
+            PlacesOverlayForm(onEdit, element, geometry, countryInfo)
+        }
+    }
 }

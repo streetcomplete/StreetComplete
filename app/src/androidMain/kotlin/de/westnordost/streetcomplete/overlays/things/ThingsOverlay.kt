@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.overlays.things
 
+import androidx.compose.runtime.Composable
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
@@ -15,7 +18,7 @@ import de.westnordost.streetcomplete.osm.isThingOrDisusedThing
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.view.presetIconIndex
 
-class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay, AndroidOverlay {
+class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
     override val title = Res.string.overlay_things
     override val icon = R.drawable.quest_dot
@@ -45,5 +48,13 @@ class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay, An
                 element to style
             }
 
-    override fun createForm(element: Element?) = ThingsOverlayForm()
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    ) {
+        ThingsOverlayForm(onEdit, element, geometry, countryInfo)
+    }
 }
