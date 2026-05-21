@@ -30,6 +30,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
            or natural = cave_entrance and access=yes
            or man_made = tower and tower:type = observation and access=yes
            or historic = castle and access = yes
+           or waterway = water_point
          )
          and access !~ private|no
          and !fee
@@ -41,7 +42,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val achievements = listOf(CITIZEN)
 
     override fun getTitle(tags: Map<String, String>) =
-        if (tags["amenity"] != null) {
+        if (tags["amenity"] != null || tags["waterway"] != null) {
             Res.string.quest_generalFee_title
         } else {
             Res.string.quest_generalFee_title2
