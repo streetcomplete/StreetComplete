@@ -8,8 +8,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalContext
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -35,12 +33,9 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
-import org.koin.android.ext.android.inject
-import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.koinInject
 
 @Composable
@@ -52,7 +47,6 @@ fun AddCyclewayForm(
     preferences: Preferences = koinInject(),
 )  {
     val favKey = "AddCyclewayForm"
-    val context = LocalContext.current
 
     val originalCycleway = remember {
         parseCyclewaySides(element.tags, countryInfo.isLeftHandTraffic)
@@ -208,10 +202,7 @@ fun AddCyclewayForm(
     if (confirmSelectReverseCyclewayDirection) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmSelectReverseCyclewayDirection = false },
-            onConfirmed = {
-                selectionMode = CyclewayFormSelectionMode.REVERSE
-                context.toast(R.string.cycleway_reverse_direction_toast)
-            },
+            onConfirmed = { selectionMode = CyclewayFormSelectionMode.REVERSE },
             text = { Text(stringResource(Res.string.cycleway_reverse_direction_warning)) }
         )
     }

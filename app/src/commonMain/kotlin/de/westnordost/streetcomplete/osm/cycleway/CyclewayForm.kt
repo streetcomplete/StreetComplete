@@ -1,14 +1,25 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.oneway.Direction
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side
@@ -28,55 +39,71 @@ fun CyclewayForm(
     mapTilt: Float,
     countryInfo: CountryInfo,
     roadDirection: Direction,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     lastPicked: List<Sides<CyclewayAndDirection>> = emptyList(),
-    lastPickedContentPadding: PaddingValues = PaddingValues.Companion.Zero,
+    lastPickedContentPadding: PaddingValues = PaddingValues.Zero,
     enabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
 ) {
     var showPickerForSide by remember { mutableStateOf<Side?>(null) }
 
-    StreetSideForm(
-        value = value,
-        onValueChanged = onValueChanged,
-        getIllustrationPainter = { cyclewayAndDirection, side ->
-            cyclewayAndDirection
-                ?.getIcon(side == Side.RIGHT, countryInfo, roadDirection)
-                ?.let { painterResource(it) }
-        },
-        onClickSide = { side ->
-            when (selectionMode) {
-                CyclewayFormSelectionMode.SELECT -> {
-                    showPickerForSide = side
-                }
-
-                CyclewayFormSelectionMode.REVERSE -> {
-                    onValueChanged(value.reverseDirection(side))
-                }
-            }
-        },
+    Box(
         modifier = modifier,
-        geometryRotation = geometryRotation,
-        mapRotation = mapRotation,
-        mapTilt = mapTilt,
-        isLeftHandTraffic = countryInfo.isLeftHandTraffic,
-        getFloatingPainter = { cyclewayAndDirection, side ->
-            cyclewayAndDirection
-                ?.getFloatingIcon(roadDirection, countryInfo.noEntrySignDrawable)
-                ?.let { painterResource(it) }
-        },
-        lastPicked = lastPicked,
-        lastPickedContentPadding = lastPickedContentPadding,
-        enabled = enabled,
-        isLeftSideVisible = isLeftSideVisible,
-        isRightSideVisible = isRightSideVisible,
-    )
+    ) {
+        StreetSideForm(
+            value = value,
+            onValueChanged = onValueChanged,
+            getIllustrationPainter = { cyclewayAndDirection, side ->
+                cyclewayAndDirection
+                    ?.getIcon(side == Side.RIGHT, countryInfo, roadDirection)
+                    ?.let { painterResource(it) }
+            },
+            onClickSide = { side ->
+                when (selectionMode) {
+                    CyclewayFormSelectionMode.SELECT -> {
+                        showPickerForSide = side
+                    }
+
+                    CyclewayFormSelectionMode.REVERSE -> {
+                        onValueChanged(value.reverseDirection(side))
+                    }
+                }
+            },
+            geometryRotation = geometryRotation,
+            mapRotation = mapRotation,
+            mapTilt = mapTilt,
+            isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+            getFloatingPainter = { cyclewayAndDirection, side ->
+                cyclewayAndDirection
+                    ?.getFloatingIcon(roadDirection, countryInfo.noEntrySignDrawable)
+                    ?.let { painterResource(it) }
+            },
+            lastPicked = lastPicked,
+            lastPickedContentPadding = lastPickedContentPadding,
+            enabled = enabled,
+            isLeftSideVisible = isLeftSideVisible,
+            isRightSideVisible = isRightSideVisible,
+        )
+        if (selectionMode == CyclewayFormSelectionMode.REVERSE) {
+            Surface(
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .padding(4.dp),
+                shape = MaterialTheme.shapes.small
+            ) {
+                Text(
+                    text = stringResource(Res.string.cycleway_reverse_direction_toast),
+                    modifier = Modifier.padding(8.dp)
+                )
+            }
+        }
+    }
 
     showPickerForSide?.let { side ->
         val current = value.get(side)
         val isRight = side == Side.RIGHT
-        val direction = current?.direction ?: Direction.Companion.getDefault(isRight, countryInfo.isLeftHandTraffic)
+        val direction = current?.direction ?: Direction.getDefault(isRight, countryInfo.isLeftHandTraffic)
         val selectableCycleways = getSelectableCycleways(countryInfo, isRight, countryInfo.isLeftHandTraffic, direction, roadDirection)
 
         SimpleItemSelectDialog(

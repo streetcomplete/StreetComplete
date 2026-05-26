@@ -12,9 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -51,7 +49,6 @@ import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
@@ -220,16 +217,13 @@ fun StreetCyclewayOverlayForm(
         )
     }
 
-    val context = LocalContext.current
     if (confirmSelectReverseCyclewayDirection) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmSelectReverseCyclewayDirection = false },
-            onConfirmed = {
-                selectionMode = CyclewayFormSelectionMode.REVERSE
-                context.toast(R.string.cycleway_reverse_direction_toast)
-            },
+            onConfirmed = { selectionMode = CyclewayFormSelectionMode.REVERSE },
             titleText = stringResource(Res.string.quest_generic_confirmation_title),
             text = { Text(stringResource(Res.string.cycleway_reverse_direction_warning)) }
         )
     }
 }
+
