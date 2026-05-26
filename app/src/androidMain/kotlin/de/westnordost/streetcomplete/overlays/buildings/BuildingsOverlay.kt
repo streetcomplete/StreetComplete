@@ -16,8 +16,10 @@ import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE
 import de.westnordost.streetcomplete.osm.building.createBuildingType
+import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.view.toAndroidResourceId
 
 class BuildingsOverlay : Overlay {
 
@@ -66,7 +68,7 @@ class BuildingsOverlay : Overlay {
 
             element to OverlayStyle.Polygon(
                 color = color,
-                icon = building?.iconResId,
+                icon = building?.icon.toAndroidResourceId(),
                 // TODO MapLibre: 3D buildings are disabled until
                 //      https://github.com/maplibre/maplibre-native/issues/2746 is fixed
                 // height = height,

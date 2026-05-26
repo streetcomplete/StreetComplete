@@ -290,10 +290,11 @@ android {
     }
 
     // we need to copy some resources from composeResources to android resources, see task
-    // copySharedResToAndroid. This can be removed when the map has been migrated to compose
+    // copyIconsToAndroid. This can be removed when the map has been migrated to compose
     sourceSets {
         getByName("main") {
             res.srcDir(layout.buildDirectory.dir("generated/androidMain/res"))
+            java.srcDir(layout.buildDirectory.dir("generated/androidMain/kotlin"))
         }
     }
 
@@ -469,25 +470,24 @@ tasks.register("copyDefaultStringsToEnStrings") {
 }
 
 // necessary as long as map hasn't been converted to compose yet
-val copySharedResToAndroid by tasks.registering(Copy::class) {
-    val target = "build/generated/androidMain/res/drawable"
-    from("src/commonMain/composeResources/drawable")
-    into(target)
-    include {
-        it.name.startsWith("building_") ||
-        it.name.startsWith("preset_") ||
-        it.name == "sport_volleyball.xml" ||
-        it.name == "religion_christian.xml" ||
-        it.name == "religion_jewish.xml" ||
-        it.name == "religion_muslim.xml"
+val copyIconsToAndroid by tasks.registering(CopyIconsTask::class) {
+    group = "streetcomplete"
+    sourceDir = "$projectDir/src/commonMain/composeResources/drawable"
+    targetDir = "$projectDir/build/generated/androidMain/res/drawable"
+    filter = {
+        it.startsWith("quest_") ||
+        it.startsWith("building_") ||
+        it.startsWith("preset_") ||
+        it == "sport_volleyball.xml" ||
+        it == "religion_christian.xml" ||
+        it == "religion_jewish.xml" ||
+        it == "religion_muslim.xml"
     }
-    doFirst {
-        File(target).mkdirs()
-    }
+    indexFile = "$projectDir/build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt"
 }
 
 project.afterEvaluate {
     tasks.named("preBuild") {
-        dependsOn(copySharedResToAndroid)
+        dependsOn(copyIconsToAndroid)
     }
 }
