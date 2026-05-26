@@ -1,0 +1,68 @@
+package de.westnordost.streetcomplete.quests.kerb_height
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.kerb.couldBeAKerb
+import de.westnordost.streetcomplete.osm.kerb.findAllKerbNodes
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
+
+class AddKerbHeight : OsmElementQuestType<KerbHeight> {
+
+    private val eligibleKerbsFilter by lazy { """
+        nodes with
+          !kerb
+          or kerb ~ yes|unknown
+          or kerb = raised and kerb older today -8 years
+          or kerb !~ no|rolled and kerb older today -12 years
+    """.toElementFilterExpression() }
+
+    override val changesetComment = "Determine the heights of kerbs"
+    override val wikiLink = "Key:kerb"
+    override val icon = Res.drawable.quest_kerb_type
+    override val title = Res.string.quest_kerb_height_title
+    override val achievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }
+
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!eligibleKerbsFilter.matches(element) || element !is Node || !element.couldBeAKerb()) {
+            false
+        } else {
+            null
+        }
+
+    @Composable
+    override fun Form(onAnswer: (KerbHeight) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        ItemSelectQuestForm(
+            items = KerbHeight.entries,
+            itemsPerRow = 2,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onClickOk = onAnswer
+        )
+    }
+
+    override fun applyAnswerTo(answer: KerbHeight, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags.updateWithCheckDate("kerb", answer.osmValue)
+        if (answer.osmValue == "no") {
+            tags.remove("barrier")
+        } else {
+            tags["barrier"] = "kerb"
+        }
+    }
+}

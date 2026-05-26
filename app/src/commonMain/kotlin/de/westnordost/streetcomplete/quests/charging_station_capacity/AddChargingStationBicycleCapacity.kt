@@ -1,0 +1,45 @@
+package de.westnordost.streetcomplete.quests.charging_station_capacity
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.CountInputQuestForm
+import org.jetbrains.compose.resources.painterResource
+
+class AddChargingStationBicycleCapacity : OsmFilterQuestType<Int>() {
+    override val elementFilter = """
+        nodes, ways with
+          amenity = charging_station
+          and bicycle ~ yes|designated
+          and !capacity:bicycle
+          and access !~ private|no
+    """
+
+    override val changesetComment = "Specify bicycle charging stations capacities"
+    override val wikiLink = "Tag:amenity=charging_station"
+    override val icon = Res.drawable.quest_charger_bicycle_capacity
+    override val title = Res.string.quest_bicycle_charging_station_capacity_title
+    override val achievements = listOf(BICYCLIST)
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = charging_station and bicycle ~ yes|designated")
+
+    @Composable
+    override fun Form(onAnswer: (Int) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        CountInputQuestForm(
+            icon = painterResource(Res.drawable.count_bicycle),
+            onClickOk = onAnswer
+        )
+    }
+
+    override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["capacity:bicycle"] = answer.toString()
+    }
+}

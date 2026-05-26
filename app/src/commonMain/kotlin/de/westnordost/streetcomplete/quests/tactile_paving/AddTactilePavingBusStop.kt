@@ -1,0 +1,52 @@
+package de.westnordost.streetcomplete.quests.tactile_paving
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.toYesNo
+
+class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
+
+    override val elementFilter = """
+        nodes, ways, relations with
+        (
+          public_transport = platform
+          or (highway = bus_stop and public_transport != stop_position)
+        )
+        and physically_present != no and naptan:BusStopType != HAR
+        and (
+          !tactile_paving
+          or tactile_paving = unknown
+          or tactile_paving = no and tactile_paving older today -8 years
+          or tactile_paving = yes and tactile_paving older today -12 years
+        )
+    """
+    override val changesetComment = "Specify whether public transport stops have tactile paving"
+    override val wikiLink = "Key:tactile_paving"
+    override val icon = Res.drawable.quest_blind_bus
+    override val title = Res.string.quest_busStopTactilePaving_title
+    override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
+    override val achievements = listOf(BLIND)
+    override val hint = Res.string.quest_generic_looks_like_this
+    override val hintImages = listOf(
+        Res.drawable.tactile_paving1,
+        Res.drawable.tactile_paving2,
+        Res.drawable.tactile_paving3
+    )
+
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        YesNoQuestForm(onAnswer)
+    }
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags.updateWithCheckDate("tactile_paving", answer.toYesNo())
+    }
+}

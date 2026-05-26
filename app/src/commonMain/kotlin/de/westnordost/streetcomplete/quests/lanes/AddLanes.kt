@@ -1,0 +1,76 @@
+package de.westnordost.streetcomplete.quests.lanes
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.ALL_ROADS
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
+
+class AddLanes : OsmFilterQuestType<LanesAnswer>() {
+
+    override val elementFilter = """
+        ways with
+          highway ~ ${ALL_ROADS.joinToString("|")}
+          and lane_markings = yes
+          and (!lanes or lanes = 0)
+          and (!lanes:backward or !lanes:forward)
+          and area != yes
+          and placement != transition
+          and (access !~ private|no or (foot and foot !~ private|no))
+    """
+
+    override val changesetComment = "Determine roads lane count"
+    override val wikiLink = "Key:lanes"
+    override val icon = Res.drawable.quest_street_lanes
+    override val title = Res.string.quest_lanes_title
+    override val achievements = listOf(CAR)
+    override val hint = Res.string.quest_street_side_puzzle_tutorial
+
+    @Composable
+    override fun Form(onAnswer: (LanesAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddLanesForm(onAnswer, element, geometry, countryInfo)
+    }
+
+    override fun applyAnswerTo(answer: LanesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is LanesAnswer.IsUnmarked -> {
+                tags["lane_markings"] = "no"
+
+                // don't touch tags["lanes"] because the user didn't answer anything in this regard
+                // but remove these, for unmarked roads, there is no forward/backward
+                tags.remove("lanes:forward")
+                tags.remove("lanes:backward")
+                tags.remove("lanes:both_ways")
+                tags.remove("turn:lanes:both_ways")
+            }
+            is Lanes -> {
+                tags["lanes"] = answer.total.toString()
+
+                // only tag forward/backward if both sides are defined (e.g. not on oneways) and
+                // if either it has been specified before or forward+backward differ
+                if (answer.forward != null && answer.backward != null) {
+                    val tagSidesExplicitly = answer.centerLeftTurnLane || answer.forward != answer.backward
+
+                    if (tagSidesExplicitly || tags.containsKey("lanes:forward")) {
+                        tags["lanes:forward"] = answer.forward.toString()
+                    }
+                    if (tagSidesExplicitly || tags.containsKey("lanes:backward")) {
+                        tags["lanes:backward"] = answer.backward.toString()
+                    }
+                }
+
+                if (answer.centerLeftTurnLane) {
+                    tags["lanes:both_ways"] = "1"
+                    tags["turn:lanes:both_ways"] = "left"
+                } else {
+                    tags.remove("lanes:both_ways")
+                    tags.remove("turn:lanes:both_ways")
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+package de.westnordost.streetcomplete.quests.wheelchair_access
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
+
+class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
+
+    override val elementFilter = """
+        nodes, ways, relations with
+         (
+           leisure = dog_park
+           or man_made = tower and access ~ yes|customers and tower:type ~ observation|watchtower
+           or natural = cave_entrance and fee=yes
+           or historic = castle and (access = yes or fee=yes)
+           or leisure = bird_hide
+         )
+         and access !~ no|private
+         and (!wheelchair or wheelchair older today -8 years)
+    """
+    override val changesetComment = "Survey wheelchair accessibility of outside places"
+    override val wikiLink = "Key:wheelchair"
+    override val icon = Res.drawable.quest_toilets_wheelchair
+    override val title = Res.string.quest_wheelchairAccess_outside_title
+    override val achievements = listOf(RARE, WHEELCHAIR)
+    override val hint = Res.string.quest_wheelchairAccess_limited_description_outside
+
+    @Composable
+    override fun Form(onAnswer: (WheelchairAccess) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddWheelchairAccessForm(onAnswer)
+    }
+
+    override fun applyAnswerTo(answer: WheelchairAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags.updateWithCheckDate("wheelchair", answer.osmValue)
+    }
+}

@@ -1,0 +1,46 @@
+package de.westnordost.streetcomplete.quests.bike_shop
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.toYesNo
+
+class AddBikeRepairAvailability : OsmFilterQuestType<Boolean>() {
+
+    override val elementFilter = """
+        nodes, ways with shop = bicycle
+        and (
+            !service:bicycle:repair
+            or service:bicycle:repair older today -6 years
+        )
+        and access !~ private|no
+    """
+
+    override val changesetComment = "Specify whether bicycle shops offer repairs"
+    override val wikiLink = "Key:service:bicycle:repair"
+    override val icon = Res.drawable.quest_bicycle_repair
+    override val title = Res.string.quest_bicycle_shop_repair_title
+    override val achievements = listOf(BICYCLIST)
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
+
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        YesNoQuestForm(onAnswer)
+    }
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags.updateWithCheckDate("service:bicycle:repair", answer.toYesNo())
+    }
+}

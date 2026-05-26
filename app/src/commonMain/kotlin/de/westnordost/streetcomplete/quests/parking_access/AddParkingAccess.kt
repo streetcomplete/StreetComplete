@@ -1,0 +1,58 @@
+package de.westnordost.streetcomplete.quests.parking_access
+
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import org.jetbrains.compose.resources.stringResource
+
+class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
+
+    // Exclude parking=street_side lacking any access tags, because most of
+    // these are found alongside public access roads, and likely will be
+    // access=yes by default. Leaving these in makes this quest repetitive and
+    // leads to users adding lots of redundant access=yes tags to satisfy the
+    // quest. parking=street_side with access=unknown seems like a valid target
+    // though.
+    //
+    // Cf. #2408: Parking access might omit parking=street_side
+    // Cf. #4538: should skip elements with more specific access tag already mapped
+    override val elementFilter = """
+        nodes, ways, relations with amenity ~ parking|motorcycle_parking
+        and (
+            access = unknown
+            or (!access and parking !~ street_side|lane) and
+            !trailer and !caravan and !double_tracked_motor_vehicle and !motorcar and
+            !motorhome and !tourist_bus and !coach and !goods and !hgv and !hgv_articulated and
+            !bdouble and !agricultural and !auto_rickshaw and !nev and !golf_cart and !atv and
+            !ohv and !snowmobile and !psv and !bus and !taxi and !minibus and !share_taxi and
+            !hov and !carpool and !car_sharing and !emergency and !hazmat and !hazmat:water and
+            !school_bus and !disabled and !4wd_only and !roadtrain and !lhv and !tank and
+            !motor_vehicle and !vehicle
+        )
+    """
+    override val changesetComment = "Specify parking access"
+    override val wikiLink = "Tag:amenity=parking"
+    override val icon = Res.drawable.quest_parking_access
+    override val title = Res.string.quest_parking_access_title2
+    override val achievements = listOf(CAR)
+
+    @Composable
+    override fun Form(onAnswer: (ParkingAccess) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        RadioGroupQuestForm(
+            items = ParkingAccess.entries,
+            itemContent = { Text(stringResource(it.text)) },
+            onClickOk = onAnswer
+        )
+    }
+
+    override fun applyAnswerTo(answer: ParkingAccess, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["access"] = answer.osmValue
+    }
+}

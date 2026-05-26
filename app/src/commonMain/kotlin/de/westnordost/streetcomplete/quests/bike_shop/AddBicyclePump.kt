@@ -1,0 +1,45 @@
+package de.westnordost.streetcomplete.quests.bike_shop
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.toYesNo
+
+class AddBicyclePump : OsmFilterQuestType<Boolean>() {
+
+    override val elementFilter = """
+        nodes, ways with
+        shop = bicycle
+        and !compressed_air
+        and (
+            !service:bicycle:pump
+            or service:bicycle:pump older today -6 years
+        )
+    """
+    override val changesetComment = "Survey whether shop offers public pump"
+    override val wikiLink = "Key:service:bicycle:pump"
+    override val icon = Res.drawable.quest_bicycle_pump
+    override val title = Res.string.quest_air_pump_bicycle_shop_title
+    override val achievements = listOf(BICYCLIST)
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
+
+    @Composable
+    override fun Form(onAnswer: (Boolean) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        YesNoQuestForm(onAnswer)
+    }
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags.updateWithCheckDate("service:bicycle:pump", answer.toYesNo())
+    }
+}

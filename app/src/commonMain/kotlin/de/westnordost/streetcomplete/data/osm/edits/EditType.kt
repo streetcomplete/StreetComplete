@@ -1,12 +1,13 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
 interface EditType {
-    /** the icon resource id used to display this edit type (in edit history, statistics, on map if
+    /** the icon resource used to display this edit type (in edit history, statistics, on map if
      *  applicable, ...) */
-    val icon: Int
+    val icon: DrawableResource
 
     /** the string resource used to display this edit type (in edit history, statistics, ...) */
     val title: StringResource

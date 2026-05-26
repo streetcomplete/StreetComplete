@@ -269,21 +269,21 @@ private fun editTypeAchievements(achievementIds: List<String>): List<EditTypeAch
     }
 
 private object QuestOne : QuestType {
-    override val icon = 0
+    override val icon = Res.drawable.quest_apple
     override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
     override val achievements = editTypeAchievements(listOf("thisAchievement", "mixedAchievement"))
 }
 
 private object QuestTwo : QuestType {
-    override val icon = 0
+    override val icon = Res.drawable.quest_apple
     override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
     override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
 }
 
 private object OverlayOne : Overlay {
-    override val icon = 0
+    override val icon = Res.drawable.quest_apple
     override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
     override val changesetComment = ""
