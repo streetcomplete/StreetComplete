@@ -28,6 +28,9 @@ interface Overlay : ElementEditType {
      *
      *  - [GroupedItemSelectOverlayForm][de.westnordost.streetcomplete.ui.common.overlay.GroupedItemSelectOverlayForm] -
      *    Select one from a grouped list of (image) items
+     *
+     *  - [ItemPairSelectOverlayForm][de.westnordost.streetcomplete.ui.common.overlay.ItemPairSelectOverlayForm] -
+     *    Select a pair of (image) items
      *  */
     @Composable
     fun Form(

@@ -67,6 +67,6 @@ class AddressOverlay(
         geometry: ElementGeometry,
         countryInfo: CountryInfo
     ) {
-        AddressOverlayForm(onEdit, element)
+        AddressOverlayForm(onEdit, element, geometry, countryInfo)
     }
 }

@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.GroupedItemSelectDialog
@@ -27,6 +28,7 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.util.takeFavorites
+import org.koin.compose.koinInject
 
 /** Overlay form to select an item from a list of items grouped by [groups].
  *  It initially displays the [initialSelectedItem], clicking on it opens a dialog in which another
@@ -46,6 +48,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
     prefs: Preferences,
     favoriteKey: String,
     modifier: Modifier = Modifier,
+    featureDictionary: FeatureDictionary = koinInject(),
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },

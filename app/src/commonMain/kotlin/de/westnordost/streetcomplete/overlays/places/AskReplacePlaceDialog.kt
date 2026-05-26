@@ -8,6 +8,8 @@ import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
 
+/** Asks whether this place is a new place and thus should be replaced, or if it is still the same
+ *  place (i.e. name and/or place type has been adjusted) */
 @Composable
 fun AskReplacePlaceDialog(
     onDismissRequest: () -> Unit,

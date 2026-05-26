@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.MoreIcon
@@ -41,6 +42,7 @@ import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
+import org.koin.compose.koinInject
 
 /** A generic overlay form containing the center-aligned [content], padded with [contentPadding].
  *  Above it, an optional bubble with a [label] (in which the element is usually named).
@@ -57,6 +59,7 @@ fun OverlayForm(
     hasChanges: Boolean,
     onClickOk: () -> Unit,
     modifier: Modifier = Modifier,
+    featureDictionary: FeatureDictionary = koinInject(),
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },

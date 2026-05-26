@@ -24,19 +24,22 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.osm.address.AddressNumber
+import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameForm
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
 import de.westnordost.streetcomplete.osm.address.PlaceName
 import de.westnordost.streetcomplete.osm.address.StreetName
-import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameForm
 import de.westnordost.streetcomplete.osm.address.applyTo
 import de.westnordost.streetcomplete.osm.address.parseAddressNumber
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.quests.address.AddressNumberAndName
-import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameForm
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_address_answer_block2
+import de.westnordost.streetcomplete.resources.quest_address_answer_house_name2
+import de.westnordost.streetcomplete.resources.quest_address_answer_no_address
+import de.westnordost.streetcomplete.resources.quest_address_answer_no_block2
+import de.westnordost.streetcomplete.resources.quest_address_street_no_named_streets
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.Answer
@@ -45,6 +48,7 @@ import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
+import kotlin.collections.iterator
 
 @Composable
 fun AddressOverlayForm(
@@ -56,8 +60,6 @@ fun AddressOverlayForm(
     nameSuggestionsSource: NameSuggestionsSource = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
 ) {
-
-
     val originalStreetOrPlaceName = remember(element) {
         element?.tags?.get("addr:street")?.let { StreetName(it) }
             ?: element?.tags?.get("addr:place")?.let { PlaceName(it) }
@@ -100,7 +102,7 @@ fun AddressOverlayForm(
             addressNumberAndName.isComplete(),
         hasChanges =
             originalStreetOrPlaceName != streetOrPlaceName ||
-            originalAddressNumberAndName != addressNumberAndName,
+                originalAddressNumberAndName != addressNumberAndName,
         onClickOk = {
             val number = addressNumberAndName.number
             val name = addressNumberAndName.name
@@ -155,13 +157,16 @@ fun AddressOverlayForm(
                 countryInfo.countryCode in listOf("JP", "CZ", "SK") -> {
                     null
                 }
+
                 addressNumberAndName.number is BlockAndHouseNumber ->
                     Answer(stringResource(Res.string.quest_address_answer_no_block2)) {
                         addressNumberAndName = addressNumberAndName.copy(number = HouseNumber(""))
                     }
+
                 else ->
                     Answer(stringResource(Res.string.quest_address_answer_block2)) {
-                        addressNumberAndName = addressNumberAndName.copy(number = BlockAndHouseNumber("", ""))
+                        addressNumberAndName =
+                            addressNumberAndName.copy(number = BlockAndHouseNumber("", ""))
                     }
             },
             if (element != null) {
@@ -206,6 +211,7 @@ fun AddressOverlayForm(
                                     streetOrPlaceName = PlaceName(name)
                                 }
                             }
+
                             is StreetName -> {
                                 val name = lastStreetName
                                 if (!name.isNullOrEmpty()) {
@@ -232,7 +238,6 @@ fun AddressOverlayForm(
 }
 
 // only saved per application start
-
 private var lastBlock: String? = null
 private var lastHouseNumber: String? = null
 
@@ -240,7 +245,6 @@ private var lastPlaceName: String? = null
 private var lastStreetName: String? = null
 
 private var lastWasPlaceName: Boolean = false
-
 
 private fun createRemoveAddressElementEditAction(element: Element): ElementEditAction {
     if (element is Node && element.tags.all { isAddressTag(it.key, it.value) }) {
@@ -267,6 +271,7 @@ private fun isAddressTag(key: String, value: String): Boolean =
     key.startsWith("note:addr:") ||
     key == "noaddress" ||
     key == "nohousenumber"
+
 
 // TODO compose-quest-form position on way stuff
 /*

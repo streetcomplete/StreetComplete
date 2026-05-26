@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.overlays
+package de.westnordost.streetcomplete.ui.common.overlay
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,7 +29,6 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
-import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.takeFavorites
@@ -46,11 +45,11 @@ inline fun <reified I> ItemPairSelectOverlayForm(
     labels: Pair<String, String>,
     prefs: Preferences,
     favoriteKey: String,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier.Companion,
     otherAnswers: List<Answer> = emptyList(),
 ) {
     val lastPicked = remember {
-        prefs.getLastPicked<Pair<I,I>>(favoriteKey).takeFavorites(n = 3, first = 1)
+        prefs.getLastPicked<Pair<I, I>>(favoriteKey).takeFavorites(n = 3, first = 1)
     }
     var selectedItemPair by rememberSerializable(initialSelectedItemPair) {
         mutableStateOf<Pair<I?, I?>>(initialSelectedItemPair)
@@ -107,7 +106,7 @@ inline fun <reified I> ItemPairSelectOverlayForm(
                 }
             }
 
-            if(lastPicked.isNotEmpty()) {
+            if (lastPicked.isNotEmpty()) {
                 LastPickedChipsRow(
                     items = lastPicked,
                     onClick = { selectedItemPair = it },
