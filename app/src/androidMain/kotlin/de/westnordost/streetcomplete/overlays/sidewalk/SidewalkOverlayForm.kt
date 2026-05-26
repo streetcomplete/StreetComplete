@@ -36,12 +36,11 @@ fun SidewalkOverlayForm(
     preferences: Preferences = koinInject()
 ) {
     val favKey = "SidewalkOverlayForm"
-
     val lastPicked = remember { preferences.getLastPicked<Sides<Sidewalk>>(favKey) }
 
     val originalSidewalks = remember(element) {
         parseSidewalkSides(element.tags)?.validOrNullValues()
-            ?: Sides<Sidewalk>(null, null)
+        ?: Sides<Sidewalk>(null, null)
     }
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 

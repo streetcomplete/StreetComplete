@@ -12,21 +12,31 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.all
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.applyTo
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.parseBicycleBoulevard
+import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleBoulevardSign
 import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInPedestrianStreet
+import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInPedestrianStreetAllowedSign
+import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInPedestrianStreetDesignatedSign
 import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.applyTo
 import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.parseBicycleInPedestrianStreet
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
 import de.westnordost.streetcomplete.osm.cycleway.CyclewayAndDirection
+import de.westnordost.streetcomplete.osm.cycleway.CyclewayForm
+import de.westnordost.streetcomplete.osm.cycleway.CyclewayFormSelectionMode
 import de.westnordost.streetcomplete.osm.cycleway.applyTo
 import de.westnordost.streetcomplete.osm.cycleway.isSelectable
 import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
@@ -34,12 +44,6 @@ import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
 import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
 import de.westnordost.streetcomplete.osm.cycleway.withDefaultDirection
 import de.westnordost.streetcomplete.osm.oneway.Direction
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleBoulevardSign
-import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInPedestrianStreetAllowedSign
-import de.westnordost.streetcomplete.osm.bicycle_in_pedestrian_street.BicycleInPedestrianStreetDesignatedSign
-import de.westnordost.streetcomplete.osm.cycleway.CyclewayForm
-import de.westnordost.streetcomplete.osm.cycleway.CyclewayFormSelectionMode
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
@@ -50,179 +54,182 @@ import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import org.jetbrains.compose.resources.stringResource
-import org.koin.android.ext.android.inject
+import org.koin.compose.koinInject
 
-class StreetCyclewayOverlayForm : AbstractOverlayForm() {
+@Composable
+fun StreetCyclewayOverlayForm(
+    onEdit: (ElementEditAction) -> Unit,
+    element: Element,
+    geometry: ElementGeometry,
+    countryInfo: CountryInfo,
+    preferences: Preferences = koinInject()
+) {
+    val favKey = "StreetCyclewayOverlayForm"
+    val lastPicked = remember {
+        preferences
+            .getLastPicked<Sides<Cycleway>>(favKey)
+            .map { it.withDefaultDirection(countryInfo.isLeftHandTraffic) }
+            .filter { sides -> sides.all { it?.isSelectable(countryInfo) != false } }
+    }
+    val originalCycleway = remember(element) {
+        parseCyclewaySides(element.tags, countryInfo.isLeftHandTraffic)
+            ?.selectableOrNullValues(countryInfo)
+            ?: Sides<CyclewayAndDirection>(null, null)
+    }
+    val originalBicycleBoulevard = remember(element) { parseBicycleBoulevard(element.tags) }
+    val originalBicycleInPedestrianStreet = remember(element) { parseBicycleInPedestrianStreet(element.tags) }
 
-    private val prefs: Preferences by inject()
+    val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 
-    @Composable
-    override fun Content() {
-        val lastPicked = remember {
-            prefs
-                .getLastPicked<Sides<Cycleway>>("StreetCyclewayOverlayForm")
-                .map { it.withDefaultDirection(countryInfo.isLeftHandTraffic) }
-                .filter { sides -> sides.all { it?.isSelectable(countryInfo) != false } }
-        }
-        val tags = element!!.tags
-        val originalCycleway = remember {
-            parseCyclewaySides(tags, isLeftHandTraffic)
-                ?.selectableOrNullValues(countryInfo)
-                ?: Sides<CyclewayAndDirection>(null, null)
-        }
-        val originalBicycleBoulevard = remember { parseBicycleBoulevard(tags) }
-        val originalBicycleInPedestrianStreet = remember { parseBicycleInPedestrianStreet(tags) }
+    var cycleways by rememberSerializable(originalCycleway) {
+        mutableStateOf(originalCycleway)
+    }
+    var bicycleBoulevard by rememberSerializable(originalBicycleBoulevard) {
+        mutableStateOf(originalBicycleBoulevard)
+    }
+    var bicycleInPedestrianStreet by rememberSerializable(originalBicycleInPedestrianStreet) {
+        mutableStateOf(originalBicycleInPedestrianStreet)
+    }
+    var selectionMode by remember { mutableStateOf(CyclewayFormSelectionMode.SELECT)  }
 
-        val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
+    var confirmNotOnewayForCyclists by remember { mutableStateOf(false) }
+    var confirmSelectReverseCyclewayDirection by remember { mutableStateOf(false) }
 
-        var cycleways by rememberSerializable { mutableStateOf(originalCycleway) }
-        var bicycleBoulevard by rememberSerializable { mutableStateOf(originalBicycleBoulevard) }
-        var bicycleInPedestrianStreet by rememberSerializable { mutableStateOf(originalBicycleInPedestrianStreet) }
-        var selectionMode by remember { mutableStateOf(CyclewayFormSelectionMode.SELECT)  }
-
-        var confirmNotOnewayForCyclists by remember { mutableStateOf(false) }
-        var confirmSelectReverseCyclewayDirection by remember { mutableStateOf(false) }
-
-        val switchBicycleBoulevardAnswer = when (bicycleBoulevard) {
-            BicycleBoulevard.YES ->
-                Answer(stringResource(Res.string.bicycle_boulevard_is_not_a, stringResource(Res.string.bicycle_boulevard))) {
-                    bicycleBoulevard = BicycleBoulevard.NO
-                }
-            BicycleBoulevard.NO ->
-                // don't allow pedestrian roads to be tagged as bicycle roads (should rather be
-                // highway=pedestrian + bicycle=designated rather than bicycle_road=yes)
-                if (tags["highway"] != "pedestrian") {
-                    Answer(stringResource(Res.string.bicycle_boulevard_is_a, stringResource(Res.string.bicycle_boulevard))) {
-                        bicycleBoulevard = BicycleBoulevard.YES
-                    }
-                } else {
-                    null
-                }
-        }
-        val reverseCyclewayDirectionAnswer = Answer(stringResource(Res.string.cycleway_reverse_direction)) {
-            confirmSelectReverseCyclewayDirection = true
-        }
-        val bicycleInPedestrianStreetAnswers = buildList {
-            // only offer answers in pedestrian zones
-            if (bicycleInPedestrianStreet == null) return@buildList
-
-            if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.DESIGNATED) {
-                add(
-                    Answer(stringResource(Res.string.pedestrian_zone_designated)) {
-                        bicycleInPedestrianStreet = BicycleInPedestrianStreet.DESIGNATED
-                    }
-                )
+    val switchBicycleBoulevardAnswer = when (bicycleBoulevard) {
+        BicycleBoulevard.YES ->
+            Answer(stringResource(Res.string.bicycle_boulevard_is_not_a, stringResource(Res.string.bicycle_boulevard))) {
+                bicycleBoulevard = BicycleBoulevard.NO
             }
-            if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.ALLOWED) {
-                add(
-                    Answer(stringResource(Res.string.pedestrian_zone_allowed_sign)) {
-                        bicycleInPedestrianStreet = BicycleInPedestrianStreet.ALLOWED
-                    }
-                )
-            }
-            if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.NOT_SIGNED) {
-                add(
-                    Answer(stringResource(Res.string.pedestrian_zone_no_sign)) {
-                        bicycleInPedestrianStreet = BicycleInPedestrianStreet.NOT_SIGNED
-                    }
-                )
-            }
-        }
-
-        OverlayForm(
-            isComplete =
-                cycleways.left != null ||
-                cycleways.right != null ||
-                originalBicycleBoulevard != bicycleBoulevard ||
-                originalBicycleInPedestrianStreet != bicycleInPedestrianStreet,
-            hasChanges =
-                cycleways.left != originalCycleway.left ||
-                cycleways.right != originalCycleway.right ||
-                originalBicycleBoulevard != bicycleBoulevard ||
-                originalBicycleInPedestrianStreet != bicycleInPedestrianStreet,
-            onClickOk = {
-                if (cycleways.wasNoOnewayForCyclistsButNowItIs(element!!.tags, isLeftHandTraffic)) {
-                    confirmNotOnewayForCyclists = true
-                } else {
-                    saveAndApplyCycleway(cycleways, bicycleBoulevard, bicycleInPedestrianStreet)
+        BicycleBoulevard.NO ->
+            // don't allow pedestrian roads to be tagged as bicycle roads (should rather be
+            // highway=pedestrian + bicycle=designated rather than bicycle_road=yes)
+            if (element.tags["highway"] != "pedestrian") {
+                Answer(stringResource(Res.string.bicycle_boulevard_is_a, stringResource(Res.string.bicycle_boulevard))) {
+                    bicycleBoulevard = BicycleBoulevard.YES
                 }
-            },
-            otherAnswers =
-                bicycleInPedestrianStreetAnswers +
-                listOfNotNull(
-                    reverseCyclewayDirectionAnswer,
-                    switchBicycleBoulevardAnswer,
-                ),
-            contentPadding = PaddingValues.Zero
-        ) {
-            Box(contentAlignment = Alignment.Center) {
-                CyclewayForm(
-                    value = cycleways,
-                    onValueChanged = {
-                        cycleways = it
-                        selectionMode = CyclewayFormSelectionMode.SELECT
-                    },
-                    selectionMode = selectionMode,
-                    geometryRotation = geometryRotation,
-                    mapRotation = LocalMapRotation.current,
-                    mapTilt = LocalMapTilt.current,
-                    countryInfo = countryInfo,
-                    roadDirection = Direction.from(element!!.tags),
-                    lastPicked = lastPicked,
-                    lastPickedContentPadding = PaddingValues(start = 48.dp, end = 56.dp),
-                )
-                Box(Modifier.scale(0.5f).alpha(0.75f)) {
-                    if (bicycleInPedestrianStreet == BicycleInPedestrianStreet.ALLOWED) {
-                        BicycleInPedestrianStreetAllowedSign()
-                    } else if (bicycleInPedestrianStreet == BicycleInPedestrianStreet.DESIGNATED) {
-                        BicycleInPedestrianStreetDesignatedSign()
-                    } else if (bicycleBoulevard == BicycleBoulevard.YES) {
-                        BicycleBoulevardSign()
-                    }
-                }
-            }
-        }
+            } else null
+    }
+    val reverseCyclewayDirectionAnswer = Answer(stringResource(Res.string.cycleway_reverse_direction)) {
+        confirmSelectReverseCyclewayDirection = true
+    }
+    val bicycleInPedestrianStreetAnswers = buildList {
+        // only offer answers in pedestrian zones
+        if (bicycleInPedestrianStreet == null) return@buildList
 
-        if (confirmNotOnewayForCyclists) {
-            QuestConfirmationDialog(
-                onDismissRequest = { confirmNotOnewayForCyclists = false },
-                onConfirmed = { saveAndApplyCycleway(cycleways, bicycleBoulevard, bicycleInPedestrianStreet) },
-                text = { Text(stringResource(Res.string.quest_cycleway_confirmation_oneway_for_cyclists_too)) }
+        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.DESIGNATED) {
+            add(
+                Answer(stringResource(Res.string.pedestrian_zone_designated)) {
+                    bicycleInPedestrianStreet = BicycleInPedestrianStreet.DESIGNATED
+                }
             )
         }
-
-        if (confirmSelectReverseCyclewayDirection) {
-            QuestConfirmationDialog(
-                onDismissRequest = { confirmSelectReverseCyclewayDirection = false },
-                onConfirmed = {
-                    selectionMode = CyclewayFormSelectionMode.REVERSE
-                    context?.toast(R.string.cycleway_reverse_direction_toast)
-                },
-                titleText = stringResource(Res.string.quest_generic_confirmation_title),
-                text = { Text(stringResource(Res.string.cycleway_reverse_direction_warning)) }
+        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.ALLOWED) {
+            add(
+                Answer(stringResource(Res.string.pedestrian_zone_allowed_sign)) {
+                    bicycleInPedestrianStreet = BicycleInPedestrianStreet.ALLOWED
+                }
+            )
+        }
+        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.NOT_SIGNED) {
+            add(
+                Answer(stringResource(Res.string.pedestrian_zone_no_sign)) {
+                    bicycleInPedestrianStreet = BicycleInPedestrianStreet.NOT_SIGNED
+                }
             )
         }
     }
 
-    // just a shortcut
-    private val isLeftHandTraffic get() = countryInfo.isLeftHandTraffic
+    fun saveAndApplyCycleway() {
+        val tags = StringMapChangesBuilder(element.tags)
+        val sides = cycleways
 
-    private fun saveAndApplyCycleway(
-        sides: Sides<CyclewayAndDirection>,
-        bicycleBoulevard: BicycleBoulevard,
-        bicycleInPedestrianStreet: BicycleInPedestrianStreet?
-    ) {
-        val tags = StringMapChangesBuilder(element!!.tags)
-        sides.applyTo(tags, countryInfo.isLeftHandTraffic)
-        bicycleBoulevard.applyTo(tags, countryInfo.countryCode)
-        bicycleInPedestrianStreet?.applyTo(tags)
         if (sides.left != null && sides.right != null) {
             // only persist the cycleway selection, not the direction. For any road that deviates from
             // the default, the user should select this specifically. Simply carrying over the
             // non-default direction to the next answer might result in mistakes
             val cycleways = Sides(left = sides.left.cycleway, right = sides.right.cycleway)
-            prefs.setLastPicked("StreetCyclewayOverlayForm", listOf(cycleways))
+            preferences.setLastPicked("StreetCyclewayOverlayForm", listOf(cycleways))
         }
-        applyEdit(UpdateElementTagsAction(element!!, tags.create()))
+
+        sides.applyTo(tags, countryInfo.isLeftHandTraffic)
+        bicycleBoulevard.applyTo(tags, countryInfo.countryCode)
+        bicycleInPedestrianStreet?.applyTo(tags)
+
+        onEdit(UpdateElementTagsAction(element, tags.create()))
+    }
+
+    OverlayForm(
+        isComplete =
+            cycleways.left != null ||
+            cycleways.right != null ||
+            originalBicycleBoulevard != bicycleBoulevard ||
+            originalBicycleInPedestrianStreet != bicycleInPedestrianStreet,
+        hasChanges =
+            cycleways.left != originalCycleway.left ||
+            cycleways.right != originalCycleway.right ||
+            originalBicycleBoulevard != bicycleBoulevard ||
+            originalBicycleInPedestrianStreet != bicycleInPedestrianStreet,
+        onClickOk = {
+            if (cycleways.wasNoOnewayForCyclistsButNowItIs(element.tags, countryInfo.isLeftHandTraffic)) {
+                confirmNotOnewayForCyclists = true
+            } else {
+                saveAndApplyCycleway()
+            }
+        },
+        otherAnswers =
+            bicycleInPedestrianStreetAnswers +
+            listOfNotNull(
+                reverseCyclewayDirectionAnswer,
+                switchBicycleBoulevardAnswer,
+            ),
+        contentPadding = PaddingValues.Zero
+    ) {
+        Box(contentAlignment = Alignment.Center) {
+            CyclewayForm(
+                value = cycleways,
+                onValueChanged = {
+                    cycleways = it
+                    selectionMode = CyclewayFormSelectionMode.SELECT
+                },
+                selectionMode = selectionMode,
+                geometryRotation = geometryRotation,
+                mapRotation = LocalMapRotation.current,
+                mapTilt = LocalMapTilt.current,
+                countryInfo = countryInfo,
+                roadDirection = Direction.from(element.tags),
+                lastPicked = lastPicked,
+                lastPickedContentPadding = PaddingValues(start = 48.dp, end = 56.dp),
+            )
+            Box(Modifier.scale(0.5f).alpha(0.75f)) {
+                if (bicycleInPedestrianStreet == BicycleInPedestrianStreet.ALLOWED) {
+                    BicycleInPedestrianStreetAllowedSign()
+                } else if (bicycleInPedestrianStreet == BicycleInPedestrianStreet.DESIGNATED) {
+                    BicycleInPedestrianStreetDesignatedSign()
+                } else if (bicycleBoulevard == BicycleBoulevard.YES) {
+                    BicycleBoulevardSign()
+                }
+            }
+        }
+    }
+
+    if (confirmNotOnewayForCyclists) {
+        QuestConfirmationDialog(
+            onDismissRequest = { confirmNotOnewayForCyclists = false },
+            onConfirmed = { saveAndApplyCycleway() },
+            text = { Text(stringResource(Res.string.quest_cycleway_confirmation_oneway_for_cyclists_too)) }
+        )
+    }
+
+    val context = LocalContext.current
+    if (confirmSelectReverseCyclewayDirection) {
+        QuestConfirmationDialog(
+            onDismissRequest = { confirmSelectReverseCyclewayDirection = false },
+            onConfirmed = {
+                selectionMode = CyclewayFormSelectionMode.REVERSE
+                context.toast(R.string.cycleway_reverse_direction_toast)
+            },
+            titleText = stringResource(Res.string.quest_generic_confirmation_title),
+            text = { Text(stringResource(Res.string.cycleway_reverse_direction_warning)) }
+        )
     }
 }

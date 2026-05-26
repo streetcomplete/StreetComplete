@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.overlays.street_parking
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
@@ -15,13 +19,7 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.HALF_ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.OFF_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.PAINTED_AREA_ONLY
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_HALF_ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STAGGERED_ON_STREET
-import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.STREET_SIDE
+import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
 import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
@@ -29,7 +27,7 @@ import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCa
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.resources.*
 
-class StreetParkingOverlay : Overlay, AndroidOverlay {
+class StreetParkingOverlay : Overlay {
 
     override val title = Res.string.overlay_street_parking
     override val icon = R.drawable.quest_parking_lane
@@ -59,15 +57,30 @@ class StreetParkingOverlay : Overlay, AndroidOverlay {
             if (style != null) it to style else null
         }
 
-    override fun createForm(element: Element?): AbstractOverlayForm? =
-        if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
-            StreetParkingOverlayForm()
-        } else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
-            LaneNarrowingTrafficCalmingForm()
-        } else {
-            null
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    ) {
+        val isRoad = remember(element) {
+            element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes"
         }
+        val isCycleway = remember(element) {
+            element == null || parseNarrowingTrafficCalming(element.tags) != null
+        }
+
+        if (isRoad) {
+            StreetParkingOverlayForm(onEdit, element!!, geometry, countryInfo)
+        }
+        // TODO compose-quest-form
+        //else if (isCycleway) {
+        //    LaneNarrowingTrafficCalmingForm(onEdit, element)
+        //}
+    }
 }
+
 
 private val streetParkingTaggingNotExpected by lazy { """
     ways with

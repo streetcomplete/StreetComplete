@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.overlays.surface
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
@@ -22,7 +25,7 @@ import de.westnordost.streetcomplete.quests.surface.AddPathSurface
 import de.westnordost.streetcomplete.quests.surface.AddRoadSurface
 import de.westnordost.streetcomplete.resources.*
 
-class SurfaceOverlay : Overlay, AndroidOverlay {
+class SurfaceOverlay : Overlay {
 
     override val title = Res.string.overlay_surface
     override val icon = R.drawable.quest_street_surface
@@ -42,7 +45,15 @@ class SurfaceOverlay : Overlay, AndroidOverlay {
                 highway ~ ${(ALL_PATHS + ALL_ROADS).joinToString("|")}
         """).map { it to getStyle(it) }
 
-    override fun createForm(element: Element?) = SurfaceOverlayForm()
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    ) {
+        element?.let { SurfaceOverlayForm(onEdit, element) }
+    }
 }
 
 private fun getStyle(element: Element): OverlayStyle {

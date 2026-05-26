@@ -41,8 +41,7 @@ class WayLitOverlay : Overlay {
         geometry: ElementGeometry,
         countryInfo: CountryInfo
     ) {
-        if (element == null) return
-        WayLitOverlayForm(onEdit, element)
+        element?.let { WayLitOverlayForm(onEdit, element) }
     }
 }
 

@@ -1,17 +1,20 @@
 package de.westnordost.streetcomplete.overlays.cycleway
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.parseBicycleBoulevard
@@ -30,7 +33,7 @@ import de.westnordost.streetcomplete.resources.*
 
 class CyclewayOverlay(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
-) : Overlay, AndroidOverlay {
+) : Overlay {
 
     override val title = Res.string.overlay_cycleway
     override val icon = R.drawable.quest_bicycleway
@@ -58,14 +61,21 @@ class CyclewayOverlay(
               and area != yes
         """).map { it to getSeparateCyclewayStyle(it) }
 
-    override fun createForm(element: Element?) =
-        if (element == null) {
-            null
-        } else if (element.tags["highway"] in ALL_ROADS) {
-            StreetCyclewayOverlayForm()
-        } else {
-            SeparateCyclewayForm()
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    ) {
+        if (element == null) return
+
+        if (element.tags["highway"] in ALL_ROADS) {
+            StreetCyclewayOverlayForm(onEdit, element, geometry, countryInfo)
+        } else if (element.tags["highway"] in ALL_PATHS) {
+            SeparateCyclewayForm(onEdit, element, countryInfo)
         }
+    }
 }
 
 private fun getSeparateCyclewayStyle(element: Element) =

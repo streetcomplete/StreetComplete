@@ -48,11 +48,13 @@ class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
                 element to style
             }
 
+    @Composable
     override fun Form(
         onEdit: (ElementEditAction) -> Unit,
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo
-    ): @Composable (() -> Unit)? =
-        element?.let { { ThingsOverlayForm(onEdit, element, geometry, countryInfo) } }
+    ) {
+        element?.let { ThingsOverlayForm(onEdit, element, geometry, countryInfo) }
+    }
 }

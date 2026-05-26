@@ -18,7 +18,8 @@ interface Overlay : ElementEditType {
     /** layers that should be hidden while this overlay is active */
     val hidesLayers: List<String> get() = emptyList()
 
-    /** Composable form in which to enter the requested information. Use
+    /** Returns a composable form in which to enter the requested information if clicking on
+     *  the given element should not do anything. Use
      *  [OverlayForm][de.westnordost.streetcomplete.ui.common.overlay.OverlayForm] to define a
      *  custom one, or any of the pre-defined generic forms like…
      *

@@ -1,11 +1,14 @@
 package de.westnordost.streetcomplete.overlays.address
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
@@ -16,7 +19,7 @@ import de.westnordost.streetcomplete.util.getShortHouseNumber
 
 class AddressOverlay(
     private val getCountryCodeByLocation: (location: LatLon) -> String?
-) : Overlay, AndroidOverlay {
+) : Overlay {
 
     override val title = Res.string.overlay_addresses
     override val icon = R.drawable.quest_housenumber
@@ -57,5 +60,13 @@ class AddressOverlay(
                 it to OverlayStyle.Polygon(color = color, label = label)
             }
 
-    override fun createForm(element: Element?) = AddressOverlayForm()
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    ) {
+        AddressOverlayForm(onEdit, element)
+    }
 }
