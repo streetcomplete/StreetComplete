@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.ui.common.StepperButton
 fun BlockStepperButton(
     value: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
 ) {
     val next = remember(value) { stepBlock(value, +1) }
     val prev = remember(value) { stepBlock(value, -1) }

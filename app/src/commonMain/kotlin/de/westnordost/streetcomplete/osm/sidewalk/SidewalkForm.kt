@@ -23,9 +23,9 @@ fun SidewalkForm(
     mapRotation: Float,
     mapTilt: Float,
     isLeftHandTraffic: Boolean,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     lastPicked: List<Sides<Sidewalk>> = emptyList(),
-    lastPickedContentPadding: PaddingValues = PaddingValues.Companion.Zero,
+    lastPickedContentPadding: PaddingValues = PaddingValues.Zero,
 ) {
     var showPickerForSide by remember { mutableStateOf<Side?>(null) }
 

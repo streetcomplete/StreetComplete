@@ -14,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onSizeChanged
@@ -24,9 +26,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.address.AnAddressNumberInput
 import de.westnordost.streetcomplete.osm.address.BlockStepperButton
 import de.westnordost.streetcomplete.osm.address.HouseNumberInput
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.label_block2
-import de.westnordost.streetcomplete.resources.label_housenumber
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import org.jetbrains.compose.resources.stringResource
@@ -40,13 +40,13 @@ import org.jetbrains.compose.resources.stringResource
 fun BlockAndHouseNumberForm(
     value: BlockAndHouseNumber,
     onValueChange: (BlockAndHouseNumber) -> Unit,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     suggestion: BlockAndHouseNumber? = null,
 ) {
     val inputStyle = MaterialTheme.typography.largeInput
     val labelStyle = MaterialTheme.typography.caption.copy(
-        hyphens = Hyphens.Companion.Auto,
-        textAlign = TextAlign.Companion.Center,
+        hyphens = Hyphens.Auto,
+        textAlign = TextAlign.Center,
         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
     )
 
@@ -60,22 +60,22 @@ fun BlockAndHouseNumberForm(
     ) {
         ProvideTextStyle(inputStyle) {
             Row(
-                verticalAlignment = Alignment.Companion.CenterVertically,
+                verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Row(Modifier.Companion.width(112.dp)) {
+                Row(Modifier.width(112.dp)) {
                     AnAddressNumberInput(
                         value = value.block,
                         onValueChange = { onValueChange(value.copy(block = it)) },
                         suggestion = suggestion?.block,
-                        modifier = Modifier.Companion
+                        modifier = Modifier
                             .weight(1f)
                             .onSizeChanged { blockInputHeightPx = it.height },
                     )
                     BlockStepperButton(
                         value = if (useBlockSuggestion) suggestion.block else value.block,
                         onValueChange = { onValueChange(value.copy(block = it)) },
-                        modifier = Modifier.Companion.width(48.dp)
+                        modifier = Modifier.width(48.dp)
                             .height(blockInputHeightPx.pxToDp())
                     )
                 }
@@ -90,7 +90,7 @@ fun BlockAndHouseNumberForm(
                             )
                         )
                     },
-                    modifier = Modifier.Companion.width(192.dp),
+                    modifier = Modifier.width(192.dp),
                     suggestion = suggestion?.houseNumber
                 )
             }

@@ -7,9 +7,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,7 +35,7 @@ import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 fun HouseNumberInput(
     value: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     suggestion: String? = null,
 ) {
     var houseNumberInputHeightPx by remember { mutableIntStateOf(0) }
@@ -43,7 +45,7 @@ fun HouseNumberInput(
             value = value,
             onValueChange = { if (it != value) onValueChange(it) },
             suggestion = suggestion,
-            modifier = Modifier.Companion
+            modifier = Modifier
                 .weight(1f)
                 .onSizeChanged { houseNumberInputHeightPx = it.height }
         )
@@ -52,7 +54,7 @@ fun HouseNumberInput(
 
         val houseNumbers = remember(valueOrSuggestion) { parseHouseNumbers(valueOrSuggestion) }
 
-        val stepperModifier = Modifier.Companion
+        val stepperModifier = Modifier
             .width(48.dp)
             .height(houseNumberInputHeightPx.pxToDp())
 
@@ -78,7 +80,7 @@ private fun HouseNumberInputPreview() {
             value = value,
             suggestion = "12c",
             onValueChange = { value = it },
-            modifier = Modifier.Companion.width(224.dp)
+            modifier = Modifier.width(224.dp)
         )
     }
 }

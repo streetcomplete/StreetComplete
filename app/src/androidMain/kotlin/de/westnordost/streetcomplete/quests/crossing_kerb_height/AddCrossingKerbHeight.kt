@@ -16,8 +16,7 @@ import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.kerb_height.KerbHeight
 import de.westnordost.streetcomplete.quests.kerb_height.icon
 import de.westnordost.streetcomplete.quests.kerb_height.title
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_crossing_kerb_height_title
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import org.jetbrains.compose.resources.painterResource

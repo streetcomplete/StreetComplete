@@ -7,8 +7,10 @@ import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.text.TextRange
@@ -30,9 +32,9 @@ import de.westnordost.streetcomplete.ui.util.isImeVisible
 fun AnAddressNumberInput(
     value: String,
     onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     suggestion: String? = null,
-    keyboardOptions: KeyboardOptions = KeyboardOptions.Companion.Default,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
 ) {
     var valueState by remember { mutableStateOf(TextFieldValue(text = value)) }
     if (value != valueState.text) {
@@ -41,7 +43,7 @@ fun AnAddressNumberInput(
     }
 
     var isAbc by remember { mutableStateOf(false) }
-    val keyboardType = if (isAbc) KeyboardType.Companion.Text else KeyboardType.Companion.Number
+    val keyboardType = if (isAbc) KeyboardType.Text else KeyboardType.Number
 
     var isFocused by remember { mutableStateOf(false) }
     val showSwitchKeyboardPopup = isFocused && isImeVisible()
@@ -49,7 +51,7 @@ fun AnAddressNumberInput(
     ProvideTextStyle(
         LocalTextStyle.current.copy(
             // to avoid the size of the text changing when going from e.g. "123j" to "123k"
-            fontFamily = FontFamily.Companion.Monospace,
+            fontFamily = FontFamily.Monospace,
         )
     ) {
         val textStyle = LocalTextStyle.current
@@ -70,9 +72,9 @@ fun AnAddressNumberInput(
                             text = suggestion,
                             style = textStyle.copy(color = textStyle.color.copy(alpha = 0.2f)),
                             // so that the text aligns center, just like the actual text
-                            modifier = Modifier.Companion.fillMaxWidth(),
+                            modifier = Modifier.fillMaxWidth(),
                             maxLines = 1,
-                            autoSize = TextAutoSize.Companion.StepBased(maxFontSize = textStyle.fontSize)
+                            autoSize = TextAutoSize.StepBased(maxFontSize = textStyle.fontSize)
                         )
                     }
                 } else null,
@@ -80,7 +82,7 @@ fun AnAddressNumberInput(
                     keyboardType = keyboardType,
                     autoCorrectEnabled = false,
                 ),
-                modifier = Modifier.Companion.onFocusChanged { isFocused = it.isFocused },
+                modifier = Modifier.onFocusChanged { isFocused = it.isFocused },
                 singleLine = true,
             )
         }

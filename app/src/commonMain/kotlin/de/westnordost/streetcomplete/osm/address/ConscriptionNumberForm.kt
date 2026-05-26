@@ -22,6 +22,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,9 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.address.AnAddressNumberInput
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_housenumber_conscription_number
-import de.westnordost.streetcomplete.resources.quest_housenumber_street_number_optional
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor
@@ -55,12 +55,12 @@ fun ConscriptionNumberForm(
     value: ConscriptionNumber,
     onValueChange: (ConscriptionNumber) -> Unit,
     countryCode: String?,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
 ) {
     val inputStyle = MaterialTheme.typography.largeInput
     val labelStyle = MaterialTheme.typography.caption.copy(
-        hyphens = Hyphens.Companion.Auto,
-        textAlign = TextAlign.Companion.Center,
+        hyphens = Hyphens.Auto,
+        textAlign = TextAlign.Center,
         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
     )
     Row(
@@ -68,13 +68,13 @@ fun ConscriptionNumberForm(
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Column(
-            modifier = Modifier.Companion.widthIn(max = 128.dp),
+            modifier = Modifier.widthIn(max = 128.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp),
-            horizontalAlignment = Alignment.Companion.CenterHorizontally,
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             ConscriptionNumberSign(
                 countryCode = countryCode,
-                modifier = Modifier.Companion.width(96.dp),
+                modifier = Modifier.width(96.dp),
             ) {
                 /* Even though conscription numbers are always numbers, we don't force digit-only
                  * input here, because on conscription number plates, one will sometimes find a
@@ -84,7 +84,7 @@ fun ConscriptionNumberForm(
                     AnAddressNumberInput(
                         value = value.conscriptionNumber,
                         onValueChange = { onValueChange(value.copy(conscriptionNumber = it)) },
-                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Companion.Next),
+                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
                     )
                 }
             }
@@ -94,13 +94,13 @@ fun ConscriptionNumberForm(
             )
         }
         Column(
-            modifier = Modifier.Companion.widthIn(max = 128.dp),
+            modifier = Modifier.widthIn(max = 128.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp),
-            horizontalAlignment = Alignment.Companion.CenterHorizontally,
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             OrientationNumberSign(
                 countryCode = countryCode,
-                modifier = Modifier.Companion.width(96.dp),
+                modifier = Modifier.width(96.dp),
             ) {
                 /*
                 As orientation numbers are basically normal house numbers, it may suggests itself to
@@ -131,7 +131,7 @@ fun ConscriptionNumberForm(
 @Composable
 private fun ConscriptionNumberSign(
     countryCode: String?,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit,
 ) {
     when (countryCode) {
@@ -147,7 +147,7 @@ private fun ConscriptionNumberSign(
 @Composable
 private fun OrientationNumberSign(
     countryCode: String?,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit,
 ) {
     when (countryCode) {
@@ -162,14 +162,14 @@ private fun OrientationNumberSign(
 
 @Composable
 private fun SlovakHouseNumberSign(
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     color: Color = TrafficSignColor.Black,
     content: @Composable BoxScope.() -> Unit
 ) {
     val contentColor = trafficSignContentColorFor(color)
     Box(
         modifier = modifier
-            .border(Dp.Companion.Hairline, Color.Companion.LightGray, RectangleShape)
+            .border(Dp.Hairline, Color.LightGray, RectangleShape)
             .background(color, RectangleShape)
             .padding(6.dp)
             .background(contentColor, CutCornerShape(12.dp))

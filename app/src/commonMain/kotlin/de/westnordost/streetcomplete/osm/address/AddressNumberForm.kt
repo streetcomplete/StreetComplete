@@ -14,7 +14,7 @@ fun AddressNumberForm(
     value: AddressNumber,
     onValueChange: (AddressNumber) -> Unit,
     countryCode: String?,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     houseNumberSuggestion: String? = null,
     blockSuggestion: String? = null,
 ) {

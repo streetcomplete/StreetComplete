@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.ui.common.StepperButton
 fun HouseNumberStepperButton(
     value: StructuredHouseNumbers?,
     onValueChange: (StructuredHouseNumber) -> Unit,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
 ) {
     val next = remember(value) { value?.step(+1) }
     val prev = remember(value) { value?.step(-1) }

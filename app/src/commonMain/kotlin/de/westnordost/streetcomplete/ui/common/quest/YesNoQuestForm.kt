@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.ui.common.quest
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_generic_hasFeature_no
-import de.westnordost.streetcomplete.resources.quest_generic_hasFeature_yes
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 @Composable

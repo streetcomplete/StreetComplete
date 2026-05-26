@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 fun HouseNumberForm(
     value: HouseNumber,
     onValueChange: (HouseNumber) -> Unit,
-    modifier: Modifier = Modifier.Companion,
+    modifier: Modifier = Modifier,
     suggestion: HouseNumber? = null
 ) {
     ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
