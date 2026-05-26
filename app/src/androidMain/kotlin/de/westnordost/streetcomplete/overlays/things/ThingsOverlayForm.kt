@@ -1,23 +1,11 @@
 package de.westnordost.streetcomplete.overlays.things
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import de.westnordost.osmfeatures.BaseFeature
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
@@ -27,22 +15,12 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.osm.POPULAR_THING_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.applyTo
-import de.westnordost.streetcomplete.osm.isThing
-import de.westnordost.streetcomplete.osm.toElement
+import de.westnordost.streetcomplete.osm.things.getThingOrDisusedThing
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.feature.FeatureIcon
-import de.westnordost.streetcomplete.ui.common.feature.FeatureItem
-import de.westnordost.streetcomplete.ui.common.feature.FeatureSelect
-import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.ConfirmDeleteDialog
-import de.westnordost.streetcomplete.util.ktx.geometryType
-import de.westnordost.streetcomplete.util.ktx.getDisusedFeature
-import de.westnordost.streetcomplete.util.ktx.getFeature
-import de.westnordost.streetcomplete.util.ktx.getFeatureOrDisusedFeature
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.util.takeFavorites
@@ -73,22 +51,14 @@ import org.koin.compose.koinInject
     val unknownThingString = stringResource(Res.string.unknown_object)
     val disusedString = stringResource(Res.string.disused).uppercase()
     val originalFeature = remember(element) {
-        if (element == null) return@remember null
-
-        // either a regular thing-feature (or disused)
-        featureDictionary.getFeatureOrDisusedFeature(
-            disusedString = disusedString,
-            element = element,
-            country = countryInfo.countryOrSubdivisionCode,
-        )?.takeIf { it.toElement().isThing() }
-        // or unknown thing
-        ?: BaseFeature(
-            id = "thing/unknown",
-            names = listOf(unknownThingString),
-            icon = "preset_maki_marker_stroked",
-            tags = element.tags,
-            geometry = GeometryType.entries.toList()
-        )
+        element?.let {
+            featureDictionary.getThingOrDisusedThing(
+                disusedString = disusedString,
+                unknownThingString = unknownThingString,
+                element = element,
+                country = countryInfo.countryOrSubdivisionCode
+            )
+        }
     }
     var selectedFeature by remember(originalFeature) { mutableStateOf(originalFeature) }
 

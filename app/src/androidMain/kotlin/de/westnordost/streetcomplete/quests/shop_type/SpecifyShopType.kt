@@ -9,11 +9,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
+import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.applyTo
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.removeCheckDates
-import de.westnordost.streetcomplete.osm.removePlaceRelatedTags
+import de.westnordost.streetcomplete.osm.places.removePlaceRelatedTags
 import de.westnordost.streetcomplete.resources.*
 
 class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {

@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.IS_AREA_EXPRESSION
-import de.westnordost.streetcomplete.osm.isThingOrDisusedThing
+import de.westnordost.streetcomplete.osm.things.isThingOrDisusedThing
 
 fun Element.copy(
     id: Long = this.id,

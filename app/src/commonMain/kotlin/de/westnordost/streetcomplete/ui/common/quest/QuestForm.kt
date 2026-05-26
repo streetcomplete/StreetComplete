@@ -109,7 +109,6 @@ fun QuestForm(
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: List<Answer> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
-
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
     QuestForm(

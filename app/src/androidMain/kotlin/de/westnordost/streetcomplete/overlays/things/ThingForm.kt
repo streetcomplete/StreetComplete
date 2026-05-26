@@ -15,8 +15,8 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.osm.POPULAR_THING_FEATURE_IDS
-import de.westnordost.streetcomplete.osm.isThing
+import de.westnordost.streetcomplete.osm.things.POPULAR_THING_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.things.isThing
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.ui.common.feature.FeatureIcon
 import de.westnordost.streetcomplete.ui.common.feature.FeatureItem

@@ -52,17 +52,3 @@ fun FeatureDictionary.getDisusedFeature(
     val disusedFeature = getFeature(disusedElement, languages, country, isSuggestion) ?: return null
     return disusedFeature.toPrefixedFeature("disused", disusedString)
 }
-
-/** Get the primary feature or otherwise the disused feature of the [element] or null, in the given
- *  [languages] and  [country]. [isSuggestion] controls whether brand features are included or not.
- *  */
-fun FeatureDictionary.getFeatureOrDisusedFeature(
-    disusedString: String,
-    element: Element,
-    languages: List<String?>? = getLanguagesForFeatureDictionary(),
-    country: String? = null,
-    isSuggestion: Boolean? = false
-): Feature? {
-    return getFeature(element, languages, country, isSuggestion)
-        ?: getDisusedFeature(disusedString, element, languages, country, isSuggestion)
-}

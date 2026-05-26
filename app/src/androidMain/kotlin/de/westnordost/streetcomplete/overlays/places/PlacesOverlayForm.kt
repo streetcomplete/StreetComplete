@@ -6,10 +6,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import de.westnordost.osmfeatures.BaseFeature
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
@@ -18,22 +16,19 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.hasFixedName
-import de.westnordost.streetcomplete.osm.isDisusedPlace
-import de.westnordost.streetcomplete.osm.isPlace
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
-import de.westnordost.streetcomplete.osm.shouldReplacePlace
-import de.westnordost.streetcomplete.osm.toElement
+import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
+import de.westnordost.streetcomplete.osm.places.getPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.places.shouldReplacePlace
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.util.takeFavorites
@@ -71,26 +66,15 @@ import org.koin.compose.koinInject
         featureDictionary.getById("shop/vacant", getLanguagesForFeatureDictionary())!!
     }
 
-    val unknownThingString = stringResource(Res.string.unknown_shop_title)
+    val unknownPlaceString = stringResource(Res.string.unknown_shop_title)
     val originalFeature = remember(element) {
-        if (element == null) return@remember null
-
-        // either a regular place-feature
-        featureDictionary.getFeature(
-            element = element,
-            country = countryInfo.countryOrSubdivisionCode,
-            isSuggestion = null // include brands
-        )?.takeIf { it.toElement().isPlace() }
-        // or vacant
-        ?: (if (element.isDisusedPlace()) vacantShopFeature else null)
-        // or unknown
-        ?: BaseFeature(
-            id = "shop/unknown",
-            names = listOf(unknownThingString),
-            icon = "maki-shop",
-            tags = element.tags,
-            geometry = GeometryType.entries.toList()
-        )
+        element?.let {
+            featureDictionary.getPlaceOrDisusedPlace(
+                unknownPlaceString = unknownPlaceString,
+                element = element,
+                country = countryInfo.countryOrSubdivisionCode
+            )
+        }
     }
     val originalNoName = remember(element) {
         element?.tags?.get("name:signed") == "no" || element?.tags?.get("noname") == "yes"

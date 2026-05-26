@@ -21,9 +21,9 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.places.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.hasFixedName
-import de.westnordost.streetcomplete.osm.isPlace
+import de.westnordost.streetcomplete.osm.places.isPlace
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.resources.*

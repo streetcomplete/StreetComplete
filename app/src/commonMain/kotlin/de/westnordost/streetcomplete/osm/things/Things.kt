@@ -1,7 +1,8 @@
-package de.westnordost.streetcomplete.osm
+package de.westnordost.streetcomplete.osm.things
 
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.osm.asIfItWasnt
 
 /** Return whether this element is a kind of thing, regardless whether it is disused or not */
 fun Element.isThingOrDisusedThing(): Boolean =

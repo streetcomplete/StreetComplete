@@ -10,8 +10,8 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
-import de.westnordost.streetcomplete.osm.isPlace
+import de.westnordost.streetcomplete.osm.places.POPULAR_PLACE_FEATURE_IDS
+import de.westnordost.streetcomplete.osm.places.isPlace
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.ui.common.quest.Answer
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm

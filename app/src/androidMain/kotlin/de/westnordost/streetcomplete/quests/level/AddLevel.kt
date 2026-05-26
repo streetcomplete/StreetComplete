@@ -12,8 +12,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.isPlace
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.places.isPlace
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon

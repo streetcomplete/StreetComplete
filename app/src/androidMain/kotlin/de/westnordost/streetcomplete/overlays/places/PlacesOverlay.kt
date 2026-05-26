@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
-import de.westnordost.streetcomplete.osm.isDisusedPlace
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.places.isDisusedPlace
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType

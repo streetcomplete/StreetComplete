@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.osm
+package de.westnordost.streetcomplete.osm.places
 
 import de.westnordost.osmfeatures.BaseFeature
 import de.westnordost.osmfeatures.GeometryType

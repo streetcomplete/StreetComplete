@@ -11,10 +11,10 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.LAST_CHECK_DATE_KEYS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
-import de.westnordost.streetcomplete.osm.isDisusedPlace
-import de.westnordost.streetcomplete.osm.isPlace
-import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
+import de.westnordost.streetcomplete.osm.places.isDisusedPlace
+import de.westnordost.streetcomplete.osm.places.isPlace
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.resources.*
 
