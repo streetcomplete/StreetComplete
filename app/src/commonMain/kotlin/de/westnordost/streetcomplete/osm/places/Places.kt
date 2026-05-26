@@ -50,6 +50,7 @@ private val IS_PLACE_EXPRESSION by lazy {
             "fast_food",
             "food_court",
             "ice_cream",
+            "kitchen",
             "pub",
             "restaurant",
 

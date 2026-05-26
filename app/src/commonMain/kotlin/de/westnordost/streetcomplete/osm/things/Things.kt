@@ -251,6 +251,7 @@ private val IS_THING_EXPRESSION by lazy {
         ),
         "waterway" to listOf(
             "sanitary_dump_station",
+            "milestone",
             "water_point",
         ),
     )

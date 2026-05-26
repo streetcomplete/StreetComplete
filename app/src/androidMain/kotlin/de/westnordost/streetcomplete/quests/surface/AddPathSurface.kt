@@ -36,6 +36,7 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
           or surface older today -8 years
         )
         and ~path|footway|cycleway|bridleway !~ link
+        and ice_road != yes
     """
 
     override val changesetComment = "Specify path surfaces"

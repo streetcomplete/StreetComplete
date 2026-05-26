@@ -49,6 +49,7 @@ class AddRoadSurface : OsmFilterQuestType<Surface>() {
           }}
         )
         and (access !~ private|no or (foot and foot !~ private|no))
+        and ice_road != yes
     """
 
     override val changesetComment = "Specify road surfaces"
