@@ -1,6 +1,10 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.AllEditTypes
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.Overlay
@@ -287,6 +291,15 @@ private object OverlayOne : Overlay {
     override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
     override val changesetComment = ""
+
+    @Composable
+    override fun Form(
+        onEdit: (ElementEditAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo,
+    ) {}
+
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, OverlayStyle>>()
 
     override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))

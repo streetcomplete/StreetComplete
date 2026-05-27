@@ -10,11 +10,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
-import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_recycling
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun Pin(
@@ -24,14 +25,14 @@ fun Pin(
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         Box(modifier) {
             Image(
-                painter = painterResource(R.drawable.pin_shadow),
+                painter = painterResource(Res.drawable.pin_shadow),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(end = 10.dp, bottom = 71.dp)
                     .size(71.dp, 71.dp)
             )
             Image(
-                painter = painterResource(R.drawable.pin),
+                painter = painterResource(Res.drawable.pin),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(top = 5.dp)
@@ -52,5 +53,5 @@ fun Pin(
 @Composable
 @Preview
 private fun PinPreview() {
-    Pin(painterResource(R.drawable.quest_recycling))
+    Pin(painterResource(Res.drawable.quest_recycling))
 }

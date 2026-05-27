@@ -14,24 +14,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
-import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 import kotlin.random.Random
 
 @Composable
 fun BubblePile(
     count: Int,
-    allIconsIds: List<Int>,
+    allIcons: List<DrawableResource>,
     modifier: Modifier = Modifier,
     bubbleSize: Dp = 50.dp
 ) {
-    val bubbles = remember(count, allIconsIds) {
+    val bubbles = remember(count, allIcons) {
         (0..<count).map {
             BubblePlacement(
-                iconId = allIconsIds[Random.nextInt(0, allIconsIds.size)],
+                icon = allIcons[Random.nextInt(0, allIcons.size)],
                 x = Random.nextFloat(),
                 y = Random.nextFloat()
             )
@@ -41,7 +42,7 @@ fun BubblePile(
         for (i in 0..<count) {
             val bubble = bubbles[i]
             Image(
-                painter = painterResource(bubble.iconId),
+                painter = painterResource(bubble.icon),
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
                 modifier = Modifier
@@ -58,20 +59,20 @@ fun BubblePile(
     }
 }
 
-private data class BubblePlacement(val iconId: Int, val x: Float, val y: Float)
+private data class BubblePlacement(val icon: DrawableResource, val x: Float, val y: Float)
 
 @Preview
 @Composable
 private fun PreviewBubblePile() {
     BubblePile(
         count = 50,
-        allIconsIds = listOf(
-            R.drawable.quest_bicycle_parking,
-            R.drawable.quest_building,
-            R.drawable.quest_drinking_water,
-            R.drawable.quest_notes,
-            R.drawable.quest_street_surface,
-            R.drawable.quest_wheelchair,
+        allIcons = listOf(
+            Res.drawable.quest_bicycle_parking,
+            Res.drawable.quest_building,
+            Res.drawable.quest_drinking_water,
+            Res.drawable.quest_notes,
+            Res.drawable.quest_street_surface,
+            Res.drawable.quest_wheelchair,
         ),
         modifier = Modifier.size(200.dp)
     )

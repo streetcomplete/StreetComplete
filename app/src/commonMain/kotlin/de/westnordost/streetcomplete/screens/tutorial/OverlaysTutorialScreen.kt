@@ -31,10 +31,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.MapButton
 import de.westnordost.streetcomplete.screens.user.achievements.AnimatedTadaShine
@@ -161,7 +159,7 @@ private fun BoxScope.OverlaysTutorialIllustration(
 
             if (overlayPaint.value > 0.2f) {
                 Icon(
-                    painter = painterResource(R.drawable.preset_fas_shopping_cart),
+                    painter = painterResource(Res.drawable.preset_fas_shopping_cart),
                     contentDescription = null,
                     tint = Color.Black,
                     modifier = Modifier
@@ -171,7 +169,7 @@ private fun BoxScope.OverlaysTutorialIllustration(
             }
             if (overlayPaint.value > 0.7f) {
                 Icon(
-                    painter = painterResource(R.drawable.preset_maki_fuel),
+                    painter = painterResource(Res.drawable.preset_maki_fuel),
                     contentDescription = null,
                     tint = Color.Black,
                     modifier = Modifier

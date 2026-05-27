@@ -21,10 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
@@ -136,7 +134,7 @@ private fun BoxScope.IntroTutorialIllustration(
 
         val pinDropHeight = 200.dp
         Pin(
-            iconPainter = painterResource(R.drawable.quest_traffic_lights),
+            iconPainter = painterResource(Res.drawable.quest_traffic_lights),
             modifier = Modifier
                 .absolutePadding(left = 0.dp, top = 25.dp)
                 .graphicsLayer {
@@ -145,7 +143,7 @@ private fun BoxScope.IntroTutorialIllustration(
                 }
         )
         Pin(
-            iconPainter = painterResource(R.drawable.quest_street),
+            iconPainter = painterResource(Res.drawable.quest_street),
             modifier = Modifier
                 .absolutePadding(left = 45.dp, top = 110.dp)
                 .graphicsLayer {
@@ -154,7 +152,7 @@ private fun BoxScope.IntroTutorialIllustration(
                 }
         )
         Pin(
-            iconPainter = painterResource(R.drawable.quest_recycling),
+            iconPainter = painterResource(Res.drawable.quest_recycling),
             modifier = Modifier
                 .absolutePadding(left = 160.dp, top = 70.dp)
                 .graphicsLayer {

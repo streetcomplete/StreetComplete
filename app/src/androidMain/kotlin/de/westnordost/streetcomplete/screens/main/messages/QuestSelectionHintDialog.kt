@@ -31,6 +31,7 @@ import de.westnordost.streetcomplete.ui.common.BubblePile
 import de.westnordost.streetcomplete.ui.common.dialogs.AlertDialogLayout
 import de.westnordost.streetcomplete.ui.ktx.proportionalAbsoluteOffset
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 
 /** Dialog that tells the user that he can turn off some boring quests in the setting. */
@@ -39,12 +40,12 @@ import org.jetbrains.compose.resources.stringResource
 fun QuestSelectionHintDialog(
     onDismissRequest: () -> Unit,
     onClickOpenSettings: () -> Unit,
-    allQuestIconIds: List<Int>,
+    allQuestIcons: List<DrawableResource>,
 ) {
     val avalanche = remember { Animatable(1.1f) }
     val content = remember { Animatable(0f) }
 
-    LaunchedEffect(allQuestIconIds) {
+    LaunchedEffect(allQuestIcons) {
         avalanche.animateTo(0f, tween(2000, easing = LinearEasing))
         delay(150)
         content.animateTo(1f, tween(300))
@@ -63,7 +64,7 @@ fun QuestSelectionHintDialog(
             val bubbleSize = maxWidth * 0.25f
             BubblePile(
                 count = bubbleCount,
-                allIconsIds = allQuestIconIds,
+                allIcons = allQuestIcons,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .fillMaxWidth()

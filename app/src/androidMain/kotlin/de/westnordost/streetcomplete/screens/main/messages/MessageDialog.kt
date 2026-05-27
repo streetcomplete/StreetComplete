@@ -7,13 +7,14 @@ import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
 import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
+import org.jetbrains.compose.resources.DrawableResource
 import kotlin.reflect.KClass
 
 /** Dialog that shows a Message */
 @Composable
 fun MessageDialog(
     message: Message,
-    allQuestIconIds: List<Int>,
+    allQuestIcons: List<DrawableResource>,
     onDismissRequest: () -> Unit,
     onToggleDontNotifyAgain: (KClass<out Message>, Boolean) -> Unit,
 ) {
@@ -39,7 +40,7 @@ fun MessageDialog(
                 onClickOpenSettings = {
                     context.startActivity(SettingsActivity.createLaunchQuestSettingsIntent(context))
                 },
-                allQuestIconIds = allQuestIconIds
+                allQuestIcons = allQuestIcons
             )
         }
         is Message.OsmUnreadMessages -> {

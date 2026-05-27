@@ -413,7 +413,7 @@ fun MainScreen(
         MessageDialog(
             message = message,
             onDismissRequest = { shownMessage = null },
-            allQuestIconIds = questIcons,
+            allQuestIcons = questIcons,
             onToggleDontNotifyAgain = { messageType, dontNotifyAgain ->
                 viewModel.toggleDisableMessageType(messageType, dontNotifyAgain)
             }
@@ -475,7 +475,7 @@ fun MainScreen(
                     indexInTeam = indexInTeam
                 )
             },
-            allQuestIconIds = questIcons
+            allQuestIcons = questIcons
         )
     }
 

@@ -35,9 +35,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.tutorial.TutorialScreen
 import de.westnordost.streetcomplete.ui.common.BubblePile
@@ -47,19 +47,19 @@ import de.westnordost.streetcomplete.ui.common.rememberWheelPickerState
 import de.westnordost.streetcomplete.ui.ktx.selectionFrame
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.TeamColors
+import de.westnordost.streetcomplete.ui.theme.divider
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import kotlinx.coroutines.delay
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import de.westnordost.streetcomplete.ui.theme.divider
 
 /** Wizard which enables team mode */
 @Composable
 fun TeamModeWizard(
     onDismissRequest: () -> Unit,
     onFinished: (teamSize: Int, indexInTeam: Int) -> Unit,
-    allQuestIconIds: List<Int>,
+    allQuestIcons: List<DrawableResource>,
 ) {
     val teamSizes = remember { (2..TeamColors.size).toList() }
     val teamSizeState = rememberWheelPickerState()
@@ -82,7 +82,7 @@ fun TeamModeWizard(
                 transitionSpec = { fadeIn(tween(600)) togetherWith fadeOut(tween(600)) }
             ) {
                 when (it) {
-                    false -> SplitQuestsIllustration(allQuestIconIds = allQuestIconIds)
+                    false -> SplitQuestsIllustration(allQuestIcons = allQuestIcons)
                     true -> TeamSizeIllustration(
                         teamSize = teamSize,
                         maxTeamSize = TeamColors.size,
@@ -190,11 +190,11 @@ private fun TeamModeColorSelect(
 
 @Composable
 private fun SplitQuestsIllustration(
-    allQuestIconIds: List<Int>
+    allQuestIcons: List<DrawableResource>
 ) {
     val padding = remember { Animatable(0f) }
     val divider = remember { Animatable(0f) }
-    LaunchedEffect(allQuestIconIds) {
+    LaunchedEffect(allQuestIcons) {
         delay(1000)
         padding.animateTo(1f, tween(1000))
         divider.animateTo(1f, tween(500))
@@ -227,27 +227,27 @@ private fun SplitQuestsIllustration(
             modifier = Modifier.weight(1f),
             horizontalArrangement = arrangement
         ) {
-            QuestPile(allQuestIconIds, Modifier.weight(1f))
-            QuestPile(allQuestIconIds, Modifier.weight(1f))
+            QuestPile(allQuestIcons, Modifier.weight(1f))
+            QuestPile(allQuestIcons, Modifier.weight(1f))
         }
         Row(
             modifier = Modifier.weight(1f),
             horizontalArrangement = arrangement
         ) {
-            QuestPile(allQuestIconIds, Modifier.weight(1f))
-            QuestPile(allQuestIconIds, Modifier.weight(1f))
+            QuestPile(allQuestIcons, Modifier.weight(1f))
+            QuestPile(allQuestIcons, Modifier.weight(1f))
         }
     }
 }
 
 @Composable
 private fun QuestPile(
-    allQuestIconIds: List<Int>,
+    allQuestIcons: List<DrawableResource>,
     modifier: Modifier = Modifier,
 ) {
     BubblePile(
         count = 15,
-        allIconsIds = allQuestIconIds,
+        allIcons = allQuestIcons,
         bubbleSize = 50.dp,
         modifier = modifier
     )
@@ -292,13 +292,13 @@ private fun PreviewTeamModeWizard() {
     TeamModeWizard(
         onDismissRequest = { },
         onFinished = { _, _ -> },
-        allQuestIconIds = listOf(
-            R.drawable.quest_bicycle_parking,
-            R.drawable.quest_building,
-            R.drawable.quest_drinking_water,
-            R.drawable.quest_notes,
-            R.drawable.quest_street_surface,
-            R.drawable.quest_wheelchair,
+        allQuestIcons = listOf(
+            Res.drawable.quest_bicycle_parking,
+            Res.drawable.quest_building,
+            Res.drawable.quest_drinking_water,
+            Res.drawable.quest_notes,
+            Res.drawable.quest_street_surface,
+            Res.drawable.quest_wheelchair,
         )
     )
 }
