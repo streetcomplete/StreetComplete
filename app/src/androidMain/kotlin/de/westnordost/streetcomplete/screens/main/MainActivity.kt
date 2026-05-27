@@ -55,12 +55,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.createOsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
@@ -73,10 +71,8 @@ import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AbstractQuestForm
-import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.BaseActivity
@@ -115,6 +111,7 @@ import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
+import de.westnordost.streetcomplete.view.toAndroidResourceId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -259,7 +256,7 @@ class MainActivity :
                 val geometry = editHistoryViewModel.getEditGeometry(edit)
                 mapFragment?.startFocus(geometry, Insets.NONE)
                 mapFragment?.highlightGeometry(geometry)
-                mapFragment?.highlightPins(edit.icon, listOf(edit.position))
+                mapFragment?.highlightPins(edit.icon.toAndroidResourceId()!!, listOf(edit.position))
                 mapFragment?.hideOverlay()
             } else if (editHistoryViewModel.isShowingSidebar.value) {
                 mapFragment?.clearFocus()
@@ -942,7 +939,7 @@ class MainActivity :
                 ?.takeIf { questsHiddenSource.get(OsmNoteQuestKey(it.id)) == null }
         }
         if (note != null) {
-            showQuestDetails(createOsmNoteQuest(note.id, note.position))
+            showQuestDetails(OsmNoteQuest(note.id, note.position))
             return
         }
 
@@ -959,7 +956,7 @@ class MainActivity :
         showInBottomSheet(f)
 
         mapFragment.highlightGeometry(geometry)
-        mapFragment.highlightPins(overlay.icon, listOf(geometry.center))
+        mapFragment.highlightPins(overlay.icon.toAndroidResourceId()!!, listOf(geometry.center))
         mapFragment.hideNonHighlightedPins()
     }
 
@@ -1001,7 +998,7 @@ class MainActivity :
 
         mapFragment.startFocus(quest.geometry, getQuestFormInsets())
         mapFragment.highlightGeometry(quest.geometry)
-        mapFragment.highlightPins(quest.type.icon, quest.markerLocations)
+        mapFragment.highlightPins(quest.type.icon.toAndroidResourceId()!!, quest.markerLocations)
         mapFragment.hideNonHighlightedPins(quest.key)
         mapFragment.hideOverlay()
     }

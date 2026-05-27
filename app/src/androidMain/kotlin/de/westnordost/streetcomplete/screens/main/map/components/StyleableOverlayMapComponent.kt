@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.view.toAndroidResourceId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.maplibre.android.geometry.LatLng
@@ -276,8 +277,9 @@ class StyleableOverlayMapComponent(
                 val f = Feature.fromGeometry(geometry.toMapLibreGeometry(), p)
                 val point = if (overlayStyle.label != null || overlayStyle.icon != null) {
                     val pp = getElementKeyProperties(element.key)
-                    if (overlayStyle.icon != null) {
-                        pp.addProperty("icon", context.resources.getResourceEntryName(overlayStyle.icon))
+                    val iconId = overlayStyle.icon.toAndroidResourceId()
+                    if (iconId != null) {
+                        pp.addProperty("icon", context.resources.getResourceEntryName(iconId))
                     }
                     if (overlayStyle.label != null) pp.addProperty("label", overlayStyle.label)
                     Feature.fromGeometry(geometry.center.toPoint(), pp)
@@ -406,7 +408,7 @@ private fun isBridge(tags: Map<String, String>): Boolean =
     tags["bridge"] != null && tags["bridge"] != "no"
 
 private fun OverlayStyle.getIcon(): Int? = when (this) {
-    is OverlayStyle.Point -> icon
-    is OverlayStyle.Polygon -> icon
+    is OverlayStyle.Point -> icon.toAndroidResourceId()
+    is OverlayStyle.Polygon -> icon.toAndroidResourceId()
     is OverlayStyle.Polyline -> null
 }
