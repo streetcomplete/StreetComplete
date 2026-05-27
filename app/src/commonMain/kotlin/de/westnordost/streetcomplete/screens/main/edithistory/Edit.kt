@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.stringResource
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
@@ -20,17 +18,17 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
-val Edit.icon: Int get() = when (this) {
+val Edit.icon: DrawableResource? get() = when (this) {
     is ElementEdit -> type.icon
     is NoteEdit -> {
         when (action) {
-            CREATE -> R.drawable.quest_create_note
-            COMMENT -> R.drawable.quest_notes
+            CREATE -> Res.drawable.quest_create_note
+            COMMENT -> Res.drawable.quest_notes
         }
     }
-    is OsmNoteQuestHidden -> R.drawable.quest_notes
+    is OsmNoteQuestHidden -> Res.drawable.quest_notes
     is OsmQuestHidden -> questType.icon
-    else -> 0
+    else -> null
 }
 
 val Edit.overlayIcon: DrawableResource? get() = when (this) {
@@ -47,19 +45,19 @@ val Edit.overlayIcon: DrawableResource? get() = when (this) {
     else -> null
 }
 
-fun Edit.getTitle(elementTags: Map<String, String>?): StringResource = when (this) {
+val Edit.title: StringResource? get() = when (this) {
     is ElementEdit -> {
-        (type as? OsmElementQuestType<*>)?.getTitle(elementTags.orEmpty()) ?: type.title
+        type.title
     }
     is NoteEdit -> when (action) {
         CREATE -> Res.string.created_note_action_title
         COMMENT -> Res.string.commented_note_action_title
     }
     is OsmQuestHidden -> {
-        questType.getTitle(elementTags.orEmpty()) ?: questType.title
+        questType.title
     }
     is OsmNoteQuestHidden -> {
         Res.string.quest_noteDiscussion_title
     }
-    else -> throw IllegalArgumentException()
+    else -> null
 }

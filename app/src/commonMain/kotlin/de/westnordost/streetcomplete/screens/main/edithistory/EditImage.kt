@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import org.jetbrains.compose.resources.painterResource
 
@@ -17,14 +16,12 @@ fun EditImage(
     modifier: Modifier = Modifier
 ) {
     BoxWithConstraints(modifier) {
-        val editIcon = edit.icon
-        if (editIcon != 0) {
-            Image(painterResource(edit.icon), null)
+        edit.icon?.let {
+            Image(painterResource(it), null)
         }
-        val overlayIcon = edit.overlayIcon
-        if (overlayIcon != null) {
+        edit.overlayIcon?.let {
             Image(
-                painter = painterResource(overlayIcon),
+                painter = painterResource(it),
                 contentDescription = null,
                 modifier = Modifier
                     .size(maxWidth * 0.75f)

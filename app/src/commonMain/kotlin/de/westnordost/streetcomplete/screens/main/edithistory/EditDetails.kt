@@ -15,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
@@ -36,7 +35,6 @@ fun EditDetails(
     featureDictionaryLazy: Lazy<FeatureDictionary>,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
     val dateTimeFormatter = LocalDateTimeFormatter(
         dateStyle = DateTimeFormatStyle.Short,
         timeStyle = DateTimeFormatStyle.Short
@@ -61,11 +59,13 @@ fun EditDetails(
                 edit = edit,
                 modifier = Modifier.size(64.dp)
             )
-            Text(
-                text = stringResource(edit.getTitle(element?.tags)),
-                style = MaterialTheme.typography.body1,
-                color = LocalContentColor.current.copy(alpha = ContentAlpha.high),
-            )
+            edit.title?.let {
+                Text(
+                    text = stringResource(it),
+                    style = MaterialTheme.typography.body1,
+                    color = LocalContentColor.current.copy(alpha = ContentAlpha.high),
+                )
+            }
         }
 
         if (element != null) {

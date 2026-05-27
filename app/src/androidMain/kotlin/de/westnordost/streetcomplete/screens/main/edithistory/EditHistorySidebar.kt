@@ -37,6 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.R
@@ -46,10 +47,14 @@ import de.westnordost.streetcomplete.ui.ktx.isItemAtIndexFullyVisible
 import de.westnordost.streetcomplete.ui.ktx.plus
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
+import de.westnordost.streetcomplete.util.locale.LocalDateFormatter
+import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
-import java.text.DateFormat
+import kotlin.time.Instant
 
 /** Shows the edit history in a sidebar. The edit history is grouped by time and date, ordered by
  *  the most recent edit at the bottom. The list always scrolls to the currently selected edit. */
@@ -167,6 +172,11 @@ private fun DateTimeHeader(
     showTime: Boolean,
     modifier: Modifier = Modifier
 ) {
+    val dateTime = Instant.fromEpochMilliseconds(timestamp).toLocalDateTime()
+    val locale = Locale.current
+    val dateFormatter = LocalDateFormatter(locale = locale, style = DateTimeFormatStyle.Short)
+    val timeFormatter = LocalTimeFormatter(locale = locale, style = DateTimeFormatStyle.Short)
+
     CompositionLocalProvider(
         LocalTextStyle provides MaterialTheme.typography.titleSmall,
         LocalContentAlpha provides ContentAlpha.medium
@@ -181,11 +191,11 @@ private fun DateTimeHeader(
             }
             if (showDate) {
                 // locale-dependent, e.g. 13/8/24
-                Text(DateFormat.getDateInstance(DateFormat.SHORT).format(timestamp))
+                Text(dateFormatter.format(dateTime.date))
             }
             if (showTime) {
                 // locale-dependent, e.g. 12:30 PM
-                Text(DateFormat.getTimeInstance(DateFormat.SHORT).format(timestamp))
+                Text(timeFormatter.format(dateTime.time))
             }
         }
     }

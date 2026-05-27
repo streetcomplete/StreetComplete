@@ -14,7 +14,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.util.ktx.displayRegion
@@ -28,13 +27,13 @@ fun QuestSelectionScreen(
 ) {
     val currentPresetName by viewModel.selectedEditTypePresetName.collectAsState()
 
-    val searchText by viewModel.searchText.collectAsStateWithLifecycle()
+    val searchText by viewModel.searchText.collectAsState()
 
     val displayCountry = remember {
         viewModel.currentCountry?.let { getCountryName(it) } ?: "Atlantis"
     }
 
-    val filteredQuests by viewModel.filteredQuests.collectAsStateWithLifecycle()
+    val filteredQuests by viewModel.filteredQuests.collectAsState()
 
     Column(Modifier.fillMaxSize()) {
         QuestSelectionTopAppBar(

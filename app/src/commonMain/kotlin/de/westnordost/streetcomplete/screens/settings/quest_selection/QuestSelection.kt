@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.screens.settings.quest_selection
 
 import androidx.compose.runtime.Immutable
 import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
+import de.westnordost.streetcomplete.quests.note_comments.OsmNoteQuestType
 
 @Immutable
 data class QuestSelection(

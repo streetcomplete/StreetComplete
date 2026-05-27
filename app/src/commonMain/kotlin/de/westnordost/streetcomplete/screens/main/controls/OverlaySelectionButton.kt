@@ -4,10 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.ui.common.OverlaysIcon
+import org.jetbrains.compose.resources.painterResource
 
 /** Overlay selection button that shows the icon of the currently selected overlay */
 @Composable

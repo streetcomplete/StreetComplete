@@ -22,8 +22,9 @@ import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.ktx.containsAny
 import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.launch
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.Default
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -124,7 +125,7 @@ class QuestSelectionViewModelImpl(
     }
 
     private fun updateSelectedEditTypePresetName() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             selectedEditTypePresetName.value = editTypePresetsSource.selectedEditTypePresetName
         }
     }
@@ -145,25 +146,25 @@ class QuestSelectionViewModelImpl(
     }
 
     override fun select(questType: QuestType, selected: Boolean) {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             visibleEditTypeController.setVisibility(questType, selected)
         }
     }
 
     override fun order(questType: QuestType, toAfter: QuestType) {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             questTypeOrderController.addOrderItem(questType, toAfter)
         }
     }
 
     override fun unselectAll() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             visibleEditTypeController.setVisibilities(questTypeRegistry.associateWith { false })
         }
     }
 
     override fun resetAll() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             visibleEditTypeController.clearVisibilities(questTypeRegistry)
             questTypeOrderController.clear()
         }
@@ -174,7 +175,7 @@ class QuestSelectionViewModelImpl(
     }
 
     private fun initQuests() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             val sortedQuestTypes = questTypeRegistry.toMutableList()
             questTypeOrderController.sort(sortedQuestTypes)
             quests.value = sortedQuestTypes

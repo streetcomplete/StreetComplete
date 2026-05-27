@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -19,7 +18,6 @@ import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource
 
 /** Confirmation dialog for undoing an edit. Shows details about an edit */
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun UndoDialog(
     edit: Edit,

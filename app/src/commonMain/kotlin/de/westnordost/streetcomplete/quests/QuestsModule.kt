@@ -123,7 +123,7 @@ import de.westnordost.streetcomplete.quests.memorial_type.AddMemorialType
 import de.westnordost.streetcomplete.quests.moped.AddMopedAccess
 import de.westnordost.streetcomplete.quests.motorcycle_parking_capacity.AddMotorcycleParkingCapacity
 import de.westnordost.streetcomplete.quests.motorcycle_parking_cover.AddMotorcycleParkingCover
-import de.westnordost.streetcomplete.quests.note_discussion.OsmNoteQuestType
+import de.westnordost.streetcomplete.quests.note_comments.OsmNoteQuestType
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.oneway.AddOnewayAerialway
 import de.westnordost.streetcomplete.quests.opening_hours.AddOpeningHours
