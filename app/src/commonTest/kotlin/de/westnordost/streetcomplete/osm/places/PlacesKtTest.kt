@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
+import de.westnordost.streetcomplete.testutils.feature
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -70,12 +71,6 @@ class PlacesKtTest {
 
 private fun replacePlaceApplied(newTags: Map<String, String>, oldTags: Map<String, String>): Set<StringMapEntryChange> {
     val cb = StringMapChangesBuilder(oldTags)
-    val feature = BaseFeature(
-        id = "id",
-        tags = newTags,
-        geometry = listOf(GeometryType.POINT),
-        names = listOf("name")
-    )
-    feature.applyReplacePlaceTo(cb)
+    feature(tags = newTags).applyReplacePlaceTo(cb)
     return cb.create().changes
 }

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.testutils
 
+import de.westnordost.osmfeatures.BaseFeature
+import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
@@ -115,4 +118,29 @@ fun edit(
     isSynced,
     action,
     isNearUserLocation
+)
+
+fun feature(
+    id: String = "id",
+    tags: Map<String, String> = mapOf(),
+    geometry: List<GeometryType> = listOf(GeometryType.POINT),
+    icon: String? = null,
+    imageURL: String? = null,
+    names: List<String> = listOf("name"),
+    terms: List<String> = listOf(),
+    includeCountryCodes: List<String> = listOf(),
+    excludeCountryCodes: List<String> = listOf(),
+    isSearchable: Boolean = true,
+    matchScore: Float = 1f,
+    isSuggestion: Boolean = false,
+    addTags: Map<String, String> = tags,
+    removeTags: Map<String, String> = addTags,
+    preserveTags: List<Regex> = listOf(),
+    tagKeys: Set<String> = setOf(),
+    addTagKeys: Set<String> = tagKeys,
+    removeTagKeys: Set<String> = addTagKeys
+): Feature = BaseFeature(
+    id, tags, geometry, icon, imageURL, names, terms, includeCountryCodes, excludeCountryCodes,
+    isSearchable, matchScore, isSuggestion, addTags, removeTags, preserveTags, tagKeys, addTagKeys,
+    removeTagKeys
 )

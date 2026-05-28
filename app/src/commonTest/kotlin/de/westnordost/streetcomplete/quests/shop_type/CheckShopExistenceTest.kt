@@ -1,15 +1,17 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.feature
 import de.westnordost.streetcomplete.testutils.node
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class CheckShopExistenceTest {
-    private val questType = CheckShopExistence { element ->
-        if (element.tags["shop"] == "greengrocer") mock() else null
-    }
+    private val questType = CheckShopExistence(
+        getFeature = { element ->
+            if (element.tags["shop"] == "greengrocer") feature() else null
+        }
+    )
 
     @Test
     fun `not applicable to old shops with unrecognised values and without name`() {

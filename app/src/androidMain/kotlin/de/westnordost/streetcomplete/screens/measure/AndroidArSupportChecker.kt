@@ -6,8 +6,8 @@ import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.util.ktx.isPackageInstalled
 
-actual class ArSupportChecker(private val context: Context) {
-    actual operator fun invoke(): Boolean =
+class AndroidArSupportChecker(private val context: Context): ArSupportChecker {
+    override operator fun invoke(): Boolean =
         // extra requirement for Sceneform: OpenGL ES 3.1
         context.getSystemService<ActivityManager>()!!.deviceConfigurationInfo.glEsVersion.toDouble() >= 3.1
         // Google Play is required to lead the user through installing the app

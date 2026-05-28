@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
+import de.westnordost.streetcomplete.testutils.feature
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -96,25 +97,6 @@ class FeatureKtTest {
         )
     }
 }
-
-private fun feature(
-    addTags: Map<String, String> = mapOf(),
-    removeTags: Map<String, String> = addTags,
-    preserveTags: List<Regex> = listOf(),
-    addTagKeys: Set<String> = setOf(),
-    removeTagKeys: Set<String> = addTagKeys
-): Feature = BaseFeature(
-    id = "id",
-    names = listOf("name"),
-    geometry = listOf(GeometryType.POINT),
-    tags = addTags,
-    addTags = addTags,
-    removeTags = removeTags,
-    preserveTags = preserveTags,
-    tagKeys = addTagKeys,
-    addTagKeys = addTagKeys,
-    removeTagKeys = removeTagKeys
-)
 
 private fun Feature.appliedTo(
     tags: Map<String, String>,

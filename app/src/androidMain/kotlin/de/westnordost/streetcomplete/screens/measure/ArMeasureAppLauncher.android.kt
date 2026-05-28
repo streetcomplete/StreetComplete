@@ -19,8 +19,8 @@ actual class ArMeasureAppLauncher(
         val activity = activityProvider()
         val registry = activity.activityResultRegistry
 
-        var launcher: ActivityResultLauncher<MeasureContract.Params>? = null
-        launcher = registry.register("app_measure", MeasureContract()) { length ->
+        var launcher: ActivityResultLauncher<ArMeasureContract.Params>? = null
+        launcher = registry.register("app_measure", ArMeasureContract()) { length ->
             launcher?.unregister()
             if (length != null) {
                 continuation.resume(ArMeasureResult.Success(length))
@@ -30,7 +30,7 @@ actual class ArMeasureAppLauncher(
         }
 
         try {
-            launcher.launch(MeasureContract.Params(lengthUnit, measureVertical))
+            launcher.launch(ArMeasureContract.Params(lengthUnit, measureVertical))
         } catch (e: ActivityNotFoundException) {
             launcher.unregister()
             activity.openUri("market://details?id=${ApplicationConstants.STREETMEASURE}")

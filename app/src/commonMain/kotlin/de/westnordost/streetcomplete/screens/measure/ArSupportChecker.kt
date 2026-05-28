@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.screens.measure
 
-expect class ArSupportChecker {
+interface ArSupportChecker {
     operator fun invoke(): Boolean
 }

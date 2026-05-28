@@ -5,10 +5,9 @@ import com.charleskorn.kaml.YamlConfiguration
 import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.ui.ktx.readBytesOrNull
+import de.westnordost.streetcomplete.ui.ktx.readYamlOrNull
 import de.westnordost.streetcomplete.util.ktx.getIds
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.decodeFromString
 
 class CountryInfos(private val res: Res) {
     private val yaml = Yaml(
@@ -33,14 +32,9 @@ class CountryInfos(private val res: Res) {
     }
 
     private fun load(regionCode: String): IncompleteCountryInfo? {
-        val bytes = runBlocking { res.readBytesOrNull("files/country_metadata/$regionCode.yml") }
-        if (bytes == null) return null
-        val countryCode = regionCode.split("-").first()
-        val yml =
-            "countryCode: $countryCode\n" +
-            bytes.decodeToString()
-
-        return yaml.decodeFromString(yml)
+        return runBlocking {
+            res.readYamlOrNull<IncompleteCountryInfo>("files/country_metadata/$regionCode.yml")
+        }
     }
 }
 

@@ -5,6 +5,7 @@ import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.testutils.feature
 import de.westnordost.streetcomplete.testutils.node
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -82,12 +83,10 @@ class CheckShopTypeTest {
                 StringMapEntryAdd("a", "b"),
                 StringMapEntryAdd("c", "d")
             ),
-            questType.answerApplied(ShopType(BaseFeature(
-                id = "id",
-                tags = mapOf("a" to "b", "c" to "d"),
-                names = listOf(),
-                geometry = listOf(GeometryType.POINT),
-            ), isStillSamePlace = false))
+            questType.answerApplied(ShopType(
+                feature = feature(tags = mapOf("a" to "b", "c" to "d")),
+                isStillSamePlace = false)
+            )
         )
     }
 }

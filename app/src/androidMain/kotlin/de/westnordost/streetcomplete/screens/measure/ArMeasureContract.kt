@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 
-class MeasureContract : ActivityResultContract<MeasureContract.Params, Length?>() {
+class ArMeasureContract : ActivityResultContract<ArMeasureContract.Params, Length?>() {
     data class Params(val lengthUnit: LengthUnit, val measureVertical: Boolean)
 
     override fun createIntent(context: Context, input: Params): Intent {

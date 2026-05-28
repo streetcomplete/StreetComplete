@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.existence
 
-import de.westnordost.streetcomplete.testutils.mock
+import de.westnordost.streetcomplete.testutils.feature
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.Test
@@ -9,10 +9,11 @@ import kotlin.test.assertTrue
 
 class CheckExistenceTest {
     private val questType = CheckExistence { element ->
-        if (element.tags["amenity"] == "telephone") mock() else null
+        if (element.tags["amenity"] == "telephone") feature() else null
     }
 
-    @Test fun `isApplicableTo returns false for known places with recently edited amenity=telephone`() {
+    @Test
+    fun `isApplicableTo returns false for known places with recently edited amenity=telephone`() {
         assertFalse(
             questType.isApplicableTo(
                 node(
@@ -24,7 +25,8 @@ class CheckExistenceTest {
         )
     }
 
-    @Test fun `isApplicableTo returns true for known places with old amenity=telephone`() {
+    @Test
+    fun `isApplicableTo returns true for known places with old amenity=telephone`() {
         val millisecondsFor800Days: Long = 1000L * 60 * 60 * 24 * 800
         assertTrue(
             questType.isApplicableTo(
