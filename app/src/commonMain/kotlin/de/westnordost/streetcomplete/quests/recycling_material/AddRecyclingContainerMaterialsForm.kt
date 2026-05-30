@@ -17,11 +17,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.painterResource
@@ -29,7 +31,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddRecyclingContainerMaterialsForm(
-    onAnswer: (RecyclingContainerMaterialsAnswer) -> Unit,
+    onAnswer: (QuestAnswer<RecyclingContainerMaterialsAnswer>) -> Unit,
 ) {
     var selectedItems by rememberSerializable { mutableStateOf(emptySet<RecyclingMaterial>()) }
 
@@ -37,10 +39,11 @@ fun AddRecyclingContainerMaterialsForm(
 
     QuestForm(
         isComplete = selectedItems.isNotEmpty(),
-        onClickOk = { onAnswer(RecyclingMaterials(selectedItems)) },
+        onClickOk = { onAnswer(Answer(RecyclingMaterials(selectedItems))) },
         otherAnswers = listOf(
-            Answer(stringResource(Res.string.quest_recycling_materials_answer_waste)) { confirmJustTrash = true }
-        )
+            AnswerItem(stringResource(Res.string.quest_recycling_materials_answer_waste)) { confirmJustTrash = true }
+        ),
+        onAnswer = onAnswer,
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -82,7 +85,7 @@ fun AddRecyclingContainerMaterialsForm(
     if (confirmJustTrash) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmJustTrash = false },
-            onConfirmed = { onAnswer(IsWasteContainer) },
+            onConfirmed = { onAnswer(Answer(IsWasteContainer)) },
             text = { Text(stringResource(Res.string.quest_recycling_materials_answer_waste_description)) },
         )
     }

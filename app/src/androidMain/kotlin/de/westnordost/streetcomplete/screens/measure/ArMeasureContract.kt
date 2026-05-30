@@ -8,7 +8,7 @@ import androidx.activity.result.contract.ActivityResultContract
 import androidx.core.os.bundleOf
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.meta.LengthUnit
-import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.osm.length.Length
 
 class ArMeasureContract : ActivityResultContract<ArMeasureContract.Params, Length?>() {
     data class Params(val lengthUnit: LengthUnit, val measureVertical: Boolean)

@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
@@ -102,7 +103,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer> {
         mapData.filter { it.tags.containsKey("entrance") }.asSequence()
 
     @Composable
-    override fun Form(onAnswer: (EntranceReferenceAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<EntranceReferenceAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddEntranceReferenceForm(onAnswer)
     }
 

@@ -11,17 +11,19 @@ import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddMaxHeightForm(
-    onAnswer: (MaxHeightAnswer) -> Unit,
+    onAnswer: (QuestAnswer<MaxHeightAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo
 ) {
@@ -36,11 +38,12 @@ fun AddMaxHeightForm(
             if (isUnrealisticHeight(height!!)) {
                 confirmUnusualInput = true
             } else {
-                onAnswer(MaxHeight(height!!))
+                onAnswer(Answer(MaxHeight(height!!)))
             }
         },
+        onAnswer = onAnswer,
         otherAnswers = listOf(
-            Answer(stringResource(Res.string.quest_maxheight_answer_noSign)) { confirmNoSign = true }
+            AnswerItem(stringResource(Res.string.quest_maxheight_answer_noSign)) { confirmNoSign = true }
         ),
         hintText =
             if (element.type == ElementType.WAY) {
@@ -63,13 +66,13 @@ fun AddMaxHeightForm(
     if (confirmNoSign) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoSign = false },
-            onConfirmed = { onAnswer(NoMaxHeightSign) }
+            onConfirmed = { onAnswer(Answer(NoMaxHeightSign)) }
         )
     }
     if (confirmUnusualInput) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmUnusualInput = false },
-            onConfirmed = { onAnswer(MaxHeight(height!!)) },
+            onConfirmed = { onAnswer(Answer(MaxHeight(height!!))) },
             text = { Text(stringResource(Res.string.quest_maxheight_unusualInput_confirmation_description)) }
         )
     }

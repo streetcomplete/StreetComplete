@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.osm.places.shouldReplacePlace
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -181,13 +181,13 @@ import org.koin.compose.koinInject
             element?.let { nameAndLocationLabel(it, featureDictionary = null) },
         otherAnswers = listOfNotNull(
             if (originalFeature != vacantShopFeature) {
-                Answer(stringResource(Res.string.quest_shop_gone_vacant_answer))  {
+                AnswerItem(stringResource(Res.string.quest_shop_gone_vacant_answer))  {
                     val languages = getLanguagesForFeatureDictionary()
                     onSelectedFeature(featureDictionary.getById("shop/vacant", languages)!!)
                 }
             } else null,
             if (selectedFeature?.hasFixedName != true && !isNoName) {
-                Answer(stringResource(Res.string.quest_placeName_no_name_answer)) {
+                AnswerItem(stringResource(Res.string.quest_placeName_no_name_answer)) {
                     isNoName = true
                     localizedNames = listOf()
                 }

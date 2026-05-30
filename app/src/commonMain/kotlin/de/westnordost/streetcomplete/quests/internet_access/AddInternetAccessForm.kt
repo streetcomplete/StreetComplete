@@ -13,6 +13,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.CheckboxGroup
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
@@ -21,13 +23,14 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddInternetAccessForm(
-    onAnswer: (Set<InternetAccess>) -> Unit
+    onAnswer: (QuestAnswer<Set<InternetAccess>>) -> Unit
 ) {
     var selectedOptions by rememberSerializable { mutableStateOf(emptySet<InternetAccess>()) }
 
     QuestForm(
         isComplete = selectedOptions.isNotEmpty(),
-        onClickOk =  { onAnswer(selectedOptions) }
+        onClickOk =  { onAnswer(Answer(selectedOptions)) },
+        onAnswer = onAnswer,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(

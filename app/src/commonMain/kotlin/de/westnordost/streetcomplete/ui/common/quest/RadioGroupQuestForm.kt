@@ -8,6 +8,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.ui.common.RadioGroup
 
 /** Quest form in which the [items] are displayed as a list of radio buttons */
@@ -15,9 +17,9 @@ import de.westnordost.streetcomplete.ui.common.RadioGroup
 fun <I> RadioGroupQuestForm(
     items: List<I>,
     itemContent: @Composable (item: I) -> Unit,
-    onClickOk: (selectedItem: I) -> Unit,
+    onAnswer: (QuestAnswer<I>) -> Unit,
     modifier: Modifier = Modifier,
-    otherAnswers: List<Answer> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
 ) {
     var checkedItemIndex by rememberSaveable(items) { mutableStateOf<Int>(-1) }
     val checkedItem by remember {
@@ -25,7 +27,8 @@ fun <I> RadioGroupQuestForm(
     }
     QuestForm(
         isComplete = checkedItem != null,
-        onClickOk = { onClickOk(checkedItem!!) },
+        onClickOk = { onAnswer(Answer(checkedItem!!)) },
+        onAnswer = onAnswer,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {

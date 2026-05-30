@@ -9,6 +9,9 @@ import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.PROHIBITED
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
@@ -18,7 +21,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddCrossingForm(
-    onAnswer: (CrossingAnswer) -> Unit,
+    onAnswer: (QuestAnswer<CrossingAnswer>) -> Unit,
     element: Element,
     mapDataSource: MapDataWithEditsSource = koinInject()
 ) {
@@ -33,24 +36,28 @@ fun AddCrossingForm(
     RadioGroupQuestForm(
         items = CrossingAnswer.entries,
         itemContent = { Text(stringResource(it.text)) },
-        onClickOk = { selectedItem ->
-            /*
-            PROHIBITED is not possible for sidewalks or crossings (=separately mapped sidewalk
-            infrastructure) because if the crossing does not exist, it would require to also
-            delete/adapt the crossing ways, rather than just tagging crossing=no on the vertex.
+        onAnswer = {
+            if (
+                it is Answer<CrossingAnswer>
+                && it.value == PROHIBITED
+                && isNodeOnSidewalkOrCrossing(element as Node)
+            ) {
+                /*
+                PROHIBITED is not possible for sidewalks or crossings (=separately mapped sidewalk
+                infrastructure) because if the crossing does not exist, it would require to also
+                delete/adapt the crossing ways, rather than just tagging crossing=no on the vertex.
 
-            This situation needs to be solved in a different editor, so we ask the user to leave
-            a note.
-            See https://github.com/streetcomplete/StreetComplete/pull/2999#discussion_r681516203
-            and https://github.com/streetcomplete/StreetComplete/issues/5160
+                This situation needs to be solved in a different editor, so we ask the user to leave
+                a note.
+                See https://github.com/streetcomplete/StreetComplete/pull/2999#discussion_r681516203
+                and https://github.com/streetcomplete/StreetComplete/issues/5160
 
-            INFORMAL on the other hand would be okay because crossing=informal would not require
-            deleting the crossing ways (I would say... it is in edge case...)
-            */
-            if (selectedItem == PROHIBITED && isNodeOnSidewalkOrCrossing(element as Node)) {
+                INFORMAL on the other hand would be okay because crossing=informal would not require
+                deleting the crossing ways (I would say... it is in edge case...)
+                */
                 confirmLeaveNote = true
             } else {
-                onAnswer(selectedItem)
+                onAnswer(it)
             }
         }
     )
@@ -58,7 +65,7 @@ fun AddCrossingForm(
     if (confirmLeaveNote) {
         ConfirmationDialog(
             onDismissRequest = { confirmLeaveNote = false },
-            onConfirmed = { composeNote() },
+            onConfirmed = { onAnswer(AltAnswer.LeaveNote) },
             confirmButtonText = stringResource(Res.string.quest_leave_new_note_yes),
             text = { Text(stringResource(Res.string.quest_leave_new_note_as_answer)) }
         )

@@ -16,8 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.LengthUnit
-import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.osm.unit
+import de.westnordost.streetcomplete.osm.length.Length
+import de.westnordost.streetcomplete.osm.length.unit
 import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
 import de.westnordost.streetcomplete.ui.common.DropdownButton

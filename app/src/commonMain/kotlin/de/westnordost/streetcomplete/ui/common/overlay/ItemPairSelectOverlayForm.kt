@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.takeFavorites
 
@@ -46,7 +46,7 @@ inline fun <reified I> ItemPairSelectOverlayForm(
     prefs: Preferences,
     favoriteKey: String,
     modifier: Modifier = Modifier.Companion,
-    otherAnswers: List<Answer> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
 ) {
     val lastPicked = remember {
         prefs.getLastPicked<Pair<I, I>>(favoriteKey).takeFavorites(n = 3, first = 1)

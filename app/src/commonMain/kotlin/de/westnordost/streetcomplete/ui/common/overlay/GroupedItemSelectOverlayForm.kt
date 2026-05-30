@@ -23,7 +23,7 @@ import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.GroupedItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -52,7 +52,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
-    otherAnswers: List<Answer> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
 ) {
     val lastPicked = remember {
         prefs.getLastPicked<I>(favoriteKey).takeFavorites(n = 6, first = 1, pad = topSelectableItems)

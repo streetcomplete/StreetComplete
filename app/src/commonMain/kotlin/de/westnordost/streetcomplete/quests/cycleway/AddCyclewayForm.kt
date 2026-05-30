@@ -12,6 +12,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.all
@@ -28,7 +30,7 @@ import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
@@ -40,7 +42,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddCyclewayForm(
-    onAnswer: (Sides<CyclewayAndDirection>) -> Unit,
+    onAnswer: (QuestAnswer<Sides<CyclewayAndDirection>>) -> Unit,
     element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
@@ -108,13 +110,13 @@ fun AddCyclewayForm(
 
     fun saveAndApplyCycleway(sides: Sides<CyclewayAndDirection>) {
         if (sides.left != null && sides.right != null) {
-            // only persist the cycleway selection, not the direction. For any road that deviates from
-            // the default, the user should select this specifically. Simply carrying over the
+            // only persist the cycleway selection, not the direction. For any road that deviates
+            // from the default, the user should select this specifically. Simply carrying over the
             // non-default direction to the next answer might result in mistakes
             val cycleways = Sides(left = sides.left.cycleway, right = sides.right.cycleway)
             preferences.setLastPicked(favKey, listOf(cycleways))
         }
-        onAnswer(sides)
+        onAnswer(Answer(sides))
     }
 
     val content: @Composable () -> Unit = {
@@ -141,9 +143,10 @@ fun AddCyclewayForm(
         QuestForm(
             title = stringResource(Res.string.quest_cycleway_resurvey_title),
             answers = listOf(
-                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { isDisplayingPrevious = false },
-                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(cycleways) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { isDisplayingPrevious = false },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(cycleways)) }
             ),
+            onAnswer = onAnswer,
             contentPadding = PaddingValues.Zero,
             content = { content() }
         )
@@ -161,19 +164,20 @@ fun AddCyclewayForm(
                     saveAndApplyCycleway(cycleways)
                 }
             },
+            onAnswer = onAnswer,
             otherAnswers = listOfNotNull(
                 if (isLeftSideVisible && isRightSideVisible || isRoundabout) {
                     null
                 } else {
-                    Answer(stringResource(Res.string.quest_cycleway_answer_contraflow_cycleway)) {
+                    AnswerItem(stringResource(Res.string.quest_cycleway_answer_contraflow_cycleway)) {
                         isLeftSideVisible = true
                         isRightSideVisible = true
                     }
                 },
-                Answer(stringResource(Res.string.quest_cycleway_answer_no_bicycle_infrastructure)) {
+                AnswerItem(stringResource(Res.string.quest_cycleway_answer_no_bicycle_infrastructure)) {
                     showNoCyclewayHereHint = true
                 },
-                Answer(stringResource(Res.string.cycleway_reverse_direction)) {
+                AnswerItem(stringResource(Res.string.cycleway_reverse_direction)) {
                     confirmSelectReverseCyclewayDirection = true
                 }
             ),

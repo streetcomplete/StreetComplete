@@ -8,14 +8,16 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.amenity_indoor.IsAmenityIndoorAnswer.COVERED
 import de.westnordost.streetcomplete.quests.amenity_indoor.IsAmenityIndoorAnswer.INDOOR
 import de.westnordost.streetcomplete.quests.amenity_indoor.IsAmenityIndoorAnswer.OUTDOOR
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.ktx.containsAll
 import de.westnordost.streetcomplete.util.math.LatLonRaster
@@ -110,14 +112,15 @@ class AddIsAmenityIndoor(
     }
 
     @Composable
-    override fun Form(onAnswer: (IsAmenityIndoorAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<IsAmenityIndoorAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(OUTDOOR) },
-                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(INDOOR) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(OUTDOOR)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(INDOOR)) }
             ),
+            onAnswer = onAnswer,
             otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_isAmenityIndoor_outside_covered)) { onAnswer(COVERED) }
+                AnswerItem(stringResource(Res.string.quest_isAmenityIndoor_outside_covered)) { onAnswer(Answer(COVERED)) }
             )
         )
     }

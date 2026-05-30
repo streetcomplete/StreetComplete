@@ -12,29 +12,32 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddDietTypeForm(
-    onAnswer: (DietAvailabilityAnswer) -> Unit,
+    onAnswer: (QuestAnswer<DietAvailabilityAnswer>) -> Unit,
     element: Element,
 ) {
     var confirmNoFood by remember { mutableStateOf(false) }
 
     QuestForm(
         answers = listOf(
-            Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(DIET_NO) },
-            Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(DIET_YES) },
-            Answer(stringResource(Res.string.quest_hasFeature_only)) { onAnswer(DIET_ONLY) },
+            AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
+            AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(YES)) },
+            AnswerItem(stringResource(Res.string.quest_hasFeature_only)) { onAnswer(Answer(ONLY)) },
         ),
+        onAnswer = onAnswer,
         otherAnswers = listOfNotNull(
             if (element.tags["amenity"] == "cafe") {
-                Answer(stringResource(Res.string.quest_diet_answer_no_food)) { confirmNoFood = true }
+                AnswerItem(stringResource(Res.string.quest_diet_answer_no_food)) { confirmNoFood = true }
             } else {
                 null
             }
@@ -51,7 +54,7 @@ fun AddDietTypeForm(
     if (confirmNoFood) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoFood = false },
-            onConfirmed = { onAnswer(NoFood) }
+            onConfirmed = { onAnswer(Answer(NoFood)) }
         )
     }
 }

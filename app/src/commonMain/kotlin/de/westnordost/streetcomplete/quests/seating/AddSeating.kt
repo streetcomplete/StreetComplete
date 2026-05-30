@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
@@ -37,11 +38,11 @@ class AddSeating : OsmFilterQuestType<Seating>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (Seating) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<Seating>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
             items = Seating.entries,
             itemContent = { Text(stringResource(it.text)) },
-            onClickOk = onAnswer
+            onAnswer = onAnswer
         )
     }
 

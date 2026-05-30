@@ -1,5 +1,5 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.osm.length.Length
 
 data class MaxPhysicalHeightAnswer(val height: Length, val isARMeasurement: Boolean)

@@ -9,14 +9,16 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.quests.ferry.FerryBicycleAccess.NO
 import de.westnordost.streetcomplete.quests.ferry.FerryBicycleAccess.NOT_SIGNED
 import de.westnordost.streetcomplete.quests.ferry.FerryBicycleAccess.YES
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -49,14 +51,15 @@ class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess> {
     }
 
     @Composable
-    override fun Form(onAnswer: (FerryBicycleAccess) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<FerryBicycleAccess>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
-                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(YES)) }
             ),
+            onAnswer = onAnswer,
             otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_generic_answer_noSign)) { onAnswer(NOT_SIGNED) }
+                AnswerItem(stringResource(Res.string.quest_generic_answer_noSign)) { onAnswer(Answer(NOT_SIGNED)) }
             )
         )
     }

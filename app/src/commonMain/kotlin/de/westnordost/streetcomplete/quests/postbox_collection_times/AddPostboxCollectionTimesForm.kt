@@ -11,20 +11,22 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddPostboxCollectionTimesForm(
-    onAnswer: (CollectionTimesAnswer) -> Unit,
+    onAnswer: (QuestAnswer<CollectionTimesAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
 ) {
@@ -59,15 +61,16 @@ fun AddPostboxCollectionTimesForm(
         QuestForm(
             title = stringResource(Res.string.quest_postboxCollectionTimes_resurvey_title),
             answers = listOf(
-                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) {
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
                     isDisplayingPrevious = false
                 },
-                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) {
-                    onAnswer(CollectionTimes(originalOpeningHours!!))
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
+                    onAnswer(Answer(CollectionTimes(originalOpeningHours!!)))
                 }
             ),
+            onAnswer = onAnswer,
             otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
+                AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
                     confirmNoSign = true
                 },
             ),
@@ -77,19 +80,20 @@ fun AddPostboxCollectionTimesForm(
         QuestForm(
             isComplete = openingHours.isComplete(),
             hasChanges = openingHours.monthsList.isNotEmpty(),
-            onClickOk = { onAnswer(CollectionTimes(openingHours)) },
+            onClickOk = { onAnswer(Answer(CollectionTimes(openingHours))) },
+            onAnswer = onAnswer,
             otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
+                AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
                     confirmNoSign = true
                 },
                 when (timeMode) {
                     TimeMode.Points -> {
-                        Answer(stringResource(Res.string.quest_collectionTimes_answer_time_spans)) {
+                        AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_time_spans)) {
                             timeMode = TimeMode.Spans
                         }
                     }
                     TimeMode.Spans -> {
-                        Answer(stringResource(Res.string.quest_collectionTimes_answer_time_points)) {
+                        AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_time_points)) {
                             timeMode = TimeMode.Points
                         }
                     }
@@ -102,7 +106,7 @@ fun AddPostboxCollectionTimesForm(
     if (confirmNoSign) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoSign = false },
-            onConfirmed = { onAnswer(NoCollectionTimesSign) },
+            onConfirmed = { onAnswer(Answer(NoCollectionTimesSign)) },
             titleText = stringResource(Res.string.quest_generic_confirmation_title)
         )
     }

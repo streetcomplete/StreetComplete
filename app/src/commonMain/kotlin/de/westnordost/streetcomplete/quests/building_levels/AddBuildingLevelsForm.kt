@@ -9,10 +9,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
@@ -20,7 +22,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddBuildingLevelsForm(
-    onAnswer: (BuildingLevels) -> Unit,
+    onAnswer: (QuestAnswer<BuildingLevels>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
@@ -58,10 +60,11 @@ fun AddBuildingLevelsForm(
         onClickOk = {
             val answer = BuildingLevels(levels!!, roofLevels)
             preferences.addLastPicked(key, answer)
-            onAnswer(answer)
+            onAnswer(Answer(answer))
         },
+        onAnswer = onAnswer,
         otherAnswers = listOf(
-            Answer(stringResource(Res.string.quest_buildingLevels_answer_multipleLevels)) { showMultipleLevelsHint = true }
+            AnswerItem(stringResource(Res.string.quest_buildingLevels_answer_multipleLevels)) { showMultipleLevelsHint = true }
         ),
     ) {
         BuildingLevelsForm(

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.max_height
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -12,22 +11,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.osm.Length
-import de.westnordost.streetcomplete.quests.LengthForm
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.osm.length.Length
+import de.westnordost.streetcomplete.osm.length.LengthForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArMeasureViewModel
-import de.westnordost.streetcomplete.screens.measure.DisableArQuestsDialog
-import de.westnordost.streetcomplete.screens.measure.ArMeasureResult
 import de.westnordost.streetcomplete.screens.measure.LastArMeasurementResultEffect
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun AddMaxPhysicalHeightForm(
-    onAnswer: (MaxPhysicalHeightAnswer) -> Unit,
+    onAnswer: (QuestAnswer<MaxPhysicalHeightAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
 ) {
@@ -66,7 +64,8 @@ fun AddMaxPhysicalHeightForm(
             else Res.string.quest_maxheight_title
         ),
         isComplete = length != null,
-        onClickOk = { onAnswer(MaxPhysicalHeightAnswer(length!!, isArMeasurement)) }
+        onClickOk = { onAnswer(Answer(MaxPhysicalHeightAnswer(length!!, isArMeasurement))) },
+        onAnswer = onAnswer,
     ) {
         LengthForm(
             length = length,

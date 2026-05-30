@@ -6,7 +6,9 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
@@ -15,7 +17,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswal
 import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.NO
 import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingCrosswalkAnswer.YES
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -71,14 +73,15 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnsw
         if (!crossingFilter.matches(element)) false else null
 
     @Composable
-    override fun Form(onAnswer: (TactilePavingCrosswalkAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<TactilePavingCrosswalkAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
-                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(YES)) }
             ),
+            onAnswer = onAnswer,
             otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_tactilePaving_incorrect)) { onAnswer(INCORRECT) }
+                AnswerItem(stringResource(Res.string.quest_tactilePaving_incorrect)) { onAnswer(Answer(INCORRECT)) }
             )
         )
     }

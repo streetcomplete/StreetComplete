@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.ui.common.VerticalDivider
 import org.jetbrains.compose.resources.stringResource
 
 @Immutable
-data class Answer(val text: String, val action: () -> Unit)
+data class AnswerItem(val text: String, val action: () -> Unit)
 
 /** Horizontal button bar for bottom sheets that can be multi-line if it does not all fit in one
  *  line and places subtle dividers in-between the [answers]. Also, optionally [otherAnswers] will
@@ -33,8 +33,8 @@ data class Answer(val text: String, val action: () -> Unit)
 @Composable
 fun QuestAnswerButtonBar(
     modifier: Modifier = Modifier,
-    answers: List<Answer> = emptyList(),
-    otherAnswers: List<Answer> = emptyList(),
+    answers: List<AnswerItem> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
 ) {
     FlowRow(
         modifier = modifier.fillMaxWidth(),
@@ -56,7 +56,7 @@ fun QuestAnswerButtonBar(
 
 @Composable
 private fun OtherAnswersTextButton(
-    answers: List<Answer>,
+    answers: List<AnswerItem>,
     modifier: Modifier = Modifier,
 ) {
     var expanded by rememberSaveable { mutableStateOf(false) }
@@ -84,14 +84,14 @@ private fun OtherAnswersTextButton(
 private fun QuestAnswerButtonBarPreview() {
     QuestAnswerButtonBar(
         answers = listOf(
-            Answer("No") {},
-            Answer("Perhaps") {},
-            Answer("Depends how you define \"No\"") {},
-            Answer("Yes") {},
+            AnswerItem("No") {},
+            AnswerItem("Perhaps") {},
+            AnswerItem("Depends how you define \"No\"") {},
+            AnswerItem("Yes") {},
         ),
         otherAnswers = listOf(
-            Answer("Depends how you define \"Yes\"") {},
-            Answer("Can't say") {}
+            AnswerItem("Depends how you define \"Yes\"") {},
+            AnswerItem("Can't say") {}
         )
     )
 }

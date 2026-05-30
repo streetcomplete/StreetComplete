@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -33,11 +34,11 @@ class AddTowerAccess : OsmFilterQuestType<TowerAccess>() {
     override val achievements = listOf(BUILDING)
 
     @Composable
-    override fun Form(onAnswer: (TowerAccess) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<TowerAccess>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
             items = TowerAccess.entries,
             itemContent = { Text(stringResource(it.text)) },
-            onClickOk = onAnswer
+            onAnswer = onAnswer
         )
     }
 

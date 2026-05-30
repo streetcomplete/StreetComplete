@@ -6,14 +6,16 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.ChargingStationBicycles.NO
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.ChargingStationBicycles.ONLY
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.ChargingStationBicycles.YES
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -36,14 +38,15 @@ class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>()
         mapData.filter("nodes, ways with amenity = charging_station")
 
     @Composable
-    override fun Form(onAnswer: (ChargingStationBicycles) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<ChargingStationBicycles>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
-                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(YES)) },
             ),
+            onAnswer = onAnswer,
             otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_charging_station_bicycles_answer_only)) { onAnswer(ONLY) }
+                AnswerItem(stringResource(Res.string.quest_charging_station_bicycles_answer_only)) { onAnswer(Answer(ONLY)) }
             )
         )
     }

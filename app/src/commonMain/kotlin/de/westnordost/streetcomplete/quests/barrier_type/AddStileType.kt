@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDate
@@ -51,12 +52,12 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
     override val achievements = listOf(OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (StileTypeAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<StileTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = StileTypeAnswer.entries,
             itemsPerRow = 2,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            onClickOk = onAnswer,
+            onAnswer = onAnswer,
         )
     }
 

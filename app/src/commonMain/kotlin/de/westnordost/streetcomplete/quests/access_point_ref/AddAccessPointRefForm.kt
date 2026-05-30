@@ -14,9 +14,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import org.jetbrains.compose.resources.painterResource
@@ -24,7 +26,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddAccessPointRefForm(
-    onAnswer: (AccessPointRefAnswer) -> Unit
+    onAnswer: (QuestAnswer<AccessPointRefAnswer>) -> Unit
 ) {
     var ref by rememberSaveable { mutableStateOf("") }
     var confirmAssemblyPoint by remember { mutableStateOf(false) }
@@ -32,10 +34,11 @@ fun AddAccessPointRefForm(
 
     QuestForm(
         isComplete = ref.isNotEmpty(),
-        onClickOk = { onAnswer(AccessPointRef(ref)) },
+        onClickOk = { onAnswer(Answer(AccessPointRef(ref))) },
+        onAnswer = onAnswer,
         otherAnswers = listOf(
-            Answer(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true },
-            Answer(stringResource(Res.string.quest_accessPointRef_answer_assembly_point)) { confirmAssemblyPoint = true }
+            AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true },
+            AnswerItem(stringResource(Res.string.quest_accessPointRef_answer_assembly_point)) { confirmAssemblyPoint = true }
         )
     ) {
         TextField(
@@ -48,7 +51,7 @@ fun AddAccessPointRefForm(
     if (confirmAssemblyPoint) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmAssemblyPoint = false },
-            onConfirmed = { onAnswer(IsAssemblyPointAnswer) },
+            onConfirmed = { onAnswer(Answer(IsAssemblyPointAnswer)) },
             text = {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -66,7 +69,7 @@ fun AddAccessPointRefForm(
     if (confirmNoRef) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoRef = false },
-            onConfirmed = { onAnswer(NoVisibleAccessPointRef) }
+            onConfirmed = { onAnswer(Answer(NoVisibleAccessPointRef)) }
         )
     }
 }

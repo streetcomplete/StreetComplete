@@ -5,13 +5,15 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
+class AddBusStopName : OsmFilterQuestType<List<LocalizedName>>() {
 
     // this filter needs to be kept somewhat in sync with the filter in AddBusStopNameForm https://github.com/streetcomplete/StreetComplete/issues/6390#issuecomment-3057235984
     override val elementFilter = """
@@ -38,18 +40,15 @@ class AddBusStopName : OsmFilterQuestType<BusStopNameAnswer>() {
     override val hint = Res.string.quest_stopName_hint
 
     @Composable
-    override fun Form(onAnswer: (BusStopNameAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<List<LocalizedName>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddBusStopNameForm(onAnswer, countryInfo)
     }
 
-    override fun applyAnswerTo(answer: BusStopNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            BusStopNameAnswer.NoName -> {
-                tags["name:signed"] = "no"
-            }
-            is BusStopName -> {
-                answer.localizedNames.applyTo(tags)
-            }
+    override fun applyAnswerTo(answer: List<LocalizedName>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.isEmpty()) {
+            tags["name:signed"] = "no"
+        } else {
+            answer.applyTo(tags)
         }
     }
 }

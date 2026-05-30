@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
@@ -41,11 +42,11 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (CardAcceptance) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<CardAcceptance>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
             items = CardAcceptance.entries,
             itemContent = { Text(stringResource(it.text)) },
-            onClickOk = onAnswer
+            onAnswer = onAnswer
         )
     }
 

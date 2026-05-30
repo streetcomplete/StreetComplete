@@ -6,14 +6,16 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 import org.jetbrains.compose.resources.stringResource
@@ -68,12 +70,13 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
         if (!crossingFilter.matches(element)) false else null
 
     @Composable
-    override fun Form(onAnswer: (Boolean) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(false) },
-                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(true) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(false)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(true)) }
             ),
+            onAnswer = onAnswer,
             hintImages = listOf(
                 when (countryInfo.countryCode) {
                     "AU" -> Res.drawable.vibrating_button_illustration_au

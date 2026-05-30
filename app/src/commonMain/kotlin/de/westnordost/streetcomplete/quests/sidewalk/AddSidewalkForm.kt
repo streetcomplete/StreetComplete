@@ -9,13 +9,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
@@ -27,7 +29,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddSidewalkForm(
-    onAnswer: (Sides<Sidewalk>) -> Unit,
+    onAnswer: (QuestAnswer<Sides<Sidewalk>>) -> Unit,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
@@ -48,11 +50,12 @@ fun AddSidewalkForm(
         isComplete = sidewalks.left != null && sidewalks.right != null,
         hasChanges = sidewalks.left != null || sidewalks.right != null,
         onClickOk = {
-            onAnswer(sidewalks)
+            onAnswer(Answer(sidewalks))
             preferences.setLastPicked(favKey, listOf(sidewalks))
         },
+        onAnswer = onAnswer,
         otherAnswers = listOf(
-            Answer(stringResource(Res.string.quest_sidewalk_answer_none)) { showNoSidewalksHint = true }
+            AnswerItem(stringResource(Res.string.quest_sidewalk_answer_none)) { showNoSidewalksHint = true }
         ),
         contentPadding = PaddingValues.Zero,
     ) {

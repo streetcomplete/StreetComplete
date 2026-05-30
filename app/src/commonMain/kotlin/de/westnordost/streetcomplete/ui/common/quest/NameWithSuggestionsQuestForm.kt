@@ -8,6 +8,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.ui.common.AutoCompleteTextField
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import kotlin.collections.orEmpty
@@ -17,9 +19,9 @@ import kotlin.collections.orEmpty
 @Composable
 fun NameWithSuggestionsQuestForm(
     suggestions: List<String>?,
-    onClickOk: (String) -> Unit,
+    onAnswer: (QuestAnswer<String>) -> Unit,
     modifier: Modifier = Modifier,
-    otherAnswers: List<Answer> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
 ) {
     var value by rememberSaveable(stateSaver = TextFieldValue.Saver) {
         mutableStateOf(TextFieldValue())
@@ -27,7 +29,8 @@ fun NameWithSuggestionsQuestForm(
 
     QuestForm(
         isComplete = value.text.isNotEmpty(),
-        onClickOk = { onClickOk(value.text) },
+        onClickOk = { onAnswer(Answer(value.text)) },
+        onAnswer = onAnswer,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {

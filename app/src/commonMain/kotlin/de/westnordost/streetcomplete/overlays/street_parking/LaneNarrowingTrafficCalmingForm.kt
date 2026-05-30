@@ -24,7 +24,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.overlay.ItemSelectOverlayForm
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
@@ -67,7 +67,7 @@ fun LaneNarrowingTrafficCalmingForm(
         favoriteKey = "LaneNarrowingTrafficCalmingForm",
         otherAnswers = listOfNotNull(
             if (element != null) {
-                Answer(stringResource(Res.string.lane_narrowing_traffic_calming_none)) {
+                AnswerItem(stringResource(Res.string.lane_narrowing_traffic_calming_none)) {
                     confirmRemoveLaneNarrowingTrafficCalming = true
                 }
             } else null

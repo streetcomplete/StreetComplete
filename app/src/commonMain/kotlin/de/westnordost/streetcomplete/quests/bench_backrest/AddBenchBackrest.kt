@@ -6,13 +6,15 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.bench_backrest.BenchBackrestAnswer.*
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -37,15 +39,16 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
         mapData.filter("nodes, ways with amenity = bench or leisure = picnic_table")
 
     @Composable
-    override fun Form(onAnswer: (BenchBackrestAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<BenchBackrestAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
-                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(YES)) }
             ),
             otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_bench_answer_picnic_table)) { onAnswer(PICNIC_TABLE) }
-            )
+                AnswerItem(stringResource(Res.string.quest_bench_answer_picnic_table)) { onAnswer(Answer(PICNIC_TABLE)) }
+            ),
+            onAnswer = onAnswer
         )
     }
 

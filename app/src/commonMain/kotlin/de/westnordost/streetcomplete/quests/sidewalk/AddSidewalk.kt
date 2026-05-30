@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.Tags
@@ -95,7 +96,7 @@ class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>> {
         """)
 
     @Composable
-    override fun Form(onAnswer: (Sides<Sidewalk>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<Sides<Sidewalk>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddSidewalkForm(onAnswer, geometry, countryInfo)
     }
 

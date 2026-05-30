@@ -14,12 +14,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WHERE_SLOW_ZONE_IS_LIKELY
 import de.westnordost.streetcomplete.osm.maxspeed.Speed
 import de.westnordost.streetcomplete.quests.max_speed.MaxSpeedSign.Type.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -27,7 +29,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddMaxSpeedForm(
-    onAnswer: (MaxSpeedAnswer) -> Unit,
+    onAnswer: (QuestAnswer<MaxSpeedAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo
 ) {
@@ -41,7 +43,7 @@ fun AddMaxSpeedForm(
         if (maxSpeedSign?.type == ZONE) {
             lastInputSlowZone = maxSpeedSign.speed.value
         }
-        onAnswer(answer)
+        onAnswer(Answer(answer))
     }
 
     QuestForm(
@@ -59,9 +61,10 @@ fun AddMaxSpeedForm(
                 maxSpeedAnswer?.let { applySpeedLimitFormAnswer(it) }
             }
         },
+        onAnswer = onAnswer,
         otherAnswers = listOfNotNull(
             if (countryInfo.hasAdvisorySpeedLimitSign) {
-                Answer(stringResource(Res.string.quest_maxspeed_answer_advisory_speed_limit)) {
+                AnswerItem(stringResource(Res.string.quest_maxspeed_answer_advisory_speed_limit)) {
                     maxSpeedAnswer = MaxSpeedSign(Speed(null, countryInfo.speedUnits.first()), ADVISORY)
                 }
             } else null

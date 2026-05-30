@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Sides
@@ -93,7 +94,7 @@ class AddCycleway(
         """)
 
     @Composable
-    override fun Form(onAnswer: (Sides<CyclewayAndDirection>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<Sides<CyclewayAndDirection>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddCyclewayForm(onAnswer, element, geometry, countryInfo)
     }
 

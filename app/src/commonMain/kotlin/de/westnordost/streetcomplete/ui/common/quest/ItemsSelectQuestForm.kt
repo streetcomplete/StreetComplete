@@ -18,13 +18,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
-import org.koin.compose.viewmodel.koinViewModel
 import kotlin.collections.plus
 
 /** Quest form that lets the user select several items from a set of [items], displayed in a grid
@@ -36,11 +37,11 @@ import kotlin.collections.plus
 inline fun <reified I> ItemsSelectQuestForm(
     items: List<I>,
     noinline itemContent: @Composable (item: I) -> Unit,
-    crossinline onClickOk: (selectedItems: Set<I>) -> Unit,
+    noinline onAnswer: (QuestAnswer<Set<I>>) -> Unit,
     modifier: Modifier = Modifier,
     itemsPerRow: Int = 3,
     favoriteKey: String? = null,
-    otherAnswers: List<Answer> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
     preferences: Preferences = koinInject()
 ) {
     val reorderedItems = remember(items, itemsPerRow, favoriteKey) {
@@ -60,8 +61,9 @@ inline fun <reified I> ItemsSelectQuestForm(
             if (favoriteKey != null) {
                 preferences.addLastPicked(favoriteKey, selectedItems.toList())
             }
-            onClickOk(selectedItems)
+            onAnswer(Answer(selectedItems))
         },
+        onAnswer = onAnswer,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {

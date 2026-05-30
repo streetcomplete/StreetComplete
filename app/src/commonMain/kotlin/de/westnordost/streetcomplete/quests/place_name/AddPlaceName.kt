@@ -8,15 +8,18 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
 
 class AddPlaceName(
     private val getFeature: (Element) -> Feature?
-) : OsmElementQuestType<PlaceNameAnswer> {
+) : OsmElementQuestType<List<LocalizedName>> {
 
     private val filter by lazy { ("""
         nodes, ways with
@@ -150,18 +153,19 @@ class AddPlaceName(
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     @Composable
-    override fun Form(onAnswer: (PlaceNameAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddPlaceNameForm(onAnswer, countryInfo)
+    override fun Form(onAnswer: (QuestAnswer<List<LocalizedName>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        LocalizedNameQuestForm(
+            countryInfo = countryInfo,
+            initialLocalizedNames = null,
+            onAnswer = onAnswer
+        )
     }
 
-    override fun applyAnswerTo(answer: PlaceNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            is PlaceNameAnswer.NoNameSign -> {
-                tags["name:signed"] = "no"
-            }
-            is PlaceName -> {
-                answer.localizedNames.applyTo(tags)
-            }
+    override fun applyAnswerTo(answer: List<LocalizedName>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.isEmpty()) {
+            tags["name:signed"] = "no"
+        } else {
+            answer.applyTo(tags)
         }
     }
 }

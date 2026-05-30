@@ -10,6 +10,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameForm
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
@@ -20,14 +23,14 @@ import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddHousenumberForm(
-    onAnswer: (HouseNumberAnswer) -> Unit,
+    onAnswer: (QuestAnswer<HouseNumberAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
 ) {
@@ -47,7 +50,7 @@ fun AddHousenumberForm(
         } else {
             // fallback in case the type of building is known by Housenumber quest but not by
             // building type quest
-            onClickCantSay()
+            onAnswer(AltAnswer.CantSay)
         }
     }
 
@@ -60,7 +63,7 @@ fun AddHousenumberForm(
 
     fun applyHousenumberAnswer() {
         val number = addressNumberAndName.number?.takeIf { !it.isEmpty() }
-        onAnswer(addressNumberAndName)
+        onAnswer(Answer(addressNumberAndName))
         lastBlock = (number as? BlockAndHouseNumber)?.block
         lastWasBlock = number is BlockAndHouseNumber
         number?.streetHouseNumber?.let { lastHouseNumber = it }
@@ -80,22 +83,23 @@ fun AddHousenumberForm(
                 applyHousenumberAnswer()
             }
         },
+        onAnswer = onAnswer,
         otherAnswers = listOfNotNull(
-            Answer(stringResource(Res.string.quest_address_answer_no_housenumber)) { onNoHouseNumber() },
-            Answer(stringResource(Res.string.quest_address_answer_house_name2)) { showHouseName() },
+            AnswerItem(stringResource(Res.string.quest_address_answer_no_housenumber)) { onNoHouseNumber() },
+            AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) { showHouseName() },
             if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
                 when (addressNumberAndName.number) {
                     is BlockAndHouseNumber ->
-                        Answer(stringResource(Res.string.quest_address_answer_no_block2)) {
+                        AnswerItem(stringResource(Res.string.quest_address_answer_no_block2)) {
                             addressNumberAndName = addressNumberAndName.copy(number = HouseNumber(""))
                         }
                     else ->
-                        Answer(stringResource(Res.string.quest_address_answer_block2)) {
+                        AnswerItem(stringResource(Res.string.quest_address_answer_block2)) {
                             addressNumberAndName = addressNumberAndName.copy(number = BlockAndHouseNumber("", ""))
                         }
                 }
             } else null,
-            Answer(stringResource(Res.string.quest_housenumber_multiple_numbers)) { showMultipleNumbersHint = true }
+            AnswerItem(stringResource(Res.string.quest_housenumber_multiple_numbers)) { showMultipleNumbersHint = true }
         )
     ) {
         AddressNumberAndNameForm(
@@ -111,8 +115,8 @@ fun AddHousenumberForm(
     showNoHouseNumberDialogForBuildingType?.let { buildingType ->
         NoHouseNumberDialog(
             onDismissRequest = { showNoHouseNumberDialogForBuildingType = null },
-            onNoHouseNumber = { onAnswer(AddressNumberAndName(null, null)) },
-            onWrongBuildingType = { onAnswer(HouseNumberAnswer.WrongBuildingType) },
+            onNoHouseNumber = { onAnswer(Answer(AddressNumberAndName(null, null))) },
+            onWrongBuildingType = { onAnswer(Answer(HouseNumberAnswer.WrongBuildingType)) },
             buildingType = buildingType
         )
     }

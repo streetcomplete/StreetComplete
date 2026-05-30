@@ -10,24 +10,27 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.quests.sport.Sport.MULTI
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddSportForm(
-    onAnswer: (Set<Sport>) -> Unit,
+    onAnswer: (QuestAnswer<Set<Sport>>) -> Unit,
     countryInfo: CountryInfo
 ) {
     val items = remember {
         val order = countryInfo.popularSports
             .withIndex()
             .associate { it.value to it.index }
-        (Sport.entries - MULTI).sortedBy { order[it.osmValue] ?: Integer.MAX_VALUE }
+        (Sport.entries - MULTI).sortedBy { order[it.osmValue] ?: Int.MAX_VALUE }
     }
     var confirmManySports by remember { mutableStateOf<Set<Sport>?>(null) }
 
@@ -35,16 +38,16 @@ fun AddSportForm(
         items = items,
         itemsPerRow = 4,
         itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-        onClickOk = { selectedItems ->
-            if (selectedItems.size > 3) {
-                confirmManySports = selectedItems
+        onAnswer = {
+            if (it is Answer<Set<Sport>> && it.value.size > 3) {
+                confirmManySports = it.value
             } else {
-                onAnswer(selectedItems)
+                onAnswer(it)
             }
         },
         otherAnswers = listOf(
-            Answer(stringResource(Res.string.quest_sport_answer_multi)) {
-                onAnswer(setOf(MULTI))
+            AnswerItem(stringResource(Res.string.quest_sport_answer_multi)) {
+                onAnswer(Answer(setOf(MULTI)))
             }
         )
     )
@@ -52,8 +55,8 @@ fun AddSportForm(
     confirmManySports?.let { sports ->
         ConfirmManySportsDialog(
             onDismissRequest = { confirmManySports = null },
-            onSpecificSports = { onAnswer(sports) },
-            onGeneralPurpose = { onAnswer(setOf(MULTI)) },
+            onSpecificSports = { onAnswer(Answer(sports)) },
+            onGeneralPurpose = { onAnswer(Answer(setOf(MULTI))) },
             sports = sports
         )
     }

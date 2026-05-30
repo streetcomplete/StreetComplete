@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.osm
+package de.westnordost.streetcomplete.osm.length
 
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.util.ktx.toShortString

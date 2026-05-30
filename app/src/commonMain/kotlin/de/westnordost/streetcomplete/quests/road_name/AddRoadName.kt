@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
@@ -14,7 +15,7 @@ import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
+class AddRoadName : OsmFilterQuestType<List<LocalizedName>>() {
 
     override val elementFilter = """
         ways with
@@ -40,20 +41,19 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>() {
     override val hint = Res.string.quest_streetName_hint
 
     @Composable
-    override fun Form(onAnswer: (RoadNameAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<List<LocalizedName>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddRoadNameForm(onAnswer, countryInfo)
     }
 
-    override fun applyAnswerTo(answer: RoadNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            RoadNameAnswer.NoName -> tags["noname"] = "yes"
-            is RoadName -> {
-                val singleName = answer.localizedNames.singleOrNull()
-                if (singleName?.isRef() == true) {
-                    tags["ref"] = singleName.name
-                } else {
-                    answer.localizedNames.applyTo(tags)
-                }
+    override fun applyAnswerTo(answer: List<LocalizedName>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.isEmpty()) {
+            tags["noname"] = "yes"
+        } else {
+            val singleName = answer.singleOrNull()
+            if (singleName?.isRef() == true) {
+                tags["ref"] = singleName.name
+            } else {
+                answer.applyTo(tags)
             }
         }
     }

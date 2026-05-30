@@ -107,7 +107,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  */
     @Composable
     fun Form(
-        onAnswer: (T) -> Unit,
+        onAnswer: (QuestAnswer<T>) -> Unit,
         element: Element,
         geometry: ElementGeometry,
         countryInfo: CountryInfo
@@ -117,4 +117,23 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * with the given [tags] and the given [geometry].
      * The element is not directly modified, instead, a map of [tags] is modified */
     fun applyAnswerTo(answer: T, tags: Tags, geometry: ElementGeometry, timestampEdited: Long)
+}
+
+sealed interface QuestAnswer<out T>
+value class Answer<T>(val value: T): QuestAnswer<T>
+enum class AltAnswer : QuestAnswer<Nothing> {
+    /** User wants to leave a note */
+    LeaveNote,
+    /** User wants to hide this particular quest */
+    HideQuest,
+    /** User stated that he can't answer the question */
+    CantSay,
+    /** User wants to split the way */
+    SplitWay,
+    /** User wants to move the node */
+    MoveNode,
+    /** User wants to delete the thing-POI */
+    DeletePoi,
+    /** User wants to replace the place-POI */
+    ReplacePoi,
 }

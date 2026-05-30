@@ -20,6 +20,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.*
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
@@ -32,7 +34,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddStepsRampForm(
-    onAnswer: (StepsRampAnswer) -> Unit
+    onAnswer: (QuestAnswer<StepsRampAnswer>) -> Unit
 ) {
     val items = StepsRamp.entries
     var selectedItems by rememberSerializable { mutableStateOf<Set<StepsRamp>>(emptySet()) }
@@ -45,15 +47,16 @@ fun AddStepsRampForm(
             if (selectedItems.contains(WHEELCHAIR)) {
                 confirmWheelchairRampIsSeparate = true
             } else {
-                onAnswer(
+                onAnswer(Answer(
                     StepsRampAnswer(
                         bicycleRamp = selectedItems.contains(BICYCLE),
                         strollerRamp = selectedItems.contains(STROLLER),
                         wheelchairRamp = WheelchairRampStatus.NO
                     )
-                )
+                ))
             }
-        }
+        },
+        onAnswer = onAnswer,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(
@@ -87,7 +90,7 @@ fun AddStepsRampForm(
         WheelchairRampIsSeparateDialog(
             onDismissRequest = { confirmWheelchairRampIsSeparate = false },
             onAnswer = { isSeparate ->
-                onAnswer(
+                onAnswer(Answer(
                     StepsRampAnswer(
                         bicycleRamp = selectedItems.contains(BICYCLE),
                         strollerRamp = selectedItems.contains(STROLLER),
@@ -95,7 +98,7 @@ fun AddStepsRampForm(
                             if (isSeparate) WheelchairRampStatus.SEPARATE
                             else WheelchairRampStatus.YES
                     )
-                )
+                ))
             }
         )
     }

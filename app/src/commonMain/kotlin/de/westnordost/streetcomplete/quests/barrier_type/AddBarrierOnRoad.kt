@@ -8,11 +8,16 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
+import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 class AddBarrierOnRoad : OsmElementQuestType<BarrierType> {
 
@@ -43,8 +48,12 @@ class AddBarrierOnRoad : OsmElementQuestType<BarrierType> {
         if (element !is Node || element.tags.isNotEmpty()) false else null
 
     @Composable
-    override fun Form(onAnswer: (BarrierType) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddBarrierTypeForm(onAnswer)
+    override fun Form(onAnswer: (QuestAnswer<BarrierType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        ItemSelectQuestForm(
+            items = BarrierType.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            onAnswer = onAnswer,
+        )
     }
 
     override fun applyAnswerTo(answer: BarrierType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =

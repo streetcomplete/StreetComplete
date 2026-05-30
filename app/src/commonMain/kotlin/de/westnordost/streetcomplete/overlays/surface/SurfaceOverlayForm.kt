@@ -27,7 +27,7 @@ import de.westnordost.streetcomplete.ui.common.overlay.ItemPairSelectOverlayForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.overlay.ItemSelectOverlayForm
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import org.jetbrains.compose.resources.painterResource
@@ -48,7 +48,7 @@ import org.koin.compose.koinInject
     val items = Surface.selectableValuesForWays
 
     val convertToStepsAnswer = if (couldBeSteps) {
-        Answer(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
+        AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
             val tagChanges = StringMapChangesBuilder(element.tags)
             tagChanges.changeToSteps()
             onEdit(UpdateElementTagsAction(element, tagChanges.create()))
@@ -70,7 +70,7 @@ import org.koin.compose.koinInject
             }
             val convertToSegregatedAnswer =
                 if (isBothFootAndBicycleTraffic) {
-                    Answer(stringResource(Res.string.overlay_path_surface_segregated)) {
+                    AnswerItem(stringResource(Res.string.overlay_path_surface_segregated)) {
                         selectedItem = SegregatedSurface(null, null)
                     }
                 } else null

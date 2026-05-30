@@ -24,8 +24,8 @@ import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 fun QuestAnswerBubble(
     modifier: Modifier = Modifier,
     elevation: Dp = 0.dp,
-    answers: List<Answer> = emptyList(),
-    otherAnswers: List<Answer> = emptyList(),
+    answers: List<AnswerItem> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {

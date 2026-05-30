@@ -9,13 +9,15 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.roof_shape.RoofShape.MANY
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -64,15 +66,15 @@ class AddRoofShape(
     }
 
     @Composable
-    override fun Form(onAnswer: (RoofShape) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<RoofShape>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = remember { RoofShape.entries - MANY },
             itemsPerRow = 4,
             itemContent = { Image(painterResource(it.icon), null) },
-            onClickOk = onAnswer,
+            onAnswer = onAnswer,
             favoriteKey = "AddRoofShapeForm",
             otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_roofShape_answer_many)) { onAnswer(MANY) }
+                AnswerItem(stringResource(Res.string.quest_roofShape_answer_many)) { onAnswer(Answer(MANY)) }
             )
         )
     }

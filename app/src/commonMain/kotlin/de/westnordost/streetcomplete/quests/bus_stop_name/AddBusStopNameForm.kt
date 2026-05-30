@@ -10,6 +10,9 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
@@ -20,13 +23,11 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddBusStopNameForm(
-    onAnswer: (BusStopNameAnswer) -> Unit,
+    onAnswer: (QuestAnswer<List<LocalizedName>>) -> Unit,
     countryInfo: CountryInfo,
     nameSuggestionsSource: NameSuggestionsSource = koinInject()
 ) {
     var initialLocalizedNames by rememberSerializable { mutableStateOf<List<LocalizedName>?>(null) }
-
-    var confirmNoName by remember { mutableStateOf(false) }
 
     // TODO compose-quest-form this is actually not called anywhere yet!
     fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
@@ -40,20 +41,11 @@ fun AddBusStopNameForm(
     LocalizedNameQuestForm(
         countryInfo = countryInfo,
         initialLocalizedNames = initialLocalizedNames,
-        onClickOk = { onAnswer(BusStopName(it)) },
-        onNoNameSign = { confirmNoName = true },
+        onAnswer = onAnswer,
         hint = {
             Text(stringResource(Res.string.quest_streetName_abbreviation_instruction))
         }
     )
-    if (confirmNoName) {
-        QuestConfirmationDialog(
-            onDismissRequest = { confirmNoName = false },
-            onConfirmed = { onAnswer(BusStopNameAnswer.NoName) },
-            titleText = stringResource(Res.string.quest_name_answer_noName_confirmation_title),
-            confirmButtonText = stringResource(Res.string.quest_name_noName_confirmation_positive),
-        )
-    }
 }
 
 // this filter needs to be kept somewhat in sync with the filter in AddBusStopName

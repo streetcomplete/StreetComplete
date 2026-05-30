@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.screens.measure
 
 import de.westnordost.streetcomplete.data.meta.LengthUnit
-import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.osm.length.Length
 
 expect class ArMeasureAppLauncher {
     suspend fun measure(lengthUnit: LengthUnit, measureVertical: Boolean): ArMeasureResult

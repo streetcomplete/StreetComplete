@@ -7,12 +7,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
 
-class AddBoardName : OsmFilterQuestType<BoardNameAnswer>() {
+class AddBoardName : OsmFilterQuestType<List<LocalizedName>>() {
 
     override val elementFilter = """
         nodes, ways, relations with
@@ -34,18 +37,19 @@ class AddBoardName : OsmFilterQuestType<BoardNameAnswer>() {
         mapData.filter("nodes, ways, relations with tourism = information and information = board")
 
     @Composable
-    override fun Form(onAnswer: (BoardNameAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddBoardNameForm(onAnswer, countryInfo)
+    override fun Form(onAnswer: (QuestAnswer<List<LocalizedName>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        LocalizedNameQuestForm(
+            countryInfo = countryInfo,
+            initialLocalizedNames = null,
+            onAnswer = onAnswer
+        )
     }
 
-    override fun applyAnswerTo(answer: BoardNameAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            is BoardNameAnswer.NoName -> {
-                tags["noname"] = "yes"
-            }
-            is BoardName -> {
-                answer.localizedNames.applyTo(tags)
-            }
+    override fun applyAnswerTo(answer: List<LocalizedName>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.isEmpty()) {
+            tags["noname"] = "yes"
+        } else {
+            answer.applyTo(tags)
         }
     }
 }

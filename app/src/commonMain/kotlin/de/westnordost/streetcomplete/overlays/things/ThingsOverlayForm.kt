@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.things.getThingOrDisusedThing
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.ConfirmDeleteDialog
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -86,7 +86,7 @@ import org.koin.compose.koinInject
             element?.let { nameAndLocationLabel(it, featureDictionary = null) },
         otherAnswers = listOfNotNull(
             if (element is Node) {
-                Answer(stringResource(Res.string.quest_generic_answer_does_not_exist)) {
+                AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) {
                     confirmDeleteNode = element
                 }
             } else null

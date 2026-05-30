@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.ferry.wayIdsInFerryRoutes
@@ -79,7 +80,7 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>> {
     }
 
     @Composable
-    override fun Form(onAnswer: (List<MaxWeight>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<List<MaxWeight>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddMaxWeightForm(onAnswer, countryInfo)
     }
 

@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -85,11 +86,11 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
         if (!withoutEntranceFilter.matches(element) || element !is Node || !element.couldBeAnEntrance()) false else null
 
     @Composable
-    override fun Form(onAnswer: (EntranceAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<EntranceAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
             items = remember { EntranceType.entries + EntranceAnswer.IsDeadEnd },
             itemContent = { Text(stringResource(it.text)) },
-            onClickOk = onAnswer
+            onAnswer = onAnswer
         )
     }
 

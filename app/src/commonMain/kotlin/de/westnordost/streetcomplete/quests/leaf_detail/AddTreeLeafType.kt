@@ -6,12 +6,14 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -34,15 +36,15 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>() {
         mapData.filter("nodes with natural = tree")
 
     @Composable
-    override fun Form(onAnswer: (TreeLeafTypeAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<TreeLeafTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = TreeLeafType.entries,
             itemsPerRow = 2,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            onClickOk = onAnswer,
+            onAnswer = onAnswer,
             otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_leafType_tree_is_just_a_stump)) {
-                    onAnswer(NotTreeButStump)
+                AnswerItem(stringResource(Res.string.quest_leafType_tree_is_just_a_stump)) {
+                    onAnswer(Answer(NotTreeButStump))
                 },
             )
         )

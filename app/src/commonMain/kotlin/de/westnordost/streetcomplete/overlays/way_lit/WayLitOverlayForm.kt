@@ -21,7 +21,7 @@ import de.westnordost.streetcomplete.osm.lit.title
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.overlay.ItemSelectOverlayForm
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -53,7 +53,7 @@ fun WayLitOverlayForm(
         favoriteKey = "WayLitOverlayForm",
         otherAnswers = listOfNotNull(
             if (element.couldBeSteps()) {
-                Answer(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
+                AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
                     val tagChanges = StringMapChangesBuilder(element.tags)
                     tagChanges.changeToSteps()
                     onEdit(UpdateElementTagsAction(element, tagChanges.create()))

@@ -2,12 +2,15 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
 import org.jetbrains.compose.resources.painterResource
@@ -15,7 +18,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddPathSurfaceForm(
-    onAnswer: (SurfaceOrIsStepsAnswer) -> Unit,
+    onAnswer: (QuestAnswer<SurfaceOrIsStepsAnswer>) -> Unit,
     element: Element,
 ) {
     ItemSelectQuestForm(
@@ -23,14 +26,19 @@ fun AddPathSurfaceForm(
         itemContent = { item ->
             ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
         },
-        onClickOk = { onAnswer(SurfaceAnswer(it)) },
+        onAnswer = {
+            onAnswer(when (it) {
+                is Answer<Surface> -> Answer(SurfaceAnswer(it.value))
+                is AltAnswer -> it
+            })
+        },
         favoriteKey = "AddPathSurfaceForm",
         otherAnswers = listOfNotNull(
             if (element.couldBeSteps()) {
-                Answer(stringResource(Res.string.quest_generic_answer_is_actually_steps)) { onAnswer(IsActuallyStepsAnswer) }
+                AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) { onAnswer(Answer(IsActuallyStepsAnswer)) }
             } else null,
             if (element.tags["indoor"] != "yes") {
-                Answer(stringResource(Res.string.quest_generic_answer_is_indoors)) { onAnswer(IsIndoorsAnswer) }
+                AnswerItem(stringResource(Res.string.quest_generic_answer_is_indoors)) { onAnswer(Answer(IsIndoorsAnswer)) }
             } else null,
         )
     )

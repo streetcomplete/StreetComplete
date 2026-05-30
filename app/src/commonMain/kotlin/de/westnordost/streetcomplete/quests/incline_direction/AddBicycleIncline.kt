@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -52,8 +53,8 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
     }
 
     @Composable
-    override fun Form(onAnswer: (BicycleInclineAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddBicycleInclineForm(onAnswer, geometry, )
+    override fun Form(onAnswer: (QuestAnswer<BicycleInclineAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddBicycleInclineForm(onAnswer, geometry)
     }
 
     override fun applyAnswerTo(answer: BicycleInclineAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =

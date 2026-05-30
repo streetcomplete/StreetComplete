@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -52,11 +53,11 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     }
 
     @Composable
-    override fun Form(onAnswer: (ForestLeafType) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<ForestLeafType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = ForestLeafType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            onClickOk = onAnswer,
+            onAnswer = onAnswer,
         )
     }
 

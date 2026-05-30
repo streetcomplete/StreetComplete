@@ -16,6 +16,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalWindowInfo
@@ -23,7 +24,11 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer.*
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheet
@@ -36,6 +41,8 @@ import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.ui.util.annotateLinks
+import de.westnordost.streetcomplete.util.ktx.isDeletable
+import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
@@ -54,6 +61,7 @@ import org.koin.compose.koinInject
 fun QuestForm(
     isComplete: Boolean,
     onClickOk: () -> Unit,
+    onAnswer: (AltAnswer) -> Unit,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     hasChanges: Boolean = isComplete,
@@ -64,7 +72,7 @@ fun QuestForm(
     hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
     hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
     note: String? = LocalElement.current?.tags?.get("note"),
-    otherAnswers: List<Answer> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable BoxScope.() -> Unit
 ) {
@@ -77,6 +85,7 @@ fun QuestForm(
         isComplete = isComplete,
         hasChanges = hasChanges,
         onClickOk = onClickOk,
+        onAnswer = onAnswer,
         answers = emptyList(),
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
@@ -97,7 +106,8 @@ fun QuestForm(
  *  opens a dropdown menu containing [otherAnswers] (defined from start to bottom). */
 @Composable
 fun QuestForm(
-    answers: List<Answer>,
+    answers: List<AnswerItem>,
+    onAnswer: (AltAnswer) -> Unit,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     title: String = stringResource(LocalQuestType.current!!.title),
@@ -107,7 +117,7 @@ fun QuestForm(
     hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
     hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
     note: String? = LocalElement.current?.tags?.get("note"),
-    otherAnswers: List<Answer> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
@@ -120,6 +130,7 @@ fun QuestForm(
         isComplete = true,
         hasChanges = false,
         onClickOk = null,
+        onAnswer = onAnswer,
         answers = answers,
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
@@ -138,10 +149,12 @@ private fun QuestForm(
     isComplete: Boolean,
     hasChanges: Boolean,
     onClickOk: (() -> Unit)?,
-    answers: List<Answer>,
-    otherAnswers: List<Answer>,
+    onAnswer: (AltAnswer) -> Unit,
+    answers: List<AnswerItem>,
+    otherAnswers: List<AnswerItem>,
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
+    mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     content: @Composable (BoxScope.() -> Unit)?,
 ) {
     val windowInfo = LocalWindowInfo.current
@@ -151,6 +164,16 @@ private fun QuestForm(
         else BottomSheetState.Collapsed
 
     val elevation = 4.dp
+
+    val element = LocalElement.current!!
+    val isFreeFloatingNode = remember(element) {
+        element is Node // add moveNodeAnswer only if it's a free floating node
+        && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+        && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()
+    }
+    val isPlaceOrDisusedPlace = remember(element) { element.isPlaceOrDisusedPlace() }
+    val isDeletable = remember(element) { element.isDeletable() }
+    val isSplittable = remember(element) { element.isSplittable() }
 
     Box(modifier = modifier.sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))) {
         BottomSheet(
@@ -188,11 +211,26 @@ private fun QuestForm(
                     )
                 }
 
+                val defaultOtherAnswers = listOfNotNull(
+                    if (isFreeFloatingNode) {
+                        AnswerItem(stringResource(Res.string.move_node)) { onAnswer(MoveNode) }
+                    } else null,
+                    if (isPlaceOrDisusedPlace) {
+                        AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) { onAnswer(ReplacePoi) }
+                    } else if (isDeletable) {
+                        AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) { onAnswer(DeletePoi) }
+                    } else null,
+                    if (isSplittable) {
+                        AnswerItem(stringResource(Res.string.quest_generic_answer_differs_along_the_way)) { onAnswer(SplitWay) }
+                    } else null,
+                    AnswerItem(stringResource(Res.string.quest_generic_answer_notApplicable)) { onAnswer(CantSay) }
+                )
+
                 QuestAnswerBubble(
                     modifier = Modifier.fillMaxWidth(),
                     elevation = elevation,
                     answers = answers,
-                    otherAnswers = otherAnswers,
+                    otherAnswers = otherAnswers + defaultOtherAnswers,
                     contentPadding = contentPadding,
                     content = content,
                 )
@@ -255,28 +293,6 @@ fun QuestForm(
     var confirmMoveNode by remember { mutableStateOf(false) }
     var confirmDeletePoi by remember { mutableStateOf(false) }
     var confirmReplacePlace by remember { mutableStateOf(false) }
-
-    val defaultOtherAnswers = listOfNotNull(
-        if (element is Node // add moveNodeAnswer only if it's a free floating node
-            && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
-            && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()
-        ) {
-            Answer(stringResource(Res.string.move_node)) { confirmMoveNode = true }
-        } else null,
-        if (element.isPlaceOrDisusedPlace()) {
-            Answer(stringResource(Res.string.quest_generic_answer_does_not_exist)) {
-                confirmReplacePlace = true
-            }
-        } else if (element.isDeletable()) {
-            Answer(stringResource(Res.string.quest_generic_answer_does_not_exist)) {
-                confirmDeletePoi = true
-            }
-        } else null,
-        if (element.isSplittable()) {
-            Answer(stringResource(Res.string.quest_generic_answer_differs_along_the_way)) { confirmSplitWay = true }
-        } else null,
-        Answer(stringResource(Res.string.quest_generic_answer_notApplicable)) { confirmCantSay = true }
-    )
 
     QuestForm(
         title = stringResource(

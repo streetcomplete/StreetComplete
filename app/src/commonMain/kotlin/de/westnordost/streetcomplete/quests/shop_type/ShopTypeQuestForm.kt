@@ -10,10 +10,13 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.osm.places.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.places.isPlace
 import de.westnordost.streetcomplete.osm.toElement
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
@@ -21,11 +24,11 @@ import org.koin.compose.koinInject
 
 @Composable
 fun ShopTypeQuestForm(
-    onClickOk: (ShopTypeAnswer) -> Unit,
+    onAnswer: (QuestAnswer<ShopTypeAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
     modifier: Modifier = Modifier,
-    otherAnswers: List<Answer> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
     featureDictionary: FeatureDictionary = koinInject(),
 ) {
     var feature by remember { mutableStateOf<Feature?>(null) }
@@ -51,10 +54,10 @@ fun ShopTypeQuestForm(
                 //    to answer whether the place is now a different one than before, so we rather
                 //    replace it. (#6675)
                 val hasSomeName = getNameLabel(element.tags) != null
-                onClickOk(ShopType(feature!!, hasSomeName))
+                onAnswer(Answer(ShopType(feature!!, hasSomeName)))
             }
-            ShopTypeFormOption.VACANT -> onClickOk(ShopTypeAnswer.IsShopVacant)
-            ShopTypeFormOption.LEAVE_NOTE -> composeNote()
+            ShopTypeFormOption.VACANT -> onAnswer(Answer(ShopTypeAnswer.IsShopVacant))
+            ShopTypeFormOption.LEAVE_NOTE -> onAnswer(AltAnswer.LeaveNote)
             null -> { }
         }
     }
@@ -62,6 +65,7 @@ fun ShopTypeQuestForm(
     QuestForm(
         isComplete = isComplete,
         onClickOk = ::onClickOk,
+        onAnswer = onAnswer,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {

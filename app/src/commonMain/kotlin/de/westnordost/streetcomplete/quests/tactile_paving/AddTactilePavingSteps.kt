@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
@@ -14,7 +16,7 @@ import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingStepsAns
 import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingStepsAnswer.TOP
 import de.westnordost.streetcomplete.quests.tactile_paving.TactilePavingStepsAnswer.YES
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -48,15 +50,16 @@ class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>() {
     )
 
     @Composable
-    override fun Form(onAnswer: (TactilePavingStepsAnswer) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<TactilePavingStepsAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
-                Answer(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(YES) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(YES)) }
             ),
+            onAnswer = onAnswer,
             otherAnswers = listOf(
-                Answer(stringResource(Res.string.quest_tactilePaving_steps_bottom)) { onAnswer(BOTTOM) },
-                Answer(stringResource(Res.string.quest_tactilePaving_steps_top)) { onAnswer(TOP) }
+                AnswerItem(stringResource(Res.string.quest_tactilePaving_steps_bottom)) { onAnswer(Answer(BOTTOM)) },
+                AnswerItem(stringResource(Res.string.quest_tactilePaving_steps_top)) { onAnswer(Answer(TOP)) }
             )
         )
     }

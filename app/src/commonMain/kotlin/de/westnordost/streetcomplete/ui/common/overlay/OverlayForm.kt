@@ -36,7 +36,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.MoreIcon
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
 import de.westnordost.streetcomplete.ui.theme.Dimensions
@@ -63,7 +63,7 @@ fun OverlayForm(
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
-    otherAnswers: List<Answer> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable BoxScope.() -> Unit
 ) {
@@ -117,7 +117,7 @@ fun OverlayForm(
 private fun OverlayContentBubble(
     modifier: Modifier = Modifier,
     elevation: Dp = 0.dp,
-    otherAnswers: List<Answer> = emptyList(),
+    otherAnswers: List<AnswerItem> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
     content: @Composable BoxScope.() -> Unit
 ) {
@@ -145,7 +145,7 @@ private fun OverlayContentBubble(
 /** …-button that opens a dropdown with the provided [answers]  */
 @Composable
 private fun MoreButton(
-    answers: List<Answer>,
+    answers: List<AnswerItem>,
     modifier: Modifier = Modifier,
 ) {
     var expanded by rememberSaveable { mutableStateOf(false) }
@@ -176,8 +176,8 @@ private fun OverlayFormPreview() {
         onClickOk = {},
         label = AnnotatedString("some text"),
         otherAnswers = listOf(
-            Answer("Can't say") {},
-            Answer("Can say") {},
+            AnswerItem("Can't say") {},
+            AnswerItem("Can say") {},
         )
     ) {
         Text(LoremIpsum(50).values.joinToString(" "))

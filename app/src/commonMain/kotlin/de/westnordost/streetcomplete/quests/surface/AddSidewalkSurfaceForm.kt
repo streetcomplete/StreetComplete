@@ -9,6 +9,8 @@ import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.any
@@ -17,7 +19,7 @@ import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk_surface.SidewalkSurface
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
@@ -30,7 +32,7 @@ import kotlin.collections.emptyList
 
 @Composable
 fun AddSidewalkSurfaceForm(
-    onAnswer: (SidewalkSurfaceAnswer) -> Unit,
+    onAnswer: (QuestAnswer<SidewalkSurfaceAnswer>) -> Unit,
     element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
@@ -63,11 +65,12 @@ fun AddSidewalkSurfaceForm(
             if (hasSidewalkLeft && hasSidewalkRight) {
                 preferences.setLastPicked(favKey, listOf(sidewalkSurfaces))
             }
-            onAnswer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces)))
+            onAnswer(Answer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces))))
         },
+        onAnswer = onAnswer,
         otherAnswers = listOf(
-            Answer(stringResource(Res.string.quest_sidewalk_answer_different)) {
-                onAnswer(SidewalkSurfaceAnswer.SidewalkIsDifferent)
+            AnswerItem(stringResource(Res.string.quest_sidewalk_answer_different)) {
+                onAnswer(Answer(SidewalkSurfaceAnswer.SidewalkIsDifferent))
             }
         ),
         contentPadding = PaddingValues.Zero

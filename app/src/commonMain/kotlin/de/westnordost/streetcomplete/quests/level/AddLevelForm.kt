@@ -11,13 +11,12 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.osm.level.Level
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.parseSelectableLevels
-import de.westnordost.streetcomplete.screens.main.map.Marker
-import de.westnordost.streetcomplete.screens.main.map.getIcon
-import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.ktx.toShortString
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -28,7 +27,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddLevelForm(
-    onAnswer: (String) -> Unit,
+    onAnswer: (QuestAnswer<String>) -> Unit,
     filterPredicate: (element: Element) -> Boolean,
     geometry: ElementGeometry,
     mapDataSource: MapDataWithEditsSource = koinInject(),
@@ -54,6 +53,7 @@ fun AddLevelForm(
     }
 
     // TODO compose-quest-form this is not called anywhere actually
+    /*
     fun getMarkers(lvl: Double?): List<Marker> {
         if (lvl == null) return emptyList()
         val levels = listOf(Level.Single(lvl))
@@ -64,10 +64,12 @@ fun AddLevelForm(
             Marker(geometry, icon, title)
         }
     }
+     */
 
     QuestForm(
         isComplete = level != null,
-        onClickOk = { onAnswer(level!!.toShortString()) }
+        onClickOk = { onAnswer(Answer(level!!.toShortString())) },
+        onAnswer = onAnswer,
     ) {
         LevelForm(
             level = level,

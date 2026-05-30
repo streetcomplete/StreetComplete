@@ -6,14 +6,16 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.ANY
 import de.westnordost.streetcomplete.quests.recycling_glass.RecyclingGlass.BOTTLES
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -40,12 +42,13 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
         mapData.filter("nodes with amenity = recycling")
 
     @Composable
-    override fun Form(onAnswer: (RecyclingGlass) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<RecyclingGlass>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                Answer(stringResource(Res.string.quest_recycling_type_any_glass)) { onAnswer(ANY) },
-                Answer(stringResource(Res.string.quest_recycling_type_glass_bottles_short)) { onAnswer(BOTTLES) }
-            )
+                AnswerItem(stringResource(Res.string.quest_recycling_type_any_glass)) { onAnswer(Answer(ANY)) },
+                AnswerItem(stringResource(Res.string.quest_recycling_type_glass_bottles_short)) { onAnswer(Answer(BOTTLES)) }
+            ),
+            onAnswer = onAnswer,
         )
     }
 

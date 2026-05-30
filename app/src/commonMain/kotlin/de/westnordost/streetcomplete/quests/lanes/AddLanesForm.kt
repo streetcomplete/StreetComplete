@@ -10,10 +10,12 @@ import androidx.compose.ui.graphics.Color
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
@@ -23,7 +25,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddLanesForm(
-    onAnswer: (LanesAnswer) -> Unit,
+    onAnswer: (QuestAnswer<LanesAnswer>) -> Unit,
     element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo
@@ -55,15 +57,16 @@ fun AddLanesForm(
                 answer.forward != null || answer.backward != null
             },
         hasChanges = answer.forward != null || answer.backward != null,
-        onClickOk =  { onAnswer(answer) },
+        onClickOk =  { onAnswer(Answer(answer)) },
+        onAnswer = onAnswer,
         otherAnswers = listOfNotNull(
             if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
-                Answer(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
+                AnswerItem(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
                     answer = answer.copy(centerLeftTurnLane = true)
                 }
             } else null,
-            Answer(stringResource(Res.string.quest_lanes_answer_noLanes)) {
-                onAnswer(LanesAnswer.IsUnmarked)
+            AnswerItem(stringResource(Res.string.quest_lanes_answer_noLanes)) {
+                onAnswer(Answer(LanesAnswer.IsUnmarked))
             }
         ),
         contentPadding = PaddingValues.Zero,

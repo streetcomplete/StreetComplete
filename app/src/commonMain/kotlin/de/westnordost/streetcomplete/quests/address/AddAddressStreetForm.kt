@@ -12,6 +12,8 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.address.PlaceName
@@ -19,7 +21,7 @@ import de.westnordost.streetcomplete.osm.address.StreetName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameForm
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -28,7 +30,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddAddressStreetForm(
-    onAnswer: (StreetOrPlaceName) -> Unit,
+    onAnswer: (QuestAnswer<StreetOrPlaceName>) -> Unit,
     nameSuggestionsSource: NameSuggestionsSource = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
 ) {
@@ -59,11 +61,12 @@ fun AddAddressStreetForm(
         isComplete = streetOrPlaceName.name.isNotEmpty(),
         onClickOk = {
             lastWasPlaceName = streetOrPlaceName is PlaceName
-            onAnswer(streetOrPlaceName)
+            onAnswer(Answer(streetOrPlaceName))
         },
+        onAnswer = onAnswer,
         subtitle = nameAndLocationLabel(LocalElement.current!!, featureDictionary, showHouseNumber = true),
         otherAnswers = listOf(
-            Answer(stringResource(Res.string.quest_address_street_no_named_streets)) {
+            AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
                 streetOrPlaceName = PlaceName("")
                 showSelect = true
             }

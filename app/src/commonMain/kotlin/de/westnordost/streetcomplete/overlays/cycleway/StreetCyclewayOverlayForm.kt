@@ -45,7 +45,7 @@ import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -94,19 +94,19 @@ fun StreetCyclewayOverlayForm(
 
     val switchBicycleBoulevardAnswer = when (bicycleBoulevard) {
         BicycleBoulevard.YES ->
-            Answer(stringResource(Res.string.bicycle_boulevard_is_not_a, stringResource(Res.string.bicycle_boulevard))) {
+            AnswerItem(stringResource(Res.string.bicycle_boulevard_is_not_a, stringResource(Res.string.bicycle_boulevard))) {
                 bicycleBoulevard = BicycleBoulevard.NO
             }
         BicycleBoulevard.NO ->
             // don't allow pedestrian roads to be tagged as bicycle roads (should rather be
             // highway=pedestrian + bicycle=designated rather than bicycle_road=yes)
             if (element.tags["highway"] != "pedestrian") {
-                Answer(stringResource(Res.string.bicycle_boulevard_is_a, stringResource(Res.string.bicycle_boulevard))) {
+                AnswerItem(stringResource(Res.string.bicycle_boulevard_is_a, stringResource(Res.string.bicycle_boulevard))) {
                     bicycleBoulevard = BicycleBoulevard.YES
                 }
             } else null
     }
-    val reverseCyclewayDirectionAnswer = Answer(stringResource(Res.string.cycleway_reverse_direction)) {
+    val reverseCyclewayDirectionAnswer = AnswerItem(stringResource(Res.string.cycleway_reverse_direction)) {
         confirmSelectReverseCyclewayDirection = true
     }
     val bicycleInPedestrianStreetAnswers = buildList {
@@ -115,21 +115,21 @@ fun StreetCyclewayOverlayForm(
 
         if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.DESIGNATED) {
             add(
-                Answer(stringResource(Res.string.pedestrian_zone_designated)) {
+                AnswerItem(stringResource(Res.string.pedestrian_zone_designated)) {
                     bicycleInPedestrianStreet = BicycleInPedestrianStreet.DESIGNATED
                 }
             )
         }
         if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.ALLOWED) {
             add(
-                Answer(stringResource(Res.string.pedestrian_zone_allowed_sign)) {
+                AnswerItem(stringResource(Res.string.pedestrian_zone_allowed_sign)) {
                     bicycleInPedestrianStreet = BicycleInPedestrianStreet.ALLOWED
                 }
             )
         }
         if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.NOT_SIGNED) {
             add(
-                Answer(stringResource(Res.string.pedestrian_zone_no_sign)) {
+                AnswerItem(stringResource(Res.string.pedestrian_zone_no_sign)) {
                     bicycleInPedestrianStreet = BicycleInPedestrianStreet.NOT_SIGNED
                 }
             )

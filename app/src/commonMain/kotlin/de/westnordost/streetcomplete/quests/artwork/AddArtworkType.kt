@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -28,11 +29,11 @@ class AddArtworkType : OsmFilterQuestType<ArtworkType>() {
         mapData.filter("nodes, ways with tourism = artwork")
 
     @Composable
-    override fun Form(onAnswer: (ArtworkType) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<ArtworkType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = ArtworkType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            onClickOk = onAnswer,
+            onAnswer = onAnswer,
         )
     }
 

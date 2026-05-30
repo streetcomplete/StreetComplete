@@ -42,7 +42,7 @@ import de.westnordost.streetcomplete.resources.quest_address_answer_no_block2
 import de.westnordost.streetcomplete.resources.quest_address_street_no_named_streets
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -143,13 +143,13 @@ fun AddressOverlayForm(
             // never show house number, as it already is shown in the form
             element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
         otherAnswers = listOfNotNull(
-            Answer(stringResource(Res.string.quest_address_answer_house_name2)) {
+            AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) {
                 addressNumberAndName = AddressNumberAndName(
                     name = "",
                     number = addressNumberAndName.number?.takeIf { !it.isEmpty() }
                 )
             },
-            Answer(stringResource(Res.string.quest_address_street_no_named_streets)) {
+            AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
                 streetOrPlaceName = PlaceName("")
                 showSelect = true
             },
@@ -159,18 +159,18 @@ fun AddressOverlayForm(
                 }
 
                 addressNumberAndName.number is BlockAndHouseNumber ->
-                    Answer(stringResource(Res.string.quest_address_answer_no_block2)) {
+                    AnswerItem(stringResource(Res.string.quest_address_answer_no_block2)) {
                         addressNumberAndName = addressNumberAndName.copy(number = HouseNumber(""))
                     }
 
                 else ->
-                    Answer(stringResource(Res.string.quest_address_answer_block2)) {
+                    AnswerItem(stringResource(Res.string.quest_address_answer_block2)) {
                         addressNumberAndName =
                             addressNumberAndName.copy(number = BlockAndHouseNumber("", ""))
                     }
             },
             if (element != null) {
-                Answer(stringResource(Res.string.quest_address_answer_no_address)) {
+                AnswerItem(stringResource(Res.string.quest_address_answer_no_address)) {
                     confirmRemoveAddress = true
                 }
             } else null,

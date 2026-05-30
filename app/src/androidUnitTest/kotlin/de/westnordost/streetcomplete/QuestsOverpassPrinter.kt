@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete
 import de.westnordost.streetcomplete.data.elementfilter.toOverpassQLString
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.quests.questTypeRegistry
 import de.westnordost.streetcomplete.testutils.mock
 

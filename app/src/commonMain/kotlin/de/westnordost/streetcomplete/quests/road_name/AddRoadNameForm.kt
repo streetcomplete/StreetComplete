@@ -10,6 +10,9 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -23,13 +26,11 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddRoadNameForm(
-    onAnswer: (RoadNameAnswer) -> Unit,
+    onAnswer: (QuestAnswer<List<LocalizedName>>) -> Unit,
     countryInfo: CountryInfo,
     nameSuggestionsSource: NameSuggestionsSource = koinInject()
 ) {
     var initialLocalizedNames by rememberSerializable { mutableStateOf<List<LocalizedName>?>(null) }
-
-    var confirmNoStreetName by remember { mutableStateOf(false) }
 
     // TODO compose-quest-form this is actually not called anywhere yet!
     fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
@@ -44,22 +45,12 @@ fun AddRoadNameForm(
     LocalizedNameQuestForm(
         countryInfo = countryInfo,
         initialLocalizedNames = initialLocalizedNames,
-        onClickOk = { onAnswer(RoadName(it)) },
-        onNoNameSign = { confirmNoStreetName = true },
-        hint = {
-            Text(stringResource(Res.string.quest_streetName_abbreviation_instruction))
+        onAnswer = onAnswer,
+        hint = { Text(stringResource(Res.string.quest_streetName_abbreviation_instruction)) },
+        noNameConfirmationText = {
+            Text(stringResource(Res.string.quest_streetName_answer_noName_confirmation_description))
         }
     )
-
-    if (confirmNoStreetName) {
-        QuestConfirmationDialog(
-            onDismissRequest = { confirmNoStreetName = false },
-            onConfirmed = { onAnswer(RoadNameAnswer.NoName) },
-            titleText = stringResource(Res.string.quest_name_answer_noName_confirmation_title),
-            text = { Text(stringResource(Res.string.quest_streetName_answer_noName_confirmation_description)) },
-            confirmButtonText = stringResource(Res.string.quest_name_noName_confirmation_positive),
-        )
-    }
 }
 
 private val roadsWithNamesFilter by lazy {

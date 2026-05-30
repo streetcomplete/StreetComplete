@@ -4,14 +4,16 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.NO
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.ONLY
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.OPTIONAL
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.Answer
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
@@ -25,13 +27,14 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
     override val achievements = listOf(CITIZEN)
 
     @Composable
-    override fun Form(onAnswer: (SelfServiceLaundry) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(onAnswer: (QuestAnswer<SelfServiceLaundry>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                Answer(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(NO) },
-                Answer(stringResource(Res.string.quest_generic_hasFeature_optional)) { onAnswer(OPTIONAL) },
-                Answer(stringResource(Res.string.quest_hasFeature_only)) { onAnswer(ONLY) }
-            )
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_optional)) { onAnswer(Answer(OPTIONAL)) },
+                AnswerItem(stringResource(Res.string.quest_hasFeature_only)) { onAnswer(Answer(ONLY)) }
+            ),
+            onAnswer = onAnswer
         )
     }
 

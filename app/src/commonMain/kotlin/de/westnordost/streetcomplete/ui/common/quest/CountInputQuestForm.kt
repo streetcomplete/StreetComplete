@@ -9,6 +9,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
 import de.westnordost.streetcomplete.ui.common.CountInput
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 
@@ -17,15 +19,16 @@ import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 @Composable
 fun CountInputQuestForm(
     icon: Painter,
-    onClickOk: (Int) -> Unit,
+    onAnswer: (QuestAnswer<Int>) -> Unit,
     modifier: Modifier = Modifier,
-    otherAnswers: List<Answer> = emptyList()
+    otherAnswers: List<AnswerItem> = emptyList()
 ) {
     var count by rememberSaveable { mutableStateOf<Int?>(null) }
 
     QuestForm(
         isComplete = count?.let { it > 0 } == true,
-        onClickOk = { onClickOk(count!!) },
+        onClickOk = { onAnswer(Answer(count!!)) },
+        onAnswer = onAnswer,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {
