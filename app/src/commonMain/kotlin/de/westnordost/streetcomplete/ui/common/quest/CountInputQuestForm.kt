@@ -10,7 +10,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.ui.common.CountInput
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 
@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 @Composable
 fun CountInputQuestForm(
     icon: Painter,
-    onAnswer: (QuestAnswer<Int>) -> Unit,
+    on: (QuestAction<Int>) -> Unit,
     modifier: Modifier = Modifier,
     otherAnswers: List<AnswerItem> = emptyList()
 ) {
@@ -27,8 +27,8 @@ fun CountInputQuestForm(
 
     QuestForm(
         isComplete = count?.let { it > 0 } == true,
-        onClickOk = { onAnswer(Answer(count!!)) },
-        onAnswer = onAnswer,
+        onClickOk = { on(Answer(count!!)) },
+        on = on,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {

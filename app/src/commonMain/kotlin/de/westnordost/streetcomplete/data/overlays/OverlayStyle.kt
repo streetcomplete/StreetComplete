@@ -36,7 +36,7 @@ sealed interface OverlayStyle {
 
     data class Point(
         /** icon id to show on the point */
-        val icon: Int?,
+        val icon: DrawableResource?,
         /** label to show on the point */
         val label: String? = null,
     ) : OverlayStyle

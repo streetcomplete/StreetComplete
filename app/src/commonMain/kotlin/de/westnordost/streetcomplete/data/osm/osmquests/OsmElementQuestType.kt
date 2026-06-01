@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.osm.Tags
+import kotlin.jvm.JvmInline
 
 /** Quest type where each quest refers to one OSM element.
  *
@@ -107,7 +108,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  */
     @Composable
     fun Form(
-        onAnswer: (QuestAnswer<T>) -> Unit,
+        on: (QuestAction<T>) -> Unit,
         element: Element,
         geometry: ElementGeometry,
         countryInfo: CountryInfo
@@ -119,15 +120,15 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
     fun applyAnswerTo(answer: T, tags: Tags, geometry: ElementGeometry, timestampEdited: Long)
 }
 
-sealed interface QuestAnswer<out T>
-value class Answer<T>(val value: T): QuestAnswer<T>
-enum class AltAnswer : QuestAnswer<Nothing> {
+sealed interface QuestAction<out T>
+@JvmInline value class Answer<T>(val value: T): QuestAction<T>
+enum class Action : QuestAction<Nothing> {
+    /** Just close the quest form */
+    Dismiss,
     /** User wants to leave a note */
     LeaveNote,
     /** User wants to hide this particular quest */
     HideQuest,
-    /** User stated that he can't answer the question */
-    CantSay,
     /** User wants to split the way */
     SplitWay,
     /** User wants to move the node */

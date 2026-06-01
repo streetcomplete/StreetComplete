@@ -16,7 +16,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalWindowInfo
@@ -26,8 +29,8 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer.*
+import de.westnordost.streetcomplete.data.osm.osmquests.Action
+import de.westnordost.streetcomplete.data.osm.osmquests.Action.*
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
@@ -61,7 +64,7 @@ import org.koin.compose.koinInject
 fun QuestForm(
     isComplete: Boolean,
     onClickOk: () -> Unit,
-    onAnswer: (AltAnswer) -> Unit,
+    on: (Action) -> Unit,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     hasChanges: Boolean = isComplete,
@@ -85,7 +88,7 @@ fun QuestForm(
         isComplete = isComplete,
         hasChanges = hasChanges,
         onClickOk = onClickOk,
-        onAnswer = onAnswer,
+        on = on,
         answers = emptyList(),
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
@@ -107,7 +110,7 @@ fun QuestForm(
 @Composable
 fun QuestForm(
     answers: List<AnswerItem>,
-    onAnswer: (AltAnswer) -> Unit,
+    on: (Action) -> Unit,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     title: String = stringResource(LocalQuestType.current!!.title),
@@ -130,7 +133,7 @@ fun QuestForm(
         isComplete = true,
         hasChanges = false,
         onClickOk = null,
-        onAnswer = onAnswer,
+        on = on,
         answers = answers,
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
@@ -149,7 +152,7 @@ private fun QuestForm(
     isComplete: Boolean,
     hasChanges: Boolean,
     onClickOk: (() -> Unit)?,
-    onAnswer: (AltAnswer) -> Unit,
+    on: (Action) -> Unit,
     answers: List<AnswerItem>,
     otherAnswers: List<AnswerItem>,
     contentPadding: PaddingValues,
@@ -174,6 +177,8 @@ private fun QuestForm(
     val isPlaceOrDisusedPlace = remember(element) { element.isPlaceOrDisusedPlace() }
     val isDeletable = remember(element) { element.isDeletable() }
     val isSplittable = remember(element) { element.isSplittable() }
+
+    var confirmCantSay by remember { mutableStateOf(false) }
 
     Box(modifier = modifier.sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))) {
         BottomSheet(
@@ -213,17 +218,17 @@ private fun QuestForm(
 
                 val defaultOtherAnswers = listOfNotNull(
                     if (isFreeFloatingNode) {
-                        AnswerItem(stringResource(Res.string.move_node)) { onAnswer(MoveNode) }
+                        AnswerItem(stringResource(Res.string.move_node)) { on(MoveNode) }
                     } else null,
                     if (isPlaceOrDisusedPlace) {
-                        AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) { onAnswer(ReplacePoi) }
+                        AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) { on(ReplacePoi) }
                     } else if (isDeletable) {
-                        AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) { onAnswer(DeletePoi) }
+                        AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) { on(DeletePoi) }
                     } else null,
                     if (isSplittable) {
-                        AnswerItem(stringResource(Res.string.quest_generic_answer_differs_along_the_way)) { onAnswer(SplitWay) }
+                        AnswerItem(stringResource(Res.string.quest_generic_answer_differs_along_the_way)) { on(SplitWay) }
                     } else null,
-                    AnswerItem(stringResource(Res.string.quest_generic_answer_notApplicable)) { onAnswer(CantSay) }
+                    AnswerItem(stringResource(Res.string.quest_generic_answer_notApplicable)) { confirmCantSay = true }
                 )
 
                 QuestAnswerBubble(
@@ -246,6 +251,14 @@ private fun QuestForm(
                     .padding(8.dp)
             )
         }
+    }
+
+    if (confirmCantSay) {
+        CantSayDialog(
+            onDismissRequest = { confirmCantSay = false },
+            onLeaveNote = { on(Action.LeaveNote) },
+            onHideQuest = { on(Action.HideQuest) },
+        )
     }
 }
 
@@ -288,7 +301,7 @@ fun QuestForm(
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
-    var confirmCantSay by remember { mutableStateOf(false) }
+
     var confirmSplitWay by remember { mutableStateOf(false) }
     var confirmMoveNode by remember { mutableStateOf(false) }
     var confirmDeletePoi by remember { mutableStateOf(false) }
@@ -308,13 +321,7 @@ fun QuestForm(
         content = content
     )
 
-    if (confirmCantSay) {
-        CantSayDialog(
-            onDismissRequest = { confirmCantSay = false },
-            onLeaveNote = { TODO },
-            onHideQuest = { TODO },
-        )
-    }
+
     if (confirmSplitWay) {
         ConfirmationDialog(
             onDismissRequest = { confirmSplitWay = false },

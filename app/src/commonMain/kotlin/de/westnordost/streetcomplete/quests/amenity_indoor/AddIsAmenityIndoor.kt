@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.amenity_indoor.IsAmenityIndoorAnswer.COVERED
@@ -112,15 +112,15 @@ class AddIsAmenityIndoor(
     }
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<IsAmenityIndoorAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<IsAmenityIndoorAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(OUTDOOR)) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(INDOOR)) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(OUTDOOR)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(INDOOR)) }
             ),
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_isAmenityIndoor_outside_covered)) { onAnswer(Answer(COVERED)) }
+                AnswerItem(stringResource(Res.string.quest_isAmenityIndoor_outside_covered)) { on(Answer(COVERED)) }
             )
         )
     }

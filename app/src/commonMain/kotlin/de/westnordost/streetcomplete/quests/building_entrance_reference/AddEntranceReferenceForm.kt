@@ -5,7 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
@@ -14,7 +14,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddEntranceReferenceForm(
-    onAnswer: (QuestAnswer<EntranceReferenceAnswer>) -> Unit
+    on: (QuestAction<EntranceReferenceAnswer>) -> Unit
 ) {
     var entranceReference by rememberSerializable { mutableStateOf(lastEntranceReference?.clear()) }
 
@@ -23,12 +23,12 @@ fun AddEntranceReferenceForm(
         hasChanges = entranceReference != null,
         onClickOk = {
             lastEntranceReference = entranceReference
-            onAnswer(Answer(entranceReference!!))
+            on(Answer(entranceReference!!))
         },
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_entrance_reference_nothing_signed)) {
-                onAnswer(Answer(EntranceReferenceAnswer.NotSigned))
+                on(Answer(EntranceReferenceAnswer.NotSigned))
             },
         )
     ) {

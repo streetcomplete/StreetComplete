@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
@@ -57,13 +57,13 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
         mapData.filter("nodes with barrier = bollard")
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<BollardTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<BollardTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = BollardType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_bollard_type_not_bollard)) { onAnswer(Answer(BarrierTypeIsNotBollard)) },
+                AnswerItem(stringResource(Res.string.quest_bollard_type_not_bollard)) { on(Answer(BarrierTypeIsNotBollard)) },
             )
         )
     }

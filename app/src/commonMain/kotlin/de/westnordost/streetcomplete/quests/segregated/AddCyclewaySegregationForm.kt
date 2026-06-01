@@ -11,14 +11,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddCyclewaySegregationForm(
-    onAnswer: (QuestAnswer<CyclewaySegregation>) -> Unit,
+    on: (QuestAction<CyclewaySegregation>) -> Unit,
     countryInfo: CountryInfo,
 ) {
     ItemSelectQuestForm(
@@ -37,6 +37,6 @@ fun AddCyclewaySegregationForm(
                 )
             }
         },
-        onAnswer = onAnswer,
+        on = on,
     )
 }

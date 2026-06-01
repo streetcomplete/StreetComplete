@@ -12,9 +12,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.parseSurface
 import de.westnordost.streetcomplete.resources.*
@@ -28,7 +28,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddSmoothnessForm(
-    onAnswer: (QuestAnswer<SmoothnessAnswer>) -> Unit,
+    on: (QuestAction<SmoothnessAnswer>) -> Unit,
     element: Element,
 ) {
     val surfaceTag = element.tags["surface"]
@@ -54,10 +54,10 @@ fun AddSmoothnessForm(
                 )
             }
         },
-        onAnswer = {
-            onAnswer(when (it) {
+        on = {
+            on(when (it) {
                 is Answer<Smoothness> -> Answer(SmoothnessValueAnswer(it.value))
-                is AltAnswer -> it
+                is Action -> it
             })
         },
         title = stringResource(
@@ -70,7 +70,7 @@ fun AddSmoothnessForm(
             },
             if (element.couldBeSteps()) {
                 AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
-                    onAnswer(Answer(IsActuallyStepsAnswer))
+                    on(Answer(IsActuallyStepsAnswer))
                 }
             } else null,
             AnswerItem(stringResource(Res.string.quest_smoothness_obstacle)) {
@@ -89,8 +89,8 @@ fun AddSmoothnessForm(
         ConfirmSurfaceDialog(
             onDismissRequest = { confirmSurface = null },
             surface = surface,
-            onConfirmSurface = { onAnswer(AltAnswer.LeaveNote) },
-            onWrongSurface = { onAnswer(Answer(WrongSurfaceAnswer)) }
+            onConfirmSurface = { on(Action.LeaveNote) },
+            onWrongSurface = { on(Answer(WrongSurfaceAnswer)) }
         )
     }
 }

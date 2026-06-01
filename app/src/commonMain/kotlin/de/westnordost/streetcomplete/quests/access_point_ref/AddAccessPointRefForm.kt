@@ -15,7 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -26,7 +26,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddAccessPointRefForm(
-    onAnswer: (QuestAnswer<AccessPointRefAnswer>) -> Unit
+    on: (QuestAction<AccessPointRefAnswer>) -> Unit
 ) {
     var ref by rememberSaveable { mutableStateOf("") }
     var confirmAssemblyPoint by remember { mutableStateOf(false) }
@@ -34,8 +34,8 @@ fun AddAccessPointRefForm(
 
     QuestForm(
         isComplete = ref.isNotEmpty(),
-        onClickOk = { onAnswer(Answer(AccessPointRef(ref))) },
-        onAnswer = onAnswer,
+        onClickOk = { on(Answer(AccessPointRef(ref))) },
+        on = on,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true },
             AnswerItem(stringResource(Res.string.quest_accessPointRef_answer_assembly_point)) { confirmAssemblyPoint = true }
@@ -51,7 +51,7 @@ fun AddAccessPointRefForm(
     if (confirmAssemblyPoint) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmAssemblyPoint = false },
-            onConfirmed = { onAnswer(Answer(IsAssemblyPointAnswer)) },
+            onConfirmed = { on(Answer(IsAssemblyPointAnswer)) },
             text = {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -69,7 +69,7 @@ fun AddAccessPointRefForm(
     if (confirmNoRef) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoRef = false },
-            onConfirmed = { onAnswer(Answer(NoVisibleAccessPointRef)) }
+            onConfirmed = { on(Answer(NoVisibleAccessPointRef)) }
         )
     }
 }

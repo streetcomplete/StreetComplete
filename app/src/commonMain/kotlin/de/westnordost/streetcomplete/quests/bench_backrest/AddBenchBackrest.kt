@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
@@ -39,16 +39,16 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
         mapData.filter("nodes, ways with amenity = bench or leisure = picnic_table")
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<BenchBackrestAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<BenchBackrestAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(YES)) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) }
             ),
             otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_bench_answer_picnic_table)) { onAnswer(Answer(PICNIC_TABLE)) }
+                AnswerItem(stringResource(Res.string.quest_bench_answer_picnic_table)) { on(Answer(PICNIC_TABLE)) }
             ),
-            onAnswer = onAnswer
+            on = on,
         )
     }
 

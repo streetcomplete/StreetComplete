@@ -12,7 +12,7 @@ import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import de.westnordost.streetcomplete.resources.*
@@ -26,7 +26,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddPostboxCollectionTimesForm(
-    onAnswer: (QuestAnswer<CollectionTimesAnswer>) -> Unit,
+    on: (QuestAction<CollectionTimesAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
 ) {
@@ -65,10 +65,10 @@ fun AddPostboxCollectionTimesForm(
                     isDisplayingPrevious = false
                 },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
-                    onAnswer(Answer(CollectionTimes(originalOpeningHours!!)))
+                    on(Answer(CollectionTimes(originalOpeningHours!!)))
                 }
             ),
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOf(
                 AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
                     confirmNoSign = true
@@ -80,8 +80,8 @@ fun AddPostboxCollectionTimesForm(
         QuestForm(
             isComplete = openingHours.isComplete(),
             hasChanges = openingHours.monthsList.isNotEmpty(),
-            onClickOk = { onAnswer(Answer(CollectionTimes(openingHours))) },
-            onAnswer = onAnswer,
+            onClickOk = { on(Answer(CollectionTimes(openingHours))) },
+            on = on,
             otherAnswers = listOf(
                 AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
                     confirmNoSign = true
@@ -106,7 +106,7 @@ fun AddPostboxCollectionTimesForm(
     if (confirmNoSign) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoSign = false },
-            onConfirmed = { onAnswer(Answer(NoCollectionTimesSign)) },
+            onConfirmed = { on(Answer(NoCollectionTimesSign)) },
             titleText = stringResource(Res.string.quest_generic_confirmation_title)
         )
     }

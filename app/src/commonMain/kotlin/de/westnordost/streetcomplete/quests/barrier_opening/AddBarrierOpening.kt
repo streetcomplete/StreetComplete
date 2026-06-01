@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.ALL_PATHS
@@ -63,14 +63,14 @@ class AddBarrierOpening(
         if (nodeFilter.matches(element)) null else false
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<WidthAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<WidthAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         val isSomeKindOfBollard =
             element.tags["barrier"] == "bollard" ||
             element.tags["barrier"] == "block" ||
             element.tags["cycle_barrier"] == "diagonal"
 
         AddWidthForm(
-            onAnswer = onAnswer,
+            on = on,
             element = element,
             title = stringResource(
                 if (isSomeKindOfBollard) Res.string.quest_barrier_opening_width_bollard

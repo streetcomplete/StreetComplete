@@ -10,7 +10,7 @@ import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
@@ -29,7 +29,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddSidewalkForm(
-    onAnswer: (QuestAnswer<Sides<Sidewalk>>) -> Unit,
+    on: (QuestAction<Sides<Sidewalk>>) -> Unit,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
@@ -50,10 +50,10 @@ fun AddSidewalkForm(
         isComplete = sidewalks.left != null && sidewalks.right != null,
         hasChanges = sidewalks.left != null || sidewalks.right != null,
         onClickOk = {
-            onAnswer(Answer(sidewalks))
+            on(Answer(sidewalks))
             preferences.setLastPicked(favKey, listOf(sidewalks))
         },
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_sidewalk_answer_none)) { showNoSidewalksHint = true }
         ),

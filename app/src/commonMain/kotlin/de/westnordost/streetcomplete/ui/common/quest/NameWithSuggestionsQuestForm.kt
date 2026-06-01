@@ -9,7 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.ui.common.AutoCompleteTextField
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import kotlin.collections.orEmpty
@@ -19,7 +19,7 @@ import kotlin.collections.orEmpty
 @Composable
 fun NameWithSuggestionsQuestForm(
     suggestions: List<String>?,
-    onAnswer: (QuestAnswer<String>) -> Unit,
+    on: (QuestAction<String>) -> Unit,
     modifier: Modifier = Modifier,
     otherAnswers: List<AnswerItem> = emptyList(),
 ) {
@@ -29,8 +29,8 @@ fun NameWithSuggestionsQuestForm(
 
     QuestForm(
         isComplete = value.text.isNotEmpty(),
-        onClickOk = { onAnswer(Answer(value.text)) },
-        onAnswer = onAnswer,
+        onClickOk = { on(Answer(value.text)) },
+        on = on,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {

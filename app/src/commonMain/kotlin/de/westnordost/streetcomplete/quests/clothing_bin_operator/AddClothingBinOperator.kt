@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -50,8 +50,8 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer> {
         mapData.filter("nodes with amenity = recycling")
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<ClothingBinOperatorAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddClothingBinOperatorForm(onAnswer, countryInfo)
+    override fun Form(on: (QuestAction<ClothingBinOperatorAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddClothingBinOperatorForm(on, countryInfo)
     }
 
     override fun applyAnswerTo(answer: ClothingBinOperatorAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -28,8 +28,8 @@ class AddReligionToPlaceOfWorship : OsmFilterQuestType<Religion>() {
     override val achievements = listOf(CITIZEN)
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<Religion>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddReligionForm(onAnswer, countryInfo)
+    override fun Form(on: (QuestAction<Religion>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddReligionForm(on, countryInfo)
     }
 
     override fun applyAnswerTo(answer: Religion, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

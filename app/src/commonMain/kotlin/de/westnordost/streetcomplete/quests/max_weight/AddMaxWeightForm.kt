@@ -10,9 +10,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -22,7 +22,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddMaxWeightForm(
-    onAnswer: (QuestAnswer<List<MaxWeight>>) -> Unit,
+    on: (QuestAction<List<MaxWeight>>) -> Unit,
     countryInfo: CountryInfo,
 ) {
     var signs by rememberSerializable { mutableStateOf(emptyList<MaxWeight>()) }
@@ -38,10 +38,10 @@ fun AddMaxWeightForm(
             if (isUnrealisticWeight(signs)) {
                 confirmUnusualInput = true
             } else {
-                onAnswer(Answer(signs))
+                on(Answer(signs))
             }
         },
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_maxweight_answer_other_sign)) {
                 showUnsupportedSignDialog = true
@@ -70,21 +70,21 @@ fun AddMaxWeightForm(
     if (confirmNoSign) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoSign = false },
-            onConfirmed = { onAnswer(Answer(emptyList())) }
+            onConfirmed = { on(Answer(emptyList())) }
         )
     }
     if (confirmUnusualInput) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmUnusualInput = false },
-            onConfirmed = { onAnswer(Answer(signs)) },
+            onConfirmed = { on(Answer(signs)) },
             text = { Text(stringResource(Res.string.quest_maxweight_unusualInput_confirmation_description)) }
         )
     }
     if (showUnsupportedSignDialog) {
         UnsupportedSignDialog(
             onDismissRequest = { showUnsupportedSignDialog = false },
-            onComposeNote = { onAnswer(AltAnswer.LeaveNote) },
-            onHideQuest = { onAnswer(AltAnswer.HideQuest) }
+            onComposeNote = { on(Action.LeaveNote) },
+            onHideQuest = { on(Action.HideQuest) }
         )
     }
 }

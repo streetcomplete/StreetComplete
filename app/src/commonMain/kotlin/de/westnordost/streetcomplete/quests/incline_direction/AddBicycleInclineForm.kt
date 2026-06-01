@@ -6,9 +6,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
@@ -21,7 +21,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddBicycleInclineForm(
-    onAnswer: (QuestAnswer<BicycleInclineAnswer>) -> Unit,
+    on: (QuestAction<BicycleInclineAnswer>) -> Unit,
     geometry: ElementGeometry,
 ) {
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
@@ -37,10 +37,10 @@ fun AddBicycleInclineForm(
                 imageRotation = geometryRotation - LocalMapRotation.current
             )
         },
-        onAnswer = {
-            onAnswer(when (it) {
+        on = {
+            on(when (it) {
                 is Answer<Incline> -> Answer(RegularBicycleInclineAnswer(it.value))
-                is AltAnswer -> it
+                is Action -> it
             })
         },
         otherAnswers = listOf(
@@ -53,7 +53,7 @@ fun AddBicycleInclineForm(
     if (confirmUpAndDown) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmUpAndDown = false },
-            onConfirmed = { onAnswer(Answer(UpAndDownHopsAnswer)) }
+            onConfirmed = { on(Answer(UpAndDownHopsAnswer)) }
         )
     }
 }

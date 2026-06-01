@@ -9,7 +9,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -19,15 +19,15 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddBusStopRefForm(
-    onAnswer: (QuestAnswer<BusStopRefAnswer>) -> Unit
+    on: (QuestAction<BusStopRefAnswer>) -> Unit
 ) {
     var ref by rememberSaveable { mutableStateOf("") }
     var confirmNoRef by remember { mutableStateOf(false) }
 
     QuestForm(
         isComplete = ref.isNotEmpty(),
-        onClickOk = { onAnswer(Answer(BusStopRef(ref))) },
-        onAnswer = onAnswer,
+        onClickOk = { on(Answer(BusStopRef(ref))) },
+        on = on,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true }
         )
@@ -42,7 +42,7 @@ fun AddBusStopRefForm(
     if (confirmNoRef) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoRef = false },
-            onConfirmed = { onAnswer(Answer(NoVisibleBusStopRef)) }
+            onConfirmed = { on(Answer(NoVisibleBusStopRef)) }
         )
     }
 }

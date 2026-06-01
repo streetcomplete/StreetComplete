@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.all
@@ -42,7 +42,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddCyclewayForm(
-    onAnswer: (QuestAnswer<Sides<CyclewayAndDirection>>) -> Unit,
+    on: (QuestAction<Sides<CyclewayAndDirection>>) -> Unit,
     element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
@@ -116,7 +116,7 @@ fun AddCyclewayForm(
             val cycleways = Sides(left = sides.left.cycleway, right = sides.right.cycleway)
             preferences.setLastPicked(favKey, listOf(cycleways))
         }
-        onAnswer(Answer(sides))
+        on(Answer(sides))
     }
 
     val content: @Composable () -> Unit = {
@@ -144,9 +144,9 @@ fun AddCyclewayForm(
             title = stringResource(Res.string.quest_cycleway_resurvey_title),
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { isDisplayingPrevious = false },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(cycleways)) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(cycleways)) }
             ),
-            onAnswer = onAnswer,
+            on = on,
             contentPadding = PaddingValues.Zero,
             content = { content() }
         )
@@ -164,7 +164,7 @@ fun AddCyclewayForm(
                     saveAndApplyCycleway(cycleways)
                 }
             },
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOfNotNull(
                 if (isLeftSideVisible && isRightSideVisible || isRoundabout) {
                     null

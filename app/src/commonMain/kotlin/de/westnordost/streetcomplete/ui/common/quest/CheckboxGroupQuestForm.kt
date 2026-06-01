@@ -17,7 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.CheckboxGroup
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -28,7 +28,7 @@ import org.jetbrains.compose.resources.stringResource
 fun <I> CheckboxGroupQuestForm(
     items: List<I>,
     itemContent: @Composable (item: I) -> Unit,
-    onAnswer: (QuestAnswer<Set<I>>) -> Unit,
+    on: (QuestAction<Set<I>>) -> Unit,
     modifier: Modifier = Modifier,
     otherAnswers: List<AnswerItem> = emptyList(),
 ) {
@@ -39,8 +39,8 @@ fun <I> CheckboxGroupQuestForm(
 
     QuestForm(
         isComplete = selectedItemIndices.isNotEmpty(),
-        onClickOk =  { onAnswer(Answer(selectedItems)) },
-        onAnswer = onAnswer,
+        onClickOk =  { on(Answer(selectedItems)) },
+        on = on,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {

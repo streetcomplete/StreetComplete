@@ -17,7 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
@@ -39,7 +39,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     topItems: List<I>,
     noinline groupContent: @Composable (group: G) -> Unit,
     noinline itemContent: @Composable (item: I) -> Unit,
-    noinline onAnswer: (QuestAnswer<I>) -> Unit,
+    noinline on: (QuestAction<I>) -> Unit,
     modifier: Modifier = Modifier,
     favoriteKey: String? = null,
     otherAnswers: List<AnswerItem> = emptyList(),
@@ -68,13 +68,13 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
                 if (favoriteKey != null) {
                     preferences.addLastPicked(favoriteKey, item)
                 }
-                onAnswer(Answer(item))
+                on(Answer(item))
             }
             else if (groupItem != null) {
                 confirmSelectionOfGroupItem = groupItem
             }
         },
-        onAnswer = onAnswer,
+        on = on,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {
@@ -108,7 +108,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
                 if (favoriteKey != null) {
                     preferences.addLastPicked(favoriteKey, groupItem)
                 }
-                onAnswer(Answer(groupItem))
+                on(Answer(groupItem))
             },
             text = { Text(stringResource(Res.string.quest_generic_item_confirmation)) }
         )

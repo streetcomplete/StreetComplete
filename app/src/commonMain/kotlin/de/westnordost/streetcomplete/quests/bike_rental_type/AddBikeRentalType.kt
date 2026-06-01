@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.bike_rental_type.BikeRentalTypeAnswer.*
@@ -36,12 +36,12 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>() {
         mapData.filter("nodes, ways with amenity = bicycle_rental")
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<BikeRentalTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<BikeRentalTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = BikeRentalTypeAnswer.entries,
             itemsPerRow = 2,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            onAnswer = onAnswer,
+            on = on,
         )
     }
 

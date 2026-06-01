@@ -277,7 +277,7 @@ class StyleableOverlayMapComponent(
                 val f = Feature.fromGeometry(geometry.toMapLibreGeometry(), p)
                 val point = if (overlayStyle.label != null || overlayStyle.icon != null) {
                     val pp = getElementKeyProperties(element.key)
-                    val iconId = overlayStyle.icon.toAndroidResourceId()
+                    val iconId = overlayStyle.icon?.toAndroidResourceId()
                     if (iconId != null) {
                         pp.addProperty("icon", context.resources.getResourceEntryName(iconId))
                     }
@@ -408,7 +408,7 @@ private fun isBridge(tags: Map<String, String>): Boolean =
     tags["bridge"] != null && tags["bridge"] != "no"
 
 private fun OverlayStyle.getIcon(): Int? = when (this) {
-    is OverlayStyle.Point -> icon.toAndroidResourceId()
-    is OverlayStyle.Polygon -> icon.toAndroidResourceId()
+    is OverlayStyle.Point -> icon?.toAndroidResourceId()
+    is OverlayStyle.Polygon -> icon?.toAndroidResourceId()
     is OverlayStyle.Polyline -> null
 }

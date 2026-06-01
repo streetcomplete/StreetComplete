@@ -21,7 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.*
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.STROLLER
 import de.westnordost.streetcomplete.quests.steps_ramp.StepsRamp.WHEELCHAIR
@@ -34,7 +34,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddStepsRampForm(
-    onAnswer: (QuestAnswer<StepsRampAnswer>) -> Unit
+    on: (QuestAction<StepsRampAnswer>) -> Unit
 ) {
     val items = StepsRamp.entries
     var selectedItems by rememberSerializable { mutableStateOf<Set<StepsRamp>>(emptySet()) }
@@ -47,7 +47,7 @@ fun AddStepsRampForm(
             if (selectedItems.contains(WHEELCHAIR)) {
                 confirmWheelchairRampIsSeparate = true
             } else {
-                onAnswer(Answer(
+                on(Answer(
                     StepsRampAnswer(
                         bicycleRamp = selectedItems.contains(BICYCLE),
                         strollerRamp = selectedItems.contains(STROLLER),
@@ -56,7 +56,7 @@ fun AddStepsRampForm(
                 ))
             }
         },
-        onAnswer = onAnswer,
+        on = on,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(
@@ -90,7 +90,7 @@ fun AddStepsRampForm(
         WheelchairRampIsSeparateDialog(
             onDismissRequest = { confirmWheelchairRampIsSeparate = false },
             onAnswer = { isSeparate ->
-                onAnswer(Answer(
+                on(Answer(
                     StepsRampAnswer(
                         bicycleRamp = selectedItems.contains(BICYCLE),
                         strollerRamp = selectedItems.contains(STROLLER),

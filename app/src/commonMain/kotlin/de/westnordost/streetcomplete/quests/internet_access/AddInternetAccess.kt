@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
@@ -41,8 +41,8 @@ class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<Set<InternetAccess>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddInternetAccessForm(onAnswer)
+    override fun Form(on: (QuestAction<Set<InternetAccess>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddInternetAccessForm(on)
     }
 
     override fun applyAnswerTo(answer: Set<InternetAccess>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

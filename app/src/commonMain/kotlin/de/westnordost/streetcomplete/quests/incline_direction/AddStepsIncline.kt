@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -27,8 +27,8 @@ class AddStepsIncline : OsmFilterQuestType<Incline>() {
     override val hint = Res.string.quest_arrow_tutorial
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<Incline>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddInclineForm(onAnswer, geometry)
+    override fun Form(on: (QuestAction<Incline>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddInclineForm(on, geometry)
     }
 
     override fun applyAnswerTo(answer: Incline, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) =

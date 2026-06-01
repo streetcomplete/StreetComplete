@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
@@ -84,8 +84,8 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
         """)
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<StreetOrPlaceName>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddAddressStreetForm(onAnswer)
+    override fun Form(on: (QuestAction<StreetOrPlaceName>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddAddressStreetForm(on)
     }
 
     override fun applyAnswerTo(answer: StreetOrPlaceName, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

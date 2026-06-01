@@ -14,7 +14,7 @@ import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import de.westnordost.streetcomplete.resources.*
@@ -29,7 +29,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddOpeningHoursForm(
-    onAnswer: (QuestAnswer<OpeningHoursAnswer>) -> Unit,
+    on: (QuestAction<OpeningHoursAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
 ) {
@@ -70,10 +70,10 @@ fun AddOpeningHoursForm(
                     isDisplayingPrevious = false
                 },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
-                    onAnswer(Answer(RegularOpeningHours(originalOpeningHours!!)))
+                    on(Answer(RegularOpeningHours(originalOpeningHours!!)))
                 }
             ),
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOf(
                 AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) { confirmNoSign = true },
             ),
@@ -83,8 +83,8 @@ fun AddOpeningHoursForm(
         QuestForm(
             isComplete = openingHours.isComplete(),
             hasChanges = openingHours.monthsList.isNotEmpty(),
-            onClickOk = { onAnswer(Answer(RegularOpeningHours(openingHours))) },
-            onAnswer = onAnswer,
+            onClickOk = { on(Answer(RegularOpeningHours(openingHours))) },
+            on = on,
             otherAnswers = listOf(
                 AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) { confirmNoSign = true },
                 AnswerItem(stringResource(Res.string.quest_openingHours_answer_no_regular_opening_hours)) { showCommentDialog = true },
@@ -110,20 +110,20 @@ fun AddOpeningHoursForm(
     if (showCommentDialog) {
         OpeningHoursCommentDialog(
             onDismissRequest = { showCommentDialog = false },
-            onConfirm = { onAnswer(Answer(DescribeOpeningHours(it))) }
+            onConfirm = { on(Answer(DescribeOpeningHours(it))) }
         )
     }
     if (confirmNoSign) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoSign = false },
-            onConfirmed = { onAnswer(Answer(NoOpeningHoursSign)) },
+            onConfirmed = { on(Answer(NoOpeningHoursSign)) },
             titleText = stringResource(Res.string.quest_generic_confirmation_title)
         )
     }
     if (confirm24_7) {
         QuestConfirmationDialog(
             onDismissRequest = { confirm24_7 = false },
-            onConfirmed = { onAnswer(Answer(AlwaysOpen)) },
+            onConfirmed = { on(Answer(AlwaysOpen)) },
             titleText = stringResource(Res.string.quest_openingHours_24_7_confirmation)
         )
     }

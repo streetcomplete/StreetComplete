@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -27,8 +27,8 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
     override val achievements = listOf(EditTypeAchievement.LIFESAVER, EditTypeAchievement.RARE)
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<AccessPointRefAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddAccessPointRefForm(onAnswer)
+    override fun Form(on: (QuestAction<AccessPointRefAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddAccessPointRefForm(on)
     }
 
     override fun applyAnswerTo(answer: AccessPointRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.NO
@@ -27,14 +27,14 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
     override val achievements = listOf(CITIZEN)
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<SelfServiceLaundry>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<SelfServiceLaundry>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_optional)) { onAnswer(Answer(OPTIONAL)) },
-                AnswerItem(stringResource(Res.string.quest_hasFeature_only)) { onAnswer(Answer(ONLY)) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_optional)) { on(Answer(OPTIONAL)) },
+                AnswerItem(stringResource(Res.string.quest_hasFeature_only)) { on(Answer(ONLY)) }
             ),
-            onAnswer = onAnswer
+            on = on
         )
     }
 

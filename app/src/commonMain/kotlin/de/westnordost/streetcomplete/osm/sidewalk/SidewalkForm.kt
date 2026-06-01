@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.osm.sidewalk
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.osm.Sides

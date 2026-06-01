@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
@@ -31,7 +31,7 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun AddWidthForm(
-    onAnswer: (QuestAnswer<WidthAnswer>) -> Unit,
+    on: (QuestAction<WidthAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
     title: String = stringResource(LocalQuestType.current!!.title),
@@ -66,12 +66,12 @@ fun AddWidthForm(
             val length = length!!
             val newTags = element.tags + ("width" to length.toMeters().toString())
             if (hasDubiousRoadWidth(newTags) != true) {
-                onAnswer(Answer(WidthAnswer(length, isArMeasurement)))
+                on(Answer(WidthAnswer(length, isArMeasurement)))
             } else {
                 confirmDubiousRoadWidth = true
             }
         },
-        onAnswer = onAnswer,
+        on = on,
     ) {
         Column {
             if (isRoad) {
@@ -95,7 +95,7 @@ fun AddWidthForm(
     if (confirmDubiousRoadWidth) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmDubiousRoadWidth = false },
-            onConfirmed = { onAnswer(Answer(WidthAnswer(length!!, isArMeasurement))) },
+            onConfirmed = { on(Answer(WidthAnswer(length!!, isArMeasurement))) },
             text = { Text(stringResource(Res.string.quest_road_width_unusualInput_confirmation_description)) }
         )
     }

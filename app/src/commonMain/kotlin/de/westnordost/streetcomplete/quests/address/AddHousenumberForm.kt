@@ -10,9 +10,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameForm
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
@@ -30,7 +30,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddHousenumberForm(
-    onAnswer: (QuestAnswer<HouseNumberAnswer>) -> Unit,
+    on: (QuestAction<HouseNumberAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
 ) {
@@ -50,7 +50,7 @@ fun AddHousenumberForm(
         } else {
             // fallback in case the type of building is known by Housenumber quest but not by
             // building type quest
-            onAnswer(AltAnswer.CantSay)
+            on(Action.LeaveNote)
         }
     }
 
@@ -63,7 +63,7 @@ fun AddHousenumberForm(
 
     fun applyHousenumberAnswer() {
         val number = addressNumberAndName.number?.takeIf { !it.isEmpty() }
-        onAnswer(Answer(addressNumberAndName))
+        on(Answer(addressNumberAndName))
         lastBlock = (number as? BlockAndHouseNumber)?.block
         lastWasBlock = number is BlockAndHouseNumber
         number?.streetHouseNumber?.let { lastHouseNumber = it }
@@ -83,7 +83,7 @@ fun AddHousenumberForm(
                 applyHousenumberAnswer()
             }
         },
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOfNotNull(
             AnswerItem(stringResource(Res.string.quest_address_answer_no_housenumber)) { onNoHouseNumber() },
             AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) { showHouseName() },
@@ -115,8 +115,8 @@ fun AddHousenumberForm(
     showNoHouseNumberDialogForBuildingType?.let { buildingType ->
         NoHouseNumberDialog(
             onDismissRequest = { showNoHouseNumberDialogForBuildingType = null },
-            onNoHouseNumber = { onAnswer(Answer(AddressNumberAndName(null, null))) },
-            onWrongBuildingType = { onAnswer(Answer(HouseNumberAnswer.WrongBuildingType)) },
+            onNoHouseNumber = { on(Answer(AddressNumberAndName(null, null))) },
+            onWrongBuildingType = { on(Answer(HouseNumberAnswer.WrongBuildingType)) },
             buildingType = buildingType
         )
     }

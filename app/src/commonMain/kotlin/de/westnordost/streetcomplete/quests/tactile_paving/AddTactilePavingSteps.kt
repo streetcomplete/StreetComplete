@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
@@ -50,16 +50,16 @@ class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>() {
     )
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<TactilePavingStepsAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<TactilePavingStepsAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(YES)) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) }
             ),
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_tactilePaving_steps_bottom)) { onAnswer(Answer(BOTTOM)) },
-                AnswerItem(stringResource(Res.string.quest_tactilePaving_steps_top)) { onAnswer(Answer(TOP)) }
+                AnswerItem(stringResource(Res.string.quest_tactilePaving_steps_bottom)) { on(Answer(BOTTOM)) },
+                AnswerItem(stringResource(Res.string.quest_tactilePaving_steps_top)) { on(Answer(TOP)) }
             )
         )
     }

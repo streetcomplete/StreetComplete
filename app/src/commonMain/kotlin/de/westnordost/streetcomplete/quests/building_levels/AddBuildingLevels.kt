@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
@@ -35,8 +35,8 @@ class AddBuildingLevels : OsmFilterQuestType<BuildingLevels>() {
     override val hint = Res.string.quest_buildingLevels_hint
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<BuildingLevels>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddBuildingLevelsForm(onAnswer, element, countryInfo)
+    override fun Form(on: (QuestAction<BuildingLevels>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddBuildingLevelsForm(on, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: BuildingLevels, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

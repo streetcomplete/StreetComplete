@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
@@ -36,15 +36,15 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>() {
         mapData.filter("nodes with natural = tree")
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<TreeLeafTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<TreeLeafTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = TreeLeafType.entries,
             itemsPerRow = 2,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOf(
                 AnswerItem(stringResource(Res.string.quest_leafType_tree_is_just_a_stump)) {
-                    onAnswer(Answer(NotTreeButStump))
+                    on(Answer(NotTreeButStump))
                 },
             )
         )

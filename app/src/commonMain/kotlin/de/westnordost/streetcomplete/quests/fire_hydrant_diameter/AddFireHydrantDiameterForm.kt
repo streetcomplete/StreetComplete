@@ -11,7 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.quests.fire_hydrant_diameter.FireHydrantDiameter.Unit.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
@@ -21,7 +21,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddFireHydrantDiameterForm(
-    onAnswer: (QuestAnswer<FireHydrantDiameterAnswer>) -> Unit,
+    on: (QuestAction<FireHydrantDiameterAnswer>) -> Unit,
     countryInfo: CountryInfo
 ) {
     var diameter by rememberSaveable() { mutableStateOf<Int?>(null) }
@@ -41,10 +41,10 @@ fun AddFireHydrantDiameterForm(
             if (answer.isUnusual()) {
                 confirmUnusualInput = true
             } else {
-                onAnswer(Answer(answer))
+                on(Answer(answer))
             }
         },
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_generic_answer_noSign)) { confirmNoSign = true }
         )
@@ -60,13 +60,13 @@ fun AddFireHydrantDiameterForm(
     if (confirmNoSign) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoSign = false },
-            onConfirmed = { onAnswer(Answer(FireHydrantDiameterAnswer.NoSign)) }
+            onConfirmed = { on(Answer(FireHydrantDiameterAnswer.NoSign)) }
         )
     }
     if (confirmUnusualInput) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmUnusualInput = false },
-            onConfirmed = { onAnswer(Answer(createAnswer(diameter!!))) },
+            onConfirmed = { on(Answer(createAnswer(diameter!!))) },
             text = {
                 val range = createAnswer(diameter!!).unit.usualRange()
                 Text(stringResource(Res.string.quest_fireHydrant_diameter_unusualInput_confirmation_description2, range.first, range.last))

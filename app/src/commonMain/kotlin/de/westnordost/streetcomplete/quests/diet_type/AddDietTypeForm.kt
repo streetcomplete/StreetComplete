@@ -13,7 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
@@ -23,18 +23,18 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddDietTypeForm(
-    onAnswer: (QuestAnswer<DietAvailabilityAnswer>) -> Unit,
+    on: (QuestAction<DietAvailabilityAnswer>) -> Unit,
     element: Element,
 ) {
     var confirmNoFood by remember { mutableStateOf(false) }
 
     QuestForm(
         answers = listOf(
-            AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
-            AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(YES)) },
-            AnswerItem(stringResource(Res.string.quest_hasFeature_only)) { onAnswer(Answer(ONLY)) },
+            AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
+            AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) },
+            AnswerItem(stringResource(Res.string.quest_hasFeature_only)) { on(Answer(ONLY)) },
         ),
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOfNotNull(
             if (element.tags["amenity"] == "cafe") {
                 AnswerItem(stringResource(Res.string.quest_diet_answer_no_food)) { confirmNoFood = true }
@@ -54,7 +54,7 @@ fun AddDietTypeForm(
     if (confirmNoFood) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoFood = false },
-            onConfirmed = { onAnswer(Answer(NoFood)) }
+            onConfirmed = { on(Answer(NoFood)) }
         )
     }
 }

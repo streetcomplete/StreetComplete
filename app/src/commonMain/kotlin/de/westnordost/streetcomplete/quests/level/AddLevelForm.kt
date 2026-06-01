@@ -12,10 +12,7 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
-import de.westnordost.streetcomplete.osm.level.Level
-import de.westnordost.streetcomplete.osm.level.levelsIntersect
-import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.level.parseSelectableLevels
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.ktx.toShortString
@@ -27,7 +24,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddLevelForm(
-    onAnswer: (QuestAnswer<String>) -> Unit,
+    on: (QuestAction<String>) -> Unit,
     filterPredicate: (element: Element) -> Boolean,
     geometry: ElementGeometry,
     mapDataSource: MapDataWithEditsSource = koinInject(),
@@ -68,8 +65,8 @@ fun AddLevelForm(
 
     QuestForm(
         isComplete = level != null,
-        onClickOk = { onAnswer(Answer(level!!.toShortString())) },
-        onAnswer = onAnswer,
+        onClickOk = { on(Answer(level!!.toShortString())) },
+        on = on,
     ) {
         LevelForm(
             level = level,

@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
@@ -23,7 +23,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddMaxHeightForm(
-    onAnswer: (QuestAnswer<MaxHeightAnswer>) -> Unit,
+    on: (QuestAction<MaxHeightAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo
 ) {
@@ -38,10 +38,10 @@ fun AddMaxHeightForm(
             if (isUnrealisticHeight(height!!)) {
                 confirmUnusualInput = true
             } else {
-                onAnswer(Answer(MaxHeight(height!!)))
+                on(Answer(MaxHeight(height!!)))
             }
         },
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_maxheight_answer_noSign)) { confirmNoSign = true }
         ),
@@ -66,13 +66,13 @@ fun AddMaxHeightForm(
     if (confirmNoSign) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoSign = false },
-            onConfirmed = { onAnswer(Answer(NoMaxHeightSign)) }
+            onConfirmed = { on(Answer(NoMaxHeightSign)) }
         )
     }
     if (confirmUnusualInput) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmUnusualInput = false },
-            onConfirmed = { onAnswer(Answer(MaxHeight(height!!))) },
+            onConfirmed = { on(Answer(MaxHeight(height!!))) },
             text = { Text(stringResource(Res.string.quest_maxheight_unusualInput_confirmation_description)) }
         )
     }

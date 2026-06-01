@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
@@ -34,16 +34,16 @@ class AddAerialwayBicycleAccess : OsmFilterQuestType<AerialwayBicycleAccessAnswe
     override val achievements = listOf(RARE, BICYCLIST)
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<AerialwayBicycleAccessAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<AerialwayBicycleAccessAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(NO)) },
-                AnswerItem(stringResource(Res.string.quest_aerialway_bicycle_summer)) { onAnswer(Answer(SUMMER)) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(YES)) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_aerialway_bicycle_summer)) { on(Answer(SUMMER)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) }
             ),
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_hairdresser_not_signed)) { onAnswer(Answer(NO_SIGN)) }
+                AnswerItem(stringResource(Res.string.quest_hairdresser_not_signed)) { on(Answer(NO_SIGN)) }
             )
         )
     }

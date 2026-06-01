@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
@@ -49,8 +49,8 @@ class AddCyclewayPartSurface : OsmFilterQuestType<Surface>() {
     override val achievements = listOf(BICYCLIST, OUTDOORS)
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<Surface>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddPathPartSurfaceForm(onAnswer)
+    override fun Form(on: (QuestAction<Surface>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddPathPartSurfaceForm(on)
     }
 
     override fun applyAnswerTo(answer: Surface, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

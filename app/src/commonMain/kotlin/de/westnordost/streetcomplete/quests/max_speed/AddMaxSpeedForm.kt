@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WHERE_SLOW_ZONE_IS_LIKELY
 import de.westnordost.streetcomplete.osm.maxspeed.Speed
 import de.westnordost.streetcomplete.quests.max_speed.MaxSpeedSign.Type.*
@@ -29,7 +29,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddMaxSpeedForm(
-    onAnswer: (QuestAnswer<MaxSpeedAnswer>) -> Unit,
+    on: (QuestAction<MaxSpeedAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo
 ) {
@@ -43,7 +43,7 @@ fun AddMaxSpeedForm(
         if (maxSpeedSign?.type == ZONE) {
             lastInputSlowZone = maxSpeedSign.speed.value
         }
-        onAnswer(Answer(answer))
+        on(Answer(answer))
     }
 
     QuestForm(
@@ -61,7 +61,7 @@ fun AddMaxSpeedForm(
                 maxSpeedAnswer?.let { applySpeedLimitFormAnswer(it) }
             }
         },
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOfNotNull(
             if (countryInfo.hasAdvisorySpeedLimitSign) {
                 AnswerItem(stringResource(Res.string.quest_maxspeed_answer_advisory_speed_limit)) {

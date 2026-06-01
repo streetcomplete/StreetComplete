@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.BUILDINGS_WITH_LEVELS
 import de.westnordost.streetcomplete.osm.Tags
@@ -66,15 +66,15 @@ class AddRoofShape(
     }
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<RoofShape>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<RoofShape>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             items = remember { RoofShape.entries - MANY },
             itemsPerRow = 4,
             itemContent = { Image(painterResource(it.icon), null) },
-            onAnswer = onAnswer,
+            on = on,
             favoriteKey = "AddRoofShapeForm",
             otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_roofShape_answer_many)) { onAnswer(Answer(MANY)) }
+                AnswerItem(stringResource(Res.string.quest_roofShape_answer_many)) { on(Answer(MANY)) }
             )
         )
     }

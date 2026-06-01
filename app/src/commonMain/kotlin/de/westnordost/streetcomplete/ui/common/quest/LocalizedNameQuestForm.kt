@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.resources.*
@@ -42,7 +42,7 @@ import org.koin.compose.koinInject
 fun LocalizedNameQuestForm(
     countryInfo: CountryInfo,
     initialLocalizedNames: List<LocalizedName>?,
-    onAnswer: (QuestAnswer<List<LocalizedName>>) -> Unit,
+    on: (QuestAction<List<LocalizedName>>) -> Unit,
     modifier: Modifier = Modifier,
     hint: @Composable (() -> Unit)? = null,
     noNameConfirmationText: @Composable (() -> Unit)? = null,
@@ -71,9 +71,9 @@ fun LocalizedNameQuestForm(
         onClickOk = {
             preferences.preferredLanguageForNames =
                 localizedNames.firstOrNull()?.languageTag?.takeIf { it.isNotEmpty() }
-            onAnswer(Answer(localizedNames))
+            on(Answer(localizedNames))
         },
-        onAnswer = onAnswer,
+        on = on,
         modifier = modifier,
         otherAnswers = otherAnswers + listOf(
             AnswerItem(stringResource(Res.string.quest_streetName_answer_cantType)) { showKeyboardInfo = true },
@@ -109,7 +109,7 @@ fun LocalizedNameQuestForm(
     if (confirmNoName) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNoName = false },
-            onConfirmed = { onAnswer(Answer(emptyList())) },
+            onConfirmed = { on(Answer(emptyList())) },
             titleText = stringResource(Res.string.quest_name_answer_noName_confirmation_title),
             text = noNameConfirmationText,
             confirmButtonText = stringResource(Res.string.quest_name_noName_confirmation_positive),

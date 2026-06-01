@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
@@ -36,7 +36,7 @@ import org.koin.compose.koinInject
 inline fun <reified I> ItemSelectQuestForm(
     items: List<I>,
     noinline itemContent: @Composable (item: I) -> Unit,
-    noinline onAnswer: (QuestAnswer<I>) -> Unit,
+    noinline on: (QuestAction<I>) -> Unit,
     modifier: Modifier = Modifier,
     itemsPerRow: Int = 3,
     favoriteKey: String? = null,
@@ -62,9 +62,9 @@ inline fun <reified I> ItemSelectQuestForm(
             if (favoriteKey != null) {
                 preferences.addLastPicked(favoriteKey, value)
             }
-            onAnswer(Answer(value))
+            on(Answer(value))
         },
-        onAnswer = onAnswer,
+        on = on,
         modifier = modifier,
         title = title,
         otherAnswers = otherAnswers

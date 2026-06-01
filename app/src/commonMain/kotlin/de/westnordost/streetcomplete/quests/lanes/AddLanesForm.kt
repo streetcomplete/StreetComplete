@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
 import de.westnordost.streetcomplete.resources.*
@@ -25,7 +25,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddLanesForm(
-    onAnswer: (QuestAnswer<LanesAnswer>) -> Unit,
+    on: (QuestAction<LanesAnswer>) -> Unit,
     element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo
@@ -57,8 +57,8 @@ fun AddLanesForm(
                 answer.forward != null || answer.backward != null
             },
         hasChanges = answer.forward != null || answer.backward != null,
-        onClickOk =  { onAnswer(Answer(answer)) },
-        onAnswer = onAnswer,
+        onClickOk =  { on(Answer(answer)) },
+        on = on,
         otherAnswers = listOfNotNull(
             if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
                 AnswerItem(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
@@ -66,7 +66,7 @@ fun AddLanesForm(
                 }
             } else null,
             AnswerItem(stringResource(Res.string.quest_lanes_answer_noLanes)) {
-                onAnswer(Answer(LanesAnswer.IsUnmarked))
+                on(Answer(LanesAnswer.IsUnmarked))
             }
         ),
         contentPadding = PaddingValues.Zero,

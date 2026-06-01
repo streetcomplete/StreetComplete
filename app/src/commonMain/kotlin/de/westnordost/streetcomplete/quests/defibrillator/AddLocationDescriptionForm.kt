@@ -18,21 +18,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddLocationDescriptionForm(
-    onAnswer: (QuestAnswer<String>) -> Unit,
+    on: (QuestAction<String>) -> Unit,
 ) {
     var description by rememberSaveable { mutableStateOf("") }
 
     QuestForm(
         isComplete = description.isNotEmpty(),
-        onClickOk = { onAnswer(Answer(description)) },
-        onAnswer = onAnswer,
+        onClickOk = { on(Answer(description)) },
+        on = on,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
             CompositionLocalProvider(

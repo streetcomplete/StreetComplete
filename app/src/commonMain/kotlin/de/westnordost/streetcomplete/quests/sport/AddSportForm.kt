@@ -10,9 +10,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.quests.sport.Sport.MULTI
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
@@ -23,7 +22,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddSportForm(
-    onAnswer: (QuestAnswer<Set<Sport>>) -> Unit,
+    on: (QuestAction<Set<Sport>>) -> Unit,
     countryInfo: CountryInfo
 ) {
     val items = remember {
@@ -38,16 +37,16 @@ fun AddSportForm(
         items = items,
         itemsPerRow = 4,
         itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-        onAnswer = {
+        on = {
             if (it is Answer<Set<Sport>> && it.value.size > 3) {
                 confirmManySports = it.value
             } else {
-                onAnswer(it)
+                on(it)
             }
         },
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_sport_answer_multi)) {
-                onAnswer(Answer(setOf(MULTI)))
+                on(Answer(setOf(MULTI)))
             }
         )
     )
@@ -55,8 +54,8 @@ fun AddSportForm(
     confirmManySports?.let { sports ->
         ConfirmManySportsDialog(
             onDismissRequest = { confirmManySports = null },
-            onSpecificSports = { onAnswer(Answer(sports)) },
-            onGeneralPurpose = { onAnswer(Answer(setOf(MULTI))) },
+            onSpecificSports = { on(Answer(sports)) },
+            onGeneralPurpose = { on(Answer(setOf(MULTI))) },
             sports = sports
         )
     }

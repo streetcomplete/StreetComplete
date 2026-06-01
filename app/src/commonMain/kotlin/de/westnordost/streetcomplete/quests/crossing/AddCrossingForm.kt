@@ -9,9 +9,9 @@ import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.quests.crossing.CrossingAnswer.PROHIBITED
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
@@ -21,7 +21,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddCrossingForm(
-    onAnswer: (QuestAnswer<CrossingAnswer>) -> Unit,
+    on: (QuestAction<CrossingAnswer>) -> Unit,
     element: Element,
     mapDataSource: MapDataWithEditsSource = koinInject()
 ) {
@@ -36,7 +36,7 @@ fun AddCrossingForm(
     RadioGroupQuestForm(
         items = CrossingAnswer.entries,
         itemContent = { Text(stringResource(it.text)) },
-        onAnswer = {
+        on = {
             if (
                 it is Answer<CrossingAnswer>
                 && it.value == PROHIBITED
@@ -57,7 +57,7 @@ fun AddCrossingForm(
                 */
                 confirmLeaveNote = true
             } else {
-                onAnswer(it)
+                on(it)
             }
         }
     )
@@ -65,7 +65,7 @@ fun AddCrossingForm(
     if (confirmLeaveNote) {
         ConfirmationDialog(
             onDismissRequest = { confirmLeaveNote = false },
-            onConfirmed = { onAnswer(AltAnswer.LeaveNote) },
+            onConfirmed = { on(Action.LeaveNote) },
             confirmButtonText = stringResource(Res.string.quest_leave_new_note_yes),
             text = { Text(stringResource(Res.string.quest_leave_new_note_as_answer)) }
         )

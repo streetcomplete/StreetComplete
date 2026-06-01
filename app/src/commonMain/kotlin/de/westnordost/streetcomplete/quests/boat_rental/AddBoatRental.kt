@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
@@ -32,11 +32,11 @@ class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>() {
     override val achievements = listOf(OUTDOORS, RARE)
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<Set<BoatRental>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<Set<BoatRental>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemsSelectQuestForm(
             items = BoatRental.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            onAnswer = onAnswer,
+            on = on,
         )
     }
 

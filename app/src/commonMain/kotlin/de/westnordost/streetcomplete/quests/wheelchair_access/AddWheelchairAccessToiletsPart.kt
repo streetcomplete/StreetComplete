@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
@@ -48,16 +48,16 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
     override val hintImages = listOf(Res.drawable.wheelchair_sign)
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<WheelchairAccessToiletsPartAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<WheelchairAccessToiletsPartAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(WheelchairAccessToiletsPart(NO))) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(WheelchairAccessToiletsPart(YES))) },
-                AnswerItem(stringResource(Res.string.quest_wheelchairAccess_limited)) { onAnswer(Answer(WheelchairAccessToiletsPart(LIMITED))) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(WheelchairAccessToiletsPart(NO))) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(WheelchairAccessToiletsPart(YES))) },
+                AnswerItem(stringResource(Res.string.quest_wheelchairAccess_limited)) { on(Answer(WheelchairAccessToiletsPart(LIMITED))) },
             ),
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) { onAnswer(Answer(WheelchairAccessToiletsPartAnswer.NoToilet)) }
+                AnswerItem(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) { on(Answer(WheelchairAccessToiletsPartAnswer.NoToilet)) }
             )
         )
     }

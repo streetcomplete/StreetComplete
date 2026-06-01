@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.overlays.street_parking
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -24,7 +23,6 @@ import de.westnordost.streetcomplete.osm.street_parking.StreetParking
 import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
 import de.westnordost.streetcomplete.resources.*
 
 class StreetParkingOverlay : Overlay {
@@ -94,9 +92,9 @@ private val streetParkingTaggingNotExpected by lazy { """
 """.toElementFilterExpression() }
 
 private val parkingLotAreaStyle = OverlayStyle.Polygon(OverlayColor.Blue)
-private val parkingLotPointStyle = OverlayStyle.Point(R.drawable.preset_temaki_car_parked)
-private val chicaneStyle = OverlayStyle.Point(R.drawable.preset_temaki_chicane_arrow)
-private val trafficCalmingStyle = OverlayStyle.Point(R.drawable.preset_temaki_diamond)
+private val parkingLotPointStyle = OverlayStyle.Point(Res.drawable.preset_temaki_car_parked)
+private val chicaneStyle = OverlayStyle.Point(Res.drawable.preset_temaki_chicane_arrow)
+private val trafficCalmingStyle = OverlayStyle.Point(Res.drawable.preset_temaki_diamond)
 
 private fun getNarrowingTrafficCalmingStyle(element: Element): OverlayStyle? =
     when (parseNarrowingTrafficCalming(element.tags)) {

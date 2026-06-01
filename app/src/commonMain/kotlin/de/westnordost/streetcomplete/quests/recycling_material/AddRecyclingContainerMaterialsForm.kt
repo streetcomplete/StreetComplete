@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
@@ -31,7 +31,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddRecyclingContainerMaterialsForm(
-    onAnswer: (QuestAnswer<RecyclingContainerMaterialsAnswer>) -> Unit,
+    on: (QuestAction<RecyclingContainerMaterialsAnswer>) -> Unit,
 ) {
     var selectedItems by rememberSerializable { mutableStateOf(emptySet<RecyclingMaterial>()) }
 
@@ -39,11 +39,11 @@ fun AddRecyclingContainerMaterialsForm(
 
     QuestForm(
         isComplete = selectedItems.isNotEmpty(),
-        onClickOk = { onAnswer(Answer(RecyclingMaterials(selectedItems))) },
+        onClickOk = { on(Answer(RecyclingMaterials(selectedItems))) },
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_recycling_materials_answer_waste)) { confirmJustTrash = true }
         ),
-        onAnswer = onAnswer,
+        on = on,
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -85,7 +85,7 @@ fun AddRecyclingContainerMaterialsForm(
     if (confirmJustTrash) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmJustTrash = false },
-            onConfirmed = { onAnswer(Answer(IsWasteContainer)) },
+            onConfirmed = { on(Answer(IsWasteContainer)) },
             text = { Text(stringResource(Res.string.quest_recycling_materials_answer_waste_description)) },
         )
     }

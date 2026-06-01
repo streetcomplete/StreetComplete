@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -16,14 +16,14 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddBbqFuelForm(
-    onAnswer: (QuestAnswer<BbqFuelAnswer>) -> Unit
+    on: (QuestAction<BbqFuelAnswer>) -> Unit
 ) {
     var confirmNotBbq by remember { mutableStateOf(false) }
 
     RadioGroupQuestForm(
         items = BbqFuel.entries,
         itemContent = { Text(stringResource(it.text)) },
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_bbq_fuel_not_a_bbq)) { confirmNotBbq = true },
         )
@@ -32,7 +32,7 @@ fun AddBbqFuelForm(
     if (confirmNotBbq) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmNotBbq = false },
-            onConfirmed = { onAnswer(Answer(BbqFuelAnswer.IsFirePit)) },
+            onConfirmed = { on(Answer(BbqFuelAnswer.IsFirePit)) },
             text = { Text(stringResource(Res.string.quest_bbq_fuel_not_a_bbq_confirmation)) }
         )
     }

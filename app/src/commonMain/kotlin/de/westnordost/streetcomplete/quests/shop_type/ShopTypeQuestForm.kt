@@ -10,9 +10,9 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.places.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.places.isPlace
 import de.westnordost.streetcomplete.osm.toElement
@@ -24,7 +24,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun ShopTypeQuestForm(
-    onAnswer: (QuestAnswer<ShopTypeAnswer>) -> Unit,
+    on: (QuestAction<ShopTypeAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
     modifier: Modifier = Modifier,
@@ -54,10 +54,10 @@ fun ShopTypeQuestForm(
                 //    to answer whether the place is now a different one than before, so we rather
                 //    replace it. (#6675)
                 val hasSomeName = getNameLabel(element.tags) != null
-                onAnswer(Answer(ShopType(feature!!, hasSomeName)))
+                on(Answer(ShopType(feature!!, hasSomeName)))
             }
-            ShopTypeFormOption.VACANT -> onAnswer(Answer(ShopTypeAnswer.IsShopVacant))
-            ShopTypeFormOption.LEAVE_NOTE -> onAnswer(AltAnswer.LeaveNote)
+            ShopTypeFormOption.VACANT -> on(Answer(ShopTypeAnswer.IsShopVacant))
+            ShopTypeFormOption.LEAVE_NOTE -> on(Action.LeaveNote)
             null -> { }
         }
     }
@@ -65,7 +65,7 @@ fun ShopTypeQuestForm(
     QuestForm(
         isComplete = isComplete,
         onClickOk = ::onClickOk,
-        onAnswer = onAnswer,
+        on = on,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {

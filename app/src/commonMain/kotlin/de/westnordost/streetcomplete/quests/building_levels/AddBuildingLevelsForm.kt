@@ -10,7 +10,7 @@ import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
@@ -22,7 +22,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddBuildingLevelsForm(
-    onAnswer: (QuestAnswer<BuildingLevels>) -> Unit,
+    on: (QuestAction<BuildingLevels>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
@@ -60,9 +60,9 @@ fun AddBuildingLevelsForm(
         onClickOk = {
             val answer = BuildingLevels(levels!!, roofLevels)
             preferences.addLastPicked(key, answer)
-            onAnswer(Answer(answer))
+            on(Answer(answer))
         },
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_buildingLevels_answer_multipleLevels)) { showMultipleLevelsHint = true }
         ),

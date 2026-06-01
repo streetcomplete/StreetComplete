@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.quests.surface
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
@@ -18,7 +18,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddPathSurfaceForm(
-    onAnswer: (QuestAnswer<SurfaceOrIsStepsAnswer>) -> Unit,
+    on: (QuestAction<SurfaceOrIsStepsAnswer>) -> Unit,
     element: Element,
 ) {
     ItemSelectQuestForm(
@@ -26,19 +26,19 @@ fun AddPathSurfaceForm(
         itemContent = { item ->
             ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
         },
-        onAnswer = {
-            onAnswer(when (it) {
+        on = {
+            on(when (it) {
                 is Answer<Surface> -> Answer(SurfaceAnswer(it.value))
-                is AltAnswer -> it
+                is Action -> it
             })
         },
         favoriteKey = "AddPathSurfaceForm",
         otherAnswers = listOfNotNull(
             if (element.couldBeSteps()) {
-                AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) { onAnswer(Answer(IsActuallyStepsAnswer)) }
+                AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) { on(Answer(IsActuallyStepsAnswer)) }
             } else null,
             if (element.tags["indoor"] != "yes") {
-                AnswerItem(stringResource(Res.string.quest_generic_answer_is_indoors)) { onAnswer(Answer(IsIndoorsAnswer)) }
+                AnswerItem(stringResource(Res.string.quest_generic_answer_is_indoors)) { on(Answer(IsIndoorsAnswer)) }
             } else null,
         )
     )

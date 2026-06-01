@@ -4,21 +4,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.osmquests.AltAnswer
-import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
-import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -26,7 +21,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddRoadNameForm(
-    onAnswer: (QuestAnswer<List<LocalizedName>>) -> Unit,
+    on: (QuestAction<List<LocalizedName>>) -> Unit,
     countryInfo: CountryInfo,
     nameSuggestionsSource: NameSuggestionsSource = koinInject()
 ) {
@@ -45,7 +40,7 @@ fun AddRoadNameForm(
     LocalizedNameQuestForm(
         countryInfo = countryInfo,
         initialLocalizedNames = initialLocalizedNames,
-        onAnswer = onAnswer,
+        on = on,
         hint = { Text(stringResource(Res.string.quest_streetName_abbreviation_instruction)) },
         noNameConfirmationText = {
             Text(stringResource(Res.string.quest_streetName_answer_noName_confirmation_description))

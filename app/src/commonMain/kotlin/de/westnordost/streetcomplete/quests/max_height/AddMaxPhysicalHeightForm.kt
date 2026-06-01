@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.osm.length.LengthForm
 import de.westnordost.streetcomplete.resources.*
@@ -25,7 +25,7 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun AddMaxPhysicalHeightForm(
-    onAnswer: (QuestAnswer<MaxPhysicalHeightAnswer>) -> Unit,
+    on: (QuestAction<MaxPhysicalHeightAnswer>) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
 ) {
@@ -64,8 +64,8 @@ fun AddMaxPhysicalHeightForm(
             else Res.string.quest_maxheight_title
         ),
         isComplete = length != null,
-        onClickOk = { onAnswer(Answer(MaxPhysicalHeightAnswer(length!!, isArMeasurement))) },
-        onAnswer = onAnswer,
+        onClickOk = { on(Answer(MaxPhysicalHeightAnswer(length!!, isArMeasurement))) },
+        on = on,
     ) {
         LengthForm(
             length = length,

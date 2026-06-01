@@ -7,7 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
@@ -21,17 +21,17 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun MarkCompletedConstructionForm(
-    onAnswer: (QuestAnswer<CompletedConstructionAnswer>) -> Unit,
+    on: (QuestAction<CompletedConstructionAnswer>) -> Unit,
     title: String = stringResource(LocalQuestType.current!!.title),
 ) {
     var showDateSelectDialog by remember { mutableStateOf(false) }
 
     QuestForm(
         answers = listOf(
-            AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(ConstructionState(false))) },
-            AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(ConstructionState(true))) }
+            AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(ConstructionState(false))) },
+            AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(ConstructionState(true))) }
         ),
-        onAnswer = onAnswer,
+        on = on,
         title = title,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_construction_completed_at_known_date)) { showDateSelectDialog = true }
@@ -42,7 +42,7 @@ fun MarkCompletedConstructionForm(
         val tomorrow = remember { systemTimeNow().toLocalDate().plus(1, DateTimeUnit.DAY) }
         DateSelectDialog(
             onDismissRequest = { showDateSelectDialog = false },
-            onSelect = { onAnswer(Answer(OpeningDate(it))) },
+            onSelect = { on(Answer(OpeningDate(it))) },
             initialDate = tomorrow,
             years = tomorrow.year..(tomorrow.year + 30),
             title = { Text(stringResource(Res.string.quest_construction_completion_date_title)) }

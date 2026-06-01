@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.any
@@ -32,7 +32,7 @@ import kotlin.collections.emptyList
 
 @Composable
 fun AddSidewalkSurfaceForm(
-    onAnswer: (QuestAnswer<SidewalkSurfaceAnswer>) -> Unit,
+    on: (QuestAction<SidewalkSurfaceAnswer>) -> Unit,
     element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
@@ -65,12 +65,12 @@ fun AddSidewalkSurfaceForm(
             if (hasSidewalkLeft && hasSidewalkRight) {
                 preferences.setLastPicked(favKey, listOf(sidewalkSurfaces))
             }
-            onAnswer(Answer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces))))
+            on(Answer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces))))
         },
-        onAnswer = onAnswer,
+        on = on,
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_sidewalk_answer_different)) {
-                onAnswer(Answer(SidewalkSurfaceAnswer.SidewalkIsDifferent))
+                on(Answer(SidewalkSurfaceAnswer.SidewalkIsDifferent))
             }
         ),
         contentPadding = PaddingValues.Zero

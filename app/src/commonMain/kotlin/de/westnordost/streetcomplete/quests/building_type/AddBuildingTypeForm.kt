@@ -9,7 +9,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
 import de.westnordost.streetcomplete.osm.building.description
@@ -25,7 +25,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddBuildingTypeForm(
-    onAnswer: (QuestAnswer<BuildingType>) -> Unit
+    on: (QuestAction<BuildingType>) -> Unit
 ) {
     var showMultipleTypesHint by remember { mutableStateOf(false) }
 
@@ -48,14 +48,14 @@ fun AddBuildingTypeForm(
                 imageSize = DpSize(48.dp, 48.dp),
             )
         },
-        onAnswer = onAnswer,
+        on = on,
         favoriteKey = "AddBuildingTypeForm",
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_buildingType_answer_multiple_types)) {
                 showMultipleTypesHint = true
             },
             AnswerItem(stringResource(Res.string.quest_buildingType_answer_construction_site)) {
-                onAnswer(Answer(BuildingType.CONSTRUCTION))
+                on(Answer(BuildingType.CONSTRUCTION))
             }
         )
     )

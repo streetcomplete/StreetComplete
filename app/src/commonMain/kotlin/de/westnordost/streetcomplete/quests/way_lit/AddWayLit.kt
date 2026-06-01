@@ -6,7 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.changeToSteps
@@ -67,18 +67,18 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<WayLitOrIsStepsAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<WayLitOrIsStepsAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(WayLit(NO))) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(WayLit(YES))) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(WayLit(NO))) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(WayLit(YES))) }
             ),
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOfNotNull(
-                AnswerItem(stringResource(Res.string.lit_value_24_7)) { onAnswer(Answer(WayLit(NIGHT_AND_DAY))) },
-                AnswerItem(stringResource(Res.string.lit_value_automatic)) { onAnswer(Answer(WayLit(AUTOMATIC))) },
+                AnswerItem(stringResource(Res.string.lit_value_24_7)) { on(Answer(WayLit(NIGHT_AND_DAY))) },
+                AnswerItem(stringResource(Res.string.lit_value_automatic)) { on(Answer(WayLit(AUTOMATIC))) },
                 if (element.couldBeSteps()) {
-                    AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) { onAnswer(Answer(IsActuallyStepsAnswer)) }
+                    AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) { on(Answer(IsActuallyStepsAnswer)) }
                 } else null,
             )
         )

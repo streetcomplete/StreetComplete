@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.building.BuildingType
@@ -33,8 +33,8 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<BuildingType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddBuildingTypeForm(onAnswer)
+    override fun Form(on: (QuestAction<BuildingType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddBuildingTypeForm(on)
     }
 
     override fun applyAnswerTo(answer: BuildingType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

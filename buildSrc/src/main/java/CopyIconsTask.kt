@@ -29,6 +29,7 @@ open class CopyIconsTask : DefaultTask() {
 
             import de.westnordost.streetcomplete.R
             import de.westnordost.streetcomplete.resources.*
+            import org.jetbrains.compose.resources.DrawableResource
 
             fun DrawableResource.toAndroidResourceId(): Int? = icons[this]
 

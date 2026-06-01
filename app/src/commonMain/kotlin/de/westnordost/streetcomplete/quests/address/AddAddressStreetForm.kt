@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.address.PlaceName
@@ -30,7 +30,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun AddAddressStreetForm(
-    onAnswer: (QuestAnswer<StreetOrPlaceName>) -> Unit,
+    on: (QuestAction<StreetOrPlaceName>) -> Unit,
     nameSuggestionsSource: NameSuggestionsSource = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
 ) {
@@ -61,9 +61,9 @@ fun AddAddressStreetForm(
         isComplete = streetOrPlaceName.name.isNotEmpty(),
         onClickOk = {
             lastWasPlaceName = streetOrPlaceName is PlaceName
-            onAnswer(Answer(streetOrPlaceName))
+            on(Answer(streetOrPlaceName))
         },
-        onAnswer = onAnswer,
+        on = on,
         subtitle = nameAndLocationLabel(LocalElement.current!!, featureDictionary, showHouseNumber = true),
         otherAnswers = listOf(
             AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {

@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
@@ -12,14 +12,14 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddPathPartSurfaceForm(
-    onAnswer: (QuestAnswer<Surface>) -> Unit,
+    on: (QuestAction<Surface>) -> Unit,
 ) {
     ItemSelectQuestForm(
         items = Surface.selectableValuesForWays,
         itemContent = { item ->
             ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
         },
-        onAnswer = onAnswer,
+        on = on,
         favoriteKey = "AddPathPartSurfaceForm"
     )
 }

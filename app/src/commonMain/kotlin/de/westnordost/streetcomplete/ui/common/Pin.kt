@@ -14,6 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.pin
+import de.westnordost.streetcomplete.resources.pin_shadow
 import de.westnordost.streetcomplete.resources.quest_recycling
 import org.jetbrains.compose.resources.painterResource
 

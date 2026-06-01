@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
@@ -42,13 +42,13 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
         mapData.filter("nodes with amenity = recycling")
 
     @Composable
-    override fun Form(onAnswer: (QuestAnswer<RecyclingGlass>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<RecyclingGlass>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_recycling_type_any_glass)) { onAnswer(Answer(ANY)) },
-                AnswerItem(stringResource(Res.string.quest_recycling_type_glass_bottles_short)) { onAnswer(Answer(BOTTLES)) }
+                AnswerItem(stringResource(Res.string.quest_recycling_type_any_glass)) { on(Answer(ANY)) },
+                AnswerItem(stringResource(Res.string.quest_recycling_type_glass_bottles_short)) { on(Answer(BOTTLES)) }
             ),
-            onAnswer = onAnswer,
+            on = on,
         )
     }
 

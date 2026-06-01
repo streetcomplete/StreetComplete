@@ -10,7 +10,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
-import de.westnordost.streetcomplete.data.osm.osmquests.QuestAnswer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.fee.Fee
 import de.westnordost.streetcomplete.osm.maxstay.MaxStay
 import de.westnordost.streetcomplete.osm.maxstay.MaxStayInput
@@ -25,7 +25,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddParkingFeeForm(
-    onAnswer: (QuestAnswer<ParkingFeeAnswer>) -> Unit,
+    on: (QuestAction<ParkingFeeAnswer>) -> Unit,
     countryInfo: CountryInfo
 ) {
     var answer by rememberSerializable { mutableStateOf<ParkingFeeAnswer?>(null) }
@@ -35,10 +35,10 @@ fun AddParkingFeeForm(
             // usually just Yes / No, but user can choose to input a more complex situation
             // in a form through the other answers menu
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { onAnswer(Answer(ParkingFee(Fee.No))) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { onAnswer(Answer(ParkingFee(Fee.Yes()))) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(ParkingFee(Fee.No))) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(ParkingFee(Fee.Yes()))) }
             ),
-            onAnswer = onAnswer,
+            on = on,
             otherAnswers = listOf(
                 AnswerItem(stringResource(Res.string.quest_fee_answer_hours)) {
                     answer = ParkingFee(Fee.Yes(TimeRestriction(
@@ -54,8 +54,8 @@ fun AddParkingFeeForm(
         QuestForm(
             isComplete = answer?.isComplete() == true,
             hasChanges = answer != null,
-            onClickOk = { answer?.let { onAnswer(Answer(it)) } },
-            onAnswer = onAnswer,
+            onClickOk = { answer?.let { on(Answer(it)) } },
+            on = on,
         ) {
             when (val answer2 = answer) {
                 is ParkingFeeAnswer.NoFeeButMaxStay -> {
