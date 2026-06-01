@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.osm.places.removePlaceRelatedTags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.getNameLabel
 
 class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
@@ -59,7 +60,18 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
                 tags["disused:shop"] = shopTag ?: "yes"
             }
             is ShopType -> {
-                if (answer.isStillSamePlace) {
+                // if the shop has **some** name (that is displayed to the user), we just want to
+                // update the shop, not replace it. The train of thought is:
+                // 1. when the user is asked about what kind of shop <named thing> is, but doesn't
+                //    see any shop by that name, he will just answer that it doesn't exist via
+                //    Uh… -> Doesn't exist.
+                // 2. When on the other hand he *does* see a shop by that name, it is quite clear
+                //    that it is still the same shop, so we only update it, not replace it.
+                // 3. On the other hand, if the place has no name, the user will also not be able
+                //    to answer whether the place is now a different one than before, so we rather
+                //    replace it. (#6675)
+                val hasSomeName = getNameLabel(tags) != null
+                if (hasSomeName) {
                     answer.feature.applyTo(tags)
                 } else {
                     answer.feature.applyReplacePlaceTo(tags)

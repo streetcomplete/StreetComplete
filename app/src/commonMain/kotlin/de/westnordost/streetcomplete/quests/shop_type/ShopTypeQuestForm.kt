@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.osm.places.isPlace
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import org.koin.compose.koinInject
 
@@ -42,20 +41,7 @@ fun ShopTypeQuestForm(
 
     fun onClickOk() {
         when (option) {
-            ShopTypeFormOption.FEATURE -> {
-                // if the shop has **some** name (that is displayed to the user), we just want to
-                // update the shop, not replace it. The train of thought is:
-                // 1. when the user is asked about what kind of shop <named thing> is, but doesn't
-                //    see any shop by that name, he will just answer that it doesn't exist via
-                //    Uh.. -> Doesn't exist.
-                // 2. When on the other hand he *does* see a shop by that name, it is quite clear
-                //    that it is still the same shop, so we only update it, not replace it.
-                // 3. On the other hand, if the place has no name, the user will also not be able
-                //    to answer whether the place is now a different one than before, so we rather
-                //    replace it. (#6675)
-                val hasSomeName = getNameLabel(element.tags) != null
-                on(Answer(ShopType(feature!!, hasSomeName)))
-            }
+            ShopTypeFormOption.FEATURE -> on(Answer(ShopType(feature!!)))
             ShopTypeFormOption.VACANT -> on(Answer(ShopTypeAnswer.IsShopVacant))
             ShopTypeFormOption.LEAVE_NOTE -> on(Action.LeaveNote)
             null -> { }

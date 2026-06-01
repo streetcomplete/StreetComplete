@@ -39,7 +39,7 @@ fun ShopGoneDialog(
 
     fun onClickOk() {
         when (option) {
-            ShopTypeFormOption.FEATURE -> onSelectAnswer(ShopType(feature!!, false))
+            ShopTypeFormOption.FEATURE -> onSelectAnswer(ShopType(feature!!))
             ShopTypeFormOption.VACANT -> onSelectAnswer(ShopTypeAnswer.IsShopVacant)
             ShopTypeFormOption.LEAVE_NOTE -> onSelectAnswer(ShopTypeAnswer.LeaveNote)
             null -> { }
