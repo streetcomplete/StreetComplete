@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.osm.things.isDisusedThing
 import de.westnordost.streetcomplete.osm.things.isThing
 import de.westnordost.streetcomplete.osm.things.isThingOrDisusedThing
 import de.westnordost.streetcomplete.osm.toElement
+import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.util.ktx.getDisusedFeature
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
@@ -37,3 +38,16 @@ fun FeatureDictionary.getPlaceOrDisusedPlace(
             geometry = GeometryType.entries.toList()
         )
     } else null
+
+/** Get a disused version of the given [element]'s associated feature in the given [languages] and
+ * [country].
+ * If the kind of place is unknown, returns the generic `shop=vacant` feature */
+fun FeatureDictionary.getPlaceAsDisused(
+    element: Element,
+    languages: List<String?>? = getLanguagesForFeatureDictionary(),
+    country: String?,
+): Feature =
+    getFeature(element, languages, country, isSuggestion = null)
+        ?.takeIf { it.toElement().isPlace() }
+        ?.toPrefixedFeature("disused")
+    ?: getById("shop/vacant", languages, country)!!
