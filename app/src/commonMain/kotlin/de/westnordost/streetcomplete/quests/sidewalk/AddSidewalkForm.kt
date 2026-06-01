@@ -54,9 +54,11 @@ fun AddSidewalkForm(
             preferences.setLastPicked(favKey, listOf(sidewalks))
         },
         on = on,
-        otherAnswers = listOf(
-            AnswerItem(stringResource(Res.string.quest_sidewalk_answer_none)) { showNoSidewalksHint = true }
-        ),
+        otherAnswers = { listOf(
+            AnswerItem(stringResource(Res.string.quest_sidewalk_answer_none)) {
+                showNoSidewalksHint = true
+            }
+        ) },
         contentPadding = PaddingValues.Zero,
     ) {
         SidewalkForm(

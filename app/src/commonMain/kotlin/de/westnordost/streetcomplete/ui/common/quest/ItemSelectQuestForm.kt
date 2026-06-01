@@ -41,7 +41,7 @@ inline fun <reified I> ItemSelectQuestForm(
     itemsPerRow: Int = 3,
     favoriteKey: String? = null,
     title: String = stringResource(LocalQuestType.current!!.title),
-    otherAnswers: List<AnswerItem> = emptyList(),
+    noinline otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
     preferences: Preferences = koinInject()
 ) {
     val reorderedItems = remember(items, itemsPerRow, favoriteKey) {

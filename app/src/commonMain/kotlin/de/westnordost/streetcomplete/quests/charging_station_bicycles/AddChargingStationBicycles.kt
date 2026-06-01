@@ -45,9 +45,9 @@ class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>()
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) },
             ),
             on = on,
-            otherAnswers = listOf(
+            otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_charging_station_bicycles_answer_only)) { on(Answer(ONLY)) }
-            )
+            ) }
         )
     }
 

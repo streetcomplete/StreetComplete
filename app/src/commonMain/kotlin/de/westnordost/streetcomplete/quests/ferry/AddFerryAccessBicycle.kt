@@ -58,9 +58,9 @@ class AddFerryAccessBicycle : OsmElementQuestType<FerryBicycleAccess> {
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) }
             ),
             on = on,
-            otherAnswers = listOf(
+            otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_answer_noSign)) { on(Answer(NOT_SIGNED)) }
-            )
+            ) }
         )
     }
 

@@ -42,11 +42,11 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>() {
             itemsPerRow = 2,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             on = on,
-            otherAnswers = listOf(
+            otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_leafType_tree_is_just_a_stump)) {
                     on(Answer(NotTreeButStump))
                 },
-            )
+            ) }
         )
     }
 

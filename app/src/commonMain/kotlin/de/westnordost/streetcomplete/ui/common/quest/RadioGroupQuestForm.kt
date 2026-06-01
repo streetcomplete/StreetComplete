@@ -19,7 +19,7 @@ fun <I> RadioGroupQuestForm(
     itemContent: @Composable (item: I) -> Unit,
     on: (QuestAction<I>) -> Unit,
     modifier: Modifier = Modifier,
-    otherAnswers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
 ) {
     var checkedItemIndex by rememberSaveable(items) { mutableStateOf<Int>(-1) }
     val checkedItem by remember {

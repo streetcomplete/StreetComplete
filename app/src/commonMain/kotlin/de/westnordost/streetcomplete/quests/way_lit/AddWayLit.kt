@@ -74,13 +74,19 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(WayLit(YES))) }
             ),
             on = on,
-            otherAnswers = listOfNotNull(
-                AnswerItem(stringResource(Res.string.lit_value_24_7)) { on(Answer(WayLit(NIGHT_AND_DAY))) },
-                AnswerItem(stringResource(Res.string.lit_value_automatic)) { on(Answer(WayLit(AUTOMATIC))) },
+            otherAnswers = { listOfNotNull(
+                AnswerItem(stringResource(Res.string.lit_value_24_7)) {
+                    on(Answer(WayLit(NIGHT_AND_DAY)))
+                },
+                AnswerItem(stringResource(Res.string.lit_value_automatic)) {
+                    on(Answer(WayLit(AUTOMATIC)))
+                },
                 if (element.couldBeSteps()) {
-                    AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) { on(Answer(IsActuallyStepsAnswer)) }
+                    AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
+                        on(Answer(IsActuallyStepsAnswer))
+                    }
                 } else null,
-            )
+            ) }
         )
     }
 

@@ -29,8 +29,10 @@ fun AddReligionForm(
         items = items,
         itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
         on = on,
-        otherAnswers = listOf(
-            AnswerItem(stringResource(Res.string.quest_religion_for_place_of_worship_answer_multi)) { on(Answer(MULTIFAITH)) }
-        )
+        otherAnswers = { listOf(
+            AnswerItem(stringResource(Res.string.quest_religion_for_place_of_worship_answer_multi)) {
+                on(Answer(MULTIFAITH))
+            }
+        ) }
     )
 }

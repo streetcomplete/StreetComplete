@@ -21,7 +21,7 @@ fun NameWithSuggestionsQuestForm(
     suggestions: List<String>?,
     on: (QuestAction<String>) -> Unit,
     modifier: Modifier = Modifier,
-    otherAnswers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
 ) {
     var value by rememberSaveable(stateSaver = TextFieldValue.Saver) {
         mutableStateOf(TextFieldValue())

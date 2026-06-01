@@ -33,9 +33,11 @@ fun MarkCompletedConstructionForm(
         ),
         on = on,
         title = title,
-        otherAnswers = listOf(
-            AnswerItem(stringResource(Res.string.quest_construction_completed_at_known_date)) { showDateSelectDialog = true }
-        )
+        otherAnswers = { listOf(
+            AnswerItem(stringResource(Res.string.quest_construction_completed_at_known_date)) {
+                showDateSelectDialog = true
+            }
+        ) }
     )
 
     if (showDateSelectDialog) {

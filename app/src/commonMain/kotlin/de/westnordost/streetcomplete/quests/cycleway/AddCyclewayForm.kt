@@ -165,22 +165,20 @@ fun AddCyclewayForm(
                 }
             },
             on = on,
-            otherAnswers = listOfNotNull(
-                if (isLeftSideVisible && isRightSideVisible || isRoundabout) {
-                    null
-                } else {
+            otherAnswers = { listOfNotNull(
+                if ((!isLeftSideVisible || !isRightSideVisible) && !isRoundabout) {
                     AnswerItem(stringResource(Res.string.quest_cycleway_answer_contraflow_cycleway)) {
                         isLeftSideVisible = true
                         isRightSideVisible = true
                     }
-                },
+                } else null,
                 AnswerItem(stringResource(Res.string.quest_cycleway_answer_no_bicycle_infrastructure)) {
                     showNoCyclewayHereHint = true
                 },
                 AnswerItem(stringResource(Res.string.cycleway_reverse_direction)) {
                     confirmSelectReverseCyclewayDirection = true
                 }
-            ),
+            ) },
             contentPadding = PaddingValues.Zero,
             content = { content() }
         )

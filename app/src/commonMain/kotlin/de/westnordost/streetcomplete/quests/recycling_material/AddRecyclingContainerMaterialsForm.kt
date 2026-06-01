@@ -40,9 +40,11 @@ fun AddRecyclingContainerMaterialsForm(
     QuestForm(
         isComplete = selectedItems.isNotEmpty(),
         onClickOk = { on(Answer(RecyclingMaterials(selectedItems))) },
-        otherAnswers = listOf(
-            AnswerItem(stringResource(Res.string.quest_recycling_materials_answer_waste)) { confirmJustTrash = true }
-        ),
+        otherAnswers = { listOf(
+            AnswerItem(stringResource(Res.string.quest_recycling_materials_answer_waste)) {
+                confirmJustTrash = true
+            }
+        ) },
         on = on,
     ) {
         Column(

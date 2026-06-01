@@ -24,9 +24,9 @@ fun AddBbqFuelForm(
         items = BbqFuel.entries,
         itemContent = { Text(stringResource(it.text)) },
         on = on,
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_bbq_fuel_not_a_bbq)) { confirmNotBbq = true },
-        )
+        ) }
     )
 
     if (confirmNotBbq) {

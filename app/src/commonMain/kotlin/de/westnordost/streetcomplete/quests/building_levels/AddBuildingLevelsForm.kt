@@ -63,9 +63,11 @@ fun AddBuildingLevelsForm(
             on(Answer(answer))
         },
         on = on,
-        otherAnswers = listOf(
-            AnswerItem(stringResource(Res.string.quest_buildingLevels_answer_multipleLevels)) { showMultipleLevelsHint = true }
-        ),
+        otherAnswers = { listOf(
+            AnswerItem(stringResource(Res.string.quest_buildingLevels_answer_multipleLevels)) {
+                showMultipleLevelsHint = true
+            }
+        ) },
     ) {
         BuildingLevelsForm(
             levels = levels,

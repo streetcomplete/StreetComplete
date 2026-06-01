@@ -42,9 +42,11 @@ fun AddMaxHeightForm(
             }
         },
         on = on,
-        otherAnswers = listOf(
-            AnswerItem(stringResource(Res.string.quest_maxheight_answer_noSign)) { confirmNoSign = true }
-        ),
+        otherAnswers = { listOf(
+            AnswerItem(stringResource(Res.string.quest_maxheight_answer_noSign)) {
+                confirmNoSign = true
+            }
+        ) },
         hintText =
             if (element.type == ElementType.WAY) {
                 stringResource(Res.string.quest_maxheight_split_way_hint,

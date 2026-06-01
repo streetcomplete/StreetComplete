@@ -50,14 +50,14 @@ fun AddBuildingTypeForm(
         },
         on = on,
         favoriteKey = "AddBuildingTypeForm",
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_buildingType_answer_multiple_types)) {
                 showMultipleTypesHint = true
             },
             AnswerItem(stringResource(Res.string.quest_buildingType_answer_construction_site)) {
                 on(Answer(BuildingType.CONSTRUCTION))
             }
-        )
+        ) }
     )
 
     if (showMultipleTypesHint) {

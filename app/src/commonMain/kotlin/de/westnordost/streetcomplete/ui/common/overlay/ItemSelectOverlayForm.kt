@@ -44,7 +44,7 @@ inline fun <reified I> ItemSelectOverlayForm(
     favoriteKey: String,
     modifier: Modifier = Modifier,
     selectableItems: List<I> = items,
-    otherAnswers: List<AnswerItem> = emptyList(),
+    noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
 ) {
     val lastPicked = remember {
         prefs.getLastPicked<I>(favoriteKey).takeFavorites(n = 5, first = 1)

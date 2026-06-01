@@ -57,10 +57,10 @@ class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>() {
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) }
             ),
             on = on,
-            otherAnswers = listOf(
+            otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_tactilePaving_steps_bottom)) { on(Answer(BOTTOM)) },
                 AnswerItem(stringResource(Res.string.quest_tactilePaving_steps_top)) { on(Answer(TOP)) }
-            )
+            ) }
         )
     }
 

@@ -25,7 +25,7 @@ fun QuestAnswerBubble(
     modifier: Modifier = Modifier,
     elevation: Dp = 0.dp,
     answers: List<AnswerItem> = emptyList(),
-    otherAnswers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable (() -> List<AnswerItem>)? = null,
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
@@ -49,10 +49,10 @@ fun QuestAnswerBubble(
                         content = content
                     )
                 }
-                if (content != null && (answers.isNotEmpty() || otherAnswers.isNotEmpty())) {
+                if (content != null && (answers.isNotEmpty() || otherAnswers != null)) {
                     Divider()
                 }
-                if (answers.isNotEmpty() || otherAnswers.isNotEmpty()) {
+                if (answers.isNotEmpty() || otherAnswers != null) {
                     QuestAnswerButtonBar(
                         modifier = Modifier.padding(horizontal = 8.dp),
                         answers = answers,

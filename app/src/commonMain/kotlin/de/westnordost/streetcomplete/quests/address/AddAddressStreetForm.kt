@@ -65,12 +65,12 @@ fun AddAddressStreetForm(
         },
         on = on,
         subtitle = nameAndLocationLabel(LocalElement.current!!, featureDictionary, showHouseNumber = true),
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
                 streetOrPlaceName = PlaceName("")
                 showSelect = true
             }
-        )
+        ) }
     ) {
         StreetOrPlaceNameForm(
             value = streetOrPlaceName,

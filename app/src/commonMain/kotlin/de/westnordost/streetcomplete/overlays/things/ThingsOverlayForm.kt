@@ -84,13 +84,13 @@ import org.koin.compose.koinInject
         label =
             // title hint label with name is a duplication, it is displayed in the UI already
             element?.let { nameAndLocationLabel(it, featureDictionary = null) },
-        otherAnswers = listOfNotNull(
+        otherAnswers = { listOfNotNull(
             if (element is Node) {
                 AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) {
                     confirmDeleteNode = element
                 }
             } else null
-        )
+        ) }
     ) {
         ThingForm(
             selectedFeature = selectedFeature,

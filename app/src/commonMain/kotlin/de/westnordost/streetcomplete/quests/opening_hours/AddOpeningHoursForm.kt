@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
+import kotlin.collections.listOf
 
 @Composable
 fun AddOpeningHoursForm(
@@ -74,9 +75,9 @@ fun AddOpeningHoursForm(
                 }
             ),
             on = on,
-            otherAnswers = listOf(
+            otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) { confirmNoSign = true },
-            ),
+            ) },
             content = { openingHoursTable() }
         )
     } else {
@@ -85,24 +86,21 @@ fun AddOpeningHoursForm(
             hasChanges = openingHours.monthsList.isNotEmpty(),
             onClickOk = { on(Answer(RegularOpeningHours(openingHours))) },
             on = on,
-            otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) { confirmNoSign = true },
-                AnswerItem(stringResource(Res.string.quest_openingHours_answer_no_regular_opening_hours)) { showCommentDialog = true },
-                AnswerItem(stringResource(Res.string.quest_openingHours_answer_247)) { confirm24_7 = true },
+            otherAnswers = { listOf(
+                AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) {
+                    confirmNoSign = true
+                },
+                AnswerItem(stringResource(Res.string.quest_openingHours_answer_no_regular_opening_hours)) {
+                    showCommentDialog = true
+                },
+                AnswerItem(stringResource(Res.string.quest_openingHours_answer_247)) {
+                    confirm24_7 = true
+                },
                 AnswerItem(stringResource(Res.string.quest_openingHours_answer_seasonal_opening_hours)) {
                     isDisplayingPrevious = false
-                    val allMonths = listOf(MonthRange(Month.January, Month.December))
-                    openingHours = HierarchicOpeningHours(
-                        openingHours.monthsList.map { months ->
-                            if (months.selectors.isEmpty()) {
-                                months.copy(selectors = allMonths)
-                            } else {
-                                months
-                            }
-                        }
-                    )
+                    openingHours = openingHours.monthsSelectorsAdded()
                 }
-            ),
+            ) },
             content = { openingHoursTable() }
         )
     }
@@ -128,3 +126,13 @@ fun AddOpeningHoursForm(
         )
     }
 }
+
+private fun HierarchicOpeningHours.monthsSelectorsAdded() = HierarchicOpeningHours(
+    monthsList.map { months ->
+        if (months.selectors.isEmpty()) {
+            months.copy(selectors = listOf(MonthRange(Month.January, Month.December)))
+        } else {
+            months
+        }
+    }
+)

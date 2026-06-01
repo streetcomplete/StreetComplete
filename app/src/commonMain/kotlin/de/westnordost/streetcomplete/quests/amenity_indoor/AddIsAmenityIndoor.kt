@@ -119,9 +119,11 @@ class AddIsAmenityIndoor(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(INDOOR)) }
             ),
             on = on,
-            otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_isAmenityIndoor_outside_covered)) { on(Answer(COVERED)) }
-            )
+            otherAnswers = { listOf(
+                AnswerItem(stringResource(Res.string.quest_isAmenityIndoor_outside_covered)) {
+                    on(Answer(COVERED))
+                }
+            ) }
         )
     }
 

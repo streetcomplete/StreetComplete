@@ -35,13 +35,13 @@ fun AddDietTypeForm(
             AnswerItem(stringResource(Res.string.quest_hasFeature_only)) { on(Answer(ONLY)) },
         ),
         on = on,
-        otherAnswers = listOfNotNull(
+        otherAnswers = { listOfNotNull(
             if (element.tags["amenity"] == "cafe") {
-                AnswerItem(stringResource(Res.string.quest_diet_answer_no_food)) { confirmNoFood = true }
-            } else {
-                null
-            }
-        )
+                AnswerItem(stringResource(Res.string.quest_diet_answer_no_food)) {
+                    confirmNoFood = true
+                }
+            } else null
+        ) }
     ) {
         CompositionLocalProvider(
             LocalContentAlpha provides ContentAlpha.medium,

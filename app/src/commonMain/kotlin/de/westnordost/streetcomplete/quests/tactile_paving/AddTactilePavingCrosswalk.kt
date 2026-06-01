@@ -80,9 +80,11 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnsw
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) }
             ),
             on = on,
-            otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_tactilePaving_incorrect)) { on(Answer(INCORRECT)) }
-            )
+            otherAnswers = { listOf(
+                AnswerItem(stringResource(Res.string.quest_tactilePaving_incorrect)) {
+                    on(Answer(INCORRECT))
+                }
+            ) }
         )
     }
 

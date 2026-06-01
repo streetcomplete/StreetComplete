@@ -21,7 +21,7 @@ fun CountInputQuestForm(
     icon: Painter,
     on: (QuestAction<Int>) -> Unit,
     modifier: Modifier = Modifier,
-    otherAnswers: List<AnswerItem> = emptyList()
+    otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() }
 ) {
     var count by rememberSaveable { mutableStateOf<Int?>(null) }
 

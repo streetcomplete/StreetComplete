@@ -51,14 +51,22 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
     override fun Form(on: (QuestAction<WheelchairAccessToiletsPartAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(WheelchairAccessToiletsPart(NO))) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(WheelchairAccessToiletsPart(YES))) },
-                AnswerItem(stringResource(Res.string.quest_wheelchairAccess_limited)) { on(Answer(WheelchairAccessToiletsPart(LIMITED))) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
+                    on(Answer(WheelchairAccessToiletsPart(NO)))
+                },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
+                    on(Answer(WheelchairAccessToiletsPart(YES)))
+                },
+                AnswerItem(stringResource(Res.string.quest_wheelchairAccess_limited)) {
+                    on(Answer(WheelchairAccessToiletsPart(LIMITED)))
+                },
             ),
             on = on,
-            otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) { on(Answer(WheelchairAccessToiletsPartAnswer.NoToilet)) }
-            )
+            otherAnswers = { listOf(
+                AnswerItem(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) {
+                    on(Answer(WheelchairAccessToiletsPartAnswer.NoToilet))
+                }
+            ) }
         )
     }
 

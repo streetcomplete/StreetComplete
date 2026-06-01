@@ -30,7 +30,7 @@ fun <I> CheckboxGroupQuestForm(
     itemContent: @Composable (item: I) -> Unit,
     on: (QuestAction<Set<I>>) -> Unit,
     modifier: Modifier = Modifier,
-    otherAnswers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
 ) {
     var selectedItemIndices by rememberSerializable { mutableStateOf(emptySet<Int>()) }
     val selectedItems by remember {

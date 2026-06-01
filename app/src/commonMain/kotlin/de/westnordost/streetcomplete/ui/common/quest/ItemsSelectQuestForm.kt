@@ -41,7 +41,7 @@ inline fun <reified I> ItemsSelectQuestForm(
     modifier: Modifier = Modifier,
     itemsPerRow: Int = 3,
     favoriteKey: String? = null,
-    otherAnswers: List<AnswerItem> = emptyList(),
+    noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     preferences: Preferences = koinInject()
 ) {
     val reorderedItems = remember(items, itemsPerRow, favoriteKey) {

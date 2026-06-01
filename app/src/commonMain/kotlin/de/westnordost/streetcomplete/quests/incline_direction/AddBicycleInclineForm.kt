@@ -43,11 +43,11 @@ fun AddBicycleInclineForm(
                 is Action -> it
             })
         },
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_bicycle_incline_up_and_down)) {
                 confirmUpAndDown = true
             }
-        )
+        ) }
     )
 
     if (confirmUpAndDown) {

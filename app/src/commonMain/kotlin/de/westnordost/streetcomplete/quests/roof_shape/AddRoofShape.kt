@@ -73,9 +73,9 @@ class AddRoofShape(
             itemContent = { Image(painterResource(it.icon), null) },
             on = on,
             favoriteKey = "AddRoofShapeForm",
-            otherAnswers = listOf(
+            otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_roofShape_answer_many)) { on(Answer(MANY)) }
-            )
+            ) }
         )
     }
 

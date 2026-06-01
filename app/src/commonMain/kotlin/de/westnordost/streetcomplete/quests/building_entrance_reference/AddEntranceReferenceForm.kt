@@ -26,11 +26,11 @@ fun AddEntranceReferenceForm(
             on(Answer(entranceReference!!))
         },
         on = on,
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_entrance_reference_nothing_signed)) {
                 on(Answer(EntranceReferenceAnswer.NotSigned))
             },
-        )
+        ) }
     ) {
         EntranceReferenceForm(
             value = entranceReference,

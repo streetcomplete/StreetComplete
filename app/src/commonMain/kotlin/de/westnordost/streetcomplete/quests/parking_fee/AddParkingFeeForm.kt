@@ -39,16 +39,16 @@ fun AddParkingFeeForm(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(ParkingFee(Fee.Yes()))) }
             ),
             on = on,
-            otherAnswers = listOf(
+            otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_fee_answer_hours)) {
                     answer = ParkingFee(Fee.Yes(TimeRestriction(
-                        HierarchicOpeningHours(),TimeRestriction.Mode.ONLY_AT_HOURS
+                        HierarchicOpeningHours(), TimeRestriction.Mode.ONLY_AT_HOURS
                     )))
                 },
                 AnswerItem(stringResource(Res.string.quest_fee_answer_no_but_maxstay)) {
                     answer = ParkingFeeAnswer.NoFeeButMaxStay(MaxStay(null, null))
                 },
-            )
+            ) }
         )
     } else {
         QuestForm(

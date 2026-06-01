@@ -46,11 +46,11 @@ class AddPowerPolesMaterial : OsmFilterQuestType<PowerPolesMaterialAnswer>() {
             items = PowerPolesMaterial.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             on = on,
-            otherAnswers = listOf(
+            otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_powerPolesMaterial_is_terminal)) {
                     on(Answer(PowerLineAnchoredToBuilding))
                 }
-            )
+            ) }
         )
     }
 

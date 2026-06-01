@@ -42,7 +42,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     noinline on: (QuestAction<I>) -> Unit,
     modifier: Modifier = Modifier,
     favoriteKey: String? = null,
-    otherAnswers: List<AnswerItem> = emptyList(),
+    noinline otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
     preferences: Preferences = koinInject()
 ) {
     val actualTopItems = remember(topItems) {

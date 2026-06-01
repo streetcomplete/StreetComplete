@@ -63,7 +63,7 @@ fun OverlayForm(
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
-    otherAnswers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable () ->List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable BoxScope.() -> Unit
 ) {
@@ -117,7 +117,7 @@ fun OverlayForm(
 private fun OverlayContentBubble(
     modifier: Modifier = Modifier,
     elevation: Dp = 0.dp,
-    otherAnswers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
     content: @Composable BoxScope.() -> Unit
 ) {
@@ -145,7 +145,7 @@ private fun OverlayContentBubble(
 /** …-button that opens a dropdown with the provided [answers]  */
 @Composable
 private fun MoreButton(
-    answers: List<AnswerItem>,
+    answers: @Composable () -> List<AnswerItem>,
     modifier: Modifier = Modifier,
 ) {
     var expanded by rememberSaveable { mutableStateOf(false) }
@@ -158,7 +158,7 @@ private fun MoreButton(
             expanded = expanded,
             onDismissRequest = { expanded = false }
         ) {
-            for (answer in answers) {
+            for (answer in answers()) {
                 DropdownMenuItem(onClick = { expanded = false; answer.action() }) {
                     Text(answer.text)
                 }
@@ -175,10 +175,10 @@ private fun OverlayFormPreview() {
         hasChanges = false,
         onClickOk = {},
         label = AnnotatedString("some text"),
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem("Can't say") {},
             AnswerItem("Can say") {},
-        )
+        ) }
     ) {
         Text(LoremIpsum(50).values.joinToString(" "))
     }

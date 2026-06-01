@@ -42,14 +42,14 @@ fun AddMaxWeightForm(
             }
         },
         on = on,
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_maxweight_answer_other_sign)) {
                 showUnsupportedSignDialog = true
             },
             AnswerItem(stringResource(Res.string.quest_generic_answer_noSign)) {
                 confirmNoSign = true
             }
-        )
+        ) }
     ) {
         MaxWeightForm(
             signs = signs,

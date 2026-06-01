@@ -75,7 +75,7 @@ fun QuestForm(
     hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
     hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
     note: String? = LocalElement.current?.tags?.get("note"),
-    otherAnswers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable BoxScope.() -> Unit
 ) {
@@ -120,7 +120,7 @@ fun QuestForm(
     hintText: String? = LocalQuestType.current!!.hint?.let { stringResource(it) },
     hintImages: List<DrawableResource> = LocalQuestType.current!!.hintImages,
     note: String? = LocalElement.current?.tags?.get("note"),
-    otherAnswers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
@@ -154,7 +154,7 @@ private fun QuestForm(
     onClickOk: (() -> Unit)?,
     on: (Action) -> Unit,
     answers: List<AnswerItem>,
-    otherAnswers: List<AnswerItem>,
+    otherAnswers: @Composable () -> List<AnswerItem>,
     contentPadding: PaddingValues,
     modifier: Modifier = Modifier,
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
@@ -169,16 +169,30 @@ private fun QuestForm(
     val elevation = 4.dp
 
     val element = LocalElement.current!!
-    val isFreeFloatingNode = remember(element) {
-        element is Node // add moveNodeAnswer only if it's a free floating node
-        && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
-        && mapDataWithEditsSource.getRelationsForNode(element.id).isEmpty()
-    }
-    val isPlaceOrDisusedPlace = remember(element) { element.isPlaceOrDisusedPlace() }
-    val isDeletable = remember(element) { element.isDeletable() }
-    val isSplittable = remember(element) { element.isSplittable() }
 
     var confirmCantSay by remember { mutableStateOf(false) }
+
+    @Composable
+    fun createDefaultOtherAnswers(): List<AnswerItem> {
+        val result = ArrayList<AnswerItem>()
+        if (
+            element is Node // add moveNodeAnswer only if it's a free floating node
+            && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+        ) {
+            result.add(AnswerItem(stringResource(Res.string.move_node)) { on(MoveNode) })
+        }
+        if (element.isPlaceOrDisusedPlace()) {
+            result.add(AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) { on(ReplacePoi) })
+        }
+        if (element.isDeletable()) {
+            result.add(AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) { on(DeletePoi) })
+        }
+        if (element.isSplittable()) {
+            result.add(AnswerItem(stringResource(Res.string.quest_generic_answer_differs_along_the_way)) { on(SplitWay) })
+        }
+        result.add(AnswerItem(stringResource(Res.string.quest_generic_answer_notApplicable)) { confirmCantSay = true })
+        return result
+    }
 
     Box(modifier = modifier.sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))) {
         BottomSheet(
@@ -216,26 +230,11 @@ private fun QuestForm(
                     )
                 }
 
-                val defaultOtherAnswers = listOfNotNull(
-                    if (isFreeFloatingNode) {
-                        AnswerItem(stringResource(Res.string.move_node)) { on(MoveNode) }
-                    } else null,
-                    if (isPlaceOrDisusedPlace) {
-                        AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) { on(ReplacePoi) }
-                    } else if (isDeletable) {
-                        AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) { on(DeletePoi) }
-                    } else null,
-                    if (isSplittable) {
-                        AnswerItem(stringResource(Res.string.quest_generic_answer_differs_along_the_way)) { on(SplitWay) }
-                    } else null,
-                    AnswerItem(stringResource(Res.string.quest_generic_answer_notApplicable)) { confirmCantSay = true }
-                )
-
                 QuestAnswerBubble(
                     modifier = Modifier.fillMaxWidth(),
                     elevation = elevation,
                     answers = answers,
-                    otherAnswers = otherAnswers + defaultOtherAnswers,
+                    otherAnswers = { otherAnswers() + createDefaultOtherAnswers() },
                     contentPadding = contentPadding,
                     content = content,
                 )

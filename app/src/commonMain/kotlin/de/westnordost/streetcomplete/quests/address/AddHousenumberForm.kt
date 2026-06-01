@@ -84,10 +84,8 @@ fun AddHousenumberForm(
             }
         },
         on = on,
-        otherAnswers = listOfNotNull(
-            AnswerItem(stringResource(Res.string.quest_address_answer_no_housenumber)) { onNoHouseNumber() },
-            AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) { showHouseName() },
-            if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
+        otherAnswers = {
+            val switchBlockAnswer = if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
                 when (addressNumberAndName.number) {
                     is BlockAndHouseNumber ->
                         AnswerItem(stringResource(Res.string.quest_address_answer_no_block2)) {
@@ -98,9 +96,15 @@ fun AddHousenumberForm(
                             addressNumberAndName = addressNumberAndName.copy(number = BlockAndHouseNumber("", ""))
                         }
                 }
-            } else null,
-            AnswerItem(stringResource(Res.string.quest_housenumber_multiple_numbers)) { showMultipleNumbersHint = true }
-        )
+            } else null
+
+            listOfNotNull(
+                AnswerItem(stringResource(Res.string.quest_address_answer_no_housenumber)) { onNoHouseNumber() },
+                AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) { showHouseName() },
+                switchBlockAnswer,
+                AnswerItem(stringResource(Res.string.quest_housenumber_multiple_numbers)) { showMultipleNumbersHint = true }
+            )
+        }
     ) {
         AddressNumberAndNameForm(
             value = addressNumberAndName,

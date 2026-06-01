@@ -52,7 +52,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
-    otherAnswers: List<AnswerItem> = emptyList(),
+    noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
 ) {
     val lastPicked = remember {
         prefs.getLastPicked<I>(favoriteKey).takeFavorites(n = 6, first = 1, pad = topSelectableItems)

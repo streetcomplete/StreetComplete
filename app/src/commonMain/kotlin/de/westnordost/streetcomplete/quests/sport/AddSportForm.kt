@@ -44,11 +44,11 @@ fun AddSportForm(
                 on(it)
             }
         },
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_sport_answer_multi)) {
                 on(Answer(setOf(MULTI)))
             }
-        )
+        ) }
     )
 
     confirmManySports?.let { sports ->

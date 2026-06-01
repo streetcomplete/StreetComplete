@@ -179,7 +179,7 @@ import org.koin.compose.koinInject
         label =
             // title hint label with name is a duplication, it is displayed in the UI already
             element?.let { nameAndLocationLabel(it, featureDictionary = null) },
-        otherAnswers = listOfNotNull(
+        otherAnswers = { listOfNotNull(
             if (originalFeature != vacantShopFeature) {
                 AnswerItem(stringResource(Res.string.quest_shop_gone_vacant_answer))  {
                     val languages = getLanguagesForFeatureDictionary()
@@ -192,8 +192,7 @@ import org.koin.compose.koinInject
                     localizedNames = listOf()
                 }
             } else null,
-
-        )
+        ) }
     ) {
         PlaceForm(
             selectedFeature = selectedFeature,

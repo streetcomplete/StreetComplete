@@ -62,9 +62,11 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
             items = BollardType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             on = on,
-            otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_bollard_type_not_bollard)) { on(Answer(BarrierTypeIsNotBollard)) },
-            )
+            otherAnswers = { listOf(
+                AnswerItem(stringResource(Res.string.quest_bollard_type_not_bollard)) {
+                    on(Answer(BarrierTypeIsNotBollard))
+                },
+            ) }
         )
     }
 

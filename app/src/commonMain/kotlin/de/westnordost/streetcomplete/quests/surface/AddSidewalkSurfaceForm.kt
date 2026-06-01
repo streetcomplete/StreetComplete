@@ -68,11 +68,11 @@ fun AddSidewalkSurfaceForm(
             on(Answer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces))))
         },
         on = on,
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_sidewalk_answer_different)) {
                 on(Answer(SidewalkSurfaceAnswer.SidewalkIsDifferent))
             }
-        ),
+        ) },
         contentPadding = PaddingValues.Zero
     ) {
         SidewalkSurfaceForm(

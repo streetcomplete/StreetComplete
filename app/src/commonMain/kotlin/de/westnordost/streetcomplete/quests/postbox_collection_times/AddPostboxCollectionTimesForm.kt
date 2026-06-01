@@ -69,11 +69,11 @@ fun AddPostboxCollectionTimesForm(
                 }
             ),
             on = on,
-            otherAnswers = listOf(
+            otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
                     confirmNoSign = true
                 },
-            ),
+            ) },
             content = { openingHoursTable() }
         )
     } else {
@@ -82,11 +82,8 @@ fun AddPostboxCollectionTimesForm(
             hasChanges = openingHours.monthsList.isNotEmpty(),
             onClickOk = { on(Answer(CollectionTimes(openingHours))) },
             on = on,
-            otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
-                    confirmNoSign = true
-                },
-                when (timeMode) {
+            otherAnswers = {
+                val switchTimeModeAnswer = when (timeMode) {
                     TimeMode.Points -> {
                         AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_time_spans)) {
                             timeMode = TimeMode.Spans
@@ -98,7 +95,14 @@ fun AddPostboxCollectionTimesForm(
                         }
                     }
                 }
-            ),
+
+                listOf(
+                    AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
+                        confirmNoSign = true
+                    },
+                    switchTimeModeAnswer
+                )
+             },
             content = { openingHoursTable() }
         )
     }

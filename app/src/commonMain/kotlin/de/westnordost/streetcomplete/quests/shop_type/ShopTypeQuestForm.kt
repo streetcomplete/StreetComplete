@@ -28,7 +28,7 @@ fun ShopTypeQuestForm(
     element: Element,
     countryInfo: CountryInfo,
     modifier: Modifier = Modifier,
-    otherAnswers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     featureDictionary: FeatureDictionary = koinInject(),
 ) {
     var feature by remember { mutableStateOf<Feature?>(null) }

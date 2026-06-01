@@ -32,9 +32,9 @@ fun AddBoardTypeForm(
                 is Action -> it
             })
         },
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_board_type_map)) { confirmIsMap = true }
-        )
+        ) }
     )
 
     if (confirmIsMap) {

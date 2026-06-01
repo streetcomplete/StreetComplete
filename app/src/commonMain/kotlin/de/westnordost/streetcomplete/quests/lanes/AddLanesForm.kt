@@ -59,7 +59,7 @@ fun AddLanesForm(
         hasChanges = answer.forward != null || answer.backward != null,
         onClickOk =  { on(Answer(answer)) },
         on = on,
-        otherAnswers = listOfNotNull(
+        otherAnswers = { listOfNotNull(
             if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
                 AnswerItem(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
                     answer = answer.copy(centerLeftTurnLane = true)
@@ -68,7 +68,7 @@ fun AddLanesForm(
             AnswerItem(stringResource(Res.string.quest_lanes_answer_noLanes)) {
                 on(Answer(LanesAnswer.IsUnmarked))
             }
-        ),
+        ) },
         contentPadding = PaddingValues.Zero,
     ) {
         LanesForm(

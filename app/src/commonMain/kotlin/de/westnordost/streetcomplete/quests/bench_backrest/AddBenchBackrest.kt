@@ -45,10 +45,10 @@ class AddBenchBackrest : OsmFilterQuestType<BenchBackrestAnswer>() {
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) }
             ),
-            otherAnswers = listOf(
-                AnswerItem(stringResource(Res.string.quest_bench_answer_picnic_table)) { on(Answer(PICNIC_TABLE)) }
-            ),
             on = on,
+            otherAnswers = { listOf(
+                AnswerItem(stringResource(Res.string.quest_bench_answer_picnic_table)) { on(Answer(PICNIC_TABLE)) }
+            ) },
         )
     }
 

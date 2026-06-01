@@ -142,47 +142,51 @@ fun AddressOverlayForm(
         label =
             // never show house number, as it already is shown in the form
             element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
-        otherAnswers = listOfNotNull(
-            AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) {
+        otherAnswers = {
+            val result = ArrayList<AnswerItem>()
+
+            result.add(AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) {
                 addressNumberAndName = AddressNumberAndName(
                     name = "",
                     number = addressNumberAndName.number?.takeIf { !it.isEmpty() }
                 )
-            },
-            AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
+            })
+
+            result.add(AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
                 streetOrPlaceName = PlaceName("")
                 showSelect = true
-            },
-            when {
-                countryInfo.countryCode in listOf("JP", "CZ", "SK") -> {
-                    null
-                }
+            })
 
-                addressNumberAndName.number is BlockAndHouseNumber ->
-                    AnswerItem(stringResource(Res.string.quest_address_answer_no_block2)) {
+            if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
+                if (addressNumberAndName.number is BlockAndHouseNumber) {
+                    result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_block2)) {
                         addressNumberAndName = addressNumberAndName.copy(number = HouseNumber(""))
-                    }
-
-                else ->
-                    AnswerItem(stringResource(Res.string.quest_address_answer_block2)) {
+                    })
+                } else {
+                    result.add(AnswerItem(stringResource(Res.string.quest_address_answer_block2)) {
                         addressNumberAndName =
                             addressNumberAndName.copy(number = BlockAndHouseNumber("", ""))
-                    }
-            },
-            if (element != null) {
-                AnswerItem(stringResource(Res.string.quest_address_answer_no_address)) {
-                    confirmRemoveAddress = true
+                    })
                 }
-            } else null,
+            }
+
+            if (element != null) {
+                result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_address)) {
+                    confirmRemoveAddress = true
+                })
+            }
+
             // TODO compose-quest-form position on way stuff
             /*
             if (element == null && addEntrance) {
                 Answer(stringResource(Res.string.overlay_addresses_no_entrance)) {
                     addEntrance = false
                 }
-            } else null
-             */
-        )
+            }
+            */
+
+            result
+        }
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),

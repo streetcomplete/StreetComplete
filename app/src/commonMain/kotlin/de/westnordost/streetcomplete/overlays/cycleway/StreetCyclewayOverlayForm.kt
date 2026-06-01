@@ -92,50 +92,6 @@ fun StreetCyclewayOverlayForm(
     var confirmNotOnewayForCyclists by remember { mutableStateOf(false) }
     var confirmSelectReverseCyclewayDirection by remember { mutableStateOf(false) }
 
-    val switchBicycleBoulevardAnswer = when (bicycleBoulevard) {
-        BicycleBoulevard.YES ->
-            AnswerItem(stringResource(Res.string.bicycle_boulevard_is_not_a, stringResource(Res.string.bicycle_boulevard))) {
-                bicycleBoulevard = BicycleBoulevard.NO
-            }
-        BicycleBoulevard.NO ->
-            // don't allow pedestrian roads to be tagged as bicycle roads (should rather be
-            // highway=pedestrian + bicycle=designated rather than bicycle_road=yes)
-            if (element.tags["highway"] != "pedestrian") {
-                AnswerItem(stringResource(Res.string.bicycle_boulevard_is_a, stringResource(Res.string.bicycle_boulevard))) {
-                    bicycleBoulevard = BicycleBoulevard.YES
-                }
-            } else null
-    }
-    val reverseCyclewayDirectionAnswer = AnswerItem(stringResource(Res.string.cycleway_reverse_direction)) {
-        confirmSelectReverseCyclewayDirection = true
-    }
-    val bicycleInPedestrianStreetAnswers = buildList {
-        // only offer answers in pedestrian zones
-        if (bicycleInPedestrianStreet == null) return@buildList
-
-        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.DESIGNATED) {
-            add(
-                AnswerItem(stringResource(Res.string.pedestrian_zone_designated)) {
-                    bicycleInPedestrianStreet = BicycleInPedestrianStreet.DESIGNATED
-                }
-            )
-        }
-        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.ALLOWED) {
-            add(
-                AnswerItem(stringResource(Res.string.pedestrian_zone_allowed_sign)) {
-                    bicycleInPedestrianStreet = BicycleInPedestrianStreet.ALLOWED
-                }
-            )
-        }
-        if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.NOT_SIGNED) {
-            add(
-                AnswerItem(stringResource(Res.string.pedestrian_zone_no_sign)) {
-                    bicycleInPedestrianStreet = BicycleInPedestrianStreet.NOT_SIGNED
-                }
-            )
-        }
-    }
-
     fun saveAndApplyCycleway() {
         val tags = StringMapChangesBuilder(element.tags)
         val sides = cycleways
@@ -173,12 +129,54 @@ fun StreetCyclewayOverlayForm(
                 saveAndApplyCycleway()
             }
         },
-        otherAnswers =
-            bicycleInPedestrianStreetAnswers +
-            listOfNotNull(
-                reverseCyclewayDirectionAnswer,
-                switchBicycleBoulevardAnswer,
-            ),
+        otherAnswers = {
+            val result = ArrayList<AnswerItem>()
+
+            if (bicycleInPedestrianStreet != null) {
+                if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.DESIGNATED) {
+                    result.add(
+                        AnswerItem(stringResource(Res.string.pedestrian_zone_designated)) {
+                            bicycleInPedestrianStreet = BicycleInPedestrianStreet.DESIGNATED
+                        }
+                    )
+                }
+                if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.ALLOWED) {
+                    result.add(
+                        AnswerItem(stringResource(Res.string.pedestrian_zone_allowed_sign)) {
+                            bicycleInPedestrianStreet = BicycleInPedestrianStreet.ALLOWED
+                        }
+                    )
+                }
+                if (bicycleInPedestrianStreet != BicycleInPedestrianStreet.NOT_SIGNED) {
+                    result.add(
+                        AnswerItem(stringResource(Res.string.pedestrian_zone_no_sign)) {
+                            bicycleInPedestrianStreet = BicycleInPedestrianStreet.NOT_SIGNED
+                        }
+                    )
+                }
+            }
+
+            result.add(AnswerItem(stringResource(Res.string.cycleway_reverse_direction)) {
+                confirmSelectReverseCyclewayDirection = true
+            })
+
+            when (bicycleBoulevard) {
+                BicycleBoulevard.YES ->
+                    result.add(AnswerItem(stringResource(Res.string.bicycle_boulevard_is_not_a2)) {
+                        bicycleBoulevard = BicycleBoulevard.NO
+                    })
+                BicycleBoulevard.NO ->
+                    // don't allow pedestrian roads to be tagged as bicycle roads (should rather be
+                    // highway=pedestrian + bicycle=designated rather than bicycle_road=yes)
+                    if (element.tags["highway"] != "pedestrian") {
+                        result.add(AnswerItem(stringResource(Res.string.bicycle_boulevard_is_a2)) {
+                            bicycleBoulevard = BicycleBoulevard.YES
+                        })
+                    }
+            }
+
+            result
+        },
         contentPadding = PaddingValues.Zero
     ) {
         Box(contentAlignment = Alignment.Center) {

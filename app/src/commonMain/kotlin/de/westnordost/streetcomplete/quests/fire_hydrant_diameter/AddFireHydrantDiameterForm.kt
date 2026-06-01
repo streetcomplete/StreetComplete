@@ -45,9 +45,11 @@ fun AddFireHydrantDiameterForm(
             }
         },
         on = on,
-        otherAnswers = listOf(
-            AnswerItem(stringResource(Res.string.quest_generic_answer_noSign)) { confirmNoSign = true }
-        )
+        otherAnswers = { listOf(
+            AnswerItem(stringResource(Res.string.quest_generic_answer_noSign)) {
+                confirmNoSign = true
+            }
+        ) }
     ) {
         HydrantDiameterForm(
             value = diameter,

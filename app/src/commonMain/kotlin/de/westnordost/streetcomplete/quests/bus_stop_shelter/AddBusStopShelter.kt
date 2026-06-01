@@ -53,9 +53,9 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(SHELTER)) }
             ),
             on = on,
-            otherAnswers = listOf(
+            otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_busStopShelter_covered)) { on(Answer(COVERED)) }
-            )
+            ) }
         )
     }
 

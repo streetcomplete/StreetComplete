@@ -28,9 +28,9 @@ fun AddBusStopRefForm(
         isComplete = ref.isNotEmpty(),
         onClickOk = { on(Answer(BusStopRef(ref))) },
         on = on,
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true }
-        )
+        ) }
     ) {
         TextField(
             value = ref,

@@ -33,13 +33,17 @@ fun AddPathSurfaceForm(
             })
         },
         favoriteKey = "AddPathSurfaceForm",
-        otherAnswers = listOfNotNull(
+        otherAnswers = { listOfNotNull(
             if (element.couldBeSteps()) {
-                AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) { on(Answer(IsActuallyStepsAnswer)) }
+                AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
+                    on(Answer(IsActuallyStepsAnswer))
+                }
             } else null,
             if (element.tags["indoor"] != "yes") {
-                AnswerItem(stringResource(Res.string.quest_generic_answer_is_indoors)) { on(Answer(IsIndoorsAnswer)) }
+                AnswerItem(stringResource(Res.string.quest_generic_answer_is_indoors)) {
+                    on(Answer(IsIndoorsAnswer))
+                }
             } else null,
-        )
+        ) }
     )
 }

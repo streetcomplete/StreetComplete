@@ -30,9 +30,11 @@ fun AddClothingBinOperatorForm(
                 is Action -> it
             })
         },
-        otherAnswers = listOf(
-            AnswerItem(stringResource(Res.string.quest_generic_answer_noSign)) { confirmNoSign = true }
-        )
+        otherAnswers = { listOf(
+            AnswerItem(stringResource(Res.string.quest_generic_answer_noSign)) {
+                confirmNoSign = true
+            }
+        ) }
     )
 
     if (confirmNoSign) {

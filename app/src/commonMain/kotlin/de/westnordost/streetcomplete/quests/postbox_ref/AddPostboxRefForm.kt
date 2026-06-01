@@ -28,9 +28,9 @@ fun AddPostboxRefForm(
         isComplete = ref.isNotEmpty(),
         onClickOk = { on(Answer(PostboxRef(ref))) },
         on = on,
-        otherAnswers = listOf(
+        otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = false }
-        )
+        ) }
     ) {
         TextField(
             value = ref,

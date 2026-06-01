@@ -46,7 +46,7 @@ fun LocalizedNameQuestForm(
     modifier: Modifier = Modifier,
     hint: @Composable (() -> Unit)? = null,
     noNameConfirmationText: @Composable (() -> Unit)? = null,
-    otherAnswers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     preferences: Preferences = koinInject(),
 ) {
     val selectableLanguages = remember {
@@ -75,10 +75,14 @@ fun LocalizedNameQuestForm(
         },
         on = on,
         modifier = modifier,
-        otherAnswers = otherAnswers + listOf(
-            AnswerItem(stringResource(Res.string.quest_streetName_answer_cantType)) { showKeyboardInfo = true },
-            AnswerItem(stringResource(Res.string.quest_placeName_no_name_answer)) { confirmNoName = true },
-        )
+        otherAnswers = { otherAnswers() + listOf(
+            AnswerItem(stringResource(Res.string.quest_streetName_answer_cantType)) {
+                showKeyboardInfo = true
+            },
+            AnswerItem(stringResource(Res.string.quest_placeName_no_name_answer)) {
+                confirmNoName = true
+            },
+        ) }
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             if (hint != null) {
