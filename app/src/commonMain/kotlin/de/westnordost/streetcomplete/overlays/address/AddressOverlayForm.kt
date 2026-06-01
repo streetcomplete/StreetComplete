@@ -134,9 +134,9 @@ fun AddressOverlayForm(
         // TODO compose-quest-form position on way stuff
         /*
         if (element == null && addEntrance) {
-            Answer(stringResource(Res.string.overlay_addresses_no_entrance)) {
+            result.add(Answer(stringResource(Res.string.overlay_addresses_no_entrance)) {
                 addEntrance = false
-            }
+            })
         }
         */
 
@@ -177,7 +177,7 @@ fun AddressOverlayForm(
                     }
                 }
                 if (action != null) {
-                    onEdit(action)
+                    on(Edit(action))
                 }
             }
              */
