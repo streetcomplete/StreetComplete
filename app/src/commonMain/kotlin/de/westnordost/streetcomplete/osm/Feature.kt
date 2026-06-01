@@ -7,6 +7,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.allDrawableResources
+import org.jetbrains.compose.resources.DrawableResource
 
 /** Apply this feature to the given [tags], optionally removing a [previousFeature] first, i.e.
  *  replacing it. */
@@ -58,6 +61,12 @@ val Feature.hasFixedName get() =
     addTags.containsKey("name") && preserveTags.none { it.containsMatchIn("name") }
         || id == "shop/vacant"
         || id == "shop/unknown"
+
+/** Return the drawable resource of this feature's icon, if any */
+val Feature.iconDrawableResource: DrawableResource? get() {
+    val iconResourceName = icon?.let { "preset_" + it.replace('-', '_') }
+    return Res.allDrawableResources[iconResourceName]
+}
 
 private val NULL_ISLAND = LatLon(0.0, 0.0)
 private val NULL_ISLAND_NODES = listOf(-1L, -2L, -3L, -1L)

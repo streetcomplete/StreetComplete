@@ -7,6 +7,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale
 import de.westnordost.streetcomplete.osm.mtb_scale.applyTo
@@ -22,7 +24,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun MtbScaleOverlayForm(
-    onEdit: (ElementEditAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element,
     preferences: Preferences = koinInject(),
 ) {
@@ -45,9 +47,10 @@ fun MtbScaleOverlayForm(
         onClickOk = { selectedItem ->
             val tagChanges = StringMapChangesBuilder(element.tags)
             MtbScale(selectedItem).applyTo(tagChanges)
-            onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+            on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
         },
         prefs = preferences,
         favoriteKey = "MtbScaleOverlayForm",
+        on = on,
     )
 }

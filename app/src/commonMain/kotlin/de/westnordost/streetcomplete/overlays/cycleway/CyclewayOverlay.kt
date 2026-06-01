@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.cycleway
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -11,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
@@ -62,18 +62,13 @@ class CyclewayOverlay(
         """).map { it to getSeparateCyclewayStyle(it) }
 
     @Composable
-    override fun Form(
-        onEdit: (ElementEditAction) -> Unit,
-        element: Element?,
-        geometry: ElementGeometry,
-        countryInfo: CountryInfo
-    ) {
+    override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
         if (element == null) return
 
         if (element.tags["highway"] in ALL_ROADS) {
-            StreetCyclewayOverlayForm(onEdit, element, geometry, countryInfo)
+            StreetCyclewayOverlayForm(on, element, geometry, countryInfo)
         } else if (element.tags["highway"] in ALL_PATHS) {
-            SeparateCyclewayForm(onEdit, element, countryInfo)
+            SeparateCyclewayForm(on, element, countryInfo)
         }
     }
 }

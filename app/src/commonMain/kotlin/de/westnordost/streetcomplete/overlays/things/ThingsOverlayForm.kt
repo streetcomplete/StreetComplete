@@ -14,6 +14,9 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.overlays.Action
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.things.getThingOrDisusedThing
@@ -28,7 +31,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 @Composable fun ThingsOverlayForm(
-    onEdit: (ElementEditAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element?,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
@@ -78,9 +81,10 @@ import org.koin.compose.koinInject
                 val builder = StringMapChangesBuilder(tags)
                 feature.applyTo(builder)
                 builder.create().applyTo(tags)
-                onEdit(CreateNodeAction(geometry.center, tags))
+                on(Edit(CreateNodeAction(geometry.center, tags)))
             }
         },
+        on = on,
         label =
             // title hint label with name is a duplication, it is displayed in the UI already
             element?.let { nameAndLocationLabel(it, featureDictionary = null) },
@@ -109,8 +113,8 @@ import org.koin.compose.koinInject
     confirmDeleteNode?.let { node ->
         ConfirmDeleteDialog(
             onDismissRequest = { confirmDeleteNode = null },
-            onConfirmDelete = { onEdit(DeletePoiNodeAction(node)) },
-            onLeaveNote = { composeNote(node) }
+            onConfirmDelete = { on(Edit(DeletePoiNodeAction(node))) },
+            onLeaveNote = { on(Action.LeaveNote) }
         )
     }
 }

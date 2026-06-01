@@ -18,6 +18,8 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.surface.Surface
@@ -35,46 +37,66 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 @Composable fun SurfaceOverlayForm(
-    onEdit: (UpdateElementTagsAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element,
     preferences: Preferences = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
 ) {
     val originalItem = remember(element) { parseSurfaceOverlayAnswer(element.tags) }
-    val couldBeSteps = remember(element) { element.couldBeSteps() }
 
     var selectedItem by rememberSerializable(originalItem) { mutableStateOf(originalItem) }
 
     val items = Surface.selectableValuesForWays
 
-    val convertToStepsAnswer = if (couldBeSteps) {
-        AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
-            val tagChanges = StringMapChangesBuilder(element.tags)
-            tagChanges.changeToSteps()
-            onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+    @Composable fun createOtherAnswers(): List<AnswerItem> {
+        val result = ArrayList<AnswerItem>()
+
+        when (selectedItem) {
+            is SegregatedSurface -> {
+                /*
+                No option to switch back to single surface. Removing info about separate cycleway is
+                too complicated.
+
+                Typically, it requires editing not only surface info but also an access info as it
+                happens in cases where bicycle access is gone. May require also removal of
+                cycleway=separate, bicycle=use_sidepath from the road.
+
+                And in cases where there is a segregated cycleway with the same surface as footway
+                then StreetComplete will anyway ask for cycleway:surface and footway:surface.
+
+                Fortunately need for this change are really rare. Notes can be left as usual.
+                */
+            }
+            is SingleSurface -> {
+                /*
+                Only where bicycle access is already present because adding bicycle access typically
+                requires adding proper access tags, interconnections with roads and often also other
+                geometry changes.
+
+                In case where path is not clearly marked as carrying both foot and bicycle traffic
+                mapper can leave a note
+                */
+                if (isBothFootAndBicycleTrafficFilter.matches(element)) {
+                    result.add(AnswerItem(stringResource(Res.string.overlay_path_surface_segregated)) {
+                        selectedItem = SegregatedSurface(null, null)
+                    })
+                }
+            }
         }
-    } else null
+
+        if (element.couldBeSteps()) {
+            result.add(AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
+                val tagChanges = StringMapChangesBuilder(element.tags)
+                tagChanges.changeToSteps()
+                on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
+            })
+        }
+
+        return result
+    }
 
     when (val item = selectedItem) {
         is SingleSurface -> {
-            /*
-            Only where bicycle access is already present because adding bicycle access typically
-            requires adding proper access tags, interconnections with roads and often also other
-            geometry changes.
-
-            In case where path is not clearly marked as carrying both foot and bicycle traffic
-            mapper can leave a note
-            */
-            val isBothFootAndBicycleTraffic = remember {
-                isBothFootAndBicycleTrafficFilter.matches(element)
-            }
-            val convertToSegregatedAnswer =
-                if (isBothFootAndBicycleTraffic) {
-                    AnswerItem(stringResource(Res.string.overlay_path_surface_segregated)) {
-                        selectedItem = SegregatedSurface(null, null)
-                    }
-                } else null
-
             ItemSelectOverlayForm(
                 itemsPerRow = 3,
                 items = items,
@@ -84,14 +106,12 @@ import org.koin.compose.koinInject
                 onClickOk = { selectedItem ->
                     val changesBuilder = StringMapChangesBuilder(element.tags)
                     SingleSurface(selectedItem).applyTo(changesBuilder)
-                    onEdit(UpdateElementTagsAction(element, changesBuilder.create()))
+                    on(Edit(UpdateElementTagsAction(element, changesBuilder.create())))
                 },
                 prefs = preferences,
                 favoriteKey = "SurfaceOverlayForm.Single",
-                otherAnswers = listOfNotNull(
-                    convertToSegregatedAnswer,
-                    convertToStepsAnswer,
-                )
+                on = on,
+                otherAnswers = ::createOtherAnswers
             )
         }
         is SegregatedSurface -> {
@@ -111,27 +131,13 @@ import org.koin.compose.koinInject
                 onClickOk = { (footway, cycleway) ->
                     val changesBuilder = StringMapChangesBuilder(element.tags)
                     SegregatedSurface(footway = footway, cycleway = cycleway).applyTo(changesBuilder)
-                    onEdit(UpdateElementTagsAction(element, changesBuilder.create()))
+                    on(Edit(UpdateElementTagsAction(element, changesBuilder.create())))
                 },
                 labels = labels,
                 prefs = preferences,
                 favoriteKey = "SurfaceOverlayForm.Pair",
-                otherAnswers = listOfNotNull(
-                    convertToStepsAnswer,
-                    /*
-                    No option to switch back to single surface. Removing info about separate cycleway is
-                    too complicated.
-
-                    Typically it requires editing not only surface info but also an access info as it
-                    happens in cases where bicycle access is gone. May require also removal of
-                    cycleway=separate, bicycle=use_sidepath from the road.
-
-                    And in cases where there is a segregated cycleway with the same surface as footway
-                    then StreetComplete will anyway ask for cycleway:surface and footway:surface.
-
-                    Fortunately need for this change are really rare. Notes can be left as usual.
-                    */
-                )
+                on = on,
+                otherAnswers = ::createOtherAnswers
             )
         }
     }

@@ -418,7 +418,6 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
     targetDir = "$projectDir/src/commonMain/composeResources/drawable/"
     iconSize = 34
     transformName = { "preset_" + it.replace('-', '_') }
-    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt" // necessary as long as map is not compose based yet
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
@@ -481,7 +480,9 @@ val copyIconsToAndroid by tasks.registering(CopyIconsTask::class) {
         it == "sport_volleyball.xml" ||
         it == "religion_christian.xml" ||
         it == "religion_jewish.xml" ||
-        it == "religion_muslim.xml"
+        it == "religion_muslim.xml" ||
+        it == "address_dot.xml" ||
+        it == "none.png"
     }
     indexFile = "$projectDir/build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt"
 }

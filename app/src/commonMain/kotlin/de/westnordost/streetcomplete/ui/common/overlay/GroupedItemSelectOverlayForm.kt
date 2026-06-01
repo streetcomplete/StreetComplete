@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.overlays.Action
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.GroupedItemSelectDialog
@@ -47,6 +48,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
     crossinline onClickOk: (selectedItem: I) -> Unit,
     prefs: Preferences,
     favoriteKey: String,
+    noinline on: (Action) -> Unit,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     label: AnnotatedString? = LocalElement.current?.let { element ->
@@ -67,6 +69,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
             prefs.addLastPicked(favoriteKey, value)
             onClickOk(value)
         },
+        on = on,
         modifier = modifier,
         label = label,
         otherAnswers = otherAnswers,

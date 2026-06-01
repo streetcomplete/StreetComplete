@@ -24,6 +24,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.osm.address.AddressNumberAndNameForm
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
 import de.westnordost.streetcomplete.osm.address.HouseNumber
@@ -52,7 +54,7 @@ import kotlin.collections.iterator
 
 @Composable
 fun AddressOverlayForm(
-    onEdit: (ElementEditAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element?,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
@@ -72,7 +74,6 @@ fun AddressOverlayForm(
             name = element?.tags?.get("addr:housename")
         )
     }
-
 
     var addressNumberAndName by rememberSerializable(originalAddressNumberAndName) {
         mutableStateOf(originalAddressNumberAndName)
@@ -95,14 +96,61 @@ fun AddressOverlayForm(
         tagChanges.remove("nohousenumber")
     }
 
+    @Composable
+    fun createOtherAnswers(): List<AnswerItem> {
+        val result = ArrayList<AnswerItem>()
+
+        result.add(AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) {
+            addressNumberAndName = AddressNumberAndName(
+                name = "",
+                number = addressNumberAndName.number?.takeIf { !it.isEmpty() }
+            )
+        })
+
+        result.add(AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
+            streetOrPlaceName = PlaceName("")
+            showSelect = true
+        })
+
+        if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
+            if (addressNumberAndName.number is BlockAndHouseNumber) {
+                result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_block2)) {
+                    addressNumberAndName = addressNumberAndName.copy(number = HouseNumber(""))
+                })
+            } else {
+                result.add(AnswerItem(stringResource(Res.string.quest_address_answer_block2)) {
+                    addressNumberAndName =
+                        addressNumberAndName.copy(number = BlockAndHouseNumber("", ""))
+                })
+            }
+        }
+
+        if (element != null) {
+            result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_address)) {
+                confirmRemoveAddress = true
+            })
+        }
+
+        // TODO compose-quest-form position on way stuff
+        /*
+        if (element == null && addEntrance) {
+            Answer(stringResource(Res.string.overlay_addresses_no_entrance)) {
+                addEntrance = false
+            }
+        }
+        */
+
+        return result
+    }
+
     OverlayForm(
         isComplete =
             // street is optional as in new developments sometimes the street names are not
             // posted yet, or it is not clear on-site, see #6528
             addressNumberAndName.isComplete(),
         hasChanges =
-            originalStreetOrPlaceName != streetOrPlaceName ||
-                originalAddressNumberAndName != addressNumberAndName,
+            originalStreetOrPlaceName != streetOrPlaceName
+            || originalAddressNumberAndName != addressNumberAndName,
         onClickOk = {
             val number = addressNumberAndName.number
             val name = addressNumberAndName.name
@@ -116,7 +164,7 @@ fun AddressOverlayForm(
             if (element != null) {
                 val tagChanges = StringMapChangesBuilder(element.tags)
                 applyChanges(tagChanges)
-                onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+                on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
             }
             // TODO compose-quest-form position on way stuff
             /*
@@ -136,57 +184,14 @@ fun AddressOverlayForm(
             else {
                 val tagChanges = StringMapChangesBuilder(mapOf())
                 applyChanges(tagChanges)
-                onEdit(CreateNodeAction(geometry.center, tagChanges))
+                on(Edit(CreateNodeAction(geometry.center, tagChanges)))
             }
         },
+        on = on,
         label =
             // never show house number, as it already is shown in the form
             element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
-        otherAnswers = {
-            val result = ArrayList<AnswerItem>()
-
-            result.add(AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) {
-                addressNumberAndName = AddressNumberAndName(
-                    name = "",
-                    number = addressNumberAndName.number?.takeIf { !it.isEmpty() }
-                )
-            })
-
-            result.add(AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
-                streetOrPlaceName = PlaceName("")
-                showSelect = true
-            })
-
-            if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
-                if (addressNumberAndName.number is BlockAndHouseNumber) {
-                    result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_block2)) {
-                        addressNumberAndName = addressNumberAndName.copy(number = HouseNumber(""))
-                    })
-                } else {
-                    result.add(AnswerItem(stringResource(Res.string.quest_address_answer_block2)) {
-                        addressNumberAndName =
-                            addressNumberAndName.copy(number = BlockAndHouseNumber("", ""))
-                    })
-                }
-            }
-
-            if (element != null) {
-                result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_address)) {
-                    confirmRemoveAddress = true
-                })
-            }
-
-            // TODO compose-quest-form position on way stuff
-            /*
-            if (element == null && addEntrance) {
-                Answer(stringResource(Res.string.overlay_addresses_no_entrance)) {
-                    addEntrance = false
-                }
-            }
-            */
-
-            result
-        }
+        otherAnswers = ::createOtherAnswers
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),
@@ -236,7 +241,7 @@ fun AddressOverlayForm(
     if (confirmRemoveAddress) {
         QuestConfirmationDialog(
             onDismissRequest = { confirmRemoveAddress = false },
-            onConfirmed = { onEdit(createRemoveAddressElementEditAction(element!!)) }
+            onConfirmed = { on(Edit(createRemoveAddressElementEditAction(element!!))) }
         )
     }
 }

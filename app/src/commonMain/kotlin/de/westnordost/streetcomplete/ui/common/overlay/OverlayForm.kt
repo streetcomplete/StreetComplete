@@ -33,6 +33,13 @@ import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.overlays.Action
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.leave_note
+import de.westnordost.streetcomplete.resources.move_node
+import de.westnordost.streetcomplete.resources.split_way
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.MoreIcon
@@ -41,7 +48,9 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.titleMedium
+import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 /** A generic overlay form containing the center-aligned [content], padded with [contentPadding].
@@ -58,18 +67,40 @@ fun OverlayForm(
     isComplete: Boolean,
     hasChanges: Boolean,
     onClickOk: () -> Unit,
+    on: (Action) -> Unit,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
+    mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
-    otherAnswers: @Composable () ->List<AnswerItem> = { emptyList() },
+    otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable BoxScope.() -> Unit
 ) {
     val windowInfo = LocalWindowInfo.current
 
     val elevation = 4.dp
+
+    @Composable
+    fun createDefaultOtherAnswers(): List<AnswerItem> {
+        val result = ArrayList<AnswerItem>()
+        val element = LocalElement.current
+        if (element != null) {
+            result.add(AnswerItem(stringResource(Res.string.leave_note)) { on(Action.LeaveNote) })
+
+            if (element.isSplittable()) {
+                result.add(AnswerItem(stringResource(Res.string.split_way)) { on(Action.SplitWay) })
+            }
+            if (
+                element is Node // add moveNodeAnswer only if it's a free floating node
+                && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+            ) {
+                result.add(AnswerItem(stringResource(Res.string.move_node)) { on(Action.MoveNode) })
+            }
+        }
+        return result
+    }
 
     Box(modifier = modifier.sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))) {
         Column(
@@ -95,7 +126,7 @@ fun OverlayForm(
             OverlayContentBubble(
                 modifier = Modifier.fillMaxWidth(),
                 elevation = elevation,
-                otherAnswers = otherAnswers,
+                otherAnswers = { otherAnswers() + createDefaultOtherAnswers() },
                 contentPadding = contentPadding,
                 content = content
             )
@@ -174,6 +205,7 @@ private fun OverlayFormPreview() {
         isComplete = true,
         hasChanges = false,
         onClickOk = {},
+        on = {},
         label = AnnotatedString("some text"),
         otherAnswers = { listOf(
             AnswerItem("Can't say") {},

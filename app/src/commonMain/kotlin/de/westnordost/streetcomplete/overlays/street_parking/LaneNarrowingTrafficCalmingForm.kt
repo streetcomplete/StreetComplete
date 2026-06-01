@@ -14,6 +14,8 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.traffic_calming.applyTo
@@ -31,7 +33,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun LaneNarrowingTrafficCalmingForm(
-    onEdit: (ElementEditAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element,
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     preferences: Preferences = koinInject()
@@ -52,7 +54,7 @@ fun LaneNarrowingTrafficCalmingForm(
             if (element != null) {
                 val tagChanges = StringMapChangesBuilder(element.tags)
                 selectedItem.applyTo(tagChanges)
-                onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+                on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
             }
             /* TODO compose-quest-form position on way stuff
             else if (positionOnWay != null) {
@@ -65,13 +67,14 @@ fun LaneNarrowingTrafficCalmingForm(
         },
         prefs = preferences,
         favoriteKey = "LaneNarrowingTrafficCalmingForm",
-        otherAnswers = listOfNotNull(
+        on = on,
+        otherAnswers = { listOfNotNull(
             if (element != null) {
                 AnswerItem(stringResource(Res.string.lane_narrowing_traffic_calming_none)) {
                     confirmRemoveLaneNarrowingTrafficCalming = true
                 }
             } else null
-        )
+        ) }
     )
 
     if (confirmRemoveLaneNarrowingTrafficCalming) {
@@ -80,7 +83,7 @@ fun LaneNarrowingTrafficCalmingForm(
             onConfirmed = {
                 val tagChanges = StringMapChangesBuilder(element.tags)
                 (null as LaneNarrowingTrafficCalming?).applyTo(tagChanges)
-                onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+                on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
             }
         )
     }

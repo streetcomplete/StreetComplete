@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import kotlin.jvm.JvmInline
 
 /** An overlay is displayed on top of the normal map but behind quest pins and visualizes how
  *  selected data is tagged. Tapping on an element can optionally open a form in which the user
@@ -34,7 +35,7 @@ interface Overlay : ElementEditType {
      *  */
     @Composable
     fun Form(
-        onEdit: (ElementEditAction) -> Unit,
+        on: (OverlayAction) -> Unit,
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo
@@ -45,4 +46,17 @@ interface Overlay : ElementEditType {
 
     /** return pairs of element to style for all elements in the map data that should be displayed */
     fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, OverlayStyle>>
+}
+
+sealed interface OverlayAction
+@JvmInline value class Edit(val value: ElementEditAction) : OverlayAction
+enum class Action : OverlayAction {
+    /** Just close the overlay form */
+    Dismiss,
+    /** User wants to leave a note */
+    LeaveNote,
+    /** User wants to split the way */
+    SplitWay,
+    /** User wants to move the node */
+    MoveNode,
 }

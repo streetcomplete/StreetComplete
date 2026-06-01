@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.hasFixedName
@@ -36,7 +38,7 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 @Composable fun PlacesOverlayForm(
-    onEdit: (ElementEditAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element?,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
@@ -143,7 +145,7 @@ import org.koin.compose.koinInject
             CreateNodeAction(geometry.center, tagChanges)
         }
 
-        onEdit(edit)
+        on(Edit(edit))
     }
 
     OverlayForm(
@@ -176,6 +178,7 @@ import org.koin.compose.koinInject
                 askReplacePlace = true
             }
         },
+        on = on,
         label =
             // title hint label with name is a duplication, it is displayed in the UI already
             element?.let { nameAndLocationLabel(it, featureDictionary = null) },

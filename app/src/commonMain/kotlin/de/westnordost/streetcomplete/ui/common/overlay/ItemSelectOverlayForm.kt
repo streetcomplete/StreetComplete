@@ -17,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
+import de.westnordost.streetcomplete.data.overlays.Action
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
@@ -42,6 +43,7 @@ inline fun <reified I> ItemSelectOverlayForm(
     crossinline onClickOk: (selectedItem: I) -> Unit,
     prefs: Preferences,
     favoriteKey: String,
+    noinline on: (Action) -> Unit,
     modifier: Modifier = Modifier,
     selectableItems: List<I> = items,
     noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
@@ -63,6 +65,7 @@ inline fun <reified I> ItemSelectOverlayForm(
             prefs.addLastPicked(favoriteKey, value)
             onClickOk(value)
         },
+        on = on,
         modifier = modifier,
         otherAnswers = otherAnswers,
     ) {

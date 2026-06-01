@@ -12,6 +12,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.oneway.isForwardOneway
@@ -28,7 +30,7 @@ import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import org.koin.compose.koinInject
 
 @Composable fun StreetParkingOverlayForm(
-    onEdit: (ElementEditAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
@@ -53,8 +55,9 @@ import org.koin.compose.koinInject
             preferences.setLastPicked(favKey, listOf(parking))
             val tagChanges = StringMapChangesBuilder(element.tags)
             parking.applyTo(tagChanges)
-            onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+            on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
         },
+        on = on,
         contentPadding = PaddingValues.Zero
     ) {
         StreetParkingForm(

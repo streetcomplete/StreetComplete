@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.changeToSteps
 import de.westnordost.streetcomplete.osm.lit.LitStatus
@@ -29,7 +31,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun WayLitOverlayForm(
-    onEdit: (ElementEditAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element,
     preferences: Preferences = koinInject()
 ) {
@@ -47,18 +49,19 @@ fun WayLitOverlayForm(
         onClickOk = { selectedItem ->
             val tagChanges = StringMapChangesBuilder(element.tags)
             selectedItem.applyTo(tagChanges)
-            onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+            on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
         },
         prefs = preferences,
         favoriteKey = "WayLitOverlayForm",
-        otherAnswers = listOfNotNull(
+        on = on,
+        otherAnswers = { listOfNotNull(
             if (element.couldBeSteps()) {
                 AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
                     val tagChanges = StringMapChangesBuilder(element.tags)
                     tagChanges.changeToSteps()
-                    onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+                    on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
                 }
             } else null
-        )
+        ) }
     )
 }

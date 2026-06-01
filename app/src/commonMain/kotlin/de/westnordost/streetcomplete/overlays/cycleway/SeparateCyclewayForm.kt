@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
 import de.westnordost.streetcomplete.osm.cycleway_separate.applyTo
@@ -24,7 +26,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun SeparateCyclewayForm(
-    onEdit: (UpdateElementTagsAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element,
     countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
@@ -49,9 +51,10 @@ fun SeparateCyclewayForm(
         onClickOk = { selectedItem ->
             val tagChanges = StringMapChangesBuilder(element.tags)
             selectedItem.applyTo(tagChanges)
-            onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+            on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
         },
         prefs = preferences,
         favoriteKey = "SeparateCyclewayForm",
+        on = on,
     )
 }

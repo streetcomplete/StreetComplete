@@ -11,6 +11,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
@@ -28,7 +30,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun BuildingsOverlayForm(
-    onEdit: (ElementEditAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element,
     preferences: Preferences = koinInject()
 ) {
@@ -64,10 +66,11 @@ fun BuildingsOverlayForm(
         onClickOk = { selectedItem ->
             val tagChanges = StringMapChangesBuilder(element.tags)
             selectedItem.applyTo(tagChanges)
-            onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+            on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
         },
         prefs = preferences,
         favoriteKey = "BuildingsOverlayForm",
+        on = on,
         label =
             // always show house number, never show feature name (because type of building is
             // already shown in the form itself)

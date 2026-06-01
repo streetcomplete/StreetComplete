@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.mtb_scale
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.*
@@ -44,14 +44,9 @@ class MtbScaleOverlay : Overlay {
         """).map { it to getStyle(it) }
 
     @Composable
-    override fun Form(
-        onEdit: (ElementEditAction) -> Unit,
-        element: Element?,
-        geometry: ElementGeometry,
-        countryInfo: CountryInfo
-    ) {
+    override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
         if (element != null) {
-            MtbScaleOverlayForm(onEdit, element)
+            MtbScaleOverlayForm(on, element)
         }
     }
 

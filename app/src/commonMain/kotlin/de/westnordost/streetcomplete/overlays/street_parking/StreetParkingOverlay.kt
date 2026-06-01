@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
@@ -56,12 +57,7 @@ class StreetParkingOverlay : Overlay {
         }
 
     @Composable
-    override fun Form(
-        onEdit: (ElementEditAction) -> Unit,
-        element: Element?,
-        geometry: ElementGeometry,
-        countryInfo: CountryInfo
-    ) {
+    override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
         val isRoad = remember(element) {
             element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes"
         }
@@ -70,11 +66,11 @@ class StreetParkingOverlay : Overlay {
         }
 
         if (isRoad) {
-            StreetParkingOverlayForm(onEdit, element!!, geometry, countryInfo)
+            StreetParkingOverlayForm(on, element!!, geometry, countryInfo)
         }
         // TODO compose-quest-form
         //else if (isCycleway) {
-        //    LaneNarrowingTrafficCalmingForm(onEdit, element)
+        //    LaneNarrowingTrafficCalmingForm(on, element)
         //}
     }
 }

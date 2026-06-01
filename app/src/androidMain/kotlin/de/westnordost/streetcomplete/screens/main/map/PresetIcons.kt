@@ -1,20 +1,20 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import androidx.annotation.DrawableRes
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.osm.iconDrawableResource
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.util.getShortHouseNumber
 import de.westnordost.streetcomplete.util.ktx.getFeature
-import de.westnordost.streetcomplete.view.presetIconIndex
+import org.jetbrains.compose.resources.DrawableResource
 
-@DrawableRes fun getIcon(featureDictionary: FeatureDictionary, element: Element): Int? {
-    val icon = featureDictionary.getFeature(element)?.let { presetIconIndex[it.icon] }
+fun getIcon(featureDictionary: FeatureDictionary, element: Element): DrawableResource? {
+    val icon = featureDictionary.getFeature(element)?.iconDrawableResource
     if (icon != null) return icon
 
     if (getShortHouseNumber(element.tags) != null && getNameLabel(element.tags) == null) {
-        return R.drawable.ic_none
+        return Res.drawable.none
     }
 
     return null

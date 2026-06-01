@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.address
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -10,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
@@ -44,7 +44,7 @@ class AddressOverlay(
             """)
             .map {
                 val label = getShortHouseNumber(it.tags) // or ▫
-                val icon = if (label != null) R.drawable.ic_address_dot else null
+                val icon = if (label != null) Res.drawable.address_dot else null
                 it to OverlayStyle.Point(icon = icon, label = label ?: "◽")
             } +
         mapData
@@ -61,12 +61,7 @@ class AddressOverlay(
             }
 
     @Composable
-    override fun Form(
-        onEdit: (ElementEditAction) -> Unit,
-        element: Element?,
-        geometry: ElementGeometry,
-        countryInfo: CountryInfo
-    ) {
-        AddressOverlayForm(onEdit, element, geometry, countryInfo)
+    override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddressOverlayForm(on, element, geometry, countryInfo)
     }
 }

@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.overlays.Edit
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
@@ -29,7 +31,7 @@ import org.koin.compose.koinInject
 
 @Composable
 fun SidewalkOverlayForm(
-    onEdit: (ElementEditAction) -> Unit,
+    on: (OverlayAction) -> Unit,
     element: Element,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
@@ -53,8 +55,9 @@ fun SidewalkOverlayForm(
             preferences.setLastPicked(favKey, listOf(sidewalks))
             val tagChanges = StringMapChangesBuilder(element.tags)
             sidewalks.applyTo(tagChanges)
-            onEdit(UpdateElementTagsAction(element, tagChanges.create()))
+            on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
         },
+        on = on,
         contentPadding = PaddingValues.Zero,
     ) {
         SidewalkForm(

@@ -25,6 +25,7 @@ import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
+import de.westnordost.streetcomplete.data.overlays.Action
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
@@ -45,7 +46,8 @@ inline fun <reified I> ItemPairSelectOverlayForm(
     labels: Pair<String, String>,
     prefs: Preferences,
     favoriteKey: String,
-    modifier: Modifier = Modifier.Companion,
+    noinline on: (Action) -> Unit,
+    modifier: Modifier = Modifier,
     noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
 ) {
     val lastPicked = remember {
@@ -65,6 +67,7 @@ inline fun <reified I> ItemPairSelectOverlayForm(
             prefs.addLastPicked(favoriteKey, value)
             onClickOk(value)
         },
+        on = on,
         modifier = modifier,
         otherAnswers = otherAnswers
     ) {
