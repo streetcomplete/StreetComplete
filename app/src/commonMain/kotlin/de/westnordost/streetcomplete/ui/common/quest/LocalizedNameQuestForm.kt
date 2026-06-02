@@ -106,7 +106,7 @@ fun LocalizedNameQuestForm(
         InfoDialog(
             onDismissRequest = { showKeyboardInfo = false },
             title = { Text(stringResource(Res.string.quest_streetName_cantType_title)) },
-            text = { Text(stringResource(Res.string.quest_streetName_cantType_description)) }
+            text = { Text(stringResource(Res.string.quest_streetName_cantType_description2)) }
         )
     }
 

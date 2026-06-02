@@ -1682,7 +1682,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_streetName_add_language">Add language</string>
     <string name="quest_streetName_answer_cantType">Can’t type the characters on the sign</string>
     <string name="quest_streetName_cantType_title">Missing keyboard layout?</string>
-    <string name="quest_streetName_cantType_description">If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
+    <string name="quest_streetName_cantType_description2">If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
 
 Otherwise, you can download another keyboard in the app store. On Android, you might want to try FlorisBoard or HeliBoard.</string>
     <string name="quest_name_answer_noName_confirmation_title">Really no name?</string>
