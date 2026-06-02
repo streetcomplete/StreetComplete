@@ -65,7 +65,8 @@ fun ShopTypeForm(
                     )
                 }
             }
-        }
+        },
+        modifier = modifier,
     )
 }
 
