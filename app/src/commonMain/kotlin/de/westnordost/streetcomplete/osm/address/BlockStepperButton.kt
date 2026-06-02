@@ -17,16 +17,8 @@ fun BlockStepperButton(
     val prev = remember(value) { stepBlock(value, -1) }
 
     StepperButton(
-        onIncrease = {
-            if (next != null) {
-                onValueChange(next)
-            }
-        },
-        onDecrease = {
-            if (prev != null) {
-                onValueChange(prev)
-            }
-        },
+        onIncrease = { if (next != null) onValueChange(next) },
+        onDecrease = { if (prev != null) onValueChange(prev) },
         modifier = modifier,
         increaseEnabled = next != null,
         decreaseEnabled = prev != null,

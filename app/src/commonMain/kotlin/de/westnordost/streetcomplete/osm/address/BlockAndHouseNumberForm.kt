@@ -75,7 +75,8 @@ fun BlockAndHouseNumberForm(
                     BlockStepperButton(
                         value = if (useBlockSuggestion) suggestion.block else value.block,
                         onValueChange = { onValueChange(value.copy(block = it)) },
-                        modifier = Modifier.width(48.dp)
+                        modifier = Modifier
+                            .width(48.dp)
                             .height(blockInputHeightPx.pxToDp())
                     )
                 }
@@ -83,12 +84,10 @@ fun BlockAndHouseNumberForm(
                 HouseNumberInput(
                     value = value.houseNumber,
                     onValueChange = {
-                        onValueChange(
-                            value.copy(
-                                houseNumber = it,
-                                block = if (useBlockSuggestion) suggestion.block else value.block
-                            )
-                        )
+                        onValueChange(value.copy(
+                            houseNumber = it,
+                            block = if (useBlockSuggestion) suggestion.block else value.block
+                        ))
                     },
                     modifier = Modifier.width(192.dp),
                     suggestion = suggestion?.houseNumber

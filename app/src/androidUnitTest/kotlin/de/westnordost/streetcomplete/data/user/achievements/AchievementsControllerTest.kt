@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -294,7 +295,7 @@ private object OverlayOne : Overlay {
 
     @Composable
     override fun Form(
-        onEdit: (ElementEditAction) -> Unit,
+        on: (OverlayAction) -> Unit,
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,

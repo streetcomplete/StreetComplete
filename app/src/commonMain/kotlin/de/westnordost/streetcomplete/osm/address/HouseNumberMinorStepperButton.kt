@@ -18,16 +18,8 @@ fun HouseNumberMinorStepperButton(
     val prevMinor = remember(value) { value?.minorStep(-1) }
 
     StepperButton(
-        onIncrease = {
-            if (nextMinor != null) {
-                onValueChange(nextMinor)
-            }
-        },
-        onDecrease = {
-            if (prevMinor != null) {
-                onValueChange(prevMinor)
-            }
-        },
+        onIncrease = { if (nextMinor != null) onValueChange(nextMinor) },
+        onDecrease = { if (prevMinor != null) onValueChange(prevMinor) },
         modifier = modifier.alpha(if (nextMinor == null && prevMinor == null) 0f else 1f),
         increaseEnabled = nextMinor != null,
         decreaseEnabled = prevMinor != null,
