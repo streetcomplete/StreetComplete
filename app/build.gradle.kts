@@ -409,7 +409,7 @@ tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
 // tasks.register<DownloadBrandLogosTask>("downloadBrandLogos") {
 //     group = "streetcomplete"
 //     version = nsiVersion
-//     targetDir = "$projectDir/src/androidMain/assets/osmfeatures/brands"
+//     targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/brands"
 // }
 
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
@@ -425,7 +425,6 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFilesAndroid = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
     targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/strings.xml" }
 }
 
@@ -461,10 +460,7 @@ tasks.register("copyDefaultStringsToEnStrings") {
     group = "streetcomplete"
     doLast {
         val sourceStrings = File("$projectDir/src/commonMain/composeResources/values/strings.xml")
-
-        sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
         sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
-        sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values/strings.xml"), true)
     }
 }
 
@@ -487,8 +483,15 @@ val copyIconsToAndroid by tasks.registering(CopyIconsTask::class) {
     indexFile = "$projectDir/build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt"
 }
 
+val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
+    group = "streetcomplete"
+    sourceDir = "$projectDir/src/commonMain/composeResources"
+    targetDir = "$projectDir/build/generated/androidMain/res"
+}
+
 project.afterEvaluate {
     tasks.named("preBuild") {
         dependsOn(copyIconsToAndroid)
+        dependsOn(copyStringsToAndroid)
     }
 }

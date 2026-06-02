@@ -16,8 +16,8 @@ fun Locale.toAndroidResCodes(): List<String> {
         // TODO Compose multiplatform: scripts are not supported (yet) in Compose Multiplatform resources:
         // https://youtrack.jetbrains.com/issue/CMP-4449/Ability-to-support-more-language-and-region-qualifiers
         return listOf()
-        val countryStr = if (country.isNotEmpty()) "+$country" else ""
-        return languages.map { "b+$it+$script$countryStr" }
+        //val countryStr = if (country.isNotEmpty()) "+$country" else ""
+        //return languages.map { "b+$it+$script$countryStr" }
     } else {
         val countryStr = if (country.isNotEmpty()) "-r$country" else ""
         return languages.map { it + countryStr }
