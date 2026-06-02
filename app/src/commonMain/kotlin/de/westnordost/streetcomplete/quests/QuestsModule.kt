@@ -59,12 +59,12 @@ import de.westnordost.streetcomplete.quests.bus_stop_name.AddBusStopName
 import de.westnordost.streetcomplete.quests.bus_stop_ref.AddBusStopRef
 import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
+import de.westnordost.streetcomplete.quests.camping.AddCabins
 import de.westnordost.streetcomplete.quests.camping.AddCampDrinkingWater
 import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
-import de.westnordost.streetcomplete.quests.camping.AddTents
-import de.westnordost.streetcomplete.quests.camping.AddCabins
 import de.westnordost.streetcomplete.quests.camping.AddCaravans
+import de.westnordost.streetcomplete.quests.camping.AddTents
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationBicycleCapacity
@@ -203,7 +203,6 @@ import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import org.koin.core.module.dsl.viewModel
 
 val questsModule = module {
     single {
