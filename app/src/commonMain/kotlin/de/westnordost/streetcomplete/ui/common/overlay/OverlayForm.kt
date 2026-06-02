@@ -36,10 +36,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.overlays.Action
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.leave_note
-import de.westnordost.streetcomplete.resources.move_node
-import de.westnordost.streetcomplete.resources.split_way
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.MoreIcon

@@ -36,12 +36,7 @@ import de.westnordost.streetcomplete.osm.address.applyTo
 import de.westnordost.streetcomplete.osm.address.parseAddressNumber
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.quests.address.AddressNumberAndName
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_address_answer_block2
-import de.westnordost.streetcomplete.resources.quest_address_answer_house_name2
-import de.westnordost.streetcomplete.resources.quest_address_answer_no_address
-import de.westnordost.streetcomplete.resources.quest_address_answer_no_block2
-import de.westnordost.streetcomplete.resources.quest_address_street_no_named_streets
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
