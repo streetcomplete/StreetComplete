@@ -158,20 +158,13 @@ class AddOpeningHoursTest {
         assertEquals(
             setOf(StringMapEntryAdd("opening_hours", "Mo 10:00-12:00")),
             questType.answerApplied(
-                RegularOpeningHours(
-                    HierarchicOpeningHours(
-                        listOf(
-                            Months(
-                                emptyList(), listOf(
-                                    Weekdays(
-                                        listOf(Weekday.Monday), emptyList(),
-                                        Times(listOf(TimeSpan(ClockTime(10), ClockTime(12))))
-                                    )
-                                )
-                            )
+                RegularOpeningHours(HierarchicOpeningHours(listOf(
+                    Months(emptyList(), listOf(
+                        Weekdays(listOf(Weekday.Monday), emptyList(),
+                            Times(listOf(TimeSpan(ClockTime(10), ClockTime(12))))
                         )
-                    )
-                )
+                    ))
+                )))
             )
         )
     }
@@ -180,20 +173,13 @@ class AddOpeningHoursTest {
         assertEquals(
             setOf(StringMapEntryModify("opening_hours", "hohoho", "Mo 10:00-12:00")),
             questType.answerAppliedTo(
-                RegularOpeningHours(
-                    HierarchicOpeningHours(
-                        listOf(
-                            Months(
-                                emptyList(), listOf(
-                                    Weekdays(
-                                        listOf(Weekday.Monday), emptyList(),
-                                        Times(listOf(TimeSpan(ClockTime(10), ClockTime(12))))
-                                    )
-                                )
-                            )
+                RegularOpeningHours(HierarchicOpeningHours(listOf(
+                    Months(emptyList(), listOf(
+                        Weekdays(listOf(Weekday.Monday), emptyList(),
+                            Times(listOf(TimeSpan(ClockTime(10), ClockTime(12))))
                         )
-                    )
-                ),
+                    ))
+                ))),
                 mapOf("opening_hours" to "hohoho")
             )
         )
@@ -206,20 +192,13 @@ class AddOpeningHoursTest {
                 StringMapEntryAdd("check_date:opening_hours", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
-                RegularOpeningHours(
-                    HierarchicOpeningHours(
-                        listOf(
-                            Months(
-                                emptyList(), listOf(
-                                    Weekdays(
-                                        listOf(Weekday.Monday), emptyList(),
-                                        Times(listOf(TimeSpan(ClockTime(10), ClockTime(12))))
-                                    )
-                                )
-                            )
+                RegularOpeningHours(HierarchicOpeningHours(listOf(
+                    Months(emptyList(), listOf(
+                        Weekdays(listOf(Weekday.Monday), emptyList(),
+                            Times(listOf(TimeSpan(ClockTime(10), ClockTime(12))))
                         )
-                    )
-                ),
+                    ))
+                ))),
                 mapOf("opening_hours" to "Mo 10:00-12:00")
             )
         )
@@ -296,7 +275,8 @@ class AddOpeningHoursTest {
                     "shop" to "sports",
                     "name" to "Atze's Angelladen",
                     "opening_hours" to "Mo-Fr 10:00-20:00"
-                ), timestamp = nowAsEpochMilliseconds()
+                ),
+                timestamp = nowAsEpochMilliseconds()
             )
         ))
     }
@@ -309,7 +289,8 @@ class AddOpeningHoursTest {
                     "shop" to "sports",
                     "name" to "Atze's Angelladen",
                     "opening_hours" to "Mo-Fr 10:00-20:00"
-                ), timestamp = nowAsEpochMilliseconds() - millisecondsFor400Days
+                ),
+                timestamp = nowAsEpochMilliseconds() - millisecondsFor400Days
             )
         ))
     }
@@ -322,7 +303,8 @@ class AddOpeningHoursTest {
                     "nonexisting:shop" to "sports",
                     "name" to "Atze's Angelladen",
                     "opening_hours" to "Mo-Fr 10:00-20:00"
-                ), timestamp = nowAsEpochMilliseconds() - millisecondsFor400Days
+                ),
+                timestamp = nowAsEpochMilliseconds() - millisecondsFor400Days
             )
         ))
     }
@@ -339,7 +321,10 @@ class AddOpeningHoursTest {
 
     @Test fun `isApplicableTo returns false for toilets without opening hours or fee`() {
         assertFalse(questType.isApplicableTo(
-            node(tags = mapOf("amenity" to "toilets"), timestamp = nowAsEpochMilliseconds())
+            node(
+                tags = mapOf("amenity" to "toilets"),
+                timestamp = nowAsEpochMilliseconds()
+            )
         ))
     }
 
