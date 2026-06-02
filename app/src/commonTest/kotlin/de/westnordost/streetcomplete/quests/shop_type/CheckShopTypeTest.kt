@@ -84,9 +84,8 @@ class CheckShopTypeTest {
                 StringMapEntryAdd("c", "d")
             ),
             questType.answerApplied(ShopType(
-                feature = feature(tags = mapOf("a" to "b", "c" to "d")),
-                isStillSamePlace = false)
-            )
+                feature = feature(tags = mapOf("a" to "b", "c" to "d"))
+            ))
         )
     }
 }
