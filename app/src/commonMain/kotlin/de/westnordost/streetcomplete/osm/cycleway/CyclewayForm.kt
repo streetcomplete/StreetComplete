@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.osm.cycleway
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
@@ -86,17 +87,7 @@ fun CyclewayForm(
             isRightSideVisible = isRightSideVisible,
         )
         if (selectionMode == CyclewayFormSelectionMode.REVERSE) {
-            Surface(
-                modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .padding(4.dp),
-                shape = MaterialTheme.shapes.small
-            ) {
-                Text(
-                    text = stringResource(Res.string.cycleway_reverse_direction_toast),
-                    modifier = Modifier.padding(8.dp)
-                )
-            }
+            ReverseDirectionsHint(Modifier.align(Alignment.TopCenter).padding(4.dp))
         }
     }
 
@@ -129,6 +120,21 @@ fun CyclewayForm(
                     )
                 }
             },
+        )
+    }
+}
+
+@Composable
+private fun ReverseDirectionsHint(
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        modifier = modifier,
+        shape = MaterialTheme.shapes.small
+    ) {
+        Text(
+            text = stringResource(Res.string.cycleway_reverse_direction_toast),
+            modifier = Modifier.padding(8.dp)
         )
     }
 }

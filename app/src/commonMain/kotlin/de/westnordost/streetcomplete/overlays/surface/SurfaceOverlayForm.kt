@@ -98,6 +98,7 @@ import org.koin.compose.koinInject
     when (val item = selectedItem) {
         is SingleSurface -> {
             ItemSelectOverlayForm(
+                on = on,
                 itemsPerRow = 3,
                 items = items,
                 initialSelectedItem = item.value,
@@ -110,7 +111,6 @@ import org.koin.compose.koinInject
                 },
                 prefs = preferences,
                 favoriteKey = "SurfaceOverlayForm.Single",
-                on = on,
                 otherAnswers = ::createOtherAnswers
             )
         }
@@ -123,6 +123,7 @@ import org.koin.compose.koinInject
             }
 
             ItemPairSelectOverlayForm(
+                on = on,
                 itemsPerRow = 3,
                 items = items,
                 initialSelectedItemPair = Pair(item.footway, item.cycleway),
@@ -136,7 +137,6 @@ import org.koin.compose.koinInject
                 labels = labels,
                 prefs = preferences,
                 favoriteKey = "SurfaceOverlayForm.Pair",
-                on = on,
                 otherAnswers = ::createOtherAnswers
             )
         }

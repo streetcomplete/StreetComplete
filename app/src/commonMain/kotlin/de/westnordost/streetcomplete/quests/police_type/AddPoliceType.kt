@@ -27,9 +27,9 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>() {
     @Composable
     override fun Form(on: (QuestAction<PoliceType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = PoliceType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },
-            on = on,
         )
     }
 

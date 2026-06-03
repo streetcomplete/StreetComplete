@@ -38,10 +38,10 @@ class AddBikeRentalType : OsmFilterQuestType<BikeRentalTypeAnswer>() {
     @Composable
     override fun Form(on: (QuestAction<BikeRentalTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
-            items = BikeRentalTypeAnswer.entries,
-            itemsPerRow = 2,
-            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             on = on,
+            items = BikeRentalTypeAnswer.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            itemsPerRow = 2,
         )
     }
 

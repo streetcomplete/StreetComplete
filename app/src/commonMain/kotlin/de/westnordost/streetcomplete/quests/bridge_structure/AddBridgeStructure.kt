@@ -31,10 +31,10 @@ class AddBridgeStructure : OsmFilterQuestType<BridgeStructure>() {
     @Composable
     override fun Form(on: (QuestAction<BridgeStructure>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
-            items = BridgeStructure.entries,
-            itemsPerRow = 1,
-            itemContent = { Image(painterResource(it.icon), null) },
             on = on,
+            items = BridgeStructure.entries,
+            itemContent = { Image(painterResource(it.icon), null) },
+            itemsPerRow = 1,
         )
     }
 

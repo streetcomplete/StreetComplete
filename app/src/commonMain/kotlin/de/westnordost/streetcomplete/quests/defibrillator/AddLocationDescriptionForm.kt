@@ -30,9 +30,9 @@ fun AddLocationDescriptionForm(
     var description by rememberSaveable { mutableStateOf("") }
 
     QuestForm(
+        on = on,
         isComplete = description.isNotEmpty(),
         onClickOk = { on(Answer(description)) },
-        on = on,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
             CompositionLocalProvider(

@@ -61,6 +61,7 @@ fun AddWidthForm(
     )
 
     QuestForm(
+        on = on,
         isComplete = length != null,
         onClickOk = {
             val length = length!!
@@ -70,8 +71,7 @@ fun AddWidthForm(
             } else {
                 confirmDubiousRoadWidth = true
             }
-        },
-        on = on,
+        }
     ) {
         Column {
             if (isRoad) {

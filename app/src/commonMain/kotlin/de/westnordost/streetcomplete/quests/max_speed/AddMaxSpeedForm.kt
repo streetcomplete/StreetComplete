@@ -47,6 +47,7 @@ fun AddMaxSpeedForm(
     }
 
     QuestForm(
+        on = on,
         isComplete = maxSpeedAnswer?.isComplete() == true,
         onClickOk = {
             if (maxSpeedAnswer is MaxSpeedAnswer.NoSignWithRoadType) {
@@ -61,7 +62,6 @@ fun AddMaxSpeedForm(
                 maxSpeedAnswer?.let { applySpeedLimitFormAnswer(it) }
             }
         },
-        on = on,
         otherAnswers = { listOfNotNull(
             if (countryInfo.hasAdvisorySpeedLimitSign) {
                 AnswerItem(stringResource(Res.string.quest_maxspeed_answer_advisory_speed_limit)) {

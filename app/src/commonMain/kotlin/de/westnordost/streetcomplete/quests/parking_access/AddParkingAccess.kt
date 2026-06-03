@@ -47,9 +47,9 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
     @Composable
     override fun Form(on: (QuestAction<ParkingAccess>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
+            on = on,
             items = ParkingAccess.entries,
             itemContent = { Text(stringResource(it.text)) },
-            on = on
         )
     }
 

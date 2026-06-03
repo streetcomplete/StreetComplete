@@ -36,9 +36,9 @@ class AddBikeParkingType : OsmFilterQuestType<BikeParkingType>() {
     @Composable
     override fun Form(on: (QuestAction<BikeParkingType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = BikeParkingType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
             favoriteKey = "AddBikeParkingTypeForm",
         )
     }

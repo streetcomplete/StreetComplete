@@ -7,7 +7,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -37,9 +36,10 @@ fun BuildingsOverlayForm(
     val originalBuilding = remember(element) { createBuildingType(element.tags) }
 
     GroupedItemSelectOverlayForm(
+        on = on,
         groups = BuildingTypeCategory.entries,
-        initialSelectedItem = originalBuilding,
         topSelectableItems = BuildingType.topSelectableValues,
+        initialSelectedItem = originalBuilding,
         groupContent = { group ->
             ImageWithDescription(
                 painter = painterResource(group.icon),
@@ -70,7 +70,6 @@ fun BuildingsOverlayForm(
         },
         prefs = preferences,
         favoriteKey = "BuildingsOverlayForm",
-        on = on,
         label =
             // always show house number, never show feature name (because type of building is
             // already shown in the form itself)

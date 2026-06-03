@@ -139,6 +139,7 @@ fun AddressOverlayForm(
     }
 
     OverlayForm(
+        on = on,
         isComplete =
             // street is optional as in new developments sometimes the street names are not
             // posted yet, or it is not clear on-site, see #6528
@@ -182,7 +183,6 @@ fun AddressOverlayForm(
                 on(Edit(CreateNodeAction(geometry.center, tagChanges)))
             }
         },
-        on = on,
         label =
             // never show house number, as it already is shown in the form
             element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },

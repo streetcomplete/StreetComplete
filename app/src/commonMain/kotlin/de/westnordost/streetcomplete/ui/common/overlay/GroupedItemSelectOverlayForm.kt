@@ -39,6 +39,7 @@ import org.koin.compose.koinInject
  *  beneath that as chips, padded by [topSelectableItems], as a shortcut. */
 @Composable
 inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
+    noinline on: (Action) -> Unit,
     groups: List<G>,
     topSelectableItems: List<I>,
     initialSelectedItem: I?,
@@ -48,7 +49,6 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
     crossinline onClickOk: (selectedItem: I) -> Unit,
     prefs: Preferences,
     favoriteKey: String,
-    noinline on: (Action) -> Unit,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     label: AnnotatedString? = LocalElement.current?.let { element ->
@@ -62,6 +62,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
     var selectedItem by rememberSerializable { mutableStateOf(initialSelectedItem) }
 
     OverlayForm(
+        on = on,
         isComplete = selectedItem != null,
         hasChanges = selectedItem != initialSelectedItem,
         onClickOk = {
@@ -69,7 +70,6 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
             prefs.addLastPicked(favoriteKey, value)
             onClickOk(value)
         },
-        on = on,
         modifier = modifier,
         label = label,
         otherAnswers = otherAnswers,

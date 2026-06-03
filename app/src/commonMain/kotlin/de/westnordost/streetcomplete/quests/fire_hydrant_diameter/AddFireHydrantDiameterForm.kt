@@ -35,6 +35,7 @@ fun AddFireHydrantDiameterForm(
     }
 
     QuestForm(
+        on = on,
         isComplete = diameter != null,
         onClickOk = {
             val answer = createAnswer(diameter!!)
@@ -44,7 +45,6 @@ fun AddFireHydrantDiameterForm(
                 on(Answer(answer))
             }
         },
-        on = on,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_generic_answer_noSign)) {
                 confirmNoSign = true

@@ -34,9 +34,9 @@ import org.koin.compose.koinInject
  *  */
 @Composable
 inline fun <reified I> ItemSelectQuestForm(
+    noinline on: (QuestAction<I>) -> Unit,
     items: List<I>,
     noinline itemContent: @Composable (item: I) -> Unit,
-    noinline on: (QuestAction<I>) -> Unit,
     modifier: Modifier = Modifier,
     itemsPerRow: Int = 3,
     favoriteKey: String? = null,
@@ -56,6 +56,7 @@ inline fun <reified I> ItemSelectQuestForm(
     var selectedItem by rememberSerializable { mutableStateOf<I?>(null) }
 
     QuestForm(
+        on = on,
         isComplete = selectedItem != null,
         onClickOk = {
             val value = selectedItem!!
@@ -64,10 +65,9 @@ inline fun <reified I> ItemSelectQuestForm(
             }
             on(Answer(value))
         },
-        on = on,
         modifier = modifier,
         title = title,
-        otherAnswers = otherAnswers
+        otherAnswers = otherAnswers,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(

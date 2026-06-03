@@ -6,7 +6,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -38,6 +37,7 @@ fun WayLitOverlayForm(
     val originalLit = remember(element) { parseLitStatus(element.tags) }
 
     ItemSelectOverlayForm(
+        on = on,
         itemsPerRow = 2,
         items = LitStatus.entries,
         selectableItems = remember { listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY) },
@@ -53,7 +53,6 @@ fun WayLitOverlayForm(
         },
         prefs = preferences,
         favoriteKey = "WayLitOverlayForm",
-        on = on,
         otherAnswers = { listOfNotNull(
             if (element.couldBeSteps()) {
                 AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {

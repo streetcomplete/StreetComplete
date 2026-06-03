@@ -65,11 +65,11 @@ class CheckShopExistence(
     @Composable
     override fun Form(on: (QuestAction<Unit>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Action.ReplacePoi) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(Unit)) }
             ),
-            on = on,
         )
     }
 

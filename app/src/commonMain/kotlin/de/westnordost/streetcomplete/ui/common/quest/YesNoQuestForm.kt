@@ -12,11 +12,11 @@ fun YesNoQuestForm(
     title: String = stringResource(LocalQuestType.current!!.title),
 ) {
     QuestForm(
+        on = on,
         answers = listOf(
             AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(false)) },
             AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(true)) }
         ),
-        on = on,
-        title = title
+        title = title,
     )
 }

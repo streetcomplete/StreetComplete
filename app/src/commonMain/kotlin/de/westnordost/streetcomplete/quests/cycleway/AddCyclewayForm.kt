@@ -141,17 +141,18 @@ fun AddCyclewayForm(
 
     if (isDisplayingPrevious) {
         QuestForm(
-            title = stringResource(Res.string.quest_cycleway_resurvey_title),
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { isDisplayingPrevious = false },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(cycleways)) }
             ),
-            on = on,
+            title = stringResource(Res.string.quest_cycleway_resurvey_title),
             contentPadding = PaddingValues.Zero,
             content = { content() }
         )
     } else {
         QuestForm(
+            on = on,
             isComplete =
                 (cycleways.left != null || !isLeftSideVisible) &&
                 (cycleways.right != null || !isRightSideVisible),
@@ -164,7 +165,6 @@ fun AddCyclewayForm(
                     saveAndApplyCycleway(cycleways)
                 }
             },
-            on = on,
             otherAnswers = { listOfNotNull(
                 if ((!isLeftSideVisible || !isRightSideVisible) && !isRoundabout) {
                     AnswerItem(stringResource(Res.string.quest_cycleway_answer_contraflow_cycleway)) {

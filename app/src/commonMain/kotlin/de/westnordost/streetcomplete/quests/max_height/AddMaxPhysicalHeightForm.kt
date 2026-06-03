@@ -58,14 +58,14 @@ fun AddMaxPhysicalHeightForm(
     )
 
     QuestForm(
+        on = on,
+        isComplete = length != null,
+        onClickOk = { on(Answer(MaxPhysicalHeightAnswer(length!!, isArMeasurement))) },
         title = stringResource(
             // only the "below the bridge" situation may need some context
             if (isBelowBridge) Res.string.quest_maxheight_below_bridge_title
             else Res.string.quest_maxheight_title
         ),
-        isComplete = length != null,
-        onClickOk = { on(Answer(MaxPhysicalHeightAnswer(length!!, isArMeasurement))) },
-        on = on,
     ) {
         LengthForm(
             length = length,

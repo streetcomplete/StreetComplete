@@ -36,9 +36,9 @@ class AddCameraType : OsmFilterQuestType<CameraType>() {
     @Composable
     override fun Form(on: (QuestAction<CameraType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = CameraType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

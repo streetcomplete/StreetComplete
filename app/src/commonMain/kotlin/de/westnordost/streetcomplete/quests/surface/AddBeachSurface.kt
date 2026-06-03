@@ -35,11 +35,11 @@ class AddBeachSurface : OsmFilterQuestType<Surface>() {
     @Composable
     override fun Form(on: (QuestAction<Surface>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = Surface.selectableValuesForBeaches,
             itemContent = { item ->
                 ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
             },
-            on = on,
             favoriteKey = "AddBeachSurfaceForm",
         )
     }

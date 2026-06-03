@@ -51,9 +51,9 @@ class AddBarrierOnPath : OsmElementQuestType<BarrierType> {
     @Composable
     override fun Form(on: (QuestAction<BarrierType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = BarrierType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

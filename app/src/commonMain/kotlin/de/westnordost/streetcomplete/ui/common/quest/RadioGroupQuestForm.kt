@@ -15,9 +15,9 @@ import de.westnordost.streetcomplete.ui.common.RadioGroup
 /** Quest form in which the [items] are displayed as a list of radio buttons */
 @Composable
 fun <I> RadioGroupQuestForm(
+    on: (QuestAction<I>) -> Unit,
     items: List<I>,
     itemContent: @Composable (item: I) -> Unit,
-    on: (QuestAction<I>) -> Unit,
     modifier: Modifier = Modifier,
     otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
 ) {
@@ -26,11 +26,11 @@ fun <I> RadioGroupQuestForm(
         derivedStateOf { checkedItemIndex.takeIf { it != -1 }?.let { items[it] } }
     }
     QuestForm(
+        on = on,
         isComplete = checkedItem != null,
         onClickOk = { on(Answer(checkedItem!!)) },
-        on = on,
         modifier = modifier,
-        otherAnswers = otherAnswers
+        otherAnswers = otherAnswers,
     ) {
         RadioGroup(
             options = items,

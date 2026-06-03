@@ -42,6 +42,7 @@ fun AddStepsRampForm(
     var confirmWheelchairRampIsSeparate by remember { mutableStateOf(false) }
 
     QuestForm(
+        on = on,
         isComplete = selectedItems.isNotEmpty(),
         onClickOk = {
             if (selectedItems.contains(WHEELCHAIR)) {
@@ -56,7 +57,6 @@ fun AddStepsRampForm(
                 ))
             }
         },
-        on = on,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(

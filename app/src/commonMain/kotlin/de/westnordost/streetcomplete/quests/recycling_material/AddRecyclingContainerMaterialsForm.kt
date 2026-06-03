@@ -38,6 +38,7 @@ fun AddRecyclingContainerMaterialsForm(
     var confirmJustTrash by remember { mutableStateOf(false) }
 
     QuestForm(
+        on = on,
         isComplete = selectedItems.isNotEmpty(),
         onClickOk = { on(Answer(RecyclingMaterials(selectedItems))) },
         otherAnswers = { listOf(
@@ -45,7 +46,6 @@ fun AddRecyclingContainerMaterialsForm(
                 confirmJustTrash = true
             }
         ) },
-        on = on,
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp)

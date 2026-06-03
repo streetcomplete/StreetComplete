@@ -35,9 +35,9 @@ import kotlin.collections.plus
  *  */
 @Composable
 inline fun <reified I> ItemsSelectQuestForm(
+    noinline on: (QuestAction<Set<I>>) -> Unit,
     items: List<I>,
     noinline itemContent: @Composable (item: I) -> Unit,
-    noinline on: (QuestAction<Set<I>>) -> Unit,
     modifier: Modifier = Modifier,
     itemsPerRow: Int = 3,
     favoriteKey: String? = null,
@@ -56,6 +56,7 @@ inline fun <reified I> ItemsSelectQuestForm(
     var selectedItems by rememberSerializable { mutableStateOf<Set<I>>(emptySet()) }
 
     QuestForm(
+        on = on,
         isComplete = selectedItems.isNotEmpty(),
         onClickOk = {
             if (favoriteKey != null) {
@@ -63,9 +64,8 @@ inline fun <reified I> ItemsSelectQuestForm(
             }
             on(Answer(selectedItems))
         },
-        on = on,
         modifier = modifier,
-        otherAnswers = otherAnswers
+        otherAnswers = otherAnswers,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(

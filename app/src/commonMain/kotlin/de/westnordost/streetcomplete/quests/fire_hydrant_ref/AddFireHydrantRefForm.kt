@@ -25,9 +25,9 @@ fun AddFireHydrantRefForm(
     var confirmNoRef by remember { mutableStateOf(false) }
 
     QuestForm(
+        on = on,
         isComplete = ref.isNotEmpty(),
         onClickOk = { on(Answer(FireHydrantRef(ref))) },
-        on = on,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = false }
         ) }

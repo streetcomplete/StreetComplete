@@ -74,9 +74,9 @@ class AddPowerAttachment : OsmElementQuestType<PowerAttachment> {
     @Composable
     override fun Form(on: (QuestAction<PowerAttachment>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = PowerAttachment.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

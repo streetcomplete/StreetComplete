@@ -29,9 +29,9 @@ class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>() {
     @Composable
     override fun Form(on: (QuestAction<PlaygroundAccess>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
+            on = on,
             items = PlaygroundAccess.entries,
             itemContent = { Text(stringResource(it.text)) },
-            on = on
         )
     }
 

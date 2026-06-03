@@ -64,9 +64,9 @@ fun AddLevelForm(
      */
 
     QuestForm(
+        on = on,
         isComplete = level != null,
         onClickOk = { on(Answer(level!!.toShortString())) },
-        on = on,
     ) {
         LevelForm(
             level = level,

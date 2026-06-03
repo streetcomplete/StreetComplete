@@ -24,14 +24,14 @@ fun AddBoardTypeForm(
     var confirmIsMap by remember { mutableStateOf(false) }
 
     CheckboxGroupQuestForm(
-        items = BoardType.entries,
-        itemContent = { Text(stringResource(it.text)) },
         on = {
             on(when (it) {
                 is Answer<Set<BoardType>> -> Answer(BoardTypeAnswer.BoardTypes(it.value))
                 is Action -> it
             })
         },
+        items = BoardType.entries,
+        itemContent = { Text(stringResource(it.text)) },
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_board_type_map)) { confirmIsMap = true }
         ) }

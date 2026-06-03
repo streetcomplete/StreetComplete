@@ -15,11 +15,11 @@ fun AddPathPartSurfaceForm(
     on: (QuestAction<Surface>) -> Unit,
 ) {
     ItemSelectQuestForm(
+        on = on,
         items = Surface.selectableValuesForWays,
         itemContent = { item ->
             ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
         },
-        on = on,
-        favoriteKey = "AddPathPartSurfaceForm"
+        favoriteKey = "AddPathPartSurfaceForm",
     )
 }

@@ -23,13 +23,13 @@ fun AddClothingBinOperatorForm(
     var confirmNoSign by remember { mutableStateOf(false) }
 
     NameWithSuggestionsQuestForm(
-        suggestions = countryInfo.clothesContainerOperators,
         on = {
             on(when (it) {
                 is Answer<String> -> Answer(ClothingBinOperator(it.value))
                 is Action -> it
             })
         },
+        suggestions = countryInfo.clothesContainerOperators,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_generic_answer_noSign)) {
                 confirmNoSign = true

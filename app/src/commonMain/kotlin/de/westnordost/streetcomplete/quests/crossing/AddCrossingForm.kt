@@ -34,8 +34,6 @@ fun AddCrossingForm(
         }
 
     RadioGroupQuestForm(
-        items = CrossingAnswer.entries,
-        itemContent = { Text(stringResource(it.text)) },
         on = {
             if (
                 it is Answer<CrossingAnswer>
@@ -59,8 +57,9 @@ fun AddCrossingForm(
             } else {
                 on(it)
             }
-        }
-    )
+        },
+        items = CrossingAnswer.entries,
+        itemContent = { Text(stringResource(it.text)) },    )
 
     if (confirmLeaveNote) {
         ConfirmationDialog(

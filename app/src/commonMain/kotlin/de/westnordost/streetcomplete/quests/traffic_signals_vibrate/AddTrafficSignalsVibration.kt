@@ -72,18 +72,18 @@ class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(false)) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(true)) }
             ),
-            on = on,
             hintImages = listOf(
                 when (countryInfo.countryCode) {
                     "AU" -> Res.drawable.vibrating_button_illustration_au
                     "GB" -> Res.drawable.vibrating_button_illustration_gb
                     else -> Res.drawable.vibrating_button_illustration
                 }
-            )
+            ),
         )
     }
 

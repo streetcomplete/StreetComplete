@@ -21,9 +21,9 @@ fun AddBbqFuelForm(
     var confirmNotBbq by remember { mutableStateOf(false) }
 
     RadioGroupQuestForm(
+        on = on,
         items = BbqFuel.entries,
         itemContent = { Text(stringResource(it.text)) },
-        on = on,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_bbq_fuel_not_a_bbq)) { confirmNotBbq = true },
         ) }

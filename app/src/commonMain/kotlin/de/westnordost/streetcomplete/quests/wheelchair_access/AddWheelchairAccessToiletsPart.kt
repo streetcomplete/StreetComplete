@@ -50,6 +50,7 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
     @Composable
     override fun Form(on: (QuestAction<WheelchairAccessToiletsPartAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
                     on(Answer(WheelchairAccessToiletsPart(NO)))
@@ -61,7 +62,6 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
                     on(Answer(WheelchairAccessToiletsPart(LIMITED)))
                 },
             ),
-            on = on,
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) {
                     on(Answer(WheelchairAccessToiletsPartAnswer.NoToilet))

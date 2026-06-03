@@ -40,9 +40,9 @@ class AddSeating : OsmFilterQuestType<Seating>() {
     @Composable
     override fun Form(on: (QuestAction<Seating>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
+            on = on,
             items = Seating.entries,
             itemContent = { Text(stringResource(it.text)) },
-            on = on
         )
     }
 

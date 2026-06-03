@@ -30,6 +30,7 @@ fun AddBuildingTypeForm(
     var showMultipleTypesHint by remember { mutableStateOf(false) }
 
     GroupedItemSelectQuestForm(
+        on = on,
         groups = BuildingTypeCategory.entries,
         topItems = BuildingType.topSelectableValues,
         groupContent = { group ->
@@ -48,7 +49,6 @@ fun AddBuildingTypeForm(
                 imageSize = DpSize(48.dp, 48.dp),
             )
         },
-        on = on,
         favoriteKey = "AddBuildingTypeForm",
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_buildingType_answer_multiple_types)) {

@@ -59,7 +59,7 @@ fun AddPostboxCollectionTimesForm(
 
     if (isDisplayingPrevious) {
         QuestForm(
-            title = stringResource(Res.string.quest_postboxCollectionTimes_resurvey_title),
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
                     isDisplayingPrevious = false
@@ -68,7 +68,7 @@ fun AddPostboxCollectionTimesForm(
                     on(Answer(CollectionTimes(originalOpeningHours!!)))
                 }
             ),
-            on = on,
+            title = stringResource(Res.string.quest_postboxCollectionTimes_resurvey_title),
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
                     confirmNoSign = true
@@ -78,10 +78,10 @@ fun AddPostboxCollectionTimesForm(
         )
     } else {
         QuestForm(
-            isComplete = openingHours.isComplete(),
-            hasChanges = openingHours.monthsList.isNotEmpty(),
-            onClickOk = { on(Answer(CollectionTimes(openingHours))) },
             on = on,
+            isComplete = openingHours.isComplete(),
+            onClickOk = { on(Answer(CollectionTimes(openingHours))) },
+            hasChanges = openingHours.monthsList.isNotEmpty(),
             otherAnswers = {
                 val switchTimeModeAnswer = when (timeMode) {
                     TimeMode.Points -> {

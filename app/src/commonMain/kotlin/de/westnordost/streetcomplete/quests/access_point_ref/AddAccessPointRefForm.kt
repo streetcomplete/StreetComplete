@@ -33,9 +33,9 @@ fun AddAccessPointRefForm(
     var confirmNoRef by remember { mutableStateOf(false) }
 
     QuestForm(
+        on = on,
         isComplete = ref.isNotEmpty(),
         onClickOk = { on(Answer(AccessPointRef(ref))) },
-        on = on,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true },
             AnswerItem(stringResource(Res.string.quest_accessPointRef_answer_assembly_point)) { confirmAssemblyPoint = true }

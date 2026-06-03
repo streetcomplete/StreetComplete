@@ -28,10 +28,10 @@ class AddInformationToTourism : OsmFilterQuestType<TourismInformation>() {
     @Composable
     override fun Form(on: (QuestAction<TourismInformation>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
-            items = TourismInformation.entries,
-            itemsPerRow = 2,
-            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             on = on,
+            items = TourismInformation.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            itemsPerRow = 2,
         )
     }
 

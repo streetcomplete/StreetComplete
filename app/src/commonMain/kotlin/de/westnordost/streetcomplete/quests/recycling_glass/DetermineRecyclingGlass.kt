@@ -44,11 +44,11 @@ class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
     @Composable
     override fun Form(on: (QuestAction<RecyclingGlass>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_recycling_type_any_glass)) { on(Answer(ANY)) },
                 AnswerItem(stringResource(Res.string.quest_recycling_type_glass_bottles_short)) { on(Answer(BOTTLES)) }
             ),
-            on = on,
         )
     }
 

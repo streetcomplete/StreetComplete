@@ -19,6 +19,7 @@ fun AddOnewayForm(
 ) {
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
     ItemSelectQuestForm(
+        on = on,
         items = OnewayAnswer.entries,
         itemContent = { item ->
             val painter = painterResource(item.icon)
@@ -28,6 +29,5 @@ fun AddOnewayForm(
                 imageRotation = geometryRotation - LocalMapRotation.current
             )
         },
-        on = on,
     )
 }

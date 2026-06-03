@@ -56,6 +56,7 @@ fun AddSidewalkSurfaceForm(
     var sidewalkSurfaces by rememberSerializable { mutableStateOf(Sides<Surface>(null, null)) }
 
     QuestForm(
+        on = on,
         isComplete =
             (!hasSidewalkLeft || sidewalkSurfaces.left != null) &&
             (!hasSidewalkRight || sidewalkSurfaces.right != null),
@@ -67,13 +68,12 @@ fun AddSidewalkSurfaceForm(
             }
             on(Answer(SidewalkSurfaceAnswer.Surfaces(SidewalkSurface(sidewalkSurfaces))))
         },
-        on = on,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_sidewalk_answer_different)) {
                 on(Answer(SidewalkSurfaceAnswer.SidewalkIsDifferent))
             }
         ) },
-        contentPadding = PaddingValues.Zero
+        contentPadding = PaddingValues.Zero,
     ) {
         SidewalkSurfaceForm(
             value = sidewalkSurfaces,

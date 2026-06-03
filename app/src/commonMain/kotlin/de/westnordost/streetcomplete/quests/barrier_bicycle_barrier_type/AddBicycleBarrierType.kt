@@ -30,9 +30,9 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>() {
     @Composable
     override fun Form(on: (QuestAction<BicycleBarrierTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = BicycleBarrierType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_barrier_bicycle_type_not_cycle_barrier)) {
                     on(Answer(BarrierTypeIsNotBicycleBarrier))

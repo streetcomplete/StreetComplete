@@ -22,15 +22,15 @@ fun AddPathSurfaceForm(
     element: Element,
 ) {
     ItemSelectQuestForm(
-        items = Surface.selectableValuesForWays,
-        itemContent = { item ->
-            ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
-        },
         on = {
             on(when (it) {
                 is Answer<Surface> -> Answer(SurfaceAnswer(it.value))
                 is Action -> it
             })
+        },
+        items = Surface.selectableValuesForWays,
+        itemContent = { item ->
+            ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
         },
         favoriteKey = "AddPathSurfaceForm",
         otherAnswers = { listOfNotNull(

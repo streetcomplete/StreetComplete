@@ -29,12 +29,12 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
     @Composable
     override fun Form(on: (QuestAction<SelfServiceLaundry>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_optional)) { on(Answer(OPTIONAL)) },
                 AnswerItem(stringResource(Res.string.quest_hasFeature_only)) { on(Answer(ONLY)) }
             ),
-            on = on
         )
     }
 

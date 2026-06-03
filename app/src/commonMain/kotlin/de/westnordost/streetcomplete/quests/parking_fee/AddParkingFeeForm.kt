@@ -34,11 +34,11 @@ fun AddParkingFeeForm(
         QuestForm(
             // usually just Yes / No, but user can choose to input a more complex situation
             // in a form through the other answers menu
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(ParkingFee(Fee.No))) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(ParkingFee(Fee.Yes()))) }
             ),
-            on = on,
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_fee_answer_hours)) {
                     answer = ParkingFee(Fee.Yes(TimeRestriction(
@@ -52,10 +52,9 @@ fun AddParkingFeeForm(
         )
     } else {
         QuestForm(
-            isComplete = answer?.isComplete() == true,
-            hasChanges = answer != null,
-            onClickOk = { answer?.let { on(Answer(it)) } },
             on = on,
+            isComplete = answer?.isComplete() == true,
+            onClickOk = { answer?.let { on(Answer(it)) } },
         ) {
             when (val answer2 = answer) {
                 is ParkingFeeAnswer.NoFeeButMaxStay -> {

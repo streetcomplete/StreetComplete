@@ -68,10 +68,10 @@ class AddRoofShape(
     @Composable
     override fun Form(on: (QuestAction<RoofShape>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
-            items = remember { RoofShape.entries - MANY },
-            itemsPerRow = 4,
-            itemContent = { Image(painterResource(it.icon), null) },
             on = on,
+            items = remember { RoofShape.entries - MANY },
+            itemContent = { Image(painterResource(it.icon), null) },
+            itemsPerRow = 4,
             favoriteKey = "AddRoofShapeForm",
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_roofShape_answer_many)) { on(Answer(MANY)) }

@@ -61,10 +61,10 @@ import org.koin.compose.koinInject
  *  */
 @Composable
 fun OverlayForm(
+    on: (Action) -> Unit,
     isComplete: Boolean,
     hasChanges: Boolean,
     onClickOk: () -> Unit,
-    on: (Action) -> Unit,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
@@ -199,15 +199,15 @@ private fun MoreButton(
 @Composable
 private fun OverlayFormPreview() {
     OverlayForm(
+        on = {},
         isComplete = true,
         hasChanges = false,
         onClickOk = {},
-        on = {},
         label = AnnotatedString("some text"),
         otherAnswers = { listOf(
             AnswerItem("Can't say") {},
             AnswerItem("Can say") {},
-        ) }
+        ) },
     ) {
         Text(LoremIpsum(50).values.joinToString(" "))
     }

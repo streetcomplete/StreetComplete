@@ -43,9 +43,9 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
     @Composable
     override fun Form(on: (QuestAction<Set<BicycleRepairStationService>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemsSelectQuestForm(
+            on = on,
             items = BicycleRepairStationService.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

@@ -44,6 +44,7 @@ fun LaneNarrowingTrafficCalmingForm(
     var confirmRemoveLaneNarrowingTrafficCalming by remember { mutableStateOf(false) }
 
     ItemSelectOverlayForm(
+        on = on,
         itemsPerRow = 2,
         items = LaneNarrowingTrafficCalming.entries,
         initialSelectedItem = originalLaneNarrowingTrafficCalming,
@@ -66,7 +67,6 @@ fun LaneNarrowingTrafficCalmingForm(
         },
         prefs = preferences,
         favoriteKey = "LaneNarrowingTrafficCalmingForm",
-        on = on,
         otherAnswers = { listOfNotNull(
             if (element != null) {
                 AnswerItem(stringResource(Res.string.lane_narrowing_traffic_calming_none)) {

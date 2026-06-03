@@ -36,9 +36,9 @@ class AddTowerAccess : OsmFilterQuestType<TowerAccess>() {
     @Composable
     override fun Form(on: (QuestAction<TowerAccess>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
+            on = on,
             items = TowerAccess.entries,
             itemContent = { Text(stringResource(it.text)) },
-            on = on
         )
     }
 

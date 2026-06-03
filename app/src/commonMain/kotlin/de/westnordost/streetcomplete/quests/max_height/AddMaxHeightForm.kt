@@ -33,6 +33,7 @@ fun AddMaxHeightForm(
     var confirmNoSign by remember { mutableStateOf(false) }
 
     QuestForm(
+        on = on,
         isComplete = height != null,
         onClickOk = {
             if (isUnrealisticHeight(height!!)) {
@@ -41,7 +42,6 @@ fun AddMaxHeightForm(
                 on(Answer(MaxHeight(height!!)))
             }
         },
-        on = on,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_maxheight_answer_noSign)) {
                 confirmNoSign = true

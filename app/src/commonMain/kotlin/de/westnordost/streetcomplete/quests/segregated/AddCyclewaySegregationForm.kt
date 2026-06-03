@@ -22,8 +22,8 @@ fun AddCyclewaySegregationForm(
     countryInfo: CountryInfo,
 ) {
     ItemSelectQuestForm(
+        on = on,
         items = CyclewaySegregation.entries,
-        itemsPerRow = 1,
         itemContent = { item ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
@@ -37,6 +37,6 @@ fun AddCyclewaySegregationForm(
                 )
             }
         },
-        on = on,
+        itemsPerRow = 1,
     )
 }

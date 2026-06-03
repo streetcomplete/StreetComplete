@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.overlays.mtb_scale
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -31,6 +30,7 @@ fun MtbScaleOverlayForm(
     val originalMtbScaleValue = remember(element) { parseMtbScale(element.tags)?.value }
 
     ItemSelectOverlayForm(
+        on = on,
         itemsPerRow = 1,
         items = MtbScale.Value.entries,
         initialSelectedItem = originalMtbScaleValue,
@@ -51,6 +51,5 @@ fun MtbScaleOverlayForm(
         },
         prefs = preferences,
         favoriteKey = "MtbScaleOverlayForm",
-        on = on,
     )
 }

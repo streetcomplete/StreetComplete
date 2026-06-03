@@ -52,11 +52,11 @@ class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>() {
     @Composable
     override fun Form(on: (QuestAction<TactilePavingStepsAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) }
             ),
-            on = on,
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_tactilePaving_steps_bottom)) { on(Answer(BOTTOM)) },
                 AnswerItem(stringResource(Res.string.quest_tactilePaving_steps_top)) { on(Answer(TOP)) }

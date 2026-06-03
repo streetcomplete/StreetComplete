@@ -14,11 +14,11 @@ fun AddWheelchairAccessForm(
     on: (QuestAction<WheelchairAccess>) -> Unit,
 ) {
     QuestForm(
+        on = on,
         answers = listOf(
             AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
             AnswerItem(stringResource(Res.string.quest_wheelchairAccess_limited)) { on(Answer(LIMITED)) },
             AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) },
         ),
-        on = on,
     )
 }

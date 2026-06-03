@@ -25,9 +25,9 @@ fun AddBusStopRefForm(
     var confirmNoRef by remember { mutableStateOf(false) }
 
     QuestForm(
+        on = on,
         isComplete = ref.isNotEmpty(),
         onClickOk = { on(Answer(BusStopRef(ref))) },
-        on = on,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true }
         ) }

@@ -29,12 +29,12 @@ fun AddDietTypeForm(
     var confirmNoFood by remember { mutableStateOf(false) }
 
     QuestForm(
+        on = on,
         answers = listOf(
             AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
             AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) },
             AnswerItem(stringResource(Res.string.quest_hasFeature_only)) { on(Answer(ONLY)) },
         ),
-        on = on,
         otherAnswers = { listOfNotNull(
             if (element.tags["amenity"] == "cafe") {
                 AnswerItem(stringResource(Res.string.quest_diet_answer_no_food)) {

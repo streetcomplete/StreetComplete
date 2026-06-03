@@ -29,9 +29,9 @@ class AddCarWashType : OsmFilterQuestType<Set<CarWashType>>() {
     @Composable
     override fun Form(on: (QuestAction<Set<CarWashType>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemsSelectQuestForm(
+            on = on,
             items = CarWashType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

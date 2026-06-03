@@ -76,10 +76,10 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
     @Composable
     override fun Form(on: (QuestAction<KerbHeight>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = KerbHeight.entries,
-            itemsPerRow = 2,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on
+            itemsPerRow = 2,
         )
     }
 

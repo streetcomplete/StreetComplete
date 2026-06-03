@@ -26,9 +26,9 @@ import org.jetbrains.compose.resources.stringResource
 /** Quest form in which the [items] are displayed as a list of checkboxes */
 @Composable
 fun <I> CheckboxGroupQuestForm(
+    on: (QuestAction<Set<I>>) -> Unit,
     items: List<I>,
     itemContent: @Composable (item: I) -> Unit,
-    on: (QuestAction<Set<I>>) -> Unit,
     modifier: Modifier = Modifier,
     otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
 ) {
@@ -38,11 +38,11 @@ fun <I> CheckboxGroupQuestForm(
     }
 
     QuestForm(
+        on = on,
         isComplete = selectedItemIndices.isNotEmpty(),
         onClickOk =  { on(Answer(selectedItems)) },
-        on = on,
         modifier = modifier,
-        otherAnswers = otherAnswers
+        otherAnswers = otherAnswers,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(

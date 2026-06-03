@@ -28,9 +28,9 @@ fun AddInternetAccessForm(
     var selectedOptions by rememberSerializable { mutableStateOf(emptySet<InternetAccess>()) }
 
     QuestForm(
+        on = on,
         isComplete = selectedOptions.isNotEmpty(),
         onClickOk =  { on(Answer(selectedOptions)) },
-        on = on,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(

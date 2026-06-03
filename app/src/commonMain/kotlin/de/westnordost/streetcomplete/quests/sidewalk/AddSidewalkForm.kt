@@ -47,13 +47,13 @@ fun AddSidewalkForm(
     var showNoSidewalksHint by remember { mutableStateOf(false) }
 
     QuestForm(
+        on = on,
         isComplete = sidewalks.left != null && sidewalks.right != null,
         hasChanges = sidewalks.left != null || sidewalks.right != null,
         onClickOk = {
             on(Answer(sidewalks))
             preferences.setLastPicked(favKey, listOf(sidewalks))
         },
-        on = on,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_sidewalk_answer_none)) {
                 showNoSidewalksHint = true

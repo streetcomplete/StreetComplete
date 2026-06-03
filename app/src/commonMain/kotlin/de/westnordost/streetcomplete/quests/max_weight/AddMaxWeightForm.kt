@@ -32,8 +32,8 @@ fun AddMaxWeightForm(
     var showUnsupportedSignDialog by remember { mutableStateOf(false) }
 
     QuestForm(
+        on = on,
         isComplete = signs.isNotEmpty() && signs.all { it.weight != null },
-        hasChanges = signs.isNotEmpty(),
         onClickOk = {
             if (isUnrealisticWeight(signs)) {
                 confirmUnusualInput = true
@@ -41,7 +41,7 @@ fun AddMaxWeightForm(
                 on(Answer(signs))
             }
         },
-        on = on,
+        hasChanges = signs.isNotEmpty(),
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_maxweight_answer_other_sign)) {
                 showUnsupportedSignDialog = true

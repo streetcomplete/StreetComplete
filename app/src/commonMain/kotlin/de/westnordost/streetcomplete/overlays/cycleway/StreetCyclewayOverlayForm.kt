@@ -14,7 +14,6 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -164,6 +163,7 @@ fun StreetCyclewayOverlayForm(
     }
 
     OverlayForm(
+        on = on,
         isComplete =
             cycleways.left != null ||
             cycleways.right != null ||
@@ -181,9 +181,8 @@ fun StreetCyclewayOverlayForm(
                 saveAndApplyCycleway()
             }
         },
-        on = on,
         otherAnswers = ::createOtherAnswers,
-        contentPadding = PaddingValues.Zero
+        contentPadding = PaddingValues.Zero,
     ) {
         Box(contentAlignment = Alignment.Center) {
             CyclewayForm(

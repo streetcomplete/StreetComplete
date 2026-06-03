@@ -27,9 +27,9 @@ class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>() {
     @Composable
     override fun Form(on: (QuestAction<TrafficCalmingType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = TrafficCalmingType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

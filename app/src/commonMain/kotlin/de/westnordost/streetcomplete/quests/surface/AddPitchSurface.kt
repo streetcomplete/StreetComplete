@@ -63,11 +63,11 @@ class AddPitchSurface : OsmFilterQuestType<Surface>() {
     @Composable
     override fun Form(on: (QuestAction<Surface>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = Surface.selectableValuesForPitches,
             itemContent = { item ->
                 ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
             },
-            on = on,
             favoriteKey = "AddPitchSurfaceForm",
         )
     }

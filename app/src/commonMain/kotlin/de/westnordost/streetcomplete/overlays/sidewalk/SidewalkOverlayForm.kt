@@ -8,7 +8,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -49,6 +48,7 @@ fun SidewalkOverlayForm(
     var sidewalks by rememberSerializable(originalSidewalks) { mutableStateOf(originalSidewalks) }
 
     OverlayForm(
+        on = on,
         isComplete = sidewalks.left != null || sidewalks.right != null,
         hasChanges = sidewalks != originalSidewalks,
         onClickOk = {
@@ -57,7 +57,6 @@ fun SidewalkOverlayForm(
             sidewalks.applyTo(tagChanges)
             on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
         },
-        on = on,
         contentPadding = PaddingValues.Zero,
     ) {
         SidewalkForm(

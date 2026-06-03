@@ -70,8 +70,8 @@ fun AddHousenumberForm(
     }
 
     QuestForm(
+        on = on,
         isComplete = addressNumberAndName.isComplete(),
-        hasChanges = !addressNumberAndName.isEmpty(),
         onClickOk = {
             val isUnusual = addressNumberAndName
                 .number?.takeIf { !it.isEmpty() }
@@ -83,7 +83,7 @@ fun AddHousenumberForm(
                 applyHousenumberAnswer()
             }
         },
-        on = on,
+        hasChanges = !addressNumberAndName.isEmpty(),
         otherAnswers = {
             val switchBlockAnswer = if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
                 when (addressNumberAndName.number) {

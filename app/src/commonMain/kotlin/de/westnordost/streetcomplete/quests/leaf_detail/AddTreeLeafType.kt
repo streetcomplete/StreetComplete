@@ -38,10 +38,10 @@ class AddTreeLeafType : OsmFilterQuestType<TreeLeafTypeAnswer>() {
     @Composable
     override fun Form(on: (QuestAction<TreeLeafTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
-            items = TreeLeafType.entries,
-            itemsPerRow = 2,
-            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             on = on,
+            items = TreeLeafType.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            itemsPerRow = 2,
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_leafType_tree_is_just_a_stump)) {
                     on(Answer(NotTreeButStump))

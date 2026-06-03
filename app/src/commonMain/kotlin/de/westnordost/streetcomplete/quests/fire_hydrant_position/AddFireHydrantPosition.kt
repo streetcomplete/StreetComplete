@@ -36,13 +36,13 @@ class AddFireHydrantPosition : OsmFilterQuestType<FireHydrantPosition>() {
     @Composable
     override fun Form(on: (QuestAction<FireHydrantPosition>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = FireHydrantPosition.entries,
-            itemsPerRow = 2,
             itemContent = { item ->
                 val isPillar = element.tags["fire_hydrant:type"] == "pillar"
                 ImageWithLabel(painterResource(item.getIcon(isPillar)), stringResource(item.title))
             },
-            on = on,
+            itemsPerRow = 2,
         )
     }
 

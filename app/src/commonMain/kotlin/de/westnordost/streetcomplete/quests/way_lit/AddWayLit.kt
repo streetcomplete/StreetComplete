@@ -69,11 +69,11 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
     @Composable
     override fun Form(on: (QuestAction<WayLitOrIsStepsAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(WayLit(NO))) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(WayLit(YES))) }
             ),
-            on = on,
             otherAnswers = { listOfNotNull(
                 AnswerItem(stringResource(Res.string.lit_value_24_7)) {
                     on(Answer(WayLit(NIGHT_AND_DAY)))

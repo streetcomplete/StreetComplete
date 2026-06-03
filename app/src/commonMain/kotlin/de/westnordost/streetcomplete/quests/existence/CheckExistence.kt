@@ -122,11 +122,11 @@ class CheckExistence(
     @Composable
     override fun Form(on: (QuestAction<Unit>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Action.DeletePoi) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(Unit)) }
             ),
-            on = on
         )
     }
 

@@ -38,8 +38,8 @@ class AddStepCount : OsmFilterQuestType<Int>() {
     @Composable
     override fun Form(on: (QuestAction<Int>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         CountInputQuestForm(
+            on = on,
             icon = painterResource(Res.drawable.count_step),
-            on = on
         )
     }
 

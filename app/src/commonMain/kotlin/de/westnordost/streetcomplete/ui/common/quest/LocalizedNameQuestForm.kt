@@ -40,9 +40,9 @@ import org.koin.compose.koinInject
  *  */
 @Composable
 fun LocalizedNameQuestForm(
+    on: (QuestAction<List<LocalizedName>>) -> Unit,
     countryInfo: CountryInfo,
     initialLocalizedNames: List<LocalizedName>?,
-    on: (QuestAction<List<LocalizedName>>) -> Unit,
     modifier: Modifier = Modifier,
     hint: @Composable (() -> Unit)? = null,
     noNameConfirmationText: @Composable (() -> Unit)? = null,
@@ -66,6 +66,7 @@ fun LocalizedNameQuestForm(
     var confirmNoName by remember { mutableStateOf(false) }
 
     QuestForm(
+        on = on,
         isComplete = localizedNames.isNotEmpty() && localizedNames.all { it.name.isNotBlank() },
         hasChanges = localizedNames.isNotEmpty() && localizedNames.any { it.name.isNotBlank() },
         onClickOk = {
@@ -73,7 +74,6 @@ fun LocalizedNameQuestForm(
                 localizedNames.firstOrNull()?.languageTag?.takeIf { it.isNotEmpty() }
             on(Answer(localizedNames))
         },
-        on = on,
         modifier = modifier,
         otherAnswers = { otherAnswers() + listOf(
             AnswerItem(stringResource(Res.string.quest_streetName_answer_cantType)) {
@@ -82,7 +82,7 @@ fun LocalizedNameQuestForm(
             AnswerItem(stringResource(Res.string.quest_placeName_no_name_answer)) {
                 confirmNoName = true
             },
-        ) }
+        ) },
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             if (hint != null) {

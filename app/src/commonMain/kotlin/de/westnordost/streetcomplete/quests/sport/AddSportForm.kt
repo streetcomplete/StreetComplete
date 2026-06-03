@@ -34,9 +34,6 @@ fun AddSportForm(
     var confirmManySports by remember { mutableStateOf<Set<Sport>?>(null) }
 
     ItemsSelectQuestForm(
-        items = items,
-        itemsPerRow = 4,
-        itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
         on = {
             if (it is Answer<Set<Sport>> && it.value.size > 3) {
                 confirmManySports = it.value
@@ -44,6 +41,9 @@ fun AddSportForm(
                 on(it)
             }
         },
+        items = items,
+        itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+        itemsPerRow = 4,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_sport_answer_multi)) {
                 on(Answer(setOf(MULTI)))

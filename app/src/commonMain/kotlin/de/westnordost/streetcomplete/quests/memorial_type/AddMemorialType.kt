@@ -31,9 +31,9 @@ class AddMemorialType : OsmFilterQuestType<MemorialType>() {
     @Composable
     override fun Form(on: (QuestAction<MemorialType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = MemorialType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

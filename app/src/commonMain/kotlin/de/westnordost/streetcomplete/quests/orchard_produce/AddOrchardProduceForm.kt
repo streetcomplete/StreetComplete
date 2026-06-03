@@ -22,8 +22,8 @@ fun AddOrchardProduceForm(
     }
 
     ItemsSelectQuestForm(
+        on = on,
         items = items,
         itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-        on = on,
     )
 }

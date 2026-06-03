@@ -22,14 +22,14 @@ fun AddRailwayCrossingBarrierForm(
     }
 
     ItemSelectQuestForm(
+        on = on,
         items = items,
-        itemsPerRow = 2,
         itemContent = { item ->
             ImageWithLabel(
                 painter = painterResource(item.getIcon(countryInfo.isLeftHandTraffic)),
                 label = item.title?.let { stringResource(it) }
             )
         },
-        on = on,
+        itemsPerRow = 2,
     )
 }

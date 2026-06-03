@@ -34,6 +34,7 @@ fun SeparateCyclewayForm(
     val originalSeparateCycleway = remember(element) { parseSeparateCycleway(element.tags) }
 
     ItemSelectOverlayForm(
+        on = on,
         itemsPerRow = 1,
         items = SeparateCycleway.entries,
         initialSelectedItem = originalSeparateCycleway,
@@ -55,6 +56,5 @@ fun SeparateCyclewayForm(
         },
         prefs = preferences,
         favoriteKey = "SeparateCyclewayForm",
-        on = on,
     )
 }

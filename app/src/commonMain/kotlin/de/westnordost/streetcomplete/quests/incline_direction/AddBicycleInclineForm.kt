@@ -28,8 +28,13 @@ fun AddBicycleInclineForm(
     var confirmUpAndDown by remember { mutableStateOf(false) }
 
     ItemSelectQuestForm(
+        on = {
+            on(when (it) {
+                is Answer<Incline> -> Answer(RegularBicycleInclineAnswer(it.value))
+                is Action -> it
+            })
+        },
         items = Incline.entries,
-        itemsPerRow = 2,
         itemContent = { item ->
             ImageWithLabel(
                 painter = painterResource(item.icon),
@@ -37,12 +42,7 @@ fun AddBicycleInclineForm(
                 imageRotation = geometryRotation - LocalMapRotation.current
             )
         },
-        on = {
-            on(when (it) {
-                is Answer<Incline> -> Answer(RegularBicycleInclineAnswer(it.value))
-                is Action -> it
-            })
-        },
+        itemsPerRow = 2,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_bicycle_incline_up_and_down)) {
                 confirmUpAndDown = true

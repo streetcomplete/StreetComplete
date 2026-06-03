@@ -18,19 +18,19 @@ import de.westnordost.streetcomplete.ui.theme.extraLargeInput
  *  to the input field to visualize what should be input */
 @Composable
 fun CountInputQuestForm(
-    icon: Painter,
     on: (QuestAction<Int>) -> Unit,
+    icon: Painter,
     modifier: Modifier = Modifier,
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() }
 ) {
     var count by rememberSaveable { mutableStateOf<Int?>(null) }
 
     QuestForm(
+        on = on,
         isComplete = count?.let { it > 0 } == true,
         onClickOk = { on(Answer(count!!)) },
-        on = on,
         modifier = modifier,
-        otherAnswers = otherAnswers
+        otherAnswers = otherAnswers,
     ) {
         ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
             CountInput(

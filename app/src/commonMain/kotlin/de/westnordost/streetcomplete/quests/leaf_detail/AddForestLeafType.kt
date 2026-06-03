@@ -55,9 +55,9 @@ class AddForestLeafType : OsmElementQuestType<ForestLeafType> {
     @Composable
     override fun Form(on: (QuestAction<ForestLeafType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = ForestLeafType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

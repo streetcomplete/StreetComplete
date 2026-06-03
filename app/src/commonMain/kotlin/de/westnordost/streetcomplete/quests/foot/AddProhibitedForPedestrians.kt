@@ -61,9 +61,9 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
     @Composable
     override fun Form(on: (QuestAction<ProhibitedForPedestriansAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
+            on = on,
             items = ProhibitedForPedestriansAnswer.entries,
             itemContent = { Text(stringResource(it.text)) },
-            on = on
         )
     }
 

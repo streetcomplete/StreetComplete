@@ -38,13 +38,13 @@ fun AddRoadNameForm(
     }
 
     LocalizedNameQuestForm(
+        on = on,
         countryInfo = countryInfo,
         initialLocalizedNames = initialLocalizedNames,
-        on = on,
         hint = { Text(stringResource(Res.string.quest_streetName_abbreviation_instruction)) },
         noNameConfirmationText = {
             Text(stringResource(Res.string.quest_streetName_answer_noName_confirmation_description))
-        }
+        },
     )
 }
 

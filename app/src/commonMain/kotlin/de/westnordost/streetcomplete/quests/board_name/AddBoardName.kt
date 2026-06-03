@@ -39,9 +39,9 @@ class AddBoardName : OsmFilterQuestType<List<LocalizedName>>() {
     @Composable
     override fun Form(on: (QuestAction<List<LocalizedName>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         LocalizedNameQuestForm(
+            on = on,
             countryInfo = countryInfo,
             initialLocalizedNames = null,
-            on = on
         )
     }
 

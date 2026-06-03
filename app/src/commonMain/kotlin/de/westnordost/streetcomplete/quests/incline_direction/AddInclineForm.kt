@@ -19,8 +19,8 @@ fun AddInclineForm(
 ) {
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
     ItemSelectQuestForm(
+        on = on,
         items = Incline.entries,
-        itemsPerRow = 2,
         itemContent = { item ->
             ImageWithLabel(
                 painter = painterResource(item.icon),
@@ -28,6 +28,6 @@ fun AddInclineForm(
                 imageRotation = geometryRotation - LocalMapRotation.current
             )
         },
-        on = on,
+        itemsPerRow = 2,
     )
 }

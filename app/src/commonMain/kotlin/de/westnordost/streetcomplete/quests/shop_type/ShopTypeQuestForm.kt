@@ -49,11 +49,11 @@ fun ShopTypeQuestForm(
     }
 
     QuestForm(
+        on = on,
         isComplete = isComplete,
         onClickOk = ::onClickOk,
-        on = on,
         modifier = modifier,
-        otherAnswers = otherAnswers
+        otherAnswers = otherAnswers,
     ) {
         ShopTypeForm(
             feature = feature,

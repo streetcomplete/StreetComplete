@@ -58,12 +58,12 @@ fun AddAddressStreetForm(
     }
 
     QuestForm(
+        on = on,
         isComplete = streetOrPlaceName.name.isNotEmpty(),
         onClickOk = {
             lastWasPlaceName = streetOrPlaceName is PlaceName
             on(Answer(streetOrPlaceName))
         },
-        on = on,
         subtitle = nameAndLocationLabel(LocalElement.current!!, featureDictionary, showHouseNumber = true),
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {

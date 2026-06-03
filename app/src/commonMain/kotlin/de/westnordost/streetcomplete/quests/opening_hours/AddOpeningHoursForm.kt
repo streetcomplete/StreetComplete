@@ -65,7 +65,7 @@ fun AddOpeningHoursForm(
 
     if (isDisplayingPrevious) {
         QuestForm(
-            title = stringResource(Res.string.quest_openingHours_resurvey_title),
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
                     isDisplayingPrevious = false
@@ -74,7 +74,7 @@ fun AddOpeningHoursForm(
                     on(Answer(RegularOpeningHours(originalOpeningHours!!)))
                 }
             ),
-            on = on,
+            title = stringResource(Res.string.quest_openingHours_resurvey_title),
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) { confirmNoSign = true },
             ) },
@@ -82,10 +82,10 @@ fun AddOpeningHoursForm(
         )
     } else {
         QuestForm(
-            isComplete = openingHours.isComplete(),
-            hasChanges = openingHours.monthsList.isNotEmpty(),
-            onClickOk = { on(Answer(RegularOpeningHours(openingHours))) },
             on = on,
+            isComplete = openingHours.isComplete(),
+            onClickOk = { on(Answer(RegularOpeningHours(openingHours))) },
+            hasChanges = openingHours.monthsList.isNotEmpty(),
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) {
                     confirmNoSign = true

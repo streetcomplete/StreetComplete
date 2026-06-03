@@ -44,9 +44,9 @@ class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAva
     @Composable
     override fun Form(on: (QuestAction<SecondHandBicycleAvailability>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
+            on = on,
             items = SecondHandBicycleAvailability.entries,
             itemContent = { Text(stringResource(it.text)) },
-            on = on
         )
     }
 

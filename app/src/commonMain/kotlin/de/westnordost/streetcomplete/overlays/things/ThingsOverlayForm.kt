@@ -7,7 +7,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -68,6 +67,7 @@ import org.koin.compose.koinInject
     var confirmDeleteNode by remember { mutableStateOf<Node?>(null) }
 
     OverlayForm(
+        on = on,
         isComplete = selectedFeature != null,
         hasChanges = selectedFeature != originalFeature,
         onClickOk = {
@@ -84,7 +84,6 @@ import org.koin.compose.koinInject
                 on(Edit(CreateNodeAction(geometry.center, tags)))
             }
         },
-        on = on,
         label =
             // title hint label with name is a duplication, it is displayed in the UI already
             element?.let { nameAndLocationLabel(it, featureDictionary = null) },

@@ -30,9 +30,9 @@ class AddParkingType : OsmFilterQuestType<ParkingType>() {
     @Composable
     override fun Form(on: (QuestAction<ParkingType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = ParkingType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.util.takeFavorites
  *  beneath that as chips. */
 @Composable
 inline fun <reified I> ItemSelectOverlayForm(
+    noinline on: (Action) -> Unit,
     itemsPerRow: Int,
     items: List<I>,
     initialSelectedItem: I?,
@@ -43,7 +44,6 @@ inline fun <reified I> ItemSelectOverlayForm(
     crossinline onClickOk: (selectedItem: I) -> Unit,
     prefs: Preferences,
     favoriteKey: String,
-    noinline on: (Action) -> Unit,
     modifier: Modifier = Modifier,
     selectableItems: List<I> = items,
     noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
@@ -58,6 +58,7 @@ inline fun <reified I> ItemSelectOverlayForm(
     var expanded by remember { mutableStateOf(false) }
 
     OverlayForm(
+        on = on,
         isComplete = selectedItem != null && selectedItem in selectableItems,
         hasChanges = selectedItem != initialSelectedItem,
         onClickOk = {
@@ -65,7 +66,6 @@ inline fun <reified I> ItemSelectOverlayForm(
             prefs.addLastPicked(favoriteKey, value)
             onClickOk(value)
         },
-        on = on,
         modifier = modifier,
         otherAnswers = otherAnswers,
     ) {

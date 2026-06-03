@@ -58,9 +58,9 @@ class AddSmoking : OsmFilterQuestType<SmokingAllowed>() {
     @Composable
     override fun Form(on: (QuestAction<SmokingAllowed>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
+            on = on,
             items = remember { SmokingAllowed.getSelectableValues(element.tags) },
             itemContent = { Text(stringResource(it.text)) },
-            on = on
         )
     }
 

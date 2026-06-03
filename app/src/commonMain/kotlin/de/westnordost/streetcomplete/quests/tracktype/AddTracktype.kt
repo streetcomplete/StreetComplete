@@ -41,9 +41,9 @@ class AddTracktype : OsmFilterQuestType<Tracktype>() {
     @Composable
     override fun Form(on: (QuestAction<Tracktype>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = Tracktype.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

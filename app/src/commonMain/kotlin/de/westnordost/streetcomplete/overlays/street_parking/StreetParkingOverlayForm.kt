@@ -7,7 +7,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -49,6 +48,7 @@ import org.koin.compose.koinInject
     var parking by rememberSerializable(originalParking) { mutableStateOf(originalParking) }
 
     OverlayForm(
+        on = on,
         isComplete = parking.left != null || parking.right != null,
         hasChanges = parking != originalParking,
         onClickOk = {
@@ -57,8 +57,7 @@ import org.koin.compose.koinInject
             parking.applyTo(tagChanges)
             on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
         },
-        on = on,
-        contentPadding = PaddingValues.Zero
+        contentPadding = PaddingValues.Zero,
     ) {
         StreetParkingForm(
             value = parking,

@@ -38,9 +38,9 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>() {
     @Composable
     override fun Form(on: (QuestAction<HairdresserCustomers>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
+            on = on,
             items = HairdresserCustomers.entries,
             itemContent = { Text(stringResource(it.text)) },
-            on = on
         )
     }
 

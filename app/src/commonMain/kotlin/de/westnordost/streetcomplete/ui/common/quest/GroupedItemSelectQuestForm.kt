@@ -35,11 +35,11 @@ import org.koin.compose.koinInject
  *  i.e. are only padded by them. */
 @Composable
 inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
+    noinline on: (QuestAction<I>) -> Unit,
     groups: List<G>,
     topItems: List<I>,
     noinline groupContent: @Composable (group: G) -> Unit,
     noinline itemContent: @Composable (item: I) -> Unit,
-    noinline on: (QuestAction<I>) -> Unit,
     modifier: Modifier = Modifier,
     favoriteKey: String? = null,
     noinline otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
@@ -59,6 +59,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     var confirmSelectionOfGroupItem by remember { mutableStateOf<I?>(null) }
 
     QuestForm(
+        on = on,
         isComplete = selectedItem != null || selectedGroup?.item != null,
         onClickOk = {
             val group = selectedGroup
@@ -74,9 +75,8 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
                 confirmSelectionOfGroupItem = groupItem
             }
         },
-        on = on,
         modifier = modifier,
-        otherAnswers = otherAnswers
+        otherAnswers = otherAnswers,
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(

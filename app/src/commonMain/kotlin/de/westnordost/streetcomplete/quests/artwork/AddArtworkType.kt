@@ -31,9 +31,9 @@ class AddArtworkType : OsmFilterQuestType<ArtworkType>() {
     @Composable
     override fun Form(on: (QuestAction<ArtworkType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = ArtworkType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

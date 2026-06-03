@@ -37,6 +37,7 @@ import de.westnordost.streetcomplete.util.takeFavorites
 /** Similar to ItemSelectOverlayForm, but that there is actually a pair of Items. */
 @Composable
 inline fun <reified I> ItemPairSelectOverlayForm(
+    noinline on: (Action) -> Unit,
     itemsPerRow: Int,
     items: List<I>,
     initialSelectedItemPair: Pair<I?, I?>,
@@ -46,7 +47,6 @@ inline fun <reified I> ItemPairSelectOverlayForm(
     labels: Pair<String, String>,
     prefs: Preferences,
     favoriteKey: String,
-    noinline on: (Action) -> Unit,
     modifier: Modifier = Modifier,
     noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
 ) {
@@ -60,6 +60,7 @@ inline fun <reified I> ItemPairSelectOverlayForm(
     var expandedIndex by remember { mutableIntStateOf(-1) }
 
     OverlayForm(
+        on = on,
         isComplete = selectedItemPair.first != null && selectedItemPair.second != null,
         hasChanges = initialSelectedItemPair != selectedItemPair,
         onClickOk = {
@@ -67,9 +68,8 @@ inline fun <reified I> ItemPairSelectOverlayForm(
             prefs.addLastPicked(favoriteKey, value)
             onClickOk(value)
         },
-        on = on,
         modifier = modifier,
-        otherAnswers = otherAnswers
+        otherAnswers = otherAnswers,
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),

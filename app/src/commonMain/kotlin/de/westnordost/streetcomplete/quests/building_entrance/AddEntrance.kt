@@ -88,9 +88,9 @@ class AddEntrance : OsmElementQuestType<EntranceAnswer> {
     @Composable
     override fun Form(on: (QuestAction<EntranceAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
+            on = on,
             items = remember { EntranceType.entries + EntranceAnswer.IsDeadEnd },
             itemContent = { Text(stringResource(it.text)) },
-            on = on
         )
     }
 

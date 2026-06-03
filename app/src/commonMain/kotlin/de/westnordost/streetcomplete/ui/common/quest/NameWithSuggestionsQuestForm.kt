@@ -18,8 +18,8 @@ import kotlin.collections.orEmpty
  *  typing "Red" and is suggested "Red Cross". */
 @Composable
 fun NameWithSuggestionsQuestForm(
-    suggestions: List<String>?,
     on: (QuestAction<String>) -> Unit,
+    suggestions: List<String>?,
     modifier: Modifier = Modifier,
     otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
 ) {
@@ -28,11 +28,11 @@ fun NameWithSuggestionsQuestForm(
     }
 
     QuestForm(
+        on = on,
         isComplete = value.text.isNotEmpty(),
         onClickOk = { on(Answer(value.text)) },
-        on = on,
         modifier = modifier,
-        otherAnswers = otherAnswers
+        otherAnswers = otherAnswers,
     ) {
         AutoCompleteTextField(
             value = value,

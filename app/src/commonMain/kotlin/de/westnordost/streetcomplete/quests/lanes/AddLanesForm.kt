@@ -50,15 +50,15 @@ fun AddLanesForm(
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 
     QuestForm(
+        on = on,
         isComplete =
             if (!isOneway) {
                 answer.forward != null && answer.backward != null
             } else {
                 answer.forward != null || answer.backward != null
             },
-        hasChanges = answer.forward != null || answer.backward != null,
         onClickOk =  { on(Answer(answer)) },
-        on = on,
+        hasChanges = answer.forward != null || answer.backward != null,
         otherAnswers = { listOfNotNull(
             if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
                 AnswerItem(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {

@@ -40,11 +40,11 @@ class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>()
     @Composable
     override fun Form(on: (QuestAction<ChargingStationBicycles>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) },
             ),
-            on = on,
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_charging_station_bicycles_answer_only)) { on(Answer(ONLY)) }
             ) }

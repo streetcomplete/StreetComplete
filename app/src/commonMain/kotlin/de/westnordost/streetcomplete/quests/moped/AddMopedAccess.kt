@@ -40,9 +40,9 @@ class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>() {
     @Composable
     override fun Form(on: (QuestAction<MopedAccessAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         RadioGroupQuestForm(
+            on = on,
             items = MopedAccessAnswer.entries,
             itemContent = { Text(stringResource(it.text)) },
-            on = on
         )
     }
 

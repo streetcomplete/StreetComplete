@@ -31,10 +31,10 @@ class AddFireHydrantType : OsmFilterQuestType<FireHydrantType>() {
     @Composable
     override fun Form(on: (QuestAction<FireHydrantType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
-            items = FireHydrantType.entries,
-            itemsPerRow = 2,
-            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             on = on,
+            items = FireHydrantType.entries,
+            itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            itemsPerRow = 2,
         )
     }
 

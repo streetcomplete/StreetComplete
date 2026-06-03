@@ -41,9 +41,9 @@ class AddPostboxRoyalCypher : OsmFilterQuestType<PostboxRoyalCypher>() {
     @Composable
     override fun Form(on: (QuestAction<PostboxRoyalCypher>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
+            on = on,
             items = PostboxRoyalCypher.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), it.title) },
-            on = on,
         )
     }
 

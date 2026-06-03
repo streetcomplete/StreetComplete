@@ -62,9 +62,9 @@ import org.koin.compose.koinInject
  *  opens a dropdown menu containing [otherAnswers] (defined from start to bottom). */
 @Composable
 fun QuestForm(
+    on: (Action) -> Unit,
     isComplete: Boolean,
     onClickOk: () -> Unit,
-    on: (Action) -> Unit,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     hasChanges: Boolean = isComplete,
@@ -80,6 +80,7 @@ fun QuestForm(
     content: @Composable BoxScope.() -> Unit
 ) {
     QuestForm(
+        on = on,
         title = title,
         subtitle = subtitle,
         hintText = hintText,
@@ -88,7 +89,6 @@ fun QuestForm(
         isComplete = isComplete,
         hasChanges = hasChanges,
         onClickOk = onClickOk,
-        on = on,
         answers = emptyList(),
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
@@ -109,8 +109,8 @@ fun QuestForm(
  *  opens a dropdown menu containing [otherAnswers] (defined from start to bottom). */
 @Composable
 fun QuestForm(
-    answers: List<AnswerItem>,
     on: (Action) -> Unit,
+    answers: List<AnswerItem>,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     title: String = stringResource(LocalQuestType.current!!.title),
@@ -125,6 +125,7 @@ fun QuestForm(
     content: @Composable (BoxScope.() -> Unit)? = null
 ) {
     QuestForm(
+        on = on,
         title = title,
         subtitle = subtitle,
         hintText = hintText,
@@ -133,7 +134,6 @@ fun QuestForm(
         isComplete = true,
         hasChanges = false,
         onClickOk = null,
-        on = on,
         answers = answers,
         otherAnswers = otherAnswers,
         contentPadding = contentPadding,
@@ -144,6 +144,7 @@ fun QuestForm(
 
 @Composable
 private fun QuestForm(
+    on: (Action) -> Unit,
     title: String,
     subtitle: AnnotatedString?,
     hintText: String?,
@@ -152,7 +153,6 @@ private fun QuestForm(
     isComplete: Boolean,
     hasChanges: Boolean,
     onClickOk: (() -> Unit)?,
-    on: (Action) -> Unit,
     answers: List<AnswerItem>,
     otherAnswers: @Composable () -> List<AnswerItem>,
     contentPadding: PaddingValues,

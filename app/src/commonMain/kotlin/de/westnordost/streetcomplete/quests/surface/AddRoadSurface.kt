@@ -61,16 +61,16 @@ class AddRoadSurface : OsmFilterQuestType<Surface>() {
     @Composable
     override fun Form(on: (QuestAction<Surface>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
-            title = stringResource(
-                if (element.tags["area"] == "yes") Res.string.quest_streetSurface_square_title
-                else Res.string.quest_streetSurface_title
-            ),
+            on = on,
             items = Surface.selectableValuesForWays,
             itemContent = { item ->
                 ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
             },
-            on = on,
             favoriteKey = "AddRoadSurfaceForm",
+            title = stringResource(
+                if (element.tags["area"] == "yes") Res.string.quest_streetSurface_square_title
+                else Res.string.quest_streetSurface_title
+            ),
         )
     }
 

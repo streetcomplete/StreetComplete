@@ -35,8 +35,8 @@ class AddChargingStationOperator : OsmFilterQuestType<String>() {
     @Composable
     override fun Form(on: (QuestAction<String>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         NameWithSuggestionsQuestForm(
+            on = on,
             suggestions = countryInfo.chargingStationOperators,
-            on = on
         )
     }
 

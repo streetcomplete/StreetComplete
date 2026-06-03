@@ -38,8 +38,13 @@ fun AddSmoothnessForm(
     var confirmSurface by remember { mutableStateOf<Surface?>(null) }
 
     ItemSelectQuestForm(
+        on = {
+            on(when (it) {
+                is Answer<Smoothness> -> Answer(SmoothnessValueAnswer(it.value))
+                is Action -> it
+            })
+        },
         items = items,
-        itemsPerRow = 1,
         itemContent = { item ->
             Box {
                 ImageWithDescription(
@@ -54,12 +59,7 @@ fun AddSmoothnessForm(
                 )
             }
         },
-        on = {
-            on(when (it) {
-                is Answer<Smoothness> -> Answer(SmoothnessValueAnswer(it.value))
-                is Action -> it
-            })
-        },
+        itemsPerRow = 1,
         title = stringResource(
             if (element.tags["area"] == "yes") Res.string.quest_smoothness_square_title
             else Res.string.quest_smoothness_road_title

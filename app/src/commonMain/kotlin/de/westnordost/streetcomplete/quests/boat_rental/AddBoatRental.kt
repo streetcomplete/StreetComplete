@@ -34,9 +34,9 @@ class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>() {
     @Composable
     override fun Form(on: (QuestAction<Set<BoatRental>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemsSelectQuestForm(
+            on = on,
             items = BoatRental.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
-            on = on,
         )
     }
 

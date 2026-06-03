@@ -9,7 +9,6 @@ import androidx.compose.runtime.setValue
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -149,6 +148,7 @@ import org.koin.compose.koinInject
     }
 
     OverlayForm(
+        on = on,
         isComplete =
             // name is not necessary
             selectedFeature != null,
@@ -178,7 +178,6 @@ import org.koin.compose.koinInject
                 askReplacePlace = true
             }
         },
-        on = on,
         label =
             // title hint label with name is a duplication, it is displayed in the UI already
             element?.let { nameAndLocationLabel(it, featureDictionary = null) },
@@ -195,7 +194,7 @@ import org.koin.compose.koinInject
                     localizedNames = listOf()
                 }
             } else null,
-        ) }
+        ) },
     ) {
         PlaceForm(
             selectedFeature = selectedFeature,

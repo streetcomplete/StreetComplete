@@ -19,13 +19,13 @@ fun AddEntranceReferenceForm(
     var entranceReference by rememberSerializable { mutableStateOf(lastEntranceReference?.clear()) }
 
     QuestForm(
+        on = on,
         isComplete = entranceReference?.isComplete() == true,
-        hasChanges = entranceReference != null,
         onClickOk = {
             lastEntranceReference = entranceReference
             on(Answer(entranceReference!!))
         },
-        on = on,
+        hasChanges = entranceReference != null,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_entrance_reference_nothing_signed)) {
                 on(Answer(EntranceReferenceAnswer.NotSigned))

@@ -48,11 +48,11 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
     @Composable
     override fun Form(on: (QuestAction<BusStopShelterAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         QuestForm(
+            on = on,
             answers = listOf(
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO_SHELTER)) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(SHELTER)) }
             ),
-            on = on,
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_busStopShelter_covered)) { on(Answer(COVERED)) }
             ) }
