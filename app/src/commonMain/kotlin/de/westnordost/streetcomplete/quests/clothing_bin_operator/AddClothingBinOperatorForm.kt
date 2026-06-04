@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm
 import org.jetbrains.compose.resources.stringResource
@@ -38,7 +38,7 @@ fun AddClothingBinOperatorForm(
     )
 
     if (confirmNoSign) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNoSign = false },
             onConfirmed = { on(Answer(ClothingBinOperatorAnswer.NoneSigned)) }
         )

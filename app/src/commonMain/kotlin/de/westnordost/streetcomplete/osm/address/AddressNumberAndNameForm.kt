@@ -17,35 +17,37 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.Details
 import org.jetbrains.compose.resources.stringResource
 
-/** Form to input a housenumber and/or name. If [value]`.name` is null, the name input is not
+/** Form to input a housenumber and/or name. If [name] is null, the name input is not
  *  shown at all, not even retracted,  but only the housenumber input. */
 @Composable
 fun AddressNumberAndNameForm(
-    value: AddressNumberAndName,
-    onValueChange: (AddressNumberAndName) -> Unit,
+    number: AddressNumber?,
+    name: String?,
+    onNumberChange: (AddressNumber?) -> Unit,
+    onNameChange: (String?) -> Unit,
     countryCode: String?,
     modifier: Modifier = Modifier,
     houseNumberSuggestion: String? = null,
     blockSuggestion: String? = null,
 ) {
-    val hasNumber = value.number != null
-    val hasName = value.name != null
+    val hasNumber = number != null
+    val hasName = name != null
     var numberExpanded by rememberSaveable(hasNumber) { mutableStateOf(hasNumber) }
     var nameExpanded by rememberSaveable(hasName) { mutableStateOf(hasName) }
-    val number = value.number ?: HouseNumber("")
+    val number = number ?: HouseNumber("")
 
     Box(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        if (value.name != null) {
+        if (name != null) {
             Column {
                 Details(
                     expanded = numberExpanded,
                     onExpandedChange = { numberExpanded = it },
                     summary = { Text(stringResource(Res.string.quest_address_house_number_label)) },
                     modifier = Modifier.fillMaxWidth(),
-                    enabled = value.number?.isEmpty() != false
+                    enabled = number.isEmpty() != false
                 ) {
                     Box(
                         modifier = Modifier.fillMaxWidth(),
@@ -53,7 +55,7 @@ fun AddressNumberAndNameForm(
                     ) {
                         AddressNumberForm(
                             value = number,
-                            onValueChange = { onValueChange(value.copy(number = it)) },
+                            onValueChange = { onNumberChange(it) },
                             countryCode = countryCode,
                             houseNumberSuggestion = houseNumberSuggestion,
                             blockSuggestion = blockSuggestion,
@@ -65,11 +67,11 @@ fun AddressNumberAndNameForm(
                     onExpandedChange = { nameExpanded = it },
                     summary = { Text(stringResource(Res.string.quest_address_house_name_label)) },
                     modifier = Modifier.fillMaxWidth(),
-                    enabled = value.name.isEmpty()
+                    enabled = name.isEmpty()
                 ) {
                     TextField(
-                        value = value.name,
-                        onValueChange = { onValueChange(value.copy(name = it)) },
+                        value = name,
+                        onValueChange = { onNameChange(it) },
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
@@ -77,7 +79,7 @@ fun AddressNumberAndNameForm(
         } else {
             AddressNumberForm(
                 value = number,
-                onValueChange = { onValueChange(value.copy(number = it)) },
+                onValueChange = { onNumberChange(it) },
                 countryCode = countryCode,
                 houseNumberSuggestion = houseNumberSuggestion,
                 blockSuggestion = blockSuggestion,

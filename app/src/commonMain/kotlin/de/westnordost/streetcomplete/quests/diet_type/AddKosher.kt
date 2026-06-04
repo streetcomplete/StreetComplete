@@ -46,7 +46,7 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>() {
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is DietAvailability -> tags.updateWithCheckDate("diet:kosher", answer.osmValue)
-            NoFood -> tags["food"] = "no"
+            DietAvailabilityAnswer.NoFood -> tags["food"] = "no"
         }
     }
 }

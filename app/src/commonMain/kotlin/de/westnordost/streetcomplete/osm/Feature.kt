@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.osm.places.isDisusedPlace
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.allDrawableResources
 import org.jetbrains.compose.resources.DrawableResource
@@ -59,8 +60,7 @@ fun Feature.isChildOf(other: Feature): Boolean =
 /** return whether the feature has a fixed name which should not be changed */
 val Feature.hasFixedName get() =
     addTags.containsKey("name") && preserveTags.none { it.containsMatchIn("name") }
-        || id == "shop/vacant"
-        || id == "shop/unknown"
+        || isDisusedPlace()
 
 /** Return the drawable resource of this feature's icon, if any */
 val Feature.iconDrawableResource: DrawableResource? get() {

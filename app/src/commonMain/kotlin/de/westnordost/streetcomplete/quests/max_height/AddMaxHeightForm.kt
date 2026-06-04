@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -66,13 +66,13 @@ fun AddMaxHeightForm(
     }
 
     if (confirmNoSign) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNoSign = false },
             onConfirmed = { on(Answer(NoMaxHeightSign)) }
         )
     }
     if (confirmUnusualInput) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmUnusualInput = false },
             onConfirmed = { on(Answer(MaxHeight(height!!))) },
             text = { Text(stringResource(Res.string.quest_maxheight_unusualInput_confirmation_description)) }

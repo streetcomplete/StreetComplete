@@ -16,7 +16,7 @@ fun AddRailwayCrossingBarrierForm(
     element: Element,
     countryInfo: CountryInfo,
 ) {
-    val items = remember {
+    val items = remember(element) {
         val isPedestrian = element.tags["railway"] == "crossing"
         RailwayCrossingBarrier.getSelectableValues(isPedestrian)
     }

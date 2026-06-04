@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -30,15 +30,15 @@ fun AddPostboxCollectionTimesForm(
     element: Element,
     countryInfo: CountryInfo,
 ) {
-    val oh = remember { element.tags["collection_times"]?.toOpeningHoursOrNull(lenient = true) }
-    val originalOpeningHours = remember { oh?.toHierarchicOpeningHours(allowTimePoints = true) }
-    var openingHours by rememberSerializable {
+    val oh = remember(element) { element.tags["collection_times"]?.toOpeningHoursOrNull(lenient = true) }
+    val originalOpeningHours = remember(oh) { oh?.toHierarchicOpeningHours(allowTimePoints = true) }
+    var openingHours by rememberSerializable(originalOpeningHours) {
         mutableStateOf(originalOpeningHours ?: HierarchicOpeningHours())
     }
-    var isDisplayingPrevious by rememberSaveable {
+    var isDisplayingPrevious by rememberSaveable(originalOpeningHours) {
         mutableStateOf(originalOpeningHours != null)
     }
-    var timeMode by rememberSerializable {
+    var timeMode by rememberSerializable(oh) {
         mutableStateOf(if (oh?.containsTimeSpans() == true) TimeMode.Spans else TimeMode.Points)
     }
 
@@ -108,9 +108,9 @@ fun AddPostboxCollectionTimesForm(
     }
 
     if (confirmNoSign) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNoSign = false },
-            onConfirmed = { on(Answer(NoCollectionTimesSign)) },
+            onConfirmed = { on(Answer(CollectionTimesAnswer.NoSign)) },
             titleText = stringResource(Res.string.quest_generic_confirmation_title)
         )
     }

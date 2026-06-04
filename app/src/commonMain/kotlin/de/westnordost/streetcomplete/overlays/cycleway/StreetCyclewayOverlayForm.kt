@@ -44,7 +44,7 @@ import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowIt
 import de.westnordost.streetcomplete.osm.cycleway.withDefaultDirection
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
@@ -213,7 +213,7 @@ fun StreetCyclewayOverlayForm(
     }
 
     if (confirmNotOnewayForCyclists) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNotOnewayForCyclists = false },
             onConfirmed = { saveAndApplyCycleway() },
             text = { Text(stringResource(Res.string.quest_cycleway_confirmation_oneway_for_cyclists_too)) }
@@ -221,7 +221,7 @@ fun StreetCyclewayOverlayForm(
     }
 
     if (confirmSelectReverseCyclewayDirection) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmSelectReverseCyclewayDirection = false },
             onConfirmed = { selectionMode = CyclewayFormSelectionMode.REVERSE },
             titleText = stringResource(Res.string.quest_generic_confirmation_title),

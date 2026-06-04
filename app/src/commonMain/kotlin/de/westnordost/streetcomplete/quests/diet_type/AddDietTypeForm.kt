@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.*
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import org.jetbrains.compose.resources.stringResource
@@ -52,9 +52,9 @@ fun AddDietTypeForm(
     }
 
     if (confirmNoFood) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNoFood = false },
-            onConfirmed = { on(Answer(NoFood)) }
+            onConfirmed = { on(Answer(DietAvailabilityAnswer.NoFood)) }
         )
     }
 }

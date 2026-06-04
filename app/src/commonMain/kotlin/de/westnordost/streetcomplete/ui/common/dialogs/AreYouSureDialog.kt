@@ -13,10 +13,10 @@ import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
 
-/** Slight specialization of an alert dialog, used in quests. Both buttons
+/** Slight specialization of an alert dialog, used in quests and overlays. Both buttons
  *  call [onDismissRequest] and the OK button additionally calls [onConfirmed]. */
 @Composable
-fun QuestConfirmationDialog(
+fun AreYouSureDialog(
     onDismissRequest: () -> Unit,
     onConfirmed: () -> Unit,
     modifier: Modifier = Modifier,

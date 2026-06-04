@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionar
  *  [country]. [unknownPlaceString] is used to label the place correctly if it is an unknown place
  *  */
 fun FeatureDictionary.getPlaceOrDisusedPlace(
+    disusedString: String,
     unknownPlaceString: String,
     element: Element,
     languages: List<String?>? = getLanguagesForFeatureDictionary(),
@@ -25,6 +26,9 @@ fun FeatureDictionary.getPlaceOrDisusedPlace(
 ): Feature? =
     // either a regular place
     getFeature(element, languages, country, isSuggestion = null) // include brands
+        ?.takeIf { it.toElement().isPlace() }
+    // or a disused place
+    ?: getDisusedFeature(disusedString, element, languages, country)
         ?.takeIf { it.toElement().isPlace() }
     // or vacant place
     ?: (if (element.isDisusedPlace()) getById("shop/vacant", languages, country) else null)

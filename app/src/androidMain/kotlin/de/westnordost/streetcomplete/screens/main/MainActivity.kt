@@ -116,8 +116,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
+import org.koin.core.scope.Scope
 import kotlin.math.PI
 import kotlin.math.sqrt
 import kotlin.random.Random
@@ -156,7 +159,10 @@ class MainActivity :
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
     // rest
-    ShowsGeometryMarkers {
+    ShowsGeometryMarkers,
+    AndroidScopeComponent {
+
+    override val scope: Scope by activityScope()
 
     private val questAutoSyncer: QuestAutoSyncer by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()

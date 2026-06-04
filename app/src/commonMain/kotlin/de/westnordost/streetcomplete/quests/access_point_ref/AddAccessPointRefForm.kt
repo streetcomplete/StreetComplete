@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
@@ -49,9 +49,9 @@ fun AddAccessPointRefForm(
     }
 
     if (confirmAssemblyPoint) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmAssemblyPoint = false },
-            onConfirmed = { on(Answer(IsAssemblyPointAnswer)) },
+            onConfirmed = { on(Answer(AccessPointRefAnswer.IsAssemblyPoint)) },
             text = {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -67,9 +67,9 @@ fun AddAccessPointRefForm(
         )
     }
     if (confirmNoRef) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNoRef = false },
-            onConfirmed = { on(Answer(NoVisibleAccessPointRef)) }
+            onConfirmed = { on(Answer(AccessPointRefAnswer.NoRef)) }
         )
     }
 }

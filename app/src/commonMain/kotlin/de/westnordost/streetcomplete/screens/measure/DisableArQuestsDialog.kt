@@ -13,7 +13,7 @@ import org.jetbrains.compose.resources.stringResource
 fun DisableArQuestsDialog(
     onDismissRequest: () -> Unit,
     onConfirmed: () -> Unit,
-    text: String,
+    measureResult: ArMeasureResult,
     modifier: Modifier = Modifier,
 ) {
     ConfirmationDialog(
@@ -21,7 +21,18 @@ fun DisableArQuestsDialog(
         onConfirmed = onConfirmed,
         title = { Text(stringResource(Res.string.quest_disable_title)) },
         text = {
-            Text(text + "\n\n" + stringResource(Res.string.quest_disable_message_tape_measure))
+            val text = when (measureResult) {
+                ArMeasureResult.Error -> Res.string.quest_disable_message_not_working
+                ArMeasureResult.NotInstalled -> Res.string.quest_disable_message_not_installed
+                is ArMeasureResult.Success -> null
+            }
+            text?.let {
+                Text(
+                    stringResource(text) +
+                    "\n\n" +
+                    stringResource(Res.string.quest_disable_message_tape_measure)
+                )
+            }
         },
         confirmButtonText = stringResource(Res.string.quest_disable_action),
         modifier = modifier,

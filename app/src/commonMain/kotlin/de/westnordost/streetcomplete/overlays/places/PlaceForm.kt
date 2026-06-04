@@ -13,6 +13,7 @@ import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -49,6 +50,8 @@ fun PlaceForm(
     featureDictionary: FeatureDictionary,
     modifier: Modifier = Modifier,
 ) {
+    val hasFixedName = remember(selectedFeature) { selectedFeature?.hasFixedName == true }
+
     Column(
         modifier = modifier
             .defaultMinSize(minHeight = 96.dp)
@@ -65,7 +68,7 @@ fun PlaceForm(
             filterFn = { it.toElement().isPlace() || it.id == "shop/vacant" },
             codesOfDefaultFeatures = POPULAR_PLACE_FEATURE_IDS,
         )
-        if (selectedFeature != null && !selectedFeature.hasFixedName) {
+        if (selectedFeature != null && !hasFixedName) {
             Column {
                 Text(
                     text = stringResource(Res.string.name_label),
@@ -92,7 +95,7 @@ fun PlaceForm(
                 )
             }
         }
-        // show only for adding new POIs becaues it gets too busy with also the name form
+        // show only for adding new POIs because it gets too busy with also the name form
         // being displayed
         if (lastPickedFeatures.isNotEmpty() && element == null && selectedFeature == null) {
             LastPickedChipsRow(

@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side
 import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideForm
 import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawable
+import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -139,6 +140,7 @@ private fun ReverseDirectionsHint(
     }
 }
 
+@Serializable
 enum class CyclewayFormSelectionMode {
     /** Clicking on a side lets you select what type of cycleway there is */
     SELECT,

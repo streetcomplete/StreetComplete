@@ -7,9 +7,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.osm.length.Length
-import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.StringResource
-import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun LastArMeasurementResultEffect(
@@ -17,29 +14,26 @@ fun LastArMeasurementResultEffect(
     onMeasureSuccess: (Length) -> Unit,
     onConfirmDisableArQuests: () -> Unit
 ) {
-    var confirmDisableArQuestsWithText by remember { mutableStateOf<StringResource?>(null) }
+    var confirmDisableArQuests by remember { mutableStateOf(false) }
 
     LaunchedEffect(lastResult) {
-        confirmDisableArQuestsWithText = when (lastResult) {
-            ArMeasureResult.Error -> {
-                Res.string.quest_disable_message_not_working
-            }
-            ArMeasureResult.NotInstalled -> {
-                Res.string.quest_disable_message_not_installed
-            }
-            is ArMeasureResult.Success -> {
-                onMeasureSuccess(lastResult.length)
-                null
-            }
-            else -> null
+        confirmDisableArQuests =
+            lastResult == ArMeasureResult.Error ||
+            // first time don't ask whether to disable (let user install the app first)
+            lastResult == ArMeasureResult.NotInstalled && notInstalledCount++ > 0
+
+        if (lastResult is ArMeasureResult.Success) {
+            onMeasureSuccess(lastResult.length)
         }
     }
 
-    confirmDisableArQuestsWithText?.let {
+    if (confirmDisableArQuests && lastResult != null) {
         DisableArQuestsDialog(
-            onDismissRequest = { confirmDisableArQuestsWithText = null },
+            onDismissRequest = { confirmDisableArQuests = false },
             onConfirmed = onConfirmDisableArQuests,
-            text = stringResource(it)
+            measureResult = lastResult
         )
     }
 }
+
+private var notInstalledCount: Int = 0

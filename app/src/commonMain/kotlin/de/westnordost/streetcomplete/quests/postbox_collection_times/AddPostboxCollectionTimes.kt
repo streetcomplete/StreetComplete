@@ -82,7 +82,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
 
     override fun applyAnswerTo(answer: CollectionTimesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is NoCollectionTimesSign -> {
+            is CollectionTimesAnswer.NoSign -> {
                 tags["collection_times:signed"] = "no"
             }
             is CollectionTimes -> {

@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.osm.length.LengthForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArMeasureViewModel
 import de.westnordost.streetcomplete.screens.measure.LastArMeasurementResultEffect
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -93,7 +93,7 @@ fun AddWidthForm(
     }
 
     if (confirmDubiousRoadWidth) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmDubiousRoadWidth = false },
             onConfirmed = { on(Answer(WidthAnswer(length!!, isArMeasurement))) },
             text = { Text(stringResource(Res.string.quest_road_width_unusualInput_confirmation_description)) }

@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -63,10 +63,10 @@ fun AddHousenumberForm(
 
     fun applyHousenumberAnswer() {
         val number = addressNumberAndName.number?.takeIf { !it.isEmpty() }
-        on(Answer(addressNumberAndName))
         lastBlock = (number as? BlockAndHouseNumber)?.block
         lastWasBlock = number is BlockAndHouseNumber
         number?.streetHouseNumber?.let { lastHouseNumber = it }
+        on(Answer(addressNumberAndName))
     }
 
     QuestForm(
@@ -107,8 +107,10 @@ fun AddHousenumberForm(
         }
     ) {
         AddressNumberAndNameForm(
-            value = addressNumberAndName,
-            onValueChange = { addressNumberAndName = it },
+            number = addressNumberAndName.number,
+            name = addressNumberAndName.name,
+            onNumberChange = { addressNumberAndName = addressNumberAndName.copy(number = it) },
+            onNameChange = { addressNumberAndName = addressNumberAndName.copy(name = it) },
             countryCode = countryInfo.countryCode,
             modifier = Modifier.fillMaxWidth(),
             houseNumberSuggestion = lastHouseNumber,
@@ -135,7 +137,7 @@ fun AddHousenumberForm(
     }
 
     if (confirmUnusualHouseNumber) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmUnusualHouseNumber = false },
             onConfirmed = { applyHousenumberAnswer() },
             text = { Text(stringResource(Res.string.quest_address_unusualHousenumber_confirmation_description)) }

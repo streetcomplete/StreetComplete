@@ -63,11 +63,9 @@ class CyclewayOverlay(
 
     @Composable
     override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        if (element == null) return
-
-        if (element.tags["highway"] in ALL_ROADS) {
+        if (element != null && element.tags["highway"] in ALL_ROADS) {
             StreetCyclewayOverlayForm(on, element, geometry, countryInfo)
-        } else if (element.tags["highway"] in ALL_PATHS) {
+        } else if (element != null && element.tags["highway"] in ALL_PATHS) {
             SeparateCyclewayForm(on, element, countryInfo)
         }
     }

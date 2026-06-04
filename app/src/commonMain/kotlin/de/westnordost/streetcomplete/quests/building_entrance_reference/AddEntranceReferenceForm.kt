@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.quests.building_entrance_reference
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
@@ -16,7 +17,8 @@ import org.jetbrains.compose.resources.stringResource
 fun AddEntranceReferenceForm(
     on: (QuestAction<EntranceReferenceAnswer>) -> Unit
 ) {
-    var entranceReference by rememberSerializable { mutableStateOf(lastEntranceReference?.clear()) }
+    val initialEntranceReference = remember { lastEntranceReference?.clear() }
+    var entranceReference by rememberSerializable { mutableStateOf(initialEntranceReference) }
 
     QuestForm(
         on = on,
@@ -25,7 +27,7 @@ fun AddEntranceReferenceForm(
             lastEntranceReference = entranceReference
             on(Answer(entranceReference!!))
         },
-        hasChanges = entranceReference != null,
+        hasChanges = entranceReference != initialEntranceReference,
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_entrance_reference_nothing_signed)) {
                 on(Answer(EntranceReferenceAnswer.NotSigned))

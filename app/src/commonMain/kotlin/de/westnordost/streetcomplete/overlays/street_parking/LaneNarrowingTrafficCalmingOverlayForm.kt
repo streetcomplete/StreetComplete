@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.osm.traffic_calming.icon
 import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.traffic_calming.title
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.overlay.ItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -77,7 +77,7 @@ fun LaneNarrowingTrafficCalmingForm(
     )
 
     if (confirmRemoveLaneNarrowingTrafficCalming) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmRemoveLaneNarrowingTrafficCalming = false },
             onConfirmed = {
                 val tagChanges = StringMapChangesBuilder(element.tags)

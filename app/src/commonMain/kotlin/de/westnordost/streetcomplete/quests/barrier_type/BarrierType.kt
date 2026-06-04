@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.osm.Tags
+import kotlinx.serialization.Serializable
 
+@Serializable
 enum class BarrierType(val osmValue: String) {
     PASSAGE("entrance"),
     GATE("gate"),

@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursCommentDialog
 import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
@@ -34,15 +34,15 @@ fun AddOpeningHoursForm(
     element: Element,
     countryInfo: CountryInfo,
 ) {
-    val originalOpeningHours = remember {
+    val originalOpeningHours = remember(element) {
         element.tags["opening_hours"]
             ?.toOpeningHoursOrNull(lenient = true)
             ?.toHierarchicOpeningHours()
     }
-    var openingHours by rememberSerializable {
+    var openingHours by rememberSerializable(originalOpeningHours) {
         mutableStateOf(originalOpeningHours ?: HierarchicOpeningHours())
     }
-    var isDisplayingPrevious by rememberSaveable {
+    var isDisplayingPrevious by rememberSaveable(originalOpeningHours) {
         mutableStateOf(originalOpeningHours != null)
     }
 
@@ -112,14 +112,14 @@ fun AddOpeningHoursForm(
         )
     }
     if (confirmNoSign) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNoSign = false },
             onConfirmed = { on(Answer(NoOpeningHoursSign)) },
             titleText = stringResource(Res.string.quest_generic_confirmation_title)
         )
     }
     if (confirm24_7) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirm24_7 = false },
             onConfirmed = { on(Answer(AlwaysOpen)) },
             titleText = stringResource(Res.string.quest_openingHours_24_7_confirmation)

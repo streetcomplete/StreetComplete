@@ -64,7 +64,7 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_bollard_type_not_bollard)) {
-                    on(Answer(BarrierTypeIsNotBollard))
+                    on(Answer(BollardTypeAnswer.NotBollard))
                 },
             ) }
         )
@@ -73,7 +73,7 @@ class AddBollardType : OsmElementQuestType<BollardTypeAnswer> {
     override fun applyAnswerTo(answer: BollardTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is BollardType -> tags["bollard"] = answer.osmValue
-            BarrierTypeIsNotBollard -> tags["barrier"] = "yes"
+            BollardTypeAnswer.NotBollard -> tags["barrier"] = "yes"
         }
     }
 }

@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.quests.recycling_material
 
 import de.westnordost.streetcomplete.util.tree.buildTree
+import kotlinx.serialization.Serializable
 
 /** All recycling:* keys known to StreetComplete */
+@Serializable
 enum class RecyclingMaterial(val value: String) {
     // sorted how they should appear in the UI, roughly by how common they are
 

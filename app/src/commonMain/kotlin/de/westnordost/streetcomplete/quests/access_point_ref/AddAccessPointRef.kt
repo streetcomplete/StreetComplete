@@ -33,9 +33,9 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
 
     override fun applyAnswerTo(answer: AccessPointRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is NoVisibleAccessPointRef -> tags["ref:signed"] = "no"
-            is AccessPointRef ->          tags["ref"] = answer.ref
-            is IsAssemblyPointAnswer -> {
+            is AccessPointRefAnswer.NoRef -> tags["ref:signed"] = "no"
+            is AccessPointRef ->             tags["ref"] = answer.ref
+            is AccessPointRefAnswer.IsAssemblyPoint -> {
                 tags["emergency"] = "assembly_point"
                 if (tags["highway"] == "emergency_access_point") {
                     tags.remove("highway")

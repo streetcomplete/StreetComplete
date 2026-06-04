@@ -18,7 +18,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddPathSurfaceForm(
-    on: (QuestAction<SurfaceOrIsStepsAnswer>) -> Unit,
+    on: (QuestAction<PathSurfaceAnswer>) -> Unit,
     element: Element,
 ) {
     ItemSelectQuestForm(
@@ -36,12 +36,12 @@ fun AddPathSurfaceForm(
         otherAnswers = { listOfNotNull(
             if (element.couldBeSteps()) {
                 AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
-                    on(Answer(IsActuallyStepsAnswer))
+                    on(Answer(PathSurfaceAnswer.IsSteps))
                 }
             } else null,
             if (element.tags["indoor"] != "yes") {
                 AnswerItem(stringResource(Res.string.quest_generic_answer_is_indoors)) {
-                    on(Answer(IsIndoorsAnswer))
+                    on(Answer(PathSurfaceAnswer.IsIndoors))
                 }
             } else null,
         ) }

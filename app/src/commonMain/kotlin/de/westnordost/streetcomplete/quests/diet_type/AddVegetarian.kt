@@ -52,7 +52,7 @@ class AddVegetarian : OsmFilterQuestType<DietAvailabilityAnswer>() {
                     tags.remove("diet:vegan")
                 }
             }
-            NoFood -> tags["food"] = "no"
+            DietAvailabilityAnswer.NoFood -> tags["food"] = "no"
         }
     }
 }

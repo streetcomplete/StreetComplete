@@ -47,7 +47,8 @@ fun AddInternetAccessForm(
                         selectedOptions = setOf(InternetAccess.NO)
                     } else {
                         selectedOptions =
-                            if (selected) { selectedOptions + option } else { selectedOptions - option }
+                            if (selected) selectedOptions + option
+                            else selectedOptions - option
                     }
                 },
                 selectedOptions = selectedOptions,

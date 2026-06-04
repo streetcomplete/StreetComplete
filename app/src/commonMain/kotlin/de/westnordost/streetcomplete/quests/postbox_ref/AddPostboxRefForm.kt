@@ -11,7 +11,7 @@ import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
@@ -40,7 +40,7 @@ fun AddPostboxRefForm(
     }
 
     if (confirmNoRef) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNoRef = false },
             onConfirmed = { on(Answer(NoVisiblePostboxRef)) }
         )

@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
+class AddPathSurface : OsmFilterQuestType<PathSurfaceAnswer>() {
 
     override val elementFilter = """
         ways with highway ~ path|footway|cycleway|bridleway|steps
@@ -46,19 +46,19 @@ class AddPathSurface : OsmFilterQuestType<SurfaceOrIsStepsAnswer>() {
     override val achievements = listOf(PEDESTRIAN, WHEELCHAIR, BICYCLIST, OUTDOORS)
 
     @Composable
-    override fun Form(on: (QuestAction<SurfaceOrIsStepsAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<PathSurfaceAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddPathSurfaceForm(on, element)
     }
 
-    override fun applyAnswerTo(answer: SurfaceOrIsStepsAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: PathSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is SurfaceAnswer -> {
                 answer.value.applyTo(tags)
             }
-            is IsActuallyStepsAnswer -> {
+            is PathSurfaceAnswer.IsSteps -> {
                 tags.changeToSteps()
             }
-            is IsIndoorsAnswer -> {
+            is PathSurfaceAnswer.IsIndoors -> {
                 tags["indoor"] = "yes"
             }
         }

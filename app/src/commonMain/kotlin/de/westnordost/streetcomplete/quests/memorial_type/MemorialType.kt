@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.memorial_type
 
 import de.westnordost.streetcomplete.osm.Tags
+import kotlinx.serialization.Serializable
 
+@Serializable
 enum class MemorialType(val osmValue: String, val osmMaterialValue: String? = null) {
     STATUE("statue"),
     BUST("bust"),

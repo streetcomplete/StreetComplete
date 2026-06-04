@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
-import de.westnordost.streetcomplete.quests.barrier_type.StileTypeAnswer.*
+import de.westnordost.streetcomplete.quests.barrier_type.StileType.*
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
-val StileTypeAnswer.title: StringResource get() = when (this) {
+val StileType.title: StringResource get() = when (this) {
     KISSING_GATE ->      Res.string.quest_barrier_type_kissing_gate_conversion
     PASSAGE ->           Res.string.quest_barrier_type_passage_conversion
     GATE ->              Res.string.quest_barrier_type_gate_conversion
@@ -15,7 +15,7 @@ val StileTypeAnswer.title: StringResource get() = when (this) {
     STEPOVER_STONE ->    Res.string.quest_barrier_type_stepover_stone
 }
 
-val StileTypeAnswer.icon: DrawableResource get() = when (this) {
+val StileType.icon: DrawableResource get() = when (this) {
     KISSING_GATE ->      Res.drawable.barrier_kissing_gate
     PASSAGE ->           Res.drawable.barrier_passage
     GATE ->              Res.drawable.barrier_gate_pedestrian

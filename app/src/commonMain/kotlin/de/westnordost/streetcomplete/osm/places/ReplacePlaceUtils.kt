@@ -26,8 +26,8 @@ fun shouldReplacePlace(
     val isFeatureSubtype =
         previousFeature != null
         && (newFeature.isChildOf(previousFeature) || previousFeature.isChildOf(newFeature))
-    val wasVacant = element != null && element.isDisusedPlace()
-    val isVacant = newFeature.id == "shop/vacant"
+    val wasDisused = element != null && element.isDisusedPlace()
+    val isDisused = newFeature.isDisusedPlace()
     val wasBrand =  previousFeature?.isSuggestion == true
     val isBrand =  newFeature.isSuggestion
 
@@ -50,9 +50,9 @@ fun shouldReplacePlace(
         (isBrand || wasBrand) && !isFeatureSubtype
         // was vacant before but not anymore (-> cleans up any previous tags that may be
         // associated with the old place)
-        || wasVacant && hasChangedId
+        || wasDisused && hasChangedId
         // it's vacant now
-        || isVacant
+        || isDisused
 
     if (shouldAlwaysReplaceShop) return true
 

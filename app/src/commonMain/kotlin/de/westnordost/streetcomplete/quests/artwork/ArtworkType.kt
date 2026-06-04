@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.quests.artwork
 
 import de.westnordost.streetcomplete.osm.Tags
+import kotlinx.serialization.Serializable
 
+@Serializable
 enum class ArtworkType(val osmValue: String) {
     SCULPTURE("sculpture"),
     STATUE("statue"),

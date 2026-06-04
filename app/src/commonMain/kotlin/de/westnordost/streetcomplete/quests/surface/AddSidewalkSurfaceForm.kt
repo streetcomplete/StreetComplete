@@ -39,7 +39,7 @@ fun AddSidewalkSurfaceForm(
     preferences: Preferences = koinInject(),
 ) {
     val favKey = "AddSidewalkSurfaceForm"
-    val sidewalk = remember { parseSidewalkSides(element.tags) }
+    val sidewalk = remember(element) { parseSidewalkSides(element.tags) }
     val hasSidewalkLeft = sidewalk?.left == Sidewalk.YES
     val hasSidewalkRight = sidewalk?.right == Sidewalk.YES
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
@@ -53,7 +53,7 @@ fun AddSidewalkSurfaceForm(
         }
     }
 
-    var sidewalkSurfaces by rememberSerializable { mutableStateOf(Sides<Surface>(null, null)) }
+    var sidewalkSurfaces by rememberSerializable(element) { mutableStateOf(Sides<Surface>(null, null)) }
 
     QuestForm(
         on = on,

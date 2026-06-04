@@ -49,96 +49,15 @@ fun EntranceReferenceForm(
             selectedItem = value,
             itemContent = { Text(stringResource(it.text)) },
         )
-        if (value is EntranceReference) {
+        if (value != null) {
             ProvideTextStyle(MaterialTheme.typography.largeInput) {
-                when (value) {
-                    is FlatRange -> {
-                        FlatRangeInput(
-                            value = value,
-                            onValueChange = onValueChange,
-                            modifier = Modifier.width(224.dp)
-                        )
-                    }
-                    is ReferenceCode -> {
-                        ReferenceCodeInput(
-                            value = value,
-                            onValueChange = onValueChange,
-                            modifier = Modifier.width(128.dp)
-                        )
-                    }
-                    is ReferenceCodeAndFlatRange -> {
-                        Column(
-                            modifier = Modifier,
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                        ) {
-                            val labelStyle = MaterialTheme.typography.caption.copy(
-                                hyphens = Hyphens.Auto,
-                                textAlign = TextAlign.Center,
-                                color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
-                            )
-                            Text(
-                                text = stringResource(Res.string.quest_entrance_reference_reference_label),
-                                style = labelStyle,
-                            )
-                            ReferenceCodeInput(
-                                value = value.referenceCode,
-                                onValueChange = { onValueChange(value.copy(referenceCode = it)) },
-                                modifier = Modifier.width(128.dp)
-                            )
-                            Text(
-                                text = stringResource(Res.string.quest_entrance_reference_flat_range_label),
-                                style = labelStyle,
-                            )
-                            FlatRangeInput(
-                                value = value.flatRange,
-                                onValueChange = { onValueChange(value.copy(flatRange = it)) },
-                                modifier = Modifier.width(224.dp)
-                            )
-                        }
-                    }
-                }
+                EntranceReferenceInput(
+                    value = value,
+                    onValueChange = onValueChange,
+                )
             }
         }
     }
-}
-
-@Composable
-private fun FlatRangeInput(
-    value: FlatRange,
-    onValueChange: (FlatRange) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Row(
-        modifier = modifier,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        AnAddressNumberInput(
-            value = value.start,
-            onValueChange = { onValueChange(value.copy(start = it)) },
-            modifier = Modifier.weight(0.5f)
-        )
-        Text(stringResource(Res.string.quest_entrance_reference_flat_range_to))
-        AnAddressNumberInput(
-            value = value.end,
-            onValueChange = { onValueChange(value.copy(end = it)) },
-            modifier = Modifier.weight(0.5f)
-        )
-    }
-}
-
-@Composable
-private fun ReferenceCodeInput(
-    value: ReferenceCode,
-    onValueChange: (ReferenceCode) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    AnAddressNumberInput(
-        value = value.value,
-        onValueChange = { onValueChange(ReferenceCode(it)) },
-        modifier = modifier,
-    )
 }
 
 private val EntranceReference.text: StringResource get() = when (this) {

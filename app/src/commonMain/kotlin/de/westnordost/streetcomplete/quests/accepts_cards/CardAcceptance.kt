@@ -10,8 +10,7 @@ enum class CardAcceptance(val debit: Boolean, val credit: Boolean) {
     NEITHER_DEBIT_NOR_CREDIT(false, false),
 }
 
-val CardAcceptance.text: StringResource
-    get() = when (this) {
+val CardAcceptance.text: StringResource get() = when (this) {
     CardAcceptance.DEBIT_AND_CREDIT -> Res.string.quest_accepts_cards_debit_and_credit
     CardAcceptance.CREDIT_CARDS_ONLY -> Res.string.quest_accepts_cards_credit_only
     CardAcceptance.DEBIT_CARDS_ONLY -> Res.string.quest_accepts_cards_dedit_only

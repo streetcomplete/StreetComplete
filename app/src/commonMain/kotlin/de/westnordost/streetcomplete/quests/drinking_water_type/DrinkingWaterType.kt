@@ -4,7 +4,9 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.quests.drinking_water_type.DrinkingWaterType.*
+import kotlinx.serialization.Serializable
 
+@Serializable
 enum class DrinkingWaterType {
     WATER_TAP,
     WATER_FOUNTAIN_JET,

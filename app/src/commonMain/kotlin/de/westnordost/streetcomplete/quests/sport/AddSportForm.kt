@@ -72,16 +72,10 @@ private fun ConfirmManySportsDialog(
     AlertDialog(
         onDismissRequest = onDismissRequest,
         buttons = {
-            TextButton(onClick = {
-                onGeneralPurpose()
-                onDismissRequest()
-            }) {
+            TextButton(onClick = { onDismissRequest(); onGeneralPurpose() }) {
                 Text(stringResource(Res.string.quest_manySports_confirmation_generic))
             }
-            TextButton(onClick = {
-                onSpecificSports()
-                onDismissRequest()
-            }) {
+            TextButton(onClick = { onDismissRequest(); onSpecificSports() }) {
                 Text(stringResource(Res.string.quest_manySports_confirmation_specific))
             }
         },

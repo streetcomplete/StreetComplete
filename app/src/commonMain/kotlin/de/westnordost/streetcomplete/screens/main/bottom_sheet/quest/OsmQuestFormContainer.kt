@@ -21,14 +21,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.places.getPlaceAsDisused
-import de.westnordost.streetcomplete.osm.places.getPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.osm.places.isPlace
-import de.westnordost.streetcomplete.osm.toElement
-import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.quests.shop_type.ShopGoneDialog
 import de.westnordost.streetcomplete.quests.shop_type.ShopType
 import de.westnordost.streetcomplete.quests.shop_type.ShopTypeAnswer
-import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.ConfirmDeleteDialog
@@ -37,7 +32,6 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
 import de.westnordost.streetcomplete.util.ktx.geometryType
-import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 

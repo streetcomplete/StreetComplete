@@ -8,8 +8,10 @@ import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.featureId
 import de.westnordost.streetcomplete.osm.isChildOf
+import de.westnordost.streetcomplete.osm.isPrefixed
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.removeCheckDates
+import de.westnordost.streetcomplete.osm.toElement
 
 /** Return whether this element is a kind of place, regardless whether it is currently vacant or
  *  not */
@@ -23,6 +25,9 @@ fun Element.isDisusedPlace(): Boolean =
 
 fun Element.isPlace(): Boolean =
     IS_PLACE_EXPRESSION.matches(this)
+
+fun Feature.isDisusedPlace(): Boolean =
+    toElement().isDisusedPlace()
 
 /** Map features like shops or amenities that usually have a name and can be entered.
  *

@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
@@ -58,18 +57,11 @@ class StreetParkingOverlay : Overlay {
 
     @Composable
     override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        val isRoad = remember(element) {
-            element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes"
-        }
-        val isCycleway = remember(element) {
-            element == null || parseNarrowingTrafficCalming(element.tags) != null
-        }
-
-        if (isRoad) {
-            StreetParkingOverlayForm(on, element!!, geometry, countryInfo)
+        if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
+            StreetParkingOverlayForm(on, element, geometry, countryInfo)
         }
         // TODO compose-quest-form
-        //else if (isCycleway) {
+        //else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
         //    LaneNarrowingTrafficCalmingForm(on, element)
         //}
     }

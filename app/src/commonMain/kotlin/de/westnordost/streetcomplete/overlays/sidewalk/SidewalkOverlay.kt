@@ -55,13 +55,8 @@ class SidewalkOverlay : Overlay {
         if (element == null) return
 
         val isRoadOrExclusiveCycleway = remember(element) {
-            if (element.tags["highway"] in ALL_ROADS) {
-                true
-            } else {
-                val separateCycleway = parseSeparateCycleway(element.tags)
-                val exclusiveCycelways = listOf(SeparateCycleway.EXCLUSIVE, SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK)
-                separateCycleway in exclusiveCycelways
-            }
+            element.tags["highway"] in ALL_ROADS ||
+            parseSeparateCycleway(element.tags) in listOf(SeparateCycleway.EXCLUSIVE, SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK)
         }
 
         if (isRoadOrExclusiveCycleway) {

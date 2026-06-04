@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.item_select.GroupedItemSelectColumn
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -102,7 +102,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectQuestForm(
     }
 
     confirmSelectionOfGroupItem?.let { groupItem ->
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmSelectionOfGroupItem = null },
             onConfirmed = {
                 if (favoriteKey != null) {

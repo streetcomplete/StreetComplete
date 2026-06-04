@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.postbox_royal_cypher
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class PostboxRoyalCypher(val osmValue: String) {
     ELIZABETH_II("EIIR"),
     GEORGE_V("GR"),

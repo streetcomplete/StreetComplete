@@ -30,7 +30,7 @@ fun AddLanesForm(
     geometry: ElementGeometry,
     countryInfo: CountryInfo
 ) {
-    var answer by rememberSerializable { mutableStateOf(Lanes()) }
+    var lanes by rememberSerializable { mutableStateOf(Lanes()) }
 
     val edgeLineStyle = remember {
         when {
@@ -45,24 +45,24 @@ fun AddLanesForm(
     val centerLineColor = remember {
         if (countryInfo.centerLineStyle.contains("yellow")) Color.Yellow else Color.White
     }
-    val isOneway = remember { isOneway(element.tags) }
-    val isReversedOneway = remember { isReversedOneway(element.tags) }
+    val isOneway = remember(element) { isOneway(element.tags) }
+    val isReversedOneway = remember(element) { isReversedOneway(element.tags) }
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 
     QuestForm(
         on = on,
         isComplete =
             if (!isOneway) {
-                answer.forward != null && answer.backward != null
+                lanes.forward != null && lanes.backward != null
             } else {
-                answer.forward != null || answer.backward != null
+                lanes.forward != null || lanes.backward != null
             },
-        onClickOk =  { on(Answer(answer)) },
-        hasChanges = answer.forward != null || answer.backward != null,
+        onClickOk =  { on(Answer(lanes)) },
+        hasChanges = lanes.forward != null || lanes.backward != null,
         otherAnswers = { listOfNotNull(
             if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
                 AnswerItem(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
-                    answer = answer.copy(centerLeftTurnLane = true)
+                    lanes = lanes.copy(centerLeftTurnLane = true)
                 }
             } else null,
             AnswerItem(stringResource(Res.string.quest_lanes_answer_noLanes)) {
@@ -72,8 +72,8 @@ fun AddLanesForm(
         contentPadding = PaddingValues.Zero,
     ) {
         LanesForm(
-            value = answer,
-            onValueChanged = { answer = it },
+            value = lanes,
+            onValueChanged = { lanes = it },
             wayRotation = geometryRotation,
             mapRotation = LocalMapRotation.current,
             mapTilt = LocalMapTilt.current,

@@ -12,14 +12,14 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.hasCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDate
-import de.westnordost.streetcomplete.quests.barrier_type.StileTypeAnswer.*
+import de.westnordost.streetcomplete.quests.barrier_type.StileType.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-class AddStileType : OsmElementQuestType<StileTypeAnswer> {
+class AddStileType : OsmElementQuestType<StileType> {
 
     private val stileNodeFilter by lazy { """
         nodes with
@@ -52,16 +52,16 @@ class AddStileType : OsmElementQuestType<StileTypeAnswer> {
     override val achievements = listOf(OUTDOORS)
 
     @Composable
-    override fun Form(on: (QuestAction<StileTypeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<StileType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             on = on,
-            items = StileTypeAnswer.entries,
+            items = StileType.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             itemsPerRow = 2,
         )
     }
 
-    override fun applyAnswerTo(answer: StileTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: StileType, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             SQUEEZER, LADDER, STEPOVER_WOODEN, STEPOVER_STONE -> {
                 val newType = when (answer) {

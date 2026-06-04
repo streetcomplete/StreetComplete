@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.osm.cycleway.withDefaultDirection
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
@@ -50,7 +50,7 @@ fun AddCyclewayForm(
 )  {
     val favKey = "AddCyclewayForm"
 
-    val originalCycleway = remember {
+    val originalCycleway = remember(element) {
         parseCyclewaySides(element.tags, countryInfo.isLeftHandTraffic)
             ?.selectableOrNullValues(countryInfo)
             ?: Sides<CyclewayAndDirection>(null, null)
@@ -65,7 +65,7 @@ fun AddCyclewayForm(
     """.toElementFilterExpression()
     }
 
-    val showBothSides = remember {
+    val showBothSides = remember(element) {
         val contraflowSide =
             if (countryInfo.isLeftHandTraffic) originalCycleway.right
             else originalCycleway.left
@@ -74,7 +74,7 @@ fun AddCyclewayForm(
         contraflowSideWasDefinedBefore || bicycleTrafficOnBothSidesIsLikely
     }
 
-    val lastPicked = remember {
+    val lastPicked = remember(showBothSides) {
         if (showBothSides) {
             preferences.getLastPicked<Sides<Cycleway>>(favKey)
                 .takeFavorites(n = 5, history = 15, first = 1)
@@ -87,19 +87,19 @@ fun AddCyclewayForm(
 
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
 
-    val isRoundabout = remember {
+    val isRoundabout = remember(element) {
         element.tags["junction"] == "roundabout" || element.tags["junction"] == "circular"
     }
 
-    var isDisplayingPrevious by rememberSaveable {
+    var isDisplayingPrevious by rememberSaveable(originalCycleway) {
         // only show as re-survey (yes/no button) if the previous tagging was complete
         mutableStateOf(originalCycleway.all { it != null })
     }
-    var cycleways by rememberSerializable { mutableStateOf(originalCycleway) }
-    var isLeftSideVisible by rememberSerializable {
+    var cycleways by rememberSerializable(originalCycleway) { mutableStateOf(originalCycleway) }
+    var isLeftSideVisible by rememberSerializable(showBothSides, countryInfo.isLeftHandTraffic) {
         mutableStateOf(showBothSides || countryInfo.isLeftHandTraffic)
     }
-    var isRightSideVisible by rememberSerializable {
+    var isRightSideVisible by rememberSerializable(showBothSides, countryInfo.isLeftHandTraffic) {
         mutableStateOf(showBothSides || !countryInfo.isLeftHandTraffic)
     }
     var selectionMode by rememberSerializable { mutableStateOf(CyclewayFormSelectionMode.SELECT) }
@@ -193,7 +193,7 @@ fun AddCyclewayForm(
     }
 
     if (confirmNotOnewayForCyclists) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNotOnewayForCyclists = false },
             onConfirmed = { saveAndApplyCycleway(cycleways) },
             titleText = null,
@@ -202,7 +202,7 @@ fun AddCyclewayForm(
     }
 
     if (confirmSelectReverseCyclewayDirection) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmSelectReverseCyclewayDirection = false },
             onConfirmed = { selectionMode = CyclewayFormSelectionMode.REVERSE },
             text = { Text(stringResource(Res.string.cycleway_reverse_direction_warning)) }

@@ -34,15 +34,19 @@ fun AddBuildingLevelsForm(
             .sortedWith(compareBy<BuildingLevels> { it.levels }.thenBy { it.roofLevels })
     }
 
-    var levels by rememberSaveable {
-        mutableStateOf(element.tags["building:levels"]?.toIntOrNull()?.takeIf { it >= 0 })
+    val originalLevels = remember(element) {
+        element.tags["building:levels"]?.toIntOrNull()?.takeIf { it >= 0 }
     }
-    var roofLevels by rememberSaveable {
-        mutableStateOf(element.tags["roof:levels"]?.toIntOrNull()?.takeIf { it >= 0 })
+    val originalRoofLevels = remember(element) {
+        element.tags["roof:levels"]?.toIntOrNull()?.takeIf { it >= 0 }
     }
+
+    var levels by rememberSaveable(originalLevels) { mutableStateOf(originalLevels) }
+    var roofLevels by rememberSaveable(originalRoofLevels) { mutableStateOf(originalRoofLevels) }
+
     var showMultipleLevelsHint by remember { mutableStateOf(false) }
 
-    val roofLevelsAreOptional = remember {
+    val roofLevelsAreOptional = remember(element) {
         val roofShape = element.tags["roof:shape"]
         val hasNonFlatRoofShape = roofShape != null && roofShape != "flat"
         countryInfo.roofsAreUsuallyFlat && !hasNonFlatRoofShape
@@ -53,7 +57,7 @@ fun AddBuildingLevelsForm(
     QuestForm(
         on = on,
         isComplete = levels != null && (roofLevelsAreOptional || roofLevels != null),
-        hasChanges = levels != null || roofLevels != null,
+        hasChanges = levels != originalLevels || roofLevels != originalRoofLevels,
         onClickOk = {
             val answer = BuildingLevels(levels!!, roofLevels)
             preferences.addLastPicked(key, answer)

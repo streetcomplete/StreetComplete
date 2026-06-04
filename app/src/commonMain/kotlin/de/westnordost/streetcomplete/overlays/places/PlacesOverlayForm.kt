@@ -24,8 +24,8 @@ import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
 import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
 import de.westnordost.streetcomplete.osm.places.getPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.places.isDisusedPlace
 import de.westnordost.streetcomplete.osm.places.shouldReplacePlace
-import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -63,14 +63,12 @@ import org.koin.compose.koinInject
         )
     }
 
-    val vacantShopFeature = remember {
-        featureDictionary.getById("shop/vacant", getLanguagesForFeatureDictionary())!!
-    }
-
     val unknownPlaceString = stringResource(Res.string.unknown_shop_title)
+    val disusedString = stringResource(Res.string.disused).uppercase()
     val originalFeature = remember(element) {
         element?.let {
             featureDictionary.getPlaceOrDisusedPlace(
+                disusedString = disusedString,
                 unknownPlaceString = unknownPlaceString,
                 element = element,
                 country = countryInfo.countryOrSubdivisionCode
@@ -118,13 +116,7 @@ import org.koin.compose.koinInject
         val tagChanges = StringMapChangesBuilder(element?.tags ?: emptyMap())
 
         if (replacePlace) {
-            val isVacant = newFeature.id == "shop/vacant"
-            if (isVacant) {
-                val vacantFeature = originalFeature?.toPrefixedFeature("disused") ?: newFeature
-                vacantFeature.applyReplacePlaceTo(tagChanges)
-            } else {
-                newFeature.applyReplacePlaceTo(tagChanges)
-            }
+            newFeature.applyReplacePlaceTo(tagChanges)
         } else {
             newFeature.applyTo(tagChanges, originalFeature)
         }
@@ -182,7 +174,7 @@ import org.koin.compose.koinInject
             // title hint label with name is a duplication, it is displayed in the UI already
             element?.let { nameAndLocationLabel(it, featureDictionary = null) },
         otherAnswers = { listOfNotNull(
-            if (originalFeature != vacantShopFeature) {
+            if (originalFeature?.isDisusedPlace() != false) {
                 AnswerItem(stringResource(Res.string.quest_shop_gone_vacant_answer))  {
                     val languages = getLanguagesForFeatureDictionary()
                     onSelectedFeature(featureDictionary.getById("shop/vacant", languages)!!)

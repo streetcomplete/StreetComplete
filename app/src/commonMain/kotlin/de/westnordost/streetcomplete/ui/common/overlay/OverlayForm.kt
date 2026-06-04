@@ -84,17 +84,19 @@ fun OverlayForm(
         val result = ArrayList<AnswerItem>()
         val element = LocalElement.current
         if (element != null) {
-            result.add(AnswerItem(stringResource(Res.string.leave_note)) { on(Action.LeaveNote) })
-
-            if (element.isSplittable()) {
-                result.add(AnswerItem(stringResource(Res.string.split_way)) { on(Action.SplitWay) })
-            }
             if (
                 element is Node // add moveNodeAnswer only if it's a free floating node
                 && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
             ) {
                 result.add(AnswerItem(stringResource(Res.string.move_node)) { on(Action.MoveNode) })
             }
+
+            if (element.isSplittable()) {
+                result.add(AnswerItem(stringResource(Res.string.split_way)) { on(Action.SplitWay) })
+            }
+
+            result.add(AnswerItem(stringResource(Res.string.leave_note)) { on(Action.LeaveNote) })
+
         }
         return result
     }

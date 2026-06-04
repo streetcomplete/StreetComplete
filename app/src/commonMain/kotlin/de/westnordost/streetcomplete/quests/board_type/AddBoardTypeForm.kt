@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.CheckboxGroupQuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -38,7 +38,7 @@ fun AddBoardTypeForm(
     )
 
     if (confirmIsMap) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmIsMap = false },
             onConfirmed = { on(Answer(BoardTypeAnswer.NoBoardJustMap)) },
             titleText = stringResource(Res.string.quest_board_type_map_title),

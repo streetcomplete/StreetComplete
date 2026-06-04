@@ -35,7 +35,7 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>() {
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_barrier_bicycle_type_not_cycle_barrier)) {
-                    on(Answer(BarrierTypeIsNotBicycleBarrier))
+                    on(Answer(BicycleBarrierTypeAnswer.NotBicycleBarrier))
                 },
             ) }
         )
@@ -44,7 +44,7 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>() {
     override fun applyAnswerTo(answer: BicycleBarrierTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is BicycleBarrierType -> tags["cycle_barrier"] = answer.osmValue
-            BarrierTypeIsNotBicycleBarrier -> tags["barrier"] = "yes"
+            BicycleBarrierTypeAnswer.NotBicycleBarrier -> tags["barrier"] = "yes"
         }
     }
 }

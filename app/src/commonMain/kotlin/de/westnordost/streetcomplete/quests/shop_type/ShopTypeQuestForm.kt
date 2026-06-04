@@ -33,25 +33,21 @@ fun ShopTypeQuestForm(
     var feature by remember { mutableStateOf<Feature?>(null) }
     var option by remember { mutableStateOf<ShopTypeFormOption?>(null) }
 
-    val isComplete = when (option) {
-        null -> false
-        ShopTypeFormOption.FEATURE -> feature != null
-        else -> true
-    }
-
-    fun onClickOk() {
-        when (option) {
-            ShopTypeFormOption.FEATURE -> on(Answer(ShopType(feature!!)))
-            ShopTypeFormOption.VACANT -> on(Answer(ShopTypeAnswer.IsShopVacant))
-            ShopTypeFormOption.LEAVE_NOTE -> on(Action.LeaveNote)
-            null -> { }
-        }
-    }
-
     QuestForm(
         on = on,
-        isComplete = isComplete,
-        onClickOk = ::onClickOk,
+        isComplete = when (option) {
+            null -> false
+            ShopTypeFormOption.FEATURE -> feature != null
+            else -> true
+        },
+        onClickOk = {
+            when (option) {
+                ShopTypeFormOption.FEATURE -> on(Answer(ShopType(feature!!)))
+                ShopTypeFormOption.VACANT -> on(Answer(ShopTypeAnswer.IsShopVacant))
+                ShopTypeFormOption.LEAVE_NOTE -> on(Action.LeaveNote)
+                null -> { }
+            }
+        },
         modifier = modifier,
         otherAnswers = otherAnswers,
     ) {

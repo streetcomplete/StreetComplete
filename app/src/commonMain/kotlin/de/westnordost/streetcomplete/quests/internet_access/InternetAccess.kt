@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.quests.internet_access
 
 import de.westnordost.streetcomplete.quests.internet_access.InternetAccess.*
 import de.westnordost.streetcomplete.resources.*
+import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.StringResource
 
+@Serializable
 enum class InternetAccess(val osmValue: String) {
     WIFI("wlan"),
     TERMINAL("terminal"),

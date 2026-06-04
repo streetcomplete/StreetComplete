@@ -36,8 +36,12 @@ fun AddParkingFeeForm(
             // in a form through the other answers menu
             on = on,
             answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(ParkingFee(Fee.No))) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(ParkingFee(Fee.Yes()))) }
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
+                    on(Answer(ParkingFee(Fee.No)))
+                },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
+                    on(Answer(ParkingFee(Fee.Yes())))
+                }
             ),
             otherAnswers = { listOf(
                 AnswerItem(stringResource(Res.string.quest_fee_answer_hours)) {

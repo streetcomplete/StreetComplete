@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.bicycle_repair_station
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class BicycleRepairStationService(val value: String) {
     PUMP("pump"),
     TOOLS("tools"),

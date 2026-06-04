@@ -20,7 +20,7 @@ import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.item_select.ItemsSelectGrid
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -85,7 +85,7 @@ fun AddRecyclingContainerMaterialsForm(
     }
 
     if (confirmJustTrash) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmJustTrash = false },
             onConfirmed = { on(Answer(IsWasteContainer)) },
             text = { Text(stringResource(Res.string.quest_recycling_materials_answer_waste_description)) },

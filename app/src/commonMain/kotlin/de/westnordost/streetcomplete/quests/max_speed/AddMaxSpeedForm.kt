@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.osm.maxspeed.ROADS_WHERE_SLOW_ZONE_IS_LIKEL
 import de.westnordost.streetcomplete.osm.maxspeed.Speed
 import de.westnordost.streetcomplete.quests.max_speed.MaxSpeedSign.Type.*
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
@@ -80,7 +80,7 @@ fun AddMaxSpeedForm(
     }
 
     if (confirmNoSign) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNoSign = false },
             onConfirmed = { maxSpeedAnswer?.let { applySpeedLimitFormAnswer(it) } },
             titleText = stringResource(Res.string.quest_maxspeed_answer_noSign_confirmation_title),
@@ -89,14 +89,14 @@ fun AddMaxSpeedForm(
         )
     }
     if (confirmUnusualInput) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmUnusualInput = false },
             onConfirmed = { maxSpeedAnswer?.let { applySpeedLimitFormAnswer(it) } },
             text = { Text(stringResource(Res.string.quest_maxspeed_unusualInput_confirmation_description)) }
         )
     }
     if (confirmNoSignSlowZone) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmNoSignSlowZone = false },
             onConfirmed = { maxSpeedAnswer?.let { applySpeedLimitFormAnswer(it) } },
             titleText = stringResource(Res.string.quest_maxspeed_answer_noSign_confirmation_title),
@@ -109,7 +109,7 @@ fun AddMaxSpeedForm(
                     Text(stringResource(Res.string.quest_maxspeed_answer_noSign_info_zone))
                     MaxSpeedZoneSign(countryInfo = countryInfo) {
                         Text(
-                            text = "××",
+                            text = lastInputSlowZone?.toString() ?: "××",
                             style = MaterialTheme.typography.extraLargeInput.copy(
                                 fontWeight = FontWeight.Bold
                             )

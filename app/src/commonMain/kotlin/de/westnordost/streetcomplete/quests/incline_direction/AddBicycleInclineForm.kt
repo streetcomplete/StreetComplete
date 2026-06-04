@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.QuestConfirmationDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
@@ -51,7 +51,7 @@ fun AddBicycleInclineForm(
     )
 
     if (confirmUpAndDown) {
-        QuestConfirmationDialog(
+        AreYouSureDialog(
             onDismissRequest = { confirmUpAndDown = false },
             onConfirmed = { on(Answer(UpAndDownHopsAnswer)) }
         )

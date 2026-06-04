@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
-enum class StileTypeAnswer {
+import kotlinx.serialization.Serializable
+
+@Serializable
+enum class StileType {
     SQUEEZER,
     LADDER,
     STEPOVER_WOODEN,

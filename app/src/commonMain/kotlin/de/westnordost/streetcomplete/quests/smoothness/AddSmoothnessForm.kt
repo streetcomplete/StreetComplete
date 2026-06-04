@@ -32,7 +32,7 @@ fun AddSmoothnessForm(
     element: Element,
 ) {
     val surfaceTag = element.tags["surface"]
-    val items = remember { Smoothness.entries.filter { it.getImage(surfaceTag) != null } }
+    val items = remember(element) { Smoothness.entries.filter { it.getImage(surfaceTag) != null } }
 
     var showObstacleHint by remember { mutableStateOf(false) }
     var confirmSurface by remember { mutableStateOf<Surface?>(null) }
@@ -85,6 +85,7 @@ fun AddSmoothnessForm(
             text = { Text(stringResource(Res.string.quest_smoothness_obstacle_hint)) }
         )
     }
+
     confirmSurface?.let { surface ->
         ConfirmSurfaceDialog(
             onDismissRequest = { confirmSurface = null },

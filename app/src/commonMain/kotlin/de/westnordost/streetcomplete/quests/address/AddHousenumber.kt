@@ -173,10 +173,7 @@ class AddHousenumber(
                     tags["nohousenumber"] = "yes"
                 } else {
                     val countryCode = getCountryInfoByLocation(geometry.center).countryCode
-                    answer.number?.applyTo(tags, countryCode)
-                    if (!answer.name.isNullOrEmpty()) {
-                        tags["addr:housename"] = answer.name
-                    }
+                    answer.applyTo(tags, countryCode)
                 }
             }
             HouseNumberAnswer.WrongBuildingType -> {

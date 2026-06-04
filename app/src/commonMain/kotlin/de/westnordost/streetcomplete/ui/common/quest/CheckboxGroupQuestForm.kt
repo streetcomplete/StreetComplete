@@ -57,7 +57,8 @@ fun <I> CheckboxGroupQuestForm(
                     val index = items.indexOf(option)
                     if (index != -1) {
                         selectedItemIndices =
-                            if (selected) { selectedItemIndices + index } else { selectedItemIndices - index }
+                            if (selected) selectedItemIndices + index
+                            else selectedItemIndices - index
                     }
                 },
                 selectedOptions = selectedItems,
