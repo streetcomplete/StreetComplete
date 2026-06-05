@@ -15,7 +15,7 @@ class ElementEditsController(
     private val editElementsDB: EditElementsDao,
     private val elementIdProviderDB: ElementIdProviderDao,
     private val prefs: Preferences
-) : ElementEditsSource, AddElementEditsController {
+) : ElementEditsSource {
     /* Must be a singleton because there is a listener that should respond to a change in the
      * database table */
 
@@ -26,7 +26,7 @@ class ElementEditsController(
     /* ----------------------- Unsynced edits and syncing them -------------------------------- */
 
     /** Add new unsynced edit to the to-be-uploaded queue */
-    override fun add(
+    fun add(
         type: ElementEditType,
         geometry: ElementGeometry,
         source: String,

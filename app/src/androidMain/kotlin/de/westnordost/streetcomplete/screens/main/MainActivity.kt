@@ -70,16 +70,10 @@ import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AbstractQuestForm
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
@@ -148,8 +142,6 @@ class MainActivity :
     // listeners to child fragments:
     MapFragment.Listener,
     MainMapFragment.Listener,
-    AbstractOsmQuestForm.Listener,
-    AbstractOverlayForm.Listener,
     SplitWayFragment.Listener,
     NoteDiscussionForm.Listener,
     LeaveNoteInsteadFragment.Listener,
@@ -193,12 +185,6 @@ class MainActivity :
         supportFragmentManager.findFragmentByTag(BOTTOM_SHEET)
 
     /* +++++++++++++++++++++++++++++++++++++++ CALLBACKS ++++++++++++++++++++++++++++++++++++++++ */
-
-    private val sheetBackPressedCallback = object : OnBackPressedCallback(false) {
-        override fun handleOnBackPressed() {
-            (bottomSheetFragment as IsCloseableBottomSheet).onClickClose { closeBottomSheet() }
-        }
-    }
 
     private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -253,9 +239,6 @@ class MainActivity :
                 )
             }
         }
-
-        onBackPressedDispatcher.addCallback(this, sheetBackPressedCallback)
-        sheetBackPressedCallback.isEnabled = bottomSheetFragment is IsCloseableBottomSheet
 
         observe(editHistoryViewModel.selectedEdit) { edit ->
             if (edit != null) {
@@ -860,7 +843,6 @@ class MainActivity :
         clearHighlighting()
         unfreezeMap()
         mapFragment?.endFocus()
-        sheetBackPressedCallback.isEnabled = false
     }
 
     /** Open or replace the bottom sheet. If the bottom sheet is replaces, no appear animation is
@@ -879,7 +861,6 @@ class MainActivity :
             add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
             addToBackStack(BOTTOM_SHEET)
         }
-        sheetBackPressedCallback.isEnabled = f is IsCloseableBottomSheet
     }
 
     /** Make the map not follow the user's location anymore temporarily */
