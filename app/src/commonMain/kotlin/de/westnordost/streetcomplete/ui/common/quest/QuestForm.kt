@@ -21,7 +21,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.Dp
@@ -36,6 +38,8 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheet
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetState
+import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
@@ -142,6 +146,7 @@ fun QuestForm(
     )
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 private fun QuestForm(
     on: (Action) -> Unit,
@@ -171,6 +176,15 @@ private fun QuestForm(
     val element = LocalElement.current!!
 
     var confirmCantSay by remember { mutableStateOf(false) }
+    var confirmDiscard by remember { mutableStateOf(false) }
+
+    BackHandler {
+        if (hasChanges) {
+            confirmDiscard = true
+        } else {
+            on(Action.Dismiss)
+        }
+    }
 
     @Composable
     fun createDefaultOtherAnswers(): List<AnswerItem> {
@@ -257,6 +271,12 @@ private fun QuestForm(
             onDismissRequest = { confirmCantSay = false },
             onLeaveNote = { on(Action.LeaveNote) },
             onHideQuest = { on(Action.HideQuest) },
+        )
+    }
+    if (confirmDiscard) {
+        ConfirmDiscardDialog(
+            onDismissRequest = { confirmDiscard = true },
+            onConfirmed = { on(Action.Dismiss) },
         )
     }
 }
