@@ -470,6 +470,7 @@ val copyIconsToAndroid by tasks.registering(CopyIconsTask::class) {
     sourceDir = "$projectDir/src/commonMain/composeResources/drawable"
     targetDir = "$projectDir/build/generated/androidMain/res/drawable"
     filter = {
+        // quest pins, icons for overlays
         it.startsWith("quest_") ||
         it.startsWith("building_") ||
         it.startsWith("preset_") ||
@@ -478,7 +479,18 @@ val copyIconsToAndroid by tasks.registering(CopyIconsTask::class) {
         it == "religion_jewish.xml" ||
         it == "religion_muslim.xml" ||
         it == "address_dot.xml" ||
-        it == "none.png"
+        it == "none.png" ||
+        // icons for base map
+        it == "pin_shadow.png" ||
+        it == "location_nyan.png" ||
+        it == "crosshair_marker.png" ||
+        it == "track_nyan.png" ||
+        it == "track_nyan_record.png" ||
+        it == "downloaded_area_hatching.xml" ||
+        it == "location_shadow.xml" ||
+        it == "location_view_direction.xml" ||
+        it == "pin.xml" ||
+        it == "pin_circle.xml"
     }
     indexFile = "$projectDir/build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt"
 }
