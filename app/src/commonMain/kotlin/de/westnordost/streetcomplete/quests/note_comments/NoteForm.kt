@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.note_comments
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
@@ -12,12 +11,12 @@ import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
-import kotlinx.io.files.FileSystem
 import org.jetbrains.compose.resources.stringResource
 
 /** Form in which you can leave a note, with images */
@@ -26,10 +25,9 @@ fun NoteForm(
     text: String,
     onTextChange: (String) -> Unit,
     addImagesEnabled: Boolean,
-    onDeleteImage: (imagePath: String) -> Unit,
+    onDeleteImage: (index: Int) -> Unit,
     onTakePhoto: () -> Unit,
-    fileSystem: FileSystem,
-    imagePaths: List<String>,
+    images: List<Painter>,
     modifier: Modifier = Modifier,
     isGpxAttached: Boolean = false,
 ) {
@@ -44,7 +42,7 @@ fun NoteForm(
                 capitalization = KeyboardCapitalization.Sentences,
                 autoCorrectEnabled = true,
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Done
+                imeAction = ImeAction.Default
             ),
             singleLine = false,
             minLines = 3,
@@ -58,8 +56,7 @@ fun NoteForm(
         }
         if (addImagesEnabled) {
             NoteImagesRow(
-                fileSystem = fileSystem,
-                imagePaths = imagePaths,
+                images = images,
                 onDeleteImage = onDeleteImage,
                 onTakePhoto = onTakePhoto,
                 // because otherwise it would overlap with the OK button

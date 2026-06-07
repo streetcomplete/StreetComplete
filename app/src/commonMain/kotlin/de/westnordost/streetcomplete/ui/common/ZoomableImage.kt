@@ -24,7 +24,7 @@ import kotlin.math.min
 /** Image that can be zoomed in and panned */
 @Composable
 fun ZoomableImage(
-    painter: Painter,
+    image: Painter,
     contentDescription: String?,
     modifier: Modifier = Modifier,
     contentScale: ContentScale = ContentScale.Fit,
@@ -37,7 +37,7 @@ fun ZoomableImage(
     var offset by remember { mutableStateOf(Offset.Zero) }
 
     Image(
-        painter = painter,
+        painter = image,
         contentDescription = null,
         modifier = modifier
             .pointerInput(Unit) {
