@@ -1,14 +1,9 @@
 package de.westnordost.streetcomplete.ui.common.quest
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
@@ -20,13 +15,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
-import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -36,15 +28,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Action.*
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
-import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheet
-import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetState
+import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
-import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
-import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
-import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
-import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
-import de.westnordost.streetcomplete.ui.ktx.isLandscape
-import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.ui.util.annotateLinks
@@ -165,14 +150,6 @@ private fun QuestForm(
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     content: @Composable (BoxScope.() -> Unit)?,
 ) {
-    val windowInfo = LocalWindowInfo.current
-
-    val initialState =
-        if (LocalWindowInfo.current.isLandscape) BottomSheetState.Expanded
-        else BottomSheetState.Collapsed
-
-    val elevation = 4.dp
-
     val element = LocalElement.current!!
 
     var confirmCantSay by remember { mutableStateOf(false) }
@@ -208,63 +185,31 @@ private fun QuestForm(
         return result
     }
 
-    Box(modifier = modifier.sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))) {
-        BottomSheet(
-            initialState = initialState,
-            peekHeight = Dimensions.QuestFormPeekHeight
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .safeDrawingPadding(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                SpeechBubble(
-                    elevation = elevation,
-                    arrowDirection = SpeechBubbleArrowDirection.Top,
-                    arrowPlacementBias = 0.1f,
-                    modifier = Modifier.padding(horizontal = 8.dp)
-                ) {
-                    QuestHeader(
-                        title = title,
-                        subtitle = subtitle,
-                        hintText = hintText,
-                        hintImages = hintImages,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                }
-
-                if (note != null) {
-                    NoteBubble(
-                        text = note,
-                        elevation = elevation,
-                        modifier = Modifier
-                            .padding(horizontal = 8.dp)
-                            .fillMaxWidth()
-                    )
-                }
-
-                QuestAnswerBubble(
-                    modifier = Modifier.fillMaxWidth(),
-                    elevation = elevation,
-                    answers = answers,
-                    otherAnswers = { otherAnswers() + createDefaultOtherAnswers() },
-                    contentPadding = contentPadding,
-                    content = content,
-                )
-            }
-        }
-        if (onClickOk != null) {
-            FloatingOkButton(
-                visible = isComplete,
-                onClick = onClickOk,
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .safeDrawingPadding()
-                    .padding(8.dp)
+    BottomSheetFormScaffold(
+        header = {
+            QuestHeader(
+                title = title,
+                subtitle = subtitle,
+                hintText = hintText,
+                hintImages = hintImages,
             )
-        }
-    }
+        },
+        note = if (note != null) { {
+            ObjectNote(text = note)
+        } } else null,
+        content = {
+            QuestAnswerContent(
+                modifier = Modifier.fillMaxWidth(),
+                answers = answers,
+                otherAnswers = { otherAnswers() + createDefaultOtherAnswers() },
+                contentPadding = contentPadding,
+                content = content,
+            )
+        },
+        fab = if (onClickOk != null) {
+            { FloatingOkButton(visible = isComplete, onClick = onClickOk) }
+        } else null,
+    )
 
     if (confirmCantSay) {
         CantSayDialog(
@@ -283,27 +228,21 @@ private fun QuestForm(
 
 /** Speech bubble (without arrow) that contains a note another user left for this object */
 @Composable
-private fun NoteBubble(
+private fun ObjectNote(
     text: String,
     modifier: Modifier = Modifier,
-    elevation: Dp = 0.dp,
 ) {
-    SpeechBubbleNoArrow(
-        modifier = modifier,
-        elevation = elevation
-    ) {
-        Column {
-            Text(
-                text = stringResource(Res.string.note_for_object),
-                style = MaterialTheme.typography.titleSmall
-            )
-            CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
-                SelectionContainer {
-                    Text(
-                        text = text.annotateLinks(MaterialTheme.typography.defaultTextLinkStyles()),
-                        style = MaterialTheme.typography.body2,
-                    )
-                }
+    Column(modifier) {
+        Text(
+            text = stringResource(Res.string.note_for_object),
+            style = MaterialTheme.typography.titleSmall
+        )
+        CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+            SelectionContainer {
+                Text(
+                    text = text.annotateLinks(MaterialTheme.typography.defaultTextLinkStyles()),
+                    style = MaterialTheme.typography.body2,
+                )
             }
         }
     }

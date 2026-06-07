@@ -1,14 +1,11 @@
 package de.westnordost.streetcomplete.ui.common.overlay
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
 import androidx.compose.material.DropdownMenu
@@ -29,11 +26,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
-import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -43,12 +38,10 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.MoreIcon
+import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
-import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
-import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
-import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -81,10 +74,6 @@ fun OverlayForm(
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
     content: @Composable BoxScope.() -> Unit
 ) {
-    val windowInfo = LocalWindowInfo.current
-
-    val elevation = 4.dp
-
     var confirmDiscard by remember { mutableStateOf(false) }
 
     BackHandler {
@@ -117,45 +106,31 @@ fun OverlayForm(
         return result
     }
 
-    Box(modifier = modifier.sizeIn(maxWidth = Dimensions.getMaxQuestFormWidth(windowInfo))) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .safeDrawingPadding(),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            if (label != null) {
-                SpeechBubbleNoArrow(
-                    modifier = Modifier.padding(horizontal = 8.dp),
-                    elevation = elevation,
-                ) {
-                    CompositionLocalProvider(
-                        LocalTextStyle provides MaterialTheme.typography.titleMedium,
-                        LocalContentAlpha provides ContentAlpha.medium
-                    ) {
-                        Text(label)
-                    }
-                }
+    BottomSheetFormScaffold(
+        note = if (label != null) { {
+            CompositionLocalProvider(
+                LocalTextStyle provides MaterialTheme.typography.titleMedium,
+                LocalContentAlpha provides ContentAlpha.medium
+            ) {
+                Text(label)
             }
-
-            OverlayContentBubble(
+        } } else null,
+        content = {
+            OverlayContent(
                 modifier = Modifier.fillMaxWidth(),
-                elevation = elevation,
                 otherAnswers = { otherAnswers() + createDefaultOtherAnswers() },
                 contentPadding = contentPadding,
                 content = content
             )
-        }
-        FloatingOkButton(
-            visible = isComplete,
-            enabled = hasChanges,
-            onClick = onClickOk,
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .safeDrawingPadding()
-                .padding(8.dp)
-        )
-    }
+        },
+        fab = {
+            FloatingOkButton(
+                visible = isComplete,
+                enabled = hasChanges,
+                onClick = onClickOk
+            )
+        },
+    )
 
     if (confirmDiscard) {
         ConfirmDiscardDialog(
@@ -165,32 +140,25 @@ fun OverlayForm(
     }
 }
 
-/** Speech bubble for the overlay form content answer, i.e. content and more-button */
+/** Overlay form content, i.e. content and more-button */
 @Composable
-private fun OverlayContentBubble(
+private fun OverlayContent(
     modifier: Modifier = Modifier,
-    elevation: Dp = 0.dp,
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
     content: @Composable BoxScope.() -> Unit
 ) {
-    SpeechBubbleNoArrow(
-        modifier = modifier,
-        elevation = elevation,
-        contentPadding = PaddingValues.Zero
-    ) {
-        ProvideTextStyle(MaterialTheme.typography.body1) {
-            Column {
-                Box(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(contentPadding),
-                    contentAlignment = Alignment.Center,
-                    content = content
-                )
-                Divider()
-                MoreButton(answers = otherAnswers)
-            }
+    ProvideTextStyle(MaterialTheme.typography.body1) {
+        Column(modifier) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(contentPadding),
+                contentAlignment = Alignment.Center,
+                content = content
+            )
+            Divider()
+            MoreButton(answers = otherAnswers)
         }
     }
 }
