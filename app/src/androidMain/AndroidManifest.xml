@@ -107,7 +107,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="@string/fileprovider_authority"
+            android:authorities="${applicationId}.fileprovider_authority"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
