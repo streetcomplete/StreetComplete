@@ -55,6 +55,7 @@ import de.westnordost.streetcomplete.screens.main.mainModule
 import de.westnordost.streetcomplete.ui.util.measure.arModule
 import de.westnordost.streetcomplete.screens.settings.settingsModule
 import de.westnordost.streetcomplete.screens.user.userScreenModule
+import de.westnordost.streetcomplete.ui.util.photo.photoModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.deleteRecursively
@@ -135,6 +136,7 @@ class StreetCompleteApplication : Application() {
                 uploadModule,
                 userModule,
                 arModule,
+                photoModule,
                 overlaysModule,
                 overlayModule,
                 urlConfigModule,

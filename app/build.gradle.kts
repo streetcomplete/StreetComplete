@@ -169,8 +169,12 @@ kotlin {
 
                 // sharing presets/settings via QR Code
                 implementation("io.github.alexzhirkevich:qrose:1.1.2")
+
                 // for encoding information for the URL configuration (QR code)
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
+
+                // taking a photo (, picking an image from gallery, ...)
+                implementation("io.github.vinceglb:filekit-dialogs:0.14.1")
             }
         }
         androidMain {
@@ -190,9 +194,6 @@ kotlin {
                 // Compose
                 implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.10.3")
                 implementation("androidx.activity:activity-compose:1.13.0")
-
-                // photos
-                implementation("androidx.exifinterface:exifinterface:1.4.2")
 
                 // Kotlin
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
