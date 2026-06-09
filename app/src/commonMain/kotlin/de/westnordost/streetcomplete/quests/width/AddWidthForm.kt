@@ -20,8 +20,8 @@ import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
 import de.westnordost.streetcomplete.osm.length.LengthForm
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.measure.ArMeasureViewModel
-import de.westnordost.streetcomplete.screens.measure.LastArMeasurementResultEffect
+import de.westnordost.streetcomplete.ui.util.measure.ArMeasureViewModel
+import de.westnordost.streetcomplete.ui.util.measure.LastArMeasurementResultEffect
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm

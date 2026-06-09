@@ -1,9 +1,10 @@
-package de.westnordost.streetcomplete.screens.measure
+package de.westnordost.streetcomplete.ui.util.measure
 
 import android.app.ActivityManager
 import android.content.Context
 import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.ktx.isPackageInstalled
 
 class AndroidArSupportChecker(private val context: Context): ArSupportChecker {

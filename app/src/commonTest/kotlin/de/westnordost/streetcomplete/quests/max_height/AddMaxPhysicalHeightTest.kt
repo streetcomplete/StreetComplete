@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test

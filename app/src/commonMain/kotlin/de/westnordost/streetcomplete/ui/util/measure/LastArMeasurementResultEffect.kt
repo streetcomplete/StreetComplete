@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.measure
+package de.westnordost.streetcomplete.ui.util.measure
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

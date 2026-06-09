@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import org.jetbrains.compose.resources.StringResource
 
 class AddRoadWidth(

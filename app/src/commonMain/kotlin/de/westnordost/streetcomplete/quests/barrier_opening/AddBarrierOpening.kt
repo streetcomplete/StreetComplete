@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.width.AddWidthForm
 import de.westnordost.streetcomplete.quests.width.WidthAnswer
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 

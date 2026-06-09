@@ -1,6 +1,7 @@
-package de.westnordost.streetcomplete.screens.measure
+package de.westnordost.streetcomplete.ui.util.measure
 
 import de.westnordost.streetcomplete.data.meta.LengthUnit
+import de.westnordost.streetcomplete.ui.util.measure.ArMeasureResult
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 

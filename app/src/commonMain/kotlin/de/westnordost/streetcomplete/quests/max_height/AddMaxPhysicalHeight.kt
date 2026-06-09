@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.MOTORWAYS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
+import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import org.jetbrains.compose.resources.StringResource
 
 class AddMaxPhysicalHeight(

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.measure
+package de.westnordost.streetcomplete.ui.util.measure
 
 import androidx.activity.ComponentActivity
 import org.koin.dsl.module

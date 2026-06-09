@@ -16,8 +16,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.osm.length.LengthForm
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.measure.ArMeasureViewModel
-import de.westnordost.streetcomplete.screens.measure.LastArMeasurementResultEffect
+import de.westnordost.streetcomplete.ui.util.measure.ArMeasureViewModel
+import de.westnordost.streetcomplete.ui.util.measure.LastArMeasurementResultEffect
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
