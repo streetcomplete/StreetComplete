@@ -33,6 +33,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
            or natural = cave_entrance and access=yes
            or man_made = tower and tower:type = observation and access=yes
            or historic = castle and access = yes
+           or waterway = water_point
          )
          and access !~ private|no
          and !fee
@@ -45,10 +46,11 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        val isThing = element.tags["amenity"] != null || element.tags["waterway"] != null
         YesNoQuestForm(
             on = on,
             title = stringResource(
-                if (element.tags["amenity"] != null) Res.string.quest_generalFee_title
+                if (isThing) Res.string.quest_generalFee_title
                 else Res.string.quest_generalFee_title2
             ),
         )

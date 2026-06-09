@@ -30,8 +30,8 @@ import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 /** Display a single link category from the link collection */
 @Composable
 fun LinkCategoryRow(category: LinkCategory, modifier: Modifier = Modifier) {
-    Column {
-        Spacer(modifier = modifier.padding(top = 8.dp))
+    Column(modifier) {
+        Spacer(Modifier.padding(top = 8.dp))
         Text(stringResource(category.title), style = MaterialTheme.typography.titleLarge)
         Text(stringResource(category.description), style = MaterialTheme.typography.body1)
     }
