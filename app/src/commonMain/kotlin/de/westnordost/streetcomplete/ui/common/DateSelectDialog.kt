@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.util.locale.DateFormatElements
-import de.westnordost.streetcomplete.util.locale.systemDefaultDateFormatElements
 import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.stringResource
 
@@ -33,11 +32,7 @@ fun DateSelectDialog(
     years: IntRange = (initialDate.year - 10)..(initialDate.year + 10),
     locale: Locale = Locale.current,
 ) {
-    // Prefer the platform's per-user date-format override (iOS Language & Region)
-    // and fall back to deriving the order from the locale's short date pattern.
-    val dateFormatElements = remember(locale) {
-        systemDefaultDateFormatElements() ?: DateFormatElements.of(locale)
-    }
+    val dateFormatElements = remember(locale) { DateFormatElements.of(locale) }
     val datePickerState = rememberDatePickerState(
         initialDate = initialDate,
         years = years,

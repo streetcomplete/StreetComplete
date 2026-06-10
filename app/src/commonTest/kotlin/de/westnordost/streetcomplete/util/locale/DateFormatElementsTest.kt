@@ -27,31 +27,31 @@ class DateFormatElementsTest {
         )
     }
 
-    @Test fun zh_CN() {
+    @Test fun th_TH() {
         assertEquals(
-            DateFormatElements(order = listOf(Year, Month, Day), separator = "/"),
-            DateFormatElements.of(Locale("zh-CN"))
+            DateFormatElements(listOf(Day, Month, Year), "/"),
+            DateFormatElements.of(Locale("th-TH"))
         )
     }
 
-    @Test fun ja() {
+    @Test fun fr_CA() {
         assertEquals(
-            DateFormatElements(order = listOf(Year, Month, Day), separator = "/"),
-            DateFormatElements.of(Locale("ja"))
+            DateFormatElements(listOf(Year, Month, Day), "-"),
+            DateFormatElements.of(Locale("fr-CA"))
         )
     }
 
-    @Test fun ko() {
+    @Test fun sk() {
         assertEquals(
-            DateFormatElements(order = listOf(Year, Month, Day), separator = "."),
-            DateFormatElements.of(Locale("ko"))
+            DateFormatElements(listOf(Day, Month, Year), ". "),
+            DateFormatElements.of(Locale("sk"))
         )
     }
 
-    @Test fun hu() {
+    @Test fun bg() {
         assertEquals(
-            DateFormatElements(order = listOf(Year, Month, Day), separator = "."),
-            DateFormatElements.of(Locale("hu"))
+            DateFormatElements(listOf(Day, Month, Year), ".", before = "", after = " г."),
+            DateFormatElements.of(Locale("bg"))
         )
     }
 }
