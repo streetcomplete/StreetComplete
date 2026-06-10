@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.common
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.MutatePriority
 import androidx.compose.foundation.gestures.ScrollScope
 import androidx.compose.foundation.gestures.ScrollableState
@@ -29,15 +28,13 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.input.pointer.pointerInput
-import androidx.compose.ui.layout.SubcomposeLayout
-import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastFirstOrNull
 import de.westnordost.streetcomplete.ui.ktx.fadingEdges
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import kotlinx.coroutines.launch
-import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun rememberWheelPickerState(selectedItemIndex: Int = 0) =
@@ -97,47 +94,6 @@ fun <T> WheelPicker(
     horizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
     content: @Composable (item: T) -> Unit
 ) {
-    SubcomposeLayout(modifier = modifier) { constraints ->
-        val maxItemWidth = subcompose("measurement") {
-            for (item in items) {
-                Box(Modifier.padding(horizontal = 8.dp, vertical = 4.dp)) {
-                    content(item)
-                }
-            }
-        }.maxOfOrNull { it.measure(Constraints()).width } ?: 0
-
-        val placeable = subcompose("main") {
-            WheelPickerContent(
-                items = items,
-                state = state,
-                key = key,
-                visibleAdjacentItems = visibleAdjacentItems,
-                horizontalAlignment = horizontalAlignment,
-                content = content,
-            )
-        }.first().measure(
-            constraints.copy(
-                minWidth = maxItemWidth,
-                maxWidth = maxItemWidth.coerceAtMost(constraints.maxWidth),
-            )
-        )
-
-        layout(placeable.width, placeable.height) {
-            placeable.place(0, 0)
-        }
-    }
-}
-
-@OptIn(ExperimentalFoundationApi::class)
-@Composable
-private fun <T> WheelPickerContent(
-    items: List<T>,
-    state: WheelPickerState,
-    key: ((T) -> Any)?,
-    visibleAdjacentItems: Int,
-    horizontalAlignment: Alignment.Horizontal,
-    content: @Composable (item: T) -> Unit
-) {
     val scope = rememberCoroutineScope()
 
     val selectedItemHeight = (state.selectedItemInfo?.size ?: 0).pxToDp()
@@ -149,7 +105,7 @@ private fun <T> WheelPickerContent(
     val visibleItemsCount = visibleAdjacentItems * 2 + 1
 
     LazyColumn(
-        modifier = Modifier
+        modifier = modifier
             .height(selectedItemHeight * visibleItemsCount)
             .fadingEdges(
                 top = selectedItemHeight * visibleAdjacentItems,
