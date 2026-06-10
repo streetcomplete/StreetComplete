@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.common.opening_hours
+package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,12 +14,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
-import de.westnordost.osm_opening_hours.model.ClockTime
-import de.westnordost.osm_opening_hours.model.Time
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.TimePicker
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
-import de.westnordost.streetcomplete.ui.common.rememberTimePickerState
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.util.locale.TimeFormatElements
 import org.jetbrains.compose.resources.stringResource
@@ -28,17 +24,16 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun TimeSelectDialog(
     onDismissRequest: () -> Unit,
-    onSelect: (time: Time) -> Unit,
-    initialTime: Time,
+    onSelect: (hour: Int, minutes: Int) -> Unit,
     modifier: Modifier = Modifier,
+    initialHour: Int = 0,
+    initialMinutes: Int = 0,
     locale: Locale = Locale.current,
 ) {
-    val initialTime = (initialTime as? ClockTime) ?: throw UnsupportedOperationException()
-
     val timeFormatElements = remember(locale) { TimeFormatElements.of(locale) }
     val timePickerState = rememberTimePickerState(
-        initialHour = initialTime.hour,
-        initialMinutes = initialTime.minutes,
+        initialHour = initialHour,
+        initialMinutes = initialMinutes,
         is12Hour = timeFormatElements.clock12 != null,
         allowAfterMidnight = false,
     )
@@ -67,7 +62,7 @@ fun TimeSelectDialog(
             }
             TextButton(
                 onClick = {
-                    onSelect(ClockTime(timePickerState.hour, timePickerState.minute))
+                    onSelect(timePickerState.hour, timePickerState.minute)
                     onDismissRequest()
                 }
             ) {
