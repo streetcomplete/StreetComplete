@@ -52,7 +52,6 @@ class TimePickerState(
     }
 
     init {
-
         selectableHours = (
             if (is12Hour) (1..12)
             else if (allowAfterMidnight) (0..24)
