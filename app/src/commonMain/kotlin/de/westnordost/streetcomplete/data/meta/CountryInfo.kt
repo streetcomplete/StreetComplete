@@ -87,104 +87,104 @@ data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
     val countryCode get() = infos.first().countryCode
 
     // part of default.yml, so cannot be null
-    val advisorySpeedLimitSignStyle: String =
+    val advisorySpeedLimitSignStyle: String get() =
          infos.firstNotNullOf { it.advisorySpeedLimitSignStyle }
-    val centerLineStyle: String =
+    val centerLineStyle: String get() =
          infos.firstNotNullOf { it.centerLineStyle }
-    val edgeLineStyle: String =
+    val edgeLineStyle: String get() =
          infos.firstNotNullOf { it.edgeLineStyle }
-    val exclusiveCycleLaneStyle: String =
+    val exclusiveCycleLaneStyle: String get() =
          infos.firstNotNullOf { it.exclusiveCycleLaneStyle }
-    val workweek: String =
+    val workweek: String get() =
          infos.firstNotNullOf { it.workweek }
-    val hasAdvisoryCycleLane: Boolean =
+    val hasAdvisoryCycleLane: Boolean get() =
          infos.firstNotNullOf { it.hasAdvisoryCycleLane }
-    val hasAdvisorySpeedLimitSign: Boolean =
+    val hasAdvisorySpeedLimitSign: Boolean get() =
          infos.firstNotNullOf { it.hasAdvisorySpeedLimitSign }
-    val hasBicycleBoulevard: Boolean =
+    val hasBicycleBoulevard: Boolean get() =
          infos.firstNotNullOf { it.hasBicycleBoulevard }
-    val hasBiWeeklyAlternateSideParkingSign: Boolean =
+    val hasBiWeeklyAlternateSideParkingSign: Boolean get() =
          infos.firstNotNullOf { it.hasBiWeeklyAlternateSideParkingSign }
-    val hasCenterLeftTurnLane: Boolean =
+    val hasCenterLeftTurnLane: Boolean get() =
          infos.firstNotNullOf { it.hasCenterLeftTurnLane }
-    val hasDailyAlternateSideParkingSign: Boolean =
+    val hasDailyAlternateSideParkingSign: Boolean get() =
          infos.firstNotNullOf { it.hasDailyAlternateSideParkingSign }
-    val hasLivingStreet: Boolean =
+    val hasLivingStreet: Boolean get() =
          infos.firstNotNullOf { it.hasLivingStreet }
-    val hasNoStandingSign: Boolean =
+    val hasNoStandingSign: Boolean get() =
          infos.firstNotNullOf { it.hasNoStandingSign }
-    val hasSlowZone: Boolean =
+    val hasSlowZone: Boolean get() =
          infos.firstNotNullOf { it.hasSlowZone }
-    val isLeftHandTraffic: Boolean =
+    val isLeftHandTraffic: Boolean get() =
          infos.firstNotNullOf { it.isLeftHandTraffic }
-    val isUsuallyAnyGlassRecyclableInContainers: Boolean =
+    val isUsuallyAnyGlassRecyclableInContainers: Boolean get() =
          infos.firstNotNullOf { it.isUsuallyAnyGlassRecyclableInContainers }
-    val lengthUnits: List<LengthUnit> =
+    val lengthUnits: List<LengthUnit> get() =
          infos.firstNotNullOf { it.lengthUnits }
-    val noEntrySignStyle: String =
+    val noEntrySignStyle: String get() =
          infos.firstNotNullOf { it.noEntrySignStyle }
-    val noParkingSignStyle: String =
+    val noParkingSignStyle: String get() =
          infos.firstNotNullOf { it.noParkingSignStyle }
-    val noStoppingSignStyle: String =
+    val noStoppingSignStyle: String get() =
          infos.firstNotNullOf { it.noStoppingSignStyle }
-    val officialLanguages: List<String> =
+    val officialLanguages: List<String> get() =
          infos.firstNotNullOf { it.officialLanguages }
-    val pictogramCycleLaneStyle: String =
+    val pictogramCycleLaneStyle: String get() =
          infos.firstNotNullOf { it.pictogramCycleLaneStyle }
-    val popularReligions: List<String> =
+    val popularReligions: List<String> get() =
          infos.firstNotNullOf { it.popularReligions }
-    val postboxesHaveCollectionTimes: Boolean =
+    val postboxesHaveCollectionTimes: Boolean get() =
          infos.firstNotNullOf { it.postboxesHaveCollectionTimes }
-    val postboxesHaveRef: Boolean =
+    val postboxesHaveRef: Boolean get() =
          infos.firstNotNullOf { it.postboxesHaveRef }
-    val postboxesHaveRoyalCypher: Boolean =
+    val postboxesHaveRoyalCypher: Boolean get() =
          infos.firstNotNullOf { it.postboxesHaveRoyalCypher }
-    val regularShoppingDays: Int =
+    val regularShoppingDays: Int get() =
          infos.firstNotNullOf { it.regularShoppingDays }
-    val roofsAreUsuallyFlat: Boolean =
+    val roofsAreUsuallyFlat: Boolean get() =
          infos.firstNotNullOf { it.roofsAreUsuallyFlat }
-    val speedUnits: List<SpeedMeasurementUnit> =
+    val speedUnits: List<SpeedMeasurementUnit> get() =
          infos.firstNotNullOf { it.speedUnits }
-    val weightLimitUnits: List<WeightMeasurementUnit> =
+    val weightLimitUnits: List<WeightMeasurementUnit> get() =
          infos.firstNotNullOf { it.weightLimitUnits }
 
     // may be null
-    val additionalStreetsignLanguages: List<String> =
+    val additionalStreetsignLanguages: List<String> get() =
          infos.firstNotNullOfOrNull { it.additionalStreetsignLanguages } ?: emptyList()
-    val additionalValidHousenumberRegex: String? =
+    val additionalValidHousenumberRegex: String? get() =
          infos.firstNotNullOfOrNull { it.additionalValidHousenumberRegex }
-    val advisoryCycleLaneStyle: String? =
+    val advisoryCycleLaneStyle: String? get() =
          infos.firstNotNullOfOrNull { it.advisoryCycleLaneStyle }
-    val atmOperators: List<String>? =
+    val atmOperators: List<String>? get() =
          infos.firstNotNullOfOrNull { it.atmOperators }
-    val chargingStationOperators: List<String>? =
+    val chargingStationOperators: List<String>? get() =
          infos.firstNotNullOfOrNull { it.chargingStationOperators }
-    val clothesContainerOperators: List<String>? =
+    val clothesContainerOperators: List<String>? get() =
          infos.firstNotNullOfOrNull { it.clothesContainerOperators }
-    val livingStreetSignStyle: String? =
+    val livingStreetSignStyle: String? get() =
          infos.firstNotNullOfOrNull { it.livingStreetSignStyle }
-    val mobileCountryCode: Int? =
+    val mobileCountryCode: Int? get() =
          infos.firstNotNullOfOrNull { it.mobileCountryCode }
-    val noParkingLineStyle: String? =
+    val noParkingLineStyle: String? get() =
          infos.firstNotNullOfOrNull { it.noParkingLineStyle }
-    val noStandingLineStyle: String? =
+    val noStandingLineStyle: String? get() =
          infos.firstNotNullOfOrNull { it.noStandingLineStyle }
-    val noStandingSignStyle: String? =
+    val noStandingSignStyle: String? get() =
          infos.firstNotNullOfOrNull { it.noStandingSignStyle }
-    val noStoppingLineStyle: String? =
+    val noStoppingLineStyle: String? get() =
          infos.firstNotNullOfOrNull { it.noStoppingLineStyle }
-    val orchardProduces: List<String> =
+    val orchardProduces: List<String> get() =
          infos.firstNotNullOfOrNull { it.orchardProduces } ?: emptyList()
-    val parcelLockerBrand: List<String>? =
+    val parcelLockerBrand: List<String>? get() =
          infos.firstNotNullOfOrNull { it.parcelLockerBrand }
-    val popularSports: List<String> =
+    val popularSports: List<String> get() =
          infos.firstNotNullOfOrNull { it.popularSports } ?: emptyList()
-    val slowZoneLabelPosition: String? =
+    val slowZoneLabelPosition: String? get() =
          infos.firstNotNullOfOrNull { it.slowZoneLabelPosition }
-    val slowZoneLabelText: String? =
+    val slowZoneLabelText: String? get() =
          infos.firstNotNullOfOrNull { it.slowZoneLabelText }
 
-    val language: String? =
+    val language: String? get() =
          officialLanguages.firstOrNull()
 
     val languageTag: String?

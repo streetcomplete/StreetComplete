@@ -60,7 +60,6 @@ class WeeklyOsmRssFeedParserTest {
         val dateTime = instant.toLocalDateTime(TimeZone.UTC)
         assertEquals(2026, dateTime.year)
         assertEquals(Month.FEBRUARY, dateTime.month)
-        assertEquals(1, dateTime.month.number)
         assertEquals(12, dateTime.hour)
         assertEquals(14, dateTime.minute)
         assertEquals(16, dateTime.second)

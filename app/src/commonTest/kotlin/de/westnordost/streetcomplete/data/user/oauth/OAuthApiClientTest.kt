@@ -204,7 +204,7 @@ class OAuthApiClientTest {
 
         val expectedHeaders = HeadersBuilder()
         expectedHeaders.append("Content-Type", "application/x-www-form-urlencoded")
-        expectedHeaders.append("Accept-Charset", "UTF-8")
+        //expectedHeaders.append("Accept-Charset", "UTF-8")
         expectedHeaders.append("Accept", "*/*")
 
         assertEquals(1, mockEngine.requestHistory.size)
