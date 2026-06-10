@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.ui.common.opening_hours
+package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,47 +14,43 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
-import de.westnordost.osm_opening_hours.model.ClockTime
-import de.westnordost.osm_opening_hours.model.Time
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.TimePicker
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
-import de.westnordost.streetcomplete.ui.common.rememberTimePickerState
 import de.westnordost.streetcomplete.ui.theme.largeInput
-import de.westnordost.streetcomplete.util.locale.TimeFormatElements
+import de.westnordost.streetcomplete.util.locale.DateFormatElements
+import kotlinx.datetime.LocalDate
 import org.jetbrains.compose.resources.stringResource
 
-/** Dialog in which to select a time */
+/** Dialog in which to select a date */
 @Composable
-fun TimeSelectDialog(
+fun DateSelectDialog(
     onDismissRequest: () -> Unit,
-    onSelect: (time: Time) -> Unit,
-    initialTime: Time,
+    onSelect: (date: LocalDate) -> Unit,
+    initialDate: LocalDate,
     modifier: Modifier = Modifier,
+    title: (@Composable () -> Unit)? = null,
+    years: IntRange = (initialDate.year - 10)..(initialDate.year + 10),
     locale: Locale = Locale.current,
 ) {
-    val initialTime = (initialTime as? ClockTime) ?: throw UnsupportedOperationException()
-
-    val timeFormatElements = remember(locale) { TimeFormatElements.of(locale) }
-    val timePickerState = rememberTimePickerState(
-        initialHour = initialTime.hour,
-        initialMinutes = initialTime.minutes,
-        is12Hour = timeFormatElements.clock12 != null,
-        allowAfterMidnight = false,
+    val dateFormatElements = remember(locale) { DateFormatElements.of(locale) }
+    val datePickerState = rememberDatePickerState(
+        initialDate = initialDate,
+        years = years,
     )
 
     ScrollableAlertDialog(
         onDismissRequest = onDismissRequest,
         modifier = modifier,
-        title = { Text(stringResource(Res.string.quest_openingHours_chooseTimeTitle)) },
+        title = title,
         content = {
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.high) {
                 Box(Modifier.fillMaxWidth()) {
                     ProvideTextStyle(MaterialTheme.typography.largeInput) {
-                        TimePicker(
-                            state = timePickerState,
-                            timeFormatElements = timeFormatElements,
+                        DatePicker(
+                            state = datePickerState,
+                            dateFormatElements = dateFormatElements,
                             modifier = Modifier.align(Alignment.Center),
+                            locale = locale,
                             visibleAdjacentItems = 2,
                         )
                     }
@@ -67,7 +63,7 @@ fun TimeSelectDialog(
             }
             TextButton(
                 onClick = {
-                    onSelect(ClockTime(timePickerState.hour, timePickerState.minute))
+                    onSelect(datePickerState.date)
                     onDismissRequest()
                 }
             ) {

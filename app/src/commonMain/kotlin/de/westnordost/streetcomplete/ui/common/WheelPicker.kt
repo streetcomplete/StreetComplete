@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.common
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.MutatePriority
 import androidx.compose.foundation.gestures.ScrollScope
 import androidx.compose.foundation.gestures.ScrollableState
@@ -29,13 +28,13 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastFirstOrNull
 import de.westnordost.streetcomplete.ui.ktx.fadingEdges
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import kotlinx.coroutines.launch
-import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun rememberWheelPickerState(selectedItemIndex: Int = 0) =
@@ -85,7 +84,6 @@ class WheelPickerState(selectedItemIndex: Int = 0) : ScrollableState {
  *  vertical wheel, the item displayed in the center is selected.
  *  [visibleAdjacentItems] determines how many adjacent items to the one that is selected should
  *  be displayed. */
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun <T> WheelPicker(
     items: List<T>,
