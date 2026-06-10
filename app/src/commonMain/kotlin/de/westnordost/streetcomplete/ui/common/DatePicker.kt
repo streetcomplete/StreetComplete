@@ -3,6 +3,8 @@ package de.westnordost.streetcomplete.ui.common
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -12,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import de.westnordost.streetcomplete.util.locale.DateComponent
@@ -23,6 +26,8 @@ import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.todayIn
 import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.ktx.pxToDp
+import kotlinx.datetime.number
 
 @Composable
 fun rememberDatePickerState(
@@ -42,16 +47,13 @@ class DatePickerState(
 
     val selectableYears: List<Int> = years.toList()
     val selectableMonths: List<Month> = Month.entries
+    val selectableDays: List<Int> by derivedStateOf { (1..lengthOfMonth(year, month)).toList() }
 
-    val selectableDays: List<Int> by derivedStateOf {
-        (1..lengthOfMonth(year, month)).toList()
-    }
     val year: Int by derivedStateOf {
-        selectableYears[yearPickerState.selectedItemIndex.coerceIn(selectableYears.indices)]
+        selectableYears[yearPickerState.selectedItemIndex]
     }
-
     val month: Month by derivedStateOf {
-        selectableMonths[monthPickerState.selectedItemIndex.coerceIn(selectableMonths.indices)]
+        selectableMonths[monthPickerState.selectedItemIndex]
     }
     val date: LocalDate by derivedStateOf {
         val day = (dayPickerState.selectedItemIndex + 1).coerceIn(1, selectableDays.size)
@@ -60,8 +62,8 @@ class DatePickerState(
 
     init {
         val yearIndex = selectableYears.indexOf(initialDate.year).coerceAtLeast(0)
-        val monthIndex = initialDate.monthNumber - 1
-        val dayIndex = initialDate.dayOfMonth - 1
+        val monthIndex = initialDate.month.number - 1
+        val dayIndex = initialDate.day - 1
 
         yearPickerState = WheelPickerState(yearIndex)
         monthPickerState = WheelPickerState(monthIndex)
@@ -86,11 +88,27 @@ fun DatePicker(
         }
     }
 
+    // we use month names instead of month numbers so that it is very clear which field is the
+    // month and which is the day. Remember them here because at least on JVM it's not a simple
+    // lookup
+    val monthNames = remember(locale) {
+        Month.entries.associate { it to it.getDisplayName(DateTimeTextSymbolStyle.Short, locale) }
+    }
+    // we want all month-items of the wheel picker to have the same width - the max width
+    val textMeasurer = rememberTextMeasurer(12)
+    val maxMonthWidth = monthNames.values
+        .maxOf { textMeasurer.measure(it, LocalTextStyle.current).size.width }
+        .pxToDp()
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(4.dp),
         modifier = modifier,
     ) {
+        if (dateFormatElements.before.isNotEmpty()) {
+            Text(dateFormatElements.before)
+        }
+
         for ((index, component) in dateFormatElements.order.withIndex()) {
             if (index > 0) {
                 Text(dateFormatElements.separator)
@@ -104,17 +122,23 @@ fun DatePicker(
                 )
                 DateComponent.Month -> WheelPicker(
                     items = state.selectableMonths,
+                    // 16 dp is the horizontal padding around the content
+                    modifier = Modifier.width(maxMonthWidth + 16.dp),
                     state = state.monthPickerState,
-                    content = { Text(it.getDisplayName(DateTimeTextSymbolStyle.Short, locale)) },
+                    content = { Text(monthNames[it]!!) },
                     visibleAdjacentItems = visibleAdjacentItems,
                 )
                 DateComponent.Day -> WheelPicker(
                     items = state.selectableDays,
                     state = state.dayPickerState,
-                    content = { Text(it.toString().padStart(2, ' ')) },
+                    content = { Text(it.toString().padStart(2, ' ')) },
                     visibleAdjacentItems = visibleAdjacentItems,
                 )
             }
+        }
+
+        if (dateFormatElements.after.isNotEmpty()) {
+            Text(dateFormatElements.after)
         }
     }
 }
