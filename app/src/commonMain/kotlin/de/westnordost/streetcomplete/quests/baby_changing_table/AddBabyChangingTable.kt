@@ -4,15 +4,19 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.quests.baby_changing_table.BabyChangingTableAnswer.*
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
+import org.jetbrains.compose.resources.stringResource
 
-class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
+class AddBabyChangingTable : OsmFilterQuestType<BabyChangingTableAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -35,11 +39,24 @@ class AddBabyChangingTable : OsmFilterQuestType<Boolean>() {
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
 
     @Composable
-    override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        YesNoQuestForm(on)
+    override fun Form(on: (QuestAction<BabyChangingTableAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        QuestForm(
+            on = on,
+            answers = listOf(
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) }
+            ),
+            otherAnswers = { listOf(
+                AnswerItem(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) { on(Answer(NO_TOILET)) }
+            ) },
+        )
     }
 
-    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["changing_table"] = answer.toYesNo()
+    override fun applyAnswerTo(answer: BabyChangingTableAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            YES -> tags["changing_table"] = "yes"
+            NO -> tags["changing_table"] = "no"
+            NO_TOILET -> tags["toilets"] = "no"
+        }
     }
 }
