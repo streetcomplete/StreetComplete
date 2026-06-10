@@ -28,11 +28,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import de.westnordost.streetcomplete.data.logs.LogsFilters
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.label_log_message_contains
-import de.westnordost.streetcomplete.resources.label_log_newer_than
-import de.westnordost.streetcomplete.resources.label_log_older_than
-import de.westnordost.streetcomplete.resources.title_logs_filters
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.ClearIcon
 import org.jetbrains.compose.resources.stringResource
