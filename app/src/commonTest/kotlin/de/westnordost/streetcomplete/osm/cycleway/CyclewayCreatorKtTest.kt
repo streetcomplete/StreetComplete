@@ -321,7 +321,7 @@ class CyclewayCreatorKtTest {
         )
     }
 
-    @Test fun `apply answer for both deletes any previous answers given for left, right, general`() {
+    @Test fun `apply answer for both deletes previous answers given for explicit sides and general`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
@@ -356,7 +356,7 @@ class CyclewayCreatorKtTest {
         )
     }
 
-    @Test fun `apply answer for left, right deletes any previous answers given for both, general`() {
+    @Test fun `apply answer for explicit sides deletes any previous answers given for both and general`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:left", "track"),

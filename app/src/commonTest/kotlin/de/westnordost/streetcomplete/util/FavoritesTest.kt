@@ -32,7 +32,7 @@ class FavoritesTest {
         )
     }
 
-    @Test fun `takeFavorites first item(s) special case`() {
+    @Test fun `takeFavorites first items special case`() {
         assertEquals(
             listOf(A, B),
             listOf(A, B, B, C, C).takeFavorites(2, first = 1),

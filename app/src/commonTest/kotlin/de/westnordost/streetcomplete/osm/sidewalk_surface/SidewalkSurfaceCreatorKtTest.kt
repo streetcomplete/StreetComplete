@@ -76,7 +76,7 @@ internal class SidewalkSurfaceCreatorKtTest {
         )
     }
 
-    @Test fun `smoothness tag removed when surface changes, same on both sides`() {
+    @Test fun `smoothness tag removed when surface changes on both sides`() {
         assertEquals(
             setOf(
                 StringMapEntryDelete("sidewalk:both:smoothness", "excellent"),
@@ -89,7 +89,7 @@ internal class SidewalkSurfaceCreatorKtTest {
         )
     }
 
-    @Test fun `remove smoothness when surface changes, different on each side`() {
+    @Test fun `remove smoothness when surface changes differently on each side`() {
         assertEquals(
             setOf(
                 StringMapEntryDelete("sidewalk:left:surface", "asphalt"),

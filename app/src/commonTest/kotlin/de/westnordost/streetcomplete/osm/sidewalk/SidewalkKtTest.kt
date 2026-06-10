@@ -8,15 +8,15 @@ class SidewalkKtTest {
     @Test fun validOrNullValues() {
         assertEquals(
             Sides<Sidewalk>(null, null),
-            Sides(Sidewalk.INVALID, Sidewalk.INVALID).validOrNullValues()
+            Sides<Sidewalk>(Sidewalk.INVALID, Sidewalk.INVALID).validOrNullValues()
         )
         assertEquals(
-            Sides(Sidewalk.NO, null),
-            Sides(Sidewalk.NO, Sidewalk.INVALID).validOrNullValues()
+            Sides<Sidewalk>(Sidewalk.NO, null),
+            Sides<Sidewalk>(Sidewalk.NO, Sidewalk.INVALID).validOrNullValues()
         )
         assertEquals(
-            Sides(null, Sidewalk.NO),
-            Sides(Sidewalk.INVALID, Sidewalk.NO).validOrNullValues()
+            Sides<Sidewalk>(null, Sidewalk.NO),
+            Sides<Sidewalk>(Sidewalk.INVALID, Sidewalk.NO).validOrNullValues()
         )
     }
 }
