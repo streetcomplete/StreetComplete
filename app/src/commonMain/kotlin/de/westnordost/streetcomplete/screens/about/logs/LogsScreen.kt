@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.screens.about.logs
 
-import android.content.Context
-import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,18 +30,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.data.logs.format
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.isScrolledToEnd
-import de.westnordost.streetcomplete.util.ktx.now
-import kotlinx.datetime.LocalDateTime
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -81,8 +73,7 @@ fun LogsScreen(
                         }
                     }
                 }
-                val context = LocalContext.current
-                IconButton(onClick = { context.shareLog(viewModel.logs.value.format()) }) {
+                IconButton(onClick = { viewModel.share() }) {
                     Icon(
                         painter = painterResource(Res.drawable.ic_share_24),
                         contentDescription = stringResource(Res.string.action_share)
@@ -123,17 +114,4 @@ private fun FiltersCounter(count: Int, modifier: Modifier = Modifier) {
         textAlign = TextAlign.Center,
         style = MaterialTheme.typography.caption
     )
-}
-
-private fun Context.shareLog(logText: String) {
-    val logTimestamp = LocalDateTime.now().toString()
-    val logTitle = "${ApplicationConstants.NAME}_${BuildConfig.VERSION_NAME}_$logTimestamp.log"
-
-    val shareIntent = Intent(Intent.ACTION_SEND).also {
-        it.putExtra(Intent.EXTRA_TEXT, logText)
-        it.putExtra(Intent.EXTRA_TITLE, logTitle)
-        it.type = "text/plain"
-    }
-
-    startActivity(Intent.createChooser(shareIntent, null))
 }

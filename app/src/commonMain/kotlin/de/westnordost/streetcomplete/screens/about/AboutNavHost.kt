@@ -13,7 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import de.westnordost.streetcomplete.screens.about.logs.LogsFiltersScreen
 import de.westnordost.streetcomplete.screens.about.logs.LogsScreen
 import de.westnordost.streetcomplete.ui.ktx.dir
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun AboutNavHost(onClickBack: () -> Unit) {

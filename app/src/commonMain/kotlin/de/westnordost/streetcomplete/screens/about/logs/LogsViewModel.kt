@@ -3,12 +3,22 @@ package de.westnordost.streetcomplete.screens.about.logs
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.logs.LogMessage
 import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.data.logs.LogsFilters
+import de.westnordost.streetcomplete.data.logs.format
+import de.westnordost.streetcomplete.util.ktx.launch
+import de.westnordost.streetcomplete.util.ktx.now
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.PlatformFile
+import io.github.vinceglb.filekit.cacheDir
+import io.github.vinceglb.filekit.dialogs.shareFile
+import io.github.vinceglb.filekit.writeString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
@@ -29,6 +39,8 @@ abstract class LogsViewModel : ViewModel() {
     abstract val logs: StateFlow<List<LogMessage>>
 
     abstract fun setFilters(filters: LogsFilters)
+
+    abstract fun share()
 }
 
 @Stable
@@ -59,7 +71,14 @@ class LogsViewModelImpl(
     @OptIn(ExperimentalCoroutinesApi::class)
     override val logs: StateFlow<List<LogMessage>> =
         filters.transformLatest { filters ->
-            val logs = logsController.getLogs(filters).toMutableList()
+            val logs = logsController
+                .getLogs(
+                    levels = filters.levels,
+                    messageContains = filters.messageContains,
+                    newerThan = filters.timestampNewerThan?.toEpochMilli(),
+                    olderThan = filters.timestampOlderThan?.toEpochMilli()
+                )
+                .toMutableList()
 
             emit(UniqueList(logs))
 
@@ -72,15 +91,17 @@ class LogsViewModelImpl(
     override fun setFilters(filters: LogsFilters) {
         this.filters.value = filters
     }
-}
 
-private fun LogsController.getLogs(filters: LogsFilters) =
-    getLogs(
-        levels = filters.levels,
-        messageContains = filters.messageContains,
-        newerThan = filters.timestampNewerThan?.toEpochMilli(),
-        olderThan = filters.timestampOlderThan?.toEpochMilli()
-    )
+    override fun share() {
+        val logTimestamp = LocalDateTime.now().toString()
+        val logTitle = "${ApplicationConstants.NAME}_${BuildConfig.VERSION_NAME}_$logTimestamp.log"
+        val file = PlatformFile(FileKit.cacheDir, logTitle)
+        launch {
+            file.writeString(logs.value.format())
+            FileKit.shareFile(file = file)
+        }
+    }
+}
 
 /** List that only returns true on equals if it is compared to the same instance */
 // this is necessary so that Compose recognizes that the view should be updated after list changed

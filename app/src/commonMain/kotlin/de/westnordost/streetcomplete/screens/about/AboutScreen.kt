@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.about
 
-import android.content.Context
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -20,7 +19,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.BuildConfig
@@ -36,6 +34,7 @@ import de.westnordost.streetcomplete.util.ktx.displayLanguage
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
+import org.koin.compose.koinInject
 
 @Composable
 fun AboutScreen(
@@ -44,11 +43,11 @@ fun AboutScreen(
     onClickPrivacyStatement: () -> Unit,
     onClickLogs: () -> Unit,
     onClickBack: () -> Unit,
+    appStoreInfo: AppStoreInfo = koinInject()
 ) {
     var showDonateDialog by remember { mutableStateOf(false) }
     var showIntroTutorial by remember { mutableStateOf(false) }
 
-    val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
 
     Column(Modifier.fillMaxSize()) {
@@ -142,10 +141,11 @@ fun AboutScreen(
 
             PreferenceCategory(stringResource(Res.string.about_category_feedback)) {
 
-                if (context.isInstalledViaGooglePlay()) {
+                val ratingUri = appStoreInfo.getRatingUri()
+                if (ratingUri != null) {
                     Preference(
                         name = stringResource(Res.string.about_title_rate),
-                        onClick = { uriHandler.tryOpenUri("market://details?id=${context.packageName}") },
+                        onClick = { uriHandler.tryOpenUri(ratingUri) },
                     ) { OpenInBrowserIcon() }
                 }
 
@@ -158,8 +158,8 @@ fun AboutScreen(
     }
 
     if (showDonateDialog) {
-        if (BuildConfig.IS_FROM_MONOPOLISTIC_APP_STORE) {
-            DonationsGooglePlayDialog { showDonateDialog = false }
+        if (appStoreInfo.disallowsInAppDonationLinks()) {
+            AltDonationsDialog { showDonateDialog = false }
         } else {
             DonationsDialog(
                 onDismissRequest = { showDonateDialog = false },
@@ -175,9 +175,6 @@ fun AboutScreen(
         )
     }
 }
-
-private fun Context.isInstalledViaGooglePlay(): Boolean =
-    applicationContext.packageManager.getInstallerPackageName(applicationContext.packageName) == "com.android.vending"
 
 @Preview
 @Composable
