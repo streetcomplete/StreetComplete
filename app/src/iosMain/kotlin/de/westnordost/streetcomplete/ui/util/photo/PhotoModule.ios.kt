@@ -2,6 +2,6 @@ package de.westnordost.streetcomplete.ui.util.photo
 
 import org.koin.dsl.module
 
-val photoModule = module {
+actual val photoPlatformModule = module {
     factory<HasCameraChecker>() { IosHasCameraChecker() }
 }

@@ -1,12 +1,11 @@
 package de.westnordost.streetcomplete.ui.util.measure
 
 import de.westnordost.streetcomplete.data.meta.LengthUnit
-import de.westnordost.streetcomplete.ui.util.measure.ArMeasureResult
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 
-actual class ArMeasureAppLauncher {
-    actual suspend fun measure(lengthUnit: LengthUnit, measureVertical: Boolean): ArMeasureResult {
+class IosArMeasureAppLauncher : ArMeasureAppLauncher {
+    override suspend fun measure(lengthUnit: LengthUnit, measureVertical: Boolean): ArMeasureResult {
         return ArMeasureResult.Error
 
         // As StreetMeasure doesn't exist on iOS, no point in trying to launch it there. However, if

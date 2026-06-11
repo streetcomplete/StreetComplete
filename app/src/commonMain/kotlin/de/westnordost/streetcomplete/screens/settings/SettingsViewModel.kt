@@ -20,7 +20,8 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.util.ktx.launch
-import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -144,25 +145,25 @@ class SettingsViewModelImpl(
     override fun setShowZoomButtons(value: Boolean) { prefs.showZoomButtons = value }
 
     override fun unhideQuests() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             hiddenQuestsController.unhideAll()
         }
     }
 
     private fun updateSelectedEditTypePreset() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             selectedEditTypePresetName.value = editTypePresetsSource.selectedEditTypePresetName
         }
     }
 
     private fun updateHiddenQuests() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             hiddenQuestCount.value = hiddenQuestsController.countAll()
         }
     }
 
     private fun updateQuestTypeCount() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             questTypeCount.value = QuestTypeCount(
                 total = questTypeRegistry.size,
                 enabled = questTypeRegistry.count { visibleEditTypeSource.isVisible(it) }
@@ -171,7 +172,7 @@ class SettingsViewModelImpl(
     }
 
     private fun updateOverlayCount() {
-        launch(IO) {
+        launch(Dispatchers.IO) {
             overlayCount.value = QuestTypeCount(
                 total = overlayRegistry.size,
                 enabled = overlayRegistry.count { visibleEditTypeSource.isVisible(it) }

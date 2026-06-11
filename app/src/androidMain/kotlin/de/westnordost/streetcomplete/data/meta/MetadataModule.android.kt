@@ -9,11 +9,8 @@ import kotlinx.io.buffered
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-val metadataModule = module {
+actual val metadataPlatformModule = module {
     val dir = "composeResources/de.westnordost.streetcomplete.resources/files/"
-
-    single { NameSuggestionsSource(get()) }
-    single { CountryInfos(get()) }
 
     single<CountryBoundaries> {
         val source = get<AssetManager>().open(dir + "boundaries.ser").asSource().buffered()
@@ -26,13 +23,5 @@ val metadataModule = module {
             presetsBasePath = dir + "osmfeatures/default",
             brandPresetsBasePath = dir + "osmfeatures/brands"
         )
-    }
-
-    single<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")) {
-        lazy { get<CountryBoundaries>() }
-    }
-
-    single<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")) {
-        lazy { get<FeatureDictionary>() }
     }
 }

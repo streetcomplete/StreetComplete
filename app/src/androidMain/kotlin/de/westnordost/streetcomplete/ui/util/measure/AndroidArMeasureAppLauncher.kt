@@ -9,10 +9,10 @@ import de.westnordost.streetcomplete.util.ktx.openUri
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlin.coroutines.resume
 
-actual class ArMeasureAppLauncher(
+class AndroidArMeasureAppLauncher(
     private val activityProvider: () -> ComponentActivity,
-) {
-    actual suspend fun measure(
+) : ArMeasureAppLauncher {
+    override suspend fun measure(
         lengthUnit: LengthUnit,
         measureVertical: Boolean
     ): ArMeasureResult = suspendCancellableCoroutine { continuation ->

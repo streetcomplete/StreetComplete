@@ -3,7 +3,7 @@ package de.westnordost.streetcomplete.ui.util.measure
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.length.Length
 
-expect class ArMeasureAppLauncher {
+interface ArMeasureAppLauncher {
     suspend fun measure(lengthUnit: LengthUnit, measureVertical: Boolean): ArMeasureResult
 }
 
