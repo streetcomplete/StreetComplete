@@ -1,19 +1,16 @@
 package de.westnordost.streetcomplete.screens.main.errors
 
-import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalContext
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.upload.VersionBannedException
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.ui.common.ToastPopup
 import org.jetbrains.compose.resources.stringResource
 
 /** Depending on the type of error, either display or conditionally offer to report the last
@@ -23,10 +20,10 @@ fun LastUploadErrorEffect(
     lastError: Exception,
     onReportError: (error: Exception) -> Unit
 ) {
-    val context = LocalContext.current
-
     var showUploadErrorDialog by remember { mutableStateOf(false) }
     var shownVersionBanned by remember { mutableStateOf<String?>(null) }
+    var showServerError by remember { mutableStateOf<Boolean>(false) }
+    var showAuthError by remember { mutableStateOf<Boolean>(false) }
 
     LaunchedEffect(lastError) {
         when (lastError) {
@@ -34,10 +31,10 @@ fun LastUploadErrorEffect(
                 shownVersionBanned = lastError.banReason
             }
             is ConnectionException -> {
-                context.toast(R.string.upload_server_error, Toast.LENGTH_LONG)
+                showServerError = true
             }
             is AuthorizationException -> {
-                context.toast(R.string.auth_error, Toast.LENGTH_LONG)
+                showAuthError = true
             }
             else -> {
                 showUploadErrorDialog = true
@@ -57,6 +54,20 @@ fun LastUploadErrorEffect(
             onDismissRequest = { showUploadErrorDialog = false },
             onConfirmed = { onReportError(lastError) },
             title = stringResource(Res.string.upload_error)
+        )
+    }
+
+    if (showServerError) {
+        ToastPopup(
+            onDismissRequest = { showServerError = false },
+            text = stringResource(Res.string.upload_server_error)
+        )
+    }
+
+    if (showAuthError) {
+        ToastPopup(
+            onDismissRequest = { showAuthError = false },
+            text = stringResource(Res.string.auth_error)
         )
     }
 }

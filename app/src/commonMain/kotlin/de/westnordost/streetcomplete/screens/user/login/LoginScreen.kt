@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.user.login
 
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,9 +24,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -40,13 +41,12 @@ import com.multiplatform.webview.web.WebViewNavigator
 import com.multiplatform.webview.web.rememberWebViewNavigator
 import com.multiplatform.webview.web.rememberWebViewState
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.user.login.LoginError.CommunicationError
 import de.westnordost.streetcomplete.screens.user.login.LoginError.RequiredPermissionsNotGranted
 import de.westnordost.streetcomplete.ui.common.BackIcon
+import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.util.ktx.toast
 import org.jetbrains.compose.resources.stringResource
 
 /** Leads user through the OAuth 2 auth flow to login */
@@ -58,21 +58,21 @@ fun LoginScreen(
 ) {
     val state by viewModel.loginState.collectAsState()
     val unsyncedChangesCount by viewModel.unsyncedChangesCount.collectAsState()
+    var showCommunicationError by remember { mutableStateOf(false) }
+    var showPermissionsError by remember { mutableStateOf(false) }
 
     LaunchedEffect(launchAuth) {
         if (launchAuth) viewModel.startLogin()
     }
 
     // handle error state: just show message once and return to login state
-    val context = LocalContext.current
     LaunchedEffect(state) {
         val errorState = state as? LoginError
         if (errorState != null) {
             val errorMessage = when (errorState) {
-                RequiredPermissionsNotGranted -> R.string.oauth_failed_permissions
-                CommunicationError -> R.string.oauth_communication_error
+                RequiredPermissionsNotGranted -> showPermissionsError = true
+                CommunicationError -> showCommunicationError = true
             }
-            context.toast(errorMessage, Toast.LENGTH_LONG)
             viewModel.resetLogin()
         }
     }
@@ -153,6 +153,20 @@ fun LoginScreen(
                 LinearProgressIndicator(Modifier.fillMaxWidth())
             }
         }
+    }
+
+    if (showCommunicationError) {
+        ToastPopup(
+            onDismissRequest = { showCommunicationError = false },
+            text = stringResource(Res.string.oauth_communication_error)
+        )
+    }
+
+    if (showPermissionsError) {
+        ToastPopup(
+            onDismissRequest = { showPermissionsError = false },
+            text = stringResource(Res.string.oauth_failed_permissions)
+        )
     }
 }
 

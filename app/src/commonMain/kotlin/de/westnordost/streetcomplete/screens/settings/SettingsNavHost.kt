@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlayS
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsScreen
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionScreen
 import de.westnordost.streetcomplete.ui.ktx.dir
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable fun SettingsNavHost(
     onClickBack: () -> Unit,

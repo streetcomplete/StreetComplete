@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
-import android.widget.Toast
-import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -34,30 +32,33 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.ktx.isItemAtIndexFullyVisible
 import de.westnordost.streetcomplete.ui.ktx.plus
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
-import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalDateFormatter
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
+import org.jetbrains.compose.resources.stringResource
 import kotlin.time.Instant
 
 /** Shows the edit history in a sidebar. The edit history is grouped by time and date, ordered by
  *  the most recent edit at the bottom. The list always scrolls to the currently selected edit. */
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun EditHistorySidebar(
     editItems: List<EditItem>,
@@ -71,10 +72,9 @@ fun EditHistorySidebar(
 ) {
     val scope = rememberCoroutineScope()
 
-    val context = LocalContext.current
-
     var showUndoDialog by remember { mutableStateOf(false) }
     var editElement by rememberSerializable { mutableStateOf<Element?>(null) }
+    var showUndoNotAvailable by remember { mutableStateOf(false) }
 
     // scrolling to selected item
     val selectedIndex = remember(selectedEdit) {
@@ -103,7 +103,7 @@ fun EditHistorySidebar(
                 showUndoDialog = true
             }
         } else {
-            context.toast(R.string.toast_undo_unavailable, Toast.LENGTH_LONG)
+            showUndoNotAvailable = true
         }
     }
 
@@ -161,6 +161,13 @@ fun EditHistorySidebar(
                 editElement = null
             },
             onConfirmed = { onUndoEdit(selectedEdit) }
+        )
+    }
+
+    if (showUndoNotAvailable) {
+        ToastPopup(
+            onDismissRequest = { showUndoNotAvailable = false },
+            text = stringResource(Res.string.toast_undo_unavailable)
         )
     }
 }

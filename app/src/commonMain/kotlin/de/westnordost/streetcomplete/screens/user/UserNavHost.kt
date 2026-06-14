@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import de.westnordost.streetcomplete.screens.user.login.LoginScreen
-import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 /** There are two screens on the user screen: The login and the user screen. Which one is displayed
  *  depends on whether the user is logged in or not. */
