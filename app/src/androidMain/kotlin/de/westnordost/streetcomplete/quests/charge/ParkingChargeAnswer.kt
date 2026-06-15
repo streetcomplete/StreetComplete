@@ -4,11 +4,15 @@ import de.westnordost.streetcomplete.osm.duration.DurationUnit
 
 sealed interface ParkingChargeAnswer
 
+/**
+ * Represents a simple charge for a specific time unit.
+ *
+ * @property amount the cost value, e.g. 1.50
+ * @property currency the currency of the charge, e.g. "EUR"
+ * @property timeUnit the unit of time the amount applies to (e.g. per hour, per day)
+ */
 data class SimpleCharge(
-    // e.g. "1.50"
     val amount: Double,
-    // e.g. "EUR"
     val currency: String,
-    // either "day", "hour" or "minute"
     val timeUnit: DurationUnit
 ) : ParkingChargeAnswer

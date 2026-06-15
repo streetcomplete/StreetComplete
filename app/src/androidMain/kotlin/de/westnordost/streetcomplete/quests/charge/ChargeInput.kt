@@ -19,7 +19,9 @@ import de.westnordost.streetcomplete.osm.duration.DurationUnitDropdown
 import de.westnordost.streetcomplete.ui.common.input.DecimalInput
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
 
-/** A composable for inputting a charge amount with currency symbol and time unit selector */
+/**
+ * A UI component that allows users to input a monetary charge amount associated with a duration unit
+ */
 @Composable
 fun ChargeInput(
     amount: Double,

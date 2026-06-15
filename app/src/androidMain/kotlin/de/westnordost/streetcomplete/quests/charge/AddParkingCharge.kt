@@ -11,6 +11,10 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_parking_charge_hint
 import de.westnordost.streetcomplete.resources.quest_parking_charge_title
 
+/**
+ * Quest that asks for the parking fee of locations where a fee is required, but the amount
+ * is unknown or hasn't been verified for a long time.
+ */
 class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>(), AndroidQuest {
 
     override val elementFilter = """
