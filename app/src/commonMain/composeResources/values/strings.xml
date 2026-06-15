@@ -1431,6 +1431,10 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="only_at_hours">only at following times:</string>
     <string name="except_at_hours">except at following times:</string>
 
+    <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
+    <string name="quest_parking_charge_time_unit_label">per</string>
+    <string name="quest_parking_charge_hint">"For simplicity’s sake, it is recommended that you enter the standard amount for different amounts in this quest. For example, if it costs €3 during the day and €1 at night, enter €3. This makes it easier to compare prices from the data later on."</string>
+
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
     <string name="quest_parkingType_street_side">Parking adjacent to the roadway</string>

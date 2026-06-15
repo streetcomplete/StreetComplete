@@ -810,6 +810,10 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
 
     <string name="quest_bicycleParkingCoveredStatus_title">Is this bicycle parking covered (protected from rain)?</string>
 
+    <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
+    <string name="quest_parking_charge_time_unit_label">per</string>
+    <string name="quest_parking_charge_hint">"For simplicity’s sake, it is recommended that you enter the standard amount for different amounts in this quest. For example, if it costs €3 during the day and €1 at night, enter €3. This makes it easier to compare prices from the data later on."</string>
+
     <string name="quest_bicycle_parking_fee_title">Do you have to pay to park a bicycle here?</string>
 
     <string name="quest_bicycle_parking_type_title">What type of bicycle parking is this?</string>
