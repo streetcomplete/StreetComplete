@@ -62,7 +62,6 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
                             checkIsFormComplete()
                         },
                         perLabel = getString(R.string.quest_parking_charge_time_unit_label),
-                        durationUnitDisplayNames = { unit -> unit.getDisplayName(this@AddParkingChargeForm) },
                         modifier = Modifier.padding(16.dp)
                     )
                 }
@@ -78,19 +77,6 @@ class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
     override fun onClickOk() {
         val amount = amountState.value
         val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "???"
-        /*
-        val timeUnit = when (durationUnitState.value) { // TODO: This could be removed if DurationUnit implements toOSMValue().
-            DurationUnit.HOURS -> "hour"
-            DurationUnit.DAYS -> "day"
-            DurationUnit.MINUTES -> "minute"
-        }
-         */
         applyAnswer(SimpleCharge(amount, currency, durationUnitState.value))
     }
-}
-
-fun DurationUnit.getDisplayName(form: AddParkingChargeForm): String = when (this) {
-    DurationUnit.HOURS -> form.getString(R.string.quest_parking_charge_hour)
-    DurationUnit.DAYS -> form.getString(R.string.quest_parking_charge_day)
-    DurationUnit.MINUTES -> form.getString(R.string.quest_parking_charge_minute_short)
 }

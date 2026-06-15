@@ -1419,9 +1419,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <!-- Parking Charge Quest -->
     <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
     <string name="quest_parking_charge_time_unit_label">per</string>
-    <string name="quest_parking_charge_hour">hour</string>
-    <string name="quest_parking_charge_day">day</string>
-    <string name="quest_parking_charge_minute_short">min</string>
     <string name="quest_parking_charge_hint">"For simplicity’s sake, it is recommended that you enter the standard amount for different amounts in this quest. For example, if it costs €3 during the day and €1 at night, enter €3. This makes it easier to compare prices from the data later on."</string>
 
     <string name="quest_parking_fee_title">Do you have to pay to park here?</string>
@@ -1432,6 +1429,9 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="unit_days">days</string>
     <string name="unit_hours">hours</string>
     <string name="unit_minutes">minutes</string>
+    <string name="unit_day">day</string>
+    <string name="unit_hour">hour</string>
+    <string name="unit_minute">minute</string>
     <string name="at_any_time">at any time</string>
     <string name="only_at_hours">only at following times:</string>
     <string name="except_at_hours">except at following times:</string>

@@ -1424,6 +1424,9 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="unit_days">days</string>
     <string name="unit_hours">hours</string>
     <string name="unit_minutes">minutes</string>
+    <string name="unit_day">day</string>
+    <string name="unit_hour">hour</string>
+    <string name="unit_minute">minute</string>
     <string name="at_any_time">at any time</string>
     <string name="only_at_hours">only at following times:</string>
     <string name="except_at_hours">except at following times:</string>

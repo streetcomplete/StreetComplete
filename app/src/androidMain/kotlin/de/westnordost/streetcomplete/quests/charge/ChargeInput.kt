@@ -9,16 +9,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.duration.DurationUnit
+import de.westnordost.streetcomplete.osm.duration.DurationUnitDropdown
 import de.westnordost.streetcomplete.ui.common.input.DecimalInput
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
-// import org.jetbrains.compose.ui.tooling.preview.Preview
 
 /** A composable for inputting a charge amount with currency symbol and time unit selector */
 @Composable
@@ -30,7 +29,6 @@ fun ChargeInput(
     onDurationUnitChange: (DurationUnit) -> Unit,
     perLabel: String,
     modifier: Modifier = Modifier,
-    durationUnitDisplayNames: (DurationUnit) -> String
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),
@@ -76,48 +74,11 @@ fun ChargeInput(
         Column(
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ) {
-            /*
             DurationUnitDropdown(
                 selectedDuration = durationUnit,
                 onSelectedDuration = onDurationUnitChange,
-            )*/
-            DropdownButton(
-                items = DurationUnit.entries,
-                onSelectedItem = onDurationUnitChange,
-                itemContent = { unit ->
-                    Text(durationUnitDisplayNames(unit))
-                },
-                selectedItem = durationUnit,
-                style = ButtonStyle.Outlined,
+                alwaysSingular = true
             )
         }
     }
 }
-/*
-@Composable
-@Preview
-private fun ChargeInputPreview() {
-    val amount = remember { mutableStateOf("1.50") }
-    val durationUnit = remember { mutableStateOf(DurationUnit.HOURS) }
-
-    ChargeInput(
-        amount = amount.value,
-        onAmountChange = { amount.value = it },
-        currencyFormatInfo = CurrencyFormatElements(
-            symbol = "€",
-            symbolBeforeAmount = false,
-            decimalPlaces = 2
-        ),
-        durationUnit = durationUnit.value,
-        onDurationUnitChange = { durationUnit.value = it },
-        perLabel = "per",
-        durationUnitDisplayNames = { unit ->
-            when (unit) {
-                DurationUnit.MINUTES -> Res.string.unit_minutes
-                DurationUnit.HOURS -> Res.string.unit_hours
-                DurationUnit.DAYS -> Res.string.unit_days
-            } as String
-        }
-    )
-}
-*/
