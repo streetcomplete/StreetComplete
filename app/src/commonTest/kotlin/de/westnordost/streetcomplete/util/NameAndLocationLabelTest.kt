@@ -1,35 +1,22 @@
 package de.westnordost.streetcomplete.util
 
-import android.content.res.Configuration
-import android.content.res.Resources
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.LayoutDirection
-import androidx.test.platform.app.InstrumentationRegistry
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.osmfeatures.create
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.Node
-import de.westnordost.streetcomplete.data.osm.mapdata.Way
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import de.westnordost.streetcomplete.testutils.node
+import de.westnordost.streetcomplete.testutils.way
 import kotlinx.coroutines.runBlocking
-import org.jetbrains.compose.resources.DensityQualifier
-import org.jetbrains.compose.resources.InternalResourceApi
-import org.jetbrains.compose.resources.LanguageQualifier
-import org.jetbrains.compose.resources.RegionQualifier
-import org.jetbrains.compose.resources.ResourceEnvironment
-import org.jetbrains.compose.resources.ThemeQualifier
-import java.util.Locale
+import kotlinx.io.files.Path
+import kotlinx.io.files.SystemFileSystem
+import org.jetbrains.compose.resources.getSystemResourceEnvironment
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class NameAndLocationLabelTest {
+    private val baseDir = "src/commonMain/composeResources/files/"
     private val featureDictionary = FeatureDictionary.create(
-        assetManager = InstrumentationRegistry.getInstrumentation().targetContext.assets,
-        presetsBasePath = "osmfeatures/default",
-        brandPresetsBasePath = "osmfeatures/brands"
+        fileSystem = SystemFileSystem,
+        presetsBasePath = baseDir + "osmfeatures/default",
+        brandPresetsBasePath = baseDir + "osmfeatures/brands",
     )
     /*
     TODO Compose Multiplatform upstream
@@ -165,7 +152,7 @@ class NameAndLocationLabelTest {
         getNameAndLocationLabel(
             resourceEnvironment,
             LayoutDirection.Ltr,
-            Node(0, LatLon(0.0, 0.0), tags),
+            node(tags = tags),
             featureDictionary
         )?.toString()
 
@@ -173,8 +160,8 @@ class NameAndLocationLabelTest {
         getNameAndLocationLabel(
             resourceEnvironment,
             LayoutDirection.Ltr,
-            Way(0, listOf(), tags),
+            way(tags = tags),
             featureDictionary
         )?.toString()
-    */
+*/
 }

@@ -237,14 +237,6 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        androidInstrumentedTest {
-            dependencies {
-                implementation(kotlin("test"))
-                // android tests
-                implementation("androidx.test:runner:1.7.0")
-                implementation("androidx.test:rules:1.7.0")
-            }
-        }
     }
 }
 
