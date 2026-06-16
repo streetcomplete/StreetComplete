@@ -3,11 +3,7 @@ package de.westnordost.streetcomplete.data
 import androidx.sqlite.SQLiteConnection
 import androidx.sqlite.SQLiteStatement
 import androidx.sqlite.execSQL
-import de.westnordost.streetcomplete.data.ConflictAlgorithm.ABORT
-import de.westnordost.streetcomplete.data.ConflictAlgorithm.FAIL
-import de.westnordost.streetcomplete.data.ConflictAlgorithm.IGNORE
-import de.westnordost.streetcomplete.data.ConflictAlgorithm.REPLACE
-import de.westnordost.streetcomplete.data.ConflictAlgorithm.ROLLBACK
+import de.westnordost.streetcomplete.data.ConflictAlgorithm.*
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
 
@@ -128,15 +124,17 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
             val valueArgs = values.map { it.second }
             val allArgs = (valueArgs + args.orEmpty()).toTypedArray()
             statement.bindAll(allArgs)
-            statement.toSequence { }.count()
+            statement.step()
         }
+        databaseConnection.getChangesCount()
     }
 
     override fun delete(table: String, where: String?, args: Array<Any>?): Int = lock.withLock {
         databaseConnection.prepareDelete(table, where).use { statement ->
             statement.bindAll(args)
-            statement.toSequence { }.count()
+            statement.step()
         }
+        databaseConnection.getChangesCount()
     }
 
     override fun <T> transaction(block: () -> T): T = lock.withLock {
@@ -245,7 +243,7 @@ private fun SQLiteConnection.prepareUpdate(
     val conflictSql = conflictAlgorithm.toSql()
     val placeholders = values.joinToString(", ") { it.first + "=?" }
     val whereClause = if (where.isNullOrBlank()) "" else "WHERE $where"
-    val sql = "UPDATE $conflictSql $table SET $placeholders $whereClause RETURNING 1"
+    val sql = "UPDATE $conflictSql $table SET $placeholders $whereClause"
 
     return prepare(sql)
 }
@@ -255,10 +253,19 @@ private fun SQLiteConnection.prepareDelete(
     where: String?,
 ): SQLiteStatement {
     val whereClause = if (where.isNullOrBlank()) "" else "WHERE $where"
-    val sql = "DELETE FROM $table $whereClause RETURNING 1"
+    val sql = "DELETE FROM $table $whereClause"
 
     return prepare(sql)
 }
+
+private fun SQLiteConnection.getChangesCount(): Int =
+    prepare("SELECT changes()").use { statement ->
+        if (statement.step()) {
+            statement.getLong(0).toInt()
+        } else {
+            0
+        }
+    }
 
 private fun SQLiteStatement.bind(i: Int, value: Any?) {
     when (value) {
@@ -292,7 +299,7 @@ private fun <T> SQLiteStatement.toSequence(transform: (CursorPosition) -> T): Se
         }
     }
 }
-private fun SQLiteStatement.executeInsert(): Long = if (step()) getLong(0) else -1
+private fun SQLiteStatement.executeInsert(): Long = if (step()) getLong(0) else -1L
 private fun SQLiteStatement.getIntOrNull(index: Int) = if (isNull(index)) null else getInt(index)
 private fun SQLiteStatement.getLongOrNull(index: Int) = if (isNull(index)) null else getLong(index)
 private fun SQLiteStatement.getDoubleOrNull(index: Int) = if (isNull(index)) null else getDouble(index)
