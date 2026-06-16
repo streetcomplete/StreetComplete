@@ -41,9 +41,7 @@ import com.multiplatform.webview.web.rememberWebViewNavigator
 import com.multiplatform.webview.web.rememberWebViewState
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.unsynced_quests_not_logged_in_description
-import de.westnordost.streetcomplete.resources.user_login
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.user.login.LoginError.CommunicationError
 import de.westnordost.streetcomplete.screens.user.login.LoginError.RequiredPermissionsNotGranted
 import de.westnordost.streetcomplete.ui.common.BackIcon

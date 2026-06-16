@@ -12,13 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_location_24
-import de.westnordost.streetcomplete.resources.ic_location_disabled_24
-import de.westnordost.streetcomplete.resources.ic_location_navigation_24
-import de.westnordost.streetcomplete.resources.ic_location_navigation_no_location_24
-import de.westnordost.streetcomplete.resources.ic_location_no_location_24
-import de.westnordost.streetcomplete.resources.map_btn_gps_tracking
+import de.westnordost.streetcomplete.resources.*
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource

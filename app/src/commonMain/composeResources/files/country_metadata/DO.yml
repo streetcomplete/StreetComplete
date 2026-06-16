@@ -1,0 +1,11 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Banco Popular, BitcoinRD, Popular, Banreservas, BanReservas, BHD leon, BHD, Scotiabank, Banco BHD Leon, Banco de Reservas, Banco BHD León, Banco BHD, Banca Popular, BPD]
+centerLineStyle: yellow
+chargingStationOperators: [Evergo]
+defaultSpeedLimitHasUrbanOrRural: true
+mobileCountryCode: 370
+noParkingSignStyle: mutcd latin
+noStoppingSignStyle: mutcd latin
+officialLanguages: [es]
+orchardProduces: [cacao, coffee, coconut, avocado, banana, lemon, lime, orange, papaya, cashew_nut, pineapple, chilli_pepper, sweet_pepper, tomato, guava, mango, mangosteen, grapefruit, sisal]
+popularSports: [baseball, basketball, tennis]

@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.quests.address
 
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.TextAutoSize
@@ -21,6 +18,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import de.westnordost.streetcomplete.ui.common.AutoFitTextFieldFontSize
+import de.westnordost.streetcomplete.ui.util.isImeVisible
 import de.westnordost.streetcomplete.ui.common.SwitchKeyboardPopupButton
 import de.westnordost.streetcomplete.ui.common.TextField2
 
@@ -30,7 +28,6 @@ import de.westnordost.streetcomplete.ui.common.TextField2
  *  - one can switch between text and number software keyboard
  *  - a suggestion can be displayed that is sized the same as the actual input, only with less alpha
  *  - certain common text styling (monospace, centered) */
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun AnAddressNumberInput(
     value: String,
@@ -49,7 +46,7 @@ fun AnAddressNumberInput(
     val keyboardType = if (isAbc) KeyboardType.Text else KeyboardType.Number
 
     var isFocused by remember { mutableStateOf(false) }
-    val showSwitchKeyboardPopup = isFocused && WindowInsets.isImeVisible
+    val showSwitchKeyboardPopup = isFocused && isImeVisible()
 
     ProvideTextStyle(LocalTextStyle.current.copy(
         // to avoid the size of the text changing when going from e.g. "123j" to "123k"

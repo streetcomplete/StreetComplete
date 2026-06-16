@@ -16,6 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.GroupedItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.last_picked.LastPickedChipsRow

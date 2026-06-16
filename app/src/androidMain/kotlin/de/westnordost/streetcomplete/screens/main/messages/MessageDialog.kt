@@ -6,6 +6,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
+import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 import kotlin.reflect.KClass
 
 /** Dialog that shows a Message */
@@ -47,7 +48,7 @@ fun MessageDialog(
                 unreadMessageCount = message.unreadMessages,
                 onDismissRequest = onDismissRequest,
                 onClickOpenMessages = {
-                    uriHandler.openUri("https://www.openstreetmap.org/messages/inbox")
+                    uriHandler.tryOpenUri("https://www.openstreetmap.org/messages/inbox")
                 }
             )
         }
@@ -59,7 +60,7 @@ fun MessageDialog(
                 onClickOpenWeeklyOsm = {
                     // note that weeklyOSM website is smart enough to show the site in the user
                     // preferred language
-                    uriHandler.openUri("https://www.weeklyosm.eu")
+                    uriHandler.tryOpenUri("https://www.weeklyosm.eu")
                 },
                 onToggleDontNotifyAgain = { dontNotifyAgain ->
                     onToggleDontNotifyAgain(Message.NewWeeklyOsm::class, dontNotifyAgain)
@@ -71,7 +72,7 @@ fun MessageDialog(
             CalendarEventDialog(
                 event = message.event,
                 onDismissRequest = onDismissRequest,
-                onClickOpenEvent = { uriHandler.openUri(message.event.url) },
+                onClickOpenEvent = { uriHandler.tryOpenUri(message.event.url) },
                 onToggleDontNotifyAgain = { dontNotifyAgain ->
                     onToggleDontNotifyAgain(Message.NewCalendarEvent::class, dontNotifyAgain)
                 }

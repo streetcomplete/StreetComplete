@@ -20,13 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.action_deselect_all
-import de.westnordost.streetcomplete.resources.action_reset
-import de.westnordost.streetcomplete.resources.pref_quests_deselect_all
-import de.westnordost.streetcomplete.resources.pref_quests_reset
-import de.westnordost.streetcomplete.resources.pref_subtitle_quests_preset_name
-import de.westnordost.streetcomplete.resources.pref_title_quests2
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import de.westnordost.streetcomplete.ui.common.ExpandableSearchField

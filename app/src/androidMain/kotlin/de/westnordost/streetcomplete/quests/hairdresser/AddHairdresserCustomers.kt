@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.resources.*
 
 class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>(), AndroidQuest {
 
@@ -24,13 +25,12 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>(), Andr
     override val changesetComment = "Survey hairdresser's customers"
     override val wikiLink = "Tag:shop=hairdresser"
     override val icon = R.drawable.quest_hairdresser
+    override val title = Res.string.quest_hairdresser_title
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_hairdresser_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddHairdresserCustomersForm()
 

@@ -5,16 +5,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.painter.Painter
 import de.westnordost.streetcomplete.osm.street_parking.StreetParkingSelection.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.car1
-import de.westnordost.streetcomplete.resources.car_nyan
-import de.westnordost.streetcomplete.resources.floating_no
-import de.westnordost.streetcomplete.resources.floating_separate
-import de.westnordost.streetcomplete.resources.street_parking_diagonal
-import de.westnordost.streetcomplete.resources.street_parking_no
-import de.westnordost.streetcomplete.resources.street_parking_parallel
-import de.westnordost.streetcomplete.resources.street_parking_perpendicular
-import de.westnordost.streetcomplete.resources.street_parking_separate
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource

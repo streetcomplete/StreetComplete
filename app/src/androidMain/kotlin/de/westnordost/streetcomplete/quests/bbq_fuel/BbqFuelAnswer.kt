@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.quests.bbq_fuel
 
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_bbq_fuel_charcoal
-import de.westnordost.streetcomplete.resources.quest_bbq_fuel_electric
-import de.westnordost.streetcomplete.resources.quest_bbq_fuel_gas
-import de.westnordost.streetcomplete.resources.quest_bbq_fuel_wood
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 sealed interface BbqFuelAnswer {

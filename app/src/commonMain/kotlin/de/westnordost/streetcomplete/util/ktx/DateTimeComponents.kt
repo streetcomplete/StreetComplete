@@ -17,7 +17,7 @@ private val rfc2822Format = DateTimeComponents.Format {
         dayOfWeek(DayOfWeekNames.ENGLISH_ABBREVIATED)
         chars(", ")
     }
-    dayOfMonth()
+    day()
     char(' ')
     monthName(MonthNames.ENGLISH_ABBREVIATED)
     char(' ')

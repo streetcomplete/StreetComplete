@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier>, AndroidQuest {
 
@@ -35,9 +36,8 @@ class AddRailwayCrossingBarrier : OsmElementQuestType<RailwayCrossingBarrier>, A
     override val changesetComment = "Specify railway crossing barriers type"
     override val wikiLink = "Key:crossing:barrier"
     override val icon = R.drawable.quest_railway
+    override val title = Res.string.quest_railway_crossing_barrier_title2
     override val achievements = listOf(CAR, PEDESTRIAN, BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_railway_crossing_barrier_title2
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways

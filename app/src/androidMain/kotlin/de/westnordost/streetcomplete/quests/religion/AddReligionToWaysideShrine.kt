@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddReligionToWaysideShrine : OsmFilterQuestType<Religion>(), AndroidQuest {
 
@@ -18,9 +19,8 @@ class AddReligionToWaysideShrine : OsmFilterQuestType<Religion>(), AndroidQuest 
     override val changesetComment = "Specify religion for wayside shrines"
     override val wikiLink = "Key:religion"
     override val icon = R.drawable.quest_religion
+    override val title = Res.string.quest_religion_for_wayside_shrine_title
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_religion_for_wayside_shrine_title
 
     override fun createForm() = AddReligionForm()
 

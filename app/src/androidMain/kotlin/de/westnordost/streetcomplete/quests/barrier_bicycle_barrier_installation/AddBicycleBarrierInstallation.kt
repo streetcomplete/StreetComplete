@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallationAnswer>(), AndroidQuest {
 
@@ -22,14 +23,12 @@ class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallat
     override val changesetComment = "Specify cycle barrier installation"
     override val wikiLink = "Key:cycle_barrier:installation"
     override val icon = R.drawable.quest_no_bicycles_lockable
+    override val title = Res.string.quest_bicycle_barrier_installation_title
     override val isDeleteElementEnabled = true
-
     override val achievements = listOf(BICYCLIST, LIFESAVER)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_barrier_installation_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with barrier = cycle_barrier")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with barrier = cycle_barrier")
 
     override fun createForm() = AddBicycleBarrierInstallationForm()
 

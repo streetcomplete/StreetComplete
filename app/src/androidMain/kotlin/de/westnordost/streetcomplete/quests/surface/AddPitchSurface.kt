@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.INVALID_SURFACES
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
+import de.westnordost.streetcomplete.resources.*
 
 class AddPitchSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
     private val sportValuesWherePitchSurfaceQuestionIsInteresting = listOf(
@@ -48,9 +49,8 @@ class AddPitchSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
     override val changesetComment = "Specify pitch surfaces"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.quest_pitch_surface
+    override val title = Res.string.quest_surface_title
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_surface_title
 
     override fun createForm() = AddPitchSurfaceForm()
 

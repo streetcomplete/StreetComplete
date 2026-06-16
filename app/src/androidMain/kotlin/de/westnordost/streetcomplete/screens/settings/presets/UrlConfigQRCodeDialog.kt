@@ -21,10 +21,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_presets_share
-import de.westnordost.streetcomplete.resources.urlconfig_as_url
-import de.westnordost.streetcomplete.resources.urlconfig_qr_code_description
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.CopyIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.theme.AppTheme

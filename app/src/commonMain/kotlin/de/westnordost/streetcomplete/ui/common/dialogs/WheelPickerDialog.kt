@@ -14,9 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.cancel
-import de.westnordost.streetcomplete.resources.ok
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.WheelPicker
 import de.westnordost.streetcomplete.ui.common.rememberWheelPickerState
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput

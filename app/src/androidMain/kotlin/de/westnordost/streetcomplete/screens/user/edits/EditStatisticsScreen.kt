@@ -31,13 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quests_empty
-import de.westnordost.streetcomplete.resources.stats_are_syncing
-import de.westnordost.streetcomplete.resources.user_profile_all_time_title
-import de.westnordost.streetcomplete.resources.user_profile_current_week_title
-import de.westnordost.streetcomplete.resources.user_statistics_filter_by_country
-import de.westnordost.streetcomplete.resources.user_statistics_filter_by_quest_type
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.plus
 import kotlinx.coroutines.launch

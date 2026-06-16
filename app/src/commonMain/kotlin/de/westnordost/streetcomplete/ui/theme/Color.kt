@@ -63,6 +63,9 @@ val DarkColors = darkColors(
     onSecondary = Color.White
 )
 
+val Colors.divider @ReadOnlyComposable @Composable get() =
+    onSurface.copy(alpha = 0.12f)
+
 val Colors.surfaceContainer @ReadOnlyComposable @Composable get() =
     if (isLight) Color(0xffdddddd) else Color(0xff222222)
 

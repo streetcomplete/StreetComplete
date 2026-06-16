@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddDefibrillatorLocation : OsmFilterQuestType<String>(), AndroidQuest {
 
@@ -21,13 +22,12 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>(), AndroidQuest {
     override val changesetComment = "Specify defibrillator location"
     override val wikiLink = "Tag:emergency=defibrillator"
     override val icon = R.drawable.quest_defibrillator
+    override val title = Res.string.quest_defibrillator_location
     override val isDeleteElementEnabled = false
     override val achievements = listOf(LIFESAVER)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_defibrillator_location
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with emergency = defibrillator")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with emergency = defibrillator")
 
     override fun createForm() = AddLocationDescriptionForm()
 

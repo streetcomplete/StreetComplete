@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddSport : OsmFilterQuestType<Set<Sport>>(), AndroidQuest {
 
@@ -19,9 +20,8 @@ class AddSport : OsmFilterQuestType<Set<Sport>>(), AndroidQuest {
     override val changesetComment = "Specify sport played on pitches"
     override val wikiLink = "Key:sport"
     override val icon = R.drawable.quest_sport
+    override val title = Res.string.quest_sport_title
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_sport_title
 
     override fun createForm() = AddSportForm()
 

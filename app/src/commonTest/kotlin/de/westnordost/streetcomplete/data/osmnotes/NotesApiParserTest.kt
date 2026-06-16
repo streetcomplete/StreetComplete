@@ -2,11 +2,11 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.User
-import kotlinx.datetime.Instant
 import kotlinx.io.Buffer
 import kotlinx.io.writeString
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.time.Instant
 
 class NotesApiParserTest {
 

@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>(), AndroidQuest {
 
@@ -17,9 +18,8 @@ class AddPlaygroundAccess : OsmFilterQuestType<PlaygroundAccess>(), AndroidQuest
     override val changesetComment = "Specify access to playgrounds"
     override val wikiLink = "Tag:leisure=playground"
     override val icon = R.drawable.quest_playground
+    override val title = Res.string.quest_playground_access_title2
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_playground_access_title2
 
     override fun createForm() = AddPlaygroundAccessForm()
 

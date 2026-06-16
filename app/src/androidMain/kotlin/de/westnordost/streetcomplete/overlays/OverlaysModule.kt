@@ -5,7 +5,7 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.getByLocation
+import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
@@ -32,7 +32,7 @@ val overlaysModule = module {
             { location ->
                 val countryInfos = get<CountryInfos>()
                 val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
-                countryInfos.getByLocation(countryBoundaries, location.longitude, location.latitude)
+                countryInfos.get(countryBoundaries, location)
             },
             { location ->
                 val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value

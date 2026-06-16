@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
 
@@ -33,13 +34,12 @@ class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>(), AndroidQuest {
     override val changesetComment = "Specify whether water is drinkable"
     override val wikiLink = "Key:drinking_water"
     override val icon = R.drawable.quest_drinking_water
+    override val title = Res.string.quest_drinking_water_title2
     override val isDeleteElementEnabled = true
     override val achievements = listOf(OUTDOORS)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_drinking_water_title2
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             nodes with
              (
                  man_made = water_tap

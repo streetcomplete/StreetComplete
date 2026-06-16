@@ -6,21 +6,21 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddMemorialType : OsmFilterQuestType<MemorialType>(), AndroidQuest {
 
     override val elementFilter = """
         nodes, ways, relations with
-          historic=memorial
-          and (!memorial or memorial=yes)
+          historic = memorial
+          and (!memorial or memorial = yes)
           and !memorial:type
     """
     override val changesetComment = "Specify memorial types"
     override val wikiLink = "Key:memorial"
     override val icon = R.drawable.quest_memorial
+    override val title = Res.string.quest_memorialType_title
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_memorialType_title
 
     override fun createForm() = AddMemorialTypeForm()
 

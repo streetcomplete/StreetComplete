@@ -34,7 +34,7 @@
     <string name="quest_noteDiscussion_anonymous">Anonym</string>
     <string name="confirmation_discard_title">Zahodiť výber?</string>
     <string name="confirmation_discard_positive">Zahodiť</string>
-    <string name="action_download">Hľadať úlohy tu</string>
+    <string name="action_download">Stiahnuť dáta</string>
     <string name="action_upload">Nahrať odpovede</string>
     <string name="no_changes">Nezadali ste odpoveď</string>
     <string name="download_error">Pri vyhľadávaní úloh došlo ku chybe</string>
@@ -109,7 +109,6 @@ Pred odoslaním zmien však aplikácia skontroluje pomocou &lt;a href="https://w
     <string name="quest_surface_value_sett">Dlažobné kocky</string>
     <string name="quest_surface_value_wood">Drevo</string>
     <string name="quest_sidewalk_title">Je pri ceste chodník?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Kde je táto ulica?</string>
     <string name="quest_address_title">Aké je číslo domu tejto budovy?</string>
     <string name="store_listing_short_description">Aplikácia pre OpenStreetMap prieskumníkov</string>
     <string name="store_listing_full_description">Pomôžte zlepšiť OpenStreetMap pomocou StreetComplete!
@@ -176,9 +175,6 @@ Zadané informácie sa priamo pridávajú do OpenStreetMap vo vašom mene bez po
     <string name="quest_maxspeed_answer_noSign_confirmation">Pozreli ste sa na oba konce ulice?
 Ak pozdĺž cesty nie je žiadna značka obmedzujúca rýchlosť na zvýraznenej časti, platí rýchlosť podľa zákona.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Áno, bez značky</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Cesty v obciach (mestá a husto obývané oblasti) majú iné obmedzenia rýchlosti ako cesty mimo obcí.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">V meste</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Mimo mesta</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Ak je na križovatke s hlavnou cestou takáto značka, nenájdete v zóne ďalšie samostatné značky, pretože uvedené obmedzenie rýchlosti na značke sa vzťahuje na celú zónu.</string>
     <string name="quest_sport_softball">Softball</string>
     <string name="quest_sport_racquet">Raketbal</string>
@@ -212,7 +208,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="credits_contributors_title">Prispievatelia kódu</string>
     <string name="credits_author_title">Autor a udržiavateľ</string>
     <string name="quest_maxspeed_answer_living_street">Je to obytná zóna</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Takže je tam značka ako táto?</string>
     <string name="quest_orchard_produce_title">Čo sa tu pestuje?</string>
     <string name="produce_grapes">Hrozno</string>
     <string name="produce_agaves">Agáve</string>
@@ -284,7 +279,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_buildingLevels_levelsLabel2">normálne poschodia (bez strechy)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Závisí od časti budovy</string>
     <string name="quest_buildingLevels_answer_description">V tom prípade zadajte hodnoty pre najvyššiu časť budovy.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Sú opačné smery vozovky oddelené fyzickou bariérou alebo zelenou plochou? Obmedzenie rýchlosti závisí od toho, či je to tak.</string>
     <string name="about_category_feedback">Spätná väzba</string>
     <string name="quest_leave_new_note_photo">Pridať fotku</string>
     <string name="quest_leave_new_note_photo_delete_title">Chcete zmazať tento obrázok?</string>
@@ -449,7 +443,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="quest_openingHours_no_sign">Otváracie hodiny nie sú označené</string>
     <string name="quest_buildingType_sports_centre">Športové centrum</string>
     <string name="quest_buildingType_toilets">Toalety</string>
-    <string name="quest_maxspeed_sign_question">Akým spôsobom je určená maximálna rýchlosť?</string>
     <string name="quest_segregated_title">Akým spôsobom je na tomto chodníku označený cyklopruh?</string>
     <string name="dialog_tutorial_upload">Pre manuálne nahratie zmien použite tlačidlo z panela nástrojov, ktoré vyzerá takto.</string>
     <string name="quest_segregated_separated">Oddelené od seba</string>
@@ -683,7 +676,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="at_housenumber">číslo domu %1$s</string>
     <string name="quest_openingHours_add_off_days">Pridať dni, kedy je zatvorené</string>
     <string name="quest_openingHours_off_day">Zatvorené</string>
-    <string name="quest_openingHours_unspecified_range">Neurčené</string>
     <string name="quest_cycleway_resurvey_title">Je to tu stále aktuálna situácia cyklotrasy?</string>
     <string name="pref_title_resurvey_intervals">Intervaly pre overovanie</string>
     <string name="resurvey_intervals_less_often">Pýtať sa menej často</string>
@@ -1436,4 +1428,6 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="quest_streetName_add_language">Pridať jazyk</string>
     <string name="ok">OK</string>
     <string name="cancel">Zrušiť</string>
+    <string name="quest_aerialway_bicycle_summer">Iba v lete</string>
+    <string name="quest_board_type_rules">Pravidlá</string>
 </resources>

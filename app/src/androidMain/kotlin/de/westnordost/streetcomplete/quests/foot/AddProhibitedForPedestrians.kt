@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.ACTUALLY_HAS_SIDEWALK
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.ALLOWED
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.PROHIBITED
+import de.westnordost.streetcomplete.resources.*
 
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>(), AndroidQuest {
     override val elementFilter = """
@@ -46,12 +47,11 @@ class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansA
     override val changesetComment = "Specify whether roads are prohibited for pedestrians"
     override val wikiLink = "Key:foot"
     override val icon = R.drawable.quest_no_pedestrians
+    override val title = Res.string.quest_accessible_for_pedestrians_title_prohibited
     override val achievements = listOf(PEDESTRIAN)
     override val enabledInCountries = AllCountriesExcept(
         "GB" // see https://community.openstreetmap.org/t/poll-should-streetcomplete-disable-the-are-pedestrians-forbidden-to-walk-on-this-road-without-sidewalk-here-quest-in-the-uk/118387
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_accessible_for_pedestrians_title_prohibited
 
     override fun createForm() = AddProhibitedForPedestriansForm()
 

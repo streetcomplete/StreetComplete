@@ -6,12 +6,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_presets_default_name
-import de.westnordost.streetcomplete.resources.urlconfig_apply_message
-import de.westnordost.streetcomplete.resources.urlconfig_apply_message_overwrite
-import de.westnordost.streetcomplete.resources.urlconfig_apply_title
-import de.westnordost.streetcomplete.resources.urlconfig_switch_hint
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import org.jetbrains.compose.resources.stringResource
 

@@ -1,33 +1,7 @@
 package de.westnordost.streetcomplete.quests.boat_rental
 
 import de.westnordost.streetcomplete.quests.boat_rental.BoatRental.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.boat_rental_canoe
-import de.westnordost.streetcomplete.resources.boat_rental_houseboat
-import de.westnordost.streetcomplete.resources.boat_rental_jetski
-import de.westnordost.streetcomplete.resources.boat_rental_kayak
-import de.westnordost.streetcomplete.resources.boat_rental_motorboat
-import de.westnordost.streetcomplete.resources.boat_rental_pedalboat
-import de.westnordost.streetcomplete.resources.boat_rental_raft
-import de.westnordost.streetcomplete.resources.boat_rental_rowboat
-import de.westnordost.streetcomplete.resources.boat_rental_sailboard
-import de.westnordost.streetcomplete.resources.boat_rental_sailboat
-import de.westnordost.streetcomplete.resources.boat_rental_standup_paddleboard
-import de.westnordost.streetcomplete.resources.boat_rental_surfboard
-import de.westnordost.streetcomplete.resources.boat_rental_yacht
-import de.westnordost.streetcomplete.resources.quest_boat_rental_canoe
-import de.westnordost.streetcomplete.resources.quest_boat_rental_houseboat
-import de.westnordost.streetcomplete.resources.quest_boat_rental_jetski
-import de.westnordost.streetcomplete.resources.quest_boat_rental_kayak
-import de.westnordost.streetcomplete.resources.quest_boat_rental_motorboat
-import de.westnordost.streetcomplete.resources.quest_boat_rental_pedalboat
-import de.westnordost.streetcomplete.resources.quest_boat_rental_raft
-import de.westnordost.streetcomplete.resources.quest_boat_rental_rowboat
-import de.westnordost.streetcomplete.resources.quest_boat_rental_sailboard
-import de.westnordost.streetcomplete.resources.quest_boat_rental_sailboat
-import de.westnordost.streetcomplete.resources.quest_boat_rental_standup_paddleboard
-import de.westnordost.streetcomplete.resources.quest_boat_rental_surfboard
-import de.westnordost.streetcomplete.resources.quest_boat_rental_yacht
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

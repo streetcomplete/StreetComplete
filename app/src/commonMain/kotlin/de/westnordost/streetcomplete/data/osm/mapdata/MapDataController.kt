@@ -241,21 +241,11 @@ class MapDataController internal constructor(
         var elementCount = 0
         var geometryCount = 0
         lock.withLock {
-            val relations = relationDB.getIdsOlderThan(timestamp, limit).map { ElementKey(ElementType.RELATION, it) }
-            val ways = wayDB.getIdsOlderThan(timestamp, limit?.minus(relations.size)).map { ElementKey(ElementType.WAY, it) }
-
-            // delete now, so filterNodeIdsWithoutWays works as intended
-            cache.update(deletedKeys = ways + relations)
-            val wayAndRelationCount = elementDB.deleteAll(ways + relations)
-            val nodes = nodeDB.getIdsOlderThan(timestamp, limit?.minus(relations.size + ways.size))
-            // filter nodes to only delete nodes that are not part of a ways in the database
-            val filteredNodes = wayDB.filterNodeIdsWithoutWays(nodes).map { ElementKey(ElementType.NODE, it) }
-
-            elements = relations + ways + filteredNodes
+            elements = elementDB.getIdsOlderThan(timestamp, limit)
             if (elements.isEmpty()) return 0
 
-            cache.update(deletedKeys = filteredNodes)
-            elementCount = wayAndRelationCount + elementDB.deleteAll(filteredNodes)
+            cache.update(deletedKeys = elements)
+            elementCount = elementDB.deleteAll(elements)
             geometryCount = geometryDB.deleteAll(elements)
             createdElementsController.deleteAll(elements)
         }

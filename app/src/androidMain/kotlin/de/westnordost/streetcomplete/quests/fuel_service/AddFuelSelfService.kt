@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFuelSelfService : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -21,6 +22,7 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Survey whether fuel stations provide self-service"
     override val wikiLink = "Key:self_service"
     override val icon = R.drawable.quest_fuel_self_service
+    override val title = Res.string.quest_fuelSelfService_title
     override val achievements = listOf(CAR)
     override val enabledInCountries = NoCountriesExcept(
         "IT",
@@ -28,8 +30,6 @@ class AddFuelSelfService : OsmFilterQuestType<Boolean>(), AndroidQuest {
         "AR", // see e.g. https://www.batimes.com.ar/news/economy/unions-warn-new-self-service-fuel-pump-rules-will-mean-job-losses.phtml
         "US-OR", // see e.g. https://www.oregon.gov/osfm/Pages/Self-Serve-Fueling.aspx
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_fuelSelfService_title
 
     override fun createForm() = YesNoQuestForm()
 

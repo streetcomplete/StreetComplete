@@ -26,7 +26,7 @@ import de.westnordost.streetcomplete.ui.theme.GrassGreen
 fun EditTypeStatisticsColumn(
     statistics: List<EditTypeStatistics>,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp),
+    contentPadding: PaddingValues = PaddingValues.Zero,
 ) {
     var showInfo by remember { mutableStateOf<EditTypeStatistics?>(null) }
 

@@ -13,8 +13,7 @@ import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.width.AddWidthForm
 import de.westnordost.streetcomplete.quests.width.WidthAnswer
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_no_ar
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import org.jetbrains.compose.resources.StringResource
 
@@ -44,17 +43,24 @@ class AddBarrierOpening(
     override val changesetComment = "Specify width of opening"
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.quest_wheelchair_width
+    override val title = Res.string.quest_barrier_opening_width_gate
     override val achievements = listOf(BICYCLIST, WHEELCHAIR)
     override val isDeleteElementEnabled = true
     override val defaultDisabledMessage: StringResource?
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
 
-    override fun getTitle(tags: Map<String, String>) =
-        if (tags["barrier"] == "bollard" || tags["barrier"] == "block" || tags["cycle_barrier"] == "diagonal") {
-            R.string.quest_barrier_opening_width_bollard
+    override fun getTitle(tags: Map<String, String>): StringResource {
+        val isSomeKindOfBollard =
+            tags["barrier"] == "bollard" ||
+            tags["barrier"] == "block" ||
+            tags["cycle_barrier"] == "diagonal"
+
+        return if (isSomeKindOfBollard) {
+            Res.string.quest_barrier_opening_width_bollard
         } else {
-            R.string.quest_barrier_opening_width_gate
+            Res.string.quest_barrier_opening_width_gate
         }
+    }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val wayNodeIds = mapData.ways

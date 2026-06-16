@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -20,7 +21,7 @@ import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.overlays.AGroupedItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
-import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.util.takeFavorites
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
@@ -64,16 +65,15 @@ class BuildingsOverlayForm : AGroupedItemSelectOverlayForm<BuildingTypeCategory,
         Image(painterResource(item.icon), stringResource(item.title), Modifier.height(24.dp))
     }
 
+    @Composable
+    override fun getSubtitle(): AnnotatedString? =
+        element?.let { nameAndLocationLabel(it, featureDictionary = null, showHouseNumber = true) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         originalBuilding = createBuildingType(element!!.tags)
         selectedItem.value = originalBuilding
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setTitleHintLabel(getNameAndLocationSpanned(element!!, resources, null, true))
     }
 
     override fun hasChanges(): Boolean =

@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer>, AndroidQuest {
 
@@ -45,6 +46,7 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer>, Andro
     override val changesetComment = "Specify entrance identifications"
     override val wikiLink = "Key:ref"
     override val icon = R.drawable.quest_door_address
+    override val title = Res.string.quest_entrance_reference
     override val achievements = listOf(CITIZEN, BLIND)
     override val enabledInCountries = NoCountriesExcept(
         "PL", // Poland - own knowledge of Mateusz Konieczny https://github.com/streetcomplete/StreetComplete/issues/3064#issuecomment-879447168
@@ -71,10 +73,6 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer>, Andro
         // if you are sure that this quest should be enabled there or elsewhere
         // please create an issue at https://github.com/streetcomplete/StreetComplete/issues
     )
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_entrance_reference
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter { it.tags.containsKey("entrance") }.asSequence()
 
     override fun isApplicableTo(element: Element): Boolean? =
         if (!entrancesFilter.matches(element)) false else null
@@ -99,6 +97,9 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer>, Andro
         }
         return result
     }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter { it.tags.containsKey("entrance") }.asSequence()
 
     override fun createForm() = AddEntranceReferenceForm()
 

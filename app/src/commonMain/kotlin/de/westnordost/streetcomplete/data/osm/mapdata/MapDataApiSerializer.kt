@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.util.ktx.attribute
 import de.westnordost.streetcomplete.util.ktx.endTag
 import de.westnordost.streetcomplete.util.ktx.startTag
-import kotlinx.datetime.Instant
 import nl.adaptivity.xmlutil.XmlWriter
 import nl.adaptivity.xmlutil.newWriter
 import nl.adaptivity.xmlutil.xmlStreaming
+import kotlin.time.Instant
 
 class MapDataApiSerializer {
     fun serialize(changes: MapDataChanges, changesetId: Long): String {

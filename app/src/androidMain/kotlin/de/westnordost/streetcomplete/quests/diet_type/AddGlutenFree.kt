@@ -10,8 +10,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
+import de.westnordost.streetcomplete.resources.*
 
 class AddGlutenFree : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
 
@@ -31,16 +30,14 @@ class AddGlutenFree : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest
     override val changesetComment = "Specify whether places are gluten-free"
     override val wikiLink = "Key:diet:gluten_free"
     override val icon = R.drawable.quest_glutenfree
+    override val title = Res.string.quest_dietType_glutenfree_name_title
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
+    override val hint = Res.string.quest_dietType_explanation_glutenfree
 
-    override val hint = R.string.quest_dietType_explanation_glutenfree
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_glutenfree_name_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddDietTypeForm()
 

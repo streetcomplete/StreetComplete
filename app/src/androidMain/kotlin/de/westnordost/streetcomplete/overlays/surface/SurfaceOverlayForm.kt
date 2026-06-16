@@ -34,8 +34,8 @@ import de.westnordost.streetcomplete.overlays.ItemPairSelectOverlayForm
 import de.westnordost.streetcomplete.overlays.ItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.util.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.ktx.couldBeSteps
+import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.takeFavorites
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -114,14 +114,12 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val languages = getLanguagesForFeatureDictionary(resources.configuration)
+        val languages = getLanguagesForFeatureDictionary()
         val footwayLabel = featureDictionary.getById("highway/footway", languages)?.name.orEmpty()
         val cyclewayLabel = featureDictionary.getById("highway/cycleway", languages)?.name.orEmpty()
 
         binding.composeViewBase.content { Surface {
-            val item = selectedItem.value
-
-            when (item) {
+            when (val item = selectedItem.value) {
                 is SingleSurface -> {
                     val lastPickedSingleSurfaces = remember { lastPickedSingleSurfaces }
                     ItemSelectOverlayForm(

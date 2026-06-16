@@ -9,8 +9,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
+import de.westnordost.streetcomplete.resources.*
 
 class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), AndroidQuest {
 
@@ -120,16 +119,14 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
     override val changesetComment = "Survey wheelchair accessibility of places"
     override val wikiLink = "Key:wheelchair"
     override val icon = R.drawable.quest_wheelchair_shop
+    override val title = Res.string.quest_wheelchairAccess_outside_title
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(WHEELCHAIR)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
+    override val hint = Res.string.quest_wheelchairAccess_limited_description_business
 
-    override val hint = R.string.quest_wheelchairAccess_limited_description_business
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_wheelchairAccess_outside_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = WheelchairAccessForm()
 

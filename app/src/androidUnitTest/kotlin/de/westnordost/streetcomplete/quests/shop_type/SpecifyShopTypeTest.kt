@@ -38,7 +38,7 @@ class SpecifyShopTypeTest {
                 StringMapEntryDelete("shop", "supermarket")
             ),
             questType.answerAppliedTo(
-                IsShopVacant,
+                ShopTypeAnswer.IsShopVacant,
                 mapOf("shop" to "supermarket")
             )
         )
@@ -46,7 +46,7 @@ class SpecifyShopTypeTest {
             setOf(
                 StringMapEntryAdd("disused:shop", "yes"),
             ),
-            questType.answerApplied(IsShopVacant)
+            questType.answerApplied(ShopTypeAnswer.IsShopVacant)
         )
     }
 
@@ -57,7 +57,7 @@ class SpecifyShopTypeTest {
                 StringMapEntryDelete("opening_hours", "24/7"),
             ),
             questType.answerAppliedTo(
-                IsShopVacant,
+                ShopTypeAnswer.IsShopVacant,
                 mapOf("opening_hours" to "24/7")
             )
         )

@@ -13,9 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.osm.address.HouseNumber
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_address_house_name_label
-import de.westnordost.streetcomplete.resources.quest_address_house_number_label
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.Details
 import org.jetbrains.compose.resources.stringResource
 

@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>(), AndroidQuest {
 
@@ -18,13 +19,12 @@ class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>(), AndroidQue
     override val changesetComment = "Determine fire hydrant refs"
     override val wikiLink = "Key:ref"
     override val icon = R.drawable.quest_fire_hydrant_ref
+    override val title = Res.string.quest_genericRef_title
     override val achievements = listOf(EditTypeAchievement.LIFESAVER)
     override val isDeleteElementEnabled = true
     override val enabledInCountries = NoCountriesExcept(
         "CH", "FR", "LI"
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_genericRef_title
 
     override fun createForm() = AddFireHydrantRefForm()
 

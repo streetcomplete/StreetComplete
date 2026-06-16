@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>(), AndroidQuest {
 
@@ -21,6 +22,7 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>(), AndroidQuest {
     override val changesetComment = "Specify postbox refs"
     override val wikiLink = "Tag:amenity=post_box"
     override val icon = R.drawable.quest_mail_ref
+    override val title = Res.string.quest_genericRef_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
     override val enabledInCountries = NoCountriesExcept(
@@ -29,10 +31,8 @@ class AddPostboxRef : OsmFilterQuestType<PostboxRefAnswer>(), AndroidQuest {
         "JP", // https://github.com/streetcomplete/StreetComplete/issues/6680
     )
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_genericRef_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = post_box")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = post_box")
 
     override fun createForm() = AddPostboxRefForm()
 

@@ -32,15 +32,7 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.credits.Contributor
 import de.westnordost.streetcomplete.data.credits.Credits
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.about_title_authors
-import de.westnordost.streetcomplete.resources.credits_art_contributors_title
-import de.westnordost.streetcomplete.resources.credits_author_title
-import de.westnordost.streetcomplete.resources.credits_contributors
-import de.westnordost.streetcomplete.resources.credits_contributors_title
-import de.westnordost.streetcomplete.resources.credits_main_contributors_title
-import de.westnordost.streetcomplete.resources.credits_projects_contributors_title
-import de.westnordost.streetcomplete.resources.credits_translations_title
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.BulletSpan
 import de.westnordost.streetcomplete.ui.common.HtmlText

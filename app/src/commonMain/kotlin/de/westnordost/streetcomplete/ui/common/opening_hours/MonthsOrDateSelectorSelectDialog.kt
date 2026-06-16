@@ -14,18 +14,15 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateSet
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.osm_opening_hours.model.Month
 import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
 import de.westnordost.streetcomplete.osm.opening_hours.getMonths
 import de.westnordost.streetcomplete.osm.opening_hours.toMonthsSelectors
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.cancel
-import de.westnordost.streetcomplete.resources.ok
-import de.westnordost.streetcomplete.resources.quest_openingHours_chooseMonthsTitle
-import de.westnordost.streetcomplete.resources.quest_openingHours_chooseWeekdaysTitle
-import de.westnordost.streetcomplete.resources.quest_opening_hours_two_languages
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.CheckboxGroup
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
@@ -65,11 +62,15 @@ fun MonthsOrDateSelectorSelectDialog(
                     itemContent = {
                         val text = it.getDisplayName(locale = locale)
                         val textInUserLocale = it.getDisplayName(locale = userLocale)
-                        if (text != textInUserLocale) {
-                            Text(stringResource(Res.string.quest_opening_hours_two_languages, text, textInUserLocale))
+                        val displayText = if (text != textInUserLocale) {
+                            when (LocalLayoutDirection.current) {
+                                LayoutDirection.Ltr -> "$text ($textInUserLocale)"
+                                LayoutDirection.Rtl -> "($textInUserLocale) $text"
+                            }
                         } else {
-                            Text(text)
+                            text
                         }
+                        Text(displayText)
                     },
                     modifier = Modifier
                         .fadingVerticalScrollEdges(scrollState, 32.dp)

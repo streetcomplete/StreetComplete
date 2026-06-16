@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
@@ -23,7 +25,7 @@ import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.getNameAndLocationSpanned
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.koin.android.ext.android.inject
 
 class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
@@ -43,13 +45,12 @@ class AddAddressStreetForm : AbstractOsmQuestForm<StreetOrPlaceName>() {
         AnswerItem(R.string.quest_address_street_no_named_streets) { showPlaceName() }
     )
 
+    @Composable
+    override fun getSubtitle(): AnnotatedString? =
+        nameAndLocationLabel(element, featureDictionary, showHouseNumber = true)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setTitleHintLabel(getNameAndLocationSpanned(
-            element, resources, featureDictionary,
-            showHouseNumber = true
-        ))
 
         binding.composeViewBase.content { Surface {
             streetOrPlaceName = rememberSerializable { mutableStateOf(

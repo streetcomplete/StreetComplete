@@ -94,6 +94,3 @@ fun View.updateMargins(left: Int? = null, top: Int? = null, right: Int? = null, 
 fun View.showKeyboard(): Unit = SoftwareKeyboardControllerCompat(this).show()
 
 fun View.hideKeyboard(): Unit = SoftwareKeyboardControllerCompat(this).hide()
-
-val View.isKeyboardOpen: Boolean
-    get() = ViewCompat.getRootWindowInsets(this)?.isVisible(WindowInsetsCompat.Type.ime()) == true

@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>(), AndroidQuest {
 
@@ -14,10 +15,9 @@ class AddTrafficCalmingType : OsmFilterQuestType<TrafficCalmingType>(), AndroidQ
     override val changesetComment = "Specify traffic calming types"
     override val wikiLink = "Key:traffic_calming"
     override val icon = R.drawable.quest_car_bumpy
+    override val title = Res.string.quest_traffic_calming_type_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(PEDESTRIAN, CAR)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_traffic_calming_type_title
 
     override fun createForm() = AddTrafficCalmingTypeForm()
 

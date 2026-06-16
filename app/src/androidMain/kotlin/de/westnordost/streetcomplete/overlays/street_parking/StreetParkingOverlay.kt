@@ -27,10 +27,11 @@ import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
+import de.westnordost.streetcomplete.resources.*
 
 class StreetParkingOverlay : Overlay, AndroidOverlay {
 
-    override val title = R.string.overlay_street_parking
+    override val title = Res.string.overlay_street_parking
     override val icon = R.drawable.quest_parking_lane
     override val changesetComment = "Specify whether there is street parking and what kind"
     override val wikiLink: String = "Key:parking:lane"

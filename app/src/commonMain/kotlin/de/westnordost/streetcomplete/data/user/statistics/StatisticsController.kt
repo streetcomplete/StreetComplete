@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.logs.Log
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
+import kotlin.time.Instant
 
 /** Manages edit statistics - by element edit type and by country */
 class StatisticsController(

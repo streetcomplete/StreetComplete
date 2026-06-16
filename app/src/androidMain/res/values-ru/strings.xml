@@ -110,7 +110,6 @@
     <string name="quest_surface_value_sett">"Брусчатка"</string>
     <string name="quest_surface_value_wood">"Дерево"</string>
     <string name="quest_sidewalk_title">"На этой улице есть тротуар?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Где находится эта улица?"</string>
     <string name="quest_address_title">"Какой номер дома у этого здания?"</string>
     <string name="store_listing_short_description">"Приложение-топограф для OpenStreetMap"</string>
     <string name="store_listing_full_description">"Помогите улучшить OpenStreetMap с помощью StreetComplete!
@@ -177,9 +176,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"Вы проверили на обоих концах улицы?
 Если вдоль всей улицы нет ни одного знака, относящегося к выбранному участку дороги, укажите стандартное ограничение скорости."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Да, знаков нет"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"На дорогах в городе и вне города по умолчанию действуют разные скоростные режимы."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"В городе"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Вне города"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Если на перекрёстке главной улицы есть такой знак, то других знаков внутри зоны не будет, так как ограничение скорости распространяется на всю зону."</string>
     <string name="quest_sport_softball">"Софтбол"</string>
     <string name="quest_sport_racquet">"Ракетбол"</string>
@@ -213,7 +209,6 @@
     <string name="credits_contributors_title">"Вклад в код внесли"</string>
     <string name="credits_author_title">"Автор и сопровождающий"</string>
     <string name="quest_maxspeed_answer_living_street">"Это жилая улица"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Значит здесь есть такой знак?"</string>
     <string name="quest_orchard_produce_title">"Что здесь выращивают?"</string>
     <string name="produce_grapes">"Виноград"</string>
     <string name="produce_agaves">"Агава"</string>
@@ -285,7 +280,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"обычные этажи (исключая крышу)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Отличается для разных частей здания"</string>
     <string name="quest_buildingLevels_answer_description">"В этом случае просто введите значения для самой высокой части здания."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Полосы противоположных направлений разделены физически (барьером) или островком безопасности? От этого зависит ограничение скорости по умолчанию."</string>
     <string name="about_category_feedback">"Обратная связь"</string>
     <string name="quest_leave_new_note_photo">"Прикрепить фото"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Удалить это изображение?"</string>
@@ -450,7 +444,6 @@
     <string name="quest_openingHours_no_sign">"Часы работы не указаны"</string>
     <string name="quest_buildingType_sports_centre">"Спортивный центр"</string>
     <string name="quest_buildingType_toilets">"Туалеты"</string>
-    <string name="quest_maxspeed_sign_question">"Чем установлено ограничение скорости?"</string>
     <string name="quest_segregated_title">"Как здесь расположены пешеходная и велосипедная дорожки?"</string>
     <string name="dialog_tutorial_upload">"Чтобы отправить правки вручную, используйте кнопку на панели инструментов, которая выглядит так."</string>
     <string name="quest_segregated_separated">"Отделены друг от друга"</string>
@@ -689,7 +682,6 @@
     <string name="at_housenumber">"номер дома %s"</string>
     <string name="quest_openingHours_add_off_days">"Добавить выходные дни"</string>
     <string name="quest_openingHours_off_day">"Выходной"</string>
-    <string name="quest_openingHours_unspecified_range">"Не указано"</string>
     <string name="quest_cycleway_resurvey_title">"Здесь всё ещё есть велосипедная дорожка?"</string>
     <string name="pref_title_resurvey_intervals">"Интервалы повторного обследования"</string>
     <string name="resurvey_intervals_less_often">"Спрашивать реже"</string>
@@ -1462,7 +1454,6 @@
     <string name="quest_recycling_type_pet_bottles">"Пластиковые бутылки"</string>
     <string name="quest_maxweight_add_sign">"Добавить знак"</string>
     <string name="quest_maxweight_remove_sign">"Убрать знак"</string>
-    <string name="dialog_dont_notify_again">"Не уведомлять снова"</string>
     <string name="weekly_osm_new_edition_title">"Новое изменение!"</string>
     <string name="pref_title_messages">"Уведомления внутри приложения"</string>
     <string name="pref_title_message_achievements">"Разблокирование достижения"</string>

@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.applyTo
+import de.westnordost.streetcomplete.resources.*
 
 class AddBeachSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
 
@@ -20,10 +21,8 @@ class AddBeachSurface : OsmFilterQuestType<Surface>(), AndroidQuest {
     override val changesetComment = "Specify beach surface"
     override val wikiLink = "Key:surface"
     override val icon = R.drawable.quest_beach
+    override val title = Res.string.quest_surface_title
     override val achievements = listOf(OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) =
-        R.string.quest_surface_title
 
     override fun createForm() = AddBeachSurfaceForm()
 

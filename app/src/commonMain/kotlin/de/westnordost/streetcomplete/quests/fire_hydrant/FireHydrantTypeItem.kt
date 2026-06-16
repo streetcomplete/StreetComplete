@@ -1,15 +1,7 @@
 package de.westnordost.streetcomplete.quests.fire_hydrant
 
 import de.westnordost.streetcomplete.quests.fire_hydrant.FireHydrantType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.fire_hydrant_pillar
-import de.westnordost.streetcomplete.resources.fire_hydrant_pipe
-import de.westnordost.streetcomplete.resources.fire_hydrant_underground
-import de.westnordost.streetcomplete.resources.fire_hydrant_wall
-import de.westnordost.streetcomplete.resources.quest_fireHydrant_type_pillar
-import de.westnordost.streetcomplete.resources.quest_fireHydrant_type_pipe
-import de.westnordost.streetcomplete.resources.quest_fireHydrant_type_underground
-import de.westnordost.streetcomplete.resources.quest_fireHydrant_type_wall
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

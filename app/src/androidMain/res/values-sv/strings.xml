@@ -109,7 +109,6 @@ Innan appen laddar upp dina ändringar så kollar den en &lt;a href=\"https://ww
     <string name="quest_surface_value_sett">"Gatsten"</string>
     <string name="quest_surface_value_wood">"Trä"</string>
     <string name="quest_sidewalk_title">"Finns det en trottoar längs den här gatan?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Var ligger den här gatan?"</string>
     <string name="quest_address_title">"Vad har den här byggnaden för husnummer?"</string>
     <string name="store_listing_short_description">"Kartläggningsapp för OpenStreetMap"</string>
     <string name="store_listing_full_description">"Bidra till att förbättra OpenStreetMap med StreetComplete!
@@ -176,9 +175,6 @@ Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, ut
     <string name="quest_maxspeed_answer_noSign_confirmation">"Kontrollerade du i början och slutet av vägen?
 Om det inte finns några skyltar längs hela vägen som gäller för den markerade sektionen kan det vara så att bashastighet gäller."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Ja, det finns inte någon skylt"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Det är olika bashastighet i tätbebyggt område och på landsvägar (50 och 70 km/h i Sverige)."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Tätbebyggt område"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Landsväg"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Om det finns en skylt som ser ut så här vid huvudvägen kommer det kanske inte finnas individuella skyltar inom zonen, eftersom hastighetsbegränsningen gäller för hela zonen."</string>
     <string name="quest_sport_softball">"Softboll"</string>
     <string name="quest_sport_racquet">"Racketboll"</string>
@@ -212,7 +208,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="credits_contributors_title">"Kodbidragsgivare"</string>
     <string name="credits_author_title">"Upphovsman och förvaltare"</string>
     <string name="quest_maxspeed_answer_living_street">"Det är gångfartsområde"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Så det finns en skylt som ser ut så här?"</string>
     <string name="quest_orchard_produce_title">"Vad odlas här?"</string>
     <string name="produce_grapes">"Vindruvor"</string>
     <string name="produce_agaves">"Agave"</string>
@@ -284,7 +279,6 @@ Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbor
     <string name="quest_buildingLevels_levelsLabel2">"vanliga våningar (utan takvåningar)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Varierar mellan olika husdelar"</string>
     <string name="quest_buildingLevels_answer_description">"I sådana fall, fyll i värdet för den högsta husdelen."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Är körbanorna separerade av en fysisk barriär eller grönområde? Bashastigheten beror på om så är fallet eller inte."</string>
     <string name="about_category_feedback">"Återkoppling"</string>
     <string name="quest_leave_new_note_photo">"Bifoga foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Vill du ta bort den här bilden?"</string>
@@ -449,7 +443,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_openingHours_no_sign">"Ingen öppettider-skylt"</string>
     <string name="quest_buildingType_sports_centre">"Idrottsanläggning"</string>
     <string name="quest_buildingType_toilets">"Toalett"</string>
-    <string name="quest_maxspeed_sign_question">"Vad bestämmer hastighetsbegränsningen?"</string>
     <string name="quest_segregated_title">"Hur är gångbanan och cykelvägen utformad här?"</string>
     <string name="dialog_tutorial_upload">"För att ladda upp ändringarna manuellt, använd knappen som ser ut så här."</string>
     <string name="quest_segregated_separated">"Separerade från varandra"</string>
@@ -688,7 +681,6 @@ nivåer"</string>
     <string name="at_housenumber">"husnummer %s"</string>
     <string name="quest_openingHours_add_off_days">"Lägg till lediga dagar"</string>
     <string name="quest_openingHours_off_day">"Ledig dag"</string>
-    <string name="quest_openingHours_unspecified_range">"Inte angivet"</string>
     <string name="quest_cycleway_resurvey_title">"Gäller detta fortfarande för cykelvägen här?"</string>
     <string name="pref_title_resurvey_intervals">"Undersökningsintervall"</string>
     <string name="resurvey_intervals_less_often">"Fråga mindre ofta"</string>
@@ -1444,7 +1436,6 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_recycling_type_pet_bottles">"PET flaska"</string>
     <string name="quest_maxweight_add_sign">"Lägg till skylt"</string>
     <string name="quest_maxweight_remove_sign">"Ta bort skylt"</string>
-    <string name="dialog_dont_notify_again">"Meddela inte igen"</string>
     <string name="pref_title_message_weekly_osm">"Nya utgåvor av weeklyOSM"</string>
     <string name="quest_artwork_title">"Vad är det här för slags konstverk?"</string>
     <string name="quest_artwork_sculpture">"Skulptur"</string>

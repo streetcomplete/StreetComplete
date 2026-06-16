@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer>, AndroidQuest {
 
@@ -27,10 +28,9 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer>, A
     override val changesetComment = "Specify clothing bin operators"
     override val wikiLink = "Tag:amenity=recycling"
     override val icon = R.drawable.quest_recycling_clothes
+    override val title = Res.string.quest_clothes_container_operator_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_clothes_container_operator_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.nodes.filter { filter.matches(it) && it.tags.hasNoOtherRecyclingTags() }
@@ -46,8 +46,8 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer>, A
             && value == "yes"
         }
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = recycling")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = recycling")
 
     override fun createForm() = AddClothingBinOperatorForm()
 

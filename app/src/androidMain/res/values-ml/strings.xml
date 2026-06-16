@@ -110,7 +110,6 @@
     <string name="quest_surface_value_sett">"സജ്ജമാക്കുക"</string>
     <string name="quest_surface_value_wood">"മരം"</string>
     <string name="quest_sidewalk_title">"ഈ തെരുവിൽ ഒരു നടപ്പാത ഉണ്ടോ?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"ഈ തെരുവ് എവിടെയാണ്?"</string>
     <string name="quest_address_title">"ഈ കെട്ടിടത്തിന്റെ വീട്ടുനമ്പർ എത്രയാണ് ?"</string>
     <string name="store_listing_short_description">"OpenStreetMap സർവേയർ അപ്ലിക്കേഷൻ"</string>
     <string name="store_listing_full_description">"സ്ട്രീറ്റ്കംപ്ലീറ്റ്  ഉപയോഗിച്ച് ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ് മെച്ചപ്പെടുത്താൻ സഹായിക്കുക!"</string>
@@ -172,9 +171,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"ഒരു പരിധിയും പോസ്റ്റുചെയ്തിട്ടില്ലെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"തെരുവിന്റെ അവസാനം വരെ പരിശോധിച്ചോ? ഹൈലൈറ്റ് ചെയ്യപ്പെട്ട വിഭാഗത്തിന് വേണ്ടിയുള്ള അടയാളങ്ങളൊന്നും തെരുവിൽ എവിടെയും കാണുന്നില്ലെങ്കിൽ, സ്വാഭാവിക വേഗ പരിധി ബാധകമാണ്."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"അതെ, അടയാളമില്ല"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"ബിൽറ്റ്-അപ്പ് ഏരിയയിലെ റോഡുകൾക്ക് ഗ്രാമീണ റോഡുകളേക്കാൾ സ്ഥിരസ്ഥിതി വേഗത കുറവാണ്."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"നിർമ്മിത വിസ്തൃതി"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"ഗ്രാമീണമായ"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"പ്രധാന തെരുവ് കവലയിൽ ഇതുപോലുള്ള ഒരു അടയാളം ഉണ്ടെങ്കിൽ, സോണിനുള്ളിൽ നിങ്ങൾക്ക് പ്രത്യേക ചിഹ്നങ്ങൾ വേറെ കണ്ടെത്താനാവില്ല, കാരണം അവിടെ നിശ്ചയിച്ച വേഗത പരിധി മുഴുവൻ സോണിനും ബാധകമാണ്"</string>
     <string name="quest_sport_softball">"സോഫ്ട്ബോൾ"</string>
     <string name="quest_sport_racquet">"റാക്കറ്റ് ബോൾ"</string>
@@ -206,7 +202,6 @@
     <string name="credits_contributors_title">"കോഡ് സംഭാവകർ"</string>
     <string name="credits_author_title">"രചയിതാവും പരിപാലകനും"</string>
     <string name="quest_maxspeed_answer_living_street">"ഇത് ഒരു സജീവമായ തെരുവാണ്"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"അതിനാൽ, ഇതുപോലുള്ള ഒരു അടയാളം ഉണ്ടോ?"</string>
     <string name="quest_orchard_produce_title">"എന്താണ് ഇവിടെ കൃഷി ചെയ്യുന്നത്?"</string>
     <string name="produce_grapes">"മുന്തിരികള്‍"</string>
     <string name="produce_agaves">"അഗാവ്സ്"</string>
@@ -278,7 +273,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"കെട്ടിടത്തിൻ്റെ നിലകൾ (മേൽക്കൂര കൂട്ടാതെ) "</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"ഓരോ കെട്ടിട ഭാഗത്തിനും വ്യത്യാസമുണ്ട്"</string>
     <string name="quest_buildingLevels_answer_description">"ഈ സാഹചര്യത്തിൽ, കെട്ടിടത്തിന്റെ ഉയർന്ന ഭാഗത്തെ മൂല്യങ്ങൾ നൽകുക."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"ഈ റോഡുകൾ പ്രത്യക്ഷമായി വേർതിരിക്കപ്പെട്ടിട്ടുണ്ടോ (അതായത് എന്തെങ്കിലും തടസ്സത്തിലൂടെ)? സ്ഥിരസ്ഥിതി വേഗത പരിധി ഇങ്ങനെയാണോ അല്ലയോ എന്നതിനെ ആശ്രയിച്ചിരിക്കുന്നു. "</string>
     <string name="about_category_feedback">"പ്രതികരണം"</string>
     <string name="quest_leave_new_note_photo">"ഫോട്ടോ കൂട്ടിചേർക്കുക"</string>
     <string name="quest_leave_new_note_photo_delete_title">"താങ്കൾക്ക് ഈ ചിത്രം മായ്ച്ച് കളയണമോ?"</string>
@@ -443,7 +437,6 @@
     <string name="quest_openingHours_no_sign">"തുറക്കുന്ന സമയത്തെ ചിഹ്നങ്ങളൊന്നുമില്ല"</string>
     <string name="quest_buildingType_sports_centre">"കായിക കേന്ദ്രം"</string>
     <string name="quest_buildingType_toilets">"മൂത്രപ്പുര"</string>
-    <string name="quest_maxspeed_sign_question">"എങ്ങനെയാണ് വേഗ പരിധി നിശ്ചയിക്കുന്നത്?"</string>
     <string name="quest_segregated_title">"ഇവിടെ എങ്ങനെയാണ്‌ നടപ്പാതയും സൈക്കിൾ‌പാതയും സ്ഥാപിച്ചിരിക്കുന്നത്?"</string>
     <string name="dialog_tutorial_upload">"നിങ്ങളുടെ നൽകിയ മാറ്റങ്ങൾ സ്വമേധയാ അപ്‌ലോഡു ചെയ്യാൻ, ഇതുപോലുള്ള ടൂൾബാറിലെ ബട്ടൺ ഉപയോഗിക്കുക."</string>
     <string name="quest_segregated_separated">"പരസ്പരം വേർതിരിച്ചിരിക്കുന്നു"</string>
@@ -679,7 +672,6 @@
     <string name="at_housenumber">"വീട്ട് നമ്പർ %s"</string>
     <string name="quest_openingHours_add_off_days">"ഒഴിവുദിനങ്ങൾ ചേർക്കുക"</string>
     <string name="quest_openingHours_off_day">"ഒഴിവുദിനം"</string>
-    <string name="quest_openingHours_unspecified_range">"വ്യക്തമാക്കിയിട്ടില്ല"</string>
     <string name="quest_cycleway_resurvey_title">"ഇവിടെ സൈക്കിൾ വഴിയുടെ അവസ്ഥ ഇപ്പോഴും ഇതാണോ?"</string>
     <string name="pref_title_resurvey_intervals">"റി സർവേ ഇടവേളകൾ"</string>
     <string name="resurvey_intervals_less_often">"കുറച്ച് തവണ ചോദിക്കുക"</string>
@@ -1440,7 +1432,6 @@
     <string name="quest_recycling_type_pet_bottles">"PET ബോട്ടിലുകൾ"</string>
     <string name="quest_maxweight_add_sign">"ബോർഡ് ചേർക്കുക"</string>
     <string name="quest_maxweight_remove_sign">"ബോർഡ് നീക്കം ചെയ്യുക"</string>
-    <string name="dialog_dont_notify_again">"ഇനി അറിയിപ്പുകൾ കാണിക്കരുത്"</string>
     <string name="weekly_osm_new_edition_title">"പുതിയ പതിപ്പ്!"</string>
     <string name="pref_title_messages">"ആപ്പിനുള്ളിലെ സന്ദേശങ്ങൾ"</string>
     <string name="pref_title_message_achievements">"അൺലോക്ക് ചെയ്ത നേട്ടങ്ങൾ"</string>

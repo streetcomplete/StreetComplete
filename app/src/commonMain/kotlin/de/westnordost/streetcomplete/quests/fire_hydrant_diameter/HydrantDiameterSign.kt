@@ -16,14 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.fire_hydrant_sign_de
-import de.westnordost.streetcomplete.resources.fire_hydrant_sign_fi
-import de.westnordost.streetcomplete.resources.fire_hydrant_sign_gb
-import de.westnordost.streetcomplete.resources.fire_hydrant_sign_hu
-import de.westnordost.streetcomplete.resources.fire_hydrant_sign_nl
-import de.westnordost.streetcomplete.resources.fire_hydrant_sign_pl
-import de.westnordost.streetcomplete.resources.fire_hydrant_sign_ua
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.AbsoluteBox
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor.White
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor.Blue

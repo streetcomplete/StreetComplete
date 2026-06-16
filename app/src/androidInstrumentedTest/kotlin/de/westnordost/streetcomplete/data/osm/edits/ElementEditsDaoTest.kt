@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.resources.*
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -342,7 +343,7 @@ private object TestOverlay : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) = sequenceOf<Pair<Element, OverlayStyle>>()
     override val changesetComment = "bla"
     override val icon = 0
-    override val title = 0
+    override val title = Res.string.quest_address_title
     override val wikiLink = null
     override val achievements = listOf<EditTypeAchievement>()
 }

@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.osm.maxspeed
 
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+
 /** OSM keys used to describe implicit speed limits */
 val MAX_SPEED_TYPE_KEYS = setOf(
     "source:maxspeed",
@@ -63,3 +65,24 @@ val COUNTRY_SUBDIVISIONS_WITH_OWN_DEFAULT_MAX_SPEEDS: List<Regex> by lazy { list
 
     "RS-KM",           // Kosovo (aka "XK")
 ).map { it.toRegex() } }
+
+/** only for roads without a definitive speed limit, it is necessary to determine the "road type"
+ *  (e.g. "urban", "rural") to tag the absence of a sign
+ */
+val ROADS_WITH_DEFINITE_SPEED_LIMIT = setOf("motorway", "living_street")
+
+/** In #5771, #1133, it was determined that actually also main roads may be in a (slow) speed zone
+ *  But DEFINITELY not motorways and motorroads! */
+val ROADS_WHERE_SLOW_ZONE_IS_NOT_POSSIBLE = setOf("motorway", "trunk")
+
+/** Roads where it is likely enough that they are actually slow zones that the user should be warned
+ *  about their existence before providing a "no sign" answer */
+val ROADS_WHERE_SLOW_ZONE_IS_LIKELY = setOf("service", "residential", "living_street")
+
+/** highway=living_street is defined as a residential road with the appropriate signage. However,
+ *  such a sign could also be posted e.g. on parking lots or footways */
+val ROADS_THAT_THAT_MAY_BE_CONVERTED_TO_LIVING_STREET = setOf("residential", "unclassified")
+
+/** Roads for which this option should be shown at all */
+val ROADS_THAT_MAY_BE_LIVING_STREETS = setOf(
+    "unclassified", "residential", "pedestrian", "living_street", "service") + ALL_PATHS

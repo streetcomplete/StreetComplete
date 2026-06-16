@@ -13,20 +13,21 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFerryAccessPedestrian : OsmElementQuestType<Boolean>, AndroidQuest {
 
     private val filter by lazy {
-        "ways, relations with route = ferry and !foot".toElementFilterExpression()
+        "ways, relations with route = ferry and !foot"
+            .toElementFilterExpression()
     }
     override val changesetComment = "Specify ferry access for pedestrians"
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.quest_ferry_pedestrian
+    override val title = Res.string.quest_ferry_pedestrian_title
     override val hasMarkersAtEnds = true
     override val achievements = listOf(RARE, PEDESTRIAN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_ferry_pedestrian_title
 
     override fun createForm() = YesNoQuestForm()
 

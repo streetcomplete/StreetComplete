@@ -36,12 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.action_manage_presets
-import de.westnordost.streetcomplete.resources.ic_add_24
-import de.westnordost.streetcomplete.resources.quest_presets_preset_add
-import de.westnordost.streetcomplete.resources.quest_presets_preset_name
-import de.westnordost.streetcomplete.resources.quest_presets_selected
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.dialogs.TextInputDialog
 import de.westnordost.streetcomplete.ui.ktx.plus
@@ -105,7 +100,7 @@ import org.jetbrains.compose.resources.stringResource
 private fun EditTypePresetsList(
     viewModel: EditTypePresetsViewModel,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    contentPadding: PaddingValues = PaddingValues.Zero
 ) {
     val presets by viewModel.presets.collectAsState()
 

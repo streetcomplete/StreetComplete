@@ -1,25 +1,7 @@
 package de.westnordost.streetcomplete.quests.bike_parking_type
 
 import de.westnordost.streetcomplete.quests.bike_parking_type.BikeParkingType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.bicycle_parking_type_building
-import de.westnordost.streetcomplete.resources.bicycle_parking_type_floor
-import de.westnordost.streetcomplete.resources.bicycle_parking_type_handlebarholder
-import de.westnordost.streetcomplete.resources.bicycle_parking_type_lockers
-import de.westnordost.streetcomplete.resources.bicycle_parking_type_safeloops
-import de.westnordost.streetcomplete.resources.bicycle_parking_type_shed
-import de.westnordost.streetcomplete.resources.bicycle_parking_type_stand
-import de.westnordost.streetcomplete.resources.bicycle_parking_type_two_tier
-import de.westnordost.streetcomplete.resources.bicycle_parking_type_wheelbenders
-import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_building
-import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_floor
-import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_handlebarholder
-import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_locker
-import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_safeloops
-import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_shed
-import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_stand
-import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_two_tier
-import de.westnordost.streetcomplete.resources.quest_bicycle_parking_type_wheelbender
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

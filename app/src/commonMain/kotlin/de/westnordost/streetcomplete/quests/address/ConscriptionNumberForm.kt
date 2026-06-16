@@ -34,9 +34,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.address.ConscriptionNumber
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_housenumber_conscription_number
-import de.westnordost.streetcomplete.resources.quest_housenumber_street_number_optional
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import de.westnordost.streetcomplete.ui.theme.trafficSignContentColorFor

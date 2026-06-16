@@ -9,8 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_openingHours_off_day
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 /** Just a text "off day" with a delete button... */

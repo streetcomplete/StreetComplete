@@ -109,7 +109,6 @@
     <string name="quest_surface_value_sett">"บล็อกเบลเยี่ยม"</string>
     <string name="quest_surface_value_wood">"ไม้"</string>
     <string name="quest_sidewalk_title">"ถนนสายนี้มีทางเดินทางเท้าไหม"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"ถนนเส้นนนี้อยู่ไหน"</string>
     <string name="quest_address_title">"อาคารนี้มีบ้านเลขที่เท่าไหร่?"</string>
     <string name="store_listing_short_description">"แอปผู้สำรวจข้อมูลใน OpenStreetMap"</string>
     <string name="store_listing_full_description">"ช่วยปรับปรุงแผนที่ OpenStreetMap ด้วย StreetComplete!
@@ -174,9 +173,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"คุณตรวจสอบที่ปลายถนนหรือไม่?
 หากไม่มีป้ายตลอดถนนที่ใช้ในส่วนที่ไฮไลต์ จะมีการจำกัดความเร็วตามค่าเริ่มต้น"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"ใช่ ไม่มีป้าย"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"ถนนที่อยู่ในพื้นที่มีสิ่งปลูกสร้างมีการจำกัดความเร็วค่าเริ่มต้นต่ำกว่าถนนในพื้นที่ชนบท"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"พื้นที่มีสิ่งปลูกสร้าง"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"ชนบท"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"หากมีป้ายแบบนี้ที่แยกถนนสายหลัก คุณจะไม่พบป้ายภายในพื้นที่ เพราะการจำกัดความเร็วที่แสดงไว้นั้นมีผลกับทั้งบริเวณ"</string>
     <string name="quest_sport_softball">"ซอฟต์บอล"</string>
     <string name="quest_sport_racquet">"แร็กเก็ตบอล"</string>
@@ -210,7 +206,6 @@
     <string name="credits_contributors_title">"ผู้สมทบด้านโค้ด"</string>
     <string name="credits_author_title">"ผู้สร้างและผู้ดูแลรักษา"</string>
     <string name="quest_maxspeed_answer_living_street">"เป็น living street"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"แล้วมีป้ายแบบนี้ไหม?"</string>
     <string name="quest_orchard_produce_title">"ปลูกอะไรที่นี่?"</string>
     <string name="produce_grapes">"องุ่น"</string>
     <string name="produce_agaves">"ต้นหางจระเข้"</string>
@@ -282,7 +277,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"ชั้นปกติ (ไม่นับหลังคา)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"แตกต่างกันไปตามแต่ละส่วนของอาคาร"</string>
     <string name="quest_buildingLevels_answer_description">"ในกรณีนี้ เพียงแค่ใส่ค่าของส่วนที่สูงที่สุดของสิ่งปลูกสร้าง"</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"ถนนของถนนสายนี้แยกจากกัน (เช่น ผ่านสิ่งกีดขวาง) หรือไม่? ค่าความเร็วจำกัดเริ่มต้นขึ้นอยู่กับว่าเป็นกรณีนี้หรือไม่"</string>
     <string name="about_category_feedback">"ข้อเสนอแนะ"</string>
     <string name="quest_leave_new_note_photo">"แนบรูปภาพ"</string>
     <string name="quest_leave_new_note_photo_delete_title">"คุณต้องการลบรูปภาพนี้ไหม"</string>
@@ -447,7 +441,6 @@
     <string name="quest_openingHours_no_sign">"ไม่มีป้ายเวลาทำการ"</string>
     <string name="quest_buildingType_sports_centre">"ศูนย์กีฬา"</string>
     <string name="quest_buildingType_toilets">"ห้องน้ำ"</string>
-    <string name="quest_maxspeed_sign_question">"ความเร็วจำกัดถูกกำหนดโดยอะไร?"</string>
     <string name="quest_segregated_title">"ที่นี่มีการวางทางเท้าและทางจักรยานไว้อย่างไรบ้าง?"</string>
     <string name="dialog_tutorial_upload">"ถ้าจะอัปโหลดการเปลี่ยนแปลงด้วยตนเอง ใช้ปุ่มในแถบเครื่องมือที่มีหน้าตาแบบนี้"</string>
     <string name="quest_segregated_separated">"แยกออกจากกัน"</string>
@@ -682,7 +675,6 @@
     <string name="at_housenumber">"เลขที่บ้าน %s"</string>
     <string name="quest_openingHours_add_off_days">"เพิ่มวันหยุด"</string>
     <string name="quest_openingHours_off_day">"วันหยุด"</string>
-    <string name="quest_openingHours_unspecified_range">"ไม่ระบุ"</string>
     <string name="quest_cycleway_resurvey_title">"สถานะของทางจักรยานยังเหมือนเดิมหรือไม่?"</string>
     <string name="pref_title_resurvey_intervals">"ช่วงเวลาระหว่างการสำรวจซ้ำ"</string>
     <string name="resurvey_intervals_less_often">"ถามถี่น้อยลง"</string>

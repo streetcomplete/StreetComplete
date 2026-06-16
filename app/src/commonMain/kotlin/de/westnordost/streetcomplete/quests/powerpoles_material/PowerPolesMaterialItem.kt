@@ -1,13 +1,7 @@
 package de.westnordost.streetcomplete.quests.powerpoles_material
 
 import de.westnordost.streetcomplete.quests.powerpoles_material.PowerPolesMaterial.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.power_pole_concrete
-import de.westnordost.streetcomplete.resources.power_pole_steel
-import de.westnordost.streetcomplete.resources.power_pole_wood
-import de.westnordost.streetcomplete.resources.quest_powerPolesMaterial_concrete
-import de.westnordost.streetcomplete.resources.quest_powerPolesMaterial_metal
-import de.westnordost.streetcomplete.resources.quest_powerPolesMaterial_wood
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

@@ -11,10 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.maxheight_sign
-import de.westnordost.streetcomplete.resources.maxheight_sign_mutcd
-import de.westnordost.streetcomplete.resources.maxheight_sign_yellow
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource

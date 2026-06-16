@@ -91,7 +91,6 @@
     <string name="quest_surface_value_sett">Брук</string>
     <string name="quest_surface_value_wood">Дрэва</string>
     <string name="quest_sidewalk_title">На гэтай вуліцы ёсць тратуар?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Дзе знаходзіцца гэта вуліца?</string>
     <string name="quest_address_title">Які нумар у гэтага будынка?</string>
     <string name="store_listing_short_description">Праграма даследчыкаў OpenStreetMap</string>
     <string name="store_listing_full_description">Дапамажыце палепшыць OpenStreetMap разам з StreetComplete! Гэта праграма шукае адсутныя даныя на карце вашага наваколля і паказвае іх у выглядзе заданняў. Кожнае з іх можна выканаць, адказаўшы на простае пытанне. Уведзеная вамі інфармацыя дадаецца наўпрост у OpenStreetMap ад вашага імя без патрэбы карыстання іншым рэдактарам.</string>
@@ -153,9 +152,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Абмежаванне дакладна не ўстаноўлена?</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">Вы праверылі на абодвух канцах вуліцы? Калі ўздоўж усёй вуліцы няма ніводнага знака, які адносіцца да выбранага ўчастка дарогі, укажыце стандартнае абмежаванне хуткасці.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Да, знакаў няма</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Хуткасны рэжым у населеным пункце ніжэйшы чым па-за населеным пунктам.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">У населеным пункце</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Па-за населеным пунктам</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Калі на скрыжаванні галоўнай вуліцы ёсць такі знак, то іншых знакаў усярэдзіне зон не будзе, бо абмежаванне хуткасці распаўсюджваецца на ўсю зону.</string>
     <string name="quest_sport_softball">Софтбол</string>
     <string name="quest_sport_racquet">Ракетбол</string>
@@ -187,7 +183,6 @@
     <string name="credits_contributors_title">Уклад у код унеслі</string>
     <string name="credits_author_title">Аўтар і суправаджальнік</string>
     <string name="quest_maxspeed_answer_living_street">Гэта жылая вуліца</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Значыць, тут ёсць такі знак?</string>
     <string name="quest_orchard_produce_title">Што тут вырошчваюць?</string>
     <string name="produce_grapes">Вінаград</string>
     <string name="produce_agaves">Агава</string>
@@ -259,7 +254,6 @@
     <string name="quest_buildingLevels_levelsLabel2">звычайныя паверхі (выключаючы дах)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Адрозніваецца для розных частак будынка</string>
     <string name="quest_buildingLevels_answer_description">У гэтым выпадку проста ўвядзіце значэнне для самай высокай часткі будынка.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Ці падзелены палосы супрацьлеглых напрамкаў фізічна (бар’ерам або астраўком бяспекі)? Ад гэтага залежыць абмежаванне хуткасці па змаўчанні.</string>
     <string name="about_category_feedback">Зваротная сувязь</string>
     <string name="quest_leave_new_note_photo">Далучыць фота</string>
     <string name="quest_leave_new_note_photo_delete_title">Выдаліць гэты малюнак?</string>
@@ -424,7 +418,6 @@
     <string name="quest_openingHours_no_sign">Часы працы не пазначаны</string>
     <string name="quest_buildingType_sports_centre">Спартыўны комплекс</string>
     <string name="quest_buildingType_toilets">Прыбіральні</string>
-    <string name="quest_maxspeed_sign_question">Чым устаноўлена абмежаванне хуткасці?</string>
     <string name="quest_segregated_title">Як тут размешчаны пешаходная і веласіпедная дарожкі?</string>
     <string name="dialog_tutorial_upload">Каб адправіць праўкі ўручную, выкарыстоўвайце кнопку на панэлі інструментаў, якая выглядае так.</string>
     <string name="quest_segregated_separated">Аддзелены адзiн ад аднаго</string>
@@ -663,7 +656,6 @@
     <string name="at_housenumber">нумар дома %1$s</string>
     <string name="quest_openingHours_add_off_days">Дадаць выходныя дні</string>
     <string name="quest_openingHours_off_day">Выхадны</string>
-    <string name="quest_openingHours_unspecified_range">Не пазначана</string>
     <string name="quest_cycleway_resurvey_title">Тут усё яшчэ ёсць веласіпедная дарожка?</string>
     <string name="pref_title_resurvey_intervals">Частата паўторнага абследавання</string>
     <string name="resurvey_intervals_less_often">Радзей</string>
@@ -1422,7 +1414,6 @@
     <string name="quest_recycling_type_pet_bottles">Пластыкавыя бутэлькі</string>
     <string name="quest_maxweight_add_sign">Дадаць подпіс</string>
     <string name="quest_maxweight_remove_sign">Выдаліць подпіс</string>
-    <string name="dialog_dont_notify_again">Больш не апавяшчаць</string>
     <string name="weekly_osm_new_edition_title">Новае выданне!</string>
     <string name="pref_title_messages">Паведамленні ўнутры праграмы</string>
     <string name="pref_title_message_achievements">Адкрыта дасягненне</string>

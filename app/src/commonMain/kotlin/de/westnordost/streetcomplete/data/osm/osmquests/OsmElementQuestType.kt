@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.quest.AllCountries
 import de.westnordost.streetcomplete.data.quest.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.osm.Tags
+import org.jetbrains.compose.resources.StringResource
 
 /** Quest type where each quest refers to one OSM element.
  *
@@ -55,11 +56,9 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      */
     val isReplacePlaceEnabled: Boolean get() = false
 
-    override val title: Int get() = getTitle(emptyMap())
-
     /** the string resource used to display the quest's question for when the element has the
-     *  specified [tags] */
-    fun getTitle(tags: Map<String, String>): Int
+     *  specified [tags]. If null, `title` is used instead */
+    fun getTitle(tags: Map<String, String>): StringResource? = null
 
     /** All elements within the given map data that are applicable to this quest type, i.e. for
      *  which a quest of this type should be created.
@@ -85,7 +84,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
     /** Elements that should be highlighted on the map alongside the selected one because they
      *  provide context for the given element. For example, nearby benches should be shown when
      *  answering a question for a bench so the user knows which of the benches is meant. */
-    fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> = emptySequence()
+    fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry): Sequence<Element> = emptySequence()
 
     /** The radius in which certain elements should be shown (see getHighlightedElements).
      *  30m is the default because this is about "across this large street". There shouldn't be

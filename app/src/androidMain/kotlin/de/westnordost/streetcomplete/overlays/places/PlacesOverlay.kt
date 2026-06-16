@@ -16,12 +16,13 @@ import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getNameLabel
 import de.westnordost.streetcomplete.view.presetIconIndex
 
 class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay, AndroidOverlay {
 
-    override val title = R.string.overlay_places
+    override val title = Res.string.overlay_places
     override val icon = R.drawable.quest_shop
     override val changesetComment = "Survey shops, places etc."
     override val wikiLink = "StreetComplete/Overlays#Places"

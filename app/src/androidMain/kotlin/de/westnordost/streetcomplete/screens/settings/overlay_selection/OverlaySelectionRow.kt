@@ -13,10 +13,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Checkbox
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -24,8 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.questList_disabled_by_default
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
 
 /** Single item in the overlay selection list. Shows icon + title, whether it is enabled and
@@ -74,10 +75,11 @@ fun OverlaySelectionRow(
 
 @Composable
 private fun DisabledHint(text: String) {
-    Text(
-        text = text,
-        style = MaterialTheme.typography.body2,
-        fontStyle = FontStyle.Italic,
-        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
-    )
+    CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.body2,
+            fontStyle = FontStyle.Italic,
+        )
+    }
 }

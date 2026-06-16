@@ -11,7 +11,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.RemoteMapDataRepository
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 
 class ElementEditUploader(
     private val changesetManager: OpenChangesetsManager,
@@ -64,7 +66,7 @@ class ElementEditUploader(
         // remote in an incompatible way. So, we don't catch the exception but exit
         val remoteChanges = edit.action.createUpdates(RemoteMapDataRepository(mapDataApi), getIdProvider())
 
-        return try {
+        val updates = try {
             uploadChanges(edit, remoteChanges, false)
         }
         // probably changeset was closed -> try again once with new changeset
@@ -75,6 +77,14 @@ class ElementEditUploader(
         catch (e: ChangesetTooLargeException) {
             uploadChanges(edit, remoteChanges, true)
         }
+
+        // We need to backfill any updates of ways which include nodes that we don't have in the
+        // local database already with these nodes from remote. Otherwise, when new nodes have been
+        // added to the updated way, we'd end up with incomplete ways.
+        // We only need to do that in this method because when just uploading local changes without
+        // conflict, there can't be any new elements referenced by the updated way except those we
+        // added ourselves and thus already know.
+        return backfillMapDataUpdates(updates)
     }
 
     private suspend fun uploadChanges(
@@ -88,5 +98,32 @@ class ElementEditUploader(
             changesetManager.getOrCreateChangeset(edit.type, edit.source, edit.position, edit.isNearUserLocation)
         }
         return mapDataApi.uploadChanges(changesetId, changes, ApplicationConstants::ignoreRelation)
+    }
+
+    /** Ensures that all nodes of all updated ways in [updates] are either already present in the
+     *  local database or otherwise then also included in the result. */
+    private suspend fun backfillMapDataUpdates(updates: MapDataUpdates): MapDataUpdates {
+        val nodeIdsOfUpdatedWays = updates.updated
+            .filterIsInstance<Way>()
+            .flatMapTo(HashSet()) { it.nodeIds }
+
+        val idsOfUpdatedNodes =
+            updates.updated.filterIsInstance<Node>().mapTo(HashSet()) { it.id } +
+            updates.idUpdates.map { it.newElementId }
+
+        val nodeIdsThatMustBePresentInLocalData = nodeIdsOfUpdatedWays - idsOfUpdatedNodes
+
+        val presentNodeIds = mapDataController
+            .getNodes(nodeIdsThatMustBePresentInLocalData)
+            .mapTo(HashSet()) { it.id }
+
+        val nodesThatMustBeFetchedFromRemote = nodeIdsThatMustBePresentInLocalData - presentNodeIds
+
+        return if (nodesThatMustBeFetchedFromRemote.isNotEmpty()) {
+            val nodes = nodesThatMustBeFetchedFromRemote.mapNotNull { mapDataApi.getNode(it) }
+            updates.copy(updated = updates.updated + nodes)
+        } else {
+            updates
+        }
     }
 }

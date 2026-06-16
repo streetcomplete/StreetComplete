@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>(), AndroidQuest {
 
@@ -15,11 +16,9 @@ class AddBicycleBarrierType : OsmFilterQuestType<BicycleBarrierTypeAnswer>(), An
     override val changesetComment = "Specify cycle barrier types"
     override val wikiLink = "Key:cycle_barrier"
     override val icon = R.drawable.quest_no_bicycles
+    override val title = Res.string.quest_bicycle_barrier_type_title
     override val isDeleteElementEnabled = true
-
     override val achievements = listOf(BLIND, WHEELCHAIR, BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycle_barrier_type_title
 
     override fun createForm() = AddBicycleBarrierTypeForm()
 

@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.quests.AItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import kotlinx.serialization.serializer
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
 
 class AddPostboxRoyalCypherForm : AItemSelectQuestForm<PostboxRoyalCypher, PostboxRoyalCypher>() {
 
@@ -14,7 +13,7 @@ class AddPostboxRoyalCypherForm : AItemSelectQuestForm<PostboxRoyalCypher, Postb
     override val serializer = serializer<PostboxRoyalCypher>()
 
     @Composable override fun ItemContent(item: PostboxRoyalCypher) {
-        ImageWithLabel(painterResource(item.icon), stringResource(item.title))
+        ImageWithLabel(painterResource(item.icon), item.title)
     }
 
     override fun onClickOk(selectedItem: PostboxRoyalCypher) {

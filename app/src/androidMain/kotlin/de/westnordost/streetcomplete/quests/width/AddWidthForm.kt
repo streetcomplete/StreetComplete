@@ -17,8 +17,7 @@ import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_road_width_explanation
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable

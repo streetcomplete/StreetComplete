@@ -18,11 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.cancel
-import de.westnordost.streetcomplete.resources.ok
-import de.westnordost.streetcomplete.resources.quest_openingHours_comment_description
-import de.westnordost.streetcomplete.resources.quest_openingHours_comment_title
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.stringResource
 import kotlin.text.replace
 

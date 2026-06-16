@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddAirCompressor : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -28,13 +29,12 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Survey availability of air compressors"
     override val wikiLink = "Key:compressed_air"
     override val icon = R.drawable.quest_car_air_compressor
+    override val title = Res.string.quest_air_pump_compressor_title
     override val achievements = listOf(CAR, BICYCLIST)
     override val isReplacePlaceEnabled = true
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_air_pump_compressor_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             nodes, ways with
             compressed_air = yes
             or amenity ~ compressed_air|fuel

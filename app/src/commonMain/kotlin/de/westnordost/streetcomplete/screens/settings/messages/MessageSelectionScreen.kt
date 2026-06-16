@@ -20,13 +20,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.messages.Message
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.pref_title_message_achievements
-import de.westnordost.streetcomplete.resources.pref_title_message_calendar
-import de.westnordost.streetcomplete.resources.pref_title_message_changelog
-import de.westnordost.streetcomplete.resources.pref_title_message_weekly_osm
-import de.westnordost.streetcomplete.resources.pref_title_messages
-import de.westnordost.streetcomplete.resources.pref_title_zoom_buttons
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import org.jetbrains.compose.resources.stringResource

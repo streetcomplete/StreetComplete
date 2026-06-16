@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 import de.westnordost.streetcomplete.util.math.distanceToArcs
 
@@ -28,6 +29,7 @@ class AddSummitCross : OsmElementQuestType<Boolean>, AndroidQuest {
     override val changesetComment = "Specify whether summit crosses are present"
     override val wikiLink = "Key:summit:cross"
     override val icon = R.drawable.quest_summit_cross
+    override val title = Res.string.quest_summit_cross_title
     override val achievements = listOf(RARE, OUTDOORS)
     override val enabledInCountries = NoCountriesExcept(
         // Europe
@@ -47,8 +49,6 @@ class AddSummitCross : OsmElementQuestType<Boolean>, AndroidQuest {
         "AR", // https://en.wikipedia.org/wiki/Summit_cross#Gallery
         "PE", // https://es.wikipedia.org/wiki/Cruz_de_la_cumbre#Ejemplos
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_summit_cross_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val peaks = mapData.nodes.filter { filter.matches(it) }

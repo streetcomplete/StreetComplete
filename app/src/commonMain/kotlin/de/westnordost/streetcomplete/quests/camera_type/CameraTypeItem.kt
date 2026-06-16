@@ -1,13 +1,7 @@
 package de.westnordost.streetcomplete.quests.camera_type
 
 import de.westnordost.streetcomplete.quests.camera_type.CameraType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.camera_type_dome
-import de.westnordost.streetcomplete.resources.camera_type_fixed
-import de.westnordost.streetcomplete.resources.camera_type_panning
-import de.westnordost.streetcomplete.resources.quest_camera_type_dome
-import de.westnordost.streetcomplete.resources.quest_camera_type_fixed
-import de.westnordost.streetcomplete.resources.quest_camera_type_panning
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

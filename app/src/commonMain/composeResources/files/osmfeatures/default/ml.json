@@ -1,0 +1,32 @@
+{
+  "ml": {
+    "presets": {
+      "presets": {
+        "address": {
+          "name": "വിലാസം"
+        },
+        "amenity/atm": {
+          "name": "എടിഎം"
+        },
+        "area": {
+          "name": "പ്രദേശം"
+        },
+        "line": {
+          "name": "രേഖ"
+        },
+        "place": {
+          "name": "പ്രദേശം"
+        },
+        "place/city": {
+          "name": "നഗരം"
+        },
+        "place/square": {
+          "name": "ചതുരം"
+        },
+        "point": {
+          "name": "ബിന്ദു"
+        }
+      }
+    }
+  }
+}

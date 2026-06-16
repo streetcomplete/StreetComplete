@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.WHEELCHAIR
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddBarrierType : OsmFilterQuestType<BarrierType>(), AndroidQuest {
 
@@ -34,10 +35,9 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>(), AndroidQuest {
     override val changesetComment = "Specify type of barriers"
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.quest_barrier
+    override val title = Res.string.quest_barrier_type_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR, PEDESTRIAN, BLIND, WHEELCHAIR, BICYCLIST, OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_type_title
 
     override fun createForm() = AddBarrierTypeForm()
 

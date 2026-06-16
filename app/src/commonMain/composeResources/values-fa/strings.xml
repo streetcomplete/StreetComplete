@@ -109,7 +109,6 @@
     <string name="quest_surface_value_sett">سنگفرش ناهموار</string>
     <string name="quest_surface_value_wood">چوب</string>
     <string name="quest_sidewalk_title">آیا این خیابان پیاده‌رو دارد؟</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">این خیابان کجاست؟</string>
     <string name="quest_address_title">شماره این ساختمان چیست؟</string>
     <string name="store_listing_short_description">برنامه نقشه‌کش نقشه متن باز OSM</string>
     <string name="store_listing_full_description">نقشه متن باز OSM را با کمک StreetComplete بهبود دهید!
@@ -175,9 +174,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation_title">آیا مطمئن هستید که هیچ محدودیتی در علائم نیامده است؟</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">آیا هر انتهای خیابان را بررسی کردید؟ اگر در کل خیابان علامتی برای بخش انتخاب‌شده وجود ندارد، محدودیت سرعت پیشفرض اعمال می‌شود.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">بله، بدون علائم</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">محدودیت سرعت پیشفرض راه‌های شهری نسبت به راه‌های روستایی عدد کمتری می‌باشد.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">شهری</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">روستایی</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">اگر علامتی مانند این در تقاطع خیابان اصلی وجود دارد، علائم جداگانه‌ای در این محدوده پیدا نخواهید کرد زیرا محدودیت سرعت ذکرشده در آنجا به کل محدوده اعمال می‌شود.</string>
     <string name="quest_sport_softball">سافتبال</string>
     <string name="quest_sport_racquet">راکت‌بال</string>
@@ -211,7 +207,6 @@
     <string name="credits_contributors_title">مشارکت‌کنندگان در بخش کدنویسی</string>
     <string name="credits_author_title">سازنده و نگهدارنده</string>
     <string name="quest_maxspeed_answer_living_street">این یک خیابان محل سکونت است</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">پس، علامتی مانند این وجود دارد؟</string>
     <string name="quest_orchard_produce_title">چه چیزی در اینجا به عمل می‌آید؟</string>
     <string name="produce_grapes">انگور</string>
     <string name="produce_agaves">آگاو</string>
@@ -283,7 +278,6 @@
     <string name="quest_buildingLevels_levelsLabel2">طبقات (بدون شمارش پشت‌بام)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">متفاوت در هر بخش ساختمان</string>
     <string name="quest_buildingLevels_answer_description">در این حالت، مقدارهای بلندترین قسمت از ساختمان را وارد نمایید</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">آیا جهت‌های مخالف این راه با مانع فیزیکی یا فضای سبز مجزا شده است؟ محدودیت سرعت پیشفرض به این مسئله بستگی دارد.</string>
     <string name="about_category_feedback">بازخورد</string>
     <string name="quest_leave_new_note_photo">پیوست کردن تصویر</string>
     <string name="quest_leave_new_note_photo_delete_title">آیا می‌خواهید این تصویر را حذف کنید؟</string>
@@ -448,7 +442,6 @@
     <string name="quest_openingHours_no_sign">بدون تابلوی ساعت کاری</string>
     <string name="quest_buildingType_sports_centre">ورزشگاه (مرکز ورزشی)</string>
     <string name="quest_buildingType_toilets">سرویس‌بهداشتی</string>
-    <string name="quest_maxspeed_sign_question">محدودیت سرعت چگونه مشخص شده است؟</string>
     <string name="quest_segregated_title">اینجا مسیر پیاده و مسیر دوچرخه چگونه ساخته شده است؟</string>
     <string name="dialog_tutorial_upload">برای بارگذاری تغییرات به صورت دستی، از دکمه‌ای که در نوار ابزار مشابه این است استفاده کنید.</string>
     <string name="quest_segregated_separated">جدا از یکدیگر</string>
@@ -681,7 +674,6 @@
     <string name="at_housenumber">شماره خانه %1$s:</string>
     <string name="quest_openingHours_add_off_days">افزودن روزهای حراج</string>
     <string name="quest_openingHours_off_day">روز حراج</string>
-    <string name="quest_openingHours_unspecified_range">مشخص نشده</string>
     <string name="quest_cycleway_resurvey_title">آیا اینجا هنوز خط دوچرخه‌سواری وجود دارد؟</string>
     <string name="pref_title_resurvey_intervals">فواصل تکرار بررسی</string>
     <string name="resurvey_intervals_less_often">کمتر بپرسید</string>
@@ -1459,7 +1451,6 @@
     <string name="quest_recycling_type_pet_bottles">بطری‌های PET</string>
     <string name="quest_maxweight_add_sign">اضافه‌کردن علامت</string>
     <string name="quest_maxweight_remove_sign">حذف‌کردن علامت</string>
-    <string name="dialog_dont_notify_again">دیگر اطلاع نده</string>
     <string name="weekly_osm_new_edition_title">نسخه جدید!</string>
     <string name="pref_title_messages">پیام‌های درون‌برنامه‌ای</string>
     <string name="pref_title_message_achievements">دستاوردهای قفل‌گشایی‌شده</string>

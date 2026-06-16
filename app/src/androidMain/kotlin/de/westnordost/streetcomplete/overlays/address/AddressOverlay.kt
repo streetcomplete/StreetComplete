@@ -11,13 +11,14 @@ import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getShortHouseNumber
 
 class AddressOverlay(
     private val getCountryCodeByLocation: (location: LatLon) -> String?
 ) : Overlay, AndroidOverlay {
 
-    override val title = R.string.overlay_addresses
+    override val title = Res.string.overlay_addresses
     override val icon = R.drawable.quest_housenumber
     override val changesetComment = "Survey housenumbers"
     override val wikiLink: String = "Key:addr"

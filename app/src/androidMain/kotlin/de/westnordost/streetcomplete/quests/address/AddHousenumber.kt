@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.address.applyTo
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
@@ -31,6 +32,7 @@ class AddHousenumber(
     override val changesetComment = "Survey housenumbers"
     override val wikiLink = "Key:addr"
     override val icon = R.drawable.quest_housenumber
+    override val title = Res.string.quest_address_title
     override val achievements = listOf(POSTMAN)
     override val enabledInCountries = AllCountriesExcept(
         "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
@@ -44,8 +46,6 @@ class AddHousenumber(
         "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
         "FR", // https://github.com/streetcomplete/StreetComplete/issues/2427#issuecomment-751860679 https://t.me/osmfr/26320
     )
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_address_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val bbox = mapData.boundingBox ?: return listOf()
@@ -154,8 +154,8 @@ class AddHousenumber(
     override fun isApplicableTo(element: Element): Boolean? =
         if (!buildingsWithMissingAddressFilter.matches(element)) false else null
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("""
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
             nodes, ways, relations with
             (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
             and !name and !brand and !operator and !ref

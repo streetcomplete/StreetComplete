@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddAtmOperator : OsmFilterQuestType<String>(), AndroidQuest {
 
@@ -16,13 +17,12 @@ class AddAtmOperator : OsmFilterQuestType<String>(), AndroidQuest {
     override val changesetComment = "Specify ATM operator"
     override val wikiLink = "Tag:amenity=atm"
     override val icon = R.drawable.quest_money
+    override val title = Res.string.quest_atm_operator_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_atm_operator_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = atm")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = atm")
 
     override fun createForm() = AddAtmOperatorForm()
 

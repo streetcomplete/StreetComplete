@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 // capacity for cars, actually
 class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
@@ -26,13 +27,12 @@ class AddChargingStationCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val changesetComment = "Specify charging stations capacities"
     override val wikiLink = "Tag:amenity=charging_station"
     override val icon = R.drawable.quest_charger_capacity
+    override val title = Res.string.quest_charging_station_capacity_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CAR)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_charging_station_capacity_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = charging_station and motorcar != no")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = charging_station and motorcar != no")
 
     override fun createForm() = AddChargingStationCapacityForm()
 

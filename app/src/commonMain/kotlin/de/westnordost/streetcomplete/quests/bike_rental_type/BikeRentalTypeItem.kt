@@ -1,15 +1,7 @@
 package de.westnordost.streetcomplete.quests.bike_rental_type
 
 import de.westnordost.streetcomplete.quests.bike_rental_type.BikeRentalTypeAnswer.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.bicycle_rental_docking_station
-import de.westnordost.streetcomplete.resources.bicycle_rental_dropoff_point
-import de.westnordost.streetcomplete.resources.bicycle_rental_human
-import de.westnordost.streetcomplete.resources.bicycle_rental_shop_with_rental
-import de.westnordost.streetcomplete.resources.quest_bicycle_rental_type_docking_station
-import de.westnordost.streetcomplete.resources.quest_bicycle_rental_type_dropoff_point
-import de.westnordost.streetcomplete.resources.quest_bicycle_rental_type_human
-import de.westnordost.streetcomplete.resources.quest_bicycle_rental_type_shop_with_rental
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

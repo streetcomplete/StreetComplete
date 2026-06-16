@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.osm.removePlaceRelatedTags
+import de.westnordost.streetcomplete.resources.*
 
 class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>(), AndroidQuest {
 
@@ -37,20 +38,19 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>(), AndroidQuest {
     override val changesetComment = "Survey shop types"
     override val wikiLink = "Key:shop"
     override val icon = R.drawable.quest_shop
+    override val title = Res.string.quest_shop_type_title2
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_shop_type_title2
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = ShopTypeForm()
 
     override fun applyAnswerTo(answer: ShopTypeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags.removeCheckDates()
         when (answer) {
-            is IsShopVacant -> {
+            is ShopTypeAnswer.IsShopVacant -> {
                 val shopTag = tags["shop"]
                 removePlaceRelatedTags(tags)
                 tags["disused:shop"] = shopTag ?: "yes"
@@ -62,6 +62,7 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>(), AndroidQuest {
                     answer.feature.applyReplacePlaceTo(tags)
                 }
             }
+            is ShopTypeAnswer.LeaveNote -> { /* already handled by form */ }
         }
     }
 }

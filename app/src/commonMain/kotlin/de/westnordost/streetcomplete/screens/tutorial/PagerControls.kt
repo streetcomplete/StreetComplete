@@ -23,9 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.letsgo
-import de.westnordost.streetcomplete.resources.next
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.conditional
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource

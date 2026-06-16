@@ -10,8 +10,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside_regional_warning
+import de.westnordost.streetcomplete.resources.*
 
 class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
 
@@ -30,16 +29,14 @@ class AddKosher : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
     override val changesetComment = "Specify whether places are kosher"
     override val wikiLink = "Key:diet:kosher"
     override val icon = R.drawable.quest_kosher
+    override val title = Res.string.quest_dietType_kosher_name_title2
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside_regional_warning
+    override val hint = Res.string.quest_dietType_explanation_kosher
 
-    override val hint = R.string.quest_dietType_explanation_kosher
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_dietType_kosher_name_title2
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().asSequence().filter { it.isPlaceOrDisusedPlace() }
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
 
     override fun createForm() = AddDietTypeForm()
 

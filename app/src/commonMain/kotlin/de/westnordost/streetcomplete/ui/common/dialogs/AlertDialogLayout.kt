@@ -42,13 +42,13 @@ fun AlertDialogLayout(
         color = backgroundColor,
         contentColor = contentColor,
     ) {
-        Column(Modifier.padding(top = 24.dp)) {
+        Column {
             if (title != null) {
                 CompositionLocalProvider(
                     LocalContentAlpha provides ContentAlpha.high,
                     LocalTextStyle provides MaterialTheme.typography.subtitle1
                 ) {
-                    Column(Modifier.padding(start = 24.dp, bottom = 16.dp, end = 24.dp)) {
+                    Column(Modifier.padding(top = 24.dp, start = 24.dp, bottom = 16.dp, end = 24.dp)) {
                         title()
                     }
                 }

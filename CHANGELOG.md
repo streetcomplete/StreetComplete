@@ -1,5 +1,38 @@
 # Changelog
 
+## v63.1
+
+### Overlay improvements
+
+- Places & things overlay: Redid and improved UI, added quick access to previous selections (#6773, #5622)
+- Places overlay: (All) education-related places are now selectable (#6782), by @mcliquid
+
+### Quest improvements
+
+- Max speed: Redid UI. The quest is now activated also in the United States (#6758, #813)
+- Redid UI for quest title speech bubble with smoother ℹ️ area (#6784)
+- Redid UI for forms creating a note, especially attaching images (#6804)
+- Power line attachment: Don't ask when several power lines go through one power pole or tower (#6547)
+- Other minor improvements (#6770, #6810, #6798, #6771…), thanks @mnalis
+
+### General Improvements
+
+- More effective usage of available screen space in settings & about screen (#6787), thanks @deevroman
+- Move logs filter selection in logs screen into own screen (#6772)
+
+### New Translations
+
+- Vietnamese by tsklxiv, Minh Nguyễn and more
+- Irish by Brian Affenstark
+- Welsh by dreigiau, fin-w
+- Cornish by Flynn
+
+### Fixes
+
+- Bike paths overlay: OK button didn't always show (#6644) (wasn't fixed in v62.1 after all)
+- Fix layout for "New OSM message" dialog (#6791)
+- Fix crash caused by automatic conflict resolution on upload under certain circumstances (#6825, #6779, #6419)
+
 ## v63.0
 
 ### General Improvements

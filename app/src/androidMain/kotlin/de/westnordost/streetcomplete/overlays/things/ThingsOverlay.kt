@@ -12,11 +12,12 @@ import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.isThingOrDisusedThing
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.view.presetIconIndex
 
 class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay, AndroidOverlay {
 
-    override val title = R.string.overlay_things
+    override val title = Res.string.overlay_things
     override val icon = R.drawable.quest_dot
     override val changesetComment = "Survey small map features"
     override val wikiLink = "StreetComplete/Overlays#Things"

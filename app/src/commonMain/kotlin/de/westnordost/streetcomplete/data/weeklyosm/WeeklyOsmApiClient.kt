@@ -4,8 +4,8 @@ import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsChannel
 import io.ktor.utils.io.asSource
-import kotlinx.datetime.Instant
 import kotlinx.io.buffered
+import kotlin.time.Instant
 
 class WeeklyOsmApiClient(
     private val httpClient: HttpClient,

@@ -23,7 +23,7 @@ class TagsUtilsTest {
         )
     }
 
-    @Test fun `when expanding sides, explicit tag takes precedence over bare tag`() {
+    @Test fun `when expanding sides explicit tag takes precedence over bare tag`() {
         val tags = Tags(mapOf("a" to "blub", "a:both" to "burg"))
         tags.expandSides("a")
         assertEquals(
@@ -32,7 +32,7 @@ class TagsUtilsTest {
         )
     }
 
-    @Test fun `when expanding sides, does not overwrite left and right tags`() {
+    @Test fun `when expanding sides does not overwrite left and right tags`() {
         val tags = Tags(mapOf("a:both" to "gah", "a:left" to "le", "a:right" to "ri"))
         tags.expandSides("a")
         assertEquals(

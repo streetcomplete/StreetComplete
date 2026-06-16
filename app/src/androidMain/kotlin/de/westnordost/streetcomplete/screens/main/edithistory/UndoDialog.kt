@@ -13,10 +13,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.undo_confirm_negative
-import de.westnordost.streetcomplete.resources.undo_confirm_positive
-import de.westnordost.streetcomplete.resources.undo_confirm_title2
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import org.jetbrains.compose.resources.stringResource

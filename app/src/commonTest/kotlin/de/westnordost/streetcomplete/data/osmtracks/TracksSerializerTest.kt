@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.data.osmtracks
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import kotlinx.datetime.Instant
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.time.Instant
 
 class TracksSerializerTest {
 

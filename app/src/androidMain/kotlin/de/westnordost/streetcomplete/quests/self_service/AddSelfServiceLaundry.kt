@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.NO
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.ONLY
 import de.westnordost.streetcomplete.quests.self_service.SelfServiceLaundry.OPTIONAL
+import de.westnordost.streetcomplete.resources.*
 
 class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>(), AndroidQuest {
 
@@ -16,10 +17,9 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>(), AndroidQ
     override val changesetComment = "Survey whether laundries provide self-service"
     override val wikiLink = "Tag:shop=laundry"
     override val icon = R.drawable.quest_laundry
+    override val title = Res.string.quest_laundrySelfService_title2
     override val isReplacePlaceEnabled = true
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_laundrySelfService_title2
 
     override fun createForm() = AddSelfServiceLaundryForm()
 

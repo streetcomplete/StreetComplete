@@ -1,13 +1,7 @@
 package de.westnordost.streetcomplete.quests.car_wash_type
 
 import de.westnordost.streetcomplete.quests.car_wash_type.CarWashType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.car_wash_automated
-import de.westnordost.streetcomplete.resources.car_wash_self_service
-import de.westnordost.streetcomplete.resources.car_wash_service
-import de.westnordost.streetcomplete.resources.quest_carWashType_automated
-import de.westnordost.streetcomplete.resources.quest_carWashType_selfService
-import de.westnordost.streetcomplete.resources.quest_carWashType_service
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

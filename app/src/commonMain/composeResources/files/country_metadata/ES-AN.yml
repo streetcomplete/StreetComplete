@@ -1,0 +1,5 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Euronet, Caja Rural, Caixabank, ING, Banco Santander, Unicaja, Unicaja Banco, Santander, BBVA, La Caixa, Cajamar, BitBase, Banco Sabadell, Shitcoins.club, CajaSur, Cash Zone, CaixaBank, Cajasol, cajamar, Deutsche Bank, CashZone, Caja Rural de Granada, Caja Rural Granada, Bankia, cashzone, Targobank, SabadellSolbank, Kutxabank, Kurant, Euronet ATM, EuroNext, Euro Automatic Cash, Caixa Bank, Bankinter, Banco de Andalucía, Banco Popular, Banca March]
+chargingStationOperators: [Iberdrola, Endesa, Repsol, Tesla, Eranovum, Wenea, Shell, Lidl, BP, Mercadona, EDP, Zunder, Ionity, Powerdot, Endesa X, ChargePoint, TotalEnergies, SMASSA, Porsche, Carrefour, Atlante, Électricité de France, Veiasa, FRS, Eurocharge, Ayuntamiento de Huelva, ALDI]
+clothesContainerOperators: [Limasam, Cáritas, East-West, Humana, Madre coraje, Madre Coraje, Inagra, Ayuntamiento de Granada]
+parcelLockerBrand: [Amazon Locker, InPost, Amazon Hub, Amazon Hub Locker, CityPaq, GLS, Correos]

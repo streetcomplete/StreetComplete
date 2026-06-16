@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBikeParkingCover : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -24,13 +25,12 @@ class AddBikeParkingCover : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Specify bicycle parkings covers"
     override val wikiLink = "Tag:amenity=bicycle_parking"
     override val icon = R.drawable.quest_bicycle_parking_cover
+    override val title = Res.string.quest_bicycleParkingCoveredStatus_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(BICYCLIST)
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_bicycleParkingCoveredStatus_title
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes, ways with amenity = bicycle_parking")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity = bicycle_parking")
 
     override fun createForm() = YesNoQuestForm()
 

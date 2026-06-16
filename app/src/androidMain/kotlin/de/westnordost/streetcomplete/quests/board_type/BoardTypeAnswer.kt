@@ -1,16 +1,7 @@
 package de.westnordost.streetcomplete.quests.board_type
 
 import de.westnordost.streetcomplete.quests.board_type.BoardType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_board_type_geology
-import de.westnordost.streetcomplete.resources.quest_board_type_history
-import de.westnordost.streetcomplete.resources.quest_board_type_nature
-import de.westnordost.streetcomplete.resources.quest_board_type_notice_board
-import de.westnordost.streetcomplete.resources.quest_board_type_plants
-import de.westnordost.streetcomplete.resources.quest_board_type_public_transport
-import de.westnordost.streetcomplete.resources.quest_board_type_sport
-import de.westnordost.streetcomplete.resources.quest_board_type_wildlife
-import de.westnordost.streetcomplete.resources.quest_board_type_rules
+import de.westnordost.streetcomplete.resources.*
 
 import org.jetbrains.compose.resources.StringResource
 

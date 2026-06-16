@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddPoliceType : OsmFilterQuestType<PoliceType>(), AndroidQuest {
 
@@ -14,10 +15,9 @@ class AddPoliceType : OsmFilterQuestType<PoliceType>(), AndroidQuest {
     override val changesetComment = "Specify Italian police types"
     override val wikiLink = "Tag:amenity=police"
     override val icon = R.drawable.quest_police
+    override val title = Res.string.quest_policeType_title
     override val enabledInCountries = NoCountriesExcept("IT")
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_policeType_title
 
     override fun createForm() = AddPoliceTypeForm()
 

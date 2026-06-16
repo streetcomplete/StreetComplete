@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddToiletAvailability : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -26,9 +27,8 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Survey toilet availabilities"
     override val wikiLink = "Key:toilets"
     override val icon = R.drawable.quest_toilets
+    override val title = Res.string.quest_toiletAvailability_title
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_toiletAvailability_title
 
     override fun createForm() = YesNoQuestForm()
 

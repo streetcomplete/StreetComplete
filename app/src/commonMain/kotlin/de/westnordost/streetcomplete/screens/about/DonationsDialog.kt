@@ -15,12 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.about_description_donate
-import de.westnordost.streetcomplete.resources.about_description_donate_google_play3
-import de.westnordost.streetcomplete.resources.donation_github
-import de.westnordost.streetcomplete.resources.donation_liberapay
-import de.westnordost.streetcomplete.resources.donation_patreon
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import org.jetbrains.compose.resources.painterResource

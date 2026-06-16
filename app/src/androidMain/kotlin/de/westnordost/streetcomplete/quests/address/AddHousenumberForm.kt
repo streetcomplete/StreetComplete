@@ -28,9 +28,7 @@ import de.westnordost.streetcomplete.osm.building.title
 import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
 import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.IAnswerItem
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_address_answer_no_housenumber_message1
-import de.westnordost.streetcomplete.resources.quest_address_answer_no_housenumber_message2b
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable

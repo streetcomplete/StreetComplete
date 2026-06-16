@@ -1,21 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_type
 
 import de.westnordost.streetcomplete.quests.barrier_type.StileTypeAnswer.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.barrier_gate_pedestrian
-import de.westnordost.streetcomplete.resources.barrier_kissing_gate
-import de.westnordost.streetcomplete.resources.barrier_passage
-import de.westnordost.streetcomplete.resources.barrier_stile_ladder
-import de.westnordost.streetcomplete.resources.barrier_stile_squeezer
-import de.westnordost.streetcomplete.resources.barrier_stile_stepover_stone
-import de.westnordost.streetcomplete.resources.barrier_stile_stepover_wooden
-import de.westnordost.streetcomplete.resources.quest_barrier_type_gate_conversion
-import de.westnordost.streetcomplete.resources.quest_barrier_type_kissing_gate_conversion
-import de.westnordost.streetcomplete.resources.quest_barrier_type_passage_conversion
-import de.westnordost.streetcomplete.resources.quest_barrier_type_stepover_stone
-import de.westnordost.streetcomplete.resources.quest_barrier_type_stepover_wooden
-import de.westnordost.streetcomplete.resources.quest_barrier_type_stile_ladder
-import de.westnordost.streetcomplete.resources.quest_barrier_type_stile_squeezer
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

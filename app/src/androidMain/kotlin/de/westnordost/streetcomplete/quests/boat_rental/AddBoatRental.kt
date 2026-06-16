@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>(), AndroidQuest {
 
@@ -21,9 +22,8 @@ class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>(), AndroidQuest {
     override val changesetComment = "Specify boats for rental"
     override val wikiLink = "Tag:amenity=boat_rental"
     override val icon = R.drawable.quest_boat
+    override val title = Res.string.quest_boat_rental_title
     override val achievements = listOf(OUTDOORS, RARE)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_boat_rental_title
 
     override fun createForm() = AddBoatRentalForm()
 

@@ -1,10 +1,7 @@
 package de.westnordost.streetcomplete.quests.foot
 
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_accessible_for_pedestrians_allowed
-import de.westnordost.streetcomplete.resources.quest_accessible_for_pedestrians_prohibited
-import de.westnordost.streetcomplete.resources.quest_accessible_for_pedestrians_sidewalk
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 enum class ProhibitedForPedestriansAnswer {

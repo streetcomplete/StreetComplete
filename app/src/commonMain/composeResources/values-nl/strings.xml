@@ -108,7 +108,6 @@ Deze app communiceert direct met de servers van OSM. Vóór het uploaden van je 
     <string name="quest_surface_value_sett">Kasseien</string>
     <string name="quest_surface_value_wood">Hout</string>
     <string name="quest_sidewalk_title">Heeft deze straat een trottoir?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Waar is deze straat?</string>
     <string name="quest_address_title">Wat is het huisnummer van dit gebouw?</string>
     <string name="store_listing_short_description">OpenStreetMap veldwerk-app</string>
     <string name="store_listing_full_description">Help OpenStreetMap te verbeteren met StreetComplete!
@@ -175,9 +174,6 @@ De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap onder jou
     <string name="quest_maxspeed_answer_noSign_confirmation">Ben je dit nagegaan aan beide einden van de straat?
 Als er geen verkeersborden staan die van toepassing zijn op het geselecteerde stuk, dan gelden de standaard snelheidslimieten.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Inderdaad, geen bord</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Wegen binnen de bebouwde kom (stedelijke wegen) hebben een lagere standaard snelheidslimiet dan wegen buiten de bebouwde kom (landelijke wegen).</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">In bebouwde kom (in stad of dorp)</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Buiten bebouwde kom (buiten stad of dorp)</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Als dit bord op het kruispunt van de hoofdstraat staat, vind je geen andere borden in de zone omdat de snelheid voor de hele zone geldt.</string>
     <string name="quest_sport_softball">Softbal</string>
     <string name="quest_sport_racquet">Racquetball</string>
@@ -211,7 +207,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="credits_contributors_title">Code mede-auteurs</string>
     <string name="credits_author_title">Auteur en onderhouder</string>
     <string name="quest_maxspeed_answer_living_street">Dit is een woonerf</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Dus, is er zo'n bord?</string>
     <string name="quest_orchard_produce_title">Wat wordt hier geteeld?</string>
     <string name="produce_grapes">Druiven</string>
     <string name="produce_agaves">Agave</string>
@@ -283,7 +278,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_buildingLevels_levelsLabel2">aantal etages (die in het dak niet mee gerekend)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Verschilt per gebouwdeel</string>
     <string name="quest_buildingLevels_answer_description">Vul in dit geval de waarde van het hoogste gebouwdeel in.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Zijn de rijbanen (rijrichtingen) van deze weg fysiek gescheiden, bijvoorbeeld door een vangrail of andere barrière? De standaard maximum snelheid hangt hier van af.</string>
     <string name="about_category_feedback">Feedback</string>
     <string name="quest_leave_new_note_photo">Voeg een foto toe</string>
     <string name="quest_leave_new_note_photo_delete_title">Wil je deze foto verwijderen?</string>
@@ -447,7 +441,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_openingHours_no_sign">Geen openingstijden zichtbaar</string>
     <string name="quest_buildingType_sports_centre">Sportcentrum</string>
     <string name="quest_buildingType_toilets">Toiletten</string>
-    <string name="quest_maxspeed_sign_question">Wat bepaalt de maximumsnelheid?</string>
     <string name="quest_segregated_title">Hoe zijn het voetpad en het fietspad aangelegd?</string>
     <string name="dialog_tutorial_upload">Gebruik, om je wijzigingen handmatig te uploaden, de knop in de werkbalk die er zo uitziet.</string>
     <string name="quest_segregated_separated">Gescheiden van elkaar.</string>
@@ -681,7 +674,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="at_housenumber">huisnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Voeg sluitingsdagen toe</string>
     <string name="quest_openingHours_off_day">Sluitingsdag</string>
-    <string name="quest_openingHours_unspecified_range">Niet aangegeven</string>
     <string name="quest_cycleway_resurvey_title">Is dit fietspad nog steeds hier?</string>
     <string name="pref_title_resurvey_intervals">Heronderzoek interval</string>
     <string name="resurvey_intervals_less_often">Vraag minder vaak</string>
@@ -1454,7 +1446,6 @@ Bijvoorbeeld 1,3 of 2b,4,6.</string>
     <string name="quest_recycling_type_pet_bottles">PET flessen</string>
     <string name="quest_maxweight_add_sign">Voeg bord toe</string>
     <string name="quest_maxweight_remove_sign">Verwijder bord</string>
-    <string name="dialog_dont_notify_again">Geef geen notificaties meer</string>
     <string name="weekly_osm_new_edition_title">Nieuwe editie!</string>
     <string name="pref_title_messages">In-App berichten</string>
     <string name="pref_title_message_achievements">Ontsloten prestaties</string>

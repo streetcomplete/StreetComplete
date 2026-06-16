@@ -2,11 +2,10 @@ package de.westnordost.streetcomplete.data.osmcal
 
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import kotlinx.datetime.Clock
-import kotlinx.datetime.Instant
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.time.Clock
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours

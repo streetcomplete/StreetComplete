@@ -45,7 +45,7 @@ Also, if you like StreetComplete, **spread the word**! ❤️
 
 ## License
 
-This software is released under the terms of the [GNU General Public License](http://www.gnu.org/licenses/gpl-3.0.html).
+This software is released under the terms of the [GNU General Public License v3.0 only](http://www.gnu.org/licenses/gpl-3.0.html).
 
 ## Sponsors
 

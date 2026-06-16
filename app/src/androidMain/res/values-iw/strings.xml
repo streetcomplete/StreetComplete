@@ -109,7 +109,6 @@
     <string name="quest_surface_value_sett">"לבנים מלבניות"</string>
     <string name="quest_surface_value_wood">"עץ"</string>
     <string name="quest_sidewalk_title">"האם יש מדרכה ברחוב הזה?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"איפה הרחוב הזה?"</string>
     <string name="quest_address_title">"מה הוא המספר של המבנה הזה?"</string>
     <string name="store_listing_short_description">"אפליקציית סקירה של OpenStreetMap"</string>
     <string name="store_listing_full_description">"עזרו לשפר את OpenStreetMap עם StreetComplete!
@@ -176,9 +175,6 @@
     <string name="quest_maxspeed_answer_noSign_confirmation">"האם בדקת בשני קצוות הרחוב?
 אם אין שלטים לאורך כל הרחוב המתייחסים לחלק המסומן, מגבלות המהירות הרגילות חלות."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"כן, אין שלט"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"בכבישים באזורים בנויים יש מגבלת מהירות נמוכה יותר מאשר בכבישים באזורי ספר."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"אזור בנוי"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"כפרי"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"אם קיים שלט כזה בצומת עם רחוב מרכזי, לא יהיו שלטים נוספים באזור והגבלת המהירות תחול על כל האזור."</string>
     <string name="quest_sport_softball">"כדור בסיס"</string>
     <string name="quest_sport_racquet">"כדור מחבט (Racquetball)"</string>
@@ -212,7 +208,6 @@
     <string name="credits_contributors_title">"תורמי קוד"</string>
     <string name="credits_author_title">"היוצר והמתחזק"</string>
     <string name="quest_maxspeed_answer_living_street">"זהו רחוב משולב"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"אז יש כאן תמרור כזה?"</string>
     <string name="quest_orchard_produce_title">"מה מגדלים כאן?"</string>
     <string name="produce_grapes">"ענבים"</string>
     <string name="produce_agaves">"אגאבה"</string>
@@ -284,7 +279,6 @@
     <string name="quest_buildingLevels_levelsLabel2">"קומות רגילות (לא כולל הגג)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"משתנה בין חלקי המבנה"</string>
     <string name="quest_buildingLevels_answer_description">"במקרה זה יש להזין את הערכים עבור חלק המבנה הגבוה ביותר."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"האם כיווני תנועה מנוגדים מופרדים בעזרת שטח הפרדה בנוי או מפרדה? נתון זה משפיע על מהירות מרבית מותרת בהעדר תמרור אחר."</string>
     <string name="about_category_feedback">"משוב"</string>
     <string name="quest_leave_new_note_photo">"צרף/י תמונה"</string>
     <string name="quest_leave_new_note_photo_delete_title">"האם ברצונך למחוק תמונה זו?"</string>
@@ -445,7 +439,6 @@
     <string name="quest_openingHours_no_sign">"אין שלט המציין שעות פתיחה"</string>
     <string name="quest_buildingType_sports_centre">"מרכז ספורט"</string>
     <string name="quest_buildingType_toilets">"בתי שימוש"</string>
-    <string name="quest_maxspeed_sign_question">"מה קובע את המהירות המותרת?"</string>
     <string name="quest_segregated_title">"איך מוצבים כאן שביל ההליכה ונתיב האופניים?"</string>
     <string name="dialog_tutorial_upload">"כדי להעלות את השינויים שלך ידנית, יש להשתמש בכפתור בסרגל הכלים שנראה ככה."</string>
     <string name="quest_segregated_separated">"מופרדים זה מזה"</string>
@@ -670,7 +663,6 @@
     <string name="at_housenumber">"מספר בית %s"</string>
     <string name="quest_openingHours_add_off_days">"הוספת ימי חופשה"</string>
     <string name="quest_openingHours_off_day">"ימי חופשה"</string>
-    <string name="quest_openingHours_unspecified_range">"לא מוגדר"</string>
     <string name="quest_cycleway_resurvey_title">"האם זה עדיין מצב המיחזור כאן?"</string>
     <string name="resurvey_intervals_less_often">"שאל בתדירות נמוכה יותר"</string>
     <string name="resurvey_intervals_default">"ברירת מחדל"</string>

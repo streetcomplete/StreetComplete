@@ -6,12 +6,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_msg_go_inside
+import de.westnordost.streetcomplete.resources.*
 
 open class TestQuestTypeA : OsmElementQuestType<String> {
 
-    override fun getTitle(tags: Map<String, String>) = 0
+    override val title = Res.string.quest_address_title
     override fun isApplicableTo(element: Element): Boolean? = null
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {}
     override val changesetComment = "test me"

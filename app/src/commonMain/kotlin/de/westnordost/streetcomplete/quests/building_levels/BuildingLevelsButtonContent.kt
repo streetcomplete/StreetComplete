@@ -7,8 +7,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.building_levels_illustration_icon
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.painterResource
 
 /** Content for a button that shows (previous) building levels and roof levels */

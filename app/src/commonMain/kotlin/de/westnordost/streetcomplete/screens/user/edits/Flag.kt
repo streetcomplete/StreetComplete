@@ -13,10 +13,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.flags.FlagAlignment
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.allDrawableResources
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.innerBorder
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
+import de.westnordost.streetcomplete.ui.theme.divider
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
@@ -28,7 +28,7 @@ fun Flag(
     modifier: Modifier = Modifier,
 ) {
     val resource = Res.getFlag(countryCode) ?: return
-    val color = MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
+    val color = MaterialTheme.colors.divider
     Image(
         painter = painterResource(resource),
         contentDescription = countryCode,
@@ -46,7 +46,7 @@ fun CircularFlag(
 ) {
     val resource = Res.getFlag(countryCode) ?: return
     val painter = painterResource(resource)
-    val color = MaterialTheme.colors.onSurface.copy(alpha = 0.12f)
+    val color = MaterialTheme.colors.divider
 
     Image(
         painter = painter,

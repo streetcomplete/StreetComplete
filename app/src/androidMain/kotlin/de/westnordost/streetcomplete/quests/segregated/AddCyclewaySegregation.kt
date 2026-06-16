@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.PAVED_SURFACES
 import de.westnordost.streetcomplete.quests.segregated.CyclewaySegregation.*
+import de.westnordost.streetcomplete.resources.*
 
 class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>(), AndroidQuest {
 
@@ -35,9 +36,8 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>(), Androi
     override val changesetComment = "Specify whether combined foot- and cycleways are segregated"
     override val wikiLink = "Key:segregated"
     override val icon = R.drawable.quest_path_segregation
+    override val title = Res.string.quest_segregated_title
     override val achievements = listOf(BICYCLIST, OUTDOORS)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_segregated_title
 
     override fun createForm() = AddCyclewaySegregationForm()
 

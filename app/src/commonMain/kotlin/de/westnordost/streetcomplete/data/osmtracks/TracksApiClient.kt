@@ -16,7 +16,7 @@ import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.Headers
 import io.ktor.http.HttpHeaders
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 /**
  * Talks with OSM traces API to uploads GPS trackpoints

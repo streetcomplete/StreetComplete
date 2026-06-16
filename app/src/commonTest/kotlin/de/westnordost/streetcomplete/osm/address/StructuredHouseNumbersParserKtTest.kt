@@ -7,7 +7,7 @@ import kotlin.test.assertNull
 class StructuredHouseNumbersParserKtTest {
 
     @Test
-    fun `test all, I am lazy today`() {
+    fun `test all - I am lazy today`() {
         assertParses("1")
         assertParses("12345")
         assertParses("123a")

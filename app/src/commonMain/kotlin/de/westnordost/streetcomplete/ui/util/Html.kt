@@ -21,21 +21,14 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.ui.ktx.pxToSp
+import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
 import de.westnordost.streetcomplete.util.html.HtmlElementNode
 import de.westnordost.streetcomplete.util.html.HtmlNode
 import de.westnordost.streetcomplete.util.html.HtmlTextNode
 
 @Composable
 fun List<HtmlNode>.toAnnotatedString(
-    textLinkStyles: TextLinkStyles = TextLinkStyles(
-        style = SpanStyle(
-            color = MaterialTheme.colors.primary,
-            textDecoration = TextDecoration.Underline
-        ),
-        focusedStyle = SpanStyle(
-            color = MaterialTheme.colors.secondary,
-        )
-    )
+    textLinkStyles: TextLinkStyles = MaterialTheme.typography.defaultTextLinkStyles()
 ): AnnotatedString {
     val textStyle = LocalTextStyle.current
     val textMeasurer = rememberTextMeasurer()

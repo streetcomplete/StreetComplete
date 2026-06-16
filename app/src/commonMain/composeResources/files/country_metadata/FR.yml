@@ -1,0 +1,28 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+additionalStreetsignLanguages: [oc, ca, br]
+additionalValidHousenumberRegex: \p{N}{1,4}\sbis
+advisoryCycleLaneStyle: white dashes without pictogram
+atmOperators: [Crédit Agricole, La Banque Postale, Caisse d'Épargne, SG, Crédit Mutuel, LCL, BNP Paribas, CIC, Banque Populaire, La Poste, Société Générale, Crédit Mutuel de Bretagne, Credit Agricole, BRED, Euronet, CCF, Caisse d'Epargne, BNP, Crédit agricole, Banque Postale, Banque Chabrières, Société Marseillaise de Crédit, Caisse d'épargne, La poste, Carrefour Banque, Loomis, Carrefour, CA, Crédit du Nord, Credit Mutuel, HSBC, Cash Services, Banque de Savoie, Crédit mutuel, Banque populaire, Banque Edel, Banque Rhône-Alpes, Banque Populaire Méditerranée, Banque Dupuy de Parseval, Banque Courtois, BNP Parisbas]
+chargingStationOperators: [Izivia, Bouygues Énergies et Services, Freshmile, SPBR1, Load Stations, Freshmile SAS, Bouygues Energies & Services, TotalEnergies, Easy Charge, Ionity, Tesla, Lidl, Power Dot France, EVzen (SMEG Développement), DRIVECO, Zunder, Electra, Sodetrel, UEM, Powerdot, Freshmile | FR*FR1, Allego, Clem, Sorégies, TEVGO, Mobive, Séolis, ENERGIE Eure-et-Loir | FR*S28, EneRSIEIL, MODULO | FR*S41, ChargePoint, IECharge, SDEY, Morbihan énergies, Mouv Élec Var, Morbihan Énergies, Bouygues E&S, Ouest Charge, Shell Recharge Solutions, SPIE CityNetworks, SEY 78, Fédération Départementale d'Énergie de la Somme (FDE80) | FR*S80, E.Leclerc, SIEGE 27, eborn, ELECTRIC 55 CHARGING, Sodetrel Mobilité, e-Totem, E-TOTEM, Belib', Engie, STATIONS-E, sas e-motum, Total Marketing France, Bump, SDEI36, Renault, SDE35, IZIVIA, Carrefour, Waat, LIDL France, R3, Sigeif, Lidl France, Greenflux, EVlink, SIPLEC, Révéo, REVEO SYADEN | FR*RVE, Syndicat Départemental d'Énergie de Loire-Atlantique (SYDELA) | FR*S44, Fastned, Effia, PowerDot, SYDELA, Electric 55 Charging, Alizé, Aldi, Clem', TotalEnergies Charging Services, InEnergies, EVBox, Bouygues (1-OUEST), SIPPEREC, ubitricity, Virta, Shell Recharge, ChargePoint Austria GmbH | FR*CG0, Spie, Auchan, SIEML, Last Mile Solutions, E.Leclerc | FR*LE2, Driveco, freshmile, Ubeeqo, IONITY, Syndicat d’Energie des Yvelines, Schneider Electric, SDEV, Atlante | FR*ATL, SYDER, Power dot, Modulo, Airbus, Paris-Saclay Innovation Playground, Mobilize Power Solutions, Metropolis, Griffon Branché, GreenFlux, Citeos, Shell, Saint-Louis, NW IECharge, 2_AM0001_SMOYS, ZEBORNE, QOVOLTIS, Leclerc, Intermarché, EVzen]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo, type3c, type3a]
+clothesContainerOperators: [Le Relais, Toulouse Métropole, La Chiffo, Le relais, Le Foyer Notre-Dame des Sans-Abri, Chrysalide, Apivet, écotextile, Écotextile, AMOS, Actifrip, Emmaüs, Ecotextile, Solidarité Textiles, SITCOM - Côte sud des Landes, Tremplin, www.lerelais.org, le relais, Le Relais Est, Le Relais Atlantique, Refashion, Mairie de Paris, Sitcom du Marsan, Bordeaux Métropole, Sitcom Côte sud des Landes, Next Textiles Association, BACER, Métropole de Lyon, Eco-Emballages, SIVOM, Croix Rouge Française, CCPRO, Vetis, Tisseco, SEMOCTOM, Relais, Philtex, éco textile, Limoges Métropole, Le Relais 75, Inser-vêt, Emmaüs 63, Croix-Rouge, Croix Rouge, A.F.E.R.E, le Relais, Rennes Métropole, Le Paris Antigaspi, Le Foyer, La Croix Rouge, Inser-vet, Fil & Terre, Emmaüs France, Au Fil des Chemins, la Redingote, ecotextile, Vetements, Tri-Vallées, SMICVAL, SICTOM du Marsan, Le Relai, La Remise, Humana, Emmaus, CCPOP, Bassin de Pompey, Abi29, vetis, emmaus, Seforest, Ludothèque éphémère, Le Relais Bretagne, Le Relais 37, KFB, Horizon Amitié, Gre'Sy, Fringuette, Croix-Rouge française, Croix rouge, Communauté de Communes du Pays de Redon, Communauté de Communes du Pays de L'Arbresle (CCPA), Communauté d'Agglomération Le Grand Dax (CAGD), Association d'aide aux enfants atteints de leucémie, 3ACER]
+defaultSpeedLimitHasUrbanOrRural: true
+exclusiveCycleLaneStyle: white dashes
+hasAdvisoryCycleLane: true
+hasAdvisorySpeedLimitSign: true
+hasBiWeeklyAlternateSideParkingSign: true
+hasBicycleBoulevard: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: shared
+mobileCountryCode: 208
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
+officialLanguages: [fr]
+orchardProduces: [grape, apple, walnut, olive, plum, apricot, peach, chestnut, banana, tomato, hazelnut, pear, cherry, kiwi, strawberry]
+parcelLockerBrand: [Mondial Relay, Amazon Hub, Amazon Locker, Pickup Station, Vinted Go, Pickup, La Poste, Amazon, Mondial Relay Locker, Vinted, Parcel Pending, Decathlon, VintedGo, InPost, Amazon Hub Locker, Leroy Merlin, Chronopost]
+popularSports: [soccer, tennis, basketball, boules, equestrian, rugby]
+postboxesHaveCollectionTimes: true
+postboxesHaveRef: true
+slowZoneLabelPosition: top
+slowZoneLabelText: ZONE

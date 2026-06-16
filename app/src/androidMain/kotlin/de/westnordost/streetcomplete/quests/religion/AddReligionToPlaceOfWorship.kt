@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddReligionToPlaceOfWorship : OsmFilterQuestType<Religion>(), AndroidQuest {
 
@@ -21,9 +22,8 @@ class AddReligionToPlaceOfWorship : OsmFilterQuestType<Religion>(), AndroidQuest
     override val changesetComment = "Specify religion for places of worship"
     override val wikiLink = "Key:religion"
     override val icon = R.drawable.quest_religion
+    override val title = Res.string.quest_religion_for_place_of_worship_title
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_religion_for_place_of_worship_title
 
     override fun createForm() = AddReligionForm()
 

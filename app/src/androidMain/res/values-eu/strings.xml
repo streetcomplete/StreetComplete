@@ -109,7 +109,6 @@ Hala ere, zure aldaketak igo aurretik, aplikazioak nire zerbitzariko &lt;a href=
     <string name="quest_surface_value_sett">"Galtzada-harria"</string>
     <string name="quest_surface_value_wood">"Egurra"</string>
     <string name="quest_sidewalk_title">"Espaloia al dago kale honetan?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Non dago kale hau?"</string>
     <string name="quest_address_title">"Zein da eraikin honen zenbakia?"</string>
     <string name="store_listing_short_description">"OpenStreetMap ikuskatze aplikazioa"</string>
     <string name="store_listing_full_description">"Lagundu OpenStreetMap osatzen StreetComplete erabilita!
@@ -175,9 +174,6 @@ Sartzen duzun informazioa zuzenean OpenStreetMap proiektura gehitzen da zure ize
     <string name="quest_maxspeed_answer_noSign_confirmation_title">"Ziur ez dagoela abiadura-muga seinalerik?"</string>
     <string name="quest_maxspeed_answer_noSign_confirmation">"Kalearen muturretan begiratu duzu? Ez badago seinalerik nabarmendutako zatiari dagokion seinalerik kale osoan, lehenetsitako abiadura muga aplikatzen da."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Bai, seinalerik ez"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Hiriko kaleek eta auzo kaleek lehenetsitako abiadura desberdinak izan ohi dituzte."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Herrian"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Herritik kanpo"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Honen antzeko seinale bat badago kale nagusiarekin duen bidegurutzean, ez duzu seinale gehiago aurkituko, abiadura muga area osoarentzat baita."</string>
     <string name="quest_sport_softball">"Sofbola"</string>
     <string name="quest_sport_racquet">"Racquetball"</string>
@@ -211,7 +207,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="credits_contributors_title">"Kode ekarpenak"</string>
     <string name="credits_author_title">"Egile eta mantentzailea"</string>
     <string name="quest_maxspeed_answer_living_street">"Bizitegi-kalea"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Honen antzeko seinale bat dago?"</string>
     <string name="quest_orchard_produce_title">"Zer landatzen da hemen?"</string>
     <string name="produce_grapes">"Mahatsak"</string>
     <string name="produce_agaves">"Agabeak"</string>
@@ -283,7 +278,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_buildingLevels_levelsLabel2">"Solairu arruntak (teilatukoak zenbatu gabe)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"Desberdina eraikinaren aldearen arabera"</string>
     <string name="quest_buildingLevels_answer_description">"Kasu horretan, sartu eraikinaren alde altuenaren datuak."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Errepide honetako galtzadak fisikoki banatuta daude (adib. langa baten bidez)? Lehenetsitako abiadura muga honen menpekoa da."</string>
     <string name="about_category_feedback">"Iruzkinak"</string>
     <string name="quest_leave_new_note_photo">"Erantsi argazkia"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Irudi hau ezabatu nahi duzu?"</string>
@@ -448,7 +442,6 @@ Bestela beste teklatu bat instalatu dezakezu. Hainbat hizkuntza onartzen dituzte
     <string name="quest_openingHours_no_sign">"Ez dago irekiera orduen kartelik"</string>
     <string name="quest_buildingType_sports_centre">"Kiroldegia"</string>
     <string name="quest_buildingType_toilets">"Komunak"</string>
-    <string name="quest_maxspeed_sign_question">"Zerk definitzen du abiadura-muga?"</string>
     <string name="quest_segregated_title">"Nola dago oinezkoen eta ziklisten bidea antolatuta hemen?"</string>
     <string name="dialog_tutorial_upload">"Zure aldaketak eskuz igotzeko, tresna-barran dagoen botoia sakatu, itxura hau duena"</string>
     <string name="quest_segregated_separated">"Bata besteaz banatuta"</string>
@@ -684,7 +677,6 @@ mailak"</string>
     <string name="at_housenumber">"etxe zenbakia %s"</string>
     <string name="quest_openingHours_add_off_days">"Itxitako egunak gehitu"</string>
     <string name="quest_openingHours_off_day">"Itxita dagoen eguna"</string>
-    <string name="quest_openingHours_unspecified_range">"Zehaztu gabe"</string>
     <string name="quest_cycleway_resurvey_title">"Bizikletentzako bidearen egoerak honela jarraitzen du?"</string>
     <string name="pref_title_resurvey_intervals">"Berraztertze tarteak"</string>
     <string name="resurvey_intervals_less_often">"Ez galdetu hain sarritan"</string>

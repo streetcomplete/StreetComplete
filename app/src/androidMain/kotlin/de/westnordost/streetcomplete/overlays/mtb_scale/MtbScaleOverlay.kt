@@ -13,12 +13,11 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale
 import de.westnordost.streetcomplete.osm.mtb_scale.parseMtbScale
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.default_disabled_overlay_domain_expert
+import de.westnordost.streetcomplete.resources.*
 
 class MtbScaleOverlay : Overlay, AndroidOverlay {
 
-    override val title = R.string.overlay_mtb_scale
+    override val title = Res.string.overlay_mtb_scale
     override val icon = R.drawable.quest_mtb
     override val changesetComment = "Specify MTB difficulty"
     override val wikiLink: String = "Key:mtb:scale"

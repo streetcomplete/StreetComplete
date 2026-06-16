@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>(), AndroidQuest {
 
@@ -20,10 +21,9 @@ class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>(), AndroidQue
     override val changesetComment = "Determine emergency access point refs"
     override val wikiLink = "Key:ref"
     override val icon = R.drawable.quest_access_point
+    override val title = Res.string.quest_genericRef_title
     override val achievements = listOf(EditTypeAchievement.LIFESAVER, EditTypeAchievement.RARE)
     override val isDeleteElementEnabled = true
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_genericRef_title
 
     override fun createForm() = AddAccessPointRefForm()
 

@@ -17,10 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.maxweight_axleload
-import de.westnordost.streetcomplete.resources.maxweight_bogieweight
-import de.westnordost.streetcomplete.resources.maxweight_hgv
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
 import de.westnordost.streetcomplete.ui.theme.largeInput

@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isThing
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
@@ -35,11 +36,10 @@ class AddLevelThing : OsmElementQuestType<String>, AndroidQuest {
     override val changesetComment = "Determine on which level things are in a building"
     override val wikiLink = "Key:level"
     override val icon = R.drawable.quest_level_thing
+    override val title = Res.string.quest_level_thing_title
     override val isReplacePlaceEnabled = false
     override val isDeleteElementEnabled = true
     override val achievements = listOf(CITIZEN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_level_thing_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         // get geometry of all malls in the area

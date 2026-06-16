@@ -119,7 +119,7 @@ fun DatesActiveTable(
                     cornerRadius = CornerRadius(cellCornerRadius.toPx(), cellCornerRadius.toPx())
                 )
 
-                if (date.dayOfMonth == 1) {
+                if (date.day == 1) {
                     drawText(
                         textMeasurer.measure(
                             text = months[date.month.ordinal],

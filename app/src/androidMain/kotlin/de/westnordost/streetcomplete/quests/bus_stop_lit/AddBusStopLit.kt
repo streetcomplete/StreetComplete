@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddBusStopLit : OsmFilterQuestType<Boolean>(), AndroidQuest {
@@ -32,9 +33,8 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Add whether public transport stops are lit"
     override val wikiLink = "Key:lit"
     override val icon = R.drawable.quest_bus_stop_lit
+    override val title = Res.string.quest_busStopLit_title2
     override val achievements = listOf(PEDESTRIAN)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_busStopLit_title2
 
     override fun createForm() = YesNoQuestForm()
 

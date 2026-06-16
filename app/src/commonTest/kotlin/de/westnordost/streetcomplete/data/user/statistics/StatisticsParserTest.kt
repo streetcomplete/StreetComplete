@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.io.Buffer
 import kotlinx.io.writeString
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.time.Instant
 
 class StatisticsParserTest {
 

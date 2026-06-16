@@ -8,46 +8,44 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "63.0"
-val appVersionCode = 6302
+val appVersionName = "63.1"
+val appVersionCode = 6304
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
-    "ar", "ast", "be", "bg", "bs", "ca", "cs", "da", "de", "el",
-    "en", "en-AU", "en-GB", "eo", "es", "es-AR", "et", "eu",
-    "fa", "fi", "fr", "gl", "he", "hr", "hu", "hy",
-    "id", "it", "ja", "ko", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
-    "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk",
+    "ar", "ast", "be", "bg", "bs", "ca", "cs", "cy", "da", "de", "el",
+    "en", "en-AU", "en-CA", "en-GB", "eo", "es", "es-AR", "et", "eu",
+    "fa", "fi", "fr", "ga", "gl", "he", "hr", "hu", "hy",
+    "id", "it", "ja", "ko", "kw", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
+    "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk", "vi",
     "zh", "zh-CN", "zh-HK", "zh-TW"
 )
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v6.14.0"
+val presetsVersion = "v6.16.0"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
  *  */
-val nsiVersion = "7.0.20260126"
+val nsiVersion = "7.0.20260414"
 
 /** Project ID of the crowdsource translation platform (from where to pull translations from) */
 val poEditorProjectId = "97843"
 
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "2.3.0"
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.3.0"
-    id("org.jetbrains.kotlin.plugin.compose") version "2.3.0"
+    id("org.jetbrains.kotlin.multiplatform") version "2.3.20"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.3.20"
+    id("org.jetbrains.kotlin.plugin.compose") version "2.3.20"
     id("com.android.application") version "8.11.2"
-    id("org.jetbrains.compose") version "1.10.0"
-    id("org.jetbrains.kotlinx.atomicfu") version "0.31.0"
-    id("com.codingfeline.buildkonfig") version "0.17.1"
+    id("org.jetbrains.compose") version "1.10.3"
+    id("org.jetbrains.kotlinx.atomicfu") version "0.32.1"
+    id("com.codingfeline.buildkonfig") version "0.18.0"
 }
 
 repositories {
     google()
     mavenCentral()
-    // for com.github.chrisbaines:PhotoView
-    maven { url = uri("https://www.jitpack.io") }
 }
 
 buildkonfig {
@@ -99,10 +97,10 @@ kotlin {
 
                 // Atomics, Locks, Synchronization
                 // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
-                implementation("org.jetbrains.kotlinx:atomicfu:0.31.0")
+                implementation("org.jetbrains.kotlinx:atomicfu:0.32.1")
 
                 // Dependency injection
-                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.1.1"))
+                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.2.1"))
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-compose")
                 implementation("io.insert-koin:koin-compose-viewmodel")
@@ -119,8 +117,8 @@ kotlin {
                 implementation("androidx.sqlite:sqlite-bundled:2.6.2")
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.4.0")
-                implementation("io.ktor:ktor-client-encoding:3.4.0")
+                implementation("io.ktor:ktor-client-core:3.4.2")
+                implementation("io.ktor:ktor-client-encoding:3.4.2")
                 // SHA256 hashing, used during OAuth authentication
                 implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
@@ -132,11 +130,11 @@ kotlin {
                 implementation("com.charleskorn.kaml:kaml:0.104.0")
 
                 // JSON
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.10.0")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.10.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.11.0")
 
                 // Date / time
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
 
                 // finding in which country we are for country-specific logic
                 implementation("de.westnordost:countryboundaries:3.0.0")
@@ -145,30 +143,30 @@ kotlin {
                 implementation("de.westnordost:osmfeatures:7.1.0")
 
                 // opening hours parser
-                implementation("de.westnordost:osm-opening-hours:0.3.0")
+                implementation("de.westnordost:osm-opening-hours:0.4.0")
 
                 // UI (Compose)
-                implementation("org.jetbrains.compose.runtime:runtime:1.10.0")
-                implementation("org.jetbrains.compose.foundation:foundation:1.10.0")
-                implementation("org.jetbrains.compose.material:material:1.10.0")
-                implementation("org.jetbrains.compose.ui:ui:1.10.0")
-                implementation("org.jetbrains.compose.components:components-resources:1.10.0")
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.10.0")
+                implementation("org.jetbrains.compose.runtime:runtime:1.10.3")
+                implementation("org.jetbrains.compose.foundation:foundation:1.10.3")
+                implementation("org.jetbrains.compose.material:material:1.10.3")
+                implementation("org.jetbrains.compose.ui:ui:1.10.3")
+                implementation("org.jetbrains.compose.components:components-resources:1.10.3")
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.10.3")
 
                 // UI Navigation
-                implementation("org.jetbrains.compose.ui:ui-backhandler:1.10.0")
+                implementation("org.jetbrains.compose.ui:ui-backhandler:1.10.3")
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
 
                 // UI ViewModel
-                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.9.6")
+                implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
 
                 // UI widgets
 
                 // non-lazy grid
-                implementation("com.cheonjaeung.compose.grid:grid:2.5.2")
+                implementation("com.cheonjaeung.compose.grid:grid:2.7.1")
 
                 // reorderable lists (raw Compose API is pretty complicated)
-                implementation("sh.calvin.reorderable:reorderable:2.5.1")
+                implementation("sh.calvin.reorderable:reorderable:3.1.0")
 
                 // multiplatform webview (for login via OAuth)
                 implementation("io.github.kevinnzou:compose-webview-multiplatform:2.0.3")
@@ -187,17 +185,17 @@ kotlin {
 
                 // Android stuff
                 implementation("com.google.android.material:material:1.13.0")
-                implementation("androidx.core:core-ktx:1.17.0")
+                implementation("androidx.core:core-ktx:1.18.0")
                 implementation("androidx.appcompat:appcompat:1.7.1")
                 implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-                implementation("androidx.annotation:annotation:1.9.1")
+                implementation("androidx.annotation:annotation:1.10.0")
                 implementation("androidx.fragment:fragment-ktx:1.8.9")
                 implementation("androidx.recyclerview:recyclerview:1.4.0")
                 implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
                 // Compose
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.10.0")
-                implementation("androidx.activity:activity-compose:1.12.4")
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.10.3")
+                implementation("androidx.activity:activity-compose:1.13.0")
 
                 // photos
                 implementation("androidx.exifinterface:exifinterface:1.4.2")
@@ -206,35 +204,34 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
 
                 // scheduling background jobs
-                implementation("androidx.work:work-runtime-ktx:2.11.1")
+                implementation("androidx.work:work-runtime-ktx:2.11.2")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.4.0")
+                implementation("io.ktor:ktor-client-android:3.4.2")
 
                 // widgets
                 implementation("com.google.android.flexbox:flexbox:3.0.0")
-                implementation("com.github.chrisbanes:PhotoView:2.3.0")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk:12.3.1")
+                implementation("org.maplibre.gl:android-sdk:13.0.2")
             }
         }
         iosMain {
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.4.0")
+                implementation("io.ktor:ktor-client-darwin:3.4.2")
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("io.ktor:ktor-client-mock:3.4.0")
+                implementation("io.ktor:ktor-client-mock:3.4.2")
             }
         }
         androidUnitTest {
             dependencies {
-                implementation("org.mockito:mockito-core:5.21.0")
+                implementation("org.mockito:mockito-core:5.23.0")
                 implementation(kotlin("test"))
             }
         }
@@ -301,6 +298,14 @@ android {
         }
     }
 
+    // we need to copy some resources from composeResources to android resources, see task
+    // copySharedResToAndroid. This can be removed when the map has been migrated to compose
+    sourceSets {
+        getByName("main") {
+            res.srcDir(layout.buildDirectory.dir("generated/androidMain/res"))
+        }
+    }
+
     buildFeatures {
         viewBinding = true
         compose = true
@@ -333,7 +338,7 @@ compose {
 }
 
 dependencies {
-    debugImplementation("org.jetbrains.compose.ui:ui-tooling:1.10.0")
+    debugImplementation("org.jetbrains.compose.ui:ui-tooling:1.10.3")
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
@@ -400,13 +405,13 @@ tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"
     version = presetsVersion
     languageCodes = bcp47ExportLanguages
-    targetDir = "$projectDir/src/androidMain/assets/osmfeatures/default"
+    targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/default"
 }
 
 tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
     group = "streetcomplete"
     version = nsiVersion
-    targetDir = "$projectDir/src/androidMain/assets/osmfeatures/brands"
+    targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/brands"
 }
 
 // tasks.register<DownloadBrandLogosTask>("downloadBrandLogos") {
@@ -418,10 +423,10 @@ tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
     group = "streetcomplete"
     version = presetsVersion
-    targetDir = "$projectDir/src/androidMain/res/drawable/"
+    targetDir = "$projectDir/src/commonMain/composeResources/drawable/"
     iconSize = 34
     transformName = { "preset_" + it.replace('-', '_') }
-    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt"
+    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt" // necessary as long as map is not compose based yet
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
@@ -458,7 +463,7 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     sourceDir = "$rootDir/res/country_metadata"
-    targetDir = "$projectDir/src/androidMain/assets/country_metadata"
+    targetDir = "$projectDir/src/commonMain/composeResources/files/country_metadata"
 }
 
 tasks.register("copyDefaultStringsToEnStrings") {
@@ -469,5 +474,29 @@ tasks.register("copyDefaultStringsToEnStrings") {
         sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
         sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
         sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values/strings.xml"), true)
+    }
+}
+
+// necessary as long as map hasn't been converted to compose yet
+val copySharedResToAndroid by tasks.registering(Copy::class) {
+    val target = "build/generated/androidMain/res/drawable"
+    from("src/commonMain/composeResources/drawable")
+    into(target)
+    include {
+        it.name.startsWith("building_") ||
+        it.name.startsWith("preset_") ||
+        it.name == "sport_volleyball.xml" ||
+        it.name == "religion_christian.xml" ||
+        it.name == "religion_jewish.xml" ||
+        it.name == "religion_muslim.xml"
+    }
+    doFirst {
+        File(target).mkdirs()
+    }
+}
+
+project.afterEvaluate {
+    tasks.named("preBuild") {
+        dependsOn(copySharedResToAndroid)
     }
 }

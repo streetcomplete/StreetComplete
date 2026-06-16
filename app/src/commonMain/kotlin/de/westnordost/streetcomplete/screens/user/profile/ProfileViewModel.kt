@@ -25,6 +25,7 @@ import kotlinx.io.files.Path
 @Stable
 abstract class ProfileViewModel : ViewModel() {
     abstract val userName: StateFlow<String?>
+    abstract val fileSystem: FileSystem
     abstract val userAvatarFile: StateFlow<Path?>
 
     abstract val achievementLevels: StateFlow<Int>
@@ -57,7 +58,7 @@ class ProfileViewModelImpl(
     private val statisticsSource: StatisticsSource,
     private val achievementsSource: AchievementsSource,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
-    private val fileSystem: FileSystem,
+    override val fileSystem: FileSystem,
     private val avatarsCacheDirectory: Path
 ) : ProfileViewModel() {
 
@@ -174,10 +175,8 @@ class ProfileViewModelImpl(
         }
     }
 
-    private fun getUserAvatarFile(): Path? {
-        val path = Path(avatarsCacheDirectory, userDataSource.userId.toString())
-        return if (fileSystem.exists(path)) path else null
-    }
+    private fun getUserAvatarFile(): Path =
+        Path(avatarsCacheDirectory, userDataSource.userId.toString())
 
     override fun onCleared() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesCountListener)

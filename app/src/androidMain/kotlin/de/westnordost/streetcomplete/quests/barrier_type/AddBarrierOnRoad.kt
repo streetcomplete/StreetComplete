@@ -12,6 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
 
 class AddBarrierOnRoad : OsmElementQuestType<BarrierType>, AndroidQuest {
 
@@ -32,9 +33,8 @@ class AddBarrierOnRoad : OsmElementQuestType<BarrierType>, AndroidQuest {
     override val changesetComment = "Specify how roads and barriers intersect"
     override val wikiLink = "Key:barrier"
     override val icon = R.drawable.quest_barrier_on_road
+    override val title = Res.string.quest_barrier_road_intersection
     override val achievements = listOf(CAR, BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_barrier_road_intersection
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         detectWayBarrierIntersection(mapData, barrierFilter, pathsFilter)

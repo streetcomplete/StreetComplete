@@ -20,15 +20,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.added_tag_action_title
-import de.westnordost.streetcomplete.resources.changed_tag_action_title
-import de.westnordost.streetcomplete.resources.create_node_action_description
-import de.westnordost.streetcomplete.resources.deleted_poi_action_description
-import de.westnordost.streetcomplete.resources.hid_action_description
-import de.westnordost.streetcomplete.resources.move_node_action_description
-import de.westnordost.streetcomplete.resources.removed_tag_action_title
-import de.westnordost.streetcomplete.resources.split_way_action_description
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.util.html.replaceHtmlEntities
 import org.jetbrains.compose.resources.StringResource

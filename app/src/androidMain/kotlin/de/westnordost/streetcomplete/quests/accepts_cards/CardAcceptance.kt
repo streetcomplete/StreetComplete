@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.quests.accepts_cards
 
 import de.westnordost.streetcomplete.quests.accepts_cards.CardAcceptance.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_credit_only
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_debit_and_credit
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_dedit_only
-import de.westnordost.streetcomplete.resources.quest_accepts_cards_unavailable
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
 
 enum class CardAcceptance(val debit: Boolean, val credit: Boolean) {

@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnswer>, AndroidQuest {
 
@@ -38,20 +39,18 @@ class AddTactilePavingCrosswalk : OsmElementQuestType<TactilePavingCrosswalkAnsw
     override val changesetComment = "Specify whether crosswalks have tactile paving"
     override val wikiLink = "Key:tactile_paving"
     override val icon = R.drawable.quest_blind_pedestrian_crossing
+    override val title = Res.string.quest_tactilePaving_title_crosswalk
     override val enabledInCountries = COUNTRIES_WHERE_TACTILE_PAVING_IS_COMMON
     override val achievements = listOf(BLIND)
-
-    override val hint = R.string.quest_generic_looks_like_this
+    override val hint = Res.string.quest_generic_looks_like_this
     override val hintImages = listOf(
-        R.drawable.tactile_paving1,
-        R.drawable.tactile_paving2,
-        R.drawable.tactile_paving3
+        Res.drawable.tactile_paving1,
+        Res.drawable.tactile_paving2,
+        Res.drawable.tactile_paving3
     )
 
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_tactilePaving_title_crosswalk
-
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter { it.isCrossing() }.asSequence()
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isCrossing() }
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val excludedWayNodeIds = mapData.ways

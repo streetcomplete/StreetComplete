@@ -5,17 +5,7 @@ import de.westnordost.streetcomplete.quests.bollard_type.BollardType.FLEXIBLE
 import de.westnordost.streetcomplete.quests.bollard_type.BollardType.FOLDABLE
 import de.westnordost.streetcomplete.quests.bollard_type.BollardType.REMOVABLE
 import de.westnordost.streetcomplete.quests.bollard_type.BollardType.RISING
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.bollard_fixed
-import de.westnordost.streetcomplete.resources.bollard_flexible
-import de.westnordost.streetcomplete.resources.bollard_foldable
-import de.westnordost.streetcomplete.resources.bollard_removable
-import de.westnordost.streetcomplete.resources.bollard_rising
-import de.westnordost.streetcomplete.resources.quest_bollard_type_fixed
-import de.westnordost.streetcomplete.resources.quest_bollard_type_flexible
-import de.westnordost.streetcomplete.resources.quest_bollard_type_foldable2
-import de.westnordost.streetcomplete.resources.quest_bollard_type_removable
-import de.westnordost.streetcomplete.resources.quest_bollard_type_rising
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

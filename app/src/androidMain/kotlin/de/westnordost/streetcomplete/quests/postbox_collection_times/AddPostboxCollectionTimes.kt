@@ -15,6 +15,8 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.StringResource
 
 class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, AndroidQuest {
 
@@ -31,6 +33,7 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
     override val changesetComment = "Survey postbox collection times"
     override val wikiLink = "Key:collection_times"
     override val icon = R.drawable.quest_mail
+    override val title = Res.string.quest_postboxCollectionTimes_title
     override val isDeleteElementEnabled = true
     override val achievements = listOf(POSTMAN)
 
@@ -55,16 +58,16 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
         // apparently mostly not in Latin America and in Arabic world and unknown in Africa
     )
 
-    override fun getTitle(tags: Map<String, String>): Int {
+    override fun getTitle(tags: Map<String, String>): StringResource {
         /* treat invalid collection times like it is not set at all. Any opening hours are
            legal tagging for collection times, even though they are not supported in
            this app, i.e. are never asked again */
         val oh = tags["collection_times"]?.toOpeningHoursOrNull(lenient = true)
         val hasSupportedCollectionTimes = oh != null && oh.isSupported(allowTimePoints = true)
         return if (hasSupportedCollectionTimes) {
-            R.string.quest_postboxCollectionTimes_resurvey_title
+            Res.string.quest_postboxCollectionTimes_resurvey_title
         } else {
-            R.string.quest_postboxCollectionTimes_title
+            Res.string.quest_postboxCollectionTimes_title
         }
     }
 
@@ -83,8 +86,8 @@ class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer>, An
         return oh.isSupported(allowTimePoints = true, allowAmbiguity = true)
     }
 
-    override fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry) =
-        getMapData().filter("nodes with amenity = post_box")
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = post_box")
 
     override fun createForm() = AddPostboxCollectionTimesForm()
 

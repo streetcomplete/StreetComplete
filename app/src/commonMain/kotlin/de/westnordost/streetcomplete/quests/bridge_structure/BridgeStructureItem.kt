@@ -1,16 +1,7 @@
 package de.westnordost.streetcomplete.quests.bridge_structure
 
 import de.westnordost.streetcomplete.quests.bridge_structure.BridgeStructure.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.bridge_structure_arch
-import de.westnordost.streetcomplete.resources.bridge_structure_beam
-import de.westnordost.streetcomplete.resources.bridge_structure_cablestayed
-import de.westnordost.streetcomplete.resources.bridge_structure_floating
-import de.westnordost.streetcomplete.resources.bridge_structure_humpback
-import de.westnordost.streetcomplete.resources.bridge_structure_simple_suspension
-import de.westnordost.streetcomplete.resources.bridge_structure_suspension
-import de.westnordost.streetcomplete.resources.bridge_structure_tied_arch
-import de.westnordost.streetcomplete.resources.bridge_structure_truss
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 
 val BridgeStructure.icon: DrawableResource get() = when (this) {

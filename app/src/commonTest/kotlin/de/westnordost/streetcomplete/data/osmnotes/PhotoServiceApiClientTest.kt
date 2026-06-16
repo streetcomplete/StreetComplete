@@ -88,7 +88,7 @@ class PhotoServiceApiClientTest {
     }
 
     @Test
-    fun `activate ignores error code 410 (gone)`(): Unit = runBlocking {
+    fun `activate ignores error code 410 - gone`(): Unit = runBlocking {
         client(MockEngine { respondError(HttpStatusCode.Gone) }).activate(1)
     }
 

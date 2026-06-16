@@ -15,9 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.no_search_results
-import de.westnordost.streetcomplete.resources.quest_presets_default_name
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.util.ktx.displayRegion
 import org.jetbrains.compose.resources.stringResource

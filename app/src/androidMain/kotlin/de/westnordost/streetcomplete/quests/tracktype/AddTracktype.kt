@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
 
 class AddTracktype : OsmFilterQuestType<Tracktype>(), AndroidQuest {
 
@@ -22,14 +23,14 @@ class AddTracktype : OsmFilterQuestType<Tracktype>(), AndroidQuest {
         )
         and (access !~ private|no or (foot and foot !~ private|no))
         and !bridge
+        and ice_road != yes
     """
     // ~paved tracks are less likely to change the surface type
     override val changesetComment = "Specify tracktypes"
     override val wikiLink = "Key:tracktype"
     override val icon = R.drawable.quest_tractor
+    override val title = Res.string.quest_tracktype_title
     override val achievements = listOf(CAR, BICYCLIST)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_tracktype_title
 
     override fun createForm() = AddTracktypeForm()
 

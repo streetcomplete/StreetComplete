@@ -25,8 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.changelog.Changelog
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.about_title_changelog
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.ui.ktx.plus

@@ -18,10 +18,7 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.DIET_NO
 import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.DIET_ONLY
 import de.westnordost.streetcomplete.quests.diet_type.DietAvailability.DIET_YES
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.create_new_note_hint
-import de.westnordost.streetcomplete.resources.quest_defibrillator_location_description
-import de.westnordost.streetcomplete.resources.quest_dietType_explanation
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.util.content
 import org.jetbrains.compose.resources.stringResource
 

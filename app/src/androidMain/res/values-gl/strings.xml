@@ -109,7 +109,6 @@ Porén, antes de subir as túas mudanzas, a aplicación comproba, mediante un &l
     <string name="quest_surface_value_sett">"Lastra de pedra natural"</string>
     <string name="quest_surface_value_wood">"Madeira"</string>
     <string name="quest_sidewalk_title">"Esta rúa ten beirarrúa?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"Onde está a rúa?"</string>
     <string name="quest_address_title">"Cal é o número da porta deste edificio?"</string>
     <string name="store_listing_short_description">"Aplicación de cartografado para o OpenStreetMap"</string>
     <string name="store_listing_full_description">"Axuda a mellora-lo OpenStreetMap co StreetComplete!
@@ -176,9 +175,6 @@ A información engadida inclúese de xeito directo no OpenStreetMap no teu nome 
     <string name="quest_maxspeed_answer_noSign_confirmation">"Miraches nas dúas beiras da rúa?
 Se non hai sinais ó longo de toda a rúa á que pertence o treito escollido, empregaranse os límites da velocidade xenéricos."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Mireino, non hai sinais"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"As vías urbanas teñen unha velocidade xenérica inferior ás interurbanas."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Área urbana"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Área interurbana"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Se hai un sinal coma este na rúa principal, non atoparás outros sinais dentro da zona porque o límite da velocidade sinalizado aí aplícase a toda a zona."</string>
     <string name="quest_sport_softball">"Sóftbol"</string>
     <string name="quest_sport_racquet">"Raqueta"</string>
@@ -212,7 +208,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="credits_contributors_title">"Colaboradores do código"</string>
     <string name="credits_author_title">"Autor e mantedor"</string>
     <string name="quest_maxspeed_answer_living_street">"É unha rúa residencial"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Entón hai un sinal como este?"</string>
     <string name="quest_orchard_produce_title">"Que é o que se cultiva aquí?"</string>
     <string name="produce_grapes">"Uvas"</string>
     <string name="produce_agaves">"Pitas ou agaves"</string>
@@ -284,7 +279,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_buildingLevels_levelsLabel2">"andares (sen conta-lo tellado)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"É distinto para cada parte do edificio"</string>
     <string name="quest_buildingLevels_answer_description">"Nese caso limítate a poñe-lo número de andares da parte máis alta do edificio."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Esta estrada ten calzadas separadas por algunha barreira física ou por unha zona verde? O límite de velocidade xenérico é distinto dependendo de se é o caso ou non."</string>
     <string name="about_category_feedback">"Suxestións"</string>
     <string name="quest_leave_new_note_photo">"Anexar imaxe"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Desexas elimina-la imaxe?"</string>
@@ -449,7 +443,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="quest_openingHours_no_sign">"Non hai letreiro coas horas de apertura"</string>
     <string name="quest_buildingType_sports_centre">"Complexo deportivo"</string>
     <string name="quest_buildingType_toilets">"Servizos"</string>
-    <string name="quest_maxspeed_sign_question">"Que define o límite de velocidade?"</string>
     <string name="quest_segregated_title">"De que xeito están dispostos aquí a senda peonil e maila senda ciclista?"</string>
     <string name="dialog_tutorial_upload">"Para subi-las mudanzas de xeito manual, emprega o botón na barra das ferramentas semellante a este."</string>
     <string name="quest_segregated_separated">"Separado un doutro"</string>
@@ -686,7 +679,6 @@ logros"</string>
     <string name="at_housenumber">"número de edificio %s"</string>
     <string name="quest_openingHours_add_off_days">"Engadir días pechados"</string>
     <string name="quest_openingHours_off_day">"Día pechado"</string>
-    <string name="quest_openingHours_unspecified_range">"Sen especificar"</string>
     <string name="quest_cycleway_resurvey_title">"A infraestrutura ciclista segue sendo esta?"</string>
     <string name="pref_title_resurvey_intervals">"Frecuencia de revisión"</string>
     <string name="resurvey_intervals_less_often">"Menos a miúdo"</string>

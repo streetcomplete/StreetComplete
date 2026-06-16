@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BUILDING
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.quests.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
 
 class AddIsBuildingUnderground : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
@@ -14,9 +15,8 @@ class AddIsBuildingUnderground : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val changesetComment = "Determine whether buildings are fully underground"
     override val wikiLink = "Key:location"
     override val icon = R.drawable.quest_building_underground
+    override val title = Res.string.quest_building_underground_title
     override val achievements = listOf(BUILDING)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_building_underground_title
 
     override fun createForm() = YesNoQuestForm()
 

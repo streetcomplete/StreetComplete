@@ -22,9 +22,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.osm.unit
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ar_measure
-import de.westnordost.streetcomplete.resources.or
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.LengthFeetInchesInput
 import de.westnordost.streetcomplete.ui.common.LengthMetersInput
 import de.westnordost.streetcomplete.ui.common.MeasurementIcon

@@ -110,7 +110,6 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
     <string name="quest_surface_value_sett">"Llambordes no ajustades"</string>
     <string name="quest_surface_value_wood">"Fusta"</string>
     <string name="quest_sidewalk_title">"Aquest carrer té vorera?"</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">"On és aquest carrer?"</string>
     <string name="quest_address_title">"Quin número de portal té aquest edifici?"</string>
     <string name="store_listing_short_description">"Aplicació de cartògraf de camp per a l'OpenStreetMap"</string>
     <string name="store_listing_full_description">"Ajudeu a millorar l'OpenStreetMap amb StreetComplete!
@@ -177,9 +176,6 @@ Aleshores, la informació que introduïu s'afegeix directament a l'OpenStreetMap
     <string name="quest_maxspeed_answer_noSign_confirmation">"Heu comprovat els caps del carrer?
 Si no hi ha cap senyal en tot el carrer que s'apliqui en l'àrea realçada, s'apliquen els límits de velocitat predeterminats."</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">"Sí, no hi ha cap senyal"</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">"Les vies urbanes tenen límits de velocitat diferents que els vies rurals."</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">"Dins el nucli urbà"</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">"Fora del nucli urbà"</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">"Si hi ha un signe d'aquest tipus a la intersecció del carrer principal, no trobareu indicis individuals a la zona perquè el límit de velocitat publicat allà s'aplica a tota la zona."</string>
     <string name="quest_sport_softball">"Softbol"</string>
     <string name="quest_sport_racquet">"Raquetbol"</string>
@@ -213,7 +209,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="credits_contributors_title">"Contribuïdors al codi"</string>
     <string name="credits_author_title">"Autor i mantenidor"</string>
     <string name="quest_maxspeed_answer_living_street">"És una via residencial"</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">"Per tant, hi ha un senyal com aquest?"</string>
     <string name="quest_orchard_produce_title">"Què hi cultiven aquí?"</string>
     <string name="produce_grapes">"Raïm"</string>
     <string name="produce_agaves">"Agaves"</string>
@@ -285,7 +280,6 @@ En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els tec
     <string name="quest_buildingLevels_levelsLabel2">"nivells normals (sense comptar la teulada)"</string>
     <string name="quest_buildingLevels_answer_multipleLevels">"És diferent a vàries parts de l'edifici"</string>
     <string name="quest_buildingLevels_answer_description">"En aquest cas, senzillament entreu els valors de la part de l'edifici més alta."</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">"Els carrils d'aquesta carretera  estan físicament separats (és a dir, a través d'una barrera)? El límit de velocitat per defecte depèn de si aquest és el cas o no."</string>
     <string name="about_category_feedback">"Comentaris"</string>
     <string name="quest_leave_new_note_photo">"Adjunta la foto"</string>
     <string name="quest_leave_new_note_photo_delete_title">"Voleu eliminar aquesta foto?"</string>
@@ -450,7 +444,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_openingHours_no_sign">"No hi ha cartell amb horaris"</string>
     <string name="quest_buildingType_sports_centre">"Centre d'esports"</string>
     <string name="quest_buildingType_toilets">"Lavabos"</string>
-    <string name="quest_maxspeed_sign_question">"Què defineix el límit de velocitat?"</string>
     <string name="quest_segregated_title">"Com estan separats el carril bici i la vorera?"</string>
     <string name="dialog_tutorial_upload">"Per pujar els vostres canvis manualment, useu el botó a la barra d'eines que és així."</string>
     <string name="quest_segregated_separated">"Segregat l'un de l'altre"</string>
@@ -686,7 +679,6 @@ d'acompliment"</string>
     <string name="at_housenumber">"número de casa %1$s"</string>
     <string name="quest_openingHours_add_off_days">"Afegeix els dies de descans"</string>
     <string name="quest_openingHours_off_day">"Dia de descans"</string>
-    <string name="quest_openingHours_unspecified_range">"Sense especificar"</string>
     <string name="quest_cycleway_resurvey_title">"Aquesta és encara la situació del carril bici aquí?"</string>
     <string name="pref_title_resurvey_intervals">"Intervals de reenquesta"</string>
     <string name="resurvey_intervals_less_often">"Demana-ho menys sovint"</string>

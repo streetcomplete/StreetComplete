@@ -27,8 +27,8 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.withContext
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDateTime
+import kotlin.time.Instant
 
 @Stable
 abstract class EditHistoryViewModel : ViewModel() {

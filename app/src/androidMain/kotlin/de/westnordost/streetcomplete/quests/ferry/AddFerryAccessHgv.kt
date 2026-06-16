@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
+import de.westnordost.streetcomplete.resources.*
 
 class AddFerryAccessHgv : OsmElementQuestType<FerryHgvAccess>, AndroidQuest {
 
@@ -18,14 +19,12 @@ class AddFerryAccessHgv : OsmElementQuestType<FerryHgvAccess>, AndroidQuest {
         "ways, relations with route = ferry and !hgv and !hgv:signed"
             .toElementFilterExpression()
     }
-
     override val changesetComment = "Specify ferry access for hgv"
     override val wikiLink = "Tag:route=ferry"
     override val icon = R.drawable.quest_ferry_hgv
+    override val title = Res.string.quest_ferry_hgv_title
     override val hasMarkersAtEnds = true
     override val achievements = listOf(RARE)
-
-    override fun getTitle(tags: Map<String, String>) = R.string.quest_ferry_hgv_title
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val wayIdsInFerryRoutes = wayIdsInFerryRoutes(mapData.relations)

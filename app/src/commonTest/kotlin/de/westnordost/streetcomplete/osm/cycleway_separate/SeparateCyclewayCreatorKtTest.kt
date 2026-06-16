@@ -664,7 +664,7 @@ class SeparateCyclewayCreatorKtTest {
         )
     }
 
-    @Test fun `apply path sets foot and bicycle only if not a value like permissive, private etc is set`() {
+    @Test fun `apply path sets foot and bicycle only if not a value like permissive or private etc is set`() {
         assertEquals(
             setOf(StringMapEntryModify("highway", "cycleway", "path")),
             PATH.appliedTo(mapOf(
