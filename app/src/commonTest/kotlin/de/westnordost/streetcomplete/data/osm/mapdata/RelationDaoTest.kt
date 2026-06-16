@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
@@ -14,7 +14,7 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class RelationDaoTest : DatabaseTestCase() {
+class RelationDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: RelationDao
 
     @BeforeTest fun createDao() {

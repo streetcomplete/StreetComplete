@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.created_elements
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import kotlin.test.BeforeTest
@@ -8,7 +8,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class CreatedElementsDaoTest : DatabaseTestCase() {
+class CreatedElementsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: CreatedElementsDao
 
     @BeforeTest fun createDao() {

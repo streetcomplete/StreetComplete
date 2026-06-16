@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class EditTypeStatisticsDaoTest : DatabaseTestCase() {
+class EditTypeStatisticsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var daoType: EditTypeStatisticsDao
 
     @BeforeTest fun createDao() {

@@ -7,16 +7,18 @@ import kotlinx.io.files.SystemFileSystem
 import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 
-open class DatabaseTestCase {
+open class StreetCompleteDatabaseTestCase {
     protected lateinit var database: Database
     private lateinit var connection: SQLiteConnection
 
-    @BeforeTest fun setUpHelper() {
-        val connection = BundledSQLiteDriver().open(DATABASE_NAME)
+    @BeforeTest fun setUp() {
+        SystemFileSystem.delete(Path(DATABASE_NAME), mustExist = false)
+        connection = BundledSQLiteDriver().open(DATABASE_NAME)
         database = DatabaseImpl(connection)
+        database.initialize(StreetCompleteDatabaseConfigurator)
     }
 
-    @AfterTest fun tearDownHelper() {
+    @AfterTest fun tearDown() {
         connection.close()
         SystemFileSystem.delete(Path(DATABASE_NAME), mustExist = false)
     }

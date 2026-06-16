@@ -227,11 +227,13 @@ kotlin {
                 implementation(kotlin("test"))
 
                 implementation("io.ktor:ktor-client-mock:3.4.2")
+                implementation("androidx.sqlite:sqlite-bundled:2.6.2")
             }
         }
         androidUnitTest {
             dependencies {
                 implementation("org.mockito:mockito-core:5.23.0")
+                implementation("androidx.sqlite:sqlite-bundled-jvm:2.6.2")
                 implementation(kotlin("test"))
             }
         }

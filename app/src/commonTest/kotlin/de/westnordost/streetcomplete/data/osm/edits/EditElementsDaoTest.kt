@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
@@ -8,7 +8,7 @@ import kotlin.test.*
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
-class EditElementsDaoTest : DatabaseTestCase() {
+class EditElementsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: EditElementsDao
 
     @BeforeTest fun createDao() {

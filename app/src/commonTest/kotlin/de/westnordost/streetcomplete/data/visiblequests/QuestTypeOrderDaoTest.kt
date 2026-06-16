@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class QuestTypeOrderDaoTest : DatabaseTestCase() {
+class QuestTypeOrderDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: QuestTypeOrderDao
 
     @BeforeTest fun createDao() {

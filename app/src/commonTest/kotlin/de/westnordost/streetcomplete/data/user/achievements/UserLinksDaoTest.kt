@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class UserLinksDaoTest : DatabaseTestCase() {
+class UserLinksDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: UserLinksDao
 
     @BeforeTest fun createDao() {

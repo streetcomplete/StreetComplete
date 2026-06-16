@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -14,7 +14,7 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class OsmQuestsHiddenDaoTest : DatabaseTestCase() {
+class OsmQuestsHiddenDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: OsmQuestsHiddenDao
 
     @BeforeTest fun createDao() {

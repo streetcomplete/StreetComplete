@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmcal
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -8,8 +8,9 @@ import kotlin.test.assertEquals
 import kotlin.time.Clock
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours
+import kotlin.time.Instant
 
-class CalendarEventsDaoTest : DatabaseTestCase() {
+class CalendarEventsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: CalendarEventsDao
 
     @BeforeTest fun createDao() {
@@ -18,7 +19,7 @@ class CalendarEventsDaoTest : DatabaseTestCase() {
 
     @Test
     fun putAndGet() {
-        val tomorrow = Clock.System.now() + 1.days
+        val tomorrow = Instant.fromEpochMilliseconds(Clock.System.now().toEpochMilliseconds()) + 1.days
         val multiDayEventTomorrow = CalendarEvent(
             id = 123L,
             name = "multi day event",

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload.changesets
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -9,7 +9,7 @@ import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class OpenChangesetsDaoTest : DatabaseTestCase() {
+class OpenChangesetsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: OpenChangesetsDao
 
     private val Q = "Hurzipurz"

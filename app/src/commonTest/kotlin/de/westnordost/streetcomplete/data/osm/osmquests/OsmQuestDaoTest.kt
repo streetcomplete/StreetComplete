@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -13,7 +13,7 @@ import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class OsmQuestDaoTest : DatabaseTestCase() {
+class OsmQuestDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: OsmQuestDao
 
     @BeforeTest fun createDao() {

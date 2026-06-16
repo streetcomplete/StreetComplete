@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.visiblequests
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class VisibleEditTypeDaoTest : DatabaseTestCase() {
+class VisibleEditTypeDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: VisibleEditTypeDao
 
     @BeforeTest fun createDao() {

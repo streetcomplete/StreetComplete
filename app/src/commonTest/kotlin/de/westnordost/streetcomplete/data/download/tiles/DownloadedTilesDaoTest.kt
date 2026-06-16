@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.download.tiles
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.BeforeTest
@@ -9,7 +9,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class DownloadedTilesDaoTest : DatabaseTestCase() {
+class DownloadedTilesDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: DownloadedTilesDao
 
     @BeforeTest fun createDao() {

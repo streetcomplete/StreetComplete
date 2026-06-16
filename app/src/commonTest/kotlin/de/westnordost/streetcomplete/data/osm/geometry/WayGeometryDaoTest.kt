@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
@@ -12,7 +12,7 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class WayGeometryDaoTest : DatabaseTestCase() {
+class WayGeometryDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: WayGeometryDao
 
     @BeforeTest fun createDao() {

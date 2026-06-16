@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.user.User
@@ -14,7 +14,7 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class NoteDaoTest : DatabaseTestCase() {
+class NoteDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: NoteDao
 
     @BeforeTest fun createDao() {

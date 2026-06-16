@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
 import de.westnordost.streetcomplete.data.AllEditTypes
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.create.RevertCreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
@@ -39,7 +39,7 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class ElementEditsDaoTest : DatabaseTestCase() {
+class ElementEditsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: ElementEditsDao
 
     @BeforeTest fun createDao() {

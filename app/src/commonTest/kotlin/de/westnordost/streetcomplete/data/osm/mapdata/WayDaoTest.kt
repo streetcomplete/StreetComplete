@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.BeforeTest
@@ -11,7 +11,7 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class WayDaoTest : DatabaseTestCase() {
+class WayDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: WayDao
 
     @BeforeTest fun createDao() {

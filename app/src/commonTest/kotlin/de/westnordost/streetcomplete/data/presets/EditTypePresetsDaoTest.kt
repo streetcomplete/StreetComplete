@@ -1,13 +1,13 @@
 package de.westnordost.streetcomplete.data.presets
 
-import de.westnordost.streetcomplete.data.DatabaseTestCase
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class EditTypePresetsDaoTest : DatabaseTestCase() {
+class EditTypePresetsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: EditTypePresetsDao
 
     @BeforeTest fun createDao() {
