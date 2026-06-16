@@ -1,5 +1,25 @@
 package de.westnordost.streetcomplete.data
 
+fun Database.initialize(configurator: DatabaseConfigurator) {
+    // on single-threaded access to the database, this has little impact, though
+    // see https://www.sqlite.org/wal.html
+    exec("PRAGMA journal_mode=WAL")
+
+    transaction {
+        val oldVersion = rawQuery("PRAGMA user_version") { it.getInt("user_version") }.single()
+        val newVersion = configurator.version
+        if (oldVersion < newVersion) {
+            if (oldVersion == 0) {
+                configurator.onCreate(this)
+            } else {
+                configurator.onUpgrade(this, oldVersion)
+            }
+            exec("PRAGMA user_version = $newVersion")
+        }
+    }
+}
+
+
 data class ColumnDefinition(
     val id: Int,
     val name: String,

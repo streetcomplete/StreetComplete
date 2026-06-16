@@ -28,11 +28,10 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable
 import de.westnordost.streetcomplete.util.logs.Log
 
-/** Creates the database and upgrades it */
-object DatabaseInitializer {
-    const val DB_VERSION = 20
+object StreetCompleteDatabaseConfigurator : DatabaseConfigurator {
+    override val version = 20
 
-    fun onCreate(db: Database) {
+    override fun onCreate(db: Database) {
         // OSM notes
         db.exec(NoteTable.CREATE)
         db.exec(NoteTable.SPATIAL_INDEX_CREATE)
@@ -105,11 +104,11 @@ object DatabaseInitializer {
         db.exec(CalendarEventsTable.CREATE)
     }
 
-    fun onUpgrade(db: Database, oldVersion: Int, newVersion: Int) {
-        if (oldVersion <= 1 && newVersion > 1) {
+    override fun onUpgrade(db: Database, oldVersion: Int) {
+        if (oldVersion < 2) {
             db.exec(CreatedElementsTable.CREATE)
         }
-        if (oldVersion <= 2 && newVersion > 2) {
+        if (oldVersion < 3) {
             db.exec(QuestTypeOrderTable.CREATE)
             db.exec(QuestTypeOrderTable.INDEX_CREATE)
 
@@ -131,10 +130,10 @@ object DatabaseInitializer {
             """.trimIndent())
             db.exec("DROP TABLE $oldName;")
         }
-        if (oldVersion <= 3 && newVersion > 3) {
+        if (oldVersion < 4) {
             db.exec("DROP TABLE IF EXISTS new_achievements")
         }
-        if (oldVersion <= 4 && newVersion > 4) {
+        if (oldVersion < 5) {
             db.exec(NodeTable.SPATIAL_INDEX_CREATE)
             db.exec(WayGeometryTable.CREATE)
             db.exec(RelationGeometryTable.CREATE)
@@ -181,25 +180,25 @@ object DatabaseInitializer {
             )
             db.exec("DROP TABLE $oldGeometryTableName;")
         }
-        if (oldVersion <= 5 && newVersion > 5) {
+        if (oldVersion < 6) {
             db.tryExec("ALTER TABLE ${NoteEditsTable.NAME} ADD COLUMN ${NoteEditsTable.Columns.TRACK} text DEFAULT '[]' NOT NULL")
         }
-        if (oldVersion <= 6 && newVersion > 6) {
+        if (oldVersion < 7) {
             db.exec(EditTypeStatisticsTable.create(EditTypeStatisticsTable.NAME_CURRENT_WEEK))
             db.exec(CountryStatisticsTable.create(CountryStatisticsTable.NAME_CURRENT_WEEK))
             db.exec(ActiveDatesTable.CREATE)
         }
-        if (oldVersion <= 7 && newVersion > 7) {
+        if (oldVersion < 8) {
             db.delete(ElementEditsTable.NAME, "${ElementEditsTable.Columns.QUEST_TYPE} = 'AddShoulder'", null)
         }
-        if (oldVersion <= 8 && newVersion > 8) {
+        if (oldVersion < 9) {
             db.renameQuest("AddPicnicTableCover", "AddAmenityCover")
         }
-        if (oldVersion <= 9 && newVersion > 9) {
+        if (oldVersion < 10) {
             db.exec("DROP TABLE ${DownloadedTilesTable.NAME};")
             db.exec(DownloadedTilesTable.CREATE)
         }
-        if (oldVersion <= 10 && newVersion > 10) {
+        if (oldVersion < 11) {
             db.exec("DROP INDEX osm_element_edits_index")
 
             // Recreating table (=clearing table) because it would be very complicated to pick the
@@ -213,11 +212,11 @@ object DatabaseInitializer {
 
             db.exec(ElementIdProviderTable.ELEMENT_INDEX_CREATE)
         }
-        if (oldVersion <= 11 && newVersion > 11) {
+        if (oldVersion < 12) {
             db.exec(LogsTable.CREATE)
             db.exec(LogsTable.INDEX_CREATE)
         }
-        if (oldVersion <= 12 && newVersion > 12) {
+        if (oldVersion < 13) {
             // Deleting all data related to elements and their geometries, since
             // the binary format in which `GEOMETRY_{POLYGONS,POLYLINES}` data from
             // `{Way,Relation}GeometryTable` is stored has changed (see #5307)
@@ -235,30 +234,30 @@ object DatabaseInitializer {
 
             db.exec("DELETE FROM ${DownloadedTilesTable.NAME};")
         }
-        if (oldVersion <= 13 && newVersion > 13) {
+        if (oldVersion < 14) {
             db.tryExec("ALTER TABLE ${ElementEditsTable.NAME} ADD COLUMN ${ElementEditsTable.Columns.IS_NEAR_USER_LOCATION} int DEFAULT 1 NOT NULL")
             db.tryExec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LAST_POSITION_LATITUDE} double DEFAULT 0 NOT NULL")
             db.tryExec("ALTER TABLE ${OpenChangesetsTable.NAME} ADD COLUMN ${OpenChangesetsTable.Columns.LAST_POSITION_LONGITUDE} double DEFAULT 0 NOT NULL")
         }
-        if (oldVersion <= 14 && newVersion > 14) {
+        if (oldVersion < 15) {
             db.renameOverlay("ShopsOverlay", "PlacesOverlay")
         }
-        if (oldVersion <= 15 && newVersion > 15) {
+        if (oldVersion < 16) {
             db.deleteQuest("AddCrossingType")
         }
-        if (oldVersion <= 16 && newVersion > 16) {
+        if (oldVersion < 17) {
             db.renameQuest("AddProhibitedForMoped", "AddMopedAccess")
         }
-        if (oldVersion <= 17 && newVersion > 17) {
+        if (oldVersion < 18) {
             db.exec("DROP TABLE IF EXISTS direction_of_flow;")
             db.deleteQuest("AddSuspectedOneway")
         }
-        if (oldVersion <= 18 && newVersion > 18) {
+        if (oldVersion < 19) {
             db.deleteQuest("AddParcelLockerMailIn")
             db.deleteQuest("AddParcelLockerPickup")
             db.deleteQuest("AddShoulder")
         }
-        if (oldVersion <= 19 && newVersion > 19) {
+        if (oldVersion < 20) {
             db.exec(CalendarEventsTable.CREATE)
         }
     }

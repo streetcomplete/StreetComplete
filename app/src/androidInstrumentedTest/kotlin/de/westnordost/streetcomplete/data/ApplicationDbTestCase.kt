@@ -16,7 +16,8 @@ open class ApplicationDbTestCase {
     @BeforeTest fun setUpHelper() {
         val dbPath = context.getDatabasePath(DATABASE_NAME).path
         dbConnection = BundledSQLiteDriver().open(dbPath)
-        database = StreetCompleteDatabase(dbConnection)
+        database = DatabaseImpl(dbConnection)
+        database.initialize(StreetCompleteDatabaseConfigurator)
     }
 
     @Test fun databaseAvailable() {

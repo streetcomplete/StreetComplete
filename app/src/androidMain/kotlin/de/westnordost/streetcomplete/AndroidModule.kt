@@ -6,11 +6,13 @@ import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SharedPreferencesSettings
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.StreetCompleteDatabase
+import de.westnordost.streetcomplete.data.DatabaseImpl
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.connection.InternetConnectionState
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadControllerAndroid
 import de.westnordost.streetcomplete.data.download.DownloadWorker
+import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloaderAndroid
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
@@ -31,7 +33,7 @@ val androidModule = module {
     single<Database> {
         val databaseFilePath = get<Context>().getDatabasePath(ApplicationConstants.DATABASE_NAME).path
         val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
-        StreetCompleteDatabase(databaseConnection)
+        DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
     }
 
     // Workmanager-based on Android

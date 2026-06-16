@@ -7,29 +7,12 @@ import de.westnordost.streetcomplete.data.ConflictAlgorithm.*
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
 
-class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) : Database {
+class DatabaseImpl(private val connection: SQLiteConnection) : Database {
     private val lock = ReentrantLock()
     private var transactionDepth = 0
 
-    init {
-        databaseConnection.execSQL("PRAGMA journal_mode=WAL")
-        val oldVersion = databaseConnection.prepare("PRAGMA user_version").use { statement ->
-            statement.toSequence { it.getInt("user_version") }.single()
-        }
-        val newVersion = DatabaseInitializer.DB_VERSION
-
-        if (oldVersion < newVersion) {
-            if (oldVersion == 0) {
-                DatabaseInitializer.onCreate(this)
-            } else {
-                DatabaseInitializer.onUpgrade(this, oldVersion, newVersion)
-            }
-            databaseConnection.execSQL("PRAGMA user_version = $newVersion")
-        }
-    }
-
     override fun exec(sql: String, args: Array<Any>?): Unit = lock.withLock {
-        databaseConnection.prepare(sql).use { statement ->
+        connection.prepare(sql).use { statement ->
             statement.bindAll(args)
             statement.step()
         }
@@ -40,7 +23,7 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         args: Array<Any>?,
         transform: (CursorPosition) -> T,
     ): List<T> = lock.withLock {
-        databaseConnection.prepare(sql).use { statement ->
+        connection.prepare(sql).use { statement ->
             statement.bindAll(args)
             statement.toSequence(transform).toList()
         }
@@ -56,7 +39,7 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         orderBy: String?,
         transform: (CursorPosition) -> T,
     ): T? = lock.withLock {
-        databaseConnection.prepareQuery(false, table, columns, where, groupBy, having, orderBy, 1).use { statement ->
+        connection.prepareQuery(false, table, columns, where, groupBy, having, orderBy, 1).use { statement ->
             statement.bindAll(args)
             statement.toSequence(transform).firstOrNull()
         }
@@ -74,7 +57,7 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         distinct: Boolean,
         transform: (CursorPosition) -> T,
     ): List<T> = lock.withLock {
-        databaseConnection.prepareQuery(distinct, table, columns, where, groupBy, having, orderBy, limit).use { statement ->
+        connection.prepareQuery(distinct, table, columns, where, groupBy, having, orderBy, limit).use { statement ->
             statement.bindAll(args)
             statement.toSequence(transform).toList()
         }
@@ -85,7 +68,7 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         values: Collection<Pair<String, Any?>>,
         conflictAlgorithm: ConflictAlgorithm?,
     ): Long = lock.withLock {
-        databaseConnection.prepareInsert(table, values.map { it.first }, conflictAlgorithm).use { statement ->
+        connection.prepareInsert(table, values.map { it.first }, conflictAlgorithm).use { statement ->
             statement.bindAll(values.map { it.second }.toTypedArray())
             statement.executeInsert()
         }
@@ -97,7 +80,7 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         valuesList: Iterable<Array<Any?>>,
         conflictAlgorithm: ConflictAlgorithm?,
     ): List<Long> = lock.withLock {
-        databaseConnection.prepareInsert(table, columnNames.toList(), conflictAlgorithm).use { statement ->
+        connection.prepareInsert(table, columnNames.toList(), conflictAlgorithm).use { statement ->
             val result = ArrayList<Long>()
             transaction {
                 for (values in valuesList) {
@@ -120,21 +103,21 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         args: Array<Any>?,
         conflictAlgorithm: ConflictAlgorithm?,
     ): Int = lock.withLock {
-        databaseConnection.prepareUpdate(table, values, where, conflictAlgorithm).use { statement ->
+        connection.prepareUpdate(table, values, where, conflictAlgorithm).use { statement ->
             val valueArgs = values.map { it.second }
             val allArgs = (valueArgs + args.orEmpty()).toTypedArray()
             statement.bindAll(allArgs)
             statement.step()
         }
-        databaseConnection.getChangesCount()
+        connection.getChangesCount()
     }
 
     override fun delete(table: String, where: String?, args: Array<Any>?): Int = lock.withLock {
-        databaseConnection.prepareDelete(table, where).use { statement ->
+        connection.prepareDelete(table, where).use { statement ->
             statement.bindAll(args)
             statement.step()
         }
-        databaseConnection.getChangesCount()
+        connection.getChangesCount()
     }
 
     override fun <T> transaction(block: () -> T): T = lock.withLock {
@@ -142,16 +125,16 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
         transactionDepth++
         try {
             if (isOutermost) {
-                databaseConnection.execSQL("BEGIN IMMEDIATE TRANSACTION")
+                connection.execSQL("BEGIN IMMEDIATE TRANSACTION")
             }
             val result = block()
             if (isOutermost) {
-                databaseConnection.execSQL("END TRANSACTION")
+                connection.execSQL("END TRANSACTION")
             }
             return result
         } catch (t: Throwable) {
             if (isOutermost) {
-                databaseConnection.execSQL("ROLLBACK TRANSACTION")
+                connection.execSQL("ROLLBACK TRANSACTION")
             }
             throw t
         } finally {
@@ -160,7 +143,8 @@ class StreetCompleteDatabase(private val databaseConnection: SQLiteConnection) :
     }
 }
 
-class SQLiteCursorPosition(private val statement: SQLiteStatement) : CursorPosition {
+
+private class CursorPositionImpl(private val statement: SQLiteStatement) : CursorPosition {
     override fun getInt(columnName: String): Int = statement.getInt(index(columnName))
     override fun getLong(columnName: String): Long = statement.getLong(index(columnName))
     override fun getDouble(columnName: String): Double = statement.getDouble(index(columnName))
@@ -292,7 +276,7 @@ private fun <T> SQLiteStatement.bindAll(args: Array<T>?) {
 }
 
 private fun <T> SQLiteStatement.toSequence(transform: (CursorPosition) -> T): Sequence<T> {
-    val c = SQLiteCursorPosition(this)
+    val c = CursorPositionImpl(this)
     return sequence {
         while (step()) {
             yield(transform(c))
