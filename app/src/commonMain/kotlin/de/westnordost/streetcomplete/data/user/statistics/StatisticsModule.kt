@@ -17,7 +17,7 @@ val statisticsModule = module {
     factory { StatisticsParser(get(named("TypeAliases"))) }
 
     single<StatisticsSource> { get<StatisticsController>() }
-    single { StatisticsController(
+    single<StatisticsController> { StatisticsControllerImpl(
         editTypeStatisticsDao = get(named("EditTypeStatistics")),
         countryStatisticsDao = get(named("CountryStatistics")),
         currentWeekEditTypeStatisticsDao = get(named("EditTypeStatisticsCurrentWeek")),

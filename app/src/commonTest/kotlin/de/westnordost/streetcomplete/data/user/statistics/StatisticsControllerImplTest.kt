@@ -15,7 +15,7 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class StatisticsControllerTest {
+class StatisticsControllerImplTest {
 
     private lateinit var editTypeStatisticsDao: EditTypeStatisticsDao
     private lateinit var countryStatisticsDao: CountryStatisticsDao
@@ -27,7 +27,7 @@ class StatisticsControllerTest {
     private lateinit var userLoginSource: UserLoginSource
     private lateinit var userLoginListener: UserLoginSource.Listener
 
-    private lateinit var statisticsController: StatisticsController
+    private lateinit var statisticsController: StatisticsControllerImpl
     private lateinit var listener: StatisticsSource.Listener
 
     private val questA = "TestQuestTypeA"
@@ -50,7 +50,7 @@ class StatisticsControllerTest {
         }
 
 
-        statisticsController = StatisticsController(
+        statisticsController = StatisticsControllerImpl(
             editTypeStatisticsDao,
             countryStatisticsDao,
             currentWeekEditTypeStatisticsDao,
