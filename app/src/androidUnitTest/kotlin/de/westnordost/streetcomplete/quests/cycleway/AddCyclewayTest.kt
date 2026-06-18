@@ -5,6 +5,9 @@ import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import dev.mokkery.answering.returns
+import dev.mokkery.every
+import dev.mokkery.mock
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -141,8 +144,8 @@ class AddCyclewayTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(way))
         mapData.wayGeometriesById[1L] = pGeom(0.0, 0.0)
-        on(countryInfo.countryCode).thenReturn("DE")
-        on(countryInfo.hasAdvisoryCycleLane).thenReturn(true)
+        every { countryInfo.countryCode } returns "DE"
+        every { countryInfo.hasAdvisoryCycleLane } returns true
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
         // because we don't know if we are in Belgium
@@ -156,8 +159,8 @@ class AddCyclewayTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(way))
         mapData.wayGeometriesById[1L] = pGeom(0.0, 0.0)
-        on(countryInfo.countryCode).thenReturn("BE")
-        on(countryInfo.hasAdvisoryCycleLane).thenReturn(true)
+        every { countryInfo.countryCode } returns "BE"
+        every { countryInfo.hasAdvisoryCycleLane } returns true
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         // because we don't know if we are in Belgium
