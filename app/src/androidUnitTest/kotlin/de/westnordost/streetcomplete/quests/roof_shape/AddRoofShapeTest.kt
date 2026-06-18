@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.IncompleteCountryInfo
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
 import dev.mokkery.mock
 import dev.mokkery.answering.returns
@@ -14,12 +15,14 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class AddRoofShapeTest {
-    private lateinit var countryInfo: CountryInfo
+    private var countryInfo = CountryInfo(listOf(IncompleteCountryInfo(
+        countryCode = "XX",
+        roofsAreUsuallyFlat = false
+    )))
     private lateinit var questType: AddRoofShape
 
     @BeforeTest fun setUp() {
-        countryInfo = mock()
-        questType = AddRoofShape { _ -> countryInfo }
+        questType = AddRoofShape(getCountryInfoByLocation = { _ -> countryInfo })
     }
 
     @Test fun `not applicable to roofs with shapes already set`() {
@@ -91,7 +94,10 @@ class AddRoofShapeTest {
     }
 
     @Test fun `create quest for 0 or null-level roofs only in countries with no flat roofs`() {
-        every { countryInfo.roofsAreUsuallyFlat } returns false
+        countryInfo = CountryInfo(listOf(IncompleteCountryInfo(
+            countryCode = "XX",
+            roofsAreUsuallyFlat = true
+        )))
 
         val element = way(1, tags = mapOf("roof:levels" to "0", "building" to "apartments"))
         val element2 = way(2, tags = mapOf("building:levels" to "3", "building" to "apartments"))
@@ -106,7 +112,10 @@ class AddRoofShapeTest {
     }
 
     @Test fun `create quest for 0 or null-level roofs not in countries with flat roofs`() {
-        every { countryInfo.roofsAreUsuallyFlat } returns true
+        countryInfo = CountryInfo(listOf(IncompleteCountryInfo(
+            countryCode = "XX",
+            roofsAreUsuallyFlat = true
+        )))
 
         val element = way(1, tags = mapOf("roof:levels" to "0", "building" to "apartments"))
         val element2 = way(1, tags = mapOf("building:levels" to "3", "building" to "apartments"))
