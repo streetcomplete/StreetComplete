@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
+import de.westnordost.streetcomplete.testutils.edit
 import dev.mokkery.matcher.any
 import dev.mokkery.mock
 import dev.mokkery.answering.returns
@@ -39,9 +40,8 @@ class ElementEditUploaderTest {
     }
 
     @Test fun `create new changeset when changeset is too large`(): Unit = runBlocking {
-        val edit: ElementEdit = mock()
-        val action: ElementEditAction = mock()
-        every { edit.action } returns action
+        val action = mock<ElementEditAction>()
+        val edit = edit(action = action)
         every { action.createUpdates(any(), any()) } returns MapDataChanges()
 
         // current changeset is 1

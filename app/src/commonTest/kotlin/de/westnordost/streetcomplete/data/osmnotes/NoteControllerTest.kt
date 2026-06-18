@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.testutils.bbox
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.note
+import de.westnordost.streetcomplete.testutils.p
 import dev.mokkery.answering.returns
 import dev.mokkery.every
-import de.westnordost.streetcomplete.testutils.p
+import dev.mokkery.mock
 import dev.mokkery.verify
 import dev.mokkery.verifyNoMoreCalls
 import kotlinx.coroutines.delay
@@ -107,7 +107,7 @@ class NoteControllerTest {
 
         noteController.addListener(listener)
         noteController.removeListener(listener)
-        noteController.put(mock())
+        noteController.put(note())
         verifyNoMoreCalls(listener)
     }
 

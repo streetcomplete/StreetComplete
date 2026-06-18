@@ -271,10 +271,8 @@ private fun links(vararg ids: String): List<Link> =
     ids.map { id -> Link(id, "url", "title", LinkCategory.INTRO, null, null) }
 
 private fun editTypeAchievements(achievementIds: List<String>): List<EditTypeAchievement> =
-    achievementIds.map {
-        val editTypeAchievement: EditTypeAchievement = mock()
-        every { editTypeAchievement.id } returns it
-        editTypeAchievement
+    achievementIds.map { id ->
+        EditTypeAchievement.entries.first { it.id == id }
     }
 
 private object QuestOne : QuestType {

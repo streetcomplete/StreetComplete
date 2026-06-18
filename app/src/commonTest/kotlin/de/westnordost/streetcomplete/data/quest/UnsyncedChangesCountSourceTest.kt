@@ -1,18 +1,18 @@
 package de.westnordost.streetcomplete.data.quest
 
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
-import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsSource
-import dev.mokkery.matcher.any
-import dev.mokkery.mock
+import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.noteEdit
 import dev.mokkery.answering.calls
 import dev.mokkery.answering.returns
 import dev.mokkery.every
-import kotlinx.coroutines.runBlocking
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
 import dev.mokkery.verifyNoMoreCalls
+import kotlinx.coroutines.runBlocking
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -58,29 +58,25 @@ class UnsyncedChangesCountSourceTest {
     }
 
     @Test fun `add unsynced element edit triggers listener`() {
-        val edit = mock<ElementEdit>()
-        every { edit.isSynced } returns false
+        val edit = edit(isSynced = false)
         elementEditsListener.onAddedEdit(edit)
         verify { listener.onIncreased() }
     }
 
     @Test fun `remove unsynced element edit triggers listener`() {
-        val edit = mock<ElementEdit>()
-        every { edit.isSynced } returns false
+        val edit = edit(isSynced = false)
         elementEditsListener.onDeletedEdits(listOf(edit))
         verify { listener.onDecreased() }
     }
 
     @Test fun `add synced element edit does not trigger listener`() {
-        val change = mock<ElementEdit>()
-        every { change.isSynced } returns true
-        elementEditsListener.onAddedEdit(change)
+        val edit = edit(isSynced = true)
+        elementEditsListener.onAddedEdit(edit)
         verifyNoMoreCalls(listener)
     }
 
     @Test fun `remove synced element edit does not trigger listener`() {
-        val edit = mock<ElementEdit>()
-        every { edit.isSynced } returns true
+        val edit = edit(isSynced = true)
         elementEditsListener.onDeletedEdits(listOf(edit))
         verifyNoMoreCalls(listener)
     }

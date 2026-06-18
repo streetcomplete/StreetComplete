@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.testutils.node
 import dev.mokkery.answering.returns
 import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -39,7 +41,7 @@ class DeletePoiNodeActionTest {
     }
 
     @Test fun `'delete' vertex`() {
-        every { repos.getWaysForNode(1L) } returns listOf(mock())
+        every { repos.getWaysForNode(1L) } returns listOf(way())
         every { repos.getRelationsForNode(1L) } returns emptyList()
         every { repos.getNode(e.id) } returns e
         val data = DeletePoiNodeAction(e).createUpdates(repos, provider)
@@ -49,7 +51,7 @@ class DeletePoiNodeActionTest {
     }
 
     @Test fun `'delete' relation member`() {
-        every { repos.getRelationsForNode(1L) } returns listOf(mock())
+        every { repos.getRelationsForNode(1L) } returns listOf(rel())
         every { repos.getNode(e.id) } returns e
         val data = DeletePoiNodeAction(e).createUpdates(repos, provider)
         assertTrue(data.deletions.isEmpty())
