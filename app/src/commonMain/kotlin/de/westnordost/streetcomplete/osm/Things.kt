@@ -145,6 +145,7 @@ private val IS_THING_EXPRESSION by lazy {
         "highway" to listOf(
             // "bus_stop", handled in filter below to skip some common bad tagging
             "cyclist_waiting_aid",
+            "elevator",
             "emergency_access_point",
             "hitchhiking",
             "milestone",
