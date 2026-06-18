@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.QueryTooBigException
 import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
+import de.westnordost.streetcomplete.util.Mockable
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.expectSuccess
@@ -20,6 +21,7 @@ import io.ktor.utils.io.asSource
 import kotlinx.io.buffered
 
 /** Get and upload changes to map data */
+@Mockable
 class MapDataApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,

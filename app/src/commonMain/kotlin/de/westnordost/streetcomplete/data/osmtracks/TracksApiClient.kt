@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.truncate
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
@@ -21,6 +22,7 @@ import kotlin.time.Instant
 /**
  * Talks with OSM traces API to uploads GPS trackpoints
  */
+@Mockable
 class TracksApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,

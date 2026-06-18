@@ -6,10 +6,12 @@ import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.Mockable
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
 
 /** Controller for managing which quests have been hidden by user interaction. */
+@Mockable
 class QuestsHiddenController(
     private val osmDb: OsmQuestsHiddenDao,
     private val notesDb: NoteQuestsHiddenDao,

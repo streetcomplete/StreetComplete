@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
+import de.westnordost.streetcomplete.util.Mockable
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
@@ -24,6 +25,7 @@ import kotlinx.serialization.json.Json
 /** Upload and activate a list of image paths to an instance of the
  *  https://github.com/streetcomplete/sc-photo-service
  */
+@Mockable
 class PhotoServiceApiClient(
     private val fileSystem: FileSystem,
     private val httpClient: HttpClient,

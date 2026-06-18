@@ -2,8 +2,9 @@ package de.westnordost.streetcomplete.quests.roof_shape
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
+import dev.mokkery.mock
+import dev.mokkery.answering.returns
+import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
@@ -90,7 +91,7 @@ class AddRoofShapeTest {
     }
 
     @Test fun `create quest for 0 or null-level roofs only in countries with no flat roofs`() {
-        on(countryInfo.roofsAreUsuallyFlat).thenReturn(false)
+        every { countryInfo.roofsAreUsuallyFlat } returns false
 
         val element = way(1, tags = mapOf("roof:levels" to "0", "building" to "apartments"))
         val element2 = way(2, tags = mapOf("building:levels" to "3", "building" to "apartments"))
@@ -105,7 +106,7 @@ class AddRoofShapeTest {
     }
 
     @Test fun `create quest for 0 or null-level roofs not in countries with flat roofs`() {
-        on(countryInfo.roofsAreUsuallyFlat).thenReturn(true)
+        every { countryInfo.roofsAreUsuallyFlat } returns true
 
         val element = way(1, tags = mapOf("roof:levels" to "0", "building" to "apartments"))
         val element2 = way(1, tags = mapOf("building:levels" to "3", "building" to "apartments"))

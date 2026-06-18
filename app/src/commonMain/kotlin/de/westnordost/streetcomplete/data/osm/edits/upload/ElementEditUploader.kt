@@ -14,7 +14,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.RemoteMapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.util.Mockable
 
+@Mockable
 class ElementEditUploader(
     private val changesetManager: OpenChangesetsManager,
     private val mapDataApi: MapDataApiClient,

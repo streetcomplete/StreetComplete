@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.user
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
+import de.westnordost.streetcomplete.util.Mockable
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.expectSuccess
@@ -16,6 +17,7 @@ import kotlinx.io.buffered
 /**
  * Talks with OSM user API
  */
+@Mockable
 class UserApiClient(
     private val httpClient: HttpClient,
     private val baseUrl: String,

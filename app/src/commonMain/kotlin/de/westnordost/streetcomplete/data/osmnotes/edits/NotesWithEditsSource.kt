@@ -10,7 +10,9 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction.CREATE
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.Mockable
 
+@Mockable
 class NotesWithEditsSource(
     private val noteController: NoteController,
     private val noteEditsSource: NoteEditsSource,

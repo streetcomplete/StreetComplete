@@ -2,9 +2,11 @@ package de.westnordost.streetcomplete.data.osm.created_elements
 
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.util.Mockable
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
 
+@Mockable
 class CreatedElementsController(
     private val db: CreatedElementsDao
 ) : CreatedElementsSource {

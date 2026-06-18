@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.getIds
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
@@ -14,6 +15,7 @@ import kotlinx.datetime.LocalDate
 import kotlin.time.Instant
 
 /** Manages edit statistics - by element edit type and by country */
+@Mockable
 class StatisticsController(
     private val editTypeStatisticsDao: EditTypeStatisticsDao,
     private val countryStatisticsDao: CountryStatisticsDao,

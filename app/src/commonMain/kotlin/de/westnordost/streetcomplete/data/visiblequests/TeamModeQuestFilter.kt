@@ -6,9 +6,11 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Controller for filtering all quests that are hidden because they are shown to other users in
  *  team mode. Takes care of persisting team mode settings and notifying listeners about changes */
+@Mockable
 class TeamModeQuestFilter internal constructor(
     private val createdElementsSource: CreatedElementsSource,
     private val prefs: Preferences
