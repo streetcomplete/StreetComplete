@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import dev.mokkery.matcher.any
@@ -72,7 +72,7 @@ class StatisticsControllerImplTest {
     }
 
     @Test fun `adding one`() {
-        every { countryBoundaries.getIds(any(), any()) } returns listOf("US-TX", "US", "World")
+        every { countryBoundaries.getIds(any()) } returns listOf("US-TX", "US", "World")
         statisticsController.addOne(questA, p(0.0, 0.0))
 
         verify { editTypeStatisticsDao.addOne("TestQuestTypeA") }
@@ -96,7 +96,7 @@ class StatisticsControllerImplTest {
     }
 
     @Test fun `subtracting one`() {
-        every { countryBoundaries.getIds(any(), any()) } returns listOf("US-TX", "US", "World")
+        every { countryBoundaries.getIds(any()) } returns listOf("US-TX", "US", "World")
         statisticsController.subtractOne(questA, p(0.0, 0.0))
 
         verify { editTypeStatisticsDao.subtractOne("TestQuestTypeA") }

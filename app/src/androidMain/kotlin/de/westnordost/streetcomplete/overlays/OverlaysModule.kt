@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.overlays
 
-import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -20,7 +20,6 @@ import de.westnordost.streetcomplete.overlays.surface.SurfaceOverlay
 import de.westnordost.streetcomplete.overlays.things.ThingsOverlay
 import de.westnordost.streetcomplete.overlays.way_lit.WayLitOverlay
 import de.westnordost.streetcomplete.util.ktx.getFeature
-import de.westnordost.streetcomplete.util.ktx.getIds
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 

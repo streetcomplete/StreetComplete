@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.data.quest
+package de.westnordost.streetcomplete.util.countryboundaries
 
 sealed interface Countries
 
