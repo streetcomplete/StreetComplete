@@ -115,7 +115,7 @@ class NotesWithEditsSource(
 
     /** returns collection with modified notes */
     private fun editsAppliedToNotes(originalNotes: Collection<Note>, noteEdits: List<NoteEdit>): Collection<Note> {
-        if (originalNotes.isEmpty() && noteEdits.isEmpty()) return originalNotes
+        if (noteEdits.isEmpty()) return originalNotes
 
         val notesById = HashMap<Long, Note>(originalNotes.size)
         originalNotes.associateByTo(notesById) { it.id }

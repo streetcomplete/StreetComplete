@@ -86,6 +86,7 @@ class ElementEditUploaderTest {
             throws(ConflictException())
             returns(MapDataUpdates())
         }
+        every { mapDataController.getNodes(emptySet()) } returns emptyList()
         uploader.upload(edit, { mock() })
     }
 }

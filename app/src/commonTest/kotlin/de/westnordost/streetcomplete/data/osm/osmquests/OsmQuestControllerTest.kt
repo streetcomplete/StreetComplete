@@ -86,8 +86,9 @@ class OsmQuestControllerTest {
         val entry = questEntry(NODE, 1, "ApplicableQuestType")
         val g = pGeom()
 
-        every { db.get(osmQuestKey(NODE, 1, "ApplicableQuestType")) } returns entry
+        every { db.get(key) } returns entry
         every { mapDataSource.getGeometry(NODE, 1) } returns g
+        every { notesSource.getAllPositions(any()) } returns listOf()
 
         val expectedQuest = OsmQuest(ApplicableQuestType, NODE, 1, g)
         assertEquals(expectedQuest, ctrl.get(key))
@@ -137,13 +138,13 @@ class OsmQuestControllerTest {
             osmQuest(ApplicableQuestType, NODE, 2)
         )
 
-        val keys = listOf(ElementKey(NODE, 1), ElementKey(NODE, 2))
-        every { db.getAllForElements(keys) } returns quests
-
         val deleted = listOf(
             ElementKey(NODE, 1),
             ElementKey(NODE, 2)
         )
+
+        every { db.getAllForElements(emptyList()) } returns emptyList()
+        every { db.getAllForElements(deleted) } returns quests
 
         mapDataListener.onUpdated(MutableMapDataWithGeometry(), deleted)
 
@@ -166,12 +167,11 @@ class OsmQuestControllerTest {
     }
 
     @Test fun `updates quests on map data listener update for updated elements`() {
-        val geom = pGeom(0.0, 0.0)
+        val geom = pGeom()
 
         val elements = listOf(
             node(1, tags = mapOf("a" to "b")),
-            // missing geometry
-            node(2, tags = mapOf("a" to "b")),
+            node(2, tags = mapOf("a" to "b")), // missing geometry
         )
         val geometries = listOf(
             ElementGeometryEntry(NODE, 1L, geom)
@@ -185,6 +185,7 @@ class OsmQuestControllerTest {
         val previousQuests = listOf(existingApplicableQuest, existingNonApplicableQuest)
 
         every { db.getAllForElements(elements.map { ElementKey(it.type, it.id) }) } returns previousQuests
+        every { db.getAllForElements(emptyList()) } returns emptyList()
         every { mapDataSource.getMapDataWithGeometry(any()) } returns mapData
 
         mapDataListener.onUpdated(mapData, emptyList())
@@ -212,10 +213,8 @@ class OsmQuestControllerTest {
     @Test fun `updates quests on map data listener replace for bbox`() {
         val elements = listOf(
             node(1),
-            // missing geometry
-            node(2),
-            // at note position
-            node(4),
+            node(2), // missing geometry
+            node(4), // at note position
         )
         val geom = pGeom(0.0, 0.0)
         val notePos = p(0.5, 0.5)

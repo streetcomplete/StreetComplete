@@ -122,7 +122,7 @@ class VisibleQuestsSourceTest {
         val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(16)
         val osmQuests = questTypes.map { OsmQuest(it, ElementType.NODE, 1L, pGeom()) }
         val noteQuests = listOf(osmNoteQuest(0L, p(0.0, 0.0)), osmNoteQuest(1L, p(1.0, 1.0)))
-        every { osmQuestSource.getAllInBBox(bboxCacheWillRequest) } returns osmQuests
+        every { osmQuestSource.getAllInBBox(bboxCacheWillRequest, questTypeNames) } returns osmQuests
         every { osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest) } returns noteQuests
 
         every { questsHiddenSource.get(any()) } returns 1

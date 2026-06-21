@@ -51,6 +51,7 @@ class DeletePoiNodeActionTest {
     }
 
     @Test fun `'delete' relation member`() {
+        every { repos.getWaysForNode(1L) } returns listOf()
         every { repos.getRelationsForNode(1L) } returns listOf(rel())
         every { repos.getNode(e.id) } returns e
         val data = DeletePoiNodeAction(e).createUpdates(repos, provider)

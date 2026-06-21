@@ -51,7 +51,7 @@ class EditHistoryControllerTest {
             }
         }
         hiddenQuestsController = mock() {
-            every { hiddenQuestsController.addListener(any()) } calls { (listener: QuestsHiddenSource.Listener) ->
+            every { addListener(any()) } calls { (listener: QuestsHiddenSource.Listener) ->
                 hiddenQuestsListener = listener
             }
         }

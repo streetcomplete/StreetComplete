@@ -119,34 +119,44 @@ class ElementDaoTest {
     }
 
     @Test fun getAllElements() {
-        dao.getAll(listOf(
-            ElementKey(NODE, 0),
-            ElementKey(WAY, 0),
-            ElementKey(RELATION, 0)
-        ))
+        val node = node(1L)
+        val way = way(2L)
+        val rel = rel(3L)
+        every { nodeDao.getAll(listOf(1L)) } returns listOf(node)
+        every { wayDao.getAll(listOf(2L)) } returns listOf(way)
+        every { relationDao.getAll(listOf(3L)) } returns listOf(rel)
 
-        verify { nodeDao.getAll(listOf(0L)) }
-        verify { wayDao.getAll(listOf(0L)) }
-        verify { relationDao.getAll(listOf(0L)) }
+        assertEquals(
+            listOf(node, way, rel),
+            dao.getAll(listOf(
+                ElementKey(NODE, 1),
+                ElementKey(WAY, 2),
+                ElementKey(RELATION, 3)
+            ))
+        )
     }
 
     @Test fun getAllElementsByBbox() {
         val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
         val nodes = listOf(node(1), node(2), node(3))
         val nodeIds = nodes.map { it.id }
-        val ways = listOf(way(1), way(2))
+        val ways = listOf(way(1, listOf(1, 2, 4)), way(2, listOf(3, 5)))
         val wayIds = ways.map { it.id }
+        val waysNodes = listOf(node(4), node(5))
+        val waysNodesIds = waysNodes.map { it.id }
         val relations = listOf(rel(1))
 
         every { nodeDao.getAll(bbox) } returns nodes
         every { wayDao.getAllForNodes(nodeIds.toSet()) } returns ways
+        every { nodeDao.getAll(listOf(4, 5)) } returns waysNodes
         every { relationDao.getAllForElements(
-            nodeIds = nodeIds,
+            nodeIds = waysNodesIds + nodeIds,
             wayIds = wayIds,
             relationIds = emptyList()
         ) } returns relations
+
         assertEquals(
-            nodes + ways + relations,
+            nodes + waysNodes + ways + relations,
             dao.getAll(bbox)
         )
     }

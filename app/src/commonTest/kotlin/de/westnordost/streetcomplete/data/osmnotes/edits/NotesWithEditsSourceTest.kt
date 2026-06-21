@@ -17,11 +17,6 @@ import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import dev.mokkery.answering.calls
-import dev.mokkery.matcher.ArgMatcher
-import dev.mokkery.matcher.MokkeryMatcherScope
-import dev.mokkery.matcher.collections.CollectionArgMatchers
-import dev.mokkery.matcher.collections.containsAll
-import dev.mokkery.matcher.collections.containsAllElements
 import dev.mokkery.matcher.matches
 import dev.mokkery.verify
 import kotlin.test.BeforeTest
@@ -35,7 +30,7 @@ class NotesWithEditsSourceTest {
     private lateinit var src: NotesWithEditsSource
     private lateinit var noteController: NoteController
     private lateinit var noteListener: NoteController.Listener
-    private lateinit var noteEditsController: NoteEditsController
+    private lateinit var noteEditsSource: NoteEditsSource
     private lateinit var noteEditsListener: NoteEditsSource.Listener
     private lateinit var userDataSource: UserDataSource
 
@@ -45,14 +40,14 @@ class NotesWithEditsSourceTest {
                 noteListener = listener
             }
         }
-        noteEditsController = mock() {
+        noteEditsSource = mock() {
             every { addListener(any()) } calls { (listener: NoteEditsSource.Listener) ->
                 noteEditsListener = listener
             }
         }
         userDataSource = mock()
 
-        src = NotesWithEditsSource(noteController, noteEditsController, userDataSource)
+        src = NotesWithEditsSource(noteController, noteEditsSource, userDataSource)
     }
 
     //region get
@@ -60,7 +55,7 @@ class NotesWithEditsSourceTest {
     @Test
     fun `get returns nothing`() {
         every { noteController.get(1) } returns null
-        every { noteEditsController.getAllUnsyncedForNote(1) } returns emptyList()
+        every { noteEditsSource.getAllUnsyncedForNote(1) } returns emptyList()
 
         assertNull(src.get(1))
     }
@@ -69,7 +64,7 @@ class NotesWithEditsSourceTest {
     fun `get returns original note`() {
         val note = note(1)
         every { noteController.get(1) } returns note
-        every { noteEditsController.getAllUnsyncedForNote(1) } returns emptyList()
+        every { noteEditsSource.getAllUnsyncedForNote(1) } returns emptyList()
 
         assertEquals(note, src.get(1))
     }
@@ -86,7 +81,7 @@ class NotesWithEditsSourceTest {
 
         every { userDataSource.userId } returns -1
         every { noteController.get(1) } returns note
-        every { noteEditsController.getAllUnsyncedForNote(1) } returns edits
+        every { noteEditsSource.getAllUnsyncedForNote(1) } returns edits
 
         assertEquals(listOf(comment, addedComment), src.get(1)!!.comments)
     }
@@ -112,7 +107,7 @@ class NotesWithEditsSourceTest {
 
         every { userDataSource.userId } returns -1
         every { noteController.get(1) } returns note
-        every { noteEditsController.getAllUnsyncedForNote(1) } returns edits
+        every { noteEditsSource.getAllUnsyncedForNote(1) } returns edits
 
         assertEquals(listOf(comment, addedComment), src.get(1)!!.comments)
     }
@@ -130,7 +125,7 @@ class NotesWithEditsSourceTest {
         every { userDataSource.userId } returns 23
         every { userDataSource.userName } returns "test user"
         every { noteController.get(1) } returns note
-        every { noteEditsController.getAllUnsyncedForNote(1) } returns edits
+        every { noteEditsSource.getAllUnsyncedForNote(1) } returns edits
 
         assertEquals(listOf(comment1, comment2), src.get(1)!!.comments)
     }
@@ -149,7 +144,7 @@ class NotesWithEditsSourceTest {
 
         every { userDataSource.userId } returns -1
         every { noteController.get(1) } returns note
-        every { noteEditsController.getAllUnsyncedForNote(1) } returns edits
+        every { noteEditsSource.getAllUnsyncedForNote(1) } returns edits
 
         assertEquals(listOf(comment1, comment2, comment3), src.get(1)!!.comments)
     }
@@ -172,7 +167,7 @@ class NotesWithEditsSourceTest {
 
         every { userDataSource.userId } returns -1
         every { noteController.get(1) } returns null
-        every { noteEditsController.getAllUnsyncedForNote(1) } returns edits
+        every { noteEditsSource.getAllUnsyncedForNote(1) } returns edits
 
         assertEquals(expectedNote, src.get(1)!!)
     }
@@ -197,7 +192,7 @@ class NotesWithEditsSourceTest {
 
         every { userDataSource.userId } returns -1
         every { noteController.get(1) } returns null
-        every { noteEditsController.getAllUnsyncedForNote(1) } returns edits
+        every { noteEditsSource.getAllUnsyncedForNote(1) } returns edits
 
         assertEquals(expectedNote, src.get(1)!!)
     }
@@ -212,7 +207,7 @@ class NotesWithEditsSourceTest {
         val ps2 = listOf(p(3.0, 2.0), p(5.0, 1.0))
 
         every { noteController.getAllPositions(any()) } returns ps1
-        every { noteEditsController.getAllUnsyncedPositions(any()) } returns ps2
+        every { noteEditsSource.getAllUnsyncedPositions(any()) } returns ps2
 
         val positions = src.getAllPositions(bbox)
 
@@ -226,7 +221,7 @@ class NotesWithEditsSourceTest {
     @Test
     fun `getAll returns nothing`() {
         every { noteController.getAll(any<BoundingBox>()) } returns emptyList()
-        every { noteEditsController.getAllUnsynced(any()) } returns emptyList()
+        every { noteEditsSource.getAllUnsynced(any()) } returns emptyList()
 
         assertTrue(src.getAll(bbox).isEmpty())
     }
@@ -235,7 +230,7 @@ class NotesWithEditsSourceTest {
     fun `getAll returns original notes`() {
         val notes = listOf(note(1), note(2))
         every { noteController.getAll(any<BoundingBox>()) } returns notes
-        every { noteEditsController.getAllUnsynced(any()) } returns emptyList()
+        every { noteEditsSource.getAllUnsynced(any()) } returns emptyList()
 
         assertTrue(src.getAll(bbox).containsExactlyInAnyOrder(notes))
     }
@@ -244,7 +239,7 @@ class NotesWithEditsSourceTest {
     fun `getAll returns updated notes`() {
         every { userDataSource.userId } returns -1
         every { noteController.getAll(any<BoundingBox>()) } returns initialNotes1
-        every { noteEditsController.getAllUnsynced(any()) } returns edits1
+        every { noteEditsSource.getAllUnsynced(any()) } returns edits1
 
         assertEquals(expectedNotes1.toSet(), src.getAll(bbox).toSet())
     }
@@ -257,10 +252,11 @@ class NotesWithEditsSourceTest {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
-        val note = note(1)
-        val edit = noteEdit(noteId = 1)
+        val note = note()
+        val edit = noteEdit(noteId = note.id)
 
-        every { noteController.get(1) } returns note
+        every { noteController.get(note.id) } returns note
+        every { noteEditsSource.getAllUnsyncedForNote(note.id) } returns emptyList()
 
         noteEditsListener.onDeletedEdits(listOf(edit))
 
@@ -271,43 +267,68 @@ class NotesWithEditsSourceTest {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
-        val edit = noteEdit(noteId = 1)
+        val noteId = 1L
+        val edit = noteEdit(noteId = noteId, action = NoteEditAction.CREATE)
 
-        every { noteController.get(1) } returns null
+        every { noteController.get(noteId) } returns null
 
         noteEditsListener.onDeletedEdits(listOf(edit))
 
-        verifyListenerCalledWith(listener, deleted = listOf(1L))
+        verifyListenerCalledWith(listener, deleted = listOf(noteId))
     }
 
     @Test fun `onAddedEdit relays updated note`() {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
-        val note = note(id = 1)
-        val edit = noteEdit(noteId = 1)
+        val note = note()
+        val edit = noteEdit(noteId = note.id)
 
-        every { noteController.get(1) } returns note
+        every { noteController.get(note.id) } returns note
+        every { noteEditsSource.getAllUnsyncedForNote(note.id) } returns listOf(edit)
+        every { userDataSource.userId } returns 999L
 
         noteEditsListener.onAddedEdit(edit)
 
-        verifyListenerCalledWith(listener, updated = listOf(note))
+        val noteEditComment = NoteComment(
+            timestamp = edit.createdTimestamp,
+            action = NoteComment.Action.COMMENTED,
+            text = edit.text ?: "",
+            user = User(999L, "")
+        )
+        val updatedNote = note.copy(
+            comments = note.comments + noteEditComment
+        )
+
+        verifyListenerCalledWith(listener, updated = listOf(updatedNote))
     }
 
     @Test fun `onAddedEdit relays added note`() {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
-        val p = p(1.0, 1.0)
-        val expectedNote = note(id = 1, position = p, timestamp = 123L, comments = arrayListOf(
-            comment("abc", NoteComment.Action.OPENED, 123L)
-        ))
-        val edit = noteEdit(noteId = 1, id = -1, action = NoteEditAction.CREATE, text = "abc", timestamp = 123L, pos = p)
+        val edit = noteEdit(action = NoteEditAction.CREATE)
 
-        every { noteController.get(1) } returns null
-        every { noteEditsController.getAllUnsyncedForNote(1) } returns listOf(edit)
+        every { noteController.get(edit.noteId) } returns null
+        every { noteEditsSource.getAllUnsyncedForNote(edit.noteId) } returns listOf(edit)
+        every { userDataSource.userId } returns 999L
+        every { userDataSource.userName } returns "Egon"
 
         noteEditsListener.onAddedEdit(edit)
+
+        val expectedNote = note(
+            id = edit.noteId,
+            position = edit.position,
+            timestamp = edit.createdTimestamp,
+            comments = listOf(
+                NoteComment(
+                    timestamp = edit.createdTimestamp,
+                    action = NoteComment.Action.OPENED,
+                    text = edit.text ?: "",
+                    user = User(999L, "Egon")
+                )
+            )
+        )
 
         verifyListenerCalledWith(listener, added = listOf(expectedNote))
     }
@@ -324,7 +345,7 @@ class NotesWithEditsSourceTest {
         val updated = listOf(note(3), note(4))
         val deleted = listOf(1L, 2L)
 
-        every { noteEditsController.getAllUnsynced() } returns emptyList()
+        every { noteEditsSource.getAllUnsynced() } returns emptyList()
 
         noteListener.onUpdated(added, updated, deleted)
 
@@ -335,7 +356,7 @@ class NotesWithEditsSourceTest {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
-        every { noteEditsController.getAllUnsynced() } returns edits1
+        every { noteEditsSource.getAllUnsynced() } returns edits1
 
         noteListener.onUpdated(initialNotes1, emptyList(), emptyList())
 
@@ -346,7 +367,7 @@ class NotesWithEditsSourceTest {
         val listener = mock<NotesWithEditsSource.Listener>()
         src.addListener(listener)
 
-        every { noteEditsController.getAllUnsynced() } returns edits1
+        every { noteEditsSource.getAllUnsynced() } returns edits1
 
         noteListener.onUpdated(emptyList(), initialNotes1, emptyList())
 

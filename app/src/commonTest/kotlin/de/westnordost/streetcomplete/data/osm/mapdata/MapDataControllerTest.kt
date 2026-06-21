@@ -82,6 +82,7 @@ class MapDataControllerTest {
         val elements = listOf(node(1), node(2))
         every { elementDB.getAll(bboxCacheWillRequest) } returns elements
         every { geometryDB.getAllEntries(elementKeys) } returns geomEntries
+        every { geometryDB.getAllEntries(emptyList()) } returns emptyList()
 
         val mapData = controller.getMapDataWithGeometry(bbox)
         assertTrue(mapData.nodes.containsExactlyInAnyOrder(elements))

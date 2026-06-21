@@ -57,9 +57,9 @@ class ElementEditsControllerTest {
     }
 
     @Test fun markSyncFailed() {
-        val edit = edit(action = mock())
+        val edit = edit()
 
-        every { idProvider.get(any()) } returns ElementIdProvider(listOf())
+        every { idProvider.get(edit.id) } returns ElementIdProvider(listOf())
 
         ctrl.markSyncFailed(edit)
 
@@ -67,14 +67,16 @@ class ElementEditsControllerTest {
     }
 
     @Test fun markSynced() {
-        val edit0 = edit(action = mock())
+        val edit0 = edit()
 
         // upload shall create two elements: node -1 and node -8...
         val updates = MapDataUpdates(idUpdates = listOf(
             ElementIdUpdate(NODE, -1, 2),
             ElementIdUpdate(NODE, -8, 20),
         ))
-        val updatesMap = updates.idUpdates.associate { ElementKey(it.elementType, it.oldElementId) to it.newElementId }
+        val updatesMap = updates.idUpdates.associate {
+            ElementKey(it.elementType, it.oldElementId) to it.newElementId
+        }
 
         // edit 9 uses node -1 -> it must be updated
         val edit1Action = mock<ElementEditAction>()
@@ -97,9 +99,10 @@ class ElementEditsControllerTest {
 
         // as explained above, edit 9 is get-put and its element keys updated
         val edit1New = edit1.copy(action = edit1ActionNew)
+        val edit1NewElementKeys = edit1New.action.elementKeys
         verify { db.put(edit1New) }
         verify { elementsDb.delete(edit1New.id) }
-        verify { elementsDb.put(edit1New.id, edit1New.action.elementKeys) }
+        verify { elementsDb.put(edit1New.id, edit1NewElementKeys) }
 
         verify { db.markSynced(edit0Synced.id) }
         verify { idProvider.updateIds(updates.idUpdates) }
@@ -107,7 +110,7 @@ class ElementEditsControllerTest {
     }
 
     @Test fun `undo unsynced`() {
-        val edit = edit(action = mock(), isSynced = false)
+        val edit = edit(isSynced = false)
 
         every { idProvider.get(any()) } returns ElementIdProvider(listOf())
 
@@ -117,16 +120,18 @@ class ElementEditsControllerTest {
     }
 
     @Test fun `delete edits based on the the one being undone`() {
-        val edit1 = edit(action = mock(), id = 1L)
-        val edit2 = edit(action = mock(), id = 2L)
-        val edit3 = edit(action = mock(), id = 3L)
-        val edit4 = edit(action = mock(), id = 4L)
-        val edit5 = edit(action = mock(), id = 5L)
+        val edit1 = edit(1L)
+        val edit2 = edit(2L)
+        val edit3 = edit(3L)
+        val edit4 = edit(4L)
+        val edit5 = edit(5L)
 
+        // edit 1 creates nodes -1, -2
         every { idProvider.get(1L) } returns ElementIdProvider(listOf(
             ElementKey(NODE, -1),
             ElementKey(NODE, -2),
         ))
+        // edit 2 creates node -3
         every { idProvider.get(2L) } returns ElementIdProvider(listOf(
             ElementKey(NODE, -3),
         ))
@@ -134,8 +139,11 @@ class ElementEditsControllerTest {
         every { idProvider.get(4L) } returns ElementIdProvider(listOf())
         every { idProvider.get(5L) } returns ElementIdProvider(listOf())
 
+        // edits 2 and 3 are edits on node -1
         every { elementsDb.getAllByElement(NODE, -1) } returns listOf(2, 3)
+        // edit 4 is an edit on node -2
         every { elementsDb.getAllByElement(NODE, -2) } returns listOf(4)
+        // edit 5 is an edit on node -3
         every { elementsDb.getAllByElement(NODE, -3) } returns listOf(5)
 
         every { db.get(1L) } returns edit1
@@ -143,6 +151,8 @@ class ElementEditsControllerTest {
         every { db.get(3L) } returns edit3
         every { db.get(4L) } returns edit4
         every { db.get(5L) } returns edit5
+
+        // hence, edits 2 to 5 all depend on edit 1 directly or indirectly
 
         ctrl.undo(edit1)
 
@@ -166,7 +176,8 @@ class ElementEditsControllerTest {
 
     private fun verifyAdd(edit: ElementEdit) {
         verify { db.put(any()) }
-        verify { elementsDb.put(edit.id, edit.action.elementKeys) }
+        val elementKeys = edit.action.elementKeys
+        verify { elementsDb.put(edit.id, elementKeys) }
         val c = edit.action.newElementsCount
         verify { idProvider.assign(edit.id, c.nodes, c.ways, c.relations) }
         verify { listener.onAddedEdit(any()) }

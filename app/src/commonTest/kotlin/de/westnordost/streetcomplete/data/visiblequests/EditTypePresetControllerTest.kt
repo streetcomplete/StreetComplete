@@ -57,11 +57,12 @@ class EditTypePresetControllerTest {
     }
 
     @Test fun `delete current preset switches to preset 0`() {
-        every { ctrl.selectedId } returns 55
+        every { prefs.selectedEditTypePreset } returns 55
         ctrl.delete(55)
         verify { editTypePresetsDao.delete(55) }
         verify { listener.onDeleted(55) }
-        verify { prefs.selectedEditTypePreset = 0L }    }
+        verify { prefs.selectedEditTypePreset = 0L }
+    }
 
     @Test fun `change current preset`() {
         ctrl.selectedId = 11

@@ -36,6 +36,8 @@ class RevertCreateNodeActionTest {
     fun `revert add node`() {
         val node = node(123, LatLon(12.0, 34.0), mapOf("amenity" to "atm"), 1)
         every { repos.getNode(node.id) } returns node
+        every { repos.getWaysForNode(node.id) } returns emptyList()
+        every { repos.getRelationsForNode(node.id) } returns emptyList()
         val data = RevertCreateNodeAction(node, listOf()).createUpdates(repos, provider)
 
         assertTrue(data.creations.isEmpty())

@@ -41,9 +41,11 @@ class AchievementsControllerTest {
         userAchievementsDao = mock() {
             every { getAll() } returns mapOf()
         }
-        userLinksDao = mock()
+        userLinksDao = mock() {
+            every { getAll() } returns listOf()
+        }
         statisticsSource = mock() {
-            every { statisticsSource.addListener(any()) } calls { (listener: StatisticsSource.Listener) ->
+            every { addListener(any()) } calls { (listener: StatisticsSource.Listener) ->
                 statisticsListener = listener
             }
         }
@@ -99,17 +101,17 @@ class AchievementsControllerTest {
             returns(1)
             returns(2)
         }
-        val achievement = achievement("mixedAchievement", EditsOfTypeCount)
+        val achievement = achievement("veg", EditsOfTypeCount)
         allAchievements = listOf(achievement)
 
         createAchievementsController()
 
         statisticsListener.onAddedOne("QuestTwo")
-        verify { userAchievementsDao.put("mixedAchievement", 1) }
+        verify { userAchievementsDao.put("veg", 1) }
         verify { listener.onAchievementUnlocked(achievement, 1, emptyList()) }
 
         statisticsListener.onAddedOne("OverlayOne")
-        verify { userAchievementsDao.put("mixedAchievement", 2) }
+        verify { userAchievementsDao.put("veg", 2) }
         verify { listener.onAchievementUnlocked(achievement, 2, emptyList()) }
     }
 
@@ -190,9 +192,9 @@ class AchievementsControllerTest {
 
         allAchievements = listOf(
             achievement("daysActive", DaysActive),
-            achievement("otherAchievement", EditsOfTypeCount),
-            achievement("thisAchievement", EditsOfTypeCount),
-            achievement("mixedAchievement", EditsOfTypeCount),
+            achievement("blind", EditsOfTypeCount),
+            achievement("car", EditsOfTypeCount),
+            achievement("veg", EditsOfTypeCount),
             achievement("allQuests", TotalEditCount)
         )
 
@@ -200,8 +202,8 @@ class AchievementsControllerTest {
         statisticsListener.onAddedOne("QuestOne")
 
         verify { userAchievementsDao.getAll() }
-        verify { userAchievementsDao.put("thisAchievement", 1) }
-        verify { userAchievementsDao.put("mixedAchievement", 1) }
+        verify { userAchievementsDao.put("car", 1) }
+        verify { userAchievementsDao.put("veg", 1) }
         verify { userAchievementsDao.put("allQuests", 1) }
         verifyNoMoreCalls(userAchievementsDao)
     }
@@ -270,23 +272,18 @@ private fun achievement(
 private fun links(vararg ids: String): List<Link> =
     ids.map { id -> Link(id, "url", "title", LinkCategory.INTRO, null, null) }
 
-private fun editTypeAchievements(achievementIds: List<String>): List<EditTypeAchievement> =
-    achievementIds.map { id ->
-        EditTypeAchievement.entries.first { it.id == id }
-    }
-
 private object QuestOne : QuestType {
     override val icon = 0
     override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
-    override val achievements = editTypeAchievements(listOf("thisAchievement", "mixedAchievement"))
+    override val achievements = listOf(EditTypeAchievement.CAR, EditTypeAchievement.VEG)
 }
 
 private object QuestTwo : QuestType {
     override val icon = 0
     override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
-    override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
+    override val achievements = listOf(EditTypeAchievement.BLIND, EditTypeAchievement.VEG)
 }
 
 private object OverlayOne : Overlay {
@@ -296,5 +293,5 @@ private object OverlayOne : Overlay {
     override val changesetComment = ""
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, OverlayStyle>>()
 
-    override val achievements = editTypeAchievements(listOf("otherAchievement", "mixedAchievement"))
+    override val achievements = listOf(EditTypeAchievement.BLIND, EditTypeAchievement.VEG)
 }

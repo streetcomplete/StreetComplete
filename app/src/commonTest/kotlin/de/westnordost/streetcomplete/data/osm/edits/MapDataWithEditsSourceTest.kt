@@ -61,6 +61,8 @@ class MapDataWithEditsSourceTest {
         editsCtrl = mock() {
             every { getIdProvider(any()) } returns ElementIdProvider(listOf())
 
+            every { getAllUnsynced() } returns listOf()
+
             every { addListener(any()) } calls { (listener: ElementEditsSource.Listener) ->
                 editsListener = listener
             }

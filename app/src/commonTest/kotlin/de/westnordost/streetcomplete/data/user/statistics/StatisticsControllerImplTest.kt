@@ -84,6 +84,7 @@ class StatisticsControllerImplTest {
     }
 
     @Test fun `adding one one day later`() {
+        every { countryBoundaries.getIds(any()) } returns listOf()
         every { prefs.userLastTimestampActive } returns 0
 
         statisticsController.addOne(questA, p(0.0, 0.0))
@@ -108,6 +109,7 @@ class StatisticsControllerImplTest {
     }
 
     @Test fun `subtracting one one day later`() {
+        every { countryBoundaries.getIds(any()) } returns listOf()
         every { prefs.userLastTimestampActive } returns 0
 
         statisticsController.subtractOne(questA, p(0.0, 0.0))
