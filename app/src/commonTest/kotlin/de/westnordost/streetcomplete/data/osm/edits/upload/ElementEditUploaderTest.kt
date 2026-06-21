@@ -62,9 +62,8 @@ class ElementEditUploaderTest {
     }
 
     @Test fun `passes on conflict exception`(): Unit = runBlocking {
-        val edit: ElementEdit = mock()
-        val action: ElementEditAction = mock()
-        every { edit.action } returns action
+        val action = mock<ElementEditAction>()
+        val edit = edit(action = action)
         every { action.createUpdates(any(), any()) } returns MapDataChanges()
 
         everySuspend { changesetManager.getOrCreateChangeset(any(), any(), any(), any()) } returns 1
@@ -77,9 +76,8 @@ class ElementEditUploaderTest {
     }
 
     @Test fun `handles changeset conflict exception`(): Unit = runBlocking {
-        val edit: ElementEdit = mock()
-        val action: ElementEditAction = mock()
-        every { edit.action } returns action
+        val action = mock<ElementEditAction>()
+        val edit = edit(action = action)
         every { action.createUpdates(any(), any()) } returns MapDataChanges()
 
         everySuspend { changesetManager.getOrCreateChangeset(any(), any(), any(), any()) } returns 1

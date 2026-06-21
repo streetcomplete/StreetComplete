@@ -65,7 +65,7 @@ class ElementEditsUploaderTest {
 
     @Test fun `upload works`() = runBlocking {
         val edit = edit()
-        val updates = mock<MapDataUpdates>()
+        val updates = MapDataUpdates()
 
         every { elementEditsController.getOldestUnsynced() } sequentially {
             returns(edit)
