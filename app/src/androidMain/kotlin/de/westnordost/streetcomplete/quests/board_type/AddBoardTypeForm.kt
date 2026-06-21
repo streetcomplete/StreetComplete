@@ -12,6 +12,9 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddBoardTypeForm : ACheckboxGroupQuestForm<BoardType, BoardTypeAnswer>() {
 
+    // Is "none" a valid answer?
+    override val allowNone = false
+
     override val otherAnswers = listOf(
         AnswerItem(R.string.quest_board_type_map) { confirmOnMap() }
     )
