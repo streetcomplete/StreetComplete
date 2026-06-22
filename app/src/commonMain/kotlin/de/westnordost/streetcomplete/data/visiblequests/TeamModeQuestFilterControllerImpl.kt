@@ -6,33 +6,25 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.Mockable
 
-/** Controller for filtering all quests that are hidden because they are shown to other users in
- *  team mode. Takes care of persisting team mode settings and notifying listeners about changes */
-@Mockable
-class TeamModeQuestFilter internal constructor(
+class TeamModeQuestFilterControllerImpl(
     private val createdElementsSource: CreatedElementsSource,
     private val prefs: Preferences
-) {
-    /* Must be a singleton because there is a listener that should respond to a change in the
-     *  shared preferences */
+) : TeamModeQuestFilterController {
 
     private val teamSize: Int get() = prefs.teamModeSize
-    val indexInTeam: Int get() = prefs.teamModeIndexInTeam
 
-    val isEnabled: Boolean get() = teamSize > 0
+    override val indexInTeam: Int get() = prefs.teamModeIndexInTeam
 
-    interface TeamModeChangeListener {
-        fun onTeamModeChanged(enabled: Boolean)
-    }
-    private val listeners = Listeners<TeamModeChangeListener>()
+    override val isEnabled: Boolean get() = teamSize > 0
 
-    fun isVisible(quest: Quest): Boolean =
+    private val listeners = Listeners<TeamModeQuestFilterSource.Listener>()
+
+    override fun isVisible(quest: Quest): Boolean =
         !isEnabled
-        || quest.stableId < 0
-        || quest is OsmQuest && createdElementsSource.contains(quest.elementType, quest.elementId)
-        || quest.stableId % teamSize == indexInTeam.toLong()
+            || quest.stableId < 0
+            || quest is OsmQuest && createdElementsSource.contains(quest.elementType, quest.elementId)
+            || quest.stableId % teamSize == indexInTeam.toLong()
 
     private val Quest.stableId: Long get() = when (this) {
         is OsmQuest -> elementId
@@ -40,13 +32,13 @@ class TeamModeQuestFilter internal constructor(
         else -> 0
     }
 
-    fun enableTeamMode(teamSize: Int, indexInTeam: Int) {
+    override fun enableTeamMode(teamSize: Int, indexInTeam: Int) {
         prefs.teamModeSize = teamSize
         prefs.teamModeIndexInTeam = indexInTeam
         listeners.forEach { it.onTeamModeChanged(true) }
     }
 
-    fun disableTeamMode() {
+    override fun disableTeamMode() {
         prefs.teamModeSize = -1
         prefs.teamModeIndexInTeam = -1
         listeners.forEach { it.onTeamModeChanged(false) }
@@ -54,10 +46,10 @@ class TeamModeQuestFilter internal constructor(
 
     /* ------------------------------------ Listeners ------------------------------------------- */
 
-    fun addListener(listener: TeamModeChangeListener) {
+    override fun addListener(listener: TeamModeQuestFilterSource.Listener) {
         listeners.add(listener)
     }
-    fun removeListener(listener: TeamModeChangeListener) {
+    override fun removeListener(listener: TeamModeQuestFilterSource.Listener) {
         listeners.remove(listener)
     }
 }

@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
-import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.location.FineLocationManager
@@ -45,7 +45,7 @@ class QuestAutoSyncer(
     private val downloadProgressSource: DownloadProgressSource,
     private val userLoginSource: UserLoginSource,
     private val prefs: Preferences,
-    private val teamModeQuestFilter: TeamModeQuestFilter,
+    private val teamModeQuestFilterSource: TeamModeQuestFilterSource,
     private val downloadedTilesController: DownloadedTilesController
 ) : DefaultLifecycleObserver {
 
@@ -98,7 +98,7 @@ class QuestAutoSyncer(
         override fun onLoggedOut() {}
     }
 
-    private val teamModeChangeListener = object : TeamModeQuestFilter.TeamModeChangeListener {
+    private val teamModeChangeListener = object : TeamModeQuestFilterSource.Listener {
         override fun onTeamModeChanged(enabled: Boolean) {
             if (!enabled) {
                 // because other team members will have solved some of the quests already
@@ -120,7 +120,7 @@ class QuestAutoSyncer(
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addListener(downloadProgressListener)
         userLoginSource.addListener(userLoginStatusListener)
-        teamModeQuestFilter.addListener(teamModeChangeListener)
+        teamModeQuestFilterSource.addListener(teamModeChangeListener)
     }
 
     override fun onResume(owner: LifecycleOwner) {
@@ -141,7 +141,7 @@ class QuestAutoSyncer(
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeListener(downloadProgressListener)
         userLoginSource.removeListener(userLoginStatusListener)
-        teamModeQuestFilter.removeListener(teamModeChangeListener)
+        teamModeQuestFilterSource.removeListener(teamModeChangeListener)
         coroutineScope.coroutineContext.cancelChildren()
     }
 

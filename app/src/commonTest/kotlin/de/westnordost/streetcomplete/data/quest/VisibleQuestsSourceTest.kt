@@ -10,7 +10,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestSource
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
-import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilter
+import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import dev.mokkery.matcher.any
 import de.westnordost.streetcomplete.testutils.bbox
@@ -37,7 +37,7 @@ class VisibleQuestsSourceTest {
     private lateinit var questTypeRegistry: QuestTypeRegistry
     private lateinit var osmNoteQuestSource: OsmNoteQuestSource
     private lateinit var visibleEditTypeSource: VisibleEditTypeSource
-    private lateinit var teamModeQuestFilter: TeamModeQuestFilter
+    private lateinit var teamModeQuestFilterSource: TeamModeQuestFilterSource
     private lateinit var selectedOverlaySource: SelectedOverlaySource
     private lateinit var source: VisibleQuestsSource
 
@@ -45,7 +45,7 @@ class VisibleQuestsSourceTest {
     private lateinit var questListener: OsmQuestSource.Listener
     private lateinit var questsHiddenListener: QuestsHiddenSource.Listener
     private lateinit var visibleEditTypeListener: VisibleEditTypeSource.Listener
-    private lateinit var teamModeListener: TeamModeQuestFilter.TeamModeChangeListener
+    private lateinit var teamModeListener: TeamModeQuestFilterSource.Listener
     private lateinit var selectedOverlayListener: SelectedOverlaySource.Listener
 
     private lateinit var listener: VisibleQuestsSource.Listener
@@ -80,8 +80,8 @@ class VisibleQuestsSourceTest {
             every { isVisible(any()) } returns true
         }
 
-        teamModeQuestFilter = mock() {
-            every { addListener(any()) } calls { (listener: TeamModeQuestFilter.TeamModeChangeListener) ->
+        teamModeQuestFilterSource = mock() {
+            every { addListener(any()) } calls { (listener: TeamModeQuestFilterSource.Listener) ->
                 teamModeListener = listener
             }
             every { isVisible(any()) } returns true
@@ -97,7 +97,7 @@ class VisibleQuestsSourceTest {
 
         source = VisibleQuestsSource(
             questTypeRegistry, osmQuestSource, osmNoteQuestSource, questsHiddenSource,
-            visibleEditTypeSource, teamModeQuestFilter, selectedOverlaySource
+            visibleEditTypeSource, teamModeQuestFilterSource, selectedOverlaySource
         )
 
         listener = mock()
@@ -138,8 +138,8 @@ class VisibleQuestsSourceTest {
         every { osmQuestSource.getAllInBBox(bboxCacheWillRequest, questTypeNames) } returns listOf(osmQuest)
         every { osmNoteQuestSource.getAllInBBox(bboxCacheWillRequest) } returns listOf(noteQuest)
         every { questsHiddenSource.get(any()) } returns null
-        every { teamModeQuestFilter.isVisible(any()) } returns false
-        every { teamModeQuestFilter.isEnabled } returns true
+        every { teamModeQuestFilterSource.isVisible(any()) } returns false
+        every { teamModeQuestFilterSource.isEnabled } returns true
 
         val quests = source.getAll(bbox)
         assertTrue(quests.isEmpty())

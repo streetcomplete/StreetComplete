@@ -39,7 +39,7 @@ import kotlinx.coroutines.withContext
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
  *  listeners about changes */
 @Mockable
-class OsmQuestController internal constructor(
+class OsmQuestController(
     private val db: OsmQuestDao,
     private val mapDataSource: MapDataWithEditsSource,
     private val notesSource: NotesWithEditsSource,
