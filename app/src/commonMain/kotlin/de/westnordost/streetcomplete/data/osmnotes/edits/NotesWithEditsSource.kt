@@ -30,14 +30,20 @@ class NotesWithEditsSource(
 
     private val noteControllerListener = object : NoteController.Listener {
         override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
-            /* note creations included only in part: This is the update from the server, the update does not
-             * include the new notes we added ourselves. Implementation here would only need to be
-             * changed if action type "REOPEN" or "CLOSE" is implemented */
-            val noteCommentEdits = noteEditsSource.getAllUnsynced().filter { it.action != CREATE }
+            /* Instead of getting *all* note edits with `noteEditsSource.getAllUnsynced()`, we only
+               get those that update the notes updated on the server.
+               This logic would need to be changed if `NoteEditAction.CLOSE` was introduced. */
             callOnUpdated(
-                editsAppliedToNotes(added, noteCommentEdits),
-                editsAppliedToNotes(updated, noteCommentEdits),
-                deleted
+                added = editsAppliedToNotes(
+                    originalNotes = added,
+                    noteEdits = noteEditsSource.getAllUnsyncedForNotes(added.map { it.id })
+                ),
+                updated = editsAppliedToNotes(
+                    originalNotes = updated,
+                    noteEdits = noteEditsSource.getAllUnsyncedForNotes(updated.map { it.id })
+                ),
+                /* we pass through deletions because `NoteEditAction.REOPEN` is not implemented. */
+                deleted = deleted
             )
         }
 

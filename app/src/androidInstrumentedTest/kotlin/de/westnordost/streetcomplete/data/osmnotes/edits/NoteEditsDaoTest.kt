@@ -126,6 +126,8 @@ class NoteEditsDaoTest : ApplicationDbTestCase() {
 
         // synced are not included, sorted by timestamp ascending
         assertEquals(listOf(e1, e3, e5), dao.getAllUnsyncedForNotes(listOf(1L, 3L, 4L)))
+
+        assertEquals(listOf(), dao.getAllUnsyncedForNotes(listOf()))
     }
 
     @Test fun getAllUnsyncedForBounds() {

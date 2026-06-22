@@ -67,6 +67,7 @@ class NoteEditsDao(private val db: Database) {
         ) { it.toNoteEdit() }
 
     fun getAllUnsyncedForNotes(noteIds: Collection<Long>): List<NoteEdit> {
+        if (noteIds.isEmpty()) return emptyList()
         val notes = noteIds.joinToString(",")
         return db.query(NAME,
             where = "$NOTE_ID IN ($notes) AND $IS_SYNCED = 0",
