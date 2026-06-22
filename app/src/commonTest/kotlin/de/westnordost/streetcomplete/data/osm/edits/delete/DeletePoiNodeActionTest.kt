@@ -23,11 +23,10 @@ class DeletePoiNodeActionTest {
     private val e = node(1, tags = mutableMapOf("amenity" to "atm"), version = 2)
 
     private lateinit var repos: MapDataRepository
-    private lateinit var provider: ElementIdProvider
+    private val provider = ElementIdProvider(emptyList())
 
     @BeforeTest fun setUp() {
         repos = mock()
-        provider = mock()
     }
 
     @Test fun `delete free-floating node`() {

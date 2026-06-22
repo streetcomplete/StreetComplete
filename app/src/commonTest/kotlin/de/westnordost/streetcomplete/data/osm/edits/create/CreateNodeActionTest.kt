@@ -29,12 +29,11 @@ internal class CreateNodeActionTest {
     @BeforeTest
     fun setUp() {
         repos = mock()
-        provider = mock()
+        provider = ElementIdProvider(listOf(ElementKey(ElementType.NODE, -123L)))
     }
 
     @Test
     fun `create node`() {
-        every { provider.nextNodeId() } returns -123
 
         val tags = mapOf("amenity" to "atm")
         val position = LatLon(12.0, 34.0)
@@ -61,7 +60,6 @@ internal class CreateNodeActionTest {
         val node1 = node(id = 1, pos = pos1)
         val node2 = node(id = 2, pos = pos2)
 
-        every { provider.nextNodeId() } returns -123
         every { repos.getWayComplete(1) } returns MutableMapData(listOf(way, node1, node2))
 
         val tags = mapOf("entrance" to "yes")
@@ -86,7 +84,6 @@ internal class CreateNodeActionTest {
         val pos1 = LatLon(0.0, 1.0)
         val pos2 = LatLon(0.0, 2.0)
 
-        every { provider.nextNodeId() } returns -123
         every { repos.getWayComplete(1) } returns null
 
         val tags = mapOf("entrance" to "yes")
@@ -108,7 +105,6 @@ internal class CreateNodeActionTest {
         val node2 = node(id = 2, pos = pos2)
         val node3 = node(id = 3, pos = pos3)
 
-        every { provider.nextNodeId() } returns -123
         every { repos.getWayComplete(1) } returns MutableMapData(listOf(way, node1, node2, node3))
 
         val tags = mapOf("entrance" to "yes")
@@ -130,7 +126,6 @@ internal class CreateNodeActionTest {
         val node2 = node(id = 2, pos = pos2)
         val node3 = node(id = 3, pos = pos3)
 
-        every { provider.nextNodeId() } returns -123
         every { repos.getWayComplete(1) } returns MutableMapData(listOf(way, node1, node2, node3))
 
         val tags = mapOf("entrance" to "yes")
@@ -150,7 +145,6 @@ internal class CreateNodeActionTest {
         val node1 = node(id = 1, pos = pos1)
         val node2 = node(id = 2, pos = pos2)
 
-        every { provider.nextNodeId() } returns -123
         every { repos.getWayComplete(1) } returns MutableMapData(listOf(way, node1, node2))
 
         val tags = mapOf("entrance" to "yes")
@@ -172,7 +166,6 @@ internal class CreateNodeActionTest {
         val node1 = node(id = 1, pos = pos1)
         val node2 = node(id = 2, pos = pos2)
 
-        every { provider.nextNodeId() } returns -123
         every { repos.getWayComplete(1) } returns MutableMapData(listOf(way, node1, node2))
 
         val tags = mapOf("entrance" to "yes")
@@ -198,7 +191,6 @@ internal class CreateNodeActionTest {
         val node3 = node(id = 3, pos = pos3)
         val node4 = node(id = 4, pos = pos4)
 
-        every { provider.nextNodeId() } returns -123
         every { repos.getWayComplete(1) } returns MutableMapData(listOf(way1, way2, node1, node2))
         every { repos.getWayComplete(2) } returns MutableMapData(listOf(way2, node3, node4))
 
@@ -231,7 +223,6 @@ internal class CreateNodeActionTest {
         val node3 = node(id = 3, pos = pos3)
         val node4 = node(id = 4, pos = pos4)
 
-        every { provider.nextNodeId() } returns -123
         every { repos.getWayComplete(1) } returns MutableMapData(listOf(way1, node1, node2, node3, node4))
 
         val tags = mapOf("entrance" to "yes")

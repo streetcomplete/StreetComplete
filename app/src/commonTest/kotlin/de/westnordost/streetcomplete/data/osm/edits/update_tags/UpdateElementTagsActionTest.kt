@@ -20,11 +20,10 @@ import kotlin.test.assertFailsWith
 class UpdateElementTagsActionTest {
 
     private lateinit var repos: MapDataRepository
-    private lateinit var provider: ElementIdProvider
+    private val provider = ElementIdProvider(emptyList())
 
     @BeforeTest fun setUp() {
         repos = mock()
-        provider = mock()
     }
 
     @Test

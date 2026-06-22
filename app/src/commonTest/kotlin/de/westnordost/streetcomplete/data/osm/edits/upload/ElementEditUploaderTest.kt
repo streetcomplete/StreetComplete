@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.ElementIdProvider
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
 import de.westnordost.streetcomplete.data.osm.mapdata.ChangesetTooLargeException
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
@@ -55,7 +56,7 @@ class ElementEditUploaderTest {
 
         assertEquals(
             mapDataUpdates,
-            uploader.upload(edit, { mock() })
+            uploader.upload(edit, { ElementIdProvider(emptyList()) })
         )
     }
 
@@ -69,7 +70,7 @@ class ElementEditUploaderTest {
         everySuspend { mapDataApi.uploadChanges(any(), any(), any()) } throws ConflictException()
 
         assertFailsWith<ConflictException> {
-            uploader.upload(edit, { mock() })
+            uploader.upload(edit, { ElementIdProvider(emptyList()) })
         }
     }
 
@@ -85,6 +86,6 @@ class ElementEditUploaderTest {
             returns(MapDataUpdates())
         }
         every { mapDataSource.getNodes(emptySet()) } returns emptyList()
-        uploader.upload(edit, { mock() })
+        uploader.upload(edit, { ElementIdProvider(emptyList()) })
     }
 }
