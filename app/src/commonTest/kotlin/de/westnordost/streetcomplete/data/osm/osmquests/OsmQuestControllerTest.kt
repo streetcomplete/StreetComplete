@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -27,6 +28,8 @@ import de.westnordost.streetcomplete.testutils.osmQuest
 import de.westnordost.streetcomplete.testutils.osmQuestKey
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountries
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import dev.mokkery.answering.calls
 import dev.mokkery.matcher.matches
@@ -73,7 +76,15 @@ class OsmQuestControllerTest {
             3 to ApplicableQuestTypeNotInAnyCountry,
             4 to ApplicableQuestType2
         ))
-        countryBoundaries = mock()
+        countryBoundaries = object : CountryBoundaries {
+            override fun isInAny(position: LatLon, countries: Countries): Boolean =
+                countries !is NoCountriesExcept
+
+            override fun getIds(position: LatLon): List<String> = emptyList()
+
+            override fun intersects(bbox: BoundingBox, countries: Countries): Boolean =
+                countries !is NoCountriesExcept
+        }
 
         listener = mock()
 
@@ -187,6 +198,7 @@ class OsmQuestControllerTest {
         every { db.getAllForElements(elements.map { ElementKey(it.type, it.id) }) } returns previousQuests
         every { db.getAllForElements(emptyList()) } returns emptyList()
         every { mapDataSource.getMapDataWithGeometry(any()) } returns mapData
+        every { notesSource.getAllPositions(any()) } returns emptyList()
 
         mapDataListener.onUpdated(mapData, emptyList())
 
@@ -279,7 +291,7 @@ private object ApplicableQuestType2 : TestQuestTypeA() {
 
 private object ApplicableQuestTypeNotInAnyCountry : TestQuestTypeA() {
     override fun isApplicableTo(element: Element) = true
-    override val enabledInCountries: Countries get() = NoCountriesExcept()
+    override val enabledInCountries: Countries get() = NoCountriesExcept(emptyList())
 }
 
 private object NotApplicableQuestType : TestQuestTypeA() {
