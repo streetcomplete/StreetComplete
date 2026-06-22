@@ -80,6 +80,8 @@ allOpen {
 mokkery {
     // mocks will return default values if not mocked otherwise
     defaultMockMode.set(MockMode.autofill)
+    // to enable mocking of classes whose constructor parameters also need to be mocked (with concrete classes)
+    stubs.allowConcreteClassInstantiation = true
 }
 
 kotlin {
