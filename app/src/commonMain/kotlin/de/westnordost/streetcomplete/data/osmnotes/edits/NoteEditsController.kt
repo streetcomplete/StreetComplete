@@ -11,17 +11,7 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
 
-@Mockable
-class NoteEditsController(
-    private val editsDB: NoteEditsDao
-) : NoteEditsSource {
-    /* Must be a singleton because there is a listener that should respond to a change in the
-     * database table */
-
-    private val listeners = Listeners<NoteEditsSource.Listener>()
-
-    private val lock = ReentrantLock()
-
+interface NoteEditsController : NoteEditsSource {
     fun add(
         noteId: Long,
         action: NoteEditAction,
@@ -29,125 +19,19 @@ class NoteEditsController(
         text: String? = null,
         imagePaths: List<String> = emptyList(),
         track: List<Trackpoint> = emptyList(),
-    ) {
-        val edit = NoteEdit(
-            0,
-            noteId,
-            position,
-            action,
-            text,
-            imagePaths,
-            nowAsEpochMilliseconds(),
-            false,
-            imagePaths.isNotEmpty(),
-            track,
-        )
-        lock.withLock { editsDB.add(edit) }
-        onAddedEdit(edit)
-    }
+    )
 
-    fun get(id: Long): NoteEdit? =
-        editsDB.get(id)
+    fun getOldestNeedingImagesActivation(): NoteEdit?
 
-    override fun getAllUnsynced(): List<NoteEdit> =
-        editsDB.getAllUnsynced()
+    fun markImagesActivated(id: Long): Boolean
 
-    fun getAll(): List<NoteEdit> =
-        editsDB.getAll()
+    fun markSynced(edit: NoteEdit, note: Note)
 
-    fun getOldestUnsynced(): NoteEdit? =
-        editsDB.getOldestUnsynced()
+    fun markSyncFailed(edit: NoteEdit): Boolean
 
-    override fun getUnsyncedCount(): Int =
-        editsDB.getUnsyncedCount()
+    fun undo(edit: NoteEdit): Boolean
 
-    override fun getAllUnsyncedForNote(noteId: Long): List<NoteEdit> =
-        editsDB.getAllUnsyncedForNote(noteId)
+    fun deleteSyncedOlderThan(timestamp: Long): Int
 
-    override fun getAllUnsyncedForNotes(noteIds: Collection<Long>): List<NoteEdit> =
-        editsDB.getAllUnsyncedForNotes(noteIds)
-
-    override fun getAllUnsynced(bbox: BoundingBox): List<NoteEdit> =
-        editsDB.getAllUnsynced(bbox)
-
-    override fun getAllUnsyncedPositions(bbox: BoundingBox): List<LatLon> =
-        editsDB.getAllUnsyncedPositions(bbox)
-
-    fun getOldestNeedingImagesActivation(): NoteEdit? =
-        editsDB.getOldestNeedingImagesActivation()
-
-    fun markImagesActivated(id: Long): Boolean =
-        lock.withLock { editsDB.markImagesActivated(id) }
-
-    fun markSynced(edit: NoteEdit, note: Note) {
-        var markSyncedSuccess = false
-        lock.withLock {
-            if (edit.noteId != note.id) {
-                editsDB.updateNoteId(edit.noteId, note.id)
-            }
-            markSyncedSuccess = editsDB.markSynced(edit.id)
-        }
-
-        if (markSyncedSuccess) {
-            onSyncedEdit(edit.copy(isSynced = true))
-        }
-    }
-
-    fun markSyncFailed(edit: NoteEdit): Boolean =
-        delete(edit)
-
-    fun undo(edit: NoteEdit): Boolean =
-        delete(edit)
-
-    fun deleteSyncedOlderThan(timestamp: Long): Int {
-        var deletedCount = 0
-        var deleteEdits = listOf<NoteEdit>()
-        lock.withLock {
-            deleteEdits = editsDB.getSyncedOlderThan(timestamp)
-            if (deleteEdits.isEmpty()) return 0
-            deletedCount = editsDB.deleteAll(deleteEdits.map { it.id })
-        }
-        onDeletedEdits(deleteEdits)
-        return deletedCount
-    }
-
-    private fun delete(edit: NoteEdit): Boolean {
-        val deleteSuccess = lock.withLock { editsDB.delete(edit.id) }
-        if (deleteSuccess) {
-            onDeletedEdits(listOf(edit))
-            return false
-        }
-        return true
-    }
-
-    fun updateElementIds(idUpdates: Collection<ElementIdUpdate>) {
-        for (idUpdate in idUpdates) {
-            val elementType = idUpdate.elementType.name.lowercase()
-            editsDB.replaceTextInUnsynced(
-                "osm.org/$elementType/${idUpdate.oldElementId} ",
-                "osm.org/$elementType/${idUpdate.newElementId} ",
-            )
-        }
-    }
-
-    /* ------------------------------------ Listeners ------------------------------------------- */
-
-    override fun addListener(listener: NoteEditsSource.Listener) {
-        listeners.add(listener)
-    }
-    override fun removeListener(listener: NoteEditsSource.Listener) {
-        listeners.remove(listener)
-    }
-
-    private fun onAddedEdit(edit: NoteEdit) {
-        listeners.forEach { it.onAddedEdit(edit) }
-    }
-
-    private fun onSyncedEdit(edit: NoteEdit) {
-        listeners.forEach { it.onSyncedEdit(edit) }
-    }
-
-    private fun onDeletedEdits(edits: List<NoteEdit>) {
-        listeners.forEach { it.onDeletedEdits(edits) }
-    }
+    fun updateElementIds(idUpdates: Collection<ElementIdUpdate>)
 }

@@ -14,7 +14,7 @@ import dev.mokkery.verify.VerifyMode.Companion.not
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
-class NoteEditsControllerTest {
+class NoteEditsControllerImplTest {
 
     private lateinit var ctrl: NoteEditsController
     private lateinit var db: NoteEditsDao
@@ -27,7 +27,7 @@ class NoteEditsControllerTest {
         }
 
         listener = mock()
-        ctrl = NoteEditsController(db)
+        ctrl = NoteEditsControllerImpl(db)
         ctrl.addListener(listener)
     }
 

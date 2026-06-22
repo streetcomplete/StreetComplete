@@ -22,7 +22,7 @@ import dev.mokkery.verify
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
-class ElementEditsControllerTest {
+class ElementEditsControllerImplTest {
 
     private lateinit var ctrl: ElementEditsController
     private lateinit var db: ElementEditsDao
@@ -41,7 +41,7 @@ class ElementEditsControllerTest {
         prefs = mock()
 
         listener = mock()
-        ctrl = ElementEditsController(db, elementsDb, idProvider, prefs)
+        ctrl = ElementEditsControllerImpl(db, elementsDb, idProvider, prefs)
         ctrl.addListener(listener)
     }
 

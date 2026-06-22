@@ -1,23 +1,21 @@
 package de.westnordost.streetcomplete.data.osm.edits.upload
 
 import de.westnordost.streetcomplete.data.ConflictException
-import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
 import de.westnordost.streetcomplete.data.osm.mapdata.ChangesetTooLargeException
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.testutils.edit
-import dev.mokkery.matcher.any
-import dev.mokkery.mock
 import dev.mokkery.answering.returns
 import dev.mokkery.answering.sequentially
-import dev.mokkery.answering.sequentiallyRepeat
 import dev.mokkery.answering.throws
 import dev.mokkery.every
 import dev.mokkery.everySuspend
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import kotlinx.coroutines.runBlocking
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -28,15 +26,15 @@ class ElementEditUploaderTest {
 
     private lateinit var changesetManager: OpenChangesetsManager
     private lateinit var mapDataApi: MapDataApiClient
-    private lateinit var mapDataController: MapDataController
+    private lateinit var mapDataSource: MapDataSource
     private lateinit var uploader: ElementEditUploader
 
     @BeforeTest fun setUp() {
         changesetManager = mock()
         mapDataApi = mock()
-        mapDataController = mock()
+        mapDataSource = mock()
 
-        uploader = ElementEditUploader(changesetManager, mapDataApi, mapDataController)
+        uploader = ElementEditUploader(changesetManager, mapDataApi, mapDataSource)
     }
 
     @Test fun `create new changeset when changeset is too large`(): Unit = runBlocking {
@@ -86,7 +84,7 @@ class ElementEditUploaderTest {
             throws(ConflictException())
             returns(MapDataUpdates())
         }
-        every { mapDataController.getNodes(emptySet()) } returns emptyList()
+        every { mapDataSource.getNodes(emptySet()) } returns emptyList()
         uploader.upload(edit, { mock() })
     }
 }

@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.NoteController
+import de.westnordost.streetcomplete.data.osmnotes.NoteSource
 import de.westnordost.streetcomplete.data.user.User
 import de.westnordost.streetcomplete.data.user.UserDataSource
 import de.westnordost.streetcomplete.testutils.bbox
@@ -25,11 +26,11 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class NotesWithEditsSourceTest {
+class NotesWithEditsSourceImplTest {
 
     private lateinit var src: NotesWithEditsSource
     private lateinit var noteController: NoteController
-    private lateinit var noteListener: NoteController.Listener
+    private lateinit var noteListener: NoteSource.Listener
     private lateinit var noteEditsSource: NoteEditsSource
     private lateinit var noteEditsListener: NoteEditsSource.Listener
     private lateinit var userDataSource: UserDataSource
@@ -40,7 +41,7 @@ class NotesWithEditsSourceTest {
 
     @BeforeTest fun setUp() {
         noteController = mock() {
-            every { addListener(any()) } calls { (listener: NoteController.Listener) ->
+            every { addListener(any()) } calls { (listener: NoteSource.Listener) ->
                 noteListener = listener
             }
         }
@@ -54,7 +55,7 @@ class NotesWithEditsSourceTest {
             every { userName } returns "test user"
         }
 
-        src = NotesWithEditsSource(noteController, noteEditsSource, userDataSource)
+        src = NotesWithEditsSourceImpl(noteController, noteEditsSource, userDataSource)
     }
 
     //region get
@@ -352,7 +353,7 @@ class NotesWithEditsSourceTest {
 
     //endregion
 
-    //region NoteController.Listener
+    //region NoteSource.Listener
 
     @Test fun `onUpdated passes through notes when there are no edits`() {
         val listener = mock<NotesWithEditsSource.Listener>()

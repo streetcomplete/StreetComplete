@@ -19,6 +19,6 @@ val elementEditsModule = module {
     single { ElementEditsUploader(get(), get(), get(), get(), get(), get()) }
 
     single<ElementEditsSource> { get<ElementEditsController>() }
-    single { ElementEditsController(get(), get(), get(), get()) }
-    single { MapDataWithEditsSource(get(), get(), get()) }
+    single<ElementEditsController> { ElementEditsControllerImpl(get(), get(), get(), get()) }
+    single<MapDataWithEditsSource> { MapDataWithEditsSourceImpl(get(), get(), get()) }
 }

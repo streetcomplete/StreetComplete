@@ -25,14 +25,14 @@ import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
-class MapDataControllerTest {
+class MapDataControllerImplTest {
 
     private lateinit var nodeDB: NodeDao
     private lateinit var wayDB: WayDao
     private lateinit var relationDB: RelationDao
     private lateinit var geometryDB: ElementGeometryDao
     private lateinit var elementDB: ElementDao
-    private lateinit var controller: MapDataController
+    private lateinit var controller: MapDataControllerImpl
     private val geometryCreator = ElementGeometryCreator()
     private lateinit var createdElementsController: CreatedElementsController
 
@@ -43,7 +43,7 @@ class MapDataControllerTest {
         geometryDB = mock()
         elementDB = mock()
         createdElementsController = mock()
-        controller = MapDataController(nodeDB, wayDB, relationDB, elementDB, geometryDB, geometryCreator, createdElementsController)
+        controller = MapDataControllerImpl(nodeDB, wayDB, relationDB, elementDB, geometryDB, geometryCreator, createdElementsController)
     }
 
     @Test fun get() {
@@ -106,7 +106,7 @@ class MapDataControllerTest {
             ElementGeometryEntry(NODE, 2L, pGeom()),
         )
 
-        val listener = mock<MapDataController.Listener>()
+        val listener = mock<MapDataSource.Listener>()
         controller.addListener(listener)
         controller.updateAll(MapDataUpdates(
             updated = elements,
@@ -131,7 +131,7 @@ class MapDataControllerTest {
             ElementKey(NODE, 2L),
         )
         every { elementDB.getIdsOlderThan(123L) } returns elementKeys
-        val listener = mock<MapDataController.Listener>()
+        val listener = mock<MapDataSource.Listener>()
 
         controller.addListener(listener)
         controller.deleteOlderThan(123L)
@@ -145,7 +145,7 @@ class MapDataControllerTest {
     }
 
     @Test fun clear() {
-        val listener = mock<MapDataController.Listener>()
+        val listener = mock<MapDataSource.Listener>()
         controller.addListener(listener)
         controller.clear()
 
@@ -172,7 +172,7 @@ class MapDataControllerTest {
         every { elementDB.getAllKeys(bbox) } returns emptyList()
         every { geometryDB.getAllEntries(emptyList()) } returns emptyList()
 
-        val listener = mock<MapDataController.Listener>()
+        val listener = mock<MapDataSource.Listener>()
 
         controller.addListener(listener)
         controller.putAllForBBox(bbox, mapData)

@@ -14,13 +14,13 @@ import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-class NoteControllerTest {
+class NoteControllerImplTest {
     private lateinit var dao: NoteDao
     private lateinit var noteController: NoteController
 
     @BeforeTest fun setUp() {
         dao = mock()
-        noteController = NoteController(dao)
+        noteController = NoteControllerImpl(dao)
     }
 
     @Test fun get() {
@@ -53,7 +53,7 @@ class NoteControllerTest {
     @Test fun put(): Unit = runBlocking {
         val note = note(1)
 
-        val listener = mock<NoteController.Listener>()
+        val listener = mock<NoteSource.Listener>()
         noteController.addListener(listener)
         noteController.put(note)
 
@@ -66,7 +66,7 @@ class NoteControllerTest {
 
     @Test fun `put existing`(): Unit = runBlocking {
         val note = note(1)
-        val listener = mock<NoteController.Listener>()
+        val listener = mock<NoteSource.Listener>()
         every { dao.get(1L) } returns note
 
         noteController.addListener(listener)
@@ -80,7 +80,7 @@ class NoteControllerTest {
     }
 
     @Test fun delete(): Unit = runBlocking {
-        val listener = mock<NoteController.Listener>()
+        val listener = mock<NoteSource.Listener>()
         every { dao.delete(1L) } returns true
 
         noteController.addListener(listener)
@@ -93,7 +93,7 @@ class NoteControllerTest {
     }
 
     @Test fun `delete non-existing`() {
-        val listener = mock<NoteController.Listener>()
+        val listener = mock<NoteSource.Listener>()
         every { dao.delete(1L) } returns false
 
         noteController.addListener(listener)
@@ -103,7 +103,7 @@ class NoteControllerTest {
     }
 
     @Test fun `remove listener`() {
-        val listener = mock<NoteController.Listener>()
+        val listener = mock<NoteSource.Listener>()
 
         noteController.addListener(listener)
         noteController.removeListener(listener)
@@ -114,7 +114,7 @@ class NoteControllerTest {
     @Test fun deleteOlderThan(): Unit = runBlocking {
         val ids = listOf(1L, 2L, 3L)
         every { dao.getIdsOlderThan(123L) } returns ids
-        val listener = mock<NoteController.Listener>()
+        val listener = mock<NoteSource.Listener>()
 
         noteController.addListener(listener)
 
@@ -127,7 +127,7 @@ class NoteControllerTest {
     }
 
     @Test fun clear() {
-        val listener = mock<NoteController.Listener>()
+        val listener = mock<NoteSource.Listener>()
         noteController.addListener(listener)
         noteController.clear()
 
@@ -139,7 +139,7 @@ class NoteControllerTest {
         val bbox = bbox()
         val notes = listOf(note(1), note(2), note(3))
         every { dao.getAll(bbox) } returns emptyList()
-        val listener = mock<NoteController.Listener>()
+        val listener = mock<NoteSource.Listener>()
 
         noteController.addListener(listener)
         noteController.putAllForBBox(bbox, notes)
@@ -161,7 +161,7 @@ class NoteControllerTest {
         // 1 is updated, 2 is deleted, 3 is added
         val newNotes = listOf(note1, note3)
         every { dao.getAll(bbox) } returns oldNotes
-        val listener = mock<NoteController.Listener>()
+        val listener = mock<NoteSource.Listener>()
 
         noteController.addListener(listener)
         noteController.putAllForBBox(bbox, newNotes)

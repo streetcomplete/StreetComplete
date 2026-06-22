@@ -20,7 +20,7 @@ import kotlin.test.assertFalse
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class QuestsHiddenControllerTest {
+class QuestsHiddenControllerImplTest {
 
     private lateinit var osmDb: OsmQuestsHiddenDao
     private lateinit var notesDb: NoteQuestsHiddenDao
@@ -37,7 +37,7 @@ class QuestsHiddenControllerTest {
             every { getAll() } returns listOf()
         }
         listener = mock()
-        ctrl = QuestsHiddenController(osmDb, notesDb)
+        ctrl = QuestsHiddenControllerImpl(osmDb, notesDb)
         ctrl.addListener(listener)
     }
 

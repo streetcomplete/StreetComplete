@@ -12,18 +12,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationMember
 import de.westnordost.streetcomplete.data.osm.mapdata.key
-import dev.mokkery.matcher.any
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.edit
 import de.westnordost.streetcomplete.testutils.member
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.node
-import dev.mokkery.answering.returns
-import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.rel
@@ -31,8 +27,12 @@ import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import de.westnordost.streetcomplete.util.math.intersect
 import dev.mokkery.answering.calls
+import dev.mokkery.answering.returns
 import dev.mokkery.answering.throws
+import dev.mokkery.every
+import dev.mokkery.matcher.any
 import dev.mokkery.matcher.matches
+import dev.mokkery.mock
 import dev.mokkery.verify
 import dev.mokkery.verifyNoMoreCalls
 import kotlin.test.BeforeTest
@@ -43,14 +43,14 @@ import kotlin.test.assertTrue
 
 class MapDataWithEditsSourceTest {
 
-    private lateinit var editsCtrl: ElementEditsController
-    private lateinit var mapDataCtrl: MapDataController
+    private lateinit var editsSource: ElementEditsSource
+    private lateinit var mapDataSource: MapDataSource
     private val geometryCreator = ElementGeometryCreator()
 
     private lateinit var mapData: MutableMapDataWithGeometry
 
     private lateinit var editsListener: ElementEditsSource.Listener
-    private lateinit var mapDataListener: MapDataController.Listener
+    private lateinit var mapDataListener: MapDataSource.Listener
 
     @BeforeTest
     fun setUp() {
@@ -58,7 +58,7 @@ class MapDataWithEditsSourceTest {
         // a trick to get the edit action to apply to anything
         mapData.putElement(node(-1, pos = p(60.0, 60.0)))
 
-        editsCtrl = mock() {
+        editsSource = mock() {
             every { getIdProvider(any()) } returns ElementIdProvider(listOf())
 
             every { getAllUnsynced() } returns listOf()
@@ -68,7 +68,7 @@ class MapDataWithEditsSourceTest {
             }
         }
 
-        mapDataCtrl = mock() {
+        mapDataSource = mock() {
             every { get(any(), any()) } calls { (type: ElementType, id: Long) ->
                 when (type) {
                     NODE -> mapData.getNode(id)
@@ -115,6 +115,9 @@ class MapDataWithEditsSourceTest {
             every { getRelationsForRelation(any()) } calls { (id: Long) ->
                 mapData.relations.filter { r -> r.members.any { it.ref == id && it.type == RELATION } }
             }
+            every { getRelationsForElement(any(), any()) } calls { (type: ElementType, id: Long) ->
+                mapData.relations.filter { r -> r.members.any { it.ref == id && it.type == type } }
+            }
             every { getGeometry(any(), any()) } calls { (type: ElementType, id: Long) ->
                 when (type) {
                     NODE -> mapData.getNodeGeometry(id)
@@ -148,7 +151,7 @@ class MapDataWithEditsSourceTest {
                 result
             }
 
-            every { addListener(any()) } calls { (listener: MapDataController.Listener) ->
+            every { addListener(any()) } calls { (listener: MapDataSource.Listener) ->
                 mapDataListener = listener
             }
         }
@@ -200,7 +203,7 @@ class MapDataWithEditsSourceTest {
         every { action2.createUpdates(any(), any()) } returns MapDataChanges(modifications = listOf(nd2))
         val action3 = mock<ElementEditAction>()
         every { action3.createUpdates(any(), any()) } returns MapDataChanges(modifications = listOf(nd3))
-        every { editsCtrl.getAllUnsynced() } returns listOf(
+        every { editsSource.getAllUnsynced() } returns listOf(
             edit(action = action2),
             edit(action = action3),
         )
@@ -229,7 +232,7 @@ class MapDataWithEditsSourceTest {
 
         val action = mock<ElementEditAction>()
         every { action.createUpdates(any(), any()) } throws ConflictException()
-        every { editsCtrl.getAllUnsynced() } returns listOf(edit(action = action))
+        every { editsSource.getAllUnsynced() } returns listOf(edit(action = action))
 
         val s = create()
         assertEquals(nd, s.get(NODE, 1))
@@ -301,7 +304,7 @@ class MapDataWithEditsSourceTest {
         every { action2.createUpdates(any(), any()) } returns MapDataChanges(modifications = listOf(nd2))
         val action3 = mock<ElementEditAction>()
         every { action3.createUpdates(any(), any()) } returns MapDataChanges(modifications = listOf(nd3))
-        every { editsCtrl.getAllUnsynced() } returns listOf(
+        every { editsSource.getAllUnsynced() } returns listOf(
             edit(action = action2),
             edit(action = action3)
         )
@@ -1323,7 +1326,7 @@ class MapDataWithEditsSourceTest {
 
     //endregion
 
-    private fun create() = MapDataWithEditsSource(mapDataCtrl, editsCtrl, geometryCreator)
+    private fun create() = MapDataWithEditsSourceImpl(mapDataSource, editsSource, geometryCreator)
 
     /** Feed mock MapDataController the data */
     private fun originalGeometriesAre(vararg elementGeometryEntries: ElementGeometryEntry) {
@@ -1354,7 +1357,7 @@ class MapDataWithEditsSourceTest {
     ) {
         val action = mock<ElementEditAction>()
         every { action.createUpdates(any(), any()) } returns MapDataChanges(creations, modifications, deletions)
-        every { editsCtrl.getAllUnsynced() } returns listOf(edit(action = action))
+        every { editsSource.getAllUnsynced() } returns listOf(edit(action = action))
     }
 
     private fun thereAreNoMapDataChanges() {
@@ -1372,7 +1375,7 @@ class MapDataWithEditsSourceTest {
     }
 
     private fun editsControllerNotifiesDeletedEdit(editedElementKeys: List<ElementKey>, createdElementKeys: List<ElementKey>) {
-        every { editsCtrl.getIdProvider(any()) } returns ElementIdProvider(createdElementKeys)
+        every { editsSource.getIdProvider(any()) } returns ElementIdProvider(createdElementKeys)
         val action = mock<ElementEditAction>()
         every { action.elementKeys } returns editedElementKeys
         editsListener.onDeletedEdits(listOf(edit(action = action)))
