@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osmnotes
 
 import de.westnordost.streetcomplete.data.ConnectionException
 import de.westnordost.streetcomplete.data.wrapApiClientExceptions
-import de.westnordost.streetcomplete.util.Mockable
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
@@ -25,18 +24,26 @@ import kotlinx.serialization.json.Json
 /** Upload and activate a list of image paths to an instance of the
  *  https://github.com/streetcomplete/sc-photo-service
  */
-@Mockable
-class PhotoServiceApiClient(
-    private val fileSystem: FileSystem,
-    private val httpClient: HttpClient,
-    private val baseUrl: String
-) {
-    private val json = Json { ignoreUnknownKeys = true }
-
+interface PhotoServiceApiClient {
     /** Upload list of images.
      *
      *  @throws ConnectionException on connection or server error */
-    suspend fun upload(imagePaths: List<String>): List<String> = wrapApiClientExceptions {
+    suspend fun upload(imagePaths: List<String>): List<String>
+
+    /** Activate the images in the given note.
+     *
+     *  @throws ConnectionException on connection or server error */
+    suspend fun activate(noteId: Long)
+}
+
+class PhotoServiceApiClientImpl(
+    private val fileSystem: FileSystem,
+    private val httpClient: HttpClient,
+    private val baseUrl: String
+): PhotoServiceApiClient {
+    private val json = Json { ignoreUnknownKeys = true }
+
+    override suspend fun upload(imagePaths: List<String>): List<String> = wrapApiClientExceptions {
         val imageLinks = ArrayList<String>()
 
         for (path in imagePaths) {
@@ -58,10 +65,7 @@ class PhotoServiceApiClient(
         return imageLinks
     }
 
-    /** Activate the images in the given note.
-     *
-     *  @throws ConnectionException on connection or server error */
-    suspend fun activate(noteId: Long): Unit = wrapApiClientExceptions {
+    override suspend fun activate(noteId: Long): Unit = wrapApiClientExceptions {
         try {
             httpClient.post(baseUrl + "activate.php") {
                 contentType(ContentType.Application.Json)

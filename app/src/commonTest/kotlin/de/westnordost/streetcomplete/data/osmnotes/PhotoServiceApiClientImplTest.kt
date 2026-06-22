@@ -19,7 +19,7 @@ import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
-class PhotoServiceApiClientTest {
+class PhotoServiceApiClientImplTest {
 
     private val picture = "src/commonTest/resources/hai_phong_street.jpg"
     private val fileSystem = SystemFileSystem
@@ -27,7 +27,7 @@ class PhotoServiceApiClientTest {
     @Test
     fun `upload makes POST request with file contents and returns response`() = runBlocking {
         val mockEngine = MockEngine { respondOk("{\"future_url\": \"market.jpg\"}") }
-        val client = PhotoServiceApiClient(fileSystem, HttpClient(mockEngine), "http://example.com/")
+        val client = PhotoServiceApiClientImpl(fileSystem, HttpClient(mockEngine), "http://example.com/")
 
         val response = client.upload(listOf(picture))
 
@@ -58,7 +58,7 @@ class PhotoServiceApiClientTest {
     @Test
     fun `upload performs no requests with missing file`() = runBlocking {
         val mockEngine = MockEngine { respondOk() }
-        val client = PhotoServiceApiClient(fileSystem, HttpClient(mockEngine), "http://example.com/")
+        val client = PhotoServiceApiClientImpl(fileSystem, HttpClient(mockEngine), "http://example.com/")
 
         assertContentEquals(listOf(), client.upload(listOf("no-such-file-at-this-path.jpg")))
         assertEquals(0, mockEngine.requestHistory.size)
@@ -67,7 +67,7 @@ class PhotoServiceApiClientTest {
     @Test
     fun `activate makes POST request with note ID`() = runBlocking {
         val mockEngine = MockEngine { respondOk() }
-        val client = PhotoServiceApiClient(fileSystem, HttpClient(mockEngine), "http://example.com/")
+        val client = PhotoServiceApiClientImpl(fileSystem, HttpClient(mockEngine), "http://example.com/")
 
         client.activate(123)
 
@@ -93,5 +93,5 @@ class PhotoServiceApiClientTest {
     }
 
     private fun client(engine: HttpClientEngine) =
-        PhotoServiceApiClient(fileSystem, HttpClient(engine), "http://example.com/")
+        PhotoServiceApiClientImpl(fileSystem, HttpClient(engine), "http://example.com/")
 }
