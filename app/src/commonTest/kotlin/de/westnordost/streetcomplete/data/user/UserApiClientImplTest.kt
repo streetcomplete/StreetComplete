@@ -12,7 +12,7 @@ import kotlin.test.assertNotNull
 // other than some other APIs we are speaking to, we do not control the OSM API, so I think it is
 // more effective to test with the official test API instead of mocking some imagined server
 // response
-class UserApiClientTest {
+class UserApiClientImplTest {
 
     @Test
     fun get(): Unit = runBlocking {
@@ -40,7 +40,7 @@ class UserApiClientTest {
     }
 
     private fun client(token: String?) =
-        UserApiClient(
+        UserApiClientImpl(
             httpClient = HttpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },

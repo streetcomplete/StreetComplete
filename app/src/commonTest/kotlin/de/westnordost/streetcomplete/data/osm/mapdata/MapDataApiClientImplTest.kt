@@ -4,7 +4,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.AuthorizationException
 import de.westnordost.streetcomplete.data.ConflictException
 import de.westnordost.streetcomplete.data.QueryTooBigException
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiClient
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiClientImpl
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiSerializer
 import de.westnordost.streetcomplete.data.user.UserAccessTokenSource
 import de.westnordost.streetcomplete.testutils.OsmDevApi
@@ -20,7 +20,7 @@ import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
-class MapDataApiClientTest {
+class MapDataApiClientImplTest {
 
     @Test fun getNode(): Unit = runBlocking {
         assertEquals("Yangon", liveClient.getNode(NODE_YANGON)?.tags?.get("name:en"))
@@ -181,7 +181,7 @@ class MapDataApiClientTest {
     }
 
     private fun client(token: String?) =
-        MapDataApiClient(
+        MapDataApiClientImpl(
             httpClient = HttpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
@@ -190,7 +190,7 @@ class MapDataApiClientTest {
         )
 
     private fun changesetClient(token: String?) =
-        ChangesetApiClient(
+        ChangesetApiClientImpl(
             httpClient = HttpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
@@ -198,7 +198,7 @@ class MapDataApiClientTest {
         )
 
     private val liveClient =
-        MapDataApiClient(
+        MapDataApiClientImpl(
             httpClient = HttpClient(),
             baseUrl = "https://api.openstreetmap.org/api/0.6/",
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = null },

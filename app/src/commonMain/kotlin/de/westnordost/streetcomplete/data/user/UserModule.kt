@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.user
 
 import de.westnordost.streetcomplete.ApplicationConstants.USE_TEST_API
 import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClient
+import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClientImpl
 import org.koin.dsl.module
 
 private const val OAUTH2_HOST_LIVE = "https://www.openstreetmap.org/"
@@ -53,5 +54,5 @@ val userModule = module {
 
     single { UserUpdater(get(), get(), get(), get(), get(), get()) }
 
-    single { OAuthApiClient(get()) }
+    single<OAuthApiClient> { OAuthApiClientImpl(get()) }
 }

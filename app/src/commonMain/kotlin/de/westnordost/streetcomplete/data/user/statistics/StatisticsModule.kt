@@ -13,7 +13,7 @@ val statisticsModule = module {
 
     factory { ActiveDatesDao(get()) }
 
-    factory { StatisticsApiClient(get(), STATISTICS_BACKEND_URL, get()) }
+    factory<StatisticsApiClient> { StatisticsApiClientImpl(get(), STATISTICS_BACKEND_URL, get()) }
     factory { StatisticsParser(get(named("TypeAliases"))) }
 
     single<StatisticsSource> { get<StatisticsController>() }

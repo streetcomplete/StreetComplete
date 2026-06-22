@@ -14,7 +14,7 @@ import kotlin.test.assertFailsWith
 // other than some other APIs we are speaking to, we do not control the OSM API, so I think it is
 // more effective to test with the official test API instead of mocking some imagined server
 // response
-class TracksApiClientTest {
+class TracksApiClientImplTest {
 
     private val trackpoint = Trackpoint(LatLon(1.23, 3.45), systemTimeNow().toEpochMilliseconds(), 1f, 1f)
     private val creator = "StreetComplete test"
@@ -36,7 +36,7 @@ class TracksApiClientTest {
     }
 
     private fun client(token: String?) =
-        TracksApiClient(
+        TracksApiClientImpl(
             httpClient = HttpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },

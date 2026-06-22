@@ -21,7 +21,7 @@ import kotlin.test.assertTrue
 // other than some other APIs we are speaking to, we do not control the OSM API, so I think it is
 // more effective to test with the official test API instead of mocking some imagined server
 // response
-class NotesApiClientTest {
+class NotesApiClientImplTest {
 
     @Test fun `create note`(): Unit = runBlocking {
         val note = client(OsmDevApi.ALLOW_EVERYTHING_TOKEN).create(LatLon(83.0, 9.0), "Created note!")
@@ -116,7 +116,7 @@ class NotesApiClientTest {
     }
 
     private fun client(token: String?) =
-        NotesApiClient(
+        NotesApiClientImpl(
             httpClient = HttpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },

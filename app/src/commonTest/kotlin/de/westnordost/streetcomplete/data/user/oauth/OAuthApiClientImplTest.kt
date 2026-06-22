@@ -18,9 +18,10 @@ import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class OAuthApiClientTest {
+class OAuthApiClientImplTest {
     @Test fun createAuthorizationUrl() {
-        val url = Url(createOAuth().authorizationRequestUrl)
+        val client = OAuthApiClientImpl(HttpClient(MockEngine { respondOk() }))
+        val url = Url(client.getAuthorizationRequestUrl(createOAuth()))
 
         assertEquals("https", url.protocol.name)
         assertEquals("test.me", url.host)
@@ -36,13 +37,15 @@ class OAuthApiClientTest {
     }
 
     @Test fun `createAuthorizationUrl with state`() {
-        val parameters = Url(createOAuth("123").authorizationRequestUrl).parameters
+        val client = OAuthApiClientImpl(HttpClient(MockEngine { respondOk() }))
+        val parameters = Url(client.getAuthorizationRequestUrl(createOAuth("123"))).parameters
         assertEquals("123", parameters["state"])
     }
 
     @Test fun `generates different code challenge for each instance`() {
-        val url1 = Url(createOAuth().authorizationRequestUrl)
-        val url2 = Url(createOAuth().authorizationRequestUrl)
+        val client = OAuthApiClientImpl(HttpClient(MockEngine { respondOk() }))
+        val url1 = Url(client.getAuthorizationRequestUrl(createOAuth()))
+        val url2 = Url(client.getAuthorizationRequestUrl(createOAuth()))
         assertTrue(url1.parameters["code_challenge"] != url2.parameters["code_challenge"])
     }
 
@@ -82,7 +85,7 @@ class OAuthApiClientTest {
 
     @Test fun `extractAuthorizationCode fails with useful error messages`(): Unit = runBlocking {
         val oauth = createOAuth()
-        val service = OAuthApiClient(HttpClient(MockEngine { respondOk() }))
+        val service = OAuthApiClientImpl(HttpClient(MockEngine { respondOk() }))
 
         // server did not respond correctly with "error"
         assertFailsWith<ConnectionException> {
@@ -115,7 +118,7 @@ class OAuthApiClientTest {
     }
 
     @Test fun extractAuthorizationCode() = runBlocking {
-        val service = OAuthApiClient(HttpClient(MockEngine { request ->
+        val service = OAuthApiClientImpl(HttpClient(MockEngine { request ->
             if (request.url.parameters["code"] == "my code") {
                 respondOk("""{
                     "access_token": "TOKEN",
@@ -135,7 +138,7 @@ class OAuthApiClientTest {
     }
 
     @Test fun `retrieveAccessToken throws OAuthConnectionException with invalid response token_type`(): Unit = runBlocking {
-        val service = OAuthApiClient(HttpClient(MockEngine { respondOk("""{
+        val service = OAuthApiClientImpl(HttpClient(MockEngine { respondOk("""{
             "access_token": "TOKEN",
             "token_type": "an_unusual_token_type",
             "scope": "A B C"
@@ -153,7 +156,7 @@ class OAuthApiClientTest {
     }
 
     @Test fun `retrieveAccessToken throws OAuthException when error response`(): Unit = runBlocking {
-        val service = OAuthApiClient(HttpClient(MockEngine { respondError(
+        val service = OAuthApiClientImpl(HttpClient(MockEngine { respondError(
             HttpStatusCode.BadRequest, """{
                 "error": "Missing auth code",
                 "error_description": "Please specify a code",
@@ -181,7 +184,7 @@ class OAuthApiClientTest {
             "scheme://there"
         )
 
-        assertFails { OAuthApiClient(HttpClient(mockEngine)).getAccessToken(auth, "scheme://there?code=C0D3") }
+        assertFails { OAuthApiClientImpl(HttpClient(mockEngine)).getAccessToken(auth, "scheme://there?code=C0D3") }
 
         val expectedParams = ParametersBuilder()
         expectedParams.append("grant_type", "authorization_code")
@@ -199,7 +202,7 @@ class OAuthApiClientTest {
         val mockEngine = MockEngine { respondOk() }
 
         assertFails {
-            OAuthApiClient(HttpClient(mockEngine)).getAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
+            OAuthApiClientImpl(HttpClient(mockEngine)).getAccessToken(dummyOAuthAuthorization(), "localhost://oauth?code=code")
         }
 
         val expectedHeaders = HeadersBuilder()

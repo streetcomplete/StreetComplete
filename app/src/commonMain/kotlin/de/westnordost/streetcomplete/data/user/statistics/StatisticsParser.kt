@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.streetcomplete.util.Mockable
 import kotlinx.datetime.LocalDate
 import kotlinx.io.Source
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -9,7 +8,6 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.io.decodeFromSource
 import kotlin.time.Instant
 
-@Mockable
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
     private val jsonParser = Json { ignoreUnknownKeys = true }
 
