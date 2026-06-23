@@ -223,7 +223,7 @@ kotlin {
                 implementation("com.google.android.flexbox:flexbox:3.0.0")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk:13.0.2")
+                implementation("org.maplibre.gl:android-sdk-opengl:13.3.0")
             }
         }
         iosMain {
