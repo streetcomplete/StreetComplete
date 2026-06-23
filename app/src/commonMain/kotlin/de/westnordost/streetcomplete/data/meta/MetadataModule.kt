@@ -1,7 +1,8 @@
 package de.westnordost.streetcomplete.data.meta
 
-import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundariesImpl
 import org.koin.core.module.Module
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -12,8 +13,9 @@ val metadataModule = module {
     single { NameSuggestionsSource(get()) }
     single { CountryInfos(get()) }
 
+    single<CountryBoundaries> { CountryBoundariesImpl(get()) }
     single<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")) {
-        lazy { get<CountryBoundaries>() }
+        lazy { get() }
     }
 
     single<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")) {

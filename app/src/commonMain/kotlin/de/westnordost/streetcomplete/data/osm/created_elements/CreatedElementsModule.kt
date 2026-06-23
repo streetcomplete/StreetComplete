@@ -6,5 +6,5 @@ val createdElementsModule = module {
     factory { CreatedElementsDao(get()) }
 
     single<CreatedElementsSource> { get<CreatedElementsController>() }
-    single { CreatedElementsController(get()) }
+    single<CreatedElementsController> { CreatedElementsControllerImpl(get()) }
 }

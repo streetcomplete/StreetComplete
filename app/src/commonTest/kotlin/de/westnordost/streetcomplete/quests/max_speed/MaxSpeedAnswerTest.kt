@@ -117,7 +117,7 @@ class MaxSpeedAnswerTest {
         )
     }
 
-    @Test fun `use subdivision (only) in regions where it matters`() {
+    @Test fun `use subdivision in regions where it matters`() {
         assertEquals(
             setOf(StringMapEntryAdd("maxspeed:type", "BE-VLG:urban")),
             MaxSpeedAnswer.NoSignWithRoadType(RoadType.URBAN).appliedTo(mapOf(), "BE-VLG")

@@ -20,6 +20,8 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.overlays.Action
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.addLastPicked
+import de.westnordost.streetcomplete.data.preferences.getLastPicked
 import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.GroupedItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.Group

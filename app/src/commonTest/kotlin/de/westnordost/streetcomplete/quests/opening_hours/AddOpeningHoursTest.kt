@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.osm.opening_hours.Weekdays
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
+import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli

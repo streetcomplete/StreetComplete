@@ -9,10 +9,11 @@ val notesModule = module {
     factory { AvatarsInNotesUpdater(get()) }
     factory { NoteDao(get()) }
     factory { NotesDownloader(get(), get()) }
-    factory { PhotoServiceApiClient(get(), get(), ApplicationConstants.SC_PHOTO_SERVICE_URL) }
+    factory<PhotoServiceApiClient> { PhotoServiceApiClientImpl(get(), get(), ApplicationConstants.SC_PHOTO_SERVICE_URL) }
 
-    single {
-        NoteController(get()).apply {
+    single<NoteSource> { get<NoteController>() }
+    single<NoteController> {
+        NoteControllerImpl(get()).apply {
             // on notes have been updated, avatar images should be downloaded (cached) referenced in note discussions
             addListener(get<AvatarsInNotesUpdater>())
         }

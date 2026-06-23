@@ -6,8 +6,8 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.quest.AllCountries
-import de.westnordost.streetcomplete.data.quest.Countries
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountries
+import de.westnordost.streetcomplete.util.countryboundaries.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.osm.Tags
 import kotlin.jvm.JvmInline
@@ -23,8 +23,8 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
 
     /** In which countries the quest should be shown. By default, in all countries.
      *
-     *  Use [AllCountriesExcept][de.westnordost.streetcomplete.data.quest.AllCountriesExcept] to exclude some countries.
-     *  Use [NoCountriesExcept][de.westnordost.streetcomplete.data.quest.NoCountriesExcept] to exclude all except some countries.
+     *  Use [AllCountriesExcept][de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept] to exclude some countries.
+     *  Use [NoCountriesExcept][de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept] to exclude all except some countries.
      *
      * A quest type should not be shown in a country if it is either irrelevant/not applicable in
      * that country or if it would not fulfill the [quest guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md)

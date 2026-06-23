@@ -11,7 +11,13 @@ interface NoteEditsSource {
         fun onDeletedEdits(edits: List<NoteEdit>)
     }
 
-    /** Count of unsynced a.k.a to-be-uploaded edits */
+    fun get(id: Long): NoteEdit?
+
+    fun getAll(): List<NoteEdit>
+
+    fun getOldestUnsynced(): NoteEdit?
+
+    /** Count of unsynced a.k.a. to-be-uploaded edits */
     fun getUnsyncedCount(): Int
 
     fun getAllUnsynced(): List<NoteEdit>

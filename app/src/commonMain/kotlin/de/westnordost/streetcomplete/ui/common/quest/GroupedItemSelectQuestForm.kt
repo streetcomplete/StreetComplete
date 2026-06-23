@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.addLastPicked
+import de.westnordost.streetcomplete.data.preferences.getLastPicked
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.Group

@@ -7,7 +7,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.get
@@ -31,6 +30,7 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject

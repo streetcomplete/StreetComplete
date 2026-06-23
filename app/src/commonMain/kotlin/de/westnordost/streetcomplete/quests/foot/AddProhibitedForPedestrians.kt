@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags

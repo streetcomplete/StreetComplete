@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data.meta
 
 import android.content.res.AssetManager
-import de.westnordost.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.create
 import kotlinx.io.asSource
@@ -12,9 +11,9 @@ import org.koin.dsl.module
 actual val metadataPlatformModule = module {
     val dir = "composeResources/de.westnordost.streetcomplete.resources/files/"
 
-    single<CountryBoundaries> {
+    single<de.westnordost.countryboundaries.CountryBoundaries> {
         val source = get<AssetManager>().open(dir + "boundaries.ser").asSource().buffered()
-        CountryBoundaries.deserializeFrom(source)
+        de.westnordost.countryboundaries.CountryBoundaries.deserializeFrom(source)
     }
 
     single<FeatureDictionary> {

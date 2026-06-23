@@ -17,6 +17,8 @@ import de.westnordost.streetcomplete.data.overlays.Action
 import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.addLastPicked
+import de.westnordost.streetcomplete.data.preferences.getLastPicked
 import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.things.getThingOrDisusedThing
 import de.westnordost.streetcomplete.resources.*

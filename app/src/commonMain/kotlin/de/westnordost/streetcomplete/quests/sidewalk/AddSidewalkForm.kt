@@ -12,6 +12,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.setLastPicked
+import de.westnordost.streetcomplete.data.preferences.getLastPicked
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkForm

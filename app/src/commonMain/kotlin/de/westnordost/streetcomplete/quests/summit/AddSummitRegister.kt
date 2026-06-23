@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags

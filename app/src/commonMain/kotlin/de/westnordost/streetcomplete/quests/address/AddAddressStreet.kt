@@ -11,7 +11,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.data.quest.AllCountriesExcept
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.address.StreetOrPlaceName
