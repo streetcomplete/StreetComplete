@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.existence
 
-import de.westnordost.streetcomplete.testutils.mock
+import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlin.test.Test

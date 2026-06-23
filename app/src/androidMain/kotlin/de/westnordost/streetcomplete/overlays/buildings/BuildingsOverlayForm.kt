@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.getLastPicked
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
 import de.westnordost.streetcomplete.osm.building.applyTo

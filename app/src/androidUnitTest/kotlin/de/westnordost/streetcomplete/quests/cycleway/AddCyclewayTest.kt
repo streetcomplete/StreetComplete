@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.IncompleteCountryInfo
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.testutils.mock
-import de.westnordost.streetcomplete.testutils.on
 import de.westnordost.streetcomplete.testutils.pGeom
 import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -15,13 +14,15 @@ import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 class AddCyclewayTest {
+    private var countryInfo = CountryInfo(listOf(IncompleteCountryInfo(
+        countryCode = "XX",
+        hasAdvisoryCycleLane = false
+    )))
 
-    private lateinit var countryInfo: CountryInfo
     private lateinit var questType: AddCycleway
 
     @BeforeTest fun setUp() {
-        countryInfo = mock()
-        questType = AddCycleway { _ -> countryInfo }
+        questType = AddCycleway(getCountryInfoByLocation = { _ -> countryInfo })
     }
 
     @Test fun `applicable to road with missing cycleway`() {
@@ -143,8 +144,11 @@ class AddCyclewayTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(way))
         mapData.wayGeometriesById[1L] = pGeom(0.0, 0.0)
-        on(countryInfo.countryCode).thenReturn("DE")
-        on(countryInfo.hasAdvisoryCycleLane).thenReturn(true)
+
+        countryInfo = CountryInfo(listOf(IncompleteCountryInfo(
+            countryCode = "DE",
+            hasAdvisoryCycleLane = true
+        )))
 
         assertEquals(1, questType.getApplicableElements(mapData).toList().size)
         // because we don't know if we are in Belgium
@@ -158,8 +162,11 @@ class AddCyclewayTest {
         ))
         val mapData = TestMapDataWithGeometry(listOf(way))
         mapData.wayGeometriesById[1L] = pGeom(0.0, 0.0)
-        on(countryInfo.countryCode).thenReturn("BE")
-        on(countryInfo.hasAdvisoryCycleLane).thenReturn(true)
+
+        countryInfo = CountryInfo(listOf(IncompleteCountryInfo(
+            countryCode = "BE",
+            hasAdvisoryCycleLane = true
+        )))
 
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
         // because we don't know if we are in Belgium

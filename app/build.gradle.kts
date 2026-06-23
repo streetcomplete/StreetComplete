@@ -1,5 +1,6 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
+import dev.mokkery.MockMode
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
@@ -41,6 +42,8 @@ plugins {
     id("org.jetbrains.compose") version "1.10.3"
     id("org.jetbrains.kotlinx.atomicfu") version "0.32.1"
     id("com.codingfeline.buildkonfig") version "0.18.0"
+    id("dev.mokkery") version "3.3.0"
+    id("org.jetbrains.kotlin.plugin.allopen") version "2.3.20"
 }
 
 repositories {
@@ -68,6 +71,17 @@ buildkonfig {
             }
         }
     }
+}
+
+// for mocking in tests
+allOpen {
+    annotation("de.westnordost.streetcomplete.util.Mockable")
+}
+mokkery {
+    // mocks will return default values if not mocked otherwise
+    defaultMockMode.set(MockMode.autofill)
+    // to enable mocking of classes whose constructor parameters also need to be mocked (with concrete classes)
+    stubs.allowConcreteClassInstantiation = true
 }
 
 kotlin {
@@ -223,12 +237,13 @@ kotlin {
                 implementation(kotlin("test"))
 
                 implementation("io.ktor:ktor-client-mock:3.4.2")
+                implementation("dev.mokkery:mokkery-gradle:3.3.0")
             }
         }
         androidUnitTest {
             dependencies {
-                implementation("org.mockito:mockito-core:5.23.0")
                 implementation(kotlin("test"))
+                implementation("dev.mokkery:mokkery-gradle:3.3.0")
             }
         }
         androidInstrumentedTest {

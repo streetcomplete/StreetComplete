@@ -4,8 +4,10 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsTable.Columns.EDIT_TYPE_PRESET_ID
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsTable.Columns.EDIT_TYPE_PRESET_NAME
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsTable.NAME
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Stores the ids and names of edit type presets */
+@Mockable
 class EditTypePresetsDao(private val db: Database) {
 
     fun add(name: String): Long =

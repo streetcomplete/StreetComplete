@@ -9,16 +9,18 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChange
 import de.westnordost.streetcomplete.data.osm.mapdata.ChangesetTooLargeException
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClient
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataChanges
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.RemoteMapDataRepository
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.util.Mockable
 
+@Mockable
 class ElementEditUploader(
     private val changesetManager: OpenChangesetsManager,
     private val mapDataApi: MapDataApiClient,
-    private val mapDataController: MapDataController
+    private val mapDataSource: MapDataSource
 ) {
 
     /** Apply the given change to the given element and upload it
@@ -34,7 +36,7 @@ class ElementEditUploader(
         } else {
             // we first try to apply the changes onto the element cached locally, then upload...
             try {
-                val localChanges = edit.action.createUpdates(mapDataController, getIdProvider())
+                val localChanges = edit.action.createUpdates(mapDataSource, getIdProvider())
                 try {
                     uploadChanges(edit, localChanges, false)
                 }
@@ -113,7 +115,7 @@ class ElementEditUploader(
 
         val nodeIdsThatMustBePresentInLocalData = nodeIdsOfUpdatedWays - idsOfUpdatedNodes
 
-        val presentNodeIds = mapDataController
+        val presentNodeIds = mapDataSource
             .getNodes(nodeIdsThatMustBePresentInLocalData)
             .mapTo(HashSet()) { it.id }
 
