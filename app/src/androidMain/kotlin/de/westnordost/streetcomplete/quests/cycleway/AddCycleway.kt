@@ -36,7 +36,6 @@ class AddCycleway(
     override val icon = R.drawable.quest_bicycleway
     override val title = Res.string.quest_cycleway_title2
     override val achievements = listOf(BICYCLIST)
-    override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:
     // Google Street View (driving around in virtual car)
