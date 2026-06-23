@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.util.Listeners
-import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
@@ -38,7 +37,6 @@ import kotlinx.coroutines.withContext
 
 /** Controller for managing OsmQuests. Takes care of persisting OsmQuest objects and notifying
  *  listeners about changes */
-@Mockable
 class OsmQuestController(
     private val db: OsmQuestDao,
     private val mapDataSource: MapDataWithEditsSource,
