@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.wheelchair_access
 
-import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
+import de.westnordost.streetcomplete.testutils.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.node
 import kotlin.test.Test
 import kotlin.test.assertEquals
