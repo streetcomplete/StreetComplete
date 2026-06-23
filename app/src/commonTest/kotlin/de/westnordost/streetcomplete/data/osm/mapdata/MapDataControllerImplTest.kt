@@ -32,7 +32,7 @@ class MapDataControllerImplTest {
     private lateinit var relationDB: RelationDao
     private lateinit var geometryDB: ElementGeometryDao
     private lateinit var elementDB: ElementDao
-    private lateinit var controller: MapDataControllerImpl
+    private lateinit var controller: MapDataController
     private val geometryCreator = ElementGeometryCreator()
     private lateinit var createdElementsController: CreatedElementsController
 
