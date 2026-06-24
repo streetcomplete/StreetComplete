@@ -84,7 +84,7 @@ class CheckExistence(
         and access !~ no|private
         and (!seasonal or seasonal = no)
         and (!intermittent or intermittent = no)
-        and (!permanent or permanent = yes)
+        and (!permanent or permanent != yes)
         and (!heritage or heritage = no)
         and !listed_status
     """.toElementFilterExpression() }
