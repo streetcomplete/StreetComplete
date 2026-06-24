@@ -48,6 +48,9 @@ class AddLanes : OsmFilterQuestType<LanesAnswer>() {
                 tags.remove("lanes:both_ways")
                 tags.remove("turn:lanes:both_ways")
             }
+            is LanesAnswer.OneLaneOnly -> {
+                tags["lanes"] = "1"
+            }
             is Lanes -> {
                 tags["lanes"] = answer.total.toString()
 

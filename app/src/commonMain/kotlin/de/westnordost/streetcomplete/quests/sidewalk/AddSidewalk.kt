@@ -75,7 +75,6 @@ class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>> {
     override val icon = Res.drawable.quest_sidewalk
     override val title = Res.string.quest_sidewalk_title
     override val achievements = listOf(PEDESTRIAN)
-    override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
     override val hint = Res.string.quest_street_side_puzzle_tutorial
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =

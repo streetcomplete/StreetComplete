@@ -11,7 +11,10 @@ open class CopyStringsTask : DefaultTask() {
 
     @TaskAction
     fun run() {
-        val stringRegex = Regex("<string name=\"([a-zA-Z0-9_]+)\">(.*)</string>")
+        val stringRegex = Regex(
+            pattern = "<string name=\"([a-zA-Z0-9_]+)\">(.*?)</string>",
+            options = setOf(RegexOption.DOT_MATCHES_ALL, RegexOption.MULTILINE)
+        )
         for (dir in File(sourceDir).listFiles().orEmpty()) {
             if (dir.isDirectory) {
                 val stringsFile = File(dir, "strings.xml")

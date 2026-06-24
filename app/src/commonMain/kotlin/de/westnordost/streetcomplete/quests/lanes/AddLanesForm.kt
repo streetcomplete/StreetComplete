@@ -67,7 +67,10 @@ fun AddLanesForm(
             } else null,
             AnswerItem(stringResource(Res.string.quest_lanes_answer_noLanes)) {
                 on(Answer(LanesAnswer.IsUnmarked))
-            }
+            },
+            AnswerItem(stringResource(Res.string.quest_lanes_answer_oneLaneOnly)) {
+                on(Answer(LanesAnswer.OneLaneOnly))
+            },
         ) },
         contentPadding = PaddingValues.Zero,
     ) {

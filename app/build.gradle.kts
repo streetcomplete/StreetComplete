@@ -218,7 +218,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:3.4.2")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk:13.0.2")
+                implementation("org.maplibre.gl:android-sdk-opengl:13.3.0")
             }
         }
         iosMain {
@@ -508,6 +508,12 @@ val copyIconsToAndroid by tasks.registering(CopyIconsTask::class) {
         it == "pin_circle.xml"
     }
     indexFile = "$projectDir/build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt"
+}
+
+val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
+    group = "streetcomplete"
+    sourceDir = "$projectDir/src/commonMain/composeResources"
+    targetDir = "$projectDir/build/generated/androidMain/res"
 }
 
 val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
