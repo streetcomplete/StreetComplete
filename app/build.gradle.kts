@@ -314,6 +314,7 @@ android {
     sourceSets {
         getByName("main") {
             res.srcDir(layout.buildDirectory.dir("generated/androidMain/res"))
+            java.srcDir(layout.buildDirectory.dir("generated/androidMain/kotlin"))
         }
     }
 
@@ -481,10 +482,7 @@ tasks.register("copyDefaultStringsToEnStrings") {
     group = "streetcomplete"
     doLast {
         val sourceStrings = File("$projectDir/src/commonMain/composeResources/values/strings.xml")
-
-        sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
         sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
-        sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values/strings.xml"), true)
     }
 }
 
@@ -506,8 +504,15 @@ val copySharedResToAndroid by tasks.registering(Copy::class) {
     }
 }
 
+val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
+    group = "streetcomplete"
+    sourceDir = "$projectDir/src/commonMain/composeResources"
+    targetDir = "$projectDir/build/generated/androidMain/res"
+}
+
 project.afterEvaluate {
     tasks.named("preBuild") {
         dependsOn(copySharedResToAndroid)
+        dependsOn(copyStringsToAndroid)
     }
 }
