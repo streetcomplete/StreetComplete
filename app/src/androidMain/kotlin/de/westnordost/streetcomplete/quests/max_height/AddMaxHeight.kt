@@ -34,6 +34,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
         and $noMaxHeight
+        and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
     private val railwayCrossingsFilter by lazy { """
@@ -52,7 +53,15 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
     // kind of spammy, especially if the answer is virtually always(?) "not signed"
 
     private val allRoadsFilter by lazy { """
-        ways with highway ~ ${ALL_ROADS.joinToString("|")}
+        ways with
+          highway ~ ${ALL_ROADS.joinToString("|")}
+          and (access !~ private|no or (foot and foot !~ private|no))
+    """.toElementFilterExpression() }
+
+    private val allPathsFilter by lazy { """
+        ways with
+          highway ~ ${ALL_PATHS.joinToString("|")}
+          and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
     private val tunnelFilter by lazy { """
@@ -99,6 +108,10 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
             .filter { allRoadsFilter.matches(it) }
             .flatMapTo(HashSet()) { it.nodeIds }
 
+        val pathNodeIds = mapData.ways
+            .filter { allPathsFilter.matches(it) }
+            .flatMapTo(HashSet()) { it.nodeIds }
+
         val nodesWithoutHeight = mapData.nodes
             .filter { it.id in roadsNodeIds && nodeFilter.matches(it) }
 
@@ -108,7 +121,11 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
             .flatMapTo(HashSet()) { it.nodeIds }
 
         val railwayCrossingNodesWithoutHeight = mapData.nodes
-            .filter { it.id in electrifiedRailwayNodeIds && railwayCrossingsFilter.matches(it) }
+            .filter {
+                (it.id in roadsNodeIds || it.id in pathNodeIds)
+                && it.id in electrifiedRailwayNodeIds
+                && railwayCrossingsFilter.matches(it)
+            }
 
         // tunnels without height
         val roadsWithoutHeight = mapData.ways.filter { roadsWithoutMaxHeightFilter.matches(it) }
@@ -152,7 +169,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
         // for nodes that may be applicable we cannot finally determine it because that node must be
         // a vertex of a road
         if (nodeFilter.matches(element)) return null
-        // railway crossing
+        // same for railway crossing
         if (railwayCrossingsFilter.matches(element)) return null
         return false
     }
