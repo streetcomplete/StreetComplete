@@ -1,5 +1,29 @@
 # Changelog
 
+## v63.2
+
+### Fixes
+
+- Fix map display on older devices: Some old devices have issues with the new rendering backend introduced in v63.1, so I reverted back to the old backend for v63.x at least.
+- Board type: Fixed it was possible to answer "none" (#6887), by @paulklie
+- Notes: Fix enter key would exit the form rather than add a return
+
+### Quest improvements
+
+- Surface: Don't ask for winter roads (#6835), by @paulklie
+- Opening hours: Don't ask for street vendors (#6848), by @matkoniecz
+- Baby changing tables: Can now answer that there is actually no toilet (#6837), by @paulklie
+- Ask various quests for ranger stations, water points, bird hides (#6888, #6857, #6836), by @paulklie
+- Lanes: Allow answering that there is only *one* marked lane (#6879)
+- Crossing island: Don't ask when the traffic island has already been mapped in detail (#6874)
+- Check existence: Don't ask for objects with heritage status (#6776)
+- Bike paths, sidewalks: Re-enable quest as the overlays are not really that much more efficient that it warrants the quests to be disabled
+- Power line attachment to pole: Disable this quest, it is too complex (in edge cases) (#6547)
+
+### Overlay improvements
+
+- Add more things and more places (#6833, #6839, #6834) by @paulklie
+
 ## v63.1
 
 ### Overlay improvements
