@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.Length
@@ -28,13 +29,13 @@ import androidx.compose.ui.tooling.preview.Preview
 
 /** Displays a form to input the max height, as specified on the sign. For clarity and fun, the
  *  input fields are shown on a sign background that resembles a maxheight sign in the given
- *  [countryCode] */
+ *  [locale] */
 @Composable
 fun MaxHeightForm(
     length: Length?,
     onChange: (Length?) -> Unit,
     selectableUnits: List<LengthUnit>,
-    countryCode: String?,
+    locale: Locale,
     modifier: Modifier = Modifier,
 ) {
     var selectedUnit by rememberSerializable { mutableStateOf(length?.unit ?: selectableUnits[0]) }
@@ -47,7 +48,7 @@ fun MaxHeightForm(
         modifier = modifier,
     ) {
         MaxHeightSign(
-            countryCode = countryCode,
+            countryCode = locale.region,
             modifier = Modifier.align(Alignment.Center)
         ) {
             when (selectedUnit) {
@@ -57,6 +58,7 @@ fun MaxHeightForm(
                             length = length as? Length.Meters,
                             onChange = onChange,
                             maxMeterDigits = Pair(3, 2),
+                            locale = locale,
                         )
                     }
                 }
@@ -97,7 +99,7 @@ fun MaxHeightFormPreview() {
             length = length,
             onChange = { length = it },
             selectableUnits = listOf(LengthUnit.FOOT_AND_INCH, LengthUnit.METER),
-            countryCode = "US",
+            locale = Locale("en-US"),
         )
         Text(length?.toOsmValue().orEmpty(), Modifier.padding(16.dp))
     }
