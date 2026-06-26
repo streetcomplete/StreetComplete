@@ -1,25 +1,23 @@
 package de.westnordost.streetcomplete.util.logs
 
-import android.util.Log
-
-class AndroidLogger : Logger {
+class KermitLogger : Logger {
     override fun v(tag: String, message: String) {
-        Log.v(tag, message)
+        co.touchlab.kermit.Logger.v(message, tag = tag)
     }
 
     override fun d(tag: String, message: String) {
-        Log.d(tag, message)
+        co.touchlab.kermit.Logger.d(message, tag = tag)
     }
 
     override fun i(tag: String, message: String) {
-        Log.i(tag, message)
+        co.touchlab.kermit.Logger.i(message, tag = tag)
     }
 
     override fun w(tag: String, message: String, exception: Throwable?) {
-        if (exception != null) Log.w(tag, message, exception) else Log.w(tag, message)
+        co.touchlab.kermit.Logger.w(message, throwable = exception, tag = tag)
     }
 
     override fun e(tag: String, message: String, exception: Throwable?) {
-        if (exception != null) Log.e(tag, message, exception) else Log.e(tag, message)
+        co.touchlab.kermit.Logger.e(message, throwable = exception, tag = tag)
     }
 }

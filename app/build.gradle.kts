@@ -120,6 +120,9 @@ kotlin {
                 implementation("io.insert-koin:koin-compose-viewmodel")
                 implementation("io.insert-koin:koin-androidx-compose-navigation")
 
+                // Logging
+                implementation("co.touchlab:kermit:2.1.0")
+
                 // settings
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
