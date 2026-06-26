@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
@@ -52,7 +53,7 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
                     height.value = it
                     checkIsFormComplete()
                 },
-                countryCode = countryInfo.countryCode,
+                locale = countryInfo.languageTag?.let { Locale(it) } ?: Locale.current,
                 modifier = Modifier.fillMaxWidth()
             )
         } }

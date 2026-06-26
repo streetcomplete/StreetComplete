@@ -7,6 +7,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.ui.text.intl.Locale
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
@@ -40,7 +41,7 @@ class AddMaxWeightForm : AbstractOsmQuestForm<List<MaxWeight>>() {
         binding.composeViewBase.content { Surface {
             MaxWeightForm(
                 signs = signs,
-                countryCode = countryInfo.countryCode,
+                locale = countryInfo.languageTag?.let { Locale(it) } ?: Locale.current,
                 selectableUnits = weightLimitUnits,
                 onSignAdded = { maxweight ->
                     signs.add(maxweight)
