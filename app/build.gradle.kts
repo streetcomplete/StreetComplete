@@ -94,7 +94,6 @@ kotlin {
     }
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
@@ -244,13 +243,11 @@ kotlin {
                 implementation(kotlin("test"))
 
                 implementation("io.ktor:ktor-client-mock:3.5.0")
-                implementation("dev.mokkery:mokkery-gradle:3.4.2")
             }
         }
         androidUnitTest {
             dependencies {
                 implementation(kotlin("test"))
-                implementation("dev.mokkery:mokkery-gradle:3.4.2")
             }
         }
         androidInstrumentedTest {
