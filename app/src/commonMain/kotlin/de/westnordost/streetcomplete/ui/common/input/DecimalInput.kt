@@ -46,6 +46,7 @@ fun DecimalInput(
     maxIntegerDigits: Int = Int.MAX_VALUE,
     maxFractionDigits: Int = Int.MAX_VALUE,
     isUnsigned: Boolean = false,
+    locale: Locale = Locale.current,
     style: TextFieldStyle = TextFieldStyle.Filled,
     enabled: Boolean = true,
     readOnly: Boolean = false,
@@ -63,12 +64,13 @@ fun DecimalInput(
     colors: TextFieldColors = style.colors,
     contentPadding: PaddingValues = style.getContentPadding(label != null),
 ) {
-    val locale = Locale.current
+    val acceptedDecimalSeparators = remember { setOf('.', ',', '٫') }
     val formatter = remember(locale, maxIntegerDigits, maxFractionDigits) {
         NumberFormatter(
             locale = locale,
             maxIntegerDigits = maxIntegerDigits,
-            maxFractionDigits = maxFractionDigits
+            maxFractionDigits = maxFractionDigits,
+            useGrouping = false
         )
     }
     // number value as text
@@ -99,6 +101,11 @@ fun DecimalInput(
     TextField2(
         value = textFieldValueState,
         onValueChange = { newTextFieldValueState ->
+            // replace all decimal separators to the localized decimal separator
+            val newTextFieldValueState = newTextFieldValueState.copy(
+                text = newTextFieldValueState.text.replace(acceptedDecimalSeparators, formatter.decimalSeparator)
+            )
+
             // cleared input -> value now null
             if (newTextFieldValueState.text.isEmpty() && lastValue != null) {
                 textFieldValueState = newTextFieldValueState
@@ -142,6 +149,9 @@ fun DecimalInput(
         contentPadding = contentPadding,
     )
 }
+
+private fun String.replace(chars: Set<Char>, replacement: Char): String =
+    map { if (it in chars) replacement else it }.joinToString("")
 
 /** Checks if string has at most one decimal separator, otherwise only consists of digits and has
  *  at most the given number of digits */
