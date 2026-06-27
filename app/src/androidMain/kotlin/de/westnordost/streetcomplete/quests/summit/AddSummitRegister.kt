@@ -46,6 +46,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean>, AndroidQuest {
         "IS", // https://github.com/streetcomplete/StreetComplete/issues/6897
         "IT", // https://it.wikipedia.org/wiki/Libro_di_vetta
         // not "NL": https://nl.wikipedia.org/wiki/Gipfelbuch is about "foreign" summit registers e.g. in the Alps
+        "NO", // https://github.com/streetcomplete/StreetComplete/pull/6902
         // not "PL": https://github.com/westnordost/StreetComplete/issues/561#issuecomment-325504455
         "RO", // https://es.wikipedia.org/wiki/Cruz_de_la_cumbre#Ejemplos
         "SI", // https://it.wikipedia.org/wiki/Libro_di_vetta#Alcuni_esempi_di_libri_di_vetta
