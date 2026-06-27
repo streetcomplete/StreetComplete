@@ -19,7 +19,10 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>(), AndroidQuest {
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
         nodes, ways with
-          tourism ~ camp_site|caravan_site|wilderness_hut
+          (
+            tourism ~ camp_site|caravan_site|wilderness_hut
+            or leisure = marina
+          )
           and (
             !drinking_water and !water_point
             or drinking_water older today -4 years and drinking_water ~ yes|no
