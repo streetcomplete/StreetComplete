@@ -415,6 +415,9 @@
         "natural/wetland/mangrove": {
           "terms": "mangrove"
         },
+        "office/association": {
+          "name": "Nonprofit Organisation Office"
+        },
         "office/employment_agency": {
           "terms": "job,career,careers,vocational,vocation,occupation"
         },

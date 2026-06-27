@@ -758,7 +758,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky.</string>
     <string name="quest_shop_gone_title">Co je tu místo toho?</string>
     <string name="quest_shop_gone_vacant_answer">Je to prázdné…</string>
     <string name="quest_shop_gone_replaced_answer">…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Napište druh místa/obchodu</string>
     <string name="quest_shop_vacant_type_title">Tento obchod byl prázdný. Co tu je nyní?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Tento typ úkolů je ve výchozím nastavení zakázán, protože v některých regionech nemá použití, a protože pravděpodobně budete muset na místo vstoupit, abyste na otázku mohli odpovědět.</string>
     <string name="quest_dietType_explanation_kosher">Košer produkty se musí připravovat podle zvláštních pravidel s označením kašrut od certifikační agentury.</string>
@@ -1400,7 +1399,7 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_dietType_glutenfree_name_title">Nabízejí se tu bezlepkové produkty?</string>
     <string name="quest_dietType_explanation_glutenfree">Příprava bezlepkových produktů vyžaduje znalosti, protože běžná koření a omáčky mohou obsahovat lepek. Bezlepková jídla musí být jako taková výslovně označena.</string>
     <string name="quest_construction_minor_title">Je oprava této cesty dokončená?</string>
-    <string name="map_attribution">Tvůrci mapy</string>
+    <string name="map_attribution">Atribuce mapy</string>
     <string name="link_panoramax_description">Svobodný a open source software a nezisková služba pro sdílení komunitních fotografií z úrovně ulice</string>
     <string name="link_opengeofiction_description">Jste unaveni z mapování skutečnosti? Vytvářejte společně fiktivní mapy?</string>
     <string name="link_openclimbing_description">Mapa lezeckých stěn</string>

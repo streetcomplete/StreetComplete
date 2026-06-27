@@ -1,5 +1,5 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Westpac, St.George, Commonwealth Bank, ANZ]
+atmOperators: [Westpac, St.George, Commonwealth Bank, Armaguard, ANZ]
 chargingStationOperators: [Evie Networks, Tesla]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Australia Post]

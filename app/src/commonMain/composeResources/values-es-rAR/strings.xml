@@ -747,7 +747,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="quest_shop_gone_title">¿Que hay ahora acá en su lugar?</string>
     <string name="quest_shop_gone_vacant_answer">Está libre</string>
     <string name="quest_shop_gone_replaced_answer">Es un(a)…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Poné el tipo de lugar acá</string>
     <string name="quest_shop_vacant_type_title">Este establecimiento ha estado vacío. ¿Qué hay acá ahora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Este tipo de tarea está desactivada de forma predeterminada porque no es útil en algunas regiones y seguramente tengas que entrar en el sitio para encontrar la información y responder bien a las preguntas.</string>
     <string name="quest_dietType_explanation_kosher">Los productos kosher tienen que prepararse de una forma especial, hay agencias kashrut que los certifican y los marcan como tales.</string>
@@ -1472,7 +1471,7 @@ Por ejemplo 1,3 o 2b,4,6.</string>
     <string name="quest_openingHours_chooseTimeTitle">Seleccionar hora</string>
     <string name="quest_openingHours_no_fixed_end">sin hora de cierre fija</string>
     <string name="quest_openingHours_from">desde %1$s</string>
-    <string name="quest_openingHours_until_late">%1$s hasta tarde</string>
+    <string name="quest_openingHours_until_late">%1$s hasta el cierre</string>
     <string name="quest_collectionTimes_answer_time_spans">Dentro de una franja horaria…</string>
     <string name="quest_collectionTimes_answer_time_points">En horarios específicos…</string>
     <string name="quest_shower_hot_water_title">¿Hay agua caliente acá?</string>

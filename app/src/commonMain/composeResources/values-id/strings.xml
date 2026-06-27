@@ -752,7 +752,6 @@ Jika ada lajur yang digunakan khusus untuk bus, harap meninggalkan catatan saja.
     <string name="quest_shop_gone_title">Apa yang ada di sini sekarang?</string>
     <string name="quest_shop_gone_vacant_answer">Ini kosong</string>
     <string name="quest_shop_gone_replaced_answer">Sebuah…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Ketik jenis tempat di sini</string>
     <string name="quest_shop_vacant_type_title">Toko ini sudah lama kosong. Ada apa di sini sekarang?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Jenis misi ini nonaktif secara bawaan karena tidak berguna di beberapa wilayah dan kamu mungkin harus masuk ke tempat tersebut untuk dapat menjawab misi jenis ini.</string>
     <string name="quest_dietType_explanation_kosher">Produk kosher harus disiapkan sesuai peraturan khusus, dengan persetujuan dari agensi sertifikasi kashrut.</string>

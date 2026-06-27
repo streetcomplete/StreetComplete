@@ -26,8 +26,8 @@
           "terms": "sloup,reklama,reklamní,otáčecí,plakáty,plakátový,polepený"
         },
         "advertising/poster_box": {
-          "name": "Plakátová skříň",
-          "terms": "doručovací schránka s obrubníkem,domovní doručovací schránka,doručovací schránka přímo ke dveřím,otvor pro dopisy,dopisní štítek,štěrbina pro dopisy,schránka na dopisy,dopisní díra,štítek pro poštu,štěrbina pro poštu,poštovní schránka,poštovní otvor,otvor pro poštu,poštovní štěrbina,schránka přímo u dveří"
+          "name": "Plakátová vitrína",
+          "terms": "plakatova vitrina,vitrína,vitrina,reklamní vitrína,reklamni vitrinacitylight,city light,clv"
         },
         "advertising/sign": {
           "name": "Reklamní značka",
@@ -204,7 +204,7 @@
         },
         "amenity/bicycle_parking/building": {
           "name": "Garáž pro kola",
-          "terms": "parkoviště pro kola,parkování pro kola,cyklistika,patrový cyklopark,vícepatrový bikepark"
+          "terms": "garaz pro kola,patrový cyklopark,patrovy cyklopark,vícepatrový bikepark,vicepatrovy"
         },
         "amenity/bicycle_parking/lockers": {
           "name": "Boxy pro kola",
@@ -743,7 +743,7 @@
         },
         "amenity/parcel_locker": {
           "name": "Schránka na zásilky",
-          "terms": "automatizovaná poštovní schránka,odevzdání,skříňka,pošta,balicí stanice,balík,vyzvednutí,balíkomat,balikomat"
+          "terms": "schranka na zasilky,zásilka,zasilka,balík,balik,vyzvednutí,balíkomat,balikomat,výdejní box,vydejni box"
         },
         "amenity/parking": {
           "name": "Parkoviště",
@@ -1036,6 +1036,10 @@
           "name": "Přístřešek",
           "terms": "pristresek"
         },
+        "amenity/shelter/field_shelter": {
+          "name": "Polní přístřešek",
+          "terms": "přístřešek pro dobytek,přístřešek na poli,zemědělský přístřešek,střecha na poli,přístřešek na plodiny,kryt na seno,seník"
+        },
         "amenity/shelter/gazebo": {
           "name": "Altánek",
           "terms": "altanek,altán,altan,besídka,besidka,přístřešek,střecha,dřevěná stavba"
@@ -1075,6 +1079,10 @@
         "amenity/social_facility/assisted_living": {
           "name": "Asistované bydlení pro seniory",
           "terms": "asistovane bydleni,pečovatelský dům,důchodci,bydlení,senior"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Denní sociální služby / Denní centrum",
+          "terms": "sociální služby,nízkoprahové denní centrum,ndc,denní stacionář,stacionář,sociální pomoc,sociální centrum"
         },
         "amenity/social_facility/food_bank": {
           "name": "Potravinová banka",
@@ -1448,8 +1456,8 @@
           "terms": "brána na farmě"
         },
         "barrier/bus_trap": {
-          "name": "Autobusová uzávěra",
-          "terms": "uzávěra na auta"
+          "name": "Autobusová prohlubeň",
+          "terms": "autobusova prohluben,prohlubeň,prohluben,jáma,jama"
         },
         "barrier/cable_barrier": {
           "name": "Kabelové svodidlo",
@@ -1658,8 +1666,8 @@
           "terms": "bouda,chata,srub,roubenka,roubená stavba,dřevěnice,drevenice"
         },
         "building/carport": {
-          "name": "Zastřešené stání pro auto",
-          "terms": "kryté parkovací stání,garáž,auto,veranda"
+          "name": "Přístřešek pro auto (carport)",
+          "terms": "pristresek pro auto,carport,kryté parkovací stání,kryte parkovaci stani,zastřešené stání,zastresene stani"
         },
         "building/cathedral": {
           "name": "Budova katedrály",
@@ -1718,11 +1726,11 @@
         },
         "building/garage": {
           "name": "Garáž",
-          "terms": "garáže,parkování,kryté parkování"
+          "terms": "garaz,parkování,kryté parkování"
         },
         "building/garages": {
-          "name": "Budova soukromých garáží",
-          "terms": "garáž,garáže,parkování,kryté parkování"
+          "name": "Blok garáží",
+          "terms": "blok garazi,garáže,garaze"
         },
         "building/ger": {
           "name": "Jurta",
@@ -1987,7 +1995,7 @@
         },
         "craft/electronics_repair": {
           "name": "Opravna elektroniky",
-          "terms": "opravy elektroniky"
+          "terms": "opravy elektroniky,oprava elektroniky,servis elektroniky"
         },
         "craft/floorer": {
           "name": "Podlahář",
@@ -2141,6 +2149,9 @@
         "disc_golf/tee": {
           "name": "Odpaliště pro disc golf",
           "terms": "odpaliště,odpal"
+        },
+        "disused/aeroway": {
+          "name": "Nepoužívané prvky letecké dopravy"
         },
         "disused/amenity": {
           "name": "Nepoužívaný prvek občanské vybavenosti"
@@ -2620,6 +2631,10 @@
         "highway/give_way": {
           "name": "Značka Dej přednost",
           "terms": "dej přednost v jízdě,dej přednost,značka přednosti v jízdě,vedlejší silnice,vedlejší ulice"
+        },
+        "highway/hitchhiking": {
+          "name": "Vyznačené místo pro stopování",
+          "terms": "místo pro autostop,autostop,stopování,označené místo pro autostop,značený autostop,stopovat,auto-stop"
         },
         "highway/ladder": {
           "name": "Žebřík",
@@ -3623,6 +3638,10 @@
           "name": "Stadion",
           "terms": "stadion,fotbal,fotbalový stadión,hřiště"
         },
+        "leisure/summer_camp": {
+          "name": "Letní tábor",
+          "terms": "prázdniny,prázdninový tábor,tábor,camp,kemp,dětstký tábor,tábor pro mladé,příměstský tábor"
+        },
         "leisure/swimming_area": {
           "name": "Přírodní plocha pro koupání",
           "terms": "prirodni plocha,potápět se,koupání,koupani,plavání,plavani"
@@ -3819,6 +3838,10 @@
           "name": "Plynojem",
           "terms": "plynojem,zásobník na plyn,kontejner na plyn"
         },
+        "man_made/geoglyph": {
+          "name": "Geoglyf",
+          "terms": "kresby,kresba,archeologie,zemní kresby,postavy,ornamenty,starověké umění,umění,dávné civilizace"
+        },
         "man_made/goods_conveyor": {
           "name": "Nákladní dopravník",
           "terms": "dopravník,zboží,dopravník zboží,náklad,přeprava zboží,pásový dopravník,přepravník,přepravní pás,pás pro přepravu"
@@ -3940,8 +3963,8 @@
           "terms": "dok,přístaviště"
         },
         "man_made/reservoir_covered": {
-          "name": "Krytá vodní nádrž",
-          "terms": "podzemní nádrž,vodní nádrž,krytá nádrž,rezervoár"
+          "name": "Podzemní vodojem",
+          "terms": "podzemni vodojem,vodojem,podzemní nádrž,podzemni nadrz,vodní nádrž,vodni nadrz,krytá nádrž,kryta nadrz,rezervoár,rezervoar,vodní zdroj,vodni zdroj"
         },
         "man_made/satellite_dish": {
           "name": "Parabolická anténa",
@@ -4080,8 +4103,8 @@
           "terms": "studna,studánka,čerpadlo,cerpadlo,vodní zdroj,vodni zdroj,pramen,vrt,pumpa"
         },
         "man_made/water_works": {
-          "name": "Vodárna",
-          "terms": "vodárna,úpravna vody"
+          "name": "Úpravna vody",
+          "terms": "upravna vody,vodárna,vodarna"
         },
         "man_made/watermill": {
           "name": "Vodní mlýn",
@@ -4345,7 +4368,7 @@
         },
         "natural/water/stream": {
           "name": "Plocha potoku",
-          "terms": "potok,výtok,větev,opa,tok,proudit,unášet,průtok,obleva,proudění,potůček,teč,nával,slapy,bystřina,přítok,vodní tok"
+          "terms": "potok,tok,potůček,potucek,bystřina,bystrina,přítok,pritok,vodní tok,vodni tok,říčka,ricka"
         },
         "natural/water/wastewater": {
           "name": "Nádrž na odpadní vodu",
@@ -4728,7 +4751,7 @@
         },
         "place/square": {
           "name": "Náměstí",
-          "terms": "náměstí,náměstíčko,čtverec,prostor"
+          "terms": "náměstí,náměstíčko,čtverec,prostor,rink"
         },
         "place/suburb": {
           "name": "Čtvrť / předměstí",
@@ -4743,7 +4766,8 @@
           "terms": "vesnice,obec,osada,malá obec,venkov,malá vesnice,víska,dědina,sídlo,sídlo venkovského typu,venkovská obec"
         },
         "playground": {
-          "name": "Vybavení dětského hřiště"
+          "name": "Vybavení dětského hřiště",
+          "terms": "vybavení hřiště,houpačky,kolotoče,skluzavky,klouzačky,prolézačky,výbava,hračky,hrazdy,žebříky,pískoviště"
         },
         "playground/activitypanel": {
           "name": "Panel herních aktivit",
@@ -4881,7 +4905,7 @@
           "name": "Energetický prvek"
         },
         "power/cable": {
-          "name": "elektrický kabel"
+          "name": "Elektrický kabel"
         },
         "power/cable/underground": {
           "name": "Elektrický kabel pod zemí",
@@ -4928,8 +4952,8 @@
           "terms": "elektrické vedení,nízké napětí,vysoké napětí,přenosová soustava,elektrický kabel,energetika"
         },
         "power/plant": {
-          "name": "Pozemek elektrárny",
-          "terms": "uhlí,plyn,generátor,vodní,nukleární,jaderná,elektrárna,tepelná"
+          "name": "Areál elektrárny",
+          "terms": "areal elektrarny,generátor,generator,elektrárna,elektrarna,pozemek elektrárny,pozemek elektrarny"
         },
         "power/plant/source/coal": {
           "name": "Uhelná elektrárna",
@@ -4941,11 +4965,11 @@
         },
         "power/plant/source/hydro": {
           "name": "Vodní elektrárna",
-          "terms": "přehrada,elektrárna,průtok,příliv,vodní turbína"
+          "terms": "vodni elektrarna,elektrárna,elektrarna,příliv,vodní turbína"
         },
         "power/plant/source/nuclear": {
           "name": "Jaderná elektrárna",
-          "terms": "atomová,štěpná,elektrárna,jaderný reaktor"
+          "terms": "jaderna elektrarna,atomová,atomova,štěpná,elektrárna,elektrarna,jaderný reaktor"
         },
         "power/plant/source/oil": {
           "name": "Ropná elektrárna",
@@ -5289,7 +5313,7 @@
           "terms": "točna"
         },
         "railway/yard": {
-          "name": "seřaďovací nádraží",
+          "name": "Seřaďovací nádraží",
           "terms": "zastávka nákladního auta,nákladní vlakové nádraží,nákladní nádraží,kolejiště,nádraží"
         },
         "relation": {
@@ -5714,7 +5738,7 @@
           "terms": "bylinkář,bylinkářka,bylinář,bylinářka,bylinkářství,bylinářství,kořenář,kořenářka,kořenářství,herbalista,bylinky,byliny,bylinka,bylina"
         },
         "shop/hifi": {
-          "name": "Hifi elektronika",
+          "name": "Obchod s hifi elektronikou",
           "terms": "obchod se zvukovými systémy,obchod s ozvučením,ozvučení,hifi"
         },
         "shop/hobby": {
@@ -5729,8 +5753,8 @@
           "terms": "obchod s bytovym textilem,prodejna látek,prodejna latek,látky,latky,povlečení,povleceni,ložní prádlo,lozni pradlo,ložní povlečení,lozni povleceni,polštáře,polstare,záclony,zaclony,závěsy,zavesy,ručníky,rucniky,prostěradla,prosteradla,hadry,textil,domácí,domaci,bytový,bytovy"
         },
         "shop/houseware": {
-          "name": "Domácí potřeby",
-          "terms": "domácí potřeby,kuchyňské potřeby,potřeby pro domácnost,nádobí"
+          "name": "Obchod s domácími potřebami",
+          "terms": "obchod s domacimi potrebami,domácí potřeby,domaci potreby,kuchyňské potřeby,kuchynske potreby,potřeby pro domácnost,potreby pro domacnost,nádobí,nadobi,příbory,pribory"
         },
         "shop/hunting": {
           "name": "Obchod s mysliveckými potřebami",
@@ -6088,7 +6112,7 @@
         },
         "telecom/data_center": {
           "name": "Datové centrum",
-          "terms": "úložiště počítačových systémů,informační technologie,serverová firma,cloudové úložiště,telekomunikace"
+          "terms": "datove centrum,datacentrum,serverovna,úložiště počítačových systémů,informační technologie,serverová firma,cloudové úložiště,telekomunikace"
         },
         "telecom/exchange": {
           "name": "Telekomunikační ústředna",
@@ -6500,7 +6524,7 @@
           "terms": "lezecké místo,skalní oblast,oblast pro lezení,horolezecká oblast,skály,lezecký prostor,lezecký region"
         },
         "type/site/climbing/crag": {
-          "name": "Skalní stěna",
+          "name": "Lezecký sektor/skála",
           "terms": "lezecká stěna,horolezecká stěna,lezecké místo,místo pro lezení,skály,skála,lezecké cesty,lezecká cesta,horolezení,lezení,boulder"
         },
         "type/waterway": {
@@ -6568,11 +6592,11 @@
         },
         "waterway/stream": {
           "name": "Potok",
-          "terms": "potok,potůček,strouha,tok,říčka,přítok,koryto,řeka,proud,vír,odtok,příliv,odliv"
+          "terms": "potok,potůček,potucek,tok,říčka,ricka,přítok,pritok,koryto"
         },
         "waterway/stream_intermittent": {
-          "name": "Vysychající/přerušovaný tok",
-          "terms": "suchý potok,výtok,větev,potok,opa,tok,říčka,unášet,povodeň,průtok,úžlabina,teč,kanál,rákosí,záplava,stříkat,přítok,vádí,mýt,vodní tok"
+          "name": "Občasný potok",
+          "terms": "obcasny,periodický,periodicky,sezónní,sezonni,intermitentní,intermitentni,efemerní,efemerni,přerušovaný,prerusovany,suchý potok,suchy potok,potok,tok,říčka,ricka,vodní tok,vodni tok"
         },
         "waterway/tidal_channel": {
           "name": "Přílivový kanál",

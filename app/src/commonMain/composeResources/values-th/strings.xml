@@ -749,7 +749,6 @@
     <string name="quest_shop_gone_title">แล้วตอนนี้ที่นี่มันคืออะไร?</string>
     <string name="quest_shop_gone_vacant_answer">ว่างอยู่</string>
     <string name="quest_shop_gone_replaced_answer">เป็น…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">พิมพ์ประเภทของสถานที่ในนี้</string>
     <string name="quest_shop_vacant_type_title">ร้านนี้ย้ายออกไปแล้ว มีอะไรอยู่ที่นี่?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้นเพราะมันไม่มีประโยชน์ในบางพื้นที่ และคุณน่าจะต้องเข้าไปในสถานที่เพื่อที่จะตอบคำถามสำหรับภารกิจประเภทนี้</string>
     <string name="quest_dietType_explanation_kosher">ผลิตภัณฑ์โคเชอร์ต้องจัดทำขึ้นตามกฎพิเศษ โดยหน่วยงานรับรองของ kashrut จะทำเครื่องหมายผลิตภัณฑ์ว่าเป็นไปตามข้อกำหนด</string>

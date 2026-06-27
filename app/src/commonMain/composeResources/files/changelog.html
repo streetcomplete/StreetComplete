@@ -1,4 +1,35 @@
 <!-- Do not edit! This file was generated automatically from CHANGELOG.md via UpdateChangelogTask -->
+<h2>v63.2</h2>
+<h3>Fixes</h3>
+<ul>
+<li>Fix map display on older devices: Some old devices have issues with the new rendering backend introduced in v63.1, so I reverted back to the old backend for v63.x at least.</li>
+<li>Board type: Fixed it was possible to answer &quot;none&quot; (<a href="https://github.com/streetcomplete/StreetComplete/issues/6887">#6887</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+<li>Fix selected language would reset to device language on device rotation (<a href="https://github.com/streetcomplete/StreetComplete/issues/5942">#5942</a>)</li>
+<li>Notes: Fix enter key would exit the form rather than add a return</li>
+<li>Fix &quot;move node&quot; form had black text on black background in dark mode</li>
+</ul>
+<h3>Quest improvements</h3>
+<ul>
+<li>Bike paths, sidewalks: Re-enable quest as the overlays are not really that much more efficient that it warrants the quests to be disabled</li>
+<li>Surface: Don't ask for winter roads (<a href="https://github.com/streetcomplete/StreetComplete/issues/6835">#6835</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+<li>Opening hours: Don't ask for street vendors (<a href="https://github.com/streetcomplete/StreetComplete/issues/6848">#6848</a>), by <a href="https://github.com/matkoniecz">matkoniecz</a></li>
+<li>Baby changing tables: Can now answer that there is actually no toilet (<a href="https://github.com/streetcomplete/StreetComplete/issues/6837">#6837</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+<li>Ask various quests for ranger stations, water points, bird hides (<a href="https://github.com/streetcomplete/StreetComplete/issues/6888">#6888</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6857">#6857</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6836">#6836</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+<li>Lanes: Allow answering that there is only <em>one</em> marked lane (<a href="https://github.com/streetcomplete/StreetComplete/issues/6879">#6879</a>)</li>
+<li>Crossing island: Don't ask when the traffic island has already been mapped in detail (<a href="https://github.com/streetcomplete/StreetComplete/issues/6874">#6874</a>)</li>
+<li>Check existence: Don't ask for objects with heritage status (<a href="https://github.com/streetcomplete/StreetComplete/issues/6776">#6776</a>)</li>
+<li>Power line attachment to pole: Disable this quest, it is too complex (in edge cases) (<a href="https://github.com/streetcomplete/StreetComplete/issues/6547">#6547</a>)</li>
+<li>All quests with input of decimals: Allow input of decimal separators in any locale (<a href="https://github.com/streetcomplete/StreetComplete/issues/6864">#6864</a>)</li>
+<li>Tactile paving: Enabled quests in Iceland (<a href="https://github.com/streetcomplete/StreetComplete/issues/6897">#6897</a>)</li>
+<li>Bicycle charging station: Make answer &quot;Only&quot; more prominent (<a href="https://github.com/streetcomplete/StreetComplete/issues/6862">#6862</a>)</li>
+<li>Board type: Add &quot;Tourism (multiple topics)&quot; as answer option (<a href="https://github.com/streetcomplete/StreetComplete/issues/6892">#6892</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6868">#6868</a>), by <a href="https://github.com/mnalis">mnalis</a></li>
+<li>Max height: Don't ask for private roads/paths (<a href="https://github.com/streetcomplete/StreetComplete/issues/6860">#6860</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6894">#6894</a>)</li>
+<li>Other small improvements (<a href="https://github.com/streetcomplete/StreetComplete/issues/6831">#6831</a>, …)</li>
+</ul>
+<h3>Overlay improvements</h3>
+<ul>
+<li>Add more things and more places (<a href="https://github.com/streetcomplete/StreetComplete/issues/6833">#6833</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6839">#6839</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6834">#6834</a>) by <a href="https://github.com/paulklie">paulklie</a></li>
+</ul>
 <h2>v63.1</h2>
 <h3>Overlay improvements</h3>
 <ul>

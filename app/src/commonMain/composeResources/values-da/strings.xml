@@ -21,8 +21,8 @@
     <string name="quest_leave_new_note_no">Skjul den</string>
     <string name="quest_streetName_title">Hvad hedder denne vej?</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Nogle gange er vejskiltet kun i den ene ende af gaden. Bemærk også at der måske ikke er et ekstra vejskilt for sidegader, der tilhører en større gade. For det meste har alle gader med huse et navn.</string>
-    <string name="quest_openingHours_start_time">åbningstidspunkt</string>
-    <string name="quest_openingHours_end_time">lukketid</string>
+    <string name="quest_openingHours_start_time">Åbningstidspunkt</string>
+    <string name="quest_openingHours_end_time">Lukketid</string>
     <string name="quest_openingHours_add_months">Tilføj måneder</string>
     <string name="quest_openingHours_add_hours">Tilføj timer</string>
     <string name="quest_openingHours_add_weekdays">Tilføj ugedage</string>
@@ -728,7 +728,6 @@ Hvis det ikke gælder for hele den markerede sektion, kan du også overveje at s
     <string name="quest_shop_gone_title">Hvad er her nu i stedet?</string>
     <string name="quest_shop_gone_vacant_answer">Den står tom…</string>
     <string name="quest_shop_gone_replaced_answer">En/Et…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Indtast type sted her</string>
     <string name="quest_shop_vacant_type_title">Denne butik har stået tom. Hvad er her nu?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Denne type er som standard deaktiveret, fordi du sandsynligvis bliver nødt til at besøge stedet for at kunne svare på et spørgsmål af denne type.</string>
     <string name="quest_dietType_explanation_kosher">Kosherprodukter skal laves efter bestemte regler og med certificeringsorganer, der udsteder et koshercertifikat.</string>

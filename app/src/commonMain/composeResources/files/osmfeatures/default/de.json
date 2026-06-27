@@ -1070,6 +1070,10 @@
           "name": "Wetterschutz",
           "terms": "unterstand,wetterschutz,schutzdach,wetterpilz"
         },
+        "amenity/shelter/field_shelter": {
+          "name": "Weidezelt",
+          "terms": "tierunterstand,überdachung"
+        },
         "amenity/shelter/gazebo": {
           "name": "Aussichtspavillon",
           "terms": "aussichtspavillon,salettl,offene gartenlaube"
@@ -1109,6 +1113,11 @@
         "amenity/social_facility/assisted_living": {
           "name": "Einrichtung für betreutes Seniorenwohnen",
           "terms": "seniorenwohnen,altenwohnen,ältere,pflege,betreuung,altenpflege,seniorenwohnheim,seniorenpflege"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Tagespflege",
+          "terms": "tagespflege,tagesklinik,tagesbetreuung,tagespflegeklinik,behindertenhilfe,behindertenpflege,behindertentagespflege,behindertenbetreuung,altenhilfe,altenpflege,altentagespflege,altenbetreuung,seniorenhilfe,seniorenpflege,seniorentagespflege,seniorenbetreuung",
+          "aliases": "Tagesklinik"
         },
         "amenity/social_facility/food_bank": {
           "name": "Lebensmittelausgabe",
@@ -2184,6 +2193,9 @@
           "name": "Disc Golf Abschlagplatz",
           "terms": "abschlagbox,abschlagplatz"
         },
+        "disused/aeroway": {
+          "name": "Unbenutzte Flugbahn-Feature"
+        },
         "disused/amenity": {
           "name": "nicht benutzte Einrichtung"
         },
@@ -2674,6 +2686,11 @@
         "highway/give_way": {
           "name": "Vorfahrt gewähren",
           "terms": "vorfahrt gewähren-zeichen,vorrang gewähren-zeichen"
+        },
+        "highway/hitchhiking": {
+          "name": "Mitfahrbank",
+          "terms": "trampen,autostopp,anhalter,mitfahrbank,mitfahrerbank,mitfahrbänkli,mitfahrgelegenheit,nimm-mich-mit-häusle,mitfahrbänkle,anhalterbank,mitfahrbankerl",
+          "aliases": "Mitfahrerbank"
         },
         "highway/ladder": {
           "name": "Leiter",
@@ -3680,6 +3697,10 @@
           "name": "Stadion",
           "terms": "stadion,arena"
         },
+        "leisure/summer_camp": {
+          "name": "Sommercamp",
+          "terms": "sommerlager,ferienlager,ferienspiele,zeltlager"
+        },
         "leisure/swimming_area": {
           "name": "Natürlicher Badebereich",
           "terms": "natürlicher badebereich,natürlicher schwimmbereich,naturbad"
@@ -3879,6 +3900,10 @@
         "man_made/gasometer": {
           "name": "Gasometer",
           "terms": "gasometer,gaslagertank"
+        },
+        "man_made/geoglyph": {
+          "name": "Geoglyphe",
+          "terms": "glifos"
         },
         "man_made/goods_conveyor": {
           "name": "Förderanlage",

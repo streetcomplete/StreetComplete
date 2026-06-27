@@ -754,7 +754,6 @@
     <string name="quest_shop_gone_title">Шта је сада ту уместо тога?</string>
     <string name="quest_shop_gone_vacant_answer">Напуштено је</string>
     <string name="quest_shop_gone_replaced_answer">То је…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Упишите врсту радње и сл.</string>
     <string name="quest_shop_vacant_type_title">Ова продавница је напуштена. Шта је сада овде?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ова врста задатка је онемогућена јер у неким регијама није корисна. Вероватно бисте морали ући унутра како би могли да одговорите на овакав задатак.</string>
     <string name="quest_dietType_explanation_kosher">Кошер производи се морају припремати према посебним правилима, а производи у складу са кашрутом су означени сертификатом.</string>

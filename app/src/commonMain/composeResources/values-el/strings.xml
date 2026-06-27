@@ -744,7 +744,6 @@
     <string name="quest_shop_gone_title">Τι είναι εδώ τώρα;</string>
     <string name="quest_shop_gone_vacant_answer">Είναι κενό</string>
     <string name="quest_shop_gone_replaced_answer">Ένα…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Πληκτρολογήστε το είδος της τοποθεσίας εδώ</string>
     <string name="quest_shop_vacant_type_title">Αυτό το κατάστημα ήταν κενό. Τι είναι τώρα εδώ;</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Αυτός ο τύπος αποστολής είναι απενεργοποιημένος από προεπιλογή, επειδή δεν είναι χρήσιμος σε ορισμένες περιοχές και πιθανότατα θα πρέπει να εισαγάγετε το μέρος για να μπορείτε να απαντήσετε σε μια αποστολή αυτού του τύπου.</string>
     <string name="quest_dietType_explanation_kosher">Τα προϊόντα Κοσέρ πρέπει να προετοιμάζονται σύμφωνα με ειδικούς κανόνες, με τους οργανισμούς πιστοποίησης Κασρούτ να επισημαίνουν τα προϊόντα σε συμμόρφωση.</string>

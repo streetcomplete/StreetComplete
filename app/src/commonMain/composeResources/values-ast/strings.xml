@@ -748,7 +748,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_shop_gone_title">¿Qué hai equí agora?</string>
     <string name="quest_shop_gone_vacant_answer">Ta vacío</string>
     <string name="quest_shop_gone_replaced_answer">Ye un/una...</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Pon el tipu equí</string>
     <string name="quest_shop_vacant_type_title">Esti llocal tuvo vacíu. ¿Qué hai equí agora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Esti tipu de xera ta desactivada de serie porque nun ye útil en dalgunes rexones y seguramente tengas d'entrar nel sitiu p'alcontrar la información y responder bien a les preguntes.</string>
     <string name="quest_dietType_explanation_kosher">Los productos kosher han preparase d'una manera especial, hai axencias que los certifiquen denomaes "kashrut".</string>

@@ -127,7 +127,7 @@
     }
   },
   "building_part": {
-    "icon": "maki-building",
+    "icon": "roentgen-building_part",
     "geometry": ["area"],
     "tags": {
       "building:part": "*"
@@ -555,7 +555,7 @@
     "matchScore": 0.1
   },
   "type/enforcement": {
-    "icon": "iD-relation",
+    "icon": "fas-hand",
     "geometry": ["relation"],
     "tags": {
       "type": "enforcement"
@@ -865,7 +865,7 @@
     }
   },
   "type/enforcement/maxspeed": {
-    "icon": "iD-relation",
+    "icon": "fas-hand",
     "geometry": ["relation"],
     "tags": {
       "type": "enforcement",
@@ -1267,7 +1267,7 @@
     }
   },
   "tourism/artwork/mural": {
-    "icon": "maki-art-gallery",
+    "icon": "roentgen-spray_can_spraying",
     "geometry": ["point", "vertex", "line", "area"],
     "tags": {
       "tourism": "artwork",
@@ -1283,7 +1283,7 @@
     }
   },
   "tourism/artwork/graffiti": {
-    "icon": "maki-art-gallery",
+    "icon": "roentgen-spray_can_spraying",
     "geometry": ["point", "vertex", "line", "area"],
     "tags": {
       "tourism": "artwork",
@@ -2512,6 +2512,16 @@
       "shop": "vacant"
     }
   },
+  "shop/ice_cream": {
+    "icon": "fas-ice-cream",
+    "geometry": ["point", "area"],
+    "tags": {
+      "shop": "ice_cream"
+    },
+    "matchScore": 0.5,
+    "name": "{amenity/ice_cream}",
+    "searchable": false
+  },
   "shop/hobby": {
     "icon": "fas-dragon",
     "geometry": ["point", "area"],
@@ -2908,7 +2918,7 @@
     "searchable": false
   },
   "railway/station": {
-    "icon": "temaki-board_train",
+    "icon": "temaki-train",
     "geometry": ["point", "vertex", "area"],
     "tags": {
       "railway": "station"
@@ -5399,6 +5409,20 @@
       "man_made": "goods_conveyor"
     }
   },
+  "man_made/geoglyph_multilinestring": {
+    "name": "{man_made/geoglyph}",
+    "geometry": ["relation"],
+    "tags": {
+      "man_made": "geoglyph",
+      "type": "multilinestring"
+    }
+  },
+  "man_made/geoglyph": {
+    "geometry": ["point", "line", "area"],
+    "tags": {
+      "man_made": "geoglyph"
+    }
+  },
   "man_made/gasometer": {
     "icon": "temaki-storage_tank",
     "geometry": ["point", "area"],
@@ -5558,6 +5582,7 @@
     }
   },
   "man_made/breakwater": {
+    "icon": "roentgen-breakwater",
     "geometry": ["line", "area"],
     "tags": {
       "man_made": "breakwater"
@@ -5956,6 +5981,13 @@
       "leisure": "swimming_area"
     }
   },
+  "leisure/summer_camp": {
+    "icon": "fas-campground",
+    "geometry": ["point", "area"],
+    "tags": {
+      "leisure": "summer_camp"
+    }
+  },
   "leisure/stadium": {
     "icon": "maki-pitch",
     "geometry": ["point", "area"],
@@ -6336,7 +6368,7 @@
     }
   },
   "leisure/track/athletics/javelin_throw": {
-    "icon": "fas-running",
+    "icon": "roentgen-person_throwing_spear",
     "geometry": ["point", "line", "area"],
     "tags": {
       "leisure": "track",
@@ -6757,7 +6789,7 @@
     }
   },
   "leisure/pitch/athletics/javelin_throw": {
-    "icon": "maki-pitch",
+    "icon": "roentgen-person_throwing_spear",
     "geometry": ["area", "point"],
     "tags": {
       "leisure": "pitch",
@@ -7113,7 +7145,7 @@
     }
   },
   "landuse/greenhouse_horticulture": {
-    "icon": "maki-garden",
+    "icon": "roentgen-building_with_plant",
     "geometry": ["area"],
     "tags": {
       "landuse": "greenhouse_horticulture"
@@ -7533,7 +7565,7 @@
     "replacement": "highway/corridor"
   },
   "historic/wreck": {
-    "icon": "temaki-ruins",
+    "icon": "roentgen-sinking_ship",
     "geometry": ["point", "area"],
     "tags": {
       "historic": "wreck"
@@ -7722,7 +7754,8 @@
     "geometry": ["line"],
     "tags": {
       "highway": "trunk"
-    }
+    },
+    "matchScore": 1.01
   },
   "highway/trailhead": {
     "icon": "fas-hiking",
@@ -7771,7 +7804,8 @@
     "geometry": ["line"],
     "tags": {
       "highway": "tertiary"
-    }
+    },
+    "matchScore": 1.01
   },
   "highway/street_lamp": {
     "icon": "temaki-street_lamp_arm",
@@ -7843,7 +7877,8 @@
     "geometry": ["line"],
     "tags": {
       "highway": "secondary"
-    }
+    },
+    "matchScore": 1.01
   },
   "highway/road": {
     "icon": "iD-other-line",
@@ -7889,7 +7924,8 @@
     "geometry": ["line"],
     "tags": {
       "highway": "primary"
-    }
+    },
+    "matchScore": 1.01
   },
   "highway/pedestrian_line": {
     "icon": "temaki-pedestrian",
@@ -7938,7 +7974,8 @@
     "geometry": ["line"],
     "tags": {
       "highway": "motorway"
-    }
+    },
+    "matchScore": 1.01
   },
   "highway/mini_roundabout": {
     "icon": "maki-circle-stroked",
@@ -8196,11 +8233,6 @@
     "tags": {
       "highway": "path",
       "bridge": "boardwalk"
-    },
-    "addTags": {
-      "highway": "path",
-      "bridge": "boardwalk",
-      "surface": "wood"
     }
   },
   "highway/path/crossing": {
@@ -9314,7 +9346,7 @@
     }
   },
   "craft/sailmaker": {
-    "icon": "temaki-tools",
+    "icon": "temaki-sail",
     "geometry": ["point", "area"],
     "tags": {
       "craft": "sailmaker"
@@ -10675,7 +10707,7 @@
     }
   },
   "attraction/bungee_jumping": {
-    "icon": "maki-pitch",
+    "icon": "roentgen-person_bungee_jumping",
     "geometry": ["point", "area"],
     "tags": {
       "attraction": "bungee_jumping"
@@ -11852,7 +11884,7 @@
     }
   },
   "amenity/vending_machine/pizza": {
-    "icon": "temaki-vending_machine",
+    "icon": "roentgen-vending_pizza",
     "geometry": ["point", "vertex"],
     "tags": {
       "amenity": "vending_machine",
@@ -12145,6 +12177,14 @@
       "social_facility": "food_bank"
     }
   },
+  "amenity/social_facility/day_care": {
+    "icon": "maki-wheelchair",
+    "geometry": ["point", "area"],
+    "tags": {
+      "amenity": "social_facility",
+      "social_facility": "day_care"
+    }
+  },
   "amenity/social_facility/assisted_living": {
     "icon": "maki-wheelchair",
     "geometry": ["point", "area"],
@@ -12192,6 +12232,14 @@
     "tags": {
       "amenity": "shelter",
       "shelter_type": "gazebo"
+    }
+  },
+  "amenity/shelter/field_shelter": {
+    "icon": "temaki-horse_shelter",
+    "geometry": ["point", "vertex", "area"],
+    "tags": {
+      "amenity": "shelter",
+      "shelter_type": "field_shelter"
     }
   },
   "amenity/restaurant/vietnamese": {
@@ -13439,7 +13487,7 @@
     }
   },
   "advertising/totem": {
-    "icon": "temaki-billboard",
+    "icon": "roentgen-advertising_totem",
     "geometry": ["point", "line"],
     "tags": {
       "advertising": "totem"

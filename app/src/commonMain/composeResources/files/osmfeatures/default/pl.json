@@ -1048,6 +1048,10 @@
           "name": "Wiata (schronienie)",
           "terms": "wiata,schronienie"
         },
+        "amenity/shelter/field_shelter": {
+          "name": "Wiata dla zwierząt",
+          "terms": "wiata dla zwierząt"
+        },
         "amenity/shelter/gazebo": {
           "name": "Altana",
           "terms": "altana"
@@ -1087,6 +1091,10 @@
         "amenity/social_facility/assisted_living": {
           "name": "Mieszkania wspomagane dla seniorów",
           "terms": "mieszkania wspomagane dla seniorów"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Dom dziennego pobytu",
+          "terms": "dom dziennego pobytu,dzienny dom pobytu,ośrodek opieki dziennej"
         },
         "amenity/social_facility/food_bank": {
           "name": "Bank żywności",
@@ -2171,6 +2179,9 @@
           "name": "Tee na polu do disc golfa",
           "terms": "tee do disc golfa,disc golf"
         },
+        "disused/aeroway": {
+          "name": "Nieużywane urządzenie infrastruktury lotniczej"
+        },
         "disused/amenity": {
           "name": "Nieczynny obiekt/usługa"
         },
@@ -2656,6 +2667,10 @@
         "highway/give_way": {
           "name": "Znak „ustąp pierwszeństwa”",
           "terms": "znak ustąp pierwszeństwa przejazdu,a-7,a7"
+        },
+        "highway/hitchhiking": {
+          "name": "Oznakowany punkt autostopu",
+          "terms": "oznakowany punkt autostopu,oznakowany punkt oczekiwania na autostop"
         },
         "highway/ladder": {
           "name": "Drabinka",
@@ -3255,7 +3270,7 @@
         },
         "leisure/bowling_alley": {
           "name": "Kręgielnia",
-          "terms": "kręgielnia,kręgle"
+          "terms": "kręgielnia,kręgle,bowling"
         },
         "leisure/common": {
           "name": "Serwituty",
@@ -3676,6 +3691,10 @@
           "name": "Stadion",
           "terms": "stadion"
         },
+        "leisure/summer_camp": {
+          "name": "Ośrodek kolonijny",
+          "terms": "ośrodek kolonijny"
+        },
         "leisure/swimming_area": {
           "name": "Kąpielisko (obszar wodny)",
           "terms": "kąpielisko"
@@ -3873,6 +3892,10 @@
         "man_made/gasometer": {
           "name": "Wielki zbiornik gazu",
           "terms": "zbiornik gazu,gazownia"
+        },
+        "man_made/geoglyph": {
+          "name": "Geoglif",
+          "terms": "geoglif"
         },
         "man_made/goods_conveyor": {
           "name": "Przenośnik taśmowy",
@@ -4814,7 +4837,8 @@
           "terms": "wieś,wioska"
         },
         "playground": {
-          "name": "Wyposażenie placu zabaw"
+          "name": "Wyposażenie placu zabaw",
+          "terms": "wyposażenie placu zabaw,zabawka na placu zabaw"
         },
         "playground/activitypanel": {
           "name": "Tablica",
@@ -5025,6 +5049,10 @@
         "power/plant/source/solar": {
           "name": "Elektrownia słoneczna",
           "terms": "elektrownia słoneczna"
+        },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "Farma fotowoltaiczna",
+          "terms": "farma fotowoltaiczna,elektrownia fotowoltaiczna"
         },
         "power/plant/source/waste": {
           "name": "Spalarnia odpadów",
@@ -5952,6 +5980,10 @@
         "shop/photo": {
           "name": "Sklep fotograficzny",
           "terms": "sklep fotograficzny,fotografia,filmy do aparatów,ramki na zdjęcia,aparaty fotograficzne,wywoływanie zdjęć"
+        },
+        "shop/piercing": {
+          "name": "Studio piercingu",
+          "terms": "studio piercingu,salon piercingu,piercer,piercing,przekłuwanie"
         },
         "shop/pottery": {
           "name": "Sklep garncarski",

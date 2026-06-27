@@ -412,7 +412,7 @@
     <string name="quest_buildingType_shrine">Shrine building</string>
     <string name="quest_maxspeed_title_short2">What’s the speed limit for this street?</string>
     <string name="quest_maxspeed_answer_sign">A sign</string>
-    <string name="quest_maxspeed_answer_zone2">It’s within a (slow) zone</string>
+    <string name="quest_maxspeed_answer_zone2">It’s within a (slow) speed zone</string>
     <string name="quest_maxspeed_answer_noSign2">No sign, defaults apply</string>
     <string name="quest_openingHours_no_sign">No opening hours sign</string>
     <string name="quest_buildingType_sports_centre">Sports centre</string>
@@ -729,7 +729,6 @@ Also, if it doesn’t apply for the whole highlighted section, consider answerin
     <string name="quest_shop_gone_title">What’s here now instead?</string>
     <string name="quest_shop_gone_vacant_answer">It’s vacant…</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
     <string name="quest_shop_vacant_type_title">This shop has been vacant. What’s here now?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">This quest type is disabled by default because it is not useful in some regions and you will likely have to enter the place to be able to answer a quest of this type.</string>
     <string name="quest_dietType_explanation_kosher">Kosher products must be prepared according to special rules, with kashrut certification agencies marking products in compliance.</string>
@@ -1454,4 +1453,16 @@ For example 1,3 or 2b,4,6.</string>
     <string name="quest_shower_hot_water_title">Is there hot water here?</string>
     <string name="calendar_new_event_title">New OSM event in your area!</string>
     <string name="pref_title_message_calendar">New OSM events in your area</string>
+    <string name="quest_ferry_hgv_title">Does this ferry route transport heavy goods vehicles?</string>
+    <string name="dialog_dont_notify_again2">Unsubscribe</string>
+    <string name="quest_leave_new_note_track_recording">Track recording will be attached.</string>
+    <string name="quest_leave_new_note_photo_delete">Delete</string>
+    <string name="quest_maxspeed_type_description">Speed limit is defined by…</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">Advisory speed limit sign</string>
+    <string name="quest_maxspeed_answer_roadtype_description">Street is…</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">in built-up area</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">outside built-up area</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">lit</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">not lit</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Not lit and dual carriageway</string>
 </resources>

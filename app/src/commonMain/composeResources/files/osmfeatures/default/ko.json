@@ -29,6 +29,9 @@
           "name": "포스터 박스",
           "terms": "포스터,광고"
         },
+        "advertising/sign": {
+          "name": "광고판"
+        },
         "advertising/totem": {
           "name": "광고 토템",
           "terms": "광고 토템,광고란"
@@ -2075,6 +2078,9 @@
           "name": "디스크 골프 티",
           "terms": "디스크 골프 티"
         },
+        "disused/aeroway": {
+          "name": "사용되지 않는 항공 지물"
+        },
         "disused/amenity": {
           "name": "버려진 지물"
         },
@@ -2923,6 +2929,9 @@
         "landuse/construction": {
           "name": "공사 중인 지역",
           "terms": "공사 중인 지역"
+        },
+        "landuse/education": {
+          "name": "교육 부지"
         },
         "landuse/farm": {
           "name": "농지"
@@ -4024,6 +4033,9 @@
         "natural/arch": {
           "name": "자연 아치"
         },
+        "natural/arete": {
+          "name": "아레트"
+        },
         "natural/bare_rock": {
           "name": "노출된 암반",
           "terms": "바위,암석,기반암"
@@ -4815,6 +4827,10 @@
         "power/plant/source/solar": {
           "name": "태양에너지 발전소",
           "terms": "태양에너지 발전소"
+        },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "솔라팜",
+          "terms": "태양열 농장,태양열 발전소"
         },
         "power/plant/source/waste": {
           "name": "쓰레기 소각 발전소",
@@ -5727,6 +5743,9 @@
           "name": "사진 가게",
           "terms": "카메라,사진기,필름"
         },
+        "shop/piercing": {
+          "name": "피어싱샵"
+        },
         "shop/pottery": {
           "name": "도자기 가게",
           "terms": "도자기 상점"
@@ -6247,6 +6266,9 @@
           "name": "버스 노선",
           "terms": "버스 노선,버스 경로"
         },
+        "type/route/climbing": {
+          "name": "등반 경로"
+        },
         "type/route/detour": {
           "name": "우회 노선",
           "terms": "우회 노선,우회 경로"
@@ -6282,6 +6304,9 @@
         "type/route/pipeline": {
           "name": "파이프라인 노선",
           "terms": "파이프라인 노선,파이프 노선,관로 노선,도관 노선,파이프라인 경로,파이프 경로,관로 경로,도관 경로"
+        },
+        "type/route/piste": {
+          "name": "피스트 / 스키 경로"
         },
         "type/route/power": {
           "name": "전력 노선",
