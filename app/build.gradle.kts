@@ -39,7 +39,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "2.4.0"
     id("org.jetbrains.kotlin.plugin.compose") version "2.4.0"
     id("com.android.application") version "8.11.2"
-    id("org.jetbrains.compose") version "1.10.3"
+    id("org.jetbrains.compose") version "1.11.1"
     id("org.jetbrains.kotlinx.atomicfu") version "0.33.0"
     id("com.codingfeline.buildkonfig") version "0.22.0"
     // keep in sync with Kotlin version! See https://mokkery.dev/docs/Setup/#compatibility
@@ -66,7 +66,7 @@ buildkonfig {
         create("android") {
             buildConfigField(STRING, "PLATFORM", "android")
         }
-        for (ios in listOf("iosX64", "iosArm64", "iosSimulatorArm64")) {
+        for (ios in listOf("iosArm64", "iosSimulatorArm64")) {
             create(ios) {
                 buildConfigField(STRING, "PLATFORM", "ios")
             }
@@ -160,15 +160,15 @@ kotlin {
                 implementation("de.westnordost:osm-opening-hours:0.4.0")
 
                 // UI (Compose)
-                implementation("org.jetbrains.compose.runtime:runtime:1.10.3")
-                implementation("org.jetbrains.compose.foundation:foundation:1.10.3")
-                implementation("org.jetbrains.compose.material:material:1.10.3")
-                implementation("org.jetbrains.compose.ui:ui:1.10.3")
-                implementation("org.jetbrains.compose.components:components-resources:1.10.3")
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.10.3")
+                implementation("org.jetbrains.compose.runtime:runtime:1.11.1")
+                implementation("org.jetbrains.compose.foundation:foundation:1.11.1")
+                implementation("org.jetbrains.compose.material:material:1.11.1")
+                implementation("org.jetbrains.compose.ui:ui:1.11.1")
+                implementation("org.jetbrains.compose.components:components-resources:1.11.1")
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.11.1")
 
                 // UI Navigation
-                implementation("org.jetbrains.compose.ui:ui-backhandler:1.10.3")
+                implementation("org.jetbrains.compose.ui:ui-backhandler:1.11.1")
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
 
                 // UI ViewModel
@@ -177,6 +177,9 @@ kotlin {
                 // UI widgets
 
                 // non-lazy grid
+                // NOTE: might replace with
+                // https://developer.android.com/develop/ui/compose/layouts/adaptive/grid
+                // when that API is not experimental anymore
                 implementation("com.cheonjaeung.compose.grid:grid:2.7.4")
 
                 // reorderable lists (raw Compose API is pretty complicated)
@@ -208,7 +211,7 @@ kotlin {
                 implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
                 // Compose
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.10.3")
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.11.1")
                 implementation("androidx.activity:activity-compose:1.13.0")
 
                 // photos
@@ -354,7 +357,7 @@ compose {
 }
 
 dependencies {
-    debugImplementation("org.jetbrains.compose.ui:ui-tooling:1.10.3")
+    debugImplementation("org.jetbrains.compose.ui:ui-tooling:1.11.1")
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
