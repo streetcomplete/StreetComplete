@@ -69,7 +69,7 @@ tasks.register<GenerateQuestListTask>("generateQuestList") {
     iconsDirectory = projectDir.resolve("res/graphics/quest/")
     noteQuestFile = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/note_discussion/OsmNoteQuestType.kt")
     questsModuleFile = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt")
-    stringsFile = projectDir.resolve("app/src/androidMain/res/values/strings.xml")
+    stringsFile = projectDir.resolve("app/src/commonMain/composeResources/values/strings.xml")
 }
 
 tasks.register("updateStreetCompleteData") {
