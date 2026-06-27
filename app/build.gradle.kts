@@ -449,7 +449,6 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFilesAndroid = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
     targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/strings.xml" }
 }
 
