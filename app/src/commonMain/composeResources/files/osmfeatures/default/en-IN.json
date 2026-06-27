@@ -4,6 +4,9 @@
       "presets": {
         "amenity/theatre/type/amphi": {
           "name": "Amphitheatre"
+        },
+        "highway/give_way": {
+          "name": "Give Way Sign"
         }
       }
     }

@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Banka Kombëtare Tregtare, Raiffeisen Bank, OTP Bank, Union Bank, Fibank, Tirana Bank, Credins Bank, Intesa Sanpaolo, BKT, otpbank, Euronet, otp bank, Raiffeisenbank, ALPHA BANK]
-chargingStationOperators: [Lux Taxi, eMobility Albania, Clean Taxi, King Taxi, EVBox, ena]
+atmOperators: [Banka Kombëtare Tregtare, Raiffeisen Bank, OTP Bank, Union Bank, Fibank, Tirana Bank, Credins Bank, Intesa Sanpaolo, BKT, otpbank, Euronet, otp bank, Raiffeisenbank, Banka Kombetare Tregtare, ALPHA BANK]
+chargingStationOperators: [Lux Taxi, eMobility Albania, Clean Taxi, King Taxi, ena, EVBox]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisorySpeedLimitSign: true

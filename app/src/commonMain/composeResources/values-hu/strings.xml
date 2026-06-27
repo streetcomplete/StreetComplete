@@ -755,7 +755,6 @@ Ha vannak buszok számára fenntartott sávok is, akkor inkább írj jegyzetet.<
     <string name="quest_shop_gone_title">Mi található itt helyette?</string>
     <string name="quest_shop_gone_vacant_answer">Üresen áll…</string>
     <string name="quest_shop_gone_replaced_answer">Ez egy…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Add meg a hely típusát</string>
     <string name="quest_shop_vacant_type_title">Ez az üzlet üresen állt. Mi található most itt?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert egyes régiókban kevésbé hasznos, valamint a küldetés megoldásához jó eséllyel be kell menni az adott helyre.</string>
     <string name="quest_dietType_explanation_kosher">A kóser termékeknek különleges szabályok szerint kell készülniük, valamint rendelkezniük kell a megfelelő intézmények hitelesítésével.</string>
@@ -1440,7 +1439,7 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_streetName_add_language">Nyelv hozzáadása</string>
     <string name="ok">OK</string>
     <string name="cancel">Mégsem</string>
-    <string name="quest_aerialway_bicycle_title">Ez a légi lift kerékpárokat szállít?</string>
+    <string name="quest_aerialway_bicycle_title">Ez a felvonó szállít kerékpárt?</string>
     <string name="quest_aerialway_bicycle_summer">Csak nyáron</string>
     <string name="quest_board_type_rules">Szabályok</string>
     <string name="quest_firewood_provided_title">Biztosítanak itt tűzifát?</string>
@@ -1460,6 +1459,9 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="pref_title_message_achievements">Feloldott kitüntetések</string>
     <string name="pref_title_message_weekly_osm">A weeklyOSM új számai</string>
     <string name="pref_title_message_changelog">Az alkalmazás új kiadásai</string>
+    <string name="label_block2">háztömb</string>
+    <string name="quest_address_answer_block2">Egy háztömbön belül van…</string>
+    <string name="quest_address_answer_no_block2">Nincs egy háztömbön belül…</string>
     <string name="quest_artwork_title">Milyen fajta műalkotás ez?</string>
     <string name="quest_artwork_sculpture">Absztrakt szobor</string>
     <string name="quest_artwork_statue">Figuratív szobor</string>
@@ -1474,6 +1476,7 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_artwork_mosaic">Mozaik</string>
     <string name="quest_artwork_relief">Dombormű</string>
     <string name="quest_artwork_fountain">Szökőkút</string>
+    <string name="quest_bothway_title">Melyik irányba lehet rajta menni?</string>
     <string name="quest_camp_tent_title">Lehet-e itt sátrazni?</string>
     <string name="quest_camp_cabin_title">Vannak-e itt bungalókban, amelyekben megszállhatsz?</string>
     <string name="quest_camp_caravan_title">Lehet-e itt lakókocsival vagy lakóautóval kempingezni?</string>
@@ -1490,4 +1493,15 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="calendar_new_event_title">Új OSM-rendezvény a környéken!</string>
     <string name="pref_title_message_calendar">Új OSM-rendezvények a környéken</string>
     <string name="quest_ferry_hgv_title">Szállít-e nehéz tehergépjárművet ez a kompjárat?</string>
+    <string name="dialog_dont_notify_again2">Leiratkozás</string>
+    <string name="quest_leave_new_note_track_recording">Az útvonalrögzítés csatolva lesz.</string>
+    <string name="quest_leave_new_note_photo_delete">Törlés</string>
+    <string name="quest_maxspeed_type_description">A sebességkorlátozást ez határozza meg:</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">Javasolt sebességkorlátozás tábla</string>
+    <string name="quest_maxspeed_answer_roadtype_description">Az utca…</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">lakott tarületen van</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">lakott területen kívül van</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">kivilágított</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">kivilágítatlan</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Kivilágítatlan és gyorsforgalmi út</string>
 </resources>

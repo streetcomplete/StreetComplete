@@ -1,8 +1,8 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Caixa Geral de Depósitos, Euronet, Crédito Agrícola, Euronet Worldwide, Multibanco, SIBS, Santander Totta, Millennium bcp, Novo Banco, Montepio, Banco Santander, Banco BPI, MB Multibanco, Millennium BCP, Santander, ATMExpress, BPI, Banco Montepio, ATM Express, Millennium, ATM, Bankinter, Abanca, EuroBic, CGD, Caixa Agrícola, multibanco, Millenium bcp, Banco CTT, Caixa de Crédito Agrícola, novobanco, Millenium, Credito Agricola, Cashzone, CCAM, BES, SIBS Multibanco, Novobanco, Crédito Agricola, Branco BPI, crédito agrícola, bankinter, Deutsche Bank, Credit Agricole, Cash Zone, Caixa Agricola, Barclays, Banco Popular, Banco Comercial Português, BCP Millenium, BBVA, ActivoBank]
-chargingStationOperators: [EDP, Galp Power, True Kare, Powerdot, Atlante, Continente, Repsol, Iberdrola, Charging Together, Tesla, Prio.E, Galp Geste, Helexia II, Mota Engil II, Mobiletric, DTE, Maksu Services, Hexagonal Ocean, EVCE, KLC Serviços, EcoInside, Cepsa, Moon, Porsche, Loulé Concelho Global, EMEL, IONITY, Generation Journey, EV Power, Veimonte, Logical Gravity, Plug, Evio, REMO, GreenCharge, Luzigás, High Green Power, CapWatt, Nissan, Alfa Energia, Renault, InstaVolt, Enable Mobility Solutions, DPC-Privado, NRG, Goldenergy, EZ-Charg3, CME, Neureifen, Circuitos Energy Solutions, Cargga Inteligente, Bel Mobility]
+atmOperators: [Euronet, Caixa Geral de Depósitos, Crédito Agrícola, Multibanco, SIBS, Santander Totta, Millennium bcp, Novo Banco, Montepio, Euronet Worldwide, Banco Santander, Banco BPI, MB Multibanco, Santander, Millennium BCP, ATMExpress, BPI, ATM Express, Millennium, Banco Montepio, ATM, Abanca, Bankinter, EuroBic, CGD, Caixa Agrícola, multibanco, Millenium bcp, Millenium, Banco CTT, Credito Agricola, Caixa de Crédito Agrícola, novobanco, Cashzone, CCAM, BES, SIBS Multibanco, Novobanco, Crédito Agricola, Branco BPI, crédito agrícola, bankinter, Deutsche Bank, Credit Agricole, Cash Zone, Caixa Agricola, Barclays, Banco Popular, Banco Comercial Português, BCP Millenium, BBVA, ActivoBank]
+chargingStationOperators: [EDP, Galp Power, True Kare, Powerdot, Atlante, Continente, Repsol, Charging Together, Iberdrola, Prio.E, Galp Geste, Helexia II, Mota Engil II, DTE, Mobiletric, Maksu Services, EVCE, KLC Serviços, Hexagonal Ocean, Cepsa, Moon, EcoInside, EMEL, Loulé Concelho Global, Porsche, IONITY, Generation Journey, EV Power, Logical Gravity, Veimonte, Evio, REMO, Plug, High Green Power, GreenCharge, Tesla, Luzigás, CapWatt, Alfa Energia, Nissan, Renault, InstaVolt, Goldenergy, Enable Mobility Solutions, DPC-Privado, NRG, EZ-Charg3, CME, Acciona]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
-clothesContainerOperators: [Ultriplo, Humana Portugal, wippytex, Ultriplo Lda, Wippytex, Projeto Amigo, H Sarah Trading, Utriplo, Fundação o Século, FILTEX & reciclagem, Câmara Municipal de Lisboa, Cáritas Diocesana de Lisboa, Cáritas, Caritas Diocesana de Lisboa, utriplo, Texlimca, Sarah Trading, ResiNorte, Nova Etapa, Cáritas Diocesana de Setúbal]
+clothesContainerOperators: [Ultriplo, Humana Portugal, wippytex, Ultriplo Lda, Wippytex, Projeto Amigo, H Sarah Trading, Utriplo, Nova Etapa, Fundação o Século, FILTEX & reciclagem, Câmara Municipal de Lisboa, Cáritas Diocesana de Lisboa, Cáritas, Caritas Diocesana de Lisboa, utriplo, Texlimca, Sarah Trading, ResiNorte, Cáritas Diocesana de Setúbal]
 defaultSpeedLimitHasUrbanOrRural: true
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
@@ -14,7 +14,7 @@ noParkingLineStyle: dashed yellow
 noStoppingLineStyle: yellow
 officialLanguages: [pt]
 orchardProduces: [olive, grape, chestnut, almond, orange, tomato, apple, pear, walnut, fig, peach, kiwi, blueberry, avocado, plum]
-parcelLockerBrand: [Locky, Locky CTT, DPD, DPD Pickup Station, InPost, Amazon, Amazon Locker, Amazon Hub, LockyCTT, CTT]
+parcelLockerBrand: [Locky, Locky CTT, DPD, InPost, DPD Pickup Station, Amazon Locker, Amazon, Amazon Hub, LockyCTT, CTT]
 popularReligions: [christian, jewish, muslim]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top

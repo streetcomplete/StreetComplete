@@ -80,6 +80,9 @@
         "amenity/clock/sundial": {
           "name": "Сонечны гадзіньнік"
         },
+        "amenity/community_centre/chitalishte_BG": {
+          "name": "Чытальня"
+        },
         "amenity/courthouse": {
           "name": "Суд"
         },
@@ -94,6 +97,9 @@
         },
         "amenity/embassy": {
           "name": "Амбасада"
+        },
+        "amenity/fast_food/hot_dog": {
+          "terms": "хот-доґ,булачка з сасіскай"
         },
         "amenity/fountain": {
           "name": "Фантан"
@@ -127,6 +133,13 @@
         },
         "amenity/parking_entrance": {
           "name": "Уезд і выезд з ґаражнага паркінґу"
+        },
+        "amenity/payment_centre": {
+          "name": "Цэнтр аплаты"
+        },
+        "amenity/payment_terminal": {
+          "name": "Тэрмінал аплаты",
+          "terms": "банкамат,інфакіёск,тэрмінал,каса,грошы,аплата,картка"
         },
         "amenity/planetarium": {
           "name": "Плянэтарыюм"
@@ -232,6 +245,9 @@
         },
         "barrier/gate": {
           "name": "Брама"
+        },
+        "barrier/handrail": {
+          "name": "Парэнчы"
         },
         "barrier/hedge": {
           "name": "Жываплот"
@@ -366,7 +382,7 @@
           "name": "Электрык"
         },
         "craft/floorer": {
-          "name": "Укладчык падлогі"
+          "name": "Укладнік падлогі"
         },
         "craft/gardener": {
           "name": "Садоўнік"
@@ -454,6 +470,15 @@
         },
         "emergency/defibrillator": {
           "name": "Дэфібрылятар"
+        },
+        "emergency/fire_hydrant": {
+          "name": "Пажарны гідрант"
+        },
+        "emergency/fire_hydrant/pillar": {
+          "name": "Наземны пажарны гідрант"
+        },
+        "emergency/fire_hydrant/underground": {
+          "name": "Падземны пажарны гідрант"
         },
         "emergency/lifeboat_station": {
           "name": "Ратавальная станцыя"
@@ -584,11 +609,17 @@
         "historic/castle": {
           "name": "Замак"
         },
+        "historic/castle/fortress": {
+          "name": "Фартэцыя (памятная)"
+        },
         "historic/castle/palace": {
           "name": "Палац"
         },
         "historic/castle/stately": {
           "name": "Шато"
+        },
+        "historic/city_gate": {
+          "name": "Брама гораду"
         },
         "historic/memorial": {
           "name": "Мэмарыял"
@@ -794,6 +825,9 @@
         "man_made/pipeline": {
           "name": "Трубаправод"
         },
+        "man_made/planter": {
+          "name": "Клумба"
+        },
         "man_made/silo": {
           "name": "Сілас"
         },
@@ -823,6 +857,9 @@
         },
         "marker": {
           "name": "Пазнака"
+        },
+        "natural/arete": {
+          "name": "Горны грэбень"
         },
         "natural/bay": {
           "name": "Затока"
@@ -855,7 +892,8 @@
           "name": "Верасовая пустэча"
         },
         "natural/mud": {
-          "name": "Гразь"
+          "name": "Гразь",
+          "terms": "дрыгва,гразь,твань"
         },
         "natural/peak": {
           "name": "Вяршыня"
@@ -916,6 +954,36 @@
         },
         "natural/wetland": {
           "name": "Дрыгва"
+        },
+        "natural/wetland/bog": {
+          "name": "Імшара"
+        },
+        "natural/wetland/fen": {
+          "name": "Абалонь"
+        },
+        "natural/wetland/mangrove": {
+          "name": "Манґры"
+        },
+        "natural/wetland/marsh": {
+          "name": "Балота"
+        },
+        "natural/wetland/reedbed": {
+          "name": "Чаротнік"
+        },
+        "natural/wetland/saltmarsh": {
+          "name": "Салёнае балота"
+        },
+        "natural/wetland/string_bog": {
+          "name": "Стругавая імшара"
+        },
+        "natural/wetland/swamp": {
+          "name": "Багна"
+        },
+        "natural/wetland/tidalflat": {
+          "name": "Твань"
+        },
+        "natural/wetland/wet_meadow": {
+          "name": "Поплаў"
         },
         "office": {
           "name": "Офіс"

@@ -189,14 +189,15 @@
           "terms": "odstavna plocha,odstavná plocha,stojan na bicykle"
         },
         "amenity/bicycle_parking/building": {
-          "name": "Garáž na parkovanie bicyklov"
+          "name": "Garáž na parkovanie bicyklov",
+          "terms": "garáž pre bicykle,garaz pre bicykle"
         },
         "amenity/bicycle_parking/lockers": {
           "name": "Uzamykateľné boxy pre bicykle",
           "terms": "skrinky na bicykle"
         },
         "amenity/bicycle_parking/shed": {
-          "name": "Uzamykateľný prístrešok pre bicykle",
+          "name": "Uzatvárateľný prístrešok pre bicykle",
           "terms": "uzamykatelny pristresok pre bicykle,prístrešok pre bicykle,pristresok pre bicykle"
         },
         "amenity/bicycle_rental": {
@@ -656,7 +657,7 @@
         },
         "amenity/parcel_locker": {
           "name": "Schránka na balíky",
-          "terms": "schranka na baliky,schránka pre balíky,schranka pre baliky,balíkomat,balikomat,balíkobox,balikobox,alzabox,z-box,parcelbox"
+          "terms": "schranka na baliky,schránka pre balíky,schranka pre baliky,výdajný box,vydajny box,balíkomat,balikomat,balíkobox,balikobox,parcelbox"
         },
         "amenity/parking": {
           "name": "Parkovisko"
@@ -1274,6 +1275,9 @@
           "name": "Brána otváraná nárazom",
           "terms": "brana otvarana narazom,bump gate"
         },
+        "barrier/bus_trap": {
+          "name": "Autobusová priehlbeň"
+        },
         "barrier/cable_barrier": {
           "name": "Káblová bariéra",
           "terms": "kablova bariera,drôtená bariéra,drotena bariera,lanová bariéra,lanova bariera"
@@ -1460,8 +1464,8 @@
           "terms": "búda,buda,chata,zrub,drevenica"
         },
         "building/carport": {
-          "name": "Prístrešok pre auto",
-          "terms": "pristresok pre auto"
+          "name": "Prístrešok pre auto (carport)",
+          "terms": "pristresok pre auto,zastrešené státie,zastresene statie,carport"
         },
         "building/cathedral": {
           "name": "Budova katedrály",
@@ -1517,8 +1521,8 @@
           "terms": "garaz,garáže,garaze,parkovanie,kryté parkovanie,kryte parkovanie"
         },
         "building/garages": {
-          "name": "Budova súkromných garáží",
-          "terms": "garaze,garaz,garáž,garáže"
+          "name": "Blok garáží",
+          "terms": "blok garazi,garáže,garaze,blok s garážami,blok s garazami"
         },
         "building/ger": {
           "name": "Jurta"
@@ -2715,7 +2719,7 @@
         },
         "landuse/garages": {
           "name": "Oblasť súkromných garáží",
-          "terms": "garáže,garaze"
+          "terms": "oblast sukromnych garazi,garáže,garaze,súkromné garáže,sukromne garaze"
         },
         "landuse/grass": {
           "name": "Tráva",
@@ -3515,8 +3519,8 @@
           "terms": "nabrezie,prístavisko,pristavisko"
         },
         "man_made/reservoir_covered": {
-          "name": "Krytá nádrž",
-          "terms": "kryta nadrz,podzemná nádrž,podzemna nadrz"
+          "name": "Podzemný vodojem",
+          "terms": "podzemny vodojem,vodojem,krytá nádrž,kryta nadrz,podzemná nádrž,podzemna nadrz,nádrž,nadrz,vodný zdroj,vodny zdroj"
         },
         "man_made/satellite_dish": {
           "name": "Parabolická anténa"
@@ -3640,8 +3644,8 @@
           "terms": "studna,voda"
         },
         "man_made/water_works": {
-          "name": "Vodáreň",
-          "terms": "vodaren,úpravňa vody,upravna vody"
+          "name": "Úpravňa vody",
+          "terms": "upravna vody,vodáreň,vodaren"
         },
         "man_made/watermill": {
           "name": "Vodný mlyn"
@@ -5063,7 +5067,7 @@
         },
         "shop/houseware": {
           "name": "Obchod s domácimi potrebami",
-          "terms": "domace potreby,zeleziarstvo,železiarstvo"
+          "terms": "domáce potreby,domace potreby,kuchynské potreby,kuchynske potreby potreby do domácnosti,domácnosť,domacnost,riad,príbory,pribory,taniere"
         },
         "shop/hunting": {
           "name": "Obchod s poľovníckymi potrebami",
@@ -5386,7 +5390,8 @@
           "name": "Obchod (nešpecifikovaný typ)"
         },
         "telecom/data_center": {
-          "name": "Dátové centrum"
+          "name": "Dátové centrum",
+          "terms": "datove centrum,datacentrum,serverovňa,serverovna"
         },
         "telecom/exchange": {
           "name": "Telefónna ústredňa"

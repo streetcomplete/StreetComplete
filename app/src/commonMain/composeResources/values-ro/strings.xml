@@ -753,7 +753,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă.</str
     <string name="quest_shop_gone_title">Ce este aici acum?</string>
     <string name="quest_shop_gone_vacant_answer">Este neocupat...</string>
     <string name="quest_shop_gone_replaced_answer">Un/O...</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Ce fel de loc este aici</string>
     <string name="quest_shop_vacant_type_title">Magazinul era neocupat. Ce se află acum aici?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Acest tip de misiune este dezactivat implicit, fiindcă nu este utilă în unele regiuni și probabil va trebui să intrați în locație pentru a o rezolva.</string>
     <string name="quest_dietType_explanation_kosher">Produsele Kosher trebuie să fie pregătite în conformitate cu reguli speciale, agențiile de certificare kashrut marcând produsele conforme.</string>

@@ -750,7 +750,6 @@
     <string name="quest_shop_gone_title">چه چیز دیگری اینجاست؟</string>
     <string name="quest_shop_gone_vacant_answer">خالی است</string>
     <string name="quest_shop_gone_replaced_answer">یک…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">نوع مکان اینجا را وارد کنید</string>
     <string name="quest_shop_vacant_type_title">این فروشگاه متروکه است. اکنون چه عارضه‌ای اینجاست؟</string>
     <string name="default_disabled_msg_go_inside_regional_warning">این نوع جُستار به صورت پیشفرض غیرفعال است زیرا در برخی مناطق مفید نیست و احتمالاً مجبور خواهید بود که وارد مکان شوید تا به جُستاری از این نوع پاسخ دهید.</string>
     <string name="quest_dietType_explanation_kosher">محصولات کوشر مطابق با قوانین خاص تهیه می‌شود و مراکز صدور گواهینامه کوشر، محصولات را مطابق با آن نشانه‌گذاری می‌کنند.</string>
@@ -1490,4 +1489,16 @@
     <string name="quest_shower_hot_water_title">آیا آب گرم در اینجا وجود دارد؟</string>
     <string name="calendar_new_event_title">رویداد جدید OSM در منطقه شما!</string>
     <string name="pref_title_message_calendar">رویدادهای جدید OSM در منطقه شما</string>
+    <string name="quest_ferry_hgv_title">آیا این مسیر کشتی، وسایل نقلیه سنگین باری را حمل می‌کند؟</string>
+    <string name="dialog_dont_notify_again2">لغو اشتراک</string>
+    <string name="quest_leave_new_note_track_recording">ضبط مسیر پیوست خواهد شد.</string>
+    <string name="quest_leave_new_note_photo_delete">حذف</string>
+    <string name="quest_maxspeed_type_description">حداکثر سرعت بر اساس... تعیین می‌شود</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">تابلوی سرعت توصیه‌شده</string>
+    <string name="quest_maxspeed_answer_roadtype_description">خیابان... است</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">در محدوده شهری</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">خارج از محدوده شهری</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">دارای روشنایی</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">بدون روشنایی</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">بدون روشنایی و جاده دوطرفه</string>
 </resources>

@@ -162,7 +162,7 @@
     <string name="quest_sport_rugby">英式橄榄球</string>
     <string name="quest_select_hint">请选择：</string>
     <string name="quest_sport_manySports_confirmation_description">这个场地是否专为这些运动而设（有标记和设备），或是适合各种运动的通用场地？</string>
-    <string name="quest_manySports_confirmation_specific">专属场地</string>
+    <string name="quest_manySports_confirmation_specific">具体是这些</string>
     <string name="quest_manySports_confirmation_generic">通用场地</string>
     <string name="quest_sport_manySports_confirmation_title">您选择了很多种运动</string>
     <string name="quest_toiletsFee_title">这个卫生间是收费的吗？</string>
@@ -183,7 +183,7 @@
     <string name="quest_sport_gaelic_games">盖尔式运动</string>
     <string name="quest_sport_sepak_takraw">藤球</string>
     <string name="quest_wheelchairAccess_limited">部分通行（受限）</string>
-    <string name="quest_bikeParkingCapacity_hint">注意，大部分不靠墙的自行车架，两边都各能停放一台自行车。</string>
+    <string name="quest_bikeParkingCapacity_hint">请注意，通常一个车架的两侧各可以停放一辆自行车，对于“弯轮式”车架（wheelbenders），您可能需要估算可以容纳多少辆自行车。</string>
     <string name="quest_sport_roller_skating">轮滑</string>
     <string name="quest_wheelchairAccess_limited_description_business">部分是指进入该场所的台阶不超过脚踝，内部大部分房间可供轮椅进出。</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">部分是指进入这里的台阶不能超过脚踝高。</string>
@@ -275,10 +275,10 @@
     <string name="quest_powerPolesMaterial_concrete">混凝土</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">仅为建议的速度限制…</string>
     <string name="quest_address_house_name_label">房屋名称：</string>
-    <string name="quest_buildingLevels_roofLevelsLabel2">屋顶楼层数</string>
-    <string name="quest_buildingLevels_levelsLabel2">常规楼层数（屋顶不计）</string>
+    <string name="quest_buildingLevels_roofLevelsLabel2">含屋顶的楼层数</string>
+    <string name="quest_buildingLevels_levelsLabel2">常规层数（屋顶不计）</string>
     <string name="quest_buildingLevels_answer_multipleLevels">建筑物的各部分不同</string>
-    <string name="quest_buildingLevels_answer_description">在这种情况下，简单填写建筑部分最高楼层的数值。</string>
+    <string name="quest_buildingLevels_answer_description">在这种情况下，只需输入建筑物最高部分的数值。</string>
     <string name="about_category_feedback">反馈</string>
     <string name="quest_leave_new_note_photo">附上照片</string>
     <string name="quest_leave_new_note_photo_delete_title">您想删除这张照片吗？</string>
@@ -299,7 +299,7 @@
     <string name="quest_hasFeature_only">只有</string>
     <string name="quest_dietType_explanation_vegan">纯素食料理不含任何动物制品（无肉类、蛋类、奶制品、蜂蜜等…）。</string>
     <string name="quest_dietType_explanation_vegetarian">素食餐不含肉类、鱼类或禽类。</string>
-    <string name="quest_dietType_explanation">只有这间餐厅的主餐有该选项，忽略前菜等，才回答是。</string>
+    <string name="quest_dietType_explanation">仅当该场所为此饮食习惯提供同等水平的食物选择时，才请回答“是”</string>
     <string name="quest_carWashType_title">这里提供哪种洗车选项？</string>
     <string name="quest_carWashType_automated">自动化洗车</string>
     <string name="quest_carWashType_selfService">自助洗车</string>
@@ -338,7 +338,7 @@
     <string name="quest_religion_jain">耆那教</string>
     <string name="quest_religion_bahai">巴哈伊信仰</string>
     <string name="quest_religion_caodaist">高台教</string>
-    <string name="quest_religion_chinese_folk">中国传统信仰</string>
+    <string name="quest_religion_chinese_folk">中国民间信仰</string>
     <string name="quest_religion_for_wayside_shrine_title">这座神龛与什么宗教有关？</string>
     <string name="quest_parking_fee_title">在这里停车需要付费吗？</string>
     <string name="quest_surface_value_unhewn_cobblestone">未打磨的鹅卵石</string>
@@ -368,12 +368,12 @@
     <string name="pref_quests_reset">恢复任务启用状态和排序的默认设置？</string>
     <string name="quest_generic_item_invalid_value">请选择一个更具体的数值。</string>
     <string name="quest_buildingType_answer_multiple_types">这栋建筑有多种用途</string>
-    <string name="quest_buildingType_answer_multiple_types_description">简单选择这栋建筑的主要用途。例如，如果一楼有店面，但楼上全是公寓，那么这栋建筑就是公寓建筑。</string>
+    <string name="quest_buildingType_answer_multiple_types_description">只需选择该建筑的主要用途。例如，如果底层是商店，上方是公寓，那么它主要仍是一栋公寓楼。</string>
     <string name="quest_buildingType_answer_construction_site">仍在施工中</string>
     <string name="quest_buildingType_residential">住宅建筑</string>
     <string name="quest_buildingType_residential_description">供人居住的建筑</string>
     <string name="quest_buildingType_house">房屋</string>
-    <string name="quest_buildingType_apartments_description">有住多个家庭的房屋，也许一楼有零售店面</string>
+    <string name="quest_buildingType_apartments_description">多户住宅，底层可能有有零售店面</string>
     <string name="quest_buildingType_apartments">公寓楼</string>
     <string name="quest_buildingType_detached">独栋住宅</string>
     <string name="quest_buildingType_detached_description">独立式单户住宅</string>
@@ -419,7 +419,7 @@
     <string name="quest_buildingType_parking">停车场建筑</string>
     <string name="quest_buildingType_farm">在农场内</string>
     <string name="quest_buildingType_farmhouse">农舍</string>
-    <string name="quest_buildingType_farmhouse_description">农场上的住宅建筑</string>
+    <string name="quest_buildingType_farmhouse_description">农场内的住宅建筑</string>
     <string name="quest_buildingType_farm_auxiliary">农场建筑</string>
     <string name="quest_buildingType_farm_auxiliary_description">农场上的任何非住宅建筑</string>
     <string name="quest_buildingType_greenhouse">温室/暖棚</string>
@@ -435,19 +435,19 @@
     <string name="quest_buildingType_bunker">堡垒（Bunker）</string>
     <string name="quest_address_answer_no_housenumber">它没有门牌号码…</string>
     <string name="quest_address_answer_no_housenumber_message1">该建筑被标注为：</string>
-    <string name="quest_buildingType_shrine">神社/寺庙</string>
+    <string name="quest_buildingType_shrine">神社</string>
     <string name="quest_maxspeed_title_short2">这条街道的限速是多少？</string>
     <string name="quest_maxspeed_answer_sign">道路标识</string>
     <string name="quest_maxspeed_answer_zone2">它位于（慢速）区域内</string>
     <string name="quest_maxspeed_answer_noSign2">无标识，使用预设值</string>
     <string name="quest_openingHours_no_sign">没有营业时间告示</string>
-    <string name="quest_buildingType_sports_centre">运动中心</string>
+    <string name="quest_buildingType_sports_centre">综合体育场馆</string>
     <string name="quest_buildingType_toilets">洗手间</string>
     <string name="quest_segregated_title">这里的人行道与自行车道是如何排列的？</string>
     <string name="dialog_tutorial_upload">要手动上传您的更改，请使用主菜单中如下所示的按钮。</string>
     <string name="quest_segregated_separated">彼此分隔</string>
     <string name="quest_segregated_mixed">自行车与行人共享同一空间</string>
-    <string name="quest_maxheight_title">这里的高度限制是多少？</string>
+    <string name="quest_maxheight_title">这里的测量高度是多少？</string>
     <string name="quest_maxheight_answer_noSign">该处并没有标识…</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">这个高度听起来不太合理。您确定这是正确的吗？</string>
     <string name="quest_noteDiscussion_comment2">— %1$s, %2$s</string>
@@ -474,7 +474,7 @@
     <string name="quest_sidewalk_value_yes">人行道</string>
     <string name="quest_sidewalk_value_no">没有人行道</string>
     <string name="quest_accessible_for_pedestrians_title_prohibited">这条没有人行道的路有禁止行人通行吗？</string>
-    <string name="quest_buildingType_title">这栋建筑物的类型是什么?</string>
+    <string name="quest_buildingType_title">这是什么类型的建筑物？</string>
     <string name="pref_title_theme_select">选择主题</string>
     <string name="theme_light">亮色</string>
     <string name="theme_dark">暗色</string>
@@ -554,14 +554,14 @@
     <string name="tutorial_solving_quests">一旦查找完成，缺失的细节将作为任务出现在您的地图上。
 
 您可以立即开始解决这些问题，之后再登入并上传您的回答。</string>
-    <string name="tutorial_stay_safe">每当你不确定时，你总是可以回复：“不好说”，并留下一条注记。
+    <string name="tutorial_stay_safe">每当您不确定时，您可以随时回答“无法确定”并留下一条注记。
 
-最后，安全第一：注意周围环境，不要进入私人财产。</string>
-    <string name="tutorial_happy_mapping">玩得开心！</string>
+最后，请务必注意安全：留意周围环境，不要进入私有领地。</string>
+    <string name="tutorial_happy_mapping">绘得开心！</string>
     <string name="achievements_empty">您尚未获得任何成就</string>
     <string name="links_empty">您尚未获得任何链接</string>
     <string name="quests_empty">您尚未发布任何编辑</string>
-    <string name="unsynced_quests_description">剩余 %1$d 个未推送的变更。</string>
+    <string name="unsynced_quests_description">剩余 %1$d 个尚未发布的变更。</string>
     <string name="unsynced_quests_not_logged_in_description">您有 %1$d 处变更尚未发布。您需要登录才能上传它们。</string>
     <string name="user_quests_title">个编辑</string>
     <string name="user_achievements_title">成就</string>
@@ -602,7 +602,7 @@
     <string name="link_city_roads_description">渲染城市的所有道路，以便印刷在T恤、马克杯上…</string>
     <string name="link_myosmatic_description">只需几个简单步骤即可生成可打印的城市地图，还可选择街道目录</string>
     <string name="link_brouter_description">可能是骑行者的最佳路线规划引擎</string>
-    <string name="link_show_me_the_way_description">实时观看OSM编辑</string>
+    <string name="link_show_me_the_way_description">观看实时发生的OSM编辑</string>
     <string name="link_osrm_description">最快的路线规划引擎</string>
     <string name="link_openrouteservice_description">为各类车辆和步行做路线规划。还可以显示等时圈（从一点出发X分钟能到达的区域）。</string>
     <string name="link_osm_haiku_description">使用OSM的数据生成一首俳句（一种日本诗歌）</string>
@@ -613,7 +613,7 @@
     <string name="link_figuregrounder_description">创建城市或社区的图底图（ Figure-ground diagram）海报。</string>
     <string name="achievement_first_edit_title">已完成第一个任务</string>
     <string name="achievement_first_edit_description">欢迎来到OpenStreetMap社区！在你的资料页面，可以看到更多关于每一种你所完成任务的信息。</string>
-    <string name="achievement_surveyor_title">勘测员</string>
+    <string name="achievement_surveyor_title">测量员</string>
     <string name="achievement_surveyor_solved_X">你完成了%1$d个任务！完成更多以解锁更多成就，包括OSM和其它地图相关应用和项目的链接！</string>
     <string name="achievement_regular_title">常客</string>
     <string name="achievement_regular_description">你已经使用这个应用向OSM贡献共%1$d天！长期贡献者是OSM的中流砥柱，谢谢你的贡献！❤</string>
@@ -690,7 +690,7 @@
     <string name="quest_steps_incline_title">这段阶梯哪头朝上？</string>
     <string name="quest_steps_incline_up">这边朝上</string>
     <string name="quest_step_count_title">有多少台阶？</string>
-    <string name="quest_traffic_signals_sound_title">这个交通灯带有声音，供盲人使用吗？</string>
+    <string name="quest_traffic_signals_sound_title">这里是否有为盲人提供的声音信号装置？</string>
     <string name="quest_traffic_signals_vibrate_title">这些交通信号灯是否有触觉指示以告知盲人何时能够安全通过？</string>
     <string name="quest_traffic_signals_vibrate_description">提示：通常在红绿灯按钮盒下方会有振动按钮或旋转锥体装置。</string>
     <string name="quest_buildingType_bungalow_description2">小型独立屋（避暑屋、度假屋、木屋…）</string>
@@ -749,10 +749,9 @@
     <string name="osm_element_gone_description">您确定它并不存在，即便是在稍微远离地点的地方也没有吗？如果有任何疑问，最好留下注记。</string>
     <string name="osm_element_gone_confirmation">它不存在</string>
     <string name="leave_note">留下注解</string>
-    <string name="quest_shop_gone_title">它现在被什么取代了？</string>
+    <string name="quest_shop_gone_title">现在这里变成了什么？</string>
     <string name="quest_shop_gone_vacant_answer">店铺已经空置</string>
     <string name="quest_shop_gone_replaced_answer">一个…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">输入该场所的类型</string>
     <string name="quest_shop_vacant_type_title">这家商店已经空置。现在又是什么？</string>
     <string name="default_disabled_msg_go_inside_regional_warning">此任务类型默认禁用，因为它在某些地区可能用途不大，并且您可能需要进入场所内部才能回答此类任务。</string>
     <string name="quest_dietType_explanation_kosher">犹太教的洁食食品必须依规矩制作，并附上饮食教规认证机构标章以确保其饮食从教。</string>
@@ -820,11 +819,11 @@
     <string name="quest_barrier_type_kissing_gate">亲吻门</string>
     <string name="quest_barrier_type_swing_gate">摆动门</string>
     <string name="quest_policeType_title">这是什么类型的警察局？</string>
-    <string name="quest_barrier_type_kissing_gate_conversion">改建成了亲吻门</string>
-    <string name="quest_stile_type_title">这是什么类型的通行口？</string>
+    <string name="quest_barrier_type_kissing_gate_conversion">已改建成了亲吻门</string>
+    <string name="quest_stile_type_title">这是什么类型的梯磴（stile）？</string>
     <string name="quest_buildingType_semi_detached_description2">相邻的单户住宅</string>
     <string name="pref_title_quests2">任务选择和显示顺序</string>
-    <string name="pref_subtitle_quests">%2$d 个中的 %1$d 已启用</string>
+    <string name="pref_subtitle_quests">已启用 %1$d 项，共计 %2$d 项</string>
     <string name="no_location_permission_warning_title">位置许可</string>
     <string name="quest_surface_value_woodchips">碎木屑</string>
     <string name="no_camera_app">没有相机APP可用</string>
@@ -850,23 +849,21 @@
     <string name="action_search">搜索</string>
     <string name="action_manage_presets">管理预设值</string>
     <string name="team_mode_team_size_label2">有多少人正在一同绘制地图？请在各自的手机上选择相同的人数。</string>
-    <string name="team_mode_choose_color2">接下来，每个人必须选择不同的颜色。选择您的颜色：</string>
+    <string name="team_mode_choose_color2">接下来，每个人必须选择不同的颜色。请选择您的颜色：</string>
     <string name="link_organic_maps_description">针对旅行者、徒步旅行者和骑行者的离线地图应用</string>
     <string name="quest_kerb_height_no">完全没有路缘</string>
-    <string name="quest_barrier_type_stepover_wooden">木踏脚板</string>
+    <string name="quest_barrier_type_stepover_wooden">木制阶梯式围栏跨越架</string>
     <string name="quest_barrier_type_stepover_stone">石踏脚板</string>
     <string name="quest_bollard_type_removable">可拆卸的（无论是否需要钥匙）</string>
     <string name="quest_bollard_type_foldable2">可折叠的（无论是否需要钥匙）</string>
     <string name="no_search_results">未找到任何结果</string>
-    <string name="quest_selection_hint_title">有太多要做的吗？</string>
-    <string name="quest_selection_hint_message">贡献首先应是有趣的！
-
-如果您对任务数量感到不知所措，可以随时在设置中调整要显示的任务类型及其顺序。</string>
+    <string name="quest_selection_hint_title">任务太多忙不过来？</string>
+    <string name="quest_selection_hint_message">参与贡献应当以乐趣为主！如果您对任务数量感到不知所措，可以随时在设置中调整要显示的任务类型及其顺序。</string>
     <string name="quest_presets_preset_add">添加预设</string>
     <string name="quest_presets_preset_name">预设名称</string>
     <string name="quest_presets_default_name">默认</string>
     <string name="quest_presets_selected">已选中</string>
-    <string name="quest_presets_delete_message">删除预设 "%1$s" ？该预设的任务选择和顺序将永久丢失。</string>
+    <string name="quest_presets_delete_message">删除预设 "%1$s" 吗？该预设的任务选择和排序将永久丢失。</string>
     <string name="notification_syncing">同步数据中…</string>
     <string name="notification_channel_sync">同步数据</string>
     <string name="quest_board_type_sport">运动，锻炼</string>
@@ -875,8 +872,8 @@
     <string name="quest_laundrySelfService_title2">这个洗衣房提供自助服务吗？</string>
     <string name="quest_dietType_explanation_halal">清真制品必须按照特殊规则处理，并由清真认证机构对符合要求的产品进行标识。</string>
     <string name="quest_generic_answer_is_actually_steps">这部分是台阶</string>
-    <string name="quest_barrier_type_passage_conversion">改建为穿越墙体、围栏等的开口。</string>
-    <string name="quest_barrier_type_gate_conversion">改建为大门</string>
+    <string name="quest_barrier_type_passage_conversion">已改建为穿越墙体、围栏等的开口。</string>
+    <string name="quest_barrier_type_gate_conversion">已改建为大门</string>
     <string name="quest_traffic_calming_type_title">这个交通宁静化设施属于哪种？</string>
     <string name="quest_traffic_calming_type_bump">减速带（较窄）</string>
     <string name="quest_traffic_calming_type_hump">减速丘（较宽）</string>
@@ -884,7 +881,7 @@
     <string name="quest_traffic_calming_type_cushion">减速垫（宽大车辆不易颠簸）</string>
     <string name="quest_traffic_calming_type_choker">缩窄的路</string>
     <string name="quest_traffic_calming_type_island">分隔岛</string>
-    <string name="quest_traffic_calming_type_chicane">故意的（多重）曲线</string>
+    <string name="quest_traffic_calming_type_chicane">刻意设计的（多重）曲线</string>
     <string name="quest_traffic_calming_type_rumble_strip">震荡标线带</string>
     <string name="quest_surface_value_concrete_lanes">混凝土车辙道</string>
     <string name="quest_fireHydrant_diameter_title">这个消防栓所标明的规定直径是多少？</string>
@@ -899,10 +896,10 @@
     <string name="quest_postboxCollectionTimes_resurvey_title">此邮筒的收取时间仍然正确吗?</string>
     <string name="quest_bicycle_barrier_type_title">这是哪种类型的自行车障碍？</string>
     <string name="quest_barrier_bicycle_type_diagonal">与小路成对角线</string>
-    <string name="quest_barrier_bicycle_type_tilted">狭窄的通道，越往上越窄</string>
-    <string name="quest_barrier_bicycle_type_single">栏杆之间的开口</string>
-    <string name="quest_barrier_bicycle_type_double">减速栏杆 - 两侧都有栏杆</string>
-    <string name="quest_barrier_bicycle_type_multiple">减速栏杆 - 超过两个栏杆</string>
+    <string name="quest_barrier_bicycle_type_tilted">狭窄的通道，越往顶部越窄</string>
+    <string name="quest_barrier_bicycle_type_single">障碍物之间的通道</string>
+    <string name="quest_barrier_bicycle_type_double">曲折路障 - 两侧都有障碍物</string>
+    <string name="quest_barrier_bicycle_type_multiple">曲折路障 - 超过两个障碍物</string>
     <string name="language_default">系统预设值</string>
     <string name="on_floor">在 %1$s 层</string>
     <string name="select_street_parking_orientation">选择朝向道路的方向：</string>
@@ -979,12 +976,12 @@
     <string name="quest_barrier_road_intersection">这条道路是如何跨越这里的障碍的？</string>
     <string name="quest_sidewalk_value_separate">人行道，但在地图上分别单独显示</string>
     <string name="no_camera_permission_warning_title">相机权限</string>
-    <string name="no_camera_permission_warning">为了能够用增强现实技术测量距离，该许可是必要的。</string>
+    <string name="no_camera_permission_warning">使用摄像头测量距离需要获得权限。</string>
     <string name="ar_core_error_sdk_too_old">应用过于老旧，请尝试升级。</string>
-    <string name="ar_core_tracking_error_bad_state">出了些问题。请尝试重新启动测量。</string>
+    <string name="ar_core_tracking_error_bad_state">出错了。请尝试重新开始测量。</string>
     <string name="ar_core_tracking_error_insufficient_light">这里太暗了</string>
     <string name="ar_core_tracking_error_excessive_motion">移动过多</string>
-    <string name="ar_core_tracking_error_insufficient_features">这里缺少足够的视觉特征</string>
+    <string name="ar_core_tracking_error_insufficient_features">此处缺乏明显的视觉特征</string>
     <string name="ar_core_tracking_error_camera_unavailable">相机已被其它应用所使用</string>
     <string name="quest_bicycle_parking_type_handlebarholder">车把手支架</string>
     <string name="quest_bicycle_parking_access_title2">谁可以在这里停放自行车？停车可能是免费或是付费的。</string>
@@ -1058,7 +1055,7 @@
     <string name="quest_wheelchairAccess_toiletsPart_title2">洗手间有无障碍设施吗？</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">您确定自行车不能在该单行道双向通行吗？如果不确定，请留意街道出口处是否有相关标志。</string>
     <string name="link_valhalla_description">路线规划引擎具有非常小的内存占用，多模式路线规划，等值线及更多功能。</string>
-    <string name="link_backofyourhand_description">你对你的地区有多了解？通过定位街道来测试你的知识。</string>
+    <string name="link_backofyourhand_description">您对所在区域了解多少？通过定位街道来测试你的知识。</string>
     <string name="link_notesreview_description">方便地查看、过滤和评论由你和其他人创建的注记。许多注记可以通过将其中的信息放在地图上用 iD 或 JOSM 来解决。</string>
     <string name="quest_accepts_cards">这里接受信用卡或借记卡吗？</string>
     <string name="quest_accepts_cards_debit_and_credit">两种都接受</string>
@@ -1182,8 +1179,8 @@
     <string name="confirmation_replace_shop_yes">已是不同的地点</string>
     <string name="confirmation_replace_shop_no">还是相同的地点</string>
     <string name="move_node">它的位置稍有偏差……</string>
-    <string name="quest_move_node_message">您可以通过移动特征来纠正位置。
-要现在移动它吗？</string>
+    <string name="quest_move_node_message">您可以通过移动要素来修正位置。
+现在移动吗？</string>
     <string name="node_moved_not_far_enough">请移动得更远一点</string>
     <string name="node_moved_too_far">移动得太远了。考虑留下一条注记吧</string>
     <string name="node_moved">已移动 %1$s</string>
@@ -1207,9 +1204,7 @@
     <string name="separate_cycleway_path">一般道路或小径（不为特定的人指定）道路或小径</string>
     <string name="quest_fireHydrant_type_pipe">管道</string>
     <string name="measure_info_title">实现最佳精确度</string>
-    <string name="measure_info_html_description">&lt;p&gt;ARCore 有时会（最初）假设地面比实际高度略低或略高。这会导致测量误差，并且手机越向地平线倾斜，误差就越大。&lt;/p&gt;
-&lt;p&gt;将手机垂直向下（以便您从上方看到白色箭头）设置起点和终点，以完全避免水平测量中出现此问题。&lt;/p&gt;
-&lt;p&gt;对于垂直测量，您需要通过从不同方向观察来检查起点相对于地面是否移动。&lt;/p&gt;</string>
+    <string name="measure_info_html_description">&lt;p&gt;ARCore 有时（在初始阶段）会假定地面比实际高度略低或略高。这会引入测量误差，且手机向地平线方向倾斜的角度越大，误差就越大。&lt;/p&gt; &lt;p&gt;在设置起点和终点时，请将手机垂直向下指（以便从上方看到白色箭头），这样可以完全避免水平测量中的此类问题。&lt;/p&gt; &lt;p&gt;对于垂直测量，您需要从不同方向观察起点，以确保其相对于地面的位置没有发生偏移。&lt;/p&gt;</string>
     <string name="privacy_html_arcore">此应用程序在&lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;Google Play Services for AR&lt;/a&gt; (ARCore)上运行，该服务由Google提供，并受&lt;a href="https://policies.google.com/privacy"&gt;Google隐私政策&lt;/a&gt;的约束。</string>
     <string name="default_disabled_msg_seasonal">此任务类型默认是禁用的，因为它可能需要在一年中的不同时间重新检查情况。</string>
     <string name="quest_gritBinSeasonal_title">冬季以外也还在这吗？</string>
@@ -1430,37 +1425,37 @@
     <string name="or">或</string>
     <string name="action_copy">复制</string>
     <string name="quest_stopName_hint">您可以点击地图上的其他车站以复制名称。</string>
-    <string name="quest_shelter_capacity_title">这里可以安置多少人？</string>
+    <string name="quest_shelter_capacity_title">这里可以容纳多少人住宿？</string>
     <string name="quest_handwashing_title">可以在这里洗手吗？</string>
     <string name="quest_openingHours_delete">删除</string>
-    <string name="quest_streetName_hint">您可以点击地图上的邻近部分以复制名称。</string>
+    <string name="quest_streetName_hint">您可以点击地图上的相邻路段以复制名称。</string>
     <string name="quest_streetName_abbreviation_instruction">外文名词缩写需要被展开。</string>
     <string name="quest_streetName_add_language">添加语言</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
-    <string name="quest_aerialway_bicycle_title">这个空中升降机可以运输自行车吗？</string>
+    <string name="quest_aerialway_bicycle_title">这种缆车可以运输自行车吗？</string>
     <string name="quest_aerialway_bicycle_summer">仅夏季</string>
     <string name="quest_board_type_rules">规则</string>
     <string name="quest_firewood_provided_title">这里提供木柴吗？</string>
     <string name="quest_first_aid_kit_location">这个急救箱位于哪里？</string>
     <string name="quest_lane_markings_title">这条道路是否有车道标线？</string>
-    <string name="quest_level_thing_title">这个东西位于第几层？</string>
+    <string name="quest_level_thing_title">这个设施位于第几层？</string>
     <string name="quest_bicycle_charging_station_capacity_title">这里可以同时给多少辆自行车充电？</string>
     <string name="quest_charging_station_bicycles_title">自行车也可以在这里充电吗？</string>
-    <string name="quest_charging_station_bicycles_hint">自行车充电器电源适配器插入普通家用插座。</string>
+    <string name="quest_charging_station_bicycles_hint">自行车充电器电源适配器可插入的普通家用插座。</string>
     <string name="quest_tower_access_title">谁可以进入这座塔？它可能是免费的或付费的。</string>
     <string name="quest_charging_station_bicycles_answer_only">仅供自行车使用</string>
     <string name="quest_recycling_type_pet_bottles">PET塑料瓶</string>
     <string name="quest_maxweight_add_sign">添加标记</string>
     <string name="quest_maxweight_remove_sign">去除标记</string>
     <string name="weekly_osm_new_edition_title">新版本！</string>
-    <string name="pref_title_messages">APP内消息</string>
-    <string name="pref_title_message_achievements">解锁成就</string>
-    <string name="pref_title_message_weekly_osm">每周OSM的新版本</string>
+    <string name="pref_title_messages">应用内消息</string>
+    <string name="pref_title_message_achievements">已解锁成就</string>
+    <string name="pref_title_message_weekly_osm">新一期 OSM周报</string>
     <string name="pref_title_message_changelog">新应用程序发布</string>
     <string name="label_block2">城市街区</string>
-    <string name="quest_address_answer_block2">它在一个街区内......</string>
-    <string name="quest_address_answer_no_block2">它不在一个城市街区内......</string>
+    <string name="quest_address_answer_block2">它在城市街区内......</string>
+    <string name="quest_address_answer_no_block2">它不在城市街区内……</string>
     <string name="quest_artwork_title">这是什么样的艺术品？</string>
     <string name="quest_artwork_sculpture">雕塑</string>
     <string name="quest_artwork_statue">雕像</string>
@@ -1476,9 +1471,9 @@
     <string name="quest_artwork_relief">浮雕</string>
     <string name="quest_artwork_fountain">喷泉</string>
     <string name="quest_bothway_title">你可以朝什么方向骑行？</string>
-    <string name="quest_camp_tent_title">你可以在这儿露营吗？</string>
+    <string name="quest_camp_tent_title">这里可以搭帐篷露营吗？</string>
     <string name="quest_camp_cabin_title">这里有可以住宿的小木屋吗？</string>
-    <string name="quest_camp_caravan_title">您可以在房车或旅行拖车里露营吗？</string>
+    <string name="quest_camp_caravan_title">您可以在此停放房车或旅行拖车里露营吗？</string>
     <string name="quest_ferry_bicycle_title">该渡轮允许携带自行车吗？</string>
     <string name="quest_openingHours_add_time">添加时限</string>
     <string name="quest_openingHours_chooseStartTimeTitle">选择开始时间</string>
@@ -1490,7 +1485,18 @@
     <string name="quest_collectionTimes_answer_time_spans">在一个时间范围内...</string>
     <string name="quest_collectionTimes_answer_time_points">在特定时间...</string>
     <string name="quest_shower_hot_water_title">这里有热水吗？</string>
-    <string name="calendar_new_event_title">您所在地区的新 OSM 活动！</string>
-    <string name="pref_title_message_calendar">您所在地区的新 OSM 活动</string>
+    <string name="calendar_new_event_title">您所在地区有新的 OSM 活动！</string>
+    <string name="pref_title_message_calendar">您所在地区有新的 OSM 活动</string>
     <string name="quest_ferry_hgv_title">该轮渡路线是否运输重型货车？</string>
+    <string name="dialog_dont_notify_again2">取消订阅</string>
+    <string name="quest_leave_new_note_track_recording">轨迹记录将被附加。</string>
+    <string name="quest_leave_new_note_photo_delete">删除</string>
+    <string name="quest_maxspeed_type_description">限速标准由什么定义</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">建议性限速标志</string>
+    <string name="quest_maxspeed_answer_roadtype_description">街道位于……</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">建成区内</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">建成区外</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">有照明</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">无照明</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">无照明且为双向分离车道</string>
 </resources>

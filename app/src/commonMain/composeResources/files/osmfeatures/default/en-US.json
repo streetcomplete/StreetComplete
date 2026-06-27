@@ -2,8 +2,104 @@
   "en-US": {
     "presets": {
       "presets": {
+        "amenity/community_centre/cultural_centre": {
+          "name": "Cultural Center"
+        },
         "amenity/stripclub": {
           "name": "Strip Club"
+        },
+        "disused/railway": {
+          "name": "Disused Railroad Feature"
+        },
+        "healthcare/physiotherapist": {
+          "name": "Physical Therapist"
+        },
+        "highway/motorway": {
+          "name": "Freeway"
+        },
+        "highway/motorway_junction": {
+          "name": "Freeway Exit"
+        },
+        "highway/motorway_link": {
+          "name": "Freeway Link"
+        },
+        "landuse/railway": {
+          "name": "Railroad Corridor"
+        },
+        "public_transport/platform/bus_tram_point": {
+          "name": "Streetcar & Bus Stop"
+        },
+        "public_transport/platform/tram": {
+          "name": "Streetcar Platform"
+        },
+        "public_transport/platform/tram_point": {
+          "name": "Streetcar Stop / Platform"
+        },
+        "public_transport/station_tram": {
+          "name": "Streetcar Station"
+        },
+        "public_transport/stop_position_tram": {
+          "name": "Streetcar Stopping Location"
+        },
+        "railway": {
+          "name": "Railroad Feature"
+        },
+        "railway/abandoned": {
+          "name": "Abandoned Railroad"
+        },
+        "railway/construction": {
+          "name": "Railroad Under Construction"
+        },
+        "railway/crossing": {
+          "name": "Railroad-Path Crossing"
+        },
+        "railway/derail": {
+          "name": "Railroad Derailer"
+        },
+        "railway/disused": {
+          "name": "Disused Railroad"
+        },
+        "railway/level_crossing": {
+          "name": "Railroad-Road Crossing"
+        },
+        "railway/milestone": {
+          "name": "Railroad Milestone"
+        },
+        "railway/preserved": {
+          "name": "Heritage Railroad Track"
+        },
+        "railway/railway_crossing": {
+          "name": "Railroad-Railroad Crossing"
+        },
+        "railway/signal": {
+          "name": "Railroad Signal"
+        },
+        "railway/switch": {
+          "name": "Railroad Switch"
+        },
+        "railway/tram": {
+          "name": "Streetcar Track"
+        },
+        "railway/tram_crossing": {
+          "name": "Streetcar-Path Crossing"
+        },
+        "railway/tram_level_crossing": {
+          "name": "Streetcar-Road Crossing"
+        },
+        "railway/tram_stop": {
+          "name": "Streetcar Stopping Position"
+        },
+        "railway/turntable": {
+          "name": "Railroad Turntable"
+        },
+        "shop/greengrocer": {
+          "name": "Produce Store"
+        },
+        "type/route/railway": {
+          "name": "Railroad Route"
+        },
+        "type/route/tram": {
+          "name": "Streetcar Route"
         }
       }
     }

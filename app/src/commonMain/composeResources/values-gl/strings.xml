@@ -754,7 +754,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar.</string>
     <string name="quest_shop_gone_title">Que hai aquí agora no seu lugar?</string>
     <string name="quest_shop_gone_vacant_answer">Comercio baleiro…</string>
     <string name="quest_shop_gone_replaced_answer">Un…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Escribe o tipo de lugar aquí</string>
     <string name="quest_shop_vacant_type_title">Este comercio estivo baleiro. Que hai aquí agora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Este tipo de tarefa está desactivada de xeito predeterminado porque non é útil nalgunhas rexións e é probábel que teñas que entrar no lugar para poder responder a unha tarefa deste tipo.</string>
     <string name="quest_dietType_explanation_kosher">Os produtos kosher teñen que prepararse dacordo coas regras especiais do xudaísmo, e as axencias de certificación kashrut deben marcar os produtos en cumprimento.</string>

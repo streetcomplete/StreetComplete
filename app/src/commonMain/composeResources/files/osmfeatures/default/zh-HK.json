@@ -370,7 +370,7 @@
           "terms": "dive center,潛水中心"
         },
         "amenity/doctors": {
-          "name": "醫生",
+          "name": "私人診所",
           "terms": "醫師"
         },
         "amenity/doctors/allergology": {

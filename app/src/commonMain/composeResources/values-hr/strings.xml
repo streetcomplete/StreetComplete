@@ -755,7 +755,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku.</str
     <string name="quest_shop_gone_title">Što je tu sada?</string>
     <string name="quest_shop_gone_vacant_answer">Upražnjeno je</string>
     <string name="quest_shop_gone_replaced_answer">To je…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Upišite vrstu trgovine ili sl.</string>
     <string name="quest_shop_vacant_type_title">Ova je trgovina bila upražnjena. Što je sad ovdje?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ova vrsta zadatka je inicijalno onemogućena jer u nekim regijama nije korisna i jer biste vjerojatno morali ući unutra kako bi mogli odgovoriti na zadatak ove vrste.</string>
     <string name="quest_dietType_explanation_kosher">Košer proizvodi se moraju pripremati prema posebnim pravilima, a agencije za certificiranje moraju označavati proizvode u skladu s kašrutom.</string>
@@ -1257,7 +1256,7 @@ Dodatno, neki Nadslojevi omogućuju dodavanje novih podataka na poziciji prikaza
     <string name="quest_maxheight_sign_title">Koje je ograničenje visine ovdje naznačeno?</string>
     <string name="quest_leave_new_note_as_answer">U tom slučaju, trebate ostaviti bilješku u kojoj objašnjavate situaciju.</string>
     <string name="quest_drinking_water_type_title2">Ima li ovdje pitke vode? Ako ima, koji je njezin izvor?</string>
-    <string name="quest_is_amenity_inside_title">Je li ovo unutar zgrade?</string>
+    <string name="quest_is_amenity_inside_title">Je li ovo dostupno samo iznutra?</string>
     <string name="quest_bbq_fuel_title">Koje gorivo koristi ovaj roštilj?</string>
     <string name="quest_bbq_fuel_wood">Drva</string>
     <string name="quest_bbq_fuel_electric">Struju</string>
@@ -1360,7 +1359,7 @@ Kat se računa kao kat u potkrovlju samo kada ima prozore unutar krova. Stoga, k
     <string name="note_for_object">Neka osoba je zabilježila:</string>
     <string name="quest_bicycle_parking_type_safeloops">Kombinirani stalak (osigurava i kotač i ramu)</string>
     <string name="quest_cycleway_value_sidewalk_ok_dual">nema, ali znak dopušta vožnju biciklom nogostupom, u oba smjera</string>
-    <string name="quest_surface_value_rubber">Gumene granule</string>
+    <string name="quest_surface_value_rubber">Gumena tekstura</string>
     <string name="quest_surface_value_acrylic">Sintetička smola / akril</string>
     <string name="action_messages">Prikaži poruke</string>
     <string name="action_create_new_poi">Kreiraj novi POI</string>

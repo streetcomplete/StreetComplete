@@ -751,7 +751,6 @@ Autobusentzako bat baldin badago, utzi ohar bat.</string>
     <string name="quest_shop_gone_title">Zer dago orain hemen?</string>
     <string name="quest_shop_gone_vacant_answer">Hutsik dago</string>
     <string name="quest_shop_gone_replaced_answer">Honakoa…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Sartu hemen dagoen leku mota</string>
     <string name="quest_shop_vacant_type_title">Denda hau hutsik egon da. Zer dago orain hor?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Bilaketa mota hau berez desgaitua dago eskualde batzuetan baliagarria ez delako, eta leku horretan sartu beharko duzulako mota honetako mapa bat sortzeko.</string>
     <string name="quest_dietType_explanation_kosher">Kosher produktuak arau berezi batzuen arabera prestatu behar dira, eta kashrut ziurtagiri bat behar du agentzia batek emanda hori ziurtatzeko.</string>
@@ -1427,7 +1426,7 @@ Maila bat sabai maila da leihoak sabaian dituenean. Beraz, sabai mailarik ez dut
     <string name="overlay_mtb_scale_5">5. gradua</string>
     <string name="overlay_mtb_scale_6">6. gradua</string>
     <string name="overlay_mtb_scale_6_description">Lur arriskutsu eta ezinezkoa, ez da mendiko bizikletentzat egokia.</string>
-    <string name="compass">Iparorratza</string>
+    <string name="compass">Iparrorratza</string>
     <string name="quest_tracktype_grade2">Gehien bat solidoa</string>
     <string name="quest_tracktype_grade3">Nahasketa</string>
     <string name="action_copy">Kopiatu</string>

@@ -756,7 +756,6 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis.</string>
     <string name="quest_shop_gone_title">Was ist jetzt stattdessen hier?</string>
     <string name="quest_shop_gone_vacant_answer">Es steht leer …</string>
     <string name="quest_shop_gone_replaced_answer">Ein(e) …</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Hier Art des Ortes eingeben</string>
     <string name="quest_shop_vacant_type_title">Dieser Laden stand leer. Was ist jetzt hier?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er in manchen Regionen nicht sinnvoll ist und du wahrscheinlich den Ort betreten musst, um die Aufgabe lösen zu können.</string>
     <string name="quest_dietType_explanation_kosher">Koschere Produkte werden nach den jüdischen Speisegesetzen hergestellt, wobei spezielle Kashrut-Zertifizierungsagenturen diese Produkte überprüfen.</string>
@@ -1484,8 +1483,8 @@ Zum Beispiel 1,3 oder 2b,4,6.</string>
     <string name="quest_camp_caravan_title">Darf man hier im Wohnmobil oder -wagen campen?</string>
     <string name="quest_ferry_bicycle_title">Darf man auf diese Fähre Fahrräder mitnehmen?</string>
     <string name="quest_openingHours_add_time">Öffnungszeiten hinzufügen</string>
-    <string name="quest_openingHours_chooseStartTimeTitle">Begin der Öffnungszeit</string>
-    <string name="quest_openingHours_chooseEndTimeTitle">Ende der Öffnungszeit</string>
+    <string name="quest_openingHours_chooseStartTimeTitle">Startzeit auswählen</string>
+    <string name="quest_openingHours_chooseEndTimeTitle">Endzeit auswählen</string>
     <string name="quest_openingHours_chooseTimeTitle">Zeit auswählen</string>
     <string name="quest_openingHours_no_fixed_end">Keine feste Endzeit</string>
     <string name="quest_openingHours_from">Ab %1$s</string>
@@ -1495,16 +1494,19 @@ Zum Beispiel 1,3 oder 2b,4,6.</string>
     <string name="quest_shower_hot_water_title">Kann man hier warm duschen?</string>
     <string name="calendar_new_event_title">Neues OSM-Event in deiner Gegend!</string>
     <string name="pref_title_message_calendar">Neue OSM-Events in deiner Gegend</string>
-    <string name="quest_ferry_hgv_title">Werden auf dieser Fährenroute schwere Lastkraftwägen transportiert?</string>
+    <string name="quest_ferry_hgv_title">Werden auf dieser Fährenroute schwere Lkw transportiert?</string>
     <string name="dialog_dont_notify_again2">Abmelden</string>
     <string name="quest_leave_new_note_track_recording">Die Trackaufzeichnung wird angehängt.</string>
     <string name="quest_leave_new_note_photo_delete">Löschen</string>
     <string name="quest_maxspeed_type_description">Die Höchstgeschwindigkeit wird festgelegt durch…</string>
-    <string name="quest_maxspeed_answer_advisory_speed_limit2">Hinweisschild zur empfohlenen Höchstgeschwindigkeit</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">Schild für empfohlene Höchstgeschwindigkeit</string>
     <string name="quest_maxspeed_answer_roadtype_description">Die Straße ist…</string>
-    <string name="quest_maxspeed_answer_roadtype_urban">innerhalb der geschlossenen Ortschaft</string>
-    <string name="quest_maxspeed_answer_roadtype_rural">außerhalb der geschlossenen Ortschaft</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">innerhalb einer geschlossenen Ortschaft</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">außerhalb einer geschlossenen Ortschaft</string>
     <string name="quest_maxspeed_answer_roadtype_lit">beleuchtet</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">nicht beleuchtet</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Unbeleuchtet und zweispurig</string>
+    <string name="quest_board_type_tourism">Tourismus (allgemein)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Nur eine markierte Fahrspur</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Gebe ein wonach du suchst</string>
 </resources>

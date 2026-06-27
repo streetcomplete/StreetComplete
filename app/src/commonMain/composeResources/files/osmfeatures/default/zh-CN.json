@@ -54,7 +54,7 @@
         },
         "aerialway/gondola": {
           "name": "循环式索道",
-          "terms": "索道,缆车,循环式索道,环路缆车,吊椅,滑雪,贡多拉,很多缆车,很多很多缆车,很多很多很多缆车,群体打转的缆车"
+          "terms": "索道,缆车,循环式索道,环路缆车,吊椅,滑雪,贡多拉"
         },
         "aerialway/goods": {
           "name": "物品缆车线路",
@@ -390,7 +390,7 @@
           "terms": "潜水中心,潜水服务,潜水"
         },
         "amenity/doctors": {
-          "name": "医院科室",
+          "name": "私人诊所",
           "terms": "医院,医生,医师,护士,科室,医护,医疗,治疗,办公室,技师,内科,外科,急诊科,急诊,五官科"
         },
         "amenity/doctors/allergology": {
@@ -620,7 +620,7 @@
         },
         "amenity/funeral_hall": {
           "name": "殡仪馆",
-          "terms": "殡仪馆,殡仪,墓地,坟场,公墓,墓园,陵园,殡仪服务"
+          "terms": "殡仪馆,殡仪,墓地,坟场,公墓,墓园,陵园"
         },
         "amenity/gambling": {
           "name": "赌场厅",
@@ -667,7 +667,8 @@
           "terms": "卡拉ok,卡拉,ktv,迷你ktv,迷你卡拉ok,k歌,点唱,唱歌,唱吧,点唱亭,唱"
         },
         "amenity/kitchen": {
-          "name": "社区厨房"
+          "name": "社区厨房",
+          "terms": "社区厨房,公共厨房,爱心厨房,温馨厨房"
         },
         "amenity/kneipp_water_cure": {
           "name": "克奈圃水疗",
@@ -1035,6 +1036,10 @@
           "name": "庇护所",
           "terms": "庇护,庇护场地,躲雨,躲避,逃难,逃荒,避风,挡雨,遮阴"
         },
+        "amenity/shelter/field_shelter": {
+          "name": "牧棚",
+          "terms": "牧棚,放牧棚舍,牲畜遮蔽棚,牧场遮蓬"
+        },
         "amenity/shelter/gazebo": {
           "name": "凉亭",
           "terms": "凉亭,亭子,休息亭"
@@ -1074,6 +1079,10 @@
         "amenity/social_facility/assisted_living": {
           "name": "老年公寓",
           "terms": "老年公寓,老人之家,老年活动中心"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "日间照护中心",
+          "terms": "日间照护中心,日间照护,日间社会服务,日间中心"
         },
         "amenity/social_facility/food_bank": {
           "name": "粥厂",
@@ -2141,6 +2150,9 @@
           "name": "飞盘高尔夫座",
           "terms": "飞盘,高尔夫,球座"
         },
+        "disused/aeroway": {
+          "name": "废弃机场要素"
+        },
         "disused/amenity": {
           "name": "废弃设施"
         },
@@ -2620,8 +2632,12 @@
           "name": "让行标志",
           "terms": "让行标志,减速让行标志"
         },
+        "highway/hitchhiking": {
+          "name": "便民乘车点",
+          "terms": "便民乘车点"
+        },
         "highway/ladder": {
-          "name": "阶梯",
+          "name": "爬梯",
           "terms": "梯子,陡梯,步梯"
         },
         "highway/living_street": {
@@ -2678,7 +2694,7 @@
         },
         "highway/pedestrian_area": {
           "name": "步行区",
-          "terms": "徒步,广场,行人,步行,人行,区"
+          "terms": "徒步,广场,行人,步行,人行,区,行人地,步行区域,行人专用区"
         },
         "highway/pedestrian_line": {
           "name": "步行街",
@@ -3621,6 +3637,10 @@
           "name": "体育场",
           "terms": "体育,体育场,体育中心,奥体中心"
         },
+        "leisure/summer_camp": {
+          "name": "夏令营",
+          "terms": "夏令营,营地,儿童,学生,假期,休闲,青春,活力"
+        },
         "leisure/swimming_area": {
           "name": "自然游泳区域",
           "terms": "潜水,水,游泳"
@@ -3715,8 +3735,8 @@
           "terms": "桥梁范围,桥面轮廓,桥梁区域,桥梁边缘,桥面,桥体,桥梁,大桥,桥"
         },
         "man_made/bunker_silo": {
-          "name": "储料堆场",
-          "terms": "堆料,储料,贮料,储存,堆场,场地,储场"
+          "name": "堆料场",
+          "terms": "槽,堆料,储料,贮料,储存,堆场,场地,储场"
         },
         "man_made/cairn": {
           "name": "石墩/玛尼石",
@@ -3766,7 +3786,7 @@
           "terms": "起重机,起重,港机,吊车,天车,行车,航吊,塔吊,重物,搬运,桥式,门式,门座式"
         },
         "man_made/crane/gantry_crane": {
-          "name": "桥式起重机",
+          "name": "门式起重机/桥式起重机",
           "terms": "起重机,起重,港机,吊车,天车,行车,航吊,桥式,龙门式,龙门吊"
         },
         "man_made/crane/portal_crane": {
@@ -3817,12 +3837,16 @@
           "name": "大型燃气罐",
           "terms": "大型燃气罐,大型储气罐,煤气包"
         },
+        "man_made/geoglyph": {
+          "name": "地面画作",
+          "terms": "地面画作,山坡地画,浮雕,地画,艺术,地景"
+        },
         "man_made/goods_conveyor": {
           "name": "货物传送带",
           "terms": "传送带,输送带,输送机"
         },
         "man_made/groyne": {
-          "name": "Groin",
+          "name": "挑流坝",
           "terms": "防波堤,拦沙坝,防浪堤"
         },
         "man_made/insect_hotel": {
@@ -3946,8 +3970,8 @@
           "terms": "卫星天线,卫星锅,天线,卫星"
         },
         "man_made/silo": {
-          "name": "粮食库",
-          "terms": "粮食库,粮食仓"
+          "name": "筒仓",
+          "terms": "储料,粮食库,粮食仓,粮仓,谷,提升机"
         },
         "man_made/ski_jump": {
           "name": "滑雪跳台",
@@ -4142,6 +4166,10 @@
         "natural/arch": {
           "name": "天然拱门",
           "terms": "天然拱门"
+        },
+        "natural/arete": {
+          "name": "刃脊",
+          "terms": "山,山脊"
         },
         "natural/bare_rock": {
           "name": "岩石",
@@ -4737,7 +4765,8 @@
           "terms": "村庄"
         },
         "playground": {
-          "name": "游乐场设施"
+          "name": "游乐场设施",
+          "terms": "游具,游乐,儿童"
         },
         "playground/activitypanel": {
           "name": "翻翻乐",
@@ -4949,6 +4978,10 @@
           "name": "太阳能发电厂",
           "terms": "太阳能,发电,电厂,电站"
         },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "光伏发电场",
+          "terms": "光伏发电,光伏,太阳能发电场,太阳能电场"
+        },
         "power/plant/source/waste": {
           "name": "垃圾焚烧发电厂",
           "terms": "垃圾,焚烧,电厂"
@@ -4991,7 +5024,7 @@
         },
         "public_transport/platform/aerialway": {
           "name": "缆车站台",
-          "terms": "缆车,空中列车,车站,站台,月台,公共交通,交通"
+          "terms": "缆车,索道,空中列车,车站,站台,月台,公共交通,交通"
         },
         "public_transport/platform/aerialway_point": {
           "name": "缆车站 / 站台"
@@ -5069,7 +5102,7 @@
         },
         "public_transport/station_aerialway": {
           "name": "缆车站",
-          "terms": "缆车,空中列车,车站"
+          "terms": "缆车,索道,空中列车,车站"
         },
         "public_transport/station_bus": {
           "name": "公交车站 / 枢纽站",
@@ -5237,8 +5270,8 @@
           "terms": "色灯,信号机,信号,灯,信号灯,红绿灯,表示器,轨道,股道,铁轨,铁路,路轨,火车,列车,调车,进站,出站"
         },
         "railway/signal_box": {
-          "name": "信号机",
-          "terms": "信号机,信号箱,信号"
+          "name": "铁路信号楼",
+          "terms": "信号所,信号箱,信号"
         },
         "railway/station": {
           "name": "铁路车站"
@@ -5617,7 +5650,7 @@
         },
         "shop/flooring": {
           "name": "地板店",
-          "terms": "地板專賣店"
+          "terms": "地板专卖店"
         },
         "shop/florist": {
           "name": "花店",
@@ -5629,15 +5662,15 @@
         },
         "shop/frozen_food": {
           "name": "冷冻食品店",
-          "terms": "冷凍食品店"
+          "terms": "冷冻食品店,冷冻,速冻,冷藏,生鲜,海鲜,食品,超市,市场,卖场"
         },
         "shop/fuel": {
           "name": "燃料店",
           "terms": "燃料行"
         },
         "shop/funeral_directors": {
-          "name": "殡仪馆",
-          "terms": "殡仪馆,墓园,墓地,坟墓,丧葬承办人,殡葬业者,殡葬,死亡,逝世,丧礼,葬"
+          "name": "殡葬用品店",
+          "terms": "殡葬服务,殡葬,殡仪,殡葬用品,殡葬业者,殡仪服务,一条龙,寿衣,丧葬承办人,死亡,逝世,丧礼,墓,葬"
         },
         "shop/furniture": {
           "name": "家具店",
@@ -5873,6 +5906,10 @@
         "shop/photo": {
           "name": "照相馆",
           "terms": "照相,照片,摄影,摄像,拍照,快照,图文,广告,冲洗"
+        },
+        "shop/piercing": {
+          "name": "身体穿孔店",
+          "terms": "穿孔,耳洞,耳钉,打洞,唇钉"
         },
         "shop/pottery": {
           "name": "陶瓷店",

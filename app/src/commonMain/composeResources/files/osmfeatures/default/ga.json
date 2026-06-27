@@ -48,6 +48,9 @@
         "amenity/clinic": {
           "name": "Clinic"
         },
+        "amenity/clock": {
+          "name": "Clog"
+        },
         "amenity/clock/sundial": {
           "name": "Clog Gréine"
         },
@@ -198,6 +201,41 @@
           "name": "Leithris",
           "aliases": "Leithreas"
         },
+        "amenity/vending_machine": {
+          "name": "Meaisín Díola"
+        },
+        "amenity/vending_machine/bicycle_tube": {
+          "name": "Meaisín Díola Feadán Rothair",
+          "aliases": "Meaisín Díola Tiúb Rothair"
+        },
+        "amenity/vending_machine/bread": {
+          "name": "Meaisín Díola Aráin"
+        },
+        "amenity/vending_machine/cigarettes": {
+          "name": "Meaisín Díola Toitíní"
+        },
+        "amenity/vending_machine/coffee": {
+          "name": "Meaisín Díola Caife"
+        },
+        "amenity/vending_machine/condoms": {
+          "name": "Meaisín Díola Coiscíní"
+        },
+        "amenity/vending_machine/drinks": {
+          "name": "Meaisín Díola Deochanna"
+        },
+        "amenity/vending_machine/eggs": {
+          "name": "Meaisín Díola Uibheacha"
+        },
+        "amenity/vending_machine/electronics": {
+          "name": "Meaisín Díola Earraí Leictreonacha"
+        },
+        "amenity/veterinary": {
+          "name": "Tréidlia"
+        },
+        "amenity/waste_basket": {
+          "name": "Bosca Bruscair",
+          "aliases": "Canna Bruscair"
+        },
         "area": {
           "name": "Limistéar",
           "aliases": "Crios\nCeantar\nLáthair"
@@ -268,6 +306,9 @@
         "building": {
           "name": "Foirgneamh"
         },
+        "building/apartments": {
+          "name": "Bloc Árasán"
+        },
         "building/barn": {
           "name": "Scioból"
         },
@@ -290,7 +331,7 @@
           "name": "Foirgneamh Choláiste"
         },
         "building/construction": {
-          "name": "Foirgneamh á tógáil"
+          "name": "Foirgneamh Á Tógáil"
         },
         "building/cowshed": {
           "name": "Bóitheach"
@@ -330,6 +371,10 @@
         },
         "building/house": {
           "name": "Teach"
+        },
+        "building/house/terraced": {
+          "name": "Teach Cathrach",
+          "aliases": "Teach Baile Mór\nTeach Baile Mhóir"
         },
         "building/houseboat": {
           "name": "Teach Bád"
@@ -396,6 +441,9 @@
         },
         "building/warehouse": {
           "name": "Trádstóras"
+        },
+        "building_part": {
+          "name": "Cuid Foirgnimh"
         },
         "building_point": {
           "name": "Foirgneamh"
@@ -529,6 +577,25 @@
         "embankment": {
           "name": "Claífort"
         },
+        "emergency/assembly_point": {
+          "name": "Ionad Tionóil Éigeandála"
+        },
+        "emergency/fire_hydrant": {
+          "name": "Hiodrant Dóiteáin",
+          "aliases": "Béal Tuile"
+        },
+        "emergency/fire_hydrant/pillar": {
+          "name": "Hiodrant Dóiteáin Colúin",
+          "aliases": "Béal Tuile Colúin"
+        },
+        "emergency/fire_hydrant/underground": {
+          "name": "Hiodrant Dóiteáin Faoi Thalamh",
+          "aliases": "Béal Tuile Faoi Thalamh"
+        },
+        "emergency/phone": {
+          "name": "Guthán Éigeandála",
+          "aliases": "Fón Éigeandála\nTeileafón Éigeandála"
+        },
         "entrance/emergency": {
           "name": "Bealach Éalaithe"
         },
@@ -574,14 +641,61 @@
         "highway/bus_stop": {
           "name": "Stad bus"
         },
+        "highway/construction": {
+          "name": "Bóthar Á Tógáil"
+        },
+        "highway/crossing": {
+          "name": "Crosaire"
+        },
+        "highway/crossing/informal": {
+          "name": "Crosaire Neamhfhoirmiúil"
+        },
         "highway/crossing/traffic_signals": {
           "name": "Crosaire le soilse coisithe"
         },
+        "highway/crossing/uncontrolled": {
+          "name": "Crosaire Marcáilte"
+        },
+        "highway/crossing/unmarked": {
+          "name": "Crosaire Neamhmharcáilte"
+        },
+        "highway/cycleway/bicycle_foot": {
+          "name": "Cosán Rothair ⁊ Coisithe"
+        },
+        "highway/cycleway/crossing": {
+          "name": "Crosaire Rothair"
+        },
+        "highway/cycleway/crossing/bicycle_foot": {
+          "name": "Crosaire Rothair ⁊ Coisithe"
+        },
         "highway/cycleway/crossing/traffic_signals": {
-          "name": "Crosaire rothair le soilse tráchta"
+          "name": "Crosaire Rothair le Soilse Tráchta"
+        },
+        "highway/cycleway/crossing/uncontrolled": {
+          "name": "Crosaire Rothair Marcáilte"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Oileán Tráchta Rothair ⁊ Coisithe",
+          "terms": "oileán tráchta,tearmann tráchta",
+          "aliases": "Tearmann Tráchta Rothair ⁊ Coisithe"
+        },
+        "highway/footway": {
+          "name": "Cosán"
+        },
+        "highway/footway/crossing": {
+          "name": "Crosaire Coisithe"
         },
         "highway/footway/crossing/traffic_signals": {
           "name": "Crosaire le soilse coisithe"
+        },
+        "highway/footway/crossing/uncontrolled": {
+          "name": "Crosaire Marcáilte"
+        },
+        "highway/footway/crossing/unmarked": {
+          "name": "Crosaire Neamhmharcáilte"
+        },
+        "highway/footway/informal": {
+          "name": "Cosán Neamhfhoirmiúil"
         },
         "highway/footway/sidewalk": {
           "name": "Cosán"
@@ -602,8 +716,30 @@
         "highway/path/boardwalk": {
           "name": "Clárchosán"
         },
+        "highway/path/crossing": {
+          "name": "Crosaire Rothair ⁊ Coisithe"
+        },
+        "highway/path/crossing/traffic_signals": {
+          "name": "Crosaire Rothair ⁊ Coisithe, le Soilse Coisithe"
+        },
+        "highway/path/crossing/uncontrolled": {
+          "name": "Crosaire Marcáilte Rothair ⁊ Coisithe"
+        },
+        "highway/path/crossing/unmarked": {
+          "name": "Crosaire Neamhmharcáilte Rothair ⁊ Coisithe"
+        },
         "highway/pedestrian_line": {
           "name": "Sráid Choisithe"
+        },
+        "highway/primary": {
+          "name": "Príomhbhóthar"
+        },
+        "highway/residential": {
+          "name": "Bóthar Cónaithe",
+          "terms": "sráid cónaithe"
+        },
+        "highway/secondary": {
+          "name": "Fobhóthar"
         },
         "highway/service/alley": {
           "name": "Lána",
@@ -627,6 +763,9 @@
         },
         "highway/street_lamp": {
           "name": "Solas sráide"
+        },
+        "highway/tertiary": {
+          "name": "Bóthar Treasach"
         },
         "historic/archaeological_site": {
           "name": "Láithreán Seandálaíochta"
@@ -665,6 +804,10 @@
         },
         "landuse/cemetery": {
           "name": "Reilig"
+        },
+        "landuse/construction": {
+          "name": "Limistéar Tógála",
+          "terms": "láithreán tógála"
         },
         "landuse/farm": {
           "name": "Talamh Feirme",
@@ -788,6 +931,20 @@
         },
         "natural/tree": {
           "name": "Crann"
+        },
+        "natural/tree/broadleaved": {
+          "name": "Crann Leathanduilleach"
+        },
+        "natural/tree/broadleaved/deciduous": {
+          "name": "Crann Leathanduilleach (duillsilteach)"
+        },
+        "natural/tree/broadleaved/evergreen": {
+          "name": "Crann Leathanduilleach (síorghlas)",
+          "terms": "duillí leathana,duilleoga leathana"
+        },
+        "natural/tree/needleleaved/evergreen": {
+          "name": "Crann Spíonduilleach (síorghlas)",
+          "terms": "duillí spíonacha,duilleoga spíonacha"
         },
         "natural/water": {
           "name": "Uisce",
@@ -918,11 +1075,20 @@
         "public_transport/stop_position_tram": {
           "name": "Áit Stoptha Tram"
         },
+        "railway/construction": {
+          "name": "Iarnród Á Tógáil"
+        },
+        "railway/crossing": {
+          "name": "Crosaire Ianród-Cosán"
+        },
         "railway/funicular": {
           "name": "Ráille Iarnróid Cáblach"
         },
         "railway/halt": {
           "name": "Stáisiún Traenach (Stad ar iarratas)"
+        },
+        "railway/level_crossing": {
+          "name": "Crosaire Ianród-Bóthar"
         },
         "railway/narrow_gauge": {
           "name": "Iarnród Caol",
@@ -936,6 +1102,9 @@
         },
         "railway/rail/highspeed": {
           "name": "Ráille Thraein Ardluais"
+        },
+        "railway/railway_crossing": {
+          "name": "Crosaire Ianród-Iarnród"
         },
         "railway/signal": {
           "name": "Comhartha Iarnróid"

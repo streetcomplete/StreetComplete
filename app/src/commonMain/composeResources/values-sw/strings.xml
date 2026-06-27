@@ -731,7 +731,6 @@ Kabla ya kupakia mabadiliko yako, programu hukagua na &lt;a href=" https://www.w
     <string name="quest_shop_gone_title">Ni nini hapa badala yake?</string>
     <string name="quest_shop_gone_vacant_answer">Ni wazi</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Aina ya mahali hapa</string>
     <string name="quest_shop_vacant_type_title">Duka hili limekuwa wazi. Kuna nini hapa sasa?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Aina hii ya pambano imezimwa kwa kukududia kwa sababu haifai katika baadhi ya maeneo na itabidi uingie mahali ili uweze kujibu swali la aina hii.</string>
     <string name="quest_dietType_explanation_kosher">Bidhaa za kosha lazima zitayarishwe kulingana na sheria maalum, na mashirika ya uthibitishaji wa kashrut yanaashiria bidhaa kwa kufuata.</string>

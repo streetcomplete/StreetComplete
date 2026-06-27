@@ -735,7 +735,6 @@
     <string name="quest_shop_gone_title">מה קיים כאן במקום?</string>
     <string name="quest_shop_gone_vacant_answer">זה ריק...</string>
     <string name="quest_shop_gone_replaced_answer">...</string>
-    <string name="quest_shop_gone_replaced_answer_hint">נא להקליד את סוג המקום כאן</string>
     <string name="quest_shop_vacant_type_title">החנות הזאת פונתה. מה יש כאן עכשיו?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">סוג משימת המחקר נוטרלה כברירת מחדל מכיוון שהיא לא שימושית בחלק מהאזורים וככל הנראה יהיה צורך להיכנס למקום בכדי לענות על משימת מחקר מסוג זה.</string>
     <string name="quest_dietType_explanation_kosher">מוצרים כשרים נדרשים להיות מיוצרים על פי חוקים מיוחדים, עם ציון של תעודת כשרות מטעם גורמים מוסמכים.</string>

@@ -29,6 +29,9 @@
           "name": "Scatola per poster",
           "terms": "annuncio,pubblicità,spam"
         },
+        "advertising/sign": {
+          "name": "Cartellone pubblicitario"
+        },
         "advertising/totem": {
           "name": "Totem pubblicitario",
           "terms": "espositore pubblicitario,espositori,cilindro,cilindrico,pubblicità,cartellone,totem"
@@ -360,6 +363,9 @@
           "name": "Dentista",
           "terms": "dentista,odontoiatra,odontotecnico"
         },
+        "amenity/device_charging_station": {
+          "name": "Stazione di ricarica dispositivi"
+        },
         "amenity/dive_centre": {
           "name": "Centro subacqueo",
           "terms": "sub,muta,diving,immersioni,scuba,subacquea,apnea"
@@ -471,6 +477,9 @@
         },
         "amenity/doctors/urology": {
           "name": "Urologo"
+        },
+        "amenity/dog_toilet": {
+          "name": "Tolettatura per cani"
         },
         "amenity/dojo": {
           "name": "Dojo/Accademia di arti marziali",
@@ -621,6 +630,9 @@
         },
         "amenity/karaoke_box": {
           "name": "Karaoke"
+        },
+        "amenity/kitchen": {
+          "name": "Cucina comune"
         },
         "amenity/lavoir": {
           "name": "Lavatoio",
@@ -953,6 +965,9 @@
         "amenity/shelter": {
           "name": "Riparo",
           "terms": "ricovero,rifugio,tettoia,pensilina,bivacco,grotta"
+        },
+        "amenity/shelter/field_shelter": {
+          "name": "Riparo da campo"
         },
         "amenity/shelter/gazebo": {
           "name": "Gazebo",
@@ -1454,7 +1469,9 @@
           "name": "Barriera antirumore"
         },
         "barrier/wicket_gate": {
-          "name": "Porta Wicket"
+          "name": "Portoncino",
+          "terms": "portoncino,cancelletto,cancellino",
+          "aliases": "Cancello pedonale"
         },
         "barrier/yes": {
           "name": "Barriera (Tipo non specificato)"
@@ -1550,6 +1567,9 @@
         "building/dormitory": {
           "name": "Dormitorio",
           "terms": "dormitorio,struttura sociale"
+        },
+        "building/entrance": {
+          "name": "Entrata / Uscita"
         },
         "building/farm": {
           "name": "Residenza della fattoria",
@@ -1719,6 +1739,12 @@
         "cemetery/sector": {
           "name": "Sezione cimitero",
           "terms": "cimitero,cimiteriale,colombario,tomba,campo,camposanto,sepoltura,mausoleo"
+        },
+        "climbing/route": {
+          "name": "Percorso di arrampicata"
+        },
+        "climbing/route_bottom": {
+          "name": "Inizio percorso di arrampicata"
         },
         "club": {
           "name": "Club",
@@ -2522,7 +2548,7 @@
         },
         "highway/track": {
           "name": "Strada agricola o forestale",
-          "terms": "track,strada forestale,strada carrareccia,carrareccia,forestale,strada agricola,agricola,strada ad uso agricolo,strada ad uso forestale,strada di campagna"
+          "terms": "track,strada forestale,strada carrareccia,carrareccia,forestale,strada agricola,agricola,strada ad uso agricolo,strada ad uso forestale,strada di campagna,trazzera,mulattiera,pista forestale"
         },
         "highway/traffic_mirror": {
           "name": "Specchio stradale",
@@ -2546,7 +2572,7 @@
         },
         "highway/turning_circle": {
           "name": "Slargo per inversione di marcia",
-          "terms": "slargo,inversione,marcia"
+          "terms": "slargo,inversione,marcia,cul de sac,cul"
         },
         "highway/turning_loop": {
           "name": "Rotonda per inversione di marcia",
@@ -2810,6 +2836,10 @@
         },
         "landuse/military/training_area": {
           "name": "Area di Esercitazioni Militari"
+        },
+        "landuse/olive_grove": {
+          "name": "Oliveto",
+          "terms": "uliveto,ulivi,olivi"
         },
         "landuse/orchard": {
           "name": "Frutteto",
@@ -3211,6 +3241,9 @@
           "name": "Stadio",
           "terms": "stadio"
         },
+        "leisure/summer_camp": {
+          "name": "Campo estivo"
+        },
         "leisure/swimming_area": {
           "name": "Area riservata ai bagnanti",
           "terms": "nuoto,tuffo,acqua,acquatico,nuotatori"
@@ -3381,8 +3414,8 @@
           "terms": "copertura,coperchio,buco,buca,pozzetto,pozzo,tombino,fognatura,fognario,reflue,telecomunicazione,fibra,cavi"
         },
         "man_made/manhole/drain": {
-          "name": "Caditoia, Tombino",
-          "terms": "tombino,caditoia"
+          "name": "Caditoia",
+          "terms": "tombino,drenaggio,griglia,bocca di lupo,apertura grigliata,pozzetto,botola"
         },
         "man_made/manhole/gas": {
           "name": "Chiusino di una società del gas",
@@ -3729,6 +3762,9 @@
           "name": "Arbusto",
           "terms": "arbusto,cespuglio"
         },
+        "natural/sinkhole": {
+          "name": "Dolina"
+        },
         "natural/spring": {
           "name": "Sorgente",
           "terms": "sorgente"
@@ -4014,6 +4050,9 @@
         "office/private_investigator": {
           "name": "Ufficio agenzia investigativa privata"
         },
+        "office/property_management": {
+          "name": "Ufficio di gestione immobiliare / locazione"
+        },
         "office/quango": {
           "name": "Ufficio di una simil ONG"
         },
@@ -4085,6 +4124,9 @@
         },
         "piste/piste": {
           "name": "Pista sport su neve (tipo non specificato)"
+        },
+        "piste/ski_jump": {
+          "name": "Pista di salto con gli sci"
         },
         "piste/skitour": {
           "name": "Pista per sci alpinismo",
@@ -4292,6 +4334,9 @@
         "power/plant/source/solar": {
           "name": "Centrale solare"
         },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "Centrale solare"
+        },
         "power/plant/source/waste": {
           "name": "Impianto di generazione da incenerimento dei rifiuti"
         },
@@ -4436,7 +4481,7 @@
           "name": "Punto di fermata del trasporto a fune"
         },
         "public_transport/stop_position_bus": {
-          "name": "Fermata autobus"
+          "name": "Punto di fermata autobus"
         },
         "public_transport/stop_position_ferry": {
           "name": "Fermata battello"
@@ -4539,6 +4584,9 @@
           "name": "Segnale ferroviario",
           "terms": "segnale,semaforo,luci"
         },
+        "railway/signal_box": {
+          "name": "Cabina di segnalazione"
+        },
         "railway/station": {
           "name": "Stazione ferroviaria"
         },
@@ -4578,6 +4626,9 @@
         "relation": {
           "name": "Relazione",
           "terms": "relazione"
+        },
+        "roller_coaster/station": {
+          "name": "Stazione delle montagne russe"
         },
         "roller_coaster/track": {
           "name": "Pista montagne russe"
@@ -4932,6 +4983,9 @@
           "name": "Parrucchiere",
           "terms": "parrucchiere,barbiere"
         },
+        "shop/hairdresser/barber": {
+          "name": "Barbiere"
+        },
         "shop/hairdresser_supply": {
           "name": "Negozio di prodotti per parrucchiere",
           "terms": "shampoo,balsamo,barbiere"
@@ -5248,6 +5302,9 @@
           "name": "Negozio di aspirapolveri",
           "terms": "aspirapolveri,aspirapolvere"
         },
+        "shop/variety_store": {
+          "name": "Discount"
+        },
         "shop/video": {
           "name": "Videoteca",
           "terms": "videoteca"
@@ -5398,11 +5455,17 @@
           "name": "Cartina",
           "terms": "mappa,carta,turismo,turistica"
         },
+        "tourism/information/office": {
+          "name": "Ufficio informazioni turistiche"
+        },
         "tourism/information/route_marker": {
           "name": "Segnavia"
         },
         "tourism/information/terminal": {
           "name": "Terminale informazioni"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Centro visitatori"
         },
         "tourism/motel": {
           "name": "Motel",
@@ -5471,6 +5534,9 @@
         },
         "traffic_calming/hump": {
           "name": "Dosso lungo (Inghilterra)"
+        },
+        "traffic_calming/island": {
+          "name": "Isola spartitraffico"
         },
         "traffic_calming/mini_bumps": {
           "name": "Limite minimo di velocità"
@@ -5584,6 +5650,9 @@
           "name": "Linea autobus",
           "terms": "itinerario,linea,percorso,rotta,autobus,bus"
         },
+        "type/route/climbing": {
+          "name": "via di arrampicata"
+        },
         "type/route/detour": {
           "name": "Deviazione",
           "terms": "itinerario di deviazione"
@@ -5655,12 +5724,21 @@
           "name": "Luogo",
           "terms": "area,zona,sito,posto"
         },
+        "type/site/climbing/area": {
+          "name": "Area di arrampicata"
+        },
+        "type/site/climbing/crag": {
+          "name": "Parete da arrampicata"
+        },
         "type/waterway": {
           "name": "Corso d'acqua",
           "terms": "corso d’acqua,via d'acqua,canale,fiume"
         },
         "waterway": {
           "name": "Elemento di un corso d'acqua"
+        },
+        "waterway/access_point": {
+          "name": "Punto di accesso al corso d'acqua"
         },
         "waterway/boatyard": {
           "name": "Cantiere navale per barche",

@@ -742,7 +742,6 @@
     <string name="quest_shop_gone_title">Какво има тук сега?</string>
     <string name="quest_shop_gone_vacant_answer">Празно е</string>
     <string name="quest_shop_gone_replaced_answer">Сега е…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Какъв вид място е това</string>
     <string name="quest_shop_vacant_type_title">Този обект е отбелязан като празен. Какво има тук сега?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Тези задачи са изключени по подразбиране, понеже не са полезни за някои райони и вероятно няма да посетите местата за които се търсят отговори.</string>
     <string name="quest_dietType_explanation_kosher">Продуктите кошер трябва да бъдат приготвени съгласно определени правила, маркирани от организации следящи за спазването на Кашрут.</string>

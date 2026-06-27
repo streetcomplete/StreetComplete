@@ -305,7 +305,7 @@
         },
         "amenity/community_centre/parish_hall": {
           "name": "Sognegård",
-          "terms": "sognegård,medborgerhus,forsamlingshus,aktivitetshus,kulturhus,kulturcenter,multihus,borgerhus,menighedshus,loge"
+          "terms": "sognegård,medborgerhus,forsamlingshus,aktivitetshus,kulturhus,kulturcenter,multihus,borgerhus,menighedshus,loge,missionshus"
         },
         "amenity/community_centre/village_hall": {
           "name": "Forsamlingshus",
@@ -639,8 +639,8 @@
           "terms": "parkeringsbås,parkeringsplads,bås"
         },
         "amenity/parking_space/disabled": {
-          "name": "Handikapparkering",
-          "terms": "handicap,rullestol,tilgængelig"
+          "name": "Handicapparkeringsbås",
+          "terms": "handicapparkeringsbås,invalideparkering,rullestol,tilgængelig,kørestol"
         },
         "amenity/payment_centre": {
           "name": "Betalingscenter"
@@ -730,7 +730,7 @@
         },
         "amenity/public_bath": {
           "name": "Offentligt bad",
-          "terms": "offentligt bad"
+          "terms": "offentligt bad,havnebad,badeanlæg,badeanstalt,badehus,varm kilde,havbad,søbad,swimmingpool,svømmepøl,bassin,kurbad"
         },
         "amenity/public_bookcase": {
           "name": "Bogbytteskab",
@@ -842,6 +842,10 @@
           "name": "Ly",
           "terms": "ly,shelter,bivuak,hytte,læ,læskur,skur,halvtag,lejr"
         },
+        "amenity/shelter/field_shelter": {
+          "name": "Marklæskur",
+          "terms": "marklæskur,læskur,lade,ly,hesteshelter,kvægshelter"
+        },
         "amenity/shelter/gazebo": {
           "name": "Lysthus",
           "terms": "lysthus,læskur,skur,madpakkehus"
@@ -880,6 +884,10 @@
         "amenity/social_facility/assisted_living": {
           "name": "Ældrebolig",
           "terms": "ældrebolig,plejebolig,plejehjem,plejecenter,beskyttet bolig"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Dagcenter",
+          "terms": "dagcenter,daghjem,aktivitetscenter,dagtilbud"
         },
         "amenity/social_facility/food_bank": {
           "name": "Fødevarebank",
@@ -1713,7 +1721,7 @@
         },
         "craft/plumber": {
           "name": "Blikkenslager",
-          "terms": "blikkenslager"
+          "terms": "blikkenslager,bliktud,vvs,vand,varme,sanitet,rørlægger,rør,wc,toilet,smed,rørsmed"
         },
         "craft/pottery": {
           "name": "Keramiker",
@@ -1808,7 +1816,11 @@
           "name": "Lukket forretning"
         },
         "education": {
-          "name": "Uddannelsesfacilitet"
+          "name": "Uddannelsesfacilitet",
+          "terms": "uddannelsesfacilitet,skole,højskole,gymnasium,universitet,køreskole,kokkeskole,sprogskole,musikskole,gymnasie,handelsskole"
+        },
+        "education/college": {
+          "name": "Område med videregående uddannelse"
         },
         "education/dancing_school": {
           "name": "Danseskole"
@@ -1830,6 +1842,9 @@
         },
         "education/university": {
           "name": "Universitetsområde"
+        },
+        "education/yes": {
+          "name": "Uddannelsesfacilitet (Uspecificeret type)"
         },
         "embankment": {
           "name": "Forhøjning / vejdæmning"
@@ -2072,12 +2087,12 @@
           "name": "Fodgængerovergang med lyssignal"
         },
         "highway/crossing/uncontrolled": {
-          "name": "Markeret overgang",
-          "terms": "markeret overgang,markeret fodgængerovergang"
+          "name": "Markeret fodgængerovergang",
+          "terms": "markeret,markering,mærket,opmærket,fodgængerovergang,overgang,fodgænger,felt,fodgængerfelt,fodgængeroverfelt,gå,spadsere,gående,spadserende"
         },
         "highway/crossing/unmarked": {
           "name": "Umarkeret fodgængerovergang",
-          "terms": "overgang,felt,fodgænger,fodgængerfelt"
+          "terms": "umarkeret,umærket,fodgængerovergang,overgang,fodgænger,felt,fodgængerfelt,fodgængeroverfelt,gå,spadsere,gående,spadserende"
         },
         "highway/cycleway": {
           "name": "Cykelsti",
@@ -2096,15 +2111,15 @@
         },
         "highway/cycleway/crossing/traffic_signals": {
           "name": "Cykelkryds med trafiksignaler",
-          "terms": "cykelkryds med trafiksignaler,cykelovergang med trafiksignaler,cykelfelt med trafiksignaler"
+          "terms": "cykelkryds med trafiksignaler,cykelovergang med trafiksignaler,cykelfelt med trafiksignaler,cykelkryds,cykelovergang,cykelfelt,signal"
         },
         "highway/cycleway/crossing/uncontrolled": {
           "name": "Markeret cykelkryds",
-          "terms": "markeret cykelkryds,markeret cykelovergang,markeret cykelfelt"
+          "terms": "markeret cykelkryds,markeret cykelovergang,markeret cykelfelt,cykelkryds,cykelovergang,cykelfelt,markering,markeret,mærket,opmærket"
         },
         "highway/cycleway/crossing/unmarked": {
           "name": "Umarkeret cykelkryds",
-          "terms": "umarkeret cykelkryds,felt,overgang,cykel,cyklist,passage,umarkeret cykelovergang"
+          "terms": "umarkeret cykelkryds,felt,overgang,cykel,cyklist,passage,umarkeret cykelovergang,cykelkryds,cykelovergang,cykelfelt,umarkeret,umærket"
         },
         "highway/cyclist_waiting_aid": {
           "name": "Fodhviler til cyklister",
@@ -2148,12 +2163,12 @@
           "name": "Fodgængerovergang med lyssignal"
         },
         "highway/footway/crossing/uncontrolled": {
-          "name": "Markeret overgang",
-          "terms": "markeret overgang,fodgængerovergang,fodgængerfelt"
+          "name": "Markeret fodgængerovergang",
+          "terms": "markeret,markering,mærket,opmærket,fodgængerovergang,markeret overgang,overgang,fodgænger,felt,fodgængerfelt,fodgængeroverfelt,gå,spadsere,gående,spadserende"
         },
         "highway/footway/crossing/unmarked": {
-          "name": "Umarkeret overgang",
-          "terms": "overgang,felt,fodgænger,fodgængerfelt"
+          "name": "Umarkeret fodgængerovergang",
+          "terms": "umarkeret,umærket,fodgængerovergang,overgang,fodgænger,felt,fodgængerfelt,fodgængeroverfelt,gå,spadsere,gående,spadserende"
         },
         "highway/footway/informal": {
           "name": "Trampesti"
@@ -2168,6 +2183,10 @@
         "highway/give_way": {
           "name": "Vigepligtsmarkering",
           "terms": "vigepligtsmarkering,vigepligtstavle,hajtænder,advarselsskilt,stopskilt,vigepligt,ubetinget vigepligt"
+        },
+        "highway/hitchhiking": {
+          "name": "Skiltet sted for blaffere",
+          "terms": "skiltet sted for blaffere,blaffere,samkørsel,blaffersted,blafferspot"
         },
         "highway/ladder": {
           "name": "Stige"
@@ -2247,7 +2266,7 @@
         },
         "highway/rest_area": {
           "name": "Rasteplads",
-          "terms": "rasteplads"
+          "terms": "rasteplads,holdeplads,parkering,rastested,pitstop"
         },
         "highway/road": {
           "name": "Ukendt vejtype",
@@ -2285,8 +2304,8 @@
           "terms": "ambulancevej,udrykningsvej,brandvej,redningsvej"
         },
         "highway/service/parking_aisle": {
-          "name": "Vej mellem parkeringspladser",
-          "terms": "parkeringsvej"
+          "name": "Vej mellem parkeringsbåse",
+          "terms": "vej mellem parkeringsbåse,parkeringsvej,adgangsvej,indkørsel"
         },
         "highway/service_area": {
           "name": "Serviceområde med fast belægning"
@@ -2675,6 +2694,10 @@
           "name": "Orkesterpavillon",
           "terms": "pavillon,musik,band,orkester,koncert"
         },
+        "leisure/bathing_place": {
+          "name": "Badested",
+          "terms": "badested,badestrand,badepunkt,søstrand,strand,svømme,badevand,sandstrand,nudiststrand"
+        },
         "leisure/beach_resort": {
           "name": "Strandresort",
           "terms": "resort,ferie,strand,vand,hav,rekreation"
@@ -2986,6 +3009,10 @@
         "leisure/stadium": {
           "name": "Stadion",
           "terms": "stadion"
+        },
+        "leisure/summer_camp": {
+          "name": "Sommerlejr",
+          "terms": "sommerlejr,koloni,børn,ferielejr,ungdomslejr,feriekoloni"
         },
         "leisure/swimming_area": {
           "name": "Åbent vand-bane",
@@ -3848,7 +3875,7 @@
         },
         "place/hamlet": {
           "name": "Mindre beboet område",
-          "terms": "mindre beboet område"
+          "terms": "mindre beboet område,bebyggelse,ejendom,beboelse"
         },
         "place/island": {
           "name": "Ø",
@@ -3859,7 +3886,7 @@
         },
         "place/isolated_dwelling": {
           "name": "Lille beboet område (1-2 hustande)",
-          "terms": "lille beboet område (1-2 hustande)"
+          "terms": "lille beboet område (1-2 hustande),bebyggelse,beboelse,ejendom"
         },
         "place/locality": {
           "name": "Lokalitet",
@@ -4600,8 +4627,8 @@
           "name": "Jagtbutik"
         },
         "shop/interior_decoration": {
-          "name": "Brugskunstbutik",
-          "terms": "brugskunstbutik,indendørsudsmykningsbutik,indendørsudsmykning,brugskunst,kunst,indendørs,boligudstyr,interiør,mode,keramik"
+          "name": "Boligindretningsbutik",
+          "terms": "boligindretningsbutik,brugskunstbutik,indendørsudsmykningsbutik,kunst,indendørs,boligudstyr,interiørbutik,mode,keramik"
         },
         "shop/jewelry": {
           "name": "Guldsmed",
@@ -4796,7 +4823,7 @@
         },
         "shop/storage_rental": {
           "name": "Lagerhotel",
-          "terms": "lagerhotel,opbevaringshotel,depot,opmagasinering"
+          "terms": "lagerhotel,opbevaringshotel,depot,opmagasinering,box,container,lager,rum"
         },
         "shop/supermarket": {
           "name": "Supermarked",
@@ -4912,8 +4939,8 @@
           "name": "Bjerghytte"
         },
         "tourism/apartment": {
-          "name": "Gæstelejlighed/Ejerlejlighed",
-          "terms": "gæstelejlighed/ejerlejlighed"
+          "name": "Ferielejlighed",
+          "terms": "ferielejlighed,gæstelejlighed,lejlighed,airbnb"
         },
         "tourism/aquarium": {
           "name": "Akvarium",
@@ -4997,7 +5024,7 @@
         },
         "tourism/information/guidepost": {
           "name": "Vejviser",
-          "terms": "vejviser,rutemarkering,guidepost,skilt,pæl,rutemarkør,markør,afmærkning"
+          "terms": "vejviser,rutemarkering,guidepost,skilt,pæl,rutemarkør,markør,afmærkning,pegeskilt"
         },
         "tourism/information/map": {
           "name": "Kort",

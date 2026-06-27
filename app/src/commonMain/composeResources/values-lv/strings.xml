@@ -752,7 +752,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi.</string
     <string name="quest_shop_gone_title">Kas šeit ir tā vietā?</string>
     <string name="quest_shop_gone_vacant_answer">Vieta ir brīva</string>
     <string name="quest_shop_gone_replaced_answer">Ir…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Ierakstiet šeit, kāda veida vieta</string>
     <string name="quest_shop_vacant_type_title">Šis veikals ir bijis vakants. Kas šeit ir tagad?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Šis uzdevumu veids pēc noklusējuma ir izslēgts, jo dažos reģionos tas nav noderīgs un jums visdrīzāk būtu jāapmeklē vieta, lai varētu izpildīt uz šāda veida uzdevumus.</string>
     <string name="quest_dietType_explanation_kosher">Košera ēdienus jāpagatavo pēc noteiktiem noteikumiem; kašruta sertifikācijas aģentūras apzīmē atbilstošus produktus.</string>
@@ -1391,7 +1390,6 @@ Stāvs tiek uzskatīts par jumta stāvu, ja tā logi atrodas jumtā. Attiecīgi,
     <string name="team_mode_description_overlay_hint">Ja izmantojat pārklājumus, katram no jums vajadzētu izmantot citu, jo tikai uzdevumi tiek sadalīti.</string>
     <string name="quest_dietType_glutenfree_name_title">Vai šeit piedāvā bezglutēna produktus?</string>
     <string name="quest_construction_minor_title">Vai ceļu remontdarbi šeit ir pabeigti?</string>
-    <string name="map_attribution">MTB grūtības pakāpe</string>
     <string name="pref_title_zoom_buttons">Rādīt kartes tālummaiņas pogas</string>
     <string name="overlay_mtb_scale">MTB grūtības pakāpe</string>
     <string name="pref_overlays_reset">Atiestatīt pārklājumu iespējošanu uz noklusējumu?</string>

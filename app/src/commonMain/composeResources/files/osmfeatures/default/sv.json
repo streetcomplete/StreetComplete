@@ -1036,6 +1036,10 @@
           "name": "Skydd",
           "terms": "skydd,tak över huvudet,hydda,vindskydd,koja,väntkur,grotta,väderskydd,lusthus,picknick,skyddsrum,kur,busskur"
         },
+        "amenity/shelter/field_shelter": {
+          "name": "Vindskydd (för djur)",
+          "terms": "vindskydd,djurskydd,hästskjul,kohydda,betesskydd,vindskydd för djur,djurhage,väderskydd för djur,regnskydd för djur,djurvindskydd,ligghall,hästhydda,lösdriftsskjul,bod,skärmskjul"
+        },
         "amenity/shelter/gazebo": {
           "name": "Lusthus",
           "terms": "lusthus,trädgårdspaviljong,paviljong,kolonistuga,fåfänga"
@@ -1075,6 +1079,10 @@
         "amenity/social_facility/assisted_living": {
           "name": "Äldreboende",
           "terms": "äldreboende,ålderdomshem,särskilt boende,servicehus,sjukhem,seniorboende,demensboende"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Dagverksamhet",
+          "terms": "dagverksamhet,dagcenter,dagsverksamhet,social dagverksamhet,dagomsorg,social omsorg,stödverksamhet,social service"
         },
         "amenity/social_facility/food_bank": {
           "name": "Matbank",
@@ -2142,6 +2150,10 @@
           "name": "Discgolftee",
           "terms": "discgolftee,frisbeegolftee,frisbeegolfstart,discgolfstart,utslagsplats,startplats,tee"
         },
+        "disused/aeroway": {
+          "name": "Nedlagt flygobjekt",
+          "aliases": "Tidigare flygobjekt\nNedlagd flygstruktur"
+        },
         "disused/amenity": {
           "name": "Oanvänd facilitet"
         },
@@ -2620,6 +2632,10 @@
         "highway/give_way": {
           "name": "Väjningsplikt",
           "terms": "väjningsplikt,företräde,väjningspliktsskylt,utfartsregeln,utfart,lämna företräde"
+        },
+        "highway/hitchhiking": {
+          "name": "Skyltad liftarplats",
+          "terms": "liftarplats,liftning,lifta,liftställe,samåkningsplats,hitchhiking,thumbing"
         },
         "highway/ladder": {
           "name": "Stege",
@@ -3622,6 +3638,10 @@
           "name": "Stadium",
           "terms": "stadium,arena"
         },
+        "leisure/summer_camp": {
+          "name": "Sommarläger",
+          "terms": "sommarläger,läger,lägergård,lägeranläggning,kollo,barn,barnläger,ungdom,ungdomsläger,lov,lovverksamhet,fritid,semester,ferie,ferieläger"
+        },
         "leisure/swimming_area": {
           "name": "Naturbadområde",
           "terms": "naturbadområde,naturbad,bad,strand,badstrand,dyka,vatten,badsjö,klippbad"
@@ -3817,6 +3837,10 @@
         "man_made/gasometer": {
           "name": "Gasklocka",
           "terms": "gasklocka,gasbehållare,gas,gasometer,cistern,gascistern,stadsgas,naturgas"
+        },
+        "man_made/geoglyph": {
+          "name": "Geoglyf",
+          "terms": "geoglyf,markfigur,landskapsfigur,jordkonst,markkonst,landskapskonst,hill figure,earthwork,land art"
         },
         "man_made/goods_conveyor": {
           "name": "Transportband",

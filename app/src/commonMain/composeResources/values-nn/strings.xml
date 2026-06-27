@@ -732,7 +732,6 @@ Appen kommuniserer direkte med OSM-tenarane.&lt;br/&gt;Før appen lastar opp end
     <string name="quest_shop_gone_title">Kva er her i staden for?</string>
     <string name="quest_shop_gone_vacant_answer">Det er ikkje noko her</string>
     <string name="quest_shop_gone_replaced_answer">Ein/ei/eit …</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Type plass som er her</string>
     <string name="quest_shop_vacant_type_title">Dette butikk­lokalet har stått tomt. Kva er her no?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Denne oppdragstypen vert som standard ikkje vist, då han ikkje er nyttig alle stadar og du vanlegvis må gå inn på staden for å kunna svara på spørsmålet.</string>
     <string name="quest_dietType_explanation_kosher">Koscher­produkt må lagast etter særskilde religiøse reglar, og det finst eigne sertifiserings­instansar som godkjenner produkta.</string>

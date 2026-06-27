@@ -660,7 +660,7 @@
         },
         "shop/travel_agency": {
           "name": "Travel Agency",
-          "terms": "cruises,flights,holiday,hotels,tickets,tour operator,travel packages,vacation"
+          "terms": "cruises,flights,holiday,hotels,tickets,tour operator,tours,travel packages,vacation"
         },
         "shop/trade": {
           "name": "Trade Shop"
@@ -1294,6 +1294,7 @@
           "name": "Vacant Shop",
           "terms": "empty"
         },
+        "shop/ice_cream": {},
         "shop/hobby": {
           "name": "Hobby Shop"
         },
@@ -2587,7 +2588,7 @@
         },
         "man_made/silo": {
           "name": "Silo",
-          "terms": "corn,grain,wheat"
+          "terms": "corn,grain,grain elevator,wheat"
         },
         "man_made/satellite_dish": {
           "name": "Satellite Dish",
@@ -2628,7 +2629,7 @@
         },
         "man_made/monitoring_station": {
           "name": "Monitoring Station",
-          "terms": "air,bicycle counter,bike counter,earthquake,gps,measurement station,seismology,traffic counter,water level,weather"
+          "terms": "air,bicycle counter,bike counter,earthquake,gps,measurement station,seismology,traffic counter,water level,weather,weather station"
         },
         "man_made/mineshaft": {
           "name": "Mineshaft",
@@ -2660,6 +2661,11 @@
         "man_made/goods_conveyor": {
           "name": "Goods Conveyor",
           "terms": "belt conveyor,chain conveyor,conveyor belt,roller conveyor"
+        },
+        "man_made/geoglyph_multilinestring": {},
+        "man_made/geoglyph": {
+          "name": "Geoglyph",
+          "terms": "earthwork,hill figure,land art"
         },
         "man_made/gasometer": {
           "name": "Gasometer",
@@ -2925,6 +2931,10 @@
         "leisure/swimming_area": {
           "name": "Natural Swimming Area",
           "terms": "aquatics,dive,water"
+        },
+        "leisure/summer_camp": {
+          "name": "Summer Camp",
+          "terms": "children,holidays,leisure,vacations,youth"
         },
         "leisure/stadium": {
           "name": "Stadium"
@@ -3696,7 +3706,8 @@
           "name": "Boundary Stone"
         },
         "historic/archaeological_site": {
-          "name": "Archaeological Site"
+          "name": "Archaeological Site",
+          "terms": "archaeology,crop mark,cropmark,dig,excavation,remains"
         },
         "historic/aircraft": {
           "name": "Historic Aircraft",
@@ -3880,6 +3891,10 @@
         },
         "highway/ladder": {
           "name": "Ladder"
+        },
+        "highway/hitchhiking": {
+          "name": "Signed Hitchhiking Place",
+          "terms": "hitchhiking,thumbing"
         },
         "highway/give_way": {
           "name": "Yield Sign",
@@ -4392,6 +4407,9 @@
         "disused/amenity": {
           "name": "Disused Amenity"
         },
+        "disused/aeroway": {
+          "name": "Disused Aeroway Feature"
+        },
         "disc_golf/tee": {
           "name": "Disc Golf Tee",
           "terms": "tee box,teeing ground"
@@ -4890,7 +4908,7 @@
         },
         "barrier/log": {
           "name": "Fallen Tree Obstruction",
-          "terms": "downed tree"
+          "terms": "downed tree,log"
         },
         "barrier/lift_gate": {
           "name": "Boom Barrier",
@@ -5449,7 +5467,7 @@
         },
         "amenity/fast_food": {
           "name": "Fast Food",
-          "terms": "drive thru,drive-through,restaurant,takeaway,takeout"
+          "terms": "drive thru,drive-through,food truck,restaurant,takeaway,takeout"
         },
         "amenity/exhibition_centre": {
           "name": "Exposition Center",
@@ -5819,7 +5837,7 @@
         },
         "amenity/social_facility/nursing_home": {
           "name": "Nursing Home",
-          "terms": "assisted living,elderly,living,nursing,old,senior"
+          "terms": "assisted living,elderly,living,nursing,old,retired,retirement,retirement home,senior"
         },
         "amenity/social_facility/homeless_shelter": {
           "name": "Homeless Shelter",
@@ -5827,15 +5845,18 @@
         },
         "amenity/social_facility/group_home": {
           "name": "Elderly Group Home",
-          "terms": "assisted living,care home,elderly,living,old,senior"
+          "terms": "assisted living,care home,elderly,living,old,retired,retirement,retirement home,senior"
         },
         "amenity/social_facility/food_bank": {
           "name": "Food Bank",
           "terms": "food pantry,soup kitchen"
         },
+        "amenity/social_facility/day_care": {
+          "name": "Social Services Day Care / Day Center"
+        },
         "amenity/social_facility/assisted_living": {
           "name": "Senior Assisted Living Facility",
-          "terms": "assisted living,care home,elderly,living,old,senior"
+          "terms": "assisted living,care home,elderly,living,old,retired,retirement,retirement home,senior"
         },
         "amenity/social_facility/ambulatory_care": {
           "name": "Ambulatory Care"
@@ -5854,6 +5875,9 @@
         },
         "amenity/shelter/gazebo": {
           "name": "Gazebo"
+        },
+        "amenity/shelter/field_shelter": {
+          "name": "Field Shelter"
         },
         "amenity/restaurant/vietnamese": {
           "name": "Vietnamese Restaurant",
@@ -6005,7 +6029,7 @@
         },
         "amenity/place_of_worship/christian": {
           "name": "Christian Church",
-          "terms": "abbey,anglican,baptist,basilica,bethel,cathedral,chancel,chantry,chapel,christian,episcopal,evangelical,fold,house of god,house of prayer,house of worship,lutheran,methodist,minster,mission,oratory,parish,pentecostal,roman catholic,sacellum,sanctuary,shrine,tabernacle,temple"
+          "terms": "abbey,anglican,baptist,basilica,bethel,cathedral,chancel,chantry,chapel,christian,episcopal,evangelical,fold,house of god,house of prayer,house of worship,latter day saints,lds,lutheran,methodist,minster,mission,mormon,nondenominational,oratory,orthodox,parish,pentecostal,presbyterian,protestant,reformed,roman catholic,sacellum,sanctuary,seventh day adventist,shrine,tabernacle,temple"
         },
         "amenity/place_of_worship/buddhist": {
           "name": "Buddhist Temple",

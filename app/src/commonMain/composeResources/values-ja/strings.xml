@@ -547,7 +547,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="user_login">ログイン</string>
     <string name="user_logout">ログアウト</string>
     <string name="osm_profile">OSM プロフィール</string>
-    <string name="next">つぎへ</string>
+    <string name="next">次へ</string>
     <string name="letsgo">Let’s go!</string>
     <string name="tutorial_welcome_to_osm">OpenStreetMapにようこそ</string>
     <string name="tutorial_welcome_to_osm_subtitle">フリーなwikiの世界地図</string>
@@ -756,7 +756,6 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_shop_gone_title">代わりに何がここにあるの?</string>
     <string name="quest_shop_gone_vacant_answer">空き店舗です</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">この場所の種類を入れて下さい。</string>
     <string name="quest_shop_vacant_type_title">以前は空き店舗でしたが、現在は何がありますか?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">このクエストタイプは、地域によっては役に立たず、質問に答えるためにはおそらくその場所に入る必要があるため、デフォルトで無効になっています。</string>
     <string name="quest_dietType_explanation_kosher">コーシャ製品は特別なルールに従って調理する必要があり、カシュルート認証機関が準拠していることを評価したものになります。</string>
@@ -1317,12 +1316,15 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
 
 屋根部分に窓がある階は屋根の階数として扱われます。なお、屋根の階数が0でもその屋根が平らであるとは限らず、単に屋根の高さが1階分に満たないだけの場合もあります。</string>
     <string name="separate_cycleway_no_signed">自転車の通行を明示的に禁止している標識があります</string>
+    <string name="action_back">戻る</string>
     <string name="action_open_in_browser">ブラウザで開く</string>
     <string name="about_category_contribute">貢献する</string>
     <string name="pref_category_quests">クエスト</string>
     <string name="pref_title_language_select2">言語</string>
+    <string name="pref_title_resurvey_intervals_summary">以前マッピングしたデータが現在も正しいかどうかを確認するよう求められる頻度。</string>
     <string name="bridge">橋の上</string>
     <string name="about_category_help">ヘルプ</string>
+    <string name="user_profile_all_time_title">全期間</string>
     <string name="quest_leafType_tree_is_just_a_stump">それはただの木の切り株です</string>
     <string name="quest_board_name_title">この掲示板のタイトルは何ですか？</string>
     <string name="action_messages">メッセージを表示する</string>
@@ -1351,12 +1353,20 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_tracktype_grade2">やや硬い</string>
     <string name="quest_tracktype_grade3">混合</string>
     <string name="quest_drinking_water_potable_unsigned2">標識がない</string>
+    <string name="or">又は</string>
+    <string name="action_copy">コピー</string>
     <string name="quest_handwashing_title">ここで手を洗うことはできますか？</string>
     <string name="quest_openingHours_delete">削除する</string>
     <string name="quest_streetName_add_language">言語を追加</string>
+    <string name="ok">OK</string>
     <string name="cancel">キャンセル</string>
     <string name="quest_board_type_rules">ルール</string>
+    <string name="quest_lane_markings_title">この道路には車線表示がありますか？</string>
     <string name="quest_tower_access_title">この塔には誰が入れるのでしょうか？入場料は無料の場合も有料の場合もあります。</string>
+    <string name="pref_title_messages">アプリ内メッセージ</string>
+    <string name="pref_title_message_achievements">実績をアンロックした時</string>
+    <string name="pref_title_message_weekly_osm">週刊OSMの更新時</string>
+    <string name="pref_title_message_changelog">アプリの更新リリース時</string>
     <string name="label_block2">街区</string>
     <string name="quest_artwork_title">これはどのような種類の芸術作品ですか？</string>
     <string name="quest_artwork_painting">絵画</string>
@@ -1366,4 +1376,7 @@ OpenStreetMap を匿名で編集することはできないため、変更は OS
     <string name="quest_openingHours_chooseEndTimeTitle">閉店時間を選択</string>
     <string name="quest_openingHours_chooseTimeTitle">時間を選択</string>
     <string name="quest_openingHours_no_fixed_end">終了時刻は未定</string>
+    <string name="calendar_new_event_title">お住まいの地域で新しいOSMイベントが開催されます！</string>
+    <string name="pref_title_message_calendar">地域で新しいOSMイベントの開催時</string>
+    <string name="quest_leave_new_note_photo_delete">削除</string>
 </resources>

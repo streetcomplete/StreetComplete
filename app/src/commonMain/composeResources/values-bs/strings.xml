@@ -753,7 +753,6 @@ Ako su neke trake rezervirane za autobuse, umjesto toga ostavite bilješku.</str
     <string name="quest_shop_gone_title">Što je tu sada?</string>
     <string name="quest_shop_gone_vacant_answer">Upražnjeno je</string>
     <string name="quest_shop_gone_replaced_answer">To je…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Upišite vrstu trgovine ili sl.</string>
     <string name="quest_shop_vacant_type_title">Ova je trgovina bila prazna. Što je sad ovdje?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ova vrsta zadatka je po defaultu onemogućena jer u nekim regijama nije korisna i jer biste vjerojatno morali ući unutra kako bi mogli odgovoriti na zadatak ove vrste.</string>
     <string name="quest_dietType_explanation_kosher">Košer proizvodi moraju se pripremati prema posebnim pravilima, a agencije za certificiranje moraju označavati proizvode u skladu s kašrutom.</string>

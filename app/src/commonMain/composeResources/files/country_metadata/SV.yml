@@ -5,7 +5,6 @@ centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
 exclusiveCycleLaneStyle: white dots
 hasAdvisoryCycleLane: true
-hasBicycleBoulevard: true
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 706
 noParkingSignStyle: mutcd latin
