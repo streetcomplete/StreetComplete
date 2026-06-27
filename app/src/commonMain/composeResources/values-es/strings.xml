@@ -1490,4 +1490,7 @@ La planta de arriba cuenta como «tejado» si el tejado tiene ventanas. Por lo q
     <string name="quest_maxspeed_answer_roadtype_lit">iluminada</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">no iluminada</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">no iluminada y de doble calzada</string>
+    <string name="quest_board_type_tourism">Turismo (temas múltiples)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Solo un carril señalizado</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Escribe lo que estás buscando</string>
 </resources>
