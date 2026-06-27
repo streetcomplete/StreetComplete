@@ -9,6 +9,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
@@ -53,7 +54,7 @@ fun AddMaxWeightForm(
     ) {
         MaxWeightForm(
             signs = signs,
-            countryCode = countryInfo.countryCode,
+            locale = countryInfo.languageTag?.let { Locale(it) } ?: Locale.current,
             selectableUnits = countryInfo.weightLimitUnits,
             onSignAdded = { maxweight ->
                 signs = signs.toMutableList().also { it.add(maxweight) }

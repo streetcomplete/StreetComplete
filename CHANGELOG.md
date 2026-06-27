@@ -1,5 +1,37 @@
 # Changelog
 
+## v63.2
+
+### Fixes
+
+- Fix map display on older devices: Some old devices have issues with the new rendering backend introduced in v63.1, so I reverted back to the old backend for v63.x at least.
+- Board type: Fixed it was possible to answer "none" (#6887), by @paulklie
+- Fix selected language would reset to device language on device rotation (#5942)
+- Notes: Fix enter key would exit the form rather than add a return
+- Fix "move node" form had black text on black background in dark mode
+
+### Quest improvements
+
+- Bike paths, sidewalks: Re-enable quest as the overlays are not really that much more efficient that it warrants the quests to be disabled
+- Surface: Don't ask for winter roads (#6835), by @paulklie
+- Opening hours: Don't ask for street vendors (#6848), by @matkoniecz
+- Baby changing tables: Can now answer that there is actually no toilet (#6837), by @paulklie
+- Ask various quests for ranger stations, water points, bird hides (#6888, #6857, #6836), by @paulklie
+- Lanes: Allow answering that there is only *one* marked lane (#6879)
+- Crossing island: Don't ask when the traffic island has already been mapped in detail (#6874)
+- Check existence: Don't ask for objects with heritage status (#6776)
+- Power line attachment to pole: Disable this quest, it is too complex (in edge cases) (#6547)
+- All quests with input of decimals: Allow input of decimal separators in any locale (#6864)
+- Tactile paving: Enabled quests in Iceland (#6897)
+- Bicycle charging station: Make answer "Only" more prominent (#6862)
+- Board type: Add "Tourism (multiple topics)" as answer option (#6892, #6868), by @mnalis
+- Max height: Don't ask for private roads/paths (#6860, #6894)
+- Other small improvements (#6831, …)
+
+### Overlay improvements
+
+- Add more things and more places (#6833, #6839, #6834) by @paulklie
+
 ## v63.1
 
 ### Overlay improvements

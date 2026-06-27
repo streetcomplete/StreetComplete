@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.*
@@ -25,14 +26,14 @@ import org.jetbrains.compose.resources.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 
 /** A form to input the [weight] for a single max weight sign [type]. The signs shown
- *  should look similar to how the signs actually look in the country with the given [countryCode]
+ *  should look similar to how the signs actually look in the country with the given [locale]
  */
 @Composable
 fun MaxWeightSignForm(
     type: MaxWeightType,
     weight: Weight?,
     onWeightChange: (Weight?) -> Unit,
-    countryCode: String,
+    locale: Locale,
     selectableUnits: List<WeightMeasurementUnit>,
     modifier: Modifier = Modifier,
 ) {
@@ -53,51 +54,58 @@ fun MaxWeightSignForm(
         onWeightChange(value?.let { Weight(it, newUnit) })
     }
 
+    val countryCode = locale.region
+
     val color =
         if (countryCode in listOf("FI", "IS", "SE")) TrafficSignColor.Yellow
         else TrafficSignColor.White
 
     val unitTextStyle = MaterialTheme.typography.largeInput
 
+    val weightInput: @Composable () -> Unit = {
+        WeightInput(
+            value = value,
+            onValueChange = onValueChange,
+            locale = locale
+        )
+    }
+
+    val weightInputMutcd: @Composable () -> Unit = {
+        WeightInputMutcd(
+            value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle,
+            locale = locale
+        )
+    }
+
     Box(modifier) {
         when (type) {
             MAX_WEIGHT -> when (countryCode) {
                 "AU", "CA", "US" ->
-                    MaxWeightSignMutcd("WEIGHT LIMIT") {
-                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle)
-                    }
+                    MaxWeightSignMutcd("WEIGHT LIMIT") { weightInputMutcd() }
                 else ->
-                    MaxWeightSign(color = color) {
-                        WeightInput(value, onValueChange)
-                    }
+                    MaxWeightSign(color = color) { weightInput() }
             }
             MAX_WEIGHT_RATING -> when (countryCode) {
                 "AU", "CA", "US" ->
-                    MaxWeightSignMutcd("GVWR LIMIT") {
-                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle)
-                    }
+                    MaxWeightSignMutcd("GVWR LIMIT") { weightInputMutcd() }
                 "DE" ->
                     MaxWeightSignExtra(
                         color = color,
                         signContent = {},
-                        extraContent = { WeightInput(value, onValueChange) },
+                        extraContent = { weightInput() },
                     )
                 "GB" ->
                     MaxWeightSign(color = color) {
-                        WeightInput(value, onValueChange)
+                        weightInput()
                         Text("m g w")
                     }
                 // French max weight sign is actually a max weight rating sign
                 "FR" ->
-                    MaxWeightSign(color = color) {
-                        WeightInput(value, onValueChange)
-                    }
+                    MaxWeightSign(color = color) { weightInput() }
             }
             MAX_WEIGHT_RATING_HGV -> when (countryCode) {
                 "AU", "CA", "US" ->
-                    MaxWeightSignMutcd("TRUCK GVWR LIMIT") {
-                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle)
-                    }
+                    MaxWeightSignMutcd("TRUCK GVWR LIMIT") { weightInputMutcd() }
                 "DE" ->
                     MaxWeightSignExtra(
                         color = color,
@@ -108,33 +116,29 @@ fun MaxWeightSignForm(
                                 modifier = Modifier.fillMaxSize().padding(16.dp)
                             )
                         },
-                        extraContent = { WeightInput(value, onValueChange) },
+                        extraContent = { weightInput() },
                     )
                 else ->
                     MaxWeightSign(color = color) {
                         Icon(painterResource(Res.drawable.maxweight_hgv), null)
-                        WeightInput(value, onValueChange)
+                        weightInput()
                     }
             }
             MAX_AXLE_LOAD -> when (countryCode) {
                 "AU", "CA", "US" ->
-                    MaxWeightSignMutcd("AXLE WEIGHT LIMIT") {
-                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle)
-                    }
+                    MaxWeightSignMutcd("AXLE WEIGHT LIMIT") { weightInputMutcd() }
                 else ->
                     MaxWeightSign(color = color) {
-                        WeightInput(value, onValueChange)
+                        weightInput()
                         Icon(painterResource(Res.drawable.maxweight_axleload), null)
                     }
             }
             MAX_TANDEM_AXLE_LOAD -> when (countryCode) {
                 "AU", "CA", "US" ->
-                    MaxWeightSignMutcd("TANDEM AXLE WEIGHT LIMIT") {
-                        WeightInputMutcd(value, unit, onValueChange, onUnitChange, selectableUnits, unitTextStyle)
-                    }
+                    MaxWeightSignMutcd("TANDEM AXLE WEIGHT LIMIT") { weightInputMutcd() }
                 else ->
                     MaxWeightSign(color = color) {
-                        WeightInput(value, onValueChange)
+                        weightInput()
                         Icon(painterResource(Res.drawable.maxweight_bogieweight), null)
                     }
             }
@@ -169,7 +173,7 @@ private fun MaxWeightSignFormPreview() {
             type = maxWeightType,
             weight = weight,
             onWeightChange = { weight = it },
-            countryCode = country,
+            locale = Locale("${Locale.current.language}-$country"),
             selectableUnits = WeightMeasurementUnit.entries,
         )
     }

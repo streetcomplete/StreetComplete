@@ -28,6 +28,9 @@ open class BaseActivity : AppCompatActivity {
         var newBase = base
 
         if (locale != null) {
+            // Java
+            Locale.setDefault(locale)
+            // Android
             val locales = getSystemLocales().addedToFront(locale)
             LocaleList.setDefault(locales)
             newBase = base.createConfigurationContext(Configuration().also { it.setLocales(locales) })
@@ -41,6 +44,9 @@ open class BaseActivity : AppCompatActivity {
         // set locale with the system default locale.
         val locale = locale
         if (locale != null) {
+            // Java
+            Locale.setDefault(locale)
+            // Android
             val locales = getSystemLocales().addedToFront(locale)
             newConfig.setLocales(locales)
         }

@@ -11,6 +11,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.ui.common.input.DecimalInput
@@ -24,6 +25,7 @@ fun LengthMetersInput(
     onChange: (Length.Meters?) -> Unit,
     maxMeterDigits: Pair<Int, Int>,
     modifier: Modifier = Modifier,
+    locale: Locale = Locale.current,
     style: TextFieldStyle = TextFieldStyle.Filled,
 ) {
     Row(
@@ -43,6 +45,7 @@ fun LengthMetersInput(
                 modifier = Modifier.fillMaxWidth(),
                 maxIntegerDigits = maxMeterDigits.first,
                 maxFractionDigits = maxMeterDigits.second,
+                locale = locale,
                 isUnsigned = true,
                 style = style,
             )

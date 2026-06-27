@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.isCrossing
 import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.firstAndLast
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddCrossingIsland : OsmElementQuestType<Boolean> {
@@ -34,6 +35,10 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
           or highway and oneway and oneway != no
     """.toElementFilterExpression() }
 
+    private val excludedAdjacentWaysFilter by lazy { """
+        ways with footway = traffic_island
+    """.toElementFilterExpression() }
+
     override val changesetComment = "Specify whether pedestrian crossings have islands"
     override val wikiLink = "Key:crossing:island"
     override val icon = Res.drawable.quest_pedestrian_crossing_island
@@ -44,8 +49,15 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
         mapData.filter { it.isCrossing() }.asSequence()
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val excludedAdjacentWaysNodeIds = mapData.ways
+            .filter { excludedAdjacentWaysFilter.matches(it) }
+            .flatMapTo(HashSet()) { it.nodeIds.firstAndLast() }
+
         val excludedWayNodeIds = mapData.ways
-            .filter { excludedWaysFilter.matches(it) }
+            .filter { way ->
+                excludedWaysFilter.matches(way)
+                || way.nodeIds.firstAndLast().any { it in excludedAdjacentWaysNodeIds }
+            }
             .flatMapTo(HashSet()) { it.nodeIds }
 
         return mapData.nodes

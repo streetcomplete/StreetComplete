@@ -84,7 +84,7 @@ Implementing a quest by duplicating and modifiying an existing one is the recomm
 
 Search across the code for part of a question or other text specific to this quest. For example "the name of this place?".
 
-You will find an [XML file](app/src/commonMain/composeRsources/values/strings.xml) with an entry looking like this:
+You will find an [XML file](app/src/commonMain/composeResources/values/strings.xml) with an entry looking like this:
 
 ```xml
     <string name="quest_placeName_title">"What’s the name of this place?"</string>

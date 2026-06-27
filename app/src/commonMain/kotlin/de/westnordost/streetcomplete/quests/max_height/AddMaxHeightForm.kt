@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -60,7 +61,7 @@ fun AddMaxHeightForm(
             length = height,
             selectableUnits = countryInfo.lengthUnits,
             onChange = { height = it },
-            countryCode = countryInfo.countryCode,
+            locale = countryInfo.languageTag?.let { Locale(it) } ?: Locale.current,
             modifier = Modifier.fillMaxWidth()
         )
     }

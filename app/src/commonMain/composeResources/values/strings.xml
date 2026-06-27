@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- app/src/androidMain/res/values/strings.xml is the source file for the app’s strings in en-US.
+<!-- app/src/commonMain/composeResources/values/strings.xml is the source file for the app’s strings in en-US.
      All other strings.xml are imported from POEditor crowd translation platform.
 
      The strings are sorted into categories to
@@ -865,6 +865,7 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_board_type_public_transport">Public transport</string>
     <string name="quest_board_type_sport">Sport, Exercises</string>
     <string name="quest_board_type_rules">Rules</string>
+    <string name="quest_board_type_tourism">Tourism (multiple topics)</string>
     <string name="quest_board_type_map">It is a map</string>
     <string name="quest_board_type_map_title">Is it just a map and only a map?</string>
     <string name="quest_board_type_map_description">If the board is about a particular topic, please specify it, regardless of whether it also includes a map. For example a public transport board may have a bus route map. If the topic is not listed among the available answers, please consider leaving a note instead.</string>
@@ -1061,7 +1062,6 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_carWashType_service">Staff cleans car</string>
 
     <string name="quest_charging_station_bicycles_title">Can bicycles be charged here, too?</string>
-    <string name="quest_charging_station_bicycles_answer_only">It’s only for bicycles</string>
     <string name="quest_charging_station_bicycles_hint">Bicycle charger power adapters plug into normal household sockets.</string>
 
     <string name="quest_charging_station_capacity_title">How many cars can be charged here at the same time?</string>
@@ -1563,7 +1563,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_shop_gone_title">What’s here now instead?</string>
     <string name="quest_shop_gone_vacant_answer">It’s vacant…</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Type kind of place here</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Type what you are looking for</string>
 
     <string name="quest_shower_hot_water_title">Is there hot water here?</string>
 

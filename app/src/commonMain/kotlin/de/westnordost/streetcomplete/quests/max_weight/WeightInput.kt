@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
 import de.westnordost.streetcomplete.ui.common.AutoFitTextFieldFontSize
@@ -27,7 +28,8 @@ fun WeightInputMutcd(
     onUnitChange: (WeightMeasurementUnit) -> Unit,
     selectableUnits: List<WeightMeasurementUnit>,
     unitTextStyle: TextStyle,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    locale: Locale = Locale.current
 ) {
     Column(
         modifier = modifier,
@@ -40,6 +42,7 @@ fun WeightInputMutcd(
                 onValueChange = onValueChange,
                 maxIntegerDigits = 6,
                 maxFractionDigits = 1,
+                locale = locale,
                 isUnsigned = true,
                 modifier = Modifier.fillMaxWidth()
             )
@@ -71,7 +74,8 @@ fun WeightInputMutcd(
 fun WeightInput(
     value: Double?,
     onValueChange: (Double?) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    locale: Locale = Locale.current,
 ) {
     Row(
         modifier = modifier,
@@ -88,6 +92,7 @@ fun WeightInput(
                 onValueChange = onValueChange,
                 maxIntegerDigits = 3,
                 maxFractionDigits = 1,
+                locale = locale,
                 isUnsigned = true,
                 modifier = Modifier.fillMaxWidth()
             )
