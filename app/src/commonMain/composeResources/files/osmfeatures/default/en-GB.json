@@ -272,7 +272,7 @@
           "name": "General Practitioner"
         },
         "amenity/doctors/paediatrics": {
-          "name": "Pediatrician"
+          "name": "Paediatrician"
         },
         "amenity/doctors/pathology": {
           "name": "Pathologist"
@@ -1260,10 +1260,10 @@
           "name": "Row of terraced houses"
         },
         "building/train_station": {
-          "name": "Train Station Building"
+          "name": "Railway Station Building"
         },
         "building/transportation": {
-          "name": "Transportation Building"
+          "name": "Transport Building"
         },
         "building/university": {
           "name": "University Building"
@@ -3016,7 +3016,7 @@
           "name": "Architect Office"
         },
         "office/association": {
-          "name": "Nonprofit Organization Office"
+          "name": "Nonprofit Organisation Office"
         },
         "office/charity": {
           "name": "Charity Office"
@@ -3464,10 +3464,10 @@
           "name": "Subway Station"
         },
         "public_transport/station_train": {
-          "name": "Train Station"
+          "name": "Railway Station"
         },
         "public_transport/station_train_halt": {
-          "name": "Train Station (Halt / Request)"
+          "name": "Railway Station (Halt / Request)"
         },
         "public_transport/station_tram": {
           "name": "Tram Station"
@@ -3533,7 +3533,7 @@
           "name": "Funicular Track"
         },
         "railway/halt": {
-          "name": "Train Station (Halt / Request)"
+          "name": "Railway Station (Halt / Request)"
         },
         "railway/level_crossing": {
           "name": "Railway-Road Crossing"

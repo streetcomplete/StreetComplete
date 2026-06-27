@@ -23,8 +23,12 @@ interface ElementEditsSource {
      *  count negative */
     fun getPositiveUnsyncedCount(): Int
 
-    /** Count of unsynced a.k.a to-be-uploaded edits */
+    /** Count of unsynced a.k.a. to-be-uploaded edits */
     fun getUnsyncedCount(): Int
+
+    fun getIdProvider(id: Long): ElementIdProvider
+
+    fun getOldestUnsynced(): ElementEdit?
 
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)

@@ -754,7 +754,6 @@ Kui mõni sõidurada on mõeldud ühistranspordile, siis pigem lisa vastav ingli
     <string name="quest_shop_gone_title">Mis on siin praegu tema asemel?</string>
     <string name="quest_shop_gone_vacant_answer">Ta on hetkel tühi…</string>
     <string name="quest_shop_gone_replaced_answer">Üks…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Mis tüüpi koht siin asub</string>
     <string name="quest_shop_vacant_type_title">Need ruumid on olnud tühjad. Mis on siin praegu?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Kuna sa peaksid ülesande lahendamiseks ilmselt siia sisse astuma ja ta pole mitmes piirkonnas oluline, siis see ülesande tüüp pole vaikimisi kasutusel.</string>
     <string name="quest_dietType_explanation_kosher">Koššer-nõuetele vastavad tooted peavad olema valmistatud vastavate reeglite alusel ja kašrutile vastavuse sertifitseerijate märge on tavaliselt näha.</string>

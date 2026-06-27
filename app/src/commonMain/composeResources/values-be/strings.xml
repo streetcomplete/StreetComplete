@@ -730,7 +730,6 @@
     <string name="quest_shop_gone_title">Што зараз тут знаходзіцца замест?</string>
     <string name="quest_shop_gone_vacant_answer">Адсюль з’ехалі…</string>
     <string name="quest_shop_gone_replaced_answer">...</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Увядзіце катэгорыю кропкі тут</string>
     <string name="quest_shop_vacant_type_title">Крама з’ехала. Што тут зараз размешчана?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Дадзены тып заданняў адключаны па змаўчанні, бо ён бескарысны ў некаторых рэгіёнах і, хутчэй за ўсё, патрабуецца зайсці ў гэтае месца, каб вырашыць заданні гэтага тыпу.</string>
     <string name="quest_dietType_explanation_kosher">Кашэрныя прадукты павінны быць прыгатаваны па спецыяльных правілах, з маркіроўкай агенцтва па сертыфікацыі кашруту.</string>

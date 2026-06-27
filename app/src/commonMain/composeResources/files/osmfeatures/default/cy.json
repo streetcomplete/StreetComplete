@@ -148,6 +148,9 @@
         "amenity": {
           "name": "Amwynder"
         },
+        "amenity/animal_boarding": {
+          "name": "Cyfleuster Llety Anifeiliaid"
+        },
         "amenity/animal_breeding": {
           "name": "Cyfleuster Bridio Anifeiliaid",
           "terms": "ardal fridio,da byw,ci,cŵn,cath,cathod,ceffyl,march,buwch"
@@ -208,8 +211,8 @@
           "terms": "golchfan,beicio,seiclo,glanhau,llnau"
         },
         "amenity/biergarten": {
-          "name": "Gardd Cwrw",
-          "terms": "cwrw,biergarten,beer garden"
+          "name": "Biergarten",
+          "terms": "cwrw,biergarten,beer garden,alcohol,yfed"
         },
         "amenity/boat_rental": {
           "name": "Gwasanaeth Rhentu Cychod",
@@ -620,6 +623,10 @@
           "name": "Bocs Carioci",
           "terms": "karaoke,ktv,teledu,canu,clwb,ystafell"
         },
+        "amenity/kitchen": {
+          "name": "Cegin Gymunedol",
+          "terms": "coginio,cyhoeddus,cegin gyhoeddus,cegin a rennir"
+        },
         "amenity/kneipp_water_cure": {
           "name": "Cyfleuster Kneipp"
         },
@@ -940,6 +947,10 @@
           "name": "Cysgod",
           "terms": "gazebo,gasebo,picnic,cysgod,gysgod,chysgod"
         },
+        "amenity/shelter/field_shelter": {
+          "name": "Cysgod Maes",
+          "terms": "gysgod,chysgod,faes,cae"
+        },
         "amenity/shelter/gazebo": {
           "name": "Gasebo",
           "terms": "gazebo,pergola"
@@ -975,6 +986,10 @@
         },
         "amenity/social_facility/assisted_living": {
           "name": "Cyfleuster Byw â Chymorth i'r Henoed"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Gwasanaeth Gofal Dydd",
+          "terms": "canolfan ddydd,gofal plant,gwasanaeth i blant"
         },
         "amenity/social_facility/food_bank": {
           "name": "Banc Bwyd",
@@ -1828,6 +1843,9 @@
         "disc_golf/tee": {
           "name": "Ti Golff Disg"
         },
+        "disused/aeroway": {
+          "name": "Nodwedd Ffordd Awyr Nas Defnyddir"
+        },
         "disused/amenity": {
           "name": "Amwynder Nas Defnyddir"
         },
@@ -2210,6 +2228,10 @@
         },
         "highway/give_way": {
           "name": "Arwydd Ildio"
+        },
+        "highway/hitchhiking": {
+          "name": "Lleoliad Cerdded Wedi'i Arwyddo",
+          "terms": "heicio,taith,tro,dro,taith gerdded"
         },
         "highway/ladder": {
           "name": "Ysgol",
@@ -2993,6 +3015,10 @@
         "leisure/stadium": {
           "name": "Stadiwm"
         },
+        "leisure/summer_camp": {
+          "name": "Gwersyll Haf",
+          "terms": "plant,gwyliau,hamdden,adloniant,ieuenctid"
+        },
         "leisure/swimming_area": {
           "name": "Ardal Nofio Naturiol",
           "terms": "plymio,dŵr,dwr"
@@ -3074,7 +3100,8 @@
           "name": "Carnedd"
         },
         "man_made/ceremonial_gate": {
-          "name": "Giât Seremonïol"
+          "name": "Giât Seremonïol",
+          "terms": "gât,gat,giat,giât,clwyd,glwyd,chlwyd,llidiart,llidiard,iet,porth,borth,phorth,paifang,torii"
         },
         "man_made/ceremonial_gate/paifang": {
           "name": "Paifang",
@@ -3082,7 +3109,7 @@
         },
         "man_made/ceremonial_gate/torii": {
           "name": "Torii",
-          "terms": "gat,gât,giat,giât,clwyd,llidiart,shinto"
+          "terms": "gât,gat,giat,giât,clwyd,glwyd,chlwyd,llidiart,llidiard,iet,porth,borth,phorth,shinto"
         },
         "man_made/charge_point": {
           "name": "Man Gwefru Cerbydau Trydan",
@@ -3140,6 +3167,10 @@
         "man_made/fuel_pump": {
           "name": "Pwmp Petrol",
           "terms": "petrol,tanwydd,nwy,propane,diesel,lng,cng"
+        },
+        "man_made/geoglyph": {
+          "name": "Daearglyff",
+          "terms": "cloddwaith,ffigwr,celf,gwrthglodd,hynafol"
         },
         "man_made/groyne": {
           "name": "Grwyn"
@@ -3393,6 +3424,10 @@
         "natural/arch": {
           "name": "Bwa Naturiol"
         },
+        "natural/arete": {
+          "name": "Arête",
+          "terms": "arete,mynydd,mynyddoedd,esgair"
+        },
         "natural/bare_rock": {
           "name": "Carreg Plaen"
         },
@@ -3638,7 +3673,8 @@
           "name": "Asiantaeth Cyfamod Mechnïaeth"
         },
         "office/charity": {
-          "name": "Swyddfa Elusen"
+          "name": "Swyddfa Elusen",
+          "terms": "sefydliad elusennol"
         },
         "office/company": {
           "name": "Swyddfa Gorfforaethol"
@@ -3697,6 +3733,10 @@
         },
         "office/government/register_office": {
           "name": "Swyddfa Gofrestru"
+        },
+        "office/government/tax": {
+          "name": "Swyddfa Dreth a Refeniw",
+          "terms": "cyllid a thollau,treth,arian,ariannol,cyllid,cthef"
         },
         "office/graphic_design": {
           "name": "Swyddfa Ddylunio Graffeg"
@@ -3850,7 +3890,8 @@
           "name": "Pentref"
         },
         "playground": {
-          "name": "Cyfarpar Ardal Chwarae"
+          "name": "Cyfarpar Ardal Chwarae",
+          "terms": "cyfarpar,chwarae,offer,adnoddau"
         },
         "playground/activitypanel": {
           "name": "Panel Gweithgaredd Chwarae",
@@ -3890,6 +3931,9 @@
         },
         "playground/playhouse": {
           "name": "Tŷ Chwarae"
+        },
+        "playground/pump": {
+          "name": "Pwmp Chwarae Dŵr"
         },
         "playground/roundabout": {
           "name": "Cylchfan Chwarae"
@@ -3999,6 +4043,10 @@
         "power/plant/source/solar": {
           "name": "Gorsaf Ynni Solar",
           "terms": "haul,heulwen,golau"
+        },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "Fferm Solar",
+          "terms": "fferm solar,ffotofoltaidd,photofoltaidd,parc solar,gorsaf bŵer,haul,heulwen"
         },
         "power/plant/source/waste": {
           "name": "Gorsaf Ynni Llosgi Gwastraff"
@@ -4526,8 +4574,8 @@
           "terms": "llawr,teils,pren"
         },
         "shop/florist": {
-          "name": "Blodau",
-          "terms": "blodyn,blodeuydd,blodeuwyr"
+          "name": "Siop Flodau",
+          "terms": "blodyn,blodeuydd,blodeuwyr,blodau"
         },
         "shop/frame": {
           "name": "Siop Fframio",
@@ -4752,6 +4800,10 @@
         "shop/photo": {
           "name": "Siop Ffotograffiaeth",
           "terms": "ciosg,camera,lluniau,fwth,ffoto,ffotograffau,delweddau,lens,ffilm"
+        },
+        "shop/piercing": {
+          "name": "Stiwdio Tyllu",
+          "terms": "twll,clust,trwyn,gwn,gemwaith"
         },
         "shop/pottery": {
           "name": "Siop Grochenwaith"

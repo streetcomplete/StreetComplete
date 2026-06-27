@@ -29,6 +29,9 @@
           "name": "Caixa de pôster",
           "terms": "caixa de pôster"
         },
+        "advertising/sign": {
+          "name": "Placa publicitária"
+        },
         "advertising/totem": {
           "name": "Totem de publicidade",
           "terms": "totem de publicidade"
@@ -185,6 +188,9 @@
           "name": "LGBTQ+ Bar",
           "terms": "lgbtq+ bar"
         },
+        "amenity/bbq": {
+          "name": "Churrasco"
+        },
         "amenity/bench": {
           "name": "Assento",
           "terms": "assento,banco de praça"
@@ -281,6 +287,9 @@
           "name": "Estação de carregamento",
           "terms": "estação de carregamento,estação de recarga,estação de carga elétrica,tomada de cargamento,tomada de recarga"
         },
+        "amenity/childcare": {
+          "name": "Berçário / Creche"
+        },
         "amenity/cinema": {
           "name": "Cinema",
           "terms": "cinema,sala de cinema"
@@ -313,12 +322,18 @@
           "name": "Centro comunitário",
           "terms": "centro comunitário,salão de festas e eventos,centro social,associação de moradores"
         },
+        "amenity/community_centre/club_home": {
+          "name": "Casa do clube"
+        },
         "amenity/community_centre/community_hall": {
           "name": "Salão comunitário"
         },
         "amenity/community_centre/cultural_centre": {
           "name": "Centro Cultural",
           "terms": "cultura,centre,center,comunidade,culturais,atividades,actividades,comunitário"
+        },
+        "amenity/community_centre/family_centre": {
+          "name": "Centro familiar"
         },
         "amenity/community_centre/lgbtq": {
           "name": "Centro comunitário LGBTQ+",
@@ -355,6 +370,9 @@
           "name": "Dentista",
           "terms": "dentista,odontologista"
         },
+        "amenity/device_charging_station": {
+          "name": "Estação de carregamento de dispositivos"
+        },
         "amenity/dive_centre": {
           "name": "Centro de mergulho",
           "terms": "centro de mergulho"
@@ -386,6 +404,9 @@
         "amenity/doctors/general": {
           "name": "Clínico Geral",
           "terms": "cuidados de saúde primários,atenção primária à saúde,cuidados primários,médico de cuidados primários"
+        },
+        "amenity/doctors/gynaecology": {
+          "name": "Obstetra / Ginecologista"
         },
         "amenity/doctors/haematology": {
           "name": "Hematologista",
@@ -631,6 +652,9 @@
         "amenity/karaoke_box": {
           "name": "Caixa de Karaokê",
           "terms": "caixa de karaokê"
+        },
+        "amenity/kitchen": {
+          "name": "Cozinha comunitária"
         },
         "amenity/kneipp_water_cure": {
           "name": "Espaço de terapia Kneipp",
@@ -923,6 +947,9 @@
           "name": "Restaurante grego",
           "terms": "comida grega,comida mediterrânea,restaurante mediterrâneo"
         },
+        "amenity/restaurant/hotpot": {
+          "name": "Restaurante de fondue"
+        },
         "amenity/restaurant/indian": {
           "name": "Restaurante indiano",
           "terms": "comida indiana,índia,restaurante asiático,comida asiática"
@@ -1030,6 +1057,9 @@
         "amenity/social_facility/ambulatory_care": {
           "name": "Ambulatório",
           "terms": "ambulatório"
+        },
+        "amenity/social_facility/assisted_living": {
+          "name": "Centro de Apoio à Terceira Idade"
         },
         "amenity/social_facility/food_bank": {
           "name": "Banco de alimentos",
@@ -1280,6 +1310,9 @@
         "amenity/weighbridge": {
           "name": "Balança de caminhão",
           "terms": "balança de caminhão"
+        },
+        "animal/horse_walker": {
+          "name": "Passador de cavalos"
         },
         "area": {
           "name": "Área",
@@ -2095,6 +2128,9 @@
           "name": "Área de partida de golfe de disco",
           "terms": "tee box,teeing ground,disco,golf,golfe,desporto,desportivo,exercício,desportista"
         },
+        "disused/aeroway": {
+          "name": "Recurso de uma via aérea desativada"
+        },
         "disused/amenity": {
           "name": "Amenidade em desuso"
         },
@@ -2107,6 +2143,9 @@
         "education": {
           "name": "Instituição de ensino",
           "terms": "educação,educar,escolar,aprendizagem,aprender,treino,formação,formar,teaching,training,aulas,estudar,estudo,alunos,estudantes"
+        },
+        "education/college": {
+          "name": "Escola técnica"
         },
         "education/dancing_school": {
           "name": "Escola de dança",
@@ -2789,6 +2828,9 @@
           "name": "Balão de Retorno (com ilha central)",
           "terms": "retorno"
         },
+        "highway/unclassified": {
+          "name": "Estrada menor / sem classificação"
+        },
         "historic": {
           "name": "Local histórico",
           "terms": "lugar histórico,local histórico,patrimônio,monumento,turismo,ponto turístico"
@@ -2940,6 +2982,9 @@
           "name": "Aquicultura",
           "terms": "aquacultura,fazenda de peixes,fazenda de camarão,moluscos,frutos do mar,peixes,piscicultura,carcinicultura,maricultura,ostreicultura,malacocultura,algicultura,ranicultura,camarão"
         },
+        "landuse/aquaculture/fish": {
+          "name": "Viveiro de peixes"
+        },
         "landuse/basin": {
           "name": "Bacia"
         },
@@ -3074,6 +3119,9 @@
         "landuse/military/training_area": {
           "name": "Área de treinamento militar",
           "terms": "área de treino,ct,campo de treinamento,treinamento militar,armas,tiro,guerra,aeronáutica,força aérea,exército,marinha"
+        },
+        "landuse/olive_grove": {
+          "name": "Olival"
         },
         "landuse/orchard": {
           "name": "Pomar",
@@ -3300,6 +3348,9 @@
           "name": "Marina",
           "terms": "marina"
         },
+        "leisure/marina_no_facilities": {
+          "name": "Vagas para iates"
+        },
         "leisure/miniature_golf": {
           "name": "Campo de minigolfe",
           "terms": "golfe,golfe em miniatura,campo de golfe em miniatura"
@@ -3351,6 +3402,9 @@
           "name": "Área de lançamento do martelo",
           "terms": "martelo,sector,setor,lançamento,arremesso,hammer"
         },
+        "leisure/pitch/athletics/high_jump": {
+          "name": "Área de salto em altura"
+        },
         "leisure/pitch/athletics/javelin_throw": {
           "name": "Área de lançamento de dardo",
           "terms": "dardo,sector,setor,lançamento,arremesso,javelin,atletismo,atleta"
@@ -3390,6 +3444,12 @@
         "leisure/pitch/beachvolleyball": {
           "name": "Quadra de voleibol de praia",
           "terms": "vôlei,voleibol,praia,arena,areia"
+        },
+        "leisure/pitch/biathlon": {
+          "name": "Campo de tiro de biatlo"
+        },
+        "leisure/pitch/boules": {
+          "name": "Petanca"
         },
         "leisure/pitch/bowls": {
           "name": "Campo de Lawn Bowls",
@@ -3559,6 +3619,9 @@
           "name": "Estádio",
           "terms": "estádio,ginásio,esportes,arena"
         },
+        "leisure/summer_camp": {
+          "name": "Acampamento de verão"
+        },
         "leisure/swimming_area": {
           "name": "Área de natação natural",
           "terms": "área de natação natural"
@@ -3663,6 +3726,9 @@
         "man_made/carpet_hanger": {
           "name": "Estendal de tapetes",
           "terms": "rack,stand,tapete,carpete,tecido,lavagem,secar,secagem,pendurar"
+        },
+        "man_made/ceremonial_gate": {
+          "name": "Porta cerimonial"
         },
         "man_made/charge_point": {
           "name": "Ponto de carregamento VE",
@@ -4784,6 +4850,9 @@
           "name": "Túnel de parquinho",
           "terms": "tubo"
         },
+        "playground/water": {
+          "name": "Brinquedo aquático (não especificado)"
+        },
         "playground/zipwire": {
           "name": "Tirolesa",
           "terms": "tirolesa"
@@ -4877,6 +4946,9 @@
         "power/plant/source/solar": {
           "name": "Usina de energia solar",
           "terms": "fotovoltaica,painéis,solares,painel,fotovoltaico,estação de produção energética,eletricidade,elétrica,parque,energia"
+        },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "Usina Fotovoltaica"
         },
         "power/plant/source/waste": {
           "name": "Usina de incineração de resíduos",
@@ -5175,6 +5247,9 @@
           "name": "Semáforo ferroviário",
           "terms": "sinal de ferrovia,sinaleira de ferrovia,ferrovia,farol,trânsito,sinal luminoso"
         },
+        "railway/signal_box": {
+          "name": "Cabine de sinalização"
+        },
         "railway/station": {
           "name": "Estação ferroviária",
           "aliases": "Estação de trem"
@@ -5323,6 +5398,9 @@
         "shop/beauty/tanning": {
           "name": "Salão de Bronzeamento",
           "terms": "clínica de bronzeamento"
+        },
+        "shop/bed": {
+          "name": "Roupa de cama"
         },
         "shop/beverages": {
           "name": "Loja de Bebidas",
@@ -5524,6 +5602,9 @@
           "name": "Loja erótica LGBTQ+",
           "terms": "loja erótica lgbtq+"
         },
+        "shop/esoteric": {
+          "name": "Loja esotérica"
+        },
         "shop/fabric": {
           "name": "Loja de Tecidos",
           "terms": "loja de tecidos"
@@ -5720,6 +5801,9 @@
           "name": "Loja de Celulares",
           "terms": "loja de celulares,loja de telefones celulares,telefones móveis"
         },
+        "shop/mobile_phone_accessories": {
+          "name": "Loja de acessórios para celular"
+        },
         "shop/model": {
           "name": "Loja de modelos"
         },
@@ -5804,6 +5888,9 @@
           "name": "Loja de Fotografia",
           "terms": "loja de fotografia,foto,produtos fotográficos"
         },
+        "shop/piercing": {
+          "name": "Estúdio de piercing"
+        },
         "shop/pottery": {
           "name": "Loja de cerâmica",
           "terms": "loja de cerâmica"
@@ -5819,6 +5906,9 @@
         "shop/pyrotechnics": {
           "name": "Loja de Fogos de Artifício",
           "terms": "loja de fogos de artifício"
+        },
+        "shop/radiotechnics": {
+          "name": "Loja de componentes eletrônicos / radio"
         },
         "shop/religion": {
           "name": "Loja de Artigos Religiosos",
@@ -5969,6 +6059,9 @@
           "name": "Loja de Água Potável",
           "terms": "loja de água potável"
         },
+        "shop/water_sports": {
+          "name": "Loja de esportes aquáticos / natação"
+        },
         "shop/weapons": {
           "name": "Loja de armas",
           "terms": "loja de tiro,loja de equipamentos de tiro"
@@ -6110,6 +6203,9 @@
           "name": "Mapa",
           "terms": "mapa turístico"
         },
+        "tourism/information/office": {
+          "name": "Posto de Informações Turísticas"
+        },
         "tourism/information/route_marker": {
           "name": "Marcador de trilha",
           "terms": "marcador de trilha"
@@ -6117,6 +6213,9 @@
         "tourism/information/terminal": {
           "name": "Terminal de informações",
           "terms": "terminal de informações"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Centro de visitantes"
         },
         "tourism/motel": {
           "name": "Hotel de estrada",
@@ -6225,6 +6324,9 @@
         "traffic_sign/variable_message": {
           "name": "Placa com mensagem variável",
           "terms": "painel de avisos,painel digital,painel de leds,leds,painel eletrónico,rodoviário,estrada,rodovia,alternado,alternável,aviso,informação,informações,acidentes,tempo"
+        },
+        "type/associatedStreet": {
+          "name": "Rua associada"
         },
         "type/boundary": {
           "name": "Fronteira",
@@ -6351,6 +6453,9 @@
           "name": "Rota de Tubulação",
           "terms": "rota de tubulação,faixa de dutos"
         },
+        "type/route/piste": {
+          "name": "Pista / Percurso de esqui"
+        },
         "type/route/power": {
           "name": "Rota de Energia Elétrica",
           "terms": "rota de energia elétrica"
@@ -6401,6 +6506,9 @@
         },
         "waterway": {
           "name": "Elemento hidrográfico"
+        },
+        "waterway/access_point": {
+          "name": "Ponto de acesso a curso de água"
         },
         "waterway/boatyard": {
           "name": "Estaleiro",

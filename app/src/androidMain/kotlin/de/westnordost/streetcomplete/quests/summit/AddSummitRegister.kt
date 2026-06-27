@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
@@ -43,6 +43,7 @@ class AddSummitRegister : OsmElementQuestType<Boolean>, AndroidQuest {
         "ES", // https://es.wikipedia.org/wiki/Comprobante_de_cumbre
         "FR", // https://it.wikipedia.org/wiki/Libro_di_vetta#Alcuni_esempi_di_libri_di_vetta
         "GR", // https://it.wikipedia.org/wiki/Libro_di_vetta#Alcuni_esempi_di_libri_di_vetta
+        "IS", // https://github.com/streetcomplete/StreetComplete/issues/6897
         "IT", // https://it.wikipedia.org/wiki/Libro_di_vetta
         // not "NL": https://nl.wikipedia.org/wiki/Gipfelbuch is about "foreign" summit registers e.g. in the Alps
         // not "PL": https://github.com/westnordost/StreetComplete/issues/561#issuecomment-325504455

@@ -6,8 +6,12 @@ import androidx.core.content.getSystemService
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.util.ktx.isPackageInstalled
 
-class ArSupportChecker(private val context: Context) {
-    operator fun invoke(): Boolean = hasArMeasureSupport(context)
+interface ArSupportChecker {
+    operator fun invoke(): Boolean
+}
+
+class ArSupportCheckerImpl(private val context: Context): ArSupportChecker {
+    override operator fun invoke(): Boolean = hasArMeasureSupport(context)
 }
 
 private fun hasArMeasureSupport(context: Context): Boolean =

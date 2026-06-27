@@ -1036,6 +1036,10 @@
           "name": "Refugio",
           "terms": "albergue,abrigo,amparo,asilo,cobertizo,garita,refugio,templete,pabellón,gazebo,picnic"
         },
+        "amenity/shelter/field_shelter": {
+          "name": "Refugio de campo",
+          "terms": "refugio de campo,cobertizo rural,refugio agrícola"
+        },
         "amenity/shelter/gazebo": {
           "name": "Gazebo / Glorieta",
           "terms": "gazebo,glorieta,mirador,kiosco,quiosco,templete,tienda,pabellón"
@@ -1075,6 +1079,10 @@
         "amenity/social_facility/assisted_living": {
           "name": "Residencia para mayores",
           "terms": "residencia para mayores,residencia de ancianos,ancianos,vida asistida,tercera edad,asilo de ancianos,centro de vida asistida,instalación de vida asistida,centro de residencia asistida"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Centro de día / Centro asistencial de servicios sociales",
+          "terms": "guardería de servicios sociales,centro de día,centro de cuidado diurno,guardería comunitaria,centro asistencial,centro de atención diurna"
         },
         "amenity/social_facility/food_bank": {
           "name": "Banco de alimentos",
@@ -2141,6 +2149,9 @@
           "name": "Tee de golf de disco",
           "terms": "tee,punto de salida,caja de salida,golf"
         },
+        "disused/aeroway": {
+          "name": "Elemento de aerovía en desuso"
+        },
         "disused/amenity": {
           "name": "Servicio en desuso"
         },
@@ -2619,6 +2630,10 @@
         "highway/give_way": {
           "name": "Señal de ceda el paso",
           "terms": "ceder el paso,dar el paso,señal,signo,cartel,detención"
+        },
+        "highway/hitchhiking": {
+          "name": "Lugar señalizado para hacer dedo",
+          "terms": "lugar señalizado para hacer dedo,punto de autostop señalizado,zona señalizada para autostop"
         },
         "highway/ladder": {
           "name": "Escalera",
@@ -3621,6 +3636,10 @@
           "name": "Estadio",
           "terms": "estadio,cancha"
         },
+        "leisure/summer_camp": {
+          "name": "Campamento de verano",
+          "terms": "campamento de verano,colonia de verano,campamento estival"
+        },
         "leisure/swimming_area": {
           "name": "Área de natación natural",
           "terms": "buceo,agua,acuáticos"
@@ -3816,6 +3835,10 @@
         "man_made/gasometer": {
           "name": "Gasómetro",
           "terms": "gasómetro,gas,depósito,contenedor,tanque"
+        },
+        "man_made/geoglyph": {
+          "name": "Geoglifo",
+          "terms": "geoglifo,figura en la tierra,diseño en el terreno"
         },
         "man_made/goods_conveyor": {
           "name": "Transportador de mercancías",

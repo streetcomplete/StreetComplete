@@ -3,4 +3,4 @@ atmOperators: [PNC Bank, Fifth Third Bank, Huntington Bank, Chase, KeyBank, U.S.
 chargingStationOperators: ['Tesla, Inc.', ChargePoint, Tesla, Electrify America, Bowling Green State University, Kent State University, FLO, Wickliffe City School District, University of Cincinnati, Miami University, IONNA, Easton Town Center, EVgo]
 clothesContainerOperators: [Planet Aid, Paralyzed Veterans of America]
 defaultSpeedLimitHasUrbanOrRural: true
-parcelLockerBrand: [Amazon Locker, Amazon Hub]
+parcelLockerBrand: [Amazon Locker, Amazon Hub, Parcel Pending]

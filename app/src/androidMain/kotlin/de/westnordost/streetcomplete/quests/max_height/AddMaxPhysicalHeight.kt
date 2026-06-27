@@ -19,6 +19,9 @@ class AddMaxPhysicalHeight(
     private val checkArSupport: ArSupportChecker
 ) : OsmElementQuestType<MaxPhysicalHeightAnswer>, AndroidQuest {
 
+    // we don't need the complex filtering as in the AddMaxHeight quest because we only ask this
+    // quest if that quest was already answered with maxheight:signed = no
+
     private val nodeFilter by lazy { """
         nodes with (
           barrier = height_restrictor

@@ -17,6 +17,9 @@
         "aeroway/aerodrome": {
           "name": "Aeroport"
         },
+        "aeroway/hangar": {
+          "name": "Hangar"
+        },
         "aeroway/helipad": {
           "name": "Heliport"
         },
@@ -27,7 +30,7 @@
           "name": "Bancomat"
         },
         "amenity/bank": {
-          "name": "Banca"
+          "name": "Bancă"
         },
         "amenity/bar": {
           "name": "Bar"
@@ -214,6 +217,9 @@
         },
         "amenity/theatre": {
           "name": "Teatru"
+        },
+        "amenity/toilets": {
+          "name": "Baie"
         },
         "amenity/townhall": {
           "name": "Primărie"
@@ -782,11 +788,20 @@
         "man_made/chimney": {
           "name": "Șemineu"
         },
+        "man_made/cross": {
+          "name": "Cruce"
+        },
         "man_made/embankment": {
           "name": "Îmbarcare"
         },
+        "man_made/insect_hotel": {
+          "name": "Hotel de insecte"
+        },
         "man_made/lighthouse": {
           "name": "Far"
+        },
+        "man_made/observatory": {
+          "name": "Observator"
         },
         "man_made/pier": {
           "name": "Chei"
@@ -803,11 +818,20 @@
         "man_made/storage_tank": {
           "name": "Rezervor de Stocare"
         },
+        "man_made/storage_tank/water": {
+          "name": "Rezervor de apă"
+        },
         "man_made/surveillance": {
           "name": "Supraveghere"
         },
         "man_made/surveillance/camera": {
           "name": "Cameră de Supraveghere"
+        },
+        "man_made/telescope": {
+          "name": "Telescop"
+        },
+        "man_made/telescope/optical": {
+          "name": "Telescop optic"
         },
         "man_made/tower": {
           "name": "Turn"
@@ -815,8 +839,14 @@
         "man_made/tower/observation": {
           "name": "Turn de Observație"
         },
+        "man_made/video_wall": {
+          "name": "Ecran digital"
+        },
         "man_made/wastewater_plant": {
           "name": "Sta'ie de Epurare"
+        },
+        "man_made/water_tap": {
+          "name": "Robinet de apă"
         },
         "man_made/water_tower": {
           "name": "Turn de Apă"
@@ -860,6 +890,9 @@
         "natural/coastline": {
           "name": "Linie de Coastă"
         },
+        "natural/geyser": {
+          "name": "Gheizer"
+        },
         "natural/glacier": {
           "name": "Ghețar"
         },
@@ -871,6 +904,9 @@
         },
         "natural/hot_spring": {
           "name": "Izvor termal"
+        },
+        "natural/mud": {
+          "name": "Noroi"
         },
         "natural/peak": {
           "name": "Vârf"
@@ -884,6 +920,12 @@
         "natural/scree": {
           "name": "Pietriș"
         },
+        "natural/scrub": {
+          "name": "Tufăriș"
+        },
+        "natural/shrub": {
+          "name": "Arbust"
+        },
         "natural/tree": {
           "name": "Copac"
         },
@@ -896,6 +938,9 @@
         "natural/water/basin": {
           "name": "Bazin"
         },
+        "natural/water/canal": {
+          "name": "Suprafață canal"
+        },
         "natural/water/lake": {
           "name": "Lac"
         },
@@ -904,6 +949,9 @@
         },
         "natural/water/reservoir": {
           "name": "Rezervor"
+        },
+        "natural/water/river": {
+          "name": "Suprafață râu"
         },
         "natural/wetland": {
           "name": "Zonă Umedă"
@@ -916,6 +964,9 @@
         },
         "office/administrative": {
           "name": "Oficiu Administrativ"
+        },
+        "office/diplomatic": {
+          "name": "Birou diplomatic"
         },
         "office/diplomatic/embassy": {
           "name": "Ambasadă"
@@ -956,11 +1007,20 @@
         "office/physician": {
           "name": "Fizician"
         },
+        "office/religion": {
+          "name": "Birou religios"
+        },
         "office/research": {
           "name": "Birou de Cercetare"
         },
         "office/telecommunication": {
           "name": "Oficiu Telecom"
+        },
+        "office/therapist": {
+          "name": "Birou de terapist"
+        },
+        "office/translator": {
+          "name": "Birou de traduceri"
         },
         "office/travel_agent": {
           "name": "Agenție de Călătorii"
@@ -1194,6 +1254,9 @@
         },
         "shop/interior_decoration": {
           "name": "Magazin de Decorații Interioare"
+        },
+        "shop/kiosk": {
+          "name": "Chioșc"
         },
         "shop/kitchen": {
           "name": "Magazin de Bucătărie"

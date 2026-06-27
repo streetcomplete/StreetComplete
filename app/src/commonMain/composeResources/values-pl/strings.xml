@@ -755,7 +755,6 @@ Jeśli jakieś pasy są zarezerwowane dla autobusów, utwórz notatkę.</string>
     <string name="quest_shop_gone_title">Co teraz tutaj jest?</string>
     <string name="quest_shop_gone_vacant_answer">Stoi pusty…</string>
     <string name="quest_shop_gone_replaced_answer">To</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Wpisz jaki rodzaj obiektu jest teraz tutaj</string>
     <string name="quest_shop_vacant_type_title">Ten sklep został zlikwidowany. Co tu teraz jest?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">To zadanie jest domyślnie nieaktywne, ponieważ nie w każdym miejscu jest to przydatna informacja, a odpowiedź jest często niemożliwa bez wejścia do danego miejsca.</string>
     <string name="quest_dietType_explanation_kosher">Produkty koszerne są przygotowane według specjalnych zasad, z specjalnym proces certyfikacji potwierdzającego ich zachowanie.</string>
@@ -1491,4 +1490,11 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="quest_shower_hot_water_title">Czy jest tu ciepła woda?</string>
     <string name="calendar_new_event_title">Nowe wydarzenie OSM w Twojej okolicy!</string>
     <string name="pref_title_message_calendar">Nowe wydarzenia OSM w Twojej okolicy</string>
+    <string name="dialog_dont_notify_again2">Zrezygnuj z subskrypcji</string>
+    <string name="quest_leave_new_note_photo_delete">Usuń</string>
+    <string name="quest_maxspeed_type_description">Limit prędkości jest ustalony przez...</string>
+    <string name="quest_maxspeed_answer_roadtype_description">Ulicą jest... 
+
+</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">Obszar zabudowany</string>
 </resources>

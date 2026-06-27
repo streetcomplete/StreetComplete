@@ -176,8 +176,7 @@
           "terms": "foot path,footpath,pavement,sidepath,sidewalk"
         },
         "highway/give_way": {
-          "name": "Give Way Sign",
-          "terms": "yield,sign"
+          "name": "Give Way Sign"
         },
         "highway/street_lamp": {
           "name": "Street Light"
@@ -239,6 +238,9 @@
         "natural/wetland/mangrove": {
           "name": "Mangroves",
           "terms": "mangrove"
+        },
+        "office/association": {
+          "name": "Nonprofit Organisation Office"
         },
         "office/employment_agency": {
           "terms": "job,career,careers,vocational,vocation,occupation"

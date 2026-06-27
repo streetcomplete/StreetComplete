@@ -728,7 +728,6 @@
     <string name="quest_shop_gone_title">Ինչ է հիմա այստեղ:</string>
     <string name="quest_shop_gone_vacant_answer">Թափուր է</string>
     <string name="quest_shop_gone_replaced_answer"> </string>
-    <string name="quest_shop_gone_replaced_answer_hint">Տեսակը մի տեսակ տեղ այստեղ</string>
     <string name="quest_shop_vacant_type_title">Այս խանութը թափուր է եղել: Հիմա ինչ է այստեղ:</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Այս որոնման տեսակը անջատված է լռելյայն, քանի որ այն օգտակար չէ որոշ շրջաններում եւ, ամենայն հավանականությամբ, պետք է մուտք գործեք տեղ, որպեսզի կարողանաք պատասխանել այս տեսակի որոնմանը:</string>
     <string name="quest_dietType_explanation_kosher">Կոշերի արտադրանքը պետք է պատրաստվի հատուկ կանոնների համաձայն, Կաշրուտի սերտիֆիկացման գործակալությունները `նշելով արտադրանքը համապատասխանության մեջ:</string>

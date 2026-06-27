@@ -390,7 +390,7 @@
           "terms": "潛水中心"
         },
         "amenity/doctors": {
-          "name": "診所",
+          "name": "私人診所",
           "terms": "診所,診療所,醫務所,醫療所"
         },
         "amenity/doctors/allergology": {
@@ -1036,6 +1036,10 @@
           "name": "亭子",
           "terms": "亭子,遮雨棚"
         },
+        "amenity/shelter/field_shelter": {
+          "name": "放牧棚舍",
+          "terms": "放牧棚舍"
+        },
         "amenity/shelter/gazebo": {
           "name": "涼亭",
           "terms": "涼亭"
@@ -1075,6 +1079,10 @@
         "amenity/social_facility/assisted_living": {
           "name": "老人個人安養設施",
           "terms": "老人個人安養設施"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "社工服務全日照護 / 全日照護",
+          "terms": "社服全日服務"
         },
         "amenity/social_facility/food_bank": {
           "name": "食物庫",
@@ -2142,6 +2150,9 @@
           "name": "飛盤高爾夫開始區",
           "terms": "飛盤高爾夫開始區"
         },
+        "disused/aeroway": {
+          "name": "廢棄航空設施"
+        },
         "disused/amenity": {
           "name": "停用設施"
         },
@@ -2620,6 +2631,10 @@
         "highway/give_way": {
           "name": "讓路標誌",
           "terms": "讓路標誌,讓行標誌,讓車標誌"
+        },
+        "highway/hitchhiking": {
+          "name": "順風車招呼站",
+          "terms": "順風車招呼站"
         },
         "highway/ladder": {
           "name": "梯子",
@@ -3622,6 +3637,10 @@
           "name": "體育館",
           "terms": "體育館"
         },
+        "leisure/summer_camp": {
+          "name": "夏令營",
+          "terms": "夏令營"
+        },
         "leisure/swimming_area": {
           "name": "天然水源游泳區",
           "terms": "天然水源游泳區,活水游泳區"
@@ -3817,6 +3836,10 @@
         "man_made/gasometer": {
           "name": "儲氣鼓",
           "terms": "儲氣筒"
+        },
+        "man_made/geoglyph": {
+          "name": "地畫",
+          "terms": "地畫"
         },
         "man_made/goods_conveyor": {
           "name": "貨物輸送帶",

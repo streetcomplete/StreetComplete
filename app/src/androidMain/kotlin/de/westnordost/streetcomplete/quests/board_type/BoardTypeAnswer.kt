@@ -19,7 +19,8 @@ enum class BoardType(val osmValue: String) {
     PUBLIC_TRANSPORT("public_transport"),
     NOTICE("notice"),
     SPORT("sport"),
-    RULES("rules")
+    RULES("rules"),
+    TOURISM("tourism")
 }
 
 val BoardType.text: StringResource get() = when (this) {
@@ -32,4 +33,5 @@ val BoardType.text: StringResource get() = when (this) {
     NOTICE -> Res.string.quest_board_type_notice_board
     SPORT -> Res.string.quest_board_type_sport
     RULES -> Res.string.quest_board_type_rules
+    TOURISM -> Res.string.quest_board_type_tourism
 }

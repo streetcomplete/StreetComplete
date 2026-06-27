@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Surface
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -15,7 +16,7 @@ import androidx.core.graphics.toPointF
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.location.SurveyChecker
@@ -117,13 +118,13 @@ class MoveNodeFragment :
             )
         }
 
-        binding.composeView.content {
+        binding.composeView.content { Surface {
             MoveNodeForm(
                 distance = distance.floatValue,
                 displayUnit = displayUnit,
                 onClickCancel = { activity?.onBackPressed() },
             )
-        }
+        } }
 
         binding.okButtonComposeView.content {
             FloatingOkButton(

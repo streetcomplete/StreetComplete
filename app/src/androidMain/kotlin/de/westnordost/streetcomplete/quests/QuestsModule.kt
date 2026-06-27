@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -212,7 +212,7 @@ val questsModule = module {
         questTypeRegistry(
             get(),
             { countryInfos.get(countryBoundariesLazy.value, it) },
-            { countryBoundariesLazy.value.getIds(it.longitude, it.latitude).firstOrNull() },
+            { countryBoundariesLazy.value.getIds(it).firstOrNull() },
             { featureDictionaryLazy.value.getFeature(it) }
         )
     }
@@ -344,9 +344,11 @@ fun questTypeRegistry(
     163 to AddCrossingMarkings(),
     41 to AddTactilePavingCrosswalk(),
     159 to AddCrossingKerbHeight(),
-    42 to AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing
+    44 to AddTrafficSignalsVibration(), // should be asked before question for sound, see #6890
     43 to AddTrafficSignalsButton(),
-    44 to AddTrafficSignalsVibration(),
+    42 to AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing
+
+
 
     /* ↓ 2.solvable when right in front of it ----------------------------------------------- */
     45 to AddInformationToTourism(), // OSM Carto

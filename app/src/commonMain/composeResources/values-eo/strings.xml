@@ -747,7 +747,6 @@ Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe.</string
     <string name="quest_shop_gone_title">Kio estas ĉi tie nun?</string>
     <string name="quest_shop_gone_vacant_answer">Ĝi estas vaka</string>
     <string name="quest_shop_gone_replaced_answer">Ĝi estas…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Tajpu specon de loko ĉi tie</string>
     <string name="quest_shop_vacant_type_title">Ĉi tiu butiko estis vaka. Kio estas ĉi tie nun?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ĉi tia tasko estas malebiligita defaŭlte ĉar ĝi ne estas utila en kelkaj regionoj kaj vi probable devas eniri la lokon por plenigi tian taskon.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Tute neniu biciklovojo</string>

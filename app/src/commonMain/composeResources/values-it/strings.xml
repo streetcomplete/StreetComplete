@@ -753,7 +753,6 @@ riconoscimento</string>
     <string name="quest_shop_gone_title">Che cosa c’è invece?</string>
     <string name="quest_shop_gone_vacant_answer">È libero</string>
     <string name="quest_shop_gone_replaced_answer">Un(a)…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Inserisci il tipo di attività</string>
     <string name="quest_shop_vacant_type_title">Questo negozio era libero. Cosa c'è ora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Questo tipo di missione non è attivo normalmente perché in alcune regioni non è utile e perché, per rispondere, probabilmente è necessario entrare nel luogo.</string>
     <string name="quest_dietType_explanation_kosher">I prodotti kosher devono essere preparati seguendo metodi particolari e vengono controllati da agenzie di certificazione kashrut.</string>
@@ -1490,4 +1489,13 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="calendar_new_event_title">Nuovo evento OSM nella tua zona!</string>
     <string name="pref_title_message_calendar">Nuovi eventi OSM nella tua zona</string>
     <string name="quest_ferry_hgv_title">I traghetti di questa rotta trasportano veicoli pesanti?</string>
+    <string name="dialog_dont_notify_again2">Cancella iscrizione</string>
+    <string name="quest_leave_new_note_track_recording">La registrazione sarà allegata</string>
+    <string name="quest_leave_new_note_photo_delete">Elimina</string>
+    <string name="quest_maxspeed_type_description">Il limite di velocità è dato da...</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">Cartello limite di velocità</string>
+    <string name="quest_maxspeed_answer_roadtype_description">La strada è...</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">illuminato</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">non illuminato</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Strada a due corsie non illuminata</string>
 </resources>

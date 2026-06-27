@@ -29,7 +29,7 @@
           "name": "Огласни тотем"
         },
         "aerialway": {
-          "name": "Обележија жичаре"
+          "name": "Обележије жичаре"
         },
         "aerialway/cable_car": {
           "name": "Висећа жичара"
@@ -71,7 +71,7 @@
           "name": "Зип-лајн"
         },
         "aeroway": {
-          "name": "Ваздухопловство"
+          "name": "Обележије ваздушног саобраћаја"
         },
         "aeroway/aerodrome": {
           "name": "Аеродром"
@@ -146,8 +146,8 @@
           "name": "Клупа"
         },
         "amenity/bicycle_parking": {
-          "name": "Бициклистичко стајалиште",
-          "terms": "бициклистички паркинг,паркинг за бицикле,parking za bicikle"
+          "name": "Паркиралиште за бицикле",
+          "terms": "бициклистички паркинг,паркинг за бицикле,parking za bicikle,бициклистичко стајалиште"
         },
         "amenity/bicycle_parking/building": {
           "name": "Паркинг гаража за бицикле"
@@ -161,6 +161,9 @@
         },
         "amenity/bicycle_rental": {
           "name": "Изнајмљивање бицикла"
+        },
+        "amenity/bicycle_repair_station": {
+          "name": "Станица за поправку бицикала"
         },
         "amenity/bicycle_wash": {
           "name": "Перионица за бицикле"
@@ -837,6 +840,9 @@
         "amenity/vending_machine": {
           "name": "Аутомат"
         },
+        "amenity/vending_machine/bicycle_tube": {
+          "name": "Аутомат за унутрашње гуме за бицикле"
+        },
         "amenity/vending_machine/bottle_return": {
           "name": "Аутомат за повратак флаша"
         },
@@ -1220,6 +1226,9 @@
           "name": "Студентски дом",
           "terms": "спаваоница,студентски дом"
         },
+        "building/entrance": {
+          "name": "Улаз/излаз"
+        },
         "building/farm": {
           "name": "Сеоска кућа"
         },
@@ -1304,6 +1313,9 @@
         },
         "building/retail": {
           "name": "Малопродајна зграда"
+        },
+        "building/riding_hall": {
+          "name": "Затворени мањеж"
         },
         "building/roof": {
           "name": "Кров"
@@ -1548,6 +1560,9 @@
         },
         "disc_golf/tee": {
           "name": "Диск голф почетно подручје"
+        },
+        "disused/aeroway": {
+          "name": "Некоришћено обележије ваздушног саобраћаја"
         },
         "disused/railway": {
           "name": "Некоришћено железничко обележје"
@@ -1808,6 +1823,12 @@
         "highway/cycleway/moped_link-NL": {
           "name": "Мопедска стаза"
         },
+        "highway/cycleway/traffic_island": {
+          "name": "Бициклистичко острво"
+        },
+        "highway/cycleway/traffic_island_shared": {
+          "name": "Пешачко и бициклистичко острво"
+        },
         "highway/elevator": {
           "name": "Лифт"
         },
@@ -1851,7 +1872,7 @@
           "name": "Тротоар"
         },
         "highway/footway/traffic_island": {
-          "name": "Саобраћајно острво"
+          "name": "Пешачко острво"
         },
         "highway/give_way": {
           "name": "Знак уступања првенства пролаза"
@@ -1870,6 +1891,10 @@
         },
         "highway/motorway": {
           "name": "Аутопут"
+        },
+        "highway/motorway_junction": {
+          "name": "Искључење са мотопута",
+          "terms": "излаз са мотопута,искључење са брзог пута,искључење са брзе цесте"
         },
         "highway/motorway_link": {
           "name": "Укључење на аутопут",
@@ -1943,7 +1968,7 @@
           "terms": "колски прилаз"
         },
         "highway/service/emergency_access": {
-          "name": "Приступ за хитне случајеве"
+          "name": "Приступ за хитне службе"
         },
         "highway/service/parking_aisle": {
           "name": "Пролаз кроз паркинг"
@@ -2368,7 +2393,7 @@
           "name": "Хакерспејс"
         },
         "leisure/horse_riding": {
-          "name": "Центар за јахање"
+          "name": "Коњички центар"
         },
         "leisure/hot_tub": {
           "name": "Ђакузи"
@@ -2462,7 +2487,8 @@
           "name": "Крикет терен"
         },
         "leisure/pitch/equestrian": {
-          "name": "Јахање / Родео Арена"
+          "name": "Мањеж / Родео арена",
+          "terms": "манеж / родео арена,јахалиште / родео арена"
         },
         "leisure/pitch/field_hockey": {
           "name": "Терен за хокеј на трави"
@@ -3127,7 +3153,8 @@
           "name": "Природна шума"
         },
         "noexit/yes": {
-          "name": "Без излаза"
+          "name": "Без излаза",
+          "terms": "без излаза,забрањен излаз,забрањено искључење,без искључења,ћорсокак,крај пута"
         },
         "office": {
           "name": "Канцеларија"
@@ -3481,6 +3508,9 @@
         },
         "power/generator/method/photovoltaic": {
           "name": "Соларна плоча"
+        },
+        "power/generator/method/photovoltaic/building/roof": {
+          "name": "Надстрешница са соларним панелима"
         },
         "power/generator/method/photovoltaic/location/roof": {
           "name": "Кровни соларни панели"

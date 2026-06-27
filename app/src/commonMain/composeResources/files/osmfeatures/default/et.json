@@ -289,7 +289,8 @@
           "terms": "dialüüsiteenus"
         },
         "amenity/clinic/fertility": {
-          "name": "Viljakuskliinik"
+          "name": "viljatusravi kliinik",
+          "terms": "viljakuskliinik,viljatusravi kliinik,reproduktiivmeditsiini kliinik"
         },
         "amenity/clock": {
           "name": "Kell",
@@ -957,6 +958,10 @@
           "name": "Varjualune",
           "terms": "ulualune,räästaalune,peavari"
         },
+        "amenity/shelter/field_shelter": {
+          "name": "Loomade varjualune",
+          "terms": "varjualune,põllul,väljal,põld,väli,loomad"
+        },
         "amenity/shelter/gazebo": {
           "name": "Lehtla",
           "terms": "laube"
@@ -989,6 +994,9 @@
         },
         "amenity/social_facility/ambulatory_care": {
           "name": "Ambulatoorne hooldus"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Sotsiaalteenuste päevakeskus"
         },
         "amenity/social_facility/food_bank": {
           "name": "Toidupank"
@@ -1083,6 +1091,10 @@
         "amenity/townhall/city": {
           "name": "Raekoda"
         },
+        "amenity/toy_library": {
+          "name": "Mängude laenutus",
+          "terms": "mängus,mäng,lauamäng,lauamängud,mänguasjad,mänguasi"
+        },
         "amenity/trolley_bay": {
           "name": "Ostukärude varjualune",
           "terms": "ostukäru,poekäru"
@@ -1129,7 +1141,8 @@
           "name": "Väljaheitekottide müügiautomaat"
         },
         "amenity/vending_machine/feminine_hygiene": {
-          "name": "Naiste hügieenitarvete müügiautomaat"
+          "name": "Naiste hügieenitarvete müügiautomaat",
+          "terms": "sidemed,tampoonid"
         },
         "amenity/vending_machine/food": {
           "name": "Toidu müügiautomaat"
@@ -1221,7 +1234,8 @@
           "terms": "ohutussaar,liiklussaar"
         },
         "attraction": {
-          "name": "Lõbustus"
+          "name": "Meelelahutus",
+          "aliases": "Lõbustus"
         },
         "attraction/amusement_ride": {
           "name": "Lõbuatraktsioon"
@@ -1530,7 +1544,8 @@
           "terms": "hoone,ait,abihoone,laut,küün"
         },
         "building/fire_station": {
-          "name": "Tuletõrjedepoo"
+          "name": "Tuletõrjedepoo",
+          "terms": "tuletõrje,päästekomando"
         },
         "building/garage": {
           "name": "Garaaž",
@@ -1740,7 +1755,8 @@
           "terms": "paadimeister"
         },
         "craft/bookbinder": {
-          "name": "Raamatuköitja"
+          "name": "Raamatuköitja",
+          "terms": "köitja,raamatupookija,parandamine"
         },
         "craft/brewery": {
           "name": "Pruulikoda",
@@ -1766,7 +1782,8 @@
           "name": "Kellassepp"
         },
         "craft/confectionery": {
-          "name": "Kondiiter"
+          "name": "Kondiiter",
+          "terms": "suhkrupagar,kondiitritoodete valmistaja,maiustused,käsitöö,magus"
         },
         "craft/distillery": {
           "name": "Destilleerimisettevõte",
@@ -1925,6 +1942,9 @@
         "disc_golf/tee": {
           "name": "Kettagolfi tii-ala",
           "terms": "kettagolfi tiiala,discgolfi tii-ala,discgolfi tiiala"
+        },
+        "disused/aeroway": {
+          "name": "Kasutusest eemaldatud lennujamma rajatis"
         },
         "disused/amenity": {
           "name": "Mittekasutatav hüve või teenus"
@@ -2118,6 +2138,9 @@
           "name": "Külgveetakistus",
           "terms": "külgveetakistuse piir,tähistusvai"
         },
+        "golf/path": {
+          "name": "Golfiväjaku jalgtee"
+        },
         "golf/rough": {
           "name": "Raff",
           "terms": "kõrge rohi,kõrgema rohuga ala,hein"
@@ -2135,7 +2158,8 @@
           "terms": "kliinik,arst,haigla,heaolu,taastusravi,ravi"
         },
         "healthcare/alternative": {
-          "name": "Alternatiivmeditsiin"
+          "name": "Alternatiivmeditsiin",
+          "terms": "alternatiivne meditsiin,täiendmeditsiin,komplementaarmeditsiin,loodusravi,rahvameditsiin"
         },
         "healthcare/alternative/acupuncture": {
           "name": "Nõelravi teenus",
@@ -3226,6 +3250,10 @@
           "name": "Hobuseraua viskamise areen",
           "terms": "hobuseraud,viskamine,heitmine,areen,väljak,plats"
         },
+        "leisure/pitch/netball": {
+          "name": "Kukkurpalli väljak",
+          "terms": "netballi väljak,netballi plats"
+        },
         "leisure/pitch/padel": {
           "name": "Padeliväljak",
           "terms": "padel,padeliplats,padelihall,padeliväljak"
@@ -3335,6 +3363,10 @@
         "leisure/stadium": {
           "name": "Staadion",
           "terms": "spordiväljak,spordiplats,lastestaadion,keskstaadion,jalgpallistaadion"
+        },
+        "leisure/summer_camp": {
+          "name": "Suvelaager",
+          "terms": "puhkelaager"
         },
         "leisure/swimming_area": {
           "name": "Looduslik ujumiskoht",
@@ -3530,6 +3562,10 @@
         "man_made/gasometer": {
           "name": "Gaasimahuti",
           "aliases": "Gaasihoidla hoone"
+        },
+        "man_made/geoglyph": {
+          "name": "Geoglüüf",
+          "terms": "maastikupilt"
         },
         "man_made/goods_conveyor": {
           "name": "Puistekaupade konveier"
@@ -4373,7 +4409,8 @@
           "name": "Küla"
         },
         "playground": {
-          "name": "Mänguväljaku varustus"
+          "name": "Mänguväljaku varustus",
+          "terms": "liumägi,liumäed,kiik,kiiged,ronimistarvikud,tahvlid,trossid,liivakast,mängumaja"
         },
         "playground/activitypanel": {
           "name": "Mängupaneel"
@@ -4412,6 +4449,10 @@
         },
         "playground/pump": {
           "name": "Veepump mängimiseks"
+        },
+        "playground/roundabout": {
+          "name": "Ringristmik mänguväljakul",
+          "terms": "ringtee mänguväljakul"
         },
         "playground/sandpit": {
           "name": "Liivakast"
@@ -4540,6 +4581,10 @@
         "power/plant/source/solar": {
           "name": "Päikesejõujaam",
           "terms": "päikesejaam,päikesepark"
+        },
+        "power/plant/source/solar/photovoltaic": {
+          "name": "Päikeseelektrijaam",
+          "terms": "päikesejaam,päikesepark,päikesejõujaam"
         },
         "power/plant/source/waste": {
           "name": "Jäätmeküttel elektrijaam"
@@ -4955,7 +5000,8 @@
           "terms": "köitmiskoda,trükikoda,raamatutrükikoda,köitja"
         },
         "shop/books": {
-          "name": "Raamatupood"
+          "name": "Raamatupood",
+          "terms": "raamatud,raamatukauplus,lugemisvara"
         },
         "shop/boutique": {
           "name": "Butiik"
@@ -5363,6 +5409,7 @@
         },
         "shop/newsagent": {
           "name": "Lehekiosk",
+          "terms": "ajalehed,ajakirjad,ajaleht,ajakiri,žurnaal,postmargid,postmark",
           "aliases": "Ajalehekiosk"
         },
         "shop/nutrition_supplements": {
@@ -5787,7 +5834,8 @@
           "name": "Loomaaed"
         },
         "tourism/zoo/petting": {
-          "name": "Loomade seltsiaed"
+          "name": "Loomade seltsiaed",
+          "terms": "kontaktloomaaed,lasteloomaaed,laste loomaaed,lapsed,silitamine,paitamine,mini-loomaaed,taluloomade park,lemmikloomaaed,loomade paitamise ala"
         },
         "tourism/zoo/safari": {
           "name": "Safaripark"
@@ -6008,7 +6056,8 @@
           "terms": "kaljurünk"
         },
         "type/waterway": {
-          "name": "Veetee"
+          "name": "Veetee",
+          "terms": "sõiduvesi"
         },
         "waterway": {
           "name": "Veetee objekt"

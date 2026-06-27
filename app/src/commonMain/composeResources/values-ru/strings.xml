@@ -756,7 +756,6 @@
     <string name="quest_shop_gone_title">Что сейчас здесь находится вместо?</string>
     <string name="quest_shop_gone_vacant_answer">Съехало</string>
     <string name="quest_shop_gone_replaced_answer">…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Введите категорию точки здесь</string>
     <string name="quest_shop_vacant_type_title">Магазин выехал. Что здесь сейчас расположено?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Данный тип заданий отключён по умолчанию, ибо он бесполезен в некоторых регионах и, скорее всего, требуется зайти в это место, чтобы решить задания этого типа.</string>
     <string name="quest_dietType_explanation_kosher">Кошерные продукты должны быть приготовлены по специальным правилам, с маркировкой агентства по сертификации кашрута.</string>
@@ -768,7 +767,7 @@
     <string name="quest_surface_value_clay">Глина</string>
     <string name="quest_surface_value_artificial_turf">Искусственная трава</string>
     <string name="quest_bicycle_parking_fee_title">Это платная парковка для велосипеда?</string>
-    <string name="quest_buildingType_house_description2">дом на одну семью, например, находящийся в ряду домов</string>
+    <string name="quest_buildingType_house_description2">дом на одну семью, находящийся в ряду домов</string>
     <string name="quest_drinking_water_potable_signed">Питьевая вода (есть знак)</string>
     <string name="quest_drinking_water_not_potable_signed">Не питьевая вода (есть знак)</string>
     <string name="quest_postboxRoyalCypher_title">Какой Королевский шифр на этом почтовом ящике?</string>

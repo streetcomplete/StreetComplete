@@ -29,6 +29,7 @@ abstract class ACheckboxGroupQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     final override val contentLayoutResId = R.layout.compose_view
     private val binding by contentViewBinding(ComposeViewBinding::bind)
     override val defaultExpanded = false
+    open val allowNone = true
 
     protected abstract val items: List<I>
     private lateinit var selectedOptions: MutableState<Set<I>>
@@ -73,7 +74,7 @@ abstract class ACheckboxGroupQuestForm<I, T> : AbstractOsmQuestForm<T>() {
     }
 
     override val buttonPanelAnswers: List<AnswerItem> get() =
-        if (selectedOptions.value.isEmpty()) {
+        if (selectedOptions.value.isEmpty() && allowNone) {
             listOf(AnswerItem(R.string.overlay_none) { onClickOk(emptySet<I>()) })
         } else {
             emptyList()

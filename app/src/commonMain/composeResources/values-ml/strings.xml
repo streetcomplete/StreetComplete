@@ -746,7 +746,6 @@
     <string name="quest_shop_gone_title">പകരം ഇപ്പോൾ ഇവിടെ എന്താണ് ഉള്ളത്?</string>
     <string name="quest_shop_gone_vacant_answer">അത് ഒഴിഞ്ഞുകിടക്കുന്നു</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">ഇത് ഏത് തരം സ്ഥലം ആണെന്ന് ടൈപ്പുചെയ്യുക</string>
     <string name="quest_shop_vacant_type_title">ഈ കട ഒഴിഞ്ഞുകിടക്കുന്നു. ഇപ്പോൾ ഇവിടെ എന്താണ്?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">ചില പ്രദേശങ്ങളിൽ ഇത് പ്രയോജനകരമല്ലാത്തതിനാൽ ഈ ക്വസ്റ്റ് തരം ഡീഫോൾട്ടായി അപ്രാപ്തമാക്കിയിരിക്കുന്നു.</string>
     <string name="quest_dietType_explanation_kosher">കോശർ ഉൽപ്പന്നങ്ങൾ പ്രത്യേക നിയമങ്ങൾ അനുസരിച്ച് തയ്യാറാക്കണം; കാഷ്രൂത് സർട്ടിഫിക്കേഷൻ ഏജൻസികൾ അത് അടയാളപ്പെടുത്തുന്നു.</string>

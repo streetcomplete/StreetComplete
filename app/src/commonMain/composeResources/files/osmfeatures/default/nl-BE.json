@@ -2052,6 +2052,9 @@
         "disused/shop": {
           "name": "Ongebruikte winkel"
         },
+        "education/prep_school": {
+          "name": "Bijlesinstituut"
+        },
         "embankment": {
           "name": "Dijk/Talud"
         },

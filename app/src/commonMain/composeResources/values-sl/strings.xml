@@ -754,7 +754,6 @@ Razmislite tudi o odgovoru “%1$s”, če izbira ne velja za celoten označeni 
     <string name="quest_shop_gone_title">Kaj je zdaj tu?</string>
     <string name="quest_shop_gone_vacant_answer">Prazno je</string>
     <string name="quest_shop_gone_replaced_answer">En(a) …</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Vpišite vrsto prostora</string>
     <string name="quest_shop_vacant_type_title">Ta trgovina je bila prazna. Kaj je zdaj tam?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ta naloga je privzeto onemogočena, ker v nekaterih regijah ni koristna, poleg tega pa boste za rešitev verjetno morali vstopiti v notranjost zgradbe.</string>
     <string name="quest_dietType_explanation_kosher">Košer izdelki morajo biti pripravljeni v skladu s posebnimi pravili, pri čemer certifikacijske agencije za kashrut označujejo izdelke, ki so v skladu s temi pravili.</string>

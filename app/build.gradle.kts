@@ -1,5 +1,6 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
+import dev.mokkery.MockMode
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
@@ -8,8 +9,8 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "63.1"
-val appVersionCode = 6304
+val appVersionName = "63.2"
+val appVersionCode = 6305
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -23,24 +24,27 @@ val bcp47ExportLanguages = setOf(
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v6.16.0"
+val presetsVersion = "v6.18.0"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
  *  */
-val nsiVersion = "7.0.20260414"
+val nsiVersion = "7.2.20260530"
 
 /** Project ID of the crowdsource translation platform (from where to pull translations from) */
 val poEditorProjectId = "97843"
 
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "2.3.20"
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.3.20"
-    id("org.jetbrains.kotlin.plugin.compose") version "2.3.20"
-    id("com.android.application") version "8.11.2"
-    id("org.jetbrains.compose") version "1.10.3"
-    id("org.jetbrains.kotlinx.atomicfu") version "0.32.1"
-    id("com.codingfeline.buildkonfig") version "0.18.0"
+    id("org.jetbrains.kotlin.multiplatform") version "2.4.0"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.4.0"
+    id("org.jetbrains.kotlin.plugin.compose") version "2.4.0"
+    id("com.android.application") version "8.13.2"
+    id("org.jetbrains.compose") version "1.11.1"
+    id("org.jetbrains.kotlinx.atomicfu") version "0.33.0"
+    id("com.codingfeline.buildkonfig") version "0.22.0"
+    // keep in sync with Kotlin version! See https://mokkery.dev/docs/Setup/#compatibility
+    id("dev.mokkery") version "3.4.2"
+    id("org.jetbrains.kotlin.plugin.allopen") version "2.4.0"
 }
 
 repositories {
@@ -62,12 +66,23 @@ buildkonfig {
         create("android") {
             buildConfigField(STRING, "PLATFORM", "android")
         }
-        for (ios in listOf("iosX64", "iosArm64", "iosSimulatorArm64")) {
+        for (ios in listOf("iosArm64", "iosSimulatorArm64")) {
             create(ios) {
                 buildConfigField(STRING, "PLATFORM", "ios")
             }
         }
     }
+}
+
+// for mocking in tests
+allOpen {
+    annotation("de.westnordost.streetcomplete.util.Mockable")
+}
+mokkery {
+    // mocks will return default values if not mocked otherwise
+    defaultMockMode.set(MockMode.autofill)
+    // to enable mocking of classes whose constructor parameters also need to be mocked (with concrete classes)
+    stubs.allowConcreteClassInstantiation = true
 }
 
 kotlin {
@@ -79,7 +94,6 @@ kotlin {
     }
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
@@ -93,28 +107,31 @@ kotlin {
         commonMain {
             dependencies {
                 // Kotlin
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
                 // Atomics, Locks, Synchronization
                 // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
-                implementation("org.jetbrains.kotlinx:atomicfu:0.32.1")
+                implementation("org.jetbrains.kotlinx:atomicfu:0.33.0")
 
                 // Dependency injection
-                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.2.1"))
+                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.2.2"))
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-compose")
                 implementation("io.insert-koin:koin-compose-viewmodel")
                 implementation("io.insert-koin:koin-androidx-compose-navigation")
 
+                // Logging
+                implementation("co.touchlab:kermit:2.1.0")
+
                 // settings
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
                 // I/O
-                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.4.2")
-                implementation("io.ktor:ktor-client-encoding:3.4.2")
+                implementation("io.ktor:ktor-client-core:3.5.0")
+                implementation("io.ktor:ktor-client-encoding:3.5.0")
                 // SHA256 hashing, used during OAuth authentication
                 implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
@@ -130,7 +147,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.11.0")
 
                 // Date / time
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.8.0")
 
                 // finding in which country we are for country-specific logic
                 implementation("de.westnordost:countryboundaries:3.0.0")
@@ -142,15 +159,15 @@ kotlin {
                 implementation("de.westnordost:osm-opening-hours:0.4.0")
 
                 // UI (Compose)
-                implementation("org.jetbrains.compose.runtime:runtime:1.10.3")
-                implementation("org.jetbrains.compose.foundation:foundation:1.10.3")
-                implementation("org.jetbrains.compose.material:material:1.10.3")
-                implementation("org.jetbrains.compose.ui:ui:1.10.3")
-                implementation("org.jetbrains.compose.components:components-resources:1.10.3")
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.10.3")
+                implementation("org.jetbrains.compose.runtime:runtime:1.11.1")
+                implementation("org.jetbrains.compose.foundation:foundation:1.11.1")
+                implementation("org.jetbrains.compose.material:material:1.11.1")
+                implementation("org.jetbrains.compose.ui:ui:1.11.1")
+                implementation("org.jetbrains.compose.components:components-resources:1.11.1")
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.11.1")
 
                 // UI Navigation
-                implementation("org.jetbrains.compose.ui:ui-backhandler:1.10.3")
+                implementation("org.jetbrains.compose.ui:ui-backhandler:1.11.1")
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
 
                 // UI ViewModel
@@ -159,7 +176,10 @@ kotlin {
                 // UI widgets
 
                 // non-lazy grid
-                implementation("com.cheonjaeung.compose.grid:grid:2.7.1")
+                // NOTE: might replace with
+                // https://developer.android.com/develop/ui/compose/layouts/adaptive/grid
+                // when that API is not experimental anymore
+                implementation("com.cheonjaeung.compose.grid:grid:2.7.4")
 
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation("sh.calvin.reorderable:reorderable:3.1.0")
@@ -180,7 +200,7 @@ kotlin {
                 implementation("io.insert-koin:koin-androidx-workmanager")
 
                 // Android stuff
-                implementation("com.google.android.material:material:1.13.0")
+                implementation("com.google.android.material:material:1.14.0")
                 implementation("androidx.core:core-ktx:1.18.0")
                 implementation("androidx.appcompat:appcompat:1.7.1")
                 implementation("androidx.constraintlayout:constraintlayout:2.2.1")
@@ -190,44 +210,43 @@ kotlin {
                 implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
                 // Compose
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.10.3")
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.11.1")
                 implementation("androidx.activity:activity-compose:1.13.0")
 
                 // photos
                 implementation("androidx.exifinterface:exifinterface:1.4.2")
 
                 // Kotlin
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
 
                 // scheduling background jobs
                 implementation("androidx.work:work-runtime-ktx:2.11.2")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.4.2")
+                implementation("io.ktor:ktor-client-android:3.5.0")
 
                 // widgets
                 implementation("com.google.android.flexbox:flexbox:3.0.0")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk:13.0.2")
+                implementation("org.maplibre.gl:android-sdk-opengl:13.3.0")
             }
         }
         iosMain {
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.4.2")
+                implementation("io.ktor:ktor-client-darwin:3.5.0")
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("io.ktor:ktor-client-mock:3.4.2")
+                implementation("io.ktor:ktor-client-mock:3.5.0")
             }
         }
         androidUnitTest {
             dependencies {
-                implementation("org.mockito:mockito-core:5.23.0")
                 implementation(kotlin("test"))
             }
         }
@@ -299,6 +318,7 @@ android {
     sourceSets {
         getByName("main") {
             res.srcDir(layout.buildDirectory.dir("generated/androidMain/res"))
+            java.srcDir(layout.buildDirectory.dir("generated/androidMain/kotlin"))
         }
     }
 
@@ -334,7 +354,7 @@ compose {
 }
 
 dependencies {
-    debugImplementation("org.jetbrains.compose.ui:ui-tooling:1.10.3")
+    debugImplementation("org.jetbrains.compose.ui:ui-tooling:1.11.1")
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
@@ -430,7 +450,6 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFilesAndroid = { "$projectDir/src/androidMain/res/values-$it/strings.xml" }
     targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/strings.xml" }
 }
 
@@ -466,10 +485,7 @@ tasks.register("copyDefaultStringsToEnStrings") {
     group = "streetcomplete"
     doLast {
         val sourceStrings = File("$projectDir/src/commonMain/composeResources/values/strings.xml")
-
-        sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values-en/strings.xml"), true)
         sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
-        sourceStrings.copyTo(File("$projectDir/src/androidMain/res/values/strings.xml"), true)
     }
 }
 
@@ -491,8 +507,15 @@ val copySharedResToAndroid by tasks.registering(Copy::class) {
     }
 }
 
+val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
+    group = "streetcomplete"
+    sourceDir = "$projectDir/src/commonMain/composeResources"
+    targetDir = "$projectDir/build/generated/androidMain/res"
+}
+
 project.afterEvaluate {
     tasks.named("preBuild") {
         dependsOn(copySharedResToAndroid)
+        dependsOn(copyStringsToAndroid)
     }
 }
