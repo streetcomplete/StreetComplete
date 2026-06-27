@@ -1417,6 +1417,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_shelter_capacity_title">Hur många personer kan sova här?</string>
     <string name="quest_handwashing_title">Kan du tvätta händerna här?</string>
     <string name="quest_openingHours_delete">Ta bort</string>
+    <string name="quest_streetName_hint">Du kan använda samma namn som för ett intilliggande avsnitt genom att trycka på det på kartan.</string>
     <string name="quest_streetName_add_language">Lägg till språk</string>
     <string name="ok">OK</string>
     <string name="cancel">Avbryt</string>
@@ -1425,6 +1426,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_board_type_rules">Regler</string>
     <string name="quest_firewood_provided_title">Finns det brännved här?</string>
     <string name="quest_first_aid_kit_location">Var finns första hjälpen-kitet?</string>
+    <string name="quest_level_thing_title">På vilken våning ligger den här saken?</string>
     <string name="quest_bicycle_charging_station_capacity_title">Hur många cyklar kan laddas här samtidigt?</string>
     <string name="quest_charging_station_bicycles_title">Kan man ladda cyklar här också?</string>
     <string name="quest_charging_station_bicycles_hint">Strömadaptrarna till cykelladdarna ansluts till vanliga hushållsuttag.</string>
@@ -1474,10 +1476,13 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_ferry_hgv_title">Går det att transportera lastbilar på den här färjelinjen?</string>
     <string name="dialog_dont_notify_again2">Avsluta prenumerationen</string>
     <string name="quest_leave_new_note_photo_delete">Ta bort</string>
+    <string name="quest_maxspeed_type_description">Hastighetsbegränsningen anges på</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">Skylt med rekommenderad hastighetsbegränsning</string>
     <string name="quest_maxspeed_answer_roadtype_description">Gatan ligger...</string>
     <string name="quest_maxspeed_answer_roadtype_urban">i ett bebyggt område</string>
     <string name="quest_maxspeed_answer_roadtype_rural">utanför bebyggt område</string>
     <string name="quest_maxspeed_answer_roadtype_lit">upplyst</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">inte upplyst</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Oupplyst och tvåfilig väg</string>
+    <string name="quest_board_type_tourism">Turism (flera ämnen)</string>
 </resources>
