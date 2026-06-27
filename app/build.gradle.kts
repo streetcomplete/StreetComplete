@@ -35,15 +35,16 @@ val nsiVersion = "7.0.20260414"
 val poEditorProjectId = "97843"
 
 plugins {
-    id("org.jetbrains.kotlin.multiplatform") version "2.3.20"
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.3.20"
-    id("org.jetbrains.kotlin.plugin.compose") version "2.3.20"
+    id("org.jetbrains.kotlin.multiplatform") version "2.4.0"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.4.0"
+    id("org.jetbrains.kotlin.plugin.compose") version "2.4.0"
     id("com.android.application") version "8.11.2"
     id("org.jetbrains.compose") version "1.10.3"
-    id("org.jetbrains.kotlinx.atomicfu") version "0.32.1"
-    id("com.codingfeline.buildkonfig") version "0.18.0"
-    id("dev.mokkery") version "3.3.0"
-    id("org.jetbrains.kotlin.plugin.allopen") version "2.3.20"
+    id("org.jetbrains.kotlinx.atomicfu") version "0.33.0"
+    id("com.codingfeline.buildkonfig") version "0.22.0"
+    // keep in sync with Kotlin version! See https://mokkery.dev/docs/Setup/#compatibility
+    id("dev.mokkery") version "3.4.2"
+    id("org.jetbrains.kotlin.plugin.allopen") version "2.4.0"
 }
 
 repositories {
@@ -111,7 +112,7 @@ kotlin {
 
                 // Atomics, Locks, Synchronization
                 // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
-                implementation("org.jetbrains.kotlinx:atomicfu:0.32.1")
+                implementation("org.jetbrains.kotlinx:atomicfu:0.33.0")
 
                 // Dependency injection
                 implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.2.1"))
@@ -240,13 +241,13 @@ kotlin {
                 implementation(kotlin("test"))
 
                 implementation("io.ktor:ktor-client-mock:3.4.2")
-                implementation("dev.mokkery:mokkery-gradle:3.3.0")
+                implementation("dev.mokkery:mokkery-gradle:3.4.2")
             }
         }
         androidUnitTest {
             dependencies {
                 implementation(kotlin("test"))
-                implementation("dev.mokkery:mokkery-gradle:3.3.0")
+                implementation("dev.mokkery:mokkery-gradle:3.4.2")
             }
         }
         androidInstrumentedTest {
