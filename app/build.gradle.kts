@@ -9,8 +9,8 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "63.1"
-val appVersionCode = 6304
+val appVersionName = "63.2"
+val appVersionCode = 6305
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -24,12 +24,12 @@ val bcp47ExportLanguages = setOf(
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v6.16.0"
+val presetsVersion = "v6.18.0"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
  *  */
-val nsiVersion = "7.0.20260414"
+val nsiVersion = "7.2.20260530"
 
 /** Project ID of the crowdsource translation platform (from where to pull translations from) */
 val poEditorProjectId = "97843"
@@ -108,14 +108,14 @@ kotlin {
         commonMain {
             dependencies {
                 // Kotlin
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 
                 // Atomics, Locks, Synchronization
                 // Aparently only necessary as long as https://github.com/Kotlin/kotlinx-atomicfu/issues/145 is not solved
                 implementation("org.jetbrains.kotlinx:atomicfu:0.33.0")
 
                 // Dependency injection
-                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.2.1"))
+                implementation(project.dependencies.platform("io.insert-koin:koin-bom:4.2.2"))
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-compose")
                 implementation("io.insert-koin:koin-compose-viewmodel")
@@ -128,11 +128,11 @@ kotlin {
                 implementation("com.russhwolf:multiplatform-settings:1.3.0")
 
                 // I/O
-                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.4.2")
-                implementation("io.ktor:ktor-client-encoding:3.4.2")
+                implementation("io.ktor:ktor-client-core:3.5.0")
+                implementation("io.ktor:ktor-client-encoding:3.5.0")
                 // SHA256 hashing, used during OAuth authentication
                 implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
@@ -148,7 +148,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json-io:1.11.0")
 
                 // Date / time
-                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.7.1")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.8.0")
 
                 // finding in which country we are for country-specific logic
                 implementation("de.westnordost:countryboundaries:3.0.0")
@@ -177,7 +177,7 @@ kotlin {
                 // UI widgets
 
                 // non-lazy grid
-                implementation("com.cheonjaeung.compose.grid:grid:2.7.1")
+                implementation("com.cheonjaeung.compose.grid:grid:2.7.4")
 
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation("sh.calvin.reorderable:reorderable:3.1.0")
@@ -198,7 +198,7 @@ kotlin {
                 implementation("io.insert-koin:koin-androidx-workmanager")
 
                 // Android stuff
-                implementation("com.google.android.material:material:1.13.0")
+                implementation("com.google.android.material:material:1.14.0")
                 implementation("androidx.core:core-ktx:1.18.0")
                 implementation("androidx.appcompat:appcompat:1.7.1")
                 implementation("androidx.constraintlayout:constraintlayout:2.2.1")
@@ -215,13 +215,13 @@ kotlin {
                 implementation("androidx.exifinterface:exifinterface:1.4.2")
 
                 // Kotlin
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
 
                 // scheduling background jobs
                 implementation("androidx.work:work-runtime-ktx:2.11.2")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.4.2")
+                implementation("io.ktor:ktor-client-android:3.5.0")
 
                 // widgets
                 implementation("com.google.android.flexbox:flexbox:3.0.0")
@@ -233,14 +233,14 @@ kotlin {
         iosMain {
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.4.2")
+                implementation("io.ktor:ktor-client-darwin:3.5.0")
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("io.ktor:ktor-client-mock:3.4.2")
+                implementation("io.ktor:ktor-client-mock:3.5.0")
                 implementation("dev.mokkery:mokkery-gradle:3.4.2")
             }
         }
