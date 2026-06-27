@@ -38,7 +38,7 @@ plugins {
     id("org.jetbrains.kotlin.multiplatform") version "2.4.0"
     id("org.jetbrains.kotlin.plugin.serialization") version "2.4.0"
     id("org.jetbrains.kotlin.plugin.compose") version "2.4.0"
-    id("com.android.application") version "8.11.2"
+    id("com.android.application") version "8.13.2"
     id("org.jetbrains.compose") version "1.11.1"
     id("org.jetbrains.kotlinx.atomicfu") version "0.33.0"
     id("com.codingfeline.buildkonfig") version "0.22.0"
