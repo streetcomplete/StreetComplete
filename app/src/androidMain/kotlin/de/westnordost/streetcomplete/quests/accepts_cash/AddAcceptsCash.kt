@@ -53,6 +53,7 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>(), AndroidQuest {
     override val enabledInCountries = NoCountriesExcept(
         "FI", // https://github.com/streetcomplete/StreetComplete/issues/5500
         "GB", // https://github.com/streetcomplete/StreetComplete/issues/4517
+        "IS", // https://github.com/streetcomplete/StreetComplete/issues/6897
         "SE",
         "NL", // https://github.com/streetcomplete/StreetComplete/issues/4826
     )
