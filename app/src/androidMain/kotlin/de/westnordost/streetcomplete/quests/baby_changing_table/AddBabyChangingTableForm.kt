@@ -12,7 +12,10 @@ class AddBabyChangingTableForm : AbstractOsmQuestForm<BabyChangingTableAnswer>()
         AnswerItem(R.string.quest_generic_hasFeature_yes) { applyAnswer(YES) }
     )
 
-    override val otherAnswers get() = listOf(
-        AnswerItem(R.string.quest_wheelchairAccessPat_noToilet) { applyAnswer(NO_TOILET) }
-    )
+    override val otherAnswers get() = buildList {
+        val result = mutableListOf<AnswerItem>()
+        if (element.tags["amenity"] != "toilets") {
+            add(AnswerItem(R.string.quest_wheelchairAccessPat_noToilet) { applyAnswer(NO_TOILET) })
+        }
+    }
 }
