@@ -61,6 +61,7 @@ import de.westnordost.streetcomplete.quests.bus_stop_shelter.AddBusStopShelter
 import de.westnordost.streetcomplete.quests.camera_type.AddCameraType
 import de.westnordost.streetcomplete.quests.camping.AddCampDrinkingWater
 import de.westnordost.streetcomplete.quests.camping.AddCampPower
+import de.westnordost.streetcomplete.quests.camping.AddCampSiteFee
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
 import de.westnordost.streetcomplete.quests.camping.AddTents
 import de.westnordost.streetcomplete.quests.camping.AddCabins
@@ -506,6 +507,7 @@ fun questTypeRegistry(
     115 to AddCampDrinkingWater(),
     116 to AddCampShower(),
     117 to AddCampPower(),
+    198 to AddCampSiteFee(),
     162 to AddSanitaryDumpStation(),
 
     192 to AddHotWater(),
