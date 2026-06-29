@@ -520,12 +520,6 @@ val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
     targetDir = "$projectDir/build/generated/androidMain/res"
 }
 
-val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
-    group = "streetcomplete"
-    sourceDir = "$projectDir/src/commonMain/composeResources"
-    targetDir = "$projectDir/build/generated/androidMain/res"
-}
-
 project.afterEvaluate {
     tasks.named("preBuild") {
         dependsOn(copyIconsToAndroid)

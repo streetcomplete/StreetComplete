@@ -7,7 +7,6 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsScreen
 import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionScreen
 import de.westnordost.streetcomplete.screens.settings.messages.MessageSelectionScreen
@@ -19,7 +18,6 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable fun SettingsNavHost(
     onClickBack: () -> Unit,
-    onClickShowQuestTypeForDebug: (QuestType) -> Unit,
     startDestination: String? = null
 ) {
     val navController = rememberNavController()
@@ -82,7 +80,6 @@ import org.koin.compose.viewmodel.koinViewModel
         composable(SettingsDestination.ShowQuestForms) {
             ShowQuestFormsScreen(
                 viewModel = koinViewModel(),
-                onClickQuestType = onClickShowQuestTypeForDebug,
                 onClickBack = ::goBack,
             )
         }
