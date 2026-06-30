@@ -175,6 +175,9 @@ kotlin {
 
                 // UI widgets
 
+                // Map
+                implementation("org.maplibre.compose:maplibre-compose:0.11.1")
+
                 // non-lazy grid
                 // NOTE: might replace with
                 // https://developer.android.com/develop/ui/compose/layouts/adaptive/grid
