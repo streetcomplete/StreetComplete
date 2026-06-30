@@ -252,7 +252,7 @@ class StyleableOverlayMapComponent(
         return when (overlayStyle) {
             is OverlayStyle.Point -> {
                 if (overlayStyle.icon != null) {
-                    p.addProperty("icon", context.resources.getResourceEntryName(overlayStyle.icon))
+                    p.addProperty("icon", context.resources.getResourceEntryName(overlayStyle.icon.toAndroidResourceId()!!))
                 }
                 if (overlayStyle.label != null) p.addProperty("label", overlayStyle.label)
 

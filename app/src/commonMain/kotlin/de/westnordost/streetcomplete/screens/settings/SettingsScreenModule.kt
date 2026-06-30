@@ -22,6 +22,6 @@ val settingsScreenModule = module {
     viewModel<OverlaySelectionViewModel> { OverlaySelectionViewModelImpl(get(), get(), get()) }
     viewModel<LanguageSelectionViewModel> { LanguageSelectionViewModelImpl(get(), get()) }
     viewModel<EditTypePresetsViewModel> { EditTypePresetsViewModelImpl(get(), get(), get(), get()) }
-    viewModel<ShowQuestFormsViewModel> { ShowQuestFormsViewModelImpl(get()) }
+    viewModel<ShowQuestFormsViewModel> { ShowQuestFormsViewModelImpl(get(), get()) }
     viewModel<MessageSelectionViewModel> { MessageSelectionViewModelImpl(get()) }
 }

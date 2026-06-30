@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
 import de.westnordost.streetcomplete.util.math.contains
+import de.westnordost.streetcomplete.view.toAndroidResourceId
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
 import kotlinx.coroutines.CoroutineScope
@@ -237,7 +238,7 @@ class QuestPinsManager(
     private fun createQuestPins(quest: Quest): List<Pin> {
         val props = quest.key.toProperties()
         val order = questTypeOrdersLock.withLock { questTypeOrders[quest.type] ?: 0 }
-        return quest.markerLocations.map { Pin(it, quest.type.icon, props, order) }
+        return quest.markerLocations.map { Pin(it, quest.type.icon.toAndroidResourceId()!!, props, order) }
     }
 
     private fun reinitializeQuestTypeOrders() {
