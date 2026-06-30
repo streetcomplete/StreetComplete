@@ -50,11 +50,13 @@ import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.qualifier.named
 
+/** Quest form for the OsmNoteQuestType quest */
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AddNoteCommentForm(
     on: (NoteQuestAction) -> Unit,
     note: Note,
+    modifier: Modifier = Modifier,
     fileSystem: FileSystem = koinInject(),
     avatarsCacheDir: Path = koinInject(named("AvatarsCacheDirectory")),
     questsHiddenSource: QuestsHiddenSource = koinInject(),
@@ -153,6 +155,7 @@ fun AddNoteCommentForm(
                 onClick = { on(NoteQuestAction.CommentNote(noteText, noteImagePaths)) },
             )
         },
+        modifier = modifier,
     )
 
     if (confirmDiscard) {
