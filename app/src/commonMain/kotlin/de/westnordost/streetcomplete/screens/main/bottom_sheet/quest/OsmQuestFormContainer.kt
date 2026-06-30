@@ -10,10 +10,13 @@ import androidx.compose.runtime.setValue
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.get
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -37,6 +40,12 @@ import org.koin.compose.koinInject
 
 @Composable
 fun <T> OsmQuestFormContainer(
+    onDismiss: () -> Unit,
+    onEdit: (action: ElementEditAction) -> Unit,
+    onLeaveNote: () -> Unit,
+    onHideQuest: () -> Unit,
+    onSplitWay: () -> Unit,
+    onMoveNode: () -> Unit,
     questType: OsmElementQuestType<T>,
     element: Element,
     geometry: ElementGeometry,
@@ -56,19 +65,18 @@ fun <T> OsmQuestFormContainer(
 
     fun onAction(action: QuestAction<T>) {
         when (action) {
-            Action.Dismiss -> TODO()
-            Action.LeaveNote -> TODO()
-            Action.HideQuest -> TODO()
-            Action.SplitWay -> { confirmSplitWay = true }
-            Action.MoveNode -> { confirmMoveNode = true }
-            Action.DeletePoi -> { confirmDeletePoi = true }
-            Action.ReplacePoi -> { confirmReplacePlace = true }
+            Action.Dismiss -> onDismiss()
+            Action.LeaveNote -> onLeaveNote()
+            Action.HideQuest -> onHideQuest()
+            Action.SplitWay -> confirmSplitWay = true
+            Action.MoveNode -> confirmMoveNode = true
+            Action.DeletePoi -> confirmDeletePoi = true
+            Action.ReplacePoi -> confirmReplacePlace = true
             is Answer<T> -> {
                 val changesBuilder = StringMapChangesBuilder(element.tags)
                 questType.applyAnswerTo(action.value, changesBuilder, geometry, element.timestampEdited)
                 val changes = changesBuilder.create()
-                //UpdateElementTagsAction(element, changes)
-                TODO
+                onEdit(UpdateElementTagsAction(element, changes))
             }
         }
     }
@@ -90,14 +98,14 @@ fun <T> OsmQuestFormContainer(
     if (confirmSplitWay) {
         ConfirmationDialog(
             onDismissRequest = { confirmSplitWay = false },
-            onConfirmed = { TODO },
+            onConfirmed = onSplitWay,
             text = { Text(stringResource(Res.string.quest_split_way_description)) }
         )
     }
     if (confirmMoveNode) {
         ConfirmationDialog(
             onDismissRequest = { confirmMoveNode = false },
-            onConfirmed = { TODO },
+            onConfirmed = onMoveNode,
             text = { Text(stringResource(Res.string.quest_move_node_message)) }
         )
     }
@@ -109,17 +117,17 @@ fun <T> OsmQuestFormContainer(
                     is ShopType -> {
                         val builder = StringMapChangesBuilder(element.tags)
                         answer.feature.applyReplacePlaceTo(builder)
-                        UpdateElementTagsAction(element, builder.create())
-                        TODO
+                        onEdit(UpdateElementTagsAction(element, builder.create()))
                     }
                     ShopTypeAnswer.IsShopVacant -> {
                         val vacantShop = featureDictionary.getPlaceAsDisused(element, country = countryInfo.countryOrSubdivisionCode)
                         val builder = StringMapChangesBuilder(element.tags)
                         vacantShop.applyReplacePlaceTo(builder)
-                        UpdateElementTagsAction(element, builder.create())
-                        TODO
+                        onEdit(UpdateElementTagsAction(element, builder.create()))
                     }
-                    ShopTypeAnswer.LeaveNote -> composeNote()
+                    ShopTypeAnswer.LeaveNote -> {
+                        onLeaveNote()
+                    }
                 }
             },
             featureDictionary = featureDictionary,
@@ -130,8 +138,10 @@ fun <T> OsmQuestFormContainer(
     if (confirmDeletePoi) {
         ConfirmDeleteDialog(
             onDismissRequest = { confirmDeletePoi = false },
-            onConfirmDelete = { TODO },
-            onLeaveNote = { TODO }
+            onConfirmDelete = {
+                onEdit(DeletePoiNodeAction(element as Node))
+            },
+            onLeaveNote = onLeaveNote
         )
     }
 }

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -17,13 +18,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
+import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.no_search_results
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
+import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import org.jetbrains.compose.resources.stringResource
 
 /** Searchable and clickable quest list as a full screen */
@@ -36,10 +39,7 @@ fun ShowQuestFormsScreen(
     val searchText by viewModel.searchText.collectAsState()
     val filteredQuests by viewModel.filteredQuests.collectAsState()
     var shownQuestType by remember { mutableStateOf<QuestType?>(null) }
-
-    BackHandler(shownQuestType != null) {
-        shownQuestType = null
-    }
+    var message by remember { mutableStateOf<String?>(null) }
 
     Box(Modifier.fillMaxSize()) {
         Column(Modifier.fillMaxSize()) {
@@ -57,24 +57,58 @@ fun ShowQuestFormsScreen(
                 ).asPaddingValues()
                 LazyQuestColumn(
                     items = filteredQuests,
-                    onClickQuestType = {
-                        shownQuestType = it
-                    },
+                    onClickQuestType = { shownQuestType = it },
                     contentPadding = insets,
                     modifier = Modifier.consumeWindowInsets(insets)
                 )
             }
         }
 
-        (shownQuestType as? OsmElementQuestType<*>)?.let { shownQuestType ->
+        (shownQuestType as? OsmElementQuestType<*>)?.let { questType ->
             OsmQuestFormContainer(
-                questType = shownQuestType,
+                onDismiss = { shownQuestType = null },
+                onEdit = { action ->
+                    when (action) {
+                        is DeletePoiNodeAction -> {
+                            message = "Deleted node"
+                        }
+                        is UpdateElementTagsAction -> {
+                            val tagging = action.changes.changes.joinToString("\n")
+                            message = "Tagging\n$tagging"
+                        }
+                    }
+                    shownQuestType = null
+                },
+                onLeaveNote = {
+                    message = "Leaving note"
+                    shownQuestType = null
+                },
+                onHideQuest = {
+                    message = "Hiding quest"
+                    shownQuestType = null
+                },
+                onSplitWay = {
+                    message = "Splitting way"
+                    shownQuestType = null
+                },
+                onMoveNode = {
+                    message = "Moving node"
+                    shownQuestType = null
+                },
+                questType = questType,
                 element = viewModel.mockElement,
                 geometry = viewModel.mockGeometry,
                 mapRotation = viewModel.mockRotation,
                 mapTilt = 0f,
             )
         }
+    }
+
+    message?.let { text ->
+        InfoDialog(
+            onDismissRequest = { message = null },
+            text = { Text(text) }
+        )
     }
 }
 
