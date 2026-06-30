@@ -12,11 +12,19 @@ open class CopyIconsTask : DefaultTask() {
     @TaskAction
     fun run() {
         var fileNames = ArrayList<String>()
-        for (file in File(sourceDir).listFiles().orEmpty()) {
-            if (file.isFile) {
-                if (filter(file.name)) {
-                    file.copyTo(File(targetDir, file.name), overwrite = true)
-                    fileNames.add(file.name.substringBeforeLast('.'))
+        val dimensions = listOf("","-mdpi","-hdpi","-xhdpi","-xxhdpi")
+        val sourceDirs = dimensions.map { sourceDir+it }
+        val targetDirs = dimensions.map { targetDir+it }
+
+        for (i in dimensions.indices) {
+            val srcDir = sourceDirs[i]
+            val trgDir = targetDirs[i]
+            for (file in File(srcDir).listFiles().orEmpty()) {
+                if (file.isFile) {
+                    if (filter(file.name)) {
+                        file.copyTo(File(trgDir, file.name), overwrite = true)
+                        fileNames.add(file.name.substringBeforeLast('.'))
+                    }
                 }
             }
         }
