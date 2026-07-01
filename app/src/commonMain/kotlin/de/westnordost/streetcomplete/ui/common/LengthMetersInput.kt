@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.osm.Length
+import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.ui.common.input.DecimalInput
 import de.westnordost.streetcomplete.util.ktx.toShortString
 import androidx.compose.ui.tooling.preview.Preview

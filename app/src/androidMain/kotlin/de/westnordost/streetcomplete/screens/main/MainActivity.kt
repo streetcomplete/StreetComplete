@@ -55,12 +55,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.createOsmNoteQuest
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
-import de.westnordost.streetcomplete.data.overlays.AndroidOverlay
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
@@ -72,18 +70,10 @@ import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
-import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
-import de.westnordost.streetcomplete.overlays.IsShowingElement
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
-import de.westnordost.streetcomplete.quests.AbstractQuestForm
-import de.westnordost.streetcomplete.quests.IsShowingQuestDetails
 import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
 import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
@@ -115,12 +105,16 @@ import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
+import de.westnordost.streetcomplete.view.toAndroidResourceId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
+import org.koin.core.scope.Scope
 import kotlin.math.PI
 import kotlin.math.sqrt
 import kotlin.random.Random
@@ -148,8 +142,6 @@ class MainActivity :
     // listeners to child fragments:
     MapFragment.Listener,
     MainMapFragment.Listener,
-    AbstractOsmQuestForm.Listener,
-    AbstractOverlayForm.Listener,
     SplitWayFragment.Listener,
     NoteDiscussionForm.Listener,
     LeaveNoteInsteadFragment.Listener,
@@ -159,7 +151,10 @@ class MainActivity :
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
     // rest
-    ShowsGeometryMarkers {
+    ShowsGeometryMarkers,
+    AndroidScopeComponent {
+
+    override val scope: Scope by activityScope()
 
     private val questAutoSyncer: QuestAutoSyncer by inject()
     private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
@@ -190,12 +185,6 @@ class MainActivity :
         supportFragmentManager.findFragmentByTag(BOTTOM_SHEET)
 
     /* +++++++++++++++++++++++++++++++++++++++ CALLBACKS ++++++++++++++++++++++++++++++++++++++++ */
-
-    private val sheetBackPressedCallback = object : OnBackPressedCallback(false) {
-        override fun handleOnBackPressed() {
-            (bottomSheetFragment as IsCloseableBottomSheet).onClickClose { closeBottomSheet() }
-        }
-    }
 
     private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -251,15 +240,12 @@ class MainActivity :
             }
         }
 
-        onBackPressedDispatcher.addCallback(this, sheetBackPressedCallback)
-        sheetBackPressedCallback.isEnabled = bottomSheetFragment is IsCloseableBottomSheet
-
         observe(editHistoryViewModel.selectedEdit) { edit ->
             if (edit != null) {
                 val geometry = editHistoryViewModel.getEditGeometry(edit)
                 mapFragment?.startFocus(geometry, Insets.NONE)
                 mapFragment?.highlightGeometry(geometry)
-                mapFragment?.highlightPins(edit.icon, listOf(edit.position))
+                mapFragment?.highlightPins(edit.icon.toAndroidResourceId()!!, listOf(edit.position))
                 mapFragment?.hideOverlay()
             } else if (editHistoryViewModel.isShowingSidebar.value) {
                 mapFragment?.clearFocus()
@@ -850,20 +836,19 @@ class MainActivity :
      *  view (e.g. if it was zoomed in before to focus on an element) */
     @UiThread
     private fun closeBottomSheet() {
-        currentFocus?.hideKeyboard()
+        //currentFocus?.hideKeyboard()
         if (bottomSheetFragment != null) {
             supportFragmentManager.popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
         clearHighlighting()
         unfreezeMap()
         mapFragment?.endFocus()
-        sheetBackPressedCallback.isEnabled = false
     }
 
     /** Open or replace the bottom sheet. If the bottom sheet is replaces, no appear animation is
      *  played and the highlighting of the previous bottom sheet is cleared. */
     private fun showInBottomSheet(f: Fragment, clearPreviousHighlighting: Boolean = true) {
-        currentFocus?.hideKeyboard()
+        //currentFocus?.hideKeyboard()
         freezeMap()
         if (bottomSheetFragment != null) {
             if (clearPreviousHighlighting) clearHighlighting()
@@ -876,7 +861,6 @@ class MainActivity :
             add(R.id.map_bottom_sheet_container, f, BOTTOM_SHEET)
             addToBackStack(BOTTOM_SHEET)
         }
-        sheetBackPressedCallback.isEnabled = f is IsCloseableBottomSheet
     }
 
     /** Make the map not follow the user's location anymore temporarily */
@@ -942,7 +926,7 @@ class MainActivity :
                 ?.takeIf { questsHiddenSource.get(OsmNoteQuestKey(it.id)) == null }
         }
         if (note != null) {
-            showQuestDetails(createOsmNoteQuest(note.id, note.position))
+            showQuestDetails(OsmNoteQuest(note.id, note.position))
             return
         }
 
@@ -959,7 +943,7 @@ class MainActivity :
         showInBottomSheet(f)
 
         mapFragment.highlightGeometry(geometry)
-        mapFragment.highlightPins(overlay.icon, listOf(geometry.center))
+        mapFragment.highlightPins(overlay.icon.toAndroidResourceId()!!, listOf(geometry.center))
         mapFragment.hideNonHighlightedPins()
     }
 
@@ -1001,7 +985,7 @@ class MainActivity :
 
         mapFragment.startFocus(quest.geometry, getQuestFormInsets())
         mapFragment.highlightGeometry(quest.geometry)
-        mapFragment.highlightPins(quest.type.icon, quest.markerLocations)
+        mapFragment.highlightPins(quest.type.icon.toAndroidResourceId()!!, quest.markerLocations)
         mapFragment.hideNonHighlightedPins(quest.key)
         mapFragment.hideOverlay()
     }

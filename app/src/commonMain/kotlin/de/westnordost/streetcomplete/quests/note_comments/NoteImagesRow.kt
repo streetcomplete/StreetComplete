@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -25,13 +25,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.fadingHorizontalScrollEdges
-import de.westnordost.streetcomplete.util.image.fileBitmapPainter
-import kotlinx.io.files.FileSystem
-import kotlinx.io.files.Path
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -39,9 +37,8 @@ import org.jetbrains.compose.resources.stringResource
  *  opens in which one can look at the image more closely and also remove it again. */
 @Composable
 fun NoteImagesRow(
-    fileSystem: FileSystem,
-    imagePaths: List<String>,
-    onDeleteImage: (imagePath: String) -> Unit,
+    images: List<Painter>,
+    onDeleteImage: (index: Int) -> Unit,
     onTakePhoto: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -56,9 +53,9 @@ fun NoteImagesRow(
                 contentDescription = stringResource(Res.string.quest_leave_new_note_photo)
             )
         }
-        var showNoteImageDialog by remember { mutableStateOf<String?>(null) }
+        var showNoteImageAtIndexDialog by remember { mutableStateOf<Int?>(null) }
 
-        if (imagePaths.isEmpty()) {
+        if (images.isEmpty()) {
             CompositionLocalProvider(
                 LocalTextStyle provides MaterialTheme.typography.body2,
                 LocalContentAlpha provides ContentAlpha.medium
@@ -72,29 +69,25 @@ fun NoteImagesRow(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
                 modifier = Modifier.fadingHorizontalScrollEdges(state.scrollIndicatorState, 32.dp)
             ) {
-                items(imagePaths) { imagePath ->
-                    val painter = fileBitmapPainter(fileSystem, Path(imagePath))
-                    if (painter != null) {
-                        Image(
-                            painter = painter,
-                            contentDescription = null,
-                            contentScale = ContentScale.Crop,
-                            modifier = Modifier
-                                .size(72.dp)
-                                .clip(RoundedCornerShape(4.dp))
-                                .clickable { showNoteImageDialog = imagePath }
-                        )
-                    }
+                itemsIndexed(images) { index, painter ->
+                    Image(
+                        painter = painter,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .size(72.dp)
+                            .clip(RoundedCornerShape(4.dp))
+                            .clickable { showNoteImageAtIndexDialog = index }
+                    )
                 }
             }
         }
 
-        showNoteImageDialog?.let { imagePath ->
+        showNoteImageAtIndexDialog?.let { index ->
             NoteImageDialog(
-                onDismissRequest = { showNoteImageDialog = null },
-                fileSystem = fileSystem,
-                imagePath = imagePath,
-                onClickDelete = { onDeleteImage(imagePath) },
+                onDismissRequest = { showNoteImageAtIndexDialog = null },
+                image = images[index],
+                onClickDelete = { onDeleteImage(index) },
             )
         }
     }

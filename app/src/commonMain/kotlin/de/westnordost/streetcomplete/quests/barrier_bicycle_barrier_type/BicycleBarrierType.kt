@@ -1,7 +1,12 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_type
 
-sealed interface BicycleBarrierTypeAnswer
+import kotlinx.serialization.Serializable
 
+sealed interface BicycleBarrierTypeAnswer {
+    data object NotBicycleBarrier : BicycleBarrierTypeAnswer
+}
+
+@Serializable
 enum class BicycleBarrierType(val osmValue: String) : BicycleBarrierTypeAnswer {
     SINGLE("single"),
     DOUBLE("double"),
@@ -10,4 +15,4 @@ enum class BicycleBarrierType(val osmValue: String) : BicycleBarrierTypeAnswer {
     TILTED("tilted"),
 }
 
-data object BarrierTypeIsNotBicycleBarrier : BicycleBarrierTypeAnswer
+

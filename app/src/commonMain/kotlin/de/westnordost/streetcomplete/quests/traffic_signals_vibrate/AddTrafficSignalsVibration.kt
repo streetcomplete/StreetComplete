@@ -1,0 +1,95 @@
+package de.westnordost.streetcomplete.quests.traffic_signals_vibrate
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import de.westnordost.streetcomplete.util.ktx.toYesNo
+import org.jetbrains.compose.resources.stringResource
+
+class AddTrafficSignalsVibration : OsmElementQuestType<Boolean> {
+
+    private val crossingFilter by lazy { """
+        nodes with
+         (crossing = traffic_signals or crossing:signals = yes)
+         and highway ~ crossing|traffic_signals
+         and foot != no
+         and (
+          !$VIBRATING_BUTTON
+          or $VIBRATING_BUTTON = no and $VIBRATING_BUTTON older today -4 years
+          or $VIBRATING_BUTTON older today -8 years
+         )
+    """.toElementFilterExpression() }
+
+    private val excludedWaysFilter by lazy { """
+        ways with
+          highway = cycleway
+          and foot !~ yes|designated
+    """.toElementFilterExpression() }
+
+    override val changesetComment = "Specify whether traffic signals have tactile indications that it's safe to cross"
+    override val wikiLink = "Key:$VIBRATING_BUTTON"
+    override val icon = Res.drawable.quest_blind_traffic_lights
+    override val title = Res.string.quest_traffic_signals_vibrate_title
+    override val achievements = listOf(BLIND)
+    override val enabledInCountries = AllCountriesExcept(
+        "BG", // see https://github.com/streetcomplete/StreetComplete/issues/5846
+        "FI", // see https://github.com/streetcomplete/StreetComplete/issues/5791
+        "RU", // see https://github.com/streetcomplete/StreetComplete/issues/4021
+        "CZ"
+    )
+    override val hint = Res.string.quest_traffic_signals_vibrate_description
+    override val hintImages = listOf(Res.drawable.vibrating_button_illustration)
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isCrossingWithTrafficSignals() }
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val excludedWayNodeIds = mapData.ways
+            .filter { excludedWaysFilter.matches(it) }
+            .flatMapTo(HashSet()) { it.nodeIds }
+
+        return mapData.nodes
+            .filter { crossingFilter.matches(it) && it.id !in excludedWayNodeIds }
+    }
+
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!crossingFilter.matches(element)) false else null
+
+    @Composable
+    override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        QuestForm(
+            on = on,
+            answers = listOf(
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(false)) },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(true)) }
+            ),
+            hintImages = listOf(
+                when (countryInfo.countryCode) {
+                    "AU" -> Res.drawable.vibrating_button_illustration_au
+                    "GB" -> Res.drawable.vibrating_button_illustration_gb
+                    else -> Res.drawable.vibrating_button_illustration
+                }
+            ),
+        )
+    }
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags.updateWithCheckDate(VIBRATING_BUTTON, answer.toYesNo())
+    }
+}
+
+private const val VIBRATING_BUTTON = "traffic_signals:vibration"

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.testutils
 
+import de.westnordost.osmfeatures.BaseFeature
+import de.westnordost.osmfeatures.Feature
+import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
@@ -21,8 +24,8 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
+import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
-import de.westnordost.streetcomplete.data.osmnotes.notequests.createOsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
@@ -124,6 +127,31 @@ fun edit(
     isNearUserLocation
 )
 
+fun feature(
+    id: String = "id",
+    tags: Map<String, String> = mapOf(),
+    geometry: List<GeometryType> = listOf(GeometryType.POINT),
+    icon: String? = null,
+    imageURL: String? = null,
+    names: List<String> = listOf("name"),
+    terms: List<String> = listOf(),
+    includeCountryCodes: List<String> = listOf(),
+    excludeCountryCodes: List<String> = listOf(),
+    isSearchable: Boolean = true,
+    matchScore: Float = 1f,
+    isSuggestion: Boolean = false,
+    addTags: Map<String, String> = tags,
+    removeTags: Map<String, String> = addTags,
+    preserveTags: List<Regex> = listOf(),
+    tagKeys: Set<String> = setOf(),
+    addTagKeys: Set<String> = tagKeys,
+    removeTagKeys: Set<String> = addTagKeys
+): Feature = BaseFeature(
+    id, tags, geometry, icon, imageURL, names, terms, includeCountryCodes, excludeCountryCodes,
+    isSearchable, matchScore, isSuggestion, addTags, removeTags, preserveTags, tagKeys, addTagKeys,
+    removeTagKeys
+)
+
 fun questHidden(
     elementType: ElementType = ElementType.NODE,
     elementId: Long = 1L,
@@ -148,7 +176,7 @@ fun osmQuest(
 fun osmNoteQuest(
     id: Long = 1L,
     pos: LatLon = p()
-) = createOsmNoteQuest(id, pos)
+) = OsmNoteQuest(id, pos)
 
 fun osmQuestKey(
     elementType: ElementType = ElementType.NODE,

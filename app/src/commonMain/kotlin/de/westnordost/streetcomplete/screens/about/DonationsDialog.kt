@@ -40,7 +40,7 @@ fun DonationsDialog(
 }
 
 @Composable
-fun DonationsGooglePlayDialog(onDismissRequest: () -> Unit) {
+fun AltDonationsDialog(onDismissRequest: () -> Unit) {
     InfoDialog(
         onDismissRequest = onDismissRequest,
         text = { Text(stringResource(Res.string.about_description_donate_google_play3)) }
@@ -103,6 +103,6 @@ private fun DonationsDialogPreview() {
 
 @Preview
 @Composable
-private fun DonationsGooglePlayDialogPreview() {
-    DonationsGooglePlayDialog({})
+private fun AltDonationsDialogPreview() {
+    AltDonationsDialog({})
 }

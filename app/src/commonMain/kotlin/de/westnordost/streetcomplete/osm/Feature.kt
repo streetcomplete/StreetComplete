@@ -7,6 +7,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Relation
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.osm.places.isDisusedPlace
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.allDrawableResources
+import org.jetbrains.compose.resources.DrawableResource
 
 /** Apply this feature to the given [tags], optionally removing a [previousFeature] first, i.e.
  *  replacing it. */
@@ -44,6 +48,24 @@ fun Feature.toElement(): Element {
             Node(-1L, NULL_ISLAND, allTags)
         }
     }
+}
+
+/** return the id of the feature, without any brand stuff */
+val Feature.featureId get() = if (isSuggestion) id.substringBeforeLast("/") else id
+
+/** Whether this feature is a subtype of another feature */
+fun Feature.isChildOf(other: Feature): Boolean =
+    id.startsWith(other.id)
+
+/** return whether the feature has a fixed name which should not be changed */
+val Feature.hasFixedName get() =
+    addTags.containsKey("name") && preserveTags.none { it.containsMatchIn("name") }
+        || isDisusedPlace()
+
+/** Return the drawable resource of this feature's icon, if any */
+val Feature.iconDrawableResource: DrawableResource? get() {
+    val iconResourceName = icon?.let { "preset_" + it.replace('-', '_') }
+    return Res.allDrawableResources[iconResourceName]
 }
 
 private val NULL_ISLAND = LatLon(0.0, 0.0)

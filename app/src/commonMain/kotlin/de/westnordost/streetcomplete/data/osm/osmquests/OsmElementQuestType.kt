@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -8,7 +10,7 @@ import de.westnordost.streetcomplete.util.countryboundaries.AllCountries
 import de.westnordost.streetcomplete.util.countryboundaries.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.osm.Tags
-import org.jetbrains.compose.resources.StringResource
+import kotlin.jvm.JvmInline
 
 /** Quest type where each quest refers to one OSM element.
  *
@@ -37,28 +39,6 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * should be there too. For the street surface, it is necessary to view the whole street, so it
      * makes sense if the pins are in the middle. */
     val hasMarkersAtEnds: Boolean get() = false
-
-    /** Whether the user should be able to delete this element instead. Only elements that
-     *  are not expected...
-     *  - to be part of a relation
-     *  - to be part of a network (e.g. roads, power lines, ...)
-     *  - to house a second POI on the same element
-     *  - to be a kind of element where deletion is not recommended, (e.g. a shop should rather
-     *    be set to disused:shop=yes until there is another one)
-     *  ...should be deletable.
-     *
-     *  By default: false.*/
-    val isDeleteElementEnabled: Boolean get() = false
-
-    /** Whether the user should be able to replace this element with another preset. Only
-     *  elements that are expected to be some kind of shop/amenity should be replaceable this way,
-     *  i.e. anything that when it's gone, there is a vacant shop then.
-     */
-    val isReplacePlaceEnabled: Boolean get() = false
-
-    /** the string resource used to display the quest's question for when the element has the
-     *  specified [tags]. If null, `title` is used instead */
-    fun getTitle(tags: Map<String, String>): StringResource? = null
 
     /** All elements within the given map data that are applicable to this quest type, i.e. for
      *  which a quest of this type should be created.
@@ -91,8 +71,70 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      *  any misunderstandings which element is meant that far apart. */
     val highlightedElementsRadius: Double get() = 30.0
 
+    /** Composable form in which to enter the requested information. Use
+     *  [QuestForm][de.westnordost.streetcomplete.ui.common.quest.QuestForm] to define a custom
+     *  (or simple button-based) one, or any of the pre-defined generic forms like…
+     *
+     *  - [ItemSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm] -
+     *    Select one from a grid of (image) items
+     *
+     *  - [ItemsSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm] -
+     *    Select any number from a grid of (image) items
+     *
+     *  - [GroupedItemSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.GroupedItemSelectQuestForm] -
+     *    Select one from a grouped list of (image) items
+     *
+     *  - [RadioGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm] -
+     *    Select one from a (text) list
+     *
+     *  - [CheckboxGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.CheckboxGroupQuestForm] -
+     *    Select any number from a (text) list
+     *
+     *  - [YesNoQuestForm][de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm] -
+     *    Answer "yes" or "no"
+     *
+     *  - [CountInputQuestForm][de.westnordost.streetcomplete.ui.common.quest.CountInputQuestForm] -
+     *    Input an (integer) number
+     *
+     *  - [LocalizedNameQuestForm][de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm] -
+     *    Input name(s in potentially different languages)
+     *
+     *  - [NameWithSuggestionsQuestForm][de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm] -
+     *    Input a name with auto-complete.
+     *
+     *  A good practice is that if the form definition is purely declarative and there's no mutable
+     *  state, it's fine to have the form definition inline in the quest type class, otherwise,
+     *  better put it into an own file.
+     *  */
+    @Composable
+    fun Form(
+        on: (QuestAction<T>) -> Unit,
+        element: Element,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    )
+
     /** Applies the data from [answer] to the element that has last been edited at [timestampEdited]
      * with the given [tags] and the given [geometry].
      * The element is not directly modified, instead, a map of [tags] is modified */
     fun applyAnswerTo(answer: T, tags: Tags, geometry: ElementGeometry, timestampEdited: Long)
+}
+
+sealed interface QuestAction<out T>
+@JvmInline value class Answer<T>(val value: T): QuestAction<T>
+enum class Action : QuestAction<Nothing> {
+    /** Just close the quest form */
+    Dismiss,
+    /** User wants to leave a note */
+    LeaveNote,
+    /** User wants to hide this particular quest */
+    HideQuest,
+    /** User wants to split the way */
+    SplitWay,
+    /** User wants to move the node */
+    MoveNode,
+    /** User wants to delete the thing-POI */
+    DeletePoi,
+    /** User wants to replace the place-POI */
+    ReplacePoi,
 }

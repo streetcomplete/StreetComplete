@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.orchard_produce
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class OrchardProduce(val osmValue: String, val osmLanduseValue: String? = null) {
 
     // may have been mistaken for an orchard from satellite imagery

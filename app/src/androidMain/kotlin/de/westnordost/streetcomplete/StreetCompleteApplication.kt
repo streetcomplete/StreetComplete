@@ -52,9 +52,10 @@ import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.about.aboutScreenModule
 import de.westnordost.streetcomplete.screens.main.mainModule
-import de.westnordost.streetcomplete.screens.measure.arModule
-import de.westnordost.streetcomplete.screens.settings.settingsModule
+import de.westnordost.streetcomplete.ui.util.measure.arModule
+import de.westnordost.streetcomplete.screens.settings.settingsScreenModule
 import de.westnordost.streetcomplete.screens.user.userScreenModule
+import de.westnordost.streetcomplete.ui.util.photo.photoModule
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.deleteRecursively
@@ -130,11 +131,12 @@ class StreetCompleteApplication : Application() {
                 visibleQuestsModule,
                 allEditTypesModule,
                 questsModule,
-                settingsModule,
+                settingsScreenModule,
                 statisticsModule,
                 uploadModule,
                 userModule,
                 arModule,
+                photoModule,
                 overlaysModule,
                 overlayModule,
                 urlConfigModule,
@@ -142,7 +144,7 @@ class StreetCompleteApplication : Application() {
                 weeklyOsmModule,
                 calendarEventsModule,
                 feedsModule,
-                androidModule
+                androidModule,
             )
         }
 

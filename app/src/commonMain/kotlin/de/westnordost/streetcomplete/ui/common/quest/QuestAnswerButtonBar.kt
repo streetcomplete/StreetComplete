@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.ui.common.VerticalDivider
 import org.jetbrains.compose.resources.stringResource
 
 @Immutable
-data class Answer(val text: String, val action: () -> Unit)
+data class AnswerItem(val text: String, val action: () -> Unit)
 
 /** Horizontal button bar for bottom sheets that can be multi-line if it does not all fit in one
  *  line and places subtle dividers in-between the [answers]. Also, optionally [otherAnswers] will
@@ -33,20 +33,20 @@ data class Answer(val text: String, val action: () -> Unit)
 @Composable
 fun QuestAnswerButtonBar(
     modifier: Modifier = Modifier,
-    answers: List<Answer> = emptyList(),
-    otherAnswers: List<Answer> = emptyList(),
+    answers: List<AnswerItem> = emptyList(),
+    otherAnswers: @Composable (() -> List<AnswerItem>)? = null,
 ) {
     FlowRow(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(4.dp, alignment = Alignment.End),
         itemVerticalAlignment = Alignment.CenterVertically,
     ) {
-        if (otherAnswers.isNotEmpty()) {
+        if (otherAnswers != null) {
             OtherAnswersTextButton(answers = otherAnswers)
             Spacer(Modifier.weight(1f))
         }
         for ((index, item) in answers.withIndex()) {
-            if (otherAnswers.isNotEmpty() || index != 0) {
+            if (otherAnswers != null || index != 0) {
                 VerticalDivider(Modifier.height(24.dp))
             }
             TextButton(onClick = item.action) { Text(item.text) }
@@ -56,7 +56,7 @@ fun QuestAnswerButtonBar(
 
 @Composable
 private fun OtherAnswersTextButton(
-    answers: List<Answer>,
+    answers: @Composable () -> List<AnswerItem>,
     modifier: Modifier = Modifier,
 ) {
     var expanded by rememberSaveable { mutableStateOf(false) }
@@ -69,7 +69,7 @@ private fun OtherAnswersTextButton(
             expanded = expanded,
             onDismissRequest = { expanded = false }
         ) {
-            for (answer in answers) {
+            for (answer in answers()) {
                 DropdownMenuItem(onClick = { expanded = false; answer.action() }) {
                     Text(answer.text)
                 }
@@ -84,14 +84,15 @@ private fun OtherAnswersTextButton(
 private fun QuestAnswerButtonBarPreview() {
     QuestAnswerButtonBar(
         answers = listOf(
-            Answer("No") {},
-            Answer("Perhaps") {},
-            Answer("Depends how you define \"No\"") {},
-            Answer("Yes") {},
+            AnswerItem("No") {},
+            AnswerItem("Perhaps") {},
+            AnswerItem("Depends how you define \"No\"") {},
+            AnswerItem("Yes") {},
         ),
-        otherAnswers = listOf(
-            Answer("Depends how you define \"Yes\"") {},
-            Answer("Can't say") {}
+        otherAnswers = { listOf(
+            AnswerItem("Depends how you define \"Yes\"") {},
+            AnswerItem("Can't say") {}
         )
+        }
     )
 }

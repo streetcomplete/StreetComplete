@@ -57,7 +57,6 @@ buildkonfig {
     objectName = "BuildConfig"
 
     defaultConfigs {
-        buildConfigField(BOOLEAN, "IS_FROM_MONOPOLISTIC_APP_STORE", properties["app.streetcomplete.monopolistic_app_store"]!!.toString())
         buildConfigField(STRING, "VERSION_NAME", appVersionName)
         buildConfigField(BOOLEAN, "DEBUG", properties["app.streetcomplete.debug"]!!.toString())
     }
@@ -189,8 +188,12 @@ kotlin {
 
                 // sharing presets/settings via QR Code
                 implementation("io.github.alexzhirkevich:qrose:1.1.2")
+
                 // for encoding information for the URL configuration (QR code)
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
+
+                // taking a photo (, picking an image from gallery, ...)
+                implementation("io.github.vinceglb:filekit-dialogs:0.14.1")
             }
         }
         androidMain {
@@ -203,18 +206,13 @@ kotlin {
                 implementation("com.google.android.material:material:1.14.0")
                 implementation("androidx.core:core-ktx:1.18.0")
                 implementation("androidx.appcompat:appcompat:1.7.1")
-                implementation("androidx.constraintlayout:constraintlayout:2.2.1")
                 implementation("androidx.annotation:annotation:1.10.0")
                 implementation("androidx.fragment:fragment-ktx:1.8.9")
-                implementation("androidx.recyclerview:recyclerview:1.4.0")
                 implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
                 // Compose
                 implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.11.1")
                 implementation("androidx.activity:activity-compose:1.13.0")
-
-                // photos
-                implementation("androidx.exifinterface:exifinterface:1.4.2")
 
                 // Kotlin
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
@@ -224,9 +222,6 @@ kotlin {
 
                 // HTTP Client
                 implementation("io.ktor:ktor-client-android:3.5.0")
-
-                // widgets
-                implementation("com.google.android.flexbox:flexbox:3.0.0")
 
                 // map and location
                 implementation("org.maplibre.gl:android-sdk-opengl:13.3.0")
@@ -314,7 +309,7 @@ android {
     }
 
     // we need to copy some resources from composeResources to android resources, see task
-    // copySharedResToAndroid. This can be removed when the map has been migrated to compose
+    // copyIconsToAndroid. This can be removed when the map has been migrated to compose
     sourceSets {
         getByName("main") {
             res.srcDir(layout.buildDirectory.dir("generated/androidMain/res"))
@@ -433,7 +428,7 @@ tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
 // tasks.register<DownloadBrandLogosTask>("downloadBrandLogos") {
 //     group = "streetcomplete"
 //     version = nsiVersion
-//     targetDir = "$projectDir/src/androidMain/assets/osmfeatures/brands"
+//     targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/brands"
 // }
 
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
@@ -442,7 +437,6 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
     targetDir = "$projectDir/src/commonMain/composeResources/drawable/"
     iconSize = 34
     transformName = { "preset_" + it.replace('-', '_') }
-    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt" // necessary as long as map is not compose based yet
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
@@ -490,21 +484,34 @@ tasks.register("copyDefaultStringsToEnStrings") {
 }
 
 // necessary as long as map hasn't been converted to compose yet
-val copySharedResToAndroid by tasks.registering(Copy::class) {
-    val target = "build/generated/androidMain/res/drawable"
-    from("src/commonMain/composeResources/drawable")
-    into(target)
-    include {
-        it.name.startsWith("building_") ||
-        it.name.startsWith("preset_") ||
-        it.name == "sport_volleyball.xml" ||
-        it.name == "religion_christian.xml" ||
-        it.name == "religion_jewish.xml" ||
-        it.name == "religion_muslim.xml"
+val copyIconsToAndroid by tasks.registering(CopyIconsTask::class) {
+    group = "streetcomplete"
+    sourceDir = "$projectDir/src/commonMain/composeResources/drawable"
+    targetDir = "$projectDir/build/generated/androidMain/res/drawable"
+    filter = {
+        // quest pins, icons for overlays
+        it.startsWith("quest_") ||
+        it.startsWith("building_") ||
+        it.startsWith("preset_") ||
+        it == "sport_volleyball.xml" ||
+        it == "religion_christian.xml" ||
+        it == "religion_jewish.xml" ||
+        it == "religion_muslim.xml" ||
+        it == "address_dot.xml" ||
+        it == "none.png" ||
+        // icons for base map
+        it == "pin_shadow.png" ||
+        it == "location_nyan.png" ||
+        it == "crosshair_marker.png" ||
+        it == "track_nyan.png" ||
+        it == "track_nyan_record.png" ||
+        it == "downloaded_area_hatching.xml" ||
+        it == "location_shadow.xml" ||
+        it == "location_view_direction.xml" ||
+        it == "pin.xml" ||
+        it == "pin_circle.xml"
     }
-    doFirst {
-        File(target).mkdirs()
-    }
+    indexFile = "$projectDir/build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt"
 }
 
 val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
@@ -515,7 +522,7 @@ val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
 
 project.afterEvaluate {
     tasks.named("preBuild") {
-        dependsOn(copySharedResToAndroid)
+        dependsOn(copyIconsToAndroid)
         dependsOn(copyStringsToAndroid)
     }
 }

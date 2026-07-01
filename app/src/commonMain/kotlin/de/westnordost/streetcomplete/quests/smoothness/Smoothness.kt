@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.smoothness
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class Smoothness(val osmValue: String) {
     EXCELLENT("excellent"),
     GOOD("good"),

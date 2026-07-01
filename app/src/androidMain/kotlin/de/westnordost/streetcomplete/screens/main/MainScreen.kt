@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
 import android.content.Intent
-import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -41,7 +40,6 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.about.AboutActivity
@@ -75,11 +73,11 @@ import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.LargeCreateIcon
 import de.westnordost.streetcomplete.ui.common.StopRecordingIcon
+import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.sendErrorReportEmail
-import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -154,6 +152,8 @@ fun MainScreen(
     var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
+    var showToast by remember { mutableStateOf<Toast?>(null) }
+
     val showEditHistorySidebar by editHistoryViewModel.isShowingSidebar.collectAsState()
 
     val mapRotation = mapCamera?.rotation ?: 0.0
@@ -182,7 +182,7 @@ fun MainScreen(
         if (viewModel.isConnected) {
             viewModel.upload()
         } else {
-            context.toast(R.string.offline)
+            showToast = Toast.Offline
         }
     }
 
@@ -202,11 +202,11 @@ fun MainScreen(
     LaunchedEffect(isTeamMode) {
         // always show this toast on start to remind user that it is still on
         if (isTeamMode) {
-            context.toast(R.string.team_mode_active)
+            showToast = Toast.TeamModeActive
         }
         // show this only once when turning it off
         else if (viewModel.teamModeChanged) {
-            context.toast(R.string.team_mode_deactivated)
+            showToast = Toast.TeamModeDeactivated
             viewModel.teamModeChanged = false
         }
     }
@@ -323,7 +323,7 @@ fun MainScreen(
                                 if ((mapCamera?.zoom ?: 0.0) >= 17.0) {
                                     onClickCreate()
                                 } else {
-                                    context.toast(R.string.download_area_too_big, Toast.LENGTH_LONG)
+                                    showToast = Toast.DownloadAreaTooBig
                                 }
                             },
                             modifier = Modifier
@@ -413,7 +413,7 @@ fun MainScreen(
         MessageDialog(
             message = message,
             onDismissRequest = { shownMessage = null },
-            allQuestIconIds = questIcons,
+            allQuestIcons = questIcons,
             onToggleDontNotifyAgain = { messageType, dontNotifyAgain ->
                 viewModel.toggleDisableMessageType(messageType, dontNotifyAgain)
             }
@@ -465,6 +465,19 @@ fun MainScreen(
         )
     }
 
+    when (showToast) {
+        Toast.Offline -> Res.string.offline
+        Toast.TeamModeActive -> Res.string.team_mode_active
+        Toast.TeamModeDeactivated -> Res.string.team_mode_deactivated
+        Toast.DownloadAreaTooBig -> Res.string.download_area_too_big
+        null -> null
+    }?.let { resource ->
+        ToastPopup(
+            onDismissRequest = { showToast = null },
+            text = stringResource(resource)
+        )
+    }
+
     AnimatedScreenVisibility(showTeamModeWizard) {
         val questIcons = remember { viewModel.allQuestTypes.map { it.icon } }
         TeamModeWizard(
@@ -475,7 +488,7 @@ fun MainScreen(
                     indexInTeam = indexInTeam
                 )
             },
-            allQuestIconIds = questIcons
+            allQuestIcons = questIcons
         )
     }
 
@@ -493,4 +506,11 @@ fun MainScreen(
             onFinished = { viewModel.hasShownTutorial = true },
         )
     }
+}
+
+private enum class Toast {
+    Offline,
+    TeamModeActive,
+    TeamModeDeactivated,
+    DownloadAreaTooBig
 }

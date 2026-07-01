@@ -7,21 +7,13 @@ import de.westnordost.streetcomplete.osm.surface.updateCommonSurfaceFromFootAndC
 import kotlinx.serialization.Serializable
 
 @Serializable
-sealed interface SurfaceOverlayAnswer {
-    fun isComplete(): Boolean
-}
+sealed interface SurfaceOverlayAnswer
 
 @Serializable
-data class SingleSurface(val value: Surface?) : SurfaceOverlayAnswer {
-    override fun isComplete(): Boolean =
-        value != null
-}
+data class SingleSurface(val value: Surface?) : SurfaceOverlayAnswer
 
 @Serializable
-data class SegregatedSurface(val footway: Surface?, val cycleway: Surface?) : SurfaceOverlayAnswer {
-    override fun isComplete(): Boolean =
-        footway != null && cycleway != null
-}
+data class SegregatedSurface(val footway: Surface?, val cycleway: Surface?) : SurfaceOverlayAnswer
 
 fun SurfaceOverlayAnswer.applyTo(tags: Tags) {
     when (this) {

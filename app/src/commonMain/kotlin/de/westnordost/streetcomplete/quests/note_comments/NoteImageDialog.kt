@@ -14,6 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -21,19 +22,14 @@ import androidx.compose.ui.window.DialogProperties
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.ZoomableImage
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
-import de.westnordost.streetcomplete.util.image.fileBitmapPainter
-import kotlinx.io.files.FileSystem
-import kotlinx.io.files.Path
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-/** Dialog in which the image at the given [imagePath] and [fileSystem] is shown, can be zoomed in
- *  and panned, and also deleted. */
+/** Dialog in which an image is shown, can be zoomed in and panned, and also deleted. */
 @Composable
 fun NoteImageDialog(
     onDismissRequest: () -> Unit,
-    fileSystem: FileSystem,
-    imagePath: String,
+    image: Painter,
     onClickDelete: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -44,22 +40,19 @@ fun NoteImageDialog(
         properties = DialogProperties(usePlatformDefaultWidth = false)
     ) {
         Box(modifier = modifier) {
-            val painter = fileBitmapPainter(fileSystem, Path(imagePath))
-            if (painter != null) {
-                ZoomableImage(
-                    painter = painter,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .pointerInput(Unit) {
-                            detectTapGestures { offset ->
-                                onDismissRequest()
-                            }
-                        },
-                    initialZoom = 0.85f,
-                    zoomRange = 0.85f..4f,
-                )
-            }
+            ZoomableImage(
+                image = image,
+                contentDescription = null,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .pointerInput(Unit) {
+                        detectTapGestures { offset ->
+                            onDismissRequest()
+                        }
+                    },
+                initialZoom = 0.85f,
+                zoomRange = 0.85f..4f,
+            )
             FloatingActionButton(
                 onClick = { showConfirmDeleteDialog = true },
                 backgroundColor = Color.Red,
