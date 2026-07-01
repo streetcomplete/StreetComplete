@@ -22,6 +22,7 @@ class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>() {
           or aeroway = terminal
           or shop ~ mall|department_store
           or tourism = information and information ~ office|visitor_center
+          or leisure = marina
         )
         and access !~ no|private
         and (

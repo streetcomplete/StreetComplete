@@ -19,6 +19,7 @@ class AddSanitaryDumpStation : OsmFilterQuestType<Boolean>() {
          (
            tourism = caravan_site
            or tourism = camp_site and caravans = yes and !backcountry
+           or leisure = marina
          )
          and access !~ private|no
          and !sanitary_dump_station

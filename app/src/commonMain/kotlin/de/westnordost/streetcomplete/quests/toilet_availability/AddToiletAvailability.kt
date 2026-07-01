@@ -22,7 +22,7 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
           shop ~ mall|department_store
           or highway ~ services|rest_area
           or tourism ~ camp_site|caravan_site|wilderness_hut
-          or leisure = bathing_place
+          or leisure ~ bathing_place|marina
           or amenity = ranger_station
         )
         and !toilets

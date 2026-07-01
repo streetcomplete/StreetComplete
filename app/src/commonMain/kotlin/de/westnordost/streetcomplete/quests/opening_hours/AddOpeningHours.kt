@@ -132,6 +132,7 @@ mapOf(
                     or railway = station
                     or aeroway = terminal
                     or man_made = observatory
+                    or club
                 )
             )
             or (

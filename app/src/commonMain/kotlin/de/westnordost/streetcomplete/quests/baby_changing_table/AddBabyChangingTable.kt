@@ -46,9 +46,13 @@ class AddBabyChangingTable : OsmFilterQuestType<BabyChangingTableAnswer>() {
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) }
             ),
-            otherAnswers = { listOf(
-                AnswerItem(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) { on(Answer(NO_TOILET)) }
-            ) },
+            otherAnswers = {
+                listOfNotNull(
+                    if (element.tags["amenity"] != "toilets") {
+                        AnswerItem(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) { on(Answer(NO_TOILET)) }
+                    } else null
+                )
+            },
         )
     }
 

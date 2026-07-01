@@ -19,8 +19,11 @@ class AddAirConditioning : OsmFilterQuestType<Boolean>() {
     override val elementFilter = """
         nodes, ways with
         (
-          amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar|library
+          amenity ~ restaurant|cafe|fast_food|ice_cream|food_court|pub|bar|library|community_centre|youth_centre|ranger_station
           or tourism ~ apartment|hotel
+          or tourism = information and information ~ office|visitor_center
+          or aeroway = terminal
+          or shop ~ mall|department_store
         )
         and indoor_seating != no
         and takeaway != only
