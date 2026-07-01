@@ -836,7 +836,7 @@ class MainActivity :
      *  view (e.g. if it was zoomed in before to focus on an element) */
     @UiThread
     private fun closeBottomSheet() {
-        currentFocus?.hideKeyboard()
+        //currentFocus?.hideKeyboard()
         if (bottomSheetFragment != null) {
             supportFragmentManager.popBackStack(BOTTOM_SHEET, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
@@ -848,7 +848,7 @@ class MainActivity :
     /** Open or replace the bottom sheet. If the bottom sheet is replaces, no appear animation is
      *  played and the highlighting of the previous bottom sheet is cleared. */
     private fun showInBottomSheet(f: Fragment, clearPreviousHighlighting: Boolean = true) {
-        currentFocus?.hideKeyboard()
+        //currentFocus?.hideKeyboard()
         freezeMap()
         if (bottomSheetFragment != null) {
             if (clearPreviousHighlighting) clearHighlighting()
