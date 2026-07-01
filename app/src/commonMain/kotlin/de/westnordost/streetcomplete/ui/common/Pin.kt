@@ -16,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.painterResource
 
+/** A pin with an image on the pin head, usually a quest icon. The point the pin is pointing at is
+ *  exactly the center of this composable. */
 @Composable
 fun Pin(
     iconPainter: Painter,
