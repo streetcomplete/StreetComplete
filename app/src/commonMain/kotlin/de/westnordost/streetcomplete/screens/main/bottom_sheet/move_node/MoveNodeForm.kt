@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
@@ -68,11 +69,10 @@ fun MoveNodeForm(
     onMoved: (position: LatLon) -> Unit,
     onDismiss: () -> Unit,
     onPinPositioned: (offsetInWindow: Offset) -> Unit,
-    pinPosition: LatLon,
+    pinPosition: LatLon?,
     node: Node,
     nodeOffsetInWindow: Offset?,
     elementEditType: ElementEditType,
-    modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
 ) {
@@ -87,6 +87,7 @@ fun MoveNodeForm(
     val arrowWidthPx = 6.dp.toPx()
     val arrowHeadSizePx = 14.dp.toPx()
 
+    val pinPosition = pinPosition ?: node.position
     val distance = pinPosition.distanceTo(node.position)
     var pinOffset by remember { mutableStateOf<Offset?>(null) }
     val nodeOffset = remember(nodeOffsetInWindow, layoutCoordinates) {
@@ -104,7 +105,7 @@ fun MoveNodeForm(
     }
 
     Box(modifier = Modifier
-        .fillMaxWidth()
+        .fillMaxSize()
         .onGloballyPositioned { layoutCoordinates = it }
         .drawBehind {
             drawArrow(
@@ -116,6 +117,17 @@ fun MoveNodeForm(
             )
         }
     ) {
+        Pin(
+            iconPainter = painterResource(elementEditType.icon),
+            modifier = Modifier
+                .align(Alignment.Center)
+                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
+                .onGloballyPositioned {
+                    pinOffset = it.positionInParent()
+                    onPinPositioned(it.positionInWindow())
+                }
+        )
+
         BottomSheetFormScaffold(
             content = {
                 MoveNodeFormContent(
@@ -131,17 +143,6 @@ fun MoveNodeForm(
                     modifier = Modifier.padding(8.dp),
                 )
             }
-        )
-
-        Pin(
-            iconPainter = painterResource(elementEditType.icon),
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
-                .onGloballyPositioned {
-                    pinOffset = it.positionInParent()
-                    onPinPositioned(it.positionInWindow())
-                }
         )
     }
 
