@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet.note
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ContentAlpha
@@ -20,7 +22,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInParent
+import androidx.compose.ui.layout.positionInWindow
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.quests.note_comments.NoteForm
@@ -30,15 +38,20 @@ import de.westnordost.streetcomplete.resources.create_new_note_hint
 import de.westnordost.streetcomplete.resources.leave_note_overlay_context_hint
 import de.westnordost.streetcomplete.resources.leave_note_quest_context_hint
 import de.westnordost.streetcomplete.resources.map_btn_create_note
+import de.westnordost.streetcomplete.resources.quest_create_note
+import de.westnordost.streetcomplete.resources.quest_notes
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
+import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
+import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModel
 import de.westnordost.streetcomplete.util.image.fileBitmapPainter
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import kotlinx.io.files.FileSystem
 import kotlinx.io.files.Path
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
@@ -49,8 +62,8 @@ import org.koin.compose.viewmodel.koinViewModel
 fun CreateNoteForm(
     onLeaveNote: (text: String, noteImagePaths: List<String>) -> Unit,
     onDismiss: () -> Unit,
+    onPinPositioned: (offsetInWindow: Offset) -> Unit,
     isGpxAttached: Boolean,
-    modifier: Modifier = Modifier,
     fileSystem: FileSystem = koinInject(),
 ) {
     val viewModel = koinViewModel<PhotosViewModel>()
@@ -77,42 +90,53 @@ fun CreateNoteForm(
         }
     }
 
-    BottomSheetFormScaffold(
-        header = {
-            QuestHeader(
-                title = stringResource(Res.string.map_btn_create_note),
-                subtitle = null,
-                hintText =
-                    stringResource(Res.string.create_new_note_description) +
-                    "\n" +
-                    stringResource(Res.string.create_new_note_hint),
-                hintImages = emptyList()
-            )
-        },
-        content = {
-            ProvideTextStyle(MaterialTheme.typography.body1) {
-                NoteForm(
-                    text = noteText,
-                    onTextChange = { noteText = it },
-                    addImagesEnabled = takePhotoSupported,
-                    onDeleteImage = { viewModel.deleteImagePath(it) },
-                    onTakePhoto = { viewModel.takePhoto() },
-                    images = noteImagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
-                    isGpxAttached = isGpxAttached,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))
+    Box(
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Pin(
+            iconPainter = painterResource(Res.drawable.quest_create_note),
+            modifier = Modifier
+                .align(Alignment.Center)
+                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
+                .onGloballyPositioned { onPinPositioned(it.positionInWindow()) }
+        )
+
+        BottomSheetFormScaffold(
+            header = {
+                QuestHeader(
+                    title = stringResource(Res.string.map_btn_create_note),
+                    subtitle = null,
+                    hintText =
+                        stringResource(Res.string.create_new_note_description) +
+                            "\n" +
+                            stringResource(Res.string.create_new_note_hint),
+                    hintImages = emptyList()
                 )
-            }
-        },
-        fab = {
-            FloatingOkButton(
-                visible = isComplete,
-                onClick = { onLeaveNote(noteText, noteImagePaths) },
-            )
-        },
-        modifier = modifier,
-    )
+            },
+            content = {
+                ProvideTextStyle(MaterialTheme.typography.body1) {
+                    NoteForm(
+                        text = noteText,
+                        onTextChange = { noteText = it },
+                        addImagesEnabled = takePhotoSupported,
+                        onDeleteImage = { viewModel.deleteImagePath(it) },
+                        onTakePhoto = { viewModel.takePhoto() },
+                        images = noteImagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
+                        isGpxAttached = isGpxAttached,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))
+                    )
+                }
+            },
+            fab = {
+                FloatingOkButton(
+                    visible = isComplete,
+                    onClick = { onLeaveNote(noteText, noteImagePaths) },
+                )
+            },
+        )
+    }
 
     if (confirmDiscard) {
         ConfirmDiscardDialog(
