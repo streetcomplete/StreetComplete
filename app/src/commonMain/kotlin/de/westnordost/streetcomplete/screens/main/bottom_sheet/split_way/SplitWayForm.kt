@@ -126,8 +126,8 @@ fun SplitWayForm(
                                 TODO("add snip and do callback")
 
                                 scope.launch {
-                                    snipAnimation.animateTo(1f, tween(300))
-                                    snipAnimation.animateTo(0f, tween(300))
+                                    snipAnimation.animateTo(1f)
+                                    snipAnimation.animateTo(0f)
                                 }
                             },
                             enabled = crosshairPosition != null

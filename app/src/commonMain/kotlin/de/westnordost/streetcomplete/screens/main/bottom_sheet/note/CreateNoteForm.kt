@@ -1,16 +1,12 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet.note
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -24,22 +20,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
-import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.quests.note_comments.NoteForm
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.create_new_note_description
-import de.westnordost.streetcomplete.resources.create_new_note_hint
-import de.westnordost.streetcomplete.resources.leave_note_overlay_context_hint
-import de.westnordost.streetcomplete.resources.leave_note_quest_context_hint
-import de.westnordost.streetcomplete.resources.map_btn_create_note
-import de.westnordost.streetcomplete.resources.quest_create_note
-import de.westnordost.streetcomplete.resources.quest_notes
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
@@ -48,13 +33,13 @@ import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModel
 import de.westnordost.streetcomplete.util.image.fileBitmapPainter
-import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import kotlinx.io.files.FileSystem
 import kotlinx.io.files.Path
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
+import kotlin.time.Duration.Companion.milliseconds
 
 /** Bottom sheet form with which the user can create a new note, including moving the note */
 @OptIn(ExperimentalComposeUiApi::class)
@@ -99,6 +84,7 @@ fun CreateNoteForm(
                 .align(Alignment.Center)
                 .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
                 .onGloballyPositioned { onPinPositioned(it.positionInWindow()) }
+                .animateFallDown(startDelay = 200.milliseconds)
         )
 
         BottomSheetFormScaffold(
