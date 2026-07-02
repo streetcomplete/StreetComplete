@@ -337,7 +337,7 @@ private fun Feature.isChildOf(other: Feature): Boolean =
 
 /** return whether the feature has a fixed name which cannot be changed */
 private val Feature.hasFixedName get() =
-    addTags.containsKey("name") && preserveTags.none { it.containsMatchIn("name") }
+    addTags.containsKey("name")
     || id == "shop/vacant"
     || id == "shop/unknown"
 
