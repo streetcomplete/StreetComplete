@@ -92,7 +92,7 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "communication", "mall", "model", "empty", "wood", "hunting", "motorcycle", "trailer",
     "camera", "water", "fireplace", "outdoor", "blacksmith", "electronics", "fan", "piercing",
     "stationery", "sensory_friendly(:.*)?", "street_vendor", "sells(:.*)?", "safety_equipment",
-    "battery", "frame", "paint",
+    "battery", "frame", "paint", "convenience", "handicraft", "musical_instrument(:.*)?",
     // obsoleted information
     "(demolished|abandoned|disused)(:(?!bui).+)?", "was:.*", "not:.*", "damage", "created_by",
     "check_date", "opening_date", "last_checked", "checked_exists:date", "pharmacy_survey",
@@ -141,10 +141,10 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "produced_on_site", "restaurant", "food", "pastry", "pastry_shop", "product", "produce",
     "chocolate", "fair_trade", "butcher", "reservation(:.*)?", "takeaway(:.*)?", "delivery(:.*)?",
     "caterer", "real_fire", "flour_fortified", "highchair", "fast_food", "pub", "snack",
-    "confectionery", "drinking_water:refill",
+    "confectionery", "drinking_water:refill", "board_games",
     // related to repair shops/crafts
     "services?(:.*)?", "motorcycle:.*", "repair", ".*:repair", "electronics_repair(:.*)?",
-    "workshop",
+    "workshop", "mobile_phone(:.*)?",
     // shop=hairdresser, shop=clothes
     "unisex", "male", "female", "gender", "gender_simple", "lgbtq(:.*)?", "gay", "female:signed",
     "male:signed",
@@ -163,6 +163,7 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "snis_code:.*", "hfac_bed", "hfac_type", "nature", "moph_code", "IJSN:.*", "massgis:id",
     "OGD-Stmk:.*", "paho:.*", "panchayath", "pbf_contract", "pcode", "pe:minsa:.*", "who:.*",
     "pharmacy:category", "tactile_paving", "HF_(ID|TYPE|N_EN)", "RoadConn", "bin", "hiv(:.*)?",
+    "recycling:drugs", "healtcare", "waste", "appointment", "ref:NO:orgnr", "ref:RS:vatin",
     "ref:ZonaSanitaria", "ref:cuie_codigo", "ref:sisa_(codigo|tipologia)", "ref:SUKL", "ref:sede",
     "ref:msal", "ref:(micro)?red", "ref:category", "ref:osakidetza", "ref:ogdsteiermark",
     "ref:luebeck", "ref:nmd", "ref:nhn", "ref:hvakostertannlegen", "ref:boots", "ref:apotek1",
@@ -191,7 +192,9 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "zoo", "shooting", "commons", "groomer", "group_only", "hazard", "identity", "interaction",
     "logo", "maxheight", "provides", "regional", "scale", "site", "plots", "allotments",
     "local_food", "monitoring:pedestrian", "recording:automated", "yacht", "background_music",
-    "url:spaceapi", "openfire", "fraternity(:.*)?", "ref:DSV", "ref:FOS", "ref_fftt",
+    "url:spaceapi", "openfire", "fraternity(:.*)?", "ref:DSV", "ref:FOS", "ref_fftt", "genre",
+    "martial_arts", "hearing_loop", "verbindung(:.*)?", "ref:FR:FFTT", "occupant(:.*)?",
+    "leaf_type",
     // misc specific attributes
     "clothes", "shoes", "tailor", "beauty", "tobacco", "carpenter", "furniture", "lottery",
     "sport", "dispensing", "tailor:.*", "gambling", "material", "raw_material", "stonemason",
@@ -209,14 +212,14 @@ private val KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED = listOf(
     "diocese", "depot", "cargo", "function", "game", "party", "political_party.*",
     "telecom(munication)?", "service_times", "kitchen:facilities", "it:(type|sales)",
     "cannabis:cbd", "bath:type", "bath:(open_air|sand_bath)", "animal_boarding", "animal_shelter",
-    "mattress", "screen", "monitoring:weather", "public", "theatre", "culture", "library",
+    "mattress", "screen", "monitoring:weather", "public", "theatre(:.*)?", "culture", "library",
     "cooperative(:.*)?", "winery", "curtain", "lawyer(:.*)?", "local_authority(:.*)?", "equipment",
-    "hackerspace",
+    "hackerspace", "court", "ngo",
     "camp_site", "camping", "bbq", "static_caravans", "emergency(:.*)?", "evacuation_cent(er|re)",
     "education", "engineering", "forestry", "foundation", "lawyer", "logistics", "military",
     "community_centre", "bank", "operational", "users_(PLWD|boy|elderly|female|girl|men)",
     "Comments?", "comments?", "entrance:(width|step_count|kerb:height)", "fenced", "motor_vehicle",
-    "shelter",
+    "shelter", "ref:alvara",
 )
     .flatMap { listOf(it, "source:$it", "check_date:$it") }
     .map { it.toRegex() }

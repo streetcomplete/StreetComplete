@@ -12,6 +12,8 @@ val mainModule = module {
     single { LocationAvailabilityReceiver(get()) }
     single { SurveyChecker() }
 
+    factory<MapAppLauncher> { AndroidMapAppLauncher(get()) }
+
     viewModel<MainViewModel> { MainViewModelImpl(
         get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
         get(), get(), get(), get(), get(), get(), get()
