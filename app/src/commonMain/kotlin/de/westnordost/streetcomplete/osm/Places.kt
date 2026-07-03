@@ -215,6 +215,7 @@ private val IS_PLACE_EXPRESSION by lazy {
     or office and office !~ no|vacant
     or shop and shop !~ no|vacant
     or tourism = information and information ~ office|visitor_centre
+    or amenity = recycling and recycling_type = centre
     """.toElementFilterExpression()
 }
 
