@@ -51,7 +51,7 @@ import de.westnordost.streetcomplete.data.weeklyosm.weeklyOsmModule
 import de.westnordost.streetcomplete.overlays.overlaysModule
 import de.westnordost.streetcomplete.quests.questsModule
 import de.westnordost.streetcomplete.screens.about.aboutScreenModule
-import de.westnordost.streetcomplete.screens.main.mainModule
+import de.westnordost.streetcomplete.screens.main.mainScreenModule
 import de.westnordost.streetcomplete.ui.util.measure.arModule
 import de.westnordost.streetcomplete.screens.settings.settingsScreenModule
 import de.westnordost.streetcomplete.screens.user.userScreenModule
@@ -117,7 +117,7 @@ class StreetCompleteApplication : Application() {
                 elementEditsModule,
                 elementGeometryModule,
                 mapDataModule,
-                mainModule,
+                mainScreenModule,
                 metadataModule,
                 noteEditsModule,
                 notesModule,
