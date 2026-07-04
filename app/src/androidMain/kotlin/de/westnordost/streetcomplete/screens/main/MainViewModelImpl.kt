@@ -36,7 +36,7 @@ import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSourc
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
-import de.westnordost.streetcomplete.util.error_reporting.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.parseGeoUri
@@ -56,7 +56,7 @@ import kotlinx.coroutines.withContext
 import kotlin.reflect.KClass
 
 class MainViewModelImpl(
-    private val crashReportExceptionHandler: CrashReportExceptionHandler,
+    private val crashReportHolder: CrashReportHolder,
     private val errorReportBuilder: ErrorReportBuilder,
     private val emailAppLauncher: EmailAppLauncher,
     private val urlConfigController: UrlConfigController,
@@ -442,7 +442,7 @@ class MainViewModelImpl(
 
     init {
         launch(IO) {
-            lastCrashReport.value = crashReportExceptionHandler.popCrashReport()
+            lastCrashReport.value = crashReportHolder.takeCrashReport()
         }
         teamModeQuestFilterController.addListener(teamModeListener)
         elementEditsSource.addListener(elementEditsListener)

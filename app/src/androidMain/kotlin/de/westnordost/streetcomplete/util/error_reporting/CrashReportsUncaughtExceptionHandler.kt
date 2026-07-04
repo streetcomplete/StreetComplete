@@ -6,11 +6,11 @@ import kotlinx.io.IOException
 /** Exception handler that takes care of storing the last crash as a file.
  *  When a crash occurs, the stack trace is saved to [crashReportFile] so that it can be accessed
  *  on next startup */
-class CrashReportExceptionHandler(
+class CrashReportsUncaughtExceptionHandler(
     private val context: Context,
     private val errorReportBuilder: ErrorReportBuilder,
     private val crashReportFile: String
-) : Thread.UncaughtExceptionHandler {
+) : Thread.UncaughtExceptionHandler, CrashReportHolder {
 
     private var defaultUncaughtExceptionHandler: Thread.UncaughtExceptionHandler? = null
 
@@ -21,7 +21,7 @@ class CrashReportExceptionHandler(
         // don't need this for google play users: they have their own crash reports
         if (installerPackageName == "com.android.vending") return false
         val ueh = Thread.getDefaultUncaughtExceptionHandler()
-        check(ueh !is CrashReportExceptionHandler) { "May not install several CrashReportExceptionHandlers!" }
+        check(ueh !is CrashReportsUncaughtExceptionHandler) { "May not install several CrashReportsUncaughtExceptionHandler!" }
         defaultUncaughtExceptionHandler = ueh
         Thread.setDefaultUncaughtExceptionHandler(this)
         return true
@@ -34,7 +34,7 @@ class CrashReportExceptionHandler(
         defaultUncaughtExceptionHandler?.uncaughtException(thread, error)
     }
 
-    fun popCrashReport(): String? {
+    override fun takeCrashReport(): String? {
         if (hasCrashReport()) {
             val errorReport = loadCrashReport()
             deleteCrashReport()
