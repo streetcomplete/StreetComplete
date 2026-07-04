@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.data.logs.format
+import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.io.IOException
 
@@ -15,7 +16,7 @@ import kotlinx.io.IOException
  *  on next startup */
 class CrashReportExceptionHandler(
     private val context: Context,
-    private val logsController: LogsController,
+    private val errorReportBuilder: ErrorReportBuilder,
     private val crashReportFile: String
 ) : Thread.UncaughtExceptionHandler {
 
@@ -35,7 +36,7 @@ class CrashReportExceptionHandler(
     }
 
     override fun uncaughtException(thread: Thread, error: Throwable) {
-        val report = createErrorReport(error, thread)
+        val report = errorReportBuilder.createErrorReport(error, thread.name)
 
         saveCrashReport(report)
         defaultUncaughtExceptionHandler?.uncaughtException(thread, error)
@@ -49,31 +50,6 @@ class CrashReportExceptionHandler(
         } else {
             return null
         }
-    }
-
-    fun createErrorReport(error: Throwable, thread: Thread? = null): String {
-        val report = StringBuilder("")
-
-        if (thread != null) {
-            report.append("Thread: ${thread.name}")
-        }
-
-        report.append("""
-            App version: ${BuildConfig.VERSION_NAME}
-            Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}
-            Locale: ${Locale.current}
-
-            Stack trace:
-
-            """.trimIndent()
-        )
-
-        report.append(error.stackTraceToString())
-
-        report.append("\nLog:\n")
-        report.append(readLogFromDatabase())
-
-        return report.toString()
     }
 
     private fun saveCrashReport(text: String) {
@@ -95,14 +71,5 @@ class CrashReportExceptionHandler(
 
     private fun deleteCrashReport() {
         context.deleteFile(crashReportFile)
-    }
-
-    private fun readLogFromDatabase(): String {
-        val newLogTimestamp =
-            nowAsEpochMilliseconds() - ApplicationConstants.DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER
-
-        return logsController
-            .getLogs(newerThan = newLogTimestamp)
-            .format()
     }
 }

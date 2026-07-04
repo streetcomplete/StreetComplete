@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.parseGeoUri
 import kotlinx.coroutines.Dispatchers.IO
@@ -54,6 +55,7 @@ import kotlin.reflect.KClass
 
 class MainViewModelImpl(
     private val crashReportExceptionHandler: CrashReportExceptionHandler,
+    private val errorReportBuilder: ErrorReportBuilder,
     private val urlConfigController: UrlConfigController,
     private val editTypePresetsSource: EditTypePresetsSource,
     private val uploadController: UploadController,
@@ -97,7 +99,7 @@ class MainViewModelImpl(
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
     override suspend fun createErrorReport(error: Exception) = withContext(IO) {
-        crashReportExceptionHandler.createErrorReport(error)
+        errorReportBuilder.createErrorReport(error)
     }
 
     /* start parameters */
