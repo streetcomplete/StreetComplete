@@ -13,6 +13,7 @@ val mainModule = module {
     single { SurveyChecker() }
 
     factory<MapAppLauncher> { AndroidMapAppLauncher(get()) }
+    factory<EmailAppLauncher> { AndroidEmailAppLauncher(get()) }
 
     viewModel<MainViewModel> { MainViewModelImpl(
         get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),

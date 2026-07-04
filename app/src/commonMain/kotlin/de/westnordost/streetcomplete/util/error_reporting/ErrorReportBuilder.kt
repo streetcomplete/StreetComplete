@@ -1,26 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 package de.westnordost.streetcomplete.util.error_reporting
 
 import androidx.compose.ui.text.intl.Locale

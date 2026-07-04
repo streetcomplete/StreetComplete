@@ -105,8 +105,8 @@ class MainViewModelImpl(
         emailAppLauncher.isAvailable()
 
     override fun sendErrorReport(error: Exception) {
-        launch(Dispatchers.IO) {
-            val report = errorReportBuilder.createErrorReport(error)
+        launch {
+            val report = withContext(Dispatchers.IO) { errorReportBuilder.createErrorReport(error) }
             sendErrorReport(report)
         }
     }
