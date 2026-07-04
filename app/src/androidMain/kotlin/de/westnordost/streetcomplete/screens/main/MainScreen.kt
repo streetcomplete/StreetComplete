@@ -77,9 +77,8 @@ import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
-import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.ktx.sendErrorReportEmail
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.PI
@@ -189,7 +188,7 @@ fun MainScreen(
 
     fun sendErrorReport(error: Exception) {
         if (!viewModel.isSendErrorReportAvailable()) {
-            context.toast(R.string.no_email_client)
+            showToast = Toast.NoEmailClient
         } else {
             viewModel.sendErrorReport(error)
         }
@@ -197,7 +196,7 @@ fun MainScreen(
 
     fun sendErrorReport(report: String) {
         if (!viewModel.isSendErrorReportAvailable()) {
-            context.toast(R.string.no_email_client)
+            showToast = Toast.NoEmailClient
         } else {
             viewModel.sendErrorReport(report)
         }
@@ -475,16 +474,10 @@ fun MainScreen(
         )
     }
 
-    when (showToast) {
-        Toast.Offline -> Res.string.offline
-        Toast.TeamModeActive -> Res.string.team_mode_active
-        Toast.TeamModeDeactivated -> Res.string.team_mode_deactivated
-        Toast.DownloadAreaTooBig -> Res.string.download_area_too_big
-        null -> null
-    }?.let { resource ->
+    showToast?.messageResource?.let { message ->
         ToastPopup(
             onDismissRequest = { showToast = null },
-            text = stringResource(resource)
+            text = stringResource(message)
         )
     }
 
@@ -522,5 +515,14 @@ private enum class Toast {
     Offline,
     TeamModeActive,
     TeamModeDeactivated,
-    DownloadAreaTooBig
+    DownloadAreaTooBig,
+    NoEmailClient
+}
+
+private val Toast.messageResource: StringResource get() =  when (this) {
+    Toast.Offline -> Res.string.offline
+    Toast.TeamModeActive -> Res.string.team_mode_active
+    Toast.TeamModeDeactivated -> Res.string.team_mode_deactivated
+    Toast.DownloadAreaTooBig -> Res.string.download_area_too_big
+    Toast.NoEmailClient -> Res.string.no_email_client
 }
