@@ -1,14 +1,6 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.util.error_reporting
 
 import android.content.Context
-import android.os.Build
-import androidx.compose.ui.text.intl.Locale
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.data.logs.LogsController
-import de.westnordost.streetcomplete.data.logs.format
-import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.io.IOException
 
 /** Exception handler that takes care of storing the last crash as a file.
