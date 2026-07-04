@@ -40,6 +40,7 @@ import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
 import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.parseGeoUri
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -100,11 +101,17 @@ class MainViewModelImpl(
         awaitClose { uploadProgressSource.removeListener(listener) }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    override suspend fun createErrorReport(error: Exception) = withContext(IO) {
-        errorReportBuilder.createErrorReport(error)
+    override fun isSendErrorReportAvailable(): Boolean =
+        emailAppLauncher.isAvailable()
+
+    override fun sendErrorReport(error: Exception) {
+        launch(Dispatchers.IO) {
+            val report = errorReportBuilder.createErrorReport(error)
+            sendErrorReport(report)
+        }
     }
 
-    override fun composeErrorReportEmail(errorReport: String) {
+    override fun sendErrorReport(errorReport: String) {
         emailAppLauncher.compose(
             email = ApplicationConstants.ERROR_REPORTS_EMAIL,
             subject = ApplicationConstants.USER_AGENT + " " + "Error Report",
