@@ -22,6 +22,8 @@ abstract class MainViewModel : ViewModel() {
     abstract val lastUploadError: StateFlow<Exception?>
     abstract suspend fun createErrorReport(error: Exception): String
 
+    abstract fun composeErrorReportEmail(errorReport: String)
+
     /* start parameters */
     abstract fun setUri(uri: String)
 

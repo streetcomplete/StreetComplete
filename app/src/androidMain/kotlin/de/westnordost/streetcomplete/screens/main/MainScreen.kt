@@ -41,6 +41,7 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.resources.*
@@ -78,7 +79,6 @@ import de.westnordost.streetcomplete.ui.common.StopRecordingIcon
 import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
-import de.westnordost.streetcomplete.util.ktx.sendErrorReportEmail
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
@@ -189,7 +189,7 @@ fun MainScreen(
     fun sendErrorReport(error: Exception) {
         scope.launch {
             val report = viewModel.createErrorReport(error)
-            context.sendErrorReportEmail(report)
+            viewModel.composeErrorReportEmail(report)
         }
     }
 
@@ -451,7 +451,7 @@ fun MainScreen(
         LastUploadErrorEffect(lastError = error, onReportError = ::sendErrorReport)
     }
     lastCrashReport?.let { report ->
-        LastCrashEffect(lastReport = report, onReport = { context.sendErrorReportEmail(it) })
+        LastCrashEffect(lastReport = report, onReport = { viewModel.composeErrorReportEmail(it) })
     }
 
     if (isRequestingLogin) {

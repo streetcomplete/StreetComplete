@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.viewModelScope
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.InternetConnectionState
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -56,6 +57,7 @@ import kotlin.reflect.KClass
 class MainViewModelImpl(
     private val crashReportExceptionHandler: CrashReportExceptionHandler,
     private val errorReportBuilder: ErrorReportBuilder,
+    private val emailAppLauncher: EmailAppLauncher,
     private val urlConfigController: UrlConfigController,
     private val editTypePresetsSource: EditTypePresetsSource,
     private val uploadController: UploadController,
@@ -100,6 +102,14 @@ class MainViewModelImpl(
 
     override suspend fun createErrorReport(error: Exception) = withContext(IO) {
         errorReportBuilder.createErrorReport(error)
+    }
+
+    override fun composeErrorReportEmail(errorReport: String) {
+        emailAppLauncher.compose(
+            email = ApplicationConstants.ERROR_REPORTS_EMAIL,
+            subject = ApplicationConstants.USER_AGENT + " " + "Error Report",
+            body = "Describe how to reproduce it here:\n\n\n\n$errorReport"
+        )
     }
 
     /* start parameters */
