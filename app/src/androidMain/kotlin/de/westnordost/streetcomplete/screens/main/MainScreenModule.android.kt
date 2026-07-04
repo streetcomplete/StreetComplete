@@ -8,9 +8,10 @@ actual val mainScreenPlatformModule = module {
     single { LocationAvailabilityReceiver(get()) }
 
     factory<MapAppLauncher> { AndroidMapAppLauncher(get()) }
+    factory<EmailAppLauncher> { AndroidEmailAppLauncher(get()) }
 
     viewModel<MainViewModel> { MainViewModelImpl(
         get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
-        get(), get(), get(), get(), get(), get(), get()
+        get(), get(), get(), get(), get(), get(), get(), get(), get()
     ) }
 }

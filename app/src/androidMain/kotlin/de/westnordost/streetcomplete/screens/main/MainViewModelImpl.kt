@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.viewModelScope
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.InternetConnectionState
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -35,9 +36,11 @@ import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSourc
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
-import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
+import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.parseGeoUri
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -53,7 +56,9 @@ import kotlinx.coroutines.withContext
 import kotlin.reflect.KClass
 
 class MainViewModelImpl(
-    private val crashReportExceptionHandler: CrashReportExceptionHandler,
+    private val crashReportHolder: CrashReportHolder,
+    private val errorReportBuilder: ErrorReportBuilder,
+    private val emailAppLauncher: EmailAppLauncher,
     private val urlConfigController: UrlConfigController,
     private val editTypePresetsSource: EditTypePresetsSource,
     private val uploadController: UploadController,
@@ -96,8 +101,22 @@ class MainViewModelImpl(
         awaitClose { uploadProgressSource.removeListener(listener) }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    override suspend fun createErrorReport(error: Exception) = withContext(IO) {
-        crashReportExceptionHandler.createErrorReport(error)
+    override fun isSendErrorReportAvailable(): Boolean =
+        emailAppLauncher.isAvailable()
+
+    override fun sendErrorReport(error: Exception) {
+        launch {
+            val report = withContext(Dispatchers.IO) { errorReportBuilder.createErrorReport(error) }
+            sendErrorReport(report)
+        }
+    }
+
+    override fun sendErrorReport(errorReport: String) {
+        emailAppLauncher.compose(
+            email = ApplicationConstants.ERROR_REPORTS_EMAIL,
+            subject = ApplicationConstants.USER_AGENT + " " + "Error Report",
+            body = "Describe how to reproduce it here:\n\n\n\n$errorReport"
+        )
     }
 
     /* start parameters */
@@ -423,7 +442,7 @@ class MainViewModelImpl(
 
     init {
         launch(IO) {
-            lastCrashReport.value = crashReportExceptionHandler.popCrashReport()
+            lastCrashReport.value = crashReportHolder.takeCrashReport()
         }
         teamModeQuestFilterController.addListener(teamModeListener)
         elementEditsSource.addListener(elementEditsListener)

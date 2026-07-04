@@ -19,8 +19,8 @@ object IosMapAppLauncher : MapAppLauncher {
         )
 
         for (mapApp in mapApps) {
-            val url = NSURL.URLWithString(mapApp.buildUrl(position.latitude, position.longitude, zoom))!!
-            if (app.canOpenURL(url)) {
+            val url = NSURL.URLWithString(mapApp.buildUrl(position.latitude, position.longitude, zoom))
+            if (url != null && app.canOpenURL(url)) {
                 alert.addAction(UIAlertAction.actionWithTitle(mapApp.title, UIAlertActionStyleDefault) {
                     app.openURL(url, options = emptyMap<Any?, Any?>(), completionHandler = null)
                 })
@@ -34,8 +34,8 @@ object IosMapAppLauncher : MapAppLauncher {
     override fun isAvailable(): Boolean {
         val app = UIApplication.sharedApplication
         return mapApps.any { mapApp ->
-            val url = NSURL.URLWithString(mapApp.buildUrl(0.0, 0.0, 18.0))!!
-            app.canOpenURL(url)
+            val url = NSURL.URLWithString(mapApp.buildUrl(0.0, 0.0, 18.0))
+            url != null && app.canOpenURL(url)
         }
     }
 

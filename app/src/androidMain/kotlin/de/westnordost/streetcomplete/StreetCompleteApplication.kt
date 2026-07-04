@@ -56,7 +56,8 @@ import de.westnordost.streetcomplete.ui.util.measure.arModule
 import de.westnordost.streetcomplete.screens.settings.settingsScreenModule
 import de.westnordost.streetcomplete.screens.user.userScreenModule
 import de.westnordost.streetcomplete.ui.util.photo.photoModule
-import de.westnordost.streetcomplete.util.CrashReportExceptionHandler
+import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
+import de.westnordost.streetcomplete.util.error_reporting.errorReportingModule
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import de.westnordost.streetcomplete.util.ktx.deleteRecursively
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -81,7 +82,7 @@ class StreetCompleteApplication : Application() {
 
     private val preloader: Preloader by inject()
     private val databaseLogger: DatabaseLogger by inject()
-    private val crashReportExceptionHandler: CrashReportExceptionHandler by inject()
+    private val crashReportsUncaughtExceptionHandler: CrashReportsUncaughtExceptionHandler by inject()
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater by inject()
     private val downloadedTilesController: DownloadedTilesController by inject()
     private val prefs: Preferences by inject()
@@ -145,6 +146,7 @@ class StreetCompleteApplication : Application() {
                 calendarEventsModule,
                 feedsModule,
                 androidModule,
+                errorReportingModule
             )
         }
 
@@ -157,7 +159,7 @@ class StreetCompleteApplication : Application() {
 
         updateDefaultLocales()
 
-        crashReportExceptionHandler.install()
+        crashReportsUncaughtExceptionHandler.install()
 
         applicationScope.launch {
             preloader.preload()

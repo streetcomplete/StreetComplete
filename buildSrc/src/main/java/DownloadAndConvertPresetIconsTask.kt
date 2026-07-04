@@ -213,6 +213,9 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
             "roentgen" -> listOf(
                 "https://raw.githubusercontent.com/enzet/Roentgen/main/icons/$file.svg"
             )
+            "pinhead" -> listOf(
+                "https://pinhead.ink/latest/$file.svg"
+            )
             else -> null
         }
     }

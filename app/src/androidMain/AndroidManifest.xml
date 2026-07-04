@@ -30,6 +30,11 @@
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="geo" />
         </intent>
+        <!-- send error reports via email (but check first if there is an email client at all) -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="mailto" />
+        </intent>
         <package android:name="de.westnordost.streetmeasure"/>
         <package android:name="com.android.vending"/>
     </queries>
