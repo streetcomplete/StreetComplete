@@ -78,7 +78,6 @@ import de.westnordost.streetcomplete.ui.common.StopRecordingIcon
 import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
-import de.westnordost.streetcomplete.util.ktx.sendErrorReportEmail
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
@@ -187,9 +186,18 @@ fun MainScreen(
     }
 
     fun sendErrorReport(error: Exception) {
-        scope.launch {
-            val report = viewModel.createErrorReport(error)
-            context.sendErrorReportEmail(report)
+        if (!viewModel.isSendErrorReportAvailable()) {
+            context.toast(R.string.no_email_client)
+        } else {
+            viewModel.sendErrorReport(error)
+        }
+    }
+
+    fun sendErrorReport(report: String) {
+        if (!viewModel.isSendErrorReportAvailable()) {
+            context.toast(R.string.no_email_client)
+        } else {
+            viewModel.sendErrorReport(report)
         }
     }
 
@@ -451,7 +459,7 @@ fun MainScreen(
         LastUploadErrorEffect(lastError = error, onReportError = ::sendErrorReport)
     }
     lastCrashReport?.let { report ->
-        LastCrashEffect(lastReport = report, onReport = { context.sendErrorReportEmail(it) })
+        LastCrashEffect(lastReport = report, onReport = ::sendErrorReport)
     }
 
     if (isRequestingLogin) {

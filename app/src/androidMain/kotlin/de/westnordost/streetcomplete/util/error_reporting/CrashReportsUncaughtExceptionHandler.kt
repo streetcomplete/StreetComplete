@@ -1,23 +1,16 @@
-package de.westnordost.streetcomplete.util
+package de.westnordost.streetcomplete.util.error_reporting
 
 import android.content.Context
-import android.os.Build
-import androidx.compose.ui.text.intl.Locale
-import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.BuildConfig
-import de.westnordost.streetcomplete.data.logs.LogsController
-import de.westnordost.streetcomplete.data.logs.format
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.io.IOException
 
 /** Exception handler that takes care of storing the last crash as a file.
  *  When a crash occurs, the stack trace is saved to [crashReportFile] so that it can be accessed
  *  on next startup */
-class CrashReportExceptionHandler(
+class CrashReportsUncaughtExceptionHandler(
     private val context: Context,
-    private val logsController: LogsController,
+    private val errorReportBuilder: ErrorReportBuilder,
     private val crashReportFile: String
-) : Thread.UncaughtExceptionHandler {
+) : Thread.UncaughtExceptionHandler, CrashReportHolder {
 
     private var defaultUncaughtExceptionHandler: Thread.UncaughtExceptionHandler? = null
 
@@ -28,20 +21,20 @@ class CrashReportExceptionHandler(
         // don't need this for google play users: they have their own crash reports
         if (installerPackageName == "com.android.vending") return false
         val ueh = Thread.getDefaultUncaughtExceptionHandler()
-        check(ueh !is CrashReportExceptionHandler) { "May not install several CrashReportExceptionHandlers!" }
+        check(ueh !is CrashReportsUncaughtExceptionHandler) { "May not install several CrashReportsUncaughtExceptionHandler!" }
         defaultUncaughtExceptionHandler = ueh
         Thread.setDefaultUncaughtExceptionHandler(this)
         return true
     }
 
     override fun uncaughtException(thread: Thread, error: Throwable) {
-        val report = createErrorReport(error, thread)
+        val report = errorReportBuilder.createErrorReport(error, thread.name)
 
         saveCrashReport(report)
         defaultUncaughtExceptionHandler?.uncaughtException(thread, error)
     }
 
-    fun popCrashReport(): String? {
+    override fun takeCrashReport(): String? {
         if (hasCrashReport()) {
             val errorReport = loadCrashReport()
             deleteCrashReport()
@@ -49,31 +42,6 @@ class CrashReportExceptionHandler(
         } else {
             return null
         }
-    }
-
-    fun createErrorReport(error: Throwable, thread: Thread? = null): String {
-        val report = StringBuilder("")
-
-        if (thread != null) {
-            report.append("Thread: ${thread.name}")
-        }
-
-        report.append("""
-            App version: ${BuildConfig.VERSION_NAME}
-            Device: ${Build.BRAND}  ${Build.DEVICE}, Android ${Build.VERSION.RELEASE}
-            Locale: ${Locale.current}
-
-            Stack trace:
-
-            """.trimIndent()
-        )
-
-        report.append(error.stackTraceToString())
-
-        report.append("\nLog:\n")
-        report.append(readLogFromDatabase())
-
-        return report.toString()
     }
 
     private fun saveCrashReport(text: String) {
@@ -95,14 +63,5 @@ class CrashReportExceptionHandler(
 
     private fun deleteCrashReport() {
         context.deleteFile(crashReportFile)
-    }
-
-    private fun readLogFromDatabase(): String {
-        val newLogTimestamp =
-            nowAsEpochMilliseconds() - ApplicationConstants.DO_NOT_ATTACH_LOG_TO_CRASH_REPORT_AFTER
-
-        return logsController
-            .getLogs(newerThan = newLogTimestamp)
-            .format()
     }
 }

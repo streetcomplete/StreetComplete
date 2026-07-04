@@ -20,7 +20,10 @@ abstract class MainViewModel : ViewModel() {
 
     abstract val lastDownloadError: StateFlow<Exception?>
     abstract val lastUploadError: StateFlow<Exception?>
-    abstract suspend fun createErrorReport(error: Exception): String
+
+    abstract fun isSendErrorReportAvailable(): Boolean
+    abstract fun sendErrorReport(error: Exception)
+    abstract fun sendErrorReport(errorReport: String)
 
     /* start parameters */
     abstract fun setUri(uri: String)

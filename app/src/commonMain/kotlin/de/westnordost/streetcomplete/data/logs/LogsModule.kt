@@ -6,4 +6,5 @@ val logsModule = module {
     factory { LogsDao(get()) }
 
     single { LogsController(get()) }
+    single<LogsSource> { get<LogsController>() }
 }
