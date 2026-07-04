@@ -9,7 +9,7 @@
     <string name="pref_summaryOn_show_notes_not_phrased_as_questions">同時顯示不含問題的註記</string>
     <string name="pref_summaryOff_show_notes_not_phrased_as_questions">忽略不含問題的註記</string>
     <string name="map_btn_gps_tracking">追蹤位置</string>
-    <string name="map_attribution_osm">© OpenStreetMap 貢獻者</string>
+    <string name="map_attribution_osm">© 開放街圖貢獻者</string>
     <string name="quest_generic_otherAnswers">其他答案……</string>
     <string name="quest_generic_answer_notApplicable">難以回答……</string>
     <string name="quest_generic_confirmation_title">你確定嗎？</string>
@@ -72,11 +72,11 @@
     <string name="privacy_html">&lt;p&gt;很高興看到有人如此重視隱私！對您來說，這裡應該全都是好消息：&lt;/p&gt;
 &lt;h2&gt;直接貢獻&lt;/h2&gt;
 &lt;p&gt;
-​首先請了解，使用此應用程式，您是在為 OpenStreetMap (OSM) 做出真實且直接的貢獻。&lt;br/&gt;
+​首先請了解，使用此應用程式，您是在為開放街圖 (OSM) 做出真實且直接的貢獻。&lt;br/&gt;
 您在此程式中提交的所有內容都會直接加入地圖，應用程式與 OSM 基礎設施之間不存在任何第三方。
 &lt;/p&gt;
 &lt;p&gt;
-​匿名編輯 OpenStreetMap 是不可能的。 您所做的任何變動（及其日期與地點）都會歸屬於您的 OSM 帳號，並在 openstreetmap.org 網站上公開顯示。由於 StreetComplete 僅限於實地調查時使用，這將會揭露您在何時、何地使用了此應用程式。
+​你並無法匿名編輯開放街圖。 您所做的任何變動（及其日期與地點）都會歸屬於您的 OSM 帳號，並在 openstreetmap.org 網站上公開顯示。由於 StreetComplete 僅限於實地調查時使用，這將會揭露您在何時、何地使用了此應用程式。
 &lt;/p&gt;
 
 &lt;h2&gt;​位置資訊&lt;/h2&gt;
@@ -625,7 +625,7 @@
     <string name="achievement_building_solved_X">你完成了 %1$d 項建築相關任務。請注意，此程式會在確定建築類型後，才會詢問門牌號碼。</string>
     <string name="achievement_blind_title">第六感</string>
     <string name="achievement_blind_solved_X">你完成了 %1$d 項對視障人士有助益的任務。</string>
-    <string name="achievement_pedestrian_title">健行者</string>
+    <string name="achievement_pedestrian_title">跑者</string>
     <string name="achievement_pedestrian_solved_X">你完成了 %1$d 個適合步行者完成的有趣任務！</string>
     <string name="achievement_veg_title">善待動物</string>
     <string name="achievement_veg_solved_X">你完成了 %1$d 項對素食者有助益的任務！</string>
@@ -635,7 +635,7 @@
     <string name="unread_messages_button">開啟收信匣</string>
     <string name="action_about2">關於</string>
     <string name="map_btn_menu">選單</string>
-    <string name="privacy_html_statistics">&lt;p&gt;您個人資料中顯示的數據是從您在 OpenStreetMap 上公開的貢獻紀錄彙整而成，並存放於我方伺服器。&lt;/p&gt;
+    <string name="privacy_html_statistics">&lt;p&gt;您個人資料中顯示的資料是從您在開放街圖公開的貢獻紀錄彙整而成，並存放於我方伺服器。&lt;/p&gt;
 </string>
     <string name="confirmation_authorize_now_note2">你也可以稍後在個人檔案中處理。</string>
     <string name="credits_art_contributors_title">美術貢獻者</string>
@@ -1488,10 +1488,13 @@
     <string name="quest_leave_new_note_photo_delete">刪除</string>
     <string name="quest_maxspeed_type_description">這裡的限速定義方式是……</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit2">建議限速標誌</string>
-    <string name="quest_maxspeed_answer_roadtype_description">這裡的街道類型為……</string>
+    <string name="quest_maxspeed_answer_roadtype_description">這裡的道路類型為……</string>
     <string name="quest_maxspeed_answer_roadtype_urban">建成區內</string>
     <string name="quest_maxspeed_answer_roadtype_rural">非建成區內</string>
     <string name="quest_maxspeed_answer_roadtype_lit">有照明</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">無照明</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">無照明且為分隔車道</string>
+    <string name="quest_board_type_tourism">觀光旅遊 (多種主題)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">只有一個標示車道</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">您尋找的類型</string>
 </resources>
