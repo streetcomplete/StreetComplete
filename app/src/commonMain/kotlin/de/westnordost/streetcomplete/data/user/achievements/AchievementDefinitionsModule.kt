@@ -136,6 +136,14 @@ val links = listOf(
         Res.string.link_vespucci_description
     ),
     Link(
+        "gomap",
+        "https://apps.apple.com/us/app/go-map/id592990211",
+        "Go Map!!",
+        LinkCategory.EDITORS,
+        Res.drawable.link_gomap,
+        Res.string.link_gomap_description,
+    ),
+    Link(
         "josm",
         "https://josm.openstreetmap.de",
         "JOSM",
@@ -441,6 +449,14 @@ val links = listOf(
         Res.string.link_figuregrounder_description
     ),
     Link(
+        "terraink",
+        "https://terraink.app/",
+        "Terraink",
+        LinkCategory.GOODIES,
+        Res.drawable.link_terraink,
+        Res.string.link_terraink_description
+    ),
+    Link(
         "backofyourhand",
         "https://backofyourhand.com/",
         "Back Of Your Hand",
@@ -537,7 +553,7 @@ val achievements = listOf(
             4 to links("ideditor"),
             5 to links("learnosm"), // learnosm mostly concerns itself with tutorials about how to use editors
             6 to links("disaster.ninja"),
-            7 to links("vespucci", "josm"), // together because both are full-featured-editors for each their platform
+            7 to links("vespucci", "gomap", "josm"), // together because all are full-featured-editors for each their platform
             8 to links("ohsomehex"),
             9 to links("notesreview"),
             10 to links("every-door"),
@@ -615,7 +631,8 @@ val achievements = listOf(
         mapOf(
             1 to links("osm_buildings"),
             2 to links("figuregrounder"),
-            3 to links("prettymapp")
+            3 to links("prettymapp"),
+            4 to links("terraink"),
         )
     ),
 
