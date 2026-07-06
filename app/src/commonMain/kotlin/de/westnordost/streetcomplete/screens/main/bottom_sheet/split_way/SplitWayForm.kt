@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet.split_way
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +18,7 @@ import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -45,8 +44,11 @@ import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
+import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.math.getSplitAt
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -56,28 +58,54 @@ import org.jetbrains.compose.resources.stringResource
  *  [onCrosshairPositioned] reports the offset relative to the window of the crosshair - where to
  *  create a split - while this composable then expects to get the [crosshairPosition], i.e. where
  *  the crosshair is on the map.
+ *
+ *  [onScissorsPlaced] reports the position of the scissors (which is placed on the way, near the
+ *  crosshairs) and [onSplitPositions] reports the positions of the cuts made so far.
  * */
 @Composable
 @OptIn(ExperimentalComposeUiApi::class)
 fun SplitWayForm(
-    onSplitWays: (List<SplitPolylineAtPosition>) -> Unit,
+    onConfirmed: (List<SplitPolylineAtPosition>) -> Unit,
     onDismiss: () -> Unit,
-    onUndoLast: () -> Unit,
     crosshairPosition: LatLon?,
     onCrosshairPositioned: (offsetInWindow: Offset) -> Unit,
+    onScissorsPlaced: (LatLon?) -> Unit,
+    onSplitPositions: (List<LatLon>) -> Unit,
     way: Way,
     wayGeometry: ElementPolylinesGeometry,
+    metersPerPixel: Double,
 ) {
     var confirmManySplits by remember { mutableStateOf(false) }
     var confirmDiscard by remember { mutableStateOf(false) }
 
-    var splits by rememberSerializable { mutableStateOf(emptyList<SplitPolylineAtPosition>()) }
+    var cuts by rememberSerializable { mutableStateOf(emptyList<SplitPolylineAtPosition>()) }
 
     val snipAnimation = remember { Animatable(0f) }
     val scope = rememberCoroutineScope()
 
-    val hasChanges = splits.isNotEmpty()
-    val isFormComplete = splits.size >= if (way.isClosed) 2 else 1
+    val minDistanceToOtherCuts = metersPerPixel * 48.dp.toPx()
+    val maxDistanceToCrosshair = metersPerPixel * 24.dp.toPx()
+    val snapToVertexDistance = metersPerPixel * 12.dp.toPx()
+
+    val scissorsPosition = crosshairPosition?.let {
+        wayGeometry.polylines.first().getSplitAt(
+            position = crosshairPosition,
+            maxDistance = maxDistanceToCrosshair,
+            snapToVertexDistance = snapToVertexDistance,
+        )
+    }
+
+    val hasChanges = cuts.isNotEmpty()
+    val isFormComplete = cuts.size >= if (way.isClosed) 2 else 1
+    val canSplitHere = scissorsPosition != null
+        && cuts.all { scissorsPosition.pos.distanceTo(it.pos) >= minDistanceToOtherCuts }
+
+    LaunchedEffect(scissorsPosition?.pos) {
+        onScissorsPlaced(scissorsPosition?.pos)
+    }
+    LaunchedEffect(cuts) {
+        onSplitPositions(cuts.map { it.pos })
+    }
 
     Box(modifier = Modifier
         .fillMaxSize()
@@ -106,11 +134,13 @@ fun SplitWayForm(
 
                     Box(Modifier.fillMaxWidth()) {
                         androidx.compose.animation.AnimatedVisibility(
-                            visible = splits.isNotEmpty(),
+                            visible = cuts.isNotEmpty(),
                             modifier = Modifier.align(Alignment.CenterStart)
                         ) {
                             OutlinedButton(
-                                onClick = onUndoLast,
+                                onClick = {
+                                    cuts = cuts.toMutableList().also { it.removeLastOrNull() }
+                                },
                                 shape = CircleShape,
                                 contentPadding = PaddingValues(12.dp)
                             ) {
@@ -121,16 +151,15 @@ fun SplitWayForm(
                         OutlinedButton(
                             modifier = Modifier.align(Alignment.Center),
                             onClick = {
-                                TODO("decide if zoomed in enough") //Res.string.quest_split_way_too_imprecise
-                                TODO("snapping logic")
-                                TODO("add snip and do callback")
+                                if (scissorsPosition == null) return@OutlinedButton
+                                cuts = cuts.toMutableList().also { it.add(scissorsPosition) }
 
                                 scope.launch {
                                     snipAnimation.animateTo(1f)
                                     snipAnimation.animateTo(0f)
                                 }
                             },
-                            enabled = crosshairPosition != null
+                            enabled = canSplitHere
                         ) {
                             Icon(
                                 painter = scissorsPainter(snipAnimation.value),
@@ -155,10 +184,10 @@ fun SplitWayForm(
                 FloatingOkButton(
                     visible = isFormComplete,
                     onClick = {
-                        if (splits.size > 2) {
+                        if (cuts.size > 2) {
                             confirmManySplits = true
                         } else {
-                            onSplitWays(splits)
+                            onConfirmed(cuts)
                         }
                     },
                     modifier = Modifier.padding(8.dp),
@@ -170,7 +199,7 @@ fun SplitWayForm(
     if (confirmManySplits) {
         AreYouSureDialog(
             onDismissRequest = { confirmManySplits = false },
-            onConfirmed = { onSplitWays(splits) },
+            onConfirmed = { onConfirmed(cuts) },
             text = { Text(stringResource(Res.string.quest_split_way_many_splits_confirmation_description)) }
         )
     }
@@ -182,5 +211,3 @@ fun SplitWayForm(
         )
     }
 }
-
-// TODO sounds: snip and plop
