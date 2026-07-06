@@ -69,12 +69,7 @@ import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
-import de.westnordost.streetcomplete.quests.LeaveNoteInsteadFragment
-import de.westnordost.streetcomplete.quests.note_discussion.NoteDiscussionForm
 import de.westnordost.streetcomplete.screens.BaseActivity
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragment
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNodeFragment
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
@@ -92,7 +87,6 @@ import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
-import de.westnordost.streetcomplete.util.ktx.hideKeyboard
 import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
@@ -141,11 +135,6 @@ class MainActivity :
     // listeners to child fragments:
     MapFragment.Listener,
     MainMapFragment.Listener,
-    SplitWayFragment.Listener,
-    NoteDiscussionForm.Listener,
-    LeaveNoteInsteadFragment.Listener,
-    CreateNoteFragment.Listener,
-    MoveNodeFragment.Listener,
     // listeners to changes to data:
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
@@ -268,7 +257,7 @@ class MainActivity :
                 val geometry = editHistoryViewModel.getEditGeometry(edit)
                 mapFragment?.startFocus(geometry, Insets.NONE)
                 mapFragment?.highlightGeometry(geometry)
-                mapFragment?.highlightPins(edit.icon.toAndroidResourceId()!!, listOf(edit.position))
+                mapFragment?.highlightPins(edit.icon!!.toAndroidResourceId()!!, listOf(edit.position))
                 mapFragment?.hideOverlay()
             } else if (editHistoryViewModel.isShowingSidebar.value) {
                 mapFragment?.clearFocus()
@@ -456,7 +445,7 @@ class MainActivity :
     override val metersPerPixel: Double? get() = mapFragment?.getMetersPerPixel()
 
     override fun onEdited(editType: ElementEditType, geometry: ElementGeometry) {
-        showQuestSolvedAnimation(editType.icon, geometry.center)
+        showQuestSolvedAnimation(editType.icon.toAndroidResourceId()!!, geometry.center)
         closeBottomSheet()
     }
 
@@ -485,7 +474,7 @@ class MainActivity :
     /* ------------------------------- SplitWayFragment.Listener -------------------------------- */
 
     override fun onSplittedWay(editType: ElementEditType, way: Way, geometry: ElementPolylinesGeometry) {
-        showQuestSolvedAnimation(editType.icon, geometry.center)
+        showQuestSolvedAnimation(editType.icon.toAndroidResourceId()!!, geometry.center)
         closeBottomSheet()
     }
 
@@ -506,7 +495,7 @@ class MainActivity :
     }
 
     override fun onMovedNode(editType: ElementEditType, position: LatLon) {
-        showQuestSolvedAnimation(editType.icon, position)
+        showQuestSolvedAnimation(editType.icon.toAndroidResourceId()!!, position)
         closeBottomSheet()
     }
 
@@ -532,7 +521,7 @@ class MainActivity :
     /* ------------------------------ NoteDiscussionForm.Listener ------------------------------- */
 
     override fun onNoteQuestSolved(questType: QuestType, noteId: Long, position: LatLon) {
-        showQuestSolvedAnimation(questType.icon, position)
+        showQuestSolvedAnimation(questType.icon.toAndroidResourceId()!!, position)
         closeBottomSheet()
     }
 
