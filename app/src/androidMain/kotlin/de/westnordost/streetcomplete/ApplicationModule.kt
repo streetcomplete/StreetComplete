@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete
 import android.content.res.AssetManager
 import android.content.res.Resources
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.compression.ContentEncoding
@@ -19,7 +18,6 @@ val appModule = module {
     factory<Resources> { androidContext().resources }
 
     single { DatabaseLogger(get()) }
-    single { SoundFx(androidContext()) }
     single { HttpClient {
         defaultRequest {
             userAgent(ApplicationConstants.USER_AGENT)
