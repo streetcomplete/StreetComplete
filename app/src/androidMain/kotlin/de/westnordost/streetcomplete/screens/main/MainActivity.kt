@@ -83,7 +83,6 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
 import de.westnordost.streetcomplete.ui.ktx.toDpOffset
 import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
@@ -99,6 +98,7 @@ import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
 import de.westnordost.streetcomplete.view.toAndroidResourceId
+import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -153,7 +153,7 @@ class MainActivity :
     private val questsHiddenSource: QuestsHiddenSource by inject()
     private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
-    private val soundFx: SoundFx by inject()
+    private val soundFx: SoundEffectPlayer by inject()
     private val mapAppLauncher: MapAppLauncher by inject()
 
     private lateinit var locationManager: FineLocationManager
@@ -1033,9 +1033,7 @@ class MainActivity :
     }
 
     private fun showMarkerSolvedAnimation(@DrawableRes iconResId: Int, startScreenPos: PointF) {
-        lifecycleScope.launch {
-            soundFx.play(resources.getIdentifier("plop" + Random.nextInt(4), "raw", packageName))
-        }
+        soundFx.play("plop${Random.nextInt(4)}.wav")
 
         val root = window.decorView as ViewGroup
         val img = EffectQuestPlopBinding.inflate(layoutInflater, root, false).root

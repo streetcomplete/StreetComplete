@@ -146,9 +146,11 @@ link_mapy_tactile.png          fair use          used while linking and promotin
 link_osmlab.png                fair use          used while linking and promoting this project
 link_sunders.png               fair use          used while linking and promoting this project
 link_figuregrounder.png        fair use          used while linking and promoting this project
+link_gomap.svg                 ISC               https://github.com/bryceco/GoMap/blob/master/src/AppIcon.svg
 link_indoorequal.png           fair use          used while linking and promoting this project
 link_myosmatic.png             fair use          used while linking and promoting this project
 link_opnvkarte.png             fair use          used while linking and promoting this project
+link_terraink.xml              fair use          used while linking and promoting this project
 link_thenandnow.png            fair use          used while linking and promoting this project
 link_openstreetbrowser.png     fair use          used while linking and promoting this project
 link_photon.png                fair use          used while linking and promoting this project

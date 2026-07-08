@@ -18,6 +18,8 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetA
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadControllerAndroid
 import de.westnordost.streetcomplete.data.upload.UploadWorker
+import de.westnordost.streetcomplete.util.sound.AndroidSoundEffectPlayer
+import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.io.files.Path
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.dsl.worker
@@ -61,4 +63,11 @@ val androidModule = module {
     // Settings
 
     single<ObservableSettings> { SharedPreferencesSettings.Factory(androidContext()).create() }
+
+    // sound
+
+    single<SoundEffectPlayer> {
+        val dir = "composeResources/de.westnordost.streetcomplete.resources/files"
+        AndroidSoundEffectPlayer(androidContext(), dir)
+    }
 }

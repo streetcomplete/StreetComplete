@@ -49,9 +49,11 @@ import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.getSplitAt
+import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
 
 /** Form that lets the user split an OSM way
  *
@@ -74,6 +76,7 @@ fun SplitWayForm(
     way: Way,
     wayGeometry: ElementPolylinesGeometry,
     metersPerPixel: Double,
+    soundEffectPlayer: SoundEffectPlayer = koinInject()
 ) {
     var confirmManySplits by remember { mutableStateOf(false) }
     var confirmDiscard by remember { mutableStateOf(false) }
@@ -140,6 +143,7 @@ fun SplitWayForm(
                             OutlinedButton(
                                 onClick = {
                                     cuts = cuts.toMutableList().also { it.removeLastOrNull() }
+                                    soundEffectPlayer.play("plop2.wav")
                                 },
                                 shape = CircleShape,
                                 contentPadding = PaddingValues(12.dp)
@@ -158,6 +162,7 @@ fun SplitWayForm(
                                     snipAnimation.animateTo(1f)
                                     snipAnimation.animateTo(0f)
                                 }
+                                soundEffectPlayer.play("snip.wav")
                             },
                             enabled = canSplitHere
                         ) {
