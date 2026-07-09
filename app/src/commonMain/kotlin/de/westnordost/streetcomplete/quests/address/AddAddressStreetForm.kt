@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.address
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -23,6 +24,7 @@ import de.westnordost.streetcomplete.osm.address.StreetOrPlaceNameForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
+import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.stringResource
@@ -44,17 +46,19 @@ fun AddAddressStreetForm(
        place name (i.e. "does not belong to a named street") */
     var showSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
-    // TODO compose-quest-form this is actually not called anywhere yet!
-    fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        if (streetOrPlaceName !is StreetName) return false
+    val mapClick = LocalLastMapClick.current
+    LaunchedEffect(mapClick) {
+        if (mapClick != null) {
+            // only allow selection of street when that field is actually displayed
+            if (streetOrPlaceName !is StreetName) return@LaunchedEffect
 
-        nameSuggestionsSource
-            .getNames(position, clickAreaSizeInMeters, roadsWithNamesFilter)
-            .firstOrNull()
-            ?.find { it.languageTag.isEmpty() }
-            ?.name
-            ?.let { streetOrPlaceName = StreetName(it) }
-        return true
+            nameSuggestionsSource
+                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
+                .firstOrNull()
+                ?.find { it.languageTag.isEmpty() }
+                ?.name
+                ?.let { streetOrPlaceName = StreetName(it) }
+        }
     }
 
     QuestForm(

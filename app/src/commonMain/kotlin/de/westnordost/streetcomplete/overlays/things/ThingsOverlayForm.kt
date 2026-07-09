@@ -119,6 +119,3 @@ import org.koin.compose.koinInject
         )
     }
 }
-
-// TODO compose-quest-form need to set marker icon
-// setMarkerIcon(R.drawable.quest_dot)

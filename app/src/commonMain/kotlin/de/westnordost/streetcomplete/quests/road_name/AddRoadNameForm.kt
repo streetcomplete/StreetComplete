@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.road_name
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -14,6 +15,7 @@ import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
@@ -27,14 +29,14 @@ fun AddRoadNameForm(
 ) {
     var initialLocalizedNames by rememberSerializable { mutableStateOf<List<LocalizedName>?>(null) }
 
-    // TODO compose-quest-form this is actually not called anywhere yet!
-    fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        nameSuggestionsSource
-            .getNames(position, clickAreaSizeInMeters, roadsWithNamesFilter)
-            .firstOrNull()
-            ?.let { initialLocalizedNames = it }
-
-        return true
+    val mapClick = LocalLastMapClick.current
+    LaunchedEffect(mapClick) {
+        if (mapClick != null) {
+            nameSuggestionsSource
+                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
+                .firstOrNull()
+                ?.let { initialLocalizedNames = it }
+        }
     }
 
     LocalizedNameQuestForm(

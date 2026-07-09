@@ -1,12 +1,14 @@
 package de.westnordost.streetcomplete.overlays.address
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -20,6 +22,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
+import de.westnordost.streetcomplete.osm.ALL_PATHS
+import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.address.Address
 import de.westnordost.streetcomplete.osm.address.AddressForm
 import de.westnordost.streetcomplete.osm.address.BlockAndHouseNumber
@@ -33,6 +37,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -66,6 +71,21 @@ fun AddressOverlayForm(
     var showStreetOrPlaceSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
 
     var confirmRemoveAddress by remember { mutableStateOf(false) }
+
+    val mapClick = LocalLastMapClick.current
+    LaunchedEffect(mapClick) {
+        if (mapClick != null) {
+            // only allow selection of street when that field is actually displayed
+            if (address.streetOrPlace !is StreetName) return@LaunchedEffect
+
+            val name = nameSuggestionsSource
+                .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
+                .firstOrNull()
+                ?.find { it.languageTag.isEmpty() }
+                ?.name
+                ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
+        }
+    }
 
     fun applyChanges(tagChanges: StringMapChangesBuilder) {
         address.applyTo(tagChanges, countryInfo.countryCode)
@@ -226,15 +246,21 @@ private fun isAddressTag(key: String, value: String): Boolean =
     key == "nohousenumber"
 
 
+private val roadsWithNamesFilter by lazy {
+    "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
+        .toElementFilterExpression()
+}
+
+private val allBuildingsFilter by lazy {
+    "ways, relations with building".toElementFilterExpression()
+}
+
+
 // TODO compose-quest-form position on way stuff
 /*
     private var buildings: Collection<Pair<Way, List<LatLon>>>? = null
 
-    private val roadsWithNamesFilter =
-        "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
-            .toElementFilterExpression()
 
-    private val allBuildingsFilter = "ways, relations with building".toElementFilterExpression()
 
 
     private var positionOnWay: PositionOnWay? = null
@@ -304,20 +330,4 @@ private fun isAddressTag(key: String, value: String): Boolean =
         val snapToVertexDistance = metersPerPixel * resources.dpToPx(8)
         positionOnWay = geometry.center.getPositionOnWays(buildings, maxDistance, snapToVertexDistance)
     }
-
-    override fun onClickMapAt(position: LatLon, clickAreaSizeInMeters: Double): Boolean {
-        if (streetOrPlaceName.value !is StreetName) return false
-
-        val name = nameSuggestionsSource
-            .getNames(position, clickAreaSizeInMeters, roadsWithNamesFilter)
-            .firstOrNull()
-            ?.find { it.languageTag.isEmpty() }
-            ?.name
-            // still consume event even when there is no named road at this position
-            ?: return true
-
-        streetOrPlaceName.value = StreetName(name)
-        return true
-    }
-
  */
