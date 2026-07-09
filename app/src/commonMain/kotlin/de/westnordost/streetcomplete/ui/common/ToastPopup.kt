@@ -19,6 +19,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
+import de.westnordost.streetcomplete.ui.util.rememberScreenAlignmentPopupPositionProvider
 import kotlinx.coroutines.delay
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
@@ -40,8 +41,9 @@ fun ToastPopup(
         onDismissRequest()
     }
 
+    val popupPositionProvider = rememberScreenAlignmentPopupPositionProvider(Alignment.BottomCenter)
     Popup(
-        alignment = Alignment.BottomCenter,
+        popupPositionProvider = popupPositionProvider,
         properties = PopupProperties(
             focusable = false,
             dismissOnBackPress = false,
