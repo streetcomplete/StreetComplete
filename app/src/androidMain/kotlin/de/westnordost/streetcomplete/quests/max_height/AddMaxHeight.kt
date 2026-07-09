@@ -186,4 +186,9 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
             }
         }
     }
+
+    override fun getHighlightedElements(
+        element: Element,
+        mapData: MapDataWithGeometry
+    ): Sequence<Element> = highlightIntersectingStructures(element, mapData)
 }

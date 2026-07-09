@@ -7,6 +7,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Length
@@ -56,6 +57,14 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
         this.length.value = length
         checkIsFormComplete()
     }
+
+    @Composable
+    override fun getHint(): String? =
+        if (element.type == ElementType.WAY) {
+            stringResource(Res.string.quest_maxheight_split_way_hint,
+                stringResource(Res.string.quest_generic_answer_differs_along_the_way)
+            )
+        } else super.getHint()
 
     override fun isFormComplete(): Boolean = length.value != null
 
