@@ -10,7 +10,7 @@ actual fun Month.getDisplayName(
     locale: Locale?
 ): String {
     val calendar = NSCalendar.currentCalendar
-    if (locale != null) calendar.locale = locale.platformLocale
+    if (locale != null) calendar.locale = locale.nsLocale
     val symbols = when (style) {
         DateTimeTextSymbolStyle.Full -> calendar.standaloneMonthSymbols
         DateTimeTextSymbolStyle.Short -> calendar.shortStandaloneMonthSymbols

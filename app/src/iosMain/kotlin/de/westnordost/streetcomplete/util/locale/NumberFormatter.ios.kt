@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.util.locale
 
 import androidx.compose.ui.text.intl.Locale
+import de.westnordost.streetcomplete.util.ktx.nsLocale
 import platform.Foundation.NSNumberFormatter
 import platform.Foundation.NSNumberFormatterDecimalStyle
 import platform.Foundation.NSNumber
@@ -15,7 +16,7 @@ actual class NumberFormatter actual constructor(
 ) {
     private val format = NSNumberFormatter().also {
         it.numberStyle = NSNumberFormatterDecimalStyle
-        it.locale = (locale ?: Locale.current).platformLocale
+        it.locale = (locale ?: Locale.current).nsLocale
         it.usesGroupingSeparator = useGrouping
         it.minimumIntegerDigits = minIntegerDigits.toULong()
         it.maximumIntegerDigits = maxIntegerDigits.toULong()

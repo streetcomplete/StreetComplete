@@ -1,19 +1,24 @@
 package de.westnordost.streetcomplete.util.ktx
 
 import androidx.compose.ui.text.intl.Locale
+import platform.Foundation.NSLocale
 import platform.Foundation.NSLocaleIdentifier
 import platform.Foundation.NSLocaleCountryCode
 import platform.Foundation.NSLocaleLanguageCode
 import platform.Foundation.NSLocaleScriptCode
 
+/** Unlike in Jetpack Compose on Android, Locale.platformLocale is internal in Compose
+ *  Multiplatform, so the NSLocale must be re-created from the language tag */
+val Locale.nsLocale: NSLocale get() = NSLocale(toLanguageTag())
+
 actual fun Locale.getDisplayName(locale: Locale): String? =
-    locale.platformLocale.displayNameForKey(NSLocaleIdentifier, locale.toLanguageTag())
+    locale.nsLocale.displayNameForKey(NSLocaleIdentifier, locale.toLanguageTag())
 
 actual fun Locale.getDisplayLanguage(locale: Locale): String? =
-    locale.platformLocale.displayNameForKey(NSLocaleLanguageCode, locale.language)
+    locale.nsLocale.displayNameForKey(NSLocaleLanguageCode, locale.language)
 
 actual fun Locale.getDisplayRegion(locale: Locale): String? =
-    locale.platformLocale.displayNameForKey(NSLocaleCountryCode, locale.region)
+    locale.nsLocale.displayNameForKey(NSLocaleCountryCode, locale.region)
 
 actual fun Locale.getDisplayScript(locale: Locale): String? =
-    locale.platformLocale.displayNameForKey(NSLocaleScriptCode, locale.script)
+    locale.nsLocale.displayNameForKey(NSLocaleScriptCode, locale.script)
