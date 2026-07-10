@@ -1013,10 +1013,10 @@ class MainActivity :
                 // don't highlight "this" element
                 if (element == e) return@mapNotNull null
                 // include only elements with the same (=intersecting) level, if any
-               // val eLevels = parseLevelsOrNull(e.tags)
-               // if (!levels.levelsIntersect(eLevels)) return@mapNotNull null
+                val eLevels = parseLevelsOrNull(e.tags)
+                if (!levels.levelsIntersect(eLevels)) return@mapNotNull null
                 // include only elements with the same layer, if any
-              //  if (element.tags["layer"] != e.tags["layer"]) return@mapNotNull null
+                if (element.tags["layer"] != e.tags["layer"]) return@mapNotNull null
 
                 val geometry = lazyMapData.getGeometry(e.type, e.id) ?: return@mapNotNull null
                 val icon = getIcon(featureDictionary.value, e)

@@ -64,16 +64,6 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
           and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
-    private val tunnelFilter by lazy { """
-        ways with
-          highway
-          and (
-            covered = yes
-            or tunnel ~ yes|building_passage|avalanche_protector
-            or bridge = covered
-          )
-    """.toElementFilterExpression() }
-
     private val bridgeFilter by lazy { """
         ways with (
             (
@@ -190,5 +180,5 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
     override fun getHighlightedElements(
         element: Element,
         mapData: MapDataWithGeometry
-    ): Sequence<Element> = highlightIntersectingStructures(element, mapData)
+    ): Sequence<Element> = getIntersectingStructures(element, mapData)
 }
