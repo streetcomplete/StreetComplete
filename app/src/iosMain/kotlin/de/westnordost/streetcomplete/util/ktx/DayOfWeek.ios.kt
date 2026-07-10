@@ -13,5 +13,6 @@ actual fun DayOfWeek.getDisplayName(style: DateTimeTextSymbolStyle, locale: Loca
         DateTimeTextSymbolStyle.Short -> calendar.shortStandaloneWeekdaySymbols
         DateTimeTextSymbolStyle.Narrow -> calendar.veryShortStandaloneWeekdaySymbols
     }
-    return symbols[ordinal] as String
+    // NSCalendar weekday symbol arrays start with Sunday, DayOfWeek starts with Monday
+    return symbols[(ordinal + 1) % 7] as String
 }
