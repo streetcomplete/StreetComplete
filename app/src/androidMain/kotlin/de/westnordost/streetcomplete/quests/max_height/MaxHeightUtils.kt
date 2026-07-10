@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.util.math.intersects
 
-// Returns ways that intersect with the given element, that triggered the quest.
+/** Returns ways that intersect with the given element, that triggered the quest. */
 fun highlightIntersectingStructures(
     element: Element,
     mapData: MapDataWithGeometry

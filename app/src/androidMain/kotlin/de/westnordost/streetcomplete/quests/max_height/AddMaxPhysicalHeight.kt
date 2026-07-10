@@ -70,6 +70,10 @@ class AddMaxPhysicalHeight(
         get() = if (!checkArSupport()) Res.string.default_disabled_msg_no_ar else null
 
     override fun getTitle(tags: Map<String, String>): StringResource {
+        // We can't actually check if the element with the given [tags] is below another way here.
+        // What we do instead, is, by knowledge of the quest filter used (see above),  
+        // we infer that if the element has the following tags, the quest must have been created
+        // because it crosses with another way above it and not because it itself is a tunnel etc.
         val isBelowWay = tags["amenity"] != "parking_entrance"
             && tags["barrier"] != "height_restrictor"
             && tags["tunnel"] == null
