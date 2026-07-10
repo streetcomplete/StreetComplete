@@ -175,7 +175,7 @@ class NotesWithEditsSourceImplTest {
     }
 
     @Test
-    fun `get returns created, then commented note`() {
+    fun `get returns created and then commented note`() {
         val p = p(12.0, 46.0)
         val expectedNote = note(
             id = -12,
