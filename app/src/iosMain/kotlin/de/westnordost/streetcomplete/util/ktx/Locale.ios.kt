@@ -12,13 +12,13 @@ import platform.Foundation.NSLocaleScriptCode
 val Locale.nsLocale: NSLocale get() = NSLocale(toLanguageTag())
 
 actual fun Locale.getDisplayName(locale: Locale): String? =
-    locale.nsLocale.displayNameForKey(NSLocaleIdentifier, locale.toLanguageTag())
+    locale.nsLocale.displayNameForKey(NSLocaleIdentifier, toLanguageTag())
 
 actual fun Locale.getDisplayLanguage(locale: Locale): String? =
-    locale.nsLocale.displayNameForKey(NSLocaleLanguageCode, locale.language)
+    locale.nsLocale.displayNameForKey(NSLocaleLanguageCode, language)
 
 actual fun Locale.getDisplayRegion(locale: Locale): String? =
-    locale.nsLocale.displayNameForKey(NSLocaleCountryCode, locale.region)
+    locale.nsLocale.displayNameForKey(NSLocaleCountryCode, region)
 
 actual fun Locale.getDisplayScript(locale: Locale): String? =
-    locale.nsLocale.displayNameForKey(NSLocaleScriptCode, locale.script)
+    locale.nsLocale.displayNameForKey(NSLocaleScriptCode, script)
