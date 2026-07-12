@@ -33,7 +33,7 @@ class AddPlaceName(
         // The common list is shared by the opening hours quest and the wheelchair quest.
         // It is also mostly shared by the name quest, that has some wildcards (for say craft and office)
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
-        // Independent tags can by added in the "name only" tab.
+        // Independent tags can be added in the "name only" tab.
 
         mapOf(
             "amenity" to arrayOf(
@@ -132,7 +132,15 @@ class AddPlaceName(
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
-        and !name and !brand and noname != yes and name:signed != no
+        and (
+            (
+                !name
+                and !brand
+                and noname != yes
+            )
+            or ~fixme|FIXME ~ name|name\?|Name|Name\?
+        )
+        and name:signed != no
     """).toElementFilterExpression() }
 
     override val changesetComment = "Determine place names"
