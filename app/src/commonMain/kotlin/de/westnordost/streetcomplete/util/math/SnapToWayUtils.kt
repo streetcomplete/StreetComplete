@@ -3,13 +3,16 @@ package de.westnordost.streetcomplete.util.math
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
+import kotlinx.serialization.Serializable
 import kotlin.math.min
 
+@Serializable
 sealed interface PositionOnWay {
     val position: LatLon
 }
 
 /** A vertex of one or several ways */
+@Serializable
 data class VertexOfWay(
     val wayIds: Set<Long>,
     override val position: LatLon,
@@ -17,6 +20,7 @@ data class VertexOfWay(
 ) : PositionOnWay
 
 /** A point on a segment of a way */
+@Serializable
 data class PositionOnWaySegment(
     val wayId: Long,
     override val position: LatLon,

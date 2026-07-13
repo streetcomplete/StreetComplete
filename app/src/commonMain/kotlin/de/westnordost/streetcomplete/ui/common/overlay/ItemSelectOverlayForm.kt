@@ -48,6 +48,7 @@ inline fun <reified I> ItemSelectOverlayForm(
     favoriteKey: String,
     modifier: Modifier = Modifier,
     selectableItems: List<I> = items,
+    isComplete: Boolean = true,
     noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
 ) {
     val lastPicked = remember {
@@ -61,7 +62,7 @@ inline fun <reified I> ItemSelectOverlayForm(
 
     OverlayForm(
         on = on,
-        isComplete = selectedItem != null && selectedItem in selectableItems,
+        isComplete = isComplete && selectedItem != null && selectedItem in selectableItems,
         hasChanges = selectedItem != initialSelectedItem,
         onClickOk = {
             val value = selectedItem!!

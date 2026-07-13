@@ -90,12 +90,14 @@ fun SplitWayForm(
     val maxDistanceToCrosshair = metersPerPixel * 24.dp.toPx()
     val snapToVertexDistance = metersPerPixel * 12.dp.toPx()
 
-    val scissorsPosition = crosshairPosition?.let {
-        wayGeometry.polylines.first().getSplitAt(
-            position = crosshairPosition,
-            maxDistance = maxDistanceToCrosshair,
-            snapToVertexDistance = snapToVertexDistance,
-        )
+    val scissorsPosition = remember(crosshairPosition) {
+        crosshairPosition?.let {
+            wayGeometry.polylines.first().getSplitAt(
+                position = crosshairPosition,
+                maxDistance = maxDistanceToCrosshair,
+                snapToVertexDistance = snapToVertexDistance,
+            )
+        }
     }
 
     val hasChanges = cuts.isNotEmpty()

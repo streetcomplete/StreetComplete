@@ -52,6 +52,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
     prefs: Preferences,
     favoriteKey: String,
     modifier: Modifier = Modifier,
+    isComplete: Boolean = true,
     featureDictionary: FeatureDictionary = koinInject(),
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
@@ -65,7 +66,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
 
     OverlayForm(
         on = on,
-        isComplete = selectedItem != null,
+        isComplete = isComplete && selectedItem != null,
         hasChanges = selectedItem != initialSelectedItem,
         onClickOk = {
             val value = selectedItem!!

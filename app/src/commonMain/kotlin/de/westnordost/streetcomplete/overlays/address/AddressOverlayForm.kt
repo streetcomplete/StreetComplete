@@ -2,11 +2,13 @@ package de.westnordost.streetcomplete.overlays.address
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -14,12 +16,19 @@ import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.create.createNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.osm.ALL_PATHS
@@ -38,9 +47,14 @@ import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
+import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.math.PositionOnWay
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
+import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
@@ -48,12 +62,15 @@ import org.koin.compose.koinInject
 fun AddressOverlayForm(
     on: (OverlayAction) -> Unit,
     element: Element?,
-    geometry: ElementGeometry,
+    position: LatLon?,
     countryInfo: CountryInfo,
+    onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
+    metersPerPixel: Double,
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     nameSuggestionsSource: NameSuggestionsSource = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
 ) {
+    // previous address and current address being input
     val originalAddress = remember(element) {
         Address(
             streetOrPlace =
@@ -64,11 +81,41 @@ fun AddressOverlayForm(
             name = element?.tags?.get("addr:housename")
         )
     }
-
     var address by rememberSerializable(originalAddress) {
         mutableStateOf(originalAddress)
     }
+    // whether the button to switch between street name and place name is shown at all
     var showStreetOrPlaceSelect by rememberSaveable { mutableStateOf(lastWasPlaceName) }
+
+    // adding an address at new node or (new) vertex of way. Get the building outlines only *once*
+    // once the position is non-null
+    val buildingOutlines = remember<Collection<Pair<Way, List<LatLon>>>?>(position != null) {
+        position?.let {
+            mapDataWithEditsSource.getBuildingOutlines(position.enclosingBoundingBox(100.0))
+        }
+    }
+    val maxDistanceToCrosshair = metersPerPixel * 24.dp.toPx()
+    val snapToVertexDistance = metersPerPixel * 12.dp.toPx()
+
+    val positionOnWay = remember(position, buildingOutlines) {
+        if (position == null) return@remember null
+        if (buildingOutlines == null) return@remember null
+
+        position.getPositionOnWays(
+            ways = buildingOutlines,
+            maxDistance = maxDistanceToCrosshair,
+            snapToVertexDistance = snapToVertexDistance
+        )
+    }
+
+    var addEntrance by rememberSaveable { mutableStateOf(false) }
+
+    LaunchedEffect(positionOnWay, addEntrance) {
+        onPinPosition(
+            if (addEntrance) Res.drawable.quest_door else Res.drawable.quest_housenumber,
+            positionOnWay?.position
+        )
+    }
 
     var confirmRemoveAddress by remember { mutableStateOf(false) }
 
@@ -127,14 +174,11 @@ fun AddressOverlayForm(
             })
         }
 
-        // TODO compose-quest-form position on way stuff
-        /*
         if (element == null && addEntrance) {
-            result.add(Answer(stringResource(Res.string.overlay_addresses_no_entrance)) {
+            result.add(AnswerItem(stringResource(Res.string.overlay_addresses_no_entrance)) {
                 addEntrance = false
             })
         }
-        */
 
         return result
     }
@@ -142,10 +186,13 @@ fun AddressOverlayForm(
     OverlayForm(
         on = on,
         isComplete =
+            element != null || position != null &&
             // street is optional as in new developments sometimes the street names are not
             // posted yet, or it is not clear on-site, see #6528
-            address.number?.isComplete() == true
-            || address.name?.isNotEmpty() == true && address.number?.isEmpty() != false,
+            (
+                address.number?.isComplete() == true
+                || address.name?.isNotEmpty() == true && address.number?.isEmpty() != false
+            ),
         hasChanges =
             originalAddress != address,
         onClickOk = {
@@ -160,17 +207,18 @@ fun AddressOverlayForm(
             lastStreetName = if (streetOrPlace is StreetName) streetOrPlace.name else null
 
             val tagChanges = StringMapChangesBuilder(element?.tags.orEmpty())
+            val positionOnWay = positionOnWay
 
+            // add/change address of existing element
             if (element != null) {
                 applyChanges(tagChanges)
                 on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
             }
-            // TODO compose-quest-form position on way stuff
-            /*
+            // add address to vertex or new vertex on way
             else if (positionOnWay != null) {
                 val geometry = ElementPointGeometry(positionOnWay.position)
                 val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { tagChanges ->
-                    addChanges(tagChanges)
+                    applyChanges(tagChanges)
                     if (addEntrance && !tagChanges.containsKey("entrance")) {
                         tagChanges["entrance"] = "yes"
                     }
@@ -179,10 +227,10 @@ fun AddressOverlayForm(
                     on(Edit(action))
                 }
             }
-             */
-            else {
+            // add new address node
+            else if (position != null) {
                 applyChanges(tagChanges)
-                on(Edit(CreateNodeAction(geometry.center, tagChanges)))
+                on(Edit(CreateNodeAction(position, tagChanges)))
             }
         },
         label =
@@ -255,79 +303,28 @@ private val allBuildingsFilter by lazy {
     "ways, relations with building".toElementFilterExpression()
 }
 
+private fun MapDataWithEditsSource.getBuildingOutlines(
+    bbox: BoundingBox,
+): Collection<Pair<Way, List<LatLon>>> {
+    val data = getMapDataWithGeometry(bbox)
 
-// TODO compose-quest-form position on way stuff
-/*
-    private var buildings: Collection<Pair<Way, List<LatLon>>>? = null
-
-
-
-
-    private var positionOnWay: PositionOnWay? = null
-        set(value) {
-            field = value
-            updateMarker()
-        }
-
-    private var addEntrance: Boolean = true
-        set(value) {
-            field = value
-            updateMarker()
-        }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val element = element
-        if (element == null) {
-            view.doOnLayout {
-                initCreatingPointOnWay()
-                checkCurrentCursorPosition()
-            }
-        }
-
-        setMarkerIcon(R.drawable.quest_housenumber)
-    }
-
-    private fun initCreatingPointOnWay() {
-        val data = mapDataWithEditsSource.getMapDataWithGeometry(geometry.center.enclosingBoundingBox(100.0))
-        buildings = data
-            .filter(allBuildingsFilter)
-            // we want the ways of the building relations, not the building relation itself
-            .flatMap { element ->
-                when (element) {
-                    is Relation -> {
-                        element.members.asSequence()
-                            .filter { it.type == ElementType.WAY }
-                            .mapNotNull { data.getWay(it.ref) }
-                    }
-                    is Way -> sequenceOf(element)
-                    else -> sequenceOf()
+    return data
+        .filter(allBuildingsFilter)
+        // we want the ways of the building relations, not the building relation itself
+        .flatMap { element ->
+            when (element) {
+                is Relation -> {
+                    element.members.asSequence()
+                        .filter { it.type == ElementType.WAY }
+                        .mapNotNull { data.getWay(it.ref) }
                 }
+                is Way -> sequenceOf(element)
+                else -> sequenceOf()
             }
-            .map { way ->
-                val positions = way.nodeIds.map { data.getNode(it)!!.position }
-                way to positions
-            }
-            .toList()
-    }
-
-    private fun updateMarker() {
-        val positionOnWay = positionOnWay
-        if (positionOnWay != null) {
-            setMarkerPosition(positionOnWay.position)
-            setMarkerIcon(if (addEntrance) R.drawable.quest_door else R.drawable.quest_housenumber)
-        } else {
-            setMarkerIcon(R.drawable.quest_housenumber)
-            setMarkerPosition(null)
         }
-    }
-
-    private fun checkCurrentCursorPosition() {
-        val buildings = buildings ?: return
-        val metersPerPixel = metersPerPixel ?: return
-        val maxDistance = metersPerPixel * resources.dpToPx(12)
-        val snapToVertexDistance = metersPerPixel * resources.dpToPx(8)
-        positionOnWay = geometry.center.getPositionOnWays(buildings, maxDistance, snapToVertexDistance)
-    }
- */
+        .map { way ->
+            val positions = way.nodeIds.map { data.getNode(it)!!.position }
+            way to positions
+        }
+        .toList()
+}
