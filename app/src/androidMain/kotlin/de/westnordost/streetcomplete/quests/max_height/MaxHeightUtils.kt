@@ -12,11 +12,7 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.util.math.intersects
 
 /** Returns ways that intersect with the given element, that triggered the MaxHeight quest. */
-fun getIntersectingStructures(
-    element: Element,
-    mapData: MapDataWithGeometry
-): Sequence<Element> {
-    if (element.type != ElementType.WAY) return emptySequence()
+fun Way.getIntersectingBridges(mapData: MapDataWithGeometry): Sequence<Element> {
     val geometry = mapData.getWayGeometry(element.id) as? ElementPolylinesGeometry ?: return emptySequence()
     val ways = mapData.filter("""
     ways with (
@@ -34,12 +30,9 @@ fun getIntersectingStructures(
 
     val layer = element.tags["layer"]?.toIntOrNull() ?: 0
 
-    return ways.filter { way ->
-        val structureLayer = way.tags["layer"]?.toIntOrNull() ?: 0
-        val wayGeometry = mapData.getWayGeometry(way.id)
-        val intersects = wayGeometry != null && structureLayer > layer &&wayGeometry.intersects(geometry)
-        intersects
-    }
+    return ways
+        .filter { (it.tags["layer"]?.toIntOrNull() ?: 0) > layer }
+        .filter { mapData.getWayGeometry(it.id)?.intersects(geometry) == true }
 }
 val tunnelFilter: ElementFilterExpression by lazy { """
     ways with
