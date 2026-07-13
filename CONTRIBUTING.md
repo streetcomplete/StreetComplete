@@ -53,6 +53,7 @@ If you experience problems, crashes or a quest is not clear to you, feel free to
 1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
 2. Remember to report map style issues [in the appropriate repository](#issues-with-dependencies).
 3. Look [whether your issue has already been reported](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue) (remember to check closed issues too, it may have already been fixed and is due to appear in the next release).
+4. Add screenshots or screen recordings to your issue to make it easier to understand the problem. In more complicated cases, logs can help others analyzing the problem. The StreetComplete logs can be found in the following location: *hamburger menu > About > Show logs*.
 
 ### Issues with dependencies
 
