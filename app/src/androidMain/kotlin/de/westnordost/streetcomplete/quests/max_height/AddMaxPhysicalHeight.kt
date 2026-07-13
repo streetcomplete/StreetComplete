@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
@@ -109,5 +110,5 @@ class AddMaxPhysicalHeight(
     override fun getHighlightedElements(
         element: Element,
         mapData: MapDataWithGeometry
-    ): Sequence<Element> = getIntersectingStructures(element, mapData)
+    ): Sequence<Element> = (element as? Way)?.getIntersectingBridges(mapData).orEmpty()
 }

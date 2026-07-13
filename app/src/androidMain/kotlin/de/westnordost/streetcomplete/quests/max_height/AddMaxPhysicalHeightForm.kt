@@ -63,7 +63,7 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
 
     @Composable
     override fun getHint(): String? =
-        if (element.type == ElementType.WAY && element.tags["tunnel"] != null) {
+        if (!tunnelFilter.matches(element)) {
             stringResource(Res.string.quest_maxheight_split_way_hint,
                 stringResource(Res.string.quest_generic_answer_differs_along_the_way)
             )

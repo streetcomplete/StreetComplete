@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
@@ -13,22 +14,10 @@ import de.westnordost.streetcomplete.util.math.intersects
 
 /** Returns ways that intersect with the given element, that triggered the MaxHeight quest. */
 fun Way.getIntersectingBridges(mapData: MapDataWithGeometry): Sequence<Element> {
-    val geometry = mapData.getWayGeometry(element.id) as? ElementPolylinesGeometry ?: return emptySequence()
-    val ways = mapData.filter("""
-    ways with (
-        (
-          highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-          or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
-        )
-        and bridge and bridge != no
-      ) or (
-        building = roof
-        or man_made = pipeline and location = overhead
-      )
-      and layer
-    """)
+    val geometry = mapData.getWayGeometry(id) as? ElementPolylinesGeometry ?: return emptySequence()
+    val ways = mapData.filter(bridgeFilter)
 
-    val layer = element.tags["layer"]?.toIntOrNull() ?: 0
+    val layer = tags["layer"]?.toIntOrNull() ?: 0
 
     return ways
         .filter { (it.tags["layer"]?.toIntOrNull() ?: 0) > layer }
@@ -43,3 +32,17 @@ val tunnelFilter: ElementFilterExpression by lazy { """
         or bridge = covered
       )
 """.toElementFilterExpression() }
+
+val bridgeFilter by lazy { """
+        ways with (
+            (
+              highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+              or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
+            )
+            and bridge and bridge != no
+          ) or (
+            building = roof
+            or man_made = pipeline and location = overhead
+          )
+          and layer
+    """.toElementFilterExpression() }
