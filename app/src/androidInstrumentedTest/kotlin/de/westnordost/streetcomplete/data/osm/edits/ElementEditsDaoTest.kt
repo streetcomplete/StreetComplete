@@ -1,7 +1,9 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.ApplicationDbTestCase
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.create.RevertCreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
@@ -26,11 +28,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.TestQuestType2
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.DrawableResource
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -340,9 +344,18 @@ private val TEST_QUEST_TYPE = TestQuestType()
 private val TEST_QUEST_TYPE2 = TestQuestType2()
 
 private object TestOverlay : Overlay {
+    @Composable
+    override fun Form(
+        on: (OverlayAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo,
+        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
+    ) {}
+
     override fun getStyledElements(mapData: MapDataWithGeometry) = sequenceOf<Pair<Element, OverlayStyle>>()
     override val changesetComment = "bla"
-    override val icon = 0
+    override val icon = Res.drawable.quest_fee
     override val title = Res.string.quest_address_title
     override val wikiLink = null
     override val achievements = listOf<EditTypeAchievement>()

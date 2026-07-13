@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.data.user.achievements
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
@@ -26,6 +26,7 @@ import dev.mokkery.answering.sequentially
 import dev.mokkery.every
 import dev.mokkery.verify
 import dev.mokkery.verifyNoMoreCalls
+import org.jetbrains.compose.resources.DrawableResource
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -303,6 +304,7 @@ private object OverlayOne : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
+        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {}
 
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, OverlayStyle>>()

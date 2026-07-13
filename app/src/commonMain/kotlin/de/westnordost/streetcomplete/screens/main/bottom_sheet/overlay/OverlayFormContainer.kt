@@ -16,7 +16,9 @@ import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
+import org.jetbrains.compose.resources.DrawableResource
 import org.koin.compose.koinInject
 
 @Composable
@@ -32,6 +34,8 @@ fun OverlayFormContainer(
     mapRotation: Float,
     mapTilt: Float,
     mapPosition: LatLon,
+    mapMetersPerPixel: Double,
+    onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
 ) {
@@ -42,6 +46,7 @@ fun OverlayFormContainer(
         LocalElement provides element,
         LocalMapRotation provides mapRotation,
         LocalMapTilt provides mapTilt,
+        LocalMapMetersPerPixel provides mapMetersPerPixel,
     ) {
         overlay.Form(
             on = { action ->
@@ -55,7 +60,8 @@ fun OverlayFormContainer(
             },
             element = element,
             geometry = geometry,
-            countryInfo = countryInfo
+            countryInfo = countryInfo,
+            onPinPosition = onPinPosition
         )
     }
 }

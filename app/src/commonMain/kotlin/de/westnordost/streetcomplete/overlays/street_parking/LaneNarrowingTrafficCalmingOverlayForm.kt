@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.edits.create.createNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -35,6 +36,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.overlay.ItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
@@ -47,9 +49,8 @@ import org.koin.compose.koinInject
 fun LaneNarrowingTrafficCalmingForm(
     on: (OverlayAction) -> Unit,
     element: Element?,
-    position: LatLon?,
+    geometry: ElementGeometry,
     onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
-    metersPerPixel: Double,
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     preferences: Preferences = koinInject()
 ) {
@@ -57,11 +58,13 @@ fun LaneNarrowingTrafficCalmingForm(
         element?.tags?.let { parseNarrowingTrafficCalming(it) }
     }
 
+    val position = if (element == null) geometry.center else null
     val roadLines = remember<Collection<Pair<Way, List<LatLon>>>?>(position != null) {
         position?.let {
             mapDataWithEditsSource.getRoadLines(position.enclosingBoundingBox(100.0))
         }
     }
+    val metersPerPixel = LocalMapMetersPerPixel.current
     val maxDistanceToCrosshair = metersPerPixel * 24.dp.toPx()
     val snapToVertexDistance = metersPerPixel * 12.dp.toPx()
 

@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.overlays.address
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -16,6 +15,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getShortHouseNumber
+import org.jetbrains.compose.resources.DrawableResource
 
 class AddressOverlay(
     private val getCountryCodeByLocation: (location: LatLon) -> String?
@@ -61,7 +61,13 @@ class AddressOverlay(
             }
 
     @Composable
-    override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddressOverlayForm(on, element, geometry, countryInfo)
+    override fun Form(
+        on: (OverlayAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo,
+        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+    ) {
+        AddressOverlayForm(on, element, geometry, countryInfo, onPinPosition)
     }
 }

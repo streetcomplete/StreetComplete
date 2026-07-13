@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.overlays.street_parking
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -24,6 +24,7 @@ import de.westnordost.streetcomplete.osm.street_parking.parseStreetParkingSides
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming
 import de.westnordost.streetcomplete.osm.traffic_calming.parseNarrowingTrafficCalming
 import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.DrawableResource
 
 class StreetParkingOverlay : Overlay {
 
@@ -56,12 +57,18 @@ class StreetParkingOverlay : Overlay {
         }
 
     @Composable
-    override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(
+        on: (OverlayAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo,
+        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+    ) {
         if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm(on, element, geometry, countryInfo)
         }
         else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
-            LaneNarrowingTrafficCalmingForm(on, element)
+            LaneNarrowingTrafficCalmingForm(on, element, geometry, onPinPosition)
         }
     }
 }

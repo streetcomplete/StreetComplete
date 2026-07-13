@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.overlays.buildings
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.overlays.Overlay
@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.DrawableResource
 
 class BuildingsOverlay : Overlay {
 
@@ -76,7 +77,13 @@ class BuildingsOverlay : Overlay {
         }
 
     @Composable
-    override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(
+        on: (OverlayAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo,
+        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+    ) {
         if (element != null) {
             BuildingsOverlayForm(on, element)
         }

@@ -6,7 +6,9 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import org.jetbrains.compose.resources.DrawableResource
 import kotlin.jvm.JvmInline
 
 /** An overlay is displayed on top of the normal map but behind quest pins and visualizes how
@@ -38,7 +40,8 @@ interface Overlay : ElementEditType {
         on: (OverlayAction) -> Unit,
         element: Element?,
         geometry: ElementGeometry,
-        countryInfo: CountryInfo
+        countryInfo: CountryInfo,
+        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
     )
 
     /** Whether the form can be opened with a null element (=new element) */

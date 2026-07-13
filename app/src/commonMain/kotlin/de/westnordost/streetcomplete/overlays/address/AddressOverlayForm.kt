@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.overlays.address
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,6 +19,7 @@ import de.westnordost.streetcomplete.data.osm.edits.create.createNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -47,10 +47,10 @@ import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.isArea
-import de.westnordost.streetcomplete.util.math.PositionOnWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -62,10 +62,9 @@ import org.koin.compose.koinInject
 fun AddressOverlayForm(
     on: (OverlayAction) -> Unit,
     element: Element?,
-    position: LatLon?,
+    geometry: ElementGeometry,
     countryInfo: CountryInfo,
     onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
-    metersPerPixel: Double,
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     nameSuggestionsSource: NameSuggestionsSource = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
@@ -89,11 +88,13 @@ fun AddressOverlayForm(
 
     // adding an address at new node or (new) vertex of way. Get the building outlines only *once*
     // once the position is non-null
+    val position = if (element == null) geometry.center else null
     val buildingOutlines = remember<Collection<Pair<Way, List<LatLon>>>?>(position != null) {
         position?.let {
             mapDataWithEditsSource.getBuildingOutlines(position.enclosingBoundingBox(100.0))
         }
     }
+    val metersPerPixel = LocalMapMetersPerPixel.current
     val maxDistanceToCrosshair = metersPerPixel * 24.dp.toPx()
     val snapToVertexDistance = metersPerPixel * 12.dp.toPx()
 
@@ -186,13 +187,10 @@ fun AddressOverlayForm(
     OverlayForm(
         on = on,
         isComplete =
-            element != null || position != null &&
             // street is optional as in new developments sometimes the street names are not
             // posted yet, or it is not clear on-site, see #6528
-            (
-                address.number?.isComplete() == true
-                || address.name?.isNotEmpty() == true && address.number?.isEmpty() != false
-            ),
+            address.number?.isComplete() == true
+            || address.name?.isNotEmpty() == true && address.number?.isEmpty() != false,
         hasChanges =
             originalAddress != address,
         onClickOk = {

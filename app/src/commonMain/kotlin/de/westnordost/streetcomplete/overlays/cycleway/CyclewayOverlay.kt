@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.overlays.cycleway
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -30,6 +29,7 @@ import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.DrawableResource
 
 class CyclewayOverlay(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
@@ -62,7 +62,13 @@ class CyclewayOverlay(
         """).map { it to getSeparateCyclewayStyle(it) }
 
     @Composable
-    override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(
+        on: (OverlayAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo,
+        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+    ) {
         if (element != null && element.tags["highway"] in ALL_ROADS) {
             StreetCyclewayOverlayForm(on, element, geometry, countryInfo)
         } else if (element != null && element.tags["highway"] in ALL_PATHS) {

@@ -100,6 +100,7 @@ fun ShowQuestFormsScreen(
                 geometry = viewModel.mockGeometry,
                 mapRotation = viewModel.mockRotation,
                 mapTilt = 0f,
+                mapMetersPerPixel = 0.01
             )
         }
     }

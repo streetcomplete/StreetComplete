@@ -3,9 +3,9 @@ package de.westnordost.streetcomplete.overlays.things
 import androidx.compose.runtime.Composable
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.overlays.Overlay
@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.iconDrawableResource
 import de.westnordost.streetcomplete.osm.things.isThingOrDisusedThing
 import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.DrawableResource
 
 class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
@@ -49,7 +50,13 @@ class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
             }
 
     @Composable
-    override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(
+        on: (OverlayAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo,
+        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+    ) {
         element?.let { ThingsOverlayForm(on, element, geometry, countryInfo) }
     }
 }

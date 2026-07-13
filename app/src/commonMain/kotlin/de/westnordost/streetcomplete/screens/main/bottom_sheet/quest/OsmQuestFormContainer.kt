@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.ConfirmDeleteDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
@@ -51,6 +52,7 @@ fun <T> OsmQuestFormContainer(
     geometry: ElementGeometry,
     mapRotation: Float,
     mapTilt: Float,
+    mapMetersPerPixel: Double,
     countryBoundaries: CountryBoundaries = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
     countryInfos: CountryInfos = koinInject(),
@@ -86,6 +88,7 @@ fun <T> OsmQuestFormContainer(
         LocalElement provides element,
         LocalMapRotation provides mapRotation,
         LocalMapTilt provides mapTilt,
+        LocalMapMetersPerPixel provides mapMetersPerPixel,
     ) {
         questType.Form(
             on = ::onAction,

@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -18,11 +18,11 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.osm.iconDrawableResource
 import de.westnordost.streetcomplete.osm.places.isDisusedPlace
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
-import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
 import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getNameLabel
+import org.jetbrains.compose.resources.DrawableResource
 
 class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
@@ -66,7 +66,13 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
             .map { it to OverlayStyle.Point(icon = null, label = "◽") }
 
     @Composable
-    override fun Form(on: (OverlayAction) -> Unit, element: Element?, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(
+        on: (OverlayAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo,
+        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+    ) {
         // this check is necessary because the form shall not be shown for entrances
         val isNewOrPlace = remember(element) { element == null || element.isPlaceOrDisusedPlace() }
 
