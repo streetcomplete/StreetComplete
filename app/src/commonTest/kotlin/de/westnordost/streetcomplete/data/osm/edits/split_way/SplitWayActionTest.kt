@@ -287,7 +287,7 @@ class SplitWayActionTest {
         )
     }
 
-    @Test fun `split way with multiple split positions, one of which is at vertices`() {
+    @Test fun `split way with multiple split positions where one is at vertices`() {
         // 0   1   2   3
         //   | |
         val data = doSplit(
@@ -323,12 +323,12 @@ class SplitWayActionTest {
         )
     }
 
-    @Test fun `reuse object id of longest split chunk (= second chunk)`() {
+    @Test fun `reuse object id of longest split chunk if it is the second chunk`() {
         val data = doSplit(SplitAtPoint(p[1]))
         assertEquals(way.id, data.ways.maxByOrNull { it.nodeIds.size }?.id)
     }
 
-    @Test fun `reuse object id of longest split chunk (= first chunk)`() {
+    @Test fun `reuse object id of longest split chunk if it is the first chunk`() {
         val data = doSplit(SplitAtPoint(p[2]))
         assertEquals(way.id, data.ways.maxByOrNull { it.nodeIds.size }?.id)
     }

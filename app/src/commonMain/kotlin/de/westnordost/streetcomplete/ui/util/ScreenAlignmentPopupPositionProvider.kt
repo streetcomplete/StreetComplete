@@ -44,7 +44,7 @@ fun rememberScreenAlignmentPopupPositionProvider(
 ): ScreenAlignmentPopupPositionProvider {
     val windowInsets = WindowInsets.safeDrawing
     val density = LocalDensity.current
-    return remember(windowInsets, density) {
+    return remember(windowInsets, density, alignment) {
         ScreenAlignmentPopupPositionProvider(
             alignment = alignment,
             windowInsets = windowInsets,

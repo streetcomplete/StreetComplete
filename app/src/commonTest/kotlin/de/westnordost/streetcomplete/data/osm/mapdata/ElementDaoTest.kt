@@ -161,7 +161,7 @@ class ElementDaoTest {
         )
     }
 
-    @Test fun `getAllElementsByBbox includes nodes that are not in bbox, but part of ways contained in bbox`() {
+    @Test fun `getAllElementsByBbox includes nodes that are not in bbox but part of ways contained in bbox`() {
         val bbox = BoundingBox(0.0, 0.0, 1.0, 1.0)
         val bboxNodes = listOf(node(1), node(2), node(3))
         val bboxNodeIds = bboxNodes.map { it.id }
