@@ -22,6 +22,10 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.platform.WindowInfo
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.core.graphics.Insets
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -71,6 +75,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.ktx.toDpOffset
+import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
@@ -154,6 +159,8 @@ class MainActivity :
     private val shownBottomSheet = mutableStateOf<BottomSheetContent?>(null)
     private val lastMapClick = mutableStateOf<MapClick?>(null)
 
+    private var windowInfo: WindowInfo? = null
+
     private lateinit var binding: ActivityMainBinding
 
     // for freezing the map while sidebar is open
@@ -199,6 +206,8 @@ class MainActivity :
 
         binding.controls.content {
             val isMapAppLaunchAvailable = remember { mapAppLauncher.isAvailable() }
+
+            windowInfo = LocalWindowInfo.current
 
             // color for HUD elements without a background (e.g. scalebar, attribution button)
             CompositionLocalProvider(
@@ -661,9 +670,17 @@ class MainActivity :
 
     private fun composeNote(pos: LatLon, isGpxAttached: Boolean = false) {
         showInBottomSheet(BottomSheetContent.CreateNote(isGpxAttached))
+
+        val layoutDirection = if (resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL) {
+            LayoutDirection.Rtl
+        } else {
+            LayoutDirection.Ltr
+        }
+        val density = Density(this)
+
         mapFragment?.updateCameraPosition(300) {
             position = pos
-            padding = getQuestFormInsets().toPadding()
+            padding = windowInfo?.let { Dimensions.getOpenQuestFormMapPadding(it).toPadding(layoutDirection, density) }
         }
     }
 
