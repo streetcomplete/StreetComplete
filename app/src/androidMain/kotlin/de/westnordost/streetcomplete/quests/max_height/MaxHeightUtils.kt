@@ -12,8 +12,8 @@ import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.util.math.intersects
 
-/** Returns ways that intersect with the given element, that triggered the MaxHeight quest. */
-fun Way.getIntersectingBridges(mapData: MapDataWithGeometry): Sequence<Element> {
+/** Returns ways that intersect with and are bridges above this way */
+fun Way.getIntersectingBridges(mapData: MapDataWithGeometry): Sequence<Way> {
     val geometry = mapData.getWayGeometry(id) as? ElementPolylinesGeometry ?: return emptySequence()
     val ways = mapData.filter(bridgeFilter)
 
@@ -23,6 +23,7 @@ fun Way.getIntersectingBridges(mapData: MapDataWithGeometry): Sequence<Element> 
         .filter { (it.tags["layer"]?.toIntOrNull() ?: 0) > layer }
         .filter { mapData.getWayGeometry(it.id)?.intersects(geometry) == true }
 }
+
 val tunnelFilter: ElementFilterExpression by lazy { """
     ways with
       highway
@@ -34,15 +35,15 @@ val tunnelFilter: ElementFilterExpression by lazy { """
 """.toElementFilterExpression() }
 
 val bridgeFilter by lazy { """
-        ways with (
-            (
-              highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-              or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
-            )
-            and bridge and bridge != no
-          ) or (
-            building = roof
-            or man_made = pipeline and location = overhead
-          )
-          and layer
-    """.toElementFilterExpression() }
+    ways with (
+        (
+          highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+          or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
+        )
+        and bridge and bridge != no
+      ) or (
+        building = roof
+        or man_made = pipeline and location = overhead
+      )
+      and layer
+""".toElementFilterExpression() }
