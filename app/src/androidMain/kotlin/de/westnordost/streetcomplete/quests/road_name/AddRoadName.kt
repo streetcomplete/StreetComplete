@@ -17,14 +17,14 @@ class AddRoadName : OsmFilterQuestType<RoadNameAnswer>(), AndroidQuest {
 
     override val elementFilter = """
         ways with
-          (
+          highway ~ primary|secondary|tertiary|unclassified|residential|living_street|pedestrian|busway
+          and (
              !name and !name:left and !name:right
              or ~fixme|FIXME ~ name|name\?|Name|Name\?
           )
+          and !ref
           and noname != yes
           and name:signed != no
-          and highway ~ primary|secondary|tertiary|unclassified|residential|living_street|pedestrian|busway
-          and !ref
           and !junction
           and area != yes
           and (
