@@ -83,11 +83,12 @@ import org.koin.compose.koinInject
     val originalNames = remember(element) {
         parseLocalizedNames(element?.tags.orEmpty()).orEmpty()
     }
-    val defaultNames = remember { listOf(LocalizedName(countryInfo.language.orEmpty(), "")) }
 
-    var localizedNames by rememberSerializable(originalNames) {
-        mutableStateOf(originalNames.takeIf { it.isNotEmpty() } ?: defaultNames)
-    }
+    var localizedNames by rememberSerializable(originalNames) { mutableStateOf(
+        originalNames.takeIf { it.isNotEmpty() }
+            ?: originalFeature?.addTags?.let { parseLocalizedNames(it) }
+            ?: listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
+    ) }
     var isNoName by rememberSaveable(originalNoName) { mutableStateOf(originalNoName) }
     var selectedFeature by remember(originalFeature) { mutableStateOf(originalFeature) }
 
@@ -100,7 +101,9 @@ import org.koin.compose.koinInject
         if (feature.hasFixedName == true) {
             localizedNames = listOf()
         } else {
-            localizedNames = defaultNames
+            localizedNames =
+                parseLocalizedNames(feature.addTags)
+                ?: listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
         }
     }
 

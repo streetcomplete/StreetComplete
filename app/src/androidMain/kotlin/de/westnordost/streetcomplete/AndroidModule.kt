@@ -6,7 +6,8 @@ import de.westnordost.streetcomplete.data.AndroidDatabase
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteSQLiteOpenHelper
-import de.westnordost.streetcomplete.data.connection.InternetConnectionState
+import de.westnordost.streetcomplete.data.connection.AndroidActiveNetworkConnection
+import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadControllerAndroid
 import de.westnordost.streetcomplete.data.download.DownloadWorker
@@ -49,7 +50,7 @@ val androidModule = module {
 
     factory<MapTilesDownloader> { MapTilesDownloaderAndroid(androidContext()) }
 
-    factory<InternetConnectionState> { InternetConnectionState(androidContext()) }
+    factory<ActiveNetworkConnection> { AndroidActiveNetworkConnection(androidContext()) }
 
     // Cache dir
 
