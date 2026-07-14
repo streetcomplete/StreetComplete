@@ -19,6 +19,10 @@ class AndroidActiveNetworkConnection(private val context: Context) : ActiveNetwo
             override fun onCapabilitiesChanged(network: Network, networkCapabilities: AndroidNetworkCapabilities) {
                 trySend(networkCapabilities.toNetworkCapabilities())
             }
+
+            override fun onLost(network: Network) {
+                trySend(null)
+            }
         }
 
         context.connectivityManager.registerDefaultNetworkCallback(networkCallback)
