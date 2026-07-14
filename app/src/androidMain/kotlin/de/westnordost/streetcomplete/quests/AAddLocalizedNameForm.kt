@@ -48,14 +48,10 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
 
         binding.composeViewBase.content { Surface {
             localizedNames = rememberSerializable {
-                // On resurvey, prefill with existing names
-                val existingNames = parseLocalizedNames(element.tags).orEmpty()
-                // Otherwise, use empty string for the default language
-                val initialNames = existingNames.ifEmpty {
-                    listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
-                }
-
-                mutableStateOf(initialNames)
+                mutableStateOf(
+                    parseLocalizedNames(element.tags)
+                    ?: listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
+                )
             }
 
             Column {
