@@ -1,5 +1,7 @@
 package de.westnordost.streetcomplete.screens.settings.debug
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
@@ -18,6 +20,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
@@ -65,6 +69,13 @@ fun ShowQuestFormsScreen(
         }
 
         (shownQuestType as? OsmElementQuestType<*>)?.let { questType ->
+            // A scrim below the quest form
+            Box(Modifier
+                .fillMaxSize()
+                .background(Color(0f, 0f, 0f, 0.32f))
+                .pointerInput(Unit) { detectTapGestures { /* consumes tap */ } }
+            )
+
             OsmQuestFormContainer(
                 onDismiss = { shownQuestType = null },
                 onEdit = { action ->
@@ -108,7 +119,7 @@ fun ShowQuestFormsScreen(
     message?.let { text ->
         InfoDialog(
             onDismissRequest = { message = null },
-            text = { Text(text) }
+            title = { Text(text) }
         )
     }
 }
