@@ -74,7 +74,7 @@ fun AddRecyclingContainerMaterialsForm(
                         newSelectedItems.removeAll(parentItems)
                         newSelectedItems.removeAll(childItems)
                         newSelectedItems.add(item)
-                        selectedItems = selectedItems
+                        selectedItems = newSelectedItems
                     }
                 },
                 modifier = Modifier.fillMaxWidth()
