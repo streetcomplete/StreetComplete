@@ -2,9 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map.maplibre
 
 import android.content.ContentResolver
 import android.provider.Settings
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.ui.unit.Density
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.core.graphics.Insets
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
@@ -74,12 +71,3 @@ private fun CameraPosition.toMapLibreCameraPosition(): org.maplibre.android.came
 
 private fun Padding.toDoubleArray() = doubleArrayOf(left, top, right, bottom)
 private fun DoubleArray.toPadding() = Padding(this[0], this[1], this[2], this[3])
-
-fun PaddingValues.toPadding(layoutDirection: LayoutDirection, density: Density) = with(density) {
-    Padding(
-        left = calculateLeftPadding(layoutDirection).toPx().toDouble(),
-        top = calculateTopPadding().toPx().toDouble(),
-        right = calculateRightPadding(layoutDirection).toPx().toDouble(),
-        bottom = calculateBottomPadding().toPx().toDouble()
-    )
-}
