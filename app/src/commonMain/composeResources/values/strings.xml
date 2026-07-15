@@ -1676,8 +1676,8 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_steps_ramp_title">Do these steps have a ramp? What kind?</string>
     <string name="quest_steps_ramp_separate_wheelchair">Is the wheelchair ramp displayed as a separate way on the map?</string>
-    <string name="quest_steps_ramp_separate_wheelchair_confirm">separate</string>
-    <string name="quest_steps_ramp_separate_wheelchair_decline">not separate</string>
+    <string name="quest_steps_ramp_separate_wheelchair_confirm">Separate</string>
+    <string name="quest_steps_ramp_separate_wheelchair_decline">Not separate</string>
     <string name="quest_steps_ramp_none">No (usable) ramp</string>
     <string name="quest_steps_ramp_bicycle">Bicycle ramp</string>
     <string name="quest_steps_ramp_stroller">Stroller ramp</string>
