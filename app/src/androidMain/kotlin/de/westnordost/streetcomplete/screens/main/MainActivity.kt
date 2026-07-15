@@ -51,6 +51,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -72,6 +73,7 @@ import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.maplibre.Padding
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.ktx.toDpOffset
@@ -256,7 +258,7 @@ class MainActivity :
         observe(editHistoryViewModel.selectedEdit) { edit ->
             if (edit != null) {
                 val geometry = editHistoryViewModel.getEditGeometry(edit)
-                mapFragment?.startFocus(geometry, Insets.NONE)
+                mapFragment?.startFocus(geometry, null)
                 mapFragment?.highlightGeometry(geometry)
                 mapFragment?.highlightPins(edit.icon!!.toAndroidResourceId()!!, listOf(edit.position))
                 mapFragment?.hideOverlay()
@@ -617,7 +619,7 @@ class MainActivity :
     }
 
     private fun onClickCreateButton() {
-        showOverlayFormForNewElement()
+        TODO()
     }
 
     private fun setIsNavigationMode(navigation: Boolean) {
@@ -671,16 +673,9 @@ class MainActivity :
     private fun composeNote(pos: LatLon, isGpxAttached: Boolean = false) {
         showInBottomSheet(BottomSheetContent.CreateNote(isGpxAttached))
 
-        val layoutDirection = if (resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL) {
-            LayoutDirection.Rtl
-        } else {
-            LayoutDirection.Ltr
-        }
-        val density = Density(this)
-
         mapFragment?.updateCameraPosition(300) {
             position = pos
-            padding = windowInfo?.let { Dimensions.getOpenQuestFormMapPadding(it).toPadding(layoutDirection, density) }
+            padding = getOpenQuestFormMapPadding()
         }
     }
 
@@ -737,101 +732,33 @@ class MainActivity :
     //region Bottom sheets
 
     @UiThread
-    private fun showOverlayFormForNewElement() {
-        val overlay = viewModel.selectedOverlay.value ?: return
+    private fun showOverlayForNewElementOnMap(overlay: Overlay) {
         val mapFragment = mapFragment ?: return
 
-        val f = (overlay as? AndroidOverlay)?.createForm(null) ?: return
-        if (f.arguments == null) f.arguments = bundleOf()
-        val camera = mapFragment.cameraPosition
-        val rotation = camera?.rotation ?: 0.0
-        val tilt = camera?.tilt ?: 0.0
-        val args = AbstractOverlayForm.createArguments(overlay, null, null, rotation, tilt)
-        f.requireArguments().putAll(args)
-
-        showInBottomSheet(f)
-        val pos = getCrosshairPoint()?.let { getMapPositionAt(it) }
         mapFragment.updateCameraPosition {
-            position = pos
-            padding = getQuestFormInsets().toPadding()
+            position = getCrosshairPoint()?.let { mapFragment.getPositionAt(it) }
+            padding = getOpenQuestFormMapPadding()
         }
         mapFragment.hideNonHighlightedPins()
     }
 
     @UiThread
-    private suspend fun showElementDetails(elementKey: ElementKey) {
-        if (isElementCurrentlyDisplayed(elementKey)) return
-        val overlay = viewModel.selectedOverlay.value ?: return
-        val geometry = mapDataWithEditsSource.getGeometry(elementKey.type, elementKey.id) ?: return
+    private suspend fun showOverlayElementDetailsOnMap(overlay: Overlay, element: Element, geometry: ElementGeometry) {
         val mapFragment = mapFragment ?: return
-
-        // open note if it is blocking element
-        val center = geometry.center
-        val note = withContext(Dispatchers.IO) {
-            notesSource
-                .getAll(BoundingBox(center, center).enlargedBy(0.2))
-                .firstOrNull { it.position.truncateTo6Decimals() == center.truncateTo6Decimals() }
-                ?.takeIf { questsHiddenSource.get(OsmNoteQuestKey(it.id)) == null }
-        }
-        if (note != null) {
-            showQuestDetails(OsmNoteQuest(note.id, note.position))
-            return
-        }
-
-        val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) } ?: return
-        val f = (overlay as? AndroidOverlay)?.createForm(element) ?: return
-        if (f.arguments == null) f.arguments = bundleOf()
-
-        val camera = mapFragment.cameraPosition
-        val rotation = camera?.rotation ?: 0.0
-        val tilt = camera?.tilt ?: 0.0
-        val args = AbstractOverlayForm.createArguments(overlay, element, geometry, rotation, tilt)
-        f.requireArguments().putAll(args)
-
-        showInBottomSheet(f)
 
         mapFragment.highlightGeometry(geometry)
         mapFragment.highlightPins(overlay.icon.toAndroidResourceId()!!, listOf(geometry.center))
         mapFragment.hideNonHighlightedPins()
     }
 
-    private fun isElementCurrentlyDisplayed(elementKey: ElementKey): Boolean {
-        val f = bottomSheetFragment
-        if (f !is IsShowingElement) return false
-        return f.elementKey == elementKey
-    }
-
-    private suspend fun showQuestDetails(questKey: QuestKey) {
-        val quest = visibleQuestsSource.get(questKey)
-        if (quest != null) {
-            showQuestDetails(quest)
-        }
-    }
-
     @UiThread
-    private suspend fun showQuestDetails(quest: Quest) {
+    private fun showQuestDetailsOnMap(quest: Quest, element: Element) {
         val mapFragment = mapFragment ?: return
-        if (isQuestDetailsCurrentlyDisplayedFor(quest.key)) return
 
-        val f = (quest.type as? AndroidQuest)?.createForm() ?: return
-        if (f.arguments == null) f.arguments = bundleOf()
-
-        val camera = mapFragment.cameraPosition
-        val rotation = camera?.rotation ?: 0.0
-        val tilt = camera?.tilt ?: 0.0
-        val args = AbstractQuestForm.createArguments(quest.key, quest.type, quest.geometry, rotation, tilt)
-        f.requireArguments().putAll(args)
-
-        if (f is AbstractOsmQuestForm<*> && quest is OsmQuest) {
-            val element = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(quest.elementType, quest.elementId) } ?: return
-            val osmArgs = AbstractOsmQuestForm.createArguments(element)
-            f.requireArguments().putAll(osmArgs)
+        if (quest is OsmQuest) {
             showHighlightedElements(quest, element)
         }
-
-        showInBottomSheet(f)
-
-        mapFragment.startFocus(quest.geometry, getQuestFormInsets())
+        mapFragment.startFocus(quest.geometry, getOpenQuestFormMapPadding())
         mapFragment.highlightGeometry(quest.geometry)
         mapFragment.highlightPins(quest.type.icon.toAndroidResourceId()!!, quest.markerLocations)
         mapFragment.hideNonHighlightedPins(quest.key)
@@ -867,15 +794,25 @@ class MainActivity :
         }
     }
 
-    private fun getCrosshairPoint(): PointF {
-        val view = binding.root
-        val left = resources.getDimensionPixelSize(R.dimen.quest_form_leftOffset)
-        val right = resources.getDimensionPixelSize(R.dimen.quest_form_rightOffset)
-        val top = resources.getDimensionPixelSize(R.dimen.quest_form_topOffset)
-        val bottom = resources.getDimensionPixelSize(R.dimen.quest_form_bottomOffset)
-        val x = (view.width + left - right) / 2f
-        val y = (view.height + top - bottom) / 2f
-        return PointF(x, y)
+    private fun getCrosshairPoint(): PointF? {
+        val windowInfo = windowInfo ?: return null
+        val padding = getOpenQuestFormMapPadding() ?: return null
+        val size = windowInfo.containerSize
+        return PointF(
+            (padding.left + (size.width - padding.left - padding.right) / 2).toFloat(),
+            (padding.top + (size.height - padding.top - padding.bottom) / 2).toFloat()
+        )
+    }
+
+    private fun getOpenQuestFormMapPadding(): Padding? {
+        val windowInfo = windowInfo ?: return null
+        val layoutDirection = if (resources.configuration.layoutDirection == View.LAYOUT_DIRECTION_RTL) {
+            LayoutDirection.Rtl
+        } else {
+            LayoutDirection.Ltr
+        }
+        val density = Density(this)
+        return Dimensions.getOpenQuestFormMapPadding(windowInfo).toPadding(layoutDirection, density)
     }
 
     //endregion

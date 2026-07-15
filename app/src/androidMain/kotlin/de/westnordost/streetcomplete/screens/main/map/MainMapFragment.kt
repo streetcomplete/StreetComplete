@@ -35,6 +35,7 @@ import de.westnordost.streetcomplete.screens.main.map.components.StyleableOverla
 import de.westnordost.streetcomplete.screens.main.map.components.TracksMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
+import de.westnordost.streetcomplete.screens.main.map.maplibre.Padding
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
@@ -425,8 +426,8 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
     //region Control focusing on and highlighting edit / quest / element
 
     /** Focus the view on the given geometry */
-    fun startFocus(geometry: ElementGeometry, insets: Insets) {
-        geometryMapComponent?.beginFocusGeometry(geometry, insets)
+    fun startFocus(geometry: ElementGeometry, padding: Padding?) {
+        geometryMapComponent?.beginFocusGeometry(geometry, padding)
     }
 
     /** End the focussing but do not return to position before focussing */
