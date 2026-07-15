@@ -2,10 +2,12 @@ package de.westnordost.streetcomplete.quests.address
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
@@ -44,8 +46,13 @@ fun NoHouseNumberDialog(
                 onDismissRequest()
             }) { Text(stringResource(Res.string.quest_generic_hasFeature_no)) }
         },
+        title = {
+            Text(stringResource(Res.string.quest_address_answer_no_housenumber_message2b))
+        },
         text = {
             Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Text(stringResource(Res.string.quest_address_answer_no_housenumber_message1))
@@ -55,7 +62,6 @@ fun NoHouseNumberDialog(
                     description = buildingType.description?.let { stringResource(it) },
                     imageSize = DpSize(48.dp, 48.dp),
                 )
-                Text(stringResource(Res.string.quest_address_answer_no_housenumber_message2b))
             }
         }
     )

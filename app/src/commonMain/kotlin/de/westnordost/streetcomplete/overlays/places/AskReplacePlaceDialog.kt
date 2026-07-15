@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.overlays.places
 
+import androidx.compose.material.AlertDialog
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.AlertDialog
 import org.jetbrains.compose.resources.stringResource
 
 /** Asks whether this place is a new place and thus should be replaced, or if it is still the same
@@ -18,12 +18,14 @@ fun AskReplacePlaceDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismissRequest,
-        buttonRow = {
-            TextButton(onClick = { onDismissRequest(); onAnswer(false) }) {
-                Text(stringResource(Res.string.confirmation_replace_shop_no))
-            }
+        confirmButton = {
             TextButton(onClick = { onDismissRequest(); onAnswer(true) }) {
                 Text(stringResource(Res.string.confirmation_replace_shop_yes))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = { onDismissRequest(); onAnswer(false) }) {
+                Text(stringResource(Res.string.confirmation_replace_shop_no))
             }
         },
         title = { Text(stringResource(Res.string.confirmation_replace_shop_title)) },

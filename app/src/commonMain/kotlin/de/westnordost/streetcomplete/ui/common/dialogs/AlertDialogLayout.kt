@@ -73,7 +73,7 @@ fun AlertDialogLayout(
     }
 }
 
-/** Default flow row for alert dialog buttons*/
+/** Default flow row for alert dialog buttons */
 @Composable
 fun AlertDialogButtonsFlowRow(
     modifier: Modifier = Modifier,

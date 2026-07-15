@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.ui.common.quest
 
+import androidx.compose.material.AlertDialog
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.AlertDialog
 import org.jetbrains.compose.resources.stringResource
 
 /** Dialog in which the user is asked whether he wants to leave a note to explain why it can't be
@@ -19,12 +19,14 @@ fun CantSayDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismissRequest,
-        buttonRow = {
-            TextButton(onClick = { onDismissRequest(); onHideQuest() }) {
-                Text(stringResource(Res.string.quest_leave_new_note_no))
-            }
+        confirmButton = {
             TextButton(onClick = { onDismissRequest(); onLeaveNote() }) {
                 Text(stringResource(Res.string.quest_leave_new_note_yes))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = { onDismissRequest(); onHideQuest() }) {
+                Text(stringResource(Res.string.quest_leave_new_note_no))
             }
         },
         title = { Text(stringResource(Res.string.quest_leave_new_note_title)) },
