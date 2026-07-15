@@ -89,15 +89,15 @@ fun BottomSheetFormScaffold(
                     )
                 }
             }
-            if (fab != null) {
-                Box(
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .safeDrawingPadding()
-                        .padding(8.dp),
-                    content = { fab() }
-                )
-            }
+        }
+        if (fab != null) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .safeDrawingPadding()
+                    .padding(8.dp),
+                content = { fab() }
+            )
         }
     }
 }
