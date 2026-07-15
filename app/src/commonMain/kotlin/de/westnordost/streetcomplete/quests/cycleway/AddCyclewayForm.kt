@@ -15,8 +15,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.preferences.setLastPicked
 import de.westnordost.streetcomplete.data.preferences.getLastPicked
+import de.westnordost.streetcomplete.data.preferences.setLastPicked
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.all
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway
@@ -29,8 +29,8 @@ import de.westnordost.streetcomplete.osm.cycleway.selectableOrNullValues
 import de.westnordost.streetcomplete.osm.cycleway.wasNoOnewayForCyclistsButNowItIs
 import de.westnordost.streetcomplete.osm.cycleway.withDefaultDirection
 import de.westnordost.streetcomplete.osm.oneway.Direction
+import de.westnordost.streetcomplete.osm.oneway.isOneway
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
@@ -92,6 +92,7 @@ fun AddCyclewayForm(
     val isRoundabout = remember(element) {
         element.tags["junction"] == "roundabout" || element.tags["junction"] == "circular"
     }
+    val isOneway = remember(element) { isOneway(element.tags) }
 
     var isDisplayingPrevious by rememberSaveable(originalCycleway) {
         // only show as re-survey (yes/no button) if the previous tagging was complete
@@ -106,7 +107,6 @@ fun AddCyclewayForm(
     }
     var selectionMode by rememberSerializable { mutableStateOf(CyclewayFormSelectionMode.SELECT) }
 
-    var showNoCyclewayHereHint by remember { mutableStateOf(false) }
     var confirmNotOnewayForCyclists by remember { mutableStateOf(false) }
     var confirmSelectReverseCyclewayDirection by remember { mutableStateOf(false) }
 
@@ -174,23 +174,20 @@ fun AddCyclewayForm(
                         isRightSideVisible = true
                     }
                 } else null,
-                AnswerItem(stringResource(Res.string.quest_cycleway_answer_no_bicycle_infrastructure)) {
-                    showNoCyclewayHereHint = true
-                },
+                // this shortcut is only available for roads where the user doesn't have to
+                // explicitly state whether it is a oneway for cyclists, too
+                if (!isOneway) {
+                    AnswerItem(stringResource(Res.string.quest_cycleway_answer_no_bicycle_infrastructure)) {
+                        cycleways = Sides(Cycleway.NONE, Cycleway.NONE)
+                            .withDefaultDirection(countryInfo.isLeftHandTraffic)
+                    }
+                } else null,
                 AnswerItem(stringResource(Res.string.cycleway_reverse_direction)) {
                     confirmSelectReverseCyclewayDirection = true
                 }
             ) },
             contentPadding = PaddingValues.Zero,
             content = { content() }
-        )
-    }
-
-    if (showNoCyclewayHereHint) {
-        InfoDialog(
-            onDismissRequest = { showNoCyclewayHereHint = false },
-            title = { Text(stringResource(Res.string.quest_cycleway_answer_no_bicycle_infrastructure_title)) },
-            text = { Text(stringResource(Res.string.quest_cycleway_answer_no_bicycle_infrastructure_explanation)) }
         )
     }
 

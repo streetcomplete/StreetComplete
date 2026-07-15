@@ -1116,8 +1116,6 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_cycleway_value_sidewalk_ok_dual">none, but sign allows cycling on sidewalk, both directions</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also bicycle path on the other side…</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">No bicycle lane or path at all</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">As usual, tap on one side of the illustration, select a proper answer and do the same for the other side.\n\nNote all the available options: some cases are not obvious, like a oneway road that allows cyclists in both directions!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Selecting that there is no bicycle lane or path</string>
     <string name="quest_cycleway_confirmation_oneway_for_cyclists_too">Are you sure that cyclists are not allowed to use this one-way street in both directions? If you’re unsure, look for a sign at the end of the street.</string>
 
     <string name="quest_cyclewayPartSurface_title">What’s the surface of the bicycle path here?</string>
@@ -1581,8 +1579,6 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_sidewalk_value_separate">sidewalk displayed separately on map</string>
     <string name="quest_sidewalk_answer_different">Sidewalk situation is different</string>
     <string name="quest_sidewalk_answer_none">No sidewalk at all</string>
-    <string name="quest_sidewalk_answer_none_title">Selecting that sidewalks are missing</string>
-    <string name="quest_side_select_interface_explanation">Tap one side and select the matching answer.\nDo the same for the other side if present.</string>
 
     <string name="quest_smoking_title2">Is smoking allowed here?</string>
     <string name="quest_smoking_no">No, forbidden</string>

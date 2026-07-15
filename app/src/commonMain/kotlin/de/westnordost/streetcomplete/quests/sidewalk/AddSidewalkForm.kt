@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.sidewalk
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -12,13 +11,12 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.preferences.setLastPicked
 import de.westnordost.streetcomplete.data.preferences.getLastPicked
+import de.westnordost.streetcomplete.data.preferences.setLastPicked
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.SidewalkForm
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
@@ -46,8 +44,6 @@ fun AddSidewalkForm(
 
     var sidewalks by rememberSerializable { mutableStateOf(Sides<Sidewalk>(null, null)) }
 
-    var showNoSidewalksHint by remember { mutableStateOf(false) }
-
     QuestForm(
         on = on,
         isComplete = sidewalks.left != null && sidewalks.right != null,
@@ -58,7 +54,7 @@ fun AddSidewalkForm(
         },
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_sidewalk_answer_none)) {
-                showNoSidewalksHint = true
+                sidewalks = Sides(Sidewalk.NO, Sidewalk.NO)
             }
         ) },
         contentPadding = PaddingValues.Zero,
@@ -71,14 +67,6 @@ fun AddSidewalkForm(
             mapTilt = LocalMapTilt.current,
             isLeftHandTraffic = countryInfo.isLeftHandTraffic,
             lastPicked = lastPicked
-        )
-    }
-
-    if (showNoSidewalksHint) {
-        InfoDialog(
-            onDismissRequest = { showNoSidewalksHint = false },
-            title = { Text(stringResource(Res.string.quest_sidewalk_answer_none_title)) },
-            text = { Text(stringResource(Res.string.quest_side_select_interface_explanation)) },
         )
     }
 }
