@@ -6,6 +6,7 @@
     <color name="accent_variant">#F44336</color>
     <color name="on_primary">#fff</color>
     <color name="on_secondary">#fff</color>
+    <color name="background">#fff</color>
 
     <color name="location_dot">#536dfe</color>
 </resources>
