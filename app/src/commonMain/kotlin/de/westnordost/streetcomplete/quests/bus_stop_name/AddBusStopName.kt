@@ -41,7 +41,7 @@ class AddBusStopName : OsmFilterQuestType<List<LocalizedName>>() {
 
     @Composable
     override fun Form(on: (QuestAction<List<LocalizedName>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddBusStopNameForm(on, countryInfo)
+        AddBusStopNameForm(on, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: List<LocalizedName>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

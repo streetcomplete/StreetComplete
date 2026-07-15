@@ -20,7 +20,10 @@ class AddRoadName : OsmFilterQuestType<List<LocalizedName>>() {
     override val elementFilter = """
         ways with
           highway ~ primary|secondary|tertiary|unclassified|residential|living_street|pedestrian|busway
-          and !name and !name:left and !name:right
+          and (
+             !name and !name:left and !name:right
+             or ~fixme|FIXME ~ name|name\?|Name|Name\?
+          )
           and !ref
           and noname != yes
           and name:signed != no
@@ -42,7 +45,7 @@ class AddRoadName : OsmFilterQuestType<List<LocalizedName>>() {
 
     @Composable
     override fun Form(on: (QuestAction<List<LocalizedName>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddRoadNameForm(on, countryInfo)
+        AddRoadNameForm(on, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: List<LocalizedName>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

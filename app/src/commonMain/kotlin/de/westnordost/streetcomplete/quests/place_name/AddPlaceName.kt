@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
+import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm
 
@@ -36,7 +37,7 @@ class AddPlaceName(
         // The common list is shared by the opening hours quest and the wheelchair quest.
         // It is also mostly shared by the name quest, that has some wildcards (for say craft and office)
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
-        // Independent tags can by added in the "name only" tab.
+        // Independent tags can be added in the "name only" tab.
 
         mapOf(
             "amenity" to arrayOf(
@@ -135,7 +136,15 @@ class AddPlaceName(
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
-        and !name and !brand and noname != yes and name:signed != no
+        and (
+            (
+                !name
+                and !brand
+                and noname != yes
+            )
+            or ~fixme|FIXME ~ name|name\?|Name|Name\?
+        )
+        and name:signed != no
     """).toElementFilterExpression() }
 
     override val changesetComment = "Determine place names"
@@ -158,7 +167,7 @@ class AddPlaceName(
         LocalizedNameQuestForm(
             on = on,
             countryInfo = countryInfo,
-            initialLocalizedNames = null,
+            initialLocalizedNames = parseLocalizedNames(element.tags),
         )
     }
 

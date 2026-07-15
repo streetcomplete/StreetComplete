@@ -69,6 +69,20 @@ internal class LocalizedNameTest {
         )
     }
 
+    @Test fun `apply localized names removes fixme=name and variants`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("name", "N"),
+                StringMapEntryDelete("fixme", "name"),
+                StringMapEntryDelete("FIXME", "Name?")
+            ),
+            listOf(LocalizedName("", "N")).appliedTo(mapOf(
+                "fixme" to "name",
+                "FIXME" to "Name?"
+            ))
+        )
+    }
+
     @Test fun `apply localized names`() {
         assertEquals(
             setOf(
