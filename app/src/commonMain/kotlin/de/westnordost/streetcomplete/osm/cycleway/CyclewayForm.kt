@@ -88,7 +88,7 @@ fun CyclewayForm(
             isRightSideVisible = isRightSideVisible,
         )
         if (selectionMode == CyclewayFormSelectionMode.REVERSE) {
-            ReverseDirectionsHint(Modifier.align(Alignment.TopCenter).padding(4.dp))
+            ReverseDirectionsHint(Modifier.align(Alignment.TopCenter).padding(8.dp))
         }
     }
 
@@ -131,7 +131,8 @@ private fun ReverseDirectionsHint(
 ) {
     Surface(
         modifier = modifier,
-        shape = MaterialTheme.shapes.small
+        shape = MaterialTheme.shapes.small,
+        elevation = 1.dp
     ) {
         Text(
             text = stringResource(Res.string.cycleway_reverse_direction_toast),
