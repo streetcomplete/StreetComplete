@@ -55,11 +55,11 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
                 AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
                     on(Answer(WheelchairAccessToiletsPart(NO)))
                 },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
-                    on(Answer(WheelchairAccessToiletsPart(YES)))
-                },
                 AnswerItem(stringResource(Res.string.quest_wheelchairAccess_limited)) {
                     on(Answer(WheelchairAccessToiletsPart(LIMITED)))
+                },
+                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
+                    on(Answer(WheelchairAccessToiletsPart(YES)))
                 },
             ),
             otherAnswers = { listOf(
