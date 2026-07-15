@@ -32,7 +32,7 @@ class CountryInfos(private val res: Res) {
 
     private fun load(regionCode: String): IncompleteCountryInfo? {
         return runBlocking {
-            res.readYamlOrNull<IncompleteCountryInfo>("files/country_metadata/$regionCode.yml")
+            res.readYamlOrNull<IncompleteCountryInfo>("files/country_metadata/$regionCode.yml", yaml)
         }
     }
 }
