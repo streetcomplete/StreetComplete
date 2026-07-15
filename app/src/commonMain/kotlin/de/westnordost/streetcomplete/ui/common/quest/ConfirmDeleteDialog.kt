@@ -1,11 +1,11 @@
 package de.westnordost.streetcomplete.ui.common.quest
 
-import androidx.compose.material.AlertDialog
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.AlertDialog
 import org.jetbrains.compose.resources.stringResource
 
 /** Dialog in which the user is asked whether he is sure that an element does not exist. He can
@@ -19,7 +19,7 @@ fun ConfirmDeleteDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismissRequest,
-        buttons = {
+        buttonRow = {
             TextButton(onClick = onDismissRequest) {
                 Text(stringResource(Res.string.quest_generic_confirmation_no))
             }

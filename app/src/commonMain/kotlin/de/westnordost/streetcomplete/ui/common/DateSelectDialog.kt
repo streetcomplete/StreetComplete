@@ -57,7 +57,7 @@ fun DateSelectDialog(
                 }
             }
         },
-        buttons = {
+        buttonRow = {
             TextButton(onClick = onDismissRequest) {
                 Text(stringResource(Res.string.cancel))
             }

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.quests.sport
 
-import androidx.compose.material.AlertDialog
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -14,6 +13,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.quests.sport.Sport.MULTI
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.AlertDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm
@@ -71,7 +71,7 @@ private fun ConfirmManySportsDialog(
 ) {
     AlertDialog(
         onDismissRequest = onDismissRequest,
-        buttons = {
+        buttonRow = {
             TextButton(onClick = { onDismissRequest(); onGeneralPurpose() }) {
                 Text(stringResource(Res.string.quest_manySports_confirmation_generic))
             }

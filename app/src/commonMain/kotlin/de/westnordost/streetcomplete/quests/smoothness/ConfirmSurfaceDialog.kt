@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.smoothness
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.AlertDialog
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
@@ -13,6 +12,7 @@ import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.AlertDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -29,7 +29,7 @@ fun ConfirmSurfaceDialog(
     AlertDialog(
         onDismissRequest = onDismissRequest,
         modifier = modifier,
-        buttons = {
+        buttonRow = {
             TextButton(onClick = { onConfirmSurface(); onDismissRequest() }) {
                 Text(stringResource(Res.string.quest_generic_hasFeature_yes_leave_note))
             }

@@ -31,7 +31,7 @@ fun AlertDialogLayout(
     modifier: Modifier = Modifier,
     title: (@Composable () -> Unit)? = null,
     content: (@Composable ColumnScope.() -> Unit)? = null,
-    buttons: (@Composable FlowRowScope.() -> Unit)? = null,
+    buttonRow: (@Composable FlowRowScope.() -> Unit)? = null,
     shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
@@ -61,16 +61,28 @@ fun AlertDialogLayout(
                     content()
                 }
             }
-            if (buttons != null) {
-                FlowRow(
-                    modifier = Modifier
-                        .padding(horizontal = 8.dp)
-                        .align(Alignment.End),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
-                ) { buttons() }
+            if (buttonRow != null) {
+                AlertDialogButtonsFlowRow(
+                    modifier = Modifier.align(Alignment.End),
+                    content = buttonRow
+                )
             } else {
                 Spacer(Modifier.size(24.dp))
             }
         }
     }
+}
+
+/** Default flow row for alert dialog buttons*/
+@Composable
+fun AlertDialogButtonsFlowRow(
+    modifier: Modifier = Modifier,
+    content: @Composable (FlowRowScope.() -> Unit)
+) {
+    FlowRow(
+        modifier = modifier.padding(horizontal = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        content = content
+    )
 }

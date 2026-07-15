@@ -39,7 +39,7 @@ fun UndoDialog(
                 EditDetails(edit, element, featureDictionaryLazy)
             }
         },
-        buttons = {
+        buttonRow = {
             TextButton(onClick = onDismissRequest) {
                 Text(stringResource(Res.string.undo_confirm_negative))
             }
