@@ -82,7 +82,7 @@ fun AlertDialogButtonsFlowRow(
     FlowRow(
         modifier = modifier.padding(horizontal = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
         content = content
     )
 }
