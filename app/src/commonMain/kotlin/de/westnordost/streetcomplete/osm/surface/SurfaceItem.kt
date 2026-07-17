@@ -13,6 +13,7 @@ val Surface.title: StringResource get() = when (this) {
     PAVING_STONES -> Res.string.quest_surface_value_paving_stones
     COMPACTED -> Res.string.quest_surface_value_compacted
     DIRT -> Res.string.quest_surface_value_dirt
+    LATERITE -> Res.string.quest_surface_value_laterite
     MUD -> Res.string.quest_surface_value_mud
     SETT -> Res.string.quest_surface_value_sett
     UNHEWN_COBBLESTONE -> Res.string.quest_surface_value_unhewn_cobblestone
@@ -43,6 +44,7 @@ val Surface.icon: DrawableResource? get() = when (this) {
     PAVING_STONES -> Res.drawable.surface_paving_stones
     COMPACTED -> Res.drawable.surface_compacted
     DIRT -> Res.drawable.surface_dirt
+    LATERITE -> Res.drawable.surface_laterite
     MUD -> Res.drawable.surface_mud
     SETT -> Res.drawable.surface_sett
     UNHEWN_COBBLESTONE -> Res.drawable.surface_cobblestone

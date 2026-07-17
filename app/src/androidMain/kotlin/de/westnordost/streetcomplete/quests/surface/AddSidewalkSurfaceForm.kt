@@ -76,6 +76,7 @@ class AddSidewalkSurfaceForm : AbstractOsmQuestForm<SidewalkSurfaceAnswer>() {
                 lastPicked = lastPicked,
                 hasSidewalkLeft = hasSidewalkLeft,
                 hasSidewalkRight = hasSidewalkRight,
+                countryCode = countryOrSubdivisionCode,
             )
             checkIsFormComplete()
         } }
