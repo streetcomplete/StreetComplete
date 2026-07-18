@@ -21,6 +21,7 @@ enum class Surface(val osmValue: String?) {
 
     // natural
     DIRT("dirt"),
+    LATERITE("laterite"),
     MUD("mud"),
     GRASS("grass"),
     SAND("sand"),
@@ -37,9 +38,7 @@ enum class Surface(val osmValue: String?) {
     UNPAVED("unpaved"),
     GROUND("ground"),
 
-    UNSUPPORTED(null),
-
-    LATERITE("laterite");
+    UNSUPPORTED(null);
 
     companion object {
         // Based on outreach-confirmed countries from #6881
