@@ -45,9 +45,9 @@ enum class Surface(val osmValue: String?) {
         private val lateriteCountries = setOf(
             "AO", "AR", "AU", "BD", "BF", "BI", "BJ", "BN", "BO", "BR", "CD", "CF", "CG", "CI", "CM",
             "CN", "CO", "CR", "EC", "ET", "FJ", "GA", "GF", "GH", "GN", "GQ", "GY", "ID", "IN", "KE",
-            "KH", "LA", "LK", "LR", "MG", "MM", "MU", "MW", "MX", "MY", "MZ", "NC", "NG", "NP", "PA",
-            "PE", "PG", "PH", "PY", "RW", "SC", "SG", "SL", "SN", "SR", "SS", "TG", "TH", "TL", "TW",
-            "TZ", "UG", "VE", "VN", "ZA", "ZM", "ZW"
+            "KH", "LA", "LK", "LR", "LS", "MG", "MM", "MU", "MW", "MX", "MY", "MZ", "NC", "NG", "NP",
+            "PA", "PE", "PG", "PH", "PY", "RW", "SC", "SG", "SL", "SN", "SR", "SS", "TG", "TH", "TL",
+            "TW", "TZ", "UG", "VE", "VN", "ZA", "ZM", "ZW"
         )
         
         private val selectableValuesForWaysWithoutLaterite = listOf(
