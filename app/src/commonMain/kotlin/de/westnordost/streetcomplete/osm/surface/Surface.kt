@@ -41,8 +41,14 @@ enum class Surface(val osmValue: String?) {
     UNSUPPORTED(null);
 
     companion object {
-        // Based on outreach-confirmed countries from #6881
-        private val lateriteCountries = setOf("TH", "KH", "LA", "IN", "LK", "ID", "MY", "PH", "MG", "KE", "UG", "TZ", "SS", "ET", "CM", "NG", "GH", "SN", "CD", "GA", "BJ", "MW", "ZA", "BR", "AR", "PY", "BO", "CO", "VE", "GF", "GY")
+        // Based on outreach-confirmed countries from #6881 and additional tropical/subtropical countries in the same belt
+        private val lateriteCountries = setOf(
+            "AO", "AR", "AU", "BD", "BF", "BI", "BJ", "BN", "BO", "BR", "CD", "CF", "CG", "CI", "CM",
+            "CN", "CO", "CR", "EC", "ET", "FJ", "GA", "GF", "GH", "GN", "GQ", "GY", "ID", "IN", "KE",
+            "KH", "LA", "LK", "LR", "MG", "MM", "MU", "MW", "MX", "MY", "MZ", "NC", "NG", "NP", "PA",
+            "PE", "PG", "PH", "PY", "RW", "SC", "SG", "SL", "SN", "SR", "SS", "TG", "TH", "TL", "TW",
+            "TZ", "UG", "VE", "VN", "ZA", "ZM", "ZW"
+        )
         
         private val selectableValuesForWaysWithoutLaterite = listOf(
             // paved surfaces
@@ -63,6 +69,7 @@ enum class Surface(val osmValue: String?) {
 
         /** Selectable surface values for roads, paths, etc. */
         fun getSelectableValuesForWays(countryOrSubdivisionCode: String? = null): List<Surface> {
+            // TODO: change parameter name to `countryCode`, ensure that only the countryCode is passed, not the `countryOrSubdivisionCode`
             val countryCode = countryOrSubdivisionCode?.take(2)
             return if (countryCode != null && lateriteCountries.contains(countryCode)) {
                 selectableValuesForWaysWithLaterite
