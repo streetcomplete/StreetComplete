@@ -29,7 +29,7 @@ fun AddFireHydrantRefForm(
         isComplete = ref.isNotEmpty(),
         onClickOk = { on(Answer(FireHydrantRef(ref))) },
         otherAnswers = { listOf(
-            AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = false }
+            AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true }
         ) }
     ) {
         TextField(
