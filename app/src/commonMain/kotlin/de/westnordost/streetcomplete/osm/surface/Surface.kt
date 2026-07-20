@@ -46,10 +46,10 @@ enum class Surface(val osmValue: String?) {
             "AG", "AO", "AR", "AU", "AW", "BB", "BD", "BF", "BI", "BJ", "BN", "BO", "BR", "BS", "BZ",
             "CD", "CF", "CG", "CI", "CM", "CN", "CO", "CR", "CU", "CW", "DM", "DO", "EC", "ET", "FJ",
             "GA", "GD", "GF", "GH", "GM", "GN", "GP", "GQ", "GT", "GW", "GY", "HN", "HT", "ID", "IN",
-            "JM", "KE", "KH", "KN", "LA", "LC", "LK", "LR", "LS", "MG", "MM", "MQ", "MU", "MW", "MX",
-            "MY", "MZ", "NC", "NG", "NI", "NP", "PA", "PE", "PG", "PH", "PR", "PY", "RW", "SC", "SG",
-            "SL", "SN", "SR", "SS", "SV", "SX", "SZ", "TG", "TH", "TL", "TT", "TW", "TZ", "UG", "VC",
-            "VE", "VN", "ZA", "ZM", "ZW"
+            "JM", "KE", "KH", "KN", "LA", "LC", "LK", "LR", "LS", "MG", "ML", "MM", "MQ", "MU", "MW",
+            "MX", "MY", "MZ", "NC", "NG", "NI", "NP", "PA", "PE", "PG", "PH", "PR", "PY", "RW", "SB",
+            "SC", "SG", "SL", "SN", "SR", "SS", "SV", "SX", "SZ", "TG", "TH", "TL", "TT", "TW", "TZ",
+            "UG", "VC", "VE", "VN", "ZA", "ZM", "ZW"
         )
         
         private val selectableValuesForWaysWithoutLaterite = listOf(
