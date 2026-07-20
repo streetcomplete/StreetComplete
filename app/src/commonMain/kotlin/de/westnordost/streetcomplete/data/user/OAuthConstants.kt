@@ -1,9 +1,6 @@
 package de.westnordost.streetcomplete.data.user
 
 import de.westnordost.streetcomplete.ApplicationConstants.USE_TEST_API
-import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClient
-import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClientImpl
-import org.koin.dsl.module
 
 private const val OAUTH2_HOST_LIVE = "https://www.openstreetmap.org/"
 private const val OAUTH2_HOST_TEST = "https://master.apis.dev.openstreetmap.org/"
@@ -43,16 +40,3 @@ val OAUTH2_REQUIRED_SCOPES = listOf(
      */
     // "write_gpx",
 )
-
-val userModule = module {
-    single<UserDataSource> { get<UserDataController>() }
-    single { UserDataController(get(), get()) }
-
-    single<UserLoginSource> { get<UserLoginController>() }
-    single<UserAccessTokenSource> { get<UserLoginController>() }
-    single { UserLoginController(get()) }
-
-    single { UserUpdater(get(), get(), get(), get(), get(), get()) }
-
-    single<OAuthApiClient> { OAuthApiClientImpl(get()) }
-}

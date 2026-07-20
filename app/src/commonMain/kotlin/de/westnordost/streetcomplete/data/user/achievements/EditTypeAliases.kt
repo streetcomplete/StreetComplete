@@ -16,15 +16,9 @@ import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSi
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessPublicTransport
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessToilets
-import org.koin.core.qualifier.named
-import org.koin.dsl.module
-
-val editTypeAliasesModule = module {
-    factory(named("TypeAliases")) { typeAliases }
-}
 
 // list of (quest) synonyms (this alternate name is mentioned to aid searching for this code)
-private val typeAliases = listOf(
+val editTypeAliases = listOf(
     "AddAccessibleForPedestrians"        to AddProhibitedForPedestrians::class.simpleName!!,
     "AddWheelChairAccessPublicTransport" to AddWheelchairAccessPublicTransport::class.simpleName!!,
     "AddWheelChairAccessToilets"         to AddWheelchairAccessToilets::class.simpleName!!,

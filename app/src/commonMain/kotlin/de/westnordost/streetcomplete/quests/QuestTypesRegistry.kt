@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.quests
 
-import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.Feature
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
-import de.westnordost.streetcomplete.data.meta.CountryInfos
-import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -200,23 +196,6 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 import de.westnordost.streetcomplete.quests.width.AddCyclewayWidth
 import de.westnordost.streetcomplete.quests.width.AddRoadWidth
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
-import de.westnordost.streetcomplete.util.ktx.getFeature
-import org.koin.core.qualifier.named
-import org.koin.dsl.module
-
-val questsModule = module {
-    single {
-        val countryInfos = get<CountryInfos>()
-        val countryBoundariesLazy = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy"))
-        val featureDictionaryLazy = get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy"))
-        questTypeRegistry(
-            get(),
-            { countryInfos.get(countryBoundariesLazy.value, it) },
-            { countryBoundariesLazy.value.getIds(it).firstOrNull() },
-            { featureDictionaryLazy.value.getFeature(it) }
-        )
-    }
-}
 
 fun questTypeRegistry(
     arSupportChecker: ArSupportChecker,

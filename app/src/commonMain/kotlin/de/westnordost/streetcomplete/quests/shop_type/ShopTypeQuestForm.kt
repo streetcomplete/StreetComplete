@@ -53,7 +53,7 @@ fun ShopTypeQuestForm(
     ) {
         ShopTypeForm(
             feature = feature,
-            option = option,
+            selectedOption = option,
             onSelectedFeature = { feature = it },
             onSelectedOption = { option = it },
             featureDictionary = featureDictionary,
