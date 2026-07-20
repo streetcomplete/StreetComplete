@@ -1535,7 +1535,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_religion_shinto">Shinto</string>
     <string name="quest_religion_jewish">Judaism</string>
     <string name="quest_religion_taoist">Taoism</string>
-    <string name="quest_religion_for_place_of_worship_answer_multi">for use by any religion</string>
+    <string name="quest_religion_for_place_of_worship_answer_multi">For use by any religion</string>
     <string name="quest_religion_sikh">Sikh</string>
     <string name="quest_religion_jain">Jain</string>
     <string name="quest_religion_bahai">Bahá’í Faith</string>
