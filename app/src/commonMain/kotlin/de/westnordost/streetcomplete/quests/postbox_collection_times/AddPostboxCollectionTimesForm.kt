@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.postbox_collection_times
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,6 +22,7 @@ import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import de.westnordost.streetcomplete.ui.util.SlideStartHorizontally
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 
@@ -57,54 +59,59 @@ fun AddPostboxCollectionTimesForm(
         )
     }
 
-    if (isDisplayingPrevious) {
-        QuestForm(
-            on = on,
-            answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
-                    isDisplayingPrevious = false
-                },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
-                    on(Answer(CollectionTimes(originalOpeningHours!!)))
-                }
-            ),
-            title = stringResource(Res.string.quest_postboxCollectionTimes_resurvey_title),
-            otherAnswers = { listOf(
-                AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
-                    confirmNoSign = true
-                },
-            ) },
-            content = { openingHoursTable() }
-        )
-    } else {
-        QuestForm(
-            on = on,
-            isComplete = openingHours.isComplete(),
-            onClickOk = { on(Answer(CollectionTimes(openingHours))) },
-            hasChanges = openingHours.monthsList.isNotEmpty(),
-            otherAnswers = {
-                val switchTimeModeAnswer = when (timeMode) {
-                    TimeMode.Points -> {
-                        AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_time_spans)) {
-                            timeMode = TimeMode.Spans
-                        }
+    AnimatedContent(
+        targetState = isDisplayingPrevious,
+        transitionSpec = SlideStartHorizontally
+    ) { isDisplayingPrevious2 ->
+        if (isDisplayingPrevious2) {
+            QuestForm(
+                on = on,
+                answers = listOf(
+                    AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
+                        isDisplayingPrevious = false
+                    },
+                    AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
+                        on(Answer(CollectionTimes(originalOpeningHours!!)))
                     }
-                    TimeMode.Spans -> {
-                        AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_time_points)) {
-                            timeMode = TimeMode.Points
-                        }
-                    }
-                }
-
-                listOf(
+                ),
+                title = stringResource(Res.string.quest_postboxCollectionTimes_resurvey_title),
+                otherAnswers = { listOf(
                     AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
                         confirmNoSign = true
                     },
-                    switchTimeModeAnswer
-                )
-             },
-            content = { openingHoursTable() }
-        )
+                ) },
+                content = { openingHoursTable() }
+            )
+        } else {
+            QuestForm(
+                on = on,
+                isComplete = openingHours.isComplete(),
+                onClickOk = { on(Answer(CollectionTimes(openingHours))) },
+                hasChanges = openingHours.monthsList.isNotEmpty(),
+                otherAnswers = {
+                    val switchTimeModeAnswer = when (timeMode) {
+                        TimeMode.Points -> {
+                            AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_time_spans)) {
+                                timeMode = TimeMode.Spans
+                            }
+                        }
+                        TimeMode.Spans -> {
+                            AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_time_points)) {
+                                timeMode = TimeMode.Points
+                            }
+                        }
+                    }
+
+                    listOf(
+                        AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
+                            confirmNoSign = true
+                        },
+                        switchTimeModeAnswer
+                    )
+                 },
+                content = { openingHoursTable() }
+            )
+        }
     }
 
     if (confirmNoSign) {

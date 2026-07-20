@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.cycleway
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -36,6 +37,7 @@ import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import de.westnordost.streetcomplete.ui.util.SlideStartHorizontally
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import de.westnordost.streetcomplete.util.takeFavorites
@@ -141,54 +143,63 @@ fun AddCyclewayForm(
         )
     }
 
-    if (isDisplayingPrevious) {
-        QuestForm(
-            on = on,
-            answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { isDisplayingPrevious = false },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(cycleways)) }
-            ),
-            title = stringResource(Res.string.quest_cycleway_resurvey_title),
-            contentPadding = PaddingValues.Zero,
-            content = { content() }
-        )
-    } else {
-        QuestForm(
-            on = on,
-            isComplete =
-                (cycleways.left != null || !isLeftSideVisible) &&
-                (cycleways.right != null || !isRightSideVisible),
-            hasChanges =
-                cycleways.left != null || cycleways.right != null,
-            onClickOk = {
-                if (cycleways.wasNoOnewayForCyclistsButNowItIs(element.tags, countryInfo.isLeftHandTraffic)) {
-                    confirmNotOnewayForCyclists = true
-                } else {
-                    saveAndApplyCycleway(cycleways)
-                }
-            },
-            otherAnswers = { listOfNotNull(
-                if ((!isLeftSideVisible || !isRightSideVisible) && !isRoundabout) {
-                    AnswerItem(stringResource(Res.string.quest_cycleway_answer_contraflow_cycleway)) {
-                        isLeftSideVisible = true
-                        isRightSideVisible = true
+    AnimatedContent(
+        targetState = isDisplayingPrevious,
+        transitionSpec = SlideStartHorizontally
+    ) { isDisplayingPrevious2 ->
+        if (isDisplayingPrevious2) {
+            QuestForm(
+                on = on,
+                answers = listOf(
+                    AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
+                        isDisplayingPrevious = false
+                    },
+                    AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
+                        on(Answer(cycleways))
                     }
-                } else null,
-                // this shortcut is only available for roads where the user doesn't have to
-                // explicitly state whether it is a oneway for cyclists, too
-                if (!isOneway) {
-                    AnswerItem(stringResource(Res.string.quest_cycleway_answer_no_bicycle_infrastructure)) {
-                        cycleways = Sides(Cycleway.NONE, Cycleway.NONE)
-                            .withDefaultDirection(countryInfo.isLeftHandTraffic)
+                ),
+                title = stringResource(Res.string.quest_cycleway_resurvey_title),
+                contentPadding = PaddingValues.Zero,
+                content = { content() }
+            )
+        } else {
+            QuestForm(
+                on = on,
+                isComplete =
+                    (cycleways.left != null || !isLeftSideVisible) &&
+                    (cycleways.right != null || !isRightSideVisible),
+                hasChanges =
+                    cycleways.left != null || cycleways.right != null,
+                onClickOk = {
+                    if (cycleways.wasNoOnewayForCyclistsButNowItIs(element.tags, countryInfo.isLeftHandTraffic)) {
+                        confirmNotOnewayForCyclists = true
+                    } else {
+                        saveAndApplyCycleway(cycleways)
                     }
-                } else null,
-                AnswerItem(stringResource(Res.string.cycleway_reverse_direction)) {
-                    confirmSelectReverseCyclewayDirection = true
-                }
-            ) },
-            contentPadding = PaddingValues.Zero,
-            content = { content() }
-        )
+                },
+                otherAnswers = { listOfNotNull(
+                    if ((!isLeftSideVisible || !isRightSideVisible) && !isRoundabout) {
+                        AnswerItem(stringResource(Res.string.quest_cycleway_answer_contraflow_cycleway)) {
+                            isLeftSideVisible = true
+                            isRightSideVisible = true
+                        }
+                    } else null,
+                    // this shortcut is only available for roads where the user doesn't have to
+                    // explicitly state whether it is a oneway for cyclists, too
+                    if (!isOneway) {
+                        AnswerItem(stringResource(Res.string.quest_cycleway_answer_no_bicycle_infrastructure)) {
+                            cycleways = Sides(Cycleway.NONE, Cycleway.NONE)
+                                .withDefaultDirection(countryInfo.isLeftHandTraffic)
+                        }
+                    } else null,
+                    AnswerItem(stringResource(Res.string.cycleway_reverse_direction)) {
+                        confirmSelectReverseCyclewayDirection = true
+                    }
+                ) },
+                contentPadding = PaddingValues.Zero,
+                content = { content() }
+            )
+        }
     }
 
     if (confirmNotOnewayForCyclists) {

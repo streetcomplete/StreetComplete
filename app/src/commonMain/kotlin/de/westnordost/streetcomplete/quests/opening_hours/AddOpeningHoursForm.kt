@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.opening_hours
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,9 +25,9 @@ import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import de.westnordost.streetcomplete.ui.util.SlideStartHorizontally
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
-import kotlin.collections.listOf
 
 @Composable
 fun AddOpeningHoursForm(
@@ -63,46 +64,53 @@ fun AddOpeningHoursForm(
         )
     }
 
-    if (isDisplayingPrevious) {
-        QuestForm(
-            on = on,
-            answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
-                    isDisplayingPrevious = false
-                },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
-                    on(Answer(RegularOpeningHours(originalOpeningHours!!)))
-                }
-            ),
-            title = stringResource(Res.string.quest_openingHours_resurvey_title),
-            otherAnswers = { listOf(
-                AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) { confirmNoSign = true },
-            ) },
-            content = { openingHoursTable() }
-        )
-    } else {
-        QuestForm(
-            on = on,
-            isComplete = openingHours.isComplete(),
-            onClickOk = { on(Answer(RegularOpeningHours(openingHours))) },
-            hasChanges = openingHours.monthsList.isNotEmpty(),
-            otherAnswers = { listOf(
-                AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) {
-                    confirmNoSign = true
-                },
-                AnswerItem(stringResource(Res.string.quest_openingHours_answer_no_regular_opening_hours)) {
-                    showCommentDialog = true
-                },
-                AnswerItem(stringResource(Res.string.quest_openingHours_answer_247)) {
-                    confirm24_7 = true
-                },
-                AnswerItem(stringResource(Res.string.quest_openingHours_answer_seasonal_opening_hours)) {
-                    isDisplayingPrevious = false
-                    openingHours = openingHours.monthsSelectorsAdded()
-                }
-            ) },
-            content = { openingHoursTable() }
-        )
+    AnimatedContent(
+        targetState = isDisplayingPrevious,
+        transitionSpec = SlideStartHorizontally
+    ) { isDisplayingPrevious2 ->
+        if (isDisplayingPrevious2) {
+            QuestForm(
+                on = on,
+                answers = listOf(
+                    AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) {
+                        isDisplayingPrevious = false
+                    },
+                    AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) {
+                        on(Answer(RegularOpeningHours(originalOpeningHours!!)))
+                    }
+                ),
+                title = stringResource(Res.string.quest_openingHours_resurvey_title),
+                otherAnswers = { listOf(
+                    AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) {
+                        confirmNoSign = true
+                    },
+                ) },
+                content = { openingHoursTable() }
+            )
+        } else {
+            QuestForm(
+                on = on,
+                isComplete = openingHours.isComplete(),
+                onClickOk = { on(Answer(RegularOpeningHours(openingHours))) },
+                hasChanges = openingHours.monthsList.isNotEmpty(),
+                otherAnswers = { listOf(
+                    AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) {
+                        confirmNoSign = true
+                    },
+                    AnswerItem(stringResource(Res.string.quest_openingHours_answer_no_regular_opening_hours)) {
+                        showCommentDialog = true
+                    },
+                    AnswerItem(stringResource(Res.string.quest_openingHours_answer_247)) {
+                        confirm24_7 = true
+                    },
+                    AnswerItem(stringResource(Res.string.quest_openingHours_answer_seasonal_opening_hours)) {
+                        isDisplayingPrevious = false
+                        openingHours = openingHours.monthsSelectorsAdded()
+                    }
+                ) },
+                content = { openingHoursTable() }
+            )
+        }
     }
 
     if (showCommentDialog) {
