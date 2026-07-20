@@ -17,6 +17,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.SaverScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -26,12 +29,14 @@ import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
+import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.no_search_results
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
 
 /** Searchable and clickable quest list as a full screen */
 @OptIn(ExperimentalComposeUiApi::class)
@@ -39,10 +44,13 @@ import org.jetbrains.compose.resources.stringResource
 fun ShowQuestFormsScreen(
     viewModel: ShowQuestFormsViewModel,
     onClickBack: () -> Unit,
+    questTypeRegistry: QuestTypeRegistry = koinInject()
 ) {
     val searchText by viewModel.searchText.collectAsState()
     val filteredQuests by viewModel.filteredQuests.collectAsState()
-    var shownQuestType by remember { mutableStateOf<QuestType?>(null) }
+    var shownQuestType by rememberSaveable(stateSaver = QuestTypeSaver(questTypeRegistry)) {
+        mutableStateOf<QuestType?>(null)
+    }
     var message by remember { mutableStateOf<String?>(null) }
 
     Box(Modifier.fillMaxSize()) {
@@ -124,3 +132,7 @@ fun ShowQuestFormsScreen(
     }
 }
 
+private class QuestTypeSaver(private val types: QuestTypeRegistry) : Saver<QuestType?, String> {
+    override fun SaverScope.save(value: QuestType?): String? = value?.name
+    override fun restore(value: String): QuestType? = types.getByName(value)
+}
