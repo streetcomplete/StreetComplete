@@ -15,7 +15,10 @@ fun ConfirmDiscardDialog(
 ) {
     ConfirmationDialog(
         onDismissRequest = onDismissRequest,
-        onConfirmed = onConfirmed,
+        onConfirmed = {
+            onDismissRequest()
+            onConfirmed()
+        },
         modifier = modifier,
         title = { Text(stringResource(Res.string.confirmation_discard_title)) },
         confirmButtonText = stringResource(Res.string.confirmation_discard_positive),
