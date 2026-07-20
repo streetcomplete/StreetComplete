@@ -12,6 +12,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import de.westnordost.streetcomplete.quests.address.AddressNumberAndName
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.Details
@@ -72,7 +73,8 @@ fun AddressNumberAndNameForm(
                     TextField(
                         value = name,
                         onValueChange = { onNameChange(it) },
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        isError = name.length > MAX_OSM_TAG_VALUE_LENGTH
                     )
                 }
             }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -17,6 +18,7 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
+import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import de.westnordost.streetcomplete.ui.common.AutoFitTextFieldFontSize
 import de.westnordost.streetcomplete.ui.common.SwitchKeyboardPopupButton
 import de.westnordost.streetcomplete.ui.common.TextField2
@@ -37,6 +39,7 @@ fun AnAddressNumberInput(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
 ) {
     var valueState by remember { mutableStateOf(TextFieldValue(text = value)) }
+    val isTooLong by remember { derivedStateOf { valueState.text.length > MAX_OSM_TAG_VALUE_LENGTH } }
     if (value != valueState.text) {
         // on incoming value, place cursor at end so that user can directly delete it again with ⌫
         valueState = valueState.copy(value, TextRange(value.length))
@@ -79,6 +82,7 @@ fun AnAddressNumberInput(
                 ),
                 modifier = Modifier.onFocusChanged { isFocused = it.isFocused },
                 singleLine = true,
+                isError = isTooLong
             )
         }
 

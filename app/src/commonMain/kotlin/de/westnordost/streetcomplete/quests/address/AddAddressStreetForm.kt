@@ -10,6 +10,7 @@ import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -63,7 +64,9 @@ fun AddAddressStreetForm(
 
     QuestForm(
         on = on,
-        isComplete = streetOrPlaceName.name.isNotEmpty(),
+        isComplete =
+            streetOrPlaceName.name.isNotEmpty() &&
+            streetOrPlaceName.name.length <= MAX_OSM_TAG_VALUE_LENGTH,
         onClickOk = {
             lastWasPlaceName = streetOrPlaceName is PlaceName
             on(Answer(streetOrPlaceName))

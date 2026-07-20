@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
@@ -67,7 +68,10 @@ fun LocalizedNameQuestForm(
 
     QuestForm(
         on = on,
-        isComplete = localizedNames.isNotEmpty() && localizedNames.all { it.name.isNotBlank() },
+        isComplete =
+            localizedNames.isNotEmpty() &&
+            localizedNames.all { it.name.isNotBlank() } &&
+            localizedNames.none { it.name.length > MAX_OSM_TAG_VALUE_LENGTH },
         hasChanges = localizedNames.isNotEmpty() && localizedNames.any { it.name.isNotBlank() },
         onClickOk = {
             preferences.preferredLanguageForNames =

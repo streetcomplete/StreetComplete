@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.quests.address
 
+import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.address.AddressNumber
 import de.westnordost.streetcomplete.osm.address.applyTo
@@ -16,7 +17,12 @@ data class AddressNumberAndName(val number: AddressNumber?, val name: String?) :
         number?.isEmpty() != false && name?.isEmpty() != false
 
     fun isComplete(): Boolean =
-        number?.isComplete() == true || name?.isNotEmpty() == true && number?.isEmpty() != false
+        (
+            number?.isComplete() == true ||
+            name?.isNotEmpty() == true && number?.isEmpty() != false
+        ) && (
+            name == null || name.length <= MAX_OSM_TAG_VALUE_LENGTH
+        )
 }
 
 fun AddressNumberAndName.applyTo(tags: Tags, countryCode: String?) {

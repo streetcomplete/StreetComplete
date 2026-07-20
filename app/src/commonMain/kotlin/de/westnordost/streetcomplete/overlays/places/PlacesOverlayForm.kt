@@ -8,6 +8,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
@@ -148,7 +149,8 @@ import org.koin.compose.koinInject
         on = on,
         isComplete =
             // name is not necessary
-            selectedFeature != null,
+            selectedFeature != null &&
+            localizedNames.none { it.name.length > MAX_OSM_TAG_VALUE_LENGTH },
         hasChanges =
             originalFeature != selectedFeature
             || originalNames != localizedNames.filter { it.name.isNotEmpty() }
