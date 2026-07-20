@@ -43,11 +43,13 @@ enum class Surface(val osmValue: String?) {
     companion object {
         // Based on outreach-confirmed countries from #6881 and additional tropical/subtropical countries in the same belt
         private val lateriteCountries = setOf(
-            "AO", "AR", "AU", "BD", "BF", "BI", "BJ", "BN", "BO", "BR", "CD", "CF", "CG", "CI", "CM",
-            "CN", "CO", "CR", "EC", "ET", "FJ", "GA", "GF", "GH", "GN", "GQ", "GY", "ID", "IN", "KE",
-            "KH", "LA", "LK", "LR", "LS", "MG", "MM", "MU", "MW", "MX", "MY", "MZ", "NC", "NG", "NP",
-            "PA", "PE", "PG", "PH", "PY", "RW", "SC", "SG", "SL", "SN", "SR", "SS", "TG", "TH", "TL",
-            "TW", "TZ", "UG", "VE", "VN", "ZA", "ZM", "ZW"
+            "AG", "AO", "AR", "AU", "AW", "BB", "BD", "BF", "BI", "BJ", "BN", "BO", "BR", "BS", "BZ",
+            "CD", "CF", "CG", "CI", "CM", "CN", "CO", "CR", "CU", "CW", "DM", "DO", "EC", "ET", "FJ",
+            "GA", "GD", "GF", "GH", "GM", "GN", "GP", "GQ", "GT", "GW", "GY", "HN", "HT", "ID", "IN",
+            "JM", "KE", "KH", "KN", "LA", "LC", "LK", "LR", "LS", "MG", "MM", "MQ", "MU", "MW", "MX",
+            "MY", "MZ", "NC", "NG", "NI", "NP", "PA", "PE", "PG", "PH", "PR", "PY", "RW", "SC", "SG",
+            "SL", "SN", "SR", "SS", "SV", "SX", "SZ", "TG", "TH", "TL", "TT", "TW", "TZ", "UG", "VC",
+            "VE", "VN", "ZA", "ZM", "ZW"
         )
         
         private val selectableValuesForWaysWithoutLaterite = listOf(
