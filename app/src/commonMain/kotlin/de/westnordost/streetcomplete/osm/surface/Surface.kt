@@ -70,7 +70,6 @@ enum class Surface(val osmValue: String?) {
         /** Selectable surface values for roads, paths, etc. */
         fun getSelectableValuesForWays(countryOrSubdivisionCode: String? = null): List<Surface> {
             // TODO: change parameter name to `countryCode`, ensure that only the countryCode is passed, not the `countryOrSubdivisionCode`
-            // TODO: change parameter name to `countryCode`, ensure that only the countryCode is passed, not the `countryOrSubdivisionCode`
             val countryCode = countryOrSubdivisionCode?.take(2)
             return if (countryCode != null && lateriteCountries.contains(countryCode)) {
                 selectableValuesForWaysWithLaterite
