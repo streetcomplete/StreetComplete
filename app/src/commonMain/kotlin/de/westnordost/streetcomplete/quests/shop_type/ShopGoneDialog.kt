@@ -7,7 +7,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,8 +19,6 @@ import de.westnordost.streetcomplete.osm.places.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.places.isPlace
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
-import de.westnordost.streetcomplete.util.ktx.geometryType
 import org.jetbrains.compose.resources.stringResource
 
 /** Dialog in which to select what happened with a shop that doesn't exist anymore */
@@ -77,7 +74,7 @@ fun ShopGoneDialog(
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.high) {
                 ShopTypeForm(
                     feature = feature,
-                    option = option,
+                    selectedOption = option,
                     onSelectedFeature = { feature = it },
                     onSelectedOption = { option = it },
                     featureDictionary = featureDictionary,
