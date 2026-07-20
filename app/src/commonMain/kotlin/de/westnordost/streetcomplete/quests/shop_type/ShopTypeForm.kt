@@ -1,24 +1,10 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.selection.selectable
-import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.RadioButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -27,7 +13,6 @@ import de.westnordost.streetcomplete.quests.shop_type.ShopTypeFormOption.*
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.RadioGroup
 import de.westnordost.streetcomplete.ui.common.feature.FeatureSelect
-import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -36,7 +21,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun ShopTypeForm(
     feature: Feature?,
-    option: ShopTypeFormOption?,
+    selectedOption: ShopTypeFormOption?,
     onSelectedFeature: (Feature) -> Unit,
     onSelectedOption: (ShopTypeFormOption) -> Unit,
     featureDictionary: FeatureDictionary,
@@ -49,14 +34,17 @@ fun ShopTypeForm(
     RadioGroup(
         options = ShopTypeFormOption.entries,
         onSelectionChange = onSelectedOption,
-        selectedOption = option,
-        itemContent = {
+        selectedOption = selectedOption,
+        itemContent = { option ->
             Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                Text(stringResource(it.text))
-                if (it == FEATURE) {
+                Text(stringResource(option.text))
+                if (option == FEATURE) {
                     FeatureSelect(
                         feature = feature,
-                        onSelectedFeature = onSelectedFeature,
+                        onSelectedFeature = { feature ->
+                            onSelectedOption(FEATURE)
+                            onSelectedFeature(feature)
+                        },
                         featureDictionary = featureDictionary,
                         geometryType = geometryType,
                         countryCode = countryCode,
