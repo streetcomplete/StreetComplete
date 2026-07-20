@@ -4,13 +4,6 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.EditsOfTypeCount
 import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition.TotalEditCount
 import de.westnordost.streetcomplete.resources.*
-import org.koin.core.qualifier.named
-import org.koin.dsl.module
-
-val achievementDefinitionsModule = module {
-    factory(named("Achievements")) { achievements }
-    factory(named("Links")) { links }
-}
 
 /** this is only public so that it can be previewed in compose */
 val links = listOf(
