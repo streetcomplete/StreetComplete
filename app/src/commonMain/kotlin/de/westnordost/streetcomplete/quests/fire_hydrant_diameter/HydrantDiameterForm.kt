@@ -25,7 +25,7 @@ fun HydrantDiameterForm(
         countryCode = countryCode,
         modifier = modifier,
     ) {
-        val stringValue = value?.value.toString().orEmpty()
+        val stringValue = value?.value?.toString().orEmpty()
         ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
             AutoFitTextFieldFontSize(stringValue) {
                 TextField2(
