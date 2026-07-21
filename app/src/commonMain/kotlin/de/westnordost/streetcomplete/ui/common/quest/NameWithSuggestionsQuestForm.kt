@@ -13,7 +13,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.ui.common.AutoCompleteTextField
+import de.westnordost.streetcomplete.ui.common.auto_complete_text.AutoCompleteTextField
 import de.westnordost.streetcomplete.ui.theme.largeInput
 import kotlin.collections.orEmpty
 
