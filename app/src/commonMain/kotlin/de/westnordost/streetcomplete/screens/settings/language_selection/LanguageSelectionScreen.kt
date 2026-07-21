@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -72,17 +73,17 @@ fun LanguageSelectionScreen(
             search = searchText,
             onSearchChange = { searchText = it },
         )
+        val insets = WindowInsets.safeDrawing.only(
+            WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+        ).asPaddingValues()
         LanguageSelectionList(
             languages = sortedAndFilteredSelectableLanguages,
             selectedLanguage = selectedLanguage,
             onSelect = { viewModel.setSelectedLanguage(it) },
             modifier = Modifier
                 .fillMaxHeight()
-                .consumeWindowInsets(
-                    WindowInsets.safeDrawing.only(
-                        WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
-                    ).asPaddingValues()
-                )
+                .consumeWindowInsets(insets),
+            contentPadding = insets
         )
     }
 }
@@ -129,8 +130,12 @@ private fun LanguageSelectionList(
     selectedLanguage: String?,
     onSelect: (languageCode: String?) -> Unit,
     modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues.Zero,
 ) {
-    LazyColumn(modifier) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = contentPadding
+    ) {
         items(languages, key = { it.orEmpty() }) { language ->
             val isSelected = selectedLanguage == language
             Row(
