@@ -1,9 +1,11 @@
 package de.westnordost.streetcomplete.ui.common
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -27,7 +29,7 @@ fun TopAppBarWithContent(
     backgroundColor: Color = MaterialTheme.colors.primarySurface,
     contentColor: Color = contentColorFor(backgroundColor),
     elevation: Dp = AppBarDefaults.TopAppBarElevation,
-    content: @Composable ColumnScope.() -> Unit,
+    content: @Composable () -> Unit,
 ) {
     Surface(
         modifier = modifier,
@@ -46,7 +48,9 @@ fun TopAppBarWithContent(
                 contentColor = contentColor,
                 elevation = 0.dp
             )
-            content()
+            Box(Modifier.windowInsetsPadding(windowInsets)) {
+                content()
+            }
         }
     }
 }
