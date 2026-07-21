@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material.AppBarDefaults
 import androidx.compose.material.MaterialTheme
@@ -48,7 +50,7 @@ fun TopAppBarWithContent(
                 contentColor = contentColor,
                 elevation = 0.dp
             )
-            Box(Modifier.windowInsetsPadding(windowInsets)) {
+            Box(Modifier.windowInsetsPadding(windowInsets.only(WindowInsetsSides.Horizontal))) {
                 content()
             }
         }
