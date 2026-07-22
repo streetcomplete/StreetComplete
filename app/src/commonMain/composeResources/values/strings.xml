@@ -23,6 +23,7 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
 
     <string name="action_about2">About</string>
     <string name="action_settings">Settings</string>
+    <string name="settings_title">%1$s Settings</string>
     <string name="action_overlays">Overlays</string>
     <string name="user_profile">My Profile</string>
 
@@ -325,6 +326,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
     <string name="action_open_in_browser">Open in browser</string>
 
     <!-- About screen -->
+
+    <string name="about_title">About %1$s</string>
 
     <string name="about_category_feedback">Feedback</string>
 

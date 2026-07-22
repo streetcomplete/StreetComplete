@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.intl.Locale
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
@@ -53,7 +54,9 @@ fun AboutScreen(
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text(stringResource(Res.string.action_about2)) },
+            title = {
+                Text(stringResource(Res.string.about_title, ApplicationConstants.NAME))
+            },
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )

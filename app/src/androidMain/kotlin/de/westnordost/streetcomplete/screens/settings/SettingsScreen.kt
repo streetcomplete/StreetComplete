@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ApplicationConstants.DELETE_OLD_DATA_AFTER
+import de.westnordost.streetcomplete.ApplicationConstants.NAME
 import de.westnordost.streetcomplete.ApplicationConstants.REFRESH_DATA_AFTER
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.preferences.Autosync
@@ -81,7 +82,7 @@ fun SettingsScreen(
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = { Text(stringResource(Res.string.action_settings)) },
+            title = { Text(stringResource(Res.string.settings_title, NAME)) },
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
