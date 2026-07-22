@@ -54,9 +54,7 @@ fun AboutScreen(
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
-            title = {
-                Text(stringResource(Res.string.about_title, ApplicationConstants.NAME))
-            },
+            title = { Text(stringResource(Res.string.action_about2)) },
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
@@ -67,7 +65,9 @@ fun AboutScreen(
             ))
         ) {
 
-            PreferenceCategory(null) {
+            PreferenceCategory(
+                stringResource(Res.string.about_title, ApplicationConstants.NAME),
+            ) {
 
                 Preference(
                     name = stringResource(Res.string.about_title_changelog),
