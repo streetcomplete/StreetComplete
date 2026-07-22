@@ -326,6 +326,8 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <!-- About screen -->
 
+    <string name="about_title">About %1$s</string>
+
     <string name="about_category_feedback">Feedback</string>
 
     <string name="about_title_get_involved">Get Involved</string>
