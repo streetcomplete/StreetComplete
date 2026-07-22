@@ -1,10 +1,15 @@
 package de.westnordost.streetcomplete.ui.util.measure
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.osm.length.Length
 
 interface ArMeasureAppLauncher {
-    suspend fun measure(lengthUnit: LengthUnit, measureVertical: Boolean): ArMeasureResult
+    fun measure(
+        lengthUnit: LengthUnit,
+        measureVertical: Boolean,
+        onResult: (ArMeasureResult) -> Unit,
+    )
 }
 
 sealed interface ArMeasureResult {
@@ -12,3 +17,6 @@ sealed interface ArMeasureResult {
     data object Error : ArMeasureResult
     data object NotInstalled : ArMeasureResult
 }
+
+@Composable
+expect fun rememberArMeasureAppLauncher(): ArMeasureAppLauncher

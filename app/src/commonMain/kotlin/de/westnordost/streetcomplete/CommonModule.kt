@@ -599,7 +599,7 @@ val commonModule = module {
 
     viewModel<PhotosViewModel> { PhotosViewModelImpl(get(), get()) }
 
-    viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get(), get()) }
+    viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }
 
     //endregion
 

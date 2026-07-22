@@ -19,6 +19,8 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.util.measure.ArMeasureViewModel
 import de.westnordost.streetcomplete.ui.util.measure.LastArMeasurementResultEffect
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import de.westnordost.streetcomplete.ui.util.measure.ArMeasureResult
+import de.westnordost.streetcomplete.ui.util.measure.rememberArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -31,7 +33,7 @@ fun AddMaxPhysicalHeightForm(
 ) {
     val viewModel = koinViewModel<ArMeasureViewModel>()
     val arIsSupported = remember { viewModel.isSupported() }
-    val lastArMeasurementResult by viewModel.measurementResult.collectAsState()
+    val arMeasureAppLauncher = rememberArMeasureAppLauncher()
 
     val isBelowBridge = remember {
         element.tags["amenity"] != "parking_entrance"
@@ -42,20 +44,23 @@ fun AddMaxPhysicalHeightForm(
     }
 
     var length by rememberSerializable { mutableStateOf<Length?>(null) }
+    var lastArMeasurementResult by remember { mutableStateOf<ArMeasureResult?>(null) }
     var isArMeasurement by rememberSaveable { mutableStateOf<Boolean>(false) }
 
     LastArMeasurementResultEffect(
         lastResult = lastArMeasurementResult,
-        onMeasureSuccess = {
-            length = it
-            isArMeasurement = true
-            viewModel.resetMeasurementResult()
-        },
         onConfirmDisableArQuests = {
             viewModel.disableArQuests()
-            viewModel.resetMeasurementResult()
+            lastArMeasurementResult = null
         }
     )
+
+    fun onMeasureResult(result: ArMeasureResult) {
+        if (result is ArMeasureResult.Success) {
+            length = result.length
+            isArMeasurement = true
+        }
+    }
 
     QuestForm(
         on = on,
@@ -75,7 +80,13 @@ fun AddMaxPhysicalHeightForm(
             },
             selectableUnits = countryInfo.lengthUnits,
             showMeasureButton = arIsSupported,
-            onClickMeasure = { viewModel.measure(lengthUnit = it, measureVertical = true) },
+            onClickMeasure = { lengthUnit ->
+                arMeasureAppLauncher.measure(
+                    lengthUnit = lengthUnit,
+                    measureVertical = false,
+                    onResult = ::onMeasureResult
+                )
+            },
             modifier = Modifier.fillMaxWidth(),
         )
     }

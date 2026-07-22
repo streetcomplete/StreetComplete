@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.osm.length.Length
 @Composable
 fun LastArMeasurementResultEffect(
     lastResult: ArMeasureResult?,
-    onMeasureSuccess: (Length) -> Unit,
     onConfirmDisableArQuests: () -> Unit
 ) {
     var confirmDisableArQuests by remember { mutableStateOf(false) }
@@ -21,10 +20,6 @@ fun LastArMeasurementResultEffect(
             lastResult == ArMeasureResult.Error ||
             // first time don't ask whether to disable (let user install the app first)
             lastResult == ArMeasureResult.NotInstalled && notInstalledCount++ > 0
-
-        if (lastResult is ArMeasureResult.Success) {
-            onMeasureSuccess(lastResult.length)
-        }
     }
 
     if (confirmDisableArQuests && lastResult != null) {

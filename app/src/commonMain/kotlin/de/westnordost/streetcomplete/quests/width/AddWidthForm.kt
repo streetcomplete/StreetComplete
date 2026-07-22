@@ -25,6 +25,8 @@ import de.westnordost.streetcomplete.ui.util.measure.LastArMeasurementResultEffe
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import de.westnordost.streetcomplete.ui.util.measure.ArMeasureResult
+import de.westnordost.streetcomplete.ui.util.measure.rememberArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
@@ -38,27 +40,31 @@ fun AddWidthForm(
 ) {
     val viewModel = koinViewModel<ArMeasureViewModel>()
     val arIsSupported = remember { viewModel.isSupported() }
-    val lastArMeasurementResult by viewModel.measurementResult.collectAsState()
+    val arMeasureAppLauncher = rememberArMeasureAppLauncher()
 
     val isRoad = remember(element) { element.tags["highway"] in ALL_ROADS }
 
     var length by rememberSerializable { mutableStateOf<Length?>(null) }
+    var lastArMeasurementResult by remember { mutableStateOf<ArMeasureResult?>(null) }
     var isArMeasurement by rememberSaveable { mutableStateOf<Boolean>(false) }
 
     var confirmDubiousRoadWidth by remember { mutableStateOf(false) }
 
     LastArMeasurementResultEffect(
         lastResult = lastArMeasurementResult,
-        onMeasureSuccess = {
-            length = it
-            isArMeasurement = true
-            viewModel.resetMeasurementResult()
-        },
         onConfirmDisableArQuests = {
             viewModel.disableArQuests()
-            viewModel.resetMeasurementResult()
+            lastArMeasurementResult = null
         }
     )
+
+    fun onMeasureResult(result: ArMeasureResult) {
+        lastArMeasurementResult = result
+        if (result is ArMeasureResult.Success) {
+            length = result.length
+            isArMeasurement = true
+        }
+    }
 
     QuestForm(
         on = on,
@@ -86,7 +92,13 @@ fun AddWidthForm(
                 },
                 selectableUnits = countryInfo.lengthUnits,
                 showMeasureButton = arIsSupported,
-                onClickMeasure = { viewModel.measure(lengthUnit = it, measureVertical = false) },
+                onClickMeasure = { lengthUnit ->
+                    arMeasureAppLauncher.measure(
+                        lengthUnit = lengthUnit,
+                        measureVertical = false,
+                        onResult = ::onMeasureResult
+                    )
+                },
                 modifier = Modifier.fillMaxWidth(),
             )
         }

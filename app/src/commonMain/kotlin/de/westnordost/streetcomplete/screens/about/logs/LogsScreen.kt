@@ -28,14 +28,24 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.isScrolledToEnd
+import de.westnordost.streetcomplete.util.ktx.now
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.PlatformFile
+import io.github.vinceglb.filekit.cacheDir
+import io.github.vinceglb.filekit.dialogs.compose.rememberShareFileLauncher
+import io.github.vinceglb.filekit.writeString
+import kotlinx.coroutines.launch
+import kotlinx.datetime.LocalDateTime
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -51,6 +61,8 @@ fun LogsScreen(
     val filtersCount = remember(filters) { filters.count() }
 
     val listState = rememberLazyListState()
+    val coroutineScope = rememberCoroutineScope()
+    val shareFileLauncher = rememberShareFileLauncher()
 
     LaunchedEffect(logs.size) {
         if (listState.isScrolledToEnd) listState.scrollToItem(logs.size)
@@ -73,7 +85,11 @@ fun LogsScreen(
                         }
                     }
                 }
-                IconButton(onClick = { viewModel.share() }) {
+                IconButton(onClick = {
+                    coroutineScope.launch {
+                        shareFileLauncher.launch(viewModel.createLogsFile())
+                    }
+                }) {
                     Icon(
                         painter = painterResource(Res.drawable.ic_share_24),
                         contentDescription = stringResource(Res.string.action_share)

@@ -29,7 +29,6 @@ import de.westnordost.streetcomplete.screens.main.AndroidEmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.AndroidMapAppLauncher
 import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.MapAppLauncher
-import de.westnordost.streetcomplete.ui.util.measure.AndroidArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.ArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
@@ -98,9 +97,6 @@ val androidModule = module {
     // AR
 
     factory<ArSupportChecker> { AndroidArSupportChecker(get()) }
-    activityScope {
-        scoped<ArMeasureAppLauncher> { AndroidArMeasureAppLauncher({ get() }) }
-    }
 
     // launch apps
 

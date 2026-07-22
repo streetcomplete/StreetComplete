@@ -14,6 +14,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -34,8 +35,13 @@ import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaff
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
 import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModel
+import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
 import de.westnordost.streetcomplete.util.image.fileBitmapPainter
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.dialogs.compose.rememberCameraPickerLauncher
+import io.github.vinceglb.filekit.path
+import kotlinx.coroutines.launch
 import kotlinx.io.files.FileSystem
 import kotlinx.io.files.Path
 import org.jetbrains.compose.resources.stringResource
@@ -56,6 +62,15 @@ import org.koin.compose.viewmodel.koinViewModel
     val viewModel = koinViewModel<PhotosViewModel>()
     val takePhotoSupported = remember { viewModel.isTakePhotoSupported() }
     val noteImagePaths by viewModel.imagePaths.collectAsState()
+    val coroutineScope = rememberCoroutineScope()
+    val takePhotoLauncher = rememberCameraPickerLauncher() { file ->
+        if (file != null) {
+            coroutineScope.launch {
+                FileKit.compressPhotoAndOverwrite(file)
+                viewModel.addImagePath(file.path)
+            }
+        }
+    }
 
     var noteText by rememberSaveable { mutableStateOf("") }
 
@@ -108,7 +123,7 @@ import org.koin.compose.viewmodel.koinViewModel
                         onTextChange = { noteText = it },
                         addImagesEnabled = takePhotoSupported,
                         onDeleteImage = { viewModel.deleteImagePath(it) },
-                        onTakePhoto = { viewModel.takePhoto() },
+                        onTakePhoto = { takePhotoLauncher.launch() },
                         images = noteImagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
                         modifier = Modifier
                             .fillMaxWidth()

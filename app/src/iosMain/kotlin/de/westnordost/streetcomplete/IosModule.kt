@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.screens.main.IosMapAppLauncher
 import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
-import de.westnordost.streetcomplete.ui.util.measure.IosArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.IosArSupportChecker
 import de.westnordost.streetcomplete.ui.util.photo.HasCameraChecker
 import de.westnordost.streetcomplete.ui.util.photo.IosHasCameraChecker
@@ -63,7 +62,6 @@ val iosModule = module {
     // AR
 
     factory<ArSupportChecker> { IosArSupportChecker() }
-    factory<ArMeasureAppLauncher> { IosArMeasureAppLauncher() }
 
     // launch apps
 

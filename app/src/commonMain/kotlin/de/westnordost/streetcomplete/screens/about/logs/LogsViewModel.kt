@@ -6,19 +6,16 @@ import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.logs.LogMessage
-import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.data.logs.LogsFilters
-import de.westnordost.streetcomplete.data.logs.format
-import de.westnordost.streetcomplete.util.ktx.launch
-import de.westnordost.streetcomplete.util.ktx.now
 import de.westnordost.streetcomplete.data.logs.LogsSource
+import de.westnordost.streetcomplete.data.logs.format
+import de.westnordost.streetcomplete.util.ktx.now
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import io.github.vinceglb.filekit.FileKit
 import io.github.vinceglb.filekit.PlatformFile
 import io.github.vinceglb.filekit.cacheDir
-import io.github.vinceglb.filekit.dialogs.shareFile
 import io.github.vinceglb.filekit.writeString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -31,6 +28,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.plus
+import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 
@@ -41,7 +39,7 @@ abstract class LogsViewModel : ViewModel() {
 
     abstract fun setFilters(filters: LogsFilters)
 
-    abstract fun share()
+    abstract suspend fun createLogsFile(): PlatformFile
 }
 
 @Stable
@@ -93,14 +91,14 @@ class LogsViewModelImpl(
         this.filters.value = filters
     }
 
-    override fun share() {
+    override suspend fun createLogsFile(): PlatformFile {
         val logTimestamp = LocalDateTime.now().toString()
         val logTitle = "${ApplicationConstants.NAME}_${BuildConfig.VERSION_NAME}_$logTimestamp.log"
         val file = PlatformFile(FileKit.cacheDir, logTitle)
-        launch {
+        withContext(Dispatchers.IO) {
             file.writeString(logs.value.format())
-            FileKit.shareFile(file = file)
         }
+        return file
     }
 }
 
