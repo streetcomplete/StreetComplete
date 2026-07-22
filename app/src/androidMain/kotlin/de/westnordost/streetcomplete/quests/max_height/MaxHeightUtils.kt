@@ -3,8 +3,6 @@ package de.westnordost.streetcomplete.quests.max_height
 import de.westnordost.streetcomplete.data.elementfilter.ElementFilterExpression
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -15,7 +13,7 @@ import de.westnordost.streetcomplete.util.math.intersects
 /** Returns ways that intersect with and are bridges above this way */
 fun Way.getIntersectingBridges(mapData: MapDataWithGeometry): Sequence<Way> {
     val geometry = mapData.getWayGeometry(id) as? ElementPolylinesGeometry ?: return emptySequence()
-    val ways = mapData.filter(bridgeFilter)
+    val ways = mapData.filter(bridgeFilter).filterIsInstance<Way>()
 
     val layer = tags["layer"]?.toIntOrNull() ?: 0
 
