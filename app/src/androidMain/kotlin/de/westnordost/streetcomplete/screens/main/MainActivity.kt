@@ -68,14 +68,13 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewMod
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.MainMapFragment
 import de.westnordost.streetcomplete.screens.main.map.MapFragment
-import de.westnordost.streetcomplete.screens.main.map.Marker
-import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
 import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.Padding
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
+import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.toDpOffset
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.content
@@ -133,7 +132,6 @@ class MainActivity :
     VisibleQuestsSource.Listener,
     MapDataWithEditsSource.Listener,
     // rest
-    ShowsGeometryMarkers,
     AndroidScopeComponent {
 
     override val scope: Scope by activityScope()
@@ -416,26 +414,6 @@ class MainActivity :
         val mapFragment = mapFragment ?: return null
         val displayedPosition = mapFragment.displayedLocation?.toLatLon() ?: return null
         return mapFragment.getPointOf(displayedPosition)
-    }
-
-    //endregion
-
-    //region Bottom Sheet - Callbacks from the bottom sheet (quest forms, split way form, create note form, ...)
-
-    /* ------------------------------- ShowsPointMarkers -------------------------------- */
-
-    override fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
-        mapFragment?.putMarkersForCurrentHighlighting(markers)
-    }
-
-    @UiThread
-    override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
-        mapFragment?.deleteMarkerForCurrentHighlighting(geometry)
-    }
-
-    @UiThread
-    override fun clearMarkersForCurrentHighlighting() {
-        mapFragment?.clearMarkersForCurrentHighlighting()
     }
 
     //endregion
@@ -790,7 +768,7 @@ class MainActivity :
                 Marker(geometry, icon, title)
             }.toList()
 
-            withContext(Dispatchers.Main) { putMarkersForCurrentHighlighting(markers) }
+            withContext(Dispatchers.Main) { mapFragment?.putMarkersForCurrentHighlighting(markers) }
         }
     }
 

@@ -38,6 +38,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.Padding
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
+import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
@@ -59,7 +60,7 @@ import kotlin.math.PI
 
 /** This is the map shown in the main view. It manages a map that shows the quest pins, quest
  *  geometry, overlays, tracks, location... */
-class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
+class MainMapFragment : MapFragment() {
 
     private val questTypeOrderSource: QuestTypeOrderSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
@@ -471,17 +472,17 @@ class MainMapFragment : MapFragment(), ShowsGeometryMarkers {
         selectedPinsMapComponent?.clear()
     }
 
-    override fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
+    fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
         viewLifecycleScope.launch(Dispatchers.Default) {
             geometryMarkersMapComponent?.putAll(markers)
         }
     }
 
-    @UiThread override fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
+    @UiThread fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
         geometryMarkersMapComponent?.delete(geometry)
     }
 
-    @UiThread override fun clearMarkersForCurrentHighlighting() {
+    @UiThread fun clearMarkersForCurrentHighlighting() {
         geometryMarkersMapComponent?.clear()
     }
 

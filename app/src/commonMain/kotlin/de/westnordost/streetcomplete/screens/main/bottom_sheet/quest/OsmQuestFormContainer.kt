@@ -30,10 +30,12 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.ConfirmDeleteDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
+import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import org.jetbrains.compose.resources.stringResource
@@ -53,6 +55,7 @@ fun <T> OsmQuestFormContainer(
     mapRotation: Float,
     mapTilt: Float,
     mapMetersPerPixel: Double,
+    onSetMapMarkers: (Iterable<Marker>) -> Unit,
     countryBoundaries: CountryBoundaries = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
     countryInfos: CountryInfos = koinInject(),
@@ -89,6 +92,7 @@ fun <T> OsmQuestFormContainer(
         LocalMapRotation provides mapRotation,
         LocalMapTilt provides mapTilt,
         LocalMapMetersPerPixel provides mapMetersPerPixel,
+        LocalMapMarkersCallback provides onSetMapMarkers
     ) {
         questType.Form(
             on = ::onAction,

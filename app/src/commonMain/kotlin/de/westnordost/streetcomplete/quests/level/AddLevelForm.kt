@@ -13,7 +13,14 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.osm.level.Level
+import de.westnordost.streetcomplete.osm.level.levelsIntersect
+import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.osm.level.parseSelectableLevels
+import de.westnordost.streetcomplete.screens.main.map.getIcon
+import de.westnordost.streetcomplete.screens.main.map.getTitle
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
+import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.util.ktx.toShortString
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -49,19 +56,26 @@ fun AddLevelForm(
 
     }
 
-    // TODO compose-quest-form this is not called anywhere actually
-    /*
     fun getMarkers(lvl: Double?): List<Marker> {
         if (lvl == null) return emptyList()
         val levels = listOf(Level.Single(lvl))
-        return elementsAndGeometry.mapNotNull { (element, geometry) ->
-            if (!parseLevelsOrNull(element.tags).levelsIntersect(levels)) return@mapNotNull null
-            val icon = getIcon(featureDictionary, element)
-            val title = getTitle(element.tags)
-            Marker(geometry, icon, title)
+        return elementsAndGeometry
+            .filter { (element, geometry) ->
+                parseLevelsOrNull(element.tags).levelsIntersect(levels)
+            }
+            .map { (element, geometry) ->
+                Marker(
+                    geometry = geometry,
+                    icon = getIcon(featureDictionary, element),
+                    title = getTitle(element.tags)
+                )
         }
     }
-     */
+
+    val mapMarkersCallback = LocalMapMarkersCallback.current
+    LaunchedEffect(level) {
+        mapMarkersCallback?.invoke(getMarkers(level))
+    }
 
     QuestForm(
         on = on,
