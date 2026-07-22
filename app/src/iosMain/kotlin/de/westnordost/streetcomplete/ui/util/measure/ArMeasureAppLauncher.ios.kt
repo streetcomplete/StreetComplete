@@ -18,6 +18,9 @@ actual fun rememberArMeasureAppLauncher(): ArMeasureAppLauncher {
             // (warning, needs testing):
 
             /*
+
+            ArMeasureAppResultManager.setCallback(onResult)
+
             val callbackScheme = streetcomplete://measureResult // need to register this in the Info.plist!!!
             val targetScheme = "streetmeasure://x-callback-url/measure"
 
@@ -46,14 +49,31 @@ actual fun rememberArMeasureAppLauncher(): ArMeasureAppLauncher {
                     val streetMeasureAppStoreId = TBD
                     val storePageUrl = NSURL.URLWithString("itms-apps://itunes.apple.com/app/id$streetMeasureAppStoreId")!!
                     UIApplication.sharedApplication.openURL(storePageUrl, options = emptyMap<Any?, Any?>(), completionHandler = null)
-                    onResult(MeasureResult.NotInstalled)
+
+                    ExternalAppResultManager.onResultReceived(MeasureResult.NotInstalled)
                 }
             }
 
             // TBD: and then somehow get the result from the app
-            // in the swift application class, the result deep link URL needs to be parsed and sent here
+            // in the swift application class, the result deep link URL needs to be parsed and sent
+            // to ArMeasureAppResultManager.onResultReceived(...)
 
              */
         }
     }
 }
+
+/*
+object ArMeasureAppResultManager {
+    private var pendingCallback: ((ArMeasureResult) -> Unit)? = null
+
+    fun setCallback(callback: (ArMeasureResult) -> Unit) {
+        pendingCallback = callback
+    }
+
+    fun onResultReceived(result: ArMeasureResult) {
+        pendingCallback?.invoke(result)
+        pendingCallback = null
+    }
+}
+*/
