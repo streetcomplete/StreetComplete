@@ -1242,8 +1242,8 @@ If any lanes are reserved for buses, please leave a note instead.</string>
 
     <string name="quest_lit_title">Is it lit here?</string>
 
-    <string name="quest_maxheight_title">What’s the measured height below the highlighted bridge (or other structure)?</string>
-    <string name="quest_maxheight_below_bridge_title">What’s the measured height below the bridge?</string>
+    <string name="quest_maxheight_title">Measure the maximum height here.</string>
+    <string name="quest_maxheight_below_bridge_title">Measure the height below the highlighted bridge (or other structure).</string>
     <string name="quest_maxheight_sign_title">What height limit is indicated here?</string>
     <string name="quest_maxheight_answer_noSign">There is no sign…</string>
     <string name="quest_maxheight_split_way_hint">This road section passes under a bridge, roof, overhead pipe or similar structure, which is highlighted. \nAlso, if it doesn’t apply for the whole road section, consider answering “%1$s”.</string>
