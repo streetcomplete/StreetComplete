@@ -1,5 +1,19 @@
 # Changelog
 
+## v63.3
+
+### Quest improvements
+
+- Place & road name: Force resurvey if name was explicitly marked as to be fixed (#6932), by @paulklie
+- Summit register: Ask in Norway, too (#6902), by @paulklie
+- Ask a few quests for more places (#6899, #6901, #6900, #6898, #6908), by @paulklie
+- Other small improvements (#6903, #6909, #6919, #6948 …), thanks @paulklie, @mnalis
+
+### Fixes
+
+- Places overlay: Handle name field for places that *usually* have a fixed name but not necessarily correctly (#6907)
+- Fix some elements in the settings screen didn't respect window insets correctly
+
 ## v63.2
 
 ### Fixes
