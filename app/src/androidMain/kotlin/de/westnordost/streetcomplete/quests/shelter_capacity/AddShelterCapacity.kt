@@ -8,6 +8,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.RARE
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
@@ -19,7 +20,7 @@ class AddShelterCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
           (
             (
               amenity = shelter
-              and shelter_type = basic_hut
+              and shelter_type ~ basic_hut|lean_to
             )
             or tourism = wilderness_hut
           )
@@ -32,7 +33,7 @@ class AddShelterCapacity : OsmFilterQuestType<Int>(), AndroidQuest {
     override val icon = R.drawable.quest_shelter_capacity
     override val title = Res.string.quest_shelter_capacity_title
     override val isDeleteElementEnabled = true
-    override val achievements = listOf(OUTDOORS)
+    override val achievements = listOf(OUTDOORS, RARE)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("nodes, ways with amenity = shelter")
