@@ -1,15 +1,20 @@
 package de.westnordost.streetcomplete.ui.common.bottom_sheet
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.sizeIn
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -60,7 +65,14 @@ fun BottomSheetFormScaffold(
                         modifier = Modifier
                             .padding(horizontal = 8.dp)
                             .fillMaxWidth(),
-                        content = { header() }
+                        contentPadding =
+                            PaddingValues(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 12.dp),
+                        content = {
+                            Column {
+                                BottomSheetDragHandle(Modifier.padding(bottom = 8.dp))
+                                Box { header() }
+                            }
+                        }
                     )
                 }
 
@@ -100,4 +112,18 @@ fun BottomSheetFormScaffold(
             )
         }
     }
+}
+
+@Composable
+private fun ColumnScope.BottomSheetDragHandle(
+    modifier: Modifier = Modifier,
+) {
+    Box(modifier
+        .size(40.dp, 4.dp)
+        .background(
+            color = MaterialTheme.colors.onSurface.copy(alpha = 0.16f),
+            shape = RoundedCornerShape(4.dp)
+        )
+        .align(Alignment.CenterHorizontally)
+    )
 }
