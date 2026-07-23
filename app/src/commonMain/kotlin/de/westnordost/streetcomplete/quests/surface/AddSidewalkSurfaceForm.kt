@@ -84,6 +84,7 @@ fun AddSidewalkSurfaceForm(
             mapRotation = LocalMapRotation.current,
             mapTilt = LocalMapTilt.current,
             isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+            countryCode = countryInfo.countryCode,
             lastPicked = lastPicked,
             hasSidewalkLeft = hasSidewalkLeft,
             hasSidewalkRight = hasSidewalkRight,

@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.surface
 
 import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Action
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
@@ -20,6 +21,7 @@ import org.jetbrains.compose.resources.stringResource
 fun AddPathSurfaceForm(
     on: (QuestAction<PathSurfaceAnswer>) -> Unit,
     element: Element,
+    countryInfo: CountryInfo,
 ) {
     ItemSelectQuestForm(
         on = {
@@ -28,7 +30,7 @@ fun AddPathSurfaceForm(
                 is Action -> it
             })
         },
-        items = Surface.selectableValuesForWays,
+        items = Surface.getSelectableValuesForWays(countryInfo.countryCode),
         itemContent = { item ->
             ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
         },

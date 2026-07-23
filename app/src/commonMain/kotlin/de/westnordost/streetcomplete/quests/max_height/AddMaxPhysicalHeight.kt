@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
@@ -92,4 +93,9 @@ class AddMaxPhysicalHeight(
             tags.remove("source:maxheight")
         }
     }
+
+    override fun getHighlightedElements(
+        element: Element,
+        mapData: MapDataWithGeometry
+    ): Sequence<Element> = (element as? Way)?.getIntersectingBridges(mapData).orEmpty()
 }

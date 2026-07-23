@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -39,6 +40,7 @@ import org.koin.compose.koinInject
 @Composable fun SurfaceOverlayForm(
     on: (OverlayAction) -> Unit,
     element: Element,
+    countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
 ) {
@@ -46,7 +48,7 @@ import org.koin.compose.koinInject
 
     var selectedItem by rememberSerializable(originalItem) { mutableStateOf(originalItem) }
 
-    val items = Surface.selectableValuesForWays
+    val items = Surface.getSelectableValuesForWays(countryInfo.countryCode)
 
     @Composable fun createOtherAnswers(): List<AnswerItem> {
         val result = ArrayList<AnswerItem>()

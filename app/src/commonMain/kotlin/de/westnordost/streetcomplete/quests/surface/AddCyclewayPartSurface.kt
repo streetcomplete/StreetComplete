@@ -50,7 +50,7 @@ class AddCyclewayPartSurface : OsmFilterQuestType<Surface>() {
 
     @Composable
     override fun Form(on: (QuestAction<Surface>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddPathPartSurfaceForm(on)
+        AddPathPartSurfaceForm(on, countryInfo)
     }
 
     override fun applyAnswerTo(answer: Surface, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

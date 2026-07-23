@@ -68,7 +68,7 @@ tasks.register<GenerateQuestListTask>("generateQuestList") {
     questsDirectory = projectDir.resolve("app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/")
     iconsDirectory = projectDir.resolve("res/graphics/quest/")
     noteQuestFile = projectDir.resolve("app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/note_comments/OsmNoteQuestType.kt")
-    questsModuleFile = projectDir.resolve("app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt")
+    questTypesRegistryFile = projectDir.resolve("app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestTypesRegistry.kt")
     stringsFile = projectDir.resolve("app/src/commonMain/composeResources/values/strings.xml")
 }
 

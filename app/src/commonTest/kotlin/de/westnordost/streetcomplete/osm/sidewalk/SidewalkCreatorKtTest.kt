@@ -21,19 +21,25 @@ class SidewalkCreatorKtTest {
 
     @Test fun `apply simple values`() {
         assertEquals(
-            setOf(StringMapEntryAdd("sidewalk", "both")),
+            setOf(StringMapEntryAdd("sidewalk:both", "yes")),
             Sides(Sidewalk.YES, Sidewalk.YES).appliedTo(mapOf()),
         )
         assertEquals(
-            setOf(StringMapEntryAdd("sidewalk", "no")),
+            setOf(StringMapEntryAdd("sidewalk:both", "no")),
             Sides(Sidewalk.NO, Sidewalk.NO).appliedTo(mapOf()),
         )
         assertEquals(
-            setOf(StringMapEntryAdd("sidewalk", "left")),
+            setOf(
+                StringMapEntryAdd("sidewalk:left", "yes"),
+                StringMapEntryAdd("sidewalk:right", "no"),
+            ),
             Sides(Sidewalk.YES, Sidewalk.NO).appliedTo(mapOf()),
         )
         assertEquals(
-            setOf(StringMapEntryAdd("sidewalk", "right")),
+            setOf(
+                StringMapEntryAdd("sidewalk:left", "no"),
+                StringMapEntryAdd("sidewalk:right", "yes"),
+            ),
             Sides(Sidewalk.NO, Sidewalk.YES).appliedTo(mapOf()),
         )
     }
@@ -90,11 +96,11 @@ class SidewalkCreatorKtTest {
     @Test fun `updates check date`() {
         assertEquals(
             setOf(
-                StringMapEntryModify("sidewalk", "both", "both"),
+                StringMapEntryModify("sidewalk:both", "yes", "yes"),
                 StringMapEntryAdd("check_date:sidewalk", nowAsCheckDateString())
             ),
             Sides(Sidewalk.YES, Sidewalk.YES).appliedTo(mapOf(
-                "sidewalk" to "both"
+                "sidewalk:both" to "yes"
             ))
         )
         assertEquals(
@@ -136,11 +142,12 @@ class SidewalkCreatorKtTest {
         )
         assertEquals(
             setOf(
-                StringMapEntryAdd("sidewalk", "right"),
-                StringMapEntryDelete("sidewalk:right", "yes"),
+                StringMapEntryDelete("sidewalk", "right"),
+                StringMapEntryAdd("sidewalk:left", "no"),
+                StringMapEntryAdd("sidewalk:right", "yes"),
             ),
             Sides(Sidewalk.NO, null).appliedTo(mapOf(
-                "sidewalk:right" to "yes"
+                "sidewalk" to "right"
             )),
         )
     }
@@ -192,7 +199,7 @@ class SidewalkCreatorKtTest {
             setOf(
                 StringMapEntryDelete("sidewalk:left", "yes"),
                 StringMapEntryDelete("sidewalk:right", "yes"),
-                StringMapEntryAdd("sidewalk", "both"),
+                StringMapEntryAdd("sidewalk:both", "yes"),
             ),
             Sides(Sidewalk.YES, null).appliedTo(mapOf(
                 "sidewalk:left" to "yes",
@@ -201,26 +208,28 @@ class SidewalkCreatorKtTest {
         )
         assertEquals(
             setOf(
-                StringMapEntryDelete("sidewalk:right", "no"),
-                StringMapEntryAdd("sidewalk", "left"),
+                StringMapEntryAdd("sidewalk:right", "no"),
+                StringMapEntryAdd("sidewalk:left", "yes"),
+                StringMapEntryDelete("sidewalk", "left"),
             ),
             Sides(Sidewalk.YES, null).appliedTo(mapOf(
-                "sidewalk:right" to "no",
+                "sidewalk" to "left",
             ))
         )
         assertEquals(
             setOf(
-                StringMapEntryDelete("sidewalk:right", "yes"),
-                StringMapEntryAdd("sidewalk", "right"),
+                StringMapEntryAdd("sidewalk:right", "yes"),
+                StringMapEntryAdd("sidewalk:left", "no"),
+                StringMapEntryDelete("sidewalk", "right"),
             ),
             Sides(Sidewalk.NO, null).appliedTo(mapOf(
-                "sidewalk:right" to "yes",
+                "sidewalk" to "right",
             ))
         )
         assertEquals(
             setOf(
                 StringMapEntryDelete("sidewalk:right", "no"),
-                StringMapEntryAdd("sidewalk", "no"),
+                StringMapEntryAdd("sidewalk:both", "no"),
             ),
             Sides(Sidewalk.NO, null).appliedTo(mapOf(
                 "sidewalk:right" to "no",

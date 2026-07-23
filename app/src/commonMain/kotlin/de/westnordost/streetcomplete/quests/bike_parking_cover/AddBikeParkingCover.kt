@@ -18,10 +18,13 @@ class AddBikeParkingCover : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
-         amenity = bicycle_parking
-         and access !~ private|no
-         and !covered
-         and bicycle_parking !~ shed|lockers|building
+        (
+            amenity = bicycle_parking
+            or amenity = charging_station and bicycle ~ yes|designated and !lockable and motorcar=no
+        )
+        and access !~ private|no
+        and !covered
+        and bicycle_parking !~ shed|lockers|building
     """
     override val changesetComment = "Specify bicycle parkings covers"
     override val wikiLink = "Tag:amenity=bicycle_parking"

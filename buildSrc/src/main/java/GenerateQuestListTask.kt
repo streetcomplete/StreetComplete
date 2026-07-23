@@ -32,7 +32,7 @@ open class GenerateQuestListTask : DefaultTask() {
     @get:InputDirectory lateinit var questsDirectory: File
     @get:InputDirectory lateinit var iconsDirectory: File
     @get:InputFile lateinit var noteQuestFile: File
-    @get:InputFile lateinit var questsModuleFile: File
+    @get:InputFile lateinit var questTypesRegistryFile: File
     @get:InputFile lateinit var stringsFile: File
 
     private lateinit var wikiQuests: List<WikiQuest>
@@ -41,7 +41,7 @@ open class GenerateQuestListTask : DefaultTask() {
     fun run() {
         wikiQuests = parseWikiTable(getWikiTableContent())
 
-        val questFileContent = questsModuleFile.readText()
+        val questFileContent = questTypesRegistryFile.readText()
         val questNameRegex = Regex("^ {4}\\d+ to ([A-Z][a-zA-Z0-9_]*)\\(", RegexOption.MULTILINE)
         val questNames =
             listOf(noteQuestName) + questNameRegex.findAll(questFileContent).map { it.groupValues[1] }

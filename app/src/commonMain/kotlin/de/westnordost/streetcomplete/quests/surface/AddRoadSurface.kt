@@ -62,7 +62,7 @@ class AddRoadSurface : OsmFilterQuestType<Surface>() {
     override fun Form(on: (QuestAction<Surface>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         ItemSelectQuestForm(
             on = on,
-            items = Surface.selectableValuesForWays,
+            items = Surface.getSelectableValuesForWays(countryInfo.countryCode),
             itemContent = { item ->
                 ImageWithLabel(item.icon?.let { painterResource(it) }, stringResource(item.title))
             },

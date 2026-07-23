@@ -49,7 +49,7 @@ fun AddMaxHeightForm(
             }
         ) },
         hintText =
-            if (element.type == ElementType.WAY) {
+            if (element.type == ElementType.WAY && !tunnelFilter.matches(element)) {
                 stringResource(Res.string.quest_maxheight_split_way_hint,
                     stringResource(Res.string.quest_generic_answer_differs_along_the_way)
                 )

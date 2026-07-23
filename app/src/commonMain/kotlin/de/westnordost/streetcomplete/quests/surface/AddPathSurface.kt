@@ -47,7 +47,7 @@ class AddPathSurface : OsmFilterQuestType<PathSurfaceAnswer>() {
 
     @Composable
     override fun Form(on: (QuestAction<PathSurfaceAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddPathSurfaceForm(on, element)
+        AddPathSurfaceForm(on, element, countryInfo)
     }
 
     override fun applyAnswerTo(answer: PathSurfaceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

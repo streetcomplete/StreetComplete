@@ -21,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.intl.Locale
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
@@ -63,7 +64,9 @@ fun AboutScreen(
             ))
         ) {
 
-            PreferenceCategory(null) {
+            PreferenceCategory(
+                stringResource(Res.string.about_title, ApplicationConstants.NAME),
+            ) {
 
                 Preference(
                     name = stringResource(Res.string.about_title_changelog),
