@@ -49,7 +49,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
 
     private val prefs: Preferences by inject()
 
-    private val selectableItems: List<Surface> get() = Surface.selectableValuesForWays
+    private val selectableItems: List<Surface> get() = Surface.getSelectableValuesForWays(countryOrSubdivisionCode)
 
     private val lastPickedSingleSurfaces: List<Surface> get() =
         prefs.getLastPicked<SurfaceOverlayAnswer>(this::class.simpleName!!)
