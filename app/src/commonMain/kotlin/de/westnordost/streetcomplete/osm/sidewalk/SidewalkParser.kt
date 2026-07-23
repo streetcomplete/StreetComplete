@@ -7,7 +7,9 @@ import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.SEPARATE
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.YES
 import de.westnordost.streetcomplete.util.ktx.containsAny
 
-/** Returns on which sides are sidewalks. Returns null if there is no sidewalk tagging */
+/** Returns on which sides are sidewalks. Returns null if there is no sidewalk tagging,
+ *  invalid sides if unknown or deprecated tag values are used, or when there is any duplicate
+ *  tagging that conflicts each other. */
 fun parseSidewalkSides(tags: Map<String, String>): Sides<Sidewalk>? {
     if (!tags.keys.containsAny(KNOWN_SIDEWALK_KEYS)) return null
 
@@ -16,7 +18,9 @@ fun parseSidewalkSides(tags: Map<String, String>): Sides<Sidewalk>? {
     val sidewalksSides = parseSidewalksSides(tags)
 
     // has mixture of both sidewalk tagging styles
-    if (sidewalksSimple != null && sidewalksSides != null) return Sides(INVALID, INVALID)
+    if (sidewalksSimple != null && sidewalksSides != null && sidewalksSimple != sidewalksSides) {
+        return Sides(INVALID, INVALID)
+    }
 
     // has sidewalk tagging, but not known
     if (sidewalksSimple == null && sidewalksSides == null) {
@@ -66,7 +70,7 @@ private fun parseSidewalkSide(tag: String?): Sidewalk? = when (tag) {
     "no" -> NO
     "separate" -> SEPARATE
     null -> null
-    "none" -> NO // never documented, usage basically zero
+    "none" -> INVALID // never documented, usage basically zero
     else -> INVALID
 }
 

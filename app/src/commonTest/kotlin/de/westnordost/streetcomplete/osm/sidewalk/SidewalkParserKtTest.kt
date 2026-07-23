@@ -27,11 +27,15 @@ class SidewalkParserKtTest {
     }
 
     @Test
-    fun `invalid because contradictory or duplicate values`() {
+    fun `invalid because contradictory values`() {
         val invalid = Sides(INVALID, INVALID)
+
+        // sidewalk=left means that sidewalk:right=no, but sidewalk:left=yes doesn't say anything
+        // about the right side. Conflict!
         assertEquals(invalid, parse(
             "sidewalk:left" to "yes",
             "sidewalk" to "left"))
+
         assertEquals(invalid, parse(
             "sidewalk:right" to "no",
             "sidewalk" to "both"
@@ -51,14 +55,20 @@ class SidewalkParserKtTest {
         ))
         assertEquals(invalid, parse(
             "sidewalk:left" to "yes",
-            "sidewalk:right" to "yes",
-            "sidewalk" to "both"
-        ))
-        assertEquals(invalid, parse(
-            "sidewalk:left" to "yes",
             "sidewalk:right" to "no",
             "sidewalk:both" to "yes",
         ))
+    }
+
+    @Test fun `duplication is fine when it is not contradictory`() {
+        assertEquals(
+            Sides(YES, YES),
+            parse(
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+                "sidewalk" to "both"
+            )
+        )
     }
 
     @Test fun `left invalid and right yes`() {
