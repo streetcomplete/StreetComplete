@@ -19,8 +19,8 @@ import de.westnordost.streetcomplete.quests.AnswerItem
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import de.westnordost.streetcomplete.quests.max_height.tunnelFilter
 
 class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
 
@@ -34,7 +34,7 @@ class AddMaxHeightForm : AbstractOsmQuestForm<MaxHeightAnswer>() {
 
     @Composable
     override fun getHint(): String? =
-        if (element.type == ElementType.WAY) {
+        if (element.type == ElementType.WAY && !tunnelFilter.matches(element)) {
             stringResource(Res.string.quest_maxheight_split_way_hint,
                 stringResource(Res.string.quest_generic_answer_differs_along_the_way)
             )
