@@ -1,0 +1,74 @@
+package de.westnordost.streetcomplete.quests.accepts_cash
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.toYesNo
+
+class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
+
+    override val elementFilter = """
+        nodes, ways with
+        (
+          (shop and shop !~ no|vacant|mall)
+          or amenity ~ ${arrayOf(
+            "bar", "cafe", "fast_food", "ice_cream", "pub", "biergarten", "restaurant", "fuel",
+            "cinema", "nightclub", "planetarium", "theatre", "internet_cafe", "car_wash",
+            "pharmacy", "telephone", "vending_machine", "luggage_locker"
+          ).joinToString("|")}
+          or leisure ~ ${arrayOf(
+            "adult_gaming_centre", "amusement_arcade", "bowling_alley", "escape_game",
+            "miniature_golf","sauna", "trampoline_park", "tanning_salon"
+          ).joinToString("|")}
+          or craft ~ ${arrayOf(
+            "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
+            "electronics_repair", "key_cutter", "stonemason"
+          ).joinToString("|")}
+          or tourism ~ ${arrayOf(
+            "theme_park", "hotel", "hostel", "motel", "guest_house",
+            "apartment", "camp_site"
+          ).joinToString("|")}
+          or tourism ~ ${arrayOf(
+            "attraction", "museum", "gallery", "zoo", "aquarium"
+          ).joinToString("|")} and fee = yes
+        )
+        and !payment:cash and !payment:coins and !payment:notes and payment:others != no
+        and (name or brand or noname = yes or name:signed = no)
+    """
+
+    override val changesetComment = "Survey whether payment with cash is accepted"
+    override val wikiLink = "Key:payment"
+    override val icon = Res.drawable.quest_cash
+    override val title = Res.string.quest_accepts_cash_title2
+    override val enabledInCountries = NoCountriesExcept(
+        "FI", // https://github.com/streetcomplete/StreetComplete/issues/5500
+        "GB", // https://github.com/streetcomplete/StreetComplete/issues/4517
+        "IS", // https://github.com/streetcomplete/StreetComplete/issues/6897
+        "SE",
+        "NL", // https://github.com/streetcomplete/StreetComplete/issues/4826
+    )
+    override val achievements = listOf(CITIZEN)
+    override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
+
+    @Composable
+    override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        YesNoQuestForm(on)
+    }
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["payment:cash"] = answer.toYesNo()
+    }
+}

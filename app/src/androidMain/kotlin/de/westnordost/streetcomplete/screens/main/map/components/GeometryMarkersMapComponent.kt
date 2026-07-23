@@ -9,7 +9,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.screens.main.map.Marker
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.preset_maki_circle
 import de.westnordost.streetcomplete.screens.main.map.createIconBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
@@ -17,6 +18,8 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.isArea
 import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.ui.common.quest.Marker
+import de.westnordost.streetcomplete.view.toAndroidResourceId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.maplibre.android.maps.MapLibreMap
@@ -81,7 +84,7 @@ class GeometryMarkersMapComponent(
     }
 
     suspend fun putAll(markers: Iterable<Marker>) {
-        val icons = markers.map { it.icon ?: R.drawable.preset_maki_circle }
+        val icons = markers.map { it.icon ?: Res.drawable.preset_maki_circle }.mapNotNull { it.toAndroidResourceId() }
         mapImages.addOnce(icons) {
             val name = context.resources.getResourceEntryName(it)
             val sdf = name.startsWith("preset_")
@@ -117,7 +120,7 @@ private fun Marker.toFeatures(resources: Resources): List<Feature> {
     // point marker or any marker with title or icon
     if (icon != null || title != null || geometry is ElementPointGeometry) {
         val p = JsonObject()
-        val mustHaveIcon = icon ?: R.drawable.preset_maki_circle
+        val mustHaveIcon = (icon ?: Res.drawable.preset_maki_circle).toAndroidResourceId()!!
         p.addProperty("icon", resources.getResourceEntryName(mustHaveIcon))
         if (title != null) {
             p.addProperty("label", title)

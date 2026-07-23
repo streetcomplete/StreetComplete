@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.ui.common.item_select.Group
+import kotlinx.serialization.Serializable
 
+@Serializable
 enum class BuildingTypeCategory(
     override val item: BuildingType?,
     override val children: List<BuildingType>

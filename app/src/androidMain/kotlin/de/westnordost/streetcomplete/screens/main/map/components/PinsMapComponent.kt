@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.createPinBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
+import de.westnordost.streetcomplete.screens.main.map.maplibre.Padding
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.getEnclosingCamera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
@@ -159,7 +160,7 @@ class PinsMapComponent(
             ?.mapNotNull { (it.geometry() as? Point)?.toLatLon() }
             ?.enclosingBoundingBox()
             ?: return
-        val targetPos = map.getEnclosingCamera(bbox, Insets.NONE) ?: return
+        val targetPos = map.getEnclosingCamera(bbox, Padding(0.0, 0.0, 0.0, 0.0)) ?: return
 
         // don't zoom in fully: leave some space to show the full pins, and limit max zoom
         val targetZoom = min(targetPos.zoom - 0.25, 19.0)

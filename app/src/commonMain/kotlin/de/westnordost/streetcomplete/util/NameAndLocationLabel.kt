@@ -69,7 +69,7 @@ suspend fun getNameAndLocationLabel(
     showHouseNumber: Boolean? = null
 ): AnnotatedString? {
     val feature = featureDictionary
-        ?.getFeature(element, getLanguagesForFeatureDictionary())
+        ?.getFeature(element)
         ?.name
         ?.withNonBreakingSpaces()
         ?.inItalics()

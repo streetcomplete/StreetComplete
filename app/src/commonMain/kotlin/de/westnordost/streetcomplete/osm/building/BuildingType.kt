@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.osm.building
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class BuildingType(val osmKey: String?, val osmValue: String?) {
     UNSUPPORTED     (null, null),
 

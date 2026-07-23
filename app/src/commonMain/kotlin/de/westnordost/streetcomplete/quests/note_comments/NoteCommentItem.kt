@@ -10,11 +10,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextLinkStyles
@@ -28,6 +30,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubble
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleArrowDirection
 import de.westnordost.streetcomplete.ui.common.speech_bubble.SpeechBubbleNoArrow
+import de.westnordost.streetcomplete.ui.theme.surfaceContainer
 import de.westnordost.streetcomplete.ui.util.annotateLinks
 import de.westnordost.streetcomplete.ui.util.formatAnnotated
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
@@ -46,7 +49,8 @@ fun NoteCommentItem(
     noteComment: NoteComment,
     avatarPainter: Painter?,
     modifier: Modifier = Modifier,
-    elevation: Dp = 16.dp,
+    color: Color = MaterialTheme.colors.surfaceContainer,
+    elevation: Dp = 0.dp,
     textLinkStyles: TextLinkStyles? = null
 ) {
     val annotatedUserName = buildAnnotatedString {
@@ -84,6 +88,7 @@ fun NoteCommentItem(
                 Surface(
                     modifier = Modifier.size(50.dp),
                     elevation = elevation,
+                    color = color,
                     shape = CircleShape,
                 ) {
                     Image(
@@ -95,6 +100,7 @@ fun NoteCommentItem(
                 SpeechBubble(
                     arrowDirection = SpeechBubbleArrowDirection.Start,
                     elevation = elevation,
+                    color = color,
                 ) {
                     SelectionContainer {
                         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
@@ -113,7 +119,10 @@ fun NoteCommentItem(
         // the action (if anything else than a normal comment) is shown in a separate bubble, just
         // like for example in github ("comment and close")
         if (actionTextResource != null) {
-            SpeechBubbleNoArrow(elevation = elevation) {
+            SpeechBubbleNoArrow(
+                elevation = elevation,
+                color = color,
+            ) {
                 Text(
                     text = stringResource(actionTextResource)
                         .formatAnnotated(annotatedUserName, dateText),

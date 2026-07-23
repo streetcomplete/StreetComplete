@@ -1,0 +1,46 @@
+package de.westnordost.streetcomplete.quests.access_point_ref
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.resources.*
+
+class AddAccessPointRef : OsmFilterQuestType<AccessPointRefAnswer>() {
+
+    override val elementFilter = """
+        nodes with
+        (
+          highway = emergency_access_point
+          or emergency = access_point
+        )
+        and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
+    """
+    override val changesetComment = "Determine emergency access point refs"
+    override val wikiLink = "Key:ref"
+    override val icon = Res.drawable.quest_access_point
+    override val title = Res.string.quest_genericRef_title
+    override val achievements = listOf(EditTypeAchievement.LIFESAVER, EditTypeAchievement.RARE)
+
+    @Composable
+    override fun Form(on: (QuestAction<AccessPointRefAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddAccessPointRefForm(on)
+    }
+
+    override fun applyAnswerTo(answer: AccessPointRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is AccessPointRefAnswer.NoRef -> tags["ref:signed"] = "no"
+            is AccessPointRef ->             tags["ref"] = answer.ref
+            is AccessPointRefAnswer.IsAssemblyPoint -> {
+                tags["emergency"] = "assembly_point"
+                if (tags["highway"] == "emergency_access_point") {
+                    tags.remove("highway")
+                }
+            }
+        }
+    }
+}

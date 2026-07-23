@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.osm.address
 
 import de.westnordost.streetcomplete.osm.Tags
+import kotlinx.serialization.Serializable
 
+@Serializable
 sealed interface StreetOrPlaceName {
     val name: String
 }
 
+@Serializable
 data class StreetName(override val name: String) : StreetOrPlaceName
+@Serializable
 data class PlaceName(override val name: String) : StreetOrPlaceName
 
 fun StreetOrPlaceName.applyTo(tags: Tags) {

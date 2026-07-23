@@ -1,0 +1,71 @@
+package de.westnordost.streetcomplete.quests.traffic_signals_sound
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BLIND
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.toYesNo
+
+class AddTrafficSignalsSound : OsmElementQuestType<Boolean> {
+
+    private val crossingFilter by lazy { """
+        nodes with
+         (crossing = traffic_signals or crossing:signals = yes)
+         and highway ~ crossing|traffic_signals
+         and foot != no
+         and (
+          !$SOUND_SIGNALS
+          or $SOUND_SIGNALS = no and $SOUND_SIGNALS older today -4 years
+          or $SOUND_SIGNALS older today -8 years
+         )
+    """.toElementFilterExpression() }
+
+    private val excludedWaysFilter by lazy { """
+        ways with
+          highway = cycleway
+          and foot !~ yes|designated
+    """.toElementFilterExpression() }
+
+    override val changesetComment = "Specify whether traffic signals have sound signals"
+    override val wikiLink = "Key:$SOUND_SIGNALS"
+    override val icon = Res.drawable.quest_blind_traffic_lights_sound
+    override val title = Res.string.quest_traffic_signals_sound_title
+    override val achievements = listOf(BLIND)
+    override val hint = Res.string.quest_traffic_signals_sound_description
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isCrossingWithTrafficSignals() }
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val excludedWayNodeIds = mapData.ways
+            .filter { excludedWaysFilter.matches(it) }
+            .flatMapTo(HashSet()) { it.nodeIds }
+
+        return mapData.nodes
+            .filter { crossingFilter.matches(it) && it.id !in excludedWayNodeIds }
+    }
+
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!crossingFilter.matches(element)) false else null
+
+    @Composable
+    override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        YesNoQuestForm(on)
+    }
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags.updateWithCheckDate(SOUND_SIGNALS, answer.toYesNo())
+    }
+}
+
+private const val SOUND_SIGNALS = "traffic_signals:sound"

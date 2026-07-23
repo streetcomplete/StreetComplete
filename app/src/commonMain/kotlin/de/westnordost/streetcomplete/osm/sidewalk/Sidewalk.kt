@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.osm.sidewalk
 
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk.*
+import kotlinx.serialization.Serializable
 
+@Serializable
 enum class Sidewalk {
     YES,
     NO,

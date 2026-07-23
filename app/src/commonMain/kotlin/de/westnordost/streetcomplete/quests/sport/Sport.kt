@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.sport
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class Sport(val osmValue: String) {
     MULTI("multi"),
     // sorted by ~worldwide usages, minus country specific ones

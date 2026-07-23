@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.religion
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class Religion(val osmValue: String) {
     // sorted by worldwide usages, *minus* country specific ones
     CHRISTIAN("christian"),

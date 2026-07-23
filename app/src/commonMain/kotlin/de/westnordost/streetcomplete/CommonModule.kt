@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete
 
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants.USE_TEST_API
 import de.westnordost.streetcomplete.data.AllEditTypes
 import de.westnordost.streetcomplete.data.CacheTrimmer
@@ -23,6 +24,7 @@ import de.westnordost.streetcomplete.data.logs.LogsSource
 import de.westnordost.streetcomplete.data.messages.MessagesSource
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
+import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsController
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsControllerImpl
 import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsDao
@@ -123,6 +125,7 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementsSource
 import de.westnordost.streetcomplete.data.user.achievements.UserAchievementsDao
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksDao
 import de.westnordost.streetcomplete.data.user.achievements.achievements
+import de.westnordost.streetcomplete.data.user.achievements.editTypeAliases
 import de.westnordost.streetcomplete.data.user.achievements.links
 import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClient
 import de.westnordost.streetcomplete.data.user.oauth.OAuthApiClientImpl
@@ -135,6 +138,7 @@ import de.westnordost.streetcomplete.data.user.statistics.StatisticsApiClient
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsApiClientImpl
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsControllerImpl
+import de.westnordost.streetcomplete.data.user.statistics.StatisticsParser
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderDao
@@ -152,6 +156,8 @@ import de.westnordost.streetcomplete.data.weeklyosm.WeeklyOsmApiClient
 import de.westnordost.streetcomplete.data.weeklyosm.WeeklyOsmApiClientImpl
 import de.westnordost.streetcomplete.data.weeklyosm.WeeklyOsmRssFeedParser
 import de.westnordost.streetcomplete.data.weeklyosm.WeeklyOsmUpdater
+import de.westnordost.streetcomplete.overlays.overlaysRegistry
+import de.westnordost.streetcomplete.quests.questTypeRegistry
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.about.ChangelogViewModel
 import de.westnordost.streetcomplete.screens.about.ChangelogViewModelImpl
@@ -163,6 +169,10 @@ import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.MainViewModelImpl
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
+import de.westnordost.streetcomplete.screens.settings.SettingsViewModel
+import de.westnordost.streetcomplete.screens.settings.SettingsViewModelImpl
+import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModel
+import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionViewModel
 import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.messages.MessageSelectionViewModel
@@ -171,6 +181,8 @@ import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlayS
 import de.westnordost.streetcomplete.screens.settings.overlay_selection.OverlaySelectionViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsViewModel
 import de.westnordost.streetcomplete.screens.settings.presets.EditTypePresetsViewModelImpl
+import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModel
+import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModelImpl
 import de.westnordost.streetcomplete.screens.user.UserViewModel
 import de.westnordost.streetcomplete.screens.user.UserViewModelImpl
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementsViewModel
@@ -183,9 +195,15 @@ import de.westnordost.streetcomplete.screens.user.login.LoginViewModel
 import de.westnordost.streetcomplete.screens.user.login.LoginViewModelImpl
 import de.westnordost.streetcomplete.screens.user.profile.ProfileViewModel
 import de.westnordost.streetcomplete.screens.user.profile.ProfileViewModelImpl
+import de.westnordost.streetcomplete.ui.util.measure.ArMeasureViewModel
+import de.westnordost.streetcomplete.ui.util.measure.ArMeasureViewModelImpl
+import de.westnordost.streetcomplete.ui.util.measure.ArQuestsDisabler
+import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModel
+import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModelImpl
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundariesImpl
 import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
+import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.compression.ContentEncoding
@@ -368,6 +386,18 @@ val commonModule = module {
 
     //region quests
 
+    single<QuestTypeRegistry> {
+        val countryInfos = get<CountryInfos>()
+        val countryBoundariesLazy = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy"))
+        val featureDictionaryLazy = get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy"))
+        questTypeRegistry(
+            get(),
+            { countryInfos.get(countryBoundariesLazy.value, it) },
+            { countryBoundariesLazy.value.getIds(it).firstOrNull() },
+            { featureDictionaryLazy.value.getFeature(it) }
+        )
+    }
+
     factory { OsmQuestDao(get()) }
     factory { OsmQuestsHiddenDao(get()) }
 
@@ -379,6 +409,8 @@ val commonModule = module {
     single<OsmNoteQuestSource> { get<OsmNoteQuestController>() }
 
     single { OsmNoteQuestController(get(), get(), get(), get()) }
+
+    factory { ArQuestsDisabler(get(), get()) }
 
     //endregion
 
@@ -413,11 +445,32 @@ val commonModule = module {
         lazy { get() }
     }
 
+    single<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")) {
+        lazy { get<FeatureDictionary>() }
+    }
+
     single { SurveyChecker() }
 
     //endregion
 
     //region overlays
+
+    single<OverlayRegistry> {
+        overlaysRegistry(
+            { location ->
+                val countryInfos = get<CountryInfos>()
+                val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
+                countryInfos.get(countryBoundaries, location)
+            },
+            { location ->
+                val countryBoundaries = get<Lazy<CountryBoundaries>>(named("CountryBoundariesLazy")).value
+                countryBoundaries.getIds(location).firstOrNull()
+            },
+            { element ->
+                get<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")).value.getFeature(element)
+            }
+        )
+    }
 
     single<SelectedOverlaySource> { get<SelectedOverlayController>() }
     single { SelectedOverlayController(get(), get()) }
@@ -483,6 +536,7 @@ val commonModule = module {
 
     factory { ActiveDatesDao(get()) }
 
+    factory { StatisticsParser(editTypeAliases) }
     factory<StatisticsApiClient> { StatisticsApiClientImpl(get(), STATISTICS_BACKEND_URL, get()) }
 
     single<StatisticsSource> { get<StatisticsController>() }
@@ -543,6 +597,9 @@ val commonModule = module {
         EditHistoryViewModelImpl(get(), get(), get(named("FeatureDictionaryLazy")))
     }
 
+    viewModel<PhotosViewModel> { PhotosViewModelImpl(get(), get()) }
+
+    viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }
 
     //endregion
 
@@ -574,10 +631,13 @@ val commonModule = module {
 
     //region settings screen view models
 
+    viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get(), get(), get(), get(), get()) }
     viewModel<OverlaySelectionViewModel> { OverlaySelectionViewModelImpl(get(), get(), get()) }
     viewModel<LanguageSelectionViewModel> { LanguageSelectionViewModelImpl(get(), get()) }
     viewModel<EditTypePresetsViewModel> { EditTypePresetsViewModelImpl(get(), get(), get(), get()) }
     viewModel<MessageSelectionViewModel> { MessageSelectionViewModelImpl(get()) }
+    viewModel<QuestSelectionViewModel> { QuestSelectionViewModelImpl(get(), get(), get(), get(), get(named("CountryBoundariesLazy")), get()) }
+    viewModel<ShowQuestFormsViewModel> { ShowQuestFormsViewModelImpl(get(), get()) }
 
     //endregion
 }

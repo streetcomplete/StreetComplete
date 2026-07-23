@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.police_type
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class PoliceType(val operatorName: String, val wikidata: String) {
     CARABINIERI("Arma dei Carabinieri", "Q54852"),
     POLIZIA_DI_STATO("Polizia di Stato", "Q897817"),

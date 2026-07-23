@@ -1,0 +1,93 @@
+package de.westnordost.streetcomplete.quests.postbox_collection_times
+
+import androidx.compose.runtime.Composable
+import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.opening_hours.isSupported
+import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
+import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import de.westnordost.streetcomplete.resources.*
+
+class AddPostboxCollectionTimes : OsmElementQuestType<CollectionTimesAnswer> {
+
+    private val filter by lazy { """
+        nodes with amenity = post_box
+          and access !~ private|no
+          and collection_times:signed != no
+          and (!collection_times or collection_times older today -2 years)
+    """.toElementFilterExpression() }
+
+    /* Don't ask again for postboxes without signed collection times. This is very unlikely to
+     * change and problematic to tag clearly with the check date scheme */
+
+    override val changesetComment = "Survey postbox collection times"
+    override val wikiLink = "Key:collection_times"
+    override val icon = Res.drawable.quest_mail
+    override val title = Res.string.quest_postboxCollectionTimes_title
+    override val achievements = listOf(POSTMAN)
+
+    // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=postbox_collection_times/AddPostboxCollectionTimes.kt
+    // sources:
+    // https://www.itinerantspirit.com/home/2016/5/22/post-boxes-from-around-the-world
+    // https://commons.wikimedia.org/wiki/Category:Post_boxes_by_country
+    // http://wanderlustexplorers.com/youve-got-mail-23-international-postal-boxes/
+    override val enabledInCountries = NoCountriesExcept(
+        // definitely, seen pictures:
+        "AU", "NZ", "VU", "MY", "SG", "TH", "VN", "LA", "MM", "IN", "BD", "NP", "LK", "BT", "PK", "TW", "HK",
+        "MO", "CN", "KR", "JP", "RU", "BY", "LT", "LV", "FI", "SE", "NO", "GB", "IE", "IS", "NL", "BE",
+        "FR", "AD", "ES", "PT", "CH", "LI", "AT", "DE", "LU", "MC", "IT", "SM", "MT", "PL", "EE", "CA", "US",
+        "UA", "SK", "CZ", "HU", "RO", "MD", "BG", "SI", "HR", "IL", "ZA", "GR", "UZ", "ME", "CY", "TR", "LB",
+        // for Denmark see https://github.com/streetcomplete/StreetComplete/issues/6455
+        // these only maybe/sometimes (Oceania, Cambodia, North Korea):
+        "BN", "KH", "ID", "TL", "PG", "KP", "PH",
+        // unknown but all countries around have it (former Yugoslavia):
+        "RS", "RS-KM", "BA", "MK", "AL",
+        // unknown but region around it has it (southern states of former soviet union):
+        "TJ", "KG", "KZ", "MN", "GE"
+        // apparently mostly not in Latin America and in Arabic world and unknown in Africa
+    )
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.filter { isApplicableTo(it) }
+
+    override fun isApplicableTo(element: Element): Boolean {
+        if (!filter.matches(element)) return false
+        val tags = element.tags
+        // no collection_times yet -> new survey
+        val ct = tags["collection_times"] ?: return true
+        // invalid opening_hours rules -> applicable because we want to ask for opening hours again
+        // be strict
+        val oh = ct.toOpeningHoursOrNull(lenient = false) ?: return true
+        // only display supported rules, or ambiguous rules that should be corrected
+        return oh.isSupported(allowTimePoints = true, allowAmbiguity = true)
+    }
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = post_box")
+
+    @Composable
+    override fun Form(on: (QuestAction<CollectionTimesAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddPostboxCollectionTimesForm(on, element, countryInfo)
+    }
+
+    override fun applyAnswerTo(answer: CollectionTimesAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is CollectionTimesAnswer.NoSign -> {
+                tags["collection_times:signed"] = "no"
+            }
+            is CollectionTimes -> {
+                tags.updateWithCheckDate("collection_times", answer.times.toOpeningHours().toString())
+            }
+        }
+    }
+}

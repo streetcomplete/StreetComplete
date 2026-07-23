@@ -25,6 +25,29 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun <T> CheckboxGroup(
     options: List<T>,
+    onSelectionsChange: (items: Set<T>) -> Unit,
+    selectedOptions: Set<T>,
+    itemContent: @Composable BoxScope.(T) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    CheckboxGroup(
+        options = options,
+        onSelectionChange = { option: T, selected: Boolean ->
+            onSelectionsChange(
+                if (selected) { selectedOptions + option }
+                else { selectedOptions - option }
+            )
+        },
+        selectedOptions = selectedOptions,
+        itemContent = itemContent,
+        modifier = modifier,
+    )
+}
+
+/** A group composed of a list of [options]. Multiple can be selected. */
+@Composable
+fun <T> CheckboxGroup(
+    options: List<T>,
     onSelectionChange: (item: T, selected: Boolean) -> Unit,
     selectedOptions: Set<T>,
     itemContent: @Composable BoxScope.(T) -> Unit,

@@ -35,12 +35,10 @@ class SerializableSaver<T>(private val serializer: KSerializer<T>) : Saver<T, St
 @Composable
 inline fun <reified T> rememberSerializable(
     vararg inputs: Any?,
+    serializer: KSerializer<T> = serializer<T>(),
     noinline init: () -> MutableState<T>
-): MutableState<T> {
-    val saver = SerializableSaver(serializer<T>())
-    return rememberSaveable(
-        inputs = inputs,
-        stateSaver = saver,
-        init = init
-    )
-}
+): MutableState<T> = rememberSaveable(
+    inputs = inputs,
+    stateSaver = SerializableSaver(serializer),
+    init = init
+)

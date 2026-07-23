@@ -1,9 +1,14 @@
 package de.westnordost.streetcomplete.data.user.achievements
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.AllEditTypes
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.Overlay
+import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -21,6 +26,7 @@ import dev.mokkery.answering.sequentially
 import dev.mokkery.every
 import dev.mokkery.verify
 import dev.mokkery.verifyNoMoreCalls
+import org.jetbrains.compose.resources.DrawableResource
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -273,24 +279,34 @@ private fun links(vararg ids: String): List<Link> =
     ids.map { id -> Link(id, "url", "title", LinkCategory.INTRO, null, null) }
 
 private object QuestOne : QuestType {
-    override val icon = 0
+    override val icon = Res.drawable.quest_apple
     override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
     override val achievements = listOf(EditTypeAchievement.CAR, EditTypeAchievement.VEG)
 }
 
 private object QuestTwo : QuestType {
-    override val icon = 0
+    override val icon = Res.drawable.quest_apple
     override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
     override val achievements = listOf(EditTypeAchievement.BLIND, EditTypeAchievement.VEG)
 }
 
 private object OverlayOne : Overlay {
-    override val icon = 0
+    override val icon = Res.drawable.quest_apple
     override val title = Res.string.quest_address_title
     override val wikiLink: String? = null
     override val changesetComment = ""
+
+    @Composable
+    override fun Form(
+        on: (OverlayAction) -> Unit,
+        element: Element?,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo,
+        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+    ) {}
+
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, OverlayStyle>>()
 
     override val achievements = listOf(EditTypeAchievement.BLIND, EditTypeAchievement.VEG)
