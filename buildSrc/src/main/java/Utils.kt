@@ -2,16 +2,13 @@ import kotlinx.serialization.Serializable
 import java.net.URL
 import java.util.Locale
 
-fun Locale.toAndroidResCodes(): List<String> {
+fun Locale.toAndroidResCode(): String {
     if (script.isNotEmpty()) {
-        // TODO Compose multiplatform: scripts are not supported (yet) in Compose Multiplatform resources:
-        // https://youtrack.jetbrains.com/issue/CMP-4449/Ability-to-support-more-language-and-region-qualifiers
-        return listOf()
         val countryStr = if (country.isNotEmpty()) "+$country" else ""
-        return listOf("b+$language+$script$countryStr")
+        return "b+$language+$script$countryStr"
     } else {
         val countryStr = if (country.isNotEmpty()) "-r$country" else ""
-        return listOf(language + countryStr)
+        return language + countryStr
     }
 }
 
