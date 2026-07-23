@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
@@ -62,30 +63,6 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
         ways with
           highway ~ ${ALL_PATHS.joinToString("|")}
           and (access !~ private|no or (foot and foot !~ private|no))
-    """.toElementFilterExpression() }
-
-    private val tunnelFilter by lazy { """
-        ways with
-          highway
-          and (
-            covered = yes
-            or tunnel ~ yes|building_passage|avalanche_protector
-            or bridge = covered
-          )
-    """.toElementFilterExpression() }
-
-    private val bridgeFilter by lazy { """
-        ways with (
-            (
-              highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-              or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
-            )
-            and bridge and bridge != no
-          ) or (
-            building = roof
-            or man_made = pipeline and location = overhead
-          )
-          and layer
     """.toElementFilterExpression() }
 
     private val noMaxHeight = """
@@ -186,4 +163,9 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
             }
         }
     }
+
+    override fun getHighlightedElements(
+        element: Element,
+        mapData: MapDataWithGeometry
+    ): Sequence<Element> = (element as? Way)?.getIntersectingBridges(mapData).orEmpty()
 }

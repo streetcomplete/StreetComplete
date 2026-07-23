@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.view.View
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.Length
 import de.westnordost.streetcomplete.quests.AbstractArMeasureQuestForm
 import de.westnordost.streetcomplete.quests.LengthForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import org.jetbrains.compose.resources.stringResource
 import org.koin.android.ext.android.inject
 
 class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAnswer>() {
@@ -56,6 +60,14 @@ class AddMaxPhysicalHeightForm : AbstractArMeasureQuestForm<MaxPhysicalHeightAns
         this.length.value = length
         checkIsFormComplete()
     }
+
+    @Composable
+    override fun getHint(): String? =
+        if (!tunnelFilter.matches(element)) {
+            stringResource(Res.string.quest_maxheight_split_way_hint,
+                stringResource(Res.string.quest_generic_answer_differs_along_the_way)
+            )
+        } else super.getHint()
 
     override fun isFormComplete(): Boolean = length.value != null
 
