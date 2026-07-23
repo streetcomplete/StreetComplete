@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -25,6 +26,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.ConfirmDeleteDialog
+import de.westnordost.streetcomplete.ui.util.FeatureSaver
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.util.takeFavorites
@@ -64,7 +66,9 @@ import org.koin.compose.koinInject
             )
         }
     }
-    var selectedFeature by remember(originalFeature) { mutableStateOf(originalFeature) }
+    var selectedFeature by rememberSaveable(originalFeature, stateSaver = FeatureSaver(featureDictionary)) {
+        mutableStateOf(originalFeature)
+    }
 
     var confirmDeleteNode by remember { mutableStateOf<Node?>(null) }
 

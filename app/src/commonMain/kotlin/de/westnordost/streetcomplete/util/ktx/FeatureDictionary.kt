@@ -52,3 +52,15 @@ fun FeatureDictionary.getDisusedFeature(
     val disusedFeature = getFeature(disusedElement, languages, country, isSuggestion) ?: return null
     return disusedFeature.toPrefixedFeature("disused", disusedString)
 }
+
+fun FeatureDictionary.getFeatureById(
+    id: String,
+    languages: List<String?>? = getLanguagesForFeatureDictionary(),
+    country: String? = null
+): Feature? {
+    getById(
+        id = id,
+        languages = languages,
+        country = country,
+    )
+}

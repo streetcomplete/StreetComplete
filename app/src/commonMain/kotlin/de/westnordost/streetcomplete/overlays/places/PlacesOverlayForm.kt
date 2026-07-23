@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.osm.places.shouldReplacePlace
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.util.FeatureSaver
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -91,7 +92,9 @@ import org.koin.compose.koinInject
             ?: listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
     ) }
     var isNoName by rememberSaveable(originalNoName) { mutableStateOf(originalNoName) }
-    var selectedFeature by remember(originalFeature) { mutableStateOf(originalFeature) }
+    var selectedFeature by rememberSaveable(originalFeature, stateSaver = FeatureSaver(featureDictionary)) {
+        mutableStateOf(originalFeature)
+    }
 
     var askReplacePlace by remember { mutableStateOf(false) }
 

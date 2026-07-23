@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import de.westnordost.osmfeatures.Feature
@@ -18,6 +19,7 @@ import de.westnordost.streetcomplete.osm.places.isPlace
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import de.westnordost.streetcomplete.ui.util.FeatureSaver
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import org.koin.compose.koinInject
 
@@ -30,7 +32,9 @@ fun ShopTypeQuestForm(
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     featureDictionary: FeatureDictionary = koinInject(),
 ) {
-    var feature by remember { mutableStateOf<Feature?>(null) }
+    var feature by rememberSaveable(stateSaver = FeatureSaver(featureDictionary)) {
+        mutableStateOf<Feature?>(null)
+    }
     var option by remember { mutableStateOf<ShopTypeFormOption?>(null) }
 
     QuestForm(
