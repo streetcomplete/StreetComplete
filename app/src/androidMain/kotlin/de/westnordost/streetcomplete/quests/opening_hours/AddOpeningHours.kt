@@ -22,22 +22,25 @@ import org.jetbrains.compose.resources.StringResource
 
 class AddOpeningHours : OsmElementQuestType<OpeningHoursAnswer>, AndroidQuest {
 
-    /* See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and is/should
-       be ordered in the same way for better overview */
-    private val filter by lazy { ("""
-        nodes, ways with
+    // 'namedFilter' is for places where 'AddPlaceName' should trigger first, so that object is identified if possible
+    // Otherwise, in situation of two shops of the similar type with names A and B following may happen
+    // (1) mapper answers for one object with opening hours for shop A
+    // (2) this or different mapper may answer that it is named B
+    // what would result in incorrect opening hours
+    // this filter reduces risk of this happening and also makes this quest less confusing to answer
+    private val namedFilter by lazy { ("""
+    (
         (
-            (
-                (
-                    shop and shop !~ no|vacant
-                    or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
-                    or natural = cave_entrance and fee = yes
-                    or historic = castle and fee = yes
-                    or """ +
+            shop and shop !~ no|vacant
+            or amenity = social_facility and social_facility ~ food_bank|clothing_bank|soup_kitchen|dairy_kitchen
+            or natural = cave_entrance and fee = yes
+            or historic = castle and fee = yes
+            or """ +
 
-// The common list is shared by the name quest, the opening hours quest and the wheelchair quest.
-// So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
-// Independent tags can by added in the "opening_hours only" tab.
+    // See also AddWheelchairAccessBusiness and AddPlaceName, which has a similar list and uses the
+    // same order in the same way for better overview. When adding other tags to the common list
+    // keep in mind that they need to be appropriate for all those quests.
+    // Independent tags can be added above, or to 'unnamedFilter'.
 
 mapOf(
     "amenity" to arrayOf(
@@ -112,54 +115,65 @@ mapOf(
         "fuel",
     ),
 ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n or ") + "\n" + """
-                )
-                and (!opening_hours or opening_hours older today -1 years)
-                and
-                (
-                    name
-                    or brand
-                    or noname = yes
-                    or name:signed = no
-                )
-            )
-            or (
-                opening_hours older today -1 years
-                and (
-                    leisure ~ park|garden|beach_resort|sports_centre|disc_golf_course|nature_reserve|playground|fitness_station
-                    or barrier
-                    or tourism = attraction
-                    or amenity ~ toilets|bicycle_rental|charging_station|place_of_worship|parking|research_institute|shower|grave_yard|kitchen|marketplace
-                    or railway = station
-                    or aeroway = terminal
-                    or man_made = observatory
-                    or club
-                )
-            )
-            or (
-                (!opening_hours or opening_hours older today -1 years)
-                and (
-                    amenity = bicycle_parking and bicycle_parking = building
-                    or amenity = parking and parking = multi-storey
-                    or amenity = recycling and recycling_type = centre
-                    or amenity = toilets and (fee = yes or toilets:disposal = flush)
-                    or amenity = shower and (fee = yes or indoor = yes or location = indoor)
-                    or tourism = information and information ~ office|visitor_centre
-                    or tower:type = observation and fee = yes
-                    or leisure = garden and fee = yes
-                    or leisure = park and fee = yes
-                )
-            )
+    )
+    and (!opening_hours or opening_hours older today -1 years)
+    and
+    (
+        name
+        or brand
+        or noname = yes
+        or name:signed = no
+    ))
+    """)}
+
+    // These places are large or rare enough that a user should be able to identify them without a name.
+
+    private val unnamedFilter by lazy { """
+    (
+        (!opening_hours or opening_hours older today -1 years)
+        and (
+            amenity = bicycle_parking and bicycle_parking = building
+            or amenity = parking and parking = multi-storey
+            or amenity = recycling and recycling_type = centre
+            or amenity = toilets and (fee = yes or toilets:disposal = flush)
+            or amenity = shower and (fee = yes or indoor = yes or location = indoor)
+            or tourism = information and information ~ office|visitor_centre
+            or tower:type = observation and fee = yes
+            or leisure = garden and fee = yes
+            or leisure = park and fee = yes
+        )
+    )
+    """}
+
+    // 'updateFilter' is for places that often do not have (signed) 'opening_hours'. Thus, we only
+    // ask for users to resurvey, and ignore places without tagged 'opening_hours'.
+
+    private val updateFilter by lazy { """
+    (
+        opening_hours older today -1 years
+        and (
+            leisure ~ park|garden|beach_resort|sports_centre|disc_golf_course|nature_reserve|playground|fitness_station
+            or barrier
+            or tourism = attraction
+            or amenity ~ toilets|bicycle_rental|charging_station|place_of_worship|parking|research_institute|shower|grave_yard|kitchen|marketplace
+            or railway = station
+            or aeroway = terminal
+            or man_made = observatory
+            or club
+        )
+    )
+    """}
+    private val filter by lazy { """
+        nodes, ways with
+        (
+            $namedFilter
+            or $unnamedFilter
+            or $updateFilter
         )
         and access !~ private|no
         and street_vendor != yes
         and opening_hours:signed != no
-    """).toElementFilterExpression() }
-    // name filter is there to ensure that place name quest triggers first, so that object is identified if possible
-    // Otherwise, in situation of two shops of the similar type with names A and B following may happen
-    // (1) mapper answers for one object with opening hours for shop A
-    // (2) this or different mapper may answer that it is named B
-    // what would result in bad opening hours
-    // this filter reduces risk of this happening and also makes this quest less confusing to answer
+    """.toElementFilterExpression() }
 
     override val changesetComment = "Survey opening hours"
     override val wikiLink = "Key:opening_hours"
