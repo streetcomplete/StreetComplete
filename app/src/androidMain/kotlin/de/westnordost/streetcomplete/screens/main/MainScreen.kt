@@ -7,7 +7,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -80,7 +79,6 @@ import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.toast
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.PI
 
@@ -229,13 +227,21 @@ fun MainScreen(
             findEllipsisIntersection(screen, displayedPosition)
         }
 
+        // Place the pin so its tip sits at the screen-edge intersection point.
+        // PointerPinButton's internal layout modifier shifts itself so the tip
+        // (not the bounding-box corner) lands at the absoluteOffset position.
         intersection?.let { (offset, angle) ->
             val rotation = angle * 180 / PI
+            val totalDistPx = displayedPosition?.let { (it - screen!!.center).getDistance() } ?: 0f
+            val edgeDistPx = (offset - screen!!.center).getDistance()
+            val distanceMeters = (totalDistPx - edgeDistPx).pxToDp().value.toDouble() * metersPerDp
+
             PointerPinButton(
                 onClick = onClickLocationPointer,
                 rotate = rotation.toFloat(),
+                distanceInMeters = distanceMeters,
                 modifier = Modifier.absoluteOffset(offset.x.pxToDp(), offset.y.pxToDp()),
-            ) { Image(painterResource(Res.drawable.location_dot_small), null) }
+            )
         }
 
         Box(Modifier
