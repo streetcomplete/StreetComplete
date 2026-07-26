@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -66,12 +65,12 @@ const val MAX_MOVE_DISTANCE = 30.0
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun MoveNodeForm(
-    onMoved: (position: LatLon) -> Unit,
+    onConfirmed: (position: LatLon) -> Unit,
     onDismiss: () -> Unit,
-    onPinPositioned: (offsetInWindow: Offset) -> Unit,
-    pinPosition: LatLon?,
+    onPinPositioned: (offsetInWindow: Offset) -> Unit, // XXX
+    pinPosition: LatLon?, // XXX
     node: Node,
-    nodeOffsetInWindow: Offset?,
+    nodeOffsetInWindow: Offset?, // XXX
     elementEditType: ElementEditType,
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
@@ -139,7 +138,7 @@ fun MoveNodeForm(
             fab = {
                 FloatingOkButton(
                     visible = distance in MIN_MOVE_DISTANCE..MAX_MOVE_DISTANCE,
-                    onClick = { onMoved(pinPosition) },
+                    onClick = { onConfirmed(pinPosition) },
                     modifier = Modifier.padding(8.dp),
                 )
             }

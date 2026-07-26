@@ -25,7 +25,7 @@ import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import de.westnordost.streetcomplete.ui.util.SlideStartHorizontally
+import de.westnordost.streetcomplete.ui.util.CrossFadeTransitionSpec
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 
@@ -66,7 +66,7 @@ fun AddOpeningHoursForm(
 
     AnimatedContent(
         targetState = isDisplayingPrevious,
-        transitionSpec = SlideStartHorizontally
+        transitionSpec = CrossFadeTransitionSpec
     ) { isDisplayingPrevious2 ->
         if (isDisplayingPrevious2) {
             QuestForm(

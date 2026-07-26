@@ -34,6 +34,7 @@ import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
@@ -44,6 +45,9 @@ import de.westnordost.streetcomplete.ui.common.UndoIcon
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
+import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -62,20 +66,18 @@ import org.koin.compose.koinInject
  *  the crosshair is on the map.
  *
  *  [onScissorsPlaced] reports the position of the scissors (which is placed on the way, near the
- *  crosshairs) and [onSplitPositions] reports the positions of the cuts made so far.
+ *  crosshairs).
  * */
 @Composable
 @OptIn(ExperimentalComposeUiApi::class)
 fun SplitWayForm(
-    onConfirmed: (List<SplitPolylineAtPosition>) -> Unit,
+    onConfirmed: (splits: List<SplitPolylineAtPosition>) -> Unit,
     onDismiss: () -> Unit,
-    crosshairPosition: LatLon?,
-    onCrosshairPositioned: (offsetInWindow: Offset) -> Unit,
-    onScissorsPlaced: (LatLon?) -> Unit,
-    onSplitPositions: (List<LatLon>) -> Unit,
+    onCrosshairPositioned: (offsetInWindow: Offset) -> Unit, // XXX
+    crosshairPosition: LatLon?,  // XXX
+    onScissorsPlaced: (LatLon?) -> Unit, // XXX
     way: Way,
     wayGeometry: ElementPolylinesGeometry,
-    metersPerPixel: Double,
     soundEffectPlayer: SoundEffectPlayer = koinInject()
 ) {
     var confirmManySplits by remember { mutableStateOf(false) }
@@ -86,9 +88,12 @@ fun SplitWayForm(
     val snipAnimation = remember { Animatable(0f) }
     val scope = rememberCoroutineScope()
 
+    val metersPerPixel = LocalMapMetersPerPixel.current
     val minDistanceToOtherCuts = metersPerPixel * 48.dp.toPx()
     val maxDistanceToCrosshair = metersPerPixel * 24.dp.toPx()
     val snapToVertexDistance = metersPerPixel * 12.dp.toPx()
+
+    val mapMarkersCallback = LocalMapMarkersCallback.current
 
     val scissorsPosition = remember(crosshairPosition) {
         crosshairPosition?.let {
@@ -109,7 +114,14 @@ fun SplitWayForm(
         onScissorsPlaced(scissorsPosition?.pos)
     }
     LaunchedEffect(cuts) {
-        onSplitPositions(cuts.map { it.pos })
+        mapMarkersCallback?.invoke(
+            cuts.map {
+                Marker(
+                    geometry = ElementPointGeometry(it.pos),
+                    icon = Res.drawable.split
+                )
+            }
+        )
     }
 
     Box(modifier = Modifier

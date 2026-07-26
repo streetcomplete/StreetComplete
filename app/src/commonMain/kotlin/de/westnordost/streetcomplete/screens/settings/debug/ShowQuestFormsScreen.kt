@@ -26,6 +26,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
+import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -35,6 +37,8 @@ import de.westnordost.streetcomplete.resources.no_search_results
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
@@ -44,7 +48,8 @@ import org.koin.compose.koinInject
 fun ShowQuestFormsScreen(
     viewModel: ShowQuestFormsViewModel,
     onClickBack: () -> Unit,
-    questTypeRegistry: QuestTypeRegistry = koinInject()
+    questTypeRegistry: QuestTypeRegistry = koinInject(),
+    fileSystem: FileSystem = koinInject()
 ) {
     val searchText by viewModel.searchText.collectAsState()
     val filteredQuests by viewModel.filteredQuests.collectAsState()
@@ -88,6 +93,12 @@ fun ShowQuestFormsScreen(
                 onDismiss = { shownQuestType = null },
                 onEdit = { action ->
                     when (action) {
+                        is MoveNodeAction -> {
+                            message = "Moving node"
+                        }
+                        is SplitWayAction -> {
+                            message = "Splitting way"
+                        }
                         is DeletePoiNodeAction -> {
                             message = "Deleted node"
                         }
@@ -98,20 +109,16 @@ fun ShowQuestFormsScreen(
                     }
                     shownQuestType = null
                 },
-                onLeaveNote = {
-                    message = "Leaving note"
+                onLeaveNote = { noteText, noteImagePaths ->
+                    message = "Leave note:\n\n\"$noteText\""
                     shownQuestType = null
+
+                    for (imagePath in noteImagePaths) {
+                        fileSystem.delete(Path(imagePath), mustExist = false)
+                    }
                 },
                 onHideQuest = {
                     message = "Hiding quest"
-                    shownQuestType = null
-                },
-                onSplitWay = {
-                    message = "Splitting way"
-                    shownQuestType = null
-                },
-                onMoveNode = {
-                    message = "Moving node"
                     shownQuestType = null
                 },
                 questType = questType,

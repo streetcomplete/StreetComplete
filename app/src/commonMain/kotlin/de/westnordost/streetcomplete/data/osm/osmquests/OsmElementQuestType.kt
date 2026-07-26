@@ -125,6 +125,8 @@ sealed interface QuestAction<out T>
 enum class Action : QuestAction<Nothing> {
     /** Just close the quest form */
     Dismiss,
+    /** User can't answer the quest */
+    CantSay,
     /** User wants to leave a note */
     LeaveNote,
     /** User wants to hide this particular quest */

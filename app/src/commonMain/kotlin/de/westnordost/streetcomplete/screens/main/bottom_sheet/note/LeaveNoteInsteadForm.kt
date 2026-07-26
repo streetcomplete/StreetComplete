@@ -26,9 +26,9 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osmnotes.getEditTypeContextForNote
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.quests.note_comments.NoteForm
-import de.westnordost.streetcomplete.quests.note_comments.NoteQuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
@@ -54,7 +54,7 @@ import org.koin.compose.viewmodel.koinViewModel
     onLeaveNote: (text: String, noteImagePaths: List<String>) -> Unit,
     onDismiss: () -> Unit,
     editType: ElementEditType,
-    element: Element,
+    element: Element?,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     fileSystem: FileSystem = koinInject(),
@@ -96,7 +96,7 @@ import org.koin.compose.viewmodel.koinViewModel
         header = {
             QuestHeader(
                 title = stringResource(Res.string.map_btn_create_note),
-                subtitle = nameAndLocationLabel(element, featureDictionary),
+                subtitle = element?.let { nameAndLocationLabel(element, featureDictionary) },
                 hintText = stringResource(Res.string.create_new_note_hint),
                 hintImages = emptyList()
             )
@@ -136,7 +136,12 @@ import org.koin.compose.viewmodel.koinViewModel
         fab = {
             FloatingOkButton(
                 visible = isComplete,
-                onClick = { onLeaveNote(noteText, noteImagePaths) },
+                onClick = {
+                    coroutineScope.launch {
+                        val context = getEditTypeContextForNote(element, editType, featureDictionary)
+                        onLeaveNote("$context\n\n$noteText", noteImagePaths)
+                    }
+                },
             )
         },
         modifier = modifier,

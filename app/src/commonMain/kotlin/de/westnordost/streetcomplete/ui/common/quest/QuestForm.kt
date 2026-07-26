@@ -152,7 +152,6 @@ private fun QuestForm(
 ) {
     val element = LocalElement.current!!
 
-    var confirmCantSay by remember { mutableStateOf(false) }
     var confirmDiscard by remember { mutableStateOf(false) }
 
     BackHandler {
@@ -181,7 +180,7 @@ private fun QuestForm(
         if (element.isSplittable()) {
             result.add(AnswerItem(stringResource(Res.string.quest_generic_answer_differs_along_the_way)) { on(SplitWay) })
         }
-        result.add(AnswerItem(stringResource(Res.string.quest_generic_answer_notApplicable)) { confirmCantSay = true })
+        result.add(AnswerItem(stringResource(Res.string.quest_generic_answer_notApplicable)) { on(CantSay) })
         return result
     }
 
@@ -211,13 +210,6 @@ private fun QuestForm(
         } else null,
     )
 
-    if (confirmCantSay) {
-        CantSayDialog(
-            onDismissRequest = { confirmCantSay = false },
-            onLeaveNote = { on(Action.LeaveNote) },
-            onHideQuest = { on(Action.HideQuest) },
-        )
-    }
     if (confirmDiscard) {
         ConfirmDiscardDialog(
             onDismissRequest = { confirmDiscard = true },

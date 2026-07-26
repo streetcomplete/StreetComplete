@@ -37,7 +37,7 @@ import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import de.westnordost.streetcomplete.ui.util.SlideStartHorizontally
+import de.westnordost.streetcomplete.ui.util.CrossFadeTransitionSpec
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.math.getOrientationOrZero
 import de.westnordost.streetcomplete.util.takeFavorites
@@ -145,7 +145,7 @@ fun AddCyclewayForm(
 
     AnimatedContent(
         targetState = isDisplayingPrevious,
-        transitionSpec = SlideStartHorizontally
+        transitionSpec = CrossFadeTransitionSpec
     ) { isDisplayingPrevious2 ->
         if (isDisplayingPrevious2) {
             QuestForm(
