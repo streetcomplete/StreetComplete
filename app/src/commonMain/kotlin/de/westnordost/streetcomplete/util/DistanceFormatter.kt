@@ -68,7 +68,11 @@ object DistanceFormatter {
         )
 
     enum class DisplayUnit {
-        METERS, KILOMETERS, FEET, YARDS, MILES
+        METERS,
+        KILOMETERS,
+        FEET,
+        YARDS,
+        MILES
     }
 
     /**
@@ -147,4 +151,3 @@ object DistanceFormatter {
     private fun formatForDisplay(value: Double, symbol: String): String =
         if (value.toInt().toDouble() == value) "${value.toInt()} $symbol" else "$value $symbol"
 }
-
