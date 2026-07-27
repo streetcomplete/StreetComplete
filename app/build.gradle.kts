@@ -206,7 +206,6 @@ kotlin {
                 implementation("androidx.constraintlayout:constraintlayout:2.2.1")
                 implementation("androidx.annotation:annotation:1.10.0")
                 implementation("androidx.fragment:fragment-ktx:1.8.9")
-                implementation("androidx.recyclerview:recyclerview:1.4.0")
                 implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
                 // Compose
