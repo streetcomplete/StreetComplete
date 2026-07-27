@@ -25,10 +25,13 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.unit.toSize
 import de.westnordost.streetcomplete.data.osm.edits.delete.DeletePoiNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
@@ -124,6 +127,8 @@ fun ShowQuestFormsScreen(
                 questType = questType,
                 element = viewModel.mockElement,
                 geometry = viewModel.mockGeometry,
+                geometryOffsetInWindow = null,
+                mapPosition = LatLon(0.0, 0.0),
                 mapRotation = viewModel.mockRotation,
                 mapTilt = 0f,
                 mapMetersPerPixel = 0.01,

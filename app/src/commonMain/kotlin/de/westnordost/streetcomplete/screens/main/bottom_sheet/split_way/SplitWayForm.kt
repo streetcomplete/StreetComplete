@@ -28,9 +28,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitPolylineAtPosition
@@ -59,23 +56,13 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
-/** Form that lets the user split an OSM way
- *
- *  [onCrosshairPositioned] reports the offset relative to the window of the crosshair - where to
- *  create a split - while this composable then expects to get the [crosshairPosition], i.e. where
- *  the crosshair is on the map.
- *
- *  [onScissorsPlaced] reports the position of the scissors (which is placed on the way, near the
- *  crosshairs).
- * */
+/** Form that lets the user split an OSM way */
 @Composable
 @OptIn(ExperimentalComposeUiApi::class)
 fun SplitWayForm(
     onConfirmed: (splits: List<SplitPolylineAtPosition>) -> Unit,
     onDismiss: () -> Unit,
-    onCrosshairPositioned: (offsetInWindow: Offset) -> Unit, // XXX
-    crosshairPosition: LatLon?,  // XXX
-    onScissorsPlaced: (LatLon?) -> Unit, // XXX
+    mapPosition: LatLon?,
     way: Way,
     wayGeometry: ElementPolylinesGeometry,
     soundEffectPlayer: SoundEffectPlayer = koinInject()
@@ -95,10 +82,10 @@ fun SplitWayForm(
 
     val mapMarkersCallback = LocalMapMarkersCallback.current
 
-    val scissorsPosition = remember(crosshairPosition) {
-        crosshairPosition?.let {
+    val scissorsPosition = remember(mapPosition) {
+        mapPosition?.let {
             wayGeometry.polylines.first().getSplitAt(
-                position = crosshairPosition,
+                position = mapPosition,
                 maxDistance = maxDistanceToCrosshair,
                 snapToVertexDistance = snapToVertexDistance,
             )
@@ -110,18 +97,13 @@ fun SplitWayForm(
     val canSplitHere = scissorsPosition != null
         && cuts.all { scissorsPosition.pos.distanceTo(it.pos) >= minDistanceToOtherCuts }
 
-    LaunchedEffect(scissorsPosition?.pos) {
-        onScissorsPlaced(scissorsPosition?.pos)
-    }
-    LaunchedEffect(cuts) {
-        mapMarkersCallback?.invoke(
-            cuts.map {
-                Marker(
-                    geometry = ElementPointGeometry(it.pos),
-                    icon = Res.drawable.split
-                )
+    LaunchedEffect(cuts, scissorsPosition) {
+        mapMarkersCallback?.invoke(buildList<Marker> {
+            addAll(cuts.map { Marker(ElementPointGeometry(it.pos), Res.drawable.scissors_cut) })
+            if (scissorsPosition != null) {
+                add(Marker(ElementPointGeometry(scissorsPosition.pos), Res.drawable.scissors))
             }
-        )
+        })
     }
 
     Box(modifier = Modifier
@@ -132,8 +114,7 @@ fun SplitWayForm(
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.Center)
-                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
-                .onGloballyPositioned { onCrosshairPositioned(it.positionInWindow()) },
+                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current)),
             tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
         )
 

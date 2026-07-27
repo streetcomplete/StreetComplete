@@ -21,7 +21,6 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInParent
-import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -59,16 +58,13 @@ const val MAX_MOVE_DISTANCE = 30.0
 
 /** Form that lets the user move an OSM node.
  *
- *  [onPinPositioned] reports the offset relative to the window of the pin - where to move the
- *  node to - while this composable then expects to get the [pinPosition], i.e. where the pin is on
- *  the map and [nodeOffsetInWindow] - the offset of the [node] relative to the window. */
+ *  [nodeOffsetInWindow] - the offset of the [node] relative to the window. */
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun MoveNodeForm(
     onConfirmed: (position: LatLon) -> Unit,
     onDismiss: () -> Unit,
-    onPinPositioned: (offsetInWindow: Offset) -> Unit, // XXX
-    pinPosition: LatLon?, // XXX
+    mapPosition: LatLon?,
     node: Node,
     nodeOffsetInWindow: Offset?, // XXX
     elementEditType: ElementEditType,
@@ -86,8 +82,8 @@ fun MoveNodeForm(
     val arrowWidthPx = 6.dp.toPx()
     val arrowHeadSizePx = 14.dp.toPx()
 
-    val pinPosition = pinPosition ?: node.position
-    val distance = pinPosition.distanceTo(node.position)
+    val mapPosition = mapPosition ?: node.position
+    val distance = mapPosition.distanceTo(node.position)
     var pinOffset by remember { mutableStateOf<Offset?>(null) }
     val nodeOffset = remember(nodeOffsetInWindow, layoutCoordinates) {
         nodeOffsetInWindow?.let { layoutCoordinates?.windowToLocal(nodeOffsetInWindow) }
@@ -96,7 +92,7 @@ fun MoveNodeForm(
     var confirmDiscard by remember { mutableStateOf(false) }
 
     BackHandler {
-        if (pinPosition != node.position) {
+        if (mapPosition != node.position) {
             confirmDiscard = true
         } else {
             onDismiss()
@@ -121,10 +117,7 @@ fun MoveNodeForm(
             modifier = Modifier
                 .align(Alignment.Center)
                 .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
-                .onGloballyPositioned {
-                    pinOffset = it.positionInParent()
-                    onPinPositioned(it.positionInWindow())
-                }
+                .onGloballyPositioned { pinOffset = it.positionInParent() }
         )
 
         BottomSheetFormScaffold(
@@ -138,7 +131,7 @@ fun MoveNodeForm(
             fab = {
                 FloatingOkButton(
                     visible = distance in MIN_MOVE_DISTANCE..MAX_MOVE_DISTANCE,
-                    onClick = { onConfirmed(pinPosition) },
+                    onClick = { onConfirmed(mapPosition) },
                     modifier = Modifier.padding(8.dp),
                 )
             }

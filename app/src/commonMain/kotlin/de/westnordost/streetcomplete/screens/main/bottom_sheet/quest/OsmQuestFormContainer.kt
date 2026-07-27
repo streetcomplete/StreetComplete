@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.geometry.Offset
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.get
@@ -20,6 +21,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTag
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.Action
@@ -62,6 +64,8 @@ fun <T> OsmQuestFormContainer(
     questType: OsmElementQuestType<T>,
     element: Element,
     geometry: ElementGeometry,
+    geometryOffsetInWindow: Offset?,
+    mapPosition: LatLon?,
     mapRotation: Float,
     mapTilt: Float,
     mapMetersPerPixel: Double,
@@ -135,6 +139,7 @@ fun <T> OsmQuestFormContainer(
                     SplitWayForm(
                         onConfirmed = { onEdit(SplitWayAction(element, it)) },
                         onDismiss = onDismiss,
+                        mapPosition = mapPosition,
                         way = element as Way,
                         wayGeometry = geometry as ElementPolylinesGeometry,
                     )
@@ -143,6 +148,8 @@ fun <T> OsmQuestFormContainer(
                     MoveNodeForm(
                         onConfirmed = { onEdit(MoveNodeAction(element, it)) },
                         onDismiss = onDismiss,
+                        mapPosition = mapPosition,
+                        nodeOffsetInWindow = geometryOffsetInWindow,
                         node = element as Node,
                         elementEditType = questType,
                     )

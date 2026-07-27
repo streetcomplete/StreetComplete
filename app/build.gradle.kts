@@ -502,7 +502,8 @@ val copyIconsToAndroid by tasks.registering(CopyIconsTask::class) {
         // icons for base map
         it == "pin_shadow.png" ||
         it == "location_nyan.png" ||
-        it == "split.xml" ||
+        it == "scissors_cut.xml" ||
+        it == "scissors.xml" ||
         it == "track_nyan.png" ||
         it == "track_nyan_record.png" ||
         it == "downloaded_area_hatching.xml" ||
