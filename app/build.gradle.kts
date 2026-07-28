@@ -129,6 +129,10 @@ kotlin {
                 // I/O
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
+                // SQLite
+                implementation("androidx.sqlite:sqlite:2.7.0")
+                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
+
                 // HTTP client
                 implementation("io.ktor:ktor-client-core:3.5.1")
                 implementation("io.ktor:ktor-client-encoding:3.5.1")
@@ -242,19 +246,13 @@ kotlin {
                 implementation(kotlin("test"))
 
                 implementation("io.ktor:ktor-client-mock:3.5.1")
+                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
             }
         }
         androidUnitTest {
             dependencies {
+                implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
                 implementation(kotlin("test"))
-            }
-        }
-        androidInstrumentedTest {
-            dependencies {
-                implementation(kotlin("test"))
-                // android tests
-                implementation("androidx.test:runner:1.7.0")
-                implementation("androidx.test:rules:1.7.0")
             }
         }
     }
