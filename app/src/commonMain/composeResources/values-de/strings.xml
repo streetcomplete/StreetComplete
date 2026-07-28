@@ -447,7 +447,7 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="dialog_tutorial_upload">Um deine Änderungen manuell hochzuladen, nutze den Knopf im Menü, der so aussieht.</string>
     <string name="quest_segregated_separated">Getrennt voneinander</string>
     <string name="quest_segregated_mixed">Der Weg wird gemeinsam genutzt</string>
-    <string name="quest_maxheight_title">Messe die Durchfahrtshöhe hier.</string>
+    <string name="quest_maxheight_title">Miss die Durchfahrtshöhe hier.</string>
     <string name="quest_maxheight_answer_noSign">Es gibt kein Schild …</string>
     <string name="quest_maxheight_unusualInput_confirmation_description">Diese Höhe sieht ungewöhnlich aus. Bist du sicher, dass sie korrekt ist?</string>
     <string name="quest_noteDiscussion_comment2">— %1$s, %2$s</string>
@@ -734,7 +734,7 @@ Erfolge</string>
     <string name="quest_lanes_answer_noLanes">Keine markierten Fahrstreifen</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">Hat eine gemeinsame Linksabbiegerspur für beide Richtungen</string>
     <string name="quest_address_answer_no_housenumber_message2b">Ist das korrekt?</string>
-    <string name="quest_maxheight_below_bridge_title">Messe die Durchfahrtshöhe unter der hervorgehobenen Brücke (oder anderen Konstruktion).</string>
+    <string name="quest_maxheight_below_bridge_title">Miss die Durchfahrtshöhe unter der hervorgehobenen Brücke (oder anderen Konstruktion).</string>
     <string name="quest_maxheight_split_way_hint">Dieser Straßenabschnitt verläuft unter einer Brücke, einem Dach, einer Rohrleitung oder ähnlichen Konstruktion. Diese ist hervorgehoben.
 Wenn die Maximalhöhe nicht für die gesamte Strecke gilt, kannst du auch mit „%1$s“ antworten.</string>
     <string name="quest_tactile_paving_kerb_title">Hat dieser Bordstein eine taktile Pflasterung für Blinde?</string>
