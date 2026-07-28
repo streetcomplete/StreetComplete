@@ -79,7 +79,7 @@ private fun <T> URL.retryingQuotaConnection(setup: ((HttpURLConnection) -> Unit)
 }
 
 fun Locale.transformPOEditorLanguageTag() = when (toLanguageTag()) {
-    "sr-Cyrl" -> Locale("sr") // Serbian is referred to as Serbian (Cyrillic) in POEditor
-    "zh-CN" -> Locale("zh") // Chinese is referred to as Chinese (China) in POEditor
+    "zh-CN" -> Locale.forLanguageTag("zh-Hans") // Chinese is referred to as Chinese (China) in POEditor
+    "zh-TW" -> Locale.forLanguageTag("zh-Hant") // Chinese is referred to as Chinese (Tawain) in POEditor
     else -> this
 }
