@@ -21,6 +21,12 @@ open class UpdateNsiPresetsTask : DefaultTask() {
 
     @TaskAction
     fun run() {
+        val targetDir = File(targetDir)
+
+        // create / clear target directory
+        targetDir.mkdirs()
+        targetDir.listFiles()?.forEach { it.delete() }
+
         val presetsUrl = URL("https://cdn.jsdelivr.net/npm/name-suggestion-index@$version/dist/presets/nsi-id-presets.min.json")
         val nsiPresetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
         /* NSI uses (atm) a slightly different format than the normal presets: The presets are in
@@ -88,8 +94,8 @@ open class UpdateNsiPresetsTask : DefaultTask() {
         }
 
         for ((country, jsonObject) in byCountryMap.entries) {
-            val name = "$targetDir/presets${ if (country != null) "-${country.uppercase()}" else "" }.json"
-            File(name).writeText(jsonObject.toJsonString())
+            val name = "presets${ if (country != null) "-${country.uppercase()}" else "" }.json"
+            File(targetDir, name).writeText(jsonObject.toJsonString())
         }
     }
 }
