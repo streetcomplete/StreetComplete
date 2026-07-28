@@ -1,5 +1,9 @@
 # Changelog
 
+## v63.4
+
+Fix in certain languages (such as French), presets wouldn't load, which made the app unusable. Regression from v63.3 (#6964)
+
 ## v63.3
 
 ### Fixes

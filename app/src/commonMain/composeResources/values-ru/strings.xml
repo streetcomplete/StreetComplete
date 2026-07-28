@@ -1462,4 +1462,6 @@
     <string name="quest_artwork_bust">Бюст</string>
     <string name="quest_artwork_stone">Камень</string>
     <string name="quest_artwork_painting">Картина</string>
+    <string name="quest_artwork_mosaic">Мозаика</string>
+    <string name="quest_artwork_fountain">Фонтан</string>
 </resources>
