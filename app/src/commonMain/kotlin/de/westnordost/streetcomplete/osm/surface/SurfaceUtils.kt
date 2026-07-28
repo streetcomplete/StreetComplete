@@ -42,7 +42,7 @@ val FULLY_PAVED_SURFACES = setOf(
 
 private val SOFT_NATURAL_SURFACES = setOf(
     // earthy
-    "earth", "dirt", "soil", "grass", "sand", "mud",
+    "earth", "dirt", "soil", "grass", "sand", "mud", "laterite",
     // other
     "snow",
 )

@@ -24,6 +24,15 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
              and (!motorcycle or motorcycle = no)
              and (!truck or truck = no)
            )
+           or (
+             tourism = camp_site
+             and (
+                camp_site = basic
+                or backcountry = yes
+                or shower = no
+                or toilets = no
+             )
+           )
            or tourism ~ museum|gallery|caravan_site|zoo|aquarium|wilderness_hut
            or leisure ~ beach_resort|disc_golf_course
            or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash|binoculars|device_charging_station
@@ -34,6 +43,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
          )
          and access !~ private|no
          and !fee
+         and !fee:conditional
     """
     override val changesetComment = "Specify whether places take fees to visit"
     override val wikiLink = "Key:fee"

@@ -20,6 +20,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.addLastPicked
+import de.westnordost.streetcomplete.data.preferences.getLastPicked
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.ALL_PATHS
 import de.westnordost.streetcomplete.osm.changeToSteps
@@ -47,7 +49,7 @@ class SurfaceOverlayForm : AbstractOverlayForm() {
 
     private val prefs: Preferences by inject()
 
-    private val selectableItems: List<Surface> get() = Surface.selectableValuesForWays
+    private val selectableItems: List<Surface> get() = Surface.getSelectableValuesForWays(countryOrSubdivisionCode)
 
     private val lastPickedSingleSurfaces: List<Surface> get() =
         prefs.getLastPicked<SurfaceOverlayAnswer>(this::class.simpleName!!)

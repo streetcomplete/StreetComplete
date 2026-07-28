@@ -11,7 +11,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 class AddPathPartSurfaceForm : AItemSelectQuestForm<Surface, Surface>() {
-    override val items get() = Surface.selectableValuesForWays
+    override val items get() = Surface.getSelectableValuesForWays(countryOrSubdivisionCode)
     override val itemsPerRow = 3
     override val serializer = serializer<Surface>()
 

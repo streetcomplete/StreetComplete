@@ -10,12 +10,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.TIMESTAM
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.WayTables.NAME_NODES
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 /** Stores OSM ways */
+@Mockable
 class WayDao(private val db: Database) {
     fun put(way: Way) {
         putAll(listOf(way))

@@ -7,14 +7,14 @@
         },
         "address": {
           "name": "Adres",
-          "terms": "bulunak,konum"
+          "terms": ["bulunak", "konum"]
         },
         "advertising": {
           "name": "Advertising Device"
         },
         "advertising/billboard": {
           "name": "Reklam Panosu",
-          "terms": "reklam panosu,bilbord"
+          "terms": ["reklam panosu", "bilbord"]
         },
         "advertising/board": {
           "name": "Duyuru Panosu"
@@ -33,45 +33,45 @@
         },
         "aerialway/cable_car": {
           "name": "Teleferik",
-          "terms": "teleferik"
+          "terms": ["teleferik"]
         },
         "aerialway/chair_lift": {
           "name": "Sandalye Teleferik",
-          "terms": "sandalye teleferik"
+          "terms": ["sandalye teleferik"]
         },
         "aerialway/drag_lift": {
           "name": "Kayak Teleferiği",
-          "terms": "kayak teleferiği"
+          "terms": ["kayak teleferiği"]
         },
         "aerialway/gondola": {
           "name": "Gondol Kalkışı"
         },
         "aerialway/goods": {
           "name": "Taşıma Teleferiği",
-          "terms": "taşıma teleferiği,mal teleferiği"
+          "terms": ["taşıma teleferiği", "mal teleferiği"]
         },
         "aerialway/j-bar": {
           "name": "J Bar Lift"
         },
         "aerialway/magic_carpet": {
           "name": "Sihirli Halı Teleferiği",
-          "terms": "sihirli halı teleferiği"
+          "terms": ["sihirli halı teleferiği"]
         },
         "aerialway/mixed_lift": {
           "name": "Oturaklı Gondol Teleferiği",
-          "terms": "oturaklı gondol teleferiği"
+          "terms": ["oturaklı gondol teleferiği"]
         },
         "aerialway/platter": {
           "name": "Tabaklı Teleferik",
-          "terms": "tabaklı teleferik"
+          "terms": ["tabaklı teleferik"]
         },
         "aerialway/pylon": {
           "name": "Teleferik Direği",
-          "terms": "teleferik direği,teleferik sütunu"
+          "terms": ["teleferik direği", "teleferik sütunu"]
         },
         "aerialway/rope_tow": {
           "name": "Çekme Halat Teleferik",
-          "terms": "çekme halat teleferik"
+          "terms": ["çekme halat teleferik"]
         },
         "aerialway/t-bar": {
           "name": "Teleski"
@@ -84,22 +84,22 @@
         },
         "aeroway/aerodrome": {
           "name": "Havaalanı",
-          "terms": "havaalanı"
+          "terms": ["havaalanı"]
         },
         "aeroway/apron": {
           "name": "Havaalanı Apronu"
         },
         "aeroway/gate": {
           "name": "Kapı",
-          "terms": "kapı"
+          "terms": ["kapı"]
         },
         "aeroway/hangar": {
           "name": "Hangar",
-          "terms": "hangar"
+          "terms": ["hangar"]
         },
         "aeroway/helipad": {
           "name": "Helikopter Pisti",
-          "terms": "helikopter pisti"
+          "terms": ["helikopter pisti"]
         },
         "aeroway/holding_position": {
           "name": "Hava aracı tutma pozisyonu"
@@ -112,22 +112,22 @@
         },
         "aeroway/runway": {
           "name": "Uçak Pisti",
-          "terms": "uçak pisti,hızlanma pisti"
+          "terms": ["uçak pisti", "hızlanma pisti"]
         },
         "aeroway/spaceport": {
           "name": "Uzay İstasyonu"
         },
         "aeroway/taxiway": {
           "name": "Taksi Yolu",
-          "terms": "taksi yolu"
+          "terms": ["taksi yolu"]
         },
         "aeroway/terminal": {
           "name": "Terminal",
-          "terms": "terminal"
+          "terms": ["terminal"]
         },
         "aeroway/windsock": {
           "name": "Rüzgâr hortumu",
-          "terms": "rüzgar hortumu"
+          "terms": ["rüzgar hortumu"]
         },
         "allotments/plot": {
           "name": "Topluluk Bahçesi Arsası"
@@ -137,42 +137,42 @@
         },
         "amenity/animal_boarding": {
           "name": "Yatılı Hayvan Bakım Yeri",
-          "terms": "yatılı hayvan bakım yeri"
+          "terms": ["yatılı hayvan bakım yeri"]
         },
         "amenity/animal_breeding": {
           "name": "Hayvan Islah Yeri",
-          "terms": "hayvan islah yeri"
+          "terms": ["hayvan islah yeri"]
         },
         "amenity/animal_shelter": {
           "name": "Hayvan Barınağı",
-          "terms": "hayvan barınağı"
+          "terms": ["hayvan barınağı"]
         },
         "amenity/arts_centre": {
           "name": "Sanat Merkezi",
-          "terms": "sanat merkezi"
+          "terms": ["sanat merkezi"]
         },
         "amenity/atm": {
           "name": "ATM",
-          "terms": "atm,para çekme makinası"
+          "terms": ["atm", "para çekme makinası"]
         },
         "amenity/bank": {
           "name": "Banka",
-          "terms": "banka"
+          "terms": ["banka"]
         },
         "amenity/bar": {
           "name": "Bar",
-          "terms": "bar"
+          "terms": ["bar"]
         },
         "amenity/bar/lgbtq": {
           "name": "LGBTQ+ Bar"
         },
         "amenity/bench": {
           "name": "Bank",
-          "terms": "bank,oturak"
+          "terms": ["bank", "oturak"]
         },
         "amenity/bicycle_parking": {
           "name": "Bisiklet Parkı",
-          "terms": "bisiklet parkı"
+          "terms": ["bisiklet parkı"]
         },
         "amenity/bicycle_parking/building": {
           "name": "Bisiklet Park Yeri"
@@ -185,11 +185,11 @@
         },
         "amenity/bicycle_rental": {
           "name": "Bisiklet Kiralama",
-          "terms": "bisiklet kiralama"
+          "terms": ["bisiklet kiralama"]
         },
         "amenity/bicycle_repair_station": {
           "name": "Bisiklet Tamircisi",
-          "terms": "bisiklet tamircisi"
+          "terms": ["bisiklet tamircisi"]
         },
         "amenity/biergarten": {
           "name": "Bira bahçesi"
@@ -199,21 +199,21 @@
         },
         "amenity/boat_rental": {
           "name": "Bot Kiralama",
-          "terms": "bot kiralama"
+          "terms": ["bot kiralama"]
         },
         "amenity/boat_storage": {
           "name": "Tekne Depolaması"
         },
         "amenity/bureau_de_change": {
           "name": "Döviz Bürosu",
-          "terms": "döviz bürosu"
+          "terms": ["döviz bürosu"]
         },
         "amenity/bus_station": {
           "name": "Otobüs Durağı / Terminali"
         },
         "amenity/cafe": {
           "name": "Kafe",
-          "terms": "kafe,kafeterya"
+          "terms": ["kafe", "kafeterya"]
         },
         "amenity/cafe/bubble_tea": {
           "name": "İnci Çayı Kafesi"
@@ -223,60 +223,60 @@
         },
         "amenity/cafe/teahouse": {
           "name": "Kahvehane",
-          "terms": "kahvehane,çay ocağı",
-          "aliases": "Çay Ocağı"
+          "terms": ["kahvehane", "çay ocağı"],
+          "aliases": ["Çay Ocağı"]
         },
         "amenity/car_pooling": {
           "name": "Araç Havuzlama İstasyonu"
         },
         "amenity/car_rental": {
           "name": "Araç Kiralama",
-          "terms": "araç kiralama,oto kiralama"
+          "terms": ["araç kiralama", "oto kiralama"]
         },
         "amenity/car_sharing": {
           "name": "Araç Paylaşma İstasyonu"
         },
         "amenity/car_wash": {
           "name": "Araç Yıkama",
-          "terms": "araç yıkama,oto yıkama"
+          "terms": ["araç yıkama", "oto yıkama"]
         },
         "amenity/casino": {
           "name": "Kumarhane",
-          "terms": "kumarhane,casino"
+          "terms": ["kumarhane", "casino"]
         },
         "amenity/charging_station": {
           "name": "Şarj İstasyonu",
-          "terms": "şarj i̇stasyonu"
+          "terms": ["şarj i̇stasyonu"]
         },
         "amenity/cinema": {
           "name": "Sinema",
-          "terms": "sinema"
+          "terms": ["sinema"]
         },
         "amenity/clinic": {
           "name": "Klinik",
-          "terms": "klinik,tıp merkezi"
+          "terms": ["klinik", "tıp merkezi"]
         },
         "amenity/clinic/abortion": {
           "name": "Kürtaj Kliniği",
-          "terms": "kürtaj kliniği,kürtaj merkezi"
+          "terms": ["kürtaj kliniği", "kürtaj merkezi"]
         },
         "amenity/clinic/dialysis": {
           "name": "Dialysis Center"
         },
         "amenity/clinic/fertility": {
           "name": "Bebek Merkezi",
-          "terms": "bebek merkezi,doğurganlık merkezi"
+          "terms": ["bebek merkezi", "doğurganlık merkezi"]
         },
         "amenity/clock": {
           "name": "Saat",
-          "terms": "saat"
+          "terms": ["saat"]
         },
         "amenity/clock/sundial": {
           "name": "Güneş saati"
         },
         "amenity/community_centre": {
           "name": "Toplum Merkezi",
-          "terms": "toplum merkezi,sosyal merkez"
+          "terms": ["toplum merkezi", "sosyal merkez"]
         },
         "amenity/community_centre/lgbtq": {
           "name": "LGBTQ+ Topluluk Merkezi"
@@ -286,29 +286,29 @@
         },
         "amenity/compressed_air": {
           "name": "Hava Basma İstasyonu",
-          "terms": "hava basma i̇stasyonu,lastik hava i̇stasyonu"
+          "terms": ["hava basma i̇stasyonu", "lastik hava i̇stasyonu"]
         },
         "amenity/conference_centre": {
           "name": "Kongre Merkezi"
         },
         "amenity/courthouse": {
           "name": "Mahkeme",
-          "terms": "mahkeme,adalet sarayı,adliye"
+          "terms": ["mahkeme", "adalet sarayı", "adliye"]
         },
         "amenity/crematorium": {
           "name": "Cesed Yakma Yeri",
-          "terms": "cesed yakma yeri"
+          "terms": ["cesed yakma yeri"]
         },
         "amenity/dentist": {
           "name": "Dişçi",
-          "terms": "dişçi"
+          "terms": ["dişçi"]
         },
         "amenity/dive_centre": {
           "name": "Dalış Merkezi"
         },
         "amenity/doctors": {
           "name": "Doktor",
-          "terms": "doktor"
+          "terms": ["doktor"]
         },
         "amenity/doctors/allergology": {
           "name": "Allergologist"
@@ -393,18 +393,18 @@
         },
         "amenity/dog_toilet": {
           "name": "Köpek Tuvaleti",
-          "terms": "i̇t tuvaleti"
+          "terms": ["i̇t tuvaleti"]
         },
         "amenity/dojo": {
           "name": "Dövüş Sanatları Akademisi",
-          "terms": "dövüş sanatları akademisi"
+          "terms": ["dövüş sanatları akademisi"]
         },
         "amenity/dressing_room": {
           "name": "Giyinme Odası"
         },
         "amenity/drinking_water": {
           "name": "İçme Suyu",
-          "terms": "i̇çme suyu,sebil"
+          "terms": ["i̇çme suyu", "sebil"]
         },
         "amenity/driver_training": {
           "name": "Driver Training Grounds"
@@ -420,7 +420,7 @@
         },
         "amenity/fast_food": {
           "name": "Fast Food",
-          "terms": "fast food,hazır yiyecek"
+          "terms": ["fast food", "hazır yiyecek"]
         },
         "amenity/fast_food/bagel": {
           "name": "Bagel Fast Food"
@@ -469,19 +469,19 @@
         },
         "amenity/fire_station": {
           "name": "İtfaiye",
-          "terms": "i̇tfaiye"
+          "terms": ["i̇tfaiye"]
         },
         "amenity/food_court": {
           "name": "Yemek Yeri",
-          "terms": "yemek yeri,restoran kısmı,yemek katı"
+          "terms": ["yemek yeri", "restoran kısmı", "yemek katı"]
         },
         "amenity/fountain": {
           "name": "Su Fıskiyesi",
-          "terms": "su fıskiyesi,fıskiye,çeşme,aslanağzı"
+          "terms": ["su fıskiyesi", "fıskiye", "çeşme", "aslanağzı"]
         },
         "amenity/fuel": {
           "name": "Benzinci",
-          "terms": "benzinci,benzin i̇stasyonu"
+          "terms": ["benzinci", "benzin i̇stasyonu"]
         },
         "amenity/gambling": {
           "name": "Kumar Salonu"
@@ -491,30 +491,30 @@
         },
         "amenity/grave_yard": {
           "name": "Mezarlık",
-          "terms": "mezarlık"
+          "terms": ["mezarlık"]
         },
         "amenity/grit_bin": {
           "name": "Çakıl Kutusu",
-          "terms": "çakıl kutusu,çakıl torbası"
+          "terms": ["çakıl kutusu", "çakıl torbası"]
         },
         "amenity/hospital": {
           "name": "Hastane",
-          "terms": "hastane bahçesi"
+          "terms": ["hastane bahçesi"]
         },
         "amenity/hunting_stand": {
           "name": "Av Platformu",
-          "terms": "av platformu"
+          "terms": ["av platformu"]
         },
         "amenity/ice_cream": {
           "name": "Dondurmacı",
-          "terms": "dondurmacı"
+          "terms": ["dondurmacı"]
         },
         "amenity/ice_cream/frozen_yogurt": {
           "name": "Frozen Yogurt Shop"
         },
         "amenity/internet_cafe": {
           "name": "İnternet Kafe",
-          "terms": "i̇nternet kafe"
+          "terms": ["i̇nternet kafe"]
         },
         "amenity/karaoke_box": {
           "name": "Karaoke Kutusu"
@@ -530,7 +530,7 @@
         },
         "amenity/library": {
           "name": "Kütüphane",
-          "terms": "kütüphane"
+          "terms": ["kütüphane"]
         },
         "amenity/loading_dock": {
           "name": "Yükleme Rıhtımı"
@@ -540,11 +540,11 @@
         },
         "amenity/love_hotel": {
           "name": "Aşk Oteli",
-          "terms": "cinsel i̇lişki oteli,sevişme oteli"
+          "terms": ["cinsel i̇lişki oteli", "sevişme oteli"]
         },
         "amenity/marketplace": {
           "name": "Çarşı",
-          "terms": "çarşı,pazar yeri"
+          "terms": ["çarşı", "pazar yeri"]
         },
         "amenity/monastery": {
           "name": "Manastır Alanı"
@@ -557,14 +557,14 @@
         },
         "amenity/motorcycle_parking": {
           "name": "Motosiklet Parkı",
-          "terms": "motosiklet parkı,motosiklet park yeri"
+          "terms": ["motosiklet parkı", "motosiklet park yeri"]
         },
         "amenity/motorcycle_rental": {
           "name": "Motosiklet Kiralama"
         },
         "amenity/nightclub": {
           "name": "Gece Kulübü",
-          "terms": "gece kulübü"
+          "terms": ["gece kulübü"]
         },
         "amenity/nightclub/lgbtq": {
           "name": "LGBTQ+ Gece Kulübü"
@@ -574,7 +574,7 @@
         },
         "amenity/parcel_locker": {
           "name": "Kargo Dolabı",
-          "terms": "kargo dolabı,kargomat,gel al,teslimat dolabı,paket"
+          "terms": ["kargo dolabı", "kargomat", "gel al", "teslimat dolabı", "paket"]
         },
         "amenity/parking": {
           "name": "Otopark"
@@ -587,7 +587,7 @@
         },
         "amenity/parking/street-side": {
           "name": "Yola Bitişik Otopark",
-          "terms": "yola bitişik otopark,yola bitişik park,yol kenarı park,ol kenarı park yeri"
+          "terms": ["yola bitişik otopark", "yola bitişik park", "yol kenarı park", "ol kenarı park yeri"]
         },
         "amenity/parking/underground": {
           "name": "Yeraltı Park Yeri"
@@ -597,7 +597,7 @@
         },
         "amenity/parking_space": {
           "name": "Park Yeri",
-          "terms": "park yeri"
+          "terms": ["park yeri"]
         },
         "amenity/parking_space/disabled": {
           "name": "Erişilebilir Park Alanı"
@@ -616,11 +616,11 @@
         },
         "amenity/place_of_worship": {
           "name": "İbadethane",
-          "terms": "i̇badethane,i̇badet yeri"
+          "terms": ["i̇badethane", "i̇badet yeri"]
         },
         "amenity/place_of_worship/buddhist": {
           "name": "Budist Tapınağı",
-          "terms": "budist tapınağı"
+          "terms": ["budist tapınağı"]
         },
         "amenity/place_of_worship/christian": {
           "name": "Hristiyan Klisesi"
@@ -636,7 +636,7 @@
         },
         "amenity/place_of_worship/hindu": {
           "name": "Hindu Tapınağı",
-          "terms": "hindu tapınağı"
+          "terms": ["hindu tapınağı"]
         },
         "amenity/place_of_worship/jewish": {
           "name": "Yahudi Sinagogu"
@@ -646,23 +646,23 @@
         },
         "amenity/place_of_worship/shinto": {
           "name": "Şintoizm Tapınağı",
-          "terms": "şintoizm tapınağı"
+          "terms": ["şintoizm tapınağı"]
         },
         "amenity/place_of_worship/sikh": {
           "name": "Sih Tapınağı",
-          "terms": "sih tapınağı"
+          "terms": ["sih tapınağı"]
         },
         "amenity/place_of_worship/taoist": {
           "name": "Taoist Tapınağı",
-          "terms": "taoist tapınağı"
+          "terms": ["taoist tapınağı"]
         },
         "amenity/planetarium": {
           "name": "Gökevi",
-          "terms": "gökevi,planetaryum"
+          "terms": ["gökevi", "planetaryum"]
         },
         "amenity/police": {
           "name": "Emniyet Müdürlüğü",
-          "terms": "emniyet müdürlüğü,polis noktası,polis merkezi"
+          "terms": ["emniyet müdürlüğü", "polis noktası", "polis merkezi"]
         },
         "amenity/polling_station": {
           "name": "Daimi Oylama Yeri"
@@ -675,15 +675,15 @@
         },
         "amenity/post_office": {
           "name": "Postane",
-          "terms": "postane"
+          "terms": ["postane"]
         },
         "amenity/prison": {
           "name": "Cezaevi",
-          "terms": "cezaevi"
+          "terms": ["cezaevi"]
         },
         "amenity/pub": {
           "name": "Bar",
-          "terms": "bar"
+          "terms": ["bar"]
         },
         "amenity/pub/irish": {
           "name": "İrlanda barı"
@@ -696,15 +696,15 @@
         },
         "amenity/public_bath": {
           "name": "Hamam",
-          "terms": "hamam,umuma açık banyo"
+          "terms": ["hamam", "umuma açık banyo"]
         },
         "amenity/public_bookcase": {
           "name": "Sokak Kütüphanesi",
-          "terms": "sokak kütüphanesi,sokak kitaplığı"
+          "terms": ["sokak kütüphanesi", "sokak kitaplığı"]
         },
         "amenity/ranger_station": {
           "name": "Korucu İstasyonu",
-          "terms": "korucu i̇stasyonu,korucu evi"
+          "terms": ["korucu i̇stasyonu", "korucu evi"]
         },
         "amenity/recycling": {
           "name": "Geri Dönüşüm"
@@ -717,7 +717,7 @@
         },
         "amenity/recycling_centre": {
           "name": "Geri Dönüşüm Merkezi",
-          "terms": "yeniden kullanım,yer,yeri"
+          "terms": ["yeniden kullanım", "yer", "yeri"]
         },
         "amenity/recycling_container": {
           "name": "Geridönüşüm Kutusu"
@@ -730,7 +730,7 @@
         },
         "amenity/restaurant": {
           "name": "Lokanta",
-          "terms": "lokanta,restoran"
+          "terms": ["lokanta", "restoran"]
         },
         "amenity/restaurant/american": {
           "name": "Amerikan Restoranı"
@@ -794,7 +794,7 @@
         },
         "amenity/restaurant/turkish": {
           "name": "Türk Restoranı",
-          "terms": "türk,türk mutfağı,türk restaurantı"
+          "terms": ["türk", "türk mutfağı", "türk restaurantı"]
         },
         "amenity/restaurant/ukrainian": {
           "name": "Ukrayn Restoranı"
@@ -804,15 +804,15 @@
         },
         "amenity/sanitary_dump_station": {
           "name": "Tuvalet Atık Yeri",
-          "terms": "tuvalet atık yeri"
+          "terms": ["tuvalet atık yeri"]
         },
         "amenity/shelter": {
           "name": "Barınak",
-          "terms": "barınak"
+          "terms": ["barınak"]
         },
         "amenity/shelter/gazebo": {
           "name": "Çardak",
-          "terms": "çardak,kameriye,kamelya"
+          "terms": ["çardak", "kameriye", "kamelya"]
         },
         "amenity/shelter/lean_to": {
           "name": "Yan Binaya Yaslı"
@@ -825,18 +825,18 @@
         },
         "amenity/shower": {
           "name": "Banyo",
-          "terms": "banyo,duş"
+          "terms": ["banyo", "duş"]
         },
         "amenity/smoking_area": {
           "name": "Sigara İçme Alanı",
-          "terms": "sigara i̇çme alanı"
+          "terms": ["sigara i̇çme alanı"]
         },
         "amenity/social_centre": {
           "name": "Sosyal Merkez"
         },
         "amenity/social_facility": {
           "name": "Sosyal Tesis",
-          "terms": "sosyal tesis,huzurevi,aşevi,bakımevi,darülaceze,sığınmaevi"
+          "terms": ["sosyal tesis", "huzurevi", "aşevi", "bakımevi", "darülaceze", "sığınmaevi"]
         },
         "amenity/social_facility/ambulatory_care": {
           "name": "Ayakta Tedavi"
@@ -846,26 +846,26 @@
         },
         "amenity/social_facility/food_bank": {
           "name": "Aşevi",
-          "terms": "aşevi"
+          "terms": ["aşevi"]
         },
         "amenity/social_facility/group_home": {
           "name": "Huzur Evi",
-          "terms": "huzur evi,yaşlılar evi"
+          "terms": ["huzur evi", "yaşlılar evi"]
         },
         "amenity/social_facility/homeless_shelter": {
           "name": "Evsizler Barınağı",
-          "terms": "evsizler barınağı"
+          "terms": ["evsizler barınağı"]
         },
         "amenity/social_facility/nursing_home": {
           "name": "Bakım Evi",
-          "terms": "bakım evi"
+          "terms": ["bakım evi"]
         },
         "amenity/stripclub": {
           "name": "Striptiz kulübü"
         },
         "amenity/studio": {
           "name": "Stüdyo",
-          "terms": "stüdyo"
+          "terms": ["stüdyo"]
         },
         "amenity/studio/audio": {
           "name": "Kayıt Stüdyosu"
@@ -881,26 +881,26 @@
         },
         "amenity/taxi": {
           "name": "Taksi Durağı",
-          "terms": "taksi durağı"
+          "terms": ["taksi durağı"]
         },
         "amenity/telephone": {
           "name": "Telefon",
-          "terms": "telefon,ankesörlü telefon"
+          "terms": ["telefon", "ankesörlü telefon"]
         },
         "amenity/theatre": {
           "name": "Tiyatro",
-          "terms": "tiyatro"
+          "terms": ["tiyatro"]
         },
         "amenity/theatre/type/amphi": {
           "name": "Amfiteatr",
-          "terms": "amfi,amfiteatr,tiyatro"
+          "terms": ["amfi", "amfiteatr", "tiyatro"]
         },
         "amenity/ticket_validator": {
           "name": "Ticket Validator"
         },
         "amenity/toilets": {
           "name": "Tuvalet",
-          "terms": "tuvalet"
+          "terms": ["tuvalet"]
         },
         "amenity/toilets/disposal/flush": {
           "name": "Alafranga tuvaletler"
@@ -913,7 +913,7 @@
         },
         "amenity/townhall": {
           "name": "Belediye Binası",
-          "terms": "belediye binası"
+          "terms": ["belediye binası"]
         },
         "amenity/townhall/city": {
           "name": "Belediye Binası"
@@ -929,11 +929,11 @@
         },
         "amenity/vehicle_inspection": {
           "name": "Araç Muayene İstasyonu",
-          "terms": "araç muayene i̇stasyonu,oto ekspertiz"
+          "terms": ["araç muayene i̇stasyonu", "oto ekspertiz"]
         },
         "amenity/vending_machine": {
           "name": "Otomatik Satış Makinası",
-          "terms": "otomatik satış makinası,otomat"
+          "terms": ["otomatik satış makinası", "otomat"]
         },
         "amenity/vending_machine/bicycle_tube": {
           "name": "Bicycle Inner Tube Vending Machine"
@@ -946,18 +946,18 @@
         },
         "amenity/vending_machine/cigarettes": {
           "name": "Sigara Otomatı",
-          "terms": "sigara otomatı"
+          "terms": ["sigara otomatı"]
         },
         "amenity/vending_machine/coffee": {
           "name": "Kahve Otomatı"
         },
         "amenity/vending_machine/condoms": {
           "name": "Prezervatif Otomatı",
-          "terms": "prezervatif otomatı"
+          "terms": ["prezervatif otomatı"]
         },
         "amenity/vending_machine/drinks": {
           "name": "İçecek Otomatı",
-          "terms": "i̇çecek otomatı"
+          "terms": ["i̇çecek otomatı"]
         },
         "amenity/vending_machine/eggs": {
           "name": "Yumurta Otomatı"
@@ -973,14 +973,14 @@
         },
         "amenity/vending_machine/feminine_hygiene": {
           "name": "Kadın Sağlık Otomatı",
-          "terms": "kadın sağlık otomatik satış makinası"
+          "terms": ["kadın sağlık otomatik satış makinası"]
         },
         "amenity/vending_machine/food": {
           "name": "Yemek Otomatı"
         },
         "amenity/vending_machine/food/snacks": {
           "name": "Yiyecek Otomatı",
-          "terms": "yiyecek otomatı"
+          "terms": ["yiyecek otomatı"]
         },
         "amenity/vending_machine/ice_cream": {
           "name": "Dondurma Otomatı"
@@ -990,56 +990,56 @@
         },
         "amenity/vending_machine/newspapers": {
           "name": "Gazete Satış Makinası",
-          "terms": "gazete satış makinası,gazete otomatı"
+          "terms": ["gazete satış makinası", "gazete otomatı"]
         },
         "amenity/vending_machine/parking_tickets": {
           "name": "Park Fişi Otomatı",
-          "terms": "park fişi otomatı"
+          "terms": ["park fişi otomatı"]
         },
         "amenity/vending_machine/pizza": {
           "name": "Pizza Vending Machine"
         },
         "amenity/vending_machine/public_transport_tickets": {
           "name": "Otobüs Bileti Otomatı",
-          "terms": "otobüs bileti otomatı"
+          "terms": ["otobüs bileti otomatı"]
         },
         "amenity/vending_machine/stamps": {
           "name": "Posta Otomatı"
         },
         "amenity/veterinary": {
           "name": "Veteriner",
-          "terms": "veteriner"
+          "terms": ["veteriner"]
         },
         "amenity/waste/dog_excrement": {
           "name": "Köpek Dışkı Çöpü",
-          "terms": "köpek dışkı kutusu"
+          "terms": ["köpek dışkı kutusu"]
         },
         "amenity/waste_basket": {
           "name": "Çöp Kutusu",
-          "terms": "çöp,çöp tenekesi,çöp kutusu,çöp kovası,çöp bidonu"
+          "terms": ["çöp", "çöp tenekesi", "çöp kutusu", "çöp kovası", "çöp bidonu"]
         },
         "amenity/waste_disposal": {
           "name": "Çöp Tenekesi",
-          "terms": "çöp tenekesi"
+          "terms": ["çöp tenekesi"]
         },
         "amenity/waste_transfer_station": {
           "name": "Çöp Transfer İstasyonu",
-          "terms": "çöp transfer i̇stasyonu"
+          "terms": ["çöp transfer i̇stasyonu"]
         },
         "amenity/water_point": {
           "name": "İçme Suyu",
-          "terms": "i̇çme suyu,sebil"
+          "terms": ["i̇çme suyu", "sebil"]
         },
         "amenity/watering_place": {
           "name": "Hayvan Yıkama Yeri",
-          "terms": "hayvan yıkama yeri"
+          "terms": ["hayvan yıkama yeri"]
         },
         "amenity/weighbridge": {
           "name": "Kamyon Kantarı"
         },
         "area": {
           "name": "Alan",
-          "terms": "alan,bölge"
+          "terms": ["alan", "bölge"]
         },
         "area/footway": {
           "name": "Footway Area"
@@ -1064,11 +1064,11 @@
         },
         "attraction/bungee_jumping": {
           "name": "Bungee Jumping",
-          "terms": "bungee jumping"
+          "terms": ["bungee jumping"]
         },
         "attraction/carousel": {
           "name": "Atlı Karınca",
-          "terms": "atlı karınca"
+          "terms": ["atlı karınca"]
         },
         "attraction/dark_ride": {
           "name": "Korku Tüneli"
@@ -1084,7 +1084,7 @@
         },
         "attraction/maze": {
           "name": "Labirent",
-          "terms": "labirent"
+          "terms": ["labirent"]
         },
         "attraction/pirate_ship": {
           "name": "Korsan Gemisi Gezisi"
@@ -1094,7 +1094,7 @@
         },
         "attraction/roller_coaster": {
           "name": "Roller Coaster",
-          "terms": "roller coaster"
+          "terms": ["roller coaster"]
         },
         "attraction/summer_toboggan": {
           "name": "Yaz Kızağı"
@@ -1104,30 +1104,30 @@
         },
         "attraction/train": {
           "name": "Tren",
-          "terms": "tren"
+          "terms": ["tren"]
         },
         "attraction/water_slide": {
           "name": "Su Kayağı",
-          "terms": "su kayağı"
+          "terms": ["su kayağı"]
         },
         "barrier": {
           "name": "Bariyer",
-          "terms": "toprak dolgu,toprak set"
+          "terms": ["toprak dolgu", "toprak set"]
         },
         "barrier/block": {
           "name": "Blok",
-          "terms": "blok,kütle"
+          "terms": ["blok", "kütle"]
         },
         "barrier/bollard": {
           "name": "Duba",
-          "terms": "duba,direk"
+          "terms": ["duba", "direk"]
         },
         "barrier/bollard_line": {
           "name": "Duba Sırası"
         },
         "barrier/border_control": {
           "name": "Gümrük Kontrolü",
-          "terms": "gümrük kontrolü"
+          "terms": ["gümrük kontrolü"]
         },
         "barrier/bump_gate": {
           "name": "Bump Gate"
@@ -1140,29 +1140,29 @@
         },
         "barrier/cattle_grid": {
           "name": "Izgara",
-          "terms": "izgara"
+          "terms": ["izgara"]
         },
         "barrier/chain": {
           "name": "Zincir"
         },
         "barrier/city_wall": {
           "name": "Sur",
-          "terms": "sur"
+          "terms": ["sur"]
         },
         "barrier/cycle_barrier": {
           "name": "Bisiklet Bariyeri",
-          "terms": "bisiklet bariyeri"
+          "terms": ["bisiklet bariyeri"]
         },
         "barrier/ditch": {
           "name": "Hendek",
-          "terms": "hendek,suyolu"
+          "terms": ["hendek", "suyolu"]
         },
         "barrier/entrance": {
           "name": "Giriş"
         },
         "barrier/fence": {
           "name": "Çit",
-          "terms": "çit"
+          "terms": ["çit"]
         },
         "barrier/fence/railing": {
           "name": "Korkuluk"
@@ -1172,7 +1172,7 @@
         },
         "barrier/gate": {
           "name": "Kapı",
-          "terms": "kapı"
+          "terms": ["kapı"]
         },
         "barrier/guard_rail": {
           "name": "Korkuluk"
@@ -1185,11 +1185,11 @@
         },
         "barrier/hedge": {
           "name": "Koruma Duvarı",
-          "terms": "koruma duvarı"
+          "terms": ["koruma duvarı"]
         },
         "barrier/height_restrictor": {
           "name": "Yükseklik Kısıtlayıcı",
-          "terms": "yükseklik kısıtlayıcı"
+          "terms": ["yükseklik kısıtlayıcı"]
         },
         "barrier/jersey_barrier": {
           "name": "Jersey Barrier"
@@ -1211,11 +1211,11 @@
         },
         "barrier/kissing_gate": {
           "name": "Sadece İnsanlar İçin Giriş Kapısı",
-          "terms": "sadece i̇nsanlar i̇çin giriş kapısı"
+          "terms": ["sadece i̇nsanlar i̇çin giriş kapısı"]
         },
         "barrier/lift_gate": {
           "name": "Bom Bariyeri",
-          "terms": "bariyer,turnike,yol bariyeri"
+          "terms": ["bariyer", "turnike", "yol bariyeri"]
         },
         "barrier/log": {
           "name": "Fallen Tree Obstruction"
@@ -1228,7 +1228,7 @@
         },
         "barrier/retaining_wall": {
           "name": "İstinat Duvarı",
-          "terms": "i̇stinat duvarı"
+          "terms": ["i̇stinat duvarı"]
         },
         "barrier/rope": {
           "name": "Rope Fence"
@@ -1241,21 +1241,21 @@
         },
         "barrier/stile": {
           "name": "Çit basamağı",
-          "terms": "çit merdiveni"
+          "terms": ["çit merdiveni"]
         },
         "barrier/swing_gate": {
           "name": "Salıncak Kapısı"
         },
         "barrier/toll_booth": {
           "name": "Gişe",
-          "terms": "gişe"
+          "terms": ["gişe"]
         },
         "barrier/turnstile": {
           "name": "Turnike"
         },
         "barrier/wall": {
           "name": "Duvar",
-          "terms": "duvar"
+          "terms": ["duvar"]
         },
         "barrier/wall/noise_barrier": {
           "name": "Gürültü Bariyeri"
@@ -1268,7 +1268,7 @@
         },
         "boundary/administrative": {
           "name": "İdari Sınır",
-          "terms": "i̇dari sınır"
+          "terms": ["i̇dari sınır"]
         },
         "bridge/support": {
           "name": "Köprü Desteği"
@@ -1278,7 +1278,7 @@
         },
         "building": {
           "name": "Bina",
-          "terms": "yapı"
+          "terms": ["yapı"]
         },
         "building/allotment_house": {
           "name": "Allotment House"
@@ -1288,64 +1288,64 @@
         },
         "building/barn": {
           "name": "Samanlık",
-          "terms": "samanlık"
+          "terms": ["samanlık"]
         },
         "building/boathouse": {
           "name": "Kayıkhane"
         },
         "building/bungalow": {
           "name": "Tek Katlı Müstakil Ev",
-          "terms": "tek katlı müstakil ev"
+          "terms": ["tek katlı müstakil ev"]
         },
         "building/bunker": {
           "name": "Depo"
         },
         "building/cabin": {
           "name": "Kabin",
-          "terms": "kabin"
+          "terms": ["kabin"]
         },
         "building/carport": {
           "name": "Yanları Açık Garaj"
         },
         "building/cathedral": {
           "name": "Katedral",
-          "terms": "büyük kilisi,başkilise,i̇badet yeri"
+          "terms": ["büyük kilisi", "başkilise", "i̇badet yeri"]
         },
         "building/chapel": {
           "name": "Şapel",
-          "terms": "küçük kilise,i̇badet yeri"
+          "terms": ["küçük kilise", "i̇badet yeri"]
         },
         "building/church": {
           "name": "Kilise",
-          "terms": "kilise"
+          "terms": ["kilise"]
         },
         "building/civic": {
           "name": "Kamu Binası",
-          "terms": "kamu binası"
+          "terms": ["kamu binası"]
         },
         "building/college": {
           "name": "Yüksekokul",
-          "terms": "yüksekokul"
+          "terms": ["yüksekokul"]
         },
         "building/commercial": {
           "name": "Ticari Bina",
-          "terms": "alışveriş yeri"
+          "terms": ["alışveriş yeri"]
         },
         "building/construction": {
           "name": "Bina İnşaatı",
-          "terms": "i̇nşaat"
+          "terms": ["i̇nşaat"]
         },
         "building/cowshed": {
           "name": "Ahır",
-          "terms": "mandıra"
+          "terms": ["mandıra"]
         },
         "building/detached": {
           "name": "Müstakil Ev",
-          "terms": "müstakil ev"
+          "terms": ["müstakil ev"]
         },
         "building/dormitory": {
           "name": "Yurt",
-          "terms": "öğrenci yurdu"
+          "terms": ["öğrenci yurdu"]
         },
         "building/entrance": {
           "name": "Giriş / Çıkış"
@@ -1358,15 +1358,15 @@
         },
         "building/fire_station": {
           "name": "İtfaiye Binası",
-          "terms": "i̇tfaiye,i̇tfaiye i̇stasyonu"
+          "terms": ["i̇tfaiye", "i̇tfaiye i̇stasyonu"]
         },
         "building/garage": {
           "name": "Garaj",
-          "terms": "garaj"
+          "terms": ["garaj"]
         },
         "building/garages": {
           "name": "Garajlar",
-          "terms": "garajlar"
+          "terms": ["garajlar"]
         },
         "building/ger": {
           "name": "Yurt"
@@ -1376,44 +1376,44 @@
         },
         "building/greenhouse": {
           "name": "Sera",
-          "terms": "sera"
+          "terms": ["sera"]
         },
         "building/hangar": {
           "name": "Hangar Binası"
         },
         "building/hospital": {
           "name": "Hastane",
-          "terms": "hastane"
+          "terms": ["hastane"]
         },
         "building/hotel": {
           "name": "Otel Binası",
-          "terms": "otel"
+          "terms": ["otel"]
         },
         "building/house": {
           "name": "Ev",
-          "terms": "ev"
+          "terms": ["ev"]
         },
         "building/houseboat": {
           "name": "Tekne Ev"
         },
         "building/hut": {
           "name": "Kulübe",
-          "terms": "baraka"
+          "terms": ["baraka"]
         },
         "building/industrial": {
           "name": "Endüstriyel Bina",
-          "terms": "sanayi binası,sınai bina,endüstriyel bina"
+          "terms": ["sanayi binası", "sınai bina", "endüstriyel bina"]
         },
         "building/kindergarten": {
           "name": "Kreş / Anaokulu Binası",
-          "terms": "anaokulu binası,kreş binası"
+          "terms": ["anaokulu binası", "kreş binası"]
         },
         "building/manufacture": {
           "name": "Endüstriyel Üretim Binası"
         },
         "building/mosque": {
           "name": "Cami",
-          "terms": "cami"
+          "terms": ["cami"]
         },
         "building/office": {
           "name": "Ofis Binası"
@@ -1426,47 +1426,47 @@
         },
         "building/public": {
           "name": "Devlet Binası",
-          "terms": "devlet binası"
+          "terms": ["devlet binası"]
         },
         "building/residential": {
           "name": "Konut",
-          "terms": "konut,mesken,ev"
+          "terms": ["konut", "mesken", "ev"]
         },
         "building/retail": {
           "name": "Satış Mağazası",
-          "terms": "satış mağazası"
+          "terms": ["satış mağazası"]
         },
         "building/roof": {
           "name": "Çatı",
-          "terms": "çatı"
+          "terms": ["çatı"]
         },
         "building/ruins": {
           "name": "Bina Kalıntısı",
-          "terms": "bina kalıntısı"
+          "terms": ["bina kalıntısı"]
         },
         "building/school": {
           "name": "Okul Binası",
-          "terms": "okul,okul binası,okul yapısı,i̇lkokul,ortaokul,lise"
+          "terms": ["okul", "okul binası", "okul yapısı", "i̇lkokul", "ortaokul", "lise"]
         },
         "building/semidetached_house": {
           "name": "Bitişik Nizam Ev",
-          "terms": "bitişik nizam ev"
+          "terms": ["bitişik nizam ev"]
         },
         "building/service": {
           "name": "Servis Binası",
-          "terms": "servis binası"
+          "terms": ["servis binası"]
         },
         "building/shed": {
           "name": "Kulübe",
-          "terms": "küçük kulübe,baraka"
+          "terms": ["küçük kulübe", "baraka"]
         },
         "building/stable": {
           "name": "Ahır",
-          "terms": "ahır"
+          "terms": ["ahır"]
         },
         "building/stadium": {
           "name": "Stadyum",
-          "terms": "stadyum"
+          "terms": ["stadyum"]
         },
         "building/static_caravan": {
           "name": "Mobile Home"
@@ -1476,34 +1476,34 @@
         },
         "building/synagogue": {
           "name": "Sinagog Binası",
-          "terms": "sinagog,havra"
+          "terms": ["sinagog", "havra"]
         },
         "building/temple": {
           "name": "Tapınak",
-          "terms": "tapınak"
+          "terms": ["tapınak"]
         },
         "building/terrace": {
           "name": "Sıra Evler",
-          "terms": "sıralı,bina,ev,ardı ardına,çizgi,düz,bitişik,birleşik"
+          "terms": ["sıralı", "bina", "ev", "ardı ardına", "çizgi", "düz", "bitişik", "birleşik"]
         },
         "building/train_station": {
           "name": "Tren İstasyonu Binası"
         },
         "building/transportation": {
           "name": "Terminal",
-          "terms": "terminal"
+          "terms": ["terminal"]
         },
         "building/university": {
           "name": "Üniversite Binası",
-          "terms": "üniversite"
+          "terms": ["üniversite"]
         },
         "building/warehouse": {
           "name": "Depo",
-          "terms": "ambar"
+          "terms": ["ambar"]
         },
         "building_part": {
           "name": "Yapı bölümü",
-          "terms": "yapı parçası"
+          "terms": ["yapı parçası"]
         },
         "building_point": {
           "name": "Bina"
@@ -1516,11 +1516,11 @@
         },
         "climbing/route": {
           "name": "Tırmanış Rotası",
-          "terms": "tırmanma rotası,tırmanma yolu,tırmanış yolu,tırmanma güzergâhı"
+          "terms": ["tırmanma rotası", "tırmanma yolu", "tırmanış yolu", "tırmanma güzergâhı"]
         },
         "club": {
           "name": "Klüb",
-          "terms": "bar,kulüp"
+          "terms": ["bar", "kulüp"]
         },
         "club/scout": {
           "name": "Scout Group"
@@ -1530,45 +1530,45 @@
         },
         "craft": {
           "name": "Zanaat",
-          "terms": "zanaat,ustalık"
+          "terms": ["zanaat", "ustalık"]
         },
         "craft/agricultural_engines": {
           "name": "Tarımsal Motorlar Mekaniği"
         },
         "craft/basket_maker": {
           "name": "Sepetçi",
-          "terms": "sepetçi"
+          "terms": ["sepetçi"]
         },
         "craft/beekeeper": {
           "name": "Arıcı",
-          "terms": "arıcı"
+          "terms": ["arıcı"]
         },
         "craft/blacksmith": {
           "name": "Demirci",
-          "terms": "nalbant,demirci"
+          "terms": ["nalbant", "demirci"]
         },
         "craft/boatbuilder": {
           "name": "Tersane",
-          "terms": "tersane"
+          "terms": ["tersane"]
         },
         "craft/bookbinder": {
           "name": "Ciltçi",
-          "terms": "ciltçi"
+          "terms": ["ciltçi"]
         },
         "craft/brewery": {
           "name": "El Yapımı Bira İşletmesi"
         },
         "craft/carpenter": {
           "name": "Marangoz",
-          "terms": "marangoz,dülger,doğramacı"
+          "terms": ["marangoz", "dülger", "doğramacı"]
         },
         "craft/carpet_layer": {
           "name": "Halıcı",
-          "terms": "halıcı"
+          "terms": ["halıcı"]
         },
         "craft/caterer": {
           "name": "Gıda Dağıtım Şirketi",
-          "terms": "gıda dağıtım şirketi"
+          "terms": ["gıda dağıtım şirketi"]
         },
         "craft/chimney_sweeper": {
           "name": "Baca Temizleyicisi"
@@ -1578,37 +1578,37 @@
         },
         "craft/clockmaker": {
           "name": "Saatçi",
-          "terms": "saatçi"
+          "terms": ["saatçi"]
         },
         "craft/confectionery": {
           "name": "Şekerci"
         },
         "craft/distillery": {
           "name": "İçki İmalathanesi",
-          "terms": "i̇çki i̇malathanesi,i̇çki fabrikası"
+          "terms": ["i̇çki i̇malathanesi", "i̇çki fabrikası"]
         },
         "craft/dressmaker": {
           "name": "Kadın Terzisi",
-          "terms": "kadın terzisi"
+          "terms": ["kadın terzisi"]
         },
         "craft/electrician": {
           "name": "Elektrikçi",
-          "terms": "elektrikçi"
+          "terms": ["elektrikçi"]
         },
         "craft/electronics_repair": {
           "name": "Elektronik Tamircisi",
-          "terms": "elektronik tamircisi"
+          "terms": ["elektronik tamircisi"]
         },
         "craft/floorer": {
           "name": "Döşeme Ustası"
         },
         "craft/gardener": {
           "name": "Bahçıvan",
-          "terms": "bahçıvan"
+          "terms": ["bahçıvan"]
         },
         "craft/glaziery": {
           "name": "Camcı",
-          "terms": "camcı"
+          "terms": ["camcı"]
         },
         "craft/handicraft": {
           "name": "El Sanatları Çalışma Alanı"
@@ -1618,14 +1618,14 @@
         },
         "craft/insulator": {
           "name": "Kaloriferci",
-          "terms": "kaloriferci"
+          "terms": ["kaloriferci"]
         },
         "craft/joiner": {
           "name": "Marangoz"
         },
         "craft/key_cutter": {
           "name": "Çilingir",
-          "terms": "çilingir"
+          "terms": ["çilingir"]
         },
         "craft/locksmith": {
           "name": "Anahtarcı"
@@ -1635,95 +1635,95 @@
         },
         "craft/painter": {
           "name": "Boyacı",
-          "terms": "boyacı"
+          "terms": ["boyacı"]
         },
         "craft/parquet_layer": {
           "name": "Parke Ustası",
-          "terms": "parke ustası,parkeci"
+          "terms": ["parke ustası", "parkeci"]
         },
         "craft/photographer": {
           "name": "Fotoğrafçı",
-          "terms": "fotoğrafçı"
+          "terms": ["fotoğrafçı"]
         },
         "craft/photographic_laboratory": {
           "name": "Fotoğraf Labovatuarı",
-          "terms": "fotoğraf labovatuarı"
+          "terms": ["fotoğraf labovatuarı"]
         },
         "craft/plasterer": {
           "name": "Sıvacı",
-          "terms": "sıvacı,alçıcı"
+          "terms": ["sıvacı", "alçıcı"]
         },
         "craft/plumber": {
           "name": "Tesisatçı",
-          "terms": "tesisatçı,su tesisatçısı,sıhhi tesisatçı"
+          "terms": ["tesisatçı", "su tesisatçısı", "sıhhi tesisatçı"]
         },
         "craft/pottery": {
           "name": "Çömlekçi"
         },
         "craft/rigger": {
           "name": "Kablocu",
-          "terms": "kablocu"
+          "terms": ["kablocu"]
         },
         "craft/roofer": {
           "name": "Çatı Tamircisi",
-          "terms": "çatı tamircisi,çatıcı,çatı ustası"
+          "terms": ["çatı tamircisi", "çatıcı", "çatı ustası"]
         },
         "craft/saddler": {
           "name": "Eyerci",
-          "terms": "eyerci"
+          "terms": ["eyerci"]
         },
         "craft/sailmaker": {
           "name": "Yelkenci",
-          "terms": "yelkenci"
+          "terms": ["yelkenci"]
         },
         "craft/sawmill": {
           "name": "Kereste Fabrikası",
-          "terms": "kereste fabrikası,bıçkıevi"
+          "terms": ["kereste fabrikası", "bıçkıevi"]
         },
         "craft/scaffolder": {
           "name": "İskeleci",
-          "terms": "i̇skeleci,yapı kurma ustası"
+          "terms": ["i̇skeleci", "yapı kurma ustası"]
         },
         "craft/sculptor": {
           "name": "Yontucu"
         },
         "craft/shoemaker": {
           "name": "Ayakkabıcı",
-          "terms": "ayakkabıcı"
+          "terms": ["ayakkabıcı"]
         },
         "craft/signmaker": {
           "name": "Tabelacı"
         },
         "craft/stonemason": {
           "name": "Duvarcı",
-          "terms": "duvarcı"
+          "terms": ["duvarcı"]
         },
         "craft/tailor": {
           "name": "Terzi"
         },
         "craft/tiler": {
           "name": "Kiremetçi",
-          "terms": "kiremetçi"
+          "terms": ["kiremetçi"]
         },
         "craft/tinsmith": {
           "name": "Kalaycı",
-          "terms": "kalaycı,tenekeci"
+          "terms": ["kalaycı", "tenekeci"]
         },
         "craft/upholsterer": {
           "name": "Döşemeci",
-          "terms": "döşemeci,koltukçu"
+          "terms": ["döşemeci", "koltukçu"]
         },
         "craft/watchmaker": {
           "name": "Saatçi",
-          "terms": "saatçi"
+          "terms": ["saatçi"]
         },
         "craft/window_construction": {
           "name": "Pencereci",
-          "terms": "pencereci"
+          "terms": ["pencereci"]
         },
         "craft/winery": {
           "name": "Şarap Fabrikası",
-          "terms": "şarap fabrikası"
+          "terms": ["şarap fabrikası"]
         },
         "cycleway/asl": {
           "name": "Gelişmiş Durma Hattı"
@@ -1751,35 +1751,35 @@
         },
         "education/dancing_school": {
           "name": "Dans Kursu",
-          "terms": "dans kursu,dans okulu,bale,jive,tango,vals"
+          "terms": ["dans kursu", "dans okulu", "bale", "jive", "tango", "vals"]
         },
         "education/driving_school": {
           "name": "Sürücü Kursu",
-          "terms": "sürücü kursu,ehliyet kursu"
+          "terms": ["sürücü kursu", "ehliyet kursu"]
         },
         "education/kindergarten": {
           "name": "Kreş / Anaokulu Alanı",
-          "terms": "kreş,anaokulu,okul öncesi"
+          "terms": ["kreş", "anaokulu", "okul öncesi"]
         },
         "education/language_school": {
           "name": "Dil Kursu",
-          "terms": "dil okulu,dil kursu,yabancı dil kursu"
+          "terms": ["dil okulu", "dil kursu", "yabancı dil kursu"]
         },
         "education/music_school": {
           "name": "Müzik Kursu",
-          "terms": "müzik okulu,müzik kursu,konservatuar"
+          "terms": ["müzik okulu", "müzik kursu", "konservatuar"]
         },
         "education/prep_school": {
           "name": "Dershane / Özel Öğretim Kursu",
-          "terms": "dershane,özel öğretim kursu"
+          "terms": ["dershane", "özel öğretim kursu"]
         },
         "education/school": {
           "name": "Okul Alanı",
-          "terms": "okul,okul alanı,okul sahası,i̇lkokul,ortaokul,lise"
+          "terms": ["okul", "okul alanı", "okul sahası", "i̇lkokul", "ortaokul", "lise"]
         },
         "education/university": {
           "name": "Üniversite Yerleşkesi",
-          "terms": "üniversite,yüksekokul,yerleşke,kampüs"
+          "terms": ["üniversite", "yüksekokul", "yerleşke", "kampüs"]
         },
         "embankment": {
           "name": "Toprak Dolgu"
@@ -1789,15 +1789,15 @@
         },
         "emergency/ambulance_station": {
           "name": "Ambulans İstasyonu",
-          "terms": "ambulans i̇stasyonu"
+          "terms": ["ambulans i̇stasyonu"]
         },
         "emergency/assembly_point": {
           "name": "Acil Durum Toplanma Alanı",
-          "terms": "acil durum toplanma alanı,toplanma noktası,toplanma bölgesi,afet ve acil durum toplanma alanı"
+          "terms": ["acil durum toplanma alanı", "toplanma noktası", "toplanma bölgesi", "afet ve acil durum toplanma alanı"]
         },
         "emergency/defibrillator": {
           "name": "Şok Cihazı",
-          "terms": "şok cihazı"
+          "terms": ["şok cihazı"]
         },
         "emergency/fire_alarm": {
           "name": "Yangın Alarmı Arama Kutusu"
@@ -1810,7 +1810,7 @@
         },
         "emergency/fire_hydrant": {
           "name": "Yangın Musluğu",
-          "terms": "yangın musluğu"
+          "terms": ["yangın musluğu"]
         },
         "emergency/fire_service_inlet": {
           "name": "Fire Department Connection"
@@ -1835,7 +1835,7 @@
         },
         "emergency/phone": {
           "name": "Acil Durum Telefonu",
-          "terms": "acil durum telefonu"
+          "terms": ["acil durum telefonu"]
         },
         "emergency/siren": {
           "name": "Siren"
@@ -1854,32 +1854,32 @@
         },
         "entrance/emergency": {
           "name": "Acil Çıkış",
-          "terms": "acil çıkış,yangın çıkışı"
+          "terms": ["acil çıkış", "yangın çıkışı"]
         },
         "entrance/emergency_ward_entrance": {
           "name": "Acil Servis Girişi",
-          "terms": "acil servis girişi,acil girişi"
+          "terms": ["acil servis girişi", "acil girişi"]
         },
         "entrance/main": {
           "name": "Ana Giriş"
         },
         "entrance/shop": {
           "name": "Mağaza Girişi",
-          "terms": "market girişi,dükkân girişi,bakkal girişi"
+          "terms": ["market girişi", "dükkân girişi", "bakkal girişi"]
         },
         "entrance/staircase": {
           "name": "Staircase Entrance"
         },
         "ford": {
           "name": "Sığ Geçit, Akarsu Üzerinde Geçit Yeri",
-          "terms": "geçit,sığ yer"
+          "terms": ["geçit", "sığ yer"]
         },
         "ford_line": {
           "name": "Sığ dere geçidi (geçit)"
         },
         "golf/bunker": {
           "name": "Kum Kapanı",
-          "terms": "kum kapanı"
+          "terms": ["kum kapanı"]
         },
         "golf/cartpath": {
           "name": "Golf Arabası Yolu"
@@ -1892,15 +1892,15 @@
         },
         "golf/fairway": {
           "name": "Serbest Geçiş",
-          "terms": "serbest geçiş"
+          "terms": ["serbest geçiş"]
         },
         "golf/green": {
           "name": "Saha",
-          "terms": "saha"
+          "terms": ["saha"]
         },
         "golf/hole": {
           "name": "Delik",
-          "terms": "delik"
+          "terms": ["delik"]
         },
         "golf/lateral_water_hazard": {
           "name": "Yanda Su Tehlikesi"
@@ -1910,22 +1910,22 @@
         },
         "golf/rough": {
           "name": "Sert",
-          "terms": "sert"
+          "terms": ["sert"]
         },
         "golf/tee": {
           "name": "Başlama Yeri",
-          "terms": "başlama yeri"
+          "terms": ["başlama yeri"]
         },
         "golf/water_hazard": {
           "name": "Su Tehlikesi"
         },
         "healthcare": {
           "name": "Sağlık Merkezi",
-          "terms": "sağlık merkezi"
+          "terms": ["sağlık merkezi"]
         },
         "healthcare/alternative": {
           "name": "Alternatif Tıp",
-          "terms": "alternatif tıp"
+          "terms": ["alternatif tıp"]
         },
         "healthcare/alternative/acupuncture": {
           "name": "Acupuncture Practitioner"
@@ -1935,7 +1935,7 @@
         },
         "healthcare/alternative/chiropractic": {
           "name": "Masör",
-          "terms": "masaj uzmanı"
+          "terms": ["masaj uzmanı"]
         },
         "healthcare/alternative/homeopathy": {
           "name": "Homeopath"
@@ -1951,15 +1951,15 @@
         },
         "healthcare/audiologist": {
           "name": "Ses Uzmanı",
-          "terms": "odyolog"
+          "terms": ["odyolog"]
         },
         "healthcare/birthing_center": {
           "name": "Doğum Merkezi",
-          "terms": "bebek merkezi"
+          "terms": ["bebek merkezi"]
         },
         "healthcare/blood_donation": {
           "name": "Kan Bağış Merkezi",
-          "terms": "kan bağış merkezi"
+          "terms": ["kan bağış merkezi"]
         },
         "healthcare/counselling": {
           "name": "Danışmanlık Merkezi"
@@ -1969,52 +1969,52 @@
         },
         "healthcare/hospice": {
           "name": "Darülaceze",
-          "terms": "düşkünlerevi"
+          "terms": ["düşkünlerevi"]
         },
         "healthcare/laboratory": {
           "name": "Tıbbi Laboratuvar"
         },
         "healthcare/midwife": {
           "name": "Ebe",
-          "terms": "hemşire"
+          "terms": ["hemşire"]
         },
         "healthcare/occupational_therapist": {
           "name": "Tedavi Uzmanı",
-          "terms": "tedavi sorumlusu"
+          "terms": ["tedavi sorumlusu"]
         },
         "healthcare/optometrist": {
           "name": "Göz Doktoru",
-          "terms": "optometri uzmanı"
+          "terms": ["optometri uzmanı"]
         },
         "healthcare/physiotherapist": {
           "name": "Fizik Tedavi Uzmanı",
-          "terms": "fizyoterapist"
+          "terms": ["fizyoterapist"]
         },
         "healthcare/podiatrist": {
           "name": "Ayak Hastalıkları Uzmanı",
-          "terms": "podiyatri uzmanı"
+          "terms": ["podiyatri uzmanı"]
         },
         "healthcare/psychotherapist": {
           "name": "Ruh Sağlıkları Uzmanı",
-          "terms": "psikoterapist"
+          "terms": ["psikoterapist"]
         },
         "healthcare/rehabilitation": {
           "name": "Rehabilitasyon Merkezi, İyileştirme Merkezi",
-          "terms": "rehabilitasyon tesisi"
+          "terms": ["rehabilitasyon tesisi"]
         },
         "healthcare/sample_collection": {
           "name": "Sample Collection Facility"
         },
         "healthcare/speech_therapist": {
           "name": "Konuşma Terapisti",
-          "terms": "konuşma uzmanı"
+          "terms": ["konuşma uzmanı"]
         },
         "highway": {
           "name": "Karayolu Özelliği"
         },
         "highway/bridleway": {
           "name": "At Yolu",
-          "terms": "at yolu,at yürüyüş yolu"
+          "terms": ["at yolu", "at yürüyüş yolu"]
         },
         "highway/bus_guideway": {
           "name": "Otobüs Tercihli Yolu"
@@ -2024,15 +2024,15 @@
         },
         "highway/busway": {
           "name": "Otobüs İçin Ayrılmış Yol",
-          "terms": "otobüs yolu,otobüs hattı"
+          "terms": ["otobüs yolu", "otobüs hattı"]
         },
         "highway/construction": {
           "name": "Yapım Aşamasında Yol",
-          "terms": "yol i̇nşaatı,yol çalışması"
+          "terms": ["yol i̇nşaatı", "yol çalışması"]
         },
         "highway/corridor": {
           "name": "Koridor",
-          "terms": "koridor,geçit"
+          "terms": ["koridor", "geçit"]
         },
         "highway/crossing": {
           "name": "Geçit"
@@ -2042,33 +2042,33 @@
         },
         "highway/crossing/uncontrolled": {
           "name": "İşaretli Yaya Geçidi",
-          "terms": "i̇şaretlenmiş yaya geçidi,yaya geçidi,zebra çizgili yaya geçidi,zebra desenli yaya geçidi,sinyalizasyonlu yaya geçidi"
+          "terms": ["i̇şaretlenmiş yaya geçidi", "yaya geçidi", "zebra çizgili yaya geçidi", "zebra desenli yaya geçidi", "sinyalizasyonlu yaya geçidi"]
         },
         "highway/crossing/unmarked": {
           "name": "İşaretsiz Yaya Geçidi"
         },
         "highway/cycleway": {
           "name": "Bisiklet Yolu",
-          "terms": "bisiklet yolu"
+          "terms": ["bisiklet yolu"]
         },
         "highway/cycleway/bicycle_foot": {
           "name": "Bisiklet ve Yaya Yolu",
-          "terms": "bisiklet yolu,yaya yolu,bisikletli yolu"
+          "terms": ["bisiklet yolu", "yaya yolu", "bisikletli yolu"]
         },
         "highway/cycleway/crossing": {
           "name": "Bisiklet Geçidi"
         },
         "highway/cycleway/crossing/bicycle_foot": {
           "name": "Bisiklet ve Yaya Geçidi",
-          "terms": "bisiklet geçidi,yaya geçidi,çok amaçlı geçit"
+          "terms": ["bisiklet geçidi", "yaya geçidi", "çok amaçlı geçit"]
         },
         "highway/cycleway/crossing/traffic_signals": {
           "name": "Trafik Lambası Olan Bisiklet Geçidi",
-          "terms": "trafik lambalı bisiklet geçidi,trafik i̇şaretli bisiklet geçidi"
+          "terms": ["trafik lambalı bisiklet geçidi", "trafik i̇şaretli bisiklet geçidi"]
         },
         "highway/cycleway/crossing/uncontrolled": {
           "name": "İşaretli Bisiklet Geçidi",
-          "terms": "i̇şaretlenmiş bisiklet geçidi,zebra çizgili bisiklet geçidi"
+          "terms": ["i̇şaretlenmiş bisiklet geçidi", "zebra çizgili bisiklet geçidi"]
         },
         "highway/cycleway/crossing/unmarked": {
           "name": "İşaretsiz Bisiklet Geçidi"
@@ -2078,7 +2078,7 @@
         },
         "highway/elevator": {
           "name": "Asansör",
-          "terms": "asansör"
+          "terms": ["asansör"]
         },
         "highway/elevator_line": {
           "name": "Eğimli Asansör"
@@ -2094,7 +2094,7 @@
         },
         "highway/footway": {
           "name": "Yürüyüş Yolu",
-          "terms": "yürüyüş yolu,yaya yolu"
+          "terms": ["yürüyüş yolu", "yaya yolu"]
         },
         "highway/footway/access_aisle": {
           "name": "Erişim Koridoru"
@@ -2125,37 +2125,37 @@
         },
         "highway/give_way": {
           "name": "Yol Ver İşareti",
-          "terms": "yol ver i̇şareti,yol ver levhası"
+          "terms": ["yol ver i̇şareti", "yol ver levhası"]
         },
         "highway/ladder": {
           "name": "Dikey Merdiven",
-          "terms": "merdiven,çıkmak,tırmanma"
+          "terms": ["merdiven", "çıkmak", "tırmanma"]
         },
         "highway/living_street": {
           "name": "Yaya Öncelikli Yol",
-          "terms": "yaya öncelikli yol"
+          "terms": ["yaya öncelikli yol"]
         },
         "highway/milestone": {
           "name": "Otoyol Kilometre Taşı"
         },
         "highway/mini_roundabout": {
           "name": "Küçük Dönel Kavşak",
-          "terms": "küçük dönel kavşak"
+          "terms": ["küçük dönel kavşak"]
         },
         "highway/motorway": {
           "name": "Otoyol",
-          "terms": "otoyol,otoban"
+          "terms": ["otoyol", "otoban"]
         },
         "highway/motorway_link": {
           "name": "Otoyol Bağlantı Yolu",
-          "terms": "otoyol bağlantı yolu,otoyola bağlanan yol"
+          "terms": ["otoyol bağlantı yolu", "otoyola bağlanan yol"]
         },
         "highway/passing_place": {
           "name": "Geçiş Yeri"
         },
         "highway/path": {
           "name": "Patika",
-          "terms": "patika,yol"
+          "terms": ["patika", "yol"]
         },
         "highway/path/boardwalk": {
           "name": "Kaldırım"
@@ -2174,11 +2174,11 @@
         },
         "highway/primary": {
           "name": "Birincil Yol",
-          "terms": "anayol"
+          "terms": ["anayol"]
         },
         "highway/primary_link": {
           "name": "Birincil Bağlantı Yolu",
-          "terms": "birincil bağlantı yolu,birincil yola bağlanan yol"
+          "terms": ["birincil bağlantı yolu", "birincil yola bağlanan yol"]
         },
         "highway/raceway": {
           "name": "Motor Sporları Yarış Pisti"
@@ -2191,145 +2191,145 @@
         },
         "highway/residential": {
           "name": "Yerleşim Yeri Yolu",
-          "terms": "yerleşim yeri yolu,mahalle arası yol"
+          "terms": ["yerleşim yeri yolu", "mahalle arası yol"]
         },
         "highway/rest_area": {
           "name": "Dinlenme Alanı",
-          "terms": "dinlenme alanı"
+          "terms": ["dinlenme alanı"]
         },
         "highway/road": {
           "name": "Bilinmeyen Yol",
-          "terms": "bilinmeyen yol"
+          "terms": ["bilinmeyen yol"]
         },
         "highway/road/bridge": {
           "name": "Bilinmeyen Yol Köprüsü"
         },
         "highway/secondary": {
           "name": "İkincil Yol",
-          "terms": "yol,i̇kincil yolları birbirine bağlayan yol"
+          "terms": ["yol", "i̇kincil yolları birbirine bağlayan yol"]
         },
         "highway/secondary_link": {
           "name": "İkincil Bağlantı Yolu",
-          "terms": "i̇kincil bağlantı yolu"
+          "terms": ["i̇kincil bağlantı yolu"]
         },
         "highway/service": {
           "name": "Servis Yolu",
-          "terms": "servis yolu"
+          "terms": ["servis yolu"]
         },
         "highway/service/alley": {
           "name": "Ara Sokak",
-          "terms": "ara sokak,dar yol"
+          "terms": ["ara sokak", "dar yol"]
         },
         "highway/service/drive-through": {
           "name": "Arabaya Servis Yolu",
-          "terms": "arabaya servis yolu"
+          "terms": ["arabaya servis yolu"]
         },
         "highway/service/driveway": {
           "name": "Özel Yol",
-          "terms": "özel yol"
+          "terms": ["özel yol"]
         },
         "highway/service/emergency_access": {
           "name": "Acil Erişim",
-          "terms": "acil erişim"
+          "terms": ["acil erişim"]
         },
         "highway/service/parking_aisle": {
           "name": "Park Yolu",
-          "terms": "park yolu,park yeri,park koridoru"
+          "terms": ["park yolu", "park yeri", "park koridoru"]
         },
         "highway/service_area": {
           "name": "Servis alanı"
         },
         "highway/services": {
           "name": "Servis Alanı",
-          "terms": "servis alanı,tamir alanı"
+          "terms": ["servis alanı", "tamir alanı"]
         },
         "highway/speed_camera": {
           "name": "Hız Kontrol Kamerası",
-          "terms": "hız kontrol kamerası,radar kamerası"
+          "terms": ["hız kontrol kamerası", "radar kamerası"]
         },
         "highway/speed_display": {
           "name": "Hız radarı"
         },
         "highway/steps": {
           "name": "Merdiven",
-          "terms": "merdiven,basamaklar"
+          "terms": ["merdiven", "basamaklar"]
         },
         "highway/steps/conveying": {
           "name": "Yürüyen merdiven"
         },
         "highway/stop": {
           "name": "Dur İşareti",
-          "terms": "dur i̇şareti,dur levhası"
+          "terms": ["dur i̇şareti", "dur levhası"]
         },
         "highway/street_lamp": {
           "name": "Sokak Lambası",
-          "terms": "sokak lambası,sokak işığı"
+          "terms": ["sokak lambası", "sokak işığı"]
         },
         "highway/tertiary": {
           "name": "Üçüncül Yol",
-          "terms": "üçüncül yol"
+          "terms": ["üçüncül yol"]
         },
         "highway/tertiary_link": {
           "name": "Üçüncül Bağlantı Yolu",
-          "terms": "üçüncül bağlantı yolu,üçüncül yola bağlanan yol"
+          "terms": ["üçüncül bağlantı yolu", "üçüncül yola bağlanan yol"]
         },
         "highway/toll_gantry": {
           "name": "Açık Yol Geçiş Ücreti"
         },
         "highway/track": {
           "name": "Dağ Aracı / Karadan Erişim Yolu",
-          "terms": "tarım yolu,bakımsız yol,bakımsız patika,bakımsız araç yolu"
+          "terms": ["tarım yolu", "bakımsız yol", "bakımsız patika", "bakımsız araç yolu"]
         },
         "highway/traffic_mirror": {
           "name": "Trafik Aynası",
-          "terms": "trafik aynası"
+          "terms": ["trafik aynası"]
         },
         "highway/traffic_signals": {
           "name": "Trafik İşaretleri",
-          "terms": "trafik i̇şaretleri,trafik levhaları"
+          "terms": ["trafik i̇şaretleri", "trafik levhaları"]
         },
         "highway/trailhead": {
           "name": "Yol Başlangıcı"
         },
         "highway/trunk": {
           "name": "Duble Yol",
-          "terms": "duble yol"
+          "terms": ["duble yol"]
         },
         "highway/trunk_link": {
           "name": "Duble Yol Bağlantı Yolu",
-          "terms": "duble yol bağlantı yolu,duble yola bağlantı yolu,duble yola bağlanan yol"
+          "terms": ["duble yol bağlantı yolu", "duble yola bağlantı yolu", "duble yola bağlanan yol"]
         },
         "highway/turning_circle": {
           "name": "Dönüş Alanı",
-          "terms": "dönüş alanı"
+          "terms": ["dönüş alanı"]
         },
         "highway/turning_loop": {
           "name": "Dönüş Yeri",
-          "terms": "dönüş yeri,dönüş adası"
+          "terms": ["dönüş yeri", "dönüş adası"]
         },
         "highway/unclassified": {
           "name": "Tali / Sınıflandırılmamış Yol",
-          "terms": "şehir dışı yol,uzak yol,küçük yol"
+          "terms": ["şehir dışı yol", "uzak yol", "küçük yol"]
         },
         "historic": {
           "name": "Tarihi Yer",
-          "terms": "tarihi yer"
+          "terms": ["tarihi yer"]
         },
         "historic/archaeological_site": {
           "name": "Arkeolojik Alan",
-          "terms": "arkeolojik alan"
+          "terms": ["arkeolojik alan"]
         },
         "historic/boundary_stone": {
           "name": "Sınır İşareti",
-          "terms": "sınır i̇şareti,sınır taşı"
+          "terms": ["sınır i̇şareti", "sınır taşı"]
         },
         "historic/building": {
           "name": "Tarihi Bina",
-          "terms": "tarihî bina"
+          "terms": ["tarihî bina"]
         },
         "historic/castle": {
           "name": "Kale",
-          "terms": "kale"
+          "terms": ["kale"]
         },
         "historic/castle/fortress": {
           "name": "Tarihi Kale"
@@ -2351,7 +2351,7 @@
         },
         "historic/memorial": {
           "name": "Anıt",
-          "terms": "anıt"
+          "terms": ["anıt"]
         },
         "historic/memorial/blue_plaque-GB-IE": {
           "name": "Blue Plaque"
@@ -2361,26 +2361,26 @@
         },
         "historic/monument": {
           "name": "Abide",
-          "terms": "abide"
+          "terms": ["abide"]
         },
         "historic/pillory": {
           "name": "Tarihi Boyunduruk"
         },
         "historic/ruins": {
           "name": "Harabeler",
-          "terms": "harabeler"
+          "terms": ["harabeler"]
         },
         "historic/tomb": {
           "name": "Mezar",
-          "terms": "türbe,mezar,kabir"
+          "terms": ["türbe", "mezar", "kabir"]
         },
         "historic/wayside_cross": {
           "name": "Çarmıh",
-          "terms": "çarmıh"
+          "terms": ["çarmıh"]
         },
         "historic/wayside_shrine": {
           "name": "Çarmıh Taşı",
-          "terms": "çarmıh taşı"
+          "terms": ["çarmıh taşı"]
         },
         "historic/wreck": {
           "name": "Gemi Enkazı"
@@ -2417,7 +2417,7 @@
         },
         "junction": {
           "name": "Kavşak",
-          "terms": "kavşak,yol ayrımı"
+          "terms": ["kavşak", "yol ayrımı"]
         },
         "landuse": {
           "name": "Arazi Kullanım Özelliği"
@@ -2427,7 +2427,7 @@
         },
         "landuse/aquaculture": {
           "name": "Su Kültürü",
-          "terms": "su kültürü"
+          "terms": ["su kültürü"]
         },
         "landuse/basin": {
           "name": "Havza"
@@ -2437,14 +2437,14 @@
         },
         "landuse/cemetery": {
           "name": "Mezarlık",
-          "terms": "mezarlık"
+          "terms": ["mezarlık"]
         },
         "landuse/churchyard": {
           "name": "Kilise Bahçesi"
         },
         "landuse/commercial": {
           "name": "Ticari Alan",
-          "terms": "ticari alan"
+          "terms": ["ticari alan"]
         },
         "landuse/construction": {
           "name": "İnşaat Alanı"
@@ -2454,11 +2454,11 @@
         },
         "landuse/farmland": {
           "name": "Tarım Alanı",
-          "terms": "tarım alanı,tarla"
+          "terms": ["tarım alanı", "tarla"]
         },
         "landuse/farmyard": {
           "name": "Çiftlik",
-          "terms": "çiftlik"
+          "terms": ["çiftlik"]
         },
         "landuse/flowerbed": {
           "name": "Çiçeklik"
@@ -2471,22 +2471,22 @@
         },
         "landuse/grass": {
           "name": "Çimenlik",
-          "terms": "çimenlik,yeşil alan"
+          "terms": ["çimenlik", "yeşil alan"]
         },
         "landuse/greenfield": {
           "name": "Yeşil alan"
         },
         "landuse/greenhouse_horticulture": {
           "name": "Sera Alanı",
-          "terms": "sera,seracılık"
+          "terms": ["sera", "seracılık"]
         },
         "landuse/harbour": {
           "name": "Liman",
-          "terms": "liman"
+          "terms": ["liman"]
         },
         "landuse/industrial": {
           "name": "Sanayi Bölgesi",
-          "terms": "sanayi bölgesi,sanayi alanı"
+          "terms": ["sanayi bölgesi", "sanayi alanı"]
         },
         "landuse/industrial/depot": {
           "name": "Depo"
@@ -2496,27 +2496,27 @@
         },
         "landuse/industrial/slaughterhouse": {
           "name": "Kesimevi",
-          "terms": "kesimevi,kesimhane,mezbaha,kasaphane,salhane"
+          "terms": ["kesimevi", "kesimhane", "mezbaha", "kasaphane", "salhane"]
         },
         "landuse/landfill": {
           "name": "Çöp Sahası",
-          "terms": "çöp sahası,çöplük"
+          "terms": ["çöp sahası", "çöplük"]
         },
         "landuse/meadow": {
           "name": "Çayır",
-          "terms": "çayır,mera"
+          "terms": ["çayır", "mera"]
         },
         "landuse/military": {
           "name": "Askeri Bölge",
-          "terms": "askeri bölge,askeri alan"
+          "terms": ["askeri bölge", "askeri alan"]
         },
         "landuse/military/airfield": {
           "name": "Askeri Hava Meydanı",
-          "terms": "askeri hava meydanı"
+          "terms": ["askeri hava meydanı"]
         },
         "landuse/military/barracks": {
           "name": "Kışla",
-          "terms": "kışla,tesisler"
+          "terms": ["kışla", "tesisler"]
         },
         "landuse/military/base": {
           "name": "Askeri üs"
@@ -2529,33 +2529,33 @@
         },
         "landuse/military/range": {
           "name": "Atış Sahası",
-          "terms": "atış sahası,poligon"
+          "terms": ["atış sahası", "poligon"]
         },
         "landuse/military/training_area": {
           "name": "Askeri Eğitim Alan"
         },
         "landuse/orchard": {
           "name": "Bağ",
-          "terms": "bağ,bahçe,bostan,meyve bahçesi"
+          "terms": ["bağ", "bahçe", "bostan", "meyve bahçesi"]
         },
         "landuse/plant_nursery": {
           "name": "Üretim Çiftliği",
-          "terms": "üretim çiftliği,bitki üretim çiftliği"
+          "terms": ["üretim çiftliği", "bitki üretim çiftliği"]
         },
         "landuse/pond": {
           "name": "Gölet"
         },
         "landuse/quarry": {
           "name": "Taşocağı",
-          "terms": "taşocağı,ocak"
+          "terms": ["taşocağı", "ocak"]
         },
         "landuse/railway": {
           "name": "Demiryolu Koridoru",
-          "terms": "demiryolu koridoru,demiryolu alanı"
+          "terms": ["demiryolu koridoru", "demiryolu alanı"]
         },
         "landuse/recreation_ground": {
           "name": "Antreman Sahası",
-          "terms": "antreman sahası"
+          "terms": ["antreman sahası"]
         },
         "landuse/religious": {
           "name": "Dinsel Alan"
@@ -2565,7 +2565,7 @@
         },
         "landuse/residential": {
           "name": "Yerleşim Alanı",
-          "terms": "yerleşim alanı"
+          "terms": ["yerleşim alanı"]
         },
         "landuse/residential/apartments": {
           "name": "Apartman Kompleksi"
@@ -2575,14 +2575,14 @@
         },
         "landuse/retail": {
           "name": "Çarşı",
-          "terms": "çarşı,esnaf bölgesi"
+          "terms": ["çarşı", "esnaf bölgesi"]
         },
         "landuse/salt_pond": {
           "name": "Tuzla"
         },
         "landuse/vineyard": {
           "name": "Üzüm Bağı",
-          "terms": "üzüm bağı,bağ"
+          "terms": ["üzüm bağı", "bağ"]
         },
         "landuse/winter_sports": {
           "name": "Kış Sporları Alanı"
@@ -2592,7 +2592,7 @@
         },
         "leisure/adult_gaming_centre": {
           "name": "Yetişkin Oyun Merkezi",
-          "terms": "yetişkin oyun merkezi"
+          "terms": ["yetişkin oyun merkezi"]
         },
         "leisure/amusement_arcade": {
           "name": "Oyun Salonu"
@@ -2605,29 +2605,29 @@
         },
         "leisure/bird_hide": {
           "name": "Vahşi Yaşam Gözetleme Kulesi",
-          "terms": "vahşi yaşam gözetleme kulesi"
+          "terms": ["vahşi yaşam gözetleme kulesi"]
         },
         "leisure/bleachers": {
           "name": "Açık Tribün"
         },
         "leisure/bowling_alley": {
           "name": "Bowling Salonu",
-          "terms": "bowling salonu"
+          "terms": ["bowling salonu"]
         },
         "leisure/common": {
           "name": "Piknik Alanı",
-          "terms": "piknik alanı,ortak kullanım alanı"
+          "terms": ["piknik alanı", "ortak kullanım alanı"]
         },
         "leisure/dance": {
           "name": "Dans Salonu",
-          "terms": "dans salonu"
+          "terms": ["dans salonu"]
         },
         "leisure/disc_golf_course": {
           "name": "Disk Golf Sahası"
         },
         "leisure/dog_park": {
           "name": "Köpek Parkı",
-          "terms": "köpek parkı"
+          "terms": ["köpek parkı"]
         },
         "leisure/escape_game": {
           "name": "Kaçış Odası"
@@ -2640,15 +2640,15 @@
         },
         "leisure/fitness_centre": {
           "name": "Spor Salonu",
-          "terms": "spor salonu"
+          "terms": ["spor salonu"]
         },
         "leisure/fitness_centre/yoga": {
           "name": "Yoga Stüdyosu",
-          "terms": "yoga stüdyosu"
+          "terms": ["yoga stüdyosu"]
         },
         "leisure/fitness_station": {
           "name": "Açıkhava Spor Yeri",
-          "terms": "açıkhava spor yeri"
+          "terms": ["açıkhava spor yeri"]
         },
         "leisure/fitness_station/balance_beam": {
           "name": "Egzersiz Denge Aleti"
@@ -2685,7 +2685,7 @@
         },
         "leisure/garden": {
           "name": "Bahçe",
-          "terms": "bahçe,bostan,park"
+          "terms": ["bahçe", "bostan", "park"]
         },
         "leisure/garden/botanical": {
           "name": "Botanik Bahçe"
@@ -2698,7 +2698,7 @@
         },
         "leisure/golf_course": {
           "name": "Golf Sahası",
-          "terms": "golf sahası"
+          "terms": ["golf sahası"]
         },
         "leisure/hackerspace": {
           "name": "Bilgisayar Korsanı Alanı"
@@ -2708,47 +2708,47 @@
         },
         "leisure/ice_rink": {
           "name": "Buz Pateni",
-          "terms": "buz pateni"
+          "terms": ["buz pateni"]
         },
         "leisure/indoor_play": {
           "name": "Indoor Play Center"
         },
         "leisure/marina": {
           "name": "Yat Limanı",
-          "terms": "marina"
+          "terms": ["marina"]
         },
         "leisure/marina_no_facilities": {
           "name": "Yacht Berths"
         },
         "leisure/miniature_golf": {
           "name": "Mini Golf",
-          "terms": "mini golf"
+          "terms": ["mini golf"]
         },
         "leisure/nature_reserve": {
           "name": "Doğal Koruma Alanı",
-          "terms": "doğal koruma alanı,tabiat parkı"
+          "terms": ["doğal koruma alanı", "tabiat parkı"]
         },
         "leisure/outdoor_seating": {
           "name": "Açık Oturma Alanı"
         },
         "leisure/park": {
           "name": "Park",
-          "terms": "park"
+          "terms": ["park"]
         },
         "leisure/picnic_table": {
           "name": "Piknik Masası",
-          "terms": "piknik masası"
+          "terms": ["piknik masası"]
         },
         "leisure/picnic_table/chess": {
           "name": "Satranç Masası"
         },
         "leisure/pitch": {
           "name": "Spor Sahası",
-          "terms": "spor sahası,saha"
+          "terms": ["spor sahası", "saha"]
         },
         "leisure/pitch/american_football": {
           "name": "Amerikan Futbol Sahası",
-          "terms": "amerikan futbol sahası"
+          "terms": ["amerikan futbol sahası"]
         },
         "leisure/pitch/american_handball": {
           "name": "American Handball Court"
@@ -2791,22 +2791,22 @@
         },
         "leisure/pitch/basketball": {
           "name": "Basketbol Sahası",
-          "terms": "basketbol sahası"
+          "terms": ["basketbol sahası"]
         },
         "leisure/pitch/beachvolleyball": {
           "name": "Sahil Voleybolu Sahası",
-          "terms": "sahil voleybolu sahası"
+          "terms": ["sahil voleybolu sahası"]
         },
         "leisure/pitch/bowls": {
           "name": "Açıkhava Top Oyun Sahası",
-          "terms": "açıkhava top oyun sahası"
+          "terms": ["açıkhava top oyun sahası"]
         },
         "leisure/pitch/chess": {
           "name": "Dev Satranç Tahtası"
         },
         "leisure/pitch/cricket": {
           "name": "Kriket Sahası",
-          "terms": "kriket sahası"
+          "terms": ["kriket sahası"]
         },
         "leisure/pitch/equestrian": {
           "name": "Atçılık sahası"
@@ -2822,7 +2822,7 @@
         },
         "leisure/pitch/futsal": {
           "name": "Futsal sahası",
-          "terms": "salon futbolu\nbeşe beş futbol"
+          "terms": ["salon futbolu\nbeşe beş futbol"]
         },
         "leisure/pitch/gaga": {
           "name": "Gaga Pit"
@@ -2841,18 +2841,18 @@
         },
         "leisure/pitch/paintball": {
           "name": "Paintball Alanı",
-          "terms": "paintball alanı,paintball sahası"
+          "terms": ["paintball alanı", "paintball sahası"]
         },
         "leisure/pitch/pickleball": {
           "name": "Pickleball Court"
         },
         "leisure/pitch/rugby_league": {
           "name": "Ragbi Lig Sahası",
-          "terms": "ragbi lig sahası"
+          "terms": ["ragbi lig sahası"]
         },
         "leisure/pitch/rugby_union": {
           "name": "Ragbi Sahası",
-          "terms": "ragbi sahası"
+          "terms": ["ragbi sahası"]
         },
         "leisure/pitch/shooting": {
           "name": "Shooting Range"
@@ -2862,11 +2862,11 @@
         },
         "leisure/pitch/skateboard": {
           "name": "Kaykay Parkı",
-          "terms": "kaykay parkı"
+          "terms": ["kaykay parkı"]
         },
         "leisure/pitch/soccer": {
           "name": "Futbol Sahası",
-          "terms": "futbol sahası"
+          "terms": ["futbol sahası"]
         },
         "leisure/pitch/softball": {
           "name": "Softbol Sahası"
@@ -2876,43 +2876,43 @@
         },
         "leisure/pitch/table_tennis": {
           "name": "Masa Tennis",
-          "terms": "masa tenisi"
+          "terms": ["masa tenisi"]
         },
         "leisure/pitch/tennis": {
           "name": "Tenis Sahası",
-          "terms": "tenis sahası"
+          "terms": ["tenis sahası"]
         },
         "leisure/pitch/tetherball": {
           "name": "Tetherball Court"
         },
         "leisure/pitch/volleyball": {
           "name": "Voleybol Sahası",
-          "terms": "voleybol sahası"
+          "terms": ["voleybol sahası"]
         },
         "leisure/playground": {
           "name": "Çocuk Parkı",
-          "terms": "çocuk parkı,oyun alanı"
+          "terms": ["çocuk parkı", "oyun alanı"]
         },
         "leisure/playground/indoor": {
           "name": "Indoor Playground"
         },
         "leisure/resort": {
           "name": "Tatil Yeri",
-          "terms": "tatil yeri"
+          "terms": ["tatil yeri"]
         },
         "leisure/sauna": {
           "name": "Sauna"
         },
         "leisure/slipway": {
           "name": "Gemi Kızağı",
-          "terms": "gemi kızağı"
+          "terms": ["gemi kızağı"]
         },
         "leisure/slipway_drivable": {
           "name": "Slipway (Drivable)"
         },
         "leisure/sports_centre": {
           "name": "Spor Merkezi",
-          "terms": "spor merkezi"
+          "terms": ["spor merkezi"]
         },
         "leisure/sports_centre/climbing": {
           "name": "Tırmanma Salonu"
@@ -2925,25 +2925,25 @@
         },
         "leisure/sports_centre/swimming": {
           "name": "Yüzme Havuzu Merkezi",
-          "terms": "yüzme havuzu merkezi"
+          "terms": ["yüzme havuzu merkezi"]
         },
         "leisure/sports_hall": {
           "name": "Spor salonu"
         },
         "leisure/stadium": {
           "name": "Stadyum",
-          "terms": "stadyum"
+          "terms": ["stadyum"]
         },
         "leisure/swimming_area": {
           "name": "Doğal Yüzme Alanı"
         },
         "leisure/swimming_pool": {
           "name": "Yüzme Havuzu",
-          "terms": "yüzme havuzu"
+          "terms": ["yüzme havuzu"]
         },
         "leisure/track": {
           "name": "Yarış Pisti (motor spor hariç)",
-          "terms": "yarış yolu"
+          "terms": ["yarış yolu"]
         },
         "leisure/track/athletics": {
           "name": "Track & Field Runway"
@@ -2983,18 +2983,18 @@
         },
         "leisure/water_park": {
           "name": "Su Parkı",
-          "terms": "su parkı"
+          "terms": ["su parkı"]
         },
         "line": {
           "name": "Çizgi",
-          "terms": "çizgi"
+          "terms": ["çizgi"]
         },
         "man_made": {
           "name": "İnsan Yapımı Özellik"
         },
         "man_made/adit": {
           "name": "Tünel Girişi",
-          "terms": "tünel girişi,maden girişi"
+          "terms": ["tünel girişi", "maden girişi"]
         },
         "man_made/antenna": {
           "name": "Anten"
@@ -3007,7 +3007,7 @@
         },
         "man_made/breakwater": {
           "name": "Dalgakıran",
-          "terms": "dalgakıran"
+          "terms": ["dalgakıran"]
         },
         "man_made/bridge": {
           "name": "Köprü Alanı"
@@ -3023,11 +3023,11 @@
         },
         "man_made/charge_point": {
           "name": "Elektrikli Araç Şarj Noktası",
-          "terms": "elektrik,taşıt,i̇stasyon,i̇stasyonu,bisiklet,skooter,araba,pil"
+          "terms": ["elektrik", "taşıt", "i̇stasyon", "i̇stasyonu", "bisiklet", "skooter", "araba", "pil"]
         },
         "man_made/chimney": {
           "name": "Baca",
-          "terms": "baca"
+          "terms": ["baca"]
         },
         "man_made/clearcut": {
           "name": "Tıraşlama kesilmiş Orman"
@@ -3052,7 +3052,7 @@
         },
         "man_made/cutline": {
           "name": "Yangın Durduma Hattı",
-          "terms": "yangın durduma hattı"
+          "terms": ["yangın durduma hattı"]
         },
         "man_made/dovecote": {
           "name": "Güvercinlik"
@@ -3065,7 +3065,7 @@
         },
         "man_made/flagpole": {
           "name": "Bayrak Direği",
-          "terms": "bayrak direği"
+          "terms": ["bayrak direği"]
         },
         "man_made/fuel_pump": {
           "name": "Gaz Pompası"
@@ -3075,7 +3075,7 @@
         },
         "man_made/gasometer": {
           "name": "Gazölçer",
-          "terms": "gazölçer"
+          "terms": ["gazölçer"]
         },
         "man_made/goods_conveyor": {
           "name": "Mal Taşıma Sistemi"
@@ -3085,7 +3085,7 @@
         },
         "man_made/lighthouse": {
           "name": "Deniz Feneri",
-          "terms": "deniz feneri,fener"
+          "terms": ["deniz feneri", "fener"]
         },
         "man_made/manhole": {
           "name": "Rögar Kapağı"
@@ -3110,14 +3110,14 @@
         },
         "man_made/mast": {
           "name": "Direk",
-          "terms": "baz i̇stasyonu"
+          "terms": ["baz i̇stasyonu"]
         },
         "man_made/mast/communication": {
           "name": "İletişim Direği"
         },
         "man_made/mast/communication/mobile_phone": {
           "name": "Cep Telefonu Direği",
-          "terms": "baz i̇stasyonu,cep telefonu direği,cep telefonu anteni"
+          "terms": ["baz i̇stasyonu", "cep telefonu direği", "cep telefonu anteni"]
         },
         "man_made/mast/communication/radio": {
           "name": "Radyo Yayın Direği"
@@ -3142,18 +3142,18 @@
         },
         "man_made/petroleum_well": {
           "name": "Petrol Kuyusu",
-          "terms": "petrol kuyusu"
+          "terms": ["petrol kuyusu"]
         },
         "man_made/pier": {
           "name": "Rıhtım",
-          "terms": "rıhtım"
+          "terms": ["rıhtım"]
         },
         "man_made/pier/floating": {
           "name": "Yüzer İskele"
         },
         "man_made/pipeline": {
           "name": "Boru Hattı",
-          "terms": "boru hattı"
+          "terms": ["boru hattı"]
         },
         "man_made/pipeline/underground": {
           "name": "Yeraltı Boru Hattı"
@@ -3163,7 +3163,7 @@
         },
         "man_made/pumping_station": {
           "name": "Pompa İstasyonu",
-          "terms": "pompa i̇stasyonu"
+          "terms": ["pompa i̇stasyonu"]
         },
         "man_made/quay": {
           "name": "Quay"
@@ -3173,11 +3173,11 @@
         },
         "man_made/silo": {
           "name": "Silo",
-          "terms": "silo,depo"
+          "terms": ["silo", "depo"]
         },
         "man_made/storage_tank": {
           "name": "Depolama Tankı",
-          "terms": "depolama tankı"
+          "terms": ["depolama tankı"]
         },
         "man_made/storage_tank/water": {
           "name": "Su Tankı"
@@ -3202,21 +3202,21 @@
         },
         "man_made/surveillance": {
           "name": "Güvenlik Direği",
-          "terms": "güvenlik direği"
+          "terms": ["güvenlik direği"]
         },
         "man_made/surveillance/camera": {
           "name": "Güvenlik Kamerası"
         },
         "man_made/survey_point": {
           "name": "Ölçüm Kontrol Noktası",
-          "terms": "ölçüm kontrol noktası"
+          "terms": ["ölçüm kontrol noktası"]
         },
         "man_made/tailings_pond": {
           "name": "Tailings Pond"
         },
         "man_made/tower": {
           "name": "Kule",
-          "terms": "kule"
+          "terms": ["kule"]
         },
         "man_made/tower/bell_tower": {
           "name": "Çan Kulesi"
@@ -3253,37 +3253,37 @@
         },
         "man_made/wastewater_plant": {
           "name": "Su Arıtma Tesisleri",
-          "terms": "su arıtma tesisleri,atıksu santrali"
+          "terms": ["su arıtma tesisleri", "atıksu santrali"]
         },
         "man_made/water_tap": {
           "name": "Su Musluğu"
         },
         "man_made/water_tower": {
           "name": "Su Kulesi",
-          "terms": "su kulesi"
+          "terms": ["su kulesi"]
         },
         "man_made/water_well": {
           "name": "Su Kuyusu",
-          "terms": "su kuyusu"
+          "terms": ["su kuyusu"]
         },
         "man_made/water_works": {
           "name": "Su Şebekesi",
-          "terms": "su şebekesi,su dağıtım i̇stasyonu,i̇çme suyu tesisleri"
+          "terms": ["su şebekesi", "su dağıtım i̇stasyonu", "i̇çme suyu tesisleri"]
         },
         "man_made/watermill": {
           "name": "Su Değirmeni",
-          "terms": "su değirmeni"
+          "terms": ["su değirmeni"]
         },
         "man_made/windmill": {
           "name": "Yel Değirmeni",
-          "terms": "yel değirmeni"
+          "terms": ["yel değirmeni"]
         },
         "man_made/windpump": {
           "name": "Su pompalayan yel değirmeni"
         },
         "man_made/works": {
           "name": "Fabrika",
-          "terms": "fabrika,sanayi"
+          "terms": ["fabrika", "sanayi"]
         },
         "man_made/works/brewery": {
           "name": "Industrial Brewery"
@@ -3317,49 +3317,49 @@
         },
         "natural/bare_rock": {
           "name": "Kayalık Bölge",
-          "terms": "kayalık bölge,kayalar,kaya dizisi"
+          "terms": ["kayalık bölge", "kayalar", "kaya dizisi"]
         },
         "natural/bay": {
           "name": "Koy",
-          "terms": "koy,körfez,küçük körfez"
+          "terms": ["koy", "körfez", "küçük körfez"]
         },
         "natural/beach": {
           "name": "Sahil",
-          "terms": "sahil,plaj"
+          "terms": ["sahil", "plaj"]
         },
         "natural/cape": {
           "name": "Burun"
         },
         "natural/cave_entrance": {
           "name": "Mağara Girişi",
-          "terms": "mağara girişi"
+          "terms": ["mağara girişi"]
         },
         "natural/cliff": {
           "name": "Uçurum",
-          "terms": "uçurum"
+          "terms": ["uçurum"]
         },
         "natural/coastline": {
           "name": "Kıyı Şeridi",
-          "terms": "kıyı şeridi,sahil boyu"
+          "terms": ["kıyı şeridi", "sahil boyu"]
         },
         "natural/fell": {
           "name": "Kır",
-          "terms": "kır,kırlık,otlak"
+          "terms": ["kır", "kırlık", "otlak"]
         },
         "natural/geyser": {
           "name": "Gayzer"
         },
         "natural/glacier": {
           "name": "Buzul",
-          "terms": "buzul,dağ buzulu"
+          "terms": ["buzul", "dağ buzulu"]
         },
         "natural/grassland": {
           "name": "Otlak",
-          "terms": "otlak,çayır"
+          "terms": ["otlak", "çayır"]
         },
         "natural/heath": {
           "name": "Çalılık",
-          "terms": "çalılık,fundalık"
+          "terms": ["çalılık", "fundalık"]
         },
         "natural/hot_spring": {
           "name": "Kaplıca"
@@ -3369,7 +3369,7 @@
         },
         "natural/peak": {
           "name": "Doruk",
-          "terms": "doruk,zirve,tepe"
+          "terms": ["doruk", "zirve", "tepe"]
         },
         "natural/peninsula": {
           "name": "Peninsula"
@@ -3379,26 +3379,26 @@
         },
         "natural/ridge": {
           "name": "Yükselti",
-          "terms": "yükselti,bayır,sırt,tepe"
+          "terms": ["yükselti", "bayır", "sırt", "tepe"]
         },
         "natural/rock": {
           "name": "Bağlı Kaya / Aşınmış Kaya Parçaları"
         },
         "natural/saddle": {
           "name": "Boyun",
-          "terms": "boyun,yükseltiler arasındaki vadi"
+          "terms": ["boyun", "yükseltiler arasındaki vadi"]
         },
         "natural/sand": {
           "name": "Kum",
-          "terms": "kum"
+          "terms": ["kum"]
         },
         "natural/scree": {
           "name": "Dağ Eteği",
-          "terms": "dağ eteği,kayşat"
+          "terms": ["dağ eteği", "kayşat"]
         },
         "natural/scrub": {
           "name": "Çalılık",
-          "terms": "çalılık"
+          "terms": ["çalılık"]
         },
         "natural/shingle": {
           "name": "Çatı Padavrası"
@@ -3408,7 +3408,7 @@
         },
         "natural/spring": {
           "name": "Kaynak",
-          "terms": "göze,kaynak"
+          "terms": ["göze", "kaynak"]
         },
         "natural/stone": {
           "name": "Bağlı Olmayan Taş / Aşınmış Kaya Parçaları"
@@ -3418,7 +3418,7 @@
         },
         "natural/tree": {
           "name": "Ağaç",
-          "terms": "ağaç"
+          "terms": ["ağaç"]
         },
         "natural/tree_row": {
           "name": "Ağaç Sırası"
@@ -3431,11 +3431,11 @@
         },
         "natural/volcano": {
           "name": "Yanardağ",
-          "terms": "yanardağ,volkan"
+          "terms": ["yanardağ", "volkan"]
         },
         "natural/water": {
           "name": "Su",
-          "terms": "su,su birikintisi"
+          "terms": ["su", "su birikintisi"]
         },
         "natural/water/basin": {
           "name": "Havza"
@@ -3445,7 +3445,7 @@
         },
         "natural/water/lake": {
           "name": "Göl",
-          "terms": "göl"
+          "terms": ["göl"]
         },
         "natural/water/moat": {
           "name": "Kale Hendeği"
@@ -3455,11 +3455,11 @@
         },
         "natural/water/pond": {
           "name": "Gölet",
-          "terms": "gölet,su birikintisi"
+          "terms": ["gölet", "su birikintisi"]
         },
         "natural/water/reservoir": {
           "name": "Su Deposu",
-          "terms": "su deposu,su rezervi"
+          "terms": ["su deposu", "su rezervi"]
         },
         "natural/water/river": {
           "name": "Nehir Bölgesi"
@@ -3472,7 +3472,7 @@
         },
         "natural/wetland": {
           "name": "Sulak Alan",
-          "terms": "sulak alan,sulak arazi"
+          "terms": ["sulak alan", "sulak arazi"]
         },
         "natural/wetland/bog": {
           "name": "Bog"
@@ -3481,7 +3481,7 @@
           "name": "Fen"
         },
         "natural/wetland/mangrove": {
-          "name": "Mangrove"
+          "name": "Mangrov"
         },
         "natural/wetland/marsh": {
           "name": "Marsh"
@@ -3512,52 +3512,52 @@
         },
         "noexit/yes": {
           "name": "Çıkış Yok",
-          "terms": "çıkış yok"
+          "terms": ["çıkış yok"]
         },
         "office": {
           "name": "Ofis",
-          "terms": "büro"
+          "terms": ["büro"]
         },
         "office/accountant": {
-          "name": "Muhasebeci",
-          "terms": "muhasebe ofisi"
+          "name": "Muhasebe Ofisi",
+          "terms": ["muhasebeci"]
         },
         "office/administrative": {
           "name": "İdari Ofis"
         },
         "office/adoption_agency": {
           "name": "Evlat Edinme Ajansı",
-          "terms": "evlat edinme ofisi"
+          "terms": ["evlat edinme ofisi"]
         },
         "office/advertising_agency": {
           "name": "Reklam Ajansı",
-          "terms": "reklam ofisi"
+          "terms": ["reklam ofisi"]
         },
         "office/architect": {
           "name": "Mimarlık Ofisi",
-          "terms": "mimar"
+          "terms": ["mimar"]
         },
         "office/association": {
           "name": "Yardım Kuruluşu",
-          "terms": "yardım kuruluşu merkezi"
+          "terms": ["yardım kuruluşu merkezi"]
         },
         "office/bail_bond_agent-US-PH": {
           "name": "Bail Bond Agent"
         },
         "office/charity": {
           "name": "Hayır Kurumu",
-          "terms": "hayır kurumu şubesi"
+          "terms": ["hayır kurumu şubesi"]
         },
         "office/company": {
           "name": "Şirket",
-          "terms": "şirket ofisi,şirket şubesi"
+          "terms": ["şirket ofisi", "şirket şubesi"]
         },
         "office/consulting": {
           "name": "Danışmanlık Ofisi"
         },
         "office/coworking": {
           "name": "Ortak Çalışma Alanı",
-          "terms": "ortak çalışma yeri"
+          "terms": ["ortak çalışma yeri"]
         },
         "office/diplomatic": {
           "name": "Diplomatik Ofis"
@@ -3567,98 +3567,98 @@
         },
         "office/diplomatic/embassy": {
           "name": "Büyükelçilik",
-          "terms": "elçilik"
+          "terms": ["elçilik"]
         },
         "office/diplomatic/liaison": {
           "name": "İrtibat Ofisi"
         },
         "office/educational_institution": {
           "name": "Eğitim Kurumu",
-          "terms": "okul"
+          "terms": ["okul"]
         },
         "office/employment_agency": {
           "name": "İş ve İşçi Bulma Kurumu",
-          "terms": "i̇ş ve i̇şçi bulma şubesi"
+          "terms": ["i̇ş ve i̇şçi bulma şubesi"]
         },
         "office/energy_supplier": {
           "name": "Enerji Kurumu Şubesi",
-          "terms": "enerji kurumu ofisi"
+          "terms": ["enerji kurumu ofisi"]
         },
         "office/engineer": {
-          "name": "Mühendislik Bürosu",
-          "terms": "mühendislik bürosu,mühendislik ofisi"
+          "name": "Mühendislik Ofisi",
+          "terms": ["mühendislik bürosu", "mühendislik ofisi"]
         },
         "office/estate_agent": {
           "name": "Gayrimenkul Ofisi",
-          "terms": "emlak ofisi"
+          "terms": ["emlak ofisi"]
         },
         "office/financial": {
           "name": "Finans Ofisi",
-          "terms": "finans şubesi"
+          "terms": ["finans şubesi"]
         },
         "office/financial_advisor": {
           "name": "Finans Danışmanı"
         },
         "office/forestry": {
           "name": "Ormancılık Şubesi",
-          "terms": "ormancılık merkezi"
+          "terms": ["ormancılık merkezi"]
         },
         "office/foundation": {
           "name": "Vakıf",
-          "terms": "vakıf şubesi"
+          "terms": ["vakıf şubesi"]
         },
         "office/government": {
           "name": "Devlet Dairesi",
-          "terms": "devlet kurumu"
+          "terms": ["devlet kurumu"]
         },
         "office/government/prosecutor": {
           "name": "Cumhuriyet Savcılığı"
         },
         "office/government/register_office": {
           "name": "Nüfus Dairesi",
-          "terms": "nüfus i̇daresi"
+          "terms": ["nüfus i̇daresi"]
         },
         "office/government/tax": {
           "name": "Vergi Dairesi",
-          "terms": "vergi i̇daresi"
+          "terms": ["vergi i̇daresi"]
         },
         "office/graphic_design": {
           "name": "Graphic Design Office"
         },
         "office/guide": {
           "name": "Tur Rehberi",
-          "terms": "tur rehber merkezi"
+          "terms": ["tur rehber merkezi"]
         },
         "office/insurance": {
           "name": "Sigorta Acentesi",
-          "terms": "sigorta şirket şubesi"
+          "terms": ["sigorta şirket şubesi"]
         },
         "office/it": {
           "name": "Bilişim Teknoloji Ofisi",
-          "terms": "bilişim teknoloji merkezi"
+          "terms": ["bilişim teknoloji merkezi"]
         },
         "office/lawyer": {
           "name": "Hukuk Bürosu",
-          "terms": "hukuk şirketi şubesi"
+          "terms": ["hukuk şirketi şubesi"]
         },
         "office/lawyer/notary": {
           "name": "Noter"
         },
         "office/moving_company": {
           "name": "Taşıma Şirketi Ofisi",
-          "terms": "nakliye şubesi"
+          "terms": ["nakliye şubesi"]
         },
         "office/newspaper": {
           "name": "Gazete Şubesi",
-          "terms": "gazete ofisi"
+          "terms": ["gazete ofisi"]
         },
         "office/ngo": {
           "name": "Sivil Toplum Örgütü",
-          "terms": "sivil toplum kuruluşu"
+          "terms": ["sivil toplum kuruluşu"]
         },
         "office/notary": {
           "name": "Noter",
-          "terms": "noter şubesi"
+          "terms": ["noter şubesi"]
         },
         "office/physician": {
           "name": "Hekim"
@@ -3668,41 +3668,41 @@
         },
         "office/private_investigator": {
           "name": "Dedektif",
-          "terms": "dedektif şubesi"
+          "terms": ["dedektif şubesi"]
         },
         "office/property_management": {
           "name": "Property Management / Leasing Office"
         },
         "office/quango": {
           "name": "Yarı Özel Sivil Toplum Örgütü",
-          "terms": "yarı özel sivil toplum kuruluşu"
+          "terms": ["yarı özel sivil toplum kuruluşu"]
         },
         "office/religion": {
           "name": "Dini Ofis"
         },
         "office/research": {
           "name": "Araştırma Kurumu",
-          "terms": "araştırma şubesi"
+          "terms": ["araştırma şubesi"]
         },
         "office/security": {
           "name": "Güvenlik Ofisi",
-          "terms": "güvenlik,güvenlik ofisi,özel güvenlik ofisi,güvenlik kulübesi,bekçi,koruma"
+          "terms": ["güvenlik", "güvenlik ofisi", "özel güvenlik ofisi", "güvenlik kulübesi", "bekçi", "koruma"]
         },
         "office/surveyor": {
           "name": "Harita Mühendisliği",
-          "terms": "harita etüt mühendisliği"
+          "terms": ["harita etüt mühendisliği"]
         },
         "office/tax_advisor": {
           "name": "Vergi Danışmanlığı",
-          "terms": "vergi danışmanlığı şubesi"
+          "terms": ["vergi danışmanlığı şubesi"]
         },
         "office/telecommunication": {
           "name": "Haberleşme Bürosu",
-          "terms": "telekomünikasyon bürosu,telekom bürosu"
+          "terms": ["telekomünikasyon bürosu", "telekom bürosu"]
         },
         "office/therapist": {
           "name": "Terapist",
-          "terms": "terapi uzmanı"
+          "terms": ["terapi uzmanı"]
         },
         "office/travel_agent": {
           "name": "Seyahat Acentesi"
@@ -3712,7 +3712,7 @@
         },
         "office/water_utility": {
           "name": "Su Müdürlüğü",
-          "terms": "su ve kanalizasyon müdürlüğü"
+          "terms": ["su ve kanalizasyon müdürlüğü"]
         },
         "pipeline": {
           "name": "Pipeline Feature"
@@ -3752,7 +3752,7 @@
         },
         "place/city": {
           "name": "Şehir",
-          "terms": "şehir"
+          "terms": ["şehir"]
         },
         "place/city_block": {
           "name": "Şehir Bloğu"
@@ -3762,49 +3762,49 @@
         },
         "place/hamlet": {
           "name": "Mezra",
-          "terms": "mezra,küçük köy"
+          "terms": ["mezra", "küçük köy"]
         },
         "place/island": {
           "name": "Ada",
-          "terms": "ada"
+          "terms": ["ada"]
         },
         "place/islet": {
           "name": "Adacık"
         },
         "place/isolated_dwelling": {
           "name": "Mesken",
-          "terms": "mesken"
+          "terms": ["mesken"]
         },
         "place/locality": {
           "name": "Mevkii",
-          "terms": "mevkii,yer"
+          "terms": ["mevkii", "yer"]
         },
         "place/neighbourhood": {
           "name": "Mahalle",
-          "terms": "mahalle"
+          "terms": ["mahalle"]
         },
         "place/plot": {
           "name": "Arsa"
         },
         "place/quarter": {
           "name": "Semt",
-          "terms": "mahalle,muhit"
+          "terms": ["mahalle", "muhit"]
         },
         "place/square": {
           "name": "Meydan",
-          "terms": "meydan"
+          "terms": ["meydan"]
         },
         "place/suburb": {
           "name": "Mahalle",
-          "terms": "semt"
+          "terms": ["semt"]
         },
         "place/town": {
           "name": "Kasaba",
-          "terms": "kasaba,i̇lçe"
+          "terms": ["kasaba", "i̇lçe"]
         },
         "place/village": {
           "name": "Köy",
-          "terms": "köy"
+          "terms": ["köy"]
         },
         "playground": {
           "name": "Oyun Parkı Ekipmanları"
@@ -3841,7 +3841,7 @@
         },
         "playground/hopscotch": {
           "name": "Seksek Alanı",
-          "terms": "seksek"
+          "terms": ["seksek"]
         },
         "playground/horizontal_bar": {
           "name": "Barfiks Bar"
@@ -3896,7 +3896,7 @@
         },
         "point": {
           "name": "Nokta",
-          "terms": "nokta,konum"
+          "terms": ["nokta", "konum"]
         },
         "police/checkpoint": {
           "name": "Police Checkpoint"
@@ -3918,7 +3918,7 @@
         },
         "power/generator": {
           "name": "Jenerator",
-          "terms": "jenerator,üretici"
+          "terms": ["jenerator", "üretici"]
         },
         "power/generator/method/photovoltaic": {
           "name": "Güneş Paneli"
@@ -3928,7 +3928,7 @@
         },
         "power/generator/method/photovoltaic/location/roof": {
           "name": "Çatı Üstü Güneş Paneli",
-          "terms": "çatı üstü güneş paneli,çatı ges,çatı üstü fotovoltaik panel"
+          "terms": ["çatı üstü güneş paneli", "çatı ges", "çatı üstü fotovoltaik panel"]
         },
         "power/generator/source/hydro": {
           "name": "Su Türbini"
@@ -3941,15 +3941,15 @@
         },
         "power/line": {
           "name": "Yüksek Elektrik Hattı",
-          "terms": "yüksek elektrik hattı,yüksek enerji hattı"
+          "terms": ["yüksek elektrik hattı", "yüksek enerji hattı"]
         },
         "power/minor_line": {
           "name": "Elektrik Hattı",
-          "terms": "elektrik hattı,enerji hattı"
+          "terms": ["elektrik hattı", "enerji hattı"]
         },
         "power/plant": {
           "name": "Elektrik İstasyonu",
-          "terms": "elektrik i̇stasyonu"
+          "terms": ["elektrik i̇stasyonu"]
         },
         "power/plant/source/coal": {
           "name": "Kömürle Çalışan Enerji Santrali"
@@ -3977,25 +3977,25 @@
         },
         "power/pole": {
           "name": "Elektrik Direği",
-          "terms": "elektrik direği"
+          "terms": ["elektrik direği"]
         },
         "power/portal": {
           "name": "Anchor Portal"
         },
         "power/substation": {
           "name": "Trafo",
-          "terms": "trafo"
+          "terms": ["trafo"]
         },
         "power/switch": {
           "name": "Güç Düğmesi"
         },
         "power/tower": {
           "name": "Yüksek Gerilim Direği",
-          "terms": "yüksek gerilim direği"
+          "terms": ["yüksek gerilim direği"]
         },
         "power/transformer": {
           "name": "Transformatör",
-          "terms": "transformatör"
+          "terms": ["transformatör"]
         },
         "public_transport/platform": {
           "name": "Taşıma Platformu"
@@ -4062,97 +4062,93 @@
         },
         "public_transport/station": {
           "name": "Toplu Taşıma Terminali",
-          "terms": "toplu taşıma i̇stasyonu"
+          "terms": ["toplu taşıma i̇stasyonu"]
         },
         "public_transport/station_aerialway": {
           "name": "Havayolu İstasyonu",
-          "terms": "havayolu ile taşıma i̇stasyonu,havayolu ile taşıma terminali"
+          "terms": ["havayolu ile taşıma i̇stasyonu", "havayolu ile taşıma terminali"]
         },
         "public_transport/station_bus": {
           "name": "Otobüs Terminali",
-          "terms": "otobüs i̇stasyonu"
+          "terms": ["otobüs i̇stasyonu"]
         },
         "public_transport/station_ferry": {
           "name": "Feribot Terminali"
         },
         "public_transport/station_light_rail": {
           "name": "Raybüs İstasyonu",
-          "terms": "raybüs terminali,hafif raylı taşıma i̇stasyonu"
+          "terms": ["raybüs terminali", "hafif raylı taşıma i̇stasyonu"]
         },
         "public_transport/station_monorail": {
           "name": "Tek Raylı Tren İstasyonu",
-          "terms": "tek raylı tren terminali"
+          "terms": ["tek raylı tren terminali"]
         },
         "public_transport/station_subway": {
           "name": "Metro İstasyonu",
-          "terms": "metro terminali"
+          "terms": ["metro terminali"]
         },
         "public_transport/station_train": {
           "name": "Gar",
-          "terms": "tren i̇stasyonu"
+          "terms": ["tren i̇stasyonu"]
         },
         "public_transport/station_train_halt": {
           "name": "Tren Durma Yeri (Dur/Kalk)",
-          "terms": "tren yolcu i̇ndirme/birdirme yeri (dur/kalk)"
+          "terms": ["tren yolcu i̇ndirme/birdirme yeri (dur/kalk)"]
         },
         "public_transport/station_tram": {
           "name": "Tramvay İstasyonu",
-          "terms": "tramvay terminali"
+          "terms": ["tramvay terminali"]
         },
         "public_transport/station_trolleybus": {
           "name": "Troleybüs Terminali",
-          "terms": "raysız tramvay terminali"
+          "terms": ["raysız tramvay terminali"]
         },
         "public_transport/stop_area": {
           "name": "Toplu Taşıma Yolcu İndirme/Bindirme Yeri",
-          "terms": "toplu taşıma yolcu i̇ndirme/bindirme alanı"
+          "terms": ["toplu taşıma yolcu i̇ndirme/bindirme alanı"]
         },
         "public_transport/stop_position": {
           "name": "Toplu Taşıma Yolcu İndirme/Bindirme Noktası",
-          "terms": "toplu taşıma yol üstü i̇ndirme/bindirme noktası"
+          "terms": ["toplu taşıma yol üstü i̇ndirme/bindirme noktası"]
         },
         "public_transport/stop_position_aerialway": {
           "name": "Havayolu Yolcu İndirme/Bindirme Noktası",
-          "terms": "havayolu yol üstü i̇ndirme/bindirme noktası"
+          "terms": ["havayolu yol üstü i̇ndirme/bindirme noktası"]
         },
         "public_transport/stop_position_bus": {
           "name": "Otobüs Yolcu İndirme/Bindirme Noktası",
-          "terms": "otobüs yol üstü i̇ndirme/bindirme noktası"
+          "terms": ["otobüs yol üstü i̇ndirme/bindirme noktası"]
         },
         "public_transport/stop_position_ferry": {
           "name": "Feribot Yolcu İndirme/Bindirme Noktası",
-          "terms": "vapur yolcu i̇ndirme/bindirme noktası"
+          "terms": ["vapur yolcu i̇ndirme/bindirme noktası"]
         },
         "public_transport/stop_position_light_rail": {
           "name": "Raybüs Yolcu İndirme/Bindirme Noktası",
-          "terms": "raybüs,hafif raylı yol üstü i̇ndirme/bindirme noktası"
+          "terms": ["raybüs", "hafif raylı yol üstü i̇ndirme/bindirme noktası"]
         },
         "public_transport/stop_position_monorail": {
           "name": "Tek Raylı Tren Yolcu İndirme/Bindirme Noktası",
-          "terms": "tek raylı yol üstü i̇ndirme/bindirme noktası"
+          "terms": ["tek raylı yol üstü i̇ndirme/bindirme noktası"]
         },
         "public_transport/stop_position_subway": {
           "name": "Metro Yolcu İndirme/Bindirme Noktası",
-          "terms": "metro yol üstü i̇ndirme/bindirme noktası"
+          "terms": ["metro yol üstü i̇ndirme/bindirme noktası"]
         },
         "public_transport/stop_position_train": {
           "name": "Tren Yolcu İndirme/Bindirme Noktası",
-          "terms": "tren yol üstü i̇ndirme/bindirme noktası"
+          "terms": ["tren yol üstü i̇ndirme/bindirme noktası"]
         },
         "public_transport/stop_position_tram": {
           "name": "Tramvay Yolcu İndirme/Bindirme Noktası",
-          "terms": "tramvay yol üstü i̇ndirme/bindirme noktası"
+          "terms": ["tramvay yol üstü i̇ndirme/bindirme noktası"]
         },
         "public_transport/stop_position_trolleybus": {
           "name": "Troleybüs Yolcu İndirme/Bindirme Noktası",
-          "terms": "raysız tramvay yol üstü i̇ndirme/bindirme noktası"
+          "terms": ["raysız tramvay yol üstü i̇ndirme/bindirme noktası"]
         },
         "railway": {
           "name": "Demiryolu Özelliği"
-        },
-        "railway/abandoned": {
-          "name": "Terk Edilmiş Demiryolu",
-          "terms": "terk edilmiş demiryolu"
         },
         "railway/buffer_stop": {
           "name": "Tampon Durdurma"
@@ -4168,7 +4164,7 @@
         },
         "railway/disused": {
           "name": "Kullanılmayan Demiryolu",
-          "terms": "kullanılmayan demiryolu"
+          "terms": ["kullanılmayan demiryolu"]
         },
         "railway/funicular": {
           "name": "Füniküler Yolu"
@@ -4223,7 +4219,7 @@
         },
         "railway/subway_entrance": {
           "name": "Metro Girişi",
-          "terms": "metro girişi"
+          "terms": ["metro girişi"]
         },
         "railway/switch": {
           "name": "Demiryolu Makası"
@@ -4251,11 +4247,11 @@
         },
         "relation": {
           "name": "İlişki",
-          "terms": "i̇lişki,bağlantı"
+          "terms": ["i̇lişki", "bağlantı"]
         },
         "route/ferry": {
           "name": "Feribot Güzergahı",
-          "terms": "feribot güzergahı"
+          "terms": ["feribot güzergahı"]
         },
         "seamark": {
           "name": "Deniz işareti"
@@ -4280,72 +4276,72 @@
         },
         "shop": {
           "name": "Dükkan",
-          "terms": "dükkan,mağaza"
+          "terms": ["dükkan", "mağaza"]
         },
         "shop/agrarian": {
           "name": "Çiftlik Malzemeleri Dükkanı"
         },
         "shop/alcohol": {
           "name": "İçki Dükkanı",
-          "terms": "i̇çki dükkanı"
+          "terms": ["i̇çki dükkanı"]
         },
         "shop/anime": {
           "name": "Anime / Manga Dükkanı"
         },
         "shop/antiques": {
           "name": "Antika Dükkanı",
-          "terms": "antikacı,antika dükkanı"
+          "terms": ["antikacı", "antika dükkanı"]
         },
         "shop/appliance": {
           "name": "Beyaz Eşya Mağazası",
-          "terms": "beyaz eşya mağazası"
+          "terms": ["beyaz eşya mağazası"]
         },
         "shop/art": {
           "name": "Sanat Mağazası",
-          "terms": "sanat mağazası"
+          "terms": ["sanat mağazası"]
         },
         "shop/baby_goods": {
           "name": "Bebek Malzemeleri Mağazası",
-          "terms": "bebek malzemeleri mağazası"
+          "terms": ["bebek malzemeleri mağazası"]
         },
         "shop/bakery": {
           "name": "Fırın",
-          "terms": "fırın"
+          "terms": ["fırın"]
         },
         "shop/bathroom_furnishing": {
           "name": "Banyo Mobilyaları ve Aksesuarları Dükkanı",
-          "terms": "banyo mobilyaları,banyo aksesuarları,islak hacim ekipmanları"
+          "terms": ["banyo mobilyaları", "banyo aksesuarları", "islak hacim ekipmanları"]
         },
         "shop/beauty": {
           "name": "Güzellik Salonu",
-          "terms": "güzellik salonu"
+          "terms": ["güzellik salonu"]
         },
         "shop/beauty/nails": {
           "name": "Manikür Pedikür Mağazası",
-          "terms": "manikür pedikür mağazası"
+          "terms": ["manikür pedikür mağazası"]
         },
         "shop/beauty/tanning": {
           "name": "Bronzlaşma Mağazası",
-          "terms": "bronzlaşma mağazası"
+          "terms": ["bronzlaşma mağazası"]
         },
         "shop/beverages": {
           "name": "İçecek Dükkanı",
-          "terms": "i̇çecek dükkanı"
+          "terms": ["i̇çecek dükkanı"]
         },
         "shop/bicycle": {
           "name": "Bisiklet Mağazası",
-          "terms": "bisiklet mağazası"
+          "terms": ["bisiklet mağazası"]
         },
         "shop/boat": {
           "name": "Tekne Mağazası"
         },
         "shop/bookmaker": {
           "name": "Bahis Merkezi",
-          "terms": "bahis merkezi"
+          "terms": ["bahis merkezi"]
         },
         "shop/books": {
           "name": "Kitapçı",
-          "terms": "kitapçı"
+          "terms": ["kitapçı"]
         },
         "shop/boutique": {
           "name": "Butik Mağaza"
@@ -4355,69 +4351,69 @@
         },
         "shop/butcher": {
           "name": "Kasap",
-          "terms": "kasap"
+          "terms": ["kasap"]
         },
         "shop/camera": {
           "name": "Kamera Ekipman Mağazası"
         },
         "shop/candles": {
           "name": "Mum Mağazası",
-          "terms": "mum mağazası"
+          "terms": ["mum mağazası"]
         },
         "shop/cannabis": {
           "name": "Esrar Dükkanı"
         },
         "shop/car": {
           "name": "Oto Galeri",
-          "terms": "oto galeri"
+          "terms": ["oto galeri"]
         },
         "shop/car/second_hand": {
           "name": "İkinci El Araba Galerisi"
         },
         "shop/car_parts": {
           "name": "Yedek Parça Dükkanı",
-          "terms": "yedek parça dükkanı"
+          "terms": ["yedek parça dükkanı"]
         },
         "shop/car_repair": {
           "name": "Araç Tamirhanesi",
-          "terms": "tamirci,tamirhane,araba tamircisi,otomobil tamircisi,araç tamircisi,servis,oto servis"
+          "terms": ["tamirci", "tamirhane", "araba tamircisi", "otomobil tamircisi", "araç tamircisi", "servis", "oto servis"]
         },
         "shop/caravan": {
           "name": "Karavan Galerisi"
         },
         "shop/carpet": {
           "name": "Halı Mağazası",
-          "terms": "halı mağazası"
+          "terms": ["halı mağazası"]
         },
         "shop/catalogue": {
           "name": "Katalog Mağazası"
         },
         "shop/charity": {
           "name": "Yardım Mağazası",
-          "terms": "yardım mağazası"
+          "terms": ["yardım mağazası"]
         },
         "shop/cheese": {
           "name": "Peynirci",
-          "terms": "peynirci,şarküteri"
+          "terms": ["peynirci", "şarküteri"]
         },
         "shop/chemist": {
           "name": "İlaç Dükkanı",
-          "terms": "i̇laç dükkanı"
+          "terms": ["i̇laç dükkanı"]
         },
         "shop/chocolate": {
           "name": "Çikolata Dükkanı",
-          "terms": "çikolata dükkanı"
+          "terms": ["çikolata dükkanı"]
         },
         "shop/clothes": {
           "name": "Giyim Mağazası",
-          "terms": "giyim mağazası"
+          "terms": ["giyim mağazası"]
         },
         "shop/clothes/second_hand": {
           "name": "İkinci El Kıyafet Mağazası"
         },
         "shop/clothes/suits": {
           "name": "Takım Elbise Mağazası",
-          "terms": "takım elbise,kravat,kemer"
+          "terms": ["takım elbise", "kravat", "kemer"]
         },
         "shop/clothes/underwear": {
           "name": "İç Çamaşırı Mağazası"
@@ -4430,30 +4426,30 @@
         },
         "shop/coffee": {
           "name": "Kahveci",
-          "terms": "kahveci"
+          "terms": ["kahveci"]
         },
         "shop/collector": {
           "name": "Koleksiyon Mağazası"
         },
         "shop/computer": {
           "name": "Bilgisayar Mağazası",
-          "terms": "bilgisayar mağazası"
+          "terms": ["bilgisayar mağazası"]
         },
         "shop/confectionery": {
           "name": "Şeker Mağazası",
-          "terms": "şeker mağazası"
+          "terms": ["şeker mağazası"]
         },
         "shop/convenience": {
           "name": "Market",
-          "terms": "market,bakkal"
+          "terms": ["market", "bakkal"]
         },
         "shop/copyshop": {
           "name": "Kırtasiye",
-          "terms": "kırtasiye"
+          "terms": ["kırtasiye"]
         },
         "shop/cosmetics": {
           "name": "Kozmetik Mağazası",
-          "terms": "kozmetik mağazası"
+          "terms": ["kozmetik mağazası"]
         },
         "shop/country_store": {
           "name": "Rural Supplies Store"
@@ -4463,56 +4459,56 @@
         },
         "shop/curtain": {
           "name": "Perde Mağazası",
-          "terms": "perde mağazası"
+          "terms": ["perde mağazası"]
         },
         "shop/dairy": {
           "name": "Süt Mağazası",
-          "terms": "süt mağazası"
+          "terms": ["süt mağazası"]
         },
         "shop/deli": {
           "name": "Şarküteri",
-          "terms": "şarküteri"
+          "terms": ["şarküteri"]
         },
         "shop/department_store": {
           "name": "Mağaza",
-          "terms": "mağaza"
+          "terms": ["mağaza"]
         },
         "shop/doityourself": {
           "name": "Malzeme Mağazası",
-          "terms": "malzeme mağazası"
+          "terms": ["malzeme mağazası"]
         },
         "shop/doors": {
           "name": "Kapı Dükkanı"
         },
         "shop/dry_cleaning": {
           "name": "Kuru Temizleme Mağazası",
-          "terms": "kuru temizleme mağazası"
+          "terms": ["kuru temizleme mağazası"]
         },
         "shop/e-cigarette": {
           "name": "Elektronik Sigara Mağazası",
-          "terms": "elektronik sigara mağazası"
+          "terms": ["elektronik sigara mağazası"]
         },
         "shop/electrical": {
           "name": "Elektrikli Ekipman Mağazası"
         },
         "shop/electronics": {
           "name": "Elektronik Mağazası",
-          "terms": "elektronik mağazası"
+          "terms": ["elektronik mağazası"]
         },
         "shop/erotic": {
           "name": "Erotik Ürünler Mağazası",
-          "terms": "erotik ürünler mağazası"
+          "terms": ["erotik ürünler mağazası"]
         },
         "shop/erotic/lgbtq": {
           "name": "LGBTQ+ Erotik Mağazası"
         },
         "shop/fabric": {
           "name": "Kumaş Mağazası",
-          "terms": "kumaş mağazası"
+          "terms": ["kumaş mağazası"]
         },
         "shop/farm": {
           "name": "Manav",
-          "terms": "manav"
+          "terms": ["manav"]
         },
         "shop/fashion": {
           "name": "Giyim Mağazası"
@@ -4531,11 +4527,11 @@
         },
         "shop/florist": {
           "name": "Çiçekçi",
-          "terms": "çiçekçi"
+          "terms": ["çiçekçi"]
         },
         "shop/frame": {
           "name": "Çerçeve Mağazası",
-          "terms": "çerçeve mağazası"
+          "terms": ["çerçeve mağazası"]
         },
         "shop/frozen_food": {
           "name": "Donmuş Yiyecek Mağazası"
@@ -4545,63 +4541,63 @@
         },
         "shop/funeral_directors": {
           "name": "Cenaze Koordinatörü",
-          "terms": "cenaze koordinatörü"
+          "terms": ["cenaze koordinatörü"]
         },
         "shop/furniture": {
           "name": "Mobilya Mağazası",
-          "terms": "mobilya mağazası"
+          "terms": ["mobilya mağazası"]
         },
         "shop/games": {
           "name": "Masa Oyunları Mağazası"
         },
         "shop/garden_centre": {
           "name": "Bahçe Düzenleme Mağazası",
-          "terms": "bahçe düzenleme mağazası"
+          "terms": ["bahçe düzenleme mağazası"]
         },
         "shop/gas": {
           "name": "Tüpçü",
-          "terms": "tüpçü"
+          "terms": ["tüpçü"]
         },
         "shop/general": {
           "name": "Genel Mağaza"
         },
         "shop/gift": {
           "name": "Hediyelik Eşya Dükkanı",
-          "terms": "hediyelik eşya dükkanı"
+          "terms": ["hediyelik eşya dükkanı"]
         },
         "shop/greengrocer": {
           "name": "Manav",
-          "terms": "manav"
+          "terms": ["manav"]
         },
         "shop/hairdresser": {
           "name": "Kuaför",
-          "terms": "kuaför,berber"
+          "terms": ["kuaför", "berber"]
         },
         "shop/hairdresser/barber": {
           "name": "Berber",
-          "terms": "berber dükkânı,berberci,tıraş mekânı"
+          "terms": ["berber dükkânı", "berberci", "tıraş mekânı"]
         },
         "shop/hairdresser_supply": {
           "name": "Kuaför Malzemeleri Mağazası"
         },
         "shop/hardware": {
           "name": "Hırdavatçı",
-          "terms": "hırdavatçı,nalbur"
+          "terms": ["hırdavatçı", "nalbur"]
         },
         "shop/health_food": {
           "name": "Health Food Store"
         },
         "shop/hearing_aids": {
           "name": "İşitme Cihazı Mağazası",
-          "terms": "i̇şitme cihazı mağazası"
+          "terms": ["i̇şitme cihazı mağazası"]
         },
         "shop/herbalist": {
           "name": "Şifalı Bitkiler Mağazası",
-          "terms": "şifalı bitkiler mağazası"
+          "terms": ["şifalı bitkiler mağazası"]
         },
         "shop/hifi": {
           "name": "Hoparlör Mağazası",
-          "terms": "hoparlör mağazası"
+          "terms": ["hoparlör mağazası"]
         },
         "shop/hobby": {
           "name": "Hobi Mağazası"
@@ -4614,14 +4610,14 @@
         },
         "shop/houseware": {
           "name": "Ev Eşyaları Mağazası",
-          "terms": "ev eşyaları mağazası"
+          "terms": ["ev eşyaları mağazası"]
         },
         "shop/hunting": {
           "name": "Avcılık Mağazası"
         },
         "shop/interior_decoration": {
           "name": "İç Dekorasyon Mağazası",
-          "terms": "i̇ç dekorasyon mağazası"
+          "terms": ["i̇ç dekorasyon mağazası"]
         },
         "shop/jewelry": {
           "name": "Kuyumcu"
@@ -4631,129 +4627,129 @@
         },
         "shop/kitchen": {
           "name": "Mutfak Eşyaları Mağazası",
-          "terms": "mutfak eşyaları mağazası"
+          "terms": ["mutfak eşyaları mağazası"]
         },
         "shop/laundry": {
           "name": "Çamaşır Yıkama",
-          "terms": "çamaşır yıkama"
+          "terms": ["çamaşır yıkama"]
         },
         "shop/laundry/self_service": {
           "name": "Self-Servis Çamaşırhane"
         },
         "shop/leather": {
           "name": "Deri Dükkanı",
-          "terms": "deri dükkanı"
+          "terms": ["deri dükkanı"]
         },
         "shop/lighting": {
           "name": "Aydınlatma Mağazası"
         },
         "shop/locksmith": {
           "name": "Anahtarcı",
-          "terms": "anahtarcı"
+          "terms": ["anahtarcı"]
         },
         "shop/lottery": {
           "name": "Loto Bayi",
-          "terms": "loto bayi"
+          "terms": ["loto bayi"]
         },
         "shop/mall": {
           "name": "Alışveriş Merkezi",
-          "terms": "alışveriş merkezi"
+          "terms": ["alışveriş merkezi"]
         },
         "shop/massage": {
           "name": "Masaj Salonu",
-          "terms": "masaj salonu"
+          "terms": ["masaj salonu"]
         },
         "shop/medical_supply": {
           "name": "Medikal Ürünler Mağazası",
-          "terms": "medikal ürünler mağazası"
+          "terms": ["medikal ürünler mağazası"]
         },
         "shop/military_surplus": {
           "name": "Askeri Fazlalık Mağazası"
         },
         "shop/mobile_phone": {
           "name": "Cep Telefonu Mağazası",
-          "terms": "cep telefonu mağazası"
+          "terms": ["cep telefonu mağazası"]
         },
         "shop/mobile_phone_accessories": {
           "name": "Cep Telefonu Aksesuarları Mağazası",
-          "terms": "cep telefonu aksesuarları mağazası,telefon kılıfı"
+          "terms": ["cep telefonu aksesuarları mağazası", "telefon kılıfı"]
         },
         "shop/model": {
           "name": "Manken Dükkanı"
         },
         "shop/money_lender": {
           "name": "Tefeci",
-          "terms": "tefeci"
+          "terms": ["tefeci"]
         },
         "shop/motorcycle": {
           "name": "Motosiklet Satış Mağazası",
-          "terms": "motosiklet satış mağazası"
+          "terms": ["motosiklet satış mağazası"]
         },
         "shop/motorcycle_repair": {
           "name": "Motosiklet Tamir Atölyesi"
         },
         "shop/music": {
           "name": "Müzik Mağazası",
-          "terms": "müzik mağazası"
+          "terms": ["müzik mağazası"]
         },
         "shop/musical_instrument": {
           "name": "Müzik Aletleri Mağazası",
-          "terms": "müzik aletleri mağazası"
+          "terms": ["müzik aletleri mağazası"]
         },
         "shop/newsagent": {
           "name": "Gazete Bayii",
-          "terms": "gazete bayii"
+          "terms": ["gazete bayii"]
         },
         "shop/nutrition_supplements": {
           "name": "Gıda Takviye Ürünleri Mağazası",
-          "terms": "gıda takviye ürünleri mağazası,enerji takviye ürünleri mağazası"
+          "terms": ["gıda takviye ürünleri mağazası", "enerji takviye ürünleri mağazası"]
         },
         "shop/nuts": {
           "name": "Nuts Shop"
         },
         "shop/optician": {
           "name": "Gözlükçü",
-          "terms": "gözlükçü,optik"
+          "terms": ["gözlükçü", "optik"]
         },
         "shop/outdoor": {
           "name": "Kamp Malzemeleri Mağazası",
-          "terms": "kamp malzemeleri mağazası"
+          "terms": ["kamp malzemeleri mağazası"]
         },
         "shop/outpost": {
           "name": "Çevrimiçi Perakende Satış Noktası"
         },
         "shop/paint": {
           "name": "Boya Dükkanı",
-          "terms": "boyacı,boya dükkanı,boya satıcısı"
+          "terms": ["boyacı", "boya dükkanı", "boya satıcısı"]
         },
         "shop/party": {
           "name": "Parti Malzemeleri Mağazası"
         },
         "shop/pasta": {
           "name": "Makarna Dükkânı",
-          "terms": "makarna mağazası,makarna marketi,burgu,kelebek"
+          "terms": ["makarna mağazası", "makarna marketi", "burgu", "kelebek"]
         },
         "shop/pastry": {
           "name": "Pastane",
-          "terms": "pastane"
+          "terms": ["pastane"]
         },
         "shop/pawnbroker": {
           "name": "Pawnshop"
         },
         "shop/perfumery": {
           "name": "Parfümeri",
-          "terms": "parfüm mağazası"
+          "terms": ["parfüm mağazası"]
         },
         "shop/pet": {
           "name": "Evcil Hayvan Mağazası",
-          "terms": "evcil hayvan mağazası,petşop"
+          "terms": ["evcil hayvan mağazası", "petşop"]
         },
         "shop/pet_grooming": {
           "name": "Pet Groomer"
         },
         "shop/photo": {
           "name": "Fotoğrafçı",
-          "terms": "fotoğrafçı"
+          "terms": ["fotoğrafçı"]
         },
         "shop/pottery": {
           "name": "Çömlek Mağazası"
@@ -4766,11 +4762,11 @@
         },
         "shop/pyrotechnics": {
           "name": "Havai Fişek Mağazası",
-          "terms": "havai fişek mağazası"
+          "terms": ["havai fişek mağazası"]
         },
         "shop/religion": {
           "name": "Dini Ürünler Mağazası",
-          "terms": "dini ürünler mağazası"
+          "terms": ["dini ürünler mağazası"]
         },
         "shop/rental": {
           "name": "Kiralık Dükkan"
@@ -4780,15 +4776,15 @@
         },
         "shop/rice": {
           "name": "Pirinç Dükkânı",
-          "terms": "pilav dükkânı,pilav mağazası,pilav marketi,pirinç marketi,pirinç mağazası"
+          "terms": ["pilav dükkânı", "pilav mağazası", "pilav marketi", "pirinç marketi", "pirinç mağazası"]
         },
         "shop/scuba_diving": {
           "name": "Tüple Dalış Mağazası",
-          "terms": "tüple dalış mağazası"
+          "terms": ["tüple dalış mağazası"]
         },
         "shop/seafood": {
           "name": "Deniz Ürünleri Mağazası",
-          "terms": "deniz ürünleri mağazası"
+          "terms": ["deniz ürünleri mağazası"]
         },
         "shop/second_hand": {
           "name": "Thrift Store"
@@ -4801,26 +4797,26 @@
         },
         "shop/shoes": {
           "name": "Ayakkabı Mağazası",
-          "terms": "ayakkabı mağazası,ayakkabıcı"
+          "terms": ["ayakkabı mağazası", "ayakkabıcı"]
         },
         "shop/spices": {
           "name": "Baharat Mağazası"
         },
         "shop/sports": {
           "name": "Spor Ürünleri Mağazası",
-          "terms": "spor ürünleri mağazası"
+          "terms": ["spor ürünleri mağazası"]
         },
         "shop/stationery": {
           "name": "Kırtasiye",
-          "terms": "kırtasiye"
+          "terms": ["kırtasiye"]
         },
         "shop/storage_rental": {
           "name": "Depo Kiralama Mağazası",
-          "terms": "depo kiralama mağazası"
+          "terms": ["depo kiralama mağazası"]
         },
         "shop/supermarket": {
           "name": "Süpermarket",
-          "terms": "süpermarket"
+          "terms": ["süpermarket"]
         },
         "shop/supermarket/organic": {
           "name": "Organik Süpermarket"
@@ -4830,80 +4826,80 @@
         },
         "shop/tailor": {
           "name": "Terzi",
-          "terms": "terzi"
+          "terms": ["terzi"]
         },
         "shop/tattoo": {
           "name": "Dövmeci",
-          "terms": "dövmeci"
+          "terms": ["dövmeci"]
         },
         "shop/tea": {
           "name": "Çaycı",
-          "terms": "çaycı"
+          "terms": ["çaycı"]
         },
         "shop/telecommunication": {
           "name": "Telekom Perakende Mağazası"
         },
         "shop/ticket": {
           "name": "Bilet Satıcısı",
-          "terms": "biletçi"
+          "terms": ["biletçi"]
         },
         "shop/tiles": {
           "name": "Karo Dükkanı"
         },
         "shop/tobacco": {
           "name": "Tütüncü",
-          "terms": "tütüncü"
+          "terms": ["tütüncü"]
         },
         "shop/tool_hire": {
           "name": "Alet Kiralama"
         },
         "shop/toys": {
           "name": "Oyuncak Mağazası",
-          "terms": "oyuncak mağazası"
+          "terms": ["oyuncak mağazası"]
         },
         "shop/trade": {
           "name": "Ticaret Mağazası"
         },
         "shop/travel_agency": {
           "name": "Turizm Acentası",
-          "terms": "turizm acentası"
+          "terms": ["turizm acentası"]
         },
         "shop/trophy": {
           "name": "Kupa Dükkanı"
         },
         "shop/tyres": {
           "name": "Araç Lastiği Mağazası",
-          "terms": "araç lastiği mağazası"
+          "terms": ["araç lastiği mağazası"]
         },
         "shop/vacant": {
           "name": "Boş Dükkan"
         },
         "shop/vacuum_cleaner": {
           "name": "Elektrikli Süpürge Mağazası",
-          "terms": "elektrikli süpürge mağazası"
+          "terms": ["elektrikli süpürge mağazası"]
         },
         "shop/variety_store": {
           "name": "İndirim Mağazası",
-          "terms": "1 tl mağazası"
+          "terms": ["1 tl mağazası"]
         },
         "shop/video": {
           "name": "Film - Video Mağazası",
-          "terms": "film - video mağazası"
+          "terms": ["film - video mağazası"]
         },
         "shop/video_games": {
           "name": "Bilgisayar Oyun Mağazası",
-          "terms": "bilgisayar oyun mağazası"
+          "terms": ["bilgisayar oyun mağazası"]
         },
         "shop/watches": {
           "name": "Saat Satıcısı",
-          "terms": "saatçi,saat dükkanı,saat satıcısı"
+          "terms": ["saatçi", "saat dükkanı", "saat satıcısı"]
         },
         "shop/water": {
           "name": "İçme Suyu Mağazası"
         },
         "shop/weapons": {
           "name": "Silah Mağazası",
-          "terms": "silah mağazası"
+          "terms": ["silah mağazası"]
         },
         "shop/wholesale": {
           "name": "Toptan satış Mağazası"
@@ -4913,11 +4909,11 @@
         },
         "shop/window_blind": {
           "name": "Jaluzi Mağazası",
-          "terms": "jaluzi mağazası,perde mağazası"
+          "terms": ["jaluzi mağazası", "perde mağazası"]
         },
         "shop/wine": {
           "name": "Şarap Mağazası",
-          "terms": "şarap mağazası"
+          "terms": ["şarap mağazası"]
         },
         "telecom": {
           "name": "Telekom Özelliği"
@@ -4933,26 +4929,26 @@
         },
         "tourism/alpine_hut": {
           "name": "Dağ Köşkü",
-          "terms": "dağ evi,dağ kulübesi,baraka"
+          "terms": ["dağ evi", "dağ kulübesi", "baraka"]
         },
         "tourism/apartment": {
           "name": "Misafir Apartmanı",
-          "terms": "misafir apartmanı"
+          "terms": ["misafir apartmanı"]
         },
         "tourism/aquarium": {
           "name": "Akvaryum",
-          "terms": "akvaryum"
+          "terms": ["akvaryum"]
         },
         "tourism/artwork": {
           "name": "Sanat Eseri",
-          "terms": "sanat eseri"
+          "terms": ["sanat eseri"]
         },
         "tourism/artwork/bust": {
           "name": "Büst"
         },
         "tourism/artwork/graffiti": {
           "name": "Duvar Yazısı",
-          "terms": "graffiti,duvar resmi"
+          "terms": ["graffiti", "duvar resmi"]
         },
         "tourism/artwork/installation": {
           "name": "Enstalasyon Eseri"
@@ -4968,14 +4964,14 @@
         },
         "tourism/attraction": {
           "name": "Turistik Yer",
-          "terms": "turistik yer"
+          "terms": ["turistik yer"]
         },
         "tourism/camp_pitch": {
           "name": "Kamp Sahası"
         },
         "tourism/camp_site": {
           "name": "Kamp Yeri",
-          "terms": "kamp yeri"
+          "terms": ["kamp yeri"]
         },
         "tourism/camp_site/backcountry": {
           "name": "Taşra Kamp Alanı"
@@ -4985,45 +4981,45 @@
         },
         "tourism/caravan_site": {
           "name": "Karavan Parkı",
-          "terms": "karavan parkı"
+          "terms": ["karavan parkı"]
         },
         "tourism/chalet": {
           "name": "Tatil Kulübesi"
         },
         "tourism/gallery": {
           "name": "Sanat Galerisi",
-          "terms": "sanat galerisi"
+          "terms": ["sanat galerisi"]
         },
         "tourism/guest_house": {
           "name": "Konuk Evi",
-          "terms": "konuk evi,misafir evi"
+          "terms": ["konuk evi", "misafir evi"]
         },
         "tourism/hostel": {
           "name": "Pansiyon",
-          "terms": "pansiyon,hostel"
+          "terms": ["pansiyon", "hostel"]
         },
         "tourism/hotel": {
           "name": "Otel",
-          "terms": "otel"
+          "terms": ["otel"]
         },
         "tourism/information": {
           "name": "Bilgi",
-          "terms": "bilgi"
+          "terms": ["bilgi"]
         },
         "tourism/information/board": {
           "name": "Bilgi Masası",
-          "terms": "bilgi masası"
+          "terms": ["bilgi masası"]
         },
         "tourism/information/board/welcome_sign": {
           "name": "Hoşgeldin İşareti"
         },
         "tourism/information/guidepost": {
           "name": "Bilgi Direği",
-          "terms": "bilgi direği"
+          "terms": ["bilgi direği"]
         },
         "tourism/information/map": {
           "name": "Harita",
-          "terms": "harita"
+          "terms": ["harita"]
         },
         "tourism/information/route_marker": {
           "name": "Patika İşaretçisi"
@@ -5033,36 +5029,36 @@
         },
         "tourism/motel": {
           "name": "Motel",
-          "terms": "motel"
+          "terms": ["motel"]
         },
         "tourism/museum": {
           "name": "Müze",
-          "terms": "müze"
+          "terms": ["müze"]
         },
         "tourism/museum/history": {
           "name": "Tarih Müzesi"
         },
         "tourism/picnic_site": {
           "name": "Piknik Alanı",
-          "terms": "piknik alanı"
+          "terms": ["piknik alanı"]
         },
         "tourism/theme_park": {
           "name": "Eğlence Parkı",
-          "terms": "eğlence parkı"
+          "terms": ["eğlence parkı"]
         },
         "tourism/trail_riding_station": {
           "name": "İz Sürme İstasyonu"
         },
         "tourism/viewpoint": {
           "name": "Görüş Noktası",
-          "terms": "görüş noktası,bakış noktası"
+          "terms": ["görüş noktası", "bakış noktası"]
         },
         "tourism/wilderness_hut": {
           "name": "Dağ kulübesi"
         },
         "tourism/zoo": {
           "name": "Hayvanat Bahçesi",
-          "terms": "hayvanat bahçesi"
+          "terms": ["hayvanat bahçesi"]
         },
         "tourism/zoo/petting": {
           "name": "Hayvanat Bahçesi"
@@ -5075,38 +5071,38 @@
         },
         "traffic_calming": {
           "name": "Trafiği Yavaşlatma",
-          "terms": "trafiği yavaşlatma"
+          "terms": ["trafiği yavaşlatma"]
         },
         "traffic_calming/bump": {
           "name": "Kasis",
-          "terms": "kasis,hız tümseği"
+          "terms": ["kasis", "hız tümseği"]
         },
         "traffic_calming/chicane": {
           "name": "Yapay Viraj",
-          "terms": "yapay viraj"
+          "terms": ["yapay viraj"]
         },
         "traffic_calming/choker": {
           "name": "Yapay Darboğaz",
-          "terms": "yapay darboğaz"
+          "terms": ["yapay darboğaz"]
         },
         "traffic_calming/cushion": {
           "name": "Hız Tamponu",
-          "terms": "hız tamponu"
+          "terms": ["hız tamponu"]
         },
         "traffic_calming/dip": {
           "name": "Hız Çukuru",
-          "terms": "hız çukuru"
+          "terms": ["hız çukuru"]
         },
         "traffic_calming/hump": {
           "name": "Hız Tümseği",
-          "terms": "hız tümseği"
+          "terms": ["hız tümseği"]
         },
         "traffic_calming/mini_bumps": {
           "name": "Mini Speed Bumps"
         },
         "traffic_calming/rumble_strip": {
           "name": "Hız Şeridi",
-          "terms": "hız şeridi"
+          "terms": ["hız şeridi"]
         },
         "traffic_calming/table": {
           "name": "Hız Tabelası"
@@ -5125,11 +5121,11 @@
         },
         "type/boundary": {
           "name": "Sınır",
-          "terms": "sınır"
+          "terms": ["sınır"]
         },
         "type/boundary/administrative": {
           "name": "İdari Sınır",
-          "terms": "i̇dari sınır"
+          "terms": ["i̇dari sınır"]
         },
         "type/connectivity": {
           "name": "Şerit Bağlantısı"
@@ -5151,69 +5147,69 @@
         },
         "type/restriction": {
           "name": "Kısıtlama",
-          "terms": "kısıtlama"
+          "terms": ["kısıtlama"]
         },
         "type/restriction/no_left_turn": {
           "name": "Sola Dönüş Yasak",
-          "terms": "sola dönüş yasak"
+          "terms": ["sola dönüş yasak"]
         },
         "type/restriction/no_right_turn": {
           "name": "Sağa Dönüş Yasak",
-          "terms": "sağa dönüş yasak"
+          "terms": ["sağa dönüş yasak"]
         },
         "type/restriction/no_straight_on": {
           "name": "Düz Devam Etmek Yasak",
-          "terms": "düz devam etmek yasak"
+          "terms": ["düz devam etmek yasak"]
         },
         "type/restriction/no_u_turn": {
           "name": "U Dönüşü Yasak",
-          "terms": "u dönüşü yasak"
+          "terms": ["u dönüşü yasak"]
         },
         "type/restriction/only_left_turn": {
           "name": "Sadece Sola Dönülebilir",
-          "terms": "sadece sola dönülebilir"
+          "terms": ["sadece sola dönülebilir"]
         },
         "type/restriction/only_right_turn": {
           "name": "Sadece Sağa Dönülebilir",
-          "terms": "sadece sağa dönülebilir"
+          "terms": ["sadece sağa dönülebilir"]
         },
         "type/restriction/only_straight_on": {
           "name": "Sadece Düz Devam Edilebilir",
-          "terms": "sadece düz devam edilebilir"
+          "terms": ["sadece düz devam edilebilir"]
         },
         "type/restriction/only_u_turn": {
           "name": "Sadece U Dönüşü",
-          "terms": "sadece u dönüşü"
+          "terms": ["sadece u dönüşü"]
         },
         "type/route": {
           "name": "Güzergah",
-          "terms": "güzergah,rota"
+          "terms": ["güzergah", "rota"]
         },
         "type/route/aerialway": {
           "name": "Araç Güzergahı"
         },
         "type/route/bicycle": {
           "name": "Bisiklet Rotası",
-          "terms": "bisiklet güzergahı,bisiklet rotası"
+          "terms": ["bisiklet güzergahı", "bisiklet rotası"]
         },
         "type/route/bus": {
           "name": "Otobüs Güzergahı",
-          "terms": "otobüs güzergahı,otobüs rotası"
+          "terms": ["otobüs güzergahı", "otobüs rotası"]
         },
         "type/route/detour": {
           "name": "Tali Yol Güzergahı",
-          "terms": "tali yol güzergahı,tali yol rotası"
+          "terms": ["tali yol güzergahı", "tali yol rotası"]
         },
         "type/route/ferry": {
           "name": "Feribot Güzergahı",
-          "terms": "feribot güzergahı,feribot rotası"
+          "terms": ["feribot güzergahı", "feribot rotası"]
         },
         "type/route/foot": {
           "name": "Yürüyüş Rotası"
         },
         "type/route/hiking": {
           "name": "Yürüyüş Güzergahı",
-          "terms": "yürüyüş güzergahı,yürüyüş rotası"
+          "terms": ["yürüyüş güzergahı", "yürüyüş rotası"]
         },
         "type/route/horse": {
           "name": "Horseback Riding Route"
@@ -5229,81 +5225,81 @@
         },
         "type/route/pipeline": {
           "name": "Boru Hattı Güzergahı",
-          "terms": "boru hattı güzergahı,boru hattı rotası"
+          "terms": ["boru hattı güzergahı", "boru hattı rotası"]
         },
         "type/route/power": {
           "name": "Elektrik Hattı Güzergahı",
-          "terms": "elektrik hattı güzergahı,elektrik hattı rotası"
+          "terms": ["elektrik hattı güzergahı", "elektrik hattı rotası"]
         },
         "type/route/railway": {
           "name": "Railway Route"
         },
         "type/route/road": {
           "name": "Yol Güzergahı",
-          "terms": "yol güzergahı"
+          "terms": ["yol güzergahı"]
         },
         "type/route/subway": {
           "name": "Metro Rotası"
         },
         "type/route/train": {
           "name": "Demiryolu Güzergahı",
-          "terms": "demiryolu güzergahı,tren yolu güzergahı,demiryolu rotası"
+          "terms": ["demiryolu güzergahı", "tren yolu güzergahı", "demiryolu rotası"]
         },
         "type/route/tram": {
           "name": "Tramvay Güzergahı",
-          "terms": "tramvay güzergahı,tramvay rotası"
+          "terms": ["tramvay güzergahı", "tramvay rotası"]
         },
         "type/route/trolleybus": {
           "name": "Troleybüs Rotası"
         },
         "type/route_master": {
           "name": "Güzergah Ana Kaydı",
-          "terms": "güzergah,rota"
+          "terms": ["güzergah", "rota"]
         },
         "type/site": {
           "name": "Tesis",
-          "terms": "tesis,mekan"
+          "terms": ["tesis", "mekan"]
         },
         "type/waterway": {
           "name": "Su Yolu",
-          "terms": "su yolu,akarsu"
+          "terms": ["su yolu", "akarsu"]
         },
         "waterway": {
           "name": "Suyolu Özelliği"
         },
         "waterway/boatyard": {
           "name": "Kayık İskelesi",
-          "terms": "kayık i̇skelesi,bot i̇skelesi"
+          "terms": ["kayık i̇skelesi", "bot i̇skelesi"]
         },
         "waterway/canal": {
           "name": "Kanal",
-          "terms": "kanal,suyolu"
+          "terms": ["kanal", "suyolu"]
         },
         "waterway/canal/lock": {
           "name": "Kanal Kilidi"
         },
         "waterway/dam": {
           "name": "Baraj",
-          "terms": "baraj"
+          "terms": ["baraj"]
         },
         "waterway/ditch": {
           "name": "Suyolu",
-          "terms": "suyolu,kanal"
+          "terms": ["suyolu", "kanal"]
         },
         "waterway/dock": {
           "name": "Rıhtım",
-          "terms": "rıhtım"
+          "terms": ["rıhtım"]
         },
         "waterway/drain": {
           "name": "Atık Su Kanalı",
-          "terms": "atık su kanalı,pis su kanalı"
+          "terms": ["atık su kanalı", "pis su kanalı"]
         },
         "waterway/fish_pass": {
           "name": "Balık Geçidi"
         },
         "waterway/fuel": {
           "name": "Deniz Yakıt İstasyonu",
-          "terms": "deniz yakıt i̇stasyonu"
+          "terms": ["deniz yakıt i̇stasyonu"]
         },
         "waterway/lock_gate": {
           "name": "Kilit Kapısı"
@@ -5313,34 +5309,34 @@
         },
         "waterway/river": {
           "name": "Akarsu",
-          "terms": "akarsu,nehir,irmak"
+          "terms": ["akarsu", "nehir", "irmak"]
         },
         "waterway/sanitary_dump_station": {
           "name": "Deniz Tuvalet İmha İstasyonu",
-          "terms": "deniz tuvalet i̇mha i̇stasyonu"
+          "terms": ["deniz tuvalet i̇mha i̇stasyonu"]
         },
         "waterway/stream": {
           "name": "Dere",
-          "terms": "dere"
+          "terms": ["dere"]
         },
         "waterway/stream_intermittent": {
           "name": "Aralıklı Akan Su Akıntısı",
-          "terms": "aralıklı akan su akıntısı,sadece belli dönemlerde akan su akıntısı"
+          "terms": ["aralıklı akan su akıntısı", "sadece belli dönemlerde akan su akıntısı"]
         },
         "waterway/tidal_channel": {
           "name": "Gelgit kanalı"
         },
         "waterway/water_point": {
           "name": "Deniz İçme Suyu İstasyonu",
-          "terms": "deniz i̇çme suyu i̇stasyonu"
+          "terms": ["deniz i̇çme suyu i̇stasyonu"]
         },
         "waterway/waterfall": {
           "name": "Şelale",
-          "terms": "şelale,çağlayan"
+          "terms": ["şelale", "çağlayan"]
         },
         "waterway/weir": {
           "name": "Su Bendi",
-          "terms": "su bendi,su seddi"
+          "terms": ["su bendi", "su seddi"]
         }
       }
     }

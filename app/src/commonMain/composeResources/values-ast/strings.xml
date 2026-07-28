@@ -479,7 +479,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="theme_dark">Escuro</string>
     <string name="theme_system_default">Colores</string>
     <string name="action_open_location">Abrir llugar n'otra app</string>
-    <string name="map_application_missing">Nun hai otra aplicación pa mapes instalada</string>
     <string name="label_housenumber">númberu de casa</string>
     <string name="quest_busStopShelter_covered">Tola parada ta sotechada</string>
     <string name="quest_ferry_pedestrian_title">¿Tresporta persones?</string>
@@ -748,8 +747,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_shop_gone_title">¿Qué hai equí agora?</string>
     <string name="quest_shop_gone_vacant_answer">Ta vacío</string>
     <string name="quest_shop_gone_replaced_answer">Ye un/una...</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Pon el tipu equí</string>
-    <string name="quest_shop_vacant_type_title">Esti llocal tuvo vacíu. ¿Qué hai equí agora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Esti tipu de xera ta desactivada de serie porque nun ye útil en dalgunes rexones y seguramente tengas d'entrar nel sitiu p'alcontrar la información y responder bien a les preguntes.</string>
     <string name="quest_dietType_explanation_kosher">Los productos kosher han preparase d'una manera especial, hai axencias que los certifiquen denomaes "kashrut".</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nun hai carril bici nengún equí.</string>

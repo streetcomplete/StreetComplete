@@ -9,7 +9,7 @@ noEntrySignStyle: arrow
 noParkingLineStyle: yellow
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna
-officialLanguages: [en, hi, bn, te, mr, ta, ur, gu, kn, ml, or, pa, as, mai, ks]
+officialLanguages: [en, hi, bn, mr, te, ta, gu, ur, kn, or, ml, pa, as, mai, sat, ks, ne, sd, doi, kok, mni, brx, sa]
 orchardProduces: [guava, mango, mangosteen, coconut, cashew_nut, banana, tomato, chilli_pepper, sweet_pepper, orange, tea, areca_nut, coffee, rubber, lemon, lime, apple, papaya, grape]
 popularReligions: [hindu, muslim, christian, buddhist, jain, sikh, bahai, animist]
 popularSports: [tennis, basketball, soccer, cricket, field_hockey]

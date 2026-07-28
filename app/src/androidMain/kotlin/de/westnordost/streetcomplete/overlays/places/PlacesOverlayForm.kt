@@ -39,6 +39,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.data.preferences.addLastPicked
+import de.westnordost.streetcomplete.data.preferences.getLastPicked
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.POPULAR_PLACE_FEATURE_IDS
 import de.westnordost.streetcomplete.osm.applyReplacePlaceTo
@@ -164,8 +166,9 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         }
 
         binding.composeViewBase.content { Surface {
+            val feature = selectedFeature.value
             localizedNames = rememberSerializable {
-                mutableStateOf(originalNames.takeIf { it.isNotEmpty() } ?: defaultNames())
+                mutableStateOf(originalNames.takeIf { it.isNotEmpty() } ?: defaultNames(feature))
             }
             isNoName = rememberSaveable { mutableStateOf(originalNoName) }
 
@@ -176,7 +179,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(8.dp, Alignment.CenterVertically),
             ) {
-                val feature = selectedFeature.value
+
 
                 FeatureSelect(
                     feature = feature,
@@ -250,7 +253,7 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         if (feature.hasFixedName == true) {
             localizedNames.value = listOf()
         } else {
-            localizedNames.value = defaultNames()
+            localizedNames.value = defaultNames(feature)
         }
         checkIsFormComplete()
     }
@@ -281,8 +284,9 @@ class PlacesOverlayForm : AbstractOverlayForm() {
         checkIsFormComplete()
     }
 
-    private fun defaultNames(): List<LocalizedName> =
-        listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
+    private fun defaultNames(feature: Feature?): List<LocalizedName> =
+        feature?.addTags?.let { parseLocalizedNames(it) }
+        ?: listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
 
     override fun hasChanges(): Boolean =
         originalFeature != selectedFeature.value

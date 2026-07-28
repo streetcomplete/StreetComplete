@@ -2,6 +2,7 @@
 atmOperators: [Isle of Man Bank, Barclays, RBS, HSBC UK]
 chargingStationOperators: [Pod Point]
 defaultSpeedLimitHasUrbanOrRural: true
+hasLivingStreet: true
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 officialLanguages: [gv, en]

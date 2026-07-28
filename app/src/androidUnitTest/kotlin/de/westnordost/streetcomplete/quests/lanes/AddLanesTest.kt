@@ -19,6 +19,13 @@ class AddLanesTest {
         )
     }
 
+    @Test fun `answering one lane only`() {
+        assertEquals(
+            setOf(StringMapEntryAdd("lanes", "1")),
+            questType.answerApplied(LanesAnswer.OneLaneOnly)
+        )
+    }
+
     @Test fun `answering unmarked lanes deletes specific lanes`() {
         assertEquals(
             setOf(

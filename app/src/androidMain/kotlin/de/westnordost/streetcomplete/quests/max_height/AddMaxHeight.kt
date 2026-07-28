@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
@@ -34,6 +35,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
           or (highway = service and access !~ private|no and vehicle !~ private|no)
         )
         and $noMaxHeight
+        and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
     private val railwayCrossingsFilter by lazy { """
@@ -52,31 +54,15 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
     // kind of spammy, especially if the answer is virtually always(?) "not signed"
 
     private val allRoadsFilter by lazy { """
-        ways with highway ~ ${ALL_ROADS.joinToString("|")}
-    """.toElementFilterExpression() }
-
-    private val tunnelFilter by lazy { """
         ways with
-          highway
-          and (
-            covered = yes
-            or tunnel ~ yes|building_passage|avalanche_protector
-            or bridge = covered
-          )
+          highway ~ ${ALL_ROADS.joinToString("|")}
+          and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
-    private val bridgeFilter by lazy { """
-        ways with (
-            (
-              highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
-              or railway ~ rail|light_rail|subway|narrow_gauge|tram|disused|preserved|funicular|monorail
-            )
-            and bridge and bridge != no
-          ) or (
-            building = roof
-            or man_made = pipeline and location = overhead
-          )
-          and layer
+    private val allPathsFilter by lazy { """
+        ways with
+          highway ~ ${ALL_PATHS.joinToString("|")}
+          and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
     private val noMaxHeight = """
@@ -99,6 +85,10 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
             .filter { allRoadsFilter.matches(it) }
             .flatMapTo(HashSet()) { it.nodeIds }
 
+        val pathNodeIds = mapData.ways
+            .filter { allPathsFilter.matches(it) }
+            .flatMapTo(HashSet()) { it.nodeIds }
+
         val nodesWithoutHeight = mapData.nodes
             .filter { it.id in roadsNodeIds && nodeFilter.matches(it) }
 
@@ -108,7 +98,11 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
             .flatMapTo(HashSet()) { it.nodeIds }
 
         val railwayCrossingNodesWithoutHeight = mapData.nodes
-            .filter { it.id in electrifiedRailwayNodeIds && railwayCrossingsFilter.matches(it) }
+            .filter {
+                (it.id in roadsNodeIds || it.id in pathNodeIds)
+                && it.id in electrifiedRailwayNodeIds
+                && railwayCrossingsFilter.matches(it)
+            }
 
         // tunnels without height
         val roadsWithoutHeight = mapData.ways.filter { roadsWithoutMaxHeightFilter.matches(it) }
@@ -152,7 +146,7 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
         // for nodes that may be applicable we cannot finally determine it because that node must be
         // a vertex of a road
         if (nodeFilter.matches(element)) return null
-        // railway crossing
+        // same for railway crossing
         if (railwayCrossingsFilter.matches(element)) return null
         return false
     }
@@ -169,4 +163,9 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer>, AndroidQuest {
             }
         }
     }
+
+    override fun getHighlightedElements(
+        element: Element,
+        mapData: MapDataWithGeometry
+    ): Sequence<Element> = (element as? Way)?.getIntersectingBridges(mapData).orEmpty()
 }

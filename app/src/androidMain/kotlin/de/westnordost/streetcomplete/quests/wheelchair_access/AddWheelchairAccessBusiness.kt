@@ -37,7 +37,8 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
                 "food_court", "nightclub", "hookah_lounge",
                 "cinema", "planetarium", "casino",                                                  // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",
+                "ranger_station",                                                                   // civic
                 "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
                 "dancing_school", "ski_school", "flight_school", "surf_school", "sailing_school",
                 "cooking_school",
@@ -51,7 +52,7 @@ class AddWheelchairAccessBusiness : OsmFilterQuestType<WheelchairAccess>(), Andr
                 // name & wheelchair
                 "theatre",                                        // culture
                 "conference_centre", "arts_centre",               // events
-                "police", "ranger_station",                       // civic
+                "police",                                         // civic
                 "ferry_terminal",                                 // transport
                 "place_of_worship",                               // religious
                 "hospital",                                       // health care

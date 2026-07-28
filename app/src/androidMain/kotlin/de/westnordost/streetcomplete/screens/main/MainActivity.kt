@@ -5,30 +5,25 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
-import android.view.animation.AccelerateInterpolator
-import android.view.animation.OvershootInterpolator
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.AnyThread
-import androidx.annotation.DrawableRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.PopupMenu
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Offset
 import androidx.core.graphics.Insets
-import androidx.core.net.toUri
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -69,7 +64,6 @@ import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
-import de.westnordost.streetcomplete.databinding.EffectQuestPlopBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.overlays.AbstractOverlayForm
@@ -84,8 +78,8 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.CreateNoteFragmen
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsCloseableBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapOrientationAware
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.IsMapPositionAware
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.SplitWayFragment
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNodeFragment
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
@@ -97,10 +91,8 @@ import de.westnordost.streetcomplete.screens.main.map.getIcon
 import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
+import de.westnordost.streetcomplete.ui.ktx.toDpOffset
 import de.westnordost.streetcomplete.ui.util.content
-import de.westnordost.streetcomplete.util.SoundFx
-import de.westnordost.streetcomplete.util.buildGeoUri
-import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.hideKeyboard
@@ -123,7 +115,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 import kotlin.math.PI
 import kotlin.math.sqrt
-import kotlin.random.Random
 
 /** Controls the main view.
  *
@@ -170,12 +161,16 @@ class MainActivity :
     private val questsHiddenSource: QuestsHiddenSource by inject()
     private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
-    private val soundFx: SoundFx by inject()
+    private val mapAppLauncher: MapAppLauncher by inject()
 
     private lateinit var locationManager: FineLocationManager
 
     private val viewModel by viewModel<MainViewModel>()
     private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
+
+    private val showMapContextMenu = mutableStateOf(false)
+    private val lastMapLongPress = mutableStateOf<Pair<Offset, LatLon>?>(null)
+    private val lastQuestSolved = mutableStateOf<QuestSolvedEvent?>(null)
 
     private lateinit var binding: ActivityMainBinding
 
@@ -230,6 +225,8 @@ class MainActivity :
         setContentView(binding.root)
 
         binding.controls.content {
+            val isMapAppLaunchAvailable = remember { mapAppLauncher.isAvailable() }
+
             // color for HUD elements without a background (e.g. scalebar, attribution button)
             CompositionLocalProvider(
                 LocalContentColor provides MaterialTheme.colors.onSurface
@@ -249,6 +246,29 @@ class MainActivity :
                     onExplainedNeedForLocationPermission = ::requestLocation
                 )
             }
+
+            lastQuestSolved.value?.let {
+                LastQuestSolvedEffect(it)
+            }
+
+            val lastLongPressOffset = lastMapLongPress.value?.first ?: Offset.Zero
+            val lastLongPressPosition = lastMapLongPress.value?.second
+            MapContextMenu(
+                expanded = showMapContextMenu.value,
+                onDismissRequest = { showMapContextMenu.value = false },
+                onClickCreateNote = { lastLongPressPosition?.let { onClickCreateNote(it) } },
+                onClickCreateTrack = { onClickCreateTrack() },
+                isOpenLocationAvailable = isMapAppLaunchAvailable,
+                onClickOpenLocation = {
+                    if (lastLongPressPosition != null) {
+                        mapAppLauncher.openAt(
+                            position = lastLongPressPosition,
+                            zoom = mapFragment?.cameraPosition?.zoom ?: 18.0
+                        )
+                    }
+                },
+                offset = lastLongPressOffset.toDpOffset()
+            )
         }
 
         onBackPressedDispatcher.addCallback(this, sheetBackPressedCallback)
@@ -381,10 +401,8 @@ class MainActivity :
     override fun onLongPress(point: PointF, position: LatLon) {
         if (bottomSheetFragment != null || editHistoryViewModel.isShowingSidebar.value) return
 
-        binding.contextMenuView.translationX = point.x
-        binding.contextMenuView.translationY = point.y
-
-        showMapContextMenu(position)
+        lastMapLongPress.value = Pair(Offset(point.x, point.y), position)
+        showMapContextMenu.value = true
     }
 
     /* ---------------------------- MainMapFragment.Listener --------------------------- */
@@ -787,34 +805,6 @@ class MainActivity :
 
     /* -------------------------------------- Context Menu -------------------------------------- */
 
-    private fun showMapContextMenu(position: LatLon) {
-        val popupMenu = PopupMenu(this, binding.contextMenuView)
-        popupMenu.inflate(R.menu.menu_map_context)
-        popupMenu.setOnMenuItemClickListener { item ->
-            when (item.itemId) {
-                R.id.action_create_note -> onClickCreateNote(position)
-                R.id.action_create_track -> onClickCreateTrack()
-                R.id.action_open_location -> onClickOpenLocationInOtherApp(position)
-            }
-            true
-        }
-        popupMenu.show()
-    }
-
-    private fun onClickOpenLocationInOtherApp(pos: LatLon) {
-        val zoom = mapFragment?.cameraPosition?.zoom
-        val uri = buildGeoUri(pos.latitude, pos.longitude, zoom)
-
-        val intent = Intent(Intent.ACTION_VIEW, uri.toUri())
-        val otherMapAppInstalled = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
-            .any { !it.activityInfo.packageName.equals(packageName) }
-        if (otherMapAppInstalled) {
-            startActivity(intent)
-        } else {
-            toast(R.string.map_application_missing, Toast.LENGTH_LONG)
-        }
-    }
-
     private fun onClickCreateNote(pos: LatLon) {
         if ((mapFragment?.cameraPosition?.zoom ?: 0.0) < ApplicationConstants.NOTE_MIN_ZOOM) {
             toast(R.string.create_new_note_unprecise)
@@ -1059,42 +1049,10 @@ class MainActivity :
         val offset = binding.root.getLocationInWindow()
         val startPos = mapFragment?.getPointOf(position) ?: return
 
-        val size = resources.dpToPx(42).toInt()
-        startPos.x += offset.x - size / 2f
-        startPos.y += offset.y - size * 1.5f
+        startPos.x += offset.x
+        startPos.y += offset.y
 
-        showMarkerSolvedAnimation(iconResId, startPos)
-    }
-
-    private fun showMarkerSolvedAnimation(@DrawableRes iconResId: Int, startScreenPos: PointF) {
-        lifecycleScope.launch {
-            soundFx.play(resources.getIdentifier("plop" + Random.nextInt(4), "raw", packageName))
-        }
-
-        val root = window.decorView as ViewGroup
-        val img = EffectQuestPlopBinding.inflate(layoutInflater, root, false).root
-        img.x = startScreenPos.x
-        img.y = startScreenPos.y
-        img.setImageResource(iconResId)
-        root.addView(img)
-
-        flingQuestMarker(img) { root.removeView(img) }
-    }
-
-    private fun flingQuestMarker(quest: View, onFinished: () -> Unit) {
-        quest.animate()
-            .scaleX(1.6f).scaleY(1.6f)
-            .setInterpolator(OvershootInterpolator(8f))
-            .setDuration(250)
-            .withEndAction {
-                quest.animate()
-                    .scaleX(0.2f).scaleY(0.2f)
-                    .alpha(0.8f)
-                    .x(0f).y(0f)
-                    .setDuration(250)
-                    .setInterpolator(AccelerateInterpolator())
-                    .withEndAction(onFinished)
-            }
+        lastQuestSolved.value = QuestSolvedEvent(iconResId, Offset(startPos.x, startPos.y))
     }
 
     //endregion

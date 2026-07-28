@@ -3,9 +3,11 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Stores OSM elements. Actually, stores nothing, but delegates the work to a NodeDao, WayDao and
  *  a RelationDao. :-P */
+@Mockable
 class ElementDao(
     private val nodeDao: NodeDao,
     private val wayDao: WayDao,

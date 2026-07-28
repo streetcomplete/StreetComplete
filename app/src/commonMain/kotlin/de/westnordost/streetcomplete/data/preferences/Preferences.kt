@@ -9,6 +9,7 @@ import com.russhwolf.settings.long
 import com.russhwolf.settings.nullableString
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.putStringOrNull
 import kotlinx.datetime.LocalDate
 import kotlinx.serialization.KSerializer
@@ -16,6 +17,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 import kotlin.reflect.KClass
 
+@Mockable
 class Preferences(private val prefs: ObservableSettings) {
     // application settings
     var language: String? by prefs.nullableString(LANGUAGE_SELECT)
@@ -178,10 +180,6 @@ class Preferences(private val prefs: ObservableSettings) {
 
     var lastEditTime: Long by prefs.long(LAST_EDIT_TIME, 0L)
 
-    inline fun <reified T> getLastPicked(key: String): List<T> = getLastPicked(serializer(), key)
-    inline fun <reified T> setLastPicked(key: String, values: List<T>) = setLastPicked(serializer(), key, values)
-    inline fun <reified T> addLastPicked(key: String, value: T) = addLastPicked(serializer(), key, value)
-
     fun <T> getLastPicked(serializer: KSerializer<List<T>>, key: String): List<T> =
         try {
             prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.let { Json.decodeFromString(serializer, it) } ?: emptyList()
@@ -298,3 +296,12 @@ class Preferences(private val prefs: ObservableSettings) {
         private const val STATISTICS_SYNCED_ONCE = "statistics_synced_once"
     }
 }
+
+inline fun <reified T> Preferences.getLastPicked(key: String): List<T> =
+    getLastPicked(serializer(), key)
+
+inline fun <reified T> Preferences.setLastPicked(key: String, values: List<T>) =
+    setLastPicked(serializer(), key, values)
+
+inline fun <reified T> Preferences.addLastPicked(key: String, value: T) =
+    addLastPicked(serializer(), key, value)

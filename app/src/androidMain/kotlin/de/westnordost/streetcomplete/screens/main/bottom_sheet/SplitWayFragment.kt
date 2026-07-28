@@ -36,7 +36,6 @@ import de.westnordost.streetcomplete.databinding.FragmentSplitWayBinding
 import de.westnordost.streetcomplete.overlays.IsShowingElement
 import de.westnordost.streetcomplete.screens.main.map.Marker
 import de.westnordost.streetcomplete.screens.main.map.ShowsGeometryMarkers
-import de.westnordost.streetcomplete.util.SoundFx
 import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
 import de.westnordost.streetcomplete.util.ktx.popIn
 import de.westnordost.streetcomplete.util.ktx.popOut
@@ -46,6 +45,7 @@ import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import de.westnordost.streetcomplete.util.math.alongTrackDistanceTo
 import de.westnordost.streetcomplete.util.math.crossTrackDistanceTo
 import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import de.westnordost.streetcomplete.util.viewBinding
 import de.westnordost.streetcomplete.view.RoundRectOutlineProvider
 import de.westnordost.streetcomplete.view.confirmIsSurvey
@@ -58,6 +58,7 @@ import kotlinx.serialization.json.Json
 import org.koin.android.ext.android.inject
 import kotlin.coroutines.resume
 import kotlin.math.abs
+import kotlin.random.Random
 
 /** Fragment that lets the user split an OSM way */
 class SplitWayFragment :
@@ -70,7 +71,7 @@ class SplitWayFragment :
     private val elementEditsController: ElementEditsController by inject()
 
     private val allEditTypes: AllEditTypes by inject()
-    private val soundFx: SoundFx by inject()
+    private val soundFx: SoundEffectPlayer by inject()
     private val surveyChecker: SurveyChecker by inject()
 
     override val elementKey: ElementKey by lazy { way.key }
@@ -178,7 +179,7 @@ class SplitWayFragment :
         if (splits.isNotEmpty()) {
             val item = splits.removeAt(splits.lastIndex)
             animateButtonVisibilities()
-            viewLifecycleScope.launch { soundFx.play(R.raw.plop2) }
+            soundFx.play("plop${Random.nextInt(4)}.wav")
             showsGeometryMarkersListener?.deleteMarkerForCurrentHighlighting(
                 ElementPointGeometry(item.second)
             )
@@ -231,7 +232,7 @@ class SplitWayFragment :
         animator.setTarget(binding.scissors)
         animator.start()
 
-        viewLifecycleScope.launch { soundFx.play(R.raw.snip) }
+        soundFx.play("snip.wav")
     }
 
     private fun createSplits(clickPosition: LatLon, clickAreaSizeInMeters: Double): Set<SplitPolylineAtPosition> {

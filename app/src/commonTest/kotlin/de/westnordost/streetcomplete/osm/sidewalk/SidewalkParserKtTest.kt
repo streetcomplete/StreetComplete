@@ -27,11 +27,15 @@ class SidewalkParserKtTest {
     }
 
     @Test
-    fun `invalid because contradictory or duplicate values`() {
+    fun `invalid because contradictory values`() {
         val invalid = Sides(INVALID, INVALID)
+
+        // sidewalk=left means that sidewalk:right=no, but sidewalk:left=yes doesn't say anything
+        // about the right side. Conflict!
         assertEquals(invalid, parse(
             "sidewalk:left" to "yes",
             "sidewalk" to "left"))
+
         assertEquals(invalid, parse(
             "sidewalk:right" to "no",
             "sidewalk" to "both"
@@ -51,14 +55,20 @@ class SidewalkParserKtTest {
         ))
         assertEquals(invalid, parse(
             "sidewalk:left" to "yes",
-            "sidewalk:right" to "yes",
-            "sidewalk" to "both"
-        ))
-        assertEquals(invalid, parse(
-            "sidewalk:left" to "yes",
             "sidewalk:right" to "no",
             "sidewalk:both" to "yes",
         ))
+    }
+
+    @Test fun `duplication is fine when it is not contradictory`() {
+        assertEquals(
+            Sides(YES, YES),
+            parse(
+                "sidewalk:left" to "yes",
+                "sidewalk:right" to "yes",
+                "sidewalk" to "both"
+            )
+        )
     }
 
     @Test fun `left invalid and right yes`() {
@@ -147,7 +157,7 @@ class SidewalkParserKtTest {
         )
     }
 
-    /* ------------------------------------------ none ------------------------------------------ */
+    /* ------------------------------------------- no ------------------------------------------- */
 
     @Test fun `no sidewalk`() {
         assertEquals(
@@ -155,7 +165,7 @@ class SidewalkParserKtTest {
             parse("sidewalk" to "no")
         )
         assertEquals(
-            Sides(NO, NO),
+            Sides(INVALID, INVALID),
             parse("sidewalk" to "none")
         )
 
@@ -164,7 +174,7 @@ class SidewalkParserKtTest {
             parse("sidewalk:both" to "no")
         )
         assertEquals(
-            Sides(NO, NO),
+            Sides(INVALID, INVALID),
             parse("sidewalk:both" to "none")
         )
     }
@@ -178,7 +188,7 @@ class SidewalkParserKtTest {
             )
         )
         assertEquals(
-            Sides(NO, NO),
+            Sides(INVALID, INVALID),
             parse(
                 "sidewalk:left" to "none",
                 "sidewalk:right" to "none"
@@ -302,7 +312,7 @@ class SidewalkParserKtTest {
             parse("sidewalk:left" to "no")
         )
         assertEquals(
-            Sides(NO, null),
+            Sides(INVALID, null),
             parse("sidewalk:left" to "none")
         )
     }
@@ -338,7 +348,7 @@ class SidewalkParserKtTest {
             parse("sidewalk:right" to "no")
         )
         assertEquals(
-            Sides(null, NO),
+            Sides(null, INVALID),
             parse("sidewalk:right" to "none")
         )
     }

@@ -56,6 +56,9 @@ class AddLanesForm : AbstractOsmQuestForm<LanesAnswer>() {
         add(AnswerItem(R.string.quest_lanes_answer_noLanes) {
             applyAnswer(LanesAnswer.IsUnmarked)
         })
+        add(AnswerItem(R.string.quest_lanes_answer_oneLaneOnly) {
+            applyAnswer(LanesAnswer.OneLaneOnly)
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

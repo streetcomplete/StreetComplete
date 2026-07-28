@@ -481,7 +481,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="theme_dark">Tamsi</string>
     <string name="theme_system_default">Sistemos numatytoji</string>
     <string name="action_open_location">Atverti vietą kitoje programėlėje</string>
-    <string name="map_application_missing">Nėra įdiegtų kitų žemėlapių programėlių</string>
     <string name="label_housenumber">namo numeris</string>
     <string name="quest_busStopShelter_covered">Visa stotelė uždengta</string>
     <string name="quest_ferry_pedestrian_title">Ar šis kelto maršrutas perveža pėsčiuosius?</string>
@@ -753,8 +752,6 @@ Jei kuri nors juosta skirta autobusams, palikite pastabą.</string>
     <string name="quest_shop_gone_title">Kas čia yra dabar?</string>
     <string name="quest_shop_gone_vacant_answer">Jis tuščias</string>
     <string name="quest_shop_gone_replaced_answer">A(n)...</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Įveskite čia vietą</string>
-    <string name="quest_shop_vacant_type_title">Ši parduotuvė buvo laisva. Kas čia yra dabar?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Šis užduočių tipas yra išjungtas pagal numatytuosius nustatymus, nes kai kuriuose regionuose jis yra nenaudingas, o tam, kad galėtumėte atsakyti į tokio tipo užduotį, greičiausiai turėsite patekti į tą vietą.</string>
     <string name="quest_dietType_explanation_kosher">Košeriniai produktai turi būti ruošiami pagal specialias taisykles, o kašruto sertifikavimo agentūros pažymi, kad produktai atitinka reikalavimus.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nėra dviračių juostos ar tako</string>

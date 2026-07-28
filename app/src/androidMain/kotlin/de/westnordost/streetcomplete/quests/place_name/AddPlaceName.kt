@@ -33,7 +33,7 @@ class AddPlaceName(
         // The common list is shared by the opening hours quest and the wheelchair quest.
         // It is also mostly shared by the name quest, that has some wildcards (for say craft and office)
         // So when adding other tags to the common list keep in mind that they need to be appropriate for all those quests.
-        // Independent tags can by added in the "name only" tab.
+        // Independent tags can be added in the "name only" tab.
 
         mapOf(
             "amenity" to arrayOf(
@@ -41,7 +41,8 @@ class AddPlaceName(
                 "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
                 "food_court", "nightclub", "hookah_lounge",
                 "cinema", "planetarium", "casino",                                                  // amenities
-                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+                "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",
+                "ranger_station",                                                                   // civic
                 "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
                 "dancing_school", "ski_school", "flight_school", "surf_school", "sailing_school",
                 "cooking_school",
@@ -54,12 +55,12 @@ class AddPlaceName(
 
                 // name & opening hours
                 "boat_rental", "vehicle_inspection", "motorcycle_rental", "crematorium",
-                "public_bath",
+                "public_bath", "traffic_park",
 
                 // name & wheelchair
                 "theatre",                                        // culture
                 "conference_centre", "arts_centre",               // events
-                "police", "ranger_station",                       // civic
+                "police",                                         // civic
                 "ferry_terminal",                                 // transport
                 "place_of_worship",                               // religious
                 "hospital",                                       // health care
@@ -101,7 +102,7 @@ class AddPlaceName(
 
                 // name only
                 "dance", "nature_reserve", "marina", "horse_riding",
-                "bathing_place", "escape_game",
+                "bathing_place", "escape_game", "beach_resort", "summer_camp", "marina"
             ),
             "landuse" to arrayOf(
                 "cemetery", "allotments"
@@ -131,7 +132,15 @@ class AddPlaceName(
             ),
         ).map { it.key + " ~ " + it.value.joinToString("|") }.joinToString("\n  or ") + "\n" + """
         )
-        and !name and !brand and noname != yes and name:signed != no
+        and (
+            (
+                !name
+                and !brand
+                and noname != yes
+            )
+            or ~fixme|FIXME ~ name|name\?|Name|Name\?
+        )
+        and name:signed != no
     """).toElementFilterExpression() }
 
     override val changesetComment = "Determine place names"

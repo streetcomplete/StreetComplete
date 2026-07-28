@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.databinding.ComposeViewBinding
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
+import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.content
@@ -47,7 +48,10 @@ abstract class AAddLocalizedNameForm<T> : AbstractOsmQuestForm<T>() {
 
         binding.composeViewBase.content { Surface {
             localizedNames = rememberSerializable {
-                mutableStateOf(listOf(LocalizedName(countryInfo.language.orEmpty(), "")))
+                mutableStateOf(
+                    parseLocalizedNames(element.tags)
+                    ?: listOf(LocalizedName(countryInfo.language.orEmpty(), ""))
+                )
             }
 
             Column {

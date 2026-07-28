@@ -44,7 +44,7 @@ fun NoteForm(
                 capitalization = KeyboardCapitalization.Sentences,
                 autoCorrectEnabled = true,
                 keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Done
+                imeAction = ImeAction.None
             ),
             singleLine = false,
             minLines = 3,

@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.quest.AndroidQuest
-import de.westnordost.streetcomplete.data.quest.NoCountriesExcept
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.Tags
@@ -36,7 +36,6 @@ class AddCycleway(
     override val icon = R.drawable.quest_bicycleway
     override val title = Res.string.quest_cycleway_title2
     override val achievements = listOf(BICYCLIST)
-    override val defaultDisabledMessage = Res.string.default_disabled_msg_overlay
     // See overview here: https://ent8r.github.io/blacklistr/?streetcomplete=cycleway/AddCycleway.kt
     // #749. sources:
     // Google Street View (driving around in virtual car)

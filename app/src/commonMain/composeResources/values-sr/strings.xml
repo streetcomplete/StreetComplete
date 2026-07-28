@@ -480,7 +480,6 @@
     <string name="theme_dark">Тамна</string>
     <string name="theme_system_default">Системска</string>
     <string name="action_open_location">Отвори локацију у другом програму</string>
-    <string name="map_application_missing">Ниједан програм за карте није инсталиран</string>
     <string name="label_housenumber">кућни број</string>
     <string name="quest_busStopShelter_covered">Цело стајалиште је наткривено</string>
     <string name="quest_ferry_pedestrian_title">Да ли ова линија трајекта превози пешаке?</string>
@@ -754,8 +753,6 @@
     <string name="quest_shop_gone_title">Шта је сада ту уместо тога?</string>
     <string name="quest_shop_gone_vacant_answer">Напуштено је</string>
     <string name="quest_shop_gone_replaced_answer">То је…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Упишите врсту радње и сл.</string>
-    <string name="quest_shop_vacant_type_title">Ова продавница је напуштена. Шта је сада овде?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ова врста задатка је онемогућена јер у неким регијама није корисна. Вероватно бисте морали ући унутра како би могли да одговорите на овакав задатак.</string>
     <string name="quest_dietType_explanation_kosher">Кошер производи се морају припремати према посебним правилима, а производи у складу са кашрутом су означени сертификатом.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Уопште нема бициклистичке стазе</string>
@@ -1445,7 +1442,6 @@
     <string name="quest_charging_station_bicycles_title">Да ли се овде могу пунити и бицикли?</string>
     <string name="quest_charging_station_bicycles_hint">Адаптери за пуњење користе обичне кућне утичнице.</string>
     <string name="quest_tower_access_title">Ко има приступ овом торњу? Било бесплатно или уз наплату.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Само је за бицикле</string>
     <string name="quest_recycling_type_pet_bottles">PET амбалажа</string>
     <string name="quest_maxweight_add_sign">Додај знак</string>
     <string name="quest_maxweight_remove_sign">Уклони знак</string>

@@ -18,6 +18,7 @@ jobs:
           - 21
         arch:
           - x86_64
+      fail-fast: false
     steps:
       - uses: actions/checkout@v4
 

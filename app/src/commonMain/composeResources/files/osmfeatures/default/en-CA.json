@@ -5,6 +5,9 @@
         "amenity/arts_centre": {
           "name": "Arts Centre"
         },
+        "amenity/clinic/dialysis": {
+          "name": "Dialysis Centre"
+        },
         "amenity/community_centre": {
           "name": "Community Centre"
         },
@@ -20,6 +23,9 @@
         "amenity/dive_centre": {
           "name": "Dive Centre"
         },
+        "amenity/doctors/paediatrics": {
+          "name": "Paediatrician"
+        },
         "amenity/exhibition_centre": {
           "name": "Exposition Centre"
         },
@@ -29,6 +35,12 @@
         "amenity/payment_centre": {
           "name": "Payment Centre"
         },
+        "amenity/recycling_centre": {
+          "name": "Recycling Centre"
+        },
+        "amenity/social_facility/day_care": {
+          "name": "Social Services Day Care / Day Centre"
+        },
         "amenity/telephone": {
           "name": "Telephone"
         },
@@ -36,11 +48,22 @@
           "name": "Amphitheatre"
         },
         "amenity/toilets": {
-          "name": "Washroom",
-          "aliases": "Bathroom"
+          "name": "Washroom"
         },
         "building/grandstand": {
           "name": "Grandstand"
+        },
+        "cycleway/asl": {
+          "name": "Bike Box"
+        },
+        "highway/footway/crossing": {
+          "name": "Crosswalk"
+        },
+        "highway/footway/crossing/uncontrolled": {
+          "name": "Marked Crosswalk"
+        },
+        "highway/footway/crossing/unmarked": {
+          "name": "Unmarked Crosswalk"
         },
         "highway/footway/informal": {
           "name": "Informal Foot Path"
@@ -51,8 +74,50 @@
         "leisure/bleachers": {
           "name": "Bleachers"
         },
+        "leisure/fitness_centre": {
+          "name": "Gym / Fitness Centre"
+        },
+        "office/union": {
+          "name": "Labour Union Office"
+        },
         "place/neighbourhood": {
           "name": "Neighbourhood"
+        },
+        "public_transport/platform/bus_tram_point": {
+          "name": "Streetcar & Bus Stop"
+        },
+        "public_transport/platform/tram": {
+          "name": "Streetcar Platform"
+        },
+        "public_transport/platform/tram_point": {
+          "name": "Streetcar Stop / Platform"
+        },
+        "public_transport/station_tram": {
+          "name": "Streetcar Station"
+        },
+        "public_transport/stop_position_tram": {
+          "name": "Streetcar Stopping Location"
+        },
+        "railway/tram": {
+          "name": "Streetcar Track"
+        },
+        "railway/tram_crossing": {
+          "name": "Streetcar-Path Crossing"
+        },
+        "railway/tram_level_crossing": {
+          "name": "Streetcar-Road Crossing"
+        },
+        "railway/tram_stop": {
+          "name": "Streetcar Stopping Position"
+        },
+        "telecom/data_center": {
+          "name": "Data Centre"
+        },
+        "tourism/information/visitor_centre": {
+          "name": "Visitor Centre"
+        },
+        "type/route/tram": {
+          "name": "Streetcar Route"
         }
       }
     }

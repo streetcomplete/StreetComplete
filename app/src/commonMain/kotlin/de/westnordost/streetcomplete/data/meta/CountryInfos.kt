@@ -2,11 +2,10 @@ package de.westnordost.streetcomplete.data.meta
 
 import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
-import de.westnordost.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.ui.ktx.readBytesOrNull
-import de.westnordost.streetcomplete.util.ktx.getIds
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.decodeFromString
 

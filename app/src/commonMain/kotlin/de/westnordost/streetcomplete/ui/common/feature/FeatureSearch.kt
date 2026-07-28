@@ -84,7 +84,7 @@ fun FeatureSearch(
             onValueChange = { search = it },
             modifier = Modifier.fillMaxWidth().focusRequester(focusRequester),
             placeholder = {
-                Text(stringResource(Res.string.quest_shop_gone_replaced_answer_hint))
+                Text(stringResource(Res.string.quest_shop_gone_replaced_answer_hint2))
             },
             leadingIcon = { SearchIcon() },
             trailingIcon = {

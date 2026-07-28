@@ -480,7 +480,6 @@ Se iso non é posíbel, podes descarregar outro teclado na tenda de aplicacións
     <string name="theme_dark">Escuro</string>
     <string name="theme_system_default">Tema do sistema</string>
     <string name="action_open_location">Abrir localización noutra aplicación</string>
-    <string name="map_application_missing">Ningunha outra aplicación de mapas instalada</string>
     <string name="label_housenumber">número de edificio</string>
     <string name="quest_busStopShelter_covered">Toda a paraxe está cuberta</string>
     <string name="quest_ferry_pedestrian_title">Esta liña de ferri pode transportar persoas?</string>
@@ -754,8 +753,6 @@ Se hai carrís reservados para buses, deixa unha nota no seu lugar.</string>
     <string name="quest_shop_gone_title">Que hai aquí agora no seu lugar?</string>
     <string name="quest_shop_gone_vacant_answer">Comercio baleiro…</string>
     <string name="quest_shop_gone_replaced_answer">Un…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Escribe o tipo de lugar aquí</string>
-    <string name="quest_shop_vacant_type_title">Este comercio estivo baleiro. Que hai aquí agora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Este tipo de tarefa está desactivada de xeito predeterminado porque non é útil nalgunhas rexións e é probábel que teñas que entrar no lugar para poder responder a unha tarefa deste tipo.</string>
     <string name="quest_dietType_explanation_kosher">Os produtos kosher teñen que prepararse dacordo coas regras especiais do xudaísmo, e as axencias de certificación kashrut deben marcar os produtos en cumprimento.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Non hai carril bici de ningún tipo</string>
@@ -1443,7 +1440,6 @@ Un andar conta como andar do tellado se as súas fiestras están no tellado. Pol
     <string name="quest_charging_station_bicycles_title">Pódense cargar tamén bicicletas aquí?</string>
     <string name="quest_charging_station_bicycles_hint">Os adaptadores do cargador de bicicletas conéctanse aos enchufes habituais nas casas.</string>
     <string name="quest_tower_access_title">Quen pode acceder a esta estación? Podería ser gratuíta ou de pago.</string>
-    <string name="quest_charging_station_bicycles_answer_only">É só para bicicletas</string>
     <string name="quest_recycling_type_pet_bottles">Botellas PET</string>
     <string name="quest_maxweight_add_sign">Engadir sinal</string>
     <string name="quest_maxweight_remove_sign">Retirar sinal</string>

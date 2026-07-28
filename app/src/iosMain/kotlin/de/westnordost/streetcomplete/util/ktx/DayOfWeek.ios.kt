@@ -7,11 +7,12 @@ import platform.Foundation.NSCalendar
 
 actual fun DayOfWeek.getDisplayName(style: DateTimeTextSymbolStyle, locale: Locale?): String {
     val calendar = NSCalendar.currentCalendar
-    if (locale != null) calendar.locale = locale.platformLocale
+    if (locale != null) calendar.locale = locale.toNSLocale()
     val symbols = when (style) {
         DateTimeTextSymbolStyle.Full -> calendar.standaloneWeekdaySymbols
         DateTimeTextSymbolStyle.Short -> calendar.shortStandaloneWeekdaySymbols
         DateTimeTextSymbolStyle.Narrow -> calendar.veryShortStandaloneWeekdaySymbols
     }
-    return symbols[ordinal] as String
+    // NSCalendar weekday symbol arrays start with Sunday, DayOfWeek starts with Monday
+    return symbols[(ordinal + 1) % 7] as String
 }

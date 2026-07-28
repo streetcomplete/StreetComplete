@@ -16,10 +16,12 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.TRACK
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.Columns.TYPE
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsTable.NAME
+import de.westnordost.streetcomplete.util.Mockable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
+@Mockable
 class NoteEditsDao(private val db: Database) {
     fun add(edit: NoteEdit): Boolean =
         db.transaction {
@@ -65,6 +67,7 @@ class NoteEditsDao(private val db: Database) {
         ) { it.toNoteEdit() }
 
     fun getAllUnsyncedForNotes(noteIds: Collection<Long>): List<NoteEdit> {
+        if (noteIds.isEmpty()) return emptyList()
         val notes = noteIds.joinToString(",")
         return db.query(NAME,
             where = "$NOTE_ID IN ($notes) AND $IS_SYNCED = 0",

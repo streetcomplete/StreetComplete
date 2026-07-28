@@ -17,6 +17,7 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>(), AndroidQuest {
         nodes with
         emergency = defibrillator
         and !location and !defibrillator:location
+        and !~location:.* and !~defibrillator:location:.*
         and access !~ private|no"
     """
     override val changesetComment = "Specify defibrillator location"

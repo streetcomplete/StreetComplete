@@ -45,7 +45,8 @@ mapOf(
         "restaurant", "cafe", "ice_cream", "fast_food", "bar", "pub", "biergarten",         // eat & drink
         "food_court", "nightclub", "hookah_lounge",
         "cinema", "planetarium", "casino",                                                  // amenities
-        "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library", // civic
+        "townhall", "courthouse", "embassy", "community_centre", "youth_centre", "library",
+        "ranger_station",                                                                   // civic
         "driving_school", "music_school", "prep_school", "language_school", "dive_centre",  // learning
         "dancing_school", "ski_school", "flight_school", "surf_school", "sailing_school",
         "cooking_school",
@@ -58,7 +59,7 @@ mapOf(
 
         // name & opening hours
         "boat_rental", "vehicle_inspection", "motorcycle_rental", "crematorium",
-        "public_bath",
+        "public_bath", "traffic_park"
 
         // not ATM because too often it's simply 24/7 and too often it is confused with
         // a bank that might be just next door because the app does not tell the user what
@@ -131,6 +132,7 @@ mapOf(
                     or railway = station
                     or aeroway = terminal
                     or man_made = observatory
+                    or club
                 )
             )
             or (

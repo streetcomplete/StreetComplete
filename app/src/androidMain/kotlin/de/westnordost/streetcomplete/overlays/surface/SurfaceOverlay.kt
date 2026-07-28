@@ -109,7 +109,7 @@ private val Surface.color get() = when (this) {
         -> OverlayColor.Aquamarine
     COMPACTED, FINE_GRAVEL,
         -> OverlayColor.Teal
-    DIRT, MUD, GROUND, WOODCHIPS,
+    DIRT, MUD, GROUND, WOODCHIPS, LATERITE,
         -> OverlayColor.Orange
     GRASS,
         -> OverlayColor.Lime // greenish colour for grass is deliberate

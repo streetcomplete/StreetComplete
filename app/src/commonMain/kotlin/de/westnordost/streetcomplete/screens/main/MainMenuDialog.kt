@@ -27,6 +27,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.NotificationBox
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeColorCircle
@@ -84,7 +85,7 @@ fun MainMenuDialog(
                     BigMenuButton(
                         onClick = { onDismissRequest(); onClickAbout() },
                         icon = { Icon(painterResource(Res.drawable.ic_info_outline_48), null) },
-                        text = stringResource(Res.string.action_about2),
+                        text = stringResource(Res.string.about_title, ApplicationConstants.NAME),
                     )
                 }
                 Divider()

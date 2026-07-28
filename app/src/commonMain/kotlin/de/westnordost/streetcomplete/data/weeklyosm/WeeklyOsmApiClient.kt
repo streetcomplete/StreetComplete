@@ -1,19 +1,9 @@
 package de.westnordost.streetcomplete.data.weeklyosm
 
-import io.ktor.client.HttpClient
-import io.ktor.client.request.get
-import io.ktor.client.statement.bodyAsChannel
-import io.ktor.utils.io.asSource
-import kotlinx.io.buffered
 import kotlin.time.Instant
 
-class WeeklyOsmApiClient(
-    private val httpClient: HttpClient,
-    private val parser: WeeklyOsmRssFeedParser,
-) {
-    suspend fun getLastPublishDate(): Instant? {
-        val response = httpClient.get("https://weeklyosm.eu/feed")
-        val source = response.bodyAsChannel().asSource().buffered()
-        return parser.parseLastPublishDate(source)
-    }
+/** Talks with the WeeklyOsm "API", i.e. just the RSS feed */
+interface WeeklyOsmApiClient {
+    /** Just gets the last date an edition of WeeklyOSM has been published */
+    suspend fun getLastPublishDate(): Instant?
 }

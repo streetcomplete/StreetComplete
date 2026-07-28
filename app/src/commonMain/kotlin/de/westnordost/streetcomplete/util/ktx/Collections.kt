@@ -79,4 +79,4 @@ fun <T> Collection<T>.containsExactlyInAnyOrder(other: Collection<T>): Boolean {
     return toCountMap() == other.toCountMap()
 }
 
-private fun <T>  Collection<T>.toCountMap() = groupingBy { it }.eachCount()
+private fun <T> Collection<T>.toCountMap() = groupingBy { it }.eachCount()

@@ -19,7 +19,7 @@
         },
         "advertising/poster_box": {
           "name": "Poster Box",
-          "terms": "lollylop,snowshoe,city light"
+          "terms": ["lollylop", "snowshoe", "city light"]
         },
         "aerialway": {
           "name": "Aerialway Feature"
@@ -125,7 +125,7 @@
         },
         "amenity/atm": {
           "name": "Cash Machine",
-          "terms": "atm,cash,machine,money,withdrawal"
+          "terms": ["atm", "cash", "machine", "money", "withdrawal"]
         },
         "amenity/baking_oven": {
           "name": "Baking Oven"
@@ -272,7 +272,7 @@
           "name": "General Practitioner"
         },
         "amenity/doctors/paediatrics": {
-          "name": "Pediatrician"
+          "name": "Paediatrician"
         },
         "amenity/doctors/pathology": {
           "name": "Pathologist"
@@ -378,7 +378,7 @@
         },
         "amenity/fuel": {
           "name": "Petrol Station",
-          "terms": "gas,fuel,propane,diesel,lng,cng,biodiesel"
+          "terms": ["gas", "fuel", "propane", "diesel", "lng", "cng", "biodiesel"]
         },
         "amenity/funeral_hall": {
           "name": "Funeral Service Hall"
@@ -778,7 +778,7 @@
         },
         "amenity/vehicle_inspection": {
           "name": "Vehicle Inspection",
-          "terms": "car inspection,mot test,mot centre"
+          "terms": ["car inspection", "mot test", "mot centre"]
         },
         "amenity/vending_machine": {
           "name": "Vending Machine"
@@ -815,11 +815,11 @@
         },
         "amenity/vending_machine/excrement_bags": {
           "name": "Poo Bag Dispenser",
-          "terms": "poo,excrement bags,poop,waste,dog,animal,pet"
+          "terms": ["poo", "excrement bags", "poop", "waste", "dog", "animal", "pet"]
         },
         "amenity/vending_machine/feminine_hygiene": {
           "name": "Feminine Hygiene Vending Machine",
-          "terms": "condom,tampon,pad,woman,women,menstrual hygiene products,personal care,rubber"
+          "terms": ["condom", "tampon", "pad", "woman", "women", "menstrual hygiene products", "personal care", "rubber"]
         },
         "amenity/vending_machine/food": {
           "name": "Food Vending Machine"
@@ -1093,7 +1093,7 @@
         },
         "building/apartments": {
           "name": "Block of Flats",
-          "terms": "flat building,flats"
+          "terms": ["flat building", "flats"]
         },
         "building/bakehouse": {
           "name": "Bakehouse"
@@ -1139,7 +1139,7 @@
         },
         "building/detached": {
           "name": "Detached House",
-          "terms": "freestanding house,home,residence,dwelling"
+          "terms": ["freestanding house", "home", "residence", "dwelling"]
         },
         "building/dormitory": {
           "name": "Dormitory"
@@ -1218,7 +1218,7 @@
         },
         "building/riding_hall": {
           "name": "Indoor Horse Riding Arena",
-          "aliases": "Indoor Riding Arena\nHorse Riding Hall"
+          "aliases": ["Indoor Riding Arena", "Horse Riding Hall"]
         },
         "building/roof": {
           "name": "Roof"
@@ -1260,10 +1260,10 @@
           "name": "Row of terraced houses"
         },
         "building/train_station": {
-          "name": "Train Station Building"
+          "name": "Railway Station Building"
         },
         "building/transportation": {
-          "name": "Transportation Building"
+          "name": "Transport Building"
         },
         "building/university": {
           "name": "University Building"
@@ -1291,7 +1291,7 @@
         },
         "club/sport": {
           "name": "Sports Club",
-          "terms": "athletics club,sporting club,sports association,sports society,sport club"
+          "terms": ["athletics club", "sporting club", "sports association", "sports society", "sport club"]
         },
         "craft": {
           "name": "Craft"
@@ -1337,7 +1337,7 @@
         },
         "craft/confectionery": {
           "name": "Confectioner",
-          "aliases": "Sweet Maker\nCandy Maker"
+          "aliases": ["Sweet Maker", "Candy Maker"]
         },
         "craft/distillery": {
           "name": "Distillery"
@@ -2256,7 +2256,7 @@
         },
         "leisure/horse_riding": {
           "name": "Horse Riding Centre",
-          "aliases": "Horse Riding Stables"
+          "aliases": ["Horse Riding Stables"]
         },
         "leisure/ice_rink": {
           "name": "Ice Rink"
@@ -2428,7 +2428,7 @@
         },
         "leisure/sports_centre/horse_racing": {
           "name": "Horse Racecourse",
-          "aliases": "Hippodrome"
+          "aliases": ["Hippodrome"]
         },
         "leisure/sports_centre/shooting": {
           "name": "Shooting Range Facility"
@@ -3016,7 +3016,7 @@
           "name": "Architect Office"
         },
         "office/association": {
-          "name": "Nonprofit Organization Office"
+          "name": "Nonprofit Organisation Office"
         },
         "office/charity": {
           "name": "Charity Office"
@@ -3419,7 +3419,7 @@
         },
         "public_transport/platform/subway": {
           "name": "Underground Railway Platform",
-          "terms": "metro,platform,public transit,public transportation,rail,subway,track,transit,transportation,underground,tube"
+          "terms": ["metro", "platform", "public transit", "public transportation", "rail", "subway", "track", "transit", "transportation", "underground", "tube"]
         },
         "public_transport/platform/subway_point": {
           "name": "Underground Railway Stop / Platform"
@@ -3464,10 +3464,10 @@
           "name": "Subway Station"
         },
         "public_transport/station_train": {
-          "name": "Train Station"
+          "name": "Railway Station"
         },
         "public_transport/station_train_halt": {
-          "name": "Train Station (Halt / Request)"
+          "name": "Railway Station (Halt / Request)"
         },
         "public_transport/station_tram": {
           "name": "Tram Station"
@@ -3511,9 +3511,6 @@
         "railway": {
           "name": "Railway Feature"
         },
-        "railway/abandoned": {
-          "name": "Abandoned Railway"
-        },
         "railway/buffer_stop": {
           "name": "Buffer Stop"
         },
@@ -3533,7 +3530,7 @@
           "name": "Funicular Track"
         },
         "railway/halt": {
-          "name": "Train Station (Halt / Request)"
+          "name": "Railway Station (Halt / Request)"
         },
         "railway/level_crossing": {
           "name": "Railway-Road Crossing"
@@ -3645,7 +3642,7 @@
         },
         "shop/alcohol": {
           "name": "Off licence (Alcohol shop)",
-          "terms": "alcohol,beer,booze,wine,off licence,off license"
+          "terms": ["alcohol", "beer", "booze", "wine", "off licence", "off license"]
         },
         "shop/anime": {
           "name": "Anime / Manga Shop"
@@ -3877,7 +3874,7 @@
         },
         "shop/hairdresser": {
           "name": "Hairdresser",
-          "terms": "barber"
+          "terms": ["barber"]
         },
         "shop/hairdresser_supply": {
           "name": "Hairdresser Supply Shop"
@@ -3908,7 +3905,7 @@
         },
         "shop/houseware": {
           "name": "Houseware Store",
-          "terms": "homeware,kitchenware,linen,crockery"
+          "terms": ["homeware", "kitchenware", "linen", "crockery"]
         },
         "shop/hunting": {
           "name": "Hunting Shop"
@@ -3945,7 +3942,7 @@
         },
         "shop/mall": {
           "name": "Shopping Centre",
-          "terms": "mall,shopping center"
+          "terms": ["mall", "shopping center"]
         },
         "shop/massage": {
           "name": "Massage Shop"

@@ -478,7 +478,6 @@
     <string name="theme_dark">Тъмна</string>
     <string name="theme_system_default">По подразбиране</string>
     <string name="action_open_location">Отваряне на мястото с друго приложение</string>
-    <string name="map_application_missing">Няма инсталирано друго приложение за карти</string>
     <string name="label_housenumber">номер на къща</string>
     <string name="quest_busStopShelter_covered">Цялата спирка е покрита</string>
     <string name="quest_ferry_pedestrian_title">Този ферибот превозва ли хора?</string>
@@ -742,8 +741,6 @@
     <string name="quest_shop_gone_title">Какво има тук сега?</string>
     <string name="quest_shop_gone_vacant_answer">Празно е</string>
     <string name="quest_shop_gone_replaced_answer">Сега е…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Какъв вид място е това</string>
-    <string name="quest_shop_vacant_type_title">Този обект е отбелязан като празен. Какво има тук сега?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Тези задачи са изключени по подразбиране, понеже не са полезни за някои райони и вероятно няма да посетите местата за които се търсят отговори.</string>
     <string name="quest_dietType_explanation_kosher">Продуктите кошер трябва да бъдат приготвени съгласно определени правила, маркирани от организации следящи за спазването на Кашрут.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Няма велосипедна пътека</string>

@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.quests.max_height
 
-import de.westnordost.streetcomplete.testutils.mock
+import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.way
 import kotlin.test.Test

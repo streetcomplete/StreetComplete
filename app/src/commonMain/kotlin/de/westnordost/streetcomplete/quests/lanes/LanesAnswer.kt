@@ -6,6 +6,9 @@ import kotlinx.serialization.Serializable
 sealed interface LanesAnswer {
     @Serializable
     data object IsUnmarked : LanesAnswer
+
+    @Serializable
+    data object OneLaneOnly : LanesAnswer
 }
 
 @Serializable

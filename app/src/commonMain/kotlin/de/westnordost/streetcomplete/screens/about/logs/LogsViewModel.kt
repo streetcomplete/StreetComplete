@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.logs.LogMessage
 import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.data.logs.LogsFilters
+import de.westnordost.streetcomplete.data.logs.LogsSource
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
@@ -33,7 +34,7 @@ abstract class LogsViewModel : ViewModel() {
 
 @Stable
 class LogsViewModelImpl(
-    private val logsController: LogsController,
+    private val logsSource: LogsSource,
 ) : LogsViewModel() {
 
     override val filters = MutableStateFlow(LogsFilters(
@@ -45,21 +46,21 @@ class LogsViewModelImpl(
      */
     private fun getIncomingLogs(filters: LogsFilters) = callbackFlow {
         // Listener that sends the messages matching the filters to the observer
-        val listener = object : LogsController.Listener {
+        val listener = object : LogsSource.Listener {
             override fun onAdded(message: LogMessage) {
                 if (filters.matches(message)) {
                     trySend(message) // Send it to the observer
                 }
             }
         }
-        logsController.addListener(listener)
-        awaitClose { logsController.removeListener(listener) }
+        logsSource.addListener(listener)
+        awaitClose { logsSource.removeListener(listener) }
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override val logs: StateFlow<List<LogMessage>> =
         filters.transformLatest { filters ->
-            val logs = logsController.getLogs(filters).toMutableList()
+            val logs = logsSource.getLogs(filters).toMutableList()
 
             emit(UniqueList(logs))
 
@@ -74,7 +75,7 @@ class LogsViewModelImpl(
     }
 }
 
-private fun LogsController.getLogs(filters: LogsFilters) =
+private fun LogsSource.getLogs(filters: LogsFilters) =
     getLogs(
         levels = filters.levels,
         messageContains = filters.messageContains,

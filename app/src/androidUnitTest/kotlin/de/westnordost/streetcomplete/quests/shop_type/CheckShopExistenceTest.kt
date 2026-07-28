@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.quests.shop_type
 
 import de.westnordost.streetcomplete.quests.TestMapDataWithGeometry
-import de.westnordost.streetcomplete.testutils.mock
+import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.node
 import kotlin.test.Test
 import kotlin.test.assertEquals

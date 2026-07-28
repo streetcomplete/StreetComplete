@@ -84,7 +84,7 @@ Implementing a quest by duplicating and modifiying an existing one is the recomm
 
 Search across the code for part of a question or other text specific to this quest. For example "the name of this place?".
 
-You will find an [XML file](app/src/androidMain/res/values/strings.xml) with an entry looking like this:
+You will find an [XML file](app/src/commonMain/composeResources/values/strings.xml) with an entry looking like this:
 
 ```xml
     <string name="quest_placeName_title">"What’s the name of this place?"</string>
@@ -248,7 +248,7 @@ override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillat
 
 It is a message displayed to the user, code here passes a [reference](https://developer.android.com/guide/topics/resources/string-resource) to the string. You can change it to the new, not yet existing one and use a built in tool to place text.
 
-Actual strings sit in [app/src/androidMain/res/values/strings.xml](app/src/androidMain/res/values/strings.xml)
+Actual strings sit in [app/src/commonMain/composeResources/values/strings.xml](app/src/commonMain/composeResources/values/strings.xml)
 
 There are separate files with translated text, but do not worry about it - [translations are handled separately](CONTRIBUTING.md#translating-the-app).
 

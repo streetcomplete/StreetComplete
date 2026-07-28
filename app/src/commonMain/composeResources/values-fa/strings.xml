@@ -479,7 +479,6 @@
     <string name="theme_dark">تیره</string>
     <string name="theme_system_default">پیشفرض سیستم</string>
     <string name="action_open_location">مکان را در برنامه دیگری باز نمایید</string>
-    <string name="map_application_missing">برنامه نقشه دیگری نصب نگردیده‌است</string>
     <string name="label_housenumber">شماره خانه</string>
     <string name="quest_busStopShelter_covered">سراسر ایستگاه سرپوشیده است</string>
     <string name="quest_ferry_pedestrian_title">آیا این مسیر دریایی برای حمل‌ونقل پیاده‌ها استفاده می‌شود؟</string>
@@ -750,8 +749,6 @@
     <string name="quest_shop_gone_title">چه چیز دیگری اینجاست؟</string>
     <string name="quest_shop_gone_vacant_answer">خالی است</string>
     <string name="quest_shop_gone_replaced_answer">یک…</string>
-    <string name="quest_shop_gone_replaced_answer_hint">نوع مکان اینجا را وارد کنید</string>
-    <string name="quest_shop_vacant_type_title">این فروشگاه متروکه است. اکنون چه عارضه‌ای اینجاست؟</string>
     <string name="default_disabled_msg_go_inside_regional_warning">این نوع جُستار به صورت پیشفرض غیرفعال است زیرا در برخی مناطق مفید نیست و احتمالاً مجبور خواهید بود که وارد مکان شوید تا به جُستاری از این نوع پاسخ دهید.</string>
     <string name="quest_dietType_explanation_kosher">محصولات کوشر مطابق با قوانین خاص تهیه می‌شود و مراکز صدور گواهینامه کوشر، محصولات را مطابق با آن نشانه‌گذاری می‌کنند.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">اصلاً مسیر دوچرخه‌سواری وجود ندارد</string>
@@ -1447,7 +1444,6 @@
     <string name="quest_charging_station_bicycles_title">دوچرخه‌ها را می‌توان در اینجا شارژ کرد؟</string>
     <string name="quest_charging_station_bicycles_hint">آداپتورهای برق شارژر دوچرخه به پریزهای برق معمولی خانگی وصل می‌شوند.</string>
     <string name="quest_tower_access_title">چه کسی می‌تواند به این برج دسترسی داشته باشد؟ ممکن است رایگان یا پولی باشد.</string>
-    <string name="quest_charging_station_bicycles_answer_only">فقط برای دوچرخه است</string>
     <string name="quest_recycling_type_pet_bottles">بطری‌های PET</string>
     <string name="quest_maxweight_add_sign">اضافه‌کردن علامت</string>
     <string name="quest_maxweight_remove_sign">حذف‌کردن علامت</string>
@@ -1490,4 +1486,22 @@
     <string name="quest_shower_hot_water_title">آیا آب گرم در اینجا وجود دارد؟</string>
     <string name="calendar_new_event_title">رویداد جدید OSM در منطقه شما!</string>
     <string name="pref_title_message_calendar">رویدادهای جدید OSM در منطقه شما</string>
+    <string name="quest_ferry_hgv_title">آیا این مسیر کشتی، وسایل نقلیه سنگین باری را حمل می‌کند؟</string>
+    <string name="dialog_dont_notify_again2">لغو اشتراک</string>
+    <string name="quest_leave_new_note_track_recording">ضبط مسیر پیوست خواهد شد.</string>
+    <string name="quest_leave_new_note_photo_delete">حذف</string>
+    <string name="quest_maxspeed_type_description">حداکثر سرعت بر اساس... تعیین می‌شود</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">تابلوی سرعت توصیه‌شده</string>
+    <string name="quest_maxspeed_answer_roadtype_description">خیابان... است</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">در محدوده شهری</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">خارج از محدوده شهری</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">دارای روشنایی</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">بدون روشنایی</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">بدون روشنایی و جاده دوطرفه</string>
+    <string name="quest_board_type_tourism">گردشگری (موضوعات متعدد)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">تنها یک خط مشخص</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">آنچه را که به دنبال آن هستید تایپ کنید</string>
+    <string name="link_gomap_description">ویرایشگر پیشرفته OSM برای iOS</string>
+    <string name="link_terraink_description">ایجاد پوسترهای زیبای سفارشی از یک شهر یا محله</string>
+    <string name="quest_place_vacant_type_title">این مکان قبلا خالی بوده است. الان چه چیزی اینجاست؟</string>
 </resources>

@@ -32,6 +32,7 @@ import org.jetbrains.compose.resources.stringResource
     lastPicked: List<Sides<Surface>> = emptyList(),
     hasSidewalkLeft: Boolean = true,
     hasSidewalkRight: Boolean = true,
+    countryCode: String? = null,
 ) {
     var showPickerForSide by remember { mutableStateOf<Side?>(null) }
 
@@ -73,7 +74,7 @@ import org.jetbrains.compose.resources.stringResource
         SimpleItemSelectDialog(
             onDismissRequest = { showPickerForSide = null },
             columns = SimpleGridCells.Fixed(3),
-            items = Surface.selectableValuesForWays,
+            items = Surface.getSelectableValuesForWays(countryCode),
             onSelected = { surface ->
                 onValueChanged(when (side) {
                     Side.LEFT -> value.copy(left = surface)

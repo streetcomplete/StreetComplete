@@ -4,6 +4,9 @@
       "presets": {
         "amenity/theatre/type/amphi": {
           "name": "Amphitheatre"
+        },
+        "telecom/data_center": {
+          "name": "Data Centre"
         }
       }
     }

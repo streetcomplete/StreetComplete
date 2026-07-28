@@ -18,6 +18,7 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>(), AndroidQuest {
         nodes with
         emergency = first_aid_kit
         and !location and !first_aid_kit:location
+        and !~location:.* and !~first_aid_kit:location:.*
         and access !~ private|no
     """
     override val changesetComment = "Specify first aid kit location"

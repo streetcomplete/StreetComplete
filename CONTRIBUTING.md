@@ -30,7 +30,7 @@ Before each [release](res/documentation/creating%20new%20release.md), translatio
 
 Once 100% or close to 100% of text is translated, the given language becomes enabled. Translations which are not maintained are removed. Typically languages which are less than 60% translated will be considered as not maintained and such translation will be disabled.
 
-The source translation is in US English (in [app/src/androidMain/res/values/strings.xml](app/src/androidMain/res/values/strings.xml)). POEditor has a list of modifications in dialects such as UK English and Australian English, listed as separate languages.
+The source translation is in US English (in [app/src/commonMain/composeResources/values/strings.xml](app/src/commonMain/composeResources/values/strings.xml)). POEditor has a list of modifications in dialects such as UK English and Australian English, listed as separate languages.
 
 ### iD presets
 
@@ -53,6 +53,7 @@ If you experience problems, crashes or a quest is not clear to you, feel free to
 1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
 2. Remember to report map style issues [in the appropriate repository](#issues-with-dependencies).
 3. Look [whether your issue has already been reported](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue) (remember to check closed issues too, it may have already been fixed and is due to appear in the next release).
+4. Add screenshots or screen recordings to your issue to make it easier to understand the problem. In more complicated cases, logs can help others analyzing the problem. The StreetComplete logs can be found in the following location: *hamburger menu > About > Show logs*.
 
 ### Issues with dependencies
 

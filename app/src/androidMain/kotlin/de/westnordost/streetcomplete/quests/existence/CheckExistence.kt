@@ -84,7 +84,9 @@ class CheckExistence(
         and access !~ no|private
         and (!seasonal or seasonal = no)
         and (!intermittent or intermittent = no)
-        and (!permanent or permanent = yes)
+        and (!permanent or permanent != yes)
+        and (!heritage or heritage = no)
+        and !listed_status
     """.toElementFilterExpression() }
     // - traffic_calming = table is often used as a property of a crossing: we don't want the app
     //    to delete the crossing if the table is not there anymore, so exclude that
