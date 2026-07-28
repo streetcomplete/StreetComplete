@@ -453,7 +453,6 @@
     <string name="theme_dark">Du</string>
     <string name="theme_system_default">Defowt system</string>
     <string name="action_open_location">Ygeri tyller yn app aral</string>
-    <string name="map_application_missing">App mappow aral vyth leys</string>
     <string name="label_housenumber">niver chi</string>
     <string name="quest_busStopShelter_covered">Savla dien yw gorherys</string>
     <string name="quest_ferry_pedestrian_title">Eus an kowbalhyns ma karya kerdhoryon?</string>
@@ -727,7 +726,6 @@ Maga ta, mars yth na gweytha rag an tregh golowboyntys dien, prederi ow gorthebi
     <string name="quest_shop_gone_title">Pyth yw omma yn le lemmyn?</string>
     <string name="quest_shop_gone_vacant_answer">Yth yw gwag…</string>
     <string name="quest_shop_gone_replaced_answer">Unn…</string>
-    <string name="quest_shop_vacant_type_title">An gwerthji ma re beu gwag. Pyth yw omma lemmyn?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">An eghen hwithrans ma yw marow yn defowt dre reson yth yw na dhe les yn nebes powyow ha ty a yll mos a-ji an le dell hevel rag gorthebi unn hwithrans a'n eghen ma.</string>
     <string name="quest_dietType_explanation_kosher">Gwara kosher res bos pareusys war-lergh rewlys arbennik, gans maynys testskrifans kashrut ow merkya gwara yn gostytter.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Hyns diwros vytholl</string>
@@ -1397,7 +1395,6 @@ Rag ensampel 1,3 po 2b,4,6.</string>
     <string name="quest_charging_station_bicycles_title">A yll diwrosow bos kargys omma, ynwedh?</string>
     <string name="quest_charging_station_bicycles_hint">Aswiwer tredan kargell diwrosow ebilya yn krawyow a'n mayni normal.</string>
     <string name="quest_tower_access_title">Piw a yll drehedhes an tour ma? Yth a yll bos heb kost po pes.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Rag diwrosow yn unnik yw</string>
     <string name="quest_recycling_type_pet_bottles">Botellow PET</string>
     <string name="quest_maxweight_add_sign">Keworra arwodh</string>
     <string name="quest_maxweight_remove_sign">Remova arwodh</string>

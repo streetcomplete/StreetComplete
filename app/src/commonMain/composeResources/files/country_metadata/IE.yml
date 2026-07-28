@@ -2,7 +2,7 @@
 advisoryCycleLaneStyle: white dashes
 atmOperators: [Bank of Ireland, AIB, Ulster Bank, Euronet, Permanent TSB, Brinks, Spar, Point Cash, PTSB, Credit Union, The ATM Co., Euronet Worldwide, Centra]
 centerLineStyle: white
-chargingStationOperators: [ESB ecars, EasyGo, ESB Group, EVBox, Applegreen Electric, ePower, Go Platform Limited, EC Charging, Tesla, ubitricity, Clenergy EV, Ionity, EO, Dun Laoghaire-Rathdown County Council, Circle K, Aldi Stores (Ireland) Limited, Stillorgan Village, ESB, ChargePoint, char.gy, Dell EMC, Zappi, YoreOn, Weev, Streetcharge, SSE, Radisson Blu Hotel, Porsche, Plugsurfing GmbH, Nissan, Lidl, Kildare Village, Kelly's Resort Hotel, EZO, Brooklodge Hotel]
+chargingStationOperators: [ESB ecars, ESB Group, EasyGo, EVBox, Applegreen Electric, ePower, Go Platform Limited, EC Charging, Tesla, ubitricity, Clenergy EV, Ionity, EO, Dun Laoghaire-Rathdown County Council, Circle K, Aldi Stores (Ireland) Limited, Stillorgan Village, ESB, ChargePoint, char.gy, Dell EMC, Zappi, YoreOn, Weev, Streetcharge, SSE, Radisson Blu Hotel, Porsche, Plugsurfing GmbH, Nissan, Lidl, Kildare Village, Kelly's Resort Hotel, EZO, Brooklodge Hotel]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Clothes Pod, Cancer Fund for Children, Cork County Council, St. James Camino Network, Liberty Recycling, Vincent's, Textile Recycling Limited, Society of St. Vincent de Paul, Liberty, Enable Ireland, Cork City Hospitals Children's Club]
 defaultSpeedLimitHasUrbanOrRural: true

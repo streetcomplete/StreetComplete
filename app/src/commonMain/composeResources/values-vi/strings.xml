@@ -476,7 +476,6 @@ Một phần có nghĩa là một người đi xe lăn có thể vào và sử d
     <string name="theme_dark">Tối</string>
     <string name="theme_system_default">Mặc định hệ thống</string>
     <string name="action_open_location">Mở địa điểm trong ứng dụng khác</string>
-    <string name="map_application_missing">Chưa cài đặt ứng dụng bản đồ khác</string>
     <string name="label_housenumber">số nhà</string>
     <string name="quest_ferry_pedestrian_title">Phà này có chở người đi bộ không?</string>
     <string name="quest_ferry_motor_vehicle_title">Phà này có chởi xe động cơ không?</string>
@@ -751,7 +750,6 @@ Nếu có bất kỳ làn đường nào dành riêng cho xe buýt, vui lòng đ
     <string name="quest_shop_gone_title">Vậy bây giờ có gì ở đây?</string>
     <string name="quest_shop_gone_vacant_answer">Nó trống rỗng...</string>
     <string name="quest_shop_gone_replaced_answer">Nó là...</string>
-    <string name="quest_shop_vacant_type_title">Cửa hàng này đã bị bỏ trống. Bây giờ có gì ở đây?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Loại nhiệm vụ này bị vô hiệu hóa theo mặc định vì nó không hữu ích ở một số khu vực và bạn có thể sẽ phải vào địa điểm đó để có thể trả lời nhiệm vụ loại này.</string>
     <string name="quest_dietType_explanation_kosher">Các sản phẩm Kosher (thức ăn dành cho người theo Do Thái) phải được chế biến theo các quy tắc đặc biệt, với các cơ quan chứng nhận kashrut đánh dấu sản phẩm tuân thủ.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Không có lối xe đạp nào</string>
@@ -1250,7 +1248,6 @@ Dữ liệu bị thiếu luôn được hiển thị bằng màu đỏ.</string>
     <string name="quest_lane_markings_title">Đường này có vạch kẻ chia làn không?</string>
     <string name="quest_bicycle_charging_station_capacity_title">Có thể sạc cùng lúc bao nhiêu xe đạp ở đây?</string>
     <string name="quest_charging_station_bicycles_title">Có thể sạc xe đạp ở đây không?</string>
-    <string name="quest_charging_station_bicycles_answer_only">Chỉ dành cho xe đạp</string>
     <string name="quest_maxweight_add_sign">Thêm biển báo</string>
     <string name="quest_maxweight_remove_sign">Loại bỏ biển báo</string>
     <string name="pref_title_messages">Tin nhắn trong ứng dụng</string>

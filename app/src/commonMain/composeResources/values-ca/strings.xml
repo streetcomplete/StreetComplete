@@ -481,7 +481,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="theme_dark">Fosc</string>
     <string name="theme_system_default">Predeterminat del sistema</string>
     <string name="action_open_location">Obre la ubicació en una altra aplicació</string>
-    <string name="map_application_missing">No hi ha cap altra aplicació de mapes instal·lada</string>
     <string name="label_housenumber">número de casa</string>
     <string name="quest_busStopShelter_covered">Cobreix tota la parada</string>
     <string name="quest_ferry_pedestrian_title">Aquesta ruta de ferri transporta vianants?</string>
@@ -753,7 +752,6 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="quest_shop_gone_title">Què hi ha aquí ara?</string>
     <string name="quest_shop_gone_vacant_answer">Està vacant</string>
     <string name="quest_shop_gone_replaced_answer">Un(a)…</string>
-    <string name="quest_shop_vacant_type_title">Aquesta botiga ha estat vacant. Què hi ha aquí ara?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Aquest tipus de missió està desactivada per defecte perquè no és útil en algunes regions i probablement haureu d'entrar al lloc per poder respondre a una cerca d'aquest tipus.</string>
     <string name="quest_dietType_explanation_kosher">Els productes de Kosher han d'estar preparats d'acord amb normes especials, i les agències de certificació de kaixrut han de marcar els productes de conformitat.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Sense carril bici</string>
@@ -1456,7 +1454,6 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="quest_charging_station_bicycles_title">També es poden carregar bicicletes aquí?</string>
     <string name="quest_charging_station_bicycles_hint">Els adaptadors de carregador de bicicletes es connecten a endolls domèstics normals.</string>
     <string name="quest_tower_access_title">Qui pot accedir a aquesta torre? Pot ser gratuït o de pagament.</string>
-    <string name="quest_charging_station_bicycles_answer_only">És només per a bicicletes</string>
     <string name="quest_recycling_type_pet_bottles">Ampolles PET</string>
     <string name="quest_maxweight_add_sign">Afegiu signe</string>
     <string name="quest_maxweight_remove_sign">Elimineu signe</string>

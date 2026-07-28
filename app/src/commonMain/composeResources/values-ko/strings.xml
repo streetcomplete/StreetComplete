@@ -486,7 +486,6 @@ StreetComplete 서버에 있는 &lt;a href="https://www.westnordost.de/streetcom
     <string name="theme_dark">어두움</string>
     <string name="theme_system_default">시스템 기본값</string>
     <string name="action_open_location">다른 앱에서 위치 열기</string>
-    <string name="map_application_missing">설치된 다른 지도 앱이 없습니다</string>
     <string name="label_housenumber">건물 번호</string>
     <string name="quest_busStopShelter_covered">별도의 구조물로 덮여있음</string>
     <string name="quest_ferry_pedestrian_title">보행자가 이 페리 노선을 이용할 수 있나요?</string>
@@ -761,7 +760,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_shop_gone_title">지금은 여기에 무엇이 있나요?</string>
     <string name="quest_shop_gone_vacant_answer">비어 있습니다</string>
     <string name="quest_shop_gone_replaced_answer">새로 바뀐 상점명:</string>
-    <string name="quest_shop_vacant_type_title">이 가게는 비어 있었습니다. 지금 여기에 무엇이 있나요?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">이 유형의 질문은 일부 지역에서 유용하지 않고, 답변하려면 보통 해당 장소에 직접 들어가야 하기 때문에 기본적으로 비활성화되어 있습니다.</string>
     <string name="quest_dietType_explanation_kosher">코셔 제품은 특수 규정에 따라 제조되어야 하며, 카샤룻 인증 기관에서 적합 평가를 받아야 합니다.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">자전거 도로 없음</string>
@@ -1452,5 +1450,4 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_charging_station_bicycles_title">이곳에서 자전거도 충전할 수 있나요?</string>
     <string name="quest_charging_station_bicycles_hint">자전거 충전기 어댑터는 일반 가정용 콘센트에 꽂습니다.</string>
     <string name="quest_tower_access_title">누가 이 타워에 출입할 수 있나요? 무료일 수도, 유료일 수도 있습니다.</string>
-    <string name="quest_charging_station_bicycles_answer_only">자전거 전용</string>
 </resources>

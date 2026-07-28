@@ -621,7 +621,6 @@ Cyflawni</string>
     <string name="quest_shop_gone_title">Beth sydd yma nawr?</string>
     <string name="quest_shop_gone_vacant_answer">Mae'n wag…</string>
     <string name="quest_shop_gone_replaced_answer">Mae yna…</string>
-    <string name="quest_shop_vacant_type_title">Mae'r siop hon wedi bod yn wag. Beth sy'n yma nawr?</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Dim lôn feicio na thrac beicio o gwbl</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Wrth osod nad oes lôn feicio na thrac beicio</string>
     <string name="quest_construction_completed_at_known_date">Bydd yn cael ei orffen ar…</string>
@@ -1020,7 +1019,6 @@ Gallwch ddod o hyd i wybodaeth am roddion ar ein gwefan neu hafan ein prosiect, 
     <string name="quest_first_aid_kit_location">Ble mae'r pecyn cymorth cyntaf hwn?</string>
     <string name="quest_charging_station_bicycles_title">Oes modd gwefru beiciau yma, hefyd?</string>
     <string name="quest_tower_access_title">Pwy sy'n gallu mynd i'r tŵr? Gall fod am ddim neu â thâl.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Dim ond beiciau</string>
     <string name="quest_recycling_type_pet_bottles">Poteli PET</string>
     <string name="quest_maxweight_add_sign">Ychwanegu arwydd</string>
     <string name="quest_maxweight_remove_sign">Dileu arwydd</string>

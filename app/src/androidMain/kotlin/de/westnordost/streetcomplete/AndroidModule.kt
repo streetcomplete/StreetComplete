@@ -1,20 +1,23 @@
 package de.westnordost.streetcomplete
 
+import android.content.Context
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import android.content.res.AssetManager
 import android.content.res.Resources
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SharedPreferencesSettings
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.create
-import de.westnordost.streetcomplete.data.AndroidDatabase
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.StreetCompleteSQLiteOpenHelper
+import de.westnordost.streetcomplete.data.DatabaseImpl
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.connection.AndroidActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadControllerAndroid
 import de.westnordost.streetcomplete.data.download.DownloadWorker
+import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloaderAndroid
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
@@ -76,8 +79,9 @@ val androidModule = module {
     // database
 
     single<Database> {
-        val sqLite = StreetCompleteSQLiteOpenHelper(get(), ApplicationConstants.DATABASE_NAME)
-        AndroidDatabase(sqLite.writableDatabase)
+        val databaseFilePath = get<Context>().getDatabasePath(ApplicationConstants.DATABASE_NAME).path
+        val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
+        DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
     }
 
     // avatars cache dir

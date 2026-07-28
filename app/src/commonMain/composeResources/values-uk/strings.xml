@@ -481,7 +481,6 @@
     <string name="theme_dark">Темна</string>
     <string name="theme_system_default">Системна</string>
     <string name="action_open_location">Відкрити локацію в іншому застосунку</string>
-    <string name="map_application_missing">Жодного застосунку для роботи з мапами не встановлено</string>
     <string name="label_housenumber">номер будинку</string>
     <string name="quest_busStopShelter_covered">Зупинка вкрита повністю</string>
     <string name="quest_ferry_pedestrian_title">Чи переправляє цей поромний маршрут пішоходів?</string>
@@ -750,7 +749,6 @@
     <string name="quest_shop_gone_title">Що тепер тут?</string>
     <string name="quest_shop_gone_vacant_answer">Це незайнято</string>
     <string name="quest_shop_gone_replaced_answer">На (n)</string>
-    <string name="quest_shop_vacant_type_title">Цей магазин незайнятий. Що тут тепер?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Цей тип квесту за замовчуванням вимкнено, оскільки він не корисний у деяких регіонах, і вам, ймовірно, доведеться ввести місце, щоб мати можливість відповісти на квест цього типу.</string>
     <string name="quest_dietType_explanation_kosher">Кошерна продукція повинна готуватися за спеціальними правилами, а сертифікаційні агенції Кашрут повинні маркувати продукцію відповідно.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Немає велодоріжок</string>
@@ -1441,7 +1439,6 @@
     <string name="quest_charging_station_bicycles_title">Чи можна тут також заряджати велосипеди?</string>
     <string name="quest_charging_station_bicycles_hint">Адаптери живлення для велозарядок підключаються до звичайних розеток.</string>
     <string name="quest_tower_access_title">Хто може відвідати цю вежу? Це може бути безкоштовно або платно.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Це лише для велосипедів</string>
     <string name="quest_recycling_type_pet_bottles">ПЕТ пляшки</string>
     <string name="quest_maxweight_add_sign">Додати знак</string>
     <string name="quest_maxweight_remove_sign">Прибрати знак</string>
@@ -1496,4 +1493,10 @@
     <string name="quest_maxspeed_answer_roadtype_lit">освітлена</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">не освітлена</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Неосвітлена дорога з роздільником</string>
+    <string name="quest_board_type_tourism">Туризм (кілька тем)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Тільки одна розмічена смуга</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Введіть, що ви шукаєте</string>
+    <string name="link_gomap_description">Просунутий редактор OSM для iOS</string>
+    <string name="link_terraink_description">Створюйте красиві постери міста чи району на свій смак</string>
+    <string name="quest_place_vacant_type_title">Це місце було порожнім. Що тут зараз?</string>
 </resources>

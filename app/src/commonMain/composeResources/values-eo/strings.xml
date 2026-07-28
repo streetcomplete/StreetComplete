@@ -480,7 +480,6 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="theme_dark">Malhela</string>
     <string name="theme_system_default">Operaciuma defaŭlta</string>
     <string name="action_open_location">Malfermi lokon en alia aplikaĵo</string>
-    <string name="map_application_missing">Neniu alia mapo-aplikaĵo instalita</string>
     <string name="label_housenumber">domnumero</string>
     <string name="quest_busStopShelter_covered">La tuta haltejo estas kovrita</string>
     <string name="quest_ferry_pedestrian_title">Ĉu ĉi tiu pramvojo transportas piedirantojn?</string>
@@ -747,7 +746,6 @@ Se iuj vojeroj estas rezervitaj al busoj, bonvolu lasi noton anstataŭe.</string
     <string name="quest_shop_gone_title">Kio estas ĉi tie nun?</string>
     <string name="quest_shop_gone_vacant_answer">Ĝi estas vaka</string>
     <string name="quest_shop_gone_replaced_answer">Ĝi estas…</string>
-    <string name="quest_shop_vacant_type_title">Ĉi tiu butiko estis vaka. Kio estas ĉi tie nun?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ĉi tia tasko estas malebiligita defaŭlte ĉar ĝi ne estas utila en kelkaj regionoj kaj vi probable devas eniri la lokon por plenigi tian taskon.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Tute neniu biciklovojo</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Kiel kutime, alklaku iaflanke de la ilustraĵo, elektu akuratan respondon, kaj faru same aliflanke.

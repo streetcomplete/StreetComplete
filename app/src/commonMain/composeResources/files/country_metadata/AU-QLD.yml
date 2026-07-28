@@ -1,6 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Commonwealth Bank, Westpac, ANZ, NAB, Bendigo Bank, BOQ, Suncorp, Heritage Bank, Armaguard, Precinct, rediATM, ATMx, Next Payments, atmx, atmX, Cashcard, armaguard, United ATM, Travelex, St.George, RediATM, HSBC, DC ATM, Bendigo]
-chargingStationOperators: [Yurika, Evie Networks, Tesla, University of Queensland, NRMA, Brisbane Airport Corporation, EVlink, Chargefox, AmpCharge, bp pulse, Jolt, BP Pulse]
+atmOperators: [Commonwealth Bank, Westpac, ANZ, NAB, Bendigo Bank, BOQ, Suncorp, Armaguard, Heritage Bank, Precinct, rediATM, ATMx, Next Payments, atmx, atmX, Cashcard, armaguard, United ATM, Travelex, St.George, RediATM, NeXT, HSBC, DC ATM, Bendigo]
+chargingStationOperators: [Yurika, Evie Networks, Tesla, University of Queensland, NRMA, Brisbane Airport Corporation, AmpCharge, EVlink, Chargefox, bp pulse, Jolt, BP Pulse]
 clothesContainerOperators: [Link Vision]
 defaultSpeedLimitHasUrbanOrRural: true
 parcelLockerBrand: [Australia Post, Amazon Hub]

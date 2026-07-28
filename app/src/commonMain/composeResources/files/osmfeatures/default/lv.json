@@ -70,7 +70,7 @@
         },
         "amenity/bicycle_rental": {
           "name": "Velonoma",
-          "terms": "velosipēdu"
+          "terms": ["velosipēdu"]
         },
         "amenity/bicycle_repair_station": {
           "name": "Velosipēdu Remonta Darbarīku Stends"
@@ -86,7 +86,7 @@
         },
         "amenity/cafe": {
           "name": "Kafejnīca",
-          "terms": "bistro,krogs,kafija,tēja"
+          "terms": ["bistro", "krogs", "kafija", "tēja"]
         },
         "amenity/cafe/coffee_shop": {
           "name": "Kafijas nams"
@@ -102,15 +102,15 @@
         },
         "amenity/charging_station": {
           "name": "Uzlādes stacija",
-          "terms": "elektriskā,uzlāde,elektroauto,superlāde,zemsprieguma uzlāde"
+          "terms": ["elektriskā", "uzlāde", "elektroauto", "superlāde", "zemsprieguma uzlāde"]
         },
         "amenity/cinema": {
           "name": "Kino",
-          "terms": "kinoteātris,filmas,izrādes,lielekrāna"
+          "terms": ["kinoteātris", "filmas", "izrādes", "lielekrāna"]
         },
         "amenity/clinic": {
           "name": "Klīnika",
-          "terms": "medicīna,neatliekama"
+          "terms": ["medicīna", "neatliekama"]
         },
         "amenity/clinic/abortion": {
           "name": "Aborta klīnika"
@@ -129,27 +129,27 @@
         },
         "amenity/compressed_air": {
           "name": "Saspiests Gaiss",
-          "terms": "augstspiediena,riepu uzpilde"
+          "terms": ["augstspiediena", "riepu uzpilde"]
         },
         "amenity/courthouse": {
           "name": "Tiesas nams",
-          "terms": "tiesnesis,apgabaltiesa"
+          "terms": ["tiesnesis", "apgabaltiesa"]
         },
         "amenity/crematorium": {
           "name": "Krematorija",
-          "terms": "bēres,kapi"
+          "terms": ["bēres", "kapi"]
         },
         "amenity/dentist": {
           "name": "Zobārsts",
-          "terms": "zobi,ārsts,higēnists"
+          "terms": ["zobi", "ārsts", "higēnists"]
         },
         "amenity/doctors": {
           "name": "Dakteris",
-          "terms": "ārsts,medicīna"
+          "terms": ["ārsts", "medicīna"]
         },
         "amenity/dojo": {
           "name": "Dojo / Karatē apmācība",
-          "terms": "karatē,skola"
+          "terms": ["karatē", "skola"]
         },
         "amenity/dressing_room": {
           "name": "Ģērbtuve"
@@ -162,54 +162,54 @@
         },
         "amenity/fast_food": {
           "name": "Ātrās ēdināšanas iestāde",
-          "terms": "restorāns,līdzņemšana"
+          "terms": ["restorāns", "līdzņemšana"]
         },
         "amenity/fast_food/burger": {
           "name": "Ātrās ēdināšanas burgernīca"
         },
         "amenity/fast_food/sandwich": {
           "name": "Ātrās ēdināšanas sviestmaižu kafejnīca",
-          "terms": "ātrās ēdināšanas sviestmaižu restorāns"
+          "terms": ["ātrās ēdināšanas sviestmaižu restorāns"]
         },
         "amenity/ferry_terminal": {
           "name": "Prāmju termināls"
         },
         "amenity/fire_station": {
           "name": "Ugunsdzēsēju stacija",
-          "terms": "pažarnieki,depo"
+          "terms": ["pažarnieki", "depo"]
         },
         "amenity/food_court": {
           "name": "Ēdnīca",
-          "terms": "restorāns,ātrā uzkoda,ēdiens"
+          "terms": ["restorāns", "ātrā uzkoda", "ēdiens"]
         },
         "amenity/fountain": {
           "name": "Strūklaka"
         },
         "amenity/fuel": {
           "name": "Degvielas uzpildes stacija",
-          "terms": "degviela,dīzelis,gāze,98,95,uzpilde"
+          "terms": ["degviela", "dīzelis", "gāze", "98", "95", "uzpilde"]
         },
         "amenity/grave_yard": {
           "name": "Kapi"
         },
         "amenity/grit_bin": {
           "name": "Smilšu tvertne",
-          "terms": "sāls kaste,smilšu kaste,smiltis,sāls,grants"
+          "terms": ["sāls kaste", "smilšu kaste", "smiltis", "sāls", "grants"]
         },
         "amenity/hunting_stand": {
           "name": "Medību stends",
-          "terms": "ieroču,šaušana,šautuve"
+          "terms": ["ieroču", "šaušana", "šautuve"]
         },
         "amenity/ice_cream": {
           "name": "Saldējuma Veikals",
-          "terms": "sorbejs,saldēts"
+          "terms": ["sorbejs", "saldēts"]
         },
         "amenity/internet_cafe": {
           "name": "Interneta Kafejnīca"
         },
         "amenity/library": {
           "name": "Bibliotēka",
-          "terms": "grāmatas,lasītava"
+          "terms": ["grāmatas", "lasītava"]
         },
         "amenity/lounger": {
           "name": "Guļamkrēsls"
@@ -222,18 +222,18 @@
         },
         "amenity/nightclub": {
           "name": "Naktsklubs",
-          "terms": "klubs,deju klubs,dejošana,nakts klubs"
+          "terms": ["klubs", "deju klubs", "dejošana", "nakts klubs"]
         },
         "amenity/parcel_locker": {
           "name": "Pakomāts"
         },
         "amenity/parking": {
           "name": "Stāvvieta",
-          "terms": "auto,mašīnas,stāvvieta,stāvēšana,apstāšanās,pieturvieta"
+          "terms": ["auto", "mašīnas", "stāvvieta", "stāvēšana", "apstāšanās", "pieturvieta"]
         },
         "amenity/parking/multi-storey": {
           "name": "Daudzlīmeņu Stāvvieta",
-          "terms": "garāža,daudzstāvu,stāvi,ēka,autostāvieta"
+          "terms": ["garāža", "daudzstāvu", "stāvi", "ēka", "autostāvieta"]
         },
         "amenity/parking/street-side": {
           "name": "Autostāvvieta ielas malā"
@@ -252,7 +252,7 @@
         },
         "amenity/place_of_worship": {
           "name": "Dievnams",
-          "terms": "baziliks,baznīca,katedrāle,kapella,mošeja,lūgšanas,bazilika"
+          "terms": ["baziliks", "baznīca", "katedrāle", "kapella", "mošeja", "lūgšanas", "bazilika"]
         },
         "amenity/place_of_worship/buddhist": {
           "name": "Budistu templis"
@@ -271,21 +271,21 @@
         },
         "amenity/police": {
           "name": "Policija",
-          "terms": "iecirknis,detektīvs,likums,kruķi,poliči"
+          "terms": ["iecirknis", "detektīvs", "likums", "kruķi", "poliči"]
         },
         "amenity/post_box": {
           "name": "Pasta nodošanas pastkaste"
         },
         "amenity/post_office": {
           "name": "Pasta nodaļa",
-          "terms": "vēstule,pasts,paciņa"
+          "terms": ["vēstule", "pasts", "paciņa"]
         },
         "amenity/prison": {
-          "terms": "cietums,ūķis,aizturēšana,kamera"
+          "terms": ["cietums", "ūķis", "aizturēšana", "kamera"]
         },
         "amenity/pub": {
           "name": "Krogs",
-          "terms": "alkohols,dzeršana,alus"
+          "terms": ["alkohols", "dzeršana", "alus"]
         },
         "amenity/public_bookcase": {
           "name": "Publisks Grāmatplaukts"
@@ -319,11 +319,11 @@
         },
         "amenity/social_facility/food_bank": {
           "name": "Pārtikas banka",
-          "terms": "ēdiena nodošana,ēdiena banka"
+          "terms": ["ēdiena nodošana", "ēdiena banka"]
         },
         "amenity/social_facility/group_home": {
           "name": "Pansionāts",
-          "terms": "vecs,seniors,uzraudzība"
+          "terms": ["vecs", "seniors", "uzraudzība"]
         },
         "amenity/studio": {
           "name": "Studija"
@@ -336,7 +336,7 @@
         },
         "amenity/theatre": {
           "name": "Teātris",
-          "terms": "aktieri,uzstāšanās,uzvedums"
+          "terms": ["aktieri", "uzstāšanās", "uzvedums"]
         },
         "amenity/toilets": {
           "name": "Tualete"
@@ -355,73 +355,73 @@
         },
         "amenity/vending_machine/cigarettes": {
           "name": "Cigarešu Tirdzniecības automāts",
-          "terms": "cigrarete,tabaka"
+          "terms": ["cigrarete", "tabaka"]
         },
         "amenity/vending_machine/coffee": {
           "name": "Kafijas Tirdzniecības automāts",
-          "terms": "kafija,kofeīns,ekspresso"
+          "terms": ["kafija", "kofeīns", "ekspresso"]
         },
         "amenity/vending_machine/condoms": {
           "name": "Prezervatīvu Tirdzniecības automāts"
         },
         "amenity/vending_machine/drinks": {
           "name": "Dzērienu Tirdzniecības automāts",
-          "terms": "limonāde,sula,dzēriens"
+          "terms": ["limonāde", "sula", "dzēriens"]
         },
         "amenity/vending_machine/electronics": {
           "name": "Elektronikas Tirdzniecības automāts",
-          "terms": "kabelis,telefons,planšete,dators,austiņas,skaļruņi"
+          "terms": ["kabelis", "telefons", "planšete", "dators", "austiņas", "skaļruņi"]
         },
         "amenity/vending_machine/elongated_coin": {
           "name": "Plakanu Monētu Tirdzniecības automāts",
-          "terms": "monēta,saspiešana,suvenīri,suvenīrs,saplacināt"
+          "terms": ["monēta", "saspiešana", "suvenīri", "suvenīrs", "saplacināt"]
         },
         "amenity/vending_machine/feminine_hygiene": {
           "name": "Sieviešu Higēnas Tirdzniecības automāts",
-          "terms": "tampons,ieliknis,biksīšu,sieivešu,menstruāls,personālā apkope"
+          "terms": ["tampons", "ieliknis", "biksīšu", "sieivešu", "menstruāls", "personālā apkope"]
         },
         "amenity/vending_machine/food": {
           "name": "Ēdiena Tirdzniecības automāts",
-          "terms": "pārtika"
+          "terms": ["pārtika"]
         },
         "amenity/vending_machine/food/snacks": {
           "name": "Saldumu Tirdzniecības automāts",
-          "terms": "šokolādes,saldumu,konfekšu,cepumu,batoniņu"
+          "terms": ["šokolādes", "saldumu", "konfekšu", "cepumu", "batoniņu"]
         },
         "amenity/vending_machine/ice_cream": {
           "name": "Saldējuma Tirdzniecības automāts",
-          "terms": "šokolādes,vaniļas,sasaldēts,auksts"
+          "terms": ["šokolādes", "vaniļas", "sasaldēts", "auksts"]
         },
         "amenity/vending_machine/newspapers": {
           "name": "Avīžu Tirdzniecības automāts",
-          "terms": "avīze,laiksraksts,žurnāls,iespiests"
+          "terms": ["avīze", "laiksraksts", "žurnāls", "iespiests"]
         },
         "amenity/vending_machine/parking_tickets": {
           "name": "Stāvvietu Atļauju Tirdzniecības automāts",
-          "terms": "biļete,atļauja"
+          "terms": ["biļete", "atļauja"]
         },
         "amenity/vending_machine/public_transport_tickets": {
           "name": "Tranzītbiļešu Tirdzniecības automāts",
-          "terms": "autobuss,vilciens,e-talons,transports,biļete,tranvajs,trolejbuss,prāmis,etalons"
+          "terms": ["autobuss", "vilciens", "e-talons", "transports", "biļete", "tranvajs", "trolejbuss", "prāmis", "etalons"]
         },
         "amenity/vending_machine/stamps": {
           "name": "Pastmarku Tirdzniecības automāts",
-          "terms": "pasts,marka,vēstule"
+          "terms": ["pasts", "marka", "vēstule"]
         },
         "amenity/veterinary": {
           "name": "Veternārārsts",
-          "terms": "klīnika,veterniārā,dzīvienku,veterinārais ārsts"
+          "terms": ["klīnika", "veterniārā", "dzīvienku", "veterinārais ārsts"]
         },
         "amenity/waste/dog_excrement": {
           "name": "Suņu ekskrementu tvertne",
-          "terms": "tvertne,kaste,suņu,kaku,maisiņu,atkritumu"
+          "terms": ["tvertne", "kaste", "suņu", "kaku", "maisiņu", "atkritumu"]
         },
         "amenity/waste_basket": {
           "name": "Atkritumu tvertne"
         },
         "amenity/waste_disposal": {
           "name": "Atkritumu konteiners",
-          "terms": "miskaste,atkritumi,izgāztuve,tvertne"
+          "terms": ["miskaste", "atkritumi", "izgāztuve", "tvertne"]
         },
         "area": {
           "name": "Apgabals"
@@ -437,44 +437,44 @@
         },
         "attraction/bungee_jumping": {
           "name": "Gumijlēkšana",
-          "terms": "gumija,augstums,lekšana,lekšanas platforma"
+          "terms": ["gumija", "augstums", "lekšana", "lekšanas platforma"]
         },
         "attraction/carousel": {
           "name": "Karuseļu",
-          "terms": "atrakciju,zirgu"
+          "terms": ["atrakciju", "zirgu"]
         },
         "attraction/maze": {
           "name": "Labirints"
         },
         "attraction/roller_coaster": {
           "name": "Amerikāņu Kalniņi",
-          "terms": "atrakcija,brauciens,ātrs"
+          "terms": ["atrakcija", "brauciens", "ātrs"]
         },
         "attraction/train": {
           "name": "Tūristu vilcieniņš",
-          "terms": "apskates vilciens,apbrauciena,parka vilciens"
+          "terms": ["apskates vilciens", "apbrauciena", "parka vilciens"]
         },
         "attraction/water_slide": {
           "name": "Ūdens Slidkalniņš",
-          "terms": "ūdens parks,ūdens atrakcija"
+          "terms": ["ūdens parks", "ūdens atrakcija"]
         },
         "barrier": {
           "name": "Barjera"
         },
         "barrier/block": {
           "name": "Bloks",
-          "terms": "klucis,gabals"
+          "terms": ["klucis", "gabals"]
         },
         "barrier/bollard": {
           "name": "Norobežojošais stabs (bolards)",
-          "terms": "stabi,stabiņi"
+          "terms": ["stabi", "stabiņi"]
         },
         "barrier/bollard_line": {
           "name": "Norobežojošo stabu (bolardu) rinda"
         },
         "barrier/border_control": {
           "name": "Robežu Kontrole",
-          "terms": "pārbaude,kontroles punkts,pases,ieeja,robežkontrole"
+          "terms": ["pārbaude", "kontroles punkts", "pases", "ieeja", "robežkontrole"]
         },
         "barrier/city_wall": {
           "name": "Pilsētas mūri"
@@ -484,7 +484,7 @@
         },
         "barrier/ditch": {
           "name": "Tranšeja",
-          "terms": "trenča,bedre"
+          "terms": ["trenča", "bedre"]
         },
         "barrier/entrance": {
           "name": "Ieeja"
@@ -497,7 +497,7 @@
         },
         "barrier/gate": {
           "name": "Vārti",
-          "terms": "žogs"
+          "terms": ["žogs"]
         },
         "barrier/guard_rail": {
           "name": "Aizsargbarjeras"
@@ -522,7 +522,7 @@
         },
         "barrier/kissing_gate": {
           "name": "Dubultveramie vārti",
-          "terms": "dubultie,abpusējie,dubultvārti"
+          "terms": ["dubultie", "abpusējie", "dubultvārti"]
         },
         "barrier/lift_gate": {
           "name": "Paceļamā barjera"
@@ -547,7 +547,7 @@
         },
         "boundary/administrative": {
           "name": "Administratīvā robeža",
-          "terms": "robeža,novadu robeža,administratīvā teritorija"
+          "terms": ["robeža", "novadu robeža", "administratīvā teritorija"]
         },
         "building": {
           "name": "Ēka"
@@ -599,7 +599,7 @@
         },
         "building/greenhouse": {
           "name": "Siltumnīca",
-          "terms": "augi,stikls"
+          "terms": ["augi", "stikls"]
         },
         "building/hangar": {
           "name": "Angāra ēka"
@@ -642,21 +642,21 @@
         },
         "building/school": {
           "name": "Skolas ēka",
-          "terms": "sākumskola,pamatskola,vidusskola,augstskola,koledža"
+          "terms": ["sākumskola", "pamatskola", "vidusskola", "augstskola", "koledža"]
         },
         "building/shed": {
           "name": "Sķūnis"
         },
         "building/stable": {
           "name": "Stallis",
-          "terms": "zirgu,zirgi,stallis"
+          "terms": ["zirgu", "zirgi", "stallis"]
         },
         "building/stadium": {
           "name": "Stadiona Ēka"
         },
         "building/temple": {
           "name": "Tempļa Ēka",
-          "terms": "templis,reliģija,piemiņa"
+          "terms": ["templis", "reliģija", "piemiņa"]
         },
         "building/train_station": {
           "name": "Dzelzceļa stacijas ēka"
@@ -681,30 +681,30 @@
         },
         "craft/beekeeper": {
           "name": "Biškopis",
-          "terms": "bišu kopējs"
+          "terms": ["bišu kopējs"]
         },
         "craft/blacksmith": {
           "name": "Kalējs",
-          "terms": "metālkalis,kalis"
+          "terms": ["metālkalis", "kalis"]
         },
         "craft/boatbuilder": {
           "name": "Laivu būvētājs",
-          "terms": "laivenieks,piķotājs"
+          "terms": ["laivenieks", "piķotājs"]
         },
         "craft/carpenter": {
           "name": "Galdnieks"
         },
         "craft/chimney_sweeper": {
           "name": "Skursteņslauķis",
-          "terms": "skursteņu slaucītājs"
+          "terms": ["skursteņu slaucītājs"]
         },
         "craft/clockmaker": {
           "name": "Pulksteņdaris",
-          "terms": "pulksteņmeistars"
+          "terms": ["pulksteņmeistars"]
         },
         "craft/confectionery": {
           "name": "Saldumu veidotājs",
-          "terms": "saldumi,konfektes,konfekcionārs"
+          "terms": ["saldumi", "konfektes", "konfekcionārs"]
         },
         "craft/electrician": {
           "name": "Elektriķis"
@@ -729,11 +729,11 @@
         },
         "craft/photographer": {
           "name": "Fotogrāfs",
-          "terms": "fotogrāfēt"
+          "terms": ["fotogrāfēt"]
         },
         "craft/photographic_laboratory": {
           "name": "Fotolabratorija",
-          "terms": "attēlu attīstīšana,filmas,filmiņas,3.5mm"
+          "terms": ["attēlu attīstīšana", "filmas", "filmiņas", "3.5mm"]
         },
         "craft/plumber": {
           "name": "Santehniķis"
@@ -782,7 +782,7 @@
         },
         "emergency/ambulance_station": {
           "name": "Ātrās palīdzības stacija",
-          "terms": "ambulances stacija,ātrā palīdzība"
+          "terms": ["ambulances stacija", "ātrā palīdzība"]
         },
         "emergency/assembly_point": {
           "name": "Ārkārtas pulcēšanās vieta"
@@ -798,7 +798,7 @@
         },
         "emergency/first_aid_kit": {
           "name": "Pirmās palīdzības aptieciņa",
-          "terms": "aptieciņa,kompleks,medicīnas,ārkārtas"
+          "terms": ["aptieciņa", "kompleks", "medicīnas", "ārkārtas"]
         },
         "emergency/life_ring": {
           "name": "Glābšanas Rinķis"
@@ -886,7 +886,7 @@
         },
         "highway/footway": {
           "name": "Celiņš",
-          "terms": "taka,gājēju,kājāmgājēju,celiņš"
+          "terms": ["taka", "gājēju", "kājāmgājēju", "celiņš"]
         },
         "highway/footway/crossing/traffic_signals": {
           "name": "Šķērsošanas vieta ar gājēju signālu"
@@ -1064,7 +1064,7 @@
         },
         "landuse/commercial": {
           "name": "Komercplatība",
-          "terms": "komerciāla platība,komercapgabals"
+          "terms": ["komerciāla platība", "komercapgabals"]
         },
         "landuse/construction": {
           "name": "Būvlaukums"
@@ -1080,7 +1080,7 @@
         },
         "landuse/flowerbed": {
           "name": "Ziedu dobe",
-          "terms": "puķu dobe"
+          "terms": ["puķu dobe"]
         },
         "landuse/forest": {
           "name": "Mežsaimniecības mežs"
@@ -1189,15 +1189,15 @@
         },
         "leisure/pitch/skateboard": {
           "name": "Skrituļparks",
-          "terms": "skootei,skrituļdēļi,skrituļslidas,rampas"
+          "terms": ["skootei", "skrituļdēļi", "skrituļslidas", "rampas"]
         },
         "leisure/pitch/soccer": {
           "name": "Futbola laukums",
-          "terms": "futbols"
+          "terms": ["futbols"]
         },
         "leisure/pitch/table_tennis": {
           "name": "Pingponga galds",
-          "terms": "galda teniss,pingpongs"
+          "terms": ["galda teniss", "pingpongs"]
         },
         "leisure/pitch/tennis": {
           "name": "Tenisa korti"
@@ -1252,11 +1252,11 @@
         },
         "man_made/flagpole": {
           "name": "Karogmasts",
-          "terms": "karogs,masts"
+          "terms": ["karogs", "masts"]
         },
         "man_made/fuel_pump": {
           "name": "Degvielas sūknis",
-          "terms": "degviela,dīzelis,gāze,98,95,uzpilde"
+          "terms": ["degviela", "dīzelis", "gāze", "98", "95", "uzpilde"]
         },
         "man_made/lighthouse": {
           "name": "Bāka"
@@ -1272,7 +1272,7 @@
         },
         "man_made/milk_churn_stand": {
           "name": "piena galds",
-          "aliases": "piena steķis\npīna golds"
+          "aliases": ["piena steķis", "pīna golds"]
         },
         "man_made/observatory": {
           "name": "Observatorija"
@@ -1285,7 +1285,7 @@
         },
         "man_made/pipeline": {
           "name": "Caurule",
-          "terms": "truba"
+          "terms": ["truba"]
         },
         "man_made/planter": {
           "name": "Stādījumu kaste"
@@ -1316,7 +1316,7 @@
         },
         "man_made/water_well": {
           "name": "Ūdens aka",
-          "terms": "aka,dzeramūdens"
+          "terms": ["aka", "dzeramūdens"]
         },
         "man_made/watermill": {
           "name": "Ūdens Dzirnavas"
@@ -1359,7 +1359,7 @@
         },
         "natural/heath": {
           "name": "Tīrelis",
-          "terms": "virsājs,koki,tīrelis,mazs"
+          "terms": ["virsājs", "koki", "tīrelis", "mazs"]
         },
         "natural/hot_spring": {
           "name": "Karstais avots"
@@ -1384,7 +1384,7 @@
         },
         "natural/tree": {
           "name": "Koks",
-          "terms": "koki"
+          "terms": ["koki"]
         },
         "natural/tree/broadleaved": {
           "name": "Lapu koks"
@@ -1520,7 +1520,7 @@
         },
         "power/generator": {
           "name": "Elektroenerģijas ģenerātors",
-          "terms": "elektroģenrātors,turbīna,vējs"
+          "terms": ["elektroģenrātors", "turbīna", "vējs"]
         },
         "power/generator/source/nuclear": {
           "name": "Atomreaktors"
@@ -1536,7 +1536,7 @@
         },
         "power/pole": {
           "name": "Elektrības stabs",
-          "terms": "elektrostabs"
+          "terms": ["elektrostabs"]
         },
         "power/substation": {
           "name": "Apakšstacija"
@@ -1595,9 +1595,6 @@
         "public_transport/stop_position_trolleybus": {
           "name": "Trolejbusu apstāšanās vieta"
         },
-        "railway/abandoned": {
-          "name": "Pamests dzelzceļš"
-        },
         "railway/buffer_stop": {
           "name": "Sliežu ceļa atdure"
         },
@@ -1639,7 +1636,7 @@
         },
         "railway/switch": {
           "name": "Dzelzceļa pārmija",
-          "terms": "pārmijas"
+          "terms": ["pārmijas"]
         },
         "railway/train_wash": {
           "name": "Vilcienu mazgātuve"
@@ -1676,14 +1673,14 @@
         },
         "shop/beauty/tanning": {
           "name": "Solārija Salons",
-          "terms": "solārija,solārijs"
+          "terms": ["solārija", "solārijs"]
         },
         "shop/beverages": {
           "name": "Dzērienu veikals"
         },
         "shop/bicycle": {
           "name": "Velo veikals",
-          "terms": "velosipēdu,remonts,remonta"
+          "terms": ["velosipēdu", "remonts", "remonta"]
         },
         "shop/books": {
           "name": "Grāmatnīca"
@@ -1699,14 +1696,14 @@
         },
         "shop/car": {
           "name": "Auto dīleris",
-          "terms": "auto,mašīnu,pārdošana"
+          "terms": ["auto", "mašīnu", "pārdošana"]
         },
         "shop/car_parts": {
           "name": "Auto rezerves daļu veikals"
         },
         "shop/car_repair": {
           "name": "Auto remontdarbnīca",
-          "terms": "remonts,serviss,garāža"
+          "terms": ["remonts", "serviss", "garāža"]
         },
         "shop/carpet": {
           "name": "Paklāju veikals"
@@ -1728,7 +1725,7 @@
         },
         "shop/computer": {
           "name": "Datorveikals",
-          "terms": "elektronika,datori,datortehnika"
+          "terms": ["elektronika", "datori", "datortehnika"]
         },
         "shop/confectionery": {
           "name": "Saldumu veikals"
@@ -1789,7 +1786,7 @@
         },
         "shop/gas": {
           "name": "Gāzes balonu veikals",
-          "terms": "lpg,propāns,balons,uzpilde,gāze"
+          "terms": ["lpg", "propāns", "balons", "uzpilde", "gāze"]
         },
         "shop/gift": {
           "name": "Dāvanu veikals"
@@ -1934,7 +1931,7 @@
         },
         "shop/window_blind": {
           "name": "Logu žalūziju veikals",
-          "terms": "logi,aizkari,žalūzijas"
+          "terms": ["logi", "aizkari", "žalūzijas"]
         },
         "shop/wine": {
           "name": "Vīna veikals"
@@ -2013,7 +2010,7 @@
         },
         "tourism/zoo": {
           "name": "Zooloģiskais dārzs",
-          "terms": "zoodārzs,zoo,dzīvnieku dārzs,dzīvnieki"
+          "terms": ["zoodārzs", "zoo", "dzīvnieku dārzs", "dzīvnieki"]
         },
         "traffic_calming": {
           "name": "Satiksmes mierināšana"
@@ -2035,7 +2032,7 @@
         },
         "type/boundary/administrative": {
           "name": "Administratīvā robeža",
-          "terms": "robeža,novadu robeža,administratīvā teritorija"
+          "terms": ["robeža", "novadu robeža", "administratīvā teritorija"]
         },
         "type/restriction": {
           "name": "Aizliegums"
