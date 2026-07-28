@@ -120,7 +120,7 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:both:segregated", "no"),
-                StringMapEntryAdd("sidewalk", "both"),
+                StringMapEntryAdd("sidewalk:both", "yes"),
             ),
             cycleway(SIDEWALK_EXPLICIT, SIDEWALK_EXPLICIT).appliedTo(mapOf())
         )
@@ -139,7 +139,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:left:segregated", "no"),
-                StringMapEntryModify("sidewalk", "right", "both"),
+                StringMapEntryDelete("sidewalk", "right"),
+                StringMapEntryAdd("sidewalk:both", "yes"),
             ),
             cycleway(SIDEWALK_EXPLICIT, null).appliedTo(mapOf("sidewalk" to "right"))
         )
@@ -480,7 +481,8 @@ class CyclewayCreatorKtTest {
     @Test fun `modify segregated tag if new answer is now not segregated`() {
         assertEquals(
             setOf(
-                StringMapEntryModify("sidewalk", "both", "both"),
+                StringMapEntryDelete("sidewalk", "both"),
+                StringMapEntryAdd("sidewalk:both", "yes"),
                 StringMapEntryModify("cycleway:both", "track", "track"),
                 StringMapEntryModify("cycleway:both:segregated", "yes", "no")
             ),
