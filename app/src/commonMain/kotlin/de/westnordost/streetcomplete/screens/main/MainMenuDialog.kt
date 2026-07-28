@@ -85,7 +85,7 @@ fun MainMenuDialog(
                     BigMenuButton(
                         onClick = { onDismissRequest(); onClickAbout() },
                         icon = { Icon(painterResource(Res.drawable.ic_info_outline_48), null) },
-                        text = stringResource(Res.string.about_title, ApplicationConstants.NAME),
+                        text = stringResource(Res.string.action_about2, ApplicationConstants.NAME),
                     )
                 }
                 Divider()
