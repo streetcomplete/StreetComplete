@@ -480,7 +480,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="theme_dark">Escuro</string>
     <string name="theme_system_default">Padrão do sistema</string>
     <string name="action_open_location">Abrir localização em outro aplicativo</string>
-    <string name="map_application_missing">Nenhum outro aplicativo de mapa instalado</string>
     <string name="label_housenumber">número da casa</string>
     <string name="quest_busStopShelter_covered">Toda a parada é coberta</string>
     <string name="quest_ferry_pedestrian_title">Esta rota de balsa transporta pedestres?</string>
@@ -755,7 +754,6 @@ Se alguma faixa for reservada para ônibus, deixe uma nota.</string>
     <string name="quest_shop_gone_title">O que há aqui agora no lugar?</string>
     <string name="quest_shop_gone_vacant_answer">Está vaga…</string>
     <string name="quest_shop_gone_replaced_answer">Um(a)…</string>
-    <string name="quest_shop_vacant_type_title">Esta loja está vaga. O que há aqui agora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Este tipo de missão é desativado por padrão porque não é útil em algumas regiões e você provavelmente terá que entrar no local para poder responder a uma missão deste tipo.</string>
     <string name="quest_dietType_explanation_kosher">Os produtos kosher devem ser preparados de acordo com regras especiais, com agências de certificação de Kashrut marcando produtos em conformidade.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Absolutamente nenhuma ciclofaixa ou ciclofaixa</string>

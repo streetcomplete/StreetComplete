@@ -480,7 +480,6 @@ Inak si môžete stiahnuť inú klávesnicu z obchodu z aplikáciami. Medzi popu
     <string name="theme_dark">Tmavý</string>
     <string name="theme_system_default">Predvolený vzhľad systému</string>
     <string name="action_open_location">Otvoriť polohu v inej aplikácii</string>
-    <string name="map_application_missing">Nemáte nainštalovanú žiadnu inú mapovou aplikáciu</string>
     <string name="label_housenumber">číslo domu</string>
     <string name="quest_busStopShelter_covered">Celá zastávka je zastrešená</string>
     <string name="quest_ferry_pedestrian_title">Preváža chodcov?</string>
@@ -749,7 +748,6 @@ Pamätajte, že táto aplikácia sa pýta na súpisné číslo budovy až po ur�
     <string name="quest_shop_gone_title">Čo je tu namiesto toho?</string>
     <string name="quest_shop_gone_vacant_answer">Je to prázdne</string>
     <string name="quest_shop_gone_replaced_answer">…</string>
-    <string name="quest_shop_vacant_type_title">Tento obchod bol prázdny. Čo tu je teraz?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Tento typ úloh je v predvolenom nastavení zakázaný, pretože v niektorých regiónoch nemá použitie, a pretože pravdepodobne budete musieť na miesto vstúpiť, aby ste na otázku mohli odpovedať.</string>
     <string name="quest_dietType_explanation_kosher">Kóšer produkty sa musia pripravovať podľa osobitných pravidiel s označením kašrut od certifikačnej agentúry.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nie je tu žiadna cyklotrasa</string>
@@ -1434,7 +1432,6 @@ Poschodie sa počíta ako strešné, ak má okna v streche. Podobne, strechy bez
     <string name="quest_bicycle_charging_station_capacity_title">Koľko bicyklov sa tu dá nabíjať súčasne?</string>
     <string name="quest_charging_station_bicycles_title">Dajú sa tu nabíjať aj bicykle?</string>
     <string name="quest_tower_access_title">Kto má prístup do tejto veže? Vstup môže byť bezplatný alebo platený.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Je to len pre bicykle</string>
     <string name="quest_recycling_type_pet_bottles">PET flaše</string>
     <string name="quest_artwork_title">Aký to je druh umeleckého diela?</string>
     <string name="quest_artwork_sculpture">Plastika</string>

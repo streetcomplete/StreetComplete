@@ -477,7 +477,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="theme_dark">Oscuro</string>
     <string name="theme_system_default">Colores del sistema</string>
     <string name="action_open_location">Abrir lugar en otra app</string>
-    <string name="map_application_missing">No hay otra aplicación para mapas instalada</string>
     <string name="label_housenumber">número de casa</string>
     <string name="quest_busStopShelter_covered">Toda la parada esta cubierta</string>
     <string name="quest_ferry_pedestrian_title">¿Esta ruta de ferry transporta peatones?</string>
@@ -747,7 +746,6 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_shop_gone_title">¿Que hay ahora aquí en su lugar?</string>
     <string name="quest_shop_gone_vacant_answer">Está libre</string>
     <string name="quest_shop_gone_replaced_answer">Es un(a)…</string>
-    <string name="quest_shop_vacant_type_title">Este establecimiento ha estado vacío. ¿Qué hay aquí ahora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Este tipo de tarea está desactivada de serie porque no es útil en algunas regiones y seguramente tengas que entrar en el sitio para encontrar la información y responder bien a las preguntas.</string>
     <string name="quest_dietType_explanation_kosher">Los productos kosher tienen que prepararse de una forma especial, hay agencias kashrut que los certifican y los marcan como tales.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Aquí no hay ningún carril bici</string>
@@ -1435,7 +1433,6 @@ La planta de arriba cuenta como «tejado» si el tejado tiene ventanas. Por lo q
     <string name="quest_charging_station_bicycles_title">¿Se pueden cargar bicicletas aquí también?</string>
     <string name="quest_charging_station_bicycles_hint">Los adaptadores de corriente para cargadores de bicicletas se enchufan en tomas de corriente domésticas normales.</string>
     <string name="quest_tower_access_title">¿Quién puede acceder a esta torre? Puede ser gratuito o de pago.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Sólo para bicicletas</string>
     <string name="quest_recycling_type_pet_bottles">Botellas PET</string>
     <string name="quest_maxweight_add_sign">Agregar señal</string>
     <string name="quest_maxweight_remove_sign">Remover señal</string>

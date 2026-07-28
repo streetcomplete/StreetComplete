@@ -484,7 +484,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="theme_dark">Tmavý</string>
     <string name="theme_system_default">Výchozí vzhled systému</string>
     <string name="action_open_location">Otevřít lokaci v jiné aplikaci</string>
-    <string name="map_application_missing">Nemáte nainstalovanou žádnou jinou mapovou aplikaci</string>
     <string name="label_housenumber">číslo domu</string>
     <string name="quest_busStopShelter_covered">Celá zastávka je zastřešená</string>
     <string name="quest_ferry_pedestrian_title">Převáží chodce?</string>
@@ -758,7 +757,6 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky.</string>
     <string name="quest_shop_gone_title">Co je tu místo toho?</string>
     <string name="quest_shop_gone_vacant_answer">Je to prázdné…</string>
     <string name="quest_shop_gone_replaced_answer">…</string>
-    <string name="quest_shop_vacant_type_title">Tento obchod byl prázdný. Co tu je nyní?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Tento typ úkolů je ve výchozím nastavení zakázán, protože v některých regionech nemá použití, a protože pravděpodobně budete muset na místo vstoupit, abyste na otázku mohli odpovědět.</string>
     <string name="quest_dietType_explanation_kosher">Košer produkty se musí připravovat podle zvláštních pravidel s označením kašrut od certifikační agentury.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Není tu žádná cyklostezka</string>
@@ -1452,7 +1450,6 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_charging_station_bicycles_title">Lze tu nabíjet i jízdní kola?</string>
     <string name="quest_charging_station_bicycles_hint">Adaptéry pro nabíjení jízdních kol se zapojují do běžné zásuvky jako v domácnosti.</string>
     <string name="quest_tower_access_title">Kdo má přístup na tuto věž? Může být zdarma nebo placený.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Je to jen pro jízdní kola</string>
     <string name="quest_recycling_type_pet_bottles">Láhve PET</string>
     <string name="quest_maxweight_add_sign">Přidat značku</string>
     <string name="quest_maxweight_remove_sign">Odebrat značku</string>
@@ -1507,4 +1504,10 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_maxspeed_answer_roadtype_lit">osvětlená</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">neosvětlená</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">neosvětlená a s oddělenými směry</string>
+    <string name="quest_board_type_tourism">Turismus (více témat)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Jen jeden značený pruh</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Napište, co hledáte</string>
+    <string name="link_gomap_description">Pokročilý editor OSM pro iOS</string>
+    <string name="link_terraink_description">Vytvářejte krásné plakáty města nebo čtvrti podle vašeho přání</string>
+    <string name="quest_place_vacant_type_title">Toto místo bylo prázdné. Co je tu teď?</string>
 </resources>

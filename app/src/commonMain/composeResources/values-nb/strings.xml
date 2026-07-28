@@ -480,7 +480,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="theme_dark">Mørkt</string>
     <string name="theme_system_default">Systemvalgt</string>
     <string name="action_open_location">Vis posisjonen i en annen app</string>
-    <string name="map_application_missing">Ingen andre kartprogram installert</string>
     <string name="label_housenumber">Husnummer</string>
     <string name="quest_busStopShelter_covered">Hele stoppet er under tak</string>
     <string name="quest_ferry_pedestrian_title">Frakter denne fergen fotgjengere?</string>
@@ -756,7 +755,6 @@ Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad.</str
     <string name="quest_shop_gone_title">Hva er her istedenfor?</string>
     <string name="quest_shop_gone_vacant_answer">Det er tomt</string>
     <string name="quest_shop_gone_replaced_answer">En/ei/et…</string>
-    <string name="quest_shop_vacant_type_title">Denne butikken er tom. Hva er her nå?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Denne oppdragstypen er deaktivert som standard, fordi den ikke er nyttig i noen områder og du vanligvis må gå inn på stedet for å kunne svare.</string>
     <string name="quest_dietType_explanation_kosher">Koscherprodukt må lages etter bestemte religiøse regler, og det fins egne sertifiseringsinstanser som godkjenner produktene.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Verken sykkelfelt eller sykkelvei</string>

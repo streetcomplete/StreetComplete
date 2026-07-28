@@ -480,7 +480,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="theme_dark">Tumma</string>
     <string name="theme_system_default">Järjestelmän oletus</string>
     <string name="action_open_location">Avaa sijainti toisessa sovelluksessa</string>
-    <string name="map_application_missing">Muita karttasovelluksia ei ole asennettu</string>
     <string name="label_housenumber">talon numero</string>
     <string name="quest_busStopShelter_covered">Koko pysäkki on katettu</string>
     <string name="quest_ferry_pedestrian_title">Sopiiko tämä lauttareitti jalankulkijoille?</string>
@@ -755,7 +754,6 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus.</string>
     <string name="quest_shop_gone_title">Mitä täällä on nyt?</string>
     <string name="quest_shop_gone_vacant_answer">Se on tyhjillään…</string>
     <string name="quest_shop_gone_replaced_answer">Siellä on…</string>
-    <string name="quest_shop_vacant_type_title">Tämä kauppa on ollut tyhjillään. Mitä siellä on nyt?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Tämä tehtävätyyppi on oletusarvoisesti pois käytöstä, koska joillakin alueilla siitä ei ole hyötyä ja joutuisit todennäköisesti menemään paikan sisälle vastataksesi tämäntyyppiseen tehtävään.</string>
     <string name="quest_dietType_explanation_kosher">Koshertuotteet täytyy valmistaa erikoissääntöjen mukaan, kashrut-järjestöjen antamien todistuksia sääntöjen noudattamisesta.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Ei lainkaan pyöräilytietä</string>
@@ -1438,7 +1436,6 @@ Esimerkiksi 1,3 tai 2b,4,6.</string>
     <string name="quest_bicycle_charging_station_capacity_title">Kuinka montaa polkupyörää täällä voi ladata samanaikaisesti?</string>
     <string name="quest_charging_station_bicycles_title">Voiko täällä ladata myös polkupyöriä?</string>
     <string name="quest_tower_access_title">Kenellä on pääsy tähän torniin? Pääsy voi olla ilmainen tai maksullinen.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Se on vain polkupyörille</string>
     <string name="quest_recycling_type_pet_bottles">PET-pullot</string>
     <string name="quest_maxweight_add_sign">Lisää merkki</string>
     <string name="quest_maxweight_remove_sign">Poista merkki</string>
@@ -1487,4 +1484,9 @@ Esimerkiksi 1,3 tai 2b,4,6.</string>
     <string name="quest_maxspeed_answer_roadtype_lit">valaistu</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">valaisematon</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Valaisematon ja moottoritie</string>
+    <string name="quest_board_type_tourism">Turismi (useita aiheita)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Vain yksi merkitty kaista</string>
+    <string name="link_gomap_description">Edistynyt OSM-muokkain iOS:lle</string>
+    <string name="link_terraink_description">Luo kauniita julisteita kaupungeista tai kaupunginosista</string>
+    <string name="quest_place_vacant_type_title">Tämä paikka on ollut tyhjillään. Mitä siellä on nyt?</string>
 </resources>

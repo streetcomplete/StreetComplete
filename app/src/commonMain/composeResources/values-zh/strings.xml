@@ -480,7 +480,6 @@
     <string name="theme_dark">暗色</string>
     <string name="theme_system_default">跟随系统预设</string>
     <string name="action_open_location">在其他应用中打开此位置</string>
-    <string name="map_application_missing">未安装其他地图应用程序</string>
     <string name="label_housenumber">房屋编号</string>
     <string name="quest_busStopShelter_covered">整个车站被完全遮盖</string>
     <string name="quest_ferry_pedestrian_title">这条渡轮航线是否运送行人？</string>
@@ -752,7 +751,6 @@
     <string name="quest_shop_gone_title">现在这里变成了什么？</string>
     <string name="quest_shop_gone_vacant_answer">店铺已经空置</string>
     <string name="quest_shop_gone_replaced_answer">一个…</string>
-    <string name="quest_shop_vacant_type_title">这家商店已经空置。现在又是什么？</string>
     <string name="default_disabled_msg_go_inside_regional_warning">此任务类型默认禁用，因为它在某些地区可能用途不大，并且您可能需要进入场所内部才能回答此类任务。</string>
     <string name="quest_dietType_explanation_kosher">犹太教的洁食食品必须依规矩制作，并附上饮食教规认证机构标章以确保其饮食从教。</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">没有任何自行车道或车径</string>
@@ -1444,7 +1442,6 @@
     <string name="quest_charging_station_bicycles_title">自行车也可以在这里充电吗？</string>
     <string name="quest_charging_station_bicycles_hint">自行车充电器电源适配器可插入的普通家用插座。</string>
     <string name="quest_tower_access_title">谁可以进入这座塔？它可能是免费的或付费的。</string>
-    <string name="quest_charging_station_bicycles_answer_only">仅供自行车使用</string>
     <string name="quest_recycling_type_pet_bottles">PET塑料瓶</string>
     <string name="quest_maxweight_add_sign">添加标记</string>
     <string name="quest_maxweight_remove_sign">去除标记</string>

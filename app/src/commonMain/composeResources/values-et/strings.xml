@@ -480,7 +480,6 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="theme_dark">Tume kujundus</string>
     <string name="theme_system_default">Süsteemi kujundus</string>
     <string name="action_open_location">Ava asukoht muus rakenduses</string>
-    <string name="map_application_missing">Nutiseadmes pole ühtegi teist kaardirakendust</string>
     <string name="label_housenumber">maja number</string>
     <string name="quest_busStopShelter_covered">Kogu peatus on kaetud</string>
     <string name="quest_ferry_pedestrian_title">Kas see praamiliin teenindab jalakäijaid?</string>
@@ -754,7 +753,6 @@ Kui mõni sõidurada on mõeldud ühistranspordile, siis pigem lisa vastav ingli
     <string name="quest_shop_gone_title">Mis on siin praegu tema asemel?</string>
     <string name="quest_shop_gone_vacant_answer">Ta on hetkel tühi…</string>
     <string name="quest_shop_gone_replaced_answer">Üks…</string>
-    <string name="quest_shop_vacant_type_title">Need ruumid on olnud tühjad. Mis on siin praegu?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Kuna sa peaksid ülesande lahendamiseks ilmselt siia sisse astuma ja ta pole mitmes piirkonnas oluline, siis see ülesande tüüp pole vaikimisi kasutusel.</string>
     <string name="quest_dietType_explanation_kosher">Koššer-nõuetele vastavad tooted peavad olema valmistatud vastavate reeglite alusel ja kašrutile vastavuse sertifitseerijate märge on tavaliselt näha.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Jalgrattarada ega -teed pole üldse</string>
@@ -1450,7 +1448,6 @@ Näiteks 1,3 või 2b,4,6.</string>
     <string name="quest_charging_station_bicycles_title">Kas siin saab ka laadida jalgrattaid?</string>
     <string name="quest_charging_station_bicycles_hint">Jalgratta laadimiskaabli pistikuid saab ühendada tavalistesse soklitesse.</string>
     <string name="quest_tower_access_title">Kes võivad siia torni siseneda? Pääs võib olla tasuta või tasuline.</string>
-    <string name="quest_charging_station_bicycles_answer_only">See on vaid jalgrataste jaoks</string>
     <string name="quest_recycling_type_pet_bottles">Plastpudelid</string>
     <string name="quest_maxweight_add_sign">Lisa silt</string>
     <string name="quest_maxweight_remove_sign">Eemalda silt</string>
@@ -1505,4 +1502,10 @@ Näiteks 1,3 või 2b,4,6.</string>
     <string name="quest_maxspeed_answer_roadtype_lit">valgustatud</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">pole valgustatud</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Pole valgustatud ja kaherealine tänav</string>
+    <string name="quest_board_type_tourism">Turism (mitu alamvaldkonda)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Vaid üks märgistatud rada</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Sisesta, mida oled otsimas</string>
+    <string name="link_gomap_description">Paljude võimalustega OSM-i haldusrakendus iOS-i jaoks</string>
+    <string name="link_terraink_description">Koosta kauneid ja kohendatud plakateid oma linnast või naabruskonnast.</string>
+    <string name="quest_place_vacant_type_title">See koht on olnud tühi. Kas siin on hetkel midagi ning kui jah, siis mis?</string>
 </resources>
