@@ -20,14 +20,20 @@ import de.westnordost.osm_opening_hours.model.TimesSelector
 import de.westnordost.osm_opening_hours.model.TwentyFourSeven
 import de.westnordost.osm_opening_hours.model.VariableDate
 import de.westnordost.osm_opening_hours.model.VariableTime
+import de.westnordost.osm_opening_hours.parser.toOpeningHours
 import de.westnordost.osm_opening_hours.parser.toOpeningHoursOrNull
 import de.westnordost.streetcomplete.osm.opening_hours.hasCollidingWeekdays
 import de.westnordost.streetcomplete.osm.opening_hours.isSupported
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toHierarchicOpeningHours
-import java.net.HttpURLConnection
-import java.net.URL
-import java.net.URLEncoder
+import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.toShortString
+import io.ktor.client.HttpClient
+import io.ktor.client.request.get
+import io.ktor.client.request.header
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.encodeURLQueryComponent
+import kotlinx.coroutines.runBlocking
 
 private const val qleverBaseUrl = "https://qlever.dev/api/osm-planet"
 
@@ -39,7 +45,7 @@ private val qleverQuery = """
     ORDER BY DESC(?count) DESC(?times)
 """.trimIndent().replace("\n", " ").replace("\r", "")
 
-fun main() {
+fun main() = runBlocking {
     var total = 0
     var parsed = 0
     var supported = 0
@@ -58,25 +64,23 @@ fun main() {
     var noHours = 0
     var timeEvents = 0
 
-    val url = URL("$qleverBaseUrl?query=${URLEncoder.encode(qleverQuery, "UTF-8")}&action=tsv_export")
-    val connection = url.openConnection() as HttpURLConnection
-    val lines = try {
-        connection.setRequestProperty("User-Agent", "StreetComplete opening hours test")
-        connection.doOutput = true
-
-        connection.inputStream.bufferedReader()
-            .lineSequence()
-            .drop(1)
-            .filterNot { it.isBlank() }
-            .map { line ->
-                val t = line.lastIndexOf('\t')
-                val oh = line.substring(1, t - 1)
-                val count = line.substring(t + 1).toInt()
-                oh to count
-            }.toList()
-    } finally {
-        connection.disconnect()
+    val httpClient = HttpClient()
+    val query = "$qleverBaseUrl?query=${qleverQuery.encodeURLQueryComponent()}&action=tsv_export"
+    val response = httpClient.get(query) {
+        header("User-Agent", "StreetComplete opening hours test")
     }
+    val lines = response
+        .bodyAsText()
+        .lineSequence()
+        .drop(1)
+        .filterNot { it.isBlank() }
+        .map { line ->
+            val t = line.lastIndexOf('\t')
+            val oh = line.substring(1, t - 1)
+            val count = line.substring(t + 1).toInt()
+            oh to count
+        }.toList()
+    httpClient.close()
 
     for ((oh, count) in lines) {
         total += count
@@ -173,7 +177,7 @@ fun main() {
     println("${percent(1.0 * containsComments / unsupported)} contain comments")
 }
 
-private fun percent(v: Double): String = "%.1f".format(100 * v) + "%"
+private fun percent(v: Double): String = (100 * v).format(1) + "%"
 
 private fun TimesSelector.hasVariableTime(): Boolean = when (this) {
     is ClockTime -> false

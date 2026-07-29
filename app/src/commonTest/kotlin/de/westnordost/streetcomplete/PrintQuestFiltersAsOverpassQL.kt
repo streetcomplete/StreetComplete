@@ -12,11 +12,15 @@ fun main() {
     for (questType in registry) {
         if (questType is OsmElementQuestType<*>) {
             println("### " + questType.name)
-            if (questType is OsmFilterQuestType<*>) {
-                val query = "[bbox:{{bbox}}];\n" + questType.filter.toOverpassQLString() + "\n out meta geom;"
-                println("```\n$query\n```")
-            } else {
-                println("Not available, see source code")
+            try {
+                if (questType is OsmFilterQuestType<*>) {
+                    val query = "[bbox:{{bbox}}];\n" + questType.filter.toOverpassQLString() + "\nout meta geom;"
+                    println("```\n$query\n```")
+                } else {
+                    println("Not available, see source code")
+                }
+            } catch (e: Exception) {
+                println("Error: Not available, see source code")
             }
             println()
         }

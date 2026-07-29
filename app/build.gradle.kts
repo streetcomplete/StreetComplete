@@ -525,3 +525,23 @@ project.afterEvaluate {
         dependsOn(copyStringsToAndroid)
     }
 }
+
+tasks.register<JavaExec>("printQuestFiltersAsOverlassQL") {
+    group = "utils"
+
+    val testTask = tasks.named<Test>("testDebugUnitTest")
+    dependsOn(testTask.map { it.classpath })
+    classpath = testTask.get().classpath
+
+    mainClass.set("de.westnordost.streetcomplete.PrintQuestFiltersAsOverpassQLKt")
+}
+
+tasks.register<JavaExec>("openingHoursParsingStatistics") {
+    group = "utils"
+
+    val testTask = tasks.named<Test>("testDebugUnitTest")
+    dependsOn(testTask.map { it.classpath })
+    classpath = testTask.get().classpath
+
+    mainClass.set("de.westnordost.streetcomplete.OpeningHoursParsingStatisticsKt")
+}
