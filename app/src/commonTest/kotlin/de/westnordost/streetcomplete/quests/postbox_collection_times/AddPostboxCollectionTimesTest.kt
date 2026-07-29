@@ -17,7 +17,7 @@ class AddPostboxCollectionTimesTest {
     @Test fun `apply no signed times answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("collection_times:signed", "no")),
-            questType.answerApplied(NoCollectionTimesSign)
+            questType.answerApplied(CollectionTimesAnswer.NoSign)
         )
     }
 

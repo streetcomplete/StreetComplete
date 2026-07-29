@@ -18,19 +18,26 @@ class CheckOpeningHoursSignedTest {
     @Test fun `is applicable to old place`() {
         assertTrue(questType.isApplicableTo(node(
             timestamp = 0,
-            tags = mapOf("opening_hours:signed" to "no")
+            tags = mapOf(
+                "opening_hours:signed" to "no",
+                "noname" to "yes"
+            )
         )))
     }
 
     @Test fun `is not applicable to new place`() {
         assertFalse(questType.isApplicableTo(node(
-            tags = mapOf("opening_hours:signed" to "no")
+            tags = mapOf(
+                "noname" to "yes",
+                "opening_hours:signed" to "no"
+            )
         )))
     }
 
     @Test fun `is applicable to place with old check_date`() {
         assertTrue(questType.isApplicableTo(node(
             tags = mapOf(
+                "noname" to "yes",
                 "check_date:opening_hours" to "2020-12-12",
                 "opening_hours:signed" to "no"
             )
@@ -40,6 +47,7 @@ class CheckOpeningHoursSignedTest {
     @Test fun `is not applicable to place with new check_date`() {
         assertFalse(questType.isApplicableTo(node(
             tags = mapOf(
+                "noname" to "yes",
                 "check_date:opening_hours" to nowAsCheckDateString(),
                 "opening_hours:signed" to "no"
             )
@@ -50,6 +58,7 @@ class CheckOpeningHoursSignedTest {
         assertTrue(questType.isApplicableTo(node(
             timestamp = 0,
             tags = mapOf(
+                "noname" to "yes",
                 "opening_hours" to "24/7",
                 "opening_hours:signed" to "no"
             )
@@ -59,7 +68,10 @@ class CheckOpeningHoursSignedTest {
     @Test fun `is not applicable to old place with signed hours`() {
         assertFalse(questType.isApplicableTo(node(
             timestamp = 0,
-            tags = mapOf("opening_hours:signed" to "yes")
+            tags = mapOf(
+                "noname" to "yes",
+                "opening_hours:signed" to "yes"
+            )
         )))
     }
 
@@ -67,6 +79,7 @@ class CheckOpeningHoursSignedTest {
         assertFalse(questType.isApplicableTo(node(
             timestamp = 0,
             tags = mapOf(
+                "noname" to "yes",
                 "opening_hours" to "Mo 10:00-12:00",
                 "opening_hours:signed" to "yes"
             )

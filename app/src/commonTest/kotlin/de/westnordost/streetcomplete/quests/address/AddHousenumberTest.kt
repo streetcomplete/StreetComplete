@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.osm.address.HouseNumber
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
-import de.westnordost.streetcomplete.quests.createMapData
+import de.westnordost.streetcomplete.testutils.createMapData
 import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
@@ -24,7 +24,7 @@ import kotlin.test.assertNull
 
 class AddHousenumberTest {
 
-    private val questType = AddHousenumber({ CountryInfo("DE", listOf(IncompleteCountryInfo("DE"))) })
+    private val questType = AddHousenumber({ CountryInfo("DE", listOf()) })
 
     @Test fun `does not create quest for generic building`() {
         val building = way(1L, NODES1, mapOf("building" to "yes"))

@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.testutils.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.quests.answerApplied
-import de.westnordost.streetcomplete.quests.createMapData
+import de.westnordost.streetcomplete.testutils.createMapData
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way

@@ -13,14 +13,14 @@ class AddBusStopNameTest {
     @Test fun `apply no name answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("name:signed", "no")),
-            questType.answerApplied(BusStopNameAnswer.NoName)
+            questType.answerApplied(listOf())
         )
     }
 
     @Test fun `apply name answer with one name`() {
         assertEquals(
             setOf(StringMapEntryAdd("name", "my name")),
-            questType.answerApplied(BusStopName(listOf(LocalizedName("", "my name"))))
+            questType.answerApplied(listOf(LocalizedName("", "my name")))
         )
     }
 
@@ -31,11 +31,11 @@ class AddBusStopNameTest {
                 StringMapEntryAdd("name:en", "All-Too-Close"),
                 StringMapEntryAdd("name:de", "Altona")
             ),
-            questType.answerApplied(BusStopName(listOf(
+            questType.answerApplied(listOf(
                 LocalizedName("", "Altona / All-Too-Close"),
                 LocalizedName("de", "Altona"),
                 LocalizedName("en", "All-Too-Close")
-            )))
+            ))
         )
     }
 }

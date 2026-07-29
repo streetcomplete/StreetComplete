@@ -15,14 +15,14 @@ class AddRoadNameTest {
     @Test fun `apply no name answer`() {
         assertEquals(
             setOf(StringMapEntryAdd("noname", "yes")),
-            questType.answerAppliedTo(RoadNameAnswer.NoName, tags)
+            questType.answerAppliedTo(listOf(), tags)
         )
     }
 
     @Test fun `apply name answer with one name`() {
         assertEquals(
             setOf(StringMapEntryAdd("name", "my name")),
-            questType.answerAppliedTo(roadName(LocalizedName("", "my name")), tags)
+            questType.answerAppliedTo(listOf(LocalizedName("", "my name")), tags)
         )
     }
 
@@ -31,7 +31,7 @@ class AddRoadNameTest {
         for (ref in refs) {
             assertEquals(
                 setOf(StringMapEntryAdd("ref", ref)),
-                questType.answerAppliedTo(roadName(LocalizedName("", ref)), tags)
+                questType.answerAppliedTo(listOf(LocalizedName("", ref)), tags)
             )
         }
     }
@@ -42,7 +42,7 @@ class AddRoadNameTest {
                 StringMapEntryAdd("name", "A1"),
                 StringMapEntryAdd("name:de", "A1")
             ),
-            questType.answerAppliedTo(roadName(
+            questType.answerAppliedTo(listOf(
                 LocalizedName("", "A1"),
                 LocalizedName("de", "A1")
             ), tags)
@@ -56,16 +56,11 @@ class AddRoadNameTest {
                 StringMapEntryAdd("name:en", "All-Too-Close"),
                 StringMapEntryAdd("name:de", "Altona")
             ),
-            questType.answerAppliedTo(roadName(
+            questType.answerAppliedTo(listOf(
                 LocalizedName("", "Altona / All-Too-Close"),
                 LocalizedName("de", "Altona"),
                 LocalizedName("en", "All-Too-Close")
             ), tags)
         )
-    }
-
-    // convenience method
-    private fun roadName(vararg names: LocalizedName): RoadName {
-        return RoadName(names.toList())
     }
 }
