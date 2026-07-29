@@ -1508,4 +1508,6 @@ Par exemple, 1,3 ou 2b,4,6.</string>
     <string name="link_gomap_description">Éditeur OSM avancé pour iOS</string>
     <string name="link_terraink_description">Créer de belles affiches personnalisées d'une ville ou d'un quartier</string>
     <string name="quest_place_vacant_type_title">Cet emplacement était vacant. Qu'y a-t-il ici maintenant ?</string>
+    <string name="about_title">À propos de %1$s</string>
+    <string name="quest_surface_value_laterite">Latérite</string>
 </resources>

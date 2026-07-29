@@ -17,13 +17,19 @@ open class UpdatePresetsTask : DefaultTask() {
     @get:Input lateinit var version: String
 
     @TaskAction fun run() {
+        val targetDir = File(targetDir)
+
+        // create / clear target directory
+        targetDir.mkdirs()
+        targetDir.listFiles()?.forEach { it.delete() }
+
         /* eagerly also fetch different variants of a language (e.g. "en-NZ" also when just "en"
            is specified as well as "sr" if just "sr-Cyrl" is specified). Hence, we only look at the
            language code */
         val exportLanguages = languageCodes.map { Locale.of(Locale.forLanguageTag(it).language) }
 
         // copy and reduce the presets.json
-        val presetsFile = File("$targetDir/presets.json")
+        val presetsFile = File(targetDir, "presets.json")
         presetsFile.writeText(fetchAndReducePresets(version))
 
         // download each language
@@ -37,15 +43,14 @@ open class UpdatePresetsTask : DefaultTask() {
             println(javaLanguageTag)
 
             val presetsLocalization = fetchAndReducePresetsLocalizations(localizationMetadata)
-            File("$targetDir/$javaLanguageTag.json").writeText(presetsLocalization)
+            File(targetDir, "$javaLanguageTag.json").writeText(presetsLocalization)
         }
 
         // Norway has two languages, one of them is called Bokmål
-        // coded "no" in iD presets, but "nb" is also expected by Android.
+        // coded "no" in iD presets, but "nb" is expected by Android.
         // https://github.com/streetcomplete/StreetComplete/issues/3890
         if ("no" in languageCodes.orEmpty()) {
-            val bokmalFile = File("$targetDir/no.json")
-            bokmalFile.copyTo(File("$targetDir/nb.json"), overwrite = true)
+            File(targetDir, "no.json").copyTo(File(targetDir, "nb.json"), overwrite = true)
         }
     }
 
