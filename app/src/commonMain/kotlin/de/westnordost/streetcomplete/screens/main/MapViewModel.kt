@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
@@ -18,7 +19,6 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditsController
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.getNoteTextForInvalidEdit
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
@@ -34,29 +34,37 @@ import kotlinx.coroutines.flow.StateFlow
 
 @Stable
 abstract class MapViewModel : ViewModel() {
-    abstract fun createElementInOverlay(overlay: Overlay)
+    abstract val shownBottomSheet: StateFlow<ShownBottomSheet?>
 
-    abstract fun selectElementInOverlay(overlay: Overlay, elementKey: ElementKey)
+    abstract fun showCreateElementInOverlay(overlay: Overlay)
 
-    abstract fun selectQuest(questKey: QuestKey)
+    abstract fun showElementInOverlay(overlay: Overlay, elementKey: ElementKey)
+
+    abstract fun showQuest(questKey: QuestKey)
+
+    abstract fun showCreateNote(isGpxAttached: Boolean)
 
     abstract fun hideQuest(questKey: QuestKey)
+
+    abstract fun isSurvey(geometry: ElementGeometry): Boolean
 
     abstract fun submitEdit(
         elementEditType: ElementEditType,
         element: Element,
         geometry: ElementGeometry,
         elementEditAction: ElementEditAction,
-        isNearUserLocation: Boolean
     )
     abstract fun commentNote(
         note: Note,
         text: String?,
         imagePaths: List<String> = emptyList(),
-        track: List<Trackpoint> = emptyList(),
     )
-
-    abstract val shownBottomSheet: StateFlow<ShownBottomSheet?>
+    abstract fun createNote(
+        position: LatLon,
+        text: String,
+        imagePaths: List<String> = emptyList(),
+        track: List<Trackpoint> = emptyList()
+    )
 }
 
 @Stable
@@ -68,15 +76,15 @@ class MapViewModelImpl(
     private val elementEditsController: ElementEditsController,
     private val noteEditsController: NoteEditsController,
     private val hiddenQuestsController: QuestsHiddenController,
-    private val featureDictionary: FeatureDictionary,
+    private val surveyChecker: SurveyChecker,
 ) : MapViewModel() {
     override val shownBottomSheet = MutableStateFlow<ShownBottomSheet?>(null)
 
-    override fun createElementInOverlay(overlay: Overlay) {
+    override fun showCreateElementInOverlay(overlay: Overlay) {
         shownBottomSheet.value = ShownBottomSheet.Overlay(overlay, null, null)
     }
 
-    override fun selectElementInOverlay(
+    override fun showElementInOverlay(
         overlay: Overlay,
         elementKey: ElementKey,
     ) {
@@ -89,7 +97,7 @@ class MapViewModelImpl(
         }
     }
 
-    override fun selectQuest(questKey: QuestKey) {
+    override fun showQuest(questKey: QuestKey) {
         when (questKey) {
             is OsmNoteQuestKey -> {
                 launch(Dispatchers.IO) {
@@ -112,37 +120,28 @@ class MapViewModelImpl(
         }
     }
 
+    override fun showCreateNote(isGpxAttached: Boolean) {
+        shownBottomSheet.value = ShownBottomSheet.CreateOsmNote(isGpxAttached)
+    }
+
     override fun hideQuest(questKey: QuestKey) {
         launch(Dispatchers.IO) {
             hiddenQuestsController.hide(questKey)
         }
     }
 
+    override fun isSurvey(geometry: ElementGeometry): Boolean =
+        surveyChecker.checkIsSurvey(geometry)
+
     override fun submitEdit(
         elementEditType: ElementEditType,
         element: Element,
         geometry: ElementGeometry,
         elementEditAction: ElementEditAction,
-        isNearUserLocation: Boolean
     ) {
-        // in very rare cases, we can end up with changes that will not be accepted by OSM, i.e.
-        // if any OSM tag value is longer than 255 characters. This is mostly avoided by the UI.
-        // A prominent example is too long opening hours. In that rare case, we allow ourselves to
-        // post a public note in the user's name.
-        if (elementEditAction is UpdateElementTagsAction && !elementEditAction.changes.isValid()) {
-            launch(Dispatchers.IO) {
-                val text = getNoteTextForInvalidEdit(
-                    element = element,
-                    elementEditType = elementEditType,
-                    changes = elementEditAction.changes.changes,
-                    featureDictionary = featureDictionary
-                )
-                noteEditsController.add(0, NoteEditAction.CREATE, geometry.center, text)
-            }
-        } else {
-            launch(Dispatchers.IO) {
-                elementEditsController.add(elementEditType, geometry, "survey", elementEditAction, isNearUserLocation)
-            }
+        val isNearUserLocation = surveyChecker.checkIsSurvey(geometry)
+        launch(Dispatchers.IO) {
+            elementEditsController.add(elementEditType, geometry, "survey", elementEditAction, isNearUserLocation)
         }
     }
 
@@ -150,9 +149,21 @@ class MapViewModelImpl(
         note: Note,
         text: String?,
         imagePaths: List<String>,
-        track: List<Trackpoint>,
     ) {
-        noteEditsController.add(note.id, NoteEditAction.COMMENT, note.position, text, imagePaths, track)
+        launch(Dispatchers.IO) {
+            noteEditsController.add(note.id, NoteEditAction.COMMENT, note.position, text, imagePaths)
+        }
+    }
+
+    override fun createNote(
+        position: LatLon,
+        text: String,
+        imagePaths: List<String>,
+        track: List<Trackpoint>
+    ) {
+        launch(Dispatchers.IO) {
+            noteEditsController.add(0, NoteEditAction.CREATE, position, text, imagePaths, track)
+        }
     }
 }
 

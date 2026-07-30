@@ -51,7 +51,7 @@ import kotlin.time.Duration.Companion.milliseconds
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun CreateNoteForm(
-    onLeaveNote: (text: String, noteImagePaths: List<String>) -> Unit,
+    onLeaveNote: (noteText: String, noteImagePaths: List<String>) -> Unit,
     onDismiss: () -> Unit,
     onPinPositioned: (offsetInWindow: Offset) -> Unit,
     isGpxAttached: Boolean,

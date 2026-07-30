@@ -54,7 +54,7 @@ fun OverlayFormContainer(
     mapPosition: LatLon,
     mapMetersPerPixel: Double,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
-    onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
+    onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
 ) {
@@ -90,7 +90,7 @@ fun OverlayFormContainer(
                         element = element,
                         geometry = geometry,
                         countryInfo = countryInfo,
-                        onPinPosition = onPinPosition
+                        onPinPosition = onSetPinPosition
                     )
                 }
                 OverlayFormState.LeaveNote -> {

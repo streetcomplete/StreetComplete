@@ -32,9 +32,7 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_noteDiscussion_no
-import de.westnordost.streetcomplete.resources.short_no_answer_on_button
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
@@ -60,7 +58,9 @@ import org.koin.core.qualifier.named
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun AddNoteCommentForm(
-    on: (NoteQuestAction) -> Unit,
+    onDismiss: () -> Unit,
+    onCommentNote: (noteText: String, noteImagePaths: List<String>) -> Unit,
+    onHideQuest: () -> Unit,
     note: Note,
     modifier: Modifier = Modifier,
     fileSystem: FileSystem = koinInject(),
@@ -104,7 +104,7 @@ fun AddNoteCommentForm(
 
     fun onDiscard() {
         viewModel.deleteAllImagePaths()
-        on(NoteQuestAction.Dismiss)
+        onDismiss()
     }
 
     BackHandler {
@@ -156,7 +156,7 @@ fun AddNoteCommentForm(
                                 Text(stringResource(Res.string.short_no_answer_on_button))
                             }
                         } else {
-                            TextButton(onClick = { on(NoteQuestAction.HideQuest) }) {
+                            TextButton(onClick = onHideQuest) {
                                 Text(stringResource(Res.string.quest_noteDiscussion_no))
                             }
                         }
@@ -167,7 +167,7 @@ fun AddNoteCommentForm(
         fab = {
             FloatingOkButton(
                 visible = isComplete,
-                onClick = { on(NoteQuestAction.CommentNote(noteText, noteImagePaths)) },
+                onClick = { onCommentNote(noteText, noteImagePaths) },
             )
         },
         modifier = modifier,
@@ -201,10 +201,4 @@ private fun NoteCommentItems(
             )
         }
     }
-}
-
-sealed interface NoteQuestAction {
-    data object Dismiss : NoteQuestAction
-    data object HideQuest : NoteQuestAction
-    data class CommentNote(val text: String, val attachedImagePaths: List<String>) : NoteQuestAction
 }

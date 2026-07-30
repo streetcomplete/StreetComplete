@@ -19,6 +19,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Offset
@@ -26,10 +28,6 @@ import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.platform.WindowInfo
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
-import androidx.core.graphics.Insets
-import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -47,13 +45,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.LazyMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest
-import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
+import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -62,7 +60,12 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
+import de.westnordost.streetcomplete.quests.note_comments.AddNoteCommentForm
 import de.westnordost.streetcomplete.screens.BaseActivity
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.CreateNoteForm
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay.OverlayFormContainer
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
@@ -84,7 +87,6 @@ import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.location.LocationRequestFragment
@@ -95,7 +97,6 @@ import de.westnordost.streetcomplete.view.toAndroidResourceId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.Serializable
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
@@ -151,12 +152,13 @@ class MainActivity :
 
     private val viewModel by viewModel<MainViewModel>()
     private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
+    private val mapViewModel by viewModel<MapViewModel>()
 
     private val showMapContextMenu = mutableStateOf(false)
     private val lastMapLongPress = mutableStateOf<Pair<Offset, LatLon>?>(null)
     private val lastQuestSolved = mutableStateOf<QuestSolvedEvent?>(null)
 
-    private val shownBottomSheet = mutableStateOf<BottomSheetContent?>(null)
+    private val shownBottomSheet = mapViewModel.shownBottomSheet
     private val lastMapClick = mutableStateOf<MapClick?>(null)
 
     private var windowInfo: WindowInfo? = null
@@ -206,6 +208,7 @@ class MainActivity :
 
         binding.controls.content {
             val isMapAppLaunchAvailable = remember { mapAppLauncher.isAvailable() }
+            val shownBottomSheet by mapViewModel.shownBottomSheet.collectAsState()
 
             windowInfo = LocalWindowInfo.current
 
@@ -228,6 +231,16 @@ class MainActivity :
                     onExplainedNeedForLocationPermission = ::requestLocation
                 )
             }
+
+            // TODO: appear animation!
+            shownBottomSheet?.let {
+                MainBottomSheet(
+                    onDismiss = { TODO() },
+                    mapViewModel = mapViewModel,
+                    shownBottomSheet = it
+                )
+            }
+
 
             lastQuestSolved.value?.let {
                 LastQuestSolvedEffect(it)
@@ -383,7 +396,7 @@ class MainActivity :
     /* ---------------------------- MainMapFragment.Listener --------------------------- */
 
     override fun onClickedQuest(questKey: QuestKey) {
-        showInBottomSheet(BottomSheetContent.Quest(questKey))
+        mapViewModel.showQuest(questKey)
     }
 
     override fun onClickedEdit(editKey: EditKey) {
@@ -399,7 +412,8 @@ class MainActivity :
     }
 
     override fun onClickedElement(elementKey: ElementKey) {
-        showInBottomSheet(BottomSheetContent.Overlay(elementKey))
+        val overlay = viewModel.selectedOverlay.value ?: return
+        mapViewModel.showElementInOverlay(overlay, elementKey)
     }
 
     override fun onDisplayedLocationDidChange() {
@@ -424,7 +438,12 @@ class MainActivity :
 
     @AnyThread
     override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        val questKey = (shownBottomSheet.value as? BottomSheetContent.Quest)?.questKey ?: return
+        val questKey =
+            when (val shown = shownBottomSheet.value) {
+                is ShownBottomSheet.OsmNoteQuest -> OsmNoteQuestKey(shown.note.id)
+                is ShownBottomSheet.OsmQuest -> OsmQuestKey(shown.element.type, shown.element.id, shown.questType.name)
+                else -> return
+        }
         // open quest has been deleted
         if (questKey in removed) {
             lifecycleScope.launch { closeBottomSheet() }
@@ -433,7 +452,13 @@ class MainActivity :
 
     @AnyThread
     override fun onInvalidated() {
-        val questKey = (shownBottomSheet.value as? BottomSheetContent.Quest)?.questKey ?: return
+        val questKey =
+            when (val shown = shownBottomSheet.value) {
+                is ShownBottomSheet.OsmNoteQuest -> OsmNoteQuestKey(shown.note.id)
+                is ShownBottomSheet.OsmQuest -> OsmQuestKey(shown.element.type, shown.element.id, shown.questType.name)
+                else -> return
+            }
+
         lifecycleScope.launch {
             val openQuest = withContext(Dispatchers.IO) { visibleQuestsSource.get(questKey) }
             // open quest does not exist anymore after visible quest invalidation
@@ -447,7 +472,7 @@ class MainActivity :
 
     @AnyThread
     override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-        val elementKey = (shownBottomSheet.value as? BottomSheetContent.Overlay)?.elementKey ?: return
+        val elementKey = (shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
         if (elementKey in deleted) {
             lifecycleScope.launch { closeBottomSheet() }
         }
@@ -455,7 +480,7 @@ class MainActivity :
 
     @AnyThread
     override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
-        val elementKey = (shownBottomSheet.value as? BottomSheetContent.Overlay)?.elementKey ?: return
+        val elementKey = (shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
         lifecycleScope.launch {
             val openElement = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) }
             // open element does not exist anymore after download
@@ -467,7 +492,7 @@ class MainActivity :
 
     @AnyThread
     override fun onCleared() {
-        val elementKey = (shownBottomSheet.value as? BottomSheetContent.Overlay)?.elementKey ?: return
+        val elementKey = (shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
         lifecycleScope.launch { closeBottomSheet() }
     }
 
@@ -597,7 +622,8 @@ class MainActivity :
     }
 
     private fun onClickCreateButton() {
-        TODO()
+        val overlay = viewModel.selectedOverlay.value ?: return
+        mapViewModel.showCreateElementInOverlay(overlay)
     }
 
     private fun setIsNavigationMode(navigation: Boolean) {
@@ -649,7 +675,7 @@ class MainActivity :
     }
 
     private fun composeNote(pos: LatLon, isGpxAttached: Boolean = false) {
-        showInBottomSheet(BottomSheetContent.CreateNote(isGpxAttached))
+        mapViewModel.showCreateNote(isGpxAttached)
 
         mapFragment?.updateCameraPosition(300) {
             position = pos
@@ -678,7 +704,7 @@ class MainActivity :
 
     /** Open or replace the bottom sheet. If the bottom sheet is replaces, no appear animation is
      *  played and the highlighting of the previous bottom sheet is cleared. */
-    private fun showInBottomSheet(content: BottomSheetContent, clearPreviousHighlighting: Boolean = true) {
+    private fun showInBottomSheet(content: ShownBottomSheet, clearPreviousHighlighting: Boolean = true) {
         freezeMap()
         if (clearPreviousHighlighting) clearHighlighting()
         shownBottomSheet.value = content
@@ -812,12 +838,4 @@ class MainActivity :
     companion object {
         private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
     }
-}
-
-@Serializable
-sealed interface BottomSheetContent {
-    data class Quest(val questKey: QuestKey) : BottomSheetContent
-    data class Overlay(val elementKey: ElementKey) : BottomSheetContent
-    data class CreateNote(val isGpxAttached: Boolean) : BottomSheetContent
-    // TODO: SplitWay etc. actually also has elementKey... (i.e. form should also close when element is deleted server-side)
 }
