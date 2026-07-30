@@ -10,6 +10,13 @@ sealed class Element {
     abstract val tags: Map<String, String>
     abstract val timestampEdited: Long
     abstract val type: ElementType
+
+    init {
+        for ((key, value) in tags) {
+            require(key.length <= 255)
+            require(value.length <= 255)
+        }
+    }
 }
 
 @Serializable
