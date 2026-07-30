@@ -2,13 +2,11 @@ package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -33,7 +31,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 @Stable
-abstract class MapViewModel : ViewModel() {
+abstract class MainBottomSheetViewModel : ViewModel() {
     abstract val shownBottomSheet: StateFlow<ShownBottomSheet?>
 
     abstract fun showCreateElementInOverlay(overlay: Overlay)
@@ -50,7 +48,6 @@ abstract class MapViewModel : ViewModel() {
 
     abstract fun submitEdit(
         elementEditType: ElementEditType,
-        element: Element,
         geometry: ElementGeometry,
         elementEditAction: ElementEditAction,
     )
@@ -77,7 +74,7 @@ class MapViewModelImpl(
     private val noteEditsController: NoteEditsController,
     private val hiddenQuestsController: QuestsHiddenController,
     private val surveyChecker: SurveyChecker,
-) : MapViewModel() {
+) : MainBottomSheetViewModel() {
     override val shownBottomSheet = MutableStateFlow<ShownBottomSheet?>(null)
 
     override fun showCreateElementInOverlay(overlay: Overlay) {
@@ -135,7 +132,6 @@ class MapViewModelImpl(
 
     override fun submitEdit(
         elementEditType: ElementEditType,
-        element: Element,
         geometry: ElementGeometry,
         elementEditAction: ElementEditAction,
     ) {

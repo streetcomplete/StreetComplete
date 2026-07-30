@@ -60,12 +60,8 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
-import de.westnordost.streetcomplete.quests.note_comments.AddNoteCommentForm
 import de.westnordost.streetcomplete.screens.BaseActivity
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.CreateNoteForm
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay.OverlayFormContainer
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
@@ -152,13 +148,13 @@ class MainActivity :
 
     private val viewModel by viewModel<MainViewModel>()
     private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
-    private val mapViewModel by viewModel<MapViewModel>()
+    private val mainBottomSheetViewModel by viewModel<MainBottomSheetViewModel>()
 
     private val showMapContextMenu = mutableStateOf(false)
     private val lastMapLongPress = mutableStateOf<Pair<Offset, LatLon>?>(null)
     private val lastQuestSolved = mutableStateOf<QuestSolvedEvent?>(null)
 
-    private val shownBottomSheet = mapViewModel.shownBottomSheet
+    private val shownBottomSheet = mainBottomSheetViewModel.shownBottomSheet
     private val lastMapClick = mutableStateOf<MapClick?>(null)
 
     private var windowInfo: WindowInfo? = null
@@ -208,7 +204,7 @@ class MainActivity :
 
         binding.controls.content {
             val isMapAppLaunchAvailable = remember { mapAppLauncher.isAvailable() }
-            val shownBottomSheet by mapViewModel.shownBottomSheet.collectAsState()
+            val shownBottomSheet by mainBottomSheetViewModel.shownBottomSheet.collectAsState()
 
             windowInfo = LocalWindowInfo.current
 
@@ -236,7 +232,7 @@ class MainActivity :
             shownBottomSheet?.let {
                 MainBottomSheet(
                     onDismiss = { TODO() },
-                    mapViewModel = mapViewModel,
+                    mainBottomSheetViewModel = mainBottomSheetViewModel,
                     shownBottomSheet = it
                 )
             }
@@ -396,7 +392,7 @@ class MainActivity :
     /* ---------------------------- MainMapFragment.Listener --------------------------- */
 
     override fun onClickedQuest(questKey: QuestKey) {
-        mapViewModel.showQuest(questKey)
+        mainBottomSheetViewModel.showQuest(questKey)
     }
 
     override fun onClickedEdit(editKey: EditKey) {
@@ -413,7 +409,7 @@ class MainActivity :
 
     override fun onClickedElement(elementKey: ElementKey) {
         val overlay = viewModel.selectedOverlay.value ?: return
-        mapViewModel.showElementInOverlay(overlay, elementKey)
+        mainBottomSheetViewModel.showElementInOverlay(overlay, elementKey)
     }
 
     override fun onDisplayedLocationDidChange() {
@@ -623,7 +619,7 @@ class MainActivity :
 
     private fun onClickCreateButton() {
         val overlay = viewModel.selectedOverlay.value ?: return
-        mapViewModel.showCreateElementInOverlay(overlay)
+        mainBottomSheetViewModel.showCreateElementInOverlay(overlay)
     }
 
     private fun setIsNavigationMode(navigation: Boolean) {
@@ -675,7 +671,7 @@ class MainActivity :
     }
 
     private fun composeNote(pos: LatLon, isGpxAttached: Boolean = false) {
-        mapViewModel.showCreateNote(isGpxAttached)
+        mainBottomSheetViewModel.showCreateNote(isGpxAttached)
 
         mapFragment?.updateCameraPosition(300) {
             position = pos

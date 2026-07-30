@@ -167,7 +167,7 @@ import de.westnordost.streetcomplete.screens.about.logs.LogsViewModel
 import de.westnordost.streetcomplete.screens.about.logs.LogsViewModelImpl
 import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.MainViewModelImpl
-import de.westnordost.streetcomplete.screens.main.MapViewModel
+import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
 import de.westnordost.streetcomplete.screens.main.MapViewModelImpl
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
@@ -599,7 +599,7 @@ val commonModule = module {
         EditHistoryViewModelImpl(get(), get(), get(named("FeatureDictionaryLazy")))
     }
 
-    viewModel<MapViewModel> {
+    viewModel<MainBottomSheetViewModel> {
         MapViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
     }
 
