@@ -45,17 +45,6 @@ import kotlin.math.PI
 import kotlin.math.atan2
 import kotlin.math.sqrt
 
-// Require a minimum distance because the map is not perfectly precise, it may be hard to tell
-// whether something really is misplaced without good aerial imagery.
-// Also, POIs are objects with a certain extent, so as long as the node is within this extent, it's
-// fine, there is little value of putting the point at exactly the center point of the POI
-const val MIN_MOVE_DISTANCE = 1.0
-// Move node functionality is meant for fixing slightly misplaced elements. If something moved far
-// away, it is reasonable to assume there are more substantial changes required, also to nearby
-// elements. Additionally, the default radius for highlighted elements is 30 m, so moving outside
-// should not be allowed.
-const val MAX_MOVE_DISTANCE = 30.0
-
 /** Form that lets the user move an OSM node.
  *
  *  [nodeOffsetInWindow] - the offset of the [node] relative to the window. */
@@ -66,8 +55,9 @@ fun MoveNodeForm(
     onDismiss: () -> Unit,
     mapPosition: LatLon?,
     node: Node,
-    nodeOffsetInWindow: Offset?, // XXX
+    nodeOffsetInWindow: Offset?,
     elementEditType: ElementEditType,
+    modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
 ) {
@@ -99,7 +89,7 @@ fun MoveNodeForm(
         }
     }
 
-    Box(modifier = Modifier
+    Box(modifier = modifier
         .fillMaxSize()
         .onGloballyPositioned { layoutCoordinates = it }
         .drawBehind {
@@ -184,3 +174,14 @@ private fun DrawScope.drawArrow(
         cap = StrokeCap.Round
     )
 }
+
+// Require a minimum distance because the map is not perfectly precise, it may be hard to tell
+// whether something really is misplaced without good aerial imagery.
+// Also, POIs are objects with a certain extent, so as long as the node is within this extent, it's
+// fine, there is little value of putting the point at exactly the center point of the POI
+const val MIN_MOVE_DISTANCE = 1.0
+// Move node functionality is meant for fixing slightly misplaced elements. If something moved far
+// away, it is reasonable to assume there are more substantial changes required, also to nearby
+// elements. Additionally, the default radius for highlighted elements is 30 m, so moving outside
+// should not be allowed.
+const val MAX_MOVE_DISTANCE = 30.0

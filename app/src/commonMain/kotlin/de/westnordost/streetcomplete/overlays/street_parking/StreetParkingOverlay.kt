@@ -62,13 +62,13 @@ class StreetParkingOverlay : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
         if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm(on, element, geometry, countryInfo)
         }
         else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
-            LaneNarrowingTrafficCalmingForm(on, element, geometry, onPinPosition)
+            LaneNarrowingTrafficCalmingForm(on, element, geometry, onSetPinPosition)
         }
     }
 }

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,6 +41,17 @@ import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.DrawableResource
 import org.koin.compose.koinInject
 
+/** Container in which all overlay forms are housed.
+ *
+ *  Takes care of showing the forms for the "other answers" (leave note, split way, move node),
+ *  animates between the overlay form and those.
+ *
+ *  @param onSetMapMarkers is called when the form shown wishes to show markers on the map. E.g. the
+ *         split way form shows markers.
+ *
+ *  @param onSetPinPosition is called when the form wishes to display the overlay pin at a custom
+ *         location, e.g. in order to snap it to a way (see e.g. AddressOverlay)
+ *  */
 @Composable
 fun OverlayFormContainer(
     onDismiss: () -> Unit,
@@ -61,6 +73,11 @@ fun OverlayFormContainer(
     val geometry = geometry ?: ElementPointGeometry(mapPosition)
     val countryInfo = remember { countryInfos.get(countryBoundaries, geometry.center) }
     var state by rememberSerializable { mutableStateOf<OverlayFormState>(OverlayFormState.Overlay) }
+
+    // markers shown are per-form
+    LaunchedEffect(state) {
+        onSetMapMarkers(emptyList())
+    }
 
     fun onAction(action: OverlayAction) {
         when (action) {
@@ -90,7 +107,7 @@ fun OverlayFormContainer(
                         element = element,
                         geometry = geometry,
                         countryInfo = countryInfo,
-                        onPinPosition = onSetPinPosition
+                        onSetPinPosition = onSetPinPosition
                     )
                 }
                 OverlayFormState.LeaveNote -> {

@@ -71,7 +71,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
         // this check is necessary because the form shall not be shown for entrances
         val isNewOrPlace = remember(element) { element == null || element.isPlaceOrDisusedPlace() }

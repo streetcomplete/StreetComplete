@@ -57,7 +57,7 @@ class SidewalkOverlay : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
         if (element == null) return
 

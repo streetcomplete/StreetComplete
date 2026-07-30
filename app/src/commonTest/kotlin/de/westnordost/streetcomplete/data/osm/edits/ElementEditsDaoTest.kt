@@ -350,7 +350,7 @@ private object TestOverlay : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
+        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
     ) {}
 
     override fun getStyledElements(mapData: MapDataWithGeometry) = sequenceOf<Pair<Element, OverlayStyle>>()

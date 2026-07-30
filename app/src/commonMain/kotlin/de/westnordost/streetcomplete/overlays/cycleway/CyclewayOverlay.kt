@@ -67,7 +67,7 @@ class CyclewayOverlay(
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
+        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
         if (element != null && element.tags["highway"] in ALL_ROADS) {
             StreetCyclewayOverlayForm(on, element, geometry, countryInfo)

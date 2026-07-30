@@ -41,7 +41,7 @@ interface Overlay : ElementEditType {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
+        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
     )
 
     /** Whether the form can be opened with a null element (=new element) */

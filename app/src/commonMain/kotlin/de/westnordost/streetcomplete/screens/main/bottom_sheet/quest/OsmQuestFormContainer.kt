@@ -55,6 +55,14 @@ import kotlinx.serialization.Serializable
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
+/** Container in which all quest forms are housed.
+ *
+ *  Takes care of showing the forms for the "other answers" (leave note, split way, move node)
+ *  and associated confirmation dialogs and animates between the overlay form and those.
+ *
+ *  @param onSetMapMarkers is called when the form shown wishes to show markers on the map. E.g. the
+ *         split way form and level form shows markers
+ */
 @Composable
 fun <T> OsmQuestFormContainer(
     onDismiss: () -> Unit,

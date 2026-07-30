@@ -65,6 +65,7 @@ fun SplitWayForm(
     mapPosition: LatLon?,
     way: Way,
     wayGeometry: ElementPolylinesGeometry,
+    modifier: Modifier = Modifier,
     soundEffectPlayer: SoundEffectPlayer = koinInject()
 ) {
     var confirmManySplits by remember { mutableStateOf(false) }
@@ -106,9 +107,7 @@ fun SplitWayForm(
         })
     }
 
-    Box(modifier = Modifier
-        .fillMaxSize()
-    ) {
+    Box(modifier = modifier.fillMaxSize()) {
         Icon(
             painter = painterResource(Res.drawable.crosshair),
             contentDescription = null,
