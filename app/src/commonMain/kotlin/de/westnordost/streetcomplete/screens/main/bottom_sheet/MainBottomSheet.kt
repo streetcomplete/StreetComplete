@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,9 +24,15 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFor
 import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 
-// TODO use modifier!!! + appear/disappear animation
+// TODO appear/disappear animation must be done by
 
-/** Everything that happens in the bottom sheet displayed in the main screen happens here. */
+/**
+ * Everything that happens in the bottom sheet displayed in the main screen happens here.
+ *
+ * It actually ought to be displayed at full size, because bottom sheets may have elements that
+ * should be displayed above the acutal bottom sheet form (such as a crosshairs, or the arrow when
+ * moving a node). So, the actual sliding up/down of the bottom sheet(s) is handled by the forms
+ * individually. */
 @Composable
 fun MainBottomSheet(
     onDismiss: () -> Unit,
@@ -54,7 +61,8 @@ fun MainBottomSheet(
                     onDismiss()
                 },
                 onDismiss = onDismiss,
-                isGpxAttached = shownBottomSheet.isGpxAttached
+                isGpxAttached = shownBottomSheet.isGpxAttached,
+                modifier = modifier,
             )
         }
         is ShownBottomSheet.OsmNoteQuest -> {
@@ -74,6 +82,7 @@ fun MainBottomSheet(
                     onDismiss()
                 },
                 note = shownBottomSheet.note,
+                modifier = modifier,
             )
         }
         is ShownBottomSheet.OsmQuest -> {
@@ -114,7 +123,8 @@ fun MainBottomSheet(
                 mapRotation = mapRotation,
                 mapTilt = mapTilt,
                 mapMetersPerPixel = mapMetersPerPixel,
-                onSetMapMarkers = onSetMapMarkers
+                onSetMapMarkers = onSetMapMarkers,
+                modifier = modifier,
             )
         }
         is ShownBottomSheet.Overlay -> {
@@ -154,6 +164,7 @@ fun MainBottomSheet(
                 onSetPinPosition = { icon, position ->
                     TODO()
                 },
+                modifier = modifier,
             )
         }
     }
