@@ -8,8 +8,10 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditsController
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestController
@@ -25,6 +27,8 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.util.ktx.launch
+import de.westnordost.streetcomplete.util.ktx.truncateTo6Decimals
+import de.westnordost.streetcomplete.util.math.enlargedBy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -81,38 +85,30 @@ class MapViewModelImpl(
         shownBottomSheet.value = ShownBottomSheet.Overlay(overlay, null, null)
     }
 
-    override fun showElementInOverlay(
-        overlay: Overlay,
-        elementKey: ElementKey,
-    ) {
+    override fun showElementInOverlay(overlay: Overlay, elementKey: ElementKey) {
         launch(Dispatchers.IO) {
-            val element = mapDataSource.get(elementKey.type, elementKey.id)
-            val geometry = mapDataSource.getGeometry(elementKey.type, elementKey.id)
-            if (element != null && geometry != null) {
-                shownBottomSheet.value = ShownBottomSheet.Overlay(overlay, element, geometry)
-            }
+            showElementInOverlayOrNote(overlay, elementKey)
+        }
+    }
+
+    private suspend fun showElementInOverlayOrNote(overlay: Overlay, elementKey: ElementKey) {
+        val geometry = mapDataSource.getGeometry(elementKey.type, elementKey.id) ?: return
+
+        // a note at the position of the element blocks editing of that element
+        val note = getNoteForElementAt(geometry.center)
+        if (note != null) {
+            shownBottomSheet.value = ShownBottomSheet.OsmNoteQuest(note)
+        } else {
+            val element = mapDataSource.get(elementKey.type, elementKey.id) ?: return
+            shownBottomSheet.value = ShownBottomSheet.Overlay(overlay, element, geometry)
         }
     }
 
     override fun showQuest(questKey: QuestKey) {
-        when (questKey) {
-            is OsmNoteQuestKey -> {
-                launch(Dispatchers.IO) {
-                    val note = notesSource.get(questKey.noteId)
-                    if (note != null) {
-                        shownBottomSheet.value = ShownBottomSheet.OsmNoteQuest(note)
-                    }
-                }
-            }
-            is OsmQuestKey -> {
-                launch(Dispatchers.IO) {
-                    val element = mapDataSource.get(questKey.elementType, questKey.elementId)
-                    val geometry = mapDataSource.getGeometry(questKey.elementType, questKey.elementId)
-                    val questType = questTypeRegistry.getByName(questKey.questTypeName) as? OsmElementQuestType<*>
-                    if (element != null && geometry != null && questType != null) {
-                        shownBottomSheet.value = ShownBottomSheet.OsmQuest(questType, element, geometry)
-                    }
-                }
+        launch(Dispatchers.IO) {
+            when (questKey) {
+                is OsmNoteQuestKey -> showOsmNoteQuest(questKey)
+                is OsmQuestKey -> showOsmQuest(questKey)
             }
         }
     }
@@ -135,8 +131,8 @@ class MapViewModelImpl(
         geometry: ElementGeometry,
         elementEditAction: ElementEditAction,
     ) {
-        val isNearUserLocation = surveyChecker.checkIsSurvey(geometry)
         launch(Dispatchers.IO) {
+            val isNearUserLocation = surveyChecker.checkIsSurvey(geometry)
             elementEditsController.add(elementEditType, geometry, "survey", elementEditAction, isNearUserLocation)
         }
     }
@@ -160,6 +156,27 @@ class MapViewModelImpl(
         launch(Dispatchers.IO) {
             noteEditsController.add(0, NoteEditAction.CREATE, position, text, imagePaths, track)
         }
+    }
+
+    private fun showOsmQuest(questKey: OsmQuestKey) {
+        val element = mapDataSource.get(questKey.elementType, questKey.elementId) ?: return
+        val geometry = mapDataSource.getGeometry(questKey.elementType, questKey.elementId) ?: return
+        val questType = questTypeRegistry.getByName(questKey.questTypeName) as? OsmElementQuestType<*> ?: return
+        shownBottomSheet.value = ShownBottomSheet.OsmQuest(questType, element, geometry)
+    }
+
+    private fun showOsmNoteQuest(questKey: OsmNoteQuestKey) {
+        val note = notesSource.get(questKey.noteId) ?: return
+        shownBottomSheet.value = ShownBottomSheet.OsmNoteQuest(note)
+    }
+
+    private fun getNoteForElementAt(position: LatLon): Note? {
+        return notesSource
+            .getAll(BoundingBox(position, position).enlargedBy(0.2))
+            .filter { note ->
+                note.position.truncateTo6Decimals() == position.truncateTo6Decimals() &&
+                hiddenQuestsController.get(OsmNoteQuestKey(note.id)) == null
+            }.firstOrNull()
     }
 }
 
