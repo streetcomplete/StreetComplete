@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.get
@@ -67,6 +68,7 @@ fun OverlayFormContainer(
     mapMetersPerPixel: Double,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
     onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
+    modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
 ) {
@@ -96,7 +98,8 @@ fun OverlayFormContainer(
     ) {
         AnimatedContent(
             targetState = state,
-            transitionSpec = CrossFadeTransitionSpec
+            transitionSpec = CrossFadeTransitionSpec,
+            modifier = modifier,
         ) { currentState ->
             when (currentState) {
                 OverlayFormState.Overlay -> {

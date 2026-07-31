@@ -51,6 +51,7 @@ fun CreateNoteForm(
     onLeaveNote: (noteText: String, noteImagePaths: List<String>) -> Unit,
     onDismiss: () -> Unit,
     isGpxAttached: Boolean,
+    modifier: Modifier = Modifier,
     fileSystem: FileSystem = koinInject(),
 ) {
     val viewModel = koinViewModel<PhotosViewModel>()
@@ -87,7 +88,7 @@ fun CreateNoteForm(
     }
 
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         Pin(
             iconPainter = painterResource(Res.drawable.quest_create_note),

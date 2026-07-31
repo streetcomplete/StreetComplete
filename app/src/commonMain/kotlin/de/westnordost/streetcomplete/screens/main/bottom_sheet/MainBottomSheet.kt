@@ -23,8 +23,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFor
 import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 
-// TODO use modifier!!!
-// TODO appear/disappear animation
+// TODO use modifier!!! + appear/disappear animation
 
 /** Everything that happens in the bottom sheet displayed in the main screen happens here. */
 @Composable

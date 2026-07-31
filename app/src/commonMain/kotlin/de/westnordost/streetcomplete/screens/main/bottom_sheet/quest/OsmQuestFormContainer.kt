@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfos
@@ -79,6 +80,7 @@ fun <T> OsmQuestFormContainer(
     mapTilt: Float,
     mapMetersPerPixel: Double,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
+    modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
     countryInfos: CountryInfos = koinInject(),
@@ -126,7 +128,8 @@ fun <T> OsmQuestFormContainer(
     ) {
         AnimatedContent(
             targetState = state,
-            transitionSpec = CrossFadeTransitionSpec
+            transitionSpec = CrossFadeTransitionSpec,
+            modifier = modifier,
         ) { currentState ->
             when (currentState) {
                 QuestFormState.Quest -> {
