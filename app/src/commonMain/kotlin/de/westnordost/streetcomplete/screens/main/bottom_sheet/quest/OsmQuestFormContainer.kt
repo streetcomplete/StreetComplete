@@ -4,6 +4,7 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -92,6 +93,9 @@ fun <T> OsmQuestFormContainer(
     var confirmCantSay by remember { mutableStateOf(false) }
 
     var state by rememberSerializable { mutableStateOf<QuestFormState>(QuestFormState.Quest) }
+
+    // markers shown are per-form
+    LaunchedEffect(state) { onSetMapMarkers(emptyList()) }
 
     fun onAction(action: QuestAction<T>) {
         when (action) {

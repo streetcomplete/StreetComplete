@@ -75,9 +75,7 @@ fun OverlayFormContainer(
     var state by rememberSerializable { mutableStateOf<OverlayFormState>(OverlayFormState.Overlay) }
 
     // markers shown are per-form
-    LaunchedEffect(state) {
-        onSetMapMarkers(emptyList())
-    }
+    LaunchedEffect(state) { onSetMapMarkers(emptyList()) }
 
     fun onAction(action: OverlayAction) {
         when (action) {

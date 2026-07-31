@@ -232,7 +232,7 @@ class MainActivity :
             shownBottomSheet?.let {
                 MainBottomSheet(
                     onDismiss = { TODO() },
-                    mainBottomSheetViewModel = mainBottomSheetViewModel,
+                    viewModel = mainBottomSheetViewModel,
                     shownBottomSheet = it
                 )
             }

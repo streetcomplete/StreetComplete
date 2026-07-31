@@ -19,9 +19,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.quests.note_comments.NoteForm
@@ -53,7 +50,6 @@ import kotlin.time.Duration.Companion.milliseconds
 fun CreateNoteForm(
     onLeaveNote: (noteText: String, noteImagePaths: List<String>) -> Unit,
     onDismiss: () -> Unit,
-    onPinPositioned: (offsetInWindow: Offset) -> Unit,
     isGpxAttached: Boolean,
     fileSystem: FileSystem = koinInject(),
 ) {
@@ -98,7 +94,6 @@ fun CreateNoteForm(
             modifier = Modifier
                 .align(Alignment.Center)
                 .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
-                .onGloballyPositioned { onPinPositioned(it.positionInWindow()) }
                 .animateFallDown(startDelay = 200.milliseconds)
         )
 

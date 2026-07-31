@@ -1,8 +1,15 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
+import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
@@ -13,6 +20,7 @@ import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.CreateNoteForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay.OverlayFormContainer
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
+import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 
 // TODO use modifier!!!
@@ -22,7 +30,7 @@ import de.westnordost.streetcomplete.ui.common.quest.Marker
 @Composable
 fun MainBottomSheet(
     onDismiss: () -> Unit,
-    mainBottomSheetViewModel: MainBottomSheetViewModel,
+    viewModel: MainBottomSheetViewModel,
     shownBottomSheet: ShownBottomSheet,
     geometryOffsetInWindow: Offset?,
     mapRotation: Float,
@@ -32,21 +40,21 @@ fun MainBottomSheet(
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var confirmEdit by remember { mutableStateOf<PendingEdit?>(null) }
+
     when (shownBottomSheet) {
         is ShownBottomSheet.CreateOsmNote -> {
             CreateNoteForm(
                 onLeaveNote = { noteText, noteImagePaths ->
-                    mainBottomSheetViewModel.createNote(
+                    viewModel.createNote(
                         position = mapPosition,
                         text = noteText,
                         imagePaths = noteImagePaths,
                         track = TODO()
                     )
+                    onDismiss()
                 },
                 onDismiss = onDismiss,
-                onPinPositioned = { offsetInWindow ->
-                    TODO()
-                },
                 isGpxAttached = shownBottomSheet.isGpxAttached
             )
         }
@@ -54,15 +62,17 @@ fun MainBottomSheet(
             AddNoteCommentForm(
                 onDismiss = onDismiss,
                 onCommentNote = { noteText, noteImagePaths ->
-                    mainBottomSheetViewModel.commentNote(
+                    viewModel.commentNote(
                         note = shownBottomSheet.note,
                         text = noteText,
                         imagePaths = noteImagePaths
                     )
+                    onDismiss()
                 },
                 onHideQuest = {
                     val key = OsmNoteQuestKey(shownBottomSheet.note.id)
-                    mainBottomSheetViewModel.hideQuest(key)
+                    viewModel.hideQuest(key)
+                    onDismiss()
                 },
                 note = shownBottomSheet.note,
             )
@@ -71,24 +81,31 @@ fun MainBottomSheet(
             OsmQuestFormContainer(
                 onDismiss = onDismiss,
                 onEdit = { action ->
-                    mainBottomSheetViewModel.submitEdit(
-                        elementEditType = shownBottomSheet.questType,
-                        geometry = shownBottomSheet.geometry,
-                        elementEditAction = action
-                    )
+                    if (SuppressSurveyConfirmation || viewModel.isSurvey(shownBottomSheet.geometry)) {
+                        viewModel.submitEdit(
+                            elementEditType = shownBottomSheet.questType,
+                            geometry = shownBottomSheet.geometry,
+                            elementEditAction = action
+                        )
+                        onDismiss()
+                    } else {
+                        confirmEdit = PendingEdit(shownBottomSheet.questType, shownBottomSheet.geometry, action)
+                    }
                 },
                 onLeaveNote = { noteText, noteImagePaths ->
-                    mainBottomSheetViewModel.createNote(
+                    viewModel.createNote(
                         position = shownBottomSheet.geometry.center,
                         text = noteText,
                         imagePaths = noteImagePaths,
                     )
+                    onDismiss()
                 },
                 onHideQuest = {
                     val key = OsmQuestKey(
                         shownBottomSheet.element.type,
                         shownBottomSheet.element.id, shownBottomSheet.questType.name)
-                    mainBottomSheetViewModel.hideQuest(key)
+                    viewModel.hideQuest(key)
+                    onDismiss()
                 },
                 questType = shownBottomSheet.questType,
                 element = shownBottomSheet.element,
@@ -105,18 +122,26 @@ fun MainBottomSheet(
             OverlayFormContainer(
                 onDismiss = onDismiss,
                 onEdit = { action ->
-                    mainBottomSheetViewModel.submitEdit(
-                        elementEditType = shownBottomSheet.overlay,
-                        geometry = shownBottomSheet.geometry ?: ElementPointGeometry(mapPosition),
-                        elementEditAction = action
-                    )
+                    val geometry = shownBottomSheet.geometry ?: ElementPointGeometry(mapPosition)
+
+                    if (SuppressSurveyConfirmation || viewModel.isSurvey(geometry)) {
+                        viewModel.submitEdit(
+                            elementEditType = shownBottomSheet.overlay,
+                            geometry = geometry,
+                            elementEditAction = action
+                        )
+                        onDismiss()
+                    } else {
+                        confirmEdit = PendingEdit(shownBottomSheet.overlay, geometry, action)
+                    }
                 },
                 onLeaveNote = { noteText, noteImagePaths ->
-                    mainBottomSheetViewModel.createNote(
+                    viewModel.createNote(
                         position = shownBottomSheet.geometry?.center ?: mapPosition,
                         text = noteText,
                         imagePaths = noteImagePaths,
                     )
+                    onDismiss()
                 },
                 overlay = shownBottomSheet.overlay,
                 element = shownBottomSheet.element,
@@ -133,4 +158,27 @@ fun MainBottomSheet(
             )
         }
     }
+
+    confirmEdit?.let { pendingEdit ->
+        SurveyConfirmationDialog(
+            onDismissRequest = { confirmEdit = null },
+            onConfirmed = {
+                viewModel.submitEdit(
+                    elementEditType = pendingEdit.elementEditType,
+                    geometry = pendingEdit.geometry,
+                    elementEditAction = pendingEdit.elementEditAction
+                )
+                onDismiss()
+            },
+            onToggleDontShowAgain = { SuppressSurveyConfirmation = it }
+        )
+    }
 }
+
+private data class PendingEdit(
+    val elementEditType: ElementEditType,
+    val geometry: ElementGeometry,
+    val elementEditAction: ElementEditAction,
+)
+
+private var SuppressSurveyConfirmation = false
