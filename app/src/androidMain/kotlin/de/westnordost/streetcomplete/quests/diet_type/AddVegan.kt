@@ -50,8 +50,7 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is DietAvailability -> {
-                if(answer.osmValue == "only" && tags["diet:vegetarian"] == "yes")
-                {
+                if (answer.osmValue == "only" && tags["diet:vegetarian"] == "yes") {
                     // vegetarian = yes and vegan = only is an invalid combination, since every vegan meal is also vegetarian
                     // Thus we assume that the diet:vegan is more up-to-date, and update the vegetarian tag.
                     tags.updateWithCheckDate("diet:vegetarian", "only")
