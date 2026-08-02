@@ -22,13 +22,13 @@ import org.jetbrains.compose.resources.StringResource
 
 class AddOpeningHours : OsmElementQuestType<OpeningHoursAnswer>, AndroidQuest {
 
-    // 'namedFilter' is for places where 'AddPlaceName' should trigger first, so that object is identified if possible
+    // 'namedFilterFragment' is for places where 'AddPlaceName' should trigger first, so that object is identified if possible
     // Otherwise, in situation of two shops of the similar type with names A and B following may happen
     // (1) mapper answers for one object with opening hours for shop A
     // (2) this or different mapper may answer that it is named B
     // what would result in incorrect opening hours
     // this filter reduces risk of this happening and also makes this quest less confusing to answer
-    private val namedFilter by lazy { ("""
+    private val namedFilterFragment = """
     (
         (
             shop and shop !~ no|vacant
@@ -124,11 +124,11 @@ mapOf(
         or noname = yes
         or name:signed = no
     ))
-    """)}
+    """
 
-    // These places are large or rare enough that a user should be able to identify them without a name.
+    // 'unnamedFilterFragment' finds places are large or rare enough that a user should be able to identify them without a name.
 
-    private val unnamedFilter by lazy { """
+    private val unnamedFilterFragment = """
     (
         (!opening_hours or opening_hours older today -1 years)
         and (
@@ -143,12 +143,12 @@ mapOf(
             or leisure = park and fee = yes
         )
     )
-    """}
+    """
 
-    // 'updateFilter' is for places that often do not have (signed) 'opening_hours'. Thus, we only
+    // 'updateFilterFragment' is for places that often do not have (signed) 'opening_hours'. Thus, we only
     // ask for users to resurvey, and ignore places without tagged 'opening_hours'.
 
-    private val updateFilter by lazy { """
+    private val updateFilterFragment = """
     (
         opening_hours older today -1 years
         and (
@@ -162,13 +162,13 @@ mapOf(
             or club
         )
     )
-    """}
+    """
     private val filter by lazy { """
         nodes, ways with
         (
-            $namedFilter
-            or $unnamedFilter
-            or $updateFilter
+            $namedFilterFragment
+            or $unnamedFilterFragment
+            or $updateFilterFragment
         )
         and access !~ private|no
         and street_vendor != yes
