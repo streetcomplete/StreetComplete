@@ -1858,6 +1858,13 @@
       "polling_station": "yes"
     }
   },
+  "amenity/post_box": {
+    "icon": "temaki-post_box",
+    "geometry": ["point", "vertex"],
+    "tags": {
+      "amenity": "post_box"
+    }
+  },
   "amenity/post_depot": {
     "icon": "fas-mail-bulk",
     "geometry": ["point", "area"],
@@ -1892,6 +1899,14 @@
     "geometry": ["point", "area"],
     "tags": {
       "amenity": "pub"
+    }
+  },
+  "amenity/pub/irish": {
+    "icon": "maki-beer",
+    "geometry": ["point", "area"],
+    "tags": {
+      "amenity": "pub",
+      "theme": "irish"
     }
   },
   "amenity/pub/lgbtq": {
@@ -5227,6 +5242,26 @@
       "highway": "cycleway"
     }
   },
+  "highway/cycleway/bicycle_foot": {
+    "icon": "temaki-pedestrian_and_cyclist",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "cycleway",
+      "foot": "designated"
+    },
+    "addTags": {
+      "highway": "cycleway",
+      "foot": "designated",
+      "bicycle": "designated"
+    },
+    "removeTags": {
+      "highway": "cycleway",
+      "foot": "designated",
+      "bicycle": "designated",
+      "segregated": "*"
+    },
+    "matchScore": 0.9
+  },
   "highway/cycleway/crossing": {
     "icon": "temaki-cyclist_crosswalk",
     "geometry": ["line"],
@@ -5239,6 +5274,22 @@
     },
     "searchable": false,
     "matchScore": 0.95
+  },
+  "highway/cycleway/crossing/bicycle_foot": {
+    "icon": "temaki-ped_cyclist_crosswalk",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "cycleway",
+      "cycleway": "crossing",
+      "foot": "designated"
+    },
+    "addTags": {
+      "highway": "cycleway",
+      "cycleway": "crossing",
+      "foot": "designated",
+      "bicycle": "designated"
+    },
+    "matchScore": 0.9
   },
   "highway/cycleway/crossing/marked": {
     "icon": "temaki-cyclist_crosswalk",
@@ -5299,6 +5350,16 @@
     "tags": {
       "highway": "cycleway",
       "cycleway": "traffic_island"
+    }
+  },
+  "highway/cycleway/traffic_island_shared": {
+    "icon": "temaki-pedestrian_and_cyclist",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "cycleway",
+      "cycleway": "traffic_island",
+      "foot": "designated",
+      "bicycle": "designated"
     }
   },
   "highway/cyclist_waiting_aid": {
@@ -5520,6 +5581,13 @@
       "highway": "motorway_junction"
     }
   },
+  "highway/motorway_link": {
+    "icon": "iD-highway-motorway-link",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "motorway_link"
+    }
+  },
   "highway/passing_place": {
     "icon": "maki-circle-stroked",
     "geometry": ["vertex"],
@@ -5645,6 +5713,13 @@
       "highway": "primary"
     },
     "matchScore": 1.01
+  },
+  "highway/primary_link": {
+    "icon": "iD-highway-primary-link",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "primary_link"
+    }
   },
   "highway/raceway": {
     "icon": "temaki-speedway_oval",
@@ -5849,6 +5924,13 @@
       "highway": "tertiary_link"
     }
   },
+  "highway/toll_gantry": {
+    "icon": "temaki-toll_gantry",
+    "geometry": ["vertex"],
+    "tags": {
+      "highway": "toll_gantry"
+    }
+  },
   "highway/track": {
     "icon": "fas-truck-monster",
     "geometry": ["line"],
@@ -5892,6 +5974,13 @@
       "highway": "trunk"
     },
     "matchScore": 1.01
+  },
+  "highway/trunk_link": {
+    "icon": "iD-highway-trunk-link",
+    "geometry": ["line"],
+    "tags": {
+      "highway": "trunk_link"
+    }
   },
   "highway/turning_circle": {
     "icon": "maki-circle",
@@ -12915,6 +13004,13 @@
     "geometry": ["point", "vertex"],
     "tags": {
       "traffic_sign": "city_limit"
+    }
+  },
+  "traffic_sign/maxspeed": {
+    "icon": "fas-directions",
+    "geometry": ["point", "vertex"],
+    "tags": {
+      "traffic_sign": "maxspeed"
     }
   },
   "traffic_sign/variable_message": {

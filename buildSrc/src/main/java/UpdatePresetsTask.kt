@@ -60,11 +60,14 @@ open class UpdatePresetsTask : DefaultTask() {
         val json = Parser.default().parse(URL(presetsUrl).openStream()) as JsonObject
         // remove unused presets
         json.entries.removeAll { (key, value) ->
+            val include = (value as JsonObject).obj("locationSet")?.array<String>("include")
+            val includesOnlyPlanet = include != null && include.size == 1 && (include.single() == "Planet" || include.single() == "001")
+
             // we don't need them templates
             key.startsWith("@templates")
             // remove presets specific to certain countries (these are very likely just tweaks
             // which fields are displayed etc), see https://github.com/ideditor/schema-builder/issues/94#issuecomment-2416796047
-            || (value as JsonObject).obj("locationSet")?.array<String>("include") != null
+            || include != null && !includesOnlyPlanet
             // remove "disused" presets. We deal with disused stuff ourselves, in a more detailed manner, i.e.
             // say what kind of thing it is that is disused
             || key.startsWith("disused/")
