@@ -20,17 +20,18 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
         (
           amenity = ice_cream
           or shop = pastry
-          or diet:vegetarian ~ yes|only and
-          (
-            amenity ~ restaurant|cafe|fast_food|food_court and food != no
-            or amenity ~ pub|nightclub|biergarten|bar and food = yes
-            or tourism ~ alpine_hut and food != no
+          or diet:vegetarian ~ yes|only
+          and (
+            amenity ~ restaurant|cafe|fast_food|food_court
+            or amenity ~ pub|nightclub|biergarten|bar
+            or tourism ~ alpine_hut
           )
         )
         and (
           !diet:vegan
           or diet:vegan != only and diet:vegan older today -4 years
         )
+        and food != no
     """
     override val changesetComment = "Survey whether places have vegan food"
     override val wikiLink = "Key:diet"
@@ -48,7 +49,15 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>(), AndroidQuest {
 
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is DietAvailability -> tags.updateWithCheckDate("diet:vegan", answer.osmValue)
+            is DietAvailability -> {
+                if(answer.osmValue == "only" && tags["diet:vegetarian"] == "yes")
+                {
+                    // vegetarian = yes and vegan = only is an invalid combination, since every vegan meal is also vegetarian
+                    // Thus we assume that the diet:vegan is more up-to-date, and update the vegetarian tag.
+                    tags.updateWithCheckDate("diet:vegetarian", "only")
+                }
+                tags.updateWithCheckDate("diet:vegan", answer.osmValue)
+            }
             NoFood -> tags["food"] = "no"
         }
     }
