@@ -526,7 +526,7 @@ project.afterEvaluate {
     }
 }
 
-tasks.register<JavaExec>("printQuestFiltersAsOverlassQL") {
+tasks.register<JavaExec>("printQuestFiltersAsOverpassQL") {
     group = "utils"
 
     val testTask = tasks.named<Test>("testDebugUnitTest")
