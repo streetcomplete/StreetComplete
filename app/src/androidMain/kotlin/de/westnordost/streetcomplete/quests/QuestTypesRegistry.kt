@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnPath
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierOnRoad
 import de.westnordost.streetcomplete.quests.barrier_type.AddBarrierType
 import de.westnordost.streetcomplete.quests.barrier_type.AddStileType
+import de.westnordost.streetcomplete.quests.beer.AddBeer
 import de.westnordost.streetcomplete.quests.bbq_fuel.AddBbqFuel
 import de.westnordost.streetcomplete.quests.bench_backrest.AddBenchBackrest
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.AddBicycleRepairStationServices
@@ -466,6 +467,7 @@ fun questTypeRegistry(
     110 to AddAirConditioning(), // often visible from the outside across the street, if not, visible/feelable inside
 
     111 to AddSmoking(), // often marked on the entrance, if not, visible/smellable inside
+    198 to AddBeer(),
 
     /* ↓ 4.quests that may need to go inside ------------------------------------------------ */
 

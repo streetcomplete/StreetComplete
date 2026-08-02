@@ -1587,6 +1587,13 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_smoking_separated">Only in separated areas</string>
     <string name="quest_smoking_yes">Yes, everywhere</string>
 
+    <string name="quest_drink_beer_title">Do they serve beer here?</string>
+    <string name="quest_drink_beer_title_pub">What kind of beer is served here?</string>
+    <string name="quest_drink_beer_yes">Yes, unspecified</string>
+    <string name="quest_drink_beer_draught">Yes, draught beer</string>
+    <string name="quest_drink_beer_bottled">Yes, bottled beer only</string>
+    <string name="quest_drink_beer_no">No</string>
+
     <string name="quest_smoothness_square_title">What’s the surface quality of this square?</string>
     <string name="quest_smoothness_road_title">What’s the surface quality of this road here?</string>
     <string name="quest_smoothness_title">What’s the surface quality here?</string>
