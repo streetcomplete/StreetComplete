@@ -61,6 +61,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     // Note: offline regions may exceed this limit, but will count against it
     // This means that when offline regions exceed size, no tiles will be cached when panning
+    // This means that when offline regions exceed size, no tiles will be cached when panning
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 

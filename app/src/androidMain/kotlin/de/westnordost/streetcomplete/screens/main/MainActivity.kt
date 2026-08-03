@@ -20,6 +20,7 @@ import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -205,6 +206,10 @@ class MainActivity :
         binding.controls.content {
             val isMapAppLaunchAvailable = remember { mapAppLauncher.isAvailable() }
             val shownBottomSheet by mainBottomSheetViewModel.shownBottomSheet.collectAsState()
+            val mapCamera by viewModel.mapCamera.collectAsState()
+            val mapMetersPerPixel = remember(mapCamera) { derivedStateOf {
+                mapFragment?.getMetersPerPixel()
+            } }
 
             windowInfo = LocalWindowInfo.current
 
@@ -228,12 +233,21 @@ class MainActivity :
                 )
             }
 
-            // TODO: appear animation!
-            shownBottomSheet?.let {
+            val mapCamera2 = mapCamera
+            val shownBottomSheet2 = shownBottomSheet
+            if (mapCamera2 != null && shownBottomSheet2 != null) {
                 MainBottomSheet(
-                    onDismiss = { TODO() },
+                    onDismiss = { mainBottomSheetViewModel.closeBottomSheet() },
                     viewModel = mainBottomSheetViewModel,
-                    shownBottomSheet = it
+                    shownBottomSheet = shownBottomSheet2,
+                    geometryOffsetInWindow = Offset(0f, 0f), // TODO
+                    mapRotation = mapCamera2.rotation.toFloat(),
+                    mapTilt = mapCamera2.tilt.toFloat(),
+                    mapPosition = mapCamera2.position,
+                    mapMetersPerPixel = mapMetersPerPixel.value ?: 1.0,
+                    onSetMapMarkers = { markers ->
+                        TODO()
+                    }
                 )
             }
 
@@ -293,6 +307,38 @@ class MainActivity :
                 viewModel.isFollowingPosition.value = mapFragment?.isFollowingPosition ?: false
                 viewModel.isNavigationMode.value = mapFragment?.isNavigationMode ?: false
             }
+        }
+        observe(mainBottomSheetViewModel.shownBottomSheet) { shownBottomSheet ->
+            if (shownBottomSheet != null) {
+                freezeMap()
+                when (shownBottomSheet) {
+                    is ShownBottomSheet.CreateOsmNote -> {
+                        /* nothing more */
+                    }
+                    is ShownBottomSheet.OsmNoteQuest -> {
+                        showQuestDetailsOnMap(shownBottomSheet.quest, null)
+                    }
+                    is ShownBottomSheet.OsmQuest -> {
+                        showQuestDetailsOnMap(shownBottomSheet.quest, shownBottomSheet.element)
+                    }
+                    is ShownBottomSheet.Overlay -> {
+                        if (shownBottomSheet.element != null) {
+                            showOverlayElementDetailsOnMap(
+                                overlay = shownBottomSheet.overlay,
+                                element = shownBottomSheet.element,
+                                geometry = shownBottomSheet.geometry!!
+                            )
+                        } else {
+                            showOverlayForNewElementOnMap(shownBottomSheet.overlay)
+                        }
+                    }
+                }
+            } else {
+                clearHighlighting()
+                unfreezeMap()
+                mapFragment?.endFocus()
+            }
+
         }
     }
 
@@ -436,13 +482,13 @@ class MainActivity :
     override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
         val questKey =
             when (val shown = shownBottomSheet.value) {
-                is ShownBottomSheet.OsmNoteQuest -> OsmNoteQuestKey(shown.note.id)
-                is ShownBottomSheet.OsmQuest -> OsmQuestKey(shown.element.type, shown.element.id, shown.questType.name)
+                is ShownBottomSheet.OsmNoteQuest -> shown.quest.key
+                is ShownBottomSheet.OsmQuest -> shown.quest.key
                 else -> return
         }
         // open quest has been deleted
         if (questKey in removed) {
-            lifecycleScope.launch { closeBottomSheet() }
+            mainBottomSheetViewModel.closeBottomSheet()
         }
     }
 
@@ -450,8 +496,8 @@ class MainActivity :
     override fun onInvalidated() {
         val questKey =
             when (val shown = shownBottomSheet.value) {
-                is ShownBottomSheet.OsmNoteQuest -> OsmNoteQuestKey(shown.note.id)
-                is ShownBottomSheet.OsmQuest -> OsmQuestKey(shown.element.type, shown.element.id, shown.questType.name)
+                is ShownBottomSheet.OsmNoteQuest -> shown.quest.key
+                is ShownBottomSheet.OsmQuest -> shown.quest.key
                 else -> return
             }
 
@@ -459,7 +505,7 @@ class MainActivity :
             val openQuest = withContext(Dispatchers.IO) { visibleQuestsSource.get(questKey) }
             // open quest does not exist anymore after visible quest invalidation
             if (openQuest == null) {
-                closeBottomSheet()
+                mainBottomSheetViewModel.closeBottomSheet()
             }
         }
     }
@@ -470,7 +516,7 @@ class MainActivity :
     override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
         val elementKey = (shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
         if (elementKey in deleted) {
-            lifecycleScope.launch { closeBottomSheet() }
+            mainBottomSheetViewModel.closeBottomSheet()
         }
     }
 
@@ -481,7 +527,7 @@ class MainActivity :
             val openElement = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) }
             // open element does not exist anymore after download
             if (openElement == null) {
-                closeBottomSheet()
+                mainBottomSheetViewModel.closeBottomSheet()
             }
         }
     }
@@ -489,7 +535,7 @@ class MainActivity :
     @AnyThread
     override fun onCleared() {
         val elementKey = (shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
-        lifecycleScope.launch { closeBottomSheet() }
+        mainBottomSheetViewModel.closeBottomSheet()
     }
 
     //endregion
@@ -688,22 +734,9 @@ class MainActivity :
 
     //region Bottom Sheet - Controlling the bottom sheet and its interaction with the map
 
-    /** Close bottom sheet, clear associated highlighting on the map and return to the previous
-     *  view (e.g. if it was zoomed in before to focus on an element) */
-    @UiThread
-    private fun closeBottomSheet() {
-        shownBottomSheet.value = null
-        clearHighlighting()
-        unfreezeMap()
-        mapFragment?.endFocus()
-    }
-
-    /** Open or replace the bottom sheet. If the bottom sheet is replaces, no appear animation is
-     *  played and the highlighting of the previous bottom sheet is cleared. */
-    private fun showInBottomSheet(content: ShownBottomSheet, clearPreviousHighlighting: Boolean = true) {
+    /** Open or replace the bottom sheet. */
+    private fun showBottomSheet(content: ShownBottomSheet) {
         freezeMap()
-        if (clearPreviousHighlighting) clearHighlighting()
-        shownBottomSheet.value = content
     }
 
     /** Make the map not follow the user's location anymore temporarily */
@@ -736,7 +769,7 @@ class MainActivity :
         val mapFragment = mapFragment ?: return
 
         mapFragment.updateCameraPosition {
-            position = getCrosshairPoint()?.let { mapFragment.getPositionAt(it) }
+            position = getCrosshairOffset()?.toPointF()?.let { mapFragment.getPositionAt(it) }
             padding = getOpenQuestFormMapPadding()
         }
         mapFragment.hideNonHighlightedPins()
@@ -752,10 +785,10 @@ class MainActivity :
     }
 
     @UiThread
-    private fun showQuestDetailsOnMap(quest: Quest, element: Element) {
+    private fun showQuestDetailsOnMap(quest: Quest, element: Element?) {
         val mapFragment = mapFragment ?: return
 
-        if (quest is OsmQuest) {
+        if (quest is OsmQuest && element != null) {
             showHighlightedElements(quest, element)
         }
         mapFragment.startFocus(quest.geometry, getOpenQuestFormMapPadding())
@@ -794,15 +827,17 @@ class MainActivity :
         }
     }
 
-    private fun getCrosshairPoint(): PointF? {
+    private fun getCrosshairOffset(): Offset? {
         val windowInfo = windowInfo ?: return null
         val padding = getOpenQuestFormMapPadding() ?: return null
         val size = windowInfo.containerSize
-        return PointF(
+        return Offset(
             (padding.left + (size.width - padding.left - padding.right) / 2).toFloat(),
             (padding.top + (size.height - padding.top - padding.bottom) / 2).toFloat()
         )
     }
+
+    private fun Offset.toPointF() = PointF(x, y)
 
     private fun getOpenQuestFormMapPadding(): Padding? {
         val windowInfo = windowInfo ?: return null

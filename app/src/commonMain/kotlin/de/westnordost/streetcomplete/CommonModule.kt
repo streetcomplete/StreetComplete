@@ -168,7 +168,7 @@ import de.westnordost.streetcomplete.screens.about.logs.LogsViewModelImpl
 import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.MainViewModelImpl
 import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
-import de.westnordost.streetcomplete.screens.main.MapViewModelImpl
+import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModelImpl
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModel
@@ -600,7 +600,7 @@ val commonModule = module {
     }
 
     viewModel<MainBottomSheetViewModel> {
-        MapViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
+        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
     }
 
     viewModel<PhotosViewModel> { PhotosViewModelImpl(get(), get()) }

@@ -91,13 +91,13 @@ fun MainBottomSheet(
                 onEdit = { action ->
                     if (SuppressSurveyConfirmation || viewModel.isSurvey(shownBottomSheet.geometry)) {
                         viewModel.submitEdit(
-                            elementEditType = shownBottomSheet.questType,
+                            elementEditType = shownBottomSheet.quest.type,
                             geometry = shownBottomSheet.geometry,
                             elementEditAction = action
                         )
                         onDismiss()
                     } else {
-                        confirmEdit = PendingEdit(shownBottomSheet.questType, shownBottomSheet.geometry, action)
+                        confirmEdit = PendingEdit(shownBottomSheet.quest.type, shownBottomSheet.geometry, action)
                     }
                 },
                 onLeaveNote = { noteText, noteImagePaths ->
@@ -111,11 +111,11 @@ fun MainBottomSheet(
                 onHideQuest = {
                     val key = OsmQuestKey(
                         shownBottomSheet.element.type,
-                        shownBottomSheet.element.id, shownBottomSheet.questType.name)
+                        shownBottomSheet.element.id, shownBottomSheet.quest.type.name)
                     viewModel.hideQuest(key)
                     onDismiss()
                 },
-                questType = shownBottomSheet.questType,
+                questType = shownBottomSheet.quest.type,
                 element = shownBottomSheet.element,
                 geometry = shownBottomSheet.geometry,
                 geometryOffsetInWindow = geometryOffsetInWindow,
