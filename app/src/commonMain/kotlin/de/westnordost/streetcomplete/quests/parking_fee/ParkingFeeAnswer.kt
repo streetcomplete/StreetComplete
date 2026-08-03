@@ -10,16 +10,19 @@ import kotlinx.serialization.Serializable
 @Serializable
 sealed interface ParkingFeeAnswer {
     fun isComplete(): Boolean
+    fun isTooLong(): Boolean
 
     @Serializable
     data class NoFeeButMaxStay(val maxstay: MaxStay) : ParkingFeeAnswer {
         override fun isComplete(): Boolean = maxstay.isComplete()
+        override fun isTooLong(): Boolean = maxstay.isTooLong()
     }
 }
 
 @Serializable
 data class ParkingFee(val fee: Fee) : ParkingFeeAnswer {
     override fun isComplete(): Boolean = fee.isComplete()
+    override fun isTooLong(): Boolean = fee.isTooLong()
 }
 
 fun ParkingFeeAnswer.applyTo(tags: Tags) {

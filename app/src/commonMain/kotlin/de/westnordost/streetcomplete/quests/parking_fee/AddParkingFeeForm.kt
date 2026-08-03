@@ -57,7 +57,7 @@ fun AddParkingFeeForm(
     } else {
         QuestForm(
             on = on,
-            isComplete = answer?.isComplete() == true,
+            isComplete = answer?.isComplete() == true && answer?.isTooLong() != true,
             onClickOk = { answer?.let { on(Answer(it)) } },
         ) {
             when (val answer2 = answer) {

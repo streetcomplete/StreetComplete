@@ -1,16 +1,24 @@
 package de.westnordost.streetcomplete.osm.fee
 
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.time_restriction.TimeRestriction
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import kotlinx.serialization.Serializable
+import kotlin.collections.emptyMap
 
 @Serializable
 sealed interface Fee {
     fun isComplete(): Boolean = when (this) {
         No -> true
         is Yes ->  timeRestriction?.isComplete() != false
+    }
+
+    fun isTooLong(): Boolean {
+        val changes = StringMapChangesBuilder(emptyMap())
+        applyTo(changes)
+        return changes.create().changes.any { !it.isValid() }
     }
 
     @Serializable

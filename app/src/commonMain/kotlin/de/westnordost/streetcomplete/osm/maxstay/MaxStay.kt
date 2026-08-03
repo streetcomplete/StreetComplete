@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.maxstay
 
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.duration.Duration
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
@@ -16,6 +17,12 @@ data class MaxStay(
 ) {
     fun isComplete(): Boolean =
         duration != null && timeRestriction?.isComplete() != false
+
+    fun isTooLong(): Boolean {
+        val changes = StringMapChangesBuilder(emptyMap())
+        applyTo(changes)
+        return changes.create().changes.any { !it.isValid() }
+    }
 }
 
 fun MaxStay.applyTo(tags: Tags) {
