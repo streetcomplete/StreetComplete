@@ -130,11 +130,12 @@ fun OverlayForm(
                 onClick = onClickOk
             )
         },
+        modifier = modifier,
     )
 
     if (confirmDiscard) {
         ConfirmDiscardDialog(
-            onDismissRequest = { confirmDiscard = true },
+            onDismissRequest = { confirmDiscard = false },
             onConfirmed = { on(Action.Dismiss) },
         )
     }

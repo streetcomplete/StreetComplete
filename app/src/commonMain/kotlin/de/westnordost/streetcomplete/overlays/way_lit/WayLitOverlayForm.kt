@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -42,7 +43,13 @@ fun WayLitOverlayForm(
         items = LitStatus.entries,
         selectableItems = remember { listOf(YES, NO, AUTOMATIC, NIGHT_AND_DAY) },
         initialSelectedItem = originalLit,
-        itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+        itemContent = {
+            ImageWithLabel(
+                painter = painterResource(it.icon),
+                label = stringResource(it.title),
+                imageSize = DpSize(96.dp, 96.dp)
+            )
+        },
         lastPickedItemContent = {
             Image(painterResource(it.icon), stringResource(it.title), Modifier.height(24.dp))
         },

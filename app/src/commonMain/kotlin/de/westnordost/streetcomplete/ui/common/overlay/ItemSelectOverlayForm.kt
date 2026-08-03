@@ -92,7 +92,6 @@ inline fun <reified I> ItemSelectOverlayForm(
                 LastPickedChipsRow(
                     items = lastPicked,
                     onClick = { selectedItem = it },
-                    modifier = Modifier.padding(start = 48.dp, end = 56.dp),
                     itemContent = lastPickedItemContent
                 )
             } else {
@@ -104,7 +103,7 @@ inline fun <reified I> ItemSelectOverlayForm(
         SimpleItemSelectDialog(
             onDismissRequest = { expanded = false },
             columns = SimpleGridCells.Fixed(itemsPerRow),
-            items = items,
+            items = selectableItems,
             onSelected = { selectedItem = it },
             itemContent = itemContent
         )

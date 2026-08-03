@@ -43,7 +43,6 @@ fun CyclewayForm(
     roadDirection: Direction,
     modifier: Modifier = Modifier,
     lastPicked: List<Sides<CyclewayAndDirection>> = emptyList(),
-    lastPickedContentPadding: PaddingValues = PaddingValues.Zero,
     enabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
@@ -82,7 +81,6 @@ fun CyclewayForm(
                     ?.let { painterResource(it) }
             },
             lastPicked = lastPicked,
-            lastPickedContentPadding = lastPickedContentPadding,
             enabled = enabled,
             isLeftSideVisible = isLeftSideVisible,
             isRightSideVisible = isRightSideVisible,

@@ -8,6 +8,7 @@ import androidx.compose.material.CheckboxDefaults
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -39,7 +40,7 @@ fun SurveyConfirmationDialog(
             ) {
                 Text(stringResource(Res.string.quest_source_dialog_note))
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Checkbox(
+                    Switch(
                         checked = dontShowAgain,
                         onCheckedChange = {
                             dontShowAgain = it

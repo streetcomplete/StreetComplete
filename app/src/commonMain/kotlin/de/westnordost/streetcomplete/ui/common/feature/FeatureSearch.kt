@@ -141,7 +141,7 @@ private fun FeaturesColumn(
                     featureDictionary = featureDictionary,
                     countryCode = countryCode,
                     searchText = searchText,
-                    iconSize = 22.5.dp
+                    iconSize = 22.5.dp // preset icons are 15x15 px, so this is 1.5x
                 )
             }
         }

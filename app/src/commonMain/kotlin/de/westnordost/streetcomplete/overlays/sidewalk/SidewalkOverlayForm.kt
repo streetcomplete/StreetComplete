@@ -69,7 +69,6 @@ fun SidewalkOverlayForm(
             mapTilt = LocalMapTilt.current,
             isLeftHandTraffic = countryInfo.isLeftHandTraffic,
             lastPicked = lastPicked,
-            lastPickedContentPadding = PaddingValues(start = 48.dp, end = 56.dp),
         )
     }
 }

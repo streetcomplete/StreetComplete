@@ -27,7 +27,6 @@ fun SidewalkForm(
     isLeftHandTraffic: Boolean,
     modifier: Modifier = Modifier,
     lastPicked: List<Sides<Sidewalk>> = emptyList(),
-    lastPickedContentPadding: PaddingValues = PaddingValues.Zero,
 ) {
     var showPickerForSide by remember { mutableStateOf<Side?>(null) }
 
@@ -47,7 +46,6 @@ fun SidewalkForm(
             sidewalk?.floatingIcon?.let { painterResource(it) }
         },
         lastPicked = lastPicked,
-        lastPickedContentPadding = lastPickedContentPadding,
     )
 
     showPickerForSide?.let { side ->

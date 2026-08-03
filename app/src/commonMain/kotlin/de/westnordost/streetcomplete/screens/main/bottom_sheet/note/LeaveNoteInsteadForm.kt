@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet.note
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,6 +22,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -103,7 +107,10 @@ import org.koin.compose.viewmodel.koinViewModel
         },
         content = {
             ProvideTextStyle(MaterialTheme.typography.body1) {
-                Column {
+                Column(
+                    modifier = Modifier.padding(horizontal = 24.dp, vertical = 12.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
                     val resource = when (editType) {
                         is Overlay -> Res.string.leave_note_overlay_context_hint
                         is OsmElementQuestType<*> -> Res.string.leave_note_quest_context_hint
@@ -111,9 +118,10 @@ import org.koin.compose.viewmodel.koinViewModel
                     }
 
                     if (resource != null) {
+                        val title = stringResource(editType.title)
                         Text(
-                            text = stringResource(resource, editType.title),
-                            style = MaterialTheme.typography.caption,
+                            text = stringResource(resource, AnnotatedString(title, SpanStyle(fontStyle = FontStyle.Italic))),
+                            style = MaterialTheme.typography.body2,
                             color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                         )
                     }
@@ -125,10 +133,7 @@ import org.koin.compose.viewmodel.koinViewModel
                         onDeleteImage = { viewModel.deleteImagePath(it) },
                         onTakePhoto = { takePhotoLauncher.launch() },
                         images = noteImagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))
-                            .align(Alignment.CenterHorizontally)
+                        modifier = Modifier.fillMaxWidth()
                     )
                 }
             }
@@ -149,7 +154,7 @@ import org.koin.compose.viewmodel.koinViewModel
 
     if (confirmDiscard) {
         ConfirmDiscardDialog(
-            onDismissRequest = { confirmDiscard = true },
+            onDismissRequest = { confirmDiscard = false },
             onConfirmed = { onDiscard() },
         )
     }

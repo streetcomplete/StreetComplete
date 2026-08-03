@@ -43,7 +43,7 @@ fun FeatureItem(
     countryCode: String?,
     modifier: Modifier = Modifier,
     searchText: String? = null,
-    iconSize: Dp = 30.dp
+    iconSize: Dp = 45.dp // preset icons are 15x15, so this is 3x
 ) {
     val color = LocalContentColor.current
     val languages = remember { getLanguagesForFeatureDictionary() }

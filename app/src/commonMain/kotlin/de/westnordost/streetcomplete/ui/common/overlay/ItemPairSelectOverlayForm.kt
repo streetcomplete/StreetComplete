@@ -116,7 +116,6 @@ inline fun <reified I> ItemPairSelectOverlayForm(
                 LastPickedChipsRow(
                     items = lastPicked,
                     onClick = { selectedItemPair = it },
-                    modifier = Modifier.padding(start = 48.dp, end = 56.dp),
                     itemContent = lastPickedItemPairContent
                 )
             } else {

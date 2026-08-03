@@ -130,7 +130,7 @@ fun MoveNodeForm(
 
     if (confirmDiscard) {
         ConfirmDiscardDialog(
-            onDismissRequest = { confirmDiscard = true },
+            onDismissRequest = { confirmDiscard = false },
             onConfirmed = { onDismiss() },
         )
     }

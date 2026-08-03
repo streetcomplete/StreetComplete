@@ -200,7 +200,6 @@ fun StreetCyclewayOverlayForm(
                 countryInfo = countryInfo,
                 roadDirection = Direction.from(element.tags),
                 lastPicked = lastPicked,
-                lastPickedContentPadding = PaddingValues(start = 48.dp, end = 56.dp),
             )
             Box(Modifier.scale(0.5f).alpha(0.75f)) {
                 if (bicycleInPedestrianStreet == BicycleInPedestrianStreet.ALLOWED) {

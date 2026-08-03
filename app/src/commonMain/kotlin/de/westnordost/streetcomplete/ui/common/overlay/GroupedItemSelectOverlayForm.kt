@@ -108,7 +108,6 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
                 LastPickedChipsRow(
                     items = lastPicked,
                     onClick = { selectedItem = it },
-                    modifier = Modifier.padding(start = 48.dp, end = 56.dp),
                     itemContent = lastPickedItemContent
                 )
             } else {

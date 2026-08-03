@@ -208,11 +208,12 @@ private fun QuestForm(
         fab = if (onClickOk != null) {
             { FloatingOkButton(visible = isComplete, onClick = onClickOk) }
         } else null,
+        modifier = modifier,
     )
 
     if (confirmDiscard) {
         ConfirmDiscardDialog(
-            onDismissRequest = { confirmDiscard = true },
+            onDismissRequest = { confirmDiscard = false },
             onConfirmed = { on(Action.Dismiss) },
         )
     }
