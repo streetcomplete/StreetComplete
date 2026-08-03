@@ -285,6 +285,7 @@ class MainActivity :
             } else if (editHistoryViewModel.isShowingSidebar.value) {
                 mapFragment?.clearFocus()
                 mapFragment?.clearHighlighting()
+                mapFragment?.hideOverlay() // because clearHighlighting shows overlay again :-/
             }
         }
         observe(editHistoryViewModel.isShowingSidebar) { isShowingSidebar ->
@@ -337,7 +338,11 @@ class MainActivity :
                 unfreezeMap()
                 mapFragment?.endFocus()
             }
-
+        }
+        observe(viewModel.selectedOverlay) { selectedOverlay ->
+            if (mainBottomSheetViewModel.shownBottomSheet.value is ShownBottomSheet.Overlay) {
+                mainBottomSheetViewModel.closeBottomSheet()
+            }
         }
     }
 
