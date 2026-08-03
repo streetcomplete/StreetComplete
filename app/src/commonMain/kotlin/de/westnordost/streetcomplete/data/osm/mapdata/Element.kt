@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -13,8 +14,8 @@ sealed class Element {
 
     init {
         for ((key, value) in tags) {
-            require(key.length <= 255)
-            require(value.length <= 255)
+            require(key.length <= MAX_OSM_TAG_VALUE_LENGTH)
+            require(value.length <= MAX_OSM_TAG_VALUE_LENGTH)
         }
     }
 }

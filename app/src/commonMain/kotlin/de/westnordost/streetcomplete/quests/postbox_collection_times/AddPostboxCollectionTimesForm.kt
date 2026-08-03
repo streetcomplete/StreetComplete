@@ -85,7 +85,7 @@ fun AddPostboxCollectionTimesForm(
         } else {
             QuestForm(
                 on = on,
-                isComplete = openingHours.isComplete(),
+                isComplete = openingHours.isComplete() && !openingHours.isTooLong(),
                 onClickOk = { on(Answer(CollectionTimes(openingHours))) },
                 hasChanges = openingHours.monthsList.isNotEmpty(),
                 otherAnswers = {
