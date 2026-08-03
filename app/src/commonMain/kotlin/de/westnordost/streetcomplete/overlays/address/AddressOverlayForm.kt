@@ -112,10 +112,12 @@ fun AddressOverlayForm(
     var addEntrance by rememberSaveable { mutableStateOf(false) }
 
     LaunchedEffect(positionOnWay, addEntrance) {
-        onPinPosition(
-            if (addEntrance) Res.drawable.quest_door else Res.drawable.quest_housenumber,
-            positionOnWay?.position
-        )
+        if (positionOnWay != null) {
+            onPinPosition(
+                if (addEntrance) Res.drawable.quest_door else Res.drawable.quest_housenumber,
+                positionOnWay.position
+            )
+        }
     }
 
     var confirmRemoveAddress by remember { mutableStateOf(false) }
@@ -145,26 +147,31 @@ fun AddressOverlayForm(
     fun createOtherAnswers(): List<AnswerItem> {
         val result = ArrayList<AnswerItem>()
 
-        result.add(AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) {
-            address = address.copy(
-                name = "",
-                number = address.number?.takeIf { !it.isEmpty() }
-            )
-        })
+        if (address.name == null) {
+            result.add(AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) {
+                address = address.copy(
+                    name = "",
+                    number = address.number?.takeIf { !it.isEmpty() }
+                )
+            })
+        }
 
-        result.add(AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
-            address = address.copy(streetOrPlace = PlaceName(""))
-            showStreetOrPlaceSelect = true
-        })
+        if (address.streetOrPlace is StreetName) {
+            result.add(AnswerItem(stringResource(Res.string.quest_address_street_no_named_streets)) {
+                address = address.copy(streetOrPlace = PlaceName(""))
+                showStreetOrPlaceSelect = true
+            })
+        }
 
         if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
+            val houseNumber = address.number?.streetHouseNumber ?: ""
             if (address.number is BlockAndHouseNumber) {
                 result.add(AnswerItem(stringResource(Res.string.quest_address_answer_no_block2)) {
-                    address = address.copy(number = HouseNumber(""))
+                    address = address.copy(number = HouseNumber(houseNumber))
                 })
             } else {
                 result.add(AnswerItem(stringResource(Res.string.quest_address_answer_block2)) {
-                    address = address.copy(number = BlockAndHouseNumber("", ""))
+                    address = address.copy(number = BlockAndHouseNumber("", houseNumber))
                 })
             }
         }

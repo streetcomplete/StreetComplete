@@ -57,6 +57,6 @@ class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
         countryInfo: CountryInfo,
         onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
-        element?.let { ThingsOverlayForm(on, element, geometry, countryInfo) }
+        ThingsOverlayForm(on, element, geometry, countryInfo)
     }
 }

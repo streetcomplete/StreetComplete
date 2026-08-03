@@ -101,11 +101,10 @@ fun PlaceForm(
             LastPickedChipsRow(
                 items = lastPickedFeatures,
                 onClick = onSelectedFeature,
-                modifier = Modifier.padding(start = 48.dp, end = 56.dp),
                 itemContent = {
                     FeatureIcon(
                         feature = it,
-                        modifier = Modifier.size(22.5.dp)
+                        modifier = Modifier.size(30.dp)
                     )
                 }
             )
