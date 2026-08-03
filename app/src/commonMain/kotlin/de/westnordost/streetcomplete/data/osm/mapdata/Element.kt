@@ -12,7 +12,7 @@ sealed class Element {
     abstract val timestampEdited: Long
     abstract val type: ElementType
 
-    init {
+    protected fun checkValidity() {
         for ((key, value) in tags) {
             require(key.length <= MAX_OSM_TAG_VALUE_LENGTH)
             require(value.length <= MAX_OSM_TAG_VALUE_LENGTH)
@@ -31,6 +31,10 @@ data class Node(
 ) : Element() {
     @SerialName("elementType")
     override val type get() = ElementType.NODE
+
+    init {
+        checkValidity()
+    }
 }
 
 @Serializable
@@ -44,6 +48,10 @@ data class Way(
 ) : Element() {
     @SerialName("elementType")
     override val type = ElementType.WAY
+
+    init {
+        checkValidity()
+    }
 
     val isClosed get() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
 }
@@ -59,6 +67,10 @@ data class Relation(
 ) : Element() {
     @SerialName("elementType")
     override val type = ElementType.RELATION
+
+    init {
+        checkValidity()
+    }
 }
 
 @Serializable

@@ -155,7 +155,6 @@ class MainActivity :
     private val lastMapLongPress = mutableStateOf<Pair<Offset, LatLon>?>(null)
     private val lastQuestSolved = mutableStateOf<QuestSolvedEvent?>(null)
 
-    private val shownBottomSheet = mainBottomSheetViewModel.shownBottomSheet
     private val lastMapClick = mutableStateOf<MapClick?>(null)
 
     private var windowInfo: WindowInfo? = null
@@ -246,7 +245,7 @@ class MainActivity :
                     mapPosition = mapCamera2.position,
                     mapMetersPerPixel = mapMetersPerPixel.value ?: 1.0,
                     onSetMapMarkers = { markers ->
-                        TODO()
+                        mapFragment?.putMarkersForCurrentHighlighting(markers)
                     }
                 )
             }
@@ -429,7 +428,7 @@ class MainActivity :
     }
 
     override fun onLongPress(point: PointF, position: LatLon) {
-        if (shownBottomSheet.value != null || editHistoryViewModel.isShowingSidebar.value) return
+        if (mainBottomSheetViewModel.shownBottomSheet.value != null || editHistoryViewModel.isShowingSidebar.value) return
 
         lastMapLongPress.value = Pair(Offset(point.x, point.y), position)
         showMapContextMenu.value = true
@@ -446,7 +445,7 @@ class MainActivity :
     }
 
     override fun onClickedMapAt(position: LatLon, clickAreaSizeInMeters: Double) {
-        if (shownBottomSheet.value != null) {
+        if (mainBottomSheetViewModel.shownBottomSheet.value != null) {
             lastMapClick.value = MapClick(position, clickAreaSizeInMeters)
         } else if (editHistoryViewModel.isShowingSidebar.value) {
             editHistoryViewModel.hideSidebar()
@@ -481,7 +480,7 @@ class MainActivity :
     @AnyThread
     override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
         val questKey =
-            when (val shown = shownBottomSheet.value) {
+            when (val shown = mainBottomSheetViewModel.shownBottomSheet.value) {
                 is ShownBottomSheet.OsmNoteQuest -> shown.quest.key
                 is ShownBottomSheet.OsmQuest -> shown.quest.key
                 else -> return
@@ -495,7 +494,7 @@ class MainActivity :
     @AnyThread
     override fun onInvalidated() {
         val questKey =
-            when (val shown = shownBottomSheet.value) {
+            when (val shown = mainBottomSheetViewModel.shownBottomSheet.value) {
                 is ShownBottomSheet.OsmNoteQuest -> shown.quest.key
                 is ShownBottomSheet.OsmQuest -> shown.quest.key
                 else -> return
@@ -514,7 +513,7 @@ class MainActivity :
 
     @AnyThread
     override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-        val elementKey = (shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
+        val elementKey = (mainBottomSheetViewModel.shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
         if (elementKey in deleted) {
             mainBottomSheetViewModel.closeBottomSheet()
         }
@@ -522,7 +521,7 @@ class MainActivity :
 
     @AnyThread
     override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
-        val elementKey = (shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
+        val elementKey = (mainBottomSheetViewModel.shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
         lifecycleScope.launch {
             val openElement = withContext(Dispatchers.IO) { mapDataWithEditsSource.get(elementKey.type, elementKey.id) }
             // open element does not exist anymore after download
@@ -534,7 +533,7 @@ class MainActivity :
 
     @AnyThread
     override fun onCleared() {
-        val elementKey = (shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
+        val elementKey = (mainBottomSheetViewModel.shownBottomSheet.value as? ShownBottomSheet.Overlay)?.element?.key ?: return
         mainBottomSheetViewModel.closeBottomSheet()
     }
 
