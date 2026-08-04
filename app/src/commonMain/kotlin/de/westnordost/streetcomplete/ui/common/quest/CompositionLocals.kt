@@ -15,7 +15,7 @@ val LocalElement = compositionLocalOf<Element?> { null }
 
 val LocalMapRotation = compositionLocalOf<Float> { 0f }
 val LocalMapTilt = compositionLocalOf<Float> { 0f }
-val LocalMapMetersPerPixel = compositionLocalOf<Double> { 0.0 }
+val LocalMapMetersPerDp = compositionLocalOf<Double> { 0.0 }
 
 val LocalLastMapClick = compositionLocalOf<MapClick?> { null }
 

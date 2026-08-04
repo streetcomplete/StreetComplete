@@ -43,7 +43,7 @@ import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaff
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
-import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.Dimensions
@@ -76,10 +76,10 @@ fun SplitWayForm(
     val snipAnimation = remember { Animatable(0f) }
     val scope = rememberCoroutineScope()
 
-    val metersPerPixel = LocalMapMetersPerPixel.current
-    val minDistanceToOtherCuts = metersPerPixel * 48.dp.toPx()
-    val maxDistanceToCrosshair = metersPerPixel * 24.dp.toPx()
-    val snapToVertexDistance = metersPerPixel * 12.dp.toPx()
+    val metersPerDp = LocalMapMetersPerDp.current
+    val minDistanceToOtherCuts = (metersPerDp * 48).dp.toPx().toDouble()
+    val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
+    val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
 
     val mapMarkersCallback = LocalMapMarkersCallback.current
 

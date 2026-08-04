@@ -33,7 +33,7 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
-import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.util.CrossFadeTransitionSpec
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -65,7 +65,7 @@ fun OverlayFormContainer(
     mapRotation: Float,
     mapTilt: Float,
     mapPosition: LatLon,
-    mapMetersPerPixel: Double,
+    mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
     onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
     modifier: Modifier = Modifier,
@@ -93,7 +93,7 @@ fun OverlayFormContainer(
         LocalElement provides element,
         LocalMapRotation provides mapRotation,
         LocalMapTilt provides mapTilt,
-        LocalMapMetersPerPixel provides mapMetersPerPixel,
+        LocalMapMetersPerDp provides mapMetersPerDp,
         LocalMapMarkersCallback provides onSetMapMarkers
     ) {
         AnimatedContent(

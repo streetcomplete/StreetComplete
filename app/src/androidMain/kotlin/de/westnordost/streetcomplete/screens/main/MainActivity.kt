@@ -16,14 +16,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.platform.WindowInfo
@@ -51,8 +47,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
-import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -62,7 +56,6 @@ import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.screens.BaseActivity
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
@@ -94,6 +87,7 @@ import de.westnordost.streetcomplete.view.toAndroidResourceId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.jetbrains.compose.resources.DrawableResource
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
@@ -153,7 +147,6 @@ class MainActivity :
 
     private val showMapContextMenu = mutableStateOf(false)
     private val lastMapLongPress = mutableStateOf<Pair<Offset, LatLon>?>(null)
-    private val lastQuestSolved = mutableStateOf<QuestSolvedEvent?>(null)
 
     private val lastMapClick = mutableStateOf<MapClick?>(null)
 
@@ -204,56 +197,39 @@ class MainActivity :
 
         binding.controls.content {
             val isMapAppLaunchAvailable = remember { mapAppLauncher.isAvailable() }
-            val shownBottomSheet by mainBottomSheetViewModel.shownBottomSheet.collectAsState()
-            val mapCamera by viewModel.mapCamera.collectAsState()
-            val mapMetersPerPixel = remember(mapCamera) { derivedStateOf {
-                mapFragment?.getMetersPerPixel()
-            } }
+            var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
 
             windowInfo = LocalWindowInfo.current
 
-            // color for HUD elements without a background (e.g. scalebar, attribution button)
-            CompositionLocalProvider(
-                LocalContentColor provides MaterialTheme.colors.onSurface
-            ) {
-                MainScreen(
-                    viewModel = viewModel,
-                    editHistoryViewModel = editHistoryViewModel,
-                    onClickZoomIn = ::onClickZoomIn,
-                    onClickZoomOut = ::onClickZoomOut,
-                    onZoomDrag = ::onZoomDrag,
-                    onClickCompass = ::onClickCompassButton,
-                    onClickLocation = ::onClickLocationButton,
-                    onClickLocationPointer = ::onClickLocationPointer,
-                    onClickCreate = ::onClickCreateButton,
-                    onClickStopTrackRecording = ::onClickTracksStop,
-                    onClickDownload = ::onClickDownload,
-                    onExplainedNeedForLocationPermission = ::requestLocation
-                )
-            }
+            MainScreen(
+                viewModel = viewModel,
+                editHistoryViewModel = editHistoryViewModel,
+                mainBottomSheetViewModel = mainBottomSheetViewModel,
+                onClickZoomIn = ::onClickZoomIn,
+                onClickZoomOut = ::onClickZoomOut,
+                onZoomDrag = ::onZoomDrag,
+                onClickCompass = ::onClickCompassButton,
+                onClickLocation = ::onClickLocationButton,
+                onClickLocationPointer = ::onClickLocationPointer,
+                onClickCreate = ::onClickCreateButton,
+                onClickStopTrackRecording = ::onClickTracksStop,
+                onClickDownload = ::onClickDownload,
+                onExplainedNeedForLocationPermission = ::requestLocation,
+                onSetMapMarkers = { markers ->
+                    mapFragment?.putMarkersForCurrentHighlighting(markers)
+                },
+                onSolvedQuest = { icon, position ->
+                    val offset = binding.root.getLocationInWindow()
+                    val startPos = mapFragment?.getPointOf(position)!!
 
-            val mapCamera2 = mapCamera
-            val shownBottomSheet2 = shownBottomSheet
-            if (mapCamera2 != null && shownBottomSheet2 != null) {
-                MainBottomSheet(
-                    onDismiss = { mainBottomSheetViewModel.closeBottomSheet() },
-                    viewModel = mainBottomSheetViewModel,
-                    shownBottomSheet = shownBottomSheet2,
-                    geometryOffsetInWindow = Offset(0f, 0f), // TODO
-                    mapRotation = mapCamera2.rotation.toFloat(),
-                    mapTilt = mapCamera2.tilt.toFloat(),
-                    mapPosition = mapCamera2.position,
-                    mapMetersPerPixel = mapMetersPerPixel.value ?: 1.0,
-                    onSetMapMarkers = { markers ->
-                        mapFragment?.putMarkersForCurrentHighlighting(markers)
-                    }
-                )
-            }
+                    startPos.x += offset.x
+                    startPos.y += offset.y
 
+                    lastQuestSolved = QuestSolvedEvent(icon, Offset(startPos.x, startPos.y))
+                }
+            )
 
-            lastQuestSolved.value?.let {
-                LastQuestSolvedEffect(it)
-            }
+            lastQuestSolved?.let { LastQuestSolvedEffect(it) }
 
             val lastLongPressOffset = lastMapLongPress.value?.first ?: Offset.Zero
             val lastLongPressPosition = lastMapLongPress.value?.second
@@ -852,20 +828,6 @@ class MainActivity :
         }
         val density = Density(this)
         return Dimensions.getOpenQuestFormMapPadding(windowInfo).toPadding(layoutDirection, density)
-    }
-
-    //endregion
-
-    //region Animation - Animation(s) for when a quest is solved
-
-    private fun showQuestSolvedAnimation(iconResId: Int, position: LatLon) {
-        val offset = binding.root.getLocationInWindow()
-        val startPos = mapFragment?.getPointOf(position) ?: return
-
-        startPos.x += offset.x
-        startPos.y += offset.y
-
-        lastQuestSolved.value = QuestSolvedEvent(iconResId, Offset(startPos.x, startPos.y))
     }
 
     //endregion

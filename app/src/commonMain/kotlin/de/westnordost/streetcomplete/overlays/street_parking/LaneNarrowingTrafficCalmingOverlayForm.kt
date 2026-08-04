@@ -36,7 +36,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.overlay.ItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
-import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
@@ -64,9 +64,9 @@ fun LaneNarrowingTrafficCalmingForm(
             mapDataWithEditsSource.getRoadLines(position.enclosingBoundingBox(100.0))
         }
     }
-    val metersPerPixel = LocalMapMetersPerPixel.current
-    val maxDistanceToCrosshair = metersPerPixel * 24.dp.toPx()
-    val snapToVertexDistance = metersPerPixel * 12.dp.toPx()
+    val metersPerDp = LocalMapMetersPerDp.current
+    val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
+    val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
 
     val positionOnWay = remember(position, roadLines) {
         if (position == null) return@remember null

@@ -44,7 +44,7 @@ import de.westnordost.streetcomplete.ui.common.quest.CantSayDialog
 import de.westnordost.streetcomplete.ui.common.quest.ConfirmDeleteDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
-import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
@@ -78,7 +78,7 @@ fun <T> OsmQuestFormContainer(
     mapPosition: LatLon?,
     mapRotation: Float,
     mapTilt: Float,
-    mapMetersPerPixel: Double,
+    mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
     modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
@@ -123,7 +123,7 @@ fun <T> OsmQuestFormContainer(
         LocalElement provides element,
         LocalMapRotation provides mapRotation,
         LocalMapTilt provides mapTilt,
-        LocalMapMetersPerPixel provides mapMetersPerPixel,
+        LocalMapMetersPerDp provides mapMetersPerDp,
         LocalMapMarkersCallback provides onSetMapMarkers
     ) {
         AnimatedContent(

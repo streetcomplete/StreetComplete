@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -27,15 +28,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.koinInject
 import kotlin.random.Random
 
+/** Animation sound effect of a quest just having been solved on the */
 @Composable
 fun LastQuestSolvedEffect(
     questSolvedEvent: QuestSolvedEvent,
@@ -76,7 +79,7 @@ fun LastQuestSolvedEffect(
                 .background(Color.White, CircleShape)
             ) {
                 Image(
-                    painter = painterResource(questSolvedEvent.iconResId),
+                    painter = painterResource(questSolvedEvent.icon),
                     contentDescription = null,
                     modifier = Modifier
                         .padding(2.dp)
@@ -88,4 +91,5 @@ fun LastQuestSolvedEffect(
     }
 }
 
-data class QuestSolvedEvent(val iconResId: Int, val position: Offset)
+@Immutable
+data class QuestSolvedEvent(val icon: DrawableResource, val position: Offset)

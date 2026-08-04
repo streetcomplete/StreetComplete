@@ -6,22 +6,7 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.absoluteOffset
-import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
-import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -31,39 +16,27 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.layout.boundsInRoot
-import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.messages.Message
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.download_area_too_big
+import de.westnordost.streetcomplete.resources.no_email_client
+import de.westnordost.streetcomplete.resources.offline
+import de.westnordost.streetcomplete.resources.team_mode_active
+import de.westnordost.streetcomplete.resources.team_mode_deactivated
 import de.westnordost.streetcomplete.screens.about.AboutActivity
-import de.westnordost.streetcomplete.screens.main.controls.AttributionButton
-import de.westnordost.streetcomplete.screens.main.controls.AttributionLink
-import de.westnordost.streetcomplete.screens.main.controls.CompassButton
-import de.westnordost.streetcomplete.screens.main.controls.Crosshair
-import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
-import de.westnordost.streetcomplete.screens.main.controls.MainMenuButton
-import de.westnordost.streetcomplete.screens.main.controls.MapButton
-import de.westnordost.streetcomplete.screens.main.controls.MessagesButton
-import de.westnordost.streetcomplete.screens.main.controls.OverlaySelectionButton
-import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
-import de.westnordost.streetcomplete.screens.main.controls.ScaleBar
-import de.westnordost.streetcomplete.screens.main.controls.StarsCounter
-import de.westnordost.streetcomplete.screens.main.controls.ZoomButtons
-import de.westnordost.streetcomplete.screens.main.controls.findEllipsisIntersection
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
+import de.westnordost.streetcomplete.screens.main.controls.MainScreenControls
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
-import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
 import de.westnordost.streetcomplete.screens.settings.SettingsActivity
@@ -71,23 +44,20 @@ import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
 import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
-import de.westnordost.streetcomplete.ui.common.LargeCreateIcon
-import de.westnordost.streetcomplete.ui.common.StopRecordingIcon
 import de.westnordost.streetcomplete.ui.common.ToastPopup
-import de.westnordost.streetcomplete.ui.common.UndoIcon
+import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.dir
-import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
-import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import kotlin.math.PI
 
 /** Map controls shown on top of the map. */
 @Composable
 fun MainScreen(
     viewModel: MainViewModel,
     editHistoryViewModel: EditHistoryViewModel,
+    mainBottomSheetViewModel: MainBottomSheetViewModel,
     onClickZoomIn: () -> Unit,
     onClickZoomOut: () -> Unit,
     onZoomDrag: (Float) -> Unit,
@@ -98,6 +68,8 @@ fun MainScreen(
     onClickStopTrackRecording: () -> Unit,
     onClickDownload: () -> Unit,
     onExplainedNeedForLocationPermission: () -> Unit,
+    onSetMapMarkers: (Iterable<Marker>) -> Unit,
+    onSolvedQuest: (icon: DrawableResource, position: LatLon) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
@@ -118,7 +90,6 @@ fun MainScreen(
     val indexInTeam by viewModel.indexInTeam.collectAsState()
 
     val messagesCount by viewModel.messagesCount.collectAsState()
-    val hasMessages by remember { derivedStateOf { messagesCount > 0 } }
 
     val isLoggedIn by viewModel.isLoggedIn.collectAsState()
     val isUploadingOrDownloading by viewModel.isUploadingOrDownloading.collectAsState()
@@ -138,45 +109,24 @@ fun MainScreen(
     val metersPerDp by viewModel.metersPerDp.collectAsState()
     val displayedPosition by viewModel.displayedPosition.collectAsState()
 
-    val editItems by editHistoryViewModel.editItems.collectAsState()
-    val selectedEdit by editHistoryViewModel.selectedEdit.collectAsState()
-    val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
-
     val showZoomButtons by viewModel.showZoomButtons.collectAsState()
 
     val isRequestingLogin by viewModel.isRequestingLogin.collectAsState()
 
-    var showOverlaysDropdown by remember { mutableStateOf(false) }
+    val showEditHistorySidebar by editHistoryViewModel.isShowingSidebar.collectAsState()
+
+    val editItems by editHistoryViewModel.editItems.collectAsState()
+    val selectedEdit by editHistoryViewModel.selectedEdit.collectAsState()
+    val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
+
+    val shownBottomSheet by mainBottomSheetViewModel.shownBottomSheet.collectAsState()
+
     var showOverlaysTutorial by remember { mutableStateOf(false) }
     var showIntroTutorial by remember { mutableStateOf(false) }
     var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     var showToast by remember { mutableStateOf<Toast?>(null) }
-
-    val showEditHistorySidebar by editHistoryViewModel.isShowingSidebar.collectAsState()
-
-    val mapRotation = mapCamera?.rotation ?: 0.0
-    val mapTilt = mapCamera?.tilt ?: 0.0
-
-    val mapAttribution = listOf(
-        AttributionLink(stringResource(Res.string.map_attribution_osm), "https://osm.org/copyright"),
-        AttributionLink("© JawgMaps", "https://jawg.io")
-    )
-
-    fun onClickOverlays() {
-        if (viewModel.hasShownOverlaysTutorial) {
-            showOverlaysDropdown = true
-        } else {
-            showOverlaysTutorial = true
-        }
-    }
-
-    fun onClickMessages() {
-        scope.launch {
-            shownMessage = viewModel.popMessage()
-        }
-    }
 
     fun onClickUpload() {
         if (viewModel.isConnected) {
@@ -221,182 +171,67 @@ fun MainScreen(
     }
 
     Box(modifier) {
-        if (isCreateNodeEnabled) {
-            Crosshair()
-        }
+        // Alternative to this would be to put the tutorial screens into a separate
+        // navigation destination in a TBD MainNavHost after complete migration to Compose
+        // (see #6255)
+        if (!showIntroTutorial) {
+            MainScreenControls(
+                starsCount = starsCount,
+                isShowingStarsCurrentWeek = isShowingStarsCurrentWeek,
+                isUploadingOrDownloading = isUploadingOrDownloading,
+                onToggleShowStarsCurrentWeek = { viewModel.toggleShowingCurrentWeek() },
 
-        var screen by remember { mutableStateOf<Rect?>(null) }
-        val intersection = remember(displayedPosition, screen) {
-            findEllipsisIntersection(screen, displayedPosition)
-        }
+                messagesCount = messagesCount,
+                onClickMessages = { scope.launch { shownMessage = viewModel.popMessage() } },
 
-        intersection?.let { (offset, angle) ->
-            val rotation = angle * 180 / PI
-            PointerPinButton(
-                onClick = onClickLocationPointer,
-                rotate = rotation.toFloat(),
-                modifier = Modifier.absoluteOffset(offset.x.pxToDp(), offset.y.pxToDp()),
-            ) { Image(painterResource(Res.drawable.location_dot_small), null) }
-        }
-
-        Box(Modifier
-            .fillMaxSize()
-            .windowInsetsPadding(WindowInsets.safeDrawing)
-            .onGloballyPositioned { screen = it.boundsInRoot() }
-        ) {
-            // top-start controls
-            Box(Modifier.align(Alignment.TopStart)) {
-                // stars counter
-                StarsCounter(
-                    count = starsCount,
-                    modifier = Modifier
-                        .defaultMinSize(minWidth = 96.dp)
-                        .clickable(null, null) { viewModel.toggleShowingCurrentWeek() },
-                    isCurrentWeek = isShowingStarsCurrentWeek,
-                    showProgress = isUploadingOrDownloading
-                )
-            }
-
-            // top-end controls
-            Row(
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(4.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                AnimatedVisibility(hasMessages) {
-                    MessagesButton(
-                        onClick = ::onClickMessages,
-                        messagesCount = messagesCount
-                    )
-                }
-                if (overlays.isNotEmpty()) {
-                    Box {
-                        OverlaySelectionButton(
-                            onClick = ::onClickOverlays,
-                            overlay = selectedOverlay
-                        )
-                        OverlaySelectionDropdownMenu(
-                            expanded = showOverlaysDropdown,
-                            onDismissRequest = { showOverlaysDropdown = false },
-                            overlays = overlays,
-                            onSelect = { viewModel.selectOverlay(it) }
-                        )
+                overlays = overlays,
+                selectedOverlay = selectedOverlay,
+                onSelectOverlay = { overlay ->
+                    viewModel.selectOverlay(overlay)
+                    if (viewModel.hasShownOverlaysTutorial) {
+                        showOverlaysTutorial = true
                     }
-                }
+                },
 
-                MainMenuButton(
-                    onClick = { showMainMenuDialog = true },
-                    unsyncedEditsCount = if (!isAutoSync) unsyncedEditsCount else 0,
-                    indexInTeam = if (isTeamMode) indexInTeam else null
-                )
-            }
+                shownUnsyncedEdits = if (!isAutoSync) unsyncedEditsCount else 0,
+                shownIndexInTeam = if (isTeamMode) indexInTeam else null,
+                onClickMainMenu = { showMainMenuDialog = true },
 
-            // bottom controls
-            Column(Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomStart)
-            ) {
-                Box(Modifier.fillMaxWidth()) {
-                    // bottom-end controls
-                    Column(
-                        modifier = Modifier
-                            .align(Alignment.BottomEnd)
-                            .padding(4.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp),
-                        horizontalAlignment = Alignment.End,
-                    ) {
-                        CompassButton(
-                            onClick = onClickCompass,
-                            rotation = -mapRotation.toFloat(),
-                            tilt = mapTilt.toFloat(),
-                        )
-                        if (showZoomButtons) {
-                            ZoomButtons(
-                                onZoomIn = onClickZoomIn,
-                                onZoomOut = onClickZoomOut,
-                                onZoomDrag = onZoomDrag
-                            )
-                        }
-                        LocationStateButton(
-                            onClick = onClickLocation,
-                            state = locationState,
-                            isNavigationMode = isNavigationMode,
-                            isFollowing = isFollowingPosition,
-                        )
+                showZoomButtons = showZoomButtons,
+                onClickZoomIn = onClickZoomIn,
+                onClickZoomOut = onClickZoomOut,
+                onZoomDrag = onZoomDrag,
+
+                mapRotation = mapCamera?.rotation?.toFloat() ?: 0f,
+                mapTilt = mapCamera?.tilt?.toFloat() ?: 0f,
+                onClickCompass = onClickCompass,
+
+                locationState = locationState,
+                isNavigationMode = isNavigationMode,
+                isFollowingPosition = isFollowingPosition,
+                displayedLocationOffset = displayedPosition,
+                onClickLocation = onClickLocation,
+                onClickLocationPointer = onClickLocationPointer,
+
+                isRecordingTracks = isRecordingTracks,
+                onClickStopTrackRecording = onClickStopTrackRecording,
+
+                isCreateNodeEnabled = isCreateNodeEnabled,
+                onClickCreate = {
+                    if ((mapCamera?.zoom ?: 0.0) >= 17.0) {
+                        onClickCreate()
+                    } else {
+                        showToast = Toast.DownloadAreaTooBig
                     }
+                },
 
-                    if (isCreateNodeEnabled) {
-                        MapButton(
-                            onClick = {
-                                if ((mapCamera?.zoom ?: 0.0) >= 17.0) {
-                                    onClickCreate()
-                                } else {
-                                    showToast = Toast.DownloadAreaTooBig
-                                }
-                            },
-                            modifier = Modifier
-                                .align(BiasAlignment(0.333f, 1f))
-                                .padding(4.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                backgroundColor = MaterialTheme.colors.secondaryVariant,
-                            ),
-                        ) {
-                            LargeCreateIcon()
-                        }
-                    }
+                hasEdits = hasEdits,
+                isUndoEnabled = !isUploadingOrDownloading,
+                onClickUndo = { editHistoryViewModel.showSidebar() },
 
-                    // bottom-start controls
-                    Column(
-                        modifier = Modifier
-                            .align(Alignment.BottomStart)
-                            .padding(4.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        if (isRecordingTracks) {
-                            MapButton(
-                                onClick = onClickStopTrackRecording,
-                                colors = ButtonDefaults.buttonColors(
-                                    backgroundColor = MaterialTheme.colors.secondaryVariant,
-                                ),
-                            ) {
-                                StopRecordingIcon()
-                            }
-                        }
-
-                        if (hasEdits) {
-                            MapButton(
-                                onClick = { editHistoryViewModel.showSidebar() },
-                                // Don't allow undoing while uploading. Should prevent race conditions.
-                                // (Undoing quest while also uploading it at the same time)
-                                enabled = !isUploadingOrDownloading,
-                            ) {
-                                UndoIcon()
-                            }
-                        }
-                    }
-                }
-                // Alternative to this would be to put the tutorial screens into a separate
-                // navigation destination in a TBD MainNavHost after complete migration to Compose
-                // (see #6255)
-                if (!showIntroTutorial) {
-                    Box(Modifier.fillMaxWidth().padding(4.dp)) {
-                        AttributionButton(
-                            userHasMovedMap = userHasMovedCamera,
-                            attributions = mapAttribution,
-                            modifier = Modifier.align(Alignment.TopStart),
-                            popupElevation = 4.dp,
-                        )
-                        ScaleBar(
-                            metersPerDp = metersPerDp,
-                            modifier = Modifier
-                                .align(Alignment.CenterEnd)
-                                .padding(horizontal = 12.dp),
-                            alignment = Alignment.End,
-                        )
-                    }
-                }
-            }
+                metersPerDp = metersPerDp,
+                userHasMovedMap = userHasMovedCamera,
+            )
         }
 
         val dir = LocalLayoutDirection.current.dir
@@ -413,6 +248,23 @@ fun MainScreen(
                 onDismissRequest = { editHistoryViewModel.hideSidebar() },
                 featureDictionaryLazy = editHistoryViewModel.featureDictionaryLazy,
                 getEditElement = editHistoryViewModel::getEditElement,
+            )
+        }
+
+        val mapCamera2 = mapCamera
+        val shownBottomSheet2 = shownBottomSheet
+        if (mapCamera2 != null && shownBottomSheet2 != null) {
+            MainBottomSheet(
+                onDismiss = { mainBottomSheetViewModel.closeBottomSheet() },
+                onSolved = onSolvedQuest,
+                viewModel = mainBottomSheetViewModel,
+                shownBottomSheet = shownBottomSheet2,
+                geometryOffsetInWindow = Offset(0f, 0f), // TODO
+                mapRotation = mapCamera2.rotation.toFloat(),
+                mapTilt = mapCamera2.tilt.toFloat(),
+                mapPosition = mapCamera2.position,
+                mapMetersPerDp = metersPerDp,
+                onSetMapMarkers = onSetMapMarkers
             )
         }
     }

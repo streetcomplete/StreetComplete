@@ -47,7 +47,7 @@ import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
-import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerPixel
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.isArea
@@ -94,9 +94,9 @@ fun AddressOverlayForm(
             mapDataWithEditsSource.getBuildingOutlines(position.enclosingBoundingBox(100.0))
         }
     }
-    val metersPerPixel = LocalMapMetersPerPixel.current
-    val maxDistanceToCrosshair = metersPerPixel * 24.dp.toPx()
-    val snapToVertexDistance = metersPerPixel * 12.dp.toPx()
+    val metersPerDp = LocalMapMetersPerDp.current
+    val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
+    val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
 
     val positionOnWay = remember(position, buildingOutlines) {
         if (position == null) return@remember null

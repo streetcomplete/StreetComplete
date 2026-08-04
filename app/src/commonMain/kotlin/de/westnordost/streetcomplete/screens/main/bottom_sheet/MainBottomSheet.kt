@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,6 +15,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.quests.note_comments.AddNoteCommentForm
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.quest_create_note
 import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.CreateNoteForm
@@ -23,6 +24,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay.OverlayFo
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
 import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Marker
+import org.jetbrains.compose.resources.DrawableResource
 
 // TODO appear/disappear animation must be done by
 
@@ -36,13 +38,14 @@ import de.westnordost.streetcomplete.ui.common.quest.Marker
 @Composable
 fun MainBottomSheet(
     onDismiss: () -> Unit,
+    onSolved: (icon: DrawableResource, position: LatLon) -> Unit,
     viewModel: MainBottomSheetViewModel,
     shownBottomSheet: ShownBottomSheet,
     geometryOffsetInWindow: Offset?,
     mapRotation: Float,
     mapTilt: Float,
     mapPosition: LatLon,
-    mapMetersPerPixel: Double,
+    mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -58,6 +61,7 @@ fun MainBottomSheet(
                         imagePaths = noteImagePaths,
                         track = TODO()
                     )
+                    onSolved(Res.drawable.quest_create_note, mapPosition)
                     onDismiss()
                 },
                 onDismiss = onDismiss,
@@ -74,6 +78,7 @@ fun MainBottomSheet(
                         text = noteText,
                         imagePaths = noteImagePaths
                     )
+                    onSolved(shownBottomSheet.quest.type.icon, shownBottomSheet.quest.position)
                     onDismiss()
                 },
                 onHideQuest = {
@@ -95,6 +100,7 @@ fun MainBottomSheet(
                             geometry = shownBottomSheet.geometry,
                             elementEditAction = action
                         )
+                        onSolved(shownBottomSheet.quest.type.icon, shownBottomSheet.quest.position)
                         onDismiss()
                     } else {
                         confirmEdit = PendingEdit(shownBottomSheet.quest.type, shownBottomSheet.geometry, action)
@@ -106,6 +112,7 @@ fun MainBottomSheet(
                         text = noteText,
                         imagePaths = noteImagePaths,
                     )
+                    onSolved(shownBottomSheet.quest.type.icon, shownBottomSheet.quest.position)
                     onDismiss()
                 },
                 onHideQuest = {
@@ -122,7 +129,7 @@ fun MainBottomSheet(
                 mapPosition = mapPosition,
                 mapRotation = mapRotation,
                 mapTilt = mapTilt,
-                mapMetersPerPixel = mapMetersPerPixel,
+                mapMetersPerDp = mapMetersPerDp,
                 onSetMapMarkers = onSetMapMarkers,
                 modifier = modifier,
             )
@@ -139,17 +146,20 @@ fun MainBottomSheet(
                             geometry = geometry,
                             elementEditAction = action
                         )
+                        onSolved(shownBottomSheet.overlay.icon, geometry.center)
                         onDismiss()
                     } else {
                         confirmEdit = PendingEdit(shownBottomSheet.overlay, geometry, action)
                     }
                 },
                 onLeaveNote = { noteText, noteImagePaths ->
+                    val center = shownBottomSheet.geometry?.center ?: mapPosition
                     viewModel.createNote(
-                        position = shownBottomSheet.geometry?.center ?: mapPosition,
+                        position = center,
                         text = noteText,
                         imagePaths = noteImagePaths,
                     )
+                    onSolved(shownBottomSheet.overlay.icon, center)
                     onDismiss()
                 },
                 overlay = shownBottomSheet.overlay,
@@ -159,7 +169,7 @@ fun MainBottomSheet(
                 mapRotation = mapRotation,
                 mapTilt = mapTilt,
                 mapPosition = mapPosition,
-                mapMetersPerPixel = mapMetersPerPixel,
+                mapMetersPerDp = mapMetersPerDp,
                 onSetMapMarkers = onSetMapMarkers,
                 onSetPinPosition = { icon, position ->
                     TODO()
