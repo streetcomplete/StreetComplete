@@ -21,6 +21,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.platform.WindowInfo
 import androidx.compose.ui.unit.Density
@@ -56,6 +57,7 @@ import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.screens.BaseActivity
+import de.westnordost.streetcomplete.screens.about.AboutActivity
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
@@ -66,6 +68,8 @@ import de.westnordost.streetcomplete.screens.main.map.getTitle
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.Padding
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPadding
+import de.westnordost.streetcomplete.screens.settings.SettingsActivity
+import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.toDpOffset
@@ -94,6 +98,7 @@ import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
+import kotlin.jvm.java
 import kotlin.math.PI
 import kotlin.math.sqrt
 
@@ -200,6 +205,7 @@ class MainActivity :
             var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
 
             windowInfo = LocalWindowInfo.current
+            val context = LocalContext.current
 
             MainScreen(
                 viewModel = viewModel,
@@ -214,6 +220,23 @@ class MainActivity :
                 onClickCreate = ::onClickCreateButton,
                 onClickStopTrackRecording = ::onClickTracksStop,
                 onClickDownload = ::onClickDownload,
+                onClickSettings = {
+                    context.startActivity(Intent(context, SettingsActivity::class.java))
+                },
+                onClickQuestSettings = {
+                    context.startActivity(SettingsActivity.createLaunchQuestSettingsIntent(context))
+                },
+                onClickAbout = {
+                    context.startActivity(Intent(context, AboutActivity::class.java))
+                },
+                onClickProfile = {
+                    context.startActivity(Intent(context, UserActivity::class.java))
+                },
+                onClickLogin = {
+                    val intent = Intent(context, UserActivity::class.java)
+                    intent.putExtra(UserActivity.EXTRA_LAUNCH_AUTH, true)
+                    context.startActivity(intent)
+                },
                 onExplainedNeedForLocationPermission = ::requestLocation,
                 onSetMapMarkers = { markers ->
                     mapFragment?.putMarkersForCurrentHighlighting(markers)

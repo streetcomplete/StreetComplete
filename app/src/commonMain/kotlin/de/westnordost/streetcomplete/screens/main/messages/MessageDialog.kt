@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.messages
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import de.westnordost.streetcomplete.data.messages.Message
-import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
 import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 import org.jetbrains.compose.resources.DrawableResource
@@ -16,6 +14,7 @@ fun MessageDialog(
     message: Message,
     allQuestIcons: List<DrawableResource>,
     onDismissRequest: () -> Unit,
+    onClickOpenQuestSettings: () -> Unit,
     onToggleDontNotifyAgain: (KClass<out Message>, Boolean) -> Unit,
 ) {
     when (message) {
@@ -34,12 +33,9 @@ fun MessageDialog(
             )
         }
         is Message.QuestSelectionHint -> {
-            val context = LocalContext.current
             QuestSelectionHintDialog(
                 onDismissRequest = onDismissRequest,
-                onClickOpenSettings = {
-                    context.startActivity(SettingsActivity.createLaunchQuestSettingsIntent(context))
-                },
+                onClickOpenSettings = onClickOpenQuestSettings,
                 allQuestIcons = allQuestIcons
             )
         }

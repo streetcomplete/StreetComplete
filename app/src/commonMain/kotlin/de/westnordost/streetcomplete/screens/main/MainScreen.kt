@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main
 
-import android.content.Intent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -18,17 +17,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.download_area_too_big
-import de.westnordost.streetcomplete.resources.no_email_client
-import de.westnordost.streetcomplete.resources.offline
-import de.westnordost.streetcomplete.resources.team_mode_active
-import de.westnordost.streetcomplete.resources.team_mode_deactivated
-import de.westnordost.streetcomplete.screens.about.AboutActivity
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
 import de.westnordost.streetcomplete.screens.main.controls.MainScreenControls
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
@@ -39,10 +31,8 @@ import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
-import de.westnordost.streetcomplete.screens.settings.SettingsActivity
 import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
-import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.quest.Marker
@@ -67,14 +57,17 @@ fun MainScreen(
     onClickCreate: () -> Unit,
     onClickStopTrackRecording: () -> Unit,
     onClickDownload: () -> Unit,
+    onClickSettings: () -> Unit,
+    onClickQuestSettings: () -> Unit,
+    onClickAbout: () -> Unit,
+    onClickProfile: () -> Unit,
+    onClickLogin: () -> Unit,
     onExplainedNeedForLocationPermission: () -> Unit,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
     onSolvedQuest: (icon: DrawableResource, position: LatLon) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
-
-    val context = LocalContext.current
 
     val starsCount by viewModel.starsCount.collectAsState()
     val isShowingStarsCurrentWeek by viewModel.isShowingStarsCurrentWeek.collectAsState()
@@ -275,6 +268,7 @@ fun MainScreen(
             message = message,
             onDismissRequest = { shownMessage = null },
             allQuestIcons = questIcons,
+            onClickOpenQuestSettings = onClickQuestSettings,
             onToggleDontNotifyAgain = { messageType, dontNotifyAgain ->
                 viewModel.toggleDisableMessageType(messageType, dontNotifyAgain)
             }
@@ -284,9 +278,9 @@ fun MainScreen(
     if (showMainMenuDialog) {
         MainMenuDialog(
             onDismissRequest = { showMainMenuDialog = false },
-            onClickProfile = { context.startActivity(Intent(context, UserActivity::class.java)) },
-            onClickSettings = { context.startActivity(Intent(context, SettingsActivity::class.java)) },
-            onClickAbout = { context.startActivity(Intent(context, AboutActivity::class.java)) },
+            onClickProfile = onClickProfile,
+            onClickSettings = onClickSettings,
+            onClickAbout = onClickAbout,
             onClickDownload = onClickDownload,
             onClickUpload = ::onClickUpload,
             onClickEnterTeamMode = { showTeamModeWizard = true },
@@ -318,11 +312,7 @@ fun MainScreen(
     if (isRequestingLogin) {
         RequestLoginDialog(
             onDismissRequest = { viewModel.finishRequestingLogin() },
-            onConfirmed = {
-                val intent = Intent(context, UserActivity::class.java)
-                intent.putExtra(UserActivity.EXTRA_LAUNCH_AUTH, true)
-                context.startActivity(intent)
-            }
+            onConfirmed = onClickLogin
         )
     }
 
