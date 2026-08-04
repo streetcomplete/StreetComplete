@@ -43,7 +43,8 @@ class WayLitOverlay : Overlay {
         countryInfo: CountryInfo,
         onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
-        element?.let { WayLitOverlayForm(on, element) }
+        requireNotNull(element)
+        WayLitOverlayForm(on, element)
     }
 }
 

@@ -54,7 +54,8 @@ class SurfaceOverlay : Overlay {
         countryInfo: CountryInfo,
         onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
-        element?.let { SurfaceOverlayForm(on, element, countryInfo) }
+        requireNotNull(element)
+        SurfaceOverlayForm(on, element, countryInfo)
     }
 }
 

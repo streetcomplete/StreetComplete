@@ -4,6 +4,9 @@ import androidx.compose.ui.graphics.Color
 import org.jetbrains.compose.resources.DrawableResource
 
 sealed interface OverlayStyle {
+    /** When it is disabled, it is not clickable */
+    val disabled: Boolean
+
     data class Polyline(
         /** center line style. null if no center line should be drawn */
         val stroke: Stroke?,
@@ -13,6 +16,7 @@ sealed interface OverlayStyle {
         val strokeRight: Stroke? = null,
         /** label to show on the line (centered) */
         val label: String? = null,
+        override val disabled: Boolean = false,
     ) : OverlayStyle
 
     data class Stroke(
@@ -32,6 +36,7 @@ sealed interface OverlayStyle {
         /** whether and how much to extrude this area */
         val height: Float? = null,
         val minHeight: Float? = null,
+        override val disabled: Boolean = false,
     ) : OverlayStyle
 
     data class Point(
@@ -39,5 +44,6 @@ sealed interface OverlayStyle {
         val icon: DrawableResource?,
         /** label to show on the point */
         val label: String? = null,
+        override val disabled: Boolean = false,
     ) : OverlayStyle
 }

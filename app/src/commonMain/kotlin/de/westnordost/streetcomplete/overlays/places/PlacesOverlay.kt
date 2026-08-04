@@ -63,7 +63,7 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
                   entrance
                   and !(addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
             """)
-            .map { it to OverlayStyle.Point(icon = null, label = "◽") }
+            .map { it to OverlayStyle.Point(icon = null, label = "◽", disabled = true) }
 
     @Composable
     override fun Form(
@@ -73,11 +73,6 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
         countryInfo: CountryInfo,
         onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
-        // this check is necessary because the form shall not be shown for entrances
-        val isNewOrPlace = remember(element) { element == null || element.isPlaceOrDisusedPlace() }
-
-        if (isNewOrPlace) {
-            PlacesOverlayForm(on, element, geometry, countryInfo)
-        }
+        PlacesOverlayForm(on, element, geometry, countryInfo)
     }
 }

@@ -84,9 +84,8 @@ class BuildingsOverlay : Overlay {
         countryInfo: CountryInfo,
         onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
-        if (element != null) {
-            BuildingsOverlayForm(on, element)
-        }
+        requireNotNull(element)
+        BuildingsOverlayForm(on, element)
     }
 
     private val BuildingType.color get() = when (this) {

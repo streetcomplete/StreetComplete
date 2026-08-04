@@ -49,7 +49,7 @@ class SidewalkOverlay : Overlay {
             ways with (
               highway ~ footway|steps|path|bridleway|cycleway
             ) and area != yes
-        """).map { it to getFootwayStyle(it) }
+        """).map { it to getFootwayStyle(it).copy(disabled = true) }
 
     @Composable
     override fun Form(
@@ -59,16 +59,8 @@ class SidewalkOverlay : Overlay {
         countryInfo: CountryInfo,
         onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
-        if (element == null) return
-
-        val isRoadOrExclusiveCycleway = remember(element) {
-            element.tags["highway"] in ALL_ROADS ||
-            parseSeparateCycleway(element.tags) in listOf(SeparateCycleway.EXCLUSIVE, SeparateCycleway.EXCLUSIVE_WITH_SIDEWALK)
-        }
-
-        if (isRoadOrExclusiveCycleway) {
-            SidewalkOverlayForm(on, element, geometry, countryInfo)
-        }
+        requireNotNull(element)
+        SidewalkOverlayForm(on, element, geometry, countryInfo)
     }
 }
 

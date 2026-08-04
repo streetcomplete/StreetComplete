@@ -45,7 +45,12 @@ class StreetParkingOverlay : Overlay {
         mapData.filter("""
             nodes, ways, relations with
             amenity = parking
-        """).map { it to if (it is Node) parkingLotPointStyle else parkingLotAreaStyle } +
+        """).map {
+            val style =
+                if (it is Node) parkingLotPointStyle.copy(disabled = true)
+                else parkingLotAreaStyle.copy(disabled = true)
+            it to style
+        } +
         // chokers
         mapData.filter("""
             nodes with

@@ -52,9 +52,8 @@ class MtbScaleOverlay : Overlay {
         countryInfo: CountryInfo,
         onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
-        if (element != null) {
-            MtbScaleOverlayForm(on, element)
-        }
+        requireNotNull(element)
+        MtbScaleOverlayForm(on, element)
     }
 
     private fun getStyle(element: Element): OverlayStyle {

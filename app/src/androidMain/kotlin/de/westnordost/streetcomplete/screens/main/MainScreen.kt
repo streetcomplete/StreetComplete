@@ -188,7 +188,7 @@ fun MainScreen(
                 selectedOverlay = selectedOverlay,
                 onSelectOverlay = { overlay ->
                     viewModel.selectOverlay(overlay)
-                    if (viewModel.hasShownOverlaysTutorial) {
+                    if (!viewModel.hasShownOverlaysTutorial) {
                         showOverlaysTutorial = true
                     }
                 },

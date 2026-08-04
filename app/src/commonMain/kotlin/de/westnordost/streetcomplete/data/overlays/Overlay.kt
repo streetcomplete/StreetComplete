@@ -21,8 +21,17 @@ interface Overlay : ElementEditType {
     /** layers that should be hidden while this overlay is active */
     val hidesLayers: List<String> get() = emptyList()
 
-    /** Returns a composable form in which to enter the requested information if clicking on
-     *  the given element should not do anything. Use
+    /** Whether the form can be opened with a null element (=new element) */
+    val isCreateNodeEnabled: Boolean get() = false
+
+    /** return pairs of element to style for all elements in the map data that should be displayed */
+    fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, OverlayStyle>>
+
+    /** Returns a composable form in which to enter the requested information. It is possible to
+     *  show different forms for different elements. [element] is null when the user is attempting
+     *  to create a new element (which will only be called if [isCreateNodeEnabled] is true).
+     *
+     *  Use
      *  [OverlayForm][de.westnordost.streetcomplete.ui.common.overlay.OverlayForm] to define a
      *  custom one, or any of the pre-defined generic forms like…
      *
@@ -43,12 +52,6 @@ interface Overlay : ElementEditType {
         countryInfo: CountryInfo,
         onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
     )
-
-    /** Whether the form can be opened with a null element (=new element) */
-    val isCreateNodeEnabled: Boolean get() = false
-
-    /** return pairs of element to style for all elements in the map data that should be displayed */
-    fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, OverlayStyle>>
 }
 
 sealed interface OverlayAction

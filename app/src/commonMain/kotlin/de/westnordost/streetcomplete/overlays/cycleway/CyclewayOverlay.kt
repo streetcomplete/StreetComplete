@@ -69,9 +69,10 @@ class CyclewayOverlay(
         countryInfo: CountryInfo,
         onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
-        if (element != null && element.tags["highway"] in ALL_ROADS) {
+        requireNotNull(element)
+        if (element.tags["highway"] in ALL_ROADS) {
             StreetCyclewayOverlayForm(on, element, geometry, countryInfo)
-        } else if (element != null && element.tags["highway"] in ALL_PATHS) {
+        } else if (element.tags["highway"] in ALL_PATHS) {
             SeparateCyclewayForm(on, element, countryInfo)
         }
     }
