@@ -1,10 +1,17 @@
 package de.westnordost.streetcomplete.screens.main
 
+import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.SizeTransform
+import androidx.compose.animation.core.FiniteAnimationSpec
+import androidx.compose.animation.core.snap
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -18,6 +25,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.IntSize
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.*
@@ -230,8 +238,8 @@ fun MainScreen(
         val dir = LocalLayoutDirection.current.dir
         AnimatedVisibility(
             visible = showEditHistorySidebar,
-            enter = fadeIn() + slideInHorizontally(initialOffsetX = { -it / 2 * dir }),
-            exit = fadeOut() + slideOutHorizontally(targetOffsetX = { -it / 2 * dir }),
+            enter = fadeIn() + slideInHorizontally(initialOffsetX = { -it * dir }),
+            exit = fadeOut() + slideOutHorizontally(targetOffsetX = { -it * dir }),
         ) {
             EditHistorySidebar(
                 editItems = editItems,
@@ -244,21 +252,31 @@ fun MainScreen(
             )
         }
 
-        val mapCamera2 = mapCamera
-        val shownBottomSheet2 = shownBottomSheet
-        if (mapCamera2 != null && shownBottomSheet2 != null) {
-            MainBottomSheet(
-                onDismiss = { mainBottomSheetViewModel.closeBottomSheet() },
-                onSolved = onSolvedQuest,
-                viewModel = mainBottomSheetViewModel,
-                shownBottomSheet = shownBottomSheet2,
-                geometryOffsetInWindow = Offset(0f, 0f), // TODO
-                mapRotation = mapCamera2.rotation.toFloat(),
-                mapTilt = mapCamera2.tilt.toFloat(),
-                mapPosition = mapCamera2.position,
-                mapMetersPerDp = metersPerDp,
-                onSetMapMarkers = onSetMapMarkers
-            )
+        mapCamera?.let { mapCamera ->
+            AnimatedContent(
+                targetState = shownBottomSheet,
+                transitionSpec = {
+                    // Size transform with snap is necessary so that it doesn't animate the bounds
+                    // from zero (=no form) which looks weird
+                    (fadeIn() + slideInVertically { it } togetherWith
+                    fadeOut() + slideOutVertically { it }) using SizeTransform() { _, _ -> snap() }
+                },
+            ) { shownBottomSheet ->
+                if (shownBottomSheet != null) {
+                    MainBottomSheet(
+                        onDismiss = { mainBottomSheetViewModel.closeBottomSheet() },
+                        onSolved = onSolvedQuest,
+                        viewModel = mainBottomSheetViewModel,
+                        shownBottomSheet = shownBottomSheet,
+                        geometryOffsetInWindow = Offset(0f, 0f), // TODO
+                        mapRotation = mapCamera.rotation.toFloat(),
+                        mapTilt = mapCamera.tilt.toFloat(),
+                        mapPosition = mapCamera.position,
+                        mapMetersPerDp = metersPerDp,
+                        onSetMapMarkers = onSetMapMarkers
+                    )
+                }
+            }
         }
     }
 

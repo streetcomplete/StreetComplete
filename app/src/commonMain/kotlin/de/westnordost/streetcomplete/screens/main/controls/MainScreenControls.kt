@@ -32,6 +32,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.resources.*
@@ -277,6 +278,7 @@ fun MainScreenControls(
                             attributions = mapAttribution,
                             modifier = Modifier.align(Alignment.TopStart),
                             popupElevation = 4.dp,
+                            textLinkStyles = TextLinkStyles()
                         )
                         ScaleBar(
                             metersPerDp = metersPerDp,

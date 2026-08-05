@@ -26,8 +26,6 @@ import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import org.jetbrains.compose.resources.DrawableResource
 
-// TODO appear/disappear animation must be done by
-
 /**
  * Everything that happens in the bottom sheet displayed in the main screen happens here.
  *
