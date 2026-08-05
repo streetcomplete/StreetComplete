@@ -441,6 +441,7 @@ class MainActivity :
     /* ---------------------------- MainMapFragment.Listener --------------------------- */
 
     override fun onClickedQuest(questKey: QuestKey) {
+        if (mainBottomSheetViewModel.shownBottomSheet.value != null) return
         mainBottomSheetViewModel.showQuest(questKey)
     }
 
@@ -458,6 +459,7 @@ class MainActivity :
 
     override fun onClickedElement(elementKey: ElementKey) {
         val overlay = viewModel.selectedOverlay.value ?: return
+        if (mainBottomSheetViewModel.shownBottomSheet.value != null) return
         mainBottomSheetViewModel.showElementInOverlay(overlay, elementKey)
     }
 
