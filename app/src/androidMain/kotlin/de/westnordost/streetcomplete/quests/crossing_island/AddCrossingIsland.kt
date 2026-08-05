@@ -24,6 +24,7 @@ class AddCrossingIsland : OsmElementQuestType<Boolean>, AndroidQuest {
           and foot != no
           and !crossing:island
           and crossing != island
+          and crossing:continuous != yes
     """.toElementFilterExpression() }
 
     private val excludedWaysFilter by lazy { """
