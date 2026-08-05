@@ -103,6 +103,7 @@ fun NoteCommentItem(
                     arrowDirection = SpeechBubbleArrowDirection.Start,
                     elevation = elevation,
                     color = color,
+                    border = null,
                 ) {
                     SelectionContainer {
                         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {

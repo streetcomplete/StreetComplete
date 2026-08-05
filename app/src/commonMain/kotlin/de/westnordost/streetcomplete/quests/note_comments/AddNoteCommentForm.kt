@@ -125,42 +125,43 @@ fun AddNoteCommentForm(
             )
         },
         content = {
-            ProvideTextStyle(MaterialTheme.typography.body1) {
-                Column(Modifier.fillMaxWidth()) {
+            Column(Modifier.fillMaxWidth()) {
+                ProvideTextStyle(MaterialTheme.typography.body2) {
                     NoteCommentItems(
                         noteComments = note.comments.orEmpty(),
                         avatars = avatars,
-                        textLinkStyles = MaterialTheme.typography.defaultTextLinkStyles()
+                        textLinkStyles = MaterialTheme.typography.defaultTextLinkStyles(),
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
                     )
+                }
 
-                    Divider()
-                    NoteForm(
-                        text = noteText,
-                        onTextChange = { noteText = it },
-                        addImagesEnabled = takePhotoSupported,
-                        onDeleteImage = { viewModel.deleteImagePath(it) },
-                        onTakePhoto = { takePhotoLauncher.launch() },
-                        images = noteImagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))
-                            .align(Alignment.CenterHorizontally)
-                    )
-
-                    Divider()
-
-                    Row(Modifier
-                        .padding(horizontal = 8.dp)
+                Divider()
+                NoteForm(
+                    text = noteText,
+                    onTextChange = { noteText = it },
+                    addImagesEnabled = takePhotoSupported,
+                    onDeleteImage = { viewModel.deleteImagePath(it) },
+                    onTakePhoto = { takePhotoLauncher.launch() },
+                    images = noteImagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
+                    modifier = Modifier
                         .fillMaxWidth()
-                    ) {
-                        if (alreadyHidden) {
-                            TextButton(onClick = { onDiscard() }) {
-                                Text(stringResource(Res.string.short_no_answer_on_button))
-                            }
-                        } else {
-                            TextButton(onClick = onHideQuest) {
-                                Text(stringResource(Res.string.quest_noteDiscussion_no))
-                            }
+                        .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))
+                        .align(Alignment.CenterHorizontally)
+                )
+
+                Divider()
+
+                Row(Modifier
+                    .padding(horizontal = 8.dp)
+                    .fillMaxWidth()
+                ) {
+                    if (alreadyHidden) {
+                        TextButton(onClick = { onDiscard() }) {
+                            Text(stringResource(Res.string.short_no_answer_on_button))
+                        }
+                    } else {
+                        TextButton(onClick = onHideQuest) {
+                            Text(stringResource(Res.string.quest_noteDiscussion_no))
                         }
                     }
                 }
@@ -189,7 +190,6 @@ private fun NoteCommentItems(
     avatars: Map<Long, Painter?>,
     textLinkStyles: TextLinkStyles,
     modifier: Modifier = Modifier,
-    elevation: Dp = 4.dp,
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -201,7 +201,6 @@ private fun NoteCommentItems(
                 avatarPainter = noteComment.user?.id?.let { avatars.get(it) },
                 modifier = Modifier.fillMaxWidth(),
                 textLinkStyles = textLinkStyles,
-                elevation = elevation
             )
         }
     }
