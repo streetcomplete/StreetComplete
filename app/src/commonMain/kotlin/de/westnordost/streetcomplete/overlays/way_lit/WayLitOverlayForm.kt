@@ -47,7 +47,7 @@ fun WayLitOverlayForm(
             ImageWithLabel(
                 painter = painterResource(it.icon),
                 label = stringResource(it.title),
-                imageSize = DpSize(96.dp, 96.dp)
+                imageSize = DpSize(140.dp, 96.dp)
             )
         },
         lastPickedItemContent = {

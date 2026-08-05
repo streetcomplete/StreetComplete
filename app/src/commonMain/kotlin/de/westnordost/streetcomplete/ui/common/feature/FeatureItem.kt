@@ -55,7 +55,7 @@ fun FeatureItem(
         )
     } else null
 
-    val annotatedName = remember(searchText, color) {
+    val annotatedName = remember(feature, searchText, color) {
         feature.buildAnnotatedName(searchText = searchText, color = color)
     }
     // brand features first have their name, then in second line the name of the parend feature

@@ -62,7 +62,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
     val lastPicked = remember {
         prefs.getLastPicked<I>(favoriteKey).takeFavorites(n = 6, first = 1, pad = topSelectableItems)
     }
-    var selectedItem by rememberSerializable { mutableStateOf(initialSelectedItem) }
+    var selectedItem by rememberSerializable(initialSelectedItem) { mutableStateOf(initialSelectedItem) }
 
     OverlayForm(
         on = on,
