@@ -164,7 +164,7 @@ fun MainScreen(
     }
 
     Box(modifier) {
-        // Alternative to this would be to put the tutorial screens into a separate
+        // TODO: Alternative to this would be to put the tutorial screens into a separate
         // navigation destination in a TBD MainNavHost after complete migration to Compose
         // (see #6255)
         if (!showIntroTutorial) {

@@ -126,8 +126,6 @@ fun MainScreenControls(
     CompositionLocalProvider(LocalContentColor provides MaterialTheme.colors.onSurface) {
         Box(modifier
             .fillMaxSize()
-            .windowInsetsPadding(WindowInsets.safeDrawing)
-            .onGloballyPositioned { screen = it.boundsInRoot() }
         ) {
             if (isCreateNodeEnabled) {
                 Crosshair()
@@ -142,145 +140,152 @@ fun MainScreenControls(
                 ) { Image(painterResource(Res.drawable.location_dot_small), null) }
             }
 
-            // top-start controls
-            Box(Modifier.align(Alignment.TopStart)) {
-                // stars counter
-                StarsCounter(
-                    count = starsCount,
-                    modifier = Modifier
-                        .defaultMinSize(minWidth = 96.dp)
-                        .clickable(null, null, onClick = onToggleShowStarsCurrentWeek),
-                    isCurrentWeek = isShowingStarsCurrentWeek,
-                    showProgress = isUploadingOrDownloading
-                )
-            }
-
-            // top-end controls
-            Row(
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(4.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            Box(Modifier
+                .fillMaxSize()
+                .windowInsetsPadding(WindowInsets.safeDrawing)
+                .onGloballyPositioned { screen = it.boundsInRoot() }
             ) {
-                AnimatedVisibility(hasMessages) {
-                    MessagesButton(
-                        onClick = onClickMessages,
-                        messagesCount = messagesCount
+
+                // top-start controls
+                Box(Modifier.align(Alignment.TopStart)) {
+                    // stars counter
+                    StarsCounter(
+                        count = starsCount,
+                        modifier = Modifier
+                            .defaultMinSize(minWidth = 96.dp)
+                            .clickable(null, null, onClick = onToggleShowStarsCurrentWeek),
+                        isCurrentWeek = isShowingStarsCurrentWeek,
+                        showProgress = isUploadingOrDownloading
                     )
                 }
-                if (overlays.isNotEmpty()) {
-                    Box {
-                        OverlaySelectionButton(
-                            onClick = { showOverlaysDropdown = true },
-                            overlay = selectedOverlay
-                        )
-                        OverlaySelectionDropdownMenu(
-                            expanded = showOverlaysDropdown,
-                            onDismissRequest = { showOverlaysDropdown = false },
-                            overlays = overlays,
-                            onSelect = onSelectOverlay
+
+                // top-end controls
+                Row(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(4.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    AnimatedVisibility(hasMessages) {
+                        MessagesButton(
+                            onClick = onClickMessages,
+                            messagesCount = messagesCount
                         )
                     }
-                }
-
-                MainMenuButton(
-                    onClick = onClickMainMenu,
-                    unsyncedEditsCount = shownUnsyncedEdits,
-                    indexInTeam = shownIndexInTeam
-                )
-            }
-
-            // bottom controls
-            Column(Modifier
-                .fillMaxWidth()
-                .align(Alignment.BottomStart)
-            ) {
-                Box(Modifier.fillMaxWidth()) {
-                    // bottom-end controls
-                    Column(
-                        modifier = Modifier
-                            .align(Alignment.BottomEnd)
-                            .padding(4.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp),
-                        horizontalAlignment = Alignment.End,
-                    ) {
-                        CompassButton(
-                            onClick = onClickCompass,
-                            rotation = -mapRotation,
-                            tilt = mapTilt,
-                        )
-                        if (showZoomButtons) {
-                            ZoomButtons(
-                                onZoomIn = onClickZoomIn,
-                                onZoomOut = onClickZoomOut,
-                                onZoomDrag = onZoomDrag
+                    if (overlays.isNotEmpty()) {
+                        Box {
+                            OverlaySelectionButton(
+                                onClick = { showOverlaysDropdown = true },
+                                overlay = selectedOverlay
+                            )
+                            OverlaySelectionDropdownMenu(
+                                expanded = showOverlaysDropdown,
+                                onDismissRequest = { showOverlaysDropdown = false },
+                                overlays = overlays,
+                                onSelect = onSelectOverlay
                             )
                         }
-                        LocationStateButton(
-                            onClick = onClickLocation,
-                            state = locationState,
-                            isNavigationMode = isNavigationMode,
-                            isFollowing = isFollowingPosition,
-                        )
                     }
 
-                    if (isCreateNodeEnabled) {
-                        MapButton(
-                            onClick = onClickCreate,
+                    MainMenuButton(
+                        onClick = onClickMainMenu,
+                        unsyncedEditsCount = shownUnsyncedEdits,
+                        indexInTeam = shownIndexInTeam
+                    )
+                }
+
+                // bottom controls
+                Column(Modifier
+                    .fillMaxWidth()
+                    .align(Alignment.BottomStart)
+                ) {
+                    Box(Modifier.fillMaxWidth()) {
+                        // bottom-end controls
+                        Column(
                             modifier = Modifier
-                                .align(BiasAlignment(0.333f, 1f))
+                                .align(Alignment.BottomEnd)
                                 .padding(4.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                backgroundColor = MaterialTheme.colors.secondaryVariant,
-                            ),
+                            verticalArrangement = Arrangement.spacedBy(8.dp),
+                            horizontalAlignment = Alignment.End,
                         ) {
-                            LargeCreateIcon()
+                            CompassButton(
+                                onClick = onClickCompass,
+                                rotation = -mapRotation,
+                                tilt = mapTilt,
+                            )
+                            if (showZoomButtons) {
+                                ZoomButtons(
+                                    onZoomIn = onClickZoomIn,
+                                    onZoomOut = onClickZoomOut,
+                                    onZoomDrag = onZoomDrag
+                                )
+                            }
+                            LocationStateButton(
+                                onClick = onClickLocation,
+                                state = locationState,
+                                isNavigationMode = isNavigationMode,
+                                isFollowing = isFollowingPosition,
+                            )
                         }
-                    }
 
-                    // bottom-start controls
-                    Column(
-                        modifier = Modifier
-                            .align(Alignment.BottomStart)
-                            .padding(4.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        if (isRecordingTracks) {
+                        if (isCreateNodeEnabled) {
                             MapButton(
-                                onClick = onClickStopTrackRecording,
+                                onClick = onClickCreate,
+                                modifier = Modifier
+                                    .align(BiasAlignment(0.333f, 1f))
+                                    .padding(4.dp),
                                 colors = ButtonDefaults.buttonColors(
                                     backgroundColor = MaterialTheme.colors.secondaryVariant,
                                 ),
                             ) {
-                                StopRecordingIcon()
+                                LargeCreateIcon()
                             }
                         }
 
-                        if (hasEdits) {
-                            MapButton(
-                                onClick = onClickUndo,
-                                enabled = isUndoEnabled,
-                            ) {
-                                UndoIcon()
+                        // bottom-start controls
+                        Column(
+                            modifier = Modifier
+                                .align(Alignment.BottomStart)
+                                .padding(4.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            if (isRecordingTracks) {
+                                MapButton(
+                                    onClick = onClickStopTrackRecording,
+                                    colors = ButtonDefaults.buttonColors(
+                                        backgroundColor = MaterialTheme.colors.secondaryVariant,
+                                    ),
+                                ) {
+                                    StopRecordingIcon()
+                                }
+                            }
+
+                            if (hasEdits) {
+                                MapButton(
+                                    onClick = onClickUndo,
+                                    enabled = isUndoEnabled,
+                                ) {
+                                    UndoIcon()
+                                }
                             }
                         }
                     }
-                }
 
-                Box(Modifier.fillMaxWidth().padding(4.dp)) {
-                    AttributionButton(
-                        userHasMovedMap = userHasMovedMap,
-                        attributions = mapAttribution,
-                        modifier = Modifier.align(Alignment.TopStart),
-                        popupElevation = 4.dp,
-                    )
-                    ScaleBar(
-                        metersPerDp = metersPerDp,
-                        modifier = Modifier
-                            .align(Alignment.CenterEnd)
-                            .padding(horizontal = 12.dp),
-                        alignment = Alignment.End,
-                    )
+                    Box(Modifier.fillMaxWidth().padding(4.dp)) {
+                        AttributionButton(
+                            userHasMovedMap = userHasMovedMap,
+                            attributions = mapAttribution,
+                            modifier = Modifier.align(Alignment.TopStart),
+                            popupElevation = 4.dp,
+                        )
+                        ScaleBar(
+                            metersPerDp = metersPerDp,
+                            modifier = Modifier
+                                .align(Alignment.CenterEnd)
+                                .padding(horizontal = 12.dp),
+                            alignment = Alignment.End,
+                        )
+                    }
                 }
             }
         }
