@@ -22,7 +22,7 @@ import de.westnordost.streetcomplete.ui.common.opening_hours.OpeningHoursTable
 import de.westnordost.streetcomplete.ui.common.opening_hours.TimeMode
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import de.westnordost.streetcomplete.ui.util.CrossFadeTransitionSpec
+import de.westnordost.streetcomplete.ui.util.ReplaceBottomSheetTransitionSpec
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource
 
@@ -61,7 +61,7 @@ fun AddPostboxCollectionTimesForm(
 
     AnimatedContent(
         targetState = isDisplayingPrevious,
-        transitionSpec = CrossFadeTransitionSpec
+        transitionSpec = ReplaceBottomSheetTransitionSpec
     ) { isDisplayingPrevious2 ->
         if (isDisplayingPrevious2) {
             QuestForm(

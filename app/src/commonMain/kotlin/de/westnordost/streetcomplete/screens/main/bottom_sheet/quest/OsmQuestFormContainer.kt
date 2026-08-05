@@ -49,7 +49,7 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
 import de.westnordost.streetcomplete.ui.common.quest.Marker
-import de.westnordost.streetcomplete.ui.util.CrossFadeTransitionSpec
+import de.westnordost.streetcomplete.ui.util.ReplaceBottomSheetTransitionSpec
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.geometryType
@@ -128,7 +128,7 @@ fun <T> OsmQuestFormContainer(
     ) {
         AnimatedContent(
             targetState = state,
-            transitionSpec = CrossFadeTransitionSpec,
+            transitionSpec = ReplaceBottomSheetTransitionSpec,
             modifier = modifier,
         ) { currentState ->
             when (currentState) {

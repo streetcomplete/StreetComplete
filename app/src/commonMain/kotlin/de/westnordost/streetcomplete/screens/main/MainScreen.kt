@@ -4,9 +4,13 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.core.FiniteAnimationSpec
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.snap
+import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
@@ -45,6 +49,7 @@ import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.dir
+import de.westnordost.streetcomplete.ui.util.ReplaceBottomSheetTransitionSpec
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
@@ -256,10 +261,15 @@ fun MainScreen(
             AnimatedContent(
                 targetState = shownBottomSheet,
                 transitionSpec = {
-                    // Size transform with snap is necessary so that it doesn't animate the bounds
-                    // from zero (=no form) which looks weird
-                    (fadeIn() + slideInVertically { it } togetherWith
-                    fadeOut() + slideOutVertically { it }) using SizeTransform() { _, _ -> snap() }
+                    if (initialState != null && targetState != null) {
+                        fadeIn() + slideInVertically { it / 16 } togetherWith
+                        fadeOut() + slideOutVertically { it / 24 }
+                    } else {
+                        // Size transform with snap is necessary so that it doesn't animate the bounds
+                        // from zero (=no form) which looks weird
+                        (fadeIn() + slideInVertically { it } togetherWith
+                        fadeOut() + slideOutVertically { it / 2 }) using SizeTransform(clip = false)
+                    }
                 },
             ) { shownBottomSheet ->
                 if (shownBottomSheet != null) {

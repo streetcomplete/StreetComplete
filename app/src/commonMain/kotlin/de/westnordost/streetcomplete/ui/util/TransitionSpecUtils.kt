@@ -6,6 +6,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.scaleIn
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 
 val FallDownTransitionSpec: AnimatedContentTransitionScope<*>.() -> ContentTransform = {
@@ -13,6 +15,7 @@ val FallDownTransitionSpec: AnimatedContentTransitionScope<*>.() -> ContentTrans
         .togetherWith(fadeOut(tween(90)))
 }
 
-val CrossFadeTransitionSpec: AnimatedContentTransitionScope<*>.() -> ContentTransform = {
-    fadeIn() togetherWith fadeOut()
+val ReplaceBottomSheetTransitionSpec: AnimatedContentTransitionScope<*>.() -> ContentTransform = {
+    fadeIn() + slideInVertically { it / 16 } togetherWith
+    fadeOut() + slideOutVertically { it / 24 }
 }
