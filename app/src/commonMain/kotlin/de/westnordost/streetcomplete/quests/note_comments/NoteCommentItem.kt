@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.buildAnnotatedString
@@ -93,7 +94,8 @@ fun NoteCommentItem(
                 ) {
                     Image(
                         painter = avatarPainter ?: painterResource(Res.drawable.avatar_osm_anonymous),
-                        contentDescription = annotatedUserName.text
+                        contentDescription = annotatedUserName.text,
+                        contentScale = ContentScale.Crop
                     )
                 }
 

@@ -27,16 +27,17 @@ import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.graphics.painter.BitmapPainter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.TextLinkStyles
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.NoteComment
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
+import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
-import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
 import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModel
@@ -61,6 +62,7 @@ fun AddNoteCommentForm(
     onDismiss: () -> Unit,
     onCommentNote: (noteText: String, noteImagePaths: List<String>) -> Unit,
     onHideQuest: () -> Unit,
+    quest: Quest,
     note: Note,
     modifier: Modifier = Modifier,
     fileSystem: FileSystem = koinInject(),
@@ -118,7 +120,7 @@ fun AddNoteCommentForm(
     BottomSheetFormScaffold(
         header = {
             Text(
-                text = stringResource(LocalQuestType.current!!.title),
+                text = stringResource(quest.type.title),
                 style = MaterialTheme.typography.titleLarge
             )
         },
@@ -187,6 +189,7 @@ private fun NoteCommentItems(
     avatars: Map<Long, Painter?>,
     textLinkStyles: TextLinkStyles,
     modifier: Modifier = Modifier,
+    elevation: Dp = 4.dp,
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(8.dp),
@@ -198,6 +201,7 @@ private fun NoteCommentItems(
                 avatarPainter = noteComment.user?.id?.let { avatars.get(it) },
                 modifier = Modifier.fillMaxWidth(),
                 textLinkStyles = textLinkStyles,
+                elevation = elevation
             )
         }
     }

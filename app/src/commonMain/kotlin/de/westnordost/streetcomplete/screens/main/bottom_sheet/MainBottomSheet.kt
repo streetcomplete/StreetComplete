@@ -84,6 +84,7 @@ fun MainBottomSheet(
                     viewModel.hideQuest(key)
                     onDismiss()
                 },
+                quest = shownBottomSheet.quest,
                 note = shownBottomSheet.note,
                 modifier = modifier,
             )
