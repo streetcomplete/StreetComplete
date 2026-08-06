@@ -99,6 +99,8 @@ fun AddNoteCommentForm(
                     onTextChange = { noteText = it },
                     imagePaths = noteImagePaths,
                     onImagePathsChange = { noteImagePaths = it },
+                    trackpoints = null,
+                    onDeleteTrackpoints = null,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))

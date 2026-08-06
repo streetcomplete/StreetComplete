@@ -88,6 +88,8 @@ import org.koin.compose.koinInject
                         onTextChange = { noteText = it },
                         imagePaths = noteImagePaths,
                         onImagePathsChange = { noteImagePaths = it },
+                        trackpoints = null,
+                        onDeleteTrackpoints = null,
                         modifier = Modifier.fillMaxWidth()
                     )
                 }

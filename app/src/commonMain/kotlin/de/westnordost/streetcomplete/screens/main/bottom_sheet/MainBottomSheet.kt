@@ -52,12 +52,12 @@ fun MainBottomSheet(
     when (shownBottomSheet) {
         is ShownBottomSheet.CreateOsmNote -> {
             CreateNoteForm(
-                onLeaveNote = { noteText, noteImagePaths ->
+                onLeaveNote = { noteText, noteImagePaths, trackpoints ->
                     viewModel.createNote(
                         position = mapPosition,
                         text = noteText,
                         imagePaths = noteImagePaths,
-                        trackpoints = shownBottomSheet.trackpoints
+                        trackpoints = trackpoints
                     )
                     onSolved(Res.drawable.quest_create_note, mapPosition)
                     onDismiss()

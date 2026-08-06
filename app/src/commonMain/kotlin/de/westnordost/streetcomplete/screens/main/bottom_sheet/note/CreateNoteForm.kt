@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -33,13 +34,16 @@ import kotlin.time.Duration.Companion.milliseconds
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun CreateNoteForm(
-    onLeaveNote: (noteText: String, noteImagePaths: List<String>) -> Unit,
+    onLeaveNote: (noteText: String, noteImagePaths: List<String>, trackpoints: List<Trackpoint>?) -> Unit,
     onDismiss: () -> Unit,
     trackpoints: List<Trackpoint>?,
     modifier: Modifier = Modifier,
 ) {
     var noteText by rememberSaveable { mutableStateOf("") }
     var noteImagePaths by rememberSaveable { mutableStateOf(listOf<String>()) }
+    var trackpointsDeleted by rememberSaveable { mutableStateOf(false) }
+
+    val trackpoints = if (trackpointsDeleted) null else trackpoints
 
     Box(
         modifier = modifier.fillMaxSize()
@@ -73,6 +77,7 @@ fun CreateNoteForm(
                         imagePaths = noteImagePaths,
                         onImagePathsChange = { noteImagePaths = it },
                         trackpoints = trackpoints,
+                        onDeleteTrackpoints = { trackpointsDeleted = true },
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))
@@ -82,7 +87,7 @@ fun CreateNoteForm(
             fab = {
                 FloatingOkButton(
                     visible = noteText.isNotBlank(),
-                    onClick = { onLeaveNote(noteText, noteImagePaths) },
+                    onClick = { onLeaveNote(noteText, noteImagePaths, trackpoints) },
                 )
             },
         )

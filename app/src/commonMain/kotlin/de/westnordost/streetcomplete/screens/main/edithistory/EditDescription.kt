@@ -40,6 +40,7 @@ import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.PolylinePainter
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.rememberTrackpointsPainter
 import de.westnordost.streetcomplete.ui.common.HtmlText
 import de.westnordost.streetcomplete.ui.ktx.fadingHorizontalScrollEdges
 import de.westnordost.streetcomplete.ui.ktx.toPx
@@ -99,19 +100,11 @@ private fun NoteImagesAndTrackRow(
     fileSystem: FileSystem = koinInject()
 ) {
     val state = rememberLazyListState()
-    val strokeColor = MaterialTheme.colors.onSurface
-    val strokeWidth = 1.dp.toPx()
 
-    val trackPainter = remember(trackpoints, strokeColor, strokeWidth) {
-        if (trackpoints != null) {
-            PolylinePainter(trackpoints.map { it.position }, strokeColor, strokeWidth)
-        } else null
-    }
+    val trackpointsPainter = trackpoints?.let { rememberTrackpointsPainter(it) }
     val painters = buildList {
-        if (trackPainter != null) add(trackPainter)
-        for (imagePath in imagePaths) {
-            fileBitmapPainter(fileSystem, Path(imagePath))?.let { add(it) }
-        }
+        if (trackpointsPainter != null) add(trackpointsPainter)
+        addAll(imagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) })
     }
     LazyRow(
         state = state,

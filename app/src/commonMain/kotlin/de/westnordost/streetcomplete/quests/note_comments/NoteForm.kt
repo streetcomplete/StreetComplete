@@ -1,14 +1,9 @@
 package de.westnordost.streetcomplete.quests.note_comments
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
@@ -27,18 +22,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.PolylinePainter
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.rememberTrackpointsPainter
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
-import de.westnordost.streetcomplete.ui.ktx.toPx
-import de.westnordost.streetcomplete.ui.theme.surfaceContainer
 import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
 import de.westnordost.streetcomplete.ui.util.photo.createOpenCameraSettings
 import de.westnordost.streetcomplete.ui.util.photo.createPhotoPlatformFile
@@ -65,8 +56,9 @@ fun NoteForm(
     onTextChange: (String) -> Unit,
     imagePaths: List<String>,
     onImagePathsChange: (List<String>) -> Unit,
+    trackpoints: List<Trackpoint>?,
+    onDeleteTrackpoints: (() -> Unit)?,
     modifier: Modifier = Modifier,
-    trackpoints: List<Trackpoint>? = null,
     fileSystem: FileSystem = koinInject(),
 ) {
     val hasCamera = rememberHasCamera()
@@ -122,50 +114,32 @@ fun NoteForm(
         )
 
         if (trackpoints != null) {
-            val strokeColor = MaterialTheme.colors.onSurface
-            val strokeWidth = 1.dp.toPx()
-            val painter = remember(trackpoints, strokeColor, strokeWidth) {
-                PolylinePainter(trackpoints.map { it.position }, strokeColor, strokeWidth)
-            }
-
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                CompositionLocalProvider(
-                    LocalTextStyle provides MaterialTheme.typography.body2,
-                    LocalContentAlpha provides ContentAlpha.medium
-                ) {
-                    Text(
-                        text = stringResource(Res.string.quest_leave_new_note_track_recording),
-                        modifier = Modifier.weight(1f)
-                    )
-                }
-                Image(
-                    painter = painter,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(72.dp)
-                        .background(MaterialTheme.colors.surfaceContainer, RoundedCornerShape(4.dp))
-                        .padding(4.dp)
-                )
+            CompositionLocalProvider(
+                LocalTextStyle provides MaterialTheme.typography.body2,
+                LocalContentAlpha provides ContentAlpha.medium
+            ) {
+                Text(stringResource(Res.string.quest_leave_new_note_track_recording))
             }
         }
 
-        if (hasCamera) {
-            NoteImagesRow(
-                images = imagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
-                onDeleteImage = { index ->
-                    val image = imagePaths[index]
-                    onImagePathsChange(imagePaths.toMutableList().apply { removeAt(index) })
-                    coroutineScope.launch(Dispatchers.IO) { fileSystem.delete(Path(image)) }
-                },
-                onTakePhoto = {
-                    val file = createPhotoPlatformFile()
-                    path = file.path
-                    takePhotoLauncher.launch(destinationFile = file)
-                },
-                // because otherwise it would overlap with the OK button
-                modifier = Modifier.padding(end = 72.dp)
-            )
-        }
+        NoteTakePhotoImagesAndTrackRow(
+            imagePainters = imagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
+            onDeleteImage = { index ->
+                val image = imagePaths[index]
+                onImagePathsChange(imagePaths.toMutableList().apply { removeAt(index) })
+                coroutineScope.launch(Dispatchers.IO) { fileSystem.delete(Path(image)) }
+            },
+            trackpointsPainter = trackpoints?.let { rememberTrackpointsPainter(it) },
+            onDeleteTrackpoints = { onDeleteTrackpoints?.invoke() },
+            isTakePhotoAvailable = hasCamera,
+            onTakePhoto = {
+                val file = createPhotoPlatformFile()
+                path = file.path
+                takePhotoLauncher.launch(destinationFile = file)
+            },
+            // because otherwise it would overlap with the OK button
+            modifier = Modifier.padding(end = 72.dp)
+        )
     }
 
     if (confirmDiscard) {

@@ -36,9 +36,12 @@ import org.jetbrains.compose.resources.stringResource
 /** Row of attached note images with a button to add them and when clicking on one image, a dialog
  *  opens in which one can look at the image more closely and also remove it again. */
 @Composable
-fun NoteImagesRow(
-    images: List<Painter>,
+fun NoteTakePhotoImagesAndTrackRow(
+    imagePainters: List<Painter>,
     onDeleteImage: (index: Int) -> Unit,
+    trackpointsPainter: Painter?,
+    onDeleteTrackpoints: () -> Unit,
+    isTakePhotoAvailable: Boolean,
     onTakePhoto: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -47,15 +50,17 @@ fun NoteImagesRow(
         verticalAlignment = Alignment.CenterVertically,
         modifier = modifier,
     ) {
-        Button(onClick = onTakePhoto) {
-            Icon(
-                painter = painterResource(Res.drawable.ic_add_photo_24),
-                contentDescription = stringResource(Res.string.quest_leave_new_note_photo)
-            )
+        if (isTakePhotoAvailable) {
+            Button(onClick = onTakePhoto) {
+                Icon(
+                    painter = painterResource(Res.drawable.ic_add_photo_24),
+                    contentDescription = stringResource(Res.string.quest_leave_new_note_photo)
+                )
+            }
         }
         var showNoteImageAtIndexDialog by remember { mutableStateOf<Int?>(null) }
 
-        if (images.isEmpty()) {
+        if (imagePainters.isEmpty() && trackpointsPainter == null && isTakePhotoAvailable) {
             CompositionLocalProvider(
                 LocalTextStyle provides MaterialTheme.typography.body2,
                 LocalContentAlpha provides ContentAlpha.medium
@@ -69,7 +74,19 @@ fun NoteImagesRow(
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
                 modifier = Modifier.fadingHorizontalScrollEdges(state.scrollIndicatorState, 32.dp)
             ) {
-                itemsIndexed(images) { index, painter ->
+                if (trackpointsPainter != null) {
+                    item {
+                        Image(
+                            painter = trackpointsPainter,
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(72.dp)
+                                .clip(RoundedCornerShape(4.dp))
+                                .clickable { showNoteImageAtIndexDialog = -1 }
+                        )
+                    }
+                }
+                itemsIndexed(imagePainters) { index, painter ->
                     Image(
                         painter = painter,
                         contentDescription = null,
@@ -84,10 +101,20 @@ fun NoteImagesRow(
         }
 
         showNoteImageAtIndexDialog?.let { index ->
+            val titleResource =
+                if (index == -1) Res.string.quest_leave_new_note_track_delete_title
+                else Res.string.quest_leave_new_note_photo_delete_title
+
+            val image = if (index == -1) trackpointsPainter else imagePainters[index]
+
             NoteImageDialog(
                 onDismissRequest = { showNoteImageAtIndexDialog = null },
-                image = images[index],
-                onClickDelete = { onDeleteImage(index) },
+                image = image!!,
+                deleteConfirmationTitle = stringResource(titleResource),
+                onClickDelete = {
+                    if (index == -1) onDeleteTrackpoints()
+                    else onDeleteImage(index)
+                },
             )
         }
     }

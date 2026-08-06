@@ -30,6 +30,7 @@ import org.jetbrains.compose.resources.stringResource
 fun NoteImageDialog(
     onDismissRequest: () -> Unit,
     image: Painter,
+    deleteConfirmationTitle: String,
     onClickDelete: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -76,7 +77,7 @@ fun NoteImageDialog(
                 onClickDelete()
             },
             title = {
-                Text(stringResource(Res.string.quest_leave_new_note_photo_delete_title))
+                Text(deleteConfirmationTitle)
             },
             confirmButtonText = stringResource(Res.string.quest_leave_new_note_photo_delete)
         )
