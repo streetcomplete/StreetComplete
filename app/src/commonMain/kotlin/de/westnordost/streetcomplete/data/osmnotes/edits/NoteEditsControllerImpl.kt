@@ -9,9 +9,12 @@ import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
 
 class NoteEditsControllerImpl(
-    private val editsDB: NoteEditsDao
+    private val editsDB: NoteEditsDao,
+    private val fileSystem: FileSystem
 ) : NoteEditsController {
 
     private val listeners = Listeners<NoteEditsSource.Listener>()
@@ -77,6 +80,9 @@ class NoteEditsControllerImpl(
 
     override fun markSynced(edit: NoteEdit, note: Note) {
         var markSyncedSuccess = false
+        for (imagePath in edit.imagePaths) {
+            fileSystem.delete(Path(imagePath), mustExist = false)
+        }
         lock.withLock {
             if (edit.noteId != note.id) {
                 editsDB.updateNoteId(edit.noteId, note.id)
@@ -108,6 +114,9 @@ class NoteEditsControllerImpl(
     }
 
     private fun delete(edit: NoteEdit): Boolean {
+        for (imagePath in edit.imagePaths) {
+            fileSystem.delete(Path(imagePath), mustExist = false)
+        }
         val deleteSuccess = lock.withLock { editsDB.delete(edit.id) }
         if (deleteSuccess) {
             onDeletedEdits(listOf(edit))

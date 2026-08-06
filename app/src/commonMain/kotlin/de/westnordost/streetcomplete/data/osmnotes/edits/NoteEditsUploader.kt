@@ -31,7 +31,6 @@ class NoteEditsUploader(
     private val notesApi: NotesApiClient,
     private val tracksApi: TracksApiClient,
     private val imageUploader: PhotoServiceApiClient,
-    private val fileSystem: FileSystem,
 ) {
     var uploadedChangeListener: OnUploadedChangeListener? = null
 
@@ -97,10 +96,6 @@ class NoteEditsUploader(
                 imageUploader.activate(note.id)
                 noteEditsController.markImagesActivated(note.id)
             }
-
-            for (imagePath in edit.imagePaths) {
-                fileSystem.delete(Path(imagePath), mustExist = false)
-            }
         } catch (e: ConflictException) {
             Log.d(TAG,
                 "Dropped a ${edit.action.name} to ${edit.noteId}" +
@@ -116,10 +111,6 @@ class NoteEditsUploader(
                 noteController.put(updatedNote)
             } else {
                 noteController.delete(edit.noteId)
-            }
-
-            for (imagePath in edit.imagePaths) {
-                fileSystem.delete(Path(imagePath), mustExist = false)
             }
         }
     }

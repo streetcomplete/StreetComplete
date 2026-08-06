@@ -379,8 +379,8 @@ val commonModule = module {
 
     factory { NoteEditsDao(get()) }
 
-    single { NoteEditsUploader(get(), get(), get(), get(), get(), get(), get()) }
-    single<NoteEditsController> { NoteEditsControllerImpl(get()) }
+    single { NoteEditsUploader(get(), get(), get(), get(), get(), get()) }
+    single<NoteEditsController> { NoteEditsControllerImpl(get(), get()) }
     single<NoteEditsSource> { get<NoteEditsController>() }
     single<NotesWithEditsSource> { NotesWithEditsSourceImpl(get(), get(), get()) }
 
