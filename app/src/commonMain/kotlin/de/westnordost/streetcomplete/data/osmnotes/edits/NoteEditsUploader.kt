@@ -17,6 +17,7 @@ import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -53,7 +54,7 @@ class NoteEditsUploader(
         while (true) {
             val edit = noteEditsController.getOldestNeedingImagesActivation() ?: break
             // see uploadEdits
-            withContext(scope.coroutineContext) {
+            withContext(NonCancellable) {
                 imageUploader.activate(edit.noteId)
                 noteEditsController.markImagesActivated(edit.id)
             }
@@ -66,7 +67,7 @@ class NoteEditsUploader(
             /* the sync of local change -> API and its response should not be cancellable because
              * otherwise an inconsistency in the data would occur. E.g. a note could be uploaded
              * twice  */
-            withContext(scope.coroutineContext) { uploadEdit(edit) }
+            withContext(NonCancellable) { uploadEdit(edit) }
         }
     }
 
