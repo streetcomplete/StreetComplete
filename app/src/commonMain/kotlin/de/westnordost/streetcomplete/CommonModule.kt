@@ -200,8 +200,6 @@ import de.westnordost.streetcomplete.screens.user.profile.ProfileViewModelImpl
 import de.westnordost.streetcomplete.ui.util.measure.ArMeasureViewModel
 import de.westnordost.streetcomplete.ui.util.measure.ArMeasureViewModelImpl
 import de.westnordost.streetcomplete.ui.util.measure.ArQuestsDisabler
-import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModel
-import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModelImpl
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundariesImpl
 import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
@@ -602,8 +600,6 @@ val commonModule = module {
     viewModel<MainBottomSheetViewModel> {
         MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
     }
-
-    viewModel<PhotosViewModel> { PhotosViewModelImpl(get(), get()) }
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }
 

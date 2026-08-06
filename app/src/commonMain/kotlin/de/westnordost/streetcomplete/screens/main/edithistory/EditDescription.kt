@@ -1,10 +1,23 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
 import de.westnordost.streetcomplete.data.osm.edits.create.CreateNodeAction
@@ -22,9 +35,14 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.HtmlText
+import de.westnordost.streetcomplete.ui.ktx.fadingHorizontalScrollEdges
 import de.westnordost.streetcomplete.util.html.replaceHtmlEntities
+import de.westnordost.streetcomplete.util.image.fileBitmapPainter
+import kotlinx.io.files.FileSystem
+import kotlinx.io.files.Path
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
 
 /** Shows what an edit changed. */
 @Composable
@@ -53,11 +71,42 @@ fun EditDescription(
             }
         }
         is NoteEdit ->
-            Text(edit.text.orEmpty(), modifier)
+            Column(modifier) {
+                Text(edit.text.orEmpty())
+                SmallNoteImageRow(edit.imagePaths)
+            }
         is OsmQuestHidden ->
             Text(stringResource(Res.string.hid_action_description), modifier)
         is OsmNoteQuestHidden ->
             Text(stringResource(Res.string.hid_action_description), modifier)
+    }
+}
+
+/** Shows a row of image thumbnails */
+@Composable
+private fun SmallNoteImageRow(
+    imagePaths: List<String>,
+    modifier: Modifier = Modifier,
+    fileSystem: FileSystem = koinInject()
+) {
+    val state = rememberLazyListState()
+    val painters = imagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) }
+    LazyRow(
+        state = state,
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier.fadingHorizontalScrollEdges(state.scrollIndicatorState, 16.dp)
+    ) {
+        items(painters) { painter ->
+            Image(
+                painter = painter,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .size(72.dp)
+                    .clip(RoundedCornerShape(4.dp))
+            )
+        }
     }
 }
 

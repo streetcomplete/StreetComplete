@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet.note
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ContentAlpha
@@ -11,17 +10,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.font.FontStyle
@@ -36,23 +31,11 @@ import de.westnordost.streetcomplete.quests.note_comments.NoteForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
-import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
-import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModel
-import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
-import de.westnordost.streetcomplete.ui.util.photo.createOpenCameraSettings
-import de.westnordost.streetcomplete.ui.util.photo.createPhotoPlatformFile
-import de.westnordost.streetcomplete.util.image.fileBitmapPainter
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
-import io.github.vinceglb.filekit.FileKit
-import io.github.vinceglb.filekit.dialogs.compose.rememberCameraPickerLauncher
-import io.github.vinceglb.filekit.path
 import kotlinx.coroutines.launch
-import kotlinx.io.files.FileSystem
-import kotlinx.io.files.Path
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
-import org.koin.compose.viewmodel.koinViewModel
 
 /** Form with which the user can leave a note instead of solving the quest/edit */
 @OptIn(ExperimentalComposeUiApi::class)
@@ -63,38 +46,11 @@ import org.koin.compose.viewmodel.koinViewModel
     element: Element?,
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
-    fileSystem: FileSystem = koinInject(),
 ) {
-    val viewModel = koinViewModel<PhotosViewModel>()
-    val takePhotoSupported = remember { viewModel.isTakePhotoSupported() }
-    val noteImagePaths by viewModel.imagePaths.collectAsState()
-    var path by rememberSaveable { mutableStateOf<String?>(null) }
-    val takePhotoLauncher = rememberCameraPickerLauncher(createOpenCameraSettings()) { file ->
-        if (file != null) {
-            path?.let { viewModel.addImagePath(it) }
-        }
-    }
     val coroutineScope = rememberCoroutineScope()
 
     var noteText by rememberSaveable { mutableStateOf("") }
-
-    var confirmDiscard by remember { mutableStateOf(false) }
-
-    val isComplete = noteText.isNotBlank()
-    val hasChanges = noteText.isNotBlank() || noteImagePaths.isNotEmpty()
-
-    fun onDiscard() {
-        viewModel.deleteAllImagePaths()
-        onDismiss()
-    }
-
-    BackHandler {
-        if (hasChanges) {
-            confirmDiscard = true
-        } else {
-            onDiscard()
-        }
-    }
+    var noteImagePaths by rememberSaveable { mutableStateOf(listOf<String>()) }
 
     BottomSheetFormScaffold(
         header = {
@@ -127,16 +83,11 @@ import org.koin.compose.viewmodel.koinViewModel
                     }
 
                     NoteForm(
+                        onDismiss = onDismiss,
                         text = noteText,
                         onTextChange = { noteText = it },
-                        addImagesEnabled = takePhotoSupported,
-                        onDeleteImage = { viewModel.deleteImagePath(it) },
-                        onTakePhoto = {
-                            val file = createPhotoPlatformFile()
-                            path = file.path
-                            takePhotoLauncher.launch(destinationFile = file)
-                        },
-                        images = noteImagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
+                        imagePaths = noteImagePaths,
+                        onImagePathsChange = { noteImagePaths = it },
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
@@ -144,7 +95,7 @@ import org.koin.compose.viewmodel.koinViewModel
         },
         fab = {
             FloatingOkButton(
-                visible = isComplete,
+                visible = noteText.isNotBlank(),
                 onClick = {
                     coroutineScope.launch {
                         val context = getEditTypeContextForNote(element, editType, featureDictionary)
@@ -155,11 +106,4 @@ import org.koin.compose.viewmodel.koinViewModel
         },
         modifier = modifier,
     )
-
-    if (confirmDiscard) {
-        ConfirmDiscardDialog(
-            onDismissRequest = { confirmDiscard = false },
-            onConfirmed = { onDiscard() },
-        )
-    }
 }

@@ -19,8 +19,6 @@ import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.IosArSupportChecker
-import de.westnordost.streetcomplete.ui.util.photo.HasCameraChecker
-import de.westnordost.streetcomplete.ui.util.photo.IosHasCameraChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.EmptyCrashReportHolder
 import de.westnordost.streetcomplete.util.sound.IosSoundEffectPlayer
@@ -80,10 +78,6 @@ val iosModule = module {
     // app store info
 
     single<AppStoreInfo> { IosAppStoreInfo }
-
-    // take photos
-
-    factory<HasCameraChecker>() { IosHasCameraChecker }
 
     // AR
 

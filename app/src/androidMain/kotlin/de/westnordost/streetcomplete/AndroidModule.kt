@@ -35,8 +35,6 @@ import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.ArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
-import de.westnordost.streetcomplete.ui.util.photo.AndroidHasCameraChecker
-import de.westnordost.streetcomplete.ui.util.photo.HasCameraChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
@@ -93,10 +91,6 @@ val androidModule = module {
     // app store info
 
     single<AppStoreInfo> { AndroidAppStoreInfo(get()) }
-
-    // take photos
-
-    factory<HasCameraChecker>() { AndroidHasCameraChecker(get()) }
 
     // AR
 
