@@ -1,10 +1,17 @@
 package de.westnordost.streetcomplete.ui.util.photo
 
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.ktx.toInstant
+import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import io.github.vinceglb.filekit.FileKit
 import io.github.vinceglb.filekit.PlatformFile
 import io.github.vinceglb.filekit.compressImage
+import io.github.vinceglb.filekit.filesDir
 import io.github.vinceglb.filekit.write
+import kotlinx.datetime.format
+import kotlinx.datetime.format.DateTimeComponents
+import kotlin.time.Clock
 
 /** Lowers size and JPEG quality of the given photo file and overwrites the original */
 suspend fun FileKit.compressPhotoAndOverwrite(file: PlatformFile) {
@@ -15,4 +22,11 @@ suspend fun FileKit.compressPhotoAndOverwrite(file: PlatformFile) {
         maxHeight = ApplicationConstants.ATTACH_PHOTO_MAX_SIZE,
     )
     file.write(compressedImage)
+}
+
+fun createPhotoPlatformFile(): PlatformFile {
+    val time = Clock.System.now().toLocalDateTime().toString().replace(':', '-')
+    // files dir and not cacheDir because we keep the photo on disk as long as the user didn't
+    // upload the photo yet
+    return PlatformFile(FileKit.filesDir, "photo_$time.jpg")
 }

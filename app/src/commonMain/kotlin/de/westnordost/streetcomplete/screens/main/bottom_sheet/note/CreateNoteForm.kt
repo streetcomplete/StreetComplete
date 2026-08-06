@@ -31,6 +31,8 @@ import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModel
 import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
+import de.westnordost.streetcomplete.ui.util.photo.createOpenCameraSettings
+import de.westnordost.streetcomplete.ui.util.photo.createPhotoPlatformFile
 import de.westnordost.streetcomplete.util.image.fileBitmapPainter
 import io.github.vinceglb.filekit.FileKit
 import io.github.vinceglb.filekit.dialogs.compose.rememberCameraPickerLauncher
@@ -57,13 +59,10 @@ fun CreateNoteForm(
     val viewModel = koinViewModel<PhotosViewModel>()
     val takePhotoSupported = remember { viewModel.isTakePhotoSupported() }
     val noteImagePaths by viewModel.imagePaths.collectAsState()
-    val coroutineScope = rememberCoroutineScope()
-    val takePhotoLauncher = rememberCameraPickerLauncher() { file ->
+    var path by rememberSaveable { mutableStateOf<String?>(null) }
+    val takePhotoLauncher = rememberCameraPickerLauncher(createOpenCameraSettings()) { file ->
         if (file != null) {
-            coroutineScope.launch {
-                FileKit.compressPhotoAndOverwrite(file)
-                viewModel.addImagePath(file.path)
-            }
+            path?.let { viewModel.addImagePath(it) }
         }
     }
 
@@ -117,7 +116,11 @@ fun CreateNoteForm(
                         onTextChange = { noteText = it },
                         addImagesEnabled = takePhotoSupported,
                         onDeleteImage = { viewModel.deleteImagePath(it) },
-                        onTakePhoto = { takePhotoLauncher.launch() },
+                        onTakePhoto = {
+                            val file = createPhotoPlatformFile()
+                            path = file.path
+                            takePhotoLauncher.launch(destinationFile = file)
+                        },
                         images = noteImagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
                         isGpxAttached = isGpxAttached,
                         modifier = Modifier

@@ -40,6 +40,8 @@ import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.QuestHeader
 import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModel
 import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
+import de.westnordost.streetcomplete.ui.util.photo.createOpenCameraSettings
+import de.westnordost.streetcomplete.ui.util.photo.createPhotoPlatformFile
 import de.westnordost.streetcomplete.util.image.fileBitmapPainter
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import io.github.vinceglb.filekit.FileKit
@@ -66,15 +68,13 @@ import org.koin.compose.viewmodel.koinViewModel
     val viewModel = koinViewModel<PhotosViewModel>()
     val takePhotoSupported = remember { viewModel.isTakePhotoSupported() }
     val noteImagePaths by viewModel.imagePaths.collectAsState()
-    val coroutineScope = rememberCoroutineScope()
-    val takePhotoLauncher = rememberCameraPickerLauncher() { file ->
+    var path by rememberSaveable { mutableStateOf<String?>(null) }
+    val takePhotoLauncher = rememberCameraPickerLauncher(createOpenCameraSettings()) { file ->
         if (file != null) {
-            coroutineScope.launch {
-                FileKit.compressPhotoAndOverwrite(file)
-                viewModel.addImagePath(file.path)
-            }
+            path?.let { viewModel.addImagePath(it) }
         }
     }
+    val coroutineScope = rememberCoroutineScope()
 
     var noteText by rememberSaveable { mutableStateOf("") }
 
@@ -131,7 +131,11 @@ import org.koin.compose.viewmodel.koinViewModel
                         onTextChange = { noteText = it },
                         addImagesEnabled = takePhotoSupported,
                         onDeleteImage = { viewModel.deleteImagePath(it) },
-                        onTakePhoto = { takePhotoLauncher.launch() },
+                        onTakePhoto = {
+                            val file = createPhotoPlatformFile()
+                            path = file.path
+                            takePhotoLauncher.launch(destinationFile = file)
+                        },
                         images = noteImagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
                         modifier = Modifier.fillMaxWidth()
                     )

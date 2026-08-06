@@ -19,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSerializable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -42,9 +43,12 @@ import de.westnordost.streetcomplete.ui.theme.defaultTextLinkStyles
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.ui.util.photo.PhotosViewModel
 import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
+import de.westnordost.streetcomplete.ui.util.photo.createOpenCameraSettings
+import de.westnordost.streetcomplete.ui.util.photo.createPhotoPlatformFile
 import de.westnordost.streetcomplete.util.image.fileBitmapPainter
 import de.westnordost.streetcomplete.util.image.loadImageBitmap
 import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.dialogs.FileKitOpenCameraSettings
 import io.github.vinceglb.filekit.dialogs.compose.rememberCameraPickerLauncher
 import io.github.vinceglb.filekit.path
 import kotlinx.coroutines.launch
@@ -72,13 +76,10 @@ fun AddNoteCommentForm(
     val viewModel = koinViewModel<PhotosViewModel>()
     val takePhotoSupported = remember { viewModel.isTakePhotoSupported() }
     val noteImagePaths by viewModel.imagePaths.collectAsState()
-    val coroutineScope = rememberCoroutineScope()
-    val takePhotoLauncher = rememberCameraPickerLauncher() { file ->
+    var path by rememberSaveable { mutableStateOf<String?>(null) }
+    val takePhotoLauncher = rememberCameraPickerLauncher(createOpenCameraSettings()) { file ->
         if (file != null) {
-            coroutineScope.launch {
-                FileKit.compressPhotoAndOverwrite(file)
-                viewModel.addImagePath(file.path)
-            }
+            path?.let { viewModel.addImagePath(it) }
         }
     }
 
@@ -141,7 +142,11 @@ fun AddNoteCommentForm(
                     onTextChange = { noteText = it },
                     addImagesEnabled = takePhotoSupported,
                     onDeleteImage = { viewModel.deleteImagePath(it) },
-                    onTakePhoto = { takePhotoLauncher.launch() },
+                    onTakePhoto = {
+                        val file = createPhotoPlatformFile()
+                        path = file.path
+                        takePhotoLauncher.launch(destinationFile = file)
+                    },
                     images = noteImagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
                     modifier = Modifier
                         .fillMaxWidth()

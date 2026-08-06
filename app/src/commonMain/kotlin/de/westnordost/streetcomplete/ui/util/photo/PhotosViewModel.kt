@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.ui.util.photo
 
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.util.ktx.launch
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.PlatformFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,7 +36,10 @@ class PhotosViewModelImpl(
     override fun isTakePhotoSupported(): Boolean = checkHasCamera()
 
     override fun addImagePath(path: String) {
-        imagePaths.value += path
+        launch(Dispatchers.IO) {
+            FileKit.compressPhotoAndOverwrite(PlatformFile(path))
+            imagePaths.value += path
+        }
     }
 
     override fun deleteImagePath(index: Int) {
