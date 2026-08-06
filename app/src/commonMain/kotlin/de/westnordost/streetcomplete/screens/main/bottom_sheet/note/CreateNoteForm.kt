@@ -17,6 +17,7 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.quests.note_comments.NoteForm
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
@@ -34,7 +35,7 @@ import kotlin.time.Duration.Companion.milliseconds
 fun CreateNoteForm(
     onLeaveNote: (noteText: String, noteImagePaths: List<String>) -> Unit,
     onDismiss: () -> Unit,
-    isGpxAttached: Boolean,
+    trackpoints: List<Trackpoint>?,
     modifier: Modifier = Modifier,
 ) {
     var noteText by rememberSaveable { mutableStateOf("") }
@@ -48,7 +49,7 @@ fun CreateNoteForm(
             modifier = Modifier
                 .align(Alignment.Center)
                 .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
-                .animateFallDown(startDelay = 200.milliseconds)
+                .animateFallDown(startDelay = 400.milliseconds)
         )
 
         BottomSheetFormScaffold(
@@ -58,8 +59,8 @@ fun CreateNoteForm(
                     subtitle = null,
                     hintText =
                         stringResource(Res.string.create_new_note_description) +
-                            "\n" +
-                            stringResource(Res.string.create_new_note_hint),
+                        "\n" +
+                        stringResource(Res.string.create_new_note_hint),
                     hintImages = emptyList()
                 )
             },
@@ -71,7 +72,7 @@ fun CreateNoteForm(
                         onTextChange = { noteText = it },
                         imagePaths = noteImagePaths,
                         onImagePathsChange = { noteImagePaths = it },
-                        isGpxAttached = isGpxAttached,
+                        trackpoints = trackpoints,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(PaddingValues(horizontal = 24.dp, vertical = 12.dp))

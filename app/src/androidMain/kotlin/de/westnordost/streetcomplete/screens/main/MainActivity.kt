@@ -46,6 +46,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.Quest
@@ -624,7 +625,7 @@ class MainActivity :
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
         val pos = mapFragment.displayedLocation?.toLatLon() ?: return
-        composeNote(pos, true)
+        composeNote(pos, mapFragment.recordedTracks)
     }
 
     private fun onClickCompassButton() {
@@ -721,8 +722,8 @@ class MainActivity :
         composeNote(pos)
     }
 
-    private fun composeNote(pos: LatLon, isGpxAttached: Boolean = false) {
-        mainBottomSheetViewModel.showCreateNote(isGpxAttached)
+    private fun composeNote(pos: LatLon, trackpoints: List<Trackpoint>? = null) {
+        mainBottomSheetViewModel.showCreateNote(trackpoints)
 
         mapFragment?.updateCameraPosition(300) {
             position = pos

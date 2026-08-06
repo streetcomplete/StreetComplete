@@ -127,10 +127,10 @@ class NoteEditsUploader(
     }
 
     private suspend fun uploadAndGetAttachedTrackText(
-        trackpoints: List<Trackpoint>,
+        trackpoints: List<Trackpoint>?,
         noteText: String?
     ): String {
-        if (trackpoints.isEmpty()) return ""
+        if (trackpoints.isNullOrEmpty()) return ""
         val trackId = tracksApi.create(
             trackpoints = trackpoints,
             creator = ApplicationConstants.USER_AGENT,

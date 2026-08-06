@@ -43,7 +43,7 @@ abstract class MainBottomSheetViewModel : ViewModel() {
 
     abstract fun showQuest(questKey: QuestKey)
 
-    abstract fun showCreateNote(isGpxAttached: Boolean)
+    abstract fun showCreateNote(trackpoints: List<Trackpoint>?)
 
     abstract fun closeBottomSheet()
 
@@ -65,7 +65,7 @@ abstract class MainBottomSheetViewModel : ViewModel() {
         position: LatLon,
         text: String,
         imagePaths: List<String> = emptyList(),
-        track: List<Trackpoint> = emptyList()
+        trackpoints: List<Trackpoint>? = null
     )
 }
 
@@ -119,8 +119,8 @@ class MainBottomSheetViewModelImpl(
         }
     }
 
-    override fun showCreateNote(isGpxAttached: Boolean) {
-        shownBottomSheet.value = ShownBottomSheet.CreateOsmNote(isGpxAttached)
+    override fun showCreateNote(trackpoints: List<Trackpoint>?) {
+        shownBottomSheet.value = ShownBottomSheet.CreateOsmNote(trackpoints)
     }
 
     override fun hideQuest(questKey: QuestKey) {
@@ -157,10 +157,10 @@ class MainBottomSheetViewModelImpl(
         position: LatLon,
         text: String,
         imagePaths: List<String>,
-        track: List<Trackpoint>
+        trackpoints: List<Trackpoint>?
     ) {
         launch(Dispatchers.IO) {
-            noteEditsController.add(0, NoteEditAction.CREATE, position, text, imagePaths, track)
+            noteEditsController.add(0, NoteEditAction.CREATE, position, text, imagePaths, trackpoints)
         }
     }
 
@@ -207,6 +207,6 @@ sealed interface ShownBottomSheet {
     ) : ShownBottomSheet
 
     data class CreateOsmNote(
-        val isGpxAttached: Boolean
+        val trackpoints: List<Trackpoint>?
     ) : ShownBottomSheet
 }

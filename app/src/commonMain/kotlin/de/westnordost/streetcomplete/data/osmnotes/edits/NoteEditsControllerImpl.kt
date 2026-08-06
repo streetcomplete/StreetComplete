@@ -27,7 +27,7 @@ class NoteEditsControllerImpl(
         position: LatLon,
         text: String?,
         imagePaths: List<String>,
-        track: List<Trackpoint>,
+        track: List<Trackpoint>?,
     ) {
         val edit = NoteEdit(
             0,

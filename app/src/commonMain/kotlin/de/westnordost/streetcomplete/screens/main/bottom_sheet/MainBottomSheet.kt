@@ -57,13 +57,13 @@ fun MainBottomSheet(
                         position = mapPosition,
                         text = noteText,
                         imagePaths = noteImagePaths,
-                        track = TODO()
+                        trackpoints = shownBottomSheet.trackpoints
                     )
                     onSolved(Res.drawable.quest_create_note, mapPosition)
                     onDismiss()
                 },
                 onDismiss = onDismiss,
-                isGpxAttached = shownBottomSheet.isGpxAttached,
+                trackpoints = shownBottomSheet.trackpoints,
                 modifier = modifier,
             )
         }

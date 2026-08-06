@@ -1,14 +1,23 @@
 package de.westnordost.streetcomplete.quests.note_comments
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -19,12 +28,17 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.PolylinePainter
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
+import de.westnordost.streetcomplete.ui.ktx.toPx
+import de.westnordost.streetcomplete.ui.theme.surfaceContainer
 import de.westnordost.streetcomplete.ui.util.photo.compressPhotoAndOverwrite
 import de.westnordost.streetcomplete.ui.util.photo.createOpenCameraSettings
 import de.westnordost.streetcomplete.ui.util.photo.createPhotoPlatformFile
@@ -52,7 +66,7 @@ fun NoteForm(
     imagePaths: List<String>,
     onImagePathsChange: (List<String>) -> Unit,
     modifier: Modifier = Modifier,
-    isGpxAttached: Boolean = false,
+    trackpoints: List<Trackpoint>? = null,
     fileSystem: FileSystem = koinInject(),
 ) {
     val hasCamera = rememberHasCamera()
@@ -72,7 +86,7 @@ fun NoteForm(
     }
     var confirmDiscard by remember { mutableStateOf(false) }
 
-    val hasChanges = text.isNotBlank() || imagePaths.isNotEmpty()
+    val hasChanges = text.isNotBlank() || imagePaths.isNotEmpty() || trackpoints != null
 
     fun onDiscard() {
         coroutineScope.launch(Dispatchers.IO) {
@@ -106,12 +120,35 @@ fun NoteForm(
             minLines = 3,
             modifier = Modifier.fillMaxWidth()
         )
-        if (isGpxAttached) {
-            Text(
-                text = stringResource(Res.string.quest_leave_new_note_track_recording),
-                modifier = Modifier.alpha(ContentAlpha.medium)
-            )
+
+        if (trackpoints != null) {
+            val strokeColor = MaterialTheme.colors.onSurface
+            val strokeWidth = 1.dp.toPx()
+            val painter = remember(trackpoints, strokeColor, strokeWidth) {
+                PolylinePainter(trackpoints.map { it.position }, strokeColor, strokeWidth)
+            }
+
+            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                CompositionLocalProvider(
+                    LocalTextStyle provides MaterialTheme.typography.body2,
+                    LocalContentAlpha provides ContentAlpha.medium
+                ) {
+                    Text(
+                        text = stringResource(Res.string.quest_leave_new_note_track_recording),
+                        modifier = Modifier.weight(1f)
+                    )
+                }
+                Image(
+                    painter = painter,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(72.dp)
+                        .background(MaterialTheme.colors.surfaceContainer, RoundedCornerShape(4.dp))
+                        .padding(4.dp)
+                )
+            }
         }
+
         if (hasCamera) {
             NoteImagesRow(
                 images = imagePaths.mapNotNull { fileBitmapPainter(fileSystem, Path(it)) },
