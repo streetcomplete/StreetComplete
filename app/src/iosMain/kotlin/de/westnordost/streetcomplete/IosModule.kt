@@ -25,7 +25,8 @@ import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDefaults
 import platform.Foundation.NSUserDomainMask
 
-private val COMPOSE_FILES_DIR = NSBundle.mainBundle.resourcePath + "/compose-resources/files"
+private val COMPOSE_FILES_DIR = NSBundle.mainBundle.resourcePath +
+    "/compose-resources/composeResources/de.westnordost.streetcomplete.resources/files"
 
 @OptIn(ExperimentalForeignApi::class)
 val iosModule = module {
