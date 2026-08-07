@@ -29,7 +29,7 @@ fun FeatureDictionary.getPlaceOrDisusedPlace(
         ?.takeIf { it.toElement().isPlace() }
     // or a disused place
     ?: getDisusedFeature(disusedString, element, languages, country)
-        ?.takeIf { it.toElement().isPlace() }
+        ?.takeIf { it.toElement().isDisusedPlace() }
     // or vacant place
     ?: (if (element.isDisusedPlace()) getById("shop/vacant", languages, country) else null)
     // or unknown place (i.e. not known by feature dictionary)

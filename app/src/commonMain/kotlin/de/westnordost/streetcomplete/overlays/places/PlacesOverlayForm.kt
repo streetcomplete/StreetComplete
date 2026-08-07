@@ -26,6 +26,7 @@ import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.osm.localized_name.parseLocalizedNames
 import de.westnordost.streetcomplete.osm.places.applyReplacePlaceTo
+import de.westnordost.streetcomplete.osm.places.getPlaceAsDisused
 import de.westnordost.streetcomplete.osm.places.getPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.places.isDisusedPlace
 import de.westnordost.streetcomplete.osm.places.shouldReplacePlace
@@ -184,10 +185,10 @@ import org.koin.compose.koinInject
             // title hint label with name is a duplication, it is displayed in the UI already
             element?.let { nameAndLocationLabel(it, featureDictionary = null) },
         otherAnswers = { listOfNotNull(
-            if (originalFeature?.isDisusedPlace() != false) {
+            if (element != null && originalFeature?.isDisusedPlace() == false) {
                 AnswerItem(stringResource(Res.string.quest_shop_gone_vacant_answer))  {
-                    val languages = getLanguagesForFeatureDictionary()
-                    onSelectedFeature(featureDictionary.getById("shop/vacant", languages)!!)
+                    val vacantShop = featureDictionary.getPlaceAsDisused(element, country = countryInfo.countryOrSubdivisionCode)
+                    onSelectedFeature(vacantShop)
                 }
             } else null,
             if (selectedFeature?.hasFixedName != true && !isNoName) {
