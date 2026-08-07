@@ -796,6 +796,10 @@ class MainActivity :
     private suspend fun showOverlayElementDetailsOnMap(overlay: Overlay, element: Element, geometry: ElementGeometry) {
         val mapFragment = mapFragment ?: return
 
+        mapFragment.updateCameraPosition {
+            padding = getOpenQuestFormMapPadding()
+        }
+
         mapFragment.highlightGeometry(geometry)
         mapFragment.highlightPins(overlay.icon.toAndroidResourceId()!!, listOf(geometry.center))
         mapFragment.hideNonHighlightedPins()
