@@ -22,7 +22,9 @@ import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.toOffset
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.get
@@ -107,7 +109,9 @@ fun MoveNodeForm(
             modifier = Modifier
                 .align(Alignment.Center)
                 .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
-                .onGloballyPositioned { pinOffset = it.positionInParent() }
+                .onGloballyPositioned {
+                    pinOffset = it.positionInParent() + it.size.center.toOffset()
+                }
         )
 
         BottomSheetFormScaffold(

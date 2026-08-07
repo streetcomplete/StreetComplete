@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.runtime.Stable
+import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -36,6 +37,8 @@ import kotlinx.coroutines.flow.StateFlow
 @Stable
 abstract class MainBottomSheetViewModel : ViewModel() {
     abstract val shownBottomSheet: StateFlow<ShownBottomSheet?>
+
+    abstract val geometryOffsetInWindow: MutableStateFlow<Offset?>
 
     abstract fun showCreateElementInOverlay(overlay: Overlay)
 
@@ -81,6 +84,8 @@ class MainBottomSheetViewModelImpl(
     private val surveyChecker: SurveyChecker,
 ) : MainBottomSheetViewModel() {
     override val shownBottomSheet = MutableStateFlow<ShownBottomSheet?>(null)
+
+    override val geometryOffsetInWindow = MutableStateFlow<Offset?>(null)
 
     override fun closeBottomSheet() {
         shownBottomSheet.value = null
@@ -166,9 +171,8 @@ class MainBottomSheetViewModelImpl(
 
     private fun showOsmQuest(questKey: OsmQuestKey) {
         val element = mapDataSource.get(questKey.elementType, questKey.elementId) ?: return
-        val geometry = mapDataSource.getGeometry(questKey.elementType, questKey.elementId) ?: return
         val quest = osmQuestSource.get(questKey) ?: return
-        shownBottomSheet.value = ShownBottomSheet.OsmQuest(quest, element, geometry)
+        shownBottomSheet.value = ShownBottomSheet.OsmQuest(quest, element)
     }
 
     private fun showOsmNoteQuest(questKey: OsmNoteQuestKey) {
@@ -192,21 +196,30 @@ sealed interface ShownBottomSheet {
     data class OsmQuest(
         val quest: de.westnordost.streetcomplete.data.osm.osmquests.OsmQuest,
         val element: Element,
-        val geometry: ElementGeometry
-    ) : ShownBottomSheet
+    ) : ShownBottomSheet {
+        override val position get() = quest.position
+    }
 
     data class OsmNoteQuest(
-        val quest: Quest,
+        val quest: de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuest,
         val note: Note
-    ) : ShownBottomSheet
+    ) : ShownBottomSheet {
+        override val position get() = quest.position
+    }
 
     data class Overlay(
         val overlay: de.westnordost.streetcomplete.data.overlays.Overlay,
         val element: Element?,
         val geometry: ElementGeometry?,
-    ) : ShownBottomSheet
+    ) : ShownBottomSheet {
+        override val position get() = geometry?.center
+    }
 
     data class CreateOsmNote(
         val trackpoints: List<Trackpoint>?
-    ) : ShownBottomSheet
+    ) : ShownBottomSheet {
+        override val position get() = null
+    }
+
+    val position: LatLon?
 }

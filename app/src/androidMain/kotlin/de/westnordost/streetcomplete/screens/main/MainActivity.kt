@@ -81,6 +81,7 @@ import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.toOffset
 import de.westnordost.streetcomplete.util.ktx.toast
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
@@ -309,6 +310,7 @@ class MainActivity :
             }
         }
         observe(mainBottomSheetViewModel.shownBottomSheet) { shownBottomSheet ->
+            updateBottomSheetElementPosition()
             if (shownBottomSheet != null) {
                 freezeMap()
                 when (shownBottomSheet) {
@@ -410,12 +412,14 @@ class MainActivity :
         viewModel.isRecordingTracks.value = mapFragment?.isRecordingTracks ?: false
         viewModel.mapCamera.value = mapFragment?.cameraPosition
         viewModel.metersPerDp.value = mapFragment?.getMetersPerPixel() ?: 0.0
+        updateBottomSheetElementPosition()
         updateDisplayedPosition()
     }
 
     override fun onMapIsChanging(camera: CameraPosition) {
         viewModel.mapCamera.value = camera
         viewModel.metersPerDp.value = mapFragment?.getMetersPerPixel() ?: 0.0
+        updateBottomSheetElementPosition()
         updateDisplayedPosition()
     }
 
@@ -469,7 +473,14 @@ class MainActivity :
     }
 
     private fun updateDisplayedPosition() {
-        viewModel.displayedPosition.value = getDisplayedPoint()?.let { Offset(it.x, it.y) }
+        viewModel.displayedPosition.value = getDisplayedPoint()?.toOffset()
+    }
+
+    private fun updateBottomSheetElementPosition() {
+        val bottomSheetElementPosition = mainBottomSheetViewModel.shownBottomSheet.value?.position
+        mainBottomSheetViewModel.geometryOffsetInWindow.value =
+            if (bottomSheetElementPosition != null) mapFragment?.getPointOf(bottomSheetElementPosition)?.toOffset()
+            else null
     }
 
     private fun getDisplayedPoint(): PointF? {

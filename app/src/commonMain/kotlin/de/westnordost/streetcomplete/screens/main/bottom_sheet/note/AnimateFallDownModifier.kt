@@ -25,7 +25,7 @@ fun Modifier.animateFallDown(
     val a = remember { Animatable(0f) }
 
     LaunchedEffect(Unit) {
-        delay(200.milliseconds)
+        delay(startDelay)
         launch {
             a.animateTo(
                 targetValue = 1f,

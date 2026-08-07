@@ -126,6 +126,7 @@ fun MainScreen(
     val hasEdits by remember { derivedStateOf { editItems.isNotEmpty() } }
 
     val shownBottomSheet by mainBottomSheetViewModel.shownBottomSheet.collectAsState()
+    val geometryOffsetInWindow by mainBottomSheetViewModel.geometryOffsetInWindow.collectAsState()
 
     var showOverlaysTutorial by remember { mutableStateOf(false) }
     var showIntroTutorial by remember { mutableStateOf(false) }
@@ -278,7 +279,7 @@ fun MainScreen(
                         onSolved = onSolvedQuest,
                         viewModel = mainBottomSheetViewModel,
                         shownBottomSheet = shownBottomSheet,
-                        geometryOffsetInWindow = Offset(0f, 0f), // TODO
+                        geometryOffsetInWindow = geometryOffsetInWindow,
                         mapRotation = mapCamera.rotation.toFloat(),
                         mapTilt = mapCamera.tilt.toFloat(),
                         mapPosition = mapCamera.position,

@@ -93,21 +93,21 @@ fun MainBottomSheet(
             OsmQuestFormContainer(
                 onDismiss = onDismiss,
                 onEdit = { action ->
-                    if (SuppressSurveyConfirmation || viewModel.isSurvey(shownBottomSheet.geometry)) {
+                    if (SuppressSurveyConfirmation || viewModel.isSurvey(shownBottomSheet.quest.geometry)) {
                         viewModel.submitEdit(
                             elementEditType = shownBottomSheet.quest.type,
-                            geometry = shownBottomSheet.geometry,
+                            geometry = shownBottomSheet.quest.geometry,
                             elementEditAction = action
                         )
                         onSolved(shownBottomSheet.quest.type.icon, shownBottomSheet.quest.position)
                         onDismiss()
                     } else {
-                        confirmEdit = PendingEdit(shownBottomSheet.quest.type, shownBottomSheet.geometry, action)
+                        confirmEdit = PendingEdit(shownBottomSheet.quest.type, shownBottomSheet.quest.geometry, action)
                     }
                 },
                 onLeaveNote = { noteText, noteImagePaths ->
                     viewModel.createNote(
-                        position = shownBottomSheet.geometry.center,
+                        position = shownBottomSheet.quest.geometry.center,
                         text = noteText,
                         imagePaths = noteImagePaths,
                     )
@@ -123,7 +123,7 @@ fun MainBottomSheet(
                 },
                 questType = shownBottomSheet.quest.type,
                 element = shownBottomSheet.element,
-                geometry = shownBottomSheet.geometry,
+                geometry = shownBottomSheet.quest.geometry,
                 geometryOffsetInWindow = geometryOffsetInWindow,
                 mapPosition = mapPosition,
                 mapRotation = mapRotation,
