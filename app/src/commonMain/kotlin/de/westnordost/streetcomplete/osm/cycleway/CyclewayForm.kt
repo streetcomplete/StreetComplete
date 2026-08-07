@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side
@@ -48,6 +49,9 @@ fun CyclewayForm(
     isRightSideVisible: Boolean = true,
 ) {
     var showPickerForSide by remember { mutableStateOf<Side?>(null) }
+    var showReverseDirectionPopup by remember(selectionMode) {
+        mutableStateOf(selectionMode == CyclewayFormSelectionMode.REVERSE)
+    }
 
     Box(
         modifier = modifier,
@@ -85,8 +89,11 @@ fun CyclewayForm(
             isLeftSideVisible = isLeftSideVisible,
             isRightSideVisible = isRightSideVisible,
         )
-        if (selectionMode == CyclewayFormSelectionMode.REVERSE) {
-            ReverseDirectionsHint(Modifier.align(Alignment.TopCenter).padding(8.dp))
+        if (showReverseDirectionPopup) {
+            ToastPopup(
+                onDismissRequest = { showReverseDirectionPopup = false },
+                text = stringResource(Res.string.cycleway_reverse_direction_toast),
+            )
         }
     }
 
@@ -119,22 +126,6 @@ fun CyclewayForm(
                     )
                 }
             },
-        )
-    }
-}
-
-@Composable
-private fun ReverseDirectionsHint(
-    modifier: Modifier = Modifier,
-) {
-    Surface(
-        modifier = modifier,
-        shape = MaterialTheme.shapes.small,
-        elevation = 1.dp
-    ) {
-        Text(
-            text = stringResource(Res.string.cycleway_reverse_direction_toast),
-            modifier = Modifier.padding(8.dp)
         )
     }
 }
