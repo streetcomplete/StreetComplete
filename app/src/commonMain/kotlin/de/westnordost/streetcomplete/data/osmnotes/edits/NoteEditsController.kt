@@ -18,7 +18,7 @@ interface NoteEditsController : NoteEditsSource {
         position: LatLon,
         text: String? = null,
         imagePaths: List<String> = emptyList(),
-        track: List<Trackpoint> = emptyList(),
+        track: List<Trackpoint>? = null,
     )
 
     fun getOldestNeedingImagesActivation(): NoteEdit?

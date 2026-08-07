@@ -19,9 +19,9 @@ data class SplitAtPoint(override val pos: LatLon) : SplitPolylineAtPosition()
  *  of these two nodes  */
 @Serializable
 data class SplitAtLinePosition(val pos1: LatLon, val pos2: LatLon, val delta: Double) : SplitPolylineAtPosition() {
-    override val pos: LatLon get() {
+    override val pos: LatLon by lazy {
         val line = listOf(pos1, pos2)
-        return line.pointOnPolylineFromStart(line.measuredLength() * delta)!!
+        line.pointOnPolylineFromStart(line.measuredLength() * delta)!!
     }
     init {
         if (delta <= 0 || delta >= 1) {

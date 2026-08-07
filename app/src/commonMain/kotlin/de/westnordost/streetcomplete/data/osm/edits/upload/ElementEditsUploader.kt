@@ -93,6 +93,11 @@ class ElementEditsUploader(
             if (updated.isNotEmpty() || deleted.isNotEmpty()) {
                 mapDataController.updateAll(MapDataUpdates(updated = updated, deleted = deleted))
             }
+        } catch (e: IllegalArgumentException) {
+            Log.d(TAG, "Dropped a $editActionClassName: ${e.message}")
+            uploadedChangeListener?.onDiscarded(edit.type.name, edit.position)
+
+            elementEditsController.markSyncFailed(edit)
         }
     }
 

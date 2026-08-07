@@ -26,10 +26,15 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetA
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadControllerAndroid
 import de.westnordost.streetcomplete.data.upload.UploadWorker
+import de.westnordost.streetcomplete.screens.about.AndroidAppStoreInfo
+import de.westnordost.streetcomplete.screens.about.AppStoreInfo
 import de.westnordost.streetcomplete.screens.main.AndroidEmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.AndroidMapAppLauncher
 import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.MapAppLauncher
+import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
+import de.westnordost.streetcomplete.ui.util.measure.ArMeasureAppLauncher
+import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
@@ -40,6 +45,7 @@ import kotlinx.io.asSource
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.scope.dsl.activityScope
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -55,14 +61,12 @@ val androidModule = module {
         de.westnordost.countryboundaries.CountryBoundaries.deserializeFrom(source)
     }
 
-    single<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")) {
-        lazy {
-            FeatureDictionary.create(
-                assetManager = androidContext().assets,
-                presetsBasePath = COMPOSE_FILES_DIR + "/osmfeatures/default",
-                brandPresetsBasePath = COMPOSE_FILES_DIR + "/osmfeatures/brands"
-            )
-        }
+    single<FeatureDictionary> {
+        FeatureDictionary.create(
+            assetManager = androidContext().assets,
+            presetsBasePath = COMPOSE_FILES_DIR + "/osmfeatures/default",
+            brandPresetsBasePath = COMPOSE_FILES_DIR + "/osmfeatures/brands"
+        )
     }
 
     // error reporting
@@ -84,6 +88,14 @@ val androidModule = module {
         Path(androidContext().cacheDir.path, ApplicationConstants.AVATARS_CACHE_DIRECTORY)
     }
 
+    // app store info
+
+    single<AppStoreInfo> { AndroidAppStoreInfo(get()) }
+
+    // AR
+
+    factory<ArSupportChecker> { AndroidArSupportChecker(get()) }
+
     // launch apps
 
     factory<MapAppLauncher> { AndroidMapAppLauncher(get()) }
@@ -97,7 +109,7 @@ val androidModule = module {
 
     single<SoundEffectPlayer> { AndroidSoundEffectPlayer(androidContext(), COMPOSE_FILES_DIR) }
 
-    // connection
+    // connection availability
 
     factory<ActiveNetworkConnection> { AndroidActiveNetworkConnection(androidContext()) }
 

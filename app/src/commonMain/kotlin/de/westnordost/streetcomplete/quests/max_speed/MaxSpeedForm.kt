@@ -37,7 +37,7 @@ fun MaxSpeedForm(
     modifier: Modifier = Modifier,
     initialZoneSpeedValue: Int? = null,
 ) {
-    val selectableMaxSpeedTypes = remember(countryInfo) {
+    val selectableMaxSpeedTypes = remember {
         val speedUnit = countryInfo.speedUnits.first()
         val initialSpeed = Speed(null, speedUnit)
         buildList {

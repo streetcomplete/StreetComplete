@@ -64,11 +64,15 @@ class UpdateElementTagsActionTest {
 
     @Test fun idsUpdatesApplied() {
         val way = way(id = -1)
-        val action = UpdateElementTagsAction(way, StringMapChanges(listOf()))
+        val action = UpdateElementTagsAction(way, StringMapChanges(listOf(
+            StringMapEntryAdd("highway", "living_street")
+        )))
         val idUpdates = mapOf(ElementKey(WAY, -1) to 5L)
 
         assertEquals(
-            UpdateElementTagsAction(way.copy(id = 5), StringMapChanges(listOf())),
+            UpdateElementTagsAction(way.copy(id = 5), StringMapChanges(listOf(
+                StringMapEntryAdd("highway", "living_street")
+            ))),
             action.idsUpdatesApplied(idUpdates)
         )
     }
@@ -76,7 +80,9 @@ class UpdateElementTagsActionTest {
     @Test fun elementKeys() {
         assertEquals(
             listOf(ElementKey(WAY, -1)),
-            UpdateElementTagsAction(way(id = -1), StringMapChanges(listOf())).elementKeys
+            UpdateElementTagsAction(way(id = -1), StringMapChanges(listOf(
+                StringMapEntryAdd("highway", "living_street")
+            ))).elementKeys
         )
     }
 }

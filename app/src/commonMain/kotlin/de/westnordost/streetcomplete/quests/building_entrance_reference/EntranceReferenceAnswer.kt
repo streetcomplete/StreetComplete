@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.quests.building_entrance_reference
 
 import kotlinx.serialization.Serializable
 
+@Serializable
 sealed interface EntranceReferenceAnswer {
     data object NotSigned : EntranceReferenceAnswer
 }

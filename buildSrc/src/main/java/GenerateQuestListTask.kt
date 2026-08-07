@@ -137,7 +137,7 @@ open class GenerateQuestListTask : DefaultTask() {
     }
 
     private fun getQuestIcon(questName: String, questFileContent: String): File {
-        val regex = Regex("(?<=override val icon = R\\.drawable\\.quest_)\\w+")
+        val regex = Regex("(?<=override val icon = Res\\.drawable\\.quest_)\\w+")
         val iconName = regex.find(questFileContent)?.value
             ?: throw Error("Could not find the icon reference for quest $questName")
 

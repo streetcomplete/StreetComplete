@@ -7,4 +7,4 @@ sealed interface ShopTypeAnswer {
     data object LeaveNote : ShopTypeAnswer
 }
 
-data class ShopType(val feature: Feature, val isStillSamePlace: Boolean) : ShopTypeAnswer
+data class ShopType(val feature: Feature) : ShopTypeAnswer

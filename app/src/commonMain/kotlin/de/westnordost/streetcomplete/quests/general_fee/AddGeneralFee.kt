@@ -1,0 +1,72 @@
+package de.westnordost.streetcomplete.quests.general_fee
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.toYesNo
+import org.jetbrains.compose.resources.stringResource
+
+class AddGeneralFee : OsmFilterQuestType<Boolean>() {
+
+    // Bicycle charging station are amenity=charging_station with bicycle=yes/designated.
+    // We further exclude dual use charging stations as payment may be waived only for cyclists increasing risk of incorrect answers
+    override val elementFilter = """
+        nodes, ways with
+         (
+           (
+             amenity = charging_station
+             and bicycle ~ yes|designated
+             and (!motorcar or motorcar = no)
+             and (!motorcycle or motorcycle = no)
+             and (!truck or truck = no)
+           )
+           or (
+             tourism = camp_site
+             and (
+                camp_site = basic
+                or backcountry = yes
+                or shower = no
+                or toilets = no
+             )
+           )
+           or tourism ~ museum|gallery|caravan_site|zoo|aquarium|wilderness_hut
+           or leisure ~ beach_resort|disc_golf_course
+           or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash|binoculars|device_charging_station
+           or natural = cave_entrance and access=yes
+           or man_made = tower and tower:type = observation and access=yes
+           or historic = castle and access = yes
+           or waterway = water_point
+         )
+         and access !~ private|no
+         and !fee
+         and !fee:conditional
+    """
+    override val changesetComment = "Specify whether places take fees to visit"
+    override val wikiLink = "Key:fee"
+    override val icon = Res.drawable.quest_fee
+    override val title = Res.string.quest_generalFee_title
+    override val achievements = listOf(CITIZEN)
+
+    @Composable
+    override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        val isThing = element.tags["amenity"] != null || element.tags["waterway"] != null
+        YesNoQuestForm(
+            on = on,
+            title = stringResource(
+                if (isThing) Res.string.quest_generalFee_title
+                else Res.string.quest_generalFee_title2
+            ),
+        )
+    }
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["fee"] = answer.toYesNo()
+    }
+}

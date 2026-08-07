@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.util.ktx
 
 import android.graphics.PointF
-import kotlin.math.cos
-import kotlin.math.sin
+import androidx.compose.ui.geometry.Offset
 
-fun PointF.translate(distance: Float, angle: Double) =
-    PointF((x + distance * cos(angle)).toFloat(), (y + distance * sin(angle)).toFloat())
+fun PointF.toOffset() = Offset(x, y)

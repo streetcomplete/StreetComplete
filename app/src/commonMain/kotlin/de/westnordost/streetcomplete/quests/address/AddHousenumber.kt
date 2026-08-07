@@ -1,0 +1,256 @@
+package de.westnordost.streetcomplete.quests.address
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Relation
+import de.westnordost.streetcomplete.data.osm.mapdata.Way
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.address.applyTo
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.math.LatLonRaster
+import de.westnordost.streetcomplete.util.math.isCompletelyInside
+import de.westnordost.streetcomplete.util.math.isInMultipolygon
+import de.westnordost.streetcomplete.util.math.measuredMultiPolygonArea
+
+class AddHousenumber(
+    private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
+) : OsmElementQuestType<HouseNumberAnswer> {
+
+    override val changesetComment = "Survey housenumbers"
+    override val wikiLink = "Key:addr"
+    override val icon = Res.drawable.quest_housenumber
+    override val title = Res.string.quest_address_title
+    override val achievements = listOf(POSTMAN)
+    override val enabledInCountries = AllCountriesExcept(
+        "LU", // https://github.com/streetcomplete/StreetComplete/pull/1943
+        "LV", // https://github.com/streetcomplete/StreetComplete/issues/4597
+              // https://lists.openstreetmap.org/pipermail/talk-lv/2022-January/006357.html
+              // https://wiki.openstreetmap.org/wiki/Automated_edits/Latvia-bot
+        "NL", // https://forum.openstreetmap.org/viewtopic.php?id=60356
+        "DK", // https://lists.openstreetmap.org/pipermail/talk-dk/2017-November/004898.html
+        "NO", // https://forum.openstreetmap.org/viewtopic.php?id=60357
+        "CZ", // https://lists.openstreetmap.org/pipermail/talk-cz/2017-November/017901.html
+        "IT", // https://lists.openstreetmap.org/pipermail/talk-it/2018-July/063712.html
+        "FR", // https://github.com/streetcomplete/StreetComplete/issues/2427#issuecomment-751860679 https://t.me/osmfr/26320
+    )
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        val bbox = mapData.boundingBox ?: return listOf()
+
+        val addressNodesById = mapData.nodes
+            .filter { nodesWithAddressFilter.matches(it) }
+            .associateByTo(HashMap()) { it.id }
+        val addressNodeIds = addressNodesById.keys
+
+        /** 1. filter: only buildings with no address that usually should have an address
+               and that do not have an address node on their outline */
+
+        val buildings = mapData.filter {
+            buildingsWithMissingAddressFilter.matches(it)
+            && !it.consumeAnyContainedNode(addressNodeIds, mapData)
+        }.toMutableList()
+
+        if (buildings.isEmpty()) return listOf()
+
+
+        /** 2. exclude buildings which are included in relations that have an address */
+
+        val relationsWithAddress = mapData.relations.filter { nonMultipolygonRelationsWithAddressFilter.matches(it) }
+
+        buildings.removeAll { building ->
+            relationsWithAddress.any { it.containsWay(building.id) }
+        }
+
+        if (buildings.isEmpty()) return listOf()
+
+
+        /** 3. exclude buildings that intersect with the bounding box because it is not possible to
+               ascertain for these if there is an address node within the building - it could be
+               outside the bounding box */
+
+        val buildingGeometriesById = buildings.associate {
+            it.id to mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
+        }
+
+        buildings.removeAll { building ->
+            val buildingBounds = buildingGeometriesById[building.id]?.bounds
+            (buildingBounds == null || !buildingBounds.isCompletelyInside(bbox))
+        }
+
+        if (buildings.isEmpty()) return listOf()
+
+
+        /** 4. exclude buildings that contain an address node somewhere within their area */
+
+        val addressPositions = LatLonRaster(bbox, 0.0005)
+        for (node in addressNodesById.values) {
+            addressPositions.insert(node.position)
+        }
+
+        buildings.removeAll { building ->
+            val buildingGeometry = buildingGeometriesById[building.id]
+            if (buildingGeometry != null) {
+                val nearbyAddresses = addressPositions.getAll(buildingGeometry.bounds)
+                nearbyAddresses.any { it.isInMultipolygon(buildingGeometry.polygons) }
+            } else {
+                true
+            }
+        }
+
+        if (buildings.isEmpty()) return listOf()
+
+
+        /** 5. exclude buildings that are contained in an area that has an address tagged on itself
+         *     or on a vertex on its outline */
+
+        val areasWithAddressesOnOutline = mapData.ways
+            .filter { it.isArea() }
+            .sortedBy {
+                // we check small areas first, because smaller areas should "consume" address nodes,
+                // or in other words, address nodes on outlines are associated to the smallest area
+                // they are part of
+                val geom = mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry
+                val size = geom?.polygons?.measuredMultiPolygonArea() ?: 0.0
+                size
+            }
+            .filter { it.consumeAnyContainedNode(addressNodeIds, mapData) }
+            .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
+
+        val areasWithAddresses = mapData
+            .filter { nonBuildingAreasWithAddressFilter.matches(it) }
+            .mapNotNull { mapData.getGeometry(it.type, it.id) as? ElementPolygonsGeometry }
+
+        val buildingsByCenterPosition: Map<LatLon?, Element> = buildings.associateBy { buildingGeometriesById[it.id]?.center }
+
+        val buildingPositions = LatLonRaster(bbox, 0.0005)
+        for (buildingCenterPosition in buildingsByCenterPosition.keys) {
+            if (buildingCenterPosition != null) buildingPositions.insert(buildingCenterPosition)
+        }
+
+        for (areaWithAddress in areasWithAddresses + areasWithAddressesOnOutline) {
+            val nearbyBuildings = buildingPositions.getAll(areaWithAddress.bounds)
+            val buildingPositionsInArea = nearbyBuildings.filter { it.isInMultipolygon(areaWithAddress.polygons) }
+            val buildingsInArea = buildingPositionsInArea.mapNotNull { buildingsByCenterPosition[it] }.toSet()
+
+            buildings.removeAll(buildingsInArea)
+        }
+
+        return buildings
+    }
+
+    override fun isApplicableTo(element: Element): Boolean? =
+        if (!buildingsWithMissingAddressFilter.matches(element)) false else null
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+            nodes, ways, relations with
+            (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+            and !name and !brand and !operator and !ref
+        """.toElementFilterExpression())
+
+    @Composable
+    override fun Form(on: (QuestAction<HouseNumberAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddHousenumberForm(on, element, countryInfo)
+    }
+
+    override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        when (answer) {
+            is AddressNumberAndName -> {
+                if (answer.number?.isEmpty() != false && answer.name.isNullOrEmpty()) {
+                    tags["nohousenumber"] = "yes"
+                } else {
+                    val countryCode = getCountryInfoByLocation(geometry.center).countryCode
+                    answer.applyTo(tags, countryCode)
+                }
+            }
+            HouseNumberAnswer.WrongBuildingType -> {
+                tags["building"] = "yes"
+            }
+        }
+    }
+}
+
+private val nonBuildingAreasWithAddressFilter by lazy { """
+    ways, relations with
+      (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+      and !building
+""".toElementFilterExpression() }
+
+private val nonMultipolygonRelationsWithAddressFilter by lazy { """
+    relations with
+      type != multipolygon
+      and (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+""".toElementFilterExpression() }
+
+private val nodesWithAddressFilter by lazy { """
+   nodes with
+     addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
+""".toElementFilterExpression() }
+
+private val buildingsWithMissingAddressFilter by lazy { """
+    ways, relations with
+      building ~ ${buildingTypesThatShouldHaveAddresses.joinToString("|")}
+      and location != underground
+      and ruins != yes
+      and abandoned != yes
+      and !addr:housenumber
+      and !addr:housename
+      and !addr:conscriptionnumber
+      and !addr:streetnumber
+      and !noaddress
+      and !nohousenumber
+      and addr:housenumber:signed != no
+""".toElementFilterExpression() }
+
+private val buildingTypesThatShouldHaveAddresses = listOf(
+    "house", "residential", "apartments", "detached", "terrace", "dormitory", "semi",
+    "semidetached_house", "farm", "school", "civic", "college", "university", "public", "hospital",
+    "kindergarten", "train_station", "hotel", "retail", "shop", "commercial", "office"
+)
+
+/** return whether any of the given [nodeIds] is contained in this element and remove these from
+ *  the given set */
+private fun Element.consumeAnyContainedNode(nodeIds: MutableSet<Long>, mapData: MapDataWithGeometry): Boolean =
+    when (this) {
+        is Way -> consumeAnyContainedNode(nodeIds)
+        is Relation -> consumeAnyContainedNode(nodeIds, mapData)
+        else -> false
+    }
+
+private fun Way.consumeAnyContainedNode(nodeIds: MutableSet<Long>): Boolean {
+    var result = false
+    for (nodeId in this.nodeIds) {
+        if (nodeId in nodeIds) {
+            nodeIds.remove(nodeId)
+            result = true
+        }
+    }
+    return result
+}
+
+private fun Relation.consumeAnyContainedNode(nodeIds: MutableSet<Long>, mapData: MapDataWithGeometry): Boolean {
+    val wayMembers = members.filter { it.type == ElementType.WAY }
+    var result = false
+    for (wayMember in wayMembers) {
+        val way = mapData.getWay(wayMember.ref) ?: continue
+        result = result or way.consumeAnyContainedNode(nodeIds)
+    }
+    return result
+}
+
+/** return whether any of the ways with the given ids are contained in this relation */
+private fun Relation.containsWay(wayId: Long): Boolean =
+    members.any { it.type == ElementType.WAY && wayId == it.ref }

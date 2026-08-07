@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.osm.surface
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class Surface(val osmValue: String?) {
     // paved
     ASPHALT("asphalt"),
@@ -92,6 +95,12 @@ enum class Surface(val osmValue: String?) {
             WOOD, METAL, GRAVEL,
             PEBBLES, ROCK,
             PAVED, UNPAVED, GROUND
+        )
+
+        val selectableValuesForBeaches: List<Surface> = listOf(
+            SAND, PEBBLES, GRAVEL,
+            GRASS, ROCK, FINE_GRAVEL,
+            GROUND
         )
 
         /** A map of tag value to Surface type that should be treated as aliases of known Surface

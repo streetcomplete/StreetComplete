@@ -11,6 +11,7 @@ import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.p
 import dev.mokkery.verify
 import dev.mokkery.verify.VerifyMode.Companion.not
+import kotlinx.io.files.SystemFileSystem
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 
@@ -27,7 +28,7 @@ class NoteEditsControllerImplTest {
         }
 
         listener = mock()
-        ctrl = NoteEditsControllerImpl(db)
+        ctrl = NoteEditsControllerImpl(db, SystemFileSystem)
         ctrl.addListener(listener)
     }
 
