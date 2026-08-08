@@ -27,6 +27,17 @@ class AddCrossingIslandTest {
         assertNull(questType.isApplicableTo(crossing))
     }
 
+    @Test fun `not applicable to continuous crossing`() {
+        val crossing = node(tags = mapOf(
+            "highway" to "crossing",
+            "crossing" to "something",
+            "crossing:continuous" to "yes"
+        ))
+        val mapData = TestMapDataWithGeometry(listOf(crossing))
+        assertEquals(0, questType.getApplicableElements(mapData).toList().size)
+        assertEquals(false, questType.isApplicableTo(crossing))
+    }
+
     @Test fun `not applicable to crossing with private road`() {
         val crossing = node(id = 1, tags = mapOf(
             "highway" to "crossing",
