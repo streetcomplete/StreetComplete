@@ -59,7 +59,6 @@ data class EditItem(
 class EditHistoryViewModelImpl(
     private val mapDataSource: MapDataWithEditsSource,
     private val editHistoryController: EditHistoryController,
-    override val featureDictionaryLazy: Lazy<FeatureDictionary>,
 ) : EditHistoryViewModel() {
 
     private val edits = MutableStateFlow<List<Edit>>(emptyList())
