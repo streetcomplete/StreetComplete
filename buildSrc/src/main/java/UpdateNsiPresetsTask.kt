@@ -71,7 +71,7 @@ open class UpdateNsiPresetsTask : DefaultTask() {
             if (include != null) transform(include)
             if (exclude != null) transform(exclude)
             // remove "locationSet": { "include": "001" } because that's the default
-            if (include?.singleOrNull() == "001" && exclude == null) {
+            if ((include?.singleOrNull() == "001" || include?.singleOrNull() == "Planet") && exclude == null) {
                 value.remove("locationSet")
             }
         }
@@ -83,7 +83,7 @@ open class UpdateNsiPresetsTask : DefaultTask() {
             val preset = entry.value as JsonObject
             val locationSet = preset["locationSet"] as? JsonObject
             val include = locationSet?.get("include") as? JsonArray<*>
-            val includeContains001 = include?.any { it as? String == "001" } == true
+            val includeContains001 = include?.any { it as? String == "001" || it as? String == "Planet" } == true
             if (include != null && !includeContains001) {
                 for (country in include) {
                     byCountryMap.getOrPut(country as String) { JsonObject() }[key] = preset
