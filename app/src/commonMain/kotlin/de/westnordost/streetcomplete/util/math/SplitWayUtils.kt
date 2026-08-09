@@ -18,14 +18,18 @@ fun List<LatLon>.getSplitAt(
 ): SplitPolylineAtPosition? {
     if (snapToVertexDistance > 0.0) {
         // don't snap to first or last vertex. Can't split the way there.
-        val nearestVertex = allExceptFirstAndLast().minBy { position.distanceTo(it) }
-        if (position.distanceTo(nearestVertex) <= min(maxDistance, snapToVertexDistance)) {
+        val nearestVertex = allExceptFirstAndLast().minByOrNull { position.distanceTo(it) }
+        if (nearestVertex != null
+            && position.distanceTo(nearestVertex) <= min(maxDistance, snapToVertexDistance)
+        ) {
             return SplitAtPoint(nearestVertex)
         }
     }
     val (start, end) = position.nearestArcOf(this)
     if (position.distanceToArc(start, end) <= maxDistance) {
-        val delta = position.alongTrackDistanceTo(start, end)
+        val alongTrackDistance = position.alongTrackDistanceTo(start, end)
+        val arcDistance = start.distanceTo(end)
+        val delta = alongTrackDistance / arcDistance
         return SplitAtLinePosition(start, end, delta)
     }
     return null

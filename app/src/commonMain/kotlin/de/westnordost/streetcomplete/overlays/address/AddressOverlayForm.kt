@@ -109,7 +109,7 @@ fun AddressOverlayForm(
         )
     }
 
-    var addEntrance by rememberSaveable { mutableStateOf(false) }
+    var addEntrance by rememberSaveable { mutableStateOf(true) }
 
     LaunchedEffect(positionOnWay, addEntrance) {
         if (positionOnWay != null) {

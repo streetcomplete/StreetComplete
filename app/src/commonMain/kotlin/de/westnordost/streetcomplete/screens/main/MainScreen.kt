@@ -77,6 +77,7 @@ fun MainScreen(
     onClickLogin: () -> Unit,
     onExplainedNeedForLocationPermission: () -> Unit,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
+    onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
     onSolvedQuest: (icon: DrawableResource, position: LatLon) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -282,7 +283,8 @@ fun MainScreen(
                         mapTilt = mapCamera.tilt.toFloat(),
                         mapPosition = mapCamera.position,
                         mapMetersPerDp = metersPerDp,
-                        onSetMapMarkers = onSetMapMarkers
+                        onSetMapMarkers = onSetMapMarkers,
+                        onSetPinPosition = onSetPinPosition
                     )
                 }
             }

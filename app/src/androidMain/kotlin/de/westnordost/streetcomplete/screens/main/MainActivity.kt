@@ -243,6 +243,9 @@ class MainActivity :
                 onSetMapMarkers = { markers ->
                     mapFragment?.putMarkersForCurrentHighlighting(markers)
                 },
+                onSetPinPosition = { icon, position ->
+                    mapFragment?.highlightPins(icon.toAndroidResourceId()!!, listOfNotNull(position))
+                },
                 onSolvedQuest = { icon, position ->
                     val offset = binding.root.getLocationInWindow()
                     val startPos = mapFragment?.getPointOf(position)!!
