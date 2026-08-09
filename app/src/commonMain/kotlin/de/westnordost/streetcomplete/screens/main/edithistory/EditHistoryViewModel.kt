@@ -41,8 +41,6 @@ abstract class EditHistoryViewModel : ViewModel() {
     abstract fun select(editKey: EditKey?)
     abstract fun undo(editKey: EditKey)
 
-    abstract val featureDictionaryLazy: Lazy<FeatureDictionary>
-
     /* edit sidebar */
     // TODO could maybe be just a boolean in the composable when there's no communication between
     //      compose <-> fragment communication necessary anymore

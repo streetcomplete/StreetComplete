@@ -253,7 +253,6 @@ fun MainScreen(
                 onSelectEdit = { editHistoryViewModel.select(it.key) },
                 onUndoEdit = { editHistoryViewModel.undo(it.key) },
                 onDismissRequest = { editHistoryViewModel.hideSidebar() },
-                featureDictionaryLazy = editHistoryViewModel.featureDictionaryLazy,
                 getEditElement = editHistoryViewModel::getEditElement,
             )
         }

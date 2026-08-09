@@ -594,7 +594,7 @@ val commonModule = module {
     }
 
     viewModel<EditHistoryViewModel> {
-        EditHistoryViewModelImpl(get(), get(), get(named("FeatureDictionaryLazy")))
+        EditHistoryViewModelImpl(get(), get(), get())
     }
 
     viewModel<MainBottomSheetViewModel> {

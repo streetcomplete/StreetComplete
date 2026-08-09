@@ -38,7 +38,6 @@ import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.resources.*
@@ -66,7 +65,6 @@ fun EditHistorySidebar(
     onSelectEdit: (Edit) -> Unit,
     onUndoEdit: (Edit) -> Unit,
     onDismissRequest: () -> Unit,
-    featureDictionaryLazy: Lazy<FeatureDictionary>,
     getEditElement: suspend (Edit) -> Element?,
     modifier: Modifier = Modifier,
 ) {
@@ -155,7 +153,6 @@ fun EditHistorySidebar(
         UndoDialog(
             edit = selectedEdit,
             element = editElement,
-            featureDictionaryLazy = featureDictionaryLazy,
             onDismissRequest = {
                 showUndoDialog = false
                 editElement = null

@@ -24,6 +24,8 @@ import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalDateTimeFormatter
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
+import org.koin.core.qualifier.named
 import kotlin.time.Instant
 
 /** Shows details for an edit. I.e. image, title, name and location of edited element (if any),
@@ -32,9 +34,9 @@ import kotlin.time.Instant
 fun EditDetails(
     edit: Edit,
     element: Element?,
-    featureDictionaryLazy: Lazy<FeatureDictionary>,
-    modifier: Modifier = Modifier
-) {
+    modifier: Modifier = Modifier,
+    featureDictionaryLazy: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
+    ) {
     val dateTimeFormatter = LocalDateTimeFormatter(
         dateStyle = DateTimeFormatStyle.Short,
         timeStyle = DateTimeFormatStyle.Short
