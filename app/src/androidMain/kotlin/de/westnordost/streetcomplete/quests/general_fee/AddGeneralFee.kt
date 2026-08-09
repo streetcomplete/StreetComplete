@@ -53,8 +53,14 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>(), AndroidQuest {
 
     override fun getTitle(tags: Map<String, String>) =
         if (tags["amenity"] != null || tags["waterway"] != null) {
+            // Things you must pay to "use"
             Res.string.quest_generalFee_title
         } else {
+            if (tags["tourism"] == "wilderness_hut" || tags["tourism"] == "camp_site" || tags["tourism"] == "camp_site") {
+                // Places you must pay to "stay at"
+                Res.string.quest_generalFee_title3
+            }
+            // Places you must pay to "enter"
             Res.string.quest_generalFee_title2
         }
 
