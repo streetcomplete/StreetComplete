@@ -636,7 +636,7 @@ class MainActivity :
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
         val pos = mapFragment.displayedLocation?.toLatLon() ?: return
-        composeNote(pos, mapFragment.recordedTracks)
+        composeNote(pos, mapFragment.recordedTracks.takeIf { it.isNotEmpty() })
     }
 
     private fun onClickCompassButton() {
