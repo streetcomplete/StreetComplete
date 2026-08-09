@@ -16,6 +16,5 @@ val FallDownTransitionSpec: AnimatedContentTransitionScope<*>.() -> ContentTrans
 }
 
 val ReplaceBottomSheetTransitionSpec: AnimatedContentTransitionScope<*>.() -> ContentTransform = {
-    fadeIn() + slideInVertically { it / 16 } togetherWith
-    fadeOut() + slideOutVertically { it / 24 }
+    fadeIn() + slideInVertically { it / 16 } togetherWith fadeOut()
 }
