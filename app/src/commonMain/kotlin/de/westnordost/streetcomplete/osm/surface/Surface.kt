@@ -54,7 +54,7 @@ enum class Surface(val osmValue: String?) {
             "SC", "SG", "SL", "SN", "SR", "SS", "SV", "SX", "SZ", "TG", "TH", "TL", "TT", "TW", "TZ",
             "UG", "VC", "VE", "VN", "ZA", "ZM", "ZW"
         )
-        
+
         private val selectableValuesForWaysWithoutLaterite = listOf(
             // paved surfaces
             ASPHALT, PAVING_STONES, CONCRETE, CONCRETE_LANES,
@@ -73,9 +73,7 @@ enum class Surface(val osmValue: String?) {
         }
 
         /** Selectable surface values for roads, paths, etc. */
-        fun getSelectableValuesForWays(countryOrSubdivisionCode: String? = null): List<Surface> {
-            // TODO: change parameter name to `countryCode`, ensure that only the countryCode is passed, not the `countryOrSubdivisionCode`
-            val countryCode = countryOrSubdivisionCode?.take(2)
+        fun getSelectableValuesForWays(countryCode: String? = null): List<Surface> {
             return if (countryCode != null && lateriteCountries.contains(countryCode)) {
                 selectableValuesForWaysWithLaterite
             } else {
