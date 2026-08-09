@@ -263,8 +263,7 @@ fun MainScreen(
                 targetState = shownBottomSheet,
                 transitionSpec = {
                     if (initialState != null && targetState != null) {
-                        fadeIn() + slideInVertically { it / 16 } togetherWith
-                        fadeOut() + slideOutVertically { it / 24 }
+                        fadeIn() + slideInVertically { it / 16 } togetherWith fadeOut()
                     } else {
                         // Size transform with snap is necessary so that it doesn't animate the bounds
                         // from zero (=no form) which looks weird
