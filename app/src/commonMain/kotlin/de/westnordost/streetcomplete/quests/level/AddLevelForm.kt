@@ -48,7 +48,7 @@ fun AddLevelForm(
         val mapData = withContext(Dispatchers.IO) { mapDataSource.getMapDataWithGeometry(bbox) }
         val elementsWithLevels = mapData.filter(filterPredicate)
 
-        val elementsAndGeometry = elementsWithLevels.mapNotNull { e ->
+        elementsAndGeometry = elementsWithLevels.mapNotNull { e ->
             mapData.getGeometry(e.type, e.id)?.let { geometry -> e to geometry }
         }
 
