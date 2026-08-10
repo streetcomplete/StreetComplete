@@ -14,7 +14,7 @@ class AddParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
 
     override val elementFilter = """
         nodes, ways, relations with amenity = parking
-        and access ~ yes|customers|public
+        and access ~ yes|public
         and (
             !fee and !fee:conditional
             or fee older today -8 years
