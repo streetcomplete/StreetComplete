@@ -117,7 +117,7 @@ fun SplitWayForm(
             val offset = LocalGetOffsetCallback.current?.invoke(scissorsPosition.pos)
             if (offset != null) {
                 Image(
-                    painter = scissorsPainter(snipAnimation.value), // Res.drawable.scissors
+                    painter = scissorsPainter(snipAnimation.value),
                     contentDescription = null,
                     modifier = Modifier
                         .align(AbsoluteAlignment.TopLeft)
