@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
@@ -31,6 +32,8 @@ import de.westnordost.streetcomplete.osm.places.getPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.places.isDisusedPlace
 import de.westnordost.streetcomplete.osm.places.shouldReplacePlace
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.animateFallDown
+import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.util.FeatureSaver
@@ -38,8 +41,10 @@ import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import de.westnordost.streetcomplete.util.takeFavorites
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable fun PlacesOverlayForm(
     on: (OverlayAction) -> Unit,
@@ -198,6 +203,14 @@ import org.koin.compose.koinInject
                 }
             } else null,
         ) },
+        pinContent = {
+            if (element == null) {
+                Pin(
+                    iconPainter = painterResource(Res.drawable.quest_shop),
+                    modifier = Modifier.animateFallDown(startDelay = 200.milliseconds)
+                )
+            }
+        }
     ) {
         PlaceForm(
             selectedFeature = selectedFeature,

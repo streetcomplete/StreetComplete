@@ -104,6 +104,10 @@ fun MoveNodeForm(
             )
         }
     ) {
+        // Currently, the original highlighted pin continues to be shown at the original position,
+        // which is okay 🤷, but it doesn't look good when there is a second pin at the target
+        // position, then. (We have already the arrow pointing to the target position)
+        /*
         Pin(
             iconPainter = painterResource(elementEditType.icon),
             modifier = Modifier
@@ -113,6 +117,7 @@ fun MoveNodeForm(
                     pinOffset = it.positionInParent() + it.size.center.toOffset()
                 }
         )
+        */
 
         BottomSheetFormScaffold(
             content = {

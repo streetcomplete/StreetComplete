@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ContentAlpha
@@ -26,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
@@ -42,6 +44,7 @@ import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaff
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
+import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.theme.titleMedium
 import de.westnordost.streetcomplete.util.ktx.isSplittable
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -53,6 +56,9 @@ import org.koin.compose.koinInject
  *
  *  Below the content, there's an empty bar that contains only a "more" icon button on the start
  *  that, when tapped, opens a dropdown menu containing [otherAnswers].
+ *
+ *  Optionally, [pinContent] can be placed at the position of the crosshair. This is usually used to
+ *  place a pin at the position at which an element will be created for overlays that allow it.
  *
  *  Floating in the lower end corner, an OK button for confirmation. [isComplete] should be true
  *  when the form is complete, while [hasChanges] should be true when any changes have been made.
@@ -72,6 +78,7 @@ fun OverlayForm(
     },
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
+    pinContent: @Composable (() -> Unit)? = null,
     content: @Composable BoxScope.() -> Unit
 ) {
     var confirmDiscard by remember { mutableStateOf(false) }
@@ -106,32 +113,46 @@ fun OverlayForm(
         return result
     }
 
-    BottomSheetFormScaffold(
-        note = if (label != null) { {
-            CompositionLocalProvider(
-                LocalTextStyle provides MaterialTheme.typography.titleMedium,
-                LocalContentAlpha provides ContentAlpha.medium
+    Box(
+        modifier = modifier.fillMaxSize()
+    ) {
+        if (pinContent != null) {
+            Box(Modifier
+                .align(Alignment.Center)
+                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
             ) {
-                Text(label)
+                pinContent()
             }
-        } } else null,
-        content = {
-            OverlayContent(
-                modifier = Modifier.fillMaxWidth(),
-                otherAnswers = { otherAnswers() + createDefaultOtherAnswers() },
-                contentPadding = contentPadding,
-                content = content
-            )
-        },
-        fab = {
-            FloatingOkButton(
-                visible = isComplete,
-                enabled = hasChanges,
-                onClick = onClickOk
-            )
-        },
-        modifier = modifier,
-    )
+        }
+
+        BottomSheetFormScaffold(
+            note = if (label != null) { {
+                CompositionLocalProvider(
+                    LocalTextStyle provides MaterialTheme.typography.titleMedium,
+                    LocalContentAlpha provides ContentAlpha.medium
+                ) {
+                    Text(label)
+                }
+            } } else null,
+            content = {
+                OverlayContent(
+                    modifier = Modifier.fillMaxWidth(),
+                    otherAnswers = { otherAnswers() + createDefaultOtherAnswers() },
+                    contentPadding = contentPadding,
+                    content = content
+                )
+            },
+            fab = {
+                FloatingOkButton(
+                    visible = isComplete,
+                    enabled = hasChanges,
+                    onClick = onClickOk
+                )
+            },
+        )
+    }
+
+
 
     if (confirmDiscard) {
         ConfirmDiscardDialog(

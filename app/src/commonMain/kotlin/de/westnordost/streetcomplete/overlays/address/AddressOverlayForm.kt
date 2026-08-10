@@ -43,6 +43,7 @@ import de.westnordost.streetcomplete.osm.address.applyTo
 import de.westnordost.streetcomplete.osm.address.parseAddressNumber
 import de.westnordost.streetcomplete.osm.address.streetHouseNumber
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -55,6 +56,7 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
@@ -112,12 +114,10 @@ fun AddressOverlayForm(
     var addEntrance by rememberSaveable { mutableStateOf(true) }
 
     LaunchedEffect(positionOnWay, addEntrance) {
-        if (positionOnWay != null) {
-            onPinPosition(
-                if (addEntrance) Res.drawable.quest_door else Res.drawable.quest_housenumber,
-                positionOnWay.position
-            )
-        }
+        onPinPosition(
+            if (addEntrance) Res.drawable.quest_door else Res.drawable.quest_housenumber,
+            positionOnWay?.position
+        )
     }
 
     var confirmRemoveAddress by remember { mutableStateOf(false) }
@@ -135,12 +135,6 @@ fun AddressOverlayForm(
                 ?.name
                 ?.let { address = address.copy(streetOrPlace = StreetName(it)) }
         }
-    }
-
-    fun applyChanges(tagChanges: StringMapChangesBuilder) {
-        address.applyTo(tagChanges, countryInfo.countryCode)
-        tagChanges.remove("noaddress")
-        tagChanges.remove("nohousenumber")
     }
 
     @Composable
@@ -191,6 +185,51 @@ fun AddressOverlayForm(
         return result
     }
 
+    fun applyChanges(tagChanges: StringMapChangesBuilder) {
+        address.applyTo(tagChanges, countryInfo.countryCode)
+        tagChanges.remove("noaddress")
+        tagChanges.remove("nohousenumber")
+    }
+
+    fun onClickOk() {
+        val number = address.number
+        val name = address.name
+        val streetOrPlace = address.streetOrPlace
+
+        lastWasPlaceName = address.streetOrPlace is PlaceName
+        number?.streetHouseNumber?.let { lastHouseNumber = it }
+        lastBlock = if (number is BlockAndHouseNumber) number.block else null
+        lastPlaceName = if (streetOrPlace is PlaceName) streetOrPlace.name else null
+        lastStreetName = if (streetOrPlace is StreetName) streetOrPlace.name else null
+
+        val tagChanges = StringMapChangesBuilder(element?.tags.orEmpty())
+        val positionOnWay = positionOnWay
+
+        // add/change address of existing element
+        if (element != null) {
+            applyChanges(tagChanges)
+            on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
+        }
+        // add address to vertex or new vertex on way
+        else if (positionOnWay != null) {
+            val geometry = ElementPointGeometry(positionOnWay.position)
+            val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { tagChanges ->
+                applyChanges(tagChanges)
+                if (addEntrance && !tagChanges.containsKey("entrance")) {
+                    tagChanges["entrance"] = "yes"
+                }
+            }
+            if (action != null) {
+                on(Edit(action))
+            }
+        }
+        // add new address node
+        else if (position != null) {
+            applyChanges(tagChanges)
+            on(Edit(CreateNodeAction(position, tagChanges)))
+        }
+    }
+
     OverlayForm(
         on = on,
         isComplete =
@@ -198,49 +237,16 @@ fun AddressOverlayForm(
             // posted yet, or it is not clear on-site, see #6528
             address.number?.isComplete() == true
             || address.name?.isNotEmpty() == true && address.number?.isBlank() != false,
-        hasChanges =
-            originalAddress != address,
-        onClickOk = {
-            val number = address.number
-            val name = address.name
-            val streetOrPlace = address.streetOrPlace
-
-            lastWasPlaceName = address.streetOrPlace is PlaceName
-            number?.streetHouseNumber?.let { lastHouseNumber = it }
-            lastBlock = if (number is BlockAndHouseNumber) number.block else null
-            lastPlaceName = if (streetOrPlace is PlaceName) streetOrPlace.name else null
-            lastStreetName = if (streetOrPlace is StreetName) streetOrPlace.name else null
-
-            val tagChanges = StringMapChangesBuilder(element?.tags.orEmpty())
-            val positionOnWay = positionOnWay
-
-            // add/change address of existing element
-            if (element != null) {
-                applyChanges(tagChanges)
-                on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
-            }
-            // add address to vertex or new vertex on way
-            else if (positionOnWay != null) {
-                val geometry = ElementPointGeometry(positionOnWay.position)
-                val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { tagChanges ->
-                    applyChanges(tagChanges)
-                    if (addEntrance && !tagChanges.containsKey("entrance")) {
-                        tagChanges["entrance"] = "yes"
-                    }
-                }
-                if (action != null) {
-                    on(Edit(action))
-                }
-            }
-            // add new address node
-            else if (position != null) {
-                applyChanges(tagChanges)
-                on(Edit(CreateNodeAction(position, tagChanges)))
-            }
-        },
+        hasChanges = originalAddress != address,
+        onClickOk = ::onClickOk,
         label =
             // never show house number, as it already is shown in the form
             element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
+        pinContent = {
+            if (positionOnWay == null) {
+                Pin(iconPainter = painterResource(Res.drawable.quest_housenumber))
+            }
+        },
         otherAnswers = ::createOtherAnswers
     ) {
         AddressForm(

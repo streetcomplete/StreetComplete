@@ -53,7 +53,7 @@ fun CreateNoteForm(
             modifier = Modifier
                 .align(Alignment.Center)
                 .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
-                .animateFallDown(startDelay = 400.milliseconds)
+                .animateFallDown(startDelay = 200.milliseconds)
         )
 
         BottomSheetFormScaffold(
