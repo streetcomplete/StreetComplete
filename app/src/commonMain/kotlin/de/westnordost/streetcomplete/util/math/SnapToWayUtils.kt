@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.util.math
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
+import de.westnordost.streetcomplete.util.ktx.truncate
 import kotlinx.serialization.Serializable
 import kotlin.math.min
 
@@ -36,11 +37,15 @@ data class PositionOnWaySegment(
 fun LatLon.getPositionOnWays(
     ways: Collection<Pair<Way, List<LatLon>>>,
     maxDistance: Double,
-    snapToVertexDistance: Double = 0.0
+    snapToVertexDistance: Double = 0.0,
+    allowVerticesOfMultipleWays: Boolean = true,
 ): PositionOnWay? {
     if (snapToVertexDistance > 0.0) {
         val nearestVertex = getNearestVertexOfWays(ways, min(maxDistance, snapToVertexDistance))
-        if (nearestVertex != null) return nearestVertex
+        if (
+            nearestVertex != null
+            && (allowVerticesOfMultipleWays || nearestVertex.wayIds.size == 1)
+        ) return nearestVertex
     }
 
     return getNearestPositionToWays(ways, maxDistance)
@@ -81,7 +86,7 @@ private fun LatLon.getNearestVertexOfWays(
 }
 
 /** Returns the nearest point on any of the ways given in [ways] that is at most [maxDistance]
- *  away from this point or null if there isn't any */
+ *  away from this point or null if there isn't any or more than one way is nearest. */
 private fun LatLon.getNearestPositionToWays(
     ways: Collection<Pair<Way, List<LatLon>>>,
     maxDistance: Double
@@ -89,17 +94,19 @@ private fun LatLon.getNearestPositionToWays(
     var minDistance = Double.MAX_VALUE
     var nearestWay: Way? = null
     var nearestSegment: Pair<LatLon, LatLon>? = null
+    var hasSeveralNearestWays: Boolean = false
     for ((way, positions) in ways) {
         for (segment in positions.asSequenceOfPairs()) {
-            val distance = distanceToArc(segment.first, segment.second)
-            if (distance < minDistance && distance <= maxDistance) {
+            val distance = distanceToArc(segment.first, segment.second).truncate(3)
+            if (distance <= minDistance && distance <= maxDistance) {
+                hasSeveralNearestWays = distance == minDistance
                 minDistance = distance
                 nearestWay = way
                 nearestSegment = segment
             }
         }
     }
-    if (nearestWay != null && nearestSegment != null) {
+    if (!hasSeveralNearestWays && nearestWay != null && nearestSegment != null) {
         val nearestPoint = nearestPointOnArc(nearestSegment.first, nearestSegment.second)
         return PositionOnWaySegment(nearestWay.id, nearestPoint, nearestSegment)
     }

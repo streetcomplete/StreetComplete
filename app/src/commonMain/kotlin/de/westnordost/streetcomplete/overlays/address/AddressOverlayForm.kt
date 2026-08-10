@@ -52,6 +52,7 @@ import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.math.VertexOfWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -107,7 +108,9 @@ fun AddressOverlayForm(
         position.getPositionOnWays(
             ways = buildingOutlines,
             maxDistance = maxDistanceToCrosshair,
-            snapToVertexDistance = snapToVertexDistance
+            snapToVertexDistance = snapToVertexDistance,
+            // don't snap to vertices that are shared with several buildings
+            allowVerticesOfMultipleWays = false
         )
     }
 
