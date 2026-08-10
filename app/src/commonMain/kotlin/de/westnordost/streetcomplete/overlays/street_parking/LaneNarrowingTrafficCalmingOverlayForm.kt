@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -47,6 +48,7 @@ import de.westnordost.streetcomplete.ui.common.overlay.ItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalGetOffsetCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
+import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.util.ktx.toIntOffset
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
@@ -77,7 +79,6 @@ fun LaneNarrowingTrafficCalmingForm(
     val metersPerDp = LocalMapMetersPerDp.current
     val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
     val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
-    var pinSize by remember { mutableStateOf<IntSize>(IntSize.Zero) }
 
     val positionOnWay = remember(position, roadLines) {
         if (position == null) return@remember null
@@ -94,14 +95,17 @@ fun LaneNarrowingTrafficCalmingForm(
 
     Box(Modifier.fillMaxSize()) {
         if (positionOnWay != null) {
-            val offset = LocalGetOffsetCallback.current?.invoke(positionOnWay.position)?.toIntOffset()
+            val offset = LocalGetOffsetCallback.current?.invoke(positionOnWay.position)
             if (offset != null) {
                 Pin(
                     iconPainter = painterResource(Res.drawable.quest_choker),
                     modifier = Modifier
                         .align(AbsoluteAlignment.TopLeft)
-                        .onSizeChanged { pinSize = it }
-                        .absoluteOffset { IntOffset(offset.x - pinSize.center.x, offset.y - pinSize.center.y) }
+                        .size(71.dp, 142.dp)
+                        .absoluteOffset(
+                            x = offset.x.pxToDp() - 36.dp,
+                            y = offset.y.pxToDp() - 71.dp
+                        )
                 )
             }
         }
