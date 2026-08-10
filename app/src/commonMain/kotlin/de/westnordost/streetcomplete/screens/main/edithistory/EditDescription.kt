@@ -182,16 +182,14 @@ private fun Collection<StringMapEntryChange>.toHtml(): String {
 @Composable
 private fun StringMapEntryChange.toHtml(): String {
     val k = key.replaceHtmlEntities()
-    val v = when (this) {
-        is StringMapEntryAdd -> value
-        is StringMapEntryModify -> value
-        is StringMapEntryDelete -> valueBefore
-    }.replaceHtmlEntities()
 
     val tag = when (this) {
-        is StringMapEntryAdd -> linkedKey(k) + " = $v"
-        is StringMapEntryDelete -> "<s>$k = $v</s>"
-        is StringMapEntryModify -> linkedKey(k) + " = $v"
+        is StringMapEntryAdd -> linkedKey(k) + " = " + value.replaceHtmlEntities()
+        is StringMapEntryDelete -> "<s>" + k + " = " + valueBefore.replaceHtmlEntities() + "</s>"
+        is StringMapEntryModify -> {
+            if (value == valueBefore) linkedKey(k) + " = " + value.replaceHtmlEntities()
+            else linkedKey(k) + " = <s>" + valueBefore.replaceHtmlEntities() + "</s></tt> <tt>" + value.replaceHtmlEntities()
+        }
     }
     return stringResource(title, "<tt>$tag</tt>")
 }
@@ -201,6 +199,9 @@ private fun linkedKey(key: String): String =
 
 private val StringMapEntryChange.title: StringResource get() = when (this) {
     is StringMapEntryAdd -> Res.string.added_tag_action_title
-    is StringMapEntryModify -> Res.string.changed_tag_action_title
+    is StringMapEntryModify -> {
+        if (value == valueBefore) Res.string.unchanged_tag_action_title
+        else Res.string.changed_tag_action_title
+    }
     is StringMapEntryDelete -> Res.string.removed_tag_action_title
 }
