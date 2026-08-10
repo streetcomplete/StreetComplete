@@ -30,6 +30,8 @@ fun List<LatLon>.getSplitAt(
         val alongTrackDistance = position.alongTrackDistanceTo(start, end)
         val arcDistance = start.distanceTo(end)
         val delta = alongTrackDistance / arcDistance
+        // outside of the line section spanned by start…end, actually
+        if (delta <= 0 || delta >= 1) return null
         return SplitAtLinePosition(start, end, delta)
     }
     return null
