@@ -18,10 +18,11 @@ import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.screens.about.ChangelogScreen
 import de.westnordost.streetcomplete.screens.about.CreditsScreen
 import de.westnordost.streetcomplete.screens.about.PrivacyStatementScreen
+import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsScreen
 import org.koin.compose.viewmodel.koinViewModel
 import platform.Foundation.NSUserDefaults
 
-private enum class Screen { Changelog, Credits, PrivacyStatement }
+private enum class Screen { Changelog, Credits, PrivacyStatement, ShowQuestForms }
 
 /** Allows opening a screen directly for development, e.g.
  *  xcrun simctl launch booted <bundle id> -screen Changelog */
@@ -47,6 +48,10 @@ fun IosApp() {
                 onClickBack = { screen = null },
             )
             Screen.PrivacyStatement -> PrivacyStatementScreen(
+                onClickBack = { screen = null },
+            )
+            Screen.ShowQuestForms -> ShowQuestFormsScreen(
+                viewModel = koinViewModel(),
                 onClickBack = { screen = null },
             )
         }
