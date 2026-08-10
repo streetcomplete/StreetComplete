@@ -128,7 +128,7 @@ fun AddNoteCommentForm(
         fab = {
             FloatingOkButton(
                 visible = noteText.isNotBlank(),
-                onClick = { onCommentNote(noteText, noteImagePaths) },
+                onClick = { onCommentNote(noteText.trim(), noteImagePaths) },
             )
         },
         modifier = modifier,

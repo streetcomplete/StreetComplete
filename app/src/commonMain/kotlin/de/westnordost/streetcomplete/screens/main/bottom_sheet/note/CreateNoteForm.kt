@@ -87,7 +87,7 @@ fun CreateNoteForm(
             fab = {
                 FloatingOkButton(
                     visible = noteText.isNotBlank(),
-                    onClick = { onLeaveNote(noteText, noteImagePaths, trackpoints) },
+                    onClick = { onLeaveNote(noteText.trim(), noteImagePaths, trackpoints) },
                 )
             },
         )

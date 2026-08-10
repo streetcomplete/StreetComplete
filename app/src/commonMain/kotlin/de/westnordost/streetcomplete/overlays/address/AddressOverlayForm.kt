@@ -267,7 +267,7 @@ fun AddressOverlayForm(
                 // street is optional as in new developments sometimes the street names are not
                 // posted yet, or it is not clear on-site, see #6528
                 address.number?.isComplete() == true
-                || address.name?.isNotEmpty() == true && address.number?.isBlank() != false,
+                || address.name?.isNotBlank() == true && address.number?.isBlank() != false,
             hasChanges = originalAddress != address,
             onClickOk = ::onClickOk,
             label =

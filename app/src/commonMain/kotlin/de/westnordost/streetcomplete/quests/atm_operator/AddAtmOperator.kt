@@ -34,6 +34,6 @@ class AddAtmOperator : OsmFilterQuestType<String>() {
     }
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["operator"] = answer
+        tags["operator"] = answer.trim()
     }
 }

@@ -101,7 +101,7 @@ import org.koin.compose.koinInject
                 onClick = {
                     coroutineScope.launch {
                         val context = getEditTypeContextForNote(element, editType, featureDictionary)
-                        onLeaveNote("$context\n\n$noteText", noteImagePaths)
+                        onLeaveNote("$context\n\n${noteText.trim()}", noteImagePaths)
                     }
                 },
             )

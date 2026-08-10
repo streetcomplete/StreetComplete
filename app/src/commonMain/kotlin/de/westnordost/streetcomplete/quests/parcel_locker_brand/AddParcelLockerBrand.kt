@@ -34,6 +34,6 @@ class AddParcelLockerBrand : OsmFilterQuestType<String>() {
     }
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["brand"] = answer
+        tags["brand"] = answer.trim()
     }
 }

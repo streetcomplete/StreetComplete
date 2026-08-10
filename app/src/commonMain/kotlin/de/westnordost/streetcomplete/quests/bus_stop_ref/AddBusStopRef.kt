@@ -52,7 +52,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
     override fun applyAnswerTo(answer: BusStopRefAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is NoVisibleBusStopRef -> tags["ref:signed"] = "no"
-            is BusStopRef ->          tags["ref"] = answer.ref
+            is BusStopRef ->          tags["ref"] = answer.ref.trim()
         }
     }
 }

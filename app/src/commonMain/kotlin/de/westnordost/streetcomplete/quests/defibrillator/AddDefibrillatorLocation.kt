@@ -36,6 +36,6 @@ class AddDefibrillatorLocation : OsmFilterQuestType<String>() {
     }
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["defibrillator:location"] = answer
+        tags["defibrillator:location"] = answer.trim()
     }
 }

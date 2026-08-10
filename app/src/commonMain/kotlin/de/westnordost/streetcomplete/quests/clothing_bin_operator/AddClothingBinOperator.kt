@@ -57,7 +57,7 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer> {
     override fun applyAnswerTo(answer: ClothingBinOperatorAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is ClothingBinOperator -> {
-                tags["operator"] = answer.name
+                tags["operator"] = answer.name.trim()
             }
             is ClothingBinOperatorAnswer.NoneSigned -> {
                 tags["operator:signed"] = "no"

@@ -54,7 +54,7 @@ class AddRoadName : OsmFilterQuestType<List<LocalizedName>>() {
         } else {
             val singleName = answer.singleOrNull()
             if (singleName?.isRef() == true) {
-                tags["ref"] = singleName.name
+                tags["ref"] = singleName.name.trim()
             } else {
                 answer.applyTo(tags)
             }

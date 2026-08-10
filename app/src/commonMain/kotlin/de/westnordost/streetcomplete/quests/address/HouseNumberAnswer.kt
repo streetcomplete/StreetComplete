@@ -27,7 +27,7 @@ data class AddressNumberAndName(val number: AddressNumber?, val name: String?) :
 
 fun AddressNumberAndName.applyTo(tags: Tags, countryCode: String?) {
     number?.applyTo(tags, countryCode)
-    if (!name.isNullOrEmpty()) {
-        tags["addr:housename"] = name
+    if (!name.isNullOrBlank()) {
+        tags["addr:housename"] = name.trim()
     }
 }

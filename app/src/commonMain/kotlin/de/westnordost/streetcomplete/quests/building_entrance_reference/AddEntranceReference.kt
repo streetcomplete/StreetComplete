@@ -110,14 +110,14 @@ class AddEntranceReference : OsmElementQuestType<EntranceReferenceAnswer> {
     override fun applyAnswerTo(answer: EntranceReferenceAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is FlatRange -> {
-                tags["addr:flats"] = answer.start + "-" + answer.end
+                tags["addr:flats"] = answer.start.trim() + "-" + answer.end.trim()
             }
             is ReferenceCode -> {
-                tags["ref"] = answer.value
+                tags["ref"] = answer.value.trim()
             }
             is ReferenceCodeAndFlatRange -> {
-                tags["addr:flats"] = answer.flatRange.start + "-" + answer.flatRange.end
-                tags["ref"] = answer.referenceCode.value
+                tags["addr:flats"] = answer.flatRange.start.trim() + "-" + answer.flatRange.end.trim()
+                tags["ref"] = answer.referenceCode.value.trim()
             }
             EntranceReferenceAnswer.NotSigned -> {
                 tags["ref:signed"] = "no"

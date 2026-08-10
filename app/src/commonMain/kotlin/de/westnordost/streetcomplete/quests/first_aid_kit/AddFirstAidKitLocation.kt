@@ -37,6 +37,6 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>() {
     }
 
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["first_aid_kit:location"] = answer
+        tags["first_aid_kit:location"] = answer.trim()
     }
 }

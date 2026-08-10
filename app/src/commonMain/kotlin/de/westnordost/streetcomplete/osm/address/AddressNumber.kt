@@ -60,21 +60,21 @@ fun AddressNumber.applyTo(tags: Tags, countryCode: String?) {
 
     when (this) {
         is ConscriptionNumber -> {
-            tags["addr:conscriptionnumber"] = conscriptionNumber
-            if (!streetNumber.isNullOrEmpty()) {
-                tags["addr:streetnumber"] = streetNumber
-                tags["addr:housenumber"] = streetNumber
+            tags["addr:conscriptionnumber"] = conscriptionNumber.trim()
+            if (!streetNumber.isNullOrBlank()) {
+                tags["addr:streetnumber"] = streetNumber.trim()
+                tags["addr:housenumber"] = streetNumber.trim()
             } else {
-                tags["addr:housenumber"] = conscriptionNumber
+                tags["addr:housenumber"] = conscriptionNumber.trim()
             }
         }
         is BlockAndHouseNumber -> {
-            tags["addr:housenumber"] = houseNumber
-            if (countryCode == "JP") tags["addr:block_number"] = block
-            else tags["addr:block"] = block
+            tags["addr:housenumber"] = houseNumber.trim()
+            val key = if (countryCode == "JP") "addr:block_number" else "addr:block"
+            tags[key] = block.trim()
         }
         is HouseNumber -> {
-            tags["addr:housenumber"] = houseNumber
+            tags["addr:housenumber"] = houseNumber.trim()
         }
     }
 }
