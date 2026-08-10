@@ -57,7 +57,7 @@ fun SplitWayForm(
     var cuts by rememberSerializable { mutableStateOf(emptyList<SplitPolylineAtPosition>()) }
 
     val metersPerDp = LocalMapMetersPerDp.current
-    val minDistanceToOtherCuts = (metersPerDp * 48).dp.toPx().toDouble()
+    val minDistanceToOtherCuts = (metersPerDp * 24).dp.toPx().toDouble()
     val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
     val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
 

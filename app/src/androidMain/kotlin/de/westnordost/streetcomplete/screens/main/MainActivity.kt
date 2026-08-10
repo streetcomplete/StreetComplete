@@ -93,7 +93,6 @@ import de.westnordost.streetcomplete.view.toAndroidResourceId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.jetbrains.compose.resources.DrawableResource
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
@@ -241,7 +240,7 @@ class MainActivity :
                 },
                 onExplainedNeedForLocationPermission = ::requestLocation,
                 onSetMapMarkers = { markers ->
-                    mapFragment?.putMarkersForCurrentHighlighting(markers)
+                    mapFragment?.setMarkersForCurrentHighlighting(markers)
                 },
                 onSetPinPosition = { icon, position ->
                     mapFragment?.highlightPins(icon.toAndroidResourceId()!!, listOfNotNull(position))
@@ -847,7 +846,7 @@ class MainActivity :
                 Marker(geometry, icon, title)
             }.toList()
 
-            withContext(Dispatchers.Main) { mapFragment?.putMarkersForCurrentHighlighting(markers) }
+            withContext(Dispatchers.Main) { mapFragment?.setMarkersForCurrentHighlighting(markers) }
         }
     }
 

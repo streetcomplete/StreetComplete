@@ -7,9 +7,7 @@ import android.hardware.SensorManager
 import android.location.Location
 import android.os.Bundle
 import androidx.annotation.DrawableRes
-import androidx.annotation.UiThread
 import androidx.core.content.getSystemService
-import androidx.core.graphics.Insets
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -472,18 +470,10 @@ class MainMapFragment : MapFragment() {
         selectedPinsMapComponent?.clear()
     }
 
-    fun putMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
+    fun setMarkersForCurrentHighlighting(markers: Iterable<Marker>) {
         viewLifecycleScope.launch(Dispatchers.Default) {
-            geometryMarkersMapComponent?.putAll(markers)
+            geometryMarkersMapComponent?.setAll(markers)
         }
-    }
-
-    @UiThread fun deleteMarkerForCurrentHighlighting(geometry: ElementGeometry) {
-        geometryMarkersMapComponent?.delete(geometry)
-    }
-
-    @UiThread fun clearMarkersForCurrentHighlighting() {
-        geometryMarkersMapComponent?.clear()
     }
 
     //endregion
