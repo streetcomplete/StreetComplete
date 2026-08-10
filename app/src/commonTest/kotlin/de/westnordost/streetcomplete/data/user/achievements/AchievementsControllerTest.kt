@@ -26,7 +26,6 @@ import dev.mokkery.answering.sequentially
 import dev.mokkery.every
 import dev.mokkery.verify
 import dev.mokkery.verifyNoMoreCalls
-import org.jetbrains.compose.resources.DrawableResource
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -304,7 +303,6 @@ private object OverlayOne : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {}
 
     override fun getStyledElements(mapData: MapDataWithGeometry) = emptySequence<Pair<Element, OverlayStyle>>()

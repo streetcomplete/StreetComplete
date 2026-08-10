@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_access_point
 import de.westnordost.streetcomplete.resources.quest_address_title
-import org.jetbrains.compose.resources.DrawableResource
 
 open class TestOverlayA : Overlay {
 
@@ -30,7 +29,6 @@ open class TestOverlayA : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {}
 
 }

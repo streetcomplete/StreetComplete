@@ -76,6 +76,7 @@ import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.toDpOffset
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
 import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
@@ -242,9 +243,6 @@ class MainActivity :
                 onSetMapMarkers = { markers ->
                     mapFragment?.setMarkersForCurrentHighlighting(markers)
                 },
-                onSetPinPosition = { icon, position ->
-                    mapFragment?.highlightPins(icon.toAndroidResourceId()!!, listOfNotNull(position))
-                },
                 onSolvedQuest = { icon, position ->
                     val offset = binding.root.getLocationInWindow()
                     val startPos = mapFragment?.getPointOf(position)!!
@@ -252,7 +250,14 @@ class MainActivity :
                     startPos.x += offset.x
                     startPos.y += offset.y
 
-                    lastQuestSolved = QuestSolvedEvent(icon, Offset(startPos.x, startPos.y))
+                    lastQuestSolved = QuestSolvedEvent(icon, startPos.toOffset())
+                },
+                getOffset = { position ->
+                    val offset = binding.root.getLocationInWindow()
+                    val position = mapFragment?.getPointOf(position)!!
+                    position.x += offset.x
+                    position.y += offset.y
+                    position.toOffset()
                 }
             )
 

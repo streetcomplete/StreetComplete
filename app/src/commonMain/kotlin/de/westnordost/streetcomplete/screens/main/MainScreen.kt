@@ -77,8 +77,8 @@ fun MainScreen(
     onClickLogin: () -> Unit,
     onExplainedNeedForLocationPermission: () -> Unit,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
-    onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
     onSolvedQuest: (icon: DrawableResource, position: LatLon) -> Unit,
+    getOffset: (position: LatLon) -> Offset?,
     modifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
@@ -284,7 +284,7 @@ fun MainScreen(
                         mapPosition = mapCamera.position,
                         mapMetersPerDp = metersPerDp,
                         onSetMapMarkers = onSetMapMarkers,
-                        onSetPinPosition = onSetPinPosition
+                        getOffset = getOffset
                     )
                 }
             }

@@ -1,5 +1,10 @@
 package de.westnordost.streetcomplete.overlays.address
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.absoluteOffset
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -7,6 +12,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.AbsoluteAlignment
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
@@ -47,11 +61,14 @@ import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.overlay.OverlayForm
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.LocalGetOffsetCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.ktx.toPx
+import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.isArea
+import de.westnordost.streetcomplete.util.ktx.toIntOffset
 import de.westnordost.streetcomplete.util.math.VertexOfWay
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.getPositionOnWays
@@ -67,7 +84,6 @@ fun AddressOverlayForm(
     element: Element?,
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
-    onPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
     mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
     nameSuggestionsSource: NameSuggestionsSource = koinInject(),
     featureDictionary: FeatureDictionary = koinInject(),
@@ -100,6 +116,7 @@ fun AddressOverlayForm(
     val metersPerDp = LocalMapMetersPerDp.current
     val maxDistanceToCrosshair = (metersPerDp * 24).dp.toPx().toDouble()
     val snapToVertexDistance = (metersPerDp * 12).dp.toPx().toDouble()
+    var pinSize by remember { mutableStateOf<IntSize>(IntSize.Zero) }
 
     val positionOnWay = remember(position, buildingOutlines) {
         if (position == null) return@remember null
@@ -115,13 +132,6 @@ fun AddressOverlayForm(
     }
 
     var addEntrance by rememberSaveable { mutableStateOf(true) }
-
-    LaunchedEffect(positionOnWay, addEntrance) {
-        onPinPosition(
-            if (addEntrance) Res.drawable.quest_door else Res.drawable.quest_housenumber,
-            positionOnWay?.position
-        )
-    }
 
     var confirmRemoveAddress by remember { mutableStateOf(false) }
 
@@ -233,35 +243,50 @@ fun AddressOverlayForm(
         }
     }
 
-    OverlayForm(
-        on = on,
-        isComplete =
-            // street is optional as in new developments sometimes the street names are not
-            // posted yet, or it is not clear on-site, see #6528
-            address.number?.isComplete() == true
-            || address.name?.isNotEmpty() == true && address.number?.isBlank() != false,
-        hasChanges = originalAddress != address,
-        onClickOk = ::onClickOk,
-        label =
-            // never show house number, as it already is shown in the form
-            element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
-        pinContent = {
-            if (positionOnWay == null) {
-                Pin(iconPainter = painterResource(Res.drawable.quest_housenumber))
+    Box(Modifier.fillMaxSize()) {
+        if (positionOnWay != null) {
+            val offset = LocalGetOffsetCallback.current?.invoke(positionOnWay.position)?.toIntOffset()
+            if (offset != null) {
+                Pin(
+                    iconPainter = painterResource(if (addEntrance) Res.drawable.quest_door else Res.drawable.quest_housenumber),
+                    modifier = Modifier
+                        .align(AbsoluteAlignment.TopLeft)
+                        .onSizeChanged { pinSize = it }
+                        .absoluteOffset { IntOffset(offset.x - pinSize.center.x, offset.y - pinSize.center.y) }
+                )
             }
-        },
-        otherAnswers = ::createOtherAnswers
-    ) {
-        AddressForm(
-            value = address,
-            onValueChange = { address = it },
-            countryCode = countryInfo.countryCode,
-            showStreetOrPlaceSelect = showStreetOrPlaceSelect,
-            streetNameSuggestion = lastStreetName,
-            placeNameSuggestion = lastPlaceName,
-            houseNumberSuggestion = lastHouseNumber,
-            blockSuggestion = lastBlock,
-        )
+        }
+
+        OverlayForm(
+            on = on,
+            isComplete =
+                // street is optional as in new developments sometimes the street names are not
+                // posted yet, or it is not clear on-site, see #6528
+                address.number?.isComplete() == true
+                || address.name?.isNotEmpty() == true && address.number?.isBlank() != false,
+            hasChanges = originalAddress != address,
+            onClickOk = ::onClickOk,
+            label =
+                // never show house number, as it already is shown in the form
+                element?.let { nameAndLocationLabel(it, featureDictionary, showHouseNumber = false) },
+            pinContent = {
+                if (positionOnWay == null) {
+                    Pin(iconPainter = painterResource(Res.drawable.quest_housenumber))
+                }
+            },
+            otherAnswers = ::createOtherAnswers
+        ) {
+            AddressForm(
+                value = address,
+                onValueChange = { address = it },
+                countryCode = countryInfo.countryCode,
+                showStreetOrPlaceSelect = showStreetOrPlaceSelect,
+                streetNameSuggestion = lastStreetName,
+                placeNameSuggestion = lastPlaceName,
+                houseNumberSuggestion = lastHouseNumber,
+                blockSuggestion = lastBlock,
+            )
+        }
     }
 
     if (confirmRemoveAddress) {

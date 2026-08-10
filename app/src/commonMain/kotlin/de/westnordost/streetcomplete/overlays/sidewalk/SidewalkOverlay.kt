@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.sidewalk
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -16,8 +15,6 @@ import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.osm.any
-import de.westnordost.streetcomplete.osm.cycleway_separate.SeparateCycleway
-import de.westnordost.streetcomplete.osm.cycleway_separate.parseSeparateCycleway
 import de.westnordost.streetcomplete.osm.isPrivateOnFoot
 import de.westnordost.streetcomplete.osm.maxspeed.MAX_SPEED_TYPE_KEYS
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
@@ -25,7 +22,6 @@ import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.DrawableResource
 
 class SidewalkOverlay : Overlay {
 
@@ -57,7 +53,6 @@ class SidewalkOverlay : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
         requireNotNull(element)
         SidewalkOverlayForm(on, element, geometry, countryInfo)

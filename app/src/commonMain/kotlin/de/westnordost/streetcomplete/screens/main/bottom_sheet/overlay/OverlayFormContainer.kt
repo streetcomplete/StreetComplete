@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNod
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.LeaveNoteInsteadForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.split_way.SplitWayForm
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
+import de.westnordost.streetcomplete.ui.common.quest.LocalGetOffsetCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
@@ -39,7 +40,6 @@ import de.westnordost.streetcomplete.ui.util.ReplaceBottomSheetTransitionSpec
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import kotlinx.serialization.Serializable
-import org.jetbrains.compose.resources.DrawableResource
 import org.koin.compose.koinInject
 
 /** Container in which all overlay forms are housed.
@@ -50,8 +50,7 @@ import org.koin.compose.koinInject
  *  @param onSetMapMarkers is called when the form shown wishes to show markers on the map. E.g. the
  *         split way form shows markers.
  *
- *  @param onSetPinPosition is called when the form wishes to display the overlay pin at a custom
- *         location, e.g. in order to snap it to a way (see e.g. AddressOverlay)
+ *  @param getOffset returns the offset on the screen of the given position
  *  */
 @Composable
 fun OverlayFormContainer(
@@ -67,7 +66,7 @@ fun OverlayFormContainer(
     mapPosition: LatLon,
     mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
-    onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
+    getOffset: (position: LatLon) -> Offset?,
     modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
@@ -94,7 +93,8 @@ fun OverlayFormContainer(
         LocalMapRotation provides mapRotation,
         LocalMapTilt provides mapTilt,
         LocalMapMetersPerDp provides mapMetersPerDp,
-        LocalMapMarkersCallback provides onSetMapMarkers
+        LocalMapMarkersCallback provides onSetMapMarkers,
+        LocalGetOffsetCallback provides getOffset,
     ) {
         AnimatedContent(
             targetState = state,
@@ -108,7 +108,6 @@ fun OverlayFormContainer(
                         element = element,
                         geometry = geometry,
                         countryInfo = countryInfo,
-                        onSetPinPosition = onSetPinPosition
                     )
                 }
                 OverlayFormState.LeaveNote -> {

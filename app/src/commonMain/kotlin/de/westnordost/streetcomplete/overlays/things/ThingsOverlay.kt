@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.osm.asIfItWasnt
 import de.westnordost.streetcomplete.osm.iconDrawableResource
 import de.westnordost.streetcomplete.osm.things.isThingOrDisusedThing
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.DrawableResource
 
 class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
@@ -55,7 +54,6 @@ class ThingsOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
         ThingsOverlayForm(on, element, geometry, countryInfo)
     }

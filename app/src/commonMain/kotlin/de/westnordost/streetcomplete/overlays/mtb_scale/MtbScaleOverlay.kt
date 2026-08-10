@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale
 import de.westnordost.streetcomplete.osm.mtb_scale.parseMtbScale
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.DrawableResource
 
 class MtbScaleOverlay : Overlay {
 
@@ -50,7 +49,6 @@ class MtbScaleOverlay : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
         requireNotNull(element)
         MtbScaleOverlayForm(on, element)

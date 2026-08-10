@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.overlays.cycleway
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.geometry.Offset
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -29,7 +30,6 @@ import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
 import de.westnordost.streetcomplete.resources.*
-import org.jetbrains.compose.resources.DrawableResource
 
 class CyclewayOverlay(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
@@ -67,7 +67,6 @@ class CyclewayOverlay(
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
         requireNotNull(element)
         if (element.tags["highway"] in ALL_ROADS) {

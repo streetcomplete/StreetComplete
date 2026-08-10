@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getShortHouseNumber
-import org.jetbrains.compose.resources.DrawableResource
 
 class AddressOverlay(
     private val getCountryCodeByLocation: (location: LatLon) -> String?
@@ -66,8 +65,7 @@ class AddressOverlay(
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
-        AddressOverlayForm(on, element, geometry, countryInfo, onSetPinPosition)
+        AddressOverlayForm(on, element, geometry, countryInfo)
     }
 }

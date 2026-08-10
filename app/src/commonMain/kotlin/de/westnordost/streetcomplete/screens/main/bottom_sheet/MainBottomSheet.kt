@@ -45,7 +45,7 @@ fun MainBottomSheet(
     mapPosition: LatLon,
     mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
-    onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit,
+    getOffset: (position: LatLon) -> Offset?,
     modifier: Modifier = Modifier
 ) {
     var confirmEdit by remember { mutableStateOf<PendingEdit?>(null) }
@@ -171,7 +171,7 @@ fun MainBottomSheet(
                 mapPosition = mapPosition,
                 mapMetersPerDp = mapMetersPerDp,
                 onSetMapMarkers = onSetMapMarkers,
-                onSetPinPosition = onSetPinPosition,
+                getOffset = getOffset,
                 modifier = modifier,
             )
         }

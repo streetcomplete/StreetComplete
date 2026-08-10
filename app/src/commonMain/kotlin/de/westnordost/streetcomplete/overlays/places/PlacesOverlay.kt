@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.overlays.places
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -22,7 +21,6 @@ import de.westnordost.streetcomplete.quests.shop_type.CheckShopType
 import de.westnordost.streetcomplete.quests.shop_type.SpecifyShopType
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getNameLabel
-import org.jetbrains.compose.resources.DrawableResource
 
 class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
 
@@ -71,7 +69,6 @@ class PlacesOverlay(private val getFeature: (Element) -> Feature?) : Overlay {
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
-        onSetPinPosition: (icon: DrawableResource, position: LatLon?) -> Unit
     ) {
         PlacesOverlayForm(on, element, geometry, countryInfo)
     }
