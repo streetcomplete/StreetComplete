@@ -29,7 +29,7 @@ fun AddFireHydrantRefForm(
 
     QuestForm(
         on = on,
-        isComplete = ref.isNotEmpty() && !isTooLong,
+        isComplete = ref.isNotBlank() && !isTooLong,
         onClickOk = { on(Answer(FireHydrantRef(ref))) },
         otherAnswers = { listOf(
             AnswerItem(stringResource(Res.string.quest_ref_answer_noRef)) { confirmNoRef = true }

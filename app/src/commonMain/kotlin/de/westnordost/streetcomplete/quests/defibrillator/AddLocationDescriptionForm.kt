@@ -35,7 +35,7 @@ fun AddLocationDescriptionForm(
 
     QuestForm(
         on = on,
-        isComplete = description.isNotEmpty() && !isTooLong,
+        isComplete = description.isNotBlank() && !isTooLong,
         onClickOk = { on(Answer(description)) },
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {

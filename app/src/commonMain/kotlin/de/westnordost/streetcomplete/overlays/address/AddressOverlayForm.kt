@@ -151,7 +151,7 @@ fun AddressOverlayForm(
             result.add(AnswerItem(stringResource(Res.string.quest_address_answer_house_name2)) {
                 address = address.copy(
                     name = "",
-                    number = address.number?.takeIf { !it.isEmpty() }
+                    number = address.number?.takeIf { !it.isBlank() }
                 )
             })
         }
@@ -197,7 +197,7 @@ fun AddressOverlayForm(
             // street is optional as in new developments sometimes the street names are not
             // posted yet, or it is not clear on-site, see #6528
             address.number?.isComplete() == true
-            || address.name?.isNotEmpty() == true && address.number?.isEmpty() != false,
+            || address.name?.isNotEmpty() == true && address.number?.isBlank() != false,
         hasChanges =
             originalAddress != address,
         onClickOk = {

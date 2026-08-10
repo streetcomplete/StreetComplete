@@ -57,12 +57,12 @@ fun AddHousenumberForm(
     fun showHouseName() {
         addressNumberAndName = AddressNumberAndName(
             name = "",
-            number = addressNumberAndName.number?.takeIf { !it.isEmpty() }
+            number = addressNumberAndName.number?.takeIf { !it.isBlank() }
         )
     }
 
     fun applyHousenumberAnswer() {
-        val number = addressNumberAndName.number?.takeIf { !it.isEmpty() }
+        val number = addressNumberAndName.number?.takeIf { !it.isBlank() }
         lastBlock = (number as? BlockAndHouseNumber)?.block
         lastWasBlock = number is BlockAndHouseNumber
         number?.streetHouseNumber?.let { lastHouseNumber = it }
@@ -74,7 +74,7 @@ fun AddHousenumberForm(
         isComplete = addressNumberAndName.isComplete(),
         onClickOk = {
             val isUnusual = addressNumberAndName
-                .number?.takeIf { !it.isEmpty() }
+                .number?.takeIf { !it.isBlank() }
                 ?.looksInvalid(countryInfo.additionalValidHousenumberRegex) == true
 
             if (isUnusual) {
@@ -83,7 +83,7 @@ fun AddHousenumberForm(
                 applyHousenumberAnswer()
             }
         },
-        hasChanges = !addressNumberAndName.isEmpty(),
+        hasChanges = !addressNumberAndName.isBlank(),
         otherAnswers = {
             val switchBlockAnswer = if (countryInfo.countryCode !in listOf("JP", "CZ", "SK")) {
                 when (addressNumberAndName.number) {

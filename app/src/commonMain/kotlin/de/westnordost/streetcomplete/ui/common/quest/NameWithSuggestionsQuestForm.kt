@@ -33,7 +33,7 @@ fun NameWithSuggestionsQuestForm(
 
     QuestForm(
         on = on,
-        isComplete = name.text.isNotEmpty() && !isTooLong,
+        isComplete = name.text.isNotBlank() && !isTooLong,
         onClickOk = { on(Answer(name.text)) },
         modifier = modifier,
         otherAnswers = otherAnswers,

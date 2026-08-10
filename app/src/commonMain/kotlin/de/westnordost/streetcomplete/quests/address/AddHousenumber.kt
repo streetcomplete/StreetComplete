@@ -17,7 +17,6 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.address.applyTo
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.LatLonRaster
@@ -169,7 +168,7 @@ class AddHousenumber(
     override fun applyAnswerTo(answer: HouseNumberAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is AddressNumberAndName -> {
-                if (answer.number?.isEmpty() != false && answer.name.isNullOrEmpty()) {
+                if (answer.number?.isBlank() != false && answer.name.isNullOrEmpty()) {
                     tags["nohousenumber"] = "yes"
                 } else {
                     val countryCode = getCountryInfoByLocation(geometry.center).countryCode

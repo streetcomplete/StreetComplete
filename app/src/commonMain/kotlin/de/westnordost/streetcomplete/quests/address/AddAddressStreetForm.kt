@@ -65,7 +65,7 @@ fun AddAddressStreetForm(
     QuestForm(
         on = on,
         isComplete =
-            streetOrPlaceName.name.isNotEmpty() &&
+            streetOrPlaceName.name.isNotBlank() &&
             streetOrPlaceName.name.length <= MAX_OSM_TAG_VALUE_LENGTH,
         onClickOk = {
             lastWasPlaceName = streetOrPlaceName is PlaceName

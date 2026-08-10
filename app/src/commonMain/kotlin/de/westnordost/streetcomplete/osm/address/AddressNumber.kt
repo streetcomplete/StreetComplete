@@ -8,34 +8,34 @@ import kotlinx.serialization.Serializable
  *  instead expressed by conscription numbers or house+block numbers */
 @Serializable
 sealed interface AddressNumber {
-    fun isEmpty(): Boolean
+    fun isBlank(): Boolean
     fun isComplete(): Boolean
 }
 
 @Serializable
 data class HouseNumber(val houseNumber: String) : AddressNumber {
-    override fun isEmpty(): Boolean =
-        houseNumber.isEmpty()
+    override fun isBlank(): Boolean =
+        houseNumber.isBlank()
     override fun isComplete(): Boolean =
-        houseNumber.isNotEmpty() && houseNumber.length <= MAX_OSM_TAG_VALUE_LENGTH
+        houseNumber.isNotBlank() && houseNumber.length <= MAX_OSM_TAG_VALUE_LENGTH
 }
 @Serializable
 data class ConscriptionNumber(
     val conscriptionNumber: String,
     val streetNumber: String? = null
 ) : AddressNumber {
-    override fun isEmpty(): Boolean =
-        conscriptionNumber.isEmpty() && streetNumber.isNullOrEmpty()
+    override fun isBlank(): Boolean =
+        conscriptionNumber.isBlank() && streetNumber.isNullOrBlank()
     override fun isComplete(): Boolean =
-        conscriptionNumber.isNotEmpty() && conscriptionNumber.length <= MAX_OSM_TAG_VALUE_LENGTH
+        conscriptionNumber.isNotBlank() && conscriptionNumber.length <= MAX_OSM_TAG_VALUE_LENGTH
 }
 @Serializable
 data class BlockAndHouseNumber(val block: String, val houseNumber: String) : AddressNumber {
-    override fun isEmpty(): Boolean =
-        block.isEmpty() && houseNumber.isEmpty()
+    override fun isBlank(): Boolean =
+        block.isBlank() && houseNumber.isBlank()
     override fun isComplete(): Boolean =
-        block.isNotEmpty() &&
-        houseNumber.isNotEmpty() &&
+        block.isNotBlank() &&
+        houseNumber.isNotBlank() &&
         block.length <= MAX_OSM_TAG_VALUE_LENGTH &&
         houseNumber.length <= MAX_OSM_TAG_VALUE_LENGTH
 }

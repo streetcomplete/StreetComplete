@@ -13,7 +13,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
-import de.westnordost.streetcomplete.quests.address.AddressNumberAndName
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.Details
 import org.jetbrains.compose.resources.stringResource
@@ -48,7 +47,7 @@ fun AddressNumberAndNameForm(
                     onExpandedChange = { numberExpanded = it },
                     summary = { Text(stringResource(Res.string.quest_address_house_number_label)) },
                     modifier = Modifier.fillMaxWidth(),
-                    enabled = number.isEmpty() != false
+                    enabled = number.isBlank() != false
                 ) {
                     Box(
                         modifier = Modifier.fillMaxWidth(),

@@ -13,13 +13,13 @@ sealed interface HouseNumberAnswer {
 @Serializable
 data class AddressNumberAndName(val number: AddressNumber?, val name: String?) : HouseNumberAnswer {
 
-    fun isEmpty(): Boolean =
-        number?.isEmpty() != false && name?.isEmpty() != false
+    fun isBlank(): Boolean =
+        number?.isBlank() != false && name?.isBlank() != false
 
     fun isComplete(): Boolean =
         (
             number?.isComplete() == true ||
-            name?.isNotEmpty() == true && number?.isEmpty() != false
+            name?.isNotBlank() == true && number?.isBlank() != false
         ) && (
             name == null || name.length <= MAX_OSM_TAG_VALUE_LENGTH
         )
