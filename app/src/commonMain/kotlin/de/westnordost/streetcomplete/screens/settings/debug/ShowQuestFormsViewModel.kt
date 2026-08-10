@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestType
@@ -42,7 +43,10 @@ class ShowQuestFormsViewModelImpl(
 
     private val questTitles = MutableStateFlow<Map<String, String>>(emptyMap())
 
-    private val mockPosition get() = prefs.mapPosition
+    // The map runs only on Android currently, no map position is ever stored on iOS.
+    // Null Island lies within no country, so no CountryInfo can be resolved for it.
+    private val mockPosition get() =
+        prefs.mapPosition.takeIf { it != NULL_ISLAND } ?: FALLBACK_MOCK_POSITION
 
     override val filteredQuests: StateFlow<List<QuestType>> =
         combine(searchText, questTitles) { searchText, titles ->
@@ -123,3 +127,7 @@ class ShowQuestFormsViewModelImpl(
         }
     }
 }
+
+private val NULL_ISLAND = LatLon(0.0, 0.0)
+// arbitrary, just needs to lie within some country
+private val FALLBACK_MOCK_POSITION = LatLon(53.6074, 9.9030)
