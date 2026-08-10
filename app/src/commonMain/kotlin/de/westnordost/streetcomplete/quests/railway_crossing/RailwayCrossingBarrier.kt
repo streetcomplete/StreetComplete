@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.railway_crossing
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class RailwayCrossingBarrier(val osmValue: String?) {
     NO("no"),
     HALF("half"),

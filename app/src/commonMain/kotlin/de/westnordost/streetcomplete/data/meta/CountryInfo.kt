@@ -29,10 +29,6 @@ enum class WeightMeasurementUnit(val displayString: String) {
 
 @Serializable
 data class IncompleteCountryInfo(
-    // this value is not defined in the yaml file but it is the ISO language code part of the file name!
-    // e.g. US for US-TX.yml
-    val countryCode: String,
-
     // sorted alphabetically for better overview
     val additionalStreetsignLanguages: List<String>? = null,
     val additionalValidHousenumberRegex: String? = null,
@@ -83,8 +79,13 @@ data class IncompleteCountryInfo(
     val workweek: String? = null,
 )
 
-data class CountryInfo(private val infos: List<IncompleteCountryInfo>) {
-    val countryCode get() = infos.first().countryCode
+data class CountryInfo(
+    /** e.g. US-AL */
+    val countryOrSubdivisionCode: String,
+    private val infos: List<IncompleteCountryInfo>
+) {
+    /** e.g. US */
+    val countryCode = countryOrSubdivisionCode.substringBefore('-')
 
     // part of default.yml, so cannot be null
     val advisorySpeedLimitSignStyle: String get() =

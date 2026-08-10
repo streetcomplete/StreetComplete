@@ -1,0 +1,91 @@
+package de.westnordost.streetcomplete.quests.lanes
+
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.osm.oneway.isOneway
+import de.westnordost.streetcomplete.osm.oneway.isReversedOneway
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.math.getOrientationOrZero
+import org.jetbrains.compose.resources.stringResource
+
+@Composable
+fun AddLanesForm(
+    on: (QuestAction<LanesAnswer>) -> Unit,
+    element: Element,
+    geometry: ElementGeometry,
+    countryInfo: CountryInfo
+) {
+    var lanes by rememberSerializable { mutableStateOf(Lanes()) }
+
+    val edgeLineStyle = remember {
+        when {
+            countryInfo.edgeLineStyle.contains("short dashes") -> LineStyle.SHORT_DASHES
+            countryInfo.edgeLineStyle.contains("dashes") -> LineStyle.DASHES
+            else -> LineStyle.CONTINUOUS
+        }
+    }
+    val edgeLineColor = remember {
+        if (countryInfo.edgeLineStyle.contains("yellow")) Color.Yellow else Color.White
+    }
+    val centerLineColor = remember {
+        if (countryInfo.centerLineStyle.contains("yellow")) Color.Yellow else Color.White
+    }
+    val isOneway = remember(element) { isOneway(element.tags) }
+    val isReversedOneway = remember(element) { isReversedOneway(element.tags) }
+    val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
+
+    QuestForm(
+        on = on,
+        isComplete =
+            if (!isOneway) {
+                lanes.forward != null && lanes.backward != null
+            } else {
+                lanes.forward != null || lanes.backward != null
+            },
+        onClickOk =  { on(Answer(lanes)) },
+        hasChanges = lanes.forward != null || lanes.backward != null,
+        otherAnswers = { listOfNotNull(
+            if (!isOneway && countryInfo.hasCenterLeftTurnLane) {
+                AnswerItem(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
+                    lanes = lanes.copy(centerLeftTurnLane = true)
+                }
+            } else null,
+            AnswerItem(stringResource(Res.string.quest_lanes_answer_noLanes)) {
+                on(Answer(LanesAnswer.IsUnmarked))
+            },
+            AnswerItem(stringResource(Res.string.quest_lanes_answer_oneLaneOnly)) {
+                on(Answer(LanesAnswer.OneLaneOnly))
+            },
+        ) },
+        contentPadding = PaddingValues.Zero,
+    ) {
+        LanesForm(
+            value = lanes,
+            onValueChanged = { lanes = it },
+            wayRotation = geometryRotation,
+            mapRotation = LocalMapRotation.current,
+            mapTilt = LocalMapTilt.current,
+            isOneway = isOneway,
+            isReversedOneway = isReversedOneway,
+            isLeftHandTraffic = countryInfo.isLeftHandTraffic,
+            centerLineColor = centerLineColor,
+            edgeLineColor = edgeLineColor,
+            edgeLineStyle = edgeLineStyle,
+        )
+    }
+}

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.boat_rental
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class BoatRental(val osmValue: String) {
     // sort order: first the small things
     CANOE("canoe_rental"),

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.osm.address
 
+import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import de.westnordost.streetcomplete.osm.Tags
 import kotlinx.serialization.Serializable
 
@@ -7,27 +8,36 @@ import kotlinx.serialization.Serializable
  *  instead expressed by conscription numbers or house+block numbers */
 @Serializable
 sealed interface AddressNumber {
-    fun isEmpty(): Boolean
+    fun isBlank(): Boolean
     fun isComplete(): Boolean
 }
 
 @Serializable
 data class HouseNumber(val houseNumber: String) : AddressNumber {
-    override fun isEmpty(): Boolean = houseNumber.isEmpty()
-    override fun isComplete(): Boolean = houseNumber.isNotEmpty()
+    override fun isBlank(): Boolean =
+        houseNumber.isBlank()
+    override fun isComplete(): Boolean =
+        houseNumber.isNotBlank() && houseNumber.length <= MAX_OSM_TAG_VALUE_LENGTH
 }
 @Serializable
 data class ConscriptionNumber(
     val conscriptionNumber: String,
     val streetNumber: String? = null
 ) : AddressNumber {
-    override fun isEmpty(): Boolean = conscriptionNumber.isEmpty() && streetNumber.isNullOrEmpty()
-    override fun isComplete(): Boolean = conscriptionNumber.isNotEmpty()
+    override fun isBlank(): Boolean =
+        conscriptionNumber.isBlank() && streetNumber.isNullOrBlank()
+    override fun isComplete(): Boolean =
+        conscriptionNumber.isNotBlank() && conscriptionNumber.length <= MAX_OSM_TAG_VALUE_LENGTH
 }
 @Serializable
 data class BlockAndHouseNumber(val block: String, val houseNumber: String) : AddressNumber {
-    override fun isEmpty(): Boolean = block.isEmpty() && houseNumber.isEmpty()
-    override fun isComplete(): Boolean = block.isNotEmpty() && houseNumber.isNotEmpty()
+    override fun isBlank(): Boolean =
+        block.isBlank() && houseNumber.isBlank()
+    override fun isComplete(): Boolean =
+        block.isNotBlank() &&
+        houseNumber.isNotBlank() &&
+        block.length <= MAX_OSM_TAG_VALUE_LENGTH &&
+        houseNumber.length <= MAX_OSM_TAG_VALUE_LENGTH
 }
 
 val AddressNumber.streetHouseNumber: String? get() = when (this) {
@@ -50,21 +60,21 @@ fun AddressNumber.applyTo(tags: Tags, countryCode: String?) {
 
     when (this) {
         is ConscriptionNumber -> {
-            tags["addr:conscriptionnumber"] = conscriptionNumber
-            if (!streetNumber.isNullOrEmpty()) {
-                tags["addr:streetnumber"] = streetNumber
-                tags["addr:housenumber"] = streetNumber
+            tags["addr:conscriptionnumber"] = conscriptionNumber.trim()
+            if (!streetNumber.isNullOrBlank()) {
+                tags["addr:streetnumber"] = streetNumber.trim()
+                tags["addr:housenumber"] = streetNumber.trim()
             } else {
-                tags["addr:housenumber"] = conscriptionNumber
+                tags["addr:housenumber"] = conscriptionNumber.trim()
             }
         }
         is BlockAndHouseNumber -> {
-            tags["addr:housenumber"] = houseNumber
-            if (countryCode == "JP") tags["addr:block_number"] = block
-            else tags["addr:block"] = block
+            tags["addr:housenumber"] = houseNumber.trim()
+            val key = if (countryCode == "JP") "addr:block_number" else "addr:block"
+            tags[key] = block.trim()
         }
         is HouseNumber -> {
-            tags["addr:housenumber"] = houseNumber
+            tags["addr:housenumber"] = houseNumber.trim()
         }
     }
 }

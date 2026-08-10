@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.bike_parking_type
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class BikeParkingType(val osmValue: String) {
     STANDS("stands"),
     WALL_LOOPS("wall_loops"),

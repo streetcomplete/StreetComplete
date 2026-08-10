@@ -43,7 +43,7 @@ fun FeatureItem(
     countryCode: String?,
     modifier: Modifier = Modifier,
     searchText: String? = null,
-    iconSize: Dp = 30.dp
+    iconSize: Dp = 45.dp // preset icons are 15x15, so this is 3x
 ) {
     val color = LocalContentColor.current
     val languages = remember { getLanguagesForFeatureDictionary() }
@@ -55,7 +55,7 @@ fun FeatureItem(
         )
     } else null
 
-    val annotatedName = remember(searchText, color) {
+    val annotatedName = remember(feature, searchText, color) {
         feature.buildAnnotatedName(searchText = searchText, color = color)
     }
     // brand features first have their name, then in second line the name of the parend feature

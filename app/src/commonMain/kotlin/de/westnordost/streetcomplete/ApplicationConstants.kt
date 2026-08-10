@@ -128,4 +128,6 @@ object ApplicationConstants {
     (test data needs to be created there).
      */
     const val USE_TEST_API = false
+
+    const val MAX_OSM_TAG_VALUE_LENGTH = 255
 }

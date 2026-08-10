@@ -1,0 +1,98 @@
+package de.westnordost.streetcomplete.quests.opening_hours_signed
+
+import androidx.compose.runtime.Composable
+import de.westnordost.osmfeatures.Feature
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
+import de.westnordost.streetcomplete.osm.setCheckDateForKey
+import de.westnordost.streetcomplete.osm.toCheckDate
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Instant
+
+class CheckOpeningHoursSigned(
+    private val getFeature: (Element) -> Feature?
+) : OsmElementQuestType<Boolean> {
+
+    private val filter by lazy { """
+        nodes, ways with
+          opening_hours:signed = no
+          and (
+            $hasOldOpeningHoursCheckDateFilter
+            or older today -2 years
+          )
+          and access !~ private|no
+          and (
+            name or brand or noname = yes or name:signed = no
+            or amenity ~ recycling|toilets|bicycle_rental|charging_station or leisure = park or barrier
+          )
+    """.toElementFilterExpression() }
+
+    private val hasOldOpeningHoursCheckDateFilter: String get() =
+        getLastCheckDateKeys("opening_hours").joinToString("\nor ") {
+            "$it < today -2 years"
+        }
+
+    override val changesetComment = "Survey whether opening hours are signed"
+    override val wikiLink = "Key:opening_hours:signed"
+    override val icon = Res.drawable.quest_opening_hours_signed
+    override val title = Res.string.quest_openingHours_signed_title
+    override val achievements = listOf(CITIZEN)
+
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+        mapData.filter { isApplicableTo(it) }
+
+    override fun isApplicableTo(element: Element): Boolean =
+        filter.matches(element) && hasName(element)
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
+
+    @Composable
+    override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        YesNoQuestForm(on)
+    }
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer) {
+            tags.remove("opening_hours:signed")
+            /* it is now signed: we set the check date for the opening hours to the previous edit
+               timestamp because this or an older date is the date the opening hours were last
+               checked. This is set so that the app will ask about the (signed) opening hours in
+               a follow up quest
+             */
+            val hasCheckDate = getLastCheckDateKeys("opening_hours")
+                .any { tags[it]?.toCheckDate() != null }
+
+            if (!hasCheckDate) {
+                val newCheckDate = Instant.fromEpochMilliseconds(timestampEdited)
+                    .toLocalDateTime(TimeZone.currentSystemDefault())
+                    .date
+                tags.setCheckDateForKey("opening_hours", newCheckDate)
+            }
+        } else {
+            tags["opening_hours:signed"] = "no"
+            // still unsigned: just set the check date to now, user was on-site
+            tags.updateCheckDateForKey("opening_hours")
+        }
+    }
+
+    private fun hasName(element: Element) = hasProperName(element.tags) || hasFeatureName(element)
+
+    private fun hasProperName(tags: Map<String, String>): Boolean =
+        tags.containsKey("name") || tags.containsKey("brand")
+
+    private fun hasFeatureName(element: Element) = getFeature(element)?.name != null
+}

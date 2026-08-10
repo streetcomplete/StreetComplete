@@ -454,6 +454,8 @@ class MapDataWithEditsSourceImpl(
             mapDataChanges = edit.action.createUpdates(this, idProvider)
         } catch (e: ConflictException) {
             return null
+        } catch (e: IllegalArgumentException) {
+            return null
         }
 
         val deletedKeys = mapDataChanges.deletions.map { it.key }
