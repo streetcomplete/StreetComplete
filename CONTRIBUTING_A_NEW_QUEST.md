@@ -78,7 +78,7 @@ If it is going to be asked for POIs and should be disabled by default, then [`Ad
 
 Quests are grouped in [one folder](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests).
 
-Implementing a quest by duplicating and modifiying an existing one is the recommended method.
+Implementing a quest by duplicating and modifying an existing one is the recommended method.
 
 ### Locating a quest
 
