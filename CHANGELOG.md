@@ -8,8 +8,8 @@ Fix in certain languages (such as French), presets wouldn't load, which made the
 
 ### Fixes
 
-- *Fix upload of photos in notes stopped to work on 27th of July* (#6959)
-- Places overlay: Handle name field correctly for places that *usually* have a fixed name but not necessarily (#6907)
+- _Fix upload of photos in notes stopped to work on 27th of July_ (#6959)
+- Places overlay: Handle name field correctly for places that _usually_ have a fixed name but not necessarily (#6907)
 - Fix some elements in the settings screen didn't respect window insets correctly
 
 ### Quest improvements
@@ -42,7 +42,7 @@ Fix in certain languages (such as French), presets wouldn't load, which made the
 - Opening hours: Don't ask for street vendors (#6848), by @matkoniecz
 - Baby changing tables: Can now answer that there is actually no toilet (#6837), by @paulklie
 - Ask various quests for ranger stations, water points, bird hides (#6888, #6857, #6836), by @paulklie
-- Lanes: Allow answering that there is only *one* marked lane (#6879)
+- Lanes: Allow answering that there is only _one_ marked lane (#6879)
 - Crossing island: Don't ask when the traffic island has already been mapped in detail (#6874)
 - Check existence: Don't ask for objects with heritage status (#6776)
 - Power line attachment to pole: Disable this quest, it is too complex (in edge cases) (#6547)

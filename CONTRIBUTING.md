@@ -40,7 +40,7 @@ For iD preset translation see [their documentation](https://github.com/openstree
 
 ## Solving notes
 
-As you probably noticed, you can choose *"Cannot answer"* in StreetComplete and thus leave a note on OpenStreetMap.
+As you probably noticed, you can choose _"Cannot answer"_ in StreetComplete and thus leave a note on OpenStreetMap.
 
 You can help with [processing OSM notes opened by StreetComplete users](https://ent8r.github.io/NotesReview/?query=StreetComplete&limit=100&start=true). While processing and solving notes, it may become apparent that there is a systematic problem in that users misunderstand the UI or the wording when solving StreetComplete quests.
 
@@ -53,7 +53,7 @@ If you experience problems, crashes or a quest is not clear to you, feel free to
 1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
 2. Remember to report map style issues [in the appropriate repository](#issues-with-dependencies).
 3. Look [whether your issue has already been reported](https://github.com/streetcomplete/StreetComplete/issues?q=is%3Aissue) (remember to check closed issues too, it may have already been fixed and is due to appear in the next release).
-4. Add screenshots or screen recordings to your issue to make it easier to understand the problem. In more complicated cases, logs can help others analyzing the problem. The StreetComplete logs can be found in the following location: *hamburger menu > About > Show logs*.
+4. Add screenshots or screen recordings to your issue to make it easier to understand the problem. In more complicated cases, logs can help others analyzing the problem. The StreetComplete logs can be found in the following location: _hamburger menu > About > Show logs_.
 
 ### Issues with dependencies
 
@@ -106,7 +106,7 @@ See also [this far more detailed guide to making a new quest](CONTRIBUTING_A_NEW
 
 Inheritance and class hierarchy should be avoided if possible. It is preferable to extract shared code to helper file such as [KerbUtil.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/kerb/KerbUtil.kt).
 
-It is recommended to install the [*Ktlint* Android Studio plugin](https://plugins.jetbrains.com/plugin/15057-ktlint) which highlights lint issues (e.g. inconsistent spacing) directly inline while writing code.
+It is recommended to install the [_Ktlint_ Android Studio plugin](https://plugins.jetbrains.com/plugin/15057-ktlint) which highlights lint issues (e.g. inconsistent spacing) directly inline while writing code.
 
 ### Hints for more active people
 

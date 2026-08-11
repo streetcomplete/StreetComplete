@@ -14,7 +14,7 @@ Consider the following:
 
 - ⚛️ **Atomic quests**: Per quest, only **one** thing should need to be answered by the user.
 - 🚧 **Established tags only**: No new or unestablished tags should be introduced through StreetComplete. Establishing tags must remain a community process and not be dictated by software implementation.
-- 🤷 **Useful purpose**: Especially for tags that are not that well established yet - they should have some application. As by the design of OpenStreetMap, there are countless things that *could* be collected, such as the color of the cycleway, the brightness of street lamps, etc. and sometimes things like these are even documented on the wiki (because it is a wiki, obviously). That does not mean that it makes sense to collect this information (in this app).
+- 🤷 **Useful purpose**: Especially for tags that are not that well established yet - they should have some application. As by the design of OpenStreetMap, there are countless things that _could_ be collected, such as the color of the cycleway, the brightness of street lamps, etc. and sometimes things like these are even documented on the wiki (because it is a wiki, obviously). That does not mean that it makes sense to collect this information (in this app).
 - 🕓 **Effort vs impact**: Consider if it is worth the effort when compared to the impact the quest would have. For how many elements would this quest type apply? This point is especially valid if you don't plan to implement a quest suggestion yourself through a PR. A quest to determine the type of building applies to 200 million elements while i.e. a quest to determine what a vending machine is selling applies to less than 1000 elements.
 
 ### Users
