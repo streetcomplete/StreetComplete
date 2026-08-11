@@ -212,7 +212,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 override val wikiLink = "Key:indoor"
 ```
 
-points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case, it is a page about [indoor=* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
+points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case, it is a page about [indoor=\* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/13ec6b97b52413cf09f3b71311b877b746d29576) in the example repository.
 
