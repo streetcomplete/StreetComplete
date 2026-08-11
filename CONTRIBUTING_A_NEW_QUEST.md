@@ -132,17 +132,17 @@ Change its class name and the file name to the new one.
 
 In the copied code change the package info (things like `package de.westnordost.streetcomplete.quests.defibrillator` at the top) to match the new folder containing the quest.
 
-When committing changes be careful to not change the already existing quest - only new code (using the built-in refactoring rename will also affect the `QuestsModule.kt` entry for an existing quest).
+When committing changes be careful to not change the already existing quest - only new code (using the built-in refactoring rename will also affect the `QuestTypesRegistry.kt` entry for an existing quest).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/9c65d00c7d096c3fee61650e1465a43b7e7f5712) in the example repository.
 
 # Add the quest to the list of active ones
 
-Adjust [QuestsModule.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt#L217-L247) but do not worry too much, it can be tweaked later.
+Adjust [QuestTypesRegistry.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestTypesRegistry.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestTypesRegistry.kt#L207-L237) but do not worry too much, it can be tweaked later.
 
 Each quest is associated with a number in this list. These numbers are used to identify the quest uniquely and can be used to save presets as QR codes. When adding a new quest, use the next consecutive number that is not yet in the list. Put the quest in order of priority, even if it means the numbers are not sorted.
 
-You can use this command to get last used quest number (which you need to increment by one): `sed -ne 's/^ *\([0-9]\+\) .*$/\1/p' app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt | sort -g | tail -n1`
+You can use this command to get last used quest number (which you need to increment by one): `sed -ne 's/^ *\([0-9]\+\) .*$/\1/p' app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestTypesRegistry.kt | sort -g | tail -n1`
 
 Add your quest to the list so that it will be loaded by the app.
 
