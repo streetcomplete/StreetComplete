@@ -257,18 +257,29 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 ## Form
 
 ```kotlin
-override fun createForm() = YesNoQuestForm()
+@Composable
+override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    YesNoQuestForm(on)
+}
 ```
 
 Form defines the interface used by mappers.
 
 In this case, the simplest possible form is used.
 
-But sometimes more complex ones are needed, see for example [AddBridgeStructure.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructure.kt)
+But sometimes more complex ones are needed, see for example [AddBridgeStructure.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructure.kt):
 
-`override fun createForm() = AddBridgeStructureForm()`
-
-With the form defined in [AddBridgeStructureForm](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
+```kotlin
+@Composable
+override fun Form(on: (QuestAction<BridgeStructure>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    ItemSelectQuestForm(
+        on = on,
+        items = BridgeStructure.entries,
+        itemContent = { Image(painterResource(it.icon), null) },
+        itemsPerRow = 1,
+    )
+}
+```
 
 ## applyAnswerTo
 
@@ -555,4 +566,4 @@ For doubts on how to answer specific situations, like e.g. when asked for the op
 
 ## Per-country quest behaviour modification
 
-While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behaviour of the quest in specific country, see e.g. [AddTrafficSignalsVibrationForm.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibrationForm.kt) for example usage.
+While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behaviour of the quest in specific country, see e.g. [AddTrafficSignalsVibration.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibration.kt#L72-88) for example usage.
