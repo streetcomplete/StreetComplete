@@ -192,7 +192,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 
 The rules should generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
 
-In some cases it will be a good idea to [limit quests to certain countries](#enabledInCountries).
+In some cases it will be a good idea to [limit quests to certain countries](#enabledincountries).
 
 You can obtain more info about properties by placing the cursor in a property and pressing Ctrl+Q within Android Studio.
 
