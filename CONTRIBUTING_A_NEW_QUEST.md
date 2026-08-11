@@ -481,7 +481,7 @@ Please make sure that the images do not take too much disk space. Most useful wa
 
 [GIMP](https://gimp.org/) allows such previews while saving JPG files, and there are also online tools like [squoosh](https://squoosh.app/) which allow for quick visual comparison if you prefer that.
 
-After adding a photo, remember to update [the credits file](app/src/commonMain/composeResources/authors.txt) (different to the one for icons).
+After adding a photo, remember to update [the credits file](app/src/commonMain/composeResources/files/authors.txt) (different to the one for icons).
 
 ## Resurvey
 
