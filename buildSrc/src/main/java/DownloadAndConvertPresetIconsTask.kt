@@ -9,7 +9,7 @@ import org.w3c.dom.Element
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.net.URL
+import java.net.URI
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.transform.OutputKeys
 import javax.xml.transform.TransformerFactory
@@ -43,7 +43,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
             var iconWasFound = false
             for (url in urls) {
                 try {
-                    URL(url).openStream().use { input ->
+                    URI(url).toURL().openStream().use { input ->
                         val factory = DocumentBuilderFactory.newInstance()
                         factory.isIgnoringComments = true
                         val svg = factory.newDocumentBuilder().parse(input)
@@ -179,7 +179,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
     }
 
     private fun getIconNames(version: String): Set<String> {
-        val presetsUrl = URL("https://raw.githubusercontent.com/openstreetmap/id-tagging-schema/$version/dist/presets.json")
+        val presetsUrl = URI("https://raw.githubusercontent.com/openstreetmap/id-tagging-schema/$version/dist/presets.json").toURL()
         val presetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
         val icons = HashSet<String>()
         for (value in presetsJson.values) {

@@ -8,7 +8,7 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.lang.Exception
-import java.net.URL
+import java.net.URI
 
 /** Download all the brand logos referred to in the name suggestion index.
  *
@@ -18,7 +18,7 @@ open class DownloadBrandLogosTask : DefaultTask() {
     @get:Input lateinit var version: String
 
     @TaskAction fun run() {
-        val presetsUrl = URL("https://raw.githubusercontent.com/osmlab/name-suggestion-index/$version/dist/presets/nsi-id-presets.min.json")
+        val presetsUrl = URI("https://raw.githubusercontent.com/osmlab/name-suggestion-index/$version/dist/presets/nsi-id-presets.min.json").toURL()
         val nsiPresetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
         /* NSI uses (atm) a slightly different format than the normal presets: The presets are in
            a sub-object called "presets" */
@@ -45,7 +45,7 @@ open class DownloadBrandLogosTask : DefaultTask() {
                     }
                 }
                 try {
-                    val conn = URL(smallImageUrl)
+                    val conn = URI(smallImageUrl).toURL()
                     val suffix = when (conn.openConnection().contentType) {
                         "image/jpeg" -> "jpg"
                         "image/png" -> "png"

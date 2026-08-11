@@ -2,6 +2,7 @@ import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import java.io.InputStream
 import java.net.HttpURLConnection
+import java.net.URI
 import java.net.URL
 import java.util.Locale
 
@@ -9,7 +10,7 @@ import java.util.Locale
 fun fetchLocalizationJson(apiToken: String, projectId: String, languageCode: String): Map<String, String> {
     val code = if (languageCode == "sr-latn") "sr-cyrl" else languageCode
 
-    val url = URL(fetchLocalizationDownloadUrl(apiToken, projectId, code, "key_value_json"))
+    val url = URI(fetchLocalizationDownloadUrl(apiToken, projectId, code, "key_value_json")).toURL()
     return url.retryingQuotaConnection(null) { inputSteam ->
         val txt = inputSteam.bufferedReader().use { it.readText() }
         if (txt.isEmpty()) return@retryingQuotaConnection mapOf()
@@ -26,7 +27,7 @@ fun fetchLocalizationJson(apiToken: String, projectId: String, languageCode: Str
 
 /** Fetch language codes of available translations from POEditor API */
 fun fetchAvailableLocalizations(apiToken: String, projectId: String): List<Localization> {
-    val result = URL("https://api.poeditor.com/v2/languages/list").retryingQuotaConnection({ connection ->
+    val result = URI("https://api.poeditor.com/v2/languages/list").toURL().retryingQuotaConnection({ connection ->
         connection.doOutput = true
         connection.requestMethod = "POST"
         connection.outputStream.bufferedWriter().use { it.write("api_token=$apiToken&id=$projectId") }
@@ -48,7 +49,7 @@ data class Localization(val code: String, val translations: Int, val percentage:
 
 /** Fetch the download URL for the given language code. Handle quota. */
 private fun fetchLocalizationDownloadUrl(apiToken: String, projectId: String, languageCode: String, format: String): String =
-    URL("https://api.poeditor.com/v2/projects/export").retryingQuotaConnection({ connection ->
+    URI("https://api.poeditor.com/v2/projects/export").toURL().retryingQuotaConnection({ connection ->
         connection.doOutput = true
         connection.requestMethod = "POST"
         connection.outputStream.bufferedWriter().use { it.write(

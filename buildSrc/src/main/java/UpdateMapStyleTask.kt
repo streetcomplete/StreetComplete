@@ -2,7 +2,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.net.URL
+import java.net.URI
 
 /** Pulls the newest map style from the maplibre-streetcomplete-style repository */
 open class UpdateMapStyleTask : DefaultTask() {
@@ -18,7 +18,7 @@ open class UpdateMapStyleTask : DefaultTask() {
         val urls = listOf(
             "https://raw.githubusercontent.com/streetcomplete/maplibre-streetcomplete-style/master/demo/streetcomplete.json",
             "https://raw.githubusercontent.com/streetcomplete/maplibre-streetcomplete-style/master/demo/streetcomplete-night.json",
-        ).map { URL(it) }
+        ).map { URI(it).toURL() }
 
         for (url in urls) {
             val fileName = File(url.path).name
