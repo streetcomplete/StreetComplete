@@ -74,8 +74,8 @@ import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.toDpOffset
+import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.Dimensions
-import de.westnordost.streetcomplete.ui.util.content
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
@@ -202,7 +202,7 @@ class MainActivity :
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.controls.content {
+        binding.controls.setContent { AppTheme {
             val isMapAppLaunchAvailable = remember { mapAppLauncher.isAvailable() }
             var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
 
@@ -281,7 +281,7 @@ class MainActivity :
                 },
                 offset = lastLongPressOffset.toDpOffset()
             )
-        }
+        } }
 
         observe(editHistoryViewModel.selectedEdit) { edit ->
             if (edit != null) {
