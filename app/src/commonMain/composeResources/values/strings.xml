@@ -1184,7 +1184,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_generalFee_title">Do you need to pay to use this?</string>
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
-    <string name="quest_generalFee_title3">Do you need to stay here?</string>
+    <string name="quest_generalFee_title3">Do you need to pay to stay here?</string>
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
     <string name="quest_gritBinSeasonal_title">Is this also here outside of winter?</string>
