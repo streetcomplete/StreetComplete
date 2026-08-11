@@ -246,7 +246,7 @@ class NoteEditsUploaderTest {
         everySuspend { notesApi.create(any(), any()) } returns note
         everySuspend {
             tracksApi.create(
-                trackpoints = edit.track,
+                trackpoints = edit.track!!,
                 creator = ApplicationConstants.USER_AGENT,
                 description = edit.text,
                 tags = listOf(ApplicationConstants.NAME)
