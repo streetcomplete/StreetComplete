@@ -49,7 +49,7 @@ Considerations about the edge cases to consider, how the design could look like 
 If you are a programmer, you can implement the quest yourself. Simply create a ticket in which you introduce your quest idea, have it discussed by the community (to get feedback whether it is doable and desired before implementation) and after implementation, create a pull request to get it merged.
 
 Here are some hints:
-- The quests are defined in `app/src/main/java/de/westnordost/streetcomplete/quests`
+- The quests are defined in [`app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests)
 - Quests consist of a quest type definition, often a custom form and an icon (`res/quest_icons.svg`)
 
 If not, still create a ticket. The more of the above considerations and preparational work you have already done, the easier it will be for a programmer to put this in code.
