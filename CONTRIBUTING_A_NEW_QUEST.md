@@ -181,7 +181,6 @@ This query will be limited to objects which fulfill some requirements.
 
 See the documentation of [`ElementFilterExpression`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/data/elementfilter/ElementFilterExpression.kt) for a complete documentation of the syntax. You can look around some quests to see more examples of such element filter expressions.
 
-
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/2726ff1c7b3121825e808c4566e6e534392121b3) in the example repository.
 
 ### Prototyping
@@ -327,7 +326,9 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 Note that for this quest one extra property present in the original quest used as a template [was removed](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/a9fd3efe96cbc6241b3b0f65d4a2be27f1c6afb8)
 
 # Adding quest icon
+
 <!-- note that this section name is linked from section discussing val icon, in case of changing section name also change that link -->
+
 It is OK to submit a quest without its own icon, using any icon as a placeholder.
 
 But it would be even better to include also icon.
@@ -337,6 +338,7 @@ Note that there are some graphics which haven't been used yet, created for propo
 A new icon can reuse the content of [other quest icons](res/graphics/quest), it can also be based on openly licensed graphics such as ones from [svgrepo.com](https://www.svgrepo.com/). See [the attribution file](res/graphics/authors.txt) for what has been used so far.
 
 Keep similar style to existing ones and the app in general. Note that the background color of the icon marks its relation group:
+
 - magenta(#ca72e2): bicycle traffic
 - blue(#529add): pedestrian traffic,
 - yellow(#ffdd55): motor vehicles (car, motorcycles)
@@ -518,7 +520,6 @@ It is possible to use far more complex filters when querying for eligible elemen
 Matches like `surface ~ earth|dirt|ground` are possible and are evaluated as "`surface` is any of `earth`, `dirt`, `ground`"
 
 `access !~ private|no` will be evaluated to "`access` is neither `private` nor `no`"
-
 
 But using regexp like `surface ~ ^(.*)[0-9]$` is [also possible](app/src/commonTest/kotlin/de/westnordost/streetcomplete/data/elementfilter/filters/ElementFilterOverpassKtTest.kt#L79-L88).
 

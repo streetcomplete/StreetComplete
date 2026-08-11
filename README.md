@@ -14,6 +14,7 @@ To make the app easy to use, quests are limited to those answerable by asking si
 * See the [latest release notes](https://github.com/streetcomplete/StreetComplete/releases).
 
 ## Screenshots
+
 <img src="metadata/en/images/phoneScreenshots/screenshot1.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot2.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot3.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot4.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot5.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot6.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot7.png" width="240"/> <img src="metadata/en/images/phoneScreenshots/screenshot8.png" width="240"/>
 
 ## Download
@@ -35,6 +36,7 @@ This is an active open-source project, so you can get involved in it easily!
 You can do so **without any programming or OpenStreetMap knowledge**! Just choose a task that you like.
 
 Here are a few things you can do:
+
 * 🐛 [Test and report issues](CONTRIBUTING.md#testing-and-reporting-issues)
 * 📃 [Translate the app into your language](CONTRIBUTING.md#translating-the-app)
 * 🕵️ [Solve notes left by StreetComplete users](CONTRIBUTING.md#solving-notes)
@@ -51,24 +53,29 @@ This software is released under the terms of the [GNU General Public License v3.
 
 <a href="https://nlnet.nl/discovery/"><img src=".github/images/logo_nlnet.svg" alt="nlnet" height="100"/></a><br/>
 The **NLnet foundation** sponsored development on this app in four individual grants with funds from the European Commission:<br/>
+
 - A grant from <a href="https://nlnet.nl/project/StreetComplete-multiplatform/">2025</a> will allow Tobias Zwick to finish migrating the app to a multiplatform, so that it runs also on iOS (see <a href="https://github.com/streetcomplete/StreetComplete/issues/5421">ticket</a>)
 - In <a href="https://nlnet.nl/project/StreetComplete-Together/">2021</a>, a grant enabled Tobias Zwick to work about five months on the app - most notably, implement the overlays functionality and measuring with AR.
 - In <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/368849">2019</a> and <a href="https://www.openstreetmap.org/user/Mateusz%20Konieczny/diary/397825">2021</a>, Mateusz Konieczny each got a grant to work on StreetComplete with a focus on improvements on UI and data collection
+
 <br/>
 
 <a href="https://github.com/sponsors/westnordost"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/images/logo_github_dark.svg"><img alt="GitHub Sponsors" width="80" src=".github/images/logo_github.svg"></picture></a> <a href="https://liberapay.com/westnordost"><img src=".github/images/logo_liberapay.svg" alt="Liberapay" width="80"/></a> <a href="https://www.patreon.com/westnordost"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/images/logo_patreon_dark.svg"><img alt="Patreon" width="80" src=".github/images/logo_patreon.svg"></picture></a><br/>
-Many users are currently supporting this app through <a href="https://github.com/sponsors/westnordost">GitHub sponsors</a>, <a href="https://liberapay.com/westnordost">Liberapay</a> and <a href="https://www.patreon.com/westnordost">Patreon</a>. If you like the app, you can join them ☺️ to support the continued development and maintenance of the app.<br/>
+Many users are currently supporting this app through <a href="https://github.com/sponsors/westnordost">GitHub sponsors</a>, <a href="https://liberapay.com/westnordost">Liberapay</a> and <a href="https://www.patreon.com/westnordost">Patreon</a>. If you like the app, you can join them ☺️ to support the continued development and maintenance of the app.
+
 <br/>
 
 <a href="https://www.jawg.io"><img src=".github/images/logo_jawgmaps.png" alt="JawgMaps" height="58"/></a><br>
-Since mid 2020, **JawgMaps** provides their vector map tiles service to StreetComplete for free, i.e. the background map displayed in the app.<br/>
+Since mid 2020, **JawgMaps** provides their vector map tiles service to StreetComplete for free, i.e. the background map displayed in the app.
+
 <br/>
 
 ## Past Sponsors
 
 <a href="https://bmbf.de/"><img src=".github/images/logo_bmbf.png" alt="German Federal Ministry of Education and Research" height="140"/></a><a href="https://prototypefund.de/"><img src=".github/images/logo_prototypefund.svg" alt="Prototype Fund" height="140"/></a><br/>
 Within the frame of **Prototype Fund** <a href="https://www.prototypefund.de/projects/streetcomplete-fuer-ios">round 15</a> (March 2024 to August 2024), the German Federal Ministry of Education and Research sponsored Tobias Zwick to work on StreetComplete for iOS (see [progress report](https://github.com/streetcomplete/StreetComplete/issues/5421#issuecomment-2332402123))<br/><br>
-Development on this app was also sponsored in <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (September 2020 to February 2021) of the Prototype fund, with focus on collecting more data points and on general improvements of this app.<br/>
+Development on this app was also sponsored in <a href="https://prototypefund.de/en/project/streetcomplete/">round 8</a> (September 2020 to February 2021) of the Prototype fund, with focus on collecting more data points and on general improvements of this app.
+
 <br/>
 
 <a href="https://osmfoundation.org/"><img src=".github/images/logo_osmf.png" alt="OpenStreetMap foundation" height="70"/></a><br/>

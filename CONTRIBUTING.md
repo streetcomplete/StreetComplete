@@ -74,6 +74,7 @@ If you can code, see also how to [develop your own quest](#developing-new-quests
 ## Improving documentation
 
 You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComplete. For example:
+
 * Add missing quests in [the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date; there is a [helper action](https://github.com/streetcomplete/StreetComplete/actions/workflows/generate-quest-list.yml) which generates a CSV for this.
 * Edit [the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccurring questions.
 * Edit [the main StreetComplete page](https://wiki.openstreetmap.org/wiki/StreetComplete).

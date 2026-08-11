@@ -22,6 +22,7 @@ Fix in certain languages (such as French), presets wouldn't load, which made the
 - Other small improvements (#6903, #6909, #6919, #6948, #6938 …), thanks @paulklie, @mnalis
 
 ### General
+
 - Make app name more visible in about screen (#6951), by @geritwagner
 
 ## v63.2
