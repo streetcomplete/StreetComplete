@@ -48,7 +48,7 @@ If you find such user experience problems, please report them back in the [issue
 
 ## Testing and reporting issues
 
-If you experience problems, crashes or a quest is not clear to you, feel free to open an issue for that. Remember to open one issue _for one matter_, so do not open one issue "I have found several problems", but one for each problem. Before you open an issue, please consider: 
+If you experience problems, crashes or a quest is not clear to you, feel free to open an issue for that. Remember to open one issue _for one matter_, so do not open one issue "I have found several problems", but one for each problem. Before you open an issue, please consider:
 
 1. If you have questions, remember to [read the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) first.
 2. Remember to report map style issues [in the appropriate repository](#issues-with-dependencies).

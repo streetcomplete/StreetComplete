@@ -267,8 +267,8 @@ Fix in certain languages (such as French), presets wouldn't load, which made the
 
 ### Android below 7.1 no longer supported (#6210)
 
-In reality, support for Android versions below 7.1 has already been just on-paper for a while now, 
-as more and more issues with old Androids have been popping up lately that cannot be fixed on our 
+In reality, support for Android versions below 7.1 has already been just on-paper for a while now,
+as more and more issues with old Androids have been popping up lately that cannot be fixed on our
 side. Luckily, it seems that >99.6% of app users already use Android 7.1 and above. (See #6210)
 
 ### Main screen improvements (#6213)

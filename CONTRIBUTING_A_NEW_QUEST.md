@@ -41,7 +41,7 @@ You can also look at [quest proposals waiting for implementation](https://github
 
 # Prepare repository for development
 
-That is a good moment to create a branch and switch to it. 
+That is a good moment to create a branch and switch to it.
 
 It can be done using Android Studio GUI (Git -> New branch...), or in CLI with the following command:
 
@@ -341,7 +341,7 @@ Keep similar style to existing ones and the app in general. Note that the backgr
 - blue(#529add): pedestrian traffic,
 - yellow(#ffdd55): motor vehicles (car, motorcycles)
 - grey(#c8c4b7): constructions (building type/height/entrances/roof/address, power poles, bridges, fire hydrants...)
-- light orange(#e9a76f): shop related (opening hours, shop types/seating, shop/atm names, shop level, air conditioning, smoking, internet access, payment, surveillance) 
+- light orange(#e9a76f): shop related (opening hours, shop types/seating, shop/atm names, shop level, air conditioning, smoking, internet access, payment, surveillance)
 - green(#9bbe55): amenities (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, objects on summits, AED, toilets, backrest, is entrance paid...)
 - brown(#b9a065): nature-related (stile type/steps, trees/orchards)
 

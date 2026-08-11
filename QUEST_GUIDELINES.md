@@ -11,16 +11,16 @@ Consider the following:
 
 ### General guidelines
 - ⚛️ **Atomic quests**: Per quest, only **one** thing should need to be answered by the user.
-- 🚧 **Established tags only**: No new or unestablished tags should be introduced through StreetComplete. Establishing tags must remain a community process and not be dictated by software implementation. 
+- 🚧 **Established tags only**: No new or unestablished tags should be introduced through StreetComplete. Establishing tags must remain a community process and not be dictated by software implementation.
 - 🤷 **Useful purpose**: Especially for tags that are not that well established yet - they should have some application. As by the design of OpenStreetMap, there are countless things that *could* be collected, such as the color of the cycleway, the brightness of street lamps, etc. and sometimes things like these are even documented on the wiki (because it is a wiki, obviously). That does not mean that it makes sense to collect this information (in this app).
-- 🕓 **Effort vs impact**: Consider if it is worth the effort when compared to the impact the quest would have. For how many elements would this quest type apply? This point is especially valid if you don't plan to implement a quest suggestion yourself through a PR. A quest to determine the type of building applies to 200 million elements while i.e. a quest to determine what a vending machine is selling applies to less than 1000 elements. 
+- 🕓 **Effort vs impact**: Consider if it is worth the effort when compared to the impact the quest would have. For how many elements would this quest type apply? This point is especially valid if you don't plan to implement a quest suggestion yourself through a PR. A quest to determine the type of building applies to 200 million elements while i.e. a quest to determine what a vending machine is selling applies to less than 1000 elements.
 
 ### Users
 - 🤔 **No unanswerable quests**: All generated quests need to be actually answerable (no false-positives). This means that any answer given by the user must result in something being tagged. For example, a quest that asks for the website of a place must be able to tag the element somehow if the user answers that the place has no website - otherwise, the next user will be asked the same question. Sometimes, due to the nature of how things are tagged in OSM (such as the one given in the example) it is unfortunately simply not possible to fulfill this.
 - 👨‍💻 **Users are no experts**: No knowledge about OpenStreetMap or any other background knowledge must be necessary
 - 🐿️ **Easy answer**: Users are out and about and impatient. A quick, straightforward and clear answer must be possible
 - 🕵️ **Publicly accessible on foot**: The information the users are supposed to collect must be easily accessible from the outside by pedestrians, don't lead users into trouble. I.e. users will not be able to answer reliably if a building has a basement or not, if a restaurant has toilets or not etc. without entering it. Also information should not require special means of transport like a car or a bus (e.g. motorway surveying).
-- 💤 **No spam**: It must be possible to determine whether the quest should reasonably be asked. A quest which is to be answered in 99% of the time with the same answer is not a good quest, don't bore the users. I.e. asking for any road if it is a one-way road, is silly, because the vast majority of all roads will not be one-ways. 
+- 💤 **No spam**: It must be possible to determine whether the quest should reasonably be asked. A quest which is to be answered in 99% of the time with the same answer is not a good quest, don't bore the users. I.e. asking for any road if it is a one-way road, is silly, because the vast majority of all roads will not be one-ways.
 - 💵 **Valuable Surveyors**: Surveyor time is valuable, they shouldn't be asked to complete data that does not require a survey and can more efficiently be done remotely.
 
 ## 2. Think and write down how to generate the quests
@@ -40,7 +40,7 @@ As mentioned, the user interface must leave no space for misunderstandings, it m
 - Make it not impossible to answer the edge cases (but don't clutter up the main form with that). A good pattern is to "ban" answering edge cases into the "Uh..." menu. I.e. look at the opening hours quest.
 - Don't rely on the "leave a note" fallback too much. It is not intended and does not work as a regular answer but is designed to cover the case that the question was invalid itself because it was based on wrong data like i.e. the place does not exist anymore.
 - The information the user should fill in should be as atomic as possible. Users are impatient. I.e. do not let them fill out a whole address with street name etc. when just the house number is fine too.
-- "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo. 
+- "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo.
 
 Considerations about the edge cases to consider, how the design could look like and finding good representative photos or icons that match in style is also part of the preparational work that can be done without programming knowledge.
 

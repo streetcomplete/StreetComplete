@@ -5,7 +5,7 @@ Tobias Zwick
 ## Contributors
 
 To all contributors, thank you so much for your engagement and support so far! ❤
-Thanks also not only to code and translation contributors, but also to the people that helped researching for and collecting information for new features (like new quest types) on the issue tracker. 
+Thanks also not only to code and translation contributors, but also to the people that helped researching for and collecting information for new features (like new quest types) on the issue tracker.
 
 Code contributions: [Check this complete list of contributors on GitHub](https://github.com/streetcomplete/StreetComplete/graphs/contributors)
 
