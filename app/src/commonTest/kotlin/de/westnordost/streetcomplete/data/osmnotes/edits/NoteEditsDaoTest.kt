@@ -289,7 +289,7 @@ private fun edit(
     pos: LatLon = LatLon(1.0, 1.0),
     timestamp: Long = 123L,
     isSynced: Boolean = false,
-    track: List<Trackpoint> = emptyList()
+    track: List<Trackpoint>? = null
 ) = NoteEdit(
     1L,
     noteId,
