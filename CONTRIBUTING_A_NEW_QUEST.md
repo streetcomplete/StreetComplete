@@ -452,7 +452,7 @@ As mentioned, the user interface must leave no space for misunderstandings, it m
 - The information the user should fill in should be as atomic as possible. Users are impatient, i.e. do not let them fill out a whole address with street name etc. when just the house number is fine too.
 - "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo.
 
-Considerations about the edge cases to consider, how the design could look and finding good representative photos or icons that match in style is also part of the preparational work that can be done without programming knowledge.
+Considerations about the edge cases to consider, how the design could look and finding good representative photos or icons that match in style is also part of the preparatory work that can be done without programming knowledge.
 
 ## New photos
 

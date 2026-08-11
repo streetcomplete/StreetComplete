@@ -33,7 +33,7 @@ You need to think about the condition for which key-value combinations on which 
 
 Also, for very detailed information that can be assumed to always have the same ("undefined") answer in many countries, it might be a good idea to limit quests to an inclusive list of certain countries.
 
-Depending on the quest, this requires some research but is necessary preparational work that can be done without any programming knowledge (but with knowledge of OSM).
+Depending on the quest, this requires some research but is necessary preparatory work that can be done without any programming knowledge (but with knowledge of OSM).
 
 ## 3. Design the form
 
@@ -45,7 +45,7 @@ As mentioned, the user interface must leave no space for misunderstandings, it m
 - The information the user should fill in should be as atomic as possible. Users are impatient. I.e. do not let them fill out a whole address with street name etc. when just the house number is fine too.
 - "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo.
 
-Considerations about the edge cases to consider, how the design could look like and finding good representative photos or icons that match in style is also part of the preparational work that can be done without programming knowledge.
+Considerations about the edge cases to consider, how the design could look like and finding good representative photos or icons that match in style is also part of the preparatory work that can be done without programming knowledge.
 
 ## 4. Implement
 
@@ -57,4 +57,4 @@ Here are some hints:
 - Quests consist of a quest type definition, often a custom form and an icon ([`res/res/graphics/quest/*.svg`](res/graphics/quest/))
 - See [CONTRIBUTING_A_NEW_QUEST.md](CONTRIBUTING_A_NEW_QUEST.md) for a detailed walkthrough
 
-If not, still create a ticket. The more of the above considerations and preparational work you have already done, the easier it will be for a programmer to put this in code.
+If not, still create a ticket. The more of the above considerations and preparatory work you have already done, the easier it will be for a programmer to put this in code.
