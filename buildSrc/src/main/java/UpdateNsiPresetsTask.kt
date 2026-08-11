@@ -5,7 +5,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.net.URL
+import java.net.URI
 
 /** Download and split the brand presets from the name suggestion index by countries they are in:
  *  Instead of one big presets file, sort those brands that only exist in certain countries into own
@@ -27,7 +27,7 @@ open class UpdateNsiPresetsTask : DefaultTask() {
         targetDir.mkdirs()
         targetDir.listFiles()?.forEach { it.delete() }
 
-        val presetsUrl = URL("https://cdn.jsdelivr.net/npm/name-suggestion-index@$version/dist/presets/nsi-id-presets.min.json")
+        val presetsUrl = URI("https://cdn.jsdelivr.net/npm/name-suggestion-index@$version/dist/presets/nsi-id-presets.min.json").toURL()
         val nsiPresetsJson = Parser.default().parse(presetsUrl.openStream()) as JsonObject
         /* NSI uses (atm) a slightly different format than the normal presets: The presets are in
            a sub-object called "presets" */

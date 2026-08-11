@@ -6,7 +6,7 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.io.StringWriter
-import java.net.URL
+import java.net.URI
 import java.util.Locale
 
 /** Update the presets metadata and its translations for use with the de.westnordost:osmfeatures
@@ -57,7 +57,7 @@ open class UpdatePresetsTask : DefaultTask() {
     /** Fetch iD presets */
     private fun fetchAndReducePresets(version: String): String {
         val presetsUrl = "https://raw.githubusercontent.com/openstreetmap/id-tagging-schema/$version/dist/presets.json"
-        val json = Parser.default().parse(URL(presetsUrl).openStream()) as JsonObject
+        val json = Parser.default().parse(URI(presetsUrl).toURL().openStream()) as JsonObject
         // remove unused presets
         json.entries.removeAll { (key, value) ->
             val include = (value as JsonObject).obj("locationSet")?.array<String>("include")
@@ -91,7 +91,7 @@ open class UpdatePresetsTask : DefaultTask() {
     private fun fetchLocalizationMetadata(): List<LocalizationMetadata> {
         // this file contains a list with meta information for each localization of iD
         val contentsUrl = "https://api.github.com/repos/openstreetmap/id-tagging-schema/contents/dist/translations"
-        val languagesJson = Parser.default().parse(URL(contentsUrl).openStream()) as JsonArray<JsonObject>
+        val languagesJson = Parser.default().parse(URI(contentsUrl).toURL().openStream()) as JsonArray<JsonObject>
 
         return languagesJson.mapNotNull {
             if (it["type"] != "file") return@mapNotNull null
@@ -107,7 +107,7 @@ open class UpdatePresetsTask : DefaultTask() {
     /** Download and pick the localization for only the preset features because the other things
      *  are not used (currently) */
     private fun fetchAndReducePresetsLocalizations(localization: LocalizationMetadata): String {
-        val json = Parser.default().parse(URL(localization.downloadUrl).openStream()) as JsonObject
+        val json = Parser.default().parse(URI(localization.downloadUrl).toURL().openStream()) as JsonObject
         for (value in json.values) {
             val language = value as JsonObject
             val presets = language.obj("presets")
