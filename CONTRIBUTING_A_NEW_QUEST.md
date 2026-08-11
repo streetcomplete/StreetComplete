@@ -565,6 +565,6 @@ Instructions for answering the quest should instead be directly visible either i
 
 For doubts on how to answer specific situations, like e.g. when asked for the opening hours of a shop that doesn't seem to exist anymore or asked about the house number of a building that instead has a house name, it is better to provide such answer through the "Uh..." menu, see [Designing the form](#designing-the-form).
 
-## Per-country quest behaviour modification
+## Per-country quest behavior modification
 
-While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behaviour of the quest in specific country, see e.g. [AddTrafficSignalsVibration.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibration.kt#L72-88) for example usage.
+While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behavior of the quest in specific country, see e.g. [AddTrafficSignalsVibration.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibration.kt#L72-88) for example usage.
