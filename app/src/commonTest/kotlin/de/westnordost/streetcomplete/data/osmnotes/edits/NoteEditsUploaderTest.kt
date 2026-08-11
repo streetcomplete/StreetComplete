@@ -24,7 +24,6 @@ import dev.mokkery.everySuspend
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.io.files.SystemFileSystem
 import dev.mokkery.verify
 import dev.mokkery.verify.VerifyMode.Companion.exactly
 import dev.mokkery.verifyNoMoreCalls
@@ -44,8 +43,6 @@ class NoteEditsUploaderTest {
     private lateinit var uploader: NoteEditsUploader
     private lateinit var listener: OnUploadedChangeListener
 
-    private val fileSystem = SystemFileSystem
-
     @BeforeTest fun setUp(): Unit = runBlocking {
         notesApi = mock() {
             everySuspend { comment(any(), any()) } returns note()
@@ -61,7 +58,7 @@ class NoteEditsUploaderTest {
         imageUploader = mock()
         listener = mock()
 
-        uploader = NoteEditsUploader(noteEditsController, noteController, userDataSource, notesApi, tracksApi, imageUploader, fileSystem)
+        uploader = NoteEditsUploader(noteEditsController, noteController, userDataSource, notesApi, tracksApi, imageUploader)
         uploader.uploadedChangeListener = listener
     }
 
