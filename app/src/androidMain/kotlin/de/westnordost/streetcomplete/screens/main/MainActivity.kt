@@ -10,7 +10,9 @@ import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.AnyThread
@@ -21,11 +23,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.platform.WindowInfo
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -54,7 +58,6 @@ import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
-import de.westnordost.streetcomplete.databinding.ActivityMainBinding
 import de.westnordost.streetcomplete.osm.level.levelsIntersect
 import de.westnordost.streetcomplete.osm.level.parseLevelsOrNull
 import de.westnordost.streetcomplete.screens.BaseActivity
@@ -159,14 +162,12 @@ class MainActivity :
 
     private var windowInfo: WindowInfo? = null
 
-    private lateinit var binding: ActivityMainBinding
-
     // for freezing the map while sidebar is open
     private var wasFollowingPosition: Boolean? = null
     private var wasNavigationMode: Boolean? = null
 
     private val mapFragment: MainMapFragment? get() =
-        supportFragmentManager.findFragmentById(R.id.mapFragment) as MainMapFragment?
+        supportFragmentManager.findFragmentByTag(TAG_MAP) as MainMapFragment?
 
     /* +++++++++++++++++++++++++++++++++++++++ CALLBACKS ++++++++++++++++++++++++++++++++++++++++ */
 
@@ -184,25 +185,35 @@ class MainActivity :
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
+        val root = RelativeLayout(this)
+        val compose = ComposeView(this)
+        val mapContainer = FragmentContainerView(this).also { it.id = 1 }
+        root.addView(mapContainer, ViewGroup.LayoutParams(-1, -1))
+        root.addView(compose, ViewGroup.LayoutParams(-1, -1))
+
+        setContentView(root)
+
         if (savedInstanceState == null) {
             handleIntent(intent)
+
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                add(LocationRequestFragment(), TAG_LOCATION_REQUEST)
+                add(mapContainer, MainMapFragment(), TAG_MAP)
+            }
         }
 
         LocalBroadcastManager.getInstance(this).registerReceiver(
             requestLocationPermissionResultReceiver,
             IntentFilter(LocationRequestFragment.REQUEST_LOCATION_PERMISSION_RESULT)
         )
-        supportFragmentManager.commit { add(LocationRequestFragment(), TAG_LOCATION_REQUEST) }
 
         lifecycle.addObserver(questAutoSyncer)
         feedsUpdater.updateAtMostDaily()
 
         locationManager = FineLocationManager(this, this::onLocationChanged)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        binding.controls.setContent { AppTheme {
+        compose.setContent { AppTheme {
             val isMapAppLaunchAvailable = remember { mapAppLauncher.isAvailable() }
             var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
 
@@ -244,7 +255,7 @@ class MainActivity :
                     mapFragment?.setMarkersForCurrentHighlighting(markers)
                 },
                 onSolvedQuest = { icon, position ->
-                    val offset = binding.root.getLocationInWindow()
+                    val offset = root.getLocationInWindow()
                     val startPos = mapFragment?.getPointOf(position)!!
 
                     startPos.x += offset.x
@@ -253,7 +264,7 @@ class MainActivity :
                     lastQuestSolved = QuestSolvedEvent(icon, startPos.toOffset())
                 },
                 getOffset = { position ->
-                    val offset = binding.root.getLocationInWindow()
+                    val offset = root.getLocationInWindow()
                     val position = mapFragment?.getPointOf(position)!!
                     position.x += offset.x
                     position.y += offset.y
@@ -376,11 +387,6 @@ class MainActivity :
         if (intent.action != Intent.ACTION_VIEW) return
         val data = intent.data?.toString() ?: return
         viewModel.setUri(data)
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        findViewById<View>(R.id.main).requestLayout()
     }
 
     override fun onStop() {
@@ -882,5 +888,6 @@ class MainActivity :
 
     companion object {
         private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
+        private const val TAG_MAP = "MainMapFragment"
     }
 }
