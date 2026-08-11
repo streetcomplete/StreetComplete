@@ -51,5 +51,6 @@ If you are a programmer, you can implement the quest yourself. Simply create a t
 Here are some hints:
 - The quests are defined in [`app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests)
 - Quests consist of a quest type definition, often a custom form and an icon ([`res/res/graphics/quest/*.svg`](res/graphics/quest/))
+- See [CONTRIBUTING_A_NEW_QUEST.md](CONTRIBUTING_A_NEW_QUEST.md) for a detailed walkthrough
 
 If not, still create a ticket. The more of the above considerations and preparational work you have already done, the easier it will be for a programmer to put this in code.
