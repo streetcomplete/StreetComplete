@@ -11,7 +11,7 @@ economic with data usage.
 
 To make the app easy to use, quests are limited to those answerable by asking simple questions.
 
-* See the [latest release notes](https://github.com/streetcomplete/StreetComplete/releases).
+- See the [latest release notes](https://github.com/streetcomplete/StreetComplete/releases).
 
 ## Screenshots
 
@@ -37,11 +37,11 @@ You can do so **without any programming or OpenStreetMap knowledge**! Just choos
 
 Here are a few things you can do:
 
-* 🐛 [Test and report issues](CONTRIBUTING.md#testing-and-reporting-issues)
-* 📃 [Translate the app into your language](CONTRIBUTING.md#translating-the-app)
-* 🕵️ [Solve notes left by StreetComplete users](CONTRIBUTING.md#solving-notes)
-* 💡 [Suggest new quests](CONTRIBUTING.md#suggesting-new-quests), or, even better, [implement them](CONTRIBUTING.md#developing-new-quests).
-* ➕ [and more…](CONTRIBUTING.md)
+- 🐛 [Test and report issues](CONTRIBUTING.md#testing-and-reporting-issues)
+- 📃 [Translate the app into your language](CONTRIBUTING.md#translating-the-app)
+- 🕵️ [Solve notes left by StreetComplete users](CONTRIBUTING.md#solving-notes)
+- 💡 [Suggest new quests](CONTRIBUTING.md#suggesting-new-quests), or, even better, [implement them](CONTRIBUTING.md#developing-new-quests).
+- ➕ [and more…](CONTRIBUTING.md)
 
 Also, if you like StreetComplete, **spread the word**! ❤️
 

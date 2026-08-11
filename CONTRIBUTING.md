@@ -4,15 +4,15 @@ Even if you do not find something to do in this list, using StreetComplete, test
 
 Content:
 
-   * [Translating the app](#translating-the-app)
-   * [Solving notes](#solving-notes)
-   * [Testing and reporting issues](#testing-and-reporting-issues)
-   * [Issues with dependencies](#issues-with-dependencies)
-   * [Suggesting new quests](#suggesting-new-quests)
-   * [Improving documentation](#improving-documentation)
-   * [Development](#development)
-   * [Developing new quests](#developing-new-quests)
-   * [StreetComplete-related projects](#streetcomplete-related-projects).
+- [Translating the app](#translating-the-app)
+- [Solving notes](#solving-notes)
+- [Testing and reporting issues](#testing-and-reporting-issues)
+- [Issues with dependencies](#issues-with-dependencies)
+- [Suggesting new quests](#suggesting-new-quests)
+- [Improving documentation](#improving-documentation)
+- [Development](#development)
+- [Developing new quests](#developing-new-quests)
+- [StreetComplete-related projects](#streetcomplete-related-projects).
 
 ## Translating the app
 
@@ -59,8 +59,8 @@ If you experience problems, crashes or a quest is not clear to you, feel free to
 
 StreetComplete depends on some projects for the app. Try to report them in the appropriate place.
 
-* **Map style issues** should be reported in a [separate repository](https://github.com/streetcomplete/maplibre-streetcomplete-style).
-Examples of such issues are missing elements on the map, display errors on the map, etc. As a rule of thumb, you can report everything that happens "behind" the quest icon markers there.
+- **Map style issues** should be reported in a [separate repository](https://github.com/streetcomplete/maplibre-streetcomplete-style).
+  Examples of such issues are missing elements on the map, display errors on the map, etc. As a rule of thumb, you can report everything that happens "behind" the quest icon markers there.
 
 Note that this app has other dependencies. For reporting issues in these, you have to have some technical knowledge. So if you are **not sure** that the component listed below is responsible for the issue you have, it is often better to report them in the general StreetComplete issue tracker. People will then let you know whether this issue is solvable by StreetComplete or if it is an issue with MapLibre Native or another project.
 The full list of dependencies and other StreetComplete-related projects is listed [at the end of this file](#streetcomplete-related-projects).
@@ -75,9 +75,9 @@ If you can code, see also how to [develop your own quest](#developing-new-quests
 
 You can also help to keep the OpenStreetMap wiki **up-to-date** for StreetComplete. For example:
 
-* Add missing quests in [the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date; there is a [helper action](https://github.com/streetcomplete/StreetComplete/actions/workflows/generate-quest-list.yml) which generates a CSV for this.
-* Edit [the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccurring questions.
-* Edit [the main StreetComplete page](https://wiki.openstreetmap.org/wiki/StreetComplete).
+- Add missing quests in [the quest list](https://wiki.openstreetmap.org/wiki/StreetComplete/Quests) or check, that they are up to date; there is a [helper action](https://github.com/streetcomplete/StreetComplete/actions/workflows/generate-quest-list.yml) which generates a CSV for this.
+- Edit [the FAQ](https://wiki.openstreetmap.org/wiki/StreetComplete/FAQ) and add reoccurring questions.
+- Edit [the main StreetComplete page](https://wiki.openstreetmap.org/wiki/StreetComplete).
 
 ## Development
 
@@ -116,36 +116,36 @@ If you are making your first issue or pull request then you can definitely skip 
 
 Materials in [`res/documentation`](res/documentation) also may be useful, it includes
 
-* [Checklist for creating a release](res/documentation/creating%20new%20release.md)
-* [Presentation discussing data model allowing offline editing, undo, splitting ways and resolving edit conflicts](res/documentation/how-it-handles%20edits.odp)
+- [Checklist for creating a release](res/documentation/creating%20new%20release.md)
+- [Presentation discussing data model allowing offline editing, undo, splitting ways and resolving edit conflicts](res/documentation/how-it-handles%20edits.odp)
 
 ## StreetComplete-related projects
 
 ### Dependencies
 
-* [MapLibre Native](https://github.com/maplibre/maplibre-native/) for map rendering
-* [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting in which country a quest is (affects quest display, etc.)
-* [countrymetadata](https://github.com/streetcomplete/countrymetadata) for info about various countries (left/right hand driving etc.)
-* [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
-* [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name. Data for it is provided by:
-  * [iD Tagging Schema](https://github.com/openstreetmap/id-tagging-schema) - In StreetComplete it powers display of feature type, object classification in shop overlay and more
-  * [Name suggestion index](https://github.com/osmlab/name-suggestion-index) - it allows to search POI types also by brand names
-* [streetcomplete-mapstyle](https://github.com/streetcomplete/maplibre-streetcomplete-style)
+- [MapLibre Native](https://github.com/maplibre/maplibre-native/) for map rendering
+- [countryboundaries](https://github.com/westnordost/countryboundaries) for detecting in which country a quest is (affects quest display, etc.)
+- [countrymetadata](https://github.com/streetcomplete/countrymetadata) for info about various countries (left/right hand driving etc.)
+- [osmapi](https://github.com/westnordost/osmapi) for communication with the OSM API
+- [osmfeatures](https://github.com/westnordost/osmfeatures) to correctly refer to a feature by name. Data for it is provided by:
+  - [iD Tagging Schema](https://github.com/openstreetmap/id-tagging-schema) - In StreetComplete it powers display of feature type, object classification in shop overlay and more
+  - [Name suggestion index](https://github.com/osmlab/name-suggestion-index) - it allows to search POI types also by brand names
+- [streetcomplete-mapstyle](https://github.com/streetcomplete/maplibre-streetcomplete-style)
 
 ### Created for StreetComplete
 
-* [blacklistr](https://github.com/ENT8R/blacklistr) by [@ENT8R](https://github.com/ENT8R) for visualizing StreetComplete's country exclusion list
-* [NotesReview](https://github.com/ENT8R/NotesReview) by [@ENT8R](https://github.com/ENT8R) for reviewing notes with a specific keyword (here: `StreetComplete`)
-* [crops-parser](https://github.com/rugk/crops-parser) by [@rugk](https://github.com/rugk) for parsing data for the orchard quest
-* [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement
-* [sc-photo-service](https://github.com/streetcomplete/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
-* [sc-statistics-service](https://github.com/streetcomplete/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
-* [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/Places.kt#L248)
-* [detect_missing_value_support_in_streetcomplete](https://codeberg.org/matkoniecz/detect_missing_value_support_in_streetcomplete.git) may manage to list tags missing from [opening_hours](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt), [name](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt), [wheelchair](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) quests and [places](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/places/Places.kt) overlay - and some of tags listed there may be in fact worth supporting in this parts of StreetComplete.
+- [blacklistr](https://github.com/ENT8R/blacklistr) by [@ENT8R](https://github.com/ENT8R) for visualizing StreetComplete's country exclusion list
+- [NotesReview](https://github.com/ENT8R/NotesReview) by [@ENT8R](https://github.com/ENT8R) for reviewing notes with a specific keyword (here: `StreetComplete`)
+- [crops-parser](https://github.com/rugk/crops-parser) by [@rugk](https://github.com/rugk) for parsing data for the orchard quest
+- [streetcomplete-ad-c3](https://github.com/rugk/streetcomplete-ad-c3) by [@rugk](https://github.com/rugk) as a banner advertisement
+- [sc-photo-service](https://github.com/streetcomplete/sc-photo-service) by [@exploide](https://github.com/exploide) allows StreetComplete to upload photos associated with OSM Notes
+- [sc-statistics-service](https://github.com/streetcomplete/sc-statistics-service) by [@westnordost](https://github.com/westnordost) aggregates and provides StreetComplete-related statistics about users.
+- [StreetComplete-taginfo-categorize](https://github.com/mnalis/StreetComplete-taginfo-categorize) by [@mnalis](https://github.com/mnalis) generates tags listed in [KEYS_THAT_SHOULD_BE_REMOVED_WHEN_PLACE_IS_REPLACED](https://github.com/streetcomplete/StreetComplete/blob/master/app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/Places.kt#L248)
+- [detect_missing_value_support_in_streetcomplete](https://codeberg.org/matkoniecz/detect_missing_value_support_in_streetcomplete.git) may manage to list tags missing from [opening_hours](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt), [name](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt), [wheelchair](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) quests and [places](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm/places/Places.kt) overlay - and some of tags listed there may be in fact worth supporting in this parts of StreetComplete.
 
 You may find more projects under [the StreetComplete tag](https://github.com/topics/streetcomplete) on GitHub.
 
 #### Retired
 
-* [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
-* [parser](https://github.com/matkoniecz/abandoned-StreetComplete-branches/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for taginfo
+- [oneway-data-api](https://github.com/streetcomplete/oneway-data-api) by [@ENT8R](https://github.com/ENT8R) for getting oneway data from improveosm.org
+- [parser](https://github.com/matkoniecz/abandoned-StreetComplete-branches/tree/taginfo) by [@matkoniecz](https://github.com/matkoniecz) listing tags added by StreetComplete for taginfo

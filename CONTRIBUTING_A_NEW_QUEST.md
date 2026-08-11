@@ -375,20 +375,20 @@ Obviously, testing can also be done earlier. But the quest should at least be te
 
 Typically it is done using an emulator. Note that you can set location in emulator settings rather than scrolling within StreetComplete itself.
 
-* Is the quest listed?
-  * Look at the quest list in settings - does your quest appear there? If not - see [this step](#add-the-quest-to-the-list-of-active-ones).
-  * While you are there you can disable all quests except yours for easier testing.
-* Is it shown for expected elements?
-  * Note that due to emulator peculiarities you may need to move the map after quests are downloaded to see their markers ([gory details for the curious](https://github.com/streetcomplete/StreetComplete/issues/2780))
-* Is it selected for some unwanted elements?
-* Can you tap on a quest marker to open the quest form?
-* Can you fill in the answer as expected?
-* Can you solve the quest?
-* Is expected tagging being applied?
-  * You can look at logs for info of what was applied or use the undo menu in the bottom-left of the app itself.
-  * You can freely answer - as long as you are not logged in, nothing will be submitted. Even after logging in you can disable uploading answers in settings.
-* Does the quest disappear after being solved?
-  * If no - then either tags are not being applied or element selection filter has some problems.
+- Is the quest listed?
+  - Look at the quest list in settings - does your quest appear there? If not - see [this step](#add-the-quest-to-the-list-of-active-ones).
+  - While you are there you can disable all quests except yours for easier testing.
+- Is it shown for expected elements?
+  - Note that due to emulator peculiarities you may need to move the map after quests are downloaded to see their markers ([gory details for the curious](https://github.com/streetcomplete/StreetComplete/issues/2780))
+- Is it selected for some unwanted elements?
+- Can you tap on a quest marker to open the quest form?
+- Can you fill in the answer as expected?
+- Can you solve the quest?
+- Is expected tagging being applied?
+  - You can look at logs for info of what was applied or use the undo menu in the bottom-left of the app itself.
+  - You can freely answer - as long as you are not logged in, nothing will be submitted. Even after logging in you can disable uploading answers in settings.
+- Does the quest disappear after being solved?
+  - If no - then either tags are not being applied or element selection filter has some problems.
 
 See "logcat" (bottom left area of the screen) to see stacktrace or logging messages.
 
