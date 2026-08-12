@@ -12,6 +12,8 @@ open class UpdateStoreDescriptionsTask : DefaultTask() {
     @get:OutputDirectory lateinit var targetDir: File
 
     @TaskAction fun run() {
+        require(apiToken != "invalid") { "POEditor API token must be set" }
+
         val languageCodes = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
 
         for (languageCode in languageCodes) {

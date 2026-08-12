@@ -22,6 +22,8 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
     @get:Input lateinit var githubApiToken: String
 
     @TaskAction fun run() {
+        require(githubApiToken != "invalid") { "GitHub API token must be set" }
+
         val contributors = getContributors()
 
         for (contributor in contributors) {

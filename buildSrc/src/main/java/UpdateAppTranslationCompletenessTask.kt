@@ -15,6 +15,8 @@ open class UpdateAppTranslationCompletenessTask : DefaultTask() {
     @get:Input lateinit var targetFiles: ((androidResCode: String) -> File)
 
     @TaskAction fun run() {
+        require(apiToken != "invalid") { "POEditor API token must be set" }
+
         val targetFiles = targetFiles
         val exportLanguages = languageCodes.map { Locale.forLanguageTag(it) }
 
