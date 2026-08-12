@@ -466,6 +466,12 @@ tasks.register<UpdateMapStyleTask>("updateMapStyle") {
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
+    dependsOn(
+        ":updateAtmOperators",
+        ":updateChargingStationOperators",
+        ":updateClothesContainerOperators",
+        ":updateParcelLockerBrand",
+    )
     sourceDir = rootDir.resolve("res/country_metadata")
     targetDir = projectDir.resolve("src/commonMain/composeResources/files/country_metadata")
 }
