@@ -1,6 +1,7 @@
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
+import org.gradle.api.tasks.Console
 import org.gradle.api.tasks.InputDirectory
 import org.gradle.api.tasks.InputFile
 import org.gradle.api.tasks.OutputFile
@@ -27,7 +28,7 @@ const val noteQuestPackageName = "note_discussion"
  */
 open class GenerateQuestListTask : DefaultTask() {
     @get:OutputFile lateinit var targetFile: File
-    @get:InputDirectory lateinit var projectDirectory: File
+    @get:Console lateinit var projectDirectory: File
     @get:InputDirectory lateinit var questsDirectory: File
     @get:InputDirectory lateinit var iconsDirectory: File
     @get:InputFile lateinit var noteQuestFile: File
