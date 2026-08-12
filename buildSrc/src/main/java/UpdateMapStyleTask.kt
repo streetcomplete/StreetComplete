@@ -8,12 +8,11 @@ import java.net.URI
 /** Pulls the newest map style from the maplibre-streetcomplete-style repository */
 open class UpdateMapStyleTask : DefaultTask() {
 
-    @get:OutputDirectory lateinit var targetDir: String
+    @get:OutputDirectory lateinit var targetDir: File
     @get:Input lateinit var mapStyleBranch: String
     @get:Input lateinit var apiKey: String
 
     @TaskAction fun run() {
-        val targetDir = File(targetDir)
         require(targetDir.exists()) { "Directory ${targetDir.absolutePath} does not exist." }
 
         val urls = listOf(
@@ -23,7 +22,7 @@ open class UpdateMapStyleTask : DefaultTask() {
 
         for (url in urls) {
             val fileName = File(url.path).name
-            val targetFile = File(targetDir, fileName)
+            val targetFile = targetDir.resolve(fileName)
 
             val fileContent = url.readText()
                 .normalizeLineEndings()

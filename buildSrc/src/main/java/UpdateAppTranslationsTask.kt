@@ -12,7 +12,7 @@ open class UpdateAppTranslationsTask : DefaultTask() {
     @get:Input lateinit var projectId: String
     @get:Input lateinit var apiToken: String
     @get:Input lateinit var languageCodes: Collection<String>
-    @get:OutputFiles lateinit var targetFiles: ((androidResCode: String) -> String)
+    @get:OutputFiles lateinit var targetFiles: ((androidResCode: String) -> File)
 
     @TaskAction fun run() {
         val exportLanguages = languageCodes.map { Locale.forLanguageTag(it) }
@@ -45,8 +45,8 @@ ${translations.entries.joinToString("\n") { (key, value) ->
 } }
 </resources>"""
             for (androidResCode in androidResCodes) {
-                val file = File(targetFiles(androidResCode))
-                File(file.parent).mkdirs()
+                val file = targetFiles(androidResCode)
+                file.parentFile.mkdirs()
                 file.writeText(text)
             }
         }

@@ -21,7 +21,7 @@ import kotlin.math.max
 /** Download the SVG preset icons referred to by the iD presets and convert them to Android
  *  drawables. */
 open class DownloadAndConvertPresetIconsTask : DefaultTask() {
-    @get:OutputDirectory lateinit var targetDir: String
+    @get:OutputDirectory lateinit var targetDir: File
     @get:Input lateinit var version: String
     @get:Input var iconSize: Int = 14
     @get:Input var transformName: (String) -> String = { it }
@@ -30,7 +30,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
         val icons = getIconNames(version)
 
         val prefix = transformName("").lowercase()
-        for (file in File(targetDir).listFiles { _, s -> s.startsWith(prefix) }!!) {
+        for (file in targetDir.listFiles { _, s -> s.startsWith(prefix) }!!) {
             file.delete()
         }
 
@@ -38,7 +38,8 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
             val urls = getDownloadUrls(icon) ?: continue
 
             val fileName = transformName(icon).lowercase()
-            File("$targetDir/$fileName.xml").parentFile.mkdirs()
+            val targetFile = targetDir.resolve("$fileName.xml")
+            targetFile.parentFile.mkdirs()
 
             var message: String = ""
             var iconWasFound = false
@@ -50,7 +51,7 @@ open class DownloadAndConvertPresetIconsTask : DefaultTask() {
                         val svg = factory.newDocumentBuilder().parse(input)
 
                         val drawable = createAndroidDrawable(svg)
-                        writeXml(drawable, File("$targetDir/$fileName.xml"))
+                        writeXml(drawable, targetFile)
                     }
                     iconWasFound = true
                     break

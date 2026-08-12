@@ -11,7 +11,7 @@ open class UpdateWebsiteTranslationsTask : DefaultTask() {
 
     @get:Input lateinit var projectId: String
     @get:Input lateinit var apiToken: String
-    @get:OutputDirectory lateinit var targetDir: String
+    @get:OutputDirectory lateinit var targetDir: File
 
     private val requiredKeys = setOf(
         "store_listing_short_description",
@@ -51,9 +51,9 @@ open class UpdateWebsiteTranslationsTask : DefaultTask() {
             val strings = translations.filterKeys { it in keys || it in requiredKeys }
             // only accept complete translations
             if (requiredKeys.all { it in strings.keys }) {
-                val dir = File("$targetDir/$lang/")
+                val dir = targetDir.resolve(lang)
                 dir.mkdirs()
-                val file = File(dir, "strings.json")
+                val file = dir.resolve("strings.json")
                 file.writeText(json.encodeToString(strings))
             }
         }

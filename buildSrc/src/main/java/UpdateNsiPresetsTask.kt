@@ -17,13 +17,11 @@ import java.net.URI
  *  all because they exist only in select countries and the user will only be editing usually in one
  *  country per session anyways. */
 open class UpdateNsiPresetsTask : DefaultTask() {
-    @get:OutputDirectory lateinit var targetDir: String
+    @get:OutputDirectory lateinit var targetDir: File
     @get:Input lateinit var version: String
 
     @TaskAction
     fun run() {
-        val targetDir = File(targetDir)
-
         // create / clear target directory
         targetDir.mkdirs()
         targetDir.listFiles()?.forEach { it.delete() }

@@ -7,6 +7,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
+import java.io.File
 import java.io.FileInputStream
 import java.io.FileWriter
 import java.io.StringWriter
@@ -22,7 +23,7 @@ import java.net.URLEncoder
  *  ( https://taginfo.openstreetmap.org/keys/operator#values ) */
 open class QLeverCountValueByCountryTask : DefaultTask() {
 
-    @get:OutputFile lateinit var targetFile: String
+    @get:OutputFile lateinit var targetFile: File
     @get:Input lateinit var osmTag: String
     @get:Input lateinit var sparqlQueryPart: String
     @get:Input var minCount: Int = 1

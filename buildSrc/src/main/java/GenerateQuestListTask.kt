@@ -26,7 +26,7 @@ const val noteQuestPackageName = "note_discussion"
  *    (note that the "Default Priority" column may be different from the wiki)
  */
 open class GenerateQuestListTask : DefaultTask() {
-    @get:OutputFile lateinit var targetFile: String
+    @get:OutputFile lateinit var targetFile: File
     @get:InputDirectory lateinit var projectDirectory: File
     @get:InputDirectory lateinit var questsDirectory: File
     @get:InputDirectory lateinit var iconsDirectory: File
@@ -207,7 +207,7 @@ open class GenerateQuestListTask : DefaultTask() {
             listOf(",,,,,") +
             existingRepoQuests.map { it.getCsvString(projectDirectory) }
 
-        File(targetFile).writeText(csvLines.joinToString("\n"))
+        targetFile.writeText(csvLines.joinToString("\n"))
     }
 }
 

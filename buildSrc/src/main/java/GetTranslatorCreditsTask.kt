@@ -7,6 +7,7 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import org.jsoup.Jsoup
+import java.io.File
 import java.io.FileWriter
 import java.net.HttpURLConnection
 import java.net.URI
@@ -17,7 +18,7 @@ import java.util.TreeMap
 
 /** Get the translator credits from POEditor by extracting the information from various HTML pages*/
 open class GetTranslatorCreditsTask : DefaultTask() {
-    @get:OutputFile lateinit var targetFile: String
+    @get:OutputFile lateinit var targetFile: File
     @get:Input lateinit var languageCodes: Collection<String>
     @get:Input lateinit var cookie: String
     @get:Input lateinit var phpsessid: String

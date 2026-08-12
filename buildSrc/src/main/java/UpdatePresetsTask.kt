@@ -14,12 +14,10 @@ import java.util.Locale
  *  library */
 open class UpdatePresetsTask : DefaultTask() {
     @get:Input lateinit var languageCodes: Collection<String>
-    @get:OutputDirectory lateinit var targetDir: String
+    @get:OutputDirectory lateinit var targetDir: File
     @get:Input lateinit var version: String
 
     @TaskAction fun run() {
-        val targetDir = File(targetDir)
-
         // create / clear target directory
         targetDir.mkdirs()
         targetDir.listFiles()?.forEach { it.delete() }

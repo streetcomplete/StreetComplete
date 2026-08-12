@@ -10,14 +10,12 @@ import java.io.File
 /** Convert a Markdown changelog to HTML. */
 open class UpdateChangelogTask : DefaultTask() {
 
-    @get:InputFile lateinit var sourceFile: String
-    @get:OutputFile lateinit var targetFile: String
+    @get:InputFile lateinit var sourceFile: File
+    @get:OutputFile lateinit var targetFile: File
 
     private val markdownFlavour = GFMFlavourDescriptor()
 
     @TaskAction fun run() {
-        val sourceFile = File(sourceFile)
-        val targetFile = File(targetFile)
         require(sourceFile.exists()) { "File ${sourceFile.absolutePath} does not exist." }
 
         val scriptName = UpdateChangelogTask::class.simpleName

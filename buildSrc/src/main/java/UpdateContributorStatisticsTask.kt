@@ -13,7 +13,7 @@ import java.net.URI
 /** Counts the changes made by each author from the git log, merges multiple authors that are linked
  *  to the same GitHub account and writes the result into a JSON file. */
 open class UpdateContributorStatisticsTask : DefaultTask() {
-    @get:OutputFile lateinit var targetFile: String
+    @get:OutputFile lateinit var targetFile: File
     @get:Input var skipCommits: Set<String> = setOf()
     @get:Input var skipCommitRegex: Regex? = null
     @get:Input lateinit var codeFileRegex: Regex
@@ -161,7 +161,7 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
     }
 
     private fun writeContributors(contributors: List<Contributor>) {
-        File(targetFile).outputStream().use {
+        targetFile.outputStream().use {
             val yamlFormat = Yaml(configuration = YamlConfiguration(encodeDefaults = false))
             yamlFormat.encodeToStream(contributors, it)
         }
