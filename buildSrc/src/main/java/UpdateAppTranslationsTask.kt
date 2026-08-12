@@ -1,7 +1,6 @@
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.OutputFiles
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.util.Locale
@@ -12,7 +11,7 @@ open class UpdateAppTranslationsTask : DefaultTask() {
     @get:Input lateinit var projectId: String
     @get:Input lateinit var apiToken: String
     @get:Input lateinit var languageCodes: Collection<String>
-    @get:OutputFiles lateinit var targetFiles: ((androidResCode: String) -> File)
+    @get:Input lateinit var targetFiles: ((androidResCode: String) -> File)
 
     @TaskAction fun run() {
         val exportLanguages = languageCodes.map { Locale.forLanguageTag(it) }
