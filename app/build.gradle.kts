@@ -379,10 +379,10 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     targetFile = projectDir.resolve("src/commonMain/composeResources/files/credits_contributors.yml")
     // gradle, py, bat, java and mjs don't exist anymore in this repo but they used to
     codeFileRegex = Regex(".*\\.(java|kt|kts|py|gradle|bat|mjs)$")
-    /* photos, illustrations, sounds ... but not yml, json, ... because most of these are updated
+    /* photos, illustrations, sounds ... but not YAML, JSON, ... because most of these are updated
        via gradle tasks */
     assetFileRegex = Regex(".*\\.(jpe?g|png|svg|webp|wav)$", RegexOption.IGNORE_CASE)
-    /* drawable xmls, layout xmls, animation xmls ... but not strings because they are updated
+    /* drawable XMLs, layout XMLs, animation XMLs ... but not strings because they are updated
        via gradle tasks */
     interfaceMarkupRegex = Regex(".*(anim|color|drawable|layout|menu|mipmap).*\\.xml$")
     githubApiToken = properties["app.streetcomplete.GithubApiToken"] as String
