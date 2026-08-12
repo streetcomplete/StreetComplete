@@ -390,8 +390,9 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"
+    outputs.file(projectDir.resolve("src/commonMain/composeResources/files/languages.yml"))
     doLast {
-        val fileWriter = FileWriter("$projectDir/src/commonMain/composeResources/files/languages.yml", false)
+        val fileWriter = FileWriter(outputs.files.singleFile, false)
         fileWriter.write(bcp47ExportLanguages.joinToString("\n") { "- $it" })
         fileWriter.write("\n")
         fileWriter.close()
@@ -471,9 +472,10 @@ tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
 
 tasks.register("copyDefaultStringsToEnStrings") {
     group = "streetcomplete"
+    inputs.file(projectDir.resolve("src/commonMain/composeResources/values/strings.xml"))
+    outputs.file(projectDir.resolve("src/commonMain/composeResources/values-en/strings.xml"))
     doLast {
-        val sourceStrings = File("$projectDir/src/commonMain/composeResources/values/strings.xml")
-        sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
+        inputs.files.singleFile.copyTo(outputs.files.singleFile, true)
     }
 }
 
