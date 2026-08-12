@@ -3,6 +3,7 @@ import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.io.StringWriter
@@ -13,7 +14,7 @@ import java.util.Locale
  *  library */
 open class UpdatePresetsTask : DefaultTask() {
     @get:Input lateinit var languageCodes: Collection<String>
-    @get:Input lateinit var targetDir: String
+    @get:OutputDirectory lateinit var targetDir: String
     @get:Input lateinit var version: String
 
     @TaskAction fun run() {

@@ -1,13 +1,16 @@
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.OutputDirectory
+import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
 open class CopyIconsTask : DefaultTask() {
-    @get:Input lateinit var sourceDir: String
-    @get:Input lateinit var targetDir: String
+    @get:InputDirectory lateinit var sourceDir: String
+    @get:OutputDirectory lateinit var targetDir: String
     @get:Input lateinit var filter: (String) -> Boolean
-    @get:Input lateinit var indexFile: String
+    @get:OutputFile lateinit var indexFile: String
 
     @TaskAction
     fun run() {

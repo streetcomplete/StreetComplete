@@ -1,16 +1,17 @@
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputFile
+import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import org.intellij.markdown.flavours.gfm.GFMFlavourDescriptor
 import org.intellij.markdown.html.HtmlGenerator
 import org.intellij.markdown.parser.MarkdownParser
 import java.io.File
 
-/** Convert a markdown changelog to HTML. */
+/** Convert a Markdown changelog to HTML. */
 open class UpdateChangelogTask : DefaultTask() {
 
-    @get:Input lateinit var sourceFile: String
-    @get:Input lateinit var targetFile: String
+    @get:InputFile lateinit var sourceFile: String
+    @get:OutputFile lateinit var targetFile: String
 
     private val markdownFlavour = GFMFlavourDescriptor()
 

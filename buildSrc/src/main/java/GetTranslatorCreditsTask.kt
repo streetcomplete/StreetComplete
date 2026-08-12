@@ -4,6 +4,7 @@ import com.esotericsoftware.yamlbeans.YamlConfig
 import com.esotericsoftware.yamlbeans.YamlWriter
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import org.jsoup.Jsoup
 import java.io.FileWriter
@@ -16,7 +17,7 @@ import java.util.TreeMap
 
 /** Get the translator credits from POEditor by extracting the information from various HTML pages*/
 open class GetTranslatorCreditsTask : DefaultTask() {
-    @get:Input lateinit var targetFile: String
+    @get:OutputFile lateinit var targetFile: String
     @get:Input lateinit var languageCodes: Collection<String>
     @get:Input lateinit var cookie: String
     @get:Input lateinit var phpsessid: String

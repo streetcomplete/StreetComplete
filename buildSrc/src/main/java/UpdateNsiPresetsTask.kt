@@ -3,6 +3,7 @@ import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.net.URI
@@ -16,7 +17,7 @@ import java.net.URI
  *  all because they exist only in select countries and the user will only be editing usually in one
  *  country per session anyways. */
 open class UpdateNsiPresetsTask : DefaultTask() {
-    @get:Input lateinit var targetDir: String
+    @get:OutputDirectory lateinit var targetDir: String
     @get:Input lateinit var version: String
 
     @TaskAction

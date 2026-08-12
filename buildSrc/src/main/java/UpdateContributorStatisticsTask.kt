@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.net.URI
@@ -12,7 +13,7 @@ import java.net.URI
 /** Counts the changes made by each author from the git log, merges multiple authors that are linked
  *  to the same GitHub account and writes the result into a JSON file. */
 open class UpdateContributorStatisticsTask : DefaultTask() {
-    @get:Input lateinit var targetFile: String
+    @get:OutputFile lateinit var targetFile: String
     @get:Input var skipCommits: Set<String> = setOf()
     @get:Input var skipCommitRegex: Regex? = null
     @get:Input lateinit var codeFileRegex: Regex

@@ -3,7 +3,8 @@ import com.esotericsoftware.yamlbeans.YamlReader
 import com.esotericsoftware.yamlbeans.YamlWriter
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.io.StringWriter
@@ -19,8 +20,8 @@ import java.net.URI
  *  popularSports: [soccer, tennis]  */
 open class GenerateMetadataByCountryTask : DefaultTask() {
 
-    @get:Input lateinit var sourceDir: String
-    @get:Input lateinit var targetDir: String
+    @get:InputDirectory lateinit var sourceDir: String
+    @get:OutputDirectory lateinit var targetDir: String
 
     @TaskAction fun run() {
         val sourceDir = File(sourceDir)

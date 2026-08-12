@@ -1,5 +1,6 @@
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
@@ -8,7 +9,7 @@ open class UpdateStoreDescriptionsTask : DefaultTask() {
 
     @get:Input lateinit var projectId: String
     @get:Input lateinit var apiToken: String
-    @get:Input lateinit var targetDir: String
+    @get:OutputDirectory lateinit var targetDir: String
 
     @TaskAction fun run() {
         val languageCodes = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
