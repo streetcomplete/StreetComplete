@@ -232,7 +232,7 @@ class MainActivity :
                 onClickLocationPointer = ::onClickLocationPointer,
                 onClickCreate = ::onClickCreateButton,
                 onClickStopTrackRecording = ::onClickTracksStop,
-                onClickDownload = ::onClickDownload,
+                onDownload = ::onClickDownload,
                 onClickSettings = {
                     context.startActivity(Intent(context, SettingsActivity::class.java))
                 },
@@ -613,22 +613,8 @@ class MainActivity :
     //region Buttons - Functionality for the buttons in the main view
 
     private fun onClickDownload() {
-        if (viewModel.isConnected) {
-            val downloadBbox = getDownloadArea() ?: return
-            if (viewModel.isUserInitiatedDownloadInProgress) {
-                AlertDialog.Builder(this)
-                    .setMessage(R.string.confirmation_cancel_prev_download_title)
-                    .setPositiveButton(R.string.confirmation_cancel_prev_download_confirmed) { _, _ ->
-                        viewModel.download(downloadBbox)
-                    }
-                    .setNegativeButton(R.string.confirmation_cancel_prev_download_cancel, null)
-                    .show()
-            } else {
-                viewModel.download(downloadBbox)
-            }
-        } else {
-            toast(R.string.offline)
-        }
+        val downloadBbox = getDownloadArea() ?: return
+        viewModel.download(downloadBbox)
     }
 
     private fun onClickZoomOut() {

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
@@ -14,6 +15,7 @@ import org.jetbrains.compose.resources.stringResource
 fun RequestLoginDialog(
     onDismissRequest: () -> Unit,
     onConfirmed: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     ConfirmationDialog(
         onDismissRequest = onDismissRequest,
@@ -24,6 +26,7 @@ fun RequestLoginDialog(
                 Text(stringResource(Res.string.confirmation_authorize_now_note2))
             }
         },
-        cancelButtonText = stringResource(Res.string.later)
+        cancelButtonText = stringResource(Res.string.later),
+        modifier = modifier,
     )
 }

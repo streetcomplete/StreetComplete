@@ -3,14 +3,8 @@ package de.westnordost.streetcomplete.screens.main
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.SizeTransform
-import androidx.compose.animation.core.FiniteAnimationSpec
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.snap
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.scaleIn
-import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
@@ -29,7 +23,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.unit.IntSize
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.*
@@ -49,7 +42,6 @@ import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.dir
-import de.westnordost.streetcomplete.ui.util.ReplaceBottomSheetTransitionSpec
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
@@ -69,7 +61,7 @@ fun MainScreen(
     onClickLocationPointer: () -> Unit,
     onClickCreate: () -> Unit,
     onClickStopTrackRecording: () -> Unit,
-    onClickDownload: () -> Unit,
+    onDownload: () -> Unit,
     onClickSettings: () -> Unit,
     onClickQuestSettings: () -> Unit,
     onClickAbout: () -> Unit,
@@ -129,12 +121,25 @@ fun MainScreen(
     val shownBottomSheet by mainBottomSheetViewModel.shownBottomSheet.collectAsState()
     val geometryOffsetInWindow by mainBottomSheetViewModel.geometryOffsetInWindow.collectAsState()
 
+    var confirmReplaceDownload by remember { mutableStateOf(false) }
     var showOverlaysTutorial by remember { mutableStateOf(false) }
     var showIntroTutorial by remember { mutableStateOf(false) }
     var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     var showToast by remember { mutableStateOf<Toast?>(null) }
+
+    fun onClickDownload() {
+        if (viewModel.isConnected) {
+            if (viewModel.isUserInitiatedDownloadInProgress) {
+                confirmReplaceDownload = true
+            } else {
+                onDownload()
+            }
+        } else {
+            showToast = Toast.Offline
+        }
+    }
 
     fun onClickUpload() {
         if (viewModel.isConnected) {
@@ -310,7 +315,7 @@ fun MainScreen(
             onClickProfile = onClickProfile,
             onClickSettings = onClickSettings,
             onClickAbout = onClickAbout,
-            onClickDownload = onClickDownload,
+            onClickDownload = ::onClickDownload,
             onClickUpload = ::onClickUpload,
             onClickEnterTeamMode = { showTeamModeWizard = true },
             onClickExitTeamMode = { viewModel.disableTeamMode() },
@@ -342,6 +347,13 @@ fun MainScreen(
         RequestLoginDialog(
             onDismissRequest = { viewModel.finishRequestingLogin() },
             onConfirmed = onClickLogin
+        )
+    }
+
+    if (confirmReplaceDownload) {
+        ConfirmReplaceDownloadDialog(
+            onDismissRequest = { confirmReplaceDownload = false },
+            onConfirmed = { onDownload() }
         )
     }
 
