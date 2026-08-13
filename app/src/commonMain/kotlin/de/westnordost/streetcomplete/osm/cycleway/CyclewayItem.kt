@@ -22,7 +22,6 @@ fun CyclewayAndDirection.getDialogIcon(
     roadDirection: Direction,
 ): DrawableResource? =
     when (cycleway) {
-        NONE ->     Res.drawable.cycleway_none_in_selection
         SEPARATE -> Res.drawable.cycleway_separate
         SIDEWALK_OK ->
             if (direction == BOTH) {
@@ -45,7 +44,7 @@ fun CyclewayAndDirection.getFloatingIcon(
     when (cycleway) {
         NONE ->
             if (direction.isReverseOf(roadDirection)) noEntrySignDrawable
-            else Res.drawable.floating_no
+            else null
         SEPARATE -> Res.drawable.floating_separate
         SIDEWALK_OK ->
             if (direction == BOTH) Res.drawable.cycleway_sign_sidewalk_ok_dual
