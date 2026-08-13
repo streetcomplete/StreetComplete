@@ -26,10 +26,10 @@ fun FeatureDictionary.getPlaceOrDisusedPlace(
 ): Feature? =
     // either a regular place
     getFeature(element, languages, country, isSuggestion = null) // include brands
-        ?.takeIf { it.toElement().isPlace() }
+        ?.takeIf { element.isPlace() }
     // or a disused place
     ?: getDisusedFeature(disusedString, element, languages, country)
-        ?.takeIf { it.toElement().isDisusedPlace() }
+        ?.takeIf { element.isDisusedPlace() }
     // or vacant place
     ?: (if (element.isDisusedPlace()) getById("shop/vacant", languages, country) else null)
     // or unknown place (i.e. not known by feature dictionary)

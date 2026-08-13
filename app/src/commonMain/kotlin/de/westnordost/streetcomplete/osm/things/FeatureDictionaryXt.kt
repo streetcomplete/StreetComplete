@@ -22,10 +22,10 @@ fun FeatureDictionary.getThingOrDisusedThing(
 ): Feature? =
     // either a thing
     getFeature(element, languages, country)
-        ?.takeIf { it.toElement().isThing() }
+        ?.takeIf { element.isThing() }
     // or a disused thing
     ?: getDisusedFeature(disusedString, element, languages, country)
-        ?.takeIf { it.toElement().isDisusedThing() }
+        ?.takeIf { element.isDisusedThing() }
     // or unknown thing (i.e. not known by feature dictionary)
     ?: if (element.isThingOrDisusedThing()) {
         BaseFeature(
