@@ -31,7 +31,7 @@ fun ThingForm(
     onSelectedFeature: (Feature) -> Unit,
     lastPickedFeatures: List<Feature>,
     element: Element?,
-    countryCode: String,
+    countryCode: String?,
     featureDictionary: FeatureDictionary,
     modifier: Modifier = Modifier,
     isEnabled: Boolean = true,

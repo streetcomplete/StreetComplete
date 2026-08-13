@@ -81,11 +81,11 @@ data class IncompleteCountryInfo(
 
 data class CountryInfo(
     /** e.g. US-AL */
-    val countryOrSubdivisionCode: String,
+    val countryOrSubdivisionCode: String?,
     private val infos: List<IncompleteCountryInfo>
 ) {
     /** e.g. US */
-    val countryCode = countryOrSubdivisionCode.substringBefore('-')
+    val countryCode: String? = countryOrSubdivisionCode?.substringBefore('-')
 
     // part of default.yml, so cannot be null
     val advisorySpeedLimitSignStyle: String get() =
@@ -191,7 +191,7 @@ data class CountryInfo(
     val languageTag: String?
         get() {
             val lang = language ?: return null
-            return "$lang-$countryCode"
+            return if (countryCode == null) lang else "$lang-$countryCode"
         }
 
     /** the country locale, but preferring the user's set language if the country has several
@@ -200,7 +200,9 @@ data class CountryInfo(
         get() {
             if (officialLanguages.isEmpty()) return Locale.current
 
-            val locales = officialLanguages.map { Locale("$it-$countryCode") }
+            val locales = officialLanguages.map {
+                Locale(if (countryCode == null) it else "$it-$countryCode")
+            }
             val preferredLocale = locales.find { it.language == Locale.current.language }
             return preferredLocale ?: locales.first()
         }

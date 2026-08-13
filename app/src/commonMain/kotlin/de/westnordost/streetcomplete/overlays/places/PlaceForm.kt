@@ -46,7 +46,7 @@ fun PlaceForm(
     selectableLanguages: List<String>,
     onLocalizedNamesChanged: (List<LocalizedName>) -> Unit,
     element: Element?,
-    countryCode: String,
+    countryCode: String?,
     featureDictionary: FeatureDictionary,
     modifier: Modifier = Modifier,
 ) {

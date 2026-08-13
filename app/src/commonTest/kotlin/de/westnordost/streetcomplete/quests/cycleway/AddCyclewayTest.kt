@@ -15,7 +15,7 @@ import kotlin.test.assertTrue
 
 class AddCyclewayTest {
     private var countryInfo = CountryInfo(
-        "XX",
+        null,
         listOf(IncompleteCountryInfo(hasAdvisoryCycleLane = false))
     )
 

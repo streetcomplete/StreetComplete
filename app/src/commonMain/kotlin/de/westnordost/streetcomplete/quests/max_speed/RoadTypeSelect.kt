@@ -25,7 +25,7 @@ import org.jetbrains.compose.resources.stringResource
 fun RoadTypeSelect(
     roadType: RoadType?,
     onRoadType: (RoadType?) -> Unit,
-    countryCode: String,
+    countryCode: String?,
     modifier: Modifier = Modifier,
 ) {
     val selectable = remember(countryCode) { RoadType.getEntriesByCountryCode(countryCode)  }
