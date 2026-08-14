@@ -1,12 +1,12 @@
 plugins {
     // this is necessary to avoid the plugins to be loaded multiple times
     // in each subproject's classloader
-    id("org.jetbrains.kotlin.multiplatform") version "2.3.0" apply false
-    id("org.jetbrains.kotlin.plugin.compose") version "2.3.0"  apply false
-    id("com.android.application") version "8.11.2" apply false
-    id("com.android.library") version "8.11.2" apply false
-    id("org.jetbrains.compose") version "1.10.0" apply false
-    id("org.jetbrains.kotlinx.atomicfu") version "0.31.0" apply false
+    id("org.jetbrains.kotlin.multiplatform") version "2.4.0" apply false
+    id("org.jetbrains.kotlin.plugin.compose") version "2.4.0"  apply false
+    id("com.android.application") version "8.13.2" apply false
+    id("com.android.library") version "8.13.2" apply false
+    id("org.jetbrains.compose") version "1.11.1" apply false
+    id("org.jetbrains.kotlinx.atomicfu") version "0.33.0" apply false
 }
 
 val poEditorProjectId = "97843"
@@ -65,11 +65,11 @@ tasks.register<GenerateQuestListTask>("generateQuestList") {
     group = "streetcomplete"
     targetFile = "$projectDir/quest-list.csv"
     projectDirectory = projectDir
-    questsDirectory = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/")
+    questsDirectory = projectDir.resolve("app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/")
     iconsDirectory = projectDir.resolve("res/graphics/quest/")
-    noteQuestFile = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/note_discussion/OsmNoteQuestType.kt")
-    questsModuleFile = projectDir.resolve("app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt")
-    stringsFile = projectDir.resolve("app/src/androidMain/res/values/strings.xml")
+    noteQuestFile = projectDir.resolve("app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/note_comments/OsmNoteQuestType.kt")
+    questTypesRegistryFile = projectDir.resolve("app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestTypesRegistry.kt")
+    stringsFile = projectDir.resolve("app/src/commonMain/composeResources/values/strings.xml")
 }
 
 tasks.register("updateStreetCompleteData") {

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.traffic_calming_type
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class TrafficCalmingType(val osmValue: String) {
     BUMP("bump"),
     HUMP("hump"),

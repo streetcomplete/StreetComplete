@@ -1,13 +1,7 @@
 package de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation
 
 import de.westnordost.streetcomplete.quests.barrier_bicycle_barrier_installation.BicycleBarrierInstallation.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.barrier_bicycle_installation_fixed
-import de.westnordost.streetcomplete.resources.barrier_bicycle_installation_openable
-import de.westnordost.streetcomplete.resources.barrier_bicycle_installation_removable
-import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_installation_fixed
-import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_installation_openable
-import de.westnordost.streetcomplete.resources.quest_barrier_bicycle_installation_removable
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

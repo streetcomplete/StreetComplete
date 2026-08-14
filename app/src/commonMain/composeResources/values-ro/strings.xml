@@ -109,7 +109,6 @@ Această aplicație comunică direct cu serverele OSM.&lt;br/&gt;
     <string name="quest_surface_value_sett">Piatră cubică</string>
     <string name="quest_surface_value_wood">Lemn</string>
     <string name="quest_sidewalk_title">Are strada trotuar?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">Unde este această stradă?</string>
     <string name="quest_address_title">Ce număr administrativ are clădirea?</string>
     <string name="store_listing_short_description">Aplicația topografică OpenStreetMap</string>
     <string name="store_listing_full_description">Ajutați la îmbunătățirea OpenStreetMap cu StreetComplete!
@@ -176,9 +175,6 @@ Informațiile pe care le introduceți sunt direct adăugate în OpenStreetMap î
     <string name="quest_maxspeed_answer_noSign_confirmation">Ați verificat la capetele străzii?
 Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentru secțiunea evidențiată, sunt aplicate limitele de viteză implicite.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Da, nu e niciun indicator</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Drumurile din zonele construite au o limită de viteză implicită mai mică decât drumurile rurale.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Zona construită</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Rural</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Dacă există un indicator de acest fel la intersecția cu strada principală, probabil nu veți găsi indicatoare individuale în zonă, deoarece limita de viteză afișată acolo se aplică întregii zone.</string>
     <string name="quest_sport_softball">Softball</string>
     <string name="quest_sport_racquet">Badminton</string>
@@ -212,7 +208,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="credits_contributors_title">Contribuții la cod</string>
     <string name="credits_author_title">Autor și întreținător</string>
     <string name="quest_maxspeed_answer_living_street">Este o zonă rezidențială</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">Deci, există un indicator ca acesta?</string>
     <string name="quest_orchard_produce_title">Ce se cultivă aici?</string>
     <string name="produce_grapes">Struguri</string>
     <string name="produce_agaves">Agave</string>
@@ -284,7 +279,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="quest_buildingLevels_levelsLabel2">niveluri (excluzând acoperișul)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Diferă în funcție de partea clădirii</string>
     <string name="quest_buildingLevels_answer_description">In această situație, introduceți valoarea pentru cea mai înaltă parte a clădirii.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">Sensurile opuse ale acestui drum sunt separate printr-o barieră fizică sau spațiu verde? Limita de viteză implicită poate depinde de aceasta.</string>
     <string name="about_category_feedback">Contribuiți</string>
     <string name="quest_leave_new_note_photo">Atașează o fotografie</string>
     <string name="quest_leave_new_note_photo_delete_title">Doriți sa ștergeți această fotografie?</string>
@@ -450,7 +444,6 @@ la parter</string>
     <string name="quest_openingHours_no_sign">Nu sunt afișate orele de funcționare</string>
     <string name="quest_buildingType_sports_centre">Centru sportiv</string>
     <string name="quest_buildingType_toilets">Toalete</string>
-    <string name="quest_maxspeed_sign_question">Ce definește limita de viteză?</string>
     <string name="quest_segregated_title">Cum sunt aranjate pistele pietonală și de biciclete?</string>
     <string name="dialog_tutorial_upload">Pentru a trimite manual modificările dumneavoastră, utilizați butonul din bara de instrumente care arată astfel.</string>
     <string name="quest_segregated_separated">Separate una de alta</string>
@@ -488,7 +481,6 @@ la parter</string>
     <string name="theme_dark">Întunecată</string>
     <string name="theme_system_default">Cea folosită de sistem</string>
     <string name="action_open_location">Deschide locația în altă aplicație</string>
-    <string name="map_application_missing">Nu este instalată o altă aplicație pentru hărți</string>
     <string name="label_housenumber">numărul casei</string>
     <string name="quest_busStopShelter_covered">Întreaga stație este acoperită</string>
     <string name="quest_ferry_pedestrian_title">Se pot transporta pietoni pe ruta de feribot?</string>
@@ -686,7 +678,6 @@ activitate</string>
     <string name="at_housenumber">numărul casei %1$s</string>
     <string name="quest_openingHours_add_off_days">Adaugă zile libere</string>
     <string name="quest_openingHours_off_day">Zile libere</string>
-    <string name="quest_openingHours_unspecified_range">Nespecificat</string>
     <string name="quest_cycleway_resurvey_title">Este situația pistei de biciclete aceeași?</string>
     <string name="pref_title_resurvey_intervals">Interval reluare chestionare</string>
     <string name="resurvey_intervals_less_often">Mai rar</string>
@@ -761,8 +752,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă.</str
     <string name="quest_shop_gone_title">Ce este aici acum?</string>
     <string name="quest_shop_gone_vacant_answer">Este neocupat...</string>
     <string name="quest_shop_gone_replaced_answer">Un/O...</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Ce fel de loc este aici</string>
-    <string name="quest_shop_vacant_type_title">Magazinul era neocupat. Ce se află acum aici?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Acest tip de misiune este dezactivat implicit, fiindcă nu este utilă în unele regiuni și probabil va trebui să intrați în locație pentru a o rezolva.</string>
     <string name="quest_dietType_explanation_kosher">Produsele Kosher trebuie să fie pregătite în conformitate cu reguli speciale, agențiile de certificare kashrut marcând produsele conforme.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nu există bandă de biciclete sau pistă</string>
@@ -1451,7 +1440,6 @@ De exemplu 1, 3 sau 2b, 4, 6.</string>
     <string name="quest_charging_station_bicycles_title">Se pot încărca și bicicletele aici?</string>
     <string name="quest_charging_station_bicycles_hint">Adaptoarele de alimentare pentru încărcătoare de biciclete se conectează la prizele normale de uz casnic.</string>
     <string name="quest_tower_access_title">Cine poate accesa acest turn? Poate fi gratuit sau cu plată.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Este doar pentru biciclete</string>
     <string name="quest_recycling_type_pet_bottles">Sticle PET</string>
     <string name="quest_maxweight_add_sign">Adăugați semn</string>
     <string name="quest_maxweight_remove_sign">Eliminați semnul</string>

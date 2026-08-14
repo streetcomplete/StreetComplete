@@ -15,13 +15,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.text.BasicText
-import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.Button
-import androidx.compose.material.Checkbox
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -46,31 +44,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmcal.CalendarEvent
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.action_open_in_browser
-import de.westnordost.streetcomplete.resources.calendar_new_event_title
-import de.westnordost.streetcomplete.resources.dialog_dont_notify_again
-import de.westnordost.streetcomplete.resources.ic_open_in_browser_24
-import de.westnordost.streetcomplete.resources.location_pin_red
-import de.westnordost.streetcomplete.resources.wire_binding
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
-import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import de.westnordost.streetcomplete.ui.theme.titleLarge
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.toLocalDate
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
 import de.westnordost.streetcomplete.util.locale.LocalDateFormatter
-import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
-import kotlinx.datetime.Clock
-import kotlinx.datetime.LocalDateTime
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.floor
@@ -225,7 +209,7 @@ private fun CalendarPageContent(
 ) {
     var dontShowAgain by remember { mutableStateOf(false) }
     Column(
-        modifier = modifier.padding(top = 16.dp, start = 24.dp, end = 24.dp),
+        modifier = modifier.padding(vertical = 16.dp, horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
@@ -254,32 +238,31 @@ private fun CalendarPageContent(
             }
         }
 
-        Column(
+        Button(
             modifier = Modifier.align(Alignment.CenterHorizontally),
-            horizontalAlignment = Alignment.CenterHorizontally,
+            onClick = onClickOpenEvent
         ) {
-            Button(onClick = onClickOpenEvent) {
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(painterResource(Res.drawable.ic_open_in_browser_24), null)
-                    Text(stringResource(Res.string.action_open_in_browser))
-                }
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(painterResource(Res.drawable.ic_open_in_browser_24), null)
+                Text(stringResource(Res.string.action_open_in_browser))
             }
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Checkbox(
-                    checked = dontShowAgain,
-                    onCheckedChange = {
-                        dontShowAgain = it
-                        onToggleDontShowAgain(it)
-                    },
-                )
-                Text(
-                    text = stringResource(Res.string.dialog_dont_notify_again),
-                    style = MaterialTheme.typography.body1
-                )
-            }
+        }
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Switch(
+                checked = dontShowAgain,
+                onCheckedChange = {
+                    dontShowAgain = it
+                    onToggleDontShowAgain(it)
+                },
+            )
+            Text(
+                text = stringResource(Res.string.dialog_dont_notify_again2),
+                style = MaterialTheme.typography.body1
+            )
         }
     }
 }

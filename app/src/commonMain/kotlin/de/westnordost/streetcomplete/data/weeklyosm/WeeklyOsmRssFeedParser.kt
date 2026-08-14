@@ -2,13 +2,14 @@ package de.westnordost.streetcomplete.data.weeklyosm
 
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.util.ktx.RFC_2822_STRICT
-import kotlinx.datetime.Instant
 import kotlinx.datetime.format.DateTimeComponents
+import kotlinx.datetime.parse
 import kotlinx.io.Source
 import nl.adaptivity.xmlutil.EventType.*
 import nl.adaptivity.xmlutil.allText
 import nl.adaptivity.xmlutil.core.kxio.newReader
 import nl.adaptivity.xmlutil.xmlStreaming
+import kotlin.time.Instant
 
 /** This cannot really be called an RSS parser. It actually only checks the time the last article
  *  has been published :-D */

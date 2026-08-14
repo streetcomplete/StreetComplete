@@ -15,13 +15,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_delete_24
-import de.westnordost.streetcomplete.resources.quest_maxweight_add_sign
-import de.westnordost.streetcomplete.resources.quest_maxweight_remove_sign
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import org.jetbrains.compose.resources.painterResource
@@ -34,11 +32,13 @@ fun MaxWeightForm(
     onSignAdded: (MaxWeight) -> Unit,
     onSignRemoved: (index: Int) -> Unit,
     onSignChanged: (index: Int, MaxWeight) -> Unit,
-    countryCode: String,
+    locale: Locale,
     selectableUnits: List<WeightMeasurementUnit>,
     modifier: Modifier = Modifier,
 ) {
     var showSelectionDialog by remember { mutableStateOf(false) }
+
+    val countryCode = locale.region
 
     val selectableMaxWeightTypes = MaxWeightType.entries.filter { type ->
         type !in signs.map { it.type } &&
@@ -59,7 +59,7 @@ fun MaxWeightForm(
                     type = sign.type,
                     weight = sign.weight,
                     onWeightChange = { onSignChanged(index, signs[index].copy(weight = it)) },
-                    countryCode = countryCode,
+                    locale = locale,
                     selectableUnits = selectableUnits,
                     modifier = Modifier.weight(1f)
                 )

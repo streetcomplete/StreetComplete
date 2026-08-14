@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.download.tiles.enclosingTilePos
 import de.westnordost.streetcomplete.data.download.tiles.enclosingTilesRect
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataController
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataSource
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.area
@@ -22,7 +22,7 @@ import kotlin.math.sqrt
 
 /** Auto download strategy decides how big of an area to download based on the OSM map data density */
 abstract class AVariableRadiusStrategy(
-    private val mapDataController: MapDataController,
+    private val mapDataSource: MapDataSource,
     private val downloadedTilesSource: DownloadedTilesSource
 ) : AutoDownloadStrategy {
 
@@ -66,7 +66,7 @@ abstract class AVariableRadiusStrategy(
     private suspend fun getScoredMapDataDensityFor(boundingBox: BoundingBox): Double {
         val areaInKm = boundingBox.area()
         val elementCounts =
-            withContext(Dispatchers.IO) { mapDataController.getElementCounts(boundingBox) }
+            withContext(Dispatchers.IO) { mapDataSource.getElementCounts(boundingBox) }
         /* score element types by assumed size in transmission:
          *
          * An average way has about 9 nodes. Ways in average have about 2.5 tags.

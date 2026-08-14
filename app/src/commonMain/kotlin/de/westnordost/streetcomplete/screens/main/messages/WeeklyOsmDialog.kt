@@ -19,12 +19,12 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.material.Button
-import androidx.compose.material.Checkbox
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
+import androidx.compose.material.Switch
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -51,11 +51,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.action_open_in_browser
-import de.westnordost.streetcomplete.resources.ic_open_in_browser_24
-import de.westnordost.streetcomplete.resources.dialog_dont_notify_again
-import de.westnordost.streetcomplete.resources.weekly_osm_new_edition_title
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
@@ -227,7 +223,7 @@ private fun BoxScope.WeeklyOsmNewspaperContent(
             }
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Checkbox(
+            Switch(
                 checked = dontShowAgain,
                 onCheckedChange = {
                     dontShowAgain = it
@@ -235,7 +231,7 @@ private fun BoxScope.WeeklyOsmNewspaperContent(
                 },
             )
             Text(
-                text = stringResource(Res.string.dialog_dont_notify_again),
+                text = stringResource(Res.string.dialog_dont_notify_again2),
                 style = MaterialTheme.typography.body1
             )
         }

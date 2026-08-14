@@ -2,7 +2,9 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import android.graphics.PointF
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -10,7 +12,6 @@ import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.databinding.FragmentMapBinding
 import de.westnordost.streetcomplete.screens.main.map.components.SceneMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraUpdate
@@ -25,22 +26,21 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.updateCamera
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
-import de.westnordost.streetcomplete.util.viewBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.maplibre.android.MapLibre
 import org.maplibre.android.gestures.MoveGestureDetector
 import org.maplibre.android.maps.MapLibreMap
+import org.maplibre.android.maps.MapView
 import org.maplibre.android.maps.Style
 import org.maplibre.android.offline.OfflineManager
 
 /** Manages a map that remembers its last location */
-open class MapFragment : Fragment(R.layout.fragment_map) {
-
-    private val binding by viewBinding(FragmentMapBinding::bind)
+open class MapFragment : Fragment() {
 
     protected var map: MapLibreMap? = null
+    private lateinit var mapView: MapView
     private var sceneMapComponent: SceneMapComponent? = null
 
     private val prefs: Preferences by inject()
@@ -61,6 +61,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     // Note: offline regions may exceed this limit, but will count against it
     // This means that when offline regions exceed size, no tiles will be cached when panning
+    // This means that when offline regions exceed size, no tiles will be cached when panning
 
     /* ------------------------------------ Lifecycle ------------------------------------------- */
 
@@ -69,16 +70,20 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         MapLibre.getInstance(requireContext())
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return MapView(inflater.context).also { mapView = it }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.map.onCreate(savedInstanceState)
-        binding.map.foreground = view.context.getDrawable(R.color.background)
+        mapView.onCreate(savedInstanceState)
+        mapView.foreground = view.context.getDrawable(R.color.background)
 
         initOfflineCacheSize()
         cleanOldOfflineRegions()
 
         viewLifecycleScope.launch {
-            val map = binding.map.awaitGetMap()
+            val map = mapView.awaitGetMap()
             this@MapFragment.map = map
             initMap(map)
         }
@@ -106,12 +111,12 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
 
     override fun onResume() {
         super.onResume()
-        binding.map.onResume()
+        mapView.onResume()
     }
 
     override fun onPause() {
         super.onPause()
-        binding.map.onPause()
+        mapView.onPause()
     }
 
     override fun onStop() {
@@ -122,12 +127,12 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
     override fun onDestroyView() {
         super.onDestroyView()
         map = null
-        binding.map.onDestroy()
+        mapView.onDestroy()
     }
 
     override fun onLowMemory() {
         super.onLowMemory()
-        binding.map.onLowMemory()
+        mapView.onLowMemory()
     }
 
     /* ------------------------------------------- Map  ----------------------------------------- */
@@ -169,7 +174,7 @@ open class MapFragment : Fragment(R.layout.fragment_map) {
         this.sceneMapComponent = sceneMapComponent
 
         restoreMapState()
-        binding.map.foreground = null
+        mapView.foreground = null
 
         onMapStyleLoaded(map, style)
 

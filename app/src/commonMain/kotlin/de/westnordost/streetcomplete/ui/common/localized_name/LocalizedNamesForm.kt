@@ -14,11 +14,13 @@ import androidx.compose.material.ProvideTextStyle
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -27,22 +29,17 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.intl.LocaleList
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_add_24
-import de.westnordost.streetcomplete.resources.ic_delete_24
-import de.westnordost.streetcomplete.resources.quest_openingHours_delete
-import de.westnordost.streetcomplete.resources.quest_streetName_add_language
-import de.westnordost.streetcomplete.resources.quest_streetName_menuItem_language
-import de.westnordost.streetcomplete.resources.quest_streetName_menuItem_international
-import de.westnordost.streetcomplete.resources.quest_streetName_menuItem_nolanguage
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
 import de.westnordost.streetcomplete.ui.common.DropdownButton
 import de.westnordost.streetcomplete.util.ktx.displayName
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 
 /** Edit a list of [localizedNames] of at most [languageTags] different languages.*/
 @Composable
@@ -131,6 +128,7 @@ private fun LocalizedNameRow(
     val languageTag = localizedName.languageTag
 
     var nameState by remember { mutableStateOf(TextFieldValue(localizedName.name)) }
+    val isTooLong by remember { derivedStateOf { nameState.text.length > MAX_OSM_TAG_VALUE_LENGTH } }
     if (localizedName.name != nameState.text) {
         nameState = nameState.copy(text = localizedName.name)
     }
@@ -169,6 +167,7 @@ private fun LocalizedNameRow(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Done,
             ),
+            isError = isTooLong,
         )
 
         if (isDeleteVisible) {
@@ -197,7 +196,10 @@ private fun getLanguageMenuItemTitle(languageTag: String): String {
     return if (languageName == null) {
         languageTag
     } else {
-        stringResource(Res.string.quest_streetName_menuItem_language, languageTag, languageName)
+        when (LocalLayoutDirection.current) {
+            LayoutDirection.Ltr -> "$languageTag – $languageName"
+            LayoutDirection.Rtl -> "$languageName – $languageTag"
+        }
     }
 }
 

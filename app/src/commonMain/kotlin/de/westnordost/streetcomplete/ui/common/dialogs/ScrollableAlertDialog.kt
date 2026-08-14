@@ -22,7 +22,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.tooling.preview.Preview
 
-// TODO Compose
+// TODO Compose:
 //  AlertDialog does not support scrollable content (yet) https://issuetracker.google.com/issues/217151230
 //  This widget and probably SimpleListPickerDialog can be removed/replaced by a normal AlertDialog
 //  as soon as that ticket is solved (which really is a bug, considering that Material design
@@ -38,7 +38,7 @@ fun ScrollableAlertDialog(
     modifier: Modifier = Modifier,
     title: (@Composable () -> Unit)? = null,
     content: (@Composable ColumnScope.() -> Unit)? = null,
-    buttons: (@Composable FlowRowScope.() -> Unit)? = null,
+    buttonRow: (@Composable FlowRowScope.() -> Unit)? = null,
     shape: Shape = MaterialTheme.shapes.medium,
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
@@ -54,7 +54,7 @@ fun ScrollableAlertDialog(
             content = content?.let { {
                 Column(Modifier.weight(1f, fill = false)) { content() }
             } },
-            buttons = buttons,
+            buttonRow = buttonRow,
             shape = shape,
             backgroundColor = backgroundColor,
             contentColor = contentColor
@@ -84,7 +84,7 @@ Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie co
                     .verticalScroll(scrollState)
             )
         },
-        buttons = {
+        buttonRow = {
             TextButton(onClick = {}) { Text("Cancel") }
             TextButton(onClick = {}) { Text("OK") }
         },

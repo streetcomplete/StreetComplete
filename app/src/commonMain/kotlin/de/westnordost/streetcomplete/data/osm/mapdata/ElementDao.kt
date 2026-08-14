@@ -3,9 +3,11 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.RELATION
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.WAY
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Stores OSM elements. Actually, stores nothing, but delegates the work to a NodeDao, WayDao and
  *  a RelationDao. :-P */
+@Mockable
 class ElementDao(
     private val nodeDao: NodeDao,
     private val wayDao: WayDao,
@@ -84,6 +86,15 @@ class ElementDao(
         relationDao.clear()
         wayDao.clear()
         nodeDao.clear()
+    }
+
+    fun getIdsOlderThan(timestamp: Long, limit: Int? = null): List<ElementKey> {
+        val result = mutableListOf<ElementKey>()
+        // get relations first, then ways, then nodes because relations depend on ways depend on nodes.
+        result.addAll(relationDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(RELATION, it) })
+        result.addAll(wayDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(WAY, it) })
+        result.addAll(nodeDao.getIdsOlderThan(timestamp, limit?.minus(result.size)).map { ElementKey(NODE, it) })
+        return result
     }
 }
 

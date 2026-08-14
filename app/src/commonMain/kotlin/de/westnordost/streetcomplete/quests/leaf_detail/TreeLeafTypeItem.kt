@@ -2,11 +2,7 @@ package de.westnordost.streetcomplete.quests.leaf_detail
 
 import de.westnordost.streetcomplete.quests.leaf_detail.TreeLeafType.BROADLEAVED
 import de.westnordost.streetcomplete.quests.leaf_detail.TreeLeafType.NEEDLELEAVED
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.leaf_type_broadleaved
-import de.westnordost.streetcomplete.resources.leaf_type_needleleaved
-import de.westnordost.streetcomplete.resources.quest_leaf_type_broadleaved
-import de.westnordost.streetcomplete.resources.quest_leaf_type_needles
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

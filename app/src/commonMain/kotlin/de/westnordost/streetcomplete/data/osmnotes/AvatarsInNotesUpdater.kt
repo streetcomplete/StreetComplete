@@ -2,7 +2,7 @@ package de.westnordost.streetcomplete.data.osmnotes
 import kotlinx.coroutines.runBlocking
 
 class AvatarsInNotesUpdater(private val downloader: AvatarsDownloader) :
-    NoteController.Listener {
+    NoteSource.Listener {
 
     override fun onUpdated(added: Collection<Note>, updated: Collection<Note>, deleted: Collection<Long>) {
         if (added.isEmpty() && updated.isEmpty()) return

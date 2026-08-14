@@ -14,12 +14,7 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.osm_opening_hours.model.WeekdaysSelector
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.Times
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_openingHours_add_hours
-import de.westnordost.streetcomplete.resources.quest_openingHours_add_months
-import de.westnordost.streetcomplete.resources.quest_openingHours_add_off_days
-import de.westnordost.streetcomplete.resources.quest_openingHours_add_time
-import de.westnordost.streetcomplete.resources.quest_openingHours_add_weekdays
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import org.jetbrains.compose.resources.stringResource

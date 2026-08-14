@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
@@ -25,8 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.Hyphens
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_chevron_next_24
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.titleSmall
 import org.jetbrains.compose.resources.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -81,7 +81,7 @@ fun Preference(
         ) {
             Text(
                 text = name,
-                modifier = Modifier.weight(2 / 3f)
+                modifier = Modifier.weight(1f)
             )
             if (value != null) {
                 CompositionLocalProvider(
@@ -97,7 +97,7 @@ fun Preference(
                             alignment = Alignment.End
                         ),
                         verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.weight(1 / 3f)
+                        modifier = Modifier.widthIn(max = 160.dp)
                     ) { value() }
                 }
             }

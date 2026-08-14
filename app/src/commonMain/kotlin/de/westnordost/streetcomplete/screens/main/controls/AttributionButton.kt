@@ -44,9 +44,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_info_outline_24
-import de.westnordost.streetcomplete.resources.map_attribution
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.ktx.Reverse
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource

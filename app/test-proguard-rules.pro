@@ -4,6 +4,5 @@
 -dontwarn com.google.errorprone.annotations.MustBeClosed
 -dontwarn edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 -dontwarn kotlin.reflect.full.*
--dontwarn org.mockito.internal.creation.bytebuddy.inject.MockMethodDispatcher
 -dontwarn org.opentest4j.*
 -dontwarn org.w3c.dom.bootstrap.DOMImplementationRegistry

@@ -26,7 +26,8 @@ data class NoteEdit(
     /** attached photos */
     val imagePaths: List<String>,
 
-    /** timestamp when this edit was made. Used to order the (unsynced) edits in a queue */
+    /** timestamp when this edit was made. Used to order the (unsynced) edits in a queue. In epoch
+     *  milliseconds. */
     override val createdTimestamp: Long,
 
     /** whether this edit has been uploaded already */
@@ -36,7 +37,7 @@ data class NoteEdit(
     val imagesNeedActivation: Boolean,
 
     /** attached GPS location history */
-    val track: List<Trackpoint>,
+    val track: List<Trackpoint>?,
 ) : Edit {
     override val isUndoable: Boolean get() = !isSynced
     override val key: NoteEditKey get() = NoteEditKey(id)

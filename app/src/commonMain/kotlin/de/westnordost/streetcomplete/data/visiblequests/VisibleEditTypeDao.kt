@@ -5,8 +5,10 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable.Col
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable.Columns.EDIT_TYPE_PRESET_ID
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable.Columns.VISIBILITY
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable.NAME
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Stores which edit types are visible by user selection and which are not */
+@Mockable
 class VisibleEditTypeDao(private val db: Database) {
 
     fun put(presetId: Long, editTypeName: String, visible: Boolean) {

@@ -10,8 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_arrow_drop_down_24
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import org.jetbrains.compose.resources.painterResource
 

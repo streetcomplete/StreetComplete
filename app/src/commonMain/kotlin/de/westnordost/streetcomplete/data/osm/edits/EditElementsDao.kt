@@ -7,7 +7,9 @@ import de.westnordost.streetcomplete.data.osm.edits.EditElementsTable.Columns.EL
 import de.westnordost.streetcomplete.data.osm.edits.EditElementsTable.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
+import de.westnordost.streetcomplete.util.Mockable
 
+@Mockable
 class EditElementsDao(private val db: Database) {
 
     fun put(id: Long, elementKeys: List<ElementKey>) {

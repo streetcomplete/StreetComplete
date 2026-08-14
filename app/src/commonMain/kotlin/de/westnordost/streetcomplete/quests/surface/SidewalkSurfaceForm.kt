@@ -11,10 +11,7 @@ import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.osm.surface.icon
 import de.westnordost.streetcomplete.osm.surface.title
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.sidewalk_illustration_yes
-import de.westnordost.streetcomplete.resources.floating_question
-import de.westnordost.streetcomplete.resources.sidewalk_illustration_no
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side
@@ -31,6 +28,7 @@ import org.jetbrains.compose.resources.stringResource
     mapRotation: Float,
     mapTilt: Float,
     isLeftHandTraffic: Boolean,
+    countryCode: String?,
     modifier: Modifier = Modifier,
     lastPicked: List<Sides<Surface>> = emptyList(),
     hasSidewalkLeft: Boolean = true,
@@ -76,7 +74,7 @@ import org.jetbrains.compose.resources.stringResource
         SimpleItemSelectDialog(
             onDismissRequest = { showPickerForSide = null },
             columns = SimpleGridCells.Fixed(3),
-            items = Surface.selectableValuesForWays,
+            items = Surface.getSelectableValuesForWays(countryCode),
             onSelected = { surface ->
                 onValueChanged(when (side) {
                     Side.LEFT -> value.copy(left = surface)

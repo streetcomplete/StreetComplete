@@ -1,12 +1,7 @@
 package de.westnordost.streetcomplete.quests.oneway
 
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.oneway_no
-import de.westnordost.streetcomplete.resources.oneway_yes
-import de.westnordost.streetcomplete.resources.oneway_yes_reverse
-import de.westnordost.streetcomplete.resources.quest_oneway2_dir
-import de.westnordost.streetcomplete.resources.quest_oneway2_no_oneway
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

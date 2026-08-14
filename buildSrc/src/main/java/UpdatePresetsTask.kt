@@ -6,7 +6,7 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.io.StringWriter
-import java.net.URL
+import java.net.URI
 import java.util.Locale
 
 /** Update the presets metadata and its translations for use with the de.westnordost:osmfeatures
@@ -17,13 +17,19 @@ open class UpdatePresetsTask : DefaultTask() {
     @get:Input lateinit var version: String
 
     @TaskAction fun run() {
+        val targetDir = File(targetDir)
+
+        // create / clear target directory
+        targetDir.mkdirs()
+        targetDir.listFiles()?.forEach { it.delete() }
+
         /* eagerly also fetch different variants of a language (e.g. "en-NZ" also when just "en"
            is specified as well as "sr" if just "sr-Cyrl" is specified). Hence, we only look at the
            language code */
         val exportLanguages = languageCodes.map { Locale.of(Locale.forLanguageTag(it).language) }
 
         // copy and reduce the presets.json
-        val presetsFile = File("$targetDir/presets.json")
+        val presetsFile = File(targetDir, "presets.json")
         presetsFile.writeText(fetchAndReducePresets(version))
 
         // download each language
@@ -37,29 +43,31 @@ open class UpdatePresetsTask : DefaultTask() {
             println(javaLanguageTag)
 
             val presetsLocalization = fetchAndReducePresetsLocalizations(localizationMetadata)
-            File("$targetDir/$javaLanguageTag.json").writeText(presetsLocalization)
+            File(targetDir, "$javaLanguageTag.json").writeText(presetsLocalization)
         }
 
         // Norway has two languages, one of them is called Bokmål
-        // coded "no" in iD presets, but "nb" is also expected by Android.
+        // coded "no" in iD presets, but "nb" is expected by Android.
         // https://github.com/streetcomplete/StreetComplete/issues/3890
         if ("no" in languageCodes.orEmpty()) {
-            val bokmalFile = File("$targetDir/no.json")
-            bokmalFile.copyTo(File("$targetDir/nb.json"), overwrite = true)
+            File(targetDir, "no.json").copyTo(File(targetDir, "nb.json"), overwrite = true)
         }
     }
 
     /** Fetch iD presets */
     private fun fetchAndReducePresets(version: String): String {
         val presetsUrl = "https://raw.githubusercontent.com/openstreetmap/id-tagging-schema/$version/dist/presets.json"
-        val json = Parser.default().parse(URL(presetsUrl).openStream()) as JsonObject
+        val json = Parser.default().parse(URI(presetsUrl).toURL().openStream()) as JsonObject
         // remove unused presets
         json.entries.removeAll { (key, value) ->
+            val include = (value as JsonObject).obj("locationSet")?.array<String>("include")
+            val includesOnlyPlanet = include != null && include.size == 1 && (include.single() == "Planet" || include.single() == "001")
+
             // we don't need them templates
             key.startsWith("@templates")
             // remove presets specific to certain countries (these are very likely just tweaks
             // which fields are displayed etc), see https://github.com/ideditor/schema-builder/issues/94#issuecomment-2416796047
-            || (value as JsonObject).obj("locationSet")?.array<String>("include") != null
+            || include != null && !includesOnlyPlanet
             // remove "disused" presets. We deal with disused stuff ourselves, in a more detailed manner, i.e.
             // say what kind of thing it is that is disused
             || key.startsWith("disused/")
@@ -83,7 +91,7 @@ open class UpdatePresetsTask : DefaultTask() {
     private fun fetchLocalizationMetadata(): List<LocalizationMetadata> {
         // this file contains a list with meta information for each localization of iD
         val contentsUrl = "https://api.github.com/repos/openstreetmap/id-tagging-schema/contents/dist/translations"
-        val languagesJson = Parser.default().parse(URL(contentsUrl).openStream()) as JsonArray<JsonObject>
+        val languagesJson = Parser.default().parse(URI(contentsUrl).toURL().openStream()) as JsonArray<JsonObject>
 
         return languagesJson.mapNotNull {
             if (it["type"] != "file") return@mapNotNull null
@@ -99,7 +107,7 @@ open class UpdatePresetsTask : DefaultTask() {
     /** Download and pick the localization for only the preset features because the other things
      *  are not used (currently) */
     private fun fetchAndReducePresetsLocalizations(localization: LocalizationMetadata): String {
-        val json = Parser.default().parse(URL(localization.downloadUrl).openStream()) as JsonObject
+        val json = Parser.default().parse(URI(localization.downloadUrl).toURL().openStream()) as JsonObject
         for (value in json.values) {
             val language = value as JsonObject
             val presets = language.obj("presets")

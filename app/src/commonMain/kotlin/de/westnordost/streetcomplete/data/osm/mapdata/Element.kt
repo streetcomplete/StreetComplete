@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
+import de.westnordost.streetcomplete.ApplicationConstants.MAX_OSM_TAG_VALUE_LENGTH
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -10,6 +11,13 @@ sealed class Element {
     abstract val tags: Map<String, String>
     abstract val timestampEdited: Long
     abstract val type: ElementType
+
+    protected fun checkValidity() {
+        for ((key, value) in tags) {
+            require(key.length <= MAX_OSM_TAG_VALUE_LENGTH)
+            require(value.length <= MAX_OSM_TAG_VALUE_LENGTH)
+        }
+    }
 }
 
 @Serializable
@@ -23,6 +31,10 @@ data class Node(
 ) : Element() {
     @SerialName("elementType")
     override val type get() = ElementType.NODE
+
+    init {
+        checkValidity()
+    }
 }
 
 @Serializable
@@ -36,6 +48,10 @@ data class Way(
 ) : Element() {
     @SerialName("elementType")
     override val type = ElementType.WAY
+
+    init {
+        checkValidity()
+    }
 
     val isClosed get() = nodeIds.size >= 3 && nodeIds.first() == nodeIds.last()
 }
@@ -51,6 +67,10 @@ data class Relation(
 ) : Element() {
     @SerialName("elementType")
     override val type = ElementType.RELATION
+
+    init {
+        checkValidity()
+    }
 }
 
 @Serializable

@@ -1,0 +1,294 @@
+package de.westnordost.streetcomplete.data.osm.mapdata
+
+import de.westnordost.streetcomplete.data.osm.created_elements.CreatedElementsController
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryCreator
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryDao
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
+import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
+import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
+
+class MapDataControllerImpl constructor(
+    private val nodeDB: NodeDao,
+    private val wayDB: WayDao,
+    private val relationDB: RelationDao,
+    private val elementDB: ElementDao,
+    private val geometryDB: ElementGeometryDao,
+    private val elementGeometryCreator: ElementGeometryCreator,
+    private val createdElementsController: CreatedElementsController
+) : MapDataController {
+
+    private val listeners = Listeners<MapDataSource.Listener>()
+
+    private val cache = MapDataCache(
+        tileZoom = SPATIAL_CACHE_TILE_ZOOM,
+        maxTiles = SPATIAL_CACHE_TILES,
+        initialCapacity = SPATIAL_CACHE_INITIAL_CAPACITY,
+        fetchMapData = { bbox ->
+            val elements = elementDB.getAll(bbox)
+            val elementGeometries = geometryDB.getAllEntries(
+                elements.mapNotNull { if (it !is Node) it.key else null }
+            )
+            elements to elementGeometries
+        },
+        fetchNodes = { noteIds ->
+            nodeDB.getAll(noteIds)
+        },
+    )
+    private val lock = ReentrantLock()
+
+    override fun putAllForBBox(bbox: BoundingBox, mapData: MutableMapData) {
+        val time = nowAsEpochMilliseconds()
+
+        var oldElementKeys: Set<ElementKey> = setOf()
+        var geometryEntries: Collection<ElementGeometryEntry> = listOf()
+        lock.withLock {
+            // for incompletely downloaded relations, complete the map data (as far as possible) with
+            // local data, i.e. with local nodes and ways (still) in local storage
+            completeMapData(mapData)
+
+            geometryEntries = createGeometries(mapData, mapData)
+
+            // don't use cache here, because if not everything is already cached, db call will be faster
+            oldElementKeys = elementDB.getAllKeys(mapData.boundingBox!!).toMutableSet()
+            for (element in mapData) {
+                oldElementKeys.remove(element.key)
+            }
+
+            // for the cache, use bbox and not mapData.boundingBox because the latter is padded,
+            // see comment for QUEST_FILTER_PADDING
+            cache.update(oldElementKeys, mapData, geometryEntries, bbox)
+
+            elementDB.deleteAll(oldElementKeys)
+            geometryDB.deleteAll(oldElementKeys)
+            geometryDB.putAll(geometryEntries)
+            elementDB.putAll(mapData)
+        }
+
+        Log.i(TAG,
+            "Persisted ${geometryEntries.size} and deleted ${oldElementKeys.size} elements and geometries" +
+                " in ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s"
+        )
+
+        val mapDataWithGeometry = MutableMapDataWithGeometry(mapData, geometryEntries)
+        mapDataWithGeometry.boundingBox = mapData.boundingBox
+
+        onReplacedForBBox(bbox, mapDataWithGeometry)
+    }
+
+    override fun updateAll(mapDataUpdates: MapDataUpdates) {
+        val elements = mapDataUpdates.updated
+        // need mapData in order to create (updated) geometry
+        val mapData = MutableMapData(elements)
+
+        var deletedKeys: List<ElementKey> = listOf()
+        var geometryEntries: Collection<ElementGeometryEntry> = listOf()
+        lock.withLock {
+            completeMapData(mapData)
+
+            geometryEntries = createGeometries(elements, mapData)
+
+            val newElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.newElementId) }
+            val oldElementKeys = mapDataUpdates.idUpdates.map { ElementKey(it.elementType, it.oldElementId) }
+            deletedKeys = mapDataUpdates.deleted + oldElementKeys
+
+            cache.update(deletedKeys, elements, geometryEntries)
+
+            elementDB.deleteAll(deletedKeys)
+            geometryDB.deleteAll(deletedKeys)
+            geometryDB.putAll(geometryEntries)
+            elementDB.putAll(elements)
+            createdElementsController.putAll(newElementKeys)
+        }
+
+        val mapDataWithGeom = MutableMapDataWithGeometry(elements, geometryEntries)
+        mapDataWithGeom.boundingBox = mapData.boundingBox
+
+        onUpdated(updated = mapDataWithGeom, deleted = deletedKeys)
+    }
+
+    /** Create ElementGeometryEntries for [elements] using [mapData] to supply the necessary geometry */
+    private fun createGeometries(elements: Iterable<Element>, mapData: MapData): Collection<ElementGeometryEntry> =
+        elements.mapNotNull { element ->
+            val geometry = elementGeometryCreator.create(element, mapData, true)
+            geometry?.let { ElementGeometryEntry(element.type, element.id, geometry) }
+        }
+
+    private fun completeMapData(mapData: MutableMapData) {
+        val missingNodeIds = mutableListOf<Long>()
+        val missingWayIds = mutableListOf<Long>()
+        for (relation in mapData.relations) {
+            for (member in relation.members) {
+                if (member.type == ElementType.NODE && mapData.getNode(member.ref) == null) {
+                    missingNodeIds.add(member.ref)
+                }
+                if (member.type == ElementType.WAY && mapData.getWay(member.ref) == null) {
+                    missingWayIds.add(member.ref)
+                }
+                /* deliberately not recursively looking for relations of relations
+                   because that is also not how the OSM API works */
+            }
+        }
+
+        val ways = getWays(missingWayIds)
+        for (way in mapData.ways + ways) {
+            for (nodeId in way.nodeIds) {
+                if (mapData.getNode(nodeId) == null) {
+                    missingNodeIds.add(nodeId)
+                }
+            }
+        }
+        val nodes = getNodes(missingNodeIds)
+
+        mapData.addAll(nodes)
+        mapData.addAll(ways)
+    }
+
+    override fun getGeometry(type: ElementType, id: Long): ElementGeometry? =
+        cache.getGeometry(type, id, geometryDB::get)
+
+    override fun getGeometries(keys: Collection<ElementKey>): List<ElementGeometryEntry> =
+        cache.getGeometries(keys, geometryDB::getAllEntries)
+
+    override fun getMapDataWithGeometry(bbox: BoundingBox): MutableMapDataWithGeometry =
+        cache.getMapDataWithGeometry(bbox)
+
+    // this is used after downloading one tile with auto-download, so we should always have it cached
+    override fun getElementCounts(bbox: BoundingBox): MapDataSource.ElementCounts {
+        val data = getMapDataWithGeometry(bbox)
+        return MapDataSource.ElementCounts(
+            data.count { it is Node },
+            data.count { it is Way },
+            data.count { it is Relation }
+        )
+    }
+
+    override fun getNode(id: Long): Node? =
+        cache.getElement(ElementType.NODE, id, elementDB::get) as? Node
+
+    override fun getWay(id: Long): Way? =
+        cache.getElement(ElementType.WAY, id, elementDB::get) as? Way
+
+    override fun getRelation(id: Long): Relation? =
+        cache.getElement(ElementType.RELATION, id, elementDB::get) as? Relation
+
+    override fun getAll(elementKeys: Collection<ElementKey>): List<Element> =
+        cache.getElements(elementKeys, elementDB::getAll)
+
+    override fun getNodes(ids: Collection<Long>): List<Node> =
+        cache.getNodes(ids, nodeDB::getAll)
+
+    override fun getWays(ids: Collection<Long>): List<Way> =
+        cache.getWays(ids, wayDB::getAll)
+
+    override fun getRelations(ids: Collection<Long>): List<Relation> =
+        cache.getRelations(ids, relationDB::getAll)
+
+    override fun getWaysForNode(id: Long): List<Way> =
+        cache.getWaysForNode(id, wayDB::getAllForNode)
+
+    override fun getRelationsForNode(id: Long): List<Relation> =
+        cache.getRelationsForNode(id, relationDB::getAllForNode)
+
+    override fun getRelationsForWay(id: Long): List<Relation> =
+        cache.getRelationsForWay(id, relationDB::getAllForWay)
+
+    override fun getRelationsForRelation(id: Long): List<Relation> =
+        cache.getRelationsForRelation(id, relationDB::getAllForRelation)
+
+    override fun getWayComplete(id: Long): MapData? {
+        val way = getWay(id) ?: return null
+        val nodeIds = way.nodeIds.toSet()
+        val nodes = getNodes(nodeIds)
+        if (nodes.size < nodeIds.size) return null
+        return MutableMapData(nodes + way)
+    }
+
+    override fun getRelationComplete(id: Long): MapData? {
+        val relation = getRelation(id) ?: return null
+        val elementKeys = relation.members.map { it.key }.toSet()
+        val elements = getAll(elementKeys)
+        if (elements.size < elementKeys.size) return null
+        return MutableMapData(elements + relation)
+    }
+
+    override fun deleteOlderThan(timestamp: Long, limit: Int?): Int {
+        var elements: List<ElementKey> = listOf()
+        var elementCount = 0
+        var geometryCount = 0
+        lock.withLock {
+            elements = elementDB.getIdsOlderThan(timestamp, limit)
+            if (elements.isEmpty()) return 0
+
+            cache.update(deletedKeys = elements)
+            elementCount = elementDB.deleteAll(elements)
+            geometryCount = geometryDB.deleteAll(elements)
+            createdElementsController.deleteAll(elements)
+        }
+        Log.i(TAG, "Deleted $elementCount old elements and $geometryCount geometries")
+
+        onUpdated(deleted = elements)
+
+        return elementCount
+    }
+
+    override fun clear() {
+        lock.withLock {
+            clearCache()
+            elementDB.clear()
+            geometryDB.clear()
+            createdElementsController.clear()
+        }
+        onCleared()
+    }
+
+    override fun clearCache() = lock.withLock { cache.clear() }
+
+    override fun trimCache() = lock.withLock { cache.trim(SPATIAL_CACHE_TILES / 3) }
+
+    override fun addListener(listener: MapDataSource.Listener) {
+        listeners.add(listener)
+    }
+    override fun removeListener(listener: MapDataSource.Listener) {
+        listeners.remove(listener)
+    }
+
+    private fun onUpdated(
+        updated: MutableMapDataWithGeometry = MutableMapDataWithGeometry(),
+        deleted: Collection<ElementKey> = emptyList()
+    ) {
+        if (updated.isEmpty() && deleted.isEmpty()) return
+
+        listeners.forEach { it.onUpdated(updated, deleted) }
+    }
+
+    private fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MutableMapDataWithGeometry) {
+        listeners.forEach { it.onReplacedForBBox(bbox, mapDataWithGeometry) }
+    }
+
+    private fun onCleared() {
+        listeners.forEach { it.onCleared() }
+    }
+
+    companion object {
+        private const val TAG = "MapDataController"
+
+        // StyleableOverlayManager loads z16 tiles, but we want smaller tiles. Small tiles make db
+        // fetches for typical getMapDataWithGeometry calls noticeably faster than z16, as they
+        // usually only require a small area.
+        private const val SPATIAL_CACHE_TILE_ZOOM = 17
+
+        // Three times the maximum number of tiles that can be loaded at once in
+        // StyleableOverlayManager (translated from z16 tiles). We don't want to drop tiles from
+        // cache already when scrolling the map just a bit, especially considering automatic trim
+        // may temporarily reduce cache size to 2/3 of maximum.
+        private const val SPATIAL_CACHE_TILES = 192
+
+        // In a city this is roughly the number of nodes in ~20-40 z16 tiles
+        private const val SPATIAL_CACHE_INITIAL_CAPACITY = 100000
+    }
+}

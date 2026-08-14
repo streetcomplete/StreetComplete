@@ -5,9 +5,11 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.Columns.NOTE_ID
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.Columns.TIMESTAMP
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenTable.NAME
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 /** Persists which note ids should be hidden (because the user selected so) in the note quest */
+@Mockable
 class NoteQuestsHiddenDao(private val db: Database) {
 
     fun add(noteId: Long) {

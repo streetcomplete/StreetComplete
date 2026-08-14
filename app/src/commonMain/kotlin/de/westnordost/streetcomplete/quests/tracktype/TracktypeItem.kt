@@ -1,17 +1,7 @@
 package de.westnordost.streetcomplete.quests.tracktype
 
 import de.westnordost.streetcomplete.quests.tracktype.Tracktype.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_tracktype_grade1
-import de.westnordost.streetcomplete.resources.quest_tracktype_grade2
-import de.westnordost.streetcomplete.resources.quest_tracktype_grade3
-import de.westnordost.streetcomplete.resources.quest_tracktype_grade4
-import de.westnordost.streetcomplete.resources.quest_tracktype_grade5
-import de.westnordost.streetcomplete.resources.tracktype_grade1
-import de.westnordost.streetcomplete.resources.tracktype_grade2
-import de.westnordost.streetcomplete.resources.tracktype_grade3
-import de.westnordost.streetcomplete.resources.tracktype_grade4
-import de.westnordost.streetcomplete.resources.tracktype_grade5
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

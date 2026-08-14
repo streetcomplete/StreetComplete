@@ -73,11 +73,10 @@ inline fun <T, R : Comparable<R>> Iterable<T>.indexOfMaxBy(selector: (T) -> R): 
     return indexOfMaxElem
 }
 
-// TODO clean: for tests, rather use assertEquals with sets for better errors on failure
 fun <T> Collection<T>.containsExactlyInAnyOrder(other: Collection<T>): Boolean {
     if (size != other.size) return false
     if (this === other) return true
     return toCountMap() == other.toCountMap()
 }
 
-private fun <T>  Collection<T>.toCountMap() = groupingBy { it }.eachCount()
+private fun <T> Collection<T>.toCountMap() = groupingBy { it }.eachCount()

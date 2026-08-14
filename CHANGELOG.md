@@ -1,5 +1,95 @@
 # Changelog
 
+## v63.4
+
+Fix in certain languages (such as French), presets wouldn't load, which made the app unusable. Regression from v63.3 (#6964)
+
+## v63.3
+
+### Fixes
+
+- _Fix upload of photos in notes stopped to work on 27th of July_ (#6959)
+- Places overlay: Handle name field correctly for places that _usually_ have a fixed name but not necessarily (#6907)
+- Fix some elements in the settings screen didn't respect window insets correctly
+
+### Quest improvements
+
+- Place & road name: Force resurvey if name was explicitly marked as to be fixed (#6932), by @paulklie
+- Summit register: Ask in Norway, too (#6902), by @paulklie
+- Sidewalks: Prefer the same tagging schema as iD (#6944)
+- Surfaces: Add laterite as an option in some countries (#6942), by @thirumani-vihaan
+- Ask a few quests for more places (#6899, #6901, #6900, #6898, #6908, #6953, #6952), by @paulklie
+- Other small improvements (#6903, #6909, #6919, #6948, #6938 …), thanks @paulklie, @mnalis
+
+### General
+
+- Make app name more visible in about screen (#6951), by @geritwagner
+
+## v63.2
+
+### Fixes
+
+- Fix map display on older devices: Some old devices have issues with the new rendering backend introduced in v63.1, so I reverted back to the old backend for v63.x at least.
+- Board type: Fixed it was possible to answer "none" (#6887), by @paulklie
+- Fix selected language would reset to device language on device rotation (#5942)
+- Notes: Fix enter key would exit the form rather than add a return
+- Fix "move node" form had black text on black background in dark mode
+
+### Quest improvements
+
+- Bike paths, sidewalks: Re-enable quest as the overlays are not really that much more efficient that it warrants the quests to be disabled
+- Surface: Don't ask for winter roads (#6835), by @paulklie
+- Opening hours: Don't ask for street vendors (#6848), by @matkoniecz
+- Baby changing tables: Can now answer that there is actually no toilet (#6837), by @paulklie
+- Ask various quests for ranger stations, water points, bird hides (#6888, #6857, #6836), by @paulklie
+- Lanes: Allow answering that there is only _one_ marked lane (#6879)
+- Crossing island: Don't ask when the traffic island has already been mapped in detail (#6874)
+- Check existence: Don't ask for objects with heritage status (#6776)
+- Power line attachment to pole: Disable this quest, it is too complex (in edge cases) (#6547)
+- All quests with input of decimals: Allow input of decimal separators in any locale (#6864)
+- Tactile paving: Enabled quests in Iceland (#6897)
+- Bicycle charging station: Make answer "Only" more prominent (#6862)
+- Board type: Add "Tourism (multiple topics)" as answer option (#6892, #6868), by @mnalis
+- Max height: Don't ask for private roads/paths (#6860, #6894)
+- Other small improvements (#6831, …)
+
+### Overlay improvements
+
+- Add more things and more places (#6833, #6839, #6834) by @paulklie
+
+## v63.1
+
+### Overlay improvements
+
+- Places & things overlay: Redid and improved UI, added quick access to previous selections (#6773, #5622)
+- Places overlay: (All) education-related places are now selectable (#6782), by @mcliquid
+
+### Quest improvements
+
+- Max speed: Redid UI. The quest is now activated also in the United States (#6758, #813)
+- Redid UI for quest title speech bubble with smoother ℹ️ area (#6784)
+- Redid UI for forms creating a note, especially attaching images (#6804)
+- Power line attachment: Don't ask when several power lines go through one power pole or tower (#6547)
+- Other minor improvements (#6770, #6810, #6798, #6771…), thanks @mnalis
+
+### General Improvements
+
+- More effective usage of available screen space in settings & about screen (#6787), thanks @deevroman
+- Move logs filter selection in logs screen into own screen (#6772)
+
+### New Translations
+
+- Vietnamese by tsklxiv, Minh Nguyễn and more
+- Irish by Brian Affenstark
+- Welsh by dreigiau, fin-w
+- Cornish by Flynn
+
+### Fixes
+
+- Bike paths overlay: OK button didn't always show (#6644) (wasn't fixed in v62.1 after all)
+- Fix layout for "New OSM message" dialog (#6791)
+- Fix crash caused by automatic conflict resolution on upload under certain circumstances (#6825, #6779, #6419)
+
 ## v63.0
 
 ### General Improvements
@@ -178,8 +268,8 @@
 
 ### Android below 7.1 no longer supported (#6210)
 
-In reality, support for Android versions below 7.1 has already been just on-paper for a while now, 
-as more and more issues with old Androids have been popping up lately that cannot be fixed on our 
+In reality, support for Android versions below 7.1 has already been just on-paper for a while now,
+as more and more issues with old Androids have been popping up lately that cannot be fixed on our
 side. Luckily, it seems that >99.6% of app users already use Android 7.1 and above. (See #6210)
 
 ### Main screen improvements (#6213)

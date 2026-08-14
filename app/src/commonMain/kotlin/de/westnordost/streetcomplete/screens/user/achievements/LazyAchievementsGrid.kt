@@ -21,7 +21,7 @@ fun LazyAchievementsGrid(
     achievements: List<Pair<Achievement, Int>>,
     onClickAchievement: (achievement: Achievement, level: Int) -> Unit,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp)
+    contentPadding: PaddingValues = PaddingValues.Zero
 ) {
     LazyVerticalGrid(
         columns = GridCells.Adaptive(minSize = 144.dp),

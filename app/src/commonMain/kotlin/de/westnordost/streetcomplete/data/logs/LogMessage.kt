@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.logs
 
-import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Instant
 
 data class LogMessage(
     val level: LogLevel,

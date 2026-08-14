@@ -10,7 +10,7 @@ import java.io.FileInputStream
 import java.io.FileWriter
 import java.io.StringWriter
 import java.net.HttpURLConnection
-import java.net.URL
+import java.net.URI
 import java.net.URLEncoder
 
 /** Counts the occurrence of values for a given key for a certain tag combination by country and
@@ -29,7 +29,7 @@ open class QLeverCountValueByCountryTask : DefaultTask() {
 
     private val firstPointRegex = Regex("[A-Za-z(]*([-+\\d.]*) ([-+\\d.]*)")
     private val boundaries = CountryBoundaries.deserializeFrom(
-        FileInputStream("${project.projectDir}/app/src/androidMain/assets/boundaries.ser").asSource().buffered()
+        FileInputStream("${project.projectDir}/app/src/commonMain/composeResources/files/boundaries.ser").asSource().buffered()
     )
 
     @TaskAction fun run() {
@@ -95,7 +95,7 @@ open class QLeverCountValueByCountryTask : DefaultTask() {
     }
 
     private fun queryQLeverTsv(query: String): List<String> {
-        val url = URL("https://qlever.dev/api/osm-planet?query=${URLEncoder.encode(query, "UTF-8")}&action=tsv_export")
+        val url = URI("https://qlever.dev/api/osm-planet?query=${URLEncoder.encode(query, "UTF-8")}&action=tsv_export").toURL()
         val connection = url.openConnection() as HttpURLConnection
         try {
             connection.setRequestProperty("User-Agent", "StreetComplete")

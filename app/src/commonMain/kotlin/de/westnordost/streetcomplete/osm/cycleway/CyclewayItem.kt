@@ -4,46 +4,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.osm.oneway.Direction.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.cycleway_bus_lane
-import de.westnordost.streetcomplete.resources.cycleway_bus_lane_l
-import de.westnordost.streetcomplete.resources.cycleway_none
-import de.westnordost.streetcomplete.resources.cycleway_none_in_selection
-import de.westnordost.streetcomplete.resources.cycleway_none_no_oneway
-import de.westnordost.streetcomplete.resources.cycleway_none_no_oneway_l
-import de.westnordost.streetcomplete.resources.cycleway_separate
-import de.westnordost.streetcomplete.resources.cycleway_shoulder
-import de.westnordost.streetcomplete.resources.cycleway_sidewalk
-import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit
-import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit_dual
-import de.westnordost.streetcomplete.resources.cycleway_sidewalk_explicit_l
-import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_dual_in_selection
-import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_in_selection
-import de.westnordost.streetcomplete.resources.cycleway_sidewalk_ok_in_selection_l
-import de.westnordost.streetcomplete.resources.cycleway_sign_sidewalk_ok
-import de.westnordost.streetcomplete.resources.cycleway_sign_sidewalk_ok_dual
-import de.westnordost.streetcomplete.resources.cycleway_track
-import de.westnordost.streetcomplete.resources.cycleway_track_dual
-import de.westnordost.streetcomplete.resources.cycleway_track_dual_l
-import de.westnordost.streetcomplete.resources.cycleway_track_l
-import de.westnordost.streetcomplete.resources.floating_no
-import de.westnordost.streetcomplete.resources.floating_separate
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_advisory_lane
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_bus_lane
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_lane
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_lane_dual
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_none
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_none_and_oneway
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_none_but_no_oneway
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_separate
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_shared
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_shoulder
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_sidewalk2
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_sidewalk_dual2
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_sidewalk_ok
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_sidewalk_ok_dual
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_track
-import de.westnordost.streetcomplete.resources.quest_cycleway_value_track_dual
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.ktx.advisoryCycleLaneDrawable
 import de.westnordost.streetcomplete.util.ktx.advisoryCycleLaneMirroredDrawable
 import de.westnordost.streetcomplete.util.ktx.dualCycleLaneDrawable
@@ -61,7 +22,6 @@ fun CyclewayAndDirection.getDialogIcon(
     roadDirection: Direction,
 ): DrawableResource? =
     when (cycleway) {
-        NONE ->     Res.drawable.cycleway_none_in_selection
         SEPARATE -> Res.drawable.cycleway_separate
         SIDEWALK_OK ->
             if (direction == BOTH) {
@@ -84,7 +44,7 @@ fun CyclewayAndDirection.getFloatingIcon(
     when (cycleway) {
         NONE ->
             if (direction.isReverseOf(roadDirection)) noEntrySignDrawable
-            else Res.drawable.floating_no
+            else null
         SEPARATE -> Res.drawable.floating_separate
         SIDEWALK_OK ->
             if (direction == BOTH) Res.drawable.cycleway_sign_sidewalk_ok_dual

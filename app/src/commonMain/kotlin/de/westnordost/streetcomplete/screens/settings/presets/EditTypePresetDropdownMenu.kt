@@ -10,15 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_content_copy_24
-import de.westnordost.streetcomplete.resources.ic_delete_24
-import de.westnordost.streetcomplete.resources.ic_edit_24
-import de.westnordost.streetcomplete.resources.ic_share_24
-import de.westnordost.streetcomplete.resources.quest_presets_delete
-import de.westnordost.streetcomplete.resources.quest_presets_duplicate
-import de.westnordost.streetcomplete.resources.quest_presets_rename
-import de.westnordost.streetcomplete.resources.quest_presets_share
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource

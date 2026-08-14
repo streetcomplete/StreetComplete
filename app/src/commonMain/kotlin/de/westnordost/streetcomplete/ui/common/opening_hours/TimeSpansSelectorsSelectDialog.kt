@@ -33,7 +33,6 @@ import de.westnordost.osm_opening_hours.model.StartingAtTime
 import de.westnordost.osm_opening_hours.model.TimeSpan
 import de.westnordost.osm_opening_hours.model.TimeSpansSelector
 import de.westnordost.osm_opening_hours.model.VariableTime
-import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.TimePicker
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
@@ -119,7 +118,7 @@ fun TimeSpansSelectorSelectDialog(
                 }
             }
         },
-        buttons = {
+        buttonRow = {
             TextButton(onClick = onDismissRequest) {
                 Text(stringResource(Res.string.cancel))
             }

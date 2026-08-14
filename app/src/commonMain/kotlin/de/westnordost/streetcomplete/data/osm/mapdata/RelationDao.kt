@@ -12,11 +12,13 @@ import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.TYP
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.Columns.VERSION
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME
 import de.westnordost.streetcomplete.data.osm.mapdata.RelationTables.NAME_MEMBERS
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 /** Stores OSM relations */
+@Mockable
 class RelationDao(private val db: Database) {
     fun put(relation: Relation) {
         putAll(listOf(relation))

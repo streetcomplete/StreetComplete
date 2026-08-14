@@ -21,10 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.logs.LogLevel
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ic_check_circle_24
-import de.westnordost.streetcomplete.resources.ic_circle_outline_24
-import de.westnordost.streetcomplete.resources.label_log_level
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.logDebug
 import de.westnordost.streetcomplete.ui.theme.logError

@@ -1,14 +1,7 @@
 package de.westnordost.streetcomplete.quests.segregated
 
 import de.westnordost.streetcomplete.quests.segregated.CyclewaySegregation.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_segregated_mixed
-import de.westnordost.streetcomplete.resources.quest_segregated_separated
-import de.westnordost.streetcomplete.resources.separate_cycleway_not_segregated
-import de.westnordost.streetcomplete.resources.separate_cycleway_segregated
-import de.westnordost.streetcomplete.resources.separate_cycleway_segregated_l
-import de.westnordost.streetcomplete.resources.separate_cycleway_with_sidewalk
-import de.westnordost.streetcomplete.resources.separate_cycleway_with_sidewalk_l
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

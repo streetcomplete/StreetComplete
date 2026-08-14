@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.VEN
 import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.ADDRESS
 import de.westnordost.streetcomplete.data.osmcal.CalendarEventsTable.Columns.READ
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 class CalendarEventsDao(private val db: Database) {
 

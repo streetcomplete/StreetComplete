@@ -1,0 +1,24 @@
+# Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
+atmOperators: [Bankomat AB, Bankomat, Swedbank, Kontanten, ICA Banken, Nokas CMS AB, Nordea, Handelsbanken, Kontanten (Nokas CMS AB), SEB, Euronet, Forex, Loomis Sverige AB, Uttag, Nokas, Forex Bank, Kontanten AB, bankomat, Sparbanken Nord, Länsförsäkringar, Ica Banken, Ica, ICA-banken, ICA, Danske Bank]
+centerLineStyle: white
+chargingStationOperators: [Mer, Tesla, E.ON, Vattenfall InCharge, Göteborgs Stads Parkerings AB, Recharge, Fortum Charge & Drive, Ionity, Circle K, Aimo Park, Virta, Sandviken Energi AB, Mälarenergi, InCharge, ChargeNode, Eways, Jönköping Energi, Eviny, Voltiva, Oskarshamn Energi AB, Allego, nextgreen, Jämtkraft, Uppsala parkerings AB, CaCharge, OKQ8, Lidl Sverige KB, Fyrfasen Energi AB, Akademiska Hus, Umeå Energi, Höganäs Energi AB, Holmgrens bil AB, Branäsgruppen AB, Bee, Vattenfall, Mälarenergi AB, MER, Kungsbacka kommun, E.ON Drive, Tranås Energi AB, Smedjebackens Kommun, Skistar, Kumbro Utveckling AB, Karlstads El- & Stadsnät AB, ICA, Gävle Energi AB, ChargePoint, Affärsverken, Östersunds kommun, Västtrafik, Trelleborgs Energiförsäljning AB, Skellefteå Kraft AB, STUBO AB, Linde Energi AB, Karlstads El- och Stadsnät AB, IKEA, Halmstads kommun, Gävle Energi, Falu Energi och Vatten AB, Eskilstuna Energi och Miljö, Borås kommuns Parkerings AB, Varbergs Bostad AB, Vallebygdens Elhandel AB, Skellefteå Kraft, Scandic Hotels AB, Sandvik, Njudung Energi Sävsjö AB, Milepost, Härnösand Energi och Miljö AB, Elbolaget A&T AB, Dalakraft AB, Bauhaus, Ytterbygg AB, Värnamo kommun, Uddevalla Energi, Sparbanken Eken, P-air AB, Nässjö Affärsverk, Mönsterås kommun, Luleå Energi AB, LKPAB, Kramfors Kommun, Gislaved Energi, Coop, C4 Energi, C4 Elnät AB, Bärkehus AB, Bilbolaget Nord, BRF Norra Guldheden, Waybler, Vännäs kommun, Volvo Cars, Vasakronan, Perstorps kommun, Parkering Malmö, Luleå Energi, Lidl, Lessebo kommun, Karlshamn Energi AB, Jönköpings Länstrafik, InCharge AB, Höganäs Energi, Härnösand Energi och miljö AB, Haparanda Kommun, Halmstad Energi och Miljö, Hallsbergs kommun, HEMAB, Falu Energi & Vatten AB, Coop Norrbotten, Clever, BRF Bonifacius, Apcoa, Akademiska Hus AB, kWatt AB, eleqtroPoint, Wihlborgs, Västerås Stad, Västervik Miljö och Energi AB, Vikon Consulting AB, Umeå Energi AB, Trosa kommun, Toveks Bil, Söderköpings kommun, Skånetrafiken, Skobes, Ronneby kommun, Qwello, Piteå Kommun, Persson Invest, Orust Kretsloppsakademi, Nora kommun, Landstinget Sörmland, Karlskronahem, Fastighets AB Briggen i Öresund, Fastighets AB Briggen i Helsingborg, EpSpot, Bilmetro AB, Bee Charging Solutions, Aneby kommun, Aneby Pastorat, ÖKAB - ÅF & Statistik, e-on, Växjö kommun, Varbergs Bostads AB, Uppsala Parkerings AB, Trollhättan Energi, Toveks Lastbilar AB, Timrå Kommun, Sölvesborgs kommun, Säfflebostäder, Svalövs Energi AB, Stenungsunds kommun, Skövde kommun, Sankt Kors Fastighets AB, Samfast AB, Sala Heby Energi AB, SBB, Region Västerbotten, Pair, Orvelin Shoppingcenter AB, Nybro Energi, Nacka Energi, NP3 Fastigheter, Mörbylånga kommun, Möller Bil Sverige AB, Markaryds kommun, Ljungby kommun, Lerum Energi AB, Leksands kommun, Laholms kommun, Kristinehamn Energi, Kraftringen Energi AB, Kraftringen, Kalmar Energi, Högbo Bruks AB, Härryda Energi, Habo kommun, Göteborg Energi, Gnosjö kommun, Fristadsbostäder AB, Fortum, Fastighets AB L E Lundberg, Falkenberg Energi AB, Elbilsbilisten, Easypark, Borlänge Kommun, Boliden Minerals AB, Boliden Mineral AB, Askersundsbostäder AB, Aimo]
+chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo, type1, type1_combo]
+clothesContainerOperators: [Göteborgs Stad, Human Bridge, Myrorna, Humanbridge, HumanBridge, FTI, Svensk Textilåtervinning AB, björk & frihet, Emmaus]
+defaultSpeedLimitHasUrbanOrRural: true
+edgeLineStyle: short white dashes
+hasAdvisorySpeedLimitSign: true
+hasBicycleBoulevard: true
+hasLivingStreet: true
+hasSlowZone: true
+livingStreetSignStyle: vienna
+mobileCountryCode: 240
+noEntrySignStyle: yellow
+noParkingLineStyle: dashed yellow
+noStoppingLineStyle: yellow
+officialLanguages: [sv]
+orchardProduces: [strawberry, apple, raspberry, pear, grape, tomato, plum, blueberry, cherry]
+parcelLockerBrand: [PostNord, Instabox, Budbee, Bring, Postnord, iBoxen, PostNord Paketbox, Instabee, Boxen, Paketbox, NearbyStore, DHL]
+popularReligions: [christian, muslim, jewish, animist, buddhist, hindu, sikh]
+popularSports: [soccer, tennis, basketball, golf, boules, equestrian, ice_hockey]
+postboxesHaveCollectionTimes: true
+regularShoppingDays: 5

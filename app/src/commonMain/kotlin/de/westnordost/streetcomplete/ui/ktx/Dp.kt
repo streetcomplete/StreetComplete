@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete.ui.ktx
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.TextUnit
 
 @Composable
@@ -40,4 +42,10 @@ fun Dp.dpToSp() = with(LocalDensity.current) {
 @ReadOnlyComposable
 fun Dp.toPx() = with(LocalDensity.current) {
     this@toPx.toPx()
+}
+
+@Composable
+@ReadOnlyComposable
+fun Offset.toDpOffset() = with(LocalDensity.current) {
+    DpOffset(x.toDp(), y.toDp())
 }

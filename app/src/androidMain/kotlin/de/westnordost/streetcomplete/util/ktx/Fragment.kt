@@ -9,9 +9,6 @@ import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
 
-val Fragment.childFragmentManagerOrNull: FragmentManager? get() =
-    if (host != null) childFragmentManager else null
-
 val Fragment.viewLifecycleScope get() = viewLifecycleOwner.lifecycleScope
 
 fun <T> Fragment.observe(flow: SharedFlow<T>, collector: FlowCollector<T>) {

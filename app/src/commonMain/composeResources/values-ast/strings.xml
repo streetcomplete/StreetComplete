@@ -109,7 +109,6 @@ Sicasí, primero de facer cualquier cambéu l'aplicación comprueba si la versi�
     <string name="quest_surface_value_sett">Adoquín de piedra natural</string>
     <string name="quest_surface_value_wood">Madera</string>
     <string name="quest_sidewalk_title">¿La cai tien cera?</string>
-    <string name="quest_maxspeed_answer_noSign_info_urbanOrRural">¿Ónde ta la cai?</string>
     <string name="quest_address_title">¿Cuál ye'l númberu de puerta del edificiu?</string>
     <string name="store_listing_short_description">Aplicación de mapéu pa OpenStreetMap</string>
     <string name="store_listing_full_description">¡Ayuda a ameyorar OpenStreetMap con StreetComplete!
@@ -176,9 +175,6 @@ La información añadida inclúise directo n'OpenStreetMap col to nome ensin pre
     <string name="quest_maxspeed_answer_noSign_confirmation">¿Mirasti nos dos estremos de la cai?
 Si nun hai señales na parte seleccionada va aplicase la velocidá máxima predeterminada.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Mirélo, nun hai señal</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOrRural_description">Les víes urbanes tienen una velocidá máxima distinta a la de les rurales.</string>
-    <string name="quest_maxspeed_answer_noSign_urbanOk">Urbana</string>
-    <string name="quest_maxspeed_answer_noSign_ruralOk">Rural</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Si hai una señal como ésta na intersexción cola cai principal nun vas alcontrar otres señales porque la velocidá máxima ye la mesma en tola zona.</string>
     <string name="quest_sport_softball">Sóftbol</string>
     <string name="quest_sport_racquet">Ráquetbol</string>
@@ -212,7 +208,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="credits_contributors_title">Collaboraciones col códigu</string>
     <string name="credits_author_title">Autor y encargáu principal</string>
     <string name="quest_maxspeed_answer_living_street">Ye una cai peonil</string>
-    <string name="quest_maxspeed_answer_living_street_confirmation_title">¿Hai una señal como ésta?</string>
     <string name="quest_orchard_produce_title">¿Qué se planta equí?</string>
     <string name="produce_grapes">Uves</string>
     <string name="produce_agaves">Agaves</string>
@@ -284,7 +279,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_buildingLevels_levelsLabel2">pisos (ensin contar el teyáu pero sí los baxos)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">el númberu de pisos nun ye uniforme</string>
     <string name="quest_buildingLevels_answer_description">Nesi casu conseña namás el pisu de la parte más alta del edificiu.</string>
-    <string name="quest_maxspeed_answer_noSign_singleOrDualCarriageway_description">¿Sabes si les calzaes tán separtaes ente sí? (exemplu: por una barrera) Nesi casu, la velocidá máxima puede ser diferente.</string>
     <string name="about_category_feedback">Suxerencies</string>
     <string name="quest_leave_new_note_photo">Axuntar foto</string>
     <string name="quest_leave_new_note_photo_delete_title">¿Quies borrar esta imaxe?</string>
@@ -448,7 +442,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_openingHours_no_sign">Nun hai lletreru coles hores d'apertura</string>
     <string name="quest_buildingType_sports_centre">Centru deportivu</string>
     <string name="quest_buildingType_toilets">Llavabos</string>
-    <string name="quest_maxspeed_sign_question">¿Qué establez la velocidá máxima?</string>
     <string name="quest_segregated_title">¿Como tán dispuestos equí'l camín y el carril bici?</string>
     <string name="dialog_tutorial_upload">Pa xubir los cambeos de manera manual, usa esti botón na barra de ferramientes.</string>
     <string name="quest_segregated_separated">Separtáu ún del otru</string>
@@ -486,7 +479,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="theme_dark">Escuro</string>
     <string name="theme_system_default">Colores</string>
     <string name="action_open_location">Abrir llugar n'otra app</string>
-    <string name="map_application_missing">Nun hai otra aplicación pa mapes instalada</string>
     <string name="label_housenumber">númberu de casa</string>
     <string name="quest_busStopShelter_covered">Tola parada ta sotechada</string>
     <string name="quest_ferry_pedestrian_title">¿Tresporta persones?</string>
@@ -682,7 +674,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="at_housenumber">númberu de la casa %1$s</string>
     <string name="quest_openingHours_add_off_days">Añader díes llibres</string>
     <string name="quest_openingHours_off_day">Día llibre</string>
-    <string name="quest_openingHours_unspecified_range">Ensin especificar</string>
     <string name="quest_cycleway_resurvey_title">¿El carril bici sigue bien marcáu?</string>
     <string name="pref_title_resurvey_intervals">Repreguntar pa tener los datos al día</string>
     <string name="resurvey_intervals_less_often">Repreguntar menos veces</string>
@@ -756,8 +747,6 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_shop_gone_title">¿Qué hai equí agora?</string>
     <string name="quest_shop_gone_vacant_answer">Ta vacío</string>
     <string name="quest_shop_gone_replaced_answer">Ye un/una...</string>
-    <string name="quest_shop_gone_replaced_answer_hint">Pon el tipu equí</string>
-    <string name="quest_shop_vacant_type_title">Esti llocal tuvo vacíu. ¿Qué hai equí agora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Esti tipu de xera ta desactivada de serie porque nun ye útil en dalgunes rexones y seguramente tengas d'entrar nel sitiu p'alcontrar la información y responder bien a les preguntes.</string>
     <string name="quest_dietType_explanation_kosher">Los productos kosher han preparase d'una manera especial, hai axencias que los certifiquen denomaes "kashrut".</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nun hai carril bici nengún equí.</string>

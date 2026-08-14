@@ -120,7 +120,7 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
                 StringMapEntryAdd("cycleway:both:segregated", "no"),
-                StringMapEntryAdd("sidewalk", "both"),
+                StringMapEntryAdd("sidewalk:both", "yes"),
             ),
             cycleway(SIDEWALK_EXPLICIT, SIDEWALK_EXPLICIT).appliedTo(mapOf())
         )
@@ -139,7 +139,8 @@ class CyclewayCreatorKtTest {
             setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
                 StringMapEntryAdd("cycleway:left:segregated", "no"),
-                StringMapEntryModify("sidewalk", "right", "both"),
+                StringMapEntryDelete("sidewalk", "right"),
+                StringMapEntryAdd("sidewalk:both", "yes"),
             ),
             cycleway(SIDEWALK_EXPLICIT, null).appliedTo(mapOf("sidewalk" to "right"))
         )
@@ -321,7 +322,7 @@ class CyclewayCreatorKtTest {
         )
     }
 
-    @Test fun `apply answer for both deletes any previous answers given for left, right, general`() {
+    @Test fun `apply answer for both deletes previous answers given for explicit sides and general`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:both", "track"),
@@ -356,7 +357,7 @@ class CyclewayCreatorKtTest {
         )
     }
 
-    @Test fun `apply answer for left, right deletes any previous answers given for both, general`() {
+    @Test fun `apply answer for explicit sides deletes any previous answers given for both and general`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("cycleway:left", "track"),
@@ -480,7 +481,8 @@ class CyclewayCreatorKtTest {
     @Test fun `modify segregated tag if new answer is now not segregated`() {
         assertEquals(
             setOf(
-                StringMapEntryModify("sidewalk", "both", "both"),
+                StringMapEntryDelete("sidewalk", "both"),
+                StringMapEntryAdd("sidewalk:both", "yes"),
                 StringMapEntryModify("cycleway:both", "track", "track"),
                 StringMapEntryModify("cycleway:both:segregated", "yes", "no")
             ),

@@ -13,11 +13,13 @@ import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LATITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.LONGITUDE
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.Columns.STATUS
 import de.westnordost.streetcomplete.data.osmnotes.NoteTable.NAME
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 /** Stores OSM notes */
+@Mockable
 class NoteDao(private val db: Database) {
     fun put(note: Note) {
         db.replace(NAME, note.toPairs())

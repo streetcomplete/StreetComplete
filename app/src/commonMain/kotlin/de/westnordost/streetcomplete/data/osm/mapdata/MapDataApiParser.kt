@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.util.ktx.attribute
 import de.westnordost.streetcomplete.util.ktx.attributeOrNull
-import kotlinx.datetime.Instant
 import kotlinx.io.Source
 import kotlinx.serialization.SerializationException
 import nl.adaptivity.xmlutil.EventType.END_ELEMENT
@@ -10,6 +9,7 @@ import nl.adaptivity.xmlutil.EventType.START_ELEMENT
 import nl.adaptivity.xmlutil.XmlReader
 import nl.adaptivity.xmlutil.core.kxio.newReader
 import nl.adaptivity.xmlutil.xmlStreaming
+import kotlin.time.Instant
 
 class MapDataApiParser {
     fun parseMapData(

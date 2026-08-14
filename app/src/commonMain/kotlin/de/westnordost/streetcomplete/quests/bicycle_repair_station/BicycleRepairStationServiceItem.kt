@@ -1,15 +1,7 @@
 package de.westnordost.streetcomplete.quests.bicycle_repair_station
 
 import de.westnordost.streetcomplete.quests.bicycle_repair_station.BicycleRepairStationService.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.bicycle_repair_station_chain_tool
-import de.westnordost.streetcomplete.resources.bicycle_repair_station_pump
-import de.westnordost.streetcomplete.resources.bicycle_repair_station_stand
-import de.westnordost.streetcomplete.resources.bicycle_repair_station_tools
-import de.westnordost.streetcomplete.resources.quest_bicycle_repair_station_chain_tool
-import de.westnordost.streetcomplete.resources.quest_bicycle_repair_station_pump
-import de.westnordost.streetcomplete.resources.quest_bicycle_repair_station_stand
-import de.westnordost.streetcomplete.resources.quest_bicycle_repair_station_tools
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

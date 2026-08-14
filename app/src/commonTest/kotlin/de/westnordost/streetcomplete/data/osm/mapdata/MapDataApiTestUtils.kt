@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import kotlinx.datetime.Instant
+import kotlin.time.Instant
 
 fun nodesOsm(c: Long): String = """
         <node id="122" version="2" changeset="$c" timestamp="2019-03-15T01:52:26Z" lat="53.0098761" lon="9.0065254" />

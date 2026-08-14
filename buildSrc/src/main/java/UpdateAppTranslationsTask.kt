@@ -11,7 +11,6 @@ open class UpdateAppTranslationsTask : DefaultTask() {
     @get:Input lateinit var projectId: String
     @get:Input lateinit var apiToken: String
     @get:Input lateinit var languageCodes: Collection<String>
-    @get:Input lateinit var targetFilesAndroid: ((androidResCode: String) -> String)
     @get:Input lateinit var targetFiles: ((androidResCode: String) -> String)
 
     @TaskAction fun run() {
@@ -33,18 +32,6 @@ open class UpdateAppTranslationsTask : DefaultTask() {
 
             // download the translation and save it in the appropriate directory
             val translations = fetchLocalizationJson(apiToken, projectId, languageTag)
-
-            val androidText = """<?xml version="1.0" encoding="utf-8"?>
-<resources>
-${translations.entries.joinToString("\n") { (key, value) ->
-                "    <string name=\"$key\">\"${value.escapeXml().replace("\"", "\\\"")}\"</string>"
-            } }
-</resources>"""
-            for (androidResCode in androidResCodes) {
-                val file = File(targetFilesAndroid(androidResCode))
-                File(file.parent).mkdirs()
-                file.writeText(androidText)
-            }
 
             val text = """<?xml version="1.0" encoding="utf-8"?>
 <resources>

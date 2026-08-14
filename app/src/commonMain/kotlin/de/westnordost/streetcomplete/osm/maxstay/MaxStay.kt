@@ -1,19 +1,28 @@
 package de.westnordost.streetcomplete.osm.maxstay
 
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.duration.Duration
 import de.westnordost.streetcomplete.osm.opening_hours.toOpeningHours
 import de.westnordost.streetcomplete.osm.time_restriction.TimeRestriction
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import kotlinx.serialization.Serializable
 
 /** Maximum time a vehicle may stay at a parking. Optionally, the max stay duration may be only or
  *  exclusively be valid within a certain time range */
+@Serializable
 data class MaxStay(
     val duration: Duration?,
     val timeRestriction: TimeRestriction? = null
 ) {
     fun isComplete(): Boolean =
         duration != null && timeRestriction?.isComplete() != false
+
+    fun isTooLong(): Boolean {
+        val changes = StringMapChangesBuilder(emptyMap())
+        applyTo(changes)
+        return changes.create().changes.any { !it.isValid() }
+    }
 }
 
 fun MaxStay.applyTo(tags: Tags) {

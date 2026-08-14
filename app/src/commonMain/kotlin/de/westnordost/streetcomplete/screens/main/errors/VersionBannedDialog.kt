@@ -2,8 +2,7 @@ package de.westnordost.streetcomplete.screens.main.errors
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.version_banned_message
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import org.jetbrains.compose.resources.stringResource
 

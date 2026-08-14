@@ -1,0 +1,229 @@
+package de.westnordost.streetcomplete.ui.common.overlay
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.Divider
+import androidx.compose.material.DropdownMenu
+import androidx.compose.material.IconButton
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.ProvideTextStyle
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.backhandler.BackHandler
+import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
+import androidx.compose.ui.unit.dp
+import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.data.overlays.Action
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.DropdownMenuItem
+import de.westnordost.streetcomplete.ui.common.FloatingOkButton
+import de.westnordost.streetcomplete.ui.common.MoreIcon
+import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
+import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
+import de.westnordost.streetcomplete.ui.common.quest.LocalElement
+import de.westnordost.streetcomplete.ui.theme.Dimensions
+import de.westnordost.streetcomplete.ui.theme.titleMedium
+import de.westnordost.streetcomplete.util.ktx.isSplittable
+import de.westnordost.streetcomplete.util.nameAndLocationLabel
+import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
+
+/** A generic overlay form containing the center-aligned [content], padded with [contentPadding].
+ *  Above it, an optional bubble with a [label] (in which the element is usually named).
+ *
+ *  Below the content, there's an empty bar that contains only a "more" icon button on the start
+ *  that, when tapped, opens a dropdown menu containing [otherAnswers].
+ *
+ *  Optionally, [pinContent] can be placed at the position of the crosshair. This is usually used to
+ *  place a pin at the position at which an element will be created for overlays that allow it.
+ *
+ *  Floating in the lower end corner, an OK button for confirmation. [isComplete] should be true
+ *  when the form is complete, while [hasChanges] should be true when any changes have been made.
+ *  */
+@OptIn(ExperimentalComposeUiApi::class)
+@Composable
+fun OverlayForm(
+    on: (Action) -> Unit,
+    isComplete: Boolean,
+    hasChanges: Boolean,
+    onClickOk: () -> Unit,
+    modifier: Modifier = Modifier,
+    featureDictionary: FeatureDictionary = koinInject(),
+    mapDataWithEditsSource: MapDataWithEditsSource = koinInject(),
+    label: AnnotatedString? = LocalElement.current?.let { element ->
+        nameAndLocationLabel(element, featureDictionary)
+    },
+    otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
+    contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
+    pinContent: @Composable (() -> Unit)? = null,
+    content: @Composable BoxScope.() -> Unit
+) {
+    var confirmDiscard by remember { mutableStateOf(false) }
+
+    BackHandler {
+        if (hasChanges) {
+            confirmDiscard = true
+        } else {
+            on(Action.Dismiss)
+        }
+    }
+
+    @Composable
+    fun createDefaultOtherAnswers(): List<AnswerItem> {
+        val result = ArrayList<AnswerItem>()
+        val element = LocalElement.current
+        if (element != null) {
+            if (
+                element is Node // add moveNodeAnswer only if it's a free floating node
+                && mapDataWithEditsSource.getWaysForNode(element.id).isEmpty()
+            ) {
+                result.add(AnswerItem(stringResource(Res.string.move_node)) { on(Action.MoveNode) })
+            }
+
+            if (element.isSplittable()) {
+                result.add(AnswerItem(stringResource(Res.string.split_way)) { on(Action.SplitWay) })
+            }
+
+            result.add(AnswerItem(stringResource(Res.string.leave_note)) { on(Action.LeaveNote) })
+
+        }
+        return result
+    }
+
+    Box(
+        modifier = modifier.fillMaxSize()
+    ) {
+        if (pinContent != null) {
+            Box(Modifier
+                .align(Alignment.Center)
+                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
+            ) {
+                pinContent()
+            }
+        }
+
+        BottomSheetFormScaffold(
+            note = if (label != null) { {
+                CompositionLocalProvider(
+                    LocalTextStyle provides MaterialTheme.typography.titleMedium,
+                    LocalContentAlpha provides ContentAlpha.medium
+                ) {
+                    Text(label)
+                }
+            } } else null,
+            content = {
+                OverlayContent(
+                    modifier = Modifier.fillMaxWidth(),
+                    otherAnswers = { otherAnswers() + createDefaultOtherAnswers() },
+                    contentPadding = contentPadding,
+                    content = content
+                )
+            },
+            fab = {
+                FloatingOkButton(
+                    visible = isComplete,
+                    enabled = hasChanges,
+                    onClick = onClickOk
+                )
+            },
+        )
+    }
+
+
+
+    if (confirmDiscard) {
+        ConfirmDiscardDialog(
+            onDismissRequest = { confirmDiscard = false },
+            onConfirmed = { on(Action.Dismiss) },
+        )
+    }
+}
+
+/** Overlay form content, i.e. content and more-button */
+@Composable
+private fun OverlayContent(
+    modifier: Modifier = Modifier,
+    otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
+    contentPadding: PaddingValues = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
+    content: @Composable BoxScope.() -> Unit
+) {
+    ProvideTextStyle(MaterialTheme.typography.body1) {
+        Column(modifier) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(contentPadding),
+                contentAlignment = Alignment.Center,
+                content = content
+            )
+            Divider()
+            MoreButton(answers = otherAnswers)
+        }
+    }
+}
+
+/** …-button that opens a dropdown with the provided [answers]  */
+@Composable
+private fun MoreButton(
+    answers: @Composable () -> List<AnswerItem>,
+    modifier: Modifier = Modifier,
+) {
+    var expanded by rememberSaveable { mutableStateOf(false) }
+
+    Box(modifier) {
+        IconButton(onClick = { expanded = true }) {
+            MoreIcon()
+        }
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            for (answer in answers()) {
+                DropdownMenuItem(onClick = { expanded = false; answer.action() }) {
+                    Text(answer.text)
+                }
+            }
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun OverlayFormPreview() {
+    OverlayForm(
+        on = {},
+        isComplete = true,
+        hasChanges = false,
+        onClickOk = {},
+        label = AnnotatedString("some text"),
+        otherAnswers = { listOf(
+            AnswerItem("Can't say") {},
+            AnswerItem("Can say") {},
+        ) },
+    ) {
+        Text(LoremIpsum(50).values.joinToString(" "))
+    }
+}

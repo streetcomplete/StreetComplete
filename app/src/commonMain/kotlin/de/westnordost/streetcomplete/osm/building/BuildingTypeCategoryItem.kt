@@ -1,25 +1,7 @@
 package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.building_apartments
-import de.westnordost.streetcomplete.resources.building_civic
-import de.westnordost.streetcomplete.resources.building_farm
-import de.westnordost.streetcomplete.resources.building_office
-import de.westnordost.streetcomplete.resources.building_other
-import de.westnordost.streetcomplete.resources.building_shed
-import de.westnordost.streetcomplete.resources.building_temple
-import de.westnordost.streetcomplete.resources.quest_buildingType_civic
-import de.westnordost.streetcomplete.resources.quest_buildingType_civic_description
-import de.westnordost.streetcomplete.resources.quest_buildingType_commercial
-import de.westnordost.streetcomplete.resources.quest_buildingType_commercial_generic_description
-import de.westnordost.streetcomplete.resources.quest_buildingType_farm
-import de.westnordost.streetcomplete.resources.quest_buildingType_other
-import de.westnordost.streetcomplete.resources.quest_buildingType_outbuilding
-import de.westnordost.streetcomplete.resources.quest_buildingType_outbuilding_description
-import de.westnordost.streetcomplete.resources.quest_buildingType_religious
-import de.westnordost.streetcomplete.resources.quest_buildingType_residential
-import de.westnordost.streetcomplete.resources.quest_buildingType_residential_description
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

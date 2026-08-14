@@ -1,35 +1,7 @@
 package de.westnordost.streetcomplete.quests.religion
 
 import de.westnordost.streetcomplete.quests.religion.Religion.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.empty_96
-import de.westnordost.streetcomplete.resources.quest_religion_animist
-import de.westnordost.streetcomplete.resources.quest_religion_bahai
-import de.westnordost.streetcomplete.resources.quest_religion_buddhist
-import de.westnordost.streetcomplete.resources.quest_religion_caodaist
-import de.westnordost.streetcomplete.resources.quest_religion_chinese_folk
-import de.westnordost.streetcomplete.resources.quest_religion_christian
-import de.westnordost.streetcomplete.resources.quest_religion_for_place_of_worship_answer_multi
-import de.westnordost.streetcomplete.resources.quest_religion_hindu
-import de.westnordost.streetcomplete.resources.quest_religion_jain
-import de.westnordost.streetcomplete.resources.quest_religion_jewish
-import de.westnordost.streetcomplete.resources.quest_religion_muslim
-import de.westnordost.streetcomplete.resources.quest_religion_shinto
-import de.westnordost.streetcomplete.resources.quest_religion_sikh
-import de.westnordost.streetcomplete.resources.quest_religion_taoist
-import de.westnordost.streetcomplete.resources.religion_animist
-import de.westnordost.streetcomplete.resources.religion_bahai
-import de.westnordost.streetcomplete.resources.religion_buddhist
-import de.westnordost.streetcomplete.resources.religion_caodaist
-import de.westnordost.streetcomplete.resources.religion_chinese_folk
-import de.westnordost.streetcomplete.resources.religion_christian
-import de.westnordost.streetcomplete.resources.religion_hindu
-import de.westnordost.streetcomplete.resources.religion_jain
-import de.westnordost.streetcomplete.resources.religion_jewish
-import de.westnordost.streetcomplete.resources.religion_muslim
-import de.westnordost.streetcomplete.resources.religion_shinto
-import de.westnordost.streetcomplete.resources.religion_sikh
-import de.westnordost.streetcomplete.resources.religion_taoist
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

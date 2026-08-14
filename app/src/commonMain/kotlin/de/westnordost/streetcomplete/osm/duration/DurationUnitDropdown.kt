@@ -3,10 +3,7 @@ package de.westnordost.streetcomplete.osm.duration
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.unit_days
-import de.westnordost.streetcomplete.resources.unit_hours
-import de.westnordost.streetcomplete.resources.unit_minutes
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.ButtonStyle
 import de.westnordost.streetcomplete.ui.common.DropdownButton
 import org.jetbrains.compose.resources.StringResource

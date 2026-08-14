@@ -42,7 +42,7 @@ val FULLY_PAVED_SURFACES = setOf(
 
 private val SOFT_NATURAL_SURFACES = setOf(
     // earthy
-    "earth", "dirt", "soil", "grass", "sand", "mud",
+    "earth", "dirt", "soil", "grass", "sand", "mud", "laterite",
     // other
     "snow",
 )
@@ -112,6 +112,10 @@ fun getKeysAssociatedWithSurface(prefix: String = ""): Set<String> =
         "${prefix}paving_stones:pattern",
         "${prefix}paving_stones:length",
         "${prefix}paving_stones:width",
+        "${prefix}paving_stones:material",
+        "${prefix}paving_stones:colour",
+        "${prefix}paving_stones:orientation",
+        "${prefix}paving_stones:direction",
     ) +
         getLastCheckDateKeys("${prefix}surface") +
         getLastCheckDateKeys("${prefix}smoothness")

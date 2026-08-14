@@ -926,7 +926,7 @@ class SphericalEarthMathTest {
         assertTrue(bbox.isCompletelyInside(bbox.enlargedBy(1.0)))
     }
 
-    @Test fun `enlargedBy really enlarges bounding box, even at 180th meridian`() {
+    @Test fun `enlargedBy really enlarges bounding box also at 180th meridian`() {
         val bbox1 = bbox(0.0, 179.0, 1.0, 180.0)
         // enlarged bounding box should go over the 180th meridian
         assertTrue(bbox1.isCompletelyInside(bbox1.enlargedBy(100.0)))
@@ -981,7 +981,7 @@ class SphericalEarthMathTest {
         assertTrue(intersectBottom.intersect(bbox))
     }
 
-    @Test fun `bounding box not on same longitude do not intersect, even on 180th meridian`() {
+    @Test fun `bounding box not on same longitude do not intersect also on 180th meridian`() {
         val bbox = bbox(0.0, 179.0, 1.0, -179.0)
         val other = bbox(0.0, -178.0, 1.0, 178.0)
         assertFalse(bbox.intersect(other))

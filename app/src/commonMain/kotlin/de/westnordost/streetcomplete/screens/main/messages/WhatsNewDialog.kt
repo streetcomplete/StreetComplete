@@ -9,9 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.changelog.Changelog
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.ok
-import de.westnordost.streetcomplete.resources.title_whats_new
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.about.ChangelogList
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import org.jetbrains.compose.resources.stringResource
@@ -35,7 +33,7 @@ fun WhatsNewDialog(
                 modifier = Modifier.padding(horizontal = 24.dp)
             )
         },
-        buttons = {
+        buttonRow = {
             TextButton(onClick = onDismissRequest) {
                 Text(stringResource(Res.string.ok))
             }

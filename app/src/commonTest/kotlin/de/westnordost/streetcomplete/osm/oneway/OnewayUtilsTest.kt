@@ -8,7 +8,7 @@ class OnewayUtilsTest {
 
     private val oppositeCyclewayValues = listOf("opposite", "opposite_track", "opposite_lane")
 
-    @Test fun `not oneway for cyclists (old tagging)`() {
+    @Test fun `not oneway for cyclists with old tagging`() {
         for (isLeftHandTraffic in listOf(true, false)) {
             for (cycleway in oppositeCyclewayValues) {
                 assertTrue(isNotOnewayForCyclists(mapOf("cycleway" to cycleway), isLeftHandTraffic))
@@ -17,7 +17,7 @@ class OnewayUtilsTest {
         assertFalse(isNotOnewayForCyclists(mapOf("cycleway" to "track"), false))
     }
 
-    @Test fun `not oneway for cyclists (old per-side tagging)`() {
+    @Test fun `not oneway for cyclists with old per-side tagging`() {
         for (cycleway in oppositeCyclewayValues) {
             assertTrue(isNotOnewayForCyclists(mapOf("cycleway:left" to cycleway), false))
             assertTrue(isNotOnewayForCyclists(mapOf("cycleway:right" to cycleway), true))
@@ -31,7 +31,7 @@ class OnewayUtilsTest {
         }
     }
 
-    @Test fun `not oneway for cyclists (modern tagging)`() {
+    @Test fun `not oneway for cyclists with modern tagging`() {
         for (isLeftHandTraffic in listOf(true, false)) {
             assertFalse(isNotOnewayForCyclists(mapOf("oneway:bicycle" to "yes"), isLeftHandTraffic))
             assertTrue(isNotOnewayForCyclists(mapOf("oneway:bicycle" to "no"), isLeftHandTraffic))

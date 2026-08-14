@@ -1,8 +1,8 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
-import kotlinx.datetime.Instant
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.time.Instant
 
 class MapDataApiSerializerTest {
 

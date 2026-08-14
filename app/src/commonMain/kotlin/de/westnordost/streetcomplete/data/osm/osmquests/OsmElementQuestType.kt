@@ -1,13 +1,16 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.quest.AllCountries
-import de.westnordost.streetcomplete.data.quest.Countries
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountries
+import de.westnordost.streetcomplete.util.countryboundaries.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.osm.Tags
+import kotlin.jvm.JvmInline
 
 /** Quest type where each quest refers to one OSM element.
  *
@@ -20,8 +23,8 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
 
     /** In which countries the quest should be shown. By default, in all countries.
      *
-     *  Use [AllCountriesExcept][de.westnordost.streetcomplete.data.quest.AllCountriesExcept] to exclude some countries.
-     *  Use [NoCountriesExcept][de.westnordost.streetcomplete.data.quest.NoCountriesExcept] to exclude all except some countries.
+     *  Use [AllCountriesExcept][de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept] to exclude some countries.
+     *  Use [NoCountriesExcept][de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept] to exclude all except some countries.
      *
      * A quest type should not be shown in a country if it is either irrelevant/not applicable in
      * that country or if it would not fulfill the [quest guidelines](https://github.com/streetcomplete/StreetComplete/blob/master/QUEST_GUIDELINES.md)
@@ -36,30 +39,6 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
      * should be there too. For the street surface, it is necessary to view the whole street, so it
      * makes sense if the pins are in the middle. */
     val hasMarkersAtEnds: Boolean get() = false
-
-    /** Whether the user should be able to delete this element instead. Only elements that
-     *  are not expected...
-     *  - to be part of a relation
-     *  - to be part of a network (e.g. roads, power lines, ...)
-     *  - to house a second POI on the same element
-     *  - to be a kind of element where deletion is not recommended, (e.g. a shop should rather
-     *    be set to disused:shop=yes until there is another one)
-     *  ...should be deletable.
-     *
-     *  By default: false.*/
-    val isDeleteElementEnabled: Boolean get() = false
-
-    /** Whether the user should be able to replace this element with another preset. Only
-     *  elements that are expected to be some kind of shop/amenity should be replaceable this way,
-     *  i.e. anything that when it's gone, there is a vacant shop then.
-     */
-    val isReplacePlaceEnabled: Boolean get() = false
-
-    override val title: Int get() = getTitle(emptyMap())
-
-    /** the string resource used to display the quest's question for when the element has the
-     *  specified [tags] */
-    fun getTitle(tags: Map<String, String>): Int
 
     /** All elements within the given map data that are applicable to this quest type, i.e. for
      *  which a quest of this type should be created.
@@ -85,15 +64,79 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
     /** Elements that should be highlighted on the map alongside the selected one because they
      *  provide context for the given element. For example, nearby benches should be shown when
      *  answering a question for a bench so the user knows which of the benches is meant. */
-    fun getHighlightedElements(element: Element, getMapData: () -> MapDataWithGeometry): Sequence<Element> = emptySequence()
+    fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry): Sequence<Element> = emptySequence()
 
     /** The radius in which certain elements should be shown (see getHighlightedElements).
      *  30m is the default because this is about "across this large street". There shouldn't be
      *  any misunderstandings which element is meant that far apart. */
     val highlightedElementsRadius: Double get() = 30.0
 
+    /** Composable form in which to enter the requested information. Use
+     *  [QuestForm][de.westnordost.streetcomplete.ui.common.quest.QuestForm] to define a custom
+     *  (or simple button-based) one, or any of the pre-defined generic forms like…
+     *
+     *  - [ItemSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm] -
+     *    Select one from a grid of (image) items
+     *
+     *  - [ItemsSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.ItemsSelectQuestForm] -
+     *    Select any number from a grid of (image) items
+     *
+     *  - [GroupedItemSelectQuestForm][de.westnordost.streetcomplete.ui.common.quest.GroupedItemSelectQuestForm] -
+     *    Select one from a grouped list of (image) items
+     *
+     *  - [RadioGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm] -
+     *    Select one from a (text) list
+     *
+     *  - [CheckboxGroupQuestForm][de.westnordost.streetcomplete.ui.common.quest.CheckboxGroupQuestForm] -
+     *    Select any number from a (text) list
+     *
+     *  - [YesNoQuestForm][de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm] -
+     *    Answer "yes" or "no"
+     *
+     *  - [CountInputQuestForm][de.westnordost.streetcomplete.ui.common.quest.CountInputQuestForm] -
+     *    Input an (integer) number
+     *
+     *  - [LocalizedNameQuestForm][de.westnordost.streetcomplete.ui.common.quest.LocalizedNameQuestForm] -
+     *    Input name(s in potentially different languages)
+     *
+     *  - [NameWithSuggestionsQuestForm][de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestForm] -
+     *    Input a name with auto-complete.
+     *
+     *  A good practice is that if the form definition is purely declarative and there's no mutable
+     *  state, it's fine to have the form definition inline in the quest type class, otherwise,
+     *  better put it into an own file.
+     *  */
+    @Composable
+    fun Form(
+        on: (QuestAction<T>) -> Unit,
+        element: Element,
+        geometry: ElementGeometry,
+        countryInfo: CountryInfo
+    )
+
     /** Applies the data from [answer] to the element that has last been edited at [timestampEdited]
      * with the given [tags] and the given [geometry].
      * The element is not directly modified, instead, a map of [tags] is modified */
     fun applyAnswerTo(answer: T, tags: Tags, geometry: ElementGeometry, timestampEdited: Long)
+}
+
+sealed interface QuestAction<out T>
+@JvmInline value class Answer<T>(val value: T): QuestAction<T>
+enum class Action : QuestAction<Nothing> {
+    /** Just close the quest form */
+    Dismiss,
+    /** User can't answer the quest */
+    CantSay,
+    /** User wants to leave a note */
+    LeaveNote,
+    /** User wants to hide this particular quest */
+    HideQuest,
+    /** User wants to split the way */
+    SplitWay,
+    /** User wants to move the node */
+    MoveNode,
+    /** User wants to delete the thing-POI */
+    DeletePoi,
+    /** User wants to replace the place-POI */
+    ReplacePoi,
 }

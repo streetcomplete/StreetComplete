@@ -65,7 +65,8 @@ class LoginViewModelImpl(
     override val loginState = MutableStateFlow<LoginState>(LoggedOut)
     override val unsyncedChangesCount = MutableStateFlow(0)
 
-    override val authorizationRequestUrl: String get() = oAuth.authorizationRequestUrl
+    override val authorizationRequestUrl: String get() =
+        oAuthApiClient.getAuthorizationRequestUrl(oAuth)
 
     private val oAuth = OAuthAuthorizationParams(
         OAUTH2_AUTHORIZATION_URL,

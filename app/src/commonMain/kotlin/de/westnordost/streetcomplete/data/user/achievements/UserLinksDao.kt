@@ -4,8 +4,10 @@ import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable.Columns
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable.Columns.LINK
 import de.westnordost.streetcomplete.data.user.achievements.UserLinksTable.NAME
+import de.westnordost.streetcomplete.util.Mockable
 
 /** Stores which link ids have been unlocked by the user */
+@Mockable
 class UserLinksDao(private val db: Database) {
 
     fun getAll(): List<String> =

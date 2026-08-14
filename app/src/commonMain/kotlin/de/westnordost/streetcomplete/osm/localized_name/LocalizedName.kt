@@ -62,6 +62,14 @@ fun List<LocalizedName>.applyTo(tags: Tags) {
     tags.remove("noname")
     tags.remove("name:signed")
 
+    // remove fixme=name tags
+    val values = setOf("name", "Name", "Name?", "name?")
+    for (key in listOf("fixme", "FIXME")) {
+        if (tags[key] in values) {
+            tags.remove(key)
+        }
+    }
+
     // language is only specified explicitly in OSM (usually) if there is more than one name specified
     if (size == 1) {
         tags["name"] = first().name.trim()

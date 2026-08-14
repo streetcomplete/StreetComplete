@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.osm.traffic_calming
 
 import de.westnordost.streetcomplete.osm.traffic_calming.LaneNarrowingTrafficCalming.*
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.lane_narrowing_traffic_calming_chicane
-import de.westnordost.streetcomplete.resources.lane_narrowing_traffic_calming_choked_island
-import de.westnordost.streetcomplete.resources.lane_narrowing_traffic_calming_choker
-import de.westnordost.streetcomplete.resources.lane_narrowing_traffic_calming_island
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 

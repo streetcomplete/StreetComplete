@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -36,9 +37,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.language_default
-import de.westnordost.streetcomplete.resources.pref_title_language_select2
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.ExpandableSearchField
 import de.westnordost.streetcomplete.ui.common.SearchIcon
@@ -74,17 +73,17 @@ fun LanguageSelectionScreen(
             search = searchText,
             onSearchChange = { searchText = it },
         )
+        val insets = WindowInsets.safeDrawing.only(
+            WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
+        ).asPaddingValues()
         LanguageSelectionList(
             languages = sortedAndFilteredSelectableLanguages,
             selectedLanguage = selectedLanguage,
             onSelect = { viewModel.setSelectedLanguage(it) },
             modifier = Modifier
                 .fillMaxHeight()
-                .consumeWindowInsets(
-                    WindowInsets.safeDrawing.only(
-                        WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom
-                    ).asPaddingValues()
-                )
+                .consumeWindowInsets(insets),
+            contentPadding = insets
         )
     }
 }
@@ -131,8 +130,12 @@ private fun LanguageSelectionList(
     selectedLanguage: String?,
     onSelect: (languageCode: String?) -> Unit,
     modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues.Zero,
 ) {
-    LazyColumn(modifier) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = contentPadding
+    ) {
         items(languages, key = { it.orEmpty() }) { language ->
             val isSelected = selectedLanguage == language
             Row(

@@ -14,8 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.layout.ContentScale
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.shine
+import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 

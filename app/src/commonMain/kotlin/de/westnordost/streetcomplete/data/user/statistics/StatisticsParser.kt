@@ -1,12 +1,12 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.io.Source
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.io.decodeFromSource
+import kotlin.time.Instant
 
 class StatisticsParser(private val typeAliases: List<Pair<String, String>>) {
     private val jsonParser = Json { ignoreUnknownKeys = true }
