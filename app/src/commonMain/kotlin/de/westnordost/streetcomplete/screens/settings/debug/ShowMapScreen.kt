@@ -8,7 +8,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import de.westnordost.streetcomplete.screens.main.map2.Map
+import de.westnordost.streetcomplete.screens.main.map.Map
 import de.westnordost.streetcomplete.ui.common.BackIcon
 
 @Composable

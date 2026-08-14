@@ -81,7 +81,7 @@ fun Feature.isArea() =
     )
 
 /** Get an expression that resolves to the localized name.
- *  If the localized name in the user's [language] is the same as the primary name, then only this
+ *  If the localized name in the user's [languages] is the same as the primary name, then only this
  *  name is displayed. Otherwise, the primary name is displayed, then the localized name below */
 fun Feature.localizedName(
     languages: List<String>,

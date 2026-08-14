@@ -9,8 +9,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.map_attribution_osm
 import de.westnordost.streetcomplete.resources.map_oneway_arrow
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.maplibre.compose.expressions.ast.Expression
 import org.maplibre.compose.expressions.dsl.Feature
 import org.maplibre.compose.expressions.dsl.all
@@ -62,8 +64,7 @@ fun MapStyle(
         options = TileSetOptions(
             maxZoom = 16,
             attributionHtml =
-                // TODO localization of attribution: map_attribution_osm
-                "<a href='https://www.openstreetmap.org/copyright'>&copy; OpenStreetMap contributors</a> " +
+                "<a href='https://www.openstreetmap.org/copyright'>" + stringResource(Res.string.map_attribution_osm) + "</a> " +
                 "<a href='https://jawg.io?utm_medium=map&utm_source=attribution'>&copy; JawgMaps</a>"
         )
     )
