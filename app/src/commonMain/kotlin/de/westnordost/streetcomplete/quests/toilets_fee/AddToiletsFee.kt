@@ -26,6 +26,7 @@ class AddToiletsFee : OsmFilterQuestType<Boolean>() {
     override val wikiLink = "Key:fee"
     override val icon = Res.drawable.quest_toilet_fee
     override val title = Res.string.quest_toiletsFee_title
+    // countries where it is either illegal to charge a fee or changing a fee is a non-existent concept
     override val enabledInCountries = AllCountriesExcept("US", "CA", "AU", "NZ")
     override val achievements = listOf(CITIZEN)
 
