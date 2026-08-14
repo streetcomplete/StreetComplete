@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.layers
+package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.screens.main.map2.toGeometry
 import io.github.dellisd.spatialk.geojson.Feature
 import kotlinx.serialization.json.JsonPrimitive
+import org.jetbrains.compose.resources.DrawableResource
 
 data class StyledElement(
     val element: Element,
@@ -150,7 +151,7 @@ private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway
 private fun isBridge(tags: Map<String, String>): Boolean =
     tags["bridge"] != null && tags["bridge"] != "no"
 
-private fun OverlayStyle.getIcon(): Int? = when (this) {
+private fun OverlayStyle.getIcon(): DrawableResource? = when (this) {
     is OverlayStyle.Point -> icon
     is OverlayStyle.Polygon -> icon
     is OverlayStyle.Polyline -> null

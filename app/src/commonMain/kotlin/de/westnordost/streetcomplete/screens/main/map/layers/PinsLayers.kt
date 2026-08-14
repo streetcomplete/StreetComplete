@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.layers
+package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
@@ -14,7 +14,6 @@ import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.painterResource
-import org.maplibre.android.style.expressions.Expression.log2
 import org.maplibre.compose.expressions.dsl.all
 import org.maplibre.compose.expressions.dsl.any
 import org.maplibre.compose.expressions.dsl.const

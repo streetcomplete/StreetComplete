@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2.layers
+package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloat
