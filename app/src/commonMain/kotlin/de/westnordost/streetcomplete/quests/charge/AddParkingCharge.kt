@@ -1,9 +1,12 @@
 package de.westnordost.streetcomplete.quests.charge
 
 import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
@@ -31,6 +34,11 @@ class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>() {
     override val achievements = listOf(CAR)
     override val hint = Res.string.quest_parking_charge_hint
     override val title = Res.string.quest_parking_charge_title
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("""
+             nodes, ways with amenity = parking
+         """.toElementFilterExpression())
 
     @Composable
     override fun Form(on: (QuestAction<ParkingChargeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
