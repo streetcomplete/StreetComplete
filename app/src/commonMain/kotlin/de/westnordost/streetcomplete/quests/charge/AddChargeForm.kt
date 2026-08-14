@@ -25,8 +25,8 @@ import de.westnordost.streetcomplete.util.locale.CurrencyFormatter
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun AddParkingChargeForm(
-    on: (QuestAction<ParkingChargeAnswer>) -> Unit,
+fun AddChargeForm(
+    on: (QuestAction<ChargeAnswer>) -> Unit,
     countryInfo: CountryInfo,
 ) {
     var amount by rememberSerializable { mutableStateOf<CurrencyAmount?>(null) }

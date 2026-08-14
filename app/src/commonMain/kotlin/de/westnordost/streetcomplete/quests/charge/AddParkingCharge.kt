@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.resources.*
  * Quest that asks for the parking fee of locations where a fee is required, but the amount
  * is unknown or hasn't been verified for a long time.
  */
-class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>() {
+class AddParkingCharge : OsmFilterQuestType<ChargeAnswer>() {
     override val elementFilter = """
         nodes, ways, relations with amenity = parking
         and access ~ yes|customers|public
@@ -41,11 +41,11 @@ class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>() {
          """.toElementFilterExpression())
 
     @Composable
-    override fun Form(on: (QuestAction<ParkingChargeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddParkingChargeForm(on, countryInfo)
+    override fun Form(on: (QuestAction<ChargeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddChargeForm(on, countryInfo)
     }
 
-    override fun applyAnswerTo(answer: ParkingChargeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+    override fun applyAnswerTo(answer: ChargeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
             is SimpleCharge -> {
                 // Format: "1.50 EUR/hour"

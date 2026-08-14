@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.quests.charge
 
 import de.westnordost.streetcomplete.osm.duration.DurationUnit
-import de.westnordost.streetcomplete.util.locale.CurrencyAmount
 
-sealed interface ParkingChargeAnswer
+sealed interface ChargeAnswer
 
 /**
  * Represents a simple charge for a specific time unit.
@@ -16,4 +15,4 @@ data class SimpleCharge(
     val amount: String,
     val currency: String,
     val timeUnit: DurationUnit
-) : ParkingChargeAnswer
+) : ChargeAnswer
