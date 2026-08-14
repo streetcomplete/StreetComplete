@@ -44,9 +44,6 @@
         "railway": {
           "name": "Railroad Feature"
         },
-        "railway/abandoned": {
-          "name": "Abandoned Railroad"
-        },
         "railway/construction": {
           "name": "Railroad Under Construction"
         },

@@ -365,7 +365,7 @@
     <string name="quest_generic_item_confirmation">Είστε σίγουροι ότι δεν μπορείτε να το προσδιορίσετε πιο συγκεκριμένα;</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;Για κάποιες αποστολές, κατεβάζονται ορισμένα πρόσθετα δεδομένα από τρίτα μέρη.&lt;/p&gt;</string>
     <string name="quest_generic_hasFeature_no_leave_note">Όχι (αφήστε σημείωση)</string>
-    <string name="pref_quests_reset">Επαναφορά και της ενεργοποίησης αποσοτλής και της σειράς των προεπιλογών;</string>
+    <string name="pref_quests_reset">Επαναφορά και της ενεργοποίησης αποστολής και της σειράς των προεπιλογών;</string>
     <string name="quest_generic_item_invalid_value">Επιλέξτε μια πιο συγκεκριμένη τιμή.</string>
     <string name="quest_buildingType_answer_multiple_types">Έχει πολλαπλούς σκοπούς</string>
     <string name="quest_buildingType_answer_multiple_types_description">Απλά επιλέξτε τον κύριο σκοπό αυτού του κτιρίου. Π.χ. αν υπάρχει ένα κατάστημα στο ισόγειο με διαμερίσματα πάνω από αυτό, εξακολουθεί να είναι κυρίως ένα κτίριο διαμερισμάτων.</string>
@@ -480,7 +480,6 @@
     <string name="theme_dark">Σκούρο</string>
     <string name="theme_system_default">Προεπιλιγμένο συστήματος</string>
     <string name="action_open_location">Ανοίξτε την τοποθεσία σε άλλη εφαρμογή</string>
-    <string name="map_application_missing">Δεν έχει εγκατασταθεί άλλη εφαρμογή χάρτη</string>
     <string name="label_housenumber">αριθμός σπιτιού</string>
     <string name="quest_busStopShelter_covered">Ολόκληρη η στάση καλύπτεται</string>
     <string name="quest_ferry_pedestrian_title">Αυτή η πορθμειακή διαδρομή μεταφέρει πεζούς;</string>
@@ -744,7 +743,6 @@
     <string name="quest_shop_gone_title">Τι είναι εδώ τώρα;</string>
     <string name="quest_shop_gone_vacant_answer">Είναι κενό</string>
     <string name="quest_shop_gone_replaced_answer">Ένα…</string>
-    <string name="quest_shop_vacant_type_title">Αυτό το κατάστημα ήταν κενό. Τι είναι τώρα εδώ;</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Αυτός ο τύπος αποστολής είναι απενεργοποιημένος από προεπιλογή, επειδή δεν είναι χρήσιμος σε ορισμένες περιοχές και πιθανότατα θα πρέπει να εισαγάγετε το μέρος για να μπορείτε να απαντήσετε σε μια αποστολή αυτού του τύπου.</string>
     <string name="quest_dietType_explanation_kosher">Τα προϊόντα Κοσέρ πρέπει να προετοιμάζονται σύμφωνα με ειδικούς κανόνες, με τους οργανισμούς πιστοποίησης Κασρούτ να επισημαίνουν τα προϊόντα σε συμμόρφωση.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Δεν υπάρχει καθόλου ποδηλατόδρομος</string>
@@ -1433,7 +1431,6 @@
     <string name="quest_charging_station_bicycles_title">Μπορεί να φορτιστούν και ποδήλατα εδώ;</string>
     <string name="quest_charging_station_bicycles_hint">Τα φις ρεύματος των ποδηλάτων μπορούν να συνδεθούν σε κανονικές οικιακές πρίζες.</string>
     <string name="quest_tower_access_title">Ποιός έχει πρόσβαση στον πύργο; Μπορεί να είναι δωρεάν ή με πληρωμή.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Είναι μόνο για ποδήλατα</string>
     <string name="quest_recycling_type_pet_bottles">Φιάλες PET</string>
     <string name="quest_maxweight_add_sign">Προσθήκη πινακίδας</string>
     <string name="quest_maxweight_remove_sign">Αφαίρεση πινακίδας</string>
@@ -1488,4 +1485,10 @@
     <string name="quest_maxspeed_answer_roadtype_lit">φωτισμένος</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">όχι φωτισμένος</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Όχι φωτισμένος και με διαχωριστική νησίδα</string>
+    <string name="quest_board_type_tourism">Τουρισμός (πολλαπλά θέματα)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Μία σηματοδοτημένη λωρίδα μόνο</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Πληκτρολογήστε τι αναζητάτε</string>
+    <string name="link_gomap_description">Προχωρημένος OSM επεξεργαστής για iOS</string>
+    <string name="link_terraink_description">Δημιουργήστε όμορφες προσαρμοσμένες αφίσες για μια πόλη ή συνοικία</string>
+    <string name="quest_place_vacant_type_title">Αυτό το μέρος είναι κενό. Τι υπάρχει εδώ τώρα;</string>
 </resources>

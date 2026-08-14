@@ -1,20 +1,23 @@
 package de.westnordost.streetcomplete
 
+import android.content.Context
+import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import android.content.res.AssetManager
 import android.content.res.Resources
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SharedPreferencesSettings
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.create
-import de.westnordost.streetcomplete.data.AndroidDatabase
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Database
-import de.westnordost.streetcomplete.data.StreetCompleteSQLiteOpenHelper
+import de.westnordost.streetcomplete.data.DatabaseImpl
+import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.connection.AndroidActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadControllerAndroid
 import de.westnordost.streetcomplete.data.download.DownloadWorker
+import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloaderAndroid
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
@@ -23,10 +26,15 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetA
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadControllerAndroid
 import de.westnordost.streetcomplete.data.upload.UploadWorker
+import de.westnordost.streetcomplete.screens.about.AndroidAppStoreInfo
+import de.westnordost.streetcomplete.screens.about.AppStoreInfo
 import de.westnordost.streetcomplete.screens.main.AndroidEmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.AndroidMapAppLauncher
 import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.MapAppLauncher
+import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
+import de.westnordost.streetcomplete.ui.util.measure.ArMeasureAppLauncher
+import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
 import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
@@ -37,6 +45,7 @@ import kotlinx.io.asSource
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.scope.dsl.activityScope
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -52,14 +61,12 @@ val androidModule = module {
         de.westnordost.countryboundaries.CountryBoundaries.deserializeFrom(source)
     }
 
-    single<Lazy<FeatureDictionary>>(named("FeatureDictionaryLazy")) {
-        lazy {
-            FeatureDictionary.create(
-                assetManager = androidContext().assets,
-                presetsBasePath = COMPOSE_FILES_DIR + "/osmfeatures/default",
-                brandPresetsBasePath = COMPOSE_FILES_DIR + "/osmfeatures/brands"
-            )
-        }
+    single<FeatureDictionary> {
+        FeatureDictionary.create(
+            assetManager = androidContext().assets,
+            presetsBasePath = COMPOSE_FILES_DIR + "/osmfeatures/default",
+            brandPresetsBasePath = COMPOSE_FILES_DIR + "/osmfeatures/brands"
+        )
     }
 
     // error reporting
@@ -70,8 +77,9 @@ val androidModule = module {
     // database
 
     single<Database> {
-        val sqLite = StreetCompleteSQLiteOpenHelper(get(), ApplicationConstants.DATABASE_NAME)
-        AndroidDatabase(sqLite.writableDatabase)
+        val databaseFilePath = get<Context>().getDatabasePath(ApplicationConstants.DATABASE_NAME).path
+        val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
+        DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
     }
 
     // avatars cache dir
@@ -79,6 +87,14 @@ val androidModule = module {
     factory(named("AvatarsCacheDirectory")) {
         Path(androidContext().cacheDir.path, ApplicationConstants.AVATARS_CACHE_DIRECTORY)
     }
+
+    // app store info
+
+    single<AppStoreInfo> { AndroidAppStoreInfo(get()) }
+
+    // AR
+
+    factory<ArSupportChecker> { AndroidArSupportChecker(get()) }
 
     // launch apps
 
@@ -93,7 +109,7 @@ val androidModule = module {
 
     single<SoundEffectPlayer> { AndroidSoundEffectPlayer(androidContext(), COMPOSE_FILES_DIR) }
 
-    // connection
+    // connection availability
 
     factory<ActiveNetworkConnection> { AndroidActiveNetworkConnection(androidContext()) }
 

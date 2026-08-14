@@ -474,7 +474,6 @@
     <string name="theme_dark">ഇരുട്ട്</string>
     <string name="theme_system_default">സിസ്റ്റം ഡിഫാൾട്ട്</string>
     <string name="action_open_location">ലൊക്കേഷൻ വേറൊരു ആപ്പിൽ കാണുക</string>
-    <string name="map_application_missing">മാപ്പ് കാണാൻ കഴിയുന്ന വേറൊരു ആപ്പും ഈ ഫോണിൽ ചേർത്തിട്ടില്ല</string>
     <string name="label_housenumber">വീട്ട് നമ്പർ</string>
     <string name="quest_busStopShelter_covered">സ്റ്റോപ്പ് മൊത്തം മൂടിയിട്ടുണ്ട്</string>
     <string name="quest_ferry_pedestrian_title">ഈ കടത്ത് കാൽനടക്കാരെ കൊണ്ടുപോകുന്നതാണോ?</string>
@@ -746,7 +745,6 @@
     <string name="quest_shop_gone_title">പകരം ഇപ്പോൾ ഇവിടെ എന്താണ് ഉള്ളത്?</string>
     <string name="quest_shop_gone_vacant_answer">അത് ഒഴിഞ്ഞുകിടക്കുന്നു</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
-    <string name="quest_shop_vacant_type_title">ഈ കട ഒഴിഞ്ഞുകിടക്കുന്നു. ഇപ്പോൾ ഇവിടെ എന്താണ്?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">ചില പ്രദേശങ്ങളിൽ ഇത് പ്രയോജനകരമല്ലാത്തതിനാൽ ഈ ക്വസ്റ്റ് തരം ഡീഫോൾട്ടായി അപ്രാപ്തമാക്കിയിരിക്കുന്നു.</string>
     <string name="quest_dietType_explanation_kosher">കോശർ ഉൽപ്പന്നങ്ങൾ പ്രത്യേക നിയമങ്ങൾ അനുസരിച്ച് തയ്യാറാക്കണം; കാഷ്രൂത് സർട്ടിഫിക്കേഷൻ ഏജൻസികൾ അത് അടയാളപ്പെടുത്തുന്നു.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">ഇവിടെ സൈക്കിൾ പാത ഇല്ല</string>
@@ -1427,7 +1425,6 @@
     <string name="quest_charging_station_bicycles_title">ഇവിടെ സൈക്കിളുകളും ചാർജ് ചെയ്യാനാകുമോ?</string>
     <string name="quest_charging_station_bicycles_hint">സൈക്കിൾ ചാർജർ പവർ അഡാപ്റ്ററുകൾ സാധാരണ ഗൃഹ സോക്കറ്റുകളിൽ 插് ചെയ്യാം.</string>
     <string name="quest_tower_access_title">ഈ ടവറിലേക്ക് ആരെ പ്രവേശിപ്പിക്കുന്നു? സൗജന്യമായോ പണമെടുത്തോ ആയിരിക്കാം.</string>
-    <string name="quest_charging_station_bicycles_answer_only">ഇത് സൈക്കിളുകൾക്കായി മാത്രം</string>
     <string name="quest_recycling_type_pet_bottles">PET ബോട്ടിലുകൾ</string>
     <string name="quest_maxweight_add_sign">ബോർഡ് ചേർക്കുക</string>
     <string name="quest_maxweight_remove_sign">ബോർഡ് നീക്കം ചെയ്യുക</string>

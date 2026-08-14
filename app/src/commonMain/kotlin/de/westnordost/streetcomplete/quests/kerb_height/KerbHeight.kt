@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.kerb_height
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class KerbHeight(val osmValue: String) {
     RAISED("raised"),
     LOWERED("lowered"),

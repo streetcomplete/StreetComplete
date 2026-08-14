@@ -2,7 +2,7 @@
 additionalStreetsignLanguages: [international, en]
 additionalValidHousenumberRegex: ((бл\.\s?)?\p{N}{1,4}[\s-]?\p{InCyrillic}?)|((\p{N}{1,4}-){0,2}\p{N}{1,4})
 atmOperators: [UniCredit Bulbank, Банка ДСК, ОББ, Fibank, Пощенска банка, Централна Кооперативна Банка, Euronet, Общинска банка, Shitcoins.club, Allianz, Инвестбанк, EasyPay, International Asset Bank, Texim Bank, Postbank, DBank, Централна кооперативна Банка, БАКБ, FiBank, DigitalAssist, CryptoDesk]
-chargingStationOperators: [Финес Енерджи ООД, Столичен електротранспорт, Финес Енерджи ЕООД, ОП „Общински паркинги и синя зона“ - Варна, Гигачарджър ЕООД, Kaufland, Столичен автотранспорт, Община Варна, Evpoint, Фермер 2016 ООД, Tesla, Fines Charging, Екарс БГ ЕООД, TremolEV, Renault, ProCredit Bank, Lidl, Kia, Gigacharger, GigaCharger]
+chargingStationOperators: [Финес Енерджи ООД, Столичен електротранспорт, Финес Енерджи ЕООД, ОП „Общински паркинги и синя зона“ - Варна, Гигачарджър ЕООД, Kaufland, Столичен автотранспорт, Община Варна, Evpoint, Eldrive, Фермер 2016 ООД, Tesla, Fines Charging, Екарс БГ ЕООД, TremolEV, Renault, ProCredit Bank, Lidl, Kia, Gigacharger, GigaCharger, Electrip]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [TexCycle, БЧК, M-Texx, TEXAID Bulgaria]
 defaultSpeedLimitHasUrbanOrRural: true

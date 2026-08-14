@@ -480,7 +480,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="theme_dark">Sötét</string>
     <string name="theme_system_default">Rendszer alapértelmezett</string>
     <string name="action_open_location">Hely megnyitása egy másik alkalmazásban</string>
-    <string name="map_application_missing">Nincs telepítve másik térképalkalmazás</string>
     <string name="label_housenumber">házszám</string>
     <string name="quest_busStopShelter_covered">Az egész megálló fedett</string>
     <string name="quest_ferry_pedestrian_title">Ez a komp szállít gyalogosokat?</string>
@@ -755,7 +754,6 @@ Ha vannak buszok számára fenntartott sávok is, akkor inkább írj jegyzetet.<
     <string name="quest_shop_gone_title">Mi található itt helyette?</string>
     <string name="quest_shop_gone_vacant_answer">Üresen áll…</string>
     <string name="quest_shop_gone_replaced_answer">Ez egy…</string>
-    <string name="quest_shop_vacant_type_title">Ez az üzlet üresen állt. Mi található most itt?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert egyes régiókban kevésbé hasznos, valamint a küldetés megoldásához jó eséllyel be kell menni az adott helyre.</string>
     <string name="quest_dietType_explanation_kosher">A kóser termékeknek különleges szabályok szerint kell készülniük, valamint rendelkezniük kell a megfelelő intézmények hitelesítésével.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nincs kerékpárút vagy kerékpársáv egyáltalán</string>
@@ -1450,7 +1448,6 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_charging_station_bicycles_title">Kerékpárt is lehet itt tölteni?</string>
     <string name="quest_charging_station_bicycles_hint">A kerékpártöltő adapterek normál háztartási aljzatokba csatlakoztathatók.</string>
     <string name="quest_tower_access_title">Ki férhet hozzá ehhez a toronyhoz? Lehet ingyenes vagy fizetős.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Csak kerékpárok számára</string>
     <string name="quest_recycling_type_pet_bottles">PET-palackok</string>
     <string name="quest_maxweight_add_sign">A tábla hozzáadása</string>
     <string name="quest_maxweight_remove_sign">A tábla eltávolítása</string>

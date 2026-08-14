@@ -35,7 +35,6 @@ class PhotoServiceApiClientImplTest {
         assertEquals(HttpMethod.Post, mockEngine.requestHistory[0].method)
         assertEquals("http://example.com/upload.php", mockEngine.requestHistory[0].url.toString())
         assertEquals(ContentType.Image.JPEG, mockEngine.requestHistory[0].body.contentType)
-        assertEquals("binary", mockEngine.requestHistory[0].headers["Content-Transfer-Encoding"])
 
         assertContentEquals(listOf("market.jpg"), response)
     }

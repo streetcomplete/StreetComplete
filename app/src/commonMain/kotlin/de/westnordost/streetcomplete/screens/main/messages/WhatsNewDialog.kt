@@ -33,7 +33,7 @@ fun WhatsNewDialog(
                 modifier = Modifier.padding(horizontal = 24.dp)
             )
         },
-        buttons = {
+        buttonRow = {
             TextButton(onClick = onDismissRequest) {
                 Text(stringResource(Res.string.ok))
             }

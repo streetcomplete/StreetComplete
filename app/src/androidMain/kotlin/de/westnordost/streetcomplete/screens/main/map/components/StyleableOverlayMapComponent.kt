@@ -13,9 +13,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayColor.Invisible
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
-import de.westnordost.streetcomplete.data.overlays.OverlayStyle.Point
-import de.westnordost.streetcomplete.data.overlays.OverlayStyle.Polygon
-import de.westnordost.streetcomplete.data.overlays.OverlayStyle.Polyline
 import de.westnordost.streetcomplete.screens.main.map.createIconBitmap
 import de.westnordost.streetcomplete.screens.main.map.maplibre.MapImages
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
@@ -26,6 +23,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.isPoint
 import de.westnordost.streetcomplete.screens.main.map.maplibre.queryRenderedFeatures
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toMapLibreGeometry
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
+import de.westnordost.streetcomplete.view.toAndroidResourceId
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.maplibre.android.geometry.LatLng
@@ -216,14 +214,14 @@ class StyleableOverlayMapComponent(
     }
 
     /** Show given map data with each the given style */
-    suspend fun set(styledElements: Collection<StyledElement>) {
-        val icons = styledElements.mapNotNull { it.overlayStyle.getIcon() }
+    suspend fun set(styledElementWithGeometries: Collection<StyledElement>) {
+        val icons = styledElementWithGeometries.mapNotNull { it.overlayStyle.getIcon() }
         mapImages.addOnce(icons) {
             val name = context.resources.getResourceEntryName(it)
             val sdf = name.startsWith("preset_")
             createIconBitmap(context, it, sdf) to sdf
         }
-        val features = styledElements.flatMap { it.toFeatures() }
+        val features = styledElementWithGeometries.flatMap { it.toFeatures() }
         val mapLibreFeatures = FeatureCollection.fromFeatures(features)
         withContext(Dispatchers.Main) { overlaySource.setGeoJson(mapLibreFeatures) }
     }
@@ -238,7 +236,7 @@ class StyleableOverlayMapComponent(
         val properties = feature.properties() ?: return false
 
         val elementKey = getElementKey(properties)
-        if (elementKey != null) {
+        if (elementKey != null && !isDisabled(properties)) {
             onClickElement(elementKey)
             return true
         }
@@ -246,12 +244,12 @@ class StyleableOverlayMapComponent(
     }
 
     private fun StyledElement.toFeatures(): List<Feature> {
-        val p = getElementKeyProperties(element.key)
+        val p = getElementProperties(element.key, overlayStyle.disabled)
 
         return when (overlayStyle) {
             is OverlayStyle.Point -> {
                 if (overlayStyle.icon != null) {
-                    p.addProperty("icon", context.resources.getResourceEntryName(overlayStyle.icon))
+                    p.addProperty("icon", context.resources.getResourceEntryName(overlayStyle.icon.toAndroidResourceId()!!))
                 }
                 if (overlayStyle.label != null) p.addProperty("label", overlayStyle.label)
 
@@ -275,9 +273,10 @@ class StyleableOverlayMapComponent(
 
                 val f = Feature.fromGeometry(geometry.toMapLibreGeometry(), p)
                 val point = if (overlayStyle.label != null || overlayStyle.icon != null) {
-                    val pp = getElementKeyProperties(element.key)
-                    if (overlayStyle.icon != null) {
-                        pp.addProperty("icon", context.resources.getResourceEntryName(overlayStyle.icon))
+                    val pp = getElementProperties(element.key, overlayStyle.disabled)
+                    val iconId = overlayStyle.icon?.toAndroidResourceId()
+                    if (iconId != null) {
+                        pp.addProperty("icon", context.resources.getResourceEntryName(iconId))
                     }
                     if (overlayStyle.label != null) pp.addProperty("label", overlayStyle.label)
                     Feature.fromGeometry(geometry.center.toPoint(), pp)
@@ -345,16 +344,20 @@ class StyleableOverlayMapComponent(
         }
     }
 
+    private fun isDisabled(properties: JsonObject): Boolean =
+        properties[DISABLED]?.asBoolean ?: false
+
     private fun getElementKey(properties: JsonObject): ElementKey? {
         val id = properties[ELEMENT_ID]?.asLong ?: return null
         val type = properties[ELEMENT_TYPE]?.asString ?: return null
         return ElementKey(ElementType.valueOf(type), id)
     }
 
-    private fun getElementKeyProperties(key: ElementKey): JsonObject {
+    private fun getElementProperties(key: ElementKey, disabled: Boolean): JsonObject {
         val p = JsonObject()
         p.addProperty(ELEMENT_ID, key.id)
         p.addProperty(ELEMENT_TYPE, key.type.name)
+        if (disabled) p.addProperty(DISABLED, disabled)
         return p
     }
 
@@ -368,6 +371,7 @@ class StyleableOverlayMapComponent(
 
         private const val ELEMENT_TYPE = "element_type"
         private const val ELEMENT_ID = "element_id"
+        private const val DISABLED = "clickable"
 
         private const val MIN_ZOOM = 14
     }
@@ -406,7 +410,7 @@ private fun isBridge(tags: Map<String, String>): Boolean =
     tags["bridge"] != null && tags["bridge"] != "no"
 
 private fun OverlayStyle.getIcon(): Int? = when (this) {
-    is OverlayStyle.Point -> icon
-    is OverlayStyle.Polygon -> icon
+    is OverlayStyle.Point -> icon?.toAndroidResourceId()
+    is OverlayStyle.Polygon -> icon?.toAndroidResourceId()
     is OverlayStyle.Polyline -> null
 }

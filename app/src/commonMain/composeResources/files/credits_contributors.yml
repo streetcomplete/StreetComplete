@@ -1,8 +1,8 @@
 - name: "Tobias Zwick"
   githubUsername: "westnordost"
-  linesOfCodeChanged: 582235
-  linesOfInterfaceMarkupChanged: 174905
-  assetFilesChanged: 2303
+  linesOfCodeChanged: 585506
+  linesOfInterfaceMarkupChanged: 175046
+  assetFilesChanged: 2304
 - name: "Mateusz Konieczny"
   githubUsername: "matkoniecz"
   linesOfCodeChanged: 22353
@@ -10,7 +10,7 @@
   assetFilesChanged: 636
 - name: "Flo Edelmann"
   githubUsername: "FloEdelmann"
-  linesOfCodeChanged: 21814
+  linesOfCodeChanged: 21820
   linesOfInterfaceMarkupChanged: 3733
   assetFilesChanged: 152
 - name: "Helium314"
@@ -30,7 +30,7 @@
   assetFilesChanged: 4
 - name: "Matija Nalis"
   githubUsername: "mnalis"
-  linesOfCodeChanged: 3746
+  linesOfCodeChanged: 3763
   linesOfInterfaceMarkupChanged: 607
   assetFilesChanged: 72
 - name: "arrival-spring"
@@ -45,9 +45,9 @@
 - name: "riQQ"
   githubUsername: "riQQ"
   linesOfCodeChanged: 2366
-- name: "paukli"
+- name: "arthedain"
   githubUsername: "paulklie"
-  linesOfCodeChanged: 2149
+  linesOfCodeChanged: 2357
   linesOfInterfaceMarkupChanged: 203
   assetFilesChanged: 58
 - name: "YoshiRulz"
@@ -163,6 +163,9 @@
 - name: "Filip Czaplicki"
   githubUsername: "starsep"
   linesOfCodeChanged: 190
+- name: "Kilian Koeltzsch"
+  githubUsername: "kiliankoe"
+  linesOfCodeChanged: 188
 - name: "wouter van der plas"
   githubUsername: "wvanderp"
   linesOfCodeChanged: 178
@@ -216,6 +219,10 @@
   githubUsername: "Southernswampfrog"
   linesOfCodeChanged: 104
   assetFilesChanged: 36
+- name: "Thirumani Vihaan"
+  githubUsername: "thirumani-vihaan"
+  linesOfCodeChanged: 95
+  assetFilesChanged: 4
 - name: "Dosenpfand"
   githubUsername: "Dosenpfand"
   linesOfCodeChanged: 91
@@ -312,6 +319,9 @@
 - name: "Grzegorz Olędzki"
   githubUsername: "mccartney"
   linesOfCodeChanged: 10
+- name: "Gerit Wagner"
+  githubUsername: "geritwagner"
+  linesOfCodeChanged: 8
 - name: "klemens"
   linesOfCodeChanged: 8
 - name: "Ben Wiederhake"

@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.tracktype
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class Tracktype(val osmValue: String) {
     GRADE1("grade1"),
     GRADE2("grade2"),

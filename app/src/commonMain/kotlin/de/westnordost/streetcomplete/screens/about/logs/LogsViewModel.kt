@@ -3,13 +3,20 @@ package de.westnordost.streetcomplete.screens.about.logs
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.data.logs.LogMessage
-import de.westnordost.streetcomplete.data.logs.LogsController
 import de.westnordost.streetcomplete.data.logs.LogsFilters
 import de.westnordost.streetcomplete.data.logs.LogsSource
+import de.westnordost.streetcomplete.data.logs.format
+import de.westnordost.streetcomplete.util.ktx.now
 import de.westnordost.streetcomplete.util.ktx.systemTimeNow
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import de.westnordost.streetcomplete.util.ktx.toLocalDate
+import io.github.vinceglb.filekit.FileKit
+import io.github.vinceglb.filekit.PlatformFile
+import io.github.vinceglb.filekit.cacheDir
+import io.github.vinceglb.filekit.writeString
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
@@ -21,6 +28,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.plus
+import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 
@@ -30,6 +38,8 @@ abstract class LogsViewModel : ViewModel() {
     abstract val logs: StateFlow<List<LogMessage>>
 
     abstract fun setFilters(filters: LogsFilters)
+
+    abstract suspend fun createLogsFile(): PlatformFile
 }
 
 @Stable
@@ -60,7 +70,14 @@ class LogsViewModelImpl(
     @OptIn(ExperimentalCoroutinesApi::class)
     override val logs: StateFlow<List<LogMessage>> =
         filters.transformLatest { filters ->
-            val logs = logsSource.getLogs(filters).toMutableList()
+            val logs = logsSource
+                .getLogs(
+                    levels = filters.levels,
+                    messageContains = filters.messageContains,
+                    newerThan = filters.timestampNewerThan?.toEpochMilli(),
+                    olderThan = filters.timestampOlderThan?.toEpochMilli()
+                )
+                .toMutableList()
 
             emit(UniqueList(logs))
 
@@ -73,15 +90,17 @@ class LogsViewModelImpl(
     override fun setFilters(filters: LogsFilters) {
         this.filters.value = filters
     }
-}
 
-private fun LogsSource.getLogs(filters: LogsFilters) =
-    getLogs(
-        levels = filters.levels,
-        messageContains = filters.messageContains,
-        newerThan = filters.timestampNewerThan?.toEpochMilli(),
-        olderThan = filters.timestampOlderThan?.toEpochMilli()
-    )
+    override suspend fun createLogsFile(): PlatformFile {
+        val logTimestamp = LocalDateTime.now().toString()
+        val logTitle = "${ApplicationConstants.NAME}_${BuildConfig.VERSION_NAME}_$logTimestamp.log"
+        val file = PlatformFile(FileKit.cacheDir, logTitle)
+        withContext(Dispatchers.IO) {
+            file.writeString(logs.value.format())
+        }
+        return file
+    }
+}
 
 /** List that only returns true on equals if it is compared to the same instance */
 // this is necessary so that Compose recognizes that the view should be updated after list changed

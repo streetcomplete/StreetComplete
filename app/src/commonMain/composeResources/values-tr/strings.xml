@@ -481,7 +481,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="theme_dark">Koyu</string>
     <string name="theme_system_default">Sistem varsayılanı</string>
     <string name="action_open_location">Konumu başka bir uygulamada aç</string>
-    <string name="map_application_missing">Yüklenmiş başka harita uygulaması yok</string>
     <string name="label_housenumber">ev numarası</string>
     <string name="quest_busStopShelter_covered">Durağın üstü kapalı</string>
     <string name="quest_ferry_pedestrian_title">Bu feribot yayaları taşıyor mu?</string>
@@ -754,7 +753,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="quest_shop_gone_title">Onun yerine şimdi burada ne var?</string>
     <string name="quest_shop_gone_vacant_answer">Boş</string>
     <string name="quest_shop_gone_replaced_answer">Bir…</string>
-    <string name="quest_shop_vacant_type_title">Bu dükkân boştu. Şimdi burada ne var?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Bu görev türü varsayılan olarak devre dışı bırakılmıştır çünkü bazı bölgelerde kullanışlı değildir ve bu türden bir görevi cevaplayabilmek için büyük olasılıkla bir yere girmeniz gerekecektir.</string>
     <string name="quest_dietType_explanation_kosher">Kaşar ürünler kaşrut sertifika ajanslarının ürünleri uygun işaretlemek için kabul ettiği özel koşullara göre hazırlanmalıdır.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Hiç bisiklet yolu yok</string>
@@ -840,7 +838,7 @@ Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bis
     <string name="quest_buildingLevels_title2">Bodrum katının üstündeki kattan başlayarak bu binanın kaç katı var?</string>
     <string name="quest_buildingLevels_title_buildingPart2">Bodrum katının üstündeki kattan başlayarak bu bina parçasının kaç katı var?</string>
     <string name="pref_subtitle_quests_preset_name">Düzenlenen ön ayar: %1$s</string>
-    <string name="default_disabled_msg_roofShape">Bu görev tipi varsayılan olarak devre dışıdır çünkü binaların çatıları çoğunlukla yerden gözükmez. Ayrıca çok da vakit kaybettiricidir çünkü çoğu zaman çatı tiplerine uydu görüntülerinden bakmak daha avantajlıdır</string>
+    <string name="default_disabled_msg_roofShape">Çatıların şekli sokak hizasından bakıldığında rahatça anlaşılmadığından bu görev türü varsayılan olarak devre dışı bırakılmıştır. Aynı zamanda oldukça zaman alan bu sürecin evden, uydu görüntüleri üzerinden tamamlanması çoğu durumda hem daha kolay hem de daha verimlidir.</string>
     <string name="quest_religion_animist">Animist</string>
     <string name="quest_construction_steps_title">Bu basamaklar tamamlandı mı?</string>
     <string name="pref_quests_deselect_all">Tüm görevlerin seçimi iptal edilsin mi?</string>
@@ -1443,7 +1441,6 @@ Bir seviye, pencereleri çatıda olduğunda bir çatı seviyesi olarak sayılır
     <string name="quest_charging_station_bicycles_title">Burada bisikletler de şarj edilebiliyor mu?</string>
     <string name="quest_charging_station_bicycles_hint">Bisiklet şarj cihazı güç adaptörleri normal ev prizlerine takılır.</string>
     <string name="quest_tower_access_title">Bu kuleye kimler erişebilir? Erişim ücretsiz veya ücretli olabilir.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Bu sadece bisikletler için geçerli.</string>
     <string name="quest_recycling_type_pet_bottles">PET şişeler</string>
     <string name="quest_maxweight_add_sign">İşaret ekle</string>
     <string name="quest_maxweight_remove_sign">İşaret sil</string>

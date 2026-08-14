@@ -1,0 +1,43 @@
+package de.westnordost.streetcomplete.quests.traffic_signals_button
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.osm.isCrossingWithTrafficSignals
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.toYesNo
+
+class AddTrafficSignalsButton : OsmFilterQuestType<Boolean>() {
+
+    override val elementFilter = """
+        nodes with
+          (crossing = traffic_signals or crossing:signals = yes)
+          and highway ~ crossing|traffic_signals
+          and foot != no
+          and !button_operated
+    """
+    override val changesetComment = "Specify whether traffic signals have a button for pedestrians"
+    override val wikiLink = "Tag:highway=traffic_signals"
+    override val icon = Res.drawable.quest_traffic_lights_button
+    override val title = Res.string.quest_traffic_signals_button_title
+    override val achievements = listOf(PEDESTRIAN)
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.asSequence().filter { it.isCrossingWithTrafficSignals() }
+
+    @Composable
+    override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        YesNoQuestForm(on)
+    }
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["button_operated"] = answer.toYesNo()
+    }
+}

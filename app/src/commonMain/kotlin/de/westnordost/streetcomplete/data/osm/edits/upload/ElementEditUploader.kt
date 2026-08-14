@@ -26,6 +26,8 @@ class ElementEditUploader(
     /** Apply the given change to the given element and upload it
      *
      *  @throws ConflictException if element has been changed server-side in an incompatible way
+     *  @throws IllegalArgumentException if element edit produces invalid data (e.g. if
+     *          key or value of any OSM tag is too long)
      */
     suspend fun upload(edit: ElementEdit, getIdProvider: () -> ElementIdProvider): MapDataUpdates {
         // certain edit types don't allow building changes on top of cached map data

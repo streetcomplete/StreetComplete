@@ -5,7 +5,6 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.expectSuccess
-import io.ktor.client.request.header
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.http.ContentType
@@ -16,6 +15,7 @@ import io.ktor.utils.io.ByteReadChannel
 import kotlinx.io.buffered
 import kotlinx.io.files.FileSystem
 import kotlinx.io.files.Path
+import kotlinx.io.readByteArray
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
@@ -36,8 +36,10 @@ class PhotoServiceApiClientImpl(
 
             val response = httpClient.post(baseUrl + "upload.php") {
                 contentType(ContentType.defaultForFilePath(file.toString()))
-                header("Content-Transfer-Encoding", "binary")
-                setBody(ByteReadChannel(fileSystem.source(file).buffered()))
+                // we read the whole file into a byte array rather than stream it, see
+                // https://github.com/streetcomplete/StreetComplete/issues/6959 / https://youtrack.jetbrains.com/issue/KTOR-9737
+                //setBody(ByteReadChannel(fileSystem.source(file).buffered()))
+                setBody(fileSystem.source(file).buffered().readByteArray())
                 expectSuccess = true
             }
 

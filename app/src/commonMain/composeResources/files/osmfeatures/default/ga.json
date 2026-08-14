@@ -31,7 +31,7 @@
         },
         "amenity/bar": {
           "name": "Teach Tábhairne",
-          "aliases": "Beár\nTeach Ósta"
+          "aliases": ["Beár", "Teach Ósta"]
         },
         "amenity/bench": {
           "name": "Binse"
@@ -92,7 +92,7 @@
         },
         "amenity/doctors/cardiology": {
           "name": "Cairdeolaí",
-          "aliases": "Dochtúir croí"
+          "aliases": ["Dochtúir croí"]
         },
         "amenity/doctors/dermatology": {
           "name": "Deirmeolaí"
@@ -132,7 +132,7 @@
         },
         "amenity/doctors/pulmonology": {
           "name": "Scamhógeolaí",
-          "aliases": "Saineolaí scamhóg"
+          "aliases": ["Saineolaí scamhóg"]
         },
         "amenity/doctors/radiology": {
           "name": "Raideolaí"
@@ -151,7 +151,7 @@
         },
         "amenity/fountain": {
           "name": "Scairdeán",
-          "aliases": "Fuarán"
+          "aliases": ["Fuarán"]
         },
         "amenity/grave_yard": {
           "name": "Reilig"
@@ -161,7 +161,7 @@
         },
         "amenity/marketplace": {
           "name": "Margadh",
-          "aliases": "Áit an Mhargaidh"
+          "aliases": ["Áit an Mhargaidh"]
         },
         "amenity/nightclub": {
           "name": "Club oíche"
@@ -174,22 +174,22 @@
         },
         "amenity/police": {
           "name": "Póilíní",
-          "aliases": "Gardaí"
+          "aliases": ["Gardaí"]
         },
         "amenity/pub": {
           "name": "Teach Tábhairne",
-          "aliases": "Pub"
+          "aliases": ["Pub"]
         },
         "amenity/restaurant": {
           "name": "Bialann"
         },
         "amenity/shelter": {
           "name": "Scáthlán",
-          "aliases": "Foscadán"
+          "aliases": ["Foscadán"]
         },
         "amenity/telephone": {
           "name": "Teileafón",
-          "aliases": "Fón"
+          "aliases": ["Fón"]
         },
         "amenity/theatre": {
           "name": "Amharclann"
@@ -199,14 +199,14 @@
         },
         "amenity/toilets": {
           "name": "Leithris",
-          "aliases": "Leithreas"
+          "aliases": ["Leithreas"]
         },
         "amenity/vending_machine": {
           "name": "Meaisín Díola"
         },
         "amenity/vending_machine/bicycle_tube": {
           "name": "Meaisín Díola Feadán Rothair",
-          "aliases": "Meaisín Díola Tiúb Rothair"
+          "aliases": ["Meaisín Díola Tiúb Rothair"]
         },
         "amenity/vending_machine/bread": {
           "name": "Meaisín Díola Aráin"
@@ -234,11 +234,11 @@
         },
         "amenity/waste_basket": {
           "name": "Bosca Bruscair",
-          "aliases": "Canna Bruscair"
+          "aliases": ["Canna Bruscair"]
         },
         "area": {
           "name": "Limistéar",
-          "aliases": "Crios\nCeantar\nLáthair"
+          "aliases": ["Crios", "Ceantar", "Láthair"]
         },
         "attraction/train": {
           "name": "Traein Turasóireachta"
@@ -263,11 +263,11 @@
         },
         "barrier/ditch": {
           "name": "Díog",
-          "aliases": "Clais\nTrinse"
+          "aliases": ["Clais", "Trinse"]
         },
         "barrier/entrance": {
           "name": "Slí Isteach",
-          "aliases": "Bealach Isteach"
+          "aliases": ["Bealach Isteach"]
         },
         "barrier/fence": {
           "name": "Claí"
@@ -289,7 +289,7 @@
         },
         "barrier/stile": {
           "name": "Dreapa",
-          "aliases": "Strapa\nCéim"
+          "aliases": ["Strapa", "Céim"]
         },
         "barrier/swing_gate": {
           "name": "Geata Luscadh"
@@ -374,7 +374,7 @@
         },
         "building/house/terraced": {
           "name": "Teach Cathrach",
-          "aliases": "Teach Baile Mór\nTeach Baile Mhóir"
+          "aliases": ["Teach Baile Mór", "Teach Baile Mhóir"]
         },
         "building/houseboat": {
           "name": "Teach Bád"
@@ -582,19 +582,19 @@
         },
         "emergency/fire_hydrant": {
           "name": "Hiodrant Dóiteáin",
-          "aliases": "Béal Tuile"
+          "aliases": ["Béal Tuile"]
         },
         "emergency/fire_hydrant/pillar": {
           "name": "Hiodrant Dóiteáin Colúin",
-          "aliases": "Béal Tuile Colúin"
+          "aliases": ["Béal Tuile Colúin"]
         },
         "emergency/fire_hydrant/underground": {
           "name": "Hiodrant Dóiteáin Faoi Thalamh",
-          "aliases": "Béal Tuile Faoi Thalamh"
+          "aliases": ["Béal Tuile Faoi Thalamh"]
         },
         "emergency/phone": {
           "name": "Guthán Éigeandála",
-          "aliases": "Fón Éigeandála\nTeileafón Éigeandála"
+          "aliases": ["Fón Éigeandála", "Teileafón Éigeandála"]
         },
         "entrance/emergency": {
           "name": "Bealach Éalaithe"
@@ -676,8 +676,8 @@
         },
         "highway/cycleway/traffic_island_shared": {
           "name": "Oileán Tráchta Rothair ⁊ Coisithe",
-          "terms": "oileán tráchta,tearmann tráchta",
-          "aliases": "Tearmann Tráchta Rothair ⁊ Coisithe"
+          "terms": ["oileán tráchta", "tearmann tráchta"],
+          "aliases": ["Tearmann Tráchta Rothair ⁊ Coisithe"]
         },
         "highway/footway": {
           "name": "Cosán"
@@ -711,7 +711,7 @@
         },
         "highway/path": {
           "name": "Cosán",
-          "aliases": "Conair\nSlí"
+          "aliases": ["Conair", "Slí"]
         },
         "highway/path/boardwalk": {
           "name": "Clárchosán"
@@ -736,21 +736,21 @@
         },
         "highway/residential": {
           "name": "Bóthar Cónaithe",
-          "terms": "sráid cónaithe"
+          "terms": ["sráid cónaithe"]
         },
         "highway/secondary": {
           "name": "Fobhóthar"
         },
         "highway/service/alley": {
           "name": "Lána",
-          "aliases": "Caolsráid"
+          "aliases": ["Caolsráid"]
         },
         "highway/service/drive-through": {
           "name": "Carrsheirbhíse"
         },
         "highway/service/driveway": {
           "name": "Cabhsa",
-          "aliases": "Cabhsán"
+          "aliases": ["Cabhsán"]
         },
         "highway/steps": {
           "name": "Céimeanna"
@@ -784,14 +784,14 @@
         },
         "historic/memorial": {
           "name": "Leacht Cuimhneacháin",
-          "aliases": "Leac Chuimhneacháin"
+          "aliases": ["Leac Chuimhneacháin"]
         },
         "historic/monument": {
           "name": "Leacht"
         },
         "historic/ruins": {
           "name": "Fothrach",
-          "aliases": "Ballóga"
+          "aliases": ["Ballóga"]
         },
         "historic/tomb": {
           "name": "Tuama"
@@ -807,30 +807,30 @@
         },
         "landuse/construction": {
           "name": "Limistéar Tógála",
-          "terms": "láithreán tógála"
+          "terms": ["láithreán tógála"]
         },
         "landuse/farm": {
           "name": "Talamh Feirme",
-          "aliases": "Talamh Feilme"
+          "aliases": ["Talamh Feilme"]
         },
         "landuse/farmland": {
           "name": "Talamh Feirme",
-          "aliases": "Talamh Feilme"
+          "aliases": ["Talamh Feilme"]
         },
         "landuse/farmyard": {
           "name": "Clós Feirme",
-          "aliases": "Clós Feilme"
+          "aliases": ["Clós Feilme"]
         },
         "landuse/grass": {
           "name": "Féar"
         },
         "landuse/harbour": {
           "name": "Cuan",
-          "aliases": "Caladh\nCalafort"
+          "aliases": ["Caladh", "Calafort"]
         },
         "landuse/meadow": {
           "name": "Cluain",
-          "aliases": "Móinéar"
+          "aliases": ["Móinéar"]
         },
         "landuse/military/barracks": {
           "name": "Beairic"
@@ -843,7 +843,7 @@
         },
         "landuse/pond": {
           "name": "Lochán",
-          "aliases": "Linn"
+          "aliases": ["Linn"]
         },
         "landuse/quarry": {
           "name": "Cairéal"
@@ -856,7 +856,7 @@
         },
         "leisure/garden": {
           "name": "Gairdín",
-          "aliases": "Garraí"
+          "aliases": ["Garraí"]
         },
         "leisure/marina": {
           "name": "Mairíne"
@@ -866,11 +866,11 @@
         },
         "leisure/playground": {
           "name": "Áit Súgartha",
-          "aliases": "Clós Súgartha"
+          "aliases": ["Clós Súgartha"]
         },
         "leisure/slipway": {
           "name": "Fánán",
-          "aliases": "Slip\nSleamhnán"
+          "aliases": ["Slip", "Sleamhnán"]
         },
         "leisure/stadium": {
           "name": "Staid"
@@ -913,11 +913,11 @@
         },
         "natural/grassland": {
           "name": "Talamh Féaraigh",
-          "aliases": "Féarthalamh\nFéarach"
+          "aliases": ["Féarthalamh", "Féarach"]
         },
         "natural/heath": {
           "name": "Móinteach",
-          "aliases": "Fraochmhá"
+          "aliases": ["Fraochmhá"]
         },
         "natural/peak": {
           "name": "Binn"
@@ -927,7 +927,7 @@
         },
         "natural/spring": {
           "name": "Tobar",
-          "aliases": "Fuinse Uisce\nFuarán"
+          "aliases": ["Fuinse Uisce", "Fuarán"]
         },
         "natural/tree": {
           "name": "Crann"
@@ -940,22 +940,22 @@
         },
         "natural/tree/broadleaved/evergreen": {
           "name": "Crann Leathanduilleach (síorghlas)",
-          "terms": "duillí leathana,duilleoga leathana"
+          "terms": ["duillí leathana", "duilleoga leathana"]
         },
         "natural/tree/needleleaved/evergreen": {
           "name": "Crann Spíonduilleach (síorghlas)",
-          "terms": "duillí spíonacha,duilleoga spíonacha"
+          "terms": ["duillí spíonacha", "duilleoga spíonacha"]
         },
         "natural/water": {
           "name": "Uisce",
-          "aliases": "Dobhar"
+          "aliases": ["Dobhar"]
         },
         "natural/water/lake": {
           "name": "Loch"
         },
         "natural/water/pond": {
           "name": "Lochán",
-          "aliases": "Linn"
+          "aliases": ["Linn"]
         },
         "natural/water/reservoir": {
           "name": "Taiscumar"
@@ -1016,7 +1016,7 @@
         },
         "place/hamlet": {
           "name": "Gráig",
-          "aliases": "Sráidbhaile"
+          "aliases": ["Sráidbhaile"]
         },
         "place/island": {
           "name": "Oileán"
@@ -1092,7 +1092,7 @@
         },
         "railway/narrow_gauge": {
           "name": "Iarnród Caol",
-          "aliases": "Rian Caol"
+          "aliases": ["Rian Caol"]
         },
         "railway/platform": {
           "name": "Ardán Traenach"
@@ -1138,19 +1138,19 @@
         },
         "shop/boutique": {
           "name": "Búitíc",
-          "aliases": "Boutique"
+          "aliases": ["Boutique"]
         },
         "shop/butcher": {
           "name": "Búistéir",
-          "aliases": "Siopa Búistéara"
+          "aliases": ["Siopa Búistéara"]
         },
         "shop/chemist": {
           "name": "Cógaslann",
-          "aliases": "Siopa Poitigéara"
+          "aliases": ["Siopa Poitigéara"]
         },
         "shop/deli": {
           "name": "Deilí",
-          "aliases": "Delicatessen"
+          "aliases": ["Delicatessen"]
         },
         "shop/florist": {
           "name": "Siopa Bláthanna"
@@ -1160,11 +1160,11 @@
         },
         "shop/hairdresser": {
           "name": "Gruagaire",
-          "aliases": "Siopa Gruagaire"
+          "aliases": ["Siopa Gruagaire"]
         },
         "shop/kiosk": {
           "name": "Both",
-          "aliases": "Stainnín"
+          "aliases": ["Stainnín"]
         },
         "shop/locksmith": {
           "name": "Glasadóir"
@@ -1186,7 +1186,7 @@
         },
         "tourism/artwork": {
           "name": "Obair Ealaíne",
-          "aliases": "Saothar Ealaíne"
+          "aliases": ["Saothar Ealaíne"]
         },
         "tourism/artwork/bust": {
           "name": "Busta"
@@ -1211,7 +1211,7 @@
         },
         "tourism/hotel": {
           "name": "Óstán",
-          "aliases": "Óstlann"
+          "aliases": ["Óstlann"]
         },
         "tourism/information": {
           "name": "Eolas"
@@ -1221,7 +1221,7 @@
         },
         "tourism/motel": {
           "name": "Óstán Cois Bóthair",
-          "aliases": "Óstán"
+          "aliases": ["Óstán"]
         },
         "tourism/museum": {
           "name": "Músaem"
@@ -1231,7 +1231,7 @@
         },
         "tourism/zoo": {
           "name": "Zú",
-          "aliases": "Gairdín Ainmhithe"
+          "aliases": ["Gairdín Ainmhithe"]
         },
         "traffic_calming/bump": {
           "name": "Uchtóg Mhoillithe"
@@ -1274,7 +1274,7 @@
         },
         "type/route": {
           "name": "Bealach",
-          "aliases": "Slí"
+          "aliases": ["Slí"]
         },
         "type/route/subway": {
           "name": "Líne Meitreo"
@@ -1284,7 +1284,7 @@
         },
         "type/route/tram": {
           "name": "Bealach Tram",
-          "aliases": "Slí Tram"
+          "aliases": ["Slí Tram"]
         },
         "waterway/canal": {
           "name": "Canáil"

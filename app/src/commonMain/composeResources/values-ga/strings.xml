@@ -454,7 +454,6 @@
     <string name="theme_dark">Dorcha</string>
     <string name="theme_system_default">Réamhshocrú an chórais</string>
     <string name="action_open_location">Oscail an suíomh le haip eile</string>
-    <string name="map_application_missing">Níl aon aip léarscáile eile suiteáilte</string>
     <string name="label_housenumber">uimhir tí</string>
     <string name="quest_busStopShelter_covered">Tá an stad ar fad faoi dhíon</string>
     <string name="quest_ferry_pedestrian_title">An bhfuil coisithe in ann taistil ar an tseirbhís farantóireachta seo?</string>
@@ -729,7 +728,6 @@ Mura bhaineann sé leis an stráice aibhsithe ar fad, is féidir leat "%1$s" a r
     <string name="quest_shop_gone_title">Cad atá ann anois ina áit?</string>
     <string name="quest_shop_gone_vacant_answer">Tá sé folamh…</string>
     <string name="quest_shop_gone_replaced_answer">Tá…</string>
-    <string name="quest_shop_vacant_type_title">Bhíodh an siopa seo folamh. Cád atá ann anois?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Tá an cineál taisc seo díchumasaithe de ghnáth mar níl sé úsáideach i roinnt ceantair, agus is dócha go mbeadh ort dul isteach san áit chun ceist mar sin a fhreagairt.</string>
     <string name="quest_dietType_explanation_kosher">Is gá táirgí kosher a ullmhú de réir rialacha speisialta, agus léiríonn na gníomhaireachtaí deimhniúcháin kashrut a gcomhlíonadh.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Níl aon lána ná raon rothar ar fad</string>
@@ -1408,7 +1406,6 @@ Bog anois í?</string>
     <string name="quest_charging_station_bicycles_title">An bhfuil áit anseo le luchtú rothair chomh maith?</string>
     <string name="quest_charging_station_bicycles_hint">Is féidir na cuibheoir don luchtú rothair a phlugáil isteach sna ghnáthshoicéidí tí.</string>
     <string name="quest_tower_access_title">Cé ag a bhfuil cead dul isteach sa túr seo? Is cuma má tá táille ann nó mura bhfuil.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Is do rothair amháin é</string>
     <string name="quest_recycling_type_pet_bottles">Buidéil TPE</string>
     <string name="quest_maxweight_add_sign">Cuir comhartha leis</string>
     <string name="quest_maxweight_remove_sign">Bain comhartha</string>
@@ -1463,4 +1460,5 @@ Bog anois í?</string>
     <string name="quest_maxspeed_answer_roadtype_lit">soilsithe</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">neamhshoilsithe</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">neamhshoilsithe ⁊ is débhealach í</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Scríobh cad atá uait</string>
 </resources>

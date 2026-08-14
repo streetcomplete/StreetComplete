@@ -28,11 +28,11 @@ import org.jetbrains.compose.resources.stringResource
     mapRotation: Float,
     mapTilt: Float,
     isLeftHandTraffic: Boolean,
+    countryCode: String?,
     modifier: Modifier = Modifier,
     lastPicked: List<Sides<Surface>> = emptyList(),
     hasSidewalkLeft: Boolean = true,
     hasSidewalkRight: Boolean = true,
-    countryCode: String? = null,
 ) {
     var showPickerForSide by remember { mutableStateOf<Side?>(null) }
 

@@ -480,7 +480,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="theme_dark">Mörkt</string>
     <string name="theme_system_default">Systemstandard</string>
     <string name="action_open_location">Öppna plats i en annan app</string>
-    <string name="map_application_missing">Ingen annan kartapplikation installerad</string>
     <string name="label_housenumber">husnummer</string>
     <string name="quest_busStopShelter_covered">Hela hållplatsen har tak</string>
     <string name="quest_ferry_pedestrian_title">Transporterar denna färjelinje fotgängare?</string>
@@ -756,7 +755,6 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="quest_shop_gone_title">Vad ligger här nu istället?</string>
     <string name="quest_shop_gone_vacant_answer">Den är tom…</string>
     <string name="quest_shop_gone_replaced_answer">En/ett…</string>
-    <string name="quest_shop_vacant_type_title">Denna butik har varit ledig. Vad ligger här nu?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Uppdragstypen är inaktiverad som standard eftersom den inte är användbar i vissa regioner och du troligtvis behöver gå inomhus för att kunna besvara den.</string>
     <string name="quest_dietType_explanation_kosher">Kosherprodukter måste beredas enligt särskilda regler, med kashrut-certifieringsbyråer som märker produkter i enlighet.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Ingen cykelväg alls</string>
@@ -1431,7 +1429,6 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_charging_station_bicycles_title">Kan man ladda cyklar här också?</string>
     <string name="quest_charging_station_bicycles_hint">Strömadaptrarna till cykelladdarna ansluts till vanliga hushållsuttag.</string>
     <string name="quest_tower_access_title">Vem har tillträde till detta torn? Oavsett om det är avgiftsbelagt eller ej.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Det är bara för cyklar</string>
     <string name="quest_recycling_type_pet_bottles">PET flaska</string>
     <string name="quest_maxweight_add_sign">Lägg till skylt</string>
     <string name="quest_maxweight_remove_sign">Ta bort skylt</string>
@@ -1469,6 +1466,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_openingHours_no_fixed_end">ingen fastställd sluttid</string>
     <string name="quest_openingHours_from">från kl. %1$s</string>
     <string name="quest_openingHours_until_late">%1$s till sent</string>
+    <string name="quest_collectionTimes_answer_time_spans">Inom ett tidsintervall…</string>
     <string name="quest_collectionTimes_answer_time_points">Vid specifika tidpunkter…</string>
     <string name="quest_shower_hot_water_title">Finns det varmvatten här?</string>
     <string name="calendar_new_event_title">Nytt OSM-evenemang i ditt område!</string>
@@ -1485,4 +1483,8 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_maxspeed_answer_roadtype_not_lit">inte upplyst</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Oupplyst och tvåfilig väg</string>
     <string name="quest_board_type_tourism">Turism (flera ämnen)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Endast ett markerat körfält</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Skriv in vad du söker</string>
+    <string name="link_gomap_description">Avancerad OSM-redigerare för iOS</string>
+    <string name="quest_place_vacant_type_title">Den här lokalen har stått tom. Vad finns här nu?</string>
 </resources>

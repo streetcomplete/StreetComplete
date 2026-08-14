@@ -32,7 +32,6 @@ import org.jetbrains.compose.resources.painterResource
     modifier: Modifier = Modifier,
     getFloatingPainter: @Composable (T?, Side) -> Painter? = { _, _ -> null },
     lastPicked: List<Sides<T>> = emptyList(),
-    lastPickedContentPadding: PaddingValues = PaddingValues.Zero,
     enabled: Boolean = true,
     isLeftSideVisible: Boolean = true,
     isRightSideVisible: Boolean = true,
@@ -77,8 +76,7 @@ import org.jetbrains.compose.resources.painterResource
                 onClick = { onValueChanged(it) },
                 modifier = Modifier
                     .padding(8.dp)
-                    .align(Alignment.BottomStart)
-                    .padding(lastPickedContentPadding),
+                    .align(Alignment.BottomStart),
                 chipBorder = BorderStroke(1.dp, MaterialTheme.colors.divider),
                 chipContentPadding = PaddingValues.Zero,
             ) { value ->

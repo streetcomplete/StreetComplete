@@ -455,7 +455,6 @@
     <string name="theme_dark">Цёмная</string>
     <string name="theme_system_default">Згодна з наладамі сістэмы</string>
     <string name="action_open_location">Адкрыць месцазнаходжанне ў іншай праграме</string>
-    <string name="map_application_missing">Іншыя картаграфічныя праграмы не ўсталяваны</string>
     <string name="label_housenumber">нумар дома</string>
     <string name="quest_busStopShelter_covered">У прыпынку ёсць падстрэшак</string>
     <string name="quest_ferry_pedestrian_title">Гэты паром перавозіць пешаходаў?</string>
@@ -730,7 +729,6 @@
     <string name="quest_shop_gone_title">Што зараз тут знаходзіцца замест?</string>
     <string name="quest_shop_gone_vacant_answer">Адсюль з’ехалі…</string>
     <string name="quest_shop_gone_replaced_answer">...</string>
-    <string name="quest_shop_vacant_type_title">Крама з’ехала. Што тут зараз размешчана?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Дадзены тып заданняў адключаны па змаўчанні, бо ён бескарысны ў некаторых рэгіёнах і, хутчэй за ўсё, патрабуецца зайсці ў гэтае месца, каб вырашыць заданні гэтага тыпу.</string>
     <string name="quest_dietType_explanation_kosher">Кашэрныя прадукты павінны быць прыгатаваны па спецыяльных правілах, з маркіроўкай агенцтва па сертыфікацыі кашруту.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Увогуле няма ні веласіпеднай паласы, ні дарожкі</string>
@@ -1409,7 +1407,6 @@
     <string name="quest_charging_station_bicycles_title">Ці можна тут зараджаць ровары?</string>
     <string name="quest_charging_station_bicycles_hint">Зарадныя прылады для ровара падключаюцца да звычайных бытавых разетак.</string>
     <string name="quest_tower_access_title">Хто можа атрымаць доступ да гэтай вежы? Гэта можа быць бясплатна або платна.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Гэта толькі для ровараў</string>
     <string name="quest_recycling_type_pet_bottles">Пластыкавыя бутэлькі</string>
     <string name="quest_maxweight_add_sign">Дадаць подпіс</string>
     <string name="quest_maxweight_remove_sign">Выдаліць подпіс</string>
@@ -1450,4 +1447,24 @@
     <string name="quest_collectionTimes_answer_time_spans">У часавым прамежку…</string>
     <string name="quest_collectionTimes_answer_time_points">У канкрэтны час…</string>
     <string name="quest_shower_hot_water_title">Ці ёсць тут цёплая вада?</string>
+    <string name="calendar_new_event_title">Новая падзея OSM у вашай мясцовасці!</string>
+    <string name="pref_title_message_calendar">Новыя падзеі OSM у вашай мясцовасці</string>
+    <string name="quest_ferry_hgv_title">Ці перавозяць па гэтым паромным маршруце цяжкія грузавікі?</string>
+    <string name="dialog_dont_notify_again2">Адпісацца</string>
+    <string name="quest_leave_new_note_track_recording">Запіс трэка будзе далучаны.</string>
+    <string name="quest_leave_new_note_photo_delete">Выдаліць</string>
+    <string name="quest_maxspeed_type_description">Хуткасны рэжым вызначаецца…</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">Знак рэкамендаванага абмежавання хуткасці</string>
+    <string name="quest_maxspeed_answer_roadtype_description">Вуліца…</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">у тэрыторыі забудовы</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">па-за тэрыторыяй забудовы</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">асветленая</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">неасветленая</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Не асветлена і ёсць раздзяляльная паласа</string>
+    <string name="quest_board_type_tourism">Турызм (шмат тэм)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Толькі адна размечаная паласа</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Увядзіце тое, што вы шукаеце</string>
+    <string name="link_gomap_description">Прасунуты рэдактар OSM для iOS</string>
+    <string name="link_terraink_description">Стварайце прыгожыя дапасаваныя постары горада і наваколіц</string>
+    <string name="quest_place_vacant_type_title">Гэтае месца пуставала. Што тут цяпер?</string>
 </resources>

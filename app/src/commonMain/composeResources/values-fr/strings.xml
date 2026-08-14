@@ -480,7 +480,6 @@ Sinon, vous pouvez télécharger un autre clavier dans l’app store. Les clavie
     <string name="theme_dark">Sombre</string>
     <string name="theme_system_default">Thème du système</string>
     <string name="action_open_location">Ouvrir cette position dans une autre app</string>
-    <string name="map_application_missing">Aucune autre application de cartographie n’est installée</string>
     <string name="label_housenumber">Numéro de rue</string>
     <string name="quest_busStopShelter_covered">Tout l’arrêt de bus est couvert</string>
     <string name="quest_ferry_pedestrian_title">Cette ligne de ferry transporte-t-elle des piétons ?</string>
@@ -756,7 +755,6 @@ Si certaines voies sont réservées aux bus, laissez plutôt une note.</string>
     <string name="quest_shop_gone_title">Qu’y a-t-il à la place maintenant ?</string>
     <string name="quest_shop_gone_vacant_answer">L’emplacement est vacant...</string>
     <string name="quest_shop_gone_replaced_answer">Un(e) …</string>
-    <string name="quest_shop_vacant_type_title">Cet emplacement de magasin a été vacant. Qu’y a-t-il ici maintenant ?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ce type de quête est désactivé par défaut car il n’est pas utile dans certaines régions, et car vous auriez certainement besoin de rentrer à l’intérieur du bâtiment pour y répondre.</string>
     <string name="quest_dietType_explanation_kosher">Les produits casher doivent être préparés selon certaines règles, avec un certificat produit par un organisme de certification.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Aucune bande ou piste cyclable</string>
@@ -1020,7 +1018,7 @@ Faites la même chose pour l’autre côté, si présent.</string>
     <string name="quest_smoking_outside">Seulement à l’extérieur</string>
     <string name="quest_smoking_separated">Seulement dans des zones séparées</string>
     <string name="quest_smoking_yes">Oui, partout</string>
-    <string name="quest_seating_name_title">Quel type d’accueil propose ce restaurant ?</string>
+    <string name="quest_seating_name_title">Quel type d’accueil propose ce lieu ?</string>
     <string name="quest_seating_takeaway">Pas d’accueil (seulement à emporter)</string>
     <string name="quest_seating_indoor_only">En intérieur seulement</string>
     <string name="quest_seating_outdoor_only">En terrasse seulement</string>
@@ -1450,7 +1448,6 @@ Par exemple, 1,3 ou 2b,4,6.</string>
     <string name="quest_charging_station_bicycles_title">Les vélos électriques peuvent-ils être également rechargés ici ?</string>
     <string name="quest_charging_station_bicycles_hint">Les adaptateurs secteur pour chargeurs de vélo se branchent sur les prises domestiques standard.</string>
     <string name="quest_tower_access_title">Qui peut accéder à cette tour ? L’accès peut être gratuit ou payant.</string>
-    <string name="quest_charging_station_bicycles_answer_only">C’est uniquement pour les vélos</string>
     <string name="quest_recycling_type_pet_bottles">Bouteilles en PET</string>
     <string name="quest_maxweight_add_sign">Ajouter un panneau</string>
     <string name="quest_maxweight_remove_sign">Supprimer un panneau</string>
@@ -1508,4 +1505,9 @@ Par exemple, 1,3 ou 2b,4,6.</string>
     <string name="quest_board_type_tourism">Tourisme (thèmes multiples)</string>
     <string name="quest_lanes_answer_oneLaneOnly">Seulement une voie peinte</string>
     <string name="quest_shop_gone_replaced_answer_hint2">Tapez ce que vous cherchez</string>
+    <string name="link_gomap_description">Éditeur OSM avancé pour iOS</string>
+    <string name="link_terraink_description">Créer de belles affiches personnalisées d'une ville ou d'un quartier</string>
+    <string name="quest_place_vacant_type_title">Cet emplacement était vacant. Qu'y a-t-il ici maintenant ?</string>
+    <string name="about_title">À propos de %1$s</string>
+    <string name="quest_surface_value_laterite">Latérite</string>
 </resources>
