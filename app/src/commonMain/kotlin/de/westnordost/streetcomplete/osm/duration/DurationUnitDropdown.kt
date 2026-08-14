@@ -14,6 +14,7 @@ import org.jetbrains.compose.resources.stringResource
 fun DurationUnitDropdown(
     selectedDuration: DurationUnit,
     onSelectedDuration: (DurationUnit) -> Unit,
+    alwaysSingular: Boolean = false,
     modifier: Modifier = Modifier
 ) {
     DropdownButton(
@@ -22,12 +23,11 @@ fun DurationUnitDropdown(
         modifier = modifier,
         selectedItem = selectedDuration,
         style = ButtonStyle.Outlined,
-        itemContent = { Text(stringResource(it.text)) }
+        itemContent = { Text(stringResource(it.text(alwaysSingular))) }
     )
 }
-
-private val DurationUnit.text: StringResource get() = when (this) {
-    DurationUnit.MINUTES -> Res.string.unit_minutes
-    DurationUnit.HOURS -> Res.string.unit_hours
-    DurationUnit.DAYS -> Res.string.unit_days
+private fun DurationUnit.text(alwaysSingular: Boolean): StringResource = when (this) {
+    DurationUnit.MINUTES -> if (alwaysSingular) Res.string.unit_minute else Res.string.unit_minutes
+    DurationUnit.HOURS -> if (alwaysSingular) Res.string.unit_hour else Res.string.unit_hours
+    DurationUnit.DAYS -> if (alwaysSingular) Res.string.unit_day else Res.string.unit_days
 }
