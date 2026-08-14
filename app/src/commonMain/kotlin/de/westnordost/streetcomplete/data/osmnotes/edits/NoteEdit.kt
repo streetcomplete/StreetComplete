@@ -37,7 +37,7 @@ data class NoteEdit(
     val imagesNeedActivation: Boolean,
 
     /** attached GPS location history */
-    val track: List<Trackpoint>,
+    val track: List<Trackpoint>?,
 ) : Edit {
     override val isUndoable: Boolean get() = !isSynced
     override val key: NoteEditKey get() = NoteEditKey(id)

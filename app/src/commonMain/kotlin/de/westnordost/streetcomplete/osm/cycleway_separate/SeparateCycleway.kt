@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.osm.cycleway_separate
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class SeparateCycleway {
     /** Just a path, not designated to anyone in particular */
     PATH,
@@ -18,5 +21,7 @@ enum class SeparateCycleway {
     EXCLUSIVE,
     /** This way is a cycleway only, however it has a sidewalk mapped on the same way, like some
      *  sort of tiny road for cyclists only */
-    EXCLUSIVE_WITH_SIDEWALK
+    EXCLUSIVE_WITH_SIDEWALK;
+
+    fun isExclusive(): Boolean = this == EXCLUSIVE || this == EXCLUSIVE_WITH_SIDEWALK
 }

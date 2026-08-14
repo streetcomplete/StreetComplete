@@ -8,7 +8,9 @@ import de.westnordost.streetcomplete.osm.lit.LitStatus.UNSUPPORTED
 import de.westnordost.streetcomplete.osm.lit.LitStatus.YES
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
+import kotlinx.serialization.Serializable
 
+@Serializable
 enum class LitStatus {
     YES,
     NO,

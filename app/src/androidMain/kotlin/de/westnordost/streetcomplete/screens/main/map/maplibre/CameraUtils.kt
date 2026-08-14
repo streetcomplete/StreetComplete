@@ -2,23 +2,22 @@ package de.westnordost.streetcomplete.screens.main.map.maplibre
 
 import android.content.ContentResolver
 import android.provider.Settings
-import androidx.core.graphics.Insets
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import org.maplibre.android.camera.CameraUpdateFactory
 import org.maplibre.android.maps.MapLibreMap
 
-fun MapLibreMap.getEnclosingCamera(geometry: ElementGeometry, insets: Insets): CameraPosition? =
+fun MapLibreMap.getEnclosingCamera(geometry: ElementGeometry, padding: Padding?): CameraPosition? =
     getCameraForGeometry(
         geometry.toMapLibreGeometry(),
-        intArrayOf(insets.left, insets.top, insets.right, insets.bottom)
+        padding?.toIntArray() ?: intArrayOf(0,0,0,0)
     )?.toCameraPosition()
 
-fun MapLibreMap.getEnclosingCamera(bbox: BoundingBox, insets: Insets): CameraPosition? =
+fun MapLibreMap.getEnclosingCamera(bbox: BoundingBox, padding: Padding): CameraPosition? =
     getCameraForLatLngBounds(
         bbox.toLatLngBounds(),
-        intArrayOf(insets.left, insets.top, insets.right, insets.bottom)
+        padding.toIntArray()
     )?.toCameraPosition()
 
 var MapLibreMap.camera: CameraPosition
@@ -59,7 +58,6 @@ private fun org.maplibre.android.camera.CameraPosition.toCameraPosition() = Came
     zoom = zoom,
     padding = padding?.toPadding()
 )
-
 private fun CameraPosition.toMapLibreCameraPosition(): org.maplibre.android.camera.CameraPosition =
     org.maplibre.android.camera.CameraPosition.Builder()
         .bearing(rotation)
@@ -70,6 +68,5 @@ private fun CameraPosition.toMapLibreCameraPosition(): org.maplibre.android.came
         .build()
 
 private fun Padding.toDoubleArray() = doubleArrayOf(left, top, right, bottom)
+private fun Padding.toIntArray() = intArrayOf(left.toInt(), top.toInt(), right.toInt(), bottom.toInt())
 private fun DoubleArray.toPadding() = Padding(this[0], this[1], this[2], this[3])
-
-fun Insets.toPadding() = Padding(left.toDouble(), top.toDouble(), right.toDouble(), bottom.toDouble())

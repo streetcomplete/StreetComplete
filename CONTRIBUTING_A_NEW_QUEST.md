@@ -4,7 +4,7 @@ For code style and more general info - see [CONTRIBUTING file](CONTRIBUTING.md#d
 
 If you want to contribute code to StreetComplete, then making a new quest is one of the easiest programming tasks. It is quite easy to implement a quest where the layout design matches an existing quest. For example, one more yes/no quest or where the user taps a displayed image.
 
-Contributions like that are highly welcomed and you would make mapping one more thing in OSM much easier! You can also implement it if you have never used Kotlin or implemented anything for Android. Being a highly experienced programmer is not necessary here.
+Contributions like that are highly welcomed, and you would make mapping one more thing in OSM much easier! You can also implement it if you have never used Kotlin or implemented anything with Compose. Being a highly experienced programmer is not necessary here.
 
 Reading the text below is not necessary to create a new quest. Duplicating an existing quest and modifying its code may be sufficient - people were creating new quests before this documentation existed. This material simply helps you get a better understanding of it.
 
@@ -33,7 +33,7 @@ If you are doing it for the first time, don't worry if there is an error to solv
 
 ## Own ideas
 
-To [repeat](CONTRIBUTING.md#developing-new-quests) from that documentation file:  [**open an issue** discussing the quest](CONTRIBUTING.md#developing-new-quests), before starting other work. This way it can be confirmed that such a quest can be included. This can be skipped if you are an [experienced](https://github.com/streetcomplete/StreetComplete/discussions/3450) StreetComplete contributor.
+To [repeat](CONTRIBUTING.md#developing-new-quests) from that documentation file: [**open an issue** discussing the quest](CONTRIBUTING.md#developing-new-quests), before starting other work. This way it can be confirmed that such a quest can be included. This can be skipped if you are an [experienced](https://github.com/streetcomplete/StreetComplete/discussions/3450) StreetComplete contributor.
 
 ## Existing proposals
 
@@ -41,7 +41,7 @@ You can also look at [quest proposals waiting for implementation](https://github
 
 # Prepare repository for development
 
-That is a good moment to create a branch and switch to it. 
+That is a good moment to create a branch and switch to it.
 
 It can be done using Android Studio GUI (Git -> New branch...), or in CLI with the following command:
 
@@ -72,13 +72,13 @@ Base the new quest on one that exists already.
 
 Find one that has the same type of interface as the one that you are trying to implement.
 
-Are you trying to implement a quest that will have a simple yes/no answer? Take the [`AddBusStopLit`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bus_stop_lit/AddBusStopLit.kt) quest as a base. Or [`AddTracktype`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting from one of some presented images.
+Are you trying to implement a quest that will have a simple yes/no answer? Take the [`AddBusStopLit`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/bus_stop_lit/AddBusStopLit.kt) quest as a base. Or [`AddTracktype`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/tracktype/AddTracktype.kt) where the mapper will be selecting from one of some presented images.
 
-If it is going to be asked for POIs and should be disabled by default, then [`AddWheelchairAccessBusiness`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) may be a good base.
+If it is going to be asked for POIs and should be disabled by default, then [`AddWheelchairAccessBusiness`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/wheelchair_access/AddWheelchairAccessBusiness.kt) may be a good base.
 
-Quests are grouped in [one folder](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests).
+Quests are grouped in [one folder](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests).
 
-Implementing a quest by duplicating and modifiying an existing one is the recommended method.
+Implementing a quest by duplicating and modifying an existing one is the recommended method.
 
 ### Locating a quest
 
@@ -92,7 +92,7 @@ You will find an [XML file](app/src/commonMain/composeResources/values/strings.x
 
 The identifier `quest_placeName_title` is a string reference, used in the code to allow translations.
 
-Search for this identifier in `*.kt` files, it should appear in the quest file (in this case [AddPlaceName.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt)).
+Search for this identifier in `*.kt` files, it should appear in the quest file (in this case [AddPlaceName.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/place_name/AddPlaceName.kt)).
 
 This method can often be used to locate relevant code.
 
@@ -114,13 +114,13 @@ This can be also used to locate relevant code, especially helpful if some change
 
 # Copying
 
-Duplicate the relevant quest folder from [`app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests). Some contain multiple quests, in such case delete unnecessary files.
+Duplicate the relevant quest folder from [`app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests). Some contain multiple quests, in such case delete unnecessary files.
 
 Some quests are entirely defined in a single file, some have additional answer class, custom interface or utility classes.
 
-For example, lets imagine that new quest will ask whether an [AED](https://wiki.openstreetmap.org/wiki/Tag:emergency%3Ddefibrillator) is placed indoors or outdoors. A very similar in mechanics quest with simple yes/no question is for example [quest asking "Is this bicycle parking covered (protected from rain)?"](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bike_parking_cover/AddBikeParkingCover.kt).
+For example, lets imagine that new quest will ask whether an [AED](https://wiki.openstreetmap.org/wiki/Tag:emergency%3Ddefibrillator) is placed indoors or outdoors. A very similar in mechanics quest with simple yes/no question is for example [quest asking "Is this bicycle parking covered (protected from rain)?"](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/bike_parking_cover/AddBikeParkingCover.kt).
 
-So, as the first step: lets copy [`app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bike_parking_cover/`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bike_parking_cover) folder into `app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/defibrillator/`.
+So, as the first step: lets copy [`app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/bike_parking_cover/`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/bike_parking_cover) folder into `app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/defibrillator/`.
 
 This is done in [this commit](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/7d9ad571f521055a4c5a0006743762fd16e4c9d6) in the demonstration repository.
 
@@ -132,17 +132,17 @@ Change its class name and the file name to the new one.
 
 In the copied code change the package info (things like `package de.westnordost.streetcomplete.quests.defibrillator` at the top) to match the new folder containing the quest.
 
-When committing changes be careful to not change the already existing quest - only new code (using the built-in refactoring rename will also affect the `QuestsModule.kt` entry for an existing quest).
+When committing changes be careful to not change the already existing quest - only new code (using the built-in refactoring rename will also affect the `QuestTypesRegistry.kt` entry for an existing quest).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/9c65d00c7d096c3fee61650e1465a43b7e7f5712) in the example repository.
 
 # Add the quest to the list of active ones
 
-Adjust [QuestsModule.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt#L217-L247) but do not worry too much, it can be tweaked later.
+Adjust [QuestTypesRegistry.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestTypesRegistry.kt) file. It contains a big list of active quests, ordered by priority. Read [what governs their priority](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestTypesRegistry.kt#L207-L237) but do not worry too much, it can be tweaked later.
 
 Each quest is associated with a number in this list. These numbers are used to identify the quest uniquely and can be used to save presets as QR codes. When adding a new quest, use the next consecutive number that is not yet in the list. Put the quest in order of priority, even if it means the numbers are not sorted.
 
-You can use this command to get last used quest number (which you need to increment by one): `sed -ne 's/^ *\([0-9]\+\) .*$/\1/p' app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/QuestsModule.kt | sort -g | tail -n1`
+You can use this command to get last used quest number (which you need to increment by one): `sed -ne 's/^ *\([0-9]\+\) .*$/\1/p' app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/QuestTypesRegistry.kt | sort -g | tail -n1`
 
 Add your quest to the list so that it will be loaded by the app.
 
@@ -181,7 +181,6 @@ This query will be limited to objects which fulfill some requirements.
 
 See the documentation of [`ElementFilterExpression`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/data/elementfilter/ElementFilterExpression.kt) for a complete documentation of the syntax. You can look around some quests to see more examples of such element filter expressions.
 
-
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/2726ff1c7b3121825e808c4566e6e534392121b3) in the example repository.
 
 ### Prototyping
@@ -192,7 +191,7 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 
 The rules should generate as few false positives as possible. I.e. instead of asking for the surface of any way tagged with `highway=*`, the surface should instead only be asked for an inclusive list of roads.
 
-In some cases it will be a good idea to [limit quests to certain countries](#enabledInCountries).
+In some cases it will be a good idea to [limit quests to certain countries](#enabledincountries).
 
 You can obtain more info about properties by placing the cursor in a property and pressing Ctrl+Q within Android Studio.
 
@@ -212,14 +211,14 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 override val wikiLink = "Key:indoor"
 ```
 
-points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case, it is a page about [indoor=* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
+points to the OSM Wiki page most relevant to the given quest, typically it is an added key. In this case, it is a page about [indoor=\* tagging](https://wiki.openstreetmap.org/wiki/Key:indoor).
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/13ec6b97b52413cf09f3b71311b877b746d29576) in the example repository.
 
 ## icon
 
 ```kotlin
-override val icon = R.drawable.quest_defibrillator
+override val icon = Res.drawable.quest_defibrillator
 ```
 
 icon drawable, you can initially use any icon.
@@ -236,14 +235,14 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 override val achievements = listOf(LIFESAVER)
 ```
 
-In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementsModule.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/data/user/achievements/AchievementsModule.kt)
+In quest achievements, list what is relevant to the given quest, see the full list of available ones in [AchievementDefinitions.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/data/user/achievements/AchievementDefinitions.kt)
 
 See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/f043440b43ad84d321c7aae4fd03095c34af8eb4) in the example repository.
 
-## getTitle
+## Title
 
 ```kotlin
-override fun getTitle(tags: Map<String, String>) = R.string.quest_is_defibrillator_inside_title
+override val title = Res.string.quest_is_defibrillator_inside_title
 ```
 
 It is a message displayed to the user, code here passes a [reference](https://developer.android.com/guide/topics/resources/string-resource) to the string. You can change it to the new, not yet existing one and use a built in tool to place text.
@@ -257,18 +256,29 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 ## Form
 
 ```kotlin
-override fun createForm() = YesNoQuestForm()
+@Composable
+override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    YesNoQuestForm(on)
+}
 ```
 
 Form defines the interface used by mappers.
 
 In this case, the simplest possible form is used.
 
-But sometimes more complex ones are needed, see for example [AddBridgeStructure.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructure.kt)
+But sometimes more complex ones are needed, see for example [AddBridgeStructure.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructure.kt):
 
-`override fun createForm() = AddBridgeStructureForm()`
-
-With the form defined in [AddBridgeStructureForm](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/bridge_structure/AddBridgeStructureForm.kt)
+```kotlin
+@Composable
+override fun Form(on: (QuestAction<BridgeStructure>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    ItemSelectQuestForm(
+        on = on,
+        items = BridgeStructure.entries,
+        itemContent = { Image(painterResource(it.icon), null) },
+        itemsPerRow = 1,
+    )
+}
+```
 
 ## applyAnswerTo
 
@@ -316,7 +326,9 @@ See [this step](https://github.com/matkoniecz/StreetComplete_quest_creation_tuto
 Note that for this quest one extra property present in the original quest used as a template [was removed](https://github.com/matkoniecz/StreetComplete_quest_creation_tutorial/commit/a9fd3efe96cbc6241b3b0f65d4a2be27f1c6afb8)
 
 # Adding quest icon
+
 <!-- note that this section name is linked from section discussing val icon, in case of changing section name also change that link -->
+
 It is OK to submit a quest without its own icon, using any icon as a placeholder.
 
 But it would be even better to include also icon.
@@ -326,11 +338,12 @@ Note that there are some graphics which haven't been used yet, created for propo
 A new icon can reuse the content of [other quest icons](res/graphics/quest), it can also be based on openly licensed graphics such as ones from [svgrepo.com](https://www.svgrepo.com/). See [the attribution file](res/graphics/authors.txt) for what has been used so far.
 
 Keep similar style to existing ones and the app in general. Note that the background color of the icon marks its relation group:
+
 - magenta(#ca72e2): bicycle traffic
 - blue(#529add): pedestrian traffic,
 - yellow(#ffdd55): motor vehicles (car, motorcycles)
 - grey(#c8c4b7): constructions (building type/height/entrances/roof/address, power poles, bridges, fire hydrants...)
-- light orange(#e9a76f): shop related (opening hours, shop types/seating, shop/atm names, shop level, air conditioning, smoking, internet access, payment, surveillance) 
+- light orange(#e9a76f): shop related (opening hours, shop types/seating, shop/atm names, shop level, air conditioning, smoking, internet access, payment, surveillance)
 - green(#9bbe55): amenities (nature, picnic, sport, religion, recycling, police, postbox, wheelchair, objects on summits, AED, toilets, backrest, is entrance paid...)
 - brown(#b9a065): nature-related (stile type/steps, trees/orchards)
 
@@ -345,7 +358,7 @@ Once the quest icon is ready:
 - Select new → vector asset
 - Select your SVG file
 - Name with `quest_` prefix (something like `quest_traffic_calming`) - it should be the same name as used in the Quest file (e.g. `R.drawable.quest_traffic_calming`)
-- Press "Next" and ensure the Source set is set to `src/androidMain/res`
+- Press "Next" and ensure the Source set is set to `src/commonMain/composeResources/drawable`
 - Press "Finish" button to generate drawable
 - Add an entry in the [attribution file](res/graphics/authors.txt)
 - Modify `icon` property in the quest definition to use the new drawable
@@ -362,20 +375,20 @@ Obviously, testing can also be done earlier. But the quest should at least be te
 
 Typically it is done using an emulator. Note that you can set location in emulator settings rather than scrolling within StreetComplete itself.
 
-* Is the quest listed?
-  * Look at the quest list in settings - does your quest appear there? If not - see [this step](#add-the-quest-to-the-list-of-active-ones).
-  * While you are there you can disable all quests except yours for easier testing.
-* Is it shown for expected elements?
-  * Note that due to emulator peculiarities you may need to move the map after quests are downloaded to see their markers ([gory details for the curious](https://github.com/streetcomplete/StreetComplete/issues/2780))
-* Is it selected for some unwanted elements?
-* Can you tap on a quest marker to open the quest form?
-* Can you fill in the answer as expected?
-* Can you solve the quest?
-* Is expected tagging being applied?
-  * You can look at logs for info of what was applied or use the undo menu in the bottom-left of the app itself.
-  * You can freely answer - as long as you are not logged in, nothing will be submitted. Even after logging in you can disable uploading answers in settings.
-* Does the quest disappear after being solved?
-  * If no - then either tags are not being applied or element selection filter has some problems.
+- Is the quest listed?
+  - Look at the quest list in settings - does your quest appear there? If not - see [this step](#add-the-quest-to-the-list-of-active-ones).
+  - While you are there you can disable all quests except yours for easier testing.
+- Is it shown for expected elements?
+  - Note that due to emulator peculiarities you may need to move the map after quests are downloaded to see their markers ([gory details for the curious](https://github.com/streetcomplete/StreetComplete/issues/2780))
+- Is it selected for some unwanted elements?
+- Can you tap on a quest marker to open the quest form?
+- Can you fill in the answer as expected?
+- Can you solve the quest?
+- Is expected tagging being applied?
+  - You can look at logs for info of what was applied or use the undo menu in the bottom-left of the app itself.
+  - You can freely answer - as long as you are not logged in, nothing will be submitted. Even after logging in you can disable uploading answers in settings.
+- Does the quest disappear after being solved?
+  - If no - then either tags are not being applied or element selection filter has some problems.
 
 See "logcat" (bottom left area of the screen) to see stacktrace or logging messages.
 
@@ -434,12 +447,12 @@ Article about [null safety related syntax](https://kotlinlang.org/docs/null-safe
 As mentioned, the user interface must leave no space for misunderstandings, it must be concise and quick and easy to use. Also sounds obvious, but you will quickly find out that a balance must be found between covering all the edge cases and designing the form to be as straightforward and clutterless as possible.
 
 - Design the main form clutter-free so that it is straightforward for the majority of use cases.
-- Allow to answer popular edge cases, but don't clutter up the main form with that. A good pattern is to move such answers into the "Uh..." (otherAnswers) menu. E.g. look at the [opening hours quest](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHoursForm.kt#L45-L53). That menu should also be used when user might have doubts on how to answer a specific situation.
+- Allow to answer popular edge cases, but don't clutter up the main form with that. A good pattern is to move such answers into the "Uh..." (otherAnswers) menu. E.g. look at the [opening hours quest](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHoursForm.kt#L45-L53). That menu should also be used when user might have doubts on how to answer a specific situation.
 - Don't rely on the "leave a note" fallback too much. It is not intended and does not work as a regular answer but is designed to cover the case that the question was invalid itself because it was based on wrong data like i.e. the place does not exist anymore.
 - The information the user should fill in should be as atomic as possible. Users are impatient, i.e. do not let them fill out a whole address with street name etc. when just the house number is fine too.
 - "A picture is worth a thousand words": Often the term for certain things may not be enough to convey the meaning of certain predefined answers. Do you know what a wheelbender is? You will know if you see the photo.
 
-Considerations about the edge cases to consider, how the design could look and finding good representative photos or icons that match in style is also part of the preparational work that can be done without programming knowledge.
+Considerations about the edge cases to consider, how the design could look and finding good representative photos or icons that match in style is also part of the preparatory work that can be done without programming knowledge.
 
 ## New photos
 
@@ -453,14 +466,14 @@ You can also take your own photos, a standard smartphone camera is good enough. 
 
 In StreetComplete many images have unusual composition. Often it is necessary to leave space for a label at the bottom.
 
-Images should be free of visual debris, not misleading. Though it is fine to use an image not strictly matching what is depicted, as long as it is clear. For example, [a permanent pile of soil blocking road](https://wiki.openstreetmap.org/wiki/Tag:barrier%3Ddebris) is illustrated by a [temporary landslide](https://commons.wikimedia.org/wiki/File:Landslide_on_OR_42S_(46849629014).jpg). This is OK as images are illustrative.
+Images should be free of visual debris, not misleading. Though it is fine to use an image not strictly matching what is depicted, as long as it is clear. For example, [a permanent pile of soil blocking road](https://wiki.openstreetmap.org/wiki/Tag:barrier%3Ddebris) is illustrated by a [temporary landslide](<https://commons.wikimedia.org/wiki/File:Landslide_on_OR_42S_(46849629014).jpg>). This is OK as images are illustrative.
 
 Photos go to a different folder than SVGs: they can be used directly by the build process so put them into folders
 
-- [mdpi](app/src/androidMain/res/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
-- [hdpi](app/src/androidMain/res/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three square images in each row)
-- [xhdpi](app/src/androidMain/res/drawable-xhdpi) - 768 pixels for images (256 x 256 pixels in case of three square images in each row)
-- [xxhdpi](app/src/androidMain/res/drawable-xxhdpi) - 1152 pixels (384 x 384 pixels in case of three square images in each row)
+- [mdpi](app/src/commonMain/composeResources/drawable-mdpi) - 384 pixels for images, with three square images in each row it would be 128 x 128 pixels for each)
+- [hdpi](app/src/commonMain/composeResources/drawable-hdpi) - 576 pixels for images (192 x 192 pixels in case of three square images in each row)
+- [xhdpi](app/src/commonMain/composeResources/drawable-xhdpi) - 768 pixels for images (256 x 256 pixels in case of three square images in each row)
+- [xxhdpi](app/src/commonMain/composeResources/drawable-xxhdpi) - 1152 pixels (384 x 384 pixels in case of three square images in each row)
 
 Each of these folders should hold the same image resized to a different resolution. While testing various images it is enough to put one into any of the folders.
 
@@ -470,13 +483,13 @@ Please make sure that the images do not take too much disk space. Most useful wa
 
 [GIMP](https://gimp.org/) allows such previews while saving JPG files, and there are also online tools like [squoosh](https://squoosh.app/) which allow for quick visual comparison if you prefer that.
 
-After adding a photo, remember to update [the credits file](app/src/androidMain/res/authors.txt) (different to the one for icons).
+After adding a photo, remember to update [the credits file](app/src/commonMain/composeResources/files/authors.txt) (different to the one for icons).
 
 ## Resurvey
 
 Some quests are asked not only when a tag is missing but also when it is likely to be outdated. To achieve this `elementFilter` needs to query not only elements missing some tags.
 
-Typical code is in [quest asking about motorcycle parking capacity](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/motorcycle_parking_capacity/AddMotorcycleParkingCapacity.kt):
+Typical code is in [quest asking about motorcycle parking capacity](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/motorcycle_parking_capacity/AddMotorcycleParkingCapacity.kt):
 
 ```kotlin
 override val elementFilter = """
@@ -508,16 +521,15 @@ Matches like `surface ~ earth|dirt|ground` are possible and are evaluated as "`s
 
 `access !~ private|no` will be evaluated to "`access` is neither `private` nor `no`"
 
-
 But using regexp like `surface ~ ^(.*)[0-9]$` is [also possible](app/src/commonTest/kotlin/de/westnordost/streetcomplete/data/elementfilter/filters/ElementFilterOverpassKtTest.kt#L79-L88).
 
-It is possible to check for [age of elements](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/construction/MarkCompletedHighwayConstruction.kt#L14-L18) or implement a [fully custom tag parsing](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt#L144-L159), still combined with filter syntax.
+It is possible to check for [age of elements](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/construction/MarkCompletedHighwayConstruction.kt#L14-L18) or implement a [fully custom tag parsing](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/opening_hours/AddOpeningHours.kt#L144-L159), still combined with filter syntax.
 
-It is possible to share and reuse [information about tagging schemes](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt#L28).
+It is possible to share and reuse [information about tagging schemes](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/surface/AddRoadSurface.kt#L28).
 
-(this info is gathered [here](app/src/androidMain/kotlin/de/westnordost/streetcomplete/osm))
+(this info is gathered [here](app/src/commonMain/kotlin/de/westnordost/streetcomplete/osm))
 
-Even more complex ones using different class bases are possible. Such as what was needed by the [address quest](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt) or the [crossing quest](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/crossing/AddCrossing.kt) but it is better to start from something simpler.
+Even more complex ones using different class bases are possible. Such as what was needed by the [address quest](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/address/AddAddressStreet.kt) or the [crossing quest](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/crossing/AddCrossing.kt) but it is better to start from something simpler.
 
 It allows it to make complex geometry checks, but writing them is also far more complex.
 
@@ -525,9 +537,9 @@ It allows it to make complex geometry checks, but writing them is also far more 
 
 Some quests should be enabled only in some countries or disabled in a specific countries.
 
-[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
+[`override val enabledInCountries = NoCountriesExcept("SE")`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/accepts_cash/AddAcceptsCash.kt) - enabled only in Sweden.
 
-[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/address/AddHousenumber.kt) - not enabled in USA or Canada
+[`override val enabledInCountries = AllCountriesExcept("US", "CA")`](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/address/AddHousenumber.kt) - not enabled in USA or Canada
 
 ## `defaultDisabledMessage`
 
@@ -547,12 +559,12 @@ For nodes within ways, the node will remain and tags will be removed.
 ## `hint` & `hintImages` (info button)
 
 When there are doubts on the question itself (terms used, etc.), how to answer or how to find the answer, more information can be provided via info button text & images.
-Examples for such info button would be explanation of what is halal, what is [tactile paving](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/tactile_paving/AddTactilePavingBusStop.kt#L33-L38), what is a sanitary dump station, when a level counts as a roof level and when as a normal level, explanation of the street side puzzle UI, etc.
+Examples for such info button would be explanation of what is halal, what is [tactile paving](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/tactile_paving/AddTactilePavingBusStop.kt#L33-L38), what is a sanitary dump station, when a level counts as a roof level and when as a normal level, explanation of the street side puzzle UI, etc.
 
 Instructions for answering the quest should instead be directly visible either in the quest title or a label on the form always shown with the answers. For example, when asked for the name of a road, a label instructs the user to expand abbreviated road names. When asked about whether a restaurant offers vegetarian options, it is clarified that one should only answer "yes" if these are proper options (not just a salad or whatever).
 
 For doubts on how to answer specific situations, like e.g. when asked for the opening hours of a shop that doesn't seem to exist anymore or asked about the house number of a building that instead has a house name, it is better to provide such answer through the "Uh..." menu, see [Designing the form](#designing-the-form).
 
-## Per-country quest behaviour modification
+## Per-country quest behavior modification
 
-While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behaviour of the quest in specific country, see e.g. [AddTrafficSignalsVibrationForm.kt](app/src/androidMain/kotlin/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibrationForm.kt) for example usage.
+While quests should generally be tailored to function in whole world similarly, if really needed one can use `countryInfo` to modify behavior of the quest in specific country, see e.g. [AddTrafficSignalsVibration.kt](app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/traffic_signals_vibrate/AddTrafficSignalsVibration.kt#L72-88) for example usage.

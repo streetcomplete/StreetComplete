@@ -3,10 +3,10 @@ package de.westnordost.streetcomplete.data.osm.edits
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataUpdates
 
-interface ElementEditsController : ElementEditsSource, AddElementEditsController {
+interface ElementEditsController : ElementEditsSource {
 
     /** Add new unsynced edit to the to-be-uploaded queue */
-    override fun add(
+    fun add(
         type: ElementEditType,
         geometry: ElementGeometry,
         source: String,

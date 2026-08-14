@@ -43,3 +43,6 @@ fun Feature.toPrefixedFeature(prefix: String, label: String = prefix): Feature =
     isSearchable = false,
     matchScore = matchScore,
 )
+
+fun Feature.isPrefixed(lifecycle: String): Boolean =
+    tags.hasPrefixed(lifecycle)

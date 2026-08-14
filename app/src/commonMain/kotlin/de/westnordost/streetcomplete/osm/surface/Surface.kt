@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.osm.surface
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class Surface(val osmValue: String?) {
     // paved
     ASPHALT("asphalt"),
@@ -51,7 +54,7 @@ enum class Surface(val osmValue: String?) {
             "SC", "SG", "SL", "SN", "SR", "SS", "SV", "SX", "SZ", "TG", "TH", "TL", "TT", "TW", "TZ",
             "UG", "VC", "VE", "VN", "ZA", "ZM", "ZW"
         )
-        
+
         private val selectableValuesForWaysWithoutLaterite = listOf(
             // paved surfaces
             ASPHALT, PAVING_STONES, CONCRETE, CONCRETE_LANES,
@@ -70,9 +73,7 @@ enum class Surface(val osmValue: String?) {
         }
 
         /** Selectable surface values for roads, paths, etc. */
-        fun getSelectableValuesForWays(countryOrSubdivisionCode: String? = null): List<Surface> {
-            // TODO: change parameter name to `countryCode`, ensure that only the countryCode is passed, not the `countryOrSubdivisionCode`
-            val countryCode = countryOrSubdivisionCode?.take(2)
+        fun getSelectableValuesForWays(countryCode: String? = null): List<Surface> {
             return if (countryCode != null && lateriteCountries.contains(countryCode)) {
                 selectableValuesForWaysWithLaterite
             } else {
@@ -92,6 +93,12 @@ enum class Surface(val osmValue: String?) {
             WOOD, METAL, GRAVEL,
             PEBBLES, ROCK,
             PAVED, UNPAVED, GROUND
+        )
+
+        val selectableValuesForBeaches: List<Surface> = listOf(
+            SAND, PEBBLES, GRAVEL,
+            GRASS, ROCK, FINE_GRAVEL,
+            GROUND
         )
 
         /** A map of tag value to Surface type that should be treated as aliases of known Surface

@@ -6,6 +6,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
+fun ElementGeometry.getOrientationOrZero(): Float =
+    (this as? ElementPolylinesGeometry)?.getOrientationAtCenterLineInDegrees() ?: 0f
+
 fun ElementPolylinesGeometry.getOrientationAtCenterLineInDegrees(): Float {
     val centerLine = polylines.first().centerLineOfPolyline()
     return centerLine.first.initialBearingTo(centerLine.second).toFloat()

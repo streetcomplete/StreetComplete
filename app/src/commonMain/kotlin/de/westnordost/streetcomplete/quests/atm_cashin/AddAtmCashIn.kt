@@ -1,0 +1,37 @@
+package de.westnordost.streetcomplete.quests.atm_cashin
+
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
+import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.ktx.toYesNo
+
+class AddAtmCashIn : OsmFilterQuestType<Boolean>() {
+
+    override val elementFilter = "nodes with amenity = atm and !cash_in"
+    override val changesetComment = "Determine whether ATM allows depositing cash"
+    override val wikiLink = "Key:cash_in"
+    override val icon = Res.drawable.quest_money
+    override val title = Res.string.quest_atm_cashin_title
+    override val achievements = listOf(CITIZEN)
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes with amenity = atm")
+
+    @Composable
+    override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        YesNoQuestForm(on)
+    }
+
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["cash_in"] = answer.toYesNo()
+    }
+}

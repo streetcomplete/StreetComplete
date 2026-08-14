@@ -8,8 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import de.westnordost.osmfeatures.Feature
+import de.westnordost.streetcomplete.osm.iconDrawableResource
 import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
+import kotlin.collections.get
 
 /** Icon for a [feature]. Some features, i.e. brand features usually don't have an icon, so a
  *  fallback to the [parentFeature] can be specified. */
@@ -20,19 +23,14 @@ fun FeatureIcon(
     parentFeature: Feature? = null,
     tint: Color = LocalContentColor.current.copy(alpha = LocalContentAlpha.current),
 ) {
-    // brand features usually don't have an own icon, so, we fall back to parent feature, e.g. for
-    // Aldi, use icon of shop/supermarket. Finally, if there is no icon at all, use a
-    // placeholder
-    val iconResourceName = feature.iconResourceName ?: parentFeature?.iconResourceName
-    val icon = Res.allDrawableResources[iconResourceName] ?: Res.drawable.preset_maki_marker_stroked
+    val icon = feature.iconDrawableResource
+        ?: parentFeature?.iconDrawableResource
+        ?: Res.drawable.preset_maki_marker_stroked
 
     Icon(
         painter = painterResource(icon),
-        contentDescription = iconResourceName,
+        contentDescription = feature.name,
         modifier = modifier,
         tint = tint,
     )
 }
-
-private val Feature.iconResourceName: String? get() =
-    icon?.let { "preset_" + it.replace('-', '_') }

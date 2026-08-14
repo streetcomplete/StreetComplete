@@ -26,6 +26,10 @@ data class UpdateElementTagsAction(
     val changes: StringMapChanges
 ) : ElementEditAction, IsActionRevertable {
 
+    init {
+        require(!changes.isEmpty())
+    }
+
     override val elementKeys get() = listOf(originalElement.key)
 
     override fun idsUpdatesApplied(updatedIds: Map<ElementKey, Long>) = copy(
