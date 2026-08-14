@@ -10,7 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.main.map2.toGeometry
+import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive

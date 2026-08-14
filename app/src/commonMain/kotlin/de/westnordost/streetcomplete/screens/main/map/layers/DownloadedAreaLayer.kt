@@ -5,9 +5,8 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.downloaded_area_hatching
-import de.westnordost.streetcomplete.screens.main.map2.toPosition
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.screens.main.map.toPosition
 import io.github.dellisd.spatialk.geojson.Polygon
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const

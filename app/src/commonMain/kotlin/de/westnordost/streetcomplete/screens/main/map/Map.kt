@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2
+package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable

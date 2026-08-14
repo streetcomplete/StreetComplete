@@ -9,11 +9,11 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.screens.main.map2.byZoom
-import de.westnordost.streetcomplete.screens.main.map2.isArea
-import de.westnordost.streetcomplete.screens.main.map2.isLines
-import de.westnordost.streetcomplete.screens.main.map2.isPoint
-import de.westnordost.streetcomplete.screens.main.map2.toGeometry
+import de.westnordost.streetcomplete.screens.main.map.byZoom
+import de.westnordost.streetcomplete.screens.main.map.isArea
+import de.westnordost.streetcomplete.screens.main.map.isLines
+import de.westnordost.streetcomplete.screens.main.map.isPoint
+import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.theme.GeometryMarker
 import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection

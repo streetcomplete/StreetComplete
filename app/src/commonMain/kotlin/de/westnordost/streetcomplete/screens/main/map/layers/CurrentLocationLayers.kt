@@ -5,12 +5,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.location.Location
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.map_location_nyan
-import de.westnordost.streetcomplete.resources.map_location_shadow
-import de.westnordost.streetcomplete.resources.map_location_view_direction
-import de.westnordost.streetcomplete.screens.main.map2.inMeters
-import de.westnordost.streetcomplete.screens.main.map2.toGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.screens.main.map.inMeters
+import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import org.jetbrains.compose.resources.painterResource

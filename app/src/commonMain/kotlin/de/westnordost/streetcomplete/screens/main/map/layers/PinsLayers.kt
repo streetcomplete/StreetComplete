@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.em
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_pin_circle
-import de.westnordost.streetcomplete.screens.main.map2.toGeometry
+import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2
+package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
@@ -26,6 +26,7 @@ import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.GeometryType
 import org.maplibre.compose.expressions.value.NumberValue
 import org.maplibre.compose.expressions.value.StringValue
+import kotlin.jvm.JvmName
 import kotlin.math.PI
 import kotlin.math.cos
 

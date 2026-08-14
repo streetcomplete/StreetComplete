@@ -5,11 +5,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import de.westnordost.streetcomplete.screens.main.map2.byZoom
-import de.westnordost.streetcomplete.screens.main.map2.inMeters
-import de.westnordost.streetcomplete.screens.main.map2.isArea
-import de.westnordost.streetcomplete.screens.main.map2.isLines
-import de.westnordost.streetcomplete.screens.main.map2.isPoint
+import de.westnordost.streetcomplete.screens.main.map.byZoom
+import de.westnordost.streetcomplete.screens.main.map.inMeters
+import de.westnordost.streetcomplete.screens.main.map.isArea
+import de.westnordost.streetcomplete.screens.main.map.isLines
+import de.westnordost.streetcomplete.screens.main.map.isPoint
 import org.maplibre.compose.expressions.dsl.all
 import org.maplibre.compose.expressions.dsl.asNumber
 import org.maplibre.compose.expressions.dsl.condition

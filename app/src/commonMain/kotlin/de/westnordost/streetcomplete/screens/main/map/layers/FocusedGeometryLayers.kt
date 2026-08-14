@@ -10,10 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.screens.main.map2.isArea
-import de.westnordost.streetcomplete.screens.main.map2.isLines
-import de.westnordost.streetcomplete.screens.main.map2.isPoint
-import de.westnordost.streetcomplete.screens.main.map2.toGeometry
+import de.westnordost.streetcomplete.screens.main.map.isArea
+import de.westnordost.streetcomplete.screens.main.map.isLines
+import de.westnordost.streetcomplete.screens.main.map.isPoint
+import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import org.maplibre.compose.expressions.dsl.any
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.feature

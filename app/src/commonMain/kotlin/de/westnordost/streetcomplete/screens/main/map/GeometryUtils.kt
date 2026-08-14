@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.screens.main.map2
+package de.westnordost.streetcomplete.screens.main.map
 
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry

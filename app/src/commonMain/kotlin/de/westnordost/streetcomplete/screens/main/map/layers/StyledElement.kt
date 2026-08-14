@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
-import de.westnordost.streetcomplete.screens.main.map2.toGeometry
+import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import io.github.dellisd.spatialk.geojson.Feature
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.DrawableResource
