@@ -1,22 +1,21 @@
 package de.westnordost.streetcomplete.quests.charge
 
-import de.westnordost.streetcomplete.R
+import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
-import de.westnordost.streetcomplete.data.quest.AndroidQuest
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.quest_parking_charge_hint
-import de.westnordost.streetcomplete.resources.quest_parking_charge_title
+import de.westnordost.streetcomplete.resources.*
 
 /**
  * Quest that asks for the parking fee of locations where a fee is required, but the amount
  * is unknown or hasn't been verified for a long time.
  */
-class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>(), AndroidQuest {
-
+class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>() {
     override val elementFilter = """
         nodes, ways, relations with amenity = parking
         and access ~ yes|customers|public
@@ -26,17 +25,17 @@ class AddParkingCharge : OsmFilterQuestType<ParkingChargeAnswer>(), AndroidQuest
             or charge older today -18 months
         )
     """
-
     override val changesetComment = "Add parking charges"
     override val wikiLink = "Key:charge"
-    override val icon = R.drawable.quest_parking_charge
+    override val icon = Res.drawable.quest_parking_charge
     override val achievements = listOf(CAR)
-
     override val hint = Res.string.quest_parking_charge_hint
-
     override val title = Res.string.quest_parking_charge_title
 
-    override fun createForm() = AddParkingChargeForm()
+    @Composable
+    override fun Form(on: (QuestAction<ParkingChargeAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        AddParkingChargeForm(on, countryInfo)
+    }
 
     override fun applyAnswerTo(answer: ParkingChargeAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {

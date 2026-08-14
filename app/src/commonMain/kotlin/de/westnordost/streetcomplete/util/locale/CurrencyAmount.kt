@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.util.locale
 
+import kotlinx.serialization.Serializable
 import kotlin.math.absoluteValue
 import kotlin.math.pow
 import kotlin.math.roundToLong
@@ -11,6 +12,7 @@ import kotlin.math.roundToLong
  * How many digits [subunits] may have is not stored here (it depends on the currency, see
  * [CurrencyFormatElements.decimalDigits]) - the caller must keep track of that.
  */
+@Serializable
 data class CurrencyAmount(val units: Long, val subunits: Long) {
 
     fun toDouble(decimalDigits: Int): Double =

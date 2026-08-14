@@ -62,6 +62,7 @@ import de.westnordost.streetcomplete.quests.camping.AddCampShower
 import de.westnordost.streetcomplete.quests.camping.AddCaravans
 import de.westnordost.streetcomplete.quests.camping.AddTents
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
+import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationBicycleCapacity
 import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
@@ -271,6 +272,7 @@ fun questTypeRegistry(
     17 to AddParkingType(),
     18 to AddParkingAccess(), // used by OSM Carto, mapy.cz, OSMand, Sputnik etc
     19 to AddParkingFee(), // used by OsmAnd
+    199 to AddParkingCharge(),
 
     20 to AddTrafficCalmingType(),
 
@@ -326,8 +328,6 @@ fun questTypeRegistry(
     44 to AddTrafficSignalsVibration(), // should be asked before question for sound, see #6890
     43 to AddTrafficSignalsButton(),
     42 to AddTrafficSignalsSound(), // Sound needs to be done as or after you're crossing
-
-
 
     /* ↓ 2.solvable when right in front of it ----------------------------------------------- */
     45 to AddInformationToTourism(), // OSM Carto

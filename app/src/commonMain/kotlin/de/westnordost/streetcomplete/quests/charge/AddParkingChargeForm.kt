@@ -1,77 +1,64 @@
 package de.westnordost.streetcomplete.quests.charge
 
-import android.os.Bundle
-import android.view.View
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.ProvideTextStyle
-import androidx.compose.material.Surface
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.R
-import de.westnordost.streetcomplete.databinding.ComposeViewBinding
+import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.osm.osmquests.Answer
+import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.duration.DurationUnit
-import de.westnordost.streetcomplete.quests.AbstractOsmQuestForm
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.ChargeInput
+import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
-import de.westnordost.streetcomplete.ui.util.content
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.locale.CurrencyAmount
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatter
+import org.jetbrains.compose.resources.stringResource
 
-class AddParkingChargeForm : AbstractOsmQuestForm<ParkingChargeAnswer>() {
-    override val contentLayoutResId = R.layout.compose_view
-    private val binding by contentViewBinding(ComposeViewBinding::bind)
-    private lateinit var amountState: MutableState<CurrencyAmount?>
-    private lateinit var durationUnitState: MutableState<DurationUnit>
-    private lateinit var showDialogState: MutableState<Boolean>
+@Composable
+fun AddParkingChargeForm(
+    on: (QuestAction<ParkingChargeAnswer>) -> Unit,
+    countryInfo: CountryInfo,
+) {
+    var amount by rememberSerializable { mutableStateOf<CurrencyAmount?>(null) }
+    var durationUnit by rememberSerializable { mutableStateOf(DurationUnit.HOURS) }
 
-    private val currencyFormatInfo by lazy { CurrencyFormatElements.of(countryInfo.userPreferredLocale) }
+    val currencyFormatInfo = remember(countryInfo) {
+        CurrencyFormatElements.of(countryInfo.userPreferredLocale)
+    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.composeViewBase.content {
-            Surface {
-                amountState = rememberSaveable { mutableStateOf<CurrencyAmount?>(null) }
-                durationUnitState = rememberSaveable { mutableStateOf(DurationUnit.HOURS) }
-                showDialogState = rememberSaveable { mutableStateOf(false) }
-
-                ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
-                    ChargeInput(
-                        amount = amountState.value,
-                        onAmountChange = {
-                            amountState.value = it
-                            checkIsFormComplete()
-                        },
-                        currencyFormatInfo = currencyFormatInfo,
-                        durationUnit = durationUnitState.value,
-                        onDurationUnitChange = { unit ->
-                            durationUnitState.value = unit
-                            checkIsFormComplete()
-                        },
-                        perLabel = getString(R.string.quest_parking_charge_time_unit_label),
-                        modifier = Modifier.padding(16.dp)
-                    )
-                }
-            }
+    QuestForm(
+        on = on,
+        isComplete = amount.let { it != null && (it.units != 0L || it.subunits != 0L) },
+        onClickOk = {
+            val amount = amount!!
+            val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "???"
+            on(Answer(SimpleCharge(
+                amount.toDouble(currencyFormatInfo.decimalDigits).toString(),
+                currency,
+                durationUnit
+            )))
         }
-    }
-
-    override fun isFormComplete(): Boolean {
-        val amount = amountState.value
-        return amount != null && (amount.units != 0L || amount.subunits != 0L)
-    }
-
-    override fun onClickOk() {
-        val amount = amountState.value!!
-        val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "???"
-        applyAnswer(SimpleCharge(
-            amount.toString(currencyFormatInfo.decimalDigits),
-            currency,
-            durationUnitState.value
-        ))
+    ) {
+        ProvideTextStyle(MaterialTheme.typography.extraLargeInput) {
+            ChargeInput(
+                amount = amount,
+                onAmountChange = { amount = it },
+                currencyFormatInfo = currencyFormatInfo,
+                durationUnit = durationUnit,
+                onDurationUnitChange = { durationUnit = it },
+                perLabel = stringResource(Res.string.quest_parking_charge_time_unit_label),
+                modifier = Modifier.padding(16.dp)
+            )
+        }
     }
 }
