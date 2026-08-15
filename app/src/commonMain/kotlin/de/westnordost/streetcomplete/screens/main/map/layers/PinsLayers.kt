@@ -47,7 +47,6 @@ fun PinsLayers(
     onClickPin: FeaturesClickHandler? = null,
     onClickCluster: FeaturesClickHandler? = null,
 ) {
-    // TODO is this recomposed all the time? In that case, remember the features
     val source = rememberGeoJsonSource(
         data = GeoJsonData.Features(FeatureCollection(pins.map { it.toGeoJsonFeature() })),
         options = GeoJsonOptions(
@@ -103,7 +102,7 @@ fun PinsLayers(
         minZoom = CLUSTER_MAX_ZOOM.toFloat(),
         filter = zoom() gt const(CLUSTER_MAX_ZOOM),
         sortKey = feature["icon-order"].convertToNumber(),
-        iconImage = image(feature["icon-image"]), // TODO
+        iconImage = image(feature["icon-image"].convertToString()),
         // constant icon size because click area would become a bit too small and more
         // importantly, dynamic size per zoom + collision doesn't work together well, it
         // results in a lot of flickering.

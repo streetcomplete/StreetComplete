@@ -53,7 +53,7 @@ fun StyleableOverlayLabelLayer(
         minZoom = 17f,
         filter = feature.isPoint(),
         zOrder = const(SymbolZOrder.Source),
-        iconImage = image(feature["icon"]), // TODO
+        iconImage = image(feature["icon"].convertToString()),
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconColor = const(color),
         iconHaloColor = const(haloColor),

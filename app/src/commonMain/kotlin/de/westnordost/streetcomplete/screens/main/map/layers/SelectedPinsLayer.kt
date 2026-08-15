@@ -15,6 +15,7 @@ import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
 import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.layers.SymbolLayer
@@ -52,7 +53,7 @@ fun SelectedPinsLayer(icon: String, pinPositions: Collection<LatLon>) {
     SymbolLayer(
         id = "selected-pins-layer",
         source = source,
-        iconImage = image(feature["icon-image"]), // TODO
+        iconImage = image(feature["icon-image"].convertToString()),
         iconSize = const(pinsSize.value),
         iconPadding = const(PaddingValues.Absolute(
             left = 2.5.dp,

@@ -19,6 +19,7 @@ import io.github.dellisd.spatialk.geojson.Feature
 import io.github.dellisd.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonPrimitive
+import org.maplibre.compose.expressions.ast.Expression
 import org.maplibre.compose.expressions.dsl.any
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToString
@@ -27,6 +28,7 @@ import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.dsl.offset
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.expressions.value.LineJoin
+import org.maplibre.compose.expressions.value.StringValue
 import org.maplibre.compose.expressions.value.SymbolAnchor
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
@@ -65,7 +67,7 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
         id = "geo-symbols",
         source = source,
         filter = feature.isPoint(),
-        iconImage = image(feature["icon"]), // TODO get icon!!
+        iconImage = image(feature["icon"].convertToString()),
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconAllowOverlap = const(true),
         textField = feature["label"].convertToString(),
@@ -93,8 +95,7 @@ private fun Marker.toGeoJsonFeature(): List<Feature> {
 
         // TODO some icons should be sdf, others, not
         //   val sdf = name.startsWith("preset_")
-        val mustHaveIcon = icon ?: "preset_maki_circle"
-        p["icon"] = JsonPrimitive(mustHaveIcon)
+        p["icon"] = JsonPrimitive(icon ?: "preset_maki_circle")
         if (title != null) {
             p["label"] = JsonPrimitive(title)
         }

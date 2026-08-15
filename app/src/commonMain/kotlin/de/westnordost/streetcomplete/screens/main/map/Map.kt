@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
+import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayer
 import org.maplibre.compose.camera.CameraState
 import org.maplibre.compose.camera.rememberCameraState
 import org.maplibre.compose.map.MapOptions
@@ -38,9 +39,7 @@ fun Map(
         zoomRange = 0f..22f,
         cameraState = cameraState,
         styleState = styleState,
-        options = MapOptions(
-            ornamentOptions = OrnamentOptions.AllDisabled
-        )
+        options = MapOptions(ornamentOptions = OrnamentOptions.AllDisabled)
     ) {
         val languages = listOf(Locale.current.language)
         val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light

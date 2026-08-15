@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.ui.theme.Recording
@@ -23,9 +24,8 @@ import org.maplibre.compose.sources.Source
 import org.maplibre.compose.util.MaplibreComposable
 
 /** Displays a path(s) walked on the map */
-@MaplibreComposable
-@Composable
-fun TracksLayer(
+@MaplibreComposable @Composable
+private fun TracksLayer(
     id: String,
     source: Source,
     opacity: Expression<FloatValue> = const(0.6f),

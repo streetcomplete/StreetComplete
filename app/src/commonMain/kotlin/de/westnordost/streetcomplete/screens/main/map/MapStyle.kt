@@ -59,14 +59,14 @@ fun MapStyle(
     aboveLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
 ) {
     val accessToken = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
+    val osmAttribution = stringResource(Res.string.map_attribution_osm)
+    val attributionHtml = remember(osmAttribution) {
+        "<a href='https://www.openstreetmap.org/copyright'>$osmAttribution</a> " +
+        "<a href='https://jawg.io?utm_medium=map&utm_source=attribution'>&copy; JawgMaps</a>"
+    }
     val source = rememberVectorSource(
         tiles = listOf("https://tile.jawg.io/streets-v2+hillshade-v1/{z}/{x}/{y}.pbf?access-token=$accessToken"),
-        options = TileSetOptions(
-            maxZoom = 16,
-            attributionHtml =
-                "<a href='https://www.openstreetmap.org/copyright'>" + stringResource(Res.string.map_attribution_osm) + "</a> " +
-                "<a href='https://jawg.io?utm_medium=map&utm_source=attribution'>&copy; JawgMaps</a>"
-        )
+        options = TileSetOptions(maxZoom = 16, attributionHtml = attributionHtml)
     )
 
     val paths = remember(colors) {
