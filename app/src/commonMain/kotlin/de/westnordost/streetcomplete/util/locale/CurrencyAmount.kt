@@ -21,8 +21,11 @@ data class CurrencyAmount(val units: Long, val subunits: Long) {
     /**
      * Returns a string representation of this currency amount, formatting the [subunits]
      */
-    fun toString(decimalDigits: Int): String =
-        "$units.${subunits.toString().padStart(decimalDigits, '0')}"
+    fun toString(decimalDigits: Int): String = if (decimalDigits == 0 || subunits == 0.toLong()) {
+        return "$units"
+    } else {
+        return "$units.${subunits.toString().padEnd(decimalDigits, '0').take(decimalDigits)}"
+    }
 
     companion object {
         fun fromDouble(value: Double, decimalDigits: Int): CurrencyAmount {
