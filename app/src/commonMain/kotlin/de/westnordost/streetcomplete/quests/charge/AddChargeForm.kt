@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.ui.common.ChargeInput
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.theme.extraLargeInput
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
-import de.westnordost.streetcomplete.util.locale.CurrencyAmount
+import de.westnordost.streetcomplete.util.ktx.formatPadded
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatter
 import org.jetbrains.compose.resources.stringResource
@@ -29,7 +29,7 @@ fun AddChargeForm(
     on: (QuestAction<Charge>) -> Unit,
     countryInfo: CountryInfo,
 ) {
-    var amount by rememberSerializable { mutableStateOf<CurrencyAmount?>(null) }
+    var amount by rememberSerializable { mutableStateOf<Double?>(null) }
     var durationUnit by rememberSerializable { mutableStateOf(DurationUnit.HOURS) }
 
     val currencyFormatInfo = remember(countryInfo) {
@@ -38,12 +38,12 @@ fun AddChargeForm(
 
     QuestForm(
         on = on,
-        isComplete = amount != null && (amount!!.units != 0L || amount!!.subunits != 0L),
+        isComplete = amount != null && amount != 0.0,
         onClickOk = {
             val amount = amount!!
             val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "¤"
             on(Answer(Charge(
-                amount.toString(currencyFormatInfo.decimalDigits),
+                amount.formatPadded(currencyFormatInfo.decimalDigits),
                 currency,
                 durationUnit
             )))

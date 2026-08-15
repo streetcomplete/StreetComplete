@@ -14,7 +14,6 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.osm.duration.DurationUnit
 import de.westnordost.streetcomplete.osm.duration.DurationUnitDropdown
 import de.westnordost.streetcomplete.ui.common.input.DecimalInput
-import de.westnordost.streetcomplete.util.locale.CurrencyAmount
 import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
 
 /**
@@ -22,8 +21,8 @@ import de.westnordost.streetcomplete.util.locale.CurrencyFormatElements
  */
 @Composable
 fun ChargeInput(
-    amount: CurrencyAmount?,
-    onAmountChange: (CurrencyAmount?) -> Unit,
+    amount: Double?,
+    onAmountChange: (Double?) -> Unit,
     currencyFormatInfo: CurrencyFormatElements,
     durationUnit: DurationUnit,
     onDurationUnitChange: (DurationUnit) -> Unit,
@@ -42,18 +41,13 @@ fun ChargeInput(
             )
         }
 
-        val amountAsDouble = amount?.toDouble(currencyFormatInfo.decimalDigits)
         AutoFitTextFieldFontSize(
-            value = amountAsDouble?.toString().orEmpty(),
+            value = amount.toString(),
             modifier = Modifier.weight(1f, fill = false)
         ) {
             DecimalInput(
-                value = amountAsDouble,
-                onValueChange = { newValue ->
-                    onAmountChange(newValue?.let {
-                        CurrencyAmount.fromDouble(it, currencyFormatInfo.decimalDigits)
-                    })
-                },
+                value = amount,
+                onValueChange = onAmountChange,
                 maxFractionDigits = currencyFormatInfo.decimalDigits,
                 isUnsigned = true,
                 keyboardOptions = KeyboardOptions(
