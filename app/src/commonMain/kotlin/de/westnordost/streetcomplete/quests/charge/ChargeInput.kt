@@ -63,8 +63,7 @@ fun ChargeInput(
                     } else {
                         KeyboardType.Number
                     }
-                ),
-                modifier = Modifier.fillMaxWidth(),
+                )
             )
         }
 

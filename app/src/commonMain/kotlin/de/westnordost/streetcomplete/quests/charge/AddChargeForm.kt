@@ -38,7 +38,7 @@ fun AddChargeForm(
 
     QuestForm(
         on = on,
-        isComplete = amount != null && amount!!.units != 0L && amount!!.subunits != 0L,
+        isComplete = amount != null && (amount!!.units != 0L || amount!!.subunits != 0L),
         onClickOk = {
             val amount = amount!!
             val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "¤"
