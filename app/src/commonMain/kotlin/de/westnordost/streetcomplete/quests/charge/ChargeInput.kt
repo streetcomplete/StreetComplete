@@ -1,10 +1,8 @@
 package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -42,7 +40,6 @@ fun ChargeInput(
                 text = currencyFormatInfo.symbol,
                 style = MaterialTheme.typography.h5,
                 color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f),
-                modifier = Modifier.padding(end = 8.dp)
             )
         }
 
@@ -76,21 +73,16 @@ fun ChargeInput(
                 text = currencyFormatInfo.symbol,
                 style = MaterialTheme.typography.h5,
                 color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f),
-                modifier = Modifier.padding(start = 8.dp)
             )
         }
         Text(
             text = perLabel,
             style = MaterialTheme.typography.body1
         )
-        Column(
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            DurationUnitDropdown(
-                selectedDuration = durationUnit,
-                onSelectedDuration = onDurationUnitChange,
-                alwaysSingular = true
-            )
-        }
+        DurationUnitDropdown(
+            selectedDuration = durationUnit,
+            onSelectedDuration = onDurationUnitChange,
+            alwaysSingular = true
+        )
     }
 }
