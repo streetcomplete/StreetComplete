@@ -14,9 +14,15 @@ import kotlin.math.roundToLong
  */
 @Serializable
 data class CurrencyAmount(val units: Long, val subunits: Long) {
-
-    fun toDouble(decimalDigits: Int): Double =
-        units + subunits / 10.0.pow(decimalDigits)
+    /**
+     * Converts the CurrencyAmount into a double. If a different number of decimalDigits is given
+     * than was used to convert fromDouble, the number will be converted wrong.
+     */
+    fun toDouble(decimalDigits: Int): Double = if (decimalDigits == 0 || subunits == 0.toLong()) {
+        units.toDouble()
+    } else {
+        units + "$subunits".take(decimalDigits).toLong() / 10.0.pow(decimalDigits)
+    }
 
     /**
      * Returns a string representation of this currency amount, formatting the [subunits]
@@ -24,10 +30,16 @@ data class CurrencyAmount(val units: Long, val subunits: Long) {
     fun toString(decimalDigits: Int): String = if (decimalDigits == 0 || subunits == 0.toLong()) {
         return "$units"
     } else {
+        // padEnd needed for shorter subunits, take needed for longer subunits than decimalDigits
         return "$units.${subunits.toString().padEnd(decimalDigits, '0').take(decimalDigits)}"
     }
 
     companion object {
+        /**
+         * Converts a double value into a new instance of CurrencyAmount.
+         * The decimalDigits needs to be the same when using toDouble to get the
+         * same value back.
+         */
         fun fromDouble(value: Double, decimalDigits: Int): CurrencyAmount {
             val factor = 10.0.pow(decimalDigits).roundToLong().coerceAtLeast(1)
             val scaled = (value.absoluteValue * factor).roundToLong()
