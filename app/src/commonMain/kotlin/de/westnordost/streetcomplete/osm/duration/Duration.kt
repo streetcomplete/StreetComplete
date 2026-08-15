@@ -15,6 +15,7 @@ data class Duration(val value: Double, val unit: DurationUnit) {
         }
 }
 
+@Serializable
 enum class DurationUnit {
     MINUTES,
     HOURS,

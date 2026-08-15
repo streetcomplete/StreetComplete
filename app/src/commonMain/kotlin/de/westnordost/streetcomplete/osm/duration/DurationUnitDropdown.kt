@@ -23,11 +23,11 @@ fun DurationUnitDropdown(
         modifier = modifier,
         selectedItem = selectedDuration,
         style = ButtonStyle.Outlined,
-        itemContent = { Text(stringResource(it.text(alwaysSingular))) }
+        itemContent = { Text(stringResource(it.getText(alwaysSingular))) }
     )
 }
-private fun DurationUnit.text(alwaysSingular: Boolean): StringResource = when (this) {
-    DurationUnit.MINUTES -> if (alwaysSingular) Res.string.unit_minute else Res.string.unit_minutes
-    DurationUnit.HOURS -> if (alwaysSingular) Res.string.unit_hour else Res.string.unit_hours
-    DurationUnit.DAYS -> if (alwaysSingular) Res.string.unit_day else Res.string.unit_days
+private fun DurationUnit.getText(useSingular: Boolean): StringResource = when (this) {
+    DurationUnit.MINUTES -> if (useSingular) Res.string.unit_minute else Res.string.unit_minutes
+    DurationUnit.HOURS -> if (useSingular) Res.string.unit_hour else Res.string.unit_hours
+    DurationUnit.DAYS -> if (useSingular) Res.string.unit_day else Res.string.unit_days
 }

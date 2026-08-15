@@ -26,7 +26,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddChargeForm(
-    on: (QuestAction<ChargeAnswer>) -> Unit,
+    on: (QuestAction<Charge>) -> Unit,
     countryInfo: CountryInfo,
 ) {
     var amount by rememberSerializable { mutableStateOf<CurrencyAmount?>(null) }
@@ -38,11 +38,11 @@ fun AddChargeForm(
 
     QuestForm(
         on = on,
-        isComplete = amount.let { it != null && (it.units != 0L || it.subunits != 0L) },
+        isComplete = amount != null && amount!!.units != 0L && amount!!.subunits != 0L,
         onClickOk = {
             val amount = amount!!
-            val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "???"
-            on(Answer(SimpleCharge(
+            val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "¤"
+            on(Answer(Charge(
                 amount.toString(currencyFormatInfo.decimalDigits),
                 currency,
                 durationUnit
