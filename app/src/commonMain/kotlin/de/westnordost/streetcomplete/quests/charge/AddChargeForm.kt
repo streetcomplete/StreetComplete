@@ -43,7 +43,7 @@ fun AddChargeForm(
             val amount = amount!!
             val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "¤"
             on(Answer(Charge(
-                amount.formatPadded(currencyFormatInfo.decimalDigits),
+                amount.formatPadded(currencyFormatInfo.decimalDigits, true),
                 currency,
                 durationUnit
             )))
