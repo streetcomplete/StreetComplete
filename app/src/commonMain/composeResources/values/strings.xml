@@ -904,6 +904,7 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_bollard_type_not_bollard">Not a bollard, but some other barrier</string>
 
     <string name="quest_bothway_title">In what direction can you ride this?</string>
+    <string name="quest_bothway_aerialway_confirm">Are you sure a person can ride this lift in both directions?</string>
 
     <string name="quest_bridge_structure_title">What’s the structure of this bridge?</string>
 

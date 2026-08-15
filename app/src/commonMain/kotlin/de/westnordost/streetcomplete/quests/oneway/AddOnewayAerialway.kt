@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.BACKWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.FORWARD
 import de.westnordost.streetcomplete.quests.oneway.OnewayAnswer.NO_ONEWAY
 import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.StringResource
 
 class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
 
@@ -45,7 +46,7 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
 
     @Composable
     override fun Form(on: (QuestAction<OnewayAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddOnewayForm(on, geometry)
+        AddOnewayForm(on, geometry) { tags, answer -> suspiciousCombination(tags, answer) }
     }
 
     override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
@@ -54,5 +55,16 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
             BACKWARD -> "-1"
             NO_ONEWAY -> "no"
         }
+    }
+
+    // Some types of aerialways only very rarely allow you to use them in both directions
+    // https://github.com/streetcomplete/StreetComplete/issues/6970
+    private fun suspiciousCombination(tags: Tags, answer: OnewayAnswer): StringResource? {
+        var rare_bothway_aerialways = arrayOf("t-bar","j-bar", "platter", "drag_lift")
+        if (answer== NO_ONEWAY && tags["aerialway"] in rare_bothway_aerialways)
+        {
+            return Res.string.quest_bothway_aerialway_confirm
+        }
+        return null
     }
 }

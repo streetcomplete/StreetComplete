@@ -4,18 +4,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.quest.ItemSelectQuestForm
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.util.ClipCirclePainter
 import de.westnordost.streetcomplete.util.math.getOrientationOrZero
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AddOnewayForm(
     on: (QuestAction<OnewayAnswer>) -> Unit,
-    geometry: ElementGeometry
+    geometry: ElementGeometry,
+    suspiciousAnswerFunction: (tags: Tags, answer: OnewayAnswer) -> StringResource? = { null } as (tags: Tags, answer: OnewayAnswer) -> StringResource?
 ) {
     val geometryRotation = remember(geometry) { geometry.getOrientationOrZero() }
     ItemSelectQuestForm(
@@ -29,5 +32,6 @@ fun AddOnewayForm(
                 imageRotation = geometryRotation - LocalMapRotation.current
             )
         },
+        suspiciousAnswerFunction = suspiciousAnswerFunction
     )
 }

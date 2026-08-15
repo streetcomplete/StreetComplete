@@ -17,15 +17,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.addLastPicked
 import de.westnordost.streetcomplete.data.preferences.getLastPicked
+import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.item_select.ItemSelectGrid
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.takeFavorites
+import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
@@ -44,8 +48,11 @@ inline fun <reified I> ItemSelectQuestForm(
     favoriteKey: String? = null,
     title: String = stringResource(LocalQuestType.current!!.title),
     noinline otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
+    noinline suspiciousAnswerFunction: (tags: Tags, answer: I) -> StringResource? = { _, _ -> null },
     preferences: Preferences = koinInject()
 ) {
+    var unusualImportMessage by remember { mutableStateOf<StringResource?>(null) }
+
     val reorderedItems = remember(items, itemsPerRow, favoriteKey) {
         if (favoriteKey != null) {
             val favourites = preferences.getLastPicked<I>(favoriteKey)
@@ -57,15 +64,22 @@ inline fun <reified I> ItemSelectQuestForm(
     }
     var selectedItem by rememberSerializable { mutableStateOf<I?>(null) }
 
+    val currentElement = LocalElement.current
     QuestForm(
         on = on,
         isComplete = selectedItem != null,
         onClickOk = {
             val value = selectedItem!!
-            if (favoriteKey != null) {
-                preferences.addLastPicked(favoriteKey, value)
+            val tags = StringMapChangesBuilder(currentElement!!.tags)
+            val suspiciousMessage = suspiciousAnswerFunction(tags, value)
+            if (suspiciousMessage != null) {
+                unusualImportMessage = suspiciousMessage
+            } else {
+                if (favoriteKey != null) {
+                    preferences.addLastPicked(favoriteKey, value)
+                }
+                on(Answer(value))
             }
-            on(Answer(value))
         },
         modifier = modifier,
         title = title,
@@ -78,6 +92,7 @@ inline fun <reified I> ItemSelectQuestForm(
             ) {
                 Text(stringResource(Res.string.quest_roofShape_select_one))
             }
+            val tags = LocalElement.current?.tags as? Tags
             ItemSelectGrid(
                 columns = SimpleGridCells.Fixed(itemsPerRow),
                 items = reorderedItems,
@@ -87,5 +102,12 @@ inline fun <reified I> ItemSelectQuestForm(
                 itemContent = itemContent
             )
         }
+    }
+    if (unusualImportMessage != null) {
+        AreYouSureDialog(
+            onDismissRequest = { unusualImportMessage = null },
+            onConfirmed = { on(Answer(selectedItem!!)) },
+            text = { Text(stringResource(unusualImportMessage!!)) }
+        )
     }
 }
