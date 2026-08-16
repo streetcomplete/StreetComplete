@@ -30,7 +30,6 @@ class AddParkingCharge : OsmFilterQuestType<Charge>() {
     override val wikiLink = "Key:charge"
     override val icon = Res.drawable.quest_parking_charge
     override val achievements = listOf(CAR)
-    override val hint = Res.string.quest_parking_charge_hint
     override val title = Res.string.quest_parking_charge_title
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
