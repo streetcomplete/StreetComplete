@@ -1396,9 +1396,15 @@
     <string name="unit_days">days</string>
     <string name="unit_hours">hours</string>
     <string name="unit_minutes">minutes</string>
+    <string name="unit_day">day</string>
+    <string name="unit_hour">hour</string>
+    <string name="unit_minute">minute</string>
     <string name="at_any_time">at any time</string>
     <string name="only_at_hours">only at following times:</string>
     <string name="except_at_hours">except at following times:</string>
+
+    <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
+    <string name="quest_parking_charge_time_unit_label">per</string>
 
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
