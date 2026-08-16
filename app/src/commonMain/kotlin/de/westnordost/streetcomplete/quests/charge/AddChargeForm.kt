@@ -41,7 +41,7 @@ fun AddChargeForm(
         isComplete = amount != null && amount != 0.0,
         onClickOk = {
             val amount = amount!!
-            val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "¤"
+            val currency = CurrencyFormatter(countryInfo.userPreferredLocale).currencyCode ?: "???"
             on(Answer(Charge(
                 amount.formatPadded(currencyFormatInfo.decimalDigits, true),
                 currency,
@@ -57,7 +57,6 @@ fun AddChargeForm(
                 durationUnit = durationUnit,
                 onDurationUnitChange = { durationUnit = it },
                 perLabel = stringResource(Res.string.quest_parking_charge_time_unit_label),
-                modifier = Modifier.padding(16.dp)
             )
         }
     }

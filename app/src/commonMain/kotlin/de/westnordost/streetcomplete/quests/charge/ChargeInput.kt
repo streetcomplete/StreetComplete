@@ -63,7 +63,6 @@ fun ChargeInput(
         if (!currencyFormatInfo.isSymbolBeforeAmount) {
             Text(
                 text = currencyFormatInfo.symbol,
-                style = MaterialTheme.typography.h5,
                 color = MaterialTheme.colors.onSurface.copy(alpha = 0.6f),
             )
         }

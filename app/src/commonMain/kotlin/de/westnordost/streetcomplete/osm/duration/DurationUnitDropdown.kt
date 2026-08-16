@@ -14,8 +14,8 @@ import org.jetbrains.compose.resources.stringResource
 fun DurationUnitDropdown(
     selectedDuration: DurationUnit,
     onSelectedDuration: (DurationUnit) -> Unit,
+    modifier: Modifier = Modifier,
     alwaysSingular: Boolean = false,
-    modifier: Modifier = Modifier
 ) {
     DropdownButton(
         items = DurationUnit.entries,

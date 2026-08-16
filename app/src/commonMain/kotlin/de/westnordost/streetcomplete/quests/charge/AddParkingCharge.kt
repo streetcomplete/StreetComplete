@@ -34,7 +34,7 @@ class AddParkingCharge : OsmFilterQuestType<Charge>() {
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
-             nodes, ways with amenity = parking
+             nodes, ways, relations with amenity = parking
          """.toElementFilterExpression())
 
     @Composable
