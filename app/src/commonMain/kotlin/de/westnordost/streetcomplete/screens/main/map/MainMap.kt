@@ -91,6 +91,8 @@ private val BASE_STYLE = """
         Res.getUri("files/glyphs/Roboto Regular/0-255.pbf")
             .replace("Roboto Regular", "{fontstack}")
             .replace("0-255", "{range}")
+            // workaround for https://github.com/maplibre/maplibre-native/issues/4498
+            .replace("file:///android_asset/", "asset://")
       }",
       "layers": []
     }
