@@ -9,15 +9,15 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.isInPolygon
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 import de.westnordost.streetcomplete.util.math.measuredArea
-import io.github.dellisd.spatialk.geojson.Geometry
-import io.github.dellisd.spatialk.geojson.LineString
-import io.github.dellisd.spatialk.geojson.MultiLineString
-import io.github.dellisd.spatialk.geojson.MultiPolygon
-import io.github.dellisd.spatialk.geojson.Point
-import io.github.dellisd.spatialk.geojson.Polygon
-import io.github.dellisd.spatialk.geojson.Position
+import org.maplibre.spatialk.geojson.LineString
+import org.maplibre.spatialk.geojson.MultiLineString
+import org.maplibre.spatialk.geojson.MultiPolygon
+import org.maplibre.spatialk.geojson.Point
+import org.maplibre.spatialk.geojson.Polygon
+import org.maplibre.spatialk.geojson.Position
+import org.maplibre.spatialk.geojson.Geometry
 
-typealias GeoJsonBoundingBox = io.github.dellisd.spatialk.geojson.BoundingBox
+typealias GeoJsonBoundingBox = org.maplibre.spatialk.geojson.BoundingBox
 
 fun BoundingBox.toGeoJsonBoundingBox(): GeoJsonBoundingBox =
     GeoJsonBoundingBox(

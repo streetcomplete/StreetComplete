@@ -7,7 +7,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.map.toPosition
-import io.github.dellisd.spatialk.geojson.Polygon
+import org.maplibre.spatialk.geojson.Polygon
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.image

@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.screens.main.map.toMultiLineGeometry
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.ui.theme.Recording
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import io.github.dellisd.spatialk.geojson.MultiLineString
+import org.maplibre.spatialk.geojson.MultiLineString
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToBoolean

@@ -9,7 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.ktx.id
-import io.github.dellisd.spatialk.geojson.Feature
+import org.maplibre.spatialk.geojson.Feature
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.DrawableResource
 

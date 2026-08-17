@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_pin_circle
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
-import io.github.dellisd.spatialk.geojson.Feature
-import io.github.dellisd.spatialk.geojson.FeatureCollection
+import org.maplibre.spatialk.geojson.Feature
+import org.maplibre.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.all
