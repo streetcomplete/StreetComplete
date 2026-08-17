@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.resources.Res
@@ -14,8 +16,8 @@ import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
-import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
+import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.camera.CameraState
 import org.maplibre.compose.camera.rememberCameraState
 import org.maplibre.compose.map.MapOptions
@@ -26,14 +28,17 @@ import org.maplibre.compose.style.StyleState
 import org.maplibre.compose.style.rememberStyleState
 
 /**
- * A plain MapLibre Map with StreetComplete theme and localized names
+ * MapLibre Map with StreetComplete theme and all stuff displayed on top of it
  * */
 @Composable
-fun Map(
+fun MainMap(
     modifier: Modifier = Modifier,
+    viewModel: MainMapViewModel = koinViewModel(),
     cameraState: CameraState = rememberCameraState(),
     styleState: StyleState = rememberStyleState(),
 ) {
+    val downloadedTiles by viewModel.downloadedTiles.collectAsState()
+
     MaplibreMap(
         modifier = modifier,
         baseStyle = BaseStyle.Json(BASE_STYLE),
@@ -50,26 +55,26 @@ fun Map(
             languages = languages,
             belowRoadsContent = {
                 // left-and-right lines should be rendered behind the actual road
-                StyleableOverlaySideLayer(styleableOverlaySource, isBridge = false)
+                //TODO StyleableOverlaySideLayer(styleableOverlaySource, isBridge = false)
             },
             belowRoadsOnBridgeContent = {
                 // left-and-right lines should be rendered behind the actual bridge road
-                StyleableOverlaySideLayer(styleableOverlaySource, isBridge = true)
+                //TODO StyleableOverlaySideLayer(styleableOverlaySource, isBridge = true)
             },
             belowLabelsContent = {
                 // labels should be on top of other layers
-                DownloadedAreaLayer(tiles)
-                StyleableOverlayLayers(styleableOverlaySource, onClickOverlay)
-                TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
+                DownloadedAreaLayer(downloadedTiles)
+                //TODO StyleableOverlayLayers(styleableOverlaySource, onClickOverlay)
+                //TODO TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
             },
             aboveLabelsContent = {
                 // these are always on top of everything else (including labels)
-                StyleableOverlayLabelLayer(styleableOverlaySource, colors.text, colors.textOutline, onClickOverlay)
-                GeometryMarkersLayers(markers)
-                FocusedGeometryLayers(geometry)
-                CurrentLocationLayers(location, rotation)
-                PinsLayers(pins, onClickPin, onClickCluster)
-                SelectedPinsLayer(iconPainter, pinPositions)
+                //TODO StyleableOverlayLabelLayer(styleableOverlaySource, colors.text, colors.textOutline, onClickOverlay)
+                //TODO GeometryMarkersLayers(markers)
+                //TODO FocusedGeometryLayers(geometry)
+                //TODO CurrentLocationLayers(location, rotation)
+                //TODO PinsLayers(pins, onClickPin, onClickCluster)
+                //TODO SelectedPinsLayer(iconPainter, pinPositions)
             }
         )
     }

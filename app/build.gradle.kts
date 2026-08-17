@@ -227,7 +227,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:3.5.1")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
+                //implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
             }
         }
         iosMain {
