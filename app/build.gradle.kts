@@ -179,7 +179,7 @@ kotlin {
                 // UI widgets
 
                 // Map
-                implementation("org.maplibre.compose:maplibre-compose:0.11.1")
+                implementation("org.maplibre.compose:maplibre-compose:0.14.0")
 
                 // non-lazy grid
                 // NOTE: might replace with
