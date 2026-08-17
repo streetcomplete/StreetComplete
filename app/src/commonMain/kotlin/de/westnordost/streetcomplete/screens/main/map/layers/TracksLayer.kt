@@ -26,6 +26,7 @@ import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.Source
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
+import org.maplibre.spatialk.geojson.GeometryCollection
 
 @MaplibreComposable @Composable
 fun TracksLayers(
@@ -41,7 +42,7 @@ fun TracksLayers(
     }
 
     val tracksSource = rememberGeoJsonSource(
-        data = GeoJsonData.Features(trackWithoutLast.toLineGeometry() ?: MultiLineString())
+        data = GeoJsonData.Features(trackWithoutLast.toLineGeometry() ?: GeometryCollection(emptyList()))
     )
     // we want to animate the drawing of the track from the last position to the current position
     // while the position marker animates at the same time from the last position to the current
@@ -51,7 +52,7 @@ fun TracksLayers(
             trackLastSegment?.let {
                 val animatedLastPosition by animateLatLonAsState(targetValue = it.last())
                 listOf(it.first(), animatedLastPosition).toLineGeometry()
-            } ?: MultiLineString()
+            } ?: GeometryCollection(emptyList())
         )
     )
 

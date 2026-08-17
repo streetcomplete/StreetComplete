@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.ui.theme.GeometryMarker
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import org.maplibre.compose.expressions.ast.Expression
 import org.maplibre.compose.expressions.dsl.any
@@ -36,6 +37,7 @@ import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
+import org.maplibre.spatialk.geojson.Geometry
 
 /** Displays some generic geometry markers with an optional icon on the map. This is used to
  *  show the geometry of elements surrounding the selected quest */
@@ -87,8 +89,8 @@ data class Marker(
     val title: String? = null
 )
 
-private fun Marker.toGeoJsonFeature(): List<Feature> {
-    val features = ArrayList<Feature>(3)
+private fun Marker.toGeoJsonFeature(): List<Feature<Geometry, JsonObject>> {
+    val features = ArrayList<Feature<Geometry, JsonObject>>(3)
     // point marker or any marker with title or icon
     if (icon != null || title != null || geometry is ElementPointGeometry) {
         val p = HashMap<String, JsonElement>(2)
@@ -99,12 +101,12 @@ private fun Marker.toGeoJsonFeature(): List<Feature> {
         if (title != null) {
             p["label"] = JsonPrimitive(title)
         }
-        features.add(Feature(geometry.toGeometry(), p))
+        features.add(Feature(geometry.toGeometry(), JsonObject(p)))
     }
 
     // polygon / polylines marker(s)
     if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
-        features.add(Feature(geometry.toGeometry()))
+        features.add(Feature(geometry.toGeometry(), JsonObject(emptyMap())))
     }
     return features
 }

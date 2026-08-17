@@ -9,9 +9,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.ktx.id
+import kotlinx.serialization.json.JsonObject
 import org.maplibre.spatialk.geojson.Feature
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.DrawableResource
+import org.maplibre.spatialk.geojson.Geometry
 
 data class StyledElement(
     val element: Element,
@@ -19,7 +21,7 @@ data class StyledElement(
     val overlayStyle: OverlayStyle
 )
 
-private fun StyledElement.toGeoJsonFeatures(): List<Feature> {
+private fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject>> {
     val p = createProperties(element.key)
 
     return when (overlayStyle) {
@@ -31,7 +33,7 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature> {
                 p["label"] = JsonPrimitive(overlayStyle.label)
             }
 
-            listOf(Feature(geometry.center.toGeometry(), p))
+            listOf(Feature(geometry.center.toGeometry(), JsonObject(p)))
         }
         is OverlayStyle.Polygon -> {
             if (overlayStyle.color.alpha != 0f) {
@@ -49,7 +51,7 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature> {
                 }
             }
 
-            val f = Feature(geometry.toGeometry(), p)
+            val f = Feature(geometry.toGeometry(), JsonObject(p))
             val point = if (overlayStyle.label != null || overlayStyle.icon != null) {
                 val pp = createProperties(element.key)
                 if (overlayStyle.icon != null) {
@@ -58,7 +60,7 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature> {
                 if (overlayStyle.label != null) {
                     pp["label"] = JsonPrimitive(overlayStyle.label)
                 }
-                Feature(geometry.center.toGeometry(), pp)
+                Feature(geometry.center.toGeometry(), JsonObject(pp))
             } else {
                 null
             }
@@ -84,7 +86,7 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature> {
                 if (it.dashed) {
                     p2["dashed"] = JsonPrimitive(true)
                 }
-                Feature(line, p2)
+                Feature(line, JsonObject(p2))
             }
 
             val right = overlayStyle.strokeRight?.let {
@@ -99,7 +101,7 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature> {
                 if (it.dashed) {
                     p2["dashed"] = JsonPrimitive(true)
                 }
-                Feature(line, p2)
+                Feature(line, JsonObject(p2))
             }
 
             val center = overlayStyle.stroke.let {
@@ -114,13 +116,13 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature> {
                 if (it?.dashed == true) {
                     p2["dashed"] = JsonPrimitive(true)
                 }
-                Feature(line, p2)
+                Feature(line, JsonObject(p2))
             }
 
             val label = if (overlayStyle.label != null) {
                 Feature(
                     geometry.center.toGeometry(),
-                    mapOf("label" to JsonPrimitive(overlayStyle.label))
+                    JsonObject(mapOf("label" to JsonPrimitive(overlayStyle.label)))
                 )
             } else {
                 null
