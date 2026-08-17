@@ -87,6 +87,13 @@ fun ElementPolygonsGeometry.toGeometry(): Geometry {
     return MultiPolygon(groupedRings)
 }
 
+fun List<LatLon>.toLineGeometry(): LineString? =
+    if (size < 2) null else LineString(map { it.toPosition() })
+
+fun List<List<LatLon>>.toMultiLineGeometry() = MultiLineString(
+    mapNotNull { line -> if (line.size < 2) null else line.map { it.toPosition() } }
+)
+
 fun LatLon.toGeometry(): Point =
     Point(Position(longitude = longitude, latitude = latitude))
 

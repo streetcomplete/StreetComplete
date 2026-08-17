@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLab
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayer
+import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
 import org.maplibre.compose.camera.CameraState
 import org.maplibre.compose.camera.rememberCameraState
 import org.maplibre.compose.map.MapOptions
@@ -59,7 +60,7 @@ fun Map(
                 // labels should be on top of other layers
                 DownloadedAreaLayer(tiles)
                 StyleableOverlayLayers(styleableOverlaySource, onClickOverlay)
-                TracksLayers()
+                TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
             },
             aboveLabelsContent = {
                 // these are always on top of everything else (including labels)

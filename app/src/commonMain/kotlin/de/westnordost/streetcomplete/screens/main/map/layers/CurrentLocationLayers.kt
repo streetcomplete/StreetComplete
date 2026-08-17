@@ -1,28 +1,23 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.animation.core.Spring.StiffnessLow
-import androidx.compose.animation.core.SpringSpec
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.State
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.location.Location
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.map_location_nyan
+import de.westnordost.streetcomplete.resources.map_location_shadow
+import de.westnordost.streetcomplete.resources.map_location_view_direction
+import de.westnordost.streetcomplete.screens.main.map.animateLatLonAsState
 import de.westnordost.streetcomplete.screens.main.map.inMeters
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import de.westnordost.streetcomplete.util.math.normalizeLongitude
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.image
@@ -40,10 +35,7 @@ fun CurrentLocationLayers(
     location: Location,
     rotation: Float?
 ) {
-    val animatedPosition by animateLatLonAsState(
-        targetValue = location.position,
-        animationSpec = spring(stiffness = StiffnessLow),
-    )
+    val animatedPosition by animateLatLonAsState(targetValue = location.position)
 
     val animatedAccuracy by animateFloatAsState(
         targetValue = location.accuracy,
@@ -111,37 +103,3 @@ fun CurrentLocationLayers(
     }
 }
 
-@Composable
-private fun animateLatLonAsState(
-    targetValue: LatLon,
-    animationSpec: SpringSpec<LatLon> = spring(stiffness = StiffnessLow),
-    label: String = "LatLonAnimation"
-): State<LatLon> {
-    var targetLongitude by remember { mutableStateOf(targetValue.longitude) }
-
-    LaunchedEffect(targetValue.longitude) {
-        targetLongitude += normalizeLongitude(targetValue.longitude - targetLongitude)
-    }
-
-    val intAnimationSpec = spring(
-        dampingRatio = animationSpec.dampingRatio,
-        stiffness = animationSpec.stiffness,
-        visibilityThreshold = 1
-    )
-
-    val animatedLongitude by animateIntAsState(
-        targetValue = (targetLongitude * 7).toInt(),
-        animationSpec = intAnimationSpec,
-        label = label+"-Lon"
-    )
-    val animatedLatitude by animateIntAsState(
-        targetValue = (targetValue.latitude * 7).toInt(),
-        animationSpec = intAnimationSpec,
-        label = label+"-Lat"
-    )
-
-    return remember { derivedStateOf { LatLon(
-        latitude = animatedLatitude/7.0,
-        longitude = normalizeLongitude(animatedLongitude/7.0)
-    ) } }
-}
