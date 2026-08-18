@@ -12,7 +12,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
+class AddBbqFuel : OsmFilterQuestType<Set<BbqFuelAnswer>>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -31,17 +31,19 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
         mapData.filter("nodes with amenity = bbq")
 
     @Composable
-    override fun Form(on: (QuestAction<BbqFuelAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<Set<BbqFuelAnswer>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddBbqFuelForm(on)
     }
 
-    override fun applyAnswerTo(answer: BbqFuelAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            is BbqFuel -> tags["fuel"] = answer.osmValue
-            BbqFuelAnswer.IsFirePit -> {
-                tags.remove("amenity")
-                tags["leisure"] = "firepit"
-            }
+    override fun applyAnswerTo(answer: Set<BbqFuelAnswer>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        if (answer.contains(BbqFuelAnswer.IsFirePit))
+        {
+            tags.remove("amenity")
+            tags["leisure"] = "firepit"
+        }
+        else
+        {
+            tags["fuel"]=answer.joinToString(";") { (it as BbqFuel).osmValue }
         }
     }
 }
