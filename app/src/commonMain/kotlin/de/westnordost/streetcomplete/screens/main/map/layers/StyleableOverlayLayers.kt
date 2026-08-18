@@ -5,11 +5,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.screens.main.map.byZoom
 import de.westnordost.streetcomplete.screens.main.map.inMeters
 import de.westnordost.streetcomplete.screens.main.map.isArea
 import de.westnordost.streetcomplete.screens.main.map.isLines
 import de.westnordost.streetcomplete.screens.main.map.isPoint
+import kotlinx.serialization.json.JsonObject
 import org.maplibre.compose.expressions.dsl.all
 import org.maplibre.compose.expressions.dsl.asNumber
 import org.maplibre.compose.expressions.dsl.condition
@@ -37,6 +39,8 @@ import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.sources.Source
 import org.maplibre.compose.util.FeaturesClickHandler
 import org.maplibre.compose.util.MaplibreComposable
+import org.maplibre.spatialk.geojson.Feature
+import org.maplibre.spatialk.geojson.Geometry
 
 /** Display styled map data labels */
 @MaplibreComposable
@@ -118,20 +122,26 @@ fun StyleableOverlayLayers(
         id = "overlay-lines",
         source = source,
         minZoom = MIN_ZOOM,
-        filter = all(feature.isLines(), !feature.has("offset")),
+        filter = all(feature.isLines(), !feature.has("offset"), !dashed),
         opacity = opacity,
         color = color,
         width = width,
-        dasharray = switch(
-            condition(dashed, const(listOf(1.5f, 1f))),
-            fallback = nil()
-        ),
-        cap = switch(
-            condition(dashed, const(LineCap.Butt)),
-            fallback = const(LineCap.Round)
-        ),
+        cap = const(LineCap.Round),
         join = const(LineJoin.Round),
         onClick = onClick,
+    )
+    LineLayer(
+        id = "overlay-lines-dashed",
+        source = source,
+        minZoom = MIN_ZOOM,
+        filter = all(feature.isLines(), !feature.has("offset"), dashed),
+        opacity = opacity,
+        color = color,
+        width = width,
+        dasharray = const(listOf(1.5f, 1f)),
+        cap = const(LineCap.Butt),  // because of dashed
+        join = const(LineJoin.Round),
+        onClick = { onClick(it, onClickElement) }
     )
     LineLayer(
         id = "overlay-fills-outline",
@@ -166,28 +176,32 @@ fun StyleableOverlaySideLayer(source: Source, isBridge: Boolean) {
     val color = feature["color"].convertToColor()
     val width = inMeters(feature["width"].asNumber())
     val offset = inMeters(feature["offset"].asNumber())
+    val bridgeString = if (isBridge) "-bridge" else ""
+    val bridgeMatch = if (isBridge) bridge else !bridge
 
     LineLayer(
-        id = "overlay-lines-side",
+        id = "overlay-lines-side" + bridgeString,
         source = source,
         minZoom = MIN_ZOOM,
-        filter = all(
-            feature.isLines(),
-            feature.has("offset"),
-            if (isBridge) bridge else !bridge
-        ),
+        filter = all(feature.isLines(), feature.has("offset"), bridgeMatch, !dashed),
         color = color,
         width = width,
         opacity = opacity,
         offset = offset,
-        dasharray = switch(
-            condition(dashed, const(listOf(1.5f, 1f))),
-            fallback = nil()
-        ),
-        cap = switch(
-            condition(dashed, const(LineCap.Butt)),
-            fallback = const(LineCap.Round)
-        ),
+        cap = const(LineCap.Round),
+        join = const(LineJoin.Round),
+    )
+    LineLayer(
+        id = "overlay-lines-side-dashed" + bridgeString,
+        source = source,
+        minZoom = MIN_ZOOM,
+        filter = all(feature.isLines(), feature.has("offset"), bridgeMatch, dashed),
+        color = color,
+        width = width,
+        opacity = opacity,
+        offset = offset,
+        dasharray = const(listOf(1.5f, 1f)),
+        cap = const(LineCap.Butt), // because of dashed
         join = const(LineJoin.Round),
     )
 }
