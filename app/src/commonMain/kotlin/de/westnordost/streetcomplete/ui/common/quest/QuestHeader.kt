@@ -32,6 +32,7 @@ import de.westnordost.streetcomplete.ui.common.InfoFilledIcon
 import de.westnordost.streetcomplete.ui.common.InfoOutlineIcon
 import de.westnordost.streetcomplete.ui.ktx.fadingHorizontalScrollEdges
 import de.westnordost.streetcomplete.ui.theme.titleLarge
+import de.westnordost.streetcomplete.ui.theme.titleMedium
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 
@@ -44,6 +45,7 @@ fun QuestHeader(
     hintText: String?,
     hintImages: List<DrawableResource>,
     modifier: Modifier = Modifier,
+    resurvey: Boolean = false,
 ) {
     var showInfo by remember { mutableStateOf(false) }
 
@@ -52,8 +54,14 @@ fun QuestHeader(
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
+                if (resurvey){
+                    CompositionLocalProvider(
+                        LocalTextStyle provides MaterialTheme.typography.titleLarge
+                    ) {
+                        Text("Is this still correct?")
+                }}
                 CompositionLocalProvider(
-                    LocalTextStyle provides MaterialTheme.typography.titleLarge
+                    if (resurvey) LocalTextStyle provides MaterialTheme.typography.titleMedium else LocalTextStyle provides MaterialTheme.typography.titleLarge,
                 ) {
                     Text(title)
                 }
