@@ -42,10 +42,19 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
 
     @Composable
     override fun Form(on: (QuestAction<Set<BicycleRepairStationService>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        var preselectedItems = emptySet<BicycleRepairStationService>()
+        for (service in BicycleRepairStationService.entries)
+        {
+            if (element.tags["service:bicycle:${service.value}"] == "yes") {
+                preselectedItems += service
+            }
+        }
+
         ItemsSelectQuestForm(
             on = on,
             items = BicycleRepairStationService.entries,
             itemContent = { ImageWithLabel(painterResource(it.icon), stringResource(it.title)) },
+            preselectedItems = preselectedItems,
         )
     }
 
