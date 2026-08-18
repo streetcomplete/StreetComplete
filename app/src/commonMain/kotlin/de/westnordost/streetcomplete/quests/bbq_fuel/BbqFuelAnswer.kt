@@ -8,11 +8,11 @@ sealed interface BbqFuelAnswer {
     data object IsFirePit : BbqFuelAnswer
 }
 
-enum class BbqFuel(val osmValue: String) : BbqFuelAnswer {
-    WOOD("wood"),
-    ELECTRIC("electric"),
-    CHARCOAL("charcoal"),
-    GAS("gas"),
+enum class BbqFuel(val bbqValue: String,val ovenValue: String) : BbqFuelAnswer {
+    WOOD("wood", "wood_fired"),
+    ELECTRIC("electric", "electric"),
+    CHARCOAL("charcoal", "charcoal"),
+    GAS("gas", "gas_fired"),
 }
 
 val BbqFuel.text: StringResource get() = when (this) {

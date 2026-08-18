@@ -1455,7 +1455,7 @@
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
     <string name="quest_powerPolesMaterial_is_terminal">Power line is anchored to building</string>
 
-    <string name="quest_bbq_fuel_title">What is this grill powered by?</string>
+    <string name="quest_bbq_fuel_title">What fuel is used to cook here?</string>
     <string name="quest_bbq_fuel_wood">Wood</string>
     <string name="quest_bbq_fuel_electric">Electric</string>
     <string name="quest_bbq_fuel_charcoal">Charcoal</string>

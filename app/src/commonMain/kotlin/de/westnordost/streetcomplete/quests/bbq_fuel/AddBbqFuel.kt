@@ -16,12 +16,21 @@ class AddBbqFuel : OsmFilterQuestType<Set<BbqFuelAnswer>>() {
 
     override val elementFilter = """
         nodes, ways with
-          amenity = bbq
-          and !fuel
+          (
+              (
+                  amenity = bbq
+                  and !fuel
+              )
+              or
+              (
+                  amenity = baking_oven
+                  and (!oven or oven = yes)
+              )
+          )
           and access !~ no|private
     """
 
-    override val changesetComment = "Specify barbecue fuel"
+    override val changesetComment = "Specify cooking fuel"
     override val wikiLink = "Key:amenity=bbq"
     override val icon = Res.drawable.quest_fire
     override val title = Res.string.quest_bbq_fuel_title
@@ -43,7 +52,11 @@ class AddBbqFuel : OsmFilterQuestType<Set<BbqFuelAnswer>>() {
         }
         else
         {
-            tags["fuel"]=answer.joinToString(";") { (it as BbqFuel).osmValue }
+            // BBQs and ovens use slightly different tags for fuel
+            if(tags["amenity"]=="bbq")
+                tags["fuel"]=answer.joinToString(";") { (it as BbqFuel).bbqValue }
+            else
+                tags["oven"]=answer.joinToString(";") { (it as BbqFuel).ovenValue }
         }
     }
 }
