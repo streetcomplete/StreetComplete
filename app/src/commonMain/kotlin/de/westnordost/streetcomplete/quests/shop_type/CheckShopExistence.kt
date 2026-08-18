@@ -45,7 +45,7 @@ class CheckShopExistence(
           and (name or brand or noname = yes or name:signed = no)
           and (!seasonal or seasonal = no)
           and (!intermittent or intermittent = no)
-          and (!permanent or permanent != yes)
+          and (!permanent or permanent = yes)
           and (!street_vendor or street_vendor = no)
     """).toElementFilterExpression() }
 
