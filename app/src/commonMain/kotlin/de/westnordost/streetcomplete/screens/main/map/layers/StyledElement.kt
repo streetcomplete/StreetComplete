@@ -97,7 +97,7 @@ fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject>> {
             val right = style.strokeRight?.let {
                 val p2 = HashMap(p)
                 p2["width"] = JsonPrimitive(3f)
-                p2["offset"] = JsonPrimitive(-(width / 2f + 1.5f))
+                p2["offset"] = JsonPrimitive(+(width / 2f + 1.5f))
                 if (it.color.alpha != 0f) {
                     p2["color"] = JsonPrimitive(it.color.toRgbaString())
                     p2["opacity"] = JsonPrimitive(1f)
