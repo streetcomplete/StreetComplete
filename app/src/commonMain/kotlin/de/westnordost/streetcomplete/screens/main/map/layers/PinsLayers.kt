@@ -10,9 +10,11 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_pin_circle
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
+import de.westnordost.streetcomplete.ui.ktx.id
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.all
 import org.maplibre.compose.expressions.dsl.any
@@ -125,7 +127,7 @@ private const val CLUSTER_MAX_ZOOM = 14
 
 data class Pin(
     val position: LatLon,
-    val icon: String,
+    val icon: DrawableResource,
     val properties: Collection<Pair<String, String>> = emptyList(),
     val order: Int = 0
 )
@@ -134,7 +136,7 @@ private fun Pin.toGeoJsonFeature() =
     Feature(
         geometry = position.toGeometry(),
         properties = mapOf(
-            "icon-image" to JsonPrimitive(icon),
+            "icon-image" to JsonPrimitive("pin_" + icon.id),
             "icon-order" to JsonPrimitive(order + 50),
         ) + properties.map { it.first to JsonPrimitive(it.second) }
     )

@@ -4,40 +4,85 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.map.layers.CurrentLocationLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayers
+import de.westnordost.streetcomplete.screens.main.map.layers.Marker
 import de.westnordost.streetcomplete.screens.main.map.layers.PinsLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
+import de.westnordost.streetcomplete.ui.ktx.id
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.camera.CameraState
 import org.maplibre.compose.camera.rememberCameraState
+import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.map.MapOptions
 import org.maplibre.compose.map.MaplibreMap
 import org.maplibre.compose.map.OrnamentOptions
+import org.maplibre.compose.sources.ComputedSourceOptions
+import org.maplibre.compose.sources.rememberComputedSource
 import org.maplibre.compose.style.BaseStyle
 import org.maplibre.compose.style.StyleState
 import org.maplibre.compose.style.rememberStyleState
+import org.maplibre.spatialk.geojson.Feature
+import org.maplibre.spatialk.geojson.FeatureCollection
+import org.maplibre.spatialk.geojson.LineString
+import org.maplibre.spatialk.geojson.Position
 
 /**
- * MapLibre Map with StreetComplete theme and all stuff displayed on top of it
+ * MapLibre Map with StreetComplete theme and all the StreetComplete specific things displayed on
+ * top.
+ *
+ * @param shownBottomSheet the bottom sheet currently shown. Depending on which bottom sheet is
+ * shown, certain elements will be highlighted or hidden.
+ *
+ * @param shownMarkers geometry markers currently shown, such as nearby shops when the user has a
+ * quest form that asks something about shops open. This is usually tied to the quest, but the quest
+ * form can (split way, level of place quest, …) change what markers are shown, so this is decoupled
+ * from [shownBottomSheet]
+ *
+ * @param isShowingUndoHistorySidebar whether the undo history sidebar is open. The overlay is
+ * hidden when it is open.
  * */
 @Composable
 fun MainMap(
+    onClickOverlayElement: (ElementKey) -> Unit,
+    shownBottomSheet: ShownBottomSheet?,
+    shownMarkers: Collection<Marker>?,
+    isShowingUndoHistorySidebar: Boolean,
     modifier: Modifier = Modifier,
     viewModel: MainMapViewModel = koinViewModel(),
     cameraState: CameraState = rememberCameraState(),
     styleState: StyleState = rememberStyleState(),
 ) {
     val downloadedTiles by viewModel.downloadedTiles.collectAsState()
+
+    // because quests highlight additional information and history sidebar should feel clean
+    val showOverlay = shownBottomSheet !is ShownBottomSheet.OsmQuest && !isShowingUndoHistorySidebar
+
+    val selectedQuest = when (shownBottomSheet) {
+        is ShownBottomSheet.OsmNoteQuest -> shownBottomSheet.quest
+        is ShownBottomSheet.OsmQuest -> shownBottomSheet.quest
+        else -> null
+    }
 
     MaplibreMap(
         modifier = modifier,
@@ -55,26 +100,55 @@ fun MainMap(
             languages = languages,
             belowRoadsContent = {
                 // left-and-right lines should be rendered behind the actual road
-                //TODO StyleableOverlaySideLayer(styleableOverlaySource, isBridge = false)
+                if (showOverlay) {
+                    StyleableOverlaySideLayer(
+                        source = viewModel.overlaySource,
+                        isBridge = false
+                    )
+                }
             },
             belowRoadsOnBridgeContent = {
                 // left-and-right lines should be rendered behind the actual bridge road
-                //TODO StyleableOverlaySideLayer(styleableOverlaySource, isBridge = true)
+                if (showOverlay) {
+                    StyleableOverlaySideLayer(
+                        source = viewModel.overlaySource,
+                        isBridge = true
+                    )
+                }
             },
             belowLabelsContent = {
                 // labels should be on top of other layers
                 DownloadedAreaLayer(downloadedTiles)
-                //TODO StyleableOverlayLayers(styleableOverlaySource, onClickOverlay)
+                if (showOverlay) {
+                    StyleableOverlayLayers(
+                        source = viewModel.overlaySource,
+                        onClickElement = onClickOverlayElement
+                    )
+                }
                 //TODO TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
             },
             aboveLabelsContent = {
                 // these are always on top of everything else (including labels)
-                //TODO StyleableOverlayLabelLayer(styleableOverlaySource, colors.text, colors.textOutline, onClickOverlay)
-                //TODO GeometryMarkersLayers(markers)
-                //TODO FocusedGeometryLayers(geometry)
+                if (showOverlay) {
+                    StyleableOverlayLabelLayer(
+                        source = viewModel.overlaySource,
+                        color = colors.text,
+                        haloColor = colors.textOutline,
+                        onClickElement = onClickOverlayElement
+                    )
+                }
+                shownMarkers?.let { markers ->
+                    GeometryMarkersLayers(shownMarkers)
+                }
+                shownBottomSheet?.geometry?.let { geometry ->
+                    FocusedGeometryLayers(geometry)
+                }
                 //TODO CurrentLocationLayers(location, rotation)
                 //TODO PinsLayers(pins, onClickPin, onClickCluster)
-                //TODO SelectedPinsLayer(iconPainter, pinPositions)
+
+                if (selectedQuest != null) {
+                    SelectedPinsLayer(selectedQuest.type.icon, selectedQuest.markerLocations)
+                }
             }
         )
     }

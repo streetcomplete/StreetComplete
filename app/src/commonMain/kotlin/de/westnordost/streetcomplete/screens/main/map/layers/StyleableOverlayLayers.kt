@@ -22,7 +22,6 @@ import org.maplibre.compose.expressions.dsl.convertToNumber
 import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
-import org.maplibre.compose.expressions.dsl.nil
 import org.maplibre.compose.expressions.dsl.not
 import org.maplibre.compose.expressions.dsl.offset
 import org.maplibre.compose.expressions.dsl.step
@@ -37,7 +36,7 @@ import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.sources.Source
-import org.maplibre.compose.util.FeaturesClickHandler
+import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.Geometry
@@ -49,7 +48,7 @@ fun StyleableOverlayLabelLayer(
     source: Source,
     color: Color,
     haloColor: Color,
-    onClick: FeaturesClickHandler? = null,
+    onClickElement: (ElementKey) -> Unit,
 ) {
     SymbolLayer(
         id = "overlay-symbols",
@@ -80,7 +79,7 @@ fun StyleableOverlayLabelLayer(
             fallback = const(false),
             21 to const(true)
         ),
-        onClick = onClick
+        onClick = { onClick(it, onClickElement) }
     )
 }
 
@@ -88,7 +87,7 @@ fun StyleableOverlayLabelLayer(
 @MaplibreComposable @Composable
 fun StyleableOverlayLayers(
     source: Source,
-    onClick: FeaturesClickHandler? = null,
+    onClickElement: (ElementKey) -> Unit,
 ) {
     val dashed = feature["dashed"].convertToBoolean()
     val opacity = feature["opacity"].convertToNumber()
@@ -116,7 +115,7 @@ fun StyleableOverlayLayers(
         filter = feature.isArea(),
         opacity = opacity,
         color = color,
-        onClick = onClick,
+        onClick = { onClick(it, onClickElement) }
     )
     LineLayer(
         id = "overlay-lines",
@@ -128,7 +127,7 @@ fun StyleableOverlayLayers(
         width = width,
         cap = const(LineCap.Round),
         join = const(LineJoin.Round),
-        onClick = onClick,
+        onClick = { onClick(it, onClickElement) }
     )
     LineLayer(
         id = "overlay-lines-dashed",
@@ -204,6 +203,21 @@ fun StyleableOverlaySideLayer(source: Source, isBridge: Boolean) {
         cap = const(LineCap.Butt), // because of dashed
         join = const(LineJoin.Round),
     )
+}
+
+
+private inline fun onClick(
+    features: List<Feature<Geometry, JsonObject?>>,
+    onClickElement: (ElementKey) -> Unit
+): ClickResult {
+    val elementKey = features
+        .filter { it.properties?.isDisabled() != true }
+        .mapNotNull { it.properties?.getElementKey() }
+        .firstOrNull()
+        ?: return ClickResult.Pass
+
+    onClickElement(elementKey)
+    return ClickResult.Consume
 }
 
 private val MIN_ZOOM = 14f

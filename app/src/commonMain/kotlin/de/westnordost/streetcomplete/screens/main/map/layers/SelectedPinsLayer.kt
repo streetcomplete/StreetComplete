@@ -11,9 +11,11 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
+import de.westnordost.streetcomplete.ui.ktx.id
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
+import org.jetbrains.compose.resources.DrawableResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.feature
@@ -27,7 +29,7 @@ import org.maplibre.compose.util.MaplibreComposable
  *  [PinsLayers] */
 @MaplibreComposable
 @Composable
-fun SelectedPinsLayer(icon: String, pinPositions: Collection<LatLon>) {
+fun SelectedPinsLayer(icon: DrawableResource, pinPositions: Collection<LatLon>) {
     val pinsSize = remember { Animatable(0.5f) }
     LaunchedEffect(pinPositions) {
         pinsSize.animateTo(
@@ -44,7 +46,7 @@ fun SelectedPinsLayer(icon: String, pinPositions: Collection<LatLon>) {
             FeatureCollection(pinPositions.map {
                 Feature(
                     geometry = it.toGeometry(),
-                    properties = mapOf("icon-image" to JsonPrimitive(icon))
+                    properties = mapOf("icon-image" to JsonPrimitive("pin_" + icon.id))
                 )
             })
         ),

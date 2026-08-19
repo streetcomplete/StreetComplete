@@ -21,6 +21,9 @@ fun ShowMapScreen(
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
-        MainMap(Modifier.fillMaxSize())
+        MainMap(
+            onClickOverlayElement = {},
+            Modifier.fillMaxSize()
+        )
     }
 }

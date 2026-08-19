@@ -14,12 +14,14 @@ import de.westnordost.streetcomplete.screens.main.map.isArea
 import de.westnordost.streetcomplete.screens.main.map.isLines
 import de.westnordost.streetcomplete.screens.main.map.isPoint
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
+import de.westnordost.streetcomplete.ui.ktx.id
 import de.westnordost.streetcomplete.ui.theme.GeometryMarker
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
+import org.jetbrains.compose.resources.DrawableResource
 import org.maplibre.compose.expressions.ast.Expression
 import org.maplibre.compose.expressions.dsl.any
 import org.maplibre.compose.expressions.dsl.const
@@ -85,7 +87,7 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
 data class Marker(
     val geometry: ElementGeometry,
     /** drawable resource name */
-    val icon: String? = null,
+    val icon: DrawableResource? = null,
     val title: String? = null
 )
 
@@ -95,9 +97,7 @@ private fun Marker.toGeoJsonFeature(): List<Feature<Geometry, JsonObject>> {
     if (icon != null || title != null || geometry is ElementPointGeometry) {
         val p = HashMap<String, JsonElement>(2)
 
-        // TODO some icons should be sdf, others, not
-        //   val sdf = name.startsWith("preset_")
-        p["icon"] = JsonPrimitive(icon ?: "preset_maki_circle")
+        p["icon"] = JsonPrimitive(icon?.id ?: "preset_maki_circle")
         if (title != null) {
             p["label"] = JsonPrimitive(title)
         }

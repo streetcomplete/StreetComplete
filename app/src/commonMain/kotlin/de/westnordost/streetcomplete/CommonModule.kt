@@ -600,7 +600,7 @@ val commonModule = module {
     }
 
     viewModel<MainMapViewModel> {
-        MainMapViewModelImpl(get())
+        MainMapViewModelImpl(get(), get(), get())
     }
 
     viewModel<MainBottomSheetViewModel> {
