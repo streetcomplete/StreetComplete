@@ -5,60 +5,64 @@ import androidx.compose.ui.graphics.toArgb
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.ktx.id
 import kotlinx.serialization.json.JsonObject
-import org.maplibre.spatialk.geojson.Feature
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.booleanOrNull
+import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.longOrNull
 import org.jetbrains.compose.resources.DrawableResource
+import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.Geometry
 
 data class StyledElement(
     val element: Element,
     val geometry: ElementGeometry,
-    val overlayStyle: OverlayStyle
+    val style: OverlayStyle
 )
 
-private fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject>> {
-    val p = createProperties(element.key)
+fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject>> {
+    val p = createProperties(element.key, style.disabled)
 
-    return when (overlayStyle) {
+    return when (style) {
         is OverlayStyle.Point -> {
-            if (overlayStyle.icon != null) {
-                p["icon"] = JsonPrimitive(overlayStyle.icon.id)
+            if (style.icon != null) {
+                p["icon"] = JsonPrimitive(style.icon.id)
             }
-            if (overlayStyle.label != null) {
-                p["label"] = JsonPrimitive(overlayStyle.label)
+            if (style.label != null) {
+                p["label"] = JsonPrimitive(style.label)
             }
 
             listOf(Feature(geometry.center.toGeometry(), JsonObject(p)))
         }
         is OverlayStyle.Polygon -> {
-            if (overlayStyle.color.alpha != 0f) {
-                p["color"] = JsonPrimitive(overlayStyle.color.toRgbaString())
-                p["outline-color"] =  JsonPrimitive(overlayStyle.color.darkened().toRgbaString())
+            if (style.color.alpha != 0f) {
+                p["color"] = JsonPrimitive(style.color.toRgbaString())
+                p["outline-color"] =  JsonPrimitive(style.color.darkened().toRgbaString())
                 p["opacity"] = JsonPrimitive(0.8f)
             } else {
                 p["opacity"] = JsonPrimitive(0f)
             }
 
-            if (overlayStyle.height != null && overlayStyle.color.alpha != 0f) {
-                p["height"] = JsonPrimitive(overlayStyle.height)
-                if (overlayStyle.minHeight != null) {
-                    p["min-height"] = JsonPrimitive(overlayStyle.minHeight.coerceAtMost(overlayStyle.height))
+            if (style.height != null && style.color.alpha != 0f) {
+                p["height"] = JsonPrimitive(style.height)
+                if (style.minHeight != null) {
+                    p["min-height"] = JsonPrimitive(style.minHeight.coerceAtMost(style.height))
                 }
             }
 
             val f = Feature(geometry.toGeometry(), JsonObject(p))
-            val point = if (overlayStyle.label != null || overlayStyle.icon != null) {
-                val pp = createProperties(element.key)
-                if (overlayStyle.icon != null) {
-                    pp["icon"] = JsonPrimitive(overlayStyle.icon.id)
+            val point = if (style.label != null || style.icon != null) {
+                val pp = createProperties(element.key, style.disabled)
+                if (style.icon != null) {
+                    pp["icon"] = JsonPrimitive(style.icon.id)
                 }
-                if (overlayStyle.label != null) {
-                    pp["label"] = JsonPrimitive(overlayStyle.label)
+                if (style.label != null) {
+                    pp["label"] = JsonPrimitive(style.label)
                 }
                 Feature(geometry.center.toGeometry(), JsonObject(pp))
             } else {
@@ -74,12 +78,13 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject
                 p["bridge"] = JsonPrimitive(true)
             }
 
-            val left = overlayStyle.strokeLeft?.let {
+            val left = style.strokeLeft?.let {
                 val p2 = HashMap(p)
                 p2["width"] = JsonPrimitive(3f)
                 p2["offset"] = JsonPrimitive(-(width / 2f + 1.5f))
                 if (it.color.alpha != 0f) {
                     p2["color"] = JsonPrimitive(it.color.toRgbaString())
+                    p2["opacity"] = JsonPrimitive(1f)
                 } else {
                     p2["opacity"] = JsonPrimitive(0f)
                 }
@@ -89,12 +94,13 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject
                 Feature(line, JsonObject(p2))
             }
 
-            val right = overlayStyle.strokeRight?.let {
+            val right = style.strokeRight?.let {
                 val p2 = HashMap(p)
                 p2["width"] = JsonPrimitive(3f)
                 p2["offset"] = JsonPrimitive(-(width / 2f + 1.5f))
                 if (it.color.alpha != 0f) {
                     p2["color"] = JsonPrimitive(it.color.toRgbaString())
+                    p2["opacity"] = JsonPrimitive(1f)
                 } else {
                     p2["opacity"] = JsonPrimitive(0f)
                 }
@@ -104,12 +110,13 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject
                 Feature(line, JsonObject(p2))
             }
 
-            val center = overlayStyle.stroke.let {
+            val center = style.stroke.let {
                 val p2 = HashMap(p)
                 p2["width"] = JsonPrimitive(width)
                 if (it != null && it.color.alpha != 0f) {
                     p2["color"] = JsonPrimitive(it.color.toRgbaString())
                     p2["outline-color"] = JsonPrimitive(it.color.darkened().toRgbaString())
+                    p2["opacity"] = JsonPrimitive(1f)
                 } else {
                     p2["opacity"] = JsonPrimitive(0f)
                 }
@@ -119,10 +126,10 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject
                 Feature(line, JsonObject(p2))
             }
 
-            val label = if (overlayStyle.label != null) {
+            val label = if (style.label != null) {
                 Feature(
                     geometry.center.toGeometry(),
-                    JsonObject(mapOf("label" to JsonPrimitive(overlayStyle.label)))
+                    JsonObject(mapOf("label" to JsonPrimitive(style.label)))
                 )
             } else {
                 null
@@ -133,10 +140,19 @@ private fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject
     }
 }
 
-private fun createProperties(key: ElementKey): MutableMap<String, JsonPrimitive> {
+fun JsonObject.getElementKey(): ElementKey? {
+    val id = get(ELEMENT_ID)?.jsonPrimitive?.longOrNull ?: return null
+    val type = get(ELEMENT_TYPE)?.jsonPrimitive?.content ?: return null
+    return ElementKey(ElementType.valueOf(type), id)
+}
+fun JsonObject.isDisabled(): Boolean =
+    get(DISABLED)?.jsonPrimitive?.booleanOrNull ?: false
+
+private fun createProperties(key: ElementKey, disabled: Boolean): MutableMap<String, JsonPrimitive> {
     val p = HashMap<String, JsonPrimitive>()
     p[ELEMENT_ID] = JsonPrimitive(key.id)
     p[ELEMENT_TYPE] = JsonPrimitive(key.type.name)
+    if (disabled) p[DISABLED] = JsonPrimitive(disabled)
     return p
 }
 
@@ -174,3 +190,4 @@ private fun Color.toRgbaString(): String {
 
 private const val ELEMENT_TYPE = "element_type"
 private const val ELEMENT_ID = "element_id"
+private const val DISABLED = "disabled"
