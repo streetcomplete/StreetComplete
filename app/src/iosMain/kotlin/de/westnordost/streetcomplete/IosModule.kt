@@ -33,9 +33,11 @@ import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSBundle
+import platform.Foundation.NSCachesDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDefaults
 import platform.Foundation.NSUserDomainMask
@@ -80,6 +82,20 @@ val iosModule = module {
         val databaseFilePath = databaseUrl.path!!
         val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
         DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
+    }
+
+    // avatars cache dir
+
+    factory(named("AvatarsCacheDirectory")) {
+        val cacheUrl = NSFileManager.defaultManager.URLForDirectory(
+            directory = NSCachesDirectory,
+            inDomain = NSUserDomainMask,
+            appropriateForURL = null,
+            create = true,
+            error = null
+        )!!
+        val avatarsCacheUrl = cacheUrl.URLByAppendingPathComponent(ApplicationConstants.AVATARS_CACHE_DIRECTORY)!!
+        Path(avatarsCacheUrl.path!!)
     }
 
     // app store info

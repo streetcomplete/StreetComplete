@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelec
 import de.westnordost.streetcomplete.screens.settings.quest_selection.QuestSelectionViewModelImpl
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.getFeature
+import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import org.koin.core.module.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -28,4 +29,8 @@ val androidModule2 = module {
     // upload & download
 
     single { QuestAutoSyncer(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+
+    // location availability
+
+    single { LocationAvailabilityReceiver(get()) }
 }

@@ -108,10 +108,6 @@ val androidModule = module {
 
     factory<ActiveNetworkConnection> { AndroidActiveNetworkConnection(androidContext()) }
 
-    // location availability
-
-    single { LocationAvailabilityReceiver(get()) }
-
     // background jobs
 
     single<UploadController> { AndroidUploadController(androidContext()) }
