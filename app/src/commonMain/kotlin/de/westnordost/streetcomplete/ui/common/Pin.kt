@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.main.map.PinPainter
+import de.westnordost.streetcomplete.screens.main.map.pinPainter
 import org.jetbrains.compose.resources.painterResource
 
 /** A pin with an image on the pin head, usually a quest icon. The point the pin is pointing at is
@@ -20,11 +20,7 @@ fun Pin(
     modifier: Modifier = Modifier
 ) {
     Image(
-        painter = PinPainter(
-            iconPainter = iconPainter,
-            pinPainter = painterResource(Res.drawable.pin),
-            pinShadowPainter = painterResource(Res.drawable.pin_shadow)
-        ),
+        painter = pinPainter(iconPainter),
         contentDescription = null,
         modifier = modifier
             .padding(end = 10.dp, bottom = 71.dp)

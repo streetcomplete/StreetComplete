@@ -1,9 +1,14 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.painter.Painter
+import de.westnordost.streetcomplete.resources.*
+import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 
 /** Draws a (quest) pin */
 class PinPainter(
@@ -25,5 +30,18 @@ class PinPainter(
                 with(iconPainter) { draw(size) }
             }
         }
+    }
+}
+
+@Composable
+fun pinPainter(iconPainter: Painter): Painter {
+    val pinPainter = painterResource(Res.drawable.pin)
+    val pinShadowPainter = painterResource(Res.drawable.pin_shadow)
+    return remember(iconPainter, pinPainter, pinShadowPainter) {
+        PinPainter(
+            iconPainter = iconPainter,
+            pinPainter = pinPainter,
+            pinShadowPainter = pinShadowPainter
+        )
     }
 }
