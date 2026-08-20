@@ -241,6 +241,12 @@ kotlin {
                 implementation("androidx.sqlite:sqlite-bundled:2.7.0")
             }
         }
+        androidUnitTest {
+            dependencies {
+                // without it, :app:testDebugUnitTest throws java.lang.NoClassDefFoundError at BundledSQLiteDriver.jvmAndAndroid.kt
+                implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
+            }
+        }
     }
 }
 
