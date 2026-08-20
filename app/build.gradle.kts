@@ -246,8 +246,8 @@ kotlin {
         }
         androidUnitTest {
             dependencies {
+                // without it, :app:testDebugUnitTest throws java.lang.NoClassDefFoundError at BundledSQLiteDriver.jvmAndAndroid.kt
                 implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
-                implementation(kotlin("test"))
             }
         }
     }
@@ -255,15 +255,14 @@ kotlin {
 
 android {
     namespace = "de.westnordost.streetcomplete"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 25
-        targetSdk = 35
+        targetSdk = 37
         versionCode = appVersionCode
         versionName = appVersionName
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -278,12 +277,6 @@ android {
 
     signingConfigs {
         create("release") {
-        }
-    }
-
-    testOptions {
-        unitTests {
-            isReturnDefaultValues = true
         }
     }
 
@@ -315,7 +308,6 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
         compose = true
     }
 
@@ -328,12 +320,11 @@ android {
     lint {
         disable += listOf(
             "MissingTranslation", // crowd-contributed translations are incomplete all the time
-            "UseCompatLoadingForDrawables" // doesn't make sense for minSdk >= 21
         )
-        abortOnError = false
     }
 
     dependencies {
+        // required to @Preview composables in Android Studio
         debugImplementation("androidx.compose.ui:ui-tooling:1.10.0")
     }
 }

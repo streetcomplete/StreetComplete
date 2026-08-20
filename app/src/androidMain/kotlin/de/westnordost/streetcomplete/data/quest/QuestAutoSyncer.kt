@@ -1,15 +1,13 @@
 package de.westnordost.streetcomplete.data.quest
 
 import android.annotation.SuppressLint
-import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
-import android.net.ConnectivityManager
-import androidx.core.content.getSystemService
 import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
+import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.download.strategy.MobileDataAutoDownloadStrategy
@@ -21,8 +19,8 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
-import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.format
+import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CoroutineName
@@ -41,6 +39,7 @@ class QuestAutoSyncer(
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
     private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
     private val context: Context,
+    private val activeNetworkConnection: ActiveNetworkConnection,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
     private val userLoginSource: UserLoginSource,
@@ -53,27 +52,11 @@ class QuestAutoSyncer(
 
     private var pos: LatLon? = null
 
-    private var isConnected: Boolean = false
-    private var isWifi: Boolean = false
-
     // new location is known -> check if downloading makes sense now
     private val locationManager = FineLocationManager(context) { location ->
         if (location.accuracy <= 300) {
             pos = location.toLatLon()
             triggerAutoDownload()
-        }
-    }
-
-    // connection state changed -> check if downloading or uploading is allowed now
-    private val connectivityReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            val connectionStateChanged = updateConnectionState()
-            // connecting to i.e. mobile data after being disconnected from wifi -> not interested in that
-            val isFailover = intent.getBooleanExtra(ConnectivityManager.EXTRA_IS_FAILOVER, false)
-            if (!isFailover && connectionStateChanged && isConnected) {
-                triggerAutoDownload()
-                triggerAutoUpload()
-            }
         }
     }
 
@@ -110,7 +93,7 @@ class QuestAutoSyncer(
 
     val isAllowedByPreference: Boolean get() = when (prefs.autosync) {
         Autosync.ON -> true
-        Autosync.WIFI -> isWifi
+        Autosync.WIFI -> activeNetworkConnection.capabilities?.isMetered == false
         Autosync.OFF -> false
     }
 
@@ -121,20 +104,25 @@ class QuestAutoSyncer(
         downloadProgressSource.addListener(downloadProgressListener)
         userLoginSource.addListener(userLoginStatusListener)
         teamModeQuestFilterSource.addListener(teamModeChangeListener)
+        coroutineScope.launch {
+            owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                activeNetworkConnection.capabilitiesFlow.collect { capabilities ->
+                    if (capabilities?.hasInternet == true) {
+                        triggerAutoSync()
+                    }
+                }
+            }
+        }
     }
 
     override fun onResume(owner: LifecycleOwner) {
-        updateConnectionState()
-        if (isConnected) {
-            triggerAutoDownload()
-            triggerAutoUpload()
+        if (activeNetworkConnection.capabilities?.hasInternet == true) {
+            triggerAutoSync()
         }
-        context.registerReceiver(connectivityReceiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
     }
 
     override fun onPause(owner: LifecycleOwner) {
         stopPositionTracking()
-        context.unregisterReceiver(connectivityReceiver)
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
@@ -156,15 +144,22 @@ class QuestAutoSyncer(
 
     /* ------------------------------------------------------------------------------------------ */
 
+    private fun triggerAutoSync() {
+        triggerAutoDownload()
+        triggerAutoUpload()
+    }
+
     private fun triggerAutoDownload() {
         val pos = pos ?: return
-        if (!isConnected) return
+        if (activeNetworkConnection.capabilities?.hasInternet != true) return
         if (downloadProgressSource.isDownloadInProgress) return
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
         coroutineScope.launch {
-            val downloadStrategy = if (isWifi) wifiDownloadStrategy else mobileDataDownloadStrategy
+            val downloadStrategy =
+                if (activeNetworkConnection.capabilities?.isMetered == false) wifiDownloadStrategy
+                else mobileDataDownloadStrategy
             val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
             if (downloadBoundingBox != null) {
                 try {
@@ -180,7 +175,7 @@ class QuestAutoSyncer(
 
     private fun triggerAutoUpload() {
         if (!isAllowedByPreference) return
-        if (!isConnected) return
+        if (activeNetworkConnection.capabilities?.hasInternet != true) return
         if (!userLoginSource.isLoggedIn) return
 
         coroutineScope.launch {
@@ -192,22 +187,6 @@ class QuestAutoSyncer(
                 Log.e(TAG, "Cannot start upload service", e)
             }
         }
-    }
-
-    private fun updateConnectionState(): Boolean {
-        val connectivityManager = context.getSystemService<ConnectivityManager>()!!
-        val info = connectivityManager.activeNetworkInfo
-
-        val newIsConnected = info?.isConnected ?: false
-        // metered (usually ad-hoc hotspots) do not count as proper wifis
-        val isMetered = connectivityManager.isActiveNetworkMetered
-        val newIsWifi = newIsConnected && info?.type == ConnectivityManager.TYPE_WIFI && !isMetered
-
-        val result = newIsConnected != isConnected || newIsWifi != isWifi
-
-        isConnected = newIsConnected
-        isWifi = newIsWifi
-        return result
     }
 
     companion object {

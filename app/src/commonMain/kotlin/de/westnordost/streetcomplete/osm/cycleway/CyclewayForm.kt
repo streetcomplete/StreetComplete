@@ -1,21 +1,12 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.BoxScope
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.cheonjaeung.compose.grid.SimpleGridCells
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.Sides
@@ -23,7 +14,6 @@ import de.westnordost.streetcomplete.osm.oneway.Direction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.dialogs.SimpleItemSelectDialog
-import de.westnordost.streetcomplete.ui.common.item_select.ImageWithLabel
 import de.westnordost.streetcomplete.ui.common.street_side_select.Side
 import de.westnordost.streetcomplete.ui.common.street_side_select.StreetSideForm
 import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawable
@@ -116,15 +106,7 @@ fun CyclewayForm(
                 )
             },
             itemContent = { cycleway ->
-                val icon = cycleway.getDialogIcon(isRight, countryInfo, roadDirection)
-                val title = cycleway.getTitle(roadDirection)
-                if (icon != null && title != null) {
-                    ImageWithLabel(
-                        painter = painterResource(icon),
-                        label = stringResource(title),
-                        imageRotation = if (countryInfo.isLeftHandTraffic) 180f else 0f
-                    )
-                }
+                CyclewayItem(cycleway, isRight, roadDirection, countryInfo)
             },
         )
     }
