@@ -321,6 +321,7 @@ android {
     }
 
     dependencies {
+        // required to @Preview composables in Android Studio
         debugImplementation("androidx.compose.ui:ui-tooling:1.10.0")
     }
 }
