@@ -27,5 +27,5 @@ val androidModule2 = module {
 
     // upload & download
 
-    single { QuestAutoSyncer(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+    single { QuestAutoSyncer(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
 }
