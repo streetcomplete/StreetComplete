@@ -1,20 +1,15 @@
 package de.westnordost.streetcomplete.ui.common
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.screens.main.map.PinPainter
 import org.jetbrains.compose.resources.painterResource
 
 /** A pin with an image on the pin head, usually a quest icon. The point the pin is pointing at is
@@ -24,32 +19,17 @@ fun Pin(
     iconPainter: Painter,
     modifier: Modifier = Modifier
 ) {
-    CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
-        Box(modifier) {
-            Image(
-                painter = painterResource(Res.drawable.pin_shadow),
-                contentDescription = null,
-                modifier = Modifier
-                    .padding(end = 10.dp, bottom = 71.dp)
-                    .size(71.dp, 71.dp)
-            )
-            Image(
-                painter = painterResource(Res.drawable.pin),
-                contentDescription = null,
-                modifier = Modifier
-                    .padding(top = 5.dp)
-                    .align(Alignment.TopCenter)
-            )
-            Image(
-                painter = iconPainter,
-                contentDescription = null,
-                modifier = Modifier
-                    .padding(top = 7.dp)
-                    .size(48.dp)
-                    .align(Alignment.TopCenter)
-            )
-        }
-    }
+    Image(
+        painter = PinPainter(
+            iconPainter = iconPainter,
+            pinPainter = painterResource(Res.drawable.pin),
+            pinShadowPainter = painterResource(Res.drawable.pin_shadow)
+        ),
+        contentDescription = null,
+        modifier = modifier
+            .padding(end = 10.dp, bottom = 71.dp)
+            .size(71.dp)
+    )
 }
 
 @Composable

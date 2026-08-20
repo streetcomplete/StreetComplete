@@ -23,6 +23,9 @@ fun ShowMapScreen(
         )
         MainMap(
             onClickOverlayElement = {},
+            shownBottomSheet = null,
+            shownMarkers = null,
+            isShowingUndoHistorySidebar = false,
             Modifier.fillMaxSize()
         )
     }
