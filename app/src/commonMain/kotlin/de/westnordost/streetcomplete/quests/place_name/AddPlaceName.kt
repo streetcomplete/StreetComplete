@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.place_name
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -164,10 +165,11 @@ class AddPlaceName(
 
     @Composable
     override fun Form(on: (QuestAction<List<LocalizedName>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        val initialLocalizedNames = remember(element) { parseLocalizedNames(element.tags) }
         LocalizedNameQuestForm(
             on = on,
             countryInfo = countryInfo,
-            initialLocalizedNames = parseLocalizedNames(element.tags),
+            initialLocalizedNames = initialLocalizedNames,
         )
     }
 
