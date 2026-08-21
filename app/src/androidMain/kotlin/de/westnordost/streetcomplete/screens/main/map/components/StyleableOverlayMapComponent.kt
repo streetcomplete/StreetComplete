@@ -258,7 +258,7 @@ class StyleableOverlayMapComponent(
             is OverlayStyle.Polygon -> {
                 if (overlayStyle.color != Invisible) {
                     p.addProperty("color", overlayStyle.color.toRgbaString())
-                    p.addProperty("outline-color", overlayStyle.color.darkened().toRgbaString())
+                    p.addProperty("outline-color", overlayStyle.outline?.toRgbaString() ?: overlayStyle.color.darkened().toRgbaString())
                     p.addProperty("opacity", 0.8f)
                 } else {
                     p.addProperty("opacity", 0f)
