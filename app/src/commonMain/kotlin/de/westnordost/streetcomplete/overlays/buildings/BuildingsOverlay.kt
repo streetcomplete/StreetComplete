@@ -54,7 +54,6 @@ class BuildingsOverlay : Overlay {
                   "windmill",
                 ).joinToString("|")}
               )
-              and !building:use
         """)
         .map { element ->
             val building = createBuildingType(element.tags)
