@@ -5,7 +5,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
@@ -23,7 +22,6 @@ import platform.darwin.dispatch_queue_create
 
 class IosActiveNetworkConnection : ActiveNetworkConnection {
     private val queue = dispatch_queue_create("network-monitor", null)
-    private val _flow = MutableStateFlow<NetworkCapabilities?>(null)
 
     private fun mapPath(path: nw_path_t): NetworkCapabilities? {
         if(path == null) return null
@@ -39,8 +37,8 @@ class IosActiveNetworkConnection : ActiveNetworkConnection {
         val monitor = nw_path_monitor_create()
         nw_path_monitor_set_queue(monitor, queue)
         nw_path_monitor_set_update_handler(monitor) { path ->
-            _flow.value = mapPath(path)
-            trySend(_flow.value)
+            val capabilities = mapPath(path)
+            trySend(capabilities)
         }
         nw_path_monitor_start(monitor)
         awaitClose { nw_path_monitor_cancel(monitor) }
