@@ -124,7 +124,7 @@ val iosModule = module {
 
     // connection
 
-    factory<ActiveNetworkConnection> { IosActiveNetworkConnection() }
+    single<ActiveNetworkConnection> { IosActiveNetworkConnection() }
 
     // background jobs
 
