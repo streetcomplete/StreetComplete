@@ -13,21 +13,21 @@ val poEditorProjectId = "97843"
 
 tasks.register<UpdateWebsiteTranslationsTask>("updateWebsiteTranslations") {
     group = "streetcomplete"
-    targetDir = "$projectDir/../streetcomplete-website/res"
+    targetDir = projectDir.resolve("../streetcomplete-website/res")
     projectId = poEditorProjectId
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
 }
 
 tasks.register<UpdateStoreDescriptionsTask>("updateStoreDescriptions") {
     group = "streetcomplete"
-    targetDir = "$projectDir/metadata"
+    targetDir = projectDir.resolve("metadata")
     projectId = poEditorProjectId
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
 }
 
 tasks.register<QLeverCountValueByCountryTask>("updateAtmOperators") {
     group = "streetcomplete"
-    targetFile = "$projectDir/res/country_metadata/atmOperators.yml"
+    targetFile = projectDir.resolve("res/country_metadata/atmOperators.yml")
     osmTag = "operator"
     sparqlQueryPart = "osmkey:amenity 'atm';"
     minCount = 2
@@ -36,7 +36,7 @@ tasks.register<QLeverCountValueByCountryTask>("updateAtmOperators") {
 
 tasks.register<QLeverCountValueByCountryTask>("updateParcelLockerBrand") {
     group = "streetcomplete"
-    targetFile = "$projectDir/res/country_metadata/parcelLockerBrand.yml"
+    targetFile = projectDir.resolve("res/country_metadata/parcelLockerBrand.yml")
     osmTag = "brand"
     sparqlQueryPart = "osmkey:amenity 'parcel_locker';"
     minCount = 2
@@ -45,7 +45,7 @@ tasks.register<QLeverCountValueByCountryTask>("updateParcelLockerBrand") {
 
 tasks.register<QLeverCountValueByCountryTask>("updateClothesContainerOperators") {
     group = "streetcomplete"
-    targetFile = "$projectDir/res/country_metadata/clothesContainerOperators.yml"
+    targetFile = projectDir.resolve("res/country_metadata/clothesContainerOperators.yml")
     osmTag = "operator"
     sparqlQueryPart = "osmkey:amenity 'recycling'; osmkey:recycling_type 'container'; osmkey:recycling:clothes 'yes';"
     minCount = 2
@@ -54,7 +54,7 @@ tasks.register<QLeverCountValueByCountryTask>("updateClothesContainerOperators")
 
 tasks.register<QLeverCountValueByCountryTask>("updateChargingStationOperators") {
     group = "streetcomplete"
-    targetFile = "$projectDir/res/country_metadata/chargingStationOperators.yml"
+    targetFile = projectDir.resolve("res/country_metadata/chargingStationOperators.yml")
     osmTag = "operator"
     sparqlQueryPart = "osmkey:amenity 'charging_station';"
     minCount = 2
@@ -63,7 +63,7 @@ tasks.register<QLeverCountValueByCountryTask>("updateChargingStationOperators") 
 
 tasks.register<GenerateQuestListTask>("generateQuestList") {
     group = "streetcomplete"
-    targetFile = "$projectDir/quest-list.csv"
+    targetFile = projectDir.resolve("quest-list.csv")
     projectDirectory = projectDir
     questsDirectory = projectDir.resolve("app/src/commonMain/kotlin/de/westnordost/streetcomplete/quests/")
     iconsDirectory = projectDir.resolve("res/graphics/quest/")
