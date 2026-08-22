@@ -171,6 +171,8 @@ import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
 import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModelImpl
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
+import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
+import de.westnordost.streetcomplete.screens.main.map.MainMapViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModel
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModel
@@ -595,6 +597,10 @@ val commonModule = module {
 
     viewModel<EditHistoryViewModel> {
         EditHistoryViewModelImpl(get(), get())
+    }
+
+    viewModel<MainMapViewModel> {
+        MainMapViewModelImpl(get(), get(), get())
     }
 
     viewModel<MainBottomSheetViewModel> {

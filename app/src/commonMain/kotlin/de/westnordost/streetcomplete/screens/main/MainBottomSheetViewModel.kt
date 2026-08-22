@@ -33,6 +33,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import org.maplibre.spatialk.geojson.Geometry
 
 @Stable
 abstract class MainBottomSheetViewModel : ViewModel() {
@@ -198,6 +199,7 @@ sealed interface ShownBottomSheet {
         val element: Element,
     ) : ShownBottomSheet {
         override val position get() = quest.position
+        override val geometry get() = quest.geometry
     }
 
     data class OsmNoteQuest(
@@ -205,12 +207,13 @@ sealed interface ShownBottomSheet {
         val note: Note
     ) : ShownBottomSheet {
         override val position get() = quest.position
+        override val geometry get() = quest.geometry
     }
 
     data class Overlay(
         val overlay: de.westnordost.streetcomplete.data.overlays.Overlay,
         val element: Element?,
-        val geometry: ElementGeometry?,
+        override val geometry: ElementGeometry?,
     ) : ShownBottomSheet {
         override val position get() = geometry?.center
     }
@@ -219,7 +222,9 @@ sealed interface ShownBottomSheet {
         val trackpoints: List<Trackpoint>?
     ) : ShownBottomSheet {
         override val position get() = null
+        override val geometry get() = null
     }
 
     val position: LatLon?
+    val geometry: ElementGeometry?
 }

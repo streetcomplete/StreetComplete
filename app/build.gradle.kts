@@ -178,6 +178,9 @@ kotlin {
 
                 // UI widgets
 
+                // Map
+                implementation("org.maplibre.compose:maplibre-compose:0.14.0")
+
                 // non-lazy grid
                 // NOTE: might replace with
                 // https://developer.android.com/develop/ui/compose/layouts/adaptive/grid
@@ -224,7 +227,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:3.5.1")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
+                //implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
             }
         }
         iosMain {

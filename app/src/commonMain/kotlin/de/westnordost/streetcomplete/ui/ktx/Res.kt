@@ -2,9 +2,11 @@ package de.westnordost.streetcomplete.ui.ktx
 
 import com.charleskorn.kaml.Yaml
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.allDrawableResources
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.MissingResourceException
 
 expect fun Res.exists(path: String): Boolean
@@ -19,3 +21,8 @@ suspend inline fun <reified T> Res.readYamlOrNull(path: String, yaml: Yaml = Yam
 
 suspend fun Res.readBytesOrNull(path: String): ByteArray? =
     try { readBytes(path) } catch (_: MissingResourceException) { null }
+
+private val resourceIds =
+    Res.allDrawableResources.entries.associate { (id, resource) -> resource to id }
+
+val DrawableResource.id: String? get() = resourceIds.get(this)
