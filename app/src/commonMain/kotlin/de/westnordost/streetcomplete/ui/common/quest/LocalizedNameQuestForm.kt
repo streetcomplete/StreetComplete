@@ -79,6 +79,8 @@ fun LocalizedNameQuestForm(
             on(Answer(localizedNames))
         },
         modifier = modifier,
+        resurvey = localizedNames.isNotEmpty() &&
+            localizedNames.all { it.name.isNotBlank() },
         otherAnswers = { otherAnswers() + listOf(
             AnswerItem(stringResource(Res.string.quest_streetName_answer_cantType)) {
                 showKeyboardInfo = true

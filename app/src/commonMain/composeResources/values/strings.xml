@@ -598,6 +598,7 @@
     <string name="resurvey_intervals_less_often">Less often</string>
     <string name="resurvey_intervals_default">Default</string>
     <string name="resurvey_intervals_more_often">More often</string>
+    <string name="resurvey_title">Is this still correct?</string>
 
     <string name="pref_title_delete_cache">Delete cache</string>
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
@@ -1063,7 +1064,6 @@
     <string name="quest_crossing_hint">An informal trail crossing a road:</string>
 
     <string name="quest_cycleway_title2">Is there a bicycle lane or path here? What type?</string>
-    <string name="quest_cycleway_resurvey_title">Is this still the cycling situation here?</string>
     <string name="quest_cycleway_value_track">protected bicycle lane or bicycle path</string>
     <string name="quest_cycleway_value_lane">bicycle lane</string>
     <string name="quest_cycleway_value_none">none</string>
@@ -1289,7 +1289,6 @@
 
     <string name="quest_openingHours_title">What are the opening hours here?</string>
     <string name="quest_openingHours_signed_title">Are the opening hours here signed?</string>
-    <string name="quest_openingHours_resurvey_title">Are these opening hours still correct?</string>
     <string name="quest_openingHours_start_time">Start time</string>
     <string name="quest_openingHours_end_time">End time</string>
     <string name="quest_openingHours_add_months">Add months</string>
@@ -1429,7 +1428,6 @@
     <string name="quest_policeType_title">Which type of police station is this?</string>
 
     <string name="quest_postboxCollectionTimes_title">What are the pickup times of this collection box?</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Are the pickup times of this collection box still correct?</string>
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
     <!-- In some places it is common that an hour range in which mail is collected is specified on the box instead of specific times -->

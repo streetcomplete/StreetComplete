@@ -58,6 +58,7 @@ fun QuestForm(
     featureDictionary: FeatureDictionary = koinInject(),
     hasChanges: Boolean = isComplete,
     title: String = stringResource(LocalQuestType.current!!.title),
+    resurvey: Boolean = false,
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
@@ -66,7 +67,7 @@ fun QuestForm(
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
-    content: @Composable BoxScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit,
 ) {
     QuestForm(
         on = on,
@@ -83,6 +84,7 @@ fun QuestForm(
         contentPadding = contentPadding,
         modifier = modifier,
         content = content,
+        resurvey = resurvey,
     )
 }
 
@@ -103,6 +105,7 @@ fun QuestForm(
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     title: String = stringResource(LocalQuestType.current!!.title),
+    resurvey: Boolean = false,
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
@@ -111,7 +114,7 @@ fun QuestForm(
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
-    content: @Composable (BoxScope.() -> Unit)? = null
+    content: @Composable (BoxScope.() -> Unit)? = null,
 ) {
     QuestForm(
         on = on,
@@ -128,6 +131,7 @@ fun QuestForm(
         contentPadding = contentPadding,
         modifier = modifier,
         content = content,
+        resurvey = resurvey,
     )
 }
 
@@ -136,6 +140,7 @@ fun QuestForm(
 private fun QuestForm(
     on: (Action) -> Unit,
     title: String,
+    resurvey: Boolean = false,
     subtitle: AnnotatedString?,
     hintText: String?,
     hintImages: List<DrawableResource>,
@@ -191,6 +196,7 @@ private fun QuestForm(
                 subtitle = subtitle,
                 hintText = hintText,
                 hintImages = hintImages,
+                resurvey = resurvey,
             )
         },
         note = if (note != null) { {
