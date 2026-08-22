@@ -20,6 +20,7 @@ import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.description
 import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.osm.building.title
+import de.westnordost.streetcomplete.osm.updateCheckDate
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.common.overlay.GroupedItemSelectOverlayForm
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
@@ -66,6 +67,7 @@ fun BuildingsOverlayForm(
         onClickOk = { selectedItem ->
             val tagChanges = StringMapChangesBuilder(element.tags)
             selectedItem.applyTo(tagChanges)
+            if(!tagChanges.hasChanges) tagChanges.updateCheckDate()
             on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
         },
         prefs = preferences,

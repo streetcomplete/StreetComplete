@@ -11,7 +11,7 @@ fun BuildingType.applyTo(tags: Tags) {
     // building=livestock would be changed to building=farm_auxiliary)
     val alias = BuildingType.aliases.entries.find { tags[it.key.first] == it.key.second }?.value
     if (alias == this) {
-        tags.updateCheckDate()
+        //tags.updateCheckDate()
         return
     }
 
@@ -35,7 +35,7 @@ fun BuildingType.applyTo(tags: Tags) {
 
     // we set the check date and not check_date:building because this is about the primary feature,
     // not a property of a feature.
-    if (!tags.hasChanges) {
-        tags.updateCheckDate()
-    }
+    //if (!tags.hasChanges) {
+    //    tags.updateCheckDate()
+    //}
 }
