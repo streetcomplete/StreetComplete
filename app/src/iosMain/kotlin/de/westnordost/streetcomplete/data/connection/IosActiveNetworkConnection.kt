@@ -20,12 +20,14 @@ class IosActiveNetworkConnection : ActiveNetworkConnection {
     init {
         nw_path_monitor_set_queue(monitor, queue)
         nw_path_monitor_set_update_handler(monitor) { path ->
-            if(path != null) _flow.value = mapPath(path)
+            _flow.value = mapPath(path)
         }
         nw_path_monitor_start(monitor)
     }
 
     private fun mapPath(path: nw_path_t): NetworkCapabilities? {
+        if(path == null) return null
+
         val status = nw_path_get_status(path)
         if (status != nw_path_status_satisfied) return null
         val isMetered = nw_path_is_expensive(path)
