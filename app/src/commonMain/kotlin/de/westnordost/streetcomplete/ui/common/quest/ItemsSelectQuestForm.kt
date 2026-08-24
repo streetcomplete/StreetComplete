@@ -45,7 +45,7 @@ inline fun <reified I> ItemsSelectQuestForm(
     favoriteKey: String? = null,
     noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     preferences: Preferences = koinInject(),
-    preselectedItems: Set<I> = emptySet(),
+    initialSelectedItems: Set<I> = emptySet(),
 ) {
     val reorderedItems = remember(items, itemsPerRow, favoriteKey) {
         if (favoriteKey != null) {
@@ -56,11 +56,11 @@ inline fun <reified I> ItemsSelectQuestForm(
             items
         }
     }
-    var selectedItems by rememberSerializable { mutableStateOf<Set<I>>(preselectedItems) }
+    var selectedItems by rememberSerializable { mutableStateOf<Set<I>>(initialSelectedItems) }
 
     QuestForm(
         on = on,
-        isComplete = selectedItems != preselectedItems,
+        isComplete = selectedItems != initialSelectedItems && selectedItems.isNotEmpty(),
         onClickOk = {
             if (favoriteKey != null) {
                 preferences.addLastPicked(favoriteKey, selectedItems.toList())
@@ -69,7 +69,7 @@ inline fun <reified I> ItemsSelectQuestForm(
         },
         modifier = modifier,
         otherAnswers = otherAnswers,
-        resurvey = preselectedItems.isNotEmpty()
+        isResurvey = initialSelectedItems.isNotEmpty()
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(
