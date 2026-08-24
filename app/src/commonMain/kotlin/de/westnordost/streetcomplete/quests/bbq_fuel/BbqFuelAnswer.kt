@@ -3,16 +3,17 @@ package de.westnordost.streetcomplete.quests.bbq_fuel
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuel.*
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.StringResource
-
 sealed interface BbqFuelAnswer {
     data object IsFirePit : BbqFuelAnswer
+    data class Fuels(val fuels: Set<BbqFuel>) : BbqFuelAnswer
 }
 
-enum class BbqFuel(val osmValue: String) : BbqFuelAnswer {
-    WOOD("wood"),
-    ELECTRIC("electric"),
-    CHARCOAL("charcoal"),
-    GAS("gas"),
+
+enum class BbqFuel(val bbqValue: String,val ovenValue: String) {
+    WOOD("wood", "wood_fired"),
+    ELECTRIC("electric", "electric"),
+    CHARCOAL("charcoal", "charcoal"),
+    GAS("gas", "gas_fired"),
 }
 
 val BbqFuel.text: StringResource get() = when (this) {
