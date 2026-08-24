@@ -74,7 +74,7 @@ fun AddPostboxCollectionTimesForm(
                         on(Answer(CollectionTimes(originalOpeningHours!!)))
                     }
                 ),
-                resurvey = true,
+                isResurvey = true,
                 otherAnswers = { listOf(
                     AnswerItem(stringResource(Res.string.quest_collectionTimes_answer_no_times_specified)) {
                         confirmNoSign = true

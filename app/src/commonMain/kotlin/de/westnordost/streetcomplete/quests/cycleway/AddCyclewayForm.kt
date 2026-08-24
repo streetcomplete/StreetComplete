@@ -158,7 +158,7 @@ fun AddCyclewayForm(
                         on(Answer(cycleways))
                     }
                 ),
-                resurvey = true,
+                isResurvey = true,
                 contentPadding = PaddingValues.Zero,
                 content = { content() }
             )
