@@ -38,7 +38,7 @@ fun AddBbqFuelForm(
     if (confirmNotBbq) {
         AreYouSureDialog(
             onDismissRequest = { confirmNotBbq = false },
-            onConfirmed = { on(Answer((BbqFuelAnswer.IsFirePit))) },
+            onConfirmed = { on(Answer(BbqFuelAnswer.IsFirePit)) },
             text = { Text(stringResource(Res.string.quest_bbq_fuel_not_a_bbq_confirmation)) }
         )
     }

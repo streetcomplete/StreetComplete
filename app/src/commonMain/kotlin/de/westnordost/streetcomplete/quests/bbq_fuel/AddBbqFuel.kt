@@ -54,10 +54,11 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
         else if (answer is Fuels)
         {
             // BBQs and ovens use slightly different tags for fuel
-            if(tags["amenity"]=="bbq")
-                tags["fuel"]=answer.fuels.joinToString(";") { (it as BbqFuel).bbqValue }
-            else
-                tags["oven"]=answer.fuels.joinToString(";") { (it as BbqFuel).ovenValue }
+            if (tags["amenity"] == "bbq") {
+                tags["fuel"] = answer.fuels.joinToString(";") { it.bbqValue }
+            } else {
+                tags["oven"] = answer.fuels.joinToString(";") { it.ovenValue }
+            }
         }
     }
 }
