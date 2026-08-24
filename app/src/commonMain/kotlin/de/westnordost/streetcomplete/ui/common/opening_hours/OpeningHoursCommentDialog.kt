@@ -66,11 +66,15 @@ import kotlin.text.replace
                 ) {
                     Text(stringResource(Res.string.quest_openingHours_comment_description))
                 }
-                TextField(
-                    value = comment,
-                    onValueChange = { comment = it.replace("\"", "") },
-                    isError = isTooLong
-                )
+                CompositionLocalProvider(
+                    LocalTextStyle provides MaterialTheme.typography.body1
+                ) {
+                    TextField(
+                        value = comment,
+                        onValueChange = { comment = it.replace("\"", "") },
+                        isError = isTooLong
+                    )
+                }
             }
         },
     )

@@ -9,9 +9,15 @@ import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.IosActiveNetworkConnection
+import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.download.IosDownloadController
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
 import de.westnordost.streetcomplete.screens.about.IosAppStoreInfo
 import de.westnordost.streetcomplete.data.initialize
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.IosChangesetAutoCloser
+import de.westnordost.streetcomplete.data.upload.IosUploadController
+import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.IosEmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.IosMapAppLauncher
@@ -27,9 +33,11 @@ import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSBundle
+import platform.Foundation.NSCachesDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDefaults
 import platform.Foundation.NSUserDomainMask
@@ -76,6 +84,20 @@ val iosModule = module {
         DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
     }
 
+    // avatars cache dir
+
+    factory(named("AvatarsCacheDirectory")) {
+        val cacheUrl = NSFileManager.defaultManager.URLForDirectory(
+            directory = NSCachesDirectory,
+            inDomain = NSUserDomainMask,
+            appropriateForURL = null,
+            create = true,
+            error = null
+        )!!
+        val avatarsCacheUrl = cacheUrl.URLByAppendingPathComponent(ApplicationConstants.AVATARS_CACHE_DIRECTORY)!!
+        Path(avatarsCacheUrl.path!!)
+    }
+
     // app store info
 
     single<AppStoreInfo> { IosAppStoreInfo }
@@ -100,4 +122,12 @@ val iosModule = module {
     // connection
 
     factory<ActiveNetworkConnection> { IosActiveNetworkConnection() }
+
+    // background jobs
+
+    single<UploadController> { IosUploadController() }
+
+    single<DownloadController> { IosDownloadController() }
+
+    factory<ChangesetAutoCloser> { IosChangesetAutoCloser() }
 }

@@ -1456,7 +1456,7 @@
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
     <string name="quest_powerPolesMaterial_is_terminal">Power line is anchored to building</string>
 
-    <string name="quest_bbq_fuel_title">What is this grill powered by?</string>
+    <string name="quest_bbq_fuel_title">What fuel is used to cook here?</string>
     <string name="quest_bbq_fuel_wood">Wood</string>
     <string name="quest_bbq_fuel_electric">Electric</string>
     <string name="quest_bbq_fuel_charcoal">Charcoal</string>
@@ -1496,8 +1496,8 @@
 
     <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
     <string name="recycling_centre">Center</string>
-    <string name="overground_recycling_container">Container</string>
-    <string name="underground_recycling_container">Underground container</string>
+    <string name="overground_recycling_container">Container(s)</string>
+    <string name="underground_recycling_container">Underground container(s)</string>
 
     <string name="quest_religion_for_place_of_worship_title">What religion is practiced at this place?</string>
     <string name="quest_religion_for_wayside_shrine_title">What religion is this shrine associated with?</string>

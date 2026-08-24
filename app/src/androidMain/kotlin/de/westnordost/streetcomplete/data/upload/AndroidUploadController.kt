@@ -14,7 +14,7 @@ import androidx.work.WorkerParameters
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.sync.createSyncNotification
 
-class UploadControllerAndroid(private val context: Context) : UploadController {
+class AndroidUploadController(private val context: Context) : UploadController {
     override fun upload(isUserInitiated: Boolean) {
         WorkManager.getInstance(context).enqueueUniqueWork(
             Uploader.TAG,
