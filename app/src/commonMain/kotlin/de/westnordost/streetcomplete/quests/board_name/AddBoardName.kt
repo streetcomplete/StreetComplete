@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.board_name
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -39,10 +40,11 @@ class AddBoardName : OsmFilterQuestType<List<LocalizedName>>() {
 
     @Composable
     override fun Form(on: (QuestAction<List<LocalizedName>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        val initialLocalizedNames = remember(element) { parseLocalizedNames(element.tags) }
         LocalizedNameQuestForm(
             on = on,
             countryInfo = countryInfo,
-            initialLocalizedNames = parseLocalizedNames(element.tags),
+            initialLocalizedNames = initialLocalizedNames,
         )
     }
 

@@ -11,8 +11,9 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
-import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.CheckboxGroupQuestForm
 import org.jetbrains.compose.resources.stringResource
+import de.westnordost.streetcomplete.data.osm.osmquests.Action
 
 @Composable
 fun AddBbqFuelForm(
@@ -20,8 +21,13 @@ fun AddBbqFuelForm(
 ) {
     var confirmNotBbq by remember { mutableStateOf(false) }
 
-    RadioGroupQuestForm(
-        on = on,
+    CheckboxGroupQuestForm(
+        on = {
+            on(when (it) {
+                is Answer<Set<BbqFuel>> -> Answer(BbqFuelAnswer.Fuels(it.value))
+                is Action -> it
+            })
+        },
         items = BbqFuel.entries,
         itemContent = { Text(stringResource(it.text)) },
         otherAnswers = { listOf(

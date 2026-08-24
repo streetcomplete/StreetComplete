@@ -29,7 +29,7 @@ fun AddRoadNameForm(
     countryInfo: CountryInfo,
     nameSuggestionsSource: NameSuggestionsSource = koinInject()
 ) {
-    var initialLocalizedNames by rememberSerializable { mutableStateOf<List<LocalizedName>?>(
+    var initialLocalizedNames by rememberSerializable(element) { mutableStateOf(
         parseLocalizedNames(element.tags)
     ) }
 
