@@ -380,6 +380,17 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/translation_info.xml" }
 }
 
+tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
+    group = "streetcomplete"
+    projectId = poEditorProjectId
+    apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
+    targetFile = projectDir.resolve("../iosApp/iosApp/InfoPlist.xcstrings")
+    languageCodes = bcp47ExportLanguages
+    strings = mapOf(
+        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning"
+    )
+}
+
 tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
     sourceFile = "$rootDir/CHANGELOG.md"
