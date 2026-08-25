@@ -2,15 +2,16 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
-import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.map.layers.CurrentLocationLayers
@@ -23,29 +24,23 @@ import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
-import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
-import de.westnordost.streetcomplete.ui.ktx.id
-import kotlinx.atomicfu.locks.ReentrantLock
-import kotlinx.atomicfu.locks.withLock
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
+import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
+import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
+import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.camera.CameraState
 import org.maplibre.compose.camera.rememberCameraState
-import org.maplibre.compose.expressions.dsl.const
-import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.map.MapOptions
 import org.maplibre.compose.map.MaplibreMap
 import org.maplibre.compose.map.OrnamentOptions
-import org.maplibre.compose.sources.ComputedSourceOptions
-import org.maplibre.compose.sources.rememberComputedSource
+import org.maplibre.compose.sources.GeoJsonData
+import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.style.BaseStyle
 import org.maplibre.compose.style.StyleState
 import org.maplibre.compose.style.rememberStyleState
-import org.maplibre.spatialk.geojson.Feature
+import org.maplibre.compose.util.ClickResult
+import org.maplibre.compose.util.MapClickHandler
 import org.maplibre.spatialk.geojson.FeatureCollection
-import org.maplibre.spatialk.geojson.LineString
-import org.maplibre.spatialk.geojson.Position
 
 /**
  * MapLibre Map with StreetComplete theme and all the StreetComplete specific things displayed on
@@ -65,15 +60,25 @@ import org.maplibre.spatialk.geojson.Position
 @Composable
 fun MainMap(
     onClickOverlayElement: (ElementKey) -> Unit,
+    onClickQuest: (QuestKey) -> Unit,
+    onClickEdit: (EditKey) -> Unit,
+    location: Location?,
+    rotation: Float?,
     shownBottomSheet: ShownBottomSheet?,
     shownMarkers: Collection<Marker>?,
     isShowingUndoHistorySidebar: Boolean,
     modifier: Modifier = Modifier,
+    onMapLongClick: MapClickHandler = { _, _ -> ClickResult.Pass },
     viewModel: MainMapViewModel = koinViewModel(),
     cameraState: CameraState = rememberCameraState(),
     styleState: StyleState = rememberStyleState(),
 ) {
+    val coroutineScope = rememberCoroutineScope()
+
     val downloadedTiles by viewModel.downloadedTiles.collectAsState()
+    val editHistoryPins by viewModel.editHistoryPins.collectAsState()
+    val styledElements by viewModel.styleableElements.collectAsState()
+    val questPins by viewModel.questPins.collectAsState()
 
     // because quests highlight additional information and history sidebar should feel clean
     val showOverlay = shownBottomSheet !is ShownBottomSheet.OsmQuest && !isShowingUndoHistorySidebar
@@ -84,12 +89,27 @@ fun MainMap(
         else -> null
     }
 
+    val overlaySource = rememberGeoJsonSource(
+        GeoJsonData.Features(FeatureCollection(styledElements.flatMap { it.toGeoJsonFeatures() })),
+    )
+
+    LaunchedEffect(cameraState.position) {
+        viewModel.onMapMoved(cameraState)
+    }
+
+    fun zoomToCluster(targetZoom: Double) {
+        coroutineScope.launch {
+            cameraState.animateTo(cameraState.position.copy(zoom = targetZoom))
+        }
+    }
+
     MaplibreMap(
         modifier = modifier,
         baseStyle = BaseStyle.Json(BASE_STYLE),
         zoomRange = 0f..22f,
         cameraState = cameraState,
         styleState = styleState,
+        onMapLongClick = onMapLongClick,
         options = MapOptions(ornamentOptions = OrnamentOptions.AllDisabled)
     ) {
         val languages = listOf(Locale.current.language)
@@ -102,7 +122,7 @@ fun MainMap(
                 // left-and-right lines should be rendered behind the actual road
                 if (showOverlay) {
                     StyleableOverlaySideLayer(
-                        source = viewModel.overlaySource,
+                        source = overlaySource,
                         isBridge = false
                     )
                 }
@@ -111,7 +131,7 @@ fun MainMap(
                 // left-and-right lines should be rendered behind the actual bridge road
                 if (showOverlay) {
                     StyleableOverlaySideLayer(
-                        source = viewModel.overlaySource,
+                        source = overlaySource,
                         isBridge = true
                     )
                 }
@@ -121,8 +141,10 @@ fun MainMap(
                 DownloadedAreaLayer(downloadedTiles)
                 if (showOverlay) {
                     StyleableOverlayLayers(
-                        source = viewModel.overlaySource,
-                        onClickElement = onClickOverlayElement
+                        source = overlaySource,
+                        onClickElement = { properties ->
+                            viewModel.getElementKey(properties)?.let { onClickOverlayElement(it) }
+                        }
                     )
                 }
                 //TODO TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
@@ -131,10 +153,12 @@ fun MainMap(
                 // these are always on top of everything else (including labels)
                 if (showOverlay) {
                     StyleableOverlayLabelLayer(
-                        source = viewModel.overlaySource,
+                        source = overlaySource,
                         color = colors.text,
                         haloColor = colors.textOutline,
-                        onClickElement = onClickOverlayElement
+                        onClickElement = { properties ->
+                            viewModel.getElementKey(properties)?.let { onClickOverlayElement(it) }
+                        }
                     )
                 }
                 shownMarkers?.let { markers ->
@@ -143,8 +167,29 @@ fun MainMap(
                 shownBottomSheet?.geometry?.let { geometry ->
                     FocusedGeometryLayers(geometry)
                 }
-                //TODO CurrentLocationLayers(location, rotation)
-                //TODO PinsLayers(pins, onClickPin, onClickCluster)
+
+                if (location != null) {
+                    CurrentLocationLayers(location = location, rotation = rotation)
+                }
+
+                // normal quest pins are not shown while edit history sidebar is open
+                if (isShowingUndoHistorySidebar) {
+                    PinsLayers(
+                        pins = editHistoryPins,
+                        onClickPin = { properties ->
+                            viewModel.getEditKey(properties)?.let { onClickEdit(it) }
+                        },
+                        onZoomToCluster = ::zoomToCluster
+                    )
+                } else {
+                    PinsLayers(
+                        pins = questPins,
+                        onClickPin = { properties ->
+                            viewModel.getQuestKey(properties)?.let { onClickQuest(it) }
+                        },
+                        onZoomToCluster = ::zoomToCluster
+                    )
+                }
 
                 if (selectedQuest != null) {
                     SelectedPinsLayer(selectedQuest.type.icon, selectedQuest.markerLocations)

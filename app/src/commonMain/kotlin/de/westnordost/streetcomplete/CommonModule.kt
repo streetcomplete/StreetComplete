@@ -173,6 +173,9 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewMod
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModelImpl
+import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModel
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModel
@@ -600,8 +603,11 @@ val commonModule = module {
     }
 
     viewModel<MainMapViewModel> {
-        MainMapViewModelImpl(get(), get(), get())
+        MainMapViewModelImpl(get(), get(), get(), get())
     }
+    factory { MapQuestPinsSource(get(), get(), get()) }
+    factory { EditHistoryPinsSource(get()) }
+    factory { StyleableOverlaySource(get(), get()) }
 
     viewModel<MainBottomSheetViewModel> {
         MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())

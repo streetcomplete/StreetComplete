@@ -23,10 +23,14 @@ fun ShowMapScreen(
         )
         MainMap(
             onClickOverlayElement = {},
+            onClickQuest = {},
+            onClickEdit = {},
+            location = null,
+            rotation = null,
             shownBottomSheet = null,
             shownMarkers = null,
             isShowingUndoHistorySidebar = false,
-            Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }

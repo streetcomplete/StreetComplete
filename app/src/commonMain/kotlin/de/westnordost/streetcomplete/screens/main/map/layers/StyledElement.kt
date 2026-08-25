@@ -140,7 +140,7 @@ fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject>> {
     }
 }
 
-fun JsonObject.getElementKey(): ElementKey? {
+fun JsonObject.toElementKey(): ElementKey? {
     val id = get(ELEMENT_ID)?.jsonPrimitive?.longOrNull ?: return null
     val type = get(ELEMENT_TYPE)?.jsonPrimitive?.content ?: return null
     return ElementKey(ElementType.valueOf(type), id)

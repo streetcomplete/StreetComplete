@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
@@ -11,6 +12,9 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_pin_circle
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.ktx.id
+import kotlinx.coroutines.launch
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
@@ -38,17 +42,20 @@ import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.GeoJsonOptions
 import org.maplibre.compose.sources.rememberGeoJsonSource
-import org.maplibre.compose.util.FeaturesClickHandler
+import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.MaplibreComposable
+import org.maplibre.spatialk.geojson.Geometry
 
 /** Display pins on the map, e.g. quest pins or pins for recent edits */
 @MaplibreComposable
 @Composable
 fun PinsLayers(
     pins: Collection<Pin>,
-    onClickPin: FeaturesClickHandler? = null,
-    onClickCluster: FeaturesClickHandler? = null,
+    onClickPin: (properties: JsonObject) -> Unit,
+    onZoomToCluster: (targetZoom: Double) -> Unit,
 ) {
+    val coroutineScope = rememberCoroutineScope()
+
     val source = rememberGeoJsonSource(
         data = GeoJsonData.Features(FeatureCollection(pins.map { it.toGeoJsonFeature() })),
         options = GeoJsonOptions(
@@ -57,6 +64,20 @@ fun PinsLayers(
             clusterRadius = 55
         )
     )
+
+    fun onClickCluster(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
+        val feature = features.firstOrNull() ?: return ClickResult.Pass
+        coroutineScope.launch {
+            onZoomToCluster(source.getClusterExpansionZoom(feature))
+        }
+        return ClickResult.Consume
+    }
+
+    fun onClick(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
+        val properties = features.firstOrNull()?.properties ?: return ClickResult.Pass
+        onClickPin(properties)
+        return ClickResult.Consume
+    }
 
     SymbolLayer(
         id = "pin-cluster-layer",
@@ -78,7 +99,7 @@ fun PinsLayers(
         textOffset = offset(0.em, 0.1.em),
         textAllowOverlap = const(true),
         textIgnorePlacement = const(true),
-        onClick = onClickCluster,
+        onClick = ::onClickCluster,
     )
     CircleLayer(
         id = "pin-dot-layer",
@@ -118,7 +139,7 @@ fun PinsLayers(
         iconOffset = const(DpOffset((-4.5).dp, (-34.5).dp)),
         iconAllowOverlap = const(false),
         iconIgnorePlacement = const(false),
-        onClick = onClickPin,
+        onClick = ::onClick,
     )
 }
 
@@ -128,15 +149,17 @@ private const val CLUSTER_MAX_ZOOM = 14
 data class Pin(
     val position: LatLon,
     val icon: DrawableResource,
-    val properties: Collection<Pair<String, String>> = emptyList(),
+    val properties: JsonObject? = null,
     val order: Int = 0
 )
 
 private fun Pin.toGeoJsonFeature() =
     Feature(
         geometry = position.toGeometry(),
-        properties = mapOf(
-            "icon-image" to JsonPrimitive("pin_" + icon.id),
-            "icon-order" to JsonPrimitive(order + 50),
-        ) + properties.map { it.first to JsonPrimitive(it.second) }
+        properties =
+            mapOf(
+                "icon-image" to JsonPrimitive("pin_" + icon.id),
+                "icon-order" to JsonPrimitive(order + 50),
+            )
+            + (properties as Map<String, JsonElement>)
     )

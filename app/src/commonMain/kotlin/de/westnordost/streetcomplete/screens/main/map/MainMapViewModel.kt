@@ -1,18 +1,24 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.lifecycle.ViewModel
-import de.westnordost.streetcomplete.util.ktx.launch
+import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
+import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
+import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
+import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.channels.awaitClose
@@ -24,89 +30,80 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
+import org.maplibre.compose.camera.CameraState
 import org.maplibre.compose.sources.ComputedSource
 import org.maplibre.compose.sources.ComputedSourceOptions
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 
 abstract class MainMapViewModel : ViewModel() {
+    /** Downloaded areas */
     abstract val downloadedTiles: StateFlow<Collection<TilePos>>
 
-    abstract val overlaySource: ComputedSource
+    /** Quest pins in current view */
+    abstract val questPins: StateFlow<Collection<Pin>>
+    abstract fun getQuestKey(properties: JsonObject): QuestKey?
+
+    /** Edit history pins in current view */
+    abstract val editHistoryPins: StateFlow<Collection<Pin>>
+    abstract fun getEditKey(properties: JsonObject): EditKey?
+
+    /** Styled elements (of overlay) in current view */
+    abstract val styleableElements: StateFlow<Collection<StyledElement>>
+    abstract fun getElementKey(properties: JsonObject): ElementKey?
+
+    abstract fun onMapMoved(cameraState: CameraState)
 }
 
 class MainMapViewModelImpl(
     private val downloadedTilesSource: DownloadedTilesSource,
-    private val selectedOverlaySource: SelectedOverlaySource,
-    private val mapDataWithEditsSource: MapDataWithEditsSource,
+    private val mapQuestPinsSource: MapQuestPinsSource,
+    private val editHistoryPinsSource: EditHistoryPinsSource,
+    private val styleableOverlaySource: StyleableOverlaySource,
 ) : MainMapViewModel() {
-    override val downloadedTiles = MutableStateFlow<Collection<TilePos>>(emptyList())
 
-    override val overlaySource = ComputedSource(
-        id = "overlay-source",
-        options = ComputedSourceOptions(minZoom = 17, maxZoom = 17, buffer = 0, tolerance = 0f),
-        getFeatures = ::getFeatures
-    )
-
-    private val selectedOverlay = MutableStateFlow<Overlay?>(null)
-
-    private val downloadedTilesListener = object : DownloadedTilesSource.Listener {
-        override fun onUpdated() { updateDownloadedTiles() }
-    }
-    private val selectedOverlayListener = object : SelectedOverlaySource.Listener {
-        override fun onSelectedOverlayChanged() { updateSelectedOverlay() }
-    }
-    private val mapDataWithEditsListener = object : MapDataWithEditsSource.Listener {
-        override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-            //TODO("Not yet implemented")
+    override val downloadedTiles = callbackFlow {
+        val listener = object : DownloadedTilesSource.Listener {
+            override fun onUpdated() { launch { send(getDownloadedTiles()) } }
         }
-
-        override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) {
-            overlaySource.invalidateBounds(bbox.toGeoJsonBoundingBox())
+        send(getDownloadedTiles())
+        downloadedTilesSource.addListener(listener)
+        awaitClose {
+            downloadedTilesSource.removeListener(listener)
         }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
 
-        override fun onCleared() {
-            //TODO or rather create new source??
-            overlaySource.invalidateBounds(GeoJsonBoundingBox(-180.0,-90.0, 180.0, 90.0))
-        }
-    }
+    override val questPins: StateFlow<Collection<Pin>>
+        get() = mapQuestPinsSource.pins
 
-    init {
-        updateDownloadedTiles()
-        updateSelectedOverlay()
-        downloadedTilesSource.addListener(downloadedTilesListener)
-        selectedOverlaySource.addListener(selectedOverlayListener)
-    }
+    override fun getQuestKey(properties: JsonObject): QuestKey? =
+        mapQuestPinsSource.getQuestKey(properties)
+
+    override val editHistoryPins: StateFlow<Collection<Pin>>
+        get() = editHistoryPinsSource
+            .pins
+            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+
+    override fun getEditKey(properties: JsonObject): EditKey? =
+        editHistoryPinsSource.getEditKey(properties)
+
+    override val styleableElements: StateFlow<Collection<StyledElement>>
+        get() = styleableOverlaySource.styledElements
+
+    override fun getElementKey(properties: JsonObject): ElementKey? =
+        styleableOverlaySource.getElementKey(properties)
 
     override fun onCleared() {
-        downloadedTilesSource.removeListener(downloadedTilesListener)
-        selectedOverlaySource.removeListener(selectedOverlayListener)
+        styleableOverlaySource.onDestroy()
+        mapQuestPinsSource.onDestroy()
     }
 
-    private fun getFeatures(bounds: GeoJsonBoundingBox, zoomLevel: Int): FeatureCollection<Geometry, JsonObject> {
-        val overlay = selectedOverlay.value ?: return FeatureCollection<Geometry, JsonObject>()
-
-        val mapData = mapDataWithEditsSource.getMapDataWithGeometry(bounds.toBoundingBox())
-        val styledElements = overlay
-            .getStyledElements(mapData)
-            .mapNotNull { (element, style) ->
-                val geometry = mapData.getGeometry(element.type, element.id) ?: return@mapNotNull null
-                StyledElement(element, geometry, style)
-            }
-            .flatMap { it.toGeoJsonFeatures() }
-
-        return FeatureCollection(styledElements.toList())
+    override fun onMapMoved(cameraState: CameraState) {
+        mapQuestPinsSource.onMapMoved(cameraState)
+        styleableOverlaySource.onMapMoved(cameraState)
     }
 
-    private fun updateSelectedOverlay() {
-        selectedOverlay.value = selectedOverlaySource.selectedOverlay
-        //TODO or rather create new source??
-        overlaySource.invalidateBounds(GeoJsonBoundingBox(-180.0,-90.0, 180.0, 90.0))
-    }
-
-    private fun updateDownloadedTiles() {
-        launch(Dispatchers.IO) {
-            downloadedTiles.value = downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER)
-        }
+    private suspend fun getDownloadedTiles() = withContext(Dispatchers.IO) {
+        downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER)
     }
 }

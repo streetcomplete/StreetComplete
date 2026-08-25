@@ -48,7 +48,7 @@ fun StyleableOverlayLabelLayer(
     source: Source,
     color: Color,
     haloColor: Color,
-    onClickElement: (ElementKey) -> Unit,
+    onClickElement: (properties: JsonObject) -> Unit,
 ) {
     SymbolLayer(
         id = "overlay-symbols",
@@ -87,7 +87,7 @@ fun StyleableOverlayLabelLayer(
 @MaplibreComposable @Composable
 fun StyleableOverlayLayers(
     source: Source,
-    onClickElement: (ElementKey) -> Unit,
+    onClickElement: (properties: JsonObject) -> Unit,
 ) {
     val dashed = feature["dashed"].convertToBoolean()
     val opacity = feature["opacity"].convertToNumber()
@@ -205,18 +205,12 @@ fun StyleableOverlaySideLayer(source: Source, isBridge: Boolean) {
     )
 }
 
-
 private inline fun onClick(
     features: List<Feature<Geometry, JsonObject?>>,
-    onClickElement: (ElementKey) -> Unit
+    onClickElement: (properties: JsonObject) -> Unit
 ): ClickResult {
-    val elementKey = features
-        .filter { it.properties?.isDisabled() != true }
-        .mapNotNull { it.properties?.getElementKey() }
-        .firstOrNull()
-        ?: return ClickResult.Pass
-
-    onClickElement(elementKey)
+    val properties = features.firstOrNull()?.properties ?: return ClickResult.Pass
+    onClickElement(properties)
     return ClickResult.Consume
 }
 
