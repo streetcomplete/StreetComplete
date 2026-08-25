@@ -65,11 +65,7 @@ class StreetCompleteApplication : Application() {
         startKoin {
             androidContext(this@StreetCompleteApplication)
             workManagerFactory()
-            modules(
-                androidModule,
-                androidModule2,
-                commonModule,
-            )
+            modules(androidModule, commonModule)
         }
 
         setLoggerInstances()
