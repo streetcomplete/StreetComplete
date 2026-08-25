@@ -116,7 +116,6 @@ Sicasí, primero de facer cualquier cambéu l'aplicación comprueba si la versi�
 Esta aplicación busca información incompleta y ameyorable na redolada y muéstrala nun mapa con marcadores. Puedes resolver caún de los problemes respondiendo a una pregunta cenciella.
 
 La información añadida inclúise directo n'OpenStreetMap col to nome ensin precisar nengún otru programa.</string>
-    <string name="quest_name_answer_noName">Nun tien nome…</string>
     <string name="quest_name_answer_noName_confirmation_title">¿Seguro que nun tien nome?</string>
     <string name="quest_name_noName_confirmation_positive">Seguro, nun tien nome</string>
     <string name="quest_openingHours_add_times">Añader horarios d'apertura</string>
@@ -193,11 +192,6 @@ Si nun hai señales na parte seleccionada va aplicase la velocidá máxima prede
     <string name="underground_recycling_container">Contenedor soterrañu</string>
     <string name="quest_streetName_answer_cantType">Nun puedo escribir los símbolos qu'apaecen na señal</string>
     <string name="quest_streetName_cantType_title">¿Nun tienes el tecláu afayadizu?</string>
-    <string name="quest_streetName_cantType_open_settings">Abrir preferencies</string>
-    <string name="quest_streetName_cantType_open_store">Abrir tienda</string>
-    <string name="quest_streetName_cantType_description">Si uses el tecláu estándar ye posible que puedas cambiar la llingua nes preferencies d'entrada, écha-y un güeyu.
-
-Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives dende la tienda que seyan más completes, aplicaciones como «Google Gboard», «SwiftKey» o'l tecláu «Multiling O».</string>
     <string name="quest_streetName_menuItem_nolanguage">(ensin especificar)</string>
     <string name="quest_fireHydrant_type_title">¿Qué tipu d'hidrante ye?</string>
     <string name="quest_fireHydrant_type_pillar">Poste</string>
@@ -479,7 +473,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="theme_dark">Escuro</string>
     <string name="theme_system_default">Colores</string>
     <string name="action_open_location">Abrir llugar n'otra app</string>
-    <string name="map_application_missing">Nun hai otra aplicación pa mapes instalada</string>
     <string name="label_housenumber">númberu de casa</string>
     <string name="quest_busStopShelter_covered">Tola parada ta sotechada</string>
     <string name="quest_ferry_pedestrian_title">¿Tresporta persones?</string>
@@ -493,7 +486,6 @@ Pero recuerda que siempre puedes descargar aplicaciones de tecláu alternatives 
     <string name="quest_cyclewayPartSurface_title">¿De qué tipu ye'l pisu del carril bici?</string>
     <string name="quest_generic_answer_differs_along_the_way">Diferente a lo llargo de la vía…</string>
     <string name="quest_split_way_description">Si ye diferente a lo llargo de la vía, el primer pasu ye trociala, depués puedes responder en cada trozu por separtao. ¿Quies empezar agora?</string>
-    <string name="quest_split_way_tutorial">Toca na vía pa trociala nos puntos onde hai un cambéu. Intenta facelo con precisión. Puedes acercar un poco'l mapa pa velu meyor, si quies.</string>
     <string name="quest_split_way_too_imprecise">Acerca'l mapa un poco más</string>
     <string name="quest_split_way_many_splits_confirmation_description">Ficisti demasiaes divisiones. Siempre se puede dividir el camín más p'alantre.</string>
     <string name="quest_footwayPartSurface_title">¿De qué tipu ye la cera nesti puntu?</string>
@@ -737,7 +729,8 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_kerb_height_lowered">Un poco más alto que la superficie del pisu</string>
     <string name="quest_kerb_height_raised">Bordiyu altu</string>
     <string name="quest_kerb_height_lowered_ramp">Rampla de cera</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">Pon el númberu de carriles pa tráficu rodáu. Los carriles pa bicicletes y aparcaderu nun cuenten. Si hai carriles namás p'autobuses dexa una nota en cuenta de responder.</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">Pon el númberu de carriles pa tráficu rodáu. Los carriles pa bicicletes y aparcaderu nun cuenten.
+Si hai carriles namás p'autobuses dexa una nota en cuenta de responder.</string>
     <string name="quest_surface_value_rock">Piedra</string>
     <string name="quest_parkingType_street_side">Aparcaderu al llau de la vía</string>
     <string name="quest_parkingType_lane">Aparcaderu na vía</string>
@@ -748,14 +741,9 @@ Repara en qu'esta aplicación solo pide'l númberu de portal d'un edificiu en sa
     <string name="quest_shop_gone_title">¿Qué hai equí agora?</string>
     <string name="quest_shop_gone_vacant_answer">Ta vacío</string>
     <string name="quest_shop_gone_replaced_answer">Ye un/una...</string>
-    <string name="quest_shop_vacant_type_title">Esti llocal tuvo vacíu. ¿Qué hai equí agora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Esti tipu de xera ta desactivada de serie porque nun ye útil en dalgunes rexones y seguramente tengas d'entrar nel sitiu p'alcontrar la información y responder bien a les preguntes.</string>
     <string name="quest_dietType_explanation_kosher">Los productos kosher han preparase d'una manera especial, hai axencias que los certifiquen denomaes "kashrut".</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nun hai carril bici nengún equí.</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Pa completar la xera, como siempre; toca un llau de la vía, escueyi la respuesta y fai lo mesmo nel otru llau. 
-
-Repara en toles opciones disponibles: a veces nun ye tan obvio, como en víes d'un solu sentíu con dos direcciones de carril bici.</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Marcando como que nun hai carril bici</string>
     <string name="quest_construction_completed_at_known_date">Va rematase'l...</string>
     <string name="quest_construction_completion_date_title">¿Cuándo va rematase?</string>
     <string name="quest_surface_value_clay">Magre</string>
@@ -854,7 +842,9 @@ Los datos actualícense cada %1$s díes y los datos ensin usar elimínense autom
     <string name="quest_bollard_type_foldable2">Plegable (con o ensin llave)</string>
     <string name="no_search_results">Ensin resultaos</string>
     <string name="quest_selection_hint_title">¿Demasiao que facer?</string>
-    <string name="quest_selection_hint_message">Lo importante ye pasalo bien; si te paez qu'hai munches xeres siempre puedes axustar lo que se ve nel mapa y en qué orde, mira los axustes.</string>
+    <string name="quest_selection_hint_message">Lo importante ye pasalo bien;
+
+si te paez qu'hai munches xeres siempre puedes axustar lo que se ve nel mapa y en qué orde, mira los axustes.</string>
     <string name="quest_presets_preset_add">Añader preaxuste</string>
     <string name="quest_presets_preset_name">Nome del preaxuste</string>
     <string name="quest_presets_default_name">De serie</string>
@@ -981,8 +971,6 @@ Tamién puedes dexar una nota (con foto).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Soporte de la guía</string>
     <string name="quest_bicycle_parking_access_title2">¿Quién puede aparcar equí una bici? Puede ser gratis o non.</string>
     <string name="quest_playground_access_title2">¿Quién puede usar esti parque infantil?</string>
-    <string name="quest_sidewalk_answer_none_title">Seleccionando que falten ceres</string>
-    <string name="quest_side_select_interface_explanation">Toca un llau y elixi la respuesta. Fai lo mesmo nel otru llau si ye qu'esiste.</string>
     <string name="ar_measure">Midida</string>
     <string name="ar_core_tracking_error_too_steep_angle">Ángulu demasiáu pronunciáu, apártate un poco</string>
     <string name="default_disabled_msg_no_ar">Precises una cinta métrica pa resolver esta pregunta porque la midición cola cámara nun ye compatible con esti dispositivu.</string>
@@ -1184,8 +1172,6 @@ Tamién puedes dexar una nota (con foto).</string>
     <string name="quest_placeName_no_name_answer">Nun hai señal col nome</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Esti anchor paez poco realista. Recuerda que tien que ser la distancia d'una cera a la otra, incluyíos los aparcaderos na cai, los carriles bici, etc.</string>
     <string name="overlay_cycleway">Carriles bici</string>
-    <string name="bicycle_boulevard_is_a">Ye un %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Nun ye un %1$s</string>
     <string name="bicycle_boulevard">Bulevar ciclista</string>
     <string name="separate_cycleway_no_or_allowed">Nun ta pensao pa ciclistes (nun significa que tea prohibío)</string>
     <string name="separate_cycleway_non_segregated">Camín d'usu compartíu</string>
@@ -1236,7 +1222,8 @@ Tamién puedes dexar una nota (con foto).</string>
     <string name="overlays_tutorial_intro">¡Atopasti una manera nueva d'editar!</string>
     <string name="overlays_tutorial_display">Cada capa muestra una categoría distinta de coses por facer; como ver solo «tiendes» o filtriar por distintes partes de la infraestructura urbana, como «ceres».
 
-Los datos resáltense en diferentes colores pa brindate una bona visión xeneral de lo que se foi guardando hasta agora. Lo que falta siempre apaez en colorao.</string>
+Los datos resáltense en diferentes colores pa brindate una bona visión xeneral de lo que se foi guardando hasta agora.
+Lo que falta siempre apaez en colorao.</string>
     <string name="overlays_tutorial_edit">Toca cualquier datu resaltáu pa ver el conteníu o editalu. Tamién puedes dividir caminos o poner notes, como pasa coles xeres.
 
 Dalgunes capes tamién permiten añader datos que falten al traviés del marcador con forma de puntu de mira, como la capa de «direcciones». </string>
@@ -1297,7 +1284,8 @@ Dalgunes capes tamién permiten añader datos que falten al traviés del marcado
     <string name="unknown_object">Oxetu desconocíu</string>
     <string name="quest_leafType_tree_title">¿Esti árbol tien fueya ancho o en forma d'aguya?</string>
     <string name="quest_bbq_fuel_gas">Gas</string>
-    <string name="about_description_donate_google_play3">Agradecémoste'l detalle d'echar un gabitu con una donación. Pa ello convidámoste a visitar la nuestra web, porque Google Play nun nos dexa enllazar directo.</string>
+    <string name="about_description_donate_google_play3">Agradecémoste'l detalle d'echar un gabitu con una donación.
+Pa ello convidámoste a visitar la nuestra web, porque Google Play nun nos dexa enllazar directo.</string>
     <string name="quest_isAmenityIndoor_outside_covered">Nun ta dientro, pero ta a techu.</string>
     <string name="lit_value_unsupported">Otru tipu d'illuminación que nun ta na aplicación.</string>
     <string name="quest_generic_otherAnswers2">Eh...</string>

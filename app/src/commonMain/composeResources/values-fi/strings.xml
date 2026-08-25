@@ -116,7 +116,6 @@ Ennen muutoksien lähettämistä sovellus tarkistaa &lt;a href="https://www.west
 Tämä sovellus löytää puuttuvia karttatietoja lähiympäristöstäsi ja näyttää ne kartalla tehtävinä. Ratkaise tehtävät käymällä paikan päällä ja vastaamalla yksinkertaiseen kysymykseen päivittääksesi karttaa.
 
 Syöttämäsi tieto lisätään suoraan OpenStreetMapiin omalla nimelläsi, ilman erillisen muokkausohjelman käyttöä.</string>
-    <string name="quest_name_answer_noName">Sillä ei ole nimeä…</string>
     <string name="quest_name_answer_noName_confirmation_title">Ei ollenkaan nimeä?</string>
     <string name="quest_name_noName_confirmation_positive">Kyllä, ei nimeä</string>
     <string name="quest_openingHours_add_times">Lisää aukioloaika</string>
@@ -193,11 +192,6 @@ Jos koko tien varrella ei ole nopeusrajoitusmerkiä, joka pätee korostettuun ko
     <string name="underground_recycling_container">Maanalainen säiliö</string>
     <string name="quest_streetName_answer_cantType">Liikennemerkin merkit eivät ole kirjoitettavissa</string>
     <string name="quest_streetName_cantType_title">Puuttuuko näppäimistöasettelu?</string>
-    <string name="quest_streetName_cantType_open_settings">Avaa asetukset</string>
-    <string name="quest_streetName_cantType_open_store">Avaa sovelluskauppa</string>
-    <string name="quest_streetName_cantType_description">Jos käytät vakionäppäimistöä, on mahdollista, että voit kytkeä tarvitsemasi kielen syöttömenetelmän asetuksista.
-
-Muussa tapauksessa voit ladata toisen näppäimistön sovelluskaupasta. Suosittuja näppäimistöjä, jotka tukevat lukuisia kieliä, ovat Google Gboard, SwiftKey Keyboard ja Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(määrittämätön)</string>
     <string name="quest_fireHydrant_type_title">Minkälainen paloposti tämä on?</string>
     <string name="quest_fireHydrant_type_pillar">Pylväs</string>
@@ -480,7 +474,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="theme_dark">Tumma</string>
     <string name="theme_system_default">Järjestelmän oletus</string>
     <string name="action_open_location">Avaa sijainti toisessa sovelluksessa</string>
-    <string name="map_application_missing">Muita karttasovelluksia ei ole asennettu</string>
     <string name="label_housenumber">talon numero</string>
     <string name="quest_busStopShelter_covered">Koko pysäkki on katettu</string>
     <string name="quest_ferry_pedestrian_title">Sopiiko tämä lauttareitti jalankulkijoille?</string>
@@ -495,7 +488,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="quest_generic_answer_differs_along_the_way">Vaihtelee pitkin matkaa…</string>
     <string name="quest_split_way_description">Jos se vaihtelee pitkin matkaa, ensimmäinen vaihe on jakaa tie osiin. Sen jälkeen tehtävään voi vastata tien jaetuille osille erikseen.
 Jaetaanko nyt?</string>
-    <string name="quest_split_way_tutorial">Napauta tietä jakaaksesi se siitä kohdasta, jossa vastaus eroaa. Lähennä näkymää ja yritä olla mahdollisimman tarkka.</string>
     <string name="quest_split_way_too_imprecise">Lähennä vielä näkymää</string>
     <string name="quest_split_way_many_splits_confirmation_description">Täällä on melkoisesti jakoja. Voit aina palata tekemään lisää jakoja myöhemmin.</string>
     <string name="quest_footwayPartSurface_title">Mikä päällyste on tällä jalkakäytävällä?</string>
@@ -755,14 +747,9 @@ Jos jokin kaistoista on varattu busseille, jätä paikalle ilmoitus.</string>
     <string name="quest_shop_gone_title">Mitä täällä on nyt?</string>
     <string name="quest_shop_gone_vacant_answer">Se on tyhjillään…</string>
     <string name="quest_shop_gone_replaced_answer">Siellä on…</string>
-    <string name="quest_shop_vacant_type_title">Tämä kauppa on ollut tyhjillään. Mitä siellä on nyt?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Tämä tehtävätyyppi on oletusarvoisesti pois käytöstä, koska joillakin alueilla siitä ei ole hyötyä ja joutuisit todennäköisesti menemään paikan sisälle vastataksesi tämäntyyppiseen tehtävään.</string>
     <string name="quest_dietType_explanation_kosher">Koshertuotteet täytyy valmistaa erikoissääntöjen mukaan, kashrut-järjestöjen antamien todistuksia sääntöjen noudattamisesta.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Ei lainkaan pyöräilytietä</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Kuten tapana, napauta kuvituksen yhtä laitaa, valitse sopiva vastaus ja tee samoin toiselle laidalle.
-
-Huomioi kaikki vaihtoehdot: jotkut tapaukset eivät ole ilmiselviä, kuten yksisuuntainen tie joka sallii polkupyöriä kumpaankin suuntaan!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Valitsemassa ettei ole pyörätietä</string>
     <string name="quest_construction_completed_at_known_date">Valmistuu päivämäärässä…</string>
     <string name="quest_construction_completion_date_title">Milloin se valmistuu?</string>
     <string name="quest_surface_value_clay">Savi</string>
@@ -862,7 +849,9 @@ Tiedot päivitetään %1$s päivän välein ja käyttämättömät tiedot poiste
     <string name="quest_bollard_type_foldable2">Taitettava (avaimella tai ilman)</string>
     <string name="no_search_results">Mitään ei löytynyt</string>
     <string name="quest_selection_hint_title">Liikaa tehtävää?</string>
-    <string name="quest_selection_hint_message">Osallistumisen tulisi ensisijaisesti olla hauskaa! Jos tehtävien määrä häkellyttää sinua, voit aina hienosäätää asetuksista mitä tehtäviä sinulle näytetään ja missä järjestyksessä.</string>
+    <string name="quest_selection_hint_message">Osallistumisen tulisi ensisijaisesti olla hauskaa!
+
+Jos tehtävien määrä häkellyttää sinua, voit aina hienosäätää asetuksista mitä tehtäviä sinulle näytetään ja missä järjestyksessä.</string>
     <string name="quest_presets_preset_add">Lisää esiasetus</string>
     <string name="quest_presets_preset_name">Esiasetuksen nimi</string>
     <string name="quest_presets_default_name">Oletus</string>
@@ -989,9 +978,6 @@ Vaihtoehtoisesti voit jättää ilmoituksen (kuvan kanssa).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Ohjaustankopidike</string>
     <string name="quest_bicycle_parking_access_title2">Kuka saa pysäköidä pyörän tähän? Pysäköinti voi olla ilmaista tai maksullista.</string>
     <string name="quest_playground_access_title2">Kuka saa käyttää tätä leikkikenttää?</string>
-    <string name="quest_sidewalk_answer_none_title">Jalkakäytävät puuttuvat</string>
-    <string name="quest_side_select_interface_explanation">Näpäytä puolta ja valitse sopiva vaihtoehto.
-Tee sama toiselle puolelle mikäli tarpeellista.</string>
     <string name="ar_measure">Mittaus</string>
     <string name="ar_core_tracking_error_too_steep_angle">Liian jyrkkä kulma, astu hieman taaemmas.</string>
     <string name="default_disabled_msg_no_ar">Tarvitset mittanauhan ratkaistaksesi tämän tehtävän, koska tämä laite ei tue mittaamista kameralla.</string>
@@ -1193,8 +1179,6 @@ Haluatko siirtää nyt?</string>
     <string name="quest_placeName_no_name_answer">Ei nimikylttiä</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Tämä leveys vaikuttaa epätodennäköiseltä. Muista, että leveys tulee ilmoittaa reunakiveyksestä toiseen reunakiveykseen, mukaan lukien pysäköinnin kadun varrella, pyöräilyväylät yms.</string>
     <string name="overlay_cycleway">Pyöräilypolut</string>
-    <string name="bicycle_boulevard_is_a">Se on %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Se ei ole %1$s</string>
     <string name="bicycle_boulevard">Pyöräilybaana</string>
     <string name="separate_cycleway_no_or_allowed">Jalkakäytävä, ei erillistä liikennemerkkiä pyöräilystä (riippuu lainsäädännöstä onko pyöräily sallittua)</string>
     <string name="separate_cycleway_non_segregated">Yhdistetty pyörätie ja jalkakäytävä</string>
@@ -1326,8 +1310,7 @@ Voit löytää lahjoitustiedot verkkosivuiltamme tai projektin kotisivuilta, Goo
     <string name="quest_accessible_for_pedestrians_allowed">Se on sallittu.</string>
     <string name="quest_buildingLevels_hint">Rakennuksille, jotka ovat rinteellä, kerrosten laskeminen alkaa maan tasosta matalimmalta sivulta.
 
-Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei ole yhtään kattokerrosta eivät ole välttämättä litteitä, vaan eivät ole riittävän korkeita kokonaiselle kerrokselle.
-    </string>
+Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei ole yhtään kattokerrosta eivät ole välttämättä litteitä, vaan eivät ole riittävän korkeita kokonaiselle kerrokselle.</string>
     <string name="quest_parcel_locker_brand">Mikä on tämän pakettiautomaatin merkki?</string>
     <string name="quest_powerPolesMaterial_is_terminal">Voimalinja on kiinnitetty rakennukseen</string>
     <string name="quest_cycleway_value_sidewalk_ok">Ei ole, mutta kyltti sallii pyöräilyn jalkakäytävällä</string>
@@ -1438,7 +1421,6 @@ Esimerkiksi 1,3 tai 2b,4,6.</string>
     <string name="quest_bicycle_charging_station_capacity_title">Kuinka montaa polkupyörää täällä voi ladata samanaikaisesti?</string>
     <string name="quest_charging_station_bicycles_title">Voiko täällä ladata myös polkupyöriä?</string>
     <string name="quest_tower_access_title">Kenellä on pääsy tähän torniin? Pääsy voi olla ilmainen tai maksullinen.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Se on vain polkupyörille</string>
     <string name="quest_recycling_type_pet_bottles">PET-pullot</string>
     <string name="quest_maxweight_add_sign">Lisää merkki</string>
     <string name="quest_maxweight_remove_sign">Poista merkki</string>
@@ -1487,4 +1469,11 @@ Esimerkiksi 1,3 tai 2b,4,6.</string>
     <string name="quest_maxspeed_answer_roadtype_lit">valaistu</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">valaisematon</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Valaisematon ja moottoritie</string>
+    <string name="quest_board_type_tourism">Turismi (useita aiheita)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Vain yksi merkitty kaista</string>
+    <string name="link_gomap_description">Edistynyt OSM-muokkain iOS:lle</string>
+    <string name="link_terraink_description">Luo kauniita julisteita kaupungeista tai kaupunginosista</string>
+    <string name="quest_place_vacant_type_title">Tämä paikka on ollut tyhjillään. Mitä siellä on nyt?</string>
+    <string name="about_title">Tietoja - %1$s</string>
+    <string name="quest_surface_value_laterite">Lateriitti</string>
 </resources>

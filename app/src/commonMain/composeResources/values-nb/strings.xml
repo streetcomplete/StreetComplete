@@ -116,7 +116,6 @@ Før endringene dine lastes opp sjekkes versjonen av denne appen mot en &lt;a hr
 Denne appen finner manglende kartdata i nærheten av deg og viser dem som oppdrag på kartet. Løs oppdragene ved å besøke stedene og svar på enkle spørsmål for å oppdatere kartet.
 
 Informasjonen du legger til blir automatisk lastet opp til OpenStreetMap i ditt navn, uten behov for andre redigeringsverktøy.</string>
-    <string name="quest_name_answer_noName">Den har ikke noe navn…</string>
     <string name="quest_name_answer_noName_confirmation_title">Er den virkelig navnløs?</string>
     <string name="quest_name_noName_confirmation_positive">Ja, navnløs</string>
     <string name="quest_openingHours_add_times">Legg til åpningstider</string>
@@ -193,11 +192,6 @@ Hvis det ikke fins noe fartsgrenseskilt for veien som den markerte strekningen e
     <string name="underground_recycling_container">Underjordisk konteiner</string>
     <string name="quest_streetName_answer_cantType">Kan ikke skrive symbolene på skiltet</string>
     <string name="quest_streetName_cantType_title">Mangler tastaturoppsett?</string>
-    <string name="quest_streetName_cantType_open_settings">Åpne innstillinger</string>
-    <string name="quest_streetName_cantType_open_store">Åpne appbutikk</string>
-    <string name="quest_streetName_cantType_description">Hvis du bruker et standardtastatur kan du trolig enkelt aktivere et tastaturoppsett for språket du trenger i innstillinger for inndatametode.
-
-Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikken. Populære tastaturer som støtter mange språk er Google Gboard, Swiftkey Keyboard og Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(uspesifisert)</string>
     <string name="quest_fireHydrant_type_title">Hva slags brannhydrant er dette?</string>
     <string name="quest_fireHydrant_type_pillar">Stående</string>
@@ -480,7 +474,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="theme_dark">Mørkt</string>
     <string name="theme_system_default">Systemvalgt</string>
     <string name="action_open_location">Vis posisjonen i en annen app</string>
-    <string name="map_application_missing">Ingen andre kartprogram installert</string>
     <string name="label_housenumber">Husnummer</string>
     <string name="quest_busStopShelter_covered">Hele stoppet er under tak</string>
     <string name="quest_ferry_pedestrian_title">Frakter denne fergen fotgjengere?</string>
@@ -495,7 +488,6 @@ Hvis ikke kan du laste ned et tastatur med støtte for flere språk i app-butikk
     <string name="quest_generic_answer_differs_along_the_way">Varierer langs veien…</string>
     <string name="quest_split_way_description">Hvis det endrer seg langs veien er første steg å dele opp strekningen der endringene skjer. Deretter kan oppdraget besvares for hvert veistrekk.
 Vil du dele opp nå?</string>
-    <string name="quest_split_way_tutorial">Trykk på veien for å skille den der svarene avviker. Forstørr kartutsnittet og prøv å være så presis som mulig.</string>
     <string name="quest_split_way_too_imprecise">Forstørr ytterligere</string>
     <string name="quest_split_way_many_splits_confirmation_description">Dette er ganske mange oppdelinger. Du kan alltids dele opp ytterligere senere.</string>
     <string name="quest_footwayPartSurface_title">Hva slags overflate har gangstien her?</string>
@@ -756,14 +748,9 @@ Hvis noen av feltene er kollektivfelt er det bedre å legge inn en merknad.</str
     <string name="quest_shop_gone_title">Hva er her istedenfor?</string>
     <string name="quest_shop_gone_vacant_answer">Det er tomt</string>
     <string name="quest_shop_gone_replaced_answer">En/ei/et…</string>
-    <string name="quest_shop_vacant_type_title">Denne butikken er tom. Hva er her nå?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Denne oppdragstypen er deaktivert som standard, fordi den ikke er nyttig i noen områder og du vanligvis må gå inn på stedet for å kunne svare.</string>
     <string name="quest_dietType_explanation_kosher">Koscherprodukt må lages etter bestemte religiøse regler, og det fins egne sertifiseringsinstanser som godkjenner produktene.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Verken sykkelfelt eller sykkelvei</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Trykk som vanlig på en side av illustrasjonen, velg riktig alternativ og gjenta det samme for den andre siden.
-
-Legg merke til alle tilgjengelige alternativer! Noen tilfeller er ikke åpenbare, som for eksempel en enveiskjørt vei som tillater sykling i begge retninger.</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Velg at det ikke finnes noen sykkelvei eller sykkelfelt</string>
     <string name="quest_construction_completed_at_known_date">Dato for ferdigstillelse…</string>
     <string name="quest_construction_completion_date_title">Når blir det ferdig?</string>
     <string name="quest_surface_value_clay">Leire</string>
@@ -862,7 +849,9 @@ Data blir oppdatert etter %1$s dager og ubrukte data blir automatisk slettet ett
     <string name="quest_bollard_type_foldable2">Sammenleggbar (med eller uten nøkkel)</string>
     <string name="no_search_results">Ingenting funnet</string>
     <string name="quest_selection_hint_title">For mye å gjøre?</string>
-    <string name="quest_selection_hint_message">Det skal først og fremst være morsomt å bidra! Er du overveldet av alle oppdragene kan du alltid endre på innstillingene for å begrense og prioritere det som interesserer deg.</string>
+    <string name="quest_selection_hint_message">Det skal først og fremst være morsomt å bidra!
+
+Er du overveldet av alle oppdragene kan du alltid endre på innstillingene for å begrense og prioritere det som interesserer deg.</string>
     <string name="quest_presets_preset_add">Legg til oppdragsoppsett</string>
     <string name="quest_presets_preset_name">Navn på oppdragsoppsett</string>
     <string name="quest_presets_default_name">Standard</string>
@@ -989,9 +978,6 @@ Alternativt, lag en merknad (med bilde).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Styreholder</string>
     <string name="quest_bicycle_parking_access_title2">Hvem kan parkere sykkelen her? Enten gratis eller mot betaling.</string>
     <string name="quest_playground_access_title2">Hvem kan bruke denne lekeplassen?</string>
-    <string name="quest_sidewalk_answer_none_title">Velg at fortau mangler</string>
-    <string name="quest_side_select_interface_explanation">Trykk på en side og velg svaret som passer.
-Om mulig, gjør det samme for den andre siden.</string>
     <string name="ar_measure">Mål</string>
     <string name="ar_core_tracking_error_too_steep_angle">For bratt vinkel, gå lenger unna</string>
     <string name="default_disabled_msg_no_ar">Du trenger et målebånd for å løse denne oppgaven fordi måling med kameraet ikke er støttet på denne enheten.</string>
@@ -1193,8 +1179,6 @@ Vil du flytte den nå?</string>
     <string name="quest_placeName_no_name_answer">Det er ingen navneskilt</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Denne bredden virker usannsynlig. Husk å måle bredden fra fortauskant til fortauskant, inkludert gateparkering, sykkelfelt osv.</string>
     <string name="overlay_cycleway">Sykkelveier</string>
-    <string name="bicycle_boulevard_is_a">Der er en %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Det er ikke en %1$s</string>
     <string name="bicycle_boulevard">Sykkelgate</string>
     <string name="separate_cycleway_no_or_allowed">Ikke tilrettelagt for sykling (men kan likevel være tillatt)</string>
     <string name="separate_cycleway_non_segregated">Delt gang- og sykkelvei</string>
@@ -1309,7 +1293,8 @@ I tillegg tillater noen typer kartlag at du legger til nye data der trådkorset 
     <string name="unknown_object">Ukjent objekt</string>
     <string name="quest_leafType_tree_title">Har dette treet nåler eller blader?</string>
     <string name="quest_bbq_fuel_gas">Gass</string>
-    <string name="about_description_donate_google_play3">Takk for at du vurderer å støtte denne appen! Du kan finne informasjon om donasjon på våre nettsider eller "project home", Google Play tillater ikke at vi gir linken inne i appen.</string>
+    <string name="about_description_donate_google_play3">Takk for at du vurderer å støtte denne appen!
+Du kan finne informasjon om donasjon på våre nettsider eller "project home", Google Play tillater ikke at vi gir linken inne i appen.</string>
     <string name="quest_isAmenityIndoor_outside_covered">Utendørs, men tildekket</string>
     <string name="lit_value_unsupported">Spesiell belysningsstatus som ikke kan velges i denne appen</string>
     <string name="quest_generic_otherAnswers2">Eeh…</string>

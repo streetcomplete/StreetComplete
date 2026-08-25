@@ -92,8 +92,11 @@
     <string name="quest_sidewalk_title">Eus kons dhe'n stret ma?</string>
     <string name="quest_address_title">Pyth yw an niver chi a'n drehevyans ma?</string>
     <string name="store_listing_short_description">App arhwithrans OpenStreetMap</string>
-    <string name="store_listing_full_description">Gweres gwellhe OpenStreetMap gans StreetComplete! An app ma a gav data mappa fyllel yn agas ogas ha diskwedhes war'n mappa avel hwithransow. Gorthebi pub hwithrans gans ow vysytya an tyller war-lown hag ow korthebi govyn sempel rag nowedhi an mappa. An kedhlow hwi a ynworr yw keworrys distowgh dhe OpenStreetMap y'th hanow, heb res dhe dhevnydhya chanjyell aral.</string>
-    <string name="quest_name_answer_noName">Nyns eus hanow…</string>
+    <string name="store_listing_full_description">Gweres gwellhe OpenStreetMap gans StreetComplete!
+
+An app ma a gav data mappa fyllel yn agas ogas ha diskwedhes war'n mappa avel hwithransow. Gorthebi pub hwithrans gans ow vysytya an tyller war-lown hag ow korthebi govyn sempel rag nowedhi an mappa.
+
+An kedhlow hwi a ynworr yw keworrys distowgh dhe OpenStreetMap y'th hanow, heb res dhe dhevnydhya chanjyell aral.</string>
     <string name="quest_name_answer_noName_confirmation_title">Hanow vyth y'n gwir?</string>
     <string name="quest_name_noName_confirmation_positive">Ea, hanow vyth</string>
     <string name="quest_openingHours_add_times">Keworra euryow ygor</string>
@@ -149,7 +152,8 @@
     <string name="dialog_session_dont_show_again">Ny dhiskwedhes arta rag an esedhek ma</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">An finweth tooth ma a hevel diwirhaval.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Owgh hwi sur nyns eus finweth vyth sinys?</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">A wrussowgh checkya an pennow a'n stret? Mar nyns eus arwodhyow a-hys an stret dien mayth yw perthynek rag an darn golowboyntys, finwethow tooth defowt yw perthynek.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">A wrussowgh checkya an pennow a'n stret?
+Mar nyns eus arwodhyow a-hys an stret dien mayth yw perthynek rag an darn golowboyntys, finwethow tooth defowt yw perthynek.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Ea, arwodh vyth</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Mars eus arwodh avel hemma y'n fordh dhibarth gans an fordh jif, hwi nag a wra kavos martesen arwodhyow y'n parth, drefen an finweth tooth sinys ena yw perthynek rag an parth leun.</string>
     <string name="quest_sport_softball">Pel Bleudh</string>
@@ -169,9 +173,6 @@
     <string name="underground_recycling_container">Lestryn yn-dann dhor</string>
     <string name="quest_streetName_answer_cantType">Ny yllir jynnskrifa an lytherennow war'n arwodh</string>
     <string name="quest_streetName_cantType_title">Aray bysowek fyllel?</string>
-    <string name="quest_streetName_cantType_open_settings">Ygeri settyansow</string>
-    <string name="quest_streetName_cantType_open_store">Vysytya gwerthji appys</string>
-    <string name="quest_streetName_cantType_description">Mar hwi a dhevnydh bysowek defowt, chonsyow yw hwi a yll bywhe yn sempel an aray bysowek rag an yeth mayth yma edhom dhywgh y'n settyansow method ynworrans. Yn ken maner, hwi a yll iskarga bysowek aral y'n gwerthji appys. Bysowegi gerys-da neb a skoodh meur a yethow yw Google Gboard, SwiftKey Keyboard, ha Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(anragnotys)</string>
     <string name="quest_fireHydrant_type_title">Pyth eghen a boynt hedhas dowr rag tanlu yw hemma?</string>
     <string name="quest_fireHydrant_type_pillar">Koloven</string>
@@ -453,7 +454,6 @@
     <string name="theme_dark">Du</string>
     <string name="theme_system_default">Defowt system</string>
     <string name="action_open_location">Ygeri tyller yn app aral</string>
-    <string name="map_application_missing">App mappow aral vyth leys</string>
     <string name="label_housenumber">niver chi</string>
     <string name="quest_busStopShelter_covered">Savla dien yw gorherys</string>
     <string name="quest_ferry_pedestrian_title">Eus an kowbalhyns ma karya kerdhoryon?</string>
@@ -468,7 +468,6 @@
     <string name="quest_generic_answer_differs_along_the_way">Chanjya a-hys an hyns…</string>
     <string name="quest_split_way_description">Mars yth chanjya a-hys an hyns, an kamm kynsa yw folsa an hyns. Wosa henna, an hwithrans a yll bos gorthebys rag pub darn yn tiblans.
 Folsa yth lemmyn?</string>
-    <string name="quest_split_way_tutorial">Tava war'n hyns rag folsa yth y'n poynt(ys) le may an gorthyp chanjya. Devnydhya an nas mogghe/lehe hag assaya bos poran ha possybyl.</string>
     <string name="quest_split_way_too_imprecise">Mar pleg, mogghe pella</string>
     <string name="quest_split_way_many_splits_confirmation_description">An re ma yw meur a folsyow. Ty a yll folsa an hyns wosa henna.</string>
     <string name="quest_footwayPartSurface_title">Pyth yw an arenep a'n trolergh omma?</string>
@@ -716,7 +715,8 @@ Maga ta, mars yth na gweytha rag an tregh golowboyntys dien, prederi ow gorthebi
     <string name="quest_kerb_height_lowered">Ughella boghes es arenep fordh</string>
     <string name="quest_kerb_height_raised">Or ughel</string>
     <string name="quest_kerb_height_lowered_ramp">Ledryn or</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">Ragnotya an niver a hensyow merkys devnydhadow gans traffik kerri omma. Hensyow diwros ha parkyans synsys ny vern. Mar neb hensyow yw ragerghys rag kyttrinyow, danvon unn noten yn le, mar pleg.</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">Ragnotya an niver a hensyow merkys devnydhadow gans traffik kerri omma. Hensyow diwros ha parkyans synsys ny vern.
+Mar neb hensyow yw ragerghys rag kyttrinyow, danvon unn noten yn le, mar pleg.</string>
     <string name="quest_surface_value_rock">Karrek</string>
     <string name="quest_parkingType_street_side">Parkyans ryb an fordh</string>
     <string name="quest_parkingType_lane">Parkyans war'n fordh</string>
@@ -727,14 +727,9 @@ Maga ta, mars yth na gweytha rag an tregh golowboyntys dien, prederi ow gorthebi
     <string name="quest_shop_gone_title">Pyth yw omma yn le lemmyn?</string>
     <string name="quest_shop_gone_vacant_answer">Yth yw gwag…</string>
     <string name="quest_shop_gone_replaced_answer">Unn…</string>
-    <string name="quest_shop_vacant_type_title">An gwerthji ma re beu gwag. Pyth yw omma lemmyn?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">An eghen hwithrans ma yw marow yn defowt dre reson yth yw na dhe les yn nebes powyow ha ty a yll mos a-ji an le dell hevel rag gorthebi unn hwithrans a'n eghen ma.</string>
     <string name="quest_dietType_explanation_kosher">Gwara kosher res bos pareusys war-lergh rewlys arbennik, gans maynys testskrifans kashrut ow merkya gwara yn gostytter.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Hyns diwros vytholl</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Dell yw usys, tava war unn tu a'n lymnans, dewis unn gorthyp ewn ha gul an keth rag an tu aral.
-
-Notya oll an dewisyow kavadow: nebes kasys yw anapert, kepar ha'n fordh unfordh ow gasa diwrosyoryon y'n dhew tuyow!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Ow dewis yma hyns diwros vyth</string>
     <string name="quest_construction_completed_at_known_date">A vydh deu dhe dedhyas…</string>
     <string name="quest_construction_completion_date_title">P'eur fydh deu?</string>
     <string name="quest_surface_value_clay">Pri</string>
@@ -832,7 +827,9 @@ Notya oll an dewisyow kavadow: nebes kasys yw anapert, kepar ha'n fordh unfordh 
     <string name="quest_bollard_type_foldable2">Plegadow (gans po heb alhwedh)</string>
     <string name="no_search_results">Tra vyth kavas</string>
     <string name="quest_selection_hint_title">Re rag gul?</string>
-    <string name="quest_selection_hint_message">Ow kevri y kodh dhedhi delit! Mars os reverthys gans an niver a hwithransow, ty a yll tonya py hwithransow yw diskwedhys rag ty hag yn pyth aray y'n settyansow.</string>
+    <string name="quest_selection_hint_message">Ow kevri y kodh dhedhi delit!
+
+Mars os reverthys gans an niver a hwithransow, ty a yll tonya py hwithransow yw diskwedhys rag ty hag yn pyth aray y'n settyansow.</string>
     <string name="quest_presets_preset_add">Addya eghennow ensampel</string>
     <string name="quest_presets_preset_name">Hanow eghennow ensampel</string>
     <string name="quest_presets_default_name">Defowt</string>
@@ -957,9 +954,6 @@ Notya oll an dewisyow kavadow: nebes kasys yw anapert, kepar ha'n fordh unfordh 
     <string name="quest_bicycle_parking_type_handlebarholder">Synsyas barr dorn</string>
     <string name="quest_bicycle_parking_access_title2">Piw yw gasys rag parkya diwros omma? Parkyans a yll bos neb kost po pes.</string>
     <string name="quest_playground_access_title2">Piw yw gasys rag devnydhya an garth-gwari ma?</string>
-    <string name="quest_sidewalk_answer_none_title">Ow dewis konsys fyllel</string>
-    <string name="quest_side_select_interface_explanation">Tava unn tu ha dewis an gorthyp owth omdhesedha.
-Gul an keth rag an tu aral mars omma.</string>
     <string name="ar_measure">Kemeres Musurans</string>
     <string name="ar_core_tracking_error_too_steep_angle">Elin yw re serth, dehweles nebes</string>
     <string name="default_disabled_msg_no_ar">Ty res musurell rag gorthebi an hwithrans ma dre reson ow musura gans an kamera yw anskoodhys war'n devis ma.</string>
@@ -1160,8 +1154,6 @@ Gwaya yth lemmyn?</string>
     <string name="quest_placeName_no_name_answer">Yma arwodh hanow vyth…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">An lester ma heveli diwirhaval. Remembra, hemma y kodh bos an lester dhyworth amalven dhe amalven, ow synsi parkyans war'n stret, hensyow diwros, h.e</string>
     <string name="overlay_cycleway">Hensyow diwros</string>
-    <string name="bicycle_boulevard_is_a">%1$s yw</string>
-    <string name="bicycle_boulevard_is_not_a">Nyns yw %1$s</string>
     <string name="bicycle_boulevard">Rosva diwros</string>
     <string name="separate_cycleway_no_or_allowed">Trolergh, arwodh diblans vyth a-dro dhe tiwrosa (mas yw gesys kregi war reythyans)</string>
     <string name="separate_cycleway_non_segregated">Hyns kesdevnydh titly</string>
@@ -1207,8 +1199,13 @@ Gwaya yth lemmyn?</string>
     <string name="quest_cycleway_value_sidewalk_dual2">kons liesdevnydh, an dhew tuyow</string>
     <string name="overlays_tutorial_title">Gorwiskasow</string>
     <string name="overlays_tutorial_intro">Ty kavas agwedh nowydh rag golegi data!</string>
-    <string name="overlays_tutorial_display">Pub gorwiskas diskwedhes unn eghen a dhata, rag ensampel “leow” po “arenebow stret”. An data yw golowboyntys yn liwyow dyffrans rag provia gorwolok da a byth yw rekordys bys y’n eur ma. Data fyllel yw diskwedhes yn rudh pub prys.</string>
-    <string name="overlays_tutorial_edit">Tava war neb data golowboyntys rag diskwedhes po golegi. Ynwedh, ty a yll folsa linennow po derivas notennow, haval dhe hwithransow. Yn keworransel, nebes gorwiskasow gasa ty rag addya data nowydh y'n le a grows diskwedhys, kepar ha'n gorwiskas trigvaow.</string>
+    <string name="overlays_tutorial_display">Pub gorwiskas diskwedhes unn eghen a dhata, rag ensampel “leow” po “arenebow stret”.
+
+An data yw golowboyntys yn liwyow dyffrans rag provia gorwolok da a byth yw rekordys bys y’n eur ma.
+Data fyllel yw diskwedhes yn rudh pub prys.</string>
+    <string name="overlays_tutorial_edit">Tava war neb data golowboyntys rag diskwedhes po golegi. Ynwedh, ty a yll folsa linennow po derivas notennow, haval dhe hwithransow.
+
+Yn keworransel, nebes gorwiskasow gasa ty rag addya data nowydh y'n le a grows diskwedhys, kepar ha'n gorwiskas trigvaow.</string>
     <string name="quest_crossing_kerb_height_title">Pyth yw an ughelder a'n amalveyn y'n dreusva ma?</string>
     <string name="quest_maxheight_sign_title">Pyth finweth ughelder yw arwodhys omma?</string>
     <string name="quest_leave_new_note_as_answer">Y'n kas ma, res yw dhywgh danvon noten may displegyewgh an studh.</string>
@@ -1266,7 +1263,8 @@ Gwaya yth lemmyn?</string>
     <string name="unknown_object">Tra ankoth</string>
     <string name="quest_leafType_tree_title">Eus an wedhen ma dhyn naswedhow po del?</string>
     <string name="quest_bbq_fuel_gas">Gass</string>
-    <string name="about_description_donate_google_play3">Meur ras rag ow prederi dhe skoodhya an app ma! Hwi a yll kavos kedhlow argevrians war agan gwiasva po tre ragdres, an policis gwerthji app na asa ni dhe brovia an worgevren y'n app.</string>
+    <string name="about_description_donate_google_play3">Meur ras rag ow prederi dhe skoodhya an app ma!
+Hwi a yll kavos kedhlow argevrians war agan gwiasva po tre ragdres, an policis gwerthji app na asa ni dhe brovia an worgevren y'n app.</string>
     <string name="quest_isAmenityIndoor_outside_covered">Na a-ji, mes gorherys</string>
     <string name="lit_value_unsupported">Studh golowys komparek na dhewisadow y'n app ma</string>
     <string name="quest_generic_otherAnswers2">Ogh…</string>
@@ -1280,7 +1278,9 @@ Gwaya yth lemmyn?</string>
     <string name="info">Kedhlow moy</string>
     <string name="quest_accessible_for_pedestrians_prohibited">Difennys yw.</string>
     <string name="quest_accessible_for_pedestrians_allowed">Gesys yw.</string>
-    <string name="quest_buildingLevels_hint">Rag drevehyansow war run, an somm leuryow dalleth dhyworth an leur a-woles a'n tu isella. Unn leur yw ow synsi mars an fenestri yw y'n to. Yn iskevresek, nyns yw tohow gans leuryow vyth plat, mes na ughel lowr rag leur leun.</string>
+    <string name="quest_buildingLevels_hint">Rag drevehyansow war run, an somm leuryow dalleth dhyworth an leur a-woles a'n tu isella.
+
+Unn leur yw ow synsi mars an fenestri yw y'n to. Yn iskevresek, nyns yw tohow gans leuryow vyth plat, mes na ughel lowr rag leur leun.</string>
     <string name="quest_parcel_locker_brand">Pyth yw an merk a'n amari fardellow ma?</string>
     <string name="quest_powerPolesMaterial_is_terminal">Linen tredanek yw ankorys dhe dhrehevyans</string>
     <string name="quest_cycleway_value_sidewalk_ok">vyth, mes arwodh gasa ow tiwrosa war gons</string>
@@ -1397,7 +1397,6 @@ Rag ensampel 1,3 po 2b,4,6.</string>
     <string name="quest_charging_station_bicycles_title">A yll diwrosow bos kargys omma, ynwedh?</string>
     <string name="quest_charging_station_bicycles_hint">Aswiwer tredan kargell diwrosow ebilya yn krawyow a'n mayni normal.</string>
     <string name="quest_tower_access_title">Piw a yll drehedhes an tour ma? Yth a yll bos heb kost po pes.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Rag diwrosow yn unnik yw</string>
     <string name="quest_recycling_type_pet_bottles">Botellow PET</string>
     <string name="quest_maxweight_add_sign">Keworra arwodh</string>
     <string name="quest_maxweight_remove_sign">Remova arwodh</string>

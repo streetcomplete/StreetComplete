@@ -116,7 +116,6 @@ Međutim, pre otpremanja vaših promena, aplikacija proverava &lt;a href="https:
 Ova aplikacija nalazi nepotpune i proširive podatke u vašoj blizini i prikazuje ih na karti kao oznake. Svaka od njih je rešiva odgovorom na jednostavno pitanje dopunom informacija sa lica mesta.
 
 Podaci koje unesete se direktno dodaju u OpenStreetMap-e pod vašim imenom, bez potrebe za nekim drugim programom.</string>
-    <string name="quest_name_answer_noName">Nema ime…</string>
     <string name="quest_name_answer_noName_confirmation_title">Zaista nema ime?</string>
     <string name="quest_name_noName_confirmation_positive">Da, nema ime</string>
     <string name="quest_openingHours_add_times">Dodaj radno vreme</string>
@@ -193,11 +192,6 @@ Ako duž cele ulice nema znakova koji se odnose na istaknuti deo, primenjuju se 
     <string name="underground_recycling_container">Podzemni kontejner</string>
     <string name="quest_streetName_answer_cantType">Ne mogu uneti slova sa znaka</string>
     <string name="quest_streetName_cantType_title">Nemate raspored tastature?</string>
-    <string name="quest_streetName_cantType_open_settings">Otvori podešavanja</string>
-    <string name="quest_streetName_cantType_open_store">Posetite radnju sa aplikacijama</string>
-    <string name="quest_streetName_cantType_description">Ako koristite podrazumevanu tastaturu, verovatno možete uključiti raspored odgovarajućeg jezika u podešavanjima za način unosa.
-
-U suprotnom, možete preuzeti drugu tastaturu u radnji sa aplikacijama. Popularne tastature koje podržavaju mnoge jezike su Google Gboard, SwiftKey Keyboard i Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(neodređen)</string>
     <string name="quest_fireHydrant_type_title">Kakav je ovo hidrant?</string>
     <string name="quest_fireHydrant_type_pillar">Stub</string>
@@ -480,7 +474,6 @@ U suprotnom, možete preuzeti drugu tastaturu u radnji sa aplikacijama. Popularn
     <string name="theme_dark">Tamna</string>
     <string name="theme_system_default">Sistemska</string>
     <string name="action_open_location">Otvori lokaciju u drugom programu</string>
-    <string name="map_application_missing">Nijedan program za karte nije instaliran</string>
     <string name="label_housenumber">kućni broj</string>
     <string name="quest_busStopShelter_covered">Celo stajalište je natkriveno</string>
     <string name="quest_ferry_pedestrian_title">Da li ova linija trajekta prevozi pešake?</string>
@@ -495,7 +488,6 @@ U suprotnom, možete preuzeti drugu tastaturu u radnji sa aplikacijama. Popularn
     <string name="quest_generic_answer_differs_along_the_way">Različita u delovima…</string>
     <string name="quest_split_way_description">Ukoliko postoji razlika duž puta, razdelite ga prvo. Nakon toga, odgovarajte na zadatak za svaki deo posebno.
 Želite li odmah da razdelite put?</string>
-    <string name="quest_split_way_tutorial">Dodirnite put da ga razdelite na mestima gde se odgovor razlikuje. Pokušajte biti što precizniji, možete i uveličati kartu.</string>
     <string name="quest_split_way_too_imprecise">Molimo da još uveličate kartu</string>
     <string name="quest_split_way_many_splits_confirmation_description">Dosta puta ste izvršili deljenje. Uvek možete naknadno da razdelite put.</string>
     <string name="quest_footwayPartSurface_title">Kakva je ovde površina trotoara?</string>
@@ -754,12 +746,9 @@ Ako su neke trake za javni prevoz, ostavite napomenu.</string>
     <string name="quest_shop_gone_title">Šta je sada tu umesto toga?</string>
     <string name="quest_shop_gone_vacant_answer">Napušteno je</string>
     <string name="quest_shop_gone_replaced_answer">To je…</string>
-    <string name="quest_shop_vacant_type_title">Ova prodavnica je napuštena. Šta je sada ovde?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ova vrsta zadatka je onemogućena jer u nekim regijama nije korisna. Verovatno biste morali ući unutra kako bi mogli da odgovorite na ovakav zadatak.</string>
     <string name="quest_dietType_explanation_kosher">Košer proizvodi se moraju pripremati prema posebnim pravilima, a proizvodi u skladu sa kašrutom su označeni sertifikatom.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Uopšte nema biciklističke staze</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Kao i obično, dodirnite ilustracije sa jedne od strana, obeležite odgovore i uradite to sa druge strane. Obratite pažnju na sve opcije: u nekim slučajevima nije očigledno, poput jednosmernih ulica gde je biciklistima omogućen dvosmerni saobraćaj!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Nema biciklističke infrastrukture</string>
     <string name="quest_construction_completed_at_known_date">Biće završeno do…</string>
     <string name="quest_construction_completion_date_title">Kada će biti završeno?</string>
     <string name="quest_surface_value_clay">Šljaka</string>
@@ -858,7 +847,9 @@ Podaci se osvežavaju svakih %1$s dana, dok se nekorišćeni podaci automatski b
     <string name="quest_bollard_type_foldable2">Sklopiv (sa ili bez ključa)</string>
     <string name="no_search_results">Nema rezultata</string>
     <string name="quest_selection_hint_title">Previše zadataka?</string>
-    <string name="quest_selection_hint_message">Doprinos pre svega treba biti zabavan! Ukoliko ste preopterećeni brojem zadataka, u postavkama uvek možete izmeniti koji se zadaci prikazuju kao i njihov redosled.</string>
+    <string name="quest_selection_hint_message">Doprinos pre svega treba biti zabavan!
+
+Ukoliko ste preopterećeni brojem zadataka, u postavkama uvek možete izmeniti koji se zadaci prikazuju kao i njihov redosled.</string>
     <string name="quest_presets_preset_add">Dodaj grupu zadataka</string>
     <string name="quest_presets_preset_name">Naziv grupe zadataka</string>
     <string name="quest_presets_default_name">Osnovno</string>
@@ -985,9 +976,6 @@ Ili, možete ostaviti napomenu (sa fotografijom)</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Držač za korman</string>
     <string name="quest_bicycle_parking_access_title2">Ko ovde sme da parkira bicikl? Da li je sa ili bez naplate?</string>
     <string name="quest_playground_access_title2">Ko sme da koristi ovo igralište?</string>
-    <string name="quest_sidewalk_answer_none_title">Označavanje da trotoari nedostaju</string>
-    <string name="quest_side_select_interface_explanation">Kliknite na jednu stranu i odaberite najbolji odgovor.
-Uradite isto i za suprotnu stranu ako postoji.</string>
     <string name="ar_measure">Izmeri</string>
     <string name="ar_core_tracking_error_too_steep_angle">Previše strm ugao, odmaknite se</string>
     <string name="default_disabled_msg_no_ar">Za ovaj zadatak Vam treba metar pošto merenje uz pomoć kamere nije podržano na ovom uređaju.</string>
@@ -1188,8 +1176,6 @@ Uradite isto i za suprotnu stranu ako postoji.</string>
     <string name="quest_placeName_no_name_answer">Nema table sa nazivom</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Ta širina izgleda nerealno. Širina se meri od ivičnjaka do ivičnjaka obuhvatajući parking na putu, biciklističke staze i sl.</string>
     <string name="overlay_cycleway">Biciklističke staze</string>
-    <string name="bicycle_boulevard_is_a">To je %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">To nije %1$s</string>
     <string name="bicycle_boulevard">Biciklistički bulevar</string>
     <string name="separate_cycleway_no_or_allowed">Nije namenjeno biciklistima (iako mogu da voze tuda)</string>
     <string name="separate_cycleway_non_segregated">Deljena trasa</string>
@@ -1321,8 +1307,7 @@ Informacije o donaciji možete pronaći na našoj web lokaciji ili stranici proj
     <string name="quest_accessible_for_pedestrians_allowed">Dozvoljeno je.</string>
     <string name="quest_buildingLevels_hint">Za zgrade na padini, spratovi se broje od nivoa zemljišta, sa najniže strane.
 
-Spratom se smatra i kada su prozori u krovu. Stoga, krovovi bez sprata nisu nužno ravni, već jednostavno nisu dovoljno visoki da bi postojalo potkrovlje.
-␣␣␣␣</string>
+Spratom se smatra i kada su prozori u krovu. Stoga, krovovi bez sprata nisu nužno ravni, već jednostavno nisu dovoljno visoki da bi postojalo potkrovlje.</string>
     <string name="quest_parcel_locker_brand">Kog je brenda ovaj paketomat?</string>
     <string name="quest_powerPolesMaterial_is_terminal">Električni vod je prikačen na zgradu</string>
     <string name="quest_cycleway_value_sidewalk_ok">nema, ali je znakom dozvoljena vožnja bicikla po trotoaru</string>
@@ -1444,7 +1429,6 @@ Spratom se smatra i kada su prozori u krovu. Stoga, krovovi bez sprata nisu nuž
     <string name="quest_charging_station_bicycles_title">Da li se ovde mogu puniti i bicikli?</string>
     <string name="quest_charging_station_bicycles_hint">Adapteri za punjenje koriste obične kućne utičnice.</string>
     <string name="quest_tower_access_title">Ko ima pristup ovom tornju? Bilo besplatno ili uz naplatu.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Samo je za bicikle</string>
     <string name="quest_recycling_type_pet_bottles">PET ambalaža</string>
     <string name="quest_maxweight_add_sign">Dodaj znak</string>
     <string name="quest_maxweight_remove_sign">Ukloni znak</string>

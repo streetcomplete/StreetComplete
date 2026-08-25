@@ -69,7 +69,26 @@
     <string name="quest_roofShape_answer_many">Ён мае некалькі розных тыпаў</string>
     <string name="map_btn_zoom_out">Аддаліць</string>
     <string name="map_btn_zoom_in">Наблізіць</string>
-    <string name="privacy_html">&lt;p&gt;Аха, нехта, паклапацiўся аб канфідэнцыяльнасці, выдатна! У мяне для вас добрыя навіны:&lt;/p&gt; &lt;h2&gt;Непасрэдны ўнёсак&lt;/h2&gt; &lt;p&gt; Спачатку вам трэба зразумець, што з дапамогай гэтай праграмы вы робіце актуальныя і наўпроставыя дадаванні OpenStreetMap (OSM).&lt;br/&gt; Усё, што вы дадаяце праз гэту праграму адпраўляецца адразу на карту, паміж гэтай праграмай і інфраструктурай OSM няма пасярэднікаў. &lt;/p&gt; &lt;p&gt; Ананімнае рэдагаванне OpenStreetMap — немагчымае. Усе вашыя праўкі (разам з датай і месцазнаходжаннем) прывязаны да ўліковага запіса ў OSM і бачныя ўсім на сайце openstreetmap.org. З-за таго, што StreetComplete мусіць выкарыстоўвацца толькі для палявых абследаванняў, гэта выкрывае тое, дзе і калі вы выкарыстоўвалі праграму. &lt;/p&gt; &lt;h2&gt;Месцазнаходжаннее&lt;/h2&gt; &lt;p&gt; Праграма не адпраўляе ваша месцазнаходжанне GPS трэццім асобам. Яно выкарыстоўваецца для аўтаматычнага спампоўвання даных вашага наваколля і супастаўлення карты з вашым месцазнаходжаннем. &lt;/p&gt; &lt;h2&gt;Выкарыстанне даных&lt;/h2&gt; &lt;p&gt; Гэта праграма злучаецца з серверамі OSM наўпростава.&lt;br/&gt; Перад адпраўкай вашых правак, праграма звяраецца з &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;простым тэкставым файлам&lt;/a&gt; на маiм серверы, каб пераканацца, што гэтай версіi праграмы не было забаронена запампоўваць праўкі. Гэта дазволіць пазбегнуць магчымага псавання даных у OSM версіямі праграм, у якіх выяўлены крытычныя памылкі.&lt;/p&gt;</string>
+    <string name="privacy_html">&lt;p&gt;Аха, нехта, паклапацiўся аб канфідэнцыяльнасці, выдатна! У мяне для вас добрыя навіны:&lt;/p&gt;
+&lt;h2&gt;Непасрэдны ўнёсак&lt;/h2&gt;
+&lt;p&gt;
+Спачатку вам трэба зразумець, што з дапамогай гэтай праграмы вы робіце актуальныя і наўпроставыя дадаванні OpenStreetMap (OSM).&lt;br/&gt;
+Усё, што вы дадаяце праз гэту праграму адпраўляецца адразу на карту, паміж гэтай праграмай і інфраструктурай OSM няма пасярэднікаў.
+&lt;/p&gt;
+&lt;p&gt;
+Ананімнае рэдагаванне OpenStreetMap — немагчымае. Усе вашыя праўкі (разам з датай і месцазнаходжаннем) прывязаны да ўліковага запіса ў OSM і бачныя ўсім на сайце openstreetmap.org. З-за таго, што StreetComplete мусіць выкарыстоўвацца толькі для палявых абследаванняў, гэта выкрывае тое, дзе і калі вы выкарыстоўвалі праграму.
+&lt;/p&gt;
+
+&lt;h2&gt;Месцазнаходжаннее&lt;/h2&gt;
+&lt;p&gt;
+Праграма не адпраўляе ваша месцазнаходжанне GPS трэццім асобам. Яно выкарыстоўваецца для аўтаматычнага спампоўвання даных вашага наваколля і супастаўлення карты з вашым месцазнаходжаннем.
+&lt;/p&gt;
+
+&lt;h2&gt;Выкарыстанне даных&lt;/h2&gt;
+&lt;p&gt;
+Гэта праграма злучаецца з серверамі OSM наўпростава.&lt;br/&gt;
+Перад адпраўкай вашых правак, праграма звяраецца з &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;простым тэкставым файлам&lt;/a&gt; на маiм серверы, каб пераканацца, што гэтай версіi праграмы не было забаронена запампоўваць праўкі. Гэта дазволіць пазбегнуць магчымага псавання даных у OSM версіямі праграм, у якіх выяўлены крытычныя памылкі.
+&lt;/p&gt;</string>
     <string name="autosync_on">Укл.</string>
     <string name="autosync_only_on_wifi">Толькі праз WiFi</string>
     <string name="autosync_off">Выкл.</string>
@@ -93,8 +112,11 @@
     <string name="quest_sidewalk_title">На гэтай вуліцы ёсць тратуар?</string>
     <string name="quest_address_title">Які нумар у гэтага будынка?</string>
     <string name="store_listing_short_description">Праграма даследчыкаў OpenStreetMap</string>
-    <string name="store_listing_full_description">Дапамажыце палепшыць OpenStreetMap разам з StreetComplete! Гэта праграма шукае адсутныя даныя на карце вашага наваколля і паказвае іх у выглядзе заданняў. Кожнае з іх можна выканаць, адказаўшы на простае пытанне. Уведзеная вамі інфармацыя дадаецца наўпрост у OpenStreetMap ад вашага імя без патрэбы карыстання іншым рэдактарам.</string>
-    <string name="quest_name_answer_noName">Назвы няма…</string>
+    <string name="store_listing_full_description">Дапамажыце палепшыць OpenStreetMap разам з StreetComplete!
+
+Гэта праграма шукае адсутныя даныя на карце вашага наваколля і паказвае іх у выглядзе заданняў. Кожнае з іх можна выканаць, адказаўшы на простае пытанне.
+
+Уведзеная вамі інфармацыя дадаецца наўпрост у OpenStreetMap ад вашага імя без патрэбы карыстання іншым рэдактарам.</string>
     <string name="quest_name_answer_noName_confirmation_title">Сапраўды без назвы?</string>
     <string name="quest_name_noName_confirmation_positive">Так, без назвы</string>
     <string name="quest_openingHours_add_times">Дадайце гадзіны працы</string>
@@ -150,7 +172,8 @@
     <string name="dialog_session_dont_show_again">Не паказваць зноў для гэтай сесіі</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">Гэта абмежаванне хуткасці выглядае неверагодным.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Абмежаванне дакладна не ўстаноўлена?</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">Вы праверылі на абодвух канцах вуліцы? Калі ўздоўж усёй вуліцы няма ніводнага знака, які адносіцца да выбранага ўчастка дарогі, укажыце стандартнае абмежаванне хуткасці.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">Вы праверылі на абодвух канцах вуліцы?
+Калі ўздоўж усёй вуліцы няма ніводнага знака, які адносіцца да выбранага ўчастка дарогі, укажыце стандартнае абмежаванне хуткасці.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Да, знакаў няма</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Калі на скрыжаванні галоўнай вуліцы ёсць такі знак, то іншых знакаў усярэдзіне зон не будзе, бо абмежаванне хуткасці распаўсюджваецца на ўсю зону.</string>
     <string name="quest_sport_softball">Софтбол</string>
@@ -170,9 +193,6 @@
     <string name="underground_recycling_container">Падземны кантэйнер</string>
     <string name="quest_streetName_answer_cantType">Не магу ўвесці сімвалы на знаку</string>
     <string name="quest_streetName_cantType_title">Няма патрэбнай раскладкі?</string>
-    <string name="quest_streetName_cantType_open_settings">Адкрыць налады</string>
-    <string name="quest_streetName_cantType_open_store">Наведайце краму праграм</string>
-    <string name="quest_streetName_cantType_description">Калі ў вас стандартная клавіятура, то хутчэй за ўсё, трэба толькі дадаць раскладку клавіятуры для патрэбнай мовы ў наладах уводу. Інакш, можна спампаваць іншую клавіятуру ў краме праграм. Папулярныя клавіятуры, якія падтрымліваюць шматмоўнасць: Google Gboard, SwiftKey Keyboard і Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(не пазначана)</string>
     <string name="quest_fireHydrant_type_title">Які тут пажарны гідрант?</string>
     <string name="quest_fireHydrant_type_pillar">Надземны</string>
@@ -455,7 +475,6 @@
     <string name="theme_dark">Цёмная</string>
     <string name="theme_system_default">Згодна з наладамі сістэмы</string>
     <string name="action_open_location">Адкрыць месцазнаходжанне ў іншай праграме</string>
-    <string name="map_application_missing">Іншыя картаграфічныя праграмы не ўсталяваны</string>
     <string name="label_housenumber">нумар дома</string>
     <string name="quest_busStopShelter_covered">У прыпынку ёсць падстрэшак</string>
     <string name="quest_ferry_pedestrian_title">Гэты паром перавозіць пешаходаў?</string>
@@ -470,7 +489,6 @@
     <string name="quest_generic_answer_differs_along_the_way">Адрозніваецца на розных участках (неабходна разбіць лінію на часткі)...</string>
     <string name="quest_split_way_description">Калі адказ адрозніваецца на розных участках гэтай дарогі, тады неабходна разбіць яе на часткі. Пасля гэтага можна будзе зноў адказаць на пытанне ўжо для кожнай з частак.
 Разбіваем на часткі?</string>
-    <string name="quest_split_way_tutorial">Націсніце на лінію, каб падзяліць яе ў тым месцы, пачынаючы з якога адказ будзе адрознівацца. Паспрабуйце пазначыць месца як мага дакладней, калі неабходна, павялічце карту.</string>
     <string name="quest_split_way_too_imprecise">Павялічце маштаб</string>
     <string name="quest_split_way_many_splits_confirmation_description">Вы заўсёды можаце падзяліць гэтую лінію на часткі пазней.</string>
     <string name="quest_footwayPartSurface_title">Якое пакрыццё ў пешаходнай дарожкі?</string>
@@ -719,7 +737,8 @@
     <string name="quest_kerb_height_lowered">Крыху вышэй паверхні дарогі</string>
     <string name="quest_kerb_height_raised">Высокi бардзюр</string>
     <string name="quest_kerb_height_lowered_ramp">Рампа для ўезду</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">Укажыце тут колькасць размечаных палос, якія выкарыстоўваюцца для руху аўтамабіляў. Веласіпедныя і вылучаныя парковачныя палосы не ўлічваюцца. Калі нейкія палосы зарэзерваваны для аўтобусаў — пакіньце заўвагу.</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">Укажыце тут колькасць размечаных палос, якія выкарыстоўваюцца для руху аўтамабіляў. Веласіпедныя і вылучаныя парковачныя палосы не ўлічваюцца.
+Калі нейкія палосы зарэзерваваны для аўтобусаў — пакіньце заўвагу.</string>
     <string name="quest_surface_value_rock">Камень</string>
     <string name="quest_parkingType_street_side">Стаянка на абочыне</string>
     <string name="quest_parkingType_lane">Стаянка на праезнай частцы</string>
@@ -730,12 +749,9 @@
     <string name="quest_shop_gone_title">Што зараз тут знаходзіцца замест?</string>
     <string name="quest_shop_gone_vacant_answer">Адсюль з’ехалі…</string>
     <string name="quest_shop_gone_replaced_answer">...</string>
-    <string name="quest_shop_vacant_type_title">Крама з’ехала. Што тут зараз размешчана?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Дадзены тып заданняў адключаны па змаўчанні, бо ён бескарысны ў некаторых рэгіёнах і, хутчэй за ўсё, патрабуецца зайсці ў гэтае месца, каб вырашыць заданні гэтага тыпу.</string>
     <string name="quest_dietType_explanation_kosher">Кашэрныя прадукты павінны быць прыгатаваны па спецыяльных правілах, з маркіроўкай агенцтва па сертыфікацыі кашруту.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Увогуле няма ні веласіпеднай паласы, ні дарожкі</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Як звычайна, краніце краю ілюстрацыі, абярыце правільны адказ і паспрабуйце для іншага боку. Звярніце ўвагу на ўсе даступныя варыянты: некаторыя выпадкі невідавочныя, як аднабаковая дарога, якая дазваляе рухацца раварыстам у абодвух напрамках!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Вылучэнне адсутнасці веладарожкі</string>
     <string name="quest_construction_completed_at_known_date">Будзе скончана...</string>
     <string name="quest_construction_completion_date_title">Калі будаўніцтва будзе завершана?</string>
     <string name="quest_surface_value_clay">Глiна</string>
@@ -834,7 +850,9 @@
     <string name="quest_bollard_type_foldable2">Складны (з ключом або без ключа)</string>
     <string name="no_search_results">Нічога не знойдзена</string>
     <string name="quest_selection_hint_title">Замнога?</string>
-    <string name="quest_selection_hint_message">Уносіць свой уклад у першую чаргу павінна быць весела! Калі вы перагружаны колькасцю заданняў, у наладах вы заўсёды можаце сапраўды наладзіць, якія заданні і ў якім парадку адлюстроўваць.</string>
+    <string name="quest_selection_hint_message">Уносіць свой уклад у першую чаргу павінна быць весела!
+
+Калі вы перагружаны колькасцю заданняў, у наладах вы заўсёды можаце сапраўды наладзіць, якія заданні і ў якім парадку адлюстроўваць.</string>
     <string name="quest_presets_preset_add">Дадаць набор налад</string>
     <string name="quest_presets_preset_name">Назва набора налад</string>
     <string name="quest_presets_default_name">Стандартна</string>
@@ -896,7 +914,9 @@
     <string name="street_standing_prohibited">Стаянка забаронена</string>
     <string name="street_parking_conditional_restrictions">Стаянка / прыпынак умоўна абмежаваны</string>
     <string name="street_parking_no_other_reasons">Няма відавочнага знака / стаянка немагчыма</string>
-    <string name="street_parking_conditional_restrictions_hint">Калі тут можна прыпаркавацца ці ўвогуле спыніцца, спачатку адкажыце, як тыя, каму гэта дазволена, паркуюцца тут. Якія менавіта абмежаванні прымяняюцца, можна ўдакладніць пазней. У якасці альтэрнатывы вы можаце пакінуць нататку (з фатаграфіяй).</string>
+    <string name="street_parking_conditional_restrictions_hint">Калі тут можна прыпаркавацца ці ўвогуле спыніцца, спачатку адкажыце, як тыя, каму гэта дазволена, паркуюцца тут. Якія менавіта абмежаванні прымяняюцца, можна ўдакладніць пазней.
+
+У якасці альтэрнатывы вы можаце пакінуць нататку (з фатаграфіяй).</string>
     <string name="quest_address_house_number_label">Нумар дома:</string>
     <string name="quest_fireHydrant_position_title">Дзе знаходзіцца гэты пажарны гідрант?</string>
     <string name="quest_fireHydrant_position_green">У траве ці грунце</string>
@@ -959,9 +979,6 @@
     <string name="quest_bicycle_parking_type_handlebarholder">Трымальнік руля</string>
     <string name="quest_bicycle_parking_access_title2">Хто можа пакiнуць тут свой ровар? Стаянка можа быць платнай ці бясплатнай.</string>
     <string name="quest_playground_access_title2">Хто можа выкарыстоўваць гэтую гульнявую пляцоўку?</string>
-    <string name="quest_sidewalk_answer_none_title">Адзначыць тратуары як адсутныя</string>
-    <string name="quest_side_select_interface_explanation">Краніце аднаго боку і абярыце патрэбны адказ.
-Зрабіце тое ж самае для іншага боку, калі яна ёсць.</string>
     <string name="ar_measure">Зрабіць вымярэнні</string>
     <string name="ar_core_tracking_error_too_steep_angle">Занадта круты вугал, крыху адыдзіце</string>
     <string name="default_disabled_msg_no_ar">Неабходна ручное вымярэнне для таго каб выконваць гэтае заданне, бо вымярэнне з дапамогай камеры не падтрымліваецца на гэтай прыладзе.</string>
@@ -1164,8 +1181,6 @@
     <string name="quest_placeName_no_name_answer">Тут няма шыльды з назвай</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Такая шырыня не выглядае праўдападобнай. Шырыня павінна быць вымераная ад бардзюра да бардзюра, уключаючы паркавальныя месцы на дарозе, роварную дарожку і г.д.</string>
     <string name="overlay_cycleway">Веладарожкі</string>
-    <string name="bicycle_boulevard_is_a">Гэта %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Гэта не %1$s</string>
     <string name="bicycle_boulevard">Веласіпедны бульвар</string>
     <string name="separate_cycleway_no_or_allowed">Не прызначана для раварыстаў (праезд на ровары можа быць дазволены)</string>
     <string name="separate_cycleway_non_segregated">Вызначаная дарожка агульнага карыстання</string>
@@ -1178,7 +1193,9 @@
     <string name="separate_cycleway_path">Дарожка або сцежка (не прызначана для некага ў прыватнасці)</string>
     <string name="quest_fireHydrant_type_pipe">Труба</string>
     <string name="measure_info_title">Дасягненне аптымальнай дакладнасці</string>
-    <string name="measure_info_html_description">&lt;p&gt;ARCore часам (у пачатку) мяркуе, што зямля крыху ніжэй або вышэй, чым на самай справе. Гэта прыводзіць да памылкі вымярэння, якая павялічваецца, калі вы нахіляе тэлефон да гарызонту.&lt;/p&gt; &lt;p&gt;Усталюйце пачатковую і канчатковую кропкі, паказваючы тэлефон прама ўнізе (каб бачыць белую стрэлку зверху), каб цалкам пазбегнуць гэтай праблемы для гарызантальных вымярэнняў. &lt;/p&gt; &lt;p&gt;Для вертыкальных вымярэнняў вам трэба замест гэтага праверыць, ці не рухаецца стартавая кропка адносна зямлі, гледзячы на яе з розных кірункаў.&lt;/p&gt;</string>
+    <string name="measure_info_html_description">&lt;p&gt;ARCore часам (у пачатку) мяркуе, што зямля крыху ніжэй або вышэй, чым на самай справе. Гэта прыводзіць да памылкі вымярэння, якая павялічваецца, калі вы нахіляе тэлефон да гарызонту.&lt;/p&gt;
+&lt;p&gt;Усталюйце пачатковую і канчатковую кропкі, паказваючы тэлефон прама ўнізе (каб бачыць белую стрэлку зверху), каб цалкам пазбегнуць гэтай праблемы для гарызантальных вымярэнняў. &lt;/p&gt;
+&lt;p&gt;Для вертыкальных вымярэнняў вам трэба замест гэтага праверыць, ці не рухаецца стартавая кропка адносна зямлі, гледзячы на яе з розных кірункаў.&lt;/p&gt;</string>
     <string name="privacy_html_arcore">Гэта праграма выкарыстоўвае &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;службы Google Play для дапоўненай рэальнасці&lt;/a&gt; (ARCore), прадстаўленыя Google у адпаведнасці з &lt;a href="https://policies.google.com/privacy"&gt;палітыкай прыватнасці Google&lt;/a&gt;.</string>
     <string name="default_disabled_msg_seasonal">Гэты тып заданняў стандартна адключаны, бо можа спатрэбіцца паўторная праверка сітуацыі ў пэўны час года.</string>
     <string name="quest_gritBinSeasonal_title">Гэта таксама тут акрамя зiмы?</string>
@@ -1214,8 +1231,13 @@
     <string name="quest_cycleway_value_sidewalk_dual2">дарожка агульнага карыстання ў абодва бакі</string>
     <string name="overlays_tutorial_title">Накладкi</string>
     <string name="overlays_tutorial_intro">Вы знайшлі новы спосаб рэдагавання даных!</string>
-    <string name="overlays_tutorial_display">Кожная накладка адлюстроўвае адзін тып даных, напрыклад, «крамы» або «вулічныя паверхні». Даныя вылучаюцца рознымі колерамі, каб даць вам добры агляд таго, што было запісана да гэтага часу. Адсутныя даныя заўсёды паказваюцца чырвоным колерам.</string>
-    <string name="overlays_tutorial_edit">Дакраніцеся да любых вылучаных даных, каб паказаць або адрэдагаваць іх. Вы таксама можаце падзяліць шляхі або зрабіць справаздачу, як у заданнях. Акрамя таго, некаторыя накладкі дазваляюць дадаваць новыя даныя ў месцы паказанага крыжыка, напрыклад, накладанне адрасоў.</string>
+    <string name="overlays_tutorial_display">Кожная накладка адлюстроўвае адзін тып даных, напрыклад, «крамы» або «вулічныя паверхні».
+
+Даныя вылучаюцца рознымі колерамі, каб даць вам добры агляд таго, што было запісана да гэтага часу.
+Адсутныя даныя заўсёды паказваюцца чырвоным колерам.</string>
+    <string name="overlays_tutorial_edit">Дакраніцеся да любых вылучаных даных, каб паказаць або адрэдагаваць іх. Вы таксама можаце падзяліць шляхі або зрабіць справаздачу, як у заданнях.
+
+Акрамя таго, некаторыя накладкі дазваляюць дадаваць новыя даныя ў месцы паказанага крыжыка, напрыклад, накладанне адрасоў.</string>
     <string name="quest_crossing_kerb_height_title">Якая вышыня бардзюраў у гэтым месцы?</string>
     <string name="quest_maxheight_sign_title">Якая мяжа вышыні тут пазначана?</string>
     <string name="quest_leave_new_note_as_answer">У гэтым выпадку трэба пакінуць нататку, у якой растлумачыць сітуацыю.</string>
@@ -1273,7 +1295,8 @@
     <string name="unknown_object">Невядомы аб’ект</string>
     <string name="quest_leafType_tree_title">У гэтага дрэва ёсць іголкі ці лісце?</string>
     <string name="quest_bbq_fuel_gas">Газ</string>
-    <string name="about_description_donate_google_play3">Дзякуй за цікавасць да падтрымання гэтай праграмы! Вы можаце знайсці інфармацыю пра ахвяраванні на нашым вэб-сайце або на галоўнай старонцы праекта, правілы крамы праграм не дазваляюць нам падаваць спасылку ўнутры праграмы.</string>
+    <string name="about_description_donate_google_play3">Дзякуй за цікавасць да падтрымання гэтай праграмы!
+Вы можаце знайсці інфармацыю пра ахвяраванні на нашым вэб-сайце або на галоўнай старонцы праекта, правілы крамы праграм не дазваляюць нам падаваць спасылку ўнутры праграмы.</string>
     <string name="quest_isAmenityIndoor_outside_covered">Не ўнутры, але накрыта</string>
     <string name="lit_value_unsupported">Канкрэтны стан асвятлення, які нельга абраць у гэтай праграме</string>
     <string name="quest_generic_otherAnswers2">Э-э...</string>
@@ -1287,7 +1310,9 @@
     <string name="info">Больш...</string>
     <string name="quest_accessible_for_pedestrians_prohibited">Гэта забаронена.</string>
     <string name="quest_accessible_for_pedestrians_allowed">Гэта дазволена.</string>
-    <string name="quest_buildingLevels_hint">Для будынкаў на схіле адлік узроўняў пачынаецца ад узроўню зямлі самага ніжняга паверху. Узровень лічыцца да даху, калі яго вокны знаходзяцца ў даху. У далейшым, дах з нулявым узроўнем не абавязкова плоскі, а проста недастаткова высокі для ўсяго ўзроўню.</string>
+    <string name="quest_buildingLevels_hint">Для будынкаў на схіле адлік узроўняў пачынаецца ад узроўню зямлі самага ніжняга паверху.
+
+Узровень лічыцца да даху, калі яго вокны знаходзяцца ў даху. У далейшым, дах з нулявым узроўнем не абавязкова плоскі, а проста недастаткова высокі для ўсяго ўзроўню.</string>
     <string name="quest_parcel_locker_brand">Якая марка гэтага паштовага аўтамата?</string>
     <string name="quest_powerPolesMaterial_is_terminal">Лінія электраперадачы замацавана на будынку</string>
     <string name="quest_cycleway_value_sidewalk_ok">няма, але знак дазваляе рух на ровары па тратуары</string>
@@ -1409,7 +1434,6 @@
     <string name="quest_charging_station_bicycles_title">Ці можна тут зараджаць ровары?</string>
     <string name="quest_charging_station_bicycles_hint">Зарадныя прылады для ровара падключаюцца да звычайных бытавых разетак.</string>
     <string name="quest_tower_access_title">Хто можа атрымаць доступ да гэтай вежы? Гэта можа быць бясплатна або платна.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Гэта толькі для ровараў</string>
     <string name="quest_recycling_type_pet_bottles">Пластыкавыя бутэлькі</string>
     <string name="quest_maxweight_add_sign">Дадаць подпіс</string>
     <string name="quest_maxweight_remove_sign">Выдаліць подпіс</string>
@@ -1450,4 +1474,24 @@
     <string name="quest_collectionTimes_answer_time_spans">У часавым прамежку…</string>
     <string name="quest_collectionTimes_answer_time_points">У канкрэтны час…</string>
     <string name="quest_shower_hot_water_title">Ці ёсць тут цёплая вада?</string>
+    <string name="calendar_new_event_title">Новая падзея OSM у вашай мясцовасці!</string>
+    <string name="pref_title_message_calendar">Новыя падзеі OSM у вашай мясцовасці</string>
+    <string name="quest_ferry_hgv_title">Ці перавозяць па гэтым паромным маршруце цяжкія грузавікі?</string>
+    <string name="dialog_dont_notify_again2">Адпісацца</string>
+    <string name="quest_leave_new_note_track_recording">Запіс трэка будзе далучаны.</string>
+    <string name="quest_leave_new_note_photo_delete">Выдаліць</string>
+    <string name="quest_maxspeed_type_description">Хуткасны рэжым вызначаецца…</string>
+    <string name="quest_maxspeed_answer_advisory_speed_limit2">Знак рэкамендаванага абмежавання хуткасці</string>
+    <string name="quest_maxspeed_answer_roadtype_description">Вуліца…</string>
+    <string name="quest_maxspeed_answer_roadtype_urban">у тэрыторыі забудовы</string>
+    <string name="quest_maxspeed_answer_roadtype_rural">па-за тэрыторыяй забудовы</string>
+    <string name="quest_maxspeed_answer_roadtype_lit">асветленая</string>
+    <string name="quest_maxspeed_answer_roadtype_not_lit">неасветленая</string>
+    <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Не асветлена і ёсць раздзяляльная паласа</string>
+    <string name="quest_board_type_tourism">Турызм (шмат тэм)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Толькі адна размечаная паласа</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Увядзіце тое, што вы шукаеце</string>
+    <string name="link_gomap_description">Прасунуты рэдактар OSM для iOS</string>
+    <string name="link_terraink_description">Стварайце прыгожыя дапасаваныя постары горада і наваколіц</string>
+    <string name="quest_place_vacant_type_title">Гэтае месца пуставала. Што тут цяпер?</string>
 </resources>

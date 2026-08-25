@@ -114,7 +114,6 @@
     <string name="store_listing_full_description">ช่วยปรับปรุงแผนที่ OpenStreetMap ด้วย StreetComplete!
 
 แอปนี้ค้นหาข้อมูลที่ขาดหายและสามารถเพิ่มเติมได้ในบริเวณของคุณ และนำมาแสดงเป็นเครื่องหมายต่าง ๆ บนแผนที่ ข้อมูลเหล่านี้</string>
-    <string name="quest_name_answer_noName">ไม่มีชื่อ…</string>
     <string name="quest_name_answer_noName_confirmation_title">ไม่มีชื่อจริงๆ ใช่ไหม</string>
     <string name="quest_name_noName_confirmation_positive">ใช่ ไม่มีชื่อ</string>
     <string name="quest_openingHours_add_times">เพิ่มเวลาเปิดทำการ</string>
@@ -191,11 +190,6 @@
     <string name="underground_recycling_container">ตู้บรรจุขยะรีไซเคิลใต้ดิน</string>
     <string name="quest_streetName_answer_cantType">พิมพ์ตัวอักษรที่อยู่บนป้ายไม่ได้</string>
     <string name="quest_streetName_cantType_title">ไม่มีรูปแบบแป้นพิมพ์ที่เหมาะสม?</string>
-    <string name="quest_streetName_cantType_open_settings">เปิดการตั้งค่า</string>
-    <string name="quest_streetName_cantType_open_store">เข้าร้านค้าแอป</string>
-    <string name="quest_streetName_cantType_description">ถ้าคุณมีแป้นพิมพ์เริ่มต้น มีโอกาสที่คุณสามารถเปิดใช้งานรูปแบบแป้นพิมพ์สำหรับภาษาที่คุณต้องการในการตั้งค่าวิธีการป้อนข้อมูล
-
-ไม่งั้น คุณสามารถดาว์นโหลดแป้นพิมพ์ตัวอื่นจาก App Store ได้ แป้นพิมพ์ที่รองรับหลายภาษาที่มีการใช้งานแพร่หลายจะมี Google Gboard, SwiftKey Keyboard และ Multiling O Keyboard</string>
     <string name="quest_streetName_menuItem_nolanguage">(ไม่ระบุ)</string>
     <string name="quest_fireHydrant_type_title">นี่คือหัวจ่ายน้ำดับเพลิงชนิดใด?</string>
     <string name="quest_fireHydrant_type_pillar">เสา</string>
@@ -478,7 +472,6 @@
     <string name="theme_dark">มืด</string>
     <string name="theme_system_default">ค่าเริ่มต้นของระบบ</string>
     <string name="action_open_location">เปิดตำแหน่งในแอปอื่น</string>
-    <string name="map_application_missing">ไม่มีโปรแกรมแผนที่อื่นๆในระบบ</string>
     <string name="label_housenumber">หมายเลขบ้าน</string>
     <string name="quest_busStopShelter_covered">มีหลังคาคลุมพื้นที่ป้ายทั้งหมด</string>
     <string name="quest_ferry_pedestrian_title">เรือข้ามฟากนี้ขนส่งคนเดินเท้าหรือไม่?</string>
@@ -493,7 +486,6 @@
     <string name="quest_generic_answer_differs_along_the_way">มีความแตกต่างในทางแต่ละส่วน</string>
     <string name="quest_split_way_description">ถ้ามีความแตกต่างในทางแต่ละส่วน ขั้นตอนแรกให้แบ่งทางออกมาเป็นสองส่วน หลังจากนั้นคุณสามารถแยกตอบคำถามสำหรับแต่ละส่วนได้
 จะแบ่งตอนนี้เลยหรือไม่?</string>
-    <string name="quest_split_way_tutorial">แตะตรงทางเพื่อจะแบ่งทางตรงจุดที่คำตอบแตกต่างกัน พยายามให้แม่นยำที่สุด สามารถซูมเข้าได้ตามปกติ</string>
     <string name="quest_split_way_too_imprecise">โปรดขยายเพิ่มเติม</string>
     <string name="quest_split_way_many_splits_confirmation_description">เหมือนจะมีการแบ่งทางค่อนข้างเยอะ คุณสามารถแบ่งทางได้เพิ่มอีกในภายหลังได้</string>
     <string name="quest_footwayPartSurface_title">พื้นผิวของทางเท้าที่นี่คืออะไร?</string>
@@ -749,12 +741,9 @@
     <string name="quest_shop_gone_title">แล้วตอนนี้ที่นี่มันคืออะไร?</string>
     <string name="quest_shop_gone_vacant_answer">ว่างอยู่</string>
     <string name="quest_shop_gone_replaced_answer">เป็น…</string>
-    <string name="quest_shop_vacant_type_title">ร้านนี้ย้ายออกไปแล้ว มีอะไรอยู่ที่นี่?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">ภารกิจประเภทนี้ถูกปิดการใช้งานโดยค่าเริ่มต้นเพราะมันไม่มีประโยชน์ในบางพื้นที่ และคุณน่าจะต้องเข้าไปในสถานที่เพื่อที่จะตอบคำถามสำหรับภารกิจประเภทนี้</string>
     <string name="quest_dietType_explanation_kosher">ผลิตภัณฑ์โคเชอร์ต้องจัดทำขึ้นตามกฎพิเศษ โดยหน่วยงานรับรองของ kashrut จะทำเครื่องหมายผลิตภัณฑ์ว่าเป็นไปตามข้อกำหนด</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">ไม่มีช่องสำหรับจักรยานเลย</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">ตามปกติแล้ว ให้แตะที่ด้านหนึ่งของภาพประกอบ เลือกคำตอบที่ถูกต้อง และทำเช่นเดียวกันกับอีกด้านหนึ่ง ให้สังเกตุตัวเลือกที่มีทั้งหมด: บางกรณีอาจไม่ชัดเจน เช่น ถนนทางเดียวที่อนุญาตให้นักปั่นจักรยานทั้งสองทิศทาง!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">เลือกว่าไม่มีช่องจักรยาน</string>
     <string name="quest_construction_completed_at_known_date">น่าจะเสร็จในวันที่…</string>
     <string name="quest_construction_completion_date_title">จะเสร็จเมื่อไหร่</string>
     <string name="quest_surface_value_clay">ดินเหนียว</string>
@@ -853,7 +842,9 @@
     <string name="quest_bollard_type_foldable2">พับได้ (ใช้หรือไม่ใช้กุญแจก็ได้)</string>
     <string name="no_search_results">ไม่เจอข้อมูล</string>
     <string name="quest_selection_hint_title">มีภาจกิจเยอะเกินไปรึเปล่า?</string>
-    <string name="quest_selection_hint_message">หัวใจของการช่วยเหลือคือความสนุก! ถ้าคุณรู้สึกท้อแท้กับจำนวนของภารกิจที่เห็น คุณสามารถเลือกให้แสดงประเภทและลำดับของภารกิจได้ในเมนูการตั้งค่า</string>
+    <string name="quest_selection_hint_message">หัวใจของการช่วยเหลือคือความสนุก!
+
+ถ้าคุณรู้สึกท้อแท้กับจำนวนของภารกิจที่เห็น คุณสามารถเลือกให้แสดงประเภทและลำดับของภารกิจได้ในเมนูการตั้งค่า</string>
     <string name="quest_presets_preset_add">เพิ่มค่าที่ตั้งไว้</string>
     <string name="quest_presets_preset_name">ชื่อค่าที่ตั้งไว้</string>
     <string name="quest_presets_default_name">ค่าเริ่มต้น</string>
@@ -980,8 +971,6 @@
     <string name="quest_bicycle_parking_type_handlebarholder">ที่ยึดแฮนด์</string>
     <string name="quest_bicycle_parking_access_title2">ใครสามารถนำจักรยานมาจอดได้บ้าง? มีค่าบริการหรือฟรีก็ได้</string>
     <string name="quest_playground_access_title2">ใครสามารถใช้สนามเด็กเล่นนี้ได้บ้าง?</string>
-    <string name="quest_sidewalk_answer_none_title">เลือกว่าทางเท้าหายไป</string>
-    <string name="quest_side_select_interface_explanation">เลือกตอบทีละฝั่ง</string>
     <string name="ar_measure">วัดระยะ</string>
     <string name="ar_core_tracking_error_too_steep_angle">มุมชันเกินไป ถอยห่างอีกนิด</string>
     <string name="default_disabled_msg_no_ar">คุณต้องใช้เทปวัดระยะสำหรับภารกิจนี้ เนื่องจากอุปกรณ์นี้ไม่สามารถใช้กล้องเพื่อวัดระยะได้</string>
@@ -1183,8 +1172,6 @@
     <string name="quest_placeName_no_name_answer">ไม่มีป้ายชื่อ…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">ความกว้างนี้ดูไม่น่าเชื่อ โปรดจำไว้ว่า ค่านี้ควรเป็นความกว้างจากขอบถนนถึงขอบถนน รวมถึงที่จอดรถริมถนน เลนจักรยาน ฯลฯ</string>
     <string name="overlay_cycleway">เส้นทางจักรยาน</string>
-    <string name="bicycle_boulevard_is_a">เป็น%1$s</string>
-    <string name="bicycle_boulevard_is_not_a">ไม่เป็น%1$s</string>
     <string name="bicycle_boulevard">ถนนจักรยาน</string>
     <string name="separate_cycleway_no_or_allowed">ไม่ได้ระบุสำหรับนักปั่นจักรยาน (การปั่นจักรยานอาจยังได้รับอนุญาต)</string>
     <string name="separate_cycleway_non_segregated">เส้นทางใช้ร่วมกัน</string>

@@ -30,7 +30,7 @@
     <string name="quest_openingHours_chooseWeekdaysTitle">Оберіть дні тижня</string>
     <string name="quest_openingHours_24_7_confirmation">Іншими словами, відчинено цілодобово і без вихідних?</string>
     <string name="quest_noteDiscussion_title">Можете якось прокоментувати цю нотатку?</string>
-    <string name="quest_noteDiscussion_no">Ні, сховати</string>
+    <string name="quest_noteDiscussion_no">Ні, закрити</string>
     <string name="quest_noteDiscussion_anonymous">Анонім</string>
     <string name="confirmation_discard_title">Очистити поле?</string>
     <string name="confirmation_discard_positive">Очистити</string>
@@ -117,7 +117,6 @@
 Цей застосунок знаходить дані неподалік від вас, які можна доповнити та розширити, та показує їх на мапі у вигляді позначок. Кожен із них можна розв'язати, відповівши на просте питання, після чого дані потраплять на сайт.
 
 Інформація, яку ви вказуєте, завантажується на OpenStreetMap від вашого імені, і вам не потрібно використовувати для цього будь-який інший редактор.</string>
-    <string name="quest_name_answer_noName">Без назви…</string>
     <string name="quest_name_answer_noName_confirmation_title">Дійсно без назви?</string>
     <string name="quest_name_noName_confirmation_positive">Так, без назви</string>
     <string name="quest_openingHours_add_times">Вкажіть час роботи</string>
@@ -173,7 +172,8 @@
     <string name="dialog_session_dont_show_again">Не показувати впродовж цієї сесії</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">Це обмеження швидкості виглядає неправдоподібним.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Ви впевнені, що тут немає обмеження швидкості?</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">Ви перевірили всю вулицю до кінця? Якщо на ній ніде немає знаків цього типу, застосуються стандартні обмеження швидкості.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">Ви перевірили всю вулицю до кінця?
+Якщо на ній ніде немає знаків цього типу, застосуються стандартні обмеження швидкості.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Так, знаку немає</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Якщо такий знак є на перехресті головної вулиці, ви не будете бачити окремі знаки у зоні, тому що обмеження швидкості, вказане тут, застосується до всієї зони.</string>
     <string name="quest_sport_softball">Софтбол</string>
@@ -193,11 +193,6 @@
     <string name="underground_recycling_container">Підземний контейнер</string>
     <string name="quest_streetName_answer_cantType">Не можу ввести знаки з таблички</string>
     <string name="quest_streetName_cantType_title">Відсутня розкладка клавіатури?</string>
-    <string name="quest_streetName_cantType_open_settings">Відкрити налаштування</string>
-    <string name="quest_streetName_cantType_open_store">Перейти в магазин застосунків</string>
-    <string name="quest_streetName_cantType_description">Якщо у вас стандартна клавіатура, скоріш за все, ви можете просто ввімкнути потрібну розкладку у налаштуваннях.
-
-Інакше, ви можете завантажити іншу клавіатуру в магазині застосунків. Популярні клавіатури, що підтримують багато мов: Google Gboard, SwiftKey Keyboard та Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(не вказано)</string>
     <string name="quest_fireHydrant_type_title">Якого типу цей пожежний гідрант?</string>
     <string name="quest_fireHydrant_type_pillar">Колонка</string>
@@ -481,7 +476,6 @@
     <string name="theme_dark">Темна</string>
     <string name="theme_system_default">Системна</string>
     <string name="action_open_location">Відкрити локацію в іншому застосунку</string>
-    <string name="map_application_missing">Жодного застосунку для роботи з мапами не встановлено</string>
     <string name="label_housenumber">номер будинку</string>
     <string name="quest_busStopShelter_covered">Зупинка вкрита повністю</string>
     <string name="quest_ferry_pedestrian_title">Чи переправляє цей поромний маршрут пішоходів?</string>
@@ -495,7 +489,6 @@
     <string name="quest_cyclewayPartSurface_title">Яке покриття велодоріжки?</string>
     <string name="quest_generic_answer_differs_along_the_way">Різне вздовж шляху…</string>
     <string name="quest_split_way_description">Якщо воно різне вздовж шляху, то перший крок - розділити шлях. Після цього можна буде визначити покриття для кожної частини окремо. Розділити зараз?</string>
-    <string name="quest_split_way_tutorial">Торкніться дороги, щоб її розділити у точці(ках), де покриття різне. Робіть це якомога точніше, Ви можете наблизитись, якщо треба.</string>
     <string name="quest_split_way_too_imprecise">Будь ласка приблизьте ще</string>
     <string name="quest_split_way_many_splits_confirmation_description">Це досить багато поділів. Ви завжди можете розділити шлях пізніше.</string>
     <string name="quest_footwayPartSurface_title">Яке тут покриття пішохідної доріжки?</string>
@@ -750,12 +743,9 @@
     <string name="quest_shop_gone_title">Що тепер тут?</string>
     <string name="quest_shop_gone_vacant_answer">Це незайнято</string>
     <string name="quest_shop_gone_replaced_answer">На (n)</string>
-    <string name="quest_shop_vacant_type_title">Цей магазин незайнятий. Що тут тепер?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Цей тип квесту за замовчуванням вимкнено, оскільки він не корисний у деяких регіонах, і вам, ймовірно, доведеться ввести місце, щоб мати можливість відповісти на квест цього типу.</string>
     <string name="quest_dietType_explanation_kosher">Кошерна продукція повинна готуватися за спеціальними правилами, а сертифікаційні агенції Кашрут повинні маркувати продукцію відповідно.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Немає велодоріжок</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Як зазвичай, торкніться одного боку картинки, оберіть правильну відповідь і зробіть те ж саме для іншої сторони. Зверніть увагу на всі доступні варіанти: деякі випадки не очевидні, як одностороння дорога, яка дозволяє велосипедистам в обидві сторони!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Оберіть де немає велодоріжки</string>
     <string name="quest_construction_completed_at_known_date">Буде завершено …</string>
     <string name="quest_construction_completion_date_title">Коли буде завершено?</string>
     <string name="quest_surface_value_clay">Глина</string>
@@ -854,7 +844,9 @@
     <string name="quest_bollard_type_foldable2">Складний (з/без ключа)</string>
     <string name="no_search_results">Нічого не знайдено</string>
     <string name="quest_selection_hint_title">Забагато роботи?</string>
-    <string name="quest_selection_hint_message">Робити внесок передусім має бути весело! Якщо ви перевантажені кількістю квестів, завжди можна налаштувати, які квести відображатимуться вам і в якому порядку у налаштуваннях.</string>
+    <string name="quest_selection_hint_message">Робити внесок передусім має бути весело!
+
+Якщо ви перевантажені кількістю квестів, завжди можна налаштувати, які квести відображатимуться вам і в якому порядку у налаштуваннях.</string>
     <string name="quest_presets_preset_add">Додати заготовку</string>
     <string name="quest_presets_preset_name">Назва заготовки</string>
     <string name="quest_presets_default_name">За замовчуванням</string>
@@ -981,8 +973,6 @@
     <string name="quest_bicycle_parking_type_handlebarholder">Тримач керма</string>
     <string name="quest_bicycle_parking_access_title2">Кому дозволено паркувати тут велосипед? Парковка може бути безкоштовною або платною.</string>
     <string name="quest_playground_access_title2">Хто може користуватися цим майданчиком?</string>
-    <string name="quest_sidewalk_answer_none_title">Вибір, що тротуари відсутні</string>
-    <string name="quest_side_select_interface_explanation">Натисніть на одну з сторін та виберіть правильну відповідь. Зробіть це саме для іншої сторони, якщо вона існує.</string>
     <string name="ar_measure">Вимірювання</string>
     <string name="ar_core_tracking_error_too_steep_angle">Занадто гострий кут, відійдіть трохи назад</string>
     <string name="default_disabled_msg_no_ar">Щоб виконати цей квест, вам потрібна рулетка, оскільки вимірювання за допомогою камери не підтримується на цьому пристрої.</string>
@@ -1184,8 +1174,6 @@
     <string name="quest_placeName_no_name_answer">Таблички з назвою немає…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Така ширина виглядає неймовірно. Пам’ятайте, що це має бути ширина від узбіччя до узбіччя, включаючи паркування на вулиці, велосипедні доріжки тощо.</string>
     <string name="overlay_cycleway">Велодоріжки</string>
-    <string name="bicycle_boulevard_is_a">Це %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Це не %1$s</string>
     <string name="bicycle_boulevard">Велобульвар</string>
     <string name="separate_cycleway_no_or_allowed">Не призначено для велосипедистів (їзда на велосипеді все одно може бути дозволена)</string>
     <string name="separate_cycleway_non_segregated">Вело- та пішохідна доріжка без роздільника</string>
@@ -1317,8 +1305,7 @@
     <string name="quest_accessible_for_pedestrians_allowed">Це дозволено.</string>
     <string name="quest_buildingLevels_hint">Для будівель на схилі підрахунок поверхів починається від наземного поверху з найнижчого боку.
 
-Поверх вважається поверхом даху, якщо його вікна знаходяться в даху. Тому дахи з 0 поверхів не обов’язково є плоскими, просто недостатньо високими щоб вмістити поверх.
-␣␣␣␣</string>
+Поверх вважається поверхом даху, якщо його вікна знаходяться в даху. Тому дахи з 0 поверхів не обов’язково є плоскими, просто недостатньо високими щоб вмістити поверх.</string>
     <string name="quest_parcel_locker_brand">Якого бренду цей поштомат?</string>
     <string name="quest_powerPolesMaterial_is_terminal">Лінія електропередач прикріплена до будівлі</string>
     <string name="quest_cycleway_value_sidewalk_ok">немає, але знак дозволяє рух велосипедів на тротуарі</string>
@@ -1441,7 +1428,6 @@
     <string name="quest_charging_station_bicycles_title">Чи можна тут також заряджати велосипеди?</string>
     <string name="quest_charging_station_bicycles_hint">Адаптери живлення для велозарядок підключаються до звичайних розеток.</string>
     <string name="quest_tower_access_title">Хто може відвідати цю вежу? Це може бути безкоштовно або платно.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Це лише для велосипедів</string>
     <string name="quest_recycling_type_pet_bottles">ПЕТ пляшки</string>
     <string name="quest_maxweight_add_sign">Додати знак</string>
     <string name="quest_maxweight_remove_sign">Прибрати знак</string>
@@ -1496,4 +1482,22 @@
     <string name="quest_maxspeed_answer_roadtype_lit">освітлена</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">не освітлена</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Неосвітлена дорога з роздільником</string>
+    <string name="quest_board_type_tourism">Туризм (кілька тем)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Тільки одна розмічена смуга</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Введіть, що ви шукаєте</string>
+    <string name="link_gomap_description">Просунутий редактор OSM для iOS</string>
+    <string name="link_terraink_description">Створюйте красиві постери міста чи району на свій смак</string>
+    <string name="quest_place_vacant_type_title">Це місце було порожнім. Що тут зараз?</string>
+    <string name="about_title">Про %1$s</string>
+    <string name="quest_surface_value_laterite">Латерит</string>
+    <string name="leave_note_quest_context_hint">Не можу відповісти “%1$s”:</string>
+    <string name="leave_note_overlay_context_hint">У контексті накладання “%1$s”:</string>
+    <string name="quest_split_way_tutorial2">Натисніть кнопку, щоб розділити шлях в позиції хрестовини.</string>
+    <string name="quest_leave_new_note_track_delete_title">Ви хочете видалити цей запис треку?</string>
+    <string name="unchanged_tag_action_title">Підтверджено %1$s</string>
+    <string name="quest_streetName_cantType_description2">Якщо ви використовуєте стандартну клавіатуру, ймовірно, ви можете ввімкнути розкладку для потрібної мови в налаштуваннях методу введення.
+
+Інакше ви можете завантажити іншу клавіатуру в магазині застосунків. На Android ви можете спробувати FlorisBoard чи HeliBoard.</string>
+    <string name="bicycle_boulevard_is_a2">Це велобульвар</string>
+    <string name="bicycle_boulevard_is_not_a2">Це не велобульвар</string>
 </resources>

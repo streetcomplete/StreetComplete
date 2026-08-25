@@ -116,7 +116,6 @@ A módosításaid feltöltése előtt azonban az alkalmazás először leellenő
 Ez az alkalmazás hiányos és kiegészíthető adatokat keres a környékeden, és megjeleníti őket térképen. Oldd meg a küldetéseket úgy, hogy ellátogatsz a helyszínre, és egy egyszerű kérdés megválaszolásával frissíted a térképet.
 
 A megadott adatok közvetlenül az OpenStreetMapre kerülnek a nevedben, ehhez nincs szükség más szerkesztőprogramra.</string>
-    <string name="quest_name_answer_noName">Nincs neve…</string>
     <string name="quest_name_answer_noName_confirmation_title">Tényleg nincs neve?</string>
     <string name="quest_name_noName_confirmation_positive">Így van, nincs neve</string>
     <string name="quest_openingHours_add_times">Nyitvatartás hozzáadása</string>
@@ -193,11 +192,6 @@ Ha az utcában az egész kijelölt szakaszon nincs jelzőtábla, akkor az alapé
     <string name="underground_recycling_container">Föld alatti konténer</string>
     <string name="quest_streetName_answer_cantType">Nem tudom begépelni a táblán lévő karaktereket</string>
     <string name="quest_streetName_cantType_title">Hiányzó billentyűzetkiosztás?</string>
-    <string name="quest_streetName_cantType_open_settings">Beállítások megnyitása</string>
-    <string name="quest_streetName_cantType_open_store">Áruház megnyitása</string>
-    <string name="quest_streetName_cantType_description">Ha az alapértelmezett billentyűzetet használod, akkor valószínűleg csak engedélyezned kell a szükséges billentyűzetkiosztást a beviteli mód beállításainál.
-
-Vagy le is tölthetsz egy másik billentyűzetet az áruházból. Népszerű billentyűzetek, amelyek számos nyelvet támogatnak, a Google Gboard, a SwiftKey Keyboard vagy a Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(nincs meghatározva)</string>
     <string name="quest_fireHydrant_type_title">Ez milyen típusú tűzcsap?</string>
     <string name="quest_fireHydrant_type_pillar">Oszlop</string>
@@ -480,7 +474,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="theme_dark">Sötét</string>
     <string name="theme_system_default">Rendszer alapértelmezett</string>
     <string name="action_open_location">Hely megnyitása egy másik alkalmazásban</string>
-    <string name="map_application_missing">Nincs telepítve másik térképalkalmazás</string>
     <string name="label_housenumber">házszám</string>
     <string name="quest_busStopShelter_covered">Az egész megálló fedett</string>
     <string name="quest_ferry_pedestrian_title">Ez a komp szállít gyalogosokat?</string>
@@ -494,7 +487,6 @@ A „részben” azt jelenti, hogy kerekesszékkel ugyan be lehet menni és lehe
     <string name="quest_cyclewayPartSurface_title">Milyen felületű itt a kerékpárút?</string>
     <string name="quest_generic_answer_differs_along_the_way">Az út mentén változik…</string>
     <string name="quest_split_way_description">Ha az út mentén változik, akkor először fel kell osztani az utat. Utána a küldetést meg tudod oldani az egyes darabokra külön-külön. Felosztod most?</string>
-    <string name="quest_split_way_tutorial">Koppints az út azon pontja(i)ra, ahol a válasz megváltozik. Közelíts rá, és próbálj meg a lehető legpontosabb lenni.</string>
     <string name="quest_split_way_too_imprecise">Közelíts rá jobban</string>
     <string name="quest_split_way_many_splits_confirmation_description">Ez jó pár új darab. Később is ugyanúgy tovább oszthatod az utat.</string>
     <string name="quest_footwayPartSurface_title">Milyen felületű itt a gyalogút?</string>
@@ -755,14 +747,9 @@ Ha vannak buszok számára fenntartott sávok is, akkor inkább írj jegyzetet.<
     <string name="quest_shop_gone_title">Mi található itt helyette?</string>
     <string name="quest_shop_gone_vacant_answer">Üresen áll…</string>
     <string name="quest_shop_gone_replaced_answer">Ez egy…</string>
-    <string name="quest_shop_vacant_type_title">Ez az üzlet üresen állt. Mi található most itt?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Ez a küldetéstípus alapértelmezés szerint le van tiltva, mert egyes régiókban kevésbé hasznos, valamint a küldetés megoldásához jó eséllyel be kell menni az adott helyre.</string>
     <string name="quest_dietType_explanation_kosher">A kóser termékeknek különleges szabályok szerint kell készülniük, valamint rendelkezniük kell a megfelelő intézmények hitelesítésével.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nincs kerékpárút vagy kerékpársáv egyáltalán</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Érintsd meg az ábra egyik oldalát, válaszd ki a megfelelő választ, majd tedd ugyanezt a másik oldalon is.
-
-Vedd figyelembe az összes lehetséges választ: néhány esetben nem egyértelmű, például olyan egyirányú úton, amelyen a kerékpárosok mindkét irányban közlekedhetnek.</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">„Nincs kerékpárút” válasz</string>
     <string name="quest_construction_completed_at_known_date">Ekkor lesz készen…</string>
     <string name="quest_construction_completion_date_title">Mikor lesz ez készen?</string>
     <string name="quest_surface_value_clay">Salak</string>
@@ -990,9 +977,6 @@ Másik megoldásként írhatsz egy jegyzetet (fényképpel).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Kormánytartó</string>
     <string name="quest_bicycle_parking_access_title2">Ki parkolhat itt a kerékpárjával? A parkolás lehet ingyenes vagy fizetős.</string>
     <string name="quest_playground_access_title2">Ki használhatja a játszóteret?</string>
-    <string name="quest_sidewalk_answer_none_title">Hiányzó gyalogjárda</string>
-    <string name="quest_side_select_interface_explanation">Koppints az egyik oldalra, és válaszd a megfelelő választ.
-Tedd meg a másiknál is, ha van olyan.</string>
     <string name="ar_measure">Mérés</string>
     <string name="ar_core_tracking_error_too_steep_angle">Túl meredek a szög, állj egy kicsit távolabb</string>
     <string name="default_disabled_msg_no_ar">A küldetés megoldásához mérőszalagra lesz szükséged, mert ez az eszköz nem támogatja a kamerás mérést.</string>
@@ -1194,8 +1178,6 @@ Elmozdítod?</string>
     <string name="quest_placeName_no_name_answer">Nincs névtábla…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Ez a szélesség valószínűtlennek tűnik. Ne feledd, ezt a szélességet járdaszegélytől járdaszegélyig kell mérni, beleértve az úttesten parkolást, a kerékpársávokat stb. is.</string>
     <string name="overlay_cycleway">Kerékpárutak</string>
-    <string name="bicycle_boulevard_is_a">Ez egy %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Ez nem %1$s</string>
     <string name="bicycle_boulevard">Kerékpáros utca</string>
     <string name="separate_cycleway_no_or_allowed">Gyalogút, nincs kerékpározással kapcsolatos tábla  (hogy engedélyezett-e, az a jogszabályoktól függ)</string>
     <string name="separate_cycleway_non_segregated">Nem elválasztott gyalog- és kerékpárút</string>
@@ -1450,7 +1432,6 @@ Egy szint akkor számít tetőszintnek, ha az ablakai a tetőben vannak. A nulla
     <string name="quest_charging_station_bicycles_title">Kerékpárt is lehet itt tölteni?</string>
     <string name="quest_charging_station_bicycles_hint">A kerékpártöltő adapterek normál háztartási aljzatokba csatlakoztathatók.</string>
     <string name="quest_tower_access_title">Ki férhet hozzá ehhez a toronyhoz? Lehet ingyenes vagy fizetős.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Csak kerékpárok számára</string>
     <string name="quest_recycling_type_pet_bottles">PET-palackok</string>
     <string name="quest_maxweight_add_sign">A tábla hozzáadása</string>
     <string name="quest_maxweight_remove_sign">A tábla eltávolítása</string>

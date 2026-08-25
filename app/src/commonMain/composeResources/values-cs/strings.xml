@@ -117,7 +117,6 @@ Nicméně před nahráním vašich změn aplikace zkontroluje pomocí &lt;a href
 Tato aplikace vyhledá data ve vašem okolí, která nejsou kompletní a která lze rozšířit, a zobrazí je na mapě jako „úkoly“. Každý z těchto „úkolů“ lze snadno vyřešit na místě odpovědí na jednoduchou otázku a doplnit tak informace do mapy.
 
 Vámi vložené informace jsou potom vaším jménem přímo přidány do OpenStreetMap, aniž byste museli použít další editor.</string>
-    <string name="quest_name_answer_noName">Nemá žádný název…</string>
     <string name="quest_name_answer_noName_confirmation_title">Opravdu nemá název?</string>
     <string name="quest_name_noName_confirmation_positive">Ano, opravdu je bez názvu</string>
     <string name="quest_openingHours_add_times">Přidat otevírací dobu</string>
@@ -194,12 +193,6 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
     <string name="underground_recycling_container">Podzemní kontejner</string>
     <string name="quest_streetName_answer_cantType">Nedokáži napsat znak, který je na ceduli</string>
     <string name="quest_streetName_cantType_title">Chybí vám na klávesnici znaky?</string>
-    <string name="quest_streetName_cantType_open_settings">Otevřít nastavení</string>
-    <string name="quest_streetName_cantType_open_store">Otevřít obchod Google Play</string>
-    <string name="quest_streetName_cantType_description">Pokud používáte výchozí klávesnici, je možné, že bude stačit v nastavení pouze povolit znakovou sadu jazyka, který potřebujete pro psaní.
-
-Jinak také můžete stáhnout v obchodě s aplikacemi jinou klávesnici.
-Mezi populární klávesnice, které podporují spoustu jazyků patří Google Gboard, SwiftKey Keyboard a Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(neurčeno)</string>
     <string name="quest_fireHydrant_type_title">Jaký druh požárního hydrantu to je?</string>
     <string name="quest_fireHydrant_type_pillar">Sloupek</string>
@@ -484,7 +477,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="theme_dark">Tmavý</string>
     <string name="theme_system_default">Výchozí vzhled systému</string>
     <string name="action_open_location">Otevřít lokaci v jiné aplikaci</string>
-    <string name="map_application_missing">Nemáte nainstalovanou žádnou jinou mapovou aplikaci</string>
     <string name="label_housenumber">číslo domu</string>
     <string name="quest_busStopShelter_covered">Celá zastávka je zastřešená</string>
     <string name="quest_ferry_pedestrian_title">Převáží chodce?</string>
@@ -499,7 +491,6 @@ Mezi populární klávesnice, které podporují spoustu jazyků patří Google G
     <string name="quest_generic_answer_differs_along_the_way">V různých částech různý…</string>
     <string name="quest_split_way_description">Pokud má cesta v různých částech různé vlastnosti, je dobré ji nejdříve rozdělit a pak odpovědět na samostatné úkoly v každé její části.
 Chcete cestu rozdělit?</string>
-    <string name="quest_split_way_tutorial">Klepněte na cestu pro její rozdělení v bodě(-ech), kde se odpovědi liší. Pokuste se být co nejpřesnější. Jako obvykle můžete použít zoom.</string>
     <string name="quest_split_way_too_imprecise">Zazoomujte více, prosím</string>
     <string name="quest_split_way_many_splits_confirmation_description">Tohle je docela dost rozdělení. Cestu můžete vždycky rozdělit později.</string>
     <string name="quest_footwayPartSurface_title">Jaký je povrch této stezky pro chodce/chodníku?</string>
@@ -758,12 +749,9 @@ Pokud jsou tu pruhy pro autobusy, napište to prosím do poznámky.</string>
     <string name="quest_shop_gone_title">Co je tu místo toho?</string>
     <string name="quest_shop_gone_vacant_answer">Je to prázdné…</string>
     <string name="quest_shop_gone_replaced_answer">…</string>
-    <string name="quest_shop_vacant_type_title">Tento obchod byl prázdný. Co tu je nyní?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Tento typ úkolů je ve výchozím nastavení zakázán, protože v některých regionech nemá použití, a protože pravděpodobně budete muset na místo vstoupit, abyste na otázku mohli odpovědět.</string>
     <string name="quest_dietType_explanation_kosher">Košer produkty se musí připravovat podle zvláštních pravidel s označením kašrut od certifikační agentury.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Není tu žádná cyklostezka</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Jako obvykle ťukněte na jednu stranu ilustrace, vyberte správnou odpověď a udělejte to samo na druhé straně. Všimněte si všech možností: v některých případech nemusí být zřejmé: např. jednosměrná cesta, na které můžou cyklisté jezdit v obou směrech!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Vybíráte, že tu není žádná cyklostezka</string>
     <string name="quest_construction_completed_at_known_date">Stavba bude dokončena…</string>
     <string name="quest_construction_completion_date_title">Kdy to bude stavba dokončena?</string>
     <string name="quest_surface_value_clay">Antuka</string>
@@ -992,9 +980,6 @@ Také můžete napsat poznámku (s fotografií)</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Držák na řidítka</string>
     <string name="quest_bicycle_parking_access_title2">Kdo tu může zaparkovat kolo? Parkování může být zdarma, nebo placené.</string>
     <string name="quest_playground_access_title2">Kdo může používat toto hřiště?</string>
-    <string name="quest_sidewalk_answer_none_title">Chybí výběr těchto chodníků</string>
-    <string name="quest_side_select_interface_explanation">Vyberte jednu stranu a pak správnou odpověď.
-Totéž udělejte i pro druhou stranu, pokud je přítomna.</string>
     <string name="ar_measure">Měření</string>
     <string name="ar_core_tracking_error_too_steep_angle">Příliš velký úhel, trochu ustupte</string>
     <string name="default_disabled_msg_no_ar">Pro vyřešení tohoto úkolu potřebujete svinovací metr, protože měření pomocí fotoaparátu není na tomto zařízení podporováno.</string>
@@ -1095,7 +1080,7 @@ Totéž udělejte i pro druhou stranu, pokud je přítomna.</string>
     <string name="quest_building_entrance_shop">Vstup do obchodu</string>
     <string name="quest_building_entrance_yes">Jiný druh vchodu</string>
     <string name="quest_building_entrance_dead_end">Slepá ulička, žádný vchod</string>
-    <string name="ar_core_tracking_hint_tap_to_measure">Dotkněte se pro zahájení měření</string>
+    <string name="ar_core_tracking_hint_tap_to_measure">Klepněte pro zahájení měření</string>
     <string name="quest_air_pump_bicycle_shop_title">Je tu veřejně přístupná pumpička (alespoň pokud je otevřeno)?</string>
     <string name="action_overlays">Překryvné vrstvy</string>
     <string name="split_way">Rozdělit cestu</string>
@@ -1196,8 +1181,6 @@ Chcete ho posunout?</string>
     <string name="quest_placeName_no_name_answer">Není tu cedule s názvem</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Tato šířka se zdá být nemožná. Nezapomeňte, že má být od obrubníku k obrubníku, včetně parkování na ulici, cyklopruhů apod.</string>
     <string name="overlay_cycleway">Cyklostezky</string>
-    <string name="bicycle_boulevard_is_a">Je to %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Není to %1$s</string>
     <string name="bicycle_boulevard">Cyklobulvár</string>
     <string name="separate_cycleway_no_or_allowed">Není určeno pro cyklisty (jízda na kole může být stále povolena)</string>
     <string name="separate_cycleway_non_segregated">Stezka pro chodce a cyklisty</string>
@@ -1206,7 +1189,7 @@ Chcete ho posunout?</string>
     <string name="separate_cycleway_with_sidewalk">Stezka pro cyklisty (oddělená od chodníku obrubníkem)</string>
     <string name="cycleway_reverse_direction">Opačný směr cesty pro cyklisty</string>
     <string name="cycleway_reverse_direction_warning">Cesta pro cyklisty v opačném směru je extrémně vzácná.</string>
-    <string name="cycleway_reverse_direction_toast">Dotkněte se strany, kterou chcete obrátit</string>
+    <string name="cycleway_reverse_direction_toast">Klepněte na stranu, kterou chcete obrátit</string>
     <string name="separate_cycleway_path">Stezka nebo dráha</string>
     <string name="quest_fireHydrant_type_pipe">Zakrytá trubka</string>
     <string name="measure_info_title">Dosažení optimální přesnosti</string>
@@ -1252,7 +1235,7 @@ Chcete ho posunout?</string>
 
 Data jsou zvýrazněna různými barvami, abyste měli dobrý přehled, co už bylo zaznamenáno.
 Chybějící data se vždy zobrazují červeně.</string>
-    <string name="overlays_tutorial_edit">Dotkněte se kterýchkoliv zvýrazněných dat k jejich úpravě. Můžete také dělit cesty nebo vkládat poznámky, tak jako u úkolů.
+    <string name="overlays_tutorial_edit">Klepněte na kterákoliv zvýrazněná data k jejich úpravě. Můžete také dělit cesty nebo vkládat poznámky, tak jako u úkolů.
 
 Některé překryvné vrstvy navíc umožňují přidávat nová data na pozici zobrazeného kříže, například v případě vrstvy adres.</string>
     <string name="quest_crossing_kerb_height_title">Jaká je výška obrubníků u tohoto přechodu?</string>
@@ -1329,8 +1312,7 @@ Informace o dárcovství najdete na našem webu nebo na stránce projektu, Googl
     <string name="quest_accessible_for_pedestrians_allowed">Je povolen.</string>
     <string name="quest_buildingLevels_hint">U budov na svahu začíná počítání podlaží od přízemí na nejnižší straně.
 
-Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Tedy střechy s nulovým počtem podlaží nemusejí být ploché, stačí, že nejsou dost vysoké pro celé podlaží.
-    </string>
+Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Tedy střechy s nulovým počtem podlaží nemusejí být ploché, stačí, že nejsou dost vysoké pro celé podlaží.</string>
     <string name="quest_parcel_locker_brand">Jaká je značka tohoto boxu na balíčky?</string>
     <string name="quest_powerPolesMaterial_is_terminal">Elektrické vedení je zakončeno na budově</string>
     <string name="quest_cycleway_value_sidewalk_ok">není, ale značka povoluje jízdu po chodníku</string>
@@ -1452,7 +1434,6 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_charging_station_bicycles_title">Lze tu nabíjet i jízdní kola?</string>
     <string name="quest_charging_station_bicycles_hint">Adaptéry pro nabíjení jízdních kol se zapojují do běžné zásuvky jako v domácnosti.</string>
     <string name="quest_tower_access_title">Kdo má přístup na tuto věž? Může být zdarma nebo placený.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Je to jen pro jízdní kola</string>
     <string name="quest_recycling_type_pet_bottles">Láhve PET</string>
     <string name="quest_maxweight_add_sign">Přidat značku</string>
     <string name="quest_maxweight_remove_sign">Odebrat značku</string>
@@ -1507,4 +1488,22 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_maxspeed_answer_roadtype_lit">osvětlená</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">neosvětlená</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">neosvětlená a s oddělenými směry</string>
+    <string name="quest_board_type_tourism">Turismus (více témat)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Jen jeden značený pruh</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Napište, co hledáte</string>
+    <string name="link_gomap_description">Pokročilý editor OSM pro iOS</string>
+    <string name="link_terraink_description">Vytvářejte krásné plakáty města nebo čtvrti podle vašeho přání</string>
+    <string name="quest_place_vacant_type_title">Toto místo bylo prázdné. Co je tu teď?</string>
+    <string name="about_title">O %1$s</string>
+    <string name="quest_surface_value_laterite">Laterit</string>
+    <string name="leave_note_quest_context_hint">Nelze zodpovědět „%1$s“:</string>
+    <string name="leave_note_overlay_context_hint">V kontextu překryvné vrstvy „%1$s“:</string>
+    <string name="quest_split_way_tutorial2">Klepnutím na tlačítko rozdělíte cestu v pozici zaměřovacího kříže.</string>
+    <string name="quest_leave_new_note_track_delete_title">Opravdu chcete smazat tento záznam trasy?</string>
+    <string name="unchanged_tag_action_title">Potvrzeno %1$s</string>
+    <string name="quest_streetName_cantType_description2">Používáte-li výchozí klávesnici, je šance, že prostě v nastavení vstupních metod povolíte rozložení klávesnice pro jazyk, který potřebujete.
+
+Jinak si můžete v obchodě s aplikacemi stáhnout jinou klávesnici. Na Androidu můžete chtít vyzkoušet FlorisBoard nebo HeliBoard.</string>
+    <string name="bicycle_boulevard_is_a2">Je to cyklobulvár</string>
+    <string name="bicycle_boulevard_is_not_a2">Není to cyklobulvár</string>
 </resources>

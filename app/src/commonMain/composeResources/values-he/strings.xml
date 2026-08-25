@@ -13,7 +13,7 @@
     <string name="quest_generic_otherAnswers">תשובות אחרות…</string>
     <string name="quest_generic_answer_notApplicable">לא ניתן לומר…</string>
     <string name="quest_generic_confirmation_title">בטוח?</string>
-    <string name="quest_generic_confirmation_yes">כן</string>
+    <string name="quest_generic_confirmation_yes">כן, אני בטוח</string>
     <string name="quest_generic_confirmation_no">אני אבדוק</string>
     <string name="quest_leave_new_note_title">להשאיר הערה במקום?</string>
     <string name="quest_leave_new_note_description">אפשר להשאיר הערה במיקום זה כדי שממפים אחרים יוכלו להגיב ולפתור את הסוגיה, או לחלופין להסתיר את המשימה רק עבורך</string>
@@ -116,9 +116,8 @@
 אפליקציה זו מוצאת מידע חסר ובר-הרחבה בקרבתך ומציגה אותו על המפה בצורת סמנים. כל אחד מאלו ניתן לפתרון על ידי מענה על שאלה פשוטה כדי להשלים את המידע במקום.
 
 המידע שאתם מזינים נוסף ישירות ל-OpenStreetMap בשמכם, ללא צורך להשתמש בכלי עריכה נוסף.</string>
-    <string name="quest_name_answer_noName">אין שם…</string>
     <string name="quest_name_answer_noName_confirmation_title">בטוח שאין שם?</string>
-    <string name="quest_name_noName_confirmation_positive">בטוח, אין שם</string>
+    <string name="quest_name_noName_confirmation_positive">כן, אין שם</string>
     <string name="quest_openingHours_add_times">הוספת שעות פתיחה</string>
     <string name="crash_message">תוכל/י בבקשה לשלוח את פירוט הבעיה למפתח?</string>
     <string name="crash_title">אוי לא, StreetComplete קרסה פעם קודמת!</string>
@@ -193,11 +192,6 @@
     <string name="underground_recycling_container">מיכל תת-קרקעי</string>
     <string name="quest_streetName_answer_cantType">לא יכול/ה להקליד את התווים שבשלט</string>
     <string name="quest_streetName_cantType_title">חסרה פריסת מקלדת?</string>
-    <string name="quest_streetName_cantType_open_settings">פתיחת הגדרות</string>
-    <string name="quest_streetName_cantType_open_store">לחנות האפליקציות</string>
-    <string name="quest_streetName_cantType_description">ברוב המקלדות יש אפשרות להוסיף פריסות מקלדת של השפה הרצויה בהגדרות מקלדת ושיטת קלט.
-
-אחרת, אפשר להוריד מקלדת נוספת מחנות האפליקציות.</string>
     <string name="quest_streetName_menuItem_nolanguage">(לא צוין)</string>
     <string name="quest_fireHydrant_type_title">איזה סוג של ברז כיבוי זה?</string>
     <string name="quest_fireHydrant_type_pillar">עמוד</string>
@@ -358,7 +352,7 @@
     <string name="quest_construction_footway_title">האם שביל הולכי רגל זה הושלם?</string>
     <string name="quest_construction_generic_title">האם שביל זה הושלם?</string>
     <string name="quest_construction_building_title">האם בניית בנין זה הושלמה?</string>
-    <string name="questList_disabled_in_country">לעולם לא מוצג ב-%1$s</string>
+    <string name="questList_disabled_in_country">לעולם לא מוצג ב%1$s</string>
     <string name="quest_select_hint_most_specific">יש לבחור את הפריט המתאים ביותר:</string>
     <string name="quest_generic_item_confirmation">בטוח שלא ניתן לקבוע באופן מפורט יותר?</string>
     <string name="quest_generic_hasFeature_no_leave_note">לא (נא להשאיר הערה)</string>
@@ -403,7 +397,7 @@
     <string name="quest_buildingType_kindergarten">מבנה גן ילדים</string>
     <string name="quest_buildingType_school">מבנה בית ספר</string>
     <string name="quest_buildingType_college">מבנה מכללה</string>
-    <string name="quest_buildingType_hospital">מבנה בית חולילם</string>
+    <string name="quest_buildingType_hospital">מבנה בית חולים</string>
     <string name="quest_buildingType_stadium">אצטדיון</string>
     <string name="quest_buildingType_train_station">תחנת רכבת</string>
     <string name="quest_buildingType_transportation">מבנה תחבורה ציבורית</string>
@@ -476,7 +470,6 @@
     <string name="theme_dark">כהה</string>
     <string name="theme_system_default">ברירת המחדל של המערכת</string>
     <string name="action_open_location">פתיחת המיקום באפליקציה אחרת</string>
-    <string name="map_application_missing">לא מותקנת אפליקציית מפות אחרת</string>
     <string name="label_housenumber">מספר בית</string>
     <string name="quest_busStopShelter_covered">כל התחנה מקורה</string>
     <string name="quest_ferry_pedestrian_title">האם המעבורת מעבירה הולכי רגל?</string>
@@ -490,7 +483,6 @@
     <string name="quest_cyclewayPartSurface_title">מה סוג המשטח של שביל האופניים כאן?</string>
     <string name="quest_generic_answer_differs_along_the_way">משתנה לאורך הדרך...</string>
     <string name="quest_split_way_description">אם זה משתנה לאורך הדרך, הצעד הראשון הוא לפצל את הדרך. לאחר מכן, ניתן יהיה להשיב לכל חלק בנפרד. לפצל את הדרך עכשיו?</string>
-    <string name="quest_split_way_tutorial">יש להקיש על הדרך כדי לפצל אותה בנקודה (או נקודות) שבהן התשובה משתנה. נא להשתמש בפונקציית הזום ולנסות להיות מדויקים ככל האפשר.</string>
     <string name="quest_split_way_too_imprecise">נא להיכנס יותר בזום</string>
     <string name="quest_split_way_many_splits_confirmation_description">אלו פיצולים לא מעטים. תמיד אפשר להמשיך ולפצל את הדרך מאוחר יותר.</string>
     <string name="quest_footwayPartSurface_title">מה סוג המשטח של שביל הולכי הרגל כאן?</string>
@@ -735,14 +727,9 @@
     <string name="quest_shop_gone_title">מה קיים כאן במקום?</string>
     <string name="quest_shop_gone_vacant_answer">זה ריק...</string>
     <string name="quest_shop_gone_replaced_answer">...</string>
-    <string name="quest_shop_vacant_type_title">החנות הזאת פונתה. מה יש כאן עכשיו?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">סוג משימת המחקר נוטרלה כברירת מחדל מכיוון שהיא לא שימושית בחלק מהאזורים וככל הנראה יהיה צורך להיכנס למקום בכדי לענות על משימת מחקר מסוג זה.</string>
     <string name="quest_dietType_explanation_kosher">מוצרים כשרים נדרשים להיות מיוצרים על פי חוקים מיוחדים, עם ציון של תעודת כשרות מטעם גורמים מוסמכים.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">אין נתיב או שביל אופניים כלל</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">כמו בדרך כלל, יש להקיש על צד אחד של האיור, לבחור את התשובה המתאימה ואז לחזור על הפעולה עבור הצד השני.
-
-נא לשים לב לכל האופציות האפשריות: חלק מהמקרים אינם מובנים מאליהם, כמו כביש חד-סטרי שבו מותרת תנועת רוכבי אופניים בשני הכיוונים!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">בחירה שלא קיים נתיב או שביל אופניים</string>
     <string name="quest_construction_completed_at_known_date">יסתיים בתאריך...</string>
     <string name="quest_construction_completion_date_title">מתי זה יסתיים?</string>
     <string name="quest_surface_value_clay">חימר</string>
@@ -753,11 +740,11 @@
     <string name="quest_drinking_water_not_potable_signed">לא בטוח לשתייה (עם שילוט)</string>
     <string name="quest_buildingType_fire_station">תחנת כיבוי אש</string>
     <string name="quest_recycling_type_beverage_cartons">קרטוני משקה בלבד</string>
-    <string name="team_mode">כניסה למוד קבוצתי</string>
-    <string name="team_mode_exit">יציאה ממוד קבוצתי</string>
+    <string name="team_mode">כניסה למצב קבוצתי</string>
+    <string name="team_mode_exit">יציאה ממצב קבוצתי</string>
     <string name="team_mode_description">כאשר מבצעים מיפוי של אותו אזור ביחד כקבוצה, ניתן להיכנס למוד קבוצתי על מנת לחלק את משימות המחקר בין חברי הקבוצה.</string>
-    <string name="team_mode_active">מוד קבוצתי פעיל</string>
-    <string name="team_mode_deactivated">מוד קבוצתי לא פעיל</string>
+    <string name="team_mode_active">מצב קבוצתי פעיל</string>
+    <string name="team_mode_deactivated">מצב קבוצתי לא פעיל</string>
     <string name="undo_confirm_title2">לבטל את השינוי הזה?</string>
     <string name="toast_undo_unavailable">עריכה זו כבר סונכרנה ולא ניתן לבצע לה ביטול</string>
     <string name="quest_cycleway_value_separate">מוצג בנפרד על המפה</string>
@@ -817,6 +804,7 @@
     <string name="quest_religion_animist">אנימיסטי</string>
     <string name="quest_construction_steps_title">האם מדרגות אלו הושלמו?</string>
     <string name="pref_quests_deselect_all">לבטל את סימון כל המשימות?</string>
+    <string name="quest_buildingType_boathouse">בית סירות</string>
     <string name="quest_buildingType_grandstand">יציע</string>
     <string name="action_search">חיפוש</string>
     <string name="team_mode_team_size_label2">כמה אנשים עוסקים במיפוי? יש להזין מספר זהה לטלפון של כולם.</string>
@@ -827,7 +815,9 @@
     <string name="quest_bollard_type_foldable2">ניתן לקיפול (אם או ללא מפתח)</string>
     <string name="no_search_results">לא נמצא דבר</string>
     <string name="quest_selection_hint_title">יותר מידי לעשות?</string>
-    <string name="quest_selection_hint_message">לתרום אמור להיות כיף! אם את/ה המום/ה מכמות משימות המחקר, תמיד ניתן לכוון אילו משימות מחקר יוצגו לך ובריזה סדר בהגדרות.</string>
+    <string name="quest_selection_hint_message">לתרום אמור להיות כיף!
+
+אם את/ה המום/ה מכמות משימות המחקר, תמיד ניתן לכוון אילו משימות מחקר יוצגו לך ובריזה סדר בהגדרות.</string>
     <string name="quest_presets_default_name">ברירת מחדל</string>
     <string name="quest_presets_selected">נבחר</string>
     <string name="notification_syncing">מסנכרן מידע...</string>
@@ -930,8 +920,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">המצלמה בשימוש על ידי יישום אחר</string>
     <string name="quest_bicycle_parking_access_title2">למי מותר להחנות אופניים כאן? החנייה יכול להיות בחינם או בתשלום.</string>
     <string name="quest_playground_access_title2">למי מותר להשתמש בגן המשחקים הזה?</string>
-    <string name="quest_side_select_interface_explanation">נא להקיש על צד אחד ולבחור את התשובה המתאימה. 
-נא לחזור על הפעולה לצד השני אם קיים.</string>
     <string name="ar_measure">מדידה</string>
     <string name="ar_core_tracking_error_too_steep_angle">זווית תלולה מידי, נא לזוז מעט אחורה</string>
     <string name="default_disabled_msg_no_ar">נדרש סרט מדידה כדי לפתור שאלת מחקר זו מכיוון שמדידה באמצעות מצלמה איננה נתמכת במכשיר זה.</string>
@@ -1111,8 +1099,6 @@
     <string name="quest_placeName_no_name_answer">אין שלט שם...</string>
     <string name="quest_road_width_unusualInput_confirmation_description">הרוחב נראה לא סביר. נא לזכור, זה אמור להיות הרוחב ממדרכה למדרכה, כולל חנייה ברחוב, נתיבי אופניים וכו'.</string>
     <string name="overlay_cycleway">נתיבי אופניים</string>
-    <string name="bicycle_boulevard_is_a">זה %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">זה לא %1$s</string>
     <string name="bicycle_boulevard">שדרת אופניים</string>
     <string name="separate_cycleway_no_or_allowed">לא מיועד לרכיבה (רכיבה עשויה להיות מותרת)</string>
     <string name="separate_cycleway_non_segregated">נתיב מעורב-שימושים</string>
@@ -1179,4 +1165,6 @@
     <string name="quest_boat_rental_surfboard">גלשן</string>
     <string name="quest_boat_rental_sailboard">גלשן רוח</string>
     <string name="quest_boat_rental_yacht">יאכטה</string>
+    <string name="quest_streetName_add_language">הוסף שפה</string>
+    <string name="quest_board_type_rules">חוקים</string>
 </resources>

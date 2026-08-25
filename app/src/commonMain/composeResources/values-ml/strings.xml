@@ -113,7 +113,6 @@
     <string name="quest_address_title">ഈ കെട്ടിടത്തിന്റെ വീട്ടുനമ്പർ എത്രയാണ് ?</string>
     <string name="store_listing_short_description">OpenStreetMap സർവേയർ അപ്ലിക്കേഷൻ</string>
     <string name="store_listing_full_description">സ്ട്രീറ്റ്കംപ്ലീറ്റ്  ഉപയോഗിച്ച് ഓപ്പൺസ്ട്രീറ്റ്മാപ്പ് മെച്ചപ്പെടുത്താൻ സഹായിക്കുക!</string>
-    <string name="quest_name_answer_noName">ഇതിനു പേര് ഇല്ല…</string>
     <string name="quest_name_answer_noName_confirmation_title">പേര് ഇല്ലേ?</string>
     <string name="quest_name_noName_confirmation_positive">അതെ, പേര് ഇല്ല</string>
     <string name="quest_openingHours_add_times">തുറക്കുന്ന സമയം ചേർക്കുക</string>
@@ -169,7 +168,8 @@
     <string name="dialog_session_dont_show_again">ഈ സെഷനായി വീണ്ടും കാണിക്കരുത്</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">ഈ വേഗത പരിധി അസാധ്യമാണെന്ന് തോന്നുന്നു.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">ഒരു പരിധിയും പോസ്റ്റുചെയ്തിട്ടില്ലെന്ന് നിങ്ങൾക്ക് ഉറപ്പാണോ?</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">തെരുവിന്റെ അവസാനം വരെ പരിശോധിച്ചോ? ഹൈലൈറ്റ് ചെയ്യപ്പെട്ട വിഭാഗത്തിന് വേണ്ടിയുള്ള അടയാളങ്ങളൊന്നും തെരുവിൽ എവിടെയും കാണുന്നില്ലെങ്കിൽ, സ്വാഭാവിക വേഗ പരിധി ബാധകമാണ്.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">തെരുവിന്റെ അവസാനം വരെ പരിശോധിച്ചോ? 
+ഹൈലൈറ്റ് ചെയ്യപ്പെട്ട വിഭാഗത്തിന് വേണ്ടിയുള്ള അടയാളങ്ങളൊന്നും തെരുവിൽ എവിടെയും കാണുന്നില്ലെങ്കിൽ, സ്വാഭാവിക വേഗ പരിധി ബാധകമാണ്.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">അതെ, അടയാളമില്ല</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">പ്രധാന തെരുവ് കവലയിൽ ഇതുപോലുള്ള ഒരു അടയാളം ഉണ്ടെങ്കിൽ, സോണിനുള്ളിൽ നിങ്ങൾക്ക് പ്രത്യേക ചിഹ്നങ്ങൾ വേറെ കണ്ടെത്താനാവില്ല, കാരണം അവിടെ നിശ്ചയിച്ച വേഗത പരിധി മുഴുവൻ സോണിനും ബാധകമാണ്</string>
     <string name="quest_sport_softball">സോഫ്ട്ബോൾ</string>
@@ -189,9 +189,6 @@
     <string name="underground_recycling_container">ഭൂമിക്കടിയിലുള്ള ശേഖരണി</string>
     <string name="quest_streetName_answer_cantType">ഈ ചിഹ്നത്തിലെ അക്ഷരങ്ങൾ എഴുതാൻ കഴിയുന്നില്ല </string>
     <string name="quest_streetName_cantType_title">കീബോർഡ് ലേഔട്ട് കാണുന്നില്ലെ?</string>
-    <string name="quest_streetName_cantType_open_settings">സജ്ജീകരണങ്ങൾ തുറക്കുക</string>
-    <string name="quest_streetName_cantType_open_store">ആപ്പ് സ്റ്റോർ സന്ദർശിക്കുക</string>
-    <string name="quest_streetName_cantType_description">നിങ്ങൾ ഒരു ഡിഫാൾട്ട് കീബോർഡ് ഉപയോഗിക്കുകയാണെങ്കിൽ, ഇൻപുട്ട് രീതി ക്രമീകരണങ്ങളിൽ നിങ്ങൾക്ക് ആവശ്യമുള്ള ഭാഷയ്ക്കായി കീബോർഡ് ലേഔട്ട് പ്രവർത്തനക്ഷമമാക്കാനുള്ള അവസരമുണ്ട്. അല്ലെങ്കിൽ, മറ്റ് കീബോഡ് ആപ്പ് സ്റ്റോറിൽ നിന്ന് ഡൗൺലോ‍ഡ് ചെയ്യാം.  ഗൂഗിൾ ജിബോർഡ്, സ്വിഫ്റ്റ്കീ ബോർഡ്, മൾട്ടി ഒ കീബോർഡ് എന്നിവ പ്രശസ്തമായ ബഹുഭാഷാ കീബോർഡുകളാണ്.</string>
     <string name="quest_streetName_menuItem_nolanguage">(വ്യക്തമാക്കാത്ത)</string>
     <string name="quest_fireHydrant_type_title">എന്ത് തരം തീ അണയ്ക്കുന്നതിനുള്ള സൗകര്യം ആണ് ഇത്?</string>
     <string name="quest_fireHydrant_type_pillar">തൂൺ</string>
@@ -474,7 +471,6 @@
     <string name="theme_dark">ഇരുട്ട്</string>
     <string name="theme_system_default">സിസ്റ്റം ഡിഫാൾട്ട്</string>
     <string name="action_open_location">ലൊക്കേഷൻ വേറൊരു ആപ്പിൽ കാണുക</string>
-    <string name="map_application_missing">മാപ്പ് കാണാൻ കഴിയുന്ന വേറൊരു ആപ്പും ഈ ഫോണിൽ ചേർത്തിട്ടില്ല</string>
     <string name="label_housenumber">വീട്ട് നമ്പർ</string>
     <string name="quest_busStopShelter_covered">സ്റ്റോപ്പ് മൊത്തം മൂടിയിട്ടുണ്ട്</string>
     <string name="quest_ferry_pedestrian_title">ഈ കടത്ത് കാൽനടക്കാരെ കൊണ്ടുപോകുന്നതാണോ?</string>
@@ -488,7 +484,6 @@
     <string name="quest_cyclewayPartSurface_title">സൈക്കിൾ പാതയുടെ പ്രതലം എന്താണ്?</string>
     <string name="quest_generic_answer_differs_along_the_way">ഉടനീളം വ്യത്യസ്തമാണ്.</string>
     <string name="quest_split_way_description">പാതയിലുടനീളം വ്യത്യാസങ്ങൾ കാണുന്നു എങ്കിൽ, ആദ്യത്തെ ഘട്ടം പാതയെ വിഭജിക്കൽ ആണ്. അതിനു ശേഷം ഓരോ വിഭജിച്ച പാതയ്ക്കും ഉള്ള തിരയൽ വെവ്വേറെ ആയി ചെയ്യാവുന്നത് ആണ്. ഇപ്പോൾ വിഭജിക്കണോ?</string>
-    <string name="quest_split_way_tutorial">ഉത്തരം വ്യത്യാസപ്പെട്ടിരിക്കുന്ന സ്ഥല(ങ്ങൾ) വിഭജിക്കാൻ വഴിയിൽ ടാപ്പ് ചെയ്യുക. കഴിയുന്നത്ര കൃത്യമാക്കുവാൻ ശ്രമിക്കുക, നിങ്ങൾക്ക് ഇത് പതിവുപോലെ സൂം ഇൻ ചെയ്യാൻ കഴിയും.</string>
     <string name="quest_split_way_too_imprecise">വീണ്ടും സൂം ചെയ്യുക.</string>
     <string name="quest_split_way_many_splits_confirmation_description">ഇത് കുറച്ച് വിഭജനങ്ങളാണ്. നിങ്ങൾക്ക്  പിന്നീട് വഴി വേർപെടുത്താൻ കഴിയും.</string>
     <string name="quest_footwayPartSurface_title">ഇവിടുത്തെ നടപ്പാതയുടെ പ്രതലം എന്താണ്?</string>
@@ -746,14 +741,9 @@
     <string name="quest_shop_gone_title">പകരം ഇപ്പോൾ ഇവിടെ എന്താണ് ഉള്ളത്?</string>
     <string name="quest_shop_gone_vacant_answer">അത് ഒഴിഞ്ഞുകിടക്കുന്നു</string>
     <string name="quest_shop_gone_replaced_answer">A(n)…</string>
-    <string name="quest_shop_vacant_type_title">ഈ കട ഒഴിഞ്ഞുകിടക്കുന്നു. ഇപ്പോൾ ഇവിടെ എന്താണ്?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">ചില പ്രദേശങ്ങളിൽ ഇത് പ്രയോജനകരമല്ലാത്തതിനാൽ ഈ ക്വസ്റ്റ് തരം ഡീഫോൾട്ടായി അപ്രാപ്തമാക്കിയിരിക്കുന്നു.</string>
     <string name="quest_dietType_explanation_kosher">കോശർ ഉൽപ്പന്നങ്ങൾ പ്രത്യേക നിയമങ്ങൾ അനുസരിച്ച് തയ്യാറാക്കണം; കാഷ്രൂത് സർട്ടിഫിക്കേഷൻ ഏജൻസികൾ അത് അടയാളപ്പെടുത്തുന്നു.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">ഇവിടെ സൈക്കിൾ പാത ഇല്ല</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">സാധാരണ പോലെ ചിത്രത്തിലെ ഒരു വശം ടാപ്പ് ചെയ്ത് ശരിയായ ഉത്തരം തിരഞ്ഞെടുക്കുക; പിന്നെ മറുവശവും അതുപോലെ ചെയ്യുക.
-
-ഒരുവഴി റോഡ് ആയിട്ടും സൈക്കിളുകൾക്ക് ഇരുവഴിയും അനുമതി ഉള്ളത് പോലുള്ള അവസ്ഥകൾ ശ്രദ്ധിക്കുക.</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">സൈക്കിൾ ലെയിൻ അല്ലെങ്കിൽ പാത ഇല്ലെന്ന് തിരഞ്ഞെടുക്കുന്നു</string>
     <string name="quest_construction_completed_at_known_date">…തീയതിയിൽ പൂർത്തിയാകും</string>
     <string name="quest_construction_completion_date_title">ഇത് എപ്പോൾ പൂർത്തിയാകും?</string>
     <string name="quest_surface_value_clay">കളിമണ്ണ്</string>
@@ -852,7 +842,9 @@
     <string name="quest_bollard_type_foldable2">മടക്കാവുന്നത് (താക്കോൽ ഉണ്ടാകാം അല്ലാതെയാകാം)</string>
     <string name="no_search_results">ഒന്നും കണ്ടെത്തിയില്ല</string>
     <string name="quest_selection_hint_title">ചെയ്യാനുള്ളത് വളരെ കൂടുതലാണോ?</string>
-    <string name="quest_selection_hint_message">സംഭാവന നൽകുന്നത് പ്രധാനമായും രസകരമായിരിക്കണം! ക്വസ്റ്റുകളുടെ എണ്ണം നിങ്ങളെ ബാധിക്കുന്നുവെങ്കിൽ, ക്രമീകരണങ്ങളിൽ ഏത് ക്വസ്റ്റുകൾ കാണിക്കണമെന്ന്, ഏത് ക്രമത്തിൽ കാണിക്കണമെന്ന് ക്രമീകരിക്കാം.</string>
+    <string name="quest_selection_hint_message">സംഭാവന നൽകുന്നത് പ്രധാനമായും രസകരമായിരിക്കണം!
+
+ക്വസ്റ്റുകളുടെ എണ്ണം നിങ്ങളെ ബാധിക്കുന്നുവെങ്കിൽ, ക്രമീകരണങ്ങളിൽ ഏത് ക്വസ്റ്റുകൾ കാണിക്കണമെന്ന്, ഏത് ക്രമത്തിൽ കാണിക്കണമെന്ന് ക്രമീകരിക്കാം.</string>
     <string name="quest_presets_preset_add">മുൻക്രമം ചേർക്കുക</string>
     <string name="quest_presets_preset_name">മുൻക്രമത്തിന്റെ പേര്</string>
     <string name="quest_presets_default_name">ഡീഫോൾട്ട്</string>
@@ -914,7 +906,9 @@
     <string name="street_standing_prohibited">നില്ക്കൽ അനുവദനീയമല്ല (No standing)</string>
     <string name="street_parking_conditional_restrictions">നിബന്ധനാപൂർവ്വമായ പാർക്കിംഗ് / നിർത്തൽ നിയന്ത്രണം</string>
     <string name="street_parking_no_other_reasons">വ്യക്തമായ ബോർഡ് ഇല്ല / പാർക്കിംഗ് സാധ്യമല്ല</string>
-    <string name="street_parking_conditional_restrictions_hint">ഇവിടെ പാർക്ക് ചെയ്യുകയോ നിർത്തുകയോ ചെയ്യാൻ സാധ്യമാണെങ്കിൽ, അത് എങ്ങനെ ചെയ്യാമെന്ന് ദയവായി വ്യക്തമാക്കുക. കൃത്യമായ നിയന്ത്രണങ്ങൾ പിന്നീട് വ്യക്തമാക്കാം. അല്ലെങ്കിൽ ഒരു കുറിപ്പ് (ഫോട്ടോയോടെ) വിടാം.</string>
+    <string name="street_parking_conditional_restrictions_hint">ഇവിടെ പാർക്ക് ചെയ്യുകയോ നിർത്തുകയോ ചെയ്യാൻ സാധ്യമാണെങ്കിൽ, അത് എങ്ങനെ ചെയ്യാമെന്ന് ദയവായി വ്യക്തമാക്കുക. കൃത്യമായ നിയന്ത്രണങ്ങൾ പിന്നീട് വ്യക്തമാക്കാം.
+
+അല്ലെങ്കിൽ ഒരു കുറിപ്പ് (ഫോട്ടോയോടെ) വിടാം.</string>
     <string name="quest_address_house_number_label">വീട് നമ്പർ:</string>
     <string name="quest_fireHydrant_position_title">ഈ ഫയർ ഹൈഡ്രന്റ് എവിടെയാണ് സ്ഥിതി ചെയ്യുന്നത്?</string>
     <string name="quest_fireHydrant_position_green">പുല്ലിൽ, മണ്ണിൽ അല്ലെങ്കിൽ ചെടികളിൽ</string>
@@ -977,9 +971,6 @@
     <string name="quest_bicycle_parking_type_handlebarholder">ഹാൻഡിൽബാർ ഹോൾഡർ</string>
     <string name="quest_bicycle_parking_access_title2">ഇവിടെ സൈക്കിൾ പാർക്ക് ചെയ്യാൻ ആരെ അനുവദിക്കുന്നു? പാർക്കിംഗ് സൗജന്യമായോ പണമെടുത്തോ ആയിരിക്കാം.</string>
     <string name="quest_playground_access_title2">ഈ കളിസ്ഥലം ഉപയോഗിക്കാൻ ആരെ അനുവദിക്കുന്നു?</string>
-    <string name="quest_sidewalk_answer_none_title">നടപ്പാതകൾ ഇല്ലെന്ന് തിരഞ്ഞെടുക്കുന്നു</string>
-    <string name="quest_side_select_interface_explanation">ഒരു വശം ടാപ്പ് ചെയ്ത് അനുയോജ്യമായ ഉത്തരം തിരഞ്ഞെടുക്കുക.
-മറ്റുവശവും ഉണ്ടെങ്കിൽ അതുപോലെ ചെയ്യുക.</string>
     <string name="ar_measure">അളവ് എടുക്കുക</string>
     <string name="ar_core_tracking_error_too_steep_angle">കോണം വളരെ കുത്തനെയാണ്, അല്പം പിന്നോട്ട് പോകുക</string>
     <string name="default_disabled_msg_no_ar">ഈ ഉപകരണത്തിൽ ക്യാമറ ഉപയോഗിച്ച് അളക്കൽ പിന്തുണയ്ക്കുന്നില്ല; അതിനാൽ ഈ ക്വസ്റ്റ് പൂർത്തിയാക്കാൻ ഒരു ടേപ്പ് മെഷർ ആവശ്യമാണ്.</string>
@@ -1181,8 +1172,6 @@
     <string name="quest_placeName_no_name_answer">പേര് ബോർഡ് ഇല്ല…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">ഈ വീതി അസാധാരണമായി തോന്നുന്നു. കർബ് മുതൽ കർബ് വരെ (റോഡിൽ പാർക്കിംഗ്, സൈക്കിൾ ലെയിനുകൾ ഉൾപ്പെടെ) ആയിരിക്കണം എന്ന് ഓർക്കുക.</string>
     <string name="overlay_cycleway">സൈക്കിൾ പാതകൾ</string>
-    <string name="bicycle_boulevard_is_a">ഇത് ഒരു %1$s ആണ്</string>
-    <string name="bicycle_boulevard_is_not_a">ഇത് ഒരു %1$s അല്ല</string>
     <string name="bicycle_boulevard">സൈക്കിൾ ബൂളിവാർഡ്</string>
     <string name="separate_cycleway_no_or_allowed">നടപ്പാത; സൈക്കിൾ സംബന്ധിച്ച് വ്യക്തമായ ബോർഡ് ഇല്ല (അനുമതി നിയമനിർമ്മാണത്തിൽ ആശ്രയിച്ചിരിക്കുന്നു)</string>
     <string name="separate_cycleway_non_segregated">നിർദ്ദിഷ്ട സംയുക്ത ഉപയോഗ പാത</string>
@@ -1290,7 +1279,8 @@
     <string name="unknown_object">അജ്ഞാത വസ്തു</string>
     <string name="quest_leafType_tree_title">ഈ മരത്തിന് സൂചികൾ (നീഡിൽസ്) ആണോ ഇലകളാണോ?</string>
     <string name="quest_bbq_fuel_gas">വാതകം</string>
-    <string name="about_description_donate_google_play3">ഈ ആപ്പിനെ പിന്തുണയ്ക്കാൻ പരിഗണിച്ചതിന് നന്ദി! സംഭാവന സംബന്ധിച്ച വിവരങ്ങൾ ഞങ്ങളുടെ വെബ്സൈറ്റിലോ പ്രോജക്ട് ഹോമിലോ ലഭ്യമാണ്; ആപ്പ് സ്റ്റോർ നയങ്ങൾ കാരണം ആപ്പിനുള്ളിൽ ലിങ്ക് നൽകാൻ കഴിയില്ല.</string>
+    <string name="about_description_donate_google_play3">ഈ ആപ്പിനെ പിന്തുണയ്ക്കാൻ പരിഗണിച്ചതിന് നന്ദി!
+സംഭാവന സംബന്ധിച്ച വിവരങ്ങൾ ഞങ്ങളുടെ വെബ്സൈറ്റിലോ പ്രോജക്ട് ഹോമിലോ ലഭ്യമാണ്; ആപ്പ് സ്റ്റോർ നയങ്ങൾ കാരണം ആപ്പിനുള്ളിൽ ലിങ്ക് നൽകാൻ കഴിയില്ല.</string>
     <string name="quest_isAmenityIndoor_outside_covered">അകത്ത് അല്ല, പക്ഷേ മൂടിയിരിക്കുന്നു</string>
     <string name="lit_value_unsupported">ഈ ആപ്പിൽ തിരഞ്ഞെടുക്കാനാകാത്ത പ്രത്യേക ലൈറ്റിംഗ് സ്ഥിതി</string>
     <string name="quest_generic_otherAnswers2">ഉം…</string>
@@ -1304,7 +1294,9 @@
     <string name="info">കൂടുതൽ വിവരങ്ങൾ</string>
     <string name="quest_accessible_for_pedestrians_prohibited">ഇത് നിരോധിതമാണ്.</string>
     <string name="quest_accessible_for_pedestrians_allowed">ഇത് അനുവദനീയമാണ്.</string>
-    <string name="quest_buildingLevels_hint">ഇറക്കം ഉള്ള സ്ഥലങ്ങളിൽ ഉള്ള കെട്ടിടങ്ങൾക്ക്, നിലകളുടെ എണ്ണം താഴ്ന്ന വശത്തെ നിലതലത്തിൽ നിന്ന് തുടങ്ങുന്നു. ജനാലകൾ മേൽക്കൂരയിൽ ഉള്ള നിലകൾ മേൽക്കൂര നിലയായി കണക്കാക്കുന്നു. അതിനാൽ മേൽക്കൂര നിലകൾ ഇല്ലാത്തത് നിർബന്ധമായും തട്ടി മേൽക്കൂരയെന്നല്ല; ഒരു മുഴുവൻ നിലയ്ക്കു മതിയായ ഉയരം ഇല്ലെന്നർത്ഥം മാത്രം.</string>
+    <string name="quest_buildingLevels_hint">ഇറക്കം ഉള്ള സ്ഥലങ്ങളിൽ ഉള്ള കെട്ടിടങ്ങൾക്ക്, നിലകളുടെ എണ്ണം താഴ്ന്ന വശത്തെ നിലതലത്തിൽ നിന്ന് തുടങ്ങുന്നു.
+
+ജനാലകൾ മേൽക്കൂരയിൽ ഉള്ള നിലകൾ മേൽക്കൂര നിലയായി കണക്കാക്കുന്നു. അതിനാൽ മേൽക്കൂര നിലകൾ ഇല്ലാത്തത് നിർബന്ധമായും തട്ടി മേൽക്കൂരയെന്നല്ല; ഒരു മുഴുവൻ നിലയ്ക്കു മതിയായ ഉയരം ഇല്ലെന്നർത്ഥം മാത്രം.</string>
     <string name="quest_parcel_locker_brand">ഈ പാർസൽ ലോക്കറിന്റെ ബ്രാൻഡ് എന്താണ്?</string>
     <string name="quest_powerPolesMaterial_is_terminal">വൈദ്യുതി ലൈൻ കെട്ടിടത്തിൽ ആങ്കർ ചെയ്തിരിക്കുന്നു</string>
     <string name="quest_cycleway_value_sidewalk_ok">ഒന്നുമില്ല, പക്ഷേ ബോർഡ് നടപ്പാതയിൽ സൈക്കിൾ പോകാൻ അനുവദിക്കുന്നു</string>
@@ -1427,7 +1419,6 @@
     <string name="quest_charging_station_bicycles_title">ഇവിടെ സൈക്കിളുകളും ചാർജ് ചെയ്യാനാകുമോ?</string>
     <string name="quest_charging_station_bicycles_hint">സൈക്കിൾ ചാർജർ പവർ അഡാപ്റ്ററുകൾ സാധാരണ ഗൃഹ സോക്കറ്റുകളിൽ 插് ചെയ്യാം.</string>
     <string name="quest_tower_access_title">ഈ ടവറിലേക്ക് ആരെ പ്രവേശിപ്പിക്കുന്നു? സൗജന്യമായോ പണമെടുത്തോ ആയിരിക്കാം.</string>
-    <string name="quest_charging_station_bicycles_answer_only">ഇത് സൈക്കിളുകൾക്കായി മാത്രം</string>
     <string name="quest_recycling_type_pet_bottles">PET ബോട്ടിലുകൾ</string>
     <string name="quest_maxweight_add_sign">ബോർഡ് ചേർക്കുക</string>
     <string name="quest_maxweight_remove_sign">ബോർഡ് നീക്കം ചെയ്യുക</string>

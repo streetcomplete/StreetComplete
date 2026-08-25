@@ -112,7 +112,6 @@ No obstante, antes de subir cualquier cambio, la aplicación comprueba si la ver
 Esta aplicación busca información incompleta y mejorable en tu vecindario y la muestra en un mapa con marcadores. Puedes resolver cada uno de los problemas respondiendo a una simple pregunta in-situ.
 
 La información añadida se incluye directamente en OpenStreetMap con tu nombre sin tener que utilizar ningún programa externo.</string>
-    <string name="quest_name_answer_noName">No tiene nombre…</string>
     <string name="quest_name_answer_noName_confirmation_title">¿Seguro que no tiene nombre?</string>
     <string name="quest_name_noName_confirmation_positive">Seguro, no tiene nombre</string>
     <string name="quest_openingHours_add_times">Añadir horarios de apertura</string>
@@ -190,11 +189,6 @@ Si no hay señales en la parte seleccionada se utilizarán los límites de veloc
     <string name="underground_recycling_container">Contenedor subterráneo</string>
     <string name="quest_streetName_answer_cantType">No puedo escribir los símbolos que aparecen en la señal</string>
     <string name="quest_streetName_cantType_title">¿No tienes el idioma del teclado adecuado?</string>
-    <string name="quest_streetName_cantType_open_settings">Abrir ajustes</string>
-    <string name="quest_streetName_cantType_open_store">Abrir tienda de aplicaciones</string>
-    <string name="quest_streetName_cantType_description">Si utilizas el teclado estándar es posible que puedas cambiar el idioma en sus ajustes de entrada, échale un vistazo.
-
-Pero recuerda que siempre puedes descargar aplicaciones de teclado alternativas desde la tienda que sean más completas, aplicaciones del estilo a «Google Gboard», «SwiftKey» o el teclado «Multiling O».</string>
     <string name="quest_streetName_menuItem_nolanguage">(sin especificar)</string>
     <string name="quest_fireHydrant_type_title">¿Qué tipo de boca de incendio es?</string>
     <string name="quest_fireHydrant_type_pillar">Poste</string>
@@ -477,7 +471,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="theme_dark">Oscuro</string>
     <string name="theme_system_default">Colores del sistema</string>
     <string name="action_open_location">Abrir lugar en otra app</string>
-    <string name="map_application_missing">No hay otra aplicación para mapas instalada</string>
     <string name="label_housenumber">número de casa</string>
     <string name="quest_busStopShelter_covered">Toda la parada esta cubierta</string>
     <string name="quest_ferry_pedestrian_title">¿Esta ruta de ferry transporta peatones?</string>
@@ -491,7 +484,6 @@ Parcial es que se pueda entrar con la silla y utilizar los baños, pero sin pasa
     <string name="quest_cyclewayPartSurface_title">¿De qué está hecho el carril bici?</string>
     <string name="quest_generic_answer_differs_along_the_way">Difiere a lo largo de la vía…</string>
     <string name="quest_split_way_description">Si difiere a lo largo de la vía, el primer paso es trocearla, luego puedes responder en cada trozo por separado. ¿Quieres empezar ahora?</string>
-    <string name="quest_split_way_tutorial">Toca en la vía para trocearla en los puntos donde hay un cambio. Intenta hacerlo con precisión. Puedes acercarte un poco para verlo mejor, si quieres.</string>
     <string name="quest_split_way_too_imprecise">Prueba acercando el mapa un poco más</string>
     <string name="quest_split_way_many_splits_confirmation_description">Parece que has hecho demasiadas divisiones. Siempre puedes seguir dividiendo la vía más adelante.</string>
     <string name="quest_footwayPartSurface_title">¿Cuál es la superficie de la acera en este punto?</string>
@@ -736,7 +728,8 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_kerb_height_lowered">Un poco más alto que la superficie de la calzada</string>
     <string name="quest_kerb_height_raised">Bordillo alto</string>
     <string name="quest_kerb_height_lowered_ramp">Rampa de acera</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">Pon el número de carriles para tráfico rodado. Los carriles para bicicletas y estacionamiento no cuentan. Si hay carriles solo para autobuses deja una nota en vez de responder.</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">Pon el número de carriles para tráfico rodado. Los carriles para bicicletas y estacionamiento no cuentan.
+Si hay carriles solo para autobuses deja una nota en vez de responder.</string>
     <string name="quest_surface_value_rock">Roca</string>
     <string name="quest_parkingType_street_side">Estacionamiento apartado, fuera de la vía</string>
     <string name="quest_parkingType_lane">Estacionamiento al borde de la vía</string>
@@ -747,12 +740,9 @@ Ten en cuenta que esta aplicación solo pide el número de portal de un edificio
     <string name="quest_shop_gone_title">¿Que hay ahora aquí en su lugar?</string>
     <string name="quest_shop_gone_vacant_answer">Está libre</string>
     <string name="quest_shop_gone_replaced_answer">Es un(a)…</string>
-    <string name="quest_shop_vacant_type_title">Este establecimiento ha estado vacío. ¿Qué hay aquí ahora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Este tipo de tarea está desactivada de serie porque no es útil en algunas regiones y seguramente tengas que entrar en el sitio para encontrar la información y responder bien a las preguntas.</string>
     <string name="quest_dietType_explanation_kosher">Los productos kosher tienen que prepararse de una forma especial, hay agencias kashrut que los certifican y los marcan como tales.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Aquí no hay ningún carril bici</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Para completar la tarea, lo típico; toca un lado de la vía, elige tu respuesta y haz lo mismo con el otro lado. Ten en cuenta todas las opciones disponibles, a veces no está tan claro, como en vías de un solo sentido con dos direcciones de carril bici.</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Marcando como que no hay carril bici</string>
     <string name="quest_construction_completed_at_known_date">Estará terminado en la fecha…</string>
     <string name="quest_construction_completion_date_title">¿Cuándo estará terminado?</string>
     <string name="quest_surface_value_clay">Arcillosa o con barro</string>
@@ -851,7 +841,9 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_bollard_type_foldable2">Plegable (con o sin llave)</string>
     <string name="no_search_results">Sin resultados</string>
     <string name="quest_selection_hint_title">¿Demasiado que hacer?</string>
-    <string name="quest_selection_hint_message">Lo importante es pasarlo bien; si te parece que hay muchas tareas siempre puedes ajustar lo que se ve en el mapa y en qué orden, mira los ajustes.</string>
+    <string name="quest_selection_hint_message">Lo importante es pasarlo bien;
+
+si te parece que hay muchas tareas siempre puedes ajustar lo que se ve en el mapa y en qué orden, mira los ajustes.</string>
     <string name="quest_presets_preset_add">Añadir preajuste</string>
     <string name="quest_presets_preset_name">Nombre del preajuste</string>
     <string name="quest_presets_default_name">De serie</string>
@@ -877,7 +869,7 @@ Los datos se actualizan cada %1$s días y los datos sin utilizar se eliminan aut
     <string name="quest_traffic_calming_type_chicane">Chicane (curvas reductoras de velocidad).</string>
     <string name="quest_traffic_calming_type_rumble_strip">Bandas rugosas.</string>
     <string name="quest_surface_value_concrete_lanes">Roderas de cemento u hormigón para vehículos</string>
-    <string name="quest_fireHydrant_diameter_title">¿Qué diámetro de toma está especificado en esta boca de incendio?</string>
+    <string name="quest_fireHydrant_diameter_title">¿Qué diámetro especifica la señal de la boca de incendios?</string>
     <string name="quest_diet_answer_no_food">No tiene comida.</string>
     <string name="short_no_answer_on_button">No</string>
     <string name="restore_confirmation">Restaurar</string>
@@ -978,8 +970,6 @@ También puedes dejar una nota (con foto).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Con soporte para manillar</string>
     <string name="quest_bicycle_parking_access_title2">¿Quién puede estacionar una bici aquí? Puede ser gratis o no.</string>
     <string name="quest_playground_access_title2">¿Quién puede usar este parque infantil?</string>
-    <string name="quest_sidewalk_answer_none_title">Seleccionando que faltan aceras</string>
-    <string name="quest_side_select_interface_explanation">Toca un lado y elige la respuesta. Haz lo mismo en el otro lado si es que existe.</string>
     <string name="ar_measure">Medida</string>
     <string name="ar_core_tracking_error_too_steep_angle">Ángulo demasiado pronunciado, aléjate un poco</string>
     <string name="default_disabled_msg_no_ar">Necesita una cinta métrica para resolver esta pregunta porque la medición con la cámara no es compatible con este dispositivo.</string>
@@ -1180,8 +1170,6 @@ También puedes dejar una nota (con foto).</string>
     <string name="quest_placeName_no_name_answer">No parece que haya ningún letrero</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Esta anchura parece poco realista. Recuerda que tiene que ser la distancia de una acera a la otra, incluidos los estacionamientos en la calle, los carriles bici, etc.</string>
     <string name="overlay_cycleway">Carriles bici</string>
-    <string name="bicycle_boulevard_is_a">Es un %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">No es un %1$s</string>
     <string name="bicycle_boulevard">Calle ciclista</string>
     <string name="separate_cycleway_no_or_allowed">No pensado para ciclistas (no significa que esté prohibido)</string>
     <string name="separate_cycleway_non_segregated">Camino de uso compartido designado</string>
@@ -1295,7 +1283,8 @@ Algunas capas también permiten meter datos que faltan a través del marcador co
     <string name="unknown_object">Objeto desconocido</string>
     <string name="quest_leafType_tree_title">¿Tiene este árbol hojas anchas o en forma de aguja?</string>
     <string name="quest_bbq_fuel_gas">Gas</string>
-    <string name="about_description_donate_google_play3">Te agrademos el detalle de aportar tu granito de arena con una donación. Para ello te invitamos a visitar nuestra web, ya que Google Play no nos permite enlazar directamente.</string>
+    <string name="about_description_donate_google_play3">Te agrademos el detalle de aportar tu granito de arena con una donación.
+Para ello te invitamos a visitar nuestra web, ya que Google Play no nos permite enlazar directamente.</string>
     <string name="quest_isAmenityIndoor_outside_covered">No está dentro, pero está a cubierto</string>
     <string name="lit_value_unsupported">Otro tipo de iluminación que no esté en la aplicación</string>
     <string name="quest_generic_otherAnswers2">Eh...</string>
@@ -1435,7 +1424,6 @@ La planta de arriba cuenta como «tejado» si el tejado tiene ventanas. Por lo q
     <string name="quest_charging_station_bicycles_title">¿Se pueden cargar bicicletas aquí también?</string>
     <string name="quest_charging_station_bicycles_hint">Los adaptadores de corriente para cargadores de bicicletas se enchufan en tomas de corriente domésticas normales.</string>
     <string name="quest_tower_access_title">¿Quién puede acceder a esta torre? Puede ser gratuito o de pago.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Sólo para bicicletas</string>
     <string name="quest_recycling_type_pet_bottles">Botellas PET</string>
     <string name="quest_maxweight_add_sign">Agregar señal</string>
     <string name="quest_maxweight_remove_sign">Remover señal</string>
@@ -1493,4 +1481,19 @@ La planta de arriba cuenta como «tejado» si el tejado tiene ventanas. Por lo q
     <string name="quest_board_type_tourism">Turismo (temas múltiples)</string>
     <string name="quest_lanes_answer_oneLaneOnly">Solo un carril señalizado</string>
     <string name="quest_shop_gone_replaced_answer_hint2">Escribe lo que estás buscando</string>
+    <string name="link_gomap_description">Editor avanzado de OSM para iOS</string>
+    <string name="link_terraink_description">Crea preciosos posters personalizados de una ciudad o un barrio</string>
+    <string name="quest_place_vacant_type_title">Este lugar ha estado vacio. ¿Que hay aqui ahora?</string>
+    <string name="about_title">Acerca de %1$s</string>
+    <string name="quest_surface_value_laterite">Laterita</string>
+    <string name="leave_note_quest_context_hint">No puedo responder "%1$s":</string>
+    <string name="leave_note_overlay_context_hint">En contexto de la capa "%1$s":</string>
+    <string name="quest_split_way_tutorial2">Pulsa el botón para dividir la via en la posición de la cruz</string>
+    <string name="quest_leave_new_note_track_delete_title">¿Deseas eliminar esta grabación de via?</string>
+    <string name="unchanged_tag_action_title">Confirmado %1$s</string>
+    <string name="quest_streetName_cantType_description2">Si usas el teclado por defecto puede ser que puedas activar la distribución del teclado para la lengua que necesitas en la configuración de métodos de entrada.
+
+Si no es asi, puedes descargar otro teclado en la app store. En Android, puede que quieras probar FlorisBoard o HeliBoard.</string>
+    <string name="bicycle_boulevard_is_a2">Es una ciclocalle</string>
+    <string name="bicycle_boulevard_is_not_a2">No es una ciclocalle</string>
 </resources>

@@ -69,7 +69,25 @@
     <string name="quest_roofShape_answer_many">Tem várias formas diferentes</string>
     <string name="map_btn_zoom_out">Afastar</string>
     <string name="map_btn_zoom_in">Aproximar</string>
-    <string name="privacy_html">&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acho que tenho apenas boas notícias para si:&lt;/p&gt; &lt;h2&gt;Contribuições diretas&lt;/h2&gt;&lt;p&gt; Antes de mais, compreenda que com esta aplicação, está a contribuir diretamente para o OpenStreetMap (OSM).&lt;br/&gt; Qualquer contribuição que faça com esta aplicação é diretamente adicionada ao mapa do OpenStreetMap e não há intermediários entre a aplicação e a infraestrutura do OpenStreetMap. &lt;/p&gt; &lt;p&gt; Não é possível editar de forma anónima no OpenStreetMap. Qualquer alteração que faça (incluindo a data de alteração e a localização do objeto alterado) são vinculados à sua conta de utilizador do OpenStreetMap e são visíveis publicamente no site openstreetmap.org. Como o StreetComplete deve ser utilizado geralmente quando se está no local fisicamente, isto revela onde e quando usou a aplicação. &lt;/p&gt; &lt;h2&gt;Localização&lt;/h2&gt; &lt;p&gt; A aplicação não partilha a sua localização GPS com ninguém. Esta é utilizada apenas para descarregar automaticamente dados à sua volta e posicionar o mapa na sua localização. &lt;/p&gt; &lt;h2&gt;Utilização dos dados&lt;/h2&gt; &lt;p&gt; A aplicação comunica diretamente com os servidores do OpenStreetMap.&lt;br/&gt; Antes de enviar as suas alterações, a aplicação confirma com &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;um ficheiro de texto simples&lt;/a&gt; no meu servidor para averiguar se a versão do StreetComplete que usa não foi bloqueada de forma a impedir o envio de alterações. Isto é uma medida preventiva, para impedir que certas versões da aplicação, com erros graves detetados entretanto, possam corromper os dados do OpenStreetMap.&lt;/p&gt;</string>
+    <string name="privacy_html">&lt;p&gt;Ah, alguém que se preocupa com a privacidade, ótimo! Acho que tenho apenas boas notícias para si:&lt;/p&gt;
+&lt;h2&gt;Contribuições diretas&lt;/h2&gt;
+&lt;p&gt;
+Antes de mais, compreenda que com esta aplicação, está a contribuir diretamente para o OpenStreetMap (OSM).&lt;br/&gt;
+Qualquer contribuição que faça com esta aplicação é diretamente adicionada ao mapa do OpenStreetMap e não há intermediários entre a aplicação e a infraestrutura do OpenStreetMap.
+&lt;/p&gt;
+&lt;p&gt;
+Não é possível editar de forma anónima no OpenStreetMap. Qualquer alteração que faça (incluindo a data de alteração e a localização do objeto alterado) são vinculados à sua conta de utilizador do OpenStreetMap e são visíveis publicamente no site openstreetmap.org. Como o StreetComplete deve ser utilizado geralmente quando se está no local fisicamente, isto revela onde e quando usou a aplicação.
+&lt;/p&gt;
+
+&lt;h2&gt;Localização&lt;/h2&gt;
+&lt;p&gt; A aplicação não partilha a sua localização GPS com ninguém. Esta é utilizada apenas para descarregar automaticamente dados à sua volta e posicionar o mapa na sua localização.
+&lt;/p&gt;
+
+&lt;h2&gt;Utilização dos dados&lt;/h2&gt;
+&lt;p&gt;
+A aplicação comunica diretamente com os servidores do OpenStreetMap.&lt;br/&gt;
+Antes de enviar as suas alterações, a aplicação confirma com &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;um ficheiro de texto simples&lt;/a&gt; no meu servidor para averiguar se a versão do StreetComplete que usa não foi bloqueada de forma a impedir o envio de alterações. Isto é uma medida preventiva, para impedir que certas versões da aplicação, com erros graves detetados entretanto, possam corromper os dados do OpenStreetMap.
+&lt;/p&gt;</string>
     <string name="autosync_on">Ativado</string>
     <string name="autosync_only_on_wifi">Apenas em Wi-Fi</string>
     <string name="autosync_off">Desativado</string>
@@ -93,8 +111,11 @@
     <string name="quest_sidewalk_title">Esta estrada tem passeio?</string>
     <string name="quest_address_title">Qual é o número de porta deste edifício?</string>
     <string name="store_listing_short_description">Aplicação de mapeamento no OpenStreetMap</string>
-    <string name="store_listing_full_description">Ajude a melhorar o OpenStreetMap com o StreetComplete! Esta aplicação encontra dados cartográficos em falta na sua vizinhança e mostra-os num mapa como missões. Resolva cada missão visitando o local e responda a uma pergunta simples para atualizar o mapa. As informações que introduzir são adicionadas diretamente ao OpenStreetMap em seu nome, sem necessidade de utilizar outro editor.</string>
-    <string name="quest_name_answer_noName">Não tem nome…</string>
+    <string name="store_listing_full_description">Ajude a melhorar o OpenStreetMap com o StreetComplete!
+
+Esta aplicação encontra dados cartográficos em falta na sua vizinhança e mostra-os num mapa como missões. Resolva cada missão visitando o local e responda a uma pergunta simples para atualizar o mapa.
+
+As informações que introduzir são adicionadas diretamente ao OpenStreetMap em seu nome, sem necessidade de utilizar outro editor.</string>
     <string name="quest_name_answer_noName_confirmation_title">Decerteza que não tem nome?</string>
     <string name="quest_name_noName_confirmation_positive">Sim, não tem</string>
     <string name="quest_openingHours_add_times">Adicionar horário de abertura</string>
@@ -150,7 +171,8 @@
     <string name="dialog_session_dont_show_again">Não mostrar mais nesta sessão</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">Este limite de velocidade parece implausível.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Não existem mesmo nenhum sinal?</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">Verificou nas extremidades da rua? Se não existir sinalização ao longo da estrada selecionada, por omissão é aplicado o limite geral de velocidade.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">Verificou nas extremidades da rua?
+Se não existir sinalização ao longo da estrada selecionada, por omissão é aplicado o limite geral de velocidade.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Sim, sem sinal de limite de velocidade</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Se existir um sinal como este no cruzamento principal da rua, pode não encontrar mais sinais dentro da zona, porque o limite de velocidade indicado aqui aplica-se a toda a zona.</string>
     <string name="quest_sport_softball">Softbol</string>
@@ -170,9 +192,6 @@
     <string name="underground_recycling_container">Contentor subterrâneo</string>
     <string name="quest_streetName_answer_cantType">O meu teclado não tem alguns caracteres</string>
     <string name="quest_streetName_cantType_title">Falta o layout do teclado?</string>
-    <string name="quest_streetName_cantType_open_settings">Abrir configurações</string>
-    <string name="quest_streetName_cantType_open_store">Visitar a loja de aplicações</string>
-    <string name="quest_streetName_cantType_description">Se utiliza um teclado padrão, é provável que tenha de configurar o layout do teclado, nas opções de métodos de entrada, para o idioma que necessita. Caso contrário, pode descarregar outro teclado na loja de aplicações. Alguns dos teclados mais populares e que suportam vários idiomas são o Google Gboard, SwiftKey Keyboard e Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(não especificado)</string>
     <string name="quest_fireHydrant_type_title">Que tipo de boca de incêndio é esta?</string>
     <string name="quest_fireHydrant_type_pillar">Pilar</string>
@@ -454,7 +473,6 @@
     <string name="theme_dark">Escuro</string>
     <string name="theme_system_default">Predefinido do sistema</string>
     <string name="action_open_location">Abrir a localização noutra aplicação</string>
-    <string name="map_application_missing">Não há outra aplicação de mapas instalada</string>
     <string name="label_housenumber">número de porta</string>
     <string name="quest_busStopShelter_covered">Toda a paragem é coberta</string>
     <string name="quest_ferry_pedestrian_title">Esta rota de ferry transporta passageiros?</string>
@@ -469,7 +487,6 @@
     <string name="quest_generic_answer_differs_along_the_way">Varia ao longo do trajeto…</string>
     <string name="quest_split_way_description">Se for diferente ao longo da via, o primeiro passo é dividi-la. Depois disso, a pergunta pode ser respondida para cada parte separadamente.
 Quer dividir agora?</string>
-    <string name="quest_split_way_tutorial">Toque no ponto da via onde deve ser dividida e onde a resposta é diferente. Tente ser o mais preciso possível, pode fazer zoom como habitualmente</string>
     <string name="quest_split_way_too_imprecise">Por favor faça mais zoom</string>
     <string name="quest_split_way_many_splits_confirmation_description">Há uma série de divisões. Pode sempre dividir a via mais tarde.</string>
     <string name="quest_footwayPartSurface_title">Qual é a superfície desta via pedonal aqui?</string>
@@ -718,7 +735,8 @@ Caso não se aplique a toda a secção destacada, pode responder “%1$s”.</st
     <string name="quest_kerb_height_lowered">Um pouco mais alto que a superfície da estrada</string>
     <string name="quest_kerb_height_raised">Lancil alto</string>
     <string name="quest_kerb_height_lowered_ramp">Rampa de lancil</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">Especifique aqui o número de vias demarcadas utilizáveis pelo tráfego automóvel. As vias para bicicletas e as vias de estacionamento exclusivas não contam. Se houver vias reservadas para autocarros, por favor, deixe uma nota.</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">Especifique aqui o número de vias demarcadas utilizáveis pelo tráfego automóvel. As vias para bicicletas e as vias de estacionamento exclusivas não contam. 
+Se houver vias reservadas para autocarros, por favor, deixe uma nota.</string>
     <string name="quest_surface_value_rock">Pedras toscas amontoadas (trilhos montanhosos)</string>
     <string name="quest_parkingType_street_side">Estacionamento ao lado, fora da estrada</string>
     <string name="quest_parkingType_lane">Estacionamento dentro da estrada</string>
@@ -729,14 +747,9 @@ Caso não se aplique a toda a secção destacada, pode responder “%1$s”.</st
     <string name="quest_shop_gone_title">O que é que se encontra aqui agora?</string>
     <string name="quest_shop_gone_vacant_answer">Está desocupado…</string>
     <string name="quest_shop_gone_replaced_answer">É…</string>
-    <string name="quest_shop_vacant_type_title">Esta loja esteve desocupada. O que se encontra aqui agora?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Este tipo de missão está desativada de origem porque não é útil em algumas regiões e provavelmente terá que entrar no local para poder responder a uma missão deste tipo.</string>
     <string name="quest_dietType_explanation_kosher">Produtos Kosher devem ser preparados de acordo com regras especiais, com agências de certificação kashrut marcando os produtos em conformidade.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Sem nenhuma ciclovia separada nem corredor na estrada</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Como normalmente, toque num lado da ilustração, selecione uma resposta adequada e faça o mesmo para o outro lado.
-
-Veja todas as opções disponíveis: alguns casos não são óbvios, como uma estrada de sentido único que permite ciclistas em ambas as direções!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Selecionar que não existe uma ciclovia ou via para bicicletas</string>
     <string name="quest_construction_completed_at_known_date">Será concluída em…</string>
     <string name="quest_construction_completion_date_title">Quando termina a construção?</string>
     <string name="quest_surface_value_clay">Argila</string>
@@ -835,7 +848,9 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_bollard_type_foldable2">Reclinável (com ou sem chave)</string>
     <string name="no_search_results">Nada encontrado</string>
     <string name="quest_selection_hint_title">Demasiadas coisas para fazer?</string>
-    <string name="quest_selection_hint_message">Contribuir tem de ser divertido! Se ficar sobrecarregado com o número de missões, pode sempre ajustar as missões que lhe são apresentadas e a sua ordem nas definições.</string>
+    <string name="quest_selection_hint_message">Contribuir tem de ser divertido!
+
+Se ficar sobrecarregado com o número de missões, pode sempre ajustar as missões que lhe são apresentadas e a sua ordem nas definições.</string>
     <string name="quest_presets_preset_add">Adicionar conjunto de missões</string>
     <string name="quest_presets_preset_name">Nome do conjunto de missões</string>
     <string name="quest_presets_default_name">Base</string>
@@ -897,7 +912,9 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="street_standing_prohibited">Proibido ficar à espera (não utilizado em países lusófonos)</string>
     <string name="street_parking_conditional_restrictions">Estacionamento / paragem restritos condicionalmente</string>
     <string name="street_parking_no_other_reasons">Sem sinal explícito / não é possível estacionar</string>
-    <string name="street_parking_conditional_restrictions_hint">Se for possível estacionar ou parar aqui, responda como é que quem quiser estacionar aqui pode fazê-lo. As restrições exatas podem ser especificadas mais tarde. Em alternativa, pode deixar uma nota (com uma foto).</string>
+    <string name="street_parking_conditional_restrictions_hint">Se for possível estacionar ou parar aqui, responda como é que quem quiser estacionar aqui pode fazê-lo. As restrições exatas podem ser especificadas mais tarde.
+
+Em alternativa, pode deixar uma nota (com uma foto).</string>
     <string name="quest_address_house_number_label">Número de porta:</string>
     <string name="quest_fireHydrant_position_title">Em que posição está esta boca de incêndio?</string>
     <string name="quest_fireHydrant_position_green">Na relva, terra ou jardim</string>
@@ -960,9 +977,6 @@ Os dados são atualizados após %1$s dias e os dados não utilizados são elimin
     <string name="quest_bicycle_parking_type_handlebarholder">Suporte do guiador</string>
     <string name="quest_bicycle_parking_access_title2">Quem pode estacionar aqui a bicicleta? (independentemente de ser pago ou gratuito).</string>
     <string name="quest_playground_access_title2">Quem pode usar este parque infantil?</string>
-    <string name="quest_sidewalk_answer_none_title">Seleção dos passeios que faltam</string>
-    <string name="quest_side_select_interface_explanation">Toque num dos lados e selecione a resposta correspondente.
-Faça o mesmo para o outro lado, se existir.</string>
     <string name="ar_measure">Tirar medidas</string>
     <string name="ar_core_tracking_error_too_steep_angle">Ângulo demasiado agudo, afaste-se um pouco</string>
     <string name="default_disabled_msg_no_ar">Precisa de uma fita métrica para resolver esta missão, porque o seu telemóvel não suporta medição em realidade aumentada.</string>
@@ -1164,8 +1178,6 @@ Faça o mesmo para o outro lado, se existir.</string>
     <string name="quest_placeName_no_name_answer">Não existe placa toponímica…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Esta largura, não é plausível. Tenha em conta que deverá ser a largura de lancil a lancil, incluindo os lugares de estacionamentos, ciclovias, etc.</string>
     <string name="overlay_cycleway">Ciclovias</string>
-    <string name="bicycle_boulevard_is_a">É %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Não é %1$s</string>
     <string name="bicycle_boulevard">Ciclovia</string>
     <string name="separate_cycleway_no_or_allowed">Via pedonal, sem sinalização explícita sobre o uso da bicicleta (se é permitido depende da legislação)</string>
     <string name="separate_cycleway_non_segregated">Via para ciclistas e pedestres partilhada</string>
@@ -1215,7 +1227,9 @@ Faça o mesmo para o outro lado, se existir.</string>
     <string name="overlays_tutorial_title">Camadas</string>
     <string name="overlays_tutorial_intro">Encontrou uma nova forma de editar dados!</string>
     <string name="overlays_tutorial_display">Cada camada mostra um tipo de dados, por exemplo, ”lugares” ou “superfícies das ruas”. Os dados são destacados em cores diferentes para lhe dar uma boa visão geral do que foi registado até agora. Os dados em falta são sempre mostrados a vermelho.</string>
-    <string name="overlays_tutorial_edit">Toque em qualquer dado realçado para o visualizar ou editar. Também pode dividir caminhos ou comunicar notas, como nas missões. Além disso, algumas camadas, como a camada de endereços, permitem adicionar novos dados na posição da mira.</string>
+    <string name="overlays_tutorial_edit">Toque em qualquer dado realçado para o visualizar ou editar. Também pode dividir caminhos ou comunicar notas, como nas missões.
+
+Além disso, algumas camadas, como a camada de endereços, permitem adicionar novos dados na posição da mira.</string>
     <string name="quest_crossing_kerb_height_title">Qual é a altura dos passeios neste cruzamento?</string>
     <string name="quest_maxheight_sign_title">Qual é o limite de altura indicado aqui?</string>
     <string name="quest_leave_new_note_as_answer">Neste caso, é necessário que deixe uma nota a explicar a situação.</string>
@@ -1273,7 +1287,8 @@ Faça o mesmo para o outro lado, se existir.</string>
     <string name="unknown_object">Objeto desconhecido</string>
     <string name="quest_leafType_tree_title">Esta árvore tem agulhas ou folhas?</string>
     <string name="quest_bbq_fuel_gas">Gás</string>
-    <string name="about_description_donate_google_play3">Obrigado por considerar apoiar esta aplicação! Pode encontrar informações sobre donativos no nosso site ou na página de desenvolvimento do projeto. As políticas da loja de aplicações não nos permitem disponibilizar a hiperligação na aplicação.</string>
+    <string name="about_description_donate_google_play3">Obrigado por considerar apoiar esta aplicação!
+Pode encontrar informações sobre donativos no nosso site ou na página de desenvolvimento do projeto. As políticas da loja de aplicações não nos permitem disponibilizar a hiperligação na aplicação.</string>
     <string name="quest_isAmenityIndoor_outside_covered">Não no interior, mas coberto</string>
     <string name="lit_value_unsupported">Estado específico de iluminado que não é selecionável nesta aplicação</string>
     <string name="quest_generic_otherAnswers2">Outra…</string>
@@ -1287,7 +1302,9 @@ Faça o mesmo para o outro lado, se existir.</string>
     <string name="info">Mais informações</string>
     <string name="quest_accessible_for_pedestrians_prohibited">É proibido.</string>
     <string name="quest_accessible_for_pedestrians_allowed">É permitido.</string>
-    <string name="quest_buildingLevels_hint">Para edifícios num declive, a contagem de andares começa a partir do nível do solo do lado mais baixo. Um andar conta como um andar de telhado quando as suas janelas estão no telhado. Por conseguinte, os telhados com zero andares de telhado não são necessariamente planos, apenas não têm altura suficiente para um andar inteiro.</string>
+    <string name="quest_buildingLevels_hint">Para edifícios num declive, a contagem de andares começa a partir do nível do solo do lado mais baixo.
+
+Um andar conta como um andar de telhado quando as suas janelas estão no telhado. Por conseguinte, os telhados com zero andares de telhado não são necessariamente planos, apenas não têm altura suficiente para um andar inteiro.</string>
     <string name="quest_parcel_locker_brand">Qual é a marca deste cacifo de encomendas?</string>
     <string name="quest_powerPolesMaterial_is_terminal">A linha elétrica está ancorada ao edifício</string>
     <string name="quest_cycleway_value_sidewalk_ok">nenhum, mas o sinal permite andar de bicicleta no passeio</string>
@@ -1410,7 +1427,6 @@ Por exemplo 1,3 ou 2b,4,6.</string>
     <string name="quest_charging_station_bicycles_title">As bicicletas também podem ser carregadas aqui?</string>
     <string name="quest_charging_station_bicycles_hint">As fichas dos adaptadores de corrente para carregadores de bicicletas ligam-se a tomadas domésticas normais.</string>
     <string name="quest_tower_access_title">Quem pode aceder a esta torre? Pode ser gratuito ou pago.</string>
-    <string name="quest_charging_station_bicycles_answer_only">É apenas para bicicletas</string>
     <string name="quest_recycling_type_pet_bottles">Garrafas PET</string>
     <string name="quest_maxweight_add_sign">Adicionar sinal</string>
     <string name="quest_maxweight_remove_sign">Remover sinal</string>

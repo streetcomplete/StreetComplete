@@ -108,11 +108,14 @@
     <string name="quest_surface_value_sand">沙子</string>
     <string name="quest_surface_value_sett">四方型的鋪路石</string>
     <string name="quest_surface_value_wood">木頭</string>
-    <string name="quest_sidewalk_title">這條道路有人行穿越道嗎？</string>
+    <string name="quest_sidewalk_title">這條道路有人行道嗎？</string>
     <string name="quest_address_title">此棟建築物的門牌號碼是多少？</string>
     <string name="store_listing_short_description">OSM 測繪應用程式</string>
-    <string name="store_listing_full_description">使用 StreetComplete 改善開放街圖的圖資！此應用程式會在你的附近找到非完整且可擴充的資料，以標記顯示在地圖上。每個只要回答簡單的問題就可以解決。你所輸入的資料會直接新增至 OSM，而不需要其他的編輯器。</string>
-    <string name="quest_name_answer_noName">沒有名稱……</string>
+    <string name="store_listing_full_description">使用 StreetComplete 改善開放街圖的圖資！
+
+此應用程式會在你的附近找到非完整且可擴充的資料，以標記顯示在地圖上。每個只要回答簡單的問題就可以解決。
+
+你所輸入的資料會直接新增至 OSM，而不需要其他的編輯器。</string>
     <string name="quest_name_answer_noName_confirmation_title">確定沒有名稱？</string>
     <string name="quest_name_noName_confirmation_positive">是，沒有名稱</string>
     <string name="quest_openingHours_add_times">新增營業時間</string>
@@ -189,11 +192,6 @@
     <string name="underground_recycling_container">地下資源回收箱</string>
     <string name="quest_streetName_answer_cantType">無法在標示上輸入的字元</string>
     <string name="quest_streetName_cantType_title">缺少鍵盤佈局？</string>
-    <string name="quest_streetName_cantType_open_settings">開啟設定</string>
-    <string name="quest_streetName_cantType_open_store">開啟應用程式商店</string>
-    <string name="quest_streetName_cantType_description">若您使用預設鍵盤，您或者可以嘗試在輸入法設定中啟用所需語言的鍵盤佈局。
-
-否則，您可能需要在應用程式商店中下載其他鍵盤。 支持多種語言的熱門鍵盤包括 Gboard、SwiftKey 和 Multiling O。</string>
     <string name="quest_streetName_menuItem_nolanguage">(未指定)</string>
     <string name="quest_fireHydrant_type_title">這是哪一種類的消防栓？</string>
     <string name="quest_fireHydrant_type_pillar">地上式消防栓</string>
@@ -477,7 +475,6 @@
     <string name="theme_dark">黑暗</string>
     <string name="theme_system_default">系統預設</string>
     <string name="action_open_location">在其他 app 開啟地點</string>
-    <string name="map_application_missing">沒有安裝其他地圖應用程式</string>
     <string name="label_housenumber">房屋門牌號碼</string>
     <string name="quest_busStopShelter_covered">整個站牌都有遮蓋</string>
     <string name="quest_ferry_pedestrian_title">這邊的輪船是行人可到達嗎？</string>
@@ -491,7 +488,6 @@
     <string name="quest_cyclewayPartSurface_title">自行車道的鋪面材質？</string>
     <string name="quest_generic_answer_differs_along_the_way">整條路不大一樣…</string>
     <string name="quest_split_way_description">如果沿路都不同的話，第一步是先分割路徑</string>
-    <string name="quest_split_way_tutorial">點在路徑上開始有不同答案的地方，並且分割的節點。請儘可能精確，你還可以如往常放大處理。</string>
     <string name="quest_split_way_too_imprecise">請放更大</string>
     <string name="quest_split_way_many_splits_confirmation_description">有可分割多個地方，你總是可以稍後再度分割路徑。</string>
     <string name="quest_footwayPartSurface_title">人行步道的鋪面材質是什麼？</string>
@@ -597,7 +593,7 @@
     <string name="link_nominatim_description">用在其他服務上OSM的地理編碼</string>
     <string name="link_city_roads_description">成像所有城市的道路，印在T恤或是馬克杯上</string>
     <string name="link_myosmatic_description">產生可選擇地街道導引，只需幾個步驟就可列印的地圖。</string>
-    <string name="link_brouter_description">也許是自行車騎士最好的導航引擎</string>
+    <string name="link_brouter_description">也許是腳踏車騎士最好的導航引擎</string>
     <string name="link_show_me_the_way_description">即時監看OSM的編輯</string>
     <string name="link_osrm_description">目前最快的導航引擎</string>
     <string name="link_openrouteservice_description">可用不同的設定去導航多樣性的車輛和步行。
@@ -737,7 +733,7 @@
     <string name="quest_kerb_height_raised">高路緣</string>
     <string name="quest_kerb_height_lowered_ramp">路緣斜坡</string>
     <string name="quest_lanes_answer_lanes_description_one_side2">具體說明所有汽車可通行標示車道 (所有方向)，所以，單車和停車場通道不算。
-如果有車道保留給公車，請留下註解。 </string>
+如果有車道保留給公車，請留下註解。</string>
     <string name="quest_surface_value_rock">石頭</string>
     <string name="quest_parkingType_street_side">路外停車</string>
     <string name="quest_parkingType_lane">路邊停車</string>
@@ -748,14 +744,9 @@
     <string name="quest_shop_gone_title">這裡現在變成什麼店家了？</string>
     <string name="quest_shop_gone_vacant_answer">這裡已經空了</string>
     <string name="quest_shop_gone_replaced_answer">一個…</string>
-    <string name="quest_shop_vacant_type_title">這個商家已經不在，現在這邊是做什麼的？</string>
     <string name="default_disabled_msg_go_inside_regional_warning">此任務預設關閉，原因在於這在某些地區並不適用，且你可能需要進入特定地點才能完成任務。</string>
     <string name="quest_dietType_explanation_kosher">猶太教潔食產品必須依猶太飲食教規嚴格準備，並附上猶太飲食教規認證機構標章確保其循從飲食教規。</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">完全沒有自行車道</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">如同往常，在插圖一側按壓，選擇適當的答案，然後在另一側做一樣的事情。
-
-注意所有可用的選項：有些例子並不明顯，像是單行道但允許單車騎士雙向通行！</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">當無自行車道選擇此項</string>
     <string name="quest_construction_completed_at_known_date">預計在…</string>
     <string name="quest_construction_completion_date_title">預計什麼時候竣工呢？</string>
     <string name="quest_surface_value_clay">黏土</string>
@@ -854,7 +845,9 @@
     <string name="quest_bollard_type_foldable2">可折疊 (有或沒有鍵)</string>
     <string name="no_search_results">未找到任何結果</string>
     <string name="quest_selection_hint_title">太多要做的事情？</string>
-    <string name="quest_selection_hint_message">貢獻一己之力應該要很好玩的！如果你被任務的數字嚇到的話，你可以調整顯示什麼任務，以及優先順序。</string>
+    <string name="quest_selection_hint_message">貢獻一己之力應該要很好玩的！
+
+如果你被任務的數字嚇到的話，你可以調整顯示什麼任務，以及優先順序。</string>
     <string name="quest_presets_preset_add">新增預設組合</string>
     <string name="quest_presets_preset_name">預設組合名稱</string>
     <string name="quest_presets_default_name">預設</string>
@@ -981,9 +974,6 @@
     <string name="quest_bicycle_parking_type_handlebarholder">車把架</string>
     <string name="quest_bicycle_parking_access_title2">允許誰在這裡停單車？停在這裡可能免費也可能需要付費。</string>
     <string name="quest_playground_access_title2">允許誰在使用遊樂場？</string>
-    <string name="quest_sidewalk_answer_none_title">遺漏選擇的人行道</string>
-    <string name="quest_side_select_interface_explanation">點一邊然後選擇吻合的答案。
-另一邊如果適用也可以選擇。</string>
     <string name="ar_measure">開始測繪</string>
     <string name="ar_core_tracking_error_too_steep_angle">傾斜角度過大，請稍微退後一點</string>
     <string name="default_disabled_msg_no_ar">你需要捲尺才能完成此任務，因為此裝置的相機不支援 AR 測量功能。</string>
@@ -1185,8 +1175,6 @@
     <string name="quest_placeName_no_name_answer">沒有名稱牌子</string>
     <string name="quest_road_width_unusualInput_confirmation_description">這個寬度看來不可能。記住，寬度是路緣到路緣，包括路邊停車、單車道等。</string>
     <string name="overlay_cycleway">單車道</string>
-    <string name="bicycle_boulevard_is_a">是 %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">不是 %1$s</string>
     <string name="bicycle_boulevard">單車大道</string>
     <string name="separate_cycleway_no_or_allowed">這條人行道無明確單車告示（是否允許通行取決於當地法規）</string>
     <string name="separate_cycleway_non_segregated">共享車道</string>
@@ -1300,7 +1288,8 @@
     <string name="unknown_object">未知物件</string>
     <string name="quest_leafType_tree_title">這棵樹是針葉還是闊葉？</string>
     <string name="quest_bbq_fuel_gas">燒油的</string>
-    <string name="about_description_donate_google_play3">感謝你支持此應用程式！您可以在我們的網站或專案首頁找到捐款資訊，但由於Google Play政策限制，我們無法直接在程式內提供連結。</string>
+    <string name="about_description_donate_google_play3">感謝你支持此應用程式！
+您可以在我們的網站或專案首頁找到捐款資訊，但由於Google Play政策限制，我們無法直接在程式內提供連結。</string>
     <string name="quest_isAmenityIndoor_outside_covered">沒有在裡面，但是被遮蔽</string>
     <string name="lit_value_unsupported">特定的照明狀況，並無法在應用程式裡面選擇</string>
     <string name="quest_generic_otherAnswers2">那個…</string>
@@ -1316,8 +1305,7 @@
     <string name="quest_accessible_for_pedestrians_allowed">允許</string>
     <string name="quest_buildingLevels_hint">對於斜坡上的建築，從離地面最近的最低樓層開始起算樓層數。
 
-有天花板的屋頂如果有窗戶算是一層樓。再來屋頂是零樓層不意味著平的，只是沒有足夠一整層的高度。
-␣␣␣␣</string>
+有天花板的屋頂如果有窗戶算是一層樓。再來屋頂是零樓層不意味著平的，只是沒有足夠一整層的高度。</string>
     <string name="quest_parcel_locker_brand">包裏儲物櫃的品牌？</string>
     <string name="quest_powerPolesMaterial_is_terminal">輸電線附掛在建築</string>
     <string name="quest_cycleway_value_sidewalk_ok">沒有，但標誌允許在人行道騎自行車</string>
@@ -1439,7 +1427,6 @@
     <string name="quest_charging_station_bicycles_title">這裡是否也可以為單單充電嗎？</string>
     <string name="quest_charging_station_bicycles_hint">單車充電座能夠插入一般家戶插座。</string>
     <string name="quest_tower_access_title">誰可以進入這個塔？免費或是付費。</string>
-    <string name="quest_charging_station_bicycles_answer_only">只有為了單車</string>
     <string name="quest_recycling_type_pet_bottles">PET瓶罐</string>
     <string name="quest_maxweight_add_sign">新增告示牌</string>
     <string name="quest_maxweight_remove_sign">移除告示牌</string>
@@ -1497,4 +1484,7 @@
     <string name="quest_board_type_tourism">觀光旅遊 (多種主題)</string>
     <string name="quest_lanes_answer_oneLaneOnly">只有一個標示車道</string>
     <string name="quest_shop_gone_replaced_answer_hint2">您尋找的類型</string>
+    <string name="link_gomap_description">適用於 iOS 的進階 OSM 編輯器</string>
+    <string name="link_terraink_description">為城市或社區製作精美的客製化海報</string>
+    <string name="quest_place_vacant_type_title">此處原本為空置狀態。那麼現在這裡變成了什麼？</string>
 </resources>

@@ -69,7 +69,25 @@
     <string name="quest_roofShape_answer_many">Tá cruthanna éagsúla ann</string>
     <string name="map_btn_zoom_out">Zúmáil amach</string>
     <string name="map_btn_zoom_in">Zúmáil isteach</string>
-    <string name="privacy_html">&lt;p&gt;Á, duine a bhfuil spéis aige sa príobháideachas, ar fheabhas! Is dóigh liom nach bhfuil ach deascéala agam duitse:&lt;/p&gt; &lt;h2&gt;Ranníocaíocht Díreach&lt;/h2&gt; &lt;p&gt;Anois, ar dtús, tuig go bhfuil tú, leis an aip seo, ag cur le hOpenStreetMap (OSM) go fíor agus go díreach.&lt;br/&gt; Cuirfidh go díreach ar an léarscáil aon rud a chuireann tú leis agus tú ag úsáid an aip seo. Níl aon thríú páirtí idir an aip agus an bonneagar OSM. &lt;/p&gt; &lt;p&gt;Ní féidir aon rud a athrú ar OSM go hanaithnid. Bíonn gach athruithe a dhéanann tú (⁊ a ndáta ⁊ a suíomh) ceangailte le do chuntas OSM agus le feiceáil go poiblí ar an suíomh gréasáin openstreetmap.org. Toisc gur cheart nach úsáidfí StreetComplete ach ar an láthair amháin, nochtfar cá agus cathain a d'úsáid tú an aip. &lt;/p&gt; &lt;h2&gt;Suíomh&lt;/h2&gt; &lt;p&gt;Ní roineann an aip do shuíomh GPS le haon duine. Úsáidtear é chun sonraí in aice leat a íoslódáil go huathoibríoch, agus chun an léarscáil a chur ar d'áit féin. &lt;/p&gt; &lt;h2&gt;Úsáid na Sonraí&lt;/h2&gt; &lt;p&gt; Tá cumarsáid díreach idir an aip seo agus na freastalaithe OSM.&lt;br/&gt; Sula uaslódáiltear do chuid athruithe, déanann an aip seiceáil ar  &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;chomhad téacs simplí&lt;/a&gt; ar mo fhreastalaí, chun cinntiú nach bhfuil cosc ar uaslódáil athruithe ar an leagan na haipe seo. Is beart réamhchúraim é seo, chun bheith in ann bac a chur ar leaganacha an aip a raibh ardfhabhtanna acu, ionas nach uaslódálfar sonraí truaillithe chuig OSM.&lt;/p&gt;</string>
+    <string name="privacy_html">&lt;p&gt;Á, duine a bhfuil spéis aige sa príobháideachas, ar fheabhas! Is dóigh liom nach bhfuil ach deascéala agam duitse:&lt;/p&gt;
+&lt;h2&gt;Ranníocaíocht Díreach&lt;/h2&gt;
+&lt;p&gt;
+Anois, ar dtús, tuig go bhfuil tú, leis an aip seo, ag cur le hOpenStreetMap (OSM) go fíor agus go díreach.&lt;br/&gt;
+Cuirfidh go díreach ar an léarscáil aon rud a chuireann tú leis agus tú ag úsáid an aip seo. Níl aon thríú páirtí idir an aip agus an bonneagar OSM.
+&lt;/p&gt;
+&lt;p&gt;
+Ní féidir aon rud a athrú ar OSM go hanaithnid. Bíonn gach athruithe a dhéanann tú (⁊ a ndáta ⁊ a suíomh) ceangailte le do chuntas OSM agus le feiceáil go poiblí ar an suíomh gréasáin openstreetmap.org. Toisc gur cheart nach úsáidfí StreetComplete ach ar an láthair amháin, nochtfar cá agus cathain a d'úsáid tú an aip.
+&lt;/p&gt;
+
+&lt;h2&gt;Suíomh&lt;/h2&gt;
+&lt;p&gt;
+Ní roineann an aip do shuíomh GPS le haon duine. Úsáidtear é chun sonraí in aice leat a íoslódáil go huathoibríoch, agus chun an léarscáil a chur ar d'áit féin.
+&lt;/p&gt;
+&lt;h2&gt;Úsáid na Sonraí&lt;/h2&gt;
+&lt;p&gt;
+Tá cumarsáid díreach idir an aip seo agus na freastalaithe OSM.&lt;br/&gt;
+Sula uaslódáiltear do chuid athruithe, déanann an aip seiceáil ar  &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;chomhad téacs simplí&lt;/a&gt; ar mo fhreastalaí, chun cinntiú nach bhfuil cosc ar uaslódáil athruithe ar an leagan na haipe seo. Is beart réamhchúraim é seo, chun bheith in ann bac a chur ar leaganacha an aip a raibh ardfhabhtanna acu, ionas nach uaslódálfar sonraí truaillithe chuig OSM.
+&lt;/p&gt;</string>
     <string name="autosync_on">Ar</string>
     <string name="autosync_only_on_wifi">Ar Wi-Fi amháin</string>
     <string name="autosync_off">As</string>
@@ -93,8 +111,11 @@
     <string name="quest_sidewalk_title">An bhfuil cosán ag an sráid sin?</string>
     <string name="quest_address_title">Cén uimhir tí atá ag an bhfoirgneamh seo?</string>
     <string name="store_listing_short_description">Aip suirbhéireacht OpenStreetMap</string>
-    <string name="store_listing_full_description">Bí i do chúnamh le OpenStreetMap a fheabhsú le StreetComplete! Lorgaíonn an aip seo sonraí atá in easnamh in aice leat, agus léiríonn sí iad duit mar tascanna ar léarscáil. Téigh ar an láthair agus freagair ceist simplí chun an tasc a réiteach agus eolas nua a chur leis an léarscáil. Uaslódálfar na sonraí díreach go OpenStreetMap i d'ainm, gan aon ghá eagarthóir eile a úsáid.</string>
-    <string name="quest_name_answer_noName">Níl aon ainm ann…</string>
+    <string name="store_listing_full_description">Bí i do chúnamh le OpenStreetMap a fheabhsú le StreetComplete!
+
+Lorgaíonn an aip seo sonraí atá in easnamh in aice leat, agus léiríonn sí iad duit mar tascanna ar léarscáil. Téigh ar an láthair agus freagair ceist simplí chun an tasc a réiteach agus eolas nua a chur leis an léarscáil.
+
+Uaslódálfar na sonraí díreach go OpenStreetMap i d'ainm, gan aon ghá eagarthóir eile a úsáid.</string>
     <string name="quest_name_answer_noName_confirmation_title">Cinnte nach bhfuil ainm ann?</string>
     <string name="quest_name_noName_confirmation_positive">Cinnte, níl aon ainm</string>
     <string name="quest_openingHours_add_times">Cuir uaireanta oscailte leis</string>
@@ -150,7 +171,8 @@
     <string name="dialog_session_dont_show_again">Ná habair arís é don seisiún reatha</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">Ní dócha í an luasteorainn seo.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">An bhfuil tú cinnte nach gcrochadh aon luasteorainn?</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">An ndearna tu seiceáil ar an dá bharr na sráide? Mura bhfuil aon chomhartha feadh na sráide, a bhfuil i bhfeidhm don stráice aibhsithe, is an í an ghnáth-luasteorainn atá i bhfeidhm.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">An ndearna tu seiceáil ar an dá bharr na sráide?
+Mura bhfuil aon chomhartha feadh na sráide, a bhfuil i bhfeidhm don stráice aibhsithe, is an í an ghnáth-luasteorainn atá i bhfeidhm.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Rinne, níl comhartha</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">Má tá comhartha mar seo ann ag an áit a dtrasnaítear leis an bpríomhbhóthar, is féidir nach áimseofá comharthaí ar leith sa limistéar, mar tá an luasteorainn, atá scríofa ansin, i bhfeidhm don limistéar ar fad.</string>
     <string name="quest_sport_softball">Bogliathróid</string>
@@ -170,9 +192,6 @@
     <string name="underground_recycling_container">Coimeádán faoi thalamh</string>
     <string name="quest_streetName_answer_cantType">Ní féidir na carachtair ar an gcomhartha a chlóscríobh</string>
     <string name="quest_streetName_cantType_title">An bhfuil leagan amach méarchláir in easnamh agat?</string>
-    <string name="quest_streetName_cantType_open_settings">Oscail socruithe</string>
-    <string name="quest_streetName_cantType_open_store">Téigh go dtí an aipmhargadh</string>
-    <string name="quest_streetName_cantType_description">Más gnáthmhéarchlár atá agat, seans mór gur féidir leat go díreach an leagan amach a chur i bhfeidhm, don teanga atá uait, sna socruithe an modha ionchurtha. Seachas sin, is féidir leat aip méarchláir eile a íoslódáil ón aipmhargadh. Is iad na haipeanna a bhfuil tóir orthu agus ar a bhfuil teangacha go leor ar fáil ná Google Gboard, SwiftKey Keyboard, is Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(neamhshonraithe)</string>
     <string name="quest_fireHydrant_type_title">Cén cineál hiodrant dóiteáin é sin?</string>
     <string name="quest_fireHydrant_type_pillar">Colún</string>
@@ -454,7 +473,6 @@
     <string name="theme_dark">Dorcha</string>
     <string name="theme_system_default">Réamhshocrú an chórais</string>
     <string name="action_open_location">Oscail an suíomh le haip eile</string>
-    <string name="map_application_missing">Níl aon aip léarscáile eile suiteáilte</string>
     <string name="label_housenumber">uimhir tí</string>
     <string name="quest_busStopShelter_covered">Tá an stad ar fad faoi dhíon</string>
     <string name="quest_ferry_pedestrian_title">An bhfuil coisithe in ann taistil ar an tseirbhís farantóireachta seo?</string>
@@ -469,7 +487,6 @@
     <string name="quest_generic_answer_differs_along_the_way">Athraíonn sé ó áit go háit…</string>
     <string name="quest_split_way_description">Má athraíonn sé, caithfidh tú an tslí a ghearradh. Ansin d'fhéadfaí an tasc a fhreagairt ar gach cuid féin dóibh.
 Gearr anois í?</string>
-    <string name="quest_split_way_tutorial">Tapáil ar an tslí ag an/na bpointe(-í) ina athraíonn sé. Úsáid zúmáil agus déan iarracht bheith a bheacht agus is féidir.</string>
     <string name="quest_split_way_too_imprecise">Zúmáil isteach níos mó ldth.</string>
     <string name="quest_split_way_many_splits_confirmation_description">Tá an-chuid gearrthacha agat. Is féidir leat fós an tslí níos mó a ghearradh níos déanaí.</string>
     <string name="quest_footwayPartSurface_title">Cén dromchla atá ar an gcosán seo?</string>
@@ -718,7 +735,8 @@ Mura bhaineann sé leis an stráice aibhsithe ar fad, is féidir leat "%1$s" a r
     <string name="quest_kerb_height_lowered">Beagáinín níos airde ná'n dromchla</string>
     <string name="quest_kerb_height_raised">Colbha ard</string>
     <string name="quest_kerb_height_lowered_ramp">Rampa colbha</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">Luaigh an líon lána anseo atá marcáilte agus is féidir le carrthráchta a úsáid. Ní chuirtear lánaí rothar nó lánaí páirceála beartaithe san áireamh. Má tá aon lána bus ann, fág nóta ina ionad sin, le do thoil.</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">Luaigh an líon lána anseo atá marcáilte agus is féidir le carrthráchta a úsáid. Ní chuirtear lánaí rothar nó lánaí páirceála beartaithe san áireamh.
+Má tá aon lána bus ann, fág nóta ina ionad sin, le do thoil.</string>
     <string name="quest_surface_value_rock">Carraig</string>
     <string name="quest_parkingType_street_side">Páirceáil le taobh an bhóthair</string>
     <string name="quest_parkingType_lane">Páirceáil ar an mbóthar</string>
@@ -729,14 +747,9 @@ Mura bhaineann sé leis an stráice aibhsithe ar fad, is féidir leat "%1$s" a r
     <string name="quest_shop_gone_title">Cad atá ann anois ina áit?</string>
     <string name="quest_shop_gone_vacant_answer">Tá sé folamh…</string>
     <string name="quest_shop_gone_replaced_answer">Tá…</string>
-    <string name="quest_shop_vacant_type_title">Bhíodh an siopa seo folamh. Cád atá ann anois?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Tá an cineál taisc seo díchumasaithe de ghnáth mar níl sé úsáideach i roinnt ceantair, agus is dócha go mbeadh ort dul isteach san áit chun ceist mar sin a fhreagairt.</string>
     <string name="quest_dietType_explanation_kosher">Is gá táirgí kosher a ullmhú de réir rialacha speisialta, agus léiríonn na gníomhaireachtaí deimhniúcháin kashrut a gcomhlíonadh.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Níl aon lána ná raon rothar ar fad</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Mar is gnách, tapáil ar thaobh amháin den íomhá, roghnaigh freagra oiriúnach, agus ansin déan arís é don thaobh eile.
-
-Tabhair gach roghanna faoi deara: in amanna ní bhíonn sé soléir, msh. má tá bóthar aontreo ann agus go bhfuil cead ag rothaithe a thaisteal sa dá threo!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Ag roghnú nach bhfuil lána ná raon rothar ann</string>
     <string name="quest_construction_completed_at_known_date">Críochnófar ar an dáta seo a leanas…</string>
     <string name="quest_construction_completion_date_title">Cathain a chríochnófar é?</string>
     <string name="quest_surface_value_clay">Cré</string>
@@ -834,7 +847,9 @@ Tabhair gach roghanna faoi deara: in amanna ní bhíonn sé soléir, msh. má t�
     <string name="quest_bollard_type_foldable2">Infhillte (le heochair nó gan)</string>
     <string name="no_search_results">Níor aimsíodh faic</string>
     <string name="quest_selection_hint_title">An iomarca á dhéanamh agat?</string>
-    <string name="quest_selection_hint_message">Thar aon ní eile, ba cheart go mbeadh spórt agat agus tú ag léarscáiliú! Má mhothaíonn tú go bhfuil an iomarca tascanna le feiceáil agat, is féidir leat mionshocrú, sna socruithe, cé na tascanna a léirítear duit, agus a n-ord ina léirítear ar an léarscáil.</string>
+    <string name="quest_selection_hint_message">Thar aon ní eile, ba cheart go mbeadh spórt agat agus tú ag léarscáiliú!
+
+Má mhothaíonn tú go bhfuil an iomarca tascanna le feiceáil agat, is féidir leat mionshocrú, sna socruithe, cé na tascanna a léirítear duit, agus a n-ord ina léirítear ar an léarscáil.</string>
     <string name="quest_presets_preset_add">Grúpa nua</string>
     <string name="quest_presets_preset_name">Ainm an ghrúpa</string>
     <string name="quest_presets_default_name">Réamhshocrú</string>
@@ -896,7 +911,9 @@ Tabhair gach roghanna faoi deara: in amanna ní bhíonn sé soléir, msh. má t�
     <string name="street_standing_prohibited">Níl cead stad agus ag fanacht</string>
     <string name="street_parking_conditional_restrictions">Páirceáil / Stopadh toirmiscthe faoi choinníoll</string>
     <string name="street_parking_no_other_reasons">Níl aon chomhartha faoi/dó / Ní féidir a pháirceáil</string>
-    <string name="street_parking_conditional_restrictions_hint">Más féidir le héinne páirceáil no stad anseo in aon chor, freagair, le do thoil, conas a pháirceálfadh siad. Is féidir na srianta a shonrú níos déanaí. Mar mhalairt ar sin, d'fhéadfá nóta a fhágáil (le grianghraf).</string>
+    <string name="street_parking_conditional_restrictions_hint">Más féidir le héinne páirceáil no stad anseo in aon chor, freagair, le do thoil, conas a pháirceálfadh siad. Is féidir na srianta a shonrú níos déanaí.
+
+Mar mhalairt ar sin, d'fhéadfá nóta a fhágáil (le grianghraf).</string>
     <string name="quest_address_house_number_label">Uimhir tí:</string>
     <string name="quest_fireHydrant_position_title">Cá bhfuil an hiodrant dóiteáin seo suite?</string>
     <string name="quest_fireHydrant_position_green">Sa bhféar, sa chréafóg nó sa toim</string>
@@ -959,9 +976,6 @@ Tabhair gach roghanna faoi deara: in amanna ní bhíonn sé soléir, msh. má t�
     <string name="quest_bicycle_parking_type_handlebarholder">Coinneálaí hanla</string>
     <string name="quest_bicycle_parking_access_title2">Cé ag atá cead a rothar a pháirceáil anseo? Is cuma má tá táille ann nó mura bhfuil.</string>
     <string name="quest_playground_access_title2">Cé ag atá cead an áit súgartha seo a úsáid?</string>
-    <string name="quest_sidewalk_answer_none_title">Conas a roghnófaí nach bhfuil cosán ann</string>
-    <string name="quest_side_select_interface_explanation">Tapáil taobh amháin agus roghnaigh an freagra oiriúnach.
-Déan arís é don thaobh eile, má tá aon rud ann.</string>
     <string name="ar_measure">Déan tomhas</string>
     <string name="ar_core_tracking_error_too_steep_angle">Uilinn róghéar, seas siar beagán</string>
     <string name="default_disabled_msg_no_ar">Caithfidh tú miosúr a úsáid chun an tasc seo a réiteach, mar níl tacaíocht ar an ngléas seo le tomhas a dhéanamh leis an gceamara.</string>
@@ -1163,8 +1177,6 @@ Bog anois í?</string>
     <string name="quest_placeName_no_name_answer">Níl aon chomhartha ainm…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Ní dócha é an leithead sin. Cuimhnigh, gur chóir go mbeadh an leithead idir an dá cholbha, agus páirceáil sráide, lána rothar srl. san áireamh.</string>
     <string name="overlay_cycleway">Rotharbhealaí</string>
-    <string name="bicycle_boulevard_is_a">Is %1$s é/í</string>
-    <string name="bicycle_boulevard_is_not_a">Ní %1$s é/í</string>
     <string name="bicycle_boulevard">Sráid rothar</string>
     <string name="separate_cycleway_no_or_allowed">Cosán, gan chomhartha go soléir faoin rothaíocht (braitheann an cead ar an reachtaíocht)</string>
     <string name="separate_cycleway_non_segregated">Bealach comhroinnte ainmnithe</string>
@@ -1213,8 +1225,13 @@ Bog anois í?</string>
     <string name="quest_cycleway_value_sidewalk_dual2">cosán comhroinnte, sa dá threo</string>
     <string name="overlays_tutorial_title">Forleaganacha</string>
     <string name="overlays_tutorial_intro">Tháinig tú ar bealach nua chun sonraí a athrú!</string>
-    <string name="overlays_tutorial_display">Léiríonn gach aon fhorleagan cineál amháin de na sonraí, msh. "áiteanna" no "dromchlaí bóthair". Aibhsítear na sonraí le dathanna éagsúla, chun achoimre mhaith a thabhairt duit ar na sonraí atá ann cheana. Aibhsítear sonraí atá in easnamh le dath dearg an t-am ar fad.</string>
-    <string name="overlays_tutorial_edit">Tapáil ar sonraí aibhsithe chun iad a léiriú nó a athrú. Ar nós na dtascanna, is féidir leat slite a gearradh nó nótaí a thuairisciú. Lena chois sin, le forleaganacha áirithe (msh. an forleagan seoltaí) is féidir leat sonraí nua a chur isteach ag an suíomh an chrosribe a léireofaí.</string>
+    <string name="overlays_tutorial_display">Léiríonn gach aon fhorleagan cineál amháin de na sonraí, msh. "áiteanna" no "dromchlaí bóthair".
+
+Aibhsítear na sonraí le dathanna éagsúla, chun achoimre mhaith a thabhairt duit ar na sonraí atá ann cheana.
+Aibhsítear sonraí atá in easnamh le dath dearg an t-am ar fad.</string>
+    <string name="overlays_tutorial_edit">Tapáil ar sonraí aibhsithe chun iad a léiriú nó a athrú. Ar nós na dtascanna, is féidir leat slite a gearradh nó nótaí a thuairisciú.
+
+Lena chois sin, le forleaganacha áirithe (msh. an forleagan seoltaí) is féidir leat sonraí nua a chur isteach ag an suíomh an chrosribe a léireofaí.</string>
     <string name="quest_crossing_kerb_height_title">Cén airde na colbhaí ag an gcrosaire seo?</string>
     <string name="quest_maxheight_sign_title">Cén uasairde atá scríofa anseo?</string>
     <string name="quest_leave_new_note_as_answer">Más mar sin é, Bheadh ort nóta a fhágáil ina mhíníonn tú an scéal.</string>
@@ -1272,7 +1289,8 @@ Bog anois í?</string>
     <string name="unknown_object">Rud anaithnid</string>
     <string name="quest_leafType_tree_title">An spíonacha nó leathana iad na duillí atá ar an gcrann seo?</string>
     <string name="quest_bbq_fuel_gas">Gás</string>
-    <string name="about_description_donate_google_play3">Go raibh maith agat as do smaoineamh ar tacaíocht a thabhairt don aip seo! Is féidir leat tuilleadh eolais a fháil faoi shíntiús ar ár suíomh nó ar baile an tionscadail ar GitHub. Ní féidir linn an nasc a thabhairt daoibh laistigh den aip, de réir polasaí an aipmharagaidh.</string>
+    <string name="about_description_donate_google_play3">Go raibh maith agat as do smaoineamh ar tacaíocht a thabhairt don aip seo!
+Is féidir leat tuilleadh eolais a fháil faoi shíntiús ar ár suíomh nó ar baile an tionscadail ar GitHub. Ní féidir linn an nasc a thabhairt daoibh laistigh den aip, de réir polasaí an aipmharagaidh.</string>
     <string name="quest_isAmenityIndoor_outside_covered">Ní thaobh istigh, ach faoi dhíon</string>
     <string name="lit_value_unsupported">Staid soilsithe faoi leith eile nach bhfuil ann mar rogha san aip seo</string>
     <string name="quest_generic_otherAnswers2">Eile…</string>
@@ -1286,7 +1304,9 @@ Bog anois í?</string>
     <string name="info">Tuilleadh eolais</string>
     <string name="quest_accessible_for_pedestrians_prohibited">Níl ceart rochtana acu.</string>
     <string name="quest_accessible_for_pedestrians_allowed">Tá ceart rochtana acu.</string>
-    <string name="quest_buildingLevels_hint">Más foirgneamh a thógadh ar fhána é, comhaitear na hurláir mar go bhfuil urlár na talún ar an taobh is ísle. Áirítear urlár mar urlár sa dhíon má tá a fhuinneoga sa dhíon. Chomh maith leis sin, ní gá go mbeadh díonta gan urlár acu maola, ach nach mbeadh siad arda go leor chun go mbeadh áit iontu d'urlár amháin iomlán.</string>
+    <string name="quest_buildingLevels_hint">Más foirgneamh a thógadh ar fhána é, comhaitear na hurláir mar go bhfuil urlár na talún ar an taobh is ísle.
+
+Áirítear urlár mar urlár sa dhíon má tá a fhuinneoga sa dhíon. Chomh maith leis sin, ní gá go mbeadh díonta gan urlár acu maola, ach nach mbeadh siad arda go leor chun go mbeadh áit iontu d'urlár amháin iomlán.</string>
     <string name="quest_parcel_locker_brand">Cén branda atá ar an locar birt seo?</string>
     <string name="quest_powerPolesMaterial_is_terminal">Tá an líne chumhachta greamaithe den fhoirgneamh</string>
     <string name="quest_cycleway_value_sidewalk_ok">níl aon, ach tá comhartha ann a thugann cead ag rothaíocht ar an gcosán</string>
@@ -1408,7 +1428,6 @@ Bog anois í?</string>
     <string name="quest_charging_station_bicycles_title">An bhfuil áit anseo le luchtú rothair chomh maith?</string>
     <string name="quest_charging_station_bicycles_hint">Is féidir na cuibheoir don luchtú rothair a phlugáil isteach sna ghnáthshoicéidí tí.</string>
     <string name="quest_tower_access_title">Cé ag a bhfuil cead dul isteach sa túr seo? Is cuma má tá táille ann nó mura bhfuil.</string>
-    <string name="quest_charging_station_bicycles_answer_only">Is do rothair amháin é</string>
     <string name="quest_recycling_type_pet_bottles">Buidéil TPE</string>
     <string name="quest_maxweight_add_sign">Cuir comhartha leis</string>
     <string name="quest_maxweight_remove_sign">Bain comhartha</string>
@@ -1463,4 +1482,5 @@ Bog anois í?</string>
     <string name="quest_maxspeed_answer_roadtype_lit">soilsithe</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">neamhshoilsithe</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">neamhshoilsithe ⁊ is débhealach í</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Scríobh cad atá uait</string>
 </resources>

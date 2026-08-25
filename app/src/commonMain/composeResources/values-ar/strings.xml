@@ -100,7 +100,6 @@
 
 بعد ذلك تُضاف المعلومة التي أدخلتها إلى خرائط OpenStreetMap باسمك، دون الحاجة لاستخدام مُحرر خرائط آخر.
 </string>
-    <string name="quest_name_answer_noName">ليس له اسم…</string>
     <string name="quest_name_answer_noName_confirmation_title">هل هذا العنصر ليس له أسم؟</string>
     <string name="quest_name_noName_confirmation_positive">نعم، لا اسم له</string>
     <string name="quest_openingHours_add_times">أضف ساعات العمل</string>
@@ -177,11 +176,6 @@
     <string name="underground_recycling_container">حاوية تحت الأرض</string>
     <string name="quest_streetName_answer_cantType">لا يمكن كتابة الأحرف على اللافتة</string>
     <string name="quest_streetName_cantType_title">تخطيط لوحة المفاتيح مفقود؟</string>
-    <string name="quest_streetName_cantType_open_settings">فتح الإعدادات</string>
-    <string name="quest_streetName_cantType_open_store">زيارة متجر التطبيقات</string>
-    <string name="quest_streetName_cantType_description">إذا كنت تستخدم لوحة مفاتيح افتراضية، فمن المحتمل أنه يمكنك ببساطة تمكين تخطيط لوحة المفاتيح للغة التي تحتاجها في إعدادات أسلوب الإدخال.
-خلاف ذلك، يمكنك تنزيل لوحة مفاتيح أخرى في متجر التطبيقات.
-لوحات المفاتيح الشائعة التي تدعم العديد من اللغات هي Google Gboard وSwiftKey Keyboard و Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(غير محدد)</string>
     <string name="quest_fireHydrant_type_title">ما هو نوع صنبور الإطفاء هذا؟</string>
     <string name="quest_fireHydrant_type_pillar">عمود</string>
@@ -464,7 +458,6 @@
     <string name="theme_dark">داكن</string>
     <string name="theme_system_default">النظام الافتراضي</string>
     <string name="action_open_location">افتح الموقع في تطبيق آخر</string>
-    <string name="map_application_missing">لا يوجد تطبيق خرائط آخر مثبت</string>
     <string name="label_housenumber">رقم المنزل</string>
     <string name="quest_busStopShelter_covered">تم تغطية محطة الحافلات بالكامل</string>
     <string name="quest_ferry_pedestrian_title">هل هذه العَبارة تنقل المشاة؟</string>
@@ -479,7 +472,6 @@
     <string name="quest_generic_answer_differs_along_the_way">يختلف على طول الطريق …</string>
     <string name="quest_split_way_description">إذا كان يختلف على طول الطريق، فإن الخطوة الأولى هي تجزئة المسار إلى عدة أجزاء، ثم يمكن الإجابة على المهمة بشكل منفصل لكل جزء.
 تجزئة الآن؟</string>
-    <string name="quest_split_way_tutorial">اضغط على المسار لتقسيمه عند النقاط التي تختلف فيها الإجابة. استخدم خاصية التقريب وحاول أن تكون دقيقاً قدر الإمكان.</string>
     <string name="quest_split_way_too_imprecise">الرجاء التقريب أكثر</string>
     <string name="quest_split_way_many_splits_confirmation_description">هذه عدد غير قليل من الانقسامات. يمكنك دائمًا تقسيم الطريق لاحقًا.</string>
     <string name="quest_footwayPartSurface_title">ما هو سطح طريق المشاة هذا؟</string>
@@ -738,12 +730,9 @@
     <string name="quest_shop_gone_title">ماذا يوجد هنا الآن بدلاً من ذلك؟</string>
     <string name="quest_shop_gone_vacant_answer">إنه شاغر</string>
     <string name="quest_shop_gone_replaced_answer"> </string>
-    <string name="quest_shop_vacant_type_title">هذا المتجر كان فارغًا. ماذا يوجد هنا الآن؟</string>
     <string name="default_disabled_msg_go_inside_regional_warning">يتم تعطيل نوع المهمة هذا افتراضيًا لأنه غير مفيد في بعض المناطق ومن المحتمل أن تضطر إلى دخول المكان لتتمكن من الإجابة على مهمة من هذا النوع.</string>
     <string name="quest_dietType_explanation_kosher">يجب تحضير منتجات الكوشير وفقًا لقواعد خاصة، مع قيام وكالات اعتماد الكشروت بوضع علامة على المنتجات وفقًا للامتثال.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">لا يوجد مسار دراجات على الإطلاق</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">كالعادة، انقر فوق أحد جانبي الرسم التوضيحي، وحدد إجابة مناسبة وافعل الشيء نفسه بالنسبة للجانب الآخر. لاحظ جميع الخيارات المتاحة: بعض الحالات ليست واضحة، مثل طريق باتجاه واجد يسمح فيه لراكبي الدراجات بالقيادة في كلا الاتجاهين!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">اختر عدم وجود طريق للدراجات</string>
     <string name="quest_construction_completed_at_known_date">سينتهي في التاريخ …</string>
     <string name="quest_construction_completion_date_title">متى سيكتمل؟</string>
     <string name="quest_surface_value_clay">طين/وحل</string>
@@ -843,7 +832,9 @@
     <string name="quest_bollard_type_foldable2">قابل للطي (مع أو بدون مفتاح)</string>
     <string name="no_search_results">لم يعثر على شيء</string>
     <string name="quest_selection_hint_title">الكثير للقيام به؟</string>
-    <string name="quest_selection_hint_message">يجب أن تكون المساهمة في المقام الأول ممتعة! إذا كنت غارقًا في عدد المهام، فيمكنك دائمًا ضبط المهام التي يتم عرضها لك وبأي ترتيب في الإعدادات.</string>
+    <string name="quest_selection_hint_message">يجب أن تكون المساهمة في المقام الأول ممتعة!
+
+ إذا كنت غارقًا في عدد المهام، فيمكنك دائمًا ضبط المهام التي يتم عرضها لك وبأي ترتيب في الإعدادات.</string>
     <string name="quest_presets_preset_add">أضف قالب</string>
     <string name="quest_presets_preset_name">اسم القالب</string>
     <string name="quest_presets_default_name">الافتراضي</string>
@@ -972,9 +963,6 @@
     <string name="quest_bicycle_parking_type_handlebarholder">حامل المقود</string>
     <string name="quest_bicycle_parking_access_title2">من الذي يسمح له بركن دراجة هنا؟ قد يكون وقوف السيارات مجانيًا أو مدفوعًا.</string>
     <string name="quest_playground_access_title2">من المسموح له باستخدام هذا الملعب؟</string>
-    <string name="quest_sidewalk_answer_none_title">اختيار أن الأرصفة غير موجودة</string>
-    <string name="quest_side_select_interface_explanation">اضغط على جانب واحد وحدد الإجابة المطابقة.
-ثم افعل الشيء نفسه مع الجانب الآخر إذا كان موجودًا.</string>
     <string name="ar_measure">قياس</string>
     <string name="ar_core_tracking_error_too_steep_angle">شديد الانحدار للزاوية، ابتعد قليلاً</string>
     <string name="default_disabled_msg_no_ar">أنت بحاجة إلى مسطرة القياس لحل هذه المهمة لأن القياس بالكاميرا غير مدعوم على هذا الجهاز.</string>
@@ -1177,8 +1165,6 @@
     <string name="quest_placeName_no_name_answer">لا توجد لوحة للاسم...</string>
     <string name="quest_road_width_unusualInput_confirmation_description">يبدو هذا العرض غير منطقي. تذكر، يجب أن يكون هذا العرض من الرصيف إلى الرصيف، بما في ذلك مواقف السيارات في الشارع، وممرات الدراجات الهوائية وما إلى ذلك.</string>
     <string name="overlay_cycleway">ممرات دراجات</string>
-    <string name="bicycle_boulevard_is_a">إنها %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">إنها ليست بـ%1$s</string>
     <string name="bicycle_boulevard">شارع دراجات</string>
     <string name="separate_cycleway_no_or_allowed">طريق للمشاة، لا توجد لافتة واضحة بشأن ركوب الدراجات (يعتمد السماح بذلك على التشريعات)</string>
     <string name="separate_cycleway_non_segregated">ممر يشارك استخدامه</string>
@@ -1308,7 +1294,9 @@
     <string name="info">مزيد من المعلومات</string>
     <string name="quest_accessible_for_pedestrians_prohibited">إنه ممنوع.</string>
     <string name="quest_accessible_for_pedestrians_allowed">إنه مسموح به.</string>
-    <string name="quest_buildingLevels_hint">بالنسبة للمباني الواقعة على منحدر، يبدأ حساب عدد الطوابق من مستوى الأرض في الجانب الأكثر انخفاضاً. ويُعتبر الطابق طابقاً سطحياً (عُليّة) عندما تقع نوافذه داخل السقف. وبناءً على ذلك، فإن الأسقف التي لا تحتوي على طوابق سطحية ليست بالضرورة مسطحة، بل قد لا تكون مرتفعة بما يكفي لاستيعاب طابق كامل.</string>
+    <string name="quest_buildingLevels_hint">بالنسبة للمباني الواقعة على منحدر، يبدأ حساب عدد الطوابق من مستوى الأرض في الجانب الأكثر انخفاضاً. ويُعتبر الطابق طابقاً سطحياً (عُليّة) عندما تقع نوافذه داخل السقف.
+
+ وبناءً على ذلك، فإن الأسقف التي لا تحتوي على طوابق سطحية ليست بالضرورة مسطحة، بل قد لا تكون مرتفعة بما يكفي لاستيعاب طابق كامل.</string>
     <string name="quest_parcel_locker_brand">شو ماركة خزانة الطرود هاي؟</string>
     <string name="quest_powerPolesMaterial_is_terminal">خط الكهرباء مثبت بالمبنى</string>
     <string name="quest_cycleway_value_sidewalk_ok">لا شيء، لكن اللافتة تسمح بركوب الدراجات على الرصيف</string>
@@ -1338,18 +1326,31 @@
     <string name="note_for_object">أشار شخص آخر إلى:</string>
     <string name="quest_bicycle_parking_type_safeloops">حلقات أمان (تدعم العجلة والإطار)</string>
     <string name="quest_cycleway_value_sidewalk_ok_dual">لا شيء، لكن اللافتة تسمح بركوب الدراجات على الرصيف في كِلا الاتجاهين</string>
+    <string name="quest_surface_value_acrylic">راتنج اصطناعي</string>
     <string name="action_messages">اعرض الرسائل</string>
     <string name="action_create_new_poi">أنشئ جديد</string>
     <string name="auth_error">خطأ في الاستيثاق. يُرجى محاولة تسجيل الدخول مرة أخرى.</string>
     <string name="quest_accessible_for_pedestrians_sidewalk">في الواقع، يوجد رصيف.</string>
     <string name="quest_bicycle_repair_station_services_title">ما هي معدات الدراجات المتوفرة هنا؟</string>
     <string name="quest_bicycle_repair_station_tools">أدوات متنوعة</string>
+    <string name="quest_boat_rental_sailboat">مركب شراعي</string>
+    <string name="quest_powerAttachment_title">كيف يتم تثبيت خط الكهرباء هذا؟</string>
+    <string name="quest_powerAttachment_suspension">مدعومة من الأعلى</string>
+    <string name="quest_powerAttachment_pin">مدعومة من الأسفل</string>
     <string name="pedestrian_zone_designated">مخصّص لركوب الدراجات هنا</string>
     <string name="pedestrian_zone_allowed_sign">هناك لافتة تسمح بركوب الدراجات هنا</string>
     <string name="pedestrian_zone_no_sign">لا توجد لافتة واضحة بشأن ركوب الدراجات هنا</string>
+    <string name="quest_dietType_glutenfree_name_title">هل تتوفر منتجات خالية من الجلوتين هنا؟</string>
+    <string name="quest_construction_minor_title">هل أعمال الطرق البسيطة هنا انتهت؟</string>
     <string name="map_attribution">إسناد الخريطة</string>
     <string name="link_panoramax_description">برنامج حر ومفتوح المصدر وخدمة غير ربحية لمشاركة الصور الملتقطة من مستوى الشارع عبر المشاركة الجماعية</string>
+    <string name="link_openclimbing_description">خريطة بمواقع التسلق</string>
     <string name="pref_title_zoom_buttons">اعرض أزرار تقريب/تبعيد الخريطة</string>
+    <string name="overlay_mtb_scale">صعوبة ال MTB</string>
+    <string name="overlay_mtb_scale_0">مستوى 0</string>
+    <string name="overlay_mtb_scale_1">مستوى 1</string>
+    <string name="overlay_mtb_scale_2">مستوى 2</string>
+    <string name="overlay_mtb_scale_3">مستوى 3</string>
     <string name="overlay_mtb_scale_6_description">تضاريس خطيرة وغير سالكة، لا تصلح لركوب الدراجات الجبلية.</string>
     <string name="pref_title_overlays">تحديد الطبقة</string>
     <string name="overlay">الطبقة</string>
@@ -1381,7 +1382,6 @@
     <string name="quest_charging_station_bicycles_title">هل يمكن شحن الدراجات الهوائية هنا أيضًا؟</string>
     <string name="quest_charging_station_bicycles_hint">توصّل محولات طاقة شواحن الدراجات بمقابس الكهرباء المنزلية العادية.</string>
     <string name="quest_tower_access_title">من يمكنه دخول هذا البرج؟ قد يكون الدخول مجانياً أو مدفوعاً.</string>
-    <string name="quest_charging_station_bicycles_answer_only">إنه مخصّص للدراجات فقط</string>
     <string name="quest_maxweight_add_sign">أضف علامة</string>
     <string name="quest_maxweight_remove_sign">أزل العلامة</string>
     <string name="weekly_osm_new_edition_title">إصدار جديد!</string>
@@ -1391,12 +1391,22 @@
     <string name="pref_title_message_changelog">إصدارات تطبيق جديدة</string>
     <string name="quest_address_answer_block2">إنه على بعد مربع سكني...</string>
     <string name="quest_address_answer_no_block2">الأمر لا يقتصر على مجرد مربع سكني...</string>
+    <string name="quest_artwork_title">ما نوع هذا العمل الفني؟</string>
+    <string name="quest_artwork_sculpture">منحوتة</string>
+    <string name="quest_artwork_statue">تمثال</string>
+    <string name="quest_artwork_mural">جدارية</string>
+    <string name="quest_artwork_graffiti">جرافيتي</string>
+    <string name="quest_artwork_installation">تركيب فني</string>
     <string name="quest_artwork_stone">حجر</string>
+    <string name="quest_artwork_painting">لوحة</string>
+    <string name="quest_artwork_street_art">فنون شارع اخرى</string>
+    <string name="quest_artwork_architecture">معمارية</string>
     <string name="quest_artwork_fountain">نافورة</string>
     <string name="quest_bothway_title">في أي اتجاه يمكنك ركوب هذا؟</string>
     <string name="quest_camp_tent_title">هل يُسمح بالتخييم هنا باستخدام خيمة؟</string>
     <string name="quest_camp_cabin_title">هل توجد أكواخ يمكن الإقامة فيها هنا؟</string>
     <string name="quest_camp_caravan_title">هل يُسمح بالتخييم هنا باستخدام منزل متنقل أو مقطورة سفر؟</string>
+    <string name="quest_ferry_bicycle_title">هل الدراجات مسموحه على هذه العبارة</string>
     <string name="quest_openingHours_add_time">أضف وقت</string>
     <string name="quest_openingHours_chooseStartTimeTitle">حدّد وقت البدء</string>
     <string name="quest_openingHours_chooseEndTimeTitle">حدّد وقت الانتهاء</string>
@@ -1408,6 +1418,7 @@
     <string name="quest_shower_hot_water_title">أيوجد ماء ساخن هنا؟</string>
     <string name="calendar_new_event_title">حدث OSM جديد في منطقتك!</string>
     <string name="pref_title_message_calendar">فعاليات OSM جديدة في منطقتك</string>
+    <string name="quest_ferry_hgv_title">هل هذه العبارة تنقل مركبات النقل الثقيل؟</string>
     <string name="dialog_dont_notify_again2">ألغِ الاشتراك</string>
     <string name="quest_leave_new_note_photo_delete">احذف</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit2">لافتة تحذيرية للحد الأقصى للسرعة</string>

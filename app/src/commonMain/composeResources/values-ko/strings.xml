@@ -122,7 +122,6 @@ StreetComplete 서버에 있는 &lt;a href="https://www.westnordost.de/streetcom
 이 앱은 주변 지역에서 누락되거나 보완이 필요한 지도 정보를 찾아 질문으로 표시합니다. 현장에서 간단한 질문에 답하면, 그 정보가 지도에 반영됩니다.
 
 입력하신 정보는 다른 편집기를 사용할 필요 없이, 귀하의 이름으로 곧바로 OpenStreetMap에 추가됩니다.</string>
-    <string name="quest_name_answer_noName">이름이 없습니다…</string>
     <string name="quest_name_answer_noName_confirmation_title">정말로 이름이 없나요?</string>
     <string name="quest_name_noName_confirmation_positive">네, 이름이 없습니다</string>
     <string name="quest_openingHours_add_times">영업 시간 추가</string>
@@ -199,11 +198,6 @@ StreetComplete 서버에 있는 &lt;a href="https://www.westnordost.de/streetcom
     <string name="underground_recycling_container">지하 컨테이너</string>
     <string name="quest_streetName_answer_cantType">표지판에 나와 있는 문자를 입력할 수 없음</string>
     <string name="quest_streetName_cantType_title">키보드 레이아웃이 없나요?</string>
-    <string name="quest_streetName_cantType_open_settings">설정 열기</string>
-    <string name="quest_streetName_cantType_open_store">앱 스토어로 이동</string>
-    <string name="quest_streetName_cantType_description">기본 키보드를 사용하고 있다면, 키보드 설정에서 원하는 언어의 키보드를 간단하게 활성화할 수 있습니다.
-
-기본 키보드를 사용하고 있지 않다면, 앱 스토어에서 많은 언어를 지원하는 키보드를 다운로드하세요. 대표적으로 구글 Gboard, SwiftKey Keyboard, Multiling O Keyboard가 있습니다.</string>
     <string name="quest_streetName_menuItem_nolanguage">(미지정)</string>
     <string name="quest_fireHydrant_type_title">어떤 종류의 소화전인가요?</string>
     <string name="quest_fireHydrant_type_pillar">기둥형</string>
@@ -486,7 +480,6 @@ StreetComplete 서버에 있는 &lt;a href="https://www.westnordost.de/streetcom
     <string name="theme_dark">어두움</string>
     <string name="theme_system_default">시스템 기본값</string>
     <string name="action_open_location">다른 앱에서 위치 열기</string>
-    <string name="map_application_missing">설치된 다른 지도 앱이 없습니다</string>
     <string name="label_housenumber">건물 번호</string>
     <string name="quest_busStopShelter_covered">별도의 구조물로 덮여있음</string>
     <string name="quest_ferry_pedestrian_title">보행자가 이 페리 노선을 이용할 수 있나요?</string>
@@ -501,7 +494,6 @@ StreetComplete 서버에 있는 &lt;a href="https://www.westnordost.de/streetcom
     <string name="quest_generic_answer_differs_along_the_way">부분별로 다름…</string>
     <string name="quest_split_way_description">부분별로 대답이 다르다면, 먼저 길을 분할해야 합니다. 그런 다음, 나뉘어진 부분에 대해 질문을 각각 수행할 수 있습니다.
 분할할까요?</string>
-    <string name="quest_split_way_tutorial">분할할 지점을 한 곳 이상 선택하세요. 최대한 정확히 나눠 주세요, 지도 확대도 가능합니다.</string>
     <string name="quest_split_way_too_imprecise">더 확대해 주세요</string>
     <string name="quest_split_way_many_splits_confirmation_description">분할 지점이 너무 많습니다. 필요하다면 나중에 분할해 주세요.</string>
     <string name="quest_footwayPartSurface_title">이 보도의 포장재가 무엇인가요?</string>
@@ -761,12 +753,9 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_shop_gone_title">지금은 여기에 무엇이 있나요?</string>
     <string name="quest_shop_gone_vacant_answer">비어 있습니다</string>
     <string name="quest_shop_gone_replaced_answer">새로 바뀐 상점명:</string>
-    <string name="quest_shop_vacant_type_title">이 가게는 비어 있었습니다. 지금 여기에 무엇이 있나요?</string>
     <string name="default_disabled_msg_go_inside_regional_warning">이 유형의 질문은 일부 지역에서 유용하지 않고, 답변하려면 보통 해당 장소에 직접 들어가야 하기 때문에 기본적으로 비활성화되어 있습니다.</string>
     <string name="quest_dietType_explanation_kosher">코셔 제품은 특수 규정에 따라 제조되어야 하며, 카샤룻 인증 기관에서 적합 평가를 받아야 합니다.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">자전거 도로 없음</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">평소와 마찬가지로, 그림에서 한 쪽을 탭한 후 적절한 답변을 고르고, 반대쪽도 동일하게 합니다. 모든 선택지를 꼼꼼히 확인하세요: 한눈에 알아보기 힘든 경우도 존재하는데, 예를 들어, 양방향 자전거 통행이 가능한 일방통행로 등이 있습니다.</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">자전거 도로가 없음을 표시하기</string>
     <string name="quest_construction_completed_at_known_date">완공일자는…</string>
     <string name="quest_construction_completion_date_title">완공일자가 언제인가요?</string>
     <string name="quest_surface_value_clay">찰흙</string>
@@ -865,7 +854,9 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_bollard_type_foldable2">접이형 (잠겨 있을 수 있음)</string>
     <string name="no_search_results">아무것도 없음</string>
     <string name="quest_selection_hint_title">할 게 너무 많나요?</string>
-    <string name="quest_selection_hint_message">기여는 일단 재밌어야죠! 질문 수가 너무 많아 부담스럽다면, 어떤 질문을 어떤 순서대로 볼지 설정에서 언제든지 조정할 수 있습니다.</string>
+    <string name="quest_selection_hint_message">기여는 일단 재밌어야죠!
+
+질문 수가 너무 많아 부담스럽다면, 어떤 질문을 어떤 순서대로 볼지 설정에서 언제든지 조정할 수 있습니다.</string>
     <string name="quest_presets_preset_add">프리셋 추가</string>
     <string name="quest_presets_preset_name">프리셋 이름</string>
     <string name="quest_presets_default_name">기본값</string>
@@ -992,9 +983,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_bicycle_parking_type_handlebarholder">핸들 거치대</string>
     <string name="quest_bicycle_parking_access_title2">여기에 자전거를 주차할 수 있는 사람이 누구인가요? 주차 요금은 있을 수도, 없을 수도 있습니다.</string>
     <string name="quest_playground_access_title2">누가 이 놀이터를 이용할 수 있나요?</string>
-    <string name="quest_sidewalk_answer_none_title">인도가 없음을 선택하기</string>
-    <string name="quest_side_select_interface_explanation">한 쪽을 탭하여 올바른 답을 고르세요.
-반대쪽도 존재하면 동일하게 하세요.</string>
     <string name="ar_measure">측정</string>
     <string name="ar_core_tracking_error_too_steep_angle">각도가 너무 가파릅니다, 조금 뒤로 물러나 보세요</string>
     <string name="default_disabled_msg_no_ar">이 기기에서는 카메라를 이용한 측량이 불가능하므로 이 질문을 해결하기 위해서는 줄자가 필요합니다.</string>
@@ -1196,8 +1184,6 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_placeName_no_name_answer">이름이 없습니다…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">너비가 적절하지 않아 보입니다. 너비를 잴 때, 주차 차로와 자전거 차선을 포함해 연석 끝에서 끝까지 재야 한다는 점을 유념하세요.</string>
     <string name="overlay_cycleway">자전거 도로</string>
-    <string name="bicycle_boulevard_is_a">%1$s임</string>
-    <string name="bicycle_boulevard_is_not_a">%1$s 아님</string>
     <string name="bicycle_boulevard">자전거 길</string>
     <string name="separate_cycleway_no_or_allowed">인도, 별도의 자전거 표지 없음 (허용 여부는 법령에 따름)</string>
     <string name="separate_cycleway_non_segregated">자전거 및 보행자 겸용 도로</string>
@@ -1452,5 +1438,4 @@ StreetComplete는 주변에서 지도에 빠진 정보가 있는지 찾아요: �
     <string name="quest_charging_station_bicycles_title">이곳에서 자전거도 충전할 수 있나요?</string>
     <string name="quest_charging_station_bicycles_hint">자전거 충전기 어댑터는 일반 가정용 콘센트에 꽂습니다.</string>
     <string name="quest_tower_access_title">누가 이 타워에 출입할 수 있나요? 무료일 수도, 유료일 수도 있습니다.</string>
-    <string name="quest_charging_station_bicycles_answer_only">자전거 전용</string>
 </resources>

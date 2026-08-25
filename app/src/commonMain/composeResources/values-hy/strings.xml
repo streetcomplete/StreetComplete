@@ -96,7 +96,6 @@
 Այս ծրագիրը գտնում է թերի եւ ընդլայնվող տվյալներ ձեր հարեւանությամբ եւ այն ցուցադրում է քարտեզի վրա, որպես մարկեր: Դրանցից յուրաքանչյուրը լուծելի է `պատասխանելով մի պարզ հարց` կայքում տեղեկատվությունը լրացնելու համար:
 
 Ձեր մուտքագրվող տեղեկատվությունը այնուհետեւ ուղղակիորեն ավելացվում է ձեր անունով OpenstreetMap- ին, առանց մեկ այլ խմբագիր օգտագործելու անհրաժեշտության:</string>
-    <string name="quest_name_answer_noName">Անուն չունի…</string>
     <string name="quest_name_answer_noName_confirmation_title">Իսկապես ոչ մի անուն:</string>
     <string name="quest_name_noName_confirmation_positive">Այո, ոչ մի անուն</string>
     <string name="quest_openingHours_add_times">Ավելացնել բացման ժամերը</string>
@@ -173,11 +172,6 @@
     <string name="underground_recycling_container">Ստորգետնյա բեռնարկղ</string>
     <string name="quest_streetName_answer_cantType">Հնարավոր չէ մուտքագրել նշանի նիշերը</string>
     <string name="quest_streetName_cantType_title">Ստեղնաշարի դասավորությունը բացակայում է:</string>
-    <string name="quest_streetName_cantType_open_settings">Բաց պարամետրեր</string>
-    <string name="quest_streetName_cantType_open_store">Այցելեք App Store</string>
-    <string name="quest_streetName_cantType_description">Եթե ​​դուք օգտագործում եք լռելյայն ստեղնաշար, հնարավորություններն այն են, որ դուք պարզապես կարող եք միացնել ստեղնաշարի դասավորությունը մուտքային մեթոդի պարամետրերում անհրաժեշտ լեզվով:
-
-Հակառակ դեպքում, App Store- ում կարող եք ներբեռնել մեկ այլ ստեղնաշար: Շատ լեզուներ աջակցող հանրաճանաչ ստեղնաշարեր Google Goard- ի, Swiftkey ստեղնաշարն են, ստեղնաշարը:</string>
     <string name="quest_streetName_menuItem_nolanguage">(չճշտված)</string>
     <string name="quest_fireHydrant_type_title">Ինչպիսի հրդեհային հիդրանտ է սա:</string>
     <string name="quest_fireHydrant_type_pillar">Սյուն</string>
@@ -453,7 +447,6 @@
     <string name="theme_dark">Մութ</string>
     <string name="theme_system_default">Համակարգի լռելյայն</string>
     <string name="action_open_location">Բաց տեղադրություն մեկ այլ հավելվածում</string>
-    <string name="map_application_missing">Այլ քարտեզի դիմում չի տեղադրվել</string>
     <string name="label_housenumber">Տնային համարը</string>
     <string name="quest_busStopShelter_covered">Ամբողջ կանգառը ծածկված է</string>
     <string name="quest_ferry_pedestrian_title">Արդյոք այս լաստանավը տրանսպորտում է հետիոտները:</string>
@@ -468,7 +461,6 @@
     <string name="quest_generic_answer_differs_along_the_way">Տարվում է ճանապարհին…</string>
     <string name="quest_split_way_description">Եթե ​​դա տարբերվում է ճանապարհին, առաջին քայլը ճանապարհը պառակտելն է: Դրանից հետո յուրաքանչյուր պառակտված մասի համար որոնմանը կարելի է պատասխանել առանձին:
 Պառակտեք այն հիմա:</string>
-    <string name="quest_split_way_tutorial">Հպեք այն կետի վրա, այն կետում բաժանելու (ներ) ում, որտեղ պատասխանը տարբերվում է: Փորձեք հնարավորինս ճշգրիտ լինել, կարող եք այնքան մեծացնել:</string>
     <string name="quest_split_way_too_imprecise">Խնդրում ենք մեծացնել հետագա</string>
     <string name="quest_split_way_many_splits_confirmation_description">Սրանք բավականին քիչ պառակտում են: Միշտ կարող եք հետագայում հետագայում բաժանվել:</string>
     <string name="quest_footwayPartSurface_title">Որն է այստեղի մակերեսը:</string>
@@ -728,14 +720,9 @@
     <string name="quest_shop_gone_title">Ինչ է հիմա այստեղ:</string>
     <string name="quest_shop_gone_vacant_answer">Թափուր է</string>
     <string name="quest_shop_gone_replaced_answer"> </string>
-    <string name="quest_shop_vacant_type_title">Այս խանութը թափուր է եղել: Հիմա ինչ է այստեղ:</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Այս որոնման տեսակը անջատված է լռելյայն, քանի որ այն օգտակար չէ որոշ շրջաններում եւ, ամենայն հավանականությամբ, պետք է մուտք գործեք տեղ, որպեսզի կարողանաք պատասխանել այս տեսակի որոնմանը:</string>
     <string name="quest_dietType_explanation_kosher">Կոշերի արտադրանքը պետք է պատրաստվի հատուկ կանոնների համաձայն, Կաշրուտի սերտիֆիկացման գործակալությունները `նշելով արտադրանքը համապատասխանության մեջ:</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Ոչ մի ցիկլով</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Սովորաբար, թակել նկարազարդման մի կողմում, ընտրեք պատշաճ պատասխան եւ նույնը արեք մյուս կողմի համար:
-
-Նկատի ունեցեք առկա բոլոր ընտրանքները. Որոշ դեպքեր ակնհայտ չեն, ինչպես մի քայլար ճանապարհը, որը թույլ է տալիս հեծանվորդներին երկու ուղղություններով:</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Ընտրելով, որ ցիկլով չկա</string>
     <string name="quest_construction_completed_at_known_date">Ավարտվելու է ամսաթվով …</string>
     <string name="quest_construction_completion_date_title">Երբ է այն ամբողջական:</string>
     <string name="quest_surface_value_clay">Կավ</string>
@@ -834,7 +821,9 @@
     <string name="quest_bollard_type_foldable2">Ծալովի (առանց առանցքային)</string>
     <string name="no_search_results">Ոչինչ չի գտնվել</string>
     <string name="quest_selection_hint_title">Շատ անելիքներ:</string>
-    <string name="quest_selection_hint_message">Ներդրումները պետք է հիմնականում զվարճալի լինեն: Եթե ​​դուք ծանրաբեռնված եք որոնումների քանակից, միշտ կարող եք մեղմել, թե որ որոնումներն են ցուցադրվում ձեզ եւ ինչ կարգով պարամետրերում:</string>
+    <string name="quest_selection_hint_message">Ներդրումները պետք է հիմնականում զվարճալի լինեն:
+
+Եթե ​​դուք ծանրաբեռնված եք որոնումների քանակից, միշտ կարող եք մեղմել, թե որ որոնումներն են ցուցադրվում ձեզ եւ ինչ կարգով պարամետրերում:</string>
     <string name="quest_presets_preset_add">Ավելացնել նախադրված</string>
     <string name="quest_presets_preset_name">Նախադրված անուն</string>
     <string name="quest_presets_default_name">Լռելյայն</string>
@@ -961,9 +950,6 @@
     <string name="quest_bicycle_parking_type_handlebarholder">Handlebar Holder</string>
     <string name="quest_bicycle_parking_access_title2">Ով է թույլատրվում այստեղ հեծանիվ կայանել: Ավտոկանգառը կարող է լինել անվճար կամ վճարովի:</string>
     <string name="quest_playground_access_title2">Ով է թույլատրվում օգտագործել այս խաղահրապարակը:</string>
-    <string name="quest_sidewalk_answer_none_title">Ընտրելով այդ մայթերը բացակայում են</string>
-    <string name="quest_side_select_interface_explanation">Հպեք մի կողմ եւ ընտրեք համապատասխան պատասխանը:
-Նույնը արեք մյուս կողմի համար, եթե առկա է:</string>
     <string name="ar_measure">Չափանիշ</string>
     <string name="ar_core_tracking_error_too_steep_angle">Չափազանց կտրուկ անկյուն, մի փոքր հեռու</string>
     <string name="default_disabled_msg_no_ar">Այս որոնման լուծման համար ձեզ հարկավոր է ժապավենի միջոց, քանի որ տեսախցիկի չափումը չի ապահովվում այս սարքի վրա:</string>
@@ -1096,8 +1082,6 @@
     <string name="move_node">Այլ տեղում է</string>
     <string name="node_moved_not_far_enough">Տեղափոխել ավելի հեռու</string>
     <string name="quest_placeName_no_name_answer">Անվան նշան չկա</string>
-    <string name="bicycle_boulevard_is_a">%1$s է</string>
-    <string name="bicycle_boulevard_is_not_a">%1$s չէ</string>
     <string name="quest_traffic_signals_sound_description">Հուշում. փնտրեք բարձրախոս։ Ոչ բոլոր ազդանշանները միանում են կոճակով։</string>
     <string name="unknown_surface_title">Այլ հարթություն</string>
     <string name="quest_crossing_title2">Այստեղ անցում կա՞:</string>
