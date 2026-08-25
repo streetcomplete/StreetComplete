@@ -32,7 +32,6 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
@@ -81,15 +80,10 @@ import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
-import de.westnordost.streetcomplete.util.ktx.hasLocationPermission
-import de.westnordost.streetcomplete.util.ktx.isLocationAvailable
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toOffset
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.location.FineLocationManager
-import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
-import de.westnordost.streetcomplete.util.location.LocationRequestFragment
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -139,7 +133,6 @@ class MainActivity :
     override val scope: Scope by activityScope()
 
     private val questAutoSyncer: QuestAutoSyncer by inject()
-    private val locationAvailabilityReceiver: LocationAvailabilityReceiver by inject()
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
@@ -148,8 +141,6 @@ class MainActivity :
     private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val mapAppLauncher: MapAppLauncher by inject()
-
-    private lateinit var locationManager: FineLocationManager
 
     private val viewModel by viewModel<MainViewModel>()
     private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
@@ -171,14 +162,6 @@ class MainActivity :
 
     /* +++++++++++++++++++++++++++++++++++++++ CALLBACKS ++++++++++++++++++++++++++++++++++++++++ */
 
-    private val requestLocationPermissionResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context, intent: Intent) {
-            if (!intent.getBooleanExtra(LocationRequestFragment.GRANTED, false)) {
-                toast(R.string.no_gps_no_quests, Toast.LENGTH_LONG)
-            }
-        }
-    }
-
     //region Lifecycle - Android Lifecycle Callbacks
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -197,16 +180,9 @@ class MainActivity :
             handleIntent(intent)
 
             supportFragmentManager.commit {
-                setReorderingAllowed(true)
-                add(LocationRequestFragment(), TAG_LOCATION_REQUEST)
                 add(mapContainer, MainMapFragment(), TAG_MAP)
             }
         }
-
-        LocalBroadcastManager.getInstance(this).registerReceiver(
-            requestLocationPermissionResultReceiver,
-            IntentFilter(LocationRequestFragment.REQUEST_LOCATION_PERMISSION_RESULT)
-        )
 
         lifecycle.addObserver(questAutoSyncer)
         feedsUpdater.updateAtMostDaily()
@@ -588,7 +564,6 @@ class MainActivity :
     private fun onLocationIsEnabled() {
         viewModel.locationState.value = LocationState.SEARCHING
         mapFragment?.startPositionTracking()
-        questAutoSyncer.startPositionTracking()
 
         mapFragment?.centerCurrentPositionIfFollowing()
         locationManager.getCurrentLocation()
@@ -602,7 +577,6 @@ class MainActivity :
         viewModel.isNavigationMode.value = false
         viewModel.displayedPosition.value = null
         mapFragment?.clearPositionTracking()
-        questAutoSyncer.stopPositionTracking()
         locationManager.removeUpdates()
     }
 
@@ -675,10 +649,6 @@ class MainActivity :
 
     private fun onClickLocationPointer() {
         setIsFollowingPosition(true)
-    }
-
-    private fun requestLocation() {
-        (supportFragmentManager.findFragmentByTag(TAG_LOCATION_REQUEST) as? LocationRequestFragment)?.startRequest()
     }
 
     private fun onClickCreateButton() {
@@ -875,7 +845,6 @@ class MainActivity :
     //endregion
 
     companion object {
-        private const val TAG_LOCATION_REQUEST = "LocationRequestFragment"
         private const val TAG_MAP = "MainMapFragment"
     }
 }
