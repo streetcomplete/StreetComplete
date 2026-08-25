@@ -34,7 +34,6 @@ import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
-import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.sound.AndroidSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.io.asSource
