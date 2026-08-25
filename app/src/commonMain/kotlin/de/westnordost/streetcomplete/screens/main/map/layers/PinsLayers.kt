@@ -130,12 +130,14 @@ fun PinsLayers(
         // importantly, dynamic size per zoom + collision doesn't work together well, it
         // results in a lot of flickering.
         iconSize = const(1f),
+        /* TODO maplibre-compose: negative paddings not allowed
+           https://github.com/maplibre/maplibre-compose/issues/1091
         iconPadding = const(PaddingValues.Absolute(
             left = 2.5.dp,
             top = -2.5.dp,
             right = 0.dp,
             bottom = -7.dp,
-        )),
+        )),*/
         iconOffset = const(DpOffset((-4.5).dp, (-34.5).dp)),
         iconAllowOverlap = const(false),
         iconIgnorePlacement = const(false),

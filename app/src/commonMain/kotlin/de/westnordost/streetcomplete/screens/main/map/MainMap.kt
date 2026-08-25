@@ -41,6 +41,7 @@ import org.maplibre.compose.style.rememberStyleState
 import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.MapClickHandler
 import org.maplibre.spatialk.geojson.FeatureCollection
+import org.maplibre.spatialk.geojson.Geometry
 
 /**
  * MapLibre Map with StreetComplete theme and all the StreetComplete specific things displayed on
@@ -89,10 +90,6 @@ fun MainMap(
         else -> null
     }
 
-    val overlaySource = rememberGeoJsonSource(
-        GeoJsonData.Features(FeatureCollection(styledElements.flatMap { it.toGeoJsonFeatures() })),
-    )
-
     LaunchedEffect(cameraState.position) {
         viewModel.onMapMoved(cameraState)
     }
@@ -114,6 +111,10 @@ fun MainMap(
     ) {
         val languages = listOf(Locale.current.language)
         val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
+
+        val overlaySource = rememberGeoJsonSource(
+            GeoJsonData.Features(FeatureCollection(styledElements.flatMap { it.toGeoJsonFeatures() })),
+        )
 
         MapStyle(
             colors = colors,
