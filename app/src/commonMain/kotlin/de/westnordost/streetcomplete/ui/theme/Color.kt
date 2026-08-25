@@ -67,7 +67,7 @@ val Colors.divider @ReadOnlyComposable @Composable get() =
     onSurface.copy(alpha = 0.12f)
 
 val Colors.surfaceContainer @ReadOnlyComposable @Composable get() =
-    if (isLight) Color(0xffdddddd) else Color(0xff222222)
+    if (isLight) Color(0xfff0f0f0) else Color(0xff0f0f0f)
 
 // use lighter tones (200) for increased contrast with dark background
 

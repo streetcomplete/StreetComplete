@@ -65,7 +65,6 @@ import org.jetbrains.compose.resources.stringResource
                 parking?.floatingIcon?.let { painterResource(it) }
             },
             lastPicked = lastPicked,
-            lastPickedContentPadding = PaddingValues(start = 48.dp, end = 56.dp),
         )
 
         if (width != null) {

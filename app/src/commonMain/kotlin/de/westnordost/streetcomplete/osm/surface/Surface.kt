@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.osm.surface
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class Surface(val osmValue: String?) {
     // paved
     ASPHALT("asphalt"),
@@ -21,6 +24,7 @@ enum class Surface(val osmValue: String?) {
 
     // natural
     DIRT("dirt"),
+    LATERITE("laterite"),
     MUD("mud"),
     GRASS("grass"),
     SAND("sand"),
@@ -40,8 +44,18 @@ enum class Surface(val osmValue: String?) {
     UNSUPPORTED(null);
 
     companion object {
-        /** Selectable surface values for roads, paths, etc. */
-        val selectableValuesForWays: List<Surface> = listOf(
+        // Based on outreach-confirmed countries from #6881 and additional tropical/subtropical countries in the same belt
+        private val lateriteCountries = setOf(
+            "AG", "AO", "AR", "AU", "AW", "BB", "BD", "BF", "BI", "BJ", "BN", "BO", "BR", "BS", "BZ",
+            "CD", "CF", "CG", "CI", "CM", "CN", "CO", "CR", "CU", "CW", "DM", "DO", "EC", "ET", "FJ",
+            "GA", "GD", "GF", "GH", "GM", "GN", "GP", "GQ", "GT", "GW", "GY", "HN", "HT", "ID", "IN",
+            "JM", "KE", "KH", "KN", "LA", "LC", "LK", "LR", "LS", "MG", "ML", "MM", "MQ", "MU", "MW",
+            "MX", "MY", "MZ", "NC", "NG", "NI", "NP", "PA", "PE", "PG", "PH", "PR", "PY", "RW", "SB",
+            "SC", "SG", "SL", "SN", "SR", "SS", "SV", "SX", "SZ", "TG", "TH", "TL", "TT", "TW", "TZ",
+            "UG", "VC", "VE", "VN", "ZA", "ZM", "ZW"
+        )
+
+        private val selectableValuesForWaysWithoutLaterite = listOf(
             // paved surfaces
             ASPHALT, PAVING_STONES, CONCRETE, CONCRETE_LANES,
             SETT, UNHEWN_COBBLESTONE, GRASS_PAVER, WOOD, METAL,
@@ -52,6 +66,20 @@ enum class Surface(val osmValue: String?) {
             // generic surfaces
             PAVED, UNPAVED, GROUND
         )
+
+        private val selectableValuesForWaysWithLaterite = buildList(selectableValuesForWaysWithoutLaterite.size + 1) {
+            addAll(selectableValuesForWaysWithoutLaterite)
+            add(indexOf(DIRT) + 1, LATERITE)
+        }
+
+        /** Selectable surface values for roads, paths, etc. */
+        fun getSelectableValuesForWays(countryCode: String? = null): List<Surface> {
+            return if (countryCode != null && lateriteCountries.contains(countryCode)) {
+                selectableValuesForWaysWithLaterite
+            } else {
+                selectableValuesForWaysWithoutLaterite
+            }
+        }
 
         /** Selectable surface values for sport pitches */
         val selectableValuesForPitches: List<Surface> = listOf(
@@ -65,6 +93,12 @@ enum class Surface(val osmValue: String?) {
             WOOD, METAL, GRAVEL,
             PEBBLES, ROCK,
             PAVED, UNPAVED, GROUND
+        )
+
+        val selectableValuesForBeaches: List<Surface> = listOf(
+            SAND, PEBBLES, GRAVEL,
+            GRASS, ROCK, FINE_GRAVEL,
+            GROUND
         )
 
         /** A map of tag value to Surface type that should be treated as aliases of known Surface

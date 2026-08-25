@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.ui.theme.TrafficSignColor
  * */
 @Composable
 fun MaxSpeedSign(
-    countryCode: String,
+    countryCode: String?,
     modifier: Modifier = Modifier,
     content: @Composable (Shape) -> Unit,
 ) {
@@ -45,7 +45,7 @@ fun MaxSpeedSign(
 /** Surface that looks like a standard max speed sign (white circle with red border) */
 @Composable
 private fun MaxSpeedSignDefault(
-    countryCode: String,
+    countryCode: String?,
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit,
 ) {

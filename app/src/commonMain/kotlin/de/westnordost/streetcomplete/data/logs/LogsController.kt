@@ -2,20 +2,15 @@ package de.westnordost.streetcomplete.data.logs
 
 import de.westnordost.streetcomplete.util.Listeners
 
-class LogsController(private val logsDao: LogsDao) {
+class LogsController(private val logsDao: LogsDao) : LogsSource {
 
-    /** Interface to be notified of new log messages */
-    interface Listener {
-        fun onAdded(message: LogMessage)
-    }
+    private val listeners = Listeners<LogsSource.Listener>()
 
-    private val listeners = Listeners<Listener>()
-
-    fun getLogs(
-        levels: Set<LogLevel> = LogLevel.entries.toSet(),
-        messageContains: String? = null,
-        newerThan: Long? = null,
-        olderThan: Long? = null,
+    override fun getLogs(
+        levels: Set<LogLevel>,
+        messageContains: String?,
+        newerThan: Long?,
+        olderThan: Long?,
     ): List<LogMessage> =
         logsDao.getAll(levels, messageContains, newerThan, olderThan)
 
@@ -32,11 +27,11 @@ class LogsController(private val logsDao: LogsDao) {
         onAdded(message)
     }
 
-    fun addListener(listener: Listener) {
+    override fun addListener(listener: LogsSource.Listener) {
         listeners.add(listener)
     }
 
-    fun removeListener(listener: Listener) {
+    override fun removeListener(listener: LogsSource.Listener) {
         listeners.remove(listener)
     }
 

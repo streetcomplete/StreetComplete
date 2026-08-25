@@ -66,7 +66,7 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
                     .verticalScroll(scrollState)
             )
         },
-        buttons = {
+        buttonRow = {
             TextButton(onClick = onDismissRequest) {
                 Text(stringResource(Res.string.cancel))
             }

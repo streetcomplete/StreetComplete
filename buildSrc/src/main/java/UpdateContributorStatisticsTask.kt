@@ -2,16 +2,15 @@ import com.charleskorn.kaml.Yaml
 import com.charleskorn.kaml.YamlConfiguration
 import com.charleskorn.kaml.encodeToStream
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
-import java.net.URL
+import java.net.URI
 
 /** Counts the changes made by each author from the git log, merges multiple authors that are linked
- *  to the same github account and writes the result into a JSON file. */
+ *  to the same GitHub account and writes the result into a JSON file. */
 open class UpdateContributorStatisticsTask : DefaultTask() {
     @get:Input lateinit var targetFile: String
     @get:Input var skipCommits: Set<String> = setOf()
@@ -128,7 +127,7 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
     }
 
     private fun downloadGithubUserDetails(hash: String): GithubUser? {
-        val url = URL("https://api.github.com/repos/streetcomplete/streetcomplete/commits/$hash")
+        val url = URI("https://api.github.com/repos/streetcomplete/streetcomplete/commits/$hash").toURL()
         val conn = url.openConnection()
         conn.setRequestProperty("Authorization", "token $githubApiToken")
         val response = conn.getInputStream().bufferedReader().readText()

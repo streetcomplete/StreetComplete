@@ -1,6 +1,6 @@
-import UIKit
+import StreetComplete
 import SwiftUI
-import ComposeApp
+import UIKit
 
 struct ComposeView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
@@ -13,6 +13,7 @@ struct ComposeView: UIViewControllerRepresentable {
 struct ContentView: View {
     var body: some View {
         ComposeView()
-                .ignoresSafeArea(.keyboard) // Compose has own keyboard handler
+            // Compose handles all insets (and the keyboard) itself
+            .ignoresSafeArea()
     }
 }

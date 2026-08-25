@@ -109,7 +109,7 @@ class OsmNoteQuestControllerTest {
         assertNotNull(ctrl.get(1))
     }
 
-    @Test fun `get note quest created in app without comments and with survey required marker (ignore case) returns non-null`() {
+    @Test fun `get note quest created in app without comments and with survey required marker ignoring case returns non-null`() {
         every { noteSource.get(1) } returns
             note(comments = listOf(
                 comment(

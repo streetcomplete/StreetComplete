@@ -13,7 +13,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 231
 officialLanguages: [sk]
 orchardProduces: [grape, apple, walnut, plum, tomato, peach, strawberry, chilli_pepper, sweet_pepper, apricot, hop, pear, blueberry, cherry, raspberry]
-parcelLockerBrand: [Z-Box, AlzaBox, Packeta, balíkovo box, GLS Balíkomat, BalíkoBOX, DPD Pickup Station, GLS, balíkovo, DPD Pickup Box, Balíkovo, GymBeam Box, dpd, Penguin Box, Dr. Max, tamburi, Pilulka Box, DPD]
+parcelLockerBrand: [Z-Box, AlzaBox, Packeta, balíkovo box, GLS Balíkomat, BalíkoBOX, DPD Pickup Station, GLS, balíkovo, GymBeam Box, Balíkovo, DPD Pickup Box, tamburi, dpd, Penguin Box, Dr. Max, Pilulka Box, DPD]
 postboxesHaveCollectionTimes: true
 postboxesHaveRef: true
 slowZoneLabelPosition: top

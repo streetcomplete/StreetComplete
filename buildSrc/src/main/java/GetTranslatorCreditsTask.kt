@@ -8,7 +8,7 @@ import org.gradle.api.tasks.TaskAction
 import org.jsoup.Jsoup
 import java.io.FileWriter
 import java.net.HttpURLConnection
-import java.net.URL
+import java.net.URI
 import java.net.URLEncoder
 import java.time.LocalDate
 import java.util.Locale
@@ -121,7 +121,7 @@ open class GetTranslatorCreditsTask : DefaultTask() {
      *  "Portuguese (BR)" -> 123
      *  "German" -> 12 */
     private fun queryTranslatorStats(userId: Int): Map<String, Int>? {
-        val url = URL("https://poeditor.com/contributors/contributor_stats")
+        val url = URI("https://poeditor.com/contributors/contributor_stats").toURL()
         val connection = url.openConnection() as HttpURLConnection
         val cookieEncoded = URLEncoder.encode(cookie, "UTF-8")
         val phpSessidEncoded = URLEncoder.encode(phpsessid, "UTF-8")

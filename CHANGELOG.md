@@ -1,5 +1,30 @@
 # Changelog
 
+## v63.4
+
+Fix in certain languages (such as French), presets wouldn't load, which made the app unusable. Regression from v63.3 (#6964)
+
+## v63.3
+
+### Fixes
+
+- _Fix upload of photos in notes stopped to work on 27th of July_ (#6959)
+- Places overlay: Handle name field correctly for places that _usually_ have a fixed name but not necessarily (#6907)
+- Fix some elements in the settings screen didn't respect window insets correctly
+
+### Quest improvements
+
+- Place & road name: Force resurvey if name was explicitly marked as to be fixed (#6932), by @paulklie
+- Summit register: Ask in Norway, too (#6902), by @paulklie
+- Sidewalks: Prefer the same tagging schema as iD (#6944)
+- Surfaces: Add laterite as an option in some countries (#6942), by @thirumani-vihaan
+- Ask a few quests for more places (#6899, #6901, #6900, #6898, #6908, #6953, #6952), by @paulklie
+- Other small improvements (#6903, #6909, #6919, #6948, #6938 …), thanks @paulklie, @mnalis
+
+### General
+
+- Make app name more visible in about screen (#6951), by @geritwagner
+
 ## v63.2
 
 ### Fixes
@@ -17,7 +42,7 @@
 - Opening hours: Don't ask for street vendors (#6848), by @matkoniecz
 - Baby changing tables: Can now answer that there is actually no toilet (#6837), by @paulklie
 - Ask various quests for ranger stations, water points, bird hides (#6888, #6857, #6836), by @paulklie
-- Lanes: Allow answering that there is only *one* marked lane (#6879)
+- Lanes: Allow answering that there is only _one_ marked lane (#6879)
 - Crossing island: Don't ask when the traffic island has already been mapped in detail (#6874)
 - Check existence: Don't ask for objects with heritage status (#6776)
 - Power line attachment to pole: Disable this quest, it is too complex (in edge cases) (#6547)
@@ -243,8 +268,8 @@
 
 ### Android below 7.1 no longer supported (#6210)
 
-In reality, support for Android versions below 7.1 has already been just on-paper for a while now, 
-as more and more issues with old Androids have been popping up lately that cannot be fixed on our 
+In reality, support for Android versions below 7.1 has already been just on-paper for a while now,
+as more and more issues with old Androids have been popping up lately that cannot be fixed on our
 side. Luckily, it seems that >99.6% of app users already use Android 7.1 and above. (See #6210)
 
 ### Main screen improvements (#6213)

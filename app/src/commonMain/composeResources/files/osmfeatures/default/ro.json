@@ -1097,9 +1097,6 @@
         "public_transport/station_ferry": {
           "name": "Terminal de Bac"
         },
-        "railway/abandoned": {
-          "name": "Cale Ferată Abandonată"
-        },
         "railway/disused": {
           "name": "Cale Ferată Învechită"
         },
@@ -1117,7 +1114,7 @@
         },
         "shop/alcohol": {
           "name": "Magazin de Băuturi Alcoolice",
-          "terms": "g"
+          "terms": ["g"]
         },
         "shop/appliance": {
           "name": "Magazin de Electrocasnice"
@@ -1151,7 +1148,7 @@
         },
         "shop/bookmaker": {
           "name": "Casă de pariuri",
-          "terms": "pariuri"
+          "terms": ["pariuri"]
         },
         "shop/boutique": {
           "name": "Boutique"
@@ -1442,7 +1439,7 @@
           "name": "Cucui de Viteză"
         },
         "traffic_calming/cushion": {
-          "terms": "g"
+          "terms": ["g"]
         },
         "traffic_calming/hump": {
           "name": "Cucui de Viteză"
@@ -1521,7 +1518,7 @@
         },
         "waterway/stream": {
           "name": "Pârâu",
-          "terms": "q"
+          "terms": ["q"]
         },
         "waterway/waterfall": {
           "name": "Cascadă"

@@ -1,0 +1,79 @@
+package de.westnordost.streetcomplete.screens.main.messages
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalUriHandler
+import de.westnordost.streetcomplete.data.messages.Message
+import de.westnordost.streetcomplete.screens.user.achievements.AchievementDialog
+import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
+import org.jetbrains.compose.resources.DrawableResource
+import kotlin.reflect.KClass
+
+/** Dialog that shows a Message */
+@Composable
+fun MessageDialog(
+    message: Message,
+    allQuestIcons: List<DrawableResource>,
+    onDismissRequest: () -> Unit,
+    onClickOpenQuestSettings: () -> Unit,
+    onToggleDontNotifyAgain: (KClass<out Message>, Boolean) -> Unit,
+) {
+    when (message) {
+        is Message.NewAchievement -> {
+            AchievementDialog(
+                achievement = message.achievement,
+                level = message.level,
+                unlockedLinks = message.unlockedLinks,
+                onDismissRequest = onDismissRequest
+            )
+        }
+        is Message.NewVersion -> {
+            WhatsNewDialog(
+                changelog = message.changelog,
+                onDismissRequest = onDismissRequest,
+            )
+        }
+        is Message.QuestSelectionHint -> {
+            QuestSelectionHintDialog(
+                onDismissRequest = onDismissRequest,
+                onClickOpenSettings = onClickOpenQuestSettings,
+                allQuestIcons = allQuestIcons
+            )
+        }
+        is Message.OsmUnreadMessages -> {
+            val uriHandler = LocalUriHandler.current
+            UnreadMessagesDialog(
+                unreadMessageCount = message.unreadMessages,
+                onDismissRequest = onDismissRequest,
+                onClickOpenMessages = {
+                    uriHandler.tryOpenUri("https://www.openstreetmap.org/messages/inbox")
+                }
+            )
+        }
+        is Message.NewWeeklyOsm -> {
+            val uriHandler = LocalUriHandler.current
+            WeeklyOsmDialog(
+                date = message.date,
+                onDismissRequest = onDismissRequest,
+                onClickOpenWeeklyOsm = {
+                    // note that weeklyOSM website is smart enough to show the site in the user
+                    // preferred language
+                    uriHandler.tryOpenUri("https://www.weeklyosm.eu")
+                },
+                onToggleDontNotifyAgain = { dontNotifyAgain ->
+                    onToggleDontNotifyAgain(Message.NewWeeklyOsm::class, dontNotifyAgain)
+                }
+            )
+        }
+        is Message.NewCalendarEvent -> {
+            val uriHandler = LocalUriHandler.current
+            CalendarEventDialog(
+                event = message.event,
+                onDismissRequest = onDismissRequest,
+                onClickOpenEvent = { uriHandler.tryOpenUri(message.event.url) },
+                onToggleDontNotifyAgain = { dontNotifyAgain ->
+                    onToggleDontNotifyAgain(Message.NewCalendarEvent::class, dontNotifyAgain)
+                }
+            )
+        }
+    }
+}

@@ -9,8 +9,8 @@ import java.util.Properties
 
 
 /** App version name, code and flavor */
-val appVersionName = "63.2"
-val appVersionCode = 6305
+val appVersionName = "63.4"
+val appVersionCode = 6308
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -24,7 +24,7 @@ val bcp47ExportLanguages = setOf(
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v6.18.0"
+val presetsVersion = "v7.0.1"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
@@ -57,7 +57,6 @@ buildkonfig {
     objectName = "BuildConfig"
 
     defaultConfigs {
-        buildConfigField(BOOLEAN, "IS_FROM_MONOPOLISTIC_APP_STORE", properties["app.streetcomplete.monopolistic_app_store"]!!.toString())
         buildConfigField(STRING, "VERSION_NAME", appVersionName)
         buildConfigField(BOOLEAN, "DEBUG", properties["app.streetcomplete.debug"]!!.toString())
     }
@@ -129,15 +128,19 @@ kotlin {
                 // I/O
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
+                // SQLite
+                implementation("androidx.sqlite:sqlite:2.7.0")
+                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
+
                 // HTTP client
-                implementation("io.ktor:ktor-client-core:3.5.0")
-                implementation("io.ktor:ktor-client-encoding:3.5.0")
+                implementation("io.ktor:ktor-client-core:3.5.1")
+                implementation("io.ktor:ktor-client-encoding:3.5.1")
                 // SHA256 hashing, used during OAuth authentication
                 implementation("org.kotlincrypto.hash:sha2:0.8.0")
 
                 // XML
-                implementation("io.github.pdvrieze.xmlutil:core:0.91.3")
-                implementation("io.github.pdvrieze.xmlutil:core-io:0.91.3")
+                implementation("io.github.pdvrieze.xmlutil:core:1.0.1")
+                implementation("io.github.pdvrieze.xmlutil:core-io:1.0.1")
 
                 // YAML
                 implementation("com.charleskorn.kaml:kaml:0.104.0")
@@ -153,7 +156,7 @@ kotlin {
                 implementation("de.westnordost:countryboundaries:3.0.0")
 
                 // finding OSM features
-                implementation("de.westnordost:osmfeatures:7.1.0")
+                implementation("de.westnordost:osmfeatures:8.0.0")
 
                 // opening hours parser
                 implementation("de.westnordost:osm-opening-hours:0.4.0")
@@ -179,7 +182,7 @@ kotlin {
                 // NOTE: might replace with
                 // https://developer.android.com/develop/ui/compose/layouts/adaptive/grid
                 // when that API is not experimental anymore
-                implementation("com.cheonjaeung.compose.grid:grid:2.7.4")
+                implementation("com.cheonjaeung.compose.grid:grid:2.8.0")
 
                 // reorderable lists (raw Compose API is pretty complicated)
                 implementation("sh.calvin.reorderable:reorderable:3.1.0")
@@ -189,8 +192,12 @@ kotlin {
 
                 // sharing presets/settings via QR Code
                 implementation("io.github.alexzhirkevich:qrose:1.1.2")
+
                 // for encoding information for the URL configuration (QR code)
                 implementation("com.ionspin.kotlin:bignum:0.3.10")
+
+                // taking a photo (, picking an image from gallery, ...)
+                implementation("io.github.vinceglb:filekit-dialogs-compose:0.14.1")
             }
         }
         androidMain {
@@ -201,20 +208,11 @@ kotlin {
 
                 // Android stuff
                 implementation("com.google.android.material:material:1.14.0")
-                implementation("androidx.core:core-ktx:1.18.0")
                 implementation("androidx.appcompat:appcompat:1.7.1")
-                implementation("androidx.constraintlayout:constraintlayout:2.2.1")
-                implementation("androidx.annotation:annotation:1.10.0")
-                implementation("androidx.fragment:fragment-ktx:1.8.9")
-                implementation("androidx.recyclerview:recyclerview:1.4.0")
                 implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
                 // Compose
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.0")
                 implementation("androidx.activity:activity-compose:1.13.0")
-
-                // photos
-                implementation("androidx.exifinterface:exifinterface:1.4.2")
 
                 // Kotlin
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.11.0")
@@ -223,39 +221,30 @@ kotlin {
                 implementation("androidx.work:work-runtime-ktx:2.11.2")
 
                 // HTTP Client
-                implementation("io.ktor:ktor-client-android:3.5.0")
-
-                // widgets
-                implementation("com.google.android.flexbox:flexbox:3.0.0")
+                implementation("io.ktor:ktor-client-android:3.5.1")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk-opengl:13.3.0")
+                implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
             }
         }
         iosMain {
             dependencies {
                 // HTTP client
-                implementation("io.ktor:ktor-client-darwin:3.5.0")
+                implementation("io.ktor:ktor-client-darwin:3.5.1")
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
 
-                implementation("io.ktor:ktor-client-mock:3.5.0")
+                implementation("io.ktor:ktor-client-mock:3.5.1")
+                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
             }
         }
         androidUnitTest {
             dependencies {
-                implementation(kotlin("test"))
-            }
-        }
-        androidInstrumentedTest {
-            dependencies {
-                implementation(kotlin("test"))
-                // android tests
-                implementation("androidx.test:runner:1.7.0")
-                implementation("androidx.test:rules:1.7.0")
+                // without it, :app:testDebugUnitTest throws java.lang.NoClassDefFoundError at BundledSQLiteDriver.jvmAndAndroid.kt
+                implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
             }
         }
     }
@@ -263,15 +252,14 @@ kotlin {
 
 android {
     namespace = "de.westnordost.streetcomplete"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 25
-        targetSdk = 35
+        targetSdk = 37
         versionCode = appVersionCode
         versionName = appVersionName
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -286,12 +274,6 @@ android {
 
     signingConfigs {
         create("release") {
-        }
-    }
-
-    testOptions {
-        unitTests {
-            isReturnDefaultValues = true
         }
     }
 
@@ -314,7 +296,7 @@ android {
     }
 
     // we need to copy some resources from composeResources to android resources, see task
-    // copySharedResToAndroid. This can be removed when the map has been migrated to compose
+    // copyIconsToAndroid. This can be removed when the map has been migrated to compose
     sourceSets {
         getByName("main") {
             res.srcDir(layout.buildDirectory.dir("generated/androidMain/res"))
@@ -323,7 +305,6 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
         compose = true
     }
 
@@ -336,12 +317,11 @@ android {
     lint {
         disable += listOf(
             "MissingTranslation", // crowd-contributed translations are incomplete all the time
-            "UseCompatLoadingForDrawables" // doesn't make sense for minSdk >= 21
         )
-        abortOnError = false
     }
 
     dependencies {
+        // required to @Preview composables in Android Studio
         debugImplementation("androidx.compose.ui:ui-tooling:1.10.0")
     }
 }
@@ -433,7 +413,7 @@ tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
 // tasks.register<DownloadBrandLogosTask>("downloadBrandLogos") {
 //     group = "streetcomplete"
 //     version = nsiVersion
-//     targetDir = "$projectDir/src/androidMain/assets/osmfeatures/brands"
+//     targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/brands"
 // }
 
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
@@ -442,7 +422,6 @@ tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons
     targetDir = "$projectDir/src/commonMain/composeResources/drawable/"
     iconSize = 34
     transformName = { "preset_" + it.replace('-', '_') }
-    indexFile = "$projectDir/src/androidMain/kotlin/de/westnordost/streetcomplete/view/PresetIconIndex.kt" // necessary as long as map is not compose based yet
 }
 
 tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
@@ -490,21 +469,35 @@ tasks.register("copyDefaultStringsToEnStrings") {
 }
 
 // necessary as long as map hasn't been converted to compose yet
-val copySharedResToAndroid by tasks.registering(Copy::class) {
-    val target = "build/generated/androidMain/res/drawable"
-    from("src/commonMain/composeResources/drawable")
-    into(target)
-    include {
-        it.name.startsWith("building_") ||
-        it.name.startsWith("preset_") ||
-        it.name == "sport_volleyball.xml" ||
-        it.name == "religion_christian.xml" ||
-        it.name == "religion_jewish.xml" ||
-        it.name == "religion_muslim.xml"
+val copyIconsToAndroid by tasks.registering(CopyIconsTask::class) {
+    group = "streetcomplete"
+    sourceDir = "$projectDir/src/commonMain/composeResources/drawable"
+    targetDir = "$projectDir/build/generated/androidMain/res/drawable"
+    filter = {
+        // quest pins, icons for overlays
+        it.startsWith("quest_") ||
+        it.startsWith("building_") ||
+        it.startsWith("preset_") ||
+        it == "sport_volleyball.xml" ||
+        it == "religion_christian.xml" ||
+        it == "religion_jewish.xml" ||
+        it == "religion_muslim.xml" ||
+        it == "address_dot.xml" ||
+        it == "none.png" ||
+        // icons for base map
+        it == "pin_shadow.png" ||
+        it == "location_nyan.png" ||
+        it == "scissors_cut.xml" ||
+        it == "scissors.xml" ||
+        it == "track_nyan.png" ||
+        it == "track_nyan_record.png" ||
+        it == "downloaded_area_hatching.xml" ||
+        it == "location_shadow.xml" ||
+        it == "location_view_direction.xml" ||
+        it == "pin.xml" ||
+        it == "pin_circle.xml"
     }
-    doFirst {
-        File(target).mkdirs()
-    }
+    indexFile = "$projectDir/build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt"
 }
 
 val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
@@ -515,7 +508,27 @@ val copyStringsToAndroid by tasks.registering(CopyStringsTask::class) {
 
 project.afterEvaluate {
     tasks.named("preBuild") {
-        dependsOn(copySharedResToAndroid)
+        dependsOn(copyIconsToAndroid)
         dependsOn(copyStringsToAndroid)
     }
+}
+
+tasks.register<JavaExec>("printQuestFiltersAsOverpassQL") {
+    group = "utils"
+
+    val testTask = tasks.named<Test>("testDebugUnitTest")
+    dependsOn(testTask.map { it.classpath })
+    classpath = testTask.get().classpath
+
+    mainClass.set("de.westnordost.streetcomplete.PrintQuestFiltersAsOverpassQLKt")
+}
+
+tasks.register<JavaExec>("openingHoursParsingStatistics") {
+    group = "utils"
+
+    val testTask = tasks.named<Test>("testDebugUnitTest")
+    dependsOn(testTask.map { it.classpath })
+    classpath = testTask.get().classpath
+
+    mainClass.set("de.westnordost.streetcomplete.OpeningHoursParsingStatisticsKt")
 }

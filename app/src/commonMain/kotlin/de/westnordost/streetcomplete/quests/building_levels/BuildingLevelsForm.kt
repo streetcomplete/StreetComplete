@@ -37,10 +37,10 @@ import androidx.compose.ui.tooling.preview.Preview
 /** Form to input building levels and roof levels, with quick-select buttons */
 @Composable
 fun BuildingLevelsForm(
-    levels: String,
-    onLevelsChange: (String) -> Unit,
-    roofLevels: String,
-    onRoofLevelsChange: (String) -> Unit,
+    levels: Int?,
+    onLevelsChange: (Int?) -> Unit,
+    roofLevels: Int?,
+    onRoofLevelsChange: (Int?) -> Unit,
     modifier: Modifier = Modifier,
     previousBuildingLevels: List<BuildingLevels> = listOf(),
 ) {
@@ -64,10 +64,14 @@ fun BuildingLevelsForm(
                         style = MaterialTheme.typography.caption.copy(hyphens = Hyphens.Auto),
                         color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
                     )
+                    val levelsString = levels?.toString().orEmpty()
                     TextField2(
-                        value = levels,
-                        onValueChange = onLevelsChange,
-                        isError = levels.isNotEmpty() && !levels.isValidLevel(),
+                        value = levelsString,
+                        onValueChange = { value ->
+                            if (value.isEmpty() || value.isValidLevel()) {
+                                onLevelsChange(value.toIntOrNull())
+                            }
+                        },
                         keyboardOptions = KeyboardOptions.Default.copy(
                             keyboardType = KeyboardType.Number,
                             imeAction = ImeAction.Next
@@ -86,10 +90,14 @@ fun BuildingLevelsForm(
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {
+                    val roofLevelsString = roofLevels?.toString().orEmpty()
                     TextField2(
-                        value = roofLevels,
-                        onValueChange = onRoofLevelsChange,
-                        isError = roofLevels.isNotEmpty() && !roofLevels.isValidLevel(),
+                        value = roofLevelsString,
+                        onValueChange = { value ->
+                            if (value.isEmpty() || value.isValidLevel()) {
+                                onRoofLevelsChange(value.toIntOrNull())
+                            }
+                        },
                         keyboardOptions = KeyboardOptions.Default.copy(
                             keyboardType = KeyboardType.Number,
                             imeAction = ImeAction.Done
@@ -109,8 +117,8 @@ fun BuildingLevelsForm(
         LastPickedChipsRow(
             items = previousBuildingLevels,
             onClick = {
-                onLevelsChange(it.levels.toString())
-                onRoofLevelsChange(it.roofLevels?.toString() ?: "")
+                onLevelsChange(it.levels)
+                onRoofLevelsChange(it.roofLevels)
             },
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -125,8 +133,8 @@ private fun String.isValidLevel(): Boolean =
 @Composable
 @Preview
 private fun BuildingLevelsFormPreview() {
-    val levels = remember { mutableStateOf("55") }
-    val roofLevels = remember { mutableStateOf("55") }
+    val levels = remember { mutableStateOf<Int?>(55) }
+    val roofLevels = remember { mutableStateOf<Int?>(55) }
     BuildingLevelsForm(
         levels = levels.value,
         onLevelsChange = { levels.value = it },

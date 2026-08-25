@@ -31,8 +31,9 @@ fun Sides<Sidewalk>.applyTo(tags: Tags) {
     if (left != null) tags["sidewalk:left"] = left.osmValue
     if (right != null) tags["sidewalk:right"] = right.osmValue
 
-    // use shortcut syntax if possible, preferred by community according to usage numbers on taginfo
-    tags.conflateSidewalk()
+    // prefer sidewalk:<sides> syntax (i.e. don't `tags.conflateSidewalk()`), iD editor also prefers
+    // it and this tagging schema shows a greater growth than the old conflated schema (because of
+    // that, maybe 🤷. In any case, let's not play ping-pong with iD)
     tags.mergeSides("sidewalk")
 
     if (!tags.hasChanges || tags.hasCheckDateForKey("sidewalk")) {

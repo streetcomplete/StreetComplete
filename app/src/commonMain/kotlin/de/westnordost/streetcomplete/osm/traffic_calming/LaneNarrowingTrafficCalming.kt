@@ -1,7 +1,10 @@
 package de.westnordost.streetcomplete.osm.traffic_calming
 
+import kotlinx.serialization.Serializable
+
 /** Other than the TrafficCalmingType, this enum just concerns itself with how the road is narrowed,
  *  hence it is somewhat more difficult to parse and put together again into OSM tags */
+@Serializable
 enum class LaneNarrowingTrafficCalming {
     CHOKER,
     ISLAND,

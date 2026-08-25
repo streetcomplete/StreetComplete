@@ -90,6 +90,20 @@ class SurfaceUtilsKtTest {
             ))
         )
     }
+
+    @Test
+    fun `NATURAL_SURFACES includes laterite via SOFT_NATURAL_SURFACES inheritance`() {
+        assertTrue(NATURAL_SURFACES.contains("laterite"))
+    }
+
+    @Test
+    fun `UNPAVED_SURFACES includes laterite via SOFT_NATURAL_SURFACES inheritance`() {
+        assertTrue(UNPAVED_SURFACES.contains("laterite"))
+    }
+
+    @Test fun `laterite is a soft natural surface for tracktypes`() {
+        assertTrue(INVALID_SURFACES_FOR_TRACKTYPES["grade1"]!!.contains("laterite"))
+    }
 }
 
 private fun appliedCommonSurfaceFromFootAndCyclewaySurface(tags: Map<String, String>): Set<StringMapEntryChange> {

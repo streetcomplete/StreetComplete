@@ -1,5 +1,8 @@
 package de.westnordost.streetcomplete.quests.roof_shape
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class RoofShape(val osmValue: String) {
     GABLED("gabled"),
     HIPPED("hipped"),
