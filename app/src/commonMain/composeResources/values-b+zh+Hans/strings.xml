@@ -117,7 +117,6 @@
 此应用会查找您附近缺失的地图数据，并将其作为任务显示在地图上。只需前往现场并回答一个简单的问题即可更新地图，从而解答每个任务。
 
 您输入的信息将以您的用户名直接添加到 OpenStreetMap，无需使用其他编辑器。</string>
-    <string name="quest_name_answer_noName">它没有名字…</string>
     <string name="quest_name_answer_noName_confirmation_title">确定没有名字吗？</string>
     <string name="quest_name_noName_confirmation_positive">是的，没有名字</string>
     <string name="quest_openingHours_add_times">添加营业时间</string>
@@ -173,7 +172,8 @@
     <string name="dialog_session_dont_show_again">本次会话不再显示</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">这个速度限制看起来令人难以置信。</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">您确定没有限速标志吗？</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">您检查过街道的两端吗？如果整条街道上没有适用于高亮显示路段的限速标志，则将采用默认的速度限制。</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">您检查过街道的两端吗？
+如果整条街道上没有适用于高亮显示路段的限速标志，则将采用默认的速度限制。</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">是的，没有限速标志</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">如果在与主干道的交叉口处有这样的标志，您可能无法在区域内找到单独的标志，因为那里张贴的限速适用于整个区域。</string>
     <string name="quest_sport_softball">垒球</string>
@@ -193,11 +193,6 @@
     <string name="underground_recycling_container">地下式资源回收容器</string>
     <string name="quest_streetName_answer_cantType">无法输入标牌上的字符</string>
     <string name="quest_streetName_cantType_title">缺少键盘布局？</string>
-    <string name="quest_streetName_cantType_open_settings">打开设置</string>
-    <string name="quest_streetName_cantType_open_store">访问应用商店</string>
-    <string name="quest_streetName_cantType_description">如果您使用预设键盘，您可能只需在输入法设置中启用所需语言的键盘布局即可。
-
-否则，您可以在应用商店中下载其他键盘。 支持多种语言的热门键盘包括 Google Gboard、SwiftKey Keyboard 和 Multiling O Keyboard。</string>
     <string name="quest_streetName_menuItem_nolanguage">(未指定)</string>
     <string name="quest_fireHydrant_type_title">这是哪一种消防栓？</string>
     <string name="quest_fireHydrant_type_pillar">立柱</string>
@@ -494,7 +489,6 @@
     <string name="quest_generic_answer_differs_along_the_way">一路上有不一样的…</string>
     <string name="quest_split_way_description">如果情况沿途发生变化，请先分割该路径（way）。之后，便可分别为各段路径（way）解答任务。
 是否现在进行分割？</string>
-    <string name="quest_split_way_tutorial">点击道路上答案不一致的点来分割。使用缩放功能，并尽可能地精确。</string>
     <string name="quest_split_way_too_imprecise">请继续放大</string>
     <string name="quest_split_way_many_splits_confirmation_description">分割点太多了。你可以之后再随时进行分割。</string>
     <string name="quest_footwayPartSurface_title">这条步行道的路面是什么材质的？</string>
@@ -754,10 +748,6 @@
     <string name="default_disabled_msg_go_inside_regional_warning">此任务类型默认禁用，因为它在某些地区可能用途不大，并且您可能需要进入场所内部才能回答此类任务。</string>
     <string name="quest_dietType_explanation_kosher">犹太教的洁食食品必须依规矩制作，并附上饮食教规认证机构标章以确保其饮食从教。</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">没有任何自行车道或车径</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">像往常一样，点击图示的一侧，选择合适的答案，然后对另一侧进行同样的操作。
-
-注意所有可用的选项：有些情况并不明显，比如单行道允许自行车双向通行！</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">没有自行车道或车径时，选择此项</string>
     <string name="quest_construction_completed_at_known_date">竣工日期预计在…</string>
     <string name="quest_construction_completion_date_title">预计什么时候竣工呢？</string>
     <string name="quest_surface_value_clay">黏土</string>
@@ -856,7 +846,9 @@
     <string name="quest_bollard_type_foldable2">可折叠的（无论是否需要钥匙）</string>
     <string name="no_search_results">未找到任何结果</string>
     <string name="quest_selection_hint_title">任务太多忙不过来？</string>
-    <string name="quest_selection_hint_message">参与贡献应当以乐趣为主！如果您对任务数量感到不知所措，可以随时在设置中调整要显示的任务类型及其顺序。</string>
+    <string name="quest_selection_hint_message">参与贡献应当以乐趣为主！
+
+如果您对任务数量感到不知所措，可以随时在设置中调整要显示的任务类型及其顺序。</string>
     <string name="quest_presets_preset_add">添加预设</string>
     <string name="quest_presets_preset_name">预设名称</string>
     <string name="quest_presets_default_name">默认</string>
@@ -984,9 +976,6 @@
     <string name="quest_bicycle_parking_type_handlebarholder">车把手支架</string>
     <string name="quest_bicycle_parking_access_title2">谁可以在这里停放自行车？停车可能是免费或是付费的。</string>
     <string name="quest_playground_access_title2">谁可以使用这个游乐场？</string>
-    <string name="quest_sidewalk_answer_none_title">选择缺少的人行道</string>
-    <string name="quest_side_select_interface_explanation">轻敲（路的）一侧，选择匹配的答案。
-如果存在的话，对另一侧也这么做。</string>
     <string name="ar_measure">测量</string>
     <string name="ar_core_tracking_error_too_steep_angle">角度太陡了，走远一点</string>
     <string name="default_disabled_msg_no_ar">你需要一个卷尺来解决这个问题，因为该设备不支持用相机进行测量。</string>
@@ -1188,8 +1177,6 @@
     <string name="quest_placeName_no_name_answer">这没有名称标志</string>
     <string name="quest_road_width_unusualInput_confirmation_description">这个宽度看起来并不可信。记住，这应该是两侧路缘之间的宽度，包括路边停车位、自行车道等。</string>
     <string name="overlay_cycleway">自行车道路</string>
-    <string name="bicycle_boulevard_is_a">它是 %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">它不是 %1$s</string>
     <string name="bicycle_boulevard">自行车大道</string>
     <string name="separate_cycleway_no_or_allowed">人行道，未设置明确的骑行标志（是否允许骑行取决于相关法律规定）</string>
     <string name="separate_cycleway_non_segregated">指定共用道路</string>

@@ -69,7 +69,25 @@
     <string name="quest_roofShape_answer_many">It has several different shapes</string>
     <string name="map_btn_zoom_out">Zoom out</string>
     <string name="map_btn_zoom_in">Zoom in</string>
-    <string name="privacy_html">&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt; &lt;h2&gt;Direct Contributions&lt;/h2&gt; &lt;p&gt; First off, understand that with this app, you make actual and direct contributions to OpenStreetMap (OSM).&lt;br/&gt; Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure. &lt;/p&gt; &lt;p&gt; Editing OpenStreetMap anonymously is not possible. Any changes you make (and their date and location) are attributed to your OSM user account and publicly visible on the openstreetmap.org website. Because StreetComplete should only be used for on-site survey, this reveals where and when you have used the app. &lt;/p&gt; &lt;h2&gt;Location&lt;/h2&gt; &lt;p&gt; The app does not share your GPS location with anyone. It is used to automatically download data around you, and position the map at your location. &lt;/p&gt; &lt;h2&gt;Data Usage&lt;/h2&gt; &lt;p&gt; This app directly communicates with OSM servers.&lt;br/&gt; Before uploading your changes, the app checks with a &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;simple text file&lt;/a&gt; on my server to ensure that this version of the app has not been banned from uploading changes. This is a precautionary measure to be able to block versions of the app that turn out to have critical bugs from uploading corrupted data to OSM.&lt;/p&gt;</string>
+    <string name="privacy_html">&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
+&lt;h2&gt;Direct Contributions&lt;/h2&gt;
+&lt;p&gt; First off, understand that with this app, you make actual and direct contributions to OpenStreetMap (OSM).&lt;br/&gt;
+Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
+&lt;/p&gt;
+&lt;p&gt;
+Editing OpenStreetMap anonymously is not possible. Any changes you make (and their date and location) are attributed to your OSM user account and publicly visible on the openstreetmap.org website. Because StreetComplete should only be used for on-site survey, this reveals where and when you have used the app.
+&lt;/p&gt;
+
+&lt;h2&gt;Location&lt;/h2&gt;
+&lt;p&gt;
+The app does not share your GPS location with anyone. It is used to automatically download data around you, and position the map at your location.
+&lt;/p&gt;
+
+&lt;h2&gt;Data Usage&lt;/h2&gt;
+&lt;p&gt;
+This app directly communicates with OSM servers.&lt;br/&gt;
+Before uploading your changes, the app checks with a &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;simple text file&lt;/a&gt; on my server to ensure that this version of the app has not been banned from uploading changes. This is a precautionary measure to be able to block versions of the app that turn out to have critical bugs from uploading corrupted data to OSM.
+&lt;/p&gt;</string>
     <string name="autosync_on">On</string>
     <string name="autosync_only_on_wifi">Only on Wi-Fi</string>
     <string name="autosync_off">Off</string>
@@ -93,8 +111,11 @@
     <string name="quest_sidewalk_title">Does this street have a sidewalk?</string>
     <string name="quest_address_title">What’s the house number of this building?</string>
     <string name="store_listing_short_description">OpenStreetMap surveyor app</string>
-    <string name="store_listing_full_description">Help improve OpenStreetMap with StreetComplete! This app finds missing map data in your vicinity and displays it on a map as quests. Solve each quest by visiting the location on-site and answering a simple question to update the map. The info you enter is directly added to OpenStreetMap in your name, without the need to use another editor.</string>
-    <string name="quest_name_answer_noName">It has no name…</string>
+    <string name="store_listing_full_description">Help improve OpenStreetMap with StreetComplete!
+
+This app finds missing map data in your vicinity and displays it on a map as quests. Solve each quest by visiting the location on-site and answering a simple question to update the map.
+
+The info you enter is directly added to OpenStreetMap in your name, without the need to use another editor.</string>
     <string name="quest_name_answer_noName_confirmation_title">Really no name?</string>
     <string name="quest_name_noName_confirmation_positive">Yes, no name</string>
     <string name="quest_openingHours_add_times">Add opening hours</string>
@@ -150,7 +171,8 @@
     <string name="dialog_session_dont_show_again">Don’t show again for this session</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">This speed limit looks implausible.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Are you sure no limit is posted?</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">Did you check at the ends of the street? If there are no signs along the whole street which apply for the highlighted section, default speed limits apply.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">Did you check at the ends of the street?
+If there are no signs along the whole street which apply for the highlighted section, default speed limits apply.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Yes, no sign</string>
     <string name="quest_maxspeed_answer_noSign_info_zone">If there is a sign like this at the intersection with the main road, you may not find individual signs within the zone, as the speed limit posted there applies to the whole zone.</string>
     <string name="quest_sport_softball">Softball</string>
@@ -170,9 +192,6 @@
     <string name="underground_recycling_container">Underground container</string>
     <string name="quest_streetName_answer_cantType">Can’t type the characters on the sign</string>
     <string name="quest_streetName_cantType_title">Missing keyboard layout?</string>
-    <string name="quest_streetName_cantType_open_settings">Open settings</string>
-    <string name="quest_streetName_cantType_open_store">Visit app store</string>
-    <string name="quest_streetName_cantType_description">If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings. Otherwise, you can download another keyboard in the app store. Popular keyboards that support many languages are Google Gboard, SwiftKey Keyboard, and Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(unspecified)</string>
     <string name="quest_fireHydrant_type_title">What kind of fire hydrant is this?</string>
     <string name="quest_fireHydrant_type_pillar">Pillar</string>
@@ -285,7 +304,8 @@
     <string name="quest_housenumber_street_number_optional">Orientation number (optional)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Also bicycle path on the other side…</string>
     <string name="quest_cycleway_value_none_but_no_oneway">none, but cyclists may use road in both directions</string>
-    <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the restroom is accessible. Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present.</string>
+    <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the restroom is accessible.
+Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present.</string>
     <string name="map_btn_create_note">Create new note</string>
     <string name="create_new_note_unprecise">Zoom in further to create a note</string>
     <string name="create_new_note_description">You can leave a note to let other mappers know about an issue here. Adjust the note’s position by moving the map.</string>
@@ -468,7 +488,6 @@
     <string name="quest_generic_answer_differs_along_the_way">Differs along the way…</string>
     <string name="quest_split_way_description">If it differs along the way, the first step is to split up the way. After that, the quest can be answered for each part separately.
 Split it now?</string>
-    <string name="quest_split_way_tutorial">Tap on the way to split it at the point(s) where the answer differs. Use the zoom function and try to be as precise as possible.</string>
     <string name="quest_split_way_too_imprecise">Please zoom in further</string>
     <string name="quest_split_way_many_splits_confirmation_description">These are quite a few splits. You can always further split up the way later.</string>
     <string name="quest_footwayPartSurface_title">What’s the surface of the footpath here?

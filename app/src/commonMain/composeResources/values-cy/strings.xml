@@ -67,7 +67,25 @@
     <string name="quest_roofShape_answer_many">Mae ganddo sawl siâp gwahanol</string>
     <string name="map_btn_zoom_out">Chwyddo allan</string>
     <string name="map_btn_zoom_in">Chwyddo i mewn</string>
-    <string name="privacy_html">&lt;p&gt;Dyma rywun sy'n poeni am breifatrwydd, neis! Dim ond newyddion da sydd gyda fi:&lt;/p&gt; &lt;h2&gt;Cyfraniadau Uniongrychol&lt;/h2&gt; &lt;p&gt; I ddechrau, gyda'r ap hwn, rydych chi'n gwneud cyfraniadau go iawn yn uniongyrchol i OpenStreetMap (OSM). &lt;br/&gt; Mae unrhyw beth rydych chi'n ei gyfrannu yn yr ap hwn yn cael ei ychwanegu at y map, nid oes trydydd parti rhwng yr ap a seilwaith OSM.&lt;/p&gt; &lt;p&gt; Nid oes modd golygu'n ddienw ar OpenStreetMap. Bydd unrhyw newidiadau rydych chi'n eu gwneud (a'u dyddiad a'u lleoliad) yn cael eu priodoli i'ch cyfrif OSM ac yn gyhoeddus ar wefan openstreetmap.org. Oherwydd y dylai StreetComplete gael ei ddefnyddio ar gyfer arsylwi, mae hyn yn datgelu ble a phryd rydych chi wedi defnyddio'r ap. &lt;/p&gt; &lt;h2&gt;Lleoliad&lt;/h2&gt; &lt;p&gt; Nid yw'r ap yn rhannu eich lleoliad GPS ag unrhyw un. Mae'n cael ei ddefnyddio i lawrlwytho data o'ch cwmpas yn awtomatig a rhoi'r map yn eich lleoliad. &lt;/p&gt; &lt;h2&gt;Defnydd o Ddata&lt;/h2&gt; &lt;p&gt; Mae'r ap hwn yn cyfathrebu'n uniongyrchol â gweinyddion OSM.&lt;br/&gt; Cyn uwchlwytho eich newidiadau, mae'r ap yn cadarnhau drwy &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;ffeil testun syml&lt;/a&gt; ar fy ngweinydd i sicrhau nad yw'r fersiwn hon wedi cael ei gwahardd rhag uwchlwytho newidiadau. Mae hyn yn fesur ataliol er mwyn galluogi atal fersiynau o'r ap gyda namau critigol rhag uwchlwytho data llygredig i OSM.&lt;/p&gt;</string>
+    <string name="privacy_html">&lt;p&gt;Dyma rywun sy'n poeni am breifatrwydd, neis! Dim ond newyddion da sydd gyda fi:&lt;/p&gt;
+&lt;h2&gt;Cyfraniadau Uniongrychol&lt;/h2&gt;
+&lt;p&gt;
+I ddechrau, gyda'r ap hwn, rydych chi'n gwneud cyfraniadau go iawn yn uniongyrchol i OpenStreetMap (OSM). &lt;br/&gt;
+Mae unrhyw beth rydych chi'n ei gyfrannu yn yr ap hwn yn cael ei ychwanegu at y map, nid oes trydydd parti rhwng yr ap a seilwaith OSM.
+&lt;/p&gt;
+&lt;p&gt;
+Nid oes modd golygu'n ddienw ar OpenStreetMap. Bydd unrhyw newidiadau rydych chi'n eu gwneud (a'u dyddiad a'u lleoliad) yn cael eu priodoli i'ch cyfrif OSM ac yn gyhoeddus ar wefan openstreetmap.org. Oherwydd y dylai StreetComplete gael ei ddefnyddio ar gyfer arsylwi, mae hyn yn datgelu ble a phryd rydych chi wedi defnyddio'r ap.
+&lt;/p&gt;
+
+&lt;h2&gt;Lleoliad&lt;/h2&gt;
+&lt;p&gt;Nid yw'r ap yn rhannu eich lleoliad GPS ag unrhyw un. Mae'n cael ei ddefnyddio i lawrlwytho data o'ch cwmpas yn awtomatig a rhoi'r map yn eich lleoliad.
+&lt;/p&gt;
+
+&lt;h2&gt;Defnydd o Ddata&lt;/h2&gt;
+&lt;p&gt;
+Mae'r ap hwn yn cyfathrebu'n uniongyrchol â gweinyddion OSM.&lt;br/&gt;
+Cyn uwchlwytho eich newidiadau, mae'r ap yn cadarnhau drwy &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;ffeil testun syml&lt;/a&gt; ar fy ngweinydd i sicrhau nad yw'r fersiwn hon wedi cael ei gwahardd rhag uwchlwytho newidiadau. Mae hyn yn fesur ataliol er mwyn galluogi atal fersiynau o'r ap gyda namau critigol rhag uwchlwytho data llygredig i OSM.
+&lt;/p&gt;</string>
     <string name="autosync_on">Ymlaen</string>
     <string name="autosync_only_on_wifi">Dim ond ar Wi-Fi</string>
     <string name="autosync_off">I ffwrdd</string>
@@ -91,8 +109,11 @@
     <string name="quest_sidewalk_title">Oes gan y stryd hon balmant?</string>
     <string name="quest_address_title">Beth yw rhif tŷ'r adeilad hwn?</string>
     <string name="store_listing_short_description">Ap arsylwi OpenStreetMap</string>
-    <string name="store_listing_full_description">Helpwch ni i wella OpenStreetMap gyda StreetComplete! Mae'r ap hwn yn dod o hyd i fap data coll yn eich cyffiniau ac yn eu harddangos ar fap fel cwestiynau. Datryswch pob cwestiwn drwy ymweld â'r lleoliad yn bersonol ac ateb cwestiwn syml i ddiweddaru'r map. Caiff y wybodaeth rydych chi'n ei rhoi ei hychwanegu at OpenStreetMap o dan eich enw chi, heb angen defnyddio golygydd arall.</string>
-    <string name="quest_name_answer_noName">Nid oes enw…</string>
+    <string name="store_listing_full_description">Helpwch ni i wella OpenStreetMap gyda StreetComplete!
+
+Mae'r ap hwn yn dod o hyd i fap data coll yn eich cyffiniau ac yn eu harddangos ar fap fel cwestiynau. Datryswch pob cwestiwn drwy ymweld â'r lleoliad yn bersonol ac ateb cwestiwn syml i ddiweddaru'r map.
+
+Caiff y wybodaeth rydych chi'n ei rhoi ei hychwanegu at OpenStreetMap o dan eich enw chi, heb angen defnyddio golygydd arall.</string>
     <string name="quest_name_answer_noName_confirmation_title">Yn wir dim enw?</string>
     <string name="quest_name_noName_confirmation_positive">Wir, dim enw</string>
     <string name="quest_openingHours_add_times">Ychwanegu oriau agor</string>
@@ -148,7 +169,8 @@
     <string name="dialog_session_dont_show_again">Peidiwch â dangos eto am y sesiwn yma</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">Mae'r terfyn cyflymder yma'n edrych yn annebygol.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Ydych chi'n siŵr nad oes terfyn cyflymder wedi'i arddangos?</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">Ydych chi wedi edrych ar ddiwedd y stryd? Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a amlygir, mae'r terfynau cyflymder diofyn yn gymwys.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">Ydych chi wedi edrych ar ddiwedd y stryd?
+Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a amlygir, mae'r terfynau cyflymder diofyn yn gymwys.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Do, dim arwydd</string>
     <string name="quest_sport_softball">Pêl-feddal</string>
     <string name="quest_sport_racquet">Pêl raced</string>
@@ -167,9 +189,6 @@
     <string name="underground_recycling_container">Cynhwysydd dan ddaear</string>
     <string name="quest_streetName_answer_cantType">Ni ellir teipio'r symbolau ar yr arwydd</string>
     <string name="quest_streetName_cantType_title">Llunwedd bysellfwrdd ar goll?</string>
-    <string name="quest_streetName_cantType_open_settings">Agor gosodiadau</string>
-    <string name="quest_streetName_cantType_open_store">Ymweld â siop apiau</string>
-    <string name="quest_streetName_cantType_description">Os ydych chi'n defnyddio bysellfwrdd diofyn, mae'n debyg y gallwch chi alluogi cynllun y bysellfwrdd ar gyfer yr iaith sydd ei hangen arnoch chi yn y gosodiadau dull mewnbwn. Fel arall, gallwch chi lawrlwytho bysellfwrdd arall yn y siop apiau. Bysellfyrddau poblogaidd sy'n cefnogi llawer o ieithoedd yw Google Gboard, SwiftKey Keyboard, a Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(amhenodol)</string>
     <string name="quest_fireHydrant_type_title">Pa fath o hydrant tân yw hwn?</string>
     <string name="quest_fireHydrant_type_pillar">Colofn</string>
@@ -622,7 +641,6 @@ Cyflawni</string>
     <string name="quest_shop_gone_vacant_answer">Mae'n wag…</string>
     <string name="quest_shop_gone_replaced_answer">Mae yna…</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Dim lôn feicio na thrac beicio o gwbl</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Wrth osod nad oes lôn feicio na thrac beicio</string>
     <string name="quest_construction_completed_at_known_date">Bydd yn cael ei orffen ar…</string>
     <string name="quest_surface_value_clay">Clai</string>
     <string name="quest_surface_value_artificial_turf">Gwair artiffisial</string>
@@ -681,7 +699,9 @@ Cyflawni</string>
     <string name="quest_kerb_height_no">Dim cwrb o gwbl</string>
     <string name="no_search_results">Dim canlyniadau</string>
     <string name="quest_selection_hint_title">Oes gormod i'w wneud?</string>
-    <string name="quest_selection_hint_message">Dylai cyfrannu fod yn hwyl! Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa gwestiynau sy'n cael eu dangos i chi ac ym mha drefn yn y gosodiadau.</string>
+    <string name="quest_selection_hint_message">Dylai cyfrannu fod yn hwyl!
+
+Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa gwestiynau sy'n cael eu dangos i chi ac ym mha drefn yn y gosodiadau.</string>
     <string name="quest_presets_preset_add">Ychwanegu rhagosod</string>
     <string name="quest_presets_preset_name">Enw rhagosod</string>
     <string name="quest_presets_default_name">Diofyn</string>
@@ -882,8 +902,6 @@ Hoffech chi ei symud nawr?</string>
     <string name="quest_placeName_no_name_answer">Nid oes arwydd enw…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Mae'r lled hwn yn ymddangos yn anghywir. Cofiwch, dylai hyn lled o gwrb i gwrb, gan gynnwys parcio ar y stryd, lonydd beicio ac ati.</string>
     <string name="overlay_cycleway">Traciau beicio</string>
-    <string name="bicycle_boulevard_is_a">Mae'n %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Nid yw'n %1$s</string>
     <string name="separate_cycleway_non_segregated">Llwybr defnydd-a-rannwyd</string>
     <string name="separate_cycleway_segregated">Llwybr troed a thrac beicio wedi'u glanhau</string>
     <string name="separate_cycleway_exclusive">Llwybr beicio</string>

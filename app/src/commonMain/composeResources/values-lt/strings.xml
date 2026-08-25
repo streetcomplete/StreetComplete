@@ -117,7 +117,6 @@ Kaip minėta anksčiau, aplikacija tiesiogiai bendrauja su OSM infrastruktūra. 
 Ši aplikacija randa nepilnus, išplečiamus duomenis aplink jus ir parodo juos žemėlapyje kaip ženkliukus. Visus juos galima išspręsti atsakant į paprastą klausimą, padedantį užpildyti trūkstamą informaciją.
 
 Jūsų įvesta informacija tiesiog įkeliama į OpenStreetMap jūsų vardu, be kito žmogaus pagalbos.</string>
-    <string name="quest_name_answer_noName">Nėra pavadinimo…</string>
     <string name="quest_name_answer_noName_confirmation_title">Tikrai nėra pavadinimo?</string>
     <string name="quest_name_noName_confirmation_positive">Taip, nėra pavadinimo</string>
     <string name="quest_openingHours_add_times">Pridėti darbo laiką</string>
@@ -194,11 +193,6 @@ Jei visoje gatvėje nėra ženklų, kurie galioja pažymėtoje dalyje, taikomas 
     <string name="underground_recycling_container">Požeminis konteineris</string>
     <string name="quest_streetName_answer_cantType">Negaliu parašyti simbolių ant ženklo</string>
     <string name="quest_streetName_cantType_title">Nėra klaviatūros išdėstymo?</string>
-    <string name="quest_streetName_cantType_open_settings">Atverti nustatymus</string>
-    <string name="quest_streetName_cantType_open_store">Atverti parduotuvę</string>
-    <string name="quest_streetName_cantType_description">Jei naudojate standartinę klaviatūrą, tikėtina, kad galite tiesiog įjungti jums reikiamos kalbos išdėstymą įvesties metodo nustatymuose.
-
-Priešingu atveju galite atsisiųsti kitą klaviatūrą programėlių parduotuvėje. Populiarios daug kalbų palaikančios klaviatūros yra Google Gboard, SwiftKey Keyboard ir Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(nenurodyta)</string>
     <string name="quest_fireHydrant_type_title">Koks šio gaisrinio čiaupo tipas?</string>
     <string name="quest_fireHydrant_type_pillar">Stovas</string>
@@ -494,7 +488,6 @@ Dalinai reiškia, kad vežimėlis gali įvažiuoti ir naudotis tualetu, bet nėr
     <string name="quest_cyclewayPartSurface_title">Kokia čia yra dviračių tako danga?</string>
     <string name="quest_generic_answer_differs_along_the_way">Skirtingose vietose skirtinga…</string>
     <string name="quest_split_way_description">Jei skirtingose vietose skirtinga, pirmas žingsnis yra padalinti kelią. Po to bus galima atsakyti į užduotį kiekvienai daliai atskirai. Padalinti dabar?</string>
-    <string name="quest_split_way_tutorial">Spustelėkite ant kelio toje vietoje, kur atsakymai skiriasi. Pabandykite skirtumo vietą nurodyti kiek galima tiksliau, priartinkite kaip visada.</string>
     <string name="quest_split_way_too_imprecise">Prašome labiau priartinti</string>
     <string name="quest_split_way_many_splits_confirmation_description">Čia jau yra pakankamai padalinimų. Visada kelią galite dar dalinti vėliau.</string>
     <string name="quest_footwayPartSurface_title">Koks šioje vietoje pėsčiųjų tako paviršius?</string>
@@ -755,10 +748,6 @@ Jei kuri nors juosta skirta autobusams, palikite pastabą.</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Šis užduočių tipas yra išjungtas pagal numatytuosius nustatymus, nes kai kuriuose regionuose jis yra nenaudingas, o tam, kad galėtumėte atsakyti į tokio tipo užduotį, greičiausiai turėsite patekti į tą vietą.</string>
     <string name="quest_dietType_explanation_kosher">Košeriniai produktai turi būti ruošiami pagal specialias taisykles, o kašruto sertifikavimo agentūros pažymi, kad produktai atitinka reikalavimus.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nėra dviračių juostos ar tako</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Kaip įprasta, bakstelėkite vieną iliustracijos pusę, pasirinkite tinkamą atsakymą ir tą patį padarykite kitoje pusėje.
-
-Atkreipkite dėmesį į visas galimas parinktis: kai kurie atvejai nėra akivaizdūs, pavyzdžiui, vienpusis kelias, kuriuo dviratininkai gali važiuoti abiem kryptimis!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Pasirenkate, kad čia nėra dviračių juostos ar tako</string>
     <string name="quest_construction_completed_at_known_date">Bus užbaigtos…</string>
     <string name="quest_construction_completion_date_title">Kada bus užbaigtos?</string>
     <string name="quest_surface_value_clay">Molis</string>
@@ -857,7 +846,9 @@ Duomenys atnaujinami po %1$s dienų, o nepanaudoti duomenys ištrinami po %2$s d
     <string name="quest_bollard_type_foldable2">Sulankstomas (su raktu arba be jo)</string>
     <string name="no_search_results">Nieko nerasta</string>
     <string name="quest_selection_hint_title">Per daug darbo?</string>
-    <string name="quest_selection_hint_message">Prisidėti pirmiausia turėtų būti smagu! Jei esate priblokštas užduočių skaičiaus, visada galite nustatyti, kurios užduotys ir kokia tvarka bus rodomos nustatymuose.</string>
+    <string name="quest_selection_hint_message">Prisidėti pirmiausia turėtų būti smagu!
+
+Jei esate priblokštas užduočių skaičiaus, visada galite nustatyti, kurios užduotys ir kokia tvarka bus rodomos nustatymuose.</string>
     <string name="quest_presets_preset_add">Pridėti išankstinį nustatymą</string>
     <string name="quest_presets_preset_name">Iš anksto nustatytas pavadinimas</string>
     <string name="quest_presets_default_name">Numatytoji</string>
@@ -984,9 +975,6 @@ Arba galite palikti pastabą (su nuotrauka).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Vairo laikiklis</string>
     <string name="quest_bicycle_parking_access_title2">Kas čia gali statyti dviračius? Automobilių stovėjimo aikštelė gali būti nemokama arba mokama.</string>
     <string name="quest_playground_access_title2">Kam leidžiama naudotis šia žaidimų aikštele?</string>
-    <string name="quest_sidewalk_answer_none_title">Pasirinkimas, kad trūksta šaligatvių</string>
-    <string name="quest_side_select_interface_explanation">Bakstelėkite vieną pusę ir pasirinkite atitinkamą atsakymą.
-Tą patį padarykite ir kitoje pusėje, jei yra.</string>
     <string name="ar_measure">Priemonė</string>
     <string name="ar_core_tracking_error_too_steep_angle">Per daug stačiu kampu, šiek tiek atsitraukite</string>
     <string name="default_disabled_msg_no_ar">Šiai užduočiai išspręsti reikia matavimo juostos, nes šis prietaisas nepalaiko matavimo fotoaparatu.</string>

@@ -116,7 +116,6 @@
 Αυτή η εφαρμογή βρίσκει ημιτελή και επεκτάσιμα δεδομένα στην περιοχή σας και τα εμφανίζει στον χάρτη ως σημάδια. Κάθε ένα από αυτά είναι επιλύσιμα απαντώντας σε μια απλή ερώτηση για να συμπληρώσετε τις πληροφορίες επί τόπου.
 
 Οι πληροφορίες που εισάγετε προστίθενται απευθείας στο OpenStreetMap στο όνομα σας, χωρίς να χρειάζεται η χρήση άλλου επεξεργαστή.</string>
-    <string name="quest_name_answer_noName">δεν έχει όνομα…</string>
     <string name="quest_name_answer_noName_confirmation_title">Πραγματικά χωρίς όνομα;</string>
     <string name="quest_name_noName_confirmation_positive">Ναι, χωρίς όνομα</string>
     <string name="quest_openingHours_add_times">Προσθήκη χρώνων έναρξης</string>
@@ -193,11 +192,6 @@
     <string name="underground_recycling_container">Υπόγειο δοχείο</string>
     <string name="quest_streetName_answer_cantType">Δεν είναι δυνατή η πληκτρολόγηση των χαρακτήρων της πινακίδας</string>
     <string name="quest_streetName_cantType_title">Λείπει η διάταξη πληκτρολογίου;</string>
-    <string name="quest_streetName_cantType_open_settings">Άνοιγμα ρυθμίσεων</string>
-    <string name="quest_streetName_cantType_open_store">Επισκεφθείτε το app store</string>
-    <string name="quest_streetName_cantType_description">Εάν χρησιμοποιείτε ένα προεπιλεγμένο πληκτρολόγιο, είναι πιθανό ότι απλά μπορείτε να ενεργοποιήσετε τη διάταξη πληκτρολογίου για τη γλώσσα που χρειάζεστε στις ρυθμίσεις μεθόδου εισαγωγής.
-
-Διαφορετικά, μπορείτε να κατεβάσετε ένα άλλο πληκτρολόγιο στο κατάστημα εφαρμογών. Τα δημοφιλή πληκτρολόγια που υποστηρίζουν πολλές γλώσσες είναι το Google Gboard, το SwiftKey Keyboard και το Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(απροσδιόριστο)</string>
     <string name="quest_fireHydrant_type_title">Τι είδους πυροσβεστικός κρουνός είναι αυτός;</string>
     <string name="quest_fireHydrant_type_pillar">Κολώνα</string>
@@ -311,7 +305,7 @@
     <string name="quest_cycleway_answer_contraflow_cycleway">Επίσης ποδηλατόδρομος από την άλλη πλευρά…</string>
     <string name="quest_cycleway_value_none_but_no_oneway">κανένας, αλλά οι ποδηλάτες μπορούν να χρησιμοποιούν το δρόμο και προς τις δύο κατευθύνσεις</string>
     <string name="quest_wheelchairAccess_description_toilets">Μία πινακίδα αναπηρικού αμαξιδίου όπως αυτή μπορεί να είναι ορατή εάν οι τουαλέτες είναι προσβάσιμες.
-     Εν μέρει αυτό σημαίνει ότι ένα αναπηρικό αμαξίδιο μπορεί να εισέλθει και να χρησιμοποιήσει τις τουαλέτες, αλλά δεν υπάρχει χειρολαβή ή προσαρμοσμένος νιπτήρας.</string>
+Εν μέρει αυτό σημαίνει ότι ένα αναπηρικό αμαξίδιο μπορεί να εισέλθει και να χρησιμοποιήσει τις τουαλέτες, αλλά δεν υπάρχει χειρολαβή ή προσαρμοσμένος νιπτήρας.</string>
     <string name="map_btn_create_note">Δημιουργία νέας σημείωσης</string>
     <string name="create_new_note_unprecise">Μεγενθύνετε περισσότερο για να δημιουργήσετε μια σημείωση</string>
     <string name="create_new_note_description">Μπορείτε να αφήσετε μια σημείωση για να ενημερώσετε άλλους χαρτογράφους για ένα ζήτημα εδώ. Ρυθμίστε τη θέση της σημείωσης μετακινώντας τον χάρτη:</string>
@@ -493,7 +487,6 @@
     <string name="quest_cyclewayPartSurface_title">Ποια είναι η επιφάνεια του ποδηλατόδρομου εδώ;</string>
     <string name="quest_generic_answer_differs_along_the_way">Διαφορές κατά μήκος του δρόμου…</string>
     <string name="quest_split_way_description">Αν υπάρχουν διαφορές κατά μήκος της διαδρομής, το πρώτο βήμα είναι να την χωρίσουμε. Μετά από αυτό, η αποστολή μπορεί να απαντηθεί ξεχωριστά για κάθε διαχωρισμένο τμήμα. Διαχωρισμός τώρα;</string>
-    <string name="quest_split_way_tutorial">Χτυπήστε στη διαδρομή για να τη χωρίσετε στο σημείο (σημεία) όπου η απάντηση διαφέρει. Προσπαθήστε να είστε όσο το δυνατόν ακριβέστεροι, μπορείτε να κάνετε μεγέθυνση ως συνήθως.</string>
     <string name="quest_split_way_too_imprecise">Παρακαλώ μεγεθύνετε κι άλλο</string>
     <string name="quest_split_way_many_splits_confirmation_description">Αυτά είναι αρκετά χωρίσματα. Μπορείτε πάντα να χωρίσετε περαιτέρω το δρόμο αργότερα.</string>
     <string name="quest_footwayPartSurface_title">Ποια είναι η επιφάνεια του πεζόδρομου εδώ;</string>
@@ -746,8 +739,6 @@
     <string name="default_disabled_msg_go_inside_regional_warning">Αυτός ο τύπος αποστολής είναι απενεργοποιημένος από προεπιλογή, επειδή δεν είναι χρήσιμος σε ορισμένες περιοχές και πιθανότατα θα πρέπει να εισαγάγετε το μέρος για να μπορείτε να απαντήσετε σε μια αποστολή αυτού του τύπου.</string>
     <string name="quest_dietType_explanation_kosher">Τα προϊόντα Κοσέρ πρέπει να προετοιμάζονται σύμφωνα με ειδικούς κανόνες, με τους οργανισμούς πιστοποίησης Κασρούτ να επισημαίνουν τα προϊόντα σε συμμόρφωση.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Δεν υπάρχει καθόλου ποδηλατόδρομος</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Ως συνήθως, χτυπήστε στη μία πλευρά της εικόνας, επιλέξτε μια σωστή απάντηση και κάντε το ίδιο για την άλλη πλευρά. Σημειώστε όλες τις διαθέσιμες επιλογές: ορισμένες περιπτώσεις δεν είναι προφανείς, όπως ένας μονόδρομος που επιτρέπει ποδηλάτες και στις δύο κατευθύνσεις!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Επιλέγοντας αυτό δεν υπάρχει ποδηλατόδρομος</string>
     <string name="quest_construction_completed_at_known_date">Θα ολοκληρωθεί στις…</string>
     <string name="quest_construction_completion_date_title">Πότε θα ολοκληρωθεί;</string>
     <string name="quest_surface_value_clay">Πηλός</string>
@@ -846,7 +837,9 @@
     <string name="quest_bollard_type_foldable2">Πτυσσόμενο (με ή χωρίς κλειδί)</string>
     <string name="no_search_results">Δεν βρέθηκε τίποτα</string>
     <string name="quest_selection_hint_title">Έχετε πολλά να κάνετε;</string>
-    <string name="quest_selection_hint_message">Η συνεισφορά θα πρέπει πρωτίστως να είναι διασκεδαστική! Αν σας έχει κατακλύσει ο αριθμός των αποστολών, μπορείτε πάντα να ρυθμίσετε με ακρίβεια ποιες αποστολές θα σας εμφανίζονται και με ποια σειρά στις ρυθμίσεις.</string>
+    <string name="quest_selection_hint_message">Η συνεισφορά θα πρέπει πρωτίστως να είναι διασκεδαστική!
+
+Αν σας έχει κατακλύσει ο αριθμός των αποστολών, μπορείτε πάντα να ρυθμίσετε με ακρίβεια ποιες αποστολές θα σας εμφανίζονται και με ποια σειρά στις ρυθμίσεις.</string>
     <string name="quest_presets_preset_add">Προσθήκη προεπιλογής</string>
     <string name="quest_presets_preset_name">Όνομα προεπιλογής</string>
     <string name="quest_presets_default_name">Προεπιλογή</string>
@@ -909,6 +902,7 @@
     <string name="street_parking_conditional_restrictions">Η στάθμευση / το σταμάτημα περιορίζεται υπό όρους</string>
     <string name="street_parking_no_other_reasons">Δεν υπάρχει σαφής πινακίδα / δεν είναι δυνατή η στάθμευση</string>
     <string name="street_parking_conditional_restrictions_hint">Εάν γίνεται να παρκάρετε ή να σταματήσετε εδώ, απαντήστε πρώτα πώς σταθμεύουν εδώ όσοι επιτρέπεται. Το ποιοι ακριβώς περιορισμοί ισχύουν μπορούν να καθοριστούν αργότερα.
+
 Εναλλακτικά, μπορείτε να αφήσετε μια σημείωση (με φωτογραφία).</string>
     <string name="quest_address_house_number_label">Αριθμός σπιτιού:</string>
     <string name="quest_fireHydrant_position_title">Πού βρίσκεται αυτός ο πυροσβεστικός κρουνός;</string>
@@ -972,9 +966,6 @@
     <string name="quest_bicycle_parking_type_handlebarholder">Υποδοχή για τιμόνι ποδηλάτου</string>
     <string name="quest_bicycle_parking_access_title2">Ποιος επιτρέπεται να παρκάρει ποδήλατο εδώ; Ο χώρος στάθμευσης μπορεί να είναι δωρεάν ή επί πληρωμή.</string>
     <string name="quest_playground_access_title2">Ποιος επιτρέπεται να χρησιμοποιεί αυτή την παιδική χαρά;</string>
-    <string name="quest_sidewalk_answer_none_title">Επιλέγοντας ότι τα πεζοδρόμια λείπουν</string>
-    <string name="quest_side_select_interface_explanation">Πατήστε τη μία πλευρά και επιλέξτε την απάντηση που ταιριάζει.
-Κάντε το ίδιο και για την άλλη πλευρά εάν υπάρχει.</string>
     <string name="ar_measure">Μέτρηση</string>
     <string name="ar_core_tracking_error_too_steep_angle">Πολύ απότομη γωνία, απομακρυνθείτε λίγο</string>
     <string name="default_disabled_msg_no_ar">Χρειάζεστε μια μεζούρα για να λύσετε αυτήν την αποστολή, επειδή η μέτρηση με την κάμερα δεν υποστηρίζεται σε αυτήν τη συσκευή.</string>
@@ -1176,8 +1167,6 @@
     <string name="quest_placeName_no_name_answer">Δεν υπάρχει πινακίδα ονόματος</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Αυτό το πλάτος φαίνεται απίθανο. Θυμηθείτε, αυτό θα πρέπει να είναι το πλάτος από πεζοδρόμιο σε πεζοδρόμιο, συμπεριλαμβανομένου του πάρκινγκ στο δρόμο, των ποδηλατοδρόμων κ.λπ.</string>
     <string name="overlay_cycleway">Ποδηλατόδρομοι</string>
-    <string name="bicycle_boulevard_is_a">Είναι %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Δεν είναι %1$s</string>
     <string name="bicycle_boulevard">Λεωφόρος ποδηλάτων</string>
     <string name="separate_cycleway_no_or_allowed">Δεν προορίζεται για ποδηλάτες (η ποδηλασία μπορεί να εξακολουθεί να επιτρέπεται)</string>
     <string name="separate_cycleway_non_segregated">Διαδρομή κοινής χρήσης</string>
@@ -1491,4 +1480,16 @@
     <string name="link_gomap_description">Προχωρημένος OSM επεξεργαστής για iOS</string>
     <string name="link_terraink_description">Δημιουργήστε όμορφες προσαρμοσμένες αφίσες για μια πόλη ή συνοικία</string>
     <string name="quest_place_vacant_type_title">Αυτό το μέρος είναι κενό. Τι υπάρχει εδώ τώρα;</string>
+    <string name="about_title">Σχετικά με %1$s</string>
+    <string name="quest_surface_value_laterite">Λατερίτης</string>
+    <string name="leave_note_quest_context_hint">Δεν μπορώ να απαντήσω “%1$s”:</string>
+    <string name="leave_note_overlay_context_hint">Στα πλαίσια της επικάλυψης “%1$s”:</string>
+    <string name="quest_split_way_tutorial2">Πατήστε το κουμπί για να διαχωρίσετε τη γραμμή στο σημείο του σταυρονήματος.</string>
+    <string name="quest_leave_new_note_track_delete_title">Θέλετε να διαγράψετε αυτήν την καταγραφή ίχνους;</string>
+    <string name="unchanged_tag_action_title">Επιβεβαιώθηκε %1$s</string>
+    <string name="quest_streetName_cantType_description2">Εάν χρησιμοποιείτε το τυπικό πληκτρολόγιο της συσκευής, πιθανόν μπορείτε απλά να ενεργοποιήσετε τη διάταξη πληκτρολογίου για την γλώσσα που θέλετε στις ρυθμίσεις μεθόδου εισόδου.
+
+Διαφορετικά, μπορείτε να κατεβάσετε άλλο πληκτρολόγιο από το κατάστημα εφαρμογών. Στο Android, μπορεί να θέλετε να δοκιμάσετε το FlorisBoard ή το HeliBoard.</string>
+    <string name="bicycle_boulevard_is_a2">Είναι ποδηλατική λεωφόρος</string>
+    <string name="bicycle_boulevard_is_not_a2">Δεν είναι ποδηλατική λεωφόρος</string>
 </resources>
