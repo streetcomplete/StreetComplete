@@ -43,6 +43,8 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.maplibre.compose.location.AndroidLocationProvider
+import org.maplibre.compose.location.LocationProvider
 
 private const val COMPOSE_FILES_DIR = "composeResources/de.westnordost.streetcomplete.resources/files"
 
@@ -89,6 +91,10 @@ val androidModule = module {
     // AR
 
     factory<ArSupportChecker> { AndroidArSupportChecker(get()) }
+
+    // location
+
+    factory<LocationProvider> { AndroidLocationProvider(get()) }
 
     // launch apps
 
