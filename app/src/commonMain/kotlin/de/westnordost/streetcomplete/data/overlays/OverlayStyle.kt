@@ -29,8 +29,6 @@ sealed interface OverlayStyle {
     data class Polygon(
         /** polygon area color */
         val color: Color,
-        /** polygon outline color */
-        val outline: Color? = null,
         /** icon resource to show on the point */
         val icon: DrawableResource? = null,
         /** label to show in the center of the area */
@@ -38,6 +36,8 @@ sealed interface OverlayStyle {
         /** whether and how much to extrude this area */
         val height: Float? = null,
         val minHeight: Float? = null,
+        /** polygon outline color */
+        val outline: Color? = null,
         override val disabled: Boolean = false,
     ) : OverlayStyle
 

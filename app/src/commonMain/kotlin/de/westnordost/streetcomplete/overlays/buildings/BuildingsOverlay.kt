@@ -29,7 +29,6 @@ class BuildingsOverlay : Overlay {
     override val achievements = listOf(BUILDING)
     override val hidesQuestTypes = setOf(AddBuildingType::class.simpleName!!)
 
-    // building:use not supported, so don't offer to change it -> exclude from the overlay
     override fun getStyledElements(mapData: MapDataWithGeometry) = mapData.filter(
         """
             ways, relations with
@@ -57,15 +56,18 @@ class BuildingsOverlay : Overlay {
         """)
         .map { element ->
             val building = createBuildingType(element.tags)
+            val buildingUse = createBuildingUseType(element.tags)
 
             val color = building?.color
                 ?: if (isBuildingTypeMissing(element.tags)) OverlayColor.Red else OverlayColor.Invisible
 
+            val outline = buildingUse?.color
             // val height = estimateBuildingHeight(element.tags)
             // val minHeight = if (height != null) estimateMinBuildingHeight(element.tags) else null
 
             element to OverlayStyle.Polygon(
-                color = color,
+                color = outline ?: color,
+                outline = if (buildingUse!=null) color else null,
                 icon = building?.icon,
                 // TODO MapLibre: 3D buildings are disabled until
                 //      https://github.com/maplibre/maplibre-native/issues/2746 is fixed
