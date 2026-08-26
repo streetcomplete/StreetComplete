@@ -37,6 +37,7 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
     backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
     properties: DialogProperties = DialogProperties(),
+    excludedItems: List<I> = emptyList(),
 ) {
     var selectedGroup by remember { mutableStateOf<G?>(null) }
     var selectedItem by remember { mutableStateOf<I?>(null) }
@@ -63,7 +64,8 @@ fun <I, G: Group<I>> GroupedItemSelectDialog(
                 modifier = Modifier
                     .fadingVerticalScrollEdges(scrollState, 32.dp)
                     .padding(horizontal = 24.dp)
-                    .verticalScroll(scrollState)
+                    .verticalScroll(scrollState),
+                excludedItems = excludedItems
             )
         },
         buttonRow = {

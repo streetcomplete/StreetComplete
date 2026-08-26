@@ -1810,6 +1810,10 @@
     <string name="overlay_addresses_no_entrance">It’s not an entrance…</string>
 
     <string name="overlay_buildings">Buildings</string>
+    <string name="overlay_buildings_different_current_use">Currently used as something else?</string>
+    <string name="overlay_buildings_original_use">Originally</string>
+    <string name="overlay_buildings_current_use">Currently used as</string>
+    <string name="overlay_buildings_no_current_use">No current use</string>
 
     <string name="overlay_places">Places</string>
     <string name="name_label">Name:</string>
