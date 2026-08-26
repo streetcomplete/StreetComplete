@@ -84,7 +84,7 @@ abstract class MainViewModel : ViewModel() {
 
     // NOTE: currently filled from MainActivity (communication to compose view), i.e. the source of
     //       truth is actually the MapFragment
-    abstract val locationState: MutableStateFlow<LocationState>
+    abstract val locationState: MutableStateFlow<LocationState?>
     abstract val mapCamera: MutableStateFlow<CameraPosition?>
     abstract val metersPerDp: MutableStateFlow<Double>
     abstract val displayedPosition: MutableStateFlow<Offset?>
