@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.osm.building
 
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.building.BuildingType.*
+import de.westnordost.streetcomplete.osm.building.BuildingType.HISTORIC
 import de.westnordost.streetcomplete.osm.updateCheckDate
 
 fun BuildingType.applyTo(tags: Tags) {
