@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.screens.main
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.PointF
-import android.location.Location
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
+import androidx.appcompat.app.AlertDialog
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,8 +46,8 @@ import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.AutoSyncer
+import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
@@ -91,7 +90,12 @@ import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
-import kotlin.jvm.java
+import org.maplibre.compose.location.LocationEvent
+import org.maplibre.compose.location.LocationPermission
+import org.maplibre.compose.location.LocationProvider
+import org.maplibre.compose.location.LocationRequest
+import org.maplibre.compose.location.LocationUnavailableReason
+import org.maplibre.compose.location.SystemSettingsLauncher
 import kotlin.math.PI
 import kotlin.math.sqrt
 
@@ -135,6 +139,8 @@ class MainActivity :
     private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val mapAppLauncher: MapAppLauncher by inject()
+    private val locationProvider: LocationProvider by inject()
+    private val systemSettingsLauncher: SystemSettingsLauncher by inject()
 
     private val viewModel by viewModel<MainViewModel>()
     private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
@@ -180,8 +186,6 @@ class MainActivity :
 
         lifecycle.addObserver(autoSyncer)
         feedsUpdater.updateAtMostDaily()
-
-        locationManager = FineLocationManager(this, this::onLocationChanged)
 
         compose.setContent { AppTheme {
             val isMapAppLaunchAvailable = remember { mapAppLauncher.isAvailable() }
@@ -335,6 +339,20 @@ class MainActivity :
                 mainBottomSheetViewModel.closeBottomSheet()
             }
         }
+        observe(locationProvider.updates(LocationRequest())) { locationEvent ->
+            viewModel.locationState.value = when (locationEvent) {
+                is LocationEvent.Fix -> LocationState.UPDATING
+                is LocationEvent.Unavailable -> when (locationEvent.reason) {
+                    LocationUnavailableReason.ServicesDisabled -> LocationState.ALLOWED
+                    LocationUnavailableReason.TemporarilyUnavailable -> LocationState.SEARCHING
+                    LocationUnavailableReason.PermissionDenied -> LocationState.DENIED
+                    LocationUnavailableReason.Unsupported,
+                    LocationUnavailableReason.Misconfigured,
+                    LocationUnavailableReason.UnexpectedFailure -> null
+                }
+            }
+            // TODO: relay event to MapFragment
+        }
     }
 
     override fun onStart() {
@@ -344,9 +362,6 @@ class MainActivity :
 
         visibleQuestsSource.addListener(this)
         mapDataWithEditsSource.addListener(this)
-        locationAvailabilityReceiver.addListener(::updateLocationAvailability)
-
-        updateLocationAvailability(isLocationAvailable)
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -365,9 +380,6 @@ class MainActivity :
 
         visibleQuestsSource.removeListener(this)
         mapDataWithEditsSource.removeListener(this)
-        locationAvailabilityReceiver.removeListener(::updateLocationAvailability)
-
-        locationManager.removeUpdates()
     }
 
     //endregion
@@ -543,42 +555,6 @@ class MainActivity :
 
     /* ++++++++++++++++++++++++++++++++++++++ VIEW CONTROL ++++++++++++++++++++++++++++++++++++++ */
 
-    //region Location - Request location and update location status
-
-    private fun updateLocationAvailability(isAvailable: Boolean) {
-        if (isAvailable) {
-            onLocationIsEnabled()
-        } else {
-            onLocationIsDisabled()
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun onLocationIsEnabled() {
-        viewModel.locationState.value = LocationState.SEARCHING
-        mapFragment?.startPositionTracking()
-
-        mapFragment?.centerCurrentPositionIfFollowing()
-        locationManager.getCurrentLocation()
-    }
-
-    private fun onLocationIsDisabled() {
-        viewModel.locationState.value = when {
-            hasLocationPermission -> LocationState.ALLOWED
-            else -> LocationState.DENIED
-        }
-        viewModel.isNavigationMode.value = false
-        viewModel.displayedPosition.value = null
-        mapFragment?.clearPositionTracking()
-        locationManager.removeUpdates()
-    }
-
-    private fun onLocationChanged(location: Location) {
-        viewModel.locationState.value = LocationState.UPDATING
-    }
-
-    //endregion
-
     //region Buttons - Functionality for the buttons in the main view
 
     private fun onClickDownload() {
@@ -627,15 +603,55 @@ class MainActivity :
     private fun onClickLocationButton() {
         val mapFragment = mapFragment ?: return
 
-        when {
-            !viewModel.locationState.value.isEnabled -> {
-                requestLocation()
+        val permission = locationProvider.permission.value
+        if (permission is LocationPermission.NotGranted) {
+            if (permission.canRequest != false) {
+                if (!permission.shouldShowRationale) {
+                    locationProvider.requestPermission()
+                } else {
+                    AlertDialog.Builder(this)
+                        .setTitle(R.string.no_location_permission_warning_title)
+                        .setMessage(R.string.no_location_permission_warning)
+                        .setPositiveButton(R.string.ok) { _, _ ->
+                            locationProvider.requestPermission()
+                        }
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show()
+                }
+            } else {
+                if (systemSettingsLauncher.canOpenApplicationSettings) {
+                    AlertDialog.Builder(this)
+                        .setMessage(R.string.turn_on_location_request)
+                        .setPositiveButton(R.string.ok) { _, _ ->
+                            systemSettingsLauncher.openApplicationSettings()
+                        }
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .show()
+                } else {
+                    toast(R.string.no_gps_no_quests)
+                }
             }
-            !mapFragment.isFollowingPosition -> {
-                setIsFollowingPosition(true)
-            }
-            else -> {
-                setIsNavigationMode(!mapFragment.isNavigationMode)
+        } else {
+            when {
+                viewModel.locationState.value == LocationState.ALLOWED -> {
+                    if (systemSettingsLauncher.canOpenLocationServicesSettings) {
+                        AlertDialog.Builder(this)
+                            .setMessage(R.string.turn_on_location_request)
+                            .setPositiveButton(R.string.ok) { _, _ ->
+                                systemSettingsLauncher.openLocationServicesSettings()
+                            }
+                            .setNegativeButton(android.R.string.cancel, null)
+                            .show()
+                    } else {
+                        toast(R.string.no_gps_no_quests)
+                    }
+                }
+                !mapFragment.isFollowingPosition -> {
+                    setIsFollowingPosition(true)
+                }
+                else -> {
+                    setIsNavigationMode(!mapFragment.isNavigationMode)
+                }
             }
         }
     }

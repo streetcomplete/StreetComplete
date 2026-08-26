@@ -81,7 +81,7 @@ fun MainScreenControls(
     onClickCompass: () -> Unit,
 
     // location button & pointer
-    locationState: LocationState,
+    locationState: LocationState?,
     isNavigationMode: Boolean,
     isFollowingPosition: Boolean,
     displayedLocationOffset: Offset?,
@@ -221,12 +221,14 @@ fun MainScreenControls(
                                     onZoomDrag = onZoomDrag
                                 )
                             }
-                            LocationStateButton(
-                                onClick = onClickLocation,
-                                state = locationState,
-                                isNavigationMode = isNavigationMode,
-                                isFollowing = isFollowingPosition,
-                            )
+                            if (locationState != null) {
+                                LocationStateButton(
+                                    onClick = onClickLocation,
+                                    state = locationState,
+                                    isNavigationMode = isNavigationMode,
+                                    isFollowing = isFollowingPosition,
+                                )
+                            }
                         }
 
                         if (isCreateNodeEnabled) {
