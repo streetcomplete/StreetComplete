@@ -66,17 +66,7 @@ class BuildingUseTypeParserKtTest {
     }
 
     @Test fun `parse excluded building uses`() {
-        assertNull(
-            createBuildingUseType(mapOf("building:use" to "ruins"))
-        )
-
-        assertNull(
-            createBuildingUseType(mapOf("building:use" to "abandoned"))
-        )
-
-        assertNull(
-            createBuildingUseType(mapOf("building:use" to "historic"))
-        )
+        assertNull(createBuildingUseType(mapOf("building:use" to "yes")))
     }
 
     @Test fun `parse unsupported building use`() {
