@@ -18,9 +18,7 @@ import de.westnordost.streetcomplete.osm.building.createBuildingType
 import de.westnordost.streetcomplete.osm.building.createBuildingUseType
 import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.overlay_buildings
-import de.westnordost.streetcomplete.resources.quest_building
+import de.westnordost.streetcomplete.resources.*
 
 class BuildingsOverlay : Overlay {
 

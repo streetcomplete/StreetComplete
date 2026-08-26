@@ -34,8 +34,7 @@ import de.westnordost.streetcomplete.osm.building.createBuildingUseType
 import de.westnordost.streetcomplete.osm.building.description
 import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.osm.building.title
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.overlay_buildings_different_current_use
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.common.overlay.GroupedItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.overlay.SideBySideLayoutForm
