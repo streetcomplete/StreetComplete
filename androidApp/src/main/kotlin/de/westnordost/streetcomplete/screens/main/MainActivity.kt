@@ -1,11 +1,7 @@
 package de.westnordost.streetcomplete.screens.main
 
 import android.annotation.SuppressLint
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
-import android.content.res.Configuration
 import android.graphics.PointF
 import android.location.Location
 import android.os.Bundle
@@ -17,7 +13,6 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.AnyThread
 import androidx.annotation.UiThread
-import androidx.appcompat.app.AlertDialog
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -53,7 +48,7 @@ import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.Quest
-import de.westnordost.streetcomplete.data.quest.QuestAutoSyncer
+import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
@@ -78,7 +73,6 @@ import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.toDpOffset
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import de.westnordost.streetcomplete.ui.theme.Dimensions
-import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.getLocationInWindow
 import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
@@ -132,7 +126,7 @@ class MainActivity :
 
     override val scope: Scope by activityScope()
 
-    private val questAutoSyncer: QuestAutoSyncer by inject()
+    private val autoSyncer: AutoSyncer by inject()
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
@@ -184,7 +178,7 @@ class MainActivity :
             }
         }
 
-        lifecycle.addObserver(questAutoSyncer)
+        lifecycle.addObserver(autoSyncer)
         feedsUpdater.updateAtMostDaily()
 
         locationManager = FineLocationManager(this, this::onLocationChanged)

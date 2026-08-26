@@ -24,19 +24,18 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
-import org.maplibre.compose.location.Location
 import org.maplibre.compose.location.LocationAccuracy
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.LocationRequest
-import org.maplibre.compose.location.PositionWithAccuracy
+import org.maplibre.spatialk.units.extensions.meters
 import kotlin.time.Duration.Companion.seconds
 
-/** Automatically downloads new quests around the user's location and uploads quests.
+/** Automatically downloads map data around the user's location and uploads edits.
  *
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
-class QuestAutoSyncer(
+class AutoSyncer(
     private val downloadController: DownloadController,
     private val uploadController: UploadController,
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
@@ -112,11 +111,11 @@ class QuestAutoSyncer(
         coroutineScope.launch {
             owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 val request = LocationRequest(LocationAccuracy.High, 30.seconds, 100.meters)
-                locationProvider.updates(request) { locationEvent ->
+                locationProvider.updates(request).collect { locationEvent ->
                     if (locationEvent is LocationEvent.Fix) {
                         val (position, accuracy) = locationEvent.location.position
                         if (accuracy == null || accuracy < 300.meters) {
-                            pos = position.value.toLatLon()
+                            pos = LatLon(position.latitude, position.longitude)
                             triggerAutoDownload()
                         }
                     }
