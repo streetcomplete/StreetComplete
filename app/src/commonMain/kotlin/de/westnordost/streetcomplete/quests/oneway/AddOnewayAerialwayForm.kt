@@ -10,12 +10,9 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import org.jetbrains.compose.resources.stringResource
-import de.westnordost.streetcomplete.resources.*
-
-private val RARE_BOTHWAY_AERIALWAYS = arrayOf("t-bar", "j-bar", "platter", "drag_lift")
 
 @Composable
 fun AddOnewayAerialwayForm(
@@ -23,12 +20,15 @@ fun AddOnewayAerialwayForm(
     element: Element,
     geometry: ElementGeometry
 ) {
-    var pendingAnswer by remember { mutableStateOf<QuestAction<OnewayAnswer>?>(null) }
+    var confirmNoOneway by remember { mutableStateOf(false) }
 
     AddOnewayForm(
         on = { action ->
-            if (action is Answer && action.value == OnewayAnswer.NO_ONEWAY && element.tags["aerialway"] in RARE_BOTHWAY_AERIALWAYS) {
-                pendingAnswer = action
+            if (action is Answer
+                && action.value == OnewayAnswer.NO_ONEWAY
+                && element.tags["aerialway"] in RARE_BOTHWAY_AERIALWAYS
+            ) {
+                confirmNoOneway = true
             } else {
                 on(action)
             }
@@ -36,11 +36,13 @@ fun AddOnewayAerialwayForm(
         geometry = geometry
     )
 
-    pendingAnswer?.let { answer ->
+    if (confirmNoOneway) {
         AreYouSureDialog(
-            onDismissRequest = { pendingAnswer = null },
-            onConfirmed = { on(answer) },
+            onDismissRequest = { confirmNoOneway = false },
+            onConfirmed = { on(Answer(OnewayAnswer.NO_ONEWAY)) },
             text = { Text(stringResource(Res.string.quest_bothway_aerialway_confirm)) }
         )
     }
 }
+
+private val RARE_BOTHWAY_AERIALWAYS = listOf("t-bar", "j-bar", "platter", "drag_lift")
