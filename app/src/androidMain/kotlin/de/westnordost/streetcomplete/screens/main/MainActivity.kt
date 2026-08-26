@@ -220,7 +220,6 @@ class MainActivity :
                     intent.putExtra(UserActivity.EXTRA_LAUNCH_AUTH, true)
                     context.startActivity(intent)
                 },
-                onExplainedNeedForLocationPermission = ::requestLocation,
                 onSetMapMarkers = { markers ->
                     mapFragment?.setMarkersForCurrentHighlighting(markers)
                 },
