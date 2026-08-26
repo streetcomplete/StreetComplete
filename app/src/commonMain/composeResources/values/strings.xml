@@ -1121,6 +1121,8 @@
     <string name="quest_drinking_water_type_spring">Spring</string>
     <string name="quest_drinking_water_type_disused">Disused drinking water object</string>
 
+    <string name="quest_doctor_type">What does this doctor specialize in?</string>
+
     <string name="quest_existence_title2">Is this still here?</string>
 
     <string name="quest_ferry_pedestrian_title">Does this ferry route transport pedestrians?</string>

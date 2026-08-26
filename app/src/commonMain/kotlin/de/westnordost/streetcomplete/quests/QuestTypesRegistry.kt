@@ -61,6 +61,7 @@ import de.westnordost.streetcomplete.quests.camping.AddCampPower
 import de.westnordost.streetcomplete.quests.camping.AddCampShower
 import de.westnordost.streetcomplete.quests.camping.AddCaravans
 import de.westnordost.streetcomplete.quests.camping.AddTents
+import de.westnordost.streetcomplete.quests.doctor_type.AddDoctorType
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
@@ -364,6 +365,8 @@ fun questTypeRegistry(
     59 to AddSelfServiceLaundry(),
 
     60 to AddGeneralFee(),
+
+    200 to AddDoctorType(getCountryInfoByLocation),
 
     61 to AddDrinkingWater(), // used by AnyFinder
     62 to AddDrinkingWaterType(),
