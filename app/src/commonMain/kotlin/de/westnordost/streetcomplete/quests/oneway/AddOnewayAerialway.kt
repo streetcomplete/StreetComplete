@@ -45,7 +45,7 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
 
     @Composable
     override fun Form(on: (QuestAction<OnewayAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddOnewayForm(on, element, geometry)
+        AddOnewayAerialwayForm(on, element, geometry)
     }
 
     override fun applyAnswerTo(answer: OnewayAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
