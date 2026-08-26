@@ -35,6 +35,8 @@ import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.maplibre.compose.location.IosLocationProvider
+import org.maplibre.compose.location.LocationProvider
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSBundle
 import platform.Foundation.NSCachesDirectory
@@ -105,6 +107,10 @@ val iosModule = module {
     // AR
 
     factory<ArSupportChecker> { IosArSupportChecker() }
+
+    // location
+
+    factory<LocationProvider> { IosLocationProvider() }
 
     // launch apps
 
