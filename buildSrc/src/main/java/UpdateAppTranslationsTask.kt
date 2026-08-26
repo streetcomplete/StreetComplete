@@ -24,10 +24,10 @@ open class UpdateAppTranslationsTask : DefaultTask() {
             // en-us is the source language
             if (locale == Locale.US) continue
 
-            val androidResCodes = locale.transformPOEditorLanguageTag().toAndroidResCodes()
+            val androidResCode = locale.transformPOEditorLanguageTag().toAndroidResCode()
 
             print(languageTag)
-            if (androidResCodes.singleOrNull() != languageTag) print(" -> " + androidResCodes.joinToString(", "))
+            if (androidResCode != languageTag) print(" -> " + androidResCode)
             println()
 
             // download the translation and save it in the appropriate directory
@@ -43,11 +43,9 @@ ${translations.entries.joinToString("\n") { (key, value) ->
 "    <string name=\"$key\">$xmlValue</string>"
 } }
 </resources>"""
-            for (androidResCode in androidResCodes) {
-                val file = File(targetFiles(androidResCode))
-                File(file.parent).mkdirs()
-                file.writeText(text)
-            }
+            val file = File(targetFiles(androidResCode))
+            File(file.parent).mkdirs()
+            file.writeText(text)
         }
     }
 }

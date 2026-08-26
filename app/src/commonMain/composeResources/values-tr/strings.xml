@@ -116,7 +116,6 @@ Bahsedildiği gibi, uygulama OSM altyapısıyla doğrudan iletişim kuruyor. Bun
 Bu uygulama, çevrenizdeki tamamlanmamış ve genişletilebilir verileri bulur ve harita üzerinde işaretler. Her birini oldukları yerleri ziyaret edip basit bir soruyu yanıtlayarak çözülebilir ve haritayı güncel tutabilirsiniz.
 
 Girdiğiniz bilgiler başka bir düzenleyici kullanmak zorunda kalmaksızın adınıza doğrudan OpenStreetMap'a eklenir.</string>
-    <string name="quest_name_answer_noName">İsimsiz...</string>
     <string name="quest_name_answer_noName_confirmation_title">Gerçekten isimsiz mi?</string>
     <string name="quest_name_noName_confirmation_positive">Evet, adı yok</string>
     <string name="quest_openingHours_add_times">Açılış saatlerini ekle</string>
@@ -193,11 +192,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="underground_recycling_container">Yeraltı Konteyneri</string>
     <string name="quest_streetName_answer_cantType">Tabeladaki karakterleri yazamıyorum</string>
     <string name="quest_streetName_cantType_title">Klavye düzeni mi eksik?</string>
-    <string name="quest_streetName_cantType_open_settings">Ayarları Aç</string>
-    <string name="quest_streetName_cantType_open_store">Mağazayı Aç</string>
-    <string name="quest_streetName_cantType_description">Varsayılan klavye kullanıyorsanız, giriş yöntemi ayarlarında ihtiyacınız olan dil için klavye düzenini kolayca etkinleştirebilme ihtimaliniz vardır.
-
- Aksi takdirde, başka bir klavyeyi uygulama mağazasından indirebilirsiniz.  Birçok dili destekleyen popüler klavyeler Google Gboard, SwiftKey ve Anysoft Klavye'dir.</string>
     <string name="quest_streetName_menuItem_nolanguage">(belirtilmemiş)</string>
     <string name="quest_fireHydrant_type_title">Bu ne tür bir yangın musluğu?</string>
     <string name="quest_fireHydrant_type_pillar">Sütun</string>
@@ -311,7 +305,7 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_cycleway_answer_contraflow_cycleway">Ayrıca karşı tarafta bisiklet yolu var…</string>
     <string name="quest_cycleway_value_none_but_no_oneway">Yok ama bisikletliler bu yolu çift yönlü kullanabilir</string>
     <string name="quest_wheelchairAccess_description_toilets">Tuvalet erişilebilir ise, bunun gibi bir tekerlekli sandalye işareti görülebilir.
-     Kısmen tekerlekli sandalyenin tuvalete girip kullanabileceği anlamına gelir, ancak parmaklık veya adapte edilmiş el havzası yoktur.</string>
+Kısmen tekerlekli sandalyenin tuvalete girip kullanabileceği anlamına gelir, ancak parmaklık veya adapte edilmiş el havzası yoktur.</string>
     <string name="map_btn_create_note">Yeni not oluştur</string>
     <string name="create_new_note_unprecise">Bir not oluşturmak için yakınlaştır</string>
     <string name="create_new_note_description">Diğer haritacıların burada bir sorundan haberdar olmalarını sağlamak için bir not bırakabilirsiniz.  Haritayı hareket ettirerek notun konumunu ayarlayın:</string>
@@ -494,7 +488,6 @@ Vurgulu alandaki cadde boyunca hiçbir işaret yoksa varsayılan hız sınırlar
     <string name="quest_cyclewayPartSurface_title">Buradaki bisiklet yolunun yüzey nasıldır?</string>
     <string name="quest_generic_answer_differs_along_the_way">Yol boyunca değişiyor.</string>
     <string name="quest_split_way_description">Yol boyunca farklılık gösteriyorsa, ilk adım yolu bölmektir. Bundan sonra, her bölünmüş kısım için görev ayrı ayrı cevaplanabilir.</string>
-    <string name="quest_split_way_tutorial">Cevabın farklı olduğu noktalarda bölmek için yola dokunun. Mümkün olduğunca hassas olmaya çalışın, her zamanki gibi yakınlaştırabilirsiniz.</string>
     <string name="quest_split_way_too_imprecise">Lütfen daha fazla yakınlaştırın</string>
     <string name="quest_split_way_many_splits_confirmation_description">Bu bölmeler oldukça fazla. Yolu daha sonra her zaman daha fazla parçaya bölebilirsin.</string>
     <string name="quest_footwayPartSurface_title">Buradaki patikanın yüzeyi nedir?</string>
@@ -756,10 +749,6 @@ Herhangi bir şerit otobüs için ayrılmışsa, lütfen bunun yerine bir not b�
     <string name="default_disabled_msg_go_inside_regional_warning">Bu görev türü varsayılan olarak devre dışı bırakılmıştır çünkü bazı bölgelerde kullanışlı değildir ve bu türden bir görevi cevaplayabilmek için büyük olasılıkla bir yere girmeniz gerekecektir.</string>
     <string name="quest_dietType_explanation_kosher">Kaşar ürünler kaşrut sertifika ajanslarının ürünleri uygun işaretlemek için kabul ettiği özel koşullara göre hazırlanmalıdır.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Hiç bisiklet yolu yok</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Her zaman olduğu gibi örneğin tarafına bas, uygun yanıtı seç ve diğer taraf için de aynısını uygula.
-
-Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bisiklete binmeye izin veren tek yön yollar gibi!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Bisiklet yolu veya patikası yok</string>
     <string name="quest_construction_completed_at_known_date">Şu tarihte bitecek…</string>
     <string name="quest_construction_completion_date_title">Ne zaman tamamlanacak?</string>
     <string name="quest_surface_value_clay">Kil</string>
@@ -857,7 +846,9 @@ Tüm seçenekleri değerlendir! Bazı durumlar net olmayabilir. Çift yönde bis
     <string name="quest_bollard_type_foldable2">Katlanabilir (anahtar ile veya anahtarsız)</string>
     <string name="no_search_results">Hiçbir şey bulunamadı</string>
     <string name="quest_selection_hint_title">Fazla mı geldi?</string>
-    <string name="quest_selection_hint_message">Katkı yapmak öncelikle eğlenceli olmalıdır! Eğer görevlerin sayısı seni bunalttıysa ayarlardan kaç tanesinin gözükeceğini ve hangi sırayla gözükeceğini belirleyebilirsin.</string>
+    <string name="quest_selection_hint_message">Katkı yapmak öncelikle eğlenceli olmalıdır!
+
+Eğer görevlerin sayısı seni bunalttıysa ayarlardan kaç tanesinin gözükeceğini ve hangi sırayla gözükeceğini belirleyebilirsin.</string>
     <string name="quest_presets_preset_add">Ön ayar ekle</string>
     <string name="quest_presets_preset_name">Ön ayar adı</string>
     <string name="quest_presets_default_name">Varsayılan</string>
@@ -984,8 +975,6 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Gidon tutucu</string>
     <string name="quest_bicycle_parking_access_title2">Kimler buraya bisikletini park edebilir, ücretli veya ücretsiz?</string>
     <string name="quest_playground_access_title2">Kimler bu parkı kullanabilir?</string>
-    <string name="quest_sidewalk_answer_none_title">Kaldırım olmadığı seçili</string>
-    <string name="quest_side_select_interface_explanation">Bir tarafa tıklayın ve uygun cevabı işaretleyin. Varsa diğer taraf için de aynısını uygulayın.</string>
     <string name="ar_measure">Ölçü</string>
     <string name="ar_core_tracking_error_too_steep_angle">Çok yakın, biraz uzaklaşın</string>
     <string name="default_disabled_msg_no_ar">Bu soruyu çözmek için bir mezuraya ihtiyacın olacak çünkü cihazın kamera ile ölçüm yapmayı desteklemiyor.</string>
@@ -1186,8 +1175,6 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber).</string>
     <string name="quest_placeName_no_name_answer">İsim tabelası yok.</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Bu genişlik mantıklı görünmüyor. Unutmayın, sokağın genişliği yol kenarına park eden arabalar ve bisiklet şeritleri vs. dahil olmak üzere kaldırımdan kaldırıma olmalıdır.</string>
     <string name="overlay_cycleway">Bisiklet yolları</string>
-    <string name="bicycle_boulevard_is_a">Bu bir %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Bu bir %1$s değil</string>
     <string name="bicycle_boulevard">Bisiklet bulvarı</string>
     <string name="separate_cycleway_no_or_allowed">Bisikletliler için belirli bir tabela yok (bisiklet sürülebilir)</string>
     <string name="separate_cycleway_non_segregated">Paylaşımlı yol</string>
@@ -1200,9 +1187,6 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber).</string>
     <string name="separate_cycleway_path">Genel patika (genel kullanıma uygun değil)</string>
     <string name="quest_fireHydrant_type_pipe">Boru</string>
     <string name="measure_info_title">Uygun kesinliğe ulaşılıyor</string>
-    <string name="measure_info_html_description">&lt;p&gt;ARCore bazen (başlangıçta) zemini olduğundan biraz daha yüksek veya alçak sanıyor.&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</string>
     <string name="privacy_html_arcore">Bu uygulama &lt;a href="https://play.google.com/store/apps/details?id=com.google.ar.core"&gt;Google Play Arttırılmış Gerçeklik Servisleri&lt;/a&gt; (ARCore) ile çalışır, bu da Google'ın geliştirdiği bir yazılımdır ve &lt;a href="https://policies.google.com/privacy"&gt;Google Gizlilik Politikası&lt;/a&gt; altında sunulmaktadır.</string>
     <string name="default_disabled_msg_seasonal">Bu görev tipi veriyi yılda birkaç kez kontrol etmeyi gerektirdiğinden varsayılan olarak devre dışıdır.</string>
     <string name="quest_gritBinSeasonal_title">Kışın dışında da burada mı?</string>
@@ -1302,7 +1286,8 @@ Ek olarak, adresler katmanı gibi bazı katmanlar imlecin olduğu yere yeni veri
     <string name="unknown_object">Bilinmeyen öğe</string>
     <string name="quest_leafType_tree_title">Bu ağaç dikenli mi yapraklı mı?</string>
     <string name="quest_bbq_fuel_gas">Benzin</string>
-    <string name="about_description_donate_google_play3">Uygulayı desteklemeyi düşündüğün için teşekkür ederiz! Google Play uygulama içerisine link koymaya izin vermediği için bağış bilgilerini websitemizde veya projenin ana sayfasında  bulabilirsin. </string>
+    <string name="about_description_donate_google_play3">Uygulayı desteklemeyi düşündüğün için teşekkür ederiz!
+Google Play uygulama içerisine link koymaya izin vermediği için bağış bilgilerini websitemizde veya projenin ana sayfasında  bulabilirsin. </string>
     <string name="quest_isAmenityIndoor_outside_covered">İçeride değil ama örtülü</string>
     <string name="lit_value_unsupported">Uygulama içinde bulunmayan özel aydınlatma seçeneği</string>
     <string name="quest_generic_otherAnswers2">Şey...</string>

@@ -116,7 +116,6 @@ Bet, pirms jūsu veikto izmaiņu augšupielādes, lietotne uz mana servera pārb
 Lietotne sameklē trūkstošo informāciju jūsu apkārtnē un attēlo to kartē kā uzdevumus. Atrisiniet katru no šiem uzdevumiem, dodoties uz attiecīgo vietu un atbildot uz vienkāršu jautājumu, lai papildinātu karti.
 
 Informācija, ko jūs ievadiet, tiek pievienota OpenStreetMap jūsu lietotājvārdā bez nepieciešamības izmantot citu karšu rediģēšanas lietotni.</string>
-    <string name="quest_name_answer_noName">Tai nav nosaukuma…</string>
     <string name="quest_name_answer_noName_confirmation_title">Tiešām nav nosaukuma?</string>
     <string name="quest_name_noName_confirmation_positive">Jā, nav nosaukuma</string>
     <string name="quest_openingHours_add_times">Pievienot darba laiku</string>
@@ -193,11 +192,6 @@ Ja nav zīmes, kas iezīmētajā ceļa daļā norāda ātruma ierobežojumu, tie
     <string name="underground_recycling_container">Pazemes konteineris</string>
     <string name="quest_streetName_answer_cantType">Uz zīmes norādītos simbolus nevar ievadīt</string>
     <string name="quest_streetName_cantType_title">Nav pieejams tatatūras izkārtojums?</string>
-    <string name="quest_streetName_cantType_open_settings">Atveriet iestatījumus</string>
-    <string name="quest_streetName_cantType_open_store">Apmeklēt lietotnes veikalu</string>
-    <string name="quest_streetName_cantType_description">Ja izmantojat noklusējuma tastatūru, jūs iespējams varat pievienot papildu tastatūras izkārtojumu tastatūras iestatījumos.
-
-Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietotņu veikalu. Populāras tastatūras, kurām šī opcija ir pieejama ir Google Gboard, SwiftKey Keyboard, un Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(nav norādīts)</string>
     <string name="quest_fireHydrant_type_title">Kāda veida ugunsdzēsības hidrants šis ir?</string>
     <string name="quest_fireHydrant_type_pillar">Pilārs</string>
@@ -310,7 +304,8 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_housenumber_street_number_optional">Orientācijas skaitlis (neobligāts)</string>
     <string name="quest_cycleway_answer_contraflow_cycleway">Veloceliņš arī otrā pusē…</string>
     <string name="quest_cycleway_value_none_but_no_oneway">nav, bet velosipēdisti var izmantot ceļu abos virzienos</string>
-    <string name="quest_wheelchairAccess_description_toilets">Šādu ratiņkrēsla zīmi varētu redzēt, ja labierīcības ir pieejamas. “Daļēji” nozīmē, ka ar ratiņkrēslu labierīcībās var iekļūt un tās izmantot, bet tajās nav margu vai pielāgotu izlietņu.</string>
+    <string name="quest_wheelchairAccess_description_toilets">Šādu ratiņkrēsla zīmi varētu redzēt, ja labierīcības ir pieejamas.
+“Daļēji” nozīmē, ka ar ratiņkrēslu labierīcībās var iekļūt un tās izmantot, bet tajās nav margu vai pielāgotu izlietņu.</string>
     <string name="map_btn_create_note">Izveidot jaunu piezīmi</string>
     <string name="create_new_note_unprecise">Tuviniet vēl vairāk, lai izveidotu piezīmi</string>
     <string name="create_new_note_description">Jūs varat atstāt piezīmi, lai informētu citus kartētājs par šeit atklātajām problēmām. Jūs varat piekoriģēt piezīmes novietojumu, pārvietojot karti:</string>
@@ -492,7 +487,6 @@ Ja tādu opciju nav, jūs varat instalēt citu tastatūras lietotni caur lietot�
     <string name="quest_cyclewayPartSurface_title">Kāds ir šī veloceliņa segums?</string>
     <string name="quest_generic_answer_differs_along_the_way">Dažādās vietās dažāds…</string>
     <string name="quest_split_way_description">Ja dažādās vietās ir dažāds, pirmais solis ir ceļu sadalīt apakšposmos. Pēc tam uzdevumu var atbildēt katram posmam atsevišķi. Sadalīt tagad?</string>
-    <string name="quest_split_way_tutorial">Uzspiediet uz ceļa, lai to sadalītu punktos, kur atbildes atšķiras. Izmantojiet kartes tuvināšanas funkciju un mēģiniet būt pēc iespējas precīzi.</string>
     <string name="quest_split_way_too_imprecise">Lūdzu, tuviniet vēl vairāk</string>
     <string name="quest_split_way_many_splits_confirmation_description">Tie ir diezgan daudz dalījumi. Jūs vienmēr varat sadalīt smalkāk vēlāk.</string>
     <string name="quest_footwayPartSurface_title">Kāds ir šī gājēju celiņa segums?</string>
@@ -754,10 +748,6 @@ Ja kādas joslas ir rezervētas autobusiem, lūdzu, atstājiet piezīmi.</string
     <string name="default_disabled_msg_go_inside_regional_warning">Šis uzdevumu veids pēc noklusējuma ir izslēgts, jo dažos reģionos tas nav noderīgs un jums visdrīzāk būtu jāapmeklē vieta, lai varētu izpildīt uz šāda veida uzdevumus.</string>
     <string name="quest_dietType_explanation_kosher">Košera ēdienus jāpagatavo pēc noteiktiem noteikumiem; kašruta sertifikācijas aģentūras apzīmē atbilstošus produktus.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nav ne velojoslas, ne veloceliņa</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Kā parasti, spiediet uz ilustrācijas vienas puses, izvēlieties atbilstošu atbildi un izdariet to pašu otrā pusē.
-
-Ņemiet vērā visas pieejamās opcijas: daži gadījumi nav acīmredzami, piemēram, vienvirziena ceļš, kur velosipēdisti drīkst braukt abos virzienos!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Izvēlas, ka šeit nav veloceliņa vai velojoslas</string>
     <string name="quest_construction_completed_at_known_date">Tiks pabeigts datumā…</string>
     <string name="quest_construction_completion_date_title">Kad tas tiks pabeigts?</string>
     <string name="quest_surface_value_clay">Māls</string>
@@ -856,7 +846,9 @@ Dati tiek atjaunināti pēc %1$s dienām un neizmantotie dati tiek automātiski 
     <string name="quest_bollard_type_foldable2">Salokāms (ar vai bez atslēgas)</string>
     <string name="no_search_results">Nekas netika atrasts</string>
     <string name="quest_selection_hint_title">Pārāk daudz, ko darīt?</string>
-    <string name="quest_selection_hint_message">Kartografēšanai ir jābūt jautrai! Ja jūsu apkārtnē ir pārāk daudz ko darīt, jūs vienmēr iestatījumos varat pielāgot kādā secībā un kāda veida uzdevumi jums tiks piedāvāti.</string>
+    <string name="quest_selection_hint_message">Kartografēšanai ir jābūt jautrai!
+
+Ja jūsu apkārtnē ir pārāk daudz ko darīt, jūs vienmēr iestatījumos varat pielāgot kādā secībā un kāda veida uzdevumi jums tiks piedāvāti.</string>
     <string name="quest_presets_preset_add">PIevienot pirekšiestatījumu</string>
     <string name="quest_presets_preset_name">Pirekšiestatījuma nosaukums</string>
     <string name="quest_presets_default_name">Noklusējuma</string>
@@ -983,9 +975,6 @@ Vai arī atstājiet piezīmi (ar fotogrāfiju).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Stūres turētājs</string>
     <string name="quest_bicycle_parking_access_title2">Kas drīkst šeit novietot velosipēdu? Novietošana var būt maksas vai bezmaksas.</string>
     <string name="quest_playground_access_title2">Kurš drīkst izmantot šo spēļu laukumu?</string>
-    <string name="quest_sidewalk_answer_none_title">Atlasiet, kuras ietves pietrūkst</string>
-    <string name="quest_side_select_interface_explanation">Spiediet uz vienu no pusēm un izvēlieties atbilstošo atbildi.
-Dariet to arī otrai pusei, ja tāda ir.</string>
     <string name="ar_measure">Mērīt</string>
     <string name="ar_core_tracking_error_too_steep_angle">Pārāk plats leņķis, paejiet nedaudz atpakaļ</string>
     <string name="default_disabled_msg_no_ar">Jums vajag mērlenti, lai atrisinātu šo uzdevumu, ko šī ierīce neatbalsta mērīšanu ar kameru.</string>
@@ -1187,8 +1176,6 @@ Pārvietot tagad?</string>
     <string name="quest_placeName_no_name_answer">Nav nosaukuma zīmes</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Šis platums izskatās neticams. Atcerieties, ka tam vajadzētu būt platumam no apmales līdz apmalei, ieskaitot stāvvietas, velojoslas utt.</string>
     <string name="overlay_cycleway">Veloceļi</string>
-    <string name="bicycle_boulevard_is_a">Tas ir %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Tas nav %1$s</string>
     <string name="bicycle_boulevard">Velobulvāris</string>
     <string name="separate_cycleway_no_or_allowed">Nav paredzēts velosipēdistiem (braukšana ar velosipēdu var būt atļauta)</string>
     <string name="separate_cycleway_non_segregated">Koplietoti ceļi</string>

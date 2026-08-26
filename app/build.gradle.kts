@@ -19,7 +19,7 @@ val bcp47ExportLanguages = setOf(
     "fa", "fi", "fr", "ga", "gl", "he", "hr", "hu", "hy",
     "id", "it", "ja", "ko", "kw", "lt", "lv", "ml", "nb", "no", "nl", "nn", "pl", "pt", "pt-BR",
     "ro", "ru", "sk", "sl", "sr-cyrl", "sr-latn", "sv", "sw", "th", "tr", "uk", "vi",
-    "zh", "zh-CN", "zh-HK", "zh-TW"
+    "zh", "zh-CN", "zh-TW"
 )
 
 /** Version of the iD presets to use
@@ -39,7 +39,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "2.4.0"
     id("org.jetbrains.kotlin.plugin.compose") version "2.4.0"
     id("com.android.application") version "8.13.2"
-    id("org.jetbrains.compose") version "1.11.1"
+    id("org.jetbrains.compose") version "1.12.0"
     id("org.jetbrains.kotlinx.atomicfu") version "0.33.0"
     id("com.codingfeline.buildkonfig") version "0.22.0"
     // keep in sync with Kotlin version! See https://mokkery.dev/docs/Setup/#compatibility
@@ -165,15 +165,15 @@ kotlin {
                 implementation("de.westnordost:osm-opening-hours:0.4.0")
 
                 // UI (Compose)
-                implementation("org.jetbrains.compose.runtime:runtime:1.11.1")
-                implementation("org.jetbrains.compose.foundation:foundation:1.11.1")
-                implementation("org.jetbrains.compose.material:material:1.11.1")
-                implementation("org.jetbrains.compose.ui:ui:1.11.1")
-                implementation("org.jetbrains.compose.components:components-resources:1.11.1")
-                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.11.1")
+                implementation("org.jetbrains.compose.runtime:runtime:1.12.0")
+                implementation("org.jetbrains.compose.foundation:foundation:1.12.0")
+                implementation("org.jetbrains.compose.material:material:1.12.0")
+                implementation("org.jetbrains.compose.ui:ui:1.12.0")
+                implementation("org.jetbrains.compose.components:components-resources:1.12.0")
+                implementation("org.jetbrains.compose.ui:ui-tooling-preview:1.12.0")
 
                 // UI Navigation
-                implementation("org.jetbrains.compose.ui:ui-backhandler:1.11.1")
+                implementation("org.jetbrains.compose.ui:ui-backhandler:1.12.0")
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.9.2")
 
                 // UI ViewModel
@@ -336,7 +336,7 @@ compose {
 }
 
 dependencies {
-    debugImplementation("org.jetbrains.compose.ui:ui-tooling:1.11.1")
+    debugImplementation("org.jetbrains.compose.ui:ui-tooling:1.12.0")
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }

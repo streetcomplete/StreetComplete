@@ -116,7 +116,6 @@ Bevor deine Änderungen hochgeladen werden, überprüft die App mithilfe &lt;a h
 Diese App findet fehlende Kartendaten in deiner Nähe und zeigt diese als Aufgaben auf einer Karte an. Jede dieser Aufgaben kann vor Ort durch Beantwortung einer einfachen Frage gelöst werden.
 
 Die von dir eingegebenen Informationen werden dann direkt in deinem Namen zu OpenStreetMap hinzugefügt, ohne einen weiteren Editor benutzen zu müssen.</string>
-    <string name="quest_name_answer_noName">Sie hat keinen Namen …</string>
     <string name="quest_name_answer_noName_confirmation_title">Wirklich kein Name?</string>
     <string name="quest_name_noName_confirmation_positive">Ja, kein Name</string>
     <string name="quest_openingHours_add_times">Öffnungszeiten hinzufügen</string>
@@ -193,11 +192,6 @@ Wenn es keine Schilder entlang der gesamten Straße gibt, die für den hervorgeh
     <string name="underground_recycling_container">Unterirdischer Container</string>
     <string name="quest_streetName_answer_cantType">Eingabe der Zeichen auf dem Schild nicht möglich</string>
     <string name="quest_streetName_cantType_title">Fehlt das Tastaturlayout?</string>
-    <string name="quest_streetName_cantType_open_settings">Einstellungen öffnen</string>
-    <string name="quest_streetName_cantType_open_store">App Store öffnen</string>
-    <string name="quest_streetName_cantType_description">Wenn du eine Standardtastatur verwendest, kannst du wahrscheinlich einfach das Tastaturlayout für die benötigte Sprache in den Tastatureinstellungen aktivieren.
-
-Andernfalls kannst du eine alternative Tastatur im App Store herunterladen. Beliebte Tastaturen, die mehrere Sprachen unterstützen, sind Google Gboard, SwiftKey Keyboard und Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(nicht angegeben)</string>
     <string name="quest_fireHydrant_type_title">Was für eine Art Hydrant ist hier?</string>
     <string name="quest_fireHydrant_type_pillar">Überfluranschluss</string>
@@ -494,7 +488,6 @@ Teilweise bedeutet, dass man die Toilette schon im Rollstuhl benutzen kann, aber
     <string name="quest_generic_answer_differs_along_the_way">Entlang des Weges unterschiedlich …</string>
     <string name="quest_split_way_description">Wenn es entlang des Weges unterschiedlich ist, ist der erste Schritt, den Weg aufzuspalten. Danach kann die Aufgabe für jeden Teil davon getrennt beantwortet werden.
 Jetzt aufspalten?</string>
-    <string name="quest_split_way_tutorial">Drücke auf den Weg, um ihn an den Punkt(en), wo die Antwort unterschiedlich ist, aufzuspalten. Zoome hinein, um möglichst genau zu sein.</string>
     <string name="quest_split_way_too_imprecise">Bitte zoome weiter hinein</string>
     <string name="quest_split_way_many_splits_confirmation_description">Das sind ganz schön viele Punkte, an denen aufgespalten werden soll. Es gibt die Möglichkeit, den Weg auch später noch weiter aufzuspalten.</string>
     <string name="quest_footwayPartSurface_title">Welche Oberfläche hat der Gehweg hier?</string>
@@ -758,10 +751,6 @@ Wenn es eine Busspur gibt, hinterlasse bitte stattdessen einen Hinweis.</string>
     <string name="default_disabled_msg_go_inside_regional_warning">Dieser Aufgabentyp ist standardmäßig deaktiviert, weil er in manchen Regionen nicht sinnvoll ist und du wahrscheinlich den Ort betreten musst, um die Aufgabe lösen zu können.</string>
     <string name="quest_dietType_explanation_kosher">Koschere Produkte werden nach den jüdischen Speisegesetzen hergestellt, wobei spezielle Kashrut-Zertifizierungsagenturen diese Produkte überprüfen.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Kein Radweg vorhanden</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Wie üblich, tippe auf eine Seite des Bildes, wähle die passende Antwort und wiederhole dies für die andere Seite.
-
-Beachte alle Auswahlmöglichkeiten: Manche Kombinationen sind nicht offensichtlich, z. B. eine Einbahnstraße, die für Radfahrer beidseitig befahrbar ist!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Auswählen, dass kein Radweg existiert</string>
     <string name="quest_construction_completed_at_known_date">Wird zum folgenden Datum fertiggestellt …</string>
     <string name="quest_construction_completion_date_title">Wann wird es fertig?</string>
     <string name="quest_surface_value_clay">Sandplatz (Lehm)</string>
@@ -989,9 +978,6 @@ Alternativ kann auch ein Hinweis (mit Foto) hinterlassen werden.</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Lenkerhalter</string>
     <string name="quest_bicycle_parking_access_title2">Wer darf ein Fahrrad hier parken? Das Parken kann kostenlos oder kostenpflichtig sein.</string>
     <string name="quest_playground_access_title2">Wer darf diesen Spielplatz benutzen?</string>
-    <string name="quest_sidewalk_answer_none_title">Auswählen, dass Bürgersteige fehlen</string>
-    <string name="quest_side_select_interface_explanation">Berühre eine Seite und wähle die jeweils passende Situation aus.
-Wiederhole dies für die andere Seite, wenn sie existiert.</string>
     <string name="ar_measure">Messung starten</string>
     <string name="ar_core_tracking_error_too_steep_angle">Zu steiler Winkel, gehe ein wenig zurück</string>
     <string name="default_disabled_msg_no_ar">Du benötigst ein Maßband, um diese Aufgabe zu lösen, weil das Ausmessen mithilfe der Kamera auf diesem Gerät nicht unterstützt wird.</string>
@@ -1193,8 +1179,6 @@ Jetzt verschieben?</string>
     <string name="quest_placeName_no_name_answer">Es gibt kein Schild für den Namen …</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Diese Breite sieht ungewöhnlich aus. Nicht vergessen: Hier soll die Breite von Bordstein zu Bordstein angegeben werden, also inklusive Parkstreifen, Radfahrstreifen usw.</string>
     <string name="overlay_cycleway">Fahrradwege</string>
-    <string name="bicycle_boulevard_is_a">Es ist eine %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Es ist keine %1$s</string>
     <string name="bicycle_boulevard">Fahrradstraße</string>
     <string name="separate_cycleway_no_or_allowed">Fußweg ohne explizites Schild zum Radfahren (ob es erlaubt ist, hängt von Verkehrsvorschriften ab)</string>
     <string name="separate_cycleway_non_segregated">Gekennzeichnet als gemeinsamer Geh- und Radweg</string>
@@ -1511,4 +1495,14 @@ Zum Beispiel 1,3 oder 2b,4,6.</string>
     <string name="quest_place_vacant_type_title">Dieser Ort stand leer. Was ist jetzt hier?</string>
     <string name="about_title">Über %1$s</string>
     <string name="quest_surface_value_laterite">Laterit</string>
+    <string name="leave_note_quest_context_hint">Kann „%1$s“ nicht beantworten:</string>
+    <string name="leave_note_overlay_context_hint">Im Kontext des „%1$s“ Overlays:</string>
+    <string name="quest_split_way_tutorial2">Tippe auf die Schaltfläche um den Weg an der Stelle des Fadenkreuzes zu teilen.</string>
+    <string name="quest_leave_new_note_track_delete_title">Möchtest Du diese Wegaufzeichnung löschen?</string>
+    <string name="unchanged_tag_action_title">%1$s bestätigt</string>
+    <string name="quest_streetName_cantType_description2">Falls du die Standard-Tastatur verwendest, kannst du wahrscheinlich einfach das entsprechende Tastaturlayout für die Sprache die du brauchst in den Eingabemethodeeinstellungen aktivieren.
+
+Ansonsten kannst du auch eine andere Tastatur im App Store herunterladen. Auf Android kannst du zum Beispiel FlorisBoard oder HeliBoard ausprobieren.</string>
+    <string name="bicycle_boulevard_is_a2">Das ist eine Fahrradstraße</string>
+    <string name="bicycle_boulevard_is_not_a2">Das ist keine Fahrradstraße</string>
 </resources>
