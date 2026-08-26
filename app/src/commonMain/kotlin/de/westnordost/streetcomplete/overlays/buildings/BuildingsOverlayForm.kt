@@ -58,10 +58,11 @@ fun BuildingsOverlayForm(
     // Prompt to facilitate switching to building:use editing
     val differentUsePrompt: StringResource = Res.string.overlay_buildings_different_current_use
 
-    /** Excluded building types that shouldn't belong with building:use tagging
-     * and also must not be allowed to be changed in [SideBySideLayoutForm],
-     * should only be changed in [GroupedItemSelectOverlayForm] (subject to change in future)*/
-    val excluded = listOf(UNSUPPORTED, RUINS, HISTORIC, ABANDONED, CONSTRUCTION)
+    /** Building types excluded from the building selection in [SideBySideLayoutForm]. */
+    val excluded = listOf(UNSUPPORTED, RUINS, ABANDONED, CONSTRUCTION)
+
+    /** Building types excluded from the building:use selection in [SideBySideLayoutForm] */
+    val excludedFromBuildingUse = listOf(UNSUPPORTED, RUINS, HISTORIC, ABANDONED, CONSTRUCTION)
 
     val isEligibleForBuildingUse = originalBuilding != null && originalBuilding !in excluded
 
@@ -89,6 +90,7 @@ fun BuildingsOverlayForm(
                 originalSelectedItem = originalBuilding,
                 currentSelectedItem = currentBuildingUse,
                 excludedBuildingItems = excluded,
+                excludedBuildingUseItems = excludedFromBuildingUse,
                 groupContent = { group ->
                     ImageWithDescription(
                         painter = painterResource(group.icon),

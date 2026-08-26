@@ -64,6 +64,7 @@ inline fun <reified G: Group<I>, reified I> SideBySideLayoutForm (
     originalSelectedItem: I?,
     currentSelectedItem: I?,
     excludedBuildingItems: List<I> = emptyList(),
+    excludedBuildingUseItems: List<I> = emptyList(),
     noinline groupContent: @Composable (group: G) -> Unit,
     noinline groupItemContent: @Composable (item: I) -> Unit,
     noinline cardItemContent: @Composable (item:I) -> Unit,
@@ -140,7 +141,7 @@ inline fun <reified G: Group<I>, reified I> SideBySideLayoutForm (
                             onSelected = { selectedBuildingUse = it },
                             groupContent = groupContent,
                             itemContent = groupItemContent,
-                            excludedItems = excludedBuildingItems,
+                            excludedItems = excludedBuildingUseItems,
                         )
                     }
                 }
