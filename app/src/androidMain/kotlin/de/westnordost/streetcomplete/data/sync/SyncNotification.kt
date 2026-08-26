@@ -11,16 +11,18 @@ import androidx.core.app.NotificationManagerCompat.IMPORTANCE_LOW
 import androidx.core.app.PendingIntentCompat
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.MainActivity
+import org.jetbrains.compose.resources.getString
 
 /** Creates the notification for syncing in the Android notifications area. Used both by the upload
  *  and by the download service. */
-fun createSyncNotification(context: Context, cancelIntent: PendingIntent): Notification {
+suspend fun createSyncNotification(context: Context, cancelIntent: PendingIntent): Notification {
     val manager = NotificationManagerCompat.from(context)
     if (manager.getNotificationChannelCompat(ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC) == null) {
         manager.createNotificationChannel(
             NotificationChannelCompat.Builder(ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC, IMPORTANCE_LOW)
-                .setName(context.getString(R.string.notification_channel_sync))
+                .setName(getString(Res.string.notification_channel_sync))
                 .build()
         )
     }
@@ -33,12 +35,12 @@ fun createSyncNotification(context: Context, cancelIntent: PendingIntent): Notif
     return NotificationCompat.Builder(context, ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC)
         .setSmallIcon(R.drawable.ic_app_notification)
         .setContentTitle(ApplicationConstants.NAME)
-        .setTicker(context.resources.getString(R.string.notification_syncing))
+        .setTicker(getString(Res.string.notification_syncing))
         .setContentIntent(cancelIntent)
         .setOngoing(true)
         .setCategory(NotificationCompat.CATEGORY_PROGRESS)
         .setContentIntent(mainActivityIntent)
         .setDeleteIntent(cancelIntent)
-        .addAction(android.R.drawable.ic_delete, context.resources.getString(android.R.string.cancel), cancelIntent)
+        .addAction(R.drawable.ic_close_24, getString(Res.string.cancel), cancelIntent)
         .build()
 }
