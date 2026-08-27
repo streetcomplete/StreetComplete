@@ -86,7 +86,7 @@ enum class Surface(val osmValue: String?) {
             // grouped a bit: 1. very most popular, 2. artificial, 3. natural
             GRASS, ASPHALT, CONCRETE,
             ARTIFICIAL_TURF, ACRYLIC, RUBBER,
-            CLAY, SAND, DIRT,
+            CLAY, SAND, DIRT, WOODCHIPS,
             // then, roughly by popularity
             FINE_GRAVEL, PAVING_STONES, COMPACTED,
             SETT, UNHEWN_COBBLESTONE, GRASS_PAVER,
