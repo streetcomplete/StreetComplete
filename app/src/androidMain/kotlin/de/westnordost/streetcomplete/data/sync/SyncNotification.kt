@@ -12,7 +12,6 @@ import androidx.core.app.PendingIntentCompat
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.main.MainActivity
 import org.jetbrains.compose.resources.getString
 
 /** Creates the notification for syncing in the Android notifications area. Used both by the upload
@@ -27,16 +26,16 @@ suspend fun createSyncNotification(context: Context, cancelIntent: PendingIntent
         )
     }
 
-    val intent = Intent(context, MainActivity::class.java)
-    intent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+    val intent = context.packageManager.getLaunchIntentForPackage(context.packageName)?.also {
+        it.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
+    }
     // Intent has to be mutable, otherwise the intent flags defined above are not applied
-    val mainActivityIntent = PendingIntentCompat.getActivity(context, 0, intent, 0, true)
+    val mainActivityIntent = intent?.let { PendingIntentCompat.getActivity(context, 0, intent, 0, true) }
 
     return NotificationCompat.Builder(context, ApplicationConstants.NOTIFICATIONS_CHANNEL_SYNC)
         .setSmallIcon(R.drawable.ic_app_notification)
         .setContentTitle(ApplicationConstants.NAME)
         .setTicker(getString(Res.string.notification_syncing))
-        .setContentIntent(cancelIntent)
         .setOngoing(true)
         .setCategory(NotificationCompat.CATEGORY_PROGRESS)
         .setContentIntent(mainActivityIntent)

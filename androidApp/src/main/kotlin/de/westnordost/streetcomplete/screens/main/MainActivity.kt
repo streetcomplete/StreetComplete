@@ -339,13 +339,15 @@ class MainActivity :
                         showQuestDetailsOnMap(shownBottomSheet.quest, null)
                     }
                     is ShownBottomSheet.OsmQuest -> {
-                        showQuestDetailsOnMap(shownBottomSheet.quest, shownBottomSheet.element)
+                        val element = shownBottomSheet.element
+                        showQuestDetailsOnMap(shownBottomSheet.quest, element)
                     }
                     is ShownBottomSheet.Overlay -> {
-                        if (shownBottomSheet.element != null) {
+                        val element = shownBottomSheet.element
+                        if (element != null) {
                             showOverlayElementDetailsOnMap(
                                 overlay = shownBottomSheet.overlay,
-                                element = shownBottomSheet.element,
+                                element = element,
                                 geometry = shownBottomSheet.geometry!!
                             )
                         } else {

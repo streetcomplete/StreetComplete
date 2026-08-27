@@ -8,6 +8,7 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
 import com.russhwolf.settings.SettingsListener
+import de.westnordost.streetcomplete.app.BuildConfig
 import de.westnordost.streetcomplete.data.CacheTrimmer
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.FeedsUpdater
