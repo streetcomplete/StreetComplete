@@ -2,10 +2,11 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import android.content.Context
 import android.graphics.PointF
-import android.hardware.SensorManager
 import android.os.Bundle
 import androidx.annotation.DrawableRes
-import androidx.core.content.getSystemService
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -35,7 +36,6 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.Padding
 import de.westnordost.streetcomplete.screens.main.map.maplibre.camera
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toLatLon
 import de.westnordost.streetcomplete.ui.common.quest.Marker
-import de.westnordost.streetcomplete.util.ktx.currentDisplay
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toLocation
@@ -49,11 +49,16 @@ import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.visibility
+import org.maplibre.compose.location.AndroidOrientationProvider
 import org.maplibre.compose.location.Location
 import org.maplibre.compose.location.LocationEvent
+import org.maplibre.compose.location.Orientation
+import org.maplibre.compose.location.OrientationProvider
 import org.maplibre.compose.location.PositionWithAccuracy
+import org.maplibre.spatialk.units.Bearing
+import org.maplibre.spatialk.units.DMS
 import org.maplibre.spatialk.units.International
-import kotlin.math.PI
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.TimeSource
 
 /** This is the map shown in the main view. It manages a map that shows the quest pins, quest
@@ -70,7 +75,7 @@ class MainMapFragment : MapFragment() {
     private val surveyChecker: SurveyChecker by inject()
     private val prefs: Preferences by inject()
 
-    private lateinit var compass: Compass
+    private lateinit var orientationProvider: OrientationProvider
 
     private var mapImages: MapImages? = null
     private var geometryMarkersMapComponent: GeometryMarkersMapComponent? = null
@@ -156,12 +161,18 @@ class MainMapFragment : MapFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        compass = Compass(
-            context.getSystemService<SensorManager>()!!,
-            context.currentDisplay,
-            this::onCompassRotationChanged
+        orientationProvider = AndroidOrientationProvider(
+            context = context,
+            updateInterval = 33.milliseconds,
+            coroutineScope = lifecycleScope
         )
-        lifecycle.addObserver(compass)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                orientationProvider.orientation.collect { orientation ->
+                    onCompassRotationChanged(orientation)
+                }
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -324,8 +335,13 @@ class MainMapFragment : MapFragment() {
         return true
     }
 
-    private fun onCompassRotationChanged(rot: Float, tilt: Float) {
-        locationMapComponent?.rotation = (rot * 180 / PI) - (map?.camera?.rotation ?: 0.0)
+    private fun onCompassRotationChanged(orientation: Orientation?) {
+        val rotation = orientation
+            ?.orientation
+            ?.value
+            ?.clockwiseRotationTo(Bearing.North)
+            ?.toDouble(DMS.Degrees)
+        locationMapComponent?.targetRotation = rotation?.let { rotation - (map?.camera?.rotation ?: 0.0) }?.toFloat()
     }
 
     fun onLocationEvent(locationEvent: LocationEvent) {
@@ -336,7 +352,6 @@ class MainMapFragment : MapFragment() {
                 surveyChecker.addRecentLocation(location.toLocation())
                 locationMapComponent?.targetPositionWithAccuracy = location.position
                 addTrackLocation(location)
-                compass.setLocation(location.position)
                 centerCurrentPositionIfFollowing()
             }
             is LocationEvent.Unavailable -> {

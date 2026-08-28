@@ -4,6 +4,7 @@ import android.animation.TypeEvaluator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import androidx.annotation.UiThread
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -14,7 +15,7 @@ import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import de.westnordost.streetcomplete.util.math.normalizeLongitude
 import org.maplibre.android.maps.MapLibreMap
 import org.maplibre.android.maps.Style
@@ -35,7 +36,7 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
     DefaultLifecycleObserver {
 
     private val locationSource = GeoJsonSource(SOURCE)
-    private val animation = ValueAnimator()
+    private val locationAnimation = ValueAnimator()
 
     /** The location the GPS location dot on the map should be animated to */
     var targetPositionWithAccuracy: PositionWithAccuracy? = null
@@ -44,12 +45,13 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
             field = value
             val positionWithAccuracy = this.positionWithAccuracy
             if (positionWithAccuracy == null || value == null) {
+                locationAnimation.cancel()
                 this.positionWithAccuracy = value
                 update()
             } else  {
-                animation.setObjectValues(positionWithAccuracy, value)
-                animation.setEvaluator(locationTypeEvaluator)
-                animation.start()
+                locationAnimation.setObjectValues(positionWithAccuracy, value)
+                locationAnimation.setEvaluator(locationTypeEvaluator)
+                locationAnimation.start()
             }
         }
 
@@ -76,12 +78,24 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
     }
 
     /** The view rotation angle in degrees. Null if not set (yet) */
-    var rotation: Double? = null
+    var targetRotation: Float? = null
         @UiThread set(value) {
             if (field == value) return
             field = value
-            update()
+            val rotation = this.rotation
+            if (rotation == null || value == null) {
+                rotationAnimation.cancel()
+                this.rotation = value
+                update()
+            } else {
+                rotationAnimation.setFloatValues(rotation, normalizeDegrees(value, rotation - 180))
+                rotationAnimation.start()
+            }
         }
+    private val rotationAnimation = ValueAnimator()
+
+    var rotation: Float? = null
+        private set
 
     val layers: List<Layer> = listOfNotNull(
         CircleLayer("accuracy", SOURCE)
@@ -132,9 +146,16 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
     )
 
     init {
-        animation.duration = 600L
-        animation.interpolator = AccelerateDecelerateInterpolator()
-        animation.addUpdateListener { update() }
+        locationAnimation.duration = 600L
+        locationAnimation.interpolator = AccelerateDecelerateInterpolator()
+        locationAnimation.addUpdateListener { update() }
+
+        rotationAnimation.duration = 200L
+        rotationAnimation.interpolator = AccelerateDecelerateInterpolator()
+        rotationAnimation.addUpdateListener {
+            rotation = rotationAnimation.animatedValue as Float
+            update()
+        }
 
         if (!isApril1st()) {
             mapStyle.addImage("directionImg", context.getDrawable(R.drawable.location_view_direction)!!)
@@ -148,15 +169,18 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
     }
 
     override fun onPause(owner: LifecycleOwner) {
-        animation.pause()
+        locationAnimation.pause()
+        rotationAnimation.pause()
     }
 
     override fun onResume(owner: LifecycleOwner) {
-        animation.resume()
+        locationAnimation.resume()
+        rotationAnimation.resume()
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
-        animation.cancel()
+        locationAnimation.cancel()
+        rotationAnimation.cancel()
     }
 
     private fun hide() {
