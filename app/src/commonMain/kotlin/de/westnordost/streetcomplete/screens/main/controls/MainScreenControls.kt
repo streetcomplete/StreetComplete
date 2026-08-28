@@ -114,8 +114,6 @@ fun MainScreenControls(
         AttributionLink("© JawgMaps", "https://jawg.io")
     )
 
-    val hasMessages by remember { derivedStateOf { messagesCount > 0 } }
-
     var showOverlaysDropdown by remember { mutableStateOf(false) }
 
     var screen by remember { mutableStateOf<Rect?>(null) }
@@ -167,7 +165,7 @@ fun MainScreenControls(
                         .padding(4.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    AnimatedVisibility(hasMessages) {
+                    AnimatedVisibility(messagesCount > 0) {
                         MessagesButton(
                             onClick = onClickMessages,
                             messagesCount = messagesCount
