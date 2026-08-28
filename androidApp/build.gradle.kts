@@ -71,7 +71,6 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.13.0")
     implementation("com.google.android.material:material:1.14.0")
     implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
     implementation("androidx.fragment:fragment-ktx:1.8.6")
 
     // Compose
@@ -80,6 +79,9 @@ dependencies {
     implementation("org.jetbrains.compose.material:material:1.12.0")
     implementation("org.jetbrains.compose.components:components-resources:1.12.0")
     debugImplementation("androidx.compose.ui:ui-tooling:1.10.0")
+
+    // location
+    implementation("org.maplibre.compose:location:0.15.0")
 
     // Dependency Injection
     implementation("io.insert-koin:koin-android:4.2.2")

@@ -67,7 +67,6 @@ fun MainScreen(
     onClickAbout: () -> Unit,
     onClickProfile: () -> Unit,
     onClickLogin: () -> Unit,
-    onExplainedNeedForLocationPermission: () -> Unit,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
     onSolvedQuest: (icon: DrawableResource, position: LatLon) -> Unit,
     getOffset: (position: LatLon) -> Offset?,
@@ -388,7 +387,6 @@ fun MainScreen(
     AnimatedScreenVisibility(showIntroTutorial) {
         IntroTutorialScreen(
             onDismissRequest = { showIntroTutorial = false },
-            onExplainedNeedForLocationPermission = onExplainedNeedForLocationPermission,
             onFinished = { viewModel.hasShownTutorial = true },
         )
     }

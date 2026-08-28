@@ -148,6 +148,9 @@ kotlin {
                 // I/O
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
+                // location
+                implementation("org.maplibre.compose:location:0.15.0")
+
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.0")
                 implementation("androidx.sqlite:sqlite-bundled:2.7.0")
@@ -230,7 +233,6 @@ kotlin {
                 // Android stuff
                 implementation("com.google.android.material:material:1.14.0")
                 implementation("androidx.appcompat:appcompat:1.7.1")
-                implementation("androidx.localbroadcastmanager:localbroadcastmanager:1.1.0")
 
                 // Compose
                 implementation("androidx.activity:activity-compose:1.13.0")
@@ -378,6 +380,17 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
     targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/translation_info.xml" }
+}
+
+tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
+    group = "streetcomplete"
+    projectId = poEditorProjectId
+    apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
+    targetFile = projectDir.resolve("../iosApp/iosApp/InfoPlist.xcstrings")
+    languageCodes = bcp47ExportLanguages
+    strings = mapOf(
+        "NSLocationWhenInUseUsageDescription" to "no_location_permission_warning"
+    )
 }
 
 tasks.register<UpdateChangelogTask>("updateChangelog") {
