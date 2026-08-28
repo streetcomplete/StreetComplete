@@ -1715,6 +1715,7 @@
     <string name="quest_toiletAvailability_title">Is there a restroom here?</string>
 
     <string name="quest_toiletsFee_title">Do you have to pay to use this restroom?</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Only non-customers must pay a fee</string>
 
     <string name="quest_tourism_information_title">What type of tourist information is this?</string>
     <string name="quest_tourism_information_office">Tourist information office</string>
