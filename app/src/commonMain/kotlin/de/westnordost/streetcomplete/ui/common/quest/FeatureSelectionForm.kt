@@ -24,13 +24,14 @@ import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.Button2
 import de.westnordost.streetcomplete.ui.common.feature.FeatureItem
 import de.westnordost.streetcomplete.ui.common.feature.FeatureSearchDialog
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 /**
- * A quest form that allows selecting a feature via search or from a list of defaults.
+ * A quest form that allows selecting of features via search or from a list of presets.
  */
 @Composable
 fun FeatureSelectionForm(
@@ -63,9 +64,8 @@ fun FeatureSelectionForm(
                 )
             }
 
-            TextButton(
-                onClick = { showSearch = true },
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+            Button2(
+                onClick = { showSearch = true }
             ) {
                 Icon(painterResource(Res.drawable.ic_add_24), contentDescription = null)
                 Spacer(Modifier.size(8.dp))
@@ -82,6 +82,7 @@ fun FeatureSelectionForm(
                     featureDictionary = featureDictionary,
                     geometryType = geometryType,
                     countryCode = countryCode,
+                    // Ensure a preset cannot be selected twice
                     filterFn = { feature -> feature !in selectedFeatures && filterFn(feature) },
                     codesOfDefaultFeatures = codesOfDefaultFeatures
                 )
