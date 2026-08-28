@@ -117,7 +117,6 @@ No obstant això, abans de pujar els canvis, l'aplicació comprova amb un &lt;a 
 Aquesta aplicació cerca dades incompletes i ampliables prop teu i les mostra en un mapa com a marcadors. Cadascun d'aquests marcadors es pot resoldre responent una pregunta simple per a completar la informació sobre el terreny.
 
 Aleshores, la informació que introduïu s'afegeix directament a l'OpenStreetMap en el vostre nom, sense haver d'usar cap altre editor.</string>
-    <string name="quest_name_answer_noName">No té nom…</string>
     <string name="quest_name_answer_noName_confirmation_title">Segur que no té nom?</string>
     <string name="quest_name_noName_confirmation_positive">Sí, no té nom</string>
     <string name="quest_openingHours_add_times">Afegir horaris d'obertura</string>
@@ -194,11 +193,6 @@ Si no hi ha cap senyal en tot el carrer que s'apliqui en l'àrea realçada, s'ap
     <string name="underground_recycling_container">Contenidor soterrat</string>
     <string name="quest_streetName_answer_cantType">No es poden escriure els caràcters del senyal</string>
     <string name="quest_streetName_cantType_title">Hi falta la configuració del teclat?</string>
-    <string name="quest_streetName_cantType_open_settings">Obre la configuració</string>
-    <string name="quest_streetName_cantType_open_store">Visita el magatzem d'aplicacions</string>
-    <string name="quest_streetName_cantType_description">Si utilitzeu un teclat per defecte, és probable que simplement pugueu activar la disposició de teclat per a l'idioma que necessiteu a la configuració del mètode d'entrada.
-
-En cas contrari, podeu baixar un altre teclat al magatzem d'aplicacions. Els teclats populars que suporten molts idiomes són Google Gboard, SwiftKey Keyboard i Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(sense especificar)</string>
     <string name="quest_fireHydrant_type_title">Quin tipus d'hidrant és aquest?</string>
     <string name="quest_fireHydrant_type_pillar">Pilar</string>
@@ -494,7 +488,6 @@ Parcialment significa que una cadira de rodes pot entrar i utilitzar els lavabos
     <string name="quest_cyclewayPartSurface_title">Quin tipus de superfície té el carril bici aquí?</string>
     <string name="quest_generic_answer_differs_along_the_way">Canvia al llarg de la via…</string>
     <string name="quest_split_way_description">Si varia al llarg de la via, el primer pas és dividir la via. Després de fer-ho, es pot respondre la missió per a cada tram separadament. Voleu dividir-la ara?</string>
-    <string name="quest_split_way_tutorial">Toqueu en la via per a dividir-la en el(s) punt(s) on la resposta varia. Intenteu de ser tan precís com sigui possible, podeu apropar-vos-hi com és habitual.</string>
     <string name="quest_split_way_too_imprecise">Apropeu-vos més</string>
     <string name="quest_split_way_many_splits_confirmation_description">Ja hi ha unes quantes divisions. Sempre podeu partir més la via després.</string>
     <string name="quest_footwayPartSurface_title">Quina és la superfície del camí de vianants aquí?</string>
@@ -755,10 +748,6 @@ Si algun dels carrils estan reservats per busos, deixeu una nota com a alternati
     <string name="default_disabled_msg_go_inside_regional_warning">Aquest tipus de missió està desactivada per defecte perquè no és útil en algunes regions i probablement haureu d'entrar al lloc per poder respondre a una cerca d'aquest tipus.</string>
     <string name="quest_dietType_explanation_kosher">Els productes de Kosher han d'estar preparats d'acord amb normes especials, i les agències de certificació de kaixrut han de marcar els productes de conformitat.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Sense carril bici</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Com sempre, premeu a un costat de la il·lustració, seleccioneu una resposta adequada i feu el mateix per l'altre costat.
-
-Fixeu-vos en totes les opcions disponibles: alguns  casos no són obvis, com una carretera de sentit únic que permet ciclistes en ambdues direccions!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">S'està seleccionant que no hi ha carril bici</string>
     <string name="quest_construction_completed_at_known_date">Estarà finalitzada a la data…</string>
     <string name="quest_construction_completion_date_title">Quan estarà enllestit?</string>
     <string name="quest_surface_value_clay">Argila</string>
@@ -858,7 +847,9 @@ Les dades s'actualitzen després de %1$s dies i les dades no utilitzades s'elimi
     <string name="quest_bollard_type_foldable2">Plegable (amb o sense clau)</string>
     <string name="no_search_results">No s'ha trobat res</string>
     <string name="quest_selection_hint_title">Massa feina?</string>
-    <string name="quest_selection_hint_message">Contribuir hauria de ser principalment divertit! Si esteu aclaparats pel nombre de missions, sempre podeu ajustar quines missions es mostren i en quin ordre a la configuració.</string>
+    <string name="quest_selection_hint_message">Contribuir hauria de ser principalment divertit!
+
+Si esteu aclaparats pel nombre de missions, sempre podeu ajustar quines missions es mostren i en quin ordre a la configuració.</string>
     <string name="quest_presets_preset_add">Afegeix un predefinit</string>
     <string name="quest_presets_preset_name">Nom del predefinit</string>
     <string name="quest_presets_default_name">Per defecte</string>
@@ -988,9 +979,6 @@ Alternativament, pots deixar una nota (amb foto).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Suport de manillar</string>
     <string name="quest_bicycle_parking_access_title2">Qui pot aparcar la bicicleta aquí? L'aparcament pot ser gratuït o pagat.</string>
     <string name="quest_playground_access_title2">Qui pot utilitzar aquest parc?</string>
-    <string name="quest_sidewalk_answer_none_title">Selecció que falten voreres</string>
-    <string name="quest_side_select_interface_explanation">Toqueu un costat i seleccioneu la resposta coincident.
-Feu el mateix per a l'altre costat.</string>
     <string name="ar_measure">Mesura</string>
     <string name="ar_core_tracking_error_too_steep_angle">Massa inclinat, aparteu-vos una mica</string>
     <string name="default_disabled_msg_no_ar">Necesites una cinta mètrica per a resoldre aquesta missió perqué aquest dispositiu no suporta mesurar amb la càmera.</string>
@@ -1198,8 +1186,6 @@ Menejar ara?</string>
     <string name="quest_placeName_no_name_answer">No hi ha cap nom retolat</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Aquesta amplaria sembla impausible. Recorda, l'amplada és des de voral a voral, incloent aparcament a la calçada, carrils bici, etc.</string>
     <string name="overlay_cycleway">Ciclovies</string>
-    <string name="bicycle_boulevard_is_a">És un %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">No és un %1$s</string>
     <string name="bicycle_boulevard">És un bulevard per a bicicletes</string>
     <string name="separate_cycleway_no_or_allowed">No designat per a anar en bicicleta (però podria estar-hi permés)</string>
     <string name="separate_cycleway_non_segregated">Via d'us compartit</string>
@@ -1331,8 +1317,7 @@ Podeu trobar informació sobre les donacions a la nostra web o al portal del pro
     <string name="quest_accessible_for_pedestrians_allowed">Està permès.</string>
     <string name="quest_buildingLevels_hint">Per edificis en un pendent, el recompte de pisos comença des del nivell de terra en el costat més baix.
 
-Un pis compta com a teulada quan les seves finestres són a la teulada. En conseqüència, les teulades amb zero nivells de teulada no són necessàriament planes, simplement no són prou alts per un pis sencer.
-    </string>
+Un pis compta com a teulada quan les seves finestres són a la teulada. En conseqüència, les teulades amb zero nivells de teulada no són necessàriament planes, simplement no són prou alts per un pis sencer.</string>
     <string name="quest_parcel_locker_brand">De quina marca és aquesta bústia intel·ligent?</string>
     <string name="quest_powerPolesMaterial_is_terminal">La línia elèctrica està ancorada a l'edifici</string>
     <string name="quest_cycleway_value_sidewalk_ok">Cap, però una senyal permet als ciclistes usar la vorera</string>
@@ -1508,4 +1493,8 @@ Un pis compta com a teulada quan les seves finestres són a la teulada. En conse
     <string name="quest_maxspeed_answer_roadtype_lit">il·luminat</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">no il·luminat</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Sense il·luminació i amb doble carril</string>
+    <string name="quest_board_type_tourism">Turisme (múltiples temàtiques)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Només un carril marcat</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Escriu que és el que estàs buscant</string>
+    <string name="quest_surface_value_laterite">Laterita</string>
 </resources>

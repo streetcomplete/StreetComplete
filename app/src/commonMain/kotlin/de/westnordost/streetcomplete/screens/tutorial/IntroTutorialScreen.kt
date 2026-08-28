@@ -33,22 +33,23 @@ import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import de.westnordost.streetcomplete.ui.util.rememberDefaultLocationProvider
 
 /** Shows a short tutorial for first-time users */
 @Composable
 fun IntroTutorialScreen(
     onDismissRequest: () -> Unit,
-    onExplainedNeedForLocationPermission: () -> Unit = {},
     onFinished: () -> Unit = {},
     dismissOnBackPress: Boolean = false,
 ) {
+    val locationProvider = rememberDefaultLocationProvider()
     TutorialScreen(
         pageCount = 4,
         onDismissRequest = onDismissRequest,
         onFinished = onFinished,
         onPageChanged = { page ->
             if (page == 2) {
-                onExplainedNeedForLocationPermission()
+                locationProvider.requestPermission()
             }
         },
         illustration = { page ->
@@ -249,5 +250,5 @@ private fun IntroTutorialStep3Text() {
 @Preview
 @Composable
 private fun PreviewIntroTutorialScreen() {
-    IntroTutorialScreen({}, {}, {})
+    IntroTutorialScreen({}, {})
 }

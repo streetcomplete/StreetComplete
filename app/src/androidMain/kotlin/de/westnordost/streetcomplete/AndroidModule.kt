@@ -34,7 +34,6 @@ import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
-import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.sound.AndroidSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.io.asSource
@@ -44,6 +43,10 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.maplibre.compose.location.AndroidLocationProvider
+import org.maplibre.compose.location.AndroidSystemSettingsLauncher
+import org.maplibre.compose.location.LocationProvider
+import org.maplibre.compose.location.SystemSettingsLauncher
 
 private const val COMPOSE_FILES_DIR = "composeResources/de.westnordost.streetcomplete.resources/files"
 
@@ -90,6 +93,11 @@ val androidModule = module {
     // AR
 
     factory<ArSupportChecker> { AndroidArSupportChecker(get()) }
+
+    // location
+
+    factory<LocationProvider> { AndroidLocationProvider(get()) }
+    factory<SystemSettingsLauncher> { AndroidSystemSettingsLauncher(get()) }
 
     // launch apps
 
