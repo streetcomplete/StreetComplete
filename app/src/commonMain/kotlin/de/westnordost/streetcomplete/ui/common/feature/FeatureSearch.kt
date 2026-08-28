@@ -45,7 +45,7 @@ fun FeatureSearch(
     geometryType: GeometryType? = null,
     countryCode: String? = null,
     filterFn: (Feature) -> Boolean = { true },
-    codesOfDefaultFeatures: List<String> = emptyList()
+    codesOfDefaultFeatures: List<String> = emptyList(),
 ) {
 
     val focusRequester = remember { FocusRequester() }
@@ -124,28 +124,24 @@ private fun FeaturesColumn(
     countryCode: String? = null,
     searchText: String? = null,
 ) {
-    @Composable
-    fun Item(feature: Feature) {
-        val state = rememberLazyListState()
-        LazyColumn(
-            modifier = modifier
-                .fadingVerticalScrollEdges(state.scrollIndicatorState, 32.dp),
-        ) {
-            items(features) { feature ->
-                Box(
-                    Modifier
-                    .fillMaxWidth()
-                    .clickable { onClickFeature(feature) }
-                    .padding(horizontal = 16.dp, vertical = 8.dp)
-                ) {
-                    FeatureItem(
-                        feature = feature,
-                        featureDictionary = featureDictionary,
-                        countryCode = countryCode,
-                        searchText = searchText,
-                        iconSize = 22.5.dp // preset icons are 15x15 px, so this is 1.5x
-                    )
-                }
+    val state = rememberLazyListState()
+    LazyColumn(
+        modifier = modifier
+            .fadingVerticalScrollEdges(state.scrollIndicatorState, 32.dp),
+    ) {
+        items(features) { feature ->
+            Box(Modifier
+                .fillMaxWidth()
+                .clickable { onClickFeature(feature) }
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+            ) {
+                FeatureItem(
+                    feature = feature,
+                    featureDictionary = featureDictionary,
+                    countryCode = countryCode,
+                    searchText = searchText,
+                    iconSize = 22.5.dp // preset icons are 15x15 px, so this is 1.5x
+                )
             }
         }
     }
