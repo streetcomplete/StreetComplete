@@ -63,7 +63,7 @@ fun FeatureSearch(
                 languages = languages,
                 country = countryCode
             )
-        }
+        }.filter(filterFn)
     }
     val features = remember(search, featureDictionary, languages, countryCode, geometryType, filterFn, defaultFeatures) {
         if (search.isNotEmpty()) {

@@ -9,12 +9,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.VEG
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.resources.*
 
-class AddDoctorType(getCountryInfoByLocation: (LatLon) -> CountryInfo) : OsmFilterQuestType<Feature>() {
+class AddDoctorType(getCountryInfoByLocation: (LatLon) -> CountryInfo) : OsmFilterQuestType<List<Feature>>() {
 
     override val elementFilter = """
         nodes, ways with
@@ -26,15 +24,15 @@ class AddDoctorType(getCountryInfoByLocation: (LatLon) -> CountryInfo) : OsmFilt
     override val changesetComment = "Survey what type of healthcare a doctor provides"
     override val wikiLink = "Key:healthcare:speciality"
     override val icon = Res.drawable.quest_restaurant_vegan
-    override val title = Res.string.quest_doctor_type
+    override val title = Res.string.quest_doctor_type_title
     override val achievements = listOf(CITIZEN)
 
     @Composable
-    override fun Form(on: (QuestAction<Feature>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+    override fun Form(on: (QuestAction<List<Feature>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
         AddDoctorTypeForm(on, element)
     }
 
-    override fun applyAnswerTo(answer: Feature, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        answer.applyTo(tags)
+    override fun applyAnswerTo(answer: List<Feature>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["healthcare:speciality"] = answer.joinToString(";") { it.tags["healthcare:speciality"] ?: "" }
     }
 }

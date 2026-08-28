@@ -11,14 +11,17 @@ import org.koin.compose.koinInject
 
 val POPULAR_DOCTORS_FEATURE_IDS = listOf(
     // ordered roughly by usage number according to taginfo
-    "amenity/doctors/chiropractic",
     "amenity/doctors/ophthalmology",
     "amenity/doctors/paediatrics",
+    "amenity/doctors/gynaecology",
+    "amenity/doctors/psychiatry",
+    "amenity/doctors/orthodontics",
+    "amenity/doctors/dermatology",
 )
 
 @Composable
 fun AddDoctorTypeForm(
-    on: (QuestAction<Feature>) -> Unit,
+    on: (QuestAction<List<Feature>>) -> Unit,
     element: Element,
     featureDictionary: FeatureDictionary = koinInject()
 ) {
@@ -26,7 +29,7 @@ fun AddDoctorTypeForm(
         on = on,
         featureDictionary = featureDictionary,
         geometryType = element.geometryType,
-        filterFn = { (it.tags["amenity"] == "doctors" || it.tags["amenity"]=="dentist") },
+        filterFn = { (it.tags["amenity"] == "doctors" && it.tags["healthcare:speciality"] != null) },
         codesOfDefaultFeatures = POPULAR_DOCTORS_FEATURE_IDS
     )
 }
