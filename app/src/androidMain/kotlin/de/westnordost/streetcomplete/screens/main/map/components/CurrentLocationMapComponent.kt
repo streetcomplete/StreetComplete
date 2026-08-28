@@ -3,13 +3,13 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.animation.TypeEvaluator
 import android.animation.ValueAnimator
 import android.content.Context
-import android.location.Location
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.annotation.UiThread
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import com.google.gson.JsonObject
 import de.westnordost.streetcomplete.R
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.maplibre.clear
 import de.westnordost.streetcomplete.screens.main.map.maplibre.inMeters
 import de.westnordost.streetcomplete.screens.main.map.maplibre.toPoint
@@ -25,7 +25,10 @@ import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
+import org.maplibre.compose.location.PositionWithAccuracy
 import org.maplibre.geojson.Feature
+import org.maplibre.spatialk.geojson.Position
+import org.maplibre.spatialk.units.International
 
 /** Takes care of showing the location + direction + accuracy marker on the map */
 class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val map: MapLibreMap) :
@@ -34,42 +37,41 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
     private val locationSource = GeoJsonSource(SOURCE)
     private val animation = ValueAnimator()
 
-    /** Whether the whole thing is visible. True by default. It is only visible if both this flag
-     *  is true and location is not null. */
-    var isVisible: Boolean = true
-        @UiThread set(value) {
-            if (field == value) return
-            field = value
-            if (!value) hide() else show()
-        }
-
     /** The location the GPS location dot on the map should be animated to */
-    var targetLocation: Location? = null
+    var targetPositionWithAccuracy: PositionWithAccuracy? = null
         @UiThread set(value) {
             if (field == value) return
             field = value
-            val location = this.location
-            if (location == null || value == null) {
-                this.location = value
+            val positionWithAccuracy = this.positionWithAccuracy
+            if (positionWithAccuracy == null || value == null) {
+                this.positionWithAccuracy = value
                 update()
             } else  {
-                animation.setObjectValues(Location(location), value)
+                animation.setObjectValues(positionWithAccuracy, value)
                 animation.setEvaluator(locationTypeEvaluator)
                 animation.start()
             }
         }
 
     /** The location of the GPS location dot on the map (animated) */
-    var location: Location? = null
+    var positionWithAccuracy: PositionWithAccuracy? = null
         private set
 
-    private val locationTypeEvaluator = object : TypeEvaluator<Location> {
-        override fun evaluate(fraction: Float, s: Location, e: Location): Location {
-            val l = location ?: return s
-            l.accuracy = s.accuracy + (e.accuracy - s.accuracy) * fraction
-            l.latitude = s.latitude + (e.latitude - s.latitude) * fraction
-            l.longitude = normalizeLongitude(s.longitude + (e.longitude - s.longitude) * fraction)
-            return l
+    private val locationTypeEvaluator = object : TypeEvaluator<PositionWithAccuracy> {
+        override fun evaluate(fraction: Float, s: PositionWithAccuracy, e: PositionWithAccuracy): PositionWithAccuracy {
+            val sp = s.value
+            val ep = e.value
+            val sa = s.accuracy
+            val ea = e.accuracy
+            return PositionWithAccuracy(
+                value = Position(
+                    longitude = normalizeLongitude(sp.longitude + (ep.longitude - sp.longitude) * fraction),
+                    latitude = sp.latitude + (ep.latitude - sp.latitude) * fraction,
+                ),
+                accuracy = if (ea != null && sa != null) {
+                    sa + (ea - sa) * fraction.toDouble()
+                } else { null }
+            )
         }
     }
 
@@ -167,19 +169,20 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
 
     /** Update the GPS position shown on the map */
     private fun update() {
-        if (!isVisible) return
-        val location = location
-        if (location == null) {
+        val positionWithAccuracy = this.positionWithAccuracy
+        if (positionWithAccuracy == null) {
             locationSource.clear()
             return
         }
+        val pos = positionWithAccuracy.value
+
         val p = JsonObject()
-        p.addProperty("radius", location.accuracy)
+        p.addProperty("radius", positionWithAccuracy.accuracy?.toDouble(International.Meters))
         rotation?.let { p.addProperty("rotation", it) }
         map.style?.getLayerAs<CircleLayer>("accuracy")?.setProperties(
-            circleRadius(inMeters(get("radius"), location.latitude))
+            circleRadius(inMeters(get("radius"), pos.latitude))
         )
-        locationSource.setGeoJson(Feature.fromGeometry(location.toLatLon().toPoint(), p))
+        locationSource.setGeoJson(Feature.fromGeometry(LatLon(pos.latitude, pos.longitude).toPoint(), p))
     }
 
     companion object {

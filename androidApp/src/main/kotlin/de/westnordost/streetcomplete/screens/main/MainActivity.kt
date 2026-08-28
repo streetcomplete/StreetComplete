@@ -351,7 +351,7 @@ class MainActivity :
                     LocationUnavailableReason.UnexpectedFailure -> null
                 }
             }
-            // TODO: relay event to MapFragment
+            mapFragment?.onLocationEvent(locationEvent)
         }
     }
 
@@ -481,7 +481,7 @@ class MainActivity :
 
     private fun getDisplayedPoint(): PointF? {
         val mapFragment = mapFragment ?: return null
-        val displayedPosition = mapFragment.displayedLocation?.toLatLon() ?: return null
+        val displayedPosition = mapFragment.displayedLocation?.position?.value?.toLatLon() ?: return null
         return mapFragment.getPointOf(displayedPosition)
     }
 
@@ -579,7 +579,7 @@ class MainActivity :
         viewModel.isRecordingTracks.value = false
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
-        val pos = mapFragment.displayedLocation?.toLatLon() ?: return
+        val pos = mapFragment.displayedLocation?.position?.value?.toLatLon() ?: return
         composeNote(pos, mapFragment.recordedTracks.takeIf { it.isNotEmpty() })
     }
 

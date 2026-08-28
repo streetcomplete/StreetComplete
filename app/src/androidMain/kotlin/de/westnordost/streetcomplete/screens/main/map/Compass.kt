@@ -12,6 +12,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.math.normalizeRadians
+import org.maplibre.compose.location.PositionWithAccuracy
 import kotlin.math.PI
 import kotlin.math.abs
 
@@ -85,11 +86,11 @@ class Compass(
         geomagnetic = null
     }
 
-    fun setLocation(location: Location) {
+    fun setLocation(positionWithAccuracy: PositionWithAccuracy) {
         val geomagneticField = GeomagneticField(
-            location.latitude.toFloat(),
-            location.longitude.toFloat(),
-            location.altitude.toFloat(),
+            positionWithAccuracy.value.latitude.toFloat(),
+            positionWithAccuracy.value.longitude.toFloat(),
+            positionWithAccuracy.value.altitude?.toFloat() ?: 0f,
             nowAsEpochMilliseconds()
         )
         declination = (geomagneticField.declination * PI / 180.0).toFloat()

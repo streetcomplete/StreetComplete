@@ -426,7 +426,7 @@ class MainViewModelImpl(
         syncedEdits + unsyncedEdits
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
 
-    override val locationState: MutableStateFlow<LocationState?> = MutableStateFlow(null)
+    override val locationState: MutableStateFlow<LocationState?> = MutableStateFlow(LocationState.ENABLED)
     override val mapCamera = MutableStateFlow<CameraPosition?>(null)
     override val metersPerDp = MutableStateFlow(0.0)
     override val displayedPosition = MutableStateFlow<Offset?>(null)
