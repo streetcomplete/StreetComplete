@@ -19,7 +19,7 @@ class AddToiletsFee : OsmFilterQuestType<Boolean>() {
         nodes, ways with
           amenity = toilets
           and access !~ private|customers
-          and !fee
+          and !fee and !fee:conditional
           and (!seasonal or seasonal = no)
     """
     override val changesetComment = "Specify toilet fees"
