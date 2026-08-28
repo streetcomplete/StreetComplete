@@ -148,7 +148,10 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
     init {
         locationAnimation.duration = 600L
         locationAnimation.interpolator = AccelerateDecelerateInterpolator()
-        locationAnimation.addUpdateListener { update() }
+        locationAnimation.addUpdateListener {
+            positionWithAccuracy = locationAnimation.animatedValue as PositionWithAccuracy
+            update()
+        }
 
         rotationAnimation.duration = 200L
         rotationAnimation.interpolator = AccelerateDecelerateInterpolator()
