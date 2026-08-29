@@ -116,7 +116,6 @@ Această aplicație comunică direct cu serverele OSM.&lt;br/&gt;
 Această aplicație găsește date lipsă în vecinătate și le afișează pe o hartă sub formă de misiuni. Rezolvați fiecare misiune vizitând locația și răspunzând la o simplă întrebare pentru a actualiza harta.
 
 Informațiile pe care le introduceți sunt direct adăugate în OpenStreetMap în numele dumneavoastră, fără a fi nevoie să utilizați un alt editor.</string>
-    <string name="quest_name_answer_noName">Nu are nume…</string>
     <string name="quest_name_answer_noName_confirmation_title">Sigur nu are nume?</string>
     <string name="quest_name_noName_confirmation_positive">Da, nu are</string>
     <string name="quest_openingHours_add_times">Adaugă orele de funcționare</string>
@@ -193,11 +192,6 @@ Dacă nu există indicatoare de-a lungul întregii străzi care se aplică pentr
     <string name="underground_recycling_container">Container subteran</string>
     <string name="quest_streetName_answer_cantType">Nu se pot introduce caracterele de pe indicator</string>
     <string name="quest_streetName_cantType_title">Format de tastatură indisponibil?</string>
-    <string name="quest_streetName_cantType_open_settings">Deschide setările</string>
-    <string name="quest_streetName_cantType_open_store">Accesați magazinul de aplicații</string>
-    <string name="quest_streetName_cantType_description">Dacă utilizați o tastatură implicită, este posibil să activați pur și simplu aspectul tastaturii pentru limba de care aveți nevoie în setările metodei de introducere.
-
-În caz contrar, puteți descărca o altă tastatură din magazinul de aplicații. Tastaturile populare care acceptă multe limbi sunt Google Gboard, SwiftKey Keyboard și Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(nespecificat)</string>
     <string name="quest_fireHydrant_type_title">Ce fel de hidrant este?</string>
     <string name="quest_fireHydrant_type_pillar">Stâlp</string>
@@ -495,7 +489,6 @@ la parter</string>
     <string name="quest_generic_answer_differs_along_the_way">Diferă pe parcurs …</string>
     <string name="quest_split_way_description">Dacă diferă de-a lungul drumului, primul pas este să împărțiți drumul. După aceea, se poate răspunde separat pentru fiecare parte divizată.
 Îl împărțiți acum?</string>
-    <string name="quest_split_way_tutorial">Atingeți drumul pentru a-l împărți în punctul (punctele) în care răspunsul diferă. Puteți folosi funcția de mărire și încercați să fiți cât mai precis posibil.</string>
     <string name="quest_split_way_too_imprecise">Măriți mai mult</string>
     <string name="quest_split_way_many_splits_confirmation_description">Sunt deja destul de multe scindări. Puteți face oricând împărțirea, chiar și mai târziu.</string>
     <string name="quest_footwayPartSurface_title">Ce tip de suprafață are calea pietonală?</string>
@@ -755,8 +748,6 @@ Dacă există benzi rezervate autobuzelor, vă rugăm să lăsați o notă.</str
     <string name="default_disabled_msg_go_inside_regional_warning">Acest tip de misiune este dezactivat implicit, fiindcă nu este utilă în unele regiuni și probabil va trebui să intrați în locație pentru a o rezolva.</string>
     <string name="quest_dietType_explanation_kosher">Produsele Kosher trebuie să fie pregătite în conformitate cu reguli speciale, agențiile de certificare kashrut marcând produsele conforme.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Nu există bandă de biciclete sau pistă</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Ca de obicei, atingeți o parte a ilustrației, selectați un răspuns adecvat și faceți același lucru pentru cealaltă parte. Rețineți toate opțiunile disponibile: unele cazuri nu sunt evidente, cum ar fi un drum cu sens unic care permite bicicliștilor în ambele direcții!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Se selectează că nu există bandă sau pistă de biciclete</string>
     <string name="quest_construction_completed_at_known_date">Va fi finalizată la data de…</string>
     <string name="quest_construction_completion_date_title">Când va fi finalizată?</string>
     <string name="quest_surface_value_clay">Zgură</string>
@@ -855,7 +846,9 @@ Datele sunt actualizate după %1$s zile, iar datele neutilizate sunt șterse dup
     <string name="quest_bollard_type_foldable2">Pliabil (cu sau fără cheie)</string>
     <string name="no_search_results">Nu s-a găsit nimic</string>
     <string name="quest_selection_hint_title">Prea multe de făcut?</string>
-    <string name="quest_selection_hint_message">Să contribuiți ar trebui să fie în primul rând distractiv! Dacă sunteți copleșit de numărul de misiuni, puteți oricând să ajustați din setări ce misiuni vi se afișează și în ce ordine.</string>
+    <string name="quest_selection_hint_message">Să contribuiți ar trebui să fie în primul rând distractiv!
+
+Dacă sunteți copleșit de numărul de misiuni, puteți oricând să ajustați din setări ce misiuni vi se afișează și în ce ordine.</string>
     <string name="quest_presets_preset_add">Adaugă preset</string>
     <string name="quest_presets_preset_name">Nume preset</string>
     <string name="quest_presets_default_name">Implicit</string>
@@ -982,9 +975,6 @@ Alternativ, puteți lăsa o notă (cu fotografie).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Prindere cu bară</string>
     <string name="quest_bicycle_parking_access_title2">Cine poate parca bicicleta aici? Parcarea poate fi gratuită sau cu plată.</string>
     <string name="quest_playground_access_title2">Cui îi este permis să folosească locul de joacă?</string>
-    <string name="quest_sidewalk_answer_none_title">Se selectează că trotuarele lipsesc</string>
-    <string name="quest_side_select_interface_explanation">Atingeți o parte și selectați răspunsul corespunzător.
-Faceți același lucru și pentru partea cealaltă, dacă este prezentă.</string>
     <string name="ar_measure">Măsoară</string>
     <string name="ar_core_tracking_error_too_steep_angle">Unghiul este prea mare, îndepărtați-vă puțin</string>
     <string name="default_disabled_msg_no_ar">Vă trebuie o ruletă pentru a rezolva această misiune fiindcă măsurarea cu ajutorul camerei nu este suportată pe acest dispozitiv.</string>
@@ -1186,8 +1176,6 @@ Doriți să îl mutați acum?</string>
     <string name="quest_placeName_no_name_answer">Nu este un indicator cu numele...</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Lățimea pare nerealistă. Țineți minte, ar trebui să fie lățimea de la bordură la bordură, inclusiv benzile pentru parcare, de biciclete, etc.</string>
     <string name="overlay_cycleway">Piste de biciclete</string>
-    <string name="bicycle_boulevard_is_a">Este un %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Nu este un %1$s</string>
     <string name="bicycle_boulevard">Bulevard pentru biciclete</string>
     <string name="separate_cycleway_no_or_allowed">Nu este special făcută pentru bicicliști (dar ciclismul poate fi în continuare permis)</string>
     <string name="separate_cycleway_non_segregated">Pistă comună</string>
@@ -1317,7 +1305,9 @@ Puteți găsi informații despre donații pe site-ul nostru sau pe pagina de por
     <string name="info">Mai multe informații</string>
     <string name="quest_accessible_for_pedestrians_prohibited">Este interzis.</string>
     <string name="quest_accessible_for_pedestrians_allowed">Este permis.</string>
-    <string name="quest_buildingLevels_hint">Pentru clădirile în pantă, numărarea nivelurilor începe de la nivelul solului laturii celei mai joase. Un nivel este considerat nivel de acoperiș atunci când ferestrele sale sunt în acoperiș. Prin urmare, acoperișurile cu niveluri zero nu sunt neapărat plate, ci pur și simplu nu sunt suficient de înalte pentru un nivel întreg.</string>
+    <string name="quest_buildingLevels_hint">Pentru clădirile în pantă, numărarea nivelurilor începe de la nivelul solului laturii celei mai joase.
+
+Un nivel este considerat nivel de acoperiș atunci când ferestrele sale sunt în acoperiș. Prin urmare, acoperișurile cu niveluri zero nu sunt neapărat plate, ci pur și simplu nu sunt suficient de înalte pentru un nivel întreg.</string>
     <string name="quest_parcel_locker_brand">Ce marca este acest dulap pentru colete?</string>
     <string name="quest_powerPolesMaterial_is_terminal">Linia electrică este ancorată la clădire</string>
     <string name="quest_cycleway_value_sidewalk_ok">niciunul, dar indicatorul permite ciclismul pe trotuar</string>

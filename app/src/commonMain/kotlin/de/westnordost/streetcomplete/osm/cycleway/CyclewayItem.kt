@@ -1,5 +1,21 @@
 package de.westnordost.streetcomplete.osm.cycleway
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.text.style.Hyphens
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.cycleway.Cycleway.*
 import de.westnordost.streetcomplete.osm.oneway.Direction
@@ -11,32 +27,56 @@ import de.westnordost.streetcomplete.util.ktx.dualCycleLaneDrawable
 import de.westnordost.streetcomplete.util.ktx.dualCycleLaneMirroredDrawable
 import de.westnordost.streetcomplete.util.ktx.exclusiveCycleLaneDrawable
 import de.westnordost.streetcomplete.util.ktx.exclusiveCycleLaneMirroredDrawable
+import de.westnordost.streetcomplete.util.ktx.noEntrySignDrawable
 import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneDrawable
 import de.westnordost.streetcomplete.util.ktx.pictogramCycleLaneMirroredDrawable
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
+import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
-fun CyclewayAndDirection.getDialogIcon(
+@Composable
+fun CyclewayItem(
+    cycleway: CyclewayAndDirection,
     isRight: Boolean,
-    countryInfo: CountryInfo,
     roadDirection: Direction,
-): DrawableResource? =
-    when (cycleway) {
-        NONE ->     Res.drawable.cycleway_none_in_selection
-        SEPARATE -> Res.drawable.cycleway_separate
-        SIDEWALK_OK ->
-            if (direction == BOTH) {
-                Res.drawable.cycleway_sidewalk_ok_dual_in_selection
-            }
-            else {
-                val isForward = (direction == FORWARD)
-                val showMirrored = isForward xor isRight
+    countryInfo: CountryInfo,
+    modifier: Modifier = Modifier,
+) {
+    val icon = cycleway.getIcon(isRight, countryInfo, roadDirection) ?: return
+    val floatingIcon = cycleway.getFloatingIcon(roadDirection, countryInfo.noEntrySignDrawable)
+    val title = cycleway.getTitle(roadDirection) ?: return
+    val imageRotation = if (countryInfo.isLeftHandTraffic) 180f else 0f
 
-                if (showMirrored) Res.drawable.cycleway_sidewalk_ok_in_selection_l
-                else Res.drawable.cycleway_sidewalk_ok_in_selection
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(2.dp)
+    ) {
+        Box(contentAlignment = Alignment.Center) {
+            Image(
+                painter = painterResource(icon),
+                contentDescription = null,
+                modifier = Modifier
+                    .clip(MaterialTheme.shapes.medium)
+                    .rotate(imageRotation),
+            )
+            if (floatingIcon != null) {
+                Image(
+                    painter = painterResource(floatingIcon),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize(0.5f)
+                )
             }
-        else ->     getIcon(isRight, countryInfo, roadDirection)
+        }
+        Text(
+            text = stringResource(title),
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.caption.copy(hyphens = Hyphens.Auto),
+            modifier = Modifier.padding(2.dp)
+        )
     }
+}
 
 fun CyclewayAndDirection.getFloatingIcon(
     roadDirection: Direction,
@@ -45,7 +85,7 @@ fun CyclewayAndDirection.getFloatingIcon(
     when (cycleway) {
         NONE ->
             if (direction.isReverseOf(roadDirection)) noEntrySignDrawable
-            else Res.drawable.floating_no
+            else null
         SEPARATE -> Res.drawable.floating_separate
         SIDEWALK_OK ->
             if (direction == BOTH) Res.drawable.cycleway_sign_sidewalk_ok_dual

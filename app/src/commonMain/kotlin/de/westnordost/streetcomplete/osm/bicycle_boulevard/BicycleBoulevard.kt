@@ -9,7 +9,7 @@ fun parseBicycleBoulevard(tags: Map<String, String>): BicycleBoulevard =
     // "no" value is extremely uncommon, hence the lack of this tag can be interpreted as "no"
     if (tags["bicycle_road"] == "yes" || tags["cyclestreet"] == "yes") YES else NO
 
-fun BicycleBoulevard.applyTo(tags: Tags, countryCode: String) {
+fun BicycleBoulevard.applyTo(tags: Tags, countryCode: String?) {
     when (this) {
         YES -> {
             // do not re-tag to different key if one already exists

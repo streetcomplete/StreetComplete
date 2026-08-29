@@ -38,7 +38,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
            )
            or tourism ~ museum|gallery|caravan_site|zoo|aquarium|wilderness_hut
            or leisure ~ beach_resort|disc_golf_course
-           or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash|binoculars|device_charging_station
+           or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash|binoculars|device_charging_station|vacuum_cleaner
            or natural = cave_entrance and access=yes
            or man_made = tower and tower:type = observation and access=yes
            or historic = castle and access = yes
@@ -56,12 +56,21 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        val isThing = element.tags["amenity"] != null || element.tags["waterway"] != null
         YesNoQuestForm(
             on = on,
             title = stringResource(
-                if (isThing) Res.string.quest_generalFee_title
-                else Res.string.quest_generalFee_title2
+                if (element.tags["amenity"] != null || element.tags["waterway"] != null) {
+                    // Things you must pay to "use"
+                    Res.string.quest_generalFee_title
+                } else {
+                    if (element.tags["tourism"] == "wilderness_hut" || element.tags["tourism"] == "camp_site" || element.tags["tourism"] == "camp_site") {
+                        // Places you must pay to "stay at"
+                        Res.string.quest_generalFee_title3
+                    }
+                    else
+                    // Places you must pay to "enter"
+                    Res.string.quest_generalFee_title2
+                }
             ),
         )
     }

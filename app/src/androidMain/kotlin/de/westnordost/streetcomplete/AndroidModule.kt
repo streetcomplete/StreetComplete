@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete
 
 import android.content.Context
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import android.content.res.AssetManager
-import android.content.res.Resources
 import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SharedPreferencesSettings
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -15,16 +13,16 @@ import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.connection.AndroidActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.download.DownloadControllerAndroid
+import de.westnordost.streetcomplete.data.download.AndroidDownloadController
 import de.westnordost.streetcomplete.data.download.DownloadWorker
 import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloaderAndroid
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserAndroid
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.AndroidChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
 import de.westnordost.streetcomplete.data.upload.UploadController
-import de.westnordost.streetcomplete.data.upload.UploadControllerAndroid
+import de.westnordost.streetcomplete.data.upload.AndroidUploadController
 import de.westnordost.streetcomplete.data.upload.UploadWorker
 import de.westnordost.streetcomplete.screens.about.AndroidAppStoreInfo
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
@@ -33,22 +31,22 @@ import de.westnordost.streetcomplete.screens.main.AndroidMapAppLauncher
 import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
-import de.westnordost.streetcomplete.ui.util.measure.ArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
-import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
-import de.westnordost.streetcomplete.util.logs.DatabaseLogger
 import de.westnordost.streetcomplete.util.sound.AndroidSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.io.asSource
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.scope.dsl.activityScope
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.maplibre.compose.location.AndroidLocationProvider
+import org.maplibre.compose.location.AndroidSystemSettingsLauncher
+import org.maplibre.compose.location.LocationProvider
+import org.maplibre.compose.location.SystemSettingsLauncher
 
 private const val COMPOSE_FILES_DIR = "composeResources/de.westnordost.streetcomplete.resources/files"
 
@@ -96,6 +94,11 @@ val androidModule = module {
 
     factory<ArSupportChecker> { AndroidArSupportChecker(get()) }
 
+    // location
+
+    factory<LocationProvider> { AndroidLocationProvider(get()) }
+    factory<SystemSettingsLauncher> { AndroidSystemSettingsLauncher(get()) }
+
     // launch apps
 
     factory<MapAppLauncher> { AndroidMapAppLauncher(get()) }
@@ -113,19 +116,15 @@ val androidModule = module {
 
     factory<ActiveNetworkConnection> { AndroidActiveNetworkConnection(androidContext()) }
 
-    // location availability
-
-    single { LocationAvailabilityReceiver(get()) }
-
     // background jobs
 
-    single<UploadController> { UploadControllerAndroid(androidContext()) }
+    single<UploadController> { AndroidUploadController(androidContext()) }
     worker { UploadWorker(get(), androidContext(), get()) }
 
-    single<DownloadController> { DownloadControllerAndroid(androidContext()) }
+    single<DownloadController> { AndroidDownloadController(androidContext()) }
     worker { DownloadWorker(get(), androidContext(), get()) }
 
-    factory<ChangesetAutoCloser> { ChangesetAutoCloserAndroid(androidContext()) }
+    factory<ChangesetAutoCloser> { AndroidChangesetAutoCloser(androidContext()) }
     worker { ChangesetAutoCloserWorker(get(), androidContext(), get()) }
 
     worker { CleanerWorker(get(), get(), get()) }

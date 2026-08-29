@@ -35,22 +35,21 @@ open class UpdateAppTranslationCompletenessTask : DefaultTask() {
                 }
             }
 
-            val androidResCodes = locale.transformPOEditorLanguageTag().toAndroidResCodes()
+            val androidResCode = locale.transformPOEditorLanguageTag().toAndroidResCode()
 
             // create a metadata file that describes how complete the translation is
-            for (androidResCode in androidResCodes) {
-                // exclude default translation
-                if (androidResCode == "en-rUS") continue
-                val targetFile = targetFiles(androidResCode)
-                targetFile.parentFile.mkdirs()
-                targetFile.writeText("""
-                    <?xml version="1.0" encoding="utf-8"?>
-                    <resources>
-                      <string name="translation_completeness">$completedPercentage</string>
-                    </resources>
 
-                """.trimIndent())
-            }
+            // exclude default translation
+            if (androidResCode == "en-rUS") continue
+            val targetFile = targetFiles(androidResCode)
+            targetFile.parentFile.mkdirs()
+            targetFile.writeText("""
+                <?xml version="1.0" encoding="utf-8"?>
+                <resources>
+                  <string name="translation_completeness">$completedPercentage</string>
+                </resources>
+
+            """.trimIndent())
         }
     }
 }

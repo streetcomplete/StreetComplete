@@ -46,9 +46,14 @@ fun AddInternetAccessForm(
                     if (option == InternetAccess.NO && selected) {
                         selectedOptions = setOf(InternetAccess.NO)
                     } else {
-                        selectedOptions =
-                            if (selected) selectedOptions + option
-                            else selectedOptions - option
+                        selectedOptions = selectedOptions.toMutableSet().apply {
+                            if (selected) {
+                                remove(InternetAccess.NO)
+                                add(option)
+                            } else {
+                                remove(option)
+                            }
+                        }
                     }
                 },
                 selectedOptions = selectedOptions,

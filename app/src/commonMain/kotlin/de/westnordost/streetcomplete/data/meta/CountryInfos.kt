@@ -21,7 +21,7 @@ class CountryInfos(private val res: Res) {
     /** Get the info by a list of country codes sorted by size. E.g. DE-NI,DE gets the info
      *  for Lower Saxony in Germany and uses defaults from Germany */
     fun get(regionCode: List<String>): CountryInfo =
-        CountryInfo(regionCode.first(), regionCode.mapNotNull { get(it) } + default)
+        CountryInfo(regionCode.firstOrNull(), regionCode.mapNotNull { get(it) } + default)
 
     private fun get(regionCode: String): IncompleteCountryInfo? {
         if (!countryInfos.containsKey(regionCode)) {

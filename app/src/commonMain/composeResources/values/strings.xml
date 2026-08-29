@@ -12,12 +12,7 @@
     <!-- Store description -->
 
     <string name="store_listing_short_description" tools:ignore="UnusedResources">OpenStreetMap surveyor app</string>
-    <string name="store_listing_full_description" tools:ignore="UnusedResources">Help improve OpenStreetMap with StreetComplete!
-
-This app finds missing map data in your vicinity and displays it on a map as quests. Solve each quest by visiting the location on-site and answering a simple question to update the map.
-
-The info you enter is directly added to OpenStreetMap in your name, without the need to use another editor.</string>
-
+    <string name="store_listing_full_description" tools:ignore="UnusedResources">Help improve OpenStreetMap with StreetComplete!\n\nThis app finds missing map data in your vicinity and displays it on a map as quests. Solve each quest by visiting the location on-site and answering a simple question to update the map.\n\nThe info you enter is directly added to OpenStreetMap in your name, without the need to use another editor.</string>
 
     <!-- Main menu -->
 
@@ -207,13 +202,8 @@ The info you enter is directly added to OpenStreetMap in your name, without the 
     <!-- Overlay tutorial screen -->
     <string name="overlays_tutorial_title">Overlays</string>
     <string name="overlays_tutorial_intro">You found a new way to edit data!</string>
-    <string name="overlays_tutorial_display">Each overlay displays one kind of data, for example “places” or “street surfaces”.
-
-The data is highlighted in different colors to give you a good overview of what has been recorded so far.
-Missing data is always shown in red.</string>
-    <string name="overlays_tutorial_edit">Tap on any highlighted data to display or edit it. You can also split ways or report notes, like with quests.
-
-Additionally, some overlays allow you to add new data at the position of a displayed crosshair, such as the addresses overlay.</string>
+    <string name="overlays_tutorial_display">Each overlay displays one kind of data, for example “places” or “street surfaces”.\n\nThe data is highlighted in different colors to give you a good overview of what has been recorded so far.\n\nMissing data is always shown in red.</string>
+    <string name="overlays_tutorial_edit">Tap on any highlighted data to display or edit it. You can also split ways or report notes, like with quests.\n\nAdditionally, some overlays allow you to add new data at the position of a displayed crosshair, such as the addresses overlay.</string>
 
     <!-- Add note interface-->
 
@@ -263,9 +253,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="ar_core_tracking_error_no_plane_hit">Keep closer to the arrow but watch out for traffic!</string>
     <string name="ar_core_tracking_hint_tap_to_measure">Tap screen to start measuring</string>
     <string name="measure_info_title">Achieving optimal precision</string>
-    <string name="measure_info_html_description">&lt;p&gt;ARCore sometimes (initially) presumes the ground to be a bit lower or higher than it actually is. This introduces a measurement error that gets larger the more you tilt your phone towards the horizon.&lt;/p&gt;
-&lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;
-&lt;p&gt;For vertical measurements, you need to instead check that the startpoint does not seem to move in relation to the ground by looking at it from different directions.&lt;/p&gt;</string>
+    <string name="measure_info_html_description">&lt;p&gt;ARCore sometimes (initially) presumes the ground to be a bit lower or higher than it actually is. This introduces a measurement error that gets larger the more you tilt your phone towards the horizon.&lt;/p&gt;\n&lt;p&gt;Set each the start- and endpoint while pointing the phone straight down (so that you see the white arrow from above) to completely avoid this issue for horizontal measurements.&lt;/p&gt;\n&lt;p&gt;For vertical measurements, you need to instead check that the startpoint does not seem to move in relation to the ground by looking at it from different directions.&lt;/p&gt;</string>
 
     <string name="quest_disable_action">Disable</string>
     <string name="quest_disable_title">Disable this quest type?</string>
@@ -279,9 +267,7 @@ Additionally, some overlays allow you to add new data at the position of a displ
     <string name="unread_messages_button">Open Inbox</string>
 
     <string name="quest_selection_hint_title">Too much to do?</string>
-    <string name="quest_selection_hint_message">Contributing should primarily be fun!
-
-If you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
+    <string name="quest_selection_hint_message">Contributing should primarily be fun!\n\nIf you are overwhelmed by the number of quests, you can always fine-tune which quests are displayed to you and in what order in the settings.</string>
 
     <string name="weekly_osm_new_edition_title">New Edition!</string>
     <string name="calendar_new_event_title">New OSM event in your area!</string>
@@ -349,8 +335,7 @@ If you are overwhelmed by the number of quests, you can always fine-tune which q
 
     <string name="about_title_sponsors">Sponsors</string>
     <string name="about_description_donate">Thank you for considering supporting this app! To see current donations and to donate yourself, tap on the respective platform:</string>
-    <string name="about_description_donate_google_play3">Thank you for considering supporting this app!
-You can find donation information on our website or project home, the app store policies do not allow us to provide the link within the app.</string>
+    <string name="about_description_donate_google_play3">Thank you for considering supporting this app!\nYou can find donation information on our website or project home, the app store policies do not allow us to provide the link within the app.</string>
 
     <string name="about_title_translate">Translate this app</string>
     <string name="about_description_translate">%1$s is translated %2$d%</string>
@@ -388,26 +373,7 @@ You can find donation information on our website or project home, the app store 
 
     <!-- Privacy screen -->
 
-    <string name="privacy_html">&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;
-&lt;h2&gt;Direct Contributions&lt;/h2&gt;
-&lt;p&gt;
-First off, understand that with this app, you make actual and direct contributions to OpenStreetMap (OSM).&lt;br/&gt;
-Anything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.
-&lt;/p&gt;
-&lt;p&gt;
-Editing OpenStreetMap anonymously is not possible. Any changes you make (and their date and location) are attributed to your OSM user account and publicly visible on the openstreetmap.org website. Because StreetComplete should only be used for on-site survey, this reveals where and when you have used the app.
-&lt;/p&gt;
-
-&lt;h2&gt;Location&lt;/h2&gt;
-&lt;p&gt;
-The app does not share your GPS location with anyone. It is used to automatically download data around you, and position the map at your location.
-&lt;/p&gt;
-
-&lt;h2&gt;Data Usage&lt;/h2&gt;
-&lt;p&gt;
-This app directly communicates with OSM servers.&lt;br/&gt;
-Before uploading your changes, the app checks with a &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;simple text file&lt;/a&gt; on my server to ensure that this version of the app has not been banned from uploading changes. This is a precautionary measure to be able to block versions of the app that turn out to have critical bugs from uploading corrupted data to OSM.&lt;/p&gt;</string>
-    <string name="privacy_html_tileserver2">&lt;p&gt;To display the map, vector tiles are retrieved from %1$s. See their &lt;a href="%2$s"&gt;privacy statement&lt;/a&gt; for more information.&lt;/p&gt;</string>
+    <string name="privacy_html">&lt;p&gt;Ah, someone who cares about privacy, nice! I think I have only good news for you:&lt;/p&gt;\n&lt;h2&gt;Direct Contributions&lt;/h2&gt;\n&lt;p&gt;\nFirst off, understand that with this app, you make actual and direct contributions to OpenStreetMap (OSM).&lt;br/&gt;\nAnything you contribute in this app is directly added to the map, there is no third party in-between the app and OSM infrastructure.\n&lt;/p&gt;\n&lt;p&gt;\nEditing OpenStreetMap anonymously is not possible. Any changes you make (and their date and location) are attributed to your OSM user account and publicly visible on the openstreetmap.org website. Because StreetComplete should only be used for on-site survey, this reveals where and when you have used the app.\n&lt;/p&gt;\n\n&lt;h2&gt;Location&lt;/h2&gt;\n&lt;p&gt;\nThe app does not share your GPS location with anyone. It is used to automatically download data around you, and position the map at your location.\n&lt;/p&gt;\n\n&lt;h2&gt;Data Usage&lt;/h2&gt;\n&lt;p&gt;\nThis app directly communicates with OSM servers.&lt;br/&gt;\nBefore uploading your changes, the app checks with a &lt;a href="https://www.westnordost.de/streetcomplete/banned_versions.txt"&gt;simple text file&lt;/a&gt; on my server to ensure that this version of the app has not been banned from uploading changes. This is a precautionary measure to be able to block versions of the app that turn out to have critical bugs from uploading corrupted data to OSM.&lt;/p&gt;</string>\n    <string name="privacy_html_tileserver2">&lt;p&gt;To display the map, vector tiles are retrieved from %1$s. See their &lt;a href="%2$s"&gt;privacy statement&lt;/a&gt; for more information.&lt;/p&gt;</string>
     <string name="privacy_html_image_upload2">&lt;p&gt;Photos you attach to a note are uploaded to my server and deleted some days after that note has been resolved. Their meta-data is stripped before upload.&lt;/p&gt;</string>
     <string name="privacy_html_third_party_quest_sources">&lt;p&gt;For some quests, some additional data from third parties is downloaded.&lt;/p&gt;</string>
     <string name="privacy_html_statistics">&lt;p&gt;The data shown in your profile is aggregated from your publicly available contribution history to OpenStreetMap and then hosted on my server.&lt;/p&gt;</string>
@@ -904,6 +870,7 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_bollard_type_not_bollard">Not a bollard, but some other barrier</string>
 
     <string name="quest_bothway_title">In what direction can you ride this?</string>
+    <string name="quest_bothway_aerialway_confirm">Are you sure a person can ride this lift in both directions?</string>
 
     <string name="quest_bridge_structure_title">What’s the structure of this bridge?</string>
 
@@ -925,10 +892,7 @@ Before uploading your changes, the app checks with a &lt;a href="https://www.wes
     <string name="quest_buildingLevels_levelsLabel2">regular levels (without roof)</string>
     <string name="quest_buildingLevels_answer_multipleLevels">Differs per building part</string>
     <string name="quest_buildingLevels_answer_description">In this case, simply input the values of the highest building part.</string>
-    <string name="quest_buildingLevels_hint">For buildings on a slope, the level count starts from the ground level of the lowest side.
-
-A level counts as a roof level when its windows are in the roof. Subsequently, roofs with zero roof levels are not necessarily flat, just not tall enough for an entire level.</string>
-
+    <string name="quest_buildingLevels_hint">For buildings on a slope, the level count starts from the ground level of the lowest side.\n\nA level counts as a roof level when its windows are in the roof. Subsequently, roofs with zero roof levels are not necessarily flat, just not tall enough for an entire level.</string>
     <string name="quest_buildingType_title">What kind of building is this?</string>
     <string name="quest_generic_item_invalid_value">Please select a more specific value.</string>
     <string name="quest_buildingType_answer_multiple_types">It has multiple purposes</string>
@@ -1189,6 +1153,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
 
     <string name="quest_generalFee_title">Do you need to pay to use this?</string>
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
+    <string name="quest_generalFee_title3">Do you need to pay to stay here?</string>
     <string name="quest_genericRef_title">What’s the identification number here?</string>
 
     <string name="quest_gritBinSeasonal_title">Is this also here outside of winter?</string>
@@ -1229,8 +1194,7 @@ A level counts as a roof level when its windows are in the roof. Subsequently, r
     <string name="quest_lane_markings_title">Does this road have lane markings?</string>
 
     <string name="quest_lanes_title">How many car lanes does this road have?</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">Specify the number of marked lanes usable by car traffic here. Bicycle and dedicated parking lanes don’t count.
-If any lanes are reserved for buses, please leave a note instead.</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">Specify the number of marked lanes usable by car traffic here. Bicycle and dedicated parking lanes don’t count.\nIf any lanes are reserved for buses, please leave a note instead.</string>
     <string name="quest_lanes_answer_noLanes">No marked lanes</string>
     <string name="quest_lanes_answer_oneLaneOnly">One marked lane only</string>
     <string name="quest_lanes_answer_lanes_center_left_turn_lane">It has a two-way left turn lane</string>
@@ -1265,8 +1229,7 @@ If any lanes are reserved for buses, please leave a note instead.</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit">Just an advisory speed limit…</string>
     <string name="quest_maxspeed_answer_advisory_speed_limit2">Advisory speed limit sign</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_title">Are you sure no limit is posted?</string>
-    <string name="quest_maxspeed_answer_noSign_confirmation">Did you check at the ends of the street?
-If there are no signs along the whole street which apply for the highlighted section, default speed limits apply.</string>
+    <string name="quest_maxspeed_answer_noSign_confirmation">Did you check at the ends of the street?\nIf there are no signs along the whole street which apply for the highlighted section, default speed limits apply.</string>
     <string name="quest_maxspeed_answer_noSign_confirmation_positive">Yes, no sign</string>
     <string name="quest_maxspeed_unusualInput_confirmation_description">This speed limit looks implausible.</string>
 
@@ -1434,9 +1397,15 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="unit_days">days</string>
     <string name="unit_hours">hours</string>
     <string name="unit_minutes">minutes</string>
+    <string name="unit_day">day</string>
+    <string name="unit_hour">hour</string>
+    <string name="unit_minute">minute</string>
     <string name="at_any_time">at any time</string>
     <string name="only_at_hours">only at following times:</string>
     <string name="except_at_hours">except at following times:</string>
+
+    <string name="quest_parking_charge_title">How much do you need to pay to park here?</string>
+    <string name="quest_parking_charge_time_unit_label">per</string>
 
     <string name="quest_parkingType_title">What kind of parking is this?</string>
     <string name="quest_parkingType_surface">Parking lot</string>
@@ -1487,7 +1456,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_powerPolesMaterial_concrete">Concrete</string>
     <string name="quest_powerPolesMaterial_is_terminal">Power line is anchored to building</string>
 
-    <string name="quest_bbq_fuel_title">What is this grill powered by?</string>
+    <string name="quest_bbq_fuel_title">What fuel is used to cook here?</string>
     <string name="quest_bbq_fuel_wood">Wood</string>
     <string name="quest_bbq_fuel_electric">Electric</string>
     <string name="quest_bbq_fuel_charcoal">Charcoal</string>
@@ -1527,8 +1496,8 @@ If there are no signs along the whole street which apply for the highlighted sec
 
     <string name="quest_recycling_type_title">What type of recycling facility is this?</string>
     <string name="recycling_centre">Center</string>
-    <string name="overground_recycling_container">Container</string>
-    <string name="underground_recycling_container">Underground container</string>
+    <string name="overground_recycling_container">Container(s)</string>
+    <string name="underground_recycling_container">Underground container(s)</string>
 
     <string name="quest_religion_for_place_of_worship_title">What religion is practiced at this place?</string>
     <string name="quest_religion_for_wayside_shrine_title">What religion is this shrine associated with?</string>
@@ -1689,9 +1658,7 @@ If there are no signs along the whole street which apply for the highlighted sec
     <string name="quest_streetName_add_language">Add language</string>
     <string name="quest_streetName_answer_cantType">Can’t type the characters on the sign</string>
     <string name="quest_streetName_cantType_title">Missing keyboard layout?</string>
-    <string name="quest_streetName_cantType_description2">If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.
-
-Otherwise, you can download another keyboard in the app store. On Android, you might want to try FlorisBoard or HeliBoard.</string>
+    <string name="quest_streetName_cantType_description2">If you use a default keyboard, chances are that you can simply enable the keyboard layout for the language you need in the input method settings.\n\nOtherwise, you can download another keyboard in the app store. On Android, you might want to try FlorisBoard or HeliBoard.</string>
     <string name="quest_name_answer_noName_confirmation_title">Really no name?</string>
     <string name="quest_name_noName_confirmation_positive">Yes, no name</string>
     <string name="quest_streetName_answer_noName_confirmation_description">Sometimes the street sign is only at one end of the street. Also, note that there may not be extra street signs for side streets that belong to a bigger street. Usually, any street with houses has a name.</string>
@@ -1799,8 +1766,7 @@ Otherwise, you can download another keyboard in the app store. On Android, you m
     <string name="quest_wheelchairAccess_limited_description_business">Partially means that there is no more than an ankle-high step to access the place and that most rooms inside are wheelchair accessible.</string>
     <string name="quest_wheelchairAccess_limited_description_outside">Partially means that there is no more than an ankle-high step to access it.</string>
     <string name="quest_wheelchairAccess_limited_description_public_transport">Partially means that there is no more than an ankle-high step to access it.</string>
-    <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the restroom is accessible.
-Partially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present.</string>
+    <string name="quest_wheelchairAccess_description_toilets">A wheelchair sign like this might be visible if the restroom is accessible.\nPartially means that a wheelchair can enter and use the restroom, but no handrail or adapted hand basin is present.</string>
 
     <!-- Overlays -->
 
@@ -1887,9 +1853,7 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="street_standing_prohibited">No standing</string>
     <string name="street_parking_conditional_restrictions">Parking / Stopping restricted conditionally</string>
     <string name="street_parking_no_other_reasons">No explicit sign / parking not possible</string>
-    <string name="street_parking_conditional_restrictions_hint">If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.
-
-Alternatively, you can leave a note (with a photo).</string>
+    <string name="street_parking_conditional_restrictions_hint">If it is at all possible to park or stop here, please answer how those who might park here can do so. Which restrictions apply exactly can be specified later.\n\nAlternatively, you can leave a note (with a photo).</string>
     <string name="street_parking_street_width">Street width: %1$s</string>
 
     <string name="lane_narrowing_traffic_calming_choker">Curb extension</string>

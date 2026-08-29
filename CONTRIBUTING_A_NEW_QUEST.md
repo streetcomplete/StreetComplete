@@ -543,7 +543,7 @@ Some quests should be enabled only in some countries or disabled in a specific c
 
 ## `defaultDisabledMessage`
 
-Some quests should be disabled by default, for example ones that may require going inside a shop. In such case setting `override val defaultDisabledMessage = R.string.default_disabled_msg_go_inside` will have two effects:
+Some quests should be disabled by default, for example ones that may require going inside a shop. In such case setting `override val defaultDisabledMessage = Res.string.default_disabled_msg_go_inside` will have two effects:
 
 - quest will be disabled by default
 - on attempting to enable it user will get message asking are they sure. Exact message in this case would be `default_disabled_msg_go_inside` - but some quests use more specific ones.

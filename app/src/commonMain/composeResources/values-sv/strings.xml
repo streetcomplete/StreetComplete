@@ -116,7 +116,6 @@ Innan appen laddar upp dina ändringar så kollar den en &lt;a href="https://www
 Appen hittar saknad kartdata i din närhet och visar detta på en karta som uppdrag. Lös respektive uppdrag genom att besöka platsen och besvara en enkel fråga för att uppdatera kartan.
 
 Den information du anger skickas sedan direkt till OpenStreetMap i ditt namn, utan att du behöver använda en annan redigerare.</string>
-    <string name="quest_name_answer_noName">Den har inget namn…</string>
     <string name="quest_name_answer_noName_confirmation_title">Är du säker på att den saknar namn?</string>
     <string name="quest_name_noName_confirmation_positive">Ja, den saknar namn</string>
     <string name="quest_openingHours_add_times">Lägg till öppettider</string>
@@ -193,11 +192,6 @@ Om det inte finns några skyltar längs hela vägen som gäller för den markera
     <string name="underground_recycling_container">Underjordisk godsbehållare</string>
     <string name="quest_streetName_answer_cantType">Bokstäverna på skylten kan inte skrivas</string>
     <string name="quest_streetName_cantType_title">Saknas tangentbordslayout?</string>
-    <string name="quest_streetName_cantType_open_settings">Öppna inställningar</string>
-    <string name="quest_streetName_cantType_open_store">Öppna appbutik</string>
-    <string name="quest_streetName_cantType_description">Om du använder ett standardtangentbord är chansen att du enkelt kan aktivera tangentbordslayouten för det språk du behöver i inställningarna.
-
-Annars kan du ladda ner ett annat tangentbord i appbutiken. Populära tangentbord som stöder många språk är Google Gboard, SwiftKey Keyboard och Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(ospecificerad)</string>
     <string name="quest_fireHydrant_type_title">Vilken typ av brandpost är det här?</string>
     <string name="quest_fireHydrant_type_pillar">Pelare</string>
@@ -494,7 +488,6 @@ Delvis betyder att rullstolsanvändare kan komma in och använda toaletten men a
     <string name="quest_generic_answer_differs_along_the_way">Skiljer sig längs vägen…</string>
     <string name="quest_split_way_description">Om det skiljer sig längs vägen är det första steget att dela upp vägen. Därefter kan uppdraget besvaras för varje delad del separat.
 Dela den nu?</string>
-    <string name="quest_split_way_tutorial">Tryck på vägen för att dela upp den vid punkt(erna) där svaren skiljer sig åt. Använd zoom-funktionen och försök att vara så exakt som möjligt.</string>
     <string name="quest_split_way_too_imprecise">Vänligen zooma in ytterligare</string>
     <string name="quest_split_way_many_splits_confirmation_description">Det här är en hel del uppdelningar. Du kan alltid dela upp vägen senare.</string>
     <string name="quest_footwayPartSurface_title">Vad har den här gångvägen för underlag här?</string>
@@ -758,10 +751,6 @@ Om några körfält är reserverade för bussar, vänligen lämna en anteckning 
     <string name="default_disabled_msg_go_inside_regional_warning">Uppdragstypen är inaktiverad som standard eftersom den inte är användbar i vissa regioner och du troligtvis behöver gå inomhus för att kunna besvara den.</string>
     <string name="quest_dietType_explanation_kosher">Kosherprodukter måste beredas enligt särskilda regler, med kashrut-certifieringsbyråer som märker produkter i enlighet.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Ingen cykelväg alls</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Tryck som vanligt på ena sidan av illustrationen, välj ett korrekt svar och gör detsamma för den andra sidan.
-
-Undersök alla tillgängliga alternativ: vissa fall är inte uppenbara, som en enkelriktad väg som tillåter cyklister i båda riktningar!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Väljer att det inte finns någon cykelväg</string>
     <string name="quest_construction_completed_at_known_date">Färdigställs vid datum…</string>
     <string name="quest_construction_completion_date_title">När kommer det att vara klart?</string>
     <string name="quest_surface_value_clay">Lera</string>
@@ -861,7 +850,9 @@ Kartdata uppdateras efter %1$s dagar och oanvänd data raderas automatiskt efter
     <string name="quest_bollard_type_foldable2">Vikbar (med eller utan nyckel)</string>
     <string name="no_search_results">Hittade inget</string>
     <string name="quest_selection_hint_title">För mycket att göra?</string>
-    <string name="quest_selection_hint_message">Det ska vara roligt att kartlägga! Om du blir överväldigad av alla tillgängliga uppdrag kan du alltid ställa in vilka som ska visas och i vilken ordning i appens inställningar.</string>
+    <string name="quest_selection_hint_message">Det ska vara roligt att kartlägga!
+
+Om du blir överväldigad av alla tillgängliga uppdrag kan du alltid ställa in vilka som ska visas och i vilken ordning i appens inställningar.</string>
     <string name="quest_presets_preset_add">Lägg till grupp</string>
     <string name="quest_presets_preset_name">Namn på grupp</string>
     <string name="quest_presets_default_name">Standard</string>
@@ -988,9 +979,6 @@ Du kan också lämna en anteckning (med bild).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Hållare för styre</string>
     <string name="quest_bicycle_parking_access_title2">Vem får parkera en cykel här? Oavsett om det är avgiftsbelagt eller ej.</string>
     <string name="quest_playground_access_title2">Vem får använda den här lekplatsen?</string>
-    <string name="quest_sidewalk_answer_none_title">Väljer att trottoarer saknas</string>
-    <string name="quest_side_select_interface_explanation">Tryck på en sida och välj vad som gäller för den sidan.
-Gör detta för varje sida som finns.</string>
     <string name="ar_measure">Mätning</string>
     <string name="ar_core_tracking_error_too_steep_angle">För brant vinkel, backa lite</string>
     <string name="default_disabled_msg_no_ar">Du behöver ett måttband för att kunna slutföra detta uppdrag då din kamera inte stödjer avståndsmätning.</string>
@@ -1192,8 +1180,6 @@ Flytta den?</string>
     <string name="quest_placeName_no_name_answer">Det finns ingen namnskylt</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Bredden verkar osannolik. Kom ihåg att det ska vara hela vägens bredd från kant till kant, inklusive gatuparkering, cykelfiler, osv.</string>
     <string name="overlay_cycleway">Cykelvägar</string>
-    <string name="bicycle_boulevard_is_a">Det är en %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Det är inte en %1$s</string>
     <string name="bicycle_boulevard">Cykelgata</string>
     <string name="separate_cycleway_no_or_allowed">Gångväg, ingen skylt om cykling (huruvida det är tillåtet beror på gällande lag)</string>
     <string name="separate_cycleway_non_segregated">Skyltad gemensam gång- och cykelbana</string>
@@ -1245,7 +1231,9 @@ Flytta den?</string>
     <string name="overlays_tutorial_title">Överlägg</string>
     <string name="overlays_tutorial_intro">Du hittade ett nytt sätt att kartlägga!</string>
     <string name="overlays_tutorial_display">Varje överlägg visar en viss typ av data, till exempel "platser" eller "vägbeläggning". Denna data markeras i olika färger för att ge dig en bra överblick över vad som redan har kartlagts. Saknad data visas alltid i rött.</string>
-    <string name="overlays_tutorial_edit">Tryck på markerad data för att visa eller redigera den. Du kan också dela upp vägar eller rapportera anteckningar, som med uppdrag. Dessutom låter vissa överlägg dig lägga till ny data vid positionen för ett visat hårkors, till exempel adressöverlägget.</string>
+    <string name="overlays_tutorial_edit">Tryck på markerad data för att visa eller redigera den. Du kan också dela upp vägar eller rapportera anteckningar, som med uppdrag.
+
+Dessutom låter vissa överlägg dig lägga till ny data vid positionen för ett visat hårkors, till exempel adressöverlägget.</string>
     <string name="quest_crossing_kerb_height_title">Hur höga är kanterna i den här korsningen?</string>
     <string name="quest_maxheight_sign_title">Vilken maxhöjd är skyltad här?</string>
     <string name="quest_leave_new_note_as_answer">I så fall behöver du lämna en anteckning som förklarar det hela.</string>
@@ -1391,6 +1379,7 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_construction_minor_title">Är de mindre vägarbetena här avslutade?</string>
     <string name="map_attribution">Kartattribution</string>
     <string name="link_panoramax_description">En gratis och öppen källkodsprogramvara och ideell tjänst för delning av crowdsourcade street-level-foton</string>
+    <string name="link_opengeofiction_description">Trött på att kartlägga verkligheten? Skapa fiktiva kartor tillsammans!</string>
     <string name="link_openclimbing_description">En karta över klättringsplatser</string>
     <string name="pref_title_zoom_buttons">Visa kartzoomknappar</string>
     <string name="overlay_mtb_scale">MTB-svårighetsgrad</string>
@@ -1487,4 +1476,5 @@ En våning räknas som en takvåning när dess fönster finns i taket. Det följ
     <string name="quest_shop_gone_replaced_answer_hint2">Skriv in vad du söker</string>
     <string name="link_gomap_description">Avancerad OSM-redigerare för iOS</string>
     <string name="quest_place_vacant_type_title">Den här lokalen har stått tom. Vad finns här nu?</string>
+    <string name="quest_surface_value_laterite">Laterit</string>
 </resources>
