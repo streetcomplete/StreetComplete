@@ -55,15 +55,15 @@ fun BuildingsOverlayForm(
     val currentBuildingUse = remember(element){ createBuildingUseType(element.tags) }
 
     // Prompt to facilitate switching to building:use editing
-    val differentUsePrompt: StringResource = Res.string.overlay_buildings_different_current_use
+    val switchToBuildingUsePrompt: StringResource = Res.string.overlay_buildings_different_current_use
 
     /** Building types excluded from the building selection in [SideBySideLayoutForm]. */
-    val excluded = listOf(UNSUPPORTED, RUINS, ABANDONED, CONSTRUCTION)
+    val excludedBuildingItems = listOf(UNSUPPORTED, RUINS, ABANDONED, CONSTRUCTION)
 
     /** Building types excluded from the building:use selection in [SideBySideLayoutForm] */
-    val excludedFromBuildingUse = listOf(UNSUPPORTED, RUINS, HISTORIC, ABANDONED, CONSTRUCTION)
+    val excludedBuildingUseItems = listOf(UNSUPPORTED, RUINS, HISTORIC, ABANDONED, CONSTRUCTION)
 
-    val isEligibleForBuildingUse = originalBuilding != null && originalBuilding !in excluded
+    val isEligibleForBuildingUse = originalBuilding != null && originalBuilding !in excludedBuildingItems
 
     var switchToSideBySideLayout by remember { mutableStateOf(false) }
 
@@ -86,10 +86,10 @@ fun BuildingsOverlayForm(
             SideBySideLayoutForm(
                 on = on,
                 groups = BuildingTypeCategory.entries,
-                originalSelectedItem = originalBuilding,
-                currentSelectedItem = currentBuildingUse,
-                excludedBuildingItems = excluded,
-                excludedBuildingUseItems = excludedFromBuildingUse,
+                initialOriginalItem = originalBuilding,
+                initialCurrentItem = currentBuildingUse,
+                excludedFromOriginalSelection = excludedBuildingItems,
+                excludedFromCurrentSelection = excludedBuildingUseItems,
                 groupContent = { group ->
                     ImageWithDescription(
                         painter = painterResource(group.icon),
@@ -123,6 +123,9 @@ fun BuildingsOverlayForm(
                     selectedBuildingUse?.applyToBuildingUse(tagChanges)
                     on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
                 },
+                secondaryPrompt = stringResource(Res.string.overlay_buildings_current_use),
+                emptySecondaryPrompt = stringResource(Res.string.overlay_buildings_no_current_use),
+                primaryPrompt = stringResource(Res.string.overlay_buildings_original_use),
                 label =
                     // always show house number, never show feature name (because type of building is
                     // already shown in the form itself)
@@ -173,7 +176,7 @@ fun BuildingsOverlayForm(
                     if (isEligibleForBuildingUse) {
                         listOf(
                             AnswerItem(
-                                text = stringResource(differentUsePrompt),
+                                text = stringResource(switchToBuildingUsePrompt),
                                 action = { switchToSideBySideLayout = true }
                             )
                         )

@@ -9,8 +9,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -37,10 +35,6 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.overlays.Action
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.overlay_buildings_current_use
-import de.westnordost.streetcomplete.resources.overlay_buildings_no_current_use
-import de.westnordost.streetcomplete.resources.overlay_buildings_original_use
 import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.VerticalDivider
 import de.westnordost.streetcomplete.ui.common.dialogs.GroupedItemSelectDialog
@@ -51,7 +45,6 @@ import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 
 /** Overlay form that displays a SideBySideLayout, with similar working to [GroupedItemSelectOverlayForm]
@@ -61,38 +54,38 @@ import org.koin.compose.koinInject
 inline fun <reified G: Group<I>, reified I> SideBySideLayoutForm (
     noinline on: (Action) -> Unit,
     groups: List<G>,
-    originalSelectedItem: I?,
-    currentSelectedItem: I?,
-    excludedBuildingItems: List<I> = emptyList(),
-    excludedBuildingUseItems: List<I> = emptyList(),
+    initialOriginalItem: I?,
+    initialCurrentItem: I?,
+    excludedFromOriginalSelection: List<I> = emptyList(),
+    excludedFromCurrentSelection: List<I> = emptyList(),
     noinline groupContent: @Composable (group: G) -> Unit,
     noinline groupItemContent: @Composable (item: I) -> Unit,
     noinline cardItemContent: @Composable (item:I) -> Unit,
     noinline itemIcon: (I) -> DrawableResource?,
     noinline itemLabel: (I) -> String,
     noinline itemColor: (I) -> Color?,
-    crossinline onClickOk: (selectedBuilding: I, selectedBuildingUse: I?) -> Unit,
+    crossinline onClickOk: (selectedOriginalItem: I, selectedCurrentItem: I?) -> Unit,
     modifier: Modifier = Modifier,
     isComplete: Boolean = true,
     featureDictionary: FeatureDictionary = koinInject(),
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
+    primaryPrompt: String,
+    secondaryPrompt: String,
+    emptySecondaryPrompt: String,
     noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
 ){
-    var selectedBuilding by rememberSerializable(originalSelectedItem) { mutableStateOf(originalSelectedItem)}
-    var selectedBuildingUse by rememberSerializable(currentSelectedItem) { mutableStateOf(currentSelectedItem)}
-    val currentUsePrompt = stringResource(Res.string.overlay_buildings_current_use)
-    val noCurrentUsePrompt = stringResource(Res.string.overlay_buildings_no_current_use)
-    val originalUsePrompt = stringResource(Res.string.overlay_buildings_original_use)
+    var selectedOriginalItem by rememberSerializable(initialOriginalItem) { mutableStateOf(initialOriginalItem)}
+    var selectedCurrentItem by rememberSerializable(initialCurrentItem) { mutableStateOf(initialCurrentItem)}
     OverlayForm(
         on = on,
-        isComplete = isComplete && selectedBuilding != null,
-        hasChanges = selectedBuilding != originalSelectedItem || selectedBuildingUse != currentSelectedItem,
+        isComplete = isComplete && selectedOriginalItem != null,
+        hasChanges = selectedOriginalItem != initialOriginalItem || selectedCurrentItem != initialCurrentItem,
         onClickOk = {
-            val building = selectedBuilding!!
-            val buildingUse = selectedBuildingUse
-            onClickOk(building,buildingUse)
+            selectedOriginalItem?.let {
+                onClickOk(it, selectedCurrentItem)
+            }
         },
         modifier = modifier,
         label = label,
@@ -104,20 +97,20 @@ inline fun <reified G: Group<I>, reified I> SideBySideLayoutForm (
             // Building
             BuildingUseColumn(
                 modifier = Modifier.weight(1f),
-                headerLabel = "$originalUsePrompt ${selectedBuilding?.let(itemLabel)}",
-                selected = selectedBuilding,
-                accentColor = selectedBuilding?.let(itemColor) ?: MaterialTheme.colors.onSurface.copy(alpha = 0.2f),
-                icon = selectedBuilding?.let(itemIcon),
+                headerLabel = "$primaryPrompt ${selectedOriginalItem?.let(itemLabel)}",
+                selected = selectedOriginalItem,
+                accentColor = selectedOriginalItem?.let(itemColor) ?: MaterialTheme.colors.onSurface.copy(alpha = 0.2f),
+                icon = selectedOriginalItem?.let(itemIcon),
                 itemContent = cardItemContent,
                 itemSelectDialog = { expanded, onExpandedChange ->
                     if (expanded) {
                         GroupedItemSelectDialog(
                             onDismissRequest = { onExpandedChange(false) },
                             groups = groups,
-                            onSelected = { selectedBuilding = it },
+                            onSelected = { selectedOriginalItem = it },
                             groupContent = groupContent,
                             itemContent = groupItemContent,
-                            excludedItems = excludedBuildingItems,
+                            excludedItems = excludedFromOriginalSelection,
                         )
                     }
                 }
@@ -128,20 +121,20 @@ inline fun <reified G: Group<I>, reified I> SideBySideLayoutForm (
             // Building:use
             BuildingUseColumn(
                 modifier = Modifier.weight(1f),
-                headerLabel = selectedBuildingUse?.let {"$currentUsePrompt ${itemLabel(it)}"} ?: noCurrentUsePrompt,
-                selected = selectedBuildingUse,
-                accentColor = selectedBuildingUse?.let(itemColor) ?: MaterialTheme.colors.onSurface.copy(alpha = 0.2f),
-                icon = selectedBuildingUse?.let(itemIcon),
+                headerLabel = selectedCurrentItem?.let {"$secondaryPrompt ${itemLabel(it)}"} ?: emptySecondaryPrompt,
+                selected = selectedCurrentItem,
+                accentColor = selectedCurrentItem?.let(itemColor) ?: MaterialTheme.colors.onSurface.copy(alpha = 0.2f),
+                icon = selectedCurrentItem?.let(itemIcon),
                 itemContent = cardItemContent,
                 itemSelectDialog = { expanded, onExpandedChange ->
                     if (expanded) {
                         GroupedItemSelectDialog(
                             onDismissRequest = { onExpandedChange(false) },
                             groups = groups,
-                            onSelected = { selectedBuildingUse = it },
+                            onSelected = { selectedCurrentItem = it },
                             groupContent = groupContent,
                             itemContent = groupItemContent,
-                            excludedItems = excludedBuildingUseItems,
+                            excludedItems = excludedFromCurrentSelection,
                         )
                     }
                 }
