@@ -96,7 +96,7 @@ Bevor deine Änderungen hochgeladen werden, überprüft die App mithilfe &lt;a h
     <string name="quest_surface_value_unpaved">Unbefestigt (allgemein)</string>
     <string name="quest_surface_value_ground">Naturbelassen (allgemein)</string>
     <string name="quest_surface_value_asphalt">Asphalt</string>
-    <string name="quest_surface_value_compacted">Verdichteter Splitt</string>
+    <string name="quest_surface_value_compacted">Verdichtet (Splitt/Schotter/Makadam)</string>
     <string name="quest_surface_value_concrete">Beton</string>
     <string name="quest_surface_value_dirt">Erde</string>
     <string name="quest_surface_value_fine_gravel">Feiner Splitt</string>
