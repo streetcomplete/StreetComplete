@@ -38,7 +38,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.common.overlay.GroupedItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.overlay.SideBySideLayoutForm
-import de.westnordost.streetcomplete.ui.common.overlay.SwitchAction
+import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
@@ -158,9 +158,6 @@ fun BuildingsOverlayForm(
                         modifier = Modifier.height(24.dp)
                     )
                 },
-                switchAction = if(isEligibleForBuildingUse) {
-                    SwitchAction(differentUsePrompt) { switchToSideBySideLayout = true }
-                } else null,
                 onClickOk = { selectedItem ->
                     val tagChanges = StringMapChangesBuilder(element.tags)
                     selectedItem.applyTo(tagChanges)
@@ -172,6 +169,18 @@ fun BuildingsOverlayForm(
                     // always show house number, never show feature name (because type of building is
                     // already shown in the form itself)
                     nameAndLocationLabel(element, featureDictionary = null, showHouseNumber = true),
+                otherAnswers = {
+                    if (isEligibleForBuildingUse) {
+                        listOf(
+                            AnswerItem(
+                                text = stringResource(differentUsePrompt),
+                                action = { switchToSideBySideLayout = true }
+                            )
+                        )
+                    } else {
+                        emptyList()
+                    }
+                }
             )
         }
     }

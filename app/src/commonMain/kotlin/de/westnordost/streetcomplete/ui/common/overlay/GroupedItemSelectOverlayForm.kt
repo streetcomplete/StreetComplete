@@ -65,7 +65,6 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
-    switchAction: SwitchAction? = null,
     noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
 ) {
     val lastPicked = remember {
@@ -91,19 +90,8 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            if (switchAction != null) {
-                Text(
-                    text = stringResource(switchAction.label),
-                    modifier = Modifier.padding(top = 8.dp)
-                        .clickable { switchAction.onClick() }
-                        .padding(top = 8.dp),
-                    textAlign = TextAlign.Start,
-                    style = MaterialTheme.typography.body2,
-                    color = MaterialTheme.colors.secondary
-                )
-            }
             Box(
-                modifier = Modifier.defaultMinSize(if (switchAction != null) 72.dp else 96.dp),
+                modifier = Modifier.defaultMinSize(96.dp),
                 contentAlignment = Alignment.Center,
             ) {
                 var expanded by remember { mutableStateOf(false) }
@@ -136,7 +124,3 @@ inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
         }
     }
 }
-data class SwitchAction(
-    val label: StringResource,
-    val onClick: () -> Unit,
-)
