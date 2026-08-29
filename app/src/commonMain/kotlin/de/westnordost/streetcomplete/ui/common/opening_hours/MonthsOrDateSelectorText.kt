@@ -21,7 +21,6 @@ import de.westnordost.osm_opening_hours.model.MonthsOrDateSelector
 import de.westnordost.osm_opening_hours.model.SingleMonth
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
-import org.jetbrains.compose.resources.stringResource
 
 /** A text that shows a list of localized months. E.g. Apr-Aug, Dec */
 @Composable

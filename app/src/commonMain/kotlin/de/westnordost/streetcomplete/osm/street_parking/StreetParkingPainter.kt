@@ -9,7 +9,6 @@ import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.graphics.painter.Painter
 import de.westnordost.streetcomplete.osm.street_parking.ParkingOrientation.*
 import de.westnordost.streetcomplete.osm.street_parking.ParkingPosition.*
-import kotlin.math.ceil
 import kotlin.random.Random
 
 /** Painter that displays parking cars in the given orientation and position in the given size */

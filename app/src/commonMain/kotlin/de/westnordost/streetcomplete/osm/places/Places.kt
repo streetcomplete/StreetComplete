@@ -3,14 +3,7 @@ package de.westnordost.streetcomplete.osm.places
 import de.westnordost.osmfeatures.Feature
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.applyTo
 import de.westnordost.streetcomplete.osm.asIfItWasnt
-import de.westnordost.streetcomplete.osm.featureId
-import de.westnordost.streetcomplete.osm.isChildOf
-import de.westnordost.streetcomplete.osm.isPrefixed
-import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
-import de.westnordost.streetcomplete.osm.removeCheckDates
 import de.westnordost.streetcomplete.osm.toElement
 
 /** Return whether this element is a kind of place, regardless whether it is currently vacant or

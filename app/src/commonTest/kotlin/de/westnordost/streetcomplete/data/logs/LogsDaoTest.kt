@@ -1,16 +1,8 @@
 package de.westnordost.streetcomplete.data.logs
 
-import androidx.sqlite.SQLiteConnection
-import androidx.sqlite.driver.bundled.BundledSQLiteDriver
-import de.westnordost.streetcomplete.data.DatabaseImpl
-import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
-import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.logs.LogLevel.*
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import kotlinx.io.files.Path
-import kotlinx.io.files.SystemFileSystem
-import kotlin.test.AfterTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals

@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.osm.time_restriction
 
-
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable

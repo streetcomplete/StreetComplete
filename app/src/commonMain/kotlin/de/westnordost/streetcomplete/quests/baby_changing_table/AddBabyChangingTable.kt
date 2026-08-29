@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.quests.baby_changing_table.BabyChangingTabl
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import de.westnordost.streetcomplete.util.ktx.toYesNo
 import org.jetbrains.compose.resources.stringResource
 
 class AddBabyChangingTable : OsmFilterQuestType<BabyChangingTableAnswer>() {

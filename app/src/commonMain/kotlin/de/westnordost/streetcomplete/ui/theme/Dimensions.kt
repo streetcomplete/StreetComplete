@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.ui.theme
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material.Shapes
 import androidx.compose.ui.platform.WindowInfo
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

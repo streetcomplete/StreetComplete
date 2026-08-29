@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.max_speed
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable

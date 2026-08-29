@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main
 
-import androidx.compose.ui.util.fastMap
 import platform.Foundation.NSCharacterSet
 import platform.Foundation.NSString
 import platform.Foundation.NSURL

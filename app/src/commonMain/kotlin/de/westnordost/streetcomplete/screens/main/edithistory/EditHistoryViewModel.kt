@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.edithistory
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource

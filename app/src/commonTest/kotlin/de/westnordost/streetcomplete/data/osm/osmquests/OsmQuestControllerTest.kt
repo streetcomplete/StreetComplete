@@ -28,8 +28,6 @@ import de.westnordost.streetcomplete.testutils.osmQuest
 import de.westnordost.streetcomplete.testutils.osmQuestKey
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
-import de.westnordost.streetcomplete.util.countryboundaries.AllCountries
-import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import dev.mokkery.answering.calls
 import dev.mokkery.matcher.matches
