@@ -6,10 +6,10 @@ import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.util.countryboundaries.AllCountries
-import de.westnordost.streetcomplete.util.countryboundaries.Countries
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.osm.Tags
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountries
+import de.westnordost.streetcomplete.util.countryboundaries.Countries
 import kotlin.jvm.JvmInline
 
 /** Quest type where each quest refers to one OSM element.
@@ -121,7 +121,7 @@ interface OsmElementQuestType<T> : QuestType, ElementEditType {
 }
 
 sealed interface QuestAction<out T>
-@JvmInline value class Answer<T>(val value: T): QuestAction<T>
+@JvmInline value class Answer<T>(val value: T) : QuestAction<T>
 enum class Action : QuestAction<Nothing> {
     /** Just close the quest form */
     Dismiss,

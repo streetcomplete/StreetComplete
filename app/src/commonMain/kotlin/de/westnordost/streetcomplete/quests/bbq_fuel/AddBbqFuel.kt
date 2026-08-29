@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuelAnswer.Fuels
+import de.westnordost.streetcomplete.resources.*
 
 class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
 

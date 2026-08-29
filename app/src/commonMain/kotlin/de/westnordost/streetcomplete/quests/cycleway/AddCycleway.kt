@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.Tags
@@ -25,6 +24,7 @@ import de.westnordost.streetcomplete.osm.cycleway.parseCyclewaySides
 import de.westnordost.streetcomplete.osm.maxspeed.FILTER_IS_IMPLICIT_MAX_SPEED_BUT_NOT_SLOW_ZONE
 import de.westnordost.streetcomplete.osm.surface.UNPAVED_SURFACES
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 
 class AddCycleway(
     private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
@@ -167,7 +167,7 @@ private fun Element.hasOldInvalidOrAmbiguousCyclewayTags(countryInfo: CountryInf
     if (olderThan4Years.matches(this)) return true
     // has any ambiguous cycleway tags
     if (countryInfo != null) {
-        if (sides.any { it?.cycleway?.isAmbiguous(countryInfo) == true}) return true
+        if (sides.any { it?.cycleway?.isAmbiguous(countryInfo) == true }) return true
     } else {
         if (sides.any { it?.cycleway == Cycleway.UNSPECIFIED_SHARED_LANE }) return true
         // for this, a countryCode is necessary, thus return null if no country code is available

@@ -8,10 +8,10 @@ import de.westnordost.streetcomplete.data.quest.TestQuestTypeB
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeC
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeD
 import dev.mokkery.answering.calls
-import dev.mokkery.matcher.any
-import dev.mokkery.mock
 import dev.mokkery.answering.returns
 import dev.mokkery.every
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
 import dev.mokkery.verifyNoMoreCalls
 import kotlin.test.BeforeTest

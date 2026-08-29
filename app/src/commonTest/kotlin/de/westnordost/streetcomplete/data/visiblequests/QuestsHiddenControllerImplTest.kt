@@ -5,12 +5,12 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestsHiddenDao
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestHiddenAt
 import de.westnordost.streetcomplete.data.osmnotes.notequests.NoteQuestsHiddenDao
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
-import dev.mokkery.mock
-import dev.mokkery.answering.returns
-import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.osmQuestKey
 import dev.mokkery.answering.repeat
+import dev.mokkery.answering.returns
 import dev.mokkery.answering.sequentially
+import dev.mokkery.every
+import dev.mokkery.mock
 import dev.mokkery.verify
 import dev.mokkery.verify.VerifyMode.Companion.exactly
 import kotlin.test.BeforeTest

@@ -18,11 +18,11 @@ import de.westnordost.streetcomplete.data.user.achievements.AchievementCondition
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.resources.*
 import dev.mokkery.answering.calls
-import dev.mokkery.matcher.any
-import dev.mokkery.mock
 import dev.mokkery.answering.returns
 import dev.mokkery.answering.sequentially
 import dev.mokkery.every
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
 import dev.mokkery.verifyNoMoreCalls
 import kotlin.test.BeforeTest
