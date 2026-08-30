@@ -115,7 +115,6 @@ Deze app communiceert direct met de servers van OSM. Vóór het uploaden van je 
 Deze app vindt onvolledige data in jouw omgeving, en toont deze op de kaart als een marker. Elke onvolledigheid is op te lossen door een simpele vraag te beantwoorden, en zo de info op de kaart aan te vullen.
 
 De informatie die je ingeeft wordt meteen toegevoegd aan OpenStreetMap onder jouw naam, zonder een andere editor te hoeven gebruiken.</string>
-    <string name="quest_name_answer_noName">Het heeft geen naam…</string>
     <string name="quest_name_answer_noName_confirmation_title">Werkelijk geen naam?</string>
     <string name="quest_name_noName_confirmation_positive">Inderdaad, geen naam</string>
     <string name="quest_openingHours_add_times">Voeg openingstijden toe</string>
@@ -192,11 +191,6 @@ Als er geen verkeersborden staan die van toepassing zijn op het geselecteerde st
     <string name="underground_recycling_container">Ondergrondse container</string>
     <string name="quest_streetName_answer_cantType">Ik kan de tekens op het bord niet typen</string>
     <string name="quest_streetName_cantType_title">Niet de juiste toetsenbordlayout?</string>
-    <string name="quest_streetName_cantType_open_settings">Open de instellingen</string>
-    <string name="quest_streetName_cantType_open_store">Open de app store</string>
-    <string name="quest_streetName_cantType_description">Als je een standaard toetsenbord gebruikt, kan je waarschijnlijk in de instellingen via "taal en invoer" het juiste toetsenbord aanzetten.
-
-Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetsenborden die veel talen ondersteunen zijn Google Gboard, SwiftKey Keyboard en Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(niet aangegeven)</string>
     <string name="quest_fireHydrant_type_title">Wat voor type brandkraan is dit?</string>
     <string name="quest_fireHydrant_type_pillar">Paaltje</string>
@@ -491,7 +485,6 @@ Anders kan je een ander toetsenbord downloaden in de App Store. Populaire toetse
     <string name="quest_cyclewayPartSurface_title">Welk wegdek heeft het fietspad hier?</string>
     <string name="quest_generic_answer_differs_along_the_way">Verschilt onderweg</string>
     <string name="quest_split_way_description">Als het onderweg verschilt is de eerste stap om de weg te splitsen. Nadat de weg gesplitst is kan de vraag voor ieder deel apart beantwoord worden. Nu splitsen?</string>
-    <string name="quest_split_way_tutorial">Tik op die punten van de weg waar het antwoord verandert. Probeer zo precies mogelijk te zijn. Je kan gewoon inzoomen.</string>
     <string name="quest_split_way_too_imprecise">Zoom alstublieft verder in</string>
     <string name="quest_split_way_many_splits_confirmation_description">Dat zijn al tamelijk veel splitsingen. Je kan de weg later altijd verder splitsen.</string>
     <string name="quest_footwayPartSurface_title">Welk wegdek heeft het voetpad hier?</string>
@@ -735,7 +728,8 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="quest_kerb_height_lowered">Iets hoger dan de weg</string>
     <string name="quest_kerb_height_raised">Hoge stoeprand</string>
     <string name="quest_kerb_height_lowered_ramp">Stoeprandhelling</string>
-    <string name="quest_lanes_answer_lanes_description_one_side2">Geef het aantal gemarkeerde rijstroken die door autoverkeer gebruikt kunnen worden. Fiets- en parkeerstroken tellen dus niet mee. Als er busstroken zijn, laat dan een notitie achter.</string>
+    <string name="quest_lanes_answer_lanes_description_one_side2">Geef het aantal gemarkeerde rijstroken die door autoverkeer gebruikt kunnen worden. Fiets- en parkeerstroken tellen dus niet mee.
+Als er busstroken zijn, laat dan een notitie achter.</string>
     <string name="quest_surface_value_rock">Rots</string>
     <string name="quest_parkingType_street_side">Parkeren langs de weg</string>
     <string name="quest_parkingType_lane">Parkeren op de weg</string>
@@ -749,10 +743,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="default_disabled_msg_go_inside_regional_warning">Dit type vraag is standaard uitgeschakeld omdat het in sommige regio's niet nuttig is en je waarschijnlijk naar binnen moet gaan om een ​​vraag van dit type te kunnen beantwoorden.</string>
     <string name="quest_dietType_explanation_kosher">Koosjere producten moeten worden bereid volgens speciale regels, waarbij kasjroet-certificeringsinstanties de producten in overeenstemming certificeren.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Hier is geen fietspad.</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Tik zoals gewoonlijk op de ene kant van de afbeelding, selecteer een passend antwoord en doe hetzelfde voor de andere kant.
-
-Let op alle beschikbare opties: sommige gevallen liggen niet voor de hand, zoals een eenrichtingsweg die fietsers in beide richtingen toelaat!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Selecteer dat er geen fietspad is</string>
     <string name="quest_construction_completed_at_known_date">Dit zal gereed zijn op de datum…</string>
     <string name="quest_construction_completion_date_title">Wanneer zal dit gereed zijn?</string>
     <string name="quest_surface_value_clay">Gravel</string>
@@ -851,7 +841,9 @@ Gegevens worden ververst na %1$s dagen en ongebruikte gegevens worden automatisc
     <string name="quest_bollard_type_foldable2">Wegklapbaar (met of zonder sleutel)</string>
     <string name="no_search_results">Niets gevonden</string>
     <string name="quest_selection_hint_title">Te veel te doen?</string>
-    <string name="quest_selection_hint_message">Bijdragen moet leuk blijven! Als het aantal vragen je te veel wordt, kun je in de instellingen kiezen welke vragen te zien zijn en in welke volgorde.</string>
+    <string name="quest_selection_hint_message">Bijdragen moet leuk blijven!
+
+Als het aantal vragen je te veel wordt, kun je in de instellingen kiezen welke vragen te zien zijn en in welke volgorde.</string>
     <string name="quest_presets_preset_add">Voeg voorinstelling toe</string>
     <string name="quest_presets_preset_name">Voorinstelling naam</string>
     <string name="quest_presets_default_name">Standaardnaam</string>
@@ -978,9 +970,6 @@ U kunt ook een notitie achterlaten (met een foto)</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Stuurhouder</string>
     <string name="quest_bicycle_parking_access_title2">Wie mag hier een fiets stallen? Parkeren kan gratis of betaald zijn.</string>
     <string name="quest_playground_access_title2">Wie mag deze speeltuin gebruiken?</string>
-    <string name="quest_sidewalk_answer_none_title">Kiezen dat trottoirs ontbreken</string>
-    <string name="quest_side_select_interface_explanation">Tik op een zijde en kies het bijpassende antwoord.
-Doe hetzelfde voor de andere zijde, als aanwezig.</string>
     <string name="ar_measure">Meet</string>
     <string name="ar_core_tracking_error_too_steep_angle">Te steile hoek, loop iets verder weg</string>
     <string name="default_disabled_msg_no_ar">Je hebt een meetlint nodig om deze vraag te beantwoorden, omdat meten met de camera niet ondersteund is op dit apparaat.</string>
@@ -1182,8 +1171,6 @@ Nu verplaatsen?</string>
     <string name="quest_placeName_no_name_answer">Er is geen naambord</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Deze breedte lijkt ongeloofwaardig. Onthoud dat dit de breedte moet zijn van stoeprand tot stoeprand, inclusief parkeren op straat, fietspaden enz.</string>
     <string name="overlay_cycleway">Fietspaden</string>
-    <string name="bicycle_boulevard_is_a">Het is een %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Het is geen %1$s</string>
     <string name="bicycle_boulevard">Fietsboulevard</string>
     <string name="separate_cycleway_no_or_allowed">Niet bestemd voor fietsers (fietsen mag misschien nog wel)</string>
     <string name="separate_cycleway_non_segregated">Pad voor gedeeld gebruik</string>
@@ -1315,8 +1302,7 @@ Je kunt informatie over doneren terugvinden op onze website of Github. Google Pl
     <string name="quest_accessible_for_pedestrians_allowed">Het is toegestaan.</string>
     <string name="quest_buildingLevels_hint">Voor gebouwen op een helling begint het tellen bij de begane grond van de laagste kant.
 
-Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die niet als verdieping tellen zijn niet noodzakelijk plat, maar alleen maar niet hoog genoeg als verdieping.
-    </string>
+Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die niet als verdieping tellen zijn niet noodzakelijk plat, maar alleen maar niet hoog genoeg als verdieping.</string>
     <string name="quest_parcel_locker_brand">Wat is het merk van deze pakketautomaat?</string>
     <string name="quest_powerPolesMaterial_is_terminal">De kabel is aan een gebouw verbonden</string>
     <string name="quest_cycleway_value_sidewalk_ok">geen, maar een bord laat fietsen op het trottoir toe</string>
@@ -1493,4 +1479,12 @@ Bijvoorbeeld 1,3 of 2b,4,6.</string>
     <string name="quest_maxspeed_answer_roadtype_lit">verlicht</string>
     <string name="quest_maxspeed_answer_roadtype_not_lit">onverlicht</string>
     <string name="quest_maxspeed_answer_roadtype_dual_carriageway">Onverlichte snelweg</string>
+    <string name="quest_board_type_tourism">Toerisme (meerdere onderwerpen)</string>
+    <string name="quest_lanes_answer_oneLaneOnly">Maar één gemarkeerde rijbaan</string>
+    <string name="quest_shop_gone_replaced_answer_hint2">Typ waar je naar op zoek bent</string>
+    <string name="link_gomap_description">Geavanceerde OSM editor voor iOS</string>
+    <string name="link_terraink_description">Maak prachtige posters van een stad of wijk</string>
+    <string name="quest_place_vacant_type_title">Deze plaats stond leeg. Wat is hier nu?</string>
+    <string name="about_title">Over %1$s</string>
+    <string name="quest_surface_value_laterite">Lateriet</string>
 </resources>

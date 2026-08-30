@@ -4,8 +4,8 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChanges
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
-import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.mtb_scale.MtbScale.Value.*
+import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull

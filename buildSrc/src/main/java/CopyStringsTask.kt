@@ -1,13 +1,13 @@
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import kotlin.collections.orEmpty
-import kotlin.io.copyTo
 
 open class CopyStringsTask : DefaultTask() {
-    @get:Input lateinit var sourceDir: String
-    @get:Input lateinit var targetDir: String
+    @get:InputDirectory lateinit var sourceDir: File
+    @get:OutputDirectory lateinit var targetDir: File
 
     @TaskAction
     fun run() {
@@ -15,7 +15,7 @@ open class CopyStringsTask : DefaultTask() {
             pattern = "<string name=\"([a-zA-Z0-9_]+)\">(.*?)</string>",
             options = setOf(RegexOption.DOT_MATCHES_ALL, RegexOption.MULTILINE)
         )
-        for (dir in File(sourceDir).listFiles().orEmpty()) {
+        for (dir in sourceDir.listFiles().orEmpty()) {
             if (dir.isDirectory) {
                 val stringsFile = File(dir, "strings.xml")
                 if (stringsFile.exists()) {
@@ -26,8 +26,8 @@ open class CopyStringsTask : DefaultTask() {
                         "<string name=\"$key\">\"${value.escapeXml().replace("\"", "\\\"")}\"</string>"
                     }
 
-                    val targetStringsDir = File(targetDir, dir.name)
-                    val targetStringsFile = File(targetStringsDir, stringsFile.name)
+                    val targetStringsDir = targetDir.resolve(dir.name)
+                    val targetStringsFile = targetStringsDir.resolve(stringsFile.name)
 
                     targetStringsDir.mkdirs()
                     targetStringsFile.writeText(newStringsFileText)

@@ -64,7 +64,9 @@ fun AddLanesForm(
                 AnswerItem(stringResource(Res.string.quest_lanes_answer_lanes_center_left_turn_lane)) {
                     lanes = lanes.copy(centerLeftTurnLane = true)
                 }
-            } else null,
+            } else {
+                null
+            },
             AnswerItem(stringResource(Res.string.quest_lanes_answer_noLanes)) {
                 on(Answer(LanesAnswer.IsUnmarked))
             },

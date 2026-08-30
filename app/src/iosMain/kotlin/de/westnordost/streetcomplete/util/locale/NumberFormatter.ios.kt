@@ -2,9 +2,9 @@ package de.westnordost.streetcomplete.util.locale
 
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.util.ktx.toNSLocale
+import platform.Foundation.NSNumber
 import platform.Foundation.NSNumberFormatter
 import platform.Foundation.NSNumberFormatterDecimalStyle
-import platform.Foundation.NSNumber
 
 actual class NumberFormatter actual constructor(
     locale: Locale?,
@@ -25,13 +25,11 @@ actual class NumberFormatter actual constructor(
         it.lenient = false
     }
 
-    actual fun format(value: Number): String {
-        return format.stringFromNumber(value.toNSNumber())!!
-    }
+    actual fun format(value: Number): String =
+        format.stringFromNumber(value.toNSNumber())!!
 
-    actual fun parse(text: String): Number? {
-        return format.numberFromString(text)?.toNumber()
-    }
+    actual fun parse(text: String): Number? =
+        format.numberFromString(text)?.toNumber()
 
     actual val decimalSeparator: Char
         get() = format.decimalSeparator.single()

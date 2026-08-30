@@ -12,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
@@ -21,8 +20,8 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.preferences.setLastPicked
 import de.westnordost.streetcomplete.data.preferences.getLastPicked
+import de.westnordost.streetcomplete.data.preferences.setLastPicked
 import de.westnordost.streetcomplete.osm.Sides
 import de.westnordost.streetcomplete.osm.all
 import de.westnordost.streetcomplete.osm.bicycle_boulevard.BicycleBoulevard
@@ -230,4 +229,3 @@ fun StreetCyclewayOverlayForm(
         )
     }
 }
-

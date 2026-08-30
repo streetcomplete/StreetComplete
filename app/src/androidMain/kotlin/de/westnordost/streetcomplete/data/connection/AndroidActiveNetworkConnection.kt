@@ -47,4 +47,3 @@ private fun AndroidNetworkCapabilities.toNetworkCapabilities() = NetworkCapabili
     isMetered =
         !hasCapability(AndroidNetworkCapabilities.NET_CAPABILITY_NOT_METERED)
 )
-

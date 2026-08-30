@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.mapdata
 
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 
 /** A map data with geometry that will only actually query the data once it is first accessed */
 class LazyMapDataWithGeometry(

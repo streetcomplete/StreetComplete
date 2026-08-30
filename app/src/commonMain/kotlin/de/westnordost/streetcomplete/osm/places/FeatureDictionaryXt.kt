@@ -5,9 +5,6 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.osm.things.isDisusedThing
-import de.westnordost.streetcomplete.osm.things.isThing
-import de.westnordost.streetcomplete.osm.things.isThingOrDisusedThing
 import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.osm.toPrefixedFeature
 import de.westnordost.streetcomplete.util.ktx.getDisusedFeature
@@ -41,7 +38,9 @@ fun FeatureDictionary.getPlaceOrDisusedPlace(
             tags = element.tags,
             geometry = GeometryType.entries.toList()
         )
-    } else null
+    } else {
+        null
+    }
 
 /** Get a disused version of the given [element]'s associated feature in the given [languages] and
  * [country].

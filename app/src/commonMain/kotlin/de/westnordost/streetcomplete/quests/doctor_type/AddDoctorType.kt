@@ -24,8 +24,8 @@ class AddDoctorType(getCountryInfoByLocation: (LatLon) -> CountryInfo) : OsmFilt
     """
     override val changesetComment = "Survey what type of healthcare a doctor provides"
     override val wikiLink = "Key:healthcare:speciality"
-    override val icon = Res.drawable.quest_restaurant_vegan
-    override val title = Res.string.quest_doctor_type
+    override val icon = Res.drawable.quest_doctor_type
+    override val title = Res.string.quest_doctor_type_title
     override val achievements = listOf(CITIZEN, LIFESAVER)
 
     @Composable

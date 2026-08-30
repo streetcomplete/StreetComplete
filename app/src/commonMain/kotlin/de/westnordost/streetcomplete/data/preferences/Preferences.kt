@@ -9,7 +9,6 @@ import com.russhwolf.settings.long
 import com.russhwolf.settings.nullableString
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.ktx.putStringOrNull
 import kotlinx.datetime.LocalDate

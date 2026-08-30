@@ -17,7 +17,6 @@ interface NotesWithEditsSource {
     fun addListener(listener: Listener)
     fun removeListener(listener: Listener)
 
-
     fun get(noteId: Long): Note?
 
     fun getAllPositions(bbox: BoundingBox): List<LatLon>

@@ -10,8 +10,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.OUTDOORS
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.quests.bbq_fuel.BbqFuelAnswer.Fuels
+import de.westnordost.streetcomplete.resources.*
 
 class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
 
@@ -46,13 +46,10 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
     }
 
     override fun applyAnswerTo(answer: BbqFuelAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        if (answer == BbqFuelAnswer.IsFirePit)
-        {
+        if (answer == BbqFuelAnswer.IsFirePit) {
             tags.remove("amenity")
             tags["leisure"] = "firepit"
-        }
-        else if (answer is Fuels)
-        {
+        } else if (answer is Fuels) {
             // BBQs and ovens use slightly different tags for fuel
             if (tags["amenity"] == "bbq") {
                 tags["fuel"] = answer.fuels.joinToString(";") { it.bbqValue }

@@ -105,6 +105,7 @@ import de.westnordost.streetcomplete.data.preferences.ResurveyIntervalsUpdater
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsController
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsDao
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
+import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.upload.UploadProgressSource
@@ -165,10 +166,10 @@ import de.westnordost.streetcomplete.screens.about.CreditsViewModel
 import de.westnordost.streetcomplete.screens.about.CreditsViewModelImpl
 import de.westnordost.streetcomplete.screens.about.logs.LogsViewModel
 import de.westnordost.streetcomplete.screens.about.logs.LogsViewModelImpl
-import de.westnordost.streetcomplete.screens.main.MainViewModel
-import de.westnordost.streetcomplete.screens.main.MainViewModelImpl
 import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
 import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModelImpl
+import de.westnordost.streetcomplete.screens.main.MainViewModel
+import de.westnordost.streetcomplete.screens.main.MainViewModelImpl
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModel
@@ -248,6 +249,8 @@ val commonModule = module {
 
     //region upload & download
 
+    single { AutoSyncer(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+
     // upload
 
     single { UnsyncedChangesCountSource(get(), get()) }
@@ -269,7 +272,6 @@ val commonModule = module {
 
     single<UploadProgressSource> { get<Uploader>() }
 
-
     // download
 
     factory { DownloadedTilesDao(get()) }
@@ -284,7 +286,6 @@ val commonModule = module {
     single { DownloadedTilesController(get()) }
 
     factory { FeedsUpdater(get(), get(), get(), get(), get()) }
-
 
     // OSM API client
 

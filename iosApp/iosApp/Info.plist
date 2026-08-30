@@ -29,5 +29,8 @@
 
         <string>mailto</string>
     </array>
+
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Precise location permission is needed to show your position on the map and download data in your vicinity.</string>
 </dict>
 </plist>

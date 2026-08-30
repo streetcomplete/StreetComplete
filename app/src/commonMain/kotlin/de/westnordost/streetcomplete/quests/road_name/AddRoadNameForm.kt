@@ -29,6 +29,8 @@ fun AddRoadNameForm(
     countryInfo: CountryInfo,
     nameSuggestionsSource: NameSuggestionsSource = koinInject()
 ) {
+    var copiedName by rememberSerializable(element) { mutableStateOf(false) }
+
     var initialLocalizedNames by rememberSerializable(element) { mutableStateOf(
         parseLocalizedNames(element.tags)
     ) }
@@ -36,6 +38,7 @@ fun AddRoadNameForm(
     val mapClick = LocalLastMapClick.current
     LaunchedEffect(mapClick) {
         if (mapClick != null) {
+            copiedName = true
             nameSuggestionsSource
                 .getNames(mapClick.position, mapClick.clickAreaSizeInMeters, roadsWithNamesFilter)
                 .firstOrNull()
@@ -51,6 +54,7 @@ fun AddRoadNameForm(
         noNameConfirmationText = {
             Text(stringResource(Res.string.quest_streetName_answer_noName_confirmation_description))
         },
+        isResurvey = initialLocalizedNames != null && !copiedName
     )
 }
 

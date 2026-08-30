@@ -1,28 +1,31 @@
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.OutputDirectory
+import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
 open class CopyIconsTask : DefaultTask() {
-    @get:Input lateinit var sourceDir: String
-    @get:Input lateinit var targetDir: String
+    @get:InputDirectory lateinit var sourceDir: File
+    @get:OutputDirectory lateinit var targetDir: File
     @get:Input lateinit var filter: (String) -> Boolean
-    @get:Input lateinit var indexFile: String
+    @get:OutputFile lateinit var indexFile: File
 
     @TaskAction
     fun run() {
-        var fileNames = ArrayList<String>()
-        val dimensions = listOf("","-mdpi","-hdpi","-xhdpi","-xxhdpi")
-        val sourceDirs = dimensions.map { sourceDir+it }
-        val targetDirs = dimensions.map { targetDir+it }
+        val fileNames = ArrayList<String>()
+        val dimensions = listOf("", "-mdpi", "-hdpi", "-xhdpi", "-xxhdpi")
+        val sourceDirs = dimensions.map { File(sourceDir.path + it) }
+        val targetDirs = dimensions.map { File(targetDir.path + it) }
 
         for (i in dimensions.indices) {
             val srcDir = sourceDirs[i]
             val trgDir = targetDirs[i]
-            for (file in File(srcDir).listFiles().orEmpty()) {
+            for (file in srcDir.listFiles().orEmpty()) {
                 if (file.isFile) {
                     if (filter(file.name)) {
-                        file.copyTo(File(trgDir, file.name), overwrite = true)
+                        file.copyTo(trgDir.resolve( file.name), overwrite = true)
                         fileNames.add(file.name.substringBeforeLast('.'))
                     }
                 }
@@ -30,9 +33,8 @@ open class CopyIconsTask : DefaultTask() {
         }
         fileNames.sort()
 
-        val indexTargetFile = File(indexFile)
-        indexTargetFile.parentFile.mkdirs()
-        indexTargetFile.writeText("""
+        indexFile.parentFile.mkdirs()
+        indexFile.writeText("""
             package de.westnordost.streetcomplete.view
 
             import de.westnordost.streetcomplete.R

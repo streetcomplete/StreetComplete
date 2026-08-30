@@ -10,19 +10,19 @@ import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.DatabaseImpl
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
-import de.westnordost.streetcomplete.data.connection.AndroidActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
-import de.westnordost.streetcomplete.data.download.DownloadController
+import de.westnordost.streetcomplete.data.connection.AndroidActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.AndroidDownloadController
+import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadWorker
 import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloaderAndroid
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.AndroidChangesetAutoCloser
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
-import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.AndroidUploadController
+import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadWorker
 import de.westnordost.streetcomplete.screens.about.AndroidAppStoreInfo
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
@@ -34,7 +34,6 @@ import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
-import de.westnordost.streetcomplete.util.location.LocationAvailabilityReceiver
 import de.westnordost.streetcomplete.util.sound.AndroidSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.io.asSource
@@ -44,6 +43,10 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.maplibre.compose.location.AndroidLocationProvider
+import org.maplibre.compose.location.AndroidSystemSettingsLauncher
+import org.maplibre.compose.location.LocationProvider
+import org.maplibre.compose.location.SystemSettingsLauncher
 
 private const val COMPOSE_FILES_DIR = "composeResources/de.westnordost.streetcomplete.resources/files"
 
@@ -90,6 +93,11 @@ val androidModule = module {
     // AR
 
     factory<ArSupportChecker> { AndroidArSupportChecker(get()) }
+
+    // location
+
+    factory<LocationProvider> { AndroidLocationProvider(get()) }
+    factory<SystemSettingsLauncher> { AndroidSystemSettingsLauncher(get()) }
 
     // launch apps
 

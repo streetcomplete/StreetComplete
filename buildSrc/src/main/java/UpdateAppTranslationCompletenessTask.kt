@@ -12,9 +12,11 @@ open class UpdateAppTranslationCompletenessTask : DefaultTask() {
     @get:Input lateinit var apiToken: String
     @get:Input lateinit var languageCodes: Collection<String>
     @get:Input var mustIncludeLanguagePercentage: Int = 80
-    @get:Input lateinit var targetFiles: ((androidResCode: String) -> String)
+    @get:Input lateinit var targetFiles: ((androidResCode: String) -> File)
 
     @TaskAction fun run() {
+        require(apiToken != "invalid") { "POEditor API token must be set" }
+
         val targetFiles = targetFiles
         val exportLanguages = languageCodes.map { Locale.forLanguageTag(it) }
 
@@ -33,22 +35,21 @@ open class UpdateAppTranslationCompletenessTask : DefaultTask() {
                 }
             }
 
-            val androidResCodes = locale.transformPOEditorLanguageTag().toAndroidResCodes()
+            val androidResCode = locale.transformPOEditorLanguageTag().toAndroidResCode()
 
             // create a metadata file that describes how complete the translation is
-            for (androidResCode in androidResCodes) {
-                // exclude default translation
-                if (androidResCode == "en-rUS") continue
-                val targetFile = File(targetFiles(androidResCode))
-                File(targetFile.parent).mkdirs()
-                targetFile.writeText("""
-                    <?xml version="1.0" encoding="utf-8"?>
-                    <resources>
-                      <string name="translation_completeness">$completedPercentage</string>
-                    </resources>
 
-                """.trimIndent())
-            }
+            // exclude default translation
+            if (androidResCode == "en-rUS") continue
+            val targetFile = targetFiles(androidResCode)
+            targetFile.parentFile.mkdirs()
+            targetFile.writeText("""
+                <?xml version="1.0" encoding="utf-8"?>
+                <resources>
+                  <string name="translation_completeness">$completedPercentage</string>
+                </resources>
+
+            """.trimIndent())
         }
     }
 }

@@ -20,7 +20,6 @@ import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -81,7 +80,7 @@ fun MainScreenControls(
     onClickCompass: () -> Unit,
 
     // location button & pointer
-    locationState: LocationState,
+    locationState: LocationState?,
     isNavigationMode: Boolean,
     isFollowingPosition: Boolean,
     displayedLocationOffset: Offset?,
@@ -113,8 +112,6 @@ fun MainScreenControls(
         AttributionLink(stringResource(Res.string.map_attribution_osm), "https://osm.org/copyright"),
         AttributionLink("© JawgMaps", "https://jawg.io")
     )
-
-    val hasMessages by remember { derivedStateOf { messagesCount > 0 } }
 
     var showOverlaysDropdown by remember { mutableStateOf(false) }
 
@@ -167,7 +164,7 @@ fun MainScreenControls(
                         .padding(4.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    AnimatedVisibility(hasMessages) {
+                    AnimatedVisibility(messagesCount > 0) {
                         MessagesButton(
                             onClick = onClickMessages,
                             messagesCount = messagesCount
@@ -221,12 +218,14 @@ fun MainScreenControls(
                                     onZoomDrag = onZoomDrag
                                 )
                             }
-                            LocationStateButton(
-                                onClick = onClickLocation,
-                                state = locationState,
-                                isNavigationMode = isNavigationMode,
-                                isFollowing = isFollowingPosition,
-                            )
+                            if (locationState != null) {
+                                LocationStateButton(
+                                    onClick = onClickLocation,
+                                    state = locationState,
+                                    isNavigationMode = isNavigationMode,
+                                    isFollowing = isFollowingPosition,
+                                )
+                            }
                         }
 
                         if (isCreateNodeEnabled) {

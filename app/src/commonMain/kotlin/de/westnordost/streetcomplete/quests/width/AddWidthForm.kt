@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -16,16 +15,16 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.osm.ALL_ROADS
-import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.osm.hasDubiousRoadWidth
+import de.westnordost.streetcomplete.osm.length.Length
 import de.westnordost.streetcomplete.osm.length.LengthForm
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.util.measure.ArMeasureViewModel
-import de.westnordost.streetcomplete.ui.util.measure.LastArMeasurementResultEffect
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.quest.LocalQuestType
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
 import de.westnordost.streetcomplete.ui.util.measure.ArMeasureResult
+import de.westnordost.streetcomplete.ui.util.measure.ArMeasureViewModel
+import de.westnordost.streetcomplete.ui.util.measure.LastArMeasurementResultEffect
 import de.westnordost.streetcomplete.ui.util.measure.rememberArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource

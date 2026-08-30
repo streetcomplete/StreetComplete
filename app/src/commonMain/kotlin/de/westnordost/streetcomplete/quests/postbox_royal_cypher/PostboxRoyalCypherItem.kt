@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.quests.postbox_royal_cypher.PostboxRoyalCypher.*
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
 
 val PostboxRoyalCypher.title: String @Composable get() = when (this) {

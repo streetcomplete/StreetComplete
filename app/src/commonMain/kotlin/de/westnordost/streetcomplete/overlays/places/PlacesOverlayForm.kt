@@ -195,13 +195,17 @@ import kotlin.time.Duration.Companion.milliseconds
                     val vacantShop = featureDictionary.getPlaceAsDisused(element, country = countryInfo.countryOrSubdivisionCode)
                     onSelectedFeature(vacantShop)
                 }
-            } else null,
+            } else {
+                null
+            },
             if (selectedFeature?.hasFixedName != true && !isNoName) {
                 AnswerItem(stringResource(Res.string.quest_placeName_no_name_answer)) {
                     isNoName = true
                     localizedNames = listOf()
                 }
-            } else null,
+            } else {
+                null
+            },
         ) },
         pinContent = {
             if (element == null) {

@@ -13,4 +13,3 @@ actual fun Locale.getDisplayRegion(locale: Locale): String? =
 
 actual fun Locale.getDisplayScript(locale: Locale): String? =
     platformLocale.getDisplayScript(locale.platformLocale).takeIf { it != script }
-

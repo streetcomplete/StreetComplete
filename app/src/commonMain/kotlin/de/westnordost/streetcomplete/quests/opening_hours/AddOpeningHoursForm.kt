@@ -79,7 +79,7 @@ fun AddOpeningHoursForm(
                         on(Answer(RegularOpeningHours(originalOpeningHours!!)))
                     }
                 ),
-                title = stringResource(Res.string.quest_openingHours_resurvey_title),
+                isResurvey = true,
                 otherAnswers = { listOf(
                     AnswerItem(stringResource(Res.string.quest_openingHours_no_sign)) {
                         confirmNoSign = true

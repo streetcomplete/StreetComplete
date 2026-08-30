@@ -116,7 +116,6 @@ Enne muudatuste üleslaadimist rakendus kontrollib minu serveris seda &lt;a href
 See rakendus leiab sinu lähikonnast puuduvad kaardiandmed ja kuvab need kaardil ülesannetena. Neid ülesandeid saad lahendada konkreetse asukoha vaatlemisel ja lihtsatele küsimustele vastates ning sellega täiendad kaardiandmeid.
 
 Sinu sisestatud teave lisatakse sinu kasutajakonto nimel otse, ilma vahepealse toimetamiseta, OpenStreetMapi andmekogusse.</string>
-    <string name="quest_name_answer_noName">Sellel pole nime…</string>
     <string name="quest_name_answer_noName_confirmation_title">Tõesti pole nime?</string>
     <string name="quest_name_noName_confirmation_positive">Jah, pole nime</string>
     <string name="quest_openingHours_add_times">Lisa tööaeg</string>
@@ -193,11 +192,6 @@ Kui esiletõstetud teelõigul pole kogu tee ulatuses piirkiiruse liiklusmärke, 
     <string name="underground_recycling_container">Maa-alune taaskasutuskonteiner</string>
     <string name="quest_streetName_answer_cantType">Ei saa kirjutada tähti, mis on sildi peal</string>
     <string name="quest_streetName_cantType_title">Vajalik klahvistiku paigutus on puudu?</string>
-    <string name="quest_streetName_cantType_open_settings">Ava seadistused</string>
-    <string name="quest_streetName_cantType_open_store">Vaata rakendustepoodi</string>
-    <string name="quest_streetName_cantType_description">Kui kasutad nutiseadme vaikimisi klahvistikku, siis on üsna tõenäoline, et saad seadistustes sisendmeetodite all valida sulle vajaliku klahvistiku  paigutuse.
-
-Vastasel juhul saad rakendustepoest laadida alla vajaliku klahvistikurakenduse. Populaarsed mitmeid keeli toetavad rakendused on Google Gboard, SwiftKey Keyboard ja Multiling O Keyboard või vaba tarkvara põhised HeliBoard ja Fossify Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(määratlemata)</string>
     <string name="quest_fireHydrant_type_title">Mis veevõtukoht see on?</string>
     <string name="quest_fireHydrant_type_pillar">Post</string>
@@ -493,7 +487,6 @@ Osaline juurdepääs tähendab, et ratastooliga on võimalik tualettruumi sisse 
     <string name="quest_cyclewayPartSurface_title">Mis on rattatee pinnakate?</string>
     <string name="quest_generic_answer_differs_along_the_way">Erinev tee või objekti piires…</string>
     <string name="quest_split_way_description">Kui ta on tee või objekti piires erinev, siis esmalt jaga tee või objekt kaheks. Pärast seda saad ülesandele vastata iga lõigu kohta eraldi. Kas jagame kohe kaheks?</string>
-    <string name="quest_split_way_tutorial">Klõpsi teel seal, kus vastus erineb ja jaga tükkideks. Kasuta suumimist ja proovi olla võimalikult täpne.</string>
     <string name="quest_split_way_too_imprecise">Palun suumi rohkem sisse</string>
     <string name="quest_split_way_many_splits_confirmation_description">Juba on üsna palju poolitamisi. Sa saad teed alati hiljem veel jagada.</string>
     <string name="quest_footwayPartSurface_title">Mis on selle jalgtee pinnakate?</string>
@@ -756,10 +749,6 @@ Kui mõni sõidurada on mõeldud ühistranspordile, siis pigem lisa vastav ingli
     <string name="default_disabled_msg_go_inside_regional_warning">Kuna sa peaksid ülesande lahendamiseks ilmselt siia sisse astuma ja ta pole mitmes piirkonnas oluline, siis see ülesande tüüp pole vaikimisi kasutusel.</string>
     <string name="quest_dietType_explanation_kosher">Koššer-nõuetele vastavad tooted peavad olema valmistatud vastavate reeglite alusel ja kašrutile vastavuse sertifitseerijate märge on tavaliselt näha.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Jalgrattarada ega -teed pole üldse</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Nagu ikka, klõpsi joonise ühel küljel ja vali õige vastus ning korda sama ka teise küljega.
-
-Palub vaata hoolega kõiki valikuid: mõned neist pole esimesel pilgul ilmselged, nagu ühesuunaline tee, mis lubab rattaga sõita mõlemas suunas!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Määrame, et jalgrattarada ega -teed pole üldse</string>
     <string name="quest_construction_completed_at_known_date">Ehituse lõppkuupäev on…</string>
     <string name="quest_construction_completion_date_title">Kas valmimise kuupäev on teada?</string>
     <string name="quest_surface_value_clay">Savi</string>
@@ -859,7 +848,9 @@ Andmeid uuendatakse automaatselt %1$s päeva järel ning kustutatakse %2$s päev
     <string name="quest_bollard_type_foldable2">Kokkupandav (võtmega või ilma)</string>
     <string name="no_search_results">Mitte midagi ei leidunud</string>
     <string name="quest_selection_hint_title">Liiga palju tegemist?</string>
-    <string name="quest_selection_hint_message">Kaastöö tegemine peaks eelkõige olema lõbus! Kui ülesannete arv tundub sulle liiga suur, siis seadistustest saad alati määrata sulle nähtavaid ülesandeid ja mis järjekorras seda tehakse.</string>
+    <string name="quest_selection_hint_message">Kaastöö tegemine peaks eelkõige olema lõbus!
+
+Kui ülesannete arv tundub sulle liiga suur, siis seadistustest saad alati määrata sulle nähtavaid ülesandeid ja mis järjekorras seda tehakse.</string>
     <string name="quest_presets_preset_add">Lisa eelseadistus</string>
     <string name="quest_presets_preset_name">Eelseadistuse nimi</string>
     <string name="quest_presets_default_name">Vaikimisi eelseadistus</string>
@@ -986,9 +977,6 @@ Alternatiivina võid lisada ingliskeelse märkuse (koos fotoga).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Lenkstangi tugi</string>
     <string name="quest_bicycle_parking_access_title2">Kes võivad siin rattaid parkida? See võib olla nii tasuline, kui tasuta.</string>
     <string name="quest_playground_access_title2">Kes võivad seda mänguväljakut kasutada?</string>
-    <string name="quest_sidewalk_answer_none_title">Valime, et kõnniteed on puudu</string>
-    <string name="quest_side_select_interface_explanation">Klõpsi tee küljel ja vali sobilik vastus.
-Kui sama on ka teisel teepoolel, siis korda tegevust.</string>
     <string name="ar_measure">Mõõda</string>
     <string name="ar_core_tracking_error_too_steep_angle">Liiga järsk nurk, palun astu pisut eemale</string>
     <string name="default_disabled_msg_no_ar">Kuna kaameraga mõõtmine pole selles nutiseadmes toetataud, siis selle ülesande lahendamiseks vajad mõõdulinti.</string>
@@ -1190,8 +1178,6 @@ Kas nihutame kohe?</string>
     <string name="quest_placeName_no_name_answer">Nimega silt puudub…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Laius tundub ebaloogiline. Arvesta, et laius peaks olema äärekivist äärekivini, sealhulgas teel asuv parkimisrada, rattarada, vms.</string>
     <string name="overlay_cycleway">Jalgrattarajad</string>
-    <string name="bicycle_boulevard_is_a">See on %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">See pole %1$s</string>
     <string name="bicycle_boulevard">Puiestee jalgratturitele</string>
     <string name="separate_cycleway_no_or_allowed">Jalgte, kus puudub liiklusmärk rattasõidu kohta (mille lubatavus sõltub seadusandlusest)</string>
     <string name="separate_cycleway_non_segregated">Ühine jalgrattarada ja jalgtee</string>

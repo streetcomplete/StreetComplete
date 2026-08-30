@@ -6,17 +6,16 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
-import dev.mokkery.matcher.any
-import dev.mokkery.mock
+import de.westnordost.streetcomplete.util.math.translate
 import dev.mokkery.answering.returns
 import dev.mokkery.every
-import de.westnordost.streetcomplete.util.math.translate
 import dev.mokkery.everySuspend
-import kotlinx.coroutines.runBlocking
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
-import dev.mokkery.verify.VerifyMode.Companion.exactly
 import dev.mokkery.verify.VerifyMode.Companion.not
 import dev.mokkery.verifySuspend
+import kotlinx.coroutines.runBlocking
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -62,7 +61,7 @@ class OpenChangesetsManagerTest {
         val p0 = LatLon(0.0, 0.0)
         val p1 = p0.translate(5001.0, 0.0)
 
-        every { openChangesetsDB.get(questType.name, "source") }returns
+        every { openChangesetsDB.get(questType.name, "source") } returns
             OpenChangeset(questType.name, "source", 123, p0)
 
         assertEquals(123L, manager.getOrCreateChangeset(questType, "source", p1, false))

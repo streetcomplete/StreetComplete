@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.osm
 
-import de.westnordost.osmfeatures.BaseFeature
 import de.westnordost.osmfeatures.Feature
-import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapChangesBuilder
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryChange

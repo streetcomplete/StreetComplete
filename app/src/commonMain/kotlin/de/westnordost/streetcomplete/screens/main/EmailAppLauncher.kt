@@ -9,5 +9,5 @@ interface EmailAppLauncher {
     )
 
     /** Return whether an email app is available */
-    fun isAvailable() : Boolean
+    fun isAvailable(): Boolean
 }

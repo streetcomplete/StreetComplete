@@ -11,9 +11,11 @@ open class UpdateAppTranslationsTask : DefaultTask() {
     @get:Input lateinit var projectId: String
     @get:Input lateinit var apiToken: String
     @get:Input lateinit var languageCodes: Collection<String>
-    @get:Input lateinit var targetFiles: ((androidResCode: String) -> String)
+    @get:Input lateinit var targetFiles: ((androidResCode: String) -> File)
 
     @TaskAction fun run() {
+        require(apiToken != "invalid") { "POEditor API token must be set" }
+
         val exportLanguages = languageCodes.map { Locale.forLanguageTag(it) }
 
         val languageTags = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
@@ -24,10 +26,10 @@ open class UpdateAppTranslationsTask : DefaultTask() {
             // en-us is the source language
             if (locale == Locale.US) continue
 
-            val androidResCodes = locale.transformPOEditorLanguageTag().toAndroidResCodes()
+            val androidResCode = locale.transformPOEditorLanguageTag().toAndroidResCode()
 
             print(languageTag)
-            if (androidResCodes.singleOrNull() != languageTag) print(" -> " + androidResCodes.joinToString(", "))
+            if (androidResCode != languageTag) print(" -> " + androidResCode)
             println()
 
             // download the translation and save it in the appropriate directory
@@ -43,11 +45,9 @@ ${translations.entries.joinToString("\n") { (key, value) ->
 "    <string name=\"$key\">$xmlValue</string>"
 } }
 </resources>"""
-            for (androidResCode in androidResCodes) {
-                val file = File(targetFiles(androidResCode))
-                File(file.parent).mkdirs()
-                file.writeText(text)
-            }
+            val file = targetFiles(androidResCode)
+            file.parentFile.mkdirs()
+            file.writeText(text)
         }
     }
 }

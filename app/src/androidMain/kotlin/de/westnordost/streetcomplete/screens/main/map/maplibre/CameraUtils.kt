@@ -11,7 +11,7 @@ import org.maplibre.android.maps.MapLibreMap
 fun MapLibreMap.getEnclosingCamera(geometry: ElementGeometry, padding: Padding?): CameraPosition? =
     getCameraForGeometry(
         geometry.toMapLibreGeometry(),
-        padding?.toIntArray() ?: intArrayOf(0,0,0,0)
+        padding?.toIntArray() ?: intArrayOf(0, 0, 0, 0)
     )?.toCameraPosition()
 
 fun MapLibreMap.getEnclosingCamera(bbox: BoundingBox, padding: Padding): CameraPosition? =

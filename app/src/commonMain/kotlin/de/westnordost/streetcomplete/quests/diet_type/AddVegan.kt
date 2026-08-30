@@ -51,7 +51,14 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override fun applyAnswerTo(answer: DietAvailabilityAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         when (answer) {
-            is DietAvailability -> tags.updateWithCheckDate("diet:vegan", answer.osmValue)
+            is DietAvailability -> {
+                tags.updateWithCheckDate("diet:vegan", answer.osmValue)
+                // vegetarian = yes/no and vegan = only is an invalid combination, since every vegan meal is also vegetarian
+                // Thus we remove the vegetarian tag in this case to prevent invalid data
+                if (answer == DietAvailability.ONLY && tags["diet:vegetarian"] != "only") {
+                    tags.remove("diet:vegetarian")
+                }
+            }
             DietAvailabilityAnswer.NoFood -> tags["food"] = "no"
         }
     }

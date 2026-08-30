@@ -85,7 +85,9 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
                     AnswerItem(stringResource(Res.string.quest_generic_answer_is_actually_steps)) {
                         on(Answer(IsActuallyStepsAnswer))
                     }
-                } else null,
+                } else {
+                    null
+                },
             ) }
         )
     }

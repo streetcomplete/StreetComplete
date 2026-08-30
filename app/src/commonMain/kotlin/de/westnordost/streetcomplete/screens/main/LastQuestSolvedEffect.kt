@@ -6,10 +6,8 @@ import androidx.compose.animation.core.SpringSpec
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -73,8 +71,8 @@ fun LastQuestSolvedEffect(
                     scaleX = scale.value
                     scaleY = scale.value
                     alpha = 1f - fling.value * 0.67f
-                    translationX = (questSolvedEvent.position.x - iconSize/2) * (1f - fling.value) + targetX * fling.value
-                    translationY = (questSolvedEvent.position.y - iconSize/2) * (1f - fling.value)
+                    translationX = (questSolvedEvent.position.x - iconSize / 2) * (1f - fling.value) + targetX * fling.value
+                    translationY = (questSolvedEvent.position.y - iconSize / 2) * (1f - fling.value)
                 }
                 .background(Color.White, CircleShape)
             ) {
