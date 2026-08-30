@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.osm.ROADS_ASSUMED_TO_BE_PAVED
 import de.westnordost.streetcomplete.osm.Tags
@@ -17,6 +16,7 @@ import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.
 import de.westnordost.streetcomplete.quests.foot.ProhibitedForPedestriansAnswer.PROHIBITED
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.RadioGroupQuestForm
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import org.jetbrains.compose.resources.stringResource
 
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {

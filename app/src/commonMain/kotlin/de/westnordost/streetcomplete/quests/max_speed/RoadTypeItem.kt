@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.max_speed
 
-import org.jetbrains.compose.resources.DrawableResource
 import de.westnordost.streetcomplete.quests.max_speed.RoadType.*
-import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.Res
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 
 val RoadType.icon: DrawableResource get() = when (this) {

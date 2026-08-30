@@ -82,4 +82,3 @@ object FloatingActionButtonDefaults {
         backgroundColor = MaterialTheme.colors.secondary
     )
 }
-

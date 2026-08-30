@@ -14,5 +14,3 @@ enum class BicycleBarrierType(val osmValue: String) : BicycleBarrierTypeAnswer {
     DIAGONAL("diagonal"),
     TILTED("tilted"),
 }
-
-

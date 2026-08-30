@@ -9,7 +9,7 @@ sealed interface BbqFuelAnswer {
     data class Fuels(val fuels: Set<BbqFuel>) : BbqFuelAnswer
 }
 
-enum class BbqFuel(val bbqValue: String,val ovenValue: String) {
+enum class BbqFuel(val bbqValue: String, val ovenValue: String) {
     WOOD("wood", "wood_fired"),
     ELECTRIC("electric", "electric"),
     CHARCOAL("charcoal", "charcoal"),

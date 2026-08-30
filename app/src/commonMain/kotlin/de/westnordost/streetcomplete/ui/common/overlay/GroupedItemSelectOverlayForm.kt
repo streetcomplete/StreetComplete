@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,7 +39,7 @@ import org.koin.compose.koinInject
  *  Additionally, previously picked items (persisted via [prefs] and [favoriteKey]) are displayed
  *  beneath that as chips, padded by [topSelectableItems], as a shortcut. */
 @Composable
-inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
+inline fun <reified G : Group<I>, reified I> GroupedItemSelectOverlayForm(
     noinline on: (Action) -> Unit,
     groups: List<G>,
     topSelectableItems: List<I>,

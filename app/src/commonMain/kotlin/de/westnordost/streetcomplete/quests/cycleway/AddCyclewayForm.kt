@@ -51,7 +51,7 @@ fun AddCyclewayForm(
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
-)  {
+) {
     val favKey = "AddCyclewayForm"
 
     val originalCycleway = remember(element) {
@@ -183,7 +183,9 @@ fun AddCyclewayForm(
                             isLeftSideVisible = true
                             isRightSideVisible = true
                         }
-                    } else null,
+                    } else {
+                        null
+                    },
                     // this shortcut is only available for roads where the user doesn't have to
                     // explicitly state whether it is a oneway for cyclists, too
                     if (!isOneway) {
@@ -191,7 +193,9 @@ fun AddCyclewayForm(
                             cycleways = Sides(Cycleway.NONE, Cycleway.NONE)
                                 .withDefaultDirection(countryInfo.isLeftHandTraffic)
                         }
-                    } else null,
+                    } else {
+                        null
+                    },
                     AnswerItem(stringResource(Res.string.cycleway_reverse_direction)) {
                         confirmSelectReverseCyclewayDirection = true
                     }

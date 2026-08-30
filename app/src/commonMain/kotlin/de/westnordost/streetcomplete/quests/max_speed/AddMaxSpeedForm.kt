@@ -67,7 +67,9 @@ fun AddMaxSpeedForm(
                 AnswerItem(stringResource(Res.string.quest_maxspeed_answer_advisory_speed_limit)) {
                     maxSpeedAnswer = MaxSpeedSign(Speed(null, countryInfo.speedUnits.first()), ADVISORY)
                 }
-            } else null
+            } else {
+                null
+            }
         ) }
     ) {
         MaxSpeedForm(

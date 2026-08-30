@@ -19,7 +19,6 @@ fun Database.initialize(configurator: DatabaseConfigurator) {
     }
 }
 
-
 data class ColumnDefinition(
     val id: Int,
     val name: String,

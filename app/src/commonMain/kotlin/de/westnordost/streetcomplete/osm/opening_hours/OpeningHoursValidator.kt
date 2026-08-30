@@ -136,7 +136,7 @@ internal fun Time.isSupported(): Boolean = when (this) {
     is VariableTime -> false
 }
 
-internal fun ExtendedTime.isSupported(): Boolean = when(this) {
+internal fun ExtendedTime.isSupported(): Boolean = when (this) {
     is ExtendedClockTime -> true
     is ClockTime -> true
     is VariableTime -> false
@@ -313,5 +313,4 @@ private fun ExtendedTime.toMinutesOfDay(): Int = when (this) {
     is ClockTime -> hour * 60 + minutes
     is ExtendedClockTime -> hour * 60 + minutes
     is VariableTime -> throw IllegalArgumentException()
-
 }

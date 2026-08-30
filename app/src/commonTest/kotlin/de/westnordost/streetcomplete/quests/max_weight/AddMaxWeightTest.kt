@@ -1,9 +1,9 @@
 package de.westnordost.streetcomplete.quests.max_weight
 
 import de.westnordost.streetcomplete.data.meta.WeightMeasurementUnit.*
-import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.*
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryAdd
 import de.westnordost.streetcomplete.quests.answerApplied
+import de.westnordost.streetcomplete.quests.max_weight.MaxWeightType.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

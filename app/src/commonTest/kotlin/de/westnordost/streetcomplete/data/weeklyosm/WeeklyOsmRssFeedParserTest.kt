@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.data.weeklyosm
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.number
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.io.Buffer
 import kotlinx.io.writeString

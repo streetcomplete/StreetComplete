@@ -46,35 +46,35 @@ fun Button2(
     )
 }
 
-val ButtonStyle.elevation : ButtonElevation? @Composable
+val ButtonStyle.elevation: ButtonElevation? @Composable
 get() = when (this) {
         ButtonStyle.Default -> ButtonDefaults.elevation()
         ButtonStyle.Outlined -> null
         ButtonStyle.Text -> null
     }
 
-val ButtonStyle.shape : Shape @Composable @ReadOnlyComposable
+val ButtonStyle.shape: Shape @Composable @ReadOnlyComposable
 get() = when (this) {
         ButtonStyle.Default -> MaterialTheme.shapes.small
         ButtonStyle.Outlined -> MaterialTheme.shapes.small
         ButtonStyle.Text -> MaterialTheme.shapes.small
     }
 
-val ButtonStyle.border : BorderStroke? @Composable
+val ButtonStyle.border: BorderStroke? @Composable
 get() = when (this) {
         ButtonStyle.Default -> null
         ButtonStyle.Outlined -> ButtonDefaults.outlinedBorder
         ButtonStyle.Text -> null
     }
 
-val ButtonStyle.buttonColors : ButtonColors @Composable
+val ButtonStyle.buttonColors: ButtonColors @Composable
 get() = when (this) {
         ButtonStyle.Default -> ButtonDefaults.buttonColors()
         ButtonStyle.Outlined -> ButtonDefaults.outlinedButtonColors()
         ButtonStyle.Text -> ButtonDefaults.textButtonColors()
     }
 
-val ButtonStyle.contentPadding : PaddingValues
+val ButtonStyle.contentPadding: PaddingValues
     get() = when (this) {
         ButtonStyle.Default -> ButtonDefaults.ContentPadding
         ButtonStyle.Outlined -> ButtonDefaults.ContentPadding

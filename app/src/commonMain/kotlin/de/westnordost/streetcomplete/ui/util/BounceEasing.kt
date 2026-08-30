@@ -6,9 +6,7 @@ object BounceEasing : Easing {
     // Implementation copied from
     // https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/view/animation/BounceInterpolator.java
 
-    private fun bounce(t: Float): Float {
-        return t * t * 8.0f
-    }
+    private fun bounce(t: Float): Float = t * t * 8.0f
 
     override fun transform(fraction: Float): Float {
         // _b(t) = t * t * 8

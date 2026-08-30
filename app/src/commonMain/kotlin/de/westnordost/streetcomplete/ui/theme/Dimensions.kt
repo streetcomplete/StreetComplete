@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.ui.theme
 
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.material.Shapes
 import androidx.compose.ui.platform.WindowInfo
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -20,8 +19,7 @@ object Dimensions {
             // somewhat limited so that the map is still visible
             if (windowInfo.containerDpSize.width > 820.dp) 480.dp
             else 360.dp
-        }
-        else {
+        } else {
             // in portrait mode, it may stretch very wide
             480.dp
         }

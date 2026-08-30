@@ -21,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.BuildConfig
 import de.westnordost.streetcomplete.resources.*
@@ -31,10 +32,9 @@ import de.westnordost.streetcomplete.ui.common.NextScreenIcon
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
 import de.westnordost.streetcomplete.ui.common.settings.Preference
 import de.westnordost.streetcomplete.ui.common.settings.PreferenceCategory
+import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 import de.westnordost.streetcomplete.util.ktx.displayLanguage
 import org.jetbrains.compose.resources.stringResource
-import androidx.compose.ui.tooling.preview.Preview
-import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 import org.koin.compose.koinInject
 
 @Composable

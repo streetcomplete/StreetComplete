@@ -98,7 +98,6 @@ fun QuestHeader(
     }
 }
 
-
 @Composable
 private fun HintImages(
     hintImages: List<DrawableResource>,

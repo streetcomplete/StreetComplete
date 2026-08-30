@@ -143,7 +143,6 @@ class DatabaseImpl(private val connection: SQLiteConnection) : Database {
     }
 }
 
-
 private class CursorPositionImpl(private val statement: SQLiteStatement) : CursorPosition {
     override fun getInt(columnName: String): Int = statement.getInt(index(columnName))
     override fun getLong(columnName: String): Long = statement.getLong(index(columnName))

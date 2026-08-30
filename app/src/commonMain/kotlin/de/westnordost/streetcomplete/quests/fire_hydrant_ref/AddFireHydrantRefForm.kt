@@ -43,7 +43,6 @@ fun AddFireHydrantRefForm(
         )
     }
 
-
     if (confirmNoRef) {
         AreYouSureDialog(
             onDismissRequest = { confirmNoRef = false },
