@@ -170,6 +170,7 @@ class AddPlaceName(
             on = on,
             countryInfo = countryInfo,
             initialLocalizedNames = initialLocalizedNames,
+            isResurvey = initialLocalizedNames != null,
         )
     }
 

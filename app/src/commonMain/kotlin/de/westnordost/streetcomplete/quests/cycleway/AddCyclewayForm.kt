@@ -158,7 +158,7 @@ fun AddCyclewayForm(
                         on(Answer(cycleways))
                     }
                 ),
-                title = stringResource(Res.string.quest_cycleway_resurvey_title),
+                isResurvey = true,
                 contentPadding = PaddingValues.Zero,
                 content = { content() }
             )
