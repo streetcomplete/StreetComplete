@@ -19,7 +19,7 @@ open class TestQuestTypeA : OsmElementQuestType<String> {
         on: (QuestAction<String>) -> Unit,
         element: Element,
         geometry: ElementGeometry,
-        countryInfo: CountryInfo, ) {}
+        countryInfo: CountryInfo) {}
     override fun applyAnswerTo(answer: String, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {}
     override val changesetComment = "test me"
     override fun getApplicableElements(mapData: MapDataWithGeometry) = mapData.filter { isApplicableTo(it) == true }
