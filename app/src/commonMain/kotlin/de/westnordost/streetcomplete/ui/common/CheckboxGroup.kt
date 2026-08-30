@@ -34,8 +34,7 @@ fun <T> CheckboxGroup(
         options = options,
         onSelectionChange = { option: T, selected: Boolean ->
             onSelectionsChange(
-                if (selected) { selectedOptions + option }
-                else { selectedOptions - option }
+                if (selected) selectedOptions + option else selectedOptions - option
             )
         },
         selectedOptions = selectedOptions,
