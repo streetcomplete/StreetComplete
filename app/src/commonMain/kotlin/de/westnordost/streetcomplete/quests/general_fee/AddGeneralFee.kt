@@ -62,12 +62,10 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
                 if (element.tags["amenity"] != null || element.tags["waterway"] != null) {
                     // Things you must pay to "use"
                     Res.string.quest_generalFee_title
+                } else if (element.tags["tourism"] == "wilderness_hut" || element.tags["tourism"] == "camp_site" || element.tags["tourism"] == "camp_site") {
+                    // Places you must pay to "stay at"
+                    Res.string.quest_generalFee_title3
                 } else {
-                    if (element.tags["tourism"] == "wilderness_hut" || element.tags["tourism"] == "camp_site" || element.tags["tourism"] == "camp_site") {
-                        // Places you must pay to "stay at"
-                        Res.string.quest_generalFee_title3
-                    }
-                    else
                     // Places you must pay to "enter"
                     Res.string.quest_generalFee_title2
                 }
