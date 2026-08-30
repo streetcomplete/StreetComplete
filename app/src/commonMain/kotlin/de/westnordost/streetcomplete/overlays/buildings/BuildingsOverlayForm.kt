@@ -6,7 +6,11 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -14,6 +18,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.DpSize
@@ -27,14 +32,9 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.building.BuildingType
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
-import de.westnordost.streetcomplete.osm.building.applyTo
-import de.westnordost.streetcomplete.osm.building.applyToBuildingUse
-import de.westnordost.streetcomplete.osm.building.createBuildingType
-import de.westnordost.streetcomplete.osm.building.createBuildingUseType
-import de.westnordost.streetcomplete.osm.building.description
-import de.westnordost.streetcomplete.osm.building.icon
-import de.westnordost.streetcomplete.osm.building.title
+import de.westnordost.streetcomplete.osm.building.*
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.common.overlay.GroupedItemSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.overlay.SideBySideLayoutForm
@@ -95,7 +95,7 @@ fun BuildingsOverlayForm(
                         painter = painterResource(group.icon),
                         title = stringResource(group.title),
                         description = group.description?.let { stringResource(it) },
-                        imageSize = DpSize(36.dp, 36.dp)
+                        imageSize = DpSize(48.dp, 48.dp)
                     )
                 },
                 groupItemContent = { item ->
@@ -106,26 +106,20 @@ fun BuildingsOverlayForm(
                         imageSize = DpSize(48.dp, 48.dp)
                     )
                 },
-                cardItemContent = { item ->
-                    Text(
-                        text = stringResource(item.title),
-                        style = MaterialTheme.typography.subtitle2,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                    )
+                itemContent = { item ->
+                    CompactBuildingItem(item)
                 },
                 itemIcon = { it.icon },
                 itemLabel = { it.osmValue.toString()} ,
-                itemColor = { it.color },
                 onClickOk = { selectedBuilding, selectedBuildingUse ->
                     val tagChanges = StringMapChangesBuilder(element.tags)
                     selectedBuilding.applyTo(tagChanges)
                     selectedBuildingUse?.applyToBuildingUse(tagChanges)
                     on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
                 },
+                primaryPrompt = stringResource(Res.string.overlay_buildings_original_use),
                 secondaryPrompt = stringResource(Res.string.overlay_buildings_current_use),
                 emptySecondaryPrompt = stringResource(Res.string.overlay_buildings_no_current_use),
-                primaryPrompt = stringResource(Res.string.overlay_buildings_original_use),
                 label =
                     // always show house number, never show feature name (because type of building is
                     // already shown in the form itself)
@@ -184,6 +178,33 @@ fun BuildingsOverlayForm(
                         emptyList()
                     }
                 }
+            )
+        }
+    }
+}
+
+/** Helper function to create a compact [ItemCard] content for [SideBySideLayoutForm] */
+@Composable
+private fun CompactBuildingItem(
+    item: BuildingType
+) {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = stringResource(item.title),
+            style = MaterialTheme.typography.subtitle2,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+        )
+
+        item.description?.let {
+            Text(
+                text = stringResource(it),
+                style = MaterialTheme.typography.caption,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
             )
         }
     }
