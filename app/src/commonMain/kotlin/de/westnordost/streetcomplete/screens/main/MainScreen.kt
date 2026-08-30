@@ -40,6 +40,7 @@ import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
 import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.ToastPopup
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.dir
 import kotlinx.coroutines.launch
@@ -70,6 +71,7 @@ fun MainScreen(
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
     onSolvedQuest: (icon: DrawableResource, position: LatLon) -> Unit,
     getOffset: (position: LatLon) -> Offset?,
+    lastMapClick: MapClick?,
     modifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
@@ -288,7 +290,8 @@ fun MainScreen(
                         mapPosition = mapCamera.position,
                         mapMetersPerDp = metersPerDp,
                         onSetMapMarkers = onSetMapMarkers,
-                        getOffset = getOffset
+                        getOffset = getOffset,
+                        lastMapClick = lastMapClick,
                     )
                 }
             }

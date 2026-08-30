@@ -31,10 +31,12 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.LeaveNoteIns
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.split_way.SplitWayForm
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.quest.LocalGetOffsetCallback
+import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.util.ReplaceBottomSheetTransitionSpec
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
@@ -67,6 +69,7 @@ fun OverlayFormContainer(
     mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
     getOffset: (position: LatLon) -> Offset?,
+    lastMapClick: MapClick?,
     modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
@@ -95,6 +98,7 @@ fun OverlayFormContainer(
         LocalMapMetersPerDp provides mapMetersPerDp,
         LocalMapMarkersCallback provides onSetMapMarkers,
         LocalGetOffsetCallback provides getOffset,
+        LocalLastMapClick provides lastMapClick,
     ) {
         AnimatedContent(
             targetState = state,

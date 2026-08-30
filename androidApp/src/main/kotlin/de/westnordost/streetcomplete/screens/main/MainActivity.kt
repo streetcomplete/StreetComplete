@@ -242,7 +242,8 @@ class MainActivity :
                     position.x += offset.x
                     position.y += offset.y
                     position.toOffset()
-                }
+                },
+                lastMapClick = lastMapClick.value,
             )
 
             lastQuestSolved?.let { LastQuestSolvedEffect(it) }
