@@ -8,10 +8,12 @@ enum class ParkingAccess(val osmValue: String) {
     YES("yes"),
     CUSTOMERS("customers"),
     PRIVATE("private"),
+    PERMIT("permit"),
 }
 
 val ParkingAccess.text: StringResource get() = when (this) {
     YES -> Res.string.quest_access_yes
     CUSTOMERS -> Res.string.quest_access_customers
     PRIVATE -> Res.string.quest_access_private
+    PERMIT -> Res.string.quest_access_permit
 }
