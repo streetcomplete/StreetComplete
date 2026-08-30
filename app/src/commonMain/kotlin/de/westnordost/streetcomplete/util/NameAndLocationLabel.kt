@@ -285,7 +285,7 @@ private fun CharSequence.inBold(): AnnotatedString =
         }
     }
 
-private fun annotatedStringOf(vararg strings: CharSequence?) : AnnotatedString =
+private fun annotatedStringOf(vararg strings: CharSequence?): AnnotatedString =
     buildAnnotatedString {
         for (string in strings) {
             append(string)

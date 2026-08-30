@@ -51,7 +51,7 @@ fun AddCyclewayForm(
     geometry: ElementGeometry,
     countryInfo: CountryInfo,
     preferences: Preferences = koinInject(),
-)  {
+) {
     val favKey = "AddCyclewayForm"
 
     val originalCycleway = remember(element) {

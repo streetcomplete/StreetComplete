@@ -17,11 +17,11 @@ sealed interface MaxSpeedAnswer {
 
     @Serializable
     data object IsLivingStreet : MaxSpeedAnswer {
-        override fun isComplete()  = true
+        override fun isComplete() = true
     }
     @Serializable
     data object NoSign : MaxSpeedAnswer {
-        override fun isComplete()  = true
+        override fun isComplete() = true
     }
     @Serializable
     data class NoSignWithRoadType(val roadType: RoadType?) : MaxSpeedAnswer {
