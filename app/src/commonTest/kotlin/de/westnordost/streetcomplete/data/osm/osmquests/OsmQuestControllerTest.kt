@@ -55,13 +55,13 @@ class OsmQuestControllerTest {
     @BeforeTest fun setUp() {
         db = mock()
 
-        mapDataSource = mock() {
+        mapDataSource = mock {
             every { addListener(any()) } calls { (listener: MapDataWithEditsSource.Listener) ->
                 mapDataListener = listener
             }
         }
 
-        notesSource = mock() {
+        notesSource = mock {
             every { addListener(any()) } calls { (listener: NotesWithEditsSource.Listener) ->
                 notesListener = listener
             }

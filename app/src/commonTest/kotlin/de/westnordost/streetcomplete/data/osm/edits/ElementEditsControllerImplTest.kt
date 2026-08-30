@@ -32,7 +32,7 @@ class ElementEditsControllerImplTest {
     private lateinit var idProvider: ElementIdProviderDao
 
     @BeforeTest fun setUp() {
-        db = mock() {
+        db = mock {
             every { delete(any()) } returns true
             every { markSynced(any()) } returns true
         }

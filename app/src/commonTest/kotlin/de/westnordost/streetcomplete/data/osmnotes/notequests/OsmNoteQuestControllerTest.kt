@@ -38,13 +38,13 @@ class OsmNoteQuestControllerTest {
     private lateinit var userLoginListener: UserLoginSource.Listener
 
     @BeforeTest fun setUp() {
-        noteSource = mock() {
+        noteSource = mock {
             every { addListener(any()) } calls { (listener: NotesWithEditsSource.Listener) ->
                 noteUpdatesListener = listener
             }
         }
         userDataSource = mock()
-        userLoginSource = mock() {
+        userLoginSource = mock {
             every { addListener(any()) } calls { (listener: UserLoginSource.Listener) ->
                 userLoginListener = listener
             }

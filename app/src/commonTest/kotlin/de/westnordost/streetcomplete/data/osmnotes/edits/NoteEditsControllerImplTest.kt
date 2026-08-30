@@ -22,7 +22,7 @@ class NoteEditsControllerImplTest {
     private lateinit var listener: NoteEditsSource.Listener
 
     @BeforeTest fun setUp() {
-        db = mock() {
+        db = mock {
             every { delete(any()) } returns true
             every { markSynced(any()) } returns true
         }

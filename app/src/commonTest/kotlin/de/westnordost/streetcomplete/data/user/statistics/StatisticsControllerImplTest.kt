@@ -43,7 +43,7 @@ class StatisticsControllerImplTest {
         prefs = mock()
         listener = mock()
 
-        userLoginSource = mock() {
+        userLoginSource = mock {
             every { addListener(any()) } calls { (listener: UserLoginSource.Listener) ->
                 userLoginListener = listener
             }

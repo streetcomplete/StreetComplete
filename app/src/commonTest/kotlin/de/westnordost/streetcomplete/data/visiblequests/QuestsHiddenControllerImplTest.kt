@@ -30,10 +30,10 @@ class QuestsHiddenControllerImplTest {
     private lateinit var listener: QuestsHiddenSource.Listener
 
     @BeforeTest fun setUp() {
-        osmDb = mock() {
+        osmDb = mock {
             every { getAll() } returns listOf()
         }
-        notesDb = mock() {
+        notesDb = mock {
             every { getAll() } returns listOf()
         }
         listener = mock()

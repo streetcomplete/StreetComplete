@@ -42,13 +42,13 @@ class AchievementsControllerTest {
     private lateinit var listener: AchievementsSource.Listener
 
     @BeforeTest fun setUp() {
-        userAchievementsDao = mock() {
+        userAchievementsDao = mock {
             every { getAll() } returns mapOf()
         }
-        userLinksDao = mock() {
+        userLinksDao = mock {
             every { getAll() } returns listOf()
         }
-        statisticsSource = mock() {
+        statisticsSource = mock {
             every { addListener(any()) } calls { (listener: StatisticsSource.Listener) ->
                 statisticsListener = listener
             }

@@ -40,17 +40,17 @@ class EditHistoryControllerTest {
     private lateinit var hiddenQuestsListener: QuestsHiddenSource.Listener
 
     @BeforeTest fun setUp() {
-        elementEditsController = mock() {
+        elementEditsController = mock {
             every { addListener(any()) } calls { (listener: ElementEditsSource.Listener) ->
                 elementEditsListener = listener
             }
         }
-        noteEditsController = mock() {
+        noteEditsController = mock {
             every { addListener(any()) } calls { (listener: NoteEditsSource.Listener) ->
                 noteEditsListener = listener
             }
         }
-        hiddenQuestsController = mock() {
+        hiddenQuestsController = mock {
             every { addListener(any()) } calls { (listener: QuestsHiddenSource.Listener) ->
                 hiddenQuestsListener = listener
             }

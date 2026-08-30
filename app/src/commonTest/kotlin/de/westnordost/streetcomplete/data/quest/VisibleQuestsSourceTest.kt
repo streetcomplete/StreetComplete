@@ -55,39 +55,39 @@ class VisibleQuestsSourceTest {
     private val questTypeNames = questTypes.map { it.name }
 
     @BeforeTest fun setUp() {
-        osmNoteQuestSource = mock() {
+        osmNoteQuestSource = mock {
             every { addListener(any()) } calls { (listener: OsmNoteQuestSource.Listener) ->
                 noteQuestListener = listener
             }
         }
 
-        osmQuestSource = mock() {
+        osmQuestSource = mock {
             every { addListener(any()) } calls { (listener: OsmQuestSource.Listener) ->
                 questListener = listener
             }
         }
 
-        questsHiddenSource = mock() {
+        questsHiddenSource = mock {
             every { addListener(any()) } calls { (listener: QuestsHiddenSource.Listener) ->
                 questsHiddenListener = listener
             }
         }
 
-        visibleEditTypeSource = mock() {
+        visibleEditTypeSource = mock {
             every { addListener(any()) } calls { (listener: VisibleEditTypeSource.Listener) ->
                 visibleEditTypeListener = listener
             }
             every { isVisible(any()) } returns true
         }
 
-        teamModeQuestFilterSource = mock() {
+        teamModeQuestFilterSource = mock {
             every { addListener(any()) } calls { (listener: TeamModeQuestFilterSource.Listener) ->
                 teamModeListener = listener
             }
             every { isVisible(any()) } returns true
         }
 
-        selectedOverlaySource = mock() {
+        selectedOverlaySource = mock {
             every { addListener(any()) } calls { (listener: SelectedOverlaySource.Listener) ->
                 selectedOverlayListener = listener
             }

@@ -44,12 +44,12 @@ class NoteEditsUploaderTest {
     private lateinit var listener: OnUploadedChangeListener
 
     @BeforeTest fun setUp(): Unit = runBlocking {
-        notesApi = mock() {
+        notesApi = mock {
             everySuspend { comment(any(), any()) } returns note()
             everySuspend { create(any(), any()) } returns note()
         }
         noteController = mock()
-        noteEditsController = mock() {
+        noteEditsController = mock {
             every { getOldestNeedingImagesActivation() } returns null
             every { getOldestUnsynced() } returns null
         }

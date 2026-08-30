@@ -36,7 +36,7 @@ class VisibleEditTypeControllerTest {
 
     @BeforeTest fun setUp() {
         visibleEditTypeDao = mock()
-        editTypePresetsSource = mock() {
+        editTypePresetsSource = mock {
             every { addListener(any()) } calls { (listener: EditTypePresetsSource.Listener) ->
                 editTypePresetsListener = listener
             }
