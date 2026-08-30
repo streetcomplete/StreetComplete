@@ -80,8 +80,8 @@ private fun MonthsOrDateSelector.toLocalizedString(
     style: DateTimeTextSymbolStyle = DateTimeTextSymbolStyle.Short,
     layoutDirection: LayoutDirection = Ltr,
     locale: Locale? = null,
-): String {
-    return when (this) {
+): String =
+    when (this) {
         is MonthRange -> {
             if (year != null) throw UnsupportedOperationException()
             localizedRange(
@@ -98,4 +98,3 @@ private fun MonthsOrDateSelector.toLocalizedString(
         // any date not supported
         else -> throw UnsupportedOperationException()
     }
-}

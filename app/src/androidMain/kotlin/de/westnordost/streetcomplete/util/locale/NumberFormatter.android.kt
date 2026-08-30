@@ -29,9 +29,8 @@ actual class NumberFormatter actual constructor(
         format.maximumFractionDigits = maxFractionDigits
     }
 
-    actual fun format(value: Number): String {
-        return format.format(value)
-    }
+    actual fun format(value: Number): String =
+        format.format(value)
 
     actual fun parse(text: String): Number? {
         // enforce strict parsing (Java parser is really lenient...)

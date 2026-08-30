@@ -180,14 +180,13 @@ class MainBottomSheetViewModelImpl(
         shownBottomSheet.value = ShownBottomSheet.OsmNoteQuest(quest, note)
     }
 
-    private fun getNoteForElementAt(position: LatLon): Note? {
-        return notesSource
+    private fun getNoteForElementAt(position: LatLon): Note? =
+        notesSource
             .getAll(BoundingBox(position, position).enlargedBy(0.2))
             .filter { note ->
                 note.position.truncateTo6Decimals() == position.truncateTo6Decimals() &&
                 hiddenQuestsController.get(OsmNoteQuestKey(note.id)) == null
             }.firstOrNull()
-    }
 }
 
 /** The data necessary to show an element from the map clicked on in the bottom sheet */

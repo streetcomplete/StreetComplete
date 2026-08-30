@@ -419,13 +419,12 @@ private data class Car(
 private fun createCar(
     carPainters: List<Painter>,
     progress: Float,
-): Car {
-    return Car(
+): Car =
+    Car(
         painter = carPainters[Random.nextInt(carPainters.size)],
         progress = progress,
         speed = CAR_SPEED * (1f + CAR_SPEED_VARIATION * Random.nextFloat())
     )
-}
 
 private fun LineStyle.getPathEffect(lineWidth: Float): PathEffect? = when (this) {
     LineStyle.CONTINUOUS -> null

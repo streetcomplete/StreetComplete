@@ -20,7 +20,6 @@ object HierarchicOpeningHoursSerializer : KSerializer<HierarchicOpeningHours> {
         encoder.encodeString(value.toOpeningHours().toString())
     }
 
-    override fun deserialize(decoder: Decoder): HierarchicOpeningHours {
-        return decoder.decodeString().toOpeningHours().toHierarchicOpeningHours()!!
-    }
+    override fun deserialize(decoder: Decoder): HierarchicOpeningHours =
+        decoder.decodeString().toOpeningHours().toHierarchicOpeningHours()!!
 }

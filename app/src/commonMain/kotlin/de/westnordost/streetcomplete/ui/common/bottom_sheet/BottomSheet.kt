@@ -105,13 +105,12 @@ private fun ConsumeSwipeWithinBottomSheetBoundsNestedScrollConnection(
         }
     }
 
-    override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset {
-        return if (source == NestedScrollSource.UserInput) {
+    override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset =
+        if (source == NestedScrollSource.UserInput) {
             state.dispatchRawDelta(available.toFloat()).toOffset()
         } else {
             Offset.Zero
         }
-    }
 
     override suspend fun onPreFling(available: Velocity): Velocity {
         val toFling = available.toFloat()
