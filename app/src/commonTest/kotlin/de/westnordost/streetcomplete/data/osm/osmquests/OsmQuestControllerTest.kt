@@ -72,7 +72,8 @@ class OsmQuestControllerTest {
             1 to NotApplicableQuestType,
             2 to ComplexQuestTypeApplicableToNode42,
             3 to ApplicableQuestTypeNotInAnyCountry,
-            4 to ApplicableQuestType2
+            4 to ApplicableQuestType2,
+            5 to QuestTypeAffectedByCrossingNodes
         ))
         countryBoundaries = object : CountryBoundaries {
             override fun isInAny(position: LatLon, countries: Countries): Boolean =
@@ -220,6 +221,53 @@ class OsmQuestControllerTest {
         }
     }
 
+    @Test fun `updates quests for nearby elements when an updated element may affect them`() {
+        val crossingGeom = pGeom(0.0, 0.0)
+        val crossing = node(1, tags = mapOf("highway" to "crossing"))
+        val updatedMapData = MutableMapDataWithGeometry(
+            listOf(crossing),
+            listOf(ElementGeometryEntry(NODE, 1, crossingGeom))
+        )
+
+        // map data around the crossing contains node 5, to which QuestTypeAffectedByCrossingNodes
+        // is applicable
+        val nearbyGeom = pGeom(0.0001, 0.0001)
+        val nearbyMapData = MutableMapDataWithGeometry(
+            listOf(crossing, node(5, p(0.0001, 0.0001))),
+            listOf(
+                ElementGeometryEntry(NODE, 1, crossingGeom),
+                ElementGeometryEntry(NODE, 5, nearbyGeom),
+            )
+        )
+
+        // a quest of that type exists for node 6, to which it is not applicable anymore
+        val existingNearbyQuest = osmQuest(QuestTypeAffectedByCrossingNodes, NODE, 6)
+
+        every { db.getAllForElements(listOf(ElementKey(NODE, 1))) } returns emptyList()
+        every { db.getAllForElements(emptyList()) } returns emptyList()
+        every { db.getAllInBBox(any(), any()) } returns listOf(existingNearbyQuest)
+        every { mapDataSource.getMapDataWithGeometry(any()) } returns nearbyMapData
+        every { notesSource.getAllPositions(any()) } returns emptyList()
+
+        mapDataListener.onUpdated(updatedMapData, emptyList())
+
+        val expectedCreatedQuests = listOf(
+            OsmQuest(ApplicableQuestType, NODE, 1, crossingGeom),
+            OsmQuest(ApplicableQuestType2, NODE, 1, crossingGeom),
+            OsmQuest(QuestTypeAffectedByCrossingNodes, NODE, 5, nearbyGeom),
+        )
+        val expectedDeletedQuestKeys = listOf(existingNearbyQuest.key)
+
+        verify { db.deleteAll(matches { it.containsExactlyInAnyOrder(expectedDeletedQuestKeys) }) }
+        verify { db.putAll(matches { it.containsExactlyInAnyOrder(expectedCreatedQuests) }) }
+        verify {
+            listener.onUpdated(
+                added = matches { it.containsExactlyInAnyOrder(expectedCreatedQuests) },
+                deleted = matches { it.containsExactlyInAnyOrder(expectedDeletedQuestKeys) }
+            )
+        }
+    }
+
     @Test fun `updates quests on map data listener replace for bbox`() {
         val elements = listOf(
             node(1),
@@ -299,4 +347,9 @@ private object NotApplicableQuestType : TestQuestTypeA() {
 private object ComplexQuestTypeApplicableToNode42 : TestQuestTypeA() {
     override fun isApplicableTo(element: Element): Boolean? = null
     override fun getApplicableElements(mapData: MapDataWithGeometry) = listOf(node(42))
+}
+
+private object QuestTypeAffectedByCrossingNodes : TestQuestTypeA() {
+    override fun isApplicableTo(element: Element) = element.id == 5L
+    override fun mayAffectNearbyQuests(element: Element) = element.tags["highway"] == "crossing"
 }
