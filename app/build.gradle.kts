@@ -303,13 +303,13 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     )
     val skipWords = listOf("lint", "linter", "reorder imports", "organize imports")
     skipCommitRegex = Regex(".*\\b(${skipWords.joinToString("|")})\\b.*", RegexOption.IGNORE_CASE)
-    targetFile = "$projectDir/src/commonMain/composeResources/files/credits_contributors.yml"
+    targetFile = projectDir.resolve("src/commonMain/composeResources/files/credits_contributors.yml")
     // gradle, py, bat, java and mjs don't exist anymore in this repo but they used to
     codeFileRegex = Regex(".*\\.(java|kt|kts|py|gradle|bat|mjs)$")
-    /* photos, illustrations, sounds ... but not yml, json, ... because most of these are updated
+    /* photos, illustrations, sounds ... but not YAML, JSON, ... because most of these are updated
        via gradle tasks */
     assetFileRegex = Regex(".*\\.(jpe?g|png|svg|webp|wav)$", RegexOption.IGNORE_CASE)
-    /* drawable xmls, layout xmls, animation xmls ... but not strings because they are updated
+    /* drawable XMLs, layout XMLs, animation XMLs ... but not strings because they are updated
        via gradle tasks */
     interfaceMarkupRegex = Regex(".*(anim|color|drawable|layout|menu|mipmap).*\\.xml$")
     githubApiToken = properties["app.streetcomplete.GithubApiToken"] as String
@@ -317,8 +317,9 @@ tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
 
 tasks.register("updateAvailableLanguages") {
     group = "streetcomplete"
+    outputs.file(projectDir.resolve("src/commonMain/composeResources/files/languages.yml"))
     doLast {
-        val fileWriter = FileWriter("$projectDir/src/commonMain/composeResources/files/languages.yml", false)
+        val fileWriter = FileWriter(outputs.files.singleFile, false)
         fileWriter.write(bcp47ExportLanguages.joinToString("\n") { "- $it" })
         fileWriter.write("\n")
         fileWriter.close()
@@ -327,7 +328,7 @@ tasks.register("updateAvailableLanguages") {
 
 tasks.register<GetTranslatorCreditsTask>("updateTranslatorCredits") {
     group = "streetcomplete"
-    targetFile = "$projectDir/src/commonMain/composeResources/files/credits_translators.yml"
+    targetFile = projectDir.resolve("src/commonMain/composeResources/files/credits_translators.yml")
     languageCodes = bcp47ExportLanguages
     cookie = properties["app.streetcomplete.POEditorCookie"] as String
     phpsessid = properties["app.streetcomplete.POEditorPHPSESSID"] as String
@@ -337,25 +338,25 @@ tasks.register<UpdatePresetsTask>("updatePresets") {
     group = "streetcomplete"
     version = presetsVersion
     languageCodes = bcp47ExportLanguages
-    targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/default"
+    targetDir = projectDir.resolve("src/commonMain/composeResources/files/osmfeatures/default")
 }
 
 tasks.register<UpdateNsiPresetsTask>("updateNsiPresets") {
     group = "streetcomplete"
     version = nsiVersion
-    targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/brands"
+    targetDir = projectDir.resolve("src/commonMain/composeResources/files/osmfeatures/brands")
 }
 
 // tasks.register<DownloadBrandLogosTask>("downloadBrandLogos") {
 //     group = "streetcomplete"
 //     version = nsiVersion
-//     targetDir = "$projectDir/src/commonMain/composeResources/files/osmfeatures/brands"
+//     targetDir = projectDir.resolve("src/commonMain/composeResources/files/osmfeatures/brands")
 // }
 
 tasks.register<DownloadAndConvertPresetIconsTask>("downloadAndConvertPresetIcons") {
     group = "streetcomplete"
     version = presetsVersion
-    targetDir = "$projectDir/src/commonMain/composeResources/drawable/"
+    targetDir = projectDir.resolve("src/commonMain/composeResources/drawable")
     iconSize = 34
     transformName = { "preset_" + it.replace('-', '_') }
 }
@@ -365,7 +366,7 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/strings.xml" }
+    targetFiles = { projectDir.resolve("/src/commonMain/composeResources/values-$it/strings.xml") }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {
@@ -374,7 +375,7 @@ tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleten
     mustIncludeLanguagePercentage = 90
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { "$projectDir/src/commonMain/composeResources/values-$it/translation_info.xml" }
+    targetFiles = { projectDir.resolve("src/commonMain/composeResources/values-$it/translation_info.xml") }
 }
 
 tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
@@ -390,36 +391,43 @@ tasks.register<UpdateIosAppTranslationsTask>("updateIosTranslations") {
 
 tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
-    sourceFile = "$rootDir/CHANGELOG.md"
-    targetFile = "$projectDir/src/commonMain/composeResources/files/changelog.html"
+    sourceFile = rootDir.resolve("CHANGELOG.md")
+    targetFile = projectDir.resolve("src/commonMain/composeResources/files/changelog.html")
 }
 
 tasks.register<UpdateMapStyleTask>("updateMapStyle") {
     group = "streetcomplete"
-    targetDir = "$projectDir/src/androidMain/assets/map_theme"
+    targetDir = projectDir.resolve("src/androidMain/assets/map_theme")
     apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
     mapStyleBranch = "master"
 }
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
-    sourceDir = "$rootDir/res/country_metadata"
-    targetDir = "$projectDir/src/commonMain/composeResources/files/country_metadata"
+    dependsOn(
+        ":updateAtmOperators",
+        ":updateChargingStationOperators",
+        ":updateClothesContainerOperators",
+        ":updateParcelLockerBrand",
+    )
+    sourceDir = rootDir.resolve("res/country_metadata")
+    targetDir = projectDir.resolve("src/commonMain/composeResources/files/country_metadata")
 }
 
 tasks.register("copyDefaultStringsToEnStrings") {
     group = "streetcomplete"
+    inputs.file(projectDir.resolve("src/commonMain/composeResources/values/strings.xml"))
+    outputs.file(projectDir.resolve("src/commonMain/composeResources/values-en/strings.xml"))
     doLast {
-        val sourceStrings = File("$projectDir/src/commonMain/composeResources/values/strings.xml")
-        sourceStrings.copyTo(File("$projectDir/src/commonMain/composeResources/values-en/strings.xml"), true)
+        inputs.files.singleFile.copyTo(outputs.files.singleFile, true)
     }
 }
 
 // necessary as long as map hasn't been converted to compose yet
 tasks.register<CopyIconsTask>("copyIconsToAndroid") {
     group = "streetcomplete"
-    sourceDir = "$projectDir/src/commonMain/composeResources/drawable"
-    targetDir = "$projectDir/build/generated/androidMain/res/drawable"
+    sourceDir = projectDir.resolve("src/commonMain/composeResources/drawable")
+    targetDir = projectDir.resolve("build/generated/androidMain/res/drawable")
     filter = {
         // quest pins, icons for overlays
         it.startsWith("quest_") ||
@@ -444,13 +452,13 @@ tasks.register<CopyIconsTask>("copyIconsToAndroid") {
         it == "pin.xml" ||
         it == "pin_circle.xml"
     }
-    indexFile = "$projectDir/build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt"
+    indexFile = projectDir.resolve("build/generated/androidMain/kotlin/de/westnordost/streetcomplete/view/IconIndex.kt")
 }
 
 tasks.register<CopyStringsTask>("copyStringsToAndroid") {
     group = "streetcomplete"
-    sourceDir = "$projectDir/src/commonMain/composeResources"
-    targetDir = "$projectDir/build/generated/androidMain/res"
+    sourceDir = projectDir.resolve("src/commonMain/composeResources")
+    targetDir = projectDir.resolve("build/generated/androidMain/res")
 }
 
 project.afterEvaluate {
