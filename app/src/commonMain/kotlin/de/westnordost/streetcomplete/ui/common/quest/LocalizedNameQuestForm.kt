@@ -49,6 +49,7 @@ fun LocalizedNameQuestForm(
     noNameConfirmationText: @Composable (() -> Unit)? = null,
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     preferences: Preferences = koinInject(),
+    isResurvey: Boolean = false,
 ) {
     val selectableLanguages = remember {
         preferences.getLanguagesWithPreferredFirst(
@@ -79,7 +80,7 @@ fun LocalizedNameQuestForm(
             on(Answer(localizedNames))
         },
         modifier = modifier,
-        isResurvey = initialLocalizedNames != null,
+        isResurvey = isResurvey,
         otherAnswers = { otherAnswers() + listOf(
             AnswerItem(stringResource(Res.string.quest_streetName_answer_cantType)) {
                 showKeyboardInfo = true
