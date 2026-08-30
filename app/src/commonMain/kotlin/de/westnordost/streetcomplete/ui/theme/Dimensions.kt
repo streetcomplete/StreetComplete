@@ -19,8 +19,7 @@ object Dimensions {
             // somewhat limited so that the map is still visible
             if (windowInfo.containerDpSize.width > 820.dp) 480.dp
             else 360.dp
-        }
-        else {
+        } else {
             // in portrait mode, it may stretch very wide
             480.dp
         }

@@ -117,8 +117,7 @@ fun LaneNarrowingTrafficCalmingForm(
                     val tagChanges = StringMapChangesBuilder(element.tags)
                     selectedItem.applyTo(tagChanges)
                     on(Edit(UpdateElementTagsAction(element, tagChanges.create())))
-                }
-                else if (positionOnWay != null) {
+                } else if (positionOnWay != null) {
                     val action = createNodeAction(positionOnWay, mapDataWithEditsSource) { selectedItem.applyTo(it) }
                     if (action != null) {
                         val geometry = ElementPointGeometry(positionOnWay.position)

@@ -68,8 +68,7 @@ class StreetParkingOverlay : Overlay {
     ) {
         if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm(on, element, geometry, countryInfo)
-        }
-        else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
+        } else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
             LaneNarrowingTrafficCalmingForm(on, element, geometry)
         }
     }

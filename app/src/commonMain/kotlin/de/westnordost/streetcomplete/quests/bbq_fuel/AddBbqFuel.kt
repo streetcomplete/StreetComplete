@@ -46,13 +46,10 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
     }
 
     override fun applyAnswerTo(answer: BbqFuelAnswer, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        if (answer == BbqFuelAnswer.IsFirePit)
-        {
+        if (answer == BbqFuelAnswer.IsFirePit) {
             tags.remove("amenity")
             tags["leisure"] = "firepit"
-        }
-        else if (answer is Fuels)
-        {
+        } else if (answer is Fuels) {
             // BBQs and ovens use slightly different tags for fuel
             if (tags["amenity"] == "bbq") {
                 tags["fuel"] = answer.fuels.joinToString(";") { it.bbqValue }

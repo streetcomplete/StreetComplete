@@ -72,8 +72,7 @@ inline fun <reified G : Group<I>, reified I> GroupedItemSelectQuestForm(
                     preferences.addLastPicked(favoriteKey, item)
                 }
                 on(Answer(item))
-            }
-            else if (groupItem != null) {
+            } else if (groupItem != null) {
                 confirmSelectionOfGroupItem = groupItem
             }
         },

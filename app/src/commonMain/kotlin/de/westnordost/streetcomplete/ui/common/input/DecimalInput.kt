@@ -170,15 +170,13 @@ private fun String.isOnlyDecimalDigits(
             if (i != 0) return false
             // not allowed if unsigned
             if (isUnsigned) return false
-        }
-        else if (char.isDigit()) {
+        } else if (char.isDigit()) {
             if (hasSeparator) fractionDigits++
             else integerDigits++
 
             if (integerDigits > maxIntegerDigits) return false
             if (fractionDigits > maxFractionDigits) return false
-        }
-        else if (char == decimalSeparator) {
+        } else if (char == decimalSeparator) {
             // several decimal separators not allowed, e.g. 12.3.4
             if (hasSeparator) return false
 
