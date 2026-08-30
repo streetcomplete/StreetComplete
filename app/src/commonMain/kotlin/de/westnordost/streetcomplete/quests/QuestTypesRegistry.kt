@@ -366,7 +366,7 @@ fun questTypeRegistry(
 
     60 to AddGeneralFee(),
 
-    200 to AddDoctorType(getCountryInfoByLocation),
+    193 to AddDoctorType(),
 
     61 to AddDrinkingWater(), // used by AnyFinder
     62 to AddDrinkingWaterType(),

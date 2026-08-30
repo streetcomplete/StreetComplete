@@ -13,7 +13,7 @@ import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
-class AddDoctorType(getCountryInfoByLocation: (LatLon) -> CountryInfo) : OsmFilterQuestType<List<Feature>>() {
+class AddDoctorType() : OsmFilterQuestType<List<Feature>>() {
 
     override val elementFilter = """
         nodes, ways with
