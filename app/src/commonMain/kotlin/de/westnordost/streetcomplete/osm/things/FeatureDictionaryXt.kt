@@ -5,7 +5,6 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.osm.toElement
 import de.westnordost.streetcomplete.util.ktx.getDisusedFeature
 import de.westnordost.streetcomplete.util.ktx.getFeature
 import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
@@ -35,4 +34,6 @@ fun FeatureDictionary.getThingOrDisusedThing(
             tags = element.tags,
             geometry = GeometryType.entries.toList()
         )
-    } else null
+    } else {
+        null
+    }

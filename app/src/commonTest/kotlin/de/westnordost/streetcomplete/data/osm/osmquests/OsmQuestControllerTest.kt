@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
-import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometryEntry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -13,26 +12,25 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MutableMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osmnotes.edits.NotesWithEditsSource
-import de.westnordost.streetcomplete.util.countryboundaries.Countries
-import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.TestQuestTypeA
-import dev.mokkery.matcher.any
 import de.westnordost.streetcomplete.testutils.bbox
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.note
-import dev.mokkery.answering.returns
-import dev.mokkery.every
 import de.westnordost.streetcomplete.testutils.osmQuest
 import de.westnordost.streetcomplete.testutils.osmQuestKey
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
-import de.westnordost.streetcomplete.util.countryboundaries.AllCountries
-import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
+import de.westnordost.streetcomplete.util.countryboundaries.Countries
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
+import de.westnordost.streetcomplete.util.countryboundaries.NoCountriesExcept
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import dev.mokkery.answering.calls
+import dev.mokkery.answering.returns
+import dev.mokkery.every
+import dev.mokkery.matcher.any
 import dev.mokkery.matcher.matches
+import dev.mokkery.mock
 import dev.mokkery.verify
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -57,13 +55,13 @@ class OsmQuestControllerTest {
     @BeforeTest fun setUp() {
         db = mock()
 
-        mapDataSource = mock() {
+        mapDataSource = mock {
             every { addListener(any()) } calls { (listener: MapDataWithEditsSource.Listener) ->
                 mapDataListener = listener
             }
         }
 
-        notesSource = mock() {
+        notesSource = mock {
             every { addListener(any()) } calls { (listener: NotesWithEditsSource.Listener) ->
                 notesListener = listener
             }

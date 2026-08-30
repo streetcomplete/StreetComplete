@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.weeklyosm
 
-import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.util.ktx.RFC_2822_STRICT
 import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.parse

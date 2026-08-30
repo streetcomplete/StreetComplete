@@ -16,8 +16,8 @@ import de.westnordost.streetcomplete.osm.places.isPlaceOrDisusedPlace
 import de.westnordost.streetcomplete.osm.setCheckDateForKey
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.time.Instant

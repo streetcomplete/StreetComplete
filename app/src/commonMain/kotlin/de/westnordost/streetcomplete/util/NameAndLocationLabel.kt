@@ -13,7 +13,6 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
-import androidx.compose.ui.text.intl.Locale.Companion
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.LayoutDirection
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -22,7 +21,6 @@ import de.westnordost.streetcomplete.osm.ALL_ROADS
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.util.formatAnnotated
 import de.westnordost.streetcomplete.util.ktx.getFeature
-import de.westnordost.streetcomplete.util.locale.getLanguagesForFeatureDictionary
 import org.jetbrains.compose.resources.ResourceEnvironment
 import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.getSystemResourceEnvironment
@@ -287,7 +285,7 @@ private fun CharSequence.inBold(): AnnotatedString =
         }
     }
 
-private fun annotatedStringOf(vararg strings: CharSequence?) : AnnotatedString =
+private fun annotatedStringOf(vararg strings: CharSequence?): AnnotatedString =
     buildAnnotatedString {
         for (string in strings) {
             append(string)

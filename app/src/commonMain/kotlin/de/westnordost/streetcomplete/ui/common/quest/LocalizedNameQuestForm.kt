@@ -23,8 +23,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
+import de.westnordost.streetcomplete.ui.common.dialogs.InfoDialog
 import de.westnordost.streetcomplete.ui.common.localized_name.LocalizedNamesForm
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import org.jetbrains.compose.resources.stringResource

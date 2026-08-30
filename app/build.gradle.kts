@@ -1,11 +1,8 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import dev.mokkery.MockMode
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import java.io.FileInputStream
 import java.io.FileWriter
-import java.util.Properties
 
 
 /** App version name, code and flavor */
@@ -276,7 +273,6 @@ kotlin {
     }
 }
 
-
 compose {
     resources {
         publicResClass = true
@@ -289,7 +285,6 @@ dependencies {
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
-
 
 tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     group = "streetcomplete"
@@ -490,4 +485,3 @@ androidComponents {
         variant.sources.res?.addStaticSourceDirectory(layout.buildDirectory.dir("generated/androidMain/res").get().asFile.absolutePath)
     }
 }
-

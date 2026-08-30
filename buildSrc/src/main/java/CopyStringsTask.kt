@@ -3,7 +3,6 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import kotlin.collections.orEmpty
-import kotlin.io.copyTo
 
 open class CopyStringsTask : DefaultTask() {
     @get:Input lateinit var sourceDir: String

@@ -6,7 +6,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.PEDESTRIAN
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
@@ -14,6 +13,7 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.localized_name.LocalizedName
 import de.westnordost.streetcomplete.osm.localized_name.applyTo
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 
 class AddRoadName : OsmFilterQuestType<List<LocalizedName>>() {
 

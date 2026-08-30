@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map.components
 import android.content.ContentResolver
 import android.content.Context
 import androidx.annotation.UiThread
-import androidx.core.graphics.Insets
 import com.google.gson.JsonObject
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon

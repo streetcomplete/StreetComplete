@@ -90,7 +90,7 @@ class AddRoofShapeTest {
     }
 
     @Test fun `create quest for 0 or null-level roofs only in countries with no flat roofs`() {
-        countryInfo = CountryInfo(null,listOf(IncompleteCountryInfo(roofsAreUsuallyFlat = false)))
+        countryInfo = CountryInfo(null, listOf(IncompleteCountryInfo(roofsAreUsuallyFlat = false)))
 
         val element = way(1, tags = mapOf("roof:levels" to "0", "building" to "apartments"))
         val element2 = way(2, tags = mapOf("building:levels" to "3", "building" to "apartments"))

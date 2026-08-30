@@ -40,17 +40,17 @@ class NotesWithEditsSourceImplTest {
     val user = User(id = 23, displayName = "test user")
 
     @BeforeTest fun setUp() {
-        noteController = mock() {
+        noteController = mock {
             every { addListener(any()) } calls { (listener: NoteSource.Listener) ->
                 noteListener = listener
             }
         }
-        noteEditsSource = mock() {
+        noteEditsSource = mock {
             every { addListener(any()) } calls { (listener: NoteEditsSource.Listener) ->
                 noteEditsListener = listener
             }
         }
-        userDataSource = mock() {
+        userDataSource = mock {
             every { userId } returns 23
             every { userName } returns "test user"
         }

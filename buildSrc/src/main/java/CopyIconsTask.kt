@@ -12,9 +12,9 @@ open class CopyIconsTask : DefaultTask() {
     @TaskAction
     fun run() {
         var fileNames = ArrayList<String>()
-        val dimensions = listOf("","-mdpi","-hdpi","-xhdpi","-xxhdpi")
-        val sourceDirs = dimensions.map { sourceDir+it }
-        val targetDirs = dimensions.map { targetDir+it }
+        val dimensions = listOf("", "-mdpi", "-hdpi", "-xhdpi", "-xxhdpi")
+        val sourceDirs = dimensions.map { sourceDir + it }
+        val targetDirs = dimensions.map { targetDir + it }
 
         for (i in dimensions.indices) {
             val srcDir = sourceDirs[i]

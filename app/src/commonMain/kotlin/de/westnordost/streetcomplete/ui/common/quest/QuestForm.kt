@@ -201,9 +201,11 @@ private fun QuestForm(
                 isResurvey = isResurvey,
             )
         },
-        note = if (note != null) { {
-            ObjectNote(text = note)
-        } } else null,
+        note = if (note != null) {
+            { ObjectNote(text = note) }
+        } else {
+            null
+        },
         content = {
             QuestAnswerContent(
                 modifier = Modifier.fillMaxWidth(),
@@ -215,7 +217,9 @@ private fun QuestForm(
         },
         fab = if (onClickOk != null) {
             { FloatingOkButton(visible = isComplete, onClick = onClickOk) }
-        } else null,
+        } else {
+            null
+        },
         modifier = modifier,
     )
 

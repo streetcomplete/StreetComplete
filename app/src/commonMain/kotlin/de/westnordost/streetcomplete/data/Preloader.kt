@@ -1,7 +1,7 @@
 package de.westnordost.streetcomplete.data
 
-import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log

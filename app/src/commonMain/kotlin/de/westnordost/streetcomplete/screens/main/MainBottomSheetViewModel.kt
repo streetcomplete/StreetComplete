@@ -23,7 +23,6 @@ import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
-import de.westnordost.streetcomplete.data.quest.Quest
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenController
 import de.westnordost.streetcomplete.util.ktx.launch
@@ -181,14 +180,13 @@ class MainBottomSheetViewModelImpl(
         shownBottomSheet.value = ShownBottomSheet.OsmNoteQuest(quest, note)
     }
 
-    private fun getNoteForElementAt(position: LatLon): Note? {
-        return notesSource
+    private fun getNoteForElementAt(position: LatLon): Note? =
+        notesSource
             .getAll(BoundingBox(position, position).enlargedBy(0.2))
             .filter { note ->
                 note.position.truncateTo6Decimals() == position.truncateTo6Decimals() &&
                 hiddenQuestsController.get(OsmNoteQuestKey(note.id)) == null
             }.firstOrNull()
-    }
 }
 
 /** The data necessary to show an element from the map clicked on in the bottom sheet */

@@ -55,6 +55,5 @@ fun HydrantDiameterForm(
 // used.
 // The exception is United Kingdom, which sometimes uses millimeter, sometimes inches. Fortunately,
 // this can be determined automatically, too
-private fun getHydrantDiameterUnit(diameter: Int, countryCode: String?): FireHydrantDiameter.Unit {
-    return if (countryCode == "GB" && diameter <= 25) Inch else Millimeter
-}
+private fun getHydrantDiameterUnit(diameter: Int, countryCode: String?): FireHydrantDiameter.Unit =
+    if (countryCode == "GB" && diameter <= 25) Inch else Millimeter

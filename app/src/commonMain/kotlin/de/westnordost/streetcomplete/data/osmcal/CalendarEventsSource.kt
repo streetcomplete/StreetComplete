@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.osmcal
 
-
 interface CalendarEventsSource {
     interface Listener {
         fun onUnreadCountChanged()

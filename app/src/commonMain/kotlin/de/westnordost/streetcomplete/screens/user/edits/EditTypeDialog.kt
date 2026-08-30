@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
@@ -27,11 +28,10 @@ import de.westnordost.streetcomplete.quests.recycling.AddRecyclingType
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.user.DialogContentWithIconLayout
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
-import de.westnordost.streetcomplete.ui.theme.headlineSmall
-import org.jetbrains.compose.resources.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
+import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 /** Shows the details for a certain quest type in a custom dialog. */
 @Composable
