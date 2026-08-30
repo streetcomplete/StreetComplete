@@ -19,7 +19,7 @@ class AddFireHydrantDiameter : OsmFilterQuestType<FireHydrantDiameterAnswer>() {
         nodes with
          emergency = fire_hydrant
          and fire_hydrant:type and
-         (fire_hydrant:type = pillar or fire_hydrant:type = underground)
+         fire_hydrant:type ~ pillar|underground
          and !fire_hydrant:diameter
          and (fire_hydrant:diameter:signed != no or fire_hydrant:diameter:signed older today -6 years)
     """
