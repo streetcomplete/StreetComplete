@@ -34,4 +34,6 @@ fun FeatureDictionary.getThingOrDisusedThing(
             tags = element.tags,
             geometry = GeometryType.entries.toList()
         )
-    } else null
+    } else {
+        null
+    }

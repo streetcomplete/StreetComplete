@@ -105,16 +105,18 @@ private fun NameInput(
         value = value,
         onValueChange = onValueChange,
         modifier = modifier,
-        placeholder = if (!suggestion.isNullOrEmpty()) { {
-            BasicText(
+        placeholder = if (!suggestion.isNullOrEmpty()) {
+            { BasicText(
                 text = suggestion,
                 style = textStyle.copy(color = textStyle.color.copy(alpha = 0.2f)),
                 // so that the text aligns center, just like the actual text
                 modifier = Modifier.fillMaxWidth(),
                 maxLines = 1,
                 autoSize = TextAutoSize.StepBased(maxFontSize = textStyle.fontSize)
-            )
-        } } else null,
+            ) }
+        } else {
+            null
+        },
         textStyle = textStyle,
         isError = value.length > MAX_OSM_TAG_VALUE_LENGTH,
     )

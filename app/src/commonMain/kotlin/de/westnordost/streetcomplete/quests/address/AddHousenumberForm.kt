@@ -96,7 +96,9 @@ fun AddHousenumberForm(
                             addressNumberAndName = addressNumberAndName.copy(number = BlockAndHouseNumber("", ""))
                         }
                 }
-            } else null
+            } else {
+                null
+            }
 
             listOfNotNull(
                 AnswerItem(stringResource(Res.string.quest_address_answer_no_housenumber)) { onNoHouseNumber() },

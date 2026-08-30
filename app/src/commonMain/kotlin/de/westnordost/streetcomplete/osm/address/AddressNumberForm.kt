@@ -21,7 +21,9 @@ fun AddressNumberForm(
     val blockAndHouseNumberSuggestion = remember(blockSuggestion, houseNumberSuggestion) {
         if (houseNumberSuggestion != null || blockSuggestion != null) {
             BlockAndHouseNumber(blockSuggestion.orEmpty(), houseNumberSuggestion.orEmpty())
-        } else null
+        } else {
+            null
+        }
     }
 
     var value = value

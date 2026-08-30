@@ -132,7 +132,9 @@ fun LaneNarrowingTrafficCalmingForm(
                     AnswerItem(stringResource(Res.string.lane_narrowing_traffic_calming_none)) {
                         confirmRemoveLaneNarrowingTrafficCalming = true
                     }
-                } else null
+                } else {
+                    null
+                }
             ) }
         )
     }

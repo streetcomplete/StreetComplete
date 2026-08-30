@@ -48,7 +48,9 @@ fun FeatureItem(
             languages = languages,
             country = countryCode
         )
-    } else null
+    } else {
+        null
+    }
 
     val annotatedName = remember(feature, searchText, color) {
         feature.buildAnnotatedName(searchText = searchText, color = color)

@@ -38,7 +38,9 @@ fun FeatureDictionary.getPlaceOrDisusedPlace(
             tags = element.tags,
             geometry = GeometryType.entries.toList()
         )
-    } else null
+    } else {
+        null
+    }
 
 /** Get a disused version of the given [element]'s associated feature in the given [languages] and
  * [country].

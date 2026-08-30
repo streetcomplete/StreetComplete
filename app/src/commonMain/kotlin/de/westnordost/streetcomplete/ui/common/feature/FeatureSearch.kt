@@ -73,7 +73,9 @@ fun FeatureSearch(
                 country = countryCode,
                 geometry = geometryType,
             ).filter(filterFn).take(50).toList()
-        } else defaultFeatures
+        } else {
+            defaultFeatures
+        }
     }
 
     Column(

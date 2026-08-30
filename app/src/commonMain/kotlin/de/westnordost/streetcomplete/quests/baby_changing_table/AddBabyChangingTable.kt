@@ -49,7 +49,9 @@ class AddBabyChangingTable : OsmFilterQuestType<BabyChangingTableAnswer>() {
                 listOfNotNull(
                     if (element.tags["amenity"] != "toilets") {
                         AnswerItem(stringResource(Res.string.quest_wheelchairAccessPat_noToilet)) { on(Answer(NO_TOILET)) }
-                    } else null
+                    } else {
+                        null
+                    }
                 )
             },
         )
