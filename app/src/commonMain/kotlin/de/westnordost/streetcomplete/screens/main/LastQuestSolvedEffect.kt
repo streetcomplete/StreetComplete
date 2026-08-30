@@ -71,8 +71,8 @@ fun LastQuestSolvedEffect(
                     scaleX = scale.value
                     scaleY = scale.value
                     alpha = 1f - fling.value * 0.67f
-                    translationX = (questSolvedEvent.position.x - iconSize/2) * (1f - fling.value) + targetX * fling.value
-                    translationY = (questSolvedEvent.position.y - iconSize/2) * (1f - fling.value)
+                    translationX = (questSolvedEvent.position.x - iconSize / 2) * (1f - fling.value) + targetX * fling.value
+                    translationY = (questSolvedEvent.position.y - iconSize / 2) * (1f - fling.value)
                 }
                 .background(Color.White, CircleShape)
             ) {

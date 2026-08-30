@@ -79,7 +79,7 @@ class MapDataWithEditsSourceTest {
             every { getNode(any()) } calls { (id: Long) ->
                 mapData.getNode(id)
             }
-            every { getWay(any())} calls { (id: Long) ->
+            every { getWay(any()) } calls { (id: Long) ->
                 mapData.getWay(id)
             }
             every { getRelation(any()) } calls { (id: Long) ->

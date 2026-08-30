@@ -248,6 +248,6 @@ val POPULAR_PLACE_FEATURE_IDS = listOf(
 
     // More:
     // mostly found only along main roads or certain districts
-    //"amenity/fuel", // 0.6 M
-    //"tourism/hotel", // 0.4 M
+    // "amenity/fuel", // 0.6 M
+    // "tourism/hotel", // 0.4 M
 )

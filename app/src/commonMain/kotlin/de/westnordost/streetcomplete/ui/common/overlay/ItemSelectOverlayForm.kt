@@ -87,7 +87,7 @@ inline fun <reified I> ItemSelectOverlayForm(
                     content = itemContent,
                 )
             }
-            if(lastPicked.isNotEmpty()) {
+            if (lastPicked.isNotEmpty()) {
                 LastPickedChipsRow(
                     items = lastPicked,
                     onClick = { selectedItem = it },

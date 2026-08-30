@@ -67,7 +67,7 @@ fun <T> RadioGroup(
 private fun RadioGroupPreview() {
     var selectedOption by remember { mutableStateOf<Int?>(null) }
     RadioGroup(
-        options = listOf(0,1,2,3),
+        options = listOf(0, 1, 2, 3),
         onSelectionChange = { selectedOption = it },
         selectedOption = selectedOption,
         itemContent = {

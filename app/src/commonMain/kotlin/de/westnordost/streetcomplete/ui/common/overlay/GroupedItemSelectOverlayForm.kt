@@ -39,7 +39,7 @@ import org.koin.compose.koinInject
  *  Additionally, previously picked items (persisted via [prefs] and [favoriteKey]) are displayed
  *  beneath that as chips, padded by [topSelectableItems], as a shortcut. */
 @Composable
-inline fun <reified G: Group<I>, reified I> GroupedItemSelectOverlayForm(
+inline fun <reified G : Group<I>, reified I> GroupedItemSelectOverlayForm(
     noinline on: (Action) -> Unit,
     groups: List<G>,
     topSelectableItems: List<I>,

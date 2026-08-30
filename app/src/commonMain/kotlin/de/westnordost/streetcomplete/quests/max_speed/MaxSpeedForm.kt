@@ -82,7 +82,7 @@ fun MaxSpeedForm(
         AnimatedContent(
             targetState = answer,
             // only do any animation when the maxspeed type changes!
-            contentKey = { it?.let { it::class }},
+            contentKey = { it?.let { it::class } },
             contentAlignment = Alignment.TopCenter
         ) { answer ->
             when (answer) {

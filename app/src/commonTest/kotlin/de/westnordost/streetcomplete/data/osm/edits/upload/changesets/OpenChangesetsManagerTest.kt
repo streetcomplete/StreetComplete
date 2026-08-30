@@ -61,7 +61,7 @@ class OpenChangesetsManagerTest {
         val p0 = LatLon(0.0, 0.0)
         val p1 = p0.translate(5001.0, 0.0)
 
-        every { openChangesetsDB.get(questType.name, "source") }returns
+        every { openChangesetsDB.get(questType.name, "source") } returns
             OpenChangeset(questType.name, "source", 123, p0)
 
         assertEquals(123L, manager.getOrCreateChangeset(questType, "source", p1, false))
