@@ -49,7 +49,6 @@ class StatisticsControllerImplTest {
             }
         }
 
-
         statisticsController = StatisticsControllerImpl(
             editTypeStatisticsDao,
             countryStatisticsDao,

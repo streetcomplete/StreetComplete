@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.quests.board_type
 
 import de.westnordost.streetcomplete.quests.board_type.BoardType.*
 import de.westnordost.streetcomplete.resources.*
-
 import org.jetbrains.compose.resources.StringResource
 
 sealed interface BoardTypeAnswer {

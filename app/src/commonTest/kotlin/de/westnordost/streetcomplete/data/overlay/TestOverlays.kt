@@ -29,7 +29,6 @@ open class TestOverlayA : Overlay {
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
     ) {}
-
 }
 
 class TestOverlayB : TestOverlayA()

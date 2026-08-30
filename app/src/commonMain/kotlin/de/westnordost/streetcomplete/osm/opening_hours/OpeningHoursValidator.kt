@@ -313,5 +313,4 @@ private fun ExtendedTime.toMinutesOfDay(): Int = when (this) {
     is ClockTime -> hour * 60 + minutes
     is ExtendedClockTime -> hour * 60 + minutes
     is VariableTime -> throw IllegalArgumentException()
-
 }

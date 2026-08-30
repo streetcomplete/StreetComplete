@@ -272,7 +272,6 @@ val commonModule = module {
 
     single<UploadProgressSource> { get<Uploader>() }
 
-
     // download
 
     factory { DownloadedTilesDao(get()) }
@@ -287,7 +286,6 @@ val commonModule = module {
     single { DownloadedTilesController(get()) }
 
     factory { FeedsUpdater(get(), get(), get(), get(), get()) }
-
 
     // OSM API client
 

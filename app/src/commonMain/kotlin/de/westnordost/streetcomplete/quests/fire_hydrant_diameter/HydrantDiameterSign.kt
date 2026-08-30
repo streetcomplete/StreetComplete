@@ -76,7 +76,6 @@ private enum class FireHydrantDiameterSign(
     Ua(Res.drawable.fire_hydrant_sign_ua, Blue, DpOffset(120.dp, 144.dp), DpSize(138.dp, 88.dp)),
 }
 
-
 @Preview
 @Composable
 private fun HydrantDiameterSignFormPreview() {

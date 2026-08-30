@@ -273,7 +273,6 @@ kotlin {
     }
 }
 
-
 compose {
     resources {
         publicResClass = true
@@ -286,7 +285,6 @@ dependencies {
     // see comment in android.compileOptions.isCoreLibraryDesugaringEnabled
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 }
-
 
 tasks.register<UpdateContributorStatisticsTask>("updateContributorStatistics") {
     group = "streetcomplete"
@@ -487,4 +485,3 @@ androidComponents {
         variant.sources.res?.addStaticSourceDirectory(layout.buildDirectory.dir("generated/androidMain/res").get().asFile.absolutePath)
     }
 }
-

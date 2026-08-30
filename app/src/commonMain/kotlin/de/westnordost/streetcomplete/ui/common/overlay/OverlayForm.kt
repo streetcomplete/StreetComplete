@@ -108,7 +108,6 @@ fun OverlayForm(
             }
 
             result.add(AnswerItem(stringResource(Res.string.leave_note)) { on(Action.LeaveNote) })
-
         }
         return result
     }
@@ -151,8 +150,6 @@ fun OverlayForm(
             },
         )
     }
-
-
 
     if (confirmDiscard) {
         ConfirmDiscardDialog(

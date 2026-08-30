@@ -137,7 +137,6 @@ fun MoveNodeForm(
     }
 }
 
-
 private fun DrawScope.drawArrow(
     color: Color,
     strokeWidth: Float,

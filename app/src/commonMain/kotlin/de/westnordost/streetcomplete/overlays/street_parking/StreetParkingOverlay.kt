@@ -75,7 +75,6 @@ class StreetParkingOverlay : Overlay {
     }
 }
 
-
 private val streetParkingTaggingNotExpected by lazy { """
     ways with
       highway ~ service|pedestrian

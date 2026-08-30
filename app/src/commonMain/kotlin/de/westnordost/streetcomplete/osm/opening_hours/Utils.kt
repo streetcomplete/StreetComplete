@@ -63,7 +63,6 @@ fun Set<Weekday>.toWeekdaysSelectors(): List<WeekdaysSelector> =
         }
     }
 
-
 fun Iterable<MonthsOrDateSelector>.getMonths(): Set<Month> {
     val months = HashSet<Month>()
     for (selector in this) {
@@ -91,7 +90,6 @@ private fun MonthRange.toMonths(): List<Month> {
     return range.map { Month.entries[it] }
 }
 
-
 fun Set<Month>.toMonthsSelectors(): List<MonthsOrDateSelector> =
     toOrdinalRanges(Month.entries).flatMap {
         val start = it.start
@@ -104,7 +102,6 @@ fun Set<Month>.toMonthsSelectors(): List<MonthsOrDateSelector> =
             listOf(MonthRange(Month.entries[start], Month.entries[end]))
         }
     }
-
 
 /** returns the index ranges at which the items in this set are present in the given list of
  *  [entries]. The ranges may loop around the [entries]' last item.
