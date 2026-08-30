@@ -189,6 +189,7 @@ import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmi
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
 import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound
 import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
+import de.westnordost.streetcomplete.quests.vending_machine.AddVendingMachineType
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside
@@ -493,6 +494,8 @@ fun questTypeRegistry(
     192 to AddHotWater(),
 
     177 to AddShelterCapacity(),
+
+    194 to AddVendingMachineType(),
 
     // toilets
     118 to AddToiletAvailability(), // shown in OsmAnd descriptions
