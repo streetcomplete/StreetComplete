@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
-import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
 
@@ -22,11 +21,11 @@ class AddDoctorType() : OsmFilterQuestType<List<Feature>>() {
           and !healthcare:speciality
         )
     """
-    override val changesetComment = "Survey what type of healthcare a doctor provides"
+    override val changesetComment = "Survey healthcare specialties"
     override val wikiLink = "Key:healthcare:speciality"
     override val icon = Res.drawable.quest_doctor_type
     override val title = Res.string.quest_doctor_type_title
-    override val achievements = listOf(CITIZEN, LIFESAVER)
+    override val achievements = listOf(LIFESAVER)
 
     @Composable
     override fun Form(on: (QuestAction<List<Feature>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
