@@ -36,7 +36,7 @@ class AddDoctorType() : OsmFilterQuestType<List<Feature>>() {
     }
 
     override fun applyAnswerTo(answer: List<Feature>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["healthcare:speciality"] = answer.joinToString(";") { it.tags["healthcare:speciality"] ?: "" }
+        tags["healthcare:speciality"] = answer.joinToString(";") { it.tags.getValue("healthcare:speciality") }
     }
 
     override fun getHighlightedElements(element: Element,mapData: MapDataWithGeometry) =
