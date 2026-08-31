@@ -109,8 +109,6 @@ class Preferences(private val prefs: ObservableSettings) {
     var mapIsFollowing: Boolean by prefs.boolean(MAP_FOLLOWING, true)
     var mapIsNavigationMode: Boolean by prefs.boolean(MAP_NAVIGATION_MODE, false)
 
-    var clearedTangramCache: Boolean by prefs.boolean(CLEARED_TANGRAM_CACHE, false)
-
     // application version
     var lastChangelogVersion: String? by prefs.nullableString(LAST_VERSION)
     var lastDataVersion: String? by prefs.nullableString(LAST_VERSION_DATA)
@@ -287,9 +285,6 @@ class Preferences(private val prefs: ObservableSettings) {
         private const val MAP_ZOOM = "map.zoom2"
         private const val MAP_FOLLOWING = "map.following"
         private const val MAP_NAVIGATION_MODE = "map.navigation_mode"
-
-        // clean-up after upgrade
-        private const val CLEARED_TANGRAM_CACHE = "cleared_tangram_cache"
 
         // quest & overlays
         private const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"

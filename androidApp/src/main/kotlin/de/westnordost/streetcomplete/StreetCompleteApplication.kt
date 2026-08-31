@@ -100,7 +100,6 @@ class StreetCompleteApplication : Application() {
                 onNewVersion()
             }
         }
-        clearTangramCache()
 
         settingsListeners += prefs.onLanguageChanged { updateDefaultLocales() }
         settingsListeners += prefs.onThemeChanged { updateTheme(it) }
@@ -153,17 +152,6 @@ class StreetCompleteApplication : Application() {
                 1, TimeUnit.DAYS,
             ).setInitialDelay(1, TimeUnit.HOURS).build()
         )
-    }
-
-    private fun clearTangramCache() {
-        if (prefs.clearedTangramCache) return
-        val externalCache = externalCacheDir ?: return
-        val tileCache = Path(externalCache.path, "tile_cache")
-        if (!fileSystem.exists(tileCache)) return
-        applicationScope.launch(Dispatchers.IO) {
-            fileSystem.deleteRecursively(tileCache, mustExist = false)
-            prefs.clearedTangramCache = true
-        }
     }
 }
 
