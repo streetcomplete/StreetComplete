@@ -68,7 +68,7 @@ fun FeaturesSelectionQuestForm(
             ) {
                 Icon(painterResource(Res.drawable.ic_add_24), contentDescription = null)
                 Spacer(Modifier.size(8.dp))
-                Text(stringResource(Res.string.quest_presets_preset_add))
+                Text(stringResource(Res.string.add))
             }
 
             if (showSearch) {
