@@ -366,8 +366,6 @@ fun questTypeRegistry(
 
     60 to AddGeneralFee(),
 
-    193 to AddDoctorType(),
-
     61 to AddDrinkingWater(), // used by AnyFinder
     62 to AddDrinkingWaterType(),
 
@@ -507,6 +505,7 @@ fun questTypeRegistry(
     127 to AddHalal(), // there are ~ 100 times more Muslims than Jews
     128 to AddKosher(),
     175 to AddGlutenFree(),
+    193 to AddDoctorType(), // often visible on signs / names
     129 to AddWheelchairAccessBusiness(), // used by wheelmap, OsmAnd, Organic Maps
     130 to AddInternetAccess(), // used by OsmAnd
     131 to AddAcceptsCards(), // this will often involve going inside and near the till

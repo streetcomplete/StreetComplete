@@ -5,7 +5,7 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.ui.common.quest.FeatureSelectionForm
+import de.westnordost.streetcomplete.ui.common.quest.FeaturesSelectionQuestForm
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import org.koin.compose.koinInject
 
@@ -25,7 +25,7 @@ fun AddDoctorTypeForm(
     element: Element,
     featureDictionary: FeatureDictionary = koinInject()
 ) {
-    FeatureSelectionForm(
+    FeaturesSelectionQuestForm(
         on = on,
         featureDictionary = featureDictionary,
         geometryType = element.geometryType,

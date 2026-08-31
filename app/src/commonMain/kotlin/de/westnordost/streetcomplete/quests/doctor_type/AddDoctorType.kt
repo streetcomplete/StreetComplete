@@ -2,10 +2,13 @@ package de.westnordost.streetcomplete.quests.doctor_type
 
 import androidx.compose.runtime.Composable
 import de.westnordost.osmfeatures.Feature
+import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.LIFESAVER
@@ -35,4 +38,7 @@ class AddDoctorType() : OsmFilterQuestType<List<Feature>>() {
     override fun applyAnswerTo(answer: List<Feature>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
         tags["healthcare:speciality"] = answer.joinToString(";") { it.tags["healthcare:speciality"] ?: "" }
     }
+
+    override fun getHighlightedElements(element: Element,mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with amenity=doctors or healthcare = doctor")
 }
