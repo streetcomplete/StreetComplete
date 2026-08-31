@@ -10,13 +10,18 @@ import de.westnordost.streetcomplete.util.ktx.geometryType
 import org.koin.compose.koinInject
 
 val POPULAR_DOCTORS_FEATURE_IDS = listOf(
-    // ordered roughly by usage number according to taginfo
-    "amenity/doctors/ophthalmology",
-    "amenity/doctors/paediatrics",
+    // ordered roughly by usage number according to taginfo (2026-09)
+    // ~20%
+    "amenity/doctors/general",
+    // ~3%
     "amenity/doctors/gynaecology",
-    "amenity/doctors/psychiatry",
-    "amenity/doctors/orthodontics",
+    "amenity/doctors/paediatrics",
+    "amenity/doctors/internal",
+    // ~2%
+    "amenity/doctors/orthopaedics",
     "amenity/doctors/dermatology",
+    "amenity/doctors/ophthalmology",
+    "amenity/doctors/otolaryngology",
 )
 
 @Composable
