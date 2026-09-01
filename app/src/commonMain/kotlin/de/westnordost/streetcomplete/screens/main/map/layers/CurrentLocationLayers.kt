@@ -1,8 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
-import androidx.compose.animation.core.Spring.StiffnessLow
 import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -10,13 +9,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.map_location_nyan
-import de.westnordost.streetcomplete.resources.map_location_shadow
-import de.westnordost.streetcomplete.resources.map_location_view_direction
+import de.westnordost.streetcomplete.resources.location_nyan
+import de.westnordost.streetcomplete.resources.location_shadow
+import de.westnordost.streetcomplete.resources.location_view_direction
+import de.westnordost.streetcomplete.screens.main.map.AccelerateDecelerateEasing
+import de.westnordost.streetcomplete.screens.main.map.LOCATION_ANIMATION_DURATION_MILLIS
 import de.westnordost.streetcomplete.screens.main.map.animateLatLonAsState
+import de.westnordost.streetcomplete.screens.main.map.animateMapRotationAsState
 import de.westnordost.streetcomplete.screens.main.map.inMeters
-import de.westnordost.streetcomplete.screens.main.map.toGeometry
-import de.westnordost.streetcomplete.ui.theme.Location
+import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
@@ -28,75 +29,84 @@ import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
+import org.maplibre.spatialk.geojson.Point
 
-//TODO maplibre-compose check whether to just replace this with org.maplibre.compose.layers.LocationIndicatorLayer
-//     (the TracksLayer animation needs to be in-sync with the moving of the location indicator)
-/** Displays the location + direction + accuracy marker on the map */
-@Composable @MaplibreComposable
+private val LocationColor = Color(0xff536dfe)
+
+/** Displays the current location's accuracy, bearing, shadow, and position marker. */
+@Composable
+@MaplibreComposable
 fun CurrentLocationLayers(
     location: Location,
-    rotation: Float?
+    rotation: Float?,
 ) {
-    val animatedPosition by animateLatLonAsState(targetValue = location.position)
-
+    val animatedPosition by animateLatLonAsState(location.position)
     val animatedAccuracy by animateFloatAsState(
         targetValue = location.accuracy,
-        animationSpec = spring(stiffness = StiffnessLow),
+        animationSpec = tween(
+            durationMillis = LOCATION_ANIMATION_DURATION_MILLIS,
+            easing = AccelerateDecelerateEasing,
+        ),
+        label = "LocationAccuracy",
     )
+    val animatedRotation by animateMapRotationAsState(rotation)
+    val aprilFirst = remember { isApril1st() }
 
-    val source = rememberGeoJsonSource(GeoJsonData.Features(animatedPosition.toGeometry()))
+    // TODO(maplibre-compose): Restore the legacy source's volatile flag when GeoJsonOptions exposes it.
+    val source = rememberGeoJsonSource(
+        data = GeoJsonData.Features(Point(animatedPosition.toPosition()))
+    )
 
     CircleLayer(
         id = "accuracy",
         source = source,
         opacity = const(0.15f),
-        color = const(Color.Location),
-        radius = inMeters(
-            width = animatedAccuracy,
-            latitude = animatedPosition.latitude
-        ),
+        color = const(LocationColor),
+        radius = inMeters(animatedAccuracy, animatedPosition.latitude),
         strokeOpacity = const(0.5f),
-        strokeColor = const(Color.Location),
+        strokeColor = const(LocationColor),
         strokeWidth = const(1.dp),
         pitchAlignment = const(CirclePitchAlignment.Map),
     )
-    if (rotation != null) {
+
+    // Android intentionally omits these two assets during its April 1 easter egg.
+    if (!aprilFirst) {
+        if (animatedRotation != null) {
+            SymbolLayer(
+                id = "direction",
+                source = source,
+                iconImage = image(painterResource(Res.drawable.location_view_direction)),
+                iconAllowOverlap = const(true),
+                iconIgnorePlacement = const(true),
+                iconRotate = const(animatedRotation!!),
+                iconPitchAlignment = const(IconPitchAlignment.Map),
+            )
+        }
         SymbolLayer(
-            id = "direction",
+            id = "location-shadow",
             source = source,
-            iconImage = image(painterResource(Res.drawable.map_location_view_direction)),
+            iconImage = image(painterResource(Res.drawable.location_shadow)),
             iconAllowOverlap = const(true),
             iconIgnorePlacement = const(true),
-            iconRotate = const(rotation),
             iconPitchAlignment = const(IconPitchAlignment.Map),
         )
     }
-    SymbolLayer(
-        id = "location-shadow",
+
+    CircleLayer(
+        id = "location",
         source = source,
-        iconImage = image(painterResource(Res.drawable.map_location_shadow)),
-        iconAllowOverlap = const(true),
-        iconIgnorePlacement = const(true),
-        iconPitchAlignment = const(IconPitchAlignment.Map),
+        color = const(LocationColor),
+        radius = const(8.dp),
+        strokeColor = const(Color.White),
+        strokeWidth = const(2.dp),
+        pitchAlignment = const(CirclePitchAlignment.Map),
     )
 
-    // let's not check for the date on every recomposition :-)
-    val isApril1st = remember { isApril1st() }
-    if (!isApril1st) {
-        CircleLayer(
-            id = "location",
-            source = source,
-            color = const(Color.Location),
-            radius = const(8.dp),
-            strokeColor = const(Color.White),
-            strokeWidth = const(2.dp),
-            pitchAlignment = const(CirclePitchAlignment.Map)
-        )
-    } else {
+    if (aprilFirst) {
         SymbolLayer(
             id = "location-nyan",
             source = source,
-            iconImage = image(painterResource(Res.drawable.map_location_nyan)),
+            iconImage = image(painterResource(Res.drawable.location_nyan)),
             iconSize = const(2f),
             iconAllowOverlap = const(true),
             iconIgnorePlacement = const(true),
@@ -104,4 +114,3 @@ fun CurrentLocationLayers(
         )
     }
 }
-

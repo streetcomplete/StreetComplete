@@ -36,13 +36,13 @@ preserve this behavior and respect reduced or disabled system animation.
 ### Missing volatile GeoJSON source option
 
 The legacy downloaded-area, recorded-track, focused-geometry, geometry-marker,
-and selected-pin sources explicitly set `GeoJsonSource.isVolatile = true`
+selected-pin, and current-location sources explicitly set `GeoJsonSource.isVolatile = true`
 because their geometry changes frequently. The snapshot's common
 `GeoJsonOptions` exposes tiling, clustering, line metrics, and synchronous
 updates, but not MapLibre Native's volatile-source flag.
 
 The shared layers still update their GeoJSON data through
-`rememberGeoJsonSource`, so both visualizations are functional. What cannot
+`rememberGeoJsonSource`, so the visualizations remain functional. What cannot
 currently be preserved is the legacy cache/performance hint. MapLibre Compose
 should expose this as a common GeoJSON source option on native-backed targets
 and document browser behavior.

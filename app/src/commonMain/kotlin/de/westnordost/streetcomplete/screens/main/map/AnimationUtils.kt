@@ -9,14 +9,40 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import de.westnordost.streetcomplete.util.math.normalizeLongitude
 import kotlin.math.PI
 import kotlin.math.cos
 
-private const val LOCATION_ANIMATION_DURATION_MILLIS = 600
+internal const val LOCATION_ANIMATION_DURATION_MILLIS = 600
+private const val ROTATION_ANIMATION_DURATION_MILLIS = 200
 
-private val AccelerateDecelerateEasing = Easing { fraction ->
+internal val AccelerateDecelerateEasing = Easing { fraction ->
     (cos((fraction + 1) * PI) / 2.0 + 0.5).toFloat()
+}
+
+/** Animates map bearing along its shortest turn, matching the legacy 200ms motion. */
+@Composable
+fun animateMapRotationAsState(targetValue: Float?): State<Float?> {
+    val animatedValue = remember { mutableStateOf(targetValue) }
+    LaunchedEffect(targetValue) {
+        val startValue = animatedValue.value
+        if (startValue == null || targetValue == null) {
+            animatedValue.value = targetValue
+            return@LaunchedEffect
+        }
+
+        Animatable(startValue).animateTo(
+            targetValue = shortestRotationTarget(startValue, targetValue),
+            animationSpec = tween(
+                durationMillis = ROTATION_ANIMATION_DURATION_MILLIS,
+                easing = AccelerateDecelerateEasing,
+            ),
+        ) {
+            animatedValue.value = value
+        }
+    }
+    return animatedValue
 }
 
 /** Animates along the shortest path across the antimeridian, matching the legacy 600ms motion. */
@@ -48,3 +74,6 @@ internal fun interpolateLatLon(start: LatLon, end: LatLon, fraction: Double): La
         longitude = normalizeLongitude(start.longitude + longitudeDelta * fraction),
     )
 }
+
+internal fun shortestRotationTarget(start: Float, target: Float): Float =
+    normalizeDegrees(target, start - 180f)

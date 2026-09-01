@@ -130,3 +130,17 @@ shared map is connected to target entry points.
 | Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Shared pin composition, painter registration, animation, and symbol placement compile for desktop. |
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared selected-pin layer compiles beside the active legacy component. |
 | iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Shared pin resources, painter composition, and animation compile and link for iOS. |
+
+## Current-location map layers
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.CurrentLocationAnimationTest'` | 4 pass | Antimeridian movement, shortest-turn bearing normalization, and latitude-aware meter scaling preserve or improve the legacy behavior. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.CurrentLocationAnimationTest'` | 4 pass | The same motion and scaling contract executes on the Android host runner. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Shared accuracy, bearing, shadow, dot, April 1 artwork, and animations compile for desktop. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared current-location layers compile beside the active legacy component. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Shared current-location artwork, expressions, and animations compile and link for iOS. |
+
+The legacy Android evaluator can jump the long way around the globe when a
+measurement crosses the antimeridian. The shared animation intentionally uses
+the shortest longitude delta, consistent with the already-migrated track layer.

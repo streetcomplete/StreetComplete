@@ -33,6 +33,10 @@
   to shared MapLibre Compose layers.
 - [x] Port selected-pin icon composition, placement, and overshoot animation to
   a shared MapLibre Compose layer.
+- [x] Port current-location accuracy, bearing, shadow, dot, April 1 artwork, and
+  motion animation to shared MapLibre Compose layers.
+- [ ] Restore the current-location GeoJSON source's volatile cache hint when
+  MapLibre Compose exposes it as a common source option.
 - [ ] Wire the shared map into the real main screen on each target, then remove
   the legacy Android assets and map stack only after parity is demonstrated.
 - [ ] Restore the legacy 300ms, system-animation-scale-aware global style

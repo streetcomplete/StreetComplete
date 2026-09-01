@@ -77,3 +77,7 @@
 - Selected quest pins now use a shared painter that reproduces the legacy
   71dp shadow, pin, and 48dp quest-icon composition. Their 300ms scale animation
   uses the same overshoot curve and restarts whenever the selection changes.
+- Current location now has shared accuracy, bearing, shadow, dot, and April 1
+  layers using the existing cross-platform artwork. Position and accuracy retain
+  the legacy 600ms timing, bearing retains its 200ms shortest-turn timing, and
+  position movement now also takes the shortest path across the antimeridian.
