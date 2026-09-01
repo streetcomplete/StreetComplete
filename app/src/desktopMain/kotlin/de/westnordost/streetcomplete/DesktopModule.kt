@@ -80,12 +80,16 @@ val desktopModule = module {
 
     single<AppStoreInfo> {
         object : AppStoreInfo {
+            // TODO(multiplatform): Add a rating URI if the desktop build is published through a
+            // store with a review page. The current direct distributable has no such destination.
             override fun getRatingUri(): String? = null
             override fun disallowsInAppDonationLinks(): Boolean = false
         }
     }
     factory<ArSupportChecker> {
         object : ArSupportChecker {
+            // TODO(multiplatform): Enable when StreetMeasure defines a desktop launch/result
+            // protocol. The existing AR feature depends on its Android-only application contract.
             override fun invoke(): Boolean = false
         }
     }
