@@ -107,8 +107,8 @@ class MapQuestPinsSource(
         // require zoom >= 14, which is the lowest zoom level where quests are shown
         val zoom = cameraState.position.zoom
         if (zoom < 14) return
-        val displayedArea = cameraState.projection
-            ?.queryVisibleBoundingBox()
+        val displayedArea = cameraState.viewport
+            ?.visibleBoundingBox
             ?.toBoundingBox()
             ?: return
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)

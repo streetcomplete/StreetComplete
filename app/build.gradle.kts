@@ -145,9 +145,6 @@ kotlin {
                 // I/O
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
-                // location
-                implementation("org.maplibre.compose:location:0.15.0")
-
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.0")
                 implementation("androidx.sqlite:sqlite-bundled:2.7.0")
@@ -199,7 +196,8 @@ kotlin {
                 // UI widgets
 
                 // Map
-                implementation("org.maplibre.compose:maplibre-compose:0.14.0")
+                implementation("org.maplibre.compose:maplibre-compose:0.15.0")
+                implementation("org.maplibre.compose:location:0.15.0")
 
                 // non-lazy grid
                 // NOTE: might replace with
@@ -246,8 +244,11 @@ kotlin {
                 // HTTP Client
                 implementation("io.ktor:ktor-client-android:3.5.1")
 
+                // map
+                implementation("org.maplibre.compose:maplibre-compose-runtime-vulkan-android:0.15.0")
+
                 // map and location
-                //implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
+                implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
 
                 // required to @Preview composables in Android Studio
                 runtimeOnly("androidx.compose.ui:ui-tooling:1.10.0")

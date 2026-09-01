@@ -36,6 +36,7 @@ import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.sources.Source
 import org.maplibre.compose.sources.TileSetOptions
 import org.maplibre.compose.sources.rememberVectorSource
+import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
 import kotlin.math.max
 
@@ -478,7 +479,7 @@ private fun OnewayArrowsLayer(source: Source, colors: MapColors) {
         iconImage = image(painterResource(Res.drawable.map_oneway_arrow)),
         iconColor = const(colors.onewayArrow),
         iconSize = byZoom(17 to 0.25f, 24 to 16.0f),
-        iconPadding = const(PaddingValues.Absolute(5.dp, 5.dp, 5.dp, 5.dp)),
+        iconPadding = const(DpPadding(5.dp, 5.dp, 5.dp, 5.dp)),
         iconRotate = const(90),
         iconRotationAlignment = const(IconRotationAlignment.Map)
     )

@@ -32,7 +32,7 @@ import org.maplibre.compose.camera.CameraState
 import org.maplibre.compose.camera.rememberCameraState
 import org.maplibre.compose.map.MapOptions
 import org.maplibre.compose.map.MaplibreMap
-import org.maplibre.compose.map.OrnamentOptions
+import org.maplibre.compose.overlay.MapOverlay
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.style.BaseStyle
@@ -107,7 +107,7 @@ fun MainMap(
         cameraState = cameraState,
         styleState = styleState,
         onMapLongClick = onMapLongClick,
-        options = MapOptions(ornamentOptions = OrnamentOptions.AllDisabled)
+        overlay = MapOverlay.None
     ) {
         val languages = listOf(Locale.current.language)
         val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light

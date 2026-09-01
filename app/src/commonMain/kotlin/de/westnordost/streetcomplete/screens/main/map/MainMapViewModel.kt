@@ -31,8 +31,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import org.maplibre.compose.camera.CameraState
-import org.maplibre.compose.sources.ComputedSource
-import org.maplibre.compose.sources.ComputedSourceOptions
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 
