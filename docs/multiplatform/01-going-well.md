@@ -131,6 +131,9 @@
 - Main-map highlight and visibility state is now common too. Quest/edit pin
   mode, focused geometry, quest-form markers, selected pins, and overlay/pin
   visibility no longer need to be retained by the Android map fragment.
+- The shared state now exposes the rendered scale, visible download bounds,
+  projected coordinates, and animated target/zoom/padding moves needed by the
+  HUD, geo links, context menu, and quest forms.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers

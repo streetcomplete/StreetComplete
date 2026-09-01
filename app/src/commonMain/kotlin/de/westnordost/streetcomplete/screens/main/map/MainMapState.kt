@@ -76,6 +76,9 @@ class MainMapState internal constructor(
     val displayedLocation: Location? get() = controller.displayedLocation
     val cameraPosition: CameraPosition get() = mapState.cameraPosition
     val cameraPadding: PaddingValues get() = controller.cameraPadding
+    val metersPerDp: Double get() = mapState.presentation?.viewport?.metersPerDpAtTarget ?: 0.0
+    val displayedArea: de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox?
+        get() = mapState.presentation?.viewport?.visibleBoundingBox?.toStreetCompleteBoundingBox()
     val displayedMeasurement: LocationMeasurement? get() = tracks.displayedMeasurement
     val isRecordingTrack: Boolean get() = tracks.isRecording
     val currentRenderedTrack: List<LatLon> get() = tracks.currentRenderedTrack
@@ -93,6 +96,12 @@ class MainMapState internal constructor(
     fun zoomOut() = controller.zoomBy(-1.0)
     fun zoomByDrag(dp: Float) = controller.zoomBy(dp / 20.0)
     fun resetCompass() = controller.resetCompass()
+    fun moveTo(
+        position: LatLon,
+        zoom: Double? = null,
+        padding: PaddingValues = cameraPadding,
+        duration: Duration = 300.milliseconds,
+    ) = controller.moveTo(position, zoom, padding, duration)
     fun fitCluster(positions: List<LatLon>) = controller.fitCluster(positions)
     fun startFocus(geometry: ElementGeometry, padding: PaddingValues = PaddingValues(0.dp)) =
         controller.startFocus(geometry, padding)
@@ -289,6 +298,21 @@ internal class MainMapCameraController(
 
     fun zoomBy(delta: Double) {
         animateCamera(300.milliseconds) { copy(zoom = zoom + delta) }
+    }
+
+    fun moveTo(
+        position: LatLon,
+        zoom: Double?,
+        padding: PaddingValues,
+        duration: Duration,
+    ) {
+        cameraPadding = padding
+        animateCamera(duration) {
+            copy(
+                target = position.toPosition(),
+                zoom = zoom ?: this.zoom,
+            )
+        }
     }
 
     fun fitCluster(positions: List<LatLon>) {

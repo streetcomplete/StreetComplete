@@ -1,8 +1,9 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import de.westnordost.streetcomplete.data.location.Location
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
@@ -106,6 +107,20 @@ class MainMapCameraControllerTest {
         advanceUntilIdle()
 
         assertEquals(10.75, camera.position.zoom, absoluteTolerance = 0.001)
+        assertEquals(450.milliseconds, camera.animations.single().duration)
+    }
+
+    @Test fun explicitMoveUpdatesTargetZoomPaddingAndDuration() = runTest {
+        val camera = FakeCamera(CameraPosition(zoom = 12.0))
+        val controller = controller(camera = camera, scope = this)
+        val padding = PaddingValues(start = 40.dp, bottom = 80.dp)
+
+        controller.moveTo(LatLon(3.0, 4.0), 17.5, padding, 450.milliseconds)
+        advanceUntilIdle()
+
+        assertEquals(Position(4.0, 3.0), camera.position.target)
+        assertEquals(17.5, camera.position.zoom)
+        assertEquals(padding, controller.cameraPadding)
         assertEquals(450.milliseconds, camera.animations.single().duration)
     }
 
