@@ -11,6 +11,8 @@ import org.maplibre.spatialk.geojson.Point
 import org.maplibre.spatialk.geojson.Position
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class PinsLayersTest {
 
@@ -57,5 +59,24 @@ class PinsLayersTest {
         )
 
         assertEquals(mapOf("text" to "value", "number" to "12"), properties.toStringMap())
+    }
+
+    @Test fun onlyKnownStyleGenerationRacesAreRecoverable() {
+        assertTrue(
+            IllegalStateException(
+                "Style operation belongs to a stale loaded-style identity"
+            ).isStyleHandleRace()
+        )
+        assertTrue(
+            IllegalStateException(
+                "Style operation belongs to a stale or unready loaded-style identity"
+            ).isStyleHandleRace()
+        )
+        assertTrue(
+            IllegalStateException(
+                "Style operation crossed a loaded-style resource change"
+            ).isStyleHandleRace()
+        )
+        assertFalse(IllegalStateException("Could not parse GeoJSON").isStyleHandleRace())
     }
 }

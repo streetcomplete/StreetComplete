@@ -84,9 +84,19 @@ fun PinsLayers(
     }
 
     // TODO(maplibre-compose): Restore the legacy source's volatile flag when GeoJsonOptions exposes it.
-    val source = remember { GeoJsonSource(PINS_SOURCE_ID, data, options) }
+    // Keep this definition stable: declarative GeoJSON replacement currently hides the Android
+    // render surface while the replacement is prepared. The fresh handle retries after a style
+    // generation invalidates an in-flight update.
+    val source = remember(options) { GeoJsonSource(PINS_SOURCE_ID, data, options) }
     val sourceHandle = mapState.style.sources[PINS_SOURCE_ID] as? GeoJsonSourceHandle
-    LaunchedEffect(sourceHandle, data) { sourceHandle?.setData(data) }
+    LaunchedEffect(sourceHandle, data) {
+        try {
+            sourceHandle?.setData(data)
+        } catch (error: IllegalStateException) {
+            // A replacement generation publishes another handle and restarts this effect.
+            if (!error.isStyleHandleRace()) throw error
+        }
+    }
 
     SymbolLayer(
         id = "pin-cluster-layer",
@@ -111,8 +121,13 @@ fun PinsLayers(
             val cluster = features.firstOrNull() ?: return@SymbolLayer ClickResult.Pass
             val handle = sourceHandle ?: return@SymbolLayer ClickResult.Pass
             coroutineScope.launch {
-                val leaves = handle.getClusterLeaves(cluster, Long.MAX_VALUE, 0L)
-                onClickCluster(leaves.features.mapNotNull { it.geometry.toLatLonOrNull() })
+                try {
+                    val leaves = handle.getClusterLeaves(cluster, Long.MAX_VALUE, 0L)
+                    onClickCluster(leaves.features.mapNotNull { it.geometry.toLatLonOrNull() })
+                } catch (error: IllegalStateException) {
+                    // Ignore a click racing a base-style replacement.
+                    if (!error.isStyleHandleRace()) throw error
+                }
             }
             ClickResult.Consume
         },
@@ -205,3 +220,9 @@ internal fun JsonObject.toStringMap(): Map<String, String> = mapNotNull { (key, 
     val stringValue = (value as? JsonPrimitive)?.contentOrNull ?: return@mapNotNull null
     key to stringValue
 }.toMap()
+
+internal fun IllegalStateException.isStyleHandleRace(): Boolean = message in setOf(
+    "Style operation belongs to a stale loaded-style identity",
+    "Style operation belongs to a stale or unready loaded-style identity",
+    "Style operation crossed a loaded-style resource change",
+)

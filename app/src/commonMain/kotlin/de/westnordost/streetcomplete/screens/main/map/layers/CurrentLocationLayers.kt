@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.resources.Res
@@ -32,6 +33,9 @@ import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Point
 
 private val LocationColor = Color(0xff536dfe)
+private val LocationDirectionSize = DpSize(96.dp, 96.dp)
+private val LocationShadowSize = DpSize(28.dp, 28.dp)
+private val LocationNyanSize = DpSize(34.dp, 22.dp)
 
 /** Displays the current location's accuracy, bearing, shadow, and position marker. */
 @Composable
@@ -75,7 +79,10 @@ fun CurrentLocationLayers(
             SymbolLayer(
                 id = "direction",
                 source = source,
-                iconImage = image(painterResource(Res.drawable.location_view_direction)),
+                iconImage = image(
+                    painterResource(Res.drawable.location_view_direction),
+                    size = LocationDirectionSize,
+                ),
                 iconAllowOverlap = const(true),
                 iconIgnorePlacement = const(true),
                 iconRotate = const(animatedRotation!!),
@@ -85,7 +92,12 @@ fun CurrentLocationLayers(
         SymbolLayer(
             id = "location-shadow",
             source = source,
-            iconImage = image(painterResource(Res.drawable.location_shadow)),
+            // Android's layer-list painter reports a zero intrinsic size. MapLibre Compose
+            // rasterizes style painters eagerly, so preserve the drawable's declared size here.
+            iconImage = image(
+                painterResource(Res.drawable.location_shadow),
+                size = LocationShadowSize,
+            ),
             iconAllowOverlap = const(true),
             iconIgnorePlacement = const(true),
             iconPitchAlignment = const(IconPitchAlignment.Map),
@@ -106,7 +118,10 @@ fun CurrentLocationLayers(
         SymbolLayer(
             id = "location-nyan",
             source = source,
-            iconImage = image(painterResource(Res.drawable.location_nyan)),
+            iconImage = image(
+                painterResource(Res.drawable.location_nyan),
+                size = LocationNyanSize,
+            ),
             iconSize = const(2f),
             iconAllowOverlap = const(true),
             iconIgnorePlacement = const(true),

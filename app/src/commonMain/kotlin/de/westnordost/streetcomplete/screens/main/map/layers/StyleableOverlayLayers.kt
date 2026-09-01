@@ -71,9 +71,18 @@ fun rememberStyleableOverlaySource(
     val options = remember { GeoJsonOptions(minZoom = MIN_ZOOM) }
 
     // TODO(maplibre-compose): Restore the legacy source's volatile flag when GeoJsonOptions exposes it.
-    val source = remember { GeoJsonSource(OVERLAY_SOURCE_ID, data, options) }
+    // Keep the definition stable to avoid hiding Android's render surface during large declarative
+    // GeoJSON replacements. A newly published handle retries an update that lost a style race.
+    val source = remember(options) { GeoJsonSource(OVERLAY_SOURCE_ID, data, options) }
     val sourceHandle = mapState.style.sources[OVERLAY_SOURCE_ID] as? GeoJsonSourceHandle
-    LaunchedEffect(sourceHandle, data) { sourceHandle?.setData(data) }
+    LaunchedEffect(sourceHandle, data) {
+        try {
+            sourceHandle?.setData(data)
+        } catch (error: IllegalStateException) {
+            // A replacement generation publishes another handle and restarts this effect.
+            if (!error.isStyleHandleRace()) throw error
+        }
+    }
     return source
 }
 
