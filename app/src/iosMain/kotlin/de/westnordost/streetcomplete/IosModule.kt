@@ -12,14 +12,17 @@ import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.IosActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.download.IosDownloadController
+import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.maptiles.IosMapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.IosChangesetAutoCloser
-import de.westnordost.streetcomplete.data.upload.IosUploadController
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
+import de.westnordost.streetcomplete.data.sync.CoroutineChangesetAutoCloser
+import de.westnordost.streetcomplete.data.sync.CoroutineDownloadController
+import de.westnordost.streetcomplete.data.sync.CoroutineUploadController
 import de.westnordost.streetcomplete.data.upload.UploadController
+import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
 import de.westnordost.streetcomplete.screens.about.IosAppStoreInfo
 import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
@@ -33,6 +36,10 @@ import de.westnordost.streetcomplete.util.error_reporting.EmptyCrashReportHolder
 import de.westnordost.streetcomplete.util.sound.IosSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
@@ -55,6 +62,10 @@ private val COMPOSE_FILES_DIR = NSBundle.mainBundle.resourcePath +
 
 @OptIn(ExperimentalForeignApi::class)
 val iosModule = module {
+
+    single(named("ApplicationScope")) {
+        CoroutineScope(SupervisorJob() + Dispatchers.Default + CoroutineName("Application"))
+    }
 
     // metadata
 
@@ -129,15 +140,30 @@ val iosModule = module {
 
     // connection
 
-    factory<ActiveNetworkConnection> { IosActiveNetworkConnection() }
+    single<ActiveNetworkConnection> { IosActiveNetworkConnection() }
 
     // background jobs
 
-    single<UploadController> { IosUploadController() }
+    // TODO(multiplatform): Register BGProcessingTask handlers so automatic sync can survive
+    // process suspension and relaunch instead of only running in this application scope.
 
-    single<DownloadController> { IosDownloadController() }
+    single<UploadController> {
+        CoroutineUploadController(get<CoroutineScope>(named("ApplicationScope")), get<Uploader>())
+    }
 
-    factory<ChangesetAutoCloser> { IosChangesetAutoCloser() }
+    single<DownloadController> {
+        CoroutineDownloadController(get<CoroutineScope>(named("ApplicationScope")), get<Downloader>())
+    }
+
+    single<ChangesetAutoCloser> {
+        CoroutineChangesetAutoCloser(
+            get<CoroutineScope>(named("ApplicationScope")),
+        ) {
+            // Resolve this only when delayed work runs: OpenChangesetsManager itself needs the
+            // auto-closer, so eager constructor injection would form a Koin resolution cycle.
+            get<OpenChangesetsManager>().closeOldChangesets()
+        }
+    }
 
     factory<PeriodicCleaner> { IosPeriodicCleaner() }
 

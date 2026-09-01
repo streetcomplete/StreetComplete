@@ -34,3 +34,15 @@ The desktop runner initially exposed two real portability issues: an Android-onl
 Koin navigation artifact was declared in `commonMain`, and FileKit camera/share
 APIs were referenced directly from common code despite having no JVM variants.
 Both dependency-shape problems are fixed in this layer.
+
+## iOS sync foundation
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.data.sync.CoroutineSyncControllersTest'` | 4 pass | Unique upload work, automatic-download retention, user-download replacement, and delayed changeset rescheduling behave as designed. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The real common Koin graph, coroutine controllers, and Apple Network framework monitor compile and link together for iOS. |
+| iOS simulator tests | `./gradlew :app:compileTestKotlinIosSimulatorArm64` | Blocked by inherited tests | The new controller tests are common code, but the existing suite has one JVM `Thread` use and several test names that Kotlin/Native rejects before tests can link. |
+
+Compilation does not prove Apple background execution. The current iOS sync
+controllers run in the application process; registering and exercising
+`BGProcessingTask` handlers remains explicit follow-up work.

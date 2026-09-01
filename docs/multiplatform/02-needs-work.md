@@ -21,8 +21,12 @@
 
 ## Platform services
 
-- [ ] Implement the existing iOS TODOs for upload scheduling, download scheduling,
-  changeset auto-closing, active-network inspection, and App Store identity.
+- [x] Replace the iOS upload, download, changeset auto-close, and network-state
+  stubs with functional in-process implementations.
+- [ ] Register Apple background-processing tasks so automatic sync survives iOS
+  process suspension and relaunch; the in-process controllers cannot guarantee
+  execution after the OS suspends the app.
+- [ ] Configure the real App Store identity once the iOS product record exists.
 - [ ] Audit iOS behavior that compiles but is still placeholder-level, including
   email launching, background lifecycle, crash handling, and application startup.
 - [ ] Add real desktop implementations for storage paths, settings, database,
@@ -39,6 +43,8 @@
 - [ ] Inventory Android-only production classes before deleting them and map each
   one to a shared or platform implementation.
 - [ ] Run the common test suite and target-specific tests on every target.
+- [ ] Make the inherited common tests compile for Kotlin/Native. The current suite
+  contains a JVM `Thread` call and test names that Kotlin/Native rejects.
 - [ ] Make six existing locale/date-sensitive common tests deterministic. Both the
   Android host and new desktop runner currently execute 2,449 tests with the same
   six failures on this machine.

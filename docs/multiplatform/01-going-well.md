@@ -26,3 +26,13 @@
   behavior while allowing the common UI to compile for desktop.
 - Desktop compilation, Android compilation and APK assembly, and iOS simulator
   compilation all pass together after adding the target.
+
+## iOS sync foundation
+
+- iOS now registers the real `commonModule` dependency graph rather than a
+  three-screen demonstration graph.
+- Upload, download, and changeset auto-closing use tested shared coroutine
+  controllers while the iOS process is alive. User downloads replace automatic
+  downloads; repeated automatic work stays unique.
+- Apple Network framework path monitoring now feeds the shared connectivity API,
+  including satisfied-path and expensive-path state.

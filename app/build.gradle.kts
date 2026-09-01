@@ -299,6 +299,7 @@ kotlin {
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
 
                 implementation("io.ktor:ktor-client-mock:3.5.1")
                 implementation("androidx.sqlite:sqlite-bundled:2.7.0")
