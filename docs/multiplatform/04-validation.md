@@ -360,7 +360,7 @@ claimed from the screenshots alone.
 | Cross-target compilation | `./gradlew :app:compileKotlinDesktop :androidApp:compileDebugKotlin :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The common process initializer, application scope, and root lifecycle observer resolve through all three production dependency graphs. |
 | Android cold launch | Install the rebuilt debug APK, force-stop it, cold-launch `MainActivity`, and inspect activity/log state after eight seconds | Pass | The shared initializer completes, `MainActivity` stays resumed, and MapLibre renders the first OpenGL frame without a fatal exception or ANR. |
 | iOS bundle and cold launch | Build with Xcode 26.5, install on the iOS 26.5 simulator, cold-launch, inspect the process, and capture the screen | Pass with diagnostic | The shared initializer and lifecycle attachment keep the app alive and the full StreetComplete map renders through Metal. Core Location emits a main-thread authorization-status diagnostic that is tracked for correction. |
-| Desktop app image | `./gradlew :app:createDistributable`, then launch the packaged executable | Pass with warnings | Shared preloading completes and MapLibre renders the first 1200x772 logical Metal frame. LWJGL reports the already-tracked Java/native version warning but the packaged app remains live. |
+| Desktop app image | `./gradlew :app:createDistributable`, then launch the packaged executable | Pass with warnings | Shared preloading completes and MapLibre renders the first 1200x772 logical Metal frame. LWJGL reports a Java/native version warning, but the packaged app remains live; no functionality claim depends on suppressing that diagnostic. |
 
 These checks prove foreground process startup and lifecycle attachment. The
 separate iOS background-processing section records the registered task boundary
@@ -448,10 +448,10 @@ registered subtype and wire format while making the production path portable.
 
 | Target | Command | Result | What it proves |
 | --- | --- | --- | --- |
-| iOS simulator full suite | `./gradlew :app:iosSimulatorArm64Test` | 2,486 pass | All portable common tests execute through Kotlin/Native, including production DAOs with `NativeSQLiteDriver`, edit serialization, locale parsing, Foundation date/time formatting, and file-backed photo fixtures. |
-| Desktop full suite | `./gradlew :app:desktopTest` | 2,525 pass, 1 skip | The portable suite and seven JVM-only live HTTP integration classes execute together against the desktop production implementations. |
-| Android host full suite | `./gradlew :app:testAndroidHostTest` | 2,524 pass, 1 skip, 1 live-test socket reset | The portable/shared suite is stable. Two complete runs failed in different OSM dev-server integration methods; the first failed method passed when retried alone, so this is recorded as external network evidence rather than converted into a weaker assertion. |
-| iOS application link | `DEVELOPER_DIR=/Applications/Xcode-26.5.0.app/Contents/Developer xcodebuild -project iosApp/iosApp.xcodeproj -scheme iosApp -configuration Debug -destination 'platform=iOS Simulator,id=4AE0B7AD-8A31-457E-B505-A46F3644E43D' -derivedDataPath build/ios-derived CODE_SIGNING_ALLOWED=NO clean build` | Pass | The production framework and Swift host link cleanly after removing bundled SQLite from Apple source sets; symbol inspection finds one exported `sqlite3_open`/`sqlite3_close` definition set. |
+| iOS simulator full suite | `./gradlew :app:iosSimulatorArm64Test` | 2,493 pass | All portable common tests execute through Kotlin/Native, including foreground-sync failure containment, buffered external-link delivery, stale-viewport rejection, production DAOs with `NativeSQLiteDriver`, edit serialization, locale parsing, Apple measurement-system mapping, crash persistence, and file-backed photo fixtures. |
+| Desktop full suite | `./gradlew :app:desktopTest` | 2,531 pass, 1 skip | The portable suite and six JVM-only live HTTP integration classes execute together against the desktop production implementations. |
+| Android host full suite | `./gradlew :app:testAndroidHostTest` | 2,531 pass, 1 skip | The final complete run is clean, including the live OSM development-server classes. Earlier complete runs intermittently failed live requests with `Unexpected end of file from server` or a reset connection; assertions and transport behavior were left intact. |
+| iOS application link | `DEVELOPER_DIR=/Applications/Xcode-26.5.0.app/Contents/Developer xcodebuild -project iosApp/iosApp.xcodeproj -scheme iosApp -configuration Debug -destination 'platform=iOS Simulator,id=4AE0B7AD-8A31-457E-B505-A46F3644E43D' -derivedDataPath build/ios-derived CODE_SIGNING_ALLOWED=NO clean build` | Pass with warning | The production framework and Swift host link after removing bundled SQLite from Apple source sets; symbol inspection finds one exported `sqlite3_open`/`sqlite3_close` definition set. The linker separately reports Skiko's ICU object as built for iOS Simulator 18.5 while the app declares 15.0. |
 
 The seven tests that contact live OSM or ban-list endpoints live in `javaTest`.
 They still run on both JVM targets, but not in the bare Kotlin/Native test
@@ -477,6 +477,47 @@ current vicinity after foreground suspension would be false. The code carries a
 TODO at that boundary pending an Apple-approved background-location product
 decision. Pending uploads and stale changesets require no background location
 and now run through the real production services.
+
+## Final platform-surface audit
+
+| Boundary | Command or inspection | Result | What it proves |
+| --- | --- | --- | --- |
+| Shared source | Search `app/src/commonMain` for `import android.` | No match | Common production code has no Android API dependency. |
+| Android presentation | Search Android Kotlin/XML plus `layout`, `navigation`, and `menu` resource directories for fragments and View-owned screens | One plain `ComponentActivity`; no fragments or UI resources | Android retains a platform lifecycle host and native service adapters, but `setContent` presents all application screens and navigation from the shared Compose tree. AppCompat and Material Components are absent as direct dependencies and no source relies on their transitive Koin presence. |
+| Android location authorization | Clear app data, launch the production APK, and advance onboarding to its location page | Pass | The system precise/approximate location dialog is presented. The shared UI uses an Activity-bound MapLibre provider for permission while process-owned automatic sync retains an application-safe provider and no Activity reference. |
+| Android cleanup | `./gradlew :androidApp:compileDebugKotlin --rerun-tasks` | Pass | Removing the direct Fragment dependency, layout-capable base-activity constructor, and orphaned Activity/Fragment/View/Bitmap/density helpers does not remove a live caller. |
+| Apple measurement policy | Run `ScaleBarMeasureTest` on iOS simulator, desktop, and Android host | 1 pass on each target | Foundation's `Metric`, `U.S.`, and `U.K.` values map to the same shared scale-bar units used by the other targets. |
+| Apple product build | Clean Xcode 26.5 simulator build | Pass | The weak scene-local map chooser, scene-owned URL ingress, iPad action-sheet anchor, camera-purpose declaration, Foundation measurement lookup, Kotlin framework, and Swift host compile and link as one app. |
+| Built Apple declarations | Inspect the built app's `Info.plist` and localized `InfoPlist.strings` with `plutil` | Pass; 55 locale files | The product bundle contains accurate photo-attachment and precise-location purpose strings. German camera text is `Foto anhängen`; FileKit camera capture no longer reaches an undeclared or misleading privacy API. |
+| iOS simulator launch | Install and cold-launch the rebuilt app on iOS 26.5 | Pass | The process stays live and renders the shared MapLibre Compose map after the final adapter changes. |
+
+AR measurement is the remaining intentional mobile capability boundary. The
+existing feature launches StreetMeasure and consumes its result contract;
+StreetMeasure has no iOS app or compatible protocol. iOS therefore hides that
+action and carries an explicit `TODO(multiplatform)`. This is an external-product
+blocker, not a placeholder represented as working functionality.
+
+## Final production build matrix
+
+| Product | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Android debug APK | `./gradlew :androidApp:assembleDebug` | Pass | The single-activity Compose host, OpenGL MapLibre runtime, shared resources, WorkManager services, and platform adapters package together. |
+| Desktop app image | `./gradlew :app:createDistributable` | Pass | The shared UI and Metal map runtime package into the macOS ARM64 jlink application image with the full resource tree. |
+| iOS simulator app | Clean Xcode 26.5 build for the iPhone 17 / iOS 26.5 simulator | Pass | The Kotlin framework, SwiftUI host, Metal runtime, Compose resources, background-task declarations, and privacy strings link into a validated app bundle. |
+| Immutable MapLibre Compose batch | Clean `--refresh-dependencies` compilation plus dependency insight for desktop, Android runtime, and iOS simulator compile configurations | Pass; every selected module is `0.15.1-20260901.101938-7` | Core, location, target variants, iOS resource archives, Android OpenGL, macOS location, and desktop Metal runtime retain Gradle variant metadata but fetch timestamped immutable files listed in `gradle/maplibre-compose-snapshot-files.tsv`. Resolution rules align all transitive edges to the same reviewed publication. |
+| Cross-host desktop runtime resolution | Run `dependencyInsight` with simulated Linux x64 and Windows ARM64 JVM host properties | Pass | Linux resolves the exact Vulkan x64 and `location-runtime-linux` artifacts; Windows resolves the exact Vulkan ARM64 and `location-runtime-windows` artifacts from the committed timestamp manifest. |
+| Superseded viewport regression | `./gradlew :app:desktopTest --tests '*MapQuestPinsSourceTest*' --tests '*StyleableOverlaySourceTest*'` | Pass | A first non-suspending repository load triggers a newer viewport before returning; only the newer quest pins and overlay elements may publish. |
+| Cleared overlay regression | `./gradlew :app:desktopTest --tests '*StyleableOverlaySourceTest*'` | Pass | A map-data clear increments the source generation and rechecks cancellation after locking, so an in-flight viewport cannot republish cleared overlay elements. |
+| Permission-flow reconnection | `./gradlew :app:desktopTest --tests '*AutoSyncerTest*'` | Pass | A completed permission-denied location flow is collected again on resume without requiring the only app scene to stop and restart. |
+| Shared sync root failures | `./gradlew :app:desktopTest --tests '*CoroutineSyncControllersTest*'` | Pass | Upload, download, and delayed changeset-close failures do not escape their caller-owned application scope; cancellation is still rethrown. |
+| Production target matrix | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64 :androidApp:assembleDebug :app:createDistributable` | Pass | The exact pinned stack produces the iOS framework, Android APK, and native desktop application together after lifecycle and host-ownership fixes. |
+
+The clean iOS result is runtime evidence only for the installed iOS 26.5
+simulator. Inspecting Compose/Skiko's Native cache archive identifies
+`libicu.icudtl_dat.o` with `LC_BUILD_VERSION minos 18.5`; it is not part of the
+MapLibre archive. Until Skiko republishes that object for the declared minimum
+and the app runs on an iOS 15 device/runtime, this ledger does not claim iOS 15
+compatibility.
 
 ## Shared main-map content state
 

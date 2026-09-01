@@ -10,11 +10,12 @@ API before they are considered actionable.
 - Latest published post-release snapshot observed on 2026-09-01:
   `0.15.1-SNAPSHOT`, build `0.15.1-20260901.101938-7`.
 - The snapshot includes the shared map artifact and platform runtime artifacts,
-  including Android OpenGL and macOS ARM64 Metal.
+  including Android OpenGL, macOS ARM64 Metal, and Linux/Windows Vulkan for
+  x64 and ARM64.
 
 ## Findings
 
-Six integration gaps are confirmed below. The abandoned
+Seven integration gaps are confirmed below. The abandoned
 `upstream/maplibre-compose` integration predates 0.15, so its other assumptions
 continue to be re-evaluated against the snapshot before being attributed upstream.
 
@@ -22,6 +23,21 @@ The complete StreetComplete base style compiled against the snapshot with one
 intentional source migration: symbol icon padding now uses MapLibre Compose's
 typed `DpPadding` expression value. Runtime rendering and interaction may expose
 additional findings that compilation cannot.
+
+### Snapshot metadata cannot be consumed as an immutable version directly
+
+The Sonatype snapshot repository stores build `20260901.101938-7` under
+timestamped `.module`, `.jar`, `.aar`, `.klib`, source, and resource names, but
+the Gradle module metadata inside that build names its variant files with
+`0.15.1-SNAPSHOT`. Resolving the timestamp as an ordinary immutable version
+therefore cannot fetch those logical file names.
+
+StreetComplete preserves the published variant graph with a component-metadata
+rule and replaces each selected variant's files from a committed manifest. This
+is reproducible, but it requires listing every target/runtime file. A release-like
+nightly version whose module metadata refers to its own timestamped files would
+make reviewed snapshot pins ordinary Gradle dependencies and eliminate this
+consumer workaround.
 
 ### Missing global style-transition configuration
 

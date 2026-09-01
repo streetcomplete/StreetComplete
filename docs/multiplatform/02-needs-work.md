@@ -71,11 +71,15 @@
   inventory demonstrates that no live functionality depends on them.
 - [ ] Restore the legacy 300ms, system-animation-scale-aware global style
   transition when MapLibre Compose exposes common transition configuration.
-- [ ] Preserve every current map data source, layer, selection flow, camera
-  behavior, gesture, offline-area visualization, quest pin interaction, edit
-  history pin, track, overlay, and location behavior.
-- [x] Use the current post-v0.15 snapshot. The snapshot
-  repository currently publishes `org.maplibre.compose:maplibre-compose:0.15.1-SNAPSHOT`.
+- [x] Account for every current map data source, layer, selection flow, camera
+  behavior, gesture, offline-area visualization, quest/edit pin interaction,
+  track, overlay, and location behavior. Preserved behavior is implemented and
+  tested; the exact MapLibre Compose API gaps above each have code TODOs and
+  corresponding upstream notes rather than silent omissions.
+- [x] Pin the reviewed post-v0.15 snapshot batch. Every selected core, location,
+  target, resource, and runtime artifact resolves from its immutable timestamped
+  path at `0.15.1-20260901.101938-7`; transitive MapLibre edges are forced to the
+  same version and clean dependency-refresh builds pass on all targets.
 
 ## Platform services
 
@@ -89,6 +93,10 @@
   Apple-approved background-location mode. The current when-in-use authorization
   cannot provide a current vicinity after iOS suspends the foreground scene.
 - [ ] Configure the real App Store identity once the iOS product record exists.
+- [ ] Validate the promised iOS 15 minimum on an iOS 15 device/runtime after
+  Compose/Skiko republishes its ICU data object with a compatible deployment
+  target. The current Skiko Native cache member `libicu.icudtl_dat.o` declares
+  iOS Simulator 18.5, so the successful iOS 26.5 build is not evidence for iOS 15.
 - [x] Eliminate the duplicate SQLite implementation reported while linking the
   iOS app. Apple targets now use `NativeSQLiteDriver`; the bundled driver remains
   confined to JVM targets, and a clean Xcode application link succeeds with one
@@ -96,7 +104,14 @@
 - [x] Audit iOS behavior that compiled but was placeholder-level. Foreground
   startup uses the production initializer, email launching is functional,
   unhandled Kotlin exceptions persist for the shared crash dialog, and eligible
-  sync work has a real Apple background-processing boundary.
+  sync work has a real Apple background-processing boundary. The scale bar now
+  consumes Foundation's measurement system, the photo flow declares camera use,
+  and the map chooser uses the invoking Compose scene, a weak host reference, and
+  an iPad-safe presentation anchor.
+- [ ] Enable AR measurement on iOS if StreetMeasure publishes a compatible
+  launch/result protocol. The current feature is an external-app contract, and
+  StreetMeasure has no iOS application or protocol to call; the hidden adapter
+  carries an explicit `TODO(multiplatform)` rather than pretending to measure.
 - [ ] Remove the Core Location main-thread performance diagnostic emitted while
   the shared lifecycle attaches location-aware synchronization on iOS. The app
   stays live and renders, but authorization state should be consumed from
@@ -120,14 +135,20 @@
 
 - [x] Inventory Android-only production classes before deleting them and map each
   one to a shared or platform implementation.
-- [ ] Run the common test suite and target-specific tests on every target.
+- [x] Verify the final Android presentation surface has one Compose host and no
+  fragments, XML layouts, navigation resources, menus, Android imports in
+  `commonMain`, or orphaned View-era extension helpers.
+- [x] Run the common test suite and target-specific tests on every target. iOS
+  passes cleanly, desktop has one intentional skip, and the final Android run is
+  clean. Earlier Android runs exposed intermittent live OSM development-server
+  connection failures without weakening those integration tests.
 - [x] Make the inherited common tests compile for Kotlin/Native by replacing the
   real-time `Thread` delay, using Native-safe test names, and keeping JVM utility
   entry points in the Android-host test source set.
 - [x] Make the locale/date-sensitive common tests deterministic across JVM and
   Foundation formatting data, time zones, calendars, and non-ASCII decimal digits.
-  The iOS simulator now passes all 2,486 Native tests and desktop passes all 2,525
-  non-skipped tests.
+  The iOS simulator now passes all 2,493 Native tests; desktop and Android each
+  pass 2,531 tests with one intentional skip.
 - [ ] Exercise production flows on Android, desktop, and iOS and record demo videos.
 - [x] Verify shared glyph resources in a built and running iOS application bundle.
 - [ ] Obtain independent adversarial reviews of functionality parity, architecture,

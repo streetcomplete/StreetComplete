@@ -68,35 +68,69 @@
 - The Swift host registers a network-constrained Apple processing task. It runs
   pending automatic uploads and changeset closure through the production Koin
   graph, cancels on expiration, reports completion, and reschedules itself.
+- iOS now reads the user's Foundation measurement system for its scale bar,
+  declares the camera purpose required by the shared photo flow, and presents
+  the external-map chooser from the invoking Compose scene with an iPad popover anchor.
 
 ## Shared application lifecycle
 
 - Android, iOS, and desktop now run the same process initializer for logging,
   metadata preloading, old edit-history cleanup, feed refresh, resurvey interval
   updates, stored-version migration, and downloaded-tile invalidation.
-- The shared root composition attaches `AutoSyncer` to its real lifecycle on all
-  three targets. Android no longer owns a second activity-only sync attachment,
-  and iOS and desktop no longer omit foreground automatic synchronization.
+- The shared root composition reference-counts active scenes through one
+  process-owned `AutoSyncer`. A scene closing cannot cancel synchronization for
+  another iPad window, while Android and desktop retain their single-root behavior.
 - The process coroutine scope is part of the common dependency graph, so the
   target upload, download, network, startup, and changeset controllers use one
   supervised application lifetime rather than independently shaped scopes.
-- External `geo:` and StreetComplete URLs now enter one buffered common ingress
-  on Android, iOS, and desktop. URLs received before the main view model exists
-  are retained and handled by the same shared parsing and camera path.
+- External `geo:` and StreetComplete URLs now enter a buffered common ingress.
+  Android and desktop own one process ingress; each iOS scene owns its own so the
+  scene that receives a URL both navigates and consumes it. Cold-start URLs are
+  retained without leaving sticky navigation state after recreation.
 - Android now has one application activity. Settings, quest settings, About,
   profile, and login are destinations in the shared Compose navigation graph;
   the exported network-usage intent enters that graph through `MainActivity`.
+- The Android source/resource audit finds no fragments, XML layouts, navigation
+  graphs, or menus. Obsolete Fragment, View, Bitmap, and density helpers and the
+  direct Fragment dependency have been removed; Android-only source is limited
+  to the Compose host and platform integrations.
+- External URLs now also carry a shared navigation signal. A warm `geo:` or
+  configuration link returns Settings/About/Profile to the main map before the
+  buffered payload moves the camera or opens configuration UI.
+- Theme, language, and keep-screen-on preferences are observed at the shared
+  Compose root. Android localizes its plain `ComponentActivity`; desktop applies
+  JVM locale plus native sleep inhibition; iOS applies its Apple language domain
+  and idle-timer policy.
+- Every target runs expired-data cleanup at process initialization. Android keeps
+  its daily WorkManager job; desktop and iOS schedule daily cleanup in the shared
+  application scope. Cleanup is suspend/structured work, and desktop first
+  disposes Compose, then cancels and joins that scope, then lets Koin close SQLite
+  and the native map runtime. Foreground upload/download and delayed changeset
+  failures are contained instead of escaping a root native coroutine.
 
 ## MapLibre Compose snapshot foundation
 
-- All targets now compile against the post-v0.15 `0.15.1-SNAPSHOT`; the latest
-  dependency refresh selected build `0.15.1-20260901.101938-7`.
+- All targets compile against the immutable post-v0.15 publication
+  `0.15.1-20260901.101938-7`. Gradle retains MapLibre's multiplatform module
+  metadata while a committed variant manifest rewrites every core, location,
+  target, resource, and runtime artifact to its timestamped Sonatype path.
+  Resolution rules also force every transitive MapLibre edge to that exact batch.
 - Android packages the OpenGL runtime, iOS links the transitive Metal runtime,
-  and the current macOS ARM64 host selects the desktop Metal runtime.
+  and the current macOS ARM64 host selects the desktop Metal runtime. Simulated
+  Gradle host resolution also selects the timestamped Vulkan plus native-location
+  artifacts for Linux and Windows x64/ARM64 rather than nonexistent OpenGL modules.
 - StreetComplete now consumes the snapshot's `LocationMeasurement`,
   `LocationEvent.Update`, and `HeadingMeasurement` APIs. Recorded tracks use the
   measurement's real wall-clock instant instead of accidentally serializing a
   monotonic location age as an epoch timestamp.
+- The main map, onboarding tutorial, and automatic sync consume MapLibre
+  Compose's common location API. Android intentionally splits ownership: the
+  visible UI uses an Activity-bound provider that can request and refresh runtime
+  permission, while process-owned automatic sync uses an application-safe backend
+  and never retains the Activity. Desktop and iOS use the process provider.
+- Automatic sync reconnects a completed Android permission-denied location flow
+  when the Activity resumes from the system permission sheet. Its last position
+  is atomic across lifecycle, connectivity, and download callbacks.
 
 ## Shared base map
 
@@ -150,6 +184,13 @@
   reacts to overlay selection and map-data deltas, reuses the same zoom-16 and
   32-tile viewport guard, cancels superseded fetches, and converts live shared
   map data into the already-migrated `StyledElement` model.
+- Quest-pin and styleable-overlay viewport scheduling is serialized across
+  repository callbacks, Compose viewport updates, and shutdown. Child-context
+  cancellation and generation checks prevent a non-suspending old database load
+  from publishing over a newer viewport; focused supersession tests cover both.
+- Overlay-declared base-layer suppression is live again: the address overlay
+  hides `labels-housenumbers` while its own address labels are visible, avoiding
+  the duplicate labels that the retired Android style manager prevented.
 - Downloaded-tile observation is now common and applies the same 14-day retained
   data cutoff before feeding the shared downloaded-area mask on every target.
 - Base-map downloads now use MapLibre Compose's shared offline-pack API on
