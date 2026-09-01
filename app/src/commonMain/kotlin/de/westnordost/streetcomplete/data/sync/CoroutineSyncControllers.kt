@@ -9,10 +9,12 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChange
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.Uploader
+import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -31,7 +33,14 @@ class CoroutineUploadController(
         lock.withLock {
             if (job?.isActive == true) return
             job = scope.launch {
-                uploadAction()
+                try {
+                    uploadAction()
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (_: Exception) {
+                    // Uploader has already published the failure through UploadProgressSource.
+                    // A foreground sync failure must not escape this root application coroutine.
+                }
             }
         }
     }
@@ -57,7 +66,14 @@ class CoroutineDownloadController(
             if (job?.isActive == true && !isUserInitiated) return
             job?.cancel()
             job = scope.launch {
-                downloadAction(bbox, isUserInitiated)
+                try {
+                    downloadAction(bbox, isUserInitiated)
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (_: Exception) {
+                    // Downloader has already published the failure through DownloadProgressSource.
+                    // A foreground sync failure must not escape this root application coroutine.
+                }
             }
         }
     }
@@ -86,8 +102,16 @@ class CoroutineChangesetAutoCloser(
                     // The OSM API closes abandoned changesets after one hour.
                 } catch (_: AuthorizationException) {
                     // Reauthentication is handled when the user next opens the app.
+                } catch (e: CancellationException) {
+                    throw e
+                } catch (e: Exception) {
+                    Log.e(TAG, "Unable to close old changesets", e)
                 }
             }
         }
+    }
+
+    private companion object {
+        const val TAG = "ChangesetAutoCloser"
     }
 }

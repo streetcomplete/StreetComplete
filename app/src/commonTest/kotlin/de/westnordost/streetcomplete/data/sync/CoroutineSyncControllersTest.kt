@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.data.sync
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.test.advanceTimeBy
@@ -51,6 +53,21 @@ class CoroutineSyncControllersTest {
     }
 
     @Test
+    fun uploadFailureDoesNotEscapeApplicationScope() = runTest {
+        val escaped = mutableListOf<Throwable>()
+        val controller = CoroutineUploadController(
+            CoroutineScope(coroutineContext + CoroutineExceptionHandler { _, error ->
+                escaped += error
+            })
+        ) { error("reported upload failure") }
+
+        controller.upload(isUserInitiated = true)
+        advanceUntilIdle()
+
+        assertTrue(escaped.isEmpty())
+    }
+
+    @Test
     fun automaticDownloadKeepsActiveWorkButUserDownloadReplacesIt() = runTest {
         val first = BoundingBox(0.0, 0.0, 1.0, 1.0)
         val second = BoundingBox(1.0, 1.0, 2.0, 2.0)
@@ -81,6 +98,21 @@ class CoroutineSyncControllersTest {
     }
 
     @Test
+    fun downloadFailureDoesNotEscapeApplicationScope() = runTest {
+        val escaped = mutableListOf<Throwable>()
+        val controller = CoroutineDownloadController(
+            CoroutineScope(coroutineContext + CoroutineExceptionHandler { _, error ->
+                escaped += error
+            })
+        ) { _, _ -> error("reported download failure") }
+
+        controller.download(BoundingBox(0.0, 0.0, 1.0, 1.0), isUserInitiated = true)
+        advanceUntilIdle()
+
+        assertTrue(escaped.isEmpty())
+    }
+
+    @Test
     fun changesetCloseIsDelayedAndRescheduled() = runTest {
         var closes = 0
         val controller = CoroutineChangesetAutoCloser(this) { closes++ }
@@ -95,5 +127,20 @@ class CoroutineSyncControllersTest {
         advanceTimeBy(1)
         runCurrent()
         assertEquals(1, closes)
+    }
+
+    @Test
+    fun changesetCloseFailureDoesNotEscapeApplicationScope() = runTest {
+        val escaped = mutableListOf<Throwable>()
+        val controller = CoroutineChangesetAutoCloser(
+            CoroutineScope(coroutineContext + CoroutineExceptionHandler { _, error ->
+                escaped += error
+            })
+        ) { error("reported changeset close failure") }
+
+        controller.enqueue(delayInMilliseconds = 0)
+        advanceUntilIdle()
+
+        assertTrue(escaped.isEmpty())
     }
 }
