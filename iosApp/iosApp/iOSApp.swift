@@ -48,20 +48,21 @@ private final class BackgroundSyncScheduler {
         schedule()
 
         var didComplete = false
-        func finish(success: Bool) {
-            DispatchQueue.main.async {
-                guard !didComplete else { return }
+        let finish: (Bool) -> Void = { [weak task] success in
+            DispatchQueue.main.async { [weak task] in
+                guard let task, !didComplete else { return }
                 didComplete = true
+                task.expirationHandler = nil
                 task.setTaskCompleted(success: success)
             }
         }
 
         let handle = KoinKt.startIosBackgroundSync { success in
-            finish(success: success.boolValue)
+            finish(success.boolValue)
         }
         task.expirationHandler = {
             handle.cancel()
-            finish(success: false)
+            finish(false)
         }
     }
 }

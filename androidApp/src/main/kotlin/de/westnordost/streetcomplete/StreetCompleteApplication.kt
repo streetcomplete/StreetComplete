@@ -41,11 +41,11 @@ class StreetCompleteApplication : Application() {
             modules(androidModule, commonModule)
         }
 
+        crashReportsUncaughtExceptionHandler.install()
+
         updateDefaultLocales()
 
         koinApplication.koin.get<ApplicationInitializer>().initialize()
-
-        crashReportsUncaughtExceptionHandler.install()
 
         enqueuePeriodicCleanupWork()
 
