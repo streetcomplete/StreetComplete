@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.data
 
 import androidx.sqlite.SQLiteConnection
-import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 import kotlin.test.AfterTest
@@ -14,7 +13,7 @@ abstract class StreetCompleteDatabaseTestCase {
     @BeforeTest
     open fun setUpDatabase() {
         SystemFileSystem.delete(Path(DATABASE_NAME), mustExist = false)
-        connection = BundledSQLiteDriver().open(DATABASE_NAME)
+        connection = openTestDatabase(DATABASE_NAME)
         database = DatabaseImpl(connection)
         database.initialize(StreetCompleteDatabaseConfigurator)
         onDatabaseInitialized(database)
@@ -31,3 +30,5 @@ abstract class StreetCompleteDatabaseTestCase {
         private const val DATABASE_NAME = "streetcomplete_test.db"
     }
 }
+
+internal expect fun openTestDatabase(name: String): SQLiteConnection

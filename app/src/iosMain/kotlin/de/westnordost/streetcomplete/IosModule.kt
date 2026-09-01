@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete
 
-import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import androidx.sqlite.driver.NativeSQLiteDriver
 import com.russhwolf.settings.NSUserDefaultsSettings
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -97,7 +97,7 @@ val iosModule = module {
         )!!
         val databaseUrl = appSupportUrl.URLByAppendingPathComponent(ApplicationConstants.DATABASE_NAME)!!
         val databaseFilePath = databaseUrl.path!!
-        val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
+        val databaseConnection = NativeSQLiteDriver().open(databaseFilePath)
         DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
     } onClose { it?.close() }
 

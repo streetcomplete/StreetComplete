@@ -208,7 +208,6 @@ kotlin {
 
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.0")
-                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
 
                 // HTTP client
                 implementation("io.ktor:ktor-client-core:3.5.1")
@@ -314,10 +313,16 @@ kotlin {
                 runtimeOnly("androidx.compose.ui:ui-tooling:1.10.0")
             }
         }
+        javaMain.dependencies {
+            implementation("androidx.sqlite:sqlite-bundled:2.7.0")
+        }
         iosMain {
             dependencies {
                 // HTTP client
                 implementation("io.ktor:ktor-client-darwin:3.5.1")
+
+                // Use Apple's SQLite instead of linking a second copy beside MapLibre Native.
+                implementation("androidx.sqlite:sqlite-framework:2.7.0")
             }
         }
         getByName("desktopMain") {
@@ -337,8 +342,10 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
 
                 implementation("io.ktor:ktor-client-mock:3.5.1")
-                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
             }
+        }
+        javaTest.dependencies {
+            implementation("androidx.sqlite:sqlite-bundled:2.7.0")
         }
         getByName("androidHostTest") {
             dependencies {
