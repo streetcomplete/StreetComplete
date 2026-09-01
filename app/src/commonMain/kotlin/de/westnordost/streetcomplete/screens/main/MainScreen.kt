@@ -172,6 +172,7 @@ fun MainScreen(
 
     val shownBottomSheet by mainBottomSheetViewModel.shownBottomSheet.collectAsState()
     val geometryOffsetInWindow by mainBottomSheetViewModel.geometryOffsetInWindow.collectAsState()
+    val emailAppLauncher = rememberEmailAppLauncher()
 
     var confirmReplaceDownload by remember { mutableStateOf(false) }
     var showOverlaysTutorial by remember { mutableStateOf(false) }
@@ -244,19 +245,21 @@ fun MainScreen(
         }
     }
 
-    fun sendErrorReport(error: Exception) {
-        if (!viewModel.isSendErrorReportAvailable()) {
+    fun sendErrorReport(errorReport: String) {
+        if (!emailAppLauncher.isAvailable()) {
             showToast = Toast.NoEmailClient
         } else {
-            viewModel.sendErrorReport(error)
+            emailAppLauncher.compose(
+                email = ApplicationConstants.ERROR_REPORTS_EMAIL,
+                subject = ApplicationConstants.USER_AGENT + " Error Report",
+                body = "Describe how to reproduce it here:\n\n\n\n$errorReport",
+            )
         }
     }
 
-    fun sendErrorReport(report: String) {
-        if (!viewModel.isSendErrorReportAvailable()) {
-            showToast = Toast.NoEmailClient
-        } else {
-            viewModel.sendErrorReport(report)
+    fun sendErrorReport(error: Exception) {
+        scope.launch {
+            sendErrorReport(viewModel.createErrorReport(error))
         }
     }
 
@@ -781,4 +784,3 @@ private fun getLocationState(
         }
     }
 }
-

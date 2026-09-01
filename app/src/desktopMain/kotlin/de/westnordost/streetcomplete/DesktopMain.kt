@@ -4,6 +4,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
+import de.westnordost.streetcomplete.screens.main.DesktopMapAppLauncher
 import de.westnordost.streetcomplete.ui.theme.PreferenceAwareAppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancelAndJoin
@@ -33,7 +34,9 @@ fun main(args: Array<String>) {
                 state = rememberWindowState(width = 1200.dp, height = 800.dp),
             ) {
                 ProvideMapPresentationHost(rememberAwtComposeMapPresentationHost(window)) {
-                    PreferenceAwareAppTheme { StreetCompleteApp() }
+                    PreferenceAwareAppTheme {
+                        StreetCompleteApp(mapAppLauncher = DesktopMapAppLauncher)
+                    }
                 }
             }
         }

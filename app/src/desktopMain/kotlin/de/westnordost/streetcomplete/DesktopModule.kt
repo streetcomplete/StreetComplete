@@ -22,10 +22,6 @@ import de.westnordost.streetcomplete.data.sync.CoroutineUploadController
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
-import de.westnordost.streetcomplete.screens.main.DesktopEmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.DesktopMapAppLauncher
-import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.DesktopCrashReportHolder
@@ -93,9 +89,6 @@ val desktopModule = module {
             override fun invoke(): Boolean = false
         }
     }
-    factory<MapAppLauncher> { DesktopMapAppLauncher }
-    factory<EmailAppLauncher> { DesktopEmailAppLauncher }
-
     single<ObservableSettings> {
         PreferencesSettings(Preferences.userRoot().node("de/westnordost/streetcomplete"))
     }

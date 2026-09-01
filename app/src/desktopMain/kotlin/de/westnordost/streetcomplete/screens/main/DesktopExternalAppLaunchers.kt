@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import java.awt.Desktop
 import java.net.URI
@@ -38,6 +39,9 @@ object DesktopEmailAppLauncher : EmailAppLauncher {
     override fun isAvailable(): Boolean =
         Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.MAIL)
 }
+
+@Composable
+actual fun rememberEmailAppLauncher(): EmailAppLauncher = DesktopEmailAppLauncher
 
 private fun canBrowse(): Boolean =
     Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)

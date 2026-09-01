@@ -28,10 +28,6 @@ import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadWorker
 import de.westnordost.streetcomplete.screens.about.AndroidAppStoreInfo
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
-import de.westnordost.streetcomplete.screens.main.AndroidEmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.AndroidMapAppLauncher
-import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder

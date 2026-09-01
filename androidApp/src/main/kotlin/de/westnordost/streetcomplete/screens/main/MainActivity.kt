@@ -76,6 +76,7 @@ class MainActivity :
 
         setContent {
             val locationProvider = rememberDefaultLocationProvider()
+            val mapAppLauncher = rememberMapAppLauncher()
             PreferenceAwareAppTheme {
                 StreetCompleteApp(
                     startDestination = startDestination,
@@ -85,6 +86,7 @@ class MainActivity :
                     editHistoryViewModel = editHistoryViewModel,
                     mainBottomSheetViewModel = mainBottomSheetViewModel,
                     locationProvider = locationProvider,
+                    mapAppLauncher = mapAppLauncher,
                     onMainShown = ::updateScreenOn,
                 )
             }

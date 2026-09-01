@@ -16,7 +16,6 @@ import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
 import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.screens.main.MainScreen
 import de.westnordost.streetcomplete.screens.main.MainViewModel
-import de.westnordost.streetcomplete.screens.main.rememberMapAppLauncher
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.settings.SettingsDestination
 import de.westnordost.streetcomplete.screens.settings.SettingsNavHost
@@ -38,7 +37,7 @@ fun StreetCompleteApp(
     autoSyncer: AutoSyncer = koinInject(),
     incomingUriHandler: IncomingUriHandler = koinInject(),
     locationProvider: LocationProvider = koinInject(),
-    mapAppLauncher: MapAppLauncher = rememberMapAppLauncher(),
+    mapAppLauncher: MapAppLauncher,
     onMainShown: () -> Unit = {},
 ) {
     val navController = rememberNavController()
