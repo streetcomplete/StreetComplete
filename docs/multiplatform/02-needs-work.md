@@ -10,10 +10,9 @@
 
 ## Map parity
 
-- [ ] Move the Android-only `Fragment` and `org.maplibre.android` map stack to a
-  shared MapLibre Compose implementation. The live Android path has switched;
-  the now-unused legacy classes, dependencies, and assets still need a guarded
-  removal after a parity inventory.
+- [x] Move the Android-only `Fragment` and `org.maplibre.android` map stack to a
+  shared MapLibre Compose implementation and retire the unused legacy source,
+  dependency, updater, and assets after a guarded parity inventory.
 - [x] Run Android's real main screen on the shared MapLibre Compose renderer.
 - [x] Port the complete light/night base map style and offline glyph resources to
   shared MapLibre Compose declarations.
@@ -68,7 +67,7 @@
   MapLibre Compose exposes it as a common source option.
 - [x] Wire the shared map into the real main screen on iOS.
 - [x] Wire the shared map into the real main screen on desktop.
-- [ ] Remove the legacy Android assets and map stack after the guarded parity
+- [x] Remove the legacy Android assets and map stack after the guarded parity
   inventory demonstrates that no live functionality depends on them.
 - [ ] Restore the legacy 300ms, system-animation-scale-aware global style
   transition when MapLibre Compose exposes common transition configuration.
@@ -113,7 +112,7 @@
 
 ## Completeness safeguards
 
-- [ ] Inventory Android-only production classes before deleting them and map each
+- [x] Inventory Android-only production classes before deleting them and map each
   one to a shared or platform implementation.
 - [ ] Run the common test suite and target-specific tests on every target.
 - [ ] Make the inherited common tests compile for Kotlin/Native. The current suite

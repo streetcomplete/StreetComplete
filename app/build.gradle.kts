@@ -302,7 +302,6 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:3.5.1")
 
                 // map and location
-                implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
                 runtimeOnly(
                     "org.maplibre.compose:maplibre-compose-runtime-opengl-android:" +
                         mapLibreComposeVersion
@@ -503,13 +502,6 @@ tasks.register<UpdateChangelogTask>("updateChangelog") {
     group = "streetcomplete"
     sourceFile = rootDir.resolve("CHANGELOG.md")
     targetFile = projectDir.resolve("src/commonMain/composeResources/files/changelog.html")
-}
-
-tasks.register<UpdateMapStyleTask>("updateMapStyle") {
-    group = "streetcomplete"
-    targetDir = projectDir.resolve("src/androidMain/assets/map_theme")
-    apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
-    mapStyleBranch = "master"
 }
 
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {

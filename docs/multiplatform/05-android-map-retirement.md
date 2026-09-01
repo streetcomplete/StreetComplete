@@ -46,8 +46,8 @@ there are no production call sites.
 - Remove the obsolete `UpdateMapStyleTask`, its `updateMapStyle` registration,
   and its `updateStreetCompleteData` dependency. Updating Android JSON cannot
   update the shared declarative style and would recreate deleted assets.
-- Remove the `map_theme/*.*` line from `androidMain/assets/authors.txt`; no files
-  covered by that entry remain after retirement.
+- Remove the now-empty `androidMain/assets/authors.txt`; its only attribution was
+  for the retired `map_theme` directory.
 
 ## Deletion gates
 
@@ -61,3 +61,13 @@ After deletion, all of the following must hold:
 4. Focused common map tests still pass on the desktop and Android host runners.
 5. Desktop and iOS continue to package and render from the same shared source;
    the deletion must not introduce an Android-specific replacement.
+
+## Result
+
+The reference, cross-target compile, glyph, dependency, APK-content, focused
+test, and Android cold-launch gates pass. The 21 common map test classes execute
+142 tests on both desktop and Android host with no failures. The broad desktop
+suite also reproduced only its six documented baseline locale/date failures.
+Desktop packaging/live Metal and iOS bundle/live Metal checks remain part of the
+final three-target demo and validation pass rather than being inferred from this
+Android-only deletion.

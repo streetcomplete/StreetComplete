@@ -364,6 +364,23 @@ These checks prove foreground process startup and lifecycle attachment. They do
 not claim iOS background execution after suspension; that requires registered
 Apple background tasks and separate runtime evidence.
 
+## Android legacy map retirement
+
+| Target | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| Reference gate | Search production source and build files for `org.maplibre.android`, all retired class names, `UpdateMapStyleTask`, and `androidMain/assets/map_theme` | Pass | No live call site, direct Android SDK use, or updater can recreate the retired implementation. |
+| Cross-target compilation | `./gradlew :app:compileKotlinDesktop :androidApp:compileDebugKotlin :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Removing 24 Android map files and the direct SDK leaves the shared desktop, Android, and iOS products intact. |
+| Shared resource gates | `./gradlew :app:verifySharedMapGlyphResources :androidApp:verifyDebugMapGlyphAssets` | Pass | Source and APK still contain exactly the 512 non-empty shared glyph ranges after deleting the 512 Android duplicates. |
+| Map tests | Run the 21 common map test classes on desktop and Android host | 142 pass on each runner | Camera, animation, geometry, layer styling, content, download planning, track state, resources, and renderer-independent sources retain their tested contracts. |
+| Full desktop suite | `./gradlew :app:desktopTest` | 2,518 pass, 6 fail, 1 skip | The retirement adds no failure; the same six documented locale/date-sensitive baseline failures remain. |
+| Android dependency | `./gradlew :app:dependencyInsight --dependency org.maplibre.gl:android-sdk-opengl --configuration androidRuntimeClasspath` | No match | The direct legacy SDK is absent from Android's runtime graph; MapLibre Compose's OpenGL runtime remains. |
+| Android APK assets | Inspect the rebuilt APK for `assets/map_theme`, JSON styles, and sprite sheets | None present | The package cannot silently fall back to the retired imperative style or its duplicate glyph tree. |
+| Android cold launch | Reinstall the rebuilt APK, force-stop it, cold-launch `MainActivity`, and inspect activity/log state after ten seconds | Pass | `MainActivity` remains resumed and the only map runtime renders its first OpenGL frame without a fatal exception or ANR. |
+
+The source-to-source replacement mapping and deletion gates are retained in
+`05-android-map-retirement.md` so later parity review can audit why each file was
+safe to remove instead of relying on a successful compile alone.
+
 ## Shared main-map content state
 
 | Target | Command | Result | What it proves |

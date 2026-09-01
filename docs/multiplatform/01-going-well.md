@@ -90,9 +90,10 @@
   by StreetComplete data: below roads, below bridge roads, below labels, and
   above labels. This keeps quest and overlay state out of the base-style module.
 - Android's production `MainActivity` now presents the shared `MainScreen` and
-  `MainMap` directly. The fragment is no longer in the live view hierarchy; the
-  old sources and assets remain temporarily so parity can be audited before
-  deleting them in a separate commit.
+  `MainMap` directly. After a committed source-by-source replacement inventory,
+  the unused 24-file fragment stack, direct MapLibre Android SDK dependency,
+  obsolete JSON-style updater, and 518 duplicate Android map assets were
+  removed. The APK now contains only the shared Compose map and glyph resources.
 - The downloaded-area visualization is now a shared MapLibre Compose layer. It
   preserves the existing 60%-opaque hatch outside downloaded zoom-16 tiles and
   uses the same Compose vector resource on Android, iOS, and desktop.
