@@ -187,3 +187,17 @@ query. That upstream API gap is documented and marked at the click handler.
 This commit migrates quest-pin data ownership, but does not claim live quest-pin
 parity until the common map controller supplies its visible bounding box and
 cluster camera behavior on all three targets.
+
+## Edit-history pin source
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests '*EditHistoryPinsSourceTest'` | 3 pass | Initial history loading, deletion reloads, complete order reindexing, Compose drawable pins, all edit-key variants, and malformed-property handling work on JVM. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*EditHistoryPinsSourceTest'` | 3 pass | The same history and click-key contracts execute on the Android host runner. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The listener-backed common source compiles for JVM. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The common source compiles beside the active legacy history manager. |
+| iOS simulator library | `./gradlew :app:compileKotlinIosSimulatorArm64` | Pass | Listener ownership, coroutine reloads, edit models, and Compose resources compile for Kotlin/Native. |
+
+The source deliberately reloads the whole edit history after additions,
+deletions, or invalidation. This retains the legacy manager's ordering semantics
+and avoids the stale-order bug in the older experimental incremental source.

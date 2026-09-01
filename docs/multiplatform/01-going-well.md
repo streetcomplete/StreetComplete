@@ -89,6 +89,10 @@
   the zoom-16 viewport cache, 32-tile guard, multi-marker edge retention,
   superseded-fetch cancellation, live quest deltas, user quest ordering, and
   typed click-key round trips without retaining an Android map or lifecycle.
+- Edit-history pin loading is now common as well. It observes the shared edit
+  history, reloads and reindexes the complete list after structural changes,
+  uses Compose drawable resources directly, and safely decodes all four edit
+  key variants from map feature properties.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers
