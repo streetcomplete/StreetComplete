@@ -85,6 +85,9 @@
   process suspension and relaunch; the in-process controllers cannot guarantee
   execution after the OS suspends the app.
 - [ ] Configure the real App Store identity once the iOS product record exists.
+- [ ] Eliminate the duplicate SQLite symbols reported while linking the iOS app.
+  The current framework includes both `sqlite3.c.o` and `sqlite3.o`; the app runs,
+  but carrying two bundled SQLite copies is not an acceptable final state.
 - [ ] Audit iOS behavior that compiles but is still placeholder-level, including
   email launching, background lifecycle, crash handling, and application startup.
 - [ ] Add real desktop implementations for storage paths, settings, database,

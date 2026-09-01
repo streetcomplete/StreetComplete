@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadWorker
 import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
-import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloaderAndroid
+import de.westnordost.streetcomplete.data.maptiles.MapLibreMapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.AndroidChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
@@ -44,6 +44,9 @@ import kotlinx.io.files.Path
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
+import org.maplibre.compose.android.AndroidRuntimeOptions
+import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.createMapRuntime
 import org.koin.dsl.module
 import org.koin.dsl.onClose
 import org.maplibre.compose.location.AndroidLocationProvider
@@ -128,5 +131,11 @@ val androidModule = module {
     factory<PeriodicCleaner> { AndroidPeriodicCleaner(androidContext()) }
     worker { CleanerWorker(get(), get(), get()) }
 
-    factory<MapTilesDownloader> { MapTilesDownloaderAndroid(androidContext()) }
+    single<MapRuntime> { createMapRuntime(AndroidRuntimeOptions(androidContext())) }
+    factory<MapTilesDownloader> {
+        MapLibreMapTilesDownloader(
+            runtime = get(),
+            pixelRatio = androidContext().resources.displayMetrics.density,
+        )
+    }
 }

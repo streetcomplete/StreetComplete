@@ -327,3 +327,18 @@ transitions. Entry-point wiring remains a separate commit.
 | Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*MainMapDownloadAreaTest'` | 4 pass | The same download planning executes on the Android host runner. |
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The common download planner compiles for the Android migration path. |
 | iOS simulator library | `./gradlew :app:compileKotlinIosSimulatorArm64` | Pass | Tile math and geographic expansion compile through Kotlin/Native. |
+
+## Shared offline base-map storage
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused test | `./gradlew :app:desktopTest --tests '*MapLibreMapTilesDownloaderTest'` | 1 pass | The StreetComplete style, longitude/latitude bounds, zoom 0 through 16, and display pixel ratio produce the intended MapLibre offline tile pyramid. |
+| Android host focused test | `./gradlew :app:testAndroidHostTest --tests '*MapLibreMapTilesDownloaderTest'` | 1 pass | The same offline definition contract executes on the Android host runner. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Shared offline pack creation, progress observation, cancellation, and cleanup compile for JVM; a desktop runtime binding remains a separate entry-point layer. |
+| Android application | `./gradlew :androidApp:compileDebugKotlin` | Pass | Android supplies one application MapLibre runtime to both the renderer and the common offline downloader. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | iOS supplies one cache-backed Metal runtime to the renderer and common offline downloader. |
+
+The downloader waits for a terminal MapLibre progress state before reporting
+success. Cancellation pauses the pack, and an error is propagated to the shared
+download coordinator rather than recording tiles as downloaded when base-map
+storage failed. Live download and deletion still require target demo evidence.

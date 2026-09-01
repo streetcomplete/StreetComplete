@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.data.connection.IosActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.data.initialize
-import de.westnordost.streetcomplete.data.maptiles.IosMapTilesDownloader
+import de.westnordost.streetcomplete.data.maptiles.MapLibreMapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
@@ -50,12 +50,17 @@ import org.maplibre.compose.location.IosLocationProvider
 import org.maplibre.compose.location.IosSystemSettingsLauncher
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.SystemSettingsLauncher
+import org.maplibre.compose.ios.IosRuntimeOptions
+import org.maplibre.compose.ios.iosCacheFile
+import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.createMapRuntime
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSBundle
 import platform.Foundation.NSCachesDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDefaults
 import platform.Foundation.NSUserDomainMask
+import platform.UIKit.UIScreen
 
 private val COMPOSE_FILES_DIR = NSBundle.mainBundle.resourcePath +
     "/compose-resources/composeResources/de.westnordost.streetcomplete.resources/files"
@@ -142,6 +147,16 @@ val iosModule = module {
 
     single<ActiveNetworkConnection> { IosActiveNetworkConnection() }
 
+    // map runtime and offline base-map storage
+
+    single<MapRuntime> { createMapRuntime(IosRuntimeOptions(iosCacheFile())) }
+    factory<MapTilesDownloader> {
+        MapLibreMapTilesDownloader(
+            runtime = get(),
+            pixelRatio = UIScreen.mainScreen.scale.toFloat(),
+        )
+    }
+
     // background jobs
 
     // TODO(multiplatform): Register BGProcessingTask handlers so automatic sync can survive
@@ -166,6 +181,4 @@ val iosModule = module {
     }
 
     factory<PeriodicCleaner> { IosPeriodicCleaner() }
-
-    factory<MapTilesDownloader> { IosMapTilesDownloader() }
 }

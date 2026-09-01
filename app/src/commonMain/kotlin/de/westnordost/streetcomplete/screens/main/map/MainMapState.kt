@@ -33,6 +33,7 @@ import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.compose.map.MapPresentationDetachedException
+import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MapState
 import org.maplibre.spatialk.geojson.BoundingBox
 import org.maplibre.spatialk.geojson.Position
@@ -164,9 +165,10 @@ class MainMapState internal constructor(
 @Composable
 fun rememberMainMapState(
     preferences: Preferences = koinInject(),
+    runtime: MapRuntime = koinInject(),
 ): MainMapState {
     val persistedState = remember(preferences) { PreferencesMapCameraState(preferences) }
-    val mapState = rememberStreetCompleteMapState(persistedState.loadCamera())
+    val mapState = rememberStreetCompleteMapState(persistedState.loadCamera(), runtime)
     val tracks = rememberSaveable(saver = MainMapTrackState.Saver) { MainMapTrackState() }
     val content = remember { MainMapContentState() }
     val scope = rememberCoroutineScope()

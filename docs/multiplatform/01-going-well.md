@@ -101,6 +101,10 @@
   map data into the already-migrated `StyledElement` model.
 - Downloaded-tile observation is now common and applies the same 14-day retained
   data cutoff before feeding the shared downloaded-area mask on every target.
+- Base-map downloads now use MapLibre Compose's shared offline-pack API on
+  Android and iOS. Both the renderer and downloader share one target-configured
+  runtime and cache, while retaining the production style, zoom 0 through 16,
+  display-density scaling, timestamp metadata, completion wait, and cleanup.
 - A common `MainMapViewModel` now owns all four renderer-independent sources,
   forwards one shared viewport to quest and overlay loaders, decodes pin clicks,
   and closes every listener-backed source with the view-model lifecycle. Koin

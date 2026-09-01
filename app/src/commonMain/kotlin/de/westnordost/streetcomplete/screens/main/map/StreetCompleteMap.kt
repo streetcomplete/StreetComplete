@@ -9,9 +9,11 @@ import de.westnordost.streetcomplete.resources.Res
 import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.map.MapPresentationCallbacks
 import org.maplibre.compose.map.MapPresentationOptions
+import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.MaplibreMap
 import org.maplibre.compose.map.rememberMapState
+import org.maplibre.compose.map.rememberMapRuntime
 import org.maplibre.compose.overlay.MapOverlay
 import org.maplibre.compose.style.BaseStyle
 import org.maplibre.compose.style.StyleComposition
@@ -74,7 +76,9 @@ fun StreetCompleteMap(
 @Composable
 fun rememberStreetCompleteMapState(
     initialCameraPosition: CameraPosition = CameraPosition(),
+    runtime: MapRuntime = rememberMapRuntime(),
 ): MapState = rememberMapState(
+    runtime = runtime,
     initialCameraPosition = initialCameraPosition,
     initialBaseStyle = BaseStyle.Json(streetCompleteBaseStyle()),
 )
