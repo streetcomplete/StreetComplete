@@ -99,6 +99,10 @@
   map data into the already-migrated `StyledElement` model.
 - Downloaded-tile observation is now common and applies the same 14-day retained
   data cutoff before feeding the shared downloaded-area mask on every target.
+- A common `MainMapViewModel` now owns all four renderer-independent sources,
+  forwards one shared viewport to quest and overlay loaders, decodes pin clicks,
+  and closes every listener-backed source with the view-model lifecycle. Koin
+  constructs the same graph on Android, iOS, and desktop.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers

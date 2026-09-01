@@ -224,3 +224,14 @@ source and is still tracked as a MapLibre Compose upstream gap.
 | Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The common listener-backed state source compiles for JVM. |
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The common source compiles beside the active Android downloaded-area manager. |
 | iOS simulator library | `./gradlew :app:compileKotlinIosSimulatorArm64` | Pass | The source compiles for Kotlin/Native. |
+
+## Shared main-map data owner
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Koin constructs the common main-map view model and its downloaded-tile, quest-pin, edit-pin, and overlay sources for JVM. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The same graph compiles alongside the transition Android map. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The complete common data-owner graph and listener cleanup link into the iOS framework. |
+
+This is the data boundary only. Camera ownership and live renderer composition
+remain separate commits so their behavior can be reviewed independently.

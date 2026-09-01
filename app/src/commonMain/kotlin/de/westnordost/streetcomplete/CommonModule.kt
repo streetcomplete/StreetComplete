@@ -174,6 +174,7 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewMod
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModelImpl
+import de.westnordost.streetcomplete.screens.main.map.sources.DownloadedTilesStateSource
 import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
@@ -605,12 +606,13 @@ val commonModule = module {
         EditHistoryViewModelImpl(get(), get())
     }
 
-    viewModel<MainMapViewModel> {
-        MainMapViewModelImpl(get(), get(), get(), get())
-    }
+    factory { DownloadedTilesStateSource(get()) }
     factory { MapQuestPinsSource(get(), get(), get()) }
     factory { EditHistoryPinsSource(get()) }
     factory { StyleableOverlaySource(get(), get()) }
+    viewModel<MainMapViewModel> {
+        MainMapViewModelImpl(get(), get(), get(), get())
+    }
 
     viewModel<MainBottomSheetViewModel> {
         MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
