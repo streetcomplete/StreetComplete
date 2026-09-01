@@ -74,3 +74,6 @@
 - Quest-form geometry markers now render from the existing shared `Marker`
   model, including center-anchored optional icons and titles plus line/polygon
   geometry. Dynamic Compose resources are registered as SDF or color images.
+- Selected quest pins now use a shared painter that reproduces the legacy
+  71dp shadow, pin, and 48dp quest-icon composition. Their 300ms scale animation
+  uses the same overshoot curve and restarts whenever the selection changes.

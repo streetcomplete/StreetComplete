@@ -35,11 +35,11 @@ preserve this behavior and respect reduced or disabled system animation.
 
 ### Missing volatile GeoJSON source option
 
-The legacy downloaded-area, recorded-track, focused-geometry, and geometry-marker
-sources explicitly set `GeoJsonSource.isVolatile = true` because their geometry
-changes frequently. The snapshot's common `GeoJsonOptions` exposes tiling,
-clustering, line metrics, and synchronous updates, but not MapLibre Native's
-volatile-source flag.
+The legacy downloaded-area, recorded-track, focused-geometry, geometry-marker,
+and selected-pin sources explicitly set `GeoJsonSource.isVolatile = true`
+because their geometry changes frequently. The snapshot's common
+`GeoJsonOptions` exposes tiling, clustering, line metrics, and synchronous
+updates, but not MapLibre Native's volatile-source flag.
 
 The shared layers still update their GeoJSON data through
 `rememberGeoJsonSource`, so both visualizations are functional. What cannot

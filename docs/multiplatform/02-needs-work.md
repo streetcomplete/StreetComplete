@@ -15,7 +15,7 @@
   shared MapLibre Compose implementation.
 - [x] Port the complete light/night base map style and offline glyph resources to
   shared MapLibre Compose declarations.
-- [ ] Port StreetComplete's quest pin, edit-history pin, overlay, selection, and
+- [ ] Port StreetComplete's quest pin, edit-history pin, overlay, and
   current-location layers.
 - [x] Port the downloaded-area mask and hatching to a shared MapLibre Compose
   layer.
@@ -31,6 +31,8 @@
   when the shared map is wired to the main screen.
 - [x] Port quest-form geometry marker icons, labels, points, lines, and polygons
   to shared MapLibre Compose layers.
+- [x] Port selected-pin icon composition, placement, and overshoot animation to
+  a shared MapLibre Compose layer.
 - [ ] Wire the shared map into the real main screen on each target, then remove
   the legacy Android assets and map stack only after parity is demonstrated.
 - [ ] Restore the legacy 300ms, system-animation-scale-aware global style

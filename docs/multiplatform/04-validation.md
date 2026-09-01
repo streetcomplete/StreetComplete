@@ -120,3 +120,13 @@ shared map is connected to target entry points.
 | Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Dynamic painter registration, SDF coloring, labels, and geometry layers compile for desktop. |
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared marker layers compile beside the active legacy component. |
 | iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Marker resource lookup, image registration, and layers compile and link for iOS. |
+
+## Selected-pin map layer
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayerTest'` | 2 pass | Selected positions become point features and the 300ms easing matches Android's default overshoot interpolator. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayerTest'` | 2 pass | The same point and animation contract executes on Android host. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Shared pin composition, painter registration, animation, and symbol placement compile for desktop. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared selected-pin layer compiles beside the active legacy component. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Shared pin resources, painter composition, and animation compile and link for iOS. |
