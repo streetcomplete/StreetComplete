@@ -1,15 +1,12 @@
 package de.westnordost.streetcomplete.screens.main
 
-import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
-import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlin.reflect.KClass
 
@@ -80,19 +77,6 @@ abstract class MainViewModel : ViewModel() {
     abstract val isShowingStarsCurrentWeek: StateFlow<Boolean>
     abstract fun toggleShowingCurrentWeek()
 
-    // NOTE: currently filled from MainActivity (communication to compose view), i.e. the source of
-    //       truth is actually the MapFragment
-    abstract val locationState: MutableStateFlow<LocationState?>
-    abstract val mapCamera: MutableStateFlow<CameraPosition?>
-    abstract val metersPerDp: MutableStateFlow<Double>
-    abstract val displayedPosition: MutableStateFlow<Offset?>
-
-    abstract val isFollowingPosition: MutableStateFlow<Boolean>
-    abstract val isNavigationMode: MutableStateFlow<Boolean>
-
-    abstract val isRecordingTracks: MutableStateFlow<Boolean>
-
-    abstract val userHasMovedCamera: MutableStateFlow<Boolean>
 }
 
 data class ShownUrlConfig(val urlConfig: UrlConfig, val alreadyExists: Boolean)

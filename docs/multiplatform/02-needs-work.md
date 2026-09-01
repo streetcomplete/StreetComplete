@@ -12,7 +12,10 @@
 ## Map parity
 
 - [ ] Move the Android-only `Fragment` and `org.maplibre.android` map stack to a
-  shared MapLibre Compose implementation.
+  shared MapLibre Compose implementation. The live Android path has switched;
+  the now-unused legacy classes, dependencies, and assets still need a guarded
+  removal after a parity inventory.
+- [x] Run Android's real main screen on the shared MapLibre Compose renderer.
 - [x] Port the complete light/night base map style and offline glyph resources to
   shared MapLibre Compose declarations.
 - [x] Port shared quest/edit pin clustering, rendering, resource registration,
@@ -64,8 +67,8 @@
   MapLibre Compose exposes it as a common source option.
 - [ ] Restore the styleable-overlay GeoJSON source's volatile cache hint when
   MapLibre Compose exposes it as a common source option.
-- [ ] Wire the shared map into the real main screen on each target, then remove
-  the legacy Android assets and map stack only after parity is demonstrated.
+- [ ] Wire the shared map into the real main screen on desktop and iOS, then
+  remove the legacy Android assets and map stack only after parity is demonstrated.
 - [ ] Restore the legacy 300ms, system-animation-scale-aware global style
   transition when MapLibre Compose exposes common transition configuration.
 - [ ] Preserve every current map data source, layer, selection flow, camera

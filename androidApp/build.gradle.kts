@@ -81,9 +81,6 @@ dependencies {
     implementation("org.jetbrains.compose.components:components-resources:1.12.0")
     debugImplementation("androidx.compose.ui:ui-tooling:1.10.0")
 
-    // location
-    implementation("org.maplibre.compose:location:0.15.0")
-
     // Dependency Injection
     implementation("io.insert-koin:koin-android:4.2.2")
     implementation("io.insert-koin:koin-compose:4.2.2")

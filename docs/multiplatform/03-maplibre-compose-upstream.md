@@ -8,7 +8,7 @@ API before they are considered actionable.
 
 - Latest stable release available locally: `0.15.0`.
 - Latest published post-release snapshot observed on 2026-09-01:
-  `0.15.1-SNAPSHOT`, build `0.15.1-20260831.102040-6`.
+  `0.15.1-SNAPSHOT`, build `0.15.1-20260901.101938-7`.
 - The snapshot includes the shared map artifact and platform runtime artifacts,
   including Android OpenGL and macOS ARM64 Metal.
 
@@ -90,6 +90,20 @@ dispatch knowledge and an extra rendered-feature query. A common post-dispatch
 fallback contract directly.
 
 ## Resolved integration findings
+
+### Map lifecycle lock inversion during style-source refresh
+
+Snapshot build `0.15.1-20260831.102040-6` deterministically ANRed Android on
+StreetComplete's first map load. The UI thread waited in
+`MlnFfiGate.awaitUntilOpen` while reading native style sources; the map-owner and
+render threads were both waiting on lifecycle locks. A cold-launch device loop
+reproduced the three-thread cycle on every run.
+
+MapLibre Compose commit `2e7114c5` moves source reads out of the lifecycle lock
+and adds the focused `MapLifecycleCallbackRaceTest`. Snapshot build
+`0.15.1-20260901.101938-7` includes the fix. The unchanged StreetComplete device
+loop stays resumed, renders its first OpenGL frame, and produces no ANR. This is
+resolved upstream and requires no application workaround.
 
 ### Negative symbol collision padding
 

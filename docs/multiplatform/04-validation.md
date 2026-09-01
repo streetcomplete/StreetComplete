@@ -254,16 +254,32 @@ switched to it.
 
 | Target | Command | Result | What it proves |
 | --- | --- | --- | --- |
-| Desktop focused tests | `./gradlew :app:desktopTest --tests '*MainMapCameraControllerTest' --tests '*ClusterCameraTest' --tests '*FocusCameraTest'` | 15 pass | First-fix zoom, 600ms following, track-bearing navigation, tilt reset, compass reset, gesture/pan discrimination, explicit target/zoom/padding moves, persistence, cluster behavior, focus padding/margin/cap, and return/clear behavior retain the legacy policy. |
-| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*MainMapCameraControllerTest' --tests '*ClusterCameraTest' --tests '*FocusCameraTest'` | 15 pass | The same camera, explicit movement, cluster, and focused-geometry policy executes on the Android host runner. |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests '*MainMapCameraControllerTest' --tests '*ClusterCameraTest' --tests '*FocusCameraTest'` | 16 pass | First-fix zoom, 600ms following, track-bearing navigation, tilt reset, compass reset, gesture/pan discrimination, pre-presentation and ordinary explicit moves, persistence, cluster behavior, focus padding/margin/cap, and return/clear behavior retain the legacy policy. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*MainMapCameraControllerTest' --tests '*ClusterCameraTest' --tests '*FocusCameraTest'` | 16 pass | The same camera, explicit movement, cluster, and focused-geometry policy executes on the Android host runner. |
 | Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The common camera state and MapLibre presentation adapter compile for desktop. |
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The common camera state compiles beside the active legacy fragment. |
 | iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The shared camera state, persistence adapter, controller, and MapLibre animation API link into the iOS framework. |
 
 The controller uses target movement during a generic user gesture as a pan
 signal because MapLibre Compose does not expose gesture-specific begin events.
-That upstream limitation is documented separately. Entry-point wiring and live
-interaction evidence remain outstanding.
+That upstream limitation is documented separately. Desktop and iOS entry-point
+wiring and live interaction evidence remain outstanding.
+
+## Android shared main-screen entry point
+
+| Target | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| Android APK | `./gradlew :androidApp:assembleDebug --refresh-dependencies` | Pass | The live activity, complete shared screen, MapLibre OpenGL runtime, and snapshot build `0.15.1-20260901.101938-7` package together. |
+| Android cold launch | Install the debug APK, force-stop the test and app packages, cold-launch `MainActivity`, and observe for 15 seconds | Pass | The activity stays resumed, MapLibre renders its first OpenGL frame, and the prior style-source lock-inversion ANR does not recur. |
+| Android onboarding | Complete all four tutorial pages and the location-permission step | Pass | Shared tutorial state, permission request, and transition into the real main map remain interactive. |
+| Android live map | Inspect the post-onboarding screen and accessibility tree | Pass | The Compose hierarchy contains MapLibre's platform surface plus the shared stars, overlay, menu, location, attribution, and scale controls; there is no fragment container in the live hierarchy. |
+| Desktop and Android camera tests | `./gradlew :app:desktopTest --tests '*MainMapCameraControllerTest' :app:testAndroidHostTest --tests '*MainMapCameraControllerTest'` | Pass | A geo move consumed before presentation is retained until the map attaches on both JVM runners. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The complete shared screen and direct map ownership compile for desktop. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The same screen, location/heading integration, projection, and map ownership link through Kotlin/Native and the Metal runtime. |
+
+This is live Android evidence only. Desktop and iOS entry points still do not
+present this screen, and the Android legacy source/assets have not yet been
+deleted, so this layer does not claim three-target runtime parity or cleanup.
 
 ## Shared map interaction boundary
 

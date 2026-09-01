@@ -11,6 +11,9 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -22,58 +25,89 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.unit.dp
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.messages.Message
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
+import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.MainScreenControls
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
+import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
+import de.westnordost.streetcomplete.screens.main.map.MainMap
+import de.westnordost.streetcomplete.screens.main.map.MainMapDownloadArea
+import de.westnordost.streetcomplete.screens.main.map.MainMapPinMode
+import de.westnordost.streetcomplete.screens.main.map.MainMapState
+import de.westnordost.streetcomplete.screens.main.map.calculateMainMapDownloadArea
+import de.westnordost.streetcomplete.screens.main.map.getMainMapHighlightedElementMarkers
+import de.westnordost.streetcomplete.screens.main.map.rememberMainMapState
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
 import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
 import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.ToastPopup
+import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
-import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.dir
+import de.westnordost.streetcomplete.ui.theme.Dimensions
+import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.toLocation
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.koinInject
+import org.koin.core.qualifier.named
+import org.maplibre.compose.location.HeadingProvider
+import org.maplibre.compose.location.HeadingRequest
+import org.maplibre.compose.location.LocationEvent
+import org.maplibre.compose.location.LocationPermission
+import org.maplibre.compose.location.LocationProvider
+import org.maplibre.compose.location.LocationRequest
+import org.maplibre.compose.location.LocationUnavailableReason
+import org.maplibre.compose.location.SystemSettingsLauncher
+import org.maplibre.compose.location.rememberDefaultHeadingProvider
+import org.maplibre.compose.location.rememberDefaultLocationProvider
+import org.maplibre.compose.location.rememberSystemSettingsLauncher
+import org.maplibre.spatialk.units.Bearing
+import org.maplibre.spatialk.units.DMS
+import kotlin.time.Duration.Companion.milliseconds
 
-/** Map controls shown on top of the map. */
+/** Complete shared main map and its Compose UI. */
 @Composable
 fun MainScreen(
     viewModel: MainViewModel,
     editHistoryViewModel: EditHistoryViewModel,
     mainBottomSheetViewModel: MainBottomSheetViewModel,
-    onClickZoomIn: () -> Unit,
-    onClickZoomOut: () -> Unit,
-    onZoomDrag: (Float) -> Unit,
-    onClickCompass: () -> Unit,
-    onClickLocation: () -> Unit,
-    onClickLocationPointer: () -> Unit,
-    onClickCreate: () -> Unit,
-    onClickStopTrackRecording: () -> Unit,
-    onDownload: () -> Unit,
     onClickSettings: () -> Unit,
     onClickQuestSettings: () -> Unit,
     onClickAbout: () -> Unit,
     onClickProfile: () -> Unit,
     onClickLogin: () -> Unit,
-    onSetMapMarkers: (Iterable<Marker>) -> Unit,
-    onSolvedQuest: (icon: DrawableResource, position: LatLon) -> Unit,
-    getOffset: (position: LatLon) -> Offset?,
-    lastMapClick: MapClick?,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    mapState: MainMapState = rememberMainMapState(),
+    locationProvider: LocationProvider = rememberDefaultLocationProvider(),
+    headingProvider: HeadingProvider = rememberDefaultHeadingProvider(),
+    systemSettingsLauncher: SystemSettingsLauncher = rememberSystemSettingsLauncher(),
+    mapAppLauncher: MapAppLauncher = koinInject(),
+    surveyChecker: SurveyChecker = koinInject(),
+    mapDataSource: MapDataWithEditsSource = koinInject(),
+    featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
 ) {
     val scope = rememberCoroutineScope()
 
@@ -96,19 +130,34 @@ fun MainScreen(
     val isUploadingOrDownloading by viewModel.isUploadingOrDownloading.collectAsState()
 
     val urlConfig by viewModel.urlConfig.collectAsState()
+    val geoUri by viewModel.geoUri.collectAsState()
     val lastCrashReport by viewModel.lastCrashReport.collectAsState()
     val lastDownloadError by viewModel.lastDownloadError.collectAsState()
     val lastUploadError by viewModel.lastUploadError.collectAsState()
 
-    val locationState by viewModel.locationState.collectAsState()
-    val isNavigationMode by viewModel.isNavigationMode.collectAsState()
-    val isFollowingPosition by viewModel.isFollowingPosition.collectAsState()
-    val isRecordingTracks by viewModel.isRecordingTracks.collectAsState()
-    val userHasMovedCamera by viewModel.userHasMovedCamera.collectAsState()
-
-    val mapCamera by viewModel.mapCamera.collectAsState()
-    val metersPerDp by viewModel.metersPerDp.collectAsState()
-    val displayedPosition by viewModel.displayedPosition.collectAsState()
+    var latestLocationEvent by remember { mutableStateOf<LocationEvent?>(null) }
+    val locationPermission by locationProvider.permission.collectAsState()
+    val headingUpdates = remember(headingProvider) {
+        headingProvider.updates(HeadingRequest(33.milliseconds))
+    }
+    val heading by headingUpdates.collectAsState(initial = null)
+    val mapCamera = mapState.cameraPosition
+    val mapPosition = mapCamera.target.toLatLon()
+    val metersPerDp = mapState.metersPerDp
+    val density = LocalDensity.current
+    val layoutDirection = LocalLayoutDirection.current
+    val windowInfo = LocalWindowInfo.current
+    val openFormPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo)
+    val displayedPosition = mapState.displayedLocation?.position?.let(mapState::offsetOf)?.let {
+        with(density) { Offset(it.x.toPx(), it.y.toPx()) }
+    }
+    val locationState = getLocationState(locationPermission, latestLocationEvent)
+    val locationRotation = heading
+        ?.bearing
+        ?.clockwiseRotationTo(Bearing.North)
+        ?.toDouble(DMS.Degrees)
+        ?.minus(mapCamera.bearing)
+        ?.toFloat()
 
     val showZoomButtons by viewModel.showZoomButtons.collectAsState()
 
@@ -123,8 +172,6 @@ fun MainScreen(
     val shownBottomSheet by mainBottomSheetViewModel.shownBottomSheet.collectAsState()
     val geometryOffsetInWindow by mainBottomSheetViewModel.geometryOffsetInWindow.collectAsState()
 
-    val emailAppLauncher = rememberEmailAppLauncher()
-
     var confirmReplaceDownload by remember { mutableStateOf(false) }
     var showOverlaysTutorial by remember { mutableStateOf(false) }
     var showIntroTutorial by remember { mutableStateOf(false) }
@@ -132,13 +179,56 @@ fun MainScreen(
     var showMainMenuDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     var showToast by remember { mutableStateOf<Toast?>(null) }
+    var locationDialog by remember { mutableStateOf<LocationDialog?>(null) }
+    var lastMapClick by remember { mutableStateOf<MapClick?>(null) }
+    var lastMapLongPress by remember { mutableStateOf<Pair<DpOffset, LatLon>?>(null) }
+    var showMapContextMenu by remember { mutableStateOf(false) }
+    var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
+    var wasFollowingPosition by remember { mutableStateOf<Boolean?>(null) }
+    var wasNavigationMode by remember { mutableStateOf<Boolean?>(null) }
+
+    fun freezeMap() {
+        if (wasFollowingPosition == null) wasFollowingPosition = mapState.isFollowingPosition
+        if (wasNavigationMode == null) wasNavigationMode = mapState.isNavigationMode
+        mapState.setFollowingPosition(false)
+        mapState.setNavigationMode(false)
+    }
+
+    fun unfreezeMap() {
+        wasFollowingPosition?.let(mapState::setFollowingPosition)
+        wasNavigationMode?.let(mapState::setNavigationMode)
+        wasFollowingPosition = null
+        wasNavigationMode = null
+    }
+
+    fun getCrosshairPosition(): LatLon? {
+        val size = windowInfo.containerDpSize
+        val left = openFormPadding.calculateLeftPadding(layoutDirection)
+        val right = openFormPadding.calculateRightPadding(layoutDirection)
+        val top = openFormPadding.calculateTopPadding()
+        val bottom = openFormPadding.calculateBottomPadding()
+        return mapState.positionAt(
+            DpOffset(
+                x = left + (size.width - left - right) / 2,
+                y = top + (size.height - top - bottom) / 2,
+            )
+        )
+    }
+
+    fun downloadVisibleArea() {
+        when (val area = calculateMainMapDownloadArea(mapState.displayedArea, mapPosition)) {
+            is MainMapDownloadArea.Available -> viewModel.download(area.bounds)
+            MainMapDownloadArea.DisplayAreaUnavailable -> showToast = Toast.DownloadAreaUnavailable
+            MainMapDownloadArea.TooLarge -> showToast = Toast.DownloadAreaTooBig
+        }
+    }
 
     fun onClickDownload() {
         if (viewModel.isConnected) {
             if (viewModel.isUserInitiatedDownloadInProgress) {
                 confirmReplaceDownload = true
             } else {
-                onDownload()
+                downloadVisibleArea()
             }
         } else {
             showToast = Toast.Offline
@@ -153,22 +243,133 @@ fun MainScreen(
         }
     }
 
-    fun sendErrorReport(errorReport: String) {
-        if (!emailAppLauncher.isAvailable()) {
+    fun sendErrorReport(error: Exception) {
+        if (!viewModel.isSendErrorReportAvailable()) {
             showToast = Toast.NoEmailClient
         } else {
-            emailAppLauncher.compose(
-                email = ApplicationConstants.ERROR_REPORTS_EMAIL,
-                subject = ApplicationConstants.USER_AGENT + " " + "Error Report",
-                body = "Describe how to reproduce it here:\n\n\n\n$errorReport"
+            viewModel.sendErrorReport(error)
+        }
+    }
+
+    fun sendErrorReport(report: String) {
+        if (!viewModel.isSendErrorReportAvailable()) {
+            showToast = Toast.NoEmailClient
+        } else {
+            viewModel.sendErrorReport(report)
+        }
+    }
+
+    LaunchedEffect(locationProvider) {
+        locationProvider.updates(LocationRequest()).collect { event ->
+            latestLocationEvent = event
+            if (event is LocationEvent.Update) {
+                surveyChecker.addRecentLocation(event.measurement.toLocation())
+            }
+        }
+    }
+
+    LaunchedEffect(geoUri) {
+        geoUri?.let { camera ->
+            viewModel.consumeGeoUri()
+            mapState.moveTo(
+                position = camera.position,
+                zoom = camera.zoom,
+                padding = PaddingValues(0.dp),
             )
         }
     }
 
-    fun sendErrorReport(error: Exception) {
-        scope.launch {
-            val report = viewModel.createErrorReport(error)
-            sendErrorReport(report)
+    LaunchedEffect(showEditHistorySidebar) {
+        if (showEditHistorySidebar) {
+            freezeMap()
+            mapState.hideOverlay()
+            mapState.setPinMode(MainMapPinMode.EDITS)
+        } else {
+            unfreezeMap()
+            mapState.clearFocus()
+            mapState.clearHighlighting()
+            mapState.setPinMode(MainMapPinMode.QUESTS)
+        }
+    }
+
+    LaunchedEffect(selectedEdit, showEditHistorySidebar) {
+        val edit = selectedEdit
+        if (edit != null) {
+            val geometry = editHistoryViewModel.getEditGeometry(edit)
+            mapState.startFocus(geometry)
+            mapState.showGeometry(geometry)
+            edit.icon?.let { mapState.selectPins(it, listOf(edit.position)) }
+            mapState.hideOverlay()
+        } else if (showEditHistorySidebar) {
+            mapState.clearFocus()
+            mapState.clearHighlighting()
+            mapState.hideOverlay()
+        }
+    }
+
+    LaunchedEffect(shownBottomSheet) {
+        val bottomSheet = shownBottomSheet
+        if (bottomSheet == null) {
+            mapState.clearHighlighting()
+            unfreezeMap()
+            mapState.endFocus()
+            return@LaunchedEffect
+        }
+
+        freezeMap()
+        when (bottomSheet) {
+            is ShownBottomSheet.CreateOsmNote -> Unit
+            is ShownBottomSheet.OsmNoteQuest -> {
+                mapState.startFocus(bottomSheet.quest.geometry, openFormPadding)
+                mapState.showGeometry(bottomSheet.quest.geometry)
+                mapState.selectPins(bottomSheet.quest.type.icon, bottomSheet.quest.markerLocations)
+                mapState.hidePins()
+                mapState.hideOverlay()
+            }
+            is ShownBottomSheet.OsmQuest -> {
+                val quest = bottomSheet.quest
+                mapState.startFocus(quest.geometry, openFormPadding)
+                mapState.showGeometry(quest.geometry)
+                mapState.selectPins(quest.type.icon, quest.markerLocations)
+                mapState.hidePins()
+                mapState.hideOverlay()
+                mapState.setMarkers(
+                    kotlinx.coroutines.withContext(Dispatchers.IO) {
+                        getMainMapHighlightedElementMarkers(
+                            quest,
+                            bottomSheet.element,
+                            mapDataSource,
+                            featureDictionary.value,
+                        )
+                    }
+                )
+            }
+            is ShownBottomSheet.Overlay -> {
+                val geometry = bottomSheet.geometry
+                if (geometry == null) {
+                    getCrosshairPosition()?.let { position ->
+                        mapState.moveTo(position, padding = openFormPadding)
+                    }
+                } else {
+                    mapState.moveTo(mapPosition, padding = openFormPadding)
+                    mapState.showGeometry(geometry)
+                    mapState.selectPins(bottomSheet.overlay.icon, listOf(geometry.center))
+                }
+                mapState.hidePins()
+            }
+        }
+    }
+
+    LaunchedEffect(shownBottomSheet?.position, mapCamera, mapState.mapState.presentation) {
+        mainBottomSheetViewModel.geometryOffsetInWindow.value =
+            shownBottomSheet?.position?.let(mapState::offsetOf)?.let {
+                with(density) { Offset(it.x.toPx(), it.y.toPx()) }
+            }
+    }
+
+    LaunchedEffect(selectedOverlay) {
+        if (shownBottomSheet is ShownBottomSheet.Overlay) {
+            mainBottomSheetViewModel.closeBottomSheet()
         }
     }
 
@@ -191,6 +392,37 @@ fun MainScreen(
     }
 
     Box(modifier) {
+        MainMap(
+            onClickOverlayElement = { elementKey ->
+                val overlay = selectedOverlay
+                if (overlay != null && shownBottomSheet == null) {
+                    mainBottomSheetViewModel.showElementInOverlay(overlay, elementKey)
+                }
+            },
+            onClickQuest = { questKey ->
+                if (shownBottomSheet == null) mainBottomSheetViewModel.showQuest(questKey)
+            },
+            onClickEdit = editHistoryViewModel::select,
+            onClickMap = { position, clickRadiusInMeters ->
+                when {
+                    shownBottomSheet != null -> {
+                        lastMapClick = MapClick(position, clickRadiusInMeters)
+                    }
+                    showEditHistorySidebar -> editHistoryViewModel.hideSidebar()
+                }
+            },
+            onLongPress = { offset, position ->
+                if (shownBottomSheet == null && !showEditHistorySidebar) {
+                    lastMapLongPress = offset to position
+                    showMapContextMenu = true
+                }
+            },
+            locationEvent = latestLocationEvent,
+            locationRotation = locationRotation,
+            modifier = Modifier.fillMaxSize(),
+            state = mapState,
+        )
+
         // TODO: Alternative to this would be to put the tutorial screens into a separate
         // navigation destination in a TBD MainNavHost after complete migration to Compose
         // (see #6255)
@@ -218,28 +450,59 @@ fun MainScreen(
                 onClickMainMenu = { showMainMenuDialog = true },
 
                 showZoomButtons = showZoomButtons,
-                onClickZoomIn = onClickZoomIn,
-                onClickZoomOut = onClickZoomOut,
-                onZoomDrag = onZoomDrag,
+                onClickZoomIn = mapState::zoomIn,
+                onClickZoomOut = mapState::zoomOut,
+                onZoomDrag = mapState::zoomByDrag,
 
-                mapRotation = mapCamera?.rotation?.toFloat() ?: 0f,
-                mapTilt = mapCamera?.tilt?.toFloat() ?: 0f,
-                onClickCompass = onClickCompass,
+                mapRotation = mapCamera.bearing.toFloat(),
+                mapTilt = mapCamera.tilt.toFloat(),
+                onClickCompass = mapState::resetCompass,
 
                 locationState = locationState,
-                isNavigationMode = isNavigationMode,
-                isFollowingPosition = isFollowingPosition,
+                isNavigationMode = mapState.isNavigationMode,
+                isFollowingPosition = mapState.isFollowingPosition,
                 displayedLocationOffset = displayedPosition,
-                onClickLocation = onClickLocation,
-                onClickLocationPointer = onClickLocationPointer,
+                onClickLocation = {
+                    when (val permission = locationPermission) {
+                        is LocationPermission.NotGranted -> {
+                            when {
+                                permission.canRequest != false && !permission.shouldShowRationale ->
+                                    locationProvider.requestPermission()
+                                permission.canRequest != false ->
+                                    locationDialog = LocationDialog.PermissionRationale
+                                systemSettingsLauncher.canOpenApplicationSettings ->
+                                    locationDialog = LocationDialog.ApplicationSettings
+                                else -> showToast = Toast.NoLocation
+                            }
+                        }
+                        is LocationPermission.Granted -> when {
+                            locationState == LocationState.ALLOWED -> {
+                                if (systemSettingsLauncher.canOpenLocationServicesSettings) {
+                                    locationDialog = LocationDialog.LocationServices
+                                } else {
+                                    showToast = Toast.NoLocation
+                                }
+                            }
+                            !mapState.isFollowingPosition -> mapState.setFollowingPosition(true)
+                            else -> mapState.setNavigationMode(!mapState.isNavigationMode)
+                        }
+                    }
+                },
+                onClickLocationPointer = { mapState.setFollowingPosition(true) },
 
-                isRecordingTracks = isRecordingTracks,
-                onClickStopTrackRecording = onClickStopTrackRecording,
+                isRecordingTracks = mapState.isRecordingTrack,
+                onClickStopTrackRecording = {
+                    val track = mapState.stopTrackRecording()
+                    mapState.displayedLocation?.position?.let { position ->
+                        mainBottomSheetViewModel.showCreateNote(track.takeIf { it.isNotEmpty() })
+                        mapState.moveTo(position, padding = openFormPadding)
+                    }
+                },
 
                 isCreateNodeEnabled = isCreateNodeEnabled,
                 onClickCreate = {
-                    if ((mapCamera?.zoom ?: 0.0) >= 17.0) {
-                        onClickCreate()
+                    if (mapCamera.zoom >= 17.0) {
+                        selectedOverlay?.let(mainBottomSheetViewModel::showCreateElementInOverlay)
                     } else {
                         showToast = Toast.DownloadAreaTooBig
                     }
@@ -250,7 +513,7 @@ fun MainScreen(
                 onClickUndo = { editHistoryViewModel.showSidebar() },
 
                 metersPerDp = metersPerDp,
-                userHasMovedMap = userHasMovedCamera,
+                userHasMovedMap = mapState.userHasMovedCamera,
             )
         }
 
@@ -270,38 +533,71 @@ fun MainScreen(
             )
         }
 
-        mapCamera?.let { mapCamera ->
-            AnimatedContent(
-                targetState = shownBottomSheet,
-                transitionSpec = {
-                    if (initialState != null && targetState != null) {
-                        fadeIn() + slideInVertically { it / 16 } togetherWith fadeOut()
-                    } else {
-                        // Size transform with snap is necessary so that it doesn't animate the bounds
-                        // from zero (=no form) which looks weird
-                        (fadeIn() + slideInVertically { it } togetherWith
+        AnimatedContent(
+            targetState = shownBottomSheet,
+            transitionSpec = {
+                if (initialState != null && targetState != null) {
+                    fadeIn() + slideInVertically { it / 16 } togetherWith fadeOut()
+                } else {
+                    // Size transform with snap is necessary so that it doesn't animate the bounds
+                    // from zero (=no form) which looks weird
+                    (fadeIn() + slideInVertically { it } togetherWith
                         fadeOut() + slideOutVertically { it / 2 }) using SizeTransform(clip = false)
-                    }
-                },
-            ) { shownBottomSheet ->
-                if (shownBottomSheet != null) {
-                    MainBottomSheet(
-                        onDismiss = { mainBottomSheetViewModel.closeBottomSheet() },
-                        onSolved = onSolvedQuest,
-                        viewModel = mainBottomSheetViewModel,
-                        shownBottomSheet = shownBottomSheet,
-                        geometryOffsetInWindow = geometryOffsetInWindow,
-                        mapRotation = mapCamera.rotation.toFloat(),
-                        mapTilt = mapCamera.tilt.toFloat(),
-                        mapPosition = mapCamera.position,
-                        mapMetersPerDp = metersPerDp,
-                        onSetMapMarkers = onSetMapMarkers,
-                        getOffset = getOffset,
-                        lastMapClick = lastMapClick,
-                    )
                 }
+            },
+        ) { shownBottomSheet ->
+            if (shownBottomSheet != null) {
+                MainBottomSheet(
+                    onDismiss = { mainBottomSheetViewModel.closeBottomSheet() },
+                    onSolved = { icon, position ->
+                        mapState.offsetOf(position)?.let { offset ->
+                            lastQuestSolved = QuestSolvedEvent(
+                                icon,
+                                with(density) { Offset(offset.x.toPx(), offset.y.toPx()) },
+                            )
+                        }
+                    },
+                    viewModel = mainBottomSheetViewModel,
+                    shownBottomSheet = shownBottomSheet,
+                    geometryOffsetInWindow = geometryOffsetInWindow,
+                    mapRotation = mapCamera.bearing.toFloat(),
+                    mapTilt = mapCamera.tilt.toFloat(),
+                    mapPosition = mapPosition,
+                    mapMetersPerDp = metersPerDp,
+                    onSetMapMarkers = mapState::setMarkers,
+                    getOffset = { position ->
+                        mapState.offsetOf(position)?.let { offset ->
+                            with(density) { Offset(offset.x.toPx(), offset.y.toPx()) }
+                        }
+                    },
+                    lastMapClick = lastMapClick,
+                )
             }
         }
+
+        lastQuestSolved?.let { LastQuestSolvedEffect(it) }
+
+        val longPress = lastMapLongPress
+        MapContextMenu(
+            expanded = showMapContextMenu,
+            onDismissRequest = { showMapContextMenu = false },
+            onClickCreateNote = {
+                longPress?.second?.let { position ->
+                    if (mapCamera.zoom < ApplicationConstants.NOTE_MIN_ZOOM) {
+                        showToast = Toast.CreateNoteTooImprecise
+                    } else {
+                        mainBottomSheetViewModel.showCreateNote(null)
+                        mapState.moveTo(position, padding = openFormPadding)
+                    }
+                }
+            },
+            onClickCreateTrack = mapState::startTrackRecording,
+            onClickOpenLocation = {
+                longPress?.second?.let { mapAppLauncher.openAt(it, mapCamera.zoom) }
+            },
+            isOpenLocationAvailable = remember(mapAppLauncher) { mapAppLauncher.isAvailable() },
+            offset = longPress?.first ?: DpOffset.Zero,
+        )
     }
 
     shownMessage?.let { message ->
@@ -361,7 +657,36 @@ fun MainScreen(
     if (confirmReplaceDownload) {
         ConfirmReplaceDownloadDialog(
             onDismissRequest = { confirmReplaceDownload = false },
-            onConfirmed = { onDownload() }
+            onConfirmed = ::downloadVisibleArea,
+        )
+    }
+
+    locationDialog?.let { dialog ->
+        ConfirmationDialog(
+            onDismissRequest = { locationDialog = null },
+            onConfirmed = {
+                when (dialog) {
+                    LocationDialog.PermissionRationale -> locationProvider.requestPermission()
+                    LocationDialog.ApplicationSettings -> systemSettingsLauncher.openApplicationSettings()
+                    LocationDialog.LocationServices -> systemSettingsLauncher.openLocationServicesSettings()
+                }
+            },
+            title = if (dialog == LocationDialog.PermissionRationale) {
+                { Text(stringResource(Res.string.no_location_permission_warning_title)) }
+            } else {
+                null
+            },
+            text = {
+                Text(
+                    stringResource(
+                        if (dialog == LocationDialog.PermissionRationale) {
+                            Res.string.no_location_permission_warning
+                        } else {
+                            Res.string.turn_on_location_request
+                        }
+                    )
+                )
+            },
         )
     }
 
@@ -405,14 +730,42 @@ private enum class Toast {
     Offline,
     TeamModeActive,
     TeamModeDeactivated,
+    DownloadAreaUnavailable,
     DownloadAreaTooBig,
-    NoEmailClient
+    CreateNoteTooImprecise,
+    NoEmailClient,
+    NoLocation,
 }
 
-private val Toast.messageResource: StringResource get() =  when (this) {
+private enum class LocationDialog { PermissionRationale, ApplicationSettings, LocationServices }
+
+private val Toast.messageResource: StringResource get() = when (this) {
     Toast.Offline -> Res.string.offline
     Toast.TeamModeActive -> Res.string.team_mode_active
     Toast.TeamModeDeactivated -> Res.string.team_mode_deactivated
+    Toast.DownloadAreaUnavailable -> Res.string.cannot_find_bbox_or_reduce_tilt
     Toast.DownloadAreaTooBig -> Res.string.download_area_too_big
+    Toast.CreateNoteTooImprecise -> Res.string.create_new_note_unprecise
     Toast.NoEmailClient -> Res.string.no_email_client
+    Toast.NoLocation -> Res.string.no_gps_no_quests
 }
+
+private fun getLocationState(
+    permission: LocationPermission,
+    event: LocationEvent?,
+): LocationState? {
+    if (permission is LocationPermission.NotGranted) return LocationState.DENIED
+    return when (event) {
+        null -> LocationState.ENABLED
+        is LocationEvent.Update -> LocationState.UPDATING
+        is LocationEvent.Unavailable -> when (event.reason) {
+            LocationUnavailableReason.ServicesDisabled -> LocationState.ALLOWED
+            LocationUnavailableReason.TemporarilyUnavailable -> LocationState.SEARCHING
+            LocationUnavailableReason.PermissionDenied -> LocationState.DENIED
+            LocationUnavailableReason.Unsupported,
+            LocationUnavailableReason.Misconfigured,
+            LocationUnavailableReason.UnexpectedFailure -> null
+        }
+    }
+}
+

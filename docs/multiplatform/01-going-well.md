@@ -39,8 +39,8 @@
 
 ## MapLibre Compose snapshot foundation
 
-- All targets now compile against the post-v0.15 `0.15.1-SNAPSHOT`; dependency
-  resolution selected build `0.15.1-20260831.102040-6`.
+- All targets now compile against the post-v0.15 `0.15.1-SNAPSHOT`; the latest
+  dependency refresh selected build `0.15.1-20260901.101938-7`.
 - Android packages the OpenGL runtime, iOS links the transitive Metal runtime,
   and the current macOS ARM64 host selects the desktop Metal runtime.
 - StreetComplete now consumes the snapshot's `LocationMeasurement`,
@@ -60,8 +60,10 @@
 - The shared map shell exposes the four intentional layer-ordering seams needed
   by StreetComplete data: below roads, below bridge roads, below labels, and
   above labels. This keeps quest and overlay state out of the base-style module.
-- The existing Android map remains active while shared data layers are migrated,
-  so this intermediate layer does not remove working map functionality.
+- Android's production `MainActivity` now presents the shared `MainScreen` and
+  `MainMap` directly. The fragment is no longer in the live view hierarchy; the
+  old sources and assets remain temporarily so parity can be audited before
+  deleting them in a separate commit.
 - The downloaded-area visualization is now a shared MapLibre Compose layer. It
   preserves the existing 60%-opaque hatch outside downloaded zoom-16 tiles and
   uses the same Compose vector resource on Android, iOS, and desktop.
@@ -139,6 +141,13 @@
   around the camera target on every platform.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
+- Geo links received before MapLibre publishes a presentation are retained and
+  applied on attachment instead of being silently consumed.
+- Android now keeps location and heading collection, map projection, quest/edit/
+  overlay selection, contextual highlighting, download planning, GPS controls,
+  track recording, bottom-sheet focus, context-menu actions, and solved-quest
+  animation inside the shared Compose screen rather than bridging them through
+  an Android activity and fragment.
 - Styleable overlays now have shared feature conversion and declarative layers
   for areas, outlines, extrusions, center and side strokes, bridge ordering,
   dashes, SDF/color icons, labels, disabled elements, and element clicks. One
