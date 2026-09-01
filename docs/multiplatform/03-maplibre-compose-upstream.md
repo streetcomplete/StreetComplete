@@ -14,7 +14,7 @@ API before they are considered actionable.
 
 ## Findings
 
-Three common-API gaps are confirmed below. The abandoned
+Four common-API gaps are confirmed below. The abandoned
 `upstream/maplibre-compose` integration predates 0.15, so its other assumptions
 continue to be re-evaluated against the snapshot before being attributed upstream.
 
@@ -57,6 +57,22 @@ does not expose a radius or query rectangle. The shared overlay still handles
 clicks on rendered symbols, lines, and fills, but thin lines are less forgiving
 until the common API accepts configurable hit geometry (or provides an async
 dispatch contract that can preserve event fallthrough after a rectangle query).
+
+### Gesture callbacks and thresholds are too coarse for parity
+
+StreetComplete's Android map distinguishes pan begin from zoom, rotate, and tilt;
+only a pan disables GPS following. It also configures a 5dp pan threshold, 1.5°
+rotation threshold, 8dp tilt threshold, fling threshold/base time of 250/500, and
+disables rotation while a scale gesture is active.
+
+The snapshot exposes only the aggregate `CameraMoveReason.GESTURE`. Its common
+`GestureOptions` can enable or disable gesture families and configure mouse click
+slop, but the touch slops are fixed and it exposes neither gesture-specific begin
+events nor the other native thresholds above. The shared controller therefore
+detects gesture-driven camera-target changes as the narrowest available pan
+signal and otherwise uses the standard common gesture configuration. A typed
+gesture event (at least pan begin) plus common threshold/interlock fields would
+remove both compromises.
 
 ## Resolved integration findings
 

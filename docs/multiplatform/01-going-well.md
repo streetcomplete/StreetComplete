@@ -108,6 +108,10 @@
   tracks below labels, and overlay labels/markers/focus/location/pins above
   labels. It feeds MapLibre's immutable viewport back to the common data owner
   and exposes typed quest, edit, overlay, cluster, and raw map callbacks.
+- Shared `MainMapState` now owns persisted camera restoration, zoom controls,
+  compass reset, GPS following, navigation tilt and track bearing, the legacy
+  first-fix zoom rule, and user-movement state. Camera policy is tested without a
+  platform map view and drives the same durable MapLibre state on all targets.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers

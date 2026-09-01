@@ -26,7 +26,6 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.map.MapPresentationCallbacks
 import org.maplibre.compose.map.MapPresentationOptions
-import org.maplibre.compose.map.MapState
 import org.maplibre.compose.overlay.MapOverlay
 
 /** Complete shared MapLibre Compose renderer for StreetComplete's main map. */
@@ -47,19 +46,38 @@ fun MainMap(
     isShowingEditHistory: Boolean,
     showStyleableOverlay: Boolean,
     modifier: Modifier = Modifier,
-    mapState: MapState = rememberStreetCompleteMapState(),
+    state: MainMapState = rememberMainMapState(),
+    // TODO(maplibre-compose): Configure StreetComplete's exact pan/rotate/tilt/fling thresholds
+    // and disable rotation while scaling when the common gesture API exposes those controls.
     presentationOptions: MapPresentationOptions = MapPresentationOptions(zoomRange = 0f..22f),
     callbacks: MapPresentationCallbacks = MapPresentationCallbacks(),
     overlay: MapOverlay = MapOverlay.None,
     viewModel: MainMapViewModel = koinViewModel(),
 ) {
+    val mapState = state.mapState
     val downloadedTiles by viewModel.downloadedTiles.collectAsState()
     val questPins by viewModel.questPins.collectAsState()
     val editHistoryPins by viewModel.editHistoryPins.collectAsState()
     val styledElements by viewModel.styleableElements.collectAsState()
 
     val cameraPosition = mapState.cameraPosition
-    val viewport = mapState.presentation?.viewport
+    val presentation = mapState.presentation
+    val viewport = presentation?.viewport
+    LaunchedEffect(
+        cameraPosition,
+        presentation?.cameraMoveReason,
+        presentation?.isCameraMoving,
+    ) {
+        state.onCameraChanged(
+            position = cameraPosition,
+            moveReason = presentation?.cameraMoveReason
+                ?: org.maplibre.compose.camera.CameraMoveReason.NONE,
+            isMoving = presentation?.isCameraMoving == true,
+        )
+    }
+    LaunchedEffect(location, trackpoints) {
+        state.onLocationChanged(location, trackpoints)
+    }
     LaunchedEffect(cameraPosition.zoom, viewport?.visibleBoundingBox) {
         viewModel.onViewportChanged(
             zoom = cameraPosition.zoom,

@@ -249,3 +249,18 @@ remain separate commits so their behavior can be reviewed independently.
 These checks establish one cross-target composition path. They do not yet claim
 camera-policy parity or live rendering because target entry points have not
 switched to it.
+
+## Shared main-map camera state
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests '*MainMapCameraControllerTest'` | 5 pass | First-fix zoom, 600ms following, track-bearing navigation, tilt reset, compass reset, gesture/pan discrimination, and persistence retain the legacy policy. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*MainMapCameraControllerTest'` | 5 pass | The same camera policy executes on the Android host runner. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The common camera state and MapLibre presentation adapter compile for desktop. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The common camera state compiles beside the active legacy fragment. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The shared camera state, persistence adapter, controller, and MapLibre animation API link into the iOS framework. |
+
+The controller uses target movement during a generic user gesture as a pan
+signal because MapLibre Compose does not expose gesture-specific begin events.
+That upstream limitation is documented separately. Entry-point wiring and live
+interaction evidence remain outstanding.

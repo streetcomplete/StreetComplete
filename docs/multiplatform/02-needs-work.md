@@ -20,6 +20,12 @@
 - [x] Move the quest and edit-history pin data managers to common code and wire
   typed pin and cluster-leaf callbacks into the shared renderer.
 - [ ] Wire cluster camera fitting into the shared map controller.
+- [x] Move persisted camera position, zoom controls, compass reset, GPS following,
+  navigation tilt/bearing, and user-pan detection into shared map state.
+- [ ] Replace target-delta pan detection with an explicit pan-begin callback when
+  MapLibre Compose exposes gesture-specific camera events.
+- [ ] Restore the legacy pan, rotate, tilt, fling, and rotate-while-scaling gesture
+  configuration when MapLibre Compose exposes those controls in common code.
 - [x] Port styleable overlay geometry, colors, strokes, bridge ordering,
   extrusions, icons, labels, disabled state, visibility, and element clicks.
 - [x] Move the styleable overlay data manager to common code and connect it to
