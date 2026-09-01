@@ -42,4 +42,7 @@ class EditTypePresetsDaoTest : StreetCompleteDatabaseTestCase() {
         dao.rename(id, "two")
         assertEquals("two", dao.getName(id))
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

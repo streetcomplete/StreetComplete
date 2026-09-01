@@ -277,6 +277,9 @@ class NoteEditsDaoTest : StreetCompleteDatabaseTestCase() {
         assertEquals("test456 jo mama", dao.get(1L)?.text)
         assertEquals("test123 jo mama", dao.get(2L)?.text)
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }
 
 private fun NoteEditsDao.addAll(vararg edits: NoteEdit) = edits.forEach { add(it) }

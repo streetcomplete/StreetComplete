@@ -72,6 +72,9 @@ class LogsDaoTest : StreetCompleteDatabaseTestCase() {
         assertEquals(2, dao.clear())
         assertEquals(0, dao.getAll().size)
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }
 
 private fun createMessage(

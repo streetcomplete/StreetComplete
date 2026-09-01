@@ -11,7 +11,8 @@ abstract class StreetCompleteDatabaseTestCase {
     private lateinit var database: Database
     private lateinit var connection: SQLiteConnection
 
-    @BeforeTest fun setUp() {
+    @BeforeTest
+    open fun setUpDatabase() {
         SystemFileSystem.delete(Path(DATABASE_NAME), mustExist = false)
         connection = BundledSQLiteDriver().open(DATABASE_NAME)
         database = DatabaseImpl(connection)

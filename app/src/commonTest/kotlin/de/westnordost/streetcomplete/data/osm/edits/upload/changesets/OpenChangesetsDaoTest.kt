@@ -64,4 +64,7 @@ class OpenChangesetsDaoTest : StreetCompleteDatabaseTestCase() {
         dao.put(OpenChangeset(P, SOURCE, 2, LatLon(0.0, 0.0)))
         assertEquals(2, dao.getAll().size)
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

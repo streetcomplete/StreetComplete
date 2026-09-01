@@ -59,4 +59,7 @@ class NoteQuestsHiddenDaoTest : StreetCompleteDatabaseTestCase() {
         dao.add(3L)
         assertEquals(1, dao.countAll())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

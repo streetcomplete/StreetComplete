@@ -30,4 +30,7 @@ class CountryStatisticsDaoTest : StreetCompleteDatabaseTestCase() {
             CountryStatistics("NL", 1, 123)
         ), dao.getAll())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

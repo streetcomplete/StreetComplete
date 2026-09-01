@@ -76,4 +76,7 @@ class CalendarEventsDaoTest : StreetCompleteDatabaseTestCase() {
         assertEquals(0, dao.getUnreadCount())
         assertEquals(null, dao.getFirstUnread())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

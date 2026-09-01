@@ -3,20 +3,17 @@ package de.westnordost.streetcomplete.data.download.tiles
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
-import kotlin.time.Duration.Companion.seconds
 
 class DownloadedTilesDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: DownloadedTilesDao
+    private var now = 1_000L
 
     override fun onDatabaseInitialized(database: Database) {
-        dao = DownloadedTilesDao(database)
+        dao = DownloadedTilesDao(database) { now }
     }
 
     @Test fun putGetOne() {
@@ -32,16 +29,16 @@ class DownloadedTilesDaoTest : StreetCompleteDatabaseTestCase() {
 
     @Test fun putGetOld() {
         dao.put(r(5, 8, 5, 8))
-        val then = nowAsEpochMilliseconds() + 1000
+        val then = now + 1_000
         assertFalse(dao.contains(r(5, 8, 5, 8), then))
         assertTrue(dao.getAll(then).isEmpty())
     }
 
-    @Test fun putSomeOld() = runBlocking {
+    @Test fun putSomeOld() {
         dao.put(r(0, 0, 1, 3))
-        delay(2.seconds)
+        now = 3_000
         dao.put(r(2, 0, 5, 5))
-        val before = nowAsEpochMilliseconds() - 1000
+        val before = 2_000L
         assertFalse(dao.contains(r(0, 0, 2, 2), before))
         assertEquals(24, dao.getAll(before).size)
     }
@@ -104,4 +101,7 @@ class DownloadedTilesDaoTest : StreetCompleteDatabaseTestCase() {
     }
 
     private fun r(left: Int, top: Int, right: Int, bottom: Int) = TilesRect(left, top, right, bottom)
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

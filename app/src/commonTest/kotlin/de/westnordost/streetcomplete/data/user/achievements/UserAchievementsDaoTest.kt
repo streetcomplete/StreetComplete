@@ -26,6 +26,9 @@ class UserAchievementsDaoTest : StreetCompleteDatabaseTestCase() {
         dao.put(ONE, 4)
         assertEquals(mapOf(ONE to 4), dao.getAll())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }
 
 private const val ONE = "one"
