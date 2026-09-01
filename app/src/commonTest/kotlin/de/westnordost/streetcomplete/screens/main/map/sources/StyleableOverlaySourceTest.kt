@@ -129,9 +129,50 @@ class StyleableOverlaySourceTest {
         assertTrue(source.styledElements.value.isEmpty())
         source.close()
     }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test fun clearedSourceCannotRepublishInFlightDelta() = runTest {
+        val node = Node(1, p(1.0, 2.0))
+        val mapData = createMapData(mapOf(node to ElementPointGeometry(node.position)))
+        lateinit var mapDataListener: MapDataWithEditsSource.Listener
+        var clearWhileStyling = false
+        val overlay = AllNodesOverlay {
+            if (clearWhileStyling) {
+                clearWhileStyling = false
+                mapDataListener.onCleared()
+            }
+        }
+        val selectedOverlaySource: SelectedOverlaySource = mock {
+            every { selectedOverlay } returns overlay
+        }
+        val mapDataSource: MapDataWithEditsSource = mock {
+            every { addListener(any()) } calls { (listener: MapDataWithEditsSource.Listener) ->
+                mapDataListener = listener
+            }
+            every { getMapDataWithGeometry(any()) } returns mapData
+        }
+        val source = StyleableOverlaySource(
+            selectedOverlaySource,
+            mapDataSource,
+            UnconfinedTestDispatcher(testScheduler),
+        )
+        source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
+        advanceUntilIdle()
+        assertEquals(node, source.styledElements.value.single().element)
+
+        clearWhileStyling = true
+        mapDataListener.onUpdated(mapData, emptyList())
+        advanceUntilIdle()
+
+        assertTrue(source.styledElements.value.isEmpty())
+        source.close()
+    }
 }
 
-private class AllNodesOverlay : TestOverlayA() {
+private class AllNodesOverlay(private val onStyle: () -> Unit = {}) : TestOverlayA() {
     override fun getStyledElements(mapData: MapDataWithGeometry) =
-        mapData.asSequence().map { it to OverlayStyle.Point(icon) }
+        mapData.asSequence().map {
+            onStyle()
+            it to OverlayStyle.Point(icon)
+        }
 }

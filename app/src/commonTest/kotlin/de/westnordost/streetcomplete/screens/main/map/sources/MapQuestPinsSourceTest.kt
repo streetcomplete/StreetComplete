@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
+import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.pGeom
 import dev.mokkery.answering.returns
@@ -26,9 +27,12 @@ import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.launch
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class MapQuestPinsSourceTest {
 
@@ -161,4 +165,88 @@ class MapQuestPinsSourceTest {
         assertEquals(second.key, source.getQuestKey(source.pins.value.single().properties.toMap()))
         source.close()
     }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test fun supersededViewportCannotPublishInFlightDelta() = runTest {
+        lateinit var source: MapQuestPinsSource
+        var supersedeWhileCreatingDelta = false
+        val questType = SupersedingQuestType {
+            if (supersedeWhileCreatingDelta) {
+                supersedeWhileCreatingDelta = false
+                source.onViewportChanged(
+                    14.0,
+                    bbox(19.9999, 29.9999, 20.0001, 30.0001),
+                )
+            }
+        }
+        val first = OsmQuest(questType, ElementType.NODE, 1L, pGeom(1.0, 2.0))
+        val delta = OsmQuest(questType, ElementType.NODE, 2L, pGeom(1.0, 2.0))
+        val latest = OsmQuest(questType, ElementType.NODE, 3L, pGeom(20.0, 30.0))
+        lateinit var osmQuestListener: OsmQuestSource.Listener
+        var loads = 0
+        val osmQuests: OsmQuestSource = mock {
+            every { addListener(any()) } calls { (listener: OsmQuestSource.Listener) ->
+                osmQuestListener = listener
+            }
+            every { getAllInBBox(any(), any()) } calls {
+                if (loads++ == 0) listOf(first) else listOf(latest)
+            }
+        }
+        val visibleEditTypes: VisibleEditTypeSource = mock {
+            every { isVisible(any()) } returns true
+        }
+        val teamMode: TeamModeQuestFilterSource = mock {
+            every { isVisible(any()) } returns true
+        }
+        val hiddenQuests: QuestsHiddenSource = mock {
+            every { get(any()) } returns null
+        }
+        val selectedOverlaySource: SelectedOverlaySource = mock {
+            every { selectedOverlay } returns null
+        }
+        val osmNoteQuests: OsmNoteQuestSource = mock {
+            every { getAllInBBox(any()) } returns emptyList()
+        }
+        val orders: QuestTypeOrderSource = mock()
+        val registry = QuestTypeRegistry(listOf(7 to questType))
+        val quests = VisibleQuestsSource(
+            registry,
+            osmQuests,
+            osmNoteQuests,
+            hiddenQuests,
+            visibleEditTypes,
+            teamMode,
+            selectedOverlaySource,
+        )
+        source = MapQuestPinsSource(
+            orders,
+            registry,
+            quests,
+            UnconfinedTestDispatcher(testScheduler),
+        )
+        val publications = mutableListOf<List<Pin>>()
+        val collectionJob = backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
+            source.pins.toList(publications)
+        }
+
+        source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
+        advanceUntilIdle()
+        supersedeWhileCreatingDelta = true
+        osmQuestListener.onUpdated(listOf(delta), emptyList())
+        advanceUntilIdle()
+
+        assertEquals(latest.key, source.getQuestKey(source.pins.value.single().properties.toMap()))
+        assertTrue(
+            publications.none { pins ->
+                pins.any { source.getQuestKey(it.properties.toMap()) == delta.key }
+            },
+        )
+        collectionJob.cancel()
+        source.close()
+    }
+}
+
+private class SupersedingQuestType(private val onIcon: () -> Unit) : TestQuestTypeA() {
+    override val icon
+        get() = super.icon.also { onIcon() }
 }

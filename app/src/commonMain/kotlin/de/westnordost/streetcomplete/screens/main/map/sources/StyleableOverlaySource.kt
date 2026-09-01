@@ -66,9 +66,10 @@ class StyleableOverlaySource(
             stateLock.withLock {
                 if (isClosed) return
                 val precedingUpdate = updateJob
+                val generation = viewportGeneration
                 updateJob = scope.launch {
                     precedingUpdate?.join()
-                    updateStyledElements(updated, deleted)
+                    updateStyledElements(updated, deleted, generation)
                 }
             }
         }
@@ -165,12 +166,17 @@ class StyleableOverlaySource(
     private suspend fun updateStyledElements(
         updated: MapDataWithGeometry,
         deleted: Collection<ElementKey>,
+        generation: Long,
     ) {
-        val displayedBBox = stateLock.withLock {
-            lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
-        } ?: return
-        val overlay = selectedOverlay.value ?: return
+        val coroutineContext = currentCoroutineContext()
+        val (displayedBBox, overlay) = stateLock.withLock {
+            if (isClosed || generation != viewportGeneration) return
+            val bbox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
+            val currentOverlay = selectedOverlay.value ?: return
+            bbox to currentOverlay
+        }
         val styledElements = elementsInViewMutex.withLock {
+            coroutineContext.ensureActive()
             var hasChanges = false
             deleted.forEach { if (elementsInView.remove(it) != null) hasChanges = true }
 
@@ -192,7 +198,14 @@ class StyleableOverlaySource(
             if (!hasChanges) return
             elementsInView.values.toList()
         }
-        _styledElements.value = styledElements
+        stateLock.withLock {
+            coroutineContext.ensureActive()
+            if (
+                isClosed || generation != viewportGeneration ||
+                selectedOverlay.value !== overlay
+            ) return
+            _styledElements.value = styledElements
+        }
     }
 
     private fun createStyledElementsByKey(

@@ -68,10 +68,11 @@ class MapQuestPinsSource(
             stateLock.withLock {
                 if (isClosed) return
                 val precedingUpdate = updateJob
+                val generation = viewportGeneration
                 updateJob = scope.launch {
                     // A full viewport fetch must finish first: this callback is a delta against it.
                     precedingUpdate?.join()
-                    updateQuestPins(added, removed)
+                    updateQuestPins(added, removed, generation)
                 }
             }
         }
@@ -160,11 +161,15 @@ class MapQuestPinsSource(
     private suspend fun updateQuestPins(
         added: Collection<Quest>,
         removed: Collection<QuestKey>,
+        generation: Long,
     ) {
+        val coroutineContext = currentCoroutineContext()
         val displayedBBox = stateLock.withLock {
+            if (isClosed || generation != viewportGeneration) return
             lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
         } ?: return
         val pins = questsInViewMutex.withLock {
+            coroutineContext.ensureActive()
             var hasChanges = false
             removed.forEach { if (questsInView.remove(it) != null) hasChanges = true }
             added.forEach { quest ->
@@ -178,7 +183,11 @@ class MapQuestPinsSource(
             if (!hasChanges) return
             questsInView.values.flatten()
         }
-        _pins.value = pins
+        stateLock.withLock {
+            coroutineContext.ensureActive()
+            if (isClosed || generation != viewportGeneration) return
+            _pins.value = pins
+        }
     }
 
     private fun createQuestPins(quest: Quest): List<Pin> {
@@ -214,10 +223,11 @@ class MapQuestPinsSource(
     private fun clear() {
         stateLock.withLock {
             if (isClosed) return
+            ++viewportGeneration
             updateJob?.cancel()
+            _pins.value = emptyList()
             updateJob = scope.launch {
                 questsInViewMutex.withLock { questsInView.clear() }
-                _pins.value = emptyList()
             }
         }
     }
