@@ -32,7 +32,7 @@ import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.IosArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
-import de.westnordost.streetcomplete.util.error_reporting.EmptyCrashReportHolder
+import de.westnordost.streetcomplete.util.error_reporting.IosCrashReportHolder
 import de.westnordost.streetcomplete.util.sound.IosSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.cinterop.ExperimentalForeignApi
@@ -83,21 +83,21 @@ val iosModule = module {
 
     // error reporting
 
-    single<CrashReportHolder> { EmptyCrashReportHolder }
+    single {
+        IosCrashReportHolder(
+            applicationSupportPath("last_crash.txt"),
+            get(),
+            SystemFileSystem,
+        )
+    }
+    single<CrashReportHolder> { get<IosCrashReportHolder>() }
 
     // database
 
     single<Database> {
-        val appSupportUrl = NSFileManager.defaultManager.URLForDirectory(
-            directory = NSApplicationSupportDirectory,
-            inDomain = NSUserDomainMask,
-            appropriateForURL = null,
-            create = true,
-            error = null
-        )!!
-        val databaseUrl = appSupportUrl.URLByAppendingPathComponent(ApplicationConstants.DATABASE_NAME)!!
-        val databaseFilePath = databaseUrl.path!!
-        val databaseConnection = NativeSQLiteDriver().open(databaseFilePath)
+        val databaseConnection = NativeSQLiteDriver().open(
+            applicationSupportPath(ApplicationConstants.DATABASE_NAME).toString()
+        )
         DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
     } onClose { it?.close() }
 
@@ -174,4 +174,16 @@ val iosModule = module {
     }
 
     factory<PeriodicCleaner> { IosPeriodicCleaner() }
+}
+
+@OptIn(ExperimentalForeignApi::class)
+private fun applicationSupportPath(fileName: String): Path {
+    val appSupportUrl = NSFileManager.defaultManager.URLForDirectory(
+        directory = NSApplicationSupportDirectory,
+        inDomain = NSUserDomainMask,
+        appropriateForURL = null,
+        create = true,
+        error = null
+    )!!
+    return Path(appSupportUrl.URLByAppendingPathComponent(fileName)!!.path!!)
 }

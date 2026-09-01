@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete
 
+import de.westnordost.streetcomplete.util.error_reporting.IosCrashReportHolder
 import org.koin.core.Koin
 import org.koin.core.context.startKoin
 
@@ -13,6 +14,7 @@ fun initKoin() {
         )
     }
     koin = koinApplication.koin
+    koin.get<IosCrashReportHolder>().install()
     koin.get<ApplicationInitializer>().initialize()
 }
 
