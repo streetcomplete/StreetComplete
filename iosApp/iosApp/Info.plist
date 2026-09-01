@@ -5,6 +5,16 @@
 	<key>CADisableMinimumFrameDurationOnPhone</key>
     <true/>
 
+    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <array>
+        <string>de.westnordost.streetcomplete.background-sync</string>
+    </array>
+
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>processing</string>
+    </array>
+
 	<key>CFBundleURLTypes</key>
     <array>
         <dict>

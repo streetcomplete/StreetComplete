@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChange
 import de.westnordost.streetcomplete.data.sync.CoroutineChangesetAutoCloser
 import de.westnordost.streetcomplete.data.sync.CoroutineDownloadController
 import de.westnordost.streetcomplete.data.sync.CoroutineUploadController
+import de.westnordost.streetcomplete.data.sync.IosBackgroundSyncController
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
@@ -152,8 +153,17 @@ val iosModule = module {
 
     // background jobs
 
-    // TODO(multiplatform): Register BGProcessingTask handlers so automatic sync can survive
-    // process suspension and relaunch instead of only running in this application scope.
+    single {
+        IosBackgroundSyncController(
+            get<CoroutineScope>(named("ApplicationScope")),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+        )
+    }
 
     single<UploadController> {
         CoroutineUploadController(get<CoroutineScope>(named("ApplicationScope")), get<Uploader>())
