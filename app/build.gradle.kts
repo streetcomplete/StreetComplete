@@ -1,6 +1,8 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import dev.mokkery.MockMode
+import org.gradle.api.tasks.Sync
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileWriter
 
@@ -318,7 +320,7 @@ kotlin {
         }
         getByName("desktopMain") {
             dependencies {
-                implementation("org.jetbrains.compose.desktop:desktop:1.12.0")
+                implementation(compose.desktop.currentOs)
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.11.0")
                 implementation("io.ktor:ktor-client-java:3.5.1")
                 implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
@@ -349,6 +351,41 @@ compose {
     resources {
         publicResClass = true
         packageOfResClass = "de.westnordost.streetcomplete.resources"
+    }
+}
+
+val prepareDesktopAppResources = tasks.register<Sync>("prepareDesktopAppResources") {
+    from(layout.projectDirectory.dir("src/commonMain/composeResources/files"))
+    into(layout.buildDirectory.dir("desktopAppResources/common"))
+}
+
+tasks.matching { it.name == "prepareAppResources" }.configureEach {
+    dependsOn(prepareDesktopAppResources)
+}
+
+compose.desktop {
+    application {
+        from(kotlin.targets["desktop"])
+        mainClass = "de.westnordost.streetcomplete.DesktopMainKt"
+        dependsOn(prepareDesktopAppResources.get())
+        jvmArgs("--enable-native-access=ALL-UNNAMED")
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            modules("java.net.http", "java.prefs", "jdk.unsupported")
+            packageName = "StreetComplete"
+            val numericVersion = appVersionName.substringBefore('-')
+            packageVersion = if (numericVersion.count { it == '.' } == 1) {
+                "$numericVersion.0"
+            } else {
+                numericVersion
+            }
+            description = "Survey OpenStreetMap from your desktop"
+            vendor = "StreetComplete contributors"
+            appResourcesRootDir.set(layout.buildDirectory.dir("desktopAppResources"))
+            macOS {
+                bundleID = "de.westnordost.streetcomplete"
+            }
+        }
     }
 }
 

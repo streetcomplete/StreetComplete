@@ -334,6 +334,23 @@ The Xcode link currently warns that the Kotlin framework contributes both
 launch blocker, but the duplicate bundled SQLite implementation remains tracked
 as correctness and distribution cleanup rather than accepted final output.
 
+## Desktop shared application entry point
+
+| Target | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The complete desktop platform graph and shared application compile for JVM. |
+| Desktop development run | `./gradlew :app:run` | Pass | Prepared file resources, bundled SQLite, native Skiko, application services, the AWT presentation host, and MapLibre Metal start together; MapLibre reports a first 1200x772 logical / 2400x1544 physical frame at scale 2.0. |
+| macOS app image | `./gradlew :app:createDistributable` | Pass | The jlink image includes `java.net.http`, `java.prefs`, `jdk.unsupported`, the macOS ARM64 native libraries, and 43 MB of external application resources. |
+| Packaged onboarding | Launch `StreetComplete.app` with a fresh desktop preference node | Pass | The real shared OpenStreetMap onboarding renders in the packaged native window. |
+| Packaged live map | Mark the tutorial complete, relaunch the app image, and inspect the native window | Pass | The shared world map renders through Metal with StreetComplete styling, downloaded-area hatching, stars, overlays, menu, follow, attribution, scale, and shared glyph resources. |
+
+The first app-image attempt exposed a missing `java.net.http` jlink module; the
+committed distribution module list fixes that packaging-only failure. Automated
+computer-use inspection could read the Compose accessibility tree and capture
+the window, but input delivery to this JVM window closed the automation pipe, so
+menu navigation still needs separate desktop demo evidence rather than being
+claimed from the screenshots alone.
+
 ## Shared main-map content state
 
 | Target | Command | Result | What it proves |

@@ -27,6 +27,20 @@
 - Desktop compilation, Android compilation and APK assembly, and iOS simulator
   compilation all pass together after adding the target.
 
+## Desktop application
+
+- The JVM target now produces a real Compose Desktop application and native
+  distributable that enter the same onboarding, main map, settings, about, and
+  user flows as Android and iOS.
+- Desktop has persistent platform paths, bundled SQLite, observable Java
+  preferences, Ktor's Java HTTP engine, native MapLibre location, browser/map and
+  mail launchers, WAV playback, crash-report persistence, network observation,
+  and in-process upload/download/changeset controllers.
+- Desktop's renderer and offline downloader share one MapLibre runtime. The
+  macOS ARM64 distributable packages the Metal and Skiko native libraries plus
+  the complete 43 MB application resource tree used by metadata, presets,
+  sounds, glyphs, and the base style.
+
 ## iOS sync foundation
 
 - iOS now registers the real `commonModule` dependency graph rather than a

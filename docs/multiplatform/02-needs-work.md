@@ -3,7 +3,7 @@
 ## Target and entry-point parity
 
 - [x] Add a JVM desktop library target.
-- [ ] Add a Compose Desktop application that enters the real shared app flow.
+- [x] Add a Compose Desktop application that enters the real shared app flow.
 - [x] Replace the temporary iOS launcher with the real shared app entry point.
 - [x] Replace Android activity-to-activity navigation with the same shared
   navigation graph used by desktop and iOS.
@@ -67,8 +67,9 @@
 - [ ] Restore the styleable-overlay GeoJSON source's volatile cache hint when
   MapLibre Compose exposes it as a common source option.
 - [x] Wire the shared map into the real main screen on iOS.
-- [ ] Wire the shared map into the real main screen on desktop, then remove the
-  legacy Android assets and map stack only after parity is demonstrated.
+- [x] Wire the shared map into the real main screen on desktop.
+- [ ] Remove the legacy Android assets and map stack after the guarded parity
+  inventory demonstrates that no live functionality depends on them.
 - [ ] Restore the legacy 300ms, system-animation-scale-aware global style
   transition when MapLibre Compose exposes common transition configuration.
 - [ ] Preserve every current map data source, layer, selection flow, camera
@@ -90,9 +91,12 @@
   but carrying two bundled SQLite copies is not an acceptable final state.
 - [ ] Audit iOS behavior that compiles but is still placeholder-level, including
   email launching, background lifecycle, crash handling, and application startup.
-- [ ] Add real desktop implementations for storage paths, settings, database,
+- [x] Add real desktop implementations for storage paths, settings, database,
   HTTP, location, external-app launching, sound, connectivity, background work,
   and platform formatting.
+- [ ] Replace the desktop connection monitor's ordinary Ethernet/Wi-Fi
+  unmetered assumption with host-specific metered-network status where the OS
+  exposes it.
 - [ ] Replace the desktop camera-launcher fallback if FileKit adds camera capture;
   desktop currently reports that no camera capture integration is available and
   therefore never presents the mobile-only camera action.
