@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
 import androidx.lifecycle.viewModelScope
-import de.westnordost.streetcomplete.IncomingUriHandler
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -47,9 +46,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.plus
@@ -78,7 +75,6 @@ class MainViewModelImpl(
     private val elementEditsSource: ElementEditsSource,
     private val noteEditsSource: NoteEditsSource,
     private val prefs: Preferences,
-    incomingUriHandler: IncomingUriHandler,
 ) : MainViewModel() {
     /* error handling */
     override val lastCrashReport = MutableStateFlow<String?>(null)
@@ -105,11 +101,7 @@ class MainViewModelImpl(
         withContext(Dispatchers.IO) { errorReportBuilder.createErrorReport(error) }
 
     /* start parameters */
-    override fun setUri(uri: String) {
-        launch { handleUri(uri) }
-    }
-
-    private suspend fun handleUri(uri: String) {
+    override suspend fun setUri(uri: String) {
         urlConfig.value = parseShownUrlConfig(uri)
 
         val geo = parseGeoUri(uri)
@@ -138,10 +130,6 @@ class MainViewModelImpl(
     }
 
     override val geoUri = MutableStateFlow<CameraPosition?>(null)
-
-    init {
-        incomingUriHandler.uris.onEach(::handleUri).launchIn(viewModelScope)
-    }
 
     override fun consumeGeoUri() {
         geoUri.value = null

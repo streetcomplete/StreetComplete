@@ -21,7 +21,7 @@ abstract class MainViewModel : ViewModel() {
     abstract suspend fun createErrorReport(error: Exception): String
 
     /* start parameters */
-    abstract fun setUri(uri: String)
+    abstract suspend fun setUri(uri: String)
 
     abstract val urlConfig: StateFlow<ShownUrlConfig?>
     abstract fun applyUrlConfig(config: UrlConfig)
