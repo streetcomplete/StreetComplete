@@ -51,8 +51,7 @@ fun AddOpeningHoursDialogCascade(
         // add month + weekdays + holidays + time
         if (m != null && w != null && h != null && t != null) {
             newMonthsList.add(Months(m, listOf(Weekdays(w, h, Times(listOf(t))))))
-        }
-        else {
+        } else {
             if (newMonthsList.isEmpty()) {
                 newMonthsList.add(Months(emptyList(), emptyList()))
             }

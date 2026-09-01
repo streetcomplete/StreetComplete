@@ -14,8 +14,8 @@ abstract class OsmFilterQuestType<T> : OsmElementQuestType<T> {
 
     protected abstract val elementFilter: String
 
-    override final fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
+    final override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter(elementFilter).asIterable()
 
-    override final fun isApplicableTo(element: Element) = filter.matches(element)
+    final override fun isApplicableTo(element: Element) = filter.matches(element)
 }

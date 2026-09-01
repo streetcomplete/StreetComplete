@@ -104,7 +104,6 @@ private fun TimesSelector.toLocalizedString(
     }
 }
 
-
 private fun Time.toLocalizedString(timeFormatter: LocalTimeFormatter): String =
     when (this) {
         is ClockTime -> timeFormatter.format(toLocalTime())

@@ -1,5 +1,46 @@
 # Changelog
 
+## 64.0-alpha1
+
+🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all 
+quest forms, a side effect of the migration to a multiplatform UI framework. An iOS version of the 
+app has now come within reach! (#6842). @kiliankoe, helped a bit, too (#6989)
+
+### General
+
+- Re-did UI for splitting ways: It is now based on the crosshair (like moving node and overlay) instead of tapping where to split
+- Improved UI for attaching tracks and images to a note and undoing the same
+- Now you must press "back" to close a quest form, clicking on the map will not close the form
+  anymore (this is a bit of a technical limitation of the new implementation)
+- Serbian language in Latin script is now available again (#6914)
+- All forms with free text input: Visually show error state when input exceeds 255 characters
+
+### New Quests
+
+- _"How much do you need to pay to park here?"_ (#6653) thanks @marekkrug
+
+### Fixes
+
+- Post box was missinig in things overlay (#6976)
+- Sharing logs no longer crashes when the log is too large (#5561)
+- UI now prevents possibility to create duplicate notes (#4853)
+- Context menus now appear at less wrong positions (#6665)
+- "Are you sure?" dialog had poor contrast in dark mode (#6753)
+- Fix rare crash in places overlay (#6648) 
+- Quest form used to not have padding for the camera notch (#6764)
+- Internet access: "none" option was not exclusive (#7016)
+- Fix formatting of links in notes (#7048)
+- Other small visual fixes (#6827, #7007, #6981, …)
+
+### Quest improvements
+
+- Parking fee: Don't ask for customer parking (#6996), by @paulklie
+- Parking access: Add "permit" as answer option (#2662, #7058), by @paulklie
+- Crossings: Don't ask for islands and kerb height on continuous crossings (#6983), by @eginhard
+- BBQ fuel: Allow to specify several fuels (#6915, #7028), by @paulklie
+- Toilets fee: Don't ask in Australia, New Zealand (#7011), by @andrewharvey
+- Other small improvements that improve clarity (#6991, #6984, #7003, #7020, #7027, #7025, #7049), thanks @paulklie
+
 ## v63.4
 
 Fix in certain languages (such as French), presets wouldn't load, which made the app unusable. Regression from v63.3 (#6964)

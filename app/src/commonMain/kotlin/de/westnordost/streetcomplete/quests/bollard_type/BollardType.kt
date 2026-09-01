@@ -14,5 +14,3 @@ enum class BollardType(val osmValue: String) : BollardTypeAnswer {
     REMOVABLE("removable"),
     FOLDABLE("foldable"),
 }
-
-

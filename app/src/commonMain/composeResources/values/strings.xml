@@ -597,6 +597,7 @@
     <string name="resurvey_intervals_less_often">Less often</string>
     <string name="resurvey_intervals_default">Default</string>
     <string name="resurvey_intervals_more_often">More often</string>
+    <string name="resurvey_title">Is this still correct?</string>
 
     <string name="pref_title_delete_cache">Delete cache</string>
     <string name="pref_title_delete_cache_summary">If you think some data is outdated</string>
@@ -638,6 +639,7 @@
 
     <string name="action_manage_presets_summary">Under which name the quest selection below is saved.</string>
 
+    <string name="add">Add</string>
     <string name="quest_presets_preset_add">Add preset</string>
     <string name="quest_presets_preset_name">Preset name</string>
     <string name="quest_presets_default_name">Default</string>
@@ -1063,7 +1065,6 @@
     <string name="quest_crossing_hint">An informal trail crossing a road:</string>
 
     <string name="quest_cycleway_title2">Is there a bicycle lane or path here? What type?</string>
-    <string name="quest_cycleway_resurvey_title">Is this still the cycling situation here?</string>
     <string name="quest_cycleway_value_track">protected bicycle lane or bicycle path</string>
     <string name="quest_cycleway_value_lane">bicycle lane</string>
     <string name="quest_cycleway_value_none">none</string>
@@ -1120,6 +1121,8 @@
     <string name="quest_drinking_water_type_water_well_no_pump">Water well without pump</string>
     <string name="quest_drinking_water_type_spring">Spring</string>
     <string name="quest_drinking_water_type_disused">Disused drinking water object</string>
+
+    <string name="quest_doctor_type_title">What doctors are present here?</string>
 
     <string name="quest_existence_title2">Is this still here?</string>
 
@@ -1289,7 +1292,6 @@
 
     <string name="quest_openingHours_title">What are the opening hours here?</string>
     <string name="quest_openingHours_signed_title">Are the opening hours here signed?</string>
-    <string name="quest_openingHours_resurvey_title">Are these opening hours still correct?</string>
     <string name="quest_openingHours_start_time">Start time</string>
     <string name="quest_openingHours_end_time">End time</string>
     <string name="quest_openingHours_add_months">Add months</string>
@@ -1384,9 +1386,10 @@
     <string name="quest_parcel_locker_brand">What’s the brand of this parcel locker?</string>
 
     <string name="quest_parking_access_title2">Who is allowed to park here? Parking may be free or paid.</string>
-    <string name="quest_access_yes">Any member of the general public</string>
+    <string name="quest_access_yes">Anyone</string>
     <string name="quest_access_customers">Any person visiting a specific place (e.g. customers only)</string>
-    <string name="quest_access_private">Only individual(s) with permission</string>
+    <string name="quest_access_private">Only individuals with permission</string>
+    <string name="quest_access_permit">Holders of permits (generally obtainable)</string>
 
     <string name="quest_parking_fee_title">Do you have to pay to park here?</string>
     <string name="quest_fee_answer_hours">Depends on time and day…</string>
@@ -1429,7 +1432,6 @@
     <string name="quest_policeType_title">Which type of police station is this?</string>
 
     <string name="quest_postboxCollectionTimes_title">What are the pickup times of this collection box?</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Are the pickup times of this collection box still correct?</string>
     <string name="quest_collectionTimes_add_times">Add collection time</string>
     <string name="quest_collectionTimes_answer_no_times_specified">No times specified</string>
     <!-- In some places it is common that an hour range in which mail is collected is specified on the box instead of specific times -->

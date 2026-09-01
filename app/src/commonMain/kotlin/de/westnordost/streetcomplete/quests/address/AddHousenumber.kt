@@ -14,10 +14,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.Way
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.util.countryboundaries.AllCountriesExcept
 import de.westnordost.streetcomplete.util.ktx.isArea
 import de.westnordost.streetcomplete.util.math.LatLonRaster
 import de.westnordost.streetcomplete.util.math.isCompletelyInside
@@ -64,7 +64,6 @@ class AddHousenumber(
 
         if (buildings.isEmpty()) return listOf()
 
-
         /** 2. exclude buildings which are included in relations that have an address */
 
         val relationsWithAddress = mapData.relations.filter { nonMultipolygonRelationsWithAddressFilter.matches(it) }
@@ -74,7 +73,6 @@ class AddHousenumber(
         }
 
         if (buildings.isEmpty()) return listOf()
-
 
         /** 3. exclude buildings that intersect with the bounding box because it is not possible to
                ascertain for these if there is an address node within the building - it could be
@@ -90,7 +88,6 @@ class AddHousenumber(
         }
 
         if (buildings.isEmpty()) return listOf()
-
 
         /** 4. exclude buildings that contain an address node somewhere within their area */
 
@@ -110,7 +107,6 @@ class AddHousenumber(
         }
 
         if (buildings.isEmpty()) return listOf()
-
 
         /** 5. exclude buildings that are contained in an area that has an address tagged on itself
          *     or on a vertex on its outline */

@@ -1,15 +1,7 @@
 package de.westnordost.streetcomplete.util
 
-import androidx.compose.ui.unit.LayoutDirection
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.testutils.node
-import de.westnordost.streetcomplete.testutils.way
-import kotlinx.coroutines.runBlocking
-import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
-import org.jetbrains.compose.resources.getSystemResourceEnvironment
-import kotlin.test.Test
-import kotlin.test.assertEquals
 
 class NameAndLocationLabelTest {
     private val baseDir = "src/commonMain/composeResources/files/"

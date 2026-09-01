@@ -3,26 +3,25 @@ package de.westnordost.streetcomplete
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.russhwolf.settings.NSUserDefaultsSettings
 import com.russhwolf.settings.ObservableSettings
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.DatabaseImpl
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
-import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.IosActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.IosDownloadController
-import de.westnordost.streetcomplete.screens.about.AppStoreInfo
-import de.westnordost.streetcomplete.screens.about.IosAppStoreInfo
 import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.IosChangesetAutoCloser
 import de.westnordost.streetcomplete.data.upload.IosUploadController
 import de.westnordost.streetcomplete.data.upload.UploadController
+import de.westnordost.streetcomplete.screens.about.AppStoreInfo
+import de.westnordost.streetcomplete.screens.about.IosAppStoreInfo
 import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.IosEmailAppLauncher
 import de.westnordost.streetcomplete.screens.main.IosMapAppLauncher
 import de.westnordost.streetcomplete.screens.main.MapAppLauncher
-import de.westnordost.streetcomplete.ui.util.measure.ArMeasureAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.IosArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
@@ -114,11 +113,6 @@ val iosModule = module {
 
     factory<LocationProvider> { IosLocationProvider() }
     factory<SystemSettingsLauncher> { IosSystemSettingsLauncher() }
-
-    // launch apps
-
-    factory<MapAppLauncher> { IosMapAppLauncher }
-    factory<EmailAppLauncher> { IosEmailAppLauncher }
 
     // settings
 

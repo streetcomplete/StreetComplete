@@ -225,13 +225,13 @@ private fun Modifier.defaultErrorSemantics(
     defaultErrorMessage: String,
 ): Modifier = if (isError) semantics { error(defaultErrorMessage) } else this
 
-val TextFieldStyle.shape : Shape @Composable @ReadOnlyComposable
+val TextFieldStyle.shape: Shape @Composable @ReadOnlyComposable
 get() = when (this) {
         TextFieldStyle.Filled -> TextFieldDefaults.TextFieldShape
         TextFieldStyle.Outlined -> TextFieldDefaults.OutlinedTextFieldShape
     }
 
-val TextFieldStyle.colors : TextFieldColors @Composable
+val TextFieldStyle.colors: TextFieldColors @Composable
 get() = when (this) {
         TextFieldStyle.Filled -> TextFieldDefaults.textFieldColors()
         TextFieldStyle.Outlined -> TextFieldDefaults.outlinedTextFieldColors()
@@ -263,7 +263,7 @@ private fun TextFieldStyle.getDecorationBox(
     shape: Shape,
     colors: TextFieldColors,
     contentPadding: PaddingValues,
-) : @Composable (innerTextField: @Composable () -> Unit) -> Unit = { innerTextField ->
+): @Composable (innerTextField: @Composable () -> Unit) -> Unit = { innerTextField ->
     when (this) {
         TextFieldStyle.Filled ->
             TextFieldDefaults.TextFieldDecorationBox(

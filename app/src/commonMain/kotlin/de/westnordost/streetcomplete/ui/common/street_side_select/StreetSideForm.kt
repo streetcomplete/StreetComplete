@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.ui.theme.divider
 import org.jetbrains.compose.resources.painterResource
 
 /** Form to input the something for the left and right side of a street */
-@Composable  fun <T> StreetSideForm(
+@Composable fun <T> StreetSideForm(
     value: Sides<T>,
     onValueChanged: (Sides<T>) -> Unit,
     getIllustrationPainter: @Composable (T?, Side) -> Painter?,

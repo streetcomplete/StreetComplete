@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.util.locale
 
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.util.ktx.toNSLocale
-import platform.Foundation.NSLocaleCurrencyCode
 import platform.Foundation.NSNumber
 import platform.Foundation.NSNumberFormatter
 import platform.Foundation.NSNumberFormatterCurrencyStyle

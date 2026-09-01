@@ -4,7 +4,6 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import kotlinx.datetime.LocalDate
 
-
 /** Date format symbols used in a locale */
 data class DateFormatElements(
     /** Date component order */

@@ -64,7 +64,6 @@ class AddRoadWidth(
         if (!checkArSupport()) Res.string.default_disabled_msg_no_ar
         else Res.string.default_disabled_msg_difficult_and_time_consuming
 
-
     override fun getApplicableElements(mapData: MapDataWithGeometry) =
         mapData.nodes.filter { nodeFilter.matches(it) } + mapData.ways.filter { wayFilter.matches(it) }
 

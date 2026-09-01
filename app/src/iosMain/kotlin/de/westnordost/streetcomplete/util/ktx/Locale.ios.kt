@@ -2,8 +2,8 @@ package de.westnordost.streetcomplete.util.ktx
 
 import androidx.compose.ui.text.intl.Locale
 import platform.Foundation.NSLocale
-import platform.Foundation.NSLocaleIdentifier
 import platform.Foundation.NSLocaleCountryCode
+import platform.Foundation.NSLocaleIdentifier
 import platform.Foundation.NSLocaleLanguageCode
 import platform.Foundation.NSLocaleScriptCode
 

@@ -78,7 +78,6 @@ private fun OtherAnswersTextButton(
     }
 }
 
-
 @Preview
 @Composable
 private fun QuestAnswerButtonBarPreview() {

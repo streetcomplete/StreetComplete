@@ -299,8 +299,6 @@ class MainMapFragment : MapFragment() {
         outState.putBoolean(TRACKS_IS_RECORDING, isRecordingTracks)
     }
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         selectedOverlaySource.removeListener(overlayListener)

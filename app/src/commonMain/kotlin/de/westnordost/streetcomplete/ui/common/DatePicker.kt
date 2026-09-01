@@ -15,19 +15,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import de.westnordost.streetcomplete.util.ktx.getDisplayName
 import de.westnordost.streetcomplete.util.locale.DateComponent
 import de.westnordost.streetcomplete.util.locale.DateFormatElements
 import de.westnordost.streetcomplete.util.locale.DateTimeTextSymbolStyle
-import kotlin.time.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.todayIn
-import androidx.compose.ui.tooling.preview.Preview
-import de.westnordost.streetcomplete.ui.ktx.pxToDp
 import kotlinx.datetime.number
+import kotlinx.datetime.todayIn
+import kotlin.time.Clock
 
 @Composable
 fun rememberDatePickerState(

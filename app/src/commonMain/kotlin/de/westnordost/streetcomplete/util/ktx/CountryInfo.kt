@@ -152,4 +152,3 @@ val CountryInfo.livingStreetSignDrawable: DrawableResource get() = when (livingS
     "columbia"  -> Res.drawable.living_street_columbia
     else        -> Res.drawable.living_street
 }
-

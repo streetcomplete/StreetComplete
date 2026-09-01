@@ -65,7 +65,6 @@ fun AddOpeningHoursButton(
     }
 }
 
-
 @Composable
 private fun SelectOpeningHoursDropdown(
     expanded: Boolean,

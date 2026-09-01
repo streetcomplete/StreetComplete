@@ -21,7 +21,6 @@ class UserLoginController(
 
     fun logOut() {
         prefs.oAuth2AccessToken = null
-        prefs.removeOAuth1Data()
         listeners.forEach { it.onLoggedOut() }
     }
 

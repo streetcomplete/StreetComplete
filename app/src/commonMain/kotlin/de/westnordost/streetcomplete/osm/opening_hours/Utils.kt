@@ -45,8 +45,8 @@ private fun WeekdayRange.toWeekdays(): List<Weekday> {
     val start = start.ordinal
     val end = end.ordinal
     val range =
-        if (end >= start) start .. end
-        else (start ..< Weekday.entries.size) + (0 .. end)
+        if (end >= start) start..end
+        else (start..<Weekday.entries.size) + (0..end)
     return range.map { Weekday.entries[it] }
 }
 
@@ -62,7 +62,6 @@ fun Set<Weekday>.toWeekdaysSelectors(): List<WeekdaysSelector> =
             listOf(WeekdayRange(Weekday.entries[start], Weekday.entries[end]))
         }
     }
-
 
 fun Iterable<MonthsOrDateSelector>.getMonths(): Set<Month> {
     val months = HashSet<Month>()
@@ -86,11 +85,10 @@ private fun MonthRange.toMonths(): List<Month> {
     val start = start.ordinal
     val end = end.ordinal
     val range =
-        if (end >= start) start .. end
-        else (start ..< Month.entries.size) + (0 .. end)
+        if (end >= start) start..end
+        else (start..<Month.entries.size) + (0..end)
     return range.map { Month.entries[it] }
 }
-
 
 fun Set<Month>.toMonthsSelectors(): List<MonthsOrDateSelector> =
     toOrdinalRanges(Month.entries).flatMap {
@@ -104,7 +102,6 @@ fun Set<Month>.toMonthsSelectors(): List<MonthsOrDateSelector> =
             listOf(MonthRange(Month.entries[start], Month.entries[end]))
         }
     }
-
 
 /** returns the index ranges at which the items in this set are present in the given list of
  *  [entries]. The ranges may loop around the [entries]' last item.
@@ -135,7 +132,7 @@ internal fun <T> Set<T>.toOrdinalRanges(entries: List<T>): List<IntRange> {
     // merge if looping over end of week
     if (ranges.size >= 2) {
         if (ranges.first().start == 0 && ranges.last().endInclusive == entries.lastIndex) {
-            val loopingRange = ranges.last().start .. ranges.first().endInclusive
+            val loopingRange = ranges.last().start..ranges.first().endInclusive
             ranges.removeAt(ranges.lastIndex)
             ranges.removeAt(0)
             ranges.add(0, loopingRange)

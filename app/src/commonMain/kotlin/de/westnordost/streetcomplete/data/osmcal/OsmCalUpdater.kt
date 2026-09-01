@@ -11,7 +11,6 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import kotlin.time.Clock
-import kotlin.time.Duration.Companion.days
 
 /** Updates local OSM events */
 class OsmCalUpdater(

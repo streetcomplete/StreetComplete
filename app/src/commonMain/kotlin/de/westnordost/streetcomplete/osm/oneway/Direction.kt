@@ -26,6 +26,5 @@ enum class Direction {
             if (isForwardOneway(tags)) FORWARD
             else if (isReversedOneway(tags)) BACKWARD
             else BOTH
-
     }
 }

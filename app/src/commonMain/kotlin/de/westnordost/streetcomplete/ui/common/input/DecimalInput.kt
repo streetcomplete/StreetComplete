@@ -23,6 +23,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ui.common.TextField2
 import de.westnordost.streetcomplete.ui.common.TextFieldStyle
@@ -30,7 +31,6 @@ import de.westnordost.streetcomplete.ui.common.colors
 import de.westnordost.streetcomplete.ui.common.getContentPadding
 import de.westnordost.streetcomplete.ui.common.shape
 import de.westnordost.streetcomplete.util.locale.NumberFormatter
-import androidx.compose.ui.tooling.preview.Preview
 import kotlin.math.absoluteValue
 
 /**
@@ -170,15 +170,13 @@ private fun String.isOnlyDecimalDigits(
             if (i != 0) return false
             // not allowed if unsigned
             if (isUnsigned) return false
-        }
-        else if (char.isDigit()) {
+        } else if (char.isDigit()) {
             if (hasSeparator) fractionDigits++
             else integerDigits++
 
             if (integerDigits > maxIntegerDigits) return false
             if (fractionDigits > maxFractionDigits) return false
-        }
-        else if (char == decimalSeparator) {
+        } else if (char == decimalSeparator) {
             // several decimal separators not allowed, e.g. 12.3.4
             if (hasSeparator) return false
 

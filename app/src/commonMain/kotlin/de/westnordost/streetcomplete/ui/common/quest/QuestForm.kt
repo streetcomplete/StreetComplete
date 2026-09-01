@@ -43,7 +43,8 @@ import org.koin.compose.koinInject
 /** A generic quest form, with a [title], [subtitle], [hintText] and [hintImages] in the
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
- *  [contentPadding] (if there is any content) and an OK button to confirm the input.
+ *  [contentPadding] (if there is any content) and an OK button to confirm the input. If 
+ *  [isResurvey] is true an additional title "Is this still correct" is added.
  *
  *  **This composable requires the `LocalQuestType` composition local to be set!**
  *
@@ -58,6 +59,7 @@ fun QuestForm(
     featureDictionary: FeatureDictionary = koinInject(),
     hasChanges: Boolean = isComplete,
     title: String = stringResource(LocalQuestType.current!!.title),
+    isResurvey: Boolean = false,
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
@@ -66,7 +68,7 @@ fun QuestForm(
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
-    content: @Composable BoxScope.() -> Unit
+    content: @Composable BoxScope.() -> Unit,
 ) {
     QuestForm(
         on = on,
@@ -83,6 +85,7 @@ fun QuestForm(
         contentPadding = contentPadding,
         modifier = modifier,
         content = content,
+        isResurvey = isResurvey,
     )
 }
 
@@ -90,7 +93,8 @@ fun QuestForm(
  *  header speech bubble, then an optional [note] by another mapper shown below as another speech
  *  bubble, then finally the speech bubble containing the center-aligned [content] padded with a
  *  [contentPadding] (if there is any content) and below a row of text buttons showing
- *  different [answers] (defined from start to end).
+ *  different [answers] (defined from start to end). If [isResurvey] is true an additional title
+ *  "Is this still correct" is added.
  *
  *  **This composable requires the `LocalQuestType` composition local to be set!**
  *
@@ -103,6 +107,7 @@ fun QuestForm(
     modifier: Modifier = Modifier,
     featureDictionary: FeatureDictionary = koinInject(),
     title: String = stringResource(LocalQuestType.current!!.title),
+    isResurvey: Boolean = false,
     subtitle: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
@@ -111,7 +116,7 @@ fun QuestForm(
     note: String? = LocalElement.current?.tags?.get("note"),
     otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 24.dp, vertical = 12.dp),
-    content: @Composable (BoxScope.() -> Unit)? = null
+    content: @Composable (BoxScope.() -> Unit)? = null,
 ) {
     QuestForm(
         on = on,
@@ -128,6 +133,7 @@ fun QuestForm(
         contentPadding = contentPadding,
         modifier = modifier,
         content = content,
+        isResurvey = isResurvey,
     )
 }
 
@@ -136,6 +142,7 @@ fun QuestForm(
 private fun QuestForm(
     on: (Action) -> Unit,
     title: String,
+    isResurvey: Boolean = false,
     subtitle: AnnotatedString?,
     hintText: String?,
     hintImages: List<DrawableResource>,
@@ -191,11 +198,14 @@ private fun QuestForm(
                 subtitle = subtitle,
                 hintText = hintText,
                 hintImages = hintImages,
+                isResurvey = isResurvey,
             )
         },
-        note = if (note != null) { {
-            ObjectNote(text = note)
-        } } else null,
+        note = if (note != null) {
+            { ObjectNote(text = note) }
+        } else {
+            null
+        },
         content = {
             QuestAnswerContent(
                 modifier = Modifier.fillMaxWidth(),
@@ -207,7 +217,9 @@ private fun QuestForm(
         },
         fab = if (onClickOk != null) {
             { FloatingOkButton(visible = isComplete, onClick = onClickOk) }
-        } else null,
+        } else {
+            null
+        },
         modifier = modifier,
     )
 

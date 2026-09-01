@@ -8,8 +8,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CITIZEN
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 import org.jetbrains.compose.resources.stringResource
 
@@ -62,12 +62,10 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
                 if (element.tags["amenity"] != null || element.tags["waterway"] != null) {
                     // Things you must pay to "use"
                     Res.string.quest_generalFee_title
+                } else if (element.tags["tourism"] == "wilderness_hut" || element.tags["tourism"] == "camp_site" || element.tags["tourism"] == "camp_site") {
+                    // Places you must pay to "stay at"
+                    Res.string.quest_generalFee_title3
                 } else {
-                    if (element.tags["tourism"] == "wilderness_hut" || element.tags["tourism"] == "camp_site" || element.tags["tourism"] == "camp_site") {
-                        // Places you must pay to "stay at"
-                        Res.string.quest_generalFee_title3
-                    }
-                    else
                     // Places you must pay to "enter"
                     Res.string.quest_generalFee_title2
                 }

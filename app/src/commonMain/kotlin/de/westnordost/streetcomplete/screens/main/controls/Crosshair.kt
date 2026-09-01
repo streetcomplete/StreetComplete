@@ -11,11 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.theme.AppTheme
-import org.jetbrains.compose.resources.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import de.westnordost.streetcomplete.ui.theme.Dimensions
+import org.jetbrains.compose.resources.painterResource
 
 /** A crosshair at the position at which a new POI should be created */
 @Composable

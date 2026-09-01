@@ -4,7 +4,6 @@ import android.animation.TimeAnimator
 import android.content.ContentResolver
 import android.provider.Settings
 import androidx.annotation.UiThread
-import androidx.core.graphics.Insets
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry

@@ -71,11 +71,6 @@ class StreetCompleteApplication : Application() {
 
         setLoggerInstances()
 
-        // Force logout users who are logged in with OAuth 1.0a, they need to re-authenticate with OAuth 2
-        if (prefs.hasOAuth1AccessToken) {
-            userLoginController.logOut()
-        }
-
         updateDefaultLocales()
 
         crashReportsUncaughtExceptionHandler.install()
@@ -100,7 +95,6 @@ class StreetCompleteApplication : Application() {
                 onNewVersion()
             }
         }
-        clearTangramCache()
 
         settingsListeners += prefs.onLanguageChanged { updateDefaultLocales() }
         settingsListeners += prefs.onThemeChanged { updateTheme(it) }
@@ -153,17 +147,6 @@ class StreetCompleteApplication : Application() {
                 1, TimeUnit.DAYS,
             ).setInitialDelay(1, TimeUnit.HOURS).build()
         )
-    }
-
-    private fun clearTangramCache() {
-        if (prefs.clearedTangramCache) return
-        val externalCache = externalCacheDir ?: return
-        val tileCache = Path(externalCache.path, "tile_cache")
-        if (!fileSystem.exists(tileCache)) return
-        applicationScope.launch(Dispatchers.IO) {
-            fileSystem.deleteRecursively(tileCache, mustExist = false)
-            prefs.clearedTangramCache = true
-        }
     }
 }
 
