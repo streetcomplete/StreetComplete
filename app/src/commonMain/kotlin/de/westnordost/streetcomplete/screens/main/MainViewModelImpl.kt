@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main
 
 import androidx.lifecycle.viewModelScope
+import de.westnordost.streetcomplete.IncomingUriHandler
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -46,7 +47,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.plus
@@ -75,8 +78,8 @@ class MainViewModelImpl(
     private val elementEditsSource: ElementEditsSource,
     private val noteEditsSource: NoteEditsSource,
     private val prefs: Preferences,
+    incomingUriHandler: IncomingUriHandler,
 ) : MainViewModel() {
-
     /* error handling */
     override val lastCrashReport = MutableStateFlow<String?>(null)
 
@@ -103,16 +106,18 @@ class MainViewModelImpl(
 
     /* start parameters */
     override fun setUri(uri: String) {
-        launch {
-            urlConfig.value = parseShownUrlConfig(uri)
+        launch { handleUri(uri) }
+    }
 
-            val geo = parseGeoUri(uri)
-            if (geo != null) {
-                val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
-                val pos = LatLon(geo.latitude, geo.longitude)
+    private suspend fun handleUri(uri: String) {
+        urlConfig.value = parseShownUrlConfig(uri)
 
-                geoUri.value = CameraPosition(pos, 0.0, 0.0, zoom)
-            }
+        val geo = parseGeoUri(uri)
+        if (geo != null) {
+            val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
+            val pos = LatLon(geo.latitude, geo.longitude)
+
+            geoUri.value = CameraPosition(pos, 0.0, 0.0, zoom)
         }
     }
 
@@ -133,6 +138,10 @@ class MainViewModelImpl(
     }
 
     override val geoUri = MutableStateFlow<CameraPosition?>(null)
+
+    init {
+        incomingUriHandler.uris.onEach(::handleUri).launchIn(viewModelScope)
+    }
 
     override fun consumeGeoUri() {
         geoUri.value = null

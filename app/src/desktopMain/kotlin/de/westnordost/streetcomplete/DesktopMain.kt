@@ -14,13 +14,14 @@ import org.koin.core.qualifier.named
 import org.maplibre.compose.desktop.ProvideMapPresentationHost
 import org.maplibre.compose.desktop.rememberAwtComposeMapPresentationHost
 
-fun main() {
+fun main(args: Array<String>) {
     startKoin { modules(desktopModule, commonModule) }
     val koin = GlobalContext.get()
     val applicationScope = koin.get<CoroutineScope>(named("ApplicationScope"))
 
     koin.get<de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder>()
     koin.get<ApplicationInitializer>().initialize()
+    args.firstOrNull()?.let(koin.get<IncomingUriHandler>()::submit)
 
     application {
         Window(

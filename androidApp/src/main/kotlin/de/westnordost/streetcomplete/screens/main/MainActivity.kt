@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.ui.platform.ComposeView
 import androidx.core.app.ActivityCompat
 import com.russhwolf.settings.SettingsListener
+import de.westnordost.streetcomplete.IncomingUriHandler
 import de.westnordost.streetcomplete.StreetCompleteApp
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.screens.BaseActivity
@@ -26,6 +27,7 @@ class MainActivity :
     override val scope: Scope by activityScope()
 
     private val preferences: Preferences by inject()
+    private val incomingUriHandler: IncomingUriHandler by inject()
 
     private val viewModel by viewModel<MainViewModel>()
     private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
@@ -73,7 +75,7 @@ class MainActivity :
 
     private fun handleIntent(intent: Intent) {
         if (intent.action != Intent.ACTION_VIEW) return
-        intent.data?.toString()?.let(viewModel::setUri)
+        intent.data?.toString()?.let(incomingUriHandler::submit)
     }
 
     private fun updateScreenOn() {

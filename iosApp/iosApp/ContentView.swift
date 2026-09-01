@@ -15,5 +15,8 @@ struct ContentView: View {
         ComposeView()
             // Compose handles all insets (and the keyboard) itself
             .ignoresSafeArea()
+            .onOpenURL { url in
+                KoinKt.handleIncomingUri(uri: url.absoluteString)
+            }
     }
 }

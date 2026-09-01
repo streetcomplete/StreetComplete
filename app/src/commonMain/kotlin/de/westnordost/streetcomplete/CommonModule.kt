@@ -240,6 +240,7 @@ val commonModule = module {
     single(named("ApplicationScope")) {
         CoroutineScope(SupervisorJob() + Dispatchers.Default + CoroutineName("Application"))
     }
+    single { IncomingUriHandler() }
 
     single { HttpClient {
         defaultRequest {
@@ -616,7 +617,7 @@ val commonModule = module {
     viewModel<MainViewModel> {
         MainViewModelImpl(
             get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
-            get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
         )
     }
 

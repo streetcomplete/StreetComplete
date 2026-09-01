@@ -381,6 +381,23 @@ The source-to-source replacement mapping and deletion gates are retained in
 `05-android-map-retirement.md` so later parity review can audit why each file was
 safe to remove instead of relying on a successful compile alone.
 
+## Shared incoming URL ingress
+
+| Target | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop and Android host tests | `./gradlew :app:desktopTest --tests '*IncomingUriHandlerTest' :app:testAndroidHostTest --tests '*IncomingUriHandlerTest'` | 1 pass on each runner | URLs arriving before collection are buffered and delivered in order on both JVM runners. |
+| Android application | Rebuild and reinstall the APK, force-stop it, launch `MainActivity` with `geo:37.7749,-122.4194?z=16`, then inspect process, logs, and the rendered map | Pass after runtime repair | The real intent enters the common handler, the app stays resumed without a fatal exception or ANR, and the map renders at the requested San Francisco position and zoom. |
+| Desktop app image | Build the distributable and launch its executable with `geo:37.7749,-122.4194?z=16` as the first argument | Pass | The packaged application renders its first Metal frame and persists latitude `37.7749`, longitude `-122.4194`, and zoom `16.0` through the shared map state. |
+| iOS framework and Swift host | Link the simulator framework and build the complete Xcode application | Pass | The generated Kotlin bridge and SwiftUI `onOpenURL` callback compile together in the production host. |
+| iOS URL registration | Ask the booted simulator to open `geo:37.7749,-122.4194?z=16` | Partial runtime evidence | iOS resolves StreetComplete and presents its system-owned “Open in StreetComplete?” confirmation. The locked host prevented UI automation from accepting the prompt, so final callback/camera evidence remains part of the iOS demo run. |
+
+The first Android live run found a constructor-order regression: the buffered
+URL was consumed from the view model's first `init` block before its URL state
+flows had been initialized, producing a deterministic main-thread null-pointer
+failure. The collector now starts only after both state flows exist. The same
+force-stop and real-intent loop is the runtime regression gate; the view model's
+23 service dependencies make a narrower constructor test a misleading seam.
+
 ## Shared main-map content state
 
 | Target | Command | Result | What it proves |

@@ -65,6 +65,9 @@
 - The process coroutine scope is part of the common dependency graph, so the
   target upload, download, network, startup, and changeset controllers use one
   supervised application lifetime rather than independently shaped scopes.
+- External `geo:` and StreetComplete URLs now enter one buffered common ingress
+  on Android, iOS, and desktop. URLs received before the main view model exists
+  are retained and handled by the same shared parsing and camera path.
 
 ## MapLibre Compose snapshot foundation
 
