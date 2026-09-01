@@ -103,6 +103,11 @@
   forwards one shared viewport to quest and overlay loaders, decodes pin clicks,
   and closes every listener-backed source with the view-model lifecycle. Koin
   constructs the same graph on Android, iOS, and desktop.
+- The complete main-map renderer is now one common composable. It places overlay
+  side strokes below ordinary and bridge roads, downloaded areas/overlay bodies/
+  tracks below labels, and overlay labels/markers/focus/location/pins above
+  labels. It feeds MapLibre's immutable viewport back to the common data owner
+  and exposes typed quest, edit, overlay, cluster, and raw map callbacks.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers

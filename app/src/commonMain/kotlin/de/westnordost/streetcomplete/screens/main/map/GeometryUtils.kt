@@ -15,9 +15,18 @@ import org.maplibre.spatialk.geojson.MultiPolygon
 import org.maplibre.spatialk.geojson.Point
 import org.maplibre.spatialk.geojson.Polygon
 import org.maplibre.spatialk.geojson.Position
+import org.maplibre.spatialk.geojson.BoundingBox as MapLibreBoundingBox
 
 fun LatLon.toPosition(): Position =
     Position(longitude = longitude, latitude = latitude)
+
+fun MapLibreBoundingBox.toStreetCompleteBoundingBox() =
+    de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox(
+        minLatitude = southwest.latitude,
+        minLongitude = southwest.longitude,
+        maxLatitude = northeast.latitude,
+        maxLongitude = northeast.longitude,
+    )
 
 fun List<LatLon>.toLineGeometry(): LineString? =
     if (size < 2) null else LineString(map { it.toPosition() })

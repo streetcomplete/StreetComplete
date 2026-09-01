@@ -235,3 +235,17 @@ source and is still tracked as a MapLibre Compose upstream gap.
 
 This is the data boundary only. Camera ownership and live renderer composition
 remain separate commits so their behavior can be reviewed independently.
+
+## Shared main-map renderer
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused test | `./gradlew :app:desktopTest --tests '*MapBoundingBoxConversionTest'` | 1 pass | MapLibre longitude/latitude viewport bounds reach StreetComplete without an axis swap. |
+| Android host focused test | `./gradlew :app:testAndroidHostTest --tests '*MapBoundingBoxConversionTest'` | 1 pass | The same viewport conversion executes on Android host. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The complete renderer and every migrated layer compose against the desktop snapshot API. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The renderer compiles for Android while the legacy fragment remains the active transition path. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The renderer, all style slots, shared resources, callbacks, and Metal runtime link into the iOS framework. |
+
+These checks establish one cross-target composition path. They do not yet claim
+camera-policy parity or live rendering because target entry points have not
+switched to it.

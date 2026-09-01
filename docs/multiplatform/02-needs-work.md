@@ -17,11 +17,12 @@
   shared MapLibre Compose declarations.
 - [x] Port shared quest/edit pin clustering, rendering, resource registration,
   ordering, visibility, clicks, and cluster-leaf lookup to MapLibre Compose.
-- [ ] Move the quest and edit-history pin data managers to common code and wire
-  their pin/cluster click camera behavior into the shared map controller.
+- [x] Move the quest and edit-history pin data managers to common code and wire
+  typed pin and cluster-leaf callbacks into the shared renderer.
+- [ ] Wire cluster camera fitting into the shared map controller.
 - [x] Port styleable overlay geometry, colors, strokes, bridge ordering,
   extrusions, icons, labels, disabled state, visibility, and element clicks.
-- [ ] Move the styleable overlay data manager to common code and connect it to
+- [x] Move the styleable overlay data manager to common code and connect it to
   the shared camera/viewport flow.
 - [ ] Restore the legacy finger-radius overlay hit area when MapLibre Compose
   layer click handlers expose configurable rendered-feature query geometry.
