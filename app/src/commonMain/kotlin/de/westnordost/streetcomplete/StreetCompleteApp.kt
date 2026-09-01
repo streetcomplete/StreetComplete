@@ -26,6 +26,9 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun StreetCompleteApp(
     modifier: Modifier = Modifier,
+    startDestination: AppDestination = AppDestination.Main,
+    navigationRequest: AppDestination? = null,
+    onNavigationRequestHandled: () -> Unit = {},
     mainViewModel: MainViewModel = koinViewModel(),
     editHistoryViewModel: EditHistoryViewModel = koinViewModel(),
     mainBottomSheetViewModel: MainBottomSheetViewModel = koinViewModel(),
@@ -40,45 +43,54 @@ fun StreetCompleteApp(
         onDispose { lifecycleOwner.lifecycle.removeObserver(autoSyncer) }
     }
 
+    LaunchedEffect(navigationRequest) {
+        val destination = navigationRequest ?: return@LaunchedEffect
+        navController.navigate(destination.route) {
+            popUpTo(AppDestination.Main.route)
+            launchSingleTop = true
+        }
+        onNavigationRequestHandled()
+    }
+
     NavHost(
         navController = navController,
-        startDestination = AppDestination.Main,
+        startDestination = startDestination.route,
         modifier = modifier.fillMaxSize(),
     ) {
-        composable(AppDestination.Main) {
+        composable(AppDestination.Main.route) {
             LaunchedEffect(Unit) { onMainShown() }
             MainScreen(
                 viewModel = mainViewModel,
                 editHistoryViewModel = editHistoryViewModel,
                 mainBottomSheetViewModel = mainBottomSheetViewModel,
-                onClickSettings = { navController.navigate(AppDestination.Settings) },
+                onClickSettings = { navController.navigate(AppDestination.Settings.route) },
                 onClickQuestSettings = {
-                    navController.navigate(AppDestination.QuestSettings)
+                    navController.navigate(AppDestination.QuestSettings.route)
                 },
-                onClickAbout = { navController.navigate(AppDestination.About) },
-                onClickProfile = { navController.navigate(AppDestination.Profile) },
-                onClickLogin = { navController.navigate(AppDestination.Login) },
+                onClickAbout = { navController.navigate(AppDestination.About.route) },
+                onClickProfile = { navController.navigate(AppDestination.Profile.route) },
+                onClickLogin = { navController.navigate(AppDestination.Login.route) },
             )
         }
-        composable(AppDestination.Settings) {
+        composable(AppDestination.Settings.route) {
             SettingsNavHost(onClickBack = navController::returnToMain)
         }
-        composable(AppDestination.QuestSettings) {
+        composable(AppDestination.QuestSettings.route) {
             SettingsNavHost(
                 onClickBack = navController::returnToMain,
                 startDestination = SettingsDestination.QuestSelection,
             )
         }
-        composable(AppDestination.About) {
+        composable(AppDestination.About.route) {
             AboutNavHost(onClickBack = navController::returnToMain)
         }
-        composable(AppDestination.Profile) {
+        composable(AppDestination.Profile.route) {
             UserNavHost(
                 launchAuth = false,
                 onClickBack = navController::returnToMain,
             )
         }
-        composable(AppDestination.Login) {
+        composable(AppDestination.Login.route) {
             UserNavHost(
                 launchAuth = true,
                 onClickBack = navController::returnToMain,
@@ -88,14 +100,14 @@ fun StreetCompleteApp(
 }
 
 private fun NavHostController.returnToMain() {
-    if (!popBackStack()) navigate(AppDestination.Main) { launchSingleTop = true }
+    if (!popBackStack()) navigate(AppDestination.Main.route) { launchSingleTop = true }
 }
 
-private object AppDestination {
-    const val Main = "main"
-    const val Settings = "settings"
-    const val QuestSettings = "quest_settings"
-    const val About = "about"
-    const val Profile = "profile"
-    const val Login = "login"
+enum class AppDestination(val route: String) {
+    Main("main"),
+    Settings("settings"),
+    QuestSettings("quest_settings"),
+    About("about"),
+    Profile("profile"),
+    Login("login"),
 }
