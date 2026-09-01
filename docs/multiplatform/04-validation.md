@@ -306,6 +306,20 @@ The provider-outage test deliberately locks in a repair: logical recording was
 already retained by Android, but its cleared renderer silently lost the red
 recording style. Shared state keeps those two states consistent when GPS fixes resume.
 
+## iOS shared application entry point
+
+| Target | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| iOS Xcode bundle | `DEVELOPER_DIR=/Applications/Xcode-26.5.0.app/Contents/Developer xcodebuild -project iosApp/iosApp.xcodeproj -scheme iosApp -configuration Debug -destination 'platform=iOS Simulator,id=4AE0B7AD-8A31-457E-B505-A46F3644E43D' -derivedDataPath build/ios-derived CODE_SIGNING_ALLOWED=NO clean build` | Pass | The Kotlin framework, Compose resources, shared root graph, and Metal runtime package into a real iOS simulator application. |
+| iOS cold launch | Install, cold-launch, and observe the app on the iOS 26.5 simulator | Pass | The real common Koin graph starts without the former changeset-manager recursion or a missing map-tile service. |
+| iOS onboarding | Launch with a fresh app preference domain | Pass | The first shared screen is StreetComplete's real onboarding flow rather than the former changelog/credits/privacy development launcher. |
+| iOS live map | Mark the tutorial complete, cold-launch, and observe the resulting screen | Pass | MapLibre renders the real shared StreetComplete style through Metal with the downloaded-area hatch, stars, overlay, menu, attribution, and location controls. Shared glyphs load from the built app bundle. |
+
+The Xcode link currently warns that the Kotlin framework contributes both
+`sqlite3.c.o` and `sqlite3.o`. The running bundle proves this is not an immediate
+launch blocker, but the duplicate bundled SQLite implementation remains tracked
+as correctness and distribution cleanup rather than accepted final output.
+
 ## Shared main-map content state
 
 | Target | Command | Result | What it proves |

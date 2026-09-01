@@ -36,6 +36,9 @@
   downloads; repeated automatic work stays unique.
 - Apple Network framework path monitoring now feeds the shared connectivity API,
   including satisfied-path and expensive-path state.
+- The iOS application now enters the same shared top-level navigation graph as
+  the other targets. Its real onboarding, main map, settings, quest settings,
+  about, profile, and login flows replace the temporary three-screen launcher.
 
 ## MapLibre Compose snapshot foundation
 

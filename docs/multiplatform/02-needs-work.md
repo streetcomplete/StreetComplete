@@ -4,8 +4,7 @@
 
 - [x] Add a JVM desktop library target.
 - [ ] Add a Compose Desktop application that enters the real shared app flow.
-- [ ] Replace the temporary iOS launcher, which exposes only Changelog, Credits,
-  and Privacy Statement, with the real shared app entry point.
+- [x] Replace the temporary iOS launcher with the real shared app entry point.
 - [ ] Replace Android activity-to-activity navigation with the same shared
   navigation graph used by desktop and iOS.
 
@@ -67,8 +66,9 @@
   MapLibre Compose exposes it as a common source option.
 - [ ] Restore the styleable-overlay GeoJSON source's volatile cache hint when
   MapLibre Compose exposes it as a common source option.
-- [ ] Wire the shared map into the real main screen on desktop and iOS, then
-  remove the legacy Android assets and map stack only after parity is demonstrated.
+- [x] Wire the shared map into the real main screen on iOS.
+- [ ] Wire the shared map into the real main screen on desktop, then remove the
+  legacy Android assets and map stack only after parity is demonstrated.
 - [ ] Restore the legacy 300ms, system-animation-scale-aware global style
   transition when MapLibre Compose exposes common transition configuration.
 - [ ] Preserve every current map data source, layer, selection flow, camera
@@ -113,7 +113,6 @@
   Android host and new desktop runner currently execute 2,449 tests with the same
   six failures on this machine.
 - [ ] Exercise production flows on Android, desktop, and iOS and record demo videos.
-- [ ] Verify shared glyph resources in a built iOS application bundle; linking the
-  framework alone does not copy Compose resources into an app.
+- [x] Verify shared glyph resources in a built and running iOS application bundle.
 - [ ] Obtain independent adversarial reviews of functionality parity, architecture,
   commit structure, and target evidence; fix all confirmed findings.
