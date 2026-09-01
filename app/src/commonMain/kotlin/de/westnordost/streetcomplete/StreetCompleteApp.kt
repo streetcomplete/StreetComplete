@@ -2,12 +2,15 @@ package de.westnordost.streetcomplete
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.screens.about.AboutNavHost
 import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
 import de.westnordost.streetcomplete.screens.main.MainScreen
@@ -16,6 +19,7 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewMod
 import de.westnordost.streetcomplete.screens.settings.SettingsDestination
 import de.westnordost.streetcomplete.screens.settings.SettingsNavHost
 import de.westnordost.streetcomplete.screens.user.UserNavHost
+import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 /** The shared top-level application flow used by every platform entry point. */
@@ -25,9 +29,16 @@ fun StreetCompleteApp(
     mainViewModel: MainViewModel = koinViewModel(),
     editHistoryViewModel: EditHistoryViewModel = koinViewModel(),
     mainBottomSheetViewModel: MainBottomSheetViewModel = koinViewModel(),
+    autoSyncer: AutoSyncer = koinInject(),
     onMainShown: () -> Unit = {},
 ) {
     val navController = rememberNavController()
+    val lifecycleOwner = LocalLifecycleOwner.current
+
+    DisposableEffect(lifecycleOwner, autoSyncer) {
+        lifecycleOwner.lifecycle.addObserver(autoSyncer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(autoSyncer) }
+    }
 
     NavHost(
         navController = navController,

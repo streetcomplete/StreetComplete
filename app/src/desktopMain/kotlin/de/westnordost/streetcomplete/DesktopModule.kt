@@ -34,10 +34,7 @@ import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import java.awt.GraphicsEnvironment
 import java.io.File
 import java.util.prefs.Preferences
-import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
@@ -53,10 +50,6 @@ import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.createMapRuntime
 
 val desktopModule = module {
-    single(named("ApplicationScope")) {
-        CoroutineScope(SupervisorJob() + Dispatchers.Default + CoroutineName("Application"))
-    }
-
     single<de.westnordost.countryboundaries.CountryBoundaries> {
         val source = SystemFileSystem
             .source(Path(desktopFilesDirectory().path, "boundaries.ser"))

@@ -216,6 +216,10 @@ import io.ktor.client.HttpClient
 import io.ktor.client.plugins.compression.ContentEncoding
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.http.userAgent
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.io.files.FileSystem
 import kotlinx.io.files.SystemFileSystem
@@ -233,7 +237,9 @@ val commonModule = module {
 
     //region basic configuration
 
-    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get()) }
+    single(named("ApplicationScope")) {
+        CoroutineScope(SupervisorJob() + Dispatchers.Default + CoroutineName("Application"))
+    }
 
     single { HttpClient {
         defaultRequest {
@@ -252,6 +258,18 @@ val commonModule = module {
     factory { Cleaner(get(), get(), get(), get(), get(), get(), get()) }
     factory { CacheTrimmer(get(), get()) }
     factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy"))) }
+    single {
+        ApplicationInitializer(
+            applicationScope = get(named("ApplicationScope")),
+            preloader = get(),
+            editHistoryController = get(),
+            feedsUpdater = get(),
+            resurveyIntervalsUpdater = get(),
+            downloadedTilesController = get(),
+            preferences = get(),
+            databaseLogger = get(),
+        )
+    }
 
     //endregion
 

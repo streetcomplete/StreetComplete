@@ -277,9 +277,9 @@ wiring and live interaction evidence remain outstanding.
 | Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The complete shared screen and direct map ownership compile for desktop. |
 | iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The same screen, location/heading integration, projection, and map ownership link through Kotlin/Native and the Metal runtime. |
 
-This section is live Android evidence only. iOS evidence is recorded separately;
-the desktop entry point and guarded deletion of Android legacy source/assets
-remain outstanding, so this layer does not claim three-target runtime parity or cleanup.
+This section records the first live Android switch. Later sections record iOS
+and desktop entry-point evidence; guarded deletion of Android legacy source and
+assets remains outstanding.
 
 ## Android shared application navigation
 
@@ -350,6 +350,19 @@ computer-use inspection could read the Compose accessibility tree and capture
 the window, but input delivery to this JVM window closed the automation pipe, so
 menu navigation still needs separate desktop demo evidence rather than being
 claimed from the screenshots alone.
+
+## Shared application lifecycle
+
+| Target | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| Cross-target compilation | `./gradlew :app:compileKotlinDesktop :androidApp:compileDebugKotlin :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The common process initializer, application scope, and root lifecycle observer resolve through all three production dependency graphs. |
+| Android cold launch | Install the rebuilt debug APK, force-stop it, cold-launch `MainActivity`, and inspect activity/log state after eight seconds | Pass | The shared initializer completes, `MainActivity` stays resumed, and MapLibre renders the first OpenGL frame without a fatal exception or ANR. |
+| iOS bundle and cold launch | Build with Xcode 26.5, install on the iOS 26.5 simulator, cold-launch, inspect the process, and capture the screen | Pass with diagnostic | The shared initializer and lifecycle attachment keep the app alive and the full StreetComplete map renders through Metal. Core Location emits a main-thread authorization-status diagnostic that is tracked for correction. |
+| Desktop app image | `./gradlew :app:createDistributable`, then launch the packaged executable | Pass with warnings | Shared preloading completes and MapLibre renders the first 1200x772 logical Metal frame. LWJGL reports the already-tracked Java/native version warning but the packaged app remains live. |
+
+These checks prove foreground process startup and lifecycle attachment. They do
+not claim iOS background execution after suspension; that requires registered
+Apple background tasks and separate runtime evidence.
 
 ## Shared main-map content state
 

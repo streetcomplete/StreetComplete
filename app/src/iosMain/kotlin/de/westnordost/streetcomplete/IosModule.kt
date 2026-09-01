@@ -36,10 +36,7 @@ import de.westnordost.streetcomplete.util.error_reporting.EmptyCrashReportHolder
 import de.westnordost.streetcomplete.util.sound.IosSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.cinterop.ExperimentalForeignApi
-import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
@@ -67,10 +64,6 @@ private val COMPOSE_FILES_DIR = NSBundle.mainBundle.resourcePath +
 
 @OptIn(ExperimentalForeignApi::class)
 val iosModule = module {
-
-    single(named("ApplicationScope")) {
-        CoroutineScope(SupervisorJob() + Dispatchers.Default + CoroutineName("Application"))
-    }
 
     // metadata
 

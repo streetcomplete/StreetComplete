@@ -54,6 +54,18 @@
   the other targets. Its real onboarding, main map, settings, quest settings,
   about, profile, and login flows replace the temporary three-screen launcher.
 
+## Shared application lifecycle
+
+- Android, iOS, and desktop now run the same process initializer for logging,
+  metadata preloading, old edit-history cleanup, feed refresh, resurvey interval
+  updates, stored-version migration, and downloaded-tile invalidation.
+- The shared root composition attaches `AutoSyncer` to its real lifecycle on all
+  three targets. Android no longer owns a second activity-only sync attachment,
+  and iOS and desktop no longer omit foreground automatic synchronization.
+- The process coroutine scope is part of the common dependency graph, so the
+  target upload, download, network, startup, and changeset controllers use one
+  supervised application lifetime rather than independently shaped scopes.
+
 ## MapLibre Compose snapshot foundation
 
 - All targets now compile against the post-v0.15 `0.15.1-SNAPSHOT`; the latest

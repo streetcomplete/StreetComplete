@@ -14,7 +14,7 @@ API before they are considered actionable.
 
 ## Findings
 
-Five common-API gaps are confirmed below. The abandoned
+Six integration gaps are confirmed below. The abandoned
 `upstream/maplibre-compose` integration predates 0.15, so its other assumptions
 continue to be re-evaluated against the snapshot before being attributed upstream.
 
@@ -88,6 +88,22 @@ interactive layer IDs before invoking the raw-map callback. This duplicates
 dispatch knowledge and an extra rendered-feature query. A common post-dispatch
 `onUnhandledClick` callback, or an async dispatch result, would provide the
 fallback contract directly.
+
+### iOS location collection synchronously queries service availability
+
+Collecting `IosLocationProvider.updates` on an iOS 26.5 simulator emits Core
+Location's performance diagnostic that `locationServicesEnabled()` can make the
+UI unresponsive when called on the main thread. StreetComplete sees it twice
+when the main screen and lifecycle-driven auto-sync location consumers attach.
+
+The provider currently begins its main-dispatcher `callbackFlow` by calling
+`CLLocationManager.locationServicesEnabled()`. Core Location recommends waiting
+for `locationManagerDidChangeAuthorization` and inspecting the manager's
+authorization status. The provider should derive startup permission/service
+state from its existing delegate-driven requester and reserve the static service
+query for a non-main execution context only if it remains necessary. The app
+stays responsive and receives a map frame, so this is a measured performance and
+lifecycle defect rather than a launch blocker.
 
 ## Resolved integration findings
 
