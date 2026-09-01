@@ -68,3 +68,6 @@
 - Recorded tracks now have shared current, animated, and completed-segment
   layers. The 600ms motion crosses the antimeridian by the shortest path, and
   the recording color, opacity, dash, line width, and April 1 pattern are kept.
+- Focused element geometry now converts to shared GeoJSON and renders as the
+  same orange fill, round line, or circle with the legacy breathing size and
+  opacity ranges. Multipolygon holes are assigned to the containing outer ring.

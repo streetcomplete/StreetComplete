@@ -100,3 +100,13 @@ shared map is connected to target entry points.
 | Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Track sources, styles, animation, and image patterns compile for desktop. |
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared track layer compiles alongside the active legacy component. |
 | iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Track geometry, Compose animation, and resource APIs compile and link for iOS. |
+
+## Focused-geometry map layers
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.ElementGeometryConversionTest' --tests 'de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryStyleTest'` | 5 pass | Point/line/polygon conversion, multipolygon hole allocation, and highlight ranges match the legacy component. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.ElementGeometryConversionTest' --tests 'de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryStyleTest'` | 5 pass | The same conversion and style behavior executes on the Android host runner. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Declarative focused-geometry sources, layers, and animation compile for desktop. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared focused-geometry layer compiles beside the active legacy component. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Shared geometry conversion and highlight animation compile and link for iOS. |
