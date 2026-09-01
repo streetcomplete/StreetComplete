@@ -44,8 +44,8 @@ fun StreetCompleteApp(
     val navController = rememberNavController()
     val lifecycleOwner = LocalLifecycleOwner.current
     DisposableEffect(lifecycleOwner, autoSyncer) {
-        lifecycleOwner.lifecycle.addObserver(autoSyncer)
-        onDispose { lifecycleOwner.lifecycle.removeObserver(autoSyncer) }
+        autoSyncer.attach(lifecycleOwner)
+        onDispose { autoSyncer.detach(lifecycleOwner) }
     }
 
     LaunchedEffect(navigationRequest) {

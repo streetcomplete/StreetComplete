@@ -277,7 +277,12 @@ val commonModule = module {
 
     //region upload & download
 
-    single { AutoSyncer(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+    single {
+        AutoSyncer(
+            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            get(named("ApplicationScope")),
+        )
+    }
 
     // upload
 
