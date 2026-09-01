@@ -7,5 +7,3 @@ PRODUCT_BUNDLE_IDENTIFIER=de.westnordost.streetcomplete
 
 CURRENT_PROJECT_VERSION=1
 MARKETING_VERSION=0.1
-
-OTHER_LDFLAGS = $(inherited) -lc++ -lz -framework CoreFoundation -framework CoreGraphics -framework CoreText -framework Foundation -framework ImageIO -framework Metal -framework QuartzCore
