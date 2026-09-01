@@ -302,3 +302,12 @@ recording style. Shared state keeps those two states consistent when GPS fixes r
 Clearing a focused interaction deliberately restores pins and overlays without
 changing quest/edit mode, matching the legacy fragment's two independent state
 transitions. Entry-point wiring remains a separate commit.
+
+## Shared download-area planning
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests '*MainMapDownloadAreaTest'` | 4 pass | Unavailable projection, oversized rejection, minimum expansion, and tile-aligned ordinary bounds retain the production rules. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*MainMapDownloadAreaTest'` | 4 pass | The same download planning executes on the Android host runner. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The common download planner compiles for the Android migration path. |
+| iOS simulator library | `./gradlew :app:compileKotlinIosSimulatorArm64` | Pass | Tile math and geographic expansion compile through Kotlin/Native. |

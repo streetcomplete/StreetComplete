@@ -134,6 +134,9 @@
 - The shared state now exposes the rendered scale, visible download bounds,
   projected coordinates, and animated target/zoom/padding moves needed by the
   HUD, geo links, context menu, and quest forms.
+- Download-area planning is renderer-independent. It retains zoom-16 tile
+  alignment, the 12 km2 rejection limit, and the 0.1 km2 minimum expansion
+  around the camera target on every platform.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers
