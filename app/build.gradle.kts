@@ -4,7 +4,6 @@ import dev.mokkery.MockMode
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileWriter
 
-
 /** App version name, code and flavor */
 val appVersionName = "64.0-alpha1"
 val appVersionCode = 6400
@@ -46,6 +45,9 @@ plugins {
 repositories {
     google()
     mavenCentral()
+    maven("https://jogamp.org/deployment/maven") {
+        content { includeGroupAndSubgroups("org.jogamp") }
+    }
 }
 
 buildkonfig {
@@ -65,6 +67,9 @@ buildkonfig {
             create(ios) {
                 buildConfigField(STRING, "PLATFORM", "ios")
             }
+        }
+        create("desktop") {
+            buildConfigField(STRING, "PLATFORM", "desktop")
         }
     }
 }
@@ -119,7 +124,31 @@ kotlin {
         }
     }
 
+    jvm("desktop") {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
+    }
+
     sourceSets {
+        val commonMain = getByName("commonMain")
+        val commonTest = getByName("commonTest")
+        val javaMain = create("javaMain") {
+            dependsOn(commonMain)
+        }
+        val nativeMain = maybeCreate("nativeMain").apply { dependsOn(commonMain) }
+        val iosMain = maybeCreate("iosMain").apply { dependsOn(nativeMain) }
+        val iosTest = maybeCreate("iosTest").apply { dependsOn(commonTest) }
+        getByName("androidMain").dependsOn(javaMain)
+        getByName("desktopMain").dependsOn(javaMain)
+        getByName("iosArm64Main").dependsOn(iosMain)
+        getByName("iosSimulatorArm64Main").dependsOn(iosMain)
+
+        getByName("androidHostTest").dependsOn(commonTest)
+        getByName("desktopTest").dependsOn(commonTest)
+        getByName("iosArm64Test").dependsOn(iosTest)
+        getByName("iosSimulatorArm64Test").dependsOn(iosTest)
+
         commonMain {
             dependencies {
                 // Kotlin
@@ -134,7 +163,6 @@ kotlin {
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-compose")
                 implementation("io.insert-koin:koin-compose-viewmodel")
-                implementation("io.insert-koin:koin-androidx-compose-navigation")
 
                 // Logging
                 implementation("co.touchlab:kermit:2.1.0")
@@ -258,6 +286,14 @@ kotlin {
             dependencies {
                 // HTTP client
                 implementation("io.ktor:ktor-client-darwin:3.5.1")
+            }
+        }
+        getByName("desktopMain") {
+            dependencies {
+                implementation("org.jetbrains.compose.desktop:desktop:1.12.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.11.0")
+                implementation("io.ktor:ktor-client-java:3.5.1")
+                implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
             }
         }
         commonTest {

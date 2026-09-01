@@ -17,6 +17,5 @@ actual class LocalTimeFormatter actual constructor(
         .let { if (locale != null) it.withLocale(locale.platformLocale) else it }
         .withZone(timeZone.toJavaZoneId())
 
-    actual fun format(time: LocalTime): String =
-        time.toJavaLocalTime().format(formatter)
+    actual fun format(time: LocalTime): String = time.toJavaLocalTime().format(formatter)
 }

@@ -15,11 +15,11 @@ actual class NumberFormatter actual constructor(
 ) {
     private val format: NumberFormat =
         if (locale != null) NumberFormat.getInstance(locale.platformLocale)
-        else                NumberFormat.getInstance()
+        else NumberFormat.getInstance()
 
     private val symbols =
         if (locale != null) DecimalFormatSymbols.getInstance(locale.platformLocale)
-        else                DecimalFormatSymbols.getInstance()
+        else DecimalFormatSymbols.getInstance()
 
     init {
         format.isGroupingUsed = useGrouping
@@ -29,26 +29,22 @@ actual class NumberFormatter actual constructor(
         format.maximumFractionDigits = maxFractionDigits
     }
 
-    actual fun format(value: Number): String =
-        format.format(value)
+    actual fun format(value: Number): String = format.format(value)
 
     actual fun parse(text: String): Number? {
-        // enforce strict parsing (Java parser is really lenient...)
         if (!text.all {
             it == symbols.decimalSeparator ||
-            it == symbols.groupingSeparator && format.isGroupingUsed ||
-            it.isDigit() ||
-            it == '-' || it == '+'
+                it == symbols.groupingSeparator && format.isGroupingUsed ||
+                it.isDigit() ||
+                it == '-' || it == '+'
         }) return null
 
         return format.parseOrNull(text)
     }
 
-    actual val decimalSeparator: Char
-        get() = symbols.decimalSeparator
+    actual val decimalSeparator: Char get() = symbols.decimalSeparator
 
-    actual val groupingSeparator: Char
-        get() = symbols.groupingSeparator
+    actual val groupingSeparator: Char get() = symbols.groupingSeparator
 }
 
 private fun NumberFormat.parseOrNull(text: String): Number? =

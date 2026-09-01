@@ -13,6 +13,5 @@ actual class LocalDateFormatter actual constructor(
         .ofLocalizedDate(style.toFormatStyle())
         .let { if (locale != null) it.withLocale(locale.platformLocale) else it }
 
-    actual fun format(date: LocalDate): String =
-        date.toJavaLocalDate().format(formatter)
+    actual fun format(date: LocalDate): String = date.toJavaLocalDate().format(formatter)
 }

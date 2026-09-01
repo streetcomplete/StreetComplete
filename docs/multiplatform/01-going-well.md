@@ -15,3 +15,14 @@
 - A previous `upstream/maplibre-compose` branch contains useful exploratory work
   for shared map layers and sources. It is being used as design input, not treated
   as verified production code.
+
+## JVM foundation
+
+- The shared library now has a JVM desktop target.
+- Android and desktop share their Java implementations of date, time, number,
+  currency, locale, and access-ordered map behavior through `javaMain`.
+- Shared photo capture and file sharing no longer expose APIs that exist only in
+  FileKit's Android and iOS variants. Narrow platform launchers preserve mobile
+  behavior while allowing the common UI to compile for desktop.
+- Desktop compilation, Android compilation and APK assembly, and iOS simulator
+  compilation all pass together after adding the target.

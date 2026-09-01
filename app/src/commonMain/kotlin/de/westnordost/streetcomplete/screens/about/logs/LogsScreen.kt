@@ -37,7 +37,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.ktx.isScrolledToEnd
-import io.github.vinceglb.filekit.dialogs.compose.rememberShareFileLauncher
+import de.westnordost.streetcomplete.ui.util.rememberFileShareLauncher
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -55,7 +55,7 @@ fun LogsScreen(
 
     val listState = rememberLazyListState()
     val coroutineScope = rememberCoroutineScope()
-    val shareFileLauncher = rememberShareFileLauncher()
+    val shareFileLauncher = rememberFileShareLauncher()
 
     LaunchedEffect(logs.size) {
         if (listState.isScrolledToEnd) listState.scrollToItem(logs.size)
