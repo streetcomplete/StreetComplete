@@ -110,3 +110,13 @@ shared map is connected to target entry points.
 | Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Declarative focused-geometry sources, layers, and animation compile for desktop. |
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared focused-geometry layer compiles beside the active legacy component. |
 | iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Shared geometry conversion and highlight animation compile and link for iOS. |
+
+## Geometry-marker map layers
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayersTest'` | 4 pass | Default/custom icon IDs, center symbols, labels, and geometry feature splitting match the legacy component. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayersTest'` | 4 pass | The same marker feature contract and generated resource lookup execute on Android host. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Dynamic painter registration, SDF coloring, labels, and geometry layers compile for desktop. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared marker layers compile beside the active legacy component. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Marker resource lookup, image registration, and layers compile and link for iOS. |

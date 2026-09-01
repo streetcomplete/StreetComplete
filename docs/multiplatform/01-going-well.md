@@ -71,3 +71,6 @@
 - Focused element geometry now converts to shared GeoJSON and renders as the
   same orange fill, round line, or circle with the legacy breathing size and
   opacity ranges. Multipolygon holes are assigned to the containing outer ring.
+- Quest-form geometry markers now render from the existing shared `Marker`
+  model, including center-anchored optional icons and titles plus line/polygon
+  geometry. Dynamic Compose resources are registered as SDF or color images.
