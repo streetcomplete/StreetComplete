@@ -46,3 +46,19 @@ Both dependency-shape problems are fixed in this layer.
 Compilation does not prove Apple background execution. The current iOS sync
 controllers run in the application process; registering and exercising
 `BGProcessingTask` handlers remains explicit follow-up work.
+
+## MapLibre Compose snapshot foundation
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Shared source compiles against the snapshot's JVM APIs. |
+| Desktop location tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.data.location.RecentLocationsTest'` | 7 pass | Recent-location ordering, spacing, and expiry use real measurement instants. |
+| Desktop runtime | `./gradlew :app:dependencyInsight --dependency maplibre-compose-runtime-metal-macos-arm64 --configuration desktopRuntimeClasspath` | Pass | macOS ARM64 resolves snapshot build `0.15.1-20260831.102040-6` and its Metal runtime. |
+| Android app | `./gradlew :androidApp:assembleDebug` | Pass | The legacy Android map and new Compose OpenGL runtime can coexist in one transition APK. |
+| Android runtime | `./gradlew :app:dependencyInsight --dependency maplibre-compose-runtime-opengl-android --configuration androidRuntimeClasspath` | Pass | Android resolves snapshot build `0.15.1-20260831.102040-6` as an AAR runtime. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The snapshot's iOS API and transitive Metal native archive link into StreetComplete. |
+| Desktop and Android host tests | `./gradlew :app:desktopTest :app:testAndroidHostTest --continue` | 2,453 tests on each runner; same 6 fail and 1 skip | The four new sync tests run and the complete inherited suite has no failures beyond the baseline locale/date set. |
+
+These checks validate dependency integration and the location/heading API
+migration. They do not yet validate rendering; the shared map composition has
+not been introduced in this layer.

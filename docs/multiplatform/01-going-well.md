@@ -36,3 +36,14 @@
   downloads; repeated automatic work stays unique.
 - Apple Network framework path monitoring now feeds the shared connectivity API,
   including satisfied-path and expensive-path state.
+
+## MapLibre Compose snapshot foundation
+
+- All targets now compile against the post-v0.15 `0.15.1-SNAPSHOT`; dependency
+  resolution selected build `0.15.1-20260831.102040-6`.
+- Android packages the OpenGL runtime, iOS links the transitive Metal runtime,
+  and the current macOS ARM64 host selects the desktop Metal runtime.
+- StreetComplete now consumes the snapshot's `LocationMeasurement`,
+  `LocationEvent.Update`, and `HeadingMeasurement` APIs. Recorded tracks use the
+  measurement's real wall-clock instant instead of accidentally serializing a
+  monotonic location age as an epoch timestamp.

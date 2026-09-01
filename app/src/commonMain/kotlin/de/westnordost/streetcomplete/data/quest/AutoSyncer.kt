@@ -118,9 +118,11 @@ class AutoSyncer(
             owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 val request = LocationRequest(LocationAccuracy.High, 30.seconds, 100.meters)
                 locationProvider.updates(request).collect { locationEvent ->
-                    if (locationEvent is LocationEvent.Fix) {
-                        val (position, accuracy) = locationEvent.location.position
+                    if (locationEvent is LocationEvent.Update) {
+                        val location = locationEvent.measurement
+                        val accuracy = location.horizontalAccuracy
                         if (accuracy == null || accuracy < 300.meters) {
+                            val position = location.position
                             pos = LatLon(position.latitude, position.longitude)
                             triggerAutoDownload()
                         }

@@ -25,7 +25,7 @@ import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory.*
 import org.maplibre.android.style.layers.SymbolLayer
 import org.maplibre.android.style.sources.GeoJsonSource
-import org.maplibre.compose.location.PositionWithAccuracy
+import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.geojson.Feature
 import org.maplibre.spatialk.geojson.Position
 import org.maplibre.spatialk.units.International
@@ -38,38 +38,42 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
     private val locationAnimation = ValueAnimator()
 
     /** The location the GPS location dot on the map should be animated to */
-    var targetPositionWithAccuracy: PositionWithAccuracy? = null
+    var targetLocation: LocationMeasurement? = null
         @UiThread set(value) {
             if (field == value) return
             field = value
-            val positionWithAccuracy = this.positionWithAccuracy
-            if (positionWithAccuracy == null || value == null) {
+            val location = this.location
+            if (location == null || value == null) {
                 locationAnimation.cancel()
-                this.positionWithAccuracy = value
+                this.location = value
                 update()
             } else  {
-                locationAnimation.setObjectValues(positionWithAccuracy, value)
+                locationAnimation.setObjectValues(location, value)
                 locationAnimation.setEvaluator(locationTypeEvaluator)
                 locationAnimation.start()
             }
         }
 
     /** The location of the GPS location dot on the map (animated) */
-    var positionWithAccuracy: PositionWithAccuracy? = null
+    var location: LocationMeasurement? = null
         private set
 
-    private val locationTypeEvaluator = object : TypeEvaluator<PositionWithAccuracy> {
-        override fun evaluate(fraction: Float, s: PositionWithAccuracy, e: PositionWithAccuracy): PositionWithAccuracy {
-            val sp = s.value
-            val ep = e.value
-            val sa = s.accuracy
-            val ea = e.accuracy
-            return PositionWithAccuracy(
-                value = Position(
+    private val locationTypeEvaluator = object : TypeEvaluator<LocationMeasurement> {
+        override fun evaluate(
+            fraction: Float,
+            s: LocationMeasurement,
+            e: LocationMeasurement,
+        ): LocationMeasurement {
+            val sp = s.position
+            val ep = e.position
+            val sa = s.horizontalAccuracy
+            val ea = e.horizontalAccuracy
+            return e.copy(
+                position = Position(
                     longitude = normalizeLongitude(sp.longitude + (ep.longitude - sp.longitude) * fraction),
                     latitude = sp.latitude + (ep.latitude - sp.latitude) * fraction,
                 ),
-                accuracy = if (ea != null && sa != null) {
+                horizontalAccuracy = if (ea != null && sa != null) {
                     sa + (ea - sa) * fraction.toDouble()
                 } else { null }
             )
@@ -148,7 +152,7 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
         locationAnimation.duration = 600L
         locationAnimation.interpolator = AccelerateDecelerateInterpolator()
         locationAnimation.addUpdateListener {
-            positionWithAccuracy = locationAnimation.animatedValue as PositionWithAccuracy
+            location = locationAnimation.animatedValue as LocationMeasurement
             update()
         }
 
@@ -195,15 +199,15 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
 
     /** Update the GPS position shown on the map */
     private fun update() {
-        val positionWithAccuracy = this.positionWithAccuracy
-        if (positionWithAccuracy == null) {
+        val location = this.location
+        if (location == null) {
             locationSource.clear()
             return
         }
-        val pos = positionWithAccuracy.value
+        val pos = location.position
 
         val p = JsonObject()
-        p.addProperty("radius", positionWithAccuracy.accuracy?.toDouble(International.Meters))
+        p.addProperty("radius", location.horizontalAccuracy?.toDouble(International.Meters))
         rotation?.let { p.addProperty("rotation", it) }
         map.style?.getLayerAs<CircleLayer>("accuracy")?.setProperties(
             circleRadius(inMeters(get("radius"), pos.latitude))

@@ -16,7 +16,7 @@
 - [ ] Preserve every current map data source, layer, selection flow, camera
   behavior, gesture, offline-area visualization, quest pin interaction, edit
   history pin, track, overlay, and location behavior.
-- [ ] Use the current post-v0.15 snapshot if it remains buildable. The snapshot
+- [x] Use the current post-v0.15 snapshot. The snapshot
   repository currently publishes `org.maplibre.compose:maplibre-compose:0.15.1-SNAPSHOT`.
 
 ## Platform services
@@ -37,6 +37,9 @@
   therefore never presents the mobile-only camera action.
 - [ ] Replace opening an exported log file with a native desktop share sheet when
   Compose Desktop exposes a portable share API.
+- [ ] Make desktop distribution fail with a targeted explanation on hosts for
+  which MapLibre Compose publishes no runtime. The current published matrix
+  covers macOS ARM64 plus Linux and Windows x64/ARM64, but not macOS x64.
 
 ## Completeness safeguards
 

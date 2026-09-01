@@ -17,3 +17,12 @@ API before they are considered actionable.
 No confirmed upstream defect has been recorded yet. The abandoned
 `upstream/maplibre-compose` integration predates 0.15 and will be re-evaluated
 against the snapshot APIs before any limitation is attributed upstream.
+
+## Integration constraints
+
+- The current desktop runtime artifacts target Java 25. StreetComplete's future
+  desktop distribution must package a Java 25 runtime even though its Kotlin JVM
+  bytecode target remains 11.
+- There is no published macOS x64 runtime. This does not block the current ARM64
+  development host, but StreetComplete cannot claim macOS x64 support without an
+  upstream runtime artifact.

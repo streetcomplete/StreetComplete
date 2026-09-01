@@ -7,6 +7,28 @@ import java.io.FileWriter
 /** App version name, code and flavor */
 val appVersionName = "64.0-alpha1"
 val appVersionCode = 6400
+val mapLibreComposeVersion = "0.15.1-SNAPSHOT"
+
+val desktopMapLibreRuntimeArtifact = run {
+    val os = System.getProperty("os.name").lowercase()
+    val architecture = System.getProperty("os.arch").lowercase()
+    val artifactArchitecture = when (architecture) {
+        "aarch64", "arm64" -> "arm64"
+        "amd64", "x86_64" -> "x64"
+        // TODO(multiplatform): Fail desktop distribution tasks with a targeted message when no
+        // published MapLibre Compose runtime exists for the host instead of producing no package.
+        else -> null
+    }
+    when {
+        os.contains("mac") && artifactArchitecture == "arm64" ->
+            "maplibre-compose-runtime-metal-macos-arm64"
+        os.contains("linux") && artifactArchitecture != null ->
+            "maplibre-compose-runtime-opengl-linux-$artifactArchitecture"
+        os.contains("windows") && artifactArchitecture != null ->
+            "maplibre-compose-runtime-opengl-windows-$artifactArchitecture"
+        else -> null
+    }
+}
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -45,6 +67,9 @@ plugins {
 repositories {
     google()
     mavenCentral()
+    maven("https://central.sonatype.com/repository/maven-snapshots/") {
+        content { includeGroup("org.maplibre.compose") }
+    }
     maven("https://jogamp.org/deployment/maven") {
         content { includeGroupAndSubgroups("org.jogamp") }
     }
@@ -173,6 +198,9 @@ kotlin {
                 // I/O
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
+                // location
+                implementation("org.maplibre.compose:location:$mapLibreComposeVersion")
+
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.0")
                 implementation("androidx.sqlite:sqlite-bundled:2.7.0")
@@ -221,11 +249,10 @@ kotlin {
                 // UI ViewModel
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
 
-                // UI widgets
-
                 // Map
-                implementation("org.maplibre.compose:maplibre-compose:0.15.0")
-                implementation("org.maplibre.compose:location:0.15.0")
+                api("org.maplibre.compose:maplibre-compose:$mapLibreComposeVersion")
+
+                // UI widgets
 
                 // non-lazy grid
                 // NOTE: might replace with
@@ -272,11 +299,12 @@ kotlin {
                 // HTTP Client
                 implementation("io.ktor:ktor-client-android:3.5.1")
 
-                // map
-                implementation("org.maplibre.compose:maplibre-compose-runtime-vulkan-android:0.15.0")
-
                 // map and location
                 implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
+                runtimeOnly(
+                    "org.maplibre.compose:maplibre-compose-runtime-opengl-android:" +
+                        mapLibreComposeVersion
+                )
 
                 // required to @Preview composables in Android Studio
                 runtimeOnly("androidx.compose.ui:ui-tooling:1.10.0")
@@ -294,6 +322,9 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.11.0")
                 implementation("io.ktor:ktor-client-java:3.5.1")
                 implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
+                desktopMapLibreRuntimeArtifact?.let { artifact ->
+                    runtimeOnly("org.maplibre.compose:$artifact:$mapLibreComposeVersion")
+                }
             }
         }
         commonTest {
