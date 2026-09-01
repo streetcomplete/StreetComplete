@@ -277,9 +277,23 @@ wiring and live interaction evidence remain outstanding.
 | Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The complete shared screen and direct map ownership compile for desktop. |
 | iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The same screen, location/heading integration, projection, and map ownership link through Kotlin/Native and the Metal runtime. |
 
-This is live Android evidence only. Desktop and iOS entry points still do not
-present this screen, and the Android legacy source/assets have not yet been
-deleted, so this layer does not claim three-target runtime parity or cleanup.
+This section is live Android evidence only. iOS evidence is recorded separately;
+the desktop entry point and guarded deletion of Android legacy source/assets
+remain outstanding, so this layer does not claim three-target runtime parity or cleanup.
+
+## Android shared application navigation
+
+| Target | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| Android application | `./gradlew :androidApp:assembleDebug` | Pass | The activity-hosted shared root graph and its real settings/about/user destinations package with the app. |
+| Android cold launch | Reinstall the debug APK, force-stop it, and cold-launch `MainActivity` | Pass | The app remains resumed after 15 seconds and MapLibre renders its first OpenGL frame using the injected runtime. No fatal exception or ANR is logged. |
+| Main to settings | Open Menu, select Settings, then inspect the task and accessibility hierarchy | Pass | The real Settings screen is shown while `MainActivity` remains the task's only activity; no `SettingsActivity` is launched. |
+| Settings to main | Invoke system back and inspect the accessibility hierarchy | Pass | The shared graph returns to the existing live map with Overlays, Menu, and Follow me controls present. |
+
+The host now listens for language changes because navigation no longer
+backgrounds `MainActivity`, so `BaseActivity.onRestart` cannot provide the old
+locale-recreation behavior. Theme changes still flow through the application
+delegate, while returning to main reapplies the keep-screen-on preference.
 
 ## Shared map interaction boundary
 

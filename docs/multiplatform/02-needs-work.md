@@ -5,7 +5,7 @@
 - [x] Add a JVM desktop library target.
 - [ ] Add a Compose Desktop application that enters the real shared app flow.
 - [x] Replace the temporary iOS launcher with the real shared app entry point.
-- [ ] Replace Android activity-to-activity navigation with the same shared
+- [x] Replace Android activity-to-activity navigation with the same shared
   navigation graph used by desktop and iOS.
 
 ## Map parity

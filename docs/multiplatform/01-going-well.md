@@ -155,6 +155,10 @@
   track recording, bottom-sheet focus, context-menu actions, and solved-quest
   animation inside the shared Compose screen rather than bridging them through
   an Android activity and fragment.
+- Android's main menu now opens settings, quest settings, about, profile, and
+  login inside the shared root navigation graph rather than launching separate
+  activities. Returning to the map keeps the same activity and refreshes its
+  keep-screen-on policy; language changes recreate the host explicitly.
 - The shared screen also owns the quest and map-data invalidation listeners that
   close forms when their backing data disappears. Listener lifetime now follows
   composition on Android, iOS, and desktop instead of an Android activity.

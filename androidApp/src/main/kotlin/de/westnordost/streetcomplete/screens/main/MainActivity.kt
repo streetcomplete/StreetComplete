@@ -5,16 +5,15 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.platform.LocalContext
+import androidx.core.app.ActivityCompat
+import com.russhwolf.settings.SettingsListener
+import de.westnordost.streetcomplete.StreetCompleteApp
 import de.westnordost.streetcomplete.data.FeedsUpdater
 import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.screens.BaseActivity
-import de.westnordost.streetcomplete.screens.about.AboutActivity
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
-import de.westnordost.streetcomplete.screens.settings.SettingsActivity
-import de.westnordost.streetcomplete.screens.user.UserActivity
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
@@ -38,6 +37,8 @@ class MainActivity :
     private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
     private val mainBottomSheetViewModel by viewModel<MainBottomSheetViewModel>()
 
+    private val settingsListeners = mutableListOf<SettingsListener>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
@@ -58,35 +59,16 @@ class MainActivity :
         setContentView(composeView)
         composeView.setContent {
             AppTheme {
-                val context = LocalContext.current
-                MainScreen(
-                    viewModel = viewModel,
+                StreetCompleteApp(
+                    mainViewModel = viewModel,
                     editHistoryViewModel = editHistoryViewModel,
                     mainBottomSheetViewModel = mainBottomSheetViewModel,
-                    onClickSettings = {
-                        context.startActivity(Intent(context, SettingsActivity::class.java))
-                    },
-                    onClickQuestSettings = {
-                        context.startActivity(
-                            SettingsActivity.createLaunchQuestSettingsIntent(context)
-                        )
-                    },
-                    onClickAbout = {
-                        context.startActivity(Intent(context, AboutActivity::class.java))
-                    },
-                    onClickProfile = {
-                        context.startActivity(Intent(context, UserActivity::class.java))
-                    },
-                    onClickLogin = {
-                        context.startActivity(
-                            Intent(context, UserActivity::class.java).apply {
-                                putExtra(UserActivity.EXTRA_LAUNCH_AUTH, true)
-                            }
-                        )
-                    },
+                    onMainShown = ::updateScreenOn,
                 )
             }
         }
+
+        settingsListeners += preferences.onLanguageChanged { ActivityCompat.recreate(this) }
     }
 
     override fun onStart() {
@@ -97,6 +79,12 @@ class MainActivity :
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         handleIntent(intent)
+    }
+
+    override fun onDestroy() {
+        settingsListeners.forEach { it.deactivate() }
+        settingsListeners.clear()
+        super.onDestroy()
     }
 
     private fun handleIntent(intent: Intent) {
