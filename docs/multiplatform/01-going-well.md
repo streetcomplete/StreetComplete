@@ -47,3 +47,18 @@
   `LocationEvent.Update`, and `HeadingMeasurement` APIs. Recorded tracks use the
   measurement's real wall-clock instant instead of accidentally serializing a
   monotonic location age as an epoch timestamp.
+
+## Shared base map
+
+- StreetComplete's full Jawg vector-tile base style now lives in `commonMain` as
+  declarative MapLibre Compose layers, including light and night palettes,
+  localized labels, roads, bridges, tunnels, buildings, water, land use,
+  boundaries, railways, hillshade, and one-way arrows.
+- All 512 offline Roboto glyph ranges are available as Compose resources for
+  Android, iOS, and desktop. Verification checks the exact non-empty source set,
+  URI templates, and the shared glyph entries packaged in the Android APK.
+- The shared map shell exposes the four intentional layer-ordering seams needed
+  by StreetComplete data: below roads, below bridge roads, below labels, and
+  above labels. This keeps quest and overlay state out of the base-style module.
+- The existing Android map remains active while shared data layers are migrated,
+  so this intermediate layer does not remove working map functionality.

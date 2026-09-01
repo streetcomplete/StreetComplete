@@ -1,5 +1,6 @@
 import java.io.FileInputStream
 import java.util.Properties
+import java.util.zip.ZipFile
 
 val appVersionName = "63.4"
 val appVersionCode = 6308
@@ -113,4 +114,22 @@ if (keystorePropertiesFile.exists()) {
     releaseSigningConfig.storePassword = props.getProperty("storePassword")
     releaseSigningConfig.keyAlias = props.getProperty("keyAlias")
     releaseSigningConfig.keyPassword = props.getProperty("keyPassword")
+}
+
+tasks.register("verifyDebugMapGlyphAssets") {
+    group = "verification"
+    description = "Verifies all shared MapLibre glyphs are packaged in the debug APK."
+    dependsOn("assembleDebug")
+    val apk = layout.buildDirectory.file("outputs/apk/debug/androidApp-debug.apk")
+    inputs.file(apk)
+    doLast {
+        val prefix = "assets/composeResources/de.westnordost.streetcomplete.resources/files/glyphs/"
+        ZipFile(apk.get().asFile).use { zip ->
+            val glyphs = zip.entries().asSequence()
+                .filter { !it.isDirectory && it.name.startsWith(prefix) && it.name.endsWith(".pbf") }
+                .toList()
+            check(glyphs.size == 512) { "Expected 512 shared glyph assets, found ${glyphs.size}" }
+            check(glyphs.all { it.size > 0L }) { "Shared glyph assets in the APK must not be empty" }
+        }
+    }
 }

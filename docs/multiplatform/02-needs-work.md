@@ -13,6 +13,14 @@
 
 - [ ] Move the Android-only `Fragment` and `org.maplibre.android` map stack to a
   shared MapLibre Compose implementation.
+- [x] Port the complete light/night base map style and offline glyph resources to
+  shared MapLibre Compose declarations.
+- [ ] Port StreetComplete's downloaded-area, quest pin, edit-history pin, track,
+  overlay, focused-geometry, marker, selection, and current-location layers.
+- [ ] Wire the shared map into the real main screen on each target, then remove
+  the legacy Android assets and map stack only after parity is demonstrated.
+- [ ] Restore the legacy 300ms, system-animation-scale-aware global style
+  transition when MapLibre Compose exposes common transition configuration.
 - [ ] Preserve every current map data source, layer, selection flow, camera
   behavior, gesture, offline-area visualization, quest pin interaction, edit
   history pin, track, overlay, and location behavior.
@@ -52,5 +60,7 @@
   Android host and new desktop runner currently execute 2,449 tests with the same
   six failures on this machine.
 - [ ] Exercise production flows on Android, desktop, and iOS and record demo videos.
+- [ ] Verify shared glyph resources in a built iOS application bundle; linking the
+  framework alone does not copy Compose resources into an app.
 - [ ] Obtain independent adversarial reviews of functionality parity, architecture,
   commit structure, and target evidence; fix all confirmed findings.

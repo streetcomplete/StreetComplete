@@ -62,3 +62,21 @@ controllers run in the application process; registering and exercising
 These checks validate dependency integration and the location/heading API
 migration. They do not yet validate rendering; the shared map composition has
 not been introduced in this layer.
+
+## Shared base map
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The complete declarative base style and shared map shell compile against the snapshot API. |
+| Shared resources | `./gradlew :app:verifySharedMapGlyphResources` | Pass | The source set contains exactly 512 expected, non-empty Roboto glyph ranges. |
+| Desktop resource URI | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.MapStyleResourceUriTest'` | 2 pass | Percent-encoded desktop/iOS and Android asset file URIs retain MapLibre's font-stack and range placeholders. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared map source compiles while the production legacy Android map remains present. |
+| Android app resources | `./gradlew :androidApp:verifyDebugMapGlyphAssets` | Pass | The transition APK assembles and contains exactly 512 non-empty shared glyph entries in addition to the legacy map assets. |
+| Android host resource URI | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.MapStyleResourceUriTest'` | 2 pass | Android retains the `file:///android_asset/` URI that the snapshot's resource reader handles. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The shared base-map code and Metal runtime compile and link into the framework; this does not prove resources are copied into an iOS app bundle. |
+| Desktop and Android host suites | `./gradlew :app:desktopTest :app:testAndroidHostTest --continue` | 2,455 tests per runner; same 6 baseline failures and 1 skip | Both complete runners reproduced only the inherited locale/date-sensitive baseline failures. No failure was added by the shared base-map layer. |
+
+The layer has not replaced the running Android map or the temporary iOS
+launcher, so these are composition, packaging, and link checks—not rendering or
+feature-parity evidence. Interactive evidence will be recorded only after the
+shared map is connected to target entry points.

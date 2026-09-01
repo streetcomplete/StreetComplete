@@ -13,22 +13,16 @@ import org.maplibre.compose.expressions.dsl.contains
 import org.maplibre.compose.expressions.dsl.convertToBoolean
 import org.maplibre.compose.expressions.dsl.convertToNumber
 import org.maplibre.compose.expressions.dsl.convertToString
-import org.maplibre.compose.expressions.dsl.div
-import org.maplibre.compose.expressions.dsl.dp
 import org.maplibre.compose.expressions.dsl.eq
 import org.maplibre.compose.expressions.dsl.exponential
 import org.maplibre.compose.expressions.dsl.interpolate
 import org.maplibre.compose.expressions.dsl.neq
 import org.maplibre.compose.expressions.dsl.plus
 import org.maplibre.compose.expressions.dsl.switch
-import org.maplibre.compose.expressions.dsl.times
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.GeometryType
-import org.maplibre.compose.expressions.value.NumberValue
 import org.maplibre.compose.expressions.value.StringValue
 import kotlin.jvm.JvmName
-import kotlin.math.PI
-import kotlin.math.cos
 
 fun fadeInAtZoom(start: Float, range: Float = 1f, endOpacity: Float = 1f) =
     byZoom(start to 0f, start+range to endOpacity)
@@ -101,32 +95,4 @@ fun Feature.localizedName(
         // otherwise just show the name
         fallback = getName
     )
-}
-
-fun inMeters(
-    width: Expression<NumberValue<Number>>,
-    latitude: Double = 30.0
-): Expression<NumberValue<Dp>> {
-    // the more north you go, the smaller of an area each mercator tile actually covers
-    // the additional factor of 1.20 comes from a simple measuring test with a ruler on a
-    // smartphone screen done at approx. latitude = 0 and latitude = 70, i.e. without it, lines are
-    // drawn at both latitudes approximately 20% too large ¯\_(ツ)_/¯
-    val sizeFactor = (cos(PI * latitude / 180) * 1.2).toFloat()
-    return interpolate(
-        exponential(2f), zoom(),
-        8 to width / const(256) / const(sizeFactor),
-        24 to width * const(256) / const(sizeFactor)
-    ).dp
-}
-
-fun inMeters(
-    width: Float,
-    latitude: Double = 30.0
-): Expression<NumberValue<Dp>> {
-    val sizeFactor = (cos(PI * latitude / 180) * 1.2).toFloat()
-    return interpolate(
-        exponential(2f), zoom(),
-        8 to const(width) / const(256) / const(sizeFactor),
-        24 to const(width) * const(256) / const(sizeFactor)
-    ).dp
 }

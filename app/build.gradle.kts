@@ -496,6 +496,33 @@ tasks.register("copyDefaultStringsToEnStrings") {
     }
 }
 
+tasks.register("verifySharedMapGlyphResources") {
+    group = "verification"
+    description = "Verifies the complete non-empty shared MapLibre glyph range set."
+    val glyphDirectory = layout.projectDirectory.dir("src/commonMain/composeResources/files/glyphs")
+    inputs.dir(glyphDirectory)
+    doLast {
+        val expected = buildSet {
+            for (font in listOf("Roboto Regular", "Roboto Bold")) {
+                for (start in 0..0xff00 step 0x100) {
+                    add("$font/$start-${start + 0xff}.pbf")
+                }
+            }
+        }
+        val root = glyphDirectory.asFile
+        val actual = root.walkTopDown()
+            .filter { it.isFile }
+            .map { it.relativeTo(root).invariantSeparatorsPath }
+            .toSet()
+        check(actual == expected) {
+            "Shared map glyph set differs: missing=${expected - actual}, unexpected=${actual - expected}"
+        }
+        check(expected.all { root.resolve(it).length() > 0L }) {
+            "Shared map glyph resources must not be empty"
+        }
+    }
+}
+
 // necessary as long as map hasn't been converted to compose yet
 tasks.register<CopyIconsTask>("copyIconsToAndroid") {
     group = "streetcomplete"

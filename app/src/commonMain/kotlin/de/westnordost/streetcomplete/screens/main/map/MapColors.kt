@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 
-/** Map colors schema for [MapStyle] */
 @Immutable
 data class MapColors(
     val earth: Color,
@@ -33,6 +32,7 @@ data class MapColors(
     val privateOverlay: Color,
     val hillshadeLight: Color,
     val hillshadeShadow: Color,
+    val onewayArrow: Color
 ) {
     companion object
 }
@@ -64,8 +64,9 @@ private val mapColorsLight = MapColors(
     textWater = Color(0xffffffff),
     textWaterOutline = Color(0xff334499),
     privateOverlay = Color(0xfff3dacd),
-    hillshadeLight = Color.hsl(0.86f, 1f, 0.95f),
-    hillshadeShadow = Color.hsl(0.07f, 1f, 0.4f),
+    hillshadeLight = Color.hsl(220f, 1f, 0.95f),
+    hillshadeShadow = Color.hsl(18f, 1f, 0.4f),
+    onewayArrow = Color(0xff888888),
 )
 
 val MapColors.Companion.Night get() = mapColorsNight
@@ -95,6 +96,7 @@ private val mapColorsNight = MapColors(
     textWater = Color(0xff2e2e48),
     textWaterOutline = Color(0xffccccff),
     privateOverlay = Color(0xff3d364e),
-    hillshadeLight = Color.hsl(0.94f, 0.3f, 0.5f),
-    hillshadeShadow = Color.hsl(0.94f, 0.8f, 0.0f),
+    hillshadeLight = Color.hsl(240f, 0.3f, 0.5f),
+    hillshadeShadow = Color.hsl(240f, 0.8f, 0.0f),
+    onewayArrow = Color(0xffccccff),
 )

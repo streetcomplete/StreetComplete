@@ -18,6 +18,21 @@ No confirmed upstream defect has been recorded yet. The abandoned
 `upstream/maplibre-compose` integration predates 0.15 and will be re-evaluated
 against the snapshot APIs before any limitation is attributed upstream.
 
+The complete StreetComplete base style compiled against the snapshot with one
+intentional source migration: symbol icon padding now uses MapLibre Compose's
+typed `DpPadding` expression value. Runtime rendering and interaction may expose
+additional findings that compilation cannot.
+
+### Missing global style-transition configuration
+
+The Android implementation sets MapLibre Native's global style transition to a
+300ms duration multiplied by the system animator-duration scale, with placement
+transitions enabled. The post-v0.15 Compose API exposes no common configuration
+for the equivalent native transition options. The shared style therefore uses
+backend defaults for now; `StreetCompleteMap` carries a TODO at the integration
+point. A common, backend-neutral style-transition option would let the migration
+preserve this behavior and respect reduced or disabled system animation.
+
 ## Integration constraints
 
 - The current desktop runtime artifacts target Java 25. StreetComplete's future
