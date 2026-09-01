@@ -15,14 +15,14 @@ API before they are considered actionable.
 
 ## Findings
 
-Seven integration gaps are confirmed below. The abandoned
+Ten integration gaps are confirmed below. The abandoned
 `upstream/maplibre-compose` integration predates 0.15, so its other assumptions
 continue to be re-evaluated against the snapshot before being attributed upstream.
 
-The complete StreetComplete base style compiled against the snapshot with one
+The complete StreetComplete base style compiles against the snapshot with one
 intentional source migration: symbol icon padding now uses MapLibre Compose's
-typed `DpPadding` expression value. Runtime rendering and interaction may expose
-additional findings that compilation cannot.
+typed `DpPadding` expression value. Cold production runs on Android, iOS, and
+desktop exposed the additional runtime findings recorded here.
 
 ### Snapshot metadata cannot be consumed as an immutable version directly
 
@@ -58,11 +58,59 @@ because their geometry changes frequently. The snapshot's common
 `GeoJsonOptions` exposes tiling, clustering, line metrics, and synchronous
 updates, but not MapLibre Native's volatile-source flag.
 
-The shared layers still update their GeoJSON data through
-`rememberGeoJsonSource`, so the visualizations remain functional. What cannot
-currently be preserved is the legacy cache/performance hint. MapLibre Compose
-should expose this as a common GeoJSON source option on native-backed targets
-and document browser behavior.
+Most shared layers update their GeoJSON data through `rememberGeoJsonSource`.
+Clustered pins and the styleable overlay require stable public source IDs and
+cluster-leaf access, so they retain stable source definitions and update the
+current generation's handle directly. In both cases the visualizations remain
+functional. What cannot currently be preserved is the legacy cache/performance
+hint. MapLibre Compose should expose this as a common GeoJSON source option on
+native-backed targets and document browser behavior.
+
+### Remembered dynamic sources need a stable public ID
+
+StreetComplete's clustered pin layers refer to one source ID from several style
+layers and use the matching source handle to request cluster leaves. The public
+`rememberGeoJsonSource` API allocates an internal ID that its returned `Source`
+does not expose. `MapStyleState.sources` and `MapStyleState.source(id)` do expose
+current handles publicly, but callers need the generated ID to use them.
+Supplying a fixed-ID custom `GeoJsonSource` preserves the layer graph and makes
+the public lookup usable, while leaving the application responsible for tracking
+handle generations.
+
+A supported stable-ID parameter on `rememberGeoJsonSource`, or a public overload
+that resolves the remembered `Source` to its current handle, would remove this
+custom-source seam while retaining declarative data updates and cluster
+inspection.
+
+### Declarative GeoJSON refresh can remove the Android render surface
+
+After the first Android frame, changing a fixed-ID declarative `GeoJsonSource`
+causes `MlnFfiMapSession.reconcileStyleRevision` to set
+`hasLoadedFirstStyle = false` while it prepares the replacement source. The
+Android presentation then receives `presentFrames = false`, removes its platform
+surface, and logs `Host surface lost`; Compose controls remain visible over a
+blank map. StreetComplete reproduced this with both Surface and Texture modes.
+
+The application workaround keeps each fixed-ID source definition stable and
+updates the current generation's `GeoJsonSourceHandle`. A style-generation race
+restarts the effect with the new handle; only the three exact stale-handle
+exceptions are treated as recoverable. Upstream should keep the first-style flag
+monotonic after the first successful load, as its lifecycle comment describes,
+or decouple reconciliation progress from platform-surface visibility.
+
+### Zero-size painters fail deep inside runtime image registration
+
+On Android, Compose loaded a drawable `<layer-list>` used for the location shadow
+as a painter with zero intrinsic width and height. MapLibre Compose accepted it,
+then `ImageManager` attempted to allocate `ImageBitmap(0, 0)` and crashed during
+style preparation. Converting the resource to a sized vector and declaring
+explicit dimensions for all dynamic location images fixes the application.
+
+The existing `image(Painter, DpSize, ...)` overload supplies an explicit caller
+size and StreetComplete now uses it. Image registration should still reject a
+non-positive raster size at the public boundary with the resource/source name
+and an actionable message, and document when callers must provide that explicit
+size rather than relying on painter intrinsic dimensions.
 
 ### Layer click handlers cannot configure hit radius
 

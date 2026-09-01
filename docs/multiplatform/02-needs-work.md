@@ -147,9 +147,15 @@
   entry points in the Android-host test source set.
 - [x] Make the locale/date-sensitive common tests deterministic across JVM and
   Foundation formatting data, time zones, calendars, and non-ASCII decimal digits.
-  The iOS simulator now passes all 2,493 Native tests; desktop and Android each
-  pass 2,531 tests with one intentional skip.
-- [ ] Exercise production flows on Android, desktop, and iOS and record demo videos.
+  The iOS simulator now passes all 2,498 Native tests; desktop and Android each
+  pass 2,537 tests with one intentional skip.
+- [x] Exercise representative production flows on Android, desktop, and iOS and
+  record revision-pinned demo videos. Android covers a live map, quest pins,
+  location, pan, long press, and an overlay update; desktop covers the packaged
+  Metal application and incoming `geo:` camera position; iOS covers live style
+  rendering, incoming `geo:` camera changes, and light/dark adaptation.
 - [x] Verify shared glyph resources in a built and running iOS application bundle.
-- [ ] Obtain independent adversarial reviews of functionality parity, architecture,
-  commit structure, and target evidence; fix all confirmed findings.
+- [x] Obtain independent adversarial reviews of functionality parity, architecture,
+  commit structure, and target evidence; fix all confirmed findings. Three fresh
+  reviewers cleared the rewritten source, evidence, and layered history after the
+  final findings were corrected.

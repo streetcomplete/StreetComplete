@@ -303,8 +303,11 @@ delegate, while returning to main reapplies the keep-screen-on preference.
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The same shared interaction boundary compiles beside the active fragment. |
 | iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Projection, async feature queries, presentation-detach handling, and callbacks link into the iOS framework. |
 
-These checks do not claim live pointer behavior. The target demos must verify
-callback ordering and the 14dp projected ground radius after entry-point wiring.
+These compile checks do not by themselves claim live pointer ordering or prove
+the 14dp projected ground radius. The Android production demo exercises pan and
+the shared long-press path. The remaining differences—point-only layer hit
+testing and the pre-query used for raw click fallthrough—are exact upstream API
+gaps with code TODOs, not behavior silently represented as equivalent.
 
 ## Shared GPS track state
 
@@ -347,11 +350,10 @@ second bundled SQLite compilation.
 | Packaged live map | Mark the tutorial complete, relaunch the app image, and inspect the native window | Pass | The shared world map renders through Metal with StreetComplete styling, downloaded-area hatching, stars, overlays, menu, follow, attribution, scale, and shared glyph resources. |
 
 The first app-image attempt exposed a missing `java.net.http` jlink module; the
-committed distribution module list fixes that packaging-only failure. Automated
-computer-use inspection could read the Compose accessibility tree and capture
-the window, but input delivery to this JVM window closed the automation pipe, so
-menu navigation still needs separate desktop demo evidence rather than being
-claimed from the screenshots alone.
+committed distribution module list fixes that packaging-only failure. The final
+desktop demo records the packaged application launched with a production
+`geo:` argument and a stable live Metal map. It is a product smoke test rather
+than a claim that every shared navigation destination was replayed on desktop.
 
 ## Shared application lifecycle
 
@@ -405,7 +407,7 @@ safe to remove instead of relying on a successful compile alone.
 | Android application | Rebuild and reinstall the APK, force-stop it, launch `MainActivity` with `geo:37.7749,-122.4194?z=16`, then inspect process, logs, and the rendered map | Pass after runtime repair | The real intent enters the common handler, the app stays resumed without a fatal exception or ANR, and the map renders at the requested San Francisco position and zoom. |
 | Desktop app image | Build the distributable and launch its executable with `geo:37.7749,-122.4194?z=16` as the first argument | Pass | The packaged application renders its first Metal frame and persists latitude `37.7749`, longitude `-122.4194`, and zoom `16.0` through the shared map state. |
 | iOS framework and Swift host | Link the simulator framework and build the complete Xcode application | Pass | The generated Kotlin bridge and SwiftUI `onOpenURL` callback compile together in the production host. |
-| iOS URL registration | Ask the booted simulator to open `geo:37.7749,-122.4194?z=16` | Partial runtime evidence | iOS resolves StreetComplete and presents its system-owned “Open in StreetComplete?” confirmation. The locked host prevented UI automation from accepting the prompt, so final callback/camera evidence remains part of the iOS demo run. |
+| iOS URL registration | Ask the booted simulator to open `geo:37.7749,-122.4194?z=16`, then a New York `geo:` URL | Pass | iOS resolves StreetComplete, delivers both URLs to the shared handler, and the live map camera moves from New York to San Francisco and back. The revision-pinned iOS demo records the result. |
 
 The first Android live run found a constructor-order regression: the buffered
 URL was consumed from the view model's first `init` block before its URL state
@@ -448,9 +450,9 @@ registered subtype and wire format while making the production path portable.
 
 | Target | Command | Result | What it proves |
 | --- | --- | --- | --- |
-| iOS simulator full suite | `./gradlew :app:iosSimulatorArm64Test` | 2,493 pass | All portable common tests execute through Kotlin/Native, including foreground-sync failure containment, buffered external-link delivery, stale-viewport rejection, production DAOs with `NativeSQLiteDriver`, edit serialization, locale parsing, Apple measurement-system mapping, crash persistence, and file-backed photo fixtures. |
-| Desktop full suite | `./gradlew :app:desktopTest` | 2,531 pass, 1 skip | The portable suite and six JVM-only live HTTP integration classes execute together against the desktop production implementations. |
-| Android host full suite | `./gradlew :app:testAndroidHostTest` | 2,531 pass, 1 skip | The final complete run is clean, including the live OSM development-server classes. Earlier complete runs intermittently failed live requests with `Unexpected end of file from server` or a reset connection; assertions and transport behavior were left intact. |
+| iOS simulator full suite | `./gradlew :app:iosSimulatorArm64Test` | 2,498 pass | All portable common tests execute through Kotlin/Native, including foreground-sync failure containment, buffered external-link delivery, stale-viewport rejection, production DAOs with `NativeSQLiteDriver`, edit serialization, locale parsing, Apple measurement-system mapping, crash persistence, and file-backed photo fixtures. |
+| Desktop full suite | `./gradlew :app:desktopTest` | 2,537 pass, 1 skip | The portable suite and six JVM-only live HTTP integration classes execute together against the desktop production implementations. |
+| Android host full suite | `./gradlew :app:testAndroidHostTest` | 2,537 pass, 1 skip | The final complete run is clean, including the live OSM development-server classes. Earlier complete runs intermittently failed live requests with `Unexpected end of file from server` or a reset connection; assertions and transport behavior were left intact. |
 | iOS application link | `DEVELOPER_DIR=/Applications/Xcode-26.5.0.app/Contents/Developer xcodebuild -project iosApp/iosApp.xcodeproj -scheme iosApp -configuration Debug -destination 'platform=iOS Simulator,id=4AE0B7AD-8A31-457E-B505-A46F3644E43D' -derivedDataPath build/ios-derived CODE_SIGNING_ALLOWED=NO clean build` | Pass with warning | The production framework and Swift host link after removing bundled SQLite from Apple source sets; symbol inspection finds one exported `sqlite3_open`/`sqlite3_close` definition set. The linker separately reports Skiko's ICU object as built for iOS Simulator 18.5 while the app declares 15.0. |
 
 The seven tests that contact live OSM or ban-list endpoints live in `javaTest`.
@@ -554,4 +556,36 @@ transitions. Entry-point wiring remains a separate commit.
 The downloader waits for a terminal MapLibre progress state before reporting
 success. Cancellation pauses the pack, and an error is propagated to the shared
 download coordinator rather than recording tiles as downloaded when base-map
-storage failed. Live download and deletion still require target demo evidence.
+storage failed. The representative product videos do not include a live pack
+download/deletion sequence; offline ownership is claimed from the shared
+contract tests and three production links above, not from video evidence.
+
+## Final dynamic-map runtime repair
+
+| Boundary | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| Dynamic map image registration | Cold-launch Android after converting the location shadow to a sized vector and declaring dimensions for dynamic location images | Pass | MapLibre no longer reaches `ImageBitmap(0, 0)` while registering the production style resources. |
+| Generation-bound GeoJSON handles | `./gradlew :app:desktopTest --tests '*PinsLayersTest' --tests '*StyledElementTest'` | Pass | Only the three exact stale style-generation handle failures are recoverable; unrelated `IllegalStateException`s still propagate. |
+| Android cold map and live overlay | Reinstall the APK from the production tree retained in `4e26d7588`, cold-launch, observe beyond first frame, pan/long-press, and select a live overlay | Pass | The map, quest pins, location, and updated overlay remain visible without a fatal exception, ANR, or premature `Host surface lost` event. Surface and Texture modes had both reproduced the pre-fix failure. |
+| Cross-target production compilation | `./gradlew :androidApp:assembleDebug :app:compileKotlinDesktop :app:compileKotlinIosSimulatorArm64 :app:desktopTest --tests '*PinsLayersTest' --tests '*StyledElementTest' --tests '*MainMapContentStateTest' --continue` | Pass | The stable-source/current-handle workaround and its tests compile on Android, desktop, and Kotlin/Native against the exact snapshot. |
+
+The final failure was not a renderer-mode choice. A fixed-ID declarative source
+refresh reset MapLibre Compose's first-style flag, temporarily hid the Android
+platform surface, and stranded the map after its first frame. StreetComplete now
+keeps fixed-ID source definitions stable, updates the current handle, and retries
+only when a new style generation invalidates that handle. The actionable upstream
+reproducer and preferred lifecycle fix are recorded in
+`03-maplibre-compose-upstream.md`.
+
+## Revision-pinned product demos
+
+| Target | Result | Representative live evidence |
+| --- | --- | --- |
+| Android | Pass | Production map, quest pins, current location, pan, long press/context actions, and a live overlay update. |
+| Desktop | Pass | Packaged macOS ARM64 application, incoming San Francisco `geo:` camera, and a stable Metal map. |
+| iOS | Pass | Installed simulator application, two incoming `geo:` camera changes, and live light/dark style adaptation. |
+
+All three were captured from binaries rebuilt from the production source tree
+retained in revision `4e26d7588`
+with MapLibre Compose `0.15.1-20260901.101938-7`. The recordings are intentionally
+not committed to the repository to avoid retaining large binary blobs.
