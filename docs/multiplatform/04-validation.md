@@ -90,3 +90,13 @@ shared map is connected to target entry points.
 | Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The hatch resource and declarative fill layer compile for desktop. |
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared layer compiles alongside the still-active legacy implementation. |
 | iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The shared layer, geometry, and hatch resource API compile and link for iOS. |
+
+## Recorded-track map layers
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.TrackGeometryTest'` | 4 pass | Line filtering, coordinate order, and shortest-path antimeridian interpolation preserve the track contract. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.TrackGeometryTest'` | 4 pass | The same track geometry behavior executes on the Android host runner. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Track sources, styles, animation, and image patterns compile for desktop. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared track layer compiles alongside the active legacy component. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Track geometry, Compose animation, and resource APIs compile and link for iOS. |

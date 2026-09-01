@@ -1,52 +1,50 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import androidx.compose.runtime.State
-import androidx.compose.animation.core.Spring.StiffnessLow
-import androidx.compose.animation.core.SpringSpec
-import androidx.compose.animation.core.animateIntAsState
-import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.Easing
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.normalizeLongitude
+import kotlin.math.PI
+import kotlin.math.cos
 
-/** Animates a LatLon to a [targetValue] position. Also works when crossing the antimeridian. */
+private const val LOCATION_ANIMATION_DURATION_MILLIS = 600
+
+private val AccelerateDecelerateEasing = Easing { fraction ->
+    (cos((fraction + 1) * PI) / 2.0 + 0.5).toFloat()
+}
+
+/** Animates along the shortest path across the antimeridian, matching the legacy 600ms motion. */
 @Composable
 fun animateLatLonAsState(
     targetValue: LatLon,
-    animationSpec: SpringSpec<LatLon> = spring(stiffness = StiffnessLow),
-    label: String = "LatLonAnimation"
+    initialValue: LatLon = targetValue,
 ): State<LatLon> {
-    var targetLongitude by remember { mutableStateOf(targetValue.longitude) }
-
-    LaunchedEffect(targetValue.longitude) {
-        targetLongitude += normalizeLongitude(targetValue.longitude - targetLongitude)
+    val animatedValue = remember { mutableStateOf(initialValue) }
+    LaunchedEffect(targetValue) {
+        val startValue = animatedValue.value
+        Animatable(0f).animateTo(
+            targetValue = 1f,
+            animationSpec = tween(
+                durationMillis = LOCATION_ANIMATION_DURATION_MILLIS,
+                easing = AccelerateDecelerateEasing,
+            )
+        ) {
+            animatedValue.value = interpolateLatLon(startValue, targetValue, value.toDouble())
+        }
     }
+    return animatedValue
+}
 
-    val intAnimationSpec = spring(
-        dampingRatio = animationSpec.dampingRatio,
-        stiffness = animationSpec.stiffness,
-        visibilityThreshold = 1
+internal fun interpolateLatLon(start: LatLon, end: LatLon, fraction: Double): LatLon {
+    val longitudeDelta = normalizeLongitude(end.longitude - start.longitude)
+    return LatLon(
+        latitude = start.latitude + (end.latitude - start.latitude) * fraction,
+        longitude = normalizeLongitude(start.longitude + longitudeDelta * fraction),
     )
-
-    val animatedLongitude by animateIntAsState(
-        targetValue = (targetLongitude * 7).toInt(),
-        animationSpec = intAnimationSpec,
-        label = label+"-Lon"
-    )
-    val animatedLatitude by animateIntAsState(
-        targetValue = (targetValue.latitude * 7).toInt(),
-        animationSpec = intAnimationSpec,
-        label = label+"-Lat"
-    )
-
-    return remember { derivedStateOf { LatLon(
-        latitude = animatedLatitude/7.0,
-        longitude = normalizeLongitude(animatedLongitude/7.0)
-    ) } }
 }

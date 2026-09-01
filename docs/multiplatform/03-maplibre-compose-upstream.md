@@ -35,15 +35,16 @@ preserve this behavior and respect reduced or disabled system animation.
 
 ### Missing volatile GeoJSON source option
 
-The legacy downloaded-area source explicitly sets `GeoJsonSource.isVolatile =
-true` because its world mask changes whenever downloaded tiles change. The
+The legacy downloaded-area and recorded-track sources explicitly set
+`GeoJsonSource.isVolatile = true` because their geometry changes frequently. The
 snapshot's common `GeoJsonOptions` exposes tiling, clustering, line metrics, and
 synchronous updates, but not MapLibre Native's volatile-source flag.
 
-The shared layer still updates its GeoJSON data through `rememberGeoJsonSource`,
-so the visualization is functional. What cannot currently be preserved is the
-legacy cache/performance hint. MapLibre Compose should expose this as a common
-GeoJSON source option on native-backed targets and document browser behavior.
+The shared layers still update their GeoJSON data through
+`rememberGeoJsonSource`, so both visualizations are functional. What cannot
+currently be preserved is the legacy cache/performance hint. MapLibre Compose
+should expose this as a common GeoJSON source option on native-backed targets
+and document browser behavior.
 
 ## Integration constraints
 

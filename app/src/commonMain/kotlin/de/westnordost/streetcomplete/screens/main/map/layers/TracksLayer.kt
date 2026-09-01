@@ -5,20 +5,16 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.charleskorn.kaml.YamlPathSegment.Root.location
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.track_nyan
+import de.westnordost.streetcomplete.resources.track_nyan_record
 import de.westnordost.streetcomplete.screens.main.map.animateLatLonAsState
 import de.westnordost.streetcomplete.screens.main.map.toLineGeometry
 import de.westnordost.streetcomplete.screens.main.map.toMultiLineGeometry
-import de.westnordost.streetcomplete.ui.theme.Location
-import de.westnordost.streetcomplete.ui.theme.Recording
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import org.maplibre.spatialk.geojson.MultiLineString
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
-import org.maplibre.compose.expressions.dsl.convertToBoolean
-import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.layers.LineLayer
@@ -28,121 +24,102 @@ import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.GeometryCollection
 
-/** Display the path(s) walked on the map.
+/**
+ * Displays completed track segments and the short, actively changing current segment.
  *
- *  The current [trackpoints] will be shown in red when the user [isRecording], otherwise blue.
- *  The last segment of [trackpoints] is animated from the second last to the last position, which
- *  is done in-sync with the moving of the location puck.
- *
- *  Since the list of trackpoints is changed every time the location puck moves to a new location,
- *  for performance reasons, when the list of trackpoints gets too long, the last X trackpoints
- *  can be cut off (except if the user [isRecording]) and added to [oldTrackpointsLists]. These are
- *  displayed with less opacity and need to be updated less often. */
-@MaplibreComposable @Composable
+ * [trackpoints] should remain bounded (the legacy implementation retained at most 100 points) and
+ * older chunks should be moved to [oldTrackpointLists]. This avoids copying an ever-growing track
+ * into MapLibre for every location update.
+ */
+@Composable
+@MaplibreComposable
 fun TracksLayers(
     trackpoints: List<LatLon>,
     isRecording: Boolean,
-    oldTrackpointsLists: List<List<LatLon>>,
+    oldTrackpointLists: List<List<LatLon>>,
 ) {
-    val trackLastSegment = remember(trackpoints) {
-        if (trackpoints.size >= 2) trackpoints.takeLast(2) else null
-    }
-    val trackWithoutLast = remember(trackpoints) {
-        if (trackpoints.size > 1) trackpoints.take(trackpoints.size - 1) else emptyList()
-    }
+    val lastSegment = remember(trackpoints) { trackpoints.takeLast(2).takeIf { it.size == 2 } }
+    val trackWithoutLast = remember(trackpoints) { trackpoints.dropLast(1) }
 
-    val tracksSource = rememberGeoJsonSource(
-        data = GeoJsonData.Features(trackWithoutLast.toLineGeometry() ?: GeometryCollection(emptyList()))
-    )
-    // we want to animate the drawing of the track from the last position to the current position
-    // while the position marker animates at the same time from the last position to the current
-    // position (see CurrentLocationLayers)
-    val animatedTracksSource = rememberGeoJsonSource(
+    // TODO(maplibre-compose): Restore the legacy sources' volatile flags when GeoJsonOptions exposes it.
+    val animatedSource = rememberGeoJsonSource(
         data = GeoJsonData.Features(
-            trackLastSegment?.let {
-                val animatedLastPosition by animateLatLonAsState(targetValue = it.last())
-                listOf(it.first(), animatedLastPosition).toLineGeometry()
+            lastSegment?.let { segment ->
+                val animatedLastPosition by animateLatLonAsState(
+                    targetValue = segment.last(),
+                    initialValue = segment.first(),
+                )
+                listOf(segment.first(), animatedLastPosition).toLineGeometry()
             } ?: GeometryCollection(emptyList())
         )
     )
-
-    // old tracks are expected to not update so often
-    val oldTracksSource = rememberGeoJsonSource(
-        data = GeoJsonData.Features(oldTrackpointsLists.toMultiLineGeometry())
+    val trackSource = rememberGeoJsonSource(
+        data = GeoJsonData.Features(
+            trackWithoutLast.toLineGeometry() ?: GeometryCollection(emptyList())
+        )
+    )
+    val oldTrackSource = rememberGeoJsonSource(
+        data = GeoJsonData.Features(oldTrackpointLists.toMultiLineGeometry())
     )
 
-    // old tracks are drawn with less alpha so the map stays well visible
-    TracksLayer(
-        id = "old-track",
-        source = oldTracksSource,
-        opacity = 0.2f
-    )
-
-    TracksLayer(
-        id = "track",
-        source = tracksSource,
-        isRecording = isRecording,
-    )
-
-    TracksLayer(
-        id = "animate-track",
-        source = animatedTracksSource,
-        isRecording = isRecording
-    )
+    // Preserve the legacy style ordering: the old track is nearest the label layers.
+    TrackLayer("animate-track", animatedSource, isRecording = isRecording)
+    TrackLayer("track", trackSource, isRecording = isRecording)
+    TrackLayer("old-track", oldTrackSource, opacity = 0.2f)
 }
 
-/** Displays a path(s) walked on the map */
-@MaplibreComposable @Composable
-private fun TracksLayer(
+@Composable
+@MaplibreComposable
+private fun TrackLayer(
     id: String,
     source: Source,
     isRecording: Boolean = false,
     opacity: Float = 0.6f,
 ) {
-    // let's not check for the date on every recomposition :-)
-    val isApril1st = remember { isApril1st() }
-    if (isApril1st) {
-        TracksLayerApril1st(id, source, isRecording, opacity)
+    val showAprilFoolsPattern = remember { isApril1st() }
+    if (showAprilFoolsPattern) {
+        AprilFoolsTrackLayer(id, source, isRecording, opacity)
     } else {
-        TracksLayerDefault(id, source, isRecording, opacity)
+        DefaultTrackLayer(id, source, isRecording, opacity)
     }
 }
 
-@MaplibreComposable @Composable
-private fun TracksLayerApril1st(
+@Composable
+@MaplibreComposable
+private fun AprilFoolsTrackLayer(
     id: String,
     source: Source,
     isRecording: Boolean,
     opacity: Float,
 ) {
-    LineLayer(
-        id = id,
-        source = source,
-        opacity = const(opacity),
-        width = const(26.dp),
-        pattern = image(painterResource(
-            if (isRecording) Res.drawable.map_track_nyan_record
-            else Res.drawable.map_track_nyan
-        )),
-    )
-}
-
-@MaplibreComposable @Composable
-private fun TracksLayerDefault(
-    id: String,
-    source: Source,
-    isRecording: Boolean,
-    opacity: Float,
-) {
-    val recording = feature["recording"].convertToBoolean()
-
     LineLayer(
         id = id,
         source = source,
         opacity = const(opacity),
         cap = const(LineCap.Round),
-        dasharray = const(listOf(0, 2)),
+        dasharray = const(listOf(0f, 2f)),
+        width = const(26.dp),
+        pattern = image(painterResource(
+            if (isRecording) Res.drawable.track_nyan_record else Res.drawable.track_nyan
+        )),
+    )
+}
+
+@Composable
+@MaplibreComposable
+private fun DefaultTrackLayer(
+    id: String,
+    source: Source,
+    isRecording: Boolean,
+    opacity: Float,
+) {
+    LineLayer(
+        id = id,
+        source = source,
+        opacity = const(opacity),
+        cap = const(LineCap.Round),
+        dasharray = const(listOf(0f, 2f)),
         width = const(6.dp),
-        color = const(if (isRecording) Color.Recording else Color.Location),
+        color = const(if (isRecording) Color(0xfffe1616) else Color(0xff536dfe)),
     )
 }

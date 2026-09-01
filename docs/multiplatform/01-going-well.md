@@ -65,3 +65,6 @@
 - The downloaded-area visualization is now a shared MapLibre Compose layer. It
   preserves the existing 60%-opaque hatch outside downloaded zoom-16 tiles and
   uses the same Compose vector resource on Android, iOS, and desktop.
+- Recorded tracks now have shared current, animated, and completed-segment
+  layers. The 600ms motion crosses the antimeridian by the shortest path, and
+  the recording color, opacity, dash, line width, and April 1 pattern are kept.
