@@ -14,7 +14,7 @@ API before they are considered actionable.
 
 ## Findings
 
-Two common-API gaps are confirmed below. The abandoned
+Three common-API gaps are confirmed below. The abandoned
 `upstream/maplibre-compose` integration predates 0.15, so its other assumptions
 continue to be re-evaluated against the snapshot before being attributed upstream.
 
@@ -36,7 +36,7 @@ preserve this behavior and respect reduced or disabled system animation.
 ### Missing volatile GeoJSON source option
 
 The legacy downloaded-area, recorded-track, focused-geometry, geometry-marker,
-selected-pin, clustered-pin, and current-location sources explicitly set
+selected-pin, clustered-pin, styleable-overlay, and current-location sources explicitly set
 `GeoJsonSource.isVolatile = true`
 because their geometry changes frequently. The snapshot's common
 `GeoJsonOptions` exposes tiling, clustering, line metrics, and synchronous
@@ -47,6 +47,16 @@ The shared layers still update their GeoJSON data through
 currently be preserved is the legacy cache/performance hint. MapLibre Compose
 should expose this as a common GeoJSON source option on native-backed targets
 and document browser behavior.
+
+### Layer click handlers cannot configure hit radius
+
+StreetComplete's Android overlay component queries rendered features in a box
+around the tap using the device's finger radius. MapLibre Compose layer click
+handlers currently issue a point query at the exact `DpOffset`; the handler API
+does not expose a radius or query rectangle. The shared overlay still handles
+clicks on rendered symbols, lines, and fills, but thin lines are less forgiving
+until the common API accepts configurable hit geometry (or provides an async
+dispatch contract that can preserve event fallthrough after a rectangle query).
 
 ## Resolved integration findings
 

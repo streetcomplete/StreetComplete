@@ -159,3 +159,17 @@ The layer returns every cluster leaf position to its caller, which preserves the
 input needed by Android's existing fit-to-cluster camera behavior. The shared
 camera controller and live rendering are not yet wired, so these checks do not
 claim interactive camera parity.
+
+## Styleable overlay map layers
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.StyledElementTest'` | 5 pass | Point, polygon, invisible, extrusion, side/center line, bridge, label, element-key, disabled, road-width, and color properties preserve the legacy feature contract. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.StyledElementTest'` | 5 pass | The same overlay conversion and generated drawable lookup execute on Android host. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | All four layer insertion groups, dynamic painters, styles, visibility, and exact-coordinate click handlers compile for desktop. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared styleable overlay layers compile beside the active legacy component. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Shared feature conversion, expressions, painters, source handles, and layers compile and link for iOS. |
+
+MapLibre Compose's layer callback currently queries only the exact tap point, so
+these checks do not claim parity with Android's finger-radius rendered-feature
+query. That upstream API gap is documented and marked at the click handler.

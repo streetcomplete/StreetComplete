@@ -19,7 +19,12 @@
   ordering, visibility, clicks, and cluster-leaf lookup to MapLibre Compose.
 - [ ] Move the quest and edit-history pin data managers to common code and wire
   their pin/cluster click camera behavior into the shared map controller.
-- [ ] Port StreetComplete's overlay layers.
+- [x] Port styleable overlay geometry, colors, strokes, bridge ordering,
+  extrusions, icons, labels, disabled state, visibility, and element clicks.
+- [ ] Move the styleable overlay data manager to common code and connect it to
+  the shared camera/viewport flow.
+- [ ] Restore the legacy finger-radius overlay hit area when MapLibre Compose
+  layer click handlers expose configurable rendered-feature query geometry.
 - [x] Port the downloaded-area mask and hatching to a shared MapLibre Compose
   layer.
 - [ ] Restore the downloaded-area GeoJSON source's volatile cache hint when
@@ -41,6 +46,8 @@
 - [ ] Restore the current-location GeoJSON source's volatile cache hint when
   MapLibre Compose exposes it as a common source option.
 - [ ] Restore the clustered-pin GeoJSON source's volatile cache hint when
+  MapLibre Compose exposes it as a common source option.
+- [ ] Restore the styleable-overlay GeoJSON source's volatile cache hint when
   MapLibre Compose exposes it as a common source option.
 - [ ] Wire the shared map into the real main screen on each target, then remove
   the legacy Android assets and map stack only after parity is demonstrated.
