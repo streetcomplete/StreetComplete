@@ -62,3 +62,6 @@
   above labels. This keeps quest and overlay state out of the base-style module.
 - The existing Android map remains active while shared data layers are migrated,
   so this intermediate layer does not remove working map functionality.
+- The downloaded-area visualization is now a shared MapLibre Compose layer. It
+  preserves the existing 60%-opaque hatch outside downloaded zoom-16 tiles and
+  uses the same Compose vector resource on Android, iOS, and desktop.

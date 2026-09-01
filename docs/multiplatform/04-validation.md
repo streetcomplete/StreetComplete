@@ -80,3 +80,13 @@ The layer has not replaced the running Android map or the temporary iOS
 launcher, so these are composition, packaging, and link checks—not rendering or
 feature-parity evidence. Interactive evidence will be recorded only after the
 shared map is connected to target entry points.
+
+## Downloaded-area map layer
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayerTest'` | 2 pass | The world mask and clockwise tile holes preserve the legacy geometry. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayerTest'` | 2 pass | The same geometry behavior executes on the Android host runner. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The hatch resource and declarative fill layer compile for desktop. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared layer compiles alongside the still-active legacy implementation. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The shared layer, geometry, and hatch resource API compile and link for iOS. |

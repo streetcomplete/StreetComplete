@@ -33,6 +33,18 @@ backend defaults for now; `StreetCompleteMap` carries a TODO at the integration
 point. A common, backend-neutral style-transition option would let the migration
 preserve this behavior and respect reduced or disabled system animation.
 
+### Missing volatile GeoJSON source option
+
+The legacy downloaded-area source explicitly sets `GeoJsonSource.isVolatile =
+true` because its world mask changes whenever downloaded tiles change. The
+snapshot's common `GeoJsonOptions` exposes tiling, clustering, line metrics, and
+synchronous updates, but not MapLibre Native's volatile-source flag.
+
+The shared layer still updates its GeoJSON data through `rememberGeoJsonSource`,
+so the visualization is functional. What cannot currently be preserved is the
+legacy cache/performance hint. MapLibre Compose should expose this as a common
+GeoJSON source option on native-backed targets and document browser behavior.
+
 ## Integration constraints
 
 - The current desktop runtime artifacts target Java 25. StreetComplete's future
