@@ -89,7 +89,7 @@ fun MainMap(
     StreetCompleteMap(
         state = mapState,
         modifier = modifier,
-        presentationOptions = presentationOptions,
+        presentationOptions = presentationOptions.copy(cameraPadding = state.cameraPadding),
         callbacks = callbacks,
         overlay = overlay,
         belowRoadsContent = {

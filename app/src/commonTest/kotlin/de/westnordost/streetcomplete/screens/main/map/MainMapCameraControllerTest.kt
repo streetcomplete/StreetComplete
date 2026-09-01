@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import de.westnordost.streetcomplete.data.location.Location
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
@@ -138,12 +140,13 @@ class MainMapCameraControllerTest {
     )
 }
 
-private class FakeCamera(initialPosition: CameraPosition) : MainMapCamera {
+internal class FakeCamera(initialPosition: CameraPosition) : MainMapCamera {
     override var position: CameraPosition = initialPosition
     override var visibleBoundingBox: BoundingBox? = BoundingBox(
         southwest = Position(-1.0, -1.0),
         northeast = Position(1.0, 1.0),
     )
+    override var viewportSize: DpSize? = DpSize(400.dp, 800.dp)
     val animations = mutableListOf<Animation>()
 
     override suspend fun animateTo(position: CameraPosition, duration: Duration) {
@@ -152,9 +155,9 @@ private class FakeCamera(initialPosition: CameraPosition) : MainMapCamera {
     }
 }
 
-private data class Animation(val position: CameraPosition, val duration: Duration)
+internal data class Animation(val position: CameraPosition, val duration: Duration)
 
-private class FakePersistedState(
+internal class FakePersistedState(
     private val camera: CameraPosition = CameraPosition(),
     private val isFollowingPosition: Boolean = true,
     private val isNavigationMode: Boolean = false,

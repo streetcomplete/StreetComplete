@@ -254,8 +254,8 @@ switched to it.
 
 | Target | Command | Result | What it proves |
 | --- | --- | --- | --- |
-| Desktop focused tests | `./gradlew :app:desktopTest --tests '*MainMapCameraControllerTest' --tests '*ClusterCameraTest'` | 10 pass | First-fix zoom, 600ms following, track-bearing navigation, tilt reset, compass reset, gesture/pan discrimination, persistence, cluster margin/cap/duration, and antimeridian handling retain the legacy policy. |
-| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*MainMapCameraControllerTest' --tests '*ClusterCameraTest'` | 10 pass | The same camera and cluster policy executes on the Android host runner. |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests '*MainMapCameraControllerTest' --tests '*ClusterCameraTest' --tests '*FocusCameraTest'` | 14 pass | First-fix zoom, 600ms following, track-bearing navigation, tilt reset, compass reset, gesture/pan discrimination, persistence, cluster behavior, focus padding/margin/cap, and return/clear behavior retain the legacy policy. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*MainMapCameraControllerTest' --tests '*ClusterCameraTest' --tests '*FocusCameraTest'` | 14 pass | The same camera, cluster, and focused-geometry policy executes on the Android host runner. |
 | Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The common camera state and MapLibre presentation adapter compile for desktop. |
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The common camera state compiles beside the active legacy fragment. |
 | iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The shared camera state, persistence adapter, controller, and MapLibre animation API link into the iOS framework. |

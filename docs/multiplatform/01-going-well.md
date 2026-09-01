@@ -115,6 +115,10 @@
 - Cluster clicks now calculate their camera from the immutable rendered viewport,
   retain the legacy 0.25-level breathing room and zoom-19 cap, scale animation
   duration with zoom distance, and center correctly across the antimeridian.
+- Focused geometry now uses the same shared viewport math with the legacy
+  0.75-level margin, zoom-19 cap, 0.5-level zoom threshold, adaptive form
+  padding, and reversible previous-camera capture. Clearing a selection can
+  explicitly discard the return camera, matching edit-history behavior.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers

@@ -43,8 +43,8 @@
   when MapLibre Compose exposes them as common source options.
 - [x] Port focused point, line, polygon, and multipolygon rendering and its
   breathing highlight animation to shared MapLibre Compose.
-- [ ] Port focused-geometry camera framing and return-to-previous-camera behavior
-  when the shared map is wired to the main screen.
+- [x] Port focused-geometry camera framing, form-aware padding, zoom margin/cap,
+  and return-to-previous-camera behavior into shared map state.
 - [x] Port quest-form geometry marker icons, labels, points, lines, and polygons
   to shared MapLibre Compose layers.
 - [x] Port selected-pin icon composition, placement, and overshoot animation to

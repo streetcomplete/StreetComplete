@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.Stable
@@ -8,7 +9,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.location.Location
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.math.distanceTo
@@ -52,6 +57,7 @@ class MainMapState internal constructor(
     val userHasMovedCamera: Boolean get() = controller.userHasMovedCamera
     val displayedLocation: Location? get() = controller.displayedLocation
     val cameraPosition: CameraPosition get() = mapState.cameraPosition
+    val cameraPadding: PaddingValues get() = controller.cameraPadding
 
     fun setFollowingPosition(value: Boolean) = controller.updateFollowingPosition(value)
     fun setNavigationMode(value: Boolean) = controller.updateNavigationMode(value)
@@ -60,6 +66,10 @@ class MainMapState internal constructor(
     fun zoomByDrag(dp: Float) = controller.zoomBy(dp / 20.0)
     fun resetCompass() = controller.resetCompass()
     fun fitCluster(positions: List<LatLon>) = controller.fitCluster(positions)
+    fun startFocus(geometry: ElementGeometry, padding: PaddingValues = PaddingValues(0.dp)) =
+        controller.startFocus(geometry, padding)
+    fun clearFocus() = controller.clearFocus()
+    fun endFocus() = controller.endFocus()
 
     internal fun onLocationChanged(location: Location?, track: List<LatLon>) =
         controller.onLocationChanged(location, track)
@@ -100,6 +110,7 @@ fun rememberMainMapState(
 internal interface MainMapCamera {
     val position: CameraPosition
     val visibleBoundingBox: BoundingBox?
+    val viewportSize: DpSize?
     suspend fun animateTo(position: CameraPosition, duration: Duration)
 }
 
@@ -107,6 +118,8 @@ private class MapLibreCamera(private val state: MapState) : MainMapCamera {
     override val position: CameraPosition get() = state.cameraPosition
     override val visibleBoundingBox: BoundingBox?
         get() = state.presentation?.viewport?.visibleBoundingBox
+    override val viewportSize: DpSize?
+        get() = state.presentation?.viewport?.size
 
     override suspend fun animateTo(position: CameraPosition, duration: Duration) {
         val presentation = state.presentation ?: return
@@ -166,10 +179,13 @@ internal class MainMapCameraController(
         private set
     var displayedLocation by mutableStateOf<Location?>(null)
         private set
+    var cameraPadding by mutableStateOf<PaddingValues>(PaddingValues(0.dp))
+        private set
 
     private var track: List<LatLon> = emptyList()
     private var zoomedYet = false
     private var lastObservedPosition = camera.position
+    private var previousFocusCamera: CameraPosition? = null
 
     fun updateFollowingPosition(value: Boolean) {
         if (isFollowingPosition == value) return
@@ -213,6 +229,67 @@ internal class MainMapCameraController(
             .toLong()
             .milliseconds
         scope.launch { camera.animateTo(target, duration) }
+    }
+
+    fun startFocus(geometry: ElementGeometry, padding: PaddingValues) {
+        val visibleBoundingBox = camera.visibleBoundingBox ?: return
+        if (previousFocusCamera == null) previousFocusCamera = camera.position
+        cameraPadding = padding
+
+        val viewportSize = camera.viewportSize
+        val horizontalFraction = viewportSize?.width?.value?.let { width ->
+            if (width <= 0f) 1.0 else {
+                val available = width - padding.calculateLeftPadding(LayoutDirection.Ltr).value -
+                    padding.calculateRightPadding(LayoutDirection.Ltr).value
+                (available / width).coerceIn(0.01f, 1f).toDouble()
+            }
+        } ?: 1.0
+        val verticalFraction = viewportSize?.height?.value?.let { height ->
+            if (height <= 0f) 1.0 else {
+                val available = height - padding.calculateTopPadding().value -
+                    padding.calculateBottomPadding().value
+                (available / height).coerceIn(0.01f, 1f).toDouble()
+            }
+        } ?: 1.0
+
+        val bounds = geometry.bounds
+        val target = cameraPositionForBounds(
+            current = camera.position,
+            visibleBoundingBox = visibleBoundingBox,
+            positions = listOf(bounds.min, bounds.max),
+            zoomMargin = FOCUS_ZOOM_MARGIN,
+            maxZoom = FOCUS_MAX_ZOOM,
+            horizontalFraction = horizontalFraction,
+            verticalFraction = verticalFraction,
+        ) ?: return
+        val zoomDifference = abs(camera.position.zoom - target.zoom)
+        val finalTarget = if (zoomDifference > FOCUS_MIN_ZOOM_DIFFERENCE) {
+            target
+        } else {
+            target.copy(zoom = camera.position.zoom)
+        }
+        val duration = max(450.0, zoomDifference * 450.0).toLong().milliseconds
+        scope.launch { camera.animateTo(finalTarget, duration) }
+    }
+
+    fun clearFocus() {
+        previousFocusCamera = null
+        cameraPadding = PaddingValues(0.dp)
+    }
+
+    fun endFocus() {
+        val previous = previousFocusCamera ?: return
+        previousFocusCamera = null
+        cameraPadding = PaddingValues(0.dp)
+        val duration = max(300.0, abs(camera.position.zoom - previous.zoom) * 300.0)
+            .toLong()
+            .milliseconds
+        scope.launch {
+            camera.animateTo(
+                camera.position.copy(target = previous.target, zoom = previous.zoom),
+                duration,
+            )
+        }
     }
 
     fun onLocationChanged(location: Location?, track: List<LatLon>) {
@@ -290,6 +367,24 @@ internal fun clusterCameraPosition(
     visibleBoundingBox: BoundingBox,
     positions: List<LatLon>,
 ): CameraPosition? {
+    return cameraPositionForBounds(
+        current = current,
+        visibleBoundingBox = visibleBoundingBox,
+        positions = positions,
+        zoomMargin = CLUSTER_ZOOM_MARGIN,
+        maxZoom = CLUSTER_MAX_ZOOM,
+    )
+}
+
+private fun cameraPositionForBounds(
+    current: CameraPosition,
+    visibleBoundingBox: BoundingBox,
+    positions: List<LatLon>,
+    zoomMargin: Double,
+    maxZoom: Double,
+    horizontalFraction: Double = 1.0,
+    verticalFraction: Double = 1.0,
+): CameraPosition? {
     if (positions.isEmpty()) return null
 
     val firstX = longitudeToMercatorX(positions.first().longitude)
@@ -315,15 +410,18 @@ internal fun clusterCameraPosition(
         latitudeToMercatorY(visibleBoundingBox.southwest.latitude) -
             latitudeToMercatorY(visibleBoundingBox.northeast.latitude)
     )
-    val marginFactor = 2.0.pow(CLUSTER_ZOOM_MARGIN)
+    val marginFactor = 2.0.pow(zoomMargin)
     val targetWidth = (targetMaxX - targetMinX) * marginFactor
     val targetHeight = (targetMaxY - targetMinY) * marginFactor
     val zoomCandidates = buildList {
-        if (visibleWidth > 0.0 && targetWidth > 0.0) add(current.zoom + log2(visibleWidth / targetWidth))
-        if (visibleHeight > 0.0 && targetHeight > 0.0) add(current.zoom + log2(visibleHeight / targetHeight))
+        if (visibleWidth > 0.0 && targetWidth > 0.0) {
+            add(current.zoom + log2(visibleWidth * horizontalFraction / targetWidth))
+        }
+        if (visibleHeight > 0.0 && targetHeight > 0.0) {
+            add(current.zoom + log2(visibleHeight * verticalFraction / targetHeight))
+        }
     }
-    val targetZoom = (zoomCandidates.minOrNull() ?: CLUSTER_MAX_ZOOM)
-        .coerceIn(0.0, CLUSTER_MAX_ZOOM)
+    val targetZoom = (zoomCandidates.minOrNull() ?: maxZoom).coerceIn(0.0, maxZoom)
 
     val centerX = normalizeMercatorX((targetMinX + targetMaxX) / 2.0)
     val centerY = (targetMinY + targetMaxY) / 2.0
@@ -356,4 +454,7 @@ private fun longitudeSpan(west: Double, east: Double): Double {
 
 private const val CLUSTER_ZOOM_MARGIN = 0.25
 private const val CLUSTER_MAX_ZOOM = 19.0
+private const val FOCUS_ZOOM_MARGIN = 0.75
+private const val FOCUS_MAX_ZOOM = 19.0
+private const val FOCUS_MIN_ZOOM_DIFFERENCE = 0.5
 private const val MAX_MERCATOR_LATITUDE = 85.0511287798066
