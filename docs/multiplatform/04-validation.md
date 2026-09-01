@@ -398,6 +398,19 @@ failure. The collector now starts only after both state flows exist. The same
 force-stop and real-intent loop is the runtime regression gate; the view model's
 23 service dependencies make a narrower constructor test a misleading seam.
 
+## iOS external application integration
+
+| Target | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| Foundation URL construction | Construct the production component shape with subject `A & B` and a multiline body using `xcrun swift` | `mailto:test@example.com?subject=A%20%26%20B&body=one%0Atwo` | Foundation produces a valid opaque mail URL and percent-encodes reserved characters and line breaks. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The Foundation components/query-item implementation compiles and links through Kotlin/Native without the former impossible-cast diagnostics. |
+| iOS Xcode bundle | Build the complete simulator app with Xcode 26.5 | Pass | The fixed launcher and nullable App Store review destination integrate with the Swift host. |
+
+StreetComplete does not yet have an iOS App Store product identifier. The
+rating destination therefore returns `null` and carries an explicit TODO until
+that external product record exists; it no longer reaches a runtime `TODO()` and
+crashes when the About screen asks whether rating is available.
+
 ## Shared main-map content state
 
 | Target | Command | Result | What it proves |

@@ -89,8 +89,8 @@
   The current framework includes both `sqlite3.c.o` and `sqlite3.o`; the app runs,
   but carrying two bundled SQLite copies is not an acceptable final state.
 - [ ] Audit iOS behavior that compiles but is still placeholder-level, including
-  email launching, background lifecycle, and crash handling. Foreground
-  application startup now uses the shared production initializer.
+  background lifecycle and crash handling. Foreground application startup now
+  uses the shared production initializer, and email launching is functional.
 - [ ] Remove the Core Location main-thread performance diagnostic emitted while
   the shared lifecycle attaches location-aware synchronization on iOS. The app
   stays live and renders, but authorization state should be consumed from

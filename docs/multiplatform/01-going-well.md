@@ -53,6 +53,9 @@
 - The iOS application now enters the same shared top-level navigation graph as
   the other targets. Its real onboarding, main map, settings, quest settings,
   about, profile, and login flows replace the temporary three-screen launcher.
+- iOS email composition now builds encoded `mailto:` URLs with Foundation query
+  items and the current `UIApplication` API; subject and body are no longer lost
+  through impossible Kotlin-to-`NSString` casts.
 
 ## Shared application lifecycle
 
