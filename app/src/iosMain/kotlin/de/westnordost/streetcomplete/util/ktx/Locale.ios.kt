@@ -5,7 +5,7 @@ import platform.Foundation.NSLocale
 import platform.Foundation.NSLocaleCountryCode
 import platform.Foundation.NSLocaleIdentifier
 import platform.Foundation.NSLocaleLanguageCode
-import platform.Foundation.NSLocaleScriptCode
+import platform.Foundation.localizedStringForScriptCode
 
 /** Unlike in Jetpack Compose on Android, Locale.platformLocale is internal in Compose
  *  Multiplatform, so the NSLocale must be re-created from the language tag */
@@ -21,4 +21,4 @@ actual fun Locale.getDisplayRegion(locale: Locale): String? =
     locale.toNSLocale().displayNameForKey(NSLocaleCountryCode, region)
 
 actual fun Locale.getDisplayScript(locale: Locale): String? =
-    locale.toNSLocale().displayNameForKey(NSLocaleScriptCode, script)
+    script.takeUnless { it.isEmpty() }?.let(locale.toNSLocale()::localizedStringForScriptCode)

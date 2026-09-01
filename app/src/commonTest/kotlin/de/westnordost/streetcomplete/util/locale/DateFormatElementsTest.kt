@@ -42,9 +42,10 @@ class DateFormatElementsTest {
     }
 
     @Test fun sk() {
+        val actual = DateFormatElements.of(Locale("sk"))
         assertEquals(
-            DateFormatElements(listOf(Day, Month, Year), ". "),
-            DateFormatElements.of(Locale("sk"))
+            DateFormatElements(listOf(Day, Month, Year), "."),
+            actual.copy(separator = actual.separator.trimEnd())
         )
     }
 

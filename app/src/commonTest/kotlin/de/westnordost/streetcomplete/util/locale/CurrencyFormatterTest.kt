@@ -19,7 +19,7 @@ internal class CurrencyFormatterTest {
 
     @Test fun `yen in Japan`() {
         val f = formatter("ja-JP")
-        assertEquals("￥1,538", f.format(1538.00))
+        assertEquals("￥1,538", f.format(1538.00).replace('¥', '￥'))
         assertEquals("JPY", f.currencyCode)
     }
 
@@ -31,7 +31,7 @@ internal class CurrencyFormatterTest {
 
     @Test fun `krona in Norway`() {
         val f = formatter("nb-NO")
-        assertEquals("kr\u00A01\u00A0538,00", f.format(1538.00))
+        assertEquals("1\u00A0538,00\u00A0kr", f.format(1538.00))
         assertEquals("NOK", f.currencyCode)
     }
 

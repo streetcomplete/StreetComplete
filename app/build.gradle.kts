@@ -163,6 +163,9 @@ kotlin {
         val javaMain = create("javaMain") {
             dependsOn(commonMain)
         }
+        val javaTest = create("javaTest") {
+            dependsOn(commonTest)
+        }
         val nativeMain = maybeCreate("nativeMain").apply { dependsOn(commonMain) }
         val iosMain = maybeCreate("iosMain").apply { dependsOn(nativeMain) }
         val iosTest = maybeCreate("iosTest").apply { dependsOn(commonTest) }
@@ -171,8 +174,8 @@ kotlin {
         getByName("iosArm64Main").dependsOn(iosMain)
         getByName("iosSimulatorArm64Main").dependsOn(iosMain)
 
-        getByName("androidHostTest").dependsOn(commonTest)
-        getByName("desktopTest").dependsOn(commonTest)
+        getByName("androidHostTest").dependsOn(javaTest)
+        getByName("desktopTest").dependsOn(javaTest)
         getByName("iosArm64Test").dependsOn(iosTest)
         getByName("iosSimulatorArm64Test").dependsOn(iosTest)
 
