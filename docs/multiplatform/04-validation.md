@@ -144,3 +144,18 @@ shared map is connected to target entry points.
 The legacy Android evaluator can jump the long way around the globe when a
 measurement crosses the antimeridian. The shared animation intentionally uses
 the shortest longitude delta, consistent with the already-migrated track layer.
+
+## Clustered pin map layers
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.PinsLayersTest'` | 3 pass | Pin point geometry, drawable IDs, sort keys, caller properties, and click-property decoding retain the legacy data contract. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.PinsLayersTest'` | 3 pass | The same pin feature contract and generated drawable lookup execute on Android host. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Clustering, painter selection, exact collision padding, visibility, pin clicks, and cluster-handle queries compile for desktop. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared clustered-pin layer compiles beside the active legacy component. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Shared clustering, painter expressions, and generation-bound source-handle APIs compile and link for iOS. |
+
+The layer returns every cluster leaf position to its caller, which preserves the
+input needed by Android's existing fit-to-cluster camera behavior. The shared
+camera controller and live rendering are not yet wired, so these checks do not
+claim interactive camera parity.

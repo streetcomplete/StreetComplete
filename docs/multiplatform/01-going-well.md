@@ -81,3 +81,9 @@
   layers using the existing cross-platform artwork. Position and accuracy retain
   the legacy 600ms timing, bearing retains its 200ms shortest-turn timing, and
   position movement now also takes the shortest path across the antimeridian.
+- Quest and edit-history pins now share one clustered MapLibre Compose layer.
+  It preserves the legacy zoom thresholds, cluster sizing and labels, full pin
+  painter, collision box, ordering, visibility, pin clicks, and complete cluster
+  leaf lookup through generation-bound source handles.
+- The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
+  the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.

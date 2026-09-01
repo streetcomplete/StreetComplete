@@ -14,9 +14,9 @@ API before they are considered actionable.
 
 ## Findings
 
-No confirmed upstream defect has been recorded yet. The abandoned
-`upstream/maplibre-compose` integration predates 0.15 and will be re-evaluated
-against the snapshot APIs before any limitation is attributed upstream.
+Two common-API gaps are confirmed below. The abandoned
+`upstream/maplibre-compose` integration predates 0.15, so its other assumptions
+continue to be re-evaluated against the snapshot before being attributed upstream.
 
 The complete StreetComplete base style compiled against the snapshot with one
 intentional source migration: symbol icon padding now uses MapLibre Compose's
@@ -36,7 +36,8 @@ preserve this behavior and respect reduced or disabled system animation.
 ### Missing volatile GeoJSON source option
 
 The legacy downloaded-area, recorded-track, focused-geometry, geometry-marker,
-selected-pin, and current-location sources explicitly set `GeoJsonSource.isVolatile = true`
+selected-pin, clustered-pin, and current-location sources explicitly set
+`GeoJsonSource.isVolatile = true`
 because their geometry changes frequently. The snapshot's common
 `GeoJsonOptions` exposes tiling, clustering, line metrics, and synchronous
 updates, but not MapLibre Native's volatile-source flag.
@@ -46,6 +47,16 @@ The shared layers still update their GeoJSON data through
 currently be preserved is the legacy cache/performance hint. MapLibre Compose
 should expose this as a common GeoJSON source option on native-backed targets
 and document browser behavior.
+
+## Resolved integration findings
+
+### Negative symbol collision padding
+
+The old exploratory integration omitted StreetComplete's asymmetric pin
+collision box because the Compose API at that time rejected negative padding.
+The current snapshot's typed `DpPadding` represents negative sides in style-spec
+top/right/bottom/left order. The shared pin layer can therefore declare the exact
+legacy values without the old workaround; live target validation is still needed.
 
 ## Integration constraints
 
