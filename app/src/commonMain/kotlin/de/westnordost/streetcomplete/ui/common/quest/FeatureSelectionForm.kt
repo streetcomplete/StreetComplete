@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,7 +33,7 @@ import org.jetbrains.compose.resources.stringResource
  * A quest form that allows selecting of features via search or from a list of presets.
  */
 @Composable
-fun FeatureSelectionForm(
+fun FeaturesSelectionQuestForm(
     on: (QuestAction<List<Feature>>) -> Unit,
     featureDictionary: FeatureDictionary,
     modifier: Modifier = Modifier,
@@ -55,7 +54,7 @@ fun FeatureSelectionForm(
     ) {
         Column {
             selectedFeatures.forEach { feature ->
-                FeatureDisplay(
+                FeatureRow(
                     feature = feature,
                     featureDictionary = featureDictionary,
                     countryCode = countryCode,
@@ -69,7 +68,7 @@ fun FeatureSelectionForm(
             ) {
                 Icon(painterResource(Res.drawable.ic_add_24), contentDescription = null)
                 Spacer(Modifier.size(8.dp))
-                Text(stringResource(Res.string.quest_presets_preset_add))
+                Text(stringResource(Res.string.add))
             }
 
             if (showSearch) {
@@ -92,7 +91,7 @@ fun FeatureSelectionForm(
 }
 
 @Composable
-private fun FeatureDisplay(
+private fun FeatureRow(
     feature: Feature,
     featureDictionary: FeatureDictionary,
     countryCode: String?,

@@ -114,11 +114,6 @@ val iosModule = module {
     factory<LocationProvider> { IosLocationProvider() }
     factory<SystemSettingsLauncher> { IosSystemSettingsLauncher() }
 
-    // launch apps
-
-    factory<MapAppLauncher> { IosMapAppLauncher }
-    factory<EmailAppLauncher> { IosEmailAppLauncher }
-
     // settings
 
     single<ObservableSettings> { NSUserDefaultsSettings(NSUserDefaults.standardUserDefaults) }

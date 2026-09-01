@@ -6,8 +6,8 @@ import java.io.FileWriter
 
 
 /** App version name, code and flavor */
-val appVersionName = "63.4"
-val appVersionCode = 6308
+val appVersionName = "64.0-alpha1"
+val appVersionCode = 6400
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -264,9 +264,9 @@ kotlin {
                 implementation("androidx.sqlite:sqlite-bundled:2.7.0")
             }
         }
-        androidUnitTest {
+        getByName("androidHostTest") {
             dependencies {
-                // without it, :app:testDebugUnitTest throws java.lang.NoClassDefFoundError at BundledSQLiteDriver.jvmAndAndroid.kt
+                // without it, :app:testAndroidHostTest throws java.lang.UnsatisfiedLinkError for sqliteJni
                 implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
             }
         }

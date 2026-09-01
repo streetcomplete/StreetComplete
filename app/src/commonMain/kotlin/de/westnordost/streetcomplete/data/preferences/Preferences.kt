@@ -79,18 +79,11 @@ class Preferences(private val prefs: ObservableSettings) {
     var userUnreadMessages: Int by prefs.int(OSM_UNREAD_MESSAGES, 0)
 
     var oAuth2AccessToken: String? by prefs.nullableString(OAUTH2_ACCESS_TOKEN)
-    val hasOAuth1AccessToken: Boolean get() = prefs.hasKey(OAUTH1_ACCESS_TOKEN)
 
     fun clearUserData() {
         prefs.remove(OSM_USER_ID)
         prefs.remove(OSM_USER_NAME)
         prefs.remove(OSM_UNREAD_MESSAGES)
-    }
-
-    fun removeOAuth1Data() {
-        prefs.remove(OAUTH1_ACCESS_TOKEN)
-        prefs.remove(OAUTH1_ACCESS_TOKEN_SECRET)
-        prefs.remove(OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP)
     }
 
     // map state
@@ -108,8 +101,6 @@ class Preferences(private val prefs: ObservableSettings) {
     var mapZoom: Double by prefs.double(MAP_ZOOM, 0.0)
     var mapIsFollowing: Boolean by prefs.boolean(MAP_FOLLOWING, true)
     var mapIsNavigationMode: Boolean by prefs.boolean(MAP_NAVIGATION_MODE, false)
-
-    var clearedTangramCache: Boolean by prefs.boolean(CLEARED_TANGRAM_CACHE, false)
 
     // application version
     var lastChangelogVersion: String? by prefs.nullableString(LAST_VERSION)
@@ -253,11 +244,6 @@ class Preferences(private val prefs: ObservableSettings) {
         private const val OSM_UNREAD_MESSAGES = "osm.unread_messages"
         private const val OAUTH2_ACCESS_TOKEN = "oauth2.accessToken"
 
-        // old keys login keys
-        private const val OAUTH1_ACCESS_TOKEN = "oauth.accessToken"
-        private const val OAUTH1_ACCESS_TOKEN_SECRET = "oauth.accessTokenSecret"
-        private const val OSM_LOGGED_IN_AFTER_OAUTH_FUCKUP = "osm.logged_in_after_oauth_fuckup"
-
         // team mode
         private const val TEAM_MODE_INDEX_IN_TEAM = "team_mode.index_in_team"
         private const val TEAM_MODE_TEAM_SIZE = "team_mode.team_size"
@@ -287,9 +273,6 @@ class Preferences(private val prefs: ObservableSettings) {
         private const val MAP_ZOOM = "map.zoom2"
         private const val MAP_FOLLOWING = "map.following"
         private const val MAP_NAVIGATION_MODE = "map.navigation_mode"
-
-        // clean-up after upgrade
-        private const val CLEARED_TANGRAM_CACHE = "cleared_tangram_cache"
 
         // quest & overlays
         private const val PREFERRED_LANGUAGE_FOR_NAMES = "preferredLanguageForNames"

@@ -99,11 +99,6 @@ val androidModule = module {
     factory<LocationProvider> { AndroidLocationProvider(get()) }
     factory<SystemSettingsLauncher> { AndroidSystemSettingsLauncher(get()) }
 
-    // launch apps
-
-    factory<MapAppLauncher> { AndroidMapAppLauncher(get()) }
-    factory<EmailAppLauncher> { AndroidEmailAppLauncher(get()) }
-
     // settings
 
     single<ObservableSettings> { SharedPreferencesSettings.Factory(androidContext()).create() }

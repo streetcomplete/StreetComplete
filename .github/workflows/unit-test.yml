@@ -21,4 +21,4 @@ jobs:
       - uses: gradle/actions/setup-gradle@v3
 
       - name: Run unit tests with Gradle
-        run: ./gradlew test
+        run: ./gradlew :app:testAndroidHostTest

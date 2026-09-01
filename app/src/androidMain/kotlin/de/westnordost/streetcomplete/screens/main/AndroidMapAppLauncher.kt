@@ -3,6 +3,9 @@ package de.westnordost.streetcomplete.screens.main
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.core.net.toUri
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.buildGeoUri
@@ -35,4 +38,10 @@ class AndroidMapAppLauncher(private val context: Context) : MapAppLauncher {
             .any { it.activityInfo.packageName != context.packageName }
         return anyOtherMapAppInstalled
     }
+}
+
+@Composable
+actual fun rememberMapAppLauncher(): MapAppLauncher {
+    val context = LocalContext.current
+    return remember(context) { AndroidMapAppLauncher(context) }
 }
