@@ -138,7 +138,6 @@ class MainActivity :
     private val questsHiddenSource: QuestsHiddenSource by inject()
     private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
-    private val mapAppLauncher: MapAppLauncher by inject()
     private val locationProvider: LocationProvider by inject()
     private val systemSettingsLauncher: SystemSettingsLauncher by inject()
 
@@ -188,7 +187,7 @@ class MainActivity :
         feedsUpdater.updateAtMostDaily()
 
         compose.setContent { AppTheme {
-            val isMapAppLaunchAvailable = remember { mapAppLauncher.isAvailable() }
+            val mapAppLauncher = rememberMapAppLauncher()
             var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
 
             windowInfo = LocalWindowInfo.current
@@ -255,7 +254,7 @@ class MainActivity :
                 onDismissRequest = { showMapContextMenu.value = false },
                 onClickCreateNote = { lastLongPressPosition?.let { onClickCreateNote(it) } },
                 onClickCreateTrack = { onClickCreateTrack() },
-                isOpenLocationAvailable = isMapAppLaunchAvailable,
+                isOpenLocationAvailable = mapAppLauncher.isAvailable(),
                 onClickOpenLocation = {
                     if (lastLongPressPosition != null) {
                         mapAppLauncher.openAt(
