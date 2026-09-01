@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
@@ -107,6 +108,7 @@ fun MainScreen(
     mapAppLauncher: MapAppLauncher = koinInject(),
     surveyChecker: SurveyChecker = koinInject(),
     mapDataSource: MapDataWithEditsSource = koinInject(),
+    visibleQuestsSource: VisibleQuestsSource = koinInject(),
     featureDictionary: Lazy<FeatureDictionary> = koinInject(named("FeatureDictionaryLazy")),
 ) {
     val scope = rememberCoroutineScope()
@@ -390,6 +392,12 @@ fun MainScreen(
             viewModel.teamModeChanged = false
         }
     }
+
+    MainScreenDataInvalidationEffect(
+        viewModel = mainBottomSheetViewModel,
+        visibleQuestsSource = visibleQuestsSource,
+        mapDataSource = mapDataSource,
+    )
 
     Box(modifier) {
         MainMap(

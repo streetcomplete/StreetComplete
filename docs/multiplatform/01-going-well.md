@@ -148,6 +148,9 @@
   track recording, bottom-sheet focus, context-menu actions, and solved-quest
   animation inside the shared Compose screen rather than bridging them through
   an Android activity and fragment.
+- The shared screen also owns the quest and map-data invalidation listeners that
+  close forms when their backing data disappears. Listener lifetime now follows
+  composition on Android, iOS, and desktop instead of an Android activity.
 - Styleable overlays now have shared feature conversion and declarative layers
   for areas, outlines, extrusions, center and side strokes, bridge ordering,
   dashes, SDF/color icons, labels, disabled elements, and element clicks. One
