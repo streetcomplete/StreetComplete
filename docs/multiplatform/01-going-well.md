@@ -128,6 +128,9 @@
   wall-clock capture, 50/100-point renderer chunking, recording handoff, and
   1,000-point restoration cap are shared. A provider outage now consistently
   keeps both recording intent and the red recording style when capture resumes.
+- Main-map highlight and visibility state is now common too. Quest/edit pin
+  mode, focused geometry, quest-form markers, selected pins, and overlay/pin
+  visibility no longer need to be retained by the Android map fragment.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers

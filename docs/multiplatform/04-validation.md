@@ -289,3 +289,16 @@ callback ordering and the 14dp projected ground radius after entry-point wiring.
 The provider-outage test deliberately locks in a repair: logical recording was
 already retained by Android, but its cleared renderer silently lost the red
 recording style. Shared state keeps those two states consistent when GPS fixes resume.
+
+## Shared main-map content state
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests '*MainMapContentStateTest'` | 4 pass | Quest/edit pin mode, highlight retention, independent visibility, selected pins, and clear behavior execute in common code. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*MainMapContentStateTest'` | 4 pass | The same transient presentation contract executes on the Android host runner. |
+| Desktop and Android library | `./gradlew :app:desktopTest --tests '*MainMapContentStateTest' :app:compileAndroidMain` | Pass | The renderer reads the common content owner on both production targets. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The common content owner and renderer link through Kotlin/Native. |
+
+Clearing a focused interaction deliberately restores pins and overlays without
+changing quest/edit mode, matching the legacy fragment's two independent state
+transitions. Entry-point wiring remains a separate commit.

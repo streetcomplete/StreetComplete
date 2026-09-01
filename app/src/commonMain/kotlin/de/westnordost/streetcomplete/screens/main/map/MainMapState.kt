@@ -20,18 +20,20 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.util.ktx.toLocation
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.initialBearingTo
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.DrawableResource
 import org.koin.compose.koinInject
 import org.maplibre.compose.camera.CameraMoveReason
 import org.maplibre.compose.camera.CameraPosition
+import org.maplibre.compose.location.LocationEvent
+import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.compose.map.MapPresentationDetachedException
 import org.maplibre.compose.map.MapState
-import org.maplibre.compose.location.LocationMeasurement
-import org.maplibre.compose.location.LocationEvent
 import org.maplibre.spatialk.geojson.BoundingBox
 import org.maplibre.spatialk.geojson.Position
 import kotlin.math.PI
@@ -59,6 +61,7 @@ class MainMapState internal constructor(
     val mapState: MapState,
     private val controller: MainMapCameraController,
     private val tracks: MainMapTrackState,
+    private val content: MainMapContentState,
 ) {
     init {
         controller.onLocationRestored(
@@ -77,6 +80,12 @@ class MainMapState internal constructor(
     val isRecordingTrack: Boolean get() = tracks.isRecording
     val currentRenderedTrack: List<LatLon> get() = tracks.currentRenderedTrack
     val oldRenderedTracks: List<List<LatLon>> get() = tracks.oldRenderedTracks
+    val highlightedGeometry: ElementGeometry? get() = content.highlightedGeometry
+    val markers: List<Marker> get() = content.markers
+    val selectedPins: SelectedMapPins? get() = content.selectedPins
+    val pinMode: MainMapPinMode get() = content.pinMode
+    val showPins: Boolean get() = content.showPins
+    val showStyleableOverlay: Boolean get() = content.showStyleableOverlay
 
     fun setFollowingPosition(value: Boolean) = controller.updateFollowingPosition(value)
     fun setNavigationMode(value: Boolean) = controller.updateNavigationMode(value)
@@ -118,6 +127,15 @@ class MainMapState internal constructor(
 
     fun startTrackRecording() = tracks.startRecording()
     fun stopTrackRecording(): List<Trackpoint> = tracks.stopRecording()
+    fun showGeometry(geometry: ElementGeometry) = content.showGeometry(geometry)
+    fun setMarkers(markers: Iterable<Marker>) = content.setMarkers(markers)
+    fun selectPins(icon: DrawableResource, positions: Collection<LatLon>) =
+        content.selectPins(icon, positions)
+    fun setPinMode(mode: MainMapPinMode) = content.updatePinMode(mode)
+    fun hidePins() = content.hidePins()
+    fun hideOverlay() = content.hideOverlay()
+    fun clearSelectedPins() = content.clearSelectedPins()
+    fun clearHighlighting() = content.clearHighlighting()
 
     internal fun onLocationChanged(location: Location?, track: List<LatLon>) =
         controller.onLocationChanged(location, track)
@@ -141,8 +159,9 @@ fun rememberMainMapState(
     val persistedState = remember(preferences) { PreferencesMapCameraState(preferences) }
     val mapState = rememberStreetCompleteMapState(persistedState.loadCamera())
     val tracks = rememberSaveable(saver = MainMapTrackState.Saver) { MainMapTrackState() }
+    val content = remember { MainMapContentState() }
     val scope = rememberCoroutineScope()
-    val state = remember(mapState, persistedState, scope, tracks) {
+    val state = remember(mapState, persistedState, scope, tracks, content) {
         MainMapState(
             mapState,
             MainMapCameraController(
@@ -151,6 +170,7 @@ fun rememberMainMapState(
                 scope = scope,
             ),
             tracks,
+            content,
         )
     }
     DisposableEffect(state) {

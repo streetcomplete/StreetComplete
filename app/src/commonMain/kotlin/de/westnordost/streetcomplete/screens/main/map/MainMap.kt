@@ -7,7 +7,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpOffset
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -22,7 +21,6 @@ import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayMai
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.rememberStyleableOverlaySource
-import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.util.ktx.toLocation
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
@@ -44,11 +42,6 @@ fun MainMap(
     onLongPress: (offset: DpOffset, position: LatLon) -> Unit,
     locationEvent: LocationEvent?,
     locationRotation: Float?,
-    focusedGeometry: ElementGeometry?,
-    shownMarkers: Collection<Marker>,
-    selectedPins: SelectedMapPins?,
-    isShowingEditHistory: Boolean,
-    showStyleableOverlay: Boolean,
     modifier: Modifier = Modifier,
     state: MainMapState = rememberMainMapState(),
     // TODO(maplibre-compose): Configure StreetComplete's exact pan/rotate/tilt/fling thresholds
@@ -132,21 +125,21 @@ fun MainMap(
             StyleableOverlaySideLayers(
                 source = styleableOverlaySource,
                 bridge = false,
-                visible = showStyleableOverlay,
+                visible = state.showStyleableOverlay,
             )
         },
         belowRoadsOnBridgeContent = {
             StyleableOverlaySideLayers(
                 source = styleableOverlaySource,
                 bridge = true,
-                visible = showStyleableOverlay,
+                visible = state.showStyleableOverlay,
             )
         },
         belowLabelsContent = {
             DownloadedAreaLayer(downloadedTiles)
             StyleableOverlayMainLayers(
                 source = styleableOverlaySource,
-                visible = showStyleableOverlay,
+                visible = state.showStyleableOverlay,
                 onClickElement = onClickOverlayElement,
             )
             TracksLayers(
@@ -159,28 +152,30 @@ fun MainMap(
             StyleableOverlayLabelLayer(
                 source = styleableOverlaySource,
                 styledElements = styledElements,
-                visible = showStyleableOverlay,
+                visible = state.showStyleableOverlay,
                 onClickElement = onClickOverlayElement,
             )
-            if (shownMarkers.isNotEmpty()) GeometryMarkersLayers(shownMarkers)
-            focusedGeometry?.let { FocusedGeometryLayers(it) }
+            if (state.markers.isNotEmpty()) GeometryMarkersLayers(state.markers)
+            state.highlightedGeometry?.let { FocusedGeometryLayers(it) }
             state.displayedMeasurement?.toLocation()?.let {
                 CurrentLocationLayers(it, locationRotation)
             }
 
-            if (isShowingEditHistory) {
+            if (state.pinMode == MainMapPinMode.EDITS) {
                 PinsLayers(
                     mapState = mapState,
                     pins = editHistoryPins,
+                    visible = state.showPins,
                     onClickPin = { properties ->
                         viewModel.getEditKey(properties)?.let(onClickEdit)
                     },
                     onClickCluster = state::fitCluster,
                 )
-            } else {
+            } else if (state.pinMode == MainMapPinMode.QUESTS) {
                 PinsLayers(
                     mapState = mapState,
                     pins = questPins,
+                    visible = state.showPins,
                     onClickPin = { properties ->
                         viewModel.getQuestKey(properties)?.let(onClickQuest)
                     },
@@ -188,7 +183,7 @@ fun MainMap(
                 )
             }
 
-            selectedPins?.let { SelectedPinsLayer(it.icon, it.positions) }
+            state.selectedPins?.let { SelectedPinsLayer(it.icon, it.positions) }
         },
     )
 }
