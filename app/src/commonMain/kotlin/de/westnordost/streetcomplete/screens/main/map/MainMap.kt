@@ -42,6 +42,7 @@ fun MainMap(
     onLongPress: (offset: DpOffset, position: LatLon) -> Unit,
     locationEvent: LocationEvent?,
     locationRotation: Float?,
+    hiddenBaseLayerIds: Set<String> = emptySet(),
     modifier: Modifier = Modifier,
     state: MainMapState = rememberMainMapState(),
     // TODO(maplibre-compose): Configure StreetComplete's exact pan/rotate/tilt/fling thresholds
@@ -91,6 +92,8 @@ fun MainMap(
         onClick = { position, offset ->
             val presentationAtClick = mapState.presentation
             coroutineScope.launch {
+                // TODO(maplibre-compose): Replace this pre-query when a raw-map callback runs only
+                // after interactive layer handlers have declined the same click.
                 val hitInteractiveFeature = try {
                     presentationAtClick?.queryRenderedFeatures(
                         offset = offset,
@@ -121,6 +124,7 @@ fun MainMap(
         presentationOptions = presentationOptions.copy(cameraPadding = state.cameraPadding),
         callbacks = callbacks,
         overlay = overlay,
+        hiddenBaseLayerIds = hiddenBaseLayerIds,
         belowRoadsContent = {
             StyleableOverlaySideLayers(
                 source = styleableOverlaySource,

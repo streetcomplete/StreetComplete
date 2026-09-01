@@ -83,7 +83,6 @@ import org.maplibre.compose.location.LocationRequest
 import org.maplibre.compose.location.LocationUnavailableReason
 import org.maplibre.compose.location.SystemSettingsLauncher
 import org.maplibre.compose.location.rememberDefaultHeadingProvider
-import org.maplibre.compose.location.rememberDefaultLocationProvider
 import org.maplibre.compose.location.rememberSystemSettingsLauncher
 import org.maplibre.spatialk.units.Bearing
 import org.maplibre.spatialk.units.DMS
@@ -102,10 +101,10 @@ fun MainScreen(
     onClickLogin: () -> Unit,
     modifier: Modifier = Modifier,
     mapState: MainMapState = rememberMainMapState(),
-    locationProvider: LocationProvider = rememberDefaultLocationProvider(),
+    locationProvider: LocationProvider = koinInject(),
     headingProvider: HeadingProvider = rememberDefaultHeadingProvider(),
     systemSettingsLauncher: SystemSettingsLauncher = rememberSystemSettingsLauncher(),
-    mapAppLauncher: MapAppLauncher = koinInject(),
+    mapAppLauncher: MapAppLauncher,
     surveyChecker: SurveyChecker = koinInject(),
     mapDataSource: MapDataWithEditsSource = koinInject(),
     visibleQuestsSource: VisibleQuestsSource = koinInject(),
@@ -427,6 +426,11 @@ fun MainScreen(
             },
             locationEvent = latestLocationEvent,
             locationRotation = locationRotation,
+            hiddenBaseLayerIds = if (mapState.showStyleableOverlay) {
+                selectedOverlay?.hidesLayers.orEmpty().toSet()
+            } else {
+                emptySet()
+            },
             modifier = Modifier.fillMaxSize(),
             state = mapState,
         )
@@ -730,6 +734,7 @@ fun MainScreen(
         IntroTutorialScreen(
             onDismissRequest = { showIntroTutorial = false },
             onFinished = { viewModel.hasShownTutorial = true },
+            locationProvider = locationProvider,
         )
     }
 }

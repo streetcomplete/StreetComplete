@@ -428,6 +428,8 @@ internal class MainMapCameraController(
     ) {
         if (moveReason == CameraMoveReason.GESTURE) {
             userHasMovedCamera = true
+            // TODO(maplibre-compose): Replace camera-target delta inference when common callbacks
+            // expose the pan-start screen coordinate and continuously updated gesture focal point.
             // MapLibre Compose currently has no pan-begin callback. Target movement is the narrowest
             // common signal that preserves the legacy rule: pan stops follow, zoom/rotate/tilt do not.
             if (displayedLocation != null && position.target != lastObservedPosition.target) {

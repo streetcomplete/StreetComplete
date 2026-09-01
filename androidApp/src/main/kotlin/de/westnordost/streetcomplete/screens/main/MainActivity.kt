@@ -22,6 +22,7 @@ import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.scope.Scope
+import org.maplibre.compose.location.rememberDefaultLocationProvider
 
 /** Android host for the shared Compose Multiplatform main screen. */
 class MainActivity :
@@ -54,6 +55,7 @@ class MainActivity :
         val composeView = ComposeView(this)
         setContentView(composeView)
         composeView.setContent {
+            val locationProvider = rememberDefaultLocationProvider()
             AppTheme {
                 StreetCompleteApp(
                     startDestination = startDestination,
@@ -62,6 +64,7 @@ class MainActivity :
                     mainViewModel = viewModel,
                     editHistoryViewModel = editHistoryViewModel,
                     mainBottomSheetViewModel = mainBottomSheetViewModel,
+                    locationProvider = locationProvider,
                     onMainShown = ::updateScreenOn,
                 )
             }

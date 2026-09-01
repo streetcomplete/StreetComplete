@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -33,6 +33,7 @@ fun StreetCompleteMap(
     presentationOptions: MapPresentationOptions = MapPresentationOptions(zoomRange = 0f..22f),
     callbacks: MapPresentationCallbacks = MapPresentationCallbacks(),
     overlay: MapOverlay = MapOverlay.None,
+    hiddenBaseLayerIds: Set<String> = emptySet(),
     belowRoadsContent: @Composable @MaplibreComposable () -> Unit = {},
     belowRoadsOnBridgeContent: @Composable @MaplibreComposable () -> Unit = {},
     belowLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
@@ -40,7 +41,7 @@ fun StreetCompleteMap(
 ) {
     // TODO(maplibre-compose): Restore StreetComplete's 300ms, system-scale-aware global style
     // transition when MapLibre Compose exposes style transition configuration in common code.
-    val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
+    val colors = if (MaterialTheme.colors.isLight) MapColors.Light else MapColors.Night
     val languages = listOf(Locale.current.language)
     val styleComposition = remember(
         colors,
@@ -49,6 +50,7 @@ fun StreetCompleteMap(
         belowRoadsOnBridgeContent,
         belowLabelsContent,
         aboveLabelsContent,
+        hiddenBaseLayerIds,
     ) {
         StyleComposition {
             MapStyle(
@@ -58,6 +60,7 @@ fun StreetCompleteMap(
                 belowRoadsOnBridgeContent = belowRoadsOnBridgeContent,
                 belowLabelsContent = belowLabelsContent,
                 aboveLabelsContent = aboveLabelsContent,
+                hiddenBaseLayerIds = hiddenBaseLayerIds,
             )
         }
     }

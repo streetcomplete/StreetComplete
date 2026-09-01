@@ -102,7 +102,7 @@ val androidModule = module {
 
     // location
 
-    factory<LocationProvider> { AndroidLocationProvider(get()) }
+    single<LocationProvider> { AndroidLocationProvider(get()) }
     factory<SystemSettingsLauncher> { AndroidSystemSettingsLauncher(get()) }
 
     // settings

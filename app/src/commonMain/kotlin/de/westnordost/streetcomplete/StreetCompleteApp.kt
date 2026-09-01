@@ -13,14 +13,17 @@ import androidx.navigation.compose.rememberNavController
 import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.screens.about.AboutNavHost
 import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
+import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.screens.main.MainScreen
 import de.westnordost.streetcomplete.screens.main.MainViewModel
+import de.westnordost.streetcomplete.screens.main.rememberMapAppLauncher
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.settings.SettingsDestination
 import de.westnordost.streetcomplete.screens.settings.SettingsNavHost
 import de.westnordost.streetcomplete.screens.user.UserNavHost
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
+import org.maplibre.compose.location.LocationProvider
 
 /** The shared top-level application flow used by every platform entry point. */
 @Composable
@@ -33,6 +36,8 @@ fun StreetCompleteApp(
     editHistoryViewModel: EditHistoryViewModel = koinViewModel(),
     mainBottomSheetViewModel: MainBottomSheetViewModel = koinViewModel(),
     autoSyncer: AutoSyncer = koinInject(),
+    locationProvider: LocationProvider = koinInject(),
+    mapAppLauncher: MapAppLauncher = rememberMapAppLauncher(),
     onMainShown: () -> Unit = {},
 ) {
     val navController = rememberNavController()
@@ -63,6 +68,8 @@ fun StreetCompleteApp(
                 viewModel = mainViewModel,
                 editHistoryViewModel = editHistoryViewModel,
                 mainBottomSheetViewModel = mainBottomSheetViewModel,
+                locationProvider = locationProvider,
+                mapAppLauncher = mapAppLauncher,
                 onClickSettings = { navController.navigate(AppDestination.Settings.route) },
                 onClickQuestSettings = {
                     navController.navigate(AppDestination.QuestSettings.route)
@@ -82,7 +89,10 @@ fun StreetCompleteApp(
             )
         }
         composable(AppDestination.About.route) {
-            AboutNavHost(onClickBack = navController::returnToMain)
+            AboutNavHost(
+                onClickBack = navController::returnToMain,
+                locationProvider = locationProvider,
+            )
         }
         composable(AppDestination.Profile.route) {
             UserNavHost(

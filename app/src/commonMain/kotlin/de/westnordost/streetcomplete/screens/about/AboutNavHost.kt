@@ -13,9 +13,10 @@ import de.westnordost.streetcomplete.screens.about.logs.LogsFiltersScreen
 import de.westnordost.streetcomplete.screens.about.logs.LogsScreen
 import de.westnordost.streetcomplete.ui.ktx.dir
 import org.koin.compose.viewmodel.koinViewModel
+import org.maplibre.compose.location.LocationProvider
 
 @Composable
-fun AboutNavHost(onClickBack: () -> Unit) {
+fun AboutNavHost(onClickBack: () -> Unit, locationProvider: LocationProvider) {
     val navController = rememberNavController()
     val dir = LocalLayoutDirection.current.dir
 
@@ -37,7 +38,8 @@ fun AboutNavHost(onClickBack: () -> Unit) {
                 onClickCredits = { navController.navigate(AboutDestination.Credits) },
                 onClickPrivacyStatement = { navController.navigate(AboutDestination.PrivacyStatement) },
                 onClickLogs = { navController.navigate(AboutDestination.Logs) },
-                onClickBack = ::goBack
+                onClickBack = ::goBack,
+                locationProvider = locationProvider,
             )
         }
         composable(AboutDestination.Changelog) {
