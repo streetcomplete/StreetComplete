@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens
 import android.content.Context
 import android.content.res.Configuration
 import android.os.LocaleList
-import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import de.westnordost.streetcomplete.data.preferences.Preferences
@@ -13,10 +12,7 @@ import de.westnordost.streetcomplete.util.ktx.addedToFront
 import org.koin.android.ext.android.inject
 import java.util.Locale
 
-open class BaseActivity : AppCompatActivity {
-    constructor() : super()
-    constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
-
+open class BaseActivity : AppCompatActivity() {
     private val prefs: Preferences by inject()
 
     private var locale: Locale? = null
