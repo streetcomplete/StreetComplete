@@ -20,6 +20,7 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -41,12 +42,14 @@ class StyleableOverlaySource(
     val styledElements: StateFlow<List<StyledElement>> = _styledElements.asStateFlow()
 
     private val selectedOverlay = MutableStateFlow<Overlay?>(null)
+    private val stateLock = ReentrantLock()
     private var lastViewport: Viewport? = null
     private var lastDisplayedRect: TilesRect? = null
     private val elementsInView = mutableMapOf<ElementKey, StyledElement>()
     private val elementsInViewMutex = Mutex()
     private val mapDataSourceMutex = Mutex()
     private var updateJob: Job? = null
+    private var viewportGeneration = 0L
     private var isClosed = false
 
     private val listenerLock = ReentrantLock()
@@ -60,10 +63,13 @@ class StyleableOverlaySource(
 
     private val mapDataListener = object : MapDataWithEditsSource.Listener {
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-            val precedingUpdate = updateJob
-            updateJob = scope.launch {
-                precedingUpdate?.join()
-                updateStyledElements(updated, deleted)
+            stateLock.withLock {
+                if (isClosed) return
+                val precedingUpdate = updateJob
+                updateJob = scope.launch {
+                    precedingUpdate?.join()
+                    updateStyledElements(updated, deleted)
+                }
             }
         }
 
@@ -85,61 +91,84 @@ class StyleableOverlaySource(
     }
 
     fun onViewportChanged(zoom: Double, displayedArea: BoundingBox?) {
-        lastViewport = Viewport(zoom, displayedArea)
-        processViewport(zoom, displayedArea)
+        stateLock.withLock {
+            if (isClosed) return
+            lastViewport = Viewport(zoom, displayedArea)
+            processViewport(zoom, displayedArea)
+        }
     }
 
     fun close() {
-        if (isClosed) return
-        isClosed = true
+        stateLock.withLock {
+            if (isClosed) return
+            isClosed = true
+            updateJob?.cancel()
+        }
         selectedOverlaySource.removeListener(selectedOverlayListener)
         setMapDataListenerAttached(false)
         scope.cancel()
     }
 
     private fun processViewport(zoom: Double, displayedArea: BoundingBox?) {
-        if (isClosed || selectedOverlay.value == null || zoom < MIN_ZOOM || displayedArea == null) {
-            return
-        }
+        if (zoom < MIN_ZOOM || displayedArea == null) return
 
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         if (tilesRect.size > MAX_TILES_IN_VIEW) return
-        if (lastDisplayedRect?.contains(tilesRect) == true) return
-
-        lastDisplayedRect = tilesRect
-        loadViewport(tilesRect)
-    }
-
-    private fun loadViewport(tilesRect: TilesRect) {
-        updateJob?.cancel()
-        updateJob = scope.launch {
-            setStyledElements(tilesRect.asBoundingBox(TILES_ZOOM))
+        stateLock.withLock {
+            if (
+                isClosed || selectedOverlay.value == null ||
+                lastDisplayedRect?.contains(tilesRect) == true
+            ) return
+            lastDisplayedRect = tilesRect
+            loadViewport(tilesRect)
         }
     }
 
-    private suspend fun setStyledElements(bbox: BoundingBox) {
+    private fun loadViewport(tilesRect: TilesRect) {
+        stateLock.withLock {
+            if (isClosed) return
+            updateJob?.cancel()
+            val generation = ++viewportGeneration
+            updateJob = scope.launch {
+                setStyledElements(tilesRect.asBoundingBox(TILES_ZOOM), generation)
+            }
+        }
+    }
+
+    private suspend fun setStyledElements(bbox: BoundingBox, generation: Long) {
+        val coroutineContext = currentCoroutineContext()
         val overlay = selectedOverlay.value ?: return
         val mapData = mapDataSourceMutex.withLock {
             mapDataSource.getMapDataWithGeometry(bbox)
         }
-        scope.coroutineContext.ensureActive()
+        coroutineContext.ensureActive()
         if (selectedOverlay.value !== overlay) return
 
-        val styledElements = elementsInViewMutex.withLock {
-            elementsInView.clear()
-            createStyledElementsByKey(overlay, mapData).forEach { (key, element) ->
-                elementsInView[key] = element
+        elementsInViewMutex.withLock {
+            coroutineContext.ensureActive()
+            stateLock.withLock {
+                // Reentrant listeners may clear the source while this load waits for state.
+                coroutineContext.ensureActive()
+                if (
+                    isClosed || generation != viewportGeneration ||
+                    selectedOverlay.value !== overlay
+                ) return@withLock
+                elementsInView.clear()
+                createStyledElementsByKey(overlay, mapData).forEach { (key, element) ->
+                    elementsInView[key] = element
+                }
+                _styledElements.value = elementsInView.values.toList()
             }
-            elementsInView.values.toList()
         }
-        _styledElements.value = styledElements
     }
 
     private suspend fun updateStyledElements(
         updated: MapDataWithGeometry,
         deleted: Collection<ElementKey>,
     ) {
-        val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
+        val displayedBBox = stateLock.withLock {
+            lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
+        } ?: return
         val overlay = selectedOverlay.value ?: return
         val styledElements = elementsInViewMutex.withLock {
             var hasChanges = false
@@ -176,29 +205,36 @@ class StyleableOverlaySource(
         }
 
     private fun updateSelectedOverlay() {
-        if (isClosed) return
-        val oldOverlay = selectedOverlay.value
         val newOverlay = selectedOverlaySource.selectedOverlay
-        if (oldOverlay === newOverlay) return
-
-        selectedOverlay.value = newOverlay
+        stateLock.withLock {
+            if (isClosed || selectedOverlay.value === newOverlay) return
+            selectedOverlay.value = newOverlay
+        }
         setMapDataListenerAttached(newOverlay != null)
         clear(resetViewport = false)
         if (newOverlay != null) reloadCurrentViewport()
     }
 
     private fun reloadCurrentViewport() {
-        lastDisplayedRect = null
-        lastViewport?.let { processViewport(it.zoom, it.displayedArea) }
+        val viewport = stateLock.withLock {
+            if (isClosed) return
+            lastDisplayedRect = null
+            lastViewport
+        }
+        viewport?.let { processViewport(it.zoom, it.displayedArea) }
     }
 
     private fun clear(resetViewport: Boolean) {
-        lastDisplayedRect = null
-        if (resetViewport) lastViewport = null
-        _styledElements.value = emptyList()
-        updateJob?.cancel()
-        updateJob = scope.launch {
-            elementsInViewMutex.withLock { elementsInView.clear() }
+        stateLock.withLock {
+            if (isClosed) return
+            lastDisplayedRect = null
+            if (resetViewport) lastViewport = null
+            ++viewportGeneration
+            _styledElements.value = emptyList()
+            updateJob?.cancel()
+            updateJob = scope.launch {
+                elementsInViewMutex.withLock { elementsInView.clear() }
+            }
         }
     }
 

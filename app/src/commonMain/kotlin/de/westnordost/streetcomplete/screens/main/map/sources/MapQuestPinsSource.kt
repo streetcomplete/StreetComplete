@@ -23,6 +23,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -52,21 +53,26 @@ class MapQuestPinsSource(
 
     private val questTypeOrdersLock = ReentrantLock()
     private val questTypeOrders = mutableMapOf<QuestType, Int>()
+    private val stateLock = ReentrantLock()
 
     private var lastDisplayedRect: TilesRect? = null
     private val questsInView = mutableMapOf<QuestKey, List<Pin>>()
     private val questsInViewMutex = Mutex()
     private val visibleQuestsSourceMutex = Mutex()
     private var updateJob: Job? = null
+    private var viewportGeneration = 0L
     private var isClosed = false
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
         override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
-            val precedingUpdate = updateJob
-            updateJob = scope.launch {
-                // A full viewport fetch must finish first: this callback is a delta against it.
-                precedingUpdate?.join()
-                updateQuestPins(added, removed)
+            stateLock.withLock {
+                if (isClosed) return
+                val precedingUpdate = updateJob
+                updateJob = scope.launch {
+                    // A full viewport fetch must finish first: this callback is a delta against it.
+                    precedingUpdate?.join()
+                    updateQuestPins(added, removed)
+                }
             }
         }
 
@@ -93,14 +99,15 @@ class MapQuestPinsSource(
 
     /** Updates the cached pins when the visible map region enters a new zoom-16 tile rectangle. */
     fun onViewportChanged(zoom: Double, displayedArea: BoundingBox?) {
-        if (isClosed || zoom < MIN_ZOOM || displayedArea == null) return
+        if (zoom < MIN_ZOOM || displayedArea == null) return
 
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         if (tilesRect.size > MAX_TILES_IN_VIEW) return
-        if (lastDisplayedRect?.contains(tilesRect) == true) return
-
-        lastDisplayedRect = tilesRect
-        loadViewport(tilesRect)
+        stateLock.withLock {
+            if (isClosed || lastDisplayedRect?.contains(tilesRect) == true) return
+            lastDisplayedRect = tilesRect
+            loadViewport(tilesRect)
+        }
     }
 
     fun getQuestKey(properties: Map<String, String>): QuestKey? =
@@ -108,34 +115,45 @@ class MapQuestPinsSource(
 
     /** Releases listeners and pending work. This source must not be used afterwards. */
     fun close() {
-        if (isClosed) return
-        isClosed = true
+        stateLock.withLock {
+            if (isClosed) return
+            isClosed = true
+            updateJob?.cancel()
+        }
         visibleQuestsSource.removeListener(visibleQuestsListener)
         questTypeOrderSource.removeListener(questTypeOrderListener)
         scope.cancel()
     }
 
     private fun loadViewport(tilesRect: TilesRect) {
-        updateJob?.cancel()
-        updateJob = scope.launch {
-            setQuestPins(tilesRect.asBoundingBox(TILES_ZOOM))
+        stateLock.withLock {
+            if (isClosed) return
+            updateJob?.cancel()
+            val generation = ++viewportGeneration
+            updateJob = scope.launch {
+                setQuestPins(tilesRect.asBoundingBox(TILES_ZOOM), generation)
+            }
         }
     }
 
-    private suspend fun setQuestPins(bbox: BoundingBox) {
+    private suspend fun setQuestPins(bbox: BoundingBox, generation: Long) {
         val quests = visibleQuestsSourceMutex.withLock {
             visibleQuestsSource.getAll(bbox)
         }
-        scope.coroutineContext.ensureActive()
+        currentCoroutineContext().ensureActive()
 
-        _pins.value = questsInViewMutex.withLock {
-            // Multi-marker quests can have their center outside the viewport while a marker remains
-            // inside. Retain exactly those entries, matching the legacy Android manager.
-            questsInView.entries.removeAll { (_, pins) ->
-                pins.size == 1 || pins.none { it.position in bbox }
+        questsInViewMutex.withLock {
+            currentCoroutineContext().ensureActive()
+            stateLock.withLock {
+                if (isClosed || generation != viewportGeneration) return@withLock
+                // Multi-marker quests can have their center outside the viewport while a marker
+                // remains inside. Retain exactly those entries, matching the legacy manager.
+                questsInView.entries.removeAll { (_, pins) ->
+                    pins.size == 1 || pins.none { it.position in bbox }
+                }
+                quests.forEach { questsInView[it.key] = createQuestPins(it) }
+                _pins.value = questsInView.values.flatten()
             }
-            quests.forEach { questsInView[it.key] = createQuestPins(it) }
-            questsInView.values.flatten()
         }
     }
 
@@ -143,7 +161,9 @@ class MapQuestPinsSource(
         added: Collection<Quest>,
         removed: Collection<QuestKey>,
     ) {
-        val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
+        val displayedBBox = stateLock.withLock {
+            lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
+        } ?: return
         val pins = questsInViewMutex.withLock {
             var hasChanges = false
             removed.forEach { if (questsInView.remove(it) != null) hasChanges = true }
@@ -184,14 +204,21 @@ class MapQuestPinsSource(
     }
 
     private fun reloadCurrentViewport() {
-        lastDisplayedRect?.let(::loadViewport) ?: clear()
+        val displayedRect = stateLock.withLock {
+            if (isClosed) return
+            lastDisplayedRect
+        }
+        displayedRect?.let(::loadViewport) ?: clear()
     }
 
     private fun clear() {
-        updateJob?.cancel()
-        updateJob = scope.launch {
-            questsInViewMutex.withLock { questsInView.clear() }
-            _pins.value = emptyList()
+        stateLock.withLock {
+            if (isClosed) return
+            updateJob?.cancel()
+            updateJob = scope.launch {
+                questsInViewMutex.withLock { questsInView.clear() }
+                _pins.value = emptyList()
+            }
         }
     }
 

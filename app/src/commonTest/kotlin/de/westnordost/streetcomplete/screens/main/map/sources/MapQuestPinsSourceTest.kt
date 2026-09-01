@@ -17,10 +17,12 @@ import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.pGeom
 import dev.mokkery.answering.returns
+import dev.mokkery.answering.calls
 import dev.mokkery.every
 import dev.mokkery.matcher.any
 import dev.mokkery.mock
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -100,6 +102,63 @@ class MapQuestPinsSourceTest {
         assertEquals(questType.icon, pin.icon)
         assertEquals(0, pin.order)
         assertEquals(quest.key, source.getQuestKey(pin.properties.toMap()))
+        source.close()
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test fun supersededViewportCannotPublishAfterNewerViewport() = runTest {
+        val questType = TestQuestTypeA()
+        val first = OsmQuest(questType, ElementType.NODE, 1L, pGeom(1.0, 2.0))
+        val second = OsmQuest(questType, ElementType.NODE, 2L, pGeom(20.0, 30.0))
+        val orders: QuestTypeOrderSource = mock()
+        lateinit var source: MapQuestPinsSource
+        var loads = 0
+        val osmQuests: OsmQuestSource = mock {
+            every { getAllInBBox(any(), any()) } calls {
+                if (loads++ == 0) {
+                    source.onViewportChanged(14.0, bbox(19.9999, 29.9999, 20.0001, 30.0001))
+                    listOf(first)
+                } else {
+                    listOf(second)
+                }
+            }
+        }
+        val visibleEditTypes: VisibleEditTypeSource = mock {
+            every { isVisible(any()) } returns true
+        }
+        val teamMode: TeamModeQuestFilterSource = mock {
+            every { isVisible(any()) } returns true
+        }
+        val hiddenQuests: QuestsHiddenSource = mock {
+            every { get(any()) } returns null
+        }
+        val selectedOverlaySource: SelectedOverlaySource = mock {
+            every { selectedOverlay } returns null
+        }
+        val osmNoteQuests: OsmNoteQuestSource = mock {
+            every { getAllInBBox(any()) } returns emptyList()
+        }
+        val registry = QuestTypeRegistry(listOf(7 to questType))
+        val quests = VisibleQuestsSource(
+            registry,
+            osmQuests,
+            osmNoteQuests,
+            hiddenQuests,
+            visibleEditTypes,
+            teamMode,
+            selectedOverlaySource,
+        )
+        source = MapQuestPinsSource(
+            orders,
+            registry,
+            quests,
+            UnconfinedTestDispatcher(testScheduler),
+        )
+
+        source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
+        advanceUntilIdle()
+
+        assertEquals(second.key, source.getQuestKey(source.pins.value.single().properties.toMap()))
         source.close()
     }
 }

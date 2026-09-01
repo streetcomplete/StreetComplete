@@ -18,6 +18,7 @@ import dev.mokkery.matcher.any
 import dev.mokkery.mock
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
@@ -59,6 +60,72 @@ class StyleableOverlaySourceTest {
         selectedValue = null
         selectedOverlayListener.onSelectedOverlayChanged()
         advanceUntilIdle()
+        assertTrue(source.styledElements.value.isEmpty())
+        source.close()
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test fun supersededViewportCannotPublishAfterNewerViewport() = runTest {
+        val first = Node(1, p(1.0, 2.0))
+        val second = Node(2, p(20.0, 30.0))
+        val firstData = createMapData(mapOf(first to ElementPointGeometry(first.position)))
+        val secondData = createMapData(mapOf(second to ElementPointGeometry(second.position)))
+        val overlay = AllNodesOverlay()
+        val selectedOverlaySource: SelectedOverlaySource = mock {
+            every { selectedOverlay } returns overlay
+        }
+        lateinit var source: StyleableOverlaySource
+        var loads = 0
+        val mapDataSource: MapDataWithEditsSource = mock {
+            every { getMapDataWithGeometry(any()) } calls {
+                if (loads++ == 0) {
+                    source.onViewportChanged(14.0, bbox(19.9999, 29.9999, 20.0001, 30.0001))
+                    firstData
+                } else {
+                    secondData
+                }
+            }
+        }
+        source = StyleableOverlaySource(
+            selectedOverlaySource,
+            mapDataSource,
+            UnconfinedTestDispatcher(testScheduler),
+        )
+
+        source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
+        advanceUntilIdle()
+
+        assertEquals(second, source.styledElements.value.single().element)
+        source.close()
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test fun clearedSourceCannotRepublishInFlightViewport() = runTest {
+        val node = Node(1, p(1.0, 2.0))
+        val mapData = createMapData(mapOf(node to ElementPointGeometry(node.position)))
+        val overlay = AllNodesOverlay()
+        val selectedOverlaySource: SelectedOverlaySource = mock {
+            every { selectedOverlay } returns overlay
+        }
+        lateinit var mapDataListener: MapDataWithEditsSource.Listener
+        val mapDataSource: MapDataWithEditsSource = mock {
+            every { addListener(any()) } calls { (listener: MapDataWithEditsSource.Listener) ->
+                mapDataListener = listener
+            }
+            every { getMapDataWithGeometry(any()) } calls {
+                mapDataListener.onCleared()
+                mapData
+            }
+        }
+        val source = StyleableOverlaySource(
+            selectedOverlaySource,
+            mapDataSource,
+            UnconfinedTestDispatcher(testScheduler),
+        )
+
+        source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
+        advanceUntilIdle()
+
         assertTrue(source.styledElements.value.isEmpty())
         source.close()
     }
