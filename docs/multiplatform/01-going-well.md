@@ -93,6 +93,10 @@
   history, reloads and reindexes the complete list after structural changes,
   uses Compose drawable resources directly, and safely decodes all four edit
   key variants from map feature properties.
+- Styleable-overlay loading no longer retains an Android map. The common source
+  reacts to overlay selection and map-data deltas, reuses the same zoom-16 and
+  32-tile viewport guard, cancels superseded fetches, and converts live shared
+  map data into the already-migrated `StyledElement` model.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers

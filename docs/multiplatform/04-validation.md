@@ -201,3 +201,16 @@ cluster camera behavior on all three targets.
 The source deliberately reloads the whole edit history after additions,
 deletions, or invalidation. This retains the legacy manager's ordering semantics
 and avoids the stale-order bug in the older experimental incremental source.
+
+## Styleable-overlay viewport source
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests '*StyleableOverlaySourceTest'` | 1 pass | A retained viewport stays dormant without an overlay, loads styled shared map data immediately after selection, and clears immediately after deselection. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*StyleableOverlaySourceTest'` | 1 pass | The same overlay-selection and viewport contract executes on the Android host runner. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Viewport caching, map-data listeners, delta updates, cancellation, and shared styling compile for JVM. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The common source compiles beside the active legacy overlay manager. |
+| iOS simulator library | `./gradlew :app:compileKotlinIosSimulatorArm64` | Pass | The common source, overlay model, synchronization, and styling compile for Kotlin/Native. |
+
+The renderer's exact-coordinate click limitation remains separate from this data
+source and is still tracked as a MapLibre Compose upstream gap.
