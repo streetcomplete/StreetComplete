@@ -97,6 +97,8 @@
   reacts to overlay selection and map-data deltas, reuses the same zoom-16 and
   32-tile viewport guard, cancels superseded fetches, and converts live shared
   map data into the already-migrated `StyledElement` model.
+- Downloaded-tile observation is now common and applies the same 14-day retained
+  data cutoff before feeding the shared downloaded-area mask on every target.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers

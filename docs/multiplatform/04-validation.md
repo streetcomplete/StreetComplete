@@ -214,3 +214,13 @@ and avoids the stale-order bug in the older experimental incremental source.
 
 The renderer's exact-coordinate click limitation remains separate from this data
 source and is still tracked as a MapLibre Compose upstream gap.
+
+## Downloaded-tile state source
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused test | `./gradlew :app:desktopTest --tests '*DownloadedTilesStateSourceTest'` | 1 pass | Initial and listener-triggered reloads publish tiles using the production 14-day retention cutoff. |
+| Android host focused test | `./gradlew :app:testAndroidHostTest --tests '*DownloadedTilesStateSourceTest'` | 1 pass | The same retained-tile observation contract executes on Android host. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The common listener-backed state source compiles for JVM. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The common source compiles beside the active Android downloaded-area manager. |
+| iOS simulator library | `./gradlew :app:compileKotlinIosSimulatorArm64` | Pass | The source compiles for Kotlin/Native. |
