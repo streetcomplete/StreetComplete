@@ -366,6 +366,20 @@ These checks prove foreground process startup and lifecycle attachment. They do
 not claim iOS background execution after suspension; that requires registered
 Apple background tasks and separate runtime evidence.
 
+## Single Android Compose application host
+
+| Target | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| Source and manifest gate | Search `androidApp` and `app` for `AboutActivity`, `SettingsActivity`, and `UserActivity` after removing their source and manifest entries | No match | Android no longer retains parallel activity-owned copies of shared About, Settings, or user UI. |
+| Cross-target compilation | `./gradlew :androidApp:compileDebugKotlin :app:compileKotlinDesktop :app:compileKotlinIosSimulatorArm64` | Pass | The destination type and shared navigation request boundary compile for every production target. |
+| Cold Android network-usage intent | Force-stop the installed debug app, then start `android.intent.action.MANAGE_NETWORK_USAGE` with the default category | Pass | Android resolves the exported system intent to `MainActivity`; the first rendered hierarchy is the shared Settings screen with quest, preset, communication, and display controls. |
+| Warm Android network-usage intent | Cold-launch `MainActivity`, then deliver the same system intent while it is the top `singleTop` activity | Pass | Android reports that the intent was delivered to the running instance, and the shared navigation graph renders Settings without creating a second activity. |
+
+The system intent starts at Settings on a cold process and becomes a consumed
+navigation request on a warm process. Ordinary launcher, deep-link, profile,
+login, About, and settings navigation therefore retain one activity and one
+Compose Multiplatform root.
+
 ## Android legacy map retirement
 
 | Target | Command or action | Result | What it proves |

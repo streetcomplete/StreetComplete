@@ -77,6 +77,9 @@
 - External `geo:` and StreetComplete URLs now enter one buffered common ingress
   on Android, iOS, and desktop. URLs received before the main view model exists
   are retained and handled by the same shared parsing and camera path.
+- Android now has one application activity. Settings, quest settings, About,
+  profile, and login are destinations in the shared Compose navigation graph;
+  the exported network-usage intent enters that graph through `MainActivity`.
 
 ## MapLibre Compose snapshot foundation
 
