@@ -47,7 +47,6 @@ fun FeatureSearch(
     filterFn: (Feature) -> Boolean = { true },
     codesOfDefaultFeatures: List<String> = emptyList(),
 ) {
-    val state = rememberLazyListState()
 
     val focusRequester = remember { FocusRequester() }
     LaunchedEffect(Unit) {
@@ -63,7 +62,7 @@ fun FeatureSearch(
                 languages = languages,
                 country = countryCode
             )
-        }
+        }.filter(filterFn)
     }
     val features = remember(search, featureDictionary, languages, countryCode, geometryType, filterFn, defaultFeatures) {
         if (search.isNotEmpty()) {
