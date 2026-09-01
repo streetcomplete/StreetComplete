@@ -1,9 +1,8 @@
 package de.westnordost.streetcomplete.ui.util.measure
 
-import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
-
 class IosArSupportChecker : ArSupportChecker {
-    // the AR measure app (StreetMeasure) does not exist on iOS, so, measuring with AR
-    // is not supported
+    // TODO(multiplatform): Enable AR measurement if StreetMeasure publishes an iOS integration
+    // protocol. The existing feature delegates the measurement to that external app, which is
+    // Android-only; iOS has no compatible result-producing application to launch.
     override operator fun invoke(): Boolean = false
 }

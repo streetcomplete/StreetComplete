@@ -42,8 +42,7 @@
 
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Precise location permission is needed to show your position on the map and download data in your vicinity.</string>
-
     <key>NSCameraUsageDescription</key>
-    <string>Camera permission is needed to attach photos to map notes.</string>
+    <string>Camera access is needed to take photos for map notes and other answers.</string>
 </dict>
 </plist>

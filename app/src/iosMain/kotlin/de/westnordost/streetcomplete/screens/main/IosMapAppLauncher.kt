@@ -1,13 +1,21 @@
+@file:OptIn(ExperimentalForeignApi::class)
+
 package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSURL
 import platform.UIKit.UIAlertAction
 import platform.UIKit.UIAlertActionStyleDefault
 import platform.UIKit.UIAlertController
 import platform.UIKit.UIAlertControllerStyleActionSheet
 import platform.UIKit.UIApplication
+import platform.UIKit.UISceneActivationStateForegroundActive
+import platform.UIKit.UIViewController
+import platform.UIKit.UIWindow
+import platform.UIKit.UIWindowScene
+import platform.UIKit.popoverPresentationController
 
 object IosMapAppLauncher : MapAppLauncher {
     override fun openAt(position: LatLon, zoom: Double) {
@@ -27,9 +35,12 @@ object IosMapAppLauncher : MapAppLauncher {
                 })
             }
         }
-
-        val rootViewController = app.keyWindow?.rootViewController
-        rootViewController?.presentViewController(alert, animated = true, completion = null)
+        val presenter = app.activeViewController() ?: return
+        // iPad requires an action-sheet anchor. The action originates in shared Compose rather
+        // than a UIKit control, so anchor it to the presenting view instead.
+        alert.popoverPresentationController?.sourceView = presenter.view
+        alert.popoverPresentationController?.sourceRect = presenter.view.bounds
+        presenter.presentViewController(alert, animated = true, completion = null)
     }
 
     override fun isAvailable(): Boolean {
@@ -84,6 +95,22 @@ object IosMapAppLauncher : MapAppLauncher {
             buildUrl = { lat, lon, zoom -> "om://map?ll=$lat,$lon&z=$zoom" }
         )
     )
+}
+
+private fun UIApplication.activeViewController(): UIViewController? {
+    val windowScene = connectedScenes
+        .filterIsInstance<UIWindowScene>()
+        .firstOrNull { it.activationState == UISceneActivationStateForegroundActive }
+        ?: return null
+    val windows = windowScene.windows.filterIsInstance<UIWindow>()
+    var controller = windows
+        .firstOrNull { it.keyWindow }
+        ?.rootViewController
+        ?: windows.firstOrNull()?.rootViewController
+    while (controller?.presentedViewController != null) {
+        controller = controller.presentedViewController
+    }
+    return controller
 }
 
 @Composable
