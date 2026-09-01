@@ -27,6 +27,10 @@
   MapLibre Compose exposes gesture-specific camera events.
 - [ ] Restore the legacy pan, rotate, tilt, fling, and rotate-while-scaling gesture
   configuration when MapLibre Compose exposes those controls in common code.
+- [x] Move map projection, long press, raw map click, interactive-feature
+  suppression, and finger-radius measurement into the shared renderer/state.
+- [ ] Replace the shared renderer's explicit interactive-layer pre-query when
+  MapLibre Compose exposes an unhandled/post-layer map click callback.
 - [x] Port styleable overlay geometry, colors, strokes, bridge ordering,
   extrusions, icons, labels, disabled state, visibility, and element clicks.
 - [x] Move the styleable overlay data manager to common code and connect it to

@@ -119,6 +119,10 @@
   0.75-level margin, zoom-19 cap, 0.5-level zoom threshold, adaptive form
   padding, and reversible previous-camera capture. Clearing a selection can
   explicitly discard the return camera, matching edit-history behavior.
+- Map projection is now exposed through logical `DpOffset` and shared `LatLon`
+  values. Shared callbacks preserve consuming long presses, suppress raw map
+  clicks behind interactive pins/overlays, and derive the legacy 14dp finger
+  radius in ground meters from the rendered projection on every target.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers

@@ -264,3 +264,14 @@ The controller uses target movement during a generic user gesture as a pan
 signal because MapLibre Compose does not expose gesture-specific begin events.
 That upstream limitation is documented separately. Entry-point wiring and live
 interaction evidence remain outstanding.
+
+## Shared map interaction boundary
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Logical-offset projection, long press, interactive-layer pre-query, and raw map callbacks compile against the desktop runtime. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The same shared interaction boundary compiles beside the active fragment. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Projection, async feature queries, presentation-detach handling, and callbacks link into the iOS framework. |
+
+These checks do not claim live pointer behavior. The target demos must verify
+callback ordering and the 14dp projected ground radius after entry-point wiring.

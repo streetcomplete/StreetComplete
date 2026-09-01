@@ -14,7 +14,7 @@ API before they are considered actionable.
 
 ## Findings
 
-Four common-API gaps are confirmed below. The abandoned
+Five common-API gaps are confirmed below. The abandoned
 `upstream/maplibre-compose` integration predates 0.15, so its other assumptions
 continue to be re-evaluated against the snapshot before being attributed upstream.
 
@@ -73,6 +73,21 @@ detects gesture-driven camera-target changes as the narrowest available pan
 signal and otherwise uses the standard common gesture configuration. A typed
 gesture event (at least pan begin) plus common threshold/interlock fields would
 remove both compromises.
+
+### No post-layer unhandled map-click callback
+
+StreetComplete treats a map click as a fallback: quest pins, edit pins, and
+overlay features get the event first, and the raw map receives it only if no
+interactive feature consumed it. MapLibre Compose invokes
+`MapPresentationCallbacks.onClick` before layer handlers. Returning `Pass` lets
+layers run, but there is no callback after layer dispatch to report that none of
+them consumed the event.
+
+The shared renderer preserves behavior by querying its complete set of
+interactive layer IDs before invoking the raw-map callback. This duplicates
+dispatch knowledge and an extra rendered-feature query. A common post-dispatch
+`onUnhandledClick` callback, or an async dispatch result, would provide the
+fallback contract directly.
 
 ## Resolved integration findings
 

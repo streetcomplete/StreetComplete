@@ -9,6 +9,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -70,6 +72,21 @@ class MainMapState internal constructor(
         controller.startFocus(geometry, padding)
     fun clearFocus() = controller.clearFocus()
     fun endFocus() = controller.endFocus()
+
+    fun positionAt(offset: DpOffset): LatLon? =
+        mapState.presentation?.positionFromScreenLocation(offset)?.toLatLon()
+
+    fun offsetOf(position: LatLon): DpOffset? =
+        mapState.presentation?.screenLocationFromPosition(position.toPosition())
+
+    fun clickRadiusInMeters(
+        position: LatLon,
+        offset: DpOffset,
+        radius: Dp = MAP_CLICK_RADIUS,
+    ): Double? {
+        val edge = positionAt(DpOffset(offset.x + radius, offset.y)) ?: return null
+        return position.distanceTo(edge)
+    }
 
     internal fun onLocationChanged(location: Location?, track: List<LatLon>) =
         controller.onLocationChanged(location, track)
@@ -458,3 +475,4 @@ private const val FOCUS_ZOOM_MARGIN = 0.75
 private const val FOCUS_MAX_ZOOM = 19.0
 private const val FOCUS_MIN_ZOOM_DIFFERENCE = 0.5
 private const val MAX_MERCATOR_LATITUDE = 85.0511287798066
+private val MAP_CLICK_RADIUS = 14.dp

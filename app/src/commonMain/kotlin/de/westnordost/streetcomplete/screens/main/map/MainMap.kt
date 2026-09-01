@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.DpOffset
 import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -22,11 +24,14 @@ import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySid
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.rememberStyleableOverlaySource
 import de.westnordost.streetcomplete.ui.common.quest.Marker
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.map.MapPresentationCallbacks
+import org.maplibre.compose.map.MapPresentationDetachedException
 import org.maplibre.compose.map.MapPresentationOptions
 import org.maplibre.compose.overlay.MapOverlay
+import org.maplibre.compose.util.ClickResult
 
 /** Complete shared MapLibre Compose renderer for StreetComplete's main map. */
 @Composable
@@ -34,6 +39,8 @@ fun MainMap(
     onClickOverlayElement: (ElementKey) -> Unit,
     onClickQuest: (QuestKey) -> Unit,
     onClickEdit: (de.westnordost.streetcomplete.data.edithistory.EditKey) -> Unit,
+    onClickMap: (position: LatLon, clickRadiusInMeters: Double) -> Unit,
+    onLongPress: (offset: DpOffset, position: LatLon) -> Unit,
     location: Location?,
     locationRotation: Float?,
     trackpoints: List<LatLon>,
@@ -49,11 +56,12 @@ fun MainMap(
     // TODO(maplibre-compose): Configure StreetComplete's exact pan/rotate/tilt/fling thresholds
     // and disable rotation while scaling when the common gesture API exposes those controls.
     presentationOptions: MapPresentationOptions = MapPresentationOptions(zoomRange = 0f..22f),
-    callbacks: MapPresentationCallbacks = MapPresentationCallbacks(),
+    onFrame: (framesPerSecond: Double) -> Unit = {},
     overlay: MapOverlay = MapOverlay.None,
     viewModel: MainMapViewModel = koinViewModel(),
 ) {
     val mapState = state.mapState
+    val coroutineScope = rememberCoroutineScope()
     val downloadedTiles by viewModel.downloadedTiles.collectAsState()
     val questPins by viewModel.questPins.collectAsState()
     val editHistoryPins by viewModel.editHistoryPins.collectAsState()
@@ -85,6 +93,33 @@ fun MainMap(
     }
 
     val styleableOverlaySource = rememberStyleableOverlaySource(mapState, styledElements)
+    val callbacks = MapPresentationCallbacks(
+        onClick = { position, offset ->
+            val presentationAtClick = mapState.presentation
+            coroutineScope.launch {
+                val hitInteractiveFeature = try {
+                    presentationAtClick?.queryRenderedFeatures(
+                        offset = offset,
+                        layerIds = MAIN_MAP_INTERACTIVE_LAYER_IDS,
+                    )?.isNotEmpty() == true
+                } catch (_: MapPresentationDetachedException) {
+                    return@launch
+                }
+                if (!hitInteractiveFeature) {
+                    val latLon = LatLon(position.latitude, position.longitude)
+                    state.clickRadiusInMeters(latLon, offset)?.let { radius ->
+                        onClickMap(latLon, radius)
+                    }
+                }
+            }
+            ClickResult.Pass
+        },
+        onLongClick = { position, offset ->
+            onLongPress(offset, LatLon(position.latitude, position.longitude))
+            ClickResult.Consume
+        },
+        onFrame = onFrame,
+    )
 
     StreetCompleteMap(
         state = mapState,
@@ -154,4 +189,14 @@ fun MainMap(
 data class SelectedMapPins(
     val icon: DrawableResource,
     val positions: Collection<LatLon>,
+)
+
+private val MAIN_MAP_INTERACTIVE_LAYER_IDS = setOf(
+    "pin-cluster-layer",
+    "pins-layer",
+    "overlay-fills",
+    "overlay-lines",
+    "overlay-lines-dashed",
+    "overlay-fills-outline",
+    "overlay-symbols",
 )
