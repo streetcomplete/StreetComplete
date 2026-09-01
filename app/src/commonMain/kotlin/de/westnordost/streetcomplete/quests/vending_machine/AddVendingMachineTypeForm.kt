@@ -5,7 +5,7 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.ui.common.quest.FeatureSelectionForm
+import de.westnordost.streetcomplete.ui.common.quest.FeaturesSelectionQuestForm
 import de.westnordost.streetcomplete.util.ktx.geometryType
 import org.koin.compose.koinInject
 
@@ -16,6 +16,10 @@ val POPULAR_VENDING_MACHINE_FEATURE_IDS = listOf(
     "amenity/vending_machine/drinks",
     "amenity/vending_machine/public_transport_tickets",
     "amenity/vending_machine/cigarettes",
+    "amenity/vending_machine/fuel",
+    "amenity/vending_machine/food",
+    "amenity/vending_machine/coffee",
+    "amenity/vending_machine/sweets",
 )
 
 @Composable
@@ -24,7 +28,7 @@ fun AddVendingMachineTypeForm(
     element: Element,
     featureDictionary: FeatureDictionary = koinInject()
 ) {
-    FeatureSelectionForm(
+    FeaturesSelectionQuestForm(
         on = on,
         featureDictionary = featureDictionary,
         geometryType = element.geometryType,

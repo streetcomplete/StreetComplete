@@ -367,8 +367,6 @@ fun questTypeRegistry(
 
     60 to AddGeneralFee(),
 
-    200 to AddDoctorType(),
-
     61 to AddDrinkingWater(), // used by AnyFinder
     62 to AddDrinkingWaterType(),
 
@@ -419,6 +417,8 @@ fun questTypeRegistry(
     87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
     179 to AddChargingStationBicycleCapacity(),
     88 to AddChargingStationOperator(),
+
+    194 to AddVendingMachineType(), // May take some time to find the machine in building with multiple levels
 
     // postboxes (collection times are further up, see comment)
     89 to AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
@@ -494,8 +494,6 @@ fun questTypeRegistry(
     192 to AddHotWater(),
 
     177 to AddShelterCapacity(),
-
-    194 to AddVendingMachineType(),
 
     // toilets
     118 to AddToiletAvailability(), // shown in OsmAnd descriptions
