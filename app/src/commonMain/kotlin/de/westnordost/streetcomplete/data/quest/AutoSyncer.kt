@@ -1,7 +1,5 @@
 package de.westnordost.streetcomplete.data.quest
 
-import android.annotation.SuppressLint
-import android.content.Context
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -20,25 +18,29 @@ import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.toLatLon
-import de.westnordost.streetcomplete.util.location.FineLocationManager
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
+import org.maplibre.compose.location.LocationAccuracy
+import org.maplibre.compose.location.LocationEvent
+import org.maplibre.compose.location.LocationProvider
+import org.maplibre.compose.location.LocationRequest
+import org.maplibre.spatialk.units.extensions.meters
+import kotlin.time.Duration.Companion.seconds
 
-/** Automatically downloads new quests around the user's location and uploads quests.
+/** Automatically downloads map data around the user's location and uploads edits.
  *
  * Respects the user preference to only sync on wifi or not sync automatically at all
  */
-class QuestAutoSyncer(
+class AutoSyncer(
     private val downloadController: DownloadController,
     private val uploadController: UploadController,
     private val mobileDataDownloadStrategy: MobileDataAutoDownloadStrategy,
     private val wifiDownloadStrategy: WifiAutoDownloadStrategy,
-    private val context: Context,
+    private val locationProvider: LocationProvider,
     private val activeNetworkConnection: ActiveNetworkConnection,
     private val unsyncedChangesCountSource: UnsyncedChangesCountSource,
     private val downloadProgressSource: DownloadProgressSource,
@@ -51,14 +53,6 @@ class QuestAutoSyncer(
     private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("QuestAutoSyncer"))
 
     private var pos: LatLon? = null
-
-    // new location is known -> check if downloading makes sense now
-    private val locationManager = FineLocationManager(context) { location ->
-        if (location.accuracy <= 300) {
-            pos = location.toLatLon()
-            triggerAutoDownload()
-        }
-    }
 
     // there are unsynced changes -> try uploading now
     private val unsyncedChangesListener = object : UnsyncedChangesCountSource.Listener {
@@ -104,11 +98,26 @@ class QuestAutoSyncer(
         downloadProgressSource.addListener(downloadProgressListener)
         userLoginSource.addListener(userLoginStatusListener)
         teamModeQuestFilterSource.addListener(teamModeChangeListener)
+
         coroutineScope.launch {
             owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 activeNetworkConnection.capabilitiesFlow.collect { capabilities ->
                     if (capabilities?.hasInternet == true) {
                         triggerAutoSync()
+                    }
+                }
+            }
+        }
+        coroutineScope.launch {
+            owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                val request = LocationRequest(LocationAccuracy.High, 30.seconds, 100.meters)
+                locationProvider.updates(request).collect { locationEvent ->
+                    if (locationEvent is LocationEvent.Fix) {
+                        val (position, accuracy) = locationEvent.location.position
+                        if (accuracy == null || accuracy < 300.meters) {
+                            pos = LatLon(position.latitude, position.longitude)
+                            triggerAutoDownload()
+                        }
                     }
                 }
             }
@@ -121,25 +130,12 @@ class QuestAutoSyncer(
         }
     }
 
-    override fun onPause(owner: LifecycleOwner) {
-        stopPositionTracking()
-    }
-
     override fun onDestroy(owner: LifecycleOwner) {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeListener(downloadProgressListener)
         userLoginSource.removeListener(userLoginStatusListener)
         teamModeQuestFilterSource.removeListener(teamModeChangeListener)
         coroutineScope.coroutineContext.cancelChildren()
-    }
-
-    @SuppressLint("MissingPermission")
-    fun startPositionTracking() {
-        locationManager.requestUpdates(30 * 1000L, 30 * 1000L, 250f)
-    }
-
-    fun stopPositionTracking() {
-        locationManager.removeUpdates()
     }
 
     /* ------------------------------------------------------------------------------------------ */

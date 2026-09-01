@@ -23,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalLayoutDirection
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.*
@@ -40,6 +41,7 @@ import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
 import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.ToastPopup
+import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.dir
 import kotlinx.coroutines.launch
@@ -67,10 +69,10 @@ fun MainScreen(
     onClickAbout: () -> Unit,
     onClickProfile: () -> Unit,
     onClickLogin: () -> Unit,
-    onExplainedNeedForLocationPermission: () -> Unit,
     onSetMapMarkers: (Iterable<Marker>) -> Unit,
     onSolvedQuest: (icon: DrawableResource, position: LatLon) -> Unit,
     getOffset: (position: LatLon) -> Offset?,
+    lastMapClick: MapClick?,
     modifier: Modifier = Modifier
 ) {
     val scope = rememberCoroutineScope()
@@ -121,6 +123,8 @@ fun MainScreen(
     val shownBottomSheet by mainBottomSheetViewModel.shownBottomSheet.collectAsState()
     val geometryOffsetInWindow by mainBottomSheetViewModel.geometryOffsetInWindow.collectAsState()
 
+    val emailAppLauncher = rememberEmailAppLauncher()
+
     var confirmReplaceDownload by remember { mutableStateOf(false) }
     var showOverlaysTutorial by remember { mutableStateOf(false) }
     var showIntroTutorial by remember { mutableStateOf(false) }
@@ -149,19 +153,22 @@ fun MainScreen(
         }
     }
 
-    fun sendErrorReport(error: Exception) {
-        if (!viewModel.isSendErrorReportAvailable()) {
+    fun sendErrorReport(errorReport: String) {
+        if (!emailAppLauncher.isAvailable()) {
             showToast = Toast.NoEmailClient
         } else {
-            viewModel.sendErrorReport(error)
+            emailAppLauncher.compose(
+                email = ApplicationConstants.ERROR_REPORTS_EMAIL,
+                subject = ApplicationConstants.USER_AGENT + " " + "Error Report",
+                body = "Describe how to reproduce it here:\n\n\n\n$errorReport"
+            )
         }
     }
 
-    fun sendErrorReport(report: String) {
-        if (!viewModel.isSendErrorReportAvailable()) {
-            showToast = Toast.NoEmailClient
-        } else {
-            viewModel.sendErrorReport(report)
+    fun sendErrorReport(error: Exception) {
+        scope.launch {
+            val report = viewModel.createErrorReport(error)
+            sendErrorReport(report)
         }
     }
 
@@ -289,7 +296,8 @@ fun MainScreen(
                         mapPosition = mapCamera.position,
                         mapMetersPerDp = metersPerDp,
                         onSetMapMarkers = onSetMapMarkers,
-                        getOffset = getOffset
+                        getOffset = getOffset,
+                        lastMapClick = lastMapClick,
                     )
                 }
             }
@@ -388,7 +396,6 @@ fun MainScreen(
     AnimatedScreenVisibility(showIntroTutorial) {
         IntroTutorialScreen(
             onDismissRequest = { showIntroTutorial = false },
-            onExplainedNeedForLocationPermission = onExplainedNeedForLocationPermission,
             onFinished = { viewModel.hasShownTutorial = true },
         )
     }

@@ -115,7 +115,6 @@ Trước khi tải lên các thay đổi của bạn, ứng dụng sẽ kiểm t
 Ứng dụng này tìm dữ liệu không hoàn chỉnh và có thể mở rộng được trong phạm vi của bạn và hiển thị nó trên bản đồ dưới dạng đánh dấu. Mỗi dấu có thể giải được bằng cách trả lời một câu hỏi đơn giản để hoàn thiện thông tin ở nơi đó.
 
 Thông tin bạn nhập vào sau đó được thêm trực tiếp vào OpenStreetMap dưới tên của bạn, mà không cần dùng một trình chỉnh sửa khác.</string>
-    <string name="quest_name_answer_noName">Không có tên…</string>
     <string name="quest_name_answer_noName_confirmation_title">Chắc chắn không có tên?</string>
     <string name="quest_name_noName_confirmation_positive">Chắc chắn, không có tên</string>
     <string name="quest_openingHours_add_times">Thêm giờ mở cửa</string>
@@ -192,11 +191,6 @@ Nếu không có biển báo xuyên suốt cả con phố có áp dụng cho khu
     <string name="underground_recycling_container">Thùng hầm</string>
     <string name="quest_streetName_answer_cantType">Không biết cách nhập các chữ trên bảng</string>
     <string name="quest_streetName_cantType_title">Có thiếu bố trí bàn phím?</string>
-    <string name="quest_streetName_cantType_open_settings">Mở cài đặt</string>
-    <string name="quest_streetName_cantType_open_store">Mở cửa hàng ứng dụng</string>
-    <string name="quest_streetName_cantType_description">Nếu bạn sử dụng một bàn phím mặc định, có khả năng bạn chỉ đang sử dụng bàn phím cho ngôn ngữ mà bạn cần trong cài đặt về cách nhập.
-
-Nếu không, bạn có thể tải một bàn phím khác trong App Store. Các bàn phím phổ biến bao gồm Google Gboard và Laban Key.</string>
     <string name="quest_streetName_menuItem_nolanguage">(không rõ)</string>
     <string name="quest_fireHydrant_type_title">Thiết bị cấp nước cứu hỏa này có hình dạng nào?</string>
     <string name="quest_fireHydrant_type_pillar">Trụ</string>
@@ -489,7 +483,6 @@ Một phần có nghĩa là một người đi xe lăn có thể vào và sử d
     <string name="quest_generic_answer_differs_along_the_way">Tùy khúc đường…</string>
     <string name="quest_split_way_description">Nếu nó khác nhau trên đường đi, bước đầu tiên là chia đường đi. Sau đó, nhiệm vụ có thể được trả lời riêng cho từng phần.
 Chia nó ra bây giờ?</string>
-    <string name="quest_split_way_tutorial">Hãy chạm vào đường để phân nó ra tại (các) điểm nơi câu trả lời khác đi. Sử dụng tính năng phóng đại (Zoom) và cố gắng chính xác nhất có thể.</string>
     <string name="quest_split_way_too_imprecise">Hãy phóng to hơn</string>
     <string name="quest_split_way_many_splits_confirmation_description">Đây là khá nhiều lần chia tách. Bạn luôn có thể chia tách thêm sau này.</string>
     <string name="quest_footwayPartSurface_title">Đường dạo này có loại mặt đường nào?</string>
@@ -753,10 +746,6 @@ Nếu có bất kỳ làn đường nào dành riêng cho xe buýt, vui lòng đ
     <string name="default_disabled_msg_go_inside_regional_warning">Loại nhiệm vụ này bị vô hiệu hóa theo mặc định vì nó không hữu ích ở một số khu vực và bạn có thể sẽ phải vào địa điểm đó để có thể trả lời nhiệm vụ loại này.</string>
     <string name="quest_dietType_explanation_kosher">Các sản phẩm Kosher (thức ăn dành cho người theo Do Thái) phải được chế biến theo các quy tắc đặc biệt, với các cơ quan chứng nhận kashrut đánh dấu sản phẩm tuân thủ.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Không có lối xe đạp nào</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Như thường lệ, chạm vào một bên của hình minh họa, rồi chọn câu trả lời đúng và làm tương tự với bên kia.
-
-Lưu ý tất cả các tùy chọn có sẵn: một số trường hợp không rõ ràng, chẳng hạn như đường một chiều cho phép người đi xe đạp đi cả hai hướng!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Chọn không có làn đường hoặc đường dành cho xe đạp</string>
     <string name="quest_construction_completed_at_known_date">Sẽ được hoàn thành vào ngày...</string>
     <string name="quest_construction_completion_date_title">Khi nào nó sẽ được hoàn thành?</string>
     <string name="quest_surface_value_clay">Đất sét</string>
@@ -848,7 +837,9 @@ Dữ liệu được làm mới sau %1$s ngày và dữ liệu không sử dụn
     <string name="quest_bollard_type_foldable2">Có thể gập lại (có hoặc không có chìa khóa)</string>
     <string name="no_search_results">Không kết quả</string>
     <string name="quest_selection_hint_title">Có quá nhiều thứ để làm?</string>
-    <string name="quest_selection_hint_message">Đóng góp chủ yếu nên vui vẻ! Nếu bạn bị quá tải bởi số lượng nhiệm vụ, bạn có thể lựa chọn nhiệm vụ nào được hiển thị cho bạn và theo thứ tự nào trong cài đặt.</string>
+    <string name="quest_selection_hint_message">Đóng góp chủ yếu nên vui vẻ!
+
+Nếu bạn bị quá tải bởi số lượng nhiệm vụ, bạn có thể lựa chọn nhiệm vụ nào được hiển thị cho bạn và theo thứ tự nào trong cài đặt.</string>
     <string name="quest_presets_preset_add">Thêm cài đặt trước</string>
     <string name="quest_presets_preset_name">Tên cài đặt trước</string>
     <string name="quest_presets_default_name">Mặc định</string>
@@ -973,9 +964,6 @@ Ngoài ra, bạn có thể để lại ghi chú (cùng với ảnh).</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Giá đỡ tay lái</string>
     <string name="quest_bicycle_parking_access_title2">Ai được phép đỗ xe đạp ở đây? Có thể đỗ xe miễn phí hoặc trả phí.</string>
     <string name="quest_playground_access_title2">Ai được phép sử dụng sân chơi này?</string>
-    <string name="quest_sidewalk_answer_none_title">Chọn rằng những vỉa hè bị thiếu</string>
-    <string name="quest_side_select_interface_explanation">Chạm vào một bên và chọn câu trả lời phù hợp.
-Làm tương tự với bên còn lại nếu có.</string>
     <string name="ar_measure">Đo đạc</string>
     <string name="ar_core_tracking_error_too_steep_angle">Góc quá dốc, hãy bước ra xa một chút</string>
     <string name="default_disabled_msg_no_ar">Bạn cần một chiếc thước dây để giải quyết nhiệm vụ này vì thiết bị này không hỗ trợ đo bằng camera.</string>
@@ -1174,8 +1162,6 @@ Di chuyển nó ngay bây giờ?</string>
     <string name="quest_placeName_no_name_answer">Không có biển tên…</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Chiều rộng này có vẻ không hợp lý. Hãy nhớ rằng, đây phải là chiều rộng từ lề đường này sang lề đường kia, bao gồm cả bãi đậu xe trên phố, làn đường dành cho xe đạp, v.v.</string>
     <string name="overlay_cycleway">Đường dành cho xe đạp</string>
-    <string name="bicycle_boulevard_is_a">Đó là một %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">Đó không là một %1$s</string>
     <string name="bicycle_boulevard">Đại lộ xe đạp</string>
     <string name="separate_cycleway_no_or_allowed">Đường dành cho người đi bộ, không có biển báo rõ ràng về việc đi xe đạp (có được phép hay không tùy thuộc vào luật pháp)</string>
     <string name="separate_cycleway_non_segregated">Đường dẫn sử dụng chung được chỉ định</string>

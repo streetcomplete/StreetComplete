@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
-import androidx.compose.ui.util.fastMap
+import androidx.compose.runtime.Composable
 import platform.Foundation.NSCharacterSet
 import platform.Foundation.NSString
 import platform.Foundation.NSURL
@@ -43,3 +43,6 @@ object IosEmailAppLauncher : EmailAppLauncher {
         return url != null && UIApplication.sharedApplication.canOpenURL(url)
     }
 }
+
+@Composable
+actual fun rememberEmailAppLauncher(): EmailAppLauncher = IosEmailAppLauncher

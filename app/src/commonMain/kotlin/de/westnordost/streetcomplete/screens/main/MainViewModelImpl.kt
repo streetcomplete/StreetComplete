@@ -58,7 +58,6 @@ import kotlin.reflect.KClass
 class MainViewModelImpl(
     private val crashReportHolder: CrashReportHolder,
     private val errorReportBuilder: ErrorReportBuilder,
-    private val emailAppLauncher: EmailAppLauncher,
     private val urlConfigController: UrlConfigController,
     private val editTypePresetsSource: EditTypePresetsSource,
     private val uploadController: UploadController,
@@ -101,23 +100,8 @@ class MainViewModelImpl(
         awaitClose { uploadProgressSource.removeListener(listener) }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, null)
 
-    override fun isSendErrorReportAvailable(): Boolean =
-        emailAppLauncher.isAvailable()
-
-    override fun sendErrorReport(error: Exception) {
-        launch {
-            val report = withContext(Dispatchers.IO) { errorReportBuilder.createErrorReport(error) }
-            sendErrorReport(report)
-        }
-    }
-
-    override fun sendErrorReport(errorReport: String) {
-        emailAppLauncher.compose(
-            email = ApplicationConstants.ERROR_REPORTS_EMAIL,
-            subject = ApplicationConstants.USER_AGENT + " " + "Error Report",
-            body = "Describe how to reproduce it here:\n\n\n\n$errorReport"
-        )
-    }
+    override suspend fun createErrorReport(error: Exception): String =
+        withContext(Dispatchers.IO) { errorReportBuilder.createErrorReport(error) }
 
     /* start parameters */
     override fun setUri(uri: String) {
@@ -426,7 +410,7 @@ class MainViewModelImpl(
         syncedEdits + unsyncedEdits
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
 
-    override val locationState = MutableStateFlow(LocationState.ENABLED)
+    override val locationState: MutableStateFlow<LocationState?> = MutableStateFlow(LocationState.ENABLED)
     override val mapCamera = MutableStateFlow<CameraPosition?>(null)
     override val metersPerDp = MutableStateFlow(0.0)
     override val displayedPosition = MutableStateFlow<Offset?>(null)

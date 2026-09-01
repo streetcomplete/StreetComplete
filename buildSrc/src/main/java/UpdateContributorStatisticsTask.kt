@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 import java.net.URI
@@ -12,7 +13,7 @@ import java.net.URI
 /** Counts the changes made by each author from the git log, merges multiple authors that are linked
  *  to the same GitHub account and writes the result into a JSON file. */
 open class UpdateContributorStatisticsTask : DefaultTask() {
-    @get:Input lateinit var targetFile: String
+    @get:OutputFile lateinit var targetFile: File
     @get:Input var skipCommits: Set<String> = setOf()
     @get:Input var skipCommitRegex: Regex? = null
     @get:Input lateinit var codeFileRegex: Regex
@@ -21,6 +22,8 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
     @get:Input lateinit var githubApiToken: String
 
     @TaskAction fun run() {
+        require(githubApiToken != "invalid") { "GitHub API token must be set" }
+
         val contributors = getContributors()
 
         for (contributor in contributors) {
@@ -160,7 +163,7 @@ open class UpdateContributorStatisticsTask : DefaultTask() {
     }
 
     private fun writeContributors(contributors: List<Contributor>) {
-        File(targetFile).outputStream().use {
+        targetFile.outputStream().use {
             val yamlFormat = Yaml(configuration = YamlConfiguration(encodeDefaults = false))
             yamlFormat.encodeToStream(contributors, it)
         }

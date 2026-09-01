@@ -2,8 +2,6 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet.note
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutLinearInEasing
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -16,7 +14,6 @@ import de.westnordost.streetcomplete.ui.util.BounceEasing
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.milliseconds
 
 /** An animation that triggers immediately once and animates this composable falling down to its
  *  actual position. */

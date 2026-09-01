@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.quests.police_type
 import de.westnordost.streetcomplete.quests.police_type.PoliceType.*
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.StringResource
 
 val PoliceType.title: String get() = when (this) {
     CARABINIERI ->        "Carabinieri"

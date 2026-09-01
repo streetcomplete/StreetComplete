@@ -28,3 +28,4 @@ dependencyResolutionManagement {
 }
 
 include(":app")
+include(":androidApp")

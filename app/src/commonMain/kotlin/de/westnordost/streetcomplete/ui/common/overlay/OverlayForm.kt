@@ -108,7 +108,6 @@ fun OverlayForm(
             }
 
             result.add(AnswerItem(stringResource(Res.string.leave_note)) { on(Action.LeaveNote) })
-
         }
         return result
     }
@@ -126,14 +125,16 @@ fun OverlayForm(
         }
 
         BottomSheetFormScaffold(
-            note = if (label != null) { {
-                CompositionLocalProvider(
+            note = if (label != null) {
+                { CompositionLocalProvider(
                     LocalTextStyle provides MaterialTheme.typography.titleMedium,
                     LocalContentAlpha provides ContentAlpha.medium
                 ) {
                     Text(label)
-                }
-            } } else null,
+                } }
+            } else {
+                null
+            },
             content = {
                 OverlayContent(
                     modifier = Modifier.fillMaxWidth(),
@@ -151,8 +152,6 @@ fun OverlayForm(
             },
         )
     }
-
-
 
     if (confirmDiscard) {
         ConfirmDiscardDialog(

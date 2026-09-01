@@ -1,0 +1,340 @@
+{
+  "sourceLanguage": "en",
+  "strings": {
+    "NSLocationWhenInUseUsageDescription": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein genauer Standort wird benötigt, um deine Position auf der Karte anzuzeigen und Daten in deiner Nähe herunterzuladen."
+          }
+        },
+        "ast": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precísase saber el to allugamientu pa buscar xeres na redolada."
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "É necessária uma autorização de localização precisa para mostrar a sua posição no mapa e descarregar dados nas suas redondezas."
+          }
+        },
+        "lt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jūsų vietos reikia tam, kad būtų galima ieškoti užduočių šalia jūsų."
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dozvola pristupa Preciznoj Lokaciji je potrebna za prikazivanje vaše pozicije na karti te preuzimanje podataka u vašoj blizini."
+          }
+        },
+        "lv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atrašanās vietas atļauja ir nepieciešama, lai parādītu jūsu atrašanās vietu kartē un pārlūkotu uzdevumus jūsu apkārtnē."
+          }
+        },
+        "hu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pontos helymeghatározási engedélyre van szükség ahhoz, hogy a térképen megjelenjen a pozíciód, és letöltődjenek a környéked adatai."
+          }
+        },
+        "hy": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Տեղադրության թույլտվությունը անհրաժեշտ է ձեր դիրքը քարտեզի վրա ցույց տալու համար եւ սկան ձեր հարեւանությամբ որոնումների համար:"
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ваше місцезнаходження потрібне для пошуку завдань поруч з вами."
+          }
+        },
+        "en-AU": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Location permission is needed to show your position on the map and download data your vicinity."
+          }
+        },
+        "id": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Izin lokasi dibutuhkan untuk menampilkan posisi kamu di peta dan mengunduh data di sekitarmu."
+          }
+        },
+        "ml": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "നിങ്ങളുടെ സമീപത്തായുള്ള അന്വേഷണങ്ങൾക്കായി സ്കാൻ ചെയ്യാൻ നിങ്ങളുടെ ലൊക്കേഷൻ ആവശ്യമാണ്."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Η τοποθεσία σας είναι απαραίτητη για την σάρωση αποστολών στην περιοχή σας."
+          }
+        },
+        "eo": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Via loko estas bezonata por serĉi taskojn ĉirkaŭ vi."
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'accesso alla tua posizione è necessario per cercare le missioni vicine a te."
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要获得精确定位许可，以便在地图上显示您的位置并下载附近数据。"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Es necesario que el programa acceda a tu ubicación para mostrarla en el mapa y ver tareas cercanas."
+          }
+        },
+        "et": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asukoha näitamiseks kaardil ja andmete allalaadimiseks ümbruskonnas palun anna rakendusele õigus asukoha tuvastamiseks."
+          }
+        },
+        "eu": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zure kokalekua behar da inguruko erronkak bilatzeko."
+          }
+        },
+        "ar": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "يلزم الحصول على إذن تحديد الموقع الدقيق لإظهار موقعك على الخريطة وتنزيل البيانات الخاصة بالمنطقة المحيطة بك."
+          }
+        },
+        "vi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vị trí của bạn được cần đến để hiển thị vị trí của bạn trên bản đồ và quét tìm các nhiệm vụ ở nơi lân cận."
+          }
+        },
+        "nb": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tillatelse for nøyaktig posisjon er nødvendig for å vise posisjonen din på kartet og laste ned data i nærheten."
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "マップにあなたの位置を表示して付近のクエストをスキャンするには、位置情報の許可が必要です。"
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "مجوز استفاده از مکان‌یاب (GPS) برای نمایش مکان شما روی نقشه و جستجوی جُستارهای اطرافتان مورد نیاز می‌باشد."
+          }
+        },
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Activarea locației este necesară pentru a  putea căuta misiuni noi în aproprierea dumneavoastră."
+          }
+        },
+        "nl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Je locatie is nodig om in je omgeving naar vragen te zoeken."
+          }
+        },
+        "en-GB": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precise location permission is needed to show your position on the map and download data in your vicinity."
+          }
+        },
+        "nn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Programmet treng løyve til å lesa posisjonen din for å kunna visa kor du er på kartet og til å lasta ned data frå nærområdet."
+          }
+        },
+        "be": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Доступ да дакладнага месцазнаходжання патрэбны для адлюстравання вашай пазіцыі на карце і спампавання даных наваколля."
+          }
+        },
+        "en-CA": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precise location permission is needed to show your position on the map and download data in your vicinity."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sijaintilupa tarvitaan sijaintisi näyttämiseen kartalla, ja tietojen lataamiseen lähiympäristöstäsi."
+          }
+        },
+        "ru": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Местоположение нужно для отображения вашей позиции и поиска квестов поблизости."
+          }
+        },
+        "bg": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Местоположението ви е нужно за изобразяване на вашето място и за сваляне на данни в близост."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L’autorisation « position exacte » est nécessaire pour afficher votre position sur la carte et télécharger les données à proximité."
+          }
+        },
+        "bs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vaša lokacija je potrebna za pronalaženje zadataka u vašoj blizini"
+          }
+        },
+        "sk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Povolenie je potrebné pre zobrazenie vašej polohy na mape a pre vyhľadávanie úloh vo vašom okolí."
+          }
+        },
+        "sl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Za prikaz vašega položaja na zemljevidu in prenos podatkov v vaši bližini je potrebno dovoljenje za natančno lokacijo."
+          }
+        },
+        "ga": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tá cead suímh bheacht ag teastáil chun do shuíomh beo a léiriú ar an léarscáil agus chun sonraí in aice leat a íoslódáil."
+          }
+        },
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cal la vostra ubicació per a cercar missions a prop vostre."
+          }
+        },
+        "sr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неопходна је дозвола приступа вашој локацији како би се тражили задаци у вашој непосредној близини."
+          }
+        },
+        "sv": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Platsbehörighet behövs för att visa din position på kartan och ladda ner data i din närhet."
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "지도에 현재 위치를 표시하고 주변 질문을 자동으로 탐색하려면 위치 권한이 필요합니다."
+          }
+        },
+        "sw": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ruhusa ya kuoneshea sehemu inahitajika kuonesha sehemu uliopo katika ramani na fanya jitihada ya kutafuta eneo lililo karibu nawe"
+          }
+        },
+        "zh-TW": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要精確定位權限才能在地圖上顯示您的位置，並下載周邊區域的資料。"
+          }
+        },
+        "gl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Precísase o permiso de localización para mostrar a túa posición no mapa e para descargar os datos preto de ti."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A permissão de localização é necessária para exibir sua posição no mapa e procupar por missões nos seus arredores."
+          }
+        },
+        "kw": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gront GPS poran a res rag diskwedhes dha tyller war'n mappa hag iskarga data yn dha ogas."
+          }
+        },
+        "sr-Latn": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neophodna je dozvola pristupa vašoj lokaciji kako bi se tražili zadaci u vašoj neposrednoj blizini."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pro zobrazení vaší pozice v mapě a hledání úkolů ve vašem okolí je potřeba oprávnění ke zjišťování polohy."
+          }
+        },
+        "es-AR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se necesita el permiso de ubicación precisa para mostrar tu posición en el mapa y descargar datos cercanos."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ต้องใช้ตำแหน่งของคุณเพื่อสแกนภารกิจในบริเวณของคุณ"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aby wyświetlić swoją pozycję na mapie i zadania dostępne w okolicy, potrzebna jest zgoda na lokalizację."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tilladelse til præcis placering er nødvendig for at vise din position på kortet og downloade data i nærheden af dig."
+          }
+        },
+        "he": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "הרשאה למיקום שלך נחוצה כדי להציג את מיקומך על המפה ולחפש משימות בסביבתך."
+          }
+        },
+        "tr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haritadaki konumunuzu göstermek ve bölgenizdeki veriyi indirmek için konum izni gerekli."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.2"
+}

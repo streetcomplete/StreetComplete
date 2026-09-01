@@ -9,3 +9,14 @@ enum class BicycleRepairStationService(val value: String) {
     STAND("stand"),
     CHAIN_TOOL("chain_tool"),
 }
+
+fun parseBicycleRepairStationService(tags: Map<String, String>): Set<BicycleRepairStationService> {
+    val initialSelectedItems = mutableSetOf<BicycleRepairStationService>()
+    for (service in BicycleRepairStationService.entries)
+    {
+        if (tags["service:bicycle:${service.value}"] == "yes") {
+            initialSelectedItems += service
+        }
+    }
+    return initialSelectedItems
+}

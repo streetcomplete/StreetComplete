@@ -7,24 +7,21 @@ data class StructuredHouseNumbers(val list: List<StructuredHouseNumber>) {
     /** Return the previous/next house number, e.g. with [step] = +1, "3c" becomes
      *  "4", "1/7" becomes "2", "2-9" becomes "3" etc.
      *  If no step exists, null is returned. */
-    fun step(step: Int): StructuredHouseNumber.Simple? {
-        return boundingHouseNumber(step)?.step(step)
-    }
+    fun step(step: Int): StructuredHouseNumber.Simple? =
+        boundingHouseNumber(step)?.step(step)
 
     /** Return the previous/next house number with a minor step, e.g. with [step] = +1, "3c" becomes
      *  "3d", "1/7" becomes "1/8" etc.
      *  If no minor step exists, null is returned. */
-    fun minorStep(step: Int): StructuredHouseNumber? {
-        return boundingHouseNumber(step)?.minorStep(step)
-    }
+    fun minorStep(step: Int): StructuredHouseNumber? =
+        boundingHouseNumber(step)?.minorStep(step)
 
-    private fun boundingHouseNumber(step: Int): StructuredHouseNumber? {
-        return when {
+    private fun boundingHouseNumber(step: Int): StructuredHouseNumber? =
+        when {
             step > 0 -> list.max()
             step < 0 -> list.min()
             else -> null
         }
-    }
 }
 
 //region StructuredHouseNumber

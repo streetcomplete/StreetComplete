@@ -103,7 +103,9 @@ import kotlin.time.Duration.Companion.milliseconds
                 AnswerItem(stringResource(Res.string.quest_generic_answer_does_not_exist)) {
                     confirmDeleteNode = element
                 }
-            } else null
+            } else {
+                null
+            }
         ) },
         pinContent = {
             if (element == null) {

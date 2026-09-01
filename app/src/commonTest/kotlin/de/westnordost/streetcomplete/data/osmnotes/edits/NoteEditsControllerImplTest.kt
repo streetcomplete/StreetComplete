@@ -2,13 +2,13 @@ package de.westnordost.streetcomplete.data.osmnotes.edits
 
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import dev.mokkery.matcher.any
-import dev.mokkery.mock
 import de.westnordost.streetcomplete.testutils.note
 import de.westnordost.streetcomplete.testutils.noteEdit
+import de.westnordost.streetcomplete.testutils.p
 import dev.mokkery.answering.returns
 import dev.mokkery.every
-import de.westnordost.streetcomplete.testutils.p
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
 import dev.mokkery.verify.VerifyMode.Companion.not
 import kotlinx.io.files.SystemFileSystem
@@ -22,7 +22,7 @@ class NoteEditsControllerImplTest {
     private lateinit var listener: NoteEditsSource.Listener
 
     @BeforeTest fun setUp() {
-        db = mock() {
+        db = mock {
             every { delete(any()) } returns true
             every { markSynced(any()) } returns true
         }

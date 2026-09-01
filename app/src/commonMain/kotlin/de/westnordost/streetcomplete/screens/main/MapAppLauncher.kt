@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main
 
+import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 
 interface MapAppLauncher {
@@ -7,5 +8,8 @@ interface MapAppLauncher {
     fun openAt(position: LatLon, zoom: Double)
 
     /** Return whether any map app is available */
-    fun isAvailable() : Boolean
+    fun isAvailable(): Boolean
 }
+
+@Composable
+expect fun rememberMapAppLauncher(): MapAppLauncher

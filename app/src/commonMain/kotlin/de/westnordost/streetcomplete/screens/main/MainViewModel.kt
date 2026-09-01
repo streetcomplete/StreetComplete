@@ -21,9 +21,7 @@ abstract class MainViewModel : ViewModel() {
     abstract val lastDownloadError: StateFlow<Exception?>
     abstract val lastUploadError: StateFlow<Exception?>
 
-    abstract fun isSendErrorReportAvailable(): Boolean
-    abstract fun sendErrorReport(error: Exception)
-    abstract fun sendErrorReport(errorReport: String)
+    abstract suspend fun createErrorReport(error: Exception): String
 
     /* start parameters */
     abstract fun setUri(uri: String)
@@ -84,7 +82,7 @@ abstract class MainViewModel : ViewModel() {
 
     // NOTE: currently filled from MainActivity (communication to compose view), i.e. the source of
     //       truth is actually the MapFragment
-    abstract val locationState: MutableStateFlow<LocationState>
+    abstract val locationState: MutableStateFlow<LocationState?>
     abstract val mapCamera: MutableStateFlow<CameraPosition?>
     abstract val metersPerDp: MutableStateFlow<Double>
     abstract val displayedPosition: MutableStateFlow<Offset?>

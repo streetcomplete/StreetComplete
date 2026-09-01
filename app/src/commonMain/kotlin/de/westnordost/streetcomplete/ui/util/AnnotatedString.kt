@@ -35,14 +35,15 @@ fun String.formatAnnotated(vararg formatArgs: Any): AnnotatedString {
 /** Annotate any hyperlinks written within this string as clickable links */
 fun String.annotateLinks(textLinkStyles: TextLinkStyles?): AnnotatedString {
     val string = this
-    val regex = Regex("(?:^|[\\s])(https?://[a-zA-Z0-9-._~!\$&'()*+,;=:/?#\\[\\]@%]+)")
+    val regex = Regex("(^|[\\s])(https?://[a-zA-Z0-9-._~!\$&'()*+,;=:/?#\\[\\]@%]+)")
     val matches = regex.findAll(string)
     var lastIndex = 0
 
     return buildAnnotatedString {
         for (match in matches) {
-            val url = match.groupValues[1]
             append(string.substring(lastIndex, match.range.first))
+            append(match.groupValues[1])
+            val url = match.groupValues[2]
             withLink(LinkAnnotation.Url(url, textLinkStyles)) {
                 append(url)
             }

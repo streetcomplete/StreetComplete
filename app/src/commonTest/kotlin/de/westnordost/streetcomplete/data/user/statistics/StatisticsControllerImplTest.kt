@@ -1,16 +1,16 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
-import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.user.UserLoginSource
-import dev.mokkery.matcher.any
-import dev.mokkery.mock
+import de.westnordost.streetcomplete.testutils.p
+import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
+import dev.mokkery.answering.calls
 import dev.mokkery.answering.returns
 import dev.mokkery.every
-import de.westnordost.streetcomplete.testutils.p
-import dev.mokkery.answering.calls
-import kotlinx.datetime.LocalDate
+import dev.mokkery.matcher.any
+import dev.mokkery.mock
 import dev.mokkery.verify
+import kotlinx.datetime.LocalDate
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -43,12 +43,11 @@ class StatisticsControllerImplTest {
         prefs = mock()
         listener = mock()
 
-        userLoginSource = mock() {
+        userLoginSource = mock {
             every { addListener(any()) } calls { (listener: UserLoginSource.Listener) ->
                 userLoginListener = listener
             }
         }
-
 
         statisticsController = StatisticsControllerImpl(
             editTypeStatisticsDao,

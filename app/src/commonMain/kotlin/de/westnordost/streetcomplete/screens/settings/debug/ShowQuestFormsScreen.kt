@@ -130,7 +130,9 @@ fun ShowQuestFormsScreen(
                 mapRotation = viewModel.mockRotation,
                 mapTilt = 0f,
                 mapMetersPerDp = 0.01,
-                onSetMapMarkers = { /* No map here */ }
+                onSetMapMarkers = { /* No map here */ },
+                getOffset = { null },
+                lastMapClick = null
             )
         }
     }

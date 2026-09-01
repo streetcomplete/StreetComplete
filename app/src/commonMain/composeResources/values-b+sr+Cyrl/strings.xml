@@ -116,7 +116,6 @@
 Ова апликација налази непотпуне и прошириве податке у вашој близини и приказује их на карти као ознаке. Свака од њих је решива одговором на једноставно питање допуном информација са лица места.
 
 Подаци које унесете се директно додају у OpenStreetMap-е под вашим именом, без потребе за неким другим програмом.</string>
-    <string name="quest_name_answer_noName">Нема име…</string>
     <string name="quest_name_answer_noName_confirmation_title">Заиста нема име?</string>
     <string name="quest_name_noName_confirmation_positive">Да, нема име</string>
     <string name="quest_openingHours_add_times">Додај радно време</string>
@@ -193,11 +192,6 @@
     <string name="underground_recycling_container">Подземни контејнер</string>
     <string name="quest_streetName_answer_cantType">Не могу унети слова са знака</string>
     <string name="quest_streetName_cantType_title">Немате распоред тастатуре?</string>
-    <string name="quest_streetName_cantType_open_settings">Отвори подешавања</string>
-    <string name="quest_streetName_cantType_open_store">Посетите радњу са апликацијама</string>
-    <string name="quest_streetName_cantType_description">Ако користите подразумевану тастатуру, вероватно можете укључити распоред одговарајућег језика у подешавањима за начин уноса.
-
-У супротном, можете преузети другу тастатуру у радњи са апликацијама. Популарне тастатуре које подржавају многе језике су Google Gboard, SwiftKey Keyboard и Multiling O Keyboard.</string>
     <string name="quest_streetName_menuItem_nolanguage">(неодређен)</string>
     <string name="quest_fireHydrant_type_title">Какав је ово хидрант?</string>
     <string name="quest_fireHydrant_type_pillar">Стуб</string>
@@ -494,7 +488,6 @@
     <string name="quest_generic_answer_differs_along_the_way">Различита у деловима…</string>
     <string name="quest_split_way_description">Уколико постоји разлика дуж пута, разделите га прво. Након тога, одговарајте на задатак за сваки део посебно.
 Желите ли одмах да разделите пут?</string>
-    <string name="quest_split_way_tutorial">Додирните пут да га разделите на местима где се одговор разликује. Покушајте бити што прецизнији, можете и увеличати карту.</string>
     <string name="quest_split_way_too_imprecise">Молимо да још увеличате карту</string>
     <string name="quest_split_way_many_splits_confirmation_description">Доста пута сте извршили дељење. Увек можете накнадно да разделите пут.</string>
     <string name="quest_footwayPartSurface_title">Каква је овде површина тротоара?</string>
@@ -756,8 +749,6 @@
     <string name="default_disabled_msg_go_inside_regional_warning">Ова врста задатка је онемогућена јер у неким регијама није корисна. Вероватно бисте морали ући унутра како би могли да одговорите на овакав задатак.</string>
     <string name="quest_dietType_explanation_kosher">Кошер производи се морају припремати према посебним правилима, а производи у складу са кашрутом су означени сертификатом.</string>
     <string name="quest_cycleway_answer_no_bicycle_infrastructure">Уопште нема бициклистичке стазе</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_explanation">Као и обично, додирните илустрације са једне од страна, обележите одговоре и урадите то са друге стране. Обратите пажњу на све опције: у неким случајевима није очигледно, попут једносмерних улица где је бициклистима омогућен двосмерни саобраћај!</string>
-    <string name="quest_cycleway_answer_no_bicycle_infrastructure_title">Нема бициклистичке инфраструктуре</string>
     <string name="quest_construction_completed_at_known_date">Биће завршено до…</string>
     <string name="quest_construction_completion_date_title">Када ће бити завршено?</string>
     <string name="quest_surface_value_clay">Шљака</string>
@@ -856,7 +847,9 @@
     <string name="quest_bollard_type_foldable2">Склопив (са или без кључа)</string>
     <string name="no_search_results">Нема резултата</string>
     <string name="quest_selection_hint_title">Превише задатака?</string>
-    <string name="quest_selection_hint_message">Допринос пре свега треба бити забаван! Уколико сте преоптерећени бројем задатака, у поставкама увек можете изменити који се задаци приказују као и њихов редослед.</string>
+    <string name="quest_selection_hint_message">Допринос пре свега треба бити забаван!
+
+Уколико сте преоптерећени бројем задатака, у поставкама увек можете изменити који се задаци приказују као и њихов редослед.</string>
     <string name="quest_presets_preset_add">Додај групу задатака</string>
     <string name="quest_presets_preset_name">Назив групе задатака</string>
     <string name="quest_presets_default_name">Основно</string>
@@ -983,9 +976,6 @@
     <string name="quest_bicycle_parking_type_handlebarholder">Држач за корман</string>
     <string name="quest_bicycle_parking_access_title2">Ко овде сме да паркира бицикл? Да ли је са или без наплате?</string>
     <string name="quest_playground_access_title2">Ко сме да користи ово игралиште?</string>
-    <string name="quest_sidewalk_answer_none_title">Означавање да тротоари недостају</string>
-    <string name="quest_side_select_interface_explanation">Кликните на једну страну и одаберите најбољи одговор.
-Урадите исто и за супротну страну ако постоји.</string>
     <string name="ar_measure">Измери</string>
     <string name="ar_core_tracking_error_too_steep_angle">Превише стрм угао, одмакните се</string>
     <string name="default_disabled_msg_no_ar">За овај задатак Вам треба метар пошто мерење уз помоћ камере није подржано на овом уређају.</string>
@@ -1186,8 +1176,6 @@
     <string name="quest_placeName_no_name_answer">Нема табле са називом</string>
     <string name="quest_road_width_unusualInput_confirmation_description">Та ширина изгледа нереално. Ширина се мери од ивичњака до ивичњака обухватајући паркинг на путу, бициклистичке стазе и сл.</string>
     <string name="overlay_cycleway">Бициклистичке стазе</string>
-    <string name="bicycle_boulevard_is_a">То је %1$s</string>
-    <string name="bicycle_boulevard_is_not_a">То није %1$s</string>
     <string name="bicycle_boulevard">Бициклистички булевар</string>
     <string name="separate_cycleway_no_or_allowed">Није намењено бициклистима (иако могу да возе туда)</string>
     <string name="separate_cycleway_non_segregated">Дељена траса</string>
@@ -1319,8 +1307,7 @@
     <string name="quest_accessible_for_pedestrians_allowed">Дозвољено је.</string>
     <string name="quest_buildingLevels_hint">За зграде на падини, спратови се броје од нивоа земљишта, са најниже стране.
 
-Спратом се сматра и када су прозори у крову. Стога, кровови без спрата нису нужно равни, већ једноставно нису довољно високи да би постојало поткровље.
-␣␣␣␣</string>
+Спратом се сматра и када су прозори у крову. Стога, кровови без спрата нису нужно равни, већ једноставно нису довољно високи да би постојало поткровље.</string>
     <string name="quest_parcel_locker_brand">Ког је бренда овај пакетомат?</string>
     <string name="quest_powerPolesMaterial_is_terminal">Електрични вод је прикачен на зграду</string>
     <string name="quest_cycleway_value_sidewalk_ok">нема, али је знаком дозвољена вожња бицикла по тротоару</string>

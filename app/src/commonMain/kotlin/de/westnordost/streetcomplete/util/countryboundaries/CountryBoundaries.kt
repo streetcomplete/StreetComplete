@@ -21,7 +21,7 @@ interface CountryBoundaries {
 
 class CountryBoundariesImpl(
     private val countryBoundaries: de.westnordost.countryboundaries.CountryBoundaries
-): CountryBoundaries {
+) : CountryBoundaries {
 
     override fun isInAny(position: LatLon, countries: Countries): Boolean =
         when (countries) {

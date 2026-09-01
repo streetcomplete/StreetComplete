@@ -65,4 +65,3 @@ data object Off : WeekdaysContent {
 data class Times(val selectors: List<TimesSelector>) : WeekdaysContent {
     override fun isComplete(): Boolean = selectors.isNotEmpty()
 }
-

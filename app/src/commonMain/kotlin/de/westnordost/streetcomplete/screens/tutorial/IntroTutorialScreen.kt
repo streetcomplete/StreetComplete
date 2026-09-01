@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.LocationState
@@ -29,26 +30,26 @@ import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
+import de.westnordost.streetcomplete.ui.util.rememberDefaultLocationProvider
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 
 /** Shows a short tutorial for first-time users */
 @Composable
 fun IntroTutorialScreen(
     onDismissRequest: () -> Unit,
-    onExplainedNeedForLocationPermission: () -> Unit = {},
     onFinished: () -> Unit = {},
     dismissOnBackPress: Boolean = false,
 ) {
+    val locationProvider = rememberDefaultLocationProvider()
     TutorialScreen(
         pageCount = 4,
         onDismissRequest = onDismissRequest,
         onFinished = onFinished,
         onPageChanged = { page ->
             if (page == 2) {
-                onExplainedNeedForLocationPermission()
+                locationProvider.requestPermission()
             }
         },
         illustration = { page ->
@@ -249,5 +250,5 @@ private fun IntroTutorialStep3Text() {
 @Preview
 @Composable
 private fun PreviewIntroTutorialScreen() {
-    IntroTutorialScreen({}, {}, {})
+    IntroTutorialScreen({}, {})
 }

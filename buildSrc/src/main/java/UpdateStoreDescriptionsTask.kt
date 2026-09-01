@@ -1,5 +1,6 @@
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import java.io.File
 
@@ -8,9 +9,11 @@ open class UpdateStoreDescriptionsTask : DefaultTask() {
 
     @get:Input lateinit var projectId: String
     @get:Input lateinit var apiToken: String
-    @get:Input lateinit var targetDir: String
+    @get:OutputDirectory lateinit var targetDir: File
 
     @TaskAction fun run() {
+        require(apiToken != "invalid") { "POEditor API token must be set" }
+
         val languageCodes = fetchAvailableLocalizations(apiToken, projectId).map { it.code }
 
         for (languageCode in languageCodes) {
@@ -18,12 +21,13 @@ open class UpdateStoreDescriptionsTask : DefaultTask() {
             println(languageCode)
             val translations = fetchLocalizationJson(apiToken, projectId, languageCode)
 
-            File("$targetDir/$languageCode").mkdirs()
+            val dir = targetDir.resolve(languageCode)
+            dir.mkdirs()
             translations["store_listing_short_description"]?.let {
-                File("$targetDir/$languageCode/short_description.txt").writeText(it)
+                dir.resolve("short_description.txt").writeText(it)
             }
             translations["store_listing_full_description"]?.let {
-                File("$targetDir/$languageCode/full_description.txt").writeText(it)
+                dir.resolve("full_description.txt").writeText(it)
             }
         }
     }

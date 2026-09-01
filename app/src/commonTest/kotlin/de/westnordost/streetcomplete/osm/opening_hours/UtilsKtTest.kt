@@ -128,7 +128,7 @@ class UtilsKtTest {
         )
 
         assertEquals(
-            listOf(Month.May .. Month.July),
+            listOf(Month.May..Month.July),
             setOf(Month.May, Month.June, Month.July).toMonthsSelectors()
         )
 
@@ -138,7 +138,7 @@ class UtilsKtTest {
         )
 
         assertEquals(
-            listOf(Month.December .. Month.February),
+            listOf(Month.December..Month.February),
             setOf(Month.January, Month.February, Month.December).toMonthsSelectors()
         )
     }
@@ -196,7 +196,7 @@ class UtilsKtTest {
         )
 
         assertEquals(
-            listOf(Weekday.Monday .. Weekday.Wednesday),
+            listOf(Weekday.Monday..Weekday.Wednesday),
             setOf(Weekday.Monday, Weekday.Tuesday, Weekday.Wednesday).toWeekdaysSelectors()
         )
 
@@ -206,7 +206,7 @@ class UtilsKtTest {
         )
 
         assertEquals(
-            listOf(Weekday.Saturday .. Weekday.Monday),
+            listOf(Weekday.Saturday..Weekday.Monday),
             setOf(Weekday.Monday, Weekday.Saturday, Weekday.Sunday).toWeekdaysSelectors()
         )
     }

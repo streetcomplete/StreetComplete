@@ -5,7 +5,6 @@ import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpressio
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
@@ -69,13 +68,11 @@ class StreetParkingOverlay : Overlay {
     ) {
         if (element != null && element.tags["highway"] in ALL_ROADS && element.tags["area"] != "yes") {
             StreetParkingOverlayForm(on, element, geometry, countryInfo)
-        }
-        else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
+        } else if (element == null || parseNarrowingTrafficCalming(element.tags) != null) {
             LaneNarrowingTrafficCalmingForm(on, element, geometry)
         }
     }
 }
-
 
 private val streetParkingTaggingNotExpected by lazy { """
     ways with
