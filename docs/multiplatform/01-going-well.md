@@ -56,6 +56,9 @@
 - iOS email composition now builds encoded `mailto:` URLs with Foundation query
   items and the current `UIApplication` API; subject and body are no longer lost
   through impossible Kotlin-to-`NSString` casts.
+- Persisted element edits now use an explicit polymorphic action serializer.
+  Saving and restoring every supported edit action therefore works on
+  Kotlin/Native instead of depending on JVM-only runtime serializer discovery.
 
 ## Shared application lifecycle
 

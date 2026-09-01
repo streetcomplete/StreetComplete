@@ -115,8 +115,9 @@
 - [x] Inventory Android-only production classes before deleting them and map each
   one to a shared or platform implementation.
 - [ ] Run the common test suite and target-specific tests on every target.
-- [ ] Make the inherited common tests compile for Kotlin/Native. The current suite
-  contains a JVM `Thread` call and test names that Kotlin/Native rejects.
+- [x] Make the inherited common tests compile for Kotlin/Native by replacing the
+  real-time `Thread` delay, using Native-safe test names, and keeping JVM utility
+  entry points in the Android-host test source set.
 - [ ] Make six existing locale/date-sensitive common tests deterministic. Both the
   Android host and new desktop runner currently execute 2,449 tests with the same
   six failures on this machine.

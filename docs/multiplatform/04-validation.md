@@ -411,6 +411,23 @@ rating destination therefore returns `null` and carries an explicit TODO until
 that external product record exists; it no longer reaches a runtime `TODO()` and
 crashes when the About screen asks whether rating is available.
 
+## Kotlin/Native database and edit persistence
+
+| Target | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| iOS test compilation | `./gradlew :app:compileTestKotlinIosSimulatorArm64` | Pass | Common tests no longer contain a JVM thread call, Native-illegal test names, or colliding utility `main()` functions. |
+| iOS DAO suite | `./gradlew :app:iosSimulatorArm64Test --tests '*DaoTest'` | 216 tests execute; 200 pass before the edit fix | Concrete setup/teardown lifecycle overrides open, initialize, close, and delete the bundled SQLite test database on Native. The 16 remaining failures isolated one production serialization defect. |
+| Persisted element edits | Run `ElementEditsDaoTest` on iOS simulator, desktop, and Android host | 16 pass on each target | Every supported edit-action subtype round-trips through the production database with the explicit polymorphic serializer. |
+| Downloaded-tile timestamps | Run `DownloadedTilesDaoTest` on iOS simulator, desktop, and Android host | 11 pass on each target | The DAO's injected clock makes old/new tile retention deterministic without a JVM-only sleep. |
+
+The first Native DAO run failed because Kotlin/Native did not execute lifecycle
+methods declared only on the inherited test base. Explicit concrete overrides
+are intentionally repetitive: they are the cross-runner contract and preserve
+the same database setup order on Native and JUnit. Once the harness reached the
+edit table, it also showed that reified interface serializer discovery was
+JVM-specific. `PolymorphicSerializer(ElementEditAction::class)` retains the
+registered subtype and wire format while making the production path portable.
+
 ## Shared main-map content state
 
 | Target | Command | Result | What it proves |
