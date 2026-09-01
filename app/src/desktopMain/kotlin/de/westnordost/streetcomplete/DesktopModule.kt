@@ -70,7 +70,7 @@ val desktopModule = module {
         val databasePath = Path(desktopDataDirectory(), ApplicationConstants.DATABASE_NAME)
         val connection = BundledSQLiteDriver().open(databasePath.toString())
         DatabaseImpl(connection).apply { initialize(StreetCompleteDatabaseConfigurator) }
-    }
+    } onClose { it?.close() }
 
     factory(named("AvatarsCacheDirectory")) {
         val path = Path(desktopCacheDirectory(), ApplicationConstants.AVATARS_CACHE_DIRECTORY)

@@ -11,6 +11,10 @@ class DatabaseImpl(private val connection: SQLiteConnection) : Database {
     private val lock = ReentrantLock()
     private var transactionDepth = 0
 
+    override fun close() = lock.withLock {
+        connection.close()
+    }
+
     override fun exec(sql: String, args: Array<Any>?): Unit = lock.withLock {
         connection.prepare(sql).use { statement ->
             statement.bindAll(args)
