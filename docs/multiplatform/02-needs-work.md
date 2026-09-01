@@ -85,9 +85,10 @@
   process suspension and relaunch; the in-process controllers cannot guarantee
   execution after the OS suspends the app.
 - [ ] Configure the real App Store identity once the iOS product record exists.
-- [ ] Eliminate the duplicate SQLite symbols reported while linking the iOS app.
-  The current framework includes both `sqlite3.c.o` and `sqlite3.o`; the app runs,
-  but carrying two bundled SQLite copies is not an acceptable final state.
+- [x] Eliminate the duplicate SQLite implementation reported while linking the
+  iOS app. Apple targets now use `NativeSQLiteDriver`; the bundled driver remains
+  confined to JVM targets, and a clean Xcode application link succeeds with one
+  exported SQLite symbol set.
 - [ ] Audit iOS behavior that compiles but is still placeholder-level, including
   background lifecycle and crash handling. Foreground application startup now
   uses the shared production initializer, and email launching is functional.
@@ -118,9 +119,10 @@
 - [x] Make the inherited common tests compile for Kotlin/Native by replacing the
   real-time `Thread` delay, using Native-safe test names, and keeping JVM utility
   entry points in the Android-host test source set.
-- [ ] Make six existing locale/date-sensitive common tests deterministic. Both the
-  Android host and new desktop runner currently execute 2,449 tests with the same
-  six failures on this machine.
+- [x] Make the locale/date-sensitive common tests deterministic across JVM and
+  Foundation formatting data, time zones, calendars, and non-ASCII decimal digits.
+  The iOS simulator now passes all 2,486 Native tests and desktop passes all 2,525
+  non-skipped tests.
 - [ ] Exercise production flows on Android, desktop, and iOS and record demo videos.
 - [x] Verify shared glyph resources in a built and running iOS application bundle.
 - [ ] Obtain independent adversarial reviews of functionality parity, architecture,

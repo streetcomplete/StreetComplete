@@ -59,6 +59,9 @@
 - Persisted element edits now use an explicit polymorphic action serializer.
   Saving and restoring every supported edit action therefore works on
   Kotlin/Native instead of depending on JVM-only runtime serializer discovery.
+- iOS production and database tests now use `NativeSQLiteDriver`, while bundled
+  SQLite remains scoped to JVM targets. A clean Xcode application link no longer
+  combines two SQLite implementations.
 
 ## Shared application lifecycle
 

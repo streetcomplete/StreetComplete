@@ -329,10 +329,12 @@ recording style. Shared state keeps those two states consistent when GPS fixes r
 | iOS onboarding | Launch with a fresh app preference domain | Pass | The first shared screen is StreetComplete's real onboarding flow rather than the former changelog/credits/privacy development launcher. |
 | iOS live map | Mark the tutorial complete, cold-launch, and observe the resulting screen | Pass | MapLibre renders the real shared StreetComplete style through Metal with the downloaded-area hatch, stars, overlay, menu, attribution, and location controls. Shared glyphs load from the built app bundle. |
 
-The Xcode link currently warns that the Kotlin framework contributes both
-`sqlite3.c.o` and `sqlite3.o`. The running bundle proves this is not an immediate
-launch blocker, but the duplicate bundled SQLite implementation remains tracked
-as correctness and distribution cleanup rather than accepted final output.
+The clean Xcode link after the database-driver split succeeds without the former
+duplicate SQLite diagnostic. Apple production and tests use the framework-backed
+`NativeSQLiteDriver`; the bundled SQLite artifact is now confined to JVM source
+sets. The linked Kotlin framework exports one `sqlite3_open` and one
+`sqlite3_close` definition set, supplied alongside MapLibre Native rather than a
+second bundled SQLite compilation.
 
 ## Desktop shared application entry point
 
@@ -416,7 +418,7 @@ crashes when the About screen asks whether rating is available.
 | Target | Command or action | Result | What it proves |
 | --- | --- | --- | --- |
 | iOS test compilation | `./gradlew :app:compileTestKotlinIosSimulatorArm64` | Pass | Common tests no longer contain a JVM thread call, Native-illegal test names, or colliding utility `main()` functions. |
-| iOS DAO suite | `./gradlew :app:iosSimulatorArm64Test --tests '*DaoTest'` | 216 tests execute; 200 pass before the edit fix | Concrete setup/teardown lifecycle overrides open, initialize, close, and delete the bundled SQLite test database on Native. The 16 remaining failures isolated one production serialization defect. |
+| iOS DAO suite | `./gradlew :app:iosSimulatorArm64Test --tests '*DaoTest'` | 216 tests execute; 200 pass before the edit fix | Concrete setup/teardown lifecycle overrides open, initialize, close, and delete the Native SQLite test database. The 16 remaining failures isolated one production serialization defect. |
 | Persisted element edits | Run `ElementEditsDaoTest` on iOS simulator, desktop, and Android host | 16 pass on each target | Every supported edit-action subtype round-trips through the production database with the explicit polymorphic serializer. |
 | Downloaded-tile timestamps | Run `DownloadedTilesDaoTest` on iOS simulator, desktop, and Android host | 11 pass on each target | The DAO's injected clock makes old/new tile retention deterministic without a JVM-only sleep. |
 
@@ -427,6 +429,23 @@ the same database setup order on Native and JUnit. Once the harness reached the
 edit table, it also showed that reified interface serializer discovery was
 JVM-specific. `PolymorphicSerializer(ElementEditAction::class)` retains the
 registered subtype and wire format while making the production path portable.
+
+## Cross-target test portability and Apple SQLite ownership
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| iOS simulator full suite | `./gradlew :app:iosSimulatorArm64Test` | 2,486 pass | All portable common tests execute through Kotlin/Native, including production DAOs with `NativeSQLiteDriver`, edit serialization, locale parsing, Foundation date/time formatting, and file-backed photo fixtures. |
+| Desktop full suite | `./gradlew :app:desktopTest` | 2,525 pass, 1 skip | The portable suite and seven JVM-only live HTTP integration classes execute together against the desktop production implementations. |
+| Android host full suite | `./gradlew :app:testAndroidHostTest` | 2,524 pass, 1 skip, 1 live-test socket reset | The portable/shared suite is stable. Two complete runs failed in different OSM dev-server integration methods; the first failed method passed when retried alone, so this is recorded as external network evidence rather than converted into a weaker assertion. |
+| iOS application link | `DEVELOPER_DIR=/Applications/Xcode-26.5.0.app/Contents/Developer xcodebuild -project iosApp/iosApp.xcodeproj -scheme iosApp -configuration Debug -destination 'platform=iOS Simulator,id=4AE0B7AD-8A31-457E-B505-A46F3644E43D' -derivedDataPath build/ios-derived CODE_SIGNING_ALLOWED=NO clean build` | Pass | The production framework and Swift host link cleanly after removing bundled SQLite from Apple source sets; symbol inspection finds one exported `sqlite3_open`/`sqlite3_close` definition set. |
+
+The seven tests that contact live OSM or ban-list endpoints live in `javaTest`.
+They still run on both JVM targets, but not in the bare Kotlin/Native test
+executable: both Ktor Darwin and a direct `NSURLSession` probe failed TLS in that
+host even though Safari in the same simulator completed TLS 1.3 to the endpoint.
+Portable mock-client, parser, persistence, and production-link coverage remains
+in `commonTest`; live iOS networking must be validated from the real application
+host rather than by weakening transport security in the Native test binary.
 
 ## Shared main-map content state
 
