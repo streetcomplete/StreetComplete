@@ -362,9 +362,9 @@ claimed from the screenshots alone.
 | iOS bundle and cold launch | Build with Xcode 26.5, install on the iOS 26.5 simulator, cold-launch, inspect the process, and capture the screen | Pass with diagnostic | The shared initializer and lifecycle attachment keep the app alive and the full StreetComplete map renders through Metal. Core Location emits a main-thread authorization-status diagnostic that is tracked for correction. |
 | Desktop app image | `./gradlew :app:createDistributable`, then launch the packaged executable | Pass with warnings | Shared preloading completes and MapLibre renders the first 1200x772 logical Metal frame. LWJGL reports the already-tracked Java/native version warning but the packaged app remains live. |
 
-These checks prove foreground process startup and lifecycle attachment. They do
-not claim iOS background execution after suspension; that requires registered
-Apple background tasks and separate runtime evidence.
+These checks prove foreground process startup and lifecycle attachment. The
+separate iOS background-processing section records the registered task boundary
+and the remaining device-only execution evidence.
 
 ## Single Android Compose application host
 
@@ -460,6 +460,23 @@ host even though Safari in the same simulator completed TLS 1.3 to the endpoint.
 Portable mock-client, parser, persistence, and production-link coverage remains
 in `commonTest`; live iOS networking must be validated from the real application
 host rather than by weakening transport security in the Native test binary.
+
+## iOS crash recovery and background sync
+
+| Boundary | Command or action | Result | What it proves |
+| --- | --- | --- | --- |
+| Native crash persistence | `./gradlew :app:iosSimulatorArm64Test --tests '*IosCrashReportHolderTest'` | 1 pass | The iOS holder writes an `ErrorReportBuilder` report, returns it once, deletes the file, and returns `null` after consumption. |
+| Kotlin/Native framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | The unhandled-exception hook, cancellable background-sync handle, production uploader, changeset closure, network policy, and Swift callback bridge link together. |
+| Xcode application | Build the iOS 26.5 simulator app with Xcode 26.5 | Pass | Swift registers the processing launch handler, calls the Kotlin work boundary, handles expiration/completion, and packages both required Info.plist declarations. |
+| Built bundle declarations | Inspect the built app's Info.plist with `plutil` | Pass | `BGTaskSchedulerPermittedIdentifiers` contains `de.westnordost.streetcomplete.background-sync`, and `UIBackgroundModes` contains `processing`. |
+| Simulator cold launch | Install and launch the built app while capturing its console | Registration passes; scheduling returns `BGTaskSchedulerErrorDomain` code 1 | The app remains live and does not hit the registration precondition. Apple's SDK defines code 1 as expected when Simulator does not support background processing, so actual execution remains device-only evidence. |
+
+The processing task deliberately does not request a fresh location or download
+map data. StreetComplete currently asks for when-in-use location only; claiming a
+current vicinity after foreground suspension would be false. The code carries a
+TODO at that boundary pending an Apple-approved background-location product
+decision. Pending uploads and stale changesets require no background location
+and now run through the real production services.
 
 ## Shared main-map content state
 

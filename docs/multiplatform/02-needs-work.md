@@ -81,17 +81,22 @@
 
 - [x] Replace the iOS upload, download, changeset auto-close, and network-state
   stubs with functional in-process implementations.
-- [ ] Register Apple background-processing tasks so automatic sync survives iOS
-  process suspension and relaunch; the in-process controllers cannot guarantee
-  execution after the OS suspends the app.
+- [x] Register Apple background processing so pending edits upload and inactive
+  changesets close after iOS suspends or relaunches the process. The task is
+  network-constrained, cancellation-aware, rescheduled after every launch, and
+  reports completion to `BGTaskScheduler`.
+- [ ] Add background map-data downloads only if StreetComplete adopts an
+  Apple-approved background-location mode. The current when-in-use authorization
+  cannot provide a current vicinity after iOS suspends the foreground scene.
 - [ ] Configure the real App Store identity once the iOS product record exists.
 - [x] Eliminate the duplicate SQLite implementation reported while linking the
   iOS app. Apple targets now use `NativeSQLiteDriver`; the bundled driver remains
   confined to JVM targets, and a clean Xcode application link succeeds with one
   exported SQLite symbol set.
-- [ ] Audit iOS behavior that compiles but is still placeholder-level, including
-  background lifecycle and crash handling. Foreground application startup now
-  uses the shared production initializer, and email launching is functional.
+- [x] Audit iOS behavior that compiled but was placeholder-level. Foreground
+  startup uses the production initializer, email launching is functional,
+  unhandled Kotlin exceptions persist for the shared crash dialog, and eligible
+  sync work has a real Apple background-processing boundary.
 - [ ] Remove the Core Location main-thread performance diagnostic emitted while
   the shared lifecycle attaches location-aware synchronization on iOS. The app
   stays live and renders, but authorization state should be consumed from

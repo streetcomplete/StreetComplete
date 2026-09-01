@@ -62,6 +62,12 @@
 - iOS production and database tests now use `NativeSQLiteDriver`, while bundled
   SQLite remains scoped to JVM targets. A clean Xcode application link no longer
   combines two SQLite implementations.
+- iOS installs a Kotlin/Native unhandled-exception hook before application
+  initialization. A crash report is persisted in Application Support and
+  consumed once by the same shared recovery dialog used on other targets.
+- The Swift host registers a network-constrained Apple processing task. It runs
+  pending automatic uploads and changeset closure through the production Koin
+  graph, cancels on expiration, reports completion, and reschedules itself.
 
 ## Shared application lifecycle
 
