@@ -124,6 +124,28 @@ class MainMapCameraControllerTest {
         assertEquals(450.milliseconds, camera.animations.single().duration)
     }
 
+    @Test fun explicitMoveBeforePresentationRunsWhenMapAttaches() = runTest {
+        val camera = FakeCamera(CameraPosition(zoom = 12.0)).apply { isPresented = false }
+        val controller = controller(camera = camera, scope = this)
+
+        controller.moveTo(
+            LatLon(3.0, 4.0),
+            zoom = 17.5,
+            padding = PaddingValues(0.dp),
+            duration = 450.milliseconds,
+        )
+        advanceUntilIdle()
+        assertTrue(camera.animations.isEmpty())
+
+        camera.isPresented = true
+        controller.onMapPresented()
+        advanceUntilIdle()
+
+        assertEquals(Position(4.0, 3.0), camera.position.target)
+        assertEquals(17.5, camera.position.zoom)
+        assertEquals(450.milliseconds, camera.animations.single().duration)
+    }
+
     @Test fun settledCameraAndInteractionModeArePersisted() = runTest {
         val camera = FakeCamera(CameraPosition())
         val persisted = FakePersistedState()
@@ -162,6 +184,7 @@ internal class FakeCamera(initialPosition: CameraPosition) : MainMapCamera {
         northeast = Position(1.0, 1.0),
     )
     override var viewportSize: DpSize? = DpSize(400.dp, 800.dp)
+    override var isPresented: Boolean = true
     val animations = mutableListOf<Animation>()
 
     override suspend fun animateTo(position: CameraPosition, duration: Duration) {

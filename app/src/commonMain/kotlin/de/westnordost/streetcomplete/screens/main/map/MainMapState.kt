@@ -192,6 +192,7 @@ internal interface MainMapCamera {
     val position: CameraPosition
     val visibleBoundingBox: BoundingBox?
     val viewportSize: DpSize?
+    val isPresented: Boolean
     suspend fun animateTo(position: CameraPosition, duration: Duration)
 }
 
@@ -201,6 +202,7 @@ private class MapLibreCamera(private val state: MapState) : MainMapCamera {
         get() = state.presentation?.viewport?.visibleBoundingBox
     override val viewportSize: DpSize?
         get() = state.presentation?.viewport?.size
+    override val isPresented: Boolean get() = state.presentation != null
 
     override suspend fun animateTo(position: CameraPosition, duration: Duration) {
         val presentation = state.presentation ?: return
@@ -267,6 +269,7 @@ internal class MainMapCameraController(
     private var zoomedYet = false
     private var lastObservedPosition = camera.position
     private var previousFocusCamera: CameraPosition? = null
+    private var pendingMove: PendingCameraMove? = null
 
     fun updateFollowingPosition(value: Boolean) {
         if (isFollowingPosition == value) return
@@ -307,11 +310,14 @@ internal class MainMapCameraController(
         duration: Duration,
     ) {
         cameraPadding = padding
-        animateCamera(duration) {
-            copy(
-                target = position.toPosition(),
-                zoom = zoom ?: this.zoom,
-            )
+        val target = camera.position.copy(
+            target = position.toPosition(),
+            zoom = zoom ?: camera.position.zoom,
+        )
+        if (camera.isPresented) {
+            scope.launch { camera.animateTo(target, duration) }
+        } else {
+            pendingMove = PendingCameraMove(target, duration)
         }
     }
 
@@ -404,7 +410,13 @@ internal class MainMapCameraController(
     }
 
     fun onMapPresented() {
-        if (isFollowingPosition) centerCurrentPosition()
+        val move = pendingMove
+        if (move != null) {
+            pendingMove = null
+            scope.launch { camera.animateTo(move.position, move.duration) }
+        } else if (isFollowingPosition) {
+            centerCurrentPosition()
+        }
     }
 
     fun onCameraChanged(
@@ -454,6 +466,11 @@ internal class MainMapCameraController(
         scope.launch { camera.animateTo(camera.position.transform(), duration) }
     }
 }
+
+private data class PendingCameraMove(
+    val position: CameraPosition,
+    val duration: Duration,
+)
 
 private fun Position.toLatLon() = LatLon(latitude = latitude, longitude = longitude)
 
