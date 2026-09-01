@@ -27,7 +27,15 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
-        maven("https://central.sonatype.com/repository/maven-snapshots/") {
+        ivy("https://central.sonatype.com/repository/maven-snapshots/org/maplibre/compose/") {
+            name = "maplibreComposePinnedSnapshot"
+            patternLayout {
+                artifact("[module]/0.15.1-SNAPSHOT/[artifact]-[revision](-[classifier]).[ext]")
+            }
+            metadataSources {
+                gradleMetadata()
+                artifact()
+            }
             content { includeGroup("org.maplibre.compose") }
         }
         maven("https://jogamp.org/deployment/maven") {

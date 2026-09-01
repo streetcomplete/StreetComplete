@@ -4,10 +4,17 @@ import java.util.zip.ZipFile
 
 val appVersionName = "63.4"
 val appVersionCode = 6308
+val mapLibreComposeVersion = providers.gradleProperty("mapLibreComposeVersion").get()
 
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
+}
+
+configurations.configureEach {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.maplibre.compose") useVersion(mapLibreComposeVersion)
+    }
 }
 
 android {

@@ -9,6 +9,43 @@ plugins {
     id("org.jetbrains.compose") version "1.12.0" apply false
 }
 
+data class PinnedMapLibreFile(
+    val module: String,
+    val variant: String,
+    val logicalName: String,
+    val immutablePath: String,
+)
+
+val mapLibreComposeVersion = providers.gradleProperty("mapLibreComposeVersion").get()
+val pinnedMapLibreFiles = file("gradle/maplibre-compose-snapshot-files.tsv")
+    .readLines()
+    .filterNot { it.isBlank() || it.startsWith("#") }
+    .map { line ->
+        val columns = line.split('\t')
+        check(columns.size == 4) { "Invalid MapLibre snapshot file entry: $line" }
+        PinnedMapLibreFile(columns[0], columns[1], columns[2], columns[3])
+    }
+
+subprojects {
+    dependencies.components {
+        pinnedMapLibreFiles.groupBy(PinnedMapLibreFile::module).forEach { (module, files) ->
+            withModule("org.maplibre.compose:$module") {
+                if (id.version != mapLibreComposeVersion) return@withModule
+                files.groupBy(PinnedMapLibreFile::variant).forEach { (variant, variantFiles) ->
+                    withVariant(variant) {
+                        withFiles {
+                            removeAllFiles()
+                            variantFiles.forEach { file ->
+                                addFile(file.logicalName, file.immutablePath)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 val poEditorProjectId = "97843"
 
 tasks.register<UpdateWebsiteTranslationsTask>("updateWebsiteTranslations") {

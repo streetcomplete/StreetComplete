@@ -9,7 +9,7 @@ import java.io.FileWriter
 /** App version name, code and flavor */
 val appVersionName = "64.0-alpha1"
 val appVersionCode = 6400
-val mapLibreComposeVersion = "0.15.1-SNAPSHOT"
+val mapLibreComposeVersion = providers.gradleProperty("mapLibreComposeVersion").get()
 
 val desktopMapLibreRuntimeArtifact = run {
     val os = System.getProperty("os.name").lowercase()
@@ -25,10 +25,16 @@ val desktopMapLibreRuntimeArtifact = run {
         os.contains("mac") && artifactArchitecture == "arm64" ->
             "maplibre-compose-runtime-metal-macos-arm64"
         os.contains("linux") && artifactArchitecture != null ->
-            "maplibre-compose-runtime-opengl-linux-$artifactArchitecture"
+            "maplibre-compose-runtime-vulkan-linux-$artifactArchitecture"
         os.contains("windows") && artifactArchitecture != null ->
-            "maplibre-compose-runtime-opengl-windows-$artifactArchitecture"
+            "maplibre-compose-runtime-vulkan-windows-$artifactArchitecture"
         else -> null
+    }
+}
+
+configurations.configureEach {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.maplibre.compose") useVersion(mapLibreComposeVersion)
     }
 }
 
