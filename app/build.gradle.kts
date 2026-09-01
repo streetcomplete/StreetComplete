@@ -287,10 +287,6 @@ kotlin {
                 implementation("io.insert-koin:koin-android")
                 implementation("io.insert-koin:koin-androidx-workmanager")
 
-                // Android stuff
-                implementation("com.google.android.material:material:1.14.0")
-                implementation("androidx.appcompat:appcompat:1.7.1")
-
                 // Compose
                 implementation("androidx.activity:activity-compose:1.13.0")
 

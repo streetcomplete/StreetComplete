@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete
 import android.app.Application
 import android.content.ComponentCallbacks2
 import android.os.LocaleList
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequest
 import androidx.work.WorkManager
@@ -11,7 +10,6 @@ import com.russhwolf.settings.SettingsListener
 import de.westnordost.streetcomplete.data.CacheTrimmer
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.preferences.Preferences
-import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
 import de.westnordost.streetcomplete.util.getSelectedLocales
 import kotlinx.coroutines.CoroutineScope
@@ -51,10 +49,7 @@ class StreetCompleteApplication : Application() {
 
         enqueuePeriodicCleanupWork()
 
-        updateTheme(prefs.theme)
-
         settingsListeners += prefs.onLanguageChanged { updateDefaultLocales() }
-        settingsListeners += prefs.onThemeChanged { updateTheme(it) }
     }
 
     override fun onTerminate() {
@@ -78,10 +73,6 @@ class StreetCompleteApplication : Application() {
         LocaleList.setDefault(getSelectedLocales(prefs))
     }
 
-    private fun updateTheme(theme: Theme) {
-        AppCompatDelegate.setDefaultNightMode(theme.appCompatNightMode)
-    }
-
     private fun enqueuePeriodicCleanupWork() {
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
             "Cleanup",
@@ -93,10 +84,4 @@ class StreetCompleteApplication : Application() {
             ).setInitialDelay(1, TimeUnit.HOURS).build()
         )
     }
-}
-
-private val Theme.appCompatNightMode: Int get() = when (this) {
-    Theme.LIGHT -> AppCompatDelegate.MODE_NIGHT_NO
-    Theme.DARK -> AppCompatDelegate.MODE_NIGHT_YES
-    Theme.SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
 }

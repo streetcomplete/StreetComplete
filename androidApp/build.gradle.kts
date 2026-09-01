@@ -70,9 +70,6 @@ dependencies {
 
     // Android / UI
     implementation("androidx.activity:activity-compose:1.13.0")
-    implementation("com.google.android.material:material:1.14.0")
-    implementation("androidx.appcompat:appcompat:1.7.1")
-
     // Compose
     implementation("org.jetbrains.compose.runtime:runtime:1.12.0")
     implementation("org.jetbrains.compose.ui:ui:1.12.0")
