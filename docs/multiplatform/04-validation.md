@@ -173,3 +173,17 @@ claim interactive camera parity.
 MapLibre Compose's layer callback currently queries only the exact tap point, so
 these checks do not claim parity with Android's finger-radius rendered-feature
 query. That upstream API gap is documented and marked at the click handler.
+
+## Quest-pin viewport source
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests '*MapQuestPinsSourceTest'` | 4 pass | Zoom gating and viewport loading produce shared drawable pins, OSM and note quest keys round-trip through renderer properties, and malformed feature data is ignored safely. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*MapQuestPinsSourceTest'` | 4 pass | The same viewport and click-key contracts execute on the Android host runner. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | The renderer-independent viewport cache, listeners, cancellation, and shared drawable pins compile for JVM. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The common source compiles beside the active legacy quest manager during the transition. |
+| iOS simulator library | `./gradlew :app:compileKotlinIosSimulatorArm64` | Pass | The source and its concurrency primitives compile for Kotlin/Native. |
+
+This commit migrates quest-pin data ownership, but does not claim live quest-pin
+parity until the common map controller supplies its visible bounding box and
+cluster camera behavior on all three targets.

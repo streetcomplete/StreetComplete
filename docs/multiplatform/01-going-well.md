@@ -85,6 +85,10 @@
   It preserves the legacy zoom thresholds, cluster sizing and labels, full pin
   painter, collision box, ordering, visibility, pin clicks, and complete cluster
   leaf lookup through generation-bound source handles.
+- Quest-pin loading now also has a renderer-independent common source. It keeps
+  the zoom-16 viewport cache, 32-tile guard, multi-marker edge retention,
+  superseded-fetch cancellation, live quest deltas, user quest ordering, and
+  typed click-key round trips without retaining an Android map or lifecycle.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers
