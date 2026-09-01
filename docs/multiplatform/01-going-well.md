@@ -1,0 +1,17 @@
+# What is going well
+
+## Baseline on 2026-09-01
+
+- The `app` module is already a Kotlin Multiplatform library with Android,
+  `iosArm64`, and `iosSimulatorArm64` targets.
+- 1,237 Kotlin source files are already in `app/src/commonMain`; only 68 are in
+  `androidMain` and 30 are in `iosMain`.
+- The shared source set already contains the quest model, persistence, networking,
+  most platform-independent services, and 151 Compose screen files.
+- Compose resources, Koin, Ktor, kotlinx.serialization, kotlinx-datetime,
+  multiplatform settings, and bundled SQLite are already shared dependencies.
+- The clean baseline compiles common metadata, Android, and the iOS simulator
+  framework. The Android debug application assembles successfully.
+- A previous `upstream/maplibre-compose` branch contains useful exploratory work
+  for shared map layers and sources. It is being used as design input, not treated
+  as verified production code.
