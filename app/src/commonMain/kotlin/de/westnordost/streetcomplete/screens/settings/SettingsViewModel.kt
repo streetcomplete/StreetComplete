@@ -134,7 +134,7 @@ class SettingsViewModelImpl(
     }
 
     override fun deleteCache() {
-        cleaner.cleanAll()
+        launch(Dispatchers.IO) { cleaner.cleanAll() }
     }
 
     override fun setResurveyIntervals(value: ResurveyIntervals) { prefs.resurveyIntervals = value }

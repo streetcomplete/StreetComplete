@@ -17,11 +17,7 @@ fun initKoin() {
     }
     koin = koinApplication.koin
     koin.get<IosCrashReportHolder>().install()
-    koin.get<ApplicationInitializer>().initialize()
-}
-
-fun handleIncomingUri(uri: String) {
-    koin.get<IncomingUriHandler>().submit(uri)
+    koin.get<ApplicationInitializer>().initialize(schedulePeriodicCleanup = true)
 }
 
 fun startIosBackgroundSync(completion: (Boolean) -> Unit): IosBackgroundSyncHandle =

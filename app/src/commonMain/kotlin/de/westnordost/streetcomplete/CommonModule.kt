@@ -263,6 +263,7 @@ val commonModule = module {
         ApplicationInitializer(
             applicationScope = get(named("ApplicationScope")),
             preloader = get(),
+            cleaner = get(),
             editHistoryController = get(),
             feedsUpdater = get(),
             resurveyIntervalsUpdater = get(),

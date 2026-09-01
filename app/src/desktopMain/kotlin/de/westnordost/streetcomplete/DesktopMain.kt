@@ -6,7 +6,9 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import de.westnordost.streetcomplete.ui.theme.PreferenceAwareAppTheme
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.job
+import kotlinx.coroutines.runBlocking
 import org.koin.core.context.GlobalContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
@@ -20,22 +22,24 @@ fun main(args: Array<String>) {
     val applicationScope = koin.get<CoroutineScope>(named("ApplicationScope"))
 
     koin.get<de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder>()
-    koin.get<ApplicationInitializer>().initialize()
+    koin.get<ApplicationInitializer>().initialize(schedulePeriodicCleanup = true)
     args.firstOrNull()?.let(koin.get<IncomingUriHandler>()::submit)
 
-    application {
-        Window(
-            onCloseRequest = {
-                applicationScope.cancel()
-                stopKoin()
-                exitApplication()
-            },
-            title = "StreetComplete",
-            state = rememberWindowState(width = 1200.dp, height = 800.dp),
-        ) {
-            ProvideMapPresentationHost(rememberAwtComposeMapPresentationHost(window)) {
-                PreferenceAwareAppTheme { StreetCompleteApp() }
+    try {
+        application {
+            Window(
+                onCloseRequest = ::exitApplication,
+                title = "StreetComplete",
+                state = rememberWindowState(width = 1200.dp, height = 800.dp),
+            ) {
+                ProvideMapPresentationHost(rememberAwtComposeMapPresentationHost(window)) {
+                    PreferenceAwareAppTheme { StreetCompleteApp() }
+                }
             }
         }
+    } finally {
+        // Compose disposes the window and all map presentations before native/database owners close.
+        runBlocking { applicationScope.coroutineContext.job.cancelAndJoin() }
+        stopKoin()
     }
 }
