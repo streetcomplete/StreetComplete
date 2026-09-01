@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
@@ -17,7 +18,9 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.preferences.Preferences
+import de.westnordost.streetcomplete.util.ktx.toLocation
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.initialBearingTo
 import kotlinx.coroutines.CoroutineScope
@@ -27,6 +30,8 @@ import org.maplibre.compose.camera.CameraMoveReason
 import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.map.MapPresentationDetachedException
 import org.maplibre.compose.map.MapState
+import org.maplibre.compose.location.LocationMeasurement
+import org.maplibre.compose.location.LocationEvent
 import org.maplibre.spatialk.geojson.BoundingBox
 import org.maplibre.spatialk.geojson.Position
 import kotlin.math.PI
@@ -53,13 +58,25 @@ import kotlin.time.Duration.Companion.milliseconds
 class MainMapState internal constructor(
     val mapState: MapState,
     private val controller: MainMapCameraController,
+    private val tracks: MainMapTrackState,
 ) {
+    init {
+        controller.onLocationRestored(
+            tracks.displayedMeasurement?.toLocation(),
+            tracks.currentTrack.map(Trackpoint::position),
+        )
+    }
+
     val isFollowingPosition: Boolean get() = controller.isFollowingPosition
     val isNavigationMode: Boolean get() = controller.isNavigationMode
     val userHasMovedCamera: Boolean get() = controller.userHasMovedCamera
     val displayedLocation: Location? get() = controller.displayedLocation
     val cameraPosition: CameraPosition get() = mapState.cameraPosition
     val cameraPadding: PaddingValues get() = controller.cameraPadding
+    val displayedMeasurement: LocationMeasurement? get() = tracks.displayedMeasurement
+    val isRecordingTrack: Boolean get() = tracks.isRecording
+    val currentRenderedTrack: List<LatLon> get() = tracks.currentRenderedTrack
+    val oldRenderedTracks: List<List<LatLon>> get() = tracks.oldRenderedTracks
 
     fun setFollowingPosition(value: Boolean) = controller.updateFollowingPosition(value)
     fun setNavigationMode(value: Boolean) = controller.updateNavigationMode(value)
@@ -88,6 +105,20 @@ class MainMapState internal constructor(
         return position.distanceTo(edge)
     }
 
+    fun onLocationEvent(event: LocationEvent) {
+        when (event) {
+            is LocationEvent.Update -> tracks.onLocationMeasurement(event.measurement)
+            is LocationEvent.Unavailable -> tracks.onLocationUnavailable()
+        }
+        controller.onLocationChanged(
+            tracks.displayedMeasurement?.toLocation(),
+            tracks.currentTrack.map(Trackpoint::position),
+        )
+    }
+
+    fun startTrackRecording() = tracks.startRecording()
+    fun stopTrackRecording(): List<Trackpoint> = tracks.stopRecording()
+
     internal fun onLocationChanged(location: Location?, track: List<LatLon>) =
         controller.onLocationChanged(location, track)
 
@@ -96,6 +127,8 @@ class MainMapState internal constructor(
         moveReason: CameraMoveReason,
         isMoving: Boolean,
     ) = controller.onCameraChanged(position, moveReason, isMoving)
+
+    internal fun onMapPresented() = controller.onMapPresented()
 
     internal fun save() = controller.save()
 }
@@ -107,8 +140,9 @@ fun rememberMainMapState(
 ): MainMapState {
     val persistedState = remember(preferences) { PreferencesMapCameraState(preferences) }
     val mapState = rememberStreetCompleteMapState(persistedState.loadCamera())
+    val tracks = rememberSaveable(saver = MainMapTrackState.Saver) { MainMapTrackState() }
     val scope = rememberCoroutineScope()
-    val state = remember(mapState, persistedState, scope) {
+    val state = remember(mapState, persistedState, scope, tracks) {
         MainMapState(
             mapState,
             MainMapCameraController(
@@ -116,6 +150,7 @@ fun rememberMainMapState(
                 persistedState = persistedState,
                 scope = scope,
             ),
+            tracks,
         )
     }
     DisposableEffect(state) {
@@ -317,6 +352,15 @@ internal class MainMapCameraController(
         } else if (isFollowingPosition) {
             centerCurrentPosition()
         }
+    }
+
+    fun onLocationRestored(location: Location?, track: List<LatLon>) {
+        displayedLocation = location
+        this.track = track
+    }
+
+    fun onMapPresented() {
+        if (isFollowingPosition) centerCurrentPosition()
     }
 
     fun onCameraChanged(

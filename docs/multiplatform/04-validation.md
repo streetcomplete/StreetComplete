@@ -275,3 +275,17 @@ interaction evidence remain outstanding.
 
 These checks do not claim live pointer behavior. The target demos must verify
 callback ordering and the 14dp projected ground radius after entry-point wiring.
+
+## Shared GPS track state
+
+| Target | Command | Result | What it proves |
+| --- | --- | --- | --- |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests '*MainMapTrackStateTest'` | 6 pass | Accuracy rejection, stable timestamps, elevation, timed segmentation, recording handoff/recovery, renderer chunking, and bounded restoration retain the production data contract. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests '*MainMapTrackStateTest'` | 6 pass | The same track ownership and restoration contract executes on the Android host runner. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Saveable track ownership and renderer wiring compile for desktop. |
+| Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared track state compiles beside the transition fragment. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Serializable location measurements, track state, saver, and renderer wiring link through Kotlin/Native. |
+
+The provider-outage test deliberately locks in a repair: logical recording was
+already retained by Android, but its cleared renderer silently lost the red
+recording style. Shared state keeps those two states consistent when GPS fixes resume.

@@ -43,6 +43,9 @@
   MapLibre Compose exposes it as a common source option.
 - [x] Port recorded-track geometry, styling, animation, and bounded-segment
   rendering to shared MapLibre Compose layers.
+- [x] Move track accumulation, accuracy filtering, timed segment breaks,
+  recording start/stop handoff, renderer chunking, and saveable restoration to
+  common state.
 - [ ] Restore the three recorded-track GeoJSON sources' volatile cache hints
   when MapLibre Compose exposes them as common source options.
 - [x] Port focused point, line, polygon, and multipolygon rendering and its

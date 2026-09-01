@@ -123,6 +123,11 @@
   values. Shared callbacks preserve consuming long presses, suppress raw map
   clicks behind interactive pins/overlays, and derive the legacy 14dp finger
   radius in ground meters from the rendered projection on every target.
+- GPS track accumulation and recording now live in saveable common state. The
+  20m accuracy filter, 60-second non-recording segment break, elevation and
+  wall-clock capture, 50/100-point renderer chunking, recording handoff, and
+  1,000-point restoration cap are shared. A provider outage now consistently
+  keeps both recording intent and the red recording style when capture resumes.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers
