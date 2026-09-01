@@ -2,8 +2,10 @@ package de.westnordost.streetcomplete
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.navigation.NavHostController
@@ -36,12 +38,14 @@ fun StreetCompleteApp(
     editHistoryViewModel: EditHistoryViewModel = koinViewModel(),
     mainBottomSheetViewModel: MainBottomSheetViewModel = koinViewModel(),
     autoSyncer: AutoSyncer = koinInject(),
+    incomingUriHandler: IncomingUriHandler = koinInject(),
     locationProvider: LocationProvider = koinInject(),
     mapAppLauncher: MapAppLauncher = rememberMapAppLauncher(),
     onMainShown: () -> Unit = {},
 ) {
     val navController = rememberNavController()
     val lifecycleOwner = LocalLifecycleOwner.current
+    val incomingUriSequence by incomingUriHandler.submissionSequence.collectAsState()
 
     DisposableEffect(lifecycleOwner, autoSyncer) {
         lifecycleOwner.lifecycle.addObserver(autoSyncer)
@@ -55,6 +59,14 @@ fun StreetCompleteApp(
             launchSingleTop = true
         }
         onNavigationRequestHandled()
+    }
+
+    LaunchedEffect(incomingUriSequence) {
+        if (incomingUriSequence == 0L) return@LaunchedEffect
+        navController.navigate(AppDestination.Main.route) {
+            popUpTo(AppDestination.Main.route)
+            launchSingleTop = true
+        }
     }
 
     NavHost(

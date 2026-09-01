@@ -18,4 +18,14 @@ class IncomingUriHandlerTest {
             handler.uris.take(2).toList(),
         )
     }
+
+    @Test fun eachSubmissionRequestsMainNavigation() {
+        val handler = IncomingUriHandler()
+
+        assertEquals(0L, handler.submissionSequence.value)
+        handler.submit("geo:1,2")
+        handler.submit("https://streetcomplete.app/config/test")
+
+        assertEquals(2L, handler.submissionSequence.value)
+    }
 }
