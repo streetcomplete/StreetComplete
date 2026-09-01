@@ -34,7 +34,6 @@ fun MainMap(
     onClickOverlayElement: (ElementKey) -> Unit,
     onClickQuest: (QuestKey) -> Unit,
     onClickEdit: (de.westnordost.streetcomplete.data.edithistory.EditKey) -> Unit,
-    onClickCluster: (List<LatLon>) -> Unit,
     location: Location?,
     locationRotation: Float?,
     trackpoints: List<LatLon>,
@@ -134,7 +133,7 @@ fun MainMap(
                     onClickPin = { properties ->
                         viewModel.getEditKey(properties)?.let(onClickEdit)
                     },
-                    onClickCluster = onClickCluster,
+                    onClickCluster = state::fitCluster,
                 )
             } else {
                 PinsLayers(
@@ -143,7 +142,7 @@ fun MainMap(
                     onClickPin = { properties ->
                         viewModel.getQuestKey(properties)?.let(onClickQuest)
                     },
-                    onClickCluster = onClickCluster,
+                    onClickCluster = state::fitCluster,
                 )
             }
 

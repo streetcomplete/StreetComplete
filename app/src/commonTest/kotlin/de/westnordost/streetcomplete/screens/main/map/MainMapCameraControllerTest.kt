@@ -6,6 +6,7 @@ import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.maplibre.compose.camera.CameraMoveReason
 import org.maplibre.compose.camera.CameraPosition
+import org.maplibre.spatialk.geojson.BoundingBox
 import org.maplibre.spatialk.geojson.Position
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -94,6 +95,18 @@ class MainMapCameraControllerTest {
         assertEquals(300.milliseconds, camera.animations.single().duration)
     }
 
+    @Test fun clusterClickAnimatesTheComputedCameraForAtLeastLegacyMinimum() = runTest {
+        val camera = FakeCamera(CameraPosition(zoom = 10.0))
+        camera.visibleBoundingBox = BoundingBox(Position(-1.0, -1.0), Position(1.0, 1.0))
+        val controller = controller(camera = camera, scope = this)
+
+        controller.fitCluster(listOf(LatLon(-0.5, -0.5), LatLon(0.5, 0.5)))
+        advanceUntilIdle()
+
+        assertEquals(10.75, camera.position.zoom, absoluteTolerance = 0.001)
+        assertEquals(450.milliseconds, camera.animations.single().duration)
+    }
+
     @Test fun settledCameraAndInteractionModeArePersisted() = runTest {
         val camera = FakeCamera(CameraPosition())
         val persisted = FakePersistedState()
@@ -127,6 +140,10 @@ class MainMapCameraControllerTest {
 
 private class FakeCamera(initialPosition: CameraPosition) : MainMapCamera {
     override var position: CameraPosition = initialPosition
+    override var visibleBoundingBox: BoundingBox? = BoundingBox(
+        southwest = Position(-1.0, -1.0),
+        northeast = Position(1.0, 1.0),
+    )
     val animations = mutableListOf<Animation>()
 
     override suspend fun animateTo(position: CameraPosition, duration: Duration) {

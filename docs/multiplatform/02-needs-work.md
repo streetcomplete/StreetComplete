@@ -19,7 +19,8 @@
   ordering, visibility, clicks, and cluster-leaf lookup to MapLibre Compose.
 - [x] Move the quest and edit-history pin data managers to common code and wire
   typed pin and cluster-leaf callbacks into the shared renderer.
-- [ ] Wire cluster camera fitting into the shared map controller.
+- [x] Wire antimeridian-safe cluster camera fitting, breathing room, zoom cap,
+  and distance-scaled animation into the shared map controller.
 - [x] Move persisted camera position, zoom controls, compass reset, GPS following,
   navigation tilt/bearing, and user-pan detection into shared map state.
 - [ ] Replace target-delta pan detection with an explicit pan-begin callback when

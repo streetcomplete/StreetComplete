@@ -112,6 +112,9 @@
   compass reset, GPS following, navigation tilt and track bearing, the legacy
   first-fix zoom rule, and user-movement state. Camera policy is tested without a
   platform map view and drives the same durable MapLibre state on all targets.
+- Cluster clicks now calculate their camera from the immutable rendered viewport,
+  retain the legacy 0.25-level breathing room and zoom-19 cap, scale animation
+  duration with zoom distance, and center correctly across the antimeridian.
 - The snapshot accepts negative `DpPadding` sides, so StreetComplete can express
   the pin's asymmetric collision box directly; the pre-0.15 workaround is gone.
 - Styleable overlays now have shared feature conversion and declarative layers

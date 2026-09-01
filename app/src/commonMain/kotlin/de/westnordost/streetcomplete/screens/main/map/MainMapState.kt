@@ -20,7 +20,18 @@ import org.maplibre.compose.camera.CameraMoveReason
 import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.map.MapPresentationDetachedException
 import org.maplibre.compose.map.MapState
+import org.maplibre.spatialk.geojson.BoundingBox
 import org.maplibre.spatialk.geojson.Position
+import kotlin.math.PI
+import kotlin.math.abs
+import kotlin.math.atan
+import kotlin.math.exp
+import kotlin.math.ln
+import kotlin.math.log2
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.pow
+import kotlin.math.tan
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -48,6 +59,7 @@ class MainMapState internal constructor(
     fun zoomOut() = controller.zoomBy(-1.0)
     fun zoomByDrag(dp: Float) = controller.zoomBy(dp / 20.0)
     fun resetCompass() = controller.resetCompass()
+    fun fitCluster(positions: List<LatLon>) = controller.fitCluster(positions)
 
     internal fun onLocationChanged(location: Location?, track: List<LatLon>) =
         controller.onLocationChanged(location, track)
@@ -87,11 +99,14 @@ fun rememberMainMapState(
 
 internal interface MainMapCamera {
     val position: CameraPosition
+    val visibleBoundingBox: BoundingBox?
     suspend fun animateTo(position: CameraPosition, duration: Duration)
 }
 
 private class MapLibreCamera(private val state: MapState) : MainMapCamera {
     override val position: CameraPosition get() = state.cameraPosition
+    override val visibleBoundingBox: BoundingBox?
+        get() = state.presentation?.viewport?.visibleBoundingBox
 
     override suspend fun animateTo(position: CameraPosition, duration: Duration) {
         val presentation = state.presentation ?: return
@@ -188,6 +203,18 @@ internal class MainMapCameraController(
         animateCamera(300.milliseconds) { copy(zoom = zoom + delta) }
     }
 
+    fun fitCluster(positions: List<LatLon>) {
+        val target = clusterCameraPosition(
+            current = camera.position,
+            visibleBoundingBox = camera.visibleBoundingBox ?: return,
+            positions = positions,
+        ) ?: return
+        val duration = max(450.0, abs(camera.position.zoom - target.zoom) * 450.0)
+            .toLong()
+            .milliseconds
+        scope.launch { camera.animateTo(target, duration) }
+    }
+
     fun onLocationChanged(location: Location?, track: List<LatLon>) {
         displayedLocation = location
         this.track = track
@@ -256,3 +283,77 @@ internal fun getTrackBearingFromPositions(track: List<LatLon>): Double? {
 }
 
 private const val MIN_TRACK_DISTANCE_FOR_BEARING = 15f
+
+/** Reproduces the legacy clustered-pin camera plan from the current rendered viewport. */
+internal fun clusterCameraPosition(
+    current: CameraPosition,
+    visibleBoundingBox: BoundingBox,
+    positions: List<LatLon>,
+): CameraPosition? {
+    if (positions.isEmpty()) return null
+
+    val firstX = longitudeToMercatorX(positions.first().longitude)
+    val unwrappedX = positions.map { position ->
+        val x = longitudeToMercatorX(position.longitude)
+        x + when {
+            x - firstX > 0.5 -> -1.0
+            x - firstX < -0.5 -> 1.0
+            else -> 0.0
+        }
+    }
+    val targetMinX = unwrappedX.min()
+    val targetMaxX = unwrappedX.max()
+    val targetY = positions.map { latitudeToMercatorY(it.latitude) }
+    val targetMinY = targetY.min()
+    val targetMaxY = targetY.max()
+
+    val visibleWidth = longitudeSpan(
+        visibleBoundingBox.southwest.longitude,
+        visibleBoundingBox.northeast.longitude,
+    )
+    val visibleHeight = abs(
+        latitudeToMercatorY(visibleBoundingBox.southwest.latitude) -
+            latitudeToMercatorY(visibleBoundingBox.northeast.latitude)
+    )
+    val marginFactor = 2.0.pow(CLUSTER_ZOOM_MARGIN)
+    val targetWidth = (targetMaxX - targetMinX) * marginFactor
+    val targetHeight = (targetMaxY - targetMinY) * marginFactor
+    val zoomCandidates = buildList {
+        if (visibleWidth > 0.0 && targetWidth > 0.0) add(current.zoom + log2(visibleWidth / targetWidth))
+        if (visibleHeight > 0.0 && targetHeight > 0.0) add(current.zoom + log2(visibleHeight / targetHeight))
+    }
+    val targetZoom = (zoomCandidates.minOrNull() ?: CLUSTER_MAX_ZOOM)
+        .coerceIn(0.0, CLUSTER_MAX_ZOOM)
+
+    val centerX = normalizeMercatorX((targetMinX + targetMaxX) / 2.0)
+    val centerY = (targetMinY + targetMaxY) / 2.0
+    return current.copy(
+        target = Position(
+            longitude = mercatorXToLongitude(centerX),
+            latitude = mercatorYToLatitude(centerY),
+        ),
+        zoom = targetZoom,
+    )
+}
+
+private fun longitudeToMercatorX(longitude: Double) = (longitude + 180.0) / 360.0
+private fun mercatorXToLongitude(x: Double) = x * 360.0 - 180.0
+private fun normalizeMercatorX(x: Double) = ((x % 1.0) + 1.0) % 1.0
+
+private fun latitudeToMercatorY(latitude: Double): Double {
+    val radians = latitude.coerceIn(-MAX_MERCATOR_LATITUDE, MAX_MERCATOR_LATITUDE) * PI / 180.0
+    return (1.0 - ln(tan(radians) + 1.0 / kotlin.math.cos(radians)) / PI) / 2.0
+}
+
+private fun mercatorYToLatitude(y: Double): Double =
+    (2.0 * atan(exp((1.0 - 2.0 * y) * PI)) - PI / 2.0) * 180.0 / PI
+
+private fun longitudeSpan(west: Double, east: Double): Double {
+    val raw = east - west
+    if (abs(raw) >= 360.0) return 1.0
+    return ((raw % 360.0) + 360.0) % 360.0 / 360.0
+}
+
+private const val CLUSTER_ZOOM_MARGIN = 0.25
+private const val CLUSTER_MAX_ZOOM = 19.0
+private const val MAX_MERCATOR_LATITUDE = 85.0511287798066
