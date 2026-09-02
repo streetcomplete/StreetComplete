@@ -2,9 +2,6 @@ package de.westnordost.streetcomplete.data.connection
 
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withTimeoutOrNull
 import platform.Network.nw_path_get_status
 import platform.Network.nw_path_is_expensive
 import platform.Network.nw_path_monitor_cancel
@@ -16,7 +13,6 @@ import platform.Network.nw_path_status_invalid
 import platform.Network.nw_path_status_satisfied
 import platform.Network.nw_path_t
 import platform.darwin.dispatch_queue_create
-import kotlin.time.Duration.Companion.milliseconds
 
 class IosActiveNetworkConnection : ActiveNetworkConnection {
     private val queue = dispatch_queue_create("network-monitor", null)
