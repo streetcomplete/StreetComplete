@@ -43,6 +43,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import org.koin.dsl.onClose
 import org.maplibre.compose.location.AndroidLocationProvider
 import org.maplibre.compose.location.AndroidSystemSettingsLauncher
 import org.maplibre.compose.location.LocationProvider
@@ -78,7 +79,7 @@ val androidModule = module {
         val databaseFilePath = get<Context>().getDatabasePath(ApplicationConstants.DATABASE_NAME).path
         val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
         DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
-    }
+    } onClose { it?.close() }
 
     // avatars cache dir
 
