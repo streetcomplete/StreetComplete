@@ -33,7 +33,7 @@ class AddEntranceReferenceTest {
     }
 
     @Test
-    fun `applicable only to buildings with multiple entrances, multiple entrances in entire dataset does not count`() {
+    fun `applicable only to buildings with multiple entrances while dataset count does not count`() {
         val mapData = TestMapDataWithGeometry(
             listOf(
                 node(1, LatLon(50.0, 20.0), mapOf("entrance" to "staircase")),

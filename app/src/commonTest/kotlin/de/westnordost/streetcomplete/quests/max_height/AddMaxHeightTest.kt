@@ -178,7 +178,7 @@ class AddMaxHeightTest {
         )
     }
 
-    @Test fun `not applicable to road on same layer as bridge, even if they intersect`() {
+    @Test fun `not applicable to intersecting road on same layer as bridge`() {
         val bridge = way(1, listOf(1, 2), mapOf(
             "highway" to "residential",
             "layer" to "1",
