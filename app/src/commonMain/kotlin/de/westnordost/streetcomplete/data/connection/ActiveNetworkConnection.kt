@@ -4,9 +4,7 @@ import kotlinx.coroutines.flow.Flow
 
 /** Provides information about the default active network connection */
 interface ActiveNetworkConnection {
-    val capabilitiesFlow: Flow<NetworkCapabilities?>
-
-    val capabilities: NetworkCapabilities?
+    val capabilities: Flow<NetworkCapabilities?>
 }
 
 data class NetworkCapabilities(

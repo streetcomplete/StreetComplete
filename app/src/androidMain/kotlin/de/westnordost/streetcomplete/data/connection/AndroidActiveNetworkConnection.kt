@@ -12,8 +12,8 @@ import kotlinx.coroutines.flow.callbackFlow
 private typealias AndroidNetworkCapabilities = android.net.NetworkCapabilities
 
 class AndroidActiveNetworkConnection(private val context: Context) : ActiveNetworkConnection {
-    override val capabilitiesFlow: Flow<NetworkCapabilities?> = callbackFlow {
-        trySend(capabilities)
+    override val capabilities: Flow<NetworkCapabilities?> = callbackFlow {
+        trySend(getCurrentCapabilities())
 
         val networkCallback = object : NetworkCallback() {
             override fun onCapabilitiesChanged(network: Network, networkCapabilities: AndroidNetworkCapabilities) {
@@ -30,7 +30,7 @@ class AndroidActiveNetworkConnection(private val context: Context) : ActiveNetwo
         awaitClose { context.connectivityManager.unregisterNetworkCallback(networkCallback) }
     }
 
-    override val capabilities: NetworkCapabilities? get() {
+    private fun getCurrentCapabilities(): NetworkCapabilities? {
         val activeNetwork = context.connectivityManager.activeNetwork ?: return null
         val networkCapabilities = context.connectivityManager.getNetworkCapabilities(activeNetwork)
 

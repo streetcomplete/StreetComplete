@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.viewModelScope
-import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -49,6 +48,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.plus
@@ -288,7 +288,7 @@ class MainViewModelImpl(
     override val isUserInitiatedDownloadInProgress: Boolean
         get() = downloadProgressSource.isUserInitiatedDownloadInProgress
 
-    override var isLoggedIn: StateFlow<Boolean> = callbackFlow {
+    override val isLoggedIn: StateFlow<Boolean> = callbackFlow {
         send(userLoginSource.isLoggedIn)
         val listener = object : UserLoginSource.Listener {
             override fun onLoggedIn() { trySend(true) }
@@ -298,7 +298,12 @@ class MainViewModelImpl(
         awaitClose { userLoginSource.removeListener(listener) }
     }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
-    override val isConnected: Boolean get() = activeNetworkConnection.capabilities?.hasInternet == true
+    private val isConnectedState: StateFlow<Boolean> =
+        activeNetworkConnection.capabilities
+            .map { it?.hasInternet == true }
+            .stateIn(viewModelScope, SharingStarted.Eagerly, false)
+
+    override val isConnected: Boolean get() = isConnectedState.value
 
     override fun upload() {
         if (isLoggedIn.value) {
@@ -322,7 +327,7 @@ class MainViewModelImpl(
 
     private suspend fun ensureLoggedIn() {
         if (
-            activeNetworkConnection.capabilities?.hasInternet == true &&
+            isConnected &&
             !userLoginSource.isLoggedIn &&
             prefs.autosync != Autosync.OFF &&
             // new users should not be immediately pestered to login after each change (#1446)
