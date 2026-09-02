@@ -98,6 +98,7 @@ import de.westnordost.streetcomplete.quests.firewood.AddFirewood
 import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
 import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
+import de.westnordost.streetcomplete.quests.general_access.AddGeneralAccess
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
 import de.westnordost.streetcomplete.quests.grit_bin_seasonal.AddGritBinSeasonal
 import de.westnordost.streetcomplete.quests.hairdresser.AddHairdresserCustomers
@@ -364,6 +365,7 @@ fun questTypeRegistry(
 
     59 to AddSelfServiceLaundry(),
 
+    200 to AddGeneralAccess(),
     60 to AddGeneralFee(),
 
     61 to AddDrinkingWater(), // used by AnyFinder
