@@ -33,10 +33,12 @@ data class TimeFormatElements(
             var hourSeparator = ":"
             var zero = '0'
             var clock12Elements: Clock12Elements? = null
+            var earlyHour = ""
 
             regex.matchEntire(early)?.let { matchResult ->
                 val values = matchResult.groupValues
                 beforeAm = values[1]
+                earlyHour = values[2]
                 hourSeparator = values[3]
                 zero = values[4].firstOrNull() ?: '0'
                 afterAm = values[5]
@@ -44,7 +46,7 @@ data class TimeFormatElements(
             regex.matchEntire(late)?.let { matchResult ->
                 val values = matchResult.groupValues
                 beforePm = values[1]
-                is24HourClock = values[2].toIntOrNull() == 13
+                is24HourClock = values[2] != earlyHour
                 afterPm = values[5]
             }
             if (!is24HourClock) {
