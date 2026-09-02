@@ -389,7 +389,7 @@ class AddOpeningHoursTest {
         ))
     }
 
-    @Test fun `isApplicableTo returns false if the opening hours are not signed, even if there are actually some set`() {
+    @Test fun `isApplicableTo is false for unsigned opening hours even when hours are set`() {
         assertFalse(questType.isApplicableTo(
             node(
                 tags = mapOf(

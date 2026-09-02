@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
+import de.westnordost.streetcomplete.data.connection.NetworkCapabilities
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
 import de.westnordost.streetcomplete.data.download.strategy.MobileDataAutoDownloadStrategy
@@ -23,6 +24,7 @@ import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.maplibre.compose.location.LocationAccuracy
 import org.maplibre.compose.location.LocationEvent
@@ -51,6 +53,8 @@ class AutoSyncer(
 ) : DefaultLifecycleObserver {
 
     private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("QuestAutoSyncer"))
+
+    private val networkCapabilities = MutableStateFlow<NetworkCapabilities?>(null)
 
     private var pos: LatLon? = null
 
@@ -87,7 +91,7 @@ class AutoSyncer(
 
     val isAllowedByPreference: Boolean get() = when (prefs.autosync) {
         Autosync.ON -> true
-        Autosync.WIFI -> activeNetworkConnection.capabilities?.isMetered == false
+        Autosync.WIFI -> networkCapabilities.value?.isMetered == false
         Autosync.OFF -> false
     }
 
@@ -101,7 +105,9 @@ class AutoSyncer(
 
         coroutineScope.launch {
             owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                activeNetworkConnection.capabilitiesFlow.collect { capabilities ->
+                activeNetworkConnection.capabilities.collect { capabilities ->
+                    networkCapabilities.value = capabilities
+
                     if (capabilities?.hasInternet == true) {
                         triggerAutoSync()
                     }
@@ -125,7 +131,7 @@ class AutoSyncer(
     }
 
     override fun onResume(owner: LifecycleOwner) {
-        if (activeNetworkConnection.capabilities?.hasInternet == true) {
+        if (networkCapabilities.value?.hasInternet == true) {
             triggerAutoSync()
         }
     }
@@ -147,14 +153,14 @@ class AutoSyncer(
 
     private fun triggerAutoDownload() {
         val pos = pos ?: return
-        if (activeNetworkConnection.capabilities?.hasInternet != true) return
+        if (networkCapabilities.value?.hasInternet != true) return
         if (downloadProgressSource.isDownloadInProgress) return
 
         Log.i(TAG, "Checking whether to automatically download new quests at ${pos.latitude.format(7)},${pos.longitude.format(7)}")
 
         coroutineScope.launch {
             val downloadStrategy =
-                if (activeNetworkConnection.capabilities?.isMetered == false) wifiDownloadStrategy
+                if (networkCapabilities.value?.isMetered == false) wifiDownloadStrategy
                 else mobileDataDownloadStrategy
             val downloadBoundingBox = downloadStrategy.getDownloadBoundingBox(pos)
             if (downloadBoundingBox != null) {
@@ -171,7 +177,7 @@ class AutoSyncer(
 
     private fun triggerAutoUpload() {
         if (!isAllowedByPreference) return
-        if (activeNetworkConnection.capabilities?.hasInternet != true) return
+        if (networkCapabilities.value?.hasInternet != true) return
         if (!userLoginSource.isLoggedIn) return
 
         coroutineScope.launch {

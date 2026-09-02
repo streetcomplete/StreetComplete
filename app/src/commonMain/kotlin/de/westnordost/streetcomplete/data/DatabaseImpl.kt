@@ -141,6 +141,10 @@ class DatabaseImpl(private val connection: SQLiteConnection) : Database {
             transactionDepth--
         }
     }
+
+    override fun close() {
+        connection.close()
+    }
 }
 
 private class CursorPositionImpl(private val statement: SQLiteStatement) : CursorPosition {

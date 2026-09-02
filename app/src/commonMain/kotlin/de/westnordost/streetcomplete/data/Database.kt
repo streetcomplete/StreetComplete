@@ -82,6 +82,8 @@ interface Database {
     ): Int
 
     fun <T> transaction(block: () -> T): T
+
+    fun close()
 }
 
 enum class ConflictAlgorithm {
