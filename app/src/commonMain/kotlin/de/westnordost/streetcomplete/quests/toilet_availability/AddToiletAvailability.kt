@@ -20,7 +20,7 @@ class AddToiletAvailability : OsmFilterQuestType<Boolean>() {
         nodes, ways with
         (
           shop ~ mall|department_store
-          or highway ~ services|rest_area
+          or highway ~ services|rest_area|trailhead
           or tourism ~ camp_site|caravan_site|wilderness_hut
           or leisure ~ bathing_place|marina
           or amenity = ranger_station
