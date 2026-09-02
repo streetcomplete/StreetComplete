@@ -22,7 +22,9 @@ data class TimeFormatElements(
                 locale = locale,
                 style = DateTimeFormatStyle.Short
             )
-            val regex = Regex("(?:(\\D*)\\h)?(\\d{1,2})(\\D+)(\\d)\\d(?:\\h(.*))?")
+            val d = "\\p{Nd}" // digit
+            val a = "\\P{Nd}" // not a digit
+            val regex = Regex("(?:($a*)\\h)?($d{1,2})($a+)($d)$d(?:\\h(.*))?")
             val early = formatter.format(LocalTime(1, 0))
             val late = formatter.format(LocalTime(13, 0))
             var beforeAm = ""
