@@ -1154,6 +1154,10 @@
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
 
+    <string name="quest_generalAccess_title">Who may use this?</string>
+    <string name="quest_generalAccess_title2">Who may enter here?</string>
+    <string name="quest_generalAccess_title3">Who may stay here?</string>
+    <string name="quest_generalAccess_hint">It may be free or paid.</string>
     <string name="quest_generalFee_title">Do you need to pay to use this?</string>
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_generalFee_title3">Do you need to pay to stay here?</string>
