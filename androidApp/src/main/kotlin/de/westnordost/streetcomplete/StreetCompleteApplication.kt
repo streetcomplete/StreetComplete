@@ -62,7 +62,6 @@ class StreetCompleteApplication : Application() {
         super.onCreate()
 
         deleteDatabase(ApplicationConstants.OLD_DATABASE_NAME)
-
         startKoin {
             androidContext(this@StreetCompleteApplication)
             workManagerFactory()
