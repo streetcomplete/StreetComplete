@@ -5,6 +5,7 @@ import de.westnordost.streetcomplete.ApplicationConstants.CALENDAR_EVENT_MAX_IN_
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.distanceTo
+import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -18,7 +19,7 @@ class OsmCalUpdater(
     private val controller: CalendarEventsController,
     private val prefs: Preferences
 ) {
-    private val coroutineScope = CoroutineScope(SupervisorJob())
+    private val coroutineScope = CoroutineScope(SupervisorJob()  + CoroutineName("OsmCalUpdater"))
 
     fun update() = coroutineScope.launch(Dispatchers.IO) {
         try {
@@ -37,6 +38,6 @@ class OsmCalUpdater(
     }
 
     companion object {
-        private const val TAG = "WeeklyOsmUpdater"
+        private const val TAG = "OsmCalUpdater"
     }
 }
