@@ -30,6 +30,7 @@ import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.R
 import de.westnordost.streetcomplete.data.FeedsUpdater
+import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
@@ -140,6 +141,7 @@ class MainActivity :
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val locationProvider: LocationProvider by inject()
     private val systemSettingsLauncher: SystemSettingsLauncher by inject()
+    private val periodicCleaner: PeriodicCleaner by inject()
 
     private val viewModel by viewModel<MainViewModel>()
     private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
@@ -184,7 +186,14 @@ class MainActivity :
         }
 
         lifecycle.addObserver(autoSyncer)
+
         feedsUpdater.updateAtMostDaily()
+        // this must be enqueued once the UI is started, i.e. not in headless mode. This is why
+        // it is done here, rather than in AppInitializer. Reason is that
+        // AppInitializer.initialize() is also executed when a background job is run. But we don't
+        // want to enqueue the cleanup job again while running the cleanup job, but only once after
+        // the user actually opened the app!
+        periodicCleaner.enqueue()
 
         compose.setContent { AppTheme {
             val mapAppLauncher = rememberMapAppLauncher()
