@@ -1,18 +1,23 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.pin_circle
-import de.westnordost.streetcomplete.resources.preset_maki_circle
 import de.westnordost.streetcomplete.screens.main.map.pinPainter
 import de.westnordost.streetcomplete.screens.main.map.toPosition
+import de.westnordost.streetcomplete.screens.main.map.toPinImageBitmap
 import de.westnordost.streetcomplete.ui.ktx.id
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.JsonElement
@@ -24,7 +29,6 @@ import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.ast.Expression
 import org.maplibre.compose.expressions.dsl.all
 import org.maplibre.compose.expressions.dsl.any
-import org.maplibre.compose.expressions.dsl.case
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToNumber
 import org.maplibre.compose.expressions.dsl.convertToString
@@ -38,16 +42,17 @@ import org.maplibre.compose.expressions.dsl.lte
 import org.maplibre.compose.expressions.dsl.offset
 import org.maplibre.compose.expressions.dsl.plus
 import org.maplibre.compose.expressions.dsl.sp
-import org.maplibre.compose.expressions.dsl.switch
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.ImageValue
 import org.maplibre.compose.expressions.value.TranslateAnchor
 import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.map.MapState
+import org.maplibre.compose.map.StyleLoadState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.GeoJsonOptions
 import org.maplibre.compose.sources.GeoJsonSource
+import org.maplibre.compose.sources.GeoJsonSourceHandle
 import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
@@ -80,8 +85,32 @@ fun PinsLayers(
         )
     }
 
-    val source = remember(snapshot.data, options) {
-        GeoJsonSource(PINS_SOURCE_ID, snapshot.data, options)
+    val source = remember(options) {
+        GeoJsonSource(PINS_SOURCE_ID, EMPTY_PIN_DATA, options)
+    }
+    val styleLoadState = mapState.style.loadState
+    val sourceHandle = mapState.style.sources[PINS_SOURCE_ID] as? GeoJsonSourceHandle
+    val generation = remember(styleLoadState) { PinStyleGeneration() }
+    val pendingImages = rememberPinStyleImages(
+        snapshot.icons,
+        generation.installedImageIds,
+        styleLoadState == StyleLoadState.Ready && sourceHandle != null,
+    )
+
+    LaunchedEffect(sourceHandle, snapshot, pendingImages) {
+        if (sourceHandle == null) return@LaunchedEffect
+        if (generation.publishedSnapshot === snapshot) return@LaunchedEffect
+        try {
+            pendingImages.forEach { image ->
+                mapState.style.images.add(image.id, image.bitmap)
+                generation.installedImageIds += image.id
+            }
+            sourceHandle.setData(snapshot.data)
+            generation.publishedSnapshot = snapshot
+        } catch (error: IllegalStateException) {
+            // A replacement loaded-style generation will publish a new source handle and retry.
+            if (!error.isStyleHandleRace()) throw error
+        }
     }
 
     SymbolLayer(
@@ -144,7 +173,7 @@ fun PinsLayers(
         filter = zoom() gt const(CLUSTER_MAX_ZOOM),
         visible = visible,
         sortKey = feature["icon-order"].convertToNumber(),
-        iconImage = pinIconExpression(snapshot.icons),
+        iconImage = pinIconExpression(),
         // Dynamic icon sizes and collision handling flicker together, so preserve the fixed size.
         iconSize = const(1f),
         iconPadding = const(
@@ -189,24 +218,39 @@ class PinSnapshot private constructor(
     }
 }
 
-@Composable
-private fun pinIconExpression(resources: List<DrawableResource>): Expression<ImageValue> {
-    val fallback = resources.firstOrNull() ?: Res.drawable.preset_maki_circle
-    val images = resources.mapNotNull { resource ->
-        val id = resource.id ?: return@mapNotNull null
-        id to image(pinPainter(painterResource(resource)))
-    }
-    return pinIconMatch(images, image(pinPainter(painterResource(fallback))))
+internal fun pinIconExpression(): Expression<ImageValue> =
+    image(feature["icon-image"].convertToString())
+
+private data class PinStyleImage(val id: String, val bitmap: ImageBitmap)
+
+private class PinStyleGeneration {
+    val installedImageIds = mutableSetOf<String>()
+    var publishedSnapshot: PinSnapshot? = null
 }
 
-internal fun pinIconMatch(
-    images: List<Pair<String, Expression<ImageValue>>>,
-    fallback: Expression<ImageValue>,
-): Expression<ImageValue> = switch(
-    input = feature["icon-image"].convertToString(),
-    cases = images.map { (id, image) -> case(id, image) }.toTypedArray(),
-    fallback = fallback,
-)
+@Composable
+private fun rememberPinStyleImages(
+    resources: List<DrawableResource>,
+    installedImageIds: Set<String>,
+    styleReady: Boolean,
+): List<PinStyleImage> {
+    if (!styleReady) return emptyList()
+    val density = LocalDensity.current
+    val layoutDirection = LocalLayoutDirection.current
+    val result = mutableListOf<PinStyleImage>()
+    for (resource in resources) {
+        val id = resource.id ?: continue
+        if (id in installedImageIds) continue
+        result += key(id) {
+            val painter = pinPainter(painterResource(resource))
+            val bitmap = remember(painter, density, layoutDirection) {
+                painter.toPinImageBitmap(density, layoutDirection)
+            }
+            PinStyleImage(id, bitmap)
+        }
+    }
+    return result
+}
 
 private val EMPTY_PIN_DATA = GeoJsonData.Features(pinFeatureCollection(emptyList()))
 

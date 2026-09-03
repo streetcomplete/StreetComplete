@@ -8,7 +8,6 @@ import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import org.maplibre.compose.expressions.ast.FunctionCall
-import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.spatialk.geojson.Point
 import org.maplibre.spatialk.geojson.Position
@@ -39,13 +38,10 @@ class PinsLayersTest {
         assertEquals(emptyList(), cleared.icons)
     }
 
-    @Test fun pinIconUsesKeyedMatchInsteadOfBooleanCaseChain() {
-        val expression = pinIconMatch(
-            images = listOf("bench" to image("bench-image")),
-            fallback = image("fallback"),
-        )
+    @Test fun pinIconLooksUpTheFeatureImageIdDirectly() {
+        val expression = pinIconExpression()
 
-        assertEquals("match", (expression as FunctionCall).name)
+        assertEquals("image", (expression as FunctionCall).name)
     }
 
     @Test fun createsPointFeatureWithIconOrderAndClickProperties() {

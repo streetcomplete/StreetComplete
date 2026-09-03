@@ -20,7 +20,7 @@ API before they are considered actionable.
 
 ## Findings
 
-Nine unresolved integration gaps are confirmed below. The abandoned
+Ten unresolved integration gaps are confirmed below. The abandoned
 `upstream/maplibre-compose` integration predates 0.15, so its other assumptions
 continue to be re-evaluated against the snapshot before being attributed upstream.
 
@@ -71,6 +71,18 @@ A supported stable-ID parameter on `rememberGeoJsonSource`, or a public overload
 that resolves the remembered `Source` to its current handle, would remove this
 custom-source seam while retaining declarative data updates and cluster
 inspection.
+
+### Imperative style images cannot be added as a batch
+
+The Android map creates bitmaps for every newly encountered quest icon, then
+installs all color images with one `Style.addImages` call. Its cache repeats this
+work only after the loaded style changes.
+
+The common `StyleImages` API accepts one `ImageBitmap` per `add` call. The shared
+map now keeps the same loaded-style cache and installs only new icons before it
+updates the stable pin source. However, the first viewport can still require one
+lifecycle check, engine call, and render request per icon. A batch command would
+let the common implementation preserve Android's update granularity.
 
 ### Declarative GeoJSON refresh can remove the Android render surface
 

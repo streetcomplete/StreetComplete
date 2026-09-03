@@ -170,7 +170,9 @@
 - Quest and edit-history pins now share one clustered MapLibre Compose layer.
   It preserves the legacy zoom thresholds, cluster sizing and labels, full pin
   painter, collision box, ordering, visibility, pin clicks, and complete cluster
-  leaf lookup through generation-bound source handles.
+  leaf lookup through generation-bound source handles. Like the Android map, it
+  keeps one source, installs only newly encountered pin images for each loaded
+  style, then updates the source data imperatively.
 - Quest-pin loading now also has a renderer-independent common source. It keeps
   the zoom-16 viewport cache, 32-tile guard, multi-marker edge retention,
   superseded-fetch cancellation, live quest deltas, user quest ordering, and
