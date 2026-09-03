@@ -7,14 +7,46 @@ import de.westnordost.streetcomplete.ui.ktx.id
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
+import org.maplibre.compose.expressions.ast.FunctionCall
+import org.maplibre.compose.expressions.dsl.image
+import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.spatialk.geojson.Point
 import org.maplibre.spatialk.geojson.Position
+import org.maplibre.spatialk.geojson.toJson
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
+import kotlin.test.assertSame
 import kotlin.test.assertTrue
 
 class PinsLayersTest {
+
+    @Test fun pinSnapshotRevisionChangesOnlyWithPinContents() {
+        val pin = Pin(LatLon(1.0, 2.0), Res.drawable.quest_bench_poi)
+        val first = PinSnapshot.Empty.updated(listOf(pin, pin))
+
+        assertEquals(1, first.revision)
+        assertEquals(listOf(Res.drawable.quest_bench_poi), first.icons)
+        assertEquals(
+            pinFeatureCollection(listOf(pin, pin)).toJson(),
+            (first.data as GeoJsonData.JsonString).json,
+        )
+        assertSame(first, first.updated(listOf(pin, pin)))
+
+        val cleared = first.updated(emptyList())
+        assertEquals(2, cleared.revision)
+        assertEquals(emptyList(), cleared.pins)
+        assertEquals(emptyList(), cleared.icons)
+    }
+
+    @Test fun pinIconUsesKeyedMatchInsteadOfBooleanCaseChain() {
+        val expression = pinIconMatch(
+            images = listOf("bench" to image("bench-image")),
+            fallback = image("fallback"),
+        )
+
+        assertEquals("match", (expression as FunctionCall).name)
+    }
 
     @Test fun createsPointFeatureWithIconOrderAndClickProperties() {
         val icon = Res.drawable.quest_bench_poi

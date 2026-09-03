@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
+import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,6 +26,7 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 /** Renderer-independent edit-history pins, ordered exactly as the history source returns them. */
@@ -33,8 +35,8 @@ class EditHistoryPinsSource(
     workerDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
     private val scope = CoroutineScope(SupervisorJob() + workerDispatcher)
-    private val _pins = MutableStateFlow<List<Pin>>(emptyList())
-    val pins: StateFlow<List<Pin>> = _pins.asStateFlow()
+    private val _pins = MutableStateFlow(PinSnapshot.Empty)
+    val pins: StateFlow<PinSnapshot> = _pins.asStateFlow()
 
     private var reloadJob: Job? = null
     private var isClosed = false
@@ -65,7 +67,7 @@ class EditHistoryPinsSource(
         if (isClosed) return
         reloadJob?.cancel()
         reloadJob = scope.launch {
-            _pins.value = editHistorySource.getAll().mapIndexed { index, edit ->
+            val pins = editHistorySource.getAll().mapIndexed { index, edit ->
                 Pin(
                     position = edit.position,
                     icon = requireNotNull(edit.icon) { "Unsupported edit type ${edit::class.simpleName}" },
@@ -73,6 +75,7 @@ class EditHistoryPinsSource(
                     order = index,
                 )
             }
+            _pins.update { it.updated(pins) }
         }
     }
 }

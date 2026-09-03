@@ -40,8 +40,8 @@ class EditHistoryPinsSourceTest {
         )
 
         advanceUntilIdle()
-        assertEquals(listOf(0, 1), source.pins.value.map { it.order })
-        assertEquals(listOf(NoteEditKey(1), ElementEditKey(2)), source.pins.value.map {
+        assertEquals(listOf(0, 1), source.pins.value.pins.map { it.order })
+        assertEquals(listOf(NoteEditKey(1), ElementEditKey(2)), source.pins.value.pins.map {
             source.getEditKey(it.properties.toMap())
         })
 
@@ -49,8 +49,11 @@ class EditHistoryPinsSourceTest {
         listener.onDeleted(listOf(noteEdit(id = 1)))
         advanceUntilIdle()
 
-        assertEquals(listOf(0), source.pins.value.map { it.order })
-        assertEquals(ElementEditKey(2), source.getEditKey(source.pins.value.single().properties.toMap()))
+        assertEquals(listOf(0), source.pins.value.pins.map { it.order })
+        assertEquals(
+            ElementEditKey(2),
+            source.getEditKey(source.pins.value.pins.single().properties.toMap()),
+        )
         source.close()
     }
 

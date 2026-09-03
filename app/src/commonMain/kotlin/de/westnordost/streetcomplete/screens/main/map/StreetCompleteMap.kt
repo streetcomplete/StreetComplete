@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
@@ -65,15 +66,22 @@ fun StreetCompleteMap(
         }
     }
 
-    MaplibreMap(
-        state = state,
-        styleComposition = styleComposition,
-        modifier = modifier,
-        presentationOptions = presentationOptions,
-        callbacks = callbacks,
-        overlay = overlay,
-    )
+    val presentationKey = rememberMapPresentationKey()
+    key(presentationKey) {
+        MaplibreMap(
+            state = state,
+            styleComposition = styleComposition,
+            modifier = modifier,
+            presentationOptions = presentationOptions,
+            callbacks = callbacks,
+            overlay = overlay,
+        )
+    }
 }
+
+/** A platform lifecycle generation that recreates a presentation when its surface needs it. */
+@Composable
+internal expect fun rememberMapPresentationKey(): Int
 
 /** Remembers the logical map state used by [StreetCompleteMap]. */
 @Composable

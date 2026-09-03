@@ -5,7 +5,7 @@ import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.quest.QuestKey
-import de.westnordost.streetcomplete.screens.main.map.layers.Pin
+import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.sources.DownloadedTilesStateSource
 import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
@@ -16,8 +16,8 @@ import kotlinx.coroutines.flow.StateFlow
 /** Owns renderer-independent live data shown by the shared main map. */
 abstract class MainMapViewModel : ViewModel() {
     abstract val downloadedTiles: StateFlow<List<TilePos>>
-    abstract val questPins: StateFlow<List<Pin>>
-    abstract val editHistoryPins: StateFlow<List<Pin>>
+    abstract val questPins: StateFlow<PinSnapshot>
+    abstract val editHistoryPins: StateFlow<PinSnapshot>
     abstract val styleableElements: StateFlow<List<StyledElement>>
 
     abstract fun onViewportChanged(zoom: Double, displayedArea: BoundingBox?)

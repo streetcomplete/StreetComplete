@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
+import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
 import de.westnordost.streetcomplete.testutils.bbox
 import de.westnordost.streetcomplete.testutils.pGeom
 import dev.mokkery.answering.returns
@@ -96,12 +97,12 @@ class MapQuestPinsSourceTest {
 
         source.onViewportChanged(zoom = 13.9, displayedArea = bbox(0.9, 1.9, 1.1, 2.1))
         advanceUntilIdle()
-        assertEquals(emptyList(), source.pins.value)
+        assertEquals(emptyList(), source.pins.value.pins)
 
         source.onViewportChanged(zoom = 14.0, displayedArea = bbox(0.9999, 1.9999, 1.0001, 2.0001))
         advanceUntilIdle()
 
-        val pin = source.pins.value.single()
+        val pin = source.pins.value.pins.single()
         assertEquals(quest.position, pin.position)
         assertEquals(questType.icon, pin.icon)
         assertEquals(0, pin.order)
@@ -162,7 +163,10 @@ class MapQuestPinsSourceTest {
         source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
         advanceUntilIdle()
 
-        assertEquals(second.key, source.getQuestKey(source.pins.value.single().properties.toMap()))
+        assertEquals(
+            second.key,
+            source.getQuestKey(source.pins.value.pins.single().properties.toMap()),
+        )
         source.close()
     }
 
@@ -224,7 +228,7 @@ class MapQuestPinsSourceTest {
             quests,
             UnconfinedTestDispatcher(testScheduler),
         )
-        val publications = mutableListOf<List<Pin>>()
+        val publications = mutableListOf<PinSnapshot>()
         val collectionJob = backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
             source.pins.toList(publications)
         }
@@ -235,10 +239,13 @@ class MapQuestPinsSourceTest {
         osmQuestListener.onUpdated(listOf(delta), emptyList())
         advanceUntilIdle()
 
-        assertEquals(latest.key, source.getQuestKey(source.pins.value.single().properties.toMap()))
+        assertEquals(
+            latest.key,
+            source.getQuestKey(source.pins.value.pins.single().properties.toMap()),
+        )
         assertTrue(
-            publications.none { pins ->
-                pins.any { source.getQuestKey(it.properties.toMap()) == delta.key }
+            publications.none { snapshot ->
+                snapshot.pins.any { source.getQuestKey(it.properties.toMap()) == delta.key }
             },
         )
         collectionJob.cancel()

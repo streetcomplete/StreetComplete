@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
+import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
 import de.westnordost.streetcomplete.util.math.contains
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
@@ -28,6 +29,7 @@ import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -48,8 +50,8 @@ class MapQuestPinsSource(
 ) {
     private val scope = CoroutineScope(SupervisorJob() + workerDispatcher)
 
-    private val _pins = MutableStateFlow<List<Pin>>(emptyList())
-    val pins: StateFlow<List<Pin>> = _pins.asStateFlow()
+    private val _pins = MutableStateFlow(PinSnapshot.Empty)
+    val pins: StateFlow<PinSnapshot> = _pins.asStateFlow()
 
     private val questTypeOrdersLock = ReentrantLock()
     private val questTypeOrders = mutableMapOf<QuestType, Int>()
@@ -153,7 +155,7 @@ class MapQuestPinsSource(
                     pins.size == 1 || pins.none { it.position in bbox }
                 }
                 quests.forEach { questsInView[it.key] = createQuestPins(it) }
-                _pins.value = questsInView.values.flatten()
+                publish(questsInView.values.flatten())
             }
         }
     }
@@ -186,7 +188,7 @@ class MapQuestPinsSource(
         stateLock.withLock {
             coroutineContext.ensureActive()
             if (isClosed || generation != viewportGeneration) return
-            _pins.value = pins
+            publish(pins)
         }
     }
 
@@ -225,11 +227,15 @@ class MapQuestPinsSource(
             if (isClosed) return
             ++viewportGeneration
             updateJob?.cancel()
-            _pins.value = emptyList()
+            publish(emptyList())
             updateJob = scope.launch {
                 questsInViewMutex.withLock { questsInView.clear() }
             }
         }
+    }
+
+    private fun publish(pins: List<Pin>) {
+        _pins.update { it.updated(pins) }
     }
 
     private companion object {

@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
@@ -25,12 +24,11 @@ import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.ast.Expression
 import org.maplibre.compose.expressions.dsl.all
 import org.maplibre.compose.expressions.dsl.any
-import org.maplibre.compose.expressions.dsl.condition
+import org.maplibre.compose.expressions.dsl.case
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToNumber
 import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.div
-import org.maplibre.compose.expressions.dsl.eq
 import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.gt
 import org.maplibre.compose.expressions.dsl.gte
@@ -50,7 +48,6 @@ import org.maplibre.compose.map.MapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.GeoJsonOptions
 import org.maplibre.compose.sources.GeoJsonSource
-import org.maplibre.compose.sources.GeoJsonSourceHandle
 import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
@@ -58,6 +55,7 @@ import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.Point
+import org.maplibre.spatialk.geojson.toJson
 
 private const val CLUSTER_MIN_ZOOM = 13
 private const val CLUSTER_MAX_ZOOM = 14
@@ -68,13 +66,12 @@ private const val PINS_SOURCE_ID = "pins-source"
 @MaplibreComposable
 fun PinsLayers(
     mapState: MapState,
-    pins: Collection<Pin>,
+    snapshot: PinSnapshot,
     visible: Boolean = true,
     onClickPin: (properties: Map<String, String>) -> Unit,
     onClickCluster: (leafPositions: List<LatLon>) -> Unit,
 ) {
     val coroutineScope = rememberCoroutineScope()
-    val data = GeoJsonData.Features(pinFeatureCollection(pins))
     val options = remember {
         GeoJsonOptions(
             cluster = true,
@@ -83,19 +80,8 @@ fun PinsLayers(
         )
     }
 
-    // TODO(maplibre-compose): Restore the legacy source's volatile flag when GeoJsonOptions exposes it.
-    // Keep this definition stable: declarative GeoJSON replacement currently hides the Android
-    // render surface while the replacement is prepared. The fresh handle retries after a style
-    // generation invalidates an in-flight update.
-    val source = remember(options) { GeoJsonSource(PINS_SOURCE_ID, data, options) }
-    val sourceHandle = mapState.style.sources[PINS_SOURCE_ID] as? GeoJsonSourceHandle
-    LaunchedEffect(sourceHandle, data) {
-        try {
-            sourceHandle?.setData(data)
-        } catch (error: IllegalStateException) {
-            // A replacement generation publishes another handle and restarts this effect.
-            if (!error.isStyleHandleRace()) throw error
-        }
+    val source = remember(snapshot.data, options) {
+        GeoJsonSource(PINS_SOURCE_ID, snapshot.data, options)
     }
 
     SymbolLayer(
@@ -119,9 +105,9 @@ fun PinsLayers(
         textIgnorePlacement = const(true),
         onClick = { features ->
             val cluster = features.firstOrNull() ?: return@SymbolLayer ClickResult.Pass
-            val handle = sourceHandle ?: return@SymbolLayer ClickResult.Pass
             coroutineScope.launch {
                 try {
+                    val handle = mapState.awaitGeoJsonSource(PINS_SOURCE_ID)
                     val leaves = handle.getClusterLeaves(cluster, Long.MAX_VALUE, 0L)
                     onClickCluster(leaves.features.mapNotNull { it.geometry.toLatLonOrNull() })
                 } catch (error: IllegalStateException) {
@@ -158,7 +144,7 @@ fun PinsLayers(
         filter = zoom() gt const(CLUSTER_MAX_ZOOM),
         visible = visible,
         sortKey = feature["icon-order"].convertToNumber(),
-        iconImage = pinIconExpression(pins),
+        iconImage = pinIconExpression(snapshot.icons),
         // Dynamic icon sizes and collision handling flicker together, so preserve the fixed size.
         iconSize = const(1f),
         iconPadding = const(
@@ -183,22 +169,46 @@ data class Pin(
     val order: Int = 0,
 )
 
-@Composable
-private fun pinIconExpression(pins: Collection<Pin>): Expression<ImageValue> {
-    val resources = pins.map(Pin::icon).distinct()
-    val fallback = resources.firstOrNull() ?: Res.drawable.preset_maki_circle
-    val conditions = resources.mapNotNull { resource ->
-        val id = resource.id ?: return@mapNotNull null
-        condition(
-            test = feature["icon-image"].convertToString() eq const(id),
-            output = image(pinPainter(painterResource(resource))),
+/** A pin publication whose revision changes only when its contents change. */
+class PinSnapshot private constructor(
+    val revision: Long,
+    val pins: List<Pin>,
+    val icons: List<DrawableResource>,
+    val data: GeoJsonData,
+) {
+    fun updated(pins: List<Pin>): PinSnapshot =
+        if (this.pins == pins) this else PinSnapshot(
+            revision = revision + 1,
+            pins = pins,
+            icons = pins.map(Pin::icon).distinct(),
+            data = GeoJsonData.JsonString(pinFeatureCollection(pins).toJson()),
         )
+
+    companion object {
+        val Empty = PinSnapshot(0, emptyList(), emptyList(), EMPTY_PIN_DATA)
     }
-    return switch(
-        *conditions.toTypedArray(),
-        fallback = image(pinPainter(painterResource(fallback))),
-    )
 }
+
+@Composable
+private fun pinIconExpression(resources: List<DrawableResource>): Expression<ImageValue> {
+    val fallback = resources.firstOrNull() ?: Res.drawable.preset_maki_circle
+    val images = resources.mapNotNull { resource ->
+        val id = resource.id ?: return@mapNotNull null
+        id to image(pinPainter(painterResource(resource)))
+    }
+    return pinIconMatch(images, image(pinPainter(painterResource(fallback))))
+}
+
+internal fun pinIconMatch(
+    images: List<Pair<String, Expression<ImageValue>>>,
+    fallback: Expression<ImageValue>,
+): Expression<ImageValue> = switch(
+    input = feature["icon-image"].convertToString(),
+    cases = images.map { (id, image) -> case(id, image) }.toTypedArray(),
+    fallback = fallback,
+)
+
+private val EMPTY_PIN_DATA = GeoJsonData.Features(pinFeatureCollection(emptyList()))
 
 internal fun pinFeatureCollection(pins: Collection<Pin>): FeatureCollection<Point, JsonObject> =
     FeatureCollection(pins.map(Pin::toGeoJsonFeature))

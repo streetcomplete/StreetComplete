@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.PinsLayers
+import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
 import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayMainLayers
@@ -87,7 +88,7 @@ fun MainMap(
         )
     }
 
-    val styleableOverlaySource = rememberStyleableOverlaySource(mapState, styledElements)
+    val styleableOverlaySource = rememberStyleableOverlaySource(styledElements)
     val callbacks = MapPresentationCallbacks(
         onClick = { position, offset ->
             val presentationAtClick = mapState.presentation
@@ -165,27 +166,28 @@ fun MainMap(
                 CurrentLocationLayers(it, locationRotation)
             }
 
-            if (state.pinMode == MainMapPinMode.EDITS) {
-                PinsLayers(
-                    mapState = mapState,
-                    pins = editHistoryPins,
-                    visible = state.showPins,
-                    onClickPin = { properties ->
-                        viewModel.getEditKey(properties)?.let(onClickEdit)
-                    },
-                    onClickCluster = state::fitCluster,
-                )
-            } else if (state.pinMode == MainMapPinMode.QUESTS) {
-                PinsLayers(
-                    mapState = mapState,
-                    pins = questPins,
-                    visible = state.showPins,
-                    onClickPin = { properties ->
-                        viewModel.getQuestKey(properties)?.let(onClickQuest)
-                    },
-                    onClickCluster = state::fitCluster,
-                )
+            val pinSnapshot = when (state.pinMode) {
+                MainMapPinMode.NONE -> PinSnapshot.Empty
+                MainMapPinMode.QUESTS -> questPins
+                MainMapPinMode.EDITS -> editHistoryPins
             }
+            PinsLayers(
+                mapState = mapState,
+                snapshot = pinSnapshot,
+                visible = state.showPins && state.pinMode != MainMapPinMode.NONE,
+                onClickPin = { properties ->
+                    when (state.pinMode) {
+                        MainMapPinMode.NONE -> Unit
+                        MainMapPinMode.QUESTS -> {
+                            viewModel.getQuestKey(properties)?.let(onClickQuest)
+                        }
+                        MainMapPinMode.EDITS -> {
+                            viewModel.getEditKey(properties)?.let(onClickEdit)
+                        }
+                    }
+                },
+                onClickCluster = state::fitCluster,
+            )
 
             state.selectedPins?.let { SelectedPinsLayer(it.icon, it.positions) }
         },

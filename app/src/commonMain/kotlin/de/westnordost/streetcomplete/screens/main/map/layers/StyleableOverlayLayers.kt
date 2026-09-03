@@ -2,7 +2,8 @@ package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -15,6 +16,8 @@ import de.westnordost.streetcomplete.screens.main.map.isArea
 import de.westnordost.streetcomplete.screens.main.map.isLines
 import de.westnordost.streetcomplete.screens.main.map.isPoint
 import de.westnordost.streetcomplete.ui.ktx.id
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -44,17 +47,16 @@ import org.maplibre.compose.layers.FillExtrusionLayer
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.layers.SymbolLayer
-import org.maplibre.compose.map.MapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.GeoJsonOptions
 import org.maplibre.compose.sources.GeoJsonSource
-import org.maplibre.compose.sources.GeoJsonSourceHandle
 import org.maplibre.compose.sources.Source
 import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
+import org.maplibre.spatialk.geojson.toJson
 
 private const val OVERLAY_SOURCE_ID = "overlay-source"
 private const val MIN_ZOOM = 14
@@ -62,29 +64,22 @@ private const val MIN_ZOOM = 14
 /** Creates the one source shared across the overlay's four map-style insertion points. */
 @Composable
 fun rememberStyleableOverlaySource(
-    mapState: MapState,
     styledElements: Collection<StyledElement>,
 ): GeoJsonSource {
-    val data = GeoJsonData.Features(
-        FeatureCollection(styledElements.flatMap(StyledElement::toOverlayFeatures))
-    )
     val options = remember { GeoJsonOptions(minZoom = MIN_ZOOM) }
-
-    // TODO(maplibre-compose): Restore the legacy source's volatile flag when GeoJsonOptions exposes it.
-    // Keep the definition stable to avoid hiding Android's render surface during large declarative
-    // GeoJSON replacements. A newly published handle retries an update that lost a style race.
-    val source = remember(options) { GeoJsonSource(OVERLAY_SOURCE_ID, data, options) }
-    val sourceHandle = mapState.style.sources[OVERLAY_SOURCE_ID] as? GeoJsonSourceHandle
-    LaunchedEffect(sourceHandle, data) {
-        try {
-            sourceHandle?.setData(data)
-        } catch (error: IllegalStateException) {
-            // A replacement generation publishes another handle and restarts this effect.
-            if (!error.isStyleHandleRace()) throw error
+    val data by produceState<GeoJsonData>(EMPTY_OVERLAY_DATA, styledElements) {
+        value = withContext(Dispatchers.Default) {
+            GeoJsonData.JsonString(
+                FeatureCollection(styledElements.flatMap(StyledElement::toOverlayFeatures)).toJson()
+            )
         }
     }
-    return source
+    return remember(data, options) { GeoJsonSource(OVERLAY_SOURCE_ID, data, options) }
 }
+
+private val EMPTY_OVERLAY_DATA = GeoJsonData.Features(
+    FeatureCollection<Geometry, JsonObject>(emptyList())
+)
 
 /** Draws left/right road strokes below ordinary or bridge roads. */
 @Composable
