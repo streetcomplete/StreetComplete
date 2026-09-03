@@ -86,44 +86,46 @@ class BuildingsOverlay : Overlay {
         requireNotNull(element)
         BuildingsOverlayForm(on, element)
     }
+
+    private val BuildingType.color get() = when (this) {
+        // ~detached homes
+        DETACHED, SEMI_DETACHED, HOUSEBOAT, BUNGALOW, STATIC_CARAVAN, HUT, FARM, -> // 10%
+            OverlayColor.Blue
+
+        // ~non-detached homes
+        HOUSE, DORMITORY, APARTMENTS, TERRACE, -> // 52%
+            OverlayColor.Sky
+
+        // unspecified residential
+        RESIDENTIAL, -> // 12%
+            OverlayColor.Cyan
+
+        // parking, sheds, outbuildings in general...
+        OUTBUILDING, CARPORT, GARAGE, GARAGES, SHED, BOATHOUSE, SERVICE, ALLOTMENT_HOUSE,
+        TENT, CONTAINER, GUARDHOUSE, -> // 11%
+            OverlayColor.Lime
+
+        // commercial, industrial, farm buildings
+        COMMERCIAL, KIOSK, RETAIL, OFFICE, BRIDGE, HOTEL, PARKING,
+        INDUSTRIAL, WAREHOUSE, HANGAR, STORAGE_TANK,
+        FARM_AUXILIARY, SILO, GREENHOUSE,
+        ROOF -> // 5%
+            OverlayColor.Gold
+
+        // amenity buildings
+        TRAIN_STATION, TRANSPORTATION,
+        CIVIC, GOVERNMENT, FIRE_STATION, HOSPITAL,
+        KINDERGARTEN, SCHOOL, COLLEGE, UNIVERSITY, SPORTS_CENTRE, STADIUM, GRANDSTAND,
+        RELIGIOUS, CHURCH, CHAPEL, CATHEDRAL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE,
+        TOILETS, -> // 2%
+            OverlayColor.Orange
+
+        // other/special
+        HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB, TOWER,
+        UNSUPPORTED ->
+            OverlayColor.Purple
+    }
+
     private fun isBuildingTypeMissing(tags: Map<String, String>): Boolean =
         !OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE.any { it in tags }
-}
-val BuildingType.color get() = when (this) {
-    // ~detached homes
-    DETACHED, SEMI_DETACHED, HOUSEBOAT, BUNGALOW, STATIC_CARAVAN, HUT, FARM, -> // 10%
-        OverlayColor.Blue
-
-    // ~non-detached homes
-    HOUSE, DORMITORY, APARTMENTS, TERRACE, -> // 52%
-        OverlayColor.Sky
-
-    // unspecified residential
-    RESIDENTIAL, -> // 12%
-        OverlayColor.Cyan
-
-    // parking, sheds, outbuildings in general...
-    OUTBUILDING, CARPORT, GARAGE, GARAGES, SHED, BOATHOUSE, SERVICE, ALLOTMENT_HOUSE,
-    TENT, CONTAINER, GUARDHOUSE, -> // 11%
-        OverlayColor.Lime
-
-    // commercial, industrial, farm buildings
-    COMMERCIAL, KIOSK, RETAIL, OFFICE, BRIDGE, HOTEL, PARKING,
-    INDUSTRIAL, WAREHOUSE, HANGAR, STORAGE_TANK,
-    FARM_AUXILIARY, SILO, GREENHOUSE,
-    ROOF -> // 5%
-        OverlayColor.Gold
-
-    // amenity buildings
-    TRAIN_STATION, TRANSPORTATION,
-    CIVIC, GOVERNMENT, FIRE_STATION, HOSPITAL,
-    KINDERGARTEN, SCHOOL, COLLEGE, UNIVERSITY, SPORTS_CENTRE, STADIUM, GRANDSTAND,
-    RELIGIOUS, CHURCH, CHAPEL, CATHEDRAL, MOSQUE, TEMPLE, PAGODA, SYNAGOGUE, SHRINE,
-    TOILETS, -> // 2%
-        OverlayColor.Orange
-
-    // other/special
-    HISTORIC, ABANDONED, RUINS, CONSTRUCTION, BUNKER, TOMB, TOWER,
-    UNSUPPORTED ->
-        OverlayColor.Purple
 }

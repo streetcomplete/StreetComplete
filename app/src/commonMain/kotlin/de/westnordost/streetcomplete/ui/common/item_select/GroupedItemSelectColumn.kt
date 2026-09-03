@@ -29,7 +29,6 @@ fun <I, G: Group<I>> GroupedItemSelectColumn(
     groupContent: @Composable (group: G) -> Unit,
     itemContent: @Composable (item: I) -> Unit,
     modifier: Modifier = Modifier,
-    excludedItems: List<I> = emptyList()
 ) {
     Column(modifier = modifier) {
         // top items first...
@@ -70,7 +69,7 @@ fun <I, G: Group<I>> GroupedItemSelectColumn(
             // and the expanded group
             AnimatedVisibility(visible = isGroupExpanded) {
                 Column {
-                    for (item in group.children.filterNot { it in excludedItems }) {
+                    for (item in group.children) {
                         val isItemSelected = item == selectedItem
                         Box(Modifier
                             .fillMaxWidth()
