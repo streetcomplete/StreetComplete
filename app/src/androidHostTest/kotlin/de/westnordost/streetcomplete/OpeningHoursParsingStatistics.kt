@@ -72,9 +72,9 @@ fun main() = runBlocking {
         .bodyAsText()
         .lineSequence()
         .drop(1)
-        .filterNot { it.isBlank() }
-        .map { line ->
+        .mapNotNull { line ->
             val t = line.lastIndexOf('\t')
+            if (t < 2 || line.length <= t) return@mapNotNull null
             val oh = line.substring(1, t - 1)
             val count = line.substring(t + 1).toInt()
             oh to count
