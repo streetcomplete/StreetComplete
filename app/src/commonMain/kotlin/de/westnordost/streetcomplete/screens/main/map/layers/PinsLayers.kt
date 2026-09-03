@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
@@ -15,8 +14,6 @@ import de.westnordost.streetcomplete.ui.ktx.id
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
-import org.maplibre.spatialk.geojson.Feature
-import org.maplibre.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -43,7 +40,10 @@ import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.GeoJsonOptions
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.ClickResult
+import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
+import org.maplibre.spatialk.geojson.Feature
+import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 
 /** Display pins on the map, e.g. quest pins or pins for recent edits */
@@ -130,14 +130,12 @@ fun PinsLayers(
         // importantly, dynamic size per zoom + collision doesn't work together well, it
         // results in a lot of flickering.
         iconSize = const(1f),
-        /* TODO maplibre-compose: negative paddings not allowed
-           https://github.com/maplibre/maplibre-compose/issues/1091
-        iconPadding = const(PaddingValues.Absolute(
+        iconPadding = const(DpPadding(
             left = 2.5.dp,
             top = -2.5.dp,
             right = 0.dp,
             bottom = -7.dp,
-        )),*/
+        )),
         iconOffset = const(DpOffset((-4.5).dp, (-34.5).dp)),
         iconAllowOverlap = const(false),
         iconIgnorePlacement = const(false),
