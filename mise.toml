@@ -1,0 +1,97 @@
+# Development environment for the MapLibre Compose validation branch.
+# The MapLibre Compose desktop snapshot runtime requires Java 25.
+
+[tools]
+"core:java" = "temurin-25.0.4+101.0.LTS"
+
+[env]
+ANDROID_HOME = "{{ env.HOME }}/Library/Android/sdk"
+STREETCOMPLETE_AVD = "issue1150-34"
+TZ = "UTC"
+_.path = [
+    "{{ env.HOME }}/Library/Android/sdk/platform-tools",
+    "{{ env.HOME }}/Library/Android/sdk/emulator",
+]
+
+[tasks.doctor]
+description = "Show the Java, Gradle, Android SDK, and device setup"
+run = '''
+java -version
+./gradlew --version
+adb version
+adb devices -l
+'''
+
+[tasks.build]
+description = "Build the debug APK"
+run = "./gradlew assembleDebug -Papp.streetcomplete.debug=true"
+
+[tasks.test]
+description = "Run the common and Android host tests"
+run = "./gradlew :app:testAndroidHostTest"
+
+[tasks."test:host"]
+description = "Run the common and Android host test suite explicitly"
+run = "./gradlew :app:testAndroidHostTest"
+
+[tasks.lint]
+description = "Run Android lint"
+run = "./gradlew lint"
+
+[tasks.check]
+description = "Run host tests and build the debug APK"
+run = "./gradlew :app:testAndroidHostTest assembleDebug -Papp.streetcomplete.debug=true"
+
+[tasks.emulator]
+description = "Start the configured Android emulator"
+run = 'emulator -avd "$STREETCOMPLETE_AVD"'
+
+[tasks.install]
+description = "Build and install the debug app on a connected device"
+run = "./gradlew :androidApp:installDebug -Papp.streetcomplete.debug=true"
+
+[tasks.run]
+description = "Install and launch the debug app on a connected device"
+depends = ["install"]
+run = "adb shell am start -n de.westnordost.streetcomplete.debug/de.westnordost.streetcomplete.screens.main.MainActivity"
+
+[tasks."run:ios"]
+description = "Build, install, and launch the iOS app on Sargun's iPhone"
+run = '''
+ios_xcode_developer_dir=/Applications/Xcode-26.5.0.app/Contents/Developer
+ios_device_udid=00008140-001025890E33001C
+ios_team_id=LQ33A6CSK4
+ios_app_bundle_id=com.sargunv.streetcomplete.iosport
+ios_app_path=build/xcode-device/Build/Products/Debug-iphoneos/StreetComplete.app
+
+export DEVELOPER_DIR="$ios_xcode_developer_dir"
+
+xcodebuild \
+  -project iosApp/iosApp.xcodeproj \
+  -scheme iosApp \
+  -configuration Debug \
+  -destination "id=$ios_device_udid" \
+  -derivedDataPath build/xcode-device \
+  -allowProvisioningUpdates \
+  -allowProvisioningDeviceRegistration \
+  DEVELOPMENT_TEAM="$ios_team_id" \
+  PRODUCT_BUNDLE_IDENTIFIER="$ios_app_bundle_id" \
+  COMPILER_INDEX_STORE_ENABLE=NO \
+  build
+
+xcrun devicectl device install app \
+  --device "$ios_device_udid" \
+  "$ios_app_path"
+xcrun devicectl device process launch \
+  --device "$ios_device_udid" \
+  --terminate-existing \
+  "$ios_app_bundle_id"
+'''
+
+[tasks."test:device"]
+description = "Run device tests on a connected Android device"
+run = "./gradlew :app:connectedAndroidDeviceTest"
+
+[tasks.clean]
+description = "Remove Gradle build outputs"
+run = "./gradlew clean"
