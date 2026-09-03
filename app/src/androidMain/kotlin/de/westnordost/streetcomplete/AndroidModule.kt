@@ -6,9 +6,11 @@ import com.russhwolf.settings.ObservableSettings
 import com.russhwolf.settings.SharedPreferencesSettings
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.create
+import de.westnordost.streetcomplete.data.AndroidPeriodicCleaner
 import de.westnordost.streetcomplete.data.CleanerWorker
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.DatabaseImpl
+import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.AndroidActiveNetworkConnection
@@ -123,6 +125,7 @@ val androidModule = module {
     factory<ChangesetAutoCloser> { AndroidChangesetAutoCloser(androidContext()) }
     worker { ChangesetAutoCloserWorker(get(), androidContext(), get()) }
 
+    factory<PeriodicCleaner> { AndroidPeriodicCleaner(androidContext()) }
     worker { CleanerWorker(get(), get(), get()) }
 
     factory<MapTilesDownloader> { MapTilesDownloaderAndroid(androidContext()) }
