@@ -9,8 +9,11 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType.NODE
 import de.westnordost.streetcomplete.testutils.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.member
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.pGeom
+import de.westnordost.streetcomplete.testutils.rel
+import de.westnordost.streetcomplete.testutils.way
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
 import dev.mokkery.answering.returns
 import dev.mokkery.every
@@ -90,6 +93,24 @@ class MapDataControllerImplTest {
         assertEquals(0, mapData.relations.size)
         assertNotNull(mapData.getGeometry(NODE, 1L))
         assertNotNull(mapData.getGeometry(NODE, 2L))
+    }
+
+    @Test fun getElementCounts() {
+        val bbox = bbox()
+        val bboxCacheWillRequest = bbox.asBoundingBoxOfEnclosingTiles(17)
+        val elements = listOf(
+            node(1),
+            node(2),
+            way(3, nodes = listOf(1)),
+            rel(4, members = listOf(member(ref = 1)))
+        )
+        every { elementDB.getAll(bboxCacheWillRequest) } returns elements
+        every { geometryDB.getAllEntries(elements.drop(2).map { it.key }) } returns emptyList()
+
+        assertEquals(
+            MapDataSource.ElementCounts(nodes = 2, ways = 1, relations = 1),
+            controller.getElementCounts(bbox)
+        )
     }
 
     @Test fun updateAll(): Unit = runBlocking {
