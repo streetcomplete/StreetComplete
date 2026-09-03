@@ -37,12 +37,12 @@ import kotlinx.io.files.SystemFileSystem
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import org.koin.dsl.onClose
-import org.maplibre.compose.desktop.DesktopRuntimeOptions
 import org.maplibre.compose.location.DesktopSystemSettingsLauncher
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.SystemSettingsLauncher
 import org.maplibre.compose.location.createDefaultLocationProvider
 import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.MapRuntimeOptions
 import org.maplibre.compose.map.createMapRuntime
 
 val desktopModule = module {
@@ -114,7 +114,7 @@ val desktopModule = module {
     factory<SystemSettingsLauncher> { DesktopSystemSettingsLauncher() }
 
     single<MapRuntime> {
-        createMapRuntime(DesktopRuntimeOptions(applicationId = "de.westnordost.streetcomplete"))
+        createMapRuntime(MapRuntimeOptions(applicationId = "de.westnordost.streetcomplete"))
     } onClose { it?.close() }
     factory<MapTilesDownloader> {
         val transform = GraphicsEnvironment

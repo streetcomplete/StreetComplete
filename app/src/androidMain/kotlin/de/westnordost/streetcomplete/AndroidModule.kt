@@ -40,8 +40,8 @@ import kotlinx.io.files.Path
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
-import org.maplibre.compose.android.AndroidRuntimeOptions
 import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.MapRuntimeOptions
 import org.maplibre.compose.map.createMapRuntime
 import org.koin.dsl.module
 import org.koin.dsl.onClose
@@ -127,7 +127,7 @@ val androidModule = module {
     factory<PeriodicCleaner> { AndroidPeriodicCleaner(androidContext()) }
     worker { CleanerWorker(get(), get(), get()) }
 
-    single<MapRuntime> { createMapRuntime(AndroidRuntimeOptions(androidContext())) }
+    single<MapRuntime> { createMapRuntime(MapRuntimeOptions(androidContext())) }
     factory<MapTilesDownloader> {
         MapLibreMapTilesDownloader(
             runtime = get(),

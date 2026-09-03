@@ -364,7 +364,7 @@ fun MainScreen(
         }
     }
 
-    LaunchedEffect(shownBottomSheet?.position, mapCamera, mapState.mapState.presentation) {
+    LaunchedEffect(shownBottomSheet?.position, mapCamera, mapState.mapState.viewport) {
         mainBottomSheetViewModel.geometryOffsetInWindow.value =
             shownBottomSheet?.position?.let(mapState::offsetOf)?.let {
                 with(density) { Offset(it.x.toPx(), it.y.toPx()) }
@@ -779,7 +779,6 @@ private fun getLocationState(
             LocationUnavailableReason.TemporarilyUnavailable -> LocationState.SEARCHING
             LocationUnavailableReason.PermissionDenied -> LocationState.DENIED
             LocationUnavailableReason.Unsupported,
-            LocationUnavailableReason.Misconfigured,
             LocationUnavailableReason.UnexpectedFailure -> null
         }
     }

@@ -82,8 +82,8 @@ class IosBackgroundSyncController(
     private suspend fun isAutoUploadAllowed(): Boolean = when (preferences.autosync) {
         Autosync.ON -> true
         Autosync.WIFI -> {
-            val capabilities = activeNetworkConnection.capabilities ?: withTimeoutOrNull(5.seconds) {
-                activeNetworkConnection.capabilitiesFlow.filterNotNull().first()
+            val capabilities = withTimeoutOrNull(5.seconds) {
+                activeNetworkConnection.capabilities.filterNotNull().first()
             }
             capabilities?.hasInternet == true && !capabilities.isMetered
         }

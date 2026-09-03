@@ -2,9 +2,6 @@ package de.westnordost.streetcomplete.data
 
 interface Database {
 
-    /** Releases the underlying SQLite connection. */
-    fun close()
-
     fun exec(sql: String, args: Array<Any>? = null)
 
     fun <T> rawQuery(

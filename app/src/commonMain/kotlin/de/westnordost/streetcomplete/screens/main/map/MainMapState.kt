@@ -1,8 +1,10 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -14,6 +16,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.LayoutDirection
+import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -32,7 +35,6 @@ import org.maplibre.compose.camera.CameraMoveReason
 import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationMeasurement
-import org.maplibre.compose.map.MapPresentationDetachedException
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MapState
 import org.maplibre.spatialk.geojson.BoundingBox
@@ -63,6 +65,7 @@ class MainMapState internal constructor(
     private val controller: MainMapCameraController,
     private val tracks: MainMapTrackState,
     private val content: MainMapContentState,
+    internal val styleConfiguration: MainMapStyleConfiguration,
 ) {
     init {
         controller.onLocationRestored(
@@ -77,9 +80,9 @@ class MainMapState internal constructor(
     val displayedLocation: Location? get() = controller.displayedLocation
     val cameraPosition: CameraPosition get() = mapState.cameraPosition
     val cameraPadding: PaddingValues get() = controller.cameraPadding
-    val metersPerDp: Double get() = mapState.presentation?.viewport?.metersPerDpAtTarget ?: 0.0
+    val metersPerDp: Double get() = mapState.viewport?.metersPerDpAtTarget ?: 0.0
     val displayedArea: de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox?
-        get() = mapState.presentation?.viewport?.visibleBoundingBox?.toStreetCompleteBoundingBox()
+        get() = mapState.viewport?.visibleBoundingBox?.toStreetCompleteBoundingBox()
     val displayedMeasurement: LocationMeasurement? get() = tracks.displayedMeasurement
     val isRecordingTrack: Boolean get() = tracks.isRecording
     val currentRenderedTrack: List<LatLon> get() = tracks.currentRenderedTrack
@@ -110,10 +113,10 @@ class MainMapState internal constructor(
     fun endFocus() = controller.endFocus()
 
     fun positionAt(offset: DpOffset): LatLon? =
-        mapState.presentation?.positionFromScreenLocation(offset)?.toLatLon()
+        mapState.positionFromScreenLocation(offset)?.toLatLon()
 
     fun offsetOf(position: LatLon): DpOffset? =
-        mapState.presentation?.screenLocationFromPosition(position.toPosition())
+        mapState.screenLocationFromPosition(position.toPosition())
 
     fun clickRadiusInMeters(
         position: LatLon,
@@ -168,11 +171,20 @@ fun rememberMainMapState(
     runtime: MapRuntime = koinInject(),
 ): MainMapState {
     val persistedState = remember(preferences) { PreferencesMapCameraState(preferences) }
-    val mapState = rememberStreetCompleteMapState(persistedState.loadCamera(), runtime)
     val tracks = rememberSaveable(saver = MainMapTrackState.Saver) { MainMapTrackState() }
     val content = remember { MainMapContentState() }
+    val colors = if (MaterialTheme.colors.isLight) MapColors.Light else MapColors.Night
+    val languages = listOf(Locale.current.language)
+    val styleConfiguration = remember { MainMapStyleConfiguration(colors, languages) }
+    SideEffect {
+        styleConfiguration.colors = colors
+        styleConfiguration.languages = languages
+    }
+    val mapState = rememberStreetCompleteMapState(persistedState.loadCamera(), runtime) {
+        MainMapStyle(mapState, styleConfiguration, tracks, content)
+    }
     val scope = rememberCoroutineScope()
-    val state = remember(mapState, persistedState, scope, tracks, content) {
+    val state = remember(mapState, persistedState, scope, tracks, content, styleConfiguration) {
         MainMapState(
             mapState,
             MainMapCameraController(
@@ -182,6 +194,7 @@ fun rememberMainMapState(
             ),
             tracks,
             content,
+            styleConfiguration,
         )
     }
     DisposableEffect(state) {
@@ -201,18 +214,13 @@ internal interface MainMapCamera {
 private class MapLibreCamera(private val state: MapState) : MainMapCamera {
     override val position: CameraPosition get() = state.cameraPosition
     override val visibleBoundingBox: BoundingBox?
-        get() = state.presentation?.viewport?.visibleBoundingBox
+        get() = state.viewport?.visibleBoundingBox
     override val viewportSize: DpSize?
-        get() = state.presentation?.viewport?.size
-    override val isPresented: Boolean get() = state.presentation != null
+        get() = state.viewport?.size
+    override val isPresented: Boolean get() = state.viewport != null
 
     override suspend fun animateTo(position: CameraPosition, duration: Duration) {
-        val presentation = state.presentation ?: return
-        try {
-            presentation.animateCameraPosition(position, duration)
-        } catch (_: MapPresentationDetachedException) {
-            // A replacement presentation will receive the durable MapState camera automatically.
-        }
+        state.animateCameraPosition(position, duration)
     }
 }
 

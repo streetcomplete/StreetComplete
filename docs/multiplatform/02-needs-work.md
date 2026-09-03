@@ -76,10 +76,10 @@
   track, overlay, and location behavior. Preserved behavior is implemented and
   tested; the exact MapLibre Compose API gaps above each have code TODOs and
   corresponding upstream notes rather than silent omissions.
-- [x] Pin the reviewed post-v0.15 snapshot batch. Every selected core, location,
-  target, resource, and runtime artifact resolves from its immutable timestamped
-  path at `0.15.1-20260901.101938-7`; transitive MapLibre edges are forced to the
-  same version and clean dependency-refresh builds pass on all targets.
+- [x] Follow the post-v0.15 MapLibre Compose snapshot series on this validation
+  branch. Core, location, target, resource, and runtime artifacts resolve through
+  the standard Maven snapshot repository; the validated publication is recorded
+  in `03-maplibre-compose-upstream.md`.
 
 ## Platform services
 

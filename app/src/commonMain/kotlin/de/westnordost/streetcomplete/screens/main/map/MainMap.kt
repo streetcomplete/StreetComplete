@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -10,28 +11,13 @@ import androidx.compose.ui.unit.DpOffset
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestKey
-import de.westnordost.streetcomplete.screens.main.map.layers.CurrentLocationLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayer
-import de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.PinsLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
-import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
-import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
-import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayMainLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.rememberStyleableOverlaySource
-import de.westnordost.streetcomplete.util.ktx.toLocation
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
 import org.koin.compose.viewmodel.koinViewModel
-import org.maplibre.compose.map.MapPresentationCallbacks
-import org.maplibre.compose.map.MapPresentationDetachedException
-import org.maplibre.compose.map.MapPresentationOptions
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.overlay.MapOverlay
 import org.maplibre.compose.util.ClickResult
+import org.maplibre.compose.util.MapClickHandler
 
 /** Complete shared MapLibre Compose renderer for StreetComplete's main map. */
 @Composable
@@ -48,9 +34,8 @@ fun MainMap(
     state: MainMapState = rememberMainMapState(),
     // TODO(maplibre-compose): Configure StreetComplete's exact pan/rotate/tilt/fling thresholds
     // and disable rotation while scaling when the common gesture API exposes those controls.
-    presentationOptions: MapPresentationOptions = MapPresentationOptions(zoomRange = 0f..22f),
     onFrame: (framesPerSecond: Double) -> Unit = {},
-    overlay: MapOverlay = MapOverlay.None,
+    overlay: MapOverlay = MapOverlay {},
     viewModel: MainMapViewModel = koinViewModel(),
 ) {
     val mapState = state.mapState
@@ -61,22 +46,20 @@ fun MainMap(
     val styledElements by viewModel.styleableElements.collectAsState()
 
     val cameraPosition = mapState.cameraPosition
-    val presentation = mapState.presentation
-    val viewport = presentation?.viewport
+    val viewport = mapState.viewport
     LaunchedEffect(
         cameraPosition,
-        presentation?.cameraMoveReason,
-        presentation?.isCameraMoving,
+        mapState.cameraMoveReason,
+        mapState.isCameraMoving,
     ) {
         state.onCameraChanged(
             position = cameraPosition,
-            moveReason = presentation?.cameraMoveReason
-                ?: org.maplibre.compose.camera.CameraMoveReason.NONE,
-            isMoving = presentation?.isCameraMoving == true,
+            moveReason = mapState.cameraMoveReason,
+            isMoving = mapState.isCameraMoving,
         )
     }
-    LaunchedEffect(presentation) {
-        if (presentation != null) state.onMapPresented()
+    LaunchedEffect(viewport) {
+        if (viewport != null) state.onMapPresented()
     }
     LaunchedEffect(locationEvent) {
         locationEvent?.let(state::onLocationEvent)
@@ -88,109 +71,51 @@ fun MainMap(
         )
     }
 
-    val styleableOverlaySource = rememberStyleableOverlaySource(styledElements)
-    val callbacks = MapPresentationCallbacks(
-        onClick = { position, offset ->
-            val presentationAtClick = mapState.presentation
-            coroutineScope.launch {
-                // TODO(maplibre-compose): Replace this pre-query when a raw-map callback runs only
-                // after interactive layer handlers have declined the same click.
-                val hitInteractiveFeature = try {
-                    presentationAtClick?.queryRenderedFeatures(
-                        offset = offset,
-                        layerIds = MAIN_MAP_INTERACTIVE_LAYER_IDS,
-                    )?.isNotEmpty() == true
-                } catch (_: MapPresentationDetachedException) {
-                    return@launch
-                }
-                if (!hitInteractiveFeature) {
-                    val latLon = LatLon(position.latitude, position.longitude)
-                    state.clickRadiusInMeters(latLon, offset)?.let { radius ->
-                        onClickMap(latLon, radius)
-                    }
+    SideEffect {
+        state.styleConfiguration.hiddenBaseLayerIds = hiddenBaseLayerIds
+        state.styleConfiguration.downloadedTiles = downloadedTiles
+        state.styleConfiguration.questPins = questPins
+        state.styleConfiguration.editHistoryPins = editHistoryPins
+        state.styleConfiguration.styledElements = styledElements
+        state.styleConfiguration.locationRotation = locationRotation
+        state.styleConfiguration.onClickOverlayElement = onClickOverlayElement
+        state.styleConfiguration.questKeyForProperties = viewModel::getQuestKey
+        state.styleConfiguration.editKeyForProperties = viewModel::getEditKey
+        state.styleConfiguration.onClickQuest = onClickQuest
+        state.styleConfiguration.onClickEdit = onClickEdit
+        state.styleConfiguration.onClickCluster = state::fitCluster
+    }
+
+    val onClick: MapClickHandler = { position, offset ->
+        coroutineScope.launch {
+            // TODO(maplibre-compose): Replace this pre-query when a raw-map callback runs only
+            // after interactive layer handlers have declined the same click.
+            val hitInteractiveFeature = mapState.queryRenderedFeatures(
+                offset = offset,
+                layerIds = MAIN_MAP_INTERACTIVE_LAYER_IDS,
+            ).isNotEmpty()
+            if (!hitInteractiveFeature) {
+                val latLon = LatLon(position.latitude, position.longitude)
+                state.clickRadiusInMeters(latLon, offset)?.let { radius ->
+                    onClickMap(latLon, radius)
                 }
             }
-            ClickResult.Pass
-        },
-        onLongClick = { position, offset ->
-            onLongPress(offset, LatLon(position.latitude, position.longitude))
-            ClickResult.Consume
-        },
-        onFrame = onFrame,
-    )
+        }
+        ClickResult.Pass
+    }
+    val onLongClick: MapClickHandler = { position, offset ->
+        onLongPress(offset, LatLon(position.latitude, position.longitude))
+        ClickResult.Consume
+    }
 
     StreetCompleteMap(
         state = mapState,
         modifier = modifier,
-        presentationOptions = presentationOptions.copy(cameraPadding = state.cameraPadding),
-        callbacks = callbacks,
+        cameraPadding = state.cameraPadding,
+        onClick = onClick,
+        onLongClick = onLongClick,
+        onFrame = onFrame,
         overlay = overlay,
-        hiddenBaseLayerIds = hiddenBaseLayerIds,
-        belowRoadsContent = {
-            StyleableOverlaySideLayers(
-                source = styleableOverlaySource,
-                bridge = false,
-                visible = state.showStyleableOverlay,
-            )
-        },
-        belowRoadsOnBridgeContent = {
-            StyleableOverlaySideLayers(
-                source = styleableOverlaySource,
-                bridge = true,
-                visible = state.showStyleableOverlay,
-            )
-        },
-        belowLabelsContent = {
-            DownloadedAreaLayer(downloadedTiles)
-            StyleableOverlayMainLayers(
-                source = styleableOverlaySource,
-                visible = state.showStyleableOverlay,
-                onClickElement = onClickOverlayElement,
-            )
-            TracksLayers(
-                state.currentRenderedTrack,
-                state.isRecordingTrack,
-                state.oldRenderedTracks,
-            )
-        },
-        aboveLabelsContent = {
-            StyleableOverlayLabelLayer(
-                source = styleableOverlaySource,
-                styledElements = styledElements,
-                visible = state.showStyleableOverlay,
-                onClickElement = onClickOverlayElement,
-            )
-            if (state.markers.isNotEmpty()) GeometryMarkersLayers(state.markers)
-            state.highlightedGeometry?.let { FocusedGeometryLayers(it) }
-            state.displayedMeasurement?.toLocation()?.let {
-                CurrentLocationLayers(it, locationRotation)
-            }
-
-            val pinSnapshot = when (state.pinMode) {
-                MainMapPinMode.NONE -> PinSnapshot.Empty
-                MainMapPinMode.QUESTS -> questPins
-                MainMapPinMode.EDITS -> editHistoryPins
-            }
-            PinsLayers(
-                mapState = mapState,
-                snapshot = pinSnapshot,
-                visible = state.showPins && state.pinMode != MainMapPinMode.NONE,
-                onClickPin = { properties ->
-                    when (state.pinMode) {
-                        MainMapPinMode.NONE -> Unit
-                        MainMapPinMode.QUESTS -> {
-                            viewModel.getQuestKey(properties)?.let(onClickQuest)
-                        }
-                        MainMapPinMode.EDITS -> {
-                            viewModel.getEditKey(properties)?.let(onClickEdit)
-                        }
-                    }
-                },
-                onClickCluster = state::fitCluster,
-            )
-
-            state.selectedPins?.let { SelectedPinsLayer(it.icon, it.positions) }
-        },
     )
 }
 

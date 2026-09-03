@@ -32,12 +32,6 @@ val desktopMapLibreRuntimeArtifact = run {
     }
 }
 
-configurations.configureEach {
-    resolutionStrategy.eachDependency {
-        if (requested.group == "org.maplibre.compose") useVersion(mapLibreComposeVersion)
-    }
-}
-
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
     "ar", "ast", "be", "bg", "bs", "ca", "cs", "cy", "da", "de", "el",
@@ -159,7 +153,7 @@ kotlin {
 
     jvm("desktop") {
         compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
+            jvmTarget.set(JvmTarget.JVM_25)
         }
     }
 

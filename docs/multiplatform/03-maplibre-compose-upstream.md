@@ -6,16 +6,21 @@ API before they are considered actionable.
 
 ## Dependency baseline
 
-- Latest stable release available locally: `0.15.0`.
-- Latest published post-release snapshot observed on 2026-09-01:
-  `0.15.1-SNAPSHOT`, build `0.15.1-20260901.101938-7`.
+- Dependency version: `0.15.1-SNAPSHOT`.
+- Resolved publication validated on 2026-09-03:
+  `0.15.1-20260902.102151-8`.
 - The snapshot includes the shared map artifact and platform runtime artifacts,
   including Android OpenGL, macOS ARM64 Metal, and Linux/Windows Vulkan for
   x64 and ARM64.
+- The desktop artifacts require Java 25; Android and iOS keep their existing
+  platform bytecode and native deployment targets.
+- This branch intentionally follows the mutable snapshot version so it can test
+  new MapLibre Compose publications without maintaining a timestamped artifact
+  manifest. Update the resolved publication above after validating a new build.
 
 ## Findings
 
-Ten integration gaps are confirmed below. The abandoned
+Nine unresolved integration gaps are confirmed below. The abandoned
 `upstream/maplibre-compose` integration predates 0.15, so its other assumptions
 continue to be re-evaluated against the snapshot before being attributed upstream.
 
@@ -23,21 +28,6 @@ The complete StreetComplete base style compiles against the snapshot with one
 intentional source migration: symbol icon padding now uses MapLibre Compose's
 typed `DpPadding` expression value. Cold production runs on Android, iOS, and
 desktop exposed the additional runtime findings recorded here.
-
-### Snapshot metadata cannot be consumed as an immutable version directly
-
-The Sonatype snapshot repository stores build `20260901.101938-7` under
-timestamped `.module`, `.jar`, `.aar`, `.klib`, source, and resource names, but
-the Gradle module metadata inside that build names its variant files with
-`0.15.1-SNAPSHOT`. Resolving the timestamp as an ordinary immutable version
-therefore cannot fetch those logical file names.
-
-StreetComplete preserves the published variant graph with a component-metadata
-rule and replaces each selected variant's files from a committed manifest. This
-is reproducible, but it requires listing every target/runtime file. A release-like
-nightly version whose module metadata refers to its own timestamped files would
-make reviewed snapshot pins ordinary Gradle dependencies and eliminate this
-consumer workaround.
 
 ### Missing global style-transition configuration
 
@@ -143,7 +133,7 @@ remove both compromises.
 StreetComplete treats a map click as a fallback: quest pins, edit pins, and
 overlay features get the event first, and the raw map receives it only if no
 interactive feature consumed it. MapLibre Compose invokes
-`MapPresentationCallbacks.onClick` before layer handlers. Returning `Pass` lets
+the map-level `onClick` callback before layer handlers. Returning `Pass` lets
 layers run, but there is no callback after layer dispatch to report that none of
 them consumed the event.
 
@@ -196,8 +186,8 @@ legacy values without the old workaround; live target validation is still needed
 ## Integration constraints
 
 - The current desktop runtime artifacts target Java 25. StreetComplete's future
-  desktop distribution must package a Java 25 runtime even though its Kotlin JVM
-  bytecode target remains 11.
+  desktop distribution must package a Java 25 runtime, and this branch compiles
+  its desktop target to JVM 25 bytecode accordingly.
 - There is no published macOS x64 runtime. This does not block the current ARM64
   development host, but StreetComplete cannot claim macOS x64 support without an
   upstream runtime artifact.

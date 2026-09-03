@@ -110,15 +110,14 @@
 
 ## MapLibre Compose snapshot foundation
 
-- All targets compile against the immutable post-v0.15 publication
-  `0.15.1-20260901.101938-7`. Gradle retains MapLibre's multiplatform module
-  metadata while a committed variant manifest rewrites every core, location,
-  target, resource, and runtime artifact to its timestamped Sonatype path.
-  Resolution rules also force every transitive MapLibre edge to that exact batch.
+- All targets compile against the post-v0.15 `0.15.1-SNAPSHOT` series. This
+  validation branch follows new publications through Sonatype's Maven snapshot
+  repository; the currently validated publication is recorded in
+  `03-maplibre-compose-upstream.md`.
 - Android packages the OpenGL runtime, iOS links the transitive Metal runtime,
   and the current macOS ARM64 host selects the desktop Metal runtime. Simulated
-  Gradle host resolution also selects the timestamped Vulkan plus native-location
-  artifacts for Linux and Windows x64/ARM64 rather than nonexistent OpenGL modules.
+  Gradle host resolution also selects the Vulkan plus native-location artifacts
+  for Linux and Windows x64/ARM64 rather than nonexistent OpenGL modules.
 - StreetComplete now consumes the snapshot's `LocationMeasurement`,
   `LocationEvent.Update`, and `HeadingMeasurement` APIs. Recorded tracks use the
   measurement's real wall-clock instant instead of accidentally serializing a

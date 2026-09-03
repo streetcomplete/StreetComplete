@@ -22,8 +22,7 @@ class DesktopActiveNetworkConnection(scope: CoroutineScope) : ActiveNetworkConne
         }
     }
 
-    override val capabilitiesFlow: Flow<NetworkCapabilities?> = state
-    override val capabilities: NetworkCapabilities? get() = state.value
+    override val capabilities: Flow<NetworkCapabilities?> = state
 
     private companion object {
         const val POLL_INTERVAL_MILLIS = 5_000L

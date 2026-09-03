@@ -1,81 +1,62 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import androidx.compose.material.MaterialTheme
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.key
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import org.maplibre.compose.camera.CameraPosition
-import org.maplibre.compose.map.MapPresentationCallbacks
-import org.maplibre.compose.map.MapPresentationOptions
+import org.maplibre.compose.map.CameraConstraints
+import org.maplibre.compose.map.GestureOptions
 import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.MapStyleScope
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.MaplibreMap
+import org.maplibre.compose.map.RenderOptions
+import org.maplibre.compose.map.TileLodOptions
+import org.maplibre.compose.map.rememberDefaultMapRuntime
 import org.maplibre.compose.map.rememberMapState
-import org.maplibre.compose.map.rememberMapRuntime
 import org.maplibre.compose.overlay.MapOverlay
+import org.maplibre.compose.overlay.include
 import org.maplibre.compose.style.BaseStyle
-import org.maplibre.compose.style.StyleComposition
+import org.maplibre.compose.util.MapClickHandler
 import org.maplibre.compose.util.MaplibreComposable
 
 /**
- * A MapLibre Compose map with StreetComplete's complete light or night base-map style.
- *
- * The four content slots preserve the intentional ordering seams of the Android style. App-owned
- * geometry can be inserted below roads, below bridge roads, below labels, or above labels without
- * coupling this base map to quest, edit-history, location, or overlay state.
+ * Displays a StreetComplete map state with the app's camera limits and platform lifecycle policy.
+ * The durable base style and declarative layers are owned by [state].
  */
 @Composable
 fun StreetCompleteMap(
     state: MapState,
     modifier: Modifier = Modifier,
-    presentationOptions: MapPresentationOptions = MapPresentationOptions(zoomRange = 0f..22f),
-    callbacks: MapPresentationCallbacks = MapPresentationCallbacks(),
-    overlay: MapOverlay = MapOverlay.None,
-    hiddenBaseLayerIds: Set<String> = emptySet(),
-    belowRoadsContent: @Composable @MaplibreComposable () -> Unit = {},
-    belowRoadsOnBridgeContent: @Composable @MaplibreComposable () -> Unit = {},
-    belowLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
-    aboveLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
+    cameraPadding: PaddingValues = PaddingValues(0.dp),
+    cameraConstraints: CameraConstraints = CameraConstraints(maxZoom = 22.0),
+    renderOptions: RenderOptions = RenderOptions.Standard,
+    gestureOptions: GestureOptions = GestureOptions.Standard,
+    tileLodOptions: TileLodOptions = TileLodOptions.Standard,
+    onClick: MapClickHandler,
+    onLongClick: MapClickHandler,
+    onFrame: (framesPerSecond: Double) -> Unit = {},
+    overlay: MapOverlay = MapOverlay {},
 ) {
-    // TODO(maplibre-compose): Restore StreetComplete's 300ms, system-scale-aware global style
-    // transition when MapLibre Compose exposes style transition configuration in common code.
-    val colors = if (MaterialTheme.colors.isLight) MapColors.Light else MapColors.Night
-    val languages = listOf(Locale.current.language)
-    val styleComposition = remember(
-        colors,
-        languages,
-        belowRoadsContent,
-        belowRoadsOnBridgeContent,
-        belowLabelsContent,
-        aboveLabelsContent,
-        hiddenBaseLayerIds,
-    ) {
-        StyleComposition {
-            MapStyle(
-                colors = colors,
-                languages = languages,
-                belowRoadsContent = belowRoadsContent,
-                belowRoadsOnBridgeContent = belowRoadsOnBridgeContent,
-                belowLabelsContent = belowLabelsContent,
-                aboveLabelsContent = aboveLabelsContent,
-                hiddenBaseLayerIds = hiddenBaseLayerIds,
-            )
-        }
-    }
-
     val presentationKey = rememberMapPresentationKey()
     key(presentationKey) {
         MaplibreMap(
             state = state,
-            styleComposition = styleComposition,
             modifier = modifier,
-            presentationOptions = presentationOptions,
-            callbacks = callbacks,
-            overlay = overlay,
-        )
+            cameraPadding = cameraPadding,
+            cameraConstraints = cameraConstraints,
+            renderOptions = renderOptions,
+            gestureOptions = gestureOptions,
+            tileLodOptions = tileLodOptions,
+            onClick = onClick,
+            onLongClick = onLongClick,
+            onFrame = onFrame,
+        ) {
+            include(overlay)
+        }
     }
 }
 
@@ -87,16 +68,18 @@ internal expect fun rememberMapPresentationKey(): Int
 @Composable
 fun rememberStreetCompleteMapState(
     initialCameraPosition: CameraPosition = CameraPosition(),
-    runtime: MapRuntime = rememberMapRuntime(),
+    runtime: MapRuntime = rememberDefaultMapRuntime(),
+    content: @Composable @MaplibreComposable MapStyleScope.() -> Unit = {},
 ): MapState = rememberMapState(
     runtime = runtime,
+    baseStyle = BaseStyle.Json(streetCompleteBaseStyle()),
     initialCameraPosition = initialCameraPosition,
-    initialBaseStyle = BaseStyle.Json(streetCompleteBaseStyle()),
+    content = content,
 )
 
 // Compose resources exposes the local glyph directory differently on each target. Build the URI
 // from one concrete resource so that MapLibre can substitute the requested stack and range.
-private fun streetCompleteBaseStyle(): String = """
+internal fun streetCompleteBaseStyle(): String = """
     {
       "version": 8,
       "name": "StreetComplete",

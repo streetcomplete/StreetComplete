@@ -13,7 +13,7 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 /**
  * Recreates the map presentation after iOS backgrounds its Metal surface.
  *
- * The pinned MapLibre Compose surface only pauses its frame loop on [Lifecycle.Event.ON_STOP].
+ * The current MapLibre Compose surface only pauses its frame loop on [Lifecycle.Event.ON_STOP].
  * Reattaching the retained logical map creates a fresh render session and replays its style.
  */
 @Composable

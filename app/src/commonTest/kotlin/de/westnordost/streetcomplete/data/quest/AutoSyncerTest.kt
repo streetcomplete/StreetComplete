@@ -50,8 +50,7 @@ class AutoSyncerTest {
             }
         }
         val noNetwork = object : ActiveNetworkConnection {
-            override val capabilitiesFlow = emptyFlow<NetworkCapabilities?>()
-            override val capabilities: NetworkCapabilities? = null
+            override val capabilities = emptyFlow<NetworkCapabilities?>()
         }
         val downloadedTilesSource = mock<DownloadedTilesSource>()
         val mapDataSource = mock<MapDataSource>()

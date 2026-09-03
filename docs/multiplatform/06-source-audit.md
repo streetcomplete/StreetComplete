@@ -236,10 +236,6 @@ These are maintainability findings, not missing product behavior.
 
 [`MapQuestPinsSource`](../../app/src/commonMain/kotlin/de/westnordost/streetcomplete/screens/main/map/sources/MapQuestPinsSource.kt) and [`StyleableOverlaySource`](../../app/src/commonMain/kotlin/de/westnordost/streetcomplete/screens/main/map/sources/StyleableOverlaySource.kt) independently implement the same zoom-16 tile gate, 32-tile cap, child-job replacement, locking, generation guard, clearing, and close machinery. The final hardening commits had to change both paths. A non-inheritance helper/coordinator would reduce cancellation drift.
 
-### Judgement call: snapshot identity is spread across three representations
-
-The timestamped version is in [`gradle.properties`](../../gradle.properties), the logical `0.15.1-SNAPSHOT` repository path is hardcoded in [`settings.gradle.kts`](../../settings.gradle.kts), and logical/immutable filenames are repeated through [`maplibre-compose-snapshot-files.tsv`](../../gradle/maplibre-compose-snapshot-files.tsv). Upstream metadata forces much of the manifest workaround, but the base-version duplication can still be derived or validated locally so the next snapshot series does not require silent coordinated edits.
-
 ## Evidence-document corrections needed
 
 The existing ledger should be corrected even if the probe branch remains intentionally disposable:
