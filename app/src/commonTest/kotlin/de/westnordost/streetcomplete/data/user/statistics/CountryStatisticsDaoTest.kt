@@ -1,14 +1,14 @@
 package de.westnordost.streetcomplete.data.user.statistics
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class CountryStatisticsDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: CountryStatisticsDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         dao = CountryStatisticsDao(database, CountryStatisticsTable.NAME)
     }
 

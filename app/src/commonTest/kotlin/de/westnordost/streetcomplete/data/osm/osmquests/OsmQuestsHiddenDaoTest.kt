@@ -1,23 +1,24 @@
 package de.westnordost.streetcomplete.data.osm.osmquests
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
 import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
+import kotlin.time.Duration.Companion.milliseconds
 
 class OsmQuestsHiddenDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: OsmQuestsHiddenDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         dao = OsmQuestsHiddenDao(database)
     }
 
@@ -36,7 +37,7 @@ class OsmQuestsHiddenDaoTest : StreetCompleteDatabaseTestCase() {
             OsmQuestKey(ElementType.NODE, 124L, "bla")
         )
         dao.add(keys[0])
-        delay(200)
+        delay(200.milliseconds)
         val time = nowAsEpochMilliseconds()
         dao.add(keys[1])
         val result = dao.getNewerThan(time - 100).single()

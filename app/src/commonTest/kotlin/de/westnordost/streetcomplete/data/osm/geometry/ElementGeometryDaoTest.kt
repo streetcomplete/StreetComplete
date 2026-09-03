@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.data.osm.geometry
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
@@ -7,7 +8,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
 import de.westnordost.streetcomplete.data.osm.mapdata.NodeDao
 import de.westnordost.streetcomplete.util.ktx.containsExactlyInAnyOrder
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -18,7 +18,7 @@ class ElementGeometryDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: ElementGeometryDao
     private lateinit var nodeDao: NodeDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         nodeDao = NodeDao(database)
         val relationGeometryDao = RelationGeometryDao(database, PolylinesSerializer())
         val wayGeometryDao = WayGeometryDao(database, PolylinesSerializer())
