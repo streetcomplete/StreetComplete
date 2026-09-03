@@ -6,6 +6,8 @@ import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.DatabaseImpl
+import de.westnordost.streetcomplete.data.IosPeriodicCleaner
+import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.IosActiveNetworkConnection
@@ -134,4 +136,6 @@ val iosModule = module {
     single<DownloadController> { IosDownloadController() }
 
     factory<ChangesetAutoCloser> { IosChangesetAutoCloser() }
+
+    factory<PeriodicCleaner> { IosPeriodicCleaner() }
 }

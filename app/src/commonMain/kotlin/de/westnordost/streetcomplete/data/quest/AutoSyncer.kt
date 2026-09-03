@@ -52,7 +52,7 @@ class AutoSyncer(
     private val downloadedTilesController: DownloadedTilesController
 ) : DefaultLifecycleObserver {
 
-    private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("QuestAutoSyncer"))
+    private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("AutoSyncer"))
 
     private val networkCapabilities = MutableStateFlow<NetworkCapabilities?>(null)
 
@@ -192,6 +192,6 @@ class AutoSyncer(
     }
 
     companion object {
-        private const val TAG = "QuestAutoSyncer"
+        private const val TAG = "AutoSyncer"
     }
 }
