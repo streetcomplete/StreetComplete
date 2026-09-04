@@ -41,6 +41,7 @@ plugins {
     // keep in sync with Kotlin version! See https://mokkery.dev/docs/Setup/#compatibility
     id("dev.mokkery") version "3.4.2"
     id("org.jetbrains.kotlin.plugin.allopen") version "2.4.0"
+    id("org.gradle.test-retry") version "1.6.5"
 }
 
 repositories {
@@ -466,6 +467,26 @@ project.afterEvaluate {
     tasks.named("androidPreBuild") {
         dependsOn(tasks.named("copyIconsToAndroid"))
         dependsOn(tasks.named("copyStringsToAndroid"))
+    }
+}
+
+project.afterEvaluate {
+    tasks.named<Test>("testAndroidHostTest") {
+        // these tests talk to the official OSM dev/test API server (see OsmDevApi) instead of
+        // mocking it, so they occasionally fail with a connection error unrelated to the code
+        // under test. Retry them a couple of times before failing the build.
+        retry {
+            maxRetries.set(2)
+            maxFailures.set(5)
+            failOnPassedAfterRetry.set(false)
+            filter {
+                includeClasses.add("de.westnordost.streetcomplete.data.osmtracks.TracksApiClientImplTest")
+                includeClasses.add("de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetApiClientImplTest")
+                includeClasses.add("de.westnordost.streetcomplete.data.osm.mapdata.MapDataApiClientImplTest")
+                includeClasses.add("de.westnordost.streetcomplete.data.osmnotes.NotesApiClientImplTest")
+                includeClasses.add("de.westnordost.streetcomplete.data.user.UserApiClientImplTest")
+            }
+        }
     }
 }
 
