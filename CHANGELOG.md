@@ -21,7 +21,7 @@ app has now come within reach! (#6842). @kiliankoe, helped a bit, too (#6989)
 
 ### Fixes
 
-- Post box was missinig in things overlay (#6976)
+- Post box was missing in things overlay (#6976)
 - Sharing logs no longer crashes when the log is too large (#5561)
 - UI now prevents possibility to create duplicate notes (#4853)
 - Context menus now appear at less wrong positions (#6665)
@@ -38,7 +38,7 @@ app has now come within reach! (#6842). @kiliankoe, helped a bit, too (#6989)
 - Parking access: Add "permit" as answer option (#2662, #7058), by @paulklie
 - Crossings: Don't ask for islands and kerb height on continuous crossings (#6983), by @eginhard
 - BBQ fuel: Allow to specify several fuels (#6915, #7028), by @paulklie
-- Toilets fee: Don't ask in Australia, New Zealand (#7011), by @andrewharvey
+- Toilets fee: Don't ask in Australia and New Zealand (#7011), by @andrewharvey
 - Other small improvements that improve clarity (#6991, #6984, #7003, #7020, #7027, #7025, #7049), thanks @paulklie
 
 ## v63.4
