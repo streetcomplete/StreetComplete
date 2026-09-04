@@ -33,7 +33,6 @@ data class MapColors(
     val privateOverlay: Color,
     val hillshadeLight: Color,
     val hillshadeShadow: Color,
-    val onewayArrow: Color
 ) {
     companion object
 }
@@ -67,7 +66,6 @@ private val mapColorsLight = MapColors(
     privateOverlay = Color(0xfff3dacd),
     hillshadeLight = Color.hsl(0.86f, 1f, 0.95f),
     hillshadeShadow = Color.hsl(0.07f, 1f, 0.4f),
-    onewayArrow = Color(0xff888888),
 )
 
 val MapColors.Companion.Night get() = mapColorsNight
@@ -99,5 +97,4 @@ private val mapColorsNight = MapColors(
     privateOverlay = Color(0xff3d364e),
     hillshadeLight = Color.hsl(0.94f, 0.3f, 0.5f),
     hillshadeShadow = Color.hsl(0.94f, 0.8f, 0.0f),
-    onewayArrow = Color(0xffccccff),
 )

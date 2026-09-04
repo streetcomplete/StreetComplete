@@ -477,7 +477,7 @@ private fun OnewayArrowsLayer(source: Source, colors: MapColors) {
         placement = const(SymbolPlacement.LineCenter),
         spacing = byZoom(17 to 200.dp, 24 to 25600.dp),
         iconImage = image(painterResource(Res.drawable.map_oneway_arrow)),
-        iconColor = const(colors.onewayArrow),
+        iconOpacity = const(0.5f),
         iconSize = byZoom(17 to 0.25f, 24 to 16.0f),
         iconPadding = const(DpPadding(5.dp, 5.dp, 5.dp, 5.dp)),
         iconRotate = const(90),
