@@ -43,6 +43,10 @@ class CheckShopExistence(
             or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -2 years" }}
           )
           and (name or brand or noname = yes or name:signed = no)
+          and (!seasonal or seasonal = no)
+          and (!intermittent or intermittent = no)
+          and (!permanent or permanent = yes)
+          and (!street_vendor or street_vendor = no)
     """).toElementFilterExpression() }
 
     override val changesetComment = "Survey if places still exist"
