@@ -21,12 +21,16 @@ fun ShowMapScreen(
             windowInsets = AppBarDefaults.topAppBarWindowInsets,
             navigationIcon = { IconButton(onClick = onClickBack) { BackIcon() } },
         )
+
         MainMap(
             onClickOverlayElement = {},
             onClickQuest = {},
             onClickEdit = {},
             location = null,
             rotation = null,
+            isRecording = true,
+            trackpoints = listOf(),
+            oldTrackpointsLists = listOf(),
             shownBottomSheet = null,
             shownMarkers = null,
             isShowingUndoHistorySidebar = false,

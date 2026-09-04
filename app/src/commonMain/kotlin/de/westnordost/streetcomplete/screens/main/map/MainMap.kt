@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -11,6 +12,7 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
@@ -24,6 +26,7 @@ import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
+import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
 import kotlinx.coroutines.launch
 import org.koin.compose.viewmodel.koinViewModel
@@ -65,6 +68,9 @@ fun MainMap(
     onClickEdit: (EditKey) -> Unit,
     location: Location?,
     rotation: Float?,
+    isRecording: Boolean,
+    trackpoints: List<LatLon>,
+    oldTrackpointsLists: List<List<LatLon>>,
     shownBottomSheet: ShownBottomSheet?,
     shownMarkers: Collection<Marker>?,
     isShowingUndoHistorySidebar: Boolean,
@@ -148,7 +154,7 @@ fun MainMap(
                         }
                     )
                 }
-                //TODO TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
+                TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
             },
             aboveLabelsContent = {
                 // these are always on top of everything else (including labels)

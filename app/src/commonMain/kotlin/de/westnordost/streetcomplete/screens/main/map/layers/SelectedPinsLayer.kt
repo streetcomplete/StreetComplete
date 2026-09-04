@@ -13,6 +13,8 @@ import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.ktx.id
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
+import org.maplibre.spatialk.geojson.Geometry
+import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.DrawableResource
 import org.maplibre.compose.expressions.dsl.const
@@ -44,9 +46,9 @@ fun SelectedPinsLayer(icon: DrawableResource, pinPositions: Collection<LatLon>) 
     val source = rememberGeoJsonSource(
         data = GeoJsonData.Features(
             FeatureCollection(pinPositions.map {
-                Feature(
+                Feature<Geometry, JsonObject>(
                     geometry = it.toGeometry(),
-                    properties = mapOf("icon-image" to JsonPrimitive("pin_" + icon.id))
+                    properties = JsonObject(mapOf("icon-image" to JsonPrimitive("pin_" + icon.id)))
                 )
             })
         ),
