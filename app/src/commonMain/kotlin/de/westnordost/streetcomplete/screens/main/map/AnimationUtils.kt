@@ -15,6 +15,7 @@ import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.normalizeLongitude
 
+/** Animates a LatLon to a [targetValue] position. Also works when crossing the antimeridian. */
 @Composable
 fun animateLatLonAsState(
     targetValue: LatLon,

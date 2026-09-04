@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 
+/** Map colors schema for [MapStyle] */
 @Immutable
 data class MapColors(
     val earth: Color,

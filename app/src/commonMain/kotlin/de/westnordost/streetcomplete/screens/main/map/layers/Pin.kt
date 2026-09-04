@@ -9,7 +9,8 @@ import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.DrawableResource
 import org.maplibre.spatialk.geojson.Feature
 
-/** Intermediate data structure for display of pins on the map */
+/** Intermediate data structure for display of pins on the map. The [icon] of a Pin shall be drawn
+ *  with a [PinPainter][de.westnordost.streetcomplete.screens.main.map.PinPainter] */
 data class Pin(
     val position: LatLon,
     val icon: DrawableResource,
@@ -17,7 +18,7 @@ data class Pin(
     val order: Int = 0
 )
 
-private fun Pin.toGeoJsonFeature() =
+fun Pin.toGeoJsonFeature() =
     Feature(
         geometry = position.toGeometry(),
         properties =

@@ -1,5 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
+import androidx.compose.ui.graphics.Color
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
@@ -14,6 +15,9 @@ import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.Geometry
 import kotlin.collections.set
 
+/** Intermediate data structure for a geometry marker. The [icon] of a geometry marker shall be
+ *  drawn with a [ColorFilterPainter][de.westnordost.streetcomplete.ui.util.ColorFilterPainter] in
+ *  the color [Color.GeometryMarker] */
 data class Marker(
     val geometry: ElementGeometry,
     /** drawable resource name */
@@ -27,7 +31,7 @@ fun Marker.toGeoJsonFeature(): List<Feature<Geometry, JsonObject>> {
     if (icon != null || title != null || geometry is ElementPointGeometry) {
         val p = HashMap<String, JsonElement>(2)
 
-        p["icon"] = JsonPrimitive(icon?.id ?: "preset_maki_circle")
+        p["icon"] = JsonPrimitive("marker_" + (icon?.id ?: "preset_maki_circle"))
         if (title != null) {
             p["label"] = JsonPrimitive(title)
         }
