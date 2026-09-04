@@ -17,7 +17,8 @@ app has now come within reach! (#6842). @kiliankoe, helped a bit, too (#6989)
 
 ### New Quests
 
-- _"How much do you need to pay to park here?"_ (#6653) thanks @marekkrug
+- _"How much do you need to pay to park here?"_ (#6653), thanks @marekkrug
+- _"What doctors are present here?"_ (#7044), by @paulklie
 
 ### Fixes
 
