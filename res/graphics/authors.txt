@@ -270,6 +270,7 @@ italian police type/
     polizia.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
 
 quest/
+    access.svg                       modified by paulklie from parking_access.svg by Tobias Zwick (CC-BY-SA 4.0) with parts taken from EmojiOne 2: U+1F511 (CC-BY 4.0), resulting work is CC-BY-SA 4.0
     access_point.svg
     apple.svg
     artwork.svg
