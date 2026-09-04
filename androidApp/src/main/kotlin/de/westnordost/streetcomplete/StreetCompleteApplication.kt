@@ -33,8 +33,6 @@ class StreetCompleteApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        deleteDatabase(ApplicationConstants.OLD_DATABASE_NAME)
-
         val koinApplication = startKoin {
             androidContext(this@StreetCompleteApplication)
             workManagerFactory()

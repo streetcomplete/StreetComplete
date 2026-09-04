@@ -21,7 +21,8 @@ abstract class StreetCompleteDatabaseTestCase {
 
     abstract fun onDatabaseInitialized(database: Database)
 
-    @AfterTest fun tearDown() {
+    @AfterTest
+    open fun tearDownDatabase() {
         connection.close()
         SystemFileSystem.delete(Path(DATABASE_NAME), mustExist = false)
     }
