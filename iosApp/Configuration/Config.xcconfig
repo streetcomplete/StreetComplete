@@ -1,4 +1,4 @@
-TEAM_ID=
+TEAM_ID=N7B5VD3487
 
 PRODUCT_NAME=StreetComplete
 // must differ from the Kotlin framework's name, which is also StreetComplete

@@ -29,7 +29,6 @@ class ApplicationInitializer(
     private val downloadedTilesController: DownloadedTilesController,
     private val prefs: Preferences,
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater,
-    private val periodicCleaner: PeriodicCleaner,
 ) {
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
 
@@ -54,8 +53,6 @@ class ApplicationInitializer(
             prefs.lastDataVersion = BuildConfig.VERSION_NAME
             if (lastVersion != null) onNewVersion()
         }
-
-        periodicCleaner.enqueue()
     }
 
     private fun onNewVersion() {

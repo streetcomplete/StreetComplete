@@ -27,8 +27,6 @@ class StreetCompleteApplication : Application() {
     private val cacheTrimmer: CacheTrimmer by inject()
     private val applicationInitializer: ApplicationInitializer by inject()
 
-
-
     private val settingsListeners = mutableListOf<SettingsListener>()
 
     override fun onCreate() {

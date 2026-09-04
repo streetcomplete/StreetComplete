@@ -27,6 +27,7 @@ import de.westnordost.streetcomplete.screens.user.profile.LaurelWreathBadge
 import de.westnordost.streetcomplete.screens.user.profile.getLocalRankCurrentWeekProgress
 import de.westnordost.streetcomplete.screens.user.profile.getLocalRankProgress
 import de.westnordost.streetcomplete.ui.common.OpenInBrowserIcon
+import de.westnordost.streetcomplete.ui.ktx.fadingVerticalScrollEdges
 import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 import de.westnordost.streetcomplete.ui.theme.headlineSmall
 import de.westnordost.streetcomplete.util.ktx.displayRegion
@@ -82,8 +83,12 @@ private fun CountryInfoDetails(
     val countryLocale = Locale("en-$countryCode")
     val countryName = countryLocale.displayRegion ?: countryLocale.region
 
+    val scrollState = rememberScrollState()
+
     Column(
-        modifier = modifier.verticalScroll(rememberScrollState()),
+        modifier = modifier
+            .fadingVerticalScrollEdges(scrollState, 32.dp)
+            .verticalScroll(scrollState),
         horizontalAlignment = if (isLandscape) Alignment.Start else Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {

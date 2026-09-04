@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osm.edits
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementIdUpdate
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
@@ -13,7 +13,7 @@ import kotlin.test.assertTrue
 class ElementIdProviderDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: ElementIdProviderDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         dao = ElementIdProviderDao(database)
     }
 

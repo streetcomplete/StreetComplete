@@ -1,10 +1,10 @@
 package de.westnordost.streetcomplete.data.osmnotes.notequests
 
+import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.StreetCompleteDatabaseTestCase
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
@@ -15,7 +15,7 @@ import kotlin.test.assertTrue
 class NoteQuestsHiddenDaoTest : StreetCompleteDatabaseTestCase() {
     private lateinit var dao: NoteQuestsHiddenDao
 
-    @BeforeTest fun createDao() {
+    override fun onDatabaseInitialized(database: Database) {
         dao = NoteQuestsHiddenDao(database)
     }
 

@@ -14,6 +14,8 @@ import de.westnordost.streetcomplete.data.connection.IosActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.IosDownloadController
 import de.westnordost.streetcomplete.data.initialize
+import de.westnordost.streetcomplete.data.maptiles.IosMapTilesDownloader
+import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.IosChangesetAutoCloser
 import de.westnordost.streetcomplete.data.upload.IosUploadController
@@ -138,4 +140,6 @@ val iosModule = module {
     factory<ChangesetAutoCloser> { IosChangesetAutoCloser() }
 
     factory<PeriodicCleaner> { IosPeriodicCleaner() }
+
+    factory<MapTilesDownloader> { IosMapTilesDownloader() }
 }
