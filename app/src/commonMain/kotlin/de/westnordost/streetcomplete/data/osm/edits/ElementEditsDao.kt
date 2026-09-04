@@ -23,7 +23,9 @@ import de.westnordost.streetcomplete.data.osm.edits.move.MoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.move.RevertMoveNodeAction
 import de.westnordost.streetcomplete.data.osm.edits.split_way.SplitWayAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.RevertUpdateElementsTagsAction
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementsTagsAction
 import de.westnordost.streetcomplete.util.Mockable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
@@ -42,6 +44,8 @@ class ElementEditsDao(
             polymorphic(ElementEditAction::class) {
                 subclass(UpdateElementTagsAction::class)
                 subclass(RevertUpdateElementTagsAction::class)
+                subclass(UpdateElementsTagsAction::class)
+                subclass(RevertUpdateElementsTagsAction::class)
                 subclass(SplitWayAction::class)
                 subclass(DeletePoiNodeAction::class)
                 subclass(RevertDeletePoiNodeAction::class)
