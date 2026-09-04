@@ -8,6 +8,10 @@ This is a static audit of pull request 7068, `iOS / KMP migration probe`.
 - Method: source, diff, deleted-source parity, build configuration, tests, workflows, and the other files in this directory
 - Excluded: building, running, device testing, and re-validating the commands or videos recorded in `04-validation.md`
 
+This document preserves the findings at the pinned head above. See
+`03-maplibre-compose-upstream.md` for the current upstream status and resolved
+snapshot behavior.
+
 The audit uses four blocker classes:
 
 - **Internal**: StreetComplete can implement or correct it in this repository.

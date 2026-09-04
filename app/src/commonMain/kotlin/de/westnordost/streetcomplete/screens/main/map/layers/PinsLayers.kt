@@ -339,6 +339,7 @@ internal fun JsonObject.toStringMap(): Map<String, String> = mapNotNull { (key, 
 }.toMap()
 
 internal fun IllegalStateException.isStyleHandleRace(): Boolean = message in setOf(
+    "No ready loaded style",
     "Style operation belongs to a stale loaded-style identity",
     "Style operation belongs to a stale or unready loaded-style identity",
     "Style operation crossed a loaded-style resource change",

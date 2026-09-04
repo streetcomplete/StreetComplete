@@ -1,10 +1,13 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.MotionDurationScale
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
@@ -27,9 +30,18 @@ import de.westnordost.streetcomplete.screens.main.map.layers.STYLEABLE_OVERLAY_L
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
+import de.westnordost.streetcomplete.screens.main.map.layers.isStyleHandleRace
 import de.westnordost.streetcomplete.screens.main.map.layers.rememberStyleableOverlaySource
 import de.westnordost.streetcomplete.util.ktx.toLocation
+import kotlin.coroutines.coroutineContext
+import kotlin.time.Duration.Companion.milliseconds
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.withContext
 import org.maplibre.compose.map.MapState
+import org.maplibre.compose.map.StyleLoadState
+import org.maplibre.compose.style.TransitionOptions
 import org.maplibre.compose.util.MaplibreComposable
 
 /** Inputs owned outside the state-owned MapLibre style composition. */
@@ -66,8 +78,7 @@ internal fun MainMapStyle(
     tracks: MainMapTrackState,
     content: MainMapContentState,
 ) {
-    // TODO(maplibre-compose): Restore StreetComplete's 300ms, system-scale-aware global style
-    // transition when MapLibre Compose exposes style transition configuration in common code.
+    BindMainMapStyleTransition(mapState)
     BindDynamicStyleImages(mapState, configuration.dynamicStyleImages)
     val styleableOverlaySource =
         rememberStyleableOverlaySource(
@@ -179,5 +190,40 @@ internal fun MainMapStyle(
         },
     )
 }
+
+@Composable
+private fun BindMainMapStyleTransition(mapState: MapState) {
+    LaunchedEffect(mapState) {
+        val motionDurationScale = coroutineContext[MotionDurationScale]
+        snapshotFlow {
+            mapState.style.loadState to (motionDurationScale?.scaleFactor ?: 1f)
+        }
+            .distinctUntilChanged()
+            .collectLatest { (loadState, durationScale) ->
+                if (loadState != StyleLoadState.Ready) return@collectLatest
+                val transition = mainMapStyleTransition(durationScale)
+                try {
+                    withContext(Dispatchers.Default) {
+                        mapState.style.transition.set(transition)
+                        mapState.style.transition.setPlacementTransitions(true)
+                    }
+                    MapPerformanceDiagnostics.log {
+                        "Applied global style transition duration=${transition.duration} " +
+                            "placement=true"
+                    }
+                } catch (error: IllegalStateException) {
+                    if (!error.isStyleHandleRace()) throw error
+                    MapPerformanceDiagnostics.log {
+                        "Deferred global style transition: ${error.message}"
+                    }
+                }
+            }
+    }
+}
+
+internal fun mainMapStyleTransition(durationScale: Float): TransitionOptions =
+    TransitionOptions(duration = (MAIN_MAP_STYLE_TRANSITION_MILLIS * durationScale).milliseconds)
+
+private const val MAIN_MAP_STYLE_TRANSITION_MILLIS = 300.0
 
 private const val HOUSE_NUMBER_LABEL_LAYER_ID = "labels-housenumbers"

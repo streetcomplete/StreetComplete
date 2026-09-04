@@ -122,8 +122,6 @@ val iosModule = module {
 
     // location
 
-    // TODO(maplibre-compose): Remove the integration caveat once IosLocationProvider relies only
-    // on locationManagerDidChangeAuthorization instead of synchronously reading service state.
     single<LocationProvider> { IosLocationProvider() }
     factory<SystemSettingsLauncher> { IosSystemSettingsLauncher() }
 

@@ -124,8 +124,7 @@ private fun CurrentLocationStyleLayers(
         SymbolLayer(
             id = "location-shadow",
             source = source,
-            // Android's layer-list painter reports a zero intrinsic size. MapLibre Compose
-            // rasterizes style painters eagerly, so preserve the drawable's declared size here.
+            // Keep the intended map-image dimensions independent of painter intrinsic sizing.
             iconImage = image(
                 painterResource(Res.drawable.location_shadow),
                 size = LocationShadowSize,

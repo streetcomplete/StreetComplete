@@ -40,15 +40,11 @@
   layer click handlers expose configurable rendered-feature query geometry.
 - [x] Port the downloaded-area mask and hatching to a shared MapLibre Compose
   layer.
-- [ ] Restore the downloaded-area GeoJSON source's volatile cache hint when
-  MapLibre Compose exposes it as a common source option.
 - [x] Port recorded-track geometry, styling, animation, and bounded-segment
   rendering to shared MapLibre Compose layers.
 - [x] Move track accumulation, accuracy filtering, timed segment breaks,
   recording start/stop handoff, renderer chunking, and saveable restoration to
   common state.
-- [ ] Restore the three recorded-track GeoJSON sources' volatile cache hints
-  when MapLibre Compose exposes them as common source options.
 - [x] Port focused point, line, polygon, and multipolygon rendering and its
   breathing highlight animation to shared MapLibre Compose.
 - [x] Port focused-geometry camera framing, form-aware padding, zoom margin/cap,
@@ -59,18 +55,12 @@
   a shared MapLibre Compose layer.
 - [x] Port current-location accuracy, bearing, shadow, dot, April 1 artwork, and
   motion animation to shared MapLibre Compose layers.
-- [ ] Restore the current-location GeoJSON source's volatile cache hint when
-  MapLibre Compose exposes it as a common source option.
-- [ ] Restore the clustered-pin GeoJSON source's volatile cache hint when
-  MapLibre Compose exposes it as a common source option.
-- [ ] Restore the styleable-overlay GeoJSON source's volatile cache hint when
-  MapLibre Compose exposes it as a common source option.
 - [x] Wire the shared map into the real main screen on iOS.
 - [x] Wire the shared map into the real main screen on desktop.
 - [x] Remove the legacy Android assets and map stack after the guarded parity
   inventory demonstrates that no live functionality depends on them.
-- [ ] Restore the legacy 300ms, system-animation-scale-aware global style
-  transition when MapLibre Compose exposes common transition configuration.
+- [x] Restore the legacy 300 ms, system-animation-scale-aware global style
+  transition through the common imperative style API.
 - [x] Account for every current map data source, layer, selection flow, camera
   behavior, gesture, offline-area visualization, quest/edit pin interaction,
   track, overlay, and location behavior. Preserved behavior is implemented and
@@ -112,10 +102,8 @@
   launch/result protocol. The current feature is an external-app contract, and
   StreetMeasure has no iOS application or protocol to call; the hidden adapter
   carries an explicit `TODO(multiplatform)` rather than pretending to measure.
-- [ ] Remove the Core Location main-thread performance diagnostic emitted while
-  the shared lifecycle attaches location-aware synchronization on iOS. The app
-  stays live and renders, but authorization state should be consumed from
-  `locationManagerDidChangeAuthorization` rather than queried synchronously.
+- [x] Move the iOS Core Location service-state query off the main thread through
+  the resolved MapLibre Compose location provider.
 - [x] Add real desktop implementations for storage paths, settings, database,
   HTTP, location, external-app launching, sound, connectivity, background work,
   and platform formatting.

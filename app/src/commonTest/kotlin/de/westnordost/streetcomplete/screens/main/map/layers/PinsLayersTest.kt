@@ -113,6 +113,7 @@ class PinsLayersTest {
     }
 
     @Test fun onlyKnownStyleGenerationRacesAreRecoverable() {
+        assertTrue(IllegalStateException("No ready loaded style").isStyleHandleRace())
         assertTrue(
             IllegalStateException(
                 "Style operation belongs to a stale loaded-style identity"

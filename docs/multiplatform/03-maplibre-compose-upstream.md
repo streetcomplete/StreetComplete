@@ -10,7 +10,7 @@ API before they are considered actionable.
 - Resolved publication rechecked on 2026-09-04:
   `0.15.1-20260903.101931-9`.
 - The resolved publication was built from MapLibre Compose commit `c0e96909`.
-- Latest MapLibre Compose `main` audited on 2026-09-04: `2d3cc398`.
+- Latest MapLibre Compose `main` audited on 2026-09-04: `71c5b258`.
 - The snapshot includes the shared map artifact and platform runtime artifacts,
   including Android OpenGL, macOS ARM64 Metal, and Linux/Windows Vulkan for
   x64 and ARM64.
@@ -22,7 +22,7 @@ API before they are considered actionable.
 
 ## Pending on latest main
 
-Seven integration gaps remain on MapLibre Compose `main` at `2d3cc398`. Findings
+Seven integration gaps remain on MapLibre Compose `main` at `71c5b258`. Findings
 fixed after the resolved snapshot belong in a separate section until
 StreetComplete validates a snapshot that contains them. This audit found no
 findings in that state.
@@ -204,8 +204,8 @@ StreetComplete's Android map sets a 300 ms global style transition adjusted by
 the system animator-duration scale. It also enables placement transitions.
 MapLibre Compose commit `cce9fe1e` adds both operations to the common imperative
 style API through `MapStyleState.transition`. The resolved snapshot contains the
-commit. StreetComplete can set the duration and placement behavior after the
-style reaches `StyleLoadState.Ready`.
+commit. StreetComplete now applies the scaled duration and enables placement
+transitions each time the style reaches `StyleLoadState.Ready`.
 
 ### Declarative GeoJSON refresh keeps the Android map visible
 
