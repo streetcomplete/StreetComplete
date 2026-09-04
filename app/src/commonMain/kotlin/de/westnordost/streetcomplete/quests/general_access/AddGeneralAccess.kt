@@ -28,7 +28,7 @@ class AddGeneralAccess : OsmFilterQuestType<GeneralAccess>() {
     """
     override val changesetComment = "Specify access to places"
     override val wikiLink = "Key:access"
-    override val icon = Res.drawable.quest_playground // TODO
+    override val icon = Res.drawable.quest_access
     override val title = Res.string.quest_generalAccess_title
     override val achievements = listOf(CITIZEN)
 
