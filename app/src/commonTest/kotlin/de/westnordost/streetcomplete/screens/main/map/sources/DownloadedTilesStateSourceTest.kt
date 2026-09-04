@@ -36,11 +36,24 @@ class DownloadedTilesStateSourceTest {
         )
 
         advanceUntilIdle()
+        assertEquals(0L, requestedCutoff)
+        source.setActive(true)
+        advanceUntilIdle()
         assertEquals(ApplicationConstants.DELETE_OLD_DATA_AFTER, requestedCutoff)
         assertEquals(retained, source.tiles.value)
 
         retained = listOf(TilePos(3, 4), TilePos(5, 6))
         listener.onUpdated()
+        advanceUntilIdle()
+        assertEquals(retained, source.tiles.value)
+
+        source.setActive(false)
+        retained = listOf(TilePos(7, 8))
+        listener.onUpdated()
+        advanceUntilIdle()
+        assertEquals(listOf(TilePos(3, 4), TilePos(5, 6)), source.tiles.value)
+
+        source.setActive(true)
         advanceUntilIdle()
         assertEquals(retained, source.tiles.value)
         source.close()

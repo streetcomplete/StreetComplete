@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.key
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
@@ -41,28 +40,21 @@ fun StreetCompleteMap(
     onFrame: (framesPerSecond: Double) -> Unit = {},
     overlay: MapOverlay = MapOverlay {},
 ) {
-    val presentationKey = rememberMapPresentationKey()
-    key(presentationKey) {
-        MaplibreMap(
-            state = state,
-            modifier = modifier,
-            cameraPadding = cameraPadding,
-            cameraConstraints = cameraConstraints,
-            renderOptions = renderOptions,
-            gestureOptions = gestureOptions,
-            tileLodOptions = tileLodOptions,
-            onClick = onClick,
-            onLongClick = onLongClick,
-            onFrame = onFrame,
-        ) {
-            include(overlay)
-        }
+    MaplibreMap(
+        state = state,
+        modifier = modifier,
+        cameraPadding = cameraPadding,
+        cameraConstraints = cameraConstraints,
+        renderOptions = renderOptions,
+        gestureOptions = gestureOptions,
+        tileLodOptions = tileLodOptions,
+        onClick = onClick,
+        onLongClick = onLongClick,
+        onFrame = onFrame,
+    ) {
+        include(overlay)
     }
 }
-
-/** A platform lifecycle generation that recreates a presentation when its surface needs it. */
-@Composable
-internal expect fun rememberMapPresentationKey(): Int
 
 /** Remembers the logical map state used by [StreetCompleteMap]. */
 @Composable

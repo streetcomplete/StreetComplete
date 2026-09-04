@@ -1,17 +1,24 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpOffset
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.first
 import org.jetbrains.compose.resources.DrawableResource
 import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.location.LocationEvent
@@ -39,36 +46,73 @@ fun MainMap(
     viewModel: MainMapViewModel = koinViewModel(),
 ) {
     val mapState = state.mapState
+    val lifecycleOwner = LocalLifecycleOwner.current
     val coroutineScope = rememberCoroutineScope()
-    val downloadedTiles by viewModel.downloadedTiles.collectAsState()
-    val questPins by viewModel.questPins.collectAsState()
-    val editHistoryPins by viewModel.editHistoryPins.collectAsState()
-    val styledElements by viewModel.styleableElements.collectAsState()
+    // Materialize each value during composition. A local delegated property referenced only from
+    // SideEffect defers its State.value read until the effect runs, so Compose would not observe
+    // the flow and its update could remain invisible until an unrelated recomposition.
+    val downloadedTiles = viewModel.downloadedTiles.collectAsState().value
+    val questPins = viewModel.questPins.collectAsState().value
+    val editHistoryPins = viewModel.editHistoryPins.collectAsState().value
+    val styledElements = viewModel.styleableElements.collectAsState().value
 
-    val cameraPosition = mapState.cameraPosition
-    val viewport = mapState.viewport
-    LaunchedEffect(
-        cameraPosition,
-        mapState.cameraMoveReason,
-        mapState.isCameraMoving,
-    ) {
-        state.onCameraChanged(
-            position = cameraPosition,
-            moveReason = mapState.cameraMoveReason,
-            isMoving = mapState.isCameraMoving,
-        )
+    LaunchedEffect(questPins) {
+        MapPerformanceDiagnostics.log {
+            "MainMap collected ${questPins.pins.size} quest pins at revision ${questPins.revision}"
+        }
     }
-    LaunchedEffect(viewport) {
-        if (viewport != null) state.onMapPresented()
+    LaunchedEffect(styledElements) {
+        MapPerformanceDiagnostics.log {
+            "MainMap collected ${styledElements.size} styled elements"
+        }
+    }
+
+    // Visibility is transient selection UI. Keep the active pin pipeline and its viewport cache
+    // alive while the ordinary pins are hidden, matching master's layer-visibility toggle.
+    val activePinMode = state.pinMode
+    DisposableEffect(lifecycleOwner, viewModel) {
+        val observer = LifecycleEventObserver { _, event ->
+            when (event) {
+                Lifecycle.Event.ON_START -> viewModel.setPresented(true)
+                Lifecycle.Event.ON_STOP -> viewModel.setPresented(false)
+                else -> Unit
+            }
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        viewModel.setPresented(
+            lifecycleOwner.lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)
+        )
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
+            viewModel.setPresented(false)
+        }
+    }
+    LaunchedEffect(viewModel, activePinMode) {
+        viewModel.setActivePinMode(activePinMode)
+    }
+    LaunchedEffect(mapState, state) {
+        snapshotFlow {
+            Triple(mapState.cameraPosition, mapState.cameraMoveReason, mapState.isCameraMoving)
+        }.distinctUntilChanged().collect { (position, moveReason, isMoving) ->
+            state.onCameraChanged(position, moveReason, isMoving)
+        }
+    }
+    LaunchedEffect(mapState, state) {
+        snapshotFlow { mapState.viewport }.filterNotNull().first()
+        state.onMapPresented()
     }
     LaunchedEffect(locationEvent) {
         locationEvent?.let(state::onLocationEvent)
     }
-    LaunchedEffect(cameraPosition.zoom, viewport?.visibleBoundingBox) {
-        viewModel.onViewportChanged(
-            zoom = cameraPosition.zoom,
-            displayedArea = viewport?.visibleBoundingBox?.toStreetCompleteBoundingBox(),
-        )
+    LaunchedEffect(mapState, viewModel) {
+        snapshotFlow {
+            mapState.cameraPosition.zoom to mapState.viewport?.visibleBoundingBox
+        }.distinctUntilChanged().collect { (zoom, displayedArea) ->
+            viewModel.onViewportChanged(
+                zoom = zoom,
+                displayedArea = displayedArea?.toStreetCompleteBoundingBox(),
+            )
+        }
     }
 
     SideEffect {
@@ -107,7 +151,6 @@ fun MainMap(
         onLongPress(offset, LatLon(position.latitude, position.longitude))
         ClickResult.Consume
     }
-
     StreetCompleteMap(
         state = mapState,
         modifier = modifier,

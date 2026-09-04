@@ -88,6 +88,10 @@ xcrun devicectl device process launch \
   "$ios_app_bundle_id"
 '''
 
+[tasks."profile:map:ios"]
+description = "Run the deterministic map performance scenario in the iOS simulator"
+run = "scripts/profile-map-ios-simulator.sh"
+
 [tasks."test:device"]
 description = "Run device tests on a connected Android device"
 run = "./gradlew :app:connectedAndroidDeviceTest"

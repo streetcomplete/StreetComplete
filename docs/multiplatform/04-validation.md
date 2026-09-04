@@ -115,11 +115,11 @@ shared map is connected to target entry points.
 
 | Target | Command | Result | What it proves |
 | --- | --- | --- | --- |
-| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayersTest'` | 4 pass | Default/custom icon IDs, center symbols, labels, and geometry feature splitting match the legacy component. |
-| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayersTest'` | 4 pass | The same marker feature contract and generated resource lookup execute on Android host. |
-| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Dynamic painter registration, SDF coloring, labels, and geometry layers compile for desktop. |
+| Desktop focused tests | `./gradlew :app:desktopTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayersTest'` | 4 pass | Native label/geometry feature splitting and legacy zoom scaling for overlay icons are preserved. |
+| Android host focused tests | `./gradlew :app:testAndroidHostTest --tests 'de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayersTest'` | 4 pass | The same marker geometry and icon-scale contract executes on Android host. |
+| Desktop library | `./gradlew :app:compileKotlinDesktop` | Pass | Geographic Compose icon overlays plus native labels and geometry layers compile for desktop. |
 | Android library | `./gradlew :app:compileAndroidMain` | Pass | The shared marker layers compile beside the active legacy component. |
-| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Marker resource lookup, image registration, and layers compile and link for iOS. |
+| iOS simulator framework | `./gradlew :app:linkDebugFrameworkIosSimulatorArm64` | Pass | Marker resource lookup, geographic overlay placement, and geometry layers compile and link for iOS. |
 
 ## Selected-pin map layer
 
@@ -576,6 +576,127 @@ keeps fixed-ID source definitions stable, updates the current handle, and retrie
 only when a new style generation invalidates that handle. The actionable upstream
 reproducer and preferred lifecycle fix are recorded in
 `03-maplibre-compose-upstream.md`.
+
+## Deterministic iOS simulator map performance
+
+`mise run profile:map:ios` builds and launches a dedicated iPhone 17
+simulator scenario behind `STREETCOMPLETE_MAP_PERFORMANCE=1`. The normal iOS
+entry point is unchanged. The scenario uses the production style and real quest
+icons. It drives pin loading, cluster expansion, focused geometry, quest
+selection, markers, camera motion, viewport publications through the real
+`StyleableOverlaySource`, location and heading updates, track start and stop, a
+1,681-tile download mask, a background/foreground transition, a base-style
+reload, and five map presentation cycles. The source uses deterministic
+in-memory map data; quest pins are deterministic snapshots. The scenario does
+not seed the production database or exercise the complete `MainScreen`
+bottom-sheet tree, so it is a renderer and source-pipeline benchmark rather than
+a full-screen product benchmark.
+
+The command records MapLibre callbacks, Compose display-frame intervals,
+source-write timings, Kotlin/Native GC pauses, screenshots, and the app console
+under `build/map-performance/`. It fails on a missing phase, a crash, a map that
+does not resume after presentation cycles, or an interactive frame gap above
+the stated threshold. Phase tags attach asynchronous source work to the phase
+that caused it, and a prelaunch database row ID isolates each run's logs. The
+Xcode build starts clean unless
+`STREETCOMPLETE_MAP_PERFORMANCE_INCREMENTAL_BUILD=1` is set. To capture a
+process sample, set `STREETCOMPLETE_MAP_PERFORMANCE_SAMPLE=1` and select a phase
+with `STREETCOMPLETE_MAP_PERFORMANCE_SAMPLE_PHASE`. The checker skips frame
+acceptance for sampled runs because `sample` pauses the process.
+
+The automation found two iOS-only failures before the passing run. Serializing
+an empty generic `GeometryCollection` on a background dispatcher threw an
+`ArrayIndexOutOfBoundsException`. A presentation cycle then made the pin image
+cache forget installed IDs while the native style retained those images. The
+next pin publication failed on the duplicate `quest_notes` image. Tracks now use
+an empty feature collection instead of serializing an untyped empty geometry,
+and the image cache now has the same lifetime as `MainMapState` and its fixed
+base style.
+
+The automation also reproduced an intermittent style-reload hang. Data effects
+were first keyed by a ready/not-ready Boolean. If an imperative call raced the
+loaded style replacement after readiness returned, the stale-handle exception
+was caught but the unchanged current data was never replayed. Keying effects on
+handle objects then caused redundant source publications because the public
+wrapper objects can change within one loaded generation. Effects now observe
+the load state and the current data, then look up the current handle before each
+publication. A new ready generation replays the latest data without treating a
+wrapper object as application state.
+
+Quest selection exposed a separate UI-thread stall. The declarative style
+changed visibility on three pin layers and eleven overlay layers. Each property
+change synchronously waited for the native map owner. The map now retains those
+layers and sets their visibility through imperative handles on
+`Dispatchers.Default`, which matches master's component lifetime. Track-recording
+color changes use the same pattern. In the controlled native A/B run at
+`build/map-performance/20260904T050056Z`, quest open, selected pan, quest close,
+production-shaped viewport loads, realistic location and heading updates, the
+location stress phase, and track stop all keep the Compose UI below 16.67 ms.
+The map callback maxima for quest open, selected pan, quest close, and viewport
+loads are 23.95 ms, 21.84 ms, 20.68 ms, and 24.07 ms, respectively. Before the
+imperative visibility change, quest open paused the UI for 171.8 ms. Before the
+imperative track-color change, track stop paused it for 122.1 ms.
+
+The app-side source pipelines now follow the screen lifecycle: downloaded tiles,
+quest pins, edit-history pins, and the selected overlay stop loading when the map
+is not presented and resume from retained state when it returns. Overlay query,
+styling, feature conversion, image preparation, and GeoJSON serialization run
+outside the source lock and off the Compose dispatcher. Track bearing is derived
+without copying the complete recorded track on every location fix. The final
+publication swaps one prepared snapshot under a short lock. This matches
+master's retained component and background-worker ownership rather than making
+Compose recomposition own the heavy work.
+
+The published-snapshot run at
+`build/map-performance/20260904T055755Z` uses no dependency substitution and
+keeps the camera moving during every load-sensitive phase. Quest open, selected
+pan, quest close, ten far-pan pin publications accompanied by real overlay-source
+loads, realistic location and heading updates, the location stress phase, track
+stop, and the 1,681-tile mask have no UI or map callback gap above 50 ms. Their
+maximum UI interval is 16.67 ms; their maximum map interval is 27.49 ms. The
+32.24-second sustained-pan phase adds 49 viewport loads, 48 complete 352-pin
+publications, and 312 real overlay queries while continuously moving the camera.
+It records a 16.67 ms maximum UI interval and 26.69 ms maximum map interval.
+Overlay map-data queries take at most 0.68 ms, styling 160 elements takes at most
+0.56 ms, and each soaked 352-pin GeoJSON publication takes at most 6.97 ms.
+
+The selected, soak, resumed, and final screenshot checks pass. A post-resume
+source publication and three fresh renderer frames complete before the resumed
+screenshot. The soak and all five forced presentation cycles likewise require
+fresh frames before they are accepted. The app retains one process, and neither
+the app console nor metrics contain a style-load or terminal renderer error. The
+checker does not require uninterrupted frames while the scenario has
+deliberately removed the render surface.
+
+The stronger moving-camera run changes the interpretation of the cold-image
+data. Installing the first 37 quest images still spends 1.517 seconds in image
+calls and one UI frame reaches 54.95 ms, but map intervals remain at or below
+32.80 ms. Installing eight 213 by 213 overlay images spends 1.116 seconds in
+image calls while UI and map intervals remain at or below 36.23 ms and 26.21 ms.
+Starting one image per display frame therefore removes the long visible freeze,
+but it does not remove the native CPU cost, delayed image availability, or
+energy use consistent with device heat. Across repeated published
+runs, the controlled native change reduces 37 quest-image calls from 1.50 to
+1.84 seconds down to 65 ms. It reduces eight overlay-image calls from 1.07 to
+1.32 seconds down to 62 ms and removes all map gaps above 50 ms from those
+cold-image phases. Kotlin/Native GC epochs sometimes coincide with UI
+gaps, but the recorded stop-the-world pauses are tens or hundreds of
+microseconds, not the measured 100 to 200 ms. The current snapshot still uses
+unpatched native-ffi `0.202608.3`. The native image-copy fix must be released and
+consumed by MapLibre Compose.
+
+The remaining simulator acceptance failure is a complete base-style replacement:
+style reconciliation pauses the UI for 312.27 ms and 428.68 ms before dynamic
+image restoration begins. Restoring 44 cached images then spends 2.557 seconds
+in native image calls but, because those calls are paced off the UI dispatcher,
+the map interval stays below 48.90 ms. StreetComplete's production shared map
+currently uses one stable empty base style and expresses its scene as retained
+sources and layers, so ordinary pan, data loading, quest selection, lifecycle
+resume, and presentation recreation do not take this synthetic replacement path.
+Master also reloads the whole native style for day/night changes, while applying
+locale and font-scale changes imperatively. A future shared day/night style swap
+must treat this measured reconciliation pause as a separate MapLibre Compose
+limit rather than introducing it into the common path.
 
 ## Revision-pinned product demos
 

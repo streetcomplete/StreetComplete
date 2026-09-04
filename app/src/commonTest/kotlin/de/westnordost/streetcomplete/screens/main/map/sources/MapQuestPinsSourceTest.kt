@@ -95,6 +95,11 @@ class MapQuestPinsSourceTest {
             workerDispatcher = StandardTestDispatcher(testScheduler),
         )
 
+        source.onViewportChanged(zoom = 14.0, displayedArea = bbox(0.9999, 1.9999, 1.0001, 2.0001))
+        advanceUntilIdle()
+        assertEquals(emptyList(), source.pins.value.pins)
+
+        source.setActive(true)
         source.onViewportChanged(zoom = 13.9, displayedArea = bbox(0.9, 1.9, 1.1, 2.1))
         advanceUntilIdle()
         assertEquals(emptyList(), source.pins.value.pins)
@@ -159,6 +164,7 @@ class MapQuestPinsSourceTest {
             quests,
             UnconfinedTestDispatcher(testScheduler),
         )
+        source.setActive(true)
 
         source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
         advanceUntilIdle()
@@ -228,6 +234,7 @@ class MapQuestPinsSourceTest {
             quests,
             UnconfinedTestDispatcher(testScheduler),
         )
+        source.setActive(true)
         val publications = mutableListOf<PinSnapshot>()
         val collectionJob = backgroundScope.launch(UnconfinedTestDispatcher(testScheduler)) {
             source.pins.toList(publications)

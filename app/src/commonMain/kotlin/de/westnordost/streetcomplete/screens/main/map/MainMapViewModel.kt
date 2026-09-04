@@ -20,6 +20,8 @@ abstract class MainMapViewModel : ViewModel() {
     abstract val editHistoryPins: StateFlow<PinSnapshot>
     abstract val styleableElements: StateFlow<List<StyledElement>>
 
+    abstract fun setPresented(presented: Boolean)
+    abstract fun setActivePinMode(mode: MainMapPinMode)
     abstract fun onViewportChanged(zoom: Double, displayedArea: BoundingBox?)
     abstract fun getQuestKey(properties: Map<String, String>): QuestKey?
     abstract fun getEditKey(properties: Map<String, String>): EditKey?
@@ -31,10 +33,27 @@ class MainMapViewModelImpl(
     private val editHistoryPinsSource: EditHistoryPinsSource,
     private val styleableOverlaySource: StyleableOverlaySource,
 ) : MainMapViewModel() {
+    private var isPresented = false
+    private var requestedPinMode = MainMapPinMode.NONE
+
     override val downloadedTiles = downloadedTilesSource.tiles
     override val questPins = questPinsSource.pins
     override val editHistoryPins = editHistoryPinsSource.pins
     override val styleableElements = styleableOverlaySource.styledElements
+
+    override fun setPresented(presented: Boolean) {
+        if (isPresented == presented) return
+        isPresented = presented
+        downloadedTilesSource.setActive(presented)
+        styleableOverlaySource.setActive(presented)
+        updateActivePinSources()
+    }
+
+    override fun setActivePinMode(mode: MainMapPinMode) {
+        if (requestedPinMode == mode) return
+        requestedPinMode = mode
+        updateActivePinSources()
+    }
 
     override fun onViewportChanged(zoom: Double, displayedArea: BoundingBox?) {
         questPinsSource.onViewportChanged(zoom, displayedArea)
@@ -52,5 +71,10 @@ class MainMapViewModelImpl(
         questPinsSource.close()
         editHistoryPinsSource.close()
         styleableOverlaySource.close()
+    }
+
+    private fun updateActivePinSources() {
+        questPinsSource.setActive(isPresented && requestedPinMode == MainMapPinMode.QUESTS)
+        editHistoryPinsSource.setActive(isPresented && requestedPinMode == MainMapPinMode.EDITS)
     }
 }

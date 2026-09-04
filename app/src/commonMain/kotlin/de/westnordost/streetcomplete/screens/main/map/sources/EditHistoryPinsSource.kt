@@ -16,6 +16,8 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,10 +25,11 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 /** Renderer-independent edit-history pins, ordered exactly as the history source returns them. */
@@ -38,7 +41,10 @@ class EditHistoryPinsSource(
     private val _pins = MutableStateFlow(PinSnapshot.Empty)
     val pins: StateFlow<PinSnapshot> = _pins.asStateFlow()
 
+    private val stateLock = ReentrantLock()
     private var reloadJob: Job? = null
+    private var reloadGeneration = 0L
+    private var isActive = false
     private var isClosed = false
 
     private val listener = object : EditHistorySource.Listener {
@@ -48,34 +54,65 @@ class EditHistoryPinsSource(
         override fun onInvalidated() = reload()
     }
 
-    init {
-        editHistorySource.addListener(listener)
-        reload()
-    }
-
     fun getEditKey(properties: Map<String, String>): EditKey? =
         properties.toEditKeyOrNull()
 
+    /** Loads and observes history only while edit-history pins are actually visible. */
+    fun setActive(active: Boolean) {
+        stateLock.withLock {
+            if (isClosed || isActive == active) return
+            isActive = active
+            if (active) {
+                editHistorySource.addListener(listener)
+                reload()
+            } else {
+                ++reloadGeneration
+                reloadJob?.cancel()
+                editHistorySource.removeListener(listener)
+                _pins.value = PinSnapshot.Empty
+            }
+        }
+    }
+
     fun close() {
-        if (isClosed) return
-        isClosed = true
-        editHistorySource.removeListener(listener)
-        scope.cancel()
+        stateLock.withLock {
+            if (isClosed) return
+            isClosed = true
+            reloadJob?.cancel()
+            if (isActive) editHistorySource.removeListener(listener)
+            scope.cancel()
+        }
     }
 
     private fun reload() {
-        if (isClosed) return
-        reloadJob?.cancel()
-        reloadJob = scope.launch {
-            val pins = editHistorySource.getAll().mapIndexed { index, edit ->
-                Pin(
-                    position = edit.position,
-                    icon = requireNotNull(edit.icon) { "Unsupported edit type ${edit::class.simpleName}" },
-                    properties = edit.editProperties(),
-                    order = index,
-                )
+        stateLock.withLock {
+            if (isClosed || !isActive) return
+            reloadJob?.cancel()
+            val generation = ++reloadGeneration
+            reloadJob = scope.launch {
+                val pins = editHistorySource.getAll().mapIndexed { index, edit ->
+                    Pin(
+                        position = edit.position,
+                        icon = requireNotNull(edit.icon) {
+                            "Unsupported edit type ${edit::class.simpleName}"
+                        },
+                        properties = edit.editProperties(),
+                        order = index,
+                    )
+                }
+                currentCoroutineContext().ensureActive()
+                val previous = _pins.value
+                val prepared = previous.updated(pins)
+                currentCoroutineContext().ensureActive()
+                stateLock.withLock {
+                    if (
+                        !isClosed && isActive && generation == reloadGeneration &&
+                        _pins.value === previous
+                    ) {
+                        _pins.value = prepared
+                    }
+                }
             }
-            _pins.update { it.updated(pins) }
         }
     }
 }

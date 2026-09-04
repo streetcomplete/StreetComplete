@@ -63,12 +63,13 @@ class MapQuestPinsSource(
     private val visibleQuestsSourceMutex = Mutex()
     private var updateJob: Job? = null
     private var viewportGeneration = 0L
+    private var isActive = false
     private var isClosed = false
 
     private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
         override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
             stateLock.withLock {
-                if (isClosed) return
+                if (isClosed || !isActive) return
                 val precedingUpdate = updateJob
                 val generation = viewportGeneration
                 updateJob = scope.launch {
@@ -94,12 +95,6 @@ class MapQuestPinsSource(
         }
     }
 
-    init {
-        initializeQuestTypeOrders()
-        visibleQuestsSource.addListener(visibleQuestsListener)
-        questTypeOrderSource.addListener(questTypeOrderListener)
-    }
-
     /** Updates the cached pins when the visible map region enters a new zoom-16 tile rectangle. */
     fun onViewportChanged(zoom: Double, displayedArea: BoundingBox?) {
         if (zoom < MIN_ZOOM || displayedArea == null) return
@@ -107,9 +102,36 @@ class MapQuestPinsSource(
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         if (tilesRect.size > MAX_TILES_IN_VIEW) return
         stateLock.withLock {
-            if (isClosed || lastDisplayedRect?.contains(tilesRect) == true) return
+            if (isClosed || !isActive || lastDisplayedRect?.contains(tilesRect) == true) return
             lastDisplayedRect = tilesRect
             loadViewport(tilesRect)
+        }
+    }
+
+    /** Starts or stops the database/listener pipeline to match the currently visible pin mode. */
+    fun setActive(active: Boolean) {
+        stateLock.withLock {
+            if (isClosed || isActive == active) return
+            isActive = active
+            if (active) {
+                initializeQuestTypeOrders()
+                visibleQuestsSource.addListener(visibleQuestsListener)
+                questTypeOrderSource.addListener(questTypeOrderListener)
+            } else {
+                val generation = ++viewportGeneration
+                updateJob?.cancel()
+                lastDisplayedRect = null
+                publish(emptyList())
+                visibleQuestsSource.removeListener(visibleQuestsListener)
+                questTypeOrderSource.removeListener(questTypeOrderListener)
+                scope.launch {
+                    questsInViewMutex.withLock {
+                        stateLock.withLock {
+                            if (!isActive && generation == viewportGeneration) questsInView.clear()
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -122,15 +144,17 @@ class MapQuestPinsSource(
             if (isClosed) return
             isClosed = true
             updateJob?.cancel()
+            if (isActive) {
+                visibleQuestsSource.removeListener(visibleQuestsListener)
+                questTypeOrderSource.removeListener(questTypeOrderListener)
+            }
         }
-        visibleQuestsSource.removeListener(visibleQuestsListener)
-        questTypeOrderSource.removeListener(questTypeOrderListener)
         scope.cancel()
     }
 
     private fun loadViewport(tilesRect: TilesRect) {
         stateLock.withLock {
-            if (isClosed) return
+            if (isClosed || !isActive) return
             updateJob?.cancel()
             val generation = ++viewportGeneration
             updateJob = scope.launch {
@@ -147,15 +171,29 @@ class MapQuestPinsSource(
 
         questsInViewMutex.withLock {
             currentCoroutineContext().ensureActive()
+            val canPublish = stateLock.withLock {
+                !isClosed && isActive && generation == viewportGeneration
+            }
+            if (!canPublish) return@withLock
+
+            // Multi-marker quests can have their center outside the viewport while a marker
+            // remains inside. Retain exactly those entries, matching the legacy manager.
+            questsInView.entries.removeAll { (_, pins) ->
+                pins.size == 1 || pins.none { it.position in bbox }
+            }
+            quests.forEach { questsInView[it.key] = createQuestPins(it) }
+            val previous = _pins.value
+            // Pin conversion and complete GeoJSON serialization can be substantial in dense
+            // cities. Keep it outside stateLock so camera callbacks never wait for that work.
+            val prepared = previous.updated(questsInView.values.flatten())
+            currentCoroutineContext().ensureActive()
             stateLock.withLock {
-                if (isClosed || generation != viewportGeneration) return@withLock
-                // Multi-marker quests can have their center outside the viewport while a marker
-                // remains inside. Retain exactly those entries, matching the legacy manager.
-                questsInView.entries.removeAll { (_, pins) ->
-                    pins.size == 1 || pins.none { it.position in bbox }
+                if (
+                    !isClosed && isActive && generation == viewportGeneration &&
+                    _pins.value === previous
+                ) {
+                    _pins.value = prepared
                 }
-                quests.forEach { questsInView[it.key] = createQuestPins(it) }
-                publish(questsInView.values.flatten())
             }
         }
     }
@@ -167,10 +205,10 @@ class MapQuestPinsSource(
     ) {
         val coroutineContext = currentCoroutineContext()
         val displayedBBox = stateLock.withLock {
-            if (isClosed || generation != viewportGeneration) return
+            if (isClosed || !isActive || generation != viewportGeneration) return
             lastDisplayedRect?.asBoundingBox(TILES_ZOOM)
         } ?: return
-        val pins = questsInViewMutex.withLock {
+        questsInViewMutex.withLock {
             coroutineContext.ensureActive()
             var hasChanges = false
             removed.forEach { if (questsInView.remove(it) != null) hasChanges = true }
@@ -183,12 +221,17 @@ class MapQuestPinsSource(
                 }
             }
             if (!hasChanges) return
-            questsInView.values.flatten()
-        }
-        stateLock.withLock {
+            val previous = _pins.value
+            val prepared = previous.updated(questsInView.values.flatten())
             coroutineContext.ensureActive()
-            if (isClosed || generation != viewportGeneration) return
-            publish(pins)
+            stateLock.withLock {
+                if (
+                    !isClosed && isActive && generation == viewportGeneration &&
+                    _pins.value === previous
+                ) {
+                    _pins.value = prepared
+                }
+            }
         }
     }
 
@@ -216,7 +259,7 @@ class MapQuestPinsSource(
 
     private fun reloadCurrentViewport() {
         val displayedRect = stateLock.withLock {
-            if (isClosed) return
+            if (isClosed || !isActive) return
             lastDisplayedRect
         }
         displayedRect?.let(::loadViewport) ?: clear()
@@ -224,7 +267,7 @@ class MapQuestPinsSource(
 
     private fun clear() {
         stateLock.withLock {
-            if (isClosed) return
+            if (isClosed || !isActive) return
             ++viewportGeneration
             updateJob?.cancel()
             publish(emptyList())

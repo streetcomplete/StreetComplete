@@ -47,6 +47,7 @@ class StyleableOverlaySourceTest {
             mapDataSource,
             workerDispatcher = StandardTestDispatcher(testScheduler),
         )
+        source.setActive(true)
 
         source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
         advanceUntilIdle()
@@ -91,6 +92,7 @@ class StyleableOverlaySourceTest {
             mapDataSource,
             UnconfinedTestDispatcher(testScheduler),
         )
+        source.setActive(true)
 
         source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
         advanceUntilIdle()
@@ -122,6 +124,7 @@ class StyleableOverlaySourceTest {
             mapDataSource,
             UnconfinedTestDispatcher(testScheduler),
         )
+        source.setActive(true)
 
         source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
         advanceUntilIdle()
@@ -156,6 +159,7 @@ class StyleableOverlaySourceTest {
             mapDataSource,
             UnconfinedTestDispatcher(testScheduler),
         )
+        source.setActive(true)
         source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
         advanceUntilIdle()
         assertEquals(node, source.styledElements.value.single().element)
@@ -165,6 +169,45 @@ class StyleableOverlaySourceTest {
         advanceUntilIdle()
 
         assertTrue(source.styledElements.value.isEmpty())
+        source.close()
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    @Test fun inactiveSourceDefersViewportLoadUntilPresentedAgain() = runTest {
+        val node = Node(1, p(1.0, 2.0))
+        val mapData = createMapData(mapOf(node to ElementPointGeometry(node.position)))
+        val selectedOverlaySource: SelectedOverlaySource = mock {
+            every { selectedOverlay } returns AllNodesOverlay()
+        }
+        var loads = 0
+        val mapDataSource: MapDataWithEditsSource = mock {
+            every { getMapDataWithGeometry(any()) } calls {
+                loads += 1
+                mapData
+            }
+        }
+        val source = StyleableOverlaySource(
+            selectedOverlaySource,
+            mapDataSource,
+            StandardTestDispatcher(testScheduler),
+        )
+
+        source.onViewportChanged(14.0, bbox(0.9999, 1.9999, 1.0001, 2.0001))
+        advanceUntilIdle()
+        assertEquals(0, loads)
+
+        source.setActive(true)
+        advanceUntilIdle()
+        assertEquals(1, loads)
+
+        source.setActive(false)
+        source.onViewportChanged(14.0, bbox(19.9999, 29.9999, 20.0001, 30.0001))
+        advanceUntilIdle()
+        assertEquals(1, loads)
+
+        source.setActive(true)
+        advanceUntilIdle()
+        assertEquals(2, loads)
         source.close()
     }
 }

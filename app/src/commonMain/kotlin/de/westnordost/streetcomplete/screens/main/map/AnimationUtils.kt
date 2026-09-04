@@ -67,6 +67,52 @@ fun animateLatLonAsState(
     return animatedValue
 }
 
+/** Keeps an absent location hidden and snaps the first fix into place before animating later fixes. */
+@Composable
+fun animateNullableLatLonAsState(targetValue: LatLon?): State<LatLon?> {
+    val animatedValue = remember { mutableStateOf(targetValue) }
+    LaunchedEffect(targetValue) {
+        val startValue = animatedValue.value
+        if (startValue == null || targetValue == null) {
+            animatedValue.value = targetValue
+            return@LaunchedEffect
+        }
+        Animatable(0f).animateTo(
+            targetValue = 1f,
+            animationSpec = tween(
+                durationMillis = LOCATION_ANIMATION_DURATION_MILLIS,
+                easing = AccelerateDecelerateEasing,
+            )
+        ) {
+            animatedValue.value = interpolateLatLon(startValue, targetValue, value.toDouble())
+        }
+    }
+    return animatedValue
+}
+
+/** Keeps an absent scalar hidden and snaps the first value into place before animating updates. */
+@Composable
+fun animateNullableFloatAsState(targetValue: Float?): State<Float?> {
+    val animatedValue = remember { mutableStateOf(targetValue) }
+    LaunchedEffect(targetValue) {
+        val startValue = animatedValue.value
+        if (startValue == null || targetValue == null) {
+            animatedValue.value = targetValue
+            return@LaunchedEffect
+        }
+        Animatable(startValue).animateTo(
+            targetValue = targetValue,
+            animationSpec = tween(
+                durationMillis = LOCATION_ANIMATION_DURATION_MILLIS,
+                easing = AccelerateDecelerateEasing,
+            )
+        ) {
+            animatedValue.value = value
+        }
+    }
+    return animatedValue
+}
+
 internal fun interpolateLatLon(start: LatLon, end: LatLon, fraction: Double): LatLon {
     val longitudeDelta = normalizeLongitude(end.longitude - start.longitude)
     return LatLon(

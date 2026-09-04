@@ -7,8 +7,8 @@ API before they are considered actionable.
 ## Dependency baseline
 
 - Dependency version: `0.15.1-SNAPSHOT`.
-- Resolved publication validated on 2026-09-03:
-  `0.15.1-20260902.102151-8`.
+- Resolved publication rechecked on 2026-09-04:
+  `0.15.1-20260903.101931-9`.
 - The snapshot includes the shared map artifact and platform runtime artifacts,
   including Android OpenGL, macOS ARM64 Metal, and Linux/Windows Vulkan for
   x64 and ARM64.
@@ -20,7 +20,7 @@ API before they are considered actionable.
 
 ## Findings
 
-Ten unresolved integration gaps are confirmed below. The abandoned
+Eleven unresolved integration gaps are confirmed below. The abandoned
 `upstream/maplibre-compose` integration predates 0.15, so its other assumptions
 continue to be re-evaluated against the snapshot before being attributed upstream.
 
@@ -39,23 +39,6 @@ backend defaults for now; `StreetCompleteMap` carries a TODO at the integration
 point. A common, backend-neutral style-transition option would let the migration
 preserve this behavior and respect reduced or disabled system animation.
 
-### Missing volatile GeoJSON source option
-
-The legacy downloaded-area, recorded-track, focused-geometry, geometry-marker,
-selected-pin, clustered-pin, styleable-overlay, and current-location sources explicitly set
-`GeoJsonSource.isVolatile = true`
-because their geometry changes frequently. The snapshot's common
-`GeoJsonOptions` exposes tiling, clustering, line metrics, and synchronous
-updates, but not MapLibre Native's volatile-source flag.
-
-Most shared layers update their GeoJSON data through `rememberGeoJsonSource`.
-Clustered pins and the styleable overlay require stable public source IDs and
-cluster-leaf access, so they retain stable source definitions and update the
-current generation's handle directly. In both cases the visualizations remain
-functional. What cannot currently be preserved is the legacy cache/performance
-hint. MapLibre Compose should expose this as a common GeoJSON source option on
-native-backed targets and document browser behavior.
-
 ### Remembered dynamic sources need a stable public ID
 
 StreetComplete's clustered pin layers refer to one source ID from several style
@@ -72,17 +55,91 @@ that resolves the remembered `Source` to its current handle, would remove this
 custom-source seam while retaining declarative data updates and cluster
 inspection.
 
-### Imperative style images cannot be added as a batch
+### Native style-image upload copies dominate cold-image stalls
 
 The Android map creates bitmaps for every newly encountered quest icon, then
 installs all color images with one `Style.addImages` call. Its cache repeats this
 work only after the loaded style changes.
 
-The common `StyleImages` API accepts one `ImageBitmap` per `add` call. The shared
-map now keeps the same loaded-style cache and installs only new icons before it
-updates the stable pin source. However, the first viewport can still require one
-lifecycle check, engine call, and render request per icon. A batch command would
-let the common implementation preserve Android's update granularity.
+The common `StyleImages` API accepts one `ImageBitmap` per `add` call. Each call
+captures the bitmap into an `IntArray`, reconstructs an `ImageBitmap` from that
+array in the Compose native binding, and converts the result to premultiplied
+RGBA8. The native-ffi binding then copied the resulting `ByteArray` through a
+`UByteArray` and `toCValues` before its synchronous C call. For a 213 by 213
+pixel iPhone pin, each full pixel buffer is about 181 KB.
+
+The shared map keeps the same loaded-style cache and installs only new icons
+before it updates the stable pin source. It moves upload work off the UI thread
+and starts at most one new icon per display frame. A synchronized two-second
+process sample during an eight-marker upload attributed 678 samples to
+`MlnFfiStyleBinding.addImage`, 676 to `MapHandle.setStyleImage`, and 675 to
+`PremultipliedRgba8Image` conversion through `toCValues`. Only one sample reached
+the C `mln_map_set_style_image` call. The dominant cost was therefore proven to
+be Kotlin/Native pixel marshalling, not MapLibre Native's image insertion.
+
+An A/B build against the exact native-ffi `0.202608.3` source replaced those
+transit copies with a scoped pin of the binding's already-owned pixel snapshot.
+The same deterministic iPhone 17 simulator scenario reduced 37 image calls from
+1.49 seconds to 62 ms, eight geometry-marker calls from 1.37 seconds to 36 ms,
+and a 45-image style reload from 2.52 seconds to 181 ms. Cluster expansion,
+overlay loading, selection animation, geometry markers, and far-pan data loads
+then completed with 16.67 ms maximum display-frame intervals. The scoped pin is
+safe under the current C contract because every image entry point copies the
+pixels synchronously before returning; the public Kotlin pixel getter remains a
+defensive copy.
+
+The pinning fix is required before a batch API can materially help this case. A
+batch operation is still desirable for parity with Android's `Style.addImages`,
+atomic preflight/reservation, and one render request per group. It should accept
+captured image data so callers do not repeat the Compose-side `ImageBitmap`
+snapshot and reconstruction path. The current snapshot still contains native-ffi
+`0.202608.3`; the measured fix must be released in native-ffi and consumed by a
+new MapLibre Compose snapshot before StreetComplete can remove this cold-image
+limit without local dependency substitution.
+
+In a stronger run that continuously animates the camera during installation,
+the paced application path keeps map intervals below 32.80 ms for 37 quest
+images and 26.21 ms for eight overlay images. One cold quest-load UI frame still
+reaches 54.95 ms. The upstream fix remains important for the measured 1.5-second
+CPU cost and delayed icon availability. That work is a plausible source of the
+reported device heat, but the paced path prevents it from becoming the
+multi-hundred-millisecond visible freeze seen before the application workaround.
+
+### GeoJSON preparation runs synchronously on the caller thread
+
+`GeoJsonSourceHandle.setData` calls `prepareGeoJsonUpdate` before it dispatches
+the update to the map owner thread. On native targets, that preparation creates
+the native GeoJSON source data synchronously on the calling thread. The default
+`synchronousUpdate = false` makes native tiling asynchronous, but it does not
+make the caller-side JSON conversion asynchronous.
+
+StreetComplete calls `setData` from `Dispatchers.Default` for its large pin
+snapshots. This prevents source preparation from blocking Compose's UI thread.
+The binding already supports preparing data before the map-owner call. A future
+API can make this preparation asynchronous by default, as the implementation's
+existing TODO proposes.
+
+### Declarative transient layer properties block the iOS UI thread
+
+MapLibre Compose reconciles changed layer properties from the composable's
+dispatcher. The iOS binding then calls the synchronous map-owner mutation for
+each property. Opening a StreetComplete quest changed visibility on three pin
+layers and eleven overlay layers. The map callbacks remained below 22 ms, but
+the Compose UI paused for 171.8 ms. Closing the quest paused it for 131.3 ms.
+
+StreetComplete now keeps the layer definitions stable and applies transient
+visibility through the current `LayerHandle` objects on `Dispatchers.Default`.
+The published-snapshot simulator run reduces quest open, selected panning, and
+quest close to 16.67 ms maximum UI intervals and 22.83 ms or lower maximum map
+intervals. Track-recording color changes use the same method and remove a
+separate 122.1 ms UI pause during track stop.
+
+An upstream property-update transaction could apply several changes with one
+map-owner handoff and one render request. At minimum, the declarative
+reconciler should not make synchronous native waits on the UI dispatcher. The
+imperative API is usable for this migration, but every application must list
+the retained layer IDs, replay values after style reload, and handle stale
+generation errors.
 
 ### Declarative GeoJSON refresh can remove the Android render surface
 
@@ -94,11 +151,12 @@ surface, and logs `Host surface lost`; Compose controls remain visible over a
 blank map. StreetComplete reproduced this with both Surface and Texture modes.
 
 The application workaround keeps each fixed-ID source definition stable and
-updates the current generation's `GeoJsonSourceHandle`. A style-generation race
-restarts the effect with the new handle; only the three exact stale-handle
-exceptions are treated as recoverable. Upstream should keep the first-style flag
-monotonic after the first successful load, as its lifecycle comment describes,
-or decouple reconciliation progress from platform-surface visibility.
+updates the current generation's `GeoJsonSourceHandle`. The update effect
+observes the load state and current data, then looks up the current handle before
+each publication. Only the three exact stale-handle exceptions are recoverable.
+Upstream should keep the first-style flag monotonic after the first successful
+load, as its lifecycle comment describes, or decouple reconciliation progress
+from platform-surface visibility.
 
 ### Zero-size painters fail deep inside runtime image registration
 
@@ -172,6 +230,13 @@ stays responsive and receives a map frame, so this is a measured performance and
 lifecycle defect rather than a launch blocker.
 
 ## Resolved integration findings
+
+### Volatile local GeoJSON sources
+
+The Android implementation set `GeoJsonSource.isVolatile = true` on its dynamic
+local sources. MapLibre Native uses this option only for HTTP sources, so the
+setting does not affect StreetComplete's inline GeoJSON data. The common API
+does not need a volatile option for this migration.
 
 ### Map lifecycle lock inversion during style-source refresh
 

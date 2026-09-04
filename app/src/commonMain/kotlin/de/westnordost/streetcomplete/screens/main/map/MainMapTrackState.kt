@@ -7,6 +7,8 @@ import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
+import de.westnordost.streetcomplete.util.math.distanceTo
+import de.westnordost.streetcomplete.util.math.initialBearingTo
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import org.maplibre.compose.location.LocationMeasurement
@@ -36,6 +38,16 @@ internal class MainMapTrackState(
     }
 
     val currentTrack: List<Trackpoint> get() = tracks.last()
+
+    /** Estimates navigation bearing without copying the complete recorded track. */
+    fun currentBearing(): Double? {
+        val track = tracks.last()
+        val last = track.lastOrNull()?.position ?: return null
+        val point = track.findLast {
+            it.position.distanceTo(last) > MIN_TRACK_DISTANCE_FOR_BEARING
+        }?.position ?: return null
+        return point.initialBearingTo(last)
+    }
 
     fun onLocationMeasurement(measurement: LocationMeasurement) {
         displayedMeasurement = measurement
@@ -143,3 +155,4 @@ private const val MAX_TIME_BETWEEN_LOCATIONS = 60L * 1000
 private const val MAX_CURRENT_RENDERED_TRACK_POINTS = 100
 private const val RENDERED_TRACK_CHUNK_SIZE = 50
 private const val MAX_SAVED_TRACK_POINTS = 1000
+private const val MIN_TRACK_DISTANCE_FOR_BEARING = 15f

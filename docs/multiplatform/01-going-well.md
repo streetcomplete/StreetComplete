@@ -156,13 +156,20 @@
   the recording color, opacity, dash, line width, and April 1 pattern are kept.
 - Focused element geometry now converts to shared GeoJSON and renders as the
   same orange fill, round line, or circle with the legacy breathing size and
-  opacity ranges. Multipolygon holes are assigned to the containing outer ring.
+  opacity ranges. Its source and layers stay installed, while one feature-state
+  value drives the animation without recomposing the style. Multipolygon holes
+  are assigned to the containing outer ring.
 - Quest-form geometry markers now render from the existing shared `Marker`
   model, including center-anchored optional icons and titles plus line/polygon
-  geometry. Dynamic Compose resources are registered as SDF or color images.
+  geometry. Their source and geometry/label layers stay installed. The small,
+  transient icon set uses geographic Compose overlays, avoiding expensive
+  runtime style-image mutation when a quest opens.
 - Selected quest pins now use a shared painter that reproduces the legacy
   71dp shadow, pin, and 48dp quest-icon composition. Their 300ms scale animation
   uses the same overshoot curve and restarts whenever the selection changes.
+  The source and layer stay installed across selections, and the animation sets
+  the layer's icon size directly instead of reconciling the Compose style on
+  every frame.
 - Current location now has shared accuracy, bearing, shadow, dot, and April 1
   layers using the existing cross-platform artwork. Position and accuracy retain
   the legacy 600ms timing, bearing retains its 200ms shortest-turn timing, and
@@ -172,7 +179,11 @@
   painter, collision box, ordering, visibility, pin clicks, and complete cluster
   leaf lookup through generation-bound source handles. Like the Android map, it
   keeps one source, installs only newly encountered pin images for each loaded
-  style, then updates the source data imperatively.
+  style, then updates the source data imperatively. New image installation is
+  spread across display frames, and the binding's image copies and GeoJSON
+  preparation run off the UI thread. Hiding pins publishes an empty snapshot
+  instead of rebuilding three layers or changing their visibility; cached images
+  remain available when the quest closes.
 - Quest-pin loading now also has a renderer-independent common source. It keeps
   the zoom-16 viewport cache, 32-tile guard, multi-marker edge retention,
   superseded-fetch cancellation, live quest deltas, user quest ordering, and

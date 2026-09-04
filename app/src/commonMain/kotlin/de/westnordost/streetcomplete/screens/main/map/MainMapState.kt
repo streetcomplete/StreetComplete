@@ -70,7 +70,7 @@ class MainMapState internal constructor(
     init {
         controller.onLocationRestored(
             tracks.displayedMeasurement?.toLocation(),
-            tracks.currentTrack.map(Trackpoint::position),
+            tracks.currentBearing(),
         )
     }
 
@@ -95,7 +95,8 @@ class MainMapState internal constructor(
     val showStyleableOverlay: Boolean get() = content.showStyleableOverlay
 
     fun setFollowingPosition(value: Boolean) = controller.updateFollowingPosition(value)
-    fun setNavigationMode(value: Boolean) = controller.updateNavigationMode(value)
+    fun setNavigationMode(value: Boolean) =
+        controller.updateNavigationMode(value, if (value) tracks.currentBearing() else null)
     fun zoomIn() = controller.zoomBy(1.0)
     fun zoomOut() = controller.zoomBy(-1.0)
     fun zoomByDrag(dp: Float) = controller.zoomBy(dp / 20.0)
@@ -134,7 +135,7 @@ class MainMapState internal constructor(
         }
         controller.onLocationChanged(
             tracks.displayedMeasurement?.toLocation(),
-            tracks.currentTrack.map(Trackpoint::position),
+            if (controller.isNavigationMode) tracks.currentBearing() else null,
         )
     }
 
@@ -149,9 +150,6 @@ class MainMapState internal constructor(
     fun hideOverlay() = content.hideOverlay()
     fun clearSelectedPins() = content.clearSelectedPins()
     fun clearHighlighting() = content.clearHighlighting()
-
-    internal fun onLocationChanged(location: Location?, track: List<LatLon>) =
-        controller.onLocationChanged(location, track)
 
     internal fun onCameraChanged(
         position: CameraPosition,
@@ -275,7 +273,7 @@ internal class MainMapCameraController(
     var cameraPadding by mutableStateOf<PaddingValues>(PaddingValues(0.dp))
         private set
 
-    private var track: List<LatLon> = emptyList()
+    private var navigationBearing: Double? = null
     private var zoomedYet = false
     private var lastObservedPosition = camera.position
     private var previousFocusCamera: CameraPosition? = null
@@ -291,8 +289,9 @@ internal class MainMapCameraController(
         }
     }
 
-    fun updateNavigationMode(value: Boolean) {
+    fun updateNavigationMode(value: Boolean, navigationBearing: Double? = this.navigationBearing) {
         if (isNavigationMode == value) return
+        if (value) this.navigationBearing = navigationBearing
         isNavigationMode = value
         if (value) {
             if (isFollowingPosition) centerCurrentPosition()
@@ -404,9 +403,9 @@ internal class MainMapCameraController(
         }
     }
 
-    fun onLocationChanged(location: Location?, track: List<LatLon>) {
+    fun onLocationChanged(location: Location?, navigationBearing: Double?) {
         displayedLocation = location
-        this.track = track
+        this.navigationBearing = navigationBearing
         if (location == null) {
             updateNavigationMode(false)
         } else if (isFollowingPosition) {
@@ -414,9 +413,9 @@ internal class MainMapCameraController(
         }
     }
 
-    fun onLocationRestored(location: Location?, track: List<LatLon>) {
+    fun onLocationRestored(location: Location?, navigationBearing: Double?) {
         displayedLocation = location
-        this.track = track
+        this.navigationBearing = navigationBearing
     }
 
     fun onMapPresented() {
@@ -459,7 +458,6 @@ internal class MainMapCameraController(
     private fun centerCurrentPosition() {
         val location = displayedLocation ?: return
         animateCamera(600.milliseconds) {
-            val navigationBearing = if (isNavigationMode) getTrackBearingFromPositions(track) else null
             val targetZoom = if (!zoomedYet && zoom < 17.0) 18.0 else zoom
             zoomedYet = true
             copy(

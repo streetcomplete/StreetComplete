@@ -42,7 +42,7 @@ class StyledElementTest {
         assertEquals(ElementKey(ElementType.NODE, 5), feature.properties.toOverlayElementKey())
         assertTrue(feature.properties.isOverlayElementDisabled())
         assertEquals(
-            Res.drawable.preset_maki_circle.id,
+            plainStyleImageId(Res.drawable.preset_maki_circle),
             (feature.properties[ICON] as JsonPrimitive).content,
         )
         assertEquals("Cafe", (feature.properties[LABEL] as JsonPrimitive).content)

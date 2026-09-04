@@ -57,7 +57,6 @@ fun MapStyle(
     belowRoadsOnBridgeContent: @Composable @MaplibreComposable () -> Unit = {},
     belowLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
     aboveLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
-    hiddenBaseLayerIds: Set<String> = emptySet(),
 ) {
     val accessToken = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
     val osmAttribution = stringResource(Res.string.map_attribution_osm)
@@ -174,7 +173,7 @@ fun MapStyle(
 
     belowLabelsContent()
 
-    LabelLayers(source, colors, languages, hiddenBaseLayerIds)
+    LabelLayers(source, colors, languages)
 
 
     aboveLabelsContent()
@@ -500,7 +499,6 @@ private fun LabelLayers(
     source: Source,
     colors: MapColors,
     languages: List<String>,
-    hiddenBaseLayerIds: Set<String>,
 ) {
     val localizedName = feature.localizedName(languages)
     val haloWidth = const(2.5.dp)
@@ -540,7 +538,6 @@ private fun LabelLayers(
     )
     SymbolLayer(
         id = "labels-housenumbers",
-        visible = "labels-housenumbers" !in hiddenBaseLayerIds,
         source = source,
         sourceLayer = "housenum_label",
         minZoom = 17f,

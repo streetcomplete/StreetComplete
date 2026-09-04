@@ -4,6 +4,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_bench_poi
 import de.westnordost.streetcomplete.ui.ktx.id
+import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -77,6 +78,28 @@ class PinsLayersTest {
         assertEquals("custom", (feature.properties["icon-order"] as JsonPrimitive).content)
     }
 
+    @Test fun pinGeoJsonMatchesFeatureSerializationForEscapedAndDuplicateProperties() {
+        val pins = listOf(
+            Pin(
+                LatLon(1.25, -2.5),
+                Res.drawable.quest_bench_poi,
+                properties = listOf(
+                    "label" to "first",
+                    "quoted\"key" to "line one\nline two",
+                    "label" to "last",
+                    "icon-image" to "custom-icon",
+                    "icon-order" to "custom-order",
+                ),
+                order = 7,
+            )
+        )
+
+        assertEquals(
+            Json.parseToJsonElement(pinFeatureCollection(pins).toJson()),
+            Json.parseToJsonElement(pinGeoJson(pins)),
+        )
+    }
+
     @Test fun clickPropertiesConvertPrimitivesAndIgnoreNulls() {
         val properties = JsonObject(
             mapOf(
@@ -106,5 +129,17 @@ class PinsLayersTest {
             ).isStyleHandleRace()
         )
         assertFalse(IllegalStateException("Could not parse GeoJSON").isStyleHandleRace())
+    }
+
+    @Test fun pinPublicationTrackerRecordsEverySuccessfulPublication() {
+        val tracker = PinPublicationTracker()
+        val snapshot = PinSnapshot.Empty.updated(
+            listOf(Pin(LatLon(1.0, 2.0), Res.drawable.quest_bench_poi))
+        )
+
+        tracker.record(snapshot)
+        assertEquals(PinPublication(1, snapshot), tracker.publication.value)
+        tracker.record(snapshot)
+        assertEquals(PinPublication(2, snapshot), tracker.publication.value)
     }
 }

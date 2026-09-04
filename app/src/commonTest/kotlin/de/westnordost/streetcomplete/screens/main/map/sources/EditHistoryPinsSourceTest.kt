@@ -40,6 +40,10 @@ class EditHistoryPinsSourceTest {
         )
 
         advanceUntilIdle()
+        assertEquals(emptyList(), source.pins.value.pins)
+
+        source.setActive(true)
+        advanceUntilIdle()
         assertEquals(listOf(0, 1), source.pins.value.pins.map { it.order })
         assertEquals(listOf(NoteEditKey(1), ElementEditKey(2)), source.pins.value.pins.map {
             source.getEditKey(it.properties.toMap())
@@ -54,6 +58,15 @@ class EditHistoryPinsSourceTest {
             ElementEditKey(2),
             source.getEditKey(source.pins.value.pins.single().properties.toMap()),
         )
+
+        source.setActive(false)
+        advanceUntilIdle()
+        assertEquals(emptyList(), source.pins.value.pins)
+
+        edits = listOf(noteEdit(id = 3))
+        listener.onAdded(edits.single())
+        advanceUntilIdle()
+        assertEquals(emptyList(), source.pins.value.pins)
         source.close()
     }
 

@@ -169,7 +169,7 @@ private fun MutableMap<String, JsonElement>.applyPointStyle(
     icon: DrawableResource?,
     label: String?,
 ): MutableMap<String, JsonElement> = apply {
-    icon?.let { this[ICON] = JsonPrimitive(it.id ?: error("Overlay icon is not a Compose resource")) }
+    icon?.let { this[ICON] = JsonPrimitive(plainStyleImageId(it)) }
     label?.let { this[LABEL] = JsonPrimitive(it) }
 }
 

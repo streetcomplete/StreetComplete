@@ -12,13 +12,18 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.screens.main.map.layers.CurrentLocationLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayer
+import de.westnordost.streetcomplete.screens.main.map.layers.BindDynamicStyleImages
+import de.westnordost.streetcomplete.screens.main.map.layers.DynamicStyleImageRegistry
 import de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayers
+import de.westnordost.streetcomplete.screens.main.map.layers.ImperativeLayerVisibility
 import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
+import de.westnordost.streetcomplete.screens.main.map.layers.PinPublicationTracker
 import de.westnordost.streetcomplete.screens.main.map.layers.PinsLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayMainLayers
+import de.westnordost.streetcomplete.screens.main.map.layers.STYLEABLE_OVERLAY_LAYER_IDS
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
@@ -41,6 +46,8 @@ internal class MainMapStyleConfiguration(
     var editHistoryPins by mutableStateOf(PinSnapshot.Empty)
     var styledElements by mutableStateOf<List<StyledElement>>(emptyList())
     var locationRotation by mutableStateOf<Float?>(null)
+    val dynamicStyleImages = DynamicStyleImageRegistry()
+    val pinPublicationTracker = PinPublicationTracker()
 
     var onClickOverlayElement: (ElementKey) -> Unit = {}
     var questKeyForProperties: (Map<String, String>) -> QuestKey? = { null }
@@ -61,33 +68,59 @@ internal fun MainMapStyle(
 ) {
     // TODO(maplibre-compose): Restore StreetComplete's 300ms, system-scale-aware global style
     // transition when MapLibre Compose exposes style transition configuration in common code.
-    val styleableOverlaySource = rememberStyleableOverlaySource(configuration.styledElements)
+    BindDynamicStyleImages(mapState, configuration.dynamicStyleImages)
+    val styleableOverlaySource =
+        rememberStyleableOverlaySource(
+            mapState,
+            configuration.styledElements,
+            configuration.dynamicStyleImages,
+        )
+    ImperativeLayerVisibility(
+        mapState,
+        "styleable overlay",
+        STYLEABLE_OVERLAY_LAYER_IDS,
+        content.showStyleableOverlay,
+    )
+    ImperativeLayerVisibility(
+        mapState,
+        "hideable base labels",
+        listOf(HOUSE_NUMBER_LABEL_LAYER_ID),
+        HOUSE_NUMBER_LABEL_LAYER_ID !in configuration.hiddenBaseLayerIds,
+    )
+    androidx.compose.runtime.LaunchedEffect(configuration.questPins) {
+        MapPerformanceDiagnostics.log {
+            "MainMapStyle observed ${configuration.questPins.pins.size} quest pins at revision " +
+                configuration.questPins.revision
+        }
+    }
+    androidx.compose.runtime.LaunchedEffect(configuration.styledElements) {
+        MapPerformanceDiagnostics.log {
+            "MainMapStyle observed ${configuration.styledElements.size} styled elements"
+        }
+    }
     MapStyle(
         colors = configuration.colors,
         languages = configuration.languages,
-        hiddenBaseLayerIds = configuration.hiddenBaseLayerIds,
         belowRoadsContent = {
             StyleableOverlaySideLayers(
                 source = styleableOverlaySource,
                 bridge = false,
-                visible = content.showStyleableOverlay,
             )
         },
         belowRoadsOnBridgeContent = {
             StyleableOverlaySideLayers(
                 source = styleableOverlaySource,
                 bridge = true,
-                visible = content.showStyleableOverlay,
             )
         },
         belowLabelsContent = {
-            DownloadedAreaLayer(configuration.downloadedTiles)
+            DownloadedAreaLayer(mapState, configuration.downloadedTiles)
             StyleableOverlayMainLayers(
                 source = styleableOverlaySource,
-                visible = content.showStyleableOverlay,
                 onClickElement = { configuration.onClickOverlayElement(it) },
             )
             TracksLayers(
+                mapState,
                 tracks.currentRenderedTrack,
                 tracks.isRecording,
                 tracks.oldRenderedTracks,
@@ -96,15 +129,22 @@ internal fun MainMapStyle(
         aboveLabelsContent = {
             StyleableOverlayLabelLayer(
                 source = styleableOverlaySource,
-                styledElements = configuration.styledElements,
-                visible = content.showStyleableOverlay,
                 onClickElement = { configuration.onClickOverlayElement(it) },
             )
-            if (content.markers.isNotEmpty()) GeometryMarkersLayers(content.markers)
-            content.highlightedGeometry?.let { FocusedGeometryLayers(it) }
-            tracks.displayedMeasurement?.toLocation()?.let {
-                CurrentLocationLayers(it, configuration.locationRotation)
-            }
+            // Keep the marker source and layers installed, matching master's component lifetime.
+            GeometryMarkersLayers(
+                mapState,
+                content.markers,
+                configuration.dynamicStyleImages,
+            )
+            // Keep the source and layers installed. The breathing animation updates one feature-
+            // state value per frame without recomposing or replacing style resources.
+            FocusedGeometryLayers(mapState, content.highlightedGeometry)
+            CurrentLocationLayers(
+                mapState,
+                tracks.displayedMeasurement?.toLocation(),
+                configuration.locationRotation,
+            )
 
             val pinSnapshot = when (content.pinMode) {
                 MainMapPinMode.NONE -> PinSnapshot.Empty
@@ -114,7 +154,9 @@ internal fun MainMapStyle(
             PinsLayers(
                 mapState = mapState,
                 snapshot = pinSnapshot,
-                visible = content.showPins && content.pinMode != MainMapPinMode.NONE,
+                visible = content.showPins,
+                imageRegistry = configuration.dynamicStyleImages,
+                publicationTracker = configuration.pinPublicationTracker,
                 onClickPin = { properties ->
                     when (content.pinMode) {
                         MainMapPinMode.NONE -> Unit
@@ -131,7 +173,11 @@ internal fun MainMapStyle(
                 onClickCluster = { configuration.onClickCluster(it) },
             )
 
-            content.selectedPins?.let { SelectedPinsLayer(it.icon, it.positions) }
+            // Keep the selected-pin source and layer installed, as master does. Selection changes
+            // update their data and icon size imperatively without restructuring the style.
+            SelectedPinsLayer(mapState, content.selectedPins, configuration.dynamicStyleImages)
         },
     )
 }
+
+private const val HOUSE_NUMBER_LABEL_LAYER_ID = "labels-housenumbers"

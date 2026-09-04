@@ -26,7 +26,7 @@ class MainMapCameraControllerTest {
         val controller = controller(camera = camera, scope = this)
         val first = location(1.0, 2.0)
 
-        controller.onLocationChanged(first, emptyList())
+        controller.onLocationChanged(first, null)
         advanceUntilIdle()
 
         assertEquals(1.0, camera.position.target.latitude)
@@ -34,7 +34,7 @@ class MainMapCameraControllerTest {
         assertEquals(18.0, camera.position.zoom)
         assertEquals(600.milliseconds, camera.animations.single().duration)
 
-        controller.onLocationChanged(location(3.0, 4.0), emptyList())
+        controller.onLocationChanged(location(3.0, 4.0), null)
         advanceUntilIdle()
         assertEquals(18.0, camera.position.zoom)
         assertEquals(2, camera.animations.size)
@@ -45,7 +45,7 @@ class MainMapCameraControllerTest {
         val controller = controller(camera = camera, scope = this)
         controller.onLocationChanged(
             location(1.001, 1.0),
-            listOf(LatLon(1.0, 1.0), LatLon(1.001, 1.0)),
+            navigationBearing = 0.0,
         )
         advanceUntilIdle()
 
@@ -65,7 +65,7 @@ class MainMapCameraControllerTest {
     @Test fun gestureTargetMovementStopsFollowingButRotationDoesNot() = runTest {
         val camera = FakeCamera(CameraPosition(target = Position(2.0, 1.0), zoom = 18.0))
         val controller = controller(camera = camera, scope = this)
-        controller.onLocationChanged(location(1.0, 2.0), emptyList())
+        controller.onLocationChanged(location(1.0, 2.0), null)
         advanceUntilIdle()
 
         controller.onCameraChanged(
