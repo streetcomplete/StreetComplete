@@ -19,6 +19,7 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.Geometry
 
+/** Intermediate data structure to be fed into the [StyleableOverlayLayers] */
 data class StyledElement(
     val element: Element,
     val geometry: ElementGeometry,

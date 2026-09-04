@@ -83,30 +83,3 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
         textOptional = const(true),
     )
 }
-
-data class Marker(
-    val geometry: ElementGeometry,
-    /** drawable resource name */
-    val icon: DrawableResource? = null,
-    val title: String? = null
-)
-
-private fun Marker.toGeoJsonFeature(): List<Feature<Geometry, JsonObject>> {
-    val features = ArrayList<Feature<Geometry, JsonObject>>(3)
-    // point marker or any marker with title or icon
-    if (icon != null || title != null || geometry is ElementPointGeometry) {
-        val p = HashMap<String, JsonElement>(2)
-
-        p["icon"] = JsonPrimitive(icon?.id ?: "preset_maki_circle")
-        if (title != null) {
-            p["label"] = JsonPrimitive(title)
-        }
-        features.add(Feature(geometry.toGeometry(), JsonObject(p)))
-    }
-
-    // polygon / polylines marker(s)
-    if (geometry is ElementPolygonsGeometry || geometry is ElementPolylinesGeometry) {
-        features.add(Feature(geometry.toGeometry(), JsonObject(emptyMap())))
-    }
-    return features
-}

@@ -29,6 +29,8 @@ import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 
+//TODO maplibre-compose check whether to just replace this with org.maplibre.compose.layers.LocationIndicatorLayer
+//     (the TracksLayer animation needs to be in-sync with the moving of the location indicator)
 /** Displays the location + direction + accuracy marker on the map */
 @Composable @MaplibreComposable
 fun CurrentLocationLayers(

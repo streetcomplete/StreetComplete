@@ -132,23 +132,3 @@ fun PinsLayers(
 
 private const val CLUSTER_MIN_ZOOM = 13
 private const val CLUSTER_MAX_ZOOM = 14
-
-data class Pin(
-    val position: LatLon,
-    val icon: DrawableResource,
-    val properties: JsonObject? = null,
-    val order: Int = 0
-)
-
-private fun Pin.toGeoJsonFeature() =
-    Feature(
-        geometry = position.toGeometry(),
-        properties =
-            JsonObject(
-                mapOf(
-                    "icon-image" to JsonPrimitive("pin_" + icon.id),
-                    "icon-order" to JsonPrimitive(order + 50),
-                )
-                + (properties as Map<String, JsonElement>)
-            )
-    )

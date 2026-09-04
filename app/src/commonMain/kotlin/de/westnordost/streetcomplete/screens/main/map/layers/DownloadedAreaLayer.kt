@@ -16,7 +16,8 @@ import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 
-/** Displays which areas have (not) been downloaded */
+/** Displays which areas have (not) been downloaded. Adds a hatching to the whole world except the
+ *  downloaded areas. */
 @Composable @MaplibreComposable
 fun DownloadedAreaLayer(tiles: Collection<TilePos>) {
     val source = rememberGeoJsonSource(

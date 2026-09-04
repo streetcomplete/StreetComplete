@@ -28,7 +28,10 @@ import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
 
 /** Displays "selected" pins. Those pins should always be shown on top of pins displayed by
- *  [PinsLayers] */
+ *  [PinsLayers].
+ *
+ *  When they are shown, a short springy animation animate them to a larger size.
+ *  */
 @MaplibreComposable
 @Composable
 fun SelectedPinsLayer(icon: DrawableResource, pinPositions: Collection<LatLon>) {

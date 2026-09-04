@@ -28,7 +28,8 @@ import org.maplibre.compose.util.MaplibreComposable
 import kotlin.math.PI
 import kotlin.math.cos
 
-/** Display focused element geometry. */
+/** Display focused element geometry. The focused element geometry is highlighted with a sort of
+ *  breathing (sinusoid) animation */
 @MaplibreComposable
 @Composable
 fun FocusedGeometryLayers(geometry: ElementGeometry) {

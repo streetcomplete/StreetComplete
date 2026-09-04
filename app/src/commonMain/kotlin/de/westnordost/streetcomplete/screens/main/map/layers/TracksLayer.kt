@@ -28,6 +28,16 @@ import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.GeometryCollection
 
+/** Display the path(s) walked on the map.
+ *
+ *  The current [trackpoints] will be shown in red when the user [isRecording], otherwise blue.
+ *  The last segment of [trackpoints] is animated from the second last to the last position, which
+ *  is done in-sync with the moving of the location puck.
+ *
+ *  Since the list of trackpoints is changed every time the location puck moves to a new location,
+ *  for performance reasons, when the list of trackpoints gets too long, the last X trackpoints
+ *  can be cut off (except if the user [isRecording]) and added to [oldTrackpointsLists]. These are
+ *  displayed with less opacity and need to be updated less often. */
 @MaplibreComposable @Composable
 fun TracksLayers(
     trackpoints: List<LatLon>,
