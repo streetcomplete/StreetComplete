@@ -9,6 +9,8 @@ API before they are considered actionable.
 - Dependency version: `0.15.1-SNAPSHOT`.
 - Resolved publication rechecked on 2026-09-04:
   `0.15.1-20260903.101931-9`.
+- The resolved publication was built from MapLibre Compose commit `c0e96909`.
+- Latest MapLibre Compose `main` audited on 2026-09-04: `2d3cc398`.
 - The snapshot includes the shared map artifact and platform runtime artifacts,
   including Android OpenGL, macOS ARM64 Metal, and Linux/Windows Vulkan for
   x64 and ARM64.
@@ -18,37 +20,31 @@ API before they are considered actionable.
   new MapLibre Compose publications without maintaining a timestamped artifact
   manifest. Update the resolved publication above after validating a new build.
 
-## Findings
+## Pending on latest main
 
-Eleven unresolved integration gaps are confirmed below. The abandoned
-`upstream/maplibre-compose` integration predates 0.15, so its other assumptions
-continue to be re-evaluated against the snapshot before being attributed upstream.
+Seven integration gaps remain on MapLibre Compose `main` at `2d3cc398`. Findings
+fixed after the resolved snapshot belong in a separate section until
+StreetComplete validates a snapshot that contains them. This audit found no
+findings in that state.
 
 The complete StreetComplete base style compiles against the snapshot with one
 intentional source migration: symbol icon padding now uses MapLibre Compose's
 typed `DpPadding` expression value. Cold production runs on Android, iOS, and
 desktop exposed the additional runtime findings recorded here.
 
-### Missing global style-transition configuration
-
-The Android implementation sets MapLibre Native's global style transition to a
-300ms duration multiplied by the system animator-duration scale, with placement
-transitions enabled. The post-v0.15 Compose API exposes no common configuration
-for the equivalent native transition options. The shared style therefore uses
-backend defaults for now; `StreetCompleteMap` carries a TODO at the integration
-point. A common, backend-neutral style-transition option would let the migration
-preserve this behavior and respect reduced or disabled system animation.
-
 ### Remembered dynamic sources need a stable public ID
 
 StreetComplete's clustered pin layers refer to one source ID from several style
 layers and use the matching source handle to request cluster leaves. The public
 `rememberGeoJsonSource` API allocates an internal ID that its returned `Source`
-does not expose. `MapStyleState.sources` and `MapStyleState.source(id)` do expose
-current handles publicly, but callers need the generated ID to use them.
+does not expose. `MapStyleState.sources[id]` exposes a current handle publicly,
+but callers need the generated ID to use it.
 Supplying a fixed-ID custom `GeoJsonSource` preserves the layer graph and makes
 the public lookup usable, while leaving the application responsible for tracking
 handle generations.
+
+Latest `main` keeps `Source.id` internal and gives `rememberGeoJsonSource` no ID
+parameter, so the gap remains.
 
 A supported stable-ID parameter on `rememberGeoJsonSource`, or a public overload
 that resolves the remembered `Source` to its current handle, would remove this
@@ -92,10 +88,12 @@ The pinning fix is required before a batch API can materially help this case. A
 batch operation is still desirable for parity with Android's `Style.addImages`,
 atomic preflight/reservation, and one render request per group. It should accept
 captured image data so callers do not repeat the Compose-side `ImageBitmap`
-snapshot and reconstruction path. The current snapshot still contains native-ffi
-`0.202608.3`; the measured fix must be released in native-ffi and consumed by a
-new MapLibre Compose snapshot before StreetComplete can remove this cold-image
-limit without local dependency substitution.
+snapshot and reconstruction path. The current snapshot and latest MapLibre
+Compose `main` both contain native-ffi `0.202608.3`. Draft
+[maplibre-native-ffi PR #685](https://github.com/maplibre/maplibre-native-ffi/pull/685)
+contains the measured pinning fix. The fix must ship in native-ffi and MapLibre
+Compose must update its dependency before StreetComplete can remove this
+cold-image limit without local dependency substitution.
 
 In a stronger run that continuously animates the camera during installation,
 the paced application path keeps map intervals below 32.80 ms for 37 quest
@@ -111,7 +109,8 @@ multi-hundred-millisecond visible freeze seen before the application workaround.
 the update to the map owner thread. On native targets, that preparation creates
 the native GeoJSON source data synchronously on the calling thread. The default
 `synchronousUpdate = false` makes native tiling asynchronous, but it does not
-make the caller-side JSON conversion asynchronous.
+make the caller-side JSON conversion asynchronous. Latest `main` retains this
+call order.
 
 StreetComplete calls `setData` from `Dispatchers.Default` for its large pin
 snapshots. This prevents source preparation from blocking Compose's UI thread.
@@ -141,46 +140,20 @@ imperative API is usable for this migration, but every application must list
 the retained layer IDs, replay values after style reload, and handle stale
 generation errors.
 
-### Declarative GeoJSON refresh can remove the Android render surface
-
-After the first Android frame, changing a fixed-ID declarative `GeoJsonSource`
-causes `MlnFfiMapSession.reconcileStyleRevision` to set
-`hasLoadedFirstStyle = false` while it prepares the replacement source. The
-Android presentation then receives `presentFrames = false`, removes its platform
-surface, and logs `Host surface lost`; Compose controls remain visible over a
-blank map. StreetComplete reproduced this with both Surface and Texture modes.
-
-The application workaround keeps each fixed-ID source definition stable and
-updates the current generation's `GeoJsonSourceHandle`. The update effect
-observes the load state and current data, then looks up the current handle before
-each publication. Only the three exact stale-handle exceptions are recoverable.
-Upstream should keep the first-style flag monotonic after the first successful
-load, as its lifecycle comment describes, or decouple reconciliation progress
-from platform-surface visibility.
-
-### Zero-size painters fail deep inside runtime image registration
-
-On Android, Compose loaded a drawable `<layer-list>` used for the location shadow
-as a painter with zero intrinsic width and height. MapLibre Compose accepted it,
-then `ImageManager` attempted to allocate `ImageBitmap(0, 0)` and crashed during
-style preparation. Converting the resource to a sized vector and declaring
-explicit dimensions for all dynamic location images fixes the application.
-
-The existing `image(Painter, DpSize, ...)` overload supplies an explicit caller
-size and StreetComplete now uses it. Image registration should still reject a
-non-positive raster size at the public boundary with the resource/source name
-and an actionable message, and document when callers must provide that explicit
-size rather than relying on painter intrinsic dimensions.
+Latest `main` still applies each changed property through
+`LayerInstallation.update`. Each native `setLayerProperty` call waits for
+`MlnFfiMapSession` owner-thread access before it returns.
 
 ### Layer click handlers cannot configure hit radius
 
 StreetComplete's Android overlay component queries rendered features in a box
 around the tap using the device's finger radius. MapLibre Compose layer click
-handlers currently issue a point query at the exact `DpOffset`; the handler API
-does not expose a radius or query rectangle. The shared overlay still handles
-clicks on rendered symbols, lines, and fills, but thin lines are less forgiving
-until the common API accepts configurable hit geometry (or provides an async
-dispatch contract that can preserve event fallthrough after a rectangle query).
+handlers on latest `main` issue a point query at the exact `DpOffset`; the
+handler API does not expose a radius or query rectangle. The shared overlay
+still handles clicks on rendered symbols, lines, and fills, but thin lines are
+less forgiving until the common API accepts configurable hit geometry (or
+provides an async dispatch contract that can preserve event fallthrough after a
+rectangle query).
 
 ### Gesture callbacks and thresholds are too coarse for parity
 
@@ -189,7 +162,7 @@ only a pan disables GPS following. It also configures a 5dp pan threshold, 1.5°
 rotation threshold, 8dp tilt threshold, fling threshold/base time of 250/500, and
 disables rotation while a scale gesture is active.
 
-The snapshot exposes only the aggregate `CameraMoveReason.GESTURE`. Its common
+Latest `main` exposes only the aggregate `CameraMoveReason.GESTURE`. Its common
 `GestureOptions` can enable or disable gesture families and configure mouse click
 slop, but the touch slops are fixed and it exposes neither gesture-specific begin
 events nor the other native thresholds above. The shared controller therefore
@@ -197,6 +170,9 @@ detects gesture-driven camera-target changes as the narrowest available pan
 signal and otherwise uses the standard common gesture configuration. A typed
 gesture event (at least pan begin) plus common threshold/interlock fields would
 remove both compromises.
+
+The newer `MapEvent.CameraMoveStarted` reports whether the movement is animated,
+not whether a pan, zoom, rotation, or tilt started. It does not close this gap.
 
 ### No post-layer unhandled map-click callback
 
@@ -213,30 +189,69 @@ dispatch knowledge and an extra rendered-feature query. A common post-dispatch
 `onUnhandledClick` callback, or an async dispatch result, would provide the
 fallback contract directly.
 
-### iOS location collection synchronously queries service availability
+The newer `MapState.events` stream contains engine load, camera, and frame
+events. It does not report input dispatch results, so this gap remains on latest
+`main`.
 
-Collecting `IosLocationProvider.updates` on an iOS 26.5 simulator emits Core
-Location's performance diagnostic that `locationServicesEnabled()` can make the
-UI unresponsive when called on the main thread. StreetComplete sees it twice
-when the main screen and lifecycle-driven auto-sync location consumers attach.
+## Resolved in the current snapshot
 
-The provider currently begins its main-dispatcher `callbackFlow` by calling
-`CLLocationManager.locationServicesEnabled()`. Core Location recommends waiting
-for `locationManagerDidChangeAuthorization` and inspecting the manager's
-authorization status. The provider should derive startup permission/service
-state from its existing delegate-driven requester and reserve the static service
-query for a non-main execution context only if it remains necessary. The app
-stays responsive and receives a map frame, so this is a measured performance and
-lifecycle defect rather than a launch blocker.
+These findings are fixed in MapLibre Compose commit `c0e96909`, which produced
+the snapshot that this branch resolves.
 
-## Resolved integration findings
+### Global style-transition configuration
+
+StreetComplete's Android map sets a 300 ms global style transition adjusted by
+the system animator-duration scale. It also enables placement transitions.
+MapLibre Compose commit `cce9fe1e` adds both operations to the common imperative
+style API through `MapStyleState.transition`. The resolved snapshot contains the
+commit. StreetComplete can set the duration and placement behavior after the
+style reaches `StyleLoadState.Ready`.
+
+### Declarative GeoJSON refresh keeps the Android map visible
+
+StreetComplete reproduced a blank Android map when a fixed-ID declarative
+`GeoJsonSource` changed after the first frame. Style reconciliation marked the
+map as not presentable, so the Android host removed its platform surface while
+it applied the replacement.
+
+MapLibre Compose commit `3f8fe157` keeps the previous style presentable while a
+replacement style or style revision loads. The commit adds a native composition
+test that switches the base style and verifies that the load placeholder does
+not cover the map. The resolved snapshot contains the commit. StreetComplete's
+stable source-handle updates remain useful for performance, but they are no
+longer required to prevent this blank-map failure.
+
+### The public image boundary rejects zero-size painters
+
+On Android, Compose loaded a drawable `<layer-list>` used for the location
+shadow as a painter with zero intrinsic width and height. Older MapLibre Compose
+builds accepted it, then crashed when `ImageManager` tried to allocate
+`ImageBitmap(0, 0)`.
+
+MapLibre Compose commit `28862c52` rejects a painter without positive intrinsic
+or explicit dimensions when the application calls `image()`. The error tells
+the caller to pass a positive size. The resolved snapshot contains the commit,
+and StreetComplete still supplies explicit dimensions for its dynamic location
+images.
+
+### iOS location service checks run off the main thread
+
+Older `IosLocationProvider.updates` collections called
+`CLLocationManager.locationServicesEnabled()` on the main dispatcher. Core
+Location warned that the call could make the UI unresponsive.
+
+MapLibre Compose commit `c61804e4` removes the startup service query. The
+provider now calls the static function only to classify a denied Core Location
+error, and `readLocationServicesEnabled` runs that call on `Dispatchers.Default`.
+The resolved snapshot contains the commit.
 
 ### Volatile local GeoJSON sources
 
 The Android implementation set `GeoJsonSource.isVolatile = true` on its dynamic
 local sources. MapLibre Native uses this option only for HTTP sources, so the
 setting does not affect StreetComplete's inline GeoJSON data. The common API
-does not need a volatile option for this migration.
+does not need a volatile option for this migration. Latest `main` still omits
+the option.
 
 ### Map lifecycle lock inversion during style-source refresh
 
@@ -256,9 +271,10 @@ resolved upstream and requires no application workaround.
 
 The old exploratory integration omitted StreetComplete's asymmetric pin
 collision box because the Compose API at that time rejected negative padding.
-The current snapshot's typed `DpPadding` represents negative sides in style-spec
-top/right/bottom/left order. The shared pin layer can therefore declare the exact
-legacy values without the old workaround; live target validation is still needed.
+MapLibre Compose commit `4542c118` added typed `DpPadding` values that represent
+negative sides in style-spec top/right/bottom/left order. The resolved snapshot
+contains the commit. The shared pin layer can therefore declare the exact legacy
+values without the old workaround; live target validation is still needed.
 
 ## Integration constraints
 
