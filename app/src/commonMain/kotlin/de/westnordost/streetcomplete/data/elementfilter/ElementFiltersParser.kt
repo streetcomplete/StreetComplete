@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLessOrEqua
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLessThan
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagValueLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.IsSeason
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKeyLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
@@ -233,6 +234,10 @@ private fun StringWithCursor.parseElementFilter(): ElementFilter {
 
     val key = parseTag()
     val operator = parseOperatorWithSurroundingSpaces() ?: return HasKey(key)
+
+    if (key == "season" && operator == EQUALS) {
+        return IsSeason(parseTag())
+    }
 
     if (operator == OLDER) {
         return CombineFilters(HasKey(key), TagOlderThan(key, parseDateFilter()))

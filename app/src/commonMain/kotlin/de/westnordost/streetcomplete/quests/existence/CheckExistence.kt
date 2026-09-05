@@ -48,7 +48,13 @@ class CheckExistence(
             or leisure = firepit
             or (leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball)
             or leisure = fitness_station
-            or amenity = grit_bin and seasonal = no
+            or (
+             amenity = grit_bin and
+             (
+                seasonal = no
+                or season = winter
+             )
+            )
             or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
             or amenity = ticket_validator
             or amenity = bicycle_repair_station
