@@ -80,7 +80,6 @@ fun WeekdaysColumn(
                                     }
                                     onChange(newWeekdaysList)
                                 },
-                                locale = locale,
                                 enabled = enabled,
                             )
                         }

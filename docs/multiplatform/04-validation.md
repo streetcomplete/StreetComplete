@@ -773,3 +773,28 @@ All three tests failed with the old calculation and passed with the correction.
 `mise exec -- ./gradlew :app:testAndroidHostTest :app:compileKotlinIosArm64`
 passed. The host suite reported 2,554 tests, one skipped, and no failures or errors.
 This verifies the conversion and iOS compilation, not an iPhone visual recheck.
+
+## Automatic time formatting, 2026-09-05
+
+Automatic app language now remains `null` through the time-control defaults and
+`LocalTimeFormatter`. `PreferenceAwareAppTheme` provides an explicit time locale
+only when the user selects a language. The opening-hours country locale still
+controls weekday and month labels, but no longer overrides time formatting.
+
+The three `AutomaticTimeFormatTest` tests passed on the iOS 26.5 iPhone 17 simulator
+with `AppleLocale=en_US` and the system 24-hour preference enabled. They compare
+automatic formatting and picker hour-cycle detection with Foundation, and verify
+that explicit en-US and German locales retain their own hour cycles.
+
+Run them with
+`mise exec -- ./gradlew :app:iosSimulatorArm64Test --tests '*AutomaticTimeFormatTest'`.
+These tests verify the native formatting boundary, not a full quest-form UI run.
+An already-open picker still needs lifecycle-aware refresh if system preferences
+change while the app is in the background.
+
+Final iPhone-target compilation passed via `:app:compileKotlinIosArm64`.
+Two full Android host-suite runs each reported 2,554 tests, one skipped, and one
+live notes-API failure caused by a server connection closing unexpectedly. The
+failing cases differed between runs; neither failure involved time formatting.
+The focused host run, `:app:testAndroidHostTest --tests
+'de.westnordost.streetcomplete.util.locale.*'`, passed all 36 locale tests.

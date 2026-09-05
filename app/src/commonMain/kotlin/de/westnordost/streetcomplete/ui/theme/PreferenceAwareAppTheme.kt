@@ -2,14 +2,17 @@ package de.westnordost.streetcomplete.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.Theme
+import de.westnordost.streetcomplete.util.locale.LocalTimeFormatLocale
 import org.koin.compose.koinInject
 
 /** Applies the persisted display settings at the shared UI root on every target. */
@@ -40,8 +43,11 @@ fun PreferenceAwareAppTheme(
         Theme.DARK -> true
     }
     AppTheme(darkTheme) {
-        // Recreate resource consumers after the platform locale has changed.
-        key(language) { content() }
+        val timeFormatLocale = remember(language) { language?.let { Locale(it) } }
+        CompositionLocalProvider(LocalTimeFormatLocale provides timeFormatLocale) {
+            // Recreate resource consumers after the platform locale has changed.
+            key(language) { content() }
+        }
     }
 }
 

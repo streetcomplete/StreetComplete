@@ -38,6 +38,7 @@ import de.westnordost.streetcomplete.ui.common.TimePicker
 import de.westnordost.streetcomplete.ui.common.dialogs.ScrollableAlertDialog
 import de.westnordost.streetcomplete.ui.common.rememberTimePickerState
 import de.westnordost.streetcomplete.ui.theme.largeInput
+import de.westnordost.streetcomplete.util.locale.LocalTimeFormatLocale
 import de.westnordost.streetcomplete.util.locale.TimeFormatElements
 import org.jetbrains.compose.resources.stringResource
 
@@ -49,7 +50,7 @@ fun TimeSpansSelectorSelectDialog(
     initialTimeSpansSelector: TimeSpansSelector?,
     onSelect: (TimeSpansSelector) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = LocalTimeFormatLocale.current,
 ) {
     var step by remember { mutableIntStateOf(0) }
 

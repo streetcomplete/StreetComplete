@@ -14,7 +14,11 @@ on this probe. Follow-up status for its other observations:
 - [x] Correct the inverted location-indicator bearing. The shared screen now uses
   the clockwise angle from north to the heading, then subtracts camera bearing.
   Regression tests cover direction and camera rotation; an iPhone recheck remains.
-- [ ] System 24-hour time preference is not respected in the opening-hours form.
+- [x] Preserve automatic time formatting in opening-hours controls. Automatic app
+  language passes `null` through to the native formatter; an explicit language
+  remains explicit. The quest's country locale still controls weekday and month
+  labels. Native formatter tests pass with en-US and the 24-hour override enabled.
+  Refreshing an already-open picker after a system preference change remains unimplemented.
 - [ ] Quest forms lack an obvious close control on iOS. Closing must preserve the
   form's existing discard-confirmation flow.
 - [ ] One download failed and appeared to succeed on retry; cause unknown.
