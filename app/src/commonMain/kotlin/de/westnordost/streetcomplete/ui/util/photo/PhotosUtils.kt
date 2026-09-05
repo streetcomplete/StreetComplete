@@ -1,13 +1,11 @@
 package de.westnordost.streetcomplete.ui.util.photo
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
 import io.github.vinceglb.filekit.FileKit
 import io.github.vinceglb.filekit.PlatformFile
 import io.github.vinceglb.filekit.compressImage
-import io.github.vinceglb.filekit.dialogs.FileKitOpenCameraSettings
 import io.github.vinceglb.filekit.filesDir
 import io.github.vinceglb.filekit.write
 import kotlin.time.Clock
@@ -30,6 +28,11 @@ fun createPhotoPlatformFile(): PlatformFile {
     return PlatformFile(FileKit.filesDir, "photo_$time.jpg")
 }
 
-@Composable @ReadOnlyComposable expect fun createOpenCameraSettings(): FileKitOpenCameraSettings
+interface PhotoCameraLauncher {
+    fun launch(destinationFile: PlatformFile)
+}
+
+@Composable
+expect fun rememberPhotoCameraLauncher(onResult: (PlatformFile?) -> Unit): PhotoCameraLauncher
 
 @Composable expect fun rememberHasCamera(): Boolean

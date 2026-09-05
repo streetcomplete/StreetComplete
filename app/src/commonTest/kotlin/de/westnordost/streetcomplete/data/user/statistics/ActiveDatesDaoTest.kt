@@ -41,4 +41,7 @@ class ActiveDatesDaoTest : StreetCompleteDatabaseTestCase() {
 
         assertEquals(dates, dao.getAll(365 * 1000))
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

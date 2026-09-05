@@ -1,15 +1,21 @@
+@file:OptIn(ExperimentalForeignApi::class)
+
 package de.westnordost.streetcomplete.screens.main
 
-import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import kotlinx.cinterop.ExperimentalForeignApi
 import platform.Foundation.NSURL
 import platform.UIKit.UIAlertAction
 import platform.UIKit.UIAlertActionStyleDefault
 import platform.UIKit.UIAlertController
 import platform.UIKit.UIAlertControllerStyleActionSheet
 import platform.UIKit.UIApplication
+import platform.UIKit.UIViewController
+import platform.UIKit.popoverPresentationController
 
-object IosMapAppLauncher : MapAppLauncher {
+class IosMapAppLauncher(
+    private val hostViewController: () -> UIViewController?,
+) : MapAppLauncher {
     override fun openAt(position: LatLon, zoom: Double) {
         val app = UIApplication.sharedApplication
 
@@ -27,9 +33,15 @@ object IosMapAppLauncher : MapAppLauncher {
                 })
             }
         }
-
-        val rootViewController = app.keyWindow?.rootViewController
-        rootViewController?.presentViewController(alert, animated = true, completion = null)
+        var presenter = hostViewController() ?: return
+        while (presenter.presentedViewController != null) {
+            presenter = presenter.presentedViewController ?: break
+        }
+        // iPad requires an action-sheet anchor. The action originates in shared Compose rather
+        // than a UIKit control, so anchor it to the presenting view instead.
+        alert.popoverPresentationController?.sourceView = presenter.view
+        alert.popoverPresentationController?.sourceRect = presenter.view.bounds
+        presenter.presentViewController(alert, animated = true, completion = null)
     }
 
     override fun isAvailable(): Boolean {
@@ -85,6 +97,3 @@ object IosMapAppLauncher : MapAppLauncher {
         )
     )
 }
-
-@Composable
-actual fun rememberMapAppLauncher(): MapAppLauncher = IosMapAppLauncher

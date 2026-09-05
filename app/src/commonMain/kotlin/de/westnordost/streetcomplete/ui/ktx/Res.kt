@@ -22,7 +22,8 @@ suspend inline fun <reified T> Res.readYamlOrNull(path: String, yaml: Yaml = Yam
 suspend fun Res.readBytesOrNull(path: String): ByteArray? =
     try { readBytes(path) } catch (_: MissingResourceException) { null }
 
-private val resourceIds =
+private val resourceIds by lazy {
     Res.allDrawableResources.entries.associate { (id, resource) -> resource to id }
+}
 
 val DrawableResource.id: String? get() = resourceIds.get(this)

@@ -27,6 +27,7 @@ import de.westnordost.osm_opening_hours.model.TimeSpan
 import de.westnordost.osm_opening_hours.model.TimesSelector
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.locale.DateTimeFormatStyle
+import de.westnordost.streetcomplete.util.locale.LocalTimeFormatLocale
 import de.westnordost.streetcomplete.util.locale.LocalTimeFormatter
 import kotlinx.datetime.LocalTime
 import org.jetbrains.compose.resources.stringResource
@@ -40,7 +41,7 @@ fun TimesSelectorText(
     time: TimesSelector,
     onChange: (TimesSelector) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = LocalTimeFormatLocale.current,
     enabled: Boolean = true,
 ) {
     var showDialog by remember { mutableStateOf(false) }
@@ -91,7 +92,7 @@ private fun TimesSelector.toLocalizedString(
             localizedRange(
                 start = startTimeText,
                 end = endText,
-                locale = locale,
+                locale = locale ?: Locale.current,
                 layoutDirection = layoutDirection,
             )
         }

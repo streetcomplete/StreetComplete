@@ -7,6 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.osm_opening_hours.model.TimesSelector
+import de.westnordost.streetcomplete.util.locale.LocalTimeFormatLocale
 
 /** A column of time spans and times which can each be changed and deleted.
  *
@@ -22,7 +23,7 @@ fun TimesSelectorsColumn(
     times: List<TimesSelector>,
     onChange: (times: List<TimesSelector>) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = LocalTimeFormatLocale.current,
     enabled: Boolean = true,
 ) {
     Column(modifier) {

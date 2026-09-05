@@ -69,6 +69,9 @@ class EditTypeStatisticsDaoTest : StreetCompleteDatabaseTestCase() {
             EditTypeStatistics(TWO, 1)
         ), daoType.getAll())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }
 
 private const val ONE = "one"

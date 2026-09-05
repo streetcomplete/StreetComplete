@@ -1,13 +1,33 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import dev.mokkery.MockMode
+import org.gradle.api.tasks.Sync
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileWriter
-
 
 /** App version name, code and flavor */
 val appVersionName = "64.0-alpha1"
 val appVersionCode = 6400
+val mapLibreComposeVersion = providers.gradleProperty("mapLibreComposeVersion").get()
+
+val desktopMapLibreRuntimeArtifact = run {
+    val os = System.getProperty("os.name").lowercase()
+    val architecture = System.getProperty("os.arch").lowercase()
+    val artifactArchitecture = when (architecture) {
+        "aarch64", "arm64" -> "arm64"
+        "amd64", "x86_64" -> "x64"
+        else -> null
+    }
+    when {
+        os.contains("mac") && artifactArchitecture == "arm64" ->
+            "maplibre-compose-runtime-metal-macos-arm64"
+        os.contains("linux") && artifactArchitecture != null ->
+            "maplibre-compose-runtime-vulkan-linux-$artifactArchitecture"
+        os.contains("windows") && artifactArchitecture != null ->
+            "maplibre-compose-runtime-vulkan-windows-$artifactArchitecture"
+        else -> null
+    }
+}
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -46,6 +66,12 @@ plugins {
 repositories {
     google()
     mavenCentral()
+    maven("https://central.sonatype.com/repository/maven-snapshots/") {
+        content { includeGroup("org.maplibre.compose") }
+    }
+    maven("https://jogamp.org/deployment/maven") {
+        content { includeGroupAndSubgroups("org.jogamp") }
+    }
 }
 
 buildkonfig {
@@ -65,6 +91,9 @@ buildkonfig {
             create(ios) {
                 buildConfigField(STRING, "PLATFORM", "ios")
             }
+        }
+        create("desktop") {
+            buildConfigField(STRING, "PLATFORM", "desktop")
         }
     }
 }
@@ -119,7 +148,34 @@ kotlin {
         }
     }
 
+    jvm("desktop") {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_25)
+        }
+    }
+
     sourceSets {
+        val commonMain = getByName("commonMain")
+        val commonTest = getByName("commonTest")
+        val javaMain = create("javaMain") {
+            dependsOn(commonMain)
+        }
+        val javaTest = create("javaTest") {
+            dependsOn(commonTest)
+        }
+        val nativeMain = maybeCreate("nativeMain").apply { dependsOn(commonMain) }
+        val iosMain = maybeCreate("iosMain").apply { dependsOn(nativeMain) }
+        val iosTest = maybeCreate("iosTest").apply { dependsOn(commonTest) }
+        getByName("androidMain").dependsOn(javaMain)
+        getByName("desktopMain").dependsOn(javaMain)
+        getByName("iosArm64Main").dependsOn(iosMain)
+        getByName("iosSimulatorArm64Main").dependsOn(iosMain)
+
+        getByName("androidHostTest").dependsOn(javaTest)
+        getByName("desktopTest").dependsOn(javaTest)
+        getByName("iosArm64Test").dependsOn(iosTest)
+        getByName("iosSimulatorArm64Test").dependsOn(iosTest)
+
         commonMain {
             dependencies {
                 // Kotlin
@@ -134,7 +190,6 @@ kotlin {
                 implementation("io.insert-koin:koin-core")
                 implementation("io.insert-koin:koin-compose")
                 implementation("io.insert-koin:koin-compose-viewmodel")
-                implementation("io.insert-koin:koin-androidx-compose-navigation")
 
                 // Logging
                 implementation("co.touchlab:kermit:2.1.0")
@@ -145,9 +200,11 @@ kotlin {
                 // I/O
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
+                // location
+                implementation("org.maplibre.compose:location:$mapLibreComposeVersion")
+
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.0")
-                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
 
                 // HTTP client
                 implementation("io.ktor:ktor-client-core:3.5.1")
@@ -193,11 +250,10 @@ kotlin {
                 // UI ViewModel
                 implementation("org.jetbrains.androidx.lifecycle:lifecycle-viewmodel-compose:2.10.0")
 
-                // UI widgets
-
                 // Map
-                implementation("org.maplibre.compose:maplibre-compose:0.15.0")
-                implementation("org.maplibre.compose:location:0.15.0")
+                api("org.maplibre.compose:maplibre-compose:$mapLibreComposeVersion")
+
+                // UI widgets
 
                 // non-lazy grid
                 // NOTE: might replace with
@@ -228,10 +284,6 @@ kotlin {
                 implementation("io.insert-koin:koin-android")
                 implementation("io.insert-koin:koin-androidx-workmanager")
 
-                // Android stuff
-                implementation("com.google.android.material:material:1.14.0")
-                implementation("androidx.appcompat:appcompat:1.7.1")
-
                 // Compose
                 implementation("androidx.activity:activity-compose:1.13.0")
 
@@ -244,29 +296,49 @@ kotlin {
                 // HTTP Client
                 implementation("io.ktor:ktor-client-android:3.5.1")
 
-                // map
-                implementation("org.maplibre.compose:maplibre-compose-runtime-vulkan-android:0.15.0")
-
                 // map and location
-                implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
+                runtimeOnly(
+                    "org.maplibre.compose:maplibre-compose-runtime-opengl-android:" +
+                        mapLibreComposeVersion
+                )
 
                 // required to @Preview composables in Android Studio
                 runtimeOnly("androidx.compose.ui:ui-tooling:1.10.0")
             }
         }
+        javaMain.dependencies {
+            implementation("androidx.sqlite:sqlite-bundled:2.7.0")
+        }
         iosMain {
             dependencies {
                 // HTTP client
                 implementation("io.ktor:ktor-client-darwin:3.5.1")
+
+                // Use Apple's SQLite instead of linking a second copy beside MapLibre Native.
+                implementation("androidx.sqlite:sqlite-framework:2.7.0")
+            }
+        }
+        getByName("desktopMain") {
+            dependencies {
+                implementation(compose.desktop.currentOs)
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.11.0")
+                implementation("io.ktor:ktor-client-java:3.5.1")
+                implementation("androidx.sqlite:sqlite-bundled-jvm:2.7.0")
+                desktopMapLibreRuntimeArtifact?.let { artifact ->
+                    runtimeOnly("org.maplibre.compose:$artifact:$mapLibreComposeVersion")
+                }
             }
         }
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
 
                 implementation("io.ktor:ktor-client-mock:3.5.1")
-                implementation("androidx.sqlite:sqlite-bundled:2.7.0")
             }
+        }
+        javaTest.dependencies {
+            implementation("androidx.sqlite:sqlite-bundled:2.7.0")
         }
         getByName("androidHostTest") {
             dependencies {
@@ -281,6 +353,44 @@ compose {
     resources {
         publicResClass = true
         packageOfResClass = "de.westnordost.streetcomplete.resources"
+    }
+}
+
+// The local macOS launcher needs an app bundle for Core Location's privacy declarations.
+val prepareDesktopAppResources = tasks.register<Sync>("prepareDesktopAppResources") {
+    from(layout.projectDirectory.dir("src/commonMain/composeResources/files"))
+    into(layout.buildDirectory.dir("desktopAppResources/common"))
+}
+
+tasks.matching { it.name == "prepareAppResources" }.configureEach {
+    dependsOn(prepareDesktopAppResources)
+}
+
+compose.desktop {
+    application {
+        from(kotlin.targets["desktop"])
+        mainClass = "de.westnordost.streetcomplete.DesktopMainKt"
+        jvmArgs("--enable-native-access=ALL-UNNAMED")
+        nativeDistributions {
+            // Build a local app image for runDistributable, not DMG/MSI/DEB installers.
+            packageName = "StreetComplete"
+            packageVersion = "1.0.0"
+            modules("java.net.http", "java.prefs", "jdk.unsupported")
+            appResourcesRootDir.set(layout.buildDirectory.dir("desktopAppResources"))
+            macOS {
+                bundleID = "de.westnordost.streetcomplete"
+                entitlementsFile.set(layout.projectDirectory.file("desktop/entitlements.plist"))
+                runtimeEntitlementsFile.set(layout.projectDirectory.file("desktop/entitlements.plist"))
+                infoPlist {
+                    extraKeysRawXml = """
+                        <key>NSLocationWhenInUseUsageDescription</key>
+                        <string>StreetComplete uses your location to show your position on the map and download nearby quests.</string>
+                        <key>NSLocationUsageDescription</key>
+                        <string>StreetComplete uses your location to show your position on the map and download nearby quests.</string>
+                    """.trimIndent()
+                }
+            }
+        }
     }
 }
 
@@ -400,13 +510,6 @@ tasks.register<UpdateChangelogTask>("updateChangelog") {
     targetFile = projectDir.resolve("src/commonMain/composeResources/files/changelog.html")
 }
 
-tasks.register<UpdateMapStyleTask>("updateMapStyle") {
-    group = "streetcomplete"
-    targetDir = projectDir.resolve("src/androidMain/assets/map_theme")
-    apiKey = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
-    mapStyleBranch = "master"
-}
-
 tasks.register<GenerateMetadataByCountryTask>("generateMetadataByCountry") {
     group = "streetcomplete"
     dependsOn(
@@ -425,6 +528,33 @@ tasks.register("copyDefaultStringsToEnStrings") {
     outputs.file(projectDir.resolve("src/commonMain/composeResources/values-en/strings.xml"))
     doLast {
         inputs.files.singleFile.copyTo(outputs.files.singleFile, true)
+    }
+}
+
+tasks.register("verifySharedMapGlyphResources") {
+    group = "verification"
+    description = "Verifies the complete non-empty shared MapLibre glyph range set."
+    val glyphDirectory = layout.projectDirectory.dir("src/commonMain/composeResources/files/glyphs")
+    inputs.dir(glyphDirectory)
+    doLast {
+        val expected = buildSet {
+            for (font in listOf("Roboto Regular", "Roboto Bold")) {
+                for (start in 0..0xff00 step 0x100) {
+                    add("$font/$start-${start + 0xff}.pbf")
+                }
+            }
+        }
+        val root = glyphDirectory.asFile
+        val actual = root.walkTopDown()
+            .filter { it.isFile }
+            .map { it.relativeTo(root).invariantSeparatorsPath }
+            .toSet()
+        check(actual == expected) {
+            "Shared map glyph set differs: missing=${expected - actual}, unexpected=${actual - expected}"
+        }
+        check(expected.all { root.resolve(it).length() > 0L }) {
+            "Shared map glyph resources must not be empty"
+        }
     }
 }
 

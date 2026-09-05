@@ -227,6 +227,9 @@ class ElementEditsDaoTest : StreetCompleteDatabaseTestCase() {
 
         assertEquals(999L, dao.get(edit.id)!!.createdTimestamp)
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }
 
 private fun ElementEditsDao.addAll(vararg edits: ElementEdit) = edits.forEach { put(it) }
@@ -360,4 +363,5 @@ private object TestOverlay : Overlay {
     override val title = Res.string.quest_address_title
     override val wikiLink = null
     override val achievements = listOf<EditTypeAchievement>()
+
 }

@@ -13,9 +13,10 @@ class LocaleTest {
         assertEquals("Germany", germanInGermany.getDisplayRegion(english))
         assertEquals(null, germanInGermany.getDisplayScript(english))
 
-        val serbianInCyrillic = Locale("sr-Cyrl")
-        assertEquals("Serbian", serbianInCyrillic.getDisplayLanguage(english))
-        assertEquals(null, serbianInCyrillic.getDisplayRegion(english))
-        assertEquals("Cyrillic", serbianInCyrillic.getDisplayScript(english))
+        // Use a non-default script: Foundation canonicalizes sr-Cyrl to sr on Apple targets.
+        val serbianInLatin = Locale("sr-Latn")
+        assertEquals("Serbian", serbianInLatin.getDisplayLanguage(english))
+        assertEquals(null, serbianInLatin.getDisplayRegion(english))
+        assertEquals("Latin", serbianInLatin.getDisplayScript(english))
     }
 }

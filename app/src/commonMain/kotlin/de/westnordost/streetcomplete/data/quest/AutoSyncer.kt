@@ -1,9 +1,7 @@
 package de.westnordost.streetcomplete.data.quest
 
 import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.NetworkCapabilities
@@ -20,8 +18,13 @@ import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.logs.Log
+import kotlinx.atomicfu.atomic
+import kotlinx.atomicfu.locks.ReentrantLock
+import kotlinx.atomicfu.locks.withLock
 import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -49,14 +52,26 @@ class AutoSyncer(
     private val userLoginSource: UserLoginSource,
     private val prefs: Preferences,
     private val teamModeQuestFilterSource: TeamModeQuestFilterSource,
-    private val downloadedTilesController: DownloadedTilesController
+    private val downloadedTilesController: DownloadedTilesController,
+    applicationScope: CoroutineScope,
 ) : DefaultLifecycleObserver {
 
-    private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("AutoSyncer"))
+    private val coroutineScope = CoroutineScope(
+        applicationScope.coroutineContext +
+            SupervisorJob(applicationScope.coroutineContext[Job]) +
+            CoroutineExceptionHandler { _, error ->
+                Log.e(TAG, "Automatic synchronization failed", error)
+            } +
+            CoroutineName("QuestAutoSyncer")
+    )
+    private val lifecycleLock = ReentrantLock()
+    private val attachedOwners = mutableSetOf<LifecycleOwner>()
+    private val startedOwners = mutableSetOf<LifecycleOwner>()
+    private var networkCollectionJob: Job? = null
+    private var locationCollectionJob: Job? = null
 
     private val networkCapabilities = MutableStateFlow<NetworkCapabilities?>(null)
-
-    private var pos: LatLon? = null
+    private val pos = atomic<LatLon?>(null)
 
     // there are unsynced changes -> try uploading now
     private val unsyncedChangesListener = object : UnsyncedChangesCountSource.Listener {
@@ -97,54 +112,98 @@ class AutoSyncer(
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
-    override fun onCreate(owner: LifecycleOwner) {
-        unsyncedChangesCountSource.addListener(unsyncedChangesListener)
-        downloadProgressSource.addListener(downloadProgressListener)
-        userLoginSource.addListener(userLoginStatusListener)
-        teamModeQuestFilterSource.addListener(teamModeChangeListener)
+    fun attach(owner: LifecycleOwner) {
+        owner.lifecycle.addObserver(this)
+    }
 
-        coroutineScope.launch {
-            owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+    fun detach(owner: LifecycleOwner) {
+        owner.lifecycle.removeObserver(this)
+        detachOwner(owner)
+    }
+
+    override fun onCreate(owner: LifecycleOwner) {
+        lifecycleLock.withLock {
+            if (!attachedOwners.add(owner) || attachedOwners.size != 1) return
+            unsyncedChangesCountSource.addListener(unsyncedChangesListener)
+            downloadProgressSource.addListener(downloadProgressListener)
+            userLoginSource.addListener(userLoginStatusListener)
+            teamModeQuestFilterSource.addListener(teamModeChangeListener)
+        }
+    }
+
+    override fun onStart(owner: LifecycleOwner) {
+        lifecycleLock.withLock {
+            if (!startedOwners.add(owner) || startedOwners.size != 1) return
+            networkCollectionJob = coroutineScope.launch {
                 activeNetworkConnection.capabilities.collect { capabilities ->
                     networkCapabilities.value = capabilities
-
                     if (capabilities?.hasInternet == true) {
                         triggerAutoSync()
                     }
                 }
             }
+            startLocationCollectionLocked()
         }
-        coroutineScope.launch {
-            owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                val request = LocationRequest(LocationAccuracy.High, 30.seconds, 100.meters)
-                locationProvider.updates(request).collect { locationEvent ->
-                    if (locationEvent is LocationEvent.Fix) {
-                        val (position, accuracy) = locationEvent.location.position
-                        if (accuracy == null || accuracy < 300.meters) {
-                            pos = LatLon(position.latitude, position.longitude)
-                            triggerAutoDownload()
-                        }
-                    }
-                }
-            }
+    }
+
+    override fun onStop(owner: LifecycleOwner) {
+        lifecycleLock.withLock {
+            if (!startedOwners.remove(owner) || startedOwners.isNotEmpty()) return
+            networkCollectionJob?.cancel()
+            networkCollectionJob = null
+            locationCollectionJob?.cancel()
+            locationCollectionJob = null
         }
     }
 
     override fun onResume(owner: LifecycleOwner) {
+        lifecycleLock.withLock {
+            // A provider may finish after reporting PermissionDenied. Android resumes the
+            // Activity after the permission sheet, so reconnect without requiring a full stop.
+            if (startedOwners.isNotEmpty() && locationCollectionJob?.isActive != true) {
+                startLocationCollectionLocked()
+            }
+        }
         if (networkCapabilities.value?.hasInternet == true) {
             triggerAutoSync()
         }
     }
 
     override fun onDestroy(owner: LifecycleOwner) {
-        unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
-        downloadProgressSource.removeListener(downloadProgressListener)
-        userLoginSource.removeListener(userLoginStatusListener)
-        teamModeQuestFilterSource.removeListener(teamModeChangeListener)
-        coroutineScope.coroutineContext.cancelChildren()
+        detachOwner(owner)
+    }
+
+    private fun detachOwner(owner: LifecycleOwner) {
+        onStop(owner)
+        lifecycleLock.withLock {
+            if (!attachedOwners.remove(owner) || attachedOwners.isNotEmpty()) return
+            unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
+            downloadProgressSource.removeListener(downloadProgressListener)
+            userLoginSource.removeListener(userLoginStatusListener)
+            teamModeQuestFilterSource.removeListener(teamModeChangeListener)
+            coroutineScope.coroutineContext.cancelChildren()
+        }
     }
 
     /* ------------------------------------------------------------------------------------------ */
+
+    /** Must be called while [lifecycleLock] is held. */
+    private fun startLocationCollectionLocked() {
+        locationCollectionJob = coroutineScope.launch {
+            val request = LocationRequest(LocationAccuracy.High, 30.seconds, 100.meters)
+            locationProvider.updates(request).collect { locationEvent ->
+                if (locationEvent is LocationEvent.Update) {
+                    val location = locationEvent.measurement
+                    val accuracy = location.horizontalAccuracy
+                    if (accuracy == null || accuracy < 300.meters) {
+                        val position = location.position
+                        pos.value = LatLon(position.latitude, position.longitude)
+                        triggerAutoDownload()
+                    }
+                }
+            }
+        }
+    }
 
     private fun triggerAutoSync() {
         triggerAutoDownload()
@@ -152,7 +211,7 @@ class AutoSyncer(
     }
 
     private fun triggerAutoDownload() {
-        val pos = pos ?: return
+        val pos = pos.value ?: return
         if (networkCapabilities.value?.hasInternet != true) return
         if (downloadProgressSource.isDownloadInProgress) return
 

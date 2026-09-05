@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.ui.common.opening_hours
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
+import de.westnordost.streetcomplete.util.locale.LocalTimeFormatLocale
 import de.westnordost.osm_opening_hours.model.ClockTime
 import de.westnordost.osm_opening_hours.model.TimeIntervals
 import de.westnordost.osm_opening_hours.model.TimeSpansSelector
@@ -18,7 +19,7 @@ fun TimesSelectorDialog(
     initialTime: TimesSelector,
     onSelect: (TimesSelector) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = LocalTimeFormatLocale.current,
 ) {
     when (initialTime) {
         is TimeSpansSelector -> {

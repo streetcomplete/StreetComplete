@@ -40,7 +40,7 @@ class AddOnewayTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test fun `does not apply to dead end road`() {
+    @Test fun `does not apply to first dead end road arrangement`() {
         val mapData = TestMapDataWithGeometry(listOf(
             way(1, listOf(1, 2), mapOf("highway" to "residential")),
             way(2, listOf(2, 3), mapOf(
@@ -52,7 +52,7 @@ class AddOnewayTest {
         assertEquals(0, questType.getApplicableElements(mapData).toList().size)
     }
 
-    @Test fun `does not apply to another dead end road`() {
+    @Test fun `does not apply to second dead end road arrangement`() {
         val mapData = TestMapDataWithGeometry(listOf(
             way(1, listOf(2, 3), mapOf(
                 "highway" to "residential",

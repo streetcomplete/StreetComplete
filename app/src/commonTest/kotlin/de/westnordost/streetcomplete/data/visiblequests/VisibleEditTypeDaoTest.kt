@@ -59,4 +59,7 @@ class VisibleEditTypeDaoTest : StreetCompleteDatabaseTestCase() {
         assertEquals(visibilities, dao.getAll(0))
         assertEquals(mapOf(), dao.getAll(1))
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

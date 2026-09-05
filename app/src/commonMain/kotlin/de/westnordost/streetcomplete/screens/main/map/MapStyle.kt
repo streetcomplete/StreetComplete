@@ -1,16 +1,18 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_attribution_osm
 import de.westnordost.streetcomplete.resources.map_oneway_arrow
+import de.westnordost.streetcomplete.ui.util.ColorFilterPainter
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.maplibre.compose.expressions.ast.Expression
@@ -29,7 +31,6 @@ import org.maplibre.compose.expressions.value.LineJoin
 import org.maplibre.compose.expressions.value.SymbolPlacement
 import org.maplibre.compose.layers.BackgroundLayer
 import org.maplibre.compose.layers.CircleLayer
-import org.maplibre.compose.layers.FillExtrusionLayer
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.layers.SymbolLayer
@@ -73,7 +74,7 @@ fun MapStyle(
     val paths = remember(colors) {
         RoadType(
             id = "paths",
-            minZoom = 15f,
+            fadeInStartZoom = 15f,
             filters = Feature.inClass("path"),
             color = colors.path,
             colorOutline = colors.path,
@@ -83,7 +84,7 @@ fun MapStyle(
     val pedestrian = remember(colors) {
         RoadType(
             id = "pedestrian",
-            minZoom = 14f,
+            fadeInStartZoom = 14f,
             filters = all(Feature.inClass("street_limited"), Feature.inType("pedestrian")),
             color = colors.pedestrian,
             colorOutline = colors.roadOutline,
@@ -93,7 +94,7 @@ fun MapStyle(
     val serviceRoads = remember(colors) {
         RoadType(
             id = "roads-service",
-            minZoom = 14f,
+            fadeInStartZoom = 14f,
             filters = Feature.inClass("service", "driveway"),
             color = colors.road,
             colorOutline = colors.roadOutline,
@@ -103,7 +104,7 @@ fun MapStyle(
     val minorRoads = remember(colors) {
         RoadType(
             id = "roads-minor",
-            minZoom = 12f,
+            fadeInStartZoom = 12f,
             filters = all(Feature.inClass("street", "street_limited"), !Feature.inType("pedestrian")),
             color = colors.road,
             colorOutline = colors.roadOutline,
@@ -113,7 +114,7 @@ fun MapStyle(
     val majorRoads = remember(colors) {
         RoadType(
             id = "roads-major",
-            minZoom = 5f,
+            fadeInStartZoom = 5f,
             filters = Feature.inClass("main"),
             color = colors.road,
             colorOutline = colors.roadOutline,
@@ -123,7 +124,7 @@ fun MapStyle(
     val motorways = remember(colors) {
         RoadType(
             id = "motorways",
-            minZoom = 5f,
+            fadeInStartZoom = 5f,
             filters = Feature.inClass("motorway"),
             color = colors.motorway,
             colorOutline = colors.motorwayOutline,
@@ -133,7 +134,7 @@ fun MapStyle(
     val motorwayLinks = remember(colors) {
         RoadType(
             id = "motorway-links",
-            minZoom = 5f,
+            fadeInStartZoom = null,
             filters = Feature.inClass("motorway_link"),
             color = colors.motorway,
             colorOutline = colors.motorwayOutline,
@@ -148,9 +149,9 @@ fun MapStyle(
     AerowaysLayer(source, colors)
     BuildingLayers(source, colors)
 
-    RoadLayers(source, colors, roads, paths, serviceRoads, Structure.Tunnel)
-
     PedestrianAreaLayers(source, colors, Structure.None)
+
+    RoadLayers(source, colors, roads, paths, serviceRoads, Structure.Tunnel)
 
     belowRoadsContent()
 
@@ -175,9 +176,6 @@ fun MapStyle(
     belowLabelsContent()
 
     LabelLayers(source, colors, languages)
-
-    // I don't know, kind of does not look good due to missing extrusion outline.
-    //BuildingExtrudeLayer(source, colors)
 
     aboveLabelsContent()
 }
@@ -206,25 +204,24 @@ private fun LandLayers(source: Source, colors: MapColors) {
         opacity = fadeInAtZoom(5f),
         color = const(colors.green),
     )
+    LineLayer(
+        id = "landuse-pitch-park-outline",
+        source = source,
+        sourceLayer = "landuse",
+        minZoom = 16f,
+        filter = feature.inClass("pitch", "park"),
+        color = const(colors.earth),
+        width = byZoom(16 to 1.dp, 24 to 128.dp),
+        offset = byZoom(16 to 0.5.dp, 24 to 64.dp)
+    )
     FillLayer(
         id = "landuse-forest",
         source = source,
         sourceLayer = "landuse",
         minZoom = 5f,
-        filter = feature.inClass("class", "wood", "scrub"),
+        filter = feature.inClass("wood", "scrub"),
         opacity = fadeInAtZoom(5f),
         color = const(colors.forest),
-    )
-    LineLayer(
-        id = "landuse-pitch-outline",
-        source = source,
-        sourceLayer = "landuse",
-        minZoom = 15f,
-        filter = feature.inClass("pitch"),
-        opacity = fadeInAtZoom(15f),
-        color = const(colors.earth),
-        width = byZoom(16 to 1.dp, 24 to 128.dp),
-        offset = byZoom(16 to 0.5.dp, 24 to 64.dp)
     )
 }
 
@@ -301,7 +298,7 @@ private fun WaterLayers(source: Source, colors: MapColors, structure: Structure)
         sourceLayer = "waterway",
         minZoom = 10f,
         filter = all(
-            feature.inClass("class", "stream", "ditch", "drain"),
+            feature.inClass("stream", "ditch", "drain"),
             feature.isStructure(structure),
             feature.isLines()
         ),
@@ -363,7 +360,7 @@ private fun PedestrianAreaLayers(source: Source, colors: MapColors, structure: S
         opacity = fadeInAtZoom(16f),
         color = const(colors.roadOutline),
         width = byZoom(16 to 1.dp, 24 to 128.dp),
-        offset = byZoom(16 to 0.dp, 17 to 1.dp),
+        offset = byZoom(16 to (-0.5).dp, 24 to (-64).dp),
     )
     FillLayer(
         id = listOfNotNull("pedestrian-areas", structure.id).joinToString("-"),
@@ -405,9 +402,8 @@ private fun BarriersLayers(source: Source, colors: MapColors) {
         id = "barriers-large",
         source = source,
         sourceLayer = "structure",
-        minZoom = 15f,
+        minZoom = 16f,
         filter = feature.inType("city_wall", "dam", "cliff"),
-        opacity = fadeInAtZoom(15f),
         color = const(colors.buildingOutline),
         width = byZoom(16 to 4.dp, 24 to 768.dp),
     )
@@ -415,12 +411,11 @@ private fun BarriersLayers(source: Source, colors: MapColors) {
         id = "barriers-wall",
         source = source,
         sourceLayer = "structure",
-        minZoom = 15f,
+        minZoom = 16f,
         filter = all(
             feature.inClass("fence"),
             !feature.inType("city_wall"),
         ),
-        opacity = fadeInAtZoom(15f),
         color = const(colors.buildingOutline),
         width = byZoom(16 to 1.dp, 24 to 256.dp),
     )
@@ -428,11 +423,10 @@ private fun BarriersLayers(source: Source, colors: MapColors) {
         id = "barriers-hedges",
         source = source,
         sourceLayer = "structure",
-        minZoom = 15f,
+        minZoom = 16f,
         filter = feature.inClass("hedge"),
-        opacity = fadeInAtZoom(15f),
         color = const(colors.forest),
-        width = byZoom(16 to 1.dp, 24 to 256.dp),
+        width = byZoom(16 to 1.dp, 24 to 512.dp),
     )
     CircleLayer(
         id = "point-barriers",
@@ -468,16 +462,19 @@ private fun BridgeAreasLayers(source: Source, colors: MapColors) {
 
 @Composable @MaplibreComposable
 private fun OnewayArrowsLayer(source: Source, colors: MapColors) {
+    val arrow = painterResource(Res.drawable.map_oneway_arrow)
+    val tintedArrow = remember(arrow, colors.onewayArrow) {
+        ColorFilterPainter(arrow, ColorFilter.tint(colors.onewayArrow))
+    }
     SymbolLayer(
         id = "oneway-arrows",
         source = source,
         sourceLayer = "road",
         minZoom = 17f,
         filter = all(feature.isLines(), feature.has("oneway", true)),
-        placement = const(SymbolPlacement.LineCenter),
+        placement = const(SymbolPlacement.Line),
         spacing = byZoom(17 to 200.dp, 24 to 25600.dp),
-        iconImage = image(painterResource(Res.drawable.map_oneway_arrow)),
-        iconOpacity = const(0.5f),
+        iconImage = image(tintedArrow),
         iconSize = byZoom(17 to 0.25f, 24 to 16.0f),
         iconPadding = const(DpPadding(5.dp, 5.dp, 5.dp, 5.dp)),
         iconRotate = const(90),
@@ -506,7 +503,9 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
     val localizedName = feature.localizedName(languages)
     val haloWidth = const(2.5.dp)
     val textFont = const(listOf("Roboto Regular"))
-    val textSize = byZoom(1.0 to 13.sp, 24 to 64.sp)
+    // The legacy Android component applies 16 * fontScale to every text layer after loading the
+    // JSON. Compose's sp value applies the same user font scale on every target.
+    val textSize = const(16.sp)
     val textPadding = const(12.dp)
 
     SymbolLayer(
@@ -541,7 +540,8 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         id = "labels-housenumbers",
         source = source,
         sourceLayer = "housenum_label",
-        minZoom = 18f,
+        minZoom = 17f,
+        sortKey = feature["scalerank"].asNumber(),
         textField = feature["house_num"].cast(),
         textColor = const(colors.text),
         textHaloColor = const(colors.textOutline),
@@ -556,6 +556,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         sourceLayer = "road",
         minZoom = 14f,
         filter = feature.isLines(),
+        sortKey = feature["scalerank"].asNumber(),
         placement = const(SymbolPlacement.LineCenter),
         textField = localizedName,
         textColor = const(colors.text),
@@ -564,13 +565,15 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         textFont = textFont,
         textSize = textSize,
         textPadding = textPadding,
+        textMaxWidth = const(25.em),
     )
     SymbolLayer(
         id = "labels-rivers",
         source = source,
         sourceLayer = "waterway",
         minZoom = 14f,
-        filter = all(!feature.isTunnel(), feature.inClass("stream", "river", "canal")),
+        filter = all(!feature.isTunnel(), feature.inClass("river", "canal")),
+        sortKey = feature["scalerank"].asNumber(),
         placement = const(SymbolPlacement.LineCenter),
         textField = localizedName,
         textColor = const(colors.textWater),
@@ -586,6 +589,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         sourceLayer = "waterway",
         minZoom = 16f,
         filter = all(!feature.isTunnel(), feature.inClass("stream", "ditch", "drain")),
+        sortKey = feature["scalerank"].asNumber(),
         placement = const(SymbolPlacement.LineCenter),
         textField = localizedName,
         textColor = const(colors.textWater),
@@ -598,28 +602,11 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
 }
 
 @Composable @MaplibreComposable
-private fun BuildingExtrudeLayer(source: Source, colors: MapColors) {
-    FillExtrusionLayer(
-        id = "buildings-extrude",
-        source = source,
-        sourceLayer = "building",
-        minZoom = 15f,
-        maxZoom = 19f,
-        filter = feature.has("extrude", true),
-        opacity = byZoom(15 to 0f, 16 to 0.8f, 18 to 0.8f, 19 to 0f),
-        color = const(colors.building),
-        base = feature["min_height"].asNumber(),
-        height = feature["height"].asNumber()
-    )
-}
-
-@Composable @MaplibreComposable
 private fun RoadLayer(road: RoadType, source: Source, structure: Structure) {
     LineLayer(
         id = listOfNotNull(road.id, structure.id).joinToString("-"),
         source = source,
         sourceLayer = "road",
-        minZoom = road.minZoom,
         filter = all(
             feature.isLines(),
             feature.isStructure(structure),
@@ -627,7 +614,7 @@ private fun RoadLayer(road: RoadType, source: Source, structure: Structure) {
         ),
         opacity = when {
             structure == Structure.Tunnel -> const(0.25f)
-            road.minZoom != 0f -> fadeInAtZoom(road.minZoom)
+            road.fadeInStartZoom != null -> fadeInAtZoom(road.fadeInStartZoom)
             else -> const(1f)
         },
         color = const(road.color),
@@ -643,7 +630,7 @@ private fun RoadCasingLayer(road: RoadType, source: Source, structure: Structure
         id = listOfNotNull(road.id, structure.id, "casing").joinToString("-"),
         source = source,
         sourceLayer = "road",
-        minZoom = max(15.5f, road.minZoom),
+        minZoom = max(15.5f, road.fadeInStartZoom ?: 0f),
         filter = all(
             feature.isLines(),
             feature.isStructure(structure),
@@ -666,7 +653,6 @@ private fun RoadPrivateOverlayLayer(road: RoadType, source: Source, colors: MapC
         id = listOfNotNull(road.id, structure.id, "private").joinToString("-"),
         source = source,
         sourceLayer = "road",
-        minZoom = road.minZoom,
         filter = all(
             feature.isLines(),
             feature.hasAny("access", listOf("no", "private", "destination", "customers", "delivery", "agricultural", "forestry", "emergency")),
@@ -708,7 +694,6 @@ private fun StepsOverlayLayer(source: Source, colors: MapColors, structure: Stru
         id = listOfNotNull("steps", structure.id).joinToString("-"),
         source = source,
         sourceLayer = "road",
-        minZoom = 15f,
         filter = all(
             feature.inClass("path"),
             feature.inType("steps"),
@@ -718,15 +703,15 @@ private fun StepsOverlayLayer(source: Source, colors: MapColors, structure: Stru
         opacity = if (structure == Structure.Tunnel) const(0.25f) else const(1f),
         color = const(colors.pedestrian),
         dasharray = const(listOf(0.6f, 0.4f)),
-        // 75% of path width
-        width = byZoom(14 to 0.375.dp, 16 to 0.75.dp, 24 to 192.dp)
+        // 70% of path width
+        width = byZoom(14 to 0.35.dp, 16 to 0.7.dp, 24 to 179.2.dp)
     )
 }
 
 @Immutable
 private data class RoadType(
     val id: String,
-    val minZoom: Float = 0.0f,
+    val fadeInStartZoom: Float?,
     val filters: Expression<BooleanValue>,
     val color: Color,
     val colorOutline: Color,

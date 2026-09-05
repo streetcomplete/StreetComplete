@@ -2,48 +2,51 @@ package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.charleskorn.kaml.YamlPathSegment.Root.location
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.track_nyan
+import de.westnordost.streetcomplete.resources.track_nyan_record
 import de.westnordost.streetcomplete.screens.main.map.animateLatLonAsState
 import de.westnordost.streetcomplete.screens.main.map.toLineGeometry
 import de.westnordost.streetcomplete.screens.main.map.toMultiLineGeometry
+import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.ui.theme.Location
-import de.westnordost.streetcomplete.ui.theme.Recording
 import de.westnordost.streetcomplete.util.ktx.isApril1st
-import org.maplibre.spatialk.geojson.MultiLineString
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
-import org.maplibre.compose.expressions.dsl.convertToBoolean
-import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.layers.LineLayer
+import org.maplibre.compose.map.MapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.Source
-import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
-import org.maplibre.spatialk.geojson.GeometryCollection
+import org.maplibre.spatialk.geojson.LineString
+import org.maplibre.spatialk.geojson.toJson
 
-/** Display the path(s) walked on the map.
+/**
+ * Displays completed track segments and the short, actively changing current segment.
  *
- *  The current [trackpoints] will be shown in red when the user [isRecording], otherwise blue.
- *  The last segment of [trackpoints] is animated from the second last to the last position, which
- *  is done in-sync with the moving of the location puck.
- *
- *  Since the list of trackpoints is changed every time the location puck moves to a new location,
- *  for performance reasons, when the list of trackpoints gets too long, the last X trackpoints
- *  can be cut off (except if the user [isRecording]) and added to [oldTrackpointsLists]. These are
- *  displayed with less opacity and need to be updated less often. */
-@MaplibreComposable @Composable
+ * [trackpoints] should remain bounded (the legacy implementation retained at most 100 points) and
+ * older chunks should be moved to [oldTrackpointsLists]. This avoids copying an ever-growing track
+ * into MapLibre for every location update.
+ */
+@Composable
+@MaplibreComposable
 fun TracksLayers(
+    mapState: MapState,
     trackpoints: List<LatLon>,
     isRecording: Boolean,
     oldTrackpointsLists: List<List<LatLon>>,
 ) {
+    val showAprilFoolsPattern = remember { isApril1st() }
     val trackLastSegment = remember(trackpoints) {
         if (trackpoints.size >= 2) trackpoints.takeLast(2) else null
     }
@@ -51,64 +54,123 @@ fun TracksLayers(
         if (trackpoints.size > 1) trackpoints.take(trackpoints.size - 1) else emptyList()
     }
 
-    val tracksSource = rememberGeoJsonSource(
-        data = GeoJsonData.Features(trackWithoutLast.toLineGeometry() ?: GeometryCollection(emptyList()))
-    )
-    // we want to animate the drawing of the track from the last position to the current position
-    // while the position marker animates at the same time from the last position to the current
-    // position (see CurrentLocationLayers)
-    val animatedTracksSource = rememberGeoJsonSource(
-        data = GeoJsonData.Features(
-            trackLastSegment?.let {
-                val animatedLastPosition by animateLatLonAsState(targetValue = it.last())
-                listOf(it.first(), animatedLastPosition).toLineGeometry()
-            } ?: GeometryCollection(emptyList())
+    val animatedData: GeoJsonData = if (trackLastSegment != null) {
+        val segment = trackLastSegment
+        val animatedLastPosition by animateLatLonAsState(
+            targetValue = segment.last(),
+            initialValue = segment.first(),
         )
+        GeoJsonData.Features(
+            LineString(listOf(segment.first().toPosition(), animatedLastPosition.toPosition()))
+        )
+    } else {
+        EMPTY_TRACK_DATA
+    }
+    val trackData by produceState<GeoJsonData>(EMPTY_TRACK_DATA, trackWithoutLast) {
+        value = withContext(Dispatchers.Default) {
+            GeoJsonData.JsonString(
+                trackWithoutLast.toLineGeometry()?.toJson() ?: EMPTY_TRACK_JSON
+            )
+        }
+    }
+    val oldTrackData by produceState<GeoJsonData>(EMPTY_TRACK_DATA, oldTrackpointsLists) {
+        value = withContext(Dispatchers.Default) {
+            val geometry = oldTrackpointsLists.toMultiLineGeometry()
+            GeoJsonData.JsonString(
+                if (geometry.coordinates.isEmpty()) EMPTY_TRACK_JSON else geometry.toJson()
+            )
+        }
+    }
+
+    val animatedSource = rememberImperativeGeoJsonSource(
+        mapState = mapState,
+        id = ANIMATED_TRACK_SOURCE_ID,
+        data = animatedData,
+    )
+    val trackSource = rememberImperativeGeoJsonSource(
+        mapState = mapState,
+        id = TRACK_SOURCE_ID,
+        data = trackData,
+    )
+    val oldTrackSource = rememberImperativeGeoJsonSource(
+        mapState = mapState,
+        id = OLD_TRACK_SOURCE_ID,
+        data = oldTrackData,
     )
 
-    // old tracks are expected to not update so often
-    val oldTracksSource = rememberGeoJsonSource(
-        data = GeoJsonData.Features(oldTrackpointsLists.toMultiLineGeometry())
-    )
-
-    // old tracks are drawn with less alpha so the map stays well visible
-    TracksLayer(
-        id = "old-track",
-        source = oldTracksSource,
-        opacity = 0.2f
-    )
-
-    TracksLayer(
-        id = "track",
-        source = tracksSource,
-        isRecording = isRecording,
-    )
-
-    TracksLayer(
-        id = "animate-track",
-        source = animatedTracksSource,
-        isRecording = isRecording
+    if (!showAprilFoolsPattern) {
+        ImperativeLayerPaintProperty(
+            mapState = mapState,
+            layerIds = ACTIVE_TRACK_LAYER_IDS,
+            property = "line-color",
+            value = JsonPrimitive(if (isRecording) "#fe1616" else "#536dfe"),
+            defaultValue = JsonPrimitive("#536dfe"),
+        )
+    }
+    TracksStyleLayers(
+        animatedSource,
+        trackSource,
+        oldTrackSource,
+        isRecording,
+        showAprilFoolsPattern,
     )
 }
 
-/** Displays a path(s) walked on the map */
-@MaplibreComposable @Composable
+@Composable
+@MaplibreComposable
+private fun TracksStyleLayers(
+    animatedSource: Source,
+    trackSource: Source,
+    oldTrackSource: Source,
+    isRecording: Boolean,
+    showAprilFoolsPattern: Boolean,
+) {
+    // Preserve the legacy style ordering: the old track is nearest the label layers.
+    TracksLayer(
+        "animate-track",
+        animatedSource,
+        isRecording = isRecording,
+        showAprilFoolsPattern = showAprilFoolsPattern,
+    )
+    TracksLayer(
+        "track",
+        trackSource,
+        isRecording = isRecording,
+        showAprilFoolsPattern = showAprilFoolsPattern,
+    )
+    TracksLayer(
+        "old-track",
+        oldTrackSource,
+        opacity = 0.2f,
+        showAprilFoolsPattern = showAprilFoolsPattern,
+    )
+}
+
+private const val EMPTY_TRACK_JSON = """{"type":"FeatureCollection","features":[]}"""
+private val EMPTY_TRACK_DATA = GeoJsonData.JsonString(EMPTY_TRACK_JSON)
+private const val ANIMATED_TRACK_SOURCE_ID = "animate-track-source"
+private const val TRACK_SOURCE_ID = "track-source"
+private const val OLD_TRACK_SOURCE_ID = "old-track-source"
+private val ACTIVE_TRACK_LAYER_IDS = listOf("animate-track", "track")
+
+@Composable
+@MaplibreComposable
 private fun TracksLayer(
     id: String,
     source: Source,
     isRecording: Boolean = false,
     opacity: Float = 0.6f,
+    showAprilFoolsPattern: Boolean,
 ) {
-    // let's not check for the date on every recomposition :-)
-    val isApril1st = remember { isApril1st() }
-    if (isApril1st) {
+    if (showAprilFoolsPattern) {
         TracksLayerApril1st(id, source, isRecording, opacity)
     } else {
-        TracksLayerDefault(id, source, isRecording, opacity)
+        TracksLayerDefault(id, source, opacity)
     }
 }
 
-@MaplibreComposable @Composable
+@Composable
+@MaplibreComposable
 private fun TracksLayerApril1st(
     id: String,
     source: Source,
@@ -119,30 +181,29 @@ private fun TracksLayerApril1st(
         id = id,
         source = source,
         opacity = const(opacity),
+        cap = const(LineCap.Round),
+        dasharray = const(listOf(0f, 2f)),
         width = const(26.dp),
         pattern = image(painterResource(
-            if (isRecording) Res.drawable.map_track_nyan_record
-            else Res.drawable.map_track_nyan
+            if (isRecording) Res.drawable.track_nyan_record else Res.drawable.track_nyan
         )),
     )
 }
 
-@MaplibreComposable @Composable
+@Composable
+@MaplibreComposable
 private fun TracksLayerDefault(
     id: String,
     source: Source,
-    isRecording: Boolean,
     opacity: Float,
 ) {
-    val recording = feature["recording"].convertToBoolean()
-
     LineLayer(
         id = id,
         source = source,
         opacity = const(opacity),
         cap = const(LineCap.Round),
-        dasharray = const(listOf(0, 2)),
+        dasharray = const(listOf(0f, 2f)),
         width = const(6.dp),
-        color = const(if (isRecording) Color.Recording else Color.Location),
+        color = const(Color.Location),
     )
 }

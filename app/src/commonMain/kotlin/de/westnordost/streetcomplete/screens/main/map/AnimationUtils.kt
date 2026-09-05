@@ -1,52 +1,125 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import androidx.compose.runtime.State
-import androidx.compose.animation.core.Spring.StiffnessLow
-import androidx.compose.animation.core.SpringSpec
-import androidx.compose.animation.core.animateIntAsState
-import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.Easing
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import de.westnordost.streetcomplete.util.math.normalizeLongitude
+import kotlin.math.PI
+import kotlin.math.cos
 
-/** Animates a LatLon to a [targetValue] position. Also works when crossing the antimeridian. */
+internal const val LOCATION_ANIMATION_DURATION_MILLIS = 600
+private const val ROTATION_ANIMATION_DURATION_MILLIS = 200
+
+internal val AccelerateDecelerateEasing = Easing { fraction ->
+    (cos((fraction + 1) * PI) / 2.0 + 0.5).toFloat()
+}
+
+/** Animates map bearing along its shortest turn, matching the legacy 200ms motion. */
+@Composable
+fun animateMapRotationAsState(targetValue: Float?): State<Float?> {
+    val animatedValue = remember { mutableStateOf(targetValue) }
+    LaunchedEffect(targetValue) {
+        val startValue = animatedValue.value
+        if (startValue == null || targetValue == null) {
+            animatedValue.value = targetValue
+            return@LaunchedEffect
+        }
+
+        Animatable(startValue).animateTo(
+            targetValue = shortestRotationTarget(startValue, targetValue),
+            animationSpec = tween(
+                durationMillis = ROTATION_ANIMATION_DURATION_MILLIS,
+                easing = AccelerateDecelerateEasing,
+            ),
+        ) {
+            animatedValue.value = value
+        }
+    }
+    return animatedValue
+}
+
+/** Animates along the shortest path across the antimeridian, matching the legacy 600ms motion. */
 @Composable
 fun animateLatLonAsState(
     targetValue: LatLon,
-    animationSpec: SpringSpec<LatLon> = spring(stiffness = StiffnessLow),
-    label: String = "LatLonAnimation"
+    initialValue: LatLon = targetValue,
 ): State<LatLon> {
-    var targetLongitude by remember { mutableStateOf(targetValue.longitude) }
-
-    LaunchedEffect(targetValue.longitude) {
-        targetLongitude += normalizeLongitude(targetValue.longitude - targetLongitude)
+    val animatedValue = remember { mutableStateOf(initialValue) }
+    LaunchedEffect(targetValue) {
+        val startValue = animatedValue.value
+        Animatable(0f).animateTo(
+            targetValue = 1f,
+            animationSpec = tween(
+                durationMillis = LOCATION_ANIMATION_DURATION_MILLIS,
+                easing = AccelerateDecelerateEasing,
+            )
+        ) {
+            animatedValue.value = interpolateLatLon(startValue, targetValue, value.toDouble())
+        }
     }
-
-    val intAnimationSpec = spring(
-        dampingRatio = animationSpec.dampingRatio,
-        stiffness = animationSpec.stiffness,
-        visibilityThreshold = 1
-    )
-
-    val animatedLongitude by animateIntAsState(
-        targetValue = (targetLongitude * 7).toInt(),
-        animationSpec = intAnimationSpec,
-        label = label+"-Lon"
-    )
-    val animatedLatitude by animateIntAsState(
-        targetValue = (targetValue.latitude * 7).toInt(),
-        animationSpec = intAnimationSpec,
-        label = label+"-Lat"
-    )
-
-    return remember { derivedStateOf { LatLon(
-        latitude = animatedLatitude/7.0,
-        longitude = normalizeLongitude(animatedLongitude/7.0)
-    ) } }
+    return animatedValue
 }
+
+/** Keeps an absent location hidden and snaps the first fix into place before animating later fixes. */
+@Composable
+fun animateNullableLatLonAsState(targetValue: LatLon?): State<LatLon?> {
+    val animatedValue = remember { mutableStateOf(targetValue) }
+    LaunchedEffect(targetValue) {
+        val startValue = animatedValue.value
+        if (startValue == null || targetValue == null) {
+            animatedValue.value = targetValue
+            return@LaunchedEffect
+        }
+        Animatable(0f).animateTo(
+            targetValue = 1f,
+            animationSpec = tween(
+                durationMillis = LOCATION_ANIMATION_DURATION_MILLIS,
+                easing = AccelerateDecelerateEasing,
+            )
+        ) {
+            animatedValue.value = interpolateLatLon(startValue, targetValue, value.toDouble())
+        }
+    }
+    return animatedValue
+}
+
+/** Keeps an absent scalar hidden and snaps the first value into place before animating updates. */
+@Composable
+fun animateNullableFloatAsState(targetValue: Float?): State<Float?> {
+    val animatedValue = remember { mutableStateOf(targetValue) }
+    LaunchedEffect(targetValue) {
+        val startValue = animatedValue.value
+        if (startValue == null || targetValue == null) {
+            animatedValue.value = targetValue
+            return@LaunchedEffect
+        }
+        Animatable(startValue).animateTo(
+            targetValue = targetValue,
+            animationSpec = tween(
+                durationMillis = LOCATION_ANIMATION_DURATION_MILLIS,
+                easing = AccelerateDecelerateEasing,
+            )
+        ) {
+            animatedValue.value = value
+        }
+    }
+    return animatedValue
+}
+
+internal fun interpolateLatLon(start: LatLon, end: LatLon, fraction: Double): LatLon {
+    val longitudeDelta = normalizeLongitude(end.longitude - start.longitude)
+    return LatLon(
+        latitude = start.latitude + (end.latitude - start.latitude) * fraction,
+        longitude = normalizeLongitude(start.longitude + longitudeDelta * fraction),
+    )
+}
+
+internal fun shortestRotationTarget(start: Float, target: Float): Float =
+    normalizeDegrees(target, start - 180f)

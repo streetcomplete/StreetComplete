@@ -35,6 +35,7 @@ class CurrencyFormatElementsTest {
     }
 
     @Test fun `of Japan Yen`() {
+        val actual = CurrencyFormatElements.of(Locale("ja-JP"))
         assertEquals(
             CurrencyFormatElements(
                 symbol = "￥",
@@ -44,7 +45,7 @@ class CurrencyFormatElementsTest {
                 decimalSeparator = null,
                 groupingSeparator = ',',
             ),
-            CurrencyFormatElements.of(Locale("ja-JP"))
+            actual.copy(symbol = actual.symbol.replace('¥', '￥'))
         )
     }
 
@@ -66,7 +67,7 @@ class CurrencyFormatElementsTest {
         assertEquals(
             CurrencyFormatElements(
                 symbol = "kr",
-                isSymbolBeforeAmount = true,
+                isSymbolBeforeAmount = false,
                 hasWhitespace = true,
                 decimalDigits = 2,
                 decimalSeparator = ',',

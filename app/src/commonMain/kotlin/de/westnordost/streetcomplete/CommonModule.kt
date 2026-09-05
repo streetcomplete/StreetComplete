@@ -174,6 +174,7 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewMod
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModelImpl
+import de.westnordost.streetcomplete.screens.main.map.sources.DownloadedTilesStateSource
 import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
@@ -215,6 +216,10 @@ import io.ktor.client.HttpClient
 import io.ktor.client.plugins.compression.ContentEncoding
 import io.ktor.client.plugins.defaultRequest
 import io.ktor.http.userAgent
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.io.files.FileSystem
 import kotlinx.io.files.SystemFileSystem
@@ -232,7 +237,10 @@ val commonModule = module {
 
     //region basic configuration
 
-    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get()) }
+    single(named("ApplicationScope")) {
+        CoroutineScope(SupervisorJob() + Dispatchers.Default + CoroutineName("Application"))
+    }
+    single { IncomingUriHandler() }
 
     single { HttpClient {
         defaultRequest {
@@ -251,12 +259,30 @@ val commonModule = module {
     factory { Cleaner(get(), get(), get(), get(), get(), get(), get()) }
     factory { CacheTrimmer(get(), get()) }
     factory { Preloader(get(named("CountryBoundariesLazy")), get(named("FeatureDictionaryLazy"))) }
+    single {
+        ApplicationInitializer(
+            applicationScope = get(named("ApplicationScope")),
+            preloader = get(),
+            cleaner = get(),
+            editHistoryController = get(),
+            feedsUpdater = get(),
+            resurveyIntervalsUpdater = get(),
+            downloadedTilesController = get(),
+            preferences = get(),
+            databaseLogger = get(),
+        )
+    }
 
     //endregion
 
     //region upload & download
 
-    single { AutoSyncer(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
+    single {
+        AutoSyncer(
+            get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            get(named("ApplicationScope")),
+        )
+    }
 
     // upload
 
@@ -605,12 +631,13 @@ val commonModule = module {
         EditHistoryViewModelImpl(get(), get())
     }
 
-    viewModel<MainMapViewModel> {
-        MainMapViewModelImpl(get(), get(), get(), get())
-    }
+    factory { DownloadedTilesStateSource(get()) }
     factory { MapQuestPinsSource(get(), get(), get()) }
     factory { EditHistoryPinsSource(get()) }
     factory { StyleableOverlaySource(get(), get()) }
+    viewModel<MainMapViewModel> {
+        MainMapViewModelImpl(get(), get(), get(), get())
+    }
 
     viewModel<MainBottomSheetViewModel> {
         MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
