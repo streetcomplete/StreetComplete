@@ -23,7 +23,7 @@ fun createBuildingType(tags: Map<String, String>): BuildingType? {
     return BuildingType.UNSUPPORTED
 }
 
-private fun createBuildingTypeFromHouseType(houseType: String?): BuildingType = when (houseType) {
+fun createBuildingTypeFromHouseType(houseType: String?): BuildingType = when (houseType) {
     null ->             BuildingType.HOUSE
     "detached" ->       BuildingType.DETACHED
     "terrace" ->        BuildingType.TERRACE

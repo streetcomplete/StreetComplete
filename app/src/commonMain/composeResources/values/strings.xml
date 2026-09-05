@@ -1814,6 +1814,9 @@
     <string name="overlay_addresses_no_entrance">It’s not an entrance…</string>
 
     <string name="overlay_buildings">Buildings</string>
+    <string name="overlay_buildings_different_current_use">Something else now</string>
+    <string name="overlay_buildings_original_use">Originally</string>
+    <string name="overlay_buildings_current_use">Now</string>
 
     <string name="overlay_places">Places</string>
     <string name="name_label">Name:</string>
