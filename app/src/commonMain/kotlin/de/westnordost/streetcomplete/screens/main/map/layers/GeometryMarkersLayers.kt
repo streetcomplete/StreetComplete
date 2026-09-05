@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.screens.main.map.isPoint
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.ui.common.quest.Marker
+import de.westnordost.streetcomplete.ui.theme.GeometryMarker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
@@ -46,7 +47,6 @@ import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.Point
 
-internal val GeometryMarkerColor = Color(0xffd140d0)
 private const val GEOMETRY_MARKERS_SOURCE_ID = "geometry-source"
 
 /** Displays the line and polygon geometry of elements surrounding a selected quest. */
@@ -90,14 +90,14 @@ internal fun GeometryMarkersLayers(
         source = source,
         filter = feature.isArea(),
         opacity = const(0.3f),
-        color = const(GeometryMarkerColor),
+        color = const(Color.GeometryMarker),
     )
     LineLayer(
         id = "geo-lines",
         source = source,
         filter = !feature.isPoint(),
         opacity = const(0.5f),
-        color = const(GeometryMarkerColor),
+        color = const(Color.GeometryMarker),
         width = const(10.dp),
         cap = const(LineCap.Round),
     )
@@ -112,9 +112,9 @@ internal fun GeometryMarkersLayers(
             19 to const(1f),
         ),
         iconAllowOverlap = const(true),
-        iconColor = const(GeometryMarkerColor),
+        iconColor = const(Color.GeometryMarker),
         textField = feature["label"].convertToString(),
-        textColor = const(GeometryMarkerColor),
+        textColor = const(Color.GeometryMarker),
         textSize = const(16.sp),
         textFont = const(listOf("Roboto Bold")),
         textAnchor = const(SymbolAnchor.Top),
@@ -140,9 +140,6 @@ internal fun Marker.toGeometryMarkerFeatures(): List<Feature<Geometry, JsonObjec
         add(Feature(geometry.toGeometry(), JsonObject(emptyMap())))
     }
 }
-
-internal fun geometryMarkerScale(zoom: Double): Float =
-    (0.5 + (zoom - 17.0) * 0.25).coerceIn(0.5, 1.0).toFloat()
 
 private val EMPTY_GEOMETRY_MARKERS_DATA = GeoJsonData.Features(
     FeatureCollection<Geometry, JsonObject>(emptyList())

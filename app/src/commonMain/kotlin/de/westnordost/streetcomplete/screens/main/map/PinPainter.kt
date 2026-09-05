@@ -10,42 +10,32 @@ import androidx.compose.ui.graphics.drawscope.CanvasDrawScope
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.inset
 import androidx.compose.ui.graphics.painter.Painter
+import de.westnordost.streetcomplete.resources.*
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.pin
-import de.westnordost.streetcomplete.resources.pin_shadow
 import de.westnordost.streetcomplete.util.sdf.convertToSdf
-import org.jetbrains.compose.resources.painterResource
 import kotlin.math.ceil
+import org.jetbrains.compose.resources.painterResource
 
-/** Draws the legacy 71dp pin bitmap composition from shared Compose resources. */
-internal class PinPainter(
+/** Draws a (quest) pin */
+class PinPainter(
     private val iconPainter: Painter,
     private val pinPainter: Painter,
     private val pinShadowPainter: Painter,
 ) : Painter() {
-    override val intrinsicSize: Size get() = pinShadowPainter.intrinsicSize
+    override val intrinsicSize: Size
+        get() = pinShadowPainter.intrinsicSize
 
     override fun DrawScope.onDraw() {
-        val scaleX = size.width / 71f
-        val scaleY = size.height / 71f
+        val sX = size.width / 71f
+        val sY = size.height / 71f
+
         with(pinShadowPainter) { draw(size) }
-        inset(
-            left = 14f * scaleX,
-            top = 5f * scaleY,
-            right = 5f * scaleX,
-            bottom = 0f,
-        ) {
+        inset(left = 14f * sX, top = 5f * sY, right = 5f * sX, bottom = 0f * sY) {
             with(pinPainter) { draw(size) }
-            inset(
-                left = 2f * scaleX,
-                top = 2f * scaleY,
-                right = 2f * scaleX,
-                bottom = 16f * scaleY,
-            ) {
+            inset(left = 2f * sX, top = 2f * sY, right = 2f * sX, bottom = 16f * sY) {
                 with(iconPainter) { draw(size) }
             }
         }
@@ -53,11 +43,15 @@ internal class PinPainter(
 }
 
 @Composable
-internal fun pinPainter(iconPainter: Painter): Painter {
+fun pinPainter(iconPainter: Painter): Painter {
     val pinPainter = painterResource(Res.drawable.pin)
     val pinShadowPainter = painterResource(Res.drawable.pin_shadow)
     return remember(iconPainter, pinPainter, pinShadowPainter) {
-        PinPainter(iconPainter, pinPainter, pinShadowPainter)
+        PinPainter(
+            iconPainter = iconPainter,
+            pinPainter = pinPainter,
+            pinShadowPainter = pinShadowPainter
+        )
     }
 }
 

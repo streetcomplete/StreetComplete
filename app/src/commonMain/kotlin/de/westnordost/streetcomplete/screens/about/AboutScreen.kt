@@ -36,7 +36,6 @@ import de.westnordost.streetcomplete.ui.ktx.tryOpenUri
 import de.westnordost.streetcomplete.util.ktx.displayLanguage
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
-import org.maplibre.compose.location.LocationProvider
 
 @Composable
 fun AboutScreen(
@@ -45,7 +44,6 @@ fun AboutScreen(
     onClickPrivacyStatement: () -> Unit,
     onClickLogs: () -> Unit,
     onClickBack: () -> Unit,
-    locationProvider: LocationProvider,
     appStoreInfo: AppStoreInfo = koinInject()
 ) {
     var showDonateDialog by remember { mutableStateOf(false) }
@@ -176,8 +174,7 @@ fun AboutScreen(
     AnimatedScreenVisibility(showIntroTutorial) {
         IntroTutorialScreen(
             onDismissRequest = { showIntroTutorial = false },
-            dismissOnBackPress = true,
-            locationProvider = locationProvider,
+            dismissOnBackPress = true
         )
     }
 }
@@ -185,5 +182,5 @@ fun AboutScreen(
 @Preview
 @Composable
 private fun AboutScreenPreview() {
-    AboutScreen({}, {}, {}, {}, {}, koinInject())
+    AboutScreen({}, {}, {}, {}, {})
 }

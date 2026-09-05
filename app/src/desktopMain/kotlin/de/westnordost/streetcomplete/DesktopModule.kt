@@ -122,7 +122,7 @@ val desktopModule = module {
             .defaultScreenDevice
             .defaultConfiguration
             .defaultTransform
-        MapLibreMapTilesDownloader(get(), transform.scaleX.toFloat())
+        MapLibreMapTilesDownloader(get<MapRuntime>().offlineManager, transform.scaleX.toFloat())
     }
 
     single<UploadController> {

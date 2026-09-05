@@ -177,7 +177,6 @@ fun MapStyle(
 
     LabelLayers(source, colors, languages)
 
-
     aboveLabelsContent()
 }
 
@@ -500,11 +499,7 @@ private fun BoundaryLayer(source: Source, colors: MapColors) {
 }
 
 @Composable @MaplibreComposable
-private fun LabelLayers(
-    source: Source,
-    colors: MapColors,
-    languages: List<String>,
-) {
+private fun LabelLayers(source: Source, colors: MapColors, languages: List<String>) {
     val localizedName = feature.localizedName(languages)
     val haloWidth = const(2.5.dp)
     val textFont = const(listOf("Roboto Regular"))

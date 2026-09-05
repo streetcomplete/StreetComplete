@@ -28,7 +28,7 @@ import org.maplibre.spatialk.geojson.toJson
 fun DownloadedAreaLayer(mapState: MapState, tiles: Collection<TilePos>) {
     val data by produceState<GeoJsonData>(EMPTY_DOWNLOADED_AREA_DATA, tiles) {
         value = withContext(Dispatchers.Default) {
-            GeoJsonData.JsonString(tiles.toDownloadedAreaMask().toJson())
+            GeoJsonData.JsonString(tiles.toHolesInWorldPolygon().toJson())
         }
     }
     val source = rememberImperativeGeoJsonSource(
@@ -46,13 +46,15 @@ fun DownloadedAreaLayer(mapState: MapState, tiles: Collection<TilePos>) {
 }
 
 private val EMPTY_DOWNLOADED_AREA_DATA = GeoJsonData.JsonString(
-    emptyList<TilePos>().toDownloadedAreaMask().toJson()
+    emptyList<TilePos>().toHolesInWorldPolygon().toJson()
 )
 
 private const val DOWNLOADED_AREA_SOURCE_ID = "downloaded-area-source"
 
-/** Converts tile positions to a world polygon with one transparent hole per downloaded tile. */
-internal fun Collection<TilePos>.toDownloadedAreaMask(): Polygon {
+/** convert the given tile positions into a polygon that spans the whole world but has holes at
+ *  where the tiles are at. */
+internal fun Collection<TilePos>.toHolesInWorldPolygon(): Polygon {
+    val zoom = ApplicationConstants.DOWNLOAD_TILE_ZOOM
     val world = listOf(
         LatLon(+90.0, -180.0),
         LatLon(-90.0, -180.0),
@@ -60,8 +62,7 @@ internal fun Collection<TilePos>.toDownloadedAreaMask(): Polygon {
         LatLon(+90.0, +180.0),
         LatLon(+90.0, -180.0),
     )
-    val holes = map { tile ->
-        tile.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM).toPolygon().asReversed()
-    }
-    return Polygon((listOf(world) + holes).map { ring -> ring.map { it.toPosition() } })
+    val holes = this.map { it.asBoundingBox(zoom).toPolygon().asReversed() }
+    val polygons = listOf(world) + holes
+    return Polygon(polygons.map { polygon -> polygon.map { it.toPosition() } })
 }

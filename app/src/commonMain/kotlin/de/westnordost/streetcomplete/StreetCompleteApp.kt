@@ -98,10 +98,7 @@ fun StreetCompleteApp(
             )
         }
         composable(AppDestination.About.route) {
-            AboutNavHost(
-                onClickBack = navController::returnToMain,
-                locationProvider = locationProvider,
-            )
+            AboutNavHost(onClickBack = navController::returnToMain)
         }
         composable(AppDestination.Profile.route) {
             UserNavHost(

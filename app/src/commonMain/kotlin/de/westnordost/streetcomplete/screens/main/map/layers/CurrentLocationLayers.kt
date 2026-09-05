@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.screens.main.map.animateMapRotationAsState
 import de.westnordost.streetcomplete.screens.main.map.inMeters
 import de.westnordost.streetcomplete.screens.main.map.metersSizeFactor
 import de.westnordost.streetcomplete.screens.main.map.toPosition
+import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -38,7 +39,6 @@ import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.Point
 
-private val LocationColor = Color(0xff536dfe)
 private val LocationDirectionSize = DpSize(96.dp, 96.dp)
 private val LocationShadowSize = DpSize(28.dp, 28.dp)
 private val LocationNyanSize = DpSize(34.dp, 22.dp)
@@ -94,13 +94,13 @@ private fun CurrentLocationStyleLayers(
         id = "accuracy",
         source = source,
         opacity = const(0.15f),
-        color = const(LocationColor),
+        color = const(Color.Location),
         radius = inMeters(
             feature[LOCATION_RADIUS].asNumber(),
             latitude = 0.0,
         ),
         strokeOpacity = const(0.5f),
-        strokeColor = const(LocationColor),
+        strokeColor = const(Color.Location),
         strokeWidth = const(1.dp),
         pitchAlignment = const(CirclePitchAlignment.Map),
     )
@@ -137,7 +137,7 @@ private fun CurrentLocationStyleLayers(
     CircleLayer(
         id = "location",
         source = source,
-        color = const(LocationColor),
+        color = const(Color.Location),
         radius = const(8.dp),
         strokeColor = const(Color.White),
         strokeWidth = const(2.dp),

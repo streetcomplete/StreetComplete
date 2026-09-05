@@ -83,7 +83,7 @@ class MainMapState internal constructor(
     val cameraPadding: PaddingValues get() = controller.cameraPadding
     val metersPerDp: Double get() = mapState.viewport?.metersPerDpAtTarget ?: 0.0
     val displayedArea: de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox?
-        get() = mapState.viewport?.visibleBoundingBox?.toStreetCompleteBoundingBox()
+        get() = mapState.viewport?.visibleBoundingBox?.toBoundingBox()
     val displayedMeasurement: LocationMeasurement? get() = tracks.displayedMeasurement
     val isRecordingTrack: Boolean get() = tracks.isRecording
     val currentRenderedTrack: List<LatLon> get() = tracks.currentRenderedTrack
@@ -487,8 +487,6 @@ private data class PendingCameraMove(
     val position: CameraPosition,
     val duration: Duration,
 )
-
-private fun Position.toLatLon() = LatLon(latitude = latitude, longitude = longitude)
 
 /** Utility function to estimate current bearing from a track. */
 internal fun getTrackBearingFromPositions(track: List<LatLon>): Double? {

@@ -5,13 +5,18 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.quest_bench_poi
 import de.westnordost.streetcomplete.ui.ktx.id
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonArray
+import kotlinx.serialization.json.jsonObject
 import org.maplibre.compose.expressions.ast.FunctionCall
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.spatialk.geojson.Point
-import org.maplibre.spatialk.geojson.Position
+import org.maplibre.spatialk.geojson.Feature
+import org.maplibre.spatialk.geojson.FeatureCollection
+import de.westnordost.streetcomplete.screens.main.map.toPosition
 import org.maplibre.spatialk.geojson.toJson
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -27,7 +32,7 @@ class PinsLayersTest {
 
         assertEquals(listOf(Res.drawable.quest_bench_poi), first.icons)
         assertEquals(
-            pinFeatureCollection(listOf(pin, pin)).toJson(),
+            referencePinFeatureCollection(listOf(pin, pin)).toJson(),
             (first.data as GeoJsonData.JsonString).json,
         )
         assertSame(first, first.updated(listOf(pin, pin)))
@@ -45,7 +50,7 @@ class PinsLayersTest {
 
     @Test fun createsPointFeatureWithIconOrderAndClickProperties() {
         val icon = Res.drawable.quest_bench_poi
-        val feature = pinFeatureCollection(
+        val feature = serializedPinFeatures(
             listOf(
                 Pin(
                     position = LatLon(1.0, 2.0),
@@ -54,16 +59,20 @@ class PinsLayersTest {
                     order = 7,
                 )
             )
-        ).features.single()
+        ).single().jsonObject
 
-        assertEquals(Point(Position(2.0, 1.0)), feature.geometry)
-        assertEquals(icon.id, (feature.properties["icon-image"] as JsonPrimitive).content)
-        assertEquals(57, (feature.properties["icon-order"] as JsonPrimitive).content.toInt())
-        assertEquals("AddBench", (feature.properties["quest_type"] as JsonPrimitive).content)
+        val properties = feature.getValue("properties").jsonObject
+        assertEquals(
+            Json.parseToJsonElement("""{"type":"Point","coordinates":[2.0,1.0]}"""),
+            feature["geometry"],
+        )
+        assertEquals(icon.id, (properties["icon-image"] as JsonPrimitive).content)
+        assertEquals(57, (properties["icon-order"] as JsonPrimitive).content.toInt())
+        assertEquals("AddBench", (properties["quest_type"] as JsonPrimitive).content)
     }
 
     @Test fun callerPropertiesPreserveLegacyReservedKeyOverride() {
-        val feature = pinFeatureCollection(
+        val feature = serializedPinFeatures(
             listOf(
                 Pin(
                     LatLon(1.0, 2.0),
@@ -71,9 +80,10 @@ class PinsLayersTest {
                     properties = listOf("icon-order" to "custom"),
                 )
             )
-        ).features.single()
+        ).single().jsonObject
 
-        assertEquals("custom", (feature.properties["icon-order"] as JsonPrimitive).content)
+        val properties = feature.getValue("properties").jsonObject
+        assertEquals("custom", (properties["icon-order"] as JsonPrimitive).content)
     }
 
     @Test fun pinGeoJsonMatchesFeatureSerializationForEscapedAndDuplicateProperties() {
@@ -93,7 +103,7 @@ class PinsLayersTest {
         )
 
         assertEquals(
-            Json.parseToJsonElement(pinFeatureCollection(pins).toJson()),
+            Json.parseToJsonElement(referencePinFeatureCollection(pins).toJson()),
             Json.parseToJsonElement(pinGeoJson(pins)),
         )
     }
@@ -130,3 +140,18 @@ class PinsLayersTest {
         assertFalse(IllegalStateException("Could not parse GeoJSON").isStyleHandleRace())
     }
 }
+
+private fun referencePinFeatureCollection(pins: Collection<Pin>): FeatureCollection<Point, JsonObject> =
+    FeatureCollection(pins.map(Pin::toGeoJsonFeature))
+
+private fun Pin.toGeoJsonFeature(): Feature<Point, JsonObject> {
+    val values = mutableMapOf<String, JsonElement>(
+        "icon-image" to JsonPrimitive(icon.id ?: error("Pin icon is not a Compose resource")),
+        "icon-order" to JsonPrimitive(order + 50),
+    )
+    properties.forEach { (key, value) -> values[key] = JsonPrimitive(value) }
+    return Feature(Point(position.toPosition()), JsonObject(values))
+}
+
+private fun serializedPinFeatures(pins: Collection<Pin>) =
+    Json.parseToJsonElement(pinGeoJson(pins)).jsonObject.getValue("features").jsonArray

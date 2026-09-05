@@ -16,7 +16,7 @@ class MapBoundingBoxConversionTest {
 
         assertEquals(
             BoundingBox(37.5, -122.5, 38.0, -122.0),
-            mapLibre.toStreetCompleteBoundingBox(),
+            mapLibre.toBoundingBox(),
         )
     }
 }

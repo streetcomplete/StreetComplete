@@ -134,7 +134,7 @@ val iosModule = module {
     single<MapRuntime> { createMapRuntime(MapRuntimeOptions()) }
     factory<MapTilesDownloader> {
         MapLibreMapTilesDownloader(
-            runtime = get(),
+            manager = get<MapRuntime>().offlineManager,
             pixelRatio = UIScreen.mainScreen.scale.toFloat(),
         )
     }

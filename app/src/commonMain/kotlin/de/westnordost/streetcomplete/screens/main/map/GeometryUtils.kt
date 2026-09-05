@@ -4,76 +4,101 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.isInPolygon
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 import de.westnordost.streetcomplete.util.math.measuredArea
-import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.LineString
 import org.maplibre.spatialk.geojson.MultiLineString
 import org.maplibre.spatialk.geojson.MultiPolygon
 import org.maplibre.spatialk.geojson.Point
 import org.maplibre.spatialk.geojson.Polygon
 import org.maplibre.spatialk.geojson.Position
-import org.maplibre.spatialk.geojson.BoundingBox as MapLibreBoundingBox
+import org.maplibre.spatialk.geojson.Geometry
 
-fun LatLon.toPosition(): Position =
-    Position(longitude = longitude, latitude = latitude)
+typealias GeoJsonBoundingBox = org.maplibre.spatialk.geojson.BoundingBox
 
-fun MapLibreBoundingBox.toStreetCompleteBoundingBox() =
-    de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox(
+fun BoundingBox.toGeoJsonBoundingBox(): GeoJsonBoundingBox =
+    GeoJsonBoundingBox(
+        west = min.longitude,
+        south = min.latitude,
+        east = max.longitude,
+        north = max.latitude
+    )
+
+fun GeoJsonBoundingBox.toBoundingBox(): BoundingBox =
+    BoundingBox(
         minLatitude = southwest.latitude,
         minLongitude = southwest.longitude,
         maxLatitude = northeast.latitude,
-        maxLongitude = northeast.longitude,
+        maxLongitude = northeast.longitude
     )
 
-fun List<LatLon>.toLineGeometry(): LineString? =
-    if (size < 2) null else LineString(map { it.toPosition() })
-
-fun List<List<LatLon>>.toMultiLineGeometry(): MultiLineString =
-    MultiLineString(mapNotNull { line -> line.toLineGeometry()?.coordinates })
-
 fun ElementGeometry.toGeometry(): Geometry = when (this) {
-    is ElementPointGeometry -> Point(center.toPosition())
+    is ElementPointGeometry -> toGeometry()
     is ElementPolylinesGeometry -> toGeometry()
     is ElementPolygonsGeometry -> toGeometry()
 }
 
-private fun ElementPolylinesGeometry.toGeometry(): Geometry =
+fun ElementPointGeometry.toGeometry(): Point =
+    Point(center.toPosition())
+
+fun ElementPolylinesGeometry.toGeometry(): Geometry =
     if (polylines.size == 1) {
         LineString(polylines.single().map { it.toPosition() })
     } else {
-        MultiLineString(polylines.map { line -> line.map { it.toPosition() } })
+        MultiLineString(polylines.map { polyline -> polyline.map { it.toPosition() } })
     }
 
-private fun ElementPolygonsGeometry.toGeometry(): Geometry {
+fun ElementPolygonsGeometry.toGeometry(): Geometry {
     val outerRings = mutableListOf<List<LatLon>>()
     val innerRings = mutableListOf<List<LatLon>>()
     if (polygons.size == 1) {
-        outerRings += polygons.first()
+        outerRings.add(polygons.first())
     } else {
-        polygons.forEach { ring ->
-            if (ring.isRingDefinedClockwise()) innerRings += ring else outerRings += ring
+        polygons.forEach {
+            if (it.isRingDefinedClockwise()) innerRings.add(it) else outerRings.add(it)
         }
     }
 
     if (outerRings.size == 1) {
-        return Polygon((outerRings + innerRings).map { ring -> ring.map { it.toPosition() } })
+        return Polygon(
+            (outerRings + innerRings).map { ring -> ring.map { it.toPosition() } }
+        )
     }
 
-    // Allocate a hole to the smallest outer ring that contains it.
+    // outerRings must be sorted size ascending to correctly handle outer rings within holes
+    // of larger polygons.
     outerRings.sortBy { it.measuredArea() }
+
+    // we need to allocate the holes to the different outer polygons
     val groupedRings = outerRings.map { outerRing ->
-        buildList {
-            add(outerRing.map { it.toPosition() })
-            innerRings.toList().forEach { innerRing ->
-                if (innerRing.first().isInPolygon(outerRing)) {
-                    innerRings.remove(innerRing)
-                    add(innerRing.map { it.toPosition() })
-                }
+        val rings = mutableListOf<List<Position>>()
+        rings.add(outerRing.map { it.toPosition() })
+        for (innerRing in innerRings.toList()) {
+            if (innerRing[0].isInPolygon(outerRing)) {
+                innerRings.remove(innerRing)
+                rings.add(innerRing.map { it.toPosition() })
             }
         }
+        rings
     }
     return MultiPolygon(groupedRings)
 }
+
+fun List<LatLon>.toLineGeometry(): LineString? =
+    if (size < 2) null else LineString(map { it.toPosition() })
+
+fun List<List<LatLon>>.toMultiLineGeometry() = MultiLineString(
+    mapNotNull { line -> if (line.size < 2) null else line.map { it.toPosition() } }
+)
+
+fun LatLon.toGeometry(): Point =
+    Point(Position(longitude = longitude, latitude = latitude))
+
+fun LatLon.toPosition(): Position =
+    Position(longitude = longitude, latitude = latitude)
+
+fun Position.toLatLon(): LatLon =
+    LatLon(latitude = latitude, longitude = longitude)

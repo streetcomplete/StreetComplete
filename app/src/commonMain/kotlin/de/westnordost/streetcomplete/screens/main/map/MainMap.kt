@@ -98,7 +98,7 @@ fun MainMap(
         }.distinctUntilChanged().collect { (zoom, displayedArea) ->
             viewModel.onViewportChanged(
                 zoom = zoom,
-                displayedArea = displayedArea?.toStreetCompleteBoundingBox(),
+                displayedArea = displayedArea?.toBoundingBox(),
             )
         }
     }

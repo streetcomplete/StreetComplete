@@ -55,12 +55,4 @@ class GeometryMarkersLayersTest {
         assertEquals(1, features.size)
         assertIs<LineString>(features.single().geometry)
     }
-
-    @Test fun markerScaleMatchesLegacyStops() {
-        assertEquals(0.5f, geometryMarkerScale(16.0))
-        assertEquals(0.5f, geometryMarkerScale(17.0))
-        assertEquals(0.75f, geometryMarkerScale(18.0))
-        assertEquals(1.0f, geometryMarkerScale(19.0))
-        assertEquals(1.0f, geometryMarkerScale(20.0))
-    }
 }

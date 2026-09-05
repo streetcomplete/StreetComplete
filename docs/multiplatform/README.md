@@ -36,6 +36,34 @@ platform-default runtime options. The resolved version belongs in
 [the dependency baseline](03-maplibre-compose-upstream.md#dependency-baseline).
 This integration does not replace the outstanding physical-iPhone validation.
 
+### Diff cleanup against the new base
+
+The follow-up cleanup restores the base branch's names and implementations where
+the independent migrations differed without changing behavior:
+
+- Geometry conversion, bounding-box helpers, pin painter layout, and downloaded-area
+  polygon construction use the base's implementation.
+- The offline downloader keeps the base's filename, constructor, progress handling,
+  and method order. Each platform supplies the offline manager from its shared runtime;
+  the pixel-ratio and expiry tests remain.
+- Overlay conversion and layer helpers keep the base's names and structure. Dynamic
+  image IDs, feature preparation, stable handlers, and imperative updates remain.
+- Map layers reuse the existing theme colors. About screens no longer pass through
+  the location provider already supplied by the tutorial's Koin default.
+- The reference pin serializer lives in tests, not production. The unused marker-scale
+  calculation and its self-contained test are removed.
+
+Behavioral differences are not treated as noise. The cleanup retains the probe's
+animation timing, linear marker scaling, base-style parity changes, source lifecycle
+and cancellation rules, and overlay transparency/property semantics. JVM source-set
+moves, Android map retirement, shared resources, and platform integrations remain
+part of the probe. See [validation evidence](04-validation.md#diff-cleanup-against-maplibre-compose-on-2026-09-05).
+
+Linear marker scaling is retained deliberately after review: the original Android
+`GeometryMarkersMapComponent` uses that curve between zoom 17 and 19. This is a
+visual parity choice, not a performance fix; the reason the migration branch uses
+exponential `byZoom` here is not documented in its commits or PR discussion.
+
 ## Cleanup on 2026-09-05
 
 - Removed the custom iOS crash reporter. iOS uses master's empty report holder;

@@ -16,12 +16,10 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.pin_circle
 import de.westnordost.streetcomplete.screens.main.map.pinPainter
-import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.ui.ktx.id
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
@@ -56,7 +54,6 @@ import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
-import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.Point
 
@@ -287,18 +284,6 @@ private fun StringBuilder.appendJsonProperty(key: String, value: String) {
 
 private fun StringBuilder.appendJsonString(value: String) {
     append(Json.encodeToString(value))
-}
-
-internal fun pinFeatureCollection(pins: Collection<Pin>): FeatureCollection<Point, JsonObject> =
-    FeatureCollection(pins.map(Pin::toGeoJsonFeature))
-
-private fun Pin.toGeoJsonFeature(): Feature<Point, JsonObject> {
-    val values = mutableMapOf<String, JsonElement>(
-        "icon-image" to JsonPrimitive(icon.id ?: error("Pin icon is not a Compose resource")),
-        "icon-order" to JsonPrimitive(order + 50),
-    )
-    properties.forEach { (key, value) -> values[key] = JsonPrimitive(value) }
-    return Feature(Point(position.toPosition()), JsonObject(values))
 }
 
 private fun Geometry.toLatLonOrNull(): LatLon? = (this as? Point)?.coordinates?.let {

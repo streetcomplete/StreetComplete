@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.screens.main.map.animateLatLonAsState
 import de.westnordost.streetcomplete.screens.main.map.toLineGeometry
 import de.westnordost.streetcomplete.screens.main.map.toMultiLineGeometry
 import de.westnordost.streetcomplete.screens.main.map.toPosition
+import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -34,7 +35,7 @@ import org.maplibre.spatialk.geojson.toJson
  * Displays completed track segments and the short, actively changing current segment.
  *
  * [trackpoints] should remain bounded (the legacy implementation retained at most 100 points) and
- * older chunks should be moved to [oldTrackpointLists]. This avoids copying an ever-growing track
+ * older chunks should be moved to [oldTrackpointsLists]. This avoids copying an ever-growing track
  * into MapLibre for every location update.
  */
 @Composable
@@ -43,14 +44,18 @@ fun TracksLayers(
     mapState: MapState,
     trackpoints: List<LatLon>,
     isRecording: Boolean,
-    oldTrackpointLists: List<List<LatLon>>,
+    oldTrackpointsLists: List<List<LatLon>>,
 ) {
     val showAprilFoolsPattern = remember { isApril1st() }
-    val lastSegment = remember(trackpoints) { trackpoints.takeLast(2).takeIf { it.size == 2 } }
-    val trackWithoutLast = remember(trackpoints) { trackpoints.dropLast(1) }
+    val trackLastSegment = remember(trackpoints) {
+        if (trackpoints.size >= 2) trackpoints.takeLast(2) else null
+    }
+    val trackWithoutLast = remember(trackpoints) {
+        if (trackpoints.size > 1) trackpoints.take(trackpoints.size - 1) else emptyList()
+    }
 
-    val animatedData: GeoJsonData = if (lastSegment != null) {
-        val segment = lastSegment
+    val animatedData: GeoJsonData = if (trackLastSegment != null) {
+        val segment = trackLastSegment
         val animatedLastPosition by animateLatLonAsState(
             targetValue = segment.last(),
             initialValue = segment.first(),
@@ -68,9 +73,9 @@ fun TracksLayers(
             )
         }
     }
-    val oldTrackData by produceState<GeoJsonData>(EMPTY_TRACK_DATA, oldTrackpointLists) {
+    val oldTrackData by produceState<GeoJsonData>(EMPTY_TRACK_DATA, oldTrackpointsLists) {
         value = withContext(Dispatchers.Default) {
-            val geometry = oldTrackpointLists.toMultiLineGeometry()
+            val geometry = oldTrackpointsLists.toMultiLineGeometry()
             GeoJsonData.JsonString(
                 if (geometry.coordinates.isEmpty()) EMPTY_TRACK_JSON else geometry.toJson()
             )
@@ -121,19 +126,19 @@ private fun TracksStyleLayers(
     showAprilFoolsPattern: Boolean,
 ) {
     // Preserve the legacy style ordering: the old track is nearest the label layers.
-    TrackLayer(
+    TracksLayer(
         "animate-track",
         animatedSource,
         isRecording = isRecording,
         showAprilFoolsPattern = showAprilFoolsPattern,
     )
-    TrackLayer(
+    TracksLayer(
         "track",
         trackSource,
         isRecording = isRecording,
         showAprilFoolsPattern = showAprilFoolsPattern,
     )
-    TrackLayer(
+    TracksLayer(
         "old-track",
         oldTrackSource,
         opacity = 0.2f,
@@ -150,7 +155,7 @@ private val ACTIVE_TRACK_LAYER_IDS = listOf("animate-track", "track")
 
 @Composable
 @MaplibreComposable
-private fun TrackLayer(
+private fun TracksLayer(
     id: String,
     source: Source,
     isRecording: Boolean = false,
@@ -158,15 +163,15 @@ private fun TrackLayer(
     showAprilFoolsPattern: Boolean,
 ) {
     if (showAprilFoolsPattern) {
-        AprilFoolsTrackLayer(id, source, isRecording, opacity)
+        TracksLayerApril1st(id, source, isRecording, opacity)
     } else {
-        DefaultTrackLayer(id, source, opacity)
+        TracksLayerDefault(id, source, opacity)
     }
 }
 
 @Composable
 @MaplibreComposable
-private fun AprilFoolsTrackLayer(
+private fun TracksLayerApril1st(
     id: String,
     source: Source,
     isRecording: Boolean,
@@ -187,7 +192,7 @@ private fun AprilFoolsTrackLayer(
 
 @Composable
 @MaplibreComposable
-private fun DefaultTrackLayer(
+private fun TracksLayerDefault(
     id: String,
     source: Source,
     opacity: Float,
@@ -199,6 +204,6 @@ private fun DefaultTrackLayer(
         cap = const(LineCap.Round),
         dasharray = const(listOf(0f, 2f)),
         width = const(6.dp),
-        color = const(Color(0xff536dfe)),
+        color = const(Color.Location),
     )
 }

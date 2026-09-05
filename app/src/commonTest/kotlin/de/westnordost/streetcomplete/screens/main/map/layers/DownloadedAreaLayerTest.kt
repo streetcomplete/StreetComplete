@@ -9,7 +9,7 @@ import kotlin.test.assertEquals
 class DownloadedAreaLayerTest {
 
     @Test fun emptyTilesMaskTheWholeWorld() {
-        val mask = emptyList<TilePos>().toDownloadedAreaMask()
+        val mask = emptyList<TilePos>().toHolesInWorldPolygon()
 
         assertEquals(
             listOf(
@@ -27,7 +27,7 @@ class DownloadedAreaLayerTest {
         val tile = TilePos(32768, 32768)
         val bounds = tile.asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
 
-        val mask = listOf(tile).toDownloadedAreaMask()
+        val mask = listOf(tile).toHolesInWorldPolygon()
 
         assertEquals(2, mask.coordinates.size)
         assertEquals(

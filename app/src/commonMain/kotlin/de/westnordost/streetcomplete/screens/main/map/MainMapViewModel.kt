@@ -29,7 +29,7 @@ abstract class MainMapViewModel : ViewModel() {
 
 class MainMapViewModelImpl(
     private val downloadedTilesSource: DownloadedTilesStateSource,
-    private val questPinsSource: MapQuestPinsSource,
+    private val mapQuestPinsSource: MapQuestPinsSource,
     private val editHistoryPinsSource: EditHistoryPinsSource,
     private val styleableOverlaySource: StyleableOverlaySource,
 ) : MainMapViewModel() {
@@ -37,7 +37,7 @@ class MainMapViewModelImpl(
     private var requestedPinMode = MainMapPinMode.NONE
 
     override val downloadedTiles = downloadedTilesSource.tiles
-    override val questPins = questPinsSource.pins
+    override val questPins = mapQuestPinsSource.pins
     override val editHistoryPins = editHistoryPinsSource.pins
     override val styleableElements = styleableOverlaySource.styledElements
 
@@ -56,25 +56,25 @@ class MainMapViewModelImpl(
     }
 
     override fun onViewportChanged(zoom: Double, displayedArea: BoundingBox?) {
-        questPinsSource.onViewportChanged(zoom, displayedArea)
+        mapQuestPinsSource.onViewportChanged(zoom, displayedArea)
         styleableOverlaySource.onViewportChanged(zoom, displayedArea)
     }
 
     override fun getQuestKey(properties: Map<String, String>): QuestKey? =
-        questPinsSource.getQuestKey(properties)
+        mapQuestPinsSource.getQuestKey(properties)
 
     override fun getEditKey(properties: Map<String, String>): EditKey? =
         editHistoryPinsSource.getEditKey(properties)
 
     override fun onCleared() {
         downloadedTilesSource.close()
-        questPinsSource.close()
+        mapQuestPinsSource.close()
         editHistoryPinsSource.close()
         styleableOverlaySource.close()
     }
 
     private fun updateActivePinSources() {
-        questPinsSource.setActive(isPresented && requestedPinMode == MainMapPinMode.QUESTS)
+        mapQuestPinsSource.setActive(isPresented && requestedPinMode == MainMapPinMode.QUESTS)
         editHistoryPinsSource.setActive(isPresented && requestedPinMode == MainMapPinMode.EDITS)
     }
 }

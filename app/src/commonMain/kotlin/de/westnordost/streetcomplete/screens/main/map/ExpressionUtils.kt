@@ -80,38 +80,6 @@ fun Feature.isArea() =
         geometryType() eq const(GeometryType.MultiPolygon)
     )
 
-/**
- * Converts a width in meters to a screen width at [latitude]. The latitude correction preserves
- * the legacy map's empirically calibrated visual scale across the Mercator projection.
- */
-fun inMeters(
-    width: Expression<NumberValue<Number>>,
-    latitude: Double = 30.0,
-): Expression<NumberValue<Dp>> {
-    val sizeFactor = metersSizeFactor(latitude)
-    return interpolate(
-        exponential(2f), zoom(),
-        8 to width / const(256) / const(sizeFactor),
-        24 to width * const(256) / const(sizeFactor),
-    ).dp
-}
-
-/** Converts a constant width in meters to a screen width at [latitude]. */
-fun inMeters(
-    width: Float,
-    latitude: Double = 30.0,
-): Expression<NumberValue<Dp>> {
-    val sizeFactor = metersSizeFactor(latitude)
-    return interpolate(
-        exponential(2f), zoom(),
-        8 to const(width) / const(256) / const(sizeFactor),
-        24 to const(width) * const(256) / const(sizeFactor),
-    ).dp
-}
-
-internal fun metersSizeFactor(latitude: Double): Float =
-    (cos(PI * latitude / 180) * 1.2).toFloat()
-
 /** Get an expression that resolves to the localized name.
  *  If the localized name in the user's [languages] is the same as the primary name, then only this
  *  name is displayed. Otherwise, the primary name is displayed, then the localized name below */
@@ -134,3 +102,34 @@ fun Feature.localizedName(
         fallback = getName
     )
 }
+
+fun inMeters(
+    width: Expression<NumberValue<Number>>,
+    latitude: Double = 30.0
+): Expression<NumberValue<Dp>> {
+    // the more north you go, the smaller of an area each mercator tile actually covers
+    // the additional factor of 1.20 comes from a simple measuring test with a ruler on a
+    // smartphone screen done at approx. latitude = 0 and latitude = 70, i.e. without it, lines are
+    // drawn at both latitudes approximately 20% too large ¯\_(ツ)_/¯
+    val sizeFactor = metersSizeFactor(latitude)
+    return interpolate(
+        exponential(2f), zoom(),
+        8 to width / const(256) / const(sizeFactor),
+        24 to width * const(256) / const(sizeFactor)
+    ).dp
+}
+
+fun inMeters(
+    width: Float,
+    latitude: Double = 30.0
+): Expression<NumberValue<Dp>> {
+    val sizeFactor = metersSizeFactor(latitude)
+    return interpolate(
+        exponential(2f), zoom(),
+        8 to const(width) / const(256) / const(sizeFactor),
+        24 to const(width) * const(256) / const(sizeFactor)
+    ).dp
+}
+
+internal fun metersSizeFactor(latitude: Double): Float =
+    (cos(PI * latitude / 180) * 1.2).toFloat()

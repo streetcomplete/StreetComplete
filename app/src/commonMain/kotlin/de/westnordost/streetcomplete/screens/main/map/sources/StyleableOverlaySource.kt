@@ -34,7 +34,7 @@ import kotlinx.coroutines.sync.withLock
  */
 class StyleableOverlaySource(
     private val selectedOverlaySource: SelectedOverlaySource,
-    private val mapDataSource: MapDataWithEditsSource,
+    private val mapDataWithEditsSource: MapDataWithEditsSource,
     workerDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
     private val scope = CoroutineScope(SupervisorJob() + workerDispatcher)
@@ -45,8 +45,8 @@ class StyleableOverlaySource(
     private val stateLock = ReentrantLock()
     private var lastViewport: Viewport? = null
     private var lastDisplayedRect: TilesRect? = null
-    private var elementsInView = mutableMapOf<ElementKey, StyledElement>()
-    private val elementsInViewMutex = Mutex()
+    private var mapDataInView = mutableMapOf<ElementKey, StyledElement>()
+    private val mapDataInViewMutex = Mutex()
     private val mapDataSourceMutex = Mutex()
     private var updateJob: Job? = null
     private var viewportGeneration = 0L
@@ -63,7 +63,7 @@ class StyleableOverlaySource(
         }
     }
 
-    private val mapDataListener = object : MapDataWithEditsSource.Listener {
+    private val mapDataWithEditsListener = object : MapDataWithEditsSource.Listener {
         override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
             stateLock.withLock {
                 if (isClosed || !isActive) return
@@ -158,7 +158,7 @@ class StyleableOverlaySource(
         val coroutineContext = currentCoroutineContext()
         val overlay = selectedOverlay.value ?: return
         val mapData = mapDataSourceMutex.withLock {
-            mapDataSource.getMapDataWithGeometry(bbox)
+            mapDataWithEditsSource.getMapDataWithGeometry(bbox)
         }
         coroutineContext.ensureActive()
         if (selectedOverlay.value !== overlay) return
@@ -169,7 +169,7 @@ class StyleableOverlaySource(
         val styledElements = prepared.values.toList()
         coroutineContext.ensureActive()
 
-        elementsInViewMutex.withLock {
+        mapDataInViewMutex.withLock {
             coroutineContext.ensureActive()
             stateLock.withLock {
                 // Swap the complete generation atomically so a superseded load cannot seed a
@@ -179,7 +179,7 @@ class StyleableOverlaySource(
                     !isClosed && isActive && generation == viewportGeneration &&
                     selectedOverlay.value === overlay
                 ) {
-                    elementsInView = prepared
+                    mapDataInView = prepared
                     _styledElements.value = styledElements
                 }
             }
@@ -198,28 +198,28 @@ class StyleableOverlaySource(
             val currentOverlay = selectedOverlay.value ?: return
             bbox to currentOverlay
         }
-        val styledElements = elementsInViewMutex.withLock {
+        val styledElements = mapDataInViewMutex.withLock {
             coroutineContext.ensureActive()
             var hasChanges = false
-            deleted.forEach { if (elementsInView.remove(it) != null) hasChanges = true }
+            deleted.forEach { if (mapDataInView.remove(it) != null) hasChanges = true }
 
             val updatedStyles = createStyledElementsByKey(overlay, updated).toMap()
             updated.forEach { element ->
-                if (element.key !in updatedStyles && elementsInView.remove(element.key) != null) {
+                if (element.key !in updatedStyles && mapDataInView.remove(element.key) != null) {
                     hasChanges = true
                 }
             }
             updatedStyles.forEach { (key, element) ->
                 if (displayedBBox.intersect(element.geometry.bounds)) {
-                    elementsInView[key] = element
+                    mapDataInView[key] = element
                     hasChanges = true
-                } else if (elementsInView.remove(key) != null) {
+                } else if (mapDataInView.remove(key) != null) {
                     hasChanges = true
                 }
             }
 
             if (!hasChanges) return
-            elementsInView.values.toList()
+            mapDataInView.values.toList()
         }
         stateLock.withLock {
             coroutineContext.ensureActive()
@@ -236,8 +236,9 @@ class StyleableOverlaySource(
         mapData: MapDataWithGeometry,
     ): Sequence<Pair<ElementKey, StyledElement>> =
         overlay.getStyledElements(mapData).mapNotNull { (element, style) ->
+            val key = element.key
             val geometry = mapData.getGeometry(element.type, element.id) ?: return@mapNotNull null
-            element.key to StyledElement(element, geometry, style)
+            key to StyledElement(element, geometry, style)
         }
 
     private fun updateSelectedOverlay(forceReload: Boolean = false) {
@@ -271,7 +272,7 @@ class StyleableOverlaySource(
             _styledElements.value = emptyList()
             updateJob?.cancel()
             updateJob = scope.launch {
-                elementsInViewMutex.withLock { elementsInView.clear() }
+                mapDataInViewMutex.withLock { mapDataInView.clear() }
             }
         }
     }
@@ -280,8 +281,8 @@ class StyleableOverlaySource(
         listenerLock.withLock {
             if (isMapDataListenerAttached == attached) return
             isMapDataListenerAttached = attached
-            if (attached) mapDataSource.addListener(mapDataListener)
-            else mapDataSource.removeListener(mapDataListener)
+            if (attached) mapDataWithEditsSource.addListener(mapDataWithEditsListener)
+            else mapDataWithEditsSource.removeListener(mapDataWithEditsListener)
         }
     }
 

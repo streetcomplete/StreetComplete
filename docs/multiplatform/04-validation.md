@@ -28,6 +28,38 @@ were enabled only in the simulator's local settings. No quests were completed or
 uploaded. No physical iPhone or desktop runtime was exercised in this integration;
 the simulator observations are not performance acceptance for either device.
 
+## Diff cleanup against `maplibre-compose` on 2026-09-05
+
+The cleanup starts from `2d90db32c` and compares against `05b04f1c6`. It restores
+equivalent base-branch code while retaining the probe's behavior. Decisions are
+listed in [the branch overview](README.md#diff-cleanup-against-the-new-base).
+
+- Android debug assembly, desktop compilation, and physical-iPhone compilation pass
+  with `mise exec -- ./gradlew :app:testAndroidHostTest :app:compileKotlinDesktop
+  :app:compileKotlinIosArm64 :androidApp:assembleDebug --console=plain`.
+- A temporary comparison test evaluates the old and cleaned-up overlay converters
+  over 790 combinations of icons, labels, disabled states, transparency, heights,
+  and strokes. Their feature outputs are equal on Android host and Kotlin/Native.
+  The comparison copies were removed from the source tree after the checks.
+- All 25 focused native tests pass. The selection covers overlay conversion,
+  geometry conversion, bounding boxes, downloaded-area masks, offline-pack options
+  and expiry, geometry markers, bearing rotation, and automatic time formatting.
+- Source comparisons confirm that quest and edit-history workers, the dynamic
+  image registry, source-handle lifecycle, imperative layer updates, and selection
+  and focused-geometry animation retain their implementations from `2d90db32c`.
+  Overlay worker changes are local-name restorations and an equivalent key binding;
+  its locking, cancellation, and publication order are unchanged.
+
+The production marker-scale helper that only tested itself was removed. The
+reference pin serializer moved into tests; pin-property tests now read the real
+serializer's output. The final host suite contains 2,556 tests, one skipped, with
+no failures or errors. One preceding run failed in the unchanged live dev-API test
+`MapDataApiClientImplTest.uploadChanges` with `Unexpected end of file from server`;
+the full-suite retry passed without a code change.
+
+No device runtime or frame-time validation was performed for this cleanup. Earlier
+simulator observations above do not cover these final edits.
+
 ## Historical evidence and cleanup
 
 The entries below record earlier builds and runs, not a current acceptance matrix.

@@ -24,9 +24,9 @@ import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
 import de.westnordost.streetcomplete.screens.main.map.layers.PinsLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
-import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayMainLayers
+import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.STYLEABLE_OVERLAY_LAYER_IDS
-import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayers
+import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.isStyleHandleRace
@@ -98,20 +98,20 @@ internal fun MainMapStyle(
         colors = configuration.colors,
         languages = configuration.languages,
         belowRoadsContent = {
-            StyleableOverlaySideLayers(
+            StyleableOverlaySideLayer(
                 source = styleableOverlaySource,
-                bridge = false,
+                isBridge = false,
             )
         },
         belowRoadsOnBridgeContent = {
-            StyleableOverlaySideLayers(
+            StyleableOverlaySideLayer(
                 source = styleableOverlaySource,
-                bridge = true,
+                isBridge = true,
             )
         },
         belowLabelsContent = {
             DownloadedAreaLayer(mapState, configuration.downloadedTiles)
-            StyleableOverlayMainLayers(
+            StyleableOverlayLayers(
                 source = styleableOverlaySource,
                 onClickElement = { configuration.onClickOverlayElement(it) },
             )
