@@ -56,6 +56,7 @@ fun SettingsScreen(
     onClickOverlaySelection: () -> Unit,
     onClickLanguageSelection: () -> Unit,
     onClickMessagesSelection: () -> Unit,
+    onClickShowMap: () -> Unit,
     onClickBack: () -> Unit,
 ) {
     val hiddenQuestCount by viewModel.hiddenQuestCount.collectAsState()
@@ -236,6 +237,10 @@ fun SettingsScreen(
                     Preference(
                         name = "Show Quest Forms",
                         onClick = onClickShowQuestForms
+                    ) { NextScreenIcon() }
+                    Preference(
+                        name = "Show map",
+                        onClick = onClickShowMap
                     ) { NextScreenIcon() }
                 }
             }

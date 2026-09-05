@@ -30,10 +30,10 @@ import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
-import de.westnordost.streetcomplete.ui.util.rememberDefaultLocationProvider
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.maplibre.compose.location.rememberDefaultLocationProvider
 
 /** Shows a short tutorial for first-time users */
 @Composable
