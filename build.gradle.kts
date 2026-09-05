@@ -7,6 +7,7 @@ plugins {
     id("com.android.library") version "9.1.1" apply false
     id("com.android.kotlin.multiplatform.library") version "9.1.1" apply false
     id("org.jetbrains.compose") version "1.12.0" apply false
+    id("org.gradle.test-retry") version "1.6.5" apply false
 }
 
 val poEditorProjectId = "97843"
