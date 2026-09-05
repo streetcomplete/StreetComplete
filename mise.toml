@@ -5,13 +5,8 @@
 "core:java" = "temurin-25.0.4+101.0.LTS"
 
 [env]
-ANDROID_HOME = "{{ env.HOME }}/Library/Android/sdk"
-STREETCOMPLETE_AVD = "issue1150-34"
 TZ = "UTC"
-_.path = [
-    "{{ env.HOME }}/Library/Android/sdk/platform-tools",
-    "{{ env.HOME }}/Library/Android/sdk/emulator",
-]
+# Machine-specific SDK paths, device IDs, and signing settings belong in mise.local.toml.
 
 [tasks.doctor]
 description = "Show the Java, Gradle, Android SDK, and device setup"
@@ -44,7 +39,7 @@ run = "./gradlew :app:testAndroidHostTest assembleDebug -Papp.streetcomplete.deb
 
 [tasks.emulator]
 description = "Start the configured Android emulator"
-run = 'emulator -avd "$STREETCOMPLETE_AVD"'
+run = 'emulator -avd "${STREETCOMPLETE_AVD:?Set STREETCOMPLETE_AVD in mise.local.toml}"'
 
 [tasks.install]
 description = "Build and install the debug app on a connected device"
@@ -56,41 +51,44 @@ depends = ["install"]
 run = "adb shell am start -n de.westnordost.streetcomplete.debug/de.westnordost.streetcomplete.screens.main.MainActivity"
 
 [tasks."run:ios"]
-description = "Build, install, and launch the iOS app on Sargun's iPhone"
+description = "Build, install, and launch the iOS app on the configured iPhone"
 run = '''
-ios_xcode_developer_dir=/Applications/Xcode-26.5.0.app/Contents/Developer
-ios_device_udid=00008140-001025890E33001C
-ios_team_id=LQ33A6CSK4
-ios_app_bundle_id=com.sargunv.streetcomplete.iosport
+: "${STREETCOMPLETE_IOS_DEVICE:?Set STREETCOMPLETE_IOS_DEVICE in mise.local.toml}"
+: "${STREETCOMPLETE_IOS_TEAM:?Set STREETCOMPLETE_IOS_TEAM in mise.local.toml}"
+: "${STREETCOMPLETE_IOS_BUNDLE_ID:?Set STREETCOMPLETE_IOS_BUNDLE_ID in mise.local.toml}"
 ios_app_path=build/xcode-device/Build/Products/Debug-iphoneos/StreetComplete.app
-
-export DEVELOPER_DIR="$ios_xcode_developer_dir"
 
 xcodebuild \
   -project iosApp/iosApp.xcodeproj \
   -scheme iosApp \
   -configuration Debug \
-  -destination "id=$ios_device_udid" \
+  -destination "id=$STREETCOMPLETE_IOS_DEVICE" \
   -derivedDataPath build/xcode-device \
   -allowProvisioningUpdates \
   -allowProvisioningDeviceRegistration \
-  DEVELOPMENT_TEAM="$ios_team_id" \
-  PRODUCT_BUNDLE_IDENTIFIER="$ios_app_bundle_id" \
+  DEVELOPMENT_TEAM="$STREETCOMPLETE_IOS_TEAM" \
+  PRODUCT_BUNDLE_IDENTIFIER="$STREETCOMPLETE_IOS_BUNDLE_ID" \
   COMPILER_INDEX_STORE_ENABLE=NO \
   build
 
 xcrun devicectl device install app \
-  --device "$ios_device_udid" \
+  --device "$STREETCOMPLETE_IOS_DEVICE" \
   "$ios_app_path"
 xcrun devicectl device process launch \
-  --device "$ios_device_udid" \
+  --device "$STREETCOMPLETE_IOS_DEVICE" \
   --terminate-existing \
-  "$ios_app_bundle_id"
+  "$STREETCOMPLETE_IOS_BUNDLE_ID"
 '''
 
-[tasks."profile:map:ios"]
-description = "Run the deterministic map performance scenario in the iOS simulator"
-run = "scripts/profile-map-ios-simulator.sh"
+[tasks."run:desktop"]
+description = "Run the desktop app, using a local app bundle on macOS for location access"
+run = '''
+if [ "$(uname -s)" = Darwin ]; then
+  ./gradlew :app:runDistributable
+else
+  ./gradlew :app:run
+fi
+'''
 
 [tasks."test:device"]
 description = "Run device tests on a connected Android device"

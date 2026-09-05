@@ -37,7 +37,6 @@ fun StreetCompleteMap(
     tileLodOptions: TileLodOptions = TileLodOptions.Standard,
     onClick: MapClickHandler,
     onLongClick: MapClickHandler,
-    onFrame: (framesPerSecond: Double) -> Unit = {},
     overlay: MapOverlay = MapOverlay {},
 ) {
     MaplibreMap(
@@ -50,7 +49,6 @@ fun StreetCompleteMap(
         tileLodOptions = tileLodOptions,
         onClick = onClick,
         onLongClick = onLongClick,
-        onFrame = onFrame,
     ) {
         include(overlay)
     }

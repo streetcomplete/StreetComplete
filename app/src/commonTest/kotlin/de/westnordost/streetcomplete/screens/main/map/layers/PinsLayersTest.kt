@@ -21,11 +21,10 @@ import kotlin.test.assertTrue
 
 class PinsLayersTest {
 
-    @Test fun pinSnapshotRevisionChangesOnlyWithPinContents() {
+    @Test fun pinSnapshotReusesPreparedDataUntilContentsChange() {
         val pin = Pin(LatLon(1.0, 2.0), Res.drawable.quest_bench_poi)
         val first = PinSnapshot.Empty.updated(listOf(pin, pin))
 
-        assertEquals(1, first.revision)
         assertEquals(listOf(Res.drawable.quest_bench_poi), first.icons)
         assertEquals(
             pinFeatureCollection(listOf(pin, pin)).toJson(),
@@ -34,7 +33,6 @@ class PinsLayersTest {
         assertSame(first, first.updated(listOf(pin, pin)))
 
         val cleared = first.updated(emptyList())
-        assertEquals(2, cleared.revision)
         assertEquals(emptyList(), cleared.pins)
         assertEquals(emptyList(), cleared.icons)
     }
@@ -130,17 +128,5 @@ class PinsLayersTest {
             ).isStyleHandleRace()
         )
         assertFalse(IllegalStateException("Could not parse GeoJSON").isStyleHandleRace())
-    }
-
-    @Test fun pinPublicationTrackerRecordsEverySuccessfulPublication() {
-        val tracker = PinPublicationTracker()
-        val snapshot = PinSnapshot.Empty.updated(
-            listOf(Pin(LatLon(1.0, 2.0), Res.drawable.quest_bench_poi))
-        )
-
-        tracker.record(snapshot)
-        assertEquals(PinPublication(1, snapshot), tracker.publication.value)
-        tracker.record(snapshot)
-        assertEquals(PinPublication(2, snapshot), tracker.publication.value)
     }
 }

@@ -5,7 +5,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.snapshotFlow
-import de.westnordost.streetcomplete.screens.main.map.MapPerformanceDiagnostics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -22,8 +21,6 @@ import org.maplibre.compose.sources.GeoJsonSourceHandle
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
-import kotlin.time.Duration
-import kotlin.time.measureTime
 
 /** Observes the loaded-source registry only until this source becomes available. */
 internal suspend fun MapState.awaitGeoJsonSource(id: String): GeoJsonSourceHandle =
@@ -41,21 +38,14 @@ internal fun rememberImperativeGeoJsonSource(
     id: String,
     data: GeoJsonData,
     options: GeoJsonOptions = GeoJsonOptions(),
-    diagnosticBatchSize: Int = 1,
     imageRegistry: DynamicStyleImageRegistry? = null,
     requiredImageIds: Set<String> = emptySet(),
-    onPublished: (data: GeoJsonData, elapsed: Duration) -> Unit = { _, _ -> },
 ): GeoJsonSource {
-    require(diagnosticBatchSize > 0)
     require(requiredImageIds.isEmpty() || imageRegistry != null)
     val source = remember(id, options) { GeoJsonSource(id, EMPTY_GEOJSON_DATA, options) }
     val currentData = rememberUpdatedState(data)
     val currentRequiredImageIds = rememberUpdatedState(requiredImageIds)
-    val currentOnPublished = rememberUpdatedState(onPublished)
     LaunchedEffect(mapState, id) {
-        var diagnosticCount = 0
-        var diagnosticTotal = Duration.ZERO
-        var diagnosticMaximum = Duration.ZERO
         snapshotFlow {
             Triple(
                 mapState.style.loadState,
@@ -70,24 +60,8 @@ internal fun rememberImperativeGeoJsonSource(
                     ?: return@collectLatest
                 try {
                     imageRegistry?.awaitInstalled(imageIds)
-                    val elapsed = measureTime {
-                        withContext(Dispatchers.Default) {
-                            sourceHandle.setData(sourceData)
-                        }
-                    }
-                    currentOnPublished.value(sourceData, elapsed)
-                    diagnosticCount += 1
-                    diagnosticTotal += elapsed
-                    diagnosticMaximum = maxOf(diagnosticMaximum, elapsed)
-                    if (diagnosticCount % diagnosticBatchSize == 0) {
-                        MapPerformanceDiagnostics.logSource {
-                            if (diagnosticBatchSize == 1) {
-                                "GeoJSON setData for $id took $elapsed"
-                            } else {
-                                "GeoJSON setData for $id: count=$diagnosticCount " +
-                                    "total=$diagnosticTotal max=$diagnosticMaximum"
-                            }
-                        }
+                    withContext(Dispatchers.Default) {
+                        sourceHandle.setData(sourceData)
                     }
                 } catch (error: IllegalStateException) {
                     // A loaded-style transition changes loadState and replays the current data.

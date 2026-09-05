@@ -9,7 +9,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
-import de.westnordost.streetcomplete.screens.main.map.MapPerformanceDiagnostics
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.util.math.intersect
 import kotlinx.atomicfu.locks.ReentrantLock
@@ -29,7 +28,6 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import kotlin.time.TimeSource
 
 /**
  * Loads and styles the selected overlay's OSM elements around a renderer-independent viewport.
@@ -159,24 +157,16 @@ class StyleableOverlaySource(
     private suspend fun setStyledElements(bbox: BoundingBox, generation: Long) {
         val coroutineContext = currentCoroutineContext()
         val overlay = selectedOverlay.value ?: return
-        val queryStarted = TimeSource.Monotonic.markNow()
         val mapData = mapDataSourceMutex.withLock {
             mapDataSource.getMapDataWithGeometry(bbox)
-        }
-        MapPerformanceDiagnostics.logSource {
-            "Overlay map-data query completed in ${queryStarted.elapsedNow()}"
         }
         coroutineContext.ensureActive()
         if (selectedOverlay.value !== overlay) return
 
         // Overlay styling walks all loaded map elements and can be expensive in dense areas.
         // Prepare it before taking either source-state lock so camera callbacks remain cheap.
-        val stylingStarted = TimeSource.Monotonic.markNow()
         val prepared = createStyledElementsByKey(overlay, mapData).toMap().toMutableMap()
         val styledElements = prepared.values.toList()
-        MapPerformanceDiagnostics.logSource {
-            "Overlay styled ${styledElements.size} elements in ${stylingStarted.elapsedNow()}"
-        }
         coroutineContext.ensureActive()
 
         elementsInViewMutex.withLock {

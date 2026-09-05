@@ -12,6 +12,11 @@ This document preserves the findings at the pinned head above. See
 `03-maplibre-compose-upstream.md` for the current upstream status and resolved
 snapshot behavior.
 
+Current scope note, 2026-09-05: desktop release packaging and custom iOS crash
+reporting have been removed from the probe. The App Store identity and camera
+purpose text have since been updated. These changes do not rewrite the historical
+findings below. See `02-needs-work.md` for current device observations and pending work.
+
 The audit uses four blocker classes:
 
 - **Internal**: StreetComplete can implement or correct it in this repository.

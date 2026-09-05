@@ -29,7 +29,7 @@ import de.westnordost.streetcomplete.screens.about.IosAppStoreInfo
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.IosArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
-import de.westnordost.streetcomplete.util.error_reporting.IosCrashReportHolder
+import de.westnordost.streetcomplete.util.error_reporting.EmptyCrashReportHolder
 import de.westnordost.streetcomplete.util.sound.IosSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.cinterop.ExperimentalForeignApi
@@ -80,14 +80,7 @@ val iosModule = module {
 
     // error reporting
 
-    single {
-        IosCrashReportHolder(
-            applicationSupportPath("last_crash.txt"),
-            get(),
-            SystemFileSystem,
-        )
-    }
-    single<CrashReportHolder> { get<IosCrashReportHolder>() }
+    single<CrashReportHolder> { EmptyCrashReportHolder }
 
     // database
 

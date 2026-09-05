@@ -15,11 +15,9 @@ import androidx.compose.ui.unit.em
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.pin_circle
-import de.westnordost.streetcomplete.screens.main.map.MapPerformanceDiagnostics
 import de.westnordost.streetcomplete.screens.main.map.pinPainter
 import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.ui.ktx.id
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -75,11 +73,10 @@ internal fun PinsLayers(
     snapshot: PinSnapshot,
     visible: Boolean,
     imageRegistry: DynamicStyleImageRegistry,
-    publicationTracker: PinPublicationTracker,
     onClickPin: (properties: Map<String, String>) -> Unit,
     onClickCluster: (leafPositions: List<LatLon>) -> Unit,
 ) {
-    ImperativeLayerVisibility(mapState, "pins", PIN_LAYER_IDS, visible)
+    ImperativeLayerVisibility(mapState, PIN_LAYER_IDS, visible)
     val coroutineScope = rememberCoroutineScope()
     val currentOnClickPin = rememberUpdatedState(onClickPin)
     val currentOnClickCluster = rememberUpdatedState(onClickCluster)
@@ -128,13 +125,7 @@ internal fun PinsLayers(
         options = options,
         imageRegistry = imageRegistry,
         requiredImageIds = requiredImageIds,
-    ) { publishedData, setDataTime ->
-        if (publishedData !== snapshot.data) return@rememberImperativeGeoJsonSource
-        publicationTracker.record(snapshot)
-        MapPerformanceDiagnostics.log {
-            "Published ${snapshot.pins.size} pins after required images; setData $setDataTime"
-        }
-    }
+    )
 
     SymbolLayer(
         id = "pin-cluster-layer",
@@ -200,38 +191,26 @@ data class Pin(
     val order: Int = 0,
 )
 
-/** A pin publication whose revision changes only when its contents change. */
+/** Reuses prepared pin data until its contents change. */
 class PinSnapshot private constructor(
-    val revision: Long,
     val pins: List<Pin>,
     val icons: List<DrawableResource>,
     val data: GeoJsonData,
 ) {
     fun updated(pins: List<Pin>): PinSnapshot =
         if (this.pins == pins) this else PinSnapshot(
-            revision = revision + 1,
             pins = pins,
             icons = pins.map(Pin::icon).distinct(),
             data = GeoJsonData.JsonString(pinGeoJson(pins)),
         )
 
     companion object {
-        val Empty = PinSnapshot(0, emptyList(), emptyList(), EMPTY_PIN_DATA)
+        val Empty = PinSnapshot(emptyList(), emptyList(), EMPTY_PIN_DATA)
     }
 }
 
 internal fun pinIconExpression(): Expression<ImageValue> =
     image(feature["icon-image"].convertToString())
-
-internal data class PinPublication(val sequence: Long, val snapshot: PinSnapshot)
-
-internal class PinPublicationTracker {
-    val publication = MutableStateFlow<PinPublication?>(null)
-
-    fun record(snapshot: PinSnapshot) {
-        publication.value = PinPublication((publication.value?.sequence ?: 0L) + 1L, snapshot)
-    }
-}
 
 @Composable
 internal fun rememberPinStyleImages(

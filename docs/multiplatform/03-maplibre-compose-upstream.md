@@ -4,6 +4,12 @@ This file records StreetComplete integration findings that should be fixed or
 improved in MapLibre Compose. Entries must include a reproducer or precise missing
 API before they are considered actionable.
 
+The upstream audit below is dated 2026-09-04; the 2026-09-05 cleanup did not update
+the dependency or re-audit upstream. The synthetic scenario and timing hooks used
+for earlier measurements have been removed. Those measurements remain historical
+evidence, not coverage of the current real-device jank. The last pre-cleanup code
+is available at `3be8406d6b0126781061aa68b766a4477ab76752`.
+
 ## Dependency baseline
 
 - Dependency version: `0.15.1-SNAPSHOT`.

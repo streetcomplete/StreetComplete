@@ -4,6 +4,55 @@ Validation claims in this file distinguish compilation, automated tests, and
 interactive runtime evidence. A compile result is not treated as proof of feature
 parity.
 
+## Historical evidence and cleanup
+
+The entries below record earlier builds and runs, not a current acceptance matrix.
+On 2026-09-05, the synthetic performance scenario, its three simulator scripts,
+and the custom iOS crash reporter were removed. Desktop installer release targets
+were also removed. Commands and source paths for those features below are historical;
+the last pre-cleanup implementation is
+`3be8406d6b0126781061aa68b766a4477ab76752`.
+
+The scenario addressed earlier map stalls and does not cover the remaining
+real-device jank. See `02-needs-work.md` for the iPhone walk findings. Testing this
+probe does not verify master's separate implementations.
+
+### Cleanup checks on 2026-09-05
+
+These checks used the cleanup working tree based on `3be8406d6`:
+
+| Check | Result |
+| --- | --- |
+| `mise exec -- ./gradlew :app:testAndroidHostTest :app:compileKotlinDesktop :app:linkDebugFrameworkIosSimulatorArm64 :androidApp:assembleDebug` | Pass. Host suite: 2,551 tests, one skipped, no failures or errors. |
+| Clean Debug iOS simulator Xcode build | Pass, with the existing Skiko iOS deployment-target warning. |
+| Install and launch on the iPhone 17 simulator | Process stayed running; screenshot shows the ordinary onboarding screen, not the removed scenario. This is a launch check, not map-interaction validation. |
+| `mise exec -- ./gradlew :app:run` | Resources and MapLibre runtime initialize, but the plain Java process lacks `NSLocationWhenInUseUsageDescription`. Location collection raises an exception; desktop launch validation fails despite Gradle exiting successfully. |
+| Shared mise task and local environment | `run:ios` dry run succeeds, the local device/signing/SDK settings resolve, and Git ignores `mise.local.toml`. No physical-device reinstall was performed. |
+
+Source checks found no remaining performance-scenario, publication-tracker, or
+custom iOS crash-report references in application code. Gradle no longer lists
+the configured DMG/MSI/DEB installer tasks. The desktop plugin still supplies its
+generic run and packaging tasks; this branch no longer configures release distributions.
+
+### macOS location-launch follow-up on 2026-09-05
+
+The MapLibre Compose demo uses `runDistributable` on macOS so Core Location can
+read an app bundle's privacy declarations. StreetComplete now follows that path
+through `mise run run:desktop`, without restoring DMG/MSI/DEB installer targets.
+The local app image retains resource staging and its required Java modules.
+
+- The generated app's `Info.plist` contains `NSLocationWhenInUseUsageDescription`
+  and `NSLocationUsageDescription` with StreetComplete-specific purpose text.
+- The signed launcher carries `com.apple.security.personal-information.location`
+  and the demo's JVM runtime entitlements.
+- The app rendered its first Metal map frame and displayed the map with quest
+  pins and a current-location indicator.
+- Location updates reached `AutoSyncer`, which completed a nearby quest download.
+- The launch log contains no missing-privacy-declaration exception. It does contain
+  an LWJGL library-mismatch warning; that warning did not prevent this Metal run.
+
+This validates the local macOS launcher, not installer releases or iOS background jobs.
+
 ## Baseline: upstream master at `c778f48b1`
 
 Environment: macOS 26.6.2 ARM64, Temurin 25.0.4, Gradle 9.7.1.

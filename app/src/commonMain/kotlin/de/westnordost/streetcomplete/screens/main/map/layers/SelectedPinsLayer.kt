@@ -10,7 +10,6 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.main.map.MapPerformanceDiagnostics
 import de.westnordost.streetcomplete.screens.main.map.SelectedMapPins
 import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.ui.ktx.id
@@ -33,9 +32,6 @@ import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Point
-import kotlin.time.Duration
-import kotlin.time.TimeSource
-import kotlin.time.measureTime
 
 private const val SELECTED_PIN_ANIMATION_MILLIS = 300
 private const val SELECTED_PINS_SOURCE_ID = "selected-pins-source"
@@ -79,16 +75,7 @@ internal fun SelectedPinsLayer(
                     val data = GeoJsonData.Features(
                         selectedPinFeatures(selection.positions, iconId)
                     )
-                    val setDataStarted = TimeSource.Monotonic.markNow()
                     withContext(Dispatchers.Default) { sourceHandle.setData(data) }
-                    MapPerformanceDiagnostics.log {
-                        "Selected-pin setData for ${selection.positions.size} positions took " +
-                            "${setDataStarted.elapsedNow()}"
-                    }
-
-                    val started = TimeSource.Monotonic.markNow()
-                    var frameCount = 0
-                    var maxPropertyUpdate = Duration.ZERO
                     // Preserve Compose's frame clock but execute synchronous map-owner calls away
                     // from the UI dispatcher, where another long command would freeze it.
                     withContext(Dispatchers.Default) {
@@ -100,19 +87,8 @@ internal fun SelectedPinsLayer(
                                 easing = OvershootEasing,
                             ),
                         ) { value, _ ->
-                            frameCount += 1
-                            val propertyUpdate = measureTime {
-                                layerHandle.setLayoutProperty("icon-size", JsonPrimitive(value))
-                            }
-                            if (propertyUpdate > maxPropertyUpdate) {
-                                maxPropertyUpdate = propertyUpdate
-                            }
+                            layerHandle.setLayoutProperty("icon-size", JsonPrimitive(value))
                         }
-                    }
-                    MapPerformanceDiagnostics.log {
-                        "Selected-pin animation used $frameCount frames in " +
-                            "${started.elapsedNow()}; slowest property update was " +
-                            maxPropertyUpdate
                     }
                 } catch (error: IllegalStateException) {
                     // A loaded-style transition changes loadState and retries this effect.

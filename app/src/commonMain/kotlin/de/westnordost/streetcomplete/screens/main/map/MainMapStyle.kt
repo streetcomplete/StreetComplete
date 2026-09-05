@@ -21,7 +21,6 @@ import de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryLaye
 import de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.ImperativeLayerVisibility
 import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
-import de.westnordost.streetcomplete.screens.main.map.layers.PinPublicationTracker
 import de.westnordost.streetcomplete.screens.main.map.layers.PinsLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
@@ -59,7 +58,6 @@ internal class MainMapStyleConfiguration(
     var styledElements by mutableStateOf<List<StyledElement>>(emptyList())
     var locationRotation by mutableStateOf<Float?>(null)
     val dynamicStyleImages = DynamicStyleImageRegistry()
-    val pinPublicationTracker = PinPublicationTracker()
 
     var onClickOverlayElement: (ElementKey) -> Unit = {}
     var questKeyForProperties: (Map<String, String>) -> QuestKey? = { null }
@@ -88,27 +86,14 @@ internal fun MainMapStyle(
         )
     ImperativeLayerVisibility(
         mapState,
-        "styleable overlay",
         STYLEABLE_OVERLAY_LAYER_IDS,
         content.showStyleableOverlay,
     )
     ImperativeLayerVisibility(
         mapState,
-        "hideable base labels",
         listOf(HOUSE_NUMBER_LABEL_LAYER_ID),
         HOUSE_NUMBER_LABEL_LAYER_ID !in configuration.hiddenBaseLayerIds,
     )
-    androidx.compose.runtime.LaunchedEffect(configuration.questPins) {
-        MapPerformanceDiagnostics.log {
-            "MainMapStyle observed ${configuration.questPins.pins.size} quest pins at revision " +
-                configuration.questPins.revision
-        }
-    }
-    androidx.compose.runtime.LaunchedEffect(configuration.styledElements) {
-        MapPerformanceDiagnostics.log {
-            "MainMapStyle observed ${configuration.styledElements.size} styled elements"
-        }
-    }
     MapStyle(
         colors = configuration.colors,
         languages = configuration.languages,
@@ -167,7 +152,6 @@ internal fun MainMapStyle(
                 snapshot = pinSnapshot,
                 visible = content.showPins,
                 imageRegistry = configuration.dynamicStyleImages,
-                publicationTracker = configuration.pinPublicationTracker,
                 onClickPin = { properties ->
                     when (content.pinMode) {
                         MainMapPinMode.NONE -> Unit
@@ -207,15 +191,8 @@ private fun BindMainMapStyleTransition(mapState: MapState) {
                         mapState.style.transition.set(transition)
                         mapState.style.transition.setPlacementTransitions(true)
                     }
-                    MapPerformanceDiagnostics.log {
-                        "Applied global style transition duration=${transition.duration} " +
-                            "placement=true"
-                    }
                 } catch (error: IllegalStateException) {
                     if (!error.isStyleHandleRace()) throw error
-                    MapPerformanceDiagnostics.log {
-                        "Deferred global style transition: ${error.message}"
-                    }
                 }
             }
     }

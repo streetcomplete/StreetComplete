@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.snapshotFlow
-import de.westnordost.streetcomplete.screens.main.map.MapPerformanceDiagnostics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -14,7 +13,6 @@ import kotlinx.serialization.json.JsonPrimitive
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.StyleLoadState
 import org.maplibre.compose.util.MaplibreComposable
-import kotlin.time.measureTime
 
 /**
  * Keeps transient visibility out of declarative layer definitions.
@@ -28,7 +26,6 @@ import kotlin.time.measureTime
 @MaplibreComposable
 internal fun ImperativeLayerVisibility(
     mapState: MapState,
-    diagnosticName: String,
     layerIds: List<String>,
     visible: Boolean,
 ) {
@@ -57,14 +54,9 @@ internal fun ImperativeLayerVisibility(
                 if (appliedVisibility == showLayers) return@collectLatest
                 val handles = layerIds.map { id -> mapState.style.layers[id] ?: return@collectLatest }
                 try {
-                    val elapsed = measureTime {
-                        withContext(Dispatchers.Default) {
-                            val value = JsonPrimitive(if (showLayers) "visible" else "none")
-                            handles.forEach { it.setLayoutProperty("visibility", value) }
-                        }
-                    }
-                    MapPerformanceDiagnostics.log {
-                        "Set $diagnosticName visibility=$showLayers on ${handles.size} layers in $elapsed"
+                    withContext(Dispatchers.Default) {
+                        val value = JsonPrimitive(if (showLayers) "visible" else "none")
+                        handles.forEach { it.setLayoutProperty("visibility", value) }
                     }
                     appliedVisibility = showLayers
                 } catch (error: IllegalStateException) {
@@ -80,7 +72,6 @@ internal fun ImperativeLayerVisibility(
 @MaplibreComposable
 internal fun ImperativeLayerPaintProperty(
     mapState: MapState,
-    diagnosticName: String,
     layerIds: List<String>,
     property: String,
     value: JsonElement,
@@ -109,13 +100,8 @@ internal fun ImperativeLayerPaintProperty(
                 if (appliedValue == propertyValue) return@collectLatest
                 val handles = layerIds.map { id -> mapState.style.layers[id] ?: return@collectLatest }
                 try {
-                    val elapsed = measureTime {
-                        withContext(Dispatchers.Default) {
-                            handles.forEach { it.setPaintProperty(property, propertyValue) }
-                        }
-                    }
-                    MapPerformanceDiagnostics.log {
-                        "Set $diagnosticName $property on ${handles.size} layers in $elapsed"
+                    withContext(Dispatchers.Default) {
+                        handles.forEach { it.setPaintProperty(property, propertyValue) }
                     }
                     appliedValue = propertyValue
                 } catch (error: IllegalStateException) {

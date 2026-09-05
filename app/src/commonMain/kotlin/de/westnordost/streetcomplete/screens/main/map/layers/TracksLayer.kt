@@ -81,7 +81,6 @@ fun TracksLayers(
         mapState = mapState,
         id = ANIMATED_TRACK_SOURCE_ID,
         data = animatedData,
-        diagnosticBatchSize = 60,
     )
     val trackSource = rememberImperativeGeoJsonSource(
         mapState = mapState,
@@ -97,7 +96,6 @@ fun TracksLayers(
     if (!showAprilFoolsPattern) {
         ImperativeLayerPaintProperty(
             mapState = mapState,
-            diagnosticName = "active tracks",
             layerIds = ACTIVE_TRACK_LAYER_IDS,
             property = "line-color",
             value = JsonPrimitive(if (isRecording) "#fe1616" else "#536dfe"),

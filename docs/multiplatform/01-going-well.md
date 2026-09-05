@@ -1,5 +1,8 @@
 # What is going well
 
+Implementation notes are not a claim of complete product parity. See
+`02-needs-work.md` for current device findings and `04-validation.md` for dated evidence.
+
 ## Baseline on 2026-09-01
 
 - The `app` module is already a Kotlin Multiplatform library with Android,
@@ -29,17 +32,17 @@
 
 ## Desktop application
 
-- The JVM target now produces a real Compose Desktop application and native
-  distributable that enter the same onboarding, main map, settings, about, and
+- The JVM target runs a Compose Desktop application from the checkout for local
+  development. It enters the same onboarding, main map, settings, about, and
   user flows as Android and iOS.
 - Desktop has persistent platform paths, bundled SQLite, observable Java
   preferences, Ktor's Java HTTP engine, native MapLibre location, browser/map and
   mail launchers, WAV playback, crash-report persistence, network observation,
   and in-process upload/download/changeset controllers.
-- Desktop's renderer and offline downloader share one MapLibre runtime. The
-  macOS ARM64 distributable packages the Metal and Skiko native libraries plus
-  the complete 43 MB application resource tree used by metadata, presets,
-  sounds, glyphs, and the base style.
+- Desktop's renderer and offline downloader share one MapLibre runtime. The local
+  macOS app image includes the runtime, resources, location purpose strings, and
+  entitlements. `mise run run:desktop` uses this launcher because Core Location
+  requires an app bundle. Installer release targets were removed on 2026-09-05.
 
 ## iOS sync foundation
 
@@ -62,12 +65,12 @@
 - iOS production and database tests now use `NativeSQLiteDriver`, while bundled
   SQLite remains scoped to JVM targets. A clean Xcode application link no longer
   combines two SQLite implementations.
-- iOS installs a Kotlin/Native unhandled-exception hook before application
-  initialization. A crash report is persisted in Application Support and
-  consumed once by the same shared recovery dialog used on other targets.
+- iOS uses `EmptyCrashReportHolder`, matching master's platform-owned crash-reporting
+  policy. The probe's custom exception hook and email-report persistence were removed.
 - The Swift host registers a network-constrained Apple processing task. It runs
   pending automatic uploads and changeset closure through the production Koin
   graph, cancels on expiration, reports completion, and reschedules itself.
+  This describes the implementation, not verified task execution on a device.
 - iOS now reads the user's Foundation measurement system for its scale bar,
   declares the camera purpose required by the shared photo flow, and presents
   the external-map chooser from the invoking Compose scene with an iPad popover anchor.
@@ -103,7 +106,9 @@
   and idle-timer policy.
 - Every target runs expired-data cleanup at process initialization. Android keeps
   its daily WorkManager job; desktop and iOS schedule daily cleanup in the shared
-  application scope. Cleanup is suspend/structured work, and desktop first
+  application scope. The iOS timer is process-local, not an OS-scheduled job, and
+  does not replace the still-unimplemented `IosPeriodicCleaner`. Cleanup is
+  suspend/structured work, and desktop first
   disposes Compose, then cancels and joins that scope, then lets Koin close SQLite
   and the native map runtime. Foreground upload/download and delayed changeset
   failures are contained instead of escaping a root native coroutine.

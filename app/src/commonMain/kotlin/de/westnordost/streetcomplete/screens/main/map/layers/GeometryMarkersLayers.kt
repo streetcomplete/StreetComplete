@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.preset_maki_circle
-import de.westnordost.streetcomplete.screens.main.map.MapPerformanceDiagnostics
 import de.westnordost.streetcomplete.screens.main.map.isArea
 import de.westnordost.streetcomplete.screens.main.map.isPoint
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
@@ -62,20 +61,17 @@ internal fun GeometryMarkersLayers(
     val images = rememberPlainStyleImages(markerResources)
     RegisterDynamicStyleImages(imageRegistry, "geometry-markers", images)
     val requiredImageIds = images.mapTo(mutableSetOf(), DynamicStyleImage::id)
-    val preparedData by produceState(
-        EMPTY_PREPARED_GEOMETRY_MARKERS,
+    val data by produceState<GeoJsonData>(
+        EMPTY_GEOMETRY_MARKERS_DATA,
         markers,
         requiredImageIds,
     ) {
         value = withContext(Dispatchers.Default) {
             if (markers.isEmpty()) {
-                EMPTY_PREPARED_GEOMETRY_MARKERS
+                EMPTY_GEOMETRY_MARKERS_DATA
             } else {
-                PreparedGeometryMarkers(
-                    data = GeoJsonData.Features(
-                        FeatureCollection(markers.flatMap(Marker::toGeometryMarkerFeatures))
-                    ),
-                    markerCount = markers.size,
+                GeoJsonData.Features(
+                    FeatureCollection(markers.flatMap(Marker::toGeometryMarkerFeatures))
                 )
             }
         }
@@ -83,17 +79,11 @@ internal fun GeometryMarkersLayers(
     val source = rememberImperativeGeoJsonSource(
         mapState = mapState,
         id = GEOMETRY_MARKERS_SOURCE_ID,
-        data = preparedData.data,
+        data = data,
         options = remember { GeoJsonOptions() },
         imageRegistry = imageRegistry,
         requiredImageIds = requiredImageIds,
-    ) { publishedData, _ ->
-        if (publishedData === preparedData.data && preparedData.markerCount > 0) {
-            MapPerformanceDiagnostics.log {
-                "Published ${preparedData.markerCount} geometry markers"
-            }
-        }
-    }
+    )
 
     FillLayer(
         id = "geo-fill",
@@ -156,9 +146,4 @@ internal fun geometryMarkerScale(zoom: Double): Float =
 
 private val EMPTY_GEOMETRY_MARKERS_DATA = GeoJsonData.Features(
     FeatureCollection<Geometry, JsonObject>(emptyList())
-)
-private data class PreparedGeometryMarkers(val data: GeoJsonData, val markerCount: Int)
-private val EMPTY_PREPARED_GEOMETRY_MARKERS = PreparedGeometryMarkers(
-    EMPTY_GEOMETRY_MARKERS_DATA,
-    markerCount = 0,
 )

@@ -79,7 +79,6 @@ fun CurrentLocationLayers(
         mapState = mapState,
         id = LOCATION_SOURCE_ID,
         data = data,
-        diagnosticBatchSize = 60,
     )
 
     CurrentLocationStyleLayers(source, aprilFirst)

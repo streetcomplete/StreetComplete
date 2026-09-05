@@ -15,7 +15,6 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.LayoutDirection
-import de.westnordost.streetcomplete.screens.main.map.MapPerformanceDiagnostics
 import de.westnordost.streetcomplete.screens.main.map.toImageBitmap
 import de.westnordost.streetcomplete.screens.main.map.toSdf
 import de.westnordost.streetcomplete.ui.ktx.id
@@ -33,7 +32,6 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.StyleLoadState
-import kotlin.time.TimeSource
 
 /** An app-owned image which may be installed in the current MapLibre style. */
 internal data class DynamicStyleImage(
@@ -79,10 +77,8 @@ internal class DynamicStyleImageRegistry {
 
     suspend fun resolve(id: String): RasterizedDynamicStyleImage? {
         val image = images.value[id] ?: return null
-        val started = TimeSource.Monotonic.markNow()
-        var cacheHit = false
-        val resolved = bitmapCacheMutex.withLock {
-            bitmapCache[image.cacheKey]?.also { cacheHit = true } ?: withContext(Dispatchers.Default) {
+        return bitmapCacheMutex.withLock {
+            bitmapCache[image.cacheKey] ?: withContext(Dispatchers.Default) {
                 val bitmap = image.painter.toImageBitmap(
                     density = image.density,
                     layoutDirection = image.layoutDirection,
@@ -95,10 +91,6 @@ internal class DynamicStyleImageRegistry {
                 )
             }.also { bitmapCache[image.cacheKey] = it }
         }
-        MapPerformanceDiagnostics.log {
-            "Rasterized style image $id in ${started.elapsedNow()} (cacheHit=$cacheHit)"
-        }
-        return resolved
     }
 
     fun pendingImageIds(
@@ -219,17 +211,12 @@ internal fun BindDynamicStyleImages(
                     images.keys,
                 )
                 if (ids.isEmpty()) return@collectLatest
-                val started = TimeSource.Monotonic.markNow()
-                var added = 0
-                var addTime = kotlin.time.Duration.ZERO
-                val addTimings = mutableListOf<String>()
                 ids.forEach { id ->
                     val image = registry.resolve(id) ?: return@forEach
                     withFrameNanos {}
                     while (true) {
                         snapshotFlow { mapState.style.loadState }
                             .first { it == StyleLoadState.Ready }
-                        val addStarted = TimeSource.Monotonic.markNow()
                         try {
                             withContext(NonCancellable) {
                                 withContext(Dispatchers.Default) {
@@ -237,21 +224,12 @@ internal fun BindDynamicStyleImages(
                                 }
                                 registry.recordInstalled(id)
                             }
-                            val elapsed = addStarted.elapsedNow()
-                            addTime += elapsed
-                            addTimings += "$id=$elapsed"
-                            added += 1
                             break
                         } catch (error: IllegalStateException) {
                             if (!error.isStyleHandleRace()) throw error
                             withFrameNanos {}
                         }
                     }
-                }
-                MapPerformanceDiagnostics.log {
-                    "Published $added style images across display frames in " +
-                        "${started.elapsedNow()}; image adds $addTime; " +
-                        addTimings.joinToString(prefix = "perImage=[", postfix = "]")
                 }
             }
     }

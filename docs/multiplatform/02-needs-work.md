@@ -1,5 +1,28 @@
 # What still needs work
 
+Checked implementation items below are not full parity claims. Historical test
+counts and demonstrations describe their recorded revisions in `04-validation.md`.
+
+## Real-device findings from 2026-09-04
+
+The [iPhone walk report](https://github.com/streetcomplete/StreetComplete/pull/7068#issuecomment-5547402966)
+confirms usable mapping, completed quests, notes with photos, and location tracking
+on this probe. It also records these unresolved observations:
+
+- [ ] Intermittent jank and freezes, including navigation to Settings.
+- [ ] Broken map-to-menu transition backgrounds.
+- [ ] Inverted location-indicator bearing while camera tracking rotates correctly.
+- [ ] System 24-hour time preference is not respected in the opening-hours form.
+- [ ] Quest forms lack an obvious close control on iOS. Closing must preserve the
+  form's existing discard-confirmation flow.
+- [ ] One download failed and appeared to succeed on retry; cause unknown.
+- [x] Remove the custom iOS crash-report dialog path, as requested in the PR thread.
+  This removal does not diagnose whether the reported repeated dialog represented
+  repeated crashes or repeated presentation of an old report.
+
+The old synthetic performance scenario was removed on 2026-09-05. It does not
+cover this remaining jank. These probe observations do not verify fixes on master.
+
 ## Target and entry-point parity
 
 - [x] Add a JVM desktop library target.
@@ -61,11 +84,9 @@
   inventory demonstrates that no live functionality depends on them.
 - [x] Restore the legacy 300 ms, system-animation-scale-aware global style
   transition through the common imperative style API.
-- [x] Account for every current map data source, layer, selection flow, camera
-  behavior, gesture, offline-area visualization, quest/edit pin interaction,
-  track, overlay, and location behavior. Preserved behavior is implemented and
-  tested; the exact MapLibre Compose API gaps above each have code TODOs and
-  corresponding upstream notes rather than silent omissions.
+- [ ] Establish runtime parity for map behavior. Shared implementations and focused
+  tests exist, but the device findings above and the historical source audit
+  prevent a completeness claim.
 - [x] Follow the post-v0.15 MapLibre Compose snapshot series on this validation
   branch. Core, location, target, resource, and runtime artifacts resolve through
   the standard Maven snapshot repository; the validated publication is recorded
@@ -75,14 +96,15 @@
 
 - [x] Replace the iOS upload, download, changeset auto-close, and network-state
   stubs with functional in-process implementations.
-- [x] Register Apple background processing so pending edits upload and inactive
-  changesets close after iOS suspends or relaunches the process. The task is
-  network-constrained, cancellation-aware, rescheduled after every launch, and
-  reports completion to `BGTaskScheduler`.
+- [x] Register an Apple processing task for pending uploads and changeset closure.
+- [ ] Validate iOS background-sync policy and actual task execution. Registration
+  and linkage alone do not prove suspended-time uploads or changeset closure.
+- [ ] Implement OS-scheduled iOS cleanup through `IosPeriodicCleaner`. The current
+  daily coroutine in `ApplicationInitializer` runs only while its process can execute.
 - [ ] Add background map-data downloads only if StreetComplete adopts an
   Apple-approved background-location mode. The current when-in-use authorization
   cannot provide a current vicinity after iOS suspends the foreground scene.
-- [ ] Configure the real App Store identity once the iOS product record exists.
+- [x] Use the App Store identity from master, `6808344816`.
 - [ ] Validate the promised iOS 15 minimum on an iOS 15 device/runtime after
   Compose/Skiko republishes its ICU data object with a compatible deployment
   target. The current Skiko Native cache member `libicu.icudtl_dat.o` declares
@@ -93,8 +115,8 @@
   exported SQLite symbol set.
 - [x] Audit iOS behavior that compiled but was placeholder-level. Foreground
   startup uses the production initializer, email launching is functional,
-  unhandled Kotlin exceptions persist for the shared crash dialog, and eligible
-  sync work has a real Apple background-processing boundary. The scale bar now
+  iOS leaves crash reporting to the platform, and eligible sync work has an Apple
+  background-processing adapter whose execution remains unvalidated. The scale bar now
   consumes Foundation's measurement system, the photo flow declares camera use,
   and the map chooser uses the invoking Compose scene, a weak host reference, and
   an iPad-safe presentation anchor.
@@ -115,9 +137,14 @@
   therefore never presents the mobile-only camera action.
 - [ ] Replace opening an exported log file with a native desktop share sheet when
   Compose Desktop exposes a portable share API.
-- [ ] Make desktop distribution fail with a targeted explanation on hosts for
-  which MapLibre Compose publishes no runtime. The current published matrix
-  covers macOS ARM64 plus Linux and Windows x64/ARM64, but not macOS x64.
+
+Desktop installer releases are out of scope for this probe. The macOS development
+launcher still needs a local app image and its resources for Core Location.
+
+- [x] Resolve the macOS local-launch location requirement. `mise run run:desktop`
+  uses `:app:runDistributable` with location purpose strings and entitlements,
+  following the MapLibre Compose demo. The 2026-09-05 check rendered the map and
+  received location updates that triggered a successful nearby quest download.
 
 ## Completeness safeguards
 
@@ -143,7 +170,5 @@
   Metal application and incoming `geo:` camera position; iOS covers live style
   rendering, incoming `geo:` camera changes, and light/dark adaptation.
 - [x] Verify shared glyph resources in a built and running iOS application bundle.
-- [x] Obtain independent adversarial reviews of functionality parity, architecture,
-  commit structure, and target evidence; fix all confirmed findings. Three fresh
-  reviewers cleared the rewritten source, evidence, and layered history after the
-  final findings were corrected.
+- [ ] Resolve or explicitly defer the remaining source-audit and device findings.
+  Earlier review and test results do not establish complete migration parity.

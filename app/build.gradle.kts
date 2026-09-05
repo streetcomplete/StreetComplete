@@ -2,7 +2,6 @@ import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.BOOLEAN
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import dev.mokkery.MockMode
 import org.gradle.api.tasks.Sync
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileWriter
 
@@ -17,8 +16,6 @@ val desktopMapLibreRuntimeArtifact = run {
     val artifactArchitecture = when (architecture) {
         "aarch64", "arm64" -> "arm64"
         "amd64", "x86_64" -> "x64"
-        // TODO(multiplatform): Fail desktop distribution tasks with a targeted message when no
-        // published MapLibre Compose runtime exists for the host instead of producing no package.
         else -> null
     }
     when {
@@ -359,6 +356,7 @@ compose {
     }
 }
 
+// The local macOS launcher needs an app bundle for Core Location's privacy declarations.
 val prepareDesktopAppResources = tasks.register<Sync>("prepareDesktopAppResources") {
     from(layout.projectDirectory.dir("src/commonMain/composeResources/files"))
     into(layout.buildDirectory.dir("desktopAppResources/common"))
@@ -372,23 +370,25 @@ compose.desktop {
     application {
         from(kotlin.targets["desktop"])
         mainClass = "de.westnordost.streetcomplete.DesktopMainKt"
-        dependsOn(prepareDesktopAppResources.get())
         jvmArgs("--enable-native-access=ALL-UNNAMED")
         nativeDistributions {
-            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            modules("java.net.http", "java.prefs", "jdk.unsupported")
+            // Build a local app image for runDistributable, not DMG/MSI/DEB installers.
             packageName = "StreetComplete"
-            val numericVersion = appVersionName.substringBefore('-')
-            packageVersion = if (numericVersion.count { it == '.' } == 1) {
-                "$numericVersion.0"
-            } else {
-                numericVersion
-            }
-            description = "Survey OpenStreetMap from your desktop"
-            vendor = "StreetComplete contributors"
+            packageVersion = "1.0.0"
+            modules("java.net.http", "java.prefs", "jdk.unsupported")
             appResourcesRootDir.set(layout.buildDirectory.dir("desktopAppResources"))
             macOS {
                 bundleID = "de.westnordost.streetcomplete"
+                entitlementsFile.set(layout.projectDirectory.file("desktop/entitlements.plist"))
+                runtimeEntitlementsFile.set(layout.projectDirectory.file("desktop/entitlements.plist"))
+                infoPlist {
+                    extraKeysRawXml = """
+                        <key>NSLocationWhenInUseUsageDescription</key>
+                        <string>StreetComplete uses your location to show your position on the map and download nearby quests.</string>
+                        <key>NSLocationUsageDescription</key>
+                        <string>StreetComplete uses your location to show your position on the map and download nearby quests.</string>
+                    """.trimIndent()
+                }
             }
         }
     }

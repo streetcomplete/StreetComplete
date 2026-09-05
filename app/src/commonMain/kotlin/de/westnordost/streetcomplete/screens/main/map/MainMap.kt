@@ -41,7 +41,6 @@ fun MainMap(
     state: MainMapState = rememberMainMapState(),
     // TODO(maplibre-compose): Configure StreetComplete's exact pan/rotate/tilt/fling thresholds
     // and disable rotation while scaling when the common gesture API exposes those controls.
-    onFrame: (framesPerSecond: Double) -> Unit = {},
     overlay: MapOverlay = MapOverlay {},
     viewModel: MainMapViewModel = koinViewModel(),
 ) {
@@ -55,17 +54,6 @@ fun MainMap(
     val questPins = viewModel.questPins.collectAsState().value
     val editHistoryPins = viewModel.editHistoryPins.collectAsState().value
     val styledElements = viewModel.styleableElements.collectAsState().value
-
-    LaunchedEffect(questPins) {
-        MapPerformanceDiagnostics.log {
-            "MainMap collected ${questPins.pins.size} quest pins at revision ${questPins.revision}"
-        }
-    }
-    LaunchedEffect(styledElements) {
-        MapPerformanceDiagnostics.log {
-            "MainMap collected ${styledElements.size} styled elements"
-        }
-    }
 
     // Visibility is transient selection UI. Keep the active pin pipeline and its viewport cache
     // alive while the ordinary pins are hidden, matching master's layer-visibility toggle.
@@ -157,7 +145,6 @@ fun MainMap(
         cameraPadding = state.cameraPadding,
         onClick = onClick,
         onLongClick = onLongClick,
-        onFrame = onFrame,
         overlay = overlay,
     )
 }
