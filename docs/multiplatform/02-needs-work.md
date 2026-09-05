@@ -7,11 +7,13 @@ counts and demonstrations describe their recorded revisions in `04-validation.md
 
 The [iPhone walk report](https://github.com/streetcomplete/StreetComplete/pull/7068#issuecomment-5547402966)
 confirms usable mapping, completed quests, notes with photos, and location tracking
-on this probe. It also records these unresolved observations:
+on this probe. Follow-up status for its other observations:
 
 - [ ] Intermittent jank and freezes, including navigation to Settings.
 - [ ] Broken map-to-menu transition backgrounds.
-- [ ] Inverted location-indicator bearing while camera tracking rotates correctly.
+- [x] Correct the inverted location-indicator bearing. The shared screen now uses
+  the clockwise angle from north to the heading, then subtracts camera bearing.
+  Regression tests cover direction and camera rotation; an iPhone recheck remains.
 - [ ] System 24-hour time preference is not respected in the opening-hours form.
 - [ ] Quest forms lack an obvious close control on iOS. Closing must preserve the
   form's existing discard-confirmation flow.

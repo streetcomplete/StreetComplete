@@ -153,12 +153,9 @@ fun MainScreen(
         with(density) { Offset(it.x.toPx(), it.y.toPx()) }
     }
     val locationState = getLocationState(locationPermission, latestLocationEvent)
-    val locationRotation = heading
-        ?.bearing
-        ?.clockwiseRotationTo(Bearing.North)
-        ?.toDouble(DMS.Degrees)
-        ?.minus(mapCamera.bearing)
-        ?.toFloat()
+    val locationRotation = heading?.let {
+        locationIndicatorRotation(it.bearing, mapCamera.bearing)
+    }
 
     val showZoomButtons by viewModel.showZoomButtons.collectAsState()
 
@@ -741,6 +738,10 @@ fun MainScreen(
         )
     }
 }
+
+/** Clockwise screen rotation for the viewport-aligned location indicator. */
+internal fun locationIndicatorRotation(heading: Bearing, cameraBearing: Double): Float =
+    ((heading - Bearing.North).toDouble(DMS.Degrees) - cameraBearing).toFloat()
 
 private enum class Toast {
     Offline,

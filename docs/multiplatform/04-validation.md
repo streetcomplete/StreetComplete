@@ -759,3 +759,17 @@ All three were captured from binaries rebuilt from the production source tree
 retained in revision `4e26d7588`
 with MapLibre Compose `0.15.1-20260901.101938-7`. The recordings are intentionally
 not committed to the repository to avoid retaining large binary blobs.
+
+## Location-indicator direction correction, 2026-09-05
+
+`MainScreen` now converts heading to clockwise degrees from north before
+subtracting camera bearing. Previously, it measured the clockwise turn from the
+heading back to north, reversing the indicator's rotation.
+
+`LocationIndicatorRotationTest` exercises the production conversion for compass
+directions, camera-relative rotation, and a heading aligned with the camera.
+All three tests failed with the old calculation and passed with the correction.
+
+`mise exec -- ./gradlew :app:testAndroidHostTest :app:compileKotlinIosArm64`
+passed. The host suite reported 2,554 tests, one skipped, and no failures or errors.
+This verifies the conversion and iOS compilation, not an iPhone visual recheck.
