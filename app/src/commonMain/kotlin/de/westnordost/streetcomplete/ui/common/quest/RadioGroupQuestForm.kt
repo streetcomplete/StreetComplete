@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.ui.common.RadioGroup
+import org.jetbrains.compose.resources.stringResource
 
 /** Quest form in which the [items] are displayed as a list of radio buttons */
 @Composable
@@ -19,6 +20,7 @@ fun <I> RadioGroupQuestForm(
     items: List<I>,
     itemContent: @Composable (item: I) -> Unit,
     modifier: Modifier = Modifier,
+    title: String = stringResource(LocalQuestType.current!!.title),
     otherAnswers: @Composable (() -> List<AnswerItem>) = { emptyList() },
 ) {
     var checkedItemIndex by rememberSaveable(items) { mutableStateOf<Int>(-1) }
@@ -30,6 +32,7 @@ fun <I> RadioGroupQuestForm(
         isComplete = checkedItem != null,
         onClickOk = { on(Answer(checkedItem!!)) },
         modifier = modifier,
+        title = title,
         otherAnswers = otherAnswers,
     ) {
         RadioGroup(
