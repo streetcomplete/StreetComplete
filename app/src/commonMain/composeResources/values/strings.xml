@@ -1763,6 +1763,8 @@
     <string name="quest_traffic_signals_vibrate_title">Do these traffic lights have a tactile indication for blind people for when it’s safe to cross?</string>
     <string name="quest_traffic_signals_vibrate_description">Hint: Often this is a vibrating button or rotating cone on the underside of the traffic light button case.</string>
 
+    <string name="quest_vending_machine_type">What type of vending machine is this?</string>
+
     <string name="quest_wheelchairAccess_outside_title">Is this place wheelchair accessible?</string>
     <string name="quest_wheelchairAccess_toiletsPart_title2">Is the restroom at this place wheelchair accessible?</string>
     <string name="quest_wheelchairAccessPat_noToilet">There is no restroom here</string>

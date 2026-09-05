@@ -189,6 +189,7 @@ import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmi
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
 import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound
 import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
+import de.westnordost.streetcomplete.quests.vending_machine.AddVendingMachineType
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside
@@ -416,6 +417,8 @@ fun questTypeRegistry(
     87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
     179 to AddChargingStationBicycleCapacity(),
     88 to AddChargingStationOperator(),
+
+    194 to AddVendingMachineType(), // May take some time to find the machine in building with multiple levels
 
     // postboxes (collection times are further up, see comment)
     89 to AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
