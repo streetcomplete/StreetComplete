@@ -114,7 +114,7 @@ val desktopModule = module {
     factory<SystemSettingsLauncher> { DesktopSystemSettingsLauncher() }
 
     single<MapRuntime> {
-        createMapRuntime(MapRuntimeOptions(applicationId = "de.westnordost.streetcomplete"))
+        createMapRuntime(MapRuntimeOptions())
     } onClose { it?.close() }
     factory<MapTilesDownloader> {
         val transform = GraphicsEnvironment

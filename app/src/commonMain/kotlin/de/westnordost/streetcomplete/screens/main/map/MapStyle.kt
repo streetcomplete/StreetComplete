@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -11,6 +12,7 @@ import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_attribution_osm
 import de.westnordost.streetcomplete.resources.map_oneway_arrow
+import de.westnordost.streetcomplete.ui.util.ColorFilterPainter
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.maplibre.compose.expressions.ast.Expression
@@ -461,6 +463,10 @@ private fun BridgeAreasLayers(source: Source, colors: MapColors) {
 
 @Composable @MaplibreComposable
 private fun OnewayArrowsLayer(source: Source, colors: MapColors) {
+    val arrow = painterResource(Res.drawable.map_oneway_arrow)
+    val tintedArrow = remember(arrow, colors.onewayArrow) {
+        ColorFilterPainter(arrow, ColorFilter.tint(colors.onewayArrow))
+    }
     SymbolLayer(
         id = "oneway-arrows",
         source = source,
@@ -469,8 +475,7 @@ private fun OnewayArrowsLayer(source: Source, colors: MapColors) {
         filter = all(feature.isLines(), feature.has("oneway", true)),
         placement = const(SymbolPlacement.Line),
         spacing = byZoom(17 to 200.dp, 24 to 25600.dp),
-        iconImage = image(painterResource(Res.drawable.map_oneway_arrow)),
-        iconColor = const(colors.onewayArrow),
+        iconImage = image(tintedArrow),
         iconSize = byZoom(17 to 0.25f, 24 to 16.0f),
         iconPadding = const(DpPadding(5.dp, 5.dp, 5.dp, 5.dp)),
         iconRotate = const(90),

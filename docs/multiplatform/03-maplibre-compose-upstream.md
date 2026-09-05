@@ -4,8 +4,9 @@ This file records StreetComplete integration findings that should be fixed or
 improved in MapLibre Compose. Entries must include a reproducer or precise missing
 API before they are considered actionable.
 
-The upstream audit below is dated 2026-09-04; the 2026-09-05 cleanup did not update
-the dependency or re-audit upstream. The synthetic scenario and timing hooks used
+The upstream audit below is dated 2026-09-04. The 2026-09-05 branch integration
+updates the dependency to a publication of that audited commit, without a new
+audit of later upstream changes. The synthetic scenario and timing hooks used
 for earlier measurements have been removed. Those measurements remain historical
 evidence, not coverage of the current real-device jank. The last pre-cleanup code
 is available at `3be8406d6b0126781061aa68b766a4477ab76752`.
@@ -13,9 +14,10 @@ is available at `3be8406d6b0126781061aa68b766a4477ab76752`.
 ## Dependency baseline
 
 - Dependency version: `0.15.1-SNAPSHOT`.
-- Resolved publication rechecked on 2026-09-04:
-  `0.15.1-20260903.101931-9`.
-- The resolved publication was built from MapLibre Compose commit `c0e96909`.
+- Resolved publication rechecked on 2026-09-05:
+  `0.15.1-20260904.102255-10`.
+- The resolved publication was built from MapLibre Compose commit `71c5b258` by
+  [the September 4 daily run](https://github.com/maplibre/maplibre-compose/actions/runs/33862529720).
 - Latest MapLibre Compose `main` audited on 2026-09-04: `71c5b258`.
 - The snapshot includes the shared map artifact and platform runtime artifacts,
   including Android OpenGL, macOS ARM64 Metal, and Linux/Windows Vulkan for
@@ -25,6 +27,11 @@ is available at `3be8406d6b0126781061aa68b766a4477ab76752`.
 - This branch intentionally follows the mutable snapshot version so it can test
   new MapLibre Compose publications without maintaining a timestamped artifact
   manifest. Update the resolved publication above after validating a new build.
+
+The September 5 integration replaces `MapStyleScope` with `LocalMapState` in the
+state-owned style, uses `DefaultMapRuntime.instance` for the optional default,
+and uses the unified `MapRuntimeOptions` platform cache defaults. The app's
+ordinary map and offline downloader still share the Koin-owned runtime.
 
 ## Pending on latest main
 

@@ -44,7 +44,6 @@ import org.maplibre.compose.location.IosLocationProvider
 import org.maplibre.compose.location.IosSystemSettingsLauncher
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.SystemSettingsLauncher
-import org.maplibre.compose.ios.iosCacheFile
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MapRuntimeOptions
 import org.maplibre.compose.map.createMapRuntime
@@ -132,7 +131,7 @@ val iosModule = module {
 
     // map runtime and offline base-map storage
 
-    single<MapRuntime> { createMapRuntime(MapRuntimeOptions(iosCacheFile())) }
+    single<MapRuntime> { createMapRuntime(MapRuntimeOptions()) }
     factory<MapTilesDownloader> {
         MapLibreMapTilesDownloader(
             runtime = get(),

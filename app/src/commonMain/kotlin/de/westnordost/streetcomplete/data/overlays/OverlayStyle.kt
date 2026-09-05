@@ -29,8 +29,7 @@ sealed interface OverlayStyle {
     data class Polygon(
         /** polygon area color */
         val color: Color,
-        /** icon resource to show on the point. It shall be drawn with
-         *  [WithHaloPainter][de.westnordost.streetcomplete.ui.util.WithHaloPainter] */
+        /** icon resource to show on the point with a halo */
         val icon: DrawableResource? = null,
         /** label to show in the center of the area */
         val label: String? = null,
@@ -41,8 +40,7 @@ sealed interface OverlayStyle {
     ) : OverlayStyle
 
     data class Point(
-        /** icon resource to show on the point. It shall be drawn with
-         *  [WithHaloPainter][de.westnordost.streetcomplete.ui.util.WithHaloPainter] */
+        /** icon resource to show on the point with a halo */
         val icon: DrawableResource?,
         /** label to show on the point */
         val label: String? = null,

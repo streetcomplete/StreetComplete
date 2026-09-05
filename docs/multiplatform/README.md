@@ -12,6 +12,30 @@ without release-distribution packaging.
 - [Android map retirement](05-android-map-retirement.md)
 - [Historical source audit](06-source-audit.md)
 
+## Base branch integration on 2026-09-05
+
+The probe now builds on StreetComplete's `maplibre-compose` branch at `05b04f1c6`,
+instead of `master`. The previous probe tip was `08870b8a6`. All 85 probe commits
+were replayed; overlapping implementations were reconciled rather than kept as
+parallel map stacks.
+
+| Area | Integration decision |
+| --- | --- |
+| Map state and viewport data | Keep the probe's shared navigation, camera controller, serialized viewport updates, and off-main prepared GeoJSON. The base branch still rebuilds feature collections in map composition. |
+| Images and selection | Keep the probe's dynamic image registry, image-before-source ordering, and imperative selection animation. These implement the earlier measured performance fixes. |
+| Base style | Keep the probe's legacy-map parity choices, including font sizing and corrected feature filters. Use the base branch's `ColorFilterPainter` to tint the non-SDF oneway image; `iconColor` does not tint a normal bitmap. |
+| Scale bar | Use the base branch's MapLibre Compose scale bar. Remove the probe's obsolete platform measurement adapters and their test. |
+| Offline maps | Keep the probe's runtime-owned manager and pixel ratio. Add the base branch's timestamp expiry and `Cleaner` call. One downloader implements both. |
+| Shared types and resources | Keep one `Pin` in the base branch's separate file and reuse the existing quest `Marker`. Remove duplicate images and the unused halo shader path; the probe already supplies SDF icons through the image registry. |
+| Debug map | Remove the base branch's settings-only preview. The ordinary main screen already runs the shared map on all targets. |
+| Apple linkage | Remove the base branch's manual linker override. Its quoted `-framework Name` arguments fail the Swift app link; keep the probe's existing linkage. |
+
+The snapshot coordinate remains mutable. Build validation also required adapting
+to the newly resolved publication's `LocalMapState`, `DefaultMapRuntime`, and
+platform-default runtime options. The resolved version belongs in
+[the dependency baseline](03-maplibre-compose-upstream.md#dependency-baseline).
+This integration does not replace the outstanding physical-iPhone validation.
+
 ## Cleanup on 2026-09-05
 
 - Removed the custom iOS crash reporter. iOS uses master's empty report holder;

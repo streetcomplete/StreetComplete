@@ -7,14 +7,13 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.map.CameraConstraints
+import org.maplibre.compose.map.DefaultMapRuntime
 import org.maplibre.compose.map.GestureOptions
 import org.maplibre.compose.map.MapRuntime
-import org.maplibre.compose.map.MapStyleScope
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.MaplibreMap
 import org.maplibre.compose.map.RenderOptions
 import org.maplibre.compose.map.TileLodOptions
-import org.maplibre.compose.map.rememberDefaultMapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.MapOverlay
 import org.maplibre.compose.overlay.include
@@ -58,8 +57,8 @@ fun StreetCompleteMap(
 @Composable
 fun rememberStreetCompleteMapState(
     initialCameraPosition: CameraPosition = CameraPosition(),
-    runtime: MapRuntime = rememberDefaultMapRuntime(),
-    content: @Composable @MaplibreComposable MapStyleScope.() -> Unit = {},
+    runtime: MapRuntime = DefaultMapRuntime.instance,
+    content: @Composable @MaplibreComposable () -> Unit = {},
 ): MapState = rememberMapState(
     runtime = runtime,
     baseStyle = BaseStyle.Json(streetCompleteBaseStyle()),

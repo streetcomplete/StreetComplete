@@ -35,6 +35,7 @@ import org.maplibre.compose.camera.CameraMoveReason
 import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationMeasurement
+import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MapState
 import org.maplibre.spatialk.geojson.BoundingBox
@@ -179,7 +180,12 @@ fun rememberMainMapState(
         styleConfiguration.languages = languages
     }
     val mapState = rememberStreetCompleteMapState(persistedState.loadCamera(), runtime) {
-        MainMapStyle(mapState, styleConfiguration, tracks, content)
+        MainMapStyle(
+            checkNotNull(LocalMapState.current),
+            styleConfiguration,
+            tracks,
+            content,
+        )
     }
     val scope = rememberCoroutineScope()
     val state = remember(mapState, persistedState, scope, tracks, content, styleConfiguration) {

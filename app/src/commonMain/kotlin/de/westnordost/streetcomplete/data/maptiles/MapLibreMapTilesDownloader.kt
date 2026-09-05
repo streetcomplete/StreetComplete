@@ -23,8 +23,7 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun deleteOld(time: Long) {
         for (pack in manager.packs.toList()) {
-            val packTime = pack.metadata?.decodeToString()?.toLongOrNull()
-            if (packTime == null || packTime < time) manager.delete(pack)
+            if (isOfflinePackExpired(pack.metadata, time)) manager.delete(pack)
         }
     }
 
@@ -90,6 +89,12 @@ internal fun BoundingBox.toOfflinePackDefinition(pixelRatio: Float) =
         maxZoom = 16,
         pixelRatio = pixelRatio,
     )
+
+/** Packs without a readable timestamp follow the same expiry policy as the migration branch. */
+internal fun isOfflinePackExpired(metadata: ByteArray?, before: Long): Boolean {
+    val timestamp = metadata?.decodeToString()?.toLongOrNull()
+    return timestamp == null || timestamp < before
+}
 
 private val DownloadProgress.isTerminal: Boolean
     get() = when (this) {

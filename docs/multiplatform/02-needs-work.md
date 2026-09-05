@@ -123,7 +123,7 @@ cover this remaining jank. These probe observations do not verify fixes on maste
   startup uses the production initializer, email launching is functional,
   iOS leaves crash reporting to the platform, and eligible sync work has an Apple
   background-processing adapter whose execution remains unvalidated. The scale bar now
-  consumes Foundation's measurement system, the photo flow declares camera use,
+  delegates measurement preferences to MapLibre Compose, the photo flow declares camera use,
   and the map chooser uses the invoking Compose scene, a weak host reference, and
   an iPad-safe presentation anchor.
 - [ ] Enable AR measurement on iOS if StreetMeasure publishes a compatible

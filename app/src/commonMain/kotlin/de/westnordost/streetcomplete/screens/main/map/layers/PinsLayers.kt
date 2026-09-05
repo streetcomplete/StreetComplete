@@ -184,13 +184,6 @@ internal fun PinsLayers(
     )
 }
 
-data class Pin(
-    val position: LatLon,
-    val icon: DrawableResource,
-    val properties: Collection<Pair<String, String>> = emptyList(),
-    val order: Int = 0,
-)
-
 /** Reuses prepared pin data until its contents change. */
 class PinSnapshot private constructor(
     val pins: List<Pin>,

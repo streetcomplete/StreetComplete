@@ -4,6 +4,30 @@ Validation claims in this file distinguish compilation, automated tests, and
 interactive runtime evidence. A compile result is not treated as proof of feature
 parity.
 
+## Rebase onto `maplibre-compose` on 2026-09-05
+
+These checks cover the integration onto `05b04f1c6`, using MapLibre Compose
+publication `0.15.1-20260904.102255-10`. The integration decisions are recorded in
+[the branch overview](README.md#base-branch-integration-on-2026-09-05).
+
+| Check | Result |
+| --- | --- |
+| `mise exec -- ./gradlew :app:compileKotlinDesktop :app:compileKotlinIosArm64 :app:testAndroidHostTest :androidApp:assembleDebug --refresh-dependencies --console=plain` | Pass. Android host suite: 2,557 tests, one skipped, no failures or errors. Desktop and physical-iPhone source compile; Android debug APK assembles. |
+| `mise exec -- ./gradlew :app:iosSimulatorArm64Test --tests '*MapLibreMapTilesDownloaderTest' --tests '*LocationIndicatorRotationTest' --tests '*AutomaticTimeFormatTest' --console=plain` | Pass. All nine focused native tests pass, covering offline bounds/pixel ratio and expiry policy, bearing rotation, and automatic time-format preferences. |
+| Debug Xcode build for iPhone 17 simulator, iOS 26.5, with signing disabled | Pass. The initial build exposed malformed framework linker arguments inherited from the new base; removing the manual override restores the app link. |
+| Simulator install and launch | Map renders, simulated location appears, and quest icons load around New York City Hall. Opening Settings and returning restores the map. Accessibility zoom buttons transition from quests to clusters and back to quests. |
+| Git ancestry and source comparison | New base is an ancestor; all 85 original probe commit subjects remain. Eight performance-critical source, image-registry, and imperative-layer files match the saved probe byte for byte. |
+
+The first compilation exposed API changes in the newly resolved mutable snapshot;
+the successful build above includes the runtime and style-composition adaptations.
+Offline expiry tests verify the timestamp policy, not actual deletion of cached packs.
+
+Coordinate input was blocked because the automation tool could not confirm window
+focus. Drag-panning and quest selection were therefore not validated. Zoom buttons
+were enabled only in the simulator's local settings. No quests were completed or
+uploaded. No physical iPhone or desktop runtime was exercised in this integration;
+the simulator observations are not performance acceptance for either device.
+
 ## Historical evidence and cleanup
 
 The entries below record earlier builds and runs, not a current acceptance matrix.

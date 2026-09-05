@@ -7,8 +7,6 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import de.westnordost.streetcomplete.data.quest.QuestType
-import de.westnordost.streetcomplete.screens.settings.debug.ShowMapScreen
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsScreen
 import de.westnordost.streetcomplete.screens.settings.language_selection.LanguageSelectionScreen
 import de.westnordost.streetcomplete.screens.settings.messages.MessageSelectionScreen
@@ -46,7 +44,6 @@ import org.koin.compose.viewmodel.koinViewModel
                 onClickOverlaySelection = { navController.navigate(SettingsDestination.OverlaySelection) },
                 onClickLanguageSelection = { navController.navigate(SettingsDestination.LanguageSelection) },
                 onClickMessagesSelection = { navController.navigate(SettingsDestination.MessagesSelection) },
-                onClickShowMap = { navController.navigate(SettingsDestination.ShowMap) },
                 onClickBack = ::goBack
             )
         }
@@ -86,11 +83,6 @@ import org.koin.compose.viewmodel.koinViewModel
                 onClickBack = ::goBack,
             )
         }
-        composable(SettingsDestination.ShowMap) {
-            ShowMapScreen(
-                onClickBack = ::goBack,
-            )
-        }
     }
 }
 
@@ -102,5 +94,4 @@ object SettingsDestination {
     const val LanguageSelection = "language_selection"
     const val MessagesSelection = "messages_selection"
     const val ShowQuestForms = "show_quest_forms"
-    const val ShowMap = "show_map"
 }

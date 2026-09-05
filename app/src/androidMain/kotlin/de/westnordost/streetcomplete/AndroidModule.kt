@@ -127,7 +127,7 @@ val androidModule = module {
     factory<PeriodicCleaner> { AndroidPeriodicCleaner(androidContext()) }
     worker { CleanerWorker(get(), get(), get()) }
 
-    single<MapRuntime> { createMapRuntime(MapRuntimeOptions(androidContext())) }
+    single<MapRuntime> { createMapRuntime(MapRuntimeOptions()) }
     factory<MapTilesDownloader> {
         MapLibreMapTilesDownloader(
             runtime = get(),
