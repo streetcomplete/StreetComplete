@@ -13,7 +13,6 @@ import org.maplibre.compose.offline.DownloadStatus
 import org.maplibre.compose.offline.OfflineManager
 import org.maplibre.compose.offline.OfflinePackDefinition
 
-/** Stores StreetComplete's base style through MapLibre Compose's shared offline-pack API. */
 class MapLibreMapTilesDownloader(
     private val manager: OfflineManager,
     private val pixelRatio: Float,
