@@ -58,7 +58,9 @@ class CheckExistence(
             or emergency ~ life_ring|phone
             or emergency = defibrillator and (indoor = no or access = yes)
             or (
-              man_made = surveillance and surveillance:type = camera and surveillance ~ outdoor|public
+              man_made = surveillance
+              and surveillance:type = camera
+              and surveillance ~ outdoor|public
               and !highway
             )
           )
