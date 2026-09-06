@@ -28,7 +28,7 @@ class AddRoofShape(
 
     private val filter by lazy { """
         ways, relations with
-          ((building:levels or roof:levels) or (building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")}))
+          ((building:levels or roof:levels) or building ~ ${BUILDINGS_WITH_LEVELS.joinToString("|")})
           and !roof:shape and !3dr:type and !3dr:roof
           and building
           and building !~ no|construction

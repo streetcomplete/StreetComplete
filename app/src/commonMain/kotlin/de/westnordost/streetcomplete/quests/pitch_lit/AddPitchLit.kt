@@ -20,7 +20,7 @@ class AddPitchLit : OsmFilterQuestType<Boolean>() {
             leisure ~ pitch|track|fitness_station
             or piste:type and !highway
         )
-        and (access !~ private|no)
+        and access !~ private|no
         and indoor != yes and (!building or building = no)
         and (
           !lit
