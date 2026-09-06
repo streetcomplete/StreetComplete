@@ -41,8 +41,7 @@ class StreetParkingOverlay : Overlay {
         """).map { it to getStreetParkingStyle(it) } +
         // separate parking
         mapData.filter("""
-            nodes, ways, relations with
-            amenity = parking
+            nodes, ways, relations with amenity = parking
         """).map {
             val style =
                 if (it is Node) parkingLotPointStyle.copy(disabled = true)
