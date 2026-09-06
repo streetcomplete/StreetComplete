@@ -17,7 +17,8 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddMotorcycleParkingCover : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with amenity = motorcycle_parking
+        nodes, ways with
+        amenity = motorcycle_parking
         and access !~ private|no
         and !covered
         and motorcycle_parking !~ shed|garage_boxes|building

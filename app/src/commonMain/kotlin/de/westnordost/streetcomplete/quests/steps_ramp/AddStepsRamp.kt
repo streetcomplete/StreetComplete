@@ -18,7 +18,8 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddStepsRamp : OsmFilterQuestType<StepsRampAnswer>() {
 
     override val elementFilter = """
-        ways with highway = steps
+        ways with
+         highway = steps
          and (!indoor or indoor = no)
          and access !~ private|no
          and surface ~ ${PAVED_SURFACES.joinToString("|")}

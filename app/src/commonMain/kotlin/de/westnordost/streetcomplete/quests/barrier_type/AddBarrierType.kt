@@ -22,7 +22,8 @@ import org.jetbrains.compose.resources.stringResource
 class AddBarrierType : OsmFilterQuestType<BarrierType>() {
 
     override val elementFilter = """
-        nodes with barrier = yes
+        nodes with
+         barrier = yes
          and !man_made
          and !historic
          and !military

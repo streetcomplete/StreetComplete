@@ -21,7 +21,8 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {
     override val elementFilter = """
-        ways with (
+        ways with
+        (
           sidewalk:both ~ none|no
           or sidewalk ~ none|no
           or (sidewalk:left ~ none|no and sidewalk:right ~ none|no)

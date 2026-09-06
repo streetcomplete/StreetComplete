@@ -25,7 +25,8 @@ class AddMaxPhysicalHeight(
     // quest if that quest was already answered with maxheight:signed = no
 
     private val nodeFilter by lazy { """
-        nodes with (
+        nodes with
+        (
           barrier = height_restrictor
           or amenity = parking_entrance and parking ~ underground|multi-storey
         )

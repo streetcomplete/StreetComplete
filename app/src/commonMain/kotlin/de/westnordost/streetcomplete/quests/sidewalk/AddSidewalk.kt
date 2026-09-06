@@ -85,7 +85,8 @@ class AddSidewalk : OsmElementQuestType<Sides<Sidewalk>> {
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
-            ways with (
+            ways with
+              (
                 highway ~ path|footway|steps
                 or highway ~ cycleway|bridleway and foot ~ yes|designated
               )

@@ -36,7 +36,8 @@ class StreetParkingOverlay : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry): Sequence<Pair<Element, OverlayStyle>> =
         // roads
         mapData.filter("""
-            ways with highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
+            ways with
+            highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
             and area != yes
         """).map { it to getStreetParkingStyle(it) } +
         // separate parking

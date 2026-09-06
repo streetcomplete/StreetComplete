@@ -27,7 +27,8 @@ class CheckExistence(
 ) : OsmElementQuestType<Unit> {
 
     private val nodesFilter by lazy { """
-        nodes with ((
+        nodes with
+        ((
           (
             amenity = atm
             or amenity = telephone

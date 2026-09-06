@@ -23,7 +23,8 @@ import org.jetbrains.compose.resources.stringResource
 class AddTactilePavingSteps : OsmFilterQuestType<TactilePavingStepsAnswer>() {
 
     override val elementFilter = """
-        ways with highway = steps
+        ways with
+         highway = steps
          and surface ~ ${PAVED_SURFACES.joinToString("|")}
          and !sac_scale
          and (!conveying or conveying = no)

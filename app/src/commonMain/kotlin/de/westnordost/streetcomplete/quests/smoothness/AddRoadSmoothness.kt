@@ -14,7 +14,8 @@ import de.westnordost.streetcomplete.resources.*
 class AddRoadSmoothness : OsmFilterQuestType<SmoothnessAnswer>() {
 
     override val elementFilter = """
-        ways with (
+        ways with
+          (
             highway ~ ${ROADS_TO_ASK_SMOOTHNESS_FOR.joinToString("|")}
             or highway = service and service !~ driveway|slipway
           )

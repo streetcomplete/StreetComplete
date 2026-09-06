@@ -18,7 +18,8 @@ import de.westnordost.streetcomplete.resources.*
 class AddCyclewayPartSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
-        ways with (
+        ways with
+        (
           highway = cycleway
           or (highway ~ path|footway and bicycle and bicycle != no)
           or (highway = bridleway and bicycle ~ designated|yes)

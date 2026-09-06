@@ -19,7 +19,8 @@ import de.westnordost.streetcomplete.resources.*
 class AddPathSurface : OsmFilterQuestType<PathSurfaceAnswer>() {
 
     override val elementFilter = """
-        ways with highway ~ path|footway|cycleway|bridleway|steps
+        ways with
+        highway ~ path|footway|cycleway|bridleway|steps
         and segregated != yes
         and access !~ private|no
         and (!conveying or conveying = no)

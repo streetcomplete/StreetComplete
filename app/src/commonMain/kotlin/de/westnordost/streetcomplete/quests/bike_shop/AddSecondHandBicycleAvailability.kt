@@ -18,7 +18,8 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAvailability>() {
     override val elementFilter = """
-        nodes, ways with shop = bicycle
+        nodes, ways with
+        shop = bicycle
         and (
             !service:bicycle:second_hand
             or service:bicycle:second_hand older today -6 years

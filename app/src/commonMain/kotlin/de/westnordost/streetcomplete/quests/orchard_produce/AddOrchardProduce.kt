@@ -13,7 +13,8 @@ import de.westnordost.streetcomplete.resources.*
 class AddOrchardProduce : OsmFilterQuestType<Set<OrchardProduce>>() {
 
     override val elementFilter = """
-        ways, relations with landuse = orchard
+        ways, relations with
+        landuse = orchard
         and !trees and !produce and !crop
         and orchard != meadow_orchard
     """

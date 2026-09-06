@@ -14,7 +14,8 @@ class AddBikeParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
 
     // element selection logic by @DerDings in #2507
     override val elementFilter = """
-        nodes, ways, relations with amenity = bicycle_parking
+        nodes, ways, relations with
+        amenity = bicycle_parking
         and access ~ yes|customers|public
         and (
             name

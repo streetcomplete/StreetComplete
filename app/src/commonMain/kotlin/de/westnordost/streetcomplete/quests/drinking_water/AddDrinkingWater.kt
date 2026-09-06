@@ -18,7 +18,8 @@ import org.jetbrains.compose.resources.stringResource
 class AddDrinkingWater : OsmFilterQuestType<DrinkingWater>() {
 
     override val elementFilter = """
-        nodes, ways with (
+        nodes, ways with
+        (
           man_made ~ water_tap|water_well
           or natural = spring
           or amenity = fountain and fountain = stone_block

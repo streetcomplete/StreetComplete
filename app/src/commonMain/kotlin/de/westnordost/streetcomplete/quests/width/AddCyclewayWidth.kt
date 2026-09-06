@@ -19,7 +19,8 @@ class AddCyclewayWidth(
     /* All either exclusive cycleways or ways that are cycleway + footway (or bridleway) but
      *  segregated */
     override val elementFilter = """
-        ways with (
+        ways with
+        (
           (
             highway = cycleway
             and foot !~ yes|designated

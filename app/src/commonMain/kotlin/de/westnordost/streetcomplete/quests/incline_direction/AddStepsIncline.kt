@@ -13,7 +13,8 @@ import de.westnordost.streetcomplete.resources.*
 class AddStepsIncline : OsmFilterQuestType<Incline>() {
 
     override val elementFilter = """
-        ways with highway = steps
+        ways with
+         highway = steps
          and (!indoor or indoor = no)
          and area != yes
          and access !~ private|no

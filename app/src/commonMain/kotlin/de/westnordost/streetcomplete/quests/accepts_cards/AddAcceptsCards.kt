@@ -19,7 +19,8 @@ import org.jetbrains.compose.resources.stringResource
 class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
 
     override val elementFilter = """
-        nodes, ways with (
+        nodes, ways with
+        (
           amenity ~ restaurant|cafe|fast_food|ice_cream|pub|bar|luggage_locker
           or (shop and shop !~ no|vacant|mall)
           or tourism = alpine_hut

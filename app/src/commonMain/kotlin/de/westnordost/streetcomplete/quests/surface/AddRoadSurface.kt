@@ -25,7 +25,8 @@ import org.jetbrains.compose.resources.stringResource
 class AddRoadSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
-        ways with (
+        ways with
+        (
           highway ~ ${listOf(
             "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
             "unclassified", "residential", "living_street", "pedestrian", "track", "busway",

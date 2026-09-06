@@ -22,7 +22,8 @@ import org.jetbrains.compose.resources.stringResource
 class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallationAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with barrier = cycle_barrier
+        nodes, ways with
+         barrier = cycle_barrier
          and cycle_barrier
          and cycle_barrier != tilted
          and !cycle_barrier:installation

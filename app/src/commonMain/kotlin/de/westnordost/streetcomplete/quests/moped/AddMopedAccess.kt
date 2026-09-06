@@ -17,7 +17,8 @@ import org.jetbrains.compose.resources.stringResource
 class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>() {
 
     override val elementFilter = """
-        ways with (
+        ways with
+        (
             highway = cycleway
             or highway = path and bicycle = designated
             or highway = footway and bicycle = designated

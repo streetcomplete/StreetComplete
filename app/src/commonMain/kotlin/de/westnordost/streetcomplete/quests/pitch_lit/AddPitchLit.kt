@@ -16,7 +16,8 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddPitchLit : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        ways with (
+        ways with
+        (
             leisure ~ pitch|track|fitness_station
             or piste:type and !highway
         )

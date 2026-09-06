@@ -20,7 +20,8 @@ import org.jetbrains.compose.resources.stringResource
 class AddTracktype : OsmFilterQuestType<Tracktype>() {
 
     override val elementFilter = """
-        ways with highway = track
+        ways with
+        highway = track
         and (
           !tracktype
           or tracktype != grade1 and tracktype older today -6 years
