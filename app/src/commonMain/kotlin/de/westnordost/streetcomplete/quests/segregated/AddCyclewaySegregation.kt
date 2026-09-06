@@ -21,13 +21,12 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
           (highway = path and bicycle = designated and foot = designated)
           or (highway = footway and bicycle = designated)
           or (highway = cycleway and foot ~ designated|yes)
-          or
-            (
+          or (
             highway ~ path|footway|cycleway
             and (footway:surface or cycleway:surface)
             and foot !~ private|no
             and bicycle !~ private|no
-            )
+          )
         )
         and surface ~ ${PAVED_SURFACES.joinToString("|")}
         and area != yes

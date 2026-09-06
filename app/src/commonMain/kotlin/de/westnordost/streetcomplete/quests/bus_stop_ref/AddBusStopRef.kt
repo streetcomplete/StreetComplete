@@ -17,8 +17,7 @@ class AddBusStopRef : OsmFilterQuestType<BusStopRefAnswer>() {
         nodes with
         (
           (public_transport = platform and ~bus|trolleybus|tram ~ yes)
-          or
-          (highway = bus_stop and public_transport != stop_position)
+          or (highway = bus_stop and public_transport != stop_position)
         )
         and access !~ no|private
         and !ref and noref != yes and ref:signed != no and !~"ref:.*"

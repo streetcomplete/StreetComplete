@@ -24,8 +24,7 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
     override val elementFilter = """
         nodes, ways with
         amenity = bicycle_repair_station
-        and
-        (
+        and (
           !service:bicycle:pump
           or !service:bicycle:stand
           or !service:bicycle:tools

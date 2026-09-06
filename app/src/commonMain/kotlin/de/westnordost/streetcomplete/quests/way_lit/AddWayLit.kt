@@ -36,8 +36,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
         ways with
         (
           highway ~ ${LIT_RESIDENTIAL_ROADS.joinToString("|")}
-          or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and
-          (
+          or highway ~ ${LIT_NON_RESIDENTIAL_ROADS.joinToString("|")} and (
             sidewalk ~ both|left|right|yes|separate
             or sidewalk:both = yes
             or sidewalk:left = yes
@@ -48,8 +47,7 @@ class AddWayLit : OsmFilterQuestType<WayLitOrIsStepsAnswer>() {
           or highway ~ ${LIT_WAYS.joinToString("|")}
           or highway = path and (foot = designated or bicycle = designated)
         )
-        and
-        (
+        and (
           !lit
           or lit = no and lit older today -8 years
           or lit older today -16 years

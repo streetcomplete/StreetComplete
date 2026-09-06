@@ -21,8 +21,7 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>() {
         nodes with
         (
             (amenity = drinking_water and !disused:amenity)
-            or
-            (disused:amenity = drinking_water and !amenity and older today -1 years)
+            or (disused:amenity = drinking_water and !amenity and older today -1 years)
         )
         and (!intermittent or intermittent = no)
         and (!seasonal or seasonal = no)
