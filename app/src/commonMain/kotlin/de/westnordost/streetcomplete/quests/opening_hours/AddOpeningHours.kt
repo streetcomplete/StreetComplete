@@ -164,14 +164,14 @@ mapOf(
     """
     private val filter by lazy { """
         nodes, ways with
-        (
+          (
             $namedFilterFragment
             or $unnamedFilterFragment
             or $updateFilterFragment
-        )
-        and access !~ private|no
-        and street_vendor != yes
-        and opening_hours:signed != no
+          )
+          and access !~ private|no
+          and street_vendor != yes
+          and opening_hours:signed != no
     """.toElementFilterExpression() }
 
     override val changesetComment = "Survey opening hours"

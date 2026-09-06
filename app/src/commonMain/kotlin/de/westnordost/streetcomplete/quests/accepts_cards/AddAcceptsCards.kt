@@ -20,17 +20,17 @@ class AddAcceptsCards : OsmFilterQuestType<CardAcceptance>() {
 
     override val elementFilter = """
         nodes, ways with
-        (
-          amenity ~ restaurant|cafe|fast_food|ice_cream|pub|bar|luggage_locker
-          or (shop and shop !~ no|vacant|mall)
-          or tourism = alpine_hut
-        )
-        and !payment:credit_cards and !payment:debit_cards and payment:others != no
-        and !brand and !wikipedia:brand and !wikidata:brand
-        and (!seasonal or seasonal = no)
-        and (!fee or fee != no)
-        and (name or noname = yes or name:signed = no)
-        and access !~ private|no
+          (
+            amenity ~ restaurant|cafe|fast_food|ice_cream|pub|bar|luggage_locker
+            or (shop and shop !~ no|vacant|mall)
+            or tourism = alpine_hut
+          )
+          and !payment:credit_cards and !payment:debit_cards and payment:others != no
+          and !brand and !wikipedia:brand and !wikidata:brand
+          and (!seasonal or seasonal = no)
+          and (!fee or fee != no)
+          and (name or noname = yes or name:signed = no)
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether payment with cards is accepted"
     override val wikiLink = "Key:payment"

@@ -19,10 +19,10 @@ class AddMotorcycleParkingCapacity : OsmFilterQuestType<Int>() {
 
     override val elementFilter = """
         nodes, ways with
-         amenity = motorcycle_parking
-         and access !~ private|no
-         and (!capacity or capacity older today -4 years)
-         and markings != no
+          amenity = motorcycle_parking
+          and access !~ private|no
+          and (!capacity or capacity older today -4 years)
+          and markings != no
     """
     override val changesetComment = "Specify motorcycle parking capacities"
     override val wikiLink = "Tag:amenity=motorcycle_parking"

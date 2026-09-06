@@ -17,22 +17,22 @@ class AddCyclewaySegregation : OsmFilterQuestType<CyclewaySegregation>() {
 
     override val elementFilter = """
         ways with
-        (
-          (highway = path and bicycle = designated and foot = designated)
-          or (highway = footway and bicycle = designated)
-          or (highway = cycleway and foot ~ designated|yes)
-          or (
-            highway ~ path|footway|cycleway
-            and (footway:surface or cycleway:surface)
-            and foot !~ private|no
-            and bicycle !~ private|no
+          (
+            (highway = path and bicycle = designated and foot = designated)
+            or (highway = footway and bicycle = designated)
+            or (highway = cycleway and foot ~ designated|yes)
+            or (
+              highway ~ path|footway|cycleway
+              and (footway:surface or cycleway:surface)
+              and foot !~ private|no
+              and bicycle !~ private|no
+            )
           )
-        )
-        and surface ~ ${PAVED_SURFACES.joinToString("|")}
-        and area != yes
-        and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
-        and !segregated
-        and ~path|footway|cycleway !~ link
+          and surface ~ ${PAVED_SURFACES.joinToString("|")}
+          and area != yes
+          and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
+          and !segregated
+          and ~path|footway|cycleway !~ link
     """
     override val changesetComment = "Specify whether combined foot- and cycleways are segregated"
     override val wikiLink = "Key:segregated"

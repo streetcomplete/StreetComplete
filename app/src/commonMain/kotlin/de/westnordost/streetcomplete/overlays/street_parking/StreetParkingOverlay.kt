@@ -37,8 +37,8 @@ class StreetParkingOverlay : Overlay {
         // roads
         mapData.filter("""
             ways with
-            highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
-            and area != yes
+              highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|pedestrian|service
+              and area != yes
         """).map { it to getStreetParkingStyle(it) } +
         // separate parking
         mapData.filter("""
@@ -52,8 +52,8 @@ class StreetParkingOverlay : Overlay {
         // chokers
         mapData.filter("""
             nodes with
-            traffic_calming ~ "(choker|chicane|island|choked_.*)"
-            or crossing:island = yes
+              traffic_calming ~ "(choker|chicane|island|choked_.*)"
+              or crossing:island = yes
         """).mapNotNull {
             val style = getNarrowingTrafficCalmingStyle(it)
             if (style != null) it to style else null

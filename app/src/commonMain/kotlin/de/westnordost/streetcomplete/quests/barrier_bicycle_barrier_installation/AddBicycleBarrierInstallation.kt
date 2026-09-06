@@ -23,10 +23,10 @@ class AddBicycleBarrierInstallation : OsmFilterQuestType<BicycleBarrierInstallat
 
     override val elementFilter = """
         nodes, ways with
-         barrier = cycle_barrier
-         and cycle_barrier
-         and cycle_barrier != tilted
-         and !cycle_barrier:installation
+          barrier = cycle_barrier
+          and cycle_barrier
+          and cycle_barrier != tilted
+          and !cycle_barrier:installation
     """
     override val changesetComment = "Specify cycle barrier installation"
     override val wikiLink = "Key:cycle_barrier:installation"

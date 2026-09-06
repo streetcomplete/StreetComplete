@@ -18,19 +18,19 @@ class AddVegan : OsmFilterQuestType<DietAvailabilityAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
-        (
-          amenity = ice_cream
-          or shop = pastry
-          or diet:vegetarian ~ yes|only and (
-            amenity ~ restaurant|cafe|fast_food|food_court and food != no
-            or amenity ~ pub|nightclub|biergarten|bar and food = yes
-            or tourism = alpine_hut and food != no
+          (
+            amenity = ice_cream
+            or shop = pastry
+            or diet:vegetarian ~ yes|only and (
+              amenity ~ restaurant|cafe|fast_food|food_court and food != no
+              or amenity ~ pub|nightclub|biergarten|bar and food = yes
+              or tourism = alpine_hut and food != no
+            )
           )
-        )
-        and (
-          !diet:vegan
-          or diet:vegan != only and diet:vegan older today -4 years
-        )
+          and (
+            !diet:vegan
+            or diet:vegan != only and diet:vegan older today -4 years
+          )
     """
     override val changesetComment = "Survey whether places have vegan food"
     override val wikiLink = "Key:diet"

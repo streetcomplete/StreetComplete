@@ -18,8 +18,8 @@ class AddBbqFuel : OsmFilterQuestType<BbqFuelAnswer>() {
     override val elementFilter = """
         nodes, ways with
           (
-              (amenity = bbq and !fuel)
-              or (amenity = baking_oven and (!oven or oven = yes))
+            (amenity = bbq and !fuel)
+            or (amenity = baking_oven and (!oven or oven = yes))
           )
           and access !~ no|private
     """

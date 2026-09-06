@@ -26,8 +26,8 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
     // Cf. #4538: should skip elements with more specific access tag already mapped
     override val elementFilter = """
         nodes, ways, relations with
-        amenity ~ parking|motorcycle_parking
-        and (
+          amenity ~ parking|motorcycle_parking
+          and (
             access = unknown
             or (!access and parking !~ street_side|lane)
             and !trailer and !caravan and !double_tracked_motor_vehicle and !motorcar
@@ -37,7 +37,7 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
             and !hov and !carpool and !car_sharing and !emergency and !hazmat and !hazmat:water
             and !school_bus and !disabled and !4wd_only and !roadtrain and !lhv and !tank
             and !motor_vehicle and !vehicle
-        )
+          )
     """
     override val changesetComment = "Specify parking access"
     override val wikiLink = "Tag:amenity=parking"

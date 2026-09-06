@@ -37,22 +37,22 @@ class AddPitchSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
         ways with
-         leisure ~ pitch|track
-         and sport ~ "(^|.*;)(${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")})($|;.*)"
-         and access !~ private|no
-         and indoor != yes and (!building or building = no)
-         and athletics !~ high_jump|pole_vault
-         and (
-          !surface
-          or surface ~ ${INVALID_SURFACES.joinToString("|")}
-          or (
-            surface ~ paved|unpaved
-            and !surface:note
-            and !note:surface
-            and !check_date:surface
+          leisure ~ pitch|track
+          and sport ~ "(^|.*;)(${sportValuesWherePitchSurfaceQuestionIsInteresting.joinToString("|")})($|;.*)"
+          and access !~ private|no
+          and indoor != yes and (!building or building = no)
+          and athletics !~ high_jump|pole_vault
+          and (
+            !surface
+            or surface ~ ${INVALID_SURFACES.joinToString("|")}
+            or (
+              surface ~ paved|unpaved
+              and !surface:note
+              and !note:surface
+              and !check_date:surface
+            )
+            or surface older today -12 years
           )
-          or surface older today -12 years
-        )
     """
 
     override val changesetComment = "Specify pitch surfaces"

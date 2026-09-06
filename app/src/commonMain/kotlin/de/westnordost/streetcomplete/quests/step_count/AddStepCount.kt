@@ -16,16 +16,16 @@ class AddStepCount : OsmFilterQuestType<Int>() {
 
     override val elementFilter = """
         nodes, ways with
-        (
           (
-            highway = steps
-            and (!indoor or indoor = no)
-            and (!conveying or conveying = no)
+            (
+              highway = steps
+              and (!indoor or indoor = no)
+              and (!conveying or conveying = no)
+            )
+            or man_made = tower and access ~ yes|customers and tower:type ~ observation|watchtower
           )
-          or man_made = tower and access ~ yes|customers and tower:type ~ observation|watchtower
-        )
-        and access !~ private|no
-        and !step_count
+          and access !~ private|no
+          and !step_count
     """
     override val changesetComment = "Specify step counts"
     override val wikiLink = "Key:step_count"

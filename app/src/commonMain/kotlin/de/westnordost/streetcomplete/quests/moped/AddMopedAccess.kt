@@ -18,14 +18,14 @@ class AddMopedAccess : OsmFilterQuestType<MopedAccessAnswer>() {
 
     override val elementFilter = """
         ways with
-        (
+          (
             highway = cycleway
             or highway = path and bicycle = designated
             or highway = footway and bicycle = designated
-        )
-        and !moped
-        and !moped:signed
-        and (motor_vehicle != no or !motor_vehicle)
+          )
+          and !moped
+          and !moped:signed
+          and (motor_vehicle != no or !motor_vehicle)
     """
     override val enabledInCountries = NoCountriesExcept(
         "BE", // https://github.com/streetcomplete/StreetComplete/issues/5565

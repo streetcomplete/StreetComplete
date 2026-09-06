@@ -20,11 +20,11 @@ class AddClothingBinOperator : OsmElementQuestType<ClothingBinOperatorAnswer> {
        in the elements filter syntax */
     private val filter by lazy { """
         nodes with
-         amenity = recycling and recycling_type = container
-         and recycling:clothes = yes
-         and !operator and !name and !brand
-         and operator:signed != no
-         and brand:signed != no
+          amenity = recycling and recycling_type = container
+          and recycling:clothes = yes
+          and !operator and !name and !brand
+          and operator:signed != no
+          and brand:signed != no
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify clothing bin operators"

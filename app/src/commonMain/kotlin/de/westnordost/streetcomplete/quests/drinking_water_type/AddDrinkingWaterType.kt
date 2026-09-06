@@ -19,13 +19,13 @@ class AddDrinkingWaterType : OsmFilterQuestType<DrinkingWaterType>() {
 
     override val elementFilter = """
         nodes with
-        (
+          (
             (amenity = drinking_water and !disused:amenity)
             or (disused:amenity = drinking_water and !amenity and older today -1 years)
-        )
-        and (!intermittent or intermittent = no)
-        and (!seasonal or seasonal = no)
-        and !man_made and !natural and !fountain and !pump
+          )
+          and (!intermittent or intermittent = no)
+          and (!seasonal or seasonal = no)
+          and !man_made and !natural and !fountain and !pump
     """
 
     override val changesetComment = "Specify drinking water types"

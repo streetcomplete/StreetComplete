@@ -16,15 +16,15 @@ class AddWheelchairAccessOutside : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-         (
-           leisure = dog_park
-           or man_made = tower and access ~ yes|customers and tower:type ~ observation|watchtower
-           or natural = cave_entrance and fee=yes
-           or historic = castle and (access = yes or fee=yes)
-           or leisure = bird_hide
-         )
-         and access !~ no|private
-         and (!wheelchair or wheelchair older today -8 years)
+          (
+            leisure = dog_park
+            or man_made = tower and access ~ yes|customers and tower:type ~ observation|watchtower
+            or natural = cave_entrance and fee=yes
+            or historic = castle and (access = yes or fee=yes)
+            or leisure = bird_hide
+          )
+          and access !~ no|private
+          and (!wheelchair or wheelchair older today -8 years)
     """
     override val changesetComment = "Survey wheelchair accessibility of outside places"
     override val wikiLink = "Key:wheelchair"

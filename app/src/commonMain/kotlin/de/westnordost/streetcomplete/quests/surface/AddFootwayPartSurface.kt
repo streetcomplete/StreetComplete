@@ -20,28 +20,28 @@ class AddFootwayPartSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
         ways with
-        (
-          highway = footway
-          or highway = path and foot != no
-          or (highway ~ cycleway|bridleway and foot and foot != no)
-        )
-        and segregated = yes
-        and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
-        and (
-          !footway:surface
-          or footway:surface ~ ${INVALID_SURFACES.joinToString("|")}
-          or (
-            footway:surface ~ paved|unpaved
-            and !footway:surface:note
-            and !check_date:footway:surface
+          (
+            highway = footway
+            or highway = path and foot != no
+            or (highway ~ cycleway|bridleway and foot and foot != no)
           )
-          or footway:surface older today -8 years
-        )
-        and (
-          access !~ private|no
-          or (foot and foot !~ private|no)
-        )
-        and ~path|footway|cycleway|bridleway !~ link
+          and segregated = yes
+          and !(sidewalk or sidewalk:left or sidewalk:right or sidewalk:both)
+          and (
+            !footway:surface
+            or footway:surface ~ ${INVALID_SURFACES.joinToString("|")}
+            or (
+              footway:surface ~ paved|unpaved
+              and !footway:surface:note
+              and !check_date:footway:surface
+            )
+            or footway:surface older today -8 years
+          )
+          and (
+            access !~ private|no
+            or (foot and foot !~ private|no)
+          )
+          and ~path|footway|cycleway|bridleway !~ link
     """
     override val changesetComment = "Add footway path surfaces"
     override val wikiLink = "Key:surface"

@@ -28,72 +28,72 @@ class CheckExistence(
 
     private val nodesFilter by lazy { """
         nodes with
-        ((
-          (
-            amenity = atm
-            or amenity = telephone
-            or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
-            or amenity = parcel_locker
-            or amenity = public_bookcase
-            or amenity = give_box
-            or barrier = log
-          )
-          and (${lastChecked(2.0)})
-        ) or (
-          (
-            amenity = clock
-            or amenity = post_box
-            or leisure = picnic_table
-            or amenity = bbq
-            or amenity = car_sharing
-            or leisure = firepit
-            or (leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball)
-            or leisure = fitness_station
-            or amenity = grit_bin and seasonal = no
-            or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
-            or amenity = ticket_validator
-            or amenity = bicycle_repair_station
-            or tourism = information and information ~ board|terminal|map
-            or advertising ~ column|board|poster_box
-            or (highway = emergency_access_point or emergency = access_point) and ref
-            or emergency ~ life_ring|phone
-            or emergency = defibrillator and (indoor = no or access = yes)
-            or (
-              man_made = surveillance
-              and surveillance:type = camera
-              and surveillance ~ outdoor|public
-              and !highway
+          ((
+            (
+              amenity = atm
+              or amenity = telephone
+              or amenity = vending_machine and vending !~ fuel|parking_tickets|public_transport_tickets
+              or amenity = parcel_locker
+              or amenity = public_bookcase
+              or amenity = give_box
+              or barrier = log
             )
-          )
-          and (${lastChecked(4.0)})
-        ) or (
-          (
-            amenity = bench
-            or amenity = lounger
-            or amenity = waste_basket
-            or amenity = recycling and recycling_type = container
-            or amenity = toilets
-            or amenity = shower
-            or amenity = drinking_water
-            or man_made = planter
-          )
-          and (${lastChecked(6.0)})
-        ) or (
-          amenity ~ bicycle_parking|motorcycle_parking|taxi|shelter
-          and (${lastChecked(10.0)})
-        ) or (
-          (
-            traffic_calming ~ bump|mini_bumps|hump|cushion|rumble_strip|dip|double_dip
-            or traffic_calming = table and !highway and !crossing
-          )
-          and (${lastChecked(14.0)})
-        ))
-        and access !~ no|private
-        and (!seasonal or seasonal = no)
-        and (!intermittent or intermittent = no)
-        and (!permanent or permanent != yes)
-        and (!heritage or heritage = no)
-        and !listed_status
+            and (${lastChecked(2.0)})
+          ) or (
+            (
+              amenity = clock
+              or amenity = post_box
+              or leisure = picnic_table
+              or amenity = bbq
+              or amenity = car_sharing
+              or leisure = firepit
+              or (leisure = pitch and sport ~ table_tennis|chess|table_soccer|teqball)
+              or leisure = fitness_station
+              or amenity = grit_bin and seasonal = no
+              or amenity = vending_machine and vending ~ parking_tickets|public_transport_tickets
+              or amenity = ticket_validator
+              or amenity = bicycle_repair_station
+              or tourism = information and information ~ board|terminal|map
+              or advertising ~ column|board|poster_box
+              or (highway = emergency_access_point or emergency = access_point) and ref
+              or emergency ~ life_ring|phone
+              or emergency = defibrillator and (indoor = no or access = yes)
+              or (
+                man_made = surveillance
+                and surveillance:type = camera
+                and surveillance ~ outdoor|public
+                and !highway
+              )
+            )
+            and (${lastChecked(4.0)})
+          ) or (
+            (
+              amenity = bench
+              or amenity = lounger
+              or amenity = waste_basket
+              or amenity = recycling and recycling_type = container
+              or amenity = toilets
+              or amenity = shower
+              or amenity = drinking_water
+              or man_made = planter
+            )
+            and (${lastChecked(6.0)})
+          ) or (
+            amenity ~ bicycle_parking|motorcycle_parking|taxi|shelter
+            and (${lastChecked(10.0)})
+          ) or (
+            (
+              traffic_calming ~ bump|mini_bumps|hump|cushion|rumble_strip|dip|double_dip
+              or traffic_calming = table and !highway and !crossing
+            )
+            and (${lastChecked(14.0)})
+          ))
+          and access !~ no|private
+          and (!seasonal or seasonal = no)
+          and (!intermittent or intermittent = no)
+          and (!permanent or permanent != yes)
+          and (!heritage or heritage = no)
+          and !listed_status
     """.toElementFilterExpression() }
     // - traffic_calming = table is often used as a property of a crossing: we don't want the app
     //    to delete the crossing if the table is not there anymore, so exclude that

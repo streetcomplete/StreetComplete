@@ -14,9 +14,9 @@ class AddOrchardProduce : OsmFilterQuestType<Set<OrchardProduce>>() {
 
     override val elementFilter = """
         ways, relations with
-        landuse = orchard
-        and !trees and !produce and !crop
-        and orchard != meadow_orchard
+          landuse = orchard
+          and !trees and !produce and !crop
+          and orchard != meadow_orchard
     """
     override val changesetComment = "Specify orchard produces"
     override val wikiLink = "Tag:landuse=orchard"

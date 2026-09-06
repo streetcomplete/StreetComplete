@@ -62,12 +62,12 @@ fun AddCyclewayForm(
 
     val likelyNoBicycleContraflow = remember { """
         ways with
-        oneway:bicycle != no
-        and (
+          oneway:bicycle != no
+          and (
             oneway ~ yes|-1 and highway ~ primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified
             or dual_carriageway = yes
             or junction ~ roundabout|circular
-        )
+          )
     """.toElementFilterExpression()
     }
 

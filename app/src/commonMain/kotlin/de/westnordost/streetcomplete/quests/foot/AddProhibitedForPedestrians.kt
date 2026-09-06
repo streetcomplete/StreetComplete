@@ -22,16 +22,16 @@ import org.jetbrains.compose.resources.stringResource
 class AddProhibitedForPedestrians : OsmFilterQuestType<ProhibitedForPedestriansAnswer>() {
     override val elementFilter = """
         ways with
-        (
-          sidewalk:both ~ none|no
-          or sidewalk ~ none|no
-          or (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
-        )
-        and verge !~ yes|both
-        and shoulder !~ yes|both
-        and shoulder:left != yes and shoulder:right != yes and shoulder:both != yes
-        and !foot
-        and access !~ private|no
+          (
+            sidewalk:both ~ none|no
+            or sidewalk ~ none|no
+            or (sidewalk:left ~ none|no and sidewalk:right ~ none|no)
+          )
+          and verge !~ yes|both
+          and shoulder !~ yes|both
+          and shoulder:left != yes and shoulder:right != yes and shoulder:both != yes
+          and !foot
+          and access !~ private|no
         """ +
         /* asking for any road without sidewalk is too much. Main interesting situations are
            certain road sections within large intersections, overpasses, underpasses,

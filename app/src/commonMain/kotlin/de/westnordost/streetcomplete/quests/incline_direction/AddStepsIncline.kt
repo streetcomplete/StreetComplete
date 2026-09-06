@@ -14,11 +14,11 @@ class AddStepsIncline : OsmFilterQuestType<Incline>() {
 
     override val elementFilter = """
         ways with
-         highway = steps
-         and (!indoor or indoor = no)
-         and area != yes
-         and access !~ private|no
-         and !incline
+          highway = steps
+          and (!indoor or indoor = no)
+          and area != yes
+          and access !~ private|no
+          and !incline
     """
     override val changesetComment = "Specify which way leads up for steps"
     override val wikiLink = "Key:incline"

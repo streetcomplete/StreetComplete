@@ -26,19 +26,19 @@ class AddMaxPhysicalHeight(
 
     private val nodeFilter by lazy { """
         nodes with
-        (
-          barrier = height_restrictor
-          or amenity = parking_entrance and parking ~ underground|multi-storey
-        )
-        and (
-          maxheight = below_default
-          or source:maxheight ~ ".*estimat.*"
-          or maxheight:signed = no and !maxheight
-        )
-        and maxheight != default
-        and !maxheight:physical
-        and access !~ private|no
-        and vehicle !~ private|no
+          (
+            barrier = height_restrictor
+            or amenity = parking_entrance and parking ~ underground|multi-storey
+          )
+          and (
+            maxheight = below_default
+            or source:maxheight ~ ".*estimat.*"
+            or maxheight:signed = no and !maxheight
+          )
+          and maxheight != default
+          and !maxheight:physical
+          and access !~ private|no
+          and vehicle !~ private|no
     """.toElementFilterExpression() }
     // leaving out railway = level_crossing is deliberate, we do not want people to measure overhead
     // cables by hand - bzzzt! - but also (if measured with laser) the result would be wrong, as
@@ -46,19 +46,19 @@ class AddMaxPhysicalHeight(
 
     private val wayFilter by lazy { """
         ways with
-        highway ~ ${(ALL_ROADS - MOTORWAYS).joinToString("|")}
-        and (
-          maxheight = below_default
-          or source:maxheight ~ ".*estimat.*"
-          or maxheight:signed = no and !maxheight
-        )
-        and maxheight != default
-        and !maxheight:physical
-        and access !~ private|no
-        and vehicle !~ private|no
-        and motorroad != yes
-        and motorway != yes
-        and expressway != yes
+          highway ~ ${(ALL_ROADS - MOTORWAYS).joinToString("|")}
+          and (
+            maxheight = below_default
+            or source:maxheight ~ ".*estimat.*"
+            or maxheight:signed = no and !maxheight
+          )
+          and maxheight != default
+          and !maxheight:physical
+          and access !~ private|no
+          and vehicle !~ private|no
+          and motorroad != yes
+          and motorway != yes
+          and expressway != yes
     """.toElementFilterExpression() }
     // explicitly removed motorway-style ways (highway=motorway*, motorroad/motorway=yes,
     // expressway=yes) from ever being matched as measuring heights on these ways likely is

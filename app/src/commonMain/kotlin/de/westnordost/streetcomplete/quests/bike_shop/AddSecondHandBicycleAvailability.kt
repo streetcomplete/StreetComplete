@@ -19,17 +19,17 @@ import org.jetbrains.compose.resources.stringResource
 class AddSecondHandBicycleAvailability : OsmFilterQuestType<SecondHandBicycleAvailability>() {
     override val elementFilter = """
         nodes, ways with
-        shop = bicycle
-        and (
+          shop = bicycle
+          and (
             !service:bicycle:second_hand
             or service:bicycle:second_hand older today -6 years
-        )
-        and (
+          )
+          and (
             service:bicycle:retail != no
             or service:bicycle:retail older today -6 years
-        )
-        and !second_hand
-        and access !~ private|no
+          )
+          and !second_hand
+          and access !~ private|no
         """
 
     override val changesetComment = "Survey whether bicycle shop sells second-hand bicycles"

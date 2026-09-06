@@ -23,21 +23,21 @@ class AddBarrierType : OsmFilterQuestType<BarrierType>() {
 
     override val elementFilter = """
         nodes with
-         barrier = yes
-         and !man_made
-         and !historic
-         and !military
-         and !power
-         and !tourism
-         and !attraction
-         and !amenity
-         and !leisure
-         and !aeroway
-         and !railway
-         and !craft
-         and !healthcare
-         and !office
-         and !shop
+          barrier = yes
+          and !man_made
+          and !historic
+          and !military
+          and !power
+          and !tourism
+          and !attraction
+          and !amenity
+          and !leisure
+          and !aeroway
+          and !railway
+          and !craft
+          and !healthcare
+          and !office
+          and !shop
     """
     override val changesetComment = "Specify type of barriers"
     override val wikiLink = "Key:barrier"

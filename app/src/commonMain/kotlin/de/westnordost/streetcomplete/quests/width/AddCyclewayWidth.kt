@@ -20,25 +20,25 @@ class AddCyclewayWidth(
      *  segregated */
     override val elementFilter = """
         ways with
-        (
           (
-            highway = cycleway
-            and foot !~ yes|designated
-            and (!width or source:width ~ ".*estimat.*")
-          ) or (
-            segregated = yes
-            and (
-              highway = cycleway and foot ~ yes|designated
-              or highway ~ path|footway and bicycle != no
-              or highway = bridleway and bicycle ~ designated|yes
+            (
+              highway = cycleway
+              and foot !~ yes|designated
+              and (!width or source:width ~ ".*estimat.*")
+            ) or (
+              segregated = yes
+              and (
+                highway = cycleway and foot ~ yes|designated
+                or highway ~ path|footway and bicycle != no
+                or highway = bridleway and bicycle ~ designated|yes
+              )
+              and (!cycleway:width or source:cycleway:width ~ ".*estimat.*")
             )
-            and (!cycleway:width or source:cycleway:width ~ ".*estimat.*")
           )
-        )
-        and area != yes
-        and access !~ private|no
-        and placement != transition
-        and ~path|footway|cycleway|bridleway !~ link
+          and area != yes
+          and access !~ private|no
+          and placement != transition
+          and ~path|footway|cycleway|bridleway !~ link
     """
     override val changesetComment = "Specify cycleways width"
     override val wikiLink = "Key:width"

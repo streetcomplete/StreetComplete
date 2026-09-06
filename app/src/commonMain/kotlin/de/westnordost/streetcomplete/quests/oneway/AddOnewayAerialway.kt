@@ -20,8 +20,8 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
 
     private val elementFilter by lazy { """
         ways with
-        aerialway ~ gondola|mixed_lift|chair_lift|t-bar|j-bar|platter
-        and !oneway
+          aerialway ~ gondola|mixed_lift|chair_lift|t-bar|j-bar|platter
+          and !oneway
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify whether aerial ways can be used both ways"
