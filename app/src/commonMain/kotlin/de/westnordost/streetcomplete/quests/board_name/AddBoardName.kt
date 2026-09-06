@@ -21,12 +21,10 @@ class AddBoardName : OsmFilterQuestType<List<LocalizedName>>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-        (
           tourism = information and information = board
           and board_type !~ notice|public_transport
           and !board:title
-        )
-        and !name and noname != yes and name:signed != no
+          and !name and noname != yes and name:signed != no
     """
 
     override val changesetComment = "Determine information board names"
