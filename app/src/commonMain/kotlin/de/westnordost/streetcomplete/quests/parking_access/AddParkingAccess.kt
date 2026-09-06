@@ -28,14 +28,14 @@ class AddParkingAccess : OsmFilterQuestType<ParkingAccess>() {
         nodes, ways, relations with amenity ~ parking|motorcycle_parking
         and (
             access = unknown
-            or (!access and parking !~ street_side|lane) and
-            !trailer and !caravan and !double_tracked_motor_vehicle and !motorcar and
-            !motorhome and !tourist_bus and !coach and !goods and !hgv and !hgv_articulated and
-            !bdouble and !agricultural and !auto_rickshaw and !nev and !golf_cart and !atv and
-            !ohv and !snowmobile and !psv and !bus and !taxi and !minibus and !share_taxi and
-            !hov and !carpool and !car_sharing and !emergency and !hazmat and !hazmat:water and
-            !school_bus and !disabled and !4wd_only and !roadtrain and !lhv and !tank and
-            !motor_vehicle and !vehicle
+            or (!access and parking !~ street_side|lane)
+            and !trailer and !caravan and !double_tracked_motor_vehicle and !motorcar
+            and !motorhome and !tourist_bus and !coach and !goods and !hgv and !hgv_articulated
+            and !bdouble and !agricultural and !auto_rickshaw and !nev and !golf_cart and !atv
+            and !ohv and !snowmobile and !psv and !bus and !taxi and !minibus and !share_taxi
+            and !hov and !carpool and !car_sharing and !emergency and !hazmat and !hazmat:water
+            and !school_bus and !disabled and !4wd_only and !roadtrain and !lhv and !tank
+            and !motor_vehicle and !vehicle
         )
     """
     override val changesetComment = "Specify parking access"
