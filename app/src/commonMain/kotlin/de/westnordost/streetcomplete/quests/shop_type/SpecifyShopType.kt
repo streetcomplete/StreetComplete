@@ -20,7 +20,7 @@ import de.westnordost.streetcomplete.util.getNameLabel
 class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with (
+        nodes, ways with
          shop ~ yes|hobby
          and !man_made
          and !historic
@@ -35,7 +35,6 @@ class SpecifyShopType : OsmFilterQuestType<ShopTypeAnswer>() {
          and !craft
          and !healthcare
          and !office
-        )
     """
     override val changesetComment = "Survey shop types"
     override val wikiLink = "Key:shop"
