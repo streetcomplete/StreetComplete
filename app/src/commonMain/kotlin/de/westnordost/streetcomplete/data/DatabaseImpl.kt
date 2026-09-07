@@ -142,7 +142,7 @@ class DatabaseImpl(private val connection: SQLiteConnection) : Database {
         }
     }
 
-    override fun close() {
+    override fun close() = lock.withLock {
         connection.close()
     }
 }
