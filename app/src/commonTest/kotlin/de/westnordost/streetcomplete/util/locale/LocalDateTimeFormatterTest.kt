@@ -22,9 +22,15 @@ class LocalDateTimeFormatterTest {
             "08.11.1985, 18:30:24",
             LocalDateTimeFormatter(german, dateStyle = DateTimeFormatStyle.Medium).format(dateTime)
         )
-        assertEquals(
-            "8. November 1985, 18:30:24 MEZ",
-            LocalDateTimeFormatter(german, timeZone = TimeZone.of("CET"), dateStyle = DateTimeFormatStyle.Long).format(dateTime)
+        assertTrue(
+            LocalDateTimeFormatter(
+                locale = german,
+                timeZone = TimeZone.of("CET"),
+                dateStyle = DateTimeFormatStyle.Long
+            ).format(dateTime) in listOf(
+                "8. November 1985, 18:30:24 MEZ",
+                "8. November 1985 um 18:30:24 MEZ",
+            )
         )
         assertTrue(
             LocalDateTimeFormatter(

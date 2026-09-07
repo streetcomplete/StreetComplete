@@ -37,7 +37,7 @@ class TimeFormatElementsTest {
 
         assertTrue(actual.clock12 in listOf(
             Clock12Elements("a. m.", "p. m."),
-            Clock12Elements("a. m.", "p. m.")
+            Clock12Elements("a. m.", "p. m.")
         )) // differs per platform
         assertEquals(expected.hourSeparator, actual.hourSeparator)
         assertEquals(expected.before, actual.before)
