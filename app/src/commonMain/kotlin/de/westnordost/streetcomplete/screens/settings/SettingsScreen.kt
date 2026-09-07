@@ -252,7 +252,7 @@ fun SettingsScreen(
             onDismissRequest = { showDeleteCacheConfirmation = false },
             onConfirmed = { viewModel.deleteCache() },
             text = {
-                val numberFormatter = NumberFormatter(Locale.current, maxFractionDigits = 1)
+                val numberFormatter = NumberFormatter(maxFractionDigits = 1)
                 Text(stringResource(
                     Res.string.delete_cache_dialog_message,
                     numberFormatter.format(1.0 * REFRESH_DATA_AFTER / (24 * 60 * 60 * 1000)),

@@ -27,8 +27,8 @@ fun WeekdaysColumn(
     weekdaysList: List<Weekdays>,
     onChange: (List<Weekdays>) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
-    userLocale: Locale = Locale.current,
+    countryLocale: Locale? = null,
+    userLocale: Locale? = null,
     enabled: Boolean = true,
 ) {
     Column(modifier = modifier) {
@@ -49,7 +49,7 @@ fun WeekdaysColumn(
                         onChange(newWeekdaysList)
                     },
                     modifier = Modifier.weight(1f),
-                    locale = locale,
+                    countryLocale = countryLocale,
                     userLocale = userLocale,
                     enabled = enabled,
                 )
@@ -80,7 +80,7 @@ fun WeekdaysColumn(
                                     }
                                     onChange(newWeekdaysList)
                                 },
-                                locale = locale,
+                                locale = countryLocale,
                                 enabled = enabled,
                             )
                         }

@@ -18,7 +18,7 @@ fun TimesSelectorDialog(
     initialTime: TimesSelector,
     onSelect: (TimesSelector) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
 ) {
     when (initialTime) {
         is TimeSpansSelector -> {

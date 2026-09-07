@@ -17,6 +17,11 @@ data class TimeFormatElements(
     val after: String = "",
 ) {
     companion object {
+        /** Create time format symbols from the given locale. [locale] = null uses the current
+         *  locale for time formatting. For example iOS allows the user to select whether the time
+         *  should be formatted as a 24-hour or 12-hour clock. This setting is only respected when
+         *  the default locale is used, once a locale is specified explicitly, always the default
+         *  formatting rules for that locale are used. */
         fun of(locale: Locale?): TimeFormatElements {
             val formatter = LocalTimeFormatter(
                 locale = locale,
