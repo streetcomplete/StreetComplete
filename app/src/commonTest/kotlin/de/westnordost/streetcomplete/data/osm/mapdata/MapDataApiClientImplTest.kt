@@ -11,7 +11,6 @@ import de.westnordost.streetcomplete.testutils.OsmDevApi
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.way
-import io.ktor.client.HttpClient
 import kotlinx.coroutines.runBlocking
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -182,7 +181,7 @@ class MapDataApiClientImplTest {
 
     private fun client(token: String?) =
         MapDataApiClientImpl(
-            httpClient = HttpClient(),
+            httpClient = OsmDevApi.httpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
             parser = MapDataApiParser(),
@@ -191,7 +190,7 @@ class MapDataApiClientImplTest {
 
     private fun changesetClient(token: String?) =
         ChangesetApiClientImpl(
-            httpClient = HttpClient(),
+            httpClient = OsmDevApi.httpClient(),
             baseUrl = OsmDevApi.URL,
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = token.orEmpty() },
             serializer = ChangesetApiSerializer()
@@ -199,7 +198,7 @@ class MapDataApiClientImplTest {
 
     private val liveClient =
         MapDataApiClientImpl(
-            httpClient = HttpClient(),
+            httpClient = OsmDevApi.httpClient(),
             baseUrl = "https://api.openstreetmap.org/api/0.6/",
             userAccessTokenSource = object : UserAccessTokenSource { override val accessToken = null },
             parser = MapDataApiParser(),

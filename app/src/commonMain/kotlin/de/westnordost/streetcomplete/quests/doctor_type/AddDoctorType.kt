@@ -19,7 +19,7 @@ class AddDoctorType() : OsmFilterQuestType<List<Feature>>() {
 
     override val elementFilter = """
         nodes, ways with
-          amenity = doctors or healthcare = doctor
+          (amenity = doctors or healthcare = doctor)
           and !healthcare:speciality
     """
     override val changesetComment = "Survey healthcare specialties"
