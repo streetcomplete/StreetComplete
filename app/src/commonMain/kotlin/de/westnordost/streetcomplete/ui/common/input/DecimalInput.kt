@@ -46,7 +46,7 @@ fun DecimalInput(
     maxIntegerDigits: Int = Int.MAX_VALUE,
     maxFractionDigits: Int = Int.MAX_VALUE,
     isUnsigned: Boolean = false,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
     style: TextFieldStyle = TextFieldStyle.Filled,
     enabled: Boolean = true,
     readOnly: Boolean = false,

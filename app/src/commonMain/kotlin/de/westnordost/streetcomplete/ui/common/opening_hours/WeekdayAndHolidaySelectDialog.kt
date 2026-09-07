@@ -42,8 +42,8 @@ fun WeekdayAndHolidaySelectDialog(
     modifier: Modifier = Modifier,
     initialWeekdays: List<WeekdaysSelector> = emptyList(),
     initialHolidays: List<HolidaySelector> = emptyList(),
-    locale: Locale = Locale.current,
-    userLocale: Locale = Locale.current,
+    countryLocale: Locale? = null,
+    userLocale: Locale? = null,
 ) {
     val scrollState = rememberScrollState()
     val weekdayItems = Weekday.entries
@@ -79,7 +79,7 @@ fun WeekdayAndHolidaySelectDialog(
                         },
                         selectedOptions = weekdaySelection,
                         itemContent = {
-                            val text = it.getDisplayName(locale = locale)
+                            val text = it.getDisplayName(locale = countryLocale)
                             val textInUserLocale = it.getDisplayName(locale = userLocale)
                             val displayText = if (text != textInUserLocale) {
                                 when (LocalLayoutDirection.current) {
