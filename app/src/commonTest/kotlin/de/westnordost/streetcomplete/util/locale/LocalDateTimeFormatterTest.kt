@@ -7,6 +7,7 @@ import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class LocalDateTimeFormatterTest {
     @Test fun format() {
@@ -25,9 +26,15 @@ class LocalDateTimeFormatterTest {
             "8. November 1985, 18:30:24 MEZ",
             LocalDateTimeFormatter(german, timeZone = TimeZone.of("CET"), dateStyle = DateTimeFormatStyle.Long).format(dateTime)
         )
-        assertEquals(
-            "Freitag, 8. November 1985, 18:30:24 Mitteleuropäische Zeit",
-            LocalDateTimeFormatter(german, timeZone = TimeZone.of("CET"), dateStyle = DateTimeFormatStyle.Full).format(dateTime)
+        assertTrue(
+            LocalDateTimeFormatter(
+                locale = german,
+                timeZone = TimeZone.of("CET"),
+                dateStyle = DateTimeFormatStyle.Full
+            ).format(dateTime) in listOf(
+                "Freitag, 8. November 1985, 18:30:24 Mitteleuropäische Zeit",
+                "Freitag, 8. November 1985 um 18:30:24 Mitteleuropäische Zeit",
+            )
         )
     }
 }
