@@ -28,9 +28,7 @@ fun AddChargingStationSocketForm(
     socketTypes: List<SocketType>,
 ) {
     val initialCounts = remember(element.id, socketTypes) {
-        socketTypes.associateWith { type ->
-            element.tags[type.osmCountKey]?.toIntOrNull() ?: 0
-        }
+        initialSocketCounts(element.tags, socketTypes)
     }
     var counts by remember(element.id, socketTypes) { mutableStateOf(initialCounts) }
 

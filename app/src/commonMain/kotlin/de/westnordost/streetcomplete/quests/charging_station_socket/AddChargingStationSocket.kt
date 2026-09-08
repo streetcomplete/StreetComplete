@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.quests.charging_station_socket
 
 import androidx.compose.runtime.Composable
+import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
 import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -15,7 +16,8 @@ import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.CAR
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.osm.hasCheckDateForKey
+import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
+import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.math.contains
@@ -98,13 +100,16 @@ class AddChargingStationSocket : OsmElementQuestType<Map<SocketType, Int>> {
             tags[SocketType.TYPE2_CABLE.osmCountKey] = "no"
         }
 
-        if (!tags.hasChanges || tags.hasCheckDateForKey("socket")) {
-            tags.updateCheckDateForKey("socket")
-        }
+        // Every completed survey refreshes check_date:socket so the quest stays suppressed
+        // until the next resurvey interval.
+        tags.updateCheckDateForKey("socket")
     }
 }
 
 private val managedSocketCountKeys = SocketType.entries.map { it.osmCountKey }.toSet()
+
+/** Same 2-year resurvey interval as [AddRecyclingContainerMaterials]. */
+private val socketResurveyDate = RelativeDate(-(365 * 2).toFloat())
 
 private fun isDeprecatedSocketKey(key: String): Boolean =
     key.startsWith("socket:tesla") ||
@@ -115,8 +120,25 @@ private fun isDeprecatedSocketKey(key: String): Boolean =
 private fun Element.needsSocketSurvey(): Boolean {
     if (tags.keys.any { isDeprecatedSocketKey(it) }) return true
     if (managedSocketCountKeys.any { tags[it] == "yes" }) return true
-    if (managedSocketCountKeys.any { tags[it]?.toIntOrNull() != null }) return false
-    return true
+    if (!hasNumericManagedSocketCounts()) return true
+    // Only numeric managed counts: resurvey when check_date:socket is missing or expired
+    return hasExpiredOrMissingSocketCheckDate()
+}
+
+private fun Element.hasNumericManagedSocketCounts(): Boolean =
+    managedSocketCountKeys.any { tags[it]?.toIntOrNull() != null }
+
+/**
+ * Uses the same check-date key variants and [RelativeDate] convention as [TagOlderThan],
+ * but only looks at check dates for "socket" (not element edit timestamp), because numeric
+ * socket counts are considered complete only when accompanied by a current check_date:socket.
+ */
+private fun Element.hasExpiredOrMissingSocketCheckDate(): Boolean {
+    val mostRecent = getLastCheckDateKeys("socket")
+        .mapNotNull { tags[it]?.toCheckDate() }
+        .maxOrNull()
+        ?: return true
+    return mostRecent < socketResurveyDate.date
 }
 
 private fun Element.containsMappedChargePoints(
@@ -134,3 +156,10 @@ private fun Element.center(mapData: MapDataWithGeometry): LatLon? = when (this) 
     is Node -> position
     else -> mapData.getGeometry(type, id)?.center
 }
+
+/** Preload numeric managed socket counts; "yes" and missing stay at 0. */
+fun initialSocketCounts(
+    tags: Map<String, String>,
+    socketTypes: List<SocketType>,
+): Map<SocketType, Int> =
+    socketTypes.associateWith { type -> tags[type.osmCountKey]?.toIntOrNull() ?: 0 }
