@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="106dp"
+    android:height="100dp"
+    android:viewportWidth="106"
+    android:viewportHeight="100">
+    <!-- NEMA 5-20: T-slot + vertical slot + round earth -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M53,6C31.5,6 14,23.5 14,45s17.5,39 39,39 39,-17.5 39,-39S74.5,6 53,6zM53,14c17.1,0 31,13.9 31,31S70.1,76 53,76 22,62.1 22,45 35.9,14 53,14z"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M36,26h8v26h-8z"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M58,32h16v8H58z"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M62,26h8v26h-8z"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M53,66m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"/>
+</vector>

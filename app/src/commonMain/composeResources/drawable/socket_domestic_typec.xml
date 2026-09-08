@@ -1,0 +1,16 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="106dp"
+    android:height="100dp"
+    android:viewportWidth="106"
+    android:viewportHeight="100">
+    <!-- Type C / Europlug: two close round holes -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M53,8C32.6,8 16,24.6 16,45s16.6,37 37,37 37,-16.6 37,-37S73.4,8 53,8zM53,16c16,0 29,13 29,29S69,74 53,74 24,61 24,45 37,16 53,16z"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M40,45m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M66,45m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"/>
+</vector>

@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
+import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -26,6 +27,7 @@ fun AddChargingStationSocketForm(
     on: (QuestAction<Map<SocketType, Int>>) -> Unit,
     element: Element,
     socketTypes: List<SocketType>,
+    domesticIcons: List<DrawableResource> = emptyList(),
 ) {
     val initialCounts = remember(element.id, socketTypes) {
         initialSocketCounts(element.tags, socketTypes).mapValues { it.value as Int? }
@@ -52,6 +54,7 @@ fun AddChargingStationSocketForm(
                 socketTypes = socketTypes,
                 counts = counts,
                 onCountsChanged = { counts = it },
+                domesticIcons = domesticIcons,
             )
         }
     }

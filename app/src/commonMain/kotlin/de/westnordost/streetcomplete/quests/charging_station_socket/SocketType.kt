@@ -52,20 +52,6 @@ val SocketType.title: StringResource
 val SocketType.hasBlackEuLabels: Boolean
     get() = this != SocketType.TYPE2 && euLabels.isNotEmpty()
 
-/**
- * Countries where the current [SocketType.DOMESTIC] illustration (Type E/F / CEE 7) is the
- * usual household plug. StreetComplete has no household-plug country metadata, so this is an
- * explicit allow-list rather than inventing a worldwide plug database.
- *
- * Excludes e.g. GB/IE (Type G), CH/LI (Type J), IT/SM/VA (Type L), DK (Type K),
- * AU/NZ (Type I), IL (Type H), and non-European Type F users such as KR.
- */
-private val typeEFDomesticCountryCodes = setOf(
-    "AD", "AL", "AT", "BA", "BE", "BG", "CZ", "DE", "EE", "ES", "FI", "FR", "GR", "HR", "HU",
-    "IS", "LT", "LU", "LV", "MC", "ME", "MK", "NL", "NO", "PL", "PT", "RO", "RS", "SE", "SI",
-    "SK", "XK",
-)
-
 /** Supported non-DOMESTIC socket types present in country metadata. */
 fun specificSocketTypesForCountry(countryInfo: CountryInfo): List<SocketType> =
     SocketType.entries.filter {
@@ -78,13 +64,12 @@ fun hasSupportedSocketTypes(countryInfo: CountryInfo): Boolean =
 /**
  * Socket types shown in the form for [countryInfo].
  * Empty when the country has no implemented motorcar connector in metadata (quest not applicable).
- * [SocketType.DOMESTIC] is appended only in Type E/F countries (see [typeEFDomesticCountryCodes]).
+ * [SocketType.DOMESTIC] is appended only when usable [CountryInfo.domesticSocketType] metadata exists.
  */
 fun socketTypesForCountry(countryInfo: CountryInfo): List<SocketType> {
     val specificTypes = specificSocketTypesForCountry(countryInfo)
     if (specificTypes.isEmpty()) return emptyList()
-    val countryCode = countryInfo.countryCode
-    return if (countryCode != null && countryCode in typeEFDomesticCountryCodes) {
+    return if (domesticPlugTypesForCountry(countryInfo).isNotEmpty()) {
         specificTypes + SocketType.DOMESTIC
     } else {
         specificTypes

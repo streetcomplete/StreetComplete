@@ -81,6 +81,7 @@ class AddChargingStationSocket(
             on = on,
             element = element,
             socketTypes = socketTypesForCountry(countryInfo),
+            domesticIcons = domesticPlugIcons(countryInfo),
         )
     }
 

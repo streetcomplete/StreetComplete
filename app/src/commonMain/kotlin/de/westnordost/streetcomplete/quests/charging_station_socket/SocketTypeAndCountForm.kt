@@ -41,7 +41,8 @@ fun SocketTypeAndCountForm(
     socketTypes: List<SocketType>,
     counts: Map<SocketType, Int?>,
     onCountsChanged: (Map<SocketType, Int?>) -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    domesticIcons: List<DrawableResource> = emptyList(),
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -49,8 +50,14 @@ fun SocketTypeAndCountForm(
     ) {
         socketTypes.forEach { type ->
             val count = counts[type]
+            val icons = if (type == SocketType.DOMESTIC && domesticIcons.isNotEmpty()) {
+                domesticIcons
+            } else {
+                listOf(type.icon)
+            }
             SocketRow(
                 type = type,
+                icons = icons,
                 count = count,
                 onCountChange = { onCountsChanged(counts + (type to it)) },
             )
@@ -61,10 +68,12 @@ fun SocketTypeAndCountForm(
 @Composable
 private fun SocketRow(
     type: SocketType,
+    icons: List<DrawableResource>,
     count: Int?,
     onCountChange: (Int?) -> Unit,
 ) {
     val value = count ?: 0
+    val iconSize = if (icons.size > 1) 36.dp else 48.dp
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -75,11 +84,13 @@ private fun SocketRow(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            Image(
-                painter = painterResource(type.icon),
-                contentDescription = stringResource(type.title),
-                modifier = Modifier.size(48.dp)
-            )
+            icons.forEach { icon ->
+                Image(
+                    painter = painterResource(icon),
+                    contentDescription = stringResource(type.title),
+                    modifier = Modifier.size(iconSize)
+                )
+            }
             if (type.euLabels.isNotEmpty()) {
                 Row(horizontalArrangement = Arrangement.spacedBy(2.dp)) {
                     type.euLabels.forEach { label ->
@@ -172,6 +183,10 @@ private fun SocketTypeAndCountFormPreview() {
             socketTypes = SocketType.entries,
             counts = counts,
             onCountsChanged = { counts = it },
+            domesticIcons = listOf(
+                SocketType.DOMESTIC.icon,
+                Res.drawable.socket_domestic_typec,
+            ),
             modifier = Modifier.padding(8.dp)
         )
     }

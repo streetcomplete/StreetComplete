@@ -1,0 +1,19 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="106dp"
+    android:height="100dp"
+    android:viewportWidth="106"
+    android:viewportHeight="100">
+    <!-- Type E: two round holes + earth pin at bottom -->
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M53,6C31.5,6 14,23.5 14,45s17.5,39 39,39 39,-17.5 39,-39S74.5,6 53,6zM53,14c17.1,0 31,13.9 31,31S70.1,76 53,76 22,62.1 22,45 35.9,14 53,14z"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M34,38m-7.5,0a7.5,7.5 0,1 1,15 0a7.5,7.5 0,1 1,-15 0"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M72,38m-7.5,0a7.5,7.5 0,1 1,15 0a7.5,7.5 0,1 1,-15 0"/>
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M53,62m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0"/>
+</vector>

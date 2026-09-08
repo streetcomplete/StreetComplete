@@ -32,9 +32,10 @@ class AddChargingStationSocketTest {
 
     private val countryInfoDe = CountryInfo(
         "DE",
-        listOf(IncompleteCountryInfo(chargingStationSocketTypes = listOf(
-            "type2", "type2_cable", "type2_combo", "chademo"
-        )))
+        listOf(IncompleteCountryInfo(
+            chargingStationSocketTypes = listOf("type2", "type2_cable", "type2_combo", "chademo"),
+            domesticSocketType = listOf("typec", "schuko")
+        ))
     )
     private val countryInfoEmpty = CountryInfo(
         "CN",
@@ -48,9 +49,30 @@ class AddChargingStationSocketTest {
     )
     private val countryInfoGb = CountryInfo(
         "GB",
-        listOf(IncompleteCountryInfo(chargingStationSocketTypes = listOf(
-            "type2", "type2_cable", "type2_combo", "chademo"
-        )))
+        listOf(IncompleteCountryInfo(
+            chargingStationSocketTypes = listOf("type2", "type2_cable", "type2_combo", "chademo"),
+            domesticSocketType = listOf("bs1363")
+        ))
+    )
+    private val countryInfoCh = CountryInfo(
+        "CH",
+        listOf(IncompleteCountryInfo(
+            chargingStationSocketTypes = listOf("type2", "type2_cable", "type2_combo", "chademo"),
+            domesticSocketType = listOf("typec", "sev1011_t13")
+        ))
+    )
+    private val countryInfoIlNoDomestic = CountryInfo(
+        "IL",
+        listOf(IncompleteCountryInfo(
+            chargingStationSocketTypes = listOf("type2", "type2_cable", "type2_combo", "chademo")
+        ))
+    )
+    private val countryInfoDomesticOnly = CountryInfo(
+        "CN",
+        listOf(IncompleteCountryInfo(
+            chargingStationSocketTypes = listOf("gb_ac", "gb_dc"),
+            domesticSocketType = listOf("gb1002")
+        ))
     )
 
     private val questType = AddChargingStationSocket { countryInfoDe }
@@ -149,7 +171,7 @@ class AddChargingStationSocketTest {
         assertEquals(emptyList(), socketTypesForCountry(countryInfoUnsupportedOnly))
     }
 
-    @Test fun `applicable for DE-like metadata with implemented types`() {
+    @Test fun `applicable for DE-like metadata with implemented types and E F domestic plugs`() {
         assertTrue(questType.isApplicableTo(chargingStation())!!)
         assertTrue(hasSupportedSocketTypes(countryInfoDe))
         val types = socketTypesForCountry(countryInfoDe)
@@ -159,12 +181,53 @@ class AddChargingStationSocketTest {
         assertTrue(CHADEMO in types)
         assertTrue(DOMESTIC in types)
         assertEquals(DOMESTIC, types.last())
+        assertEquals(
+            listOf(DomesticPlugType.TYPEC, DomesticPlugType.SCHUKO),
+            domesticPlugTypesForCountry(countryInfoDe)
+        )
     }
 
-    @Test fun `domestic is not offered outside Type E F countries`() {
+    @Test fun `domestic is offered for a different household plug type such as GB`() {
         val types = socketTypesForCountry(countryInfoGb)
         assertTrue(TYPE2 in types)
+        assertTrue(DOMESTIC in types)
+        assertEquals(listOf(DomesticPlugType.BS1363), domesticPlugTypesForCountry(countryInfoGb))
+    }
+
+    @Test fun `domestic is offered for Swiss SEV metadata`() {
+        assertEquals(
+            listOf(DomesticPlugType.TYPEC, DomesticPlugType.SEV1011_T13),
+            domesticPlugTypesForCountry(countryInfoCh)
+        )
+        assertTrue(DOMESTIC in socketTypesForCountry(countryInfoCh))
+    }
+
+    @Test fun `domestic is not offered without domesticSocketType metadata`() {
+        val types = socketTypesForCountry(countryInfoIlNoDomestic)
+        assertTrue(TYPE2 in types)
         assertFalse(DOMESTIC in types)
+        assertEquals(emptyList(), domesticPlugTypesForCountry(countryInfoIlNoDomestic))
+        val quest = AddChargingStationSocket { countryInfoIlNoDomestic }
+        assertTrue(quest.isApplicableTo(chargingStation())!!)
+    }
+
+    @Test fun `unknown domesticSocketType values are ignored`() {
+        val country = CountryInfo(
+            "XX",
+            listOf(IncompleteCountryInfo(
+                chargingStationSocketTypes = listOf("type2"),
+                domesticSocketType = listOf("not_a_real_plug", "schuko")
+            ))
+        )
+        assertEquals(listOf(DomesticPlugType.SCHUKO), domesticPlugTypesForCountry(country))
+        assertTrue(DOMESTIC in socketTypesForCountry(country))
+    }
+
+    @Test fun `domestic metadata alone does not make the quest applicable`() {
+        val quest = AddChargingStationSocket { countryInfoDomesticOnly }
+        assertFalse(quest.isApplicableTo(chargingStation())!!)
+        assertEquals(emptyList(), socketTypesForCountry(countryInfoDomesticOnly))
+        assertEquals(listOf(DomesticPlugType.GB1002), domesticPlugTypesForCountry(countryInfoDomesticOnly))
     }
 
     @Test fun `isApplicableTo for ways needs surrounding map data`() {
@@ -390,6 +453,13 @@ class AddChargingStationSocketTest {
                 mapOf("socket:chademo" to "1")
             )
         )
+    }
+
+    @Test fun `household plug count writes socket domestic not the concrete plug key`() {
+        val changes = questType.answerApplied(mapOf(DOMESTIC to 2))
+        assertTrue(changes.contains(StringMapEntryAdd("socket:domestic", "2")))
+        assertTrue(changes.none { it.key == "socket:schuko" || it.key == "socket:typec" || it.key == "socket:bs1363" })
+        assertTrue(changes.contains(StringMapEntryAdd("check_date:socket", nowAsCheckDateString())))
     }
 }
 
