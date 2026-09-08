@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.LocalContentColor
@@ -20,42 +19,36 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.style.Hyphens
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import de.westnordost.osmfeatures.FeatureDictionary
-import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
 import de.westnordost.streetcomplete.data.overlays.Action
 import de.westnordost.streetcomplete.ui.ItemCard
 import de.westnordost.streetcomplete.ui.common.dialogs.GroupedItemSelectDialog
 import de.westnordost.streetcomplete.ui.common.item_select.Group
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
-import de.westnordost.streetcomplete.ui.ktx.conditional
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.nameAndLocationLabel
 import org.koin.compose.koinInject
 
-/** Overlay form that displays a SideBySideLayout, with similar working to [GroupedItemSelectOverlayForm]
- *  but allowing [UpdateElementTagsAction] currently for -
- *  currentBuilding (building:use) & originalBuilding (building). */
+/** Similar to [GroupedItemSelectOverlayForm], but there is actually a pair of Items. */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-inline fun <reified G: Group<I>, reified I> SideBySideLayoutForm (
+inline fun <reified G: Group<I>, reified I> GroupedItemPairSelectOverlayForm (
     noinline on: (Action) -> Unit,
-    groups: Pair<List<G>, List<G>>,
-    initialSelectedItemPair: Pair<I, I?>,
+    groupsPair: Pair<List<G>, List<G>>,
+    initialSelectedItemPair: Pair<I?, I?>,
     noinline groupContent: @Composable (group: G) -> Unit,
     noinline groupItemContent: @Composable (item: I) -> Unit,
     noinline itemContent: @Composable (item: I) -> Unit,
-    crossinline onClickOk: (Pair<I, I?>) -> Unit,
+    crossinline onClickOk: (Pair<I, I>) -> Unit,
+    labels: Pair<String, String>,
     modifier: Modifier = Modifier,
     isComplete: Boolean = true,
     featureDictionary: FeatureDictionary = koinInject(),
     label: AnnotatedString? = LocalElement.current?.let { element ->
         nameAndLocationLabel(element, featureDictionary)
     },
-    prompts: Pair<String, String>,
     noinline otherAnswers: @Composable () -> List<AnswerItem> = { emptyList() },
 ) {
     var selectedItemPair by rememberSerializable(initialSelectedItemPair) {
@@ -65,68 +58,56 @@ inline fun <reified G: Group<I>, reified I> SideBySideLayoutForm (
 
     OverlayForm(
         on = on,
-        isComplete = isComplete,
-        hasChanges = selectedItemPair.first != initialSelectedItemPair.first || selectedItemPair.second != initialSelectedItemPair.second,
-        onClickOk = {
-            onClickOk(selectedItemPair)
-        },
+        isComplete = isComplete && selectedItemPair.first != null && selectedItemPair.second != null,
+        hasChanges = selectedItemPair != initialSelectedItemPair,
+        onClickOk = { onClickOk(Pair(selectedItemPair.first!!, selectedItemPair.second!!)) },
         modifier = modifier,
         label = label,
         otherAnswers = otherAnswers,
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 4.dp),
+            modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
+            val labelList = labels.toList()
             selectedItemPair.toList().forEachIndexed { index, selectedItem ->
-                Text(
-                    text = when {
-                        // Original use
-                        index == 0 -> prompts.first
-                        // Current use (can be empty/nothing)
-                        else -> prompts.second
-                    },
-                    style = MaterialTheme.typography.caption.copy(
-                        hyphens = Hyphens.Auto,
-                        textAlign = TextAlign.Center,
-                        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium)
-                    ),
-                )
-                Box(
+                Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .defaultMinSize(minHeight = 72.dp),
-                    contentAlignment = Alignment.Center,
+                        .defaultMinSize(minHeight = 96.dp),
+                    verticalArrangement = Arrangement.spacedBy(4.dp),
                 ) {
-                    ItemCard(
-                        modifier = Modifier
-                            .conditional(selectedItem){
-                                fillMaxWidth()
-                            },
-                        item = selectedItem,
-                        expanded = expandedIndex == index,
-                        onExpandChange = { expandedIndex = if (it) index else -1 },
-                        content = itemContent,
+                    Text(
+                        text = labelList[index],
+                        color = LocalContentColor.current.copy(alpha = ContentAlpha.medium),
+                        style = MaterialTheme.typography.caption,
                     )
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    ) {
+                        ItemCard(
+                            item = selectedItem,
+                            expanded = expandedIndex == index,
+                            onExpandChange = { expandedIndex = if (it) index else -1 },
+                            content = itemContent,
+                        )
+                    }
                 }
             }
         }
     }
+
     if (expandedIndex != -1) {
         GroupedItemSelectDialog(
             onDismissRequest = { expandedIndex = -1 },
-            groups = if (expandedIndex == 0) groups.first else groups.second,
+            groups = if (expandedIndex == 0) groupsPair.first else groupsPair.second,
             onSelected = {
-                selectedItemPair =
-                    if (expandedIndex == 0 ) {
-                        selectedItemPair.copy(first = it)
-                    }
-                    else {
-                        selectedItemPair.copy(second = it)
-                    }
+                selectedItemPair = Pair(
+                    first = if (expandedIndex == 0) it else selectedItemPair.first,
+                    second = if (expandedIndex == 1) it else selectedItemPair.second,
+                )
             },
             groupContent = groupContent,
             itemContent = groupItemContent
