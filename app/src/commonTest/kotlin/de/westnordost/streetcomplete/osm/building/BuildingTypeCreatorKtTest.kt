@@ -112,7 +112,6 @@ class BuildingTypeCreatorKtTest {
         )
     }
 
-
     @Test fun `set building use`() {
         assertEquals(
             mapOf("building" to "commercial", "building:use" to "office"),
@@ -144,12 +143,6 @@ class BuildingTypeCreatorKtTest {
             mapOf("building:use" to "office", "check_date" to nowAsCheckDateString()),
             OFFICE.buildingUseAppliedTo(mapOf("building:use" to "office"))
         )
-    }
-
-    @Test fun `cannot apply non building as new building use`() {
-        assertFails {
-            SILO.buildingUseAppliedTo(mapOf())
-        }
     }
 }
 

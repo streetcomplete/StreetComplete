@@ -43,7 +43,6 @@ fun BuildingType.applyTo(tags: Tags) {
 
 fun BuildingType.applyBuildingUseTo(tags: Tags) {
     require(osmKey != null && osmValue != null)
-    require(osmKey == "building")
 
     // if user selects building:use same as building tag, remove redundant tagging
     if(osmValue == tags["building"]) {
