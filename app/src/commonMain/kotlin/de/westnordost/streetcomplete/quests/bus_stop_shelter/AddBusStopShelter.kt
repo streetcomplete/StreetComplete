@@ -22,19 +22,19 @@ class AddBusStopShelter : OsmFilterQuestType<BusStopShelterAnswer>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-        (
-          public_transport = platform
-          or (highway = bus_stop and public_transport != stop_position)
-          or highway = hitchhiking
-        )
-        and physically_present != no and naptan:BusStopType != HAR
-        and access !~ no|private
-        and !covered
-        and location !~ underground|indoor
-        and indoor != yes
-        and tunnel != yes
-        and (!level or level >= 0)
-        and (!shelter or shelter older today -4 years)
+          (
+            public_transport = platform
+            or (highway = bus_stop and public_transport != stop_position)
+            or highway = hitchhiking
+          )
+          and physically_present != no and naptan:BusStopType != HAR
+          and access !~ no|private
+          and !covered
+          and location !~ underground|indoor
+          and indoor != yes
+          and tunnel != yes
+          and (!level or level >= 0)
+          and (!shelter or shelter older today -4 years)
     """
     /* Not asking again if it is covered because it means the stop itself is under a large
        building or roof building so this won't usually change */

@@ -25,18 +25,18 @@ class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToilet
         nodes, ways with
           wheelchair = limited
           and (
-           toilets = yes
-           or !toilets and (
-             amenity ~ restaurant|pub|bar
-             or amenity ~ cafe|fast_food and indoor_seating = yes
-           )
-         )
-         and access !~ no|private
-         and (
-           !toilets:wheelchair
-           or toilets:wheelchair != yes and toilets:wheelchair older today -4 years
-           or toilets:wheelchair older today -8 years
-         )
+            toilets = yes
+            or !toilets and (
+              amenity ~ restaurant|pub|bar
+              or amenity ~ cafe|fast_food and indoor_seating = yes
+            )
+          )
+          and access !~ no|private
+          and (
+            !toilets:wheelchair
+            or toilets:wheelchair != yes and toilets:wheelchair older today -4 years
+            or toilets:wheelchair older today -8 years
+          )
     """
     override val changesetComment = "Specify wheelchair accessibility of toilets in places"
     override val wikiLink = "Key:toilets:wheelchair"

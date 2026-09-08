@@ -15,21 +15,21 @@ class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>() {
 
     override val elementFilter = """
         nodes, ways with
-        (
-          amenity ~ library|community_centre|youth_centre|hospital|ranger_station
-          or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet|wilderness_hut
-          or tourism = camp_site and backcountry != yes and camp_site != basic
-          or aeroway = terminal
-          or shop ~ mall|department_store
-          or tourism = information and information ~ office|visitor_center
-          or leisure = marina
-        )
-        and access !~ no|private
-        and (
-          !internet_access
-          or internet_access = yes
-          or internet_access older today -2 years
-        )
+          (
+            amenity ~ library|community_centre|youth_centre|hospital|ranger_station
+            or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet|wilderness_hut
+            or tourism = camp_site and backcountry != yes and camp_site != basic
+            or aeroway = terminal
+            or shop ~ mall|department_store
+            or tourism = information and information ~ office|visitor_center
+            or leisure = marina
+          )
+          and access !~ no|private
+          and (
+            !internet_access
+            or internet_access = yes
+            or internet_access older today -2 years
+          )
     """
     /* Asked less often than for example opening hours because this quest is only asked for
        tendentially larger places which are less likely to change often */

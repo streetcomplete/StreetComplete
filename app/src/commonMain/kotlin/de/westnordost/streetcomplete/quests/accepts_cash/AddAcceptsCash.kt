@@ -19,31 +19,31 @@ class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
-        (
-          (shop and shop !~ no|vacant|mall)
-          or amenity ~ ${arrayOf(
-            "bar", "cafe", "fast_food", "ice_cream", "pub", "biergarten", "restaurant", "fuel",
-            "cinema", "nightclub", "planetarium", "theatre", "internet_cafe", "car_wash",
-            "pharmacy", "telephone", "vending_machine", "luggage_locker"
-          ).joinToString("|")}
-          or leisure ~ ${arrayOf(
-            "adult_gaming_centre", "amusement_arcade", "bowling_alley", "escape_game",
-            "miniature_golf","sauna", "trampoline_park", "tanning_salon"
-          ).joinToString("|")}
-          or craft ~ ${arrayOf(
-            "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
-            "electronics_repair", "key_cutter", "stonemason"
-          ).joinToString("|")}
-          or tourism ~ ${arrayOf(
-            "theme_park", "hotel", "hostel", "motel", "guest_house",
-            "apartment", "camp_site"
-          ).joinToString("|")}
-          or tourism ~ ${arrayOf(
-            "attraction", "museum", "gallery", "zoo", "aquarium"
-          ).joinToString("|")} and fee = yes
-        )
-        and !payment:cash and !payment:coins and !payment:notes and payment:others != no
-        and (name or brand or noname = yes or name:signed = no)
+          (
+            (shop and shop !~ no|vacant|mall)
+            or amenity ~ ${arrayOf(
+              "bar", "cafe", "fast_food", "ice_cream", "pub", "biergarten", "restaurant", "fuel",
+              "cinema", "nightclub", "planetarium", "theatre", "internet_cafe", "car_wash",
+              "pharmacy", "telephone", "vending_machine", "luggage_locker"
+            ).joinToString("|")}
+            or leisure ~ ${arrayOf(
+              "adult_gaming_centre", "amusement_arcade", "bowling_alley", "escape_game",
+              "miniature_golf","sauna", "trampoline_park", "tanning_salon"
+            ).joinToString("|")}
+            or craft ~ ${arrayOf(
+              "carpenter", "shoemaker", "tailor", "photographer", "dressmaker",
+              "electronics_repair", "key_cutter", "stonemason"
+            ).joinToString("|")}
+            or tourism ~ ${arrayOf(
+              "theme_park", "hotel", "hostel", "motel", "guest_house",
+              "apartment", "camp_site"
+            ).joinToString("|")}
+            or tourism ~ ${arrayOf(
+              "attraction", "museum", "gallery", "zoo", "aquarium"
+            ).joinToString("|")} and fee = yes
+          )
+          and !payment:cash and !payment:coins and !payment:notes and payment:others != no
+          and (name or brand or noname = yes or name:signed = no)
     """
 
     override val changesetComment = "Survey whether payment with cash is accepted"

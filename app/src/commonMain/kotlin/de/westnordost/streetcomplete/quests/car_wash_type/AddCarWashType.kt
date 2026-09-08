@@ -19,7 +19,11 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddCarWashType : OsmFilterQuestType<Set<CarWashType>>() {
 
-    override val elementFilter = "nodes, ways with amenity = car_wash and !automated and !self_service"
+    override val elementFilter = """
+        nodes, ways with
+          amenity = car_wash
+          and !automated and !self_service
+    """
     override val changesetComment = "Specify car wash types"
     override val wikiLink = "Tag:amenity=car_wash"
     override val icon = Res.drawable.quest_car_wash

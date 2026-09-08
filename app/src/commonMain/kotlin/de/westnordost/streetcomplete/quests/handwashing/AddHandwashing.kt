@@ -16,10 +16,10 @@ class AddHandwashing : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
-        amenity = toilets
-        and toilets:disposal
-        and toilets:disposal != flush
-        and !toilets:handwashing
+          amenity = toilets
+          and toilets:disposal
+          and toilets:disposal != flush
+          and !toilets:handwashing
     """
     override val changesetComment = "Survey availability of handwashing capabilites"
     override val wikiLink = "Key:toilets:handwashing"

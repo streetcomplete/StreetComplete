@@ -17,17 +17,17 @@ class AddTactilePavingBusStop : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-        (
-          public_transport = platform
-          or (highway = bus_stop and public_transport != stop_position)
-        )
-        and physically_present != no and naptan:BusStopType != HAR
-        and (
-          !tactile_paving
-          or tactile_paving = unknown
-          or tactile_paving = no and tactile_paving older today -8 years
-          or tactile_paving = yes and tactile_paving older today -12 years
-        )
+          (
+            public_transport = platform
+            or (highway = bus_stop and public_transport != stop_position)
+          )
+          and physically_present != no and naptan:BusStopType != HAR
+          and (
+            !tactile_paving
+            or tactile_paving = unknown
+            or tactile_paving = no and tactile_paving older today -8 years
+            or tactile_paving = yes and tactile_paving older today -12 years
+          )
     """
     override val changesetComment = "Specify whether public transport stops have tactile paving"
     override val wikiLink = "Key:tactile_paving"

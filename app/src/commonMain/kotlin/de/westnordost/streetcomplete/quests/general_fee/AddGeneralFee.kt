@@ -19,34 +19,34 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
     // We further exclude dual use charging stations as payment may be waived only for cyclists increasing risk of incorrect answers
     override val elementFilter = """
         nodes, ways with
-         (
-           (
-             amenity = charging_station
-             and bicycle ~ yes|designated
-             and (!motorcar or motorcar = no)
-             and (!motorcycle or motorcycle = no)
-             and (!truck or truck = no)
-           )
-           or (
-             tourism = camp_site
-             and (
+          (
+            (
+              amenity = charging_station
+              and bicycle ~ yes|designated
+              and (!motorcar or motorcar = no)
+              and (!motorcycle or motorcycle = no)
+              and (!truck or truck = no)
+            )
+            or (
+              tourism = camp_site
+              and (
                 camp_site = basic
                 or backcountry = yes
                 or shower = no
                 or toilets = no
-             )
-           )
-           or tourism ~ museum|gallery|caravan_site|zoo|aquarium|wilderness_hut
-           or leisure ~ beach_resort|disc_golf_course
-           or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash|binoculars|device_charging_station|vacuum_cleaner
-           or natural = cave_entrance and access=yes
-           or man_made = tower and tower:type = observation and access=yes
-           or historic = castle and access = yes
-           or waterway = water_point
-         )
-         and access !~ private|no
-         and !fee
-         and !fee:conditional
+              )
+            )
+            or tourism ~ museum|gallery|caravan_site|zoo|aquarium|wilderness_hut
+            or leisure ~ beach_resort|disc_golf_course
+            or amenity ~ sanitary_dump_station|shower|water_point|public_bath|bicycle_wash|binoculars|device_charging_station|vacuum_cleaner
+            or natural = cave_entrance and access=yes
+            or man_made = tower and tower:type = observation and access=yes
+            or historic = castle and access = yes
+            or waterway = water_point
+          )
+          and access !~ private|no
+          and !fee
+          and !fee:conditional
     """
     override val changesetComment = "Specify whether places take fees to visit"
     override val wikiLink = "Key:fee"

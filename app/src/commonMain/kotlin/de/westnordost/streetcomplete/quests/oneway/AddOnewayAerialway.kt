@@ -20,8 +20,8 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
 
     private val elementFilter by lazy { """
         ways with
-        aerialway ~ gondola|mixed_lift|chair_lift|t-bar|j-bar|platter
-        and !oneway
+          aerialway ~ gondola|mixed_lift|chair_lift|t-bar|j-bar|platter
+          and !oneway
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify whether aerial ways can be used both ways"
@@ -39,9 +39,7 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
         elementFilter.matches(element)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("""
-            nodes, ways with aerialway
-        """.toElementFilterExpression())
+        mapData.filter("nodes, ways with aerialway".toElementFilterExpression())
 
     @Composable
     override fun Form(on: (QuestAction<OnewayAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

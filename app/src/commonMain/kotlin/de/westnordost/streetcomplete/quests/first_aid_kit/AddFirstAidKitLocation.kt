@@ -17,10 +17,10 @@ class AddFirstAidKitLocation : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
         nodes with
-        emergency = first_aid_kit
-        and !location and !first_aid_kit:location
-        and !~location:.* and !~first_aid_kit:location:.*
-        and access !~ private|no
+          emergency = first_aid_kit
+          and !location and !first_aid_kit:location
+          and !~location:.* and !~first_aid_kit:location:.*
+          and access !~ private|no
     """
     override val changesetComment = "Specify first aid kit location"
     override val wikiLink = "Tag:emergency=first_aid_kit"
