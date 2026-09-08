@@ -37,9 +37,9 @@ class AddChargingStationMotorcar : OsmFilterQuestType<Boolean>() {
           )
           and access !~ private|no
     """
-    override val changesetComment = "Specify charging stations capacities"
+    override val changesetComment = "Specify if cars can charge at charging stations"
     override val wikiLink = "Tag:amenity=charging_station"
-    override val icon = Res.drawable.quest_charger_capacity
+    override val icon = Res.drawable.quest_car_charger
     override val title = Res.string.quest_charging_station_car_access
     override val achievements = listOf(CAR)
 
