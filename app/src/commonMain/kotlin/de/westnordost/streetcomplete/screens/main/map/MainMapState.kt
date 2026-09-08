@@ -31,7 +31,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.DrawableResource
 import org.koin.compose.koinInject
-import org.maplibre.compose.camera.CameraMoveReason
 import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationMeasurement
@@ -83,7 +82,7 @@ class MainMapState internal constructor(
     val cameraPadding: PaddingValues get() = controller.cameraPadding
     val metersPerDp: Double get() = mapState.viewport?.metersPerDpAtTarget ?: 0.0
     val displayedArea: de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox?
-        get() = mapState.viewport?.visibleBoundingBox?.toBoundingBox()
+        get() = mapState.viewport?.visibleBounds?.toStreetCompleteBoundingBox()
     val displayedMeasurement: LocationMeasurement? get() = tracks.displayedMeasurement
     val isRecordingTrack: Boolean get() = tracks.isRecording
     val currentRenderedTrack: List<LatLon> get() = tracks.currentRenderedTrack
@@ -154,9 +153,12 @@ class MainMapState internal constructor(
 
     internal fun onCameraChanged(
         position: CameraPosition,
-        moveReason: CameraMoveReason,
         isMoving: Boolean,
-    ) = controller.onCameraChanged(position, moveReason, isMoving)
+    ) = controller.onCameraChanged(position, isMoving)
+
+    internal fun onCameraInputStarted() = controller.onCameraInputStarted()
+
+    internal fun onPanStarted() = controller.onPanStarted()
 
     internal fun onMapPresented() = controller.onMapPresented()
 
@@ -218,7 +220,7 @@ internal interface MainMapCamera {
 private class MapLibreCamera(private val state: MapState) : MainMapCamera {
     override val position: CameraPosition get() = state.cameraPosition
     override val visibleBoundingBox: BoundingBox?
-        get() = state.viewport?.visibleBoundingBox
+        get() = state.viewport?.visibleBounds?.toBoundingBox()
     override val viewportSize: DpSize?
         get() = state.viewport?.size
     override val isPresented: Boolean get() = state.viewport != null
@@ -281,7 +283,6 @@ internal class MainMapCameraController(
 
     private var navigationBearing: Double? = null
     private var zoomedYet = false
-    private var lastObservedPosition = camera.position
     private var previousFocusCamera: CameraPosition? = null
     private var pendingMove: PendingCameraMove? = null
 
@@ -434,22 +435,16 @@ internal class MainMapCameraController(
         }
     }
 
-    fun onCameraChanged(
-        position: CameraPosition,
-        moveReason: CameraMoveReason,
-        isMoving: Boolean,
-    ) {
-        if (moveReason == CameraMoveReason.GESTURE) {
-            userHasMovedCamera = true
-            // TODO(maplibre-compose): Replace camera-target delta inference when common callbacks
-            // expose the pan-start screen coordinate and continuously updated gesture focal point.
-            // MapLibre Compose currently has no pan-begin callback. Target movement is the narrowest
-            // common signal that preserves the legacy rule: pan stops follow, zoom/rotate/tilt do not.
-            if (displayedLocation != null && position.target != lastObservedPosition.target) {
-                updateFollowingPosition(false)
-            }
-        }
-        lastObservedPosition = position
+    fun onCameraInputStarted() {
+        userHasMovedCamera = true
+    }
+
+    fun onPanStarted() {
+        onCameraInputStarted()
+        if (displayedLocation != null) updateFollowingPosition(false)
+    }
+
+    fun onCameraChanged(position: CameraPosition, isMoving: Boolean) {
         if (!isMoving) save(position)
     }
 
@@ -594,4 +589,4 @@ private const val FOCUS_ZOOM_MARGIN = 0.75
 private const val FOCUS_MAX_ZOOM = 19.0
 private const val FOCUS_MIN_ZOOM_DIFFERENCE = 0.5
 private const val MAX_MERCATOR_LATITUDE = 85.0511287798066
-private val MAP_CLICK_RADIUS = 14.dp
+internal val MAP_CLICK_RADIUS = 14.dp

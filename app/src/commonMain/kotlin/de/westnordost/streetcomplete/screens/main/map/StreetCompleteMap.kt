@@ -6,9 +6,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.Res
 import org.maplibre.compose.camera.CameraPosition
+import org.maplibre.compose.interaction.MapInteractions
 import org.maplibre.compose.map.CameraConstraints
 import org.maplibre.compose.map.DefaultMapRuntime
-import org.maplibre.compose.map.GestureOptions
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.MaplibreMap
@@ -18,7 +18,6 @@ import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.MapOverlay
 import org.maplibre.compose.overlay.include
 import org.maplibre.compose.style.BaseStyle
-import org.maplibre.compose.util.MapClickHandler
 import org.maplibre.compose.util.MaplibreComposable
 
 /**
@@ -32,10 +31,8 @@ fun StreetCompleteMap(
     cameraPadding: PaddingValues = PaddingValues(0.dp),
     cameraConstraints: CameraConstraints = CameraConstraints(maxZoom = 22.0),
     renderOptions: RenderOptions = RenderOptions.Standard,
-    gestureOptions: GestureOptions = GestureOptions.Standard,
+    interactions: MapInteractions = MapInteractions.Standard,
     tileLodOptions: TileLodOptions = TileLodOptions.Standard,
-    onClick: MapClickHandler,
-    onLongClick: MapClickHandler,
     overlay: MapOverlay = MapOverlay {},
 ) {
     MaplibreMap(
@@ -44,10 +41,8 @@ fun StreetCompleteMap(
         cameraPadding = cameraPadding,
         cameraConstraints = cameraConstraints,
         renderOptions = renderOptions,
-        gestureOptions = gestureOptions,
+        interactions = interactions,
         tileLodOptions = tileLodOptions,
-        onClick = onClick,
-        onLongClick = onLongClick,
     ) {
         include(overlay)
     }
@@ -61,7 +56,7 @@ fun rememberStreetCompleteMapState(
     content: @Composable @MaplibreComposable () -> Unit = {},
 ): MapState = rememberMapState(
     runtime = runtime,
-    baseStyle = BaseStyle.Json(streetCompleteBaseStyle()),
+    initialBaseStyle = BaseStyle.Json(streetCompleteBaseStyle()),
     initialCameraPosition = initialCameraPosition,
     content = content,
 )

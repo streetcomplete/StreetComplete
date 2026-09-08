@@ -476,6 +476,7 @@ fun MainScreen(
                 displayedLocationOffset = displayedPosition,
                 onClickLocation = {
                     when (val permission = locationPermission) {
+                        LocationPermission.Unknown -> Unit
                         is LocationPermission.NotGranted -> {
                             when {
                                 permission.canRequest != false && !permission.shouldShowRationale ->

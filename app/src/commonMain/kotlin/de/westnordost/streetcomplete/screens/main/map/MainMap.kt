@@ -5,26 +5,28 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestKey
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import org.jetbrains.compose.resources.DrawableResource
 import org.koin.compose.viewmodel.koinViewModel
+import org.maplibre.compose.interaction.ClickResult
+import org.maplibre.compose.interaction.MapInteractions
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.overlay.MapOverlay
-import org.maplibre.compose.util.ClickResult
-import org.maplibre.compose.util.MapClickHandler
+import kotlin.time.Duration.Companion.milliseconds
 
 /** Complete shared MapLibre Compose renderer for StreetComplete's main map. */
 @Composable
@@ -39,14 +41,11 @@ fun MainMap(
     hiddenBaseLayerIds: Set<String> = emptySet(),
     modifier: Modifier = Modifier,
     state: MainMapState = rememberMainMapState(),
-    // TODO(maplibre-compose): Configure StreetComplete's exact pan/rotate/tilt/fling thresholds
-    // and disable rotation while scaling when the common gesture API exposes those controls.
     overlay: MapOverlay = MapOverlay {},
     viewModel: MainMapViewModel = koinViewModel(),
 ) {
     val mapState = state.mapState
     val lifecycleOwner = LocalLifecycleOwner.current
-    val coroutineScope = rememberCoroutineScope()
     // Materialize each value during composition. A local delegated property referenced only from
     // SideEffect defers its State.value read until the effect runs, so Compose would not observe
     // the flow and its update could remain invisible until an unrelated recomposition.
@@ -80,9 +79,9 @@ fun MainMap(
     }
     LaunchedEffect(mapState, state) {
         snapshotFlow {
-            Triple(mapState.cameraPosition, mapState.cameraMoveReason, mapState.isCameraMoving)
-        }.distinctUntilChanged().collect { (position, moveReason, isMoving) ->
-            state.onCameraChanged(position, moveReason, isMoving)
+            mapState.cameraPosition to mapState.isCameraMoving
+        }.distinctUntilChanged().collect { (position, isMoving) ->
+            state.onCameraChanged(position, isMoving)
         }
     }
     LaunchedEffect(mapState, state) {
@@ -94,11 +93,11 @@ fun MainMap(
     }
     LaunchedEffect(mapState, viewModel) {
         snapshotFlow {
-            mapState.cameraPosition.zoom to mapState.viewport?.visibleBoundingBox
+            mapState.cameraPosition.zoom to mapState.viewport?.visibleBounds
         }.distinctUntilChanged().collect { (zoom, displayedArea) ->
             viewModel.onViewportChanged(
                 zoom = zoom,
-                displayedArea = displayedArea?.toBoundingBox(),
+                displayedArea = displayedArea?.toStreetCompleteBoundingBox(),
             )
         }
     }
@@ -118,33 +117,62 @@ fun MainMap(
         state.styleConfiguration.onClickCluster = state::fitCluster
     }
 
-    val onClick: MapClickHandler = { position, offset ->
-        coroutineScope.launch {
-            // TODO(maplibre-compose): Replace this pre-query when a raw-map callback runs only
-            // after interactive layer handlers have declined the same click.
-            val hitInteractiveFeature = mapState.queryRenderedFeatures(
-                offset = offset,
-                layerIds = MAIN_MAP_INTERACTIVE_LAYER_IDS,
-            ).isNotEmpty()
-            if (!hitInteractiveFeature) {
-                val latLon = LatLon(position.latitude, position.longitude)
-                state.clickRadiusInMeters(latLon, offset)?.let { radius ->
-                    onClickMap(latLon, radius)
+    val currentOnClickMap = rememberUpdatedState(onClickMap)
+    val currentOnLongPress = rememberUpdatedState(onLongPress)
+    val interactions = remember(state) {
+        MapInteractions {
+            camera {
+                pan {
+                    onStart(state::onPanStarted)
+                    momentum {
+                        minimumSpeed = 250.0
+                        baseTime = 500.milliseconds
+                    }
+                }
+                zoom { onStart(state::onCameraInputStarted) }
+                rotate { onStart(state::onCameraInputStarted) }
+                tilt { onStart(state::onCameraInputStarted) }
+            }
+            bindings {
+                drag { pan { startSlop = 5.dp } }
+                transform {
+                    pan { startSlop = 5.dp }
+                    rotate {
+                        startAngle = 1.5
+                        allowDuringZoom = false
+                    }
+                    tilt { startSlop = 8.dp }
+                }
+            }
+            callbacks {
+                click {
+                    onUnhandled unhandled@{ event ->
+                        val position = event.position ?: return@unhandled ClickResult.Pass
+                        val latLon = LatLon(position.latitude, position.longitude)
+                        state.clickRadiusInMeters(latLon, event.screenOffset)?.let { radius ->
+                            currentOnClickMap.value(latLon, radius)
+                        }
+                        ClickResult.Pass
+                    }
+                }
+                longClick {
+                    onEvent longClick@{ event ->
+                        val position = event.position ?: return@longClick ClickResult.Pass
+                        currentOnLongPress.value(
+                            event.screenOffset,
+                            LatLon(position.latitude, position.longitude),
+                        )
+                        ClickResult.Consume
+                    }
                 }
             }
         }
-        ClickResult.Pass
-    }
-    val onLongClick: MapClickHandler = { position, offset ->
-        onLongPress(offset, LatLon(position.latitude, position.longitude))
-        ClickResult.Consume
     }
     StreetCompleteMap(
         state = mapState,
         modifier = modifier,
         cameraPadding = state.cameraPadding,
-        onClick = onClick,
-        onLongClick = onLongClick,
+        interactions = interactions,
         overlay = overlay,
     )
 }
@@ -152,14 +180,4 @@ fun MainMap(
 data class SelectedMapPins(
     val icon: DrawableResource,
     val positions: Collection<LatLon>,
-)
-
-private val MAIN_MAP_INTERACTIVE_LAYER_IDS = setOf(
-    "pin-cluster-layer",
-    "pins-layer",
-    "overlay-fills",
-    "overlay-lines",
-    "overlay-lines-dashed",
-    "overlay-fills-outline",
-    "overlay-symbols",
 )

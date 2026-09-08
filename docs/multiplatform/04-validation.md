@@ -4,6 +4,64 @@ Validation claims in this file distinguish compilation, automated tests, and
 interactive runtime evidence. A compile result is not treated as proof of feature
 parity.
 
+## Physical-iPhone image validation on 2026-09-08
+
+The eager image implementation was built against local MapLibre Compose
+`0.15.1-local.9cd93ad-SNAPSHOT` and installed on the attached iPhone 16 Pro.
+Images are installed through the public image API, and Compose publishes source
+data after the required images are available. `StyleLoaded` resets installation
+tracking. Source definitions remain Compose-owned.
+
+The first version crashed because it called `GeoJsonSourceHandle.setData` on a
+declaratively owned source. After correcting that ownership conflict and forcing
+a fresh Xcode link, console observation confirmed map rendering and continued
+execution. The user then confirmed that the pin behavior works well.
+Focused Android-host tests pass for the image registry, pins, and styled elements.
+The earlier eager-image version also passed the focused iOS-simulator suites;
+the final source-publication correction was verified on the physical device.
+
+The branch uses ordinary `0.15.1-SNAPSHOT`, with all temporary Maven Local wiring
+removed. Repository metadata checked on 2026-09-08 advertises
+`0.15.1-20260907.101928-13` from `9717fc6f`; publication of the newer device-tested
+`9cd93ad` remains pending. The device result does not establish broader feature
+parity or close every historical performance finding.
+
+## Cleanup against MapLibre Compose main on 2026-09-07
+
+These checks use MapLibre Compose `main` commit `9717fc6f`, published to the local
+Maven repository as `0.15.1-local.9717fc6-SNAPSHOT`. Temporary `mavenLocal()`
+repositories and the command-line version override are validation inputs only;
+neither belongs in the final branch diff. The committed dependency remains
+`0.15.1-SNAPSHOT` pending a normal upstream publication.
+Repository metadata checked on 2026-09-07 still points to
+`0.15.1-20260906.101530-12` from `8691568e`, before several APIs used here.
+
+| Check | Result |
+| --- | --- |
+| Publish the MapLibre Compose core, location, platform runtime, and resource artifacts from clean `9717fc6f` to the local Maven repository | Pass. The unique local snapshot coordinate avoids silently combining the audited checkout with any older mutable snapshot. |
+| `mise exec -- ./gradlew -PmapLibreComposeVersion=0.15.1-local.9717fc6-SNAPSHOT :app:compileKotlinDesktop` | Pass. The first attempt exposed and the final source adopts the new interaction, initial-base-style, viewport-bounds, feature-state-expression, and unknown-location-permission APIs. |
+| `mise exec -- ./gradlew -PmapLibreComposeVersion=0.15.1-local.9717fc6-SNAPSHOT :app:compileKotlinIosSimulatorArm64 :androidApp:assembleDebug --console=plain` | Pass. iOS simulator source compiles and the Android debug APK assembles against the exact local publication. |
+| `mise exec -- ./gradlew -I /tmp/streetcomplete-maplibre-local.init.gradle.kts -PmapLibreComposeVersion=0.15.1-local.9717fc6-SNAPSHOT :app:desktopTest :app:iosSimulatorArm64Test --tests '*MainMapCameraControllerTest' --tests '*PinsLayersTest' --tests '*StyledElementTest' --tests '*MainMapContentStateTest' --console=plain` | Pass. All 24 selected tests pass on both desktop and the iOS simulator. The temporary init script adds only the local repository and the host-suite exclusion described below. |
+| Full `:app:testAndroidHostTest` | The unchanged live `MapDataApiClientImplTest.uploadChanges` failed twice with a socket `ConnectionException`; the other 2,549 tests passed and one was skipped. An ephemeral init-script filter excluding only that method then passes all 2,550 remaining tests, including one skip. |
+| Final source check: compile desktop, iOS simulator, and Android, then run `MainMapCameraControllerTest` and `PinsLayersTest` on desktop | Pass. This rerun covers the final source after removing the obsolete fourth stale-style error and target-delta bookkeeping. |
+
+Source inspection confirms that the seven previously pending integration gaps
+are represented by public APIs in this exact upstream commit. The cleanup removes
+the custom GeoJSON source lifecycle, manual image installation and pacing,
+imperative layer-property helpers, target-delta pan inference, and interactive
+layer pre-query. It uses declarative sources and properties, typed source handles,
+the missing-image resolver, layer hit padding, component-specific camera starts,
+the exact legacy gesture thresholds, and the post-layer unhandled callback.
+The historical source audit's missing offline-limit setter is not an upstream
+gap: StreetComplete PR #7069 established that MapLibre Native never applied the
+legacy setting to StreetComplete's direct Jawg URL and removed the ineffective
+call.
+
+No application or device runtime was launched for this cleanup. In particular,
+these checks do not close the physical-iPhone jank report or validate a repository
+snapshot publication. The later device and publication evidence above supersedes
+these historical validation limits for the image scenario.
+
 ## Rebase onto `maplibre-compose` on 2026-09-05
 
 These checks cover the integration onto `05b04f1c6`, using MapLibre Compose

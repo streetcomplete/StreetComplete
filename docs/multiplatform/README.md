@@ -87,6 +87,29 @@ Their test counts and completeness claims do not establish current parity.
 Likewise, a successful test on this probe does not verify the corresponding
 implementation on master.
 
+## Cleanup against latest MapLibre Compose main on 2026-09-07
+
+The probe was audited and compiled against exact MapLibre Compose `main` commit
+`9717fc6f`, initially published locally as `0.15.1-local.9717fc6-SNAPSHOT`.
+The normal snapshot repository now contains that baseline. The committed
+dependency remains `0.15.1-SNAPSHOT` without Maven Local wiring. The later
+physical-iPhone validation used local `9cd93ad`, whose publication is still pending.
+
+All seven application workarounds recorded against `71c5b258` can now be removed:
+dynamic sources expose typed handles, dynamic icons use the public style-image
+command API without frame pacing, transient layer state is declarative, overlay
+clicks use typed hit padding, and the common interaction API supplies exact
+gesture policy plus a post-layer raw-map callback. The cleanup also adopts the
+latest base-style, viewport-bounds, feature-state-expression, and
+unknown-location-permission APIs.
+
+No StreetComplete-specific upstream API gap remains in the current audit. The
+source audit's old offline-limit finding was rejected after StreetComplete PR
+#7069 proved the legacy setting ineffective for its direct tile URL. The
+pending publication of the device-tested build, Java 25 desktop runtime, absent
+macOS x64 runtime, and broader physical-iPhone jank validation remain tracked; see
+`03-maplibre-compose-upstream.md` and `04-validation.md`.
+
 ## Local development settings
 
 `mise.toml` contains shared commands and the Java version. Ignored `mise.local.toml`

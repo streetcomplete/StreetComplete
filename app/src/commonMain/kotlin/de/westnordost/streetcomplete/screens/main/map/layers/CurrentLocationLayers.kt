@@ -31,8 +31,8 @@ import org.maplibre.compose.expressions.value.CirclePitchAlignment
 import org.maplibre.compose.expressions.value.IconPitchAlignment
 import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.SymbolLayer
-import org.maplibre.compose.map.MapState
 import org.maplibre.compose.sources.GeoJsonData
+import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
@@ -47,7 +47,6 @@ private val LocationNyanSize = DpSize(34.dp, 22.dp)
 @Composable
 @MaplibreComposable
 fun CurrentLocationLayers(
-    mapState: MapState,
     location: Location?,
     rotation: Float?,
 ) {
@@ -75,11 +74,7 @@ fun CurrentLocationLayers(
             )
         )
     } ?: EMPTY_LOCATION_DATA
-    val source = rememberImperativeGeoJsonSource(
-        mapState = mapState,
-        id = LOCATION_SOURCE_ID,
-        data = data,
-    )
+    val source = rememberGeoJsonSource(data)
 
     CurrentLocationStyleLayers(source, aprilFirst)
 }
@@ -163,7 +158,6 @@ private fun CurrentLocationStyleLayers(
 private val EMPTY_LOCATION_DATA = GeoJsonData.Features(
     FeatureCollection<Geometry, JsonObject>(emptyList())
 )
-private const val LOCATION_SOURCE_ID = "location-source"
 private const val LOCATION_RADIUS = "radius"
 private const val LOCATION_ROTATION = "rotation"
 

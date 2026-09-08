@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map.layers
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.graphics.Color
@@ -14,7 +13,7 @@ import de.westnordost.streetcomplete.screens.main.map.isPoint
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -27,17 +26,13 @@ import org.maplibre.compose.expressions.dsl.minus
 import org.maplibre.compose.expressions.dsl.not
 import org.maplibre.compose.expressions.dsl.plus
 import org.maplibre.compose.expressions.dsl.times
-import org.maplibre.compose.expressions.value.FloatValue
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.map.MapState
-import org.maplibre.compose.map.StyleLoadState
 import org.maplibre.compose.sources.GeoJsonData
-import org.maplibre.compose.sources.GeoJsonOptions
-import org.maplibre.compose.sources.GeoJsonSource
-import org.maplibre.compose.sources.GeoJsonSourceHandle
+import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
@@ -46,7 +41,6 @@ import kotlin.math.PI
 import kotlin.math.sin
 
 private const val HIGHLIGHT_CYCLE_MILLIS = 1200
-private const val FOCUSED_GEOMETRY_SOURCE_ID = "focus-geometry-source"
 private const val FOCUSED_GEOMETRY_FEATURE_ID = "1"
 private val HighlightColor = Color(0xffd14000)
 
@@ -54,35 +48,17 @@ private val HighlightColor = Color(0xffd14000)
 @Composable
 @MaplibreComposable
 fun FocusedGeometryLayers(mapState: MapState, geometry: ElementGeometry?) {
-    val source = remember {
-        GeoJsonSource(FOCUSED_GEOMETRY_SOURCE_ID, EMPTY_FOCUSED_GEOMETRY_DATA, GeoJsonOptions())
+    val data = remember(geometry) {
+        geometry?.let(::focusedGeometryData) ?: EMPTY_FOCUSED_GEOMETRY_DATA
     }
-    val currentGeometry = rememberUpdatedState(geometry)
+    val source = rememberGeoJsonSource(data)
 
-    LaunchedEffect(mapState) {
-        snapshotFlow {
-            Triple(
-                mapState.style.loadState,
-                mapState.style.sources[FOCUSED_GEOMETRY_SOURCE_ID] != null,
-                currentGeometry.value,
-            )
-        }
-            .distinctUntilChanged()
-            .collectLatest { (loadState, sourceInstalled, focusedGeometry) ->
-                if (loadState != StyleLoadState.Ready || !sourceInstalled) {
-                    return@collectLatest
-                }
-                val sourceHandle = mapState.style.sources[FOCUSED_GEOMETRY_SOURCE_ID]
-                    as? GeoJsonSourceHandle ?: return@collectLatest
+    LaunchedEffect(mapState, source, geometry) {
+        if (geometry == null) return@LaunchedEffect
+        snapshotFlow { mapState.style.sources[source] }
+            .filterNotNull()
+            .collectLatest { sourceHandle ->
                 try {
-                    withContext(Dispatchers.Default) {
-                        sourceHandle.setData(
-                            focusedGeometry?.let(::focusedGeometryData)
-                                ?: EMPTY_FOCUSED_GEOMETRY_DATA
-                        )
-                    }
-                    if (focusedGeometry == null) return@collectLatest
-
                     val animationStartedAt = withFrameNanos { it }
                     while (true) {
                         val frameTime = withFrameNanos { it }
@@ -90,8 +66,6 @@ fun FocusedGeometryLayers(mapState: MapState, geometry: ElementGeometry?) {
                         val cycleFraction =
                             (elapsedNanos % HIGHLIGHT_CYCLE_NANOS).toFloat() /
                                 HIGHLIGHT_CYCLE_NANOS.toFloat()
-                        // The native command waits for MapLibre's owner thread. Keep that wait away
-                        // from Compose's UI dispatcher while style images are being installed.
                         withContext(Dispatchers.Default) {
                             sourceHandle.setFeatureState(
                                 FOCUSED_GEOMETRY_FEATURE_ID,
@@ -102,13 +76,13 @@ fun FocusedGeometryLayers(mapState: MapState, geometry: ElementGeometry?) {
                         }
                     }
                 } catch (error: IllegalStateException) {
-                    // A loaded-style transition changes the observed state and retries this effect.
+                    // A style reload emits a new handle and restarts the animation.
                     if (!error.isStyleHandleRace()) throw error
                 }
             }
     }
 
-    val breathing = feature.state<FloatValue>("breathing").asNumber(const(0f))
+    val breathing = feature.state("breathing").asNumber(const(0f))
     val sizeFactor = breathing + const(0.75f)
     val opacity = (const(1f) - breathing) * const(0.5f) + const(0.15f)
 

@@ -13,19 +13,17 @@ import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.screens.main.map.layers.BindDynamicStyleImages
 import de.westnordost.streetcomplete.screens.main.map.layers.CurrentLocationLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayer
-import de.westnordost.streetcomplete.screens.main.map.layers.BindDynamicStyleImages
 import de.westnordost.streetcomplete.screens.main.map.layers.DynamicStyleImageRegistry
 import de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.ImperativeLayerVisibility
 import de.westnordost.streetcomplete.screens.main.map.layers.PinSnapshot
 import de.westnordost.streetcomplete.screens.main.map.layers.PinsLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.STYLEABLE_OVERLAY_LAYER_IDS
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
@@ -84,39 +82,32 @@ internal fun MainMapStyle(
             configuration.styledElements,
             configuration.dynamicStyleImages,
         )
-    ImperativeLayerVisibility(
-        mapState,
-        STYLEABLE_OVERLAY_LAYER_IDS,
-        content.showStyleableOverlay,
-    )
-    ImperativeLayerVisibility(
-        mapState,
-        listOf(HOUSE_NUMBER_LABEL_LAYER_ID),
-        HOUSE_NUMBER_LABEL_LAYER_ID !in configuration.hiddenBaseLayerIds,
-    )
     MapStyle(
         colors = configuration.colors,
         languages = configuration.languages,
+        showHouseNumbers = HOUSE_NUMBER_LABEL_LAYER_ID !in configuration.hiddenBaseLayerIds,
         belowRoadsContent = {
             StyleableOverlaySideLayer(
                 source = styleableOverlaySource,
                 isBridge = false,
+                visible = content.showStyleableOverlay,
             )
         },
         belowRoadsOnBridgeContent = {
             StyleableOverlaySideLayer(
                 source = styleableOverlaySource,
                 isBridge = true,
+                visible = content.showStyleableOverlay,
             )
         },
         belowLabelsContent = {
-            DownloadedAreaLayer(mapState, configuration.downloadedTiles)
+            DownloadedAreaLayer(configuration.downloadedTiles)
             StyleableOverlayLayers(
                 source = styleableOverlaySource,
+                visible = content.showStyleableOverlay,
                 onClickElement = { configuration.onClickOverlayElement(it) },
             )
             TracksLayers(
-                mapState,
                 tracks.currentRenderedTrack,
                 tracks.isRecording,
                 tracks.oldRenderedTracks,
@@ -125,6 +116,7 @@ internal fun MainMapStyle(
         aboveLabelsContent = {
             StyleableOverlayLabelLayer(
                 source = styleableOverlaySource,
+                visible = content.showStyleableOverlay,
                 onClickElement = { configuration.onClickOverlayElement(it) },
             )
             // Keep the marker source and layers installed, matching master's component lifetime.
@@ -137,16 +129,16 @@ internal fun MainMapStyle(
             // state value per frame without recomposing or replacing style resources.
             FocusedGeometryLayers(mapState, content.highlightedGeometry)
             CurrentLocationLayers(
-                mapState,
                 tracks.displayedMeasurement?.toLocation(),
                 configuration.locationRotation,
             )
 
-            val pinSnapshot = when (content.pinMode) {
-                MainMapPinMode.NONE -> PinSnapshot.Empty
-                MainMapPinMode.QUESTS -> configuration.questPins
-                MainMapPinMode.EDITS -> configuration.editHistoryPins
-            }
+            val pinSnapshot =
+                when (content.pinMode) {
+                    MainMapPinMode.NONE -> PinSnapshot.Empty
+                    MainMapPinMode.QUESTS -> configuration.questPins
+                    MainMapPinMode.EDITS -> configuration.editHistoryPins
+                }
             PinsLayers(
                 mapState = mapState,
                 snapshot = pinSnapshot,
@@ -156,11 +148,13 @@ internal fun MainMapStyle(
                     when (content.pinMode) {
                         MainMapPinMode.NONE -> Unit
                         MainMapPinMode.QUESTS -> {
-                            configuration.questKeyForProperties(properties)
+                            configuration
+                                .questKeyForProperties(properties)
                                 ?.let(configuration.onClickQuest)
                         }
                         MainMapPinMode.EDITS -> {
-                            configuration.editKeyForProperties(properties)
+                            configuration
+                                .editKeyForProperties(properties)
                                 ?.let(configuration.onClickEdit)
                         }
                     }
@@ -168,8 +162,7 @@ internal fun MainMapStyle(
                 onClickCluster = { configuration.onClickCluster(it) },
             )
 
-            // Keep the selected-pin source and layer installed, as master does. Selection changes
-            // update their data and icon size imperatively without restructuring the style.
+            // Keep the selected-pin source and layer installed, as master does.
             SelectedPinsLayer(mapState, content.selectedPins, configuration.dynamicStyleImages)
         },
     )

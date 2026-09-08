@@ -132,11 +132,6 @@ class PinsLayersTest {
                 "Style operation belongs to a stale or unready loaded-style identity"
             ).isStyleHandleRace()
         )
-        assertTrue(
-            IllegalStateException(
-                "Style operation crossed a loaded-style resource change"
-            ).isStyleHandleRace()
-        )
         assertFalse(IllegalStateException("Could not parse GeoJSON").isStyleHandleRace())
     }
 }

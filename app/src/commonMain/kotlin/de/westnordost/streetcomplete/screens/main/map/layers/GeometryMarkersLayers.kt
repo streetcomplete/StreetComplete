@@ -3,14 +3,13 @@ package de.westnordost.streetcomplete.screens.main.map.layers
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
-import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.preset_maki_circle
 import de.westnordost.streetcomplete.screens.main.map.isArea
@@ -23,7 +22,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
-import org.jetbrains.compose.resources.DrawableResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.feature
@@ -40,14 +38,11 @@ import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.sources.GeoJsonData
-import org.maplibre.compose.sources.GeoJsonOptions
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.Point
-
-private const val GEOMETRY_MARKERS_SOURCE_ID = "geometry-source"
 
 /** Displays the line and polygon geometry of elements surrounding a selected quest. */
 @Composable
@@ -60,30 +55,29 @@ internal fun GeometryMarkersLayers(
     val markerResources = markers.map { it.icon ?: Res.drawable.preset_maki_circle }.distinct()
     val images = rememberPlainStyleImages(markerResources)
     RegisterDynamicStyleImages(imageRegistry, "geometry-markers", images)
-    val requiredImageIds = images.mapTo(mutableSetOf(), DynamicStyleImage::id)
-    val data by produceState<GeoJsonData>(
-        EMPTY_GEOMETRY_MARKERS_DATA,
-        markers,
-        requiredImageIds,
-    ) {
-        value = withContext(Dispatchers.Default) {
-            if (markers.isEmpty()) {
-                EMPTY_GEOMETRY_MARKERS_DATA
-            } else {
-                GeoJsonData.Features(
-                    FeatureCollection(markers.flatMap(Marker::toGeometryMarkerFeatures))
-                )
-            }
+    val data by
+        produceState<GeoJsonData>(
+            EMPTY_GEOMETRY_MARKERS_DATA,
+            markers,
+        ) {
+            value =
+                withContext(Dispatchers.Default) {
+                    if (markers.isEmpty()) {
+                        EMPTY_GEOMETRY_MARKERS_DATA
+                    } else {
+                        GeoJsonData.Features(
+                            FeatureCollection(markers.flatMap(Marker::toGeometryMarkerFeatures))
+                        )
+                    }
+                }
         }
-    }
-    val source = rememberImperativeGeoJsonSource(
-        mapState = mapState,
-        id = GEOMETRY_MARKERS_SOURCE_ID,
-        data = data,
-        options = remember { GeoJsonOptions() },
-        imageRegistry = imageRegistry,
-        requiredImageIds = requiredImageIds,
-    )
+    val source =
+        rememberImageBackedGeoJsonSource(
+            mapState = mapState,
+            data = data,
+            imageRegistry = imageRegistry,
+            requiredImageIds = images.mapTo(mutableSetOf(), DynamicStyleImage::id),
+        )
 
     FillLayer(
         id = "geo-fill",
@@ -106,11 +100,13 @@ internal fun GeometryMarkersLayers(
         source = source,
         filter = feature.isPoint(),
         iconImage = image(feature["icon-image"].convertToString()),
-        iconSize = interpolate(
-            linear(), zoom(),
-            17 to const(0.5f),
-            19 to const(1f),
-        ),
+        iconSize =
+            interpolate(
+                linear(),
+                zoom(),
+                17 to const(0.5f),
+                19 to const(1f),
+            ),
         iconAllowOverlap = const(true),
         iconColor = const(Color.GeometryMarker),
         textField = feature["label"].convertToString(),
@@ -129,10 +125,12 @@ internal fun Marker.toGeometryMarkerFeatures(): List<Feature<Geometry, JsonObjec
         add(
             Feature(
                 Point(geometry.center.toPosition()),
-                JsonObject(buildMap {
-                    put("icon-image", JsonPrimitive(plainStyleImageId(resource)))
-                    title?.let { put("label", JsonPrimitive(it)) }
-                }),
+                JsonObject(
+                    buildMap {
+                        put("icon-image", JsonPrimitive(plainStyleImageId(resource)))
+                        title?.let { put("label", JsonPrimitive(it)) }
+                    }
+                ),
             )
         )
     }
@@ -141,6 +139,5 @@ internal fun Marker.toGeometryMarkerFeatures(): List<Feature<Geometry, JsonObjec
     }
 }
 
-private val EMPTY_GEOMETRY_MARKERS_DATA = GeoJsonData.Features(
-    FeatureCollection<Geometry, JsonObject>(emptyList())
-)
+private val EMPTY_GEOMETRY_MARKERS_DATA =
+    GeoJsonData.Features(FeatureCollection<Geometry, JsonObject>(emptyList()))

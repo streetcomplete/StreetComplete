@@ -53,20 +53,22 @@ cover this remaining jank. These probe observations do not verify fixes on maste
   and distance-scaled animation into the shared map controller.
 - [x] Move persisted camera position, zoom controls, compass reset, GPS following,
   navigation tilt/bearing, and user-pan detection into shared map state.
-- [ ] Replace target-delta pan detection with an explicit pan-begin callback when
-  MapLibre Compose exposes gesture-specific camera events.
-- [ ] Restore the legacy pan, rotate, tilt, fling, and rotate-while-scaling gesture
-  configuration when MapLibre Compose exposes those controls in common code.
+- [x] Replace target-delta pan detection with MapLibre Compose's explicit
+  gesture-component start callbacks. Pan alone stops location following;
+  zoom, rotate, and tilt still record that the user moved the camera.
+- [x] Restore the legacy 5dp pan, 1.5 degree rotation, 8dp tilt, 250/500
+  pan-momentum, and rotate-while-zooming-disabled settings through the common
+  interaction API.
 - [x] Move map projection, long press, raw map click, interactive-feature
   suppression, and finger-radius measurement into the shared renderer/state.
-- [ ] Replace the shared renderer's explicit interactive-layer pre-query when
-  MapLibre Compose exposes an unhandled/post-layer map click callback.
+- [x] Replace the shared renderer's explicit interactive-layer pre-query with
+  MapLibre Compose's post-layer `click.onUnhandled` callback.
 - [x] Port styleable overlay geometry, colors, strokes, bridge ordering,
   extrusions, icons, labels, disabled state, visibility, and element clicks.
 - [x] Move the styleable overlay data manager to common code and connect it to
   the shared camera/viewport flow.
-- [ ] Restore the legacy finger-radius overlay hit area when MapLibre Compose
-  layer click handlers expose configurable rendered-feature query geometry.
+- [x] Restore the legacy 14dp finger-radius overlay hit area with declarative
+  layer hit padding.
 - [x] Port the downloaded-area mask and hatching to a shared MapLibre Compose
   layer.
 - [x] Port recorded-track geometry, styling, animation, and bounded-segment

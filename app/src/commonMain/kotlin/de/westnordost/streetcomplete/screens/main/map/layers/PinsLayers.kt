@@ -44,13 +44,12 @@ import org.maplibre.compose.expressions.dsl.sp
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.ImageValue
 import org.maplibre.compose.expressions.value.TranslateAnchor
+import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.GeoJsonOptions
-import org.maplibre.compose.sources.GeoJsonSource
-import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
@@ -59,8 +58,6 @@ import org.maplibre.spatialk.geojson.Point
 
 private const val CLUSTER_MIN_ZOOM = 13
 private const val CLUSTER_MAX_ZOOM = 14
-internal const val PINS_SOURCE_ID = "pins-source"
-internal val PIN_LAYER_IDS = listOf("pin-cluster-layer", "pin-dot-layer", "pins-layer")
 
 /** Displays clustered quest or edit-history pins and handles their feature clicks. */
 @Composable
@@ -73,37 +70,6 @@ internal fun PinsLayers(
     onClickPin: (properties: Map<String, String>) -> Unit,
     onClickCluster: (leafPositions: List<LatLon>) -> Unit,
 ) {
-    ImperativeLayerVisibility(mapState, PIN_LAYER_IDS, visible)
-    val coroutineScope = rememberCoroutineScope()
-    val currentOnClickPin = rememberUpdatedState(onClickPin)
-    val currentOnClickCluster = rememberUpdatedState(onClickCluster)
-    val clusterClickHandler = remember(mapState, coroutineScope) {
-        clusterClickHandler@{ features: List<Feature<Geometry, JsonObject?>> ->
-            val cluster = features.firstOrNull()
-                ?: return@clusterClickHandler ClickResult.Pass
-            coroutineScope.launch {
-                try {
-                    val handle = mapState.awaitGeoJsonSource(PINS_SOURCE_ID)
-                    val leaves = handle.getClusterLeaves(cluster, Long.MAX_VALUE, 0L)
-                    currentOnClickCluster.value(
-                        leaves.features.mapNotNull { it.geometry.toLatLonOrNull() }
-                    )
-                } catch (error: IllegalStateException) {
-                    // Ignore a click racing a base-style replacement.
-                    if (!error.isStyleHandleRace()) throw error
-                }
-            }
-            ClickResult.Consume
-        }
-    }
-    val pinClickHandler = remember {
-        pinClickHandler@{ features: List<Feature<Geometry, JsonObject?>> ->
-            val properties = features.firstOrNull()?.properties
-                ?: return@pinClickHandler ClickResult.Pass
-            currentOnClickPin.value(properties.toStringMap())
-            ClickResult.Consume
-        }
-    }
     val options = remember {
         GeoJsonOptions(
             cluster = true,
@@ -111,27 +77,58 @@ internal fun PinsLayers(
             clusterRadius = 55,
         )
     }
-
     val images = rememberPinStyleImages(snapshot.icons)
     RegisterDynamicStyleImages(imageRegistry, "quest-pins", images)
-    val requiredImageIds = images.mapTo(mutableSetOf(), DynamicStyleImage::id)
-    val source = rememberImperativeGeoJsonSource(
-        mapState = mapState,
-        id = PINS_SOURCE_ID,
-        data = snapshot.data,
-        options = options,
-        imageRegistry = imageRegistry,
-        requiredImageIds = requiredImageIds,
-    )
+    val source =
+        rememberImageBackedGeoJsonSource(
+            mapState = mapState,
+            data = snapshot.data,
+            imageRegistry = imageRegistry,
+            requiredImageIds = images.mapTo(mutableSetOf(), DynamicStyleImage::id),
+            options = options,
+        )
+
+    val coroutineScope = rememberCoroutineScope()
+    val currentOnClickPin = rememberUpdatedState(onClickPin)
+    val currentOnClickCluster = rememberUpdatedState(onClickCluster)
+    val clusterClickHandler =
+        remember(mapState, coroutineScope) {
+            clusterClickHandler@{ features: List<Feature<Geometry, JsonObject?>> ->
+                val cluster = features.firstOrNull() ?: return@clusterClickHandler ClickResult.Pass
+                coroutineScope.launch {
+                    try {
+                        val handle = mapState.style.sources[source] ?: return@launch
+                        val leaves = handle.getClusterLeaves(cluster, Long.MAX_VALUE, 0L)
+                        currentOnClickCluster.value(
+                            leaves.features.mapNotNull { it.geometry.toLatLonOrNull() }
+                        )
+                    } catch (error: IllegalStateException) {
+                        // Ignore a click racing a base-style replacement.
+                        if (!error.isStyleHandleRace()) throw error
+                    }
+                }
+                ClickResult.Consume
+            }
+        }
+    val pinClickHandler = remember {
+        pinClickHandler@{ features: List<Feature<Geometry, JsonObject?>> ->
+            val properties =
+                features.firstOrNull()?.properties ?: return@pinClickHandler ClickResult.Pass
+            currentOnClickPin.value(properties.toStringMap())
+            ClickResult.Consume
+        }
+    }
 
     SymbolLayer(
         id = "pin-cluster-layer",
         source = source,
-        filter = all(
-            zoom() gte const(CLUSTER_MIN_ZOOM),
-            zoom() lte const(CLUSTER_MAX_ZOOM),
-            feature["point_count"].convertToNumber() gt const(1),
-        ),
+        visible = visible,
+        filter =
+            all(
+                zoom() gte const(CLUSTER_MIN_ZOOM),
+                zoom() lte const(CLUSTER_MAX_ZOOM),
+                feature["point_count"].convertToNumber() gt const(1),
+            ),
         iconImage = image(painterResource(Res.drawable.pin_circle)),
         iconSize = const(0.5f) + log2(feature["point_count"].convertToNumber()) / const(10f),
         iconAllowOverlap = const(true),
@@ -148,13 +145,15 @@ internal fun PinsLayers(
     CircleLayer(
         id = "pin-dot-layer",
         source = source,
-        filter = any(
-            zoom() gt const(CLUSTER_MAX_ZOOM),
-            all(
-                zoom() gte const(CLUSTER_MAX_ZOOM),
-                feature["point_count"].convertToNumber() lte const(1),
+        visible = visible,
+        filter =
+            any(
+                zoom() gt const(CLUSTER_MAX_ZOOM),
+                all(
+                    zoom() gte const(CLUSTER_MAX_ZOOM),
+                    feature["point_count"].convertToNumber() lte const(1),
+                ),
             ),
-        ),
         color = const(Color.White),
         strokeColor = const(Color(0xffaaaaaa)),
         radius = const(5.dp),
@@ -166,14 +165,14 @@ internal fun PinsLayers(
     SymbolLayer(
         id = "pins-layer",
         source = source,
+        visible = visible,
         filter = zoom() gt const(CLUSTER_MAX_ZOOM),
         sortKey = feature["icon-order"].convertToNumber(),
         iconImage = pinIconExpression(),
         // Dynamic icon sizes and collision handling flicker together, so preserve the fixed size.
         iconSize = const(1f),
-        iconPadding = const(
-            DpPadding(left = 2.5.dp, top = (-2.5).dp, right = 0.dp, bottom = (-7).dp)
-        ),
+        iconPadding =
+            const(DpPadding(left = 2.5.dp, top = (-2.5).dp, right = 0.dp, bottom = (-7).dp)),
         iconOffset = const(DpOffset((-4.5).dp, (-34.5).dp)),
         iconAllowOverlap = const(false),
         iconIgnorePlacement = const(false),
@@ -182,17 +181,20 @@ internal fun PinsLayers(
 }
 
 /** Reuses prepared pin data until its contents change. */
-class PinSnapshot private constructor(
+class PinSnapshot
+private constructor(
     val pins: List<Pin>,
     val icons: List<DrawableResource>,
     val data: GeoJsonData,
 ) {
     fun updated(pins: List<Pin>): PinSnapshot =
-        if (this.pins == pins) this else PinSnapshot(
-            pins = pins,
-            icons = pins.map(Pin::icon).distinct(),
-            data = GeoJsonData.JsonString(pinGeoJson(pins)),
-        )
+        if (this.pins == pins) this
+        else
+            PinSnapshot(
+                pins = pins,
+                icons = pins.map(Pin::icon).distinct(),
+                data = GeoJsonData.JsonString(pinGeoJson(pins)),
+            )
 
     companion object {
         val Empty = PinSnapshot(emptyList(), emptyList(), EMPTY_PIN_DATA)
@@ -203,25 +205,25 @@ internal fun pinIconExpression(): Expression<ImageValue> =
     image(feature["icon-image"].convertToString())
 
 @Composable
-internal fun rememberPinStyleImages(
-    resources: List<DrawableResource>,
-): List<DynamicStyleImage> {
+internal fun rememberPinStyleImages(resources: List<DrawableResource>): List<DynamicStyleImage> {
     val density = LocalDensity.current
     val layoutDirection = LocalLayoutDirection.current
     val result = mutableListOf<DynamicStyleImage>()
     for (resource in resources) {
         val id = resource.id ?: continue
-        result += key(id) {
-            val painter = pinPainter(painterResource(resource))
-            DynamicStyleImage(
-                id = id,
-                painter = painter,
-                density = density,
-                layoutDirection = layoutDirection,
-                size = DpSize(71.dp, 71.dp),
-                cacheKey = listOf("pin", id, density.density, density.fontScale, layoutDirection),
-            )
-        }
+        result +=
+            key(id) {
+                val painter = pinPainter(painterResource(resource))
+                DynamicStyleImage(
+                    id = id,
+                    painter = painter,
+                    density = density,
+                    layoutDirection = layoutDirection,
+                    size = DpSize(71.dp, 71.dp),
+                    cacheKey =
+                        listOf("pin", id, density.density, density.fontScale, layoutDirection),
+                )
+            }
     }
     return result
 }
@@ -251,7 +253,7 @@ internal fun pinGeoJson(pins: Collection<Pin>): String = buildString {
         append(':')
         if (overriddenOrder == null) append(pin.order + 50) else appendJsonString(overriddenOrder)
 
-        pin.properties.forEachIndexed propertiesLoop@ { propertyIndex, (key, value) ->
+        pin.properties.forEachIndexed propertiesLoop@{ propertyIndex, (key, value) ->
             if (key == "icon-image" || key == "icon-order") return@propertiesLoop
             if (pin.properties.hasKeyAfter(key, propertyIndex)) return@propertiesLoop
             append(',')
@@ -286,18 +288,21 @@ private fun StringBuilder.appendJsonString(value: String) {
     append(Json.encodeToString(value))
 }
 
-private fun Geometry.toLatLonOrNull(): LatLon? = (this as? Point)?.coordinates?.let {
-    LatLon(latitude = it.latitude, longitude = it.longitude)
-}
+private fun Geometry.toLatLonOrNull(): LatLon? =
+    (this as? Point)?.coordinates?.let {
+        LatLon(latitude = it.latitude, longitude = it.longitude)
+    }
 
 internal fun JsonObject.toStringMap(): Map<String, String> = mapNotNull { (key, value) ->
     val stringValue = (value as? JsonPrimitive)?.contentOrNull ?: return@mapNotNull null
     key to stringValue
-}.toMap()
+}
+    .toMap()
 
-internal fun IllegalStateException.isStyleHandleRace(): Boolean = message in setOf(
-    "No ready loaded style",
-    "Style operation belongs to a stale loaded-style identity",
-    "Style operation belongs to a stale or unready loaded-style identity",
-    "Style operation crossed a loaded-style resource change",
-)
+internal fun IllegalStateException.isStyleHandleRace(): Boolean =
+    message in
+        setOf(
+            "No ready loaded style",
+            "Style operation belongs to a stale loaded-style identity",
+            "Style operation belongs to a stale or unready loaded-style identity",
+        )

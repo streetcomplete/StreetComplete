@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.screens.main.map.MAP_CLICK_RADIUS
 import de.westnordost.streetcomplete.screens.main.map.byZoom
 import de.westnordost.streetcomplete.screens.main.map.inMeters
 import de.westnordost.streetcomplete.screens.main.map.isArea
@@ -38,6 +39,7 @@ import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.expressions.value.LineJoin
 import org.maplibre.compose.expressions.value.SymbolAnchor
 import org.maplibre.compose.expressions.value.SymbolZOrder
+import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.layers.FillExtrusionLayer
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
@@ -47,28 +49,13 @@ import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.GeoJsonOptions
 import org.maplibre.compose.sources.GeoJsonSource
 import org.maplibre.compose.sources.Source
-import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.toJson
 
-private const val OVERLAY_SOURCE_ID = "overlay-source"
 private const val MIN_ZOOM = 14f
-internal val STYLEABLE_OVERLAY_LAYER_IDS = listOf(
-    "overlay-lines-side",
-    "overlay-lines-side-dashed",
-    "overlay-lines-side-bridge",
-    "overlay-lines-side-dashed-bridge",
-    "overlay-lines-casing",
-    "overlay-fills",
-    "overlay-lines",
-    "overlay-lines-dashed",
-    "overlay-fills-outline",
-    "overlay-heights",
-    "overlay-symbols",
-)
 
 /** Creates the one source shared across the overlay's four map-style insertion points. */
 @Composable
@@ -78,28 +65,30 @@ internal fun rememberStyleableOverlaySource(
     imageRegistry: DynamicStyleImageRegistry,
 ): GeoJsonSource {
     val options = remember { GeoJsonOptions(minZoom = MIN_ZOOM.toInt()) }
-    val prepared by produceState(PREPARED_EMPTY_OVERLAY, styledElements) {
-        value = withContext(Dispatchers.Default) {
-            PreparedOverlay(
-                data = GeoJsonData.JsonString(
-                    FeatureCollection(
-                        styledElements.flatMap(StyledElement::toGeoJsonFeatures)
-                    ).toJson()
-                ),
-                resources = styledElements.mapNotNull { it.style.getIcon() }.distinct(),
-            )
+    val prepared by
+        produceState(PREPARED_EMPTY_OVERLAY, styledElements) {
+            value =
+                withContext(Dispatchers.Default) {
+                    PreparedOverlay(
+                        data =
+                            GeoJsonData.JsonString(
+                                FeatureCollection(
+                                        styledElements.flatMap(StyledElement::toGeoJsonFeatures)
+                                    )
+                                    .toJson()
+                            ),
+                        resources = styledElements.mapNotNull { it.style.getIcon() }.distinct(),
+                    )
+                }
         }
-    }
     val images = rememberPlainStyleImages(prepared.resources)
     RegisterDynamicStyleImages(imageRegistry, "styleable-overlay", images)
-    val requiredImageIds = images.mapTo(mutableSetOf(), DynamicStyleImage::id)
-    return rememberImperativeGeoJsonSource(
+    return rememberImageBackedGeoJsonSource(
         mapState = mapState,
-        id = OVERLAY_SOURCE_ID,
         data = prepared.data,
-        options = options,
         imageRegistry = imageRegistry,
-        requiredImageIds = requiredImageIds,
+        requiredImageIds = images.mapTo(mutableSetOf(), DynamicStyleImage::id),
+        options = options,
     )
 }
 
@@ -108,16 +97,18 @@ private data class PreparedOverlay(
     val resources: List<DrawableResource>,
 )
 
-private val PREPARED_EMPTY_OVERLAY = PreparedOverlay(
-    data = GeoJsonData.Features(FeatureCollection<Geometry, JsonObject>(emptyList())),
-    resources = emptyList(),
-)
+private val PREPARED_EMPTY_OVERLAY =
+    PreparedOverlay(
+        data = GeoJsonData.Features(FeatureCollection<Geometry, JsonObject>(emptyList())),
+        resources = emptyList(),
+    )
 
 /** Draws overlay icons and labels above base-map labels. */
 @Composable
 @MaplibreComposable
 internal fun StyleableOverlayLabelLayer(
     source: Source,
+    visible: Boolean,
     onClickElement: (ElementKey) -> Unit,
 ) {
     val night = isSystemInDarkTheme()
@@ -126,6 +117,7 @@ internal fun StyleableOverlayLabelLayer(
     SymbolLayer(
         id = "overlay-symbols",
         source = source,
+        visible = visible,
         minZoom = 17f,
         filter = feature.isPoint(),
         zOrder = const(SymbolZOrder.Source),
@@ -141,14 +133,16 @@ internal fun StyleableOverlayLabelLayer(
         textHaloWidth = const(2.5.dp),
         textFont = const(listOf("Roboto Regular")),
         textAnchor = const(SymbolAnchor.Top),
-        textOffset = switch(
-            condition(feature.has("icon"), offset(0.em, 1.em)),
-            fallback = offset(0.em, 0.em),
-        ),
+        textOffset =
+            switch(
+                condition(feature.has("icon"), offset(0.em, 1.em)),
+                fallback = offset(0.em, 0.em),
+            ),
         textSize = const(16.sp),
         textOptional = const(true),
         textAllowOverlap = step(zoom(), fallback = const(false), 21 to const(true)),
         onClick = rememberOverlayClickHandler(onClickElement),
+        hitPadding = MAP_CLICK_RADIUS,
     )
 }
 
@@ -157,6 +151,7 @@ internal fun StyleableOverlayLabelLayer(
 @MaplibreComposable
 fun StyleableOverlayLayers(
     source: Source,
+    visible: Boolean,
     onClickElement: (ElementKey) -> Unit,
 ) {
     val opacity = feature["opacity"].convertToNumber()
@@ -171,6 +166,7 @@ fun StyleableOverlayLayers(
     LineLayer(
         id = "overlay-lines-casing",
         source = source,
+        visible = visible,
         minZoom = MIN_ZOOM,
         filter = solidCenter,
         color = outlineColor,
@@ -183,15 +179,18 @@ fun StyleableOverlayLayers(
     FillLayer(
         id = "overlay-fills",
         source = source,
+        visible = visible,
         minZoom = MIN_ZOOM,
         filter = feature.isArea(),
         color = color,
         opacity = opacity,
         onClick = clickHandler,
+        hitPadding = MAP_CLICK_RADIUS,
     )
     LineLayer(
         id = "overlay-lines",
         source = source,
+        visible = visible,
         minZoom = MIN_ZOOM,
         filter = solidCenter,
         color = color,
@@ -200,10 +199,12 @@ fun StyleableOverlayLayers(
         cap = const(LineCap.Round),
         join = const(LineJoin.Round),
         onClick = clickHandler,
+        hitPadding = MAP_CLICK_RADIUS,
     )
     LineLayer(
         id = "overlay-lines-dashed",
         source = source,
+        visible = visible,
         minZoom = MIN_ZOOM,
         filter = dashedCenter,
         color = color,
@@ -213,10 +214,12 @@ fun StyleableOverlayLayers(
         cap = const(LineCap.Butt),
         join = const(LineJoin.Round),
         onClick = clickHandler,
+        hitPadding = MAP_CLICK_RADIUS,
     )
     LineLayer(
         id = "overlay-fills-outline",
         source = source,
+        visible = visible,
         minZoom = MIN_ZOOM,
         filter = feature.isArea(),
         color = outlineColor,
@@ -227,6 +230,7 @@ fun StyleableOverlayLayers(
     FillExtrusionLayer(
         id = "overlay-heights",
         source = source,
+        visible = visible,
         minZoom = MIN_ZOOM,
         filter = all(feature.isArea(), feature.has("height")),
         color = color,
@@ -243,6 +247,7 @@ fun StyleableOverlayLayers(
 fun StyleableOverlaySideLayer(
     source: Source,
     isBridge: Boolean,
+    visible: Boolean,
 ) {
     val bridgeFilter = if (isBridge) feature.has("bridge") else !feature.has("bridge")
     val commonFilter = all(feature.isLines(), feature.has("offset"), bridgeFilter)
@@ -255,6 +260,7 @@ fun StyleableOverlaySideLayer(
     LineLayer(
         id = "overlay-lines-side" + bridgeString,
         source = source,
+        visible = visible,
         minZoom = MIN_ZOOM,
         filter = all(commonFilter, !feature.has("dashed")),
         color = color,
@@ -267,6 +273,7 @@ fun StyleableOverlaySideLayer(
     LineLayer(
         id = "overlay-lines-side-dashed" + bridgeString,
         source = source,
+        visible = visible,
         minZoom = MIN_ZOOM,
         filter = all(commonFilter, feature.has("dashed")),
         color = color,
@@ -279,12 +286,10 @@ fun StyleableOverlaySideLayer(
     )
 }
 
-// TODO(maplibre-compose): Make layer click hit radius configurable. The common callback currently
-// queries only the exact tap coordinate, while Android used a finger-radius rendered-feature box.
 @Composable
 @MaplibreComposable
 private fun rememberOverlayClickHandler(
-    onClickElement: (ElementKey) -> Unit,
+    onClickElement: (ElementKey) -> Unit
 ): (List<Feature<Geometry, JsonObject?>>) -> ClickResult {
     val currentOnClickElement = rememberUpdatedState(onClickElement)
     return remember {

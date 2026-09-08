@@ -16,8 +16,8 @@ import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.layers.FillLayer
-import org.maplibre.compose.map.MapState
 import org.maplibre.compose.sources.GeoJsonData
+import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Polygon
 import org.maplibre.spatialk.geojson.toJson
@@ -25,17 +25,13 @@ import org.maplibre.spatialk.geojson.toJson
 /** Displays hatching everywhere outside the downloaded tiles. */
 @Composable
 @MaplibreComposable
-fun DownloadedAreaLayer(mapState: MapState, tiles: Collection<TilePos>) {
+fun DownloadedAreaLayer(tiles: Collection<TilePos>) {
     val data by produceState<GeoJsonData>(EMPTY_DOWNLOADED_AREA_DATA, tiles) {
         value = withContext(Dispatchers.Default) {
             GeoJsonData.JsonString(tiles.toHolesInWorldPolygon().toJson())
         }
     }
-    val source = rememberImperativeGeoJsonSource(
-        mapState = mapState,
-        id = DOWNLOADED_AREA_SOURCE_ID,
-        data = data,
-    )
+    val source = rememberGeoJsonSource(data)
 
     FillLayer(
         id = "downloaded-area",
@@ -48,8 +44,6 @@ fun DownloadedAreaLayer(mapState: MapState, tiles: Collection<TilePos>) {
 private val EMPTY_DOWNLOADED_AREA_DATA = GeoJsonData.JsonString(
     emptyList<TilePos>().toHolesInWorldPolygon().toJson()
 )
-
-private const val DOWNLOADED_AREA_SOURCE_ID = "downloaded-area-source"
 
 /** convert the given tile positions into a polygon that spans the whole world but has holes at
  *  where the tiles are at. */

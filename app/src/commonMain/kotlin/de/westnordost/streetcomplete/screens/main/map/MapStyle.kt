@@ -55,6 +55,7 @@ import kotlin.math.max
 fun MapStyle(
     colors: MapColors,
     languages: List<String>,
+    showHouseNumbers: Boolean = true,
     belowRoadsContent: @Composable @MaplibreComposable () -> Unit = {},
     belowRoadsOnBridgeContent: @Composable @MaplibreComposable () -> Unit = {},
     belowLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
@@ -175,7 +176,7 @@ fun MapStyle(
 
     belowLabelsContent()
 
-    LabelLayers(source, colors, languages)
+    LabelLayers(source, colors, languages, showHouseNumbers)
 
     aboveLabelsContent()
 }
@@ -499,7 +500,12 @@ private fun BoundaryLayer(source: Source, colors: MapColors) {
 }
 
 @Composable @MaplibreComposable
-private fun LabelLayers(source: Source, colors: MapColors, languages: List<String>) {
+private fun LabelLayers(
+    source: Source,
+    colors: MapColors,
+    languages: List<String>,
+    showHouseNumbers: Boolean,
+) {
     val localizedName = feature.localizedName(languages)
     val haloWidth = const(2.5.dp)
     val textFont = const(listOf("Roboto Regular"))
@@ -539,6 +545,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
     SymbolLayer(
         id = "labels-housenumbers",
         source = source,
+        visible = showHouseNumbers,
         sourceLayer = "housenum_label",
         minZoom = 17f,
         sortKey = feature["scalerank"].asNumber(),

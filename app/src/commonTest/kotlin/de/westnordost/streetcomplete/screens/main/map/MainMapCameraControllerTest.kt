@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
-import org.maplibre.compose.camera.CameraMoveReason
 import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.spatialk.geojson.BoundingBox
 import org.maplibre.spatialk.geojson.Position
@@ -62,25 +61,17 @@ class MainMapCameraControllerTest {
         assertEquals(300.milliseconds, camera.animations.last().duration)
     }
 
-    @Test fun gestureTargetMovementStopsFollowingButRotationDoesNot() = runTest {
+    @Test fun cameraInputRecordsMovementButOnlyPanStopsFollowing() = runTest {
         val camera = FakeCamera(CameraPosition(target = Position(2.0, 1.0), zoom = 18.0))
         val controller = controller(camera = camera, scope = this)
         controller.onLocationChanged(location(1.0, 2.0), null)
         advanceUntilIdle()
 
-        controller.onCameraChanged(
-            camera.position.copy(bearing = 15.0),
-            CameraMoveReason.GESTURE,
-            isMoving = true,
-        )
+        controller.onCameraInputStarted()
         assertTrue(controller.isFollowingPosition)
         assertTrue(controller.userHasMovedCamera)
 
-        controller.onCameraChanged(
-            camera.position.copy(target = Position(2.001, 1.0)),
-            CameraMoveReason.GESTURE,
-            isMoving = true,
-        )
+        controller.onPanStarted()
         assertFalse(controller.isFollowingPosition)
     }
 
@@ -159,7 +150,7 @@ class MainMapCameraControllerTest {
             zoom = 17.0,
         )
 
-        controller.onCameraChanged(settled, CameraMoveReason.PROGRAMMATIC, isMoving = false)
+        controller.onCameraChanged(settled, isMoving = false)
 
         assertEquals(PersistedMapCameraState(settled, false, true), persisted.saved.last())
     }

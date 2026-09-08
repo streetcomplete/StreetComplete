@@ -18,15 +18,14 @@ import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.layers.LineLayer
-import org.maplibre.compose.map.MapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.Source
+import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.LineString
 import org.maplibre.spatialk.geojson.toJson
@@ -41,7 +40,6 @@ import org.maplibre.spatialk.geojson.toJson
 @Composable
 @MaplibreComposable
 fun TracksLayers(
-    mapState: MapState,
     trackpoints: List<LatLon>,
     isRecording: Boolean,
     oldTrackpointsLists: List<List<LatLon>>,
@@ -82,31 +80,9 @@ fun TracksLayers(
         }
     }
 
-    val animatedSource = rememberImperativeGeoJsonSource(
-        mapState = mapState,
-        id = ANIMATED_TRACK_SOURCE_ID,
-        data = animatedData,
-    )
-    val trackSource = rememberImperativeGeoJsonSource(
-        mapState = mapState,
-        id = TRACK_SOURCE_ID,
-        data = trackData,
-    )
-    val oldTrackSource = rememberImperativeGeoJsonSource(
-        mapState = mapState,
-        id = OLD_TRACK_SOURCE_ID,
-        data = oldTrackData,
-    )
-
-    if (!showAprilFoolsPattern) {
-        ImperativeLayerPaintProperty(
-            mapState = mapState,
-            layerIds = ACTIVE_TRACK_LAYER_IDS,
-            property = "line-color",
-            value = JsonPrimitive(if (isRecording) "#fe1616" else "#536dfe"),
-            defaultValue = JsonPrimitive("#536dfe"),
-        )
-    }
+    val animatedSource = rememberGeoJsonSource(animatedData)
+    val trackSource = rememberGeoJsonSource(trackData)
+    val oldTrackSource = rememberGeoJsonSource(oldTrackData)
     TracksStyleLayers(
         animatedSource,
         trackSource,
@@ -148,11 +124,6 @@ private fun TracksStyleLayers(
 
 private const val EMPTY_TRACK_JSON = """{"type":"FeatureCollection","features":[]}"""
 private val EMPTY_TRACK_DATA = GeoJsonData.JsonString(EMPTY_TRACK_JSON)
-private const val ANIMATED_TRACK_SOURCE_ID = "animate-track-source"
-private const val TRACK_SOURCE_ID = "track-source"
-private const val OLD_TRACK_SOURCE_ID = "old-track-source"
-private val ACTIVE_TRACK_LAYER_IDS = listOf("animate-track", "track")
-
 @Composable
 @MaplibreComposable
 private fun TracksLayer(
@@ -165,7 +136,7 @@ private fun TracksLayer(
     if (showAprilFoolsPattern) {
         TracksLayerApril1st(id, source, isRecording, opacity)
     } else {
-        TracksLayerDefault(id, source, opacity)
+        TracksLayerDefault(id, source, isRecording, opacity)
     }
 }
 
@@ -195,6 +166,7 @@ private fun TracksLayerApril1st(
 private fun TracksLayerDefault(
     id: String,
     source: Source,
+    isRecording: Boolean,
     opacity: Float,
 ) {
     LineLayer(
@@ -204,6 +176,6 @@ private fun TracksLayerDefault(
         cap = const(LineCap.Round),
         dasharray = const(listOf(0f, 2f)),
         width = const(6.dp),
-        color = const(Color.Location),
+        color = const(if (isRecording) Color(0xfffe1616) else Color.Location),
     )
 }
