@@ -211,7 +211,7 @@ private fun LandLayers(source: Source, colors: MapColors) {
         source = source,
         sourceLayer = "landuse",
         minZoom = 5f,
-        filter = feature.inClass("class", "wood", "scrub"),
+        filter = feature.inClass("wood", "scrub"),
         opacity = fadeInAtZoom(5f),
         color = const(colors.forest),
     )
@@ -301,7 +301,7 @@ private fun WaterLayers(source: Source, colors: MapColors, structure: Structure)
         sourceLayer = "waterway",
         minZoom = 10f,
         filter = all(
-            feature.inClass("class", "stream", "ditch", "drain"),
+            feature.inClass("stream", "ditch", "drain"),
             feature.isStructure(structure),
             feature.isLines()
         ),
@@ -363,7 +363,7 @@ private fun PedestrianAreaLayers(source: Source, colors: MapColors, structure: S
         opacity = fadeInAtZoom(16f),
         color = const(colors.roadOutline),
         width = byZoom(16 to 1.dp, 24 to 128.dp),
-        offset = byZoom(16 to 0.dp, 17 to 1.dp),
+        offset = byZoom(16 to -0.5.dp, 24 to -64.dp),
     )
     FillLayer(
         id = listOfNotNull("pedestrian-areas", structure.id).joinToString("-"),
@@ -432,7 +432,7 @@ private fun BarriersLayers(source: Source, colors: MapColors) {
         filter = feature.inClass("hedge"),
         opacity = fadeInAtZoom(15f),
         color = const(colors.forest),
-        width = byZoom(16 to 1.dp, 24 to 256.dp),
+        width = byZoom(16 to 1.dp, 24 to 512.dp),
     )
     CircleLayer(
         id = "point-barriers",
@@ -542,6 +542,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         source = source,
         sourceLayer = "housenum_label",
         minZoom = 18f,
+        sortKey = feature["scalerank"].asNumber(),
         textField = feature["house_num"].cast(),
         textColor = const(colors.text),
         textHaloColor = const(colors.textOutline),
@@ -557,6 +558,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         minZoom = 14f,
         filter = feature.isLines(),
         placement = const(SymbolPlacement.LineCenter),
+        sortKey = feature["scalerank"].asNumber(),
         textField = localizedName,
         textColor = const(colors.text),
         textHaloColor = const(colors.textOutline),
@@ -570,8 +572,9 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         source = source,
         sourceLayer = "waterway",
         minZoom = 14f,
-        filter = all(!feature.isTunnel(), feature.inClass("stream", "river", "canal")),
+        filter = all(!feature.isTunnel(), feature.inClass("river", "canal")),
         placement = const(SymbolPlacement.LineCenter),
+        sortKey = feature["scalerank"].asNumber(),
         textField = localizedName,
         textColor = const(colors.textWater),
         textHaloColor = const(colors.textWaterOutline),
@@ -587,6 +590,7 @@ private fun LabelLayers(source: Source, colors: MapColors, languages: List<Strin
         minZoom = 16f,
         filter = all(!feature.isTunnel(), feature.inClass("stream", "ditch", "drain")),
         placement = const(SymbolPlacement.LineCenter),
+        sortKey = feature["scalerank"].asNumber(),
         textField = localizedName,
         textColor = const(colors.textWater),
         textHaloColor = const(colors.textWaterOutline),

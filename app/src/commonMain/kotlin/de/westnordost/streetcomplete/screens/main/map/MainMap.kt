@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -34,10 +33,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import org.koin.compose.viewmodel.koinViewModel
-import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.camera.CameraState
 import org.maplibre.compose.camera.rememberCameraState
-import org.maplibre.compose.map.MapOptions
 import org.maplibre.compose.map.MaplibreMap
 import org.maplibre.compose.overlay.MapOverlay
 import org.maplibre.compose.sources.GeoJsonData
@@ -102,7 +99,7 @@ fun MainMap(
     }
 
     LaunchedEffect(cameraState.position) {
-        viewModel.onMapMoved(cameraState)
+        viewModel.onViewportChanged(cameraState)
     }
 
     fun zoomToCluster(targetZoom: Double) {
@@ -228,6 +225,7 @@ private val BASE_STYLE = """
       "sources": {},
       "glyphs": "${
         Res.getUri("files/glyphs/Roboto Regular/0-255.pbf")
+            .replace("Roboto%20Regular", "{fontstack}")
             .replace("Roboto Regular", "{fontstack}")
             .replace("0-255", "{range}")
             // workaround for https://github.com/maplibre/maplibre-native/issues/4498

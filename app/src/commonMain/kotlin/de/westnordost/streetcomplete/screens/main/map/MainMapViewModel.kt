@@ -6,23 +6,16 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.EditKey
-import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
-import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
 import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.callbackFlow
@@ -31,8 +24,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import org.maplibre.compose.camera.CameraState
-import org.maplibre.spatialk.geojson.FeatureCollection
-import org.maplibre.spatialk.geojson.Geometry
 
 abstract class MainMapViewModel : ViewModel() {
     /** Downloaded areas */
@@ -50,7 +41,7 @@ abstract class MainMapViewModel : ViewModel() {
     abstract val styleableElements: StateFlow<Collection<StyledElement>>
     abstract fun getElementKey(properties: JsonObject): ElementKey?
 
-    abstract fun onMapMoved(cameraState: CameraState)
+    abstract fun onViewportChanged(cameraState: CameraState)
 }
 
 class MainMapViewModelImpl(
@@ -96,7 +87,7 @@ class MainMapViewModelImpl(
         mapQuestPinsSource.onDestroy()
     }
 
-    override fun onMapMoved(cameraState: CameraState) {
+    override fun onViewportChanged(cameraState: CameraState) {
         mapQuestPinsSource.onMapMoved(cameraState)
         styleableOverlaySource.onMapMoved(cameraState)
     }
