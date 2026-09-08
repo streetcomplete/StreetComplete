@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.charging_station_socket
+package de.westnordost.streetcomplete.quests.socket
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.elementfilter.filters.RelativeDate
@@ -119,13 +119,13 @@ private fun isDeprecatedSocketKey(key: String): Boolean =
 private fun Element.needsSocketSurvey(): Boolean {
     if (tags.keys.any { isDeprecatedSocketKey(it) }) return true
     if (managedSocketCountKeys.any { tags[it] == "yes" }) return true
-    if (!hasSurveyedManagedSocketValues()) return true
+    if (!hasSurveyedManagedSocketValues(tags)) return true
     // Surveyed numeric/"no" values: resurvey when check_date:socket is missing or expired
     return hasExpiredOrMissingSocketCheckDate()
 }
 
 /** True if any managed socket key is a surveyed count or an explicit "no". */
-private fun Element.hasSurveyedManagedSocketValues(): Boolean =
+fun hasSurveyedManagedSocketValues(tags: Map<String, String>): Boolean =
     managedSocketCountKeys.any { key ->
         val value = tags[key] ?: return@any false
         value == "no" || value.toIntOrNull() != null

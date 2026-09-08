@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.charging_station_socket
+package de.westnordost.streetcomplete.quests.socket
 
 import de.westnordost.streetcomplete.data.elementfilter.dateDaysAgo
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -12,11 +12,11 @@ import de.westnordost.streetcomplete.osm.nowAsCheckDateString
 import de.westnordost.streetcomplete.osm.toCheckDateString
 import de.westnordost.streetcomplete.quests.answerApplied
 import de.westnordost.streetcomplete.quests.answerAppliedTo
-import de.westnordost.streetcomplete.quests.charging_station_socket.SocketType.CHADEMO
-import de.westnordost.streetcomplete.quests.charging_station_socket.SocketType.DOMESTIC
-import de.westnordost.streetcomplete.quests.charging_station_socket.SocketType.TYPE2
-import de.westnordost.streetcomplete.quests.charging_station_socket.SocketType.TYPE2_CABLE
-import de.westnordost.streetcomplete.quests.charging_station_socket.SocketType.TYPE2_COMBO
+import de.westnordost.streetcomplete.quests.socket.SocketType.CHADEMO
+import de.westnordost.streetcomplete.quests.socket.SocketType.DOMESTIC
+import de.westnordost.streetcomplete.quests.socket.SocketType.TYPE2
+import de.westnordost.streetcomplete.quests.socket.SocketType.TYPE2_CABLE
+import de.westnordost.streetcomplete.quests.socket.SocketType.TYPE2_COMBO
 import de.westnordost.streetcomplete.testutils.TestMapDataWithGeometry
 import de.westnordost.streetcomplete.testutils.createMapData
 import de.westnordost.streetcomplete.testutils.node
@@ -142,6 +142,32 @@ class AddChargingStationSocketTest {
             "socket:type2" to "no",
             "socket:chademo" to "no"
         ))!!)
+    }
+
+    @Test fun `first-time survey is not a resurvey`() {
+        assertFalse(hasSurveyedManagedSocketValues(chargingStation().tags))
+        assertFalse(hasSurveyedManagedSocketValues(chargingStation("socket:type2" to "yes").tags))
+    }
+
+    @Test fun `existing numeric or no values are a resurvey`() {
+        assertTrue(hasSurveyedManagedSocketValues(chargingStation("socket:type2" to "2").tags))
+        assertTrue(hasSurveyedManagedSocketValues(chargingStation("socket:type2_cable" to "no").tags))
+        assertTrue(hasSurveyedManagedSocketValues(chargingStation(
+            "socket:type2" to "2",
+            "socket:chademo" to "no",
+            "check_date:socket" to expiredCheckDate
+        ).tags))
+    }
+
+    @Test fun `recent check date keeps surveyed station suppressed but still counts as resurvey data`() {
+        val tags = mapOf(
+            "amenity" to "charging_station",
+            "socket:type2" to "2",
+            "socket:type2_cable" to "no",
+            "check_date:socket" to recentCheckDate
+        )
+        assertTrue(hasSurveyedManagedSocketValues(tags))
+        assertFalse(questType.isApplicableTo(node(tags = tags))!!)
     }
 
     @Test fun `applicable to mixed numeric and yes regardless of recent check_date`() {

@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.charging_station_socket
+package de.westnordost.streetcomplete.quests.socket
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

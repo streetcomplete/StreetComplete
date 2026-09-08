@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.charging_station_socket
+package de.westnordost.streetcomplete.quests.socket
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,12 +33,16 @@ fun AddChargingStationSocketForm(
         initialSocketCounts(element.tags, socketTypes).mapValues { it.value as Int? }
     }
     var counts by remember(element.id, socketTypes) { mutableStateOf(initialCounts) }
+    val isResurvey = remember(element.id, element.tags) {
+        hasSurveyedManagedSocketValues(element.tags)
+    }
 
     QuestForm(
         on = on,
         isComplete = counts.values.any { (it ?: 0) > 0 },
         hasChanges = counts.mapValues { it.value ?: 0 } !=
             initialCounts.mapValues { it.value ?: 0 },
+        isResurvey = isResurvey,
         onClickOk = {
             on(Answer(counts.mapValues { (_, count) -> count ?: 0 }))
         },

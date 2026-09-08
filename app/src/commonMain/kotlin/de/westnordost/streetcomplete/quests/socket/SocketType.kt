@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.charging_station_socket
+package de.westnordost.streetcomplete.quests.socket
 
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.resources.*
