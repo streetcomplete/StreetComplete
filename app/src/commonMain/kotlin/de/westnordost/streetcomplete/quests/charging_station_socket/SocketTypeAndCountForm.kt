@@ -2,15 +2,15 @@ package de.westnordost.streetcomplete.quests.charging_station_socket
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -21,10 +21,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.StepperButton
+import de.westnordost.streetcomplete.ui.common.TextFieldStyle
+import de.westnordost.streetcomplete.ui.common.input.DecimalInput
 import de.westnordost.streetcomplete.ui.theme.AppTheme
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
@@ -35,8 +39,8 @@ private const val MAX_SOCKET_COUNT = 50
 @Composable
 fun SocketTypeAndCountForm(
     socketTypes: List<SocketType>,
-    counts: Map<SocketType, Int>,
-    onCountsChanged: (Map<SocketType, Int>) -> Unit,
+    counts: Map<SocketType, Int?>,
+    onCountsChanged: (Map<SocketType, Int?>) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -44,20 +48,11 @@ fun SocketTypeAndCountForm(
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         socketTypes.forEach { type ->
-            val count = counts[type] ?: 0
+            val count = counts[type]
             SocketRow(
                 type = type,
                 count = count,
-                onIncrease = {
-                    if (count < MAX_SOCKET_COUNT) {
-                        onCountsChanged(counts + (type to count + 1))
-                    }
-                },
-                onDecrease = {
-                    if (count > 0) {
-                        onCountsChanged(counts + (type to count - 1))
-                    }
-                }
+                onCountChange = { onCountsChanged(counts + (type to it)) },
             )
         }
     }
@@ -66,10 +61,10 @@ fun SocketTypeAndCountForm(
 @Composable
 private fun SocketRow(
     type: SocketType,
-    count: Int,
-    onIncrease: () -> Unit,
-    onDecrease: () -> Unit
+    count: Int?,
+    onCountChange: (Int?) -> Unit,
 ) {
+    val value = count ?: 0
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
@@ -106,30 +101,30 @@ private fun SocketRow(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(6.dp)
         ) {
-            Box(
-                modifier = Modifier
-                    .border(
-                        width = 1.dp,
-                        color = if (count > 0) {
-                            MaterialTheme.colors.primary
-                        } else {
-                            MaterialTheme.colors.onSurface.copy(alpha = 0.4f)
-                        },
-                        shape = RoundedCornerShape(6.dp)
+            DecimalInput(
+                value = count?.toDouble(),
+                onValueChange = { raw ->
+                    onCountChange(
+                        raw?.toInt()?.coerceIn(0, MAX_SOCKET_COUNT)
                     )
-                    .padding(horizontal = 12.dp, vertical = 10.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = count.toString(),
-                    style = MaterialTheme.typography.h6
-                )
-            }
+                },
+                modifier = Modifier.width(56.dp),
+                maxIntegerDigits = 2,
+                maxFractionDigits = 0,
+                isUnsigned = true,
+                style = TextFieldStyle.Outlined,
+                textStyle = MaterialTheme.typography.h6.copy(textAlign = TextAlign.Center),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            )
             StepperButton(
-                onIncrease = onIncrease,
-                onDecrease = onDecrease,
-                increaseEnabled = count < MAX_SOCKET_COUNT,
-                decreaseEnabled = count > 0
+                onIncrease = {
+                    onCountChange((value + 1).coerceAtMost(MAX_SOCKET_COUNT))
+                },
+                onDecrease = {
+                    onCountChange((value - 1).coerceAtLeast(0))
+                },
+                increaseEnabled = value < MAX_SOCKET_COUNT,
+                decreaseEnabled = value > 0
             )
         }
     }
@@ -162,7 +157,7 @@ private fun EuConnectorLabel(
 private fun SocketTypeAndCountFormPreview() {
     AppTheme {
         var counts by remember {
-            mutableStateOf(
+            mutableStateOf<Map<SocketType, Int?>>(
                 mapOf(
                     SocketType.TYPE2 to 2,
                     SocketType.TYPE2_CABLE to 0,

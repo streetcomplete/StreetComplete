@@ -28,15 +28,18 @@ fun AddChargingStationSocketForm(
     socketTypes: List<SocketType>,
 ) {
     val initialCounts = remember(element.id, socketTypes) {
-        initialSocketCounts(element.tags, socketTypes)
+        initialSocketCounts(element.tags, socketTypes).mapValues { it.value as Int? }
     }
     var counts by remember(element.id, socketTypes) { mutableStateOf(initialCounts) }
 
     QuestForm(
         on = on,
-        isComplete = counts.values.any { it > 0 },
-        hasChanges = counts != initialCounts,
-        onClickOk = { on(Answer(counts)) },
+        isComplete = counts.values.any { (it ?: 0) > 0 },
+        hasChanges = counts.mapValues { it.value ?: 0 } !=
+            initialCounts.mapValues { it.value ?: 0 },
+        onClickOk = {
+            on(Answer(counts.mapValues { (_, count) -> count ?: 0 }))
+        },
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
             CompositionLocalProvider(
@@ -48,7 +51,7 @@ fun AddChargingStationSocketForm(
             SocketTypeAndCountForm(
                 socketTypes = socketTypes,
                 counts = counts,
-                onCountsChanged = { counts = it }
+                onCountsChanged = { counts = it },
             )
         }
     }

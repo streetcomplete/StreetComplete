@@ -23,14 +23,18 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.math.contains
 import de.westnordost.streetcomplete.util.math.isInMultipolygon
 
-class AddChargingStationSocket : OsmElementQuestType<Map<SocketType, Int>> {
+class AddChargingStationSocket(
+    private val getCountryInfoByLocation: (location: LatLon) -> CountryInfo,
+) : OsmElementQuestType<Map<SocketType, Int>> {
 
+    // First version: motorcar-oriented connectors only (not bicycle lockers / HGV / bus).
     private val filter by lazy { """
         nodes, ways with
           amenity = charging_station
           and motorcar != no
           and motor_vehicle != no
           and access !~ private|no
+          and lockable != yes
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify charging station sockets"
@@ -40,13 +44,16 @@ class AddChargingStationSocket : OsmElementQuestType<Map<SocketType, Int>> {
     override val achievements = listOf(CAR)
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        // Individual charge points are nodes per OSM wiki; not quested yet (follow-up).
         val chargePointCenters = mapData
             .filter("nodes with man_made = charge_point")
-            .mapNotNull { it.center(mapData) }
+            .mapNotNull { (it as? Node)?.position }
             .toList()
 
         return mapData.filter(filter).filter { element ->
+            val center = element.center(mapData) ?: return@filter false
             element.needsSocketSurvey()
+                && hasSupportedSocketTypes(getCountryInfoByLocation(center))
                 && !element.containsMappedChargePoints(mapData, chargePointCenters)
         }.toList()
     }
@@ -54,8 +61,8 @@ class AddChargingStationSocket : OsmElementQuestType<Map<SocketType, Int>> {
     override fun isApplicableTo(element: Element): Boolean? {
         if (!filter.matches(element) || !element.needsSocketSurvey()) return false
         return when (element) {
-            // DOMESTIC is always offered, so the quest is never gated on country metadata alone
-            is Node -> true
+            is Node -> hasSupportedSocketTypes(getCountryInfoByLocation(element.position))
+            // ways: need geometry for country + contained charge_point check
             else -> null
         }
     }

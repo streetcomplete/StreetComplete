@@ -53,13 +53,40 @@ val SocketType.hasBlackEuLabels: Boolean
     get() = this != SocketType.TYPE2 && euLabels.isNotEmpty()
 
 /**
- * Specific EV connectors from country metadata, plus [SocketType.DOMESTIC] which is always
- * offered because it represents the locally usual household socket and is not listed in
- * `chargingStationSocketTypes`.
+ * Countries where the current [SocketType.DOMESTIC] illustration (Type E/F / CEE 7) is the
+ * usual household plug. StreetComplete has no household-plug country metadata, so this is an
+ * explicit allow-list rather than inventing a worldwide plug database.
+ *
+ * Excludes e.g. GB/IE (Type G), CH/LI (Type J), IT/SM/VA (Type L), DK (Type K),
+ * AU/NZ (Type I), IL (Type H), and non-European Type F users such as KR.
  */
-fun socketTypesForCountry(countryInfo: CountryInfo): List<SocketType> {
-    val specificTypes = SocketType.entries.filter {
+private val typeEFDomesticCountryCodes = setOf(
+    "AD", "AL", "AT", "BA", "BE", "BG", "CZ", "DE", "EE", "ES", "FI", "FR", "GR", "HR", "HU",
+    "IS", "LT", "LU", "LV", "MC", "ME", "MK", "NL", "NO", "PL", "PT", "RO", "RS", "SE", "SI",
+    "SK", "XK",
+)
+
+/** Supported non-DOMESTIC socket types present in country metadata. */
+fun specificSocketTypesForCountry(countryInfo: CountryInfo): List<SocketType> =
+    SocketType.entries.filter {
         it != SocketType.DOMESTIC && it.osmKey in countryInfo.chargingStationSocketTypes
     }
-    return specificTypes + SocketType.DOMESTIC
+
+fun hasSupportedSocketTypes(countryInfo: CountryInfo): Boolean =
+    specificSocketTypesForCountry(countryInfo).isNotEmpty()
+
+/**
+ * Socket types shown in the form for [countryInfo].
+ * Empty when the country has no implemented motorcar connector in metadata (quest not applicable).
+ * [SocketType.DOMESTIC] is appended only in Type E/F countries (see [typeEFDomesticCountryCodes]).
+ */
+fun socketTypesForCountry(countryInfo: CountryInfo): List<SocketType> {
+    val specificTypes = specificSocketTypesForCountry(countryInfo)
+    if (specificTypes.isEmpty()) return emptyList()
+    val countryCode = countryInfo.countryCode
+    return if (countryCode != null && countryCode in typeEFDomesticCountryCodes) {
+        specificTypes + SocketType.DOMESTIC
+    } else {
+        specificTypes
+    }
 }

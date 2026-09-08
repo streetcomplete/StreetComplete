@@ -173,7 +173,6 @@ charging station socket/
     socket_eu_l_black.svg       EU alternative fuels identifier, public domain
     socket_eu_m_black.svg       EU alternative fuels identifier, public domain
     socket_eu_n_black.svg       EU alternative fuels identifier, public domain
-    socket_eu_type2.svg         unused; EU alternative fuels identifier, public domain
 
 cycleway/
     bus_lane.svg

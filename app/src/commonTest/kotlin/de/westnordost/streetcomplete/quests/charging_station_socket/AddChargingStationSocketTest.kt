@@ -30,18 +30,30 @@ import kotlin.test.assertTrue
 
 class AddChargingStationSocketTest {
 
-    private val countryInfoWithSockets = CountryInfo(
+    private val countryInfoDe = CountryInfo(
         "DE",
         listOf(IncompleteCountryInfo(chargingStationSocketTypes = listOf(
             "type2", "type2_cable", "type2_combo", "chademo"
         )))
     )
-    private val countryInfoWithoutSpecificSockets = CountryInfo(
+    private val countryInfoEmpty = CountryInfo(
         "CN",
         listOf(IncompleteCountryInfo(chargingStationSocketTypes = emptyList()))
     )
+    private val countryInfoUnsupportedOnly = CountryInfo(
+        "US",
+        listOf(IncompleteCountryInfo(chargingStationSocketTypes = listOf(
+            "type1", "type1_combo", "nacs"
+        )))
+    )
+    private val countryInfoGb = CountryInfo(
+        "GB",
+        listOf(IncompleteCountryInfo(chargingStationSocketTypes = listOf(
+            "type2", "type2_cable", "type2_combo", "chademo"
+        )))
+    )
 
-    private val questType = AddChargingStationSocket()
+    private val questType = AddChargingStationSocket { countryInfoDe }
 
     private val expiredCheckDate = dateDaysAgo(365 * 2 + 1f).toCheckDateString()
     private val recentCheckDate = nowAsCheckDateString()
@@ -66,6 +78,10 @@ class AddChargingStationSocketTest {
 
     @Test fun `not applicable to access=no`() {
         assertFalse(questType.isApplicableTo(chargingStation("access" to "no"))!!)
+    }
+
+    @Test fun `not applicable to lockable=yes`() {
+        assertFalse(questType.isApplicableTo(chargingStation("lockable" to "yes"))!!)
     }
 
     @Test fun `applicable to socket type2=yes`() {
@@ -121,29 +137,41 @@ class AddChargingStationSocketTest {
         assertTrue(questType.isApplicableTo(chargingStation("socket:usb" to "yes"))!!)
     }
 
-    @Test fun `applicable when country metadata has no specific socket types because domestic is always available`() {
-        assertTrue(questType.isApplicableTo(chargingStation())!!)
-        assertEquals(
-            listOf(SocketType.DOMESTIC),
-            socketTypesForCountry(countryInfoWithoutSpecificSockets)
-        )
+    @Test fun `not applicable when country metadata has no socket types`() {
+        val quest = AddChargingStationSocket { countryInfoEmpty }
+        assertFalse(quest.isApplicableTo(chargingStation())!!)
+        assertEquals(emptyList(), socketTypesForCountry(countryInfoEmpty))
     }
 
-    @Test fun `domestic is offered independently of country metadata`() {
-        val types = socketTypesForCountry(countryInfoWithSockets)
-        assertTrue(SocketType.DOMESTIC in types)
-        assertTrue(SocketType.TYPE2 in types)
-        assertTrue(SocketType.TYPE2_CABLE in types)
-        assertTrue(SocketType.TYPE2_COMBO in types)
-        assertTrue(SocketType.CHADEMO in types)
-        assertEquals(SocketType.DOMESTIC, types.last())
+    @Test fun `not applicable when country metadata has only unsupported socket types`() {
+        val quest = AddChargingStationSocket { countryInfoUnsupportedOnly }
+        assertFalse(quest.isApplicableTo(chargingStation())!!)
+        assertEquals(emptyList(), socketTypesForCountry(countryInfoUnsupportedOnly))
+    }
+
+    @Test fun `applicable for DE-like metadata with implemented types`() {
+        assertTrue(questType.isApplicableTo(chargingStation())!!)
+        assertTrue(hasSupportedSocketTypes(countryInfoDe))
+        val types = socketTypesForCountry(countryInfoDe)
+        assertTrue(TYPE2 in types)
+        assertTrue(TYPE2_CABLE in types)
+        assertTrue(TYPE2_COMBO in types)
+        assertTrue(CHADEMO in types)
+        assertTrue(DOMESTIC in types)
+        assertEquals(DOMESTIC, types.last())
+    }
+
+    @Test fun `domestic is not offered outside Type E F countries`() {
+        val types = socketTypesForCountry(countryInfoGb)
+        assertTrue(TYPE2 in types)
+        assertFalse(DOMESTIC in types)
     }
 
     @Test fun `isApplicableTo for ways needs surrounding map data`() {
         assertNull(questType.isApplicableTo(chargingStationWay()))
     }
 
-    @Test fun `not applicable to charging station area containing charge_point`() {
+    @Test fun `not applicable to charging station area containing charge_point node`() {
         val station = chargingStationWay()
         val chargePoint = node(10, INSIDE, mapOf("man_made" to "charge_point"))
         val mapData = createMapData(mapOf(
