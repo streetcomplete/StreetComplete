@@ -84,27 +84,27 @@ private const val EDIT_TYPE_HIDE_OSM_QUEST = "hide_osm_quest"
 
 private fun Edit.toEditPin(order: Int) = Pin(position, icon!!, toProperties(), order)
 
-private fun Edit.toProperties() = JsonObject(when (this) {
-    is ElementEdit -> mapOf(
+private fun Edit.toProperties(): List<Pair<String, JsonPrimitive>> = when (this) {
+    is ElementEdit -> listOf(
         MARKER_EDIT_TYPE to JsonPrimitive(EDIT_TYPE_ELEMENT),
         MARKER_ID to JsonPrimitive(id)
     )
-    is NoteEdit -> mapOf(
+    is NoteEdit -> listOf(
         MARKER_EDIT_TYPE to JsonPrimitive(EDIT_TYPE_NOTE),
         MARKER_ID to JsonPrimitive(id)
     )
-    is OsmNoteQuestHidden -> mapOf(
+    is OsmNoteQuestHidden -> listOf(
         MARKER_EDIT_TYPE to JsonPrimitive(EDIT_TYPE_HIDE_OSM_NOTE_QUEST),
         MARKER_NOTE_ID to JsonPrimitive(note.id)
     )
-    is OsmQuestHidden -> mapOf(
+    is OsmQuestHidden -> listOf(
         MARKER_EDIT_TYPE to JsonPrimitive(EDIT_TYPE_HIDE_OSM_QUEST),
         MARKER_ELEMENT_TYPE to JsonPrimitive(elementType.name),
         MARKER_ELEMENT_ID to JsonPrimitive(elementId),
         MARKER_QUEST_TYPE to JsonPrimitive(questType.name)
     )
     else -> throw IllegalArgumentException()
-})
+}
 
 private fun JsonObject.toEditKey(): EditKey? {
     val editType = get(MARKER_EDIT_TYPE)?.jsonPrimitive?.contentOrNull

@@ -242,18 +242,18 @@ private const val MARKER_NOTE_ID = "note_id"
 private const val QUEST_GROUP_OSM = "osm"
 private const val QUEST_GROUP_OSM_NOTE = "osm_note"
 
-private fun QuestKey.toProperties(): JsonObject = JsonObject(when (this) {
-    is OsmNoteQuestKey -> mapOf(
+private fun QuestKey.toProperties(): List<Pair<String, JsonPrimitive>> = when (this) {
+    is OsmNoteQuestKey -> listOf(
         MARKER_QUEST_GROUP to JsonPrimitive(QUEST_GROUP_OSM_NOTE),
         MARKER_NOTE_ID to JsonPrimitive(noteId)
     )
-    is OsmQuestKey -> mapOf(
+    is OsmQuestKey -> listOf(
         MARKER_QUEST_GROUP to JsonPrimitive(QUEST_GROUP_OSM),
         MARKER_ELEMENT_TYPE to JsonPrimitive(elementType.name),
         MARKER_ELEMENT_ID to JsonPrimitive(elementId),
         MARKER_QUEST_TYPE to JsonPrimitive(questTypeName)
     )
-})
+}
 
 private fun JsonObject.toQuestKey(): QuestKey? {
     val questGroup = get(MARKER_QUEST_GROUP)?.jsonPrimitive?.contentOrNull

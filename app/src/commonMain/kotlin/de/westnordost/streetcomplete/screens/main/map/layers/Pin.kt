@@ -14,8 +14,8 @@ import org.maplibre.spatialk.geojson.Feature
 data class Pin(
     val position: LatLon,
     val icon: DrawableResource,
-    val properties: JsonObject? = null,
-    val order: Int = 0
+    val properties: List<Pair<String, JsonPrimitive>> = emptyList(),
+    val order: Int = 0,
 )
 
 fun Pin.toGeoJsonFeature() =
@@ -23,10 +23,9 @@ fun Pin.toGeoJsonFeature() =
         geometry = position.toGeometry(),
         properties =
             JsonObject(
-                mapOf(
+                (listOf(
                     "icon-image" to JsonPrimitive("pin_" + icon.id),
                     "icon-order" to JsonPrimitive(order + 50),
-                )
-                    + (properties as Map<String, JsonElement>)
+                ) + properties).toMap()
             )
     )
