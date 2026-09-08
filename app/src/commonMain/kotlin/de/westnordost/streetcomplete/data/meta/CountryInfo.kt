@@ -37,6 +37,7 @@ data class IncompleteCountryInfo(
     val atmOperators: List<String>? = null,
     val centerLineStyle: String? = null,
     val chargingStationOperators: List<String>? = null,
+    val chargingStationSocketTypes: List<String>? = null,
     val clothesContainerOperators: List<String>? = null,
     val edgeLineStyle: String? = null,
     val exclusiveCycleLaneStyle: String? = null,
@@ -160,6 +161,8 @@ data class CountryInfo(
          infos.firstNotNullOfOrNull { it.atmOperators }
     val chargingStationOperators: List<String>? get() =
          infos.firstNotNullOfOrNull { it.chargingStationOperators }
+    val chargingStationSocketTypes: List<String> get() =
+         infos.firstNotNullOfOrNull { it.chargingStationSocketTypes } ?: emptyList()
     val clothesContainerOperators: List<String>? get() =
          infos.firstNotNullOfOrNull { it.clothesContainerOperators }
     val livingStreetSignStyle: String? get() =
