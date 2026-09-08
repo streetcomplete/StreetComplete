@@ -108,7 +108,8 @@ private fun SocketRow(
                         raw?.toInt()?.coerceIn(0, MAX_SOCKET_COUNT)
                     )
                 },
-                modifier = Modifier.width(56.dp),
+                // Enough for two digits (0..50) with Outlined TextField padding; same ballpark as BuildingLevelsForm
+                modifier = Modifier.width(72.dp),
                 maxIntegerDigits = 2,
                 maxFractionDigits = 0,
                 isUnsigned = true,
