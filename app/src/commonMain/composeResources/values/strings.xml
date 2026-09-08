@@ -1046,7 +1046,7 @@
 
     <string name="quest_charging_station_socket_title">How many sockets does this charging station have?</string>
     <string name="quest_charging_station_socket_note">If a socket type is not listed, please leave a note instead.</string>
-    <string name="quest_charging_station_socket_type2">Type 2 (Mennekes)</string>
+    <string name="quest_charging_station_socket_type2">Type 2 (Mennekes) without Cable</string>
     <string name="quest_charging_station_socket_type2_cable">Type 2 (Mennekes) Cable</string>
     <string name="quest_charging_station_socket_type2_combo">Type 2 Combo (CCS)</string>
     <string name="quest_charging_station_socket_chademo">CHAdeMO</string>
