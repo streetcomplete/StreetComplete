@@ -1,4 +1,4 @@
-package de.westnordost.streetcomplete.quests.charging_station_capacity
+package de.westnordost.streetcomplete.quests.charging_station_access
 
 import androidx.compose.runtime.Composable
 import de.westnordost.streetcomplete.data.meta.CountryInfo
@@ -13,38 +13,45 @@ import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.updateWithCheckDate
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.CountInputQuestForm
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 import org.jetbrains.compose.resources.painterResource
 
-// capacity for cars, actually
-class AddChargingStationCapacity : OsmFilterQuestType<Int>() {
+// Can a charging station, with another purpous also be used by cars?
+// Per the wiki, this is asumed to be yes, but it's good to confirm.
+class AddChargingStationMotorcar : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
           amenity = charging_station
-          and !capacity
-          and !capacity:motorcar
-          and motorcar != no
+          and !motorcar
           and motor_vehicle != no
+          and
+          (
+             bicycle ~ yes|designated
+             or hgv ~ yes|designated
+             or motorcycle ~ yes|designated
+             or scooter ~ yes|designated
+             or bus ~ yes|designated
+             or boat ~ yes|designated
+          )
           and access !~ private|no
     """
     override val changesetComment = "Specify charging stations capacities"
     override val wikiLink = "Tag:amenity=charging_station"
     override val icon = Res.drawable.quest_charger_capacity
-    override val title = Res.string.quest_charging_station_capacity_title
+    override val title = Res.string.quest_charging_station_car_access
     override val achievements = listOf(CAR)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with amenity = charging_station and motorcar != no")
+        mapData.filter("nodes, ways with amenity = charging_station")
 
     @Composable
-    override fun Form(on: (QuestAction<Int>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        CountInputQuestForm(
-            on = on,
-            icon = painterResource(Res.drawable.count_electric_car),
-        )
+    override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        YesNoQuestForm(on)
     }
 
-    override fun applyAnswerTo(answer: Int, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags.updateWithCheckDate("capacity:motorcar", answer.toString())
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["motorcar"] = answer.toYesNo()
     }
 }

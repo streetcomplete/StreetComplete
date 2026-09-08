@@ -65,8 +65,7 @@ import de.westnordost.streetcomplete.quests.doctor_type.AddDoctorType
 import de.westnordost.streetcomplete.quests.car_wash_type.AddCarWashType
 import de.westnordost.streetcomplete.quests.charge.AddParkingCharge
 import de.westnordost.streetcomplete.quests.charging_station_bicycles.AddChargingStationBicycles
-import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationBicycleCapacity
-import de.westnordost.streetcomplete.quests.charging_station_capacity.AddChargingStationCapacity
+import de.westnordost.streetcomplete.quests.charging_station_access.AddChargingStationMotorcar
 import de.westnordost.streetcomplete.quests.charging_station_operator.AddChargingStationOperator
 import de.westnordost.streetcomplete.quests.clothing_bin_operator.AddClothingBinOperator
 import de.westnordost.streetcomplete.quests.construction.MarkCompletedBuildingConstruction
@@ -357,6 +356,7 @@ fun questTypeRegistry(
     55 to AddBicycleBarrierInstallation(),
     56 to AddStileType(),
     57 to AddStepCountStile(), // here to keep stile quest together - this quest will appear in low quest density anyway
+    198 to AddChargingStationMotorcar(),
 
     58 to AddBollardType(), // useful for first responders
 
@@ -413,8 +413,6 @@ fun questTypeRegistry(
     86 to AddClothingBinOperator(),
 
     186 to AddChargingStationBicycles(),
-    87 to AddChargingStationCapacity(),  // after question for bicycles because user has possibility to answer that it is only for bicycles
-    179 to AddChargingStationBicycleCapacity(),
     88 to AddChargingStationOperator(),
 
     // postboxes (collection times are further up, see comment)
