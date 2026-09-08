@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.opening_hours.toWeekdaysSelectors
+import kotlinx.serialization.Serializable
 
 /** Displays the given [openingHours] for editing and has an Add-button to add times */
 @Composable
@@ -55,6 +56,7 @@ fun OpeningHoursTable(
     }
 }
 
+@Serializable
 enum class TimeMode {
     /** May only add time points, e.g. "08:00" */
     Points,
