@@ -39,7 +39,6 @@ inline fun <reified G: Group<I>, reified I> GroupedItemPairSelectOverlayForm (
     groupsPair: Pair<List<G>, List<G>>,
     initialSelectedItemPair: Pair<I?, I?>,
     noinline groupContent: @Composable (group: G) -> Unit,
-    noinline groupItemContent: @Composable (item: I) -> Unit,
     noinline itemContent: @Composable (item: I) -> Unit,
     crossinline onClickOk: (Pair<I, I>) -> Unit,
     labels: Pair<String, String>,
@@ -110,7 +109,7 @@ inline fun <reified G: Group<I>, reified I> GroupedItemPairSelectOverlayForm (
                 )
             },
             groupContent = groupContent,
-            itemContent = groupItemContent
+            itemContent = itemContent
         )
     }
 }

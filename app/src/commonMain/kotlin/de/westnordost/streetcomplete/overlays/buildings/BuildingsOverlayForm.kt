@@ -18,10 +18,7 @@ import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.osm.building.BuildingType
-import de.westnordost.streetcomplete.osm.building.BuildingType.ABANDONED
-import de.westnordost.streetcomplete.osm.building.BuildingType.CONSTRUCTION
-import de.westnordost.streetcomplete.osm.building.BuildingType.HISTORIC
-import de.westnordost.streetcomplete.osm.building.BuildingType.RUINS
+import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.building.BuildingTypeCategory
 import de.westnordost.streetcomplete.osm.building.applyBuildingUseTo
 import de.westnordost.streetcomplete.osm.building.applyTo
@@ -31,10 +28,7 @@ import de.westnordost.streetcomplete.osm.building.description
 import de.westnordost.streetcomplete.osm.building.icon
 import de.westnordost.streetcomplete.osm.building.minus
 import de.westnordost.streetcomplete.osm.building.title
-import de.westnordost.streetcomplete.resources.Res
-import de.westnordost.streetcomplete.resources.overlay_buildings_current_use
-import de.westnordost.streetcomplete.resources.overlay_buildings_different_current_use
-import de.westnordost.streetcomplete.resources.overlay_buildings_original_use
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.item_select.ImageWithDescription
 import de.westnordost.streetcomplete.ui.common.overlay.GroupedItemPairSelectOverlayForm
 import de.westnordost.streetcomplete.ui.common.overlay.GroupedItemSelectOverlayForm
@@ -56,22 +50,21 @@ fun BuildingsOverlayForm(
 
     val groupsPair = remember {
         Pair(
-            // building
-            BuildingTypeCategory.entries - setOf(RUINS, ABANDONED, CONSTRUCTION),
+            // building: no building is constructed as historic, ruins, abandoned or construction
+            BuildingTypeCategory.entries - setOf(UNSUPPORTED, HISTORIC, RUINS, ABANDONED, CONSTRUCTION),
             // building use
-            BuildingTypeCategory.entries - setOf(HISTORIC, CONSTRUCTION)
+            BuildingTypeCategory.entries - setOf(UNSUPPORTED, CONSTRUCTION)
         )
     }
 
     var switchToPairLayout by remember { mutableStateOf(false) }
-    val showPairLayout = originalBuildingUse != null || switchToPairLayout
 
     // always show house number, never show feature name (because type of building
     // is already shown in the form itself)
     val label = nameAndLocationLabel(element, featureDictionary = null, showHouseNumber = true)
 
     AnimatedContent(
-        targetState = showPairLayout,
+        targetState = originalBuildingUse != null || switchToPairLayout,
         transitionSpec = ReplaceBottomSheetTransitionSpec,
     ) { pairLayout ->
         if (pairLayout) {
@@ -79,15 +72,7 @@ fun BuildingsOverlayForm(
                 on = on,
                 groupsPair = groupsPair,
                 initialSelectedItemPair = Pair(originalBuilding, originalBuildingUse),
-                groupContent = { group ->
-                    ImageWithDescription(
-                        painter = painterResource(group.icon),
-                        title = stringResource(group.title),
-                        description = group.description?.let { stringResource(it) },
-                        imageSize = DpSize(48.dp, 48.dp)
-                    )
-                },
-                groupItemContent = { BuildingTypeItem(it) },
+                groupContent = {  BuildingTypeCategoryItem(it.category) },
                 itemContent = { BuildingTypeItem(it) },
                 onClickOk = { (selectedBuilding, selectedBuildingUse) ->
                     val tagChanges = StringMapChangesBuilder(element.tags)
