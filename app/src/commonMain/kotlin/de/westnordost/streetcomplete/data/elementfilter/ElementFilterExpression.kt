@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.data.elementfilter.filters.HasKeyLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasTag
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.HasTagValueLike
+import de.westnordost.streetcomplete.data.elementfilter.filters.IsSeason
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKey
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasKeyLike
 import de.westnordost.streetcomplete.data.elementfilter.filters.NotHasTag
@@ -49,6 +50,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementType
  *  | `foo < today -1.5 years`       | same as above but value is a date older than 1.5 years<br/>In place of `years`, `months`, `weeks` or `days` work |
  *  | `shop newer today -99 days`    | has a tag with key `shop` which has been modified in the last 99 days.<br/>Absolute dates work too. |
  *  | `shop older today -1 months`   | has a tag with key `shop` which hasn't been changed for more than a month.<br/>Absolute dates work too. |
+ *  | `season = summer`              | returns true if it is currently summer                                        |
  *  | `shop and name`                | has both a tag with key `shop` and one with key `name`                        |
  *  | `shop or craft`                | has either a tag with key `shop` or one with key `craft`                      |
  *  | `shop and (ref or name)`       | has a tag with key `shop` and either a tag with key `ref` or `name`           |
@@ -107,7 +109,8 @@ private val ElementFilter.mayEvaluateToTrueWithNoTags: Boolean get() = when (thi
     is NotHasTag,
     is NotHasTagValueLike,
     is HasTagValueLike,
-    is NotHasTagLike ->
+    is NotHasTagLike,
+    is IsSeason ->
         true
     is HasKey,
     is HasKeyLike,
