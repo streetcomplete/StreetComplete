@@ -41,7 +41,7 @@ class AddChargingStationSocket : OsmElementQuestType<Map<SocketType, Int>> {
 
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
         val chargePointCenters = mapData
-            .filter("nodes, ways with man_made = charge_point")
+            .filter("nodes with man_made = charge_point")
             .mapNotNull { it.center(mapData) }
             .toList()
 
