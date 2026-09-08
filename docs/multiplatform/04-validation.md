@@ -4,6 +4,27 @@ Validation claims in this file distinguish compilation, automated tests, and
 interactive runtime evidence. A compile result is not treated as proof of feature
 parity.
 
+## Merged style API and base-branch validation on 2026-09-08
+
+The device build uses exact MapLibre Compose `e3d246b9` (merged PR #1346),
+published locally as `0.15.1-local.e3d246b-SNAPSHOT`. It also adopts the preceding
+vector-source API change: vector layer helpers use `VectorSource` and the base
+tile source uses `rememberVectorTileSource`.
+
+Merged upstream `maplibre-compose` at `f0e0aa96a`. Conflict resolutions preserve
+the cached explicit edit-action serializer and `LocalTimeFormatLocale`, including
+native 12/24-hour preferences when the app locale is automatic. Focused
+Android-host edit serialization, locale, image registry, pin, and transition
+tests pass against the exact local MapLibre build.
+
+Device console capture exposed an unrelated crash opening the postbox collection
+times form: `TimeMode` lacked the serializer required by Kotlin/Native.
+Annotating the enum with `@Serializable` fixes that lookup. The new saver
+round-trip regression passes on the iOS simulator, alongside the focused edit
+serialization and time-format suites. The rebuilt app, including the merge and
+postbox fix, was installed on the physical iPhone. Temporary local repository
+and dependency overrides were removed afterward.
+
 ## Physical-iPhone image validation on 2026-09-08
 
 The eager image implementation was built against local MapLibre Compose
