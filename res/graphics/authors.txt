@@ -339,6 +339,7 @@ quest/
     door_address.svg                 housenumber.svg recoloured by Mateusz Konieczny, so (c) Tobias Zwick CC-BY-SA 4.0
     fee.svg
     ferry.svg                        modified from Twemoji: U+26F4
+    ferry_fee.svg                    modified from Twemoji: U+26F4
     ferry_pedestrian.svg             modified from Twemoji: U+26F4
     fire.svg
     fire_hydrant.svg
