@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
@@ -28,7 +29,10 @@ import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLay
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.JsonObject
 import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.camera.CameraState
@@ -43,6 +47,7 @@ import org.maplibre.compose.style.StyleState
 import org.maplibre.compose.style.rememberStyleState
 import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.MapClickHandler
+import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 
@@ -118,8 +123,13 @@ fun MainMap(
         val languages = listOf(Locale.current.language)
         val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
 
+        val overlayData by produceState<List<Feature<Geometry, JsonObject>>>(emptyList()) {
+            value = withContext(Dispatchers.Default) {
+                styledElements.flatMap { it.toGeoJsonFeatures() }
+            }
+        }
         val overlaySource = rememberGeoJsonSource(
-            GeoJsonData.Features(FeatureCollection(styledElements.flatMap { it.toGeoJsonFeatures() })),
+            data = GeoJsonData.Features(FeatureCollection(overlayData)),
         )
 
         MapStyle(
@@ -188,7 +198,7 @@ fun MainMap(
                         },
                         onZoomToCluster = ::zoomToCluster
                     )
-                } else {
+                } else if (selectedQuest == null) {
                     PinsLayers(
                         pins = questPins,
                         onClickPin = { properties ->
@@ -199,7 +209,10 @@ fun MainMap(
                 }
 
                 if (selectedQuest != null) {
-                    SelectedPinsLayer(selectedQuest.type.icon, selectedQuest.markerLocations)
+                    SelectedPinsLayer(
+                        icon = selectedQuest.type.icon,
+                        pinPositions = selectedQuest.markerLocations
+                    )
                 }
             }
         )

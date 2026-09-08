@@ -1,6 +1,9 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpOffset
@@ -11,7 +14,9 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_pin_circle
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.ktx.id
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -44,7 +49,9 @@ import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
+import org.maplibre.spatialk.geojson.GeoJsonObject
 import org.maplibre.spatialk.geojson.Geometry
+import org.maplibre.spatialk.geojson.Point
 
 /** Display pins on the map, e.g. quest pins or pins for recent edits */
 @MaplibreComposable
@@ -56,13 +63,20 @@ fun PinsLayers(
 ) {
     val coroutineScope = rememberCoroutineScope()
 
-    val source = rememberGeoJsonSource(
-        data = GeoJsonData.Features(FeatureCollection(pins.map { it.toGeoJsonFeature() })),
-        options = GeoJsonOptions(
+    val features by produceState<List<Feature<Point, JsonObject>>>(emptyList()) {
+        value = withContext(Dispatchers.Default) { pins.map { it.toGeoJsonFeature() } }
+    }
+    val options = remember {
+        GeoJsonOptions(
             cluster = true,
             clusterMaxZoom = CLUSTER_MAX_ZOOM,
-            clusterRadius = 55
+            clusterRadius = 55,
         )
+    }
+
+    val source = rememberGeoJsonSource(
+        data = GeoJsonData.Features(FeatureCollection(features)),
+        options = options
     )
 
     fun onClickCluster(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
@@ -89,7 +103,7 @@ fun PinsLayers(
         iconAllowOverlap = const(true),
         iconIgnorePlacement = const(true),
         textField = feature["point_count"].convertToString(),
-        textSize = (const(15f) + (log2(feature["point_count"].convertToNumber()) / const(1.5f))).sp,
+        textSize = (const(15f) + log2(feature["point_count"].convertToNumber()) / const(1.5f)).sp,
         textFont = const(listOf("Roboto Regular")),
         textOffset = offset(0.em, 0.1.em),
         textAllowOverlap = const(true),

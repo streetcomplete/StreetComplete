@@ -1,12 +1,16 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.map.toPosition
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.maplibre.spatialk.geojson.Polygon
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
@@ -20,9 +24,10 @@ import org.maplibre.compose.util.MaplibreComposable
  *  downloaded areas. */
 @Composable @MaplibreComposable
 fun DownloadedAreaLayer(tiles: Collection<TilePos>) {
-    val source = rememberGeoJsonSource(
-        data = GeoJsonData.Features(tiles.toHolesInWorldPolygon())
-    )
+    val polygon by produceState<Polygon>(WORLD_POLYGON) {
+        value = withContext(Dispatchers.Default) { tiles.toHolesInWorldPolygon() }
+    }
+    val source = rememberGeoJsonSource(data = GeoJsonData.Features(polygon))
 
     FillLayer(
         id = "downloaded-area",
@@ -47,3 +52,5 @@ private fun Collection<TilePos>.toHolesInWorldPolygon(): Polygon {
     val polygons = listOf(world) + holes
     return Polygon(polygons.map { polygon -> polygon.map { it.toPosition() } })
 }
+
+private val WORLD_POLYGON = emptyList<TilePos>().toHolesInWorldPolygon()

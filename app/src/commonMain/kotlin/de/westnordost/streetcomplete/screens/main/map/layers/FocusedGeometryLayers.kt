@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import org.maplibre.compose.expressions.dsl.any
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.feature
+import org.maplibre.compose.expressions.dsl.not
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.expressions.value.LineJoin
 import org.maplibre.compose.layers.CircleLayer
@@ -33,6 +34,8 @@ import kotlin.math.cos
 @MaplibreComposable
 @Composable
 fun FocusedGeometryLayers(geometry: ElementGeometry) {
+
+    val highlightColor = MaterialTheme.colors.secondary
     // breathing effect for highlight
     val highlightTransition = rememberInfiniteTransition()
     val highlight by highlightTransition.animateFloat(
@@ -54,14 +57,14 @@ fun FocusedGeometryLayers(geometry: ElementGeometry) {
         source = source,
         filter = feature.isArea(),
         opacity = const(0.3f),
-        color = const(MaterialTheme.colors.secondary),
+        color = const(highlightColor),
     )
     LineLayer(
         id = "focus-geo-lines",
         source = source,
-        filter = any(feature.isArea(), feature.isLines()),
+        filter = !feature.isPoint(),
         opacity = const(opacity),
-        color = const(MaterialTheme.colors.secondary),
+        color = const(highlightColor),
         width = const(lineWidth),
         cap = const(LineCap.Round),
         join = const(LineJoin.Round)
@@ -71,7 +74,7 @@ fun FocusedGeometryLayers(geometry: ElementGeometry) {
         source = source,
         filter = feature.isPoint(),
         opacity = const(opacity),
-        color = const(MaterialTheme.colors.secondary),
+        color = const(highlightColor),
         radius = const(circleRadius),
     )
 }

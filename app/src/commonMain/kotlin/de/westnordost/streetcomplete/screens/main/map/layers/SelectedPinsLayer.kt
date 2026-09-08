@@ -5,12 +5,16 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.ktx.id
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
@@ -46,15 +50,19 @@ fun SelectedPinsLayer(icon: DrawableResource, pinPositions: Collection<LatLon>) 
         )
     }
 
-    val source = rememberGeoJsonSource(
-        data = GeoJsonData.Features(
-            FeatureCollection(pinPositions.map {
+    val features by produceState<List<Feature<Geometry, JsonObject>>>(emptyList()) {
+        value = withContext(Dispatchers.Default) {
+            pinPositions.map {
                 Feature<Geometry, JsonObject>(
                     geometry = it.toGeometry(),
                     properties = JsonObject(mapOf("icon-image" to JsonPrimitive("pin_" + icon.id)))
                 )
-            })
-        ),
+            }
+        }
+    }
+
+    val source = rememberGeoJsonSource(
+        data = GeoJsonData.Features(FeatureCollection(features)),
     )
 
     SymbolLayer(

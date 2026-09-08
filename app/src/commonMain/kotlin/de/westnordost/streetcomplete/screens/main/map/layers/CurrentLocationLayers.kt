@@ -38,11 +38,13 @@ fun CurrentLocationLayers(
     rotation: Float?
 ) {
     val animatedPosition by animateLatLonAsState(targetValue = location.position)
-
     val animatedAccuracy by animateFloatAsState(
         targetValue = location.accuracy,
         animationSpec = spring(stiffness = StiffnessLow),
     )
+
+    // let's not check for the date on every recomposition :-)
+    val isApril1st = remember { isApril1st() }
 
     val source = rememberGeoJsonSource(GeoJsonData.Features(animatedPosition.toGeometry()))
 
@@ -79,9 +81,6 @@ fun CurrentLocationLayers(
         iconIgnorePlacement = const(true),
         iconPitchAlignment = const(IconPitchAlignment.Map),
     )
-
-    // let's not check for the date on every recomposition :-)
-    val isApril1st = remember { isApril1st() }
     if (!isApril1st) {
         CircleLayer(
             id = "location",

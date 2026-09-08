@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -11,9 +12,12 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.map.animateLatLonAsState
 import de.westnordost.streetcomplete.screens.main.map.toLineGeometry
 import de.westnordost.streetcomplete.screens.main.map.toMultiLineGeometry
+import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.ui.theme.Recording
 import de.westnordost.streetcomplete.util.ktx.isApril1st
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.maplibre.spatialk.geojson.MultiLineString
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
@@ -26,7 +30,10 @@ import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.Source
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
+import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.GeometryCollection
+import org.maplibre.spatialk.geojson.LineString
+import org.maplibre.spatialk.geojson.toJson
 
 /** Display the path(s) walked on the map.
  *
@@ -44,6 +51,9 @@ fun TracksLayers(
     isRecording: Boolean,
     oldTrackpointsLists: List<List<LatLon>>,
 ) {
+    // let's not check for the date on every recomposition :-)
+    val isApril1st = remember { isApril1st() }
+
     val trackLastSegment = remember(trackpoints) {
         if (trackpoints.size >= 2) trackpoints.takeLast(2) else null
     }
@@ -51,43 +61,51 @@ fun TracksLayers(
         if (trackpoints.size > 1) trackpoints.take(trackpoints.size - 1) else emptyList()
     }
 
-    val tracksSource = rememberGeoJsonSource(
-        data = GeoJsonData.Features(trackWithoutLast.toLineGeometry() ?: GeometryCollection(emptyList()))
-    )
+    val trackData by produceState<Geometry>(EMPTY_GEOMETRY) {
+        value = withContext(Dispatchers.Default) {
+            trackWithoutLast.toLineGeometry() ?: EMPTY_GEOMETRY
+        }
+    }
+    val tracksSource = rememberGeoJsonSource(data = GeoJsonData.Features(trackData))
+
     // we want to animate the drawing of the track from the last position to the current position
     // while the position marker animates at the same time from the last position to the current
     // position (see CurrentLocationLayers)
-    val animatedTracksSource = rememberGeoJsonSource(
-        data = GeoJsonData.Features(
-            trackLastSegment?.let {
-                val animatedLastPosition by animateLatLonAsState(targetValue = it.last())
-                listOf(it.first(), animatedLastPosition).toLineGeometry()
-            } ?: GeometryCollection(emptyList())
-        )
-    )
+    val animatedData =
+        if (trackLastSegment != null) {
+            val animatedLastPosition by animateLatLonAsState(targetValue = trackLastSegment.last())
+            LineString(trackLastSegment.first().toPosition(), animatedLastPosition.toPosition())
+        } else {
+            EMPTY_GEOMETRY
+        }
+    val animatedTracksSource = rememberGeoJsonSource(data = GeoJsonData.Features(animatedData))
 
     // old tracks are expected to not update so often
-    val oldTracksSource = rememberGeoJsonSource(
-        data = GeoJsonData.Features(oldTrackpointsLists.toMultiLineGeometry())
-    )
+    val oldTrackData by produceState<Geometry>(EMPTY_GEOMETRY) {
+        value = withContext(Dispatchers.Default) { oldTrackpointsLists.toMultiLineGeometry() }
+    }
+    val oldTracksSource = rememberGeoJsonSource(data = GeoJsonData.Features(oldTrackData))
 
     // old tracks are drawn with less alpha so the map stays well visible
     TracksLayer(
         id = "old-track",
         source = oldTracksSource,
-        opacity = 0.2f
+        opacity = 0.2f,
+        isApril1st = isApril1st,
     )
 
     TracksLayer(
         id = "track",
         source = tracksSource,
         isRecording = isRecording,
+        isApril1st = isApril1st,
     )
 
     TracksLayer(
         id = "animate-track",
         source = animatedTracksSource,
-        isRecording = isRecording
+        isRecording = isRecording,
+        isApril1st = isApril1st,
     )
 }
 
@@ -98,9 +116,8 @@ private fun TracksLayer(
     source: Source,
     isRecording: Boolean = false,
     opacity: Float = 0.6f,
+    isApril1st: Boolean = false,
 ) {
-    // let's not check for the date on every recomposition :-)
-    val isApril1st = remember { isApril1st() }
     if (isApril1st) {
         TracksLayerApril1st(id, source, isRecording, opacity)
     } else {
@@ -146,3 +163,5 @@ private fun TracksLayerDefault(
         color = const(if (isRecording) Color.Recording else Color.Location),
     )
 }
+
+private val EMPTY_GEOMETRY: Geometry = GeometryCollection(emptyList())

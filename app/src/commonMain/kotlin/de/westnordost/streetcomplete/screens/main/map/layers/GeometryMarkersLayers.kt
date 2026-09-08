@@ -1,6 +1,8 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -16,6 +18,8 @@ import de.westnordost.streetcomplete.screens.main.map.isPoint
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.ktx.id
 import de.westnordost.streetcomplete.ui.theme.GeometryMarker
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import kotlinx.serialization.json.JsonElement
@@ -28,6 +32,7 @@ import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
+import org.maplibre.compose.expressions.dsl.not
 import org.maplibre.compose.expressions.dsl.offset
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.expressions.value.LineJoin
@@ -46,8 +51,11 @@ import org.maplibre.spatialk.geojson.Geometry
 @MaplibreComposable
 @Composable
 fun GeometryMarkersLayers(markers: Collection<Marker>) {
+    val features by produceState<List<Feature<Geometry, JsonObject>>>(emptyList()) {
+        value = withContext(Dispatchers.Default) { markers.flatMap { it.toGeoJsonFeature() } }
+    }
     val source = rememberGeoJsonSource(
-        data = GeoJsonData.Features(FeatureCollection(markers.flatMap { it.toGeoJsonFeature() }))
+        data = GeoJsonData.Features(FeatureCollection(features))
     )
 
     FillLayer(
@@ -60,7 +68,7 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
     LineLayer(
         id = "geo-lines",
         source = source,
-        filter = any(feature.isArea(), feature.isLines()),
+        filter = !feature.isPoint(),
         opacity = const(0.5f),
         color = const(Color.GeometryMarker),
         width = const(10.dp),
