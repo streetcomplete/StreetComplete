@@ -34,7 +34,7 @@ import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-private const val MAX_SOCKET_COUNT = 50
+private const val MAX_SOCKET_COUNT = 99
 
 @Composable
 fun SocketTypeAndCountForm(
