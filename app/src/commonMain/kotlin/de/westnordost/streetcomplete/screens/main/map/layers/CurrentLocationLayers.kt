@@ -82,7 +82,7 @@ fun CurrentLocationLayers(
 @Composable
 @MaplibreComposable
 private fun CurrentLocationStyleLayers(
-    source: org.maplibre.compose.sources.Source,
+    source: org.maplibre.compose.sources.VectorSource,
     aprilFirst: Boolean,
 ) {
     CircleLayer(

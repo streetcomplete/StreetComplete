@@ -34,9 +34,9 @@ import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.layers.SymbolLayer
-import org.maplibre.compose.sources.Source
+import org.maplibre.compose.sources.VectorSource
 import org.maplibre.compose.sources.TileSetOptions
-import org.maplibre.compose.sources.rememberVectorSource
+import org.maplibre.compose.sources.rememberVectorTileSource
 import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
 import kotlin.math.max
@@ -67,7 +67,7 @@ fun MapStyle(
         "<a href='https://www.openstreetmap.org/copyright'>$osmAttribution</a> " +
         "<a href='https://jawg.io?utm_medium=map&utm_source=attribution'>&copy; JawgMaps</a>"
     }
-    val source = rememberVectorSource(
+    val source = rememberVectorTileSource(
         tiles = listOf("https://tile.jawg.io/streets-v2+hillshade-v1/{z}/{x}/{y}.pbf?access-token=$accessToken"),
         options = TileSetOptions(maxZoom = 16, attributionHtml = attributionHtml)
     )
@@ -182,7 +182,7 @@ fun MapStyle(
 }
 
 @Composable @MaplibreComposable
-private fun LandLayers(source: Source, colors: MapColors) {
+private fun LandLayers(source: VectorSource, colors: MapColors) {
     BackgroundLayer(
         id = "background",
         color = const(colors.earth)
@@ -227,7 +227,7 @@ private fun LandLayers(source: Source, colors: MapColors) {
 }
 
 @Composable @MaplibreComposable
-private fun HillshadeLayers(source: Source, colors: MapColors) {
+private fun HillshadeLayers(source: VectorSource, colors: MapColors) {
     for (i in 1..2) {
         FillLayer(
             id = "hillshade-highlight-$i",
@@ -255,7 +255,7 @@ private fun HillshadeLayers(source: Source, colors: MapColors) {
 }
 
 @Composable @MaplibreComposable
-private fun WaterLayers(source: Source, colors: MapColors, structure: Structure) {
+private fun WaterLayers(source: VectorSource, colors: MapColors, structure: Structure) {
     FillLayer(
         id = listOfNotNull("water-areas", structure.id).joinToString("-"),
         source = source,
@@ -311,7 +311,7 @@ private fun WaterLayers(source: Source, colors: MapColors, structure: Structure)
 }
 
 @Composable @MaplibreComposable
-private fun AerowaysLayer(source: Source, colors: MapColors) {
+private fun AerowaysLayer(source: VectorSource, colors: MapColors) {
     LineLayer(
         id = "aeroways",
         source = source,
@@ -324,7 +324,7 @@ private fun AerowaysLayer(source: Source, colors: MapColors) {
 }
 
 @Composable @MaplibreComposable
-private fun BuildingLayers(source: Source, colors: MapColors) {
+private fun BuildingLayers(source: VectorSource, colors: MapColors) {
     FillLayer(
         id = "buildings",
         source = source,
@@ -345,7 +345,7 @@ private fun BuildingLayers(source: Source, colors: MapColors) {
 }
 
 @Composable @MaplibreComposable
-private fun PedestrianAreaLayers(source: Source, colors: MapColors, structure: Structure) {
+private fun PedestrianAreaLayers(source: VectorSource, colors: MapColors, structure: Structure) {
     val filter = all(
         feature.inClass("path", "street_limited"),
         feature.isArea(),
@@ -376,7 +376,7 @@ private fun PedestrianAreaLayers(source: Source, colors: MapColors, structure: S
 
 @Composable @MaplibreComposable
 private fun RoadLayers(
-    source: Source,
+    source: VectorSource,
     colors: MapColors,
     roads: List<RoadType>,
     paths: RoadType,
@@ -398,7 +398,7 @@ private fun RoadLayers(
 }
 
 @Composable @MaplibreComposable
-private fun BarriersLayers(source: Source, colors: MapColors) {
+private fun BarriersLayers(source: VectorSource, colors: MapColors) {
     LineLayer(
         id = "barriers-large",
         source = source,
@@ -441,7 +441,7 @@ private fun BarriersLayers(source: Source, colors: MapColors) {
 }
 
 @Composable @MaplibreComposable
-private fun BridgeAreasLayers(source: Source, colors: MapColors) {
+private fun BridgeAreasLayers(source: VectorSource, colors: MapColors) {
     FillLayer(
         id = "bridge-areas",
         source = source,
@@ -462,7 +462,7 @@ private fun BridgeAreasLayers(source: Source, colors: MapColors) {
 }
 
 @Composable @MaplibreComposable
-private fun OnewayArrowsLayer(source: Source, colors: MapColors) {
+private fun OnewayArrowsLayer(source: VectorSource, colors: MapColors) {
     val arrow = painterResource(Res.drawable.map_oneway_arrow)
     val tintedArrow = remember(arrow, colors.onewayArrow) {
         ColorFilterPainter(arrow, ColorFilter.tint(colors.onewayArrow))
@@ -484,7 +484,7 @@ private fun OnewayArrowsLayer(source: Source, colors: MapColors) {
 }
 
 @Composable @MaplibreComposable
-private fun BoundaryLayer(source: Source, colors: MapColors) {
+private fun BoundaryLayer(source: VectorSource, colors: MapColors) {
     LineLayer(
         id = "boundaries",
         source = source,
@@ -501,7 +501,7 @@ private fun BoundaryLayer(source: Source, colors: MapColors) {
 
 @Composable @MaplibreComposable
 private fun LabelLayers(
-    source: Source,
+    source: VectorSource,
     colors: MapColors,
     languages: List<String>,
     showHouseNumbers: Boolean,
@@ -609,7 +609,7 @@ private fun LabelLayers(
 }
 
 @Composable @MaplibreComposable
-private fun RoadLayer(road: RoadType, source: Source, structure: Structure) {
+private fun RoadLayer(road: RoadType, source: VectorSource, structure: Structure) {
     LineLayer(
         id = listOfNotNull(road.id, structure.id).joinToString("-"),
         source = source,
@@ -632,7 +632,7 @@ private fun RoadLayer(road: RoadType, source: Source, structure: Structure) {
 }
 
 @Composable @MaplibreComposable
-private fun RoadCasingLayer(road: RoadType, source: Source, structure: Structure) {
+private fun RoadCasingLayer(road: RoadType, source: VectorSource, structure: Structure) {
     LineLayer(
         id = listOfNotNull(road.id, structure.id, "casing").joinToString("-"),
         source = source,
@@ -655,7 +655,7 @@ private fun RoadCasingLayer(road: RoadType, source: Source, structure: Structure
 }
 
 @Composable @MaplibreComposable
-private fun RoadPrivateOverlayLayer(road: RoadType, source: Source, colors: MapColors, structure: Structure) {
+private fun RoadPrivateOverlayLayer(road: RoadType, source: VectorSource, colors: MapColors, structure: Structure) {
     LineLayer(
         id = listOfNotNull(road.id, structure.id, "private").joinToString("-"),
         source = source,
@@ -675,7 +675,7 @@ private fun RoadPrivateOverlayLayer(road: RoadType, source: Source, colors: MapC
 }
 
 @Composable @MaplibreComposable
-private fun RailwayLayer(source: Source, colors: MapColors, structure: Structure) {
+private fun RailwayLayer(source: VectorSource, colors: MapColors, structure: Structure) {
     LineLayer(
         id = listOfNotNull("railways", structure.id).joinToString("-"),
         source = source,
@@ -696,7 +696,7 @@ private fun RailwayLayer(source: Source, colors: MapColors, structure: Structure
 }
 
 @Composable @MaplibreComposable
-private fun StepsOverlayLayer(source: Source, colors: MapColors, structure: Structure) {
+private fun StepsOverlayLayer(source: VectorSource, colors: MapColors, structure: Structure) {
     LineLayer(
         id = listOfNotNull("steps", structure.id).joinToString("-"),
         source = source,

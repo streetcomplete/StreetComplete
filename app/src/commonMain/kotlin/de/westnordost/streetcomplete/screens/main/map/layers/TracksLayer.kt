@@ -24,7 +24,7 @@ import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.sources.GeoJsonData
-import org.maplibre.compose.sources.Source
+import org.maplibre.compose.sources.VectorSource
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.LineString
@@ -95,9 +95,9 @@ fun TracksLayers(
 @Composable
 @MaplibreComposable
 private fun TracksStyleLayers(
-    animatedSource: Source,
-    trackSource: Source,
-    oldTrackSource: Source,
+    animatedSource: VectorSource,
+    trackSource: VectorSource,
+    oldTrackSource: VectorSource,
     isRecording: Boolean,
     showAprilFoolsPattern: Boolean,
 ) {
@@ -128,7 +128,7 @@ private val EMPTY_TRACK_DATA = GeoJsonData.JsonString(EMPTY_TRACK_JSON)
 @MaplibreComposable
 private fun TracksLayer(
     id: String,
-    source: Source,
+    source: VectorSource,
     isRecording: Boolean = false,
     opacity: Float = 0.6f,
     showAprilFoolsPattern: Boolean,
@@ -144,7 +144,7 @@ private fun TracksLayer(
 @MaplibreComposable
 private fun TracksLayerApril1st(
     id: String,
-    source: Source,
+    source: VectorSource,
     isRecording: Boolean,
     opacity: Float,
 ) {
@@ -165,7 +165,7 @@ private fun TracksLayerApril1st(
 @MaplibreComposable
 private fun TracksLayerDefault(
     id: String,
-    source: Source,
+    source: VectorSource,
     isRecording: Boolean,
     opacity: Float,
 ) {

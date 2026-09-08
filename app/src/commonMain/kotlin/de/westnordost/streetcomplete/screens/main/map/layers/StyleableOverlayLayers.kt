@@ -48,7 +48,7 @@ import org.maplibre.compose.map.MapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.GeoJsonOptions
 import org.maplibre.compose.sources.GeoJsonSource
-import org.maplibre.compose.sources.Source
+import org.maplibre.compose.sources.VectorSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
@@ -107,7 +107,7 @@ private val PREPARED_EMPTY_OVERLAY =
 @Composable
 @MaplibreComposable
 internal fun StyleableOverlayLabelLayer(
-    source: Source,
+    source: VectorSource,
     visible: Boolean,
     onClickElement: (ElementKey) -> Unit,
 ) {
@@ -150,7 +150,7 @@ internal fun StyleableOverlayLabelLayer(
 @Composable
 @MaplibreComposable
 fun StyleableOverlayLayers(
-    source: Source,
+    source: VectorSource,
     visible: Boolean,
     onClickElement: (ElementKey) -> Unit,
 ) {
@@ -245,7 +245,7 @@ fun StyleableOverlayLayers(
 @Composable
 @MaplibreComposable
 fun StyleableOverlaySideLayer(
-    source: Source,
+    source: VectorSource,
     isBridge: Boolean,
     visible: Boolean,
 ) {
