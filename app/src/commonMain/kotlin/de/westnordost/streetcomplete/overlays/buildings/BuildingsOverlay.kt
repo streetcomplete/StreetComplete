@@ -58,16 +58,21 @@ class BuildingsOverlay : Overlay {
             val building = createBuildingType(element.tags)
             val buildingUse = createBuildingUseType(element.tags)
 
-            val color = building?.color
+            // main (fill) color should be building's current use
+            val color = buildingUse?.color
+                ?: building?.color
                 ?: if (isBuildingTypeMissing(element.tags)) OverlayColor.Red else OverlayColor.Invisible
 
-            val outline = buildingUse?.color
+            // optional outline color should be the building's original use (reflecting the facade
+            // of the building)
+            val outlineColor = if (buildingUse != null) building?.color else null
+
             // val height = estimateBuildingHeight(element.tags)
             // val minHeight = if (height != null) estimateMinBuildingHeight(element.tags) else null
 
             element to OverlayStyle.Polygon(
-                color = outline ?: color,
-                outline = if (buildingUse!=null) color else null,
+                color = color,
+                outline = outlineColor,
                 icon = building?.icon,
                 // TODO MapLibre: 3D buildings are disabled until
                 //      https://github.com/maplibre/maplibre-native/issues/2746 is fixed
