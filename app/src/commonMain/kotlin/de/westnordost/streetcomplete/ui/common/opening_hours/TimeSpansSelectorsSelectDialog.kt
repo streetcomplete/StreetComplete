@@ -49,7 +49,7 @@ fun TimeSpansSelectorSelectDialog(
     initialTimeSpansSelector: TimeSpansSelector?,
     onSelect: (TimeSpansSelector) -> Unit,
     modifier: Modifier = Modifier,
-    locale: Locale = Locale.current,
+    locale: Locale? = null,
 ) {
     var step by remember { mutableIntStateOf(0) }
 

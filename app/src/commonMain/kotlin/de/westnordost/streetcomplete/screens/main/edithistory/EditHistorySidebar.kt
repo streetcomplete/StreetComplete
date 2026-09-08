@@ -36,7 +36,6 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -177,9 +176,8 @@ private fun DateTimeHeader(
     modifier: Modifier = Modifier
 ) {
     val dateTime = Instant.fromEpochMilliseconds(timestamp).toLocalDateTime()
-    val locale = Locale.current
-    val dateFormatter = LocalDateFormatter(locale = locale, style = DateTimeFormatStyle.Short)
-    val timeFormatter = LocalTimeFormatter(locale = locale, style = DateTimeFormatStyle.Short)
+    val dateFormatter = LocalDateFormatter(style = DateTimeFormatStyle.Short)
+    val timeFormatter = LocalTimeFormatter(style = DateTimeFormatStyle.Short)
 
     CompositionLocalProvider(
         LocalTextStyle provides MaterialTheme.typography.titleSmall,
