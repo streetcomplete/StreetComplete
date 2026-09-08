@@ -19,16 +19,16 @@ class AddBabyChangingTable : OsmFilterQuestType<BabyChangingTableAnswer>() {
 
     override val elementFilter = """
         nodes, ways with
-        (
-          amenity = toilets
-          or (
-            amenity ~ restaurant|cafe|biergarten|food_court|fuel|library|community_centre
-            or amenity = fast_food and indoor_seating = yes
-            or shop ~ mall|department_store|baby_goods
-            or shop = bakery and indoor_seating = yes
-          ) and toilets != no
-        )
-        and !diaper and !changing_table
+          (
+            amenity = toilets
+            or (
+              amenity ~ restaurant|cafe|biergarten|food_court|fuel|library|community_centre
+              or amenity = fast_food and indoor_seating = yes
+              or shop ~ mall|department_store|baby_goods
+              or shop = bakery and indoor_seating = yes
+            ) and toilets != no
+          )
+          and !diaper and !changing_table
     """
     override val changesetComment = "Survey availability of baby changing tables"
     override val wikiLink = "Key:changing_table"

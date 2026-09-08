@@ -18,12 +18,12 @@ class AddBicycleIncline : OsmElementQuestType<BicycleInclineAnswer> {
 
     private val tagFilter by lazy { """
         ways with
-         mtb:scale:uphill
-         and highway ~ footway|cycleway|path|bridleway|track
-         and (!indoor or indoor = no)
-         and area != yes
-         and access !~ private|no
-         and !incline
+          mtb:scale:uphill
+          and highway ~ footway|cycleway|path|bridleway|track
+          and (!indoor or indoor = no)
+          and area != yes
+          and access !~ private|no
+          and !incline
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify which way leads up (where mtb:scale:uphill is present)"

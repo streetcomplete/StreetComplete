@@ -15,13 +15,13 @@ class AddWheelchairAccessToilets : OsmFilterQuestType<WheelchairAccess>() {
 
     override val elementFilter = """
         nodes, ways with
-         amenity = toilets
-         and access !~ no|private
-         and (
-           !wheelchair
-           or wheelchair != yes and wheelchair older today -4 years
-           or wheelchair older today -8 years
-         )
+          amenity = toilets
+          and access !~ no|private
+          and (
+            !wheelchair
+            or wheelchair != yes and wheelchair older today -4 years
+            or wheelchair older today -8 years
+          )
     """
     override val changesetComment = "Specify wheelchair accessibility of toilets"
     override val wikiLink = "Key:wheelchair"

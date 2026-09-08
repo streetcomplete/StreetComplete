@@ -15,13 +15,13 @@ class AddWheelchairAccessPublicTransport : OsmFilterQuestType<WheelchairAccess>(
 
     override val elementFilter = """
         nodes, ways, relations with
-         (amenity = bus_station or railway ~ station|subway_entrance)
-         and access !~ no|private
-         and (
-          !wheelchair
-          or wheelchair != yes and wheelchair older today -4 years
-          or wheelchair older today -8 years
-         )
+          (amenity = bus_station or railway ~ station|subway_entrance)
+          and access !~ no|private
+          and (
+            !wheelchair
+            or wheelchair != yes and wheelchair older today -4 years
+            or wheelchair older today -8 years
+          )
     """
     override val changesetComment = "Survey wheelchair accessibility of public transport platforms"
     override val wikiLink = "Key:wheelchair"

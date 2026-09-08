@@ -16,18 +16,19 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddPitchLit : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        ways with (
+        ways with
+          (
             leisure ~ pitch|track|fitness_station
             or piste:type and !highway
-        )
-        and (access !~ private|no)
-        and indoor != yes and (!building or building = no)
-        and (
-          !lit
-          or lit = no and lit older today -8 years
-          or lit older today -16 years
-        )
-        and !piste:lit
+          )
+          and access !~ private|no
+          and indoor != yes and (!building or building = no)
+          and (
+            !lit
+            or lit = no and lit older today -8 years
+            or lit older today -16 years
+          )
+          and !piste:lit
     """
     override val changesetComment = "Specify whether pitches are lit"
     override val wikiLink = "Key:lit"

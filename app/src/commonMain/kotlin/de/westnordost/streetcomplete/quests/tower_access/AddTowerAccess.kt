@@ -17,15 +17,15 @@ class AddTowerAccess : OsmFilterQuestType<TowerAccess>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-            man_made = tower
-            and (
-                tower:type = observation
-                or tower:type = watchtower and historic=yes
-            )
-            and disused != yes
-            and !emergency
-            and !military
-            and (!access or access = unknown)
+          man_made = tower
+          and (
+            tower:type = observation
+            or tower:type = watchtower and historic=yes
+          )
+          and disused != yes
+          and !emergency
+          and !military
+          and (!access or access = unknown)
         """
     override val changesetComment = "Specify access to observation towers"
     override val wikiLink = "Tag:man_made=tower"
