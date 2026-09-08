@@ -38,5 +38,8 @@ class AddDoctorType() : OsmFilterQuestType<List<Feature>>() {
     }
 
     override fun getHighlightedElements(element: Element,mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with amenity=doctors or healthcare = doctor")
+        mapData.filter("""
+            nodes, ways with
+                amenity = doctors or healthcare = doctor
+        """)
 }

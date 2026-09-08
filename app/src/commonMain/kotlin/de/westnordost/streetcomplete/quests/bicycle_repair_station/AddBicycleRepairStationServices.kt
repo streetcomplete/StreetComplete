@@ -56,7 +56,8 @@ class AddBicycleRepairStationServices : OsmFilterQuestType<Set<BicycleRepairStat
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
-            nodes, ways with amenity ~ bicycle_repair_station|compressed_air
+            nodes, ways with
+              amenity ~ bicycle_repair_station|compressed_air
         """)
 
     override fun applyAnswerTo(answer: Set<BicycleRepairStationService>, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {

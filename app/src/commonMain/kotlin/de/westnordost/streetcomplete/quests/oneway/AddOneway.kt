@@ -22,7 +22,9 @@ class AddOneway : OsmElementQuestType<OnewayAnswer> {
 
     /** find all roads */
     private val allRoadsFilter by lazy { """
-        ways with highway ~ ${ALL_ROADS.joinToString("|")} and area != yes
+        ways with
+          highway ~ ${ALL_ROADS.joinToString("|")}
+          and area != yes
     """.toElementFilterExpression() }
 
     /** find only those roads eligible for asking for oneway */

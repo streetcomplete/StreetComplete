@@ -34,7 +34,10 @@ class AddBoardName : OsmFilterQuestType<List<LocalizedName>>() {
     override val achievements = listOf(OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways, relations with tourism = information and information = board")
+        mapData.filter("""
+            nodes, ways, relations with
+              tourism = information and information = board
+        """)
 
     @Composable
     override fun Form(on: (QuestAction<List<LocalizedName>>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

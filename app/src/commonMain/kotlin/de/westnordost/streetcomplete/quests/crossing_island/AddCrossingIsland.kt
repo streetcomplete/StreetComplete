@@ -37,7 +37,8 @@ class AddCrossingIsland : OsmElementQuestType<Boolean> {
     """.toElementFilterExpression() }
 
     private val excludedAdjacentWaysFilter by lazy { """
-        ways with footway = traffic_island
+        ways with
+          footway = traffic_island
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify whether pedestrian crossings have islands"

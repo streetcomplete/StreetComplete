@@ -31,7 +31,10 @@ class AddCameraType : OsmFilterQuestType<CameraType>() {
     override val achievements = listOf(CITIZEN)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes with surveillance and surveillance:type = camera")
+        mapData.filter("""
+            nodes with
+              surveillance and surveillance:type = camera
+        """)
 
     @Composable
     override fun Form(on: (QuestAction<CameraType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

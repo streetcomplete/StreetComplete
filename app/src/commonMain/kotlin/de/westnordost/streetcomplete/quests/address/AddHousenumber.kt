@@ -191,7 +191,8 @@ private val nonMultipolygonRelationsWithAddressFilter by lazy { """
 """.toElementFilterExpression() }
 
 private val nodesWithAddressFilter by lazy { """
-    nodes with addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
+    nodes with
+      addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
 """.toElementFilterExpression() }
 
 private val buildingsWithMissingAddressFilter by lazy { """

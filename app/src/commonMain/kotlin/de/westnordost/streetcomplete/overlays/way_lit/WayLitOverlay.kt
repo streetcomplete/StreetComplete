@@ -29,9 +29,10 @@ class WayLitOverlay : Overlay {
     override val hidesQuestTypes = setOf(AddWayLit::class.simpleName!!)
 
     override fun getStyledElements(mapData: MapDataWithGeometry) =
-        mapData
-            .filter("ways, relations with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}")
-            .map { it to getStyle(it) }
+        mapData.filter("""
+            ways, relations with
+              highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+        """).map { it to getStyle(it) }
 
     @Composable
     override fun Form(

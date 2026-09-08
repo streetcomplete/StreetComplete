@@ -43,7 +43,12 @@ class AddFirewood : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with leisure = firepit or amenity = bbq or tourism = wilderness_hut")
+        mapData.filter("""
+            nodes, ways with
+              leisure = firepit
+              or amenity = bbq
+              or tourism = wilderness_hut
+        """)
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

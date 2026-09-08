@@ -40,7 +40,8 @@ class AddAddressStreet : OsmElementQuestType<StreetOrPlaceName> {
 
     // #2112 - exclude indirect addr:street
     private val excludedWaysFilter by lazy { """
-        ways with addr:street and addr:interpolation
+        ways with
+          addr:street and addr:interpolation
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify street/place names to addresses"
