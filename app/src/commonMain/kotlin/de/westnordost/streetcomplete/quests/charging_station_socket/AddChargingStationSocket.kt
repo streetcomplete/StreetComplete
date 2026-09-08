@@ -93,19 +93,10 @@ class AddChargingStationSocket(
     ) {
         tags.keys.filter { isDeprecatedSocketKey(it) }.toList().forEach { tags.remove(it) }
 
+        // Only types present in the answer (i.e. shown in the form) are surveyed.
+        // count > 0 -> numeric; count = 0 -> explicit "no" (not unknown).
         for ((type, count) in answer) {
-            val key = type.osmCountKey
-            if (count > 0) {
-                tags[key] = count.toString()
-            } else {
-                tags.remove(key)
-            }
-        }
-
-        val type2Count = answer[SocketType.TYPE2] ?: 0
-        val type2CableCount = answer[SocketType.TYPE2_CABLE] ?: 0
-        if (type2Count > 0 && SocketType.TYPE2 in answer && type2CableCount <= 0) {
-            tags[SocketType.TYPE2_CABLE.osmCountKey] = "no"
+            tags[type.osmCountKey] = if (count > 0) count.toString() else "no"
         }
 
         // Every completed survey refreshes check_date:socket so the quest stays suppressed
@@ -128,18 +119,22 @@ private fun isDeprecatedSocketKey(key: String): Boolean =
 private fun Element.needsSocketSurvey(): Boolean {
     if (tags.keys.any { isDeprecatedSocketKey(it) }) return true
     if (managedSocketCountKeys.any { tags[it] == "yes" }) return true
-    if (!hasNumericManagedSocketCounts()) return true
-    // Only numeric managed counts: resurvey when check_date:socket is missing or expired
+    if (!hasSurveyedManagedSocketValues()) return true
+    // Surveyed numeric/"no" values: resurvey when check_date:socket is missing or expired
     return hasExpiredOrMissingSocketCheckDate()
 }
 
-private fun Element.hasNumericManagedSocketCounts(): Boolean =
-    managedSocketCountKeys.any { tags[it]?.toIntOrNull() != null }
+/** True if any managed socket key is a surveyed count or an explicit "no". */
+private fun Element.hasSurveyedManagedSocketValues(): Boolean =
+    managedSocketCountKeys.any { key ->
+        val value = tags[key] ?: return@any false
+        value == "no" || value.toIntOrNull() != null
+    }
 
 /**
  * Uses the same check-date key variants and [RelativeDate] convention as [TagOlderThan],
- * but only looks at check dates for "socket" (not element edit timestamp), because numeric
- * socket counts are considered complete only when accompanied by a current check_date:socket.
+ * but only looks at check dates for "socket" (not element edit timestamp), because surveyed
+ * socket values are considered complete only when accompanied by a current check_date:socket.
  */
 private fun Element.hasExpiredOrMissingSocketCheckDate(): Boolean {
     val mostRecent = getLastCheckDateKeys("socket")
@@ -165,7 +160,7 @@ private fun Element.center(mapData: MapDataWithGeometry): LatLon? = when (this) 
     else -> mapData.getGeometry(type, id)?.center
 }
 
-/** Preload numeric managed socket counts; "yes" and missing stay at 0. */
+/** Preload numeric managed socket counts; "yes", "no" and missing stay at 0. */
 fun initialSocketCounts(
     tags: Map<String, String>,
     socketTypes: List<SocketType>,

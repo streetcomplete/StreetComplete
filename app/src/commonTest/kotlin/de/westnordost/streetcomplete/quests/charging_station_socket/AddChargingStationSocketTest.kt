@@ -128,6 +128,22 @@ class AddChargingStationSocketTest {
         ))!!)
     }
 
+    @Test fun `not applicable to surveyed numeric and no values with recent check_date`() {
+        assertFalse(questType.isApplicableTo(chargingStation(
+            "socket:type2" to "2",
+            "socket:type2_cable" to "no",
+            "socket:chademo" to "no",
+            "check_date:socket" to recentCheckDate
+        ))!!)
+    }
+
+    @Test fun `applicable to surveyed no values without check_date`() {
+        assertTrue(questType.isApplicableTo(chargingStation(
+            "socket:type2" to "no",
+            "socket:chademo" to "no"
+        ))!!)
+    }
+
     @Test fun `applicable to mixed numeric and yes regardless of recent check_date`() {
         assertTrue(questType.isApplicableTo(chargingStation(
             "socket:type2" to "2",
@@ -259,6 +275,7 @@ class AddChargingStationSocketTest {
             "socket:type2" to "2",
             "socket:type2_combo" to "1",
             "socket:chademo" to "yes",
+            "socket:type2_cable" to "no",
             "socket:nacs" to "3",
             "socket:type2:output" to "22 kW"
         )
@@ -266,7 +283,7 @@ class AddChargingStationSocketTest {
         assertEquals(
             mapOf(
                 TYPE2 to 2,
-                TYPE2_CABLE to 0,
+                TYPE2_CABLE to 0, // "no" preloads as 0
                 TYPE2_COMBO to 1,
                 CHADEMO to 0, // "yes" stays unresolved
                 DOMESTIC to 0
@@ -275,37 +292,60 @@ class AddChargingStationSocketTest {
         )
     }
 
-    @Test fun `apply multiple socket counts always sets check_date`() {
+    @Test fun `positive values write numeric counts and zeros write no`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("socket:type2", "2"),
-                StringMapEntryAdd("socket:type2_combo", "1"),
                 StringMapEntryAdd("socket:type2_cable", "no"),
                 StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
             ),
-            questType.answerApplied(mapOf(TYPE2 to 2, TYPE2_COMBO to 1))
+            questType.answerApplied(mapOf(TYPE2 to 2, TYPE2_CABLE to 0))
         )
     }
 
-    @Test fun `zero-count values are not written`() {
-        val changes = questType.answerApplied(mapOf(TYPE2 to 2, CHADEMO to 0))
-        assertTrue(changes.none { it.key == "socket:chademo" })
-        assertFalse(changes.contains(StringMapEntryAdd("socket:chademo", "0")))
+    @Test fun `chademo zero writes socket chademo no`() {
+        assertTrue(
+            questType.answerApplied(mapOf(CHADEMO to 0))
+                .contains(StringMapEntryAdd("socket:chademo", "no"))
+        )
+    }
+
+    @Test fun `domestic zero writes socket domestic no`() {
+        assertTrue(
+            questType.answerApplied(mapOf(DOMESTIC to 0))
+                .contains(StringMapEntryAdd("socket:domestic", "no"))
+        )
+    }
+
+    @Test fun `multiple zero values write no for all answered managed types`() {
+        assertEquals(
+            setOf(
+                StringMapEntryAdd("socket:type2", "no"),
+                StringMapEntryAdd("socket:type2_cable", "no"),
+                StringMapEntryAdd("socket:type2_combo", "no"),
+                StringMapEntryAdd("socket:chademo", "no"),
+                StringMapEntryAdd("socket:domestic", "no"),
+                StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
+            ),
+            questType.answerApplied(mapOf(
+                TYPE2 to 0,
+                TYPE2_CABLE to 0,
+                TYPE2_COMBO to 0,
+                CHADEMO to 0,
+                DOMESTIC to 0
+            ))
+        )
+    }
+
+    @Test fun `does not invent type2_cable when it is not in the answer map`() {
+        val changes = questType.answerApplied(mapOf(TYPE2 to 2, TYPE2_COMBO to 1))
+        assertTrue(changes.contains(StringMapEntryAdd("socket:type2", "2")))
+        assertTrue(changes.contains(StringMapEntryAdd("socket:type2_combo", "1")))
+        assertTrue(changes.none { it.key == "socket:type2_cable" })
         assertTrue(changes.contains(StringMapEntryAdd("check_date:socket", nowAsCheckDateString())))
     }
 
-    @Test fun `sets type2_cable=no when type2 is present without cable`() {
-        assertEquals(
-            setOf(
-                StringMapEntryAdd("socket:type2", "2"),
-                StringMapEntryAdd("socket:type2_cable", "no"),
-                StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
-            ),
-            questType.answerApplied(mapOf(TYPE2 to 2))
-        )
-    }
-
-    @Test fun `does not set type2_cable=no when cable is selected`() {
+    @Test fun `cable selected writes numeric count`() {
         assertEquals(
             setOf(
                 StringMapEntryAdd("socket:type2", "1"),
@@ -327,7 +367,7 @@ class AddChargingStationSocketTest {
         )
         assertFalse(changes.any { it is StringMapEntryDelete && it.key.startsWith("socket:type2:") })
         assertTrue(changes.contains(StringMapEntryAdd("socket:type2", "2")))
-        assertTrue(changes.contains(StringMapEntryAdd("socket:type2_cable", "no")))
+        assertTrue(changes.none { it.key == "socket:type2_cable" })
         assertTrue(changes.contains(StringMapEntryAdd("check_date:socket", nowAsCheckDateString())))
     }
 
@@ -342,6 +382,16 @@ class AddChargingStationSocketTest {
         )
         assertFalse(changes.any { it.key == "name" || it.key == "operator" || it.key == "socket:nacs" })
         assertTrue(changes.contains(StringMapEntryAdd("check_date:socket", nowAsCheckDateString())))
+    }
+
+    @Test fun `socket types not in the answer map are not written as no`() {
+        val changes = questType.answerAppliedTo(
+            mapOf(TYPE2 to 2),
+            mapOf("socket:chademo" to "1")
+        )
+        assertTrue(changes.contains(StringMapEntryAdd("socket:type2", "2")))
+        assertTrue(changes.none { it.key == "socket:chademo" })
+        assertTrue(changes.none { it.key == "socket:type2_cable" || it.key == "socket:domestic" })
     }
 
     @Test fun `removes deprecated socket keys`() {
@@ -382,7 +432,6 @@ class AddChargingStationSocketTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("socket:type2", "2", "2"),
-                StringMapEntryAdd("socket:type2_cable", "no"),
                 StringMapEntryModify("check_date:socket", expiredCheckDate, nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
@@ -399,7 +448,6 @@ class AddChargingStationSocketTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("socket:type2", "2", "3"),
-                StringMapEntryAdd("socket:type2_cable", "no"),
                 StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
@@ -413,7 +461,6 @@ class AddChargingStationSocketTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("socket:type2", "2", "3"),
-                StringMapEntryAdd("socket:type2_cable", "no"),
                 StringMapEntryModify("check_date:socket", expiredCheckDate, nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
@@ -430,7 +477,6 @@ class AddChargingStationSocketTest {
         assertEquals(
             setOf(
                 StringMapEntryModify("socket:type2", "yes", "2"),
-                StringMapEntryAdd("socket:type2_cable", "no"),
                 StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
@@ -440,17 +486,29 @@ class AddChargingStationSocketTest {
         )
     }
 
-    @Test fun `removes managed key when count is set to zero`() {
+    @Test fun `existing numeric value changed to zero becomes no`() {
         assertEquals(
             setOf(
-                StringMapEntryDelete("socket:chademo", "1"),
                 StringMapEntryAdd("socket:type2", "2"),
-                StringMapEntryAdd("socket:type2_cable", "no"),
+                StringMapEntryModify("socket:chademo", "1", "no"),
                 StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
             ),
             questType.answerAppliedTo(
                 mapOf(TYPE2 to 2, CHADEMO to 0),
                 mapOf("socket:chademo" to "1")
+            )
+        )
+    }
+
+    @Test fun `existing yes value changed to zero becomes no`() {
+        assertEquals(
+            setOf(
+                StringMapEntryModify("socket:type2", "yes", "no"),
+                StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
+            ),
+            questType.answerAppliedTo(
+                mapOf(TYPE2 to 0),
+                mapOf("socket:type2" to "yes")
             )
         )
     }
