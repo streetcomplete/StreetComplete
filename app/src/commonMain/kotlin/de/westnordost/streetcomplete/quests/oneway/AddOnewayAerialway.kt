@@ -39,9 +39,7 @@ class AddOnewayAerialway : OsmElementQuestType<OnewayAnswer> {
         elementFilter.matches(element)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("""
-            nodes, ways with aerialway
-        """.toElementFilterExpression())
+        mapData.filter("nodes, ways with aerialway".toElementFilterExpression())
 
     @Composable
     override fun Form(on: (QuestAction<OnewayAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
