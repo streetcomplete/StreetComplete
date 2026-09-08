@@ -32,10 +32,8 @@ import de.westnordost.streetcomplete.screens.main.map.layers.rememberStyleableOv
 import de.westnordost.streetcomplete.util.ktx.toLocation
 import kotlin.coroutines.coroutineContext
 import kotlin.time.Duration.Companion.milliseconds
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.withContext
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.StyleLoadState
 import org.maplibre.compose.style.TransitionOptions
@@ -180,10 +178,8 @@ private fun BindMainMapStyleTransition(mapState: MapState) {
                 if (loadState != StyleLoadState.Ready) return@collectLatest
                 val transition = mainMapStyleTransition(durationScale)
                 try {
-                    withContext(Dispatchers.Default) {
-                        mapState.style.transition.set(transition)
-                        mapState.style.transition.setPlacementTransitions(true)
-                    }
+                    mapState.style.transition.set(transition)
+                    mapState.style.transition.setPlacementTransitions(true)
                 } catch (error: IllegalStateException) {
                     if (!error.isStyleHandleRace()) throw error
                 }

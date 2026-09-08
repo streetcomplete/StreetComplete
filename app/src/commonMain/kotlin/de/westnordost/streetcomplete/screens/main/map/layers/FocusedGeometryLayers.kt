@@ -11,10 +11,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.screens.main.map.isArea
 import de.westnordost.streetcomplete.screens.main.map.isPoint
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
@@ -66,14 +64,12 @@ fun FocusedGeometryLayers(mapState: MapState, geometry: ElementGeometry?) {
                         val cycleFraction =
                             (elapsedNanos % HIGHLIGHT_CYCLE_NANOS).toFloat() /
                                 HIGHLIGHT_CYCLE_NANOS.toFloat()
-                        withContext(Dispatchers.Default) {
-                            sourceHandle.setFeatureState(
-                                FOCUSED_GEOMETRY_FEATURE_ID,
-                                buildJsonObject {
-                                    put("breathing", focusedGeometryBreathing(cycleFraction))
-                                },
-                            )
-                        }
+                        sourceHandle.setFeatureState(
+                            FOCUSED_GEOMETRY_FEATURE_ID,
+                            buildJsonObject {
+                                put("breathing", focusedGeometryBreathing(cycleFraction))
+                            },
+                        )
                     }
                 } catch (error: IllegalStateException) {
                     // A style reload emits a new handle and restarts the animation.

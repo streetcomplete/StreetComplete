@@ -45,6 +45,17 @@ Koin-owned runtime.
 
 ## Remaining findings on latest main
 
+### Non-blocking imperative style operations
+
+MapLibre Compose [PR #1346](https://github.com/maplibre/maplibre-compose/pull/1346),
+merged as `e3d246b9`, queues native feature-state and transition writes on the map
+thread. StreetComplete calls these setters directly from its effects, without
+an extra background dispatch for every highlight-animation frame or transition
+update. Cluster queries already run in a coroutine and need no call-site change.
+Image installation still waits for completion and retains its background dispatch
+and image-before-source ordering. These threading assumptions require a snapshot
+containing `e3d246b9`; the repository publication observed on 2026-09-08 predates it.
+
 No StreetComplete-specific MapLibre Compose API gap from the previous audits
 remains at `9717fc6f`. Three integration gates remain:
 
