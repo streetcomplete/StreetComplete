@@ -5,7 +5,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.osm.opening_hours.HierarchicOpeningHours
 import de.westnordost.streetcomplete.osm.time_restriction.TimeRestriction.Mode.*
@@ -54,8 +53,7 @@ fun TimeRestrictionInput(
                 timeMode = TimeMode.Spans,
                 countryInfo = countryInfo,
                 addButtonContent = { Text(stringResource(Res.string.quest_fee_add_times)) },
-                locale = countryInfo.userPreferredLocale,
-                userLocale = Locale.current,
+                countryLocale = countryInfo.userPreferredLocale,
             )
         }
     }
