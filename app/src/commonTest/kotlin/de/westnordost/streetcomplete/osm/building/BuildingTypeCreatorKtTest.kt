@@ -111,11 +111,62 @@ class BuildingTypeCreatorKtTest {
             RESIDENTIAL.appliedTo(mapOf("building" to "livestock"))
         )
     }
+
+
+    @Test fun `set building use`() {
+        assertEquals(
+            mapOf("building" to "commercial", "building:use" to "office"),
+            OFFICE.buildingUseAppliedTo(mapOf("building" to "commercial"))
+        )
+
+        assertEquals(
+            mapOf("building" to "residential", "building:use" to "apartments"),
+            APARTMENTS.buildingUseAppliedTo(mapOf("building" to "residential"))
+        )
+    }
+
+    @Test fun `replace existing building use`() {
+        assertEquals(
+            mapOf("building" to "commercial", "building:use" to "office"),
+            OFFICE.buildingUseAppliedTo(mapOf("building" to "commercial", "building:use" to "retail"))
+        )
+    }
+
+    @Test fun `remove redundant building use`() {
+        assertEquals(
+            mapOf("building" to "office"),
+            OFFICE.buildingUseAppliedTo(mapOf("building" to "office", "building:use" to "office"))
+        )
+    }
+
+    @Test fun `update check date for building use`() {
+        assertEquals(
+            mapOf("building:use" to "office", "check_date" to nowAsCheckDateString()),
+            OFFICE.buildingUseAppliedTo(mapOf("building:use" to "office"))
+        )
+    }
+
+    @Test fun `cannot apply non building as new building use`() {
+        assertFails {
+            SILO.buildingUseAppliedTo(mapOf())
+        }
+    }
 }
 
 private fun BuildingType.appliedTo(tags: Map<String, String>): Map<String, String> {
     val cb = StringMapChangesBuilder(tags)
     applyTo(cb)
+    val mutableMap = tags.toMutableMap()
+    cb.create().applyTo(mutableMap)
+    return mutableMap
+}
+
+private fun BuildingType.buildingUseAppliedTo(
+    tags: Map<String, String>
+): Map<String, String> {
+    val cb = StringMapChangesBuilder(tags)
+    applyBuildingUseTo(cb)
+
     val mutableMap = tags.toMutableMap()
     cb.create().applyTo(mutableMap)
     return mutableMap

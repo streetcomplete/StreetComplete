@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.osm.building
 import de.westnordost.streetcomplete.osm.Tags
 import de.westnordost.streetcomplete.osm.building.BuildingType.*
 import de.westnordost.streetcomplete.osm.updateCheckDate
+import de.westnordost.streetcomplete.osm.updateCheckDateForKey
 
 fun BuildingType.applyTo(tags: Tags) {
     require(osmKey != null && osmValue != null)
@@ -32,6 +33,24 @@ fun BuildingType.applyTo(tags: Tags) {
     }
 
     tags[osmKey] = osmValue
+
+    // we set the check date and not check_date:building because this is about the primary feature,
+    // not a property of a feature.
+    if (!tags.hasChanges) {
+        tags.updateCheckDate()
+    }
+}
+
+fun BuildingType.applyBuildingUseTo(tags: Tags) {
+    require(osmKey != null && osmValue != null)
+    require(osmKey == "building")
+
+    // if user selects building:use same as building tag, remove redundant tagging
+    if(osmValue == tags["building"]) {
+        tags.remove("building:use")
+        return
+    }
+    tags["building:use"] = osmValue
 
     // we set the check date and not check_date:building because this is about the primary feature,
     // not a property of a feature.
