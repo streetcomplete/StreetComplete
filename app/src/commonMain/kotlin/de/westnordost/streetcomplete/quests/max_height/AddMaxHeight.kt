@@ -22,21 +22,21 @@ class AddMaxHeight : OsmElementQuestType<MaxHeightAnswer> {
 
     private val nodeFilter by lazy { """
         nodes with
-        (
-          barrier = height_restrictor
-          or amenity = parking_entrance and parking ~ underground|multi-storey
-        )
-        and $noMaxHeight
+          (
+            barrier = height_restrictor
+            or amenity = parking_entrance and parking ~ underground|multi-storey
+          )
+          and $noMaxHeight
     """.toElementFilterExpression() }
 
     private val roadsWithoutMaxHeightFilter by lazy { """
         ways with
-        (
-          highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road|busway
-          or (highway = service and access !~ private|no and vehicle !~ private|no)
-        )
-        and $noMaxHeight
-        and (access !~ private|no or (foot and foot !~ private|no))
+          (
+            highway ~ motorway|motorway_link|trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|track|road|busway
+            or (highway = service and access !~ private|no and vehicle !~ private|no)
+          )
+          and $noMaxHeight
+          and (access !~ private|no or (foot and foot !~ private|no))
     """.toElementFilterExpression() }
 
     private val railwayCrossingsFilter by lazy { """

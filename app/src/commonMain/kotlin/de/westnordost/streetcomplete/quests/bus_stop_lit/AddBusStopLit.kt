@@ -17,20 +17,20 @@ class AddBusStopLit : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways, relations with
-        (
-          public_transport = platform
-          or (highway = bus_stop and public_transport != stop_position)
-        )
-        and physically_present != no and naptan:BusStopType != HAR
-        and access !~ no|private
-        and location !~ underground|indoor
-        and indoor != yes
-        and (!level or level >= 0)
-        and (
-          !lit
-          or lit = no and lit older today -8 years
-          or lit older today -16 years
-        )
+          (
+            public_transport = platform
+            or (highway = bus_stop and public_transport != stop_position)
+          )
+          and physically_present != no and naptan:BusStopType != HAR
+          and access !~ no|private
+          and location !~ underground|indoor
+          and indoor != yes
+          and (!level or level >= 0)
+          and (
+            !lit
+            or lit = no and lit older today -8 years
+            or lit older today -16 years
+          )
     """
     override val changesetComment = "Add whether public transport stops are lit"
     override val wikiLink = "Key:lit"

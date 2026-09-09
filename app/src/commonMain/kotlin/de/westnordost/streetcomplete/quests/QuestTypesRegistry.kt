@@ -189,6 +189,7 @@ import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmi
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
 import de.westnordost.streetcomplete.quests.traffic_signals_sound.AddTrafficSignalsSound
 import de.westnordost.streetcomplete.quests.traffic_signals_vibrate.AddTrafficSignalsVibration
+import de.westnordost.streetcomplete.quests.vending_machine.AddVendingMachineType
 import de.westnordost.streetcomplete.quests.way_lit.AddWayLit
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessBusiness
 import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAccessOutside
@@ -323,6 +324,7 @@ fun questTypeRegistry(
     38 to AddCrossing(),
     164 to AddCrossingSignals(),
     39 to AddCrossingIsland(), // can be done at a glance
+    // 40 AddCrossingType(), - removed in https://github.com/streetcomplete/StreetComplete/pull/5471
     163 to AddCrossingMarkings(),
     41 to AddTactilePavingCrosswalk(),
     159 to AddCrossingKerbHeight(),
@@ -393,6 +395,8 @@ fun questTypeRegistry(
     173 to AddBicycleRepairStationServices(),
 
     167 to AddParcelLockerBrand(),
+    // 168 to AddParcelLockerPickup(), - removed in https://github.com/streetcomplete/StreetComplete/commit/bc8fc7907912c507742bdc4f17dcca03ddd49376
+    // 169 to AddParcelLockerMailIn(), - removed in https://github.com/streetcomplete/StreetComplete/commit/bc8fc7907912c507742bdc4f17dcca03ddd49376
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
     75 to AddHousenumber(getCountryInfoByLocation),
@@ -417,6 +421,8 @@ fun questTypeRegistry(
     179 to AddChargingStationBicycleCapacity(),
     88 to AddChargingStationOperator(),
 
+    194 to AddVendingMachineType(), // May take some time to find the machine in building with multiple levels
+
     // postboxes (collection times are further up, see comment)
     89 to AddPostboxRoyalCypher(), // can be glanced across the road (if postbox facing the right way)
     90 to AddPostboxRef(), // requires text input and to be very close to the collection plate
@@ -431,6 +437,7 @@ fun questTypeRegistry(
     95 to AddMaxPhysicalHeight(arSupportChecker), // same as above, best if it appears right after (if enabled)
     96 to AddRoadName(),
     97 to AddOneway(),
+    // 98 to AddSuspectedOneway(), - removed in https://github.com/streetcomplete/StreetComplete/pull/5725
 
     99 to AddEntrance(),
     100 to AddEntranceReference(),
@@ -528,6 +535,8 @@ fun questTypeRegistry(
     137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
     181 to AddLaneMarkings(),
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
+
+    // 139 to AddShoulder(), - removed in https://github.com/streetcomplete/StreetComplete/commit/2819a8d440fdf33fc1bff178679ae1fcfd739998
 
     140 to AddRoadWidth(arSupportChecker),
     141 to AddRoadSmoothness(),

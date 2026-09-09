@@ -25,31 +25,32 @@ import org.jetbrains.compose.resources.stringResource
 class AddRoadSurface : OsmFilterQuestType<Surface>() {
 
     override val elementFilter = """
-        ways with (
-          highway ~ ${listOf(
-            "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
-            "unclassified", "residential", "living_street", "pedestrian", "track", "busway",
-            ).joinToString("|")
-          }
-          or highway = service and service !~ driveway|slipway
-        )
-        and (
-          !surface
-          or surface ~ ${INVALID_SURFACES.joinToString("|")}
-          or (
-            surface ~ paved|unpaved
-            and !surface:note
-            and !note:surface
-            and !check_date:surface
+        ways with
+          (
+            highway ~ ${listOf(
+              "primary", "primary_link", "secondary", "secondary_link", "tertiary", "tertiary_link",
+              "unclassified", "residential", "living_street", "pedestrian", "track", "busway",
+              ).joinToString("|")
+            }
+            or highway = service and service !~ driveway|slipway
           )
-          or surface ~ ${UNPAVED_SURFACES.joinToString("|")} and surface older today -6 years
-          or surface older today -12 years
-          ${INVALID_SURFACES_FOR_TRACKTYPES.entries.joinToString("\n") { (tracktype, surfaces) ->
-              "or tracktype = $tracktype and surface ~ ${surfaces.joinToString("|")}"
-          }}
-        )
-        and (access !~ private|no or (foot and foot !~ private|no))
-        and ice_road != yes
+          and (
+            !surface
+            or surface ~ ${INVALID_SURFACES.joinToString("|")}
+            or (
+              surface ~ paved|unpaved
+              and !surface:note
+              and !note:surface
+              and !check_date:surface
+            )
+            or surface ~ ${UNPAVED_SURFACES.joinToString("|")} and surface older today -6 years
+            or surface older today -12 years
+            ${INVALID_SURFACES_FOR_TRACKTYPES.entries.joinToString("\n") { (tracktype, surfaces) ->
+            "or tracktype = $tracktype and surface ~ ${surfaces.joinToString("|")}"
+            }}
+          )
+          and (access !~ private|no or (foot and foot !~ private|no))
+          and ice_road != yes
     """
 
     override val changesetComment = "Specify road surfaces"

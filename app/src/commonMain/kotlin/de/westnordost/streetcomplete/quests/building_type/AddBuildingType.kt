@@ -18,12 +18,12 @@ class AddBuildingType : OsmFilterQuestType<BuildingType>() {
 
     override val elementFilter = """
         ways, relations with
-        building ~ yes|${INVALID_BUILDING_TYPES.joinToString("|")}
-        and ${OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE.joinToString(" and ") { "!$it" }}
-        and location != underground
-        and disused != yes
-        and abandoned != yes
-        and ruins != yes
+          building ~ yes|${INVALID_BUILDING_TYPES.joinToString("|")}
+          and ${OTHER_KEYS_POTENTIALLY_DESCRIBING_BUILDING_TYPE.joinToString(" and ") { "!$it" }}
+          and location != underground
+          and disused != yes
+          and abandoned != yes
+          and ruins != yes
     """
     override val changesetComment = "Specify building types"
     override val wikiLink = "Key:building"

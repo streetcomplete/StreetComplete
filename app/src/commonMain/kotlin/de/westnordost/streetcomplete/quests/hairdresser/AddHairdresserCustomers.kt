@@ -19,12 +19,10 @@ class AddHairdresserCustomers : OsmFilterQuestType<HairdresserCustomers>() {
 
     override val elementFilter = """
         nodes, ways with
-          (
-              shop = hairdresser
-              and hairdresser != barber
-              and !female and !male
-              and !male:signed and !female:signed
-          )
+          shop = hairdresser
+          and hairdresser != barber
+          and !female and !male
+          and !male:signed and !female:signed
     """
     override val changesetComment = "Survey hairdresser's customers"
     override val wikiLink = "Tag:shop=hairdresser"

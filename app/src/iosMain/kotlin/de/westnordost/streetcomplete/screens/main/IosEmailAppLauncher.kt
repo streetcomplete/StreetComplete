@@ -11,17 +11,17 @@ object IosEmailAppLauncher : EmailAppLauncher {
         val components = NSURLComponents().apply {
             scheme = "mailto"
             path = email
-            queryItems = listOfNotNull {
-                subject?.let { NSURLQueryItem(name = "subject", value = it) }
-                body?.let { NSURLQueryItem(name = "body", value = it) }
-            }
+            queryItems = listOfNotNull(
+                subject?.let { NSURLQueryItem(name = "subject", value = it) },
+                body?.let { NSURLQueryItem(name = "body", value = it) },
+            )
         }
 
         val url = components.URL  ?: return
 
         val app = UIApplication.sharedApplication
         if (app.canOpenURL(url)) {
-            app.openURL(url)
+            app.openURL(url, options = emptyMap<Any?, Any?>(), completionHandler = null)
         }
     }
 

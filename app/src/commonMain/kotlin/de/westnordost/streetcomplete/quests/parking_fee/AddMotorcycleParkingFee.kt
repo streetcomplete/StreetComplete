@@ -13,12 +13,13 @@ import de.westnordost.streetcomplete.resources.*
 class AddMotorcycleParkingFee : OsmFilterQuestType<ParkingFeeAnswer>() {
 
     override val elementFilter = """
-        nodes, ways, relations with amenity = motorcycle_parking
-        and access ~ yes|customers|public
-        and (
+        nodes, ways, relations with
+          amenity = motorcycle_parking
+          and access ~ yes|customers|public
+          and (
             !fee and !fee:conditional
             or fee older today -8 years
-        )
+          )
     """
     override val changesetComment = "Specify motorcycle parking fees"
     override val wikiLink = "Tag:amenity=motorcycle_parking"

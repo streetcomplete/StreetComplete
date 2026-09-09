@@ -325,10 +325,11 @@ private fun isAddressTag(key: String, value: String): Boolean =
     key == "noaddress" ||
     key == "nohousenumber"
 
-private val roadsWithNamesFilter by lazy {
-    "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
-        .toElementFilterExpression()
-}
+private val roadsWithNamesFilter by lazy { """
+    ways with
+      highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+      and name
+""".toElementFilterExpression() }
 
 private val allBuildingsFilter by lazy {
     "ways, relations with building".toElementFilterExpression()

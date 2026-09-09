@@ -16,7 +16,10 @@ import org.jetbrains.compose.resources.painterResource
 
 class AddPoliceType : OsmFilterQuestType<PoliceType>() {
 
-    override val elementFilter = "nodes, ways with amenity = police and !operator"
+    override val elementFilter = """
+        nodes, ways with
+          amenity = police and !operator
+    """
     override val changesetComment = "Specify Italian police types"
     override val wikiLink = "Tag:amenity=police"
     override val icon = Res.drawable.quest_police

@@ -41,7 +41,7 @@ class SurfaceOverlay : Overlay {
     override fun getStyledElements(mapData: MapDataWithGeometry) =
         mapData.filter("""
             ways, relations with
-                highway ~ ${(ALL_PATHS + ALL_ROADS).joinToString("|")}
+              highway ~ ${(ALL_PATHS + ALL_ROADS).joinToString("|")}
         """).map { it to getStyle(it) }
 
     @Composable

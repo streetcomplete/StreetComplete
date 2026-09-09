@@ -19,10 +19,11 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFerryAccessPedestrian : OsmElementQuestType<Boolean> {
 
-    private val filter by lazy {
-        "ways, relations with route = ferry and !foot"
-            .toElementFilterExpression()
-    }
+    private val filter by lazy { """
+        ways, relations with
+          route = ferry and !foot
+    """.toElementFilterExpression() }
+
     override val changesetComment = "Specify ferry access for pedestrians"
     override val wikiLink = "Tag:route=ferry"
     override val icon = Res.drawable.quest_ferry_pedestrian
