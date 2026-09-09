@@ -37,12 +37,13 @@ class AddCampShower : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter(
-            """nodes, ways, relations with
-            tourism ~ camp_site|alpine_hut|wilderness_hut|caravan_site
-            or leisure ~ bathing_place|marina
-            or highway = services
-            or amenity = public_bath""")
+        mapData.filter("""
+            nodes, ways, relations with
+              tourism ~ camp_site|alpine_hut|wilderness_hut|caravan_site
+              or leisure ~ bathing_place|marina
+              or highway = services
+              or amenity = public_bath
+        """)
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
