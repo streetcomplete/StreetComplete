@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddToiletsFee : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           amenity = toilets
           and access !~ private|customers
           and !fee

@@ -24,7 +24,7 @@ class AddPlaceName(
 ) : OsmElementQuestType<List<LocalizedName>> {
 
     private val filter by lazy { ("""
-        nodes, ways with
+        nodes, ways, relations with
           (
             shop and shop !~ no|vacant
             or office and office !~ no|vacant

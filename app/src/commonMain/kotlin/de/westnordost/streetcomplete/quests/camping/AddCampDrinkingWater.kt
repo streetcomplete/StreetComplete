@@ -19,7 +19,7 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
     /* We only resurvey drinking_water = yes and drinking_water = no, as it might have more detailed
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             tourism ~ camp_site|caravan_site|wilderness_hut
             or leisure = marina
@@ -36,7 +36,7 @@ class AddCampDrinkingWater : OsmFilterQuestType<Boolean>() {
     override val achievements = listOf(OUTDOORS)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with tourism ~ camp_site|caravan_site")
+        mapData.filter("nodes, ways, relations with tourism ~ camp_site|caravan_site")
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

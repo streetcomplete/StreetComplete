@@ -18,7 +18,7 @@ import org.jetbrains.compose.resources.stringResource
 class AddBabyChangingTable : OsmFilterQuestType<BabyChangingTableAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             amenity = toilets
             or (

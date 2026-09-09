@@ -18,7 +18,7 @@ import org.jetbrains.compose.resources.stringResource
 class AddBoatRental : OsmFilterQuestType<Set<BoatRental>>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           amenity = boat_rental
           and (
             ${BoatRental.entries.joinToString(" and ") { "!${it.osmValue}" }}
