@@ -22,7 +22,7 @@ import org.jetbrains.compose.resources.stringResource
 class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes, ways with
           amenity = recycling and !recycling_type
     """
     override val changesetComment = "Specify type of recycling amenities"
@@ -32,7 +32,7 @@ class AddRecyclingType : OsmFilterQuestType<RecyclingType>() {
     override val achievements = listOf(CITIZEN)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways, relations with amenity ~ recycling|waste_disposal|waste_basket")
+        mapData.filter("nodes, ways with amenity ~ recycling|waste_disposal|waste_basket")
 
     @Composable
     override fun Form(on: (QuestAction<RecyclingType>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

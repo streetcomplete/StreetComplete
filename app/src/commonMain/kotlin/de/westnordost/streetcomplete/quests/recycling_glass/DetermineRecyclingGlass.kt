@@ -22,7 +22,7 @@ import org.jetbrains.compose.resources.stringResource
 class DetermineRecyclingGlass : OsmFilterQuestType<RecyclingGlass>() {
 
     override val elementFilter = """
-        nodes, ways, relations with
+        nodes, ways with
           amenity = recycling
           and recycling_type = container
           and recycling:glass = yes
