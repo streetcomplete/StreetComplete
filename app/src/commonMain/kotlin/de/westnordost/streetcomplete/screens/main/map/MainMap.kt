@@ -17,7 +17,6 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestKey
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import org.jetbrains.compose.resources.DrawableResource
@@ -25,6 +24,7 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.interaction.MapInteractions
 import org.maplibre.compose.location.LocationEvent
+import org.maplibre.compose.map.MapUiOptions
 import org.maplibre.compose.overlay.MapOverlay
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -80,7 +80,7 @@ fun MainMap(
     LaunchedEffect(mapState, state) {
         snapshotFlow {
             mapState.cameraPosition to mapState.isCameraMoving
-        }.distinctUntilChanged().collect { (position, isMoving) ->
+        }.collect { (position, isMoving) ->
             state.onCameraChanged(position, isMoving)
         }
     }
@@ -88,13 +88,13 @@ fun MainMap(
         snapshotFlow { mapState.viewport }.filterNotNull().first()
         state.onMapPresented()
     }
-    LaunchedEffect(locationEvent) {
+    LaunchedEffect(state, locationEvent) {
         locationEvent?.let(state::onLocationEvent)
     }
     LaunchedEffect(mapState, viewModel) {
         snapshotFlow {
             mapState.cameraPosition.zoom to mapState.viewport?.visibleBounds
-        }.distinctUntilChanged().collect { (zoom, displayedArea) ->
+        }.collect { (zoom, displayedArea) ->
             viewModel.onViewportChanged(
                 zoom = zoom,
                 displayedArea = displayedArea?.toStreetCompleteBoundingBox(),
@@ -133,17 +133,6 @@ fun MainMap(
                 rotate { onStart(state::onCameraInputStarted) }
                 tilt { onStart(state::onCameraInputStarted) }
             }
-            bindings {
-                drag { pan { startSlop = 5.dp } }
-                transform {
-                    pan { startSlop = 5.dp }
-                    rotate {
-                        startAngle = 1.5
-                        allowDuringZoom = false
-                    }
-                    tilt { startSlop = 8.dp }
-                }
-            }
             callbacks {
                 click {
                     onUnhandled unhandled@{ event ->
@@ -168,11 +157,27 @@ fun MainMap(
             }
         }
     }
+    val uiOptions = remember {
+        MapUiOptions {
+            bindings {
+                drag { pan { startSlop = 5.dp } }
+                transform {
+                    pan { startSlop = 5.dp }
+                    rotate {
+                        startAngle = 1.5
+                        allowDuringZoom = false
+                    }
+                    tilt { startSlop = 8.dp }
+                }
+            }
+        }
+    }
     StreetCompleteMap(
         state = mapState,
         modifier = modifier,
         cameraPadding = state.cameraPadding,
         interactions = interactions,
+        uiOptions = uiOptions,
         overlay = overlay,
     )
 }

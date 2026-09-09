@@ -30,9 +30,9 @@ parallel map stacks.
 | Debug map | Remove the base branch's settings-only preview. The ordinary main screen already runs the shared map on all targets. |
 | Apple linkage | Remove the base branch's manual linker override. Its quoted `-framework Name` arguments fail the Swift app link; keep the probe's existing linkage. |
 
-The snapshot coordinate remains mutable. Build validation also required adapting
+At that revision the snapshot coordinate was mutable. Build validation required adapting
 to the newly resolved publication's `LocalMapState`, `DefaultMapRuntime`, and
-platform-default runtime options. The resolved version belongs in
+platform-default runtime options. The current release is recorded in
 [the dependency baseline](03-maplibre-compose-upstream.md#dependency-baseline).
 This integration does not replace the outstanding physical-iPhone validation.
 
@@ -70,7 +70,8 @@ exponential `byZoom` here is not documented in its commits or PR discussion.
   Android's crash reporting is unchanged.
 - Removed the deterministic performance scenario, its simulator scripts, and
   validation-only timing, frame callbacks, and publication tracking from the map.
-  The scenario covered earlier stalls, not the remaining real-device jank.
+  The scenario covered earlier stalls; subsequent snapshots resolved the reported
+  real-device jank.
   Historical measurements remain in the docs and the removed code remains in Git
   at `3be8406d6b0126781061aa68b766a4477ab76752`.
 - Kept map code that serves application behavior, including cached pin data,
@@ -87,28 +88,27 @@ Their test counts and completeness claims do not establish current parity.
 Likewise, a successful test on this probe does not verify the corresponding
 implementation on master.
 
-## Cleanup against latest MapLibre Compose main on 2026-09-07
+## MapLibre Compose 0.16.0 release update on 2026-09-09
 
-The probe was audited and compiled against exact MapLibre Compose `main` commit
-`9717fc6f`, initially published locally as `0.15.1-local.9717fc6-SNAPSHOT`.
-The normal snapshot repository now contains that baseline. The committed
-dependency remains `0.15.1-SNAPSHOT` without Maven Local wiring. The later
-physical-iPhone validation used local `9cd93ad`, whose publication is still pending.
+The probe now uses released `0.16.0` from Maven Central. Snapshot repositories and
+publication gates are gone. The release includes the locally validated image and
+threading fixes; final API changes are adopted, and duplicate application-side
+style-transition scaling is removed.
 
-All seven application workarounds recorded against `71c5b258` can now be removed:
-dynamic sources expose typed handles, dynamic icons use the public style-image
-command API without frame pacing, transient layer state is declarative, overlay
-clicks use typed hit padding, and the common interaction API supplies exact
-gesture policy plus a post-layer raw-map callback. The cleanup also adopts the
-latest base-style, viewport-bounds, feature-state-expression, and
-unknown-location-permission APIs.
+The prior seven source, image, layer, gesture, and click API gaps are resolved.
+The usage sweep also removes retained animation handles, feature-state transport
+for the highlight pulse, location-marker property transport, unchecked expression
+casts, and redundant geometry serialization. Foreground sensor collection follows
+the lifecycle, and offline cache clearing preserves cancellation. The detailed
+[usage audit](03-maplibre-compose-upstream.md#idiomatic-usage-sweep) records the
+justification for retained advanced APIs.
 
-No StreetComplete-specific upstream API gap remains in the current audit. The
-source audit's old offline-limit finding was rejected after StreetComplete PR
-#7069 proved the legacy setting ineffective for its direct tile URL. The
-pending publication of the device-tested build, Java 25 desktop runtime, absent
-macOS x64 runtime, and broader physical-iPhone jank validation remain tracked; see
-`03-maplibre-compose-upstream.md` and `04-validation.md`.
+One API wart remains: in-flight stale-style failures are identified by exception message text.
+Eager image registration matches master and is not a workaround. The prior
+iPhone jank was resolved with snapshots; desktop requirements are outside the
+iOS port's remaining gaps.
+See [upstream findings](03-maplibre-compose-upstream.md) and
+[validation evidence](04-validation.md).
 
 ## Local development settings
 

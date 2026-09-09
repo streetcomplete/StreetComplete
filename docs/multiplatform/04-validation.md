@@ -4,6 +4,50 @@ Validation claims in this file distinguish compilation, automated tests, and
 interactive runtime evidence. A compile result is not treated as proof of feature
 parity.
 
+## Idiomatic MapLibre Compose usage sweep on 2026-09-09
+
+The release update is followed by a source-wide usage audit, recorded in
+[the integration notes](03-maplibre-compose-upstream.md#idiomatic-usage-sweep).
+
+- Android APK assembly and desktop/iOS simulator compilation pass.
+- Android host, desktop, and iOS simulator each pass 88 focused map, offline, and
+  autosync tests, with no failures or skips. These include the existing geometry,
+  camera-policy, pin-publication, and icon-ordering coverage plus a new regression
+  proving offline-cache cancellation propagates. The highlight's existing range
+  test now exercises the same style calculation used by the declarative layers.
+- The obsolete equator-radius-adjustment test was removed with that workaround.
+  Stale-style classification coverage moved from the pin suite to `StyleLifecycleTest`.
+- Command: `mise exec -- ./gradlew :androidApp:assembleDebug :app:testAndroidHostTest --tests '*screens.main.map.*' --tests '*MapLibreMapTilesDownloaderTest' --tests '*AutoSyncerTest' :app:desktopTest --tests '*screens.main.map.*' --tests '*MapLibreMapTilesDownloaderTest' --tests '*AutoSyncerTest' :app:iosSimulatorArm64Test --tests '*screens.main.map.*' --tests '*MapLibreMapTilesDownloaderTest' --tests '*AutoSyncerTest' --console=plain`.
+- `git diff --check` passes. No new interactive device run was performed. This is
+  source/build/test evidence for the cleanup and does not reopen the resolved
+  snapshot-era iPhone performance finding.
+
+## Released MapLibre Compose 0.16.0 on 2026-09-09
+
+The dependency resolves from Maven Central, without Maven Local or snapshot
+repositories. Source audit uses release tag `v0.16.0` at `c95a0afbf`.
+
+- Desktop and iOS simulator source compilation passed against the release;
+  `:androidApp:assembleDebug` produced the debug APK.
+- Focused map and offline-download suites passed on Android host, desktop, and
+  iOS simulator: 87 tests on each target, no failures or skips. Command:
+  `mise exec -- ./gradlew :androidApp:assembleDebug :app:testAndroidHostTest --tests '*screens.main.map.*' --tests '*MapLibreMapTilesDownloaderTest' :app:desktopTest --tests '*screens.main.map.*' --tests '*MapLibreMapTilesDownloaderTest' :app:iosSimulatorArm64Test --tests '*screens.main.map.*' --tests '*MapLibreMapTilesDownloaderTest' --console=plain`.
+- Desktop runtime dependency resolution confirms 0.16.0 core, location, macOS
+  location runtime, and Metal runtime. JogAmp repositories remain necessary for
+  the separate desktop JCEF dependency; they are not MapLibre snapshot leftovers.
+- The full Android host suite ran 2,552 tests: one failure and one skip. The failure
+  is `NotesApiClientImplTest.get notes`, which received a socket error from its
+  live network request. It is not a map test.
+- The obsolete application-side style-transition scaling tests were removed with
+  that helper. MapLibre now owns the multiplication; StreetComplete still sends
+  the 300 ms duration and reapplies it after a system-scale change.
+
+No interactive application or physical-device performance run was performed for
+this release update. Earlier device results below retain their original dependency
+baseline and do not validate 0.16.0 runtime parity. The user confirmed on
+2026-09-09 that the prior iPhone jank was already resolved with those snapshots;
+the absence of a new device run does not reopen that finding.
+
 ## Merged style API and base-branch validation on 2026-09-08
 
 The device build uses exact MapLibre Compose `e3d246b9` (merged PR #1346),

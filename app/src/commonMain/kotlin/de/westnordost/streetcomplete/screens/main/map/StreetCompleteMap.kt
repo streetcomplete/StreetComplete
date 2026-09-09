@@ -11,9 +11,9 @@ import org.maplibre.compose.map.CameraConstraints
 import org.maplibre.compose.map.DefaultMapRuntime
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MapState
+import org.maplibre.compose.map.MapUiOptions
 import org.maplibre.compose.map.MaplibreMap
 import org.maplibre.compose.map.RenderOptions
-import org.maplibre.compose.map.TileLodOptions
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.MapOverlay
 import org.maplibre.compose.overlay.include
@@ -32,7 +32,7 @@ fun StreetCompleteMap(
     cameraConstraints: CameraConstraints = CameraConstraints(maxZoom = 22.0),
     renderOptions: RenderOptions = RenderOptions.Standard,
     interactions: MapInteractions = MapInteractions.Standard,
-    tileLodOptions: TileLodOptions = TileLodOptions.Standard,
+    uiOptions: MapUiOptions = MapUiOptions.Standard,
     overlay: MapOverlay = MapOverlay {},
 ) {
     MaplibreMap(
@@ -42,7 +42,7 @@ fun StreetCompleteMap(
         cameraConstraints = cameraConstraints,
         renderOptions = renderOptions,
         interactions = interactions,
-        tileLodOptions = tileLodOptions,
+        uiOptions = uiOptions,
     ) {
         include(overlay)
     }
@@ -56,7 +56,7 @@ fun rememberStreetCompleteMapState(
     content: @Composable @MaplibreComposable () -> Unit = {},
 ): MapState = rememberMapState(
     runtime = runtime,
-    initialBaseStyle = BaseStyle.Json(streetCompleteBaseStyle()),
+    baseStyle = BaseStyle.Json(streetCompleteBaseStyle()),
     initialCameraPosition = initialCameraPosition,
     content = content,
 )

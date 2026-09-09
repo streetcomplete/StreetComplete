@@ -18,6 +18,7 @@ import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.json.JsonObject
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.image
@@ -27,8 +28,9 @@ import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.VectorSource
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
+import org.maplibre.spatialk.geojson.FeatureCollection
+import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.LineString
-import org.maplibre.spatialk.geojson.toJson
 
 /**
  * Displays completed track segments and the short, actively changing current segment.
@@ -66,17 +68,13 @@ fun TracksLayers(
     }
     val trackData by produceState<GeoJsonData>(EMPTY_TRACK_DATA, trackWithoutLast) {
         value = withContext(Dispatchers.Default) {
-            GeoJsonData.JsonString(
-                trackWithoutLast.toLineGeometry()?.toJson() ?: EMPTY_TRACK_JSON
-            )
+            trackWithoutLast.toLineGeometry()?.let { GeoJsonData.Features(it) } ?: EMPTY_TRACK_DATA
         }
     }
     val oldTrackData by produceState<GeoJsonData>(EMPTY_TRACK_DATA, oldTrackpointsLists) {
         value = withContext(Dispatchers.Default) {
             val geometry = oldTrackpointsLists.toMultiLineGeometry()
-            GeoJsonData.JsonString(
-                if (geometry.coordinates.isEmpty()) EMPTY_TRACK_JSON else geometry.toJson()
-            )
+            if (geometry.coordinates.isEmpty()) EMPTY_TRACK_DATA else GeoJsonData.Features(geometry)
         }
     }
 
@@ -122,8 +120,8 @@ private fun TracksStyleLayers(
     )
 }
 
-private const val EMPTY_TRACK_JSON = """{"type":"FeatureCollection","features":[]}"""
-private val EMPTY_TRACK_DATA = GeoJsonData.JsonString(EMPTY_TRACK_JSON)
+private val EMPTY_TRACK_DATA =
+    GeoJsonData.Features(FeatureCollection<Geometry, JsonObject>(emptyList()))
 @Composable
 @MaplibreComposable
 private fun TracksLayer(

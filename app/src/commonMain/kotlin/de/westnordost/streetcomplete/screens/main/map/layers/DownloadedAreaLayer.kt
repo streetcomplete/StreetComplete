@@ -20,7 +20,6 @@ import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Polygon
-import org.maplibre.spatialk.geojson.toJson
 
 /** Displays hatching everywhere outside the downloaded tiles. */
 @Composable
@@ -28,7 +27,7 @@ import org.maplibre.spatialk.geojson.toJson
 fun DownloadedAreaLayer(tiles: Collection<TilePos>) {
     val data by produceState<GeoJsonData>(EMPTY_DOWNLOADED_AREA_DATA, tiles) {
         value = withContext(Dispatchers.Default) {
-            GeoJsonData.JsonString(tiles.toHolesInWorldPolygon().toJson())
+            GeoJsonData.Features(tiles.toHolesInWorldPolygon())
         }
     }
     val source = rememberGeoJsonSource(data)
@@ -41,8 +40,8 @@ fun DownloadedAreaLayer(tiles: Collection<TilePos>) {
     )
 }
 
-private val EMPTY_DOWNLOADED_AREA_DATA = GeoJsonData.JsonString(
-    emptyList<TilePos>().toHolesInWorldPolygon().toJson()
+private val EMPTY_DOWNLOADED_AREA_DATA = GeoJsonData.Features(
+    emptyList<TilePos>().toHolesInWorldPolygon()
 )
 
 /** convert the given tile positions into a polygon that spans the whole world but has holes at

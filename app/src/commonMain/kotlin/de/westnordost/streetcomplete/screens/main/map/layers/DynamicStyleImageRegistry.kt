@@ -14,6 +14,7 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.LayoutDirection
+import de.westnordost.streetcomplete.screens.main.map.isStyleHandleRace
 import de.westnordost.streetcomplete.screens.main.map.toImageBitmap
 import de.westnordost.streetcomplete.screens.main.map.toSdf
 import de.westnordost.streetcomplete.ui.ktx.id

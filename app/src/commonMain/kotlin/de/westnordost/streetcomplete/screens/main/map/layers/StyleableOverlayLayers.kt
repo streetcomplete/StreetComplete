@@ -31,9 +31,9 @@ import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.dsl.not
-import org.maplibre.compose.expressions.dsl.offset
 import org.maplibre.compose.expressions.dsl.step
 import org.maplibre.compose.expressions.dsl.switch
+import org.maplibre.compose.expressions.dsl.textOffset
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.expressions.value.LineJoin
@@ -53,7 +53,6 @@ import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
-import org.maplibre.spatialk.geojson.toJson
 
 private const val MIN_ZOOM = 14f
 
@@ -71,11 +70,8 @@ internal fun rememberStyleableOverlaySource(
                 withContext(Dispatchers.Default) {
                     PreparedOverlay(
                         data =
-                            GeoJsonData.JsonString(
-                                FeatureCollection(
-                                        styledElements.flatMap(StyledElement::toGeoJsonFeatures)
-                                    )
-                                    .toJson()
+                            GeoJsonData.Features(
+                                FeatureCollection(styledElements.flatMap(StyledElement::toGeoJsonFeatures))
                             ),
                         resources = styledElements.mapNotNull { it.style.getIcon() }.distinct(),
                     )
@@ -135,8 +131,8 @@ internal fun StyleableOverlayLabelLayer(
         textAnchor = const(SymbolAnchor.Top),
         textOffset =
             switch(
-                condition(feature.has("icon"), offset(0.em, 1.em)),
-                fallback = offset(0.em, 0.em),
+                condition(feature.has("icon"), textOffset(0.em, 1.em)),
+                fallback = textOffset(0.em, 0.em),
             ),
         textSize = const(16.sp),
         textOptional = const(true),

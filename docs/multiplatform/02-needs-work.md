@@ -9,7 +9,8 @@ The [iPhone walk report](https://github.com/streetcomplete/StreetComplete/pull/7
 confirms usable mapping, completed quests, notes with photos, and location tracking
 on this probe. Follow-up status for its other observations:
 
-- [ ] Intermittent jank and freezes, including navigation to Settings.
+- [x] Intermittent jank and freezes, including navigation to Settings. Resolved
+  with the preceding MapLibre Compose snapshots; user confirmed on 2026-09-09.
 - [ ] Broken map-to-menu transition backgrounds.
 - [x] Correct the inverted location-indicator bearing. The shared screen now uses
   the clockwise angle from north to the heading, then subtracts camera bearing.
@@ -26,8 +27,7 @@ on this probe. Follow-up status for its other observations:
   This removal does not diagnose whether the reported repeated dialog represented
   repeated crashes or repeated presentation of an old report.
 
-The old synthetic performance scenario was removed on 2026-09-05. It does not
-cover this remaining jank. These probe observations do not verify fixes on master.
+The old synthetic performance scenario was removed on 2026-09-05. The jank was resolved by subsequent snapshots. These probe observations do not verify fixes on master.
 
 ## Target and entry-point parity
 
@@ -95,10 +95,9 @@ cover this remaining jank. These probe observations do not verify fixes on maste
 - [ ] Establish runtime parity for map behavior. Shared implementations and focused
   tests exist, but the device findings above and the historical source audit
   prevent a completeness claim.
-- [x] Follow the post-v0.15 MapLibre Compose snapshot series on this validation
-  branch. Core, location, target, resource, and runtime artifacts resolve through
-  the standard Maven snapshot repository; the validated publication is recorded
-  in `03-maplibre-compose-upstream.md`.
+- [x] Use released MapLibre Compose 0.16.0 from Maven Central, including core,
+  location, resource, and target runtime artifacts. See
+  `03-maplibre-compose-upstream.md` for the remaining lifecycle API wart.
 
 ## Platform services
 

@@ -72,6 +72,8 @@ class MapLibreMapTilesDownloader(
             val packs = manager.packs.toList()
             for (pack in packs) { manager.delete(pack) }
             manager.clearAmbientCache()
+        } catch (error: CancellationException) {
+            throw error
         } catch (error: Exception) {
             Log.w(TAG, error.message.orEmpty(), error)
         }

@@ -113,11 +113,10 @@ Implementation notes are not a claim of complete product parity. See
   and the native map runtime. Foreground upload/download and delayed changeset
   failures are contained instead of escaping a root native coroutine.
 
-## MapLibre Compose snapshot foundation
+## MapLibre Compose release foundation
 
-- All targets compile against the post-v0.15 `0.15.1-SNAPSHOT` series. This
-  validation branch follows new publications through Sonatype's Maven snapshot
-  repository; the currently validated publication is recorded in
+- The dependency baseline is released MapLibre Compose `0.16.0`. Artifacts
+  resolve through Maven Central; validation evidence is recorded in
   `03-maplibre-compose-upstream.md`.
 - Android packages the OpenGL runtime, iOS links the transitive Metal runtime,
   and the current macOS ARM64 host selects the desktop Metal runtime. Simulated

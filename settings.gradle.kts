@@ -27,9 +27,6 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
-        maven("https://central.sonatype.com/repository/maven-snapshots/") {
-            content { includeGroup("org.maplibre.compose") }
-        }
         maven("https://jogamp.org/deployment/maven") {
             content { includeGroupAndSubgroups("org.jogamp") }
         }

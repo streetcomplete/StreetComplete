@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_attribution_osm
 import de.westnordost.streetcomplete.resources.map_oneway_arrow
 import de.westnordost.streetcomplete.ui.util.ColorFilterPainter
+import kotlin.math.max
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.maplibre.compose.expressions.ast.Expression
@@ -20,9 +21,9 @@ import org.maplibre.compose.expressions.dsl.Feature
 import org.maplibre.compose.expressions.dsl.all
 import org.maplibre.compose.expressions.dsl.asNumber
 import org.maplibre.compose.expressions.dsl.const
+import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
-import org.maplibre.compose.expressions.dsl.nil
 import org.maplibre.compose.expressions.dsl.not
 import org.maplibre.compose.expressions.value.BooleanValue
 import org.maplibre.compose.expressions.value.IconRotationAlignment
@@ -34,12 +35,11 @@ import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.layers.SymbolLayer
-import org.maplibre.compose.sources.VectorSource
 import org.maplibre.compose.sources.TileSetOptions
+import org.maplibre.compose.sources.VectorSource
 import org.maplibre.compose.sources.rememberVectorTileSource
 import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
-import kotlin.math.max
 
 /**
  * StreetComplete background map style using the tile schema from JawgMaps as defined in
@@ -549,7 +549,7 @@ private fun LabelLayers(
         sourceLayer = "housenum_label",
         minZoom = 17f,
         sortKey = feature["scalerank"].asNumber(),
-        textField = feature["house_num"].cast(),
+        textField = feature["house_num"].convertToString(),
         textColor = const(colors.text),
         textHaloColor = const(colors.textOutline),
         textHaloWidth = haloWidth,
@@ -645,7 +645,7 @@ private fun RoadCasingLayer(road: RoadType, source: VectorSource, structure: Str
         ),
         opacity = fadeInAtZoom(15f),
         color = const(road.colorOutline),
-        dasharray = if (structure == Structure.Tunnel) const(listOf(4, 4)) else nil(),
+        dasharray = if (structure == Structure.Tunnel) const(listOf(4, 4)) else null,
         width = byZoom(16 to 1.dp, 24 to 128.dp),
         gapWidth = byZoom(*road.widthStops.toTypedArray()),
         // cap must not be round for bridges so that the casing is not drawn on top of normal roads

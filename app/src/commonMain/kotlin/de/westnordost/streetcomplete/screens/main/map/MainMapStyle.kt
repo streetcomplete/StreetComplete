@@ -27,13 +27,11 @@ import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLay
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.isStyleHandleRace
 import de.westnordost.streetcomplete.screens.main.map.layers.rememberStyleableOverlaySource
 import de.westnordost.streetcomplete.util.ktx.toLocation
 import kotlin.coroutines.coroutineContext
 import kotlin.time.Duration.Companion.milliseconds
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.distinctUntilChanged
 import org.maplibre.compose.map.MapState
 import org.maplibre.compose.map.StyleLoadState
 import org.maplibre.compose.style.TransitionOptions
@@ -123,9 +121,8 @@ internal fun MainMapStyle(
                 content.markers,
                 configuration.dynamicStyleImages,
             )
-            // Keep the source and layers installed. The breathing animation updates one feature-
-            // state value per frame without recomposing or replacing style resources.
-            FocusedGeometryLayers(mapState, content.highlightedGeometry)
+            // Keep the source and layers installed while Compose animates their paint properties.
+            FocusedGeometryLayers(content.highlightedGeometry)
             CurrentLocationLayers(
                 tracks.displayedMeasurement?.toLocation(),
                 configuration.locationRotation,
@@ -170,15 +167,15 @@ internal fun MainMapStyle(
 private fun BindMainMapStyleTransition(mapState: MapState) {
     LaunchedEffect(mapState) {
         val motionDurationScale = coroutineContext[MotionDurationScale]
+        // Reapply when the setting changes: MapLibre scales each write, not the stored duration.
         snapshotFlow {
             mapState.style.loadState to (motionDurationScale?.scaleFactor ?: 1f)
         }
-            .distinctUntilChanged()
-            .collectLatest { (loadState, durationScale) ->
+            .collectLatest { (loadState, _) ->
                 if (loadState != StyleLoadState.Ready) return@collectLatest
-                val transition = mainMapStyleTransition(durationScale)
                 try {
-                    mapState.style.transition.set(transition)
+                    // MapLibre applies the system animator duration scale.
+                    mapState.style.transition.set(TransitionOptions(duration = 300.milliseconds))
                     mapState.style.transition.setPlacementTransitions(true)
                 } catch (error: IllegalStateException) {
                     if (!error.isStyleHandleRace()) throw error
@@ -186,10 +183,5 @@ private fun BindMainMapStyleTransition(mapState: MapState) {
             }
     }
 }
-
-internal fun mainMapStyleTransition(durationScale: Float): TransitionOptions =
-    TransitionOptions(duration = (MAIN_MAP_STYLE_TRANSITION_MILLIS * durationScale).milliseconds)
-
-private const val MAIN_MAP_STYLE_TRANSITION_MILLIS = 300.0
 
 private const val HOUSE_NUMBER_LABEL_LAYER_ID = "labels-housenumbers"

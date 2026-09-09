@@ -11,21 +11,17 @@ import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.location_nyan
 import de.westnordost.streetcomplete.resources.location_shadow
 import de.westnordost.streetcomplete.resources.location_view_direction
+import de.westnordost.streetcomplete.screens.main.map.animateMapRotationAsState
 import de.westnordost.streetcomplete.screens.main.map.animateNullableFloatAsState
 import de.westnordost.streetcomplete.screens.main.map.animateNullableLatLonAsState
-import de.westnordost.streetcomplete.screens.main.map.animateMapRotationAsState
 import de.westnordost.streetcomplete.screens.main.map.inMeters
-import de.westnordost.streetcomplete.screens.main.map.metersSizeFactor
 import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.util.ktx.isApril1st
+import kotlin.time.Duration
 import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.painterResource
-import org.maplibre.compose.expressions.dsl.asNumber
 import org.maplibre.compose.expressions.dsl.const
-import org.maplibre.compose.expressions.dsl.convertToNumber
-import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.value.CirclePitchAlignment
 import org.maplibre.compose.expressions.value.IconPitchAlignment
@@ -33,8 +29,8 @@ import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
+import org.maplibre.compose.style.TransitionOptions
 import org.maplibre.compose.util.MaplibreComposable
-import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.Point
@@ -56,27 +52,17 @@ fun CurrentLocationLayers(
     val aprilFirst = remember { isApril1st() }
 
     val data = animatedPosition?.let { position ->
-        val properties = buildMap {
-            // Keep the layer expression stable while the marker moves. Folding the Mercator
-            // latitude correction into the data preserves the same visual radius without a full
-            // declarative layer revision on every animation frame.
-            val radiusAtEquator = locationRadiusAtEquator(
-                animatedAccuracy ?: 0f,
-                position.latitude,
-            )
-            put(LOCATION_RADIUS, JsonPrimitive(radiusAtEquator))
-            animatedRotation?.let { put(LOCATION_ROTATION, JsonPrimitive(it)) }
-        }
-        GeoJsonData.Features(
-            Feature(
-                geometry = Point(position.toPosition()),
-                properties = JsonObject(properties),
-            )
-        )
+        GeoJsonData.Features(Point(position.toPosition()))
     } ?: EMPTY_LOCATION_DATA
     val source = rememberGeoJsonSource(data)
 
-    CurrentLocationStyleLayers(source, aprilFirst)
+    CurrentLocationStyleLayers(
+        source,
+        aprilFirst,
+        accuracy = animatedAccuracy ?: 0f,
+        latitude = animatedPosition?.latitude ?: 0.0,
+        rotation = animatedRotation,
+    )
 }
 
 @Composable
@@ -84,16 +70,17 @@ fun CurrentLocationLayers(
 private fun CurrentLocationStyleLayers(
     source: org.maplibre.compose.sources.VectorSource,
     aprilFirst: Boolean,
+    accuracy: Float,
+    latitude: Double,
+    rotation: Float?,
 ) {
     CircleLayer(
         id = "accuracy",
         source = source,
         opacity = const(0.15f),
         color = const(Color.Location),
-        radius = inMeters(
-            feature[LOCATION_RADIUS].asNumber(),
-            latitude = 0.0,
-        ),
+        radius = inMeters(accuracy, latitude),
+        radiusTransition = TransitionOptions(duration = Duration.ZERO),
         strokeOpacity = const(0.5f),
         strokeColor = const(Color.Location),
         strokeWidth = const(1.dp),
@@ -105,14 +92,14 @@ private fun CurrentLocationStyleLayers(
         SymbolLayer(
             id = "direction",
             source = source,
-            filter = feature.has(LOCATION_ROTATION),
+            visible = rotation != null,
             iconImage = image(
                 painterResource(Res.drawable.location_view_direction),
                 size = LocationDirectionSize,
             ),
             iconAllowOverlap = const(true),
             iconIgnorePlacement = const(true),
-            iconRotate = feature[LOCATION_ROTATION].convertToNumber(),
+            iconRotate = const(rotation ?: 0f),
             iconPitchAlignment = const(IconPitchAlignment.Map),
         )
         SymbolLayer(
@@ -158,8 +145,3 @@ private fun CurrentLocationStyleLayers(
 private val EMPTY_LOCATION_DATA = GeoJsonData.Features(
     FeatureCollection<Geometry, JsonObject>(emptyList())
 )
-private const val LOCATION_RADIUS = "radius"
-private const val LOCATION_ROTATION = "rotation"
-
-internal fun locationRadiusAtEquator(radiusMeters: Float, latitude: Double): Float =
-    radiusMeters * metersSizeFactor(0.0) / metersSizeFactor(latitude)

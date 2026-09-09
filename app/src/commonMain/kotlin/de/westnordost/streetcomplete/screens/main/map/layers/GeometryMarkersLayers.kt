@@ -29,7 +29,7 @@ import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.dsl.interpolate
 import org.maplibre.compose.expressions.dsl.linear
 import org.maplibre.compose.expressions.dsl.not
-import org.maplibre.compose.expressions.dsl.offset
+import org.maplibre.compose.expressions.dsl.textOffset
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.expressions.value.SymbolAnchor
@@ -114,7 +114,7 @@ internal fun GeometryMarkersLayers(
         textSize = const(16.sp),
         textFont = const(listOf("Roboto Bold")),
         textAnchor = const(SymbolAnchor.Top),
-        textOffset = offset(0.em, 1.em),
+        textOffset = textOffset(0.em, 1.em),
         textOptional = const(true),
     )
 }

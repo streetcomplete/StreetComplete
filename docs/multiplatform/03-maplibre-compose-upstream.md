@@ -4,78 +4,94 @@ This file records StreetComplete integration findings that should be fixed or
 improved in MapLibre Compose. Entries must include a reproducer or precise missing
 API before they are considered actionable.
 
-The upstream audit was refreshed on 2026-09-07 against exact MapLibre Compose
-`main` commit `9717fc6f`. The application cleanup was compiled against a local
-publication of that commit, now available from the normal snapshot repository.
-The subsequent iPhone image fix was validated against local `9cd93ad`; its normal
-snapshot publication is still pending. Historical timing measurements
-remain evidence for the old workarounds, not coverage of current real-device
-jank. The last pre-cleanup performance harness is available at
-`3be8406d6b0126781061aa68b766a4477ab76752`.
+The current audit targets released [MapLibre Compose v0.16.0](https://github.com/maplibre/maplibre-compose/releases/tag/v0.16.0),
+commit `c95a0afbf`, on 2026-09-09. Historical timing measurements below are not
+coverage of current real-device performance.
 
 ## Dependency baseline
 
-- Dependency version: `0.15.1-SNAPSHOT`.
-- Last repository publication validated on 2026-09-05:
-  `0.15.1-20260904.102255-10`.
-- The resolved publication was built from MapLibre Compose commit `71c5b258` by
-  [the September 4 daily run](https://github.com/maplibre/maplibre-compose/actions/runs/33862529720).
-- The newest repository publication observed on 2026-09-08 is
-  `0.15.1-20260907.101928-13`, built from `9717fc6f` by
-  [the September 7 daily run](https://github.com/maplibre/maplibre-compose/actions/runs/34110763852).
-  It contains the API cleanup baseline, but predates the missing-image fix
-  `9cd93ad` used for the successful physical-iPhone validation.
-- Latest MapLibre Compose `main` audited on 2026-09-07: `9717fc6f`.
-- Latest physical-iPhone validation coordinate:
-  `0.15.1-local.9cd93ad-SNAPSHOT`. This is a local Maven publication only and
-  is not a dependency that the branch will commit.
-- The snapshot includes the shared map artifact and platform runtime artifacts,
-  including Android OpenGL, macOS ARM64 Metal, and Linux/Windows Vulkan for
-  x64 and ARM64.
-- The desktop artifacts require Java 25; Android and iOS keep their existing
-  platform bytecode and native deployment targets.
-- This branch intentionally follows the mutable snapshot version so it can test
-  new MapLibre Compose publications without maintaining a timestamped artifact
-  manifest. Update the resolved publication above after validating a new build.
+- Core, location, resource, and platform runtime artifacts use `0.16.0` from Maven Central.
+- Snapshot repositories and Maven Local wiring are absent.
+- The release includes the image restoration fixes and queued style writes that
+  previously required local publications (`9cd93ad` and `e3d246b9`).
+- Desktop still requires Java 25 and has no macOS x64 runtime artifact.
+- Rendering and offline downloads continue to share the Koin-owned runtime.
 
-The September 7 cleanup also adopts `initialBaseStyle`, `Viewport.visibleBounds`,
-the non-generic feature-state expression, and `LocationPermission.Unknown` from
-the latest API. The ordinary map and offline downloader continue to share the
-Koin-owned runtime.
+## Release cleanup
 
-## Remaining findings on latest main
+- Move gesture bindings into `MapUiOptions`, retaining the existing StreetComplete
+  thresholds, momentum, and follow-mode callbacks in their respective builders.
+- Use declarative `baseStyle` and remove the unused standalone tile-LOD parameter
+  from the application map wrapper. The release configures LOD through `RenderOptions`.
+- Use `textOffset` for em-based label offsets, preserve nullable image expressions,
+  and omit a solid road casing's dash array with Kotlin `null`.
+- Remove application-side transition scaling and its obsolete tests. MapLibre
+  applies Android's animator duration scale to the supplied 300 ms duration;
+  multiplying it in StreetComplete would apply the scale twice. The effect still
+  reapplies the transition when the system setting changes.
 
-### Non-blocking imperative style operations
+## Idiomatic usage sweep
 
-MapLibre Compose [PR #1346](https://github.com/maplibre/maplibre-compose/pull/1346),
-merged as `e3d246b9`, queues native feature-state and transition writes on the map
-thread. StreetComplete calls these setters directly from its effects, without
-an extra background dispatch for every highlight-animation frame or transition
-update. Cluster queries already run in a coroutine and need no call-site change.
-Image installation still waits for completion and retains its background dispatch
-and image-before-source ordering. These threading assumptions require a snapshot
-containing `e3d246b9`; the repository publication observed on 2026-09-08 predates it.
+The September 9 sweep covers every production file importing MapLibre Compose,
+plus the map's data builders, animation helpers, and tests.
 
-No StreetComplete-specific MapLibre Compose API gap from the previous audits
-remains at `9717fc6f`. Three integration gates remain:
+| Surface | Result and rationale |
+| --- | --- |
+| Map runtime, presentation, and state ownership | Keep the shared runtime for rendering/offline storage, `rememberMapState` ownership, and the style-input bridge. The map's independent style composition observes those inputs; it must not depend on a captured initial screen value. Desktop shutdown closes the runtime after UI disposal. Mobile runtimes live for the process. |
+| Camera and viewport | Keep the application controller's follow/navigation policy, latest pending move, focus restoration, zoom margins, and antimeridian-aware fitting. These reproduce StreetComplete behavior rather than substitute for missing map APIs. Queries use current `MapState`/viewport values. |
+| Input and clicks | Keep explicit gesture policy, typed layer hit padding, and `onUnhandled`. Cluster queries acquire a current source handle for each click; the remembered callback now keys on its source. |
+| Focused geometry | Replace the retained-handle frame loop and feature-state expression with a Compose infinite animation and declarative paint properties. Disable native transitions for those properties so animation frames are not interpolated twice. No feature ID is needed. |
+| Current location marker | Animate accuracy and rotation directly as layer properties. Remove the GeoJSON property transport and equator-radius adjustment; latitude goes directly into the existing meter conversion. Keep explicit icon sizes and April 1 styling. |
+| Other sources and layers | Keep `rememberGeoJsonSource`, ordinary declarative visibility/properties, stable layer identity, and the overlay insertion points. Tracks, downloaded areas, and overlays pass their typed geometry directly instead of serializing an already-built tree. Heavy domain conversion remains off the UI dispatcher. |
+| Pin publication | Keep `PinSnapshot` reuse and direct JSON writing: this hot path avoids building a second feature-object tree, unlike the removed tree-to-string conversions. Existing tests cover reserved keys, duplicate properties, and escaping. |
+| Images | Keep eager registration, SDF conversion, background rasterization, installed-generation tracking, and image-before-source publication. This is master's icon policy, not a workaround. Fixed resource images use declarative `image(painterResource(...))`. |
+| Expressions | Remove unchecked casts for localized names and house numbers. Use string conversion with defined missing-value behavior. Keep typed filters, zoom interpolation, and StreetComplete's meter/latitude conversion. |
+| Location providers | Foreground heading and location collection now stop below STARTED. Keep direct location events because survey checking must consume every fix, rather than observe conflated `LocationState`. AutoSyncer retains its separately scoped, lower-frequency location request. Tutorial permission requests remain explicit. |
+| Offline data | Keep the runtime-owned manager, pixel ratio, expiry metadata, and snapshot-state progress observation. Cache clearing now propagates cancellation instead of logging and swallowing it. |
+| Scale bar and overlays | Keep the app's Material theme adapter over the upstream scale bar and its system measurement defaults. No platform map escape hatch is used. |
 
-### Publication and desktop artifact gates
+The sweep also removes redundant `distinctUntilChanged` after `snapshotFlow` and
+keys location forwarding on the owning map state. Existing application behavior
+is retained rather than replaced with generic defaults.
 
-- A normal `0.15.1-SNAPSHOT` publication containing `9717fc6f` is available.
-  Publication of `9cd93ad`, used in the latest device validation, remains pending.
-  The branch keeps its ordinary mutable snapshot coordinate without `mavenLocal()`.
-- Desktop runtime artifacts still require Java 25.
-- There is still no macOS x64 runtime artifact. The current ARM64 development
-  host works, but the probe cannot claim macOS x64 support.
+## Remaining API wart
 
-The physical-iPhone jank reported on 2026-09-04 also remains a validation finding.
-Removing the measured workaround paths does not prove that the device issue is
-gone; it needs a new device run after the upstream snapshot is available.
+### Stale-style error classification
 
-## Resolved on latest main, awaiting snapshot validation
+`isStyleHandleRace()` still compares three `IllegalStateException` message strings
+in cluster queries, image installation, and transition setup. The classifier
+lives in `StyleLifecycle.kt`, separately from pin rendering. The release still throws these exact strings from `MapStyleState`,
+`MapState.requireStyleBinding`, and `StyleBinding.requireCurrent`.
 
-The seven findings that were pending at `71c5b258` are resolved in locally
-validated `9717fc6f`:
+No source handle is retained across animation frames. An asynchronous cluster
+query or image command can still be overtaken by style replacement before it completes.
+StreetComplete must distinguish this expected lifecycle race from a programming
+error without swallowing unrelated exceptions. An upstream typed stale/not-ready
+exception or a typed operation result would remove this message matching.
+`StyleHandleException` exists but does not classify these lifecycle checks.
+
+This is an API ergonomics finding from source inspection, not a newly reproduced
+0.16.0 failure. Invalidating old handles is correct; classifying that outcome by
+exception message text is the awkward part.
+
+## Retained application behavior and resolved findings
+
+Eager image registration matches master. `DynamicStyleImageRegistry` and
+`rememberImageBackedGeoJsonSource` preserve that policy, including image-before-source
+ordering and replay on style reload; they are not migration workarounds.
+
+The physical-iPhone jank was resolved with the preceding snapshots, as confirmed
+by the user on 2026-09-09. The release update does not reopen that finding merely
+because no new physical-device run was performed.
+
+Desktop Java 25 is the supported baseline for a new target, not an iOS-port gap
+or a workaround to remove. Desktop architecture availability is outside this
+migration's remaining-wart list.
+
+## Previously resolved integration findings
+
+The following records explain why the older source, gesture, click, and layer
+workarounds were removed. All referenced fixes are included in 0.16.0.
 
 ### Typed handles for remembered sources
 
@@ -174,9 +190,8 @@ it applied the replacement.
 MapLibre Compose commit `3f8fe157` keeps the previous style presentable while a
 replacement style or style revision loads. The commit adds a native composition
 test that switches the base style and verifies that the load placeholder does
-not cover the map. The resolved snapshot contains the commit. StreetComplete's
-stable source-handle updates remain useful for performance, but they are no
-longer required to prevent this blank-map failure.
+not cover the map. The release contains the commit. StreetComplete now uses
+declarative GeoJSON updates without the old source-handle workaround.
 
 ### The public image boundary rejects zero-size painters
 
@@ -232,12 +247,3 @@ MapLibre Compose commit `4542c118` added typed `DpPadding` values that represent
 negative sides in style-spec top/right/bottom/left order. The resolved snapshot
 contains the commit. The shared pin layer can therefore declare the exact legacy
 values without the old workaround; live target validation is still needed.
-
-## Integration constraints
-
-- The current desktop runtime artifacts target Java 25. StreetComplete's future
-  desktop distribution must package a Java 25 runtime, and this branch compiles
-  its desktop target to JVM 25 bytecode accordingly.
-- There is no published macOS x64 runtime. This does not block the current ARM64
-  development host, but StreetComplete cannot claim macOS x64 support without an
-  upstream runtime artifact.

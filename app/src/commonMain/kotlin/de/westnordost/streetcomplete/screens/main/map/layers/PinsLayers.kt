@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.em
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.pin_circle
+import de.westnordost.streetcomplete.screens.main.map.isStyleHandleRace
 import de.westnordost.streetcomplete.screens.main.map.pinPainter
 import de.westnordost.streetcomplete.ui.ktx.id
 import kotlinx.coroutines.launch
@@ -41,6 +42,7 @@ import org.maplibre.compose.expressions.dsl.lte
 import org.maplibre.compose.expressions.dsl.offset
 import org.maplibre.compose.expressions.dsl.plus
 import org.maplibre.compose.expressions.dsl.sp
+import org.maplibre.compose.expressions.dsl.textOffset
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.ImageValue
 import org.maplibre.compose.expressions.value.TranslateAnchor
@@ -92,7 +94,7 @@ internal fun PinsLayers(
     val currentOnClickPin = rememberUpdatedState(onClickPin)
     val currentOnClickCluster = rememberUpdatedState(onClickCluster)
     val clusterClickHandler =
-        remember(mapState, coroutineScope) {
+        remember(mapState, source, coroutineScope) {
             clusterClickHandler@{ features: List<Feature<Geometry, JsonObject?>> ->
                 val cluster = features.firstOrNull() ?: return@clusterClickHandler ClickResult.Pass
                 coroutineScope.launch {
@@ -135,7 +137,7 @@ internal fun PinsLayers(
         iconIgnorePlacement = const(true),
         textField = feature["point_count"].convertToString(),
         textFont = const(listOf("Roboto Regular")),
-        textOffset = offset(0.em, 0.1.em),
+        textOffset = textOffset(0.em, 0.1.em),
         textSize = (const(15f) + log2(feature["point_count"].convertToNumber()) / const(1.5f)).sp,
         textAllowOverlap = const(true),
         textIgnorePlacement = const(true),
@@ -201,7 +203,7 @@ private constructor(
     }
 }
 
-internal fun pinIconExpression(): Expression<ImageValue> =
+internal fun pinIconExpression(): Expression<ImageValue?> =
     image(feature["icon-image"].convertToString())
 
 @Composable
@@ -298,11 +300,3 @@ internal fun JsonObject.toStringMap(): Map<String, String> = mapNotNull { (key, 
     key to stringValue
 }
     .toMap()
-
-internal fun IllegalStateException.isStyleHandleRace(): Boolean =
-    message in
-        setOf(
-            "No ready loaded style",
-            "Style operation belongs to a stale loaded-style identity",
-            "Style operation belongs to a stale or unready loaded-style identity",
-        )

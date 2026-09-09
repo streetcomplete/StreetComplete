@@ -1,12 +1,35 @@
 package de.westnordost.streetcomplete.data.maptiles
 
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import dev.mokkery.answering.returns
+import dev.mokkery.answering.throws
+import dev.mokkery.every
+import dev.mokkery.everySuspend
+import dev.mokkery.mock
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 import kotlin.test.assertFalse
+import kotlin.test.assertSame
 import kotlin.test.assertTrue
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.test.runTest
+import org.maplibre.compose.offline.OfflineManager
 
 class MapLibreMapTilesDownloaderTest {
+
+    @Test fun clearingOfflineMapsPropagatesCancellation() = runTest {
+        val manager = mock<OfflineManager>()
+        val cancelled = CancellationException("screen left")
+        every { manager.packs } returns emptySet()
+        everySuspend { manager.clearAmbientCache() } throws cancelled
+
+        val failure = assertFailsWith<CancellationException> {
+            MapLibreMapTilesDownloader(manager, pixelRatio = 1f).clear()
+        }
+
+        assertSame(cancelled, failure)
+    }
 
     @Test fun expiresOnlyTimestampsBeforeTheCutoff() {
         assertTrue(isOfflinePackExpired("99".encodeToByteArray(), 100L))

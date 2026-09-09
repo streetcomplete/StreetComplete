@@ -30,6 +30,10 @@ import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.location.SurveyChecker
@@ -136,12 +140,13 @@ fun MainScreen(
     val lastDownloadError by viewModel.lastDownloadError.collectAsState()
     val lastUploadError by viewModel.lastUploadError.collectAsState()
 
+    val lifecycleOwner = LocalLifecycleOwner.current
     var latestLocationEvent by remember { mutableStateOf<LocationEvent?>(null) }
     val locationPermission by locationProvider.permission.collectAsState()
     val headingUpdates = remember(headingProvider) {
         headingProvider.updates(HeadingRequest(33.milliseconds))
     }
-    val heading by headingUpdates.collectAsState(initial = null)
+    val heading by headingUpdates.collectAsStateWithLifecycle(initialValue = null)
     val mapCamera = mapState.cameraPosition
     val mapPosition = mapCamera.target.toLatLon()
     val metersPerDp = mapState.metersPerDp
@@ -260,11 +265,14 @@ fun MainScreen(
         }
     }
 
-    LaunchedEffect(locationProvider) {
-        locationProvider.updates(LocationRequest()).collect { event ->
-            latestLocationEvent = event
-            if (event is LocationEvent.Update) {
-                surveyChecker.addRecentLocation(event.measurement.toLocation())
+    // Survey checking consumes every fix, so collect provider events rather than conflated UI state.
+    LaunchedEffect(locationProvider, lifecycleOwner, surveyChecker) {
+        lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            locationProvider.updates(LocationRequest()).collect { event ->
+                latestLocationEvent = event
+                if (event is LocationEvent.Update) {
+                    surveyChecker.addRecentLocation(event.measurement.toLocation())
+                }
             }
         }
     }
