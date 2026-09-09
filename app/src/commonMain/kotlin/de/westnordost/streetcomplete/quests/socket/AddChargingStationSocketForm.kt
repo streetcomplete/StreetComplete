@@ -30,21 +30,27 @@ fun AddChargingStationSocketForm(
     domesticIcons: List<DrawableResource> = emptyList(),
 ) {
     val initialCounts = remember(element.id, socketTypes) {
-        initialSocketCounts(element.tags, socketTypes).mapValues { it.value as Int? }
+        initialSocketFormCounts(element.tags, socketTypes)
     }
     var counts by remember(element.id, socketTypes) { mutableStateOf(initialCounts) }
-    val isResurvey = remember(element.id, element.tags) {
-        hasSurveyedManagedSocketValues(element.tags)
+    // Resurvey bubble only when every displayed type was already numeric/`no`
+    // (not for first survey, bare `yes`, or missing displayed keys).
+    val isResurvey = remember(element.id, element.tags, socketTypes) {
+        isCompleteSocketSurvey(element.tags, socketTypes)
+    }
+    val unresolvedYesTypes = remember(element.id, element.tags, socketTypes) {
+        socketTypes.filter { parseSocketPresence(element.tags[it.osmCountKey]) is SocketPresence.Yes }
+            .toSet()
     }
 
     QuestForm(
         on = on,
-        isComplete = counts.values.any { (it ?: 0) > 0 },
-        hasChanges = counts.mapValues { it.value ?: 0 } !=
-            initialCounts.mapValues { it.value ?: 0 },
+        // Non-empty form and every displayed type resolved (0 = explicit no, >0 = count).
+        isComplete = isSocketFormComplete(counts, socketTypes),
+        hasChanges = counts != initialCounts,
         isResurvey = isResurvey,
         onClickOk = {
-            on(Answer(counts.mapValues { (_, count) -> count ?: 0 }))
+            on(Answer(counts.mapValues { (_, count) -> count!! }))
         },
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -58,6 +64,7 @@ fun AddChargingStationSocketForm(
                 socketTypes = socketTypes,
                 counts = counts,
                 onCountsChanged = { counts = it },
+                unresolvedYesTypes = unresolvedYesTypes,
                 domesticIcons = domesticIcons,
             )
         }

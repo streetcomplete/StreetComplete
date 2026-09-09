@@ -52,23 +52,37 @@ val SocketType.title: StringResource
 val SocketType.hasBlackEuLabels: Boolean
     get() = this != SocketType.TYPE2 && euLabels.isNotEmpty()
 
+/** Motorcar connectors implemented by this quest (excludes domestic presentation). */
+val IMPLEMENTED_SPECIFIC_SOCKET_OSM_KEYS: Set<String> =
+    SocketType.entries
+        .filter { it != SocketType.DOMESTIC }
+        .map { it.osmKey }
+        .toSet()
+
 /** Supported non-DOMESTIC socket types present in country metadata. */
 fun specificSocketTypesForCountry(countryInfo: CountryInfo): List<SocketType> =
     SocketType.entries.filter {
         it != SocketType.DOMESTIC && it.osmKey in countryInfo.chargingStationSocketTypes
     }
 
-fun hasSupportedSocketTypes(countryInfo: CountryInfo): Boolean =
-    specificSocketTypesForCountry(countryInfo).isNotEmpty()
+/**
+ * Enable only when country metadata lists a non-empty set of connectors and every listed
+ * connector is implemented by this UI — otherwise the survey would be misleadingly incomplete
+ * (e.g. US/JP with type1/nacs, FR/IT with type3*, CH/SE with type1).
+ */
+fun hasSupportedSocketTypes(countryInfo: CountryInfo): Boolean {
+    val meta = countryInfo.chargingStationSocketTypes
+    return meta.isNotEmpty() && meta.all { it in IMPLEMENTED_SPECIFIC_SOCKET_OSM_KEYS }
+}
 
 /**
  * Socket types shown in the form for [countryInfo].
- * Empty when the country has no implemented motorcar connector in metadata (quest not applicable).
+ * Empty when [hasSupportedSocketTypes] is false.
  * [SocketType.DOMESTIC] is appended only when usable [CountryInfo.domesticSocketType] metadata exists.
  */
 fun socketTypesForCountry(countryInfo: CountryInfo): List<SocketType> {
+    if (!hasSupportedSocketTypes(countryInfo)) return emptyList()
     val specificTypes = specificSocketTypesForCountry(countryInfo)
-    if (specificTypes.isEmpty()) return emptyList()
     return if (domesticPlugTypesForCountry(countryInfo).isNotEmpty()) {
         specificTypes + SocketType.DOMESTIC
     } else {

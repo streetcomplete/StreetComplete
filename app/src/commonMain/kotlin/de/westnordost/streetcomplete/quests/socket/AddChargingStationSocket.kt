@@ -95,7 +95,8 @@ class AddChargingStationSocket(
         geometry: ElementGeometry,
         timestampEdited: Long
     ) {
-        tags.keys.filter { isDeprecatedSocketKey(it) }.toList().forEach { tags.remove(it) }
+        // Deprecated / ambiguous keys (socket:ccs, socket:tesla*, …) are left untouched —
+        // no safe unambiguous migration exists for them.
 
         // Only types present in the answer (i.e. shown in the form) are surveyed.
         // count > 0 -> numeric; count = 0 -> explicit "no" (not unknown).
@@ -109,36 +110,24 @@ class AddChargingStationSocket(
     }
 }
 
-private val managedSocketCountKeys = SocketType.entries.map { it.osmCountKey }.toSet()
-
 /** Same 2-year resurvey interval as [AddRecyclingContainerMaterials]. */
 private val socketResurveyDate = RelativeDate(-(365 * 2).toFloat())
 
-private fun isDeprecatedSocketKey(key: String): Boolean =
-    key.startsWith("socket:tesla") ||
-        key == "socket:css" ||
-        key == "socket:unknown" ||
-        key == "socket:type"
-
 private fun Element.needsSocketSurvey(countryInfo: CountryInfo): Boolean {
-    if (tags.keys.any { isDeprecatedSocketKey(it) }) return true
-    if (managedSocketCountKeys.any { tags[it] == "yes" }) return true
+    val displayedTypes = socketTypesForCountry(countryInfo)
+    if (displayedTypes.isEmpty()) return false
+
     // Historical socket:type2=* was used for both cableless and tethered Type 2.
     if (
-        SocketType.TYPE2_CABLE in specificSocketTypesForCountry(countryInfo) &&
+        SocketType.TYPE2_CABLE in displayedTypes &&
         hasAmbiguousType2CableTagging(tags)
     ) return true
-    if (!hasSurveyedManagedSocketValues(tags)) return true
-    // Surveyed numeric/"no" values: resurvey when check_date:socket is missing or expired
+
+    if (!isCompleteSocketSurvey(tags, displayedTypes)) return true
+
+    // Fully surveyed numeric/"no": resurvey when check_date:socket is missing or expired
     return hasExpiredOrMissingSocketCheckDate()
 }
-
-/** True if any managed socket key is a surveyed count or an explicit "no". */
-fun hasSurveyedManagedSocketValues(tags: Map<String, String>): Boolean =
-    managedSocketCountKeys.any { key ->
-        val value = tags[key] ?: return@any false
-        value == "no" || value.toIntOrNull() != null
-    }
 
 /**
  * Positive [SocketType.TYPE2] count without any [SocketType.TYPE2_CABLE] tag is ambiguous:
@@ -178,10 +167,3 @@ private fun Element.center(mapData: MapDataWithGeometry): LatLon? = when (this) 
     is Node -> position
     else -> mapData.getGeometry(type, id)?.center
 }
-
-/** Preload numeric managed socket counts; "yes", "no" and missing stay at 0. */
-fun initialSocketCounts(
-    tags: Map<String, String>,
-    socketTypes: List<SocketType>,
-): Map<SocketType, Int> =
-    socketTypes.associateWith { type -> tags[type.osmCountKey]?.toIntOrNull() ?: 0 }

@@ -1051,6 +1051,9 @@
     <string name="quest_charging_station_socket_type2_combo">Type 2 Combo (CCS)</string>
     <string name="quest_charging_station_socket_chademo">CHAdeMO</string>
     <string name="quest_charging_station_socket_domestic">Household-plug</string>
+    <string name="quest_charging_station_socket_count_input">Number of %1$s</string>
+    <string name="quest_charging_station_socket_increase">Increase number of %1$s</string>
+    <string name="quest_charging_station_socket_decrease">Decrease number of %1$s</string>
 
     <string name="quest_charging_station_operator_title">Who is the operator of this charging station?</string>
 
