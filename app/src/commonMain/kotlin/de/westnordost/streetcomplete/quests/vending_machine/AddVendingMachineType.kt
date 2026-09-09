@@ -24,7 +24,7 @@ class AddVendingMachineType() : OsmFilterQuestType<List<Feature>>() {
     """
     override val changesetComment = "Survey what a vending machine sells"
     override val wikiLink = "Key:vending"
-    override val icon = Res.drawable.quest_doctor_type
+    override val icon = Res.drawable.quest_vending_machine
     override val title = Res.string.quest_vending_machine_type
     override val achievements = listOf(CITIZEN)
 
