@@ -3,14 +3,14 @@
     android:height="100dp"
     android:viewportWidth="106"
     android:viewportHeight="100">
-    <!-- Type C / Europlug: two close round holes -->
+    <!-- Type C / Europlug — scaled to match Schuko visual weight in the shared 106×100 viewBox -->
     <path
         android:fillColor="#FF000000"
-        android:pathData="M53,8C32.6,8 16,24.6 16,45s16.6,37 37,37 37,-16.6 37,-37S73.4,8 53,8zM53,16c16,0 29,13 29,29S69,74 53,74 24,61 24,45 37,16 53,16z"/>
+        android:pathData="M53,5C28.1,5 8,25.1 8,50s20.1,45 45,45 45,-20.1 45,-45S77.9,5 53,5zM53,15c19.3,0 35,15.7 35,35S72.3,85 53,85 18,69.3 18,50 33.7,15 53,15z"/>
     <path
         android:fillColor="#FF000000"
-        android:pathData="M40,45m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"/>
+        android:pathData="M36.5,50m-8.5,0a8.5,8.5 0,1 1,17 0a8.5,8.5 0,1 1,-17 0"/>
     <path
         android:fillColor="#FF000000"
-        android:pathData="M66,45m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"/>
+        android:pathData="M69.5,50m-8.5,0a8.5,8.5 0,1 1,17 0a8.5,8.5 0,1 1,-17 0"/>
 </vector>

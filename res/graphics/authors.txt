@@ -173,6 +173,7 @@ charging station socket/
     socket_domestic_nema_1_15.svg mcliquid
     socket_domestic_nema_5_15.svg mcliquid
     socket_domestic_nema_5_20.svg mcliquid
+    socket_domestic_schuko.svg  mcliquid
     socket_domestic_sev1011_t13.svg mcliquid
     socket_domestic_typec.svg   mcliquid
     socket_domestic_typee.svg   mcliquid

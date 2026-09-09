@@ -62,6 +62,8 @@ fun SocketTypeAndCountForm(
     ) {
         socketTypes.forEach { type ->
             val count = counts[type]
+            // DOMESTIC: country-specific plug icons only — never also show the generic
+            // SocketType.DOMESTIC fallback (`socket_domestic`) in the same row.
             val icons = if (type == SocketType.DOMESTIC && domesticIcons.isNotEmpty()) {
                 domesticIcons
             } else {
@@ -139,7 +141,13 @@ private fun SocketIdentification(
     needsResolution: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    val iconSize = if (icons.size > 1) 36.dp else 48.dp
+    // Domestic plug icons are simpler line drawings; keep them at connector size even when
+    // several sit side-by-side (e.g. DE typec+schuko). Other multi-icon rows stay slightly smaller.
+    val iconSize = when {
+        type == SocketType.DOMESTIC -> 48.dp
+        icons.size > 1 -> 36.dp
+        else -> 48.dp
+    }
     // Monochrome black connector/domestic drawings: tint with content color for dark-mode contrast.
     val iconTint = LocalContentColor.current
     Row(
@@ -293,9 +301,42 @@ private fun SocketTypeAndCountFormPreview() {
             onCountsChanged = { counts = it },
             unresolvedYesTypes = setOf(SocketType.DOMESTIC),
             domesticIcons = listOf(
-                Res.drawable.socket_domestic,
                 Res.drawable.socket_domestic_typec,
+                Res.drawable.socket_domestic_schuko,
             ),
+            modifier = Modifier.padding(8.dp)
+        )
+    }
+}
+
+@PreviewLightDark
+@Preview(name = "Domestic DE typec+schuko", widthDp = 320)
+@Composable
+private fun SocketTypeDomesticDePreview() {
+    AppTheme {
+        SocketTypeAndCountForm(
+            socketTypes = listOf(SocketType.TYPE2, SocketType.DOMESTIC),
+            counts = mapOf(SocketType.TYPE2 to 2, SocketType.DOMESTIC to 1),
+            onCountsChanged = {},
+            domesticIcons = listOf(
+                Res.drawable.socket_domestic_typec,
+                Res.drawable.socket_domestic_schuko,
+            ),
+            modifier = Modifier.padding(8.dp)
+        )
+    }
+}
+
+@PreviewLightDark
+@Preview(name = "Domestic GB bs1363", widthDp = 320)
+@Composable
+private fun SocketTypeDomesticGbPreview() {
+    AppTheme {
+        SocketTypeAndCountForm(
+            socketTypes = listOf(SocketType.TYPE2, SocketType.DOMESTIC),
+            counts = mapOf(SocketType.TYPE2 to 1, SocketType.DOMESTIC to 0),
+            onCountsChanged = {},
+            domesticIcons = listOf(Res.drawable.socket_domestic_bs1363),
             modifier = Modifier.padding(8.dp)
         )
     }

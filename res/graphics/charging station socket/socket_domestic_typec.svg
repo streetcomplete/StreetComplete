@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 100">
-  <path d="M53,8C32.6,8 16,24.6 16,45s16.6,37 37,37 37,-16.6 37,-37S73.4,8 53,8zM53,16c16,0 29,13 29,29S69,74 53,74 24,61 24,45 37,16 53,16z"/>
-  <circle cx="40" cy="45" r="7"/>
-  <circle cx="66" cy="45" r="7"/>
+  <!-- Type C / Europlug — scaled to match Schuko visual weight in the shared 106×100 viewBox -->
+  <path d="M53,5C28.1,5 8,25.1 8,50s20.1,45 45,45 45,-20.1 45,-45S77.9,5 53,5zM53,15c19.3,0 35,15.7 35,35S72.3,85 53,85 18,69.3 18,50 33.7,15 53,15z"/>
+  <circle cx="36.5" cy="50" r="8.5"/>
+  <circle cx="69.5" cy="50" r="8.5"/>
 </svg>

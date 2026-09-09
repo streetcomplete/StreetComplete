@@ -32,7 +32,7 @@ enum class DomesticPlugType(val osmValue: String) {
 val DomesticPlugType.icon: DrawableResource
     get() = when (this) {
         DomesticPlugType.TYPEC -> Res.drawable.socket_domestic_typec
-        DomesticPlugType.SCHUKO -> Res.drawable.socket_domestic
+        DomesticPlugType.SCHUKO -> Res.drawable.socket_domestic_schuko
         DomesticPlugType.TYPEE -> Res.drawable.socket_domestic_typee
         DomesticPlugType.TYPEK -> Res.drawable.socket_domestic_typek
         DomesticPlugType.TYPEL -> Res.drawable.socket_domestic_typel

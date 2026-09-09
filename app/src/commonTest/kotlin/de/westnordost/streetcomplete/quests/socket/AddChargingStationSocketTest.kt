@@ -489,6 +489,41 @@ class AddChargingStationSocketTest {
         )
     }
 
+    @Test fun `DE domestic icons are typec and schuko without generic socket_domestic`() {
+        assertEquals(
+            listOf(DomesticPlugType.TYPEC, DomesticPlugType.SCHUKO),
+            domesticPlugTypesForCountry(countryInfoDe)
+        )
+        val icons = domesticPlugIcons(countryInfoDe)
+        assertEquals(2, icons.size)
+        assertEquals(DomesticPlugType.TYPEC.icon, icons[0])
+        assertEquals(DomesticPlugType.SCHUKO.icon, icons[1])
+        // Schuko has its own artwork; generic DOMESTIC fallback must not appear in the row.
+        assertTrue(DomesticPlugType.SCHUKO.icon != DOMESTIC.icon)
+        assertFalse(icons.contains(DOMESTIC.icon))
+    }
+
+    @Test fun `GB domestic icon is bs1363 only`() {
+        val icons = domesticPlugIcons(countryInfoGb)
+        assertEquals(listOf(DomesticPlugType.BS1363.icon), icons)
+        assertFalse(icons.contains(DOMESTIC.icon))
+    }
+
+    @Test fun `real CH metadata with unsupported type1 disables the quest`() {
+        val countryInfoCh = CountryInfo(
+            "CH",
+            listOf(IncompleteCountryInfo(
+                chargingStationSocketTypes = listOf(
+                    "type2", "type2_cable", "type2_combo", "chademo", "type1", "type1_combo"
+                ),
+                domesticSocketType = listOf("typec", "sev1011_t13")
+            ))
+        )
+        assertFalse(hasSupportedSocketTypes(countryInfoCh))
+        assertEquals(emptyList(), socketTypesForCountry(countryInfoCh))
+        assertFalse(AddChargingStationSocket { countryInfoCh }.isApplicableTo(chargingStation())!!)
+    }
+
     @Test fun `domestic is not offered without domesticSocketType metadata`() {
         assertFalse(DOMESTIC in socketTypesForCountry(countryInfoIlNoDomestic))
         assertTrue(AddChargingStationSocket { countryInfoIlNoDomestic }.isApplicableTo(chargingStation())!!)
