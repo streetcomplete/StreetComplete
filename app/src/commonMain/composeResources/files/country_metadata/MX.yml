@@ -4,6 +4,7 @@ centerLineStyle: yellow
 chargingStationOperators: [Tesla, 'Tesla, Inc.', Nissan, Servicio de Transportes Eléctricos de la Ciudad de México, Tren Maya]
 chargingStationSocketTypes: [type1, type1_combo, nacs, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [nema_1_15, nema_5_15]
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: shared

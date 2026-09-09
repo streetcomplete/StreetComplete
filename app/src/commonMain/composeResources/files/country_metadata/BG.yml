@@ -6,6 +6,7 @@ chargingStationOperators: [Финес Енерджи ООД, Столичен е
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [TexCycle, БЧК, M-Texx, TEXAID Bulgaria]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

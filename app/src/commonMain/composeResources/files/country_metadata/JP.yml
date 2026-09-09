@@ -6,6 +6,7 @@ centerLineStyle: white
 chargingStationOperators: [Tesla, 東光高岳, EV Quick, 浜松日産, Nissan, 金沢彩の庭ホテル, イオンモール久御山, EVlink]
 chargingStationSocketTypes: [chademo, type1, type1_combo]
 defaultSpeedLimitHasUrbanOrRural: false
+domesticSocketType: [nema_1_15, nema_5_15]
 edgeLineStyle: white
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: false

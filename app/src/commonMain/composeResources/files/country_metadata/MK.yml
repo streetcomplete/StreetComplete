@@ -4,6 +4,7 @@ atmOperators: [Шпаркасе, Охридска Банка, Halkbank, Коме
 chargingStationOperators: [EVN]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

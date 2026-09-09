@@ -5,6 +5,7 @@ chargingStationOperators: [Petrol, SODO, Lidl, Gremo na elektriko, Ionity, Porsc
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Humana, Komunala Idrija]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true

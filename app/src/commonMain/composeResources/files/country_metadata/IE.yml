@@ -6,6 +6,7 @@ chargingStationOperators: [ESB ecars, ESB Group, EasyGo, EVBox, Applegreen Elect
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Clothes Pod, Cancer Fund for Children, Cork County Council, St. James Camino Network, Liberty Recycling, Vincent's, Textile Recycling Limited, Society of St. Vincent de Paul, Liberty, Enable Ireland, Cork City Hospitals Children's Club]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [bs1363]
 edgeLineStyle: short yellow dashes
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true

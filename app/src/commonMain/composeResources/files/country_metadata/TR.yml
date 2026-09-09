@@ -3,6 +3,7 @@ atmOperators: [Türkiye İş Bankası, Akbank, Ziraat Bankası, Yapı Kredi, Gar
 chargingStationOperators: [SHARZ, ZES, Astor Enerji, Tesla, VOLTRUN, Eşarj, Sharz, WAT Mobilite, TOGG, Renault, Trugo, Togg, 'Tesla, Inc.', EŞARJ, Tunçmatik, RST Charge Point, Neva Şarj, Çağdaş Market, zes, Zes, Zeplin Enerji, Shell, Sharz.net, Otojet, Lumicle, En Yakıt, D-Charge, CheckPoint]
 clothesContainerOperators: [Kartal Belediyesi, Etimesgut Belediyesi, Maltepe Belediyesi, İlkadım Belediyesi, Sivas Belediyesi, Ümraniye Belediyesi, Yenimahalle Belediyesi, Ortaca Belediyesi, Çerkezköy Belediyesi, Kızılay, Kütahya Belediyesi, Bodrum Belediyesi]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasAdvisorySpeedLimitSign: false
 hasLivingStreet: true
 livingStreetSignStyle: vienna

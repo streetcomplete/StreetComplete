@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [fr, es, en]
 atmOperators: [Al Barid Bank, CIH Bank, Banque Populaire, BMCI, Attijariwafa Bank, Crédit Agricole, Crédit du Maroc مصرف المغرب, البنك الشعبي, Poste Maroc, Banque populaire, Banque Populaire البنك الشعبي, BMCE Bank, BMCE, Attijariwafa, التجاري وفا بنك, Saham Bank سهام بنك, CIH bank, CIH Euronet, Bank Al-Maghrib بنك المغرب, BMCE BANK, Attijariwafa bank, Western Union, Crédit du Maroc, CIH, Al barid bank, Al BARID Bank]
 chargingStationOperators: [Tesla]
+domesticSocketType: [typec, typee]
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 604
 noParkingSignStyle: vienna

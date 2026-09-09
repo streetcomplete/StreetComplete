@@ -4,6 +4,7 @@ advisorySpeedLimitSignStyle: yellow
 centerLineStyle: white
 chargingStationSocketTypes: [gb_ac, gb_dc, chaoji]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [gb1002]
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: false
 hasSlowZone: true

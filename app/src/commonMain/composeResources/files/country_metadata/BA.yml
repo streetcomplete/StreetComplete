@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [sr-Latn]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true

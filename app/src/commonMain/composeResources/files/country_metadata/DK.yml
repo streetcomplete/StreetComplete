@@ -5,6 +5,7 @@ chargingStationOperators: [Clever, OK, E.ON, Norlys, EWII, Circle K, Spirii, Mon
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Dansk Røde Kors, Kredsløb, Frelsens Hær, Red Barnet, Københavns Kommune, Trasborg, Røde Kors, UFF, Folkekirkens Nødhjælp, Blå Kors Danmark, Red Cross, Kirkens Korshær, Blå Kors Genbrug, Blå Kors, UFF Humana, Kirkens Korshær Genbrug, Humana]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko, typek]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true

@@ -6,6 +6,7 @@ chargingStationOperators: [Tesla, Oslo kommune, Kople, Recharge, Lade i Norge, M
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Fretex, Fredrikstad kommune, UFF, Kirkens Bymisjon, Røde Kors, Norge Gir, Frelsesarmeen, Norges Røde Kors, Idrettsinnsamlingen, Frelsesarméen, Aktiv Barnehjelp, Uff, Gjenbruken, Fileks, BIR, Røde Kors Norge, Norge gir, NLM Gjenbruk]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true

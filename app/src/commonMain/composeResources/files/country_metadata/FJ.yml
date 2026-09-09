@@ -2,6 +2,7 @@
 atmOperators: [ANZ, BSP, Westpac, BSP ATM, Westpac Bank, Bred Bank, Bank of the South Pacific (BSP), Bank of the South Pacific]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [as3112]
 isLeftHandTraffic: true
 mobileCountryCode: 542
 noEntrySignStyle: no entry on white

@@ -5,6 +5,7 @@ advisorySpeedLimitSignStyle: yellow
 centerLineStyle: white
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [as3112]
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true

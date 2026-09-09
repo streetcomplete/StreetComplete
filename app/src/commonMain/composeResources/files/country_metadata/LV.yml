@@ -5,6 +5,7 @@ chargingStationOperators: [CSDD, Elektrum, Ignitis ON, Enefit, Ignitis, Eleport,
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [ViaCor Charity, Kuldīgas komunālie pakalpojumi, Eco Baltia Vide, Clean R, CleanR, Jumis, Dari labu]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 edgeLineStyle: white
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false

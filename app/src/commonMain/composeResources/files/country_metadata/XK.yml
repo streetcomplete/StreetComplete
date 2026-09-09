@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [sr-Latn]
 atmOperators: [TEB, BKT, NLB, Raiffeisen Bank, Raiffeisen, Raiffaisen Bank, ProCredit Bank, Banka Ekonomike, TEB Bank, Raiffeisen Bank Kosovo, NLB Banka, BPB]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 hasSlowZone: true

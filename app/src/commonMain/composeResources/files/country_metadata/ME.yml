@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [sr-Latn]
 atmOperators: [Payten, Euronet, Euronet Worldwide, Prva Banka CG, CKB, NLB, NLB Banka, Erste Bank, MoneyGet, Hipotekarna banka, CKB Banka, Addiko Bank, Prva Banka, Erste, Crnogorska Komercijalna Banka, Lovćen Banka, ERSTE Bank, Atlas Banka, ckbbanka, Hipotekarna Banka]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+domesticSocketType: [typec, schuko]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

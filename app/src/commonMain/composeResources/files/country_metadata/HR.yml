@@ -5,6 +5,7 @@ chargingStationOperators: [ELEN, Qelo, Petrol, Tesla, Ionity, Lidl, Elen, Hrvats
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Čistoća]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 exclusiveCycleLaneStyle: yellow
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true

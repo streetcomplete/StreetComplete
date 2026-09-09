@@ -3,6 +3,7 @@ atmOperators: [Banco Estado, Banco Santander, Banco de Chile, BCI, Banco Falabel
 centerLineStyle: white
 chargingStationOperators: [Enel X, Copec, CGE, Shell, Porsche, Copec Voltex, Tesla, Enel]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, typeL]
 mobileCountryCode: 730
 noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin

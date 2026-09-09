@@ -5,6 +5,7 @@ chargingStationOperators: [Samenwerkende Gemeenten Zuid-Holland, Gemeente Den Ha
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Avalex, Leger des Heils, Sympany, Gemeente Zoetermeer, Gemeente Amsterdam, Leger des Heils ReShare, Den Haag, ROVA, Irado, Meerlanden, Gemeente Katwijk, Curitas, dar, Stichting Sympany, HVC, Restore kringloop, RAD, Twente Milieu, Restore, ReShare, Opnieuw & Co, Cure, Circulus, RD4, Avri, Twiddus, Stichting Kringloop Alphen, Regain, RMN, Noppes kringloopwinkel, Gemeente Rotterdam, Gemeente Leiden, DAR, Care4Care, 2Switch, Reinis, Omrin, Noppes, Gemeente Tilburg, Afvalstoffendienst, Waardlanden, Vrienden van de Thuiszorg, UMC Utrecht, Synpany, Spaarnelanden, Second Life, Rotary International, Rode Kruis, RWM, Middelburg, MC Texcycle, Leger das Heils, HergebruikPlus, Haagse Milieu Services, Gemeente Zoetermeer;gemeente Zoetermeer, Dar, DAR nv, Bim Bam]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true
