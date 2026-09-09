@@ -17,7 +17,7 @@ import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 import org.jetbrains.compose.resources.painterResource
 
-// Can a charging station, with another purpous also be used by cars?
+// Can a charging station, with another purpose also be used by cars?
 // Per the wiki, this is asumed to be yes, but it's good to confirm.
 class AddChargingStationMotorcar : OsmFilterQuestType<Boolean>() {
 
