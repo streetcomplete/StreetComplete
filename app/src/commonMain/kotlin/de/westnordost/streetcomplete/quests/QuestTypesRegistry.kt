@@ -412,6 +412,9 @@ fun questTypeRegistry(
 
     86 to AddClothingBinOperator(),
 
+    // 87 to AddChargingStationCapacity(), - replaced in https://github.com/streetcomplete/StreetComplete/pull/7083/
+    // 179 to AddChargingStationBicycleCapacity(), - removed in https://github.com/streetcomplete/StreetComplete/pull/7083/
+
     186 to AddChargingStationBicycles(),
     88 to AddChargingStationOperator(),
 
