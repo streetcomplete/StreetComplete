@@ -52,16 +52,20 @@ class AddChargingStationSocket(
 
         return mapData.filter(filter).filter { element ->
             val center = element.center(mapData) ?: return@filter false
-            element.needsSocketSurvey()
-                && hasSupportedSocketTypes(getCountryInfoByLocation(center))
+            val countryInfo = getCountryInfoByLocation(center)
+            element.needsSocketSurvey(countryInfo)
+                && hasSupportedSocketTypes(countryInfo)
                 && !element.containsMappedChargePoints(mapData, chargePointCenters)
         }.toList()
     }
 
     override fun isApplicableTo(element: Element): Boolean? {
-        if (!filter.matches(element) || !element.needsSocketSurvey()) return false
+        if (!filter.matches(element)) return false
         return when (element) {
-            is Node -> hasSupportedSocketTypes(getCountryInfoByLocation(element.position))
+            is Node -> {
+                val countryInfo = getCountryInfoByLocation(element.position)
+                element.needsSocketSurvey(countryInfo) && hasSupportedSocketTypes(countryInfo)
+            }
             // ways: need geometry for country + contained charge_point check
             else -> null
         }
@@ -116,9 +120,14 @@ private fun isDeprecatedSocketKey(key: String): Boolean =
         key == "socket:unknown" ||
         key == "socket:type"
 
-private fun Element.needsSocketSurvey(): Boolean {
+private fun Element.needsSocketSurvey(countryInfo: CountryInfo): Boolean {
     if (tags.keys.any { isDeprecatedSocketKey(it) }) return true
     if (managedSocketCountKeys.any { tags[it] == "yes" }) return true
+    // Historical socket:type2=* was used for both cableless and tethered Type 2.
+    if (
+        SocketType.TYPE2_CABLE in specificSocketTypesForCountry(countryInfo) &&
+        hasAmbiguousType2CableTagging(tags)
+    ) return true
     if (!hasSurveyedManagedSocketValues(tags)) return true
     // Surveyed numeric/"no" values: resurvey when check_date:socket is missing or expired
     return hasExpiredOrMissingSocketCheckDate()
@@ -130,6 +139,16 @@ fun hasSurveyedManagedSocketValues(tags: Map<String, String>): Boolean =
         val value = tags[key] ?: return@any false
         value == "no" || value.toIntOrNull() != null
     }
+
+/**
+ * Positive [SocketType.TYPE2] count without any [SocketType.TYPE2_CABLE] tag is ambiguous:
+ * older OSM data used `socket:type2=*` for both cableless and tethered Type 2.
+ */
+fun hasAmbiguousType2CableTagging(tags: Map<String, String>): Boolean {
+    val type2Count = tags[SocketType.TYPE2.osmCountKey]?.toIntOrNull() ?: return false
+    if (type2Count <= 0) return false
+    return SocketType.TYPE2_CABLE.osmCountKey !in tags
+}
 
 /**
  * Uses the same check-date key variants and [RelativeDate] convention as [TagOlderThan],

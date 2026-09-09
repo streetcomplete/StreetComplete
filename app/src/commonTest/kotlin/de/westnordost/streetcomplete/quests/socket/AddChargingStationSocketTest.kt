@@ -114,9 +114,51 @@ class AddChargingStationSocketTest {
         assertTrue(questType.isApplicableTo(chargingStation("socket:type2" to "2"))!!)
     }
 
-    @Test fun `not applicable to numeric socket type2=2 with recent check_date`() {
+    @Test fun `applicable to positive type2 without type2_cable even with recent check_date`() {
+        assertTrue(hasAmbiguousType2CableTagging(mapOf("socket:type2" to "3")))
+        assertTrue(questType.isApplicableTo(chargingStation("socket:type2" to "3"))!!)
+        assertTrue(questType.isApplicableTo(chargingStation(
+            "socket:type2" to "3",
+            "check_date:socket" to recentCheckDate
+        ))!!)
+    }
+
+    @Test fun `not applicable when type2_cable is explicitly no with recent check_date`() {
+        assertFalse(hasAmbiguousType2CableTagging(mapOf(
+            "socket:type2" to "3",
+            "socket:type2_cable" to "no"
+        )))
         assertFalse(questType.isApplicableTo(chargingStation(
-            "socket:type2" to "2",
+            "socket:type2" to "3",
+            "socket:type2_cable" to "no",
+            "check_date:socket" to recentCheckDate
+        ))!!)
+    }
+
+    @Test fun `not applicable when type2_cable is numeric with recent check_date`() {
+        assertFalse(hasAmbiguousType2CableTagging(mapOf(
+            "socket:type2" to "3",
+            "socket:type2_cable" to "1"
+        )))
+        assertFalse(questType.isApplicableTo(chargingStation(
+            "socket:type2" to "3",
+            "socket:type2_cable" to "1",
+            "check_date:socket" to recentCheckDate
+        ))!!)
+    }
+
+    @Test fun `type2 ambiguity rule does not apply when TYPE2_CABLE is unsupported`() {
+        val countryWithoutType2Cable = CountryInfo(
+            "XX",
+            listOf(IncompleteCountryInfo(
+                chargingStationSocketTypes = listOf("type2", "type2_combo", "chademo")
+            ))
+        )
+        val quest = AddChargingStationSocket { countryWithoutType2Cable }
+        assertFalse(TYPE2_CABLE in specificSocketTypesForCountry(countryWithoutType2Cable))
+        assertTrue(hasAmbiguousType2CableTagging(mapOf("socket:type2" to "3")))
+        assertFalse(quest.isApplicableTo(chargingStation(
+            "socket:type2" to "3",
             "check_date:socket" to recentCheckDate
         ))!!)
     }
@@ -326,6 +368,20 @@ class AddChargingStationSocketTest {
                 StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
             ),
             questType.answerApplied(mapOf(TYPE2 to 2, TYPE2_CABLE to 0))
+        )
+    }
+
+    @Test fun `resolving ambiguous type2 writes type2_cable no`() {
+        assertEquals(
+            setOf(
+                StringMapEntryModify("socket:type2", "3", "3"),
+                StringMapEntryAdd("socket:type2_cable", "no"),
+                StringMapEntryAdd("check_date:socket", nowAsCheckDateString())
+            ),
+            questType.answerAppliedTo(
+                mapOf(TYPE2 to 3, TYPE2_CABLE to 0),
+                mapOf("socket:type2" to "3")
+            )
         )
     }
 
