@@ -323,6 +323,7 @@ fun questTypeRegistry(
     38 to AddCrossing(),
     164 to AddCrossingSignals(),
     39 to AddCrossingIsland(), // can be done at a glance
+    // 40 AddCrossingType(), - removed in https://github.com/streetcomplete/StreetComplete/pull/5471
     163 to AddCrossingMarkings(),
     41 to AddTactilePavingCrosswalk(),
     159 to AddCrossingKerbHeight(),
@@ -393,6 +394,8 @@ fun questTypeRegistry(
     173 to AddBicycleRepairStationServices(),
 
     167 to AddParcelLockerBrand(),
+    // 168 to AddParcelLockerPickup(), - removed in https://github.com/streetcomplete/StreetComplete/commit/bc8fc7907912c507742bdc4f17dcca03ddd49376
+    // 169 to AddParcelLockerMailIn(), - removed in https://github.com/streetcomplete/StreetComplete/commit/bc8fc7907912c507742bdc4f17dcca03ddd49376
 
     // address: usually only visible when just in front + sometimes requires to take "other answer"
     75 to AddHousenumber(getCountryInfoByLocation),
@@ -431,6 +434,7 @@ fun questTypeRegistry(
     95 to AddMaxPhysicalHeight(arSupportChecker), // same as above, best if it appears right after (if enabled)
     96 to AddRoadName(),
     97 to AddOneway(),
+    // 98 to AddSuspectedOneway(), - removed in https://github.com/streetcomplete/StreetComplete/pull/5725
 
     99 to AddEntrance(),
     100 to AddEntranceReference(),
@@ -528,6 +532,8 @@ fun questTypeRegistry(
     137 to AddCycleway(getCountryInfoByLocation), // for any cyclist routers (and cyclist maps)
     181 to AddLaneMarkings(),
     138 to AddLanes(), // abstreet, certainly most routing engines - often requires way to be split
+
+    // 139 to AddShoulder(), - removed in https://github.com/streetcomplete/StreetComplete/commit/2819a8d440fdf33fc1bff178679ae1fcfd739998
 
     140 to AddRoadWidth(arSupportChecker),
     141 to AddRoadSmoothness(),
