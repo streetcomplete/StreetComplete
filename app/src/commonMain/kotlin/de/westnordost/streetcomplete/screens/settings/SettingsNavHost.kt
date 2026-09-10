@@ -2,7 +2,11 @@ package de.westnordost.streetcomplete.screens.settings
 
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -28,6 +32,7 @@ import org.koin.compose.viewmodel.koinViewModel
     }
 
     NavHost(
+        modifier = Modifier.fillMaxSize().background(MaterialTheme.colors.background),
         navController = navController,
         startDestination = startDestination ?: SettingsDestination.Settings,
         enterTransition = { slideInHorizontally(initialOffsetX = { +it * dir }) },

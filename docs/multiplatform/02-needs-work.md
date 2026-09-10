@@ -11,7 +11,9 @@ on this probe. Follow-up status for its other observations:
 
 - [x] Intermittent jank and freezes, including navigation to Settings. Resolved
   with the preceding MapLibre Compose snapshots; user confirmed on 2026-09-09.
-- [ ] Broken map-to-menu transition backgrounds.
+- [x] Give Settings, About, and Profile navigation hosts their own opaque backgrounds,
+  so the background animates with the menu content. Source fix on 2026-09-10;
+  interactive transition verification remains pending.
 - [x] Correct the inverted location-indicator bearing. The shared screen now uses
   the clockwise angle from north to the heading, then subtracts camera bearing.
   Regression tests cover direction and camera rotation; an iPhone recheck remains.
@@ -28,6 +30,34 @@ on this probe. Follow-up status for its other observations:
   repeated crashes or repeated presentation of an old report.
 
 The old synthetic performance scenario was removed on 2026-09-05. The jank was resolved by subsequent snapshots. These probe observations do not verify fixes on master.
+
+## Tester-thread source sweep on 2026-09-10
+
+Reviewed the [PR reports](https://github.com/streetcomplete/StreetComplete/pull/7068),
+the surviving [iOS checklist comments](https://github.com/streetcomplete/StreetComplete/issues/7076),
+and [bottom-sheet discussion](https://github.com/streetcomplete/StreetComplete/discussions/7085).
+Issue #7076's original checklist was deleted by its author; its current body says
+“All done,” so this audit cannot reconstruct every original item.
+
+| Report | Current source / disposition |
+| --- | --- |
+| Menu text animates over the map without its background | Fixed: all three non-map navigation hosts now fill their bounds and draw the theme background. The root navigation transition now includes that background. |
+| [Crash when navigating to Settings/About/Profile with a quest open](https://github.com/streetcomplete/StreetComplete/pull/7068#issuecomment-5594663002) | Unconfirmed from source. Quest form state is serializable, and MapLibre 0.16 projection reads return null when detached. No demonstrated crash path or speculative fix; a current stack trace is needed to narrow this further. |
+| No obvious form close control; drag handle suggests swipe-to-dismiss | Still present. Back handling preserves discard confirmation, but the sheet has only collapsed/expanded anchors. UX choices remain in discussion #7085; implementing a new close gesture/control is deferred. |
+| Predictive back feels unlike native navigation | Still uses symmetric full-width slides in Settings/About. Broader navigation-animation work, deferred; no MapLibre dependency. |
+| Map jank / intermittent navigation freezes | Already resolved with the snapshots per the user's confirmation; no new performance claim from this source audit. |
+| Reversed bearing | Existing clockwise heading conversion and regression tests remain in place. |
+| Repeated iOS crash dialog | Already removed: iOS binds `EmptyCrashReportHolder`. |
+| Opening-hours 12/24-hour format | Probe retains its system-hour-cycle behavior. The thread clarified that upstream's country-locale behavior is intentional; the ergonomics are a separate product choice, not a MapLibre defect. |
+| One download error, success on retry | No definite defect identifiable from that report/source. Deferred pending the actual error; no speculative retry changes. |
+| Building-level graphic on narrow screens | Upstream's weighted, maximum-width illustration layout is present. |
+| Large max-height sign / missing hyphenation | Low-priority form styling and Compose text behavior, respectively; left as classified by the tester. Neither exposes a MapLibre task. |
+| Feature search in “Show forms” | Reporter reclassified it as a debug-screen caveat, not a production defect. |
+| Photos, location, quest visibility settings, Serbian display name | Successful probe observations, not open defects; they do not establish behavior on master. |
+
+This sweep found no new source-demonstrable MapLibre Compose upstream task.
+The remaining stale-style error classification limitation is recorded separately
+in `03-maplibre-compose-upstream.md`.
 
 ## Target and entry-point parity
 

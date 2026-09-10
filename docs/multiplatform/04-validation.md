@@ -4,6 +4,17 @@ Validation claims in this file distinguish compilation, automated tests, and
 interactive runtime evidence. A compile result is not treated as proof of feature
 parity.
 
+## Tester-thread source sweep on 2026-09-10
+
+The [report dispositions](02-needs-work.md#tester-thread-source-sweep-on-2026-09-10)
+identify one small source-demonstrable fix: menu navigation hosts now own their
+opaque backgrounds so those backgrounds participate in root navigation transitions.
+
+`mise exec -- ./gradlew :app:compileKotlinDesktop :app:compileKotlinIosSimulatorArm64 :androidApp:assembleDebug --console=plain`
+passes, as does `git diff --check`. No new interactive device run or visual
+transition test was performed. The reported open-quest navigation crash was not
+reproduced, and this change does not claim to fix it.
+
 ## Upstream integration on 2026-09-10
 
 Merged `upstream/maplibre-compose` at `ccb6dd7d7` and `upstream/master` at
