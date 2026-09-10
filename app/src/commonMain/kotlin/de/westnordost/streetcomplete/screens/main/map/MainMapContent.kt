@@ -3,11 +3,14 @@ package de.westnordost.streetcomplete.screens.main.map
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
+import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.layers.CurrentLocationLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryLayers
@@ -18,6 +21,7 @@ import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLab
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
+import de.westnordost.streetcomplete.screens.main.map.layers.getIcon
 import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -41,19 +45,40 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
     val shownMarkers by viewModel.shownMarkers.collectAsState()
     val isShowingUndoHistorySidebar by viewModel.isShowingUndoHistorySidebar.collectAsState()
 
+    val selectedOverlay by viewModel.selectedOverlay.collectAsState()
+    val selectedEdit by viewModel.selectedEdit.collectAsState()
+    val highlightedGeometry by viewModel.highlightedGeometry.collectAsState()
+
     val downloadedTiles by viewModel.downloadedTiles.collectAsState()
-    val editHistoryPins by viewModel.editHistoryPins.collectAsState()
-    val styledElements by viewModel.styleableElements.collectAsState()
-    val questPins by viewModel.questPins.collectAsState()
 
     // because quests highlight additional information and history sidebar should feel clean
-    val showOverlay = shownBottomSheet !is ShownBottomSheet.OsmQuest && !isShowingUndoHistorySidebar
+    val showOverlay = selectedOverlay != null && shownBottomSheet !is ShownBottomSheet.OsmQuest &&
+        shownBottomSheet !is ShownBottomSheet.OsmNoteQuest && !isShowingUndoHistorySidebar
 
     val selectedQuest = when (val sheet = shownBottomSheet) {
         is ShownBottomSheet.OsmNoteQuest -> sheet.quest
         is ShownBottomSheet.OsmQuest -> sheet.quest
         else -> null
     }
+
+    val selectedOverlayElement = shownBottomSheet as? ShownBottomSheet.Overlay
+    val showQuestPins = !isShowingUndoHistorySidebar && shownBottomSheet == null
+
+    val showPinsAtZoom by remember(viewModel) {
+        derivedStateOf { viewModel.mapState.cameraPosition.zoom >= 13 }
+    }
+    val showOverlayAtZoom by remember(viewModel) {
+        derivedStateOf { viewModel.mapState.cameraPosition.zoom >= 14 }
+    }
+    val editHistoryPins = if (isShowingUndoHistorySidebar && showPinsAtZoom) {
+        viewModel.editHistoryPins.collectAsState().value
+    } else emptyList()
+    val styledElements = if (showOverlay && showOverlayAtZoom) {
+        viewModel.styleableElements.collectAsState().value
+    } else emptyList()
+    val questPins = if (showQuestPins && showPinsAtZoom) {
+        viewModel.questPins.collectAsState().value
+    } else emptyList()
 
     val languages = listOf(Locale.current.language)
     val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
@@ -70,6 +95,7 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
     MapStyle(
         colors = colors,
         languages = languages,
+        hiddenLayers = selectedOverlay?.hidesLayers.orEmpty(),
         belowRoadsContent = {
             // left-and-right lines should be rendered behind the actual road
             if (showOverlay) {
@@ -104,6 +130,7 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
             if (showOverlay) {
                 StyleableOverlayLabelLayer(
                     source = overlaySource,
+                    icons = styledElements.mapNotNull { it.style.getIcon() },
                     color = colors.text,
                     haloColor = colors.textOutline,
                     onClickElement = viewModel::onClickElement
@@ -112,7 +139,7 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
             shownMarkers?.let { markers ->
                 GeometryMarkersLayers(markers)
             }
-            shownBottomSheet?.geometry?.let { geometry ->
+            (highlightedGeometry ?: shownBottomSheet?.geometry)?.let { geometry ->
                 FocusedGeometryLayers(geometry)
             }
 
@@ -122,18 +149,23 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
             if (isShowingUndoHistorySidebar) {
                 PinsLayers(
                     pins = editHistoryPins,
-                    onClickPin = viewModel::onClickEdit,
-                    onZoomToCluster = viewModel::zoomToCluster
+                    onClickPin = viewModel::onClickEdit
                 )
-            } else if (selectedQuest == null) {
+            } else if (showQuestPins) {
                 PinsLayers(
                     pins = questPins,
-                    onClickPin = viewModel::onClickQuest,
-                    onZoomToCluster = viewModel::zoomToCluster
+                    onClickPin = viewModel::onClickQuest
                 )
             }
 
-            if (selectedQuest != null) {
+            val edit = selectedEdit
+            if (isShowingUndoHistorySidebar && edit != null) {
+                edit.icon?.let { icon -> SelectedPinsLayer(icon, listOf(edit.position)) }
+            } else if (selectedOverlayElement?.element != null) {
+                selectedOverlayElement.geometry?.let { geometry ->
+                    SelectedPinsLayer(selectedOverlayElement.overlay.icon, listOf(geometry.center))
+                }
+            } else if (selectedQuest != null) {
                 SelectedPinsLayer(
                     icon = selectedQuest.type.icon,
                     pinPositions = selectedQuest.markerLocations

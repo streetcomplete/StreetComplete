@@ -33,58 +33,41 @@ Source paths in this phase are under
 `app/src/commonMain/kotlin/de/westnordost/streetcomplete/screens/main/map/`
 unless another source set or screen is named.
 
-### Correct data publication and lifecycle
+### Finish cluster camera parity
 
-- **Confirmed: overlay data events are never subscribed to.** Register
-  `sources/StyleableOverlaySource.kt`'s `mapDataWithEditsListener` while the source
-  is active and unregister it on disposal. Test downloads, edits, replacements,
-  deletions, and clearing against the visible overlay.
-- **Confirmed: edit-history flow identity and snapshots are unstable.** Move
-  `MainMapViewModel.kt`'s `editHistoryPins.stateIn` out of the getter so the view
-  model owns one flow. In `sources/EditHistoryPinsSource.kt`, publish immutable
-  snapshots and emit the reloaded data after invalidation. Test additions,
-  deletions, invalidation, ordering, and keys.
-- **Needs implementation/validation: source activation and update ordering.**
-  Quest and overlay sources remain subscribed independently of layer visibility.
-  Stop unnecessary loading while their layers are hidden and reload on
-  reactivation. Verify viewport readiness and resizing trigger the required
-  loads, leaving the map releases listeners/jobs, and older loads cannot replace
-  newer viewport data or repopulate cleared data. Fix any races exposed by these
-  tests, including updates arriving during initial subscription.
+- **Upstream API gap: computed camera fitting is unavailable.** MapLibre Compose
+  v0.16 exposes `MapState.animateCameraToBounds`, but no query that returns the
+  fitted camera before moving it. Add that shared API upstream, then use it in
+  `layers/PinsLayers.kt` to preserve the quarter-zoom margin, maximum zoom 19,
+  and zoom-difference-based duration from
+  `androidMain/.../components/PinsMapComponent.kt`. Verify off-center clusters,
+  overlapping pins, and clusters spanning the antimeridian.
 
-### Finish rendering and interaction parity
+### Restore background color after style replacement
 
-- **Confirmed: dynamic images are not registered.** Register the pin, marker,
-  and overlay images referenced by feature properties, using the existing
-  painter/resource helpers and MapLibre Compose's image APIs. Make the images
-  available before their features render and after style replacement. Preserve
-  density, pin dimensions/anchors, and overlay tint/halo behavior.
-- **Confirmed: cluster behavior differs.** Replace the expansion-zoom-only path
-  in `layers/PinsLayers.kt` and `MainMapViewModel.kt` with leaf fitting and recentering.
-  Preserve the quarter-zoom margin, maximum zoom 19, and zoom-difference-based
-  animation duration from `androidMain/.../components/PinsMapComponent.kt`.
-  Restore its cluster/dot/pin filters around zoom 13–15. Test off-center clusters,
-  overlapping pins, and clusters spanning the antimeridian. Test clicks followed
-  by style replacement or map disposal; cancel obsolete queries without
-  swallowing unrelated failures.
-- **Confirmed: visibility and selection inputs are incomplete.** Apply
-  `Overlay.hidesLayers`, including address-overlay suppression of house numbers.
-  Add selected-edit and selected-overlay-element highlighting, create-mode pin
-  suppression, and form-driven markers to the shared map inputs. Match the
-  behavior currently wired by `MainActivity` and `MainMapFragment`.
-- **Confirmed: click routing is incomplete.** Add a background-map click callback
-  after feature handlers decline the event. Make disabled or unrecognized overlay
-  features pass the event through instead of consuming it. Preserve the legacy
-  overlay hit radius, quest/edit/element callbacks, and long presses. Test handler
-  priority and pass-through behavior.
-- **Confirmed: the debug screen cannot exercise these states.** Extend
-  `screens/settings/debug/ShowMapScreen.kt`, which currently leaves location,
-  markers, selection, and tracks empty and uses no-op click callbacks. Add controls
-  for changing these inputs, switching quests/history/overlays, and exercising
-  focus and selection with real loaded data. Use the production `MainMap`.
+- **Confirmed on the Android emulator:** Open `ShowMapScreen`, move to a
+  downloaded area, and press **Reload style**. Areas with the earth/background
+  color turn black and remain black after 30 seconds, while road strokes,
+  buildings, and dynamic images still render. Leaving and re-entering the screen
+  restores the colors. Check the native `background` layer's `background-color`
+  and the renderer after replacing the base style; adopt the upstream fix if
+  the failure is below the shared style declarations. Verify repeated reloads
+  preserve the background color without recreating the map.
 
-Before replacing the Android host, exercise these updates and interactions through
-`ShowMapScreen`, including leaving and re-entering it.
+### Validate the shared map through the debug screen
+
+Before replacing the Android host, finish these checks through
+`screens/settings/debug/ShowMapScreen.kt` using the production `MainMap`:
+
+- Verify downloads, edits, replacements, deletions, and clearing update the
+  visible quest/overlay/history data.
+- Verify pin, marker, and overlay dimensions/anchors across densities, overlay
+  tint and halo, and selected-pin animation.
+- Verify address-overlay house-number suppression.
+- Verify feature-handler priority, disabled-overlay pass-through, and the overlay
+  hit radius. Click clusters immediately
+  before style replacement or leaving the map; obsolete queries must cancel
+  without hiding unrelated failures.
 
 ## Phase 2: replace the production map
 

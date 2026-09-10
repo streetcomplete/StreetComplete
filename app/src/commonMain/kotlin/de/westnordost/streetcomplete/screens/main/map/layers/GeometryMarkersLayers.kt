@@ -7,19 +7,24 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.preset_maki_circle
 import de.westnordost.streetcomplete.screens.main.map.byZoom
 import de.westnordost.streetcomplete.screens.main.map.isArea
 import de.westnordost.streetcomplete.screens.main.map.isPoint
+import de.westnordost.streetcomplete.screens.main.map.mapIconImage
 import de.westnordost.streetcomplete.ui.ktx.id
 import de.westnordost.streetcomplete.ui.theme.GeometryMarker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
+import org.maplibre.compose.expressions.dsl.case
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.dsl.not
+import org.maplibre.compose.expressions.dsl.switch
 import org.maplibre.compose.expressions.dsl.textOffset
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.expressions.value.LineJoin
@@ -63,11 +68,15 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
         cap = const(LineCap.Round),
         join = const(LineJoin.Round)
     )
+    val markerImages = markers.map { it.icon ?: Res.drawable.preset_maki_circle }.distinct().map { icon ->
+        case("marker_" + icon.id, mapIconImage(icon))
+    }
     SymbolLayer(
         id = "geo-symbols",
         source = source,
         filter = feature.isPoint(),
-        iconImage = image(feature["icon"].convertToString()),
+        iconImage = switch(feature["icon"].convertToString(), markerImages, image("")),
+        iconColor = const(Color.GeometryMarker),
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconAllowOverlap = const(true),
         textField = feature["label"].convertToString(),

@@ -16,11 +16,14 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -31,39 +34,23 @@ import kotlinx.serialization.json.long
 class EditHistoryPinsSource(
     private val editHistorySource: EditHistorySource
 ) {
+    @OptIn(ExperimentalCoroutinesApi::class)
     val pins: Flow<Collection<Pin>> = callbackFlow {
-        var pinsByKey = getAllEdits()
-            .withIndex()
-            .associateTo(HashMap()) { (index, edit) -> edit.key to edit.toEditPin(index) }
-
         val listener = object : EditHistorySource.Listener {
-            override fun onAdded(added: Edit) {
-                pinsByKey[added.key] = added.toEditPin(pinsByKey.size)
-                trySend(pinsByKey.values)
-            }
-            override fun onSynced(synced: Edit) {  }
-            override fun onDeleted(deleted: List<Edit>) {
-                deleted.forEach { pinsByKey.remove(it.key) }
-                trySend(pinsByKey.values)
-            }
-            override fun onInvalidated() {
-                launch {
-                    pinsByKey = getAllEdits()
-                        .withIndex()
-                        .associateTo(HashMap()) { (index, edit) -> edit.key to edit.toEditPin(index) }
-                }
-            }
+            override fun onAdded(added: Edit) { trySend(Unit) }
+            override fun onSynced(synced: Edit) { }
+            override fun onDeleted(deleted: List<Edit>) { trySend(Unit) }
+            override fun onInvalidated() { trySend(Unit) }
         }
-
-        send(pinsByKey.values)
+        // Subscribe before reading so edits made during the initial load are not lost.
         editHistorySource.addListener(listener)
-        awaitClose {
-            editHistorySource.removeListener(listener)
+        trySend(Unit)
+        awaitClose { editHistorySource.removeListener(listener) }
+    }.buffer(Channel.CONFLATED).mapLatest {
+        withContext(Dispatchers.IO) {
+            editHistorySource.getAll().mapIndexed { index, edit -> edit.toEditPin(index) }
         }
     }
-
-    private suspend fun getAllEdits(): List<Edit> =
-        withContext(Dispatchers.IO) { editHistorySource.getAll() }
 
     fun getEditKey(properties: JsonObject): EditKey? =
         properties.toEditKey()

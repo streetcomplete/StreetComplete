@@ -14,19 +14,17 @@ import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.util.math.contains
-import kotlinx.atomicfu.locks.ReentrantLock
-import kotlinx.atomicfu.locks.withLock
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancelChildren
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.flow.buffer
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -34,190 +32,102 @@ import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.long
 
-// TODO the issue with this construct is that it also pushes new updates while the layer that
-//      displays this is not actually visible
-
 class MapQuestPinsSource(
     private val questTypeOrderSource: QuestTypeOrderSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val visibleQuestsSource: VisibleQuestsSource
 ) {
-    private val viewLifecycleScope: CoroutineScope = CoroutineScope(SupervisorJob())
+    private val displayedRect = MutableStateFlow<TilesRect?>(null)
 
-    val pins: StateFlow<Collection<Pin>> get() = _pins
-    private val _pins = MutableStateFlow<Collection<Pin>>(emptyList())
+    // Only candidate keys survive inactivity; their current visibility and data are re-read.
+    private var multiMarkerQuestKeys = emptySet<QuestKey>()
 
-    // draw order in which the quest types should be rendered on the map
-    private val questTypeOrdersLock = ReentrantLock()
-    private val questTypeOrders: MutableMap<QuestType, Int> = mutableMapOf()
-
-    // last displayed rect of (zoom 16) tiles
-    private var lastDisplayedRect: TilesRect? = null
-
-    // quests in current view: key -> [pin, ...]
-    private val questsInView: MutableMap<QuestKey, List<Pin>> = mutableMapOf()
-    private val questsInViewMutex = Mutex()
-
-    private val visibleQuestsSourceMutex = Mutex()
-
-    private var updateJob: Job? = null
-
-    private val visibleQuestsListener = object : VisibleQuestsSource.Listener {
-        override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
-            val oldUpdateJob = updateJob
-            updateJob = viewLifecycleScope.launch {
-                oldUpdateJob?.join() // don't cancel, as updateQuestPins only updates existing data
-                updateQuestPins(added, removed)
+    val pins: Flow<Collection<Pin>> = channelFlow {
+        val questsInView = mutableMapOf<QuestKey, List<Pin>>()
+        displayedRect.collectLatest { rect ->
+            if (rect == null) {
+                questsInView.clear()
+                send(emptyList())
+                return@collectLatest
+            }
+            val bbox = rect.asBoundingBox(TILES_ZOOM)
+            var orders = emptyMap<QuestType, Int>()
+            events().collect { event ->
+                when (event) {
+                    Event.Reload -> {
+                        val (quests, questOrders) = withContext(Dispatchers.IO) {
+                            val types = questTypeRegistry.toMutableList()
+                            questTypeOrderSource.sort(types)
+                            // A long quest can have a visible marker but its center outside this view.
+                            val retained = multiMarkerQuestKeys.mapNotNull { visibleQuestsSource.get(it) }
+                                .filter { quest -> quest.markerLocations.any { it in bbox } }
+                            (retained + visibleQuestsSource.getAll(bbox)) to
+                                types.withIndex().associate { it.value to it.index }
+                        }
+                        orders = questOrders
+                        questsInView.clear()
+                        quests.forEach { questsInView[it.key] = it.toPins(orders) }
+                    }
+                    is Event.Updated -> {
+                        event.removed.forEach { questsInView.remove(it) }
+                        event.added.forEach { quest ->
+                            if (quest.markerLocations.any { it in bbox }) {
+                                questsInView[quest.key] = quest.toPins(orders)
+                            } else {
+                                questsInView.remove(quest.key)
+                            }
+                        }
+                    }
+                }
+                multiMarkerQuestKeys = questsInView.filterValues { it.size > 1 }.keys.toSet()
+                send(questsInView.values.flatten())
             }
         }
+    }.flowOn(Dispatchers.Default)
 
-        override fun onInvalidated() {
-            invalidate()
+    // Callbacks may arrive on different threads; only the collector mutates the displayed data.
+    private fun events(): Flow<Event> = callbackFlow {
+        val questsListener = object : VisibleQuestsSource.Listener {
+            override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
+                trySend(Event.Updated(added.toList(), removed.toList()))
+            }
+            override fun onInvalidated() { trySend(Event.Reload) }
         }
-    }
-
-    private val questTypeOrderListener = object : QuestTypeOrderSource.Listener {
-        override fun onQuestTypeOrderAdded(item: QuestType, toAfter: QuestType) {
-            reinitializeQuestTypeOrders()
+        val orderListener = object : QuestTypeOrderSource.Listener {
+            override fun onQuestTypeOrderAdded(item: QuestType, toAfter: QuestType) {
+                trySend(Event.Reload)
+            }
+            override fun onQuestTypeOrdersChanged() { trySend(Event.Reload) }
         }
-
-        override fun onQuestTypeOrdersChanged() {
-            reinitializeQuestTypeOrders()
+        visibleQuestsSource.addListener(questsListener)
+        questTypeOrderSource.addListener(orderListener)
+        trySend(Event.Reload)
+        awaitClose {
+            visibleQuestsSource.removeListener(questsListener)
+            questTypeOrderSource.removeListener(orderListener)
         }
-    }
-
-    init {
-        initializeQuestTypeOrders()
-        visibleQuestsSource.addListener(visibleQuestsListener)
-        questTypeOrderSource.addListener(questTypeOrderListener)
-    }
-
-    fun onDestroy() {
-        viewLifecycleScope.coroutineContext.cancelChildren()
-        visibleQuestsSource.removeListener(visibleQuestsListener)
-        questTypeOrderSource.removeListener(questTypeOrderListener)
-    }
-
-    fun getQuestKey(properties: JsonObject): QuestKey? =
-        properties.toQuestKey()
+    }.buffer(Channel.UNLIMITED)
 
     fun onMapMoved(zoom: Double, displayedArea: BoundingBox?) {
-        // require zoom >= 14, which is the lowest zoom level where quests are shown
+        if (displayedArea == null) {
+            displayedRect.value = null
+            return
+        }
+        // Keep the loaded data when zooming out, including clusters at zoom 13–14.
         if (zoom < 14) return
-        if (displayedArea == null) return
-        val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
-        // area too big -> skip (performance)
-        if (tilesRect.size > 32) return
-        val isNewRect = lastDisplayedRect?.contains(tilesRect) != true
-        if (!isNewRect) return
-        setQuestPins(tilesRect)
-        lastDisplayedRect = tilesRect
+        val rect = displayedArea.enclosingTilesRect(TILES_ZOOM)
+        if (rect.size > 32) return
+        if (displayedRect.value?.contains(rect) != true) displayedRect.value = rect
     }
 
-    private fun setQuestPins(tilesRect: TilesRect) {
-        /* Imagine you are panning the map fast, many different tiles come into and vanish from view
-           again quickly. Suppose, that fetching the data from DB takes longer than panning through
-           and out of a tile - we would end up with a long queue of DB fetches (and subsequent
-           map updates) of which the data is discarded immediately after because it is out of view
-           again.
-           So, what we do here is to discard each such update except the last one. All jobs started
-           in potentially quick succession have to wait at for the DB fetch to complete and will
-           stop when they have been cancelled in the meantime. The same with if they have been
-           cancelled just after the DB fetch etc. (The coroutine can be cancelled at every place
-           where you see that arrow with that green squiggle in the IDE)
-         */
-        updateJob?.cancel()
-        updateJob = viewLifecycleScope.launch {
-            val bbox = tilesRect.asBoundingBox(TILES_ZOOM)
-            setQuestPins(bbox)
-        }
-    }
+    fun getQuestKey(properties: JsonObject): QuestKey? = properties.toQuestKey()
 
-    private suspend fun setQuestPins(bbox: BoundingBox) {
-        val quests = visibleQuestsSourceMutex.withLock {
-            withContext(Dispatchers.IO) { visibleQuestsSource.getAll(bbox) }
-        }
-        val pins = questsInViewMutex.withLock {
-            /* Usually, we would call questsInView.clear() here. However,
-               quests have only a single position, but may have multiple pins (see
-               Quest::markerLocations), e.g. at the start and end of a long road. A pin of a quest
-               whose center is outside the current view may hence be within the current view. Quest
-               pins like these should not disappear when panning the map.
-               Therefore, only remove all quests that are not in view anymore that  ...
-             */
-            questsInView.entries.removeAll { (_, pins) ->
-                // only have one pin (pin position = quest position)
-                pins.size == 1 ||
-                // or have no pins in the current view
-                pins.none { it.position in bbox }
-            }
-            quests.forEach { questsInView[it.key] = createQuestPins(it) }
-            questsInView.values.flatten()
-        }
-        _pins.value = pins
-    }
+    private fun Quest.toPins(orders: Map<QuestType, Int>): List<Pin> =
+        markerLocations.map { Pin(it, type.icon, key.toProperties(), orders[type] ?: 0) }
 
-    private suspend fun updateQuestPins(added: Collection<Quest>, removed: Collection<QuestKey>) {
-        val pins = questsInViewMutex.withLock {
-            val displayedBBox = lastDisplayedRect?.asBoundingBox(TILES_ZOOM) ?: return
-            var hasChanges = false
-
-            removed.forEach {
-                if (questsInView.remove(it) != null) hasChanges = true
-            }
-            added.forEach {
-                if (displayedBBox.contains(it.position)) {
-                    questsInView[it.key] = createQuestPins(it)
-                    hasChanges = true
-                } else {
-                    if (questsInView.remove(it.key) != null) hasChanges = true
-                }
-            }
-
-            if (!hasChanges) return
-
-            questsInView.values.flatten()
-        }
-        _pins.value = pins
-    }
-
-    private fun createQuestPins(quest: Quest): List<Pin> {
-        val props = quest.key.toProperties()
-        val order = questTypeOrdersLock.withLock { questTypeOrders[quest.type] ?: 0 }
-        return quest.markerLocations.map { Pin(it, quest.type.icon, props, order) }
-    }
-
-    private fun initializeQuestTypeOrders() {
-        val sortedQuestTypes = questTypeRegistry.toMutableList()
-        questTypeOrderSource.sort(sortedQuestTypes)
-        questTypeOrdersLock.withLock {
-            questTypeOrders.clear()
-            sortedQuestTypes.forEachIndexed { index, questType ->
-                questTypeOrders[questType] = index
-            }
-        }
-    }
-
-    private fun reinitializeQuestTypeOrders() {
-        initializeQuestTypeOrders()
-        invalidate()
-    }
-
-    private fun invalidate() {
-        val rect = lastDisplayedRect
-        if (rect != null) {
-            setQuestPins(rect)
-        } else {
-            clear()
-        }
-    }
-
-    private fun clear() {
-        updateJob?.cancel()
-        updateJob = viewLifecycleScope.launch {
-            questsInViewMutex.withLock { questsInView.clear() }
-            _pins.value = emptyList()
-        }
+    private sealed interface Event {
+        data object Reload : Event
+        data class Updated(val added: List<Quest>, val removed: List<QuestKey>) : Event
     }
 
     companion object {

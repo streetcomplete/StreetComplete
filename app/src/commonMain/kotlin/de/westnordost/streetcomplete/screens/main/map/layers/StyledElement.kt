@@ -130,7 +130,7 @@ fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject>> {
             val label = if (style.label != null) {
                 Feature(
                     geometry.center.toGeometry(),
-                    JsonObject(mapOf("label" to JsonPrimitive(style.label)))
+                    JsonObject(createProperties(element.key, style.disabled) + ("label" to JsonPrimitive(style.label)))
                 )
             } else {
                 null
@@ -144,7 +144,7 @@ fun StyledElement.toGeoJsonFeatures(): List<Feature<Geometry, JsonObject>> {
 fun JsonObject.toElementKey(): ElementKey? {
     val id = get(ELEMENT_ID)?.jsonPrimitive?.longOrNull ?: return null
     val type = get(ELEMENT_TYPE)?.jsonPrimitive?.content ?: return null
-    return ElementKey(ElementType.valueOf(type), id)
+    return ElementKey(ElementType.entries.find { it.name == type } ?: return null, id)
 }
 fun JsonObject.isDisabled(): Boolean =
     get(DISABLED)?.jsonPrimitive?.booleanOrNull ?: false
@@ -171,7 +171,7 @@ private fun getLineWidth(tags: Map<String, String>): Float = when (tags["highway
 private fun isBridge(tags: Map<String, String>): Boolean =
     tags["bridge"] != null && tags["bridge"] != "no"
 
-private fun OverlayStyle.getIcon(): DrawableResource? = when (this) {
+fun OverlayStyle.getIcon(): DrawableResource? = when (this) {
     is OverlayStyle.Point -> icon
     is OverlayStyle.Polygon -> icon
     is OverlayStyle.Polyline -> null

@@ -1,23 +1,21 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
-import androidx.compose.ui.graphics.Color
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolygonsGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPolylinesGeometry
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.ktx.id
+import kotlin.collections.set
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import org.jetbrains.compose.resources.DrawableResource
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.Geometry
-import kotlin.collections.set
 
 /** Intermediate data structure for a geometry marker. The [icon] of a geometry marker shall be
- *  drawn with a [ColorFilterPainter][de.westnordost.streetcomplete.ui.util.ColorFilterPainter] in
- *  the color [Color.GeometryMarker] */
+ *  drawn with [de.westnordost.streetcomplete.screens.main.map.mapIconImage] */
 data class Marker(
     val geometry: ElementGeometry,
     /** drawable resource name */
@@ -35,7 +33,7 @@ fun Marker.toGeoJsonFeature(): List<Feature<Geometry, JsonObject>> {
         if (title != null) {
             p["label"] = JsonPrimitive(title)
         }
-        features.add(Feature(geometry.toGeometry(), JsonObject(p)))
+        features.add(Feature(geometry.center.toGeometry(), JsonObject(p)))
     }
 
     // polygon / polylines marker(s)

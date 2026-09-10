@@ -10,9 +10,13 @@ import de.westnordost.streetcomplete.screens.main.map.inMeters
 import de.westnordost.streetcomplete.screens.main.map.isArea
 import de.westnordost.streetcomplete.screens.main.map.isLines
 import de.westnordost.streetcomplete.screens.main.map.isPoint
+import de.westnordost.streetcomplete.screens.main.map.mapIconImage
+import de.westnordost.streetcomplete.ui.ktx.id
 import kotlinx.serialization.json.JsonObject
+import org.jetbrains.compose.resources.DrawableResource
 import org.maplibre.compose.expressions.dsl.all
 import org.maplibre.compose.expressions.dsl.asNumber
+import org.maplibre.compose.expressions.dsl.case
 import org.maplibre.compose.expressions.dsl.condition
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToBoolean
@@ -46,17 +50,21 @@ import org.maplibre.spatialk.geojson.Geometry
 @Composable
 fun StyleableOverlayLabelLayer(
     source: VectorSource,
+    icons: Collection<DrawableResource>,
     color: Color,
     haloColor: Color,
-    onClickElement: (properties: JsonObject) -> Unit,
+    onClickElement: (properties: JsonObject) -> ClickResult,
 ) {
+    val images = icons.distinct().map { icon ->
+        case(icon.id.orEmpty(), mapIconImage(icon))
+    }
     SymbolLayer(
         id = "overlay-symbols",
         source = source,
         minZoom = 17f,
         filter = feature.isPoint(),
         zOrder = const(SymbolZOrder.Source),
-        iconImage = image(feature["icon"].convertToString()),
+        iconImage = switch(feature["icon"].convertToString(), images, image("")),
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconColor = const(color),
         iconHaloColor = const(haloColor),
@@ -79,6 +87,7 @@ fun StyleableOverlayLabelLayer(
             fallback = const(false),
             21 to const(true)
         ),
+        hitPadding = 14.dp,
         onClick = { onClick(it, onClickElement) }
     )
 }
@@ -87,7 +96,7 @@ fun StyleableOverlayLabelLayer(
 @MaplibreComposable @Composable
 fun StyleableOverlayLayers(
     source: VectorSource,
-    onClickElement: (properties: JsonObject) -> Unit,
+    onClickElement: (properties: JsonObject) -> ClickResult,
 ) {
     val dashed = feature["dashed"].convertToBoolean()
     val opacity = feature["opacity"].convertToNumber()
@@ -115,6 +124,7 @@ fun StyleableOverlayLayers(
         filter = feature.isArea(),
         opacity = opacity,
         color = color,
+        hitPadding = 14.dp,
         onClick = { onClick(it, onClickElement) }
     )
     LineLayer(
@@ -127,6 +137,7 @@ fun StyleableOverlayLayers(
         width = width,
         cap = const(LineCap.Round),
         join = const(LineJoin.Round),
+        hitPadding = 14.dp,
         onClick = { onClick(it, onClickElement) }
     )
     LineLayer(
@@ -140,6 +151,7 @@ fun StyleableOverlayLayers(
         dasharray = const(listOf(1.5f, 1f)),
         cap = const(LineCap.Butt),  // because of dashed
         join = const(LineJoin.Round),
+        hitPadding = 14.dp,
         onClick = { onClick(it, onClickElement) }
     )
     LineLayer(
@@ -207,11 +219,10 @@ fun StyleableOverlaySideLayer(source: VectorSource, isBridge: Boolean) {
 
 private inline fun onClick(
     features: List<Feature<Geometry, JsonObject?>>,
-    onClickElement: (properties: JsonObject) -> Unit
+    onClickElement: (properties: JsonObject) -> ClickResult
 ): ClickResult {
     val properties = features.firstOrNull()?.properties ?: return ClickResult.Pass
-    onClickElement(properties)
-    return ClickResult.Consume
+    return onClickElement(properties)
 }
 
 private val MIN_ZOOM = 14f

@@ -53,6 +53,7 @@ import kotlin.math.max
 fun MapStyle(
     colors: MapColors,
     languages: List<String>,
+    hiddenLayers: Collection<String> = emptyList(),
     belowRoadsContent: @Composable @MaplibreComposable () -> Unit = {},
     belowRoadsOnBridgeContent: @Composable @MaplibreComposable () -> Unit = {},
     belowLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
@@ -173,7 +174,7 @@ fun MapStyle(
 
     belowLabelsContent()
 
-    LabelLayers(source, colors, languages)
+    LabelLayers(source, colors, languages, hiddenLayers)
 
     // I don't know, kind of does not look good due to missing extrusion outline.
     //BuildingExtrudeLayer(source, colors)
@@ -501,7 +502,12 @@ private fun BoundaryLayer(source: VectorSource, colors: MapColors) {
 }
 
 @Composable @MaplibreComposable
-private fun LabelLayers(source: VectorSource, colors: MapColors, languages: List<String>) {
+private fun LabelLayers(
+    source: VectorSource,
+    colors: MapColors,
+    languages: List<String>,
+    hiddenLayers: Collection<String>,
+) {
     val localizedName = feature.localizedName(languages)
     val haloWidth = const(2.5.dp)
     val textFont = const(listOf("Roboto Regular"))
@@ -538,6 +544,7 @@ private fun LabelLayers(source: VectorSource, colors: MapColors, languages: List
     )
     SymbolLayer(
         id = "labels-housenumbers",
+        visible = "labels-housenumbers" !in hiddenLayers,
         source = source,
         sourceLayer = "housenum_label",
         minZoom = 18f,

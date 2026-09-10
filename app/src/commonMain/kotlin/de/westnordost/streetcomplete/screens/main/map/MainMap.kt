@@ -20,6 +20,7 @@ fun MainMap(
     onClickQuest: (QuestKey) -> Unit,
     onClickEdit: (EditKey) -> Unit,
     modifier: Modifier = Modifier,
+    onMapClick: (ClickEvent) -> ClickResult = { ClickResult.Pass },
     onMapLongClick: (ClickEvent) -> ClickResult = { ClickResult.Pass },
     viewModel: MainMapViewModel = koinViewModel(),
 ) {
@@ -36,7 +37,12 @@ fun MainMap(
         modifier = modifier,
         state = viewModel.mapState,
         cameraConstraints = CameraConstraints(minZoom = 0.0, maxZoom = 22.0),
-        interactions = MapInteractions { callbacks { longClick { onEvent(onMapLongClick) } } },
+        interactions = MapInteractions {
+            callbacks {
+                click { onUnhandled(onMapClick) }
+                longClick { onEvent(onMapLongClick) }
+            }
+        },
         overlay = {},
     )
 }

@@ -5,6 +5,8 @@ migration branch. Delete this file before marking the PR ready for review.
 
 ## Scope and quality
 
+- Treat a focused, reviewable diff, idiomatic MapLibre Compose, and idiomatic
+  Kotlin as equal priorities.
 - Finish the production MapLibre Compose migration, preserving StreetComplete's
   Android behavior and keeping the map implementation shared for future iOS work.
   The full iOS Compose Multiplatform migration is outside this branch's scope.
