@@ -1,38 +1,32 @@
 package de.westnordost.streetcomplete.util.ktx
 
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.location.RecentLocations
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.spatialk.geojson.Position
-import org.maplibre.spatialk.units.extensions.meters
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.Instant
-import kotlin.time.TestTimeSource
+import kotlin.time.TimeSource
 
 class LocationTest {
-    private val measurement = LocationMeasurement(
-        position = Position(13.0, 52.0, 45.0),
-        horizontalAccuracy = 7.meters,
-        measuredAt = Instant.fromEpochMilliseconds(1_700_000_000_000L),
-    )
+    @Test fun `survey locations follow monotonic measurement order`() {
+        // Using a fix's age as its timestamp made RecentLocations treat older fixes as newer.
+        val mark = TimeSource.Monotonic.markNow()
+        val measurement = LocationMeasurement(
+            position = Position(2.0, 1.0),
+            measuredAt = Instant.fromEpochSeconds(100),
+        )
+        val older = LocationEvent.Update(measurement, mark - 10.seconds).toLocation()
+        val newer = LocationEvent.Update(
+            measurement.copy(position = Position(3.0, 1.0), measuredAt = Instant.fromEpochSeconds(90)),
+            mark,
+        ).toLocation()
 
-    @Test fun `survey age uses the monotonic measurement mark`() {
-        val time = TestTimeSource()
-        val event = LocationEvent.Update(measurement, time.markNow())
-        time += 12.seconds
-        val location = event.toLocation()
-        assertEquals(12.seconds, location.elapsedDuration)
-        assertEquals(LatLon(52.0, 13.0), location.position)
-        assertEquals(7f, location.accuracy)
-    }
-
-    @Test fun `convert measurement to trackpoint`() {
-        val trackpoint = measurement.toTrackpoint()
-        assertEquals(1_700_000_000_000L, trackpoint.time)
-        assertEquals(LatLon(52.0, 13.0), trackpoint.position)
-        assertEquals(7f, trackpoint.accuracy)
-        assertEquals(45f, trackpoint.elevation)
+        val recent = RecentLocations(60.seconds, 1.0, 1.seconds)
+        recent.add(older)
+        recent.add(newer)
+        assertEquals(listOf(newer, older), recent.getAll().toList())
     }
 }

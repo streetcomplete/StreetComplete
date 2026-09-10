@@ -42,20 +42,20 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
         @UiThread set(value) {
             if (field == value) return
             field = value
-            val locationMeasurement = this.locationMeasurement
-            if (locationMeasurement == null || value == null) {
+            val location = this.location
+            if (location == null || value == null) {
                 locationAnimation.cancel()
-                this.locationMeasurement = value
+                this.location = value
                 update()
             } else  {
-                locationAnimation.setObjectValues(locationMeasurement, value)
+                locationAnimation.setObjectValues(location, value)
                 locationAnimation.setEvaluator(locationTypeEvaluator)
                 locationAnimation.start()
             }
         }
 
     /** The location of the GPS location dot on the map (animated) */
-    var locationMeasurement: LocationMeasurement? = null
+    var location: LocationMeasurement? = null
         private set
 
     private val locationTypeEvaluator = object : TypeEvaluator<LocationMeasurement> {
@@ -64,12 +64,13 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
             val ep = e.position
             val sa = s.horizontalAccuracy
             val ea = e.horizontalAccuracy
+            // Preserve measuredAt from the target measurement while animating its position and accuracy.
             return e.copy(
                 position = Position(
                     longitude = normalizeLongitude(sp.longitude + (ep.longitude - sp.longitude) * fraction),
                     latitude = sp.latitude + (ep.latitude - sp.latitude) * fraction,
+                    altitude = ep.altitude,
                 ),
-                altitudeAccuracy = null,
                 horizontalAccuracy = if (ea != null && sa != null) {
                     sa + (ea - sa) * fraction.toDouble()
                 } else { null }
@@ -149,7 +150,7 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
         locationAnimation.duration = 600L
         locationAnimation.interpolator = AccelerateDecelerateInterpolator()
         locationAnimation.addUpdateListener {
-            locationMeasurement = locationAnimation.animatedValue as LocationMeasurement
+            location = locationAnimation.animatedValue as LocationMeasurement
             update()
         }
 
@@ -196,15 +197,15 @@ class CurrentLocationMapComponent(context: Context, mapStyle: Style, private val
 
     /** Update the GPS position shown on the map */
     private fun update() {
-        val locationMeasurement = this.locationMeasurement
-        if (locationMeasurement == null) {
+        val location = this.location
+        if (location == null) {
             locationSource.clear()
             return
         }
-        val pos = locationMeasurement.position
+        val pos = location.position
 
         val p = JsonObject()
-        p.addProperty("radius", locationMeasurement.horizontalAccuracy?.toDouble(International.Meters))
+        p.addProperty("radius", location.horizontalAccuracy?.toDouble(International.Meters))
         rotation?.let { p.addProperty("rotation", it) }
         map.style?.getLayerAs<CircleLayer>("accuracy")?.setProperties(
             circleRadius(inMeters(get("radius"), pos.latitude))

@@ -25,6 +25,23 @@ class RecentLocationsTest {
         )
     }
 
+    @Test fun `accepts first location with zero elapsedDuration`() {
+        val r = RecentLocations(10.seconds, 1.0, 1.seconds)
+        val location = Location(LatLon(0.0, 0.0), 1f, 0.seconds)
+        r.add(location)
+
+        assertEquals(location, r.getAll().toList().single())
+    }
+
+    @Test fun `accepts first location with negative elapsedDuration`() {
+        // A cached fix can predate the adapter's monotonic time origin.
+        val r = RecentLocations(10.seconds, 1.0, 1.seconds)
+        val location = Location(LatLon(0.0, 0.0), 1f, (-1).seconds)
+        r.add(location)
+
+        assertEquals(location, r.getAll().toList().single())
+    }
+
     @Test fun `getAll returns ordered by elapsedDuration descending`() {
         val r = RecentLocations(10.seconds, 1.0, 1.seconds)
         val l1 = Location(LatLon(0.0, 0.0), 1f, 1.seconds)

@@ -39,7 +39,6 @@ import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.util.ktx.dpToPx
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toLocation
-import de.westnordost.streetcomplete.util.ktx.toTrackpoint
 import de.westnordost.streetcomplete.util.ktx.viewLifecycleScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -57,8 +56,9 @@ import org.maplibre.compose.location.HeadingRequest
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.spatialk.units.Bearing
-import org.maplibre.spatialk.units.DMS
 import org.maplibre.spatialk.units.International
+import org.maplibre.spatialk.units.extensions.degrees
+import org.maplibre.spatialk.units.extensions.inDegrees
 import kotlin.time.Duration.Companion.milliseconds
 
 /** This is the map shown in the main view. It manages a map that shows the quest pins, quest
@@ -164,8 +164,8 @@ class MainMapFragment : MapFragment() {
         headingProvider = AndroidHeadingProvider(context)
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                headingProvider.updates(HeadingRequest(33.milliseconds)).collect { orientation ->
-                    onCompassRotationChanged(orientation)
+                headingProvider.updates(HeadingRequest(33.milliseconds)).collect { heading ->
+                    onCompassRotationChanged(heading)
                 }
             }
         }
@@ -174,8 +174,7 @@ class MainMapFragment : MapFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState != null) {
-            displayedLocation = savedInstanceState.getString(DISPLAYED_LOCATION)
-                ?.let { Json.decodeFromString<LocationMeasurement?>(it) }
+            displayedLocation = savedInstanceState.getString(DISPLAYED_LOCATION)?.let { Json.decodeFromString(it) }
             isRecordingTracks = savedInstanceState.getBoolean(TRACKS_IS_RECORDING)
             tracks = Json.decodeFromString(savedInstanceState.getString(TRACKS)!!)
         }
@@ -328,11 +327,9 @@ class MainMapFragment : MapFragment() {
         return true
     }
 
-    private fun onCompassRotationChanged(heading: HeadingMeasurement?) {
-        val rotation = heading?.bearing?.let { Bearing.North.clockwiseRotationTo(it) }
-            ?.toDouble(DMS.Degrees)
-        locationMapComponent?.targetRotation = rotation
-            ?.let { it - (map?.camera?.rotation ?: 0.0) }?.toFloat()
+    private fun onCompassRotationChanged(heading: HeadingMeasurement) {
+        val cameraBearing = Bearing.North + (map?.camera?.rotation ?: 0.0).degrees
+        locationMapComponent?.targetRotation = (heading.bearing - cameraBearing).inDegrees.toFloat()
     }
 
     fun onLocationEvent(locationEvent: LocationEvent) {
@@ -414,7 +411,12 @@ class MainMapFragment : MapFragment() {
                 tracksMapComponent?.startNewTrack(false)
             }
         }
-        val trackpoint = location.toTrackpoint()
+        val trackpoint = Trackpoint(
+            position = location.position.toLatLon(),
+            time = location.measuredAt.toEpochMilliseconds(),
+            accuracy = accuracy ?: 0f,
+            elevation = location.position.altitude?.toFloat() ?: 0f
+        )
 
         tracks.last().add(trackpoint)
         // in rare cases, onLocationChanged may already be called before the view has been created

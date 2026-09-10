@@ -120,8 +120,7 @@ class AutoSyncer(
                 val request = LocationRequest(LocationAccuracy.High, 30.seconds, 100.meters)
                 locationProvider.updatesWithPermission(request).collect { locationEvent ->
                     if (locationEvent is LocationEvent.Update) {
-                        val position = locationEvent.measurement.position
-                        val accuracy = locationEvent.measurement.horizontalAccuracy
+                        val (position, accuracy) = locationEvent.measurement
                         if (accuracy == null || accuracy < 300.meters) {
                             pos = LatLon(position.latitude, position.longitude)
                             triggerAutoDownload()
