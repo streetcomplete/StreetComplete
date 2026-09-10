@@ -196,8 +196,8 @@ kotlin {
                 // UI widgets
 
                 // Map
-                implementation("org.maplibre.compose:maplibre-compose:0.15.0")
-                implementation("org.maplibre.compose:location:0.15.0")
+                implementation("org.maplibre.compose:maplibre-compose:0.16.0")
+                implementation("org.maplibre.compose:location:0.16.0")
 
                 // non-lazy grid
                 // NOTE: might replace with
@@ -245,7 +245,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:3.5.1")
 
                 // map
-                implementation("org.maplibre.compose:maplibre-compose-runtime-vulkan-android:0.15.0")
+                implementation("org.maplibre.compose:maplibre-compose-runtime-vulkan-android:0.16.0")
 
                 // map and location
                 implementation("org.maplibre.gl:android-sdk-opengl:13.3.1")
@@ -263,6 +263,7 @@ kotlin {
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
 
                 implementation("io.ktor:ktor-client-mock:3.5.1")
                 implementation("androidx.sqlite:sqlite-bundled:2.7.0")

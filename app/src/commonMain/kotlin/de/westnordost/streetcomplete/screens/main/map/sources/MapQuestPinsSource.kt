@@ -13,7 +13,6 @@ import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
-import de.westnordost.streetcomplete.screens.main.map.toBoundingBox
 import de.westnordost.streetcomplete.util.math.contains
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
@@ -34,7 +33,6 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.long
-import org.maplibre.compose.camera.CameraState
 
 // TODO the issue with this construct is that it also pushes new updates while the layer that
 //      displays this is not actually visible
@@ -103,14 +101,10 @@ class MapQuestPinsSource(
     fun getQuestKey(properties: JsonObject): QuestKey? =
         properties.toQuestKey()
 
-    fun onMapMoved(cameraState: CameraState) {
+    fun onMapMoved(zoom: Double, displayedArea: BoundingBox?) {
         // require zoom >= 14, which is the lowest zoom level where quests are shown
-        val zoom = cameraState.position.zoom
         if (zoom < 14) return
-        val displayedArea = cameraState.viewport
-            ?.visibleBoundingBox
-            ?.toBoundingBox()
-            ?: return
+        if (displayedArea == null) return
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
         if (tilesRect.size > 32) return

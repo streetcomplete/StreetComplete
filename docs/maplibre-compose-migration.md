@@ -43,14 +43,8 @@ commit focused on one behavior, with its tests and corresponding plan deletions.
 
 ### Establish the current dependency and ownership model
 
-- Upgrade core, location, and Android runtime artifacts together from 0.15.0 to
-  released 0.16.0. Follow its map-state, source-handle, expression, viewport,
-  interaction, and location API changes, including existing location consumers
-  outside the map. Verify Android assembly and iOS shared-code compilation.
-- Let upstream `MapState` own renderer/camera/style state. Keep StreetComplete's
-  follow, focus, selection, and tracking policy in small shared components.
-  Give view models stable observable data and pass viewport values to data
-  sources instead of a renderer-owned `CameraState`.
+- Keep StreetComplete's follow, focus, selection, and tracking policy in small
+  shared components. Give view models stable observable data.
 - Establish runtime ownership for rendering and offline access, including
   background cleanup. Select and validate the Android renderer: the branch uses
   the Vulkan runtime while the production legacy map uses OpenGL.
@@ -83,10 +77,9 @@ Source paths below are under
   does not emit after invalidation reloads. Own one stable flow, publish immutable
   snapshots, and verify additions, deletions, invalidation, ordering, and keys.
 - **Needs validation: source lifetime and concurrent updates.** Quest and overlay
-  sources own scopes/listeners independently of visible layers; viewport updates
-  are triggered only by camera position. Define activation/visibility ownership
-  and observe viewport readiness and size changes. Verify superseded loads and
-  deltas cannot publish stale data after a newer viewport, clear, or disposal;
+  sources own scopes/listeners independently of visible layers. Define
+  activation/visibility ownership and validate viewport readiness and size changes.
+  Verify superseded loads and deltas cannot publish stale data after a newer viewport, clear, or disposal;
   verify reactivation reloads missed changes without duplicate listeners.
 
 ### Finish rendering and interaction parity
@@ -157,7 +150,7 @@ first frame and leaving/re-entering the screen. Compilation alone is insufficien
 - **Confirmed: the shared downloader is not used.** Android DI still selects
   `MapTilesDownloaderAndroid`; iOS selects its existing downloader. Wire
   `data/maptiles/MaplibreMapTilesDownloader.kt` to the rendering runtime's offline
-  manager and supply its currently unused pixel ratio through the current API.
+  manager.
 - **Confirmed: clearing can swallow cancellation.** The shared downloader catches
   all `Exception`s in `clear()`. Propagate cancellation and define partial-failure
   behavior. Verify cancelling a download reliably pauses work and preserves the
@@ -193,11 +186,9 @@ Only after the production acceptance gate passes:
 
 ## Validation and upstream follow-up still required
 
-- The initial audit compiled Android debug and iOS simulator Kotlin and passed
-  2,448 Android host tests (one skipped) with JDK 21 and UTC. The migration has no
-  added tests, and that run included no device validation. Establish targeted
-  regression coverage for the requirements above; do not equate the existing
-  suite with map parity or iOS compilation with framework/app rendering.
+- Establish targeted regression coverage for the remaining requirements above;
+  do not equate the existing suite with map parity or iOS compilation with
+  framework/app rendering.
 - Existing host-test CI runs on `master` pushes; APK building is manual. Ensure
   each reviewed migration revision has reproducible checks and explicit device
   evidence. Use JDK 21/UTC to avoid the date-format and timezone failures observed

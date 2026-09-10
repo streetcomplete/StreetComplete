@@ -7,6 +7,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.edithistory.EditKey
@@ -32,18 +33,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
+import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
-import org.maplibre.compose.camera.CameraState
-import org.maplibre.compose.camera.rememberCameraState
+import org.maplibre.compose.interaction.ClickEvent
+import org.maplibre.compose.interaction.ClickResult
+import org.maplibre.compose.interaction.MapInteractions
+import org.maplibre.compose.map.CameraConstraints
+import org.maplibre.compose.map.LocalMapState
+import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MaplibreMap
-import org.maplibre.compose.overlay.MapOverlay
+import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.style.BaseStyle
-import org.maplibre.compose.style.StyleState
-import org.maplibre.compose.style.rememberStyleState
-import org.maplibre.compose.util.ClickResult
-import org.maplibre.compose.util.MapClickHandler
+import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
@@ -77,11 +80,58 @@ fun MainMap(
     shownMarkers: Collection<Marker>?,
     isShowingUndoHistorySidebar: Boolean,
     modifier: Modifier = Modifier,
-    onMapLongClick: MapClickHandler = { _, _ -> ClickResult.Pass },
+    onMapLongClick: (ClickEvent) -> ClickResult = { ClickResult.Pass },
     viewModel: MainMapViewModel = koinViewModel(),
-    cameraState: CameraState = rememberCameraState(),
-    styleState: StyleState = rememberStyleState(),
+    runtime: MapRuntime = koinInject(),
 ) {
+    val mapState = rememberMapState(runtime = runtime, baseStyle = BaseStyle.Json(BASE_STYLE)) {
+        MainMapContent(
+            onClickOverlayElement = onClickOverlayElement,
+            onClickQuest = onClickQuest,
+            onClickEdit = onClickEdit,
+            location = location,
+            rotation = rotation,
+            isRecording = isRecording,
+            trackpoints = trackpoints,
+            oldTrackpointsLists = oldTrackpointsLists,
+            shownBottomSheet = shownBottomSheet,
+            shownMarkers = shownMarkers,
+            isShowingUndoHistorySidebar = isShowingUndoHistorySidebar,
+            viewModel = viewModel,
+        )
+    }
+    LaunchedEffect(mapState, viewModel) {
+        snapshotFlow { mapState.cameraPosition.zoom to mapState.viewport?.visibleBounds }
+            .collect { (zoom, bounds) ->
+                viewModel.onViewportChanged(zoom, bounds?.toBoundingBox()?.toBoundingBox())
+            }
+    }
+    MaplibreMap(
+        modifier = modifier,
+        state = mapState,
+        cameraConstraints = CameraConstraints(minZoom = 0.0, maxZoom = 22.0),
+        interactions = MapInteractions { callbacks { longClick { onEvent(onMapLongClick) } } },
+        overlay = {},
+    )
+}
+
+@Composable
+@MaplibreComposable
+private fun MainMapContent(
+    onClickOverlayElement: (ElementKey) -> Unit,
+    onClickQuest: (QuestKey) -> Unit,
+    onClickEdit: (EditKey) -> Unit,
+    location: Location?,
+    rotation: Float?,
+    isRecording: Boolean,
+    trackpoints: List<LatLon>,
+    oldTrackpointsLists: List<List<LatLon>>,
+    shownBottomSheet: ShownBottomSheet?,
+    shownMarkers: Collection<Marker>?,
+    isShowingUndoHistorySidebar: Boolean,
+    viewModel: MainMapViewModel,
+) {
+    val mapState = checkNotNull(LocalMapState.current)
     val coroutineScope = rememberCoroutineScope()
 
     val downloadedTiles by viewModel.downloadedTiles.collectAsState()
@@ -98,122 +148,108 @@ fun MainMap(
         else -> null
     }
 
-    LaunchedEffect(cameraState.position) {
-        viewModel.onViewportChanged(cameraState)
-    }
-
     fun zoomToCluster(targetZoom: Double) {
         coroutineScope.launch {
-            cameraState.animateTo(cameraState.position.copy(zoom = targetZoom))
+            mapState.animateCameraPosition(mapState.cameraPosition.copy(zoom = targetZoom))
         }
     }
 
-    MaplibreMap(
-        modifier = modifier,
-        baseStyle = BaseStyle.Json(BASE_STYLE),
-        zoomRange = 0f..22f,
-        cameraState = cameraState,
-        styleState = styleState,
-        onMapLongClick = onMapLongClick,
-        overlay = MapOverlay.None
-    ) {
-        val languages = listOf(Locale.current.language)
-        val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
+    val languages = listOf(Locale.current.language)
+    val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
 
-        val overlayData by produceState<List<Feature<Geometry, JsonObject>>>(emptyList()) {
-            value = withContext(Dispatchers.Default) {
-                styledElements.flatMap { it.toGeoJsonFeatures() }
+    val overlayData by produceState<List<Feature<Geometry, JsonObject>>>(emptyList()) {
+        value = withContext(Dispatchers.Default) {
+            styledElements.flatMap { it.toGeoJsonFeatures() }
+        }
+    }
+    val overlaySource = rememberGeoJsonSource(
+        data = GeoJsonData.Features(FeatureCollection(overlayData)),
+    )
+
+    MapStyle(
+        colors = colors,
+        languages = languages,
+        belowRoadsContent = {
+            // left-and-right lines should be rendered behind the actual road
+            if (showOverlay) {
+                StyleableOverlaySideLayer(
+                    source = overlaySource,
+                    isBridge = false
+                )
+            }
+        },
+        belowRoadsOnBridgeContent = {
+            // left-and-right lines should be rendered behind the actual bridge road
+            if (showOverlay) {
+                StyleableOverlaySideLayer(
+                    source = overlaySource,
+                    isBridge = true
+                )
+            }
+        },
+        belowLabelsContent = {
+            // labels should be on top of other layers
+            DownloadedAreaLayer(downloadedTiles)
+            if (showOverlay) {
+                StyleableOverlayLayers(
+                    source = overlaySource,
+                    onClickElement = { properties ->
+                        viewModel.getElementKey(properties)?.let { onClickOverlayElement(it) }
+                    }
+                )
+            }
+            TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
+        },
+        aboveLabelsContent = {
+            // these are always on top of everything else (including labels)
+            if (showOverlay) {
+                StyleableOverlayLabelLayer(
+                    source = overlaySource,
+                    color = colors.text,
+                    haloColor = colors.textOutline,
+                    onClickElement = { properties ->
+                        viewModel.getElementKey(properties)?.let { onClickOverlayElement(it) }
+                    }
+                )
+            }
+            shownMarkers?.let { markers ->
+                GeometryMarkersLayers(shownMarkers)
+            }
+            shownBottomSheet?.geometry?.let { geometry ->
+                FocusedGeometryLayers(geometry)
+            }
+
+            if (location != null) {
+                CurrentLocationLayers(location = location, rotation = rotation)
+            }
+
+            // normal quest pins are not shown while edit history sidebar is open
+            if (isShowingUndoHistorySidebar) {
+                PinsLayers(
+                    pins = editHistoryPins,
+                    onClickPin = { properties ->
+                        viewModel.getEditKey(properties)?.let { onClickEdit(it) }
+                    },
+                    onZoomToCluster = ::zoomToCluster
+                )
+            } else if (selectedQuest == null) {
+                PinsLayers(
+                    pins = questPins,
+                    onClickPin = { properties ->
+                        viewModel.getQuestKey(properties)?.let { onClickQuest(it) }
+                    },
+                    onZoomToCluster = ::zoomToCluster
+                )
+            }
+
+            if (selectedQuest != null) {
+                SelectedPinsLayer(
+                    icon = selectedQuest.type.icon,
+                    pinPositions = selectedQuest.markerLocations
+                )
             }
         }
-        val overlaySource = rememberGeoJsonSource(
-            data = GeoJsonData.Features(FeatureCollection(overlayData)),
-        )
-
-        MapStyle(
-            colors = colors,
-            languages = languages,
-            belowRoadsContent = {
-                // left-and-right lines should be rendered behind the actual road
-                if (showOverlay) {
-                    StyleableOverlaySideLayer(
-                        source = overlaySource,
-                        isBridge = false
-                    )
-                }
-            },
-            belowRoadsOnBridgeContent = {
-                // left-and-right lines should be rendered behind the actual bridge road
-                if (showOverlay) {
-                    StyleableOverlaySideLayer(
-                        source = overlaySource,
-                        isBridge = true
-                    )
-                }
-            },
-            belowLabelsContent = {
-                // labels should be on top of other layers
-                DownloadedAreaLayer(downloadedTiles)
-                if (showOverlay) {
-                    StyleableOverlayLayers(
-                        source = overlaySource,
-                        onClickElement = { properties ->
-                            viewModel.getElementKey(properties)?.let { onClickOverlayElement(it) }
-                        }
-                    )
-                }
-                TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
-            },
-            aboveLabelsContent = {
-                // these are always on top of everything else (including labels)
-                if (showOverlay) {
-                    StyleableOverlayLabelLayer(
-                        source = overlaySource,
-                        color = colors.text,
-                        haloColor = colors.textOutline,
-                        onClickElement = { properties ->
-                            viewModel.getElementKey(properties)?.let { onClickOverlayElement(it) }
-                        }
-                    )
-                }
-                shownMarkers?.let { markers ->
-                    GeometryMarkersLayers(shownMarkers)
-                }
-                shownBottomSheet?.geometry?.let { geometry ->
-                    FocusedGeometryLayers(geometry)
-                }
-
-                if (location != null) {
-                    CurrentLocationLayers(location = location, rotation = rotation)
-                }
-
-                // normal quest pins are not shown while edit history sidebar is open
-                if (isShowingUndoHistorySidebar) {
-                    PinsLayers(
-                        pins = editHistoryPins,
-                        onClickPin = { properties ->
-                            viewModel.getEditKey(properties)?.let { onClickEdit(it) }
-                        },
-                        onZoomToCluster = ::zoomToCluster
-                    )
-                } else if (selectedQuest == null) {
-                    PinsLayers(
-                        pins = questPins,
-                        onClickPin = { properties ->
-                            viewModel.getQuestKey(properties)?.let { onClickQuest(it) }
-                        },
-                        onZoomToCluster = ::zoomToCluster
-                    )
-                }
-
-                if (selectedQuest != null) {
-                    SelectedPinsLayer(
-                        icon = selectedQuest.type.icon,
-                        pinPositions = selectedQuest.markerLocations
-                    )
-                }
-            }
-        )
-    }
+    )
 }
 
 // need to refer to the local (font) resources platform-independently

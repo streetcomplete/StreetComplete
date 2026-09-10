@@ -12,7 +12,6 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.layers.isDisabled
 import de.westnordost.streetcomplete.screens.main.map.layers.toElementKey
-import de.westnordost.streetcomplete.screens.main.map.toBoundingBox
 import de.westnordost.streetcomplete.util.math.intersect
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -27,7 +26,6 @@ import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
-import org.maplibre.compose.camera.CameraState
 
 class StyleableOverlaySource(
     private val selectedOverlaySource: SelectedOverlaySource,
@@ -81,14 +79,10 @@ class StyleableOverlaySource(
         selectedOverlaySource.removeListener(selectedOverlayListener)
     }
 
-    fun onMapMoved(cameraState: CameraState) {
+    fun onMapMoved(zoom: Double, displayedArea: BoundingBox?) {
         // require zoom >= 14, which is the lowest zoom level where quests are shown
-        val zoom = cameraState.position.zoom
         if (zoom < 14) return
-        val displayedArea = cameraState.viewport
-            ?.visibleBoundingBox
-            ?.toBoundingBox()
-            ?: return
+        if (displayedArea == null) return
         val tilesRect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         // area too big -> skip (performance)
         if (tilesRect.size > 32) return

@@ -9,47 +9,38 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.map_pin_circle
-import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.ktx.id
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
-import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
-import org.maplibre.compose.expressions.dsl.all
-import org.maplibre.compose.expressions.dsl.any
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToNumber
 import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.div
 import org.maplibre.compose.expressions.dsl.feature
-import org.maplibre.compose.expressions.dsl.gt
-import org.maplibre.compose.expressions.dsl.gte
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.dsl.log2
-import org.maplibre.compose.expressions.dsl.lte
 import org.maplibre.compose.expressions.dsl.offset
 import org.maplibre.compose.expressions.dsl.plus
 import org.maplibre.compose.expressions.dsl.sp
+import org.maplibre.compose.expressions.dsl.textOffset
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.TranslateAnchor
+import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.SymbolLayer
+import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.GeoJsonOptions
 import org.maplibre.compose.sources.rememberGeoJsonSource
-import org.maplibre.compose.util.ClickResult
 import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
-import org.maplibre.spatialk.geojson.GeoJsonObject
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.Point
 
@@ -61,6 +52,7 @@ fun PinsLayers(
     onClickPin: (properties: JsonObject) -> Unit,
     onZoomToCluster: (targetZoom: Double) -> Unit,
 ) {
+    val mapState = checkNotNull(LocalMapState.current)
     val coroutineScope = rememberCoroutineScope()
 
     val features by produceState<List<Feature<Point, JsonObject>>>(emptyList()) {
@@ -82,7 +74,8 @@ fun PinsLayers(
     fun onClickCluster(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
         val feature = features.firstOrNull() ?: return ClickResult.Pass
         coroutineScope.launch {
-            onZoomToCluster(source.getClusterExpansionZoom(feature))
+            val handle = mapState.style.sources[source] ?: return@launch
+            onZoomToCluster(handle.getClusterExpansionZoom(feature))
         }
         return ClickResult.Consume
     }
@@ -105,7 +98,7 @@ fun PinsLayers(
         textField = feature["point_count"].convertToString(),
         textSize = (const(15f) + log2(feature["point_count"].convertToNumber()) / const(1.5f)).sp,
         textFont = const(listOf("Roboto Regular")),
-        textOffset = offset(0.em, 0.1.em),
+        textOffset = textOffset(0.em, 0.1.em),
         textAllowOverlap = const(true),
         textIgnorePlacement = const(true),
         onClick = ::onClickCluster,

@@ -6,12 +6,12 @@ import de.westnordost.streetcomplete.screens.main.map.toGeoJsonBoundingBox
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
-import kotlin.coroutines.cancellation.CancellationException
 import kotlinx.coroutines.flow.first
 import org.maplibre.compose.offline.DownloadProgress
 import org.maplibre.compose.offline.DownloadStatus
 import org.maplibre.compose.offline.OfflineManager
 import org.maplibre.compose.offline.OfflinePackDefinition
+import kotlin.coroutines.cancellation.CancellationException
 
 class MapLibreMapTilesDownloader(
     private val manager: OfflineManager,
@@ -25,7 +25,7 @@ class MapLibreMapTilesDownloader(
                 bounds = bbox.toGeoJsonBoundingBox(),
                 minZoom = 0,
                 maxZoom = 16,
-                //TODO maplibre-compose: pixelRatio = pixelRatio,
+                pixelRatio = pixelRatio,
             ),
             // store timestamp as metadata for deleting areas older than X
             metadata = nowAsEpochMilliseconds().toString().encodeToByteArray(),

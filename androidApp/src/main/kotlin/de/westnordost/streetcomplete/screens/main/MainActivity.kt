@@ -78,6 +78,7 @@ import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toOffset
 import de.westnordost.streetcomplete.util.ktx.toast
+import de.westnordost.streetcomplete.util.ktx.updatesWithPermission
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -89,11 +90,12 @@ import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
+import org.maplibre.compose.location.AndroidLocationProvider
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationPermission
-import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.LocationRequest
 import org.maplibre.compose.location.LocationUnavailableReason
 import org.maplibre.compose.location.SystemSettingsLauncher
@@ -131,7 +133,7 @@ class MainActivity :
 
     override val scope: Scope by activityScope()
 
-    private val autoSyncer: AutoSyncer by inject()
+    private val autoSyncer: AutoSyncer by inject { parametersOf(locationProvider) }
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
@@ -139,7 +141,7 @@ class MainActivity :
     private val questsHiddenSource: QuestsHiddenSource by inject()
     private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
-    private val locationProvider: LocationProvider by inject()
+    private val locationProvider by lazy { AndroidLocationProvider(this) }
     private val systemSettingsLauncher: SystemSettingsLauncher by inject()
     private val periodicCleaner: PeriodicCleaner by inject()
 
@@ -348,20 +350,24 @@ class MainActivity :
                 mainBottomSheetViewModel.closeBottomSheet()
             }
         }
-        observe(locationProvider.updates(LocationRequest())) { locationEvent ->
+        observe(locationProvider.updatesWithPermission(LocationRequest())) { locationEvent ->
             viewModel.locationState.value = when (locationEvent) {
-                is LocationEvent.Fix -> LocationState.UPDATING
+                is LocationEvent.Update -> LocationState.UPDATING
                 is LocationEvent.Unavailable -> when (locationEvent.reason) {
                     LocationUnavailableReason.ServicesDisabled -> LocationState.ALLOWED
                     LocationUnavailableReason.TemporarilyUnavailable -> LocationState.SEARCHING
                     LocationUnavailableReason.PermissionDenied -> LocationState.DENIED
                     LocationUnavailableReason.Unsupported,
-                    LocationUnavailableReason.Misconfigured,
                     LocationUnavailableReason.UnexpectedFailure -> null
                 }
             }
             mapFragment?.onLocationEvent(locationEvent)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        locationProvider.close()
     }
 
     override fun onStart() {
@@ -490,7 +496,7 @@ class MainActivity :
 
     private fun getDisplayedPoint(): PointF? {
         val mapFragment = mapFragment ?: return null
-        val displayedPosition = mapFragment.displayedLocation?.position?.value?.toLatLon() ?: return null
+        val displayedPosition = mapFragment.displayedLocation?.position?.toLatLon() ?: return null
         return mapFragment.getPointOf(displayedPosition)
     }
 
@@ -588,7 +594,7 @@ class MainActivity :
         viewModel.isRecordingTracks.value = false
         val mapFragment = mapFragment ?: return
         mapFragment.stopPositionTrackRecording()
-        val pos = mapFragment.displayedLocation?.position?.value?.toLatLon() ?: return
+        val pos = mapFragment.displayedLocation?.position?.toLatLon() ?: return
         composeNote(pos, mapFragment.recordedTracks.takeIf { it.isNotEmpty() })
     }
 

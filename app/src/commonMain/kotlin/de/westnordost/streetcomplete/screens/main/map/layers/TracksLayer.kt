@@ -18,7 +18,6 @@ import de.westnordost.streetcomplete.ui.theme.Recording
 import de.westnordost.streetcomplete.util.ktx.isApril1st
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.maplibre.spatialk.geojson.MultiLineString
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToBoolean
@@ -27,13 +26,12 @@ import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.sources.GeoJsonData
-import org.maplibre.compose.sources.Source
+import org.maplibre.compose.sources.VectorSource
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.GeometryCollection
 import org.maplibre.spatialk.geojson.LineString
-import org.maplibre.spatialk.geojson.toJson
 
 /** Display the path(s) walked on the map.
  *
@@ -113,7 +111,7 @@ fun TracksLayers(
 @MaplibreComposable @Composable
 private fun TracksLayer(
     id: String,
-    source: Source,
+    source: VectorSource,
     isRecording: Boolean = false,
     opacity: Float = 0.6f,
     isApril1st: Boolean = false,
@@ -128,7 +126,7 @@ private fun TracksLayer(
 @MaplibreComposable @Composable
 private fun TracksLayerApril1st(
     id: String,
-    source: Source,
+    source: VectorSource,
     isRecording: Boolean,
     opacity: Float,
 ) {
@@ -147,7 +145,7 @@ private fun TracksLayerApril1st(
 @MaplibreComposable @Composable
 private fun TracksLayerDefault(
     id: String,
-    source: Source,
+    source: VectorSource,
     isRecording: Boolean,
     opacity: Float,
 ) {

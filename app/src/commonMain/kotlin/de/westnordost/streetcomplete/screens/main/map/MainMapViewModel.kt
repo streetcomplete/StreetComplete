@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
@@ -23,7 +24,6 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
-import org.maplibre.compose.camera.CameraState
 
 abstract class MainMapViewModel : ViewModel() {
     /** Downloaded areas */
@@ -41,7 +41,7 @@ abstract class MainMapViewModel : ViewModel() {
     abstract val styleableElements: StateFlow<Collection<StyledElement>>
     abstract fun getElementKey(properties: JsonObject): ElementKey?
 
-    abstract fun onViewportChanged(cameraState: CameraState)
+    abstract fun onViewportChanged(zoom: Double, displayedArea: BoundingBox?)
 }
 
 class MainMapViewModelImpl(
@@ -87,9 +87,9 @@ class MainMapViewModelImpl(
         mapQuestPinsSource.onDestroy()
     }
 
-    override fun onViewportChanged(cameraState: CameraState) {
-        mapQuestPinsSource.onMapMoved(cameraState)
-        styleableOverlaySource.onMapMoved(cameraState)
+    override fun onViewportChanged(zoom: Double, displayedArea: BoundingBox?) {
+        mapQuestPinsSource.onMapMoved(zoom, displayedArea)
+        styleableOverlaySource.onMapMoved(zoom, displayedArea)
     }
 
     private suspend fun getDownloadedTiles() = withContext(Dispatchers.IO) {

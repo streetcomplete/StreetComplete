@@ -5,7 +5,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.screens.main.map.byZoom
 import de.westnordost.streetcomplete.screens.main.map.inMeters
 import de.westnordost.streetcomplete.screens.main.map.isArea
@@ -26,17 +25,18 @@ import org.maplibre.compose.expressions.dsl.not
 import org.maplibre.compose.expressions.dsl.offset
 import org.maplibre.compose.expressions.dsl.step
 import org.maplibre.compose.expressions.dsl.switch
+import org.maplibre.compose.expressions.dsl.textOffset
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.expressions.value.LineJoin
 import org.maplibre.compose.expressions.value.SymbolAnchor
 import org.maplibre.compose.expressions.value.SymbolZOrder
+import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.layers.FillExtrusionLayer
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.layers.SymbolLayer
-import org.maplibre.compose.sources.Source
-import org.maplibre.compose.util.ClickResult
+import org.maplibre.compose.sources.VectorSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.Geometry
@@ -45,7 +45,7 @@ import org.maplibre.spatialk.geojson.Geometry
 @MaplibreComposable
 @Composable
 fun StyleableOverlayLabelLayer(
-    source: Source,
+    source: VectorSource,
     color: Color,
     haloColor: Color,
     onClickElement: (properties: JsonObject) -> Unit,
@@ -69,8 +69,8 @@ fun StyleableOverlayLabelLayer(
         textFont = const(listOf("Roboto Regular")),
         textAnchor = const(SymbolAnchor.Top),
         textOffset = switch(
-            condition(feature.has("icon"), offset(0.em, 1.em)),
-            fallback = offset(0.em, 0.em)
+            condition(feature.has("icon"), textOffset(0.em, 1.em)),
+            fallback = textOffset(0.em, 0.em)
         ),
         textSize = const(16.sp),
         textOptional = const(true),
@@ -86,7 +86,7 @@ fun StyleableOverlayLabelLayer(
 /** Display styled map data */
 @MaplibreComposable @Composable
 fun StyleableOverlayLayers(
-    source: Source,
+    source: VectorSource,
     onClickElement: (properties: JsonObject) -> Unit,
 ) {
     val dashed = feature["dashed"].convertToBoolean()
@@ -168,7 +168,7 @@ fun StyleableOverlayLayers(
 
 /** Display styled left-right-of-line map data */
 @MaplibreComposable @Composable
-fun StyleableOverlaySideLayer(source: Source, isBridge: Boolean) {
+fun StyleableOverlaySideLayer(source: VectorSource, isBridge: Boolean) {
     val bridge = feature["bridge"].convertToBoolean()
     val dashed = feature["dashed"].convertToBoolean()
     val opacity = feature["opacity"].convertToNumber()
