@@ -2,13 +2,17 @@ package de.westnordost.streetcomplete.util.ktx
 
 import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import org.maplibre.compose.location.LocationEvent
 import org.maplibre.spatialk.units.International
+import kotlin.time.TimeSource
 
-fun org.maplibre.compose.location.Location.toLocation(): Location =
+private val locationTimeMark = TimeSource.Monotonic.markNow()
+
+fun LocationEvent.Update.toLocation(): Location =
     Location(
-        position = position.value.toLatLon(),
-        accuracy = position.accuracy?.toFloat(International.Meters) ?: 0f,
-        elapsedDuration = timestamp.elapsedNow(),
+        position = measurement.position.toLatLon(),
+        accuracy = measurement.horizontalAccuracy?.toFloat(International.Meters) ?: 0f,
+        elapsedDuration = locationTimeMark.elapsedNow() - measurementMark.elapsedNow(),
     )
 
 fun org.maplibre.spatialk.geojson.Position.toLatLon(): LatLon =
