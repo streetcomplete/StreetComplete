@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.util.locale
 import androidx.compose.ui.text.intl.Locale
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class CurrencyFormatElementsTest {
 
@@ -35,18 +36,21 @@ class CurrencyFormatElementsTest {
     }
 
     @Test fun `of Japan Yen`() {
-        val actual = CurrencyFormatElements.of(Locale("ja-JP"))
-        assertEquals(
-            CurrencyFormatElements(
-                symbol = "￥",
-                isSymbolBeforeAmount = true,
-                hasWhitespace = false,
-                decimalDigits = 0,
-                decimalSeparator = null,
-                groupingSeparator = ',',
-            ),
-            actual.copy(symbol = actual.symbol.replace('¥', '￥'))
+        val expected = CurrencyFormatElements(
+            symbol = "￥",
+            isSymbolBeforeAmount = true,
+            hasWhitespace = false,
+            decimalDigits = 0,
+            decimalSeparator = null,
+            groupingSeparator = ',',
         )
+        val actual = CurrencyFormatElements.of(Locale("ja-JP"))
+        assertTrue(actual.symbol in listOf("￥", "¥"))
+        assertEquals(expected.isSymbolBeforeAmount, actual.isSymbolBeforeAmount)
+        assertEquals(expected.hasWhitespace, actual.hasWhitespace)
+        assertEquals(expected.decimalDigits, actual.decimalDigits)
+        assertEquals(expected.decimalSeparator, actual.decimalSeparator)
+        assertEquals(expected.groupingSeparator, actual.groupingSeparator)
     }
 
     @Test fun `of US Dollar`() {

@@ -22,29 +22,29 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>> {
     // The general filter is used for both:
     private val generalFilter by lazy { """
         ways, relations with
-         !maxweight and maxweight:signed != no
-         and !maxaxleload
-         and !maxbogieweight
-         and !maxweight:hgv and !maxweight:bus and !maxweight:hgv_articulated and !maxweight:tourist_bus and !maxweight:coach
-         and !maxweightrating and !maxweightrating:hgv and !maxweightrating:bus and !hgv
-         and !maxunladenweight and !maxunladenweight:hgv and !maxunladenweight:bus
-         and vehicle !~ private|no
-         and (access !~ private|no or (foot and foot !~ private|no))
-         and area != yes
+          !maxweight and maxweight:signed != no
+          and !maxaxleload
+          and !maxbogieweight
+          and !maxweight:hgv and !maxweight:bus and !maxweight:hgv_articulated and !maxweight:tourist_bus and !maxweight:coach
+          and !maxweightrating and !maxweightrating:hgv and !maxweightrating:bus and !hgv
+          and !maxunladenweight and !maxunladenweight:hgv and !maxunladenweight:bus
+          and vehicle !~ private|no
+          and (access !~ private|no or (foot and foot !~ private|no))
+          and area != yes
     """.toElementFilterExpression() }
 
     private val highwayFilter by lazy { """
         ways with
-         highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service|busway
-         and bridge and bridge != no
-         and service != driveway
-         and motor_vehicle !~ private|no
+          highway ~ trunk|trunk_link|primary|primary_link|secondary|secondary_link|tertiary|tertiary_link|unclassified|residential|living_street|service|busway
+          and bridge and bridge != no
+          and service != driveway
+          and motor_vehicle !~ private|no
     """.toElementFilterExpression() }
 
     private val ferryFilter by lazy { """
         ways, relations with
-         route = ferry
-         and motor_vehicle = yes
+          route = ferry
+          and motor_vehicle = yes
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify maximum allowed weights"

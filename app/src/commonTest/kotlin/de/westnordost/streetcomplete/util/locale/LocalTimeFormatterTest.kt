@@ -26,12 +26,13 @@ class LocalTimeFormatterTest {
         )
         assertTrue(
             LocalTimeFormatter(
-                german,
+                locale = german,
                 timeZone = TimeZone.of("CET"),
-                style = DateTimeFormatStyle.Full,
-            ).format(time) in setOf(
+                style = DateTimeFormatStyle.Full
+            ).format(time) in listOf(
                 "12:23:40 Mitteleuropäische Zeit",
                 "12:23:40 Mitteleuropäische Normalzeit",
+
             )
         )
     }

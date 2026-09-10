@@ -20,11 +20,11 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
         nodes, ways with
-        amenity = fuel
-        and (
+          amenity = fuel
+          and (
             !compressed_air
             or compressed_air older today -6 years
-        )
+          )
     """
 
     override val changesetComment = "Survey availability of air compressors"
@@ -36,8 +36,8 @@ class AddAirCompressor : OsmFilterQuestType<Boolean>() {
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
             nodes, ways with
-            compressed_air = yes
-            or amenity ~ compressed_air|fuel
+              compressed_air = yes
+              or amenity ~ compressed_air|fuel
         """)
 
     @Composable

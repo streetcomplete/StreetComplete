@@ -15,8 +15,8 @@ class AddFireHydrantRef : OsmFilterQuestType<FireHydrantRefAnswer>() {
 
     override val elementFilter = """
         nodes with
-        emergency = fire_hydrant
-        and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
+          emergency = fire_hydrant
+          and !name and !ref and noref != yes and ref:signed != no and !~"ref:.*"
     """
     override val changesetComment = "Determine fire hydrant refs"
     override val wikiLink = "Key:ref"

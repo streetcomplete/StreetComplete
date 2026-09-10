@@ -91,7 +91,8 @@ fun AddAddressStreetForm(
  *  he answered it in this session */
 private var lastWasPlaceName = false
 
-private val roadsWithNamesFilter by lazy {
-    "ways with highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")} and name"
-        .toElementFilterExpression()
-}
+private val roadsWithNamesFilter by lazy { """
+    ways with
+      highway ~ ${(ALL_ROADS + ALL_PATHS).joinToString("|")}
+      and name
+""".toElementFilterExpression() }

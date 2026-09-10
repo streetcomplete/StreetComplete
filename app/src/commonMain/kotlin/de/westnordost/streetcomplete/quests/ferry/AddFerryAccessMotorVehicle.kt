@@ -19,10 +19,11 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddFerryAccessMotorVehicle : OsmElementQuestType<Boolean> {
 
-    private val filter by lazy {
-        "ways, relations with route = ferry and !motor_vehicle"
-            .toElementFilterExpression()
-    }
+    private val filter by lazy { """
+        ways, relations with
+          route = ferry and !motor_vehicle
+    """.toElementFilterExpression() }
+
     override val changesetComment = "Specify ferry access for motor vehicles"
     override val wikiLink = "Tag:route=ferry"
     override val icon = Res.drawable.quest_ferry

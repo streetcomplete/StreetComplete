@@ -19,7 +19,10 @@ import org.jetbrains.compose.resources.stringResource
 
 class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
 
-    override val elementFilter = "nodes, ways with shop = laundry and !self_service"
+    override val elementFilter = """
+        nodes, ways with
+          shop = laundry and !self_service
+    """
     override val changesetComment = "Survey whether laundries provide self-service"
     override val wikiLink = "Tag:shop=laundry"
     override val icon = Res.drawable.quest_laundry

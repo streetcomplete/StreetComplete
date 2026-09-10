@@ -108,10 +108,6 @@ fun inMeters(
     width: Expression<NumberValue<Number>>,
     latitude: Double = 30.0
 ): Expression<NumberValue<Dp>> {
-    // the more north you go, the smaller of an area each mercator tile actually covers
-    // the additional factor of 1.20 comes from a simple measuring test with a ruler on a
-    // smartphone screen done at approx. latitude = 0 and latitude = 70, i.e. without it, lines are
-    // drawn at both latitudes approximately 20% too large ¯\_(ツ)_/¯
     val sizeFactor = metersSizeFactor(latitude)
     return interpolate(
         exponential(2f), zoom(),
@@ -132,5 +128,9 @@ fun inMeters(
     ).dp
 }
 
+// the more north you go, the smaller of an area each mercator tile actually covers
+// the additional factor of 1.20 comes from a simple measuring test with a ruler on a
+// smartphone screen done at approx. latitude = 0 and latitude = 70, i.e. without it, lines are
+// drawn at both latitudes approximately 20% too large ¯\_(ツ)_/¯
 internal fun metersSizeFactor(latitude: Double): Float =
     (cos(PI * latitude / 180) * 1.2).toFloat()

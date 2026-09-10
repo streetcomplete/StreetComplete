@@ -152,8 +152,8 @@ class AddHousenumber(
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.filter("""
             nodes, ways, relations with
-            (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
-            and !name and !brand and !operator and !ref
+              (addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber)
+              and !name and !brand and !operator and !ref
         """.toElementFilterExpression())
 
     @Composable
@@ -191,8 +191,8 @@ private val nonMultipolygonRelationsWithAddressFilter by lazy { """
 """.toElementFilterExpression() }
 
 private val nodesWithAddressFilter by lazy { """
-   nodes with
-     addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
+    nodes with
+      addr:housenumber or addr:housename or addr:conscriptionnumber or addr:streetnumber
 """.toElementFilterExpression() }
 
 private val buildingsWithMissingAddressFilter by lazy { """

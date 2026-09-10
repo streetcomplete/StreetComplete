@@ -21,24 +21,28 @@ class TimeFormatElementsTest {
     }
 
     @Test fun fr_CA() {
+        val expected = TimeFormatElements()
         val actual = TimeFormatElements.of(Locale("fr-CA"))
-        assertEquals(
-            TimeFormatElements(),
-            actual.copy(hourSeparator = ":")
-        )
-        assertTrue(actual.hourSeparator == ":" || actual.hourSeparator == " h ")
+
+        assertEquals(expected.clock12, actual.clock12)
+        assertTrue(actual.hourSeparator in listOf(" h ", ":")) // differs per platform
+        assertEquals(expected.before, actual.before)
+        assertEquals(expected.after, actual.after)
+        assertEquals(expected.zero, actual.zero)
     }
 
     @Test fun es_PA() {
+        val expected = TimeFormatElements()
         val actual = TimeFormatElements.of(Locale("es-PA"))
-        assertEquals(
-            TimeFormatElements(clock12 = Clock12Elements("a. m.", "p. m.")),
-            actual.copy(
-                clock12 = actual.clock12?.let {
-                    it.copy(am = it.am.replace(' ', ' '), pm = it.pm.replace(' ', ' '))
-                }
-            )
-        )
+
+        assertTrue(actual.clock12 in listOf(
+            Clock12Elements("a. m.", "p. m."),
+            Clock12Elements("a. m.", "p. m.")
+        )) // differs per platform
+        assertEquals(expected.hourSeparator, actual.hourSeparator)
+        assertEquals(expected.before, actual.before)
+        assertEquals(expected.after, actual.after)
+        assertEquals(expected.zero, actual.zero)
     }
 
     @Test fun ko() {
@@ -49,29 +53,40 @@ class TimeFormatElementsTest {
     }
 
     @Test fun bg() {
-        assertEquals(
-            TimeFormatElements(),
-            TimeFormatElements.of(Locale("bg"))
-        )
+        val expected = TimeFormatElements()
+        val actual = TimeFormatElements.of(Locale("bg"))
+
+        assertEquals(expected.clock12, actual.clock12)
+        assertEquals(expected.hourSeparator, actual.hourSeparator)
+        assertEquals(expected.before, actual.before)
+        assertTrue(actual.after in listOf("ч.", "")) // differs per platform
+        assertEquals(expected.zero, actual.zero)
     }
 
     @Test fun my() {
+        val expected = TimeFormatElements()
         val actual = TimeFormatElements.of(Locale("my"))
-        assertEquals(
-            TimeFormatElements(),
-            actual.copy(zero = '0')
-        )
+
+        assertEquals(expected.clock12, actual.clock12)
+        assertEquals(expected.hourSeparator, actual.hourSeparator)
+        assertEquals(expected.before, actual.before)
+        assertEquals(expected.after, actual.after)
+        assertTrue(actual.zero in listOf('0', '၀')) // differs per platform
     }
 
     @Test fun dz() {
-        val actual = TimeFormatElements.of(Locale("dz"))
-        assertEquals(
-            TimeFormatElements(
-                clock12 = Clock12Elements("སྔ་ཆ་", "ཕྱི་ཆ་"),
-                hourSeparator = " སྐར་མ་ ",
-                before = "ཆུ་ཚོད་"
-            ),
-            actual.copy(zero = '0')
+        val expected = TimeFormatElements(
+            clock12 = Clock12Elements("སྔ་ཆ་", "ཕྱི་ཆ་"),
+            hourSeparator = " སྐར་མ་ ",
+            before = "ཆུ་ཚོད་",
+            after = "",
         )
+        val actual = TimeFormatElements.of(Locale("dz"))
+
+        assertEquals(expected.clock12, actual.clock12)
+        assertEquals(expected.hourSeparator, actual.hourSeparator)
+        assertEquals(expected.before, actual.before)
+        assertEquals(expected.after, actual.after)
+        assertTrue(actual.zero in listOf('0', '༠')) // differs per platform
     }
 }

@@ -24,20 +24,22 @@ class LocalDateTimeFormatterTest {
         )
         assertTrue(
             LocalDateTimeFormatter(
-                german,
+                locale = german,
                 timeZone = TimeZone.of("CET"),
-                dateStyle = DateTimeFormatStyle.Long,
-            ).format(dateTime) in setOf(
+                dateStyle = DateTimeFormatStyle.Long
+            ).format(dateTime) in listOf(
                 "8. November 1985, 18:30:24 MEZ",
                 "8. November 1985 um 18:30:24 MEZ",
             )
         )
         assertTrue(
             LocalDateTimeFormatter(
-                german,
+                locale = german,
                 timeZone = TimeZone.of("CET"),
-                dateStyle = DateTimeFormatStyle.Full,
-            ).format(dateTime) in setOf(
+                dateStyle = DateTimeFormatStyle.Full
+            ).format(dateTime) in listOf(
+                "Freitag, 8. November 1985, 18:30:24 Mitteleuropäische Zeit",
+                "Freitag, 8. November 1985 um 18:30:24 Mitteleuropäische Zeit",
                 "Freitag, 8. November 1985, 18:30:24 Mitteleuropäische Normalzeit",
                 "Freitag, 8. November 1985 um 18:30:24 Mitteleuropäische Normalzeit",
             )
