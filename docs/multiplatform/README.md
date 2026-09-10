@@ -110,6 +110,20 @@ iOS port's remaining gaps.
 See [upstream findings](03-maplibre-compose-upstream.md) and
 [validation evidence](04-validation.md).
 
+## Upstream integration on 2026-09-10
+
+The probe incorporates `upstream/maplibre-compose` at `ccb6dd7d7` and
+`upstream/master` at `4fd03a05d`. The PR continues to target `maplibre-compose`.
+Upstream has absorbed several probe fixes: native edit-action and time-mode
+serialization, locale defaults and portable test expectations, map style
+corrections, and background feature preparation.
+
+The remaining diff uses upstream's explicit edit-action serializer directly and
+adopts its locale assertions, retaining additional locale coverage. The map keeps
+the released 0.16 APIs, keyed background preparation, declarative animation, and
+eager image publication ordering documented above. Time controls retain the native
+system hour-cycle preference when app language is automatic.
+
 ## Local development settings
 
 `mise.toml` contains shared commands and the Java version. Ignored `mise.local.toml`

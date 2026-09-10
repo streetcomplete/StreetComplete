@@ -38,8 +38,6 @@ class ElementEditsDao(
     private val db: Database,
     private val allEditTypes: AllEditTypes,
 ) {
-    private val actionSerializer = PolymorphicSerializer(ElementEditAction::class)
-
     private val json = Json {
         serializersModule = SerializersModule {
             polymorphic(ElementEditAction::class) {
@@ -107,7 +105,7 @@ class ElementEditsDao(
         LONGITUDE to position.longitude,
         CREATED_TIMESTAMP to createdTimestamp,
         IS_SYNCED to if (isSynced) 1 else 0,
-        ACTION to json.encodeToString(actionSerializer, action),
+        ACTION to json.encodeToString(PolymorphicSerializer(ElementEditAction::class), action),
         IS_NEAR_USER_LOCATION to if (isNearUserLocation) 1 else 0
     )
 
@@ -118,7 +116,7 @@ class ElementEditsDao(
         getString(SOURCE),
         getLong(CREATED_TIMESTAMP),
         getInt(IS_SYNCED) == 1,
-        json.decodeFromString(actionSerializer, getString(ACTION)),
+        json.decodeFromString(PolymorphicSerializer(ElementEditAction::class), getString(ACTION)),
         getInt(IS_NEAR_USER_LOCATION) == 1,
     )
 }

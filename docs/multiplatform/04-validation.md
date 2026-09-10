@@ -4,6 +4,24 @@ Validation claims in this file distinguish compilation, automated tests, and
 interactive runtime evidence. A compile result is not treated as proof of feature
 parity.
 
+## Upstream integration on 2026-09-10
+
+Merged `upstream/maplibre-compose` at `ccb6dd7d7` and `upstream/master` at
+`4fd03a05d`. Duplicate native serialization and locale-test implementations were
+reconciled with upstream while preserving the 0.16 map integration.
+
+- Desktop and iOS simulator source compilation and Android debug APK assembly pass.
+- The full Android host suite reports 2,552 tests, no failures or errors, and one skip.
+- Focused map, offline, autosync, locale, edit-serialization, and postbox collection-time
+  suites pass on desktop and iOS simulator. The iOS run reports 146 tests, no failures
+  or skips. Test filters: `*screens.main.map.*`, `*MapLibreMapTilesDownloaderTest`,
+  `*AutoSyncerTest`, `*util.locale.*`, `*util.ktx.LocaleTest`, `*ElementEditsDaoTest`,
+  and `*CollectionTimes*Test`, applied to `:app:desktopTest` and
+  `:app:iosSimulatorArm64Test`.
+- The additional `*TimeModeTest` saver round-trip passes on desktop and iOS simulator.
+- No new interactive device run was performed.
+- Build and host-suite command: `mise exec -- ./gradlew :app:compileKotlinDesktop :app:compileKotlinIosSimulatorArm64 :androidApp:assembleDebug :app:testAndroidHostTest --console=plain`.
+
 ## Idiomatic MapLibre Compose usage sweep on 2026-09-09
 
 The release update is followed by a source-wide usage audit, recorded in
