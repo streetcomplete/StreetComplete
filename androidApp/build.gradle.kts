@@ -1,12 +1,20 @@
 import java.io.FileInputStream
 import java.util.Properties
+import java.util.zip.ZipFile
 
 val appVersionName = "63.4"
 val appVersionCode = 6308
+val mapLibreComposeVersion = providers.gradleProperty("mapLibreComposeVersion").get()
 
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
+}
+
+configurations.configureEach {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.maplibre.compose") useVersion(mapLibreComposeVersion)
+    }
 }
 
 android {
@@ -69,19 +77,12 @@ dependencies {
 
     // Android / UI
     implementation("androidx.activity:activity-compose:1.13.0")
-    implementation("com.google.android.material:material:1.14.0")
-    implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("androidx.fragment:fragment-ktx:1.8.6")
-
     // Compose
     implementation("org.jetbrains.compose.runtime:runtime:1.12.0")
     implementation("org.jetbrains.compose.ui:ui:1.12.0")
     implementation("org.jetbrains.compose.material:material:1.12.0")
     implementation("org.jetbrains.compose.components:components-resources:1.12.0")
     debugImplementation("androidx.compose.ui:ui-tooling:1.10.0")
-
-    // location
-    implementation("org.maplibre.compose:location:0.15.0")
 
     // Dependency Injection
     implementation("io.insert-koin:koin-android:4.2.2")
@@ -113,4 +114,22 @@ if (keystorePropertiesFile.exists()) {
     releaseSigningConfig.storePassword = props.getProperty("storePassword")
     releaseSigningConfig.keyAlias = props.getProperty("keyAlias")
     releaseSigningConfig.keyPassword = props.getProperty("keyPassword")
+}
+
+tasks.register("verifyDebugMapGlyphAssets") {
+    group = "verification"
+    description = "Verifies all shared MapLibre glyphs are packaged in the debug APK."
+    dependsOn("assembleDebug")
+    val apk = layout.buildDirectory.file("outputs/apk/debug/androidApp-debug.apk")
+    inputs.file(apk)
+    doLast {
+        val prefix = "assets/composeResources/de.westnordost.streetcomplete.resources/files/glyphs/"
+        ZipFile(apk.get().asFile).use { zip ->
+            val glyphs = zip.entries().asSequence()
+                .filter { !it.isDirectory && it.name.startsWith(prefix) && it.name.endsWith(".pbf") }
+                .toList()
+            check(glyphs.size == 512) { "Expected 512 shared glyph assets, found ${glyphs.size}" }
+            check(glyphs.all { it.size > 0L }) { "Shared glyph assets in the APK must not be empty" }
+        }
+    }
 }

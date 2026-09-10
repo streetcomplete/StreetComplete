@@ -38,4 +38,10 @@ internal class CurrencyFormatterTest {
 
     private fun formatter(localeTag: String) =
         CurrencyFormatter(Locale(localeTag))
+
+    @Test fun `krona in Norway`() {
+        val f = formatter("nb-NO")
+        assertEquals("1\u00A0538,00\u00A0kr", f.format(1538.00))
+        assertEquals("NOK", f.currencyCode)
+    }
 }

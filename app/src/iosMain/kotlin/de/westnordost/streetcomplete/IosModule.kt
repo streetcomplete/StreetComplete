@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete
 
-import androidx.sqlite.driver.bundled.BundledSQLiteDriver
+import androidx.sqlite.driver.NativeSQLiteDriver
 import com.russhwolf.settings.NSUserDefaultsSettings
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmfeatures.FeatureDictionary
@@ -12,20 +12,20 @@ import de.westnordost.streetcomplete.data.StreetCompleteDatabaseConfigurator
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.IosActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
-import de.westnordost.streetcomplete.data.download.IosDownloadController
+import de.westnordost.streetcomplete.data.download.Downloader
 import de.westnordost.streetcomplete.data.initialize
-import de.westnordost.streetcomplete.data.maptiles.IosMapTilesDownloader
+import de.westnordost.streetcomplete.data.maptiles.MapLibreMapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.IosChangesetAutoCloser
-import de.westnordost.streetcomplete.data.upload.IosUploadController
+import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.OpenChangesetsManager
+import de.westnordost.streetcomplete.data.sync.CoroutineChangesetAutoCloser
+import de.westnordost.streetcomplete.data.sync.CoroutineDownloadController
+import de.westnordost.streetcomplete.data.sync.CoroutineUploadController
+import de.westnordost.streetcomplete.data.sync.IosBackgroundSyncController
 import de.westnordost.streetcomplete.data.upload.UploadController
+import de.westnordost.streetcomplete.data.upload.Uploader
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
 import de.westnordost.streetcomplete.screens.about.IosAppStoreInfo
-import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.IosEmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.IosMapAppLauncher
-import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.IosArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
@@ -33,6 +33,7 @@ import de.westnordost.streetcomplete.util.error_reporting.EmptyCrashReportHolder
 import de.westnordost.streetcomplete.util.sound.IosSoundEffectPlayer
 import de.westnordost.streetcomplete.util.sound.SoundEffectPlayer
 import kotlinx.cinterop.ExperimentalForeignApi
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
@@ -43,12 +44,16 @@ import org.maplibre.compose.location.IosLocationProvider
 import org.maplibre.compose.location.IosSystemSettingsLauncher
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.SystemSettingsLauncher
+import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.MapRuntimeOptions
+import org.maplibre.compose.map.createMapRuntime
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSBundle
 import platform.Foundation.NSCachesDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDefaults
 import platform.Foundation.NSUserDomainMask
+import platform.UIKit.UIScreen
 
 private val COMPOSE_FILES_DIR = NSBundle.mainBundle.resourcePath +
     "/compose-resources/composeResources/de.westnordost.streetcomplete.resources/files"
@@ -79,16 +84,9 @@ val iosModule = module {
     // database
 
     single<Database> {
-        val appSupportUrl = NSFileManager.defaultManager.URLForDirectory(
-            directory = NSApplicationSupportDirectory,
-            inDomain = NSUserDomainMask,
-            appropriateForURL = null,
-            create = true,
-            error = null
-        )!!
-        val databaseUrl = appSupportUrl.URLByAppendingPathComponent(ApplicationConstants.DATABASE_NAME)!!
-        val databaseFilePath = databaseUrl.path!!
-        val databaseConnection = BundledSQLiteDriver().open(databaseFilePath)
+        val databaseConnection = NativeSQLiteDriver().open(
+            applicationSupportPath(ApplicationConstants.DATABASE_NAME).toString()
+        )
         DatabaseImpl(databaseConnection).apply { initialize(StreetCompleteDatabaseConfigurator) }
     } onClose { it?.close() }
 
@@ -116,7 +114,7 @@ val iosModule = module {
 
     // location
 
-    factory<LocationProvider> { IosLocationProvider() }
+    single<LocationProvider> { IosLocationProvider() }
     factory<SystemSettingsLauncher> { IosSystemSettingsLauncher() }
 
     // settings
@@ -129,17 +127,61 @@ val iosModule = module {
 
     // connection
 
-    factory<ActiveNetworkConnection> { IosActiveNetworkConnection() }
+    single<ActiveNetworkConnection> { IosActiveNetworkConnection() }
+
+    // map runtime and offline base-map storage
+
+    single<MapRuntime> { createMapRuntime(MapRuntimeOptions()) }
+    factory<MapTilesDownloader> {
+        MapLibreMapTilesDownloader(
+            manager = get<MapRuntime>().offlineManager,
+            pixelRatio = UIScreen.mainScreen.scale.toFloat(),
+        )
+    }
 
     // background jobs
 
-    single<UploadController> { IosUploadController() }
+    single {
+        IosBackgroundSyncController(
+            get<CoroutineScope>(named("ApplicationScope")),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+            get(),
+        )
+    }
 
-    single<DownloadController> { IosDownloadController() }
+    single<UploadController> {
+        CoroutineUploadController(get<CoroutineScope>(named("ApplicationScope")), get<Uploader>())
+    }
 
-    factory<ChangesetAutoCloser> { IosChangesetAutoCloser() }
+    single<DownloadController> {
+        CoroutineDownloadController(get<CoroutineScope>(named("ApplicationScope")), get<Downloader>())
+    }
+
+    single<ChangesetAutoCloser> {
+        CoroutineChangesetAutoCloser(
+            get<CoroutineScope>(named("ApplicationScope")),
+        ) {
+            // Resolve this only when delayed work runs: OpenChangesetsManager itself needs the
+            // auto-closer, so eager constructor injection would form a Koin resolution cycle.
+            get<OpenChangesetsManager>().closeOldChangesets()
+        }
+    }
 
     factory<PeriodicCleaner> { IosPeriodicCleaner() }
+}
 
-    factory<MapTilesDownloader> { IosMapTilesDownloader() }
+@OptIn(ExperimentalForeignApi::class)
+private fun applicationSupportPath(fileName: String): Path {
+    val appSupportUrl = NSFileManager.defaultManager.URLForDirectory(
+        directory = NSApplicationSupportDirectory,
+        inDomain = NSUserDomainMask,
+        appropriateForURL = null,
+        create = true,
+        error = null
+    )!!
+    return Path(appSupportUrl.URLByAppendingPathComponent(fileName)!!.path!!)
 }

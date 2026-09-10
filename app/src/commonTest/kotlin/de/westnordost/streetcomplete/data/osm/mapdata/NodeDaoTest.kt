@@ -131,6 +131,9 @@ class NodeDaoTest : StreetCompleteDatabaseTestCase() {
         val nodes = dao.getAll(BoundingBox(0.0, 0.0, 1.0, 2.0))
         assertTrue(nodes.containsExactlyInAnyOrder(inside))
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }
 
 private fun nd(

@@ -30,6 +30,9 @@ class UserLinksDaoTest : StreetCompleteDatabaseTestCase() {
         dao.addAll(listOf(ONE, TWO, THREE))
         assertEquals(listOf(ONE, TWO, THREE), dao.getAll())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }
 
 private const val ONE = "one"

@@ -9,6 +9,7 @@ app/release
 **/build/
 !src/**/build/
 local.properties
+/mise.local.toml
 .idea
 !.idea/codeStyles
 !.idea/icon.svg

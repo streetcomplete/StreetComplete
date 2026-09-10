@@ -51,4 +51,11 @@ class DateFormatElementsTest {
             DateFormatElements.of(Locale("bg"))
         )
     }
+
+    @Test fun th_TH() {
+        assertEquals(
+            DateFormatElements(listOf(Day, Month, Year), "/"),
+            DateFormatElements.of(Locale("th-TH"))
+        )
+    }
 }

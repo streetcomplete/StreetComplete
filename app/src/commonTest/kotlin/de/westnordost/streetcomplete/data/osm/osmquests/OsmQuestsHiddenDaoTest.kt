@@ -73,4 +73,7 @@ class OsmQuestsHiddenDaoTest : StreetCompleteDatabaseTestCase() {
         dao.add(OsmQuestKey(ElementType.NODE, 123L, "bla"))
         assertEquals(1, dao.countAll())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

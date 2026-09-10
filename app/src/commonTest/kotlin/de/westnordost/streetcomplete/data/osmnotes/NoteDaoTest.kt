@@ -117,6 +117,9 @@ class NoteDaoTest : StreetCompleteDatabaseTestCase() {
         dao.clear()
         assertTrue(dao.getAll(listOf(1L, 2L, 3L)).isEmpty())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }
 
 private fun createNote(
@@ -128,4 +131,5 @@ private fun createNote(
     val user = User(5, "PingPong")
     val comment = NoteComment(timestampCreated, NoteComment.Action.OPENED, "hi", user)
     return Note(position, id, timestampCreated, timestampClosed, Note.Status.OPEN, listOf(comment))
+
 }

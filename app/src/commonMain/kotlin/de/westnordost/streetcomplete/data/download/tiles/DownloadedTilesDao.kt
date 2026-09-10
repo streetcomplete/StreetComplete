@@ -10,11 +10,14 @@ import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 
 /** Keeps info in which areas things have been downloaded already in a tile grid */
 @Mockable
-class DownloadedTilesDao(private val db: Database) {
+class DownloadedTilesDao(
+    private val db: Database,
+    private val now: () -> Long = ::nowAsEpochMilliseconds,
+) {
 
     /** Persist that the given tile range has been downloaded (now) */
     fun put(tilesRect: TilesRect) {
-        val time = nowAsEpochMilliseconds()
+        val time = now()
         val tiles = tilesRect.asTilePosSequence()
         db.replaceMany(NAME,
             columnNames = arrayOf(X, Y, DATE),

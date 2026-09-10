@@ -1,12 +1,22 @@
 package de.westnordost.streetcomplete
 
+import de.westnordost.streetcomplete.data.sync.IosBackgroundSyncController
+import de.westnordost.streetcomplete.data.sync.IosBackgroundSyncHandle
+import org.koin.core.Koin
 import org.koin.core.context.startKoin
 
-// called from iOSApp.swift
+private lateinit var koin: Koin
+
 fun initKoin() {
-    val koinApp = startKoin {
-        modules(iosModule, commonModule)
+    val koinApplication = startKoin {
+        modules(
+            iosModule,
+            commonModule,
+        )
     }
-    val koin = koinApp.koin
-    koin.get<ApplicationInitializer>().initialize()
+    koin = koinApplication.koin
+    koin.get<ApplicationInitializer>().initialize(schedulePeriodicCleanup = true)
 }
+
+fun startIosBackgroundSync(completion: (Boolean) -> Unit): IosBackgroundSyncHandle =
+    koin.get<IosBackgroundSyncController>().start(completion)

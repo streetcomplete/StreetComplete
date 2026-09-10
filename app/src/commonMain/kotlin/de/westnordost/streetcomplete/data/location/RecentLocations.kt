@@ -22,7 +22,7 @@ class RecentLocations(
             var previous: Location? = null
             for (location in locations) {
                 if (previous != null && (
-                    previous.elapsedDuration - location.elapsedDuration < minTimeDifference ||
+                    previous.measuredAt - location.measuredAt < minTimeDifference ||
                     location.position.flatDistanceTo(previous.position) < minDistanceMeters
                 )) continue
 
@@ -34,13 +34,13 @@ class RecentLocations(
 
     fun add(location: Location): Unit = lock.withLock {
         // only add newer locations
-        val firstDuration = locations.firstOrNull()?.elapsedDuration ?: Duration.ZERO
-        if (firstDuration >= location.elapsedDuration) return@withLock
+        val firstInstant = locations.firstOrNull()?.measuredAt
+        if (firstInstant != null && firstInstant >= location.measuredAt) return@withLock
 
         // clear from deque all older than `maxAge` before inserting new
         while (
             locations.isNotEmpty() &&
-            locations.last().elapsedDuration <= location.elapsedDuration - maxAge
+            locations.last().measuredAt <= location.measuredAt - maxAge
         ) {
             locations.removeLast()
         }

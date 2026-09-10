@@ -66,4 +66,18 @@ class CurrencyFormatElementsTest {
             CurrencyFormatElements.of(Locale("en-US"))
         )
     }
+
+    @Test fun `of Norway Krona`() {
+        assertEquals(
+            CurrencyFormatElements(
+                symbol = "kr",
+                isSymbolBeforeAmount = false,
+                hasWhitespace = true,
+                decimalDigits = 2,
+                decimalSeparator = ',',
+                groupingSeparator = '\u00A0',
+            ),
+            CurrencyFormatElements.of(Locale("nb-NO"))
+        )
+    }
 }

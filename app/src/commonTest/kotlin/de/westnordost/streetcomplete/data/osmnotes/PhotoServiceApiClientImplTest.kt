@@ -12,8 +12,14 @@ import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.runBlocking
 import kotlinx.io.IOException
+import kotlinx.io.buffered
 import kotlinx.io.files.SystemFileSystem
+import kotlinx.io.files.Path
+import kotlinx.io.files.SystemTemporaryDirectory
+import kotlinx.io.writeString
 import kotlinx.serialization.SerializationException
+import kotlin.random.Random
+import kotlin.test.AfterTest
 import kotlin.test.Test
 import kotlin.test.assertContentEquals
 import kotlin.test.assertEquals
@@ -21,15 +27,27 @@ import kotlin.test.assertFailsWith
 
 class PhotoServiceApiClientImplTest {
 
-    private val picture = "src/commonTest/resources/hai_phong_street.jpg"
     private val fileSystem = SystemFileSystem
+    private val picture = Path(
+        SystemTemporaryDirectory,
+        "streetcomplete-photo-service-${Random.nextLong()}.jpg"
+    )
+
+    init {
+        fileSystem.sink(picture).buffered().use { it.writeString("JPEG test content") }
+    }
+
+    @AfterTest
+    fun deletePicture() {
+        fileSystem.delete(picture, mustExist = false)
+    }
 
     @Test
     fun `upload makes POST request with file contents and returns response`() = runBlocking {
         val mockEngine = MockEngine { respondOk("{\"future_url\": \"market.jpg\"}") }
         val client = PhotoServiceApiClientImpl(fileSystem, HttpClient(mockEngine), "http://example.com/")
 
-        val response = client.upload(listOf(picture))
+        val response = client.upload(listOf(picture.toString()))
 
         assertEquals(1, mockEngine.requestHistory.size)
         assertEquals(HttpMethod.Post, mockEngine.requestHistory[0].method)
@@ -41,7 +59,7 @@ class PhotoServiceApiClientImplTest {
 
     @Test
     fun `upload throws ConnectionException on such errors`(): Unit = runBlocking {
-        val pics = listOf(picture)
+        val pics = listOf(picture.toString())
 
         assertFailsWith(ConnectionException::class) {
             client(MockEngine { throw IOException() }).upload(pics)

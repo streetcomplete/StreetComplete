@@ -55,4 +55,7 @@ class QuestTypeOrderDaoTest : StreetCompleteDatabaseTestCase() {
         assertTrue(dao.getAll(0).isNotEmpty())
         assertTrue(dao.getAll(1).isEmpty())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

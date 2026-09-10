@@ -105,4 +105,7 @@ class OsmQuestDaoTest : StreetCompleteDatabaseTestCase() {
     ) = BasicOsmQuestDaoEntry(elementType, elementId, questTypeName, pos)
 
     private fun p(x: Double, y: Double): LatLon = LatLon(y, x)
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

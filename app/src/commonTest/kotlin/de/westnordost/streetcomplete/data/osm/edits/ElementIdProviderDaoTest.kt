@@ -101,4 +101,7 @@ class ElementIdProviderDaoTest : StreetCompleteDatabaseTestCase() {
             dao.get(1L).getAll()
         )
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

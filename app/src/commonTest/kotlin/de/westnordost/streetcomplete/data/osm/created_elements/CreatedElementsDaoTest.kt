@@ -41,4 +41,7 @@ class CreatedElementsDaoTest : StreetCompleteDatabaseTestCase() {
         dao.clear()
         assertTrue(dao.getAll().isEmpty())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

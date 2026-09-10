@@ -9,13 +9,14 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.isInPolygon
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 import de.westnordost.streetcomplete.util.math.measuredArea
+import org.maplibre.compose.util.VisibleBounds
+import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.LineString
 import org.maplibre.spatialk.geojson.MultiLineString
 import org.maplibre.spatialk.geojson.MultiPolygon
 import org.maplibre.spatialk.geojson.Point
 import org.maplibre.spatialk.geojson.Polygon
 import org.maplibre.spatialk.geojson.Position
-import org.maplibre.spatialk.geojson.Geometry
 
 typealias GeoJsonBoundingBox = org.maplibre.spatialk.geojson.BoundingBox
 
@@ -34,6 +35,9 @@ fun GeoJsonBoundingBox.toBoundingBox(): BoundingBox =
         maxLatitude = northeast.latitude,
         maxLongitude = northeast.longitude
     )
+
+fun VisibleBounds.toStreetCompleteBoundingBox(): BoundingBox =
+    toBoundingBox().toBoundingBox()
 
 fun ElementGeometry.toGeometry(): Geometry = when (this) {
     is ElementPointGeometry -> toGeometry()

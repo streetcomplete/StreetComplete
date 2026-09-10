@@ -164,6 +164,9 @@ class RelationDaoTest : StreetCompleteDatabaseTestCase() {
         dao.clear()
         assertTrue(dao.getAll(listOf(1L, 2L, 3L)).isEmpty())
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }
 
 private fun rel(

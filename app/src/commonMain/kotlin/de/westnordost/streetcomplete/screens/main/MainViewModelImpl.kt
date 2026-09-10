@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main
 
-import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
@@ -33,7 +32,6 @@ import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterController
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
-import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
@@ -78,7 +76,6 @@ class MainViewModelImpl(
     private val noteEditsSource: NoteEditsSource,
     private val prefs: Preferences,
 ) : MainViewModel() {
-
     /* error handling */
     override val lastCrashReport = MutableStateFlow<String?>(null)
 
@@ -104,17 +101,15 @@ class MainViewModelImpl(
         withContext(Dispatchers.IO) { errorReportBuilder.createErrorReport(error) }
 
     /* start parameters */
-    override fun setUri(uri: String) {
-        launch {
-            urlConfig.value = parseShownUrlConfig(uri)
+    override suspend fun setUri(uri: String) {
+        urlConfig.value = parseShownUrlConfig(uri)
 
-            val geo = parseGeoUri(uri)
-            if (geo != null) {
-                val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
-                val pos = LatLon(geo.latitude, geo.longitude)
+        val geo = parseGeoUri(uri)
+        if (geo != null) {
+            val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
+            val pos = LatLon(geo.latitude, geo.longitude)
 
-                geoUri.value = CameraPosition(pos, 0.0, 0.0, zoom)
-            }
+            geoUri.value = CameraPosition(pos, 0.0, 0.0, zoom)
         }
     }
 
@@ -414,20 +409,6 @@ class MainViewModelImpl(
         val syncedEdits = if (isShowingStarsCurrentWeek) editCountCurrentWeek else editCount
         syncedEdits + unsyncedEdits
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
-
-    override val locationState: MutableStateFlow<LocationState?> = MutableStateFlow(LocationState.ENABLED)
-    override val mapCamera = MutableStateFlow<CameraPosition?>(null)
-    override val metersPerDp = MutableStateFlow(0.0)
-    override val displayedPosition = MutableStateFlow<Offset?>(null)
-
-    override val isFollowingPosition = MutableStateFlow(false)
-    override val isNavigationMode = MutableStateFlow(false)
-
-    override val isRecordingTracks = MutableStateFlow(false)
-
-    override val userHasMovedCamera = MutableStateFlow(false)
-
-    // ---------------------------------------------------------------------------------------
 
     init {
         launch(Dispatchers.IO) {

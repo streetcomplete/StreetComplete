@@ -90,13 +90,14 @@ fun Feature.localizedName(
     extraNameKeys: List<String>
 ): Expression<StringValue> {
     val localizedNameKeys = languages.map(localizedNameKey) + extraNameKeys
-    val getLocalizedName = coalesce(*localizedNameKeys.map { get(it) }.toTypedArray())
-    val getName = get(nameKey).cast<StringValue>()
+    val getLocalizedName = if (localizedNameKeys.isEmpty()) const("") else
+        coalesce(*localizedNameKeys.map { get(it) }.toTypedArray()).convertToString()
+    val getName = get(nameKey).convertToString()
     return switch(
         // localized name set and different as main name -> show both
         condition(
-            test = all(getLocalizedName.convertToBoolean(), getName neq getLocalizedName.cast()),
-            output = getName + const("\n") + getLocalizedName.cast()
+            test = all(getLocalizedName.convertToBoolean(), getName neq getLocalizedName),
+            output = getName + const("\n") + getLocalizedName
         ),
         // otherwise just show the name
         fallback = getName
@@ -131,5 +132,5 @@ fun inMeters(
 // the additional factor of 1.20 comes from a simple measuring test with a ruler on a
 // smartphone screen done at approx. latitude = 0 and latitude = 70, i.e. without it, lines are
 // drawn at both latitudes approximately 20% too large ¯\_(ツ)_/¯
-private fun metersSizeFactor(latitude: Double): Float =
+internal fun metersSizeFactor(latitude: Double): Float =
     (cos(PI * latitude / 180) * 1.2).toFloat()

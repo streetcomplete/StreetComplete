@@ -4,9 +4,9 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.util.ktx.toNSLocale
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toNSDateComponents
+import kotlinx.datetime.toInstant
+import kotlinx.datetime.toNSDate
 import kotlinx.datetime.toNSTimeZone
-import platform.Foundation.NSCalendar
 import platform.Foundation.NSDateFormatter
 
 actual class LocalDateTimeFormatter actual constructor(
@@ -15,6 +15,7 @@ actual class LocalDateTimeFormatter actual constructor(
     dateStyle: DateTimeFormatStyle,
     timeStyle: DateTimeFormatStyle,
 ) {
+    private val timeZone = timeZone
     private val formatter = NSDateFormatter().also {
         if (locale != null) it.locale = locale.toNSLocale()
         it.dateStyle = dateStyle.toNSDateFormatterStyle()
@@ -23,8 +24,7 @@ actual class LocalDateTimeFormatter actual constructor(
     }
 
     actual fun format(dateTime: LocalDateTime): String {
-        val date = NSCalendar.currentCalendar.dateFromComponents(dateTime.toNSDateComponents())
-            ?: return ""
+        val date = dateTime.toInstant(timeZone).toNSDate()
         return formatter.stringFromDate(date)
     }
 }

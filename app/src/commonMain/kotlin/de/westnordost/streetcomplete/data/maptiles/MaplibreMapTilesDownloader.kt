@@ -20,13 +20,7 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun download(bbox: BoundingBox) {
         val pack = manager.create(
-            definition = OfflinePackDefinition.TilePyramid(
-                styleUrl = STYLE_URL,
-                bounds = bbox.toGeoJsonBoundingBox(),
-                minZoom = 0,
-                maxZoom = 16,
-                //TODO maplibre-compose: pixelRatio = pixelRatio,
-            ),
+            definition = bbox.toOfflinePackDefinition(pixelRatio),
             // store timestamp as metadata for deleting areas older than X
             metadata = nowAsEpochMilliseconds().toString().encodeToByteArray(),
         )
@@ -67,8 +61,7 @@ class MapLibreMapTilesDownloader(
     override suspend fun deleteOld(time: Long) {
         val packs = manager.packs.toList()
         for (pack in packs) {
-            val packTime = pack.metadata?.decodeToString()?.toLongOrNull()
-            if (packTime == null || packTime < time) {
+            if (isOfflinePackExpired(pack.metadata, time)) {
                 manager.delete(pack)
             }
         }
@@ -79,6 +72,8 @@ class MapLibreMapTilesDownloader(
             val packs = manager.packs.toList()
             for (pack in packs) { manager.delete(pack) }
             manager.clearAmbientCache()
+        } catch (error: CancellationException) {
+            throw error
         } catch (error: Exception) {
             Log.w(TAG, error.message.orEmpty(), error)
         }
@@ -86,8 +81,6 @@ class MapLibreMapTilesDownloader(
 
     private companion object {
         private const val TAG = "MapTilesDownload"
-
-        private const val STYLE_URL = "https://streetcomplete.app/map-jawg/streetcomplete.json"
     }
 }
 
@@ -96,4 +89,19 @@ private val DownloadProgress.isFinished: Boolean get() = when (this) {
     is DownloadProgress.Error,
     is DownloadProgress.TileLimitExceeded -> true
     DownloadProgress.Unknown -> false
+}
+
+internal fun BoundingBox.toOfflinePackDefinition(pixelRatio: Float) =
+    OfflinePackDefinition.TilePyramid(
+        styleUrl = "https://streetcomplete.app/map-jawg/streetcomplete.json",
+        bounds = toGeoJsonBoundingBox(),
+        minZoom = 0,
+        maxZoom = 16,
+        pixelRatio = pixelRatio,
+    )
+
+/** Packs without a readable timestamp follow the same expiry policy as the migration branch. */
+internal fun isOfflinePackExpired(metadata: ByteArray?, before: Long): Boolean {
+    val timestamp = metadata?.decodeToString()?.toLongOrNull()
+    return timestamp == null || timestamp < before
 }

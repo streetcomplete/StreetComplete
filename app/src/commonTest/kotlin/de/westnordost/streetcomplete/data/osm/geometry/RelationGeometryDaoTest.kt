@@ -120,4 +120,7 @@ class RelationGeometryDaoTest : StreetCompleteDatabaseTestCase() {
         }
         return result
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }

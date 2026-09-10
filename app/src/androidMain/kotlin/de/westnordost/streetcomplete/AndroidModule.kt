@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadWorker
 import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
-import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloaderAndroid
+import de.westnordost.streetcomplete.data.maptiles.MapLibreMapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.AndroidChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
@@ -28,10 +28,6 @@ import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadWorker
 import de.westnordost.streetcomplete.screens.about.AndroidAppStoreInfo
 import de.westnordost.streetcomplete.screens.about.AppStoreInfo
-import de.westnordost.streetcomplete.screens.main.AndroidEmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.AndroidMapAppLauncher
-import de.westnordost.streetcomplete.screens.main.EmailAppLauncher
-import de.westnordost.streetcomplete.screens.main.MapAppLauncher
 import de.westnordost.streetcomplete.ui.util.measure.AndroidArSupportChecker
 import de.westnordost.streetcomplete.ui.util.measure.ArSupportChecker
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
@@ -44,6 +40,9 @@ import kotlinx.io.files.Path
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
+import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.MapRuntimeOptions
+import org.maplibre.compose.map.createMapRuntime
 import org.koin.dsl.module
 import org.koin.dsl.onClose
 import org.maplibre.compose.location.AndroidLocationProvider
@@ -99,7 +98,7 @@ val androidModule = module {
 
     // location
 
-    factory<LocationProvider> { AndroidLocationProvider(get()) }
+    single<LocationProvider> { AndroidLocationProvider(get()) }
     factory<SystemSettingsLauncher> { AndroidSystemSettingsLauncher(get()) }
 
     // settings
@@ -128,5 +127,11 @@ val androidModule = module {
     factory<PeriodicCleaner> { AndroidPeriodicCleaner(androidContext()) }
     worker { CleanerWorker(get(), get(), get()) }
 
-    factory<MapTilesDownloader> { MapTilesDownloaderAndroid(androidContext()) }
+    single<MapRuntime> { createMapRuntime(MapRuntimeOptions()) }
+    factory<MapTilesDownloader> {
+        MapLibreMapTilesDownloader(
+            manager = get<MapRuntime>().offlineManager,
+            pixelRatio = androidContext().resources.displayMetrics.density,
+        )
+    }
 }

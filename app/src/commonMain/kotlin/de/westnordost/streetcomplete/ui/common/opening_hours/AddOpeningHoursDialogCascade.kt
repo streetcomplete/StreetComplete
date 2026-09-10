@@ -163,7 +163,6 @@ fun AddOpeningHoursDialogCascade(
                     data.time = newTime
                     selectComplete()
                 },
-                locale = countryLocale,
             )
         }
     }

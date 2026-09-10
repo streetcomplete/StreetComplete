@@ -41,7 +41,7 @@ class AndroidMapAppLauncher(private val context: Context) : MapAppLauncher {
 }
 
 @Composable
-actual fun rememberMapAppLauncher(): MapAppLauncher {
+fun rememberMapAppLauncher(): MapAppLauncher {
     val context = LocalContext.current
     return remember(context) { AndroidMapAppLauncher(context) }
 }

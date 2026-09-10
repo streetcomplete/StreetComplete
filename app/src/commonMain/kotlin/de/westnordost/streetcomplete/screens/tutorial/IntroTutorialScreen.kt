@@ -30,10 +30,11 @@ import de.westnordost.streetcomplete.screens.main.controls.LocationStateButton
 import de.westnordost.streetcomplete.ui.common.Pin
 import de.westnordost.streetcomplete.ui.theme.headlineLarge
 import de.westnordost.streetcomplete.ui.theme.titleLarge
+import org.koin.compose.koinInject
+import org.maplibre.compose.location.LocationProvider
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import org.maplibre.compose.location.rememberDefaultLocationProvider
 
 /** Shows a short tutorial for first-time users */
 @Composable
@@ -41,8 +42,8 @@ fun IntroTutorialScreen(
     onDismissRequest: () -> Unit,
     onFinished: () -> Unit = {},
     dismissOnBackPress: Boolean = false,
+    locationProvider: LocationProvider = koinInject(),
 ) {
-    val locationProvider = rememberDefaultLocationProvider()
     TutorialScreen(
         pageCount = 4,
         onDismissRequest = onDismissRequest,

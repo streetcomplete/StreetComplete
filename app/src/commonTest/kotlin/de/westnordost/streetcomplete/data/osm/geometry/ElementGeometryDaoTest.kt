@@ -137,4 +137,7 @@ class ElementGeometryDaoTest : StreetCompleteDatabaseTestCase() {
         }
         return result
     }
+
+    @kotlin.test.AfterTest
+    override fun tearDownDatabase() = super.tearDownDatabase()
 }
