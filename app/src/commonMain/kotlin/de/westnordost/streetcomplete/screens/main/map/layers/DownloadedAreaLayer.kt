@@ -24,7 +24,7 @@ import org.maplibre.compose.util.MaplibreComposable
  *  downloaded areas. */
 @Composable @MaplibreComposable
 fun DownloadedAreaLayer(tiles: Collection<TilePos>) {
-    val polygon by produceState<Polygon>(WORLD_POLYGON) {
+    val polygon by produceState<Polygon>(WORLD_POLYGON, tiles) {
         value = withContext(Dispatchers.Default) { tiles.toHolesInWorldPolygon() }
     }
     val source = rememberGeoJsonSource(data = GeoJsonData.Features(polygon))

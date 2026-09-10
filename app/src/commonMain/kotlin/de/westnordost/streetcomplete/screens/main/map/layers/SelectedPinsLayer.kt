@@ -50,7 +50,7 @@ fun SelectedPinsLayer(icon: DrawableResource, pinPositions: Collection<LatLon>) 
         )
     }
 
-    val features by produceState<List<Feature<Geometry, JsonObject>>>(emptyList()) {
+    val features by produceState<List<Feature<Geometry, JsonObject>>>(emptyList(), pinPositions, icon) {
         value = withContext(Dispatchers.Default) {
             pinPositions.map {
                 Feature<Geometry, JsonObject>(

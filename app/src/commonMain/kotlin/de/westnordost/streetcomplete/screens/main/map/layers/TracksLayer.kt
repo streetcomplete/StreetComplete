@@ -59,7 +59,7 @@ fun TracksLayers(
         if (trackpoints.size > 1) trackpoints.take(trackpoints.size - 1) else emptyList()
     }
 
-    val trackData by produceState<Geometry>(EMPTY_GEOMETRY) {
+    val trackData by produceState<Geometry>(EMPTY_GEOMETRY, trackWithoutLast) {
         value = withContext(Dispatchers.Default) {
             trackWithoutLast.toLineGeometry() ?: EMPTY_GEOMETRY
         }
@@ -79,7 +79,7 @@ fun TracksLayers(
     val animatedTracksSource = rememberGeoJsonSource(data = GeoJsonData.Features(animatedData))
 
     // old tracks are expected to not update so often
-    val oldTrackData by produceState<Geometry>(EMPTY_GEOMETRY) {
+    val oldTrackData by produceState<Geometry>(EMPTY_GEOMETRY, oldTrackpointsLists) {
         value = withContext(Dispatchers.Default) { oldTrackpointsLists.toMultiLineGeometry() }
     }
     val oldTracksSource = rememberGeoJsonSource(data = GeoJsonData.Features(oldTrackData))

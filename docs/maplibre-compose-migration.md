@@ -35,13 +35,6 @@ unless another source set or screen is named.
 
 ### Correct data publication and lifecycle
 
-- **Confirmed: background conversions do not follow input changes.** Key the
-  seven `produceState` calls in `MainMapContent.kt`, `layers/PinsLayers.kt`,
-  `layers/GeometryMarkersLayers.kt`, `layers/SelectedPinsLayer.kt`,
-  `layers/DownloadedAreaLayer.kt`, and both persistent geometries in
-  `layers/TracksLayer.kt` to their inputs. Cancel superseded conversions and keep
-  expensive work off the UI dispatcher. Test empty-to-populated, replacement,
-  and clearing updates after the first composition.
 - **Confirmed: overlay data events are never subscribed to.** Register
   `sources/StyleableOverlaySource.kt`'s `mapDataWithEditsListener` while the source
   is active and unregister it on disposal. Test downloads, edits, replacements,

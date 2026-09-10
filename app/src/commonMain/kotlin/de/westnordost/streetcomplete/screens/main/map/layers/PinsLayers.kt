@@ -55,7 +55,7 @@ fun PinsLayers(
     val mapState = checkNotNull(LocalMapState.current)
     val coroutineScope = rememberCoroutineScope()
 
-    val features by produceState<List<Feature<Point, JsonObject>>>(emptyList()) {
+    val features by produceState<List<Feature<Point, JsonObject>>>(emptyList(), pins) {
         value = withContext(Dispatchers.Default) { pins.map { it.toGeoJsonFeature() } }
     }
     val options = remember {

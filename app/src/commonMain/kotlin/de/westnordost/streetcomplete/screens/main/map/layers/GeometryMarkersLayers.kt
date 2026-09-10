@@ -39,7 +39,7 @@ import org.maplibre.spatialk.geojson.Geometry
 @MaplibreComposable
 @Composable
 fun GeometryMarkersLayers(markers: Collection<Marker>) {
-    val features by produceState<List<Feature<Geometry, JsonObject>>>(emptyList()) {
+    val features by produceState<List<Feature<Geometry, JsonObject>>>(emptyList(), markers) {
         value = withContext(Dispatchers.Default) { markers.flatMap { it.toGeoJsonFeature() } }
     }
     val source = rememberGeoJsonSource(

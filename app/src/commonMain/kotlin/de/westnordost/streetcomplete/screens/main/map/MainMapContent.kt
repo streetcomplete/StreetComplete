@@ -58,7 +58,7 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
     val languages = listOf(Locale.current.language)
     val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
 
-    val overlayData by produceState<List<Feature<Geometry, JsonObject>>>(emptyList()) {
+    val overlayData by produceState<List<Feature<Geometry, JsonObject>>>(emptyList(), styledElements) {
         value = withContext(Dispatchers.Default) {
             styledElements.flatMap { it.toGeoJsonFeatures() }
         }
