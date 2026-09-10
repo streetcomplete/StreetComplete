@@ -49,6 +49,9 @@ import de.westnordost.streetcomplete.screens.main.controls.ktx.Reverse
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
+// TODO maplibre-compose: After the Android map is replaced, the implementation of this material2
+//                        attribution button should be re-based on top of the attribution button in
+//                        maplibre-compose
 /**
  * Info button from which an attribution popup text is expanded from. The attribution text retracts
  * once when the user first starts interacting with the map.
