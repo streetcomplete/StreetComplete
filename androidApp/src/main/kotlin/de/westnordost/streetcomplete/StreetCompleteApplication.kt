@@ -35,7 +35,7 @@ class StreetCompleteApplication : Application() {
         startKoin {
             androidContext(this@StreetCompleteApplication)
             workManagerFactory()
-            modules(androidModule, commonModule)
+            modules(androidModule, commonModule, androidAppModule)
         }
 
         crashReportsUncaughtExceptionHandler.install()

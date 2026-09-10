@@ -221,7 +221,6 @@ import kotlinx.io.files.SystemFileSystem
 import org.koin.core.module.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.map.DefaultMapRuntime
 import org.maplibre.compose.map.MapRuntime
 
@@ -260,9 +259,7 @@ val commonModule = module {
 
     //region upload & download
 
-    factory { (locationProvider: LocationProvider) ->
-        AutoSyncer(get(), get(), get(), get(), locationProvider, get(), get(), get(), get(), get(), get(), get())
-    }
+    factory { AutoSyncer(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
 
     // upload
 

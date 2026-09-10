@@ -90,12 +90,11 @@ import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.scope.activityScope
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
-import org.maplibre.compose.location.AndroidLocationProvider
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationPermission
+import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.LocationRequest
 import org.maplibre.compose.location.LocationUnavailableReason
 import org.maplibre.compose.location.SystemSettingsLauncher
@@ -133,7 +132,7 @@ class MainActivity :
 
     override val scope: Scope by activityScope()
 
-    private val autoSyncer: AutoSyncer by inject { parametersOf(locationProvider) }
+    private val autoSyncer: AutoSyncer by scope.inject()
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
@@ -141,7 +140,7 @@ class MainActivity :
     private val questsHiddenSource: QuestsHiddenSource by inject()
     private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
-    private val locationProvider by lazy { AndroidLocationProvider(this) }
+    private val locationProvider: LocationProvider by scope.inject()
     private val systemSettingsLauncher: SystemSettingsLauncher by inject()
     private val periodicCleaner: PeriodicCleaner by inject()
 
@@ -363,11 +362,6 @@ class MainActivity :
             }
             mapFragment?.onLocationEvent(locationEvent)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        locationProvider.close()
     }
 
     override fun onStart() {
