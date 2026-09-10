@@ -36,7 +36,7 @@ unless another source set or screen is named.
 ### Correct data publication and lifecycle
 
 - **Confirmed: background conversions do not follow input changes.** Key the
-  seven `produceState` calls in `MainMap.kt`, `layers/PinsLayers.kt`,
+  seven `produceState` calls in `MainMapContent.kt`, `layers/PinsLayers.kt`,
   `layers/GeometryMarkersLayers.kt`, `layers/SelectedPinsLayer.kt`,
   `layers/DownloadedAreaLayer.kt`, and both persistent geometries in
   `layers/TracksLayer.kt` to their inputs. Cancel superseded conversions and keep
@@ -67,7 +67,7 @@ unless another source set or screen is named.
   available before their features render and after style replacement. Preserve
   density, pin dimensions/anchors, and overlay tint/halo behavior.
 - **Confirmed: cluster behavior differs.** Replace the expansion-zoom-only path
-  in `layers/PinsLayers.kt` and `MainMap.kt` with leaf fitting and recentering.
+  in `layers/PinsLayers.kt` and `MainMapViewModel.kt` with leaf fitting and recentering.
   Preserve the quarter-zoom margin, maximum zoom 19, and zoom-difference-based
   animation duration from `androidMain/.../components/PinsMapComponent.kt`.
   Restore its cluster/dot/pin filters around zoom 13–15. Test off-center clusters,
@@ -85,8 +85,8 @@ unless another source set or screen is named.
   overlay hit radius, quest/edit/element callbacks, and long presses. Test handler
   priority and pass-through behavior.
 - **Confirmed: the debug screen cannot exercise these states.** Extend
-  `screens/settings/debug/ShowMapScreen.kt`, which currently passes null location,
-  markers, and selection; empty tracks; and no-op click callbacks. Add controls
+  `screens/settings/debug/ShowMapScreen.kt`, which currently leaves location,
+  markers, selection, and tracks empty and uses no-op click callbacks. Add controls
   for changing these inputs, switching quests/history/overlays, and exercising
   focus and selection with real loaded data. Use the production `MainMap`.
 

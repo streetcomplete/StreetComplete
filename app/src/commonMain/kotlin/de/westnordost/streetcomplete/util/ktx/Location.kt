@@ -30,17 +30,17 @@ fun org.maplibre.spatialk.geojson.Position.toLatLon(): LatLon =
 @OptIn(ExperimentalCoroutinesApi::class)
 fun LocationProvider.updatesWithPermission(
     request: LocationRequest = LocationRequest(),
-): Flow<LocationEvent> {
-    val availability = backendAvailability
-    if (availability != LocationBackendAvailability.Available) {
-        return flowOf(LocationEvent.Unavailable(
-            reason = if (availability is LocationBackendAvailability.Unsupported) {
-                LocationUnavailableReason.Unsupported
-            } else {
-                LocationUnavailableReason.UnexpectedFailure
-            },
-            cause = (availability as? LocationBackendAvailability.Misconfigured)?.cause,
-        ))
+): Flow<LocationEvent> =
+    when (val availability = backendAvailability) {
+        LocationBackendAvailability.Available ->
+            permission.flatMapLatest { updates(request) }
+
+        LocationBackendAvailability.Unsupported ->
+            flowOf(LocationEvent.Unavailable(LocationUnavailableReason.Unsupported))
+
+        is LocationBackendAvailability.Misconfigured ->
+            flowOf(LocationEvent.Unavailable(
+                LocationUnavailableReason.UnexpectedFailure,
+                availability.cause,
+            ))
     }
-    return permission.flatMapLatest { updates(request) }
-}
