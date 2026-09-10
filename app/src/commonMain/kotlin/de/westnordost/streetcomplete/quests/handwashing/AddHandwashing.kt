@@ -15,7 +15,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddHandwashing : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           amenity = toilets
           and toilets:disposal
           and toilets:disposal != flush

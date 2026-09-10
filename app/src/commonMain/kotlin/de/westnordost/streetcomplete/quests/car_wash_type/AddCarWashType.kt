@@ -20,7 +20,7 @@ import org.jetbrains.compose.resources.stringResource
 class AddCarWashType : OsmFilterQuestType<Set<CarWashType>>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           amenity = car_wash
           and !automated and !self_service
     """

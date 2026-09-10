@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.util.ktx.toYesNo
 class AddAcceptsCash : OsmFilterQuestType<Boolean>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             (shop and shop !~ no|vacant|mall)
             or amenity ~ ${arrayOf(
