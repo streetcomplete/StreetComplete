@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete
 
-import android.app.Activity
 import android.content.Context
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.russhwolf.settings.ObservableSettings
@@ -24,7 +23,6 @@ import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloaderAndroid
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.AndroidChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
-import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.data.upload.AndroidUploadController
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadWorker
@@ -44,7 +42,6 @@ import kotlinx.io.asSource
 import kotlinx.io.buffered
 import kotlinx.io.files.Path
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.scope.dsl.activityScope
 import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -102,10 +99,7 @@ val androidModule = module {
 
     // location
 
-    activityScope {
-        scoped<LocationProvider> { AndroidLocationProvider(get<Activity>()) } onClose { it?.close() }
-        scoped { AutoSyncer(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get()) }
-    }
+    factory<LocationProvider> { AndroidLocationProvider(get()) }
     factory<SystemSettingsLauncher> { AndroidSystemSettingsLauncher(get()) }
 
     // settings
