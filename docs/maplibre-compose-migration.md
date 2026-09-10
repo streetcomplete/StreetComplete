@@ -164,3 +164,7 @@ After the production validation below passes:
 - Validate the selected Vulkan backend on supported Android devices, including
   map-entry responsiveness, rendering correctness, and background/resume. Resolve
   demonstrated compatibility problems before production cutover.
+
+## Before marking ready for review
+
+- Delete the temporary root `AGENTS.md` containing this branch's working preferences.
