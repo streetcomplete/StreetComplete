@@ -108,6 +108,10 @@ Source paths below are under
   disabled-feature pass-through, typed quest/edit/element callbacks, and long
   presses. Keep asynchronous cluster queries safe across style replacement and
   disposal without swallowing unrelated failures or coroutine cancellation.
+- **Needs investigation: map-entry responsiveness on slower hardware.** Opening
+  `ShowMapScreen` on the Moto G 5G (2024) reportedly freezes the UI for about a
+  second. Profile cold and repeated entry, distinguish UI-thread blocking from
+  renderer initialization and tile loading, and verify navigation stays responsive.
 - **Needs validation: visual and animation parity.** Compare layer order, road
   and bridge overlays, multipolygons/holes, pin collision padding, selected-pin
   animation, location/track synchronization, labels, font scale, language, theme,
@@ -186,6 +190,12 @@ Only after the production acceptance gate passes:
 
 ## Validation and upstream follow-up still required
 
+- **Confirmed: incremental iOS builds can install stale Kotlin code.** After a
+  Kotlin-only change to `IosApp.kt`, Xcode rebuilt the static framework but skipped
+  linking `StreetComplete.debug.dylib`; the installed app retained the previous UI.
+  A fresh Xcode derived-data directory linked the new archive. Make the generated
+  framework an explicit dependency of the iOS host link, and verify that a
+  Kotlin-only visible change reaches the installed app on an incremental build.
 - Establish targeted regression coverage for the remaining requirements above;
   do not equate the existing suite with map parity or iOS compilation with
   framework/app rendering.
