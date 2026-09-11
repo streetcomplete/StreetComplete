@@ -146,7 +146,7 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-io-core:0.9.1")
 
                 // location
-                implementation("org.maplibre.compose:location:0.15.0")
+                implementation("org.maplibre.compose:location:0.16.0")
 
                 // SQLite
                 implementation("androidx.sqlite:sqlite:2.7.0")
