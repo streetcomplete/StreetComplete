@@ -23,8 +23,12 @@ migration branch. Delete this file before marking the PR ready for review.
   indirection that makes a small operation harder to read.
 - Check the MapLibre Compose v0.16 demo and the dependency's actual APIs before
   inventing integration patterns or retaining workarounds for older versions.
-- Keep durable map state in the view model and presentation work in compositions.
-  Use DI for shared runtime ownership and let the view model own its MapState.
+- Keep restorable presentation state in compositions and expose derived data and
+  operations through view models resolved at the screen boundary. Pass data and
+  callbacks to child composables. Preserve the existing controllers/sources and
+  map source helpers.
+- Use DI for shared runtime ownership. Move MapState ownership to the screen
+  composition after checking the library's lifetime and restoration APIs.
   Do not add a CompositionLocal bridge just to reach style content or callbacks
   when the library already supports them directly.
 - Explain non-obvious state adaptation or lifecycle behavior with short comments.
