@@ -33,16 +33,6 @@ Source paths in this phase are under
 `app/src/commonMain/kotlin/de/westnordost/streetcomplete/screens/main/map/`
 unless another source set or screen is named.
 
-### Finish cluster camera parity
-
-- **Upstream API gap: computed camera fitting is unavailable.** MapLibre Compose
-  v0.16 exposes `MapState.animateCameraToBounds`, but no query that returns the
-  fitted camera before moving it. Add that shared API upstream, then use it in
-  `layers/PinsLayers.kt` to preserve the quarter-zoom margin, maximum zoom 19,
-  and zoom-difference-based duration from
-  `androidMain/.../components/PinsMapComponent.kt`. Verify off-center clusters,
-  overlapping pins, and clusters spanning the antimeridian.
-
 ### Enable shader halos on Android
 
 - Android map icons currently omit halos because MapLibre Compose rasterizes map
