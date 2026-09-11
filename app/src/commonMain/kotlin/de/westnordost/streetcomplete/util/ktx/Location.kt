@@ -23,6 +23,7 @@ fun LocationEvent.Update.toLocation(): Location =
 fun org.maplibre.spatialk.geojson.Position.toLatLon(): LatLon =
     LatLon(latitude, longitude)
 
+// TODO remove after upgrading to a version containing https://github.com/maplibre/maplibre-compose/pull/1393
 @OptIn(ExperimentalCoroutinesApi::class)
 fun LocationProvider.updatesWithPermissionChanges(request: LocationRequest): Flow<LocationEvent> =
     permission.flatMapLatest { updates(request) }
