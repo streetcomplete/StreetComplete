@@ -1,9 +1,6 @@
 import java.io.FileInputStream
 import java.util.Properties
 
-val appVersionName = "63.4"
-val appVersionCode = 6308
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
@@ -17,8 +14,8 @@ android {
         applicationId = "de.westnordost.streetcomplete"
         minSdk = 25
         targetSdk = 37
-        versionCode = appVersionCode
-        versionName = appVersionName
+        versionCode = 6308
+        versionName = "64.0-alpha1"
     }
 
     signingConfigs {

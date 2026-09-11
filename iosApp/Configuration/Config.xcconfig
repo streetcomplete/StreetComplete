@@ -3,7 +3,7 @@ TEAM_ID=N7B5VD3487
 PRODUCT_NAME=StreetComplete
 // must differ from the Kotlin framework's name, which is also StreetComplete
 PRODUCT_MODULE_NAME=iosApp
-PRODUCT_BUNDLE_IDENTIFIER=de.westnordost.streetcomplete
+PRODUCT_BUNDLE_IDENTIFIER=app.streetcomplete
 
-CURRENT_PROJECT_VERSION=1
-MARKETING_VERSION=0.1
+CURRENT_PROJECT_VERSION=6400
+MARKETING_VERSION=64.0-alpha1
