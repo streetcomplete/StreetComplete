@@ -277,13 +277,13 @@ class MapDataControllerImpl constructor(
     companion object {
         private const val TAG = "MapDataController"
 
-        // StyleableOverlayManager loads z16 tiles, but we want smaller tiles. Small tiles make db
+        // StyleableOverlaySource loads z16 tiles, but we want smaller tiles. Small tiles make db
         // fetches for typical getMapDataWithGeometry calls noticeably faster than z16, as they
         // usually only require a small area.
         private const val SPATIAL_CACHE_TILE_ZOOM = 17
 
         // Three times the maximum number of tiles that can be loaded at once in
-        // StyleableOverlayManager (translated from z16 tiles). We don't want to drop tiles from
+        // StyleableOverlaySource (translated from z16 tiles). We don't want to drop tiles from
         // cache already when scrolling the map just a bit, especially considering automatic trim
         // may temporarily reduce cache size to 2/3 of maximum.
         private const val SPATIAL_CACHE_TILES = 192

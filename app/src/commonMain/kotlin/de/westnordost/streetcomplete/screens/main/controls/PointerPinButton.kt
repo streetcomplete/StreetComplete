@@ -39,6 +39,8 @@ import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
+//TODO maplibre-compose: when Android map has been removed, re-base this on the structures in
+//                       maplibre-compose, just like the material3 PointerPinButton is.
 /** A view for the pointer pin that ought to be displayed at the edge of the screen. The upper left
  *  corner is always the position at which it is pointing to, i.e. it will be drawn outside of
  *  its bounds when pointing to the right.

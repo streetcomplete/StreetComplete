@@ -42,6 +42,7 @@ class Cleaner(
             val deleted = mapDataController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
             if (deleted < MAX_DELETE_ELEMENTS) break
         }
+        mapTilesDownloader.deleteOld(oldDataTimestamp)
         downloadedTilesController.deleteOlderThan(oldDataTimestamp)
         // do this after cleaning map data and notes, because some metadata rely on map data
         questTypeRegistry.forEach { it.deleteMetadataOlderThan(oldDataTimestamp) }
