@@ -2,12 +2,16 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.text.intl.Locale
+import de.westnordost.streetcomplete.data.download.tiles.TilePos
+import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.location.Location
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
@@ -15,43 +19,52 @@ import de.westnordost.streetcomplete.screens.main.map.layers.CurrentLocationLaye
 import de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayers
+import de.westnordost.streetcomplete.screens.main.map.layers.Marker
+import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.screens.main.map.layers.PinsLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLabelLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlayLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySideLayer
+import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.getIcon
 import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
-import kotlin.uuid.Uuid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
+import org.maplibre.compose.interaction.ClickResult
+import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
+import kotlin.uuid.Uuid
 
 @Composable
 @MaplibreComposable
-internal fun MainMapContent(viewModel: MainMapViewModel) {
-    val location by viewModel.location.collectAsState()
-    val rotation by viewModel.rotation.collectAsState()
-    val isRecording by viewModel.isRecording.collectAsState()
-    val trackpoints by viewModel.trackpoints.collectAsState()
-    val oldTrackpointsLists by viewModel.oldTrackpointsLists.collectAsState()
-    val shownBottomSheet by viewModel.shownBottomSheet.collectAsState()
-    val shownMarkers by viewModel.shownMarkers.collectAsState()
-    val isShowingUndoHistorySidebar by viewModel.isShowingUndoHistorySidebar.collectAsState()
-
-    val selectedOverlay by viewModel.selectedOverlay.collectAsState()
-    val selectedEdit by viewModel.selectedEdit.collectAsState()
-    val highlightedGeometry by viewModel.highlightedGeometry.collectAsState()
-
-    val downloadedTiles by viewModel.downloadedTiles.collectAsState()
-
+internal fun MainMapContent(
+    location: Location?,
+    rotation: Float?,
+    isRecording: Boolean,
+    trackpoints: List<LatLon>,
+    oldTrackpointsLists: List<List<LatLon>>,
+    shownBottomSheet: ShownBottomSheet?,
+    shownMarkers: Collection<Marker>?,
+    isShowingUndoHistorySidebar: Boolean,
+    selectedOverlay: Overlay?,
+    selectedEdit: Edit?,
+    highlightedGeometry: ElementGeometry?,
+    downloadedTiles: Collection<TilePos>,
+    questPins: Collection<Pin>,
+    editHistoryPins: Collection<Pin>,
+    styledElements: Collection<StyledElement>,
+    onClickQuest: (JsonObject) -> ClickResult,
+    onClickEdit: (JsonObject) -> ClickResult,
+    onClickElement: (JsonObject) -> ClickResult,
+) {
     // because quests highlight additional information and history sidebar should feel clean
     val showOverlay = selectedOverlay != null && shownBottomSheet !is ShownBottomSheet.OsmQuest &&
         shownBottomSheet !is ShownBottomSheet.OsmNoteQuest && !isShowingUndoHistorySidebar
@@ -64,22 +77,6 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
 
     val selectedOverlayElement = shownBottomSheet as? ShownBottomSheet.Overlay
     val showQuestPins = !isShowingUndoHistorySidebar && shownBottomSheet == null
-
-    val showPinsAtZoom by remember(viewModel) {
-        derivedStateOf { viewModel.mapState.cameraPosition.zoom >= 13 }
-    }
-    val showOverlayAtZoom by remember(viewModel) {
-        derivedStateOf { viewModel.mapState.cameraPosition.zoom >= 14 }
-    }
-    val editHistoryPins = if (isShowingUndoHistorySidebar && showPinsAtZoom) {
-        viewModel.editHistoryPins.collectAsState().value
-    } else emptyList()
-    val styledElements = if (showOverlay && showOverlayAtZoom) {
-        viewModel.styleableElements.collectAsState().value
-    } else emptyList()
-    val questPins = if (showQuestPins && showPinsAtZoom) {
-        viewModel.questPins.collectAsState().value
-    } else emptyList()
 
     val languages = listOf(Locale.current.language)
     val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
@@ -94,7 +91,7 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
     )
 
     // TODO maplibre-compose: Reuse layer IDs after https://github.com/maplibre/maplibre-native-ffi/issues/709.
-    val layerIdSuffix = remember(viewModel.mapState.style.baseStyle) { Uuid.random().toString() }
+    val layerIdSuffix = remember(checkNotNull(LocalMapState.current).style.baseStyle) { Uuid.random().toString() }
     MapStyle(
         layerIdSuffix = layerIdSuffix,
         colors = colors,
@@ -124,7 +121,7 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
             if (showOverlay) {
                 StyleableOverlayLayers(
                     source = overlaySource,
-                    onClickElement = viewModel::onClickElement
+                    onClickElement = onClickElement
                 )
             }
             TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
@@ -137,7 +134,7 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
                     icons = styledElements.mapNotNull { it.style.getIcon() },
                     color = colors.text,
                     haloColor = colors.textOutline,
-                    onClickElement = viewModel::onClickElement
+                    onClickElement = onClickElement
                 )
             }
             shownMarkers?.let { markers ->
@@ -153,12 +150,12 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
             if (isShowingUndoHistorySidebar) {
                 PinsLayers(
                     pins = editHistoryPins,
-                    onClickPin = viewModel::onClickEdit
+                    onClickPin = onClickEdit
                 )
             } else if (showQuestPins) {
                 PinsLayers(
                     pins = questPins,
-                    onClickPin = viewModel::onClickQuest
+                    onClickPin = onClickQuest
                 )
             }
 

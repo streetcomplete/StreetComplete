@@ -29,10 +29,10 @@ is a reference for individual migration implementations, not additional scope.
 
 ## Phase 2: replace the production map
 
-- Resolve view models and collect their flows in `MainScreen`. Pass data and
-  callbacks to `MainMap`, its style content, controls, and forms; remove the
-  `MainMapContent(viewModel)` coupling and Activity/Fragment/Compose forwarding
-  bridges. Keep the existing controllers/sources and map source helpers: visible
+- Resolve view models and collect their flows in `MainScreen`. Wire map data and
+  direct callbacks into the production screen, controls, and forms as the
+  Activity/Fragment/Compose forwarding bridges are removed. Keep the existing
+  controllers/sources and map source helpers: visible
   quests flow through `MapQuestPinsSource` and the view model to the screen, then
   `PinsLayers` converts pins to GeoJSON in the background. Forward viewport
   changes from the screen to the quest and overlay sources through the view model.
@@ -43,10 +43,9 @@ is a reference for individual migration implementations, not additional scope.
   exposing derived flows and operations. Remove obsolete bridge properties in
   `MainViewModel` as callers move. Verify selection and form restoration after
   activity recreation and process death.
-- Move `MapState` ownership from `MainMapViewModel` to the screen composition,
-  after checking the library's lifetime and restoration APIs. Keep the shared
-  runtime in DI. Verify camera restoration after process death and a stable map
-  lifetime across recomposition and ordinary screen controls.
+- Use screen-owned `MapState` when wiring `MainScreen`, with the shared runtime
+  in DI. Verify camera restoration after process death and a stable map lifetime
+  across recomposition and ordinary production screen controls.
 
 - Transfer camera initialization/persistence, incoming `geo:` handling, pending
   moves before readiness, follow/navigation modes, and focus fitting/restoration

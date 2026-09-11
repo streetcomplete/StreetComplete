@@ -14,11 +14,13 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -31,12 +33,15 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.preset_maki_circle
 import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
+import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
 import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
 import de.westnordost.streetcomplete.screens.main.map.MainMap
+import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.layers.Marker
 import de.westnordost.streetcomplete.screens.main.map.toGeoJsonBoundingBox
+import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.ui.common.BackIcon
 import de.westnordost.streetcomplete.util.ktx.toLatLon
@@ -44,6 +49,9 @@ import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.interaction.ClickResult
+import org.maplibre.compose.map.LocalMapState
+import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.style.BaseStyle
 import org.maplibre.spatialk.geojson.Position
 import kotlin.time.Duration
@@ -56,6 +64,7 @@ fun ShowMapScreen(
     editHistoryViewModel: EditHistoryViewModel = koinViewModel(),
     overlayController: SelectedOverlayController = koinInject(),
     overlayRegistry: OverlayRegistry = koinInject(),
+    runtime: MapRuntime = koinInject(),
 ) {
     val scope = rememberCoroutineScope()
     val sheet by bottomSheetViewModel.shownBottomSheet.collectAsState()
@@ -65,16 +74,85 @@ fun ShowMapScreen(
     val downloadedTiles by viewModel.downloadedTiles.collectAsState()
     val location by viewModel.location.collectAsState()
     val recording by viewModel.isRecording.collectAsState()
+    val rotation by viewModel.rotation.collectAsState()
+    val trackpoints by viewModel.trackpoints.collectAsState()
+    val oldTrackpointsLists by viewModel.oldTrackpointsLists.collectAsState()
+    val highlightedGeometry by viewModel.highlightedGeometry.collectAsState()
     val markers by viewModel.shownMarkers.collectAsState()
     var overlayMenu by remember { mutableStateOf(false) }
     var lastEvent by remember { mutableStateOf("Tap a quest, edit, overlay element, or map background") }
     var styleRevision by remember { mutableStateOf(0) }
 
-    LaunchedEffect(sheet) { viewModel.shownBottomSheet.value = sheet }
     LaunchedEffect(edit, history) {
-        val selectedEdit = if (history) edit else null
-        viewModel.selectedEdit.value = selectedEdit
-        viewModel.highlightedGeometry.value = selectedEdit?.let { editHistoryViewModel.getEditGeometry(it) }
+        viewModel.highlightedGeometry.value = if (history) {
+            edit?.let { editHistoryViewModel.getEditGeometry(it) }
+        } else null
+    }
+
+    val mapState = rememberMapState(
+        runtime = runtime,
+        baseStyle = BaseStyle.Json(BASE_STYLE.replace("\"Empty\"", "\"Debug $styleRevision\"")),
+    ) {
+        val state = checkNotNull(LocalMapState.current)
+        val showPinsAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 13 } }
+        val showOverlayAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 14 } }
+        val showOverlay = selectedOverlay != null && sheet !is ShownBottomSheet.OsmQuest &&
+            sheet !is ShownBottomSheet.OsmNoteQuest && !history
+        val questPins = if (!history && sheet == null && showPinsAtZoom) {
+            viewModel.questPins.collectAsState().value
+        } else emptyList()
+        val editHistoryPins = if (history && showPinsAtZoom) {
+            viewModel.editHistoryPins.collectAsState().value
+        } else emptyList()
+        val styledElements = if (showOverlay && showOverlayAtZoom) {
+            viewModel.styleableElements.collectAsState().value
+        } else emptyList()
+        MainMapContent(
+            location = location,
+            rotation = rotation,
+            isRecording = recording,
+            trackpoints = trackpoints,
+            oldTrackpointsLists = oldTrackpointsLists,
+            shownBottomSheet = sheet,
+            shownMarkers = markers,
+            isShowingUndoHistorySidebar = history,
+            selectedOverlay = selectedOverlay,
+            selectedEdit = if (history) edit else null,
+            highlightedGeometry = highlightedGeometry,
+            downloadedTiles = downloadedTiles,
+            questPins = questPins,
+            editHistoryPins = editHistoryPins,
+            styledElements = styledElements,
+            onClickElement = { properties ->
+                val key = viewModel.getElementKey(properties)
+                if (key == null) ClickResult.Pass else {
+                    lastEvent = "Overlay: $key"
+                    selectedOverlay?.let { bottomSheetViewModel.showElementInOverlay(it, key) }
+                    ClickResult.Consume
+                }
+            },
+            onClickQuest = { properties ->
+                val key = viewModel.getQuestKey(properties)
+                if (key == null) ClickResult.Pass else {
+                    lastEvent = "Quest: $key"
+                    bottomSheetViewModel.showQuest(key)
+                    ClickResult.Consume
+                }
+            },
+            onClickEdit = { properties ->
+                val key = viewModel.getEditKey(properties)
+                if (key == null) ClickResult.Pass else {
+                    lastEvent = "Edit: $key"
+                    editHistoryViewModel.select(key)
+                    ClickResult.Consume
+                }
+            },
+        )
+    }
+    // Apply the MapLibre viewport to StreetComplete's quest and overlay data sources.
+    LaunchedEffect(mapState, viewModel) {
+        snapshotFlow { mapState.cameraPosition.zoom to mapState.viewport?.visibleBounds }
+            .collect { (zoom, bounds) -> viewModel.onViewportChanged(zoom, bounds?.toStreetCompleteBoundingBox()) }
     }
 
     fun clearSelection() {
@@ -83,7 +161,7 @@ fun ShowMapScreen(
         viewModel.shownMarkers.value = null
     }
 
-    fun cameraPosition(): LatLon = viewModel.mapState.cameraPosition.target.toLatLon()
+    fun cameraPosition(): LatLon = mapState.cameraPosition.target.toLatLon()
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(
@@ -96,7 +174,7 @@ fun ShowMapScreen(
                 enabled = downloadedTiles.isNotEmpty(),
                 onClick = {
                     val bounds = downloadedTiles.first().asBoundingBox(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
-                    viewModel.mapState.setCameraPosition(viewModel.mapState.cameraPosition.copy(
+                    mapState.setCameraPosition(mapState.cameraPosition.copy(
                         target = Position(
                             (bounds.min.longitude + bounds.max.longitude) / 2,
                             (bounds.min.latitude + bounds.max.latitude) / 2,
@@ -131,9 +209,9 @@ fun ShowMapScreen(
                 enabled = sheet?.geometry != null || edit != null,
                 onClick = {
                     scope.launch {
-                        val geometry = viewModel.highlightedGeometry.value ?: sheet?.geometry ?: return@launch
-                        val camera = viewModel.mapState.cameraPosition
-                        viewModel.mapState.animateCameraToBounds(
+                        val geometry = highlightedGeometry ?: sheet?.geometry ?: return@launch
+                        val camera = mapState.cameraPosition
+                        mapState.animateCameraToBounds(
                             geometry.bounds.toGeoJsonBoundingBox(), camera.bearing, camera.tilt,
                         )
                     }
@@ -173,12 +251,7 @@ fun ShowMapScreen(
                     title = "Sample marker",
                 )) else null
             }) { Text(if (markers == null) "Sample markers" else "Hide markers") }
-            TextButton(onClick = {
-                styleRevision++
-                checkNotNull(viewModel.mapState.style.asMutable).baseStyle = BaseStyle.Json(
-                    BASE_STYLE.replace("\"Empty\"", "\"Debug $styleRevision\"")
-                )
-            }) { Text("Reload style") }
+            TextButton(onClick = { styleRevision++ }) { Text("Reload style") }
         }
         Text(
             text = lastEvent,
@@ -188,19 +261,7 @@ fun ShowMapScreen(
             overflow = TextOverflow.Ellipsis,
         )
         MainMap(
-            viewModel = viewModel,
-            onClickOverlayElement = { key ->
-                lastEvent = "Overlay: $key"
-                selectedOverlay?.let { bottomSheetViewModel.showElementInOverlay(it, key) }
-            },
-            onClickQuest = { key ->
-                lastEvent = "Quest: $key"
-                bottomSheetViewModel.showQuest(key)
-            },
-            onClickEdit = { key ->
-                lastEvent = "Edit: $key"
-                editHistoryViewModel.select(key)
-            },
+            state = mapState,
             onMapClick = { event ->
                 lastEvent = "Map: ${event.position}"
                 ClickResult.Consume

@@ -609,7 +609,7 @@ val commonModule = module {
     }
 
     viewModel<MainMapViewModel> {
-        MainMapViewModelImpl(get(), get(), get(), get(), get(), get(), get())
+        MainMapViewModelImpl(get(), get(), get(), get(), get())
     }
     factory { MapQuestPinsSource(get(), get(), get()) }
     factory { EditHistoryPinsSource(get()) }
