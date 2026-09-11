@@ -43,17 +43,6 @@ unless another source set or screen is named.
   `androidMain/.../components/PinsMapComponent.kt`. Verify off-center clusters,
   overlapping pins, and clusters spanning the antimeridian.
 
-### Restore colors after style replacement
-
-- **Confirmed on Android and iOS simulators:** Open `ShowMapScreen`, move to a
-  downloaded area, and press **Reload style**. Previously earth-colored areas
-  turn black on Android and white on iOS; Android road interiors also turn black.
-  The incorrect colors persist until leaving and re-entering the screen. Native
-  road `line-color` and `line-pattern` properties remain correct across replacement
-  on Android, as do the background layer's color, opacity, and pattern. Reduce
-  this renderer failure to an upstream reproducer and adopt the fix. Verify
-  repeated reloads preserve colors without recreating the map.
-
 ### Enable shader halos on Android
 
 - Android map icons currently omit halos because MapLibre Compose rasterizes map

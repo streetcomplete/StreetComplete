@@ -23,6 +23,7 @@ import de.westnordost.streetcomplete.screens.main.map.layers.StyleableOverlaySid
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.getIcon
 import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
+import kotlin.uuid.Uuid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
@@ -92,7 +93,10 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
         data = GeoJsonData.Features(FeatureCollection(overlayData)),
     )
 
+    // TODO maplibre-compose: Reuse layer IDs after https://github.com/maplibre/maplibre-native-ffi/issues/709.
+    val layerIdSuffix = remember(viewModel.mapState.style.baseStyle) { Uuid.random().toString() }
     MapStyle(
+        layerIdSuffix = layerIdSuffix,
         colors = colors,
         languages = languages,
         hiddenLayers = selectedOverlay?.hidesLayers.orEmpty(),
