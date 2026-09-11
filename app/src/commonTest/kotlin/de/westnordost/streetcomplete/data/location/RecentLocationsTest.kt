@@ -2,11 +2,17 @@ package de.westnordost.streetcomplete.data.location
 
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.asSequenceOfPairs
+import de.westnordost.streetcomplete.util.ktx.toLocation
 import de.westnordost.streetcomplete.util.math.translate
+import org.maplibre.compose.location.LocationEvent
+import org.maplibre.compose.location.LocationMeasurement
+import org.maplibre.spatialk.geojson.Position
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.time.Duration.Companion.seconds
+import kotlin.time.Instant
+import kotlin.time.TimeSource
 
 class RecentLocationsTest {
     @Test fun `getAll returns nothing when empty`() {
@@ -52,6 +58,25 @@ class RecentLocationsTest {
         for ((first, second) in r.getAll().toList().asSequenceOfPairs()) {
             assertTrue(first.elapsedDuration > second.elapsedDuration)
         }
+    }
+
+    @Test fun `retains a fresh fix after an older converted fix`() {
+        // Using a fix's age as its timestamp made RecentLocations discard newer fixes.
+        val r = RecentLocations(60.seconds, 1.0, 1.seconds)
+        val mark = TimeSource.Monotonic.markNow()
+        val measurement = LocationMeasurement(
+            position = Position(2.0, 1.0),
+            measuredAt = Instant.fromEpochSeconds(100),
+        )
+        val older = LocationEvent.Update(measurement, mark - 10.seconds).toLocation()
+        val newer = LocationEvent.Update(
+            measurement.copy(position = Position(3.0, 1.0), measuredAt = Instant.fromEpochSeconds(110)),
+            mark,
+        ).toLocation()
+        r.add(older)
+        r.add(newer)
+
+        assertEquals(listOf(newer, older), r.getAll().toList())
     }
 
     @Test fun `does not add older locations`() {
