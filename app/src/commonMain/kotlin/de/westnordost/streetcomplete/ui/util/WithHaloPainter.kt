@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.ui.util
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
@@ -40,8 +39,8 @@ class WithHaloPainter(
                 with(painter) { draw(size) }
             }
         }
-        val shader = createDilateShader(alphaImage, padding, outlineColor)
-        drawRect(ShaderBrush(shader))
+        val shader = createDilateShader(alphaImage, padding, outlineColor, drawContext.canvas)
+        if (shader != null) drawRect(ShaderBrush(shader))
 
         inset(padding) {
             with(painter) { draw(size) }

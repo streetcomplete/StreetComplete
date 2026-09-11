@@ -56,7 +56,7 @@ fun StyleableOverlayLabelLayer(
     onClickElement: (properties: JsonObject) -> ClickResult,
 ) {
     val images = icons.distinct().map { icon ->
-        case(icon.id.orEmpty(), mapIconImage(icon))
+        case(icon.id.orEmpty(), mapIconImage(icon, color, haloColor))
     }
     SymbolLayer(
         id = "overlay-symbols",
@@ -66,9 +66,6 @@ fun StyleableOverlayLabelLayer(
         zOrder = const(SymbolZOrder.Source),
         iconImage = switch(feature["icon"].convertToString(), images, image("")),
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
-        iconColor = const(color),
-        iconHaloColor = const(haloColor),
-        iconHaloWidth = const(2.5.dp),
         iconAllowOverlap = const(true),
         textField = feature["label"].convertToString(),
         textColor = const(color),

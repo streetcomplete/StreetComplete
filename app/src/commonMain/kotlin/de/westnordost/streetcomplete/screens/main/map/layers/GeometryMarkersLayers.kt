@@ -43,7 +43,7 @@ import org.maplibre.spatialk.geojson.Geometry
  *  show the geometry of elements surrounding the selected quest */
 @MaplibreComposable
 @Composable
-fun GeometryMarkersLayers(markers: Collection<Marker>) {
+fun GeometryMarkersLayers(markers: Collection<Marker>, haloColor: Color) {
     val features by produceState<List<Feature<Geometry, JsonObject>>>(emptyList(), markers) {
         value = withContext(Dispatchers.Default) { markers.flatMap { it.toGeoJsonFeature() } }
     }
@@ -69,14 +69,13 @@ fun GeometryMarkersLayers(markers: Collection<Marker>) {
         join = const(LineJoin.Round)
     )
     val markerImages = markers.map { it.icon ?: Res.drawable.preset_maki_circle }.distinct().map { icon ->
-        case("marker_" + icon.id, mapIconImage(icon))
+        case("marker_" + icon.id, mapIconImage(icon, Color.GeometryMarker, haloColor))
     }
     SymbolLayer(
         id = "geo-symbols",
         source = source,
         filter = feature.isPoint(),
         iconImage = switch(feature["icon"].convertToString(), markerImages, image("")),
-        iconColor = const(Color.GeometryMarker),
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconAllowOverlap = const(true),
         textField = feature["label"].convertToString(),

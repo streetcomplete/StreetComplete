@@ -43,29 +43,24 @@ unless another source set or screen is named.
   `androidMain/.../components/PinsMapComponent.kt`. Verify off-center clusters,
   overlapping pins, and clusters spanning the antimeridian.
 
-### Restore background color after style replacement
+### Restore colors after style replacement
 
-- **Confirmed on the Android emulator:** Open `ShowMapScreen`, move to a
-  downloaded area, and press **Reload style**. Areas with the earth/background
-  color turn black and remain black after 30 seconds, while road strokes,
-  buildings, and dynamic images still render. Leaving and re-entering the screen
-  restores the colors. Check the native `background` layer's `background-color`
-  and the renderer after replacing the base style; adopt the upstream fix if
-  the failure is below the shared style declarations. Verify repeated reloads
-  preserve the background color without recreating the map.
+- **Confirmed on Android and iOS simulators:** Open `ShowMapScreen`, move to a
+  downloaded area, and press **Reload style**. Previously earth-colored areas
+  turn black on Android and white on iOS; Android road interiors also turn black.
+  The incorrect colors persist until leaving and re-entering the screen. Native
+  road `line-color` and `line-pattern` properties remain correct across replacement
+  on Android, as do the background layer's color, opacity, and pattern. Reduce
+  this renderer failure to an upstream reproducer and adopt the fix. Verify
+  repeated reloads preserve colors without recreating the map.
 
-### Replace SDF icons with painter halos
+### Enable shader halos on Android
 
-- Replace preset-icon SDF rendering in `MapIconImage` with `WithHaloPainter` for
-  overlay and geometry-marker icons. Match map text halo color and width; use
-  `ColorFilterPainter` if retaining marker tint. Keep quest pins on `pinPainter`.
-- **Confirmed: the existing halo painter cannot be rasterized by MapLibre on
-  Android.** Using it in `image(...)` crashes on API 34 with "Software rendering
-  doesn't support RuntimeShader". Implement halo drawing compatible with the
-  software canvas used for map images. Below API 33, `DilateShader.android.kt`
-  also returns the input bitmap shader without dilation or halo coloring.
-  Verify overlapping icons and halos on supported older Android versions, API
-  33+, and iOS before switching the map images to this painter.
+- Android map icons currently omit halos because MapLibre Compose rasterizes map
+  images on a software canvas. Adopt MapLibre Compose hardware rasterization
+  support when available and verify shader halos on Android API 33+. Resolve
+  halo support below API 33, where `RuntimeShader` is unavailable. Verify icon
+  halos and overlaps on Android and iOS.
 
 ### Validate the shared map through the debug screen
 
@@ -74,9 +69,9 @@ Before replacing the Android host, finish these checks through
 
 - Verify downloads, edits, replacements, deletions, and clearing update the
   visible quest/overlay/history data.
-- Verify pin, marker, and overlay dimensions/anchors across densities, overlay
-  tint and halo, and selected-pin animation.
-- Verify address-overlay house-number suppression.
+- Verify pin, marker, and overlay dimensions/anchors across densities and
+  selected-pin animation. Verify map icons on an older Android device with Vulkan
+  support; the API 26 emulator cannot initialize Vulkan (no physical devices).
 - Verify feature-handler priority and disabled-overlay pass-through. Click clusters
   immediately before style replacement or leaving the map; obsolete queries must
   cancel without hiding unrelated failures.

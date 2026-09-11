@@ -1,10 +1,11 @@
 package de.westnordost.streetcomplete.ui.util
 
+import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.Shader
 
-expect fun createDilateShader(inputImage: ImageBitmap, radius: Float, color: Color): Shader
+expect fun createDilateShader(inputImage: ImageBitmap, radius: Float, color: Color, canvas: Canvas): Shader?
 
 internal fun createDilateSksl(radius: Float) = """
 uniform shader inputImage;

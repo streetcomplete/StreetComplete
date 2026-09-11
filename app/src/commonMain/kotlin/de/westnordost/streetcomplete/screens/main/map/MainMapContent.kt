@@ -137,7 +137,7 @@ internal fun MainMapContent(viewModel: MainMapViewModel) {
                 )
             }
             shownMarkers?.let { markers ->
-                GeometryMarkersLayers(markers)
+                GeometryMarkersLayers(markers, haloColor = colors.textOutline)
             }
             (highlightedGeometry ?: shownBottomSheet?.geometry)?.let { geometry ->
                 FocusedGeometryLayers(geometry)
