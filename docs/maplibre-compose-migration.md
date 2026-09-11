@@ -36,8 +36,8 @@ is a reference for individual migration implementations, not additional scope.
   quests flow through `MapQuestPinsSource` and the view model to the screen, then
   `PinsLayers` converts pins to GeoJSON in the background. Forward viewport
   changes from the screen to the quest and overlay sources through the view model.
-- Move shown sheets, markers, history visibility, selection, and highlighted
-  geometry to their composition owners. Save the minimal presentation state
+- Move production sheets, markers, history visibility, selection, and highlighted
+  geometry to their composition owners in `MainScreen`. Save the minimal presentation state
   needed for restoration with `rememberSaveable`/`rememberSerializable`;
   reconstruct database-derived data from the existing sources. Keep view models
   exposing derived flows and operations. Remove obsolete bridge properties in

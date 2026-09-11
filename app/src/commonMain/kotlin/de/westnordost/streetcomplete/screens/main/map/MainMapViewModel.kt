@@ -6,15 +6,11 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.EditKey
-import de.westnordost.streetcomplete.data.location.Location
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.QuestKey
-import de.westnordost.streetcomplete.screens.main.map.layers.Marker
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
@@ -25,7 +21,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.awaitClose
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.buffer
@@ -36,15 +31,6 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 
 abstract class MainMapViewModel : ViewModel() {
-    abstract val location: MutableStateFlow<Location?>
-    abstract val rotation: MutableStateFlow<Float?>
-    abstract val isRecording: MutableStateFlow<Boolean>
-    abstract val trackpoints: MutableStateFlow<List<LatLon>>
-    abstract val oldTrackpointsLists: MutableStateFlow<List<List<LatLon>>>
-    abstract val shownMarkers: MutableStateFlow<Collection<Marker>?>
-    abstract val isShowingUndoHistorySidebar: MutableStateFlow<Boolean>
-
-    abstract val highlightedGeometry: MutableStateFlow<ElementGeometry?>
     abstract val selectedOverlay: StateFlow<Overlay?>
 
     abstract fun onViewportChanged(zoom: Double, bounds: BoundingBox?)
@@ -72,16 +58,6 @@ class MainMapViewModelImpl(
     private val styleableOverlaySource: StyleableOverlaySource,
     private val selectedOverlaySource: SelectedOverlaySource,
 ) : MainMapViewModel() {
-
-    override val location = MutableStateFlow<Location?>(null)
-    override val rotation = MutableStateFlow<Float?>(null)
-    override val isRecording = MutableStateFlow(false)
-    override val trackpoints = MutableStateFlow<List<LatLon>>(emptyList())
-    override val oldTrackpointsLists = MutableStateFlow<List<List<LatLon>>>(emptyList())
-    override val shownMarkers = MutableStateFlow<Collection<Marker>?>(null)
-    override val isShowingUndoHistorySidebar = MutableStateFlow(false)
-
-    override val highlightedGeometry = MutableStateFlow<ElementGeometry?>(null)
 
     override val selectedOverlay = callbackFlow {
         val listener = object : SelectedOverlaySource.Listener {

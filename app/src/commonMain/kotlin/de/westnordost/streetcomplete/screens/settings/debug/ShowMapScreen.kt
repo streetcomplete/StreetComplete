@@ -17,8 +17,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
@@ -26,6 +28,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.location.Location
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
@@ -69,24 +72,21 @@ fun ShowMapScreen(
     val scope = rememberCoroutineScope()
     val sheet by bottomSheetViewModel.shownBottomSheet.collectAsState()
     val edit by editHistoryViewModel.selectedEdit.collectAsState()
-    val history by viewModel.isShowingUndoHistorySidebar.collectAsState()
+    var history by rememberSaveable { mutableStateOf(false) }
     val selectedOverlay by viewModel.selectedOverlay.collectAsState()
     val downloadedTiles by viewModel.downloadedTiles.collectAsState()
-    val location by viewModel.location.collectAsState()
-    val recording by viewModel.isRecording.collectAsState()
-    val rotation by viewModel.rotation.collectAsState()
-    val trackpoints by viewModel.trackpoints.collectAsState()
-    val oldTrackpointsLists by viewModel.oldTrackpointsLists.collectAsState()
-    val highlightedGeometry by viewModel.highlightedGeometry.collectAsState()
-    val markers by viewModel.shownMarkers.collectAsState()
+    var location by remember { mutableStateOf<Location?>(null) }
+    var trackpoints by remember { mutableStateOf<List<LatLon>>(emptyList()) }
+    var oldTrackpointsLists by remember { mutableStateOf<List<List<LatLon>>>(emptyList()) }
+    var markers by remember { mutableStateOf<Collection<Marker>?>(null) }
+    val recording = trackpoints.isNotEmpty()
     var overlayMenu by remember { mutableStateOf(false) }
     var lastEvent by remember { mutableStateOf("Tap a quest, edit, overlay element, or map background") }
     var styleRevision by remember { mutableStateOf(0) }
 
-    LaunchedEffect(edit, history) {
-        viewModel.highlightedGeometry.value = if (history) {
-            edit?.let { editHistoryViewModel.getEditGeometry(it) }
-        } else null
+    val selectedEdit = if (history) edit else null
+    val highlightedGeometry by produceState<ElementGeometry?>(null, selectedEdit, editHistoryViewModel) {
+        value = selectedEdit?.let { editHistoryViewModel.getEditGeometry(it) }
     }
 
     val mapState = rememberMapState(
@@ -109,7 +109,7 @@ fun ShowMapScreen(
         } else emptyList()
         MainMapContent(
             location = location,
-            rotation = rotation,
+            rotation = if (location != null) 135f else null,
             isRecording = recording,
             trackpoints = trackpoints,
             oldTrackpointsLists = oldTrackpointsLists,
@@ -117,7 +117,7 @@ fun ShowMapScreen(
             shownMarkers = markers,
             isShowingUndoHistorySidebar = history,
             selectedOverlay = selectedOverlay,
-            selectedEdit = if (history) edit else null,
+            selectedEdit = selectedEdit,
             highlightedGeometry = highlightedGeometry,
             downloadedTiles = downloadedTiles,
             questPins = questPins,
@@ -158,7 +158,7 @@ fun ShowMapScreen(
     fun clearSelection() {
         bottomSheetViewModel.closeBottomSheet()
         editHistoryViewModel.select(null)
-        viewModel.shownMarkers.value = null
+        markers = null
     }
 
     fun cameraPosition(): LatLon = mapState.cameraPosition.target.toLatLon()
@@ -185,7 +185,7 @@ fun ShowMapScreen(
             ) { Text("Downloaded area") }
             TextButton(onClick = {
                 clearSelection()
-                viewModel.isShowingUndoHistorySidebar.value = !history
+                history = !history
             }) { Text(if (history) "Show quests" else "Show history") }
             Column {
                 TextButton(onClick = { overlayMenu = true }) { Text("Overlay") }
@@ -195,7 +195,7 @@ fun ShowMapScreen(
                     overlays = overlayRegistry.toList(),
                     onSelect = {
                         clearSelection()
-                        viewModel.isShowingUndoHistorySidebar.value = false
+                        history = false
                         overlayController.selectedOverlay = it
                     },
                 )
@@ -220,32 +220,30 @@ fun ShowMapScreen(
         }
         Row(Modifier.horizontalScroll(rememberScrollState())) {
             TextButton(onClick = {
-                viewModel.location.value = if (location == null) {
+                location = if (location == null) {
                     Location(cameraPosition(), 20f, Duration.ZERO)
                 } else null
-                viewModel.rotation.value = if (location == null) 135f else null
             }) { Text(if (location == null) "Sample location" else "Hide location") }
             TextButton(onClick = {
                 if (recording) {
-                    viewModel.trackpoints.value = emptyList()
-                    viewModel.oldTrackpointsLists.value = emptyList()
+                    trackpoints = emptyList()
+                    oldTrackpointsLists = emptyList()
                 } else {
                     val center = cameraPosition()
-                    viewModel.trackpoints.value = listOf(
+                    trackpoints = listOf(
                         LatLon(center.latitude - 0.0005, center.longitude - 0.0005),
                         LatLon(center.latitude, center.longitude - 0.0003),
                         center,
                     )
-                    viewModel.oldTrackpointsLists.value = listOf(listOf(
+                    oldTrackpointsLists = listOf(listOf(
                         LatLon(center.latitude + 0.0005, center.longitude - 0.0005),
                         LatLon(center.latitude + 0.0005, center.longitude + 0.0005),
                     ))
                 }
-                viewModel.isRecording.value = !recording
             }) { Text(if (recording) "Hide sample track" else "Sample track") }
             TextButton(onClick = {
-                viewModel.shownMarkers.value = if (markers == null) listOf(Marker(
-                    geometry = sheet?.geometry ?: viewModel.highlightedGeometry.value
+                markers = if (markers == null) listOf(Marker(
+                    geometry = sheet?.geometry ?: highlightedGeometry
                         ?: ElementPointGeometry(cameraPosition()),
                     icon = Res.drawable.preset_maki_circle,
                     title = "Sample marker",
