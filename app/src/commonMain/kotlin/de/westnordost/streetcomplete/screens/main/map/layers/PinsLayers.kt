@@ -87,15 +87,14 @@ fun PinsLayers(
         options = options
     )
 
-    val handle = mapState.style.sources[source]
     var clusterJob by remember { mutableStateOf<Job?>(null) }
-    DisposableEffect(handle, features) {
+    DisposableEffect(mapState.style.baseStyle, features) {
         onDispose { clusterJob?.cancel() }
     }
 
     fun onClickCluster(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
         val feature = features.firstOrNull() ?: return ClickResult.Pass
-        val currentHandle = handle ?: return ClickResult.Pass
+        val currentHandle = mapState.style.sources[source] ?: return ClickResult.Pass
         clusterJob?.cancel()
         clusterJob = coroutineScope.launch {
             val leaves = try {

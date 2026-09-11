@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.nativeCanvas
 
 actual fun createDilateShader(inputImage: ImageBitmap, radius: Float, color: Color, canvas: Canvas): Shader? {
     // TODO maplibre-compose: enable hardware rasterization of map images to support shader halos.
+    // Also support halos below API 33, where RuntimeShader is unavailable.
     if (!canvas.nativeCanvas.isHardwareAccelerated || Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
         return null
     }

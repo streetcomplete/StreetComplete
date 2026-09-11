@@ -27,34 +27,6 @@ is a reference for individual migration implementations, not additional scope.
 - Delete this document when no migration work remains. Put any lasting maintenance
   instructions in the appropriate existing project documentation.
 
-## Phase 1: make the shared map complete and testable
-
-Source paths in this phase are under
-`app/src/commonMain/kotlin/de/westnordost/streetcomplete/screens/main/map/`
-unless another source set or screen is named.
-
-### Enable shader halos on Android
-
-- Android map icons currently omit halos because MapLibre Compose rasterizes map
-  images on a software canvas. Adopt MapLibre Compose hardware rasterization
-  support when available and verify shader halos on Android API 33+. Resolve
-  halo support below API 33, where `RuntimeShader` is unavailable. Verify icon
-  halos and overlaps on Android and iOS.
-
-### Validate the shared map through the debug screen
-
-Before replacing the Android host, finish these checks through
-`screens/settings/debug/ShowMapScreen.kt` using the production `MainMap`:
-
-- Verify downloads, edits, replacements, deletions, and clearing update the
-  visible quest/overlay/history data.
-- Verify pin, marker, and overlay dimensions/anchors across densities and
-  selected-pin animation. Verify map icons on an older Android device with Vulkan
-  support; the API 26 emulator cannot initialize Vulkan (no physical devices).
-- Verify feature-handler priority and disabled-overlay pass-through. Click clusters
-  immediately before style replacement or leaving the map; obsolete queries must
-  cancel without hiding unrelated failures.
-
 ## Phase 2: replace the production map
 
 - Remove the Activity/Fragment/Compose communication bridges as the map moves
@@ -166,7 +138,8 @@ After the production validation below passes:
   cold and repeated entry, distinguish UI-thread blocking from renderer
   initialization and tile loading, and verify navigation stays responsive.
 - Validate the selected Vulkan backend on supported Android devices, including
-  map-entry responsiveness, rendering correctness, and background/resume. Resolve
+  an older device below API 33; the API 26 emulator cannot initialize Vulkan.
+  Check map-entry responsiveness, rendering correctness, and background/resume. Resolve
   demonstrated compatibility problems before production cutover.
 
 ## Before marking ready for review
