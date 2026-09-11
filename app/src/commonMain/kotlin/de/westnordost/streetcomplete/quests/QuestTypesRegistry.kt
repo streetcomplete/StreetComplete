@@ -96,7 +96,6 @@ import de.westnordost.streetcomplete.quests.fire_hydrant_position.AddFireHydrant
 import de.westnordost.streetcomplete.quests.fire_hydrant_ref.AddFireHydrantRef
 import de.westnordost.streetcomplete.quests.firewood.AddFirewood
 import de.westnordost.streetcomplete.quests.first_aid_kit.AddFirstAidKitLocation
-import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.fuel_service.AddFuelSelfService
 import de.westnordost.streetcomplete.quests.general_fee.AddGeneralFee
 import de.westnordost.streetcomplete.quests.grit_bin_seasonal.AddGritBinSeasonal
@@ -456,7 +455,7 @@ fun questTypeRegistry(
     184 to AddAerialwayBicycleAccess(),
     187 to AddOnewayAerialway(),
 
-    103 to AddProhibitedForPedestrians(), // need to understand the pedestrian situation
+    //103 to AddProhibitedForPedestrians(), - removed in https://github.com/streetcomplete/StreetComplete/issues/7014
 
     104 to MarkCompletedHighwayConstruction(), // need to look the whole way
 

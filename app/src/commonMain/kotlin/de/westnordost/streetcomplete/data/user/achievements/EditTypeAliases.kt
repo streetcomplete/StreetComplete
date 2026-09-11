@@ -7,7 +7,6 @@ import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.crossing_markings.AddCrossingMarkings
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
-import de.westnordost.streetcomplete.quests.foot.AddProhibitedForPedestrians
 import de.westnordost.streetcomplete.quests.moped.AddMopedAccess
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
@@ -19,7 +18,6 @@ import de.westnordost.streetcomplete.quests.wheelchair_access.AddWheelchairAcces
 
 // list of (quest) synonyms (this alternate name is mentioned to aid searching for this code)
 val editTypeAliases = listOf(
-    "AddAccessibleForPedestrians"        to AddProhibitedForPedestrians::class.simpleName!!,
     "AddWheelChairAccessPublicTransport" to AddWheelchairAccessPublicTransport::class.simpleName!!,
     "AddWheelChairAccessToilets"         to AddWheelchairAccessToilets::class.simpleName!!,
     "AddSidewalks"                       to AddSidewalk::class.simpleName!!,
