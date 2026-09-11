@@ -5,12 +5,9 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flatMapLatest
-import kotlinx.coroutines.flow.flowOf
-import org.maplibre.compose.location.LocationBackendAvailability
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.LocationRequest
-import org.maplibre.compose.location.LocationUnavailableReason
 import org.maplibre.spatialk.units.International
 import kotlin.time.TimeSource
 
@@ -26,21 +23,7 @@ fun LocationEvent.Update.toLocation(): Location =
 fun org.maplibre.spatialk.geojson.Position.toLatLon(): LatLon =
     LatLon(latitude, longitude)
 
-/** Restart a foreground request when permission changes, without requesting permission implicitly. */
+// TODO remove after upgrading to a version containing https://github.com/maplibre/maplibre-compose/pull/1393
 @OptIn(ExperimentalCoroutinesApi::class)
-fun LocationProvider.updatesWithPermission(
-    request: LocationRequest = LocationRequest(),
-): Flow<LocationEvent> =
-    when (val availability = backendAvailability) {
-        LocationBackendAvailability.Available ->
-            permission.flatMapLatest { updates(request) }
-
-        LocationBackendAvailability.Unsupported ->
-            flowOf(LocationEvent.Unavailable(LocationUnavailableReason.Unsupported))
-
-        is LocationBackendAvailability.Misconfigured ->
-            flowOf(LocationEvent.Unavailable(
-                LocationUnavailableReason.UnexpectedFailure,
-                availability.cause,
-            ))
-    }
+fun LocationProvider.updatesWithPermissionChanges(request: LocationRequest): Flow<LocationEvent> =
+    permission.flatMapLatest { updates(request) }

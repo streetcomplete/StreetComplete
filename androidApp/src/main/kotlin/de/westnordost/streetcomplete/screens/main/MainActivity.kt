@@ -78,7 +78,7 @@ import de.westnordost.streetcomplete.util.ktx.observe
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toOffset
 import de.westnordost.streetcomplete.util.ktx.toast
-import de.westnordost.streetcomplete.util.ktx.updatesWithPermission
+import de.westnordost.streetcomplete.util.ktx.updatesWithPermissionChanges
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.math.enlargedBy
@@ -132,7 +132,7 @@ class MainActivity :
 
     override val scope: Scope by activityScope()
 
-    private val autoSyncer: AutoSyncer by scope.inject()
+    private val autoSyncer: AutoSyncer by inject()
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
@@ -140,7 +140,7 @@ class MainActivity :
     private val questsHiddenSource: QuestsHiddenSource by inject()
     private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
-    private val locationProvider: LocationProvider by scope.inject()
+    private val locationProvider: LocationProvider by inject()
     private val systemSettingsLauncher: SystemSettingsLauncher by inject()
     private val periodicCleaner: PeriodicCleaner by inject()
 
@@ -349,7 +349,7 @@ class MainActivity :
                 mainBottomSheetViewModel.closeBottomSheet()
             }
         }
-        observe(locationProvider.updatesWithPermission(LocationRequest())) { locationEvent ->
+        observe(locationProvider.updatesWithPermissionChanges(LocationRequest())) { locationEvent ->
             viewModel.locationState.value = when (locationEvent) {
                 is LocationEvent.Update -> LocationState.UPDATING
                 is LocationEvent.Unavailable -> when (locationEvent.reason) {

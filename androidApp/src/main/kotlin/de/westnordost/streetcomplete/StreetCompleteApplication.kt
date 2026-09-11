@@ -10,10 +10,6 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
 import de.westnordost.streetcomplete.util.getSelectedLocales
-import kotlinx.coroutines.CoroutineName
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.cancel
 import org.koin.android.ext.android.inject
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.workmanager.koin.workManagerFactory
@@ -35,7 +31,7 @@ class StreetCompleteApplication : Application() {
         startKoin {
             androidContext(this@StreetCompleteApplication)
             workManagerFactory()
-            modules(androidModule, commonModule, androidAppModule)
+            modules(androidModule, commonModule)
         }
 
         crashReportsUncaughtExceptionHandler.install()

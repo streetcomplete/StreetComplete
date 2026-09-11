@@ -161,7 +161,9 @@ class MainMapViewModelImpl(
             downloadedTilesSource.removeListener(listener)
         }
     }.buffer(Channel.CONFLATED).mapLatest {
-        getDownloadedTiles()
+        withContext(Dispatchers.IO) {
+            downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER)
+        }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
 
     override val questPins = mapQuestPinsSource.pins
@@ -197,9 +199,5 @@ class MainMapViewModelImpl(
 
     override fun onCleared() {
         mapState.close()
-    }
-
-    private suspend fun getDownloadedTiles() = withContext(Dispatchers.IO) {
-        downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER)
     }
 }

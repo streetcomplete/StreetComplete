@@ -99,7 +99,7 @@ class StyleableOverlaySource(
             displayedRect.value = null
             return
         }
-        // Keep the loaded data when zooming out, including clusters at zoom 13–14.
+        // Keep the loaded data when zooming out.
         if (zoom < MIN_ZOOM) return
         val rect = displayedArea.enclosingTilesRect(TILES_ZOOM)
         if (rect.size > 32) return

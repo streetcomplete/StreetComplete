@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.util.ktx.format
-import de.westnordost.streetcomplete.util.ktx.updatesWithPermission
+import de.westnordost.streetcomplete.util.ktx.updatesWithPermissionChanges
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -118,7 +118,7 @@ class AutoSyncer(
         coroutineScope.launch {
             owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 val request = LocationRequest(LocationAccuracy.High, 30.seconds, 100.meters)
-                locationProvider.updatesWithPermission(request).collect { locationEvent ->
+                locationProvider.updatesWithPermissionChanges(request).collect { locationEvent ->
                     if (locationEvent is LocationEvent.Update) {
                         val (position, accuracy) = locationEvent.measurement
                         if (accuracy == null || accuracy < 300.meters) {

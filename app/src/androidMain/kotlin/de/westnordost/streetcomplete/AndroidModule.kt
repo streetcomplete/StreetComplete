@@ -42,7 +42,9 @@ import org.koin.androidx.workmanager.dsl.worker
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import org.koin.dsl.onClose
+import org.maplibre.compose.location.AndroidLocationProvider
 import org.maplibre.compose.location.AndroidSystemSettingsLauncher
+import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.SystemSettingsLauncher
 
 private const val COMPOSE_FILES_DIR = "composeResources/de.westnordost.streetcomplete.resources/files"
@@ -93,6 +95,7 @@ val androidModule = module {
 
     // location
 
+    factory<LocationProvider> { AndroidLocationProvider(get()) }
     factory<SystemSettingsLauncher> { AndroidSystemSettingsLauncher(get()) }
 
     // settings

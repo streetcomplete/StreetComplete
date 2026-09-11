@@ -39,6 +39,7 @@ import de.westnordost.streetcomplete.screens.main.map.layers.Marker
 import de.westnordost.streetcomplete.screens.main.map.toGeoJsonBoundingBox
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.ui.common.BackIcon
+import de.westnordost.streetcomplete.util.ktx.toLatLon
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
@@ -71,9 +72,9 @@ fun ShowMapScreen(
 
     LaunchedEffect(sheet) { viewModel.shownBottomSheet.value = sheet }
     LaunchedEffect(edit, history) {
-        viewModel.selectedEdit.value = edit.takeIf { history }
-        viewModel.highlightedGeometry.value = edit?.takeIf { history }
-            ?.let { editHistoryViewModel.getEditGeometry(it) }
+        val selectedEdit = if (history) edit else null
+        viewModel.selectedEdit.value = selectedEdit
+        viewModel.highlightedGeometry.value = selectedEdit?.let { editHistoryViewModel.getEditGeometry(it) }
     }
 
     fun clearSelection() {
@@ -82,9 +83,7 @@ fun ShowMapScreen(
         viewModel.shownMarkers.value = null
     }
 
-    fun cameraPosition(): LatLon = viewModel.mapState.cameraPosition.target.let {
-        LatLon(it.latitude, it.longitude)
-    }
+    fun cameraPosition(): LatLon = viewModel.mapState.cameraPosition.target.toLatLon()
 
     Column(Modifier.fillMaxSize()) {
         TopAppBar(

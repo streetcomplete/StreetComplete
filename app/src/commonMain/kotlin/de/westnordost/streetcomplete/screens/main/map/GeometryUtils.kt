@@ -104,6 +104,3 @@ fun LatLon.toGeometry(): Point =
 
 fun LatLon.toPosition(): Position =
     Position(longitude = longitude, latitude = latitude)
-
-fun Position.toLatLon(): LatLon =
-    LatLon(latitude = latitude, longitude = longitude)
