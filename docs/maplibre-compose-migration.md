@@ -28,11 +28,10 @@ is a reference for individual migration implementations, not additional scope.
 
 ## Phase 2: finish offline integration
 
-- Replace the hosted `streetcomplete.app/map-jawg/streetcomplete.json` URL in
-  `MapLibreMapTilesDownloader` with a bundled minimal style definition. Reference
-  the same tile, glyph, and image resources used by the shared map, and verify
-  that downloaded areas render offline without the hosted style repository.
-  Keep old-pack cleanup in `Cleaner`; do not port the fragment's duplicate cleanup.
+- Verify that areas downloaded with the bundled minimal style render offline
+  with the shared map's packaged glyphs and images, without the hosted style
+  repository. Keep old-pack cleanup in `Cleaner`; do not port the fragment's
+  duplicate cleanup.
 
 - **Confirmed: the shared downloader is not used.** Bind
   `MapLibreMapTilesDownloader` to the rendering runtime's `offlineManager` and

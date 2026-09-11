@@ -60,6 +60,7 @@ fun MapStyle(
     belowLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
     aboveLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
 ) {
+    // Keep the tile URL and max zoom in sync with files/map-download-style.json.
     val accessToken = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
     val osmAttribution = stringResource(Res.string.map_attribution_osm)
     val attributionHtml = remember(osmAttribution) {

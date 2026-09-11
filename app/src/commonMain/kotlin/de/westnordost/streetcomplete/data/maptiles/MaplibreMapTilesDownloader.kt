@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.data.maptiles
 
 import androidx.compose.runtime.snapshotFlow
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.map.toGeoJsonBoundingBox
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -21,7 +22,8 @@ class MapLibreMapTilesDownloader(
     override suspend fun download(bbox: BoundingBox) {
         val pack = manager.create(
             definition = OfflinePackDefinition.TilePyramid(
-                styleUrl = STYLE_URL,
+                // Only tiles need downloading; glyphs and images are packaged with the app.
+                styleUrl = Res.getUri("files/map-download-style.json"),
                 bounds = bbox.toGeoJsonBoundingBox(),
                 minZoom = 0,
                 maxZoom = 16,
@@ -86,8 +88,6 @@ class MapLibreMapTilesDownloader(
 
     private companion object {
         private const val TAG = "MapTilesDownload"
-
-        private const val STYLE_URL = "https://streetcomplete.app/map-jawg/streetcomplete.json"
     }
 }
 
