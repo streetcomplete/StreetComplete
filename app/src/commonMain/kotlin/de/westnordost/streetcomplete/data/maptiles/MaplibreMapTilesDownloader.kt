@@ -36,6 +36,8 @@ class MapLibreMapTilesDownloader(
         try {
             manager.resume(pack)
 
+            // TODO maplibre-compose: publish progress without a composition's snapshot notifications.
+            // https://github.com/maplibre/maplibre-compose/blob/v0.16.0/lib/maplibre-compose/src/maplibreNativeMain/kotlin/org/maplibre/compose/offline/MlnFfiOfflineManager.kt#L333-L340
             val finalState = snapshotFlow { pack.downloadProgress }.first { it.isFinished }
             when (finalState) {
                 is DownloadProgress.Healthy -> {
@@ -56,17 +58,22 @@ class MapLibreMapTilesDownloader(
                     error("Unexpected terminal offline progress")
                 }
             }
-        } catch (error: CancellationException) {
-            manager.pause(pack)
-            throw error
         } catch (error: Exception) {
-            manager.pause(pack)
-            Log.w(TAG, error.message.orEmpty(), error)
+            try {
+                manager.pause(pack)
+            } catch (pauseError: Exception) {
+                error.addSuppressed(pauseError)
+            }
+            if (error !is CancellationException) {
+                Log.w(TAG, error.message.orEmpty(), error)
+            }
             throw error
         }
     }
 
     override suspend fun deleteOld(time: Long) {
+        // TODO maplibre-compose: await initial pack loading before cleanup.
+        // https://github.com/maplibre/maplibre-compose/blob/v0.16.0/lib/maplibre-compose/src/maplibreNativeMain/kotlin/org/maplibre/compose/offline/MlnFfiOfflineManager.kt#L54-L68
         val packs = manager.packs.toList()
         for (pack in packs) {
             val packTime = pack.metadata?.decodeToString()?.toLongOrNull()
@@ -78,9 +85,12 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun clear() {
         try {
+            // TODO maplibre-compose: await initial pack loading here too (see deleteOld).
             val packs = manager.packs.toList()
             for (pack in packs) { manager.delete(pack) }
             manager.clearAmbientCache()
+        } catch (error: CancellationException) {
+            throw error
         } catch (error: Exception) {
             Log.w(TAG, error.message.orEmpty(), error)
         }

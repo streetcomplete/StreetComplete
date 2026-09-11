@@ -28,26 +28,17 @@ is a reference for individual migration implementations, not additional scope.
 
 ## Phase 2: finish offline integration
 
-- Verify that areas downloaded with the bundled minimal style render offline
-  with the shared map's packaged glyphs and images, without the hosted style
-  repository. Keep old-pack cleanup in `Cleaner`; do not port the fragment's
-  duplicate cleanup.
-
 - **Blocked on MapLibre Compose: headless download completion.** Adopt an upstream
   fix that publishes offline progress without a visible composition. In v0.16,
   native downloads finish but `snapshotFlow` can remain suspended until snapshot
   apply notifications are sent. Verify the download worker completes after a cold
   start without an activity or visible map.
-- **Blocked on MapLibre Compose: initial offline-pack loading.** Await an upstream
-  readiness API before `deleteOld` and `clear` read `OfflineManager.packs`. In
-  v0.16, its initially empty list cannot distinguish loading from an empty cache,
-  so cold-start cleanup can miss saved packs. Verify `Cleaner.cleanOld` and
+- **Blocked on MapLibre Compose: initial offline-pack loading.** Adopt an upstream
+  loading guarantee or readiness API before `deleteOld` and `clear` read
+  `OfflineManager.packs`. In v0.16, its initially empty set cannot distinguish
+  loading from an empty cache, so cold-start cleanup can miss saved packs.
+  Verify `Cleaner.cleanOld` and
   `cleanAll` include existing packs when started by an Android worker.
-- **Confirmed: clearing can swallow cancellation.** Propagate cancellation from
-  `MapLibreMapTilesDownloader.clear()`. Make download cancellation pause the pack,
-  and preserve the original failure if pausing also fails. Test cancellation and
-  partial failures during download, deletion, and cache clearing.
-- Verify cleanup of interrupted downloads against the actual runtime cache.
 
 ## Phase 3: retire the legacy map
 
