@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.data.connection.IosActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.IosDownloadController
 import de.westnordost.streetcomplete.data.initialize
-import de.westnordost.streetcomplete.data.maptiles.IosMapTilesDownloader
+import de.westnordost.streetcomplete.data.maptiles.MapLibreMapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
 import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.IosChangesetAutoCloser
@@ -41,12 +41,16 @@ import org.maplibre.compose.location.IosLocationProvider
 import org.maplibre.compose.location.IosSystemSettingsLauncher
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.SystemSettingsLauncher
+import org.maplibre.compose.map.MapRuntime
+import org.maplibre.compose.map.MapRuntimeOptions
+import org.maplibre.compose.map.createMapRuntime
 import platform.Foundation.NSApplicationSupportDirectory
 import platform.Foundation.NSBundle
 import platform.Foundation.NSCachesDirectory
 import platform.Foundation.NSFileManager
 import platform.Foundation.NSUserDefaults
 import platform.Foundation.NSUserDomainMask
+import platform.UIKit.UIScreen
 
 private val COMPOSE_FILES_DIR = NSBundle.mainBundle.resourcePath +
     "/compose-resources/composeResources/de.westnordost.streetcomplete.resources/files"
@@ -130,6 +134,24 @@ val iosModule = module {
 
     factory<ActiveNetworkConnection> { IosActiveNetworkConnection() }
 
+    // map
+
+    single<MapRuntime> {
+        val appSupportUrl = NSFileManager.defaultManager.URLForDirectory(
+            directory = NSApplicationSupportDirectory,
+            inDomain = NSUserDomainMask,
+            appropriateForURL = null,
+            create = true,
+            error = null
+        )!!
+        val cacheFile = Path(appSupportUrl.path!!, "maplibre-cache.db")
+        createMapRuntime(MapRuntimeOptions(cacheFile = cacheFile))
+    } onClose { it?.close() }
+
+    factory<MapTilesDownloader> {
+        MapLibreMapTilesDownloader(get<MapRuntime>().offlineManager, UIScreen.mainScreen.scale.toFloat())
+    }
+
     // background jobs
 
     single<UploadController> { IosUploadController() }
@@ -139,6 +161,4 @@ val iosModule = module {
     factory<ChangesetAutoCloser> { IosChangesetAutoCloser() }
 
     factory<PeriodicCleaner> { IosPeriodicCleaner() }
-
-    factory<MapTilesDownloader> { IosMapTilesDownloader() }
 }
