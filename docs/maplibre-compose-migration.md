@@ -47,11 +47,11 @@ is a reference for individual migration implementations, not additional scope.
   in DI. Verify camera restoration after process death and a stable map lifetime
   across recomposition and ordinary production screen controls.
 
-- Transfer camera initialization/persistence, incoming `geo:` handling, pending
-  moves before readiness, follow/navigation modes, and focus fitting/restoration
-  from `MapFragment`, `MainMapFragment`, and their camera helpers to the shared map.
-  Preserve sheet padding, stopping follow on pan, and restoring follow/navigation
-  after temporary sidebar changes. Test these state transitions.
+- Wire camera preferences and incoming `geo:` handling into the production screen,
+  including moves before the map is attached. Connect the shared camera state to
+  location/navigation controls, sheet padding and focus, pan gestures, and temporary
+  sidebar changes. Verify follow/navigation restoration and camera preferences
+  across these transitions.
 - Move track recording/segmentation, accuracy filtering, time gaps, bounded
   restoration, and note attachment out of `MainMapFragment` into shared behavior.
   Keep survey checking on the location event stream so display-state conflation

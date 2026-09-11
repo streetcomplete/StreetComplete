@@ -43,7 +43,7 @@ import de.westnordost.streetcomplete.screens.main.map.MainMap
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.layers.Marker
-import de.westnordost.streetcomplete.screens.main.map.toGeoJsonBoundingBox
+import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.ui.common.BackIcon
@@ -149,6 +149,7 @@ fun ShowMapScreen(
             },
         )
     }
+    val cameraState = rememberMainMapCameraState(mapState)
     // Apply the MapLibre viewport to StreetComplete's quest and overlay data sources.
     LaunchedEffect(mapState, viewModel) {
         snapshotFlow { mapState.cameraPosition.zoom to mapState.viewport?.visibleBounds }
@@ -159,6 +160,7 @@ fun ShowMapScreen(
         bottomSheetViewModel.closeBottomSheet()
         editHistoryViewModel.select(null)
         markers = null
+        scope.launch { cameraState.endFocus() }
     }
 
     fun cameraPosition(): LatLon = mapState.cameraPosition.target.toLatLon()
@@ -210,10 +212,7 @@ fun ShowMapScreen(
                 onClick = {
                     scope.launch {
                         val geometry = highlightedGeometry ?: sheet?.geometry ?: return@launch
-                        val camera = mapState.cameraPosition
-                        mapState.animateCameraToBounds(
-                            geometry.bounds.toGeoJsonBoundingBox(), camera.bearing, camera.tilt,
-                        )
+                        cameraState.focus(geometry)
                     }
                 }
             ) { Text("Focus selection") }
@@ -260,6 +259,7 @@ fun ShowMapScreen(
         )
         MainMap(
             state = mapState,
+            onPan = { cameraState.onPan(location != null) },
             onMapClick = { event ->
                 lastEvent = "Map: ${event.position}"
                 ClickResult.Consume
