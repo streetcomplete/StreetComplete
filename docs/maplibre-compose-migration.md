@@ -54,6 +54,19 @@ unless another source set or screen is named.
   the failure is below the shared style declarations. Verify repeated reloads
   preserve the background color without recreating the map.
 
+### Replace SDF icons with painter halos
+
+- Replace preset-icon SDF rendering in `MapIconImage` with `WithHaloPainter` for
+  overlay and geometry-marker icons. Match map text halo color and width; use
+  `ColorFilterPainter` if retaining marker tint. Keep quest pins on `pinPainter`.
+- **Confirmed: the existing halo painter cannot be rasterized by MapLibre on
+  Android.** Using it in `image(...)` crashes on API 34 with "Software rendering
+  doesn't support RuntimeShader". Implement halo drawing compatible with the
+  software canvas used for map images. Below API 33, `DilateShader.android.kt`
+  also returns the input bitmap shader without dilation or halo coloring.
+  Verify overlapping icons and halos on supported older Android versions, API
+  33+, and iOS before switching the map images to this painter.
+
 ### Validate the shared map through the debug screen
 
 Before replacing the Android host, finish these checks through
@@ -64,12 +77,26 @@ Before replacing the Android host, finish these checks through
 - Verify pin, marker, and overlay dimensions/anchors across densities, overlay
   tint and halo, and selected-pin animation.
 - Verify address-overlay house-number suppression.
-- Verify feature-handler priority, disabled-overlay pass-through, and the overlay
-  hit radius. Click clusters immediately
-  before style replacement or leaving the map; obsolete queries must cancel
-  without hiding unrelated failures.
+- Verify feature-handler priority and disabled-overlay pass-through. Click clusters
+  immediately before style replacement or leaving the map; obsolete queries must
+  cancel without hiding unrelated failures.
 
 ## Phase 2: replace the production map
+
+- Remove the Activity/Fragment/Compose communication bridges as the map moves
+  into `MainScreen`. Pass presentation inputs and callbacks directly between the
+  map, controls, and forms; remove mirrored state and forwarding effects rather
+  than reproducing them in `MainMapViewModel`. In particular, move shown sheets,
+  markers, history visibility, selection, and highlighted geometry to their
+  composition owners. Use `rememberSaveable`/`rememberSerializable` where UI
+  state needs restoration, and keep view models focused on persisted data and
+  operations. Remove obsolete bridge properties in `MainViewModel` as callers
+  move. Verify selection and form restoration after recreation.
+- Reconsider `MapState` ownership explicitly before production wiring. This
+  branch currently keeps it in `MainMapViewModel`; assess
+  composition ownership against the library's lifetime and restoration APIs
+  before changing that decision. Verify camera restoration and stable map
+  lifetime under the chosen ownership.
 
 - Transfer camera initialization/persistence, incoming `geo:` handling, pending
   moves before readiness, follow/navigation modes, and focus fitting/restoration
@@ -85,12 +112,19 @@ Before replacing the Android host, finish these checks through
 - Wire existing `MainActivity`/`MainScreen` controls and callbacks to the shared
   map: zoom/compass/location buttons, quest and solved-pin projection, crosshair
   and create actions, form markers, history, and download-area calculation.
-  Preserve the existing gesture thresholds and momentum behavior.
+  Preserve intended gesture behavior without carrying over the legacy finger-size
+  calculation or enlarged feature-query area.
 - Replace the production fragment map with `MainMap` through the existing Android
   host. Keep the map mounted across ordinary control, form, and sidebar changes;
   verify these changes do not recreate its presentation or reset its camera.
 
 ### Finish offline integration
+
+- Replace the hosted `streetcomplete.app/map-jawg/streetcomplete.json` URL in
+  `MapLibreMapTilesDownloader` with a bundled minimal style definition. Reference
+  the same tile, glyph, and image resources used by the shared map, and verify
+  that downloaded areas render offline without the hosted style repository.
+  Keep old-pack cleanup in `Cleaner`; do not port the fragment's duplicate cleanup.
 
 - **Confirmed: the shared downloader is not used.** Bind
   `MapLibreMapTilesDownloader` to the rendering runtime's `offlineManager` and
@@ -120,6 +154,18 @@ After the production validation below passes:
   legacy renderer. Remove `updateMapStyle`, `UpdateMapStyleTask`, and the root
   update task's reference once their Android JSON style files are retired. Retain
   resource-copy helpers still used by the shared implementation or other screens.
+- Delete `CopyIconsTask` and its task wiring when the legacy map's icon consumers
+  are gone. Check remaining `R.string.` references before removing
+  `CopyStringsTask` and its wiring. Remove the generated Android Kotlin source
+  directory registration once no generated-source consumers remain.
+- Delete `ShowMapScreen` and its debug-settings/navigation entry after production
+  map validation no longer needs it.
+- Review the remaining `TODO maplibre-compose` markers after cutover. Rebase
+  `PointerPinButton` and `AttributionButton` on the library controls where
+  compatible with the existing Material 2 UI, and review `CompassButton` inputs
+  against the shared camera state. Reassess `LocationIndicatorLayer` while
+  preserving track-endpoint animation synchronization. Remove obsolete adapters
+  and resolved TODOs; keep unresolved upstream dependencies explicitly tracked.
 - Verify no production, DI, layout, or build references remain to the retired
   code. Recheck Android release assembly, packaged glyphs/images/native libraries,
   first map frame, and offline restart after removal.
@@ -129,8 +175,9 @@ After the production validation below passes:
 - Compare the shared map with the legacy map for layer order, road/bridge
   overlays, multipolygons/holes, pin collision padding, selected-pin animation,
   location/track synchronization, labels, font scale, language, theme, and system
-  animation settings. Fix unintended differences and cover the affected behavior
-  with regression tests.
+  animation settings. Fix unintended differences; validate StreetComplete behavior
+  with checks proportional to the existing tests. Do not require pixel parity for
+  deliberate changes such as painter halos or removal of enlarged hit areas.
 - Exercise the Android production UI on a physical device with dense quests and
   clusters, edit history, overlay/form/create modes, GPS/navigation/recording,
   airplane-mode use after download and restart, download cancellation/deletion,

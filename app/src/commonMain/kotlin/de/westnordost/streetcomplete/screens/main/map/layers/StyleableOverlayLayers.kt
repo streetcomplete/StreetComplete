@@ -87,7 +87,6 @@ fun StyleableOverlayLabelLayer(
             fallback = const(false),
             21 to const(true)
         ),
-        hitPadding = 14.dp,
         onClick = { onClick(it, onClickElement) }
     )
 }
@@ -124,7 +123,6 @@ fun StyleableOverlayLayers(
         filter = feature.isArea(),
         opacity = opacity,
         color = color,
-        hitPadding = 14.dp,
         onClick = { onClick(it, onClickElement) }
     )
     LineLayer(
@@ -137,7 +135,6 @@ fun StyleableOverlayLayers(
         width = width,
         cap = const(LineCap.Round),
         join = const(LineJoin.Round),
-        hitPadding = 14.dp,
         onClick = { onClick(it, onClickElement) }
     )
     LineLayer(
@@ -151,7 +148,6 @@ fun StyleableOverlayLayers(
         dasharray = const(listOf(1.5f, 1f)),
         cap = const(LineCap.Butt),  // because of dashed
         join = const(LineJoin.Round),
-        hitPadding = 14.dp,
         onClick = { onClick(it, onClickElement) }
     )
     LineLayer(
