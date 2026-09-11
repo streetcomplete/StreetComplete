@@ -609,14 +609,14 @@ val commonModule = module {
     }
 
     viewModel<MainMapViewModel> {
-        MainMapViewModelImpl(get(), get(), get(), get(), get())
+        MainMapViewModelImpl(get(), get(), get(), get(), get(), get())
     }
     factory { MapQuestPinsSource(get(), get(), get()) }
     factory { EditHistoryPinsSource(get()) }
     factory { StyleableOverlaySource(get(), get()) }
 
     viewModel<MainBottomSheetViewModel> {
-        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
+        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(named("FeatureDictionaryLazy")))
     }
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }

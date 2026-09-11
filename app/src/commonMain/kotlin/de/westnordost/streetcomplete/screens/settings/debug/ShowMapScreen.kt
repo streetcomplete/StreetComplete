@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
@@ -35,6 +36,7 @@ import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.preset_maki_circle
+import de.westnordost.streetcomplete.screens.main.MainBottomSheetSelection
 import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
@@ -42,12 +44,13 @@ import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
 import de.westnordost.streetcomplete.screens.main.map.MainMap
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
-import de.westnordost.streetcomplete.screens.main.map.layers.Marker
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.ui.common.BackIcon
+import de.westnordost.streetcomplete.ui.common.quest.Marker
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
@@ -73,8 +76,14 @@ fun ShowMapScreen(
     runtime: MapRuntime = koinInject(),
 ) {
     val scope = rememberCoroutineScope()
-    val sheet by bottomSheetViewModel.shownBottomSheet.collectAsState()
-    val edit by editHistoryViewModel.selectedEdit.collectAsState()
+    var selection by rememberSerializable { mutableStateOf<MainBottomSheetSelection?>(null) }
+    var editKey by rememberSerializable { mutableStateOf<EditKey?>(null) }
+    val edits by editHistoryViewModel.editItems.collectAsState()
+    val edit = edits?.find { it.edit.key == editKey }?.edit
+    val sheet by produceState<ShownBottomSheet?>(null, selection, bottomSheetViewModel) {
+        value = null
+        selection?.let { bottomSheetViewModel.bottomSheet(it).collect { value = it } }
+    }
     var history by rememberSaveable { mutableStateOf(false) }
     val selectedOverlay by viewModel.selectedOverlay.collectAsState()
     val downloadedTiles by viewModel.downloadedTiles.collectAsState()
@@ -128,7 +137,7 @@ fun ShowMapScreen(
                 val key = viewModel.getElementKey(properties)
                 if (key == null) ClickResult.Pass else {
                     lastEvent = "Overlay: $key"
-                    selectedOverlay?.let { bottomSheetViewModel.showElementInOverlay(it, key) }
+                    selectedOverlay?.let { selection = MainBottomSheetSelection.Overlay(it.name, key) }
                     ClickResult.Consume
                 }
             },
@@ -136,7 +145,7 @@ fun ShowMapScreen(
                 val key = viewModel.getQuestKey(properties)
                 if (key == null) ClickResult.Pass else {
                     lastEvent = "Quest: $key"
-                    bottomSheetViewModel.showQuest(key)
+                    selection = MainBottomSheetSelection.Quest(key)
                     ClickResult.Consume
                 }
             },
@@ -144,7 +153,7 @@ fun ShowMapScreen(
                 val key = viewModel.getEditKey(properties)
                 if (key == null) ClickResult.Pass else {
                     lastEvent = "Edit: $key"
-                    editHistoryViewModel.select(key)
+                    editKey = key
                     ClickResult.Consume
                 }
             },
@@ -158,8 +167,8 @@ fun ShowMapScreen(
     }
 
     fun clearSelection() {
-        bottomSheetViewModel.closeBottomSheet()
-        editHistoryViewModel.select(null)
+        selection = null
+        editKey = null
         markers = null
         scope.launch { cameraState.endFocus() }
     }
@@ -205,7 +214,7 @@ fun ShowMapScreen(
             }
             TextButton(
                 enabled = selectedOverlay?.isCreateNodeEnabled == true,
-                onClick = { selectedOverlay?.let { bottomSheetViewModel.showCreateElementInOverlay(it) } },
+                onClick = { selectedOverlay?.let { selection = MainBottomSheetSelection.Overlay(it.name) } },
             ) { Text("Create") }
             TextButton(onClick = ::clearSelection) { Text("Clear selection") }
             TextButton(

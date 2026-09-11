@@ -6,6 +6,8 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.location.Location
+import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.overlays.Overlay
@@ -34,6 +36,7 @@ abstract class MainMapViewModel : ViewModel() {
     abstract val selectedOverlay: StateFlow<Overlay?>
 
     abstract fun onViewportChanged(zoom: Double, bounds: BoundingBox?)
+    abstract fun onLocationChanged(location: Location)
 
     /** Downloaded areas */
     abstract val downloadedTiles: StateFlow<Collection<TilePos>>
@@ -57,6 +60,7 @@ class MainMapViewModelImpl(
     private val editHistoryPinsSource: EditHistoryPinsSource,
     private val styleableOverlaySource: StyleableOverlaySource,
     private val selectedOverlaySource: SelectedOverlaySource,
+    private val surveyChecker: SurveyChecker,
 ) : MainMapViewModel() {
 
     override val selectedOverlay = callbackFlow {
@@ -67,6 +71,10 @@ class MainMapViewModelImpl(
         trySend(selectedOverlaySource.selectedOverlay)
         awaitClose { selectedOverlaySource.removeListener(listener) }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), null)
+
+    override fun onLocationChanged(location: Location) {
+        surveyChecker.addRecentLocation(location)
+    }
 
     override fun onViewportChanged(zoom: Double, bounds: BoundingBox?) {
         mapQuestPinsSource.onMapMoved(zoom, bounds)

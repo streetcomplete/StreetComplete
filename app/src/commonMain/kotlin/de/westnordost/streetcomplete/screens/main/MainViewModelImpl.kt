@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.screens.main
 
-import androidx.compose.ui.geometry.Offset
 import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
@@ -33,11 +32,11 @@ import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterController
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
-import de.westnordost.streetcomplete.screens.main.controls.LocationState
-import de.westnordost.streetcomplete.screens.main.map.maplibre.CameraPosition
+import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
 import de.westnordost.streetcomplete.util.ktx.launch
+import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.parseGeoUri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -53,6 +52,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
+import org.maplibre.compose.camera.CameraPosition
 import kotlin.reflect.KClass
 
 class MainViewModelImpl(
@@ -78,6 +78,22 @@ class MainViewModelImpl(
     private val noteEditsSource: NoteEditsSource,
     private val prefs: Preferences,
 ) : MainViewModel() {
+
+    override val initialCamera get() = CameraPosition(
+        target = prefs.mapPosition.toPosition(), bearing = prefs.mapRotation,
+        tilt = prefs.mapTilt, zoom = prefs.mapZoom,
+    )
+    override val initiallyFollowing get() = prefs.mapIsFollowing
+    override val initiallyNavigating get() = prefs.mapIsNavigationMode
+
+    override fun saveCamera(camera: CameraPosition, following: Boolean, navigating: Boolean) {
+        prefs.mapPosition = camera.target.toLatLon()
+        prefs.mapRotation = camera.bearing
+        prefs.mapTilt = camera.tilt
+        prefs.mapZoom = camera.zoom
+        prefs.mapIsFollowing = following
+        prefs.mapIsNavigationMode = navigating
+    }
 
     /* error handling */
     override val lastCrashReport = MutableStateFlow<String?>(null)
@@ -113,7 +129,7 @@ class MainViewModelImpl(
                 val zoom = if (geo.zoom == null || geo.zoom < 14) 18.0 else geo.zoom
                 val pos = LatLon(geo.latitude, geo.longitude)
 
-                geoUri.value = CameraPosition(pos, 0.0, 0.0, zoom)
+                geoUri.value = CameraPosition(target = pos.toPosition(), bearing = 0.0, tilt = 0.0, zoom = zoom)
             }
         }
     }
@@ -206,7 +222,7 @@ class MainViewModelImpl(
         }
         selectedOverlayController.addListener(listener)
         awaitClose { selectedOverlayController.removeListener(listener) }
-    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, null)
+    }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, selectedOverlayController.selectedOverlay)
 
     override var hasShownOverlaysTutorial: Boolean
         get() = prefs.hasShownOverlaysTutorial
@@ -414,18 +430,6 @@ class MainViewModelImpl(
         val syncedEdits = if (isShowingStarsCurrentWeek) editCountCurrentWeek else editCount
         syncedEdits + unsyncedEdits
     }.stateIn(viewModelScope + Dispatchers.IO, SharingStarted.Eagerly, 0)
-
-    override val locationState: MutableStateFlow<LocationState?> = MutableStateFlow(LocationState.ENABLED)
-    override val mapCamera = MutableStateFlow<CameraPosition?>(null)
-    override val metersPerDp = MutableStateFlow(0.0)
-    override val displayedPosition = MutableStateFlow<Offset?>(null)
-
-    override val isFollowingPosition = MutableStateFlow(false)
-    override val isNavigationMode = MutableStateFlow(false)
-
-    override val isRecordingTracks = MutableStateFlow(false)
-
-    override val userHasMovedCamera = MutableStateFlow(false)
 
     // ---------------------------------------------------------------------------------------
 

@@ -19,7 +19,6 @@ import de.westnordost.streetcomplete.screens.main.map.layers.CurrentLocationLaye
 import de.westnordost.streetcomplete.screens.main.map.layers.DownloadedAreaLayer
 import de.westnordost.streetcomplete.screens.main.map.layers.FocusedGeometryLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.GeometryMarkersLayers
-import de.westnordost.streetcomplete.screens.main.map.layers.Marker
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.screens.main.map.layers.PinsLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.SelectedPinsLayer
@@ -30,6 +29,7 @@ import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.getIcon
 import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
+import de.westnordost.streetcomplete.ui.common.quest.Marker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject

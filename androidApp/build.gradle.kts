@@ -85,7 +85,7 @@ dependencies {
 
     // Dependency Injection
     implementation("io.insert-koin:koin-android:4.2.2")
-    implementation("io.insert-koin:koin-compose:4.2.2")
+    implementation("io.insert-koin:koin-androidx-compose:4.2.2")
     implementation("io.insert-koin:koin-androidx-workmanager:4.2.2")
 
     // Settings

@@ -13,6 +13,7 @@ import de.westnordost.streetcomplete.screens.main.map.byZoom
 import de.westnordost.streetcomplete.screens.main.map.isArea
 import de.westnordost.streetcomplete.screens.main.map.isPoint
 import de.westnordost.streetcomplete.screens.main.map.mapIconImage
+import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.id
 import de.westnordost.streetcomplete.ui.theme.GeometryMarker
 import kotlinx.coroutines.Dispatchers

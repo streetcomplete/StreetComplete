@@ -6,8 +6,7 @@ preserving Android behavior and keeping the map implementation shared for future
 iOS work. Full iOS UI/platform-service migration, desktop support, and unrelated
 activity/navigation cleanup are outside this plan.
 
-Production currently uses `MainMapFragment`; the shared `MainMap` is reached
-through `ShowMapScreen`. [#7068](https://github.com/streetcomplete/StreetComplete/pull/7068)
+[#7068](https://github.com/streetcomplete/StreetComplete/pull/7068)
 is a reference for individual migration implementations, not additional scope.
 
 ## Maintaining this plan
@@ -27,47 +26,7 @@ is a reference for individual migration implementations, not additional scope.
 - Delete this document when no migration work remains. Put any lasting maintenance
   instructions in the appropriate existing project documentation.
 
-## Phase 2: replace the production map
-
-- Resolve view models and collect their flows in `MainScreen`. Wire map data and
-  direct callbacks into the production screen, controls, and forms as the
-  Activity/Fragment/Compose forwarding bridges are removed. Keep the existing
-  controllers/sources and map source helpers: visible
-  quests flow through `MapQuestPinsSource` and the view model to the screen, then
-  `PinsLayers` converts pins to GeoJSON in the background. Forward viewport
-  changes from the screen to the quest and overlay sources through the view model.
-- Move production sheets, markers, history visibility, selection, and highlighted
-  geometry to their composition owners in `MainScreen`. Save the minimal presentation state
-  needed for restoration with `rememberSaveable`/`rememberSerializable`;
-  reconstruct database-derived data from the existing sources. Keep view models
-  exposing derived flows and operations. Remove obsolete bridge properties in
-  `MainViewModel` as callers move. Verify selection and form restoration after
-  activity recreation and process death.
-- Use screen-owned `MapState` when wiring `MainScreen`, with the shared runtime
-  in DI. Verify camera restoration after process death and a stable map lifetime
-  across recomposition and ordinary production screen controls.
-
-- Wire camera preferences and incoming `geo:` handling into the production screen,
-  including moves before the map is attached. Connect the shared camera state to
-  location/navigation controls, sheet padding and focus, pan gestures, and temporary
-  sidebar changes. Verify follow/navigation restoration and camera preferences
-  across these transitions.
-- Feed the shared track state from lifecycle-controlled location/heading collection
-  in the production screen. Keep survey checking on the raw location event stream,
-  before display or accuracy filtering, and retain auto-sync's separate request.
-  Restore the displayed location and pass recorded tracks into the saved note
-  sheet payload. Verify recording and note attachment across permission changes
-  and activity recreation.
-- Wire existing `MainActivity`/`MainScreen` controls and callbacks to the shared
-  map: zoom/compass/location buttons, quest and solved-pin projection, crosshair
-  and create actions, form markers, history, and download-area calculation.
-  Preserve intended gesture behavior without carrying over the legacy finger-size
-  calculation or enlarged feature-query area.
-- Replace the production fragment map with `MainMap` through the existing Android
-  host. Keep the map mounted across ordinary control, form, and sidebar changes;
-  verify these changes do not recreate its presentation or reset its camera.
-
-### Finish offline integration
+## Phase 2: finish offline integration
 
 - Replace the hosted `streetcomplete.app/map-jawg/streetcomplete.json` URL in
   `MapLibreMapTilesDownloader` with a bundled minimal style definition. Reference
@@ -97,8 +56,9 @@ is a reference for individual migration implementations, not additional scope.
 After the production validation below passes:
 
 - Remove the legacy map fragments, components, managers, camera/style/image
-  helpers, and Android map downloader after their callers have moved to the
-  shared implementation.
+  helpers, and Android map downloader. Handle tasks saved with legacy fragments
+  before removing their classes; the new host currently removes restored fragments
+  after `super.onCreate`.
 - Remove the direct Android SDK dependency and map assets/glyphs used only by the
   legacy renderer. Remove `updateMapStyle`, `UpdateMapStyleTask`, and the root
   update task's reference once their Android JSON style files are retired. Retain
