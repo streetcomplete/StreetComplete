@@ -52,12 +52,12 @@ is a reference for individual migration implementations, not additional scope.
   location/navigation controls, sheet padding and focus, pan gestures, and temporary
   sidebar changes. Verify follow/navigation restoration and camera preferences
   across these transitions.
-- Move track recording/segmentation, accuracy filtering, time gaps, bounded
-  restoration, and note attachment out of `MainMapFragment` into shared behavior.
-  Keep survey checking on the location event stream so display-state conflation
-  cannot drop fixes. Preserve lifecycle-controlled location/heading collection
-  and auto-sync's separate request. Test recording and restoration across gaps,
-  permission changes, and activity recreation.
+- Feed the shared track state from lifecycle-controlled location/heading collection
+  in the production screen. Keep survey checking on the raw location event stream,
+  before display or accuracy filtering, and retain auto-sync's separate request.
+  Restore the displayed location and pass recorded tracks into the saved note
+  sheet payload. Verify recording and note attachment across permission changes
+  and activity recreation.
 - Wire existing `MainActivity`/`MainScreen` controls and callbacks to the shared
   map: zoom/compass/location buttons, quest and solved-pin projection, crosshair
   and create actions, form markers, history, and download-area calculation.

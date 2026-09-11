@@ -44,6 +44,7 @@ import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.layers.Marker
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
+import de.westnordost.streetcomplete.screens.main.map.rememberMainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
 import de.westnordost.streetcomplete.ui.common.BackIcon
@@ -52,11 +53,13 @@ import kotlinx.coroutines.launch
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.interaction.ClickResult
+import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.style.BaseStyle
 import org.maplibre.spatialk.geojson.Position
+import kotlin.time.Clock
 import kotlin.time.Duration
 
 @Composable
@@ -76,10 +79,8 @@ fun ShowMapScreen(
     val selectedOverlay by viewModel.selectedOverlay.collectAsState()
     val downloadedTiles by viewModel.downloadedTiles.collectAsState()
     var location by remember { mutableStateOf<Location?>(null) }
-    var trackpoints by remember { mutableStateOf<List<LatLon>>(emptyList()) }
-    var oldTrackpointsLists by remember { mutableStateOf<List<List<LatLon>>>(emptyList()) }
+    val tracks = rememberMainMapTrackState()
     var markers by remember { mutableStateOf<Collection<Marker>?>(null) }
-    val recording = trackpoints.isNotEmpty()
     var overlayMenu by remember { mutableStateOf(false) }
     var lastEvent by remember { mutableStateOf("Tap a quest, edit, overlay element, or map background") }
     var styleRevision by remember { mutableStateOf(0) }
@@ -110,9 +111,9 @@ fun ShowMapScreen(
         MainMapContent(
             location = location,
             rotation = if (location != null) 135f else null,
-            isRecording = recording,
-            trackpoints = trackpoints,
-            oldTrackpointsLists = oldTrackpointsLists,
+            isRecording = tracks.isRecording,
+            trackpoints = tracks.currentTrack.map { it.position },
+            oldTrackpointsLists = tracks.previousTracks.map { track -> track.map { it.position } },
             shownBottomSheet = sheet,
             shownMarkers = markers,
             isShowingUndoHistorySidebar = history,
@@ -224,22 +225,25 @@ fun ShowMapScreen(
                 } else null
             }) { Text(if (location == null) "Sample location" else "Hide location") }
             TextButton(onClick = {
-                if (recording) {
-                    trackpoints = emptyList()
-                    oldTrackpointsLists = emptyList()
+                if (tracks.isRecording) {
+                    tracks.stopRecording()
+                    tracks.clear()
                 } else {
                     val center = cameraPosition()
-                    trackpoints = listOf(
-                        LatLon(center.latitude - 0.0005, center.longitude - 0.0005),
-                        LatLon(center.latitude, center.longitude - 0.0003),
-                        center,
-                    )
-                    oldTrackpointsLists = listOf(listOf(
-                        LatLon(center.latitude + 0.0005, center.longitude - 0.0005),
-                        LatLon(center.latitude + 0.0005, center.longitude + 0.0005),
-                    ))
+                    fun addPoint(latitude: Double, longitude: Double) {
+                        tracks.addLocation(LocationMeasurement(
+                            position = Position(longitude, latitude),
+                            measuredAt = Clock.System.now(),
+                        ))
+                    }
+                    addPoint(center.latitude + 0.0005, center.longitude - 0.0005)
+                    addPoint(center.latitude + 0.0005, center.longitude + 0.0005)
+                    tracks.startRecording()
+                    addPoint(center.latitude - 0.0005, center.longitude - 0.0005)
+                    addPoint(center.latitude, center.longitude - 0.0003)
+                    addPoint(center.latitude, center.longitude)
                 }
-            }) { Text(if (recording) "Hide sample track" else "Sample track") }
+            }) { Text(if (tracks.isRecording) "Hide sample track" else "Sample track") }
             TextButton(onClick = {
                 markers = if (markers == null) listOf(Marker(
                     geometry = sheet?.geometry ?: highlightedGeometry
