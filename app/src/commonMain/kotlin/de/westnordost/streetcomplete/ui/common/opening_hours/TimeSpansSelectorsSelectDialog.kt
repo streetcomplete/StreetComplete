@@ -66,13 +66,7 @@ fun TimeSpansSelectorSelectDialog(
         is12Hour = timeFormatElements.clock12 != null,
         allowAfterMidnight = true,
     )
-    var startOpenEnd by remember { mutableStateOf(initialTimeSpansSelector is StartingAtTime) }
-    var endOpenEnd by remember { mutableStateOf((initialTimeSpansSelector as? TimeSpan)?.openEnd ?: false) }
-
-    fun toggleOpenEnd(value: Boolean) {
-        if (step == 0) startOpenEnd = value
-        else endOpenEnd = value
-    }
+    var openEnd by remember { mutableStateOf((initialTimeSpansSelector as? TimeSpan)?.openEnd ?: false) }
 
     ScrollableAlertDialog(
         onDismissRequest = onDismissRequest,
@@ -87,7 +81,6 @@ fun TimeSpansSelectorSelectDialog(
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.high) {
                 Column(Modifier.padding(horizontal = 24.dp).fillMaxWidth()) {
                     val timePickerState = if (step == 0) startTimePickerState else endTimePickerState
-                    val openEnd = if (step == 0) startOpenEnd else endOpenEnd
 
                     ProvideTextStyle(MaterialTheme.typography.largeInput) {
                         TimePicker(
@@ -100,20 +93,22 @@ fun TimeSpansSelectorSelectDialog(
 
                     Divider()
 
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier
-                            .clip(MaterialTheme.shapes.small)
-                            .toggleable(openEnd) { toggleOpenEnd(it) }
-                    ) {
-                        Checkbox(
-                            checked = openEnd,
-                            onCheckedChange = { toggleOpenEnd(it) },
-                        )
-                        Text(
-                            text = stringResource(Res.string.quest_openingHours_no_fixed_end),
-                            modifier = Modifier.fillMaxWidth()
-                        )
+                    if(step == 1){
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .clip(MaterialTheme.shapes.small)
+                                .toggleable(openEnd) { openEnd=it }
+                        ) {
+                            Checkbox(
+                                checked = openEnd,
+                                onCheckedChange = { openEnd = it },
+                            )
+                            Text(
+                                text = stringResource(Res.string.quest_openingHours_no_fixed_end),
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
                     }
                 }
             }
@@ -123,18 +118,8 @@ fun TimeSpansSelectorSelectDialog(
                 Text(stringResource(Res.string.cancel))
             }
             if (step == 0) {
-                if (startOpenEnd) {
-                    TextButton(onClick = {
-                        val time = ClockTime(startTimePickerState.hour, startTimePickerState.minute)
-                        onSelect(StartingAtTime(time))
-                        onDismissRequest()
-                    }) {
-                        Text(stringResource(Res.string.ok))
-                    }
-                } else {
-                    TextButton(onClick = { step = 1 }) {
-                        Text(stringResource(Res.string.next))
-                    }
+                TextButton(onClick = { step = 1 }) {
+                    Text(stringResource(Res.string.next))
                 }
             } else {
                 TextButton(onClick = { step = 0 }) {
@@ -143,7 +128,7 @@ fun TimeSpansSelectorSelectDialog(
                 TextButton(onClick = {
                     val start = ClockTime(startTimePickerState.hour, startTimePickerState.minute)
                     val end = ExtendedClockTime(endTimePickerState.hour, endTimePickerState.minute)
-                    onSelect(TimeSpan(start, end, endOpenEnd))
+                    onSelect(TimeSpan(start, end, openEnd))
                     onDismissRequest()
                 }) {
                     Text(stringResource(Res.string.ok))
