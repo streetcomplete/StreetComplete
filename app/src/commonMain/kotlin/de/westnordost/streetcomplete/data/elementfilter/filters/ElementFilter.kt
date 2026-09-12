@@ -10,6 +10,8 @@ import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atStartOfDayIn
 import kotlin.time.Instant
 
+// Assume user will not switch time zones while operating the App. Even if they do,
+// the filters operate in ranges of years, so an hour will not have much of an effect.
 private val localTimeZone = TimeZone.currentSystemDefault()
 
 sealed interface ElementFilter : Matcher<Element> {
@@ -144,6 +146,7 @@ class TagNewerThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dat
 }
 
 abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : ElementFilter {
+    // Cache the threshold for each filter to avoid computing it for every element.
     private val threshold by lazy { dateFilter.date.atStartOfDayIn(localTimeZone).toEpochMilliseconds() }
 
     abstract fun compareTo(tagValue: LocalDate): Boolean
@@ -169,6 +172,7 @@ class ElementNewerThan(dateFilter: DateFilter) : CompareElementAge(dateFilter) {
 }
 
 abstract class CompareElementAge(val dateFilter: DateFilter) : ElementFilter {
+    // Cache the threshold for each filter to avoid computing it for every element.
     private val threshold by lazy { dateFilter.date.atStartOfDayIn(localTimeZone).toEpochMilliseconds() }
 
     abstract fun compareTo(tagValue: LocalDate): Boolean
