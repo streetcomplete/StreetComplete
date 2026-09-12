@@ -6,6 +6,7 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.filter
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmElementQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
@@ -73,6 +74,9 @@ class AddCrossingKerbHeight : OsmElementQuestType<KerbHeight> {
 
     override fun isApplicableTo(element: Element): Boolean? =
         if (!crossingFilter.matches(element)) false else null
+
+    override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
+        mapData.filter("nodes, ways with kerb or barrier=kerb")
 
     @Composable
     override fun Form(on: (QuestAction<KerbHeight>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
