@@ -54,6 +54,6 @@ class AddChargingStationBicycles : OsmFilterQuestType<Boolean>() {
     }
 
     override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        tags["crossing:island"] = answer.toYesNo()
+        tags["bicycle"] = answer.toYesNo()
     }
 }
