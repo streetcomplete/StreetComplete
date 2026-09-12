@@ -4,6 +4,7 @@ chargingStationOperators: [Helen, VIRTA, K-Lataus, ABC-lataus, Recharge, ABC, Te
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [UFF, Suomen Pakkauskierrätys Rinki, Helsingin seudun ympäristöpalvelut, Fida, Suomen Pakkauskierrätys RINKI Oy, Recci, Rinki, Auringonnousu, Suomen Pakkauskierrätys Rinki Oy, Rosk'n roll, Rinkiin, Rinki-ekopiste, Pelastusarmeija, Emmy]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true

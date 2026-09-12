@@ -3,6 +3,7 @@ atmOperators: [Liechtensteinische Landesbank AG, Liechtensteinische Landesbank]
 chargingStationOperators: [LKW, GOFAST]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, sev1011_t13]
 exclusiveCycleLaneStyle: yellow
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: false

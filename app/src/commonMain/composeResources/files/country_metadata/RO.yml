@@ -4,6 +4,7 @@ chargingStationOperators: [Lidl, Renovatio e-charge, Enel X, Kaufland, Tesla, pp
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Containere Textile, Caritas, SC Transal Urbis SRL, TexCycle]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

@@ -4,6 +4,7 @@ chargingStationOperators: [Enel X, Be Charge, Enel, Repower, Pradella Sistemi sr
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo, type3c, type3a]
 clothesContainerOperators: [Humana, Caritas Ambrosiana, SEA, HERA, Veritas, Caritas, AMA, Cooperativa Sociale Centro di Lavoro San Giovanni Calabria, UIC, Cooperativa Lavoro e Solidarietà (Amiat S.p.a.), AMIU, Cooperativa Lavoro e Solidarietà (Amiat S.p.a), Amsa, Aamps, Consac, Dona Valore, HUMANA, Cooperativa Sociale Lavoro e Solidarietà, COSMARI, Umanitaria Padana onlus, Hera, Exodus, Cannone srl, Profiltek, www.tessutosociale.it, geovest, SEI Toscana, Nuova Promozione Umana, Nicoletti servizi, Cooperativa Sociale Città e Salute, Comune di Vanzago, Comune di Pescara, 'Cauto cooperativa sociale onlus, Caritas diocesana di Brescia', Caritas di Concordia - Pordenone, Caritas Diocesana di Tortona, CONAU – Consorzio Nazionale Abiti e Accessori Usati, Ama, Acea Pinerolo]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko, typeL]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true

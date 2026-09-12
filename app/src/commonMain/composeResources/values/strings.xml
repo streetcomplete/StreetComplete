@@ -1039,6 +1039,17 @@
 
     <string name="quest_charging_station_capacity_title">How many cars can be charged here at the same time?</string>
 
+    <string name="quest_charging_station_socket_title">How many sockets does this charging station have?</string>
+    <string name="quest_charging_station_socket_note">If a socket type is not listed, please leave a note instead.</string>
+    <string name="quest_charging_station_socket_type2">Type 2 (Mennekes) without Cable</string>
+    <string name="quest_charging_station_socket_type2_cable">Type 2 (Mennekes) with Cable</string>
+    <string name="quest_charging_station_socket_type2_combo">Type 2 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_chademo">CHAdeMO</string>
+    <string name="quest_charging_station_socket_domestic">Household-plug</string>
+    <string name="quest_charging_station_socket_count_input">Number of %1$s</string>
+    <string name="quest_charging_station_socket_increase">Increase number of %1$s</string>
+    <string name="quest_charging_station_socket_decrease">Decrease number of %1$s</string>
+
     <string name="quest_charging_station_operator_title">Who is the operator of this charging station?</string>
 
     <string name="quest_clothes_container_operator_title">Who accepts donations for this clothing bin?</string>

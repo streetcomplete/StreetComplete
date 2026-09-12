@@ -2,6 +2,7 @@
 advisorySpeedLimitSignStyle: yellow
 centerLineStyle: yellow
 chargingStationSocketTypes: [nacs, type1, type1_combo, chademo]
+domesticSocketType: [nema_1_15, nema_5_15, nema_5_20]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true

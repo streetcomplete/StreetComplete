@@ -4,6 +4,7 @@ chargingStationOperators: [GOFAST, MOVE, OIKEN, Migrol, bike-energy, Plug'n Roll
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo, type1, type1_combo]
 clothesContainerOperators: [Texaid, Tell-Tex, ERZ, Contex, ZAKU, TEXAID, Ville de Geneve, Coop, Stadt Dietikon, coop, SOLIDAY Schweiz, Coordination Textile Genevoise, Caritas, Ville de Genève, Schweizerisches Rotes Kreuz, Schweizerischer Blindenbund, Schweizer Berghilfe, Lidl, Einwohnergemeinde Küttigen, Croix-Rouge fribourgeoise, Commune de Lutry, Commune d'Ayent, samariter, procap, Werkhof und Entsorgung Wettingen, Ville de Lausanne, Textura, Tex Aid, Tell Tex, Stadt Luzern, Stadt Bülach, Habitants, Gemeinde Zollikofen, Gemeinde Wettingen, Gemeinde Freienbach, Gemeinde Bärschwil, Caritas Ticino]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, sev1011_t13]
 exclusiveCycleLaneStyle: yellow dashes
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: false

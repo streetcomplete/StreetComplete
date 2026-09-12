@@ -161,6 +161,31 @@ building levels/
 charging station capacity/
     electric_car.svg            parts taken from Twemoji: U+1F698 and U+1F50C
 
+charging station socket/
+    chademo.svg                 mcliquid
+    domestic.svg                mcliquid
+    type2.svg                   mcliquid
+    type2_cable.svg             mcliquid
+    type2_combo.svg             mcliquid
+    socket_domestic_as3112.svg  mcliquid
+    socket_domestic_bs1363.svg  mcliquid
+    socket_domestic_gb1002.svg  mcliquid
+    socket_domestic_nema_1_15.svg mcliquid
+    socket_domestic_nema_5_15.svg mcliquid
+    socket_domestic_nema_5_20.svg mcliquid
+    socket_domestic_schuko.svg  mcliquid
+    socket_domestic_sev1011_t13.svg mcliquid
+    socket_domestic_typec.svg   mcliquid
+    socket_domestic_typee.svg   mcliquid
+    socket_domestic_typek.svg   mcliquid
+    socket_domestic_typel.svg   mcliquid
+    socket_eu_c_black.svg       EU alternative fuels identifier, public domain
+    socket_eu_c_white.svg       EU alternative fuels identifier, public domain
+    socket_eu_k_black.svg       EU alternative fuels identifier, public domain
+    socket_eu_l_black.svg       EU alternative fuels identifier, public domain
+    socket_eu_m_black.svg       EU alternative fuels identifier, public domain
+    socket_eu_n_black.svg       EU alternative fuels identifier, public domain
+
 cycleway/
     bus_lane.svg
     bus_lane_l.svg
@@ -326,6 +351,7 @@ quest/
     charger_operator.svg             parts taken from Twemoji: U+1FAF4
     car_charger_capacity.svg         parts taken from Twemoji: U+1F698 and U+1F50C
     charger.svg                      parts taken from Twemoji: U+1F50C
+    charger_socket.svg               mcliquid, parts taken from Twemoji: U+1F50C
     caravan.svg
     card.svg
     cash.svg

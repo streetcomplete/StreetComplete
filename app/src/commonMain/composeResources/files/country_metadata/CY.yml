@@ -5,6 +5,7 @@ chargingStationOperators: [EAC, Electricity Authority of Cyprus, Lidl]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Red Cross, anakyklos.com, PASYKAF]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [bs1363]
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
 isLeftHandTraffic: true

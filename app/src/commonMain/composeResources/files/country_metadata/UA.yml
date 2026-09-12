@@ -5,6 +5,7 @@ centerLineStyle: white
 chargingStationOperators: [Перша національна мережа електрозаправних комплексів Тока, Toka, AutoEnterprise, EVA Chargers, Ionity, Одеська міська рада, EcoFactor, ЕлектроДрайв, ElectroUA, Yasno, GO TO-U, Перша національна мережа електрозаправних комплексів "Тока", Автоэнтерпрайз, Автоентерпрайз, АвтоЭнтерпрайз, Electro UA, Autoenterprise, Go To-U, Get-Charging, Faster, FLASH, Ecofactor, ECOFACTOR, Тока, ionity, UGV Chargers, Silver Fox Energy, WOG, Tesla Club Ukraine, Infinite Charge, Infinite Chage, IONITY, ChargePoint, AutoVolt, AutoEnterprise 201]
 clothesContainerOperators: [Зелений промінь, Кошик добра, Кошик Добра, Емаус-Оселя]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 edgeLineStyle: white
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true

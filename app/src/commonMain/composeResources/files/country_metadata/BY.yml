@@ -4,6 +4,7 @@ atmOperators: [Беларусбанк, Белинвестбанк, Белагр�
 chargingStationOperators: [Белоруснефть, РУП "Белоруснефть-Минскавтозаправка", Белтелеком, РУП «Белтелеком», Гродненский ЦСМС, ПО «Белоруснефть», ОАО «Витязь», BatteryFly, ООО "Электрохиз", РУП "Белоруснефть-Гроднооблнефтепродукт", Porsche, РУП "Белоруснефть-Могилёвоблнефтепродукт", РУП "Белоруснефть-Витебскоблнефтепродукт", РУП "Белоруснефть-Брестоблнефтепродукт", ООО "ЧопперПлюс", Eleven, Belorusneft]
 clothesContainerOperators: [ЖКХ г. Пинска]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

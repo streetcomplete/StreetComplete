@@ -5,6 +5,7 @@ chargingStationOperators: [Σκλαβενίτης, ΑΒ Βασιλόπουλος
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Recycom, RECYCOM, Δήμος Ηλιούπολης, Δήμος Αθηναίων, Texcycle, Δήμος Κέρκυρας, Δήμος Ζωγράφου, East-West Greece, ΙΝ Αγίας Μαύρας, Δήμος Γαλατσίου]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

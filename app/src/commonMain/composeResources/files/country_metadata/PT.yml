@@ -4,6 +4,7 @@ chargingStationOperators: [EDP, Galp Power, True Kare, Powerdot, Atlante, Contin
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Ultriplo, Humana Portugal, wippytex, Ultriplo Lda, Wippytex, Projeto Amigo, H Sarah Trading, Utriplo, Nova Etapa, Fundação o Século, FILTEX & reciclagem, Câmara Municipal de Lisboa, Cáritas Diocesana de Lisboa, Cáritas, Caritas Diocesana de Lisboa, utriplo, Texlimca, Sarah Trading, ResiNorte, Cáritas Diocesana de Setúbal]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true

@@ -5,6 +5,7 @@ chargingStationOperators: [Mer, Tesla, E.ON, Vattenfall InCharge, Göteborgs Sta
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo, type1, type1_combo]
 clothesContainerOperators: [Göteborgs Stad, Human Bridge, Myrorna, Humanbridge, HumanBridge, FTI, Svensk Textilåtervinning AB, björk & frihet, Emmaus]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 edgeLineStyle: short white dashes
 hasAdvisorySpeedLimitSign: true
 hasBicycleBoulevard: true

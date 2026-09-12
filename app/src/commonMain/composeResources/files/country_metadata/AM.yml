@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [en]
 atmOperators: [ԱԿԲԱ, Ամերիաբանկ, Արդշինբանկ, Կոնվերս Բանկ, ՎՏԲ, Արարատբանկ, Հայէկոնոմբանկ, Էվոկաբանկ, ԱյԴի Բանկ, Յունիբանկ, Ամիօ Բանկ, Ինեկոբանկ, Ardshininvestbank, Amio Bank, Արցախբանկ, Ամիօ բանկ, Բիբլոս Բանկ Արմենիա, VTB, Cryptomat, Ֆասթ Բանկ, Ardshinbank, Ameriabank]
 chargingStationOperators: [Team Energy, EVAN, Թիմ էներջի]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

@@ -5,6 +5,7 @@ chargingStationOperators: [ČEZ, PRE, E.ON, Pražská energetika, Teplárny Brno
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [KlokTex, Textileco, Diakonie Broumov, Potex, POTEX, TextilEco, TextilEco a.s., Služby města Český Krumlov, Coretex CZ, recyklujemetextil.cz, SAKO, Dimatex CS spol. s r.o., Sova, Helptex, Obec Tuchlovice, Obec Kamenný Přívoz, Klokánek FOD, EKOR, Charita Česká republika, Čistá Plzeň s.r.o., Český červený kříž, potex, Textil Eco, Obec Drnovice, Marius Pedersen, Diecézní charita Brno, Diecezni charita Plzen, Diecezni charita Brno, Diecezni charita, 'Diakonie Broumov, sociální družstvo', Charita, Technické služby Havířov, TS Zlín, Město Veltrusy, Klokánek, Dětské krizové centrum]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, typee]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true

@@ -4,6 +4,7 @@ centerLineStyle: yellow
 chargingStationOperators: [YPF, Shell Recharge Solutions]
 clothesContainerOperators: [Municipalidad de Posadas]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [as3112, typec]
 mobileCountryCode: 722
 noEntrySignStyle: default
 noParkingSignStyle: mutcd latin

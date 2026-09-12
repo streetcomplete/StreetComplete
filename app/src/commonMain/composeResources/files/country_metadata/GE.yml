@@ -4,6 +4,7 @@ atmOperators: [საქართველოს ბანკი, თიბი�
 chargingStationOperators: [martEV, EV Power, Electrify Georgia, მარტივი, MartEV, E-Space, Mart EV, ივი ფაუერ, mart ev]
 clothesContainerOperators: [Emmaus Geo, Caritas Georgia]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

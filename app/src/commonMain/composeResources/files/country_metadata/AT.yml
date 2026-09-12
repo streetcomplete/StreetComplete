@@ -5,6 +5,7 @@ chargingStationOperators: [illwerke vkw, Wien Energie, EVN, Wien Energie GmbH, S
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Humana, Caritas, Kolping, Holding Graz, MA 48, Öpula, Wiener Rotes Kreuz, Rotes Kreuz, Volkshilfe, Verein Humana, TAO, MA48, Wams, TEXAID Austria, Stadt Wien / Kolping, HUMANA, Verein Wams, Linz AG Abfall, WAMS, Graz Holding, Textil Verwertung GmbH, GABL, Carla, Pongauer ArbeitsProjekt, GVU Melk, ÖPULA, Verein WAMS, Stadtbetriebe Steyr, Stadt Wien, Stadt Graz, Pro Umwelt Tirol, Pongauer Arbeitsprojekt, PAP, Marktgemeinde Hard, Gemeinde Wien, GVA Baden, ASA]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: false

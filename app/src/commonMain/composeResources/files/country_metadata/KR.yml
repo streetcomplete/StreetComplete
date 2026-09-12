@@ -7,6 +7,7 @@ chargingStationOperators: [Tesla, 환경부, (주)신세계아이앤씨, 'Tesla,
 chargingStationSocketTypes: [type1, type1_combo, type2, type2_cable, type2_combo, chademo, nacs]
 clothesContainerOperators: [경남지체장애인협회 창원시마산지회]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 hasAdvisorySpeedLimitSign: true
 mobileCountryCode: 450
 officialLanguages: [ko]

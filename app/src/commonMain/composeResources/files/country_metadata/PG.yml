@@ -2,6 +2,7 @@
 atmOperators: [BSP, Westpac, Kina Bank, Bank South Pacific]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [as3112]
 isLeftHandTraffic: true
 mobileCountryCode: 537
 noParkingSignStyle: australia

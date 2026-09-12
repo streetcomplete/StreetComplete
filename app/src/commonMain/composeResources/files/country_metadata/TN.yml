@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [fr, en]
 atmOperators: [الاتحاد البنكي للتجارة والصناعة, STB Bank, Banque de Tunisie, بنك تونس العربي الدولي, UBCI, Amen Bank, مصرف الزيتونة, البنك الوطني الفلاحي, UIB, STB, Poste Tunisienne, BNA Bank, Attijari bank]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, typee]
 mobileCountryCode: 605
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

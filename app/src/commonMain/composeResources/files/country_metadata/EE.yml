@@ -5,6 +5,7 @@ chargingStationOperators: [Enefit Volt, Enefit, ABB, Eleport, Alexela, Eesti Ene
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Tallinna Jäätmekeskus, Riidepunkt, Riidepunkt MTÜ, TJT]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true

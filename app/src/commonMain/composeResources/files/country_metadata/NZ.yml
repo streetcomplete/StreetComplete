@@ -6,6 +6,7 @@ chargingStationOperators: [ChargeNet NZ, Meridian Energy, Tesla, Jolt, BP, Z Ene
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Child Cancer Foundation]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [as3112]
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
 hasSlowZone: false

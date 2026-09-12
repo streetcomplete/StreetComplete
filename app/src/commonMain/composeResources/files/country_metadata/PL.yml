@@ -4,6 +4,7 @@ chargingStationOperators: [GreenWay, Energa, Orlen, Tauron, Lidl, Elocity, Power
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Polski Czerwony Krzyż, Fundacja z Sercem, Fundacja Eco Textil, Obywatelska Fundacja Pomocy Dzieciom, Fundacja Podaruj Pomoc, Fundacja Pomocy Dzieciom DAR, Fundacja Uśmiechu, Fundacja Pomocy Dzieciom Dar, Zachodniopomorskie Towarzystwo Przyjaciół Dzieci, Texland PL, Fundacja Dar, Polski Czerwony Krzyż (PCK), PCK, Ecotextil, Caritas, Nord, Fundacja pomocy dzieciom DAR, TEXLAND PL, Stowarzyszenie Razem z czwórką, Miasto i Gmina Gołańcz, Leocorp, Fundacja z sercem, EcoTextil, Eco Textil, polski czerwony krzyż, pck, Urząd Miasta Łodzi, Fundacja Pomocy Dzieciom, Fundacja ECO, Fundacja Dzieciom "Zdążyć z Pomocą", F.H. Tesso, SV LOGISTICSTRANSPORT, Polski czerwony Krzyż, Polski Czerwony krzyż, Obywatelska Fundacja Pomocy Dzieciom - OPP, Goltrans Rafał Goliński, Gdynia w klimacie, Fundacja uśmiechu, Fundacja pomocy dzieciom Dar, Fundacja Pociecha, Fundacja ECO TEXTIL]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, typee]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: false

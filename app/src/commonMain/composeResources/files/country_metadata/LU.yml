@@ -5,6 +5,7 @@ chargingStationOperators: [Chargy, Aral, SWIO, Q8, ABB, Shell, Enovos, Commune d
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Kolping]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: true

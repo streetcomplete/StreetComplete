@@ -4,6 +4,7 @@ atmOperators: [ПАО Сбербанк, ПАО "Промсвязьбанк", Б�
 chargingStationOperators: [РусГидро, Россети, Пункт Е, Энергия Москвы, ПАО "Ленэнерго", Vолна, АО «Мособлэнерго», Мосэнерго, PlugMe, МРСК Волги, EV-Time, Мособлэнерго, НЭСК, ПАО "МРСК Волги", Сбер, ПАО "Калужская сбытовая компания", it.charge, E-PROM, Яндекс заправки, ТюменьЭнерго, Сургутнефтегаз, СУЭНКО, Русгидро, РосНефть, Револьта, ПАО «Ленэнерго», Volt for drive, Яндекс, Эталон, Татнефть, Ставропольэнергосбыт, СГК, ПАО МГТС, ПАО «Россети Ленэнерго», ПАО "Россети Волга", ООО «Пункт Е», ООО «Оператор электродвижения», ООО «Комета», ОАО «МРСК Урала», Ленэнерго, Для телефонов, Авилон, АО Мособлэнерго, АК "Транснефть", eCars, e-Prom, Touch, Sitronics Electro, Portal Energy, PUNKT E, IT Charge, En+ Group]
 clothesContainerOperators: [Лѣпта, Группа компаний «ЛидерТекс», Спасибо!, Перемолка, Второе дыхание, Лепта, ООО "ЛАУТ РЕСАЙКЛИНГ", Восход, Спасибо, leader-t.ru, AJ International]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketType: [typec, schuko]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true

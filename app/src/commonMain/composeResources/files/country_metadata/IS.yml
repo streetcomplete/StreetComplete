@@ -3,6 +3,7 @@ atmOperators: [Íslandsbanki, Landsbankinn, Arion banki, Hraðbanki, Arion Banki
 chargingStationOperators: [Orka náttúrunnar, Ísorka, eONE, Orkubú Vestfjarða, N1, Tesla, Orkan, Atlantsolía, 'Tesla, Inc.', Orka Náttúrunnar, Reykjavik, ON, Isorka]
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Sorpa, Rauði krossinn]
+domesticSocketType: [typec, schuko]
 edgeLineStyle: white dashes
 exclusiveCycleLaneStyle: white dashes
 hasAdvisoryCycleLane: false

@@ -3,6 +3,7 @@ advisoryCycleLaneStyle: white dashes
 advisorySpeedLimitSignStyle: white
 chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: false
+domesticSocketType: [bs1363]
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true
 hasAdvisorySpeedLimitSign: false
