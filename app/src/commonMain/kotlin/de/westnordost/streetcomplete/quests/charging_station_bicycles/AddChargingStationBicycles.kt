@@ -6,26 +6,37 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.filter
-import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmFilterQuestType
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.BICYCLIST
 import de.westnordost.streetcomplete.osm.Tags
-import de.westnordost.streetcomplete.quests.charging_station_bicycles.ChargingStationBicycles.NO
-import de.westnordost.streetcomplete.quests.charging_station_bicycles.ChargingStationBicycles.ONLY
-import de.westnordost.streetcomplete.quests.charging_station_bicycles.ChargingStationBicycles.YES
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
-import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import org.jetbrains.compose.resources.stringResource
+import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
+import de.westnordost.streetcomplete.util.ktx.toYesNo
 
-class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>() {
+class AddChargingStationBicycles : OsmFilterQuestType<Boolean>() {
 
+    // Charging station with a socket that commonly supports bicycles.
     override val elementFilter = """
         nodes, ways with
           amenity = charging_station
           and !bicycle
           and access !~ private|no
+          and (
+             socket:ropd > 0
+             or socket:bosch_3pin > 0
+             or socket:shimano_steps_5pin > 0
+             or socket:xlr_3pin_cable > 0
+             or socket:domestic > 0
+             or socket:typec > 0
+             or socket:typee > 0
+             or socket:nema_5_15 > 0
+             or socket:nema_5_20 > 0
+             or socket:nema_TT_30 > 0
+             or socket:schuko > 0
+             or socket:as3112 > 0
+             or socket:sev1011_t23 > 0
+          )
     """
     override val changesetComment = "Specify whether bicycles can be charged at charging stations"
     override val wikiLink = "Tag:amenity=charging_station"
@@ -38,29 +49,11 @@ class AddChargingStationBicycles : OsmFilterQuestType<ChargingStationBicycles>()
         mapData.filter("nodes, ways with amenity = charging_station")
 
     @Composable
-    override fun Form(on: (QuestAction<ChargingStationBicycles>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        QuestForm(
-            on = on,
-            answers = listOf(
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_no)) { on(Answer(NO)) },
-                AnswerItem(stringResource(Res.string.quest_generic_hasFeature_yes)) { on(Answer(YES)) },
-                AnswerItem(stringResource(Res.string.quest_hasFeature_only)) { on(Answer(ONLY)) },
-            )
-        )
+    override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
+        YesNoQuestForm(on)
     }
 
-    override fun applyAnswerTo(answer: ChargingStationBicycles, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
-        when (answer) {
-            ChargingStationBicycles.YES -> {
-                tags["bicycle"] = "yes"
-            }
-            ChargingStationBicycles.NO -> {
-                tags["bicycle"] = "no"
-            }
-            ChargingStationBicycles.ONLY -> {
-                tags["bicycle"] = "yes"
-                tags["motorcar"] = "no"
-            }
-        }
+    override fun applyAnswerTo(answer: Boolean, tags: Tags, geometry: ElementGeometry, timestampEdited: Long) {
+        tags["bicycle"] = answer.toYesNo()
     }
 }
