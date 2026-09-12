@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.quests.tactile_paving
 
 import androidx.compose.runtime.Composable
-import de.westnordost.streetcomplete.data.elementfilter.toElementFilterExpression
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
@@ -19,14 +18,6 @@ import de.westnordost.streetcomplete.ui.common.quest.YesNoQuestForm
 import de.westnordost.streetcomplete.util.ktx.toYesNo
 
 class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
-
-    private val eligibleKerbsFilter by lazy { """
-        nodes with
-          !tactile_paving
-          or tactile_paving = unknown
-          or tactile_paving = no and tactile_paving older today -8 years
-          or tactile_paving = yes and tactile_paving older today -12 years
-    """.toElementFilterExpression() }
 
     override val changesetComment = "Specify whether kerbs have tactile paving"
     override val wikiLink = "Key:tactile_paving"
@@ -46,11 +37,20 @@ class AddTactilePavingKerb : OsmElementQuestType<Boolean> {
         YesNoQuestForm(on)
     }
 
-    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
-        mapData.findAllKerbNodes().filter { eligibleKerbsFilter.matches(it) }
+    override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> {
+        // The crossing quest covers both ends unless its value is no, partial, or incorrect.
+        val coveredByCrossingNode = mapData.findCrosswalkEndNodeIdsCoveredByCrossingNode()
+        return mapData.findAllKerbNodes().filter {
+            it.id !in coveredByCrossingNode && kerbsWithUnknownTactilePavingFilter.matches(it)
+        }
+    }
+
+    /* Editing a crossing may make its individual kerb quests applicable. */
+    override fun mayAffectNearbyQuests(element: Element): Boolean =
+        tactilePavingCrossingsFilter.matches(element)
 
     override fun isApplicableTo(element: Element): Boolean? =
-        if (!eligibleKerbsFilter.matches(element) || element !is Node || !element.couldBeAKerb()) {
+        if (!kerbsWithUnknownTactilePavingFilter.matches(element) || element !is Node || !element.couldBeAKerb()) {
             false
         } else {
             null

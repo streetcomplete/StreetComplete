@@ -69,7 +69,27 @@ class OsmQuestController(
                 val geometry = updated.getGeometry(element.type, element.id) ?: continue
                 deferredQuests.addAll(createQuestsForElementDeferred(element, geometry, allQuestTypes))
             }
-            val quests = runBlocking { deferredQuests.awaitAll().filterNotNull() }
+
+            // Some quests depend on tags of a different, nearby element.
+            val nearbyQuestRegions = mutableListOf<Pair<BoundingBox, List<OsmElementQuestType<*>>>>()
+            for (element in updated) {
+                val geometry = updated.getGeometry(element.type, element.id) ?: continue
+                val affectedQuestTypes = allQuestTypes.filter { it.mayAffectNearbyQuests(element) }
+                if (affectedQuestTypes.isNotEmpty()) {
+                    val bbox = geometry.bounds.enlargedBy(NEARBY_QUESTS_PADDING)
+                    nearbyQuestRegions.add(bbox to affectedQuestTypes)
+                }
+            }
+            val nearbyQuests = nearbyQuestRegions.flatMap { (bbox, questTypes) ->
+                // Include context beyond the area in which quests are replaced.
+                val mapData = mapDataSource.getMapDataWithGeometry(
+                    bbox.enlargedBy(ApplicationConstants.QUEST_FILTER_PADDING)
+                )
+                createQuestsForBBox(bbox, mapData, questTypes)
+            }
+
+            val quests = (runBlocking { deferredQuests.awaitAll().filterNotNull() } + nearbyQuests)
+                .distinctBy { it.key }
 
             for (quest in quests) {
                 Log.d(TAG, "Created ${quest.type.name} for ${quest.elementType.name}#${quest.elementId}")
@@ -78,7 +98,10 @@ class OsmQuestController(
             var obsoleteQuestKeys: List<OsmQuestKey> = listOf()
             var visibleQuests: Collection<OsmQuest> = listOf()
             lock.withLock {
-                val previousQuests = db.getAllForElements(updated.map { it.key })
+                val previousNearbyQuests = nearbyQuestRegions.flatMap { (bbox, questTypes) ->
+                    db.getAllInBBox(bbox, questTypes.map { it.name })
+                }
+                val previousQuests = db.getAllForElements(updated.map { it.key }) + previousNearbyQuests
                 // quests that refer to elements that have been deleted shall be deleted
                 val deleteQuestKeys = db.getAllForElements(deleted).map { it.key }
 
@@ -331,5 +354,7 @@ class OsmQuestController(
 
     companion object {
         private const val TAG = "OsmQuestController"
+
+        private const val NEARBY_QUESTS_PADDING = 50.0
     }
 }

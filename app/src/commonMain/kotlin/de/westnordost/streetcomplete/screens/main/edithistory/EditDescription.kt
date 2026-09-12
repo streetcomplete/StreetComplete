@@ -30,6 +30,7 @@ import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryCh
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryDelete
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.StringMapEntryModify
 import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementTagsAction
+import de.westnordost.streetcomplete.data.osm.edits.update_tags.UpdateElementsTagsAction
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEdit
 import de.westnordost.streetcomplete.data.osmnotes.notequests.OsmNoteQuestHidden
@@ -58,6 +59,8 @@ fun EditDescription(
             when (edit.action) {
                 is UpdateElementTagsAction ->
                     TagUpdatesList(edit.action.changes.changes, modifier)
+                is UpdateElementsTagsAction ->
+                    TagUpdatesList(edit.action.actions.flatMap { it.changes.changes }.distinct(), modifier)
                 is DeletePoiNodeAction ->
                     Text(stringResource(Res.string.deleted_poi_action_description), modifier)
                 is SplitWayAction ->
