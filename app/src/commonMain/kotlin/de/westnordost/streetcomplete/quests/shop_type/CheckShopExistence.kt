@@ -31,7 +31,8 @@ class CheckShopExistence(
     // and silence all resurvey quests)
     private val filter by lazy { ("""
         nodes, ways with
-          !man_made
+          (name or brand or noname = yes or name:signed = no)
+          and !man_made
           and !historic
           and !military
           and !power
@@ -42,7 +43,6 @@ class CheckShopExistence(
             older today -2 years
             or ${LAST_CHECK_DATE_KEYS.joinToString(" or ") { "$it < today -2 years" }}
           )
-          and (name or brand or noname = yes or name:signed = no)
     """).toElementFilterExpression() }
 
     override val changesetComment = "Survey if places still exist"
@@ -54,10 +54,11 @@ class CheckShopExistence(
     override fun getApplicableElements(mapData: MapDataWithGeometry): Iterable<Element> =
         mapData.filter { isApplicableTo(it) }
 
+    // Apply 'filter' last since it will check the age of almost every element (very slow)
     override fun isApplicableTo(element: Element): Boolean =
-        filter.matches(element) &&
         element.isPlace() &&
-        hasName(element)
+        hasName(element) &&
+        filter.matches(element)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
         mapData.asSequence().filter { it.isPlaceOrDisusedPlace() }
