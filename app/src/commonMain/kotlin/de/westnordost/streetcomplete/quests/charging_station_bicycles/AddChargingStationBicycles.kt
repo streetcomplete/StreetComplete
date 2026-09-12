@@ -30,7 +30,7 @@ class AddChargingStationBicycles : OsmFilterQuestType<Boolean>() {
              or socket:domestic > 0
              or socket:typec > 0
              or socket:typee > 0
-             or socket:nema5_15 > 0
+             or socket:nema_5_15 > 0
              or socket:nema_5_20 > 0
              or socket:nema_TT_30 > 0
              or socket:schuko > 0
