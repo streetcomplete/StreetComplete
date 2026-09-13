@@ -20,6 +20,15 @@ class AddGeneralAccess : OsmFilterQuestType<GeneralAccess>() {
           (
             amenity ~ bbq|bicycle_wash|compressed_air|dog_toilet|kitchen|sanitary_dump_station|shower|toilets|toy_library|water_point
             or leisure ~ bird_hide|sauna|wildlife_hide
+            or (
+                man_made = tower
+                and (
+                    tower:type = observation
+                    or tower:type = watchtower and historic=yes
+                )
+                and disused != yes
+                and !military
+            )
             or shelter_type = basic_hut
             or waterway ~ fuel|water_point
           )
