@@ -136,7 +136,6 @@ import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
-import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess
 import de.westnordost.streetcomplete.quests.police_type.AddPoliceType
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
 import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
@@ -336,7 +335,7 @@ fun questTypeRegistry(
 
     46 to AddPoliceType(),
 
-    47 to AddPlaygroundAccess(),
+    // 47 to AddPlaygroundAccess(), - removed in https://github.com/streetcomplete/StreetComplete/pull/7109
 
     191 to AddBeachSurface(),
 

@@ -1429,8 +1429,6 @@
     <string name="quest_placeName_title">What’s the name of this place?</string>
     <string name="quest_placeName_no_name_answer">There is no name sign…</string>
 
-    <string name="quest_playground_access_title2">Who is allowed to use this playground?</string>
-
     <string name="quest_policeType_title">Which type of police station is this?</string>
 
     <string name="quest_postboxCollectionTimes_title">What are the pickup times of this collection box?</string>

@@ -19,7 +19,7 @@ class AddGeneralAccess : OsmFilterQuestType<GeneralAccess>() {
         nodes, ways, relations with
           (
             amenity ~ bbq|bicycle_wash|compressed_air|dog_toilet|kitchen|sanitary_dump_station|shower|toilets|toy_library|water_point
-            or leisure ~ bird_hide|sauna|wildlife_hide
+            or leisure ~ bird_hide|playground|sauna|wildlife_hide
             or (
                 man_made = tower
                 and (
@@ -47,7 +47,7 @@ class AddGeneralAccess : OsmFilterQuestType<GeneralAccess>() {
         RadioGroupQuestForm(
             on = on,
             title = stringResource(
-                if (element.tags["amenity"] != null || element.tags["leisure"] == "sauna" || element.tags["waterway"] != null) {
+                if (element.tags["amenity"] != null || element.tags["leisure"] == "playground" || element.tags["leisure"] == "sauna" || element.tags["waterway"] != null) {
                     // Things you "use"
                     Res.string.quest_generalAccess_title
                 } else if (element.tags["shelter_type"] == "basic_hut") {
