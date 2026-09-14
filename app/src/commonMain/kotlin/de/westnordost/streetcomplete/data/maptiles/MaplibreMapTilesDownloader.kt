@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.first
 import org.maplibre.compose.offline.DownloadProgress
 import org.maplibre.compose.offline.DownloadStatus
 import org.maplibre.compose.offline.OfflineManager
+import org.maplibre.compose.offline.OfflinePack
 import org.maplibre.compose.offline.OfflinePackDefinition
 import kotlin.coroutines.cancellation.CancellationException
 
@@ -21,24 +22,27 @@ class MapLibreMapTilesDownloader(
 ) : MapTilesDownloader {
 
     override suspend fun download(bbox: BoundingBox) {
-        val pack = manager.create(
-            definition = OfflinePackDefinition.TilePyramid(
-                // Only tiles need downloading; glyphs and images are packaged with the app.
-                styleUrl = Res.getUri("files/map-download-style.json"),
-                bounds = bbox.toGeoJsonBoundingBox(),
-                minZoom = 0,
-                maxZoom = MapTiles.MAX_ZOOM,
-                pixelRatio = pixelRatio,
-            ),
-            // store timestamp as metadata for deleting areas older than X
-            metadata = nowAsEpochMilliseconds().toString().encodeToByteArray(),
-        )
-        val startedAt = nowAsEpochMilliseconds()
+        var pack: OfflinePack? = null
         try {
+            pack = manager.create(
+                definition = OfflinePackDefinition.TilePyramid(
+                    // Only tiles need downloading; glyphs and images are packaged with the app.
+                    styleUrl = Res.getUri("files/map-download-style.json"),
+                    bounds = bbox.toGeoJsonBoundingBox(),
+                    minZoom = 0,
+                    maxZoom = MapTiles.MAX_ZOOM,
+                    pixelRatio = pixelRatio,
+                ),
+                // store timestamp as metadata for deleting areas older than X
+                metadata = nowAsEpochMilliseconds().toString().encodeToByteArray(),
+            )
+            val startedAt = nowAsEpochMilliseconds()
             manager.resume(pack)
 
-            // TODO maplibre-compose: Collect downloadProgress directly after upgrading to
-            // a release containing https://github.com/maplibre/maplibre-compose/pull/1405.
+            // TODO maplibre-compose: downloadProgress is snapshot state that is only applied
+            // while a map is presented, so this can stay suspended in a background worker.
+            // Await completion through the API added in
+            // https://github.com/maplibre/maplibre-compose/pull/1405 once released.
             val finalState = snapshotFlow { pack.downloadProgress }.first { it.isFinished }
             when (finalState) {
                 is DownloadProgress.Healthy -> {
@@ -57,7 +61,7 @@ class MapLibreMapTilesDownloader(
             }
         } catch (error: Exception) {
             try {
-                manager.pause(pack)
+                pack?.let { manager.pause(it) }
             } catch (pauseError: Exception) {
                 error.addSuppressed(pauseError)
             }
@@ -69,20 +73,27 @@ class MapLibreMapTilesDownloader(
     }
 
     override suspend fun deleteOld(time: Long) {
-        // TODO maplibre-compose: Read packs.value after upgrading to a release containing
-        // https://github.com/maplibre/maplibre-compose/pull/1405, which awaits initial loading.
-        val packs = manager.packs.toList()
-        for (pack in packs) {
-            val packTime = pack.metadata?.decodeToString()?.toLongOrNull()
-            if (packTime == null || packTime < time) {
-                manager.delete(pack)
+        try {
+            // TODO maplibre-compose: packs is loaded asynchronously and may still be empty when
+            // called from a background worker after a cold start. Await the initial load through
+            // the API added in https://github.com/maplibre/maplibre-compose/pull/1405 once released.
+            val packs = manager.packs.toList()
+            for (pack in packs) {
+                val packTime = pack.metadata?.decodeToString()?.toLongOrNull()
+                if (packTime == null || packTime < time) {
+                    manager.delete(pack)
+                }
             }
+        } catch (error: CancellationException) {
+            throw error
+        } catch (error: Exception) {
+            Log.w(TAG, error.message.orEmpty(), error)
         }
     }
 
     override suspend fun clear() {
         try {
-            // TODO maplibre-compose: await initial pack loading here too (see deleteOld).
+            // TODO maplibre-compose: await the initial pack load here too (see deleteOld)
             val packs = manager.packs.toList()
             for (pack in packs) { manager.delete(pack) }
             manager.clearAmbientCache()
