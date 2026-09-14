@@ -28,6 +28,7 @@ class AddGeneralAccess : OsmFilterQuestType<GeneralAccess>() {
                 )
                 and disused != yes
                 and !military
+                and !emergency
             )
             or shelter_type = basic_hut
             or waterway ~ fuel|water_point
