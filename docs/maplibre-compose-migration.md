@@ -72,7 +72,9 @@ is a reference for individual migration implementations, not additional scope.
   The former debug map entry reportedly froze the UI for about a second. Profile
   cold startup and repeated entry to the production map, distinguish UI-thread
   blocking from renderer initialization and tile loading, and verify navigation
-  stays responsive.
+  stays responsive. Candidates for UI-thread work on first display: adding the
+  ~60 style layers, and rasterizing every distinct pin, marker and overlay icon
+  (`PinPainter`, `WithHaloPainter`) when their layers first compose.
 - Validate the selected Vulkan backend on supported Android devices, including
   an older device below API 33; the API 26 emulator cannot initialize Vulkan.
   Check map-entry responsiveness, rendering correctness, and background/resume. Resolve

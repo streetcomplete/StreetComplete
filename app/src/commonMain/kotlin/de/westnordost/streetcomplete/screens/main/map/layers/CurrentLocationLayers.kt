@@ -8,7 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.data.location.Location
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.location_nyan
 import de.westnordost.streetcomplete.resources.location_shadow
@@ -23,22 +23,25 @@ import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.value.CirclePitchAlignment
 import org.maplibre.compose.expressions.value.IconPitchAlignment
+import org.maplibre.compose.expressions.value.IconRotationAlignment
 import org.maplibre.compose.layers.CircleLayer
 import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
 
-/** Displays the location + direction + accuracy marker on the map */
+/** Displays the location + direction + accuracy marker on the map. [heading] is the compass
+ *  heading in degrees, clockwise from north. */
 @Composable @MaplibreComposable
 fun CurrentLocationLayers(
-    location: Location,
-    rotation: Float?
+    position: LatLon,
+    accuracy: Float,
+    heading: Float?
 ) {
     // Use the same spring as TracksLayers so the marker and track endpoint move together.
-    val animatedPosition by animateLatLonAsState(targetValue = location.position)
+    val animatedPosition by animateLatLonAsState(targetValue = position)
     val animatedAccuracy by animateFloatAsState(
-        targetValue = location.accuracy,
+        targetValue = accuracy,
         animationSpec = spring(stiffness = StiffnessLow),
     )
 
@@ -61,14 +64,16 @@ fun CurrentLocationLayers(
         strokeWidth = const(1.dp),
         pitchAlignment = const(CirclePitchAlignment.Map),
     )
-    if (rotation != null) {
+    if (heading != null) {
         SymbolLayer(
             id = "direction",
             source = source,
             iconImage = image(painterResource(Res.drawable.location_view_direction)),
             iconAllowOverlap = const(true),
             iconIgnorePlacement = const(true),
-            iconRotate = const(rotation),
+            // aligned to the map, so the heading is absolute and needs no update when the map rotates
+            iconRotate = const(heading),
+            iconRotationAlignment = const(IconRotationAlignment.Map),
             iconPitchAlignment = const(IconPitchAlignment.Map),
         )
     }

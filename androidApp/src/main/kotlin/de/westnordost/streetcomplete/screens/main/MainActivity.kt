@@ -33,7 +33,10 @@ class MainActivity : BaseActivity(), AndroidScopeComponent {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
-        // Drop legacy fragments before AndroidX restores their removed classes, retaining Compose state.
+        // Until v64, this activity hosted the map in a fragment. A task saved by an older version
+        // can be restored after an update, and restoring a fragment whose class no longer exists
+        // crashes. Dropping the fragment entry keeps the rest of the saved state. Remove once
+        // updates from versions before v64 are no longer supported.
         savedInstanceState?.getBundle("androidx.lifecycle.BundlableSavedStateRegistry.key")
             ?.remove("android:support:fragments")
         super.onCreate(savedInstanceState)

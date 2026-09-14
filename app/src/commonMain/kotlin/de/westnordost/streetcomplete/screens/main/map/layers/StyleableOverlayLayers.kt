@@ -50,12 +50,12 @@ import org.maplibre.spatialk.geojson.Geometry
 @Composable
 fun StyleableOverlayLabelLayer(
     source: VectorSource,
-    icons: Collection<DrawableResource>,
+    icons: List<DrawableResource>,
     color: Color,
     haloColor: Color,
     onClickElement: (properties: JsonObject) -> ClickResult,
 ) {
-    val images = icons.distinct().map { icon ->
+    val images = icons.map { icon ->
         case(icon.id.orEmpty(), mapIconImage(icon, color, haloColor))
     }
     SymbolLayer(

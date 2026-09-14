@@ -10,8 +10,6 @@ import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
-import de.westnordost.streetcomplete.data.overlays.Overlay
-import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
@@ -33,8 +31,6 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 
 abstract class MainMapViewModel : ViewModel() {
-    abstract val selectedOverlay: StateFlow<Overlay?>
-
     abstract fun onViewportChanged(zoom: Double, bounds: BoundingBox?)
     abstract fun onLocationChanged(location: Location)
 
@@ -59,18 +55,8 @@ class MainMapViewModelImpl(
     private val mapQuestPinsSource: MapQuestPinsSource,
     private val editHistoryPinsSource: EditHistoryPinsSource,
     private val styleableOverlaySource: StyleableOverlaySource,
-    private val selectedOverlaySource: SelectedOverlaySource,
     private val surveyChecker: SurveyChecker,
 ) : MainMapViewModel() {
-
-    override val selectedOverlay = callbackFlow {
-        val listener = object : SelectedOverlaySource.Listener {
-            override fun onSelectedOverlayChanged() { trySend(selectedOverlaySource.selectedOverlay) }
-        }
-        selectedOverlaySource.addListener(listener)
-        trySend(selectedOverlaySource.selectedOverlay)
-        awaitClose { selectedOverlaySource.removeListener(listener) }
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), null)
 
     override fun onLocationChanged(location: Location) {
         surveyChecker.addRecentLocation(location)

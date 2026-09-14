@@ -11,6 +11,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestsHiddenSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.util.Listeners
+import de.westnordost.streetcomplete.util.Mockable
 import de.westnordost.streetcomplete.util.SpatialCache
 import kotlinx.atomicfu.locks.ReentrantLock
 import kotlinx.atomicfu.locks.withLock
@@ -32,6 +33,7 @@ import kotlinx.atomicfu.locks.withLock
  *  by the individual sources of quests. (E.g. osm quests at an osm note are not visible, osm note
  *  quests are not visible by default if they are not phrased as questions, …)
  *  */
+@Mockable
 class VisibleQuestsSource(
     private val questTypeRegistry: QuestTypeRegistry,
     private val osmQuestSource: OsmQuestSource,

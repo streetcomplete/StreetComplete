@@ -8,6 +8,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
@@ -43,7 +44,8 @@ class MainMapCameraState internal constructor(
 
     val isNavigationMode: Boolean get() = settings.navigating
 
-    /** A pan only stops following once a location is displayed, as in the legacy map. */
+    /** A pan only stops following once a location is displayed, so that the first fix still
+     *  centers the map when the user panned while waiting for it. */
     fun onPan(hasLocation: Boolean) {
         if (hasLocation) isFollowingPosition = false
     }
@@ -119,6 +121,18 @@ class MainMapCameraState internal constructor(
                 duration = 450.milliseconds,
             )
         }
+    }
+
+    /** Zooms in on the pins of a clicked cluster */
+    suspend fun zoomToCluster(bounds: BoundingBox) {
+        val camera = map.cameraPosition
+        // TODO maplibre-compose: Query the fitted camera before animating to restore
+        // the 0.25 zoom margin, maximum zoom 19, and zoom-dependent duration.
+        // Requires a release containing https://github.com/maplibre/maplibre-compose/pull/1400.
+        map.animateCameraToBounds(
+            bounds.toGeoJsonBoundingBox(), camera.bearing, camera.tilt,
+            duration = 450.milliseconds,
+        )
     }
 
     fun clearFocus() {

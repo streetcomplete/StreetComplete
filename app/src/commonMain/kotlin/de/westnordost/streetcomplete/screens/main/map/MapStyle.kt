@@ -28,7 +28,6 @@ import org.maplibre.compose.expressions.value.LineJoin
 import org.maplibre.compose.expressions.value.SymbolPlacement
 import org.maplibre.compose.layers.BackgroundLayer
 import org.maplibre.compose.layers.CircleLayer
-import org.maplibre.compose.layers.FillExtrusionLayer
 import org.maplibre.compose.layers.FillLayer
 import org.maplibre.compose.layers.LineLayer
 import org.maplibre.compose.layers.SymbolLayer
@@ -60,16 +59,14 @@ fun MapStyle(
     belowLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
     aboveLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
 ) {
-    // Keep the tile URL and max zoom in sync with files/map-download-style.json.
-    val accessToken = "mL9X4SwxfsAGfojvGiion9hPKuGLKxPbogLyMbtakA2gJ3X88gcVlTSQ7OD6OfbZ"
     val osmAttribution = stringResource(Res.string.map_attribution_osm)
     val attributionHtml = remember(osmAttribution) {
         "<a href='https://www.openstreetmap.org/copyright'>$osmAttribution</a> " +
         "<a href='https://jawg.io?utm_medium=map&utm_source=attribution'>&copy; JawgMaps</a>"
     }
     val source = rememberVectorTileSource(
-        tiles = listOf("https://tile.jawg.io/streets-v2+hillshade-v1/{z}/{x}/{y}.pbf?access-token=$accessToken"),
-        options = TileSetOptions(maxZoom = 16, attributionHtml = attributionHtml)
+        tiles = listOf(MapTiles.URL_TEMPLATE),
+        options = TileSetOptions(maxZoom = MapTiles.MAX_ZOOM, attributionHtml = attributionHtml)
     )
 
     val paths = remember(colors) {
@@ -177,9 +174,6 @@ fun MapStyle(
     belowLabelsContent()
 
     LabelLayers(source, colors, languages, hiddenLayers)
-
-    // I don't know, kind of does not look good due to missing extrusion outline.
-    //BuildingExtrudeLayer(source, colors)
 
     aboveLabelsContent()
 }
@@ -610,21 +604,6 @@ private fun LabelLayers(
     )
 }
 
-@Composable @MaplibreComposable
-private fun BuildingExtrudeLayer(source: VectorSource, colors: MapColors) {
-    FillExtrusionLayer(
-        id = "buildings-extrude",
-        source = source,
-        sourceLayer = "building",
-        minZoom = 15f,
-        maxZoom = 19f,
-        filter = feature.has("extrude", true),
-        opacity = byZoom(15 to 0f, 16 to 0.8f, 18 to 0.8f, 19 to 0f),
-        color = const(colors.building),
-        base = feature["min_height"].asNumber(),
-        height = feature["height"].asNumber()
-    )
-}
 
 @Composable @MaplibreComposable
 private fun RoadLayer(

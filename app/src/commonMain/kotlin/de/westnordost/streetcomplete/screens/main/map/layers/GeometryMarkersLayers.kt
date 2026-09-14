@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main.map.layers
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -69,7 +70,10 @@ fun GeometryMarkersLayers(markers: Collection<Marker>, haloColor: Color) {
         cap = const(LineCap.Round),
         join = const(LineJoin.Round)
     )
-    val markerImages = markers.map { it.icon ?: Res.drawable.preset_maki_circle }.distinct().map { icon ->
+    val markerIcons = remember(markers) {
+        markers.mapTo(LinkedHashSet()) { it.icon ?: Res.drawable.preset_maki_circle }.toList()
+    }
+    val markerImages = markerIcons.map { icon ->
         case("marker_" + icon.id, mapIconImage(icon, Color.GeometryMarker, haloColor))
     }
     SymbolLayer(

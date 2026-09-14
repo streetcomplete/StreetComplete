@@ -7,17 +7,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.pin_circle
 import de.westnordost.streetcomplete.screens.main.map.pinPainter
-import de.westnordost.streetcomplete.screens.main.map.toGeoJsonBoundingBox
 import de.westnordost.streetcomplete.ui.ktx.id
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.Dispatchers
@@ -59,14 +60,15 @@ import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.Point
-import kotlin.time.Duration.Companion.milliseconds
 
-/** Display pins on the map, e.g. quest pins or pins for recent edits */
+/** Display pins on the map, e.g. quest pins or pins for recent edits. Clicking a cluster of pins
+ *  reports the [bounding box][BoundingBox] of the pins in it via [onClickCluster]. */
 @MaplibreComposable
 @Composable
 fun PinsLayers(
     pins: Collection<Pin>,
     onClickPin: (properties: JsonObject) -> ClickResult,
+    onClickCluster: (BoundingBox) -> Unit,
 ) {
     val mapState = checkNotNull(LocalMapState.current)
     val coroutineScope = rememberCoroutineScope()
@@ -87,16 +89,20 @@ fun PinsLayers(
         options = options
     )
 
-    var clusterJob by remember { mutableStateOf<Job?>(null) }
+    // The pins in a cluster are queried through the source's style handle, which is invalidated
+    // when the data or the style is replaced, so a pending query is dropped then. Only the query
+    // is cancelled; what happens with the result is up to the caller.
+    var clusterLeavesJob by remember { mutableStateOf<Job?>(null) }
     DisposableEffect(mapState.style.baseStyle, features) {
-        onDispose { clusterJob?.cancel() }
+        onDispose { clusterLeavesJob?.cancel() }
     }
+    val currentOnClickCluster by rememberUpdatedState(onClickCluster)
 
-    fun onClickCluster(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
+    fun onClickClusterFeature(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
         val feature = features.firstOrNull() ?: return ClickResult.Pass
         val currentHandle = mapState.style.sources[source] ?: return ClickResult.Pass
-        clusterJob?.cancel()
-        clusterJob = coroutineScope.launch {
+        clusterLeavesJob?.cancel()
+        clusterLeavesJob = coroutineScope.launch {
             val leaves = try {
                 currentHandle.getClusterLeaves(feature, Long.MAX_VALUE, 0)
             } catch (e: StyleHandleException) {
@@ -106,17 +112,7 @@ fun PinsLayers(
             val positions = leaves.features.mapNotNull { (it.geometry as? Point)?.coordinates }
                 .map { LatLon(it.latitude, it.longitude) }
             if (positions.isEmpty()) return@launch
-            val bounds = positions.enclosingBoundingBox()
-            val camera = mapState.cameraPosition
-            // TODO maplibre-compose: Query the fitted camera before animating to restore
-            // the 0.25 zoom margin, maximum zoom 19, and zoom-dependent duration.
-            // Requires a release containing https://github.com/maplibre/maplibre-compose/pull/1400.
-            mapState.animateCameraToBounds(
-                bounds.toGeoJsonBoundingBox(),
-                bearing = camera.bearing,
-                tilt = camera.tilt,
-                duration = 450.milliseconds,
-            )
+            currentOnClickCluster(positions.enclosingBoundingBox())
         }
         return ClickResult.Consume
     }
@@ -144,7 +140,7 @@ fun PinsLayers(
         textOffset = textOffset(0.em, 0.1.em),
         textAllowOverlap = const(true),
         textIgnorePlacement = const(true),
-        onClick = ::onClickCluster,
+        onClick = ::onClickClusterFeature,
     )
     CircleLayer(
         id = "pin-dot-layer",
@@ -161,7 +157,8 @@ fun PinsLayers(
         translate = offset(0.dp, -8.dp), // so that it hides behind the pin
         translateAnchor = const(TranslateAnchor.Viewport),
     )
-    val pinImages = pins.map { it.icon }.distinct().map { icon ->
+    val pinIcons = remember(pins) { pins.mapTo(LinkedHashSet()) { it.icon }.toList() }
+    val pinImages = pinIcons.map { icon ->
         case("pin_" + icon.id, image(pinPainter(painterResource(icon)), size = DpSize(71.dp, 71.dp)))
     }
     SymbolLayer(

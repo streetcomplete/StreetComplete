@@ -39,11 +39,12 @@ class MapQuestPinsSource(
 ) {
     private val displayedRect = MutableStateFlow<TilesRect?>(null)
 
-    // Only candidate keys survive inactivity; their current visibility and data are re-read.
-    private var multiMarkerQuestKeys = emptySet<QuestKey>()
-
     val pins: Flow<Collection<Pin>> = channelFlow {
         val questsInView = mutableMapOf<QuestKey, List<Pin>>()
+        // Quests with several markers (long ways) may have markers in view while their center is
+        // not, so they would be missed by a bounding box query. Their keys are kept across viewport
+        // changes and re-read, since only their current visibility and data are of interest.
+        var multiMarkerQuestKeys = emptySet<QuestKey>()
         displayedRect.collectLatest { rect ->
             if (rect == null) {
                 questsInView.clear()

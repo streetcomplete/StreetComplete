@@ -8,10 +8,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.Edit
-import de.westnordost.streetcomplete.data.location.Location
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
@@ -30,10 +29,12 @@ import de.westnordost.streetcomplete.screens.main.map.layers.TracksLayers
 import de.westnordost.streetcomplete.screens.main.map.layers.getIcon
 import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
 import de.westnordost.streetcomplete.ui.common.quest.Marker
+import de.westnordost.streetcomplete.util.ktx.toLatLon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import org.maplibre.compose.interaction.ClickResult
+import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
@@ -41,46 +42,46 @@ import org.maplibre.compose.util.MaplibreComposable
 import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
+import org.maplibre.spatialk.units.International
 import kotlin.uuid.Uuid
 
 @Composable
 @MaplibreComposable
 internal fun MainMapContent(
-    location: Location?,
-    rotation: Float?,
+    location: LocationMeasurement?,
+    /** compass heading in degrees, clockwise from north */
+    heading: Float?,
     isRecording: Boolean,
     trackpoints: List<LatLon>,
     oldTrackpointsLists: List<List<LatLon>>,
     shownBottomSheet: ShownBottomSheet?,
     shownMarkers: Collection<Marker>?,
-    isShowingUndoHistorySidebar: Boolean,
-    selectedOverlay: Overlay?,
+    /** background map layers to hide, e.g. because the selected overlay replaces them */
+    hiddenLayers: Collection<String>,
+    /** whether the selected overlay's [styledElements] are displayed at all */
+    showOverlay: Boolean,
     selectedEdit: Edit?,
     highlightedGeometry: ElementGeometry?,
     downloadedTiles: Collection<TilePos>,
-    questPins: Collection<Pin>,
-    editHistoryPins: Collection<Pin>,
+    pins: Collection<Pin>,
+    onClickPin: (JsonObject) -> ClickResult,
+    onClickCluster: (BoundingBox) -> Unit,
     styledElements: Collection<StyledElement>,
-    onClickQuest: (JsonObject) -> ClickResult,
-    onClickEdit: (JsonObject) -> ClickResult,
     onClickElement: (JsonObject) -> ClickResult,
 ) {
-    // because quests highlight additional information and history sidebar should feel clean
-    val showOverlay = selectedOverlay != null && shownBottomSheet !is ShownBottomSheet.OsmQuest &&
-        shownBottomSheet !is ShownBottomSheet.OsmNoteQuest && !isShowingUndoHistorySidebar
-
     val selectedQuest = when (val sheet = shownBottomSheet) {
         is ShownBottomSheet.OsmNoteQuest -> sheet.quest
         is ShownBottomSheet.OsmQuest -> sheet.quest
         else -> null
     }
-
     val selectedOverlayElement = shownBottomSheet as? ShownBottomSheet.Overlay
-    val showQuestPins = !isShowingUndoHistorySidebar && shownBottomSheet == null
 
     val languages = listOf(Locale.current.language)
     val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
 
+    val overlayIcons = remember(styledElements) {
+        styledElements.mapNotNullTo(LinkedHashSet()) { it.style.getIcon() }.toList()
+    }
     val overlayData by produceState<List<Feature<Geometry, JsonObject>>>(emptyList(), styledElements) {
         value = withContext(Dispatchers.Default) {
             styledElements.flatMap { it.toGeoJsonFeatures() }
@@ -97,7 +98,7 @@ internal fun MainMapContent(
         layerIdSuffix = layerIdSuffix,
         colors = colors,
         languages = languages,
-        hiddenLayers = selectedOverlay?.hidesLayers.orEmpty(),
+        hiddenLayers = hiddenLayers,
         belowRoadsContent = {
             // left-and-right lines should be rendered behind the actual road
             if (showOverlay) {
@@ -132,7 +133,7 @@ internal fun MainMapContent(
             if (showOverlay) {
                 StyleableOverlayLabelLayer(
                     source = overlaySource,
-                    icons = styledElements.mapNotNull { it.style.getIcon() },
+                    icons = overlayIcons,
                     color = colors.text,
                     haloColor = colors.textOutline,
                     onClickElement = onClickElement
@@ -145,23 +146,18 @@ internal fun MainMapContent(
                 FocusedGeometryLayers(geometry)
             }
 
-            location?.let { CurrentLocationLayers(location = it, rotation = rotation) }
-
-            // normal quest pins are not shown while edit history sidebar is open
-            if (isShowingUndoHistorySidebar) {
-                PinsLayers(
-                    pins = editHistoryPins,
-                    onClickPin = onClickEdit
-                )
-            } else if (showQuestPins) {
-                PinsLayers(
-                    pins = questPins,
-                    onClickPin = onClickQuest
+            location?.let {
+                CurrentLocationLayers(
+                    position = it.position.toLatLon(),
+                    accuracy = it.horizontalAccuracy?.toFloat(International.Meters) ?: 0f,
+                    heading = heading,
                 )
             }
 
+            PinsLayers(pins = pins, onClickPin = onClickPin, onClickCluster = onClickCluster)
+
             val edit = selectedEdit
-            if (isShowingUndoHistorySidebar && edit != null) {
+            if (edit != null) {
                 edit.icon?.let { icon -> SelectedPinsLayer(icon, listOf(edit.position)) }
             } else if (selectedOverlayElement?.element != null) {
                 selectedOverlayElement.geometry?.let { geometry ->
