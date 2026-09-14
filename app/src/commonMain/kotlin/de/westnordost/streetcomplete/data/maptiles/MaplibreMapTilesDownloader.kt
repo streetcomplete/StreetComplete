@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.data.maptiles
 import androidx.compose.runtime.snapshotFlow
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.screens.main.map.MapTiles
 import de.westnordost.streetcomplete.screens.main.map.toGeoJsonBoundingBox
 import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
@@ -26,7 +27,7 @@ class MapLibreMapTilesDownloader(
                 styleUrl = Res.getUri("files/map-download-style.json"),
                 bounds = bbox.toGeoJsonBoundingBox(),
                 minZoom = 0,
-                maxZoom = 16,
+                maxZoom = MapTiles.MAX_ZOOM,
                 pixelRatio = pixelRatio,
             ),
             // store timestamp as metadata for deleting areas older than X
@@ -64,10 +65,10 @@ class MapLibreMapTilesDownloader(
             } catch (pauseError: Exception) {
                 error.addSuppressed(pauseError)
             }
-            if (error !is CancellationException) {
-                Log.w(TAG, error.message.orEmpty(), error)
-            }
-            throw error
+            // Map tiles are only a convenience for the downloaded map data, so a failed pack
+            // must not fail the whole download or prevent the area from counting as downloaded
+            if (error is CancellationException) throw error
+            Log.w(TAG, error.message.orEmpty(), error)
         }
     }
 
