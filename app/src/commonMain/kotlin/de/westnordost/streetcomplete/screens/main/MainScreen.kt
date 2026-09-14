@@ -22,7 +22,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
@@ -200,10 +199,8 @@ fun MainScreen(
 
     val shownBottomSheet = sheet.shownBottomSheet
     val selectedEdit = editHistory.selectedEdit
-    val highlightedMarkers by key(shownBottomSheet) {
-        produceState<List<Marker>>(emptyList(), mainBottomSheetViewModel) {
-            value = shownBottomSheet?.let { mainBottomSheetViewModel.getHighlightedMarkers(it) }.orEmpty()
-        }
+    val highlightedMarkers by produceState<List<Marker>>(emptyList(), shownBottomSheet) {
+        value = shownBottomSheet?.let { mainBottomSheetViewModel.getHighlightedMarkers(it) }.orEmpty()
     }
     val markers = sheet.formMarkers ?: highlightedMarkers
     // the overlay is hidden behind quest forms because these highlight other elements, and behind
@@ -218,7 +215,10 @@ fun MainScreen(
         val state = checkNotNull(LocalMapState.current)
         val showPinsAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 13 } }
         val showOverlayAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 14 } }
-        // pins are only collected while they are displayed, so the sources are idle otherwise
+        // Quest pins and overlay data stay loaded while hidden behind a form, so that closing it
+        // does not reload them. The edit history is loaded only while its sidebar is shown.
+        val questPins by mapViewModel.questPins.collectAsState()
+        val styledElements by mapViewModel.styleableElements.collectAsState()
         val pins: Collection<Pin>
         val onClickPin: (JsonObject) -> ClickResult
         if (editHistory.isShowing) {
@@ -230,11 +230,11 @@ fun MainScreen(
                     ClickResult.Consume
                 }
             }
-        } else if (!sheet.isOpen) {
-            pins = if (showPinsAtZoom) mapViewModel.questPins.collectAsState().value else emptyList()
+        } else if (!sheet.isOpen || sheet.selection is MainBottomSheetSelection.CreateNote) {
+            pins = if (showPinsAtZoom) questPins else emptyList()
             onClickPin = { properties ->
                 val key = mapViewModel.getQuestKey(properties)
-                if (key == null) ClickResult.Pass else {
+                if (key == null || sheet.isOpen) ClickResult.Pass else {
                     sheet.show(MainBottomSheetSelection.Quest(key))
                     ClickResult.Consume
                 }
@@ -243,9 +243,6 @@ fun MainScreen(
             pins = emptyList()
             onClickPin = { ClickResult.Pass }
         }
-        val styledElements = if (showOverlay && showOverlayAtZoom) {
-            mapViewModel.styleableElements.collectAsState().value
-        } else emptyList()
         MainMapContent(
             location = displayedLocation,
             heading = heading?.let { (it.bearing - Bearing.North).inDegrees.toFloat() },
@@ -262,7 +259,7 @@ fun MainScreen(
             pins = pins,
             onClickPin = onClickPin,
             onClickCluster = { bounds -> scope.launch { state.zoomToCluster(bounds) } },
-            styledElements = styledElements,
+            styledElements = if (showOverlay && showOverlayAtZoom) styledElements else emptyList(),
             onClickElement = { properties ->
                 val key = mapViewModel.getElementKey(properties)
                 val overlay = selectedOverlay
@@ -399,8 +396,11 @@ fun MainScreen(
     // The camera stops following the user's location while a form or the edit history is open and
     // moves to the selected object once. Closing a form moves it back, closing the edit history
     // does not.
-    val mapMode = sheet.selection?.let { MapMode.Sheet(it) }
-        ?: if (editHistory.isShowing) MapMode.EditHistory(editHistory.selectedEditKey) else MapMode.Free
+    val mapMode = when {
+        sheet.isOpen -> MapMode.Sheet(sheet.id)
+        editHistory.isShowing -> MapMode.EditHistory(editHistory.selectedEditKey)
+        else -> MapMode.Free
+    }
     // Saved, so that the camera does not move again after the process was recreated
     var focusedMode by rememberSerializable { mutableStateOf<MapMode?>(null) }
     LaunchedEffect(cameraState, mapMode) {
@@ -411,7 +411,7 @@ fun MainScreen(
                 cameraState.freeze()
                 if (!focus) return@LaunchedEffect
                 val shown = snapshotFlow { sheet.shownBottomSheet }.filterNotNull().first()
-                when (val selection = mapMode.selection) {
+                when (val selection = sheet.selection) {
                     is MainBottomSheetSelection.CreateNote -> mapState.animateCameraPosition(
                         mapState.cameraPosition.copy(target = selection.position.toPosition()), 300.milliseconds,
                     )
@@ -829,7 +829,8 @@ private enum class LocationDialog { PermissionRationale, ApplicationSettings, Lo
 /** What the map camera is bound to */
 @Serializable
 private sealed interface MapMode {
-    @Serializable data class Sheet(val selection: MainBottomSheetSelection) : MapMode
+    /** Identified by the sheet id, since the selection itself may hold a long recorded track */
+    @Serializable data class Sheet(val id: String) : MapMode
     @Serializable data class EditHistory(val selectedEditKey: EditKey?) : MapMode
     @Serializable data object Free : MapMode
 }

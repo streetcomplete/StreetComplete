@@ -6,6 +6,8 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
+import kotlin.time.Duration.Companion.seconds
 
 /** Collects the [flow] in the background into a queue, so that a test can await its emissions one
  *  by one with [next]. Call [stop] when done. */
@@ -16,6 +18,7 @@ fun <T> CoroutineScope.collectEmissions(flow: Flow<T>): Emissions<T> {
 }
 
 class Emissions<T>(private val channel: Channel<T>, private val job: Job) {
-    suspend fun next(): T = channel.receive()
+    /** Fails rather than hangs when nothing is emitted */
+    suspend fun next(): T = withTimeout(5.seconds) { channel.receive() }
     fun stop() = job.cancel()
 }

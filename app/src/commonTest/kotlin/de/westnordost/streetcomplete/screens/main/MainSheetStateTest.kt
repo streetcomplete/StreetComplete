@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.SaveableStateHolder
-import androidx.compose.runtime.snapshots.Snapshot
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -13,20 +12,17 @@ import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.data.quest.OsmNoteQuestKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
+import de.westnordost.streetcomplete.testutils.awaitSnapshot
+import de.westnordost.streetcomplete.testutils.observing
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.note
 import de.westnordost.streetcomplete.testutils.osmNoteQuest
 import de.westnordost.streetcomplete.testutils.osmQuest
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import dev.mokkery.mock
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.awaitCancellation
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withTimeout
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
@@ -48,31 +44,31 @@ class MainSheetStateTest {
     private val questSheet = ShownBottomSheet.OsmQuest(quest, node(1))
     private val questSelection = MainBottomSheetSelection.Quest(quest.key)
 
-    @Test fun `shows what the selection resolves to`() = observing {
+    @Test fun `shows what the selection resolves to`() = observing(state::observe) {
         resolved[questSelection] = listOf(questSheet)
         state.show(questSelection)
-        await { state.shownBottomSheet == questSheet }
+        awaitSnapshot { state.shownBottomSheet == questSheet }
     }
 
-    @Test fun `shows nothing for a new selection until it is resolved`() = observing {
+    @Test fun `shows nothing for a new selection until it is resolved`() = observing(state::observe) {
         resolved[questSelection] = listOf(questSheet)
         state.show(questSelection)
-        await { state.shownBottomSheet == questSheet }
+        awaitSnapshot { state.shownBottomSheet == questSheet }
 
         val other = MainBottomSheetSelection.Overlay("overlay")
         state.show(other)
-        await { state.shownBottomSheet == null }
+        awaitSnapshot { state.shownBottomSheet == null }
         assertEquals(other, state.selection)
     }
 
-    @Test fun `closes when the selected object disappears`() = observing {
+    @Test fun `closes when the selected object disappears`() = observing(state::observe) {
         resolved[questSelection] = listOf(questSheet, null)
         state.show(questSelection)
-        await { state.selection == null }
+        awaitSnapshot { state.selection == null }
         assertNull(state.shownBottomSheet)
     }
 
-    @Test fun `selects the note that blocks an overlay element`() = observing {
+    @Test fun `selects the note that blocks an overlay element`() = observing(state::observe) {
         val noteQuest = osmNoteQuest(id = 5)
         val noteSheet = ShownBottomSheet.OsmNoteQuest(noteQuest, note(id = 5))
         val elementSelection = MainBottomSheetSelection.Overlay("overlay", ElementKey(ElementType.NODE, 1))
@@ -81,23 +77,10 @@ class MainSheetStateTest {
         resolved[noteSelection] = listOf(noteSheet)
 
         state.show(elementSelection)
-        await { state.shownBottomSheet == noteSheet }
+        awaitSnapshot { state.shownBottomSheet == noteSheet }
         assertEquals(noteSelection, state.selection)
     }
 
-    private fun observing(block: suspend () -> Unit) = runBlocking {
-        val job = launch(Dispatchers.Default) { state.observe() }
-        block()
-        job.cancel()
-    }
-
-    /** Snapshot state written outside a composition is only observed once applied */
-    private suspend fun await(condition: () -> Boolean) = withTimeout(5000) {
-        while (!condition()) {
-            Snapshot.sendApplyNotifications()
-            delay(10)
-        }
-    }
 }
 
 private abstract class FakeMainBottomSheetViewModel : MainBottomSheetViewModel() {

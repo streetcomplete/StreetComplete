@@ -8,7 +8,10 @@ import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
 import de.westnordost.streetcomplete.util.math.contains
 import dev.mokkery.mock
 
-/** Serves the given [quests] like the real source would: by their center position */
+/** Serves the given [quests] like the real source would: by their center position.
+ *
+ *  A subclass rather than a mock because a mocked VisibleQuestsSource instantiates its constructor
+ *  parameters, and QuestTypeRegistry does not accept an empty list. */
 class FakeVisibleQuestsSource : VisibleQuestsSource(
     QuestTypeRegistry(listOf(0 to QUEST_TYPE)), mock(), mock(), mock(), mock(), mock(), mock()
 ) {
