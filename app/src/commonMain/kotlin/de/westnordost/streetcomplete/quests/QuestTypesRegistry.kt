@@ -136,7 +136,6 @@ import de.westnordost.streetcomplete.quests.parking_fee.AddParkingFee
 import de.westnordost.streetcomplete.quests.parking_type.AddParkingType
 import de.westnordost.streetcomplete.quests.pitch_lit.AddPitchLit
 import de.westnordost.streetcomplete.quests.place_name.AddPlaceName
-import de.westnordost.streetcomplete.quests.playground_access.AddPlaygroundAccess
 import de.westnordost.streetcomplete.quests.police_type.AddPoliceType
 import de.westnordost.streetcomplete.quests.postbox_collection_times.AddPostboxCollectionTimes
 import de.westnordost.streetcomplete.quests.postbox_ref.AddPostboxRef
@@ -183,7 +182,6 @@ import de.westnordost.streetcomplete.quests.tactile_paving.AddTactilePavingSteps
 import de.westnordost.streetcomplete.quests.toilet_availability.AddToiletAvailability
 import de.westnordost.streetcomplete.quests.toilets_fee.AddToiletsFee
 import de.westnordost.streetcomplete.quests.tourism_information.AddInformationToTourism
-import de.westnordost.streetcomplete.quests.tower_access.AddTowerAccess
 import de.westnordost.streetcomplete.quests.tracktype.AddTracktype
 import de.westnordost.streetcomplete.quests.traffic_calming_type.AddTrafficCalmingType
 import de.westnordost.streetcomplete.quests.traffic_signals_button.AddTrafficSignalsButton
@@ -337,7 +335,7 @@ fun questTypeRegistry(
 
     46 to AddPoliceType(),
 
-    47 to AddPlaygroundAccess(),
+    // 47 to AddPlaygroundAccess(), - removed in https://github.com/streetcomplete/StreetComplete/pull/7109
 
     191 to AddBeachSurface(),
 
@@ -380,7 +378,7 @@ fun questTypeRegistry(
     67 to AddFireHydrantRef(),
 
     160 to AddBbqFuel(),
-    182 to AddTowerAccess(),
+    // 182 to AddTowerAccess(), - removed in https://github.com/streetcomplete/StreetComplete/pull/7109
     185 to AddFirewood(),
     /* ↓ 2.solvable when right in front of it but takes longer to input --------------------- */
 
