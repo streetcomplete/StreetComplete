@@ -7,8 +7,6 @@ import de.westnordost.streetcomplete.osm.getLastCheckDateKeys
 import de.westnordost.streetcomplete.osm.toCheckDate
 import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import kotlinx.datetime.LocalDate
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.atStartOfDayIn
 
 sealed interface ElementFilter : Matcher<Element> {
     abstract override fun toString(): String
@@ -141,7 +139,7 @@ class TagNewerThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dat
 
 abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : ElementFilter {
     // Cache the threshold for each filter to avoid computing it for every element.
-    protected val dateTimestamp by lazy { dateFilter.date.atStartOfDayIn(TimeZone.UTC).toEpochMilliseconds() }
+    protected val dateTimestamp by lazy { dateFilter.date.toEpochMilli() }
 
     abstract fun compareTo(timestamp: Long): Boolean
 
@@ -164,7 +162,7 @@ class ElementNewerThan(dateFilter: DateFilter) : CompareElementAge(dateFilter) {
 
 abstract class CompareElementAge(val dateFilter: DateFilter) : ElementFilter {
     // Cache the threshold for each filter to avoid computing it for every element.
-    protected val dateTimestamp by lazy { dateFilter.date.atStartOfDayIn(TimeZone.UTC).toEpochMilliseconds() }
+    protected val dateTimestamp by lazy { dateFilter.date.toEpochMilli() }
 
     abstract fun compareTo(timestamp: Long): Boolean
 
