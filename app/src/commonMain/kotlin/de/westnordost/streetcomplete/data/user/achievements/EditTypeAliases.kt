@@ -7,6 +7,7 @@ import de.westnordost.streetcomplete.quests.amenity_indoor.AddIsAmenityIndoor
 import de.westnordost.streetcomplete.quests.building_type.AddBuildingType
 import de.westnordost.streetcomplete.quests.crossing_markings.AddCrossingMarkings
 import de.westnordost.streetcomplete.quests.cycleway.AddCycleway
+import de.westnordost.streetcomplete.quests.general_access.AddGeneralAccess
 import de.westnordost.streetcomplete.quests.moped.AddMopedAccess
 import de.westnordost.streetcomplete.quests.oneway.AddOneway
 import de.westnordost.streetcomplete.quests.sidewalk.AddSidewalk
@@ -34,5 +35,7 @@ val editTypeAliases = listOf(
     "AddStreetParking"                   to StreetParkingOverlay::class.simpleName!!,
     "AddIsDefibrillatorIndoor"           to AddIsAmenityIndoor::class.simpleName!!,
     "ShopsOverlay"                       to PlacesOverlay::class.simpleName!!,
-    "AddProhibitedForMoped"              to AddMopedAccess::class.simpleName!!
+    "AddProhibitedForMoped"              to AddMopedAccess::class.simpleName!!,
+    "AddPlaygroundAccess"                to AddGeneralAccess::class.simpleName!!,
+    "AddTowerAccess"                     to AddGeneralAccess::class.simpleName!!,
 )
