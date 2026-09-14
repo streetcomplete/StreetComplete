@@ -44,7 +44,7 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>> {
     private val ferryFilter by lazy { """
         ways, relations with
           route = ferry
-          and motor_vehicle = yes
+          and hgv = yes
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify maximum allowed weights"
