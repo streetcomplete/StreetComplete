@@ -25,10 +25,7 @@ fun rememberMainSheetState(viewModel: MainBottomSheetViewModel): MainSheetState 
         mutableStateOf<MainBottomSheetSelection?>(null)
     }
     val id = rememberSaveable { mutableStateOf("") }
-    val isFocusPending = rememberSaveable { mutableStateOf(false) }
-    val state = remember(viewModel) {
-        MainSheetState(viewModel, formStateHolder, selection, id, isFocusPending)
-    }
+    val state = remember(viewModel) { MainSheetState(viewModel, formStateHolder, selection, id) }
     LaunchedEffect(state) { state.observe() }
     return state
 }
@@ -42,7 +39,6 @@ class MainSheetState internal constructor(
     val formStateHolder: SaveableStateHolder,
     selection: MutableState<MainBottomSheetSelection?>,
     id: MutableState<String>,
-    isFocusPending: MutableState<Boolean>,
 ) {
     /** The selected object. Saved, so that the sheet is restored after process death. */
     var selection by selection
@@ -50,10 +46,6 @@ class MainSheetState internal constructor(
 
     /** Identifies the form instance, so a new form does not inherit a previous form's state */
     var id by id
-        private set
-
-    /** Whether the map camera should still move to the selected object */
-    var isFocusPending by isFocusPending
         private set
 
     /** What the selected object resolved to. Null when nothing is selected or while loading. */
@@ -72,7 +64,6 @@ class MainSheetState internal constructor(
         formStateHolder.removeState(id)
         id = Uuid.random().toString()
         this.selection = selection
-        isFocusPending = true
         formMarkers = null
         lastMapClick = null
     }
@@ -84,19 +75,13 @@ class MainSheetState internal constructor(
         formStateHolder.removeState(id)
     }
 
-    /** Called once the map camera moved to the selected object */
-    fun onFocused() {
-        isFocusPending = false
-    }
-
     /** Keeps [shownBottomSheet] in sync with the [selection]. Runs until cancelled. */
     @OptIn(ExperimentalCoroutinesApi::class)
     internal suspend fun observe() {
         snapshotFlow { selection }.collectLatest { selection ->
-            if (selection == null) {
-                shownBottomSheet = null
-                return@collectLatest
-            }
+            // a previous selection's sheet must not be shown for the new selection
+            shownBottomSheet = null
+            if (selection == null) return@collectLatest
             viewModel.bottomSheet(selection).collect { sheet ->
                 if (selection is MainBottomSheetSelection.Overlay && sheet is ShownBottomSheet.OsmNoteQuest) {
                     // A note at the element's position blocks editing it. Selecting the note

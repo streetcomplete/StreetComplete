@@ -49,15 +49,11 @@ class MapLibreMapTilesDownloader(
                         "(${finalState.completedTileBytes / 1000}kB) in ${seconds.format(1)}s",
                     )
                 }
-                is DownloadProgress.Error -> {
-                    error("MapLibre offline download failed (${finalState.reason}): ${finalState.message}")
-                }
-                is DownloadProgress.TileLimitExceeded -> {
-                    error("MapLibre offline tile limit ${finalState.limit} was exceeded")
-                }
-                DownloadProgress.Unknown -> {
-                    error("Unexpected terminal offline progress")
-                }
+                is DownloadProgress.Error ->
+                    Log.w(TAG, "Offline download failed (${finalState.reason}): ${finalState.message}")
+                is DownloadProgress.TileLimitExceeded ->
+                    Log.w(TAG, "Offline tile limit ${finalState.limit} was exceeded")
+                DownloadProgress.Unknown -> Unit // not a finished state
             }
         } catch (error: Exception) {
             try {

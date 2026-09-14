@@ -61,7 +61,6 @@ import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
 import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
 import de.westnordost.streetcomplete.screens.main.map.MainMap
-import de.westnordost.streetcomplete.screens.main.map.MainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
@@ -70,6 +69,7 @@ import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
+import de.westnordost.streetcomplete.screens.main.map.zoomToCluster
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
@@ -90,6 +90,7 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
@@ -213,8 +214,6 @@ fun MainScreen(
         !editHistory.isShowing
 
     val initialCamera = remember(viewModel) { viewModel.initialCamera }
-    // created from the map state below, but the map content already needs it for its callbacks
-    lateinit var cameraState: MainMapCameraState
     val mapState = rememberMapState(runtime, BaseStyle.Json(BASE_STYLE), initialCameraPosition = initialCamera) {
         val state = checkNotNull(LocalMapState.current)
         val showPinsAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 13 } }
@@ -262,7 +261,7 @@ fun MainScreen(
             downloadedTiles = downloadedTiles,
             pins = pins,
             onClickPin = onClickPin,
-            onClickCluster = { bounds -> scope.launch { cameraState.zoomToCluster(bounds) } },
+            onClickCluster = { bounds -> scope.launch { state.zoomToCluster(bounds) } },
             styledElements = styledElements,
             onClickElement = { properties ->
                 val key = mapViewModel.getElementKey(properties)
@@ -274,7 +273,7 @@ fun MainScreen(
             },
         )
     }
-    cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
+    val cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
     val mapCamera = mapState.cameraPosition
     val viewport = mapState.viewport
     val metersPerDp = remember(viewport, mapCamera) {
@@ -301,11 +300,6 @@ fun MainScreen(
     }
     fun composeNote(position: LatLon, trackpoints: List<Trackpoint>? = null) {
         sheet.show(MainBottomSheetSelection.CreateNote(position, trackpoints))
-    }
-    /** Closing the edit history leaves the camera where it is */
-    fun hideEditHistory() {
-        cameraState.clearFocus()
-        editHistory.hide()
     }
     fun download() {
         val bounds = mapState.viewport?.visibleBounds?.toStreetCompleteBoundingBox()
@@ -403,46 +397,38 @@ fun MainScreen(
         }
     }
     // The camera stops following the user's location while a form or the edit history is open and
-    // moves to the selected object. Closing a form moves it back, closing the edit history does not.
-    val mapMode = when {
-        sheet.selection != null -> MapMode.Sheet(sheet.selection!!)
-        editHistory.isShowing -> MapMode.EditHistory(editHistory.selectedEditKey)
-        else -> MapMode.Free
-    }
-    var previousMapMode by remember { mutableStateOf<MapMode>(MapMode.Free) }
+    // moves to the selected object once. Closing a form moves it back, closing the edit history
+    // does not.
+    val mapMode = sheet.selection?.let { MapMode.Sheet(it) }
+        ?: if (editHistory.isShowing) MapMode.EditHistory(editHistory.selectedEditKey) else MapMode.Free
+    // Saved, so that the camera does not move again after the process was recreated
+    var focusedMode by rememberSerializable { mutableStateOf<MapMode?>(null) }
     LaunchedEffect(cameraState, mapMode) {
-        val wasEditHistory = previousMapMode is MapMode.EditHistory
-        previousMapMode = mapMode
+        val focus = focusedMode != mapMode
+        focusedMode = mapMode
         when (mapMode) {
             is MapMode.Sheet -> {
                 cameraState.freeze()
-                if (sheet.isFocusPending) {
-                    val shown = snapshotFlow { sheet.shownBottomSheet }.filterNotNull().first()
-                    sheet.onFocused()
-                    when (val selection = mapMode.selection) {
-                        is MainBottomSheetSelection.CreateNote -> mapState.animateCameraPosition(
-                            mapState.cameraPosition.copy(target = selection.position.toPosition()), 300.milliseconds,
-                        )
-                        else -> when (shown) {
-                            is ShownBottomSheet.OsmQuest -> cameraState.focus(shown.quest.geometry)
-                            is ShownBottomSheet.OsmNoteQuest -> cameraState.focus(shown.quest.geometry)
-                            else -> Unit
-                        }
+                if (!focus) return@LaunchedEffect
+                val shown = snapshotFlow { sheet.shownBottomSheet }.filterNotNull().first()
+                when (val selection = mapMode.selection) {
+                    is MainBottomSheetSelection.CreateNote -> mapState.animateCameraPosition(
+                        mapState.cameraPosition.copy(target = selection.position.toPosition()), 300.milliseconds,
+                    )
+                    else -> when (shown) {
+                        is ShownBottomSheet.OsmQuest -> cameraState.focus(shown.quest.geometry, restorable = true)
+                        is ShownBottomSheet.OsmNoteQuest -> cameraState.focus(shown.quest.geometry, restorable = true)
+                        else -> Unit
                     }
                 }
             }
             is MapMode.EditHistory -> {
                 cameraState.freeze()
-                if (mapMode.selectedEditKey == null) {
-                    cameraState.clearFocus()
-                } else if (editHistory.isFocusPending) {
-                    val edit = snapshotFlow { editHistory.selectedEdit }.filterNotNull().first()
-                    editHistory.onFocused()
-                    cameraState.focus(editHistoryViewModel.getEditGeometry(edit))
-                }
+                if (!focus || mapMode.selectedEditKey == null) return@LaunchedEffect
+                val edit = snapshotFlow { editHistory.selectedEdit }.filterNotNull().first()
+                cameraState.focus(editHistoryViewModel.getEditGeometry(edit), restorable = false)
             }
             MapMode.Free -> {
-                if (wasEditHistory) cameraState.clearFocus()
                 cameraState.unfreeze(displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
                 cameraState.endFocus()
             }
@@ -523,7 +509,7 @@ fun MainScreen(
                     // forms react to clicks near the click position, e.g. to suggest a name
                     sheet.lastMapClick = MapClick(position, metersPerDp * 14)
                 } else if (editHistory.isShowing) {
-                    hideEditHistory()
+                    editHistory.hide()
                 }
                 ClickResult.Consume
             },
@@ -635,7 +621,7 @@ fun MainScreen(
                 selectedEdit = selectedEdit,
                 onSelectEdit = { editHistory.select(it.key) },
                 onUndoEdit = { editHistory.undo(it.key) },
-                onDismissRequest = ::hideEditHistory,
+                onDismissRequest = editHistory::hide,
                 getEditElement = editHistoryViewModel::getEditElement,
             )
         }
@@ -841,8 +827,9 @@ private val Toast.messageResource: StringResource get() =  when (this) {
 private enum class LocationDialog { PermissionRationale, ApplicationSettings, LocationSettings }
 
 /** What the map camera is bound to */
+@Serializable
 private sealed interface MapMode {
-    data class Sheet(val selection: MainBottomSheetSelection) : MapMode
-    data class EditHistory(val selectedEditKey: EditKey?) : MapMode
-    data object Free : MapMode
+    @Serializable data class Sheet(val selection: MainBottomSheetSelection) : MapMode
+    @Serializable data class EditHistory(val selectedEditKey: EditKey?) : MapMode
+    @Serializable data object Free : MapMode
 }

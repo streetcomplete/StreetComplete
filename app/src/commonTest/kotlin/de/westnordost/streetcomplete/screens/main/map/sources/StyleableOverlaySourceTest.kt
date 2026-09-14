@@ -10,6 +10,7 @@ import de.westnordost.streetcomplete.data.overlays.OverlayStyle
 import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.screens.main.map.layers.StyledElement
 import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.collectEmissions
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
@@ -18,12 +19,7 @@ import dev.mokkery.answering.returns
 import dev.mokkery.every
 import dev.mokkery.matcher.any
 import dev.mokkery.mock
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlin.test.BeforeTest
 import kotlin.test.Test
@@ -83,7 +79,7 @@ class StyleableOverlaySourceTest {
 
     @Test fun `elements are updated when map data changes`() = runBlocking {
         source.onMapMoved(16.0, view)
-        val elements = collectElements()
+        val elements = collectEmissions(source.styledElements)
         assertEquals(1, elements.next().size)
 
         val addedOutsideView = node(2, p(5.0, 5.0))
@@ -105,7 +101,7 @@ class StyleableOverlaySourceTest {
 
     @Test fun `elements are reloaded when the overlay changes`() = runBlocking {
         source.onMapMoved(16.0, view)
-        val elements = collectElements()
+        val elements = collectEmissions(source.styledElements)
         assertEquals(1, elements.next().size)
 
         every { selectedOverlaySource.selectedOverlay } returns null
@@ -119,15 +115,4 @@ class StyleableOverlaySourceTest {
         MutableMapDataWithGeometry().also { data ->
             nodes.forEach { data.put(it, pGeom(it.position.latitude, it.position.longitude)) }
         }
-
-    private fun CoroutineScope.collectElements(): Emissions {
-        val channel = Channel<Collection<StyledElement>>(Channel.UNLIMITED)
-        val job = launch(Dispatchers.Default) { source.styledElements.collect { channel.send(it) } }
-        return Emissions(channel, job)
-    }
-
-    private class Emissions(private val channel: Channel<Collection<StyledElement>>, private val job: Job) {
-        suspend fun next(): Collection<StyledElement> = channel.receive()
-        fun stop() = job.cancel()
-    }
 }

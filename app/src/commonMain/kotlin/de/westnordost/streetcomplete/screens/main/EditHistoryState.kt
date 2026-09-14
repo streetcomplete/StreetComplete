@@ -25,10 +25,7 @@ import kotlinx.coroutines.launch
 fun rememberEditHistoryState(viewModel: EditHistoryViewModel): EditHistoryState {
     val isShowing = rememberSaveable { mutableStateOf(false) }
     val selectedEditKey = rememberSerializable { mutableStateOf<EditKey?>(null) }
-    val isFocusPending = rememberSaveable { mutableStateOf(false) }
-    val state = remember(viewModel) {
-        EditHistoryState(viewModel, isShowing, selectedEditKey, isFocusPending)
-    }
+    val state = remember(viewModel) { EditHistoryState(viewModel, isShowing, selectedEditKey) }
     LaunchedEffect(state) { state.observe() }
     return state
 }
@@ -39,16 +36,11 @@ class EditHistoryState internal constructor(
     private val viewModel: EditHistoryViewModel,
     isShowing: MutableState<Boolean>,
     selectedEditKey: MutableState<EditKey?>,
-    isFocusPending: MutableState<Boolean>,
 ) {
     var isShowing by isShowing
         private set
 
     var selectedEditKey by selectedEditKey
-        private set
-
-    /** Whether the map camera should still move to the selected edit */
-    var isFocusPending by isFocusPending
         private set
 
     /** All edits that can be undone. Null while loading. */
@@ -67,13 +59,11 @@ class EditHistoryState internal constructor(
     /** Shows the sidebar with the most recent edit selected */
     fun show() {
         selectedEditKey = editItems?.lastOrNull()?.edit?.key
-        isFocusPending = true
         isShowing = true
     }
 
     fun select(key: EditKey) {
         selectedEditKey = key
-        isFocusPending = true
     }
 
     fun hide() {
@@ -85,14 +75,9 @@ class EditHistoryState internal constructor(
         viewModel.undo(key)
     }
 
-    /** Called once the map camera moved to the selected edit */
-    fun onFocused() {
-        isFocusPending = false
-    }
-
     /** Keeps [editItems], the selection and [highlightedGeometry] in sync. Runs until cancelled. */
     @OptIn(ExperimentalCoroutinesApi::class)
-    internal suspend fun observe() = coroutineScope {
+    internal suspend fun observe(): Unit = coroutineScope {
         launch {
             viewModel.editItems.collect { items ->
                 editItems = items

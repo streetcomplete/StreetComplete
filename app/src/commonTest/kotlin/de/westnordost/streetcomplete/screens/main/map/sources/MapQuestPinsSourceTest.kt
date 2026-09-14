@@ -9,16 +9,12 @@ import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.testutils.FakeVisibleQuestsSource
 import de.westnordost.streetcomplete.testutils.QUEST_TYPE
 import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.collectEmissions
 import de.westnordost.streetcomplete.testutils.osmQuest
 import de.westnordost.streetcomplete.testutils.p
 import de.westnordost.streetcomplete.testutils.pGeom
 import dev.mokkery.mock
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.JsonObject
 import kotlin.test.BeforeTest
@@ -63,7 +59,7 @@ class MapQuestPinsSourceTest {
 
     @Test fun `pins are updated when quests change`() = runBlocking {
         source.onMapMoved(16.0, view)
-        val pins = collectPins()
+        val pins = collectEmissions(source.pins)
         assertEquals(1, pins.next().size)
 
         questsListener.onUpdated(added = listOf(questOutsideView), removed = emptyList())
@@ -81,7 +77,7 @@ class MapQuestPinsSourceTest {
 
     @Test fun `all pins are reloaded when invalidated`() = runBlocking {
         source.onMapMoved(16.0, view)
-        val pins = collectPins()
+        val pins = collectEmissions(source.pins)
         assertEquals(1, pins.next().size)
 
         visibleQuestsSource.quests = emptyList()
@@ -101,7 +97,7 @@ class MapQuestPinsSourceTest {
 
         // view containing the center
         source.onMapMoved(16.0, bbox(0.0, 0.0095, 0.001, 0.0105))
-        val pins = collectPins()
+        val pins = collectEmissions(source.pins)
         assertTrue(pins.next().size > 1)
 
         // view containing only the first marker
@@ -109,18 +105,6 @@ class MapQuestPinsSourceTest {
         assertTrue(pins.next().isNotEmpty())
 
         pins.stop()
-    }
-
-    /** Collects emitted pins into a queue, so that a test can await them one by one */
-    private fun CoroutineScope.collectPins(): Emissions {
-        val channel = Channel<Collection<Pin>>(Channel.UNLIMITED)
-        val job = launch(Dispatchers.Default) { source.pins.collect { channel.send(it) } }
-        return Emissions(channel, job)
-    }
-
-    private class Emissions(private val channel: Channel<Collection<Pin>>, private val job: Job) {
-        suspend fun next(): Collection<Pin> = channel.receive()
-        fun stop() = job.cancel()
     }
 }
 

@@ -101,9 +101,10 @@ class MainMapCameraState internal constructor(
         map.setCameraPosition(position)
     }
 
-    suspend fun focus(geometry: ElementGeometry) {
+    /** Moves the camera to the [geometry]. If [restorable], [endFocus] moves it back afterwards. */
+    suspend fun focus(geometry: ElementGeometry, restorable: Boolean) {
         val camera = map.cameraPosition
-        if (settings.previousFocus == null) {
+        if (restorable && settings.previousFocus == null) {
             settings = settings.copy(previousFocus = FocusCamera(camera.target.toLatLon(), camera.zoom))
         }
         if (geometry is ElementPointGeometry) {
@@ -123,30 +124,26 @@ class MainMapCameraState internal constructor(
         }
     }
 
-    /** Zooms in on the pins of a clicked cluster */
-    suspend fun zoomToCluster(bounds: BoundingBox) {
-        val camera = map.cameraPosition
-        // TODO maplibre-compose: Query the fitted camera before animating to restore
-        // the 0.25 zoom margin, maximum zoom 19, and zoom-dependent duration.
-        // Requires a release containing https://github.com/maplibre/maplibre-compose/pull/1400.
-        map.animateCameraToBounds(
-            bounds.toGeoJsonBoundingBox(), camera.bearing, camera.tilt,
-            duration = 450.milliseconds,
-        )
-    }
-
-    fun clearFocus() {
-        settings = settings.copy(previousFocus = null)
-    }
-
     suspend fun endFocus() {
         val previous = settings.previousFocus ?: return
-        clearFocus()
+        settings = settings.copy(previousFocus = null)
         val camera = map.cameraPosition
         // Restore the pre-focus target and zoom, keeping the user's current bearing and tilt.
         map.animateCameraPosition(camera.copy(target = previous.position.toPosition(), zoom = previous.zoom),
             maxOf(300, (abs(camera.zoom - previous.zoom) * 300).roundToInt()).milliseconds)
     }
+}
+
+/** Zooms in on the pins of a clicked cluster */
+suspend fun MapState.zoomToCluster(bounds: BoundingBox) {
+    val camera = cameraPosition
+    // TODO maplibre-compose: Query the fitted camera before animating to restore
+    // the 0.25 zoom margin, maximum zoom 19, and zoom-dependent duration.
+    // Requires a release containing https://github.com/maplibre/maplibre-compose/pull/1400.
+    animateCameraToBounds(
+        bounds.toGeoJsonBoundingBox(), camera.bearing, camera.tilt,
+        duration = 450.milliseconds,
+    )
 }
 
 @Serializable

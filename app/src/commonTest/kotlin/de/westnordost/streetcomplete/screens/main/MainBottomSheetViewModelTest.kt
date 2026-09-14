@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayRegistry
 import de.westnordost.streetcomplete.testutils.FakeVisibleQuestsSource
 import de.westnordost.streetcomplete.testutils.bbox
+import de.westnordost.streetcomplete.testutils.collectEmissions
 import de.westnordost.streetcomplete.testutils.node
 import de.westnordost.streetcomplete.testutils.osmQuest
 import dev.mokkery.answering.calls
@@ -16,13 +17,7 @@ import dev.mokkery.answering.returns
 import dev.mokkery.every
 import dev.mokkery.matcher.any
 import dev.mokkery.mock
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withTimeoutOrNull
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -67,20 +62,20 @@ class MainBottomSheetViewModelTest {
     }
 
     @Test fun `shows the selected quest`() = runBlocking {
-        val sheets = collectSheets()
+        val sheets = collectEmissions(viewModel.bottomSheet(selection))
         assertEquals(ShownBottomSheet.OsmQuest(quest, element), sheets.next())
         sheets.stop()
     }
 
     @Test fun `shows nothing when the selected quest does not exist`() = runBlocking {
         visibleQuestsSource.quests = emptyList()
-        val sheets = collectSheets()
+        val sheets = collectEmissions(viewModel.bottomSheet(selection))
         assertNull(sheets.next())
         sheets.stop()
     }
 
     @Test fun `keeps showing the quest as selected while it is updated`() = runBlocking {
-        val sheets = collectSheets()
+        val sheets = collectEmissions(viewModel.bottomSheet(selection))
         sheets.next()
 
         val updatedElement = node(1, tags = mapOf("changed" to "yes"))
@@ -88,13 +83,16 @@ class MainBottomSheetViewModelTest {
         mapDataListener.onUpdated(MutableMapDataWithGeometry().also { it.put(updatedElement, null) }, emptyList())
         visibleQuestsSource.listener!!.onUpdated(added = listOf(quest), removed = emptyList())
         visibleQuestsSource.listener!!.onInvalidated()
+        // a removal afterwards must be the next emission, i.e. the updates emitted nothing
+        visibleQuestsSource.quests = emptyList()
+        visibleQuestsSource.listener!!.onUpdated(added = emptyList(), removed = listOf(quest.key))
 
-        assertNull(withTimeoutOrNull(300) { sheets.next() })
+        assertNull(sheets.next())
         sheets.stop()
     }
 
     @Test fun `closes when the quest is removed`() = runBlocking {
-        val sheets = collectSheets()
+        val sheets = collectEmissions(viewModel.bottomSheet(selection))
         sheets.next()
 
         visibleQuestsSource.quests = emptyList()
@@ -105,7 +103,7 @@ class MainBottomSheetViewModelTest {
     }
 
     @Test fun `closes when the element is gone after a download`() = runBlocking {
-        val sheets = collectSheets()
+        val sheets = collectEmissions(viewModel.bottomSheet(selection))
         sheets.next()
 
         every { mapDataSource.get(ElementType.NODE, 1) } returns null
@@ -113,16 +111,5 @@ class MainBottomSheetViewModelTest {
 
         assertNull(sheets.next())
         sheets.stop()
-    }
-
-    private fun CoroutineScope.collectSheets(): Emissions {
-        val channel = Channel<ShownBottomSheet?>(Channel.UNLIMITED)
-        val job = launch(Dispatchers.Default) { viewModel.bottomSheet(selection).collect { channel.send(it) } }
-        return Emissions(channel, job)
-    }
-
-    private class Emissions(private val channel: Channel<ShownBottomSheet?>, private val job: Job) {
-        suspend fun next(): ShownBottomSheet? = channel.receive()
-        fun stop() = job.cancel()
     }
 }
