@@ -47,8 +47,10 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.transformWhile
 import kotlinx.coroutines.withContext
 
 @Stable
@@ -100,51 +102,64 @@ class MainBottomSheetViewModelImpl(
         if (selection is MainBottomSheetSelection.Overlay && selection.elementKey == null) {
             return flowOf(overlayRegistry.getByName(selection.name)?.let { ShownBottomSheet.Overlay(it, null, null) })
         }
-        return callbackFlow {
-            val elementKey = when (selection) {
-                is MainBottomSheetSelection.Overlay -> selection.elementKey
-                is MainBottomSheetSelection.Quest -> (selection.key as? OsmQuestKey)?.let {
-                    ElementKey(it.elementType, it.elementId)
+        // The sheet shows the object as it was when selected. Later updates to it are ignored so
+        // that an open form is not swapped mid-edit; only its disappearance closes the sheet.
+        return flow {
+            var isShown = false
+            changes(selection)
+                .mapLatest { withContext(Dispatchers.IO) { load(selection) } }
+                .transformWhile { loaded ->
+                    if (!isShown || loaded == null) emit(loaded)
+                    isShown = true
+                    loaded != null
                 }
-                else -> null
-            }
-            val questListener = object : VisibleQuestsSource.Listener {
-                override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
-                    if (selection is MainBottomSheetSelection.Quest &&
-                        (selection.key in removed || added.any { it.key == selection.key })) trySend(Unit)
-                }
-                override fun onInvalidated() { trySend(Unit) }
-            }
-            val elementListener = object : MapDataWithEditsSource.Listener {
-                override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
-                    if (elementKey != null && (elementKey in deleted ||
-                        updated.any { it.key == elementKey })) trySend(Unit)
-                }
-                override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) { trySend(Unit) }
-                override fun onCleared() { trySend(Unit) }
-            }
-            visibleQuestsSource.addListener(questListener)
-            mapDataSource.addListener(elementListener)
-            trySend(Unit)
-            awaitClose {
-                visibleQuestsSource.removeListener(questListener)
-                mapDataSource.removeListener(elementListener)
-            }
-        }.buffer(Channel.CONFLATED).mapLatest {
-            withContext(Dispatchers.IO) {
-                when (selection) {
-                    is MainBottomSheetSelection.Quest -> getQuest(selection.key)
-                    is MainBottomSheetSelection.Overlay -> {
-                        val overlay = overlayRegistry.getByName(selection.name) ?: return@withContext null
-                        val key = selection.elementKey
-                        if (key == null) ShownBottomSheet.Overlay(overlay, null, null)
-                        else getElementInOverlay(overlay, key)
-                    }
-                    is MainBottomSheetSelection.CreateNote -> ShownBottomSheet.CreateOsmNote(selection.trackpoints)
-                }
-            }
+                .collect { emit(it) }
         }
     }
+
+    private fun load(selection: MainBottomSheetSelection): ShownBottomSheet? = when (selection) {
+        is MainBottomSheetSelection.Quest -> getQuest(selection.key)
+        is MainBottomSheetSelection.Overlay -> {
+            val overlay = overlayRegistry.getByName(selection.name)
+            val key = selection.elementKey
+            if (overlay == null) null
+            else if (key == null) ShownBottomSheet.Overlay(overlay, null, null)
+            else getElementInOverlay(overlay, key)
+        }
+        is MainBottomSheetSelection.CreateNote -> ShownBottomSheet.CreateOsmNote(selection.trackpoints)
+    }
+
+    /** Emits once initially and then whenever the object of the [selection] may have been removed.
+     *  The listeners are registered before the initial emission so that no removal is missed. */
+    private fun changes(selection: MainBottomSheetSelection): Flow<Unit> = callbackFlow {
+        val elementKey = when (selection) {
+            is MainBottomSheetSelection.Overlay -> selection.elementKey
+            is MainBottomSheetSelection.Quest -> (selection.key as? OsmQuestKey)?.let {
+                ElementKey(it.elementType, it.elementId)
+            }
+            else -> null
+        }
+        val questListener = object : VisibleQuestsSource.Listener {
+            override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
+                if (selection is MainBottomSheetSelection.Quest && selection.key in removed) trySend(Unit)
+            }
+            override fun onInvalidated() { trySend(Unit) }
+        }
+        val elementListener = object : MapDataWithEditsSource.Listener {
+            override fun onUpdated(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
+                if (elementKey != null && elementKey in deleted) trySend(Unit)
+            }
+            override fun onReplacedForBBox(bbox: BoundingBox, mapDataWithGeometry: MapDataWithGeometry) { trySend(Unit) }
+            override fun onCleared() { trySend(Unit) }
+        }
+        visibleQuestsSource.addListener(questListener)
+        mapDataSource.addListener(elementListener)
+        trySend(Unit)
+        awaitClose {
+            visibleQuestsSource.removeListener(questListener)
+            mapDataSource.removeListener(elementListener)
+        }
+    }.buffer(Channel.CONFLATED)
 
     private fun getElementInOverlay(overlay: Overlay, key: ElementKey): ShownBottomSheet? {
         val geometry = mapDataSource.getGeometry(key.type, key.id) ?: return null
