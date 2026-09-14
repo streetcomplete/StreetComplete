@@ -9,10 +9,6 @@ import de.westnordost.streetcomplete.util.ktx.toEpochMilli
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.atStartOfDayIn
-import kotlin.time.Instant
-
-// Assume user will not switch time zones while operating the App. Even if they do,
-// the filters operate in ranges of years, so an hour will not have much of an effect.
 
 sealed interface ElementFilter : Matcher<Element> {
     abstract override fun toString(): String
@@ -136,47 +132,43 @@ abstract class CompareDateTagValue(val key: String, val dateFilter: DateFilter) 
 
 class TagOlderThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dateFilter) {
     override fun toString() = "$key older $dateFilter"
-    override fun compareTimestamp(timestamp: Long, threshold: Long) = timestamp < threshold
+    override fun compareTo(timestamp: Long) = timestamp < dateTimestamp
 }
 class TagNewerThan(key: String, dateFilter: DateFilter) : CompareTagAge(key, dateFilter) {
     override fun toString() = "$key newer $dateFilter"
-    override fun compareTimestamp(timestamp: Long, threshold: Long) = timestamp > threshold
+    override fun compareTo(timestamp: Long) = timestamp > dateTimestamp
 }
 
 abstract class CompareTagAge(val key: String, val dateFilter: DateFilter) : ElementFilter {
     // Cache the threshold for each filter to avoid computing it for every element.
-    private val threshold by lazy { dateFilter.date.atStartOfDayIn(TimeZone.UTC).toEpochMilliseconds() }
+    protected val dateTimestamp by lazy { dateFilter.date.atStartOfDayIn(TimeZone.UTC).toEpochMilliseconds() }
 
-    protected abstract fun compareTimestamp(timestamp: Long, threshold: Long): Boolean
+    abstract fun compareTo(timestamp: Long): Boolean
 
     override fun matches(obj: Element): Boolean {
-        if (compareTimestamp(obj.timestampEdited, threshold)) return true
+        if (compareTo(obj.timestampEdited)) return true
         return getLastCheckDateKeys(key)
             .mapNotNull { obj.tags[it]?.toCheckDate()?.toEpochMilli() }
-            .any { compareTimestamp(it, threshold) }
+            .any { compareTo(it) }
     }
 }
 
 class ElementOlderThan(dateFilter: DateFilter) : CompareElementAge(dateFilter) {
     override fun toString() = "older $dateFilter"
-    override fun compareTo(tagValue: LocalDate) = tagValue < dateFilter.date
-    override fun compareTimestamp(timestamp: Long, threshold: Long) = timestamp < threshold
+    override fun compareTo(timestamp: Long): Boolean = timestamp < dateTimestamp
 }
 class ElementNewerThan(dateFilter: DateFilter) : CompareElementAge(dateFilter) {
     override fun toString() = "newer $dateFilter"
-    override fun compareTo(tagValue: LocalDate) = tagValue > dateFilter.date
-    override fun compareTimestamp(timestamp: Long, threshold: Long) = timestamp > threshold
+    override fun compareTo(timestamp: Long): Boolean = timestamp > dateTimestamp
 }
 
 abstract class CompareElementAge(val dateFilter: DateFilter) : ElementFilter {
     // Cache the threshold for each filter to avoid computing it for every element.
-    private val threshold by lazy { dateFilter.date.atStartOfDayIn(TimeZone.UTC).toEpochMilliseconds() }
+    protected val dateTimestamp by lazy { dateFilter.date.atStartOfDayIn(TimeZone.UTC).toEpochMilliseconds() }
 
-    abstract fun compareTo(tagValue: LocalDate): Boolean
-    protected abstract fun compareTimestamp(timestamp: Long, threshold: Long): Boolean
-    protected abstract fun compareTo(timestamp: Long): Boolean
+    abstract fun compareTo(timestamp: Long): Boolean
 
-    override fun matches(obj: Element) = compareTimestamp(obj.timestampEdited, threshold)
+    override fun matches(obj: Element) = compareTo(obj.timestampEdited)
 }
 
 class CombineFilters(vararg val filters: ElementFilter) : ElementFilter {
