@@ -31,8 +31,7 @@ class CheckShopExistence(
     // and silence all resurvey quests)
     private val filter by lazy { ("""
         nodes, ways with
-          (name or brand or noname = yes or name:signed = no)
-          and !man_made
+          !man_made
           and !historic
           and !military
           and !power

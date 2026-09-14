@@ -14,7 +14,7 @@ interface DateFilter {
 
 /** A date relative to (start of) today (positive: future, negative: past) */
 class RelativeDate(val deltaDays: Float) : DateFilter {
-    override val date: LocalDate = run {
+    override val date: LocalDate by lazy {
         val now = LocalDateTime.now()
         val plusHours = (deltaDays * MULTIPLIER * 24).toLong()
         val relativeDateTime = (
