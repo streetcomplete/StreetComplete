@@ -1046,11 +1046,19 @@
 
     <string name="quest_charging_station_socket_title">How many sockets does this charging station have?</string>
     <string name="quest_charging_station_socket_note">If a socket type is not listed, please leave a note instead.</string>
-    <string name="quest_charging_station_socket_type2">Type 2 (Mennekes) without Cable</string>
-    <string name="quest_charging_station_socket_type2_cable">Type 2 (Mennekes) with Cable</string>
+    <string name="quest_charging_station_socket_type1">Type 1</string>
+    <string name="quest_charging_station_socket_type1_combo">Type 1 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_type2">Type 2 (Mennekes), no cable</string>
+    <string name="quest_charging_station_socket_type2_cable">Type 2 (Mennekes), with cable</string>
     <string name="quest_charging_station_socket_type2_combo">Type 2 Combo (CCS)</string>
+    <string name="quest_charging_station_socket_type3a">Type 3A (Scame)</string>
+    <string name="quest_charging_station_socket_type3c">Type 3C (Scame)</string>
     <string name="quest_charging_station_socket_chademo">CHAdeMO</string>
-    <string name="quest_charging_station_socket_domestic">Household-plug</string>
+    <string name="quest_charging_station_socket_chaoji">ChaoJi</string>
+    <string name="quest_charging_station_socket_nacs">NACS</string>
+    <string name="quest_charging_station_socket_gb_ac">GB/T (AC)</string>
+    <string name="quest_charging_station_socket_gb_dc">GB/T (DC)</string>
+    <string name="quest_charging_station_socket_domestic">Household socket</string>
     <string name="quest_charging_station_socket_count_input">Number of %1$s</string>
     <string name="quest_charging_station_socket_increase">Increase number of %1$s</string>
     <string name="quest_charging_station_socket_decrease">Decrease number of %1$s</string>

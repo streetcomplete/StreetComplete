@@ -2,5 +2,8 @@
     <path android:fillColor="#00000000" android:pathData="M7.5,7.5m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0" android:strokeColor="#000" android:strokeWidth="1"/>
     <path android:fillColor="#000" android:pathData="M4.5,7.5m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0"/>
     <path android:fillColor="#000" android:pathData="M10.5,7.5m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0"/>
-    <path android:fillColor="#000" android:pathData="M6.086,11A1.5,1.5 0,0 0,6 11.5,1.5 1.5,0 0,0 7.5,13 1.5,1.5 0,0 0,9 11.5,1.5 1.5,0 0,0 8.914,11Z"/>
+    <path android:fillColor="#000" android:pathData="M7.5,10.5m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0"/>
+    <path android:fillColor="#00000000" android:pathData="m3.5,6.5 l2,2" android:strokeColor="#000" android:strokeWidth="1"/>
+    <path android:fillColor="#00000000" android:pathData="m9.5,8.5 l2,-2" android:strokeColor="#000" android:strokeWidth="1"/>
+    <path android:fillColor="#00000000" android:pathData="m7.5,9v3" android:strokeColor="#000" android:strokeWidth="1"/>
 </vector>
