@@ -9,6 +9,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.math.isInPolygon
 import de.westnordost.streetcomplete.util.math.isRingDefinedClockwise
 import de.westnordost.streetcomplete.util.math.measuredArea
+import org.maplibre.compose.util.VisibleBounds
 import org.maplibre.spatialk.geojson.LineString
 import org.maplibre.spatialk.geojson.MultiLineString
 import org.maplibre.spatialk.geojson.MultiPolygon
@@ -26,6 +27,9 @@ fun BoundingBox.toGeoJsonBoundingBox(): GeoJsonBoundingBox =
         east = max.longitude,
         north = max.latitude
     )
+
+fun VisibleBounds.toStreetCompleteBoundingBox(): BoundingBox =
+    toBoundingBox().toBoundingBox()
 
 fun GeoJsonBoundingBox.toBoundingBox(): BoundingBox =
     BoundingBox(
@@ -99,6 +103,3 @@ fun LatLon.toGeometry(): Point =
 
 fun LatLon.toPosition(): Position =
     Position(longitude = longitude, latitude = latitude)
-
-fun Position.toLatLon(): LatLon =
-    LatLon(latitude = latitude, longitude = longitude)

@@ -7,8 +7,6 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absolutePadding
@@ -18,9 +16,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ProvideTextStyle
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.material.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -34,12 +31,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.LinkAnnotation
 import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withLink
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Popup
@@ -48,10 +42,8 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.controls.ktx.Reverse
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.maplibre.compose.overlay.AttributionLinks
 
-// TODO maplibre-compose: After the Android map is replaced, the implementation of this material2
-//                        attribution button should be re-based on top of the attribution button in
-//                        maplibre-compose
 /**
  * Info button from which an attribution popup text is expanded from. The attribution text retracts
  * once when the user first starts interacting with the map.
@@ -73,7 +65,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 public fun AttributionButton(
     userHasMovedMap: Boolean,
-    attributions: List<AttributionLink>,
+    attributions: List<String>,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = MaterialTheme.typography.body2,
     textLinkStyles: TextLinkStyles? = null,
@@ -114,7 +106,7 @@ public fun AttributionButton(
             val horizontalArrangement =
                 if (alignLeft) Arrangement.Absolute.Left else Arrangement.Absolute.Reverse
             val textAlign = if (alignLeft) TextAlign.Left else TextAlign.Right
-            val attributionAlignment = if (alignLeft) AbsoluteAlignment.Left else AbsoluteAlignment.Right
+            val attributionAlignment = if (alignLeft) AbsoluteAlignment.TopLeft else AbsoluteAlignment.TopRight
 
             Popup(
                 popupPositionProvider = popupPositionProvider,
@@ -147,14 +139,18 @@ public fun AttributionButton(
                             ) {
                                 InfoIcon()
                             }
-                            AttributionTexts(
-                                attributions = attributions,
-                                textStyle = textStyle,
-                                textLinkStyles = textLinkStyles,
-                                textAlign = textAlign,
-                                attributionAlignment = attributionAlignment,
-                                modifier = Modifier.padding(vertical = 8.dp),
-                            )
+                            Box(contentAlignment = attributionAlignment) {
+                                AttributionLinks(
+                                    attributions = attributions,
+                                    textStyle = textStyle.copy(
+                                        color = LocalContentColor.current,
+                                        textAlign = textAlign,
+                                    ),
+                                    linkStyles = textLinkStyles,
+                                    breakWithinAttribution = true,
+                                    modifier = Modifier.padding(vertical = 8.dp),
+                                )
+                            }
                             // icon buttons are automatically padded to have a certain click size, which makes the
                             // popup appear misaligned if we don't also add some extra padding on the other side
                             Spacer(Modifier.width(16.dp))
@@ -180,31 +176,3 @@ private fun InfoIcon(modifier: Modifier = Modifier) {
         modifier = modifier,
     )
 }
-
-@OptIn(ExperimentalLayoutApi::class)
-@Composable
-private fun AttributionTexts(
-    attributions: List<AttributionLink>,
-    textStyle: TextStyle,
-    textLinkStyles: TextLinkStyles?,
-    textAlign: TextAlign,
-    attributionAlignment: Alignment.Horizontal,
-    modifier: Modifier = Modifier,
-) {
-    ProvideTextStyle(textStyle) {
-        FlowRow(
-            modifier = modifier,
-            horizontalArrangement = Arrangement.spacedBy(8.dp, attributionAlignment)
-        ) {
-            attributions.distinct().forEach {
-                val attributionString = buildAnnotatedString {
-                    val link = LinkAnnotation.Url(url = it.url, styles = textLinkStyles)
-                    withLink(link) { append(it.title) }
-                }
-                Text(text = attributionString, textAlign = textAlign)
-            }
-        }
-    }
-}
-
-data class AttributionLink(val title: String, val url: String)

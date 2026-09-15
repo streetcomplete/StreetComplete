@@ -31,21 +31,13 @@ import kotlin.time.Instant
 
 @Stable
 abstract class EditHistoryViewModel : ViewModel() {
-    abstract val editItems: StateFlow<List<EditItem>>
-    abstract val selectedEdit: StateFlow<Edit?>
+    abstract val editItems: StateFlow<List<EditItem>?>
 
     abstract suspend fun getEditElement(edit: Edit): Element?
     abstract suspend fun getEditGeometry(edit: Edit): ElementGeometry
 
-    abstract fun select(editKey: EditKey?)
     abstract fun undo(editKey: EditKey)
 
-    /* edit sidebar */
-    // TODO could maybe be just a boolean in the composable when there's no communication between
-    //      compose <-> fragment communication necessary anymore
-    abstract fun showSidebar()
-    abstract fun hideSidebar()
-    abstract val isShowingSidebar: StateFlow<Boolean>
 }
 
 data class EditItem(
@@ -60,14 +52,12 @@ class EditHistoryViewModelImpl(
     private val editHistoryController: EditHistoryController,
 ) : EditHistoryViewModel() {
 
-    private val edits = MutableStateFlow<List<Edit>>(emptyList())
-
-    override val selectedEdit = MutableStateFlow<Edit?>(null)
+    private val edits = MutableStateFlow<List<Edit>?>(null)
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override val editItems = edits
-        .transformLatest { emit(it.toEditItems()) }
-        .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+        .transformLatest { emit(it?.toEditItems()) }
+        .stateIn(viewModelScope, SharingStarted.Lazily, null)
 
     override suspend fun getEditElement(edit: Edit): Element? {
         val key = edit.primaryElementKey ?: return null
@@ -80,36 +70,16 @@ class EditHistoryViewModelImpl(
         else -> null
     } ?: ElementPointGeometry(edit.position)
 
-    override fun select(editKey: EditKey?) {
-        selectedEdit.value =
-            if (editKey != null) {
-                edits.value.firstOrNull { it.key == editKey }
-            } else {
-                null
-            }
-    }
-
     override fun undo(editKey: EditKey) {
         launch(Dispatchers.IO) {
             editHistoryController.undo(editKey)
         }
     }
 
-    override fun showSidebar() {
-        selectedEdit.value = edits.value.lastOrNull()
-        isShowingSidebar.value = true
-    }
-
-    override fun hideSidebar() {
-        selectedEdit.value = null
-        isShowingSidebar.value = false
-    }
-
-    override val isShowingSidebar = MutableStateFlow<Boolean>(false)
-
     private val editHistoryListener = object : EditHistorySource.Listener {
         override fun onAdded(added: Edit) {
             edits.update { edits ->
+                val edits = edits.orEmpty()
                 var insertIndex = edits.indexOfLast { it.createdTimestamp > added.createdTimestamp }
                 if (insertIndex == -1) insertIndex = edits.size
                 edits.toMutableList().also { it.add(insertIndex, added) }
@@ -117,10 +87,8 @@ class EditHistoryViewModelImpl(
         }
 
         override fun onSynced(synced: Edit) {
-            if (selectedEdit.value?.key == synced.key) {
-                selectedEdit.value = synced
-            }
             edits.update { edits ->
+                val edits = edits.orEmpty()
                 val editIndex = edits.indexOfLast { it.key == synced.key }
                 if (editIndex != -1) {
                     edits.toMutableList().also { it[editIndex] = synced }
@@ -132,13 +100,9 @@ class EditHistoryViewModelImpl(
 
         override fun onDeleted(deleted: List<Edit>) {
             val deletedKeys = deleted.mapTo(HashSet()) { it.key }
-            if (selectedEdit.value?.key in deletedKeys) {
-                selectedEdit.value = null
-            }
             edits.update { edits ->
-                edits.filter { it.key !in deletedKeys }
+                edits?.filter { it.key !in deletedKeys }
             }
-            if (edits.value.isEmpty()) hideSidebar()
         }
 
         override fun onInvalidated() {
@@ -158,7 +122,6 @@ class EditHistoryViewModelImpl(
     private fun updateEdits() {
         launch(Dispatchers.IO) {
             edits.value = editHistoryController.getAll().sortedBy { it.createdTimestamp }
-            if (edits.value.isEmpty()) hideSidebar()
         }
     }
 

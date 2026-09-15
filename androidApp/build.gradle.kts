@@ -16,6 +16,10 @@ android {
         targetSdk = 37
         versionCode = 6308
         versionName = "64.0-alpha1"
+
+        // no x86: the MapLibre Compose runtime has no x86 build, and other native libraries must
+        // not make the app installable where the map cannot run
+        ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86_64") }
     }
 
     signingConfigs {
@@ -68,7 +72,6 @@ dependencies {
     implementation("androidx.activity:activity-compose:1.13.0")
     implementation("com.google.android.material:material:1.14.0")
     implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("androidx.fragment:fragment-ktx:1.8.6")
 
     // Compose
     implementation("org.jetbrains.compose.runtime:runtime:1.12.0")
@@ -78,11 +81,11 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling:1.10.0")
 
     // location
-    implementation("org.maplibre.compose:location:0.16.0")
+    implementation("org.maplibre.compose:location:0.17.0")
 
     // Dependency Injection
     implementation("io.insert-koin:koin-android:4.2.2")
-    implementation("io.insert-koin:koin-compose:4.2.2")
+    implementation("io.insert-koin:koin-androidx-compose:4.2.2")
     implementation("io.insert-koin:koin-androidx-workmanager:4.2.2")
 
     // Settings

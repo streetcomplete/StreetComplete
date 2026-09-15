@@ -6,6 +6,9 @@ import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.DownloadedTilesSource
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.location.Location
+import de.westnordost.streetcomplete.data.location.SurveyChecker
+import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
@@ -14,18 +17,23 @@ import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSou
 import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
 import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.flow.mapLatest
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
-import org.maplibre.compose.camera.CameraState
 
 abstract class MainMapViewModel : ViewModel() {
+    abstract fun onViewportChanged(zoom: Double, bounds: BoundingBox?)
+    abstract fun onLocationChanged(location: Location)
+
     /** Downloaded areas */
     abstract val downloadedTiles: StateFlow<Collection<TilePos>>
 
@@ -40,8 +48,6 @@ abstract class MainMapViewModel : ViewModel() {
     /** Styled elements (of overlay) in current view */
     abstract val styleableElements: StateFlow<Collection<StyledElement>>
     abstract fun getElementKey(properties: JsonObject): ElementKey?
-
-    abstract fun onViewportChanged(cameraState: CameraState)
 }
 
 class MainMapViewModelImpl(
@@ -49,50 +55,46 @@ class MainMapViewModelImpl(
     private val mapQuestPinsSource: MapQuestPinsSource,
     private val editHistoryPinsSource: EditHistoryPinsSource,
     private val styleableOverlaySource: StyleableOverlaySource,
+    private val surveyChecker: SurveyChecker,
 ) : MainMapViewModel() {
 
+    override fun onLocationChanged(location: Location) {
+        surveyChecker.addRecentLocation(location)
+    }
+
+    override fun onViewportChanged(zoom: Double, bounds: BoundingBox?) {
+        mapQuestPinsSource.onMapMoved(zoom, bounds)
+        styleableOverlaySource.onMapMoved(zoom, bounds)
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
     override val downloadedTiles = callbackFlow {
         val listener = object : DownloadedTilesSource.Listener {
-            override fun onUpdated() { launch { send(getDownloadedTiles()) } }
+            override fun onUpdated() { trySend(Unit) }
         }
-        send(getDownloadedTiles())
         downloadedTilesSource.addListener(listener)
+        trySend(Unit)
         awaitClose {
             downloadedTilesSource.removeListener(listener)
         }
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+    }.buffer(Channel.CONFLATED).mapLatest {
+        withContext(Dispatchers.IO) {
+            downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER)
+        }
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
 
-    override val questPins: StateFlow<Collection<Pin>>
-        get() = mapQuestPinsSource.pins
+    override val questPins = mapQuestPinsSource.pins
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
 
-    override fun getQuestKey(properties: JsonObject): QuestKey? =
-        mapQuestPinsSource.getQuestKey(properties)
+    override fun getQuestKey(properties: JsonObject) = mapQuestPinsSource.getQuestKey(properties)
 
-    override val editHistoryPins: StateFlow<Collection<Pin>>
-        get() = editHistoryPinsSource
-            .pins
-            .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())
+    override val editHistoryPins = editHistoryPinsSource.pins
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
 
-    override fun getEditKey(properties: JsonObject): EditKey? =
-        editHistoryPinsSource.getEditKey(properties)
+    override fun getEditKey(properties: JsonObject) = editHistoryPinsSource.getEditKey(properties)
 
-    override val styleableElements: StateFlow<Collection<StyledElement>>
-        get() = styleableOverlaySource.styledElements
+    override val styleableElements = styleableOverlaySource.styledElements
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(replayExpirationMillis = 0), emptyList())
 
-    override fun getElementKey(properties: JsonObject): ElementKey? =
-        styleableOverlaySource.getElementKey(properties)
-
-    override fun onCleared() {
-        styleableOverlaySource.onDestroy()
-        mapQuestPinsSource.onDestroy()
-    }
-
-    override fun onViewportChanged(cameraState: CameraState) {
-        mapQuestPinsSource.onMapMoved(cameraState)
-        styleableOverlaySource.onMapMoved(cameraState)
-    }
-
-    private suspend fun getDownloadedTiles() = withContext(Dispatchers.IO) {
-        downloadedTilesSource.getAll(ApplicationConstants.DELETE_OLD_DATA_AFTER)
-    }
+    override fun getElementKey(properties: JsonObject) = styleableOverlaySource.getElementKey(properties)
 }
