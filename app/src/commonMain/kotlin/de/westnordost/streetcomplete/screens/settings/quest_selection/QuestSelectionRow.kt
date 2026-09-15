@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.Checkbox
 import androidx.compose.material.ContentAlpha
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -35,12 +37,13 @@ import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-/** Single item in the quest selection list. Shows icon + title, whether it is enabled and whether
- *  it is disabled by default / disabled in the country one is in */
+/** Single item in the quest selection list. Shows icon + isFavorite + title, whether it is enabled
+ * and whether it is disabled by default / disabled in the country one is in */
 @Composable
 fun QuestSelectionRow(
     item: QuestSelection,
     onToggleSelection: (isSelected: Boolean) -> Unit,
+    onToggleFavorite: (isFavorite: Boolean) -> Unit,
     displayCountry: String,
     modifier: Modifier = Modifier
 ) {
@@ -50,10 +53,28 @@ fun QuestSelectionRow(
         modifier = modifier.height(IntrinsicSize.Min),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        if (item.isInteractionEnabled) {
+        if (item.isDraggable) {
             Icon(painterResource(Res.drawable.ic_drag_vertical_24), "Reorder")
         } else {
             Spacer(Modifier.size(24.dp))
+        }
+        Box(
+            modifier = Modifier.size(36.dp)
+                .padding(end = 8.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            if (item.isInteractionEnabled) {
+                IconButton(onClick = { onToggleFavorite(!item.isFavorite) }) {
+                    Icon(painter = painterResource(
+                        if (item.isFavorite) Res.drawable.ic_star_24
+                        else Res.drawable.ic_star_outline_24
+                    ),
+                    contentDescription = stringResource(Res.string.favorite_quest),
+                    tint = if (item.isFavorite) MaterialTheme.colors.secondary
+                    else LocalContentColor.current.copy(alpha = 0.6f)
+                    )
+                }
+            }
         }
         Image(
             painter = painterResource(item.questType.icon),
@@ -108,6 +129,7 @@ private fun QuestSelectionRowPreview() {
     QuestSelectionRow(
         item = QuestSelection(AddRoadSurface(), selected, false),
         onToggleSelection = { selected = !selected },
+        onToggleFavorite = {},
         displayCountry = "Atlantis",
     )
 }

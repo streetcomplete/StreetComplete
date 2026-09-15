@@ -37,13 +37,14 @@ import org.jetbrains.compose.resources.stringResource
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
-/** List of quest types to individually enable or disable or reorder them */
+/** List of quest types that can be individually enabled, disabled, set to favorite or reordered */
 @Composable
 fun QuestSelectionList(
     items: List<QuestSelection>,
     displayCountry: String,
     onSelect: (questType: QuestType, selected: Boolean) -> Unit,
     onReorder: (questType: QuestType, toAfter: QuestType) -> Unit,
+    onToggleFavorite: (questType: QuestType, favorite: Boolean) -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues.Zero,
 ) {
@@ -55,6 +56,10 @@ fun QuestSelectionList(
 
     val listState = rememberLazyListState()
     val dragDropState = rememberReorderableLazyListState(listState) { from, to ->
+        val nonDraggableCount = reorderableItems.count { !it.isDraggable }
+        // block starting a drag from, or dropping inside, the pinned/favorites zone —
+        // dropping exactly at nonDraggableCount (first slot after it) is fine
+        if (from.index < nonDraggableCount || to.index < nonDraggableCount) return@rememberReorderableLazyListState
         val newList = reorderableItems.toMutableList()
         val item = newList.removeAt(from.index)
         val toAfterItem = newList.getOrNull(to.index - 1)
@@ -96,7 +101,7 @@ fun QuestSelectionList(
                 ReorderableItem(
                     state = dragDropState,
                     key = item.questType.name,
-                    enabled = item.isInteractionEnabled
+                    enabled = item.isDraggable
                 ) { isDragging ->
                     val elevation by animateDpAsState(if (isDragging) 4.dp else 0.dp)
                     val haptic = LocalHapticFeedback.current
@@ -105,7 +110,7 @@ fun QuestSelectionList(
                         elevation = elevation,
                         modifier = Modifier
                             .longPressDraggableHandle(
-                                enabled = item.isInteractionEnabled,
+                                enabled = item.isDraggable,
                                 onDragStarted = { haptic.performHapticFeedback(HapticFeedbackType.LongPress) },
                                 onDragStopped = ::onDragStopped,
                             )
@@ -122,6 +127,7 @@ fun QuestSelectionList(
                                         onSelect(item.questType, isSelected)
                                     }
                                 },
+                                onToggleFavorite = { favorite -> onToggleFavorite(item.questType, favorite) },
                                 displayCountry = displayCountry,
                                 modifier = Modifier.padding(vertical = 8.dp)
                             )
@@ -169,12 +175,13 @@ private fun QuestSelectionHeader(modifier: Modifier = Modifier) {
 private fun PreviewQuestSelectionList() {
     QuestSelectionList(
         items = listOf(
-            QuestSelection(AddPoliceType(), true, true),
-            QuestSelection(AddSeating(), false, true),
-            QuestSelection(AddTactilePavingBusStop(), true, false),
+            QuestSelection(AddPoliceType(), true, true, true),
+            QuestSelection(AddSeating(), false, true, true),
+            QuestSelection(AddTactilePavingBusStop(), true, false, false),
         ),
         displayCountry = "Atlantis",
         onSelect = { _, _ -> },
-        onReorder = { _, _ -> }
+        onReorder = { _, _ -> },
+        onToggleFavorite = { _, _ -> }
     )
 }
