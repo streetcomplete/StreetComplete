@@ -1,48 +1,63 @@
 package de.westnordost.streetcomplete.quests.socket
 
-/** Soft max for newly entered counts via stepper (reviewer raised 50→99). */
-const val MAX_NEW_SOCKET_COUNT = 99
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.TextField
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.onSizeChanged
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.ui.common.StepperButton
+import de.westnordost.streetcomplete.ui.ktx.pxToDp
+import kotlin.math.max
 
-/**
- * Parse user text for a socket count field.
- * - empty → unresolved (`Cleared`)
- * - valid non-negative integer → that value (never truncated/clamped)
- * - invalid → `Invalid` (caller keeps previous state)
- */
-fun parseSocketCountInput(text: String): ParseSocketCountResult = when {
-    text.isEmpty() -> ParseSocketCountResult.Cleared
-    else -> {
-        val value = text.toIntOrNull()
-        when {
-            value == null || value < 0 -> ParseSocketCountResult.Invalid
-            else -> ParseSocketCountResult.Value(value)
-        }
+/** Input field for a socket count */
+@Composable
+fun SocketCountInput(
+    count: Int?,
+    onCountChange: (Int?) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        var inputHeightPx by remember { mutableIntStateOf(0) }
+
+        TextField(
+            value = count?.toString() ?: "",
+            onValueChange = { text ->
+                if (text.isEmpty()) {
+                    onCountChange(null)
+                } else {
+                    text.toIntOrNull()?.let { onCountChange(it) }
+                }
+            },
+            modifier = Modifier
+                .width(64.dp)
+                .onSizeChanged { inputHeightPx = it.height },
+            singleLine = true,
+            textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        )
+        StepperButton(
+            onIncrease = { onCountChange((count ?: 0) + 1) },
+            onDecrease = { onCountChange(if (count == null) 0 else max(0, count - 1)) },
+            increaseEnabled = true,
+            decreaseEnabled = count == null || count > 0,
+            modifier = Modifier
+                .width(48.dp)
+                .height(inputHeightPx.pxToDp())
+        )
     }
 }
-
-sealed interface ParseSocketCountResult {
-    data object Cleared : ParseSocketCountResult
-    data object Invalid : ParseSocketCountResult
-    data class Value(val count: Int) : ParseSocketCountResult
-}
-
-fun formatSocketCountInput(count: Int?): String = count?.toString().orEmpty()
-
-/** Stepper ceiling: at least [MAX_NEW_SOCKET_COUNT], but never below an existing larger count. */
-fun socketCountStepperMax(current: Int?): Int =
-    maxOf(MAX_NEW_SOCKET_COUNT, current ?: 0)
-
-fun increaseSocketCount(current: Int?): Int {
-    val value = current ?: 0
-    return (value + 1).coerceAtMost(socketCountStepperMax(current))
-}
-
-/** From unresolved (`null`), decrease sets explicit 0 / "no". */
-fun decreaseSocketCount(current: Int?): Int =
-    if (current == null) 0 else (current - 1).coerceAtLeast(0)
-
-fun isSocketFormComplete(
-    counts: Map<SocketType, Int?>,
-    socketTypes: List<SocketType>,
-): Boolean =
-    socketTypes.isNotEmpty() && socketTypes.all { counts[it] != null }

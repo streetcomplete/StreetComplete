@@ -1,72 +1,57 @@
 package de.westnordost.streetcomplete.quests.socket
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.unit.dp
+import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.osmquests.Answer
 import de.westnordost.streetcomplete.data.osm.osmquests.QuestAction
-import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.resources.Res
+import de.westnordost.streetcomplete.resources.allDrawableResources
 import de.westnordost.streetcomplete.ui.common.quest.QuestForm
-import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.stringResource
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.ktx.isInEu
 
 @Composable
 fun AddChargingStationSocketForm(
-    on: (QuestAction<Map<SocketType, Int>>) -> Unit,
+    on: (QuestAction<Map<ChargingStationSocket, Int>>) -> Unit,
     element: Element,
-    socketTypes: List<SocketType>,
-    domesticIcons: List<DrawableResource> = emptyList(),
+    countryInfo: CountryInfo,
 ) {
-    val initialCounts = remember(element.id, socketTypes) {
-        initialSocketFormCounts(element.tags, socketTypes)
+    val defaultSockets = remember(countryInfo) {
+        countryInfo.chargingStationSocketTypes
+            .mapNotNull { ChargingStationSocket.of(it) }
+            .associateWith { null }
     }
-    var counts by remember(element.id, socketTypes) { mutableStateOf(initialCounts) }
-    // Resurvey bubble only when every displayed type was already numeric/`no`
-    // (not for first survey, bare `yes`, or missing displayed keys).
-    val isResurvey = remember(element.id, element.tags, socketTypes) {
-        isCompleteSocketSurvey(element.tags, socketTypes)
+    val domesticSocketIcon = remember(countryInfo) {
+        countryInfo.domesticSocketType.firstNotNullOfOrNull {
+            Res.allDrawableResources["socket_domestic_"+it]
+        }
     }
-    val unresolvedYesTypes = remember(element.id, element.tags, socketTypes) {
-        socketTypes.filter { parseSocketPresence(element.tags[it.osmCountKey]) is SocketPresence.Yes }
-            .toSet()
+    val showEuLabels = remember(countryInfo) { countryInfo.isInEu }
+
+    val initialSockets = remember(element) {
+        val sockets = parseChargingStationSockets(element.tags)
+        if (sockets.isNotEmpty()) sockets else defaultSockets
     }
+
+    var sockets by rememberSerializable(initialSockets) { mutableStateOf(initialSockets) }
 
     QuestForm(
         on = on,
-        // Non-empty form and every displayed type resolved (0 = explicit no, >0 = count).
-        isComplete = isSocketFormComplete(counts, socketTypes),
-        hasChanges = counts != initialCounts,
-        isResurvey = isResurvey,
-        onClickOk = {
-            on(Answer(counts.mapValues { (_, count) -> count!! }))
-        },
+        isComplete = sockets.isNotEmpty() && sockets.values.all { it != null },
+        hasChanges = sockets != initialSockets,
+        isResurvey = initialSockets.isNotEmpty() && initialSockets.values.all { it != null },
+        onClickOk = { on(Answer(sockets.mapValues { (_, count) -> count!! })) },
     ) {
-        Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            CompositionLocalProvider(
-                LocalContentAlpha provides ContentAlpha.medium,
-                LocalTextStyle provides MaterialTheme.typography.body2
-            ) {
-                Text(stringResource(Res.string.quest_charging_station_socket_note))
-            }
-            SocketTypeAndCountForm(
-                socketTypes = socketTypes,
-                counts = counts,
-                onCountsChanged = { counts = it },
-                unresolvedYesTypes = unresolvedYesTypes,
-                domesticIcons = domesticIcons,
-            )
-        }
+        ChargingStationSocketsForm(
+            sockets = sockets,
+            onSocketsChanged = { sockets = it },
+            domesticSocketIcon = domesticSocketIcon,
+            showEuLabels = showEuLabels
+        )
     }
 }

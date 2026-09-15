@@ -37,7 +37,7 @@ val ChargingStationSocket.title: StringResource get() = when (this) {
     DOMESTIC -> Res.string.quest_charging_station_socket_domestic
 }
 
-val ChargingStationSocket.euLabels: List<Char>? get() = when (this) {
+val ChargingStationSocket.euLabels: List<Char> get() = when (this) {
     TYPE1 -> listOf('B')
     TYPE2 -> listOf('C')
     TYPE2_CABLE -> listOf('C')
@@ -45,7 +45,7 @@ val ChargingStationSocket.euLabels: List<Char>? get() = when (this) {
     TYPE3A -> listOf('D')
     TYPE3C -> listOf('E')
     CHADEMO -> listOf('M', 'N')
-    else -> null
+    else -> emptyList()
 }
 
 val ChargingStationSocket.hasCable: Boolean get() = when (this) {
