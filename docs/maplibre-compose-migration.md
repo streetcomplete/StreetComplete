@@ -26,31 +26,6 @@ is a reference for individual migration implementations, not additional scope.
 - Delete this document when no migration work remains. Put any lasting maintenance
   instructions in the appropriate existing project documentation.
 
-## Upstream releases still required
-
-- **Offline completion and initial pack loading:** adopt a release containing
-  [MapLibre Compose #1405](https://github.com/maplibre/maplibre-compose/pull/1405).
-  Collect `downloadProgress` directly and read `packs.value` after the manager's
-  initial load. In v0.16, headless `snapshotFlow` can remain suspended after a
-  download finishes, and cold-start cleanup can miss saved packs. Verify the
-  download worker completes without an activity and that `Cleaner.cleanOld` and
-  `cleanAll` include existing packs after a cold start.
-- **Focus and cluster camera parity:** adopt `cameraForBounds` from a release
-  containing [#1400](https://github.com/maplibre/maplibre-compose/pull/1400).
-  Restore the 0.75 focus / 0.25 cluster zoom margins, maximum zoom 19,
-  zoom-dependent durations, and the 0.5 focus zoom threshold. Check point, line,
-  and polygon focus and dense clusters with sheet padding, bearing, and tilt.
-- **Android shader halos:** adopt a release containing
-  [#1394](https://github.com/maplibre/maplibre-compose/pull/1394), then verify pin
-  halos on API 33+ and keep the no-halo fallback below API 33.
-- **Permission changes:** remove `updatesWithPermissionChanges` after adopting a
-  release containing [#1393](https://github.com/maplibre/maplibre-compose/pull/1393).
-  Verify deny/grant/revoke and return from settings during foreground tracking.
-- **Style replacement:** remove the background/road layer ID workaround when the
-  runtime includes the fix for
-  [native-ffi #709](https://github.com/maplibre/maplibre-native-ffi/issues/709).
-  Verify light/dark style changes and overlay replacement preserve their colors.
-
 ## Production validation still required
 
 - Compare the shared map with the legacy map for layer order, road/bridge
@@ -64,6 +39,13 @@ is a reference for individual migration implementations, not additional scope.
   airplane-mode use after download and restart, download cancellation/deletion,
   background/resume, and activity/process recreation. Verify release packaging
   includes the required resources and native libraries for supported Android ABIs.
+- Verify on a device what MapLibre Compose 0.17 enabled: focus and cluster zoom
+  with sheet padding, bearing and tilt; icon halos on API 33+ and their absence
+  below; location deny/grant/revoke and return from settings during foreground
+  tracking; light/dark style changes and overlay replacement keeping their colors;
+  the download worker completing without an activity, and `Cleaner.cleanOld` and
+  `cleanAll` including existing packs after a cold start; the location pointer
+  staying clear of system bars and an open form.
 - Build the iOS host and exercise the shared map with changing data, registered
   images, gestures, style replacement, and background/resume. Verify painter
   dimensions and glyph loading. This validates the shared map, not the full iOS

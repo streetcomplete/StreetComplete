@@ -55,7 +55,6 @@ enum class MapLabel { COUNTRIES, LOCALITIES, HOUSE_NUMBERS, ROADS, RIVERS, STREA
 fun MapStyle(
     colors: MapColors,
     languages: List<String>,
-    layerIdSuffix: String,
     hiddenLabels: Set<MapLabel> = emptySet(),
     belowRoadsContent: @Composable @MaplibreComposable () -> Unit = {},
     belowRoadsOnBridgeContent: @Composable @MaplibreComposable () -> Unit = {},
@@ -144,19 +143,19 @@ fun MapStyle(
     }
     val roads = listOf(pedestrian, serviceRoads, minorRoads, majorRoads, motorways, motorwayLinks)
 
-    LandLayers(source, colors, layerIdSuffix)
+    LandLayers(source, colors)
     HillshadeLayers(source, colors)
     WaterLayers(source, colors, Structure.None)
     AerowaysLayer(source, colors)
     BuildingLayers(source, colors)
 
-    RoadLayers(source, colors, roads, paths, serviceRoads, Structure.Tunnel, layerIdSuffix)
+    RoadLayers(source, colors, roads, paths, serviceRoads, Structure.Tunnel)
 
     PedestrianAreaLayers(source, colors, Structure.None)
 
     belowRoadsContent()
 
-    RoadLayers(source, colors, roads, paths, serviceRoads, Structure.None, layerIdSuffix)
+    RoadLayers(source, colors, roads, paths, serviceRoads, Structure.None)
     RailwayLayer(source, colors, Structure.None)
 
     BarriersLayers(source, colors)
@@ -168,7 +167,7 @@ fun MapStyle(
 
     belowRoadsOnBridgeContent()
 
-    RoadLayers(source, colors, roads, paths, serviceRoads, Structure.Bridge, layerIdSuffix)
+    RoadLayers(source, colors, roads, paths, serviceRoads, Structure.Bridge)
     RailwayLayer(source, colors, Structure.Bridge)
 
     OnewayArrowsLayer(source, colors)
@@ -182,9 +181,9 @@ fun MapStyle(
 }
 
 @Composable @MaplibreComposable
-private fun LandLayers(source: VectorSource, colors: MapColors, layerIdSuffix: String) {
+private fun LandLayers(source: VectorSource, colors: MapColors) {
     BackgroundLayer(
-        id = "background-$layerIdSuffix",
+        id = "background",
         color = const(colors.earth)
     )
     FillLayer(
@@ -383,17 +382,16 @@ private fun RoadLayers(
     paths: RoadType,
     serviceRoads: RoadType,
     structure: Structure,
-    layerIdSuffix: String,
 ) {
     // for roads, first draw the casing (= outline) of all roads
     for (road in roads) {
         RoadCasingLayer(road, source, structure)
     }
     // , then draw the road color...
-    RoadLayer(paths, source, structure, layerIdSuffix)
+    RoadLayer(paths, source, structure)
     StepsOverlayLayer(source, colors, structure)
     for (road in roads) {
-        RoadLayer(road, source, structure, layerIdSuffix)
+        RoadLayer(road, source, structure)
     }
     RoadPrivateOverlayLayer(paths, source, colors, structure)
     RoadPrivateOverlayLayer(serviceRoads, source, colors, structure)
@@ -618,10 +616,9 @@ private fun RoadLayer(
     road: RoadType,
     source: VectorSource,
     structure: Structure,
-    layerIdSuffix: String,
 ) {
     LineLayer(
-        id = listOfNotNull(road.id, structure.id, layerIdSuffix).joinToString("-"),
+        id = listOfNotNull(road.id, structure.id).joinToString("-"),
         source = source,
         sourceLayer = "road",
         minZoom = road.minZoom,

@@ -13,6 +13,10 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Text
@@ -83,7 +87,6 @@ import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toLocation
-import de.westnordost.streetcomplete.util.ktx.updatesWithPermissionChanges
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.flow.filterNotNull
@@ -96,6 +99,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
+import org.maplibre.compose.camera.CameraAnimation
 import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.location.HeadingMeasurement
 import org.maplibre.compose.location.HeadingProvider
@@ -110,6 +114,8 @@ import org.maplibre.compose.location.SystemSettingsLauncher
 import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
+import org.maplibre.compose.overlay.GeographicLayout
+import org.maplibre.compose.overlay.LocalCameraPadding
 import org.maplibre.compose.overlay.attributions
 import org.maplibre.compose.style.BaseStyle
 import org.maplibre.spatialk.units.Bearing
@@ -291,7 +297,7 @@ fun MainScreen(
         scope.launch { cameraState.followLocation(displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack)) }
     }
     fun zoomBy(amount: Double) {
-        scope.launch { mapState.animateCameraPosition(mapState.cameraPosition.copy(zoom = mapState.cameraPosition.zoom + amount), 300.milliseconds) }
+        scope.launch { mapState.animateCameraPosition(mapState.cameraPosition.copy(zoom = mapState.cameraPosition.zoom + amount), CameraAnimation.Ease(300.milliseconds)) }
     }
     fun composeNote(position: LatLon, trackpoints: List<Trackpoint>? = null) {
         sheet.show(MainBottomSheetSelection.CreateNote(position, trackpoints))
@@ -360,7 +366,7 @@ fun MainScreen(
     }
     LaunchedEffect(locationProvider, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            locationProvider.updatesWithPermissionChanges(LocationRequest()).collect { event ->
+            locationProvider.updates(LocationRequest()).collect { event ->
                 when (event) {
                     is LocationEvent.Update -> {
                         val fix = event.toLocation()
@@ -411,7 +417,8 @@ fun MainScreen(
                 val shown = snapshotFlow { sheet.shownBottomSheet }.filterNotNull().first()
                 when (val selection = sheet.selection) {
                     is MainBottomSheetSelection.CreateNote -> mapState.animateCameraPosition(
-                        mapState.cameraPosition.copy(target = selection.position.toPosition()), 300.milliseconds,
+                        mapState.cameraPosition.copy(target = selection.position.toPosition()),
+                        CameraAnimation.Ease(300.milliseconds),
                     )
                     else -> when (shown) {
                         is ShownBottomSheet.OsmQuest -> cameraState.focus(shown.quest.geometry, restorable = true)
@@ -520,10 +527,17 @@ fun MainScreen(
                 ClickResult.Consume
             },
             overlay = {
-                if (!showIntroTutorial) {
-                    displayedLocation?.position?.let { position ->
-                        PointerPinButton(targetPosition = position, onClick = ::followLocation) {
-                            Image(painterResource(Res.drawable.location_dot_small), null)
+                // the pointer stays within the map area not covered by system bars or a form
+                GeographicLayout(
+                    Modifier
+                        .windowInsetsPadding(WindowInsets.safeDrawing)
+                        .padding(LocalCameraPadding.current)
+                ) {
+                    if (!showIntroTutorial) {
+                        displayedLocation?.position?.let { position ->
+                            PointerPinButton(targetPosition = position, onClick = ::followLocation) {
+                                Image(painterResource(Res.drawable.location_dot_small), null)
+                            }
                         }
                     }
                 }

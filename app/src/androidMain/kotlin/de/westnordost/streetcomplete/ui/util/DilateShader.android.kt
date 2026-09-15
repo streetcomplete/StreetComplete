@@ -12,9 +12,7 @@ import androidx.compose.ui.graphics.asAndroidBitmap
 import androidx.compose.ui.graphics.nativeCanvas
 
 actual fun createDilateShader(inputImage: ImageBitmap, radius: Float, color: Color, canvas: Canvas): Shader? {
-    // TODO maplibre-compose: Restore shader halos after upgrading to a release containing
-    // https://github.com/maplibre/maplibre-compose/pull/1394.
-    // Below API 33, RuntimeShader is unavailable; draw pins without halos.
+    // RuntimeShader needs a hardware canvas and API 33; otherwise, icons get no halo
     if (!canvas.nativeCanvas.isHardwareAccelerated || Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
         return null
     }

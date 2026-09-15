@@ -35,7 +35,6 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.location.LocationMeasurement
-import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
@@ -43,7 +42,6 @@ import org.maplibre.spatialk.geojson.Feature
 import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.units.International
-import kotlin.uuid.Uuid
 
 @Composable
 @MaplibreComposable
@@ -91,11 +89,7 @@ internal fun MainMapContent(
         data = GeoJsonData.Features(FeatureCollection(overlayData)),
     )
 
-    // TODO maplibre-compose: Reuse layer IDs once the runtime includes the fix for
-    // https://github.com/maplibre/maplibre-native-ffi/issues/709.
-    val layerIdSuffix = remember(checkNotNull(LocalMapState.current).style.baseStyle) { Uuid.random().toString() }
     MapStyle(
-        layerIdSuffix = layerIdSuffix,
         colors = colors,
         languages = languages,
         hiddenLabels = hiddenLabels,

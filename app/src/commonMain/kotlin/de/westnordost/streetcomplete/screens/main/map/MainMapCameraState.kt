@@ -7,15 +7,16 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import kotlinx.serialization.Serializable
+import org.maplibre.compose.camera.CameraAnimation
 import org.maplibre.compose.camera.CameraPosition
 import org.maplibre.compose.map.MapState
 import kotlin.math.abs
+import kotlin.math.min
 import kotlin.math.roundToInt
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -57,7 +58,7 @@ class MainMapCameraState internal constructor(
             followLocation(location, bearing)
         } else {
             // Leaving navigation retains the bearing; the compass resets it explicitly.
-            map.animateCameraPosition(map.cameraPosition.copy(tilt = 0.0), 300.milliseconds)
+            map.animateCameraPosition(map.cameraPosition.copy(tilt = 0.0), CameraAnimation.Ease(300.milliseconds))
         }
     }
 
@@ -71,12 +72,12 @@ class MainMapCameraState internal constructor(
             zoom = zoom,
             bearing = if (isNavigationMode) bearing ?: camera.bearing else camera.bearing,
             tilt = if (isNavigationMode) 60.0 else camera.tilt,
-        ), 600.milliseconds)
+        ), CameraAnimation.Ease(600.milliseconds))
     }
 
     suspend fun resetCompass() {
         settings = settings.copy(navigating = false)
-        map.animateCameraPosition(map.cameraPosition.copy(bearing = 0.0, tilt = 0.0), 300.milliseconds)
+        map.animateCameraPosition(map.cameraPosition.copy(bearing = 0.0, tilt = 0.0), CameraAnimation.Ease(300.milliseconds))
     }
 
     suspend fun freeze() {
@@ -107,21 +108,18 @@ class MainMapCameraState internal constructor(
         if (restorable && settings.previousFocus == null) {
             settings = settings.copy(previousFocus = FocusCamera(camera.target.toLatLon(), camera.zoom))
         }
-        if (geometry is ElementPointGeometry) {
-            val difference = abs(camera.zoom - 19.0)
-            map.animateCameraPosition(camera.copy(
-                target = geometry.center.toPosition(),
-                zoom = if (difference > 0.5) 19.0 else camera.zoom,
-            ), maxOf(450, (difference * 450).roundToInt()).milliseconds)
-        } else {
-            // TODO maplibre-compose: Query the fitted camera to restore the 0.75 zoom margin,
-            // maximum zoom 19, 0.5 zoom threshold, and zoom-dependent duration (as for clusters).
-            // Requires a release containing https://github.com/maplibre/maplibre-compose/pull/1400.
-            map.animateCameraToBounds(
-                geometry.bounds.toGeoJsonBoundingBox(), camera.bearing, camera.tilt,
-                duration = 450.milliseconds,
-            )
-        }
+        val fitted = map.cameraForGeometry(geometry.toGeometry(), camera.bearing, camera.tilt)
+        // zoom in a bit less than fully to keep a margin around the element, and not too far for points
+        val targetZoom = min(fitted.zoom - 0.75, 19.0)
+        val zoomDiff = abs(camera.zoom - targetZoom)
+        map.animateCameraPosition(
+            camera.copy(
+                target = fitted.target,
+                // only zoom if the difference is big enough
+                zoom = if (zoomDiff > 0.5) targetZoom else camera.zoom,
+            ),
+            CameraAnimation.Ease(maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds),
+        )
     }
 
     suspend fun endFocus() {
@@ -129,20 +127,23 @@ class MainMapCameraState internal constructor(
         settings = settings.copy(previousFocus = null)
         val camera = map.cameraPosition
         // Restore the pre-focus target and zoom, keeping the user's current bearing and tilt.
-        map.animateCameraPosition(camera.copy(target = previous.position.toPosition(), zoom = previous.zoom),
-            maxOf(300, (abs(camera.zoom - previous.zoom) * 300).roundToInt()).milliseconds)
+        map.animateCameraPosition(
+            camera.copy(target = previous.position.toPosition(), zoom = previous.zoom),
+            CameraAnimation.Ease(maxOf(300, (abs(camera.zoom - previous.zoom) * 300).roundToInt()).milliseconds),
+        )
     }
 }
 
 /** Zooms in on the pins of a clicked cluster */
 suspend fun MapState.zoomToCluster(bounds: BoundingBox) {
     val camera = cameraPosition
-    // TODO maplibre-compose: Query the fitted camera before animating to restore
-    // the 0.25 zoom margin, maximum zoom 19, and zoom-dependent duration.
-    // Requires a release containing https://github.com/maplibre/maplibre-compose/pull/1400.
-    animateCameraToBounds(
-        bounds.toGeoJsonBoundingBox(), camera.bearing, camera.tilt,
-        duration = 450.milliseconds,
+    val fitted = cameraForBounds(bounds.toGeoJsonBoundingBox(), camera.bearing, camera.tilt)
+    // zoom in a bit less than fully to show the pins completely, and not too far
+    val targetZoom = min(fitted.zoom - 0.25, 19.0)
+    val zoomDiff = abs(camera.zoom - targetZoom)
+    animateCameraPosition(
+        camera.copy(target = fitted.target, zoom = targetZoom),
+        CameraAnimation.Ease(maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds),
     )
 }
 

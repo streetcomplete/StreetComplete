@@ -1,6 +1,5 @@
 package de.westnordost.streetcomplete.data.maptiles
 
-import androidx.compose.runtime.snapshotFlow
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.map.MapTiles
@@ -39,10 +38,7 @@ class MapLibreMapTilesDownloader(
             val startedAt = nowAsEpochMilliseconds()
             manager.resume(pack)
 
-            // TODO maplibre-compose: downloadProgress is snapshot state and only applied while a
-            // map is presented, so in a background worker this can stay suspended. Use
-            // https://github.com/maplibre/maplibre-compose/pull/1405 once released.
-            val finalState = snapshotFlow { pack.downloadProgress }.first { it.isFinished }
+            val finalState = pack.downloadProgress.first { it.isFinished }
             when (finalState) {
                 is DownloadProgress.Healthy -> {
                     val seconds = (nowAsEpochMilliseconds() - startedAt) / 1000.0
@@ -73,12 +69,8 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun deleteOld(time: Long) {
         try {
-            // TODO maplibre-compose: packs is loaded asynchronously and may still be empty in a
-            // background worker after a cold start. Await the initial load via
-            // https://github.com/maplibre/maplibre-compose/pull/1405 once released.
-            val packs = manager.packs.toList()
-            for (pack in packs) {
-                val packTime = pack.metadata?.decodeToString()?.toLongOrNull()
+            for (pack in manager.packs.value) {
+                val packTime = pack.metadata.value?.decodeToString()?.toLongOrNull()
                 if (packTime == null || packTime < time) {
                     manager.delete(pack)
                 }
@@ -92,9 +84,7 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun clear() {
         try {
-            // TODO maplibre-compose: await the initial pack load here too (see deleteOld)
-            val packs = manager.packs.toList()
-            for (pack in packs) { manager.delete(pack) }
+            for (pack in manager.packs.value) { manager.delete(pack) }
             manager.clearAmbientCache()
         } catch (error: CancellationException) {
             throw error
