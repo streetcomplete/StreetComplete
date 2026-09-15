@@ -38,6 +38,9 @@ import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
 import kotlin.math.max
 
+/** Labels of the background map that can be hidden, e.g. by an overlay that replaces them */
+enum class MapLabel { COUNTRIES, LOCALITIES, HOUSE_NUMBERS, ROADS, RIVERS, STREAMS }
+
 /**
  * StreetComplete background map style using the tile schema from JawgMaps as defined in
  * https://www.jawg.io/docs/apidocs/maps/streets-v2/
@@ -53,7 +56,7 @@ fun MapStyle(
     colors: MapColors,
     languages: List<String>,
     layerIdSuffix: String,
-    hiddenLayers: Collection<String> = emptyList(),
+    hiddenLabels: Set<MapLabel> = emptySet(),
     belowRoadsContent: @Composable @MaplibreComposable () -> Unit = {},
     belowRoadsOnBridgeContent: @Composable @MaplibreComposable () -> Unit = {},
     belowLabelsContent: @Composable @MaplibreComposable () -> Unit = {},
@@ -173,7 +176,7 @@ fun MapStyle(
 
     belowLabelsContent()
 
-    LabelLayers(source, colors, languages, hiddenLayers)
+    LabelLayers(source, colors, languages, hiddenLabels)
 
     aboveLabelsContent()
 }
@@ -503,7 +506,7 @@ private fun LabelLayers(
     source: VectorSource,
     colors: MapColors,
     languages: List<String>,
-    hiddenLayers: Collection<String>,
+    hiddenLabels: Set<MapLabel>,
 ) {
     val localizedName = feature.localizedName(languages)
     val haloWidth = const(2.5.dp)
@@ -513,6 +516,7 @@ private fun LabelLayers(
 
     SymbolLayer(
         id = "labels-country",
+        visible = MapLabel.COUNTRIES !in hiddenLabels,
         source = source,
         sourceLayer = "place_label",
         filter = feature.inClass("country"),
@@ -527,6 +531,7 @@ private fun LabelLayers(
     )
     SymbolLayer(
         id = "labels-localities",
+        visible = MapLabel.LOCALITIES !in hiddenLabels,
         source = source,
         sourceLayer = "place_label",
         filter = feature.inClass("locality"),
@@ -541,7 +546,7 @@ private fun LabelLayers(
     )
     SymbolLayer(
         id = "labels-housenumbers",
-        visible = "labels-housenumbers" !in hiddenLayers,
+        visible = MapLabel.HOUSE_NUMBERS !in hiddenLabels,
         source = source,
         sourceLayer = "housenum_label",
         minZoom = 18f,
@@ -556,6 +561,7 @@ private fun LabelLayers(
     )
     SymbolLayer(
         id = "labels-road",
+        visible = MapLabel.ROADS !in hiddenLabels,
         source = source,
         sourceLayer = "road",
         minZoom = 14f,
@@ -572,6 +578,7 @@ private fun LabelLayers(
     )
     SymbolLayer(
         id = "labels-rivers",
+        visible = MapLabel.RIVERS !in hiddenLabels,
         source = source,
         sourceLayer = "waterway",
         minZoom = 14f,
@@ -588,6 +595,7 @@ private fun LabelLayers(
     )
     SymbolLayer(
         id = "labels-streams",
+        visible = MapLabel.STREAMS !in hiddenLabels,
         source = source,
         sourceLayer = "waterway",
         minZoom = 16f,

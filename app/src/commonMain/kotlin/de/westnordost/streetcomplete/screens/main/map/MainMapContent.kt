@@ -56,8 +56,8 @@ internal fun MainMapContent(
     oldTrackpointsLists: List<List<LatLon>>,
     shownBottomSheet: ShownBottomSheet?,
     shownMarkers: Collection<Marker>?,
-    /** background map layers to hide, e.g. because the selected overlay replaces them */
-    hiddenLayers: Collection<String>,
+    /** labels of the background map to hide, e.g. because the selected overlay replaces them */
+    hiddenLabels: Set<MapLabel>,
     /** whether the selected overlay's [styledElements] are displayed at all */
     showOverlay: Boolean,
     selectedEdit: Edit?,
@@ -98,7 +98,7 @@ internal fun MainMapContent(
         layerIdSuffix = layerIdSuffix,
         colors = colors,
         languages = languages,
-        hiddenLayers = hiddenLayers,
+        hiddenLabels = hiddenLabels,
         belowRoadsContent = {
             // left-and-right lines should be rendered behind the actual road
             if (showOverlay) {

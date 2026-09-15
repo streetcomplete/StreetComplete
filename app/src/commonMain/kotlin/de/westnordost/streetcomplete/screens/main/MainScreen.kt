@@ -251,7 +251,7 @@ fun MainScreen(
             oldTrackpointsLists = tracks.previousTrackPositions,
             shownBottomSheet = shownBottomSheet,
             shownMarkers = markers,
-            hiddenLayers = selectedOverlay?.hidesLayers.orEmpty(),
+            hiddenLabels = selectedOverlay?.hiddenLabels.orEmpty(),
             showOverlay = showOverlay,
             selectedEdit = selectedEdit,
             highlightedGeometry = editHistory.highlightedGeometry,

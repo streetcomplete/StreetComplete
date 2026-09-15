@@ -1,9 +1,12 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.animation.core.Spring.StiffnessLow
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
@@ -18,6 +21,7 @@ import de.westnordost.streetcomplete.screens.main.map.inMeters
 import de.westnordost.streetcomplete.screens.main.map.toGeometry
 import de.westnordost.streetcomplete.ui.theme.Location
 import de.westnordost.streetcomplete.util.ktx.isApril1st
+import de.westnordost.streetcomplete.util.math.normalizeDegrees
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.image
@@ -65,6 +69,7 @@ fun CurrentLocationLayers(
         pitchAlignment = const(CirclePitchAlignment.Map),
     )
     if (heading != null) {
+        val animatedHeading by animateHeadingAsState(heading)
         SymbolLayer(
             id = "direction",
             source = source,
@@ -72,7 +77,7 @@ fun CurrentLocationLayers(
             iconAllowOverlap = const(true),
             iconIgnorePlacement = const(true),
             // aligned to the map, so the heading is absolute and needs no update when the map rotates
-            iconRotate = const(heading),
+            iconRotate = const(animatedHeading),
             iconRotationAlignment = const(IconRotationAlignment.Map),
             iconPitchAlignment = const(IconPitchAlignment.Map),
         )
@@ -108,3 +113,13 @@ fun CurrentLocationLayers(
     }
 }
 
+/** Smoothly turns towards the [heading] in degrees, always along the shorter arc */
+@Composable
+private fun animateHeadingAsState(heading: Float): State<Float> {
+    // unwound so that e.g. 350° to 10° animates through 360° instead of backwards
+    val target = remember { Ref(heading) }
+    target.value = normalizeDegrees(heading, target.value - 180f)
+    return animateFloatAsState(target.value, tween(200, easing = FastOutSlowInEasing))
+}
+
+private class Ref<T>(var value: T)
