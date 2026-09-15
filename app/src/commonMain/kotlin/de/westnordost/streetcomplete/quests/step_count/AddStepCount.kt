@@ -40,6 +40,7 @@ class AddStepCount : OsmFilterQuestType<Int>() {
         CountInputQuestForm(
             on = on,
             icon = painterResource(Res.drawable.count_step),
+            minimum = if (element.tags["highway"]!=null) 1 else 0
         )
     }
 
