@@ -2,9 +2,9 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [בנק הפועלים, כספונט, בנק לאומי, כספומט, קרן התמר, מזרחי טפחות, דיסקונט, בנק ירושלים, Leumi, Bitcoin Change, הבנק הבינלאומי, הבינלאומי, בנק דיסקונט לישראל, Triton, Discount, Bank Hapoalim]
 chargingStationOperators: [Tesla, מילגם, אפקון, Afcon, EV Edge, סונול EV, Kfar Hanokdim, Afcon EV]
-chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 clothesContainerOperators: [Golden Recycling, שביל אמונה, WIZO]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeh, typec]
 hasLivingStreet: true
 hasSlowZone: true
 livingStreetSignStyle: vienna

@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Windward Islands Bank, WIB]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea]
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [nl, en]

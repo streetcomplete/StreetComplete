@@ -2,8 +2,8 @@
 additionalStreetsignLanguages: [international, en]
 atmOperators: [Шпаркасе, Охридска Банка, Halkbank, Комерцијална банка, NLB, ТТК банка, УНИБанка, Стопанска банка Скопје, Стопанска Банка АД - Скопје, Шпаркасе Банка Македонија АД Скопје, НЛБ - Тутунска Банка, Уни Банка, Стопанска Банка, Комерцијална Банка АД Скопје, Stopanska Banka, Sparkasse, ТТК Банка, НЛБ Тутунска Банка, Komercijalna banka, Komercijalna Banka]
 chargingStationOperators: [EVN]
-chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typef, typec]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

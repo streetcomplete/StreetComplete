@@ -5,6 +5,7 @@ centerLineStyle: yellow
 chargingStationOperators: [Tesla, DEWA, Wifi UAE, 'Tesla, Inc.', Dubai Electricity and Water Authority]
 clothesContainerOperators: [Operation Smile UAE]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeg]
 edgeLineStyle: yellow
 mobileCountryCode: 424
 officialLanguages: [ar]

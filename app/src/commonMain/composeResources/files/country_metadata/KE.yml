@@ -3,6 +3,7 @@ atmOperators: [Standard Chartered, Barclays, KCB ATM, KCB, Equity Bank, Kenya Co
 centerLineStyle: yellow
 chargingStationOperators: [Kenya Power]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeg]
 edgeLineStyle: white
 isLeftHandTraffic: true
 mobileCountryCode: 639

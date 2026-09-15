@@ -2,6 +2,7 @@
 atmOperators: [Rawbank, Equity Bank, RawBank, Raw Bank, BIAC]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typee, typec]
 edgeLineStyle: short white dashes
 mobileCountryCode: 630
 noParkingSignStyle: vienna

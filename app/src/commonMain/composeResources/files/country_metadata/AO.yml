@@ -2,6 +2,7 @@
 atmOperators: [Multicaixa, BAI, Banco de Fomento Angola, Banco de Poupança e Credito (BPC), Banco de Fomento Angola (BFA), Banco Keve, BPC, BFA]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typef, typec]
 edgeLineStyle: yellow
 hasLivingStreet: true
 livingStreetSignStyle: sadc

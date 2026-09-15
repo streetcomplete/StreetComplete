@@ -4,6 +4,7 @@ atmOperators: [مصرف الراجحي, البنك الأهلي السعودي, 
 centerLineStyle: yellow
 chargingStationOperators: [Electromin, Tesla]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeg]
 mobileCountryCode: 420
 officialLanguages: [ar]
 orchardProduces: [date, olive, tomato, grape, guava, mango, mangosteen, lemon, lime, chilli_pepper, sweet_pepper]

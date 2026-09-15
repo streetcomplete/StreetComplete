@@ -2,6 +2,7 @@
 atmOperators: [5B, Banco Industrial, Bancared, RapiXchangE, Cajero 5B, Banrural, BI, Cajero BI, Banco de Desarrollo Banrural, son, banco industrial, Citibank, Banca Red, BAC, 5b, 5B ATM]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 704
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd

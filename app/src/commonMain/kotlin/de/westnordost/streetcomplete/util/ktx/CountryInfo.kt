@@ -4,6 +4,13 @@ import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.resources.*
 import org.jetbrains.compose.resources.DrawableResource
 
+private val euCountryCodes by lazy { setOf(
+    "AT", "BE", "BG", "CY", "CZ", "DE", "DK", "EE", "ES", "FI", "FR", "GR", "HR", "HU", "IE", "IT",
+    "LT", "LU", "LV", "MT", "NL", "PL", "PT", "RO", "SE", "SI", "SK"
+) }
+
+val CountryInfo.isInEu: Boolean get() = countryCode in euCountryCodes
+
 val CountryInfo.noEntrySignDrawable: DrawableResource get() = when (noEntrySignStyle) {
     "default"           -> Res.drawable.no_entry_sign_default
     "yellow"            -> Res.drawable.no_entry_sign_yellow

@@ -2,6 +2,7 @@
 atmOperators: [SEGESA Comercial]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typee, typec]
 edgeLineStyle: white
 mobileCountryCode: 627
 officialLanguages: [es, fr, pt, fan]

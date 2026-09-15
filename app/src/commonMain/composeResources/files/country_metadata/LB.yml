@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [fr]
 atmOperators: [Byblos Bank, بنك عودة, Byblos]
 centerLineStyle: yellow
+domesticSocketTypes: [universal_ac, typef]
 mobileCountryCode: 415
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

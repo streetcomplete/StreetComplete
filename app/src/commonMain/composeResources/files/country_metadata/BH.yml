@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [en]
 atmOperators: [HSBC, BISB, NBB, Ithmaar Bank, BBK Online, BBK, Kuwait Finance House]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeg]
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 426
 noParkingSignStyle: vienna variant

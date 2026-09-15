@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [en]
 atmOperators: [Capital Bank, Arab Bank, Cairo Amman Bank, Jordan Kuwait Bank, Housing Bank, Jordan Islamic Bank, دائرة الجمارك الأردنية, Salwa Islamic Bank, Islamic International Arab Bank, Bank al Etihad, Bank Al Etihad]
 centerLineStyle: yellow
 chargingStationOperators: [Tesla, JoPetrol]
+domesticSocketTypes: [universal_ac, universal_abcdefgio]
 hasAdvisorySpeedLimitSign: true
 mobileCountryCode: 416
 noParkingSignStyle: vienna
