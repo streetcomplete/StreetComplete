@@ -17,7 +17,8 @@ android {
         versionCode = 6308
         versionName = "64.0-alpha1"
 
-        // the ABIs the MapLibre Compose runtime is built for
+        // no x86: the MapLibre Compose runtime has no x86 build, and other native libraries must
+        // not make the app installable where the map cannot run
         ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86_64") }
     }
 
