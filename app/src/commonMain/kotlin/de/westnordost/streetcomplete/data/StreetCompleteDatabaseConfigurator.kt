@@ -25,11 +25,12 @@ import de.westnordost.streetcomplete.data.user.statistics.ActiveDatesTable
 import de.westnordost.streetcomplete.data.user.statistics.CountryStatisticsTable
 import de.westnordost.streetcomplete.data.user.statistics.EditTypeStatisticsTable
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderTable
+import de.westnordost.streetcomplete.data.visiblequests.FavoriteQuestTypeTable
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeTable
 import de.westnordost.streetcomplete.util.logs.Log
 
 object StreetCompleteDatabaseConfigurator : DatabaseConfigurator {
-    override val version = 21
+    override val version = 22
 
     override fun onCreate(db: Database) {
         // OSM notes
@@ -73,6 +74,7 @@ object StreetCompleteDatabaseConfigurator : DatabaseConfigurator {
         db.exec(VisibleEditTypeTable.CREATE)
         db.exec(QuestTypeOrderTable.CREATE)
         db.exec(QuestTypeOrderTable.INDEX_CREATE)
+        db.exec(FavoriteQuestTypeTable.CREATE)
         db.exec(EditTypePresetsTable.CREATE)
 
         // quests based on OSM elements
@@ -265,6 +267,9 @@ object StreetCompleteDatabaseConfigurator : DatabaseConfigurator {
             db.deleteQuest("AddProhibitedForPedestrians")
             db.deleteQuest("AddTowerAccess");
         }
+        if (oldVersion < 22) {
+            db.exec(FavoriteQuestTypeTable.CREATE)
+        }
     }
 }
 
@@ -289,6 +294,7 @@ private fun Database.deleteQuest(name: String) {
     deleteValue(OpenChangesetsTable.NAME, OpenChangesetsTable.Columns.QUEST_TYPE, name)
     deleteValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.BEFORE, name)
     deleteValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.AFTER, name)
+    deleteValue(FavoriteQuestTypeTable.NAME, FavoriteQuestTypeTable.Columns.QUEST, name)
 }
 
 private fun Database.renameQuest(old: String, new: String) {
@@ -299,6 +305,7 @@ private fun Database.renameQuest(old: String, new: String) {
     renameValue(OpenChangesetsTable.NAME, OpenChangesetsTable.Columns.QUEST_TYPE, old, new)
     renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.BEFORE, old, new)
     renameValue(QuestTypeOrderTable.NAME, QuestTypeOrderTable.Columns.AFTER, old, new)
+    renameValue(FavoriteQuestTypeTable.NAME, FavoriteQuestTypeTable.Columns.QUEST, old, new)
 }
 
 private fun Database.renameOverlay(old: String, new: String) {

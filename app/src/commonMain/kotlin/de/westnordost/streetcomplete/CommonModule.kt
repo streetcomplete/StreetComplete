@@ -141,6 +141,9 @@ import de.westnordost.streetcomplete.data.user.statistics.StatisticsController
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsControllerImpl
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsParser
 import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
+import de.westnordost.streetcomplete.data.visiblequests.FavoriteQuestTypeController
+import de.westnordost.streetcomplete.data.visiblequests.FavoriteQuestTypeDao
+import de.westnordost.streetcomplete.data.visiblequests.FavoriteQuestTypeSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderDao
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
@@ -423,6 +426,7 @@ val commonModule = module {
 
     factory { QuestTypeOrderDao(get()) }
     factory { VisibleEditTypeDao(get()) }
+    factory { FavoriteQuestTypeDao(get()) }
 
     single<QuestTypeOrderSource> { get<QuestTypeOrderController>() }
     single { QuestTypeOrderController(get(), get(), get()) }
@@ -435,6 +439,9 @@ val commonModule = module {
 
     single<VisibleEditTypeSource> { get<VisibleEditTypeController>() }
     single { VisibleEditTypeController(get(), get(), get()) }
+
+    single<FavoriteQuestTypeSource> { get<FavoriteQuestTypeController>() }
+    single { FavoriteQuestTypeController(get(), get()) }
 
     //endregion
 
@@ -639,9 +646,9 @@ val commonModule = module {
     viewModel<SettingsViewModel> { SettingsViewModelImpl(get(), get(), get(), get(), get(), get(), get()) }
     viewModel<OverlaySelectionViewModel> { OverlaySelectionViewModelImpl(get(), get(), get()) }
     viewModel<LanguageSelectionViewModel> { LanguageSelectionViewModelImpl(get(), get()) }
-    viewModel<EditTypePresetsViewModel> { EditTypePresetsViewModelImpl(get(), get(), get(), get()) }
+    viewModel<EditTypePresetsViewModel> { EditTypePresetsViewModelImpl(get(), get(), get(),get(), get()) }
     viewModel<MessageSelectionViewModel> { MessageSelectionViewModelImpl(get()) }
-    viewModel<QuestSelectionViewModel> { QuestSelectionViewModelImpl(get(), get(), get(), get(), get(named("CountryBoundariesLazy")), get()) }
+    viewModel<QuestSelectionViewModel> { QuestSelectionViewModelImpl(get(), get(), get(), get(), get(), get(named("CountryBoundariesLazy")), get()) }
     viewModel<ShowQuestFormsViewModel> { ShowQuestFormsViewModelImpl(get(), get()) }
 
     //endregion
