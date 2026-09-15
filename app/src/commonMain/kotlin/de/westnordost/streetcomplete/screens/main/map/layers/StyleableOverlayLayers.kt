@@ -1,22 +1,22 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import de.westnordost.streetcomplete.screens.main.map.MapImages
 import de.westnordost.streetcomplete.screens.main.map.byZoom
 import de.westnordost.streetcomplete.screens.main.map.inMeters
 import de.westnordost.streetcomplete.screens.main.map.isArea
 import de.westnordost.streetcomplete.screens.main.map.isLines
 import de.westnordost.streetcomplete.screens.main.map.isPoint
-import de.westnordost.streetcomplete.screens.main.map.mapIconImage
-import de.westnordost.streetcomplete.ui.ktx.id
 import kotlinx.serialization.json.JsonObject
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.all
 import org.maplibre.compose.expressions.dsl.asNumber
-import org.maplibre.compose.expressions.dsl.case
 import org.maplibre.compose.expressions.dsl.condition
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToBoolean
@@ -51,20 +51,24 @@ import org.maplibre.spatialk.geojson.Geometry
 fun StyleableOverlayLabelLayer(
     source: VectorSource,
     icons: List<DrawableResource>,
+    mapImages: MapImages,
     color: Color,
     haloColor: Color,
     onClickElement: (properties: JsonObject) -> ClickResult,
 ) {
-    val images = icons.map { icon ->
-        case(icon.id.orEmpty(), mapIconImage(icon, color, haloColor))
-    }
+    val painters = icons.associateWith { painterResource(it) }
+    LaunchedEffect(mapImages, painters) { mapImages.addIcons(painters) }
+
     SymbolLayer(
         id = "overlay-symbols",
         source = source,
         minZoom = 17f,
         filter = feature.isPoint(),
         zOrder = const(SymbolZOrder.Source),
-        iconImage = switch(feature["icon"].convertToString(), images, image("")),
+        iconImage = image(feature["icon"].convertToString()),
+        iconColor = const(color),
+        iconHaloColor = const(haloColor),
+        iconHaloWidth = const(2.5.dp),
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconAllowOverlap = const(true),
         textField = feature["label"].convertToString(),

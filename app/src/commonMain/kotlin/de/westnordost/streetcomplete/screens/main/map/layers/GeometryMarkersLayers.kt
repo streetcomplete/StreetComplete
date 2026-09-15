@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
@@ -10,23 +11,21 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.preset_maki_circle
+import de.westnordost.streetcomplete.screens.main.map.MapImages
 import de.westnordost.streetcomplete.screens.main.map.byZoom
 import de.westnordost.streetcomplete.screens.main.map.isArea
 import de.westnordost.streetcomplete.screens.main.map.isPoint
-import de.westnordost.streetcomplete.screens.main.map.mapIconImage
 import de.westnordost.streetcomplete.ui.common.quest.Marker
-import de.westnordost.streetcomplete.ui.ktx.id
 import de.westnordost.streetcomplete.ui.theme.GeometryMarker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
-import org.maplibre.compose.expressions.dsl.case
+import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToString
 import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.expressions.dsl.not
-import org.maplibre.compose.expressions.dsl.switch
 import org.maplibre.compose.expressions.dsl.textOffset
 import org.maplibre.compose.expressions.value.LineCap
 import org.maplibre.compose.expressions.value.LineJoin
@@ -45,7 +44,11 @@ import org.maplibre.spatialk.geojson.Geometry
  *  show the geometry of elements surrounding the selected quest */
 @MaplibreComposable
 @Composable
-fun GeometryMarkersLayers(markers: Collection<Marker>, haloColor: Color) {
+fun GeometryMarkersLayers(markers: Collection<Marker>, haloColor: Color, mapImages: MapImages) {
+    val icons = remember(markers) { markers.mapTo(LinkedHashSet()) { it.icon ?: Res.drawable.preset_maki_circle } }
+    val painters = icons.associateWith { painterResource(it) }
+    LaunchedEffect(mapImages, painters) { mapImages.addIcons(painters) }
+
     val features by produceState<List<Feature<Geometry, JsonObject>>>(emptyList(), markers) {
         value = withContext(Dispatchers.Default) { markers.flatMap { it.toGeoJsonFeature() } }
     }
@@ -70,17 +73,14 @@ fun GeometryMarkersLayers(markers: Collection<Marker>, haloColor: Color) {
         cap = const(LineCap.Round),
         join = const(LineJoin.Round)
     )
-    val markerIcons = remember(markers) {
-        markers.mapTo(LinkedHashSet()) { it.icon ?: Res.drawable.preset_maki_circle }.toList()
-    }
-    val markerImages = markerIcons.map { icon ->
-        case("marker_" + icon.id, mapIconImage(icon, Color.GeometryMarker, haloColor))
-    }
     SymbolLayer(
         id = "geo-symbols",
         source = source,
         filter = feature.isPoint(),
-        iconImage = switch(feature["icon"].convertToString(), markerImages, image("")),
+        iconImage = image(feature["icon"].convertToString()),
+        iconColor = const(Color.GeometryMarker),
+        iconHaloColor = const(haloColor),
+        iconHaloWidth = const(2.5.dp),
         iconSize = byZoom(17 to 0.5f, 19 to 1f),
         iconAllowOverlap = const(true),
         textField = feature["label"].convertToString(),

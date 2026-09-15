@@ -34,6 +34,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import org.maplibre.compose.interaction.ClickResult
+import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
@@ -77,6 +78,7 @@ internal fun MainMapContent(
     val languages = listOf(Locale.current.language)
     val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
 
+    val mapImages = rememberMapImages(checkNotNull(LocalMapState.current))
     val overlayIcons = remember(styledElements) {
         styledElements.mapNotNullTo(LinkedHashSet()) { it.style.getIcon() }.toList()
     }
@@ -128,13 +130,14 @@ internal fun MainMapContent(
                 StyleableOverlayLabelLayer(
                     source = overlaySource,
                     icons = overlayIcons,
+                    mapImages = mapImages,
                     color = colors.text,
                     haloColor = colors.textOutline,
                     onClickElement = onClickElement
                 )
             }
             shownMarkers?.let { markers ->
-                GeometryMarkersLayers(markers, haloColor = colors.textOutline)
+                GeometryMarkersLayers(markers, haloColor = colors.textOutline, mapImages = mapImages)
             }
             (highlightedGeometry ?: shownBottomSheet?.geometry)?.let { geometry ->
                 FocusedGeometryLayers(geometry)
@@ -148,7 +151,7 @@ internal fun MainMapContent(
                 )
             }
 
-            PinsLayers(pins = pins, onClickPin = onClickPin, onClickCluster = onClickCluster)
+            PinsLayers(pins = pins, mapImages = mapImages, onClickPin = onClickPin, onClickCluster = onClickCluster)
 
             val edit = selectedEdit
             if (edit != null) {

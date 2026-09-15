@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
@@ -11,15 +12,13 @@ import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpOffset
-import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.pin_circle
-import de.westnordost.streetcomplete.screens.main.map.pinPainter
-import de.westnordost.streetcomplete.ui.ktx.id
+import de.westnordost.streetcomplete.screens.main.map.MapImages
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -29,7 +28,6 @@ import kotlinx.serialization.json.JsonObject
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.all
 import org.maplibre.compose.expressions.dsl.any
-import org.maplibre.compose.expressions.dsl.case
 import org.maplibre.compose.expressions.dsl.const
 import org.maplibre.compose.expressions.dsl.convertToNumber
 import org.maplibre.compose.expressions.dsl.convertToString
@@ -42,7 +40,6 @@ import org.maplibre.compose.expressions.dsl.lte
 import org.maplibre.compose.expressions.dsl.offset
 import org.maplibre.compose.expressions.dsl.plus
 import org.maplibre.compose.expressions.dsl.sp
-import org.maplibre.compose.expressions.dsl.switch
 import org.maplibre.compose.expressions.dsl.textOffset
 import org.maplibre.compose.expressions.dsl.zoom
 import org.maplibre.compose.expressions.value.TranslateAnchor
@@ -67,11 +64,16 @@ import org.maplibre.spatialk.geojson.Point
 @Composable
 fun PinsLayers(
     pins: Collection<Pin>,
+    mapImages: MapImages,
     onClickPin: (properties: JsonObject) -> ClickResult,
     onClickCluster: (BoundingBox) -> Unit,
 ) {
     val mapState = checkNotNull(LocalMapState.current)
     val coroutineScope = rememberCoroutineScope()
+
+    val pinIcons = remember(pins) { pins.mapTo(LinkedHashSet()) { it.icon } }
+    val pinPainters = pinIcons.associateWith { painterResource(it) }
+    LaunchedEffect(mapImages, pinPainters) { mapImages.addPins(pinPainters) }
 
     val features by produceState<List<Feature<Point, JsonObject>>>(emptyList(), pins) {
         value = withContext(Dispatchers.Default) { pins.map { it.toGeoJsonFeature() } }
@@ -156,16 +158,12 @@ fun PinsLayers(
         translate = offset(0.dp, -8.dp), // so that it hides behind the pin
         translateAnchor = const(TranslateAnchor.Viewport),
     )
-    val pinIcons = remember(pins) { pins.mapTo(LinkedHashSet()) { it.icon }.toList() }
-    val pinImages = pinIcons.map { icon ->
-        case("pin_" + icon.id, image(pinPainter(painterResource(icon)), size = DpSize(71.dp, 71.dp)))
-    }
     SymbolLayer(
         id = "pins-layer",
         source = source,
         filter = zoom().gt(const(CLUSTER_MAX_ZOOM)),
         sortKey = feature["icon-order"].convertToNumber(),
-        iconImage = switch(feature["icon-image"].convertToString(), pinImages, image("")),
+        iconImage = image(feature["icon-image"].convertToString()),
         // constant icon size because click area would become a bit too small and more
         // importantly, dynamic size per zoom + collision doesn't work together well, it
         // results in a lot of flickering.
