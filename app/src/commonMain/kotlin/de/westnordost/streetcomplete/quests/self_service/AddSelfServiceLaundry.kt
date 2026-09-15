@@ -22,6 +22,7 @@ class AddSelfServiceLaundry : OsmFilterQuestType<SelfServiceLaundry>() {
     override val elementFilter = """
         nodes, ways with
           shop = laundry and !self_service
+          and access !~ private|no
     """
     override val changesetComment = "Survey whether laundries provide self-service"
     override val wikiLink = "Tag:shop=laundry"

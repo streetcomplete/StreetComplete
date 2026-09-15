@@ -26,7 +26,7 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>> {
           and !maxaxleload
           and !maxbogieweight
           and !maxweight:hgv and !maxweight:bus and !maxweight:hgv_articulated and !maxweight:tourist_bus and !maxweight:coach
-          and !maxweightrating and !maxweightrating:hgv and !maxweightrating:bus and !hgv
+          and !maxweightrating and !maxweightrating:hgv and !maxweightrating:bus
           and !maxunladenweight and !maxunladenweight:hgv and !maxunladenweight:bus
           and vehicle !~ private|no
           and (access !~ private|no or (foot and foot !~ private|no))
@@ -39,12 +39,13 @@ class AddMaxWeight : OsmElementQuestType<List<MaxWeight>> {
           and bridge and bridge != no
           and service != driveway
           and motor_vehicle !~ private|no
+          and !hgv
     """.toElementFilterExpression() }
 
     private val ferryFilter by lazy { """
         ways, relations with
           route = ferry
-          and motor_vehicle = yes
+          and hgv = yes
     """.toElementFilterExpression() }
 
     override val changesetComment = "Specify maximum allowed weights"
