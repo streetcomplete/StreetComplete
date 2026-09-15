@@ -36,6 +36,8 @@ sealed interface OverlayStyle {
         /** whether and how much to extrude this area */
         val height: Float? = null,
         val minHeight: Float? = null,
+        /** polygon outline color */
+        val outline: Color? = null,
         override val disabled: Boolean = false,
     ) : OverlayStyle
 
