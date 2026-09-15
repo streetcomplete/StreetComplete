@@ -125,13 +125,6 @@ val androidModule = module {
         createMapRuntime(MapRuntimeOptions(cacheFile = cacheFile))
     } onClose { it?.close() }
 
-    factory<MapTilesDownloader> {
-        MapLibreMapTilesDownloader(
-            get<MapRuntime>().offlineManager,
-            androidContext().resources.displayMetrics.density
-        )
-    }
-
     // background jobs
 
     single<UploadController> { AndroidUploadController(androidContext()) }
@@ -145,4 +138,11 @@ val androidModule = module {
 
     factory<PeriodicCleaner> { AndroidPeriodicCleaner(androidContext()) }
     worker { CleanerWorker(get(), get(), get()) }
+
+    factory<MapTilesDownloader> {
+        MapLibreMapTilesDownloader(
+            get<MapRuntime>().offlineManager,
+            androidContext().resources.displayMetrics.density
+        )
+    }
 }
