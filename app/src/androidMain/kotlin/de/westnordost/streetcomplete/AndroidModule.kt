@@ -119,7 +119,8 @@ val androidModule = module {
     // map
 
     single<MapRuntime> {
-        // file name used by versions before v64, so their offline packs and cached tiles are kept
+        // the MapLibre Android SDK default instead of the MapLibre Compose one, to keep offline data
+        // from before v64
         val cacheFile = Path(androidContext().filesDir.path, "mbgl-offline.db")
         createMapRuntime(MapRuntimeOptions(cacheFile = cacheFile))
     } onClose { it?.close() }
