@@ -13,7 +13,9 @@ import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.visiblequests.FavoriteQuestTypeSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
+import de.westnordost.streetcomplete.quests.note_comments.OsmNoteQuestType
 import de.westnordost.streetcomplete.screens.main.map.components.Pin
 import de.westnordost.streetcomplete.screens.main.map.components.PinsMapComponent
 import de.westnordost.streetcomplete.screens.main.map.maplibre.screenAreaToBoundingBox
@@ -40,6 +42,7 @@ class QuestPinsManager(
     private val map: MapLibreMap,
     private val pinsMapComponent: PinsMapComponent,
     private val questTypeOrderSource: QuestTypeOrderSource,
+    private val favoriteQuestTypeSource: FavoriteQuestTypeSource,
     private val questTypeRegistry: QuestTypeRegistry,
     private val visibleQuestsSource: VisibleQuestsSource
 ) : DefaultLifecycleObserver {
@@ -92,6 +95,14 @@ class QuestPinsManager(
             reinitializeQuestTypeOrders()
         }
     }
+    private val favoriteQuestTypeListener = object : FavoriteQuestTypeSource.Listener {
+        override fun onFavoriteChanged(quest: QuestType, isFavorite: Boolean) {
+            reinitializeQuestTypeOrders()
+        }
+        override fun onFavoritesChanged() {
+            reinitializeQuestTypeOrders()
+        }
+    }
 
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
@@ -115,6 +126,7 @@ class QuestPinsManager(
         onNewScreenPosition()
         visibleQuestsSource.addListener(visibleQuestsListener)
         questTypeOrderSource.addListener(questTypeOrderListener)
+        favoriteQuestTypeSource.addListener(favoriteQuestTypeListener)
     }
 
     private fun hide() {
@@ -122,6 +134,7 @@ class QuestPinsManager(
         clear()
         visibleQuestsSource.removeListener(visibleQuestsListener)
         questTypeOrderSource.removeListener(questTypeOrderListener)
+        favoriteQuestTypeSource.removeListener(favoriteQuestTypeListener)
     }
 
     private fun invalidate() {
@@ -224,12 +237,20 @@ class QuestPinsManager(
     }
 
     private fun initializeQuestTypeOrders() {
-        // this needs to be reinitialized when the quest order changes
+        // this needs to be reinitialized when the quest order OR favorites change
         val sortedQuestTypes = questTypeRegistry.toMutableList()
         questTypeOrderSource.sort(sortedQuestTypes)
+        val favorites = favoriteQuestTypeSource.getFavorites()
+        val effectiveOrder = sortedQuestTypes.sortedBy {
+            when {
+                it is OsmNoteQuestType -> 0
+                it.name in favorites -> 1
+                else -> 2
+            }
+        }
         questTypeOrdersLock.withLock {
             questTypeOrders.clear()
-            sortedQuestTypes.forEachIndexed { index, questType ->
+            effectiveOrder.forEachIndexed { index, questType ->
                 questTypeOrders[questType] = index
             }
         }
