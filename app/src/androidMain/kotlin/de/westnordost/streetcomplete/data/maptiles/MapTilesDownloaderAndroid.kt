@@ -34,6 +34,10 @@ class MapTilesDownloaderAndroid(private val context: Context) : MapTilesDownload
         }
     }
 
+    override suspend fun deleteOld(time: Long) {
+        // not implemented
+    }
+
     override suspend fun download(bbox: BoundingBox) = withContext(Dispatchers.IO) {
         val bounds = LatLngBounds.fromLatLngs(listOf(bbox.max.toLatLng(), bbox.min.toLatLng()))
         val pixelRatio = context.resources.displayMetrics.density
