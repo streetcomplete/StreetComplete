@@ -47,7 +47,7 @@ class AddRecyclingContainerMaterials : OsmElementQuestType<RecyclingContainerMat
 
     @Composable
     override fun Form(on: (QuestAction<RecyclingContainerMaterialsAnswer>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {
-        AddRecyclingContainerMaterialsForm(on)
+        AddRecyclingContainerMaterialsForm(on, RecyclingMaterial.parseRecyclingMaterials(element.tags))
     }
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
