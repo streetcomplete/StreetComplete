@@ -10,9 +10,11 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.LocalContentColor
 import androidx.compose.material.MaterialTheme
@@ -25,7 +27,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextLinkStyles
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.screens.main.overlays.OverlaySelectionDropdownMenu
@@ -89,10 +90,6 @@ fun MainScreenControls(
 
     // scale bar
     metersPerDp: Double,
-
-    // attribution button
-    attributions: List<String>,
-    userHasMovedMap: Boolean,
 
     modifier: Modifier = Modifier,
 ) {
@@ -239,19 +236,20 @@ fun MainScreenControls(
                         }
                     }
 
-                    Box(Modifier.fillMaxWidth().padding(4.dp)) {
+                    // the expanded attribution grows upwards over the map, not the row
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(4.dp).height(48.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
                         AttributionButton(
-                            userHasMovedMap = userHasMovedMap,
-                            attributions = attributions,
-                            modifier = Modifier.align(Alignment.TopStart),
-                            popupElevation = 4.dp,
-                            textLinkStyles = TextLinkStyles()
+                            modifier = Modifier
+                                .weight(1f, fill = false)
+                                .wrapContentHeight(Alignment.Bottom, unbounded = true)
                         )
                         ScaleBar(
                             metersPerDp = metersPerDp,
-                            modifier = Modifier
-                                .align(Alignment.CenterEnd)
-                                .padding(horizontal = 12.dp),
+                            modifier = Modifier.padding(horizontal = 12.dp),
                             alignment = Alignment.End,
                         )
                     }

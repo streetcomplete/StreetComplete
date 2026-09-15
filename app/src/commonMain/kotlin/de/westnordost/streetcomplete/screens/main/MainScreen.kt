@@ -116,7 +116,6 @@ import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.GeographicLayout
 import org.maplibre.compose.overlay.LocalCameraPadding
-import org.maplibre.compose.overlay.attributions
 import org.maplibre.compose.style.BaseStyle
 import org.maplibre.spatialk.units.Bearing
 import org.maplibre.spatialk.units.extensions.inDegrees
@@ -192,7 +191,6 @@ fun MainScreen(
     var displayedLocation by rememberSerializable { mutableStateOf<LocationMeasurement?>(null) }
     var heading by remember { mutableStateOf<HeadingMeasurement?>(null) }
     var locationState by remember { mutableStateOf<LocationState?>(LocationState.ENABLED) }
-    var userHasMovedCamera by rememberSaveable { mutableStateOf(false) }
     var lastLongPress by remember { mutableStateOf<Pair<DpOffset, LatLon>?>(null) }
     var showMapContextMenu by remember { mutableStateOf(false) }
     var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
@@ -507,7 +505,6 @@ fun MainScreen(
             modifier = Modifier.fillMaxSize().onGloballyPositioned { mapOrigin = it.positionInWindow() },
             cameraPadding = cameraPadding,
             onPan = { cameraState.onPan(displayedLocation != null) },
-            onUserCameraMove = { userHasMovedCamera = true },
             onMapClick = { event ->
                 val position = event.position?.toLatLon()
                 if (sheet.isOpen && position != null) {
@@ -541,86 +538,85 @@ fun MainScreen(
                         }
                     }
                 }
+
+                // TODO: Alternative to this would be to put the tutorial screens into a separate
+                // navigation destination in a TBD MainNavHost after complete migration to Compose
+                // (see #6255)
+                if (!showIntroTutorial) {
+                    MainScreenControls(
+                        starsCount = starsCount,
+                        isShowingStarsCurrentWeek = isShowingStarsCurrentWeek,
+                        isUploadingOrDownloading = isUploadingOrDownloading,
+                        onToggleShowStarsCurrentWeek = { viewModel.toggleShowingCurrentWeek() },
+
+                        messagesCount = messagesCount,
+                        onClickMessages = { scope.launch { shownMessage = viewModel.popMessage() } },
+
+                        overlays = overlays,
+                        selectedOverlay = selectedOverlay,
+                        onSelectOverlay = { overlay ->
+                            if (sheet.selection is MainBottomSheetSelection.Overlay) sheet.close()
+                            viewModel.selectOverlay(overlay)
+                            if (!viewModel.hasShownOverlaysTutorial) {
+                                showOverlaysTutorial = true
+                            }
+                        },
+
+                        shownUnsyncedEdits = if (!isAutoSync) unsyncedEditsCount else 0,
+                        shownIndexInTeam = if (isTeamMode) indexInTeam else null,
+                        onClickMainMenu = { showMainMenuDialog = true },
+
+                        showZoomButtons = showZoomButtons,
+                        onClickZoomIn = { zoomBy(1.0) },
+                        onClickZoomOut = { zoomBy(-1.0) },
+                        onZoomDrag = { zoomBy(it / 20.0) },
+
+                        mapRotation = mapCamera.bearing.toFloat(),
+                        mapTilt = mapCamera.tilt.toFloat(),
+                        onClickCompass = { scope.launch { cameraState.resetCompass() } },
+
+                        locationState = locationState,
+                        isNavigationMode = isNavigationMode,
+                        isFollowingPosition = isFollowingPosition,
+                        onClickLocation = ::clickLocation,
+
+                        isRecordingTracks = isRecordingTracks,
+                        onClickStopTrackRecording = {
+                            tracks.stopRecording()
+                            displayedLocation?.position?.toLatLon()?.let { composeNote(it, tracks.recordedTrack.takeIf { it.isNotEmpty() }) }
+                        },
+
+                        isCreateNodeEnabled = isCreateNodeEnabled,
+                        onClickCreate = {
+                            if (mapCamera.zoom >= 17.0) {
+                                selectedOverlay?.let { overlay ->
+                                    val size = windowInfo.containerDpSize
+                                    val left = sheetPadding.calculateLeftPadding(layoutDirection)
+                                    val right = sheetPadding.calculateRightPadding(layoutDirection)
+                                    val top = sheetPadding.calculateTopPadding()
+                                    val bottom = sheetPadding.calculateBottomPadding()
+                                    val position = mapState.positionFromScreenLocation(DpOffset(
+                                        left + (size.width - left - right) / 2,
+                                        top + (size.height - top - bottom) / 2,
+                                    ))
+                                    sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
+                                    position?.let { mapState.setCameraPosition(mapState.cameraPosition.copy(target = it)) }
+                                }
+                            } else {
+                                showToast = Toast.DownloadAreaTooBig
+                            }
+                        },
+
+                        hasEdits = editHistory.hasEdits,
+                        isUndoEnabled = !isUploadingOrDownloading,
+                        onClickUndo = { editHistory.show() },
+
+                        metersPerDp = metersPerDp,
+                    )
+                }
             },
         )
 
-        // TODO: Alternative to this would be to put the tutorial screens into a separate
-        // navigation destination in a TBD MainNavHost after complete migration to Compose
-        // (see #6255)
-        if (!showIntroTutorial) {
-            MainScreenControls(
-                starsCount = starsCount,
-                isShowingStarsCurrentWeek = isShowingStarsCurrentWeek,
-                isUploadingOrDownloading = isUploadingOrDownloading,
-                onToggleShowStarsCurrentWeek = { viewModel.toggleShowingCurrentWeek() },
-
-                messagesCount = messagesCount,
-                onClickMessages = { scope.launch { shownMessage = viewModel.popMessage() } },
-
-                overlays = overlays,
-                selectedOverlay = selectedOverlay,
-                onSelectOverlay = { overlay ->
-                    if (sheet.selection is MainBottomSheetSelection.Overlay) sheet.close()
-                    viewModel.selectOverlay(overlay)
-                    if (!viewModel.hasShownOverlaysTutorial) {
-                        showOverlaysTutorial = true
-                    }
-                },
-
-                shownUnsyncedEdits = if (!isAutoSync) unsyncedEditsCount else 0,
-                shownIndexInTeam = if (isTeamMode) indexInTeam else null,
-                onClickMainMenu = { showMainMenuDialog = true },
-
-                showZoomButtons = showZoomButtons,
-                onClickZoomIn = { zoomBy(1.0) },
-                onClickZoomOut = { zoomBy(-1.0) },
-                onZoomDrag = { zoomBy(it / 20.0) },
-
-                mapRotation = mapCamera.bearing.toFloat(),
-                mapTilt = mapCamera.tilt.toFloat(),
-                onClickCompass = { scope.launch { cameraState.resetCompass() } },
-
-                locationState = locationState,
-                isNavigationMode = isNavigationMode,
-                isFollowingPosition = isFollowingPosition,
-                onClickLocation = ::clickLocation,
-
-                isRecordingTracks = isRecordingTracks,
-                onClickStopTrackRecording = {
-                    tracks.stopRecording()
-                    displayedLocation?.position?.toLatLon()?.let { composeNote(it, tracks.recordedTrack.takeIf { it.isNotEmpty() }) }
-                },
-
-                isCreateNodeEnabled = isCreateNodeEnabled,
-                onClickCreate = {
-                    if (mapCamera.zoom >= 17.0) {
-                        selectedOverlay?.let { overlay ->
-                            val size = windowInfo.containerDpSize
-                            val left = sheetPadding.calculateLeftPadding(layoutDirection)
-                            val right = sheetPadding.calculateRightPadding(layoutDirection)
-                            val top = sheetPadding.calculateTopPadding()
-                            val bottom = sheetPadding.calculateBottomPadding()
-                            val position = mapState.positionFromScreenLocation(DpOffset(
-                                left + (size.width - left - right) / 2,
-                                top + (size.height - top - bottom) / 2,
-                            ))
-                            sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
-                            position?.let { mapState.setCameraPosition(mapState.cameraPosition.copy(target = it)) }
-                        }
-                    } else {
-                        showToast = Toast.DownloadAreaTooBig
-                    }
-                },
-
-                hasEdits = editHistory.hasEdits,
-                isUndoEnabled = !isUploadingOrDownloading,
-                onClickUndo = { editHistory.show() },
-
-                metersPerDp = metersPerDp,
-                attributions = mapState.style.attributions(),
-                userHasMovedMap = userHasMovedCamera,
-            )
-        }
 
         val dir = LocalLayoutDirection.current.dir
         AnimatedVisibility(
