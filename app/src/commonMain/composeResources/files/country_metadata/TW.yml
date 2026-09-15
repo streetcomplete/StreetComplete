@@ -5,6 +5,7 @@ centerLineStyle: yellow
 chargingStationOperators: [Gogoro 電池交換站, 英屬開曼群島商睿能新動力股份有限公司台灣分公司, Gogoro Inc., Far EasTone Telecommunications Co. Ltd, 'Tesla, Inc.', gogoro, Gogoro, 睿能創意股份有限公司, 台灣城市動力股份有限公司, 光陽機車, gogoro Network, U-POWER, ChargePoint, BMW]
 clothesContainerOperators: [新北市政府;社團法人新北市土城區身障自立協會, 新北市政府;社團法人新北市板橋區陽光慈善推廣協會, 高雄市方舟就業服務協會]
 defaultSpeedLimitHasUrbanOrRural: false
+domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 466
 noParkingLineStyle: red
 noParkingSignStyle: taiwan

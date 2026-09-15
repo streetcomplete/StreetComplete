@@ -3,6 +3,7 @@ atmOperators: [Banco Unión, Banco BISA, Banco Nacional de Bolivia, Banco Mercan
 centerLineStyle: yellow
 chargingStationOperators: [Empresa de Luz y Fuerza Eléctrica Cochabamba, DELAPAZ Distribuidora de Electricidad La Paz]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [universal_abco, universal_ac, typec, typeb, typea]
 mobileCountryCode: 736
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin

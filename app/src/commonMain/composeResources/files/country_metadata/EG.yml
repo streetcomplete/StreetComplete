@@ -3,6 +3,7 @@ additionalStreetsignLanguages: [en]
 atmOperators: [البنك الأهلي المصري, Banque Misr, بنك مصر, National Bank of Egypt, Crédit Agricole, CIB, HSBC, NBE, QNB, بنك فيصل الإسلامي المصري, البنك التجاري الدولي CIB, The United Bank, Credit Agricole, Commercial International Bank, Banque du Caire, Bank of Egypt, Arab African International Bank, بنك القاهرة, بنك الاسكندرية, بنك الإسكندرية, البريد المصري, National bank of Egypt, NBK, Fab Misr, Egypt Post, CiB]
 chargingStationOperators: [InfinityEV]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typef, typec]
 mobileCountryCode: 602
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

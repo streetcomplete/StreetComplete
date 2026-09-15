@@ -2,10 +2,10 @@
 atmOperators: [Swedbank, SEB, Citadele, Luminor Bank, Luminor, Euronet, Citadele bank, BluOr Bank]
 centerLineStyle: white
 chargingStationOperators: [CSDD, Elektrum, Ignitis ON, Enefit, Ignitis, Eleport, e-mobi, ChargePoint, Virši, Bolt, Elelevi, Ceļu satiksmes drošības direkcija, Neste, elelevi, Tesla, Porsche, CSDD - Ceļu Satiksmes Drošības Direkcija]
-chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+chargingStationSocketTypes: [type2_cable, type2, type2_combo]
 clothesContainerOperators: [ViaCor Charity, Kuldīgas komunālie pakalpojumi, Eco Baltia Vide, Clean R, CleanR, Jumis, Dari labu]
 defaultSpeedLimitHasUrbanOrRural: true
-domesticSocketType: [typec, schuko]
+domesticSocketTypes: [typef, typec]
 edgeLineStyle: white
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: false

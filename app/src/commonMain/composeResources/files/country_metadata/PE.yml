@@ -2,6 +2,7 @@
 atmOperators: [BCP, Banco de la Nación, Interbank, Scotiabank, BBVA, Caja Arequipa, Banco de Crédito del Perú, Multired, Globalnet, MultiRed, BBVA Continental, globalnet, Caja Piura, multiRed, GlobalNet, Banco Continental, Global Net, Caja Cusco, banco de la nacion, Shitcoins.club, Multi Red, Cajero, Banco de la nación, Banco de Crédito, ABN, multired, max, Skotiabank, Cajero Banco de la Nación, Banco de la Nacion, Banco de La Nación, Banco Bilbao Vizcaya Argentaria, 1]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [universal_abco, universal_ac, typec, typeb, typea]
 mobileCountryCode: 716
 noEntrySignStyle: no entre
 noParkingSignStyle: mutcd latin

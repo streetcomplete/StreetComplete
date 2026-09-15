@@ -4,6 +4,7 @@ atmOperators: [BIDV, Vietcombank, Techcombank, TPBank, Agribank, VietinBank, MB,
 centerLineStyle: white
 chargingStationOperators: [VinFast, Vinfast]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [universal_abco, universal_ac, typec, typeb, typea]
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 452
 officialLanguages: [vi]

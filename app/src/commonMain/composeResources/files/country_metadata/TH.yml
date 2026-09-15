@@ -5,6 +5,7 @@ atmOperators: [ธนาคารกรุงเทพ, ธนาคารกร
 centerLineStyle: yellow
 chargingStationOperators: [Tesla, PTT, Charge+, MG, EVlink, EGAT]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [universal_abco, universal_ac, typeo, typec, typeb, typea]
 hasAdvisorySpeedLimitSign: true
 isLeftHandTraffic: true
 mobileCountryCode: 520

@@ -1,5 +1,6 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea, typeg]
 isLeftHandTraffic: true
 lengthUnits: [meter, foot and inch]
 officialLanguages: [en]

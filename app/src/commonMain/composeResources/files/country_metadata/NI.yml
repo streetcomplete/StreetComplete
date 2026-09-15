@@ -2,6 +2,7 @@
 atmOperators: [BAC, Banpro, LAFISE, BDF, banpro, BAC Credomatic, Bancentro, BANPRO, VISA ATM, La Fise - Bancentro, Banco de América Central, Bampro, ATM BAC]
 centerLineStyle: yellow
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 710
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd

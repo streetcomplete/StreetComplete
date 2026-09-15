@@ -3,6 +3,7 @@ atmOperators: [UOB, POSB, OCBC Bank, DBS, Citibank, OCBC, HSBC, State Bank of In
 centerLineStyle: white
 chargingStationOperators: [capstoneEV, Charge+, Shell Recharge Solutions, Greenlots, Tesla, Singapore Power, Shell, SP Mobility, BlueSG, TotalEnergies, 'Tesla, Inc.', MNL Asia, CDG Engie]
 defaultSpeedLimitHasUrbanOrRural: false
+domesticSocketTypes: [typeg]
 isLeftHandTraffic: true
 mobileCountryCode: 525
 noParkingLineStyle: double yellow

@@ -2,6 +2,7 @@
 atmOperators: [ABSA, Standard Bank, FNB, Nedbank, Capitec Bank, Capitec, Cash Express, Bitcoin ATM SA, Absa, CashExpress, Stanbic Bank, Shitcoins.club, First National Bank, Bidvest Bank]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typen, typem, typec]
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true

@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Ficohsa, Banco Atlántida, Banco de Occidente, BAC Honduras, La Bitcoinera BTM, Banpais, BAC Credomatic]
 centerLineStyle: yellow
+domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 708
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd

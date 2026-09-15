@@ -27,7 +27,7 @@ fun AddChargingStationSocketForm(
             .associateWith { null }
     }
     val domesticSocketIcon = remember(countryInfo) {
-        countryInfo.domesticSocketType.firstNotNullOfOrNull {
+        countryInfo.domesticSocketTypes.firstNotNullOfOrNull {
             Res.allDrawableResources["socket_domestic_"+it]
         }
     }

@@ -2,9 +2,9 @@
 advisoryCycleLaneStyle: white dashes
 atmOperators: [Euronet, HSBC, Bank of Valletta, BOV, APS, Lombard Bank, BoV]
 chargingStationOperators: [efacec]
-chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
+chargingStationSocketTypes: [type2_cable, type2, type2_combo]
 defaultSpeedLimitHasUrbanOrRural: true
-domesticSocketType: [bs1363]
+domesticSocketTypes: [typeg]
 edgeLineStyle: white
 exclusiveCycleLaneStyle: white
 hasAdvisoryCycleLane: true

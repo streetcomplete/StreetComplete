@@ -2,7 +2,7 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [Azizi Bank]
 defaultSpeedLimitHasUrbanOrRural: false
-domesticSocketType: [typec, schuko]
+domesticSocketTypes: [typef, typec]
 mobileCountryCode: 412
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
