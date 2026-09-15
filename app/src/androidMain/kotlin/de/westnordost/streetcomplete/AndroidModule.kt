@@ -119,7 +119,7 @@ val androidModule = module {
     // map
 
     single<MapRuntime> {
-        // Keep the existing offline packs and ambient tiles when migrating from the Android SDK.
+        // file name used by versions before v64, so their offline packs and cached tiles are kept
         val cacheFile = Path(androidContext().filesDir.path, "mbgl-offline.db")
         createMapRuntime(MapRuntimeOptions(cacheFile = cacheFile))
     } onClose { it?.close() }

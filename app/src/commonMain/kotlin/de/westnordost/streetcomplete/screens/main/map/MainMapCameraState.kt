@@ -44,8 +44,8 @@ class MainMapCameraState internal constructor(
 
     val isNavigationMode: Boolean get() = settings.navigating
 
-    /** A pan only stops following once a location is displayed, so that the first fix still
-     *  centers the map when the user panned while waiting for it. */
+    /** Panning only stops following once a location is displayed; the first fix still centers
+     *  the map after panning while waiting for it. */
     fun onPan(hasLocation: Boolean) {
         if (hasLocation) isFollowingPosition = false
     }

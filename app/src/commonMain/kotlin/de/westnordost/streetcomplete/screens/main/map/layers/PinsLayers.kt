@@ -89,9 +89,8 @@ fun PinsLayers(
         options = options
     )
 
-    // The pins in a cluster are queried through the source's style handle, which is invalidated
-    // when the data or the style is replaced, so a pending query is dropped then. Only the query
-    // is cancelled; what happens with the result is up to the caller.
+    // The source's style handle is invalidated when its data or the style is replaced, so a
+    // pending cluster query is dropped then.
     var clusterLeavesJob by remember { mutableStateOf<Job?>(null) }
     DisposableEffect(mapState.style.baseStyle, features) {
         onDispose { clusterLeavesJob?.cancel() }

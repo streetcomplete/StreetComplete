@@ -102,8 +102,8 @@ class MainBottomSheetViewModelImpl(
         if (selection is MainBottomSheetSelection.Overlay && selection.elementKey == null) {
             return flowOf(overlayRegistry.getByName(selection.name)?.let { ShownBottomSheet.Overlay(it, null, null) })
         }
-        // The sheet shows the object as it was when selected. Later updates to it are ignored so
-        // that an open form is not swapped mid-edit; only its disappearance closes the sheet.
+        // Shows the object as it was when selected: updates would swap the open form mid-edit.
+        // Only its disappearance closes the sheet.
         return flow {
             var isShown = false
             changes(selection)
@@ -129,8 +129,8 @@ class MainBottomSheetViewModelImpl(
         is MainBottomSheetSelection.CreateNote -> ShownBottomSheet.CreateOsmNote(selection.trackpoints)
     }
 
-    /** Emits once initially and then whenever the object of the [selection] may have been removed.
-     *  The listeners are registered before the initial emission so that no removal is missed. */
+    /** Emits once, then whenever the [selection]'s object may have been removed. Listeners are
+     *  registered before the first emission, so no removal is missed. */
     private fun changes(selection: MainBottomSheetSelection): Flow<Unit> = callbackFlow {
         val elementKey = when (selection) {
             is MainBottomSheetSelection.Overlay -> selection.elementKey

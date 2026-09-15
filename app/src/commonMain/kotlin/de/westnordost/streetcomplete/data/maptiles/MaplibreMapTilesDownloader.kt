@@ -39,9 +39,8 @@ class MapLibreMapTilesDownloader(
             val startedAt = nowAsEpochMilliseconds()
             manager.resume(pack)
 
-            // TODO maplibre-compose: downloadProgress is snapshot state that is only applied
-            // while a map is presented, so this can stay suspended in a background worker.
-            // Await completion through the API added in
+            // TODO maplibre-compose: downloadProgress is snapshot state and only applied while a
+            // map is presented, so in a background worker this can stay suspended. Use
             // https://github.com/maplibre/maplibre-compose/pull/1405 once released.
             val finalState = snapshotFlow { pack.downloadProgress }.first { it.isFinished }
             when (finalState) {
@@ -65,8 +64,8 @@ class MapLibreMapTilesDownloader(
             } catch (pauseError: Exception) {
                 error.addSuppressed(pauseError)
             }
-            // Map tiles are only a convenience for the downloaded map data, so a failed pack
-            // must not fail the whole download or prevent the area from counting as downloaded
+            // Map tiles are optional: a failed pack must neither fail the download of the other
+            // data nor keep the area from counting as downloaded
             if (error is CancellationException) throw error
             Log.w(TAG, error.message.orEmpty(), error)
         }
@@ -74,9 +73,9 @@ class MapLibreMapTilesDownloader(
 
     override suspend fun deleteOld(time: Long) {
         try {
-            // TODO maplibre-compose: packs is loaded asynchronously and may still be empty when
-            // called from a background worker after a cold start. Await the initial load through
-            // the API added in https://github.com/maplibre/maplibre-compose/pull/1405 once released.
+            // TODO maplibre-compose: packs is loaded asynchronously and may still be empty in a
+            // background worker after a cold start. Await the initial load via
+            // https://github.com/maplibre/maplibre-compose/pull/1405 once released.
             val packs = manager.packs.toList()
             for (pack in packs) {
                 val packTime = pack.metadata?.decodeToString()?.toLongOrNull()

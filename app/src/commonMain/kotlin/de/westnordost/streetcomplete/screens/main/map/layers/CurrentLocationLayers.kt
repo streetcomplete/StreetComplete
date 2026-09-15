@@ -76,7 +76,7 @@ fun CurrentLocationLayers(
             iconImage = image(painterResource(Res.drawable.location_view_direction)),
             iconAllowOverlap = const(true),
             iconIgnorePlacement = const(true),
-            // aligned to the map, so the heading is absolute and needs no update when the map rotates
+            // map-aligned: the heading is absolute and unaffected by map rotation
             iconRotate = const(animatedHeading),
             iconRotationAlignment = const(IconRotationAlignment.Map),
             iconPitchAlignment = const(IconPitchAlignment.Map),

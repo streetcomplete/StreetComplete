@@ -203,8 +203,7 @@ fun MainScreen(
         value = shownBottomSheet?.let { mainBottomSheetViewModel.getHighlightedMarkers(it) }.orEmpty()
     }
     val markers = sheet.formMarkers ?: highlightedMarkers
-    // the overlay is hidden behind quest forms because these highlight other elements, and behind
-    // the edit history because it should look clean
+    // hidden behind quest forms, which highlight elements themselves, and behind the edit history
     val showOverlay = selectedOverlay != null &&
         shownBottomSheet !is ShownBottomSheet.OsmQuest &&
         shownBottomSheet !is ShownBottomSheet.OsmNoteQuest &&
@@ -215,8 +214,7 @@ fun MainScreen(
         val state = checkNotNull(LocalMapState.current)
         val showPinsAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 13 } }
         val showOverlayAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 14 } }
-        // Quest pins and overlay data stay loaded while hidden behind a form, so that closing it
-        // does not reload them. The edit history is loaded only while its sidebar is shown.
+        // kept subscribed while hidden behind a form, so closing it does not reload them
         val questPins by mapViewModel.questPins.collectAsState()
         val styledElements by mapViewModel.styleableElements.collectAsState()
         val pins: Collection<Pin>
@@ -393,15 +391,15 @@ fun MainScreen(
             headingProvider.updates(HeadingRequest(33.milliseconds)).collect { heading = it }
         }
     }
-    // The camera stops following the user's location while a form or the edit history is open and
-    // moves to the selected object once. Closing a form moves it back, closing the edit history
+    // While a form or the edit history is open, the camera does not follow the location and moves
+    // to the selected object once. Closing a form restores the camera, closing the edit history
     // does not.
     val mapMode = when {
         sheet.isOpen -> MapMode.Sheet(sheet.id)
         editHistory.isShowing -> MapMode.EditHistory(editHistory.selectedEditKey)
         else -> MapMode.Free
     }
-    // Saved, so that the camera does not move again after the process was recreated
+    // saved so that recreation does not move the camera again
     var focusedMode by rememberSerializable { mutableStateOf<MapMode?>(null) }
     LaunchedEffect(cameraState, mapMode) {
         val focus = focusedMode != mapMode
@@ -829,7 +827,7 @@ private enum class LocationDialog { PermissionRationale, ApplicationSettings, Lo
 /** What the map camera is bound to */
 @Serializable
 private sealed interface MapMode {
-    /** Identified by the sheet id, since the selection itself may hold a long recorded track */
+    /** by sheet id, since a note selection can carry a long track */
     @Serializable data class Sheet(val id: String) : MapMode
     @Serializable data class EditHistory(val selectedEditKey: EditKey?) : MapMode
     @Serializable data object Free : MapMode

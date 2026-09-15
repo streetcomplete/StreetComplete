@@ -30,8 +30,7 @@ fun rememberMainSheetState(viewModel: MainBottomSheetViewModel): MainSheetState 
     return state
 }
 
-/** What the user selected to show in the bottom sheet, the data it resolved to, and what the
- *  open form asks of the map. */
+/** The bottom sheet selection, what it resolved to, and the open form's map interaction. */
 @Stable
 class MainSheetState internal constructor(
     private val viewModel: MainBottomSheetViewModel,
@@ -40,11 +39,11 @@ class MainSheetState internal constructor(
     selection: MutableState<MainBottomSheetSelection?>,
     id: MutableState<String>,
 ) {
-    /** The selected object. Saved, so that the sheet is restored after process death. */
+    /** The selected object; saved to survive process death */
     var selection by selection
         private set
 
-    /** Identifies the form instance, so a new form does not inherit a previous form's state */
+    /** Identifies the form instance; a new form must not inherit a previous form's state */
     var id by id
         private set
 
@@ -79,18 +78,18 @@ class MainSheetState internal constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     internal suspend fun observe() {
         snapshotFlow { selection }.collectLatest { selection ->
-            // a previous selection's sheet must not be shown for the new selection
+            // never show the previous selection's sheet for a new selection
             shownBottomSheet = null
             if (selection == null) return@collectLatest
             viewModel.bottomSheet(selection).collect { sheet ->
                 if (selection is MainBottomSheetSelection.Overlay && sheet is ShownBottomSheet.OsmNoteQuest) {
-                    // A note at the element's position blocks editing it. Selecting the note
-                    // instead makes hiding or deleting the note close this sheet, too.
+                    // A note at the element blocks editing it. Selecting the note instead also
+                    // closes this sheet when the note is hidden or deleted.
                     this.selection = MainBottomSheetSelection.Quest(sheet.quest.key)
                     return@collect
                 }
                 shownBottomSheet = sheet
-                // A null emission means that the selected object does not exist anymore
+                // null: the selected object does not exist anymore
                 if (sheet == null) close()
             }
         }

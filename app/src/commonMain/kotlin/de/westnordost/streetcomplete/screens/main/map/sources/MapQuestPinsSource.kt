@@ -41,9 +41,8 @@ class MapQuestPinsSource(
 
     val pins: Flow<Collection<Pin>> = channelFlow {
         val questsInView = mutableMapOf<QuestKey, List<Pin>>()
-        // Quests with several markers (long ways) may have markers in view while their center is
-        // not, so they would be missed by a bounding box query. Their keys are kept across viewport
-        // changes and re-read, since only their current visibility and data are of interest.
+        // Long ways can have a marker in view while their center, which the bounding box query
+        // goes by, is not. Their keys are kept across viewport changes and re-read.
         var multiMarkerQuestKeys = emptySet<QuestKey>()
         displayedRect.collectLatest { rect ->
             if (rect == null) {
