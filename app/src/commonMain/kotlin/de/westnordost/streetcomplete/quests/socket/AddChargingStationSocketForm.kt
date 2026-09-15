@@ -42,7 +42,10 @@ fun AddChargingStationSocketForm(
 
     QuestForm(
         on = on,
-        isComplete = sockets.isNotEmpty() && sockets.values.all { it != null },
+        isComplete =
+            sockets.isNotEmpty() &&
+            sockets.values.all { it != null } &&
+            sockets.values.any { it != null && it > 0 },
         hasChanges = sockets != initialSockets,
         isResurvey = initialSockets.isNotEmpty() && initialSockets.values.all { it != null },
         onClickOk = { on(Answer(sockets.mapValues { (_, count) -> count!! })) },
