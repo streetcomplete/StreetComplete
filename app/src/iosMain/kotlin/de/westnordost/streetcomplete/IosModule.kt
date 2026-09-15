@@ -133,9 +133,9 @@ val iosModule = module {
 
     // background jobs
 
-    single<UploadController> { IosUploadController() }
+    single<UploadController> { IosUploadController(get()) } onClose { (it as? IosUploadController)?.close() }
 
-    single<DownloadController> { IosDownloadController() }
+    single<DownloadController> { IosDownloadController(get()) } onClose { (it as? IosDownloadController)?.close() }
 
     factory<ChangesetAutoCloser> { IosChangesetAutoCloser() }
 
