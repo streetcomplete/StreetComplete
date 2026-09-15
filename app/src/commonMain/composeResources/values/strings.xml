@@ -624,6 +624,7 @@
     <string name="pref_quests_reset">Reset both quest enablement and order to the default?</string>
     <string name="pref_overlays_reset">Reset overlay enablement to the default?</string>
 
+    <string name="favorite_quest">Favorite Quest</string>
     <string name="quest_enabled">Enabled</string>
     <string name="quest_type">Quest type</string>
     <string name="overlay">Overlay</string>
