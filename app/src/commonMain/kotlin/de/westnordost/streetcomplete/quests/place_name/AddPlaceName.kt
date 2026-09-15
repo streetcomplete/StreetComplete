@@ -146,7 +146,6 @@ class AddPlaceName(
             or ~fixme|FIXME ~ name|name\?|Name|Name\?
           )
           and name:signed != no
-          and access !~ private|no
     """).toElementFilterExpression() }
 
     override val changesetComment = "Determine place names"
