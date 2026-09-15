@@ -132,17 +132,14 @@ class MainActivity :
 
     override val scope: Scope by activityScope()
 
-    private val autoSyncer: AutoSyncer by inject()
     private val prefs: Preferences by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val mapDataWithEditsSource: MapDataWithEditsSource by inject()
     private val notesSource: NotesWithEditsSource by inject()
     private val questsHiddenSource: QuestsHiddenSource by inject()
-    private val feedsUpdater: FeedsUpdater by inject()
     private val featureDictionary: Lazy<FeatureDictionary> by inject(named("FeatureDictionaryLazy"))
     private val locationProvider: LocationProvider by inject()
     private val systemSettingsLauncher: SystemSettingsLauncher by inject()
-    private val periodicCleaner: PeriodicCleaner by inject()
 
     private val viewModel by viewModel<MainViewModel>()
     private val editHistoryViewModel by viewModel<EditHistoryViewModel>()
@@ -185,16 +182,6 @@ class MainActivity :
                 add(mapContainer, MainMapFragment(), TAG_MAP)
             }
         }
-
-        lifecycle.addObserver(autoSyncer)
-
-        feedsUpdater.updateAtMostDaily()
-        // this must be enqueued once the UI is started, i.e. not in headless mode. This is why
-        // it is done here, rather than in AppInitializer. Reason is that
-        // AppInitializer.initialize() is also executed when a background job is run. But we don't
-        // want to enqueue the cleanup job again while running the cleanup job, but only once after
-        // the user actually opened the app!
-        periodicCleaner.enqueue()
 
         compose.setContent { AppTheme {
             val mapAppLauncher = rememberMapAppLauncher()
