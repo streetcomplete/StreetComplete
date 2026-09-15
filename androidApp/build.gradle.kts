@@ -17,7 +17,7 @@ android {
         versionCode = 6308
         versionName = "64.0-alpha1"
 
-        // Match the ABIs supported by the MapLibre Compose runtime.
+        // the ABIs the MapLibre Compose runtime is built for
         ndk { abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86_64") }
     }
 

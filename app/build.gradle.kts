@@ -245,7 +245,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-android:3.5.1")
 
                 // map
-                implementation("org.maplibre.compose:maplibre-compose-runtime-vulkan-android:0.17.0")
+                implementation("org.maplibre.compose:maplibre-compose-runtime-opengl-android:0.17.0")
 
                 // required to @Preview composables in Android Studio
                 runtimeOnly("androidx.compose.ui:ui-tooling:1.10.0")

@@ -57,7 +57,3 @@ is a reference for individual migration implementations, not additional scope.
   stays responsive. Candidates for UI-thread work on first display: adding the
   ~60 style layers, and rasterizing every distinct pin, marker and overlay icon
   (`PinPainter`, `WithHaloPainter`) when their layers first compose.
-- Validate the selected Vulkan backend on supported Android devices, including
-  an older device below API 33; the API 26 emulator cannot initialize Vulkan.
-  Check map-entry responsiveness, rendering correctness, and background/resume. Resolve
-  demonstrated compatibility problems before production cutover.
