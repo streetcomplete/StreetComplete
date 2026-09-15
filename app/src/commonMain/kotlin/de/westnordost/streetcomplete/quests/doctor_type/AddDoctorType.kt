@@ -18,7 +18,7 @@ import de.westnordost.streetcomplete.resources.*
 class AddDoctorType() : OsmFilterQuestType<List<Feature>>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (amenity = doctors or healthcare = doctor)
           and !healthcare:speciality
     """

@@ -18,7 +18,7 @@ class AddGeneralFee : OsmFilterQuestType<Boolean>() {
     // Bicycle charging station are amenity=charging_station with bicycle=yes/designated.
     // We further exclude dual use charging stations as payment may be waived only for cyclists increasing risk of incorrect answers
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             (
               amenity = charging_station

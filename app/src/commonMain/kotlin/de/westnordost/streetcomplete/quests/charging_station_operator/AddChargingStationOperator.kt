@@ -16,7 +16,7 @@ import de.westnordost.streetcomplete.ui.common.quest.NameWithSuggestionsQuestFor
 class AddChargingStationOperator : OsmFilterQuestType<String>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           amenity = charging_station
           and !operator and !name and !brand
           and operator:signed != no
@@ -30,7 +30,7 @@ class AddChargingStationOperator : OsmFilterQuestType<String>() {
     override val achievements = listOf(CAR)
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with amenity = charging_station")
+        mapData.filter("nodes, ways, relations with amenity = charging_station")
 
     @Composable
     override fun Form(on: (QuestAction<String>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

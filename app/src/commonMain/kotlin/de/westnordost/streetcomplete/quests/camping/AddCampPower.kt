@@ -19,7 +19,7 @@ class AddCampPower : OsmFilterQuestType<Boolean>() {
     /* We only resurvey power_supply = yes and power_supply = no, as it might have more detailed
      * values from other editors, and we don't want to damage them */
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           tourism ~ camp_site|caravan_site|alpine_hut|wilderness_hut and (
             !power_supply
             or power_supply older today -4 years and power_supply ~ yes|no
@@ -33,7 +33,7 @@ class AddCampPower : OsmFilterQuestType<Boolean>() {
     override val hint = Res.string.quest_camp_power_supply_hint
 
     override fun getHighlightedElements(element: Element, mapData: MapDataWithGeometry) =
-        mapData.filter("nodes, ways with tourism ~ camp_site|caravan_site")
+        mapData.filter("nodes, ways, relations with tourism ~ camp_site|caravan_site")
 
     @Composable
     override fun Form(on: (QuestAction<Boolean>) -> Unit, element: Element, geometry: ElementGeometry, countryInfo: CountryInfo) {

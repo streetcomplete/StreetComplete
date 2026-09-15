@@ -7,7 +7,6 @@ import java.io.FileWriter
 
 /** App version name, code and flavor */
 val appVersionName = "64.0-alpha1"
-val appVersionCode = 6400
 
 /** Localizations the app should be available in */
 val bcp47ExportLanguages = setOf(
@@ -197,7 +196,7 @@ kotlin {
 
                 // Map
                 implementation("org.maplibre.compose:maplibre-compose:0.15.0")
-                implementation("org.maplibre.compose:location:0.15.0")
+                implementation("org.maplibre.compose:location:0.16.0")
 
                 // non-lazy grid
                 // NOTE: might replace with

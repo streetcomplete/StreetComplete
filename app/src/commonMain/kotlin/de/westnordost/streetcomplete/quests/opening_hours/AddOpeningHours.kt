@@ -163,7 +163,7 @@ mapOf(
     )
     """
     private val filter by lazy { """
-        nodes, ways with
+        nodes, ways, relations with
           (
             $namedFilterFragment
             or $unnamedFilterFragment

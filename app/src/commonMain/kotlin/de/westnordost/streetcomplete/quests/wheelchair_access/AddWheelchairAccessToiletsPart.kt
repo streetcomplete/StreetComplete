@@ -22,7 +22,7 @@ import org.jetbrains.compose.resources.stringResource
 class AddWheelchairAccessToiletsPart : OsmFilterQuestType<WheelchairAccessToiletsPartAnswer>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           wheelchair = limited
           and (
             toilets = yes

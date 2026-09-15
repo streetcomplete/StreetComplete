@@ -14,7 +14,7 @@ import de.westnordost.streetcomplete.resources.*
 class AddInternetAccess : OsmFilterQuestType<Set<InternetAccess>>() {
 
     override val elementFilter = """
-        nodes, ways with
+        nodes, ways, relations with
           (
             amenity ~ library|community_centre|youth_centre|hospital|ranger_station
             or tourism ~ hotel|guest_house|motel|hostel|alpine_hut|apartment|resort|caravan_site|chalet|wilderness_hut

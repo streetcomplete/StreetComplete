@@ -679,11 +679,6 @@
     <string name="quest_accessPointRef_answer_assembly_point">It’s an Assembly Point</string>
     <string name="quest_accessPointRef_detailed_answer_impossible_confirmation">An Assembly Point is where people assemble in case of an emergency. It usually looks similar to this:</string>
 
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road without a sidewalk here?</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">It is forbidden.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">It is allowed.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Actually, there is a sidewalk.</string>
-
     <string name="quest_address_title">What’s the house number of this building?</string>
     <string name="quest_address_house_number_label">House number:</string>
     <string name="quest_address_house_name_label">House name:</string>
@@ -1156,6 +1151,10 @@
     <!-- "Self-service" refers to a situation where patrons can pump gas for themselves -->
     <string name="quest_fuelSelfService_title">Does this gas station allow self-service?</string>
 
+    <string name="quest_generalAccess_title">Who may use this?</string>
+    <string name="quest_generalAccess_title2">Who may enter here?</string>
+    <string name="quest_generalAccess_title3">Who may stay here?</string>
+    <string name="quest_generalAccess_hint">Ignore any fees or charges. Whether access requires payment will be asked separately.</string>
     <string name="quest_generalFee_title">Do you need to pay to use this?</string>
     <string name="quest_generalFee_title2">Do you need to pay to enter here?</string>
     <string name="quest_generalFee_title3">Do you need to pay to stay here?</string>
@@ -1430,8 +1429,6 @@
     <string name="quest_placeName_title">What’s the name of this place?</string>
     <string name="quest_placeName_no_name_answer">There is no name sign…</string>
 
-    <string name="quest_playground_access_title2">Who is allowed to use this playground?</string>
-
     <string name="quest_policeType_title">Which type of police station is this?</string>
 
     <string name="quest_postboxCollectionTimes_title">What are the pickup times of this collection box?</string>
@@ -1563,8 +1560,6 @@
     <string name="quest_smoking_separated">Only in separated areas</string>
     <string name="quest_smoking_yes">Yes, everywhere</string>
 
-    <string name="quest_smoothness_square_title">What’s the surface quality of this square?</string>
-    <string name="quest_smoothness_road_title">What’s the surface quality of this road here?</string>
     <string name="quest_smoothness_title">What’s the surface quality here?</string>
     <string name="quest_smoothness_title_excellent">Smooth and even</string>
     <string name="quest_smoothness_title_good">Mostly even</string>
@@ -1717,6 +1712,7 @@
     <string name="quest_toiletAvailability_title">Is there a restroom here?</string>
 
     <string name="quest_toiletsFee_title">Do you have to pay to use this restroom?</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">Only non-customers must pay a fee</string>
 
     <string name="quest_tourism_information_title">What type of tourist information is this?</string>
     <string name="quest_tourism_information_office">Tourist information office</string>
@@ -1731,8 +1727,6 @@
     <string name="quest_tracktype_grade3">Mixture</string>
     <string name="quest_tracktype_grade4">Mostly soft</string>
     <string name="quest_tracktype_grade5">Soft</string>
-
-    <string name="quest_tower_access_title">Who may access this tower? It may be free or paid.</string>
 
     <string name="quest_entrance_reference">What is signed at this entrance?</string>
     <string name="quest_entrance_reference_select_flat_range_and_code">Entrance label and range of flats</string>

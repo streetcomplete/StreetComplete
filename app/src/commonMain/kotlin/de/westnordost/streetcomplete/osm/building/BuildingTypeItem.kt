@@ -129,8 +129,8 @@ val BuildingType.icon: DrawableResource get() = when (this) {
     COLLEGE ->         Res.drawable.building_college
     SPORTS_CENTRE ->   Res.drawable.sport_volleyball
     HOSPITAL ->        Res.drawable.building_hospital
-    STADIUM ->         Res.drawable.sport_volleyball
-    GRANDSTAND ->      Res.drawable.sport_volleyball
+    STADIUM ->         Res.drawable.building_stadium
+    GRANDSTAND ->      Res.drawable.building_grandstand
     TRAIN_STATION ->   Res.drawable.building_train_station
     TRANSPORTATION ->  Res.drawable.building_transportation
     FIRE_STATION ->    Res.drawable.building_fire_truck
