@@ -9,6 +9,8 @@ data class QuestSelection(
     val questType: QuestType,
     val selected: Boolean,
     val enabledInCurrentCountry: Boolean,
+    val isFavorite: Boolean = false
 ) {
     val isInteractionEnabled get() = questType !is OsmNoteQuestType
+    val isDraggable get() = isInteractionEnabled && !isFavorite
 }

@@ -10,6 +10,8 @@ import de.westnordost.streetcomplete.data.presets.EditTypePreset
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.visiblequests.FavoriteQuestTypeController
+import de.westnordost.streetcomplete.data.visiblequests.FavoriteQuestTypeSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
@@ -28,6 +30,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import org.jetbrains.compose.resources.getString
@@ -35,10 +38,10 @@ import org.jetbrains.compose.resources.getString
 @Stable
 abstract class QuestSelectionViewModel : ViewModel() {
     abstract val searchText: StateFlow<String>
-    abstract val filteredQuests: StateFlow<List<QuestSelection>>
+    abstract val searchedQuests: StateFlow<List<QuestSelection>>
     abstract val currentCountry: String?
     abstract val selectedEditTypePresetName: StateFlow<String?>
-
+    abstract fun setFavorite(quest: QuestType, isFavorite: Boolean)
     abstract fun select(questType: QuestType, selected: Boolean)
     abstract fun order(questType: QuestType, toAfter: QuestType)
     abstract fun unselectAll()
@@ -52,6 +55,7 @@ class QuestSelectionViewModelImpl(
     private val editTypePresetsSource: EditTypePresetsSource,
     private val visibleEditTypeController: VisibleEditTypeController,
     private val questTypeOrderController: QuestTypeOrderController,
+    private val favoriteQuestTypeController : FavoriteQuestTypeController,
     countryBoundaries: Lazy<CountryBoundaries>,
     prefs: Preferences,
 ) : QuestSelectionViewModel() {
@@ -92,6 +96,21 @@ class QuestSelectionViewModelImpl(
         // all/many quest orders have been changed - re-init list
         override fun onQuestTypeOrdersChanged() { initQuests() }
     }
+    private val favoriteQuestTypeListener = object : FavoriteQuestTypeSource.Listener {
+
+        override fun onFavoriteChanged(quest: QuestType, isFavorite: Boolean) {
+            quests.update { quests ->
+                val result = quests.toMutableList()
+                val itemIndex = result.indexOfFirst { it.questType == quest }
+                if (itemIndex != -1) {
+                    result[itemIndex] = result[itemIndex].copy(isFavorite = isFavorite)
+                }
+                return@update result
+            }
+        }
+
+        override fun onFavoritesChanged() { initQuests() }
+    }
 
     private val editTypePresetsListener = object : EditTypePresetsSource.Listener {
         override fun onSelectionChanged() { updateSelectedEditTypePresetName() }
@@ -102,13 +121,16 @@ class QuestSelectionViewModelImpl(
 
     private val quests = MutableStateFlow<List<QuestSelection>>(emptyList())
 
-    override val filteredQuests: StateFlow<List<QuestSelection>> =
-        combine(quests, searchText, questTitles) { quests, searchText, titles ->
-            filterQuests(quests, searchText, titles)
-        }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
+    private val favoriteQuests: StateFlow<List<QuestSelection>> =
+        quests.map { sortByFavorites(it) }
+            .stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
 
     private val currentCountryCodes = countryBoundaries.value.getIds(prefs.mapPosition)
 
+    override val searchedQuests: StateFlow<List<QuestSelection>> =
+        combine(favoriteQuests, searchText, questTitles) { quests, searchText, titles ->
+            searchQuests(quests, searchText, titles)
+        }.stateIn(viewModelScope, SharingStarted.Lazily, emptyList())
     override val selectedEditTypePresetName = MutableStateFlow<String?>(null)
 
     override val currentCountry: String?
@@ -121,6 +143,7 @@ class QuestSelectionViewModelImpl(
         editTypePresetsSource.addListener(editTypePresetsListener)
         visibleEditTypeController.addListener(visibleEditTypeListener)
         questTypeOrderController.addListener(questTypeOrderListener)
+        favoriteQuestTypeController.addListener(favoriteQuestTypeListener)
     }
 
     private fun updateSelectedEditTypePresetName() {
@@ -138,10 +161,21 @@ class QuestSelectionViewModelImpl(
         }
     }
 
+    private fun sortByFavorites(list: List<QuestSelection>): List<QuestSelection> {
+        return list.sortedBy {
+            when {
+                !it.isInteractionEnabled -> 0  // note quest, pinned first
+                it.isFavorite -> 1
+                else -> 2
+            }
+        }
+    }
+
     override fun onCleared() {
         editTypePresetsSource.removeListener(editTypePresetsListener)
         visibleEditTypeController.removeListener(visibleEditTypeListener)
         questTypeOrderController.removeListener(questTypeOrderListener)
+        favoriteQuestTypeController.removeListener(favoriteQuestTypeListener)
     }
 
     override fun select(questType: QuestType, selected: Boolean) {
@@ -155,7 +189,11 @@ class QuestSelectionViewModelImpl(
             questTypeOrderController.addOrderItem(questType, toAfter)
         }
     }
-
+    override fun setFavorite(quest: QuestType, isFavorite: Boolean){
+        launch(Dispatchers.IO) {
+            favoriteQuestTypeController.setFavorite(quest, isFavorite, editTypePresetsSource.selectedId)
+        }
+    }
     override fun unselectAll() {
         launch(Dispatchers.IO) {
             visibleEditTypeController.setVisibilities(questTypeRegistry.associateWith { false })
@@ -166,6 +204,7 @@ class QuestSelectionViewModelImpl(
         launch(Dispatchers.IO) {
             visibleEditTypeController.clearVisibilities(questTypeRegistry)
             questTypeOrderController.clear()
+            favoriteQuestTypeController.clear(editTypePresetsSource.selectedId)
         }
     }
 
@@ -176,12 +215,14 @@ class QuestSelectionViewModelImpl(
     private fun initQuests() {
         launch(Dispatchers.IO) {
             val sortedQuestTypes = questTypeRegistry.toMutableList()
+            val favorites = favoriteQuestTypeController.getFavorites(editTypePresetsSource.selectedId).toSet()
             questTypeOrderController.sort(sortedQuestTypes)
             quests.value = sortedQuestTypes
                 .map { QuestSelection(
                     questType = it,
                     selected = visibleEditTypeController.isVisible(it),
-                    enabledInCurrentCountry = isQuestEnabledInCurrentCountry(it)
+                    enabledInCurrentCountry = isQuestEnabledInCurrentCountry(it),
+                    isFavorite = it.name in favorites
                 ) }
                 .toMutableList()
         }
@@ -196,7 +237,7 @@ class QuestSelectionViewModelImpl(
         }
     }
 
-    private fun filterQuests(
+    private fun searchQuests(
         quests: List<QuestSelection>,
         filter: String,
         titles: Map<String, String>,

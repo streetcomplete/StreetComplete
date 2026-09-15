@@ -19,7 +19,7 @@ import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.util.ktx.displayRegion
 import org.jetbrains.compose.resources.stringResource
 
-/** Shows a screen in which the user can enable and disable quests as well as re-order them */
+/** Shows a screen in which the user can enable, disable, re-order and select favorite quests */
 @Composable
 fun QuestSelectionScreen(
     viewModel: QuestSelectionViewModel,
@@ -28,12 +28,10 @@ fun QuestSelectionScreen(
     val currentPresetName by viewModel.selectedEditTypePresetName.collectAsState()
 
     val searchText by viewModel.searchText.collectAsState()
-
     val displayCountry = remember {
         viewModel.currentCountry?.let { getCountryName(it) } ?: "Atlantis"
     }
-
-    val filteredQuests by viewModel.filteredQuests.collectAsState()
+    val searchedQuests by viewModel.searchedQuests.collectAsState()
 
     Column(Modifier.fillMaxSize()) {
         QuestSelectionTopAppBar(
@@ -45,7 +43,7 @@ fun QuestSelectionScreen(
             onSearchChange = viewModel::updateSearchText,
         )
 
-        if (filteredQuests.isEmpty()) {
+        if (searchedQuests.isEmpty()) {
             CenteredLargeTitleHint(stringResource(Res.string.no_search_results))
         } else {
             val insets = WindowInsets.safeDrawing.only(
@@ -53,13 +51,16 @@ fun QuestSelectionScreen(
             ).asPaddingValues()
 
             QuestSelectionList(
-                items = filteredQuests,
+                items = searchedQuests,
                 displayCountry = displayCountry,
                 onSelect = { questType, selected ->
                     viewModel.select(questType, selected)
                 },
                 onReorder = { questType, toAfter ->
                     viewModel.order(questType, toAfter)
+                },
+                onToggleFavorite = { quest, isFavorite ->
+                    viewModel.setFavorite(quest, isFavorite)
                 },
                 modifier = Modifier.consumeWindowInsets(insets),
                 contentPadding = insets,

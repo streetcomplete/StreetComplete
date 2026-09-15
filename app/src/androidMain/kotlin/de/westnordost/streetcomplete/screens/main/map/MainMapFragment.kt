@@ -21,6 +21,7 @@ import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.quest.VisibleQuestsSource
+import de.westnordost.streetcomplete.data.visiblequests.FavoriteQuestTypeSource
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.components.CurrentLocationMapComponent
 import de.westnordost.streetcomplete.screens.main.map.components.DownloadedAreaMapComponent
@@ -66,6 +67,7 @@ import kotlin.time.Duration.Companion.milliseconds
 class MainMapFragment : MapFragment() {
 
     private val questTypeOrderSource: QuestTypeOrderSource by inject()
+    private val favoriteQuestTypeSource : FavoriteQuestTypeSource by inject()
     private val questTypeRegistry: QuestTypeRegistry by inject()
     private val visibleQuestsSource: VisibleQuestsSource by inject()
     private val editHistorySource: EditHistorySource by inject()
@@ -255,7 +257,7 @@ class MainMapFragment : MapFragment() {
         restoreMapState()
         centerCurrentPositionIfFollowing()
 
-        questPinsManager = QuestPinsManager(map, pinsMapComponent!!, questTypeOrderSource, questTypeRegistry, visibleQuestsSource)
+        questPinsManager = QuestPinsManager(map, pinsMapComponent!!, questTypeOrderSource, favoriteQuestTypeSource, questTypeRegistry, visibleQuestsSource)
         questPinsManager!!.isVisible = pinMode == PinMode.QUESTS
         viewLifecycleOwner.lifecycle.addObserver(questPinsManager!!)
 
