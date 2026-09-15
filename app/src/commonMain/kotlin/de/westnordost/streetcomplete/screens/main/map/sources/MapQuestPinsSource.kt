@@ -15,6 +15,7 @@ import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderSource
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.util.math.contains
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.awaitClose
@@ -22,9 +23,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.emitAll
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -32,6 +36,7 @@ import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.long
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class MapQuestPinsSource(
     private val questTypeOrderSource: QuestTypeOrderSource,
     private val questTypeRegistry: QuestTypeRegistry,
@@ -39,51 +44,57 @@ class MapQuestPinsSource(
 ) {
     private val displayedRect = MutableStateFlow<TilesRect?>(null)
 
-    val pins: Flow<Collection<Pin>> = channelFlow {
-        val questsInView = mutableMapOf<QuestKey, List<Pin>>()
+    val pins: Flow<Collection<Pin>> = flow {
         // Long ways can have a marker in view while their center, which the bounding box query
         // goes by, is not. Their keys are kept across viewport changes and re-read.
         var multiMarkerQuestKeys = emptySet<QuestKey>()
-        displayedRect.collectLatest { rect ->
-            if (rect == null) {
-                questsInView.clear()
-                send(emptyList())
-                return@collectLatest
-            }
-            val bbox = rect.asBoundingBox(TILES_ZOOM)
-            var orders = emptyMap<QuestType, Int>()
-            events().collect { event ->
+        emitAll(displayedRect.flatMapLatest { rect ->
+            if (rect == null) return@flatMapLatest flowOf(emptyList())
+            val view = QuestsInView(rect.asBoundingBox(TILES_ZOOM))
+            events().map { event ->
                 when (event) {
-                    Event.Reload -> {
-                        val (quests, questOrders) = withContext(Dispatchers.IO) {
-                            val types = questTypeRegistry.toMutableList()
-                            questTypeOrderSource.sort(types)
-                            // A long quest can have a visible marker but its center outside this view.
-                            val retained = multiMarkerQuestKeys.mapNotNull { visibleQuestsSource.get(it) }
-                                .filter { quest -> quest.markerLocations.any { it in bbox } }
-                            (retained + visibleQuestsSource.getAll(bbox)) to
-                                types.withIndex().associate { it.value to it.index }
-                        }
-                        orders = questOrders
-                        questsInView.clear()
-                        quests.forEach { questsInView[it.key] = it.toPins(orders) }
-                    }
-                    is Event.Updated -> {
-                        event.removed.forEach { questsInView.remove(it) }
-                        event.added.forEach { quest ->
-                            if (quest.markerLocations.any { it in bbox }) {
-                                questsInView[quest.key] = quest.toPins(orders)
-                            } else {
-                                questsInView.remove(quest.key)
-                            }
-                        }
-                    }
+                    Event.Reload -> view.reload(multiMarkerQuestKeys)
+                    is Event.Updated -> view.update(event.added, event.removed)
                 }
-                multiMarkerQuestKeys = questsInView.filterValues { it.size > 1 }.keys.toSet()
-                send(questsInView.values.flatten())
+                multiMarkerQuestKeys = view.multiMarkerQuestKeys
+                view.pins
+            }
+        })
+    }.flowOn(Dispatchers.Default)
+
+    /** The quests in one displayed area and their pins */
+    private inner class QuestsInView(private val bbox: BoundingBox) {
+        private val pinsByQuest = mutableMapOf<QuestKey, List<Pin>>()
+        private var orders = emptyMap<QuestType, Int>()
+
+        val pins: Collection<Pin> get() = pinsByQuest.values.flatten()
+        val multiMarkerQuestKeys: Set<QuestKey> get() = pinsByQuest.filterValues { it.size > 1 }.keys
+
+        suspend fun reload(retainedKeys: Set<QuestKey>) {
+            val (quests, questOrders) = withContext(Dispatchers.IO) {
+                val types = questTypeRegistry.toMutableList()
+                questTypeOrderSource.sort(types)
+                val retained = retainedKeys.mapNotNull { visibleQuestsSource.get(it) }
+                    .filter { quest -> quest.markerLocations.any { it in bbox } }
+                (retained + visibleQuestsSource.getAll(bbox)) to
+                    types.withIndex().associate { it.value to it.index }
+            }
+            orders = questOrders
+            pinsByQuest.clear()
+            quests.forEach { pinsByQuest[it.key] = it.toPins(orders) }
+        }
+
+        fun update(added: Collection<Quest>, removed: Collection<QuestKey>) {
+            removed.forEach { pinsByQuest.remove(it) }
+            for (quest in added) {
+                if (quest.markerLocations.any { it in bbox }) {
+                    pinsByQuest[quest.key] = quest.toPins(orders)
+                } else {
+                    pinsByQuest.remove(quest.key)
+                }
             }
         }
-    }.flowOn(Dispatchers.Default)
+    }
 
     // Callbacks may arrive on different threads; only the collector mutates the displayed data.
     private fun events(): Flow<Event> = callbackFlow {

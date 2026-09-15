@@ -14,6 +14,7 @@ import de.westnordost.streetcomplete.screens.main.map.layers.isDisabled
 import de.westnordost.streetcomplete.screens.main.map.layers.toElementKey
 import de.westnordost.streetcomplete.util.math.intersect
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.awaitClose
@@ -21,56 +22,65 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class StyleableOverlaySource(
     private val selectedOverlaySource: SelectedOverlaySource,
     private val mapDataWithEditsSource: MapDataWithEditsSource,
 ) {
     private val displayedRect = MutableStateFlow<TilesRect?>(null)
 
-    val styledElements: Flow<Collection<StyledElement>> = channelFlow {
-        displayedRect.collectLatest { rect ->
-            if (rect == null) {
-                send(emptyList())
-                return@collectLatest
+    val styledElements: Flow<Collection<StyledElement>> = displayedRect.flatMapLatest { rect ->
+        if (rect == null) return@flatMapLatest flowOf(emptyList())
+        val view = ElementsInView(rect.asBoundingBox(TILES_ZOOM))
+        events().map { event ->
+            when (event) {
+                Event.Reload -> view.reload()
+                Event.Clear -> view.clear()
+                is Event.Updated -> view.update(event.updated, event.deleted)
             }
-            val bbox = rect.asBoundingBox(TILES_ZOOM)
-            val elements = mutableMapOf<ElementKey, StyledElement>()
-            var overlay: Overlay? = null
-            events().collect { event ->
-                when (event) {
-                    Event.Reload -> {
-                        val (selectedOverlay, data) = withContext(Dispatchers.IO) {
-                            val selected = selectedOverlaySource.selectedOverlay
-                            selected to selected?.let {
-                                createStyledElementsByKey(it, mapDataWithEditsSource.getMapDataWithGeometry(bbox))
-                                    .toMap()
-                            }
-                        }
-                        overlay = selectedOverlay
-                        elements.clear()
-                        if (data != null) elements.putAll(data)
-                    }
-                    Event.Clear -> elements.clear()
-                    is Event.Updated -> {
-                        event.deleted.forEach { elements.remove(it) }
-                        event.updated.forEach { elements.remove(it.key) }
-                        overlay?.let { selected ->
-                            createStyledElementsByKey(selected, event.updated).forEach { (key, element) ->
-                                if (bbox.intersect(element.geometry.bounds)) elements[key] = element
-                            }
-                        }
-                    }
-                }
-                send(elements.values.toList())
-            }
+            view.elements
         }
     }.flowOn(Dispatchers.Default)
+
+    /** The styled elements of the selected overlay in one displayed area */
+    private inner class ElementsInView(private val bbox: BoundingBox) {
+        private val elementsByKey = mutableMapOf<ElementKey, StyledElement>()
+        private var overlay: Overlay? = null
+
+        val elements: Collection<StyledElement> get() = elementsByKey.values.toList()
+
+        suspend fun reload() {
+            val (selected, data) = withContext(Dispatchers.IO) {
+                val selected = selectedOverlaySource.selectedOverlay
+                selected to selected?.let {
+                    createStyledElementsByKey(it, mapDataWithEditsSource.getMapDataWithGeometry(bbox)).toMap()
+                }
+            }
+            overlay = selected
+            elementsByKey.clear()
+            if (data != null) elementsByKey.putAll(data)
+        }
+
+        fun clear() {
+            elementsByKey.clear()
+        }
+
+        fun update(updated: MapDataWithGeometry, deleted: Collection<ElementKey>) {
+            deleted.forEach { elementsByKey.remove(it) }
+            updated.forEach { elementsByKey.remove(it.key) }
+            val selected = overlay ?: return
+            createStyledElementsByKey(selected, updated).forEach { (key, element) ->
+                if (bbox.intersect(element.geometry.bounds)) elementsByKey[key] = element
+            }
+        }
+    }
 
     private fun events(): Flow<Event> = callbackFlow {
         val overlayListener = object : SelectedOverlaySource.Listener {
