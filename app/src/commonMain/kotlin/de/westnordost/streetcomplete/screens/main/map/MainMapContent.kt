@@ -68,9 +68,9 @@ internal fun MainMapContent(
     styledElements: Collection<StyledElement>,
     onClickElement: (JsonObject) -> ClickResult,
 ) {
-    val selectedQuest = when (val sheet = shownBottomSheet) {
-        is ShownBottomSheet.OsmNoteQuest -> sheet.quest
-        is ShownBottomSheet.OsmQuest -> sheet.quest
+    val selectedQuest = when (shownBottomSheet) {
+        is ShownBottomSheet.OsmNoteQuest -> shownBottomSheet.quest
+        is ShownBottomSheet.OsmQuest -> shownBottomSheet.quest
         else -> null
     }
     val selectedOverlayElement = shownBottomSheet as? ShownBottomSheet.Overlay
@@ -137,7 +137,11 @@ internal fun MainMapContent(
                 )
             }
             shownMarkers?.let { markers ->
-                GeometryMarkersLayers(markers, haloColor = colors.textOutline, mapImages = mapImages)
+                GeometryMarkersLayers(
+                    markers = markers,
+                    haloColor = colors.textOutline,
+                    mapImages = mapImages
+                )
             }
             (highlightedGeometry ?: shownBottomSheet?.geometry)?.let { geometry ->
                 FocusedGeometryLayers(geometry)
@@ -151,14 +155,28 @@ internal fun MainMapContent(
                 )
             }
 
-            PinsLayers(pins = pins, mapImages = mapImages, onClickPin = onClickPin, onClickCluster = onClickCluster)
+            PinsLayers(
+                pins = pins,
+                mapImages = mapImages,
+                onClickPin = onClickPin,
+                onClickCluster = onClickCluster
+            )
 
-            val edit = selectedEdit
-            if (edit != null) {
-                edit.icon?.let { icon -> SelectedPinsLayer(icon, listOf(edit.position)) }
+            if (selectedEdit != null) {
+                val icon = selectedEdit.icon
+                if (icon != null) {
+                    SelectedPinsLayer(
+                        icon = icon,
+                        pinPositions = listOf(selectedEdit.position)
+                    )
+                }
             } else if (selectedOverlayElement?.element != null) {
-                selectedOverlayElement.geometry?.let { geometry ->
-                    SelectedPinsLayer(selectedOverlayElement.overlay.icon, listOf(geometry.center))
+                val geometry = selectedOverlayElement.geometry
+                if (geometry != null) {
+                    SelectedPinsLayer(
+                        icon = selectedOverlayElement.overlay.icon,
+                        pinPositions = listOf(geometry.center)
+                    )
                 }
             } else if (selectedQuest != null) {
                 SelectedPinsLayer(
