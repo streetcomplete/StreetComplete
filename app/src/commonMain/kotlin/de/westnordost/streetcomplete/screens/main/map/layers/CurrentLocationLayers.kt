@@ -1,12 +1,15 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
-import androidx.compose.animation.core.Spring.StiffnessLow
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.Spring.StiffnessLow
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
@@ -116,10 +119,11 @@ fun CurrentLocationLayers(
 /** Smoothly turns towards the [heading] in degrees, always along the shorter arc */
 @Composable
 private fun animateHeadingAsState(heading: Float): State<Float> {
-    // unwound so that e.g. 350° to 10° animates through 360° instead of backwards
-    val target = remember { Ref(heading) }
-    target.value = normalizeDegrees(heading, target.value - 180f)
-    return animateFloatAsState(target.value, tween(200, easing = FastOutSlowInEasing))
+    val animation = remember { Animatable(heading) }
+    LaunchedEffect(heading) {
+        // Choose the shorter arc from the current animated value, including when interrupted.
+        val target = normalizeDegrees(heading, animation.value - 180f)
+        animation.animateTo(target, tween(200, easing = FastOutSlowInEasing))
+    }
+    return remember { derivedStateOf { normalizeDegrees(animation.value) } }
 }
-
-private class Ref<T>(var value: T)
