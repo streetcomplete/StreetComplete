@@ -18,7 +18,6 @@ import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /** Deletes old unused persisted data in the background */
 class Cleaner(
@@ -32,7 +31,8 @@ class Cleaner(
 ) {
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Cleaner") + Dispatchers.IO)
 
-    suspend fun cleanOld() = withContext(Dispatchers.IO) {
+    /** Cancel the returned job to stop cleanup between blocking batches. */
+    fun cleanOld() = scope.launch {
         val time = nowAsEpochMilliseconds()
 
         val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
@@ -64,6 +64,7 @@ class Cleaner(
         Log.i(TAG, "Cleaning took ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s")
     }
 
+    /** User-requested cleanup continues even after the settings screen is closed. */
     fun cleanAll() = scope.launch {
         mapTilesDownloader.clear()
         downloadedTilesController.clear()

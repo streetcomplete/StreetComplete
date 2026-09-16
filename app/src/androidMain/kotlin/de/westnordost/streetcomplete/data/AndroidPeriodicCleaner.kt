@@ -33,7 +33,7 @@ class CleanerWorker(
 ) : Worker(context, workerParams) {
 
     override fun doWork(): Result {
-        runBlocking { cleaner.cleanOld() }
+        runBlocking { cleaner.cleanOld().join() }
         return Result.success()
     }
 }
