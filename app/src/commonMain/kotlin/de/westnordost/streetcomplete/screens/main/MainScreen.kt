@@ -132,8 +132,6 @@ fun MainScreen(
     onClickProfile: () -> Unit,
     onClickLogin: () -> Unit,
     modifier: Modifier = Modifier,
-    uri: String? = null,
-    onConsumedUri: () -> Unit = {},
     viewModel: MainViewModel = koinViewModel(),
     editHistoryViewModel: EditHistoryViewModel = koinViewModel(),
     mainBottomSheetViewModel: MainBottomSheetViewModel = koinViewModel(),
@@ -342,12 +340,6 @@ fun MainScreen(
         }
     }
 
-    LaunchedEffect(uri) {
-        if (uri != null) {
-            viewModel.setUri(uri)
-            onConsumedUri()
-        }
-    }
     LaunchedEffect(geoUri) {
         geoUri?.let {
             cameraState.moveTo(it)

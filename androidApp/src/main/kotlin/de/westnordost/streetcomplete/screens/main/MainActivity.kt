@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.platform.ComposeView
 import de.westnordost.streetcomplete.data.FeedsUpdater
 import de.westnordost.streetcomplete.data.PeriodicCleaner
@@ -19,6 +18,7 @@ import org.koin.android.ext.android.inject
 import org.koin.android.scope.AndroidScopeComponent
 import org.koin.androidx.compose.scope.KoinActivityScope
 import org.koin.androidx.scope.activityScope
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.scope.Scope
 
 /** Android host for the shared main screen and application lifecycle work. */
@@ -29,7 +29,7 @@ class MainActivity : BaseActivity(), AndroidScopeComponent {
     private val prefs: Preferences by inject()
     private val feedsUpdater: FeedsUpdater by inject()
     private val periodicCleaner: PeriodicCleaner by inject()
-    private val uri = mutableStateOf<String?>(null)
+    private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
@@ -51,8 +51,7 @@ class MainActivity : BaseActivity(), AndroidScopeComponent {
                 AppTheme {
                     KoinActivityScope {
                         MainScreen(
-                            uri = uri.value,
-                            onConsumedUri = { uri.value = null },
+                            viewModel = viewModel,
                             onClickSettings = { startActivity(Intent(this@MainActivity, SettingsActivity::class.java)) },
                             onClickQuestSettings = { startActivity(SettingsActivity.createLaunchQuestSettingsIntent(this@MainActivity)) },
                             onClickAbout = { startActivity(Intent(this@MainActivity, AboutActivity::class.java)) },
@@ -81,6 +80,8 @@ class MainActivity : BaseActivity(), AndroidScopeComponent {
     }
 
     private fun handleIntent(intent: Intent) {
-        if (intent.action == Intent.ACTION_VIEW) uri.value = intent.data?.toString()
+        if (intent.action == Intent.ACTION_VIEW) {
+            intent.data?.toString()?.let { viewModel.setUri(it) }
+        }
     }
 }
