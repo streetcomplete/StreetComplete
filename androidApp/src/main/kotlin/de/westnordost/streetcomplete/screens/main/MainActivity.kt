@@ -33,11 +33,6 @@ class MainActivity : BaseActivity(), AndroidScopeComponent {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
-        // Versions before v64 hosted the map in a fragment. Restoring a task saved by such a
-        // version would instantiate a fragment class that no longer exists and crash. Drop the
-        // fragments entry, keep the rest. Remove once updates from before v64 are unsupported.
-        savedInstanceState?.getBundle("androidx.lifecycle.BundlableSavedStateRegistry.key")
-            ?.remove("android:support:fragments")
         super.onCreate(savedInstanceState)
 
         if (savedInstanceState == null) handleIntent(intent)
