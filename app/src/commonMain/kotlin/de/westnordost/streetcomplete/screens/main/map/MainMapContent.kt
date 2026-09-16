@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
-import androidx.compose.ui.text.intl.Locale
+import androidx.compose.ui.text.intl.LocaleList
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -74,7 +74,7 @@ internal fun MainMapContent(
     }
     val selectedOverlayElement = shownBottomSheet as? ShownBottomSheet.Overlay
 
-    val languages = listOf(Locale.current.language)
+    val languages = LocaleList.current.localeList.map { it.language }.distinct()
     val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
 
     val mapImages = rememberMapImages(checkNotNull(LocalMapState.current))
