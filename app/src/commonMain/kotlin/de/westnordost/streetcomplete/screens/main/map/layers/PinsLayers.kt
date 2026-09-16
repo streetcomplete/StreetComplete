@@ -1,27 +1,20 @@
 package de.westnordost.streetcomplete.screens.main.map.layers
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
-import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.resources.pin_circle
 import de.westnordost.streetcomplete.screens.main.map.MapImages
-import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
@@ -59,14 +52,14 @@ import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.geojson.Point
 
 /** Display pins on the map, e.g. quest pins or pins for recent edits. Clicking a cluster of pins
- *  reports the [bounding box][BoundingBox] of the pins in it via [onClickCluster]. */
+ *  reports its expansion zoom via [onZoomToCluster]. */
 @MaplibreComposable
 @Composable
 fun PinsLayers(
     pins: Collection<Pin>,
     mapImages: MapImages,
     onClickPin: (properties: JsonObject) -> ClickResult,
-    onClickCluster: (BoundingBox) -> Unit,
+    onZoomToCluster: (targetZoom: Double) -> Unit,
 ) {
     val mapState = checkNotNull(LocalMapState.current)
     val coroutineScope = rememberCoroutineScope()
@@ -91,29 +84,19 @@ fun PinsLayers(
         options = options
     )
 
-    // The source's style handle is invalidated when its data or the style is replaced, so a
-    // pending cluster query is dropped then.
-    var clusterLeavesJob by remember { mutableStateOf<Job?>(null) }
-    DisposableEffect(mapState.style.baseStyle, features) {
-        onDispose { clusterLeavesJob?.cancel() }
-    }
-    val currentOnClickCluster by rememberUpdatedState(onClickCluster)
+    val currentOnZoomToCluster by rememberUpdatedState(onZoomToCluster)
 
     fun onClickClusterFeature(features: List<Feature<Geometry, JsonObject?>>): ClickResult {
         val feature = features.firstOrNull() ?: return ClickResult.Pass
         val currentHandle = mapState.style.sources[source] ?: return ClickResult.Pass
-        clusterLeavesJob?.cancel()
-        clusterLeavesJob = coroutineScope.launch {
-            val leaves = try {
-                currentHandle.getClusterLeaves(feature, Long.MAX_VALUE, 0)
+        coroutineScope.launch {
+            val zoom = try {
+                currentHandle.getClusterExpansionZoom(feature)
             } catch (e: StyleHandleException) {
                 if (mapState.style.sources[source] !== currentHandle) return@launch
                 throw e
             }
-            val positions = leaves.features.mapNotNull { (it.geometry as? Point)?.coordinates }
-                .map { LatLon(it.latitude, it.longitude) }
-            if (positions.isEmpty()) return@launch
-            currentOnClickCluster(positions.enclosingBoundingBox())
+            currentOnZoomToCluster(zoom)
         }
         return ClickResult.Consume
     }

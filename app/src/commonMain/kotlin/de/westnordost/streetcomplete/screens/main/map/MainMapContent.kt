@@ -9,7 +9,6 @@ import androidx.compose.ui.text.intl.Locale
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
@@ -64,7 +63,7 @@ internal fun MainMapContent(
     downloadedTiles: Collection<TilePos>,
     pins: Collection<Pin>,
     onClickPin: (JsonObject) -> ClickResult,
-    onClickCluster: (BoundingBox) -> Unit,
+    onZoomToCluster: (targetZoom: Double) -> Unit,
     styledElements: Collection<StyledElement>,
     onClickElement: (JsonObject) -> ClickResult,
 ) {
@@ -159,7 +158,7 @@ internal fun MainMapContent(
                 pins = pins,
                 mapImages = mapImages,
                 onClickPin = onClickPin,
-                onClickCluster = onClickCluster
+                onZoomToCluster = onZoomToCluster
             )
 
             if (selectedEdit != null) {

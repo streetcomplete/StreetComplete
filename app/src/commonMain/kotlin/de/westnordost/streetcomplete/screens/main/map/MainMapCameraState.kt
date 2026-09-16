@@ -7,7 +7,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
@@ -132,19 +131,6 @@ class MainMapCameraState internal constructor(
             CameraAnimation.Ease(maxOf(300, (abs(camera.zoom - previous.zoom) * 300).roundToInt()).milliseconds),
         )
     }
-}
-
-/** Zooms in on the pins of a clicked cluster */
-suspend fun MapState.zoomToCluster(bounds: BoundingBox) {
-    val camera = cameraPosition
-    val fitted = cameraForBounds(bounds.toGeoJsonBoundingBox(), camera.bearing, camera.tilt)
-    // zoom in a bit less than fully to show the pins completely, and not too far
-    val targetZoom = min(fitted.zoom - 0.25, 19.0)
-    val zoomDiff = abs(camera.zoom - targetZoom)
-    animateCameraPosition(
-        camera.copy(target = fitted.target, zoom = targetZoom),
-        CameraAnimation.Ease(maxOf(450, (zoomDiff * 450).roundToInt()).milliseconds),
-    )
 }
 
 @Serializable

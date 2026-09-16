@@ -72,7 +72,6 @@ import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
-import de.westnordost.streetcomplete.screens.main.map.zoomToCluster
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
@@ -258,7 +257,9 @@ fun MainScreen(
             downloadedTiles = downloadedTiles,
             pins = pins,
             onClickPin = onClickPin,
-            onClickCluster = { bounds -> scope.launch { state.zoomToCluster(bounds) } },
+            onZoomToCluster = { zoom ->
+                scope.launch { state.animateCameraPosition(state.cameraPosition.copy(zoom = zoom)) }
+            },
             styledElements = if (showOverlay && showOverlayAtZoom) styledElements else emptyList(),
             onClickElement = { properties ->
                 val key = mapViewModel.getElementKey(properties)
