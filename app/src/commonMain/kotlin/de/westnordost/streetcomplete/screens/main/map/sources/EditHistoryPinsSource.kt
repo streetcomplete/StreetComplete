@@ -16,14 +16,10 @@ import de.westnordost.streetcomplete.data.quest.OsmQuestKey
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
 import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.buffer
-import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.mapLatest
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -34,22 +30,48 @@ import kotlinx.serialization.json.long
 class EditHistoryPinsSource(
     private val editHistorySource: EditHistorySource
 ) {
-    @OptIn(ExperimentalCoroutinesApi::class)
-    val pins: Flow<Collection<Pin>> = callbackFlow {
+    val pins: Flow<Collection<Pin>> = flow {
+        val changes = Channel<Change>(Channel.UNLIMITED)
         val listener = object : EditHistorySource.Listener {
-            override fun onAdded(added: Edit) { trySend(Unit) }
+            override fun onAdded(added: Edit) { changes.trySend(Change.Added(added)) }
             override fun onSynced(synced: Edit) { }
-            override fun onDeleted(deleted: List<Edit>) { trySend(Unit) }
-            override fun onInvalidated() { trySend(Unit) }
+            override fun onDeleted(deleted: List<Edit>) {
+                changes.trySend(Change.Deleted(deleted.map { it.key }))
+            }
+            override fun onInvalidated() { changes.trySend(Change.Invalidated) }
         }
-        // Subscribe before reading so edits made during the initial load are not lost.
+        // Queue changes during loading; only this collector modifies the pin map.
         editHistorySource.addListener(listener)
-        trySend(Unit)
-        awaitClose { editHistorySource.removeListener(listener) }
-    }.buffer(Channel.CONFLATED).mapLatest {
-        withContext(Dispatchers.IO) {
-            editHistorySource.getAll().mapIndexed { index, edit -> edit.toEditPin(index) }
+        try {
+            var pinsByKey = getAllPins()
+            emit(pinsByKey.values.toList())
+            for (change in changes) {
+                when (change) {
+                    is Change.Added -> {
+                        val edit = change.edit
+                        val order = pinsByKey[edit.key]?.order ?: pinsByKey.size
+                        pinsByKey[edit.key] = edit.toEditPin(order)
+                    }
+                    is Change.Deleted -> change.keys.forEach { pinsByKey.remove(it) }
+                    Change.Invalidated -> pinsByKey = getAllPins()
+                }
+                emit(pinsByKey.values.toList())
+            }
+        } finally {
+            editHistorySource.removeListener(listener)
+            changes.cancel()
         }
+    }
+
+    private suspend fun getAllPins(): MutableMap<EditKey, Pin> = withContext(Dispatchers.IO) {
+        editHistorySource.getAll().withIndex()
+            .associateTo(HashMap()) { (index, edit) -> edit.key to edit.toEditPin(index) }
+    }
+
+    private sealed interface Change {
+        data class Added(val edit: Edit) : Change
+        data class Deleted(val keys: List<EditKey>) : Change
+        data object Invalidated : Change
     }
 
     fun getEditKey(properties: JsonObject): EditKey? =
