@@ -4,6 +4,7 @@ import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import com.russhwolf.settings.NSUserDefaultsSettings
 import com.russhwolf.settings.ObservableSettings
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.Cleaner
 import de.westnordost.streetcomplete.data.Database
 import de.westnordost.streetcomplete.data.DatabaseImpl
 import de.westnordost.streetcomplete.data.IosPeriodicCleaner
@@ -139,7 +140,9 @@ val iosModule = module {
 
     factory<ChangesetAutoCloser> { IosChangesetAutoCloser() }
 
-    factory<PeriodicCleaner> { IosPeriodicCleaner() }
+    single { IosPeriodicCleaner { get<Cleaner>().cleanOld() } } onClose { it?.close() }
+
+    single<PeriodicCleaner> { get<IosPeriodicCleaner>() }
 
     factory<MapTilesDownloader> { IosMapTilesDownloader() }
 }
