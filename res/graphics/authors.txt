@@ -120,6 +120,7 @@ building/
     fire_truck.svg              modified bus.svg, which is based on Twemoji: U+1F68D
     garage.svg                  parts taken from Twemoji: U+1F698
     garages.svg                 parts taken from Twemoji: U+1F698
+    grandstand.svg              Amaan Qureshi, License: CC-BY-SA 4.0
     greenhouse.svg
     guardhouse.svg
     hangar.svg
@@ -143,7 +144,7 @@ building/
     semi_detached.svg
     service.svg
     shed.svg
-    stadium.svg                 EmojiOne 2: U+1F3D0
+    stadium.svg                 Amaan Qureshi, License: CC-BY-SA 4.0
     static_caravan.svg
     storage_tank.svg
     temple.svg
@@ -270,6 +271,7 @@ italian police type/
     polizia.svg                     modified from https://commons.wikimedia.org/wiki/File:Italian_traffic_signs_-_icona_polizia.svg, Gigillo83, License: CC-BY-SA 3.0
 
 quest/
+    access.svg                       modified by paulklie from parking_access.svg by Tobias Zwick (CC-BY-SA 4.0) with parts taken from EmojiOne 2: U+1F511 (CC-BY 4.0), resulting work is CC-BY-SA 4.0
     access_point.svg
     apple.svg
     artwork.svg
