@@ -87,12 +87,12 @@ class MainMapCameraState internal constructor(
         setNavigationMode(false, null, null)
     }
 
-    suspend fun unfreeze(location: LatLon?, bearing: Double?) {
+    fun unfreeze() {
         val following = settings.frozenFollowing ?: return
         val navigating = settings.frozenNavigation
         settings = settings.copy(frozenFollowing = null, frozenNavigation = false)
         isFollowingPosition = following
-        setNavigationMode(navigating, location, bearing)
+        settings = settings.copy(navigating = navigating)
     }
 
     fun moveTo(position: CameraPosition) {
@@ -121,9 +121,15 @@ class MainMapCameraState internal constructor(
         )
     }
 
-    suspend fun endFocus() {
-        val previous = settings.previousFocus ?: return
+    suspend fun endFocus(location: LatLon?, bearing: Double?) {
+        val previous = settings.previousFocus
         settings = settings.copy(previousFocus = null)
+        // Resume navigation at the current location rather than visiting the pre-form camera too.
+        if (isNavigationMode && isFollowingPosition && location != null) {
+            followLocation(location, bearing)
+            return
+        }
+        if (previous == null) return
         val camera = map.cameraPosition
         // Restore the pre-focus target and zoom, keeping the user's current bearing and tilt.
         map.animateCameraPosition(

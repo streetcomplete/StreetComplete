@@ -44,6 +44,7 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.streetcomplete.ApplicationConstants
@@ -194,7 +195,7 @@ fun MainScreen(
     var mapOrigin by remember { mutableStateOf(Offset.Zero) }
     var locationDialog by remember { mutableStateOf<LocationDialog?>(null) }
     val tracks = rememberMainMapTrackState()
-    val downloadedTiles by mapViewModel.downloadedTiles.collectAsState()
+    val downloadedTiles by mapViewModel.downloadedTiles.collectAsStateWithLifecycle()
     val geoUri by viewModel.geoUri.collectAsState()
     val mapAppLauncher = rememberMapAppLauncher()
 
@@ -215,13 +216,13 @@ fun MainScreen(
         val state = checkNotNull(LocalMapState.current)
         val showPinsAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 13 } }
         val showOverlayAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 14 } }
-        // kept subscribed while hidden behind a form, so closing it does not reload them
-        val questPins by mapViewModel.questPins.collectAsState()
-        val styledElements by mapViewModel.styleableElements.collectAsState()
+        val styledElements = if (showOverlay && showOverlayAtZoom) {
+            mapViewModel.styleableElements.collectAsStateWithLifecycle(lifecycleOwner).value
+        } else emptyList()
         val pins: Collection<Pin>
         val onClickPin: (JsonObject) -> ClickResult
         if (editHistory.isShowing) {
-            pins = if (showPinsAtZoom) mapViewModel.editHistoryPins.collectAsState().value else emptyList()
+            pins = if (showPinsAtZoom) mapViewModel.editHistoryPins.collectAsStateWithLifecycle(lifecycleOwner).value else emptyList()
             onClickPin = { properties ->
                 val key = mapViewModel.getEditKey(properties)
                 if (key == null) ClickResult.Pass else {
@@ -230,7 +231,9 @@ fun MainScreen(
                 }
             }
         } else if (!sheet.isOpen || sheet.selection is MainBottomSheetSelection.CreateNote) {
-            pins = if (showPinsAtZoom) questPins else emptyList()
+            pins = if (showPinsAtZoom) {
+                mapViewModel.questPins.collectAsStateWithLifecycle(lifecycleOwner).value
+            } else emptyList()
             onClickPin = { properties ->
                 val key = mapViewModel.getQuestKey(properties)
                 if (key == null || sheet.isOpen) ClickResult.Pass else {
@@ -260,7 +263,7 @@ fun MainScreen(
             onZoomToCluster = { zoom ->
                 scope.launch { state.animateCameraPosition(state.cameraPosition.copy(zoom = zoom)) }
             },
-            styledElements = if (showOverlay && showOverlayAtZoom) styledElements else emptyList(),
+            styledElements = styledElements,
             onClickElement = { properties ->
                 val key = mapViewModel.getElementKey(properties)
                 val overlay = selectedOverlay
@@ -425,8 +428,8 @@ fun MainScreen(
                 cameraState.focus(editHistoryViewModel.getEditGeometry(edit), restorable = false)
             }
             MapMode.Free -> {
-                cameraState.unfreeze(displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
-                cameraState.endFocus()
+                cameraState.unfreeze()
+                cameraState.endFocus(displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
             }
         }
     }
