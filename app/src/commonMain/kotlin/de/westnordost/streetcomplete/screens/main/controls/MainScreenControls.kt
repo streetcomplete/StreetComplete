@@ -236,21 +236,21 @@ fun MainScreenControls(
                         }
                     }
 
-                    // the expanded attribution grows upwards over the map, not the row
-                    Row(
+                    // Expanded attribution can cover the scale bar and grow upwards over the map.
+                    Box(
                         modifier = Modifier.fillMaxWidth().padding(4.dp).height(48.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically,
                     ) {
-                        AttributionButton(
-                            modifier = Modifier
-                                .weight(1f, fill = false)
-                                .wrapContentHeight(Alignment.Bottom, unbounded = true)
-                        )
                         ScaleBar(
                             metersPerDp = metersPerDp,
-                            modifier = Modifier.padding(horizontal = 12.dp),
+                            modifier = Modifier
+                                .align(Alignment.CenterEnd)
+                                .padding(horizontal = 12.dp),
                             alignment = Alignment.End,
+                        )
+                        AttributionButton(
+                            modifier = Modifier
+                                .align(Alignment.BottomStart)
+                                .wrapContentHeight(Alignment.Bottom, unbounded = true)
                         )
                     }
                 }
