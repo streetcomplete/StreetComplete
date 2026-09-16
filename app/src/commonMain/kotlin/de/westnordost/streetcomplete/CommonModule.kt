@@ -508,7 +508,7 @@ val commonModule = module {
 
     //region settings
 
-    single { UrlConfigController(get(), get(), get(), get(), get(), get()) }
+    single { UrlConfigController(get(), get(), get(), get(), get(), get(), get()) }
 
     single { Preferences(get()) }
 

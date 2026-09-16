@@ -12,6 +12,7 @@ data class UrlConfig(
     val presetName: String?,
     val questTypes: Collection<QuestType>,
     val questTypeOrders: List<Pair<QuestType, QuestType>>,
+    val favoriteQuestTypes: Collection<QuestType>,
     val overlays: Collection<Overlay>,
     val selectedOverlay: Overlay?,
 )
@@ -24,6 +25,7 @@ private const val PARAM_QUESTS = "q"
 private const val PARAM_OVERLAYS = "os"
 private const val PARAM_SELECTED_OVERLAY = "o"
 private const val PARAM_QUEST_ORDER = "qo"
+private const val PARAM_FAVORITE_QUESTS = "fq"
 private const val PARAM_OVERLAY_MAX_AGE_IN_DAYS = "od"
 
 private const val ORDINAL_RADIX = 36
@@ -76,7 +78,11 @@ fun parseConfigUrl(
         }
         .orEmpty()
 
-    return UrlConfig(name, questTypes, questTypeOrders, overlays, selectedOverlay)
+    val favoriteQuestTypes = parameters[PARAM_FAVORITE_QUESTS]
+        ?.let { ordinalsStringToObjects(it, questTypeRegistry) }
+        .orEmpty()
+
+    return UrlConfig(name, questTypes, questTypeOrders, favoriteQuestTypes, overlays, selectedOverlay)
 }
 
 fun createConfigUrl(
@@ -110,6 +116,11 @@ fun createConfigUrl(
             .joinToString("-") { (first, second) -> "$first.$second" }
 
         parameters[PARAM_QUEST_ORDER] = sortOrders
+    }
+
+    if (urlConfig.favoriteQuestTypes.isNotEmpty()) {
+        parameters[PARAM_FAVORITE_QUESTS] =
+            objectsToOrdinalsString(urlConfig.favoriteQuestTypes, questTypeRegistry)
     }
 
     if (urlConfig.overlays.isNotEmpty()) {

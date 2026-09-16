@@ -37,7 +37,14 @@ class FavoriteQuestTypeController(
         else favoriteQuestTypeDao.remove(id, questType.name)
         if (id == selectedPresetId) onFavoriteQuestTypeChanged(questType, isFavorite)
     }
-
+    fun setAllFavorites(
+        questTypes: Collection<QuestType>,
+        presetId: Long? = null
+    ) {
+        val id = presetId ?: selectedPresetId
+        favoriteQuestTypeDao.putAll(id, questTypes.map { it.name })
+        if (id == selectedPresetId) onFavoriteQuestTypesChanged()
+    }
     fun copyFavorites(fromPresetId: Long, toPresetId: Long) {
         val favorites = favoriteQuestTypeDao.getAll(fromPresetId)
         favoriteQuestTypeDao.putAll(toPresetId, favorites)

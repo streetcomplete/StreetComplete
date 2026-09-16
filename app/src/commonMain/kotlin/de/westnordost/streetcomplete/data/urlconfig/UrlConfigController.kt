@@ -7,17 +7,19 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlayController
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsController
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
+import de.westnordost.streetcomplete.data.visiblequests.FavoriteQuestTypeController
 import de.westnordost.streetcomplete.data.visiblequests.QuestTypeOrderController
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeController
 
-/** Configure (edit type preset, selected overlay) through an URL */
+/** Configure (edit type preset, selected overlay and favorite quests) through an URL */
 class UrlConfigController(
     private val questTypeRegistry: QuestTypeRegistry,
     private val overlayRegistry: OverlayRegistry,
     private val selectedOverlayController: SelectedOverlayController,
     private val editTypePresetsController: EditTypePresetsController,
     private val visibleEditTypeController: VisibleEditTypeController,
-    private val questTypeOrderController: QuestTypeOrderController
+    private val questTypeOrderController: QuestTypeOrderController,
+    private val favoriteQuestTypeController: FavoriteQuestTypeController
 ) {
     fun parse(url: String): UrlConfig? =
         parseConfigUrl(url, questTypeRegistry, overlayRegistry)
@@ -36,7 +38,10 @@ class UrlConfigController(
         visibleEditTypeController.setVisibilities(editTypes, presetId)
 
         questTypeOrderController.setOrders(config.questTypeOrders, presetId)
-
+        favoriteQuestTypeController.setAllFavorites(
+            config.favoriteQuestTypes,
+            presetId
+        )
         // set the current edit type preset + overlay last, so the above do not trigger updates
         editTypePresetsController.selectedId = presetId
         selectedOverlayController.selectedOverlay = config.selectedOverlay
@@ -47,6 +52,8 @@ class UrlConfigController(
             presetName = editTypePresetsController.getName(presetId),
             questTypes = visibleEditTypeController.getVisible(presetId).filterIsInstance<QuestType>(),
             questTypeOrders = questTypeOrderController.getOrders(presetId),
+            favoriteQuestTypes = favoriteQuestTypeController.getFavorites(presetId)
+                .mapNotNull { questTypeRegistry.getByName(it) },
             overlays = visibleEditTypeController.getVisible(presetId).filterIsInstance<Overlay>(),
             selectedOverlay = selectedOverlayController.selectedOverlay
         )
