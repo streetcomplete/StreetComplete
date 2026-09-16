@@ -16,7 +16,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /** Deletes old unused persisted data in the background */
 class Cleaner(
@@ -30,25 +32,33 @@ class Cleaner(
 ) {
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Cleaner") + Dispatchers.IO)
 
-    fun cleanOld() = scope.launch {
+    suspend fun cleanOld() = withContext(Dispatchers.IO) {
         val time = nowAsEpochMilliseconds()
 
         val oldDataTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_DATA_AFTER
         while (true) {
+            ensureActive()
             val deleted = noteController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
             if (deleted < MAX_DELETE_ELEMENTS) break
         }
         while (true) {
+            ensureActive()
             val deleted = mapDataController.deleteOlderThan(oldDataTimestamp, MAX_DELETE_ELEMENTS)
             if (deleted < MAX_DELETE_ELEMENTS) break
         }
+        ensureActive()
         downloadedTilesController.deleteOlderThan(oldDataTimestamp)
         // do this after cleaning map data and notes, because some metadata rely on map data
-        questTypeRegistry.forEach { it.deleteMetadataOlderThan(oldDataTimestamp) }
+        questTypeRegistry.forEach {
+            ensureActive()
+            it.deleteMetadataOlderThan(oldDataTimestamp)
+        }
 
+        ensureActive()
         val oldLogTimestamp = nowAsEpochMilliseconds() - ApplicationConstants.DELETE_OLD_LOG_AFTER
         logsController.deleteOlderThan(oldLogTimestamp)
 
+        ensureActive()
         calendarEventsController.deleteOld()
 
         Log.i(TAG, "Cleaning took ${((nowAsEpochMilliseconds() - time) / 1000.0).format(1)}s")
