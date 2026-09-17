@@ -43,7 +43,7 @@ class Downloader(
     override var isDownloadInProgress: Boolean = false
         private set
 
-    suspend fun download(bbox: BoundingBox, isUserInitiated: Boolean) = withContext(Dispatchers.IO) {
+    suspend fun download(bbox: BoundingBox, isUserInitiated: Boolean) {
         var hasError = false
         try {
             isDownloadInProgress = true
@@ -62,7 +62,7 @@ class Downloader(
 
             if (!isUserInitiated && hasDownloadedAlready(tiles)) {
                 Log.i(TAG, "Not downloading ($sqkm km², bbox: $bboxString), data still fresh")
-                return@withContext
+                return
             }
             Log.i(TAG, "Starting download ($sqkm km², bbox: $bboxString)")
 
@@ -106,14 +106,18 @@ class Downloader(
         listeners.remove(listener)
     }
 
-    private fun hasDownloadedAlready(tiles: TilesRect): Boolean {
+    private suspend fun hasDownloadedAlready(tiles: TilesRect): Boolean {
         val freshTime = ApplicationConstants.REFRESH_DATA_AFTER
         val ignoreOlderThan = max(0, nowAsEpochMilliseconds() - freshTime)
-        return downloadedTilesController.contains(tiles, ignoreOlderThan)
+        return withContext(Dispatchers.IO) {
+            downloadedTilesController.contains(tiles, ignoreOlderThan)
+        }
     }
 
-    private fun putDownloadedAlready(tiles: TilesRect) {
-        downloadedTilesController.put(tiles)
+    private suspend fun putDownloadedAlready(tiles: TilesRect) {
+        withContext(Dispatchers.IO) {
+            downloadedTilesController.put(tiles)
+        }
     }
 
     companion object {
