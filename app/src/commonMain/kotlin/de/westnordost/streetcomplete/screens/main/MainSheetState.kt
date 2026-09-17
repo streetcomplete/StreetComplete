@@ -51,7 +51,7 @@ class MainSheetState internal constructor(
     var shownBottomSheet by mutableStateOf<ShownBottomSheet?>(null)
         private set
 
-    /** Markers the open form asks the map to display */
+    /** Markers the open form asks the map to display; null uses the quest's default highlights. */
     var formMarkers by mutableStateOf<List<Marker>?>(null)
 
     /** Where the user clicked on the map while the form was open */

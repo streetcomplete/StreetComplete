@@ -51,7 +51,7 @@ fun MainBottomSheet(
     mapTilt: Float,
     mapPosition: LatLon,
     mapMetersPerDp: Double,
-    onSetMapMarkers: (Iterable<Marker>) -> Unit,
+    onSetMapMarkers: (Iterable<Marker>?) -> Unit,
     getOffset: (position: LatLon) -> Offset?,
     lastMapClick: MapClick?,
     modifier: Modifier = Modifier

@@ -663,7 +663,7 @@ fun MainScreen(
                         mapTilt = mapCamera.tilt.toFloat(),
                         mapPosition = mapCamera.target.toLatLon(),
                         mapMetersPerDp = metersPerDp,
-                        onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it.toList() },
+                        onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it?.toList() },
                         getOffset = ::getOffset,
                         lastMapClick = sheet.lastMapClick,
                     )
