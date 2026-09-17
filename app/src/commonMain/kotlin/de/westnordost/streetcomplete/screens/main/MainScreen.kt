@@ -49,7 +49,6 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
-import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
@@ -63,8 +62,10 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewMod
 import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
+import de.westnordost.streetcomplete.screens.main.map.CameraMode
 import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
 import de.westnordost.streetcomplete.screens.main.map.MainMap
+import de.westnordost.streetcomplete.screens.main.map.MainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
@@ -92,14 +93,12 @@ import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonObject
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
-import org.maplibre.compose.camera.CameraAnimation
 import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.location.HeadingMeasurement
 import org.maplibre.compose.location.HeadingProvider
@@ -115,7 +114,6 @@ import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.GeographicLayout
-import org.maplibre.compose.overlay.LocalCameraPadding
 import org.maplibre.compose.style.BaseStyle
 import org.maplibre.spatialk.units.Bearing
 import org.maplibre.spatialk.units.extensions.inDegrees
@@ -211,6 +209,7 @@ fun MainScreen(
         shownBottomSheet !is ShownBottomSheet.OsmNoteQuest &&
         !editHistory.isShowing
 
+    lateinit var cameraState: MainMapCameraState
     val initialCamera = remember(viewModel) { viewModel.initialCamera }
     val mapState = rememberMapState(runtime, BaseStyle.Json(BASE_STYLE), initialCameraPosition = initialCamera) {
         val state = checkNotNull(LocalMapState.current)
@@ -261,7 +260,7 @@ fun MainScreen(
             pins = pins,
             onClickPin = onClickPin,
             onZoomToCluster = { zoom ->
-                scope.launch { state.animateCameraPosition(state.cameraPosition.copy(zoom = zoom)) }
+                scope.launch { cameraState.zoomToCluster(zoom) }
             },
             styledElements = styledElements,
             onClickElement = { properties ->
@@ -274,17 +273,14 @@ fun MainScreen(
             },
         )
     }
-    val cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
+    cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
     val mapCamera = mapState.cameraPosition
     val viewport = mapState.viewport
     val metersPerDp = remember(viewport, mapCamera) {
         mapState.metersPerDpAtLatitude(mapCamera.target.latitude) ?: 0.0
     }
     val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo)
-    val selection = sheet.selection
-    val isExistingOverlayElement = selection is MainBottomSheetSelection.Overlay && selection.elementKey != null
-    // Inspecting an existing overlay element must leave the map in place.
-    val cameraPadding = if (sheet.isOpen && !isExistingOverlayElement) sheetPadding else PaddingValues(0.dp)
+    val cameraPadding = cameraState.padding(sheetPadding)
     val isNavigationMode = cameraState.isNavigationMode
     val isFollowingPosition = cameraState.isFollowingPosition
     val isRecordingTracks = tracks.isRecording
@@ -304,11 +300,10 @@ fun MainScreen(
         ))?.toLatLon()
     }
     fun followLocation() {
-        cameraState.isFollowingPosition = true
-        scope.launch { cameraState.followLocation(displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack)) }
+        scope.launch { cameraState.locate(displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack)) }
     }
     fun zoomBy(amount: Double) {
-        scope.launch { mapState.animateCameraPosition(mapState.cameraPosition.copy(zoom = mapState.cameraPosition.zoom + amount), CameraAnimation.Ease(300.milliseconds)) }
+        scope.launch { cameraState.zoomBy(amount) }
     }
     fun composeNote(position: LatLon, trackpoints: List<Trackpoint>? = null) {
         sheet.show(MainBottomSheetSelection.CreateNote(position, trackpoints))
@@ -402,46 +397,47 @@ fun MainScreen(
             headingProvider.updates(HeadingRequest(33.milliseconds)).collect { heading = it }
         }
     }
-    // While a form or the edit history is open, the camera does not follow the location and moves
-    // to the selected object once. Closing a form restores the camera, closing the edit history
-    // does not.
-    val mapMode = when {
-        sheet.isOpen -> MapMode.Sheet(sheet.id)
-        editHistory.isShowing -> MapMode.EditHistory(editHistory.selectedEditKey)
-        else -> MapMode.Free
+    LaunchedEffect(cameraState, sheet.selection, sheet.id, editHistory.isShowing, editHistory.selectedEditKey) {
+        val selection = sheet.selection
+        when {
+            selection != null -> {
+                val existingOverlay = selection is MainBottomSheetSelection.Overlay && selection.elementKey != null
+                cameraState.openSheet(sheet.id, padded = !existingOverlay)
+            }
+            editHistory.isShowing -> cameraState.openEditHistory(editHistory.selectedEditKey)
+            else -> cameraState.closeInspection()
+        }
     }
-    // saved so that recreation does not move the camera again
-    var focusedMode by rememberSerializable { mutableStateOf<MapMode?>(null) }
-    LaunchedEffect(cameraState, mapMode) {
-        val focus = focusedMode != mapMode
-        focusedMode = mapMode
-        when (mapMode) {
-            is MapMode.Sheet -> {
-                cameraState.freeze()
-                if (!focus) return@LaunchedEffect
+    // Resolve the selected object after entering inspection. Its padding is now part of the map's
+    // composition, and location updates no longer move the camera while the object loads.
+    val inspection = cameraState.inspection
+    LaunchedEffect(cameraState, (inspection as? CameraMode.Sheet)?.id,
+        inspection is CameraMode.EditHistory, (inspection as? CameraMode.EditHistory)?.key,
+        inspection is CameraMode.Restoring) {
+        when (inspection) {
+            is CameraMode.Sheet -> {
+                if (inspection.id != sheet.id) return@LaunchedEffect
                 val shown = snapshotFlow { sheet.shownBottomSheet }.filterNotNull().first()
                 when (val selection = sheet.selection) {
-                    is MainBottomSheetSelection.CreateNote -> mapState.animateCameraPosition(
-                        mapState.cameraPosition.copy(target = selection.position.toPosition()),
-                        CameraAnimation.Ease(300.milliseconds),
-                    )
+                    is MainBottomSheetSelection.CreateNote -> cameraState.composeNote(inspection.id, selection.position)
                     else -> when (shown) {
-                        is ShownBottomSheet.OsmQuest -> cameraState.focus(shown.quest.geometry, restorable = true)
-                        is ShownBottomSheet.OsmNoteQuest -> cameraState.focus(shown.quest.geometry, restorable = true)
-                        else -> Unit
+                        is ShownBottomSheet.OsmQuest -> cameraState.focusSheet(inspection.id, shown.quest.geometry)
+                        is ShownBottomSheet.OsmNoteQuest -> cameraState.focusSheet(inspection.id, shown.quest.geometry)
+                        else -> cameraState.inspectSheet(inspection.id)
                     }
                 }
             }
-            is MapMode.EditHistory -> {
-                cameraState.freeze()
-                if (!focus || mapMode.selectedEditKey == null) return@LaunchedEffect
-                val edit = snapshotFlow { editHistory.selectedEdit }.filterNotNull().first()
-                cameraState.focus(editHistoryViewModel.getEditGeometry(edit), restorable = false)
+            is CameraMode.EditHistory -> {
+                val key = inspection.key
+                if (key == null) cameraState.inspectEditHistory()
+                else {
+                    val edit = snapshotFlow { editHistory.selectedEdit }.filterNotNull().first()
+                    cameraState.focusEdit(key, editHistoryViewModel.getEditGeometry(edit))
+                }
             }
-            MapMode.Free -> {
-                cameraState.unfreeze()
-                cameraState.endFocus(displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
-            }
+            is CameraMode.Restoring -> cameraState.restore(
+                displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+            else -> Unit
         }
     }
     LaunchedEffect(selectedOverlay) {
@@ -535,7 +531,7 @@ fun MainScreen(
                 GeographicLayout(
                     Modifier
                         .windowInsetsPadding(WindowInsets.safeDrawing)
-                        .padding(LocalCameraPadding.current)
+                        .padding(if (sheet.isOpen) sheetPadding else PaddingValues(0.dp))
                 ) {
                     if (!showIntroTutorial) {
                         displayedLocation?.position?.let { position ->
@@ -599,7 +595,7 @@ fun MainScreen(
                                 selectedOverlay?.let { overlay ->
                                     val position = getCrosshairPosition()
                                     sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
-                                    position?.let { mapState.setCameraPosition(mapState.cameraPosition.copy(target = it.toPosition())) }
+                                    position?.let { cameraState.preserveCrosshairPosition(it) }
                                 }
                             } else {
                                 showToast = Toast.DownloadAreaTooBig
@@ -831,12 +827,3 @@ private val Toast.messageResource: StringResource get() =  when (this) {
 }
 
 private enum class LocationDialog { PermissionRationale, ApplicationSettings, LocationSettings }
-
-/** What the map camera is bound to */
-@Serializable
-private sealed interface MapMode {
-    /** by sheet id, since a note selection can carry a long track */
-    @Serializable data class Sheet(val id: String) : MapMode
-    @Serializable data class EditHistory(val selectedEditKey: EditKey?) : MapMode
-    @Serializable data object Free : MapMode
-}
