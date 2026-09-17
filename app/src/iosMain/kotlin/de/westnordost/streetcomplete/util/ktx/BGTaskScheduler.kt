@@ -8,7 +8,8 @@ import kotlin.coroutines.resume
 /** Returns requests that are still queued, preserving the Objective-C element type. */
 suspend fun BGTaskScheduler.pendingTaskRequests(): List<BGTaskRequest> =
     suspendCancellableCoroutine { continuation ->
-        getPendingTaskRequestsWithCompletionHandler { requests ->
-            continuation.resume(requests.orEmpty().map { it as BGTaskRequest })
-        }
+        getPendingTaskRequestsWithCompletionHandler(
+            completionHandler = { requests ->
+                continuation.resume(requests.orEmpty().map { it as BGTaskRequest })
+        })
     }
