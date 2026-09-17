@@ -35,8 +35,9 @@ internal suspend fun runIosSync(name: String, block: suspend () -> Unit) = withC
             taskId = app.beginBackgroundTaskWithName(name, expirationHandler = {
                 expired = true
                 work.cancel()
-                // An upload may be finishing non-cancellable bookkeeping. Do not wait for it
-                // here: iOS requires the assertion to be released before this handler returns.
+                // End the background task before iOS's deadline. The finally below runs only after
+                // work.join() returns or throws, which may be delayed by the current upload finishing.
+                // https://developer.apple.com/documentation/uikit/uiapplication/beginbackgroundtask(withname:expirationhandler:)
                 endTask()
             })
             try {
