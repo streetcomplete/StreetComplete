@@ -28,7 +28,6 @@ internal suspend fun runIosSync(name: String, block: suspend () -> Unit) = withC
         endTask()
     })
     try {
-        work.start()
         work.join()
     } finally {
         endTask()
