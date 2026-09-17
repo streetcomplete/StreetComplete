@@ -48,8 +48,8 @@ internal suspend fun runIosSync(name: String, block: suspend () -> Unit) = withC
             }
             expired
         }
-        // Completed edits and areas are persisted by the workers. Only expiration retries here;
-        // network/auth errors are reported normally and left to the user or AutoSyncer to retry.
+        // If background time expired, wait for foreground and call block() again.
+        // Downloads retry the same area; uploads process the remaining unsynced edits.
     } while (expired)
 }
 
