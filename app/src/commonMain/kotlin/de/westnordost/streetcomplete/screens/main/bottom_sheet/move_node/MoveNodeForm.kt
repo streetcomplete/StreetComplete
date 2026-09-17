@@ -3,12 +3,15 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
@@ -19,21 +22,27 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInWindow
+import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.toOffset
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.get
-import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.Node
+import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
 import de.westnordost.streetcomplete.ui.ktx.toPx
+import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.length
 import de.westnordost.streetcomplete.util.ktx.translate
 import de.westnordost.streetcomplete.util.math.distanceTo
+import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.koinInject
 import kotlin.math.PI
 import kotlin.math.atan2
@@ -50,7 +59,6 @@ fun MoveNodeForm(
     mapPosition: LatLon?,
     node: Node,
     nodeOffsetInWindow: Offset?,
-    elementEditType: ElementEditType,
     modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
@@ -68,10 +76,7 @@ fun MoveNodeForm(
 
     val mapPosition = mapPosition ?: node.position
     val distance = mapPosition.distanceTo(node.position)
-    var pinOffset by remember { mutableStateOf<Offset?>(null) }
-    val nodeOffset = remember(nodeOffsetInWindow, layoutCoordinates) {
-        nodeOffsetInWindow?.let { layoutCoordinates?.windowToLocal(nodeOffsetInWindow) }
-    }
+    var crosshairOffsetInWindow by remember { mutableStateOf<Offset?>(null) }
 
     var confirmDiscard by remember { mutableStateOf(false) }
 
@@ -87,29 +92,29 @@ fun MoveNodeForm(
         .fillMaxSize()
         .onGloballyPositioned { layoutCoordinates = it }
         .drawBehind {
+            val coordinates = layoutCoordinates ?: return@drawBehind
+            val start = nodeOffsetInWindow ?: return@drawBehind
+            val end = crosshairOffsetInWindow ?: return@drawBehind
             drawArrow(
                 color = arrowColor,
                 strokeWidth = arrowWidthPx,
                 arrowHeadSize = arrowHeadSizePx,
-                start =  nodeOffset ?: return@drawBehind,
-                end = pinOffset ?: return@drawBehind
+                start = coordinates.windowToLocal(start),
+                end = coordinates.windowToLocal(end)
             )
         }
     ) {
-        // Currently, the original highlighted pin continues to be shown at the original position,
-        // which is okay 🤷, but it doesn't look good when there is a second pin at the target
-        // position, then. (We have already the arrow pointing to the target position)
-        /*
-        Pin(
-            iconPainter = painterResource(elementEditType.icon),
+        Icon(
+            painter = painterResource(Res.drawable.crosshair),
+            contentDescription = null,
             modifier = Modifier
                 .align(Alignment.Center)
                 .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
                 .onGloballyPositioned {
-                    pinOffset = it.positionInParent() + it.size.center.toOffset()
-                }
+                    crosshairOffsetInWindow = it.positionInWindow() + it.size.center.toOffset()
+                },
+            tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
         )
-        */
 
         BottomSheetFormScaffold(
             content = {

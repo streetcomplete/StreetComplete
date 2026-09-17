@@ -140,7 +140,6 @@ fun OverlayFormContainer(
                         mapPosition = mapPosition,
                         nodeOffsetInWindow = geometryOffsetInWindow,
                         node = element as Node,
-                        elementEditType = overlay,
                     )
                 }
             }

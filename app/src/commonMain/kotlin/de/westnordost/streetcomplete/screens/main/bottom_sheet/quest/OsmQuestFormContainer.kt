@@ -175,7 +175,6 @@ fun <T> OsmQuestFormContainer(
                         mapPosition = mapPosition,
                         nodeOffsetInWindow = geometryOffsetInWindow,
                         node = element as Node,
-                        elementEditType = questType,
                     )
                 }
             }
