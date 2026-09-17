@@ -36,10 +36,9 @@ import org.maplibre.spatialk.geojson.LineString
  *  The last segment of [trackpoints] is animated from the second last to the last position, which
  *  is done in-sync with the moving of the location puck.
  *
- *  Since the list of trackpoints is changed every time the location puck moves to a new location,
- *  for performance reasons, when the list of trackpoints gets too long, the last X trackpoints
- *  can be cut off (except if the user [isRecording]) and added to [oldTrackpointsLists]. These are
- *  displayed with less opacity and need to be updated less often. */
+ *  The caller keeps [trackpoints] short by moving older points into [oldTrackpointsLists] in
+ *  batches, including while recording. Those batches are displayed with less opacity and need
+ *  to be updated less often. The two lists share a boundary point to keep the line connected. */
 @MaplibreComposable @Composable
 fun TracksLayers(
     trackpoints: List<LatLon>,
