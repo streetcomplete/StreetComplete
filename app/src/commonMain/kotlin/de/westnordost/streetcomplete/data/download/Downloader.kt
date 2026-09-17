@@ -15,10 +15,13 @@ import de.westnordost.streetcomplete.util.ktx.format
 import de.westnordost.streetcomplete.util.ktx.nowAsEpochMilliseconds
 import de.westnordost.streetcomplete.util.logs.Log
 import de.westnordost.streetcomplete.util.math.area
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import kotlin.coroutines.cancellation.CancellationException
 import kotlin.math.max
 
@@ -40,7 +43,7 @@ class Downloader(
     override var isDownloadInProgress: Boolean = false
         private set
 
-    suspend fun download(bbox: BoundingBox, isUserInitiated: Boolean) {
+    suspend fun download(bbox: BoundingBox, isUserInitiated: Boolean) = withContext(Dispatchers.IO) {
         var hasError = false
         try {
             isDownloadInProgress = true
@@ -59,7 +62,7 @@ class Downloader(
 
             if (!isUserInitiated && hasDownloadedAlready(tiles)) {
                 Log.i(TAG, "Not downloading ($sqkm km², bbox: $bboxString), data still fresh")
-                return
+                return@withContext
             }
             Log.i(TAG, "Starting download ($sqkm km², bbox: $bboxString)")
 

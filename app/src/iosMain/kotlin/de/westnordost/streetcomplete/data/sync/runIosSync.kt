@@ -2,7 +2,6 @@ package de.westnordost.streetcomplete.data.sync
 
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -24,7 +23,7 @@ internal suspend fun runIosSync(name: String, block: suspend () -> Unit) = withC
             val app = UIApplication.sharedApplication
             var taskId = UIBackgroundTaskInvalid
             var expired = false
-            val work = launch(Dispatchers.IO, start = CoroutineStart.LAZY) { block() }
+            val work = launch(start = CoroutineStart.LAZY) { block() }
 
             fun endTask() {
                 if (taskId != UIBackgroundTaskInvalid) {

@@ -12,8 +12,11 @@ import de.westnordost.streetcomplete.data.user.UserLoginSource
 import de.westnordost.streetcomplete.util.Listeners
 import de.westnordost.streetcomplete.util.logs.Log
 import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
 /** Collects and uploads all user changes: notes created, comments left on existing
  * notes, quests answered, edits made in overlays, ...  */
@@ -50,7 +53,7 @@ class Uploader(
     override var isUploadInProgress: Boolean = false
         private set
 
-    suspend fun upload() {
+    suspend fun upload() = withContext(Dispatchers.IO) {
         try {
             isUploadInProgress = true
             listeners.forEach { it.onStarted() }
