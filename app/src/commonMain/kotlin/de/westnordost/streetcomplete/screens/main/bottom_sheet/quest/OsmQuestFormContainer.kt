@@ -78,7 +78,6 @@ fun <T> OsmQuestFormContainer(
     questType: OsmElementQuestType<T>,
     element: Element,
     geometry: ElementGeometry,
-    geometryOffsetInWindow: Offset?,
     mapPosition: LatLon?,
     mapRotation: Float,
     mapTilt: Float,
@@ -177,7 +176,6 @@ fun <T> OsmQuestFormContainer(
                         onConfirmed = { onEdit(MoveNodeAction(element, it)) },
                         onDismiss = onDismiss,
                         mapPosition = mapPosition,
-                        nodeOffsetInWindow = geometryOffsetInWindow,
                         node = element as Node,
                     )
                 }

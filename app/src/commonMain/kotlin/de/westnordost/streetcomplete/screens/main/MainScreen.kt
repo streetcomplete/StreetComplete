@@ -289,9 +289,6 @@ fun MainScreen(
     fun getOffset(position: LatLon): Offset? = mapState.screenLocationFromPosition(position.toPosition())?.let {
         with(density) { Offset(it.x.toPx(), it.y.toPx()) } + mapOrigin
     }
-    val geometryOffsetInWindow = remember(shownBottomSheet, viewport, mapCamera, mapOrigin) {
-        shownBottomSheet?.position?.let(::getOffset)
-    }
     fun followLocation() {
         cameraState.isFollowingPosition = true
         scope.launch { cameraState.followLocation(displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack)) }
@@ -658,7 +655,6 @@ fun MainScreen(
                         onCommentNote = mainBottomSheetViewModel::commentNote,
                         onCreateNote = mainBottomSheetViewModel::createNote,
                         shownBottomSheet = shownBottomSheet,
-                        geometryOffsetInWindow = geometryOffsetInWindow,
                         mapRotation = mapCamera.bearing.toFloat(),
                         mapTilt = mapCamera.tilt.toFloat(),
                         mapPosition = mapCamera.target.toLatLon(),

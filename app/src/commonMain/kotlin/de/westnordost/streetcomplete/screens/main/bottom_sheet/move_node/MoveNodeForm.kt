@@ -36,6 +36,7 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
+import de.westnordost.streetcomplete.ui.common.quest.LocalGetOffsetCallback
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
@@ -48,9 +49,7 @@ import kotlin.math.PI
 import kotlin.math.atan2
 import kotlin.math.sqrt
 
-/** Form that lets the user move an OSM node.
- *
- *  [nodeOffsetInWindow] - the offset of the [node] relative to the window. */
+/** Form that lets the user move an OSM node.  */
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun MoveNodeForm(
@@ -58,7 +57,6 @@ fun MoveNodeForm(
     onDismiss: () -> Unit,
     mapPosition: LatLon?,
     node: Node,
-    nodeOffsetInWindow: Offset?,
     modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
@@ -76,7 +74,6 @@ fun MoveNodeForm(
 
     val mapPosition = mapPosition ?: node.position
     val distance = mapPosition.distanceTo(node.position)
-    var crosshairOffsetInWindow by remember { mutableStateOf<Offset?>(null) }
 
     var confirmDiscard by remember { mutableStateOf(false) }
 
@@ -87,14 +84,16 @@ fun MoveNodeForm(
             onDismiss()
         }
     }
+    val getOffset = LocalGetOffsetCallback.current
 
     Box(modifier = modifier
         .fillMaxSize()
         .onGloballyPositioned { layoutCoordinates = it }
         .drawBehind {
+            val getOffset = getOffset ?: return@drawBehind
             val coordinates = layoutCoordinates ?: return@drawBehind
-            val start = nodeOffsetInWindow ?: return@drawBehind
-            val end = crosshairOffsetInWindow ?: return@drawBehind
+            val start = getOffset(node.position) ?: return@drawBehind
+            val end = getOffset(mapPosition) ?: return@drawBehind
             drawArrow(
                 color = arrowColor,
                 strokeWidth = arrowWidthPx,
@@ -104,21 +103,6 @@ fun MoveNodeForm(
             )
         }
     ) {
-        // Currently, the original highlighted pin continues to be shown at the original position,
-        // which is okay 🤷, but it doesn't look good when there is a second pin at the target
-        // position, then. (We have already the arrow pointing to the target position)
-        Icon(
-            painter = painterResource(Res.drawable.crosshair),
-            contentDescription = null,
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(Dimensions.getOpenQuestFormMapPadding(LocalWindowInfo.current))
-                .onGloballyPositioned {
-                    crosshairOffsetInWindow = it.positionInWindow() + it.size.center.toOffset()
-                },
-            tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
-        )
-
         BottomSheetFormScaffold(
             content = {
                 MoveNodeFormContent(

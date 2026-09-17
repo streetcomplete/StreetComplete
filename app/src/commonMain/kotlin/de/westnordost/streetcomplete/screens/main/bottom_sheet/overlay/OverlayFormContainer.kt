@@ -61,7 +61,6 @@ fun OverlayFormContainer(
     overlay: Overlay,
     element: Element?,
     geometry: ElementGeometry?,
-    geometryOffsetInWindow: Offset?,
     mapRotation: Float,
     mapTilt: Float,
     mapPosition: LatLon,
@@ -142,7 +141,6 @@ fun OverlayFormContainer(
                         onConfirmed = { onEdit(MoveNodeAction(element, it)) },
                         onDismiss = onDismiss,
                         mapPosition = mapPosition,
-                        nodeOffsetInWindow = geometryOffsetInWindow,
                         node = element as Node,
                     )
                 }
