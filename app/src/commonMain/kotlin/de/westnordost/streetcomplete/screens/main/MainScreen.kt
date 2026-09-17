@@ -281,13 +281,27 @@ fun MainScreen(
         mapState.metersPerDpAtLatitude(mapCamera.target.latitude) ?: 0.0
     }
     val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo)
-    val cameraPadding = if (sheet.isOpen) sheetPadding else PaddingValues(0.dp)
+    val selection = sheet.selection
+    val isExistingOverlayElement = selection is MainBottomSheetSelection.Overlay && selection.elementKey != null
+    // Inspecting an existing overlay element must leave the map in place.
+    val cameraPadding = if (sheet.isOpen && !isExistingOverlayElement) sheetPadding else PaddingValues(0.dp)
     val isNavigationMode = cameraState.isNavigationMode
     val isFollowingPosition = cameraState.isFollowingPosition
     val isRecordingTracks = tracks.isRecording
 
     fun getOffset(position: LatLon): Offset? = mapState.screenLocationFromPosition(position.toPosition())?.let {
         with(density) { Offset(it.x.toPx(), it.y.toPx()) } + mapOrigin
+    }
+    fun getCrosshairPosition(): LatLon? {
+        val size = viewport?.size ?: return null
+        val left = sheetPadding.calculateLeftPadding(layoutDirection)
+        val right = sheetPadding.calculateRightPadding(layoutDirection)
+        val top = sheetPadding.calculateTopPadding()
+        val bottom = sheetPadding.calculateBottomPadding()
+        return mapState.positionFromScreenLocation(DpOffset(
+            left + (size.width - left - right) / 2,
+            top + (size.height - top - bottom) / 2,
+        ))?.toLatLon()
     }
     fun followLocation() {
         cameraState.isFollowingPosition = true
@@ -583,17 +597,9 @@ fun MainScreen(
                         onClickCreate = {
                             if (mapCamera.zoom >= 17.0) {
                                 selectedOverlay?.let { overlay ->
-                                    val size = windowInfo.containerDpSize
-                                    val left = sheetPadding.calculateLeftPadding(layoutDirection)
-                                    val right = sheetPadding.calculateRightPadding(layoutDirection)
-                                    val top = sheetPadding.calculateTopPadding()
-                                    val bottom = sheetPadding.calculateBottomPadding()
-                                    val position = mapState.positionFromScreenLocation(DpOffset(
-                                        left + (size.width - left - right) / 2,
-                                        top + (size.height - top - bottom) / 2,
-                                    ))
+                                    val position = getCrosshairPosition()
                                     sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
-                                    position?.let { mapState.setCameraPosition(mapState.cameraPosition.copy(target = it)) }
+                                    position?.let { mapState.setCameraPosition(mapState.cameraPosition.copy(target = it.toPosition())) }
                                 }
                             } else {
                                 showToast = Toast.DownloadAreaTooBig
@@ -657,7 +663,7 @@ fun MainScreen(
                         shownBottomSheet = shownBottomSheet,
                         mapRotation = mapCamera.bearing.toFloat(),
                         mapTilt = mapCamera.tilt.toFloat(),
-                        mapPosition = mapCamera.target.toLatLon(),
+                        mapPosition = getCrosshairPosition() ?: mapCamera.target.toLatLon(),
                         mapMetersPerDp = metersPerDp,
                         onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it?.toList() },
                         getOffset = ::getOffset,
