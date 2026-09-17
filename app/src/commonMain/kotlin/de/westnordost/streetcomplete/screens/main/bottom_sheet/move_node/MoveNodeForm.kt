@@ -104,6 +104,9 @@ fun MoveNodeForm(
             )
         }
     ) {
+        // Currently, the original highlighted pin continues to be shown at the original position,
+        // which is okay 🤷, but it doesn't look good when there is a second pin at the target
+        // position, then. (We have already the arrow pointing to the target position)
         Icon(
             painter = painterResource(Res.drawable.crosshair),
             contentDescription = null,
