@@ -5,31 +5,23 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.unit.DpOffset
+import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
-import de.westnordost.streetcomplete.screens.main.map.toGeometry
-import de.westnordost.streetcomplete.ui.ktx.id
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import org.maplibre.spatialk.geojson.Feature
-import org.maplibre.spatialk.geojson.FeatureCollection
-import org.maplibre.spatialk.geojson.Geometry
-import kotlinx.serialization.json.JsonObject
-import kotlinx.serialization.json.JsonPrimitive
+import de.westnordost.streetcomplete.screens.main.map.pinPainter
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import org.jetbrains.compose.resources.DrawableResource
+import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const
-import org.maplibre.compose.expressions.dsl.convertToString
-import org.maplibre.compose.expressions.dsl.feature
 import org.maplibre.compose.expressions.dsl.image
 import org.maplibre.compose.layers.SymbolLayer
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.DpPadding
 import org.maplibre.compose.util.MaplibreComposable
+import org.maplibre.spatialk.geojson.MultiPoint
 
 /** Displays "selected" pins. Those pins should always be shown on top of pins displayed by
  *  [PinsLayers].
@@ -40,7 +32,8 @@ import org.maplibre.compose.util.MaplibreComposable
 @Composable
 fun SelectedPinsLayer(icon: DrawableResource, pinPositions: Collection<LatLon>) {
     val pinsSize = remember { Animatable(0.5f) }
-    LaunchedEffect(pinPositions) {
+    LaunchedEffect(pinPositions, icon) {
+        pinsSize.snapTo(0.5f)
         pinsSize.animateTo(
             targetValue = 1.5f,
             animationSpec = spring(
@@ -50,25 +43,13 @@ fun SelectedPinsLayer(icon: DrawableResource, pinPositions: Collection<LatLon>) 
         )
     }
 
-    val features by produceState<List<Feature<Geometry, JsonObject>>>(emptyList()) {
-        value = withContext(Dispatchers.Default) {
-            pinPositions.map {
-                Feature<Geometry, JsonObject>(
-                    geometry = it.toGeometry(),
-                    properties = JsonObject(mapOf("icon-image" to JsonPrimitive("pin_" + icon.id)))
-                )
-            }
-        }
-    }
-
-    val source = rememberGeoJsonSource(
-        data = GeoJsonData.Features(FeatureCollection(features)),
-    )
+    val geometry = remember(pinPositions) { MultiPoint(pinPositions.map { it.toPosition() }) }
+    val source = rememberGeoJsonSource(data = GeoJsonData.Features(geometry))
 
     SymbolLayer(
         id = "selected-pins-layer",
         source = source,
-        iconImage = image(feature["icon-image"].convertToString()),
+        iconImage = image(pinPainter(painterResource(icon)), size = DpSize(71.dp, 71.dp)),
         iconSize = const(pinsSize.value),
         iconPadding = const(DpPadding(
             left = 2.5.dp,

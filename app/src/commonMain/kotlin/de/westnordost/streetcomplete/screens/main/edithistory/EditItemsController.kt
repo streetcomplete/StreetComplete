@@ -1,0 +1,149 @@
+package de.westnordost.streetcomplete.screens.main.edithistory
+
+import androidx.compose.runtime.Stable
+import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
+import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
+import de.westnordost.streetcomplete.data.edithistory.EditKey
+import de.westnordost.streetcomplete.data.osm.edits.ElementEdit
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
+import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.Element
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
+import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
+import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.transformLatest
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.datetime.LocalDateTime
+import kotlin.time.Instant
+
+@Stable
+abstract class EditItemsController {
+    abstract val editItems: StateFlow<List<EditItem>?>
+
+    abstract suspend fun getEditElement(edit: Edit): Element?
+    abstract suspend fun getEditGeometry(edit: Edit): ElementGeometry
+
+    abstract fun undo(editKey: EditKey)
+
+}
+
+data class EditItem(
+    val edit: Edit,
+    val showDate: Boolean,
+    val showTime: Boolean,
+)
+
+@Stable
+class EditItemsControllerImpl(
+    private val mapDataSource: MapDataWithEditsSource,
+    private val editHistoryController: EditHistoryController,
+    private val scope: CoroutineScope,
+) : EditItemsController() {
+
+    private val edits = MutableStateFlow<List<Edit>?>(null)
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    override val editItems = edits
+        .transformLatest { emit(it?.toEditItems()) }
+        .stateIn(scope, SharingStarted.Lazily, null)
+
+    override suspend fun getEditElement(edit: Edit): Element? {
+        val key = edit.primaryElementKey ?: return null
+        return withContext(Dispatchers.IO) { mapDataSource.get(key.type, key.id) }
+    }
+
+    override suspend fun getEditGeometry(edit: Edit): ElementGeometry = when (edit) {
+        is ElementEdit -> edit.originalGeometry
+        is OsmQuestHidden -> edit.geometry
+        else -> null
+    } ?: ElementPointGeometry(edit.position)
+
+    override fun undo(editKey: EditKey) {
+        scope.launch(Dispatchers.IO) {
+            editHistoryController.undo(editKey)
+        }
+    }
+
+    private val editHistoryListener = object : EditHistorySource.Listener {
+        override fun onAdded(added: Edit) {
+            edits.update { edits ->
+                val edits = edits.orEmpty()
+                var insertIndex = edits.indexOfLast { it.createdTimestamp > added.createdTimestamp }
+                if (insertIndex == -1) insertIndex = edits.size
+                edits.toMutableList().also { it.add(insertIndex, added) }
+            }
+        }
+
+        override fun onSynced(synced: Edit) {
+            edits.update { edits ->
+                val edits = edits.orEmpty()
+                val editIndex = edits.indexOfLast { it.key == synced.key }
+                if (editIndex != -1) {
+                    edits.toMutableList().also { it[editIndex] = synced }
+                } else {
+                    edits
+                }
+            }
+        }
+
+        override fun onDeleted(deleted: List<Edit>) {
+            val deletedKeys = deleted.mapTo(HashSet()) { it.key }
+            edits.update { edits ->
+                edits?.filter { it.key !in deletedKeys }
+            }
+        }
+
+        override fun onInvalidated() {
+            updateEdits()
+        }
+    }
+
+    init {
+        updateEdits()
+        editHistoryController.addListener(editHistoryListener)
+        scope.coroutineContext.job.invokeOnCompletion { editHistoryController.removeListener(editHistoryListener) }
+    }
+
+    private fun updateEdits() {
+        scope.launch(Dispatchers.IO) {
+            edits.value = editHistoryController.getAll().sortedBy { it.createdTimestamp }
+        }
+    }
+
+    private fun List<Edit>.toEditItems(): List<EditItem> {
+        var editAboveDateTime: LocalDateTime? = null
+        return map { edit ->
+            val editDateTime = Instant.fromEpochMilliseconds(edit.createdTimestamp).toLocalDateTime()
+            val sameDate = editDateTime.date == editAboveDateTime?.date
+            val sameTime =
+                editDateTime.time.hour == editAboveDateTime?.time?.hour &&
+                    editDateTime.time.minute == editAboveDateTime?.time?.minute
+            editAboveDateTime = editDateTime
+
+            EditItem(
+                edit = edit,
+                showDate = !sameDate,
+                showTime = !sameTime || !sameDate,
+            )
+        }
+    }
+}
+
+private val Edit.primaryElementKey: ElementKey? get() = when (this) {
+    is ElementEdit -> action.elementKeys.firstOrNull()
+    is OsmQuestHidden -> ElementKey(elementType, elementId)
+    else -> null
+}

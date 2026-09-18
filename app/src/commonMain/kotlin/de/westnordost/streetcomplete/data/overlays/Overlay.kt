@@ -1,13 +1,17 @@
 package de.westnordost.streetcomplete.data.overlays
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Stable
+import androidx.compose.runtime.remember
 import de.westnordost.streetcomplete.data.meta.CountryInfo
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
+import de.westnordost.streetcomplete.screens.main.map.MapLabel
 import kotlin.jvm.JvmInline
+import org.maplibre.compose.overlay.MapOverlayScope
 
 /** An overlay is displayed on top of the normal map but behind quest pins and visualizes how
  *  selected data is tagged. Tapping on an element can optionally open a form in which the user
@@ -16,8 +20,8 @@ interface Overlay : ElementEditType {
     /** which quest types (by name) should not be visible when this overlay is active */
     val hidesQuestTypes: Set<String> get() = emptySet()
 
-    /** layers that should be hidden while this overlay is active */
-    val hidesLayers: List<String> get() = emptyList()
+    /** labels of the background map that should be hidden while this overlay is active */
+    val hiddenLabels: Set<MapLabel> get() = emptySet()
 
     /** Whether the form can be opened with a null element (=new element) */
     val isCreateNodeEnabled: Boolean get() = false
@@ -49,6 +53,32 @@ interface Overlay : ElementEditType {
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
     )
+
+    /** The form as an object that lives as long as it is shown. It holds the state that is read
+     *  both by what it shows in the bottom sheet and by what it places on the map. Override it,
+     *  together with [Form], to place something on the map. */
+    @Composable
+    fun rememberForm(element: Element?): ShownOverlayForm = remember(element) {
+        object : ShownOverlayForm {
+            @Composable
+            override fun Content(on: (OverlayAction) -> Unit, geometry: ElementGeometry, countryInfo: CountryInfo) {
+                Form(on, element, geometry, countryInfo)
+            }
+        }
+    }
+}
+
+/** An overlay form as it is shown: its [Content] in the bottom sheet and its [MapOverlay] on the
+ *  map. Both are composed in different places but read the same state, which this object holds. */
+@Stable
+interface ShownOverlayForm {
+    @Composable
+    fun Content(on: (OverlayAction) -> Unit, geometry: ElementGeometry, countryInfo: CountryInfo)
+
+    /** What the form places on the map while it is shown, e.g. a pin where a node would be
+     *  created. [geometry] is the element's or, for a new element, the crosshair's. */
+    @Composable
+    fun MapOverlayScope.MapOverlay(geometry: ElementGeometry) {}
 }
 
 sealed interface OverlayAction

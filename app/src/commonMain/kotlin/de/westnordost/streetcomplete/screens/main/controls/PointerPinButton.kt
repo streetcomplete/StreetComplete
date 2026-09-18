@@ -1,12 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.controls
 
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.padding
@@ -16,38 +10,30 @@ import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Matrix
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.PathParser
 import androidx.compose.ui.graphics.vector.toPath
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.ui.ktx.proportionalAbsoluteOffset
 import de.westnordost.streetcomplete.ui.ktx.proportionalPadding
 import de.westnordost.streetcomplete.ui.theme.divider
-import org.jetbrains.compose.resources.painterResource
-import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
+import org.maplibre.compose.overlay.MapOverlayScope
+import org.maplibre.compose.overlay.rememberPlacedTowardsState
+import org.maplibre.spatialk.geojson.Position
 
-//TODO maplibre-compose: when Android map has been removed, re-base this on the structures in
-//                       maplibre-compose, just like the material3 PointerPinButton is.
-/** A view for the pointer pin that ought to be displayed at the edge of the screen. The upper left
- *  corner is always the position at which it is pointing to, i.e. it will be drawn outside of
- *  its bounds when pointing to the right.
- *  [rotate] rotates the pin. As opposed to normal rotation, the content always stays upright */
+/** A pointer at the edge of the unobstructed map, shown while [targetPosition] lies outside
+ *  its inscribed ellipse. The pin points towards the target; its content stays upright. */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun PointerPinButton(
+fun MapOverlayScope.PointerPinButton(
+    targetPosition: Position,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
@@ -55,34 +41,31 @@ fun PointerPinButton(
         backgroundColor = MaterialTheme.colors.surface,
     ),
     contentPadding: Dp = 12.dp,
-    rotate: Float = 0f,
     content: @Composable (BoxScope.() -> Unit),
 ) {
-    val pointerPinShape = remember(rotate) { PointerPinShape(rotate) }
-    val a = rotate * PI / 180f
-    val pointySize = 14f / 76f
+    val placement = rememberPlacedTowardsState()
     Surface(
         onClick = onClick,
         modifier = modifier
-            .proportionalAbsoluteOffset(
-                x = (-sin(a) / 2.0 - 0.5).toFloat(),
-                y = (cos(a) / 2.0 - 0.5).toFloat(),
-            ),
+            .placedTowards(targetPosition, placement)
+            // Placement sets the angle during layout; draw-time rotation uses it in the same frame.
+            .graphicsLayer { rotationZ = placement.angleDegrees },
         enabled = enabled,
-        shape = pointerPinShape,
+        shape = PointerPinShape,
         color = colors.backgroundColor(enabled).value,
         contentColor = colors.contentColor(enabled).value,
         border = BorderStroke(1.dp, MaterialTheme.colors.divider),
         elevation = 4.dp
     ) {
         Box(Modifier
-            .proportionalPadding(pointySize)
+            .graphicsLayer { rotationZ = -placement.angleDegrees }
+            .proportionalPadding(14f / 76f)
             .padding(contentPadding)
         ) { content() }
     }
 }
 
-private class PointerPinShape(val rotation: Float = 0f) : Shape {
+private object PointerPinShape : Shape {
 
     private val pathSize = 76f
     private val path = PathParser()
@@ -95,11 +78,6 @@ private class PointerPinShape(val rotation: Float = 0f) : Shape {
         density: Density
     ): Outline {
         val m = Matrix()
-        val halfWidth = size.width / 2
-        val halfHeight = size.height / 2
-        m.translate(halfWidth, halfHeight)
-        m.rotateZ(rotation)
-        m.translate(-halfWidth, -halfHeight)
         m.scale(
             x = size.width / pathSize,
             y = size.height / pathSize
@@ -107,18 +85,5 @@ private class PointerPinShape(val rotation: Float = 0f) : Shape {
         val p = path.toPath()
         p.transform(m)
         return Outline.Generic(p)
-    }
-}
-
-@Preview
-@Composable
-private fun PreviewPointerPinButton() {
-    val infiniteTransition = rememberInfiniteTransition()
-    val rotation by infiniteTransition.animateFloat(
-        0f, 360f,
-        infiniteRepeatable(tween(12000, 0, LinearEasing)),
-    )
-    PointerPinButton(onClick = {}, rotate = rotation) {
-        Image(painterResource(Res.drawable.location_dot_small), null)
     }
 }
