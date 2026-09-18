@@ -467,7 +467,6 @@ Osittain tarkoittaa, että WC:hen pääsee pöyrätuolilla, mutta tarjolla ei v�
     <string name="underground">maan alla</string>
     <string name="quest_sidewalk_value_yes">Jalkakäytävä</string>
     <string name="quest_sidewalk_value_no">Ei jalkakäytävää</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Onko jalankulku kielletty tällä kadulla?</string>
     <string name="quest_buildingType_title">Millainen rakennus tämä on?</string>
     <string name="pref_title_theme_select">Teema</string>
     <string name="theme_light">Vaalea</string>
@@ -673,7 +672,6 @@ taso</string>
     <string name="at_housenumber">talon numero %1$s</string>
     <string name="quest_openingHours_add_off_days">Lisää kiinniolopäivät</string>
     <string name="quest_openingHours_off_day">Suljettu</string>
-    <string name="quest_cycleway_resurvey_title">Ovatko pyöräilyolosuhteet edelleen tämänlaiset?</string>
     <string name="pref_title_resurvey_intervals">Uudelleenkyselyn tiheys</string>
     <string name="resurvey_intervals_less_often">Harvemmin</string>
     <string name="resurvey_intervals_default">Oletus</string>
@@ -886,7 +884,6 @@ Jos tehtävien määrä häkellyttää sinua, voit aina hienosäätää asetuksi
     <string name="quest_access_yes">Kuka tahansa</string>
     <string name="quest_access_customers">Kuka tahansa tietyssä paikassa vieraileva henkilö (esim. vain asiakkaat)</string>
     <string name="quest_access_private">Vain luvan saaneet henkilöt</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Ovatko tämän postilaatikon noutoajat edelleen oikein?</string>
     <string name="quest_bicycle_barrier_type_title">Millainen polkupyörän este tämä on?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Vinottainen suhteessa polkuun</string>
     <string name="quest_barrier_bicycle_type_tilted">Kapea käytävä, pienenee ylemmäs</string>
@@ -923,8 +920,6 @@ Vaihtoehtoisesti voit jättää ilmoituksen (kuvan kanssa).</string>
     <string name="quest_fireHydrant_position_sidewalk">Jalkakäytävällä</string>
     <string name="quest_fireHydrant_position_parking_lot">Pysäköintipaikalla</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Kyllä (jätä ilmoitus)</string>
-    <string name="quest_smoothness_square_title">Millainen on tämän aukion pinnan laatu?</string>
-    <string name="quest_smoothness_road_title">Millainen on tämän tien pinnan laatu?</string>
     <string name="quest_smoothness_title_excellent">Pehmeä ja tasainen</string>
     <string name="quest_smoothness_title_good">Pääasiassa tasainen</string>
     <string name="quest_smoothness_title_intermediate">Hieman kuoppainen</string>
@@ -977,7 +972,6 @@ Vaihtoehtoisesti voit jättää ilmoituksen (kuvan kanssa).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Toinen sovellus käyttää kameraa</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Ohjaustankopidike</string>
     <string name="quest_bicycle_parking_access_title2">Kuka saa pysäköidä pyörän tähän? Pysäköinti voi olla ilmaista tai maksullista.</string>
-    <string name="quest_playground_access_title2">Kuka saa käyttää tätä leikkikenttää?</string>
     <string name="ar_measure">Mittaus</string>
     <string name="ar_core_tracking_error_too_steep_angle">Liian jyrkkä kulma, astu hieman taaemmas.</string>
     <string name="default_disabled_msg_no_ar">Tarvitset mittanauhan ratkaistaksesi tämän tehtävän, koska tämä laite ei tue mittaamista kameralla.</string>
@@ -1033,7 +1027,6 @@ Vaihtoehtoisesti voit jättää ilmoituksen (kuvan kanssa).</string>
     <string name="quest_lit_title">Onko täällä valaistusta?</string>
     <string name="quest_openingHours_title">Mitkä ovat aukioloajat täällä?</string>
     <string name="quest_openingHours_signed_title">Ovatko aukioloajat näkyvillä?</string>
-    <string name="quest_openingHours_resurvey_title">Ovatko aukioloajat yhä oikein?</string>
     <string name="quest_placeName_title">Mikä tämän paikan nimi on?</string>
     <string name="quest_shop_type_title2">Minkä tyyppinen kauppa tämä on?</string>
     <string name="quest_smoking_title2">Onko tupakointi sallittu täällä?</string>
@@ -1306,8 +1299,6 @@ Voit löytää lahjoitustiedot verkkosivuiltamme tai projektin kotisivuilta, Goo
     <string name="default_disabled_msg_visible_sign_moped">Tämä tehtävätyyppi on oletusarvoisesti pois käytöstä, koska vain kyltti pyörätien alussa/lopussa osoittaa, saako mopolla ajaa.</string>
     <string name="quest_arrow_tutorial">Kuvatut nuolet osoittavat suuntia, joihin väylä kulkee kartalla sen keskipisteestä. Kokeile kääntää kartaa niin ymmärrät kyllä.</string>
     <string name="info">Lisätietoja</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Se on kielletty.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Se on sallittu.</string>
     <string name="quest_buildingLevels_hint">Rakennuksille, jotka ovat rinteellä, kerrosten laskeminen alkaa maan tasosta matalimmalta sivulta.
 
 Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei ole yhtään kattokerrosta eivät ole välttämättä litteitä, vaan eivät ole riittävän korkeita kokonaiselle kerrokselle.</string>
@@ -1347,7 +1338,6 @@ Kerros lasketaan kattokerrokseksi kun sen ikkunat ovat katossa. Katot, joissa ei
     <string name="action_messages">Näytä viestit</string>
     <string name="action_create_new_poi">Luo uusi</string>
     <string name="auth_error">Tunnistautumisvirhe. Yritä kirjautua sisään uudestaan.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Itse asiassa, täällä on jalkakäytävä.</string>
     <string name="quest_bicycle_repair_station_services_title">Mitä polkupyörävälineitä täällä on käytettävissä?</string>
     <string name="quest_bicycle_repair_station_pump">Pumppu</string>
     <string name="quest_bicycle_repair_station_tools">Sekalaisia työkaluja</string>
@@ -1420,7 +1410,6 @@ Esimerkiksi 1,3 tai 2b,4,6.</string>
     <string name="quest_level_thing_title">Missä kerrosnumerossa tämä asia sijaitsee?</string>
     <string name="quest_bicycle_charging_station_capacity_title">Kuinka montaa polkupyörää täällä voi ladata samanaikaisesti?</string>
     <string name="quest_charging_station_bicycles_title">Voiko täällä ladata myös polkupyöriä?</string>
-    <string name="quest_tower_access_title">Kenellä on pääsy tähän torniin? Pääsy voi olla ilmainen tai maksullinen.</string>
     <string name="quest_recycling_type_pet_bottles">PET-pullot</string>
     <string name="quest_maxweight_add_sign">Lisää merkki</string>
     <string name="quest_maxweight_remove_sign">Poista merkki</string>
@@ -1476,4 +1465,15 @@ Esimerkiksi 1,3 tai 2b,4,6.</string>
     <string name="quest_place_vacant_type_title">Tämä paikka on ollut tyhjillään. Mitä siellä on nyt?</string>
     <string name="about_title">Tietoja - %1$s</string>
     <string name="quest_surface_value_laterite">Lateriitti</string>
+    <string name="camera_permission_description">Kameran käyttöoikeus vaaditaan, jotta kuvia voi lisätä karttamuistiinpanoihin.</string>
+    <string name="resurvey_title">Onko tämä edelleen oikein?</string>
+    <string name="add">Lisää</string>
+    <string name="quest_bothway_aerialway_confirm">Oletko varma, että tässä hississä voi matkustaa molempiin suuntiin?</string>
+    <string name="quest_doctor_type_title">Mitä lääkäreitä täällä on?</string>
+    <string name="quest_generalFee_title3">Vaatiiko täällä oleskelu maksun?</string>
+    <string name="unit_day">päivä</string>
+    <string name="unit_hour">tunti</string>
+    <string name="unit_minute">minuutti</string>
+    <string name="quest_parking_charge_title">Paljonko pysäköinti maksaa täällä?</string>
+    <string name="quest_parking_charge_time_unit_label">per</string>
 </resources>

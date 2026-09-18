@@ -467,7 +467,6 @@ Parcialmente significa que um cadeirante pode entrar e usar o banheiro, mas não
     <string name="underground">subterrâneo</string>
     <string name="quest_sidewalk_value_yes">com calçada</string>
     <string name="quest_sidewalk_value_no">sem calçada</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Pedestres são proibidos de andar aqui nesta via?</string>
     <string name="quest_buildingType_title">Que tipo de edificação é esta?</string>
     <string name="pref_title_theme_select">Selecione tema</string>
     <string name="theme_light">Claro</string>
@@ -673,7 +672,6 @@ conquista</string>
     <string name="at_housenumber">número da casa %1$s</string>
     <string name="quest_openingHours_add_off_days">Adicionar dias fechados</string>
     <string name="quest_openingHours_off_day">Dia fechado</string>
-    <string name="quest_cycleway_resurvey_title">Esta ainda é a situação da ciclovia aqui?</string>
     <string name="pref_title_resurvey_intervals">Intervalos de novas perguntas</string>
     <string name="resurvey_intervals_less_often">Pergunte com menos frequência</string>
     <string name="resurvey_intervals_default">Padrão</string>
@@ -885,7 +883,6 @@ Se você está sobrecarregado com o número de missões, você sempre pode ajust
     <string name="quest_access_yes">Qualquer pessoa</string>
     <string name="quest_access_customers">Qualquer pessoa que visite um local específico (p.ex. apenas clientes)</string>
     <string name="quest_access_private">Apenas individual(s), com permissão</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Os horários de coleta desta caixa de correio ainda estão corretos?</string>
     <string name="quest_bicycle_barrier_type_title">Que tipo de barreira de bicicleta é essa?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal com o caminho</string>
     <string name="quest_barrier_bicycle_type_tilted">Passagem estreita, menor em direção ao topo</string>
@@ -922,8 +919,6 @@ Alternativamente, pode deixar uma nota (com uma foto).</string>
     <string name="quest_fireHydrant_position_sidewalk">Em uma calçada</string>
     <string name="quest_fireHydrant_position_parking_lot">Em uma vaga de estacionamento</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Sim (deixe uma nota)</string>
-    <string name="quest_smoothness_square_title">Qual é a qualidade da superfície desta praça?</string>
-    <string name="quest_smoothness_road_title">Qual é a qualidade da superfície desta estrada aqui?</string>
     <string name="quest_smoothness_title_excellent">Suave e uniforme</string>
     <string name="quest_smoothness_title_good">Na maioria das vezes o mesmo</string>
     <string name="quest_smoothness_title_intermediate">Um pouco acidentado</string>
@@ -976,7 +971,6 @@ Alternativamente, pode deixar uma nota (com uma foto).</string>
     <string name="ar_core_tracking_error_camera_unavailable">A câmera é usada por outro app</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Suporte do guidão</string>
     <string name="quest_bicycle_parking_access_title2">Quem pode estacionar uma bicicleta aqui? O estacionamento pode ser gratuito ou pago.</string>
-    <string name="quest_playground_access_title2">Quem tem permissão para usar este playground?</string>
     <string name="ar_measure">Medida</string>
     <string name="ar_core_tracking_error_too_steep_angle">Ângulo muito íngreme, afaste-se um pouco</string>
     <string name="default_disabled_msg_no_ar">Você precisa de uma fita métrica para resolver esta missão porque a medição com a câmera não é suportada neste dispositivo.</string>
@@ -1032,7 +1026,6 @@ Alternativamente, pode deixar uma nota (com uma foto).</string>
     <string name="quest_lit_title">Aqui é iluminado?</string>
     <string name="quest_openingHours_title">Quais os horários de funcionamento aqui?</string>
     <string name="quest_openingHours_signed_title">Há uma placa mostrando os horários de funcionamento?</string>
-    <string name="quest_openingHours_resurvey_title">Estes horários de funcionamento ainda estão corretos?</string>
     <string name="quest_placeName_title">Qual o nome deste lugar?</string>
     <string name="quest_shop_type_title2">Que tipo de loja é esta?</string>
     <string name="quest_smoking_title2">Aqui é permitido fumar?</string>
@@ -1306,8 +1299,6 @@ Você pode encontrar informações sobre doações em nosso site ou na página i
     <string name="default_disabled_msg_visible_sign_moped">Este tipo de missão é desabilitado por padrão porque o acesso de ciclomotor é indicado apenas por placas específicas no início/fim de uma ciclovia.</string>
     <string name="quest_arrow_tutorial">As setas na ilustração apontam para as direções em que o caminho segue no mapa, na posição central do pino. Tente girar o mapa e você conseguirá.</string>
     <string name="info">Mais informações</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Não é permitido</string>
-    <string name="quest_accessible_for_pedestrians_allowed">É permitido</string>
     <string name="quest_buildingLevels_hint">Para edifícios em declive, a contagem de níveis começa a partir do nível do solo do lado mais baixo.
 
 Um nível é considerado um nível de telhado quando suas janelas estão no telhado. Consequentemente, telhados com nível zero não são necessariamente planos, apenas não são altos o suficiente para um nível inteiro.</string>
@@ -1346,7 +1337,6 @@ Um nível é considerado um nível de telhado quando suas janelas estão no telh
     <string name="action_messages">Exibir mensagens</string>
     <string name="action_create_new_poi">Criar novo</string>
     <string name="auth_error">Erro de autenticação. Tente conectar-se novamente.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Na verdade, há uma calçada.</string>
     <string name="quest_bicycle_repair_station_services_title">Que equipamentos de bicicleta estão disponíveis aqui?</string>
     <string name="quest_bicycle_repair_station_pump">Bomba</string>
     <string name="quest_bicycle_repair_station_tools">Ferramentas diversas</string>

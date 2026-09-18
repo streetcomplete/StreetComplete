@@ -3,6 +3,7 @@ atmOperators: [BAC Credomatic, Banco Promerica de Costa Rica S.A., BCR, Banco Po
 centerLineStyle: yellow
 chargingStationOperators: [ICE, Estación de Recarga, JASEC, Coopesantos, CNFL]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 712
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd

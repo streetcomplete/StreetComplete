@@ -3,6 +3,7 @@ atmOperators: [Banistmo, Caja de Ahorros, Banco General, Paralla, Scotiabank, Cr
 centerLineStyle: yellow
 chargingStationOperators: [Evergo]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 714
 noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin

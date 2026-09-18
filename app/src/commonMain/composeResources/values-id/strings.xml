@@ -468,7 +468,6 @@ Sebagian berarti kursi roda dapat masuk dan menggunakannya, tapi tidak ada pegan
     <string name="underground">bawah tanah</string>
     <string name="quest_sidewalk_value_yes">trotoar</string>
     <string name="quest_sidewalk_value_no">Tidak ada trotoar</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Apa pejalan kaki dilarang melewati jalan ini?</string>
     <string name="quest_buildingType_title">Bangunan apakah ini?</string>
     <string name="pref_title_theme_select">Pilih tema</string>
     <string name="theme_light">Terang</string>
@@ -669,7 +668,6 @@ Data ini tidak hanya berguna untuk pengirim pos tapi juga untuk sistem navigasi 
     <string name="at_housenumber">nomor rumah %1$s</string>
     <string name="quest_openingHours_add_off_days">Tambahkan hari libur</string>
     <string name="quest_openingHours_off_day">Hari libur</string>
-    <string name="quest_cycleway_resurvey_title">Apakah kondisi jalur sepeda di sini masih sama?</string>
     <string name="pref_title_resurvey_intervals">Interval survei ulang</string>
     <string name="resurvey_intervals_less_often">Tanyakan lebih jarang</string>
     <string name="resurvey_intervals_default">Default</string>
@@ -882,7 +880,6 @@ Jika kamu merasa kewalahan dengan banyaknya misi, kamu bisa mengatur jenis misi 
     <string name="quest_access_yes">Masyarakat umum</string>
     <string name="quest_access_customers">Orang yang mengunjungi tempat tertentu (contoh, hanya pelanggan)</string>
     <string name="quest_access_private">Hanya individu yang memiliki izin</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Apakah waktu pengambilan kotak koleksi ini masih benar?</string>
     <string name="quest_bicycle_barrier_type_title">Apa jenis penghalang sepeda ini?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal ke jalan</string>
     <string name="quest_barrier_bicycle_type_tilted">Lorong sempit, lebih kecil ke arah atas</string>
@@ -919,8 +916,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto).</string>
     <string name="quest_fireHydrant_position_sidewalk">Pada trotoar</string>
     <string name="quest_fireHydrant_position_parking_lot">Pada tempat parkir</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Ya (tinggalkan catatan)</string>
-    <string name="quest_smoothness_square_title">Bagaimana kualitas permukaan kotak ini?</string>
-    <string name="quest_smoothness_road_title">Bagaimana kualitas permukaan jalan ini?</string>
     <string name="quest_smoothness_title_excellent">Halus dan rata</string>
     <string name="quest_smoothness_title_good">Sebagian besar rata</string>
     <string name="quest_smoothness_title_intermediate">Sedikit bergelombang</string>
@@ -973,7 +968,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Kamera digunakan oleh aplikasi lain</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Dudukan stang</string>
     <string name="quest_bicycle_parking_access_title2">Siapa yang diizinkan untuk memarkir sepeda di sini? Baik berbayar maupun tidak.</string>
-    <string name="quest_playground_access_title2">Siapa yang diizinkan untuk menggunakan taman bermain ini?</string>
     <string name="ar_measure">Ukur</string>
     <string name="ar_core_tracking_error_too_steep_angle">Sudutnya terlalu curam, menjauhlah sedikit</string>
     <string name="default_disabled_msg_no_ar">Kamu memerlukan pita pengukur untuk menyelesaikan misi ini karena pengukuran dengan kamera tidak didukung di perangkat ini.</string>
@@ -1029,7 +1023,6 @@ Sebagai alternatif, kamu bisa menambahkan catatan (dengan foto).</string>
     <string name="quest_lit_title">Apa terdapat penerangan di sini?</string>
     <string name="quest_openingHours_title">Bagaimana jam buka di sini?</string>
     <string name="quest_openingHours_signed_title">Apakah ada tanda yang menunjukkan jam buka di sini?</string>
-    <string name="quest_openingHours_resurvey_title">Apakah jam buka ini masih benar?</string>
     <string name="quest_placeName_title">Apa nama tempat ini?</string>
     <string name="quest_shop_type_title2">Apa jenis toko ini?</string>
     <string name="quest_smoking_title2">Apakah merokok diizinkan di sini?</string>
@@ -1301,8 +1294,6 @@ Anda dapat menemukan informasi donasi di situs web atau beranda proyek kami, Goo
     <string name="default_disabled_msg_visible_sign_moped">Jenis misi ini nonaktif secara bawaan karena akses moped hanya ditunjukkan oleh rambu-rambu tertentu di awal/akhir jalur sepeda.</string>
     <string name="quest_arrow_tutorial">Panah dalam ilustrasi menunjuk ke arah jalan yang dilalui pada peta di lokasi pin tengahnya. Cobalah memutar peta dan kamu akan mengerti.</string>
     <string name="info">Informasi lebih lanjut</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Itu dilarang.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Di perbolehkan</string>
     <string name="quest_buildingLevels_hint">Untuk bangunan di lereng, hitungan level dimulai dari permukaan tanah sisi terendah.
 
 Level dihitung sebagai level atap jika jendelanya berada di atap. Selanjutnya, atap dengan level atap nol belum tentu datar, hanya saja tidak cukup tinggi untuk satu level penuh.</string>
@@ -1343,7 +1334,6 @@ Level dihitung sebagai level atap jika jendelanya berada di atap. Selanjutnya, a
     <string name="action_messages">Tunjukkan pesan-pesan</string>
     <string name="action_create_new_poi">Buat baru</string>
     <string name="auth_error">Kesalahan autorisasi. Coba masuk akun lagi.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Sebenarnya, ada trotoar.</string>
     <string name="quest_bicycle_repair_station_services_title">Apa peralatan sepeda yang tersedia di sini?</string>
     <string name="quest_bicycle_repair_station_pump">Pompa</string>
     <string name="quest_bicycle_repair_station_tools">Beragam alat</string>
@@ -1426,7 +1416,6 @@ Contoh: 1,3 atau 2b,4,6.</string>
     <string name="quest_level_thing_title">Objek ini ada di lantai berapa?</string>
     <string name="quest_bicycle_charging_station_capacity_title">Berapa banyak sepeda yang bisa dicas di sini secara bersamaan?</string>
     <string name="quest_charging_station_bicycles_title">Apakah sepeda juga bisa dicas di sini?</string>
-    <string name="quest_tower_access_title">Siapa saja yang boleh mengakses menara ini? Bisa yang gratis ataupun berbayar.</string>
     <string name="quest_recycling_type_pet_bottles">Botol PET</string>
     <string name="quest_maxweight_add_sign">Tambah rambu</string>
     <string name="quest_maxweight_remove_sign">Hapus rambu</string>

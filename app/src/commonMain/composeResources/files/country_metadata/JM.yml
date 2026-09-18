@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Scotiabank, NCB, National Commercial Bank, Sagicor, Jamaica National, JNCB, JN]
 chargingStationOperators: [Evergo]
+domesticSocketTypes: [typeb, typea]
 isLeftHandTraffic: true
 mobileCountryCode: 338
 noParkingSignStyle: mutcd

@@ -1,7 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en, fr]
-atmOperators: [BCEL, LDB, JDB, Phongsavanh Bank, Joint Development Bank, STB, Lao Development Bank, Indochina Bank, APB, ANZ, BFL, BCEL ATM, LaoViet Bank, ເເເ, ທຄຕລ, bfl, Sacombank, Laoviet Bank, LDB Bank, JCB, Banque Franco-Lao, BCEL Public, Acleda]
+atmOperators: [BCEL, LDB, Phongsavanh Bank, JDB, Joint Development Bank, STB, Lao Development Bank, Indochina Bank, APB, ANZ, BFL, BCEL ATM, Sacombank, LaoViet Bank, Banque Franco-Lao, ເເເ, ທຄຕລ, bfl, Laoviet Bank, LDB Bank, JCB, Indochina, BCEL Public, Acleda]
 centerLineStyle: white
+chargingStationOperators: [LOCA]
+domesticSocketTypes: [universal_abco, universal_ac, typec, typeb, typea]
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 457
 noParkingLineStyle: yellow-white on curb

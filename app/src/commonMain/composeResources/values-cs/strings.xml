@@ -470,7 +470,6 @@ Pokud nejsou podél celé cesty žádné značky, které by omezovaly rychlost v
     <string name="underground">v podzemí</string>
     <string name="quest_sidewalk_value_yes">chodník</string>
     <string name="quest_sidewalk_value_no">bez chodníku</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Mají tu chodci zakázáno chodit po této cestě?</string>
     <string name="quest_buildingType_title">Jakého druhu je tato stavba?</string>
     <string name="pref_title_theme_select">Vyberte vzhled</string>
     <string name="theme_light">Světlý</string>
@@ -674,7 +673,6 @@ Pamatujte, že tato aplikace se zeptá na číslo budovy až po určení jejího
     <string name="at_housenumber">číslo domu %1$s</string>
     <string name="quest_openingHours_add_off_days">Přidat dny, kdy je zavřeno</string>
     <string name="quest_openingHours_off_day">Zavřeno</string>
-    <string name="quest_cycleway_resurvey_title">Je to tu stále aktuální situace cyklostezky?</string>
     <string name="pref_title_resurvey_intervals">Intervaly pro ověřování</string>
     <string name="resurvey_intervals_less_often">Ptát se méně často</string>
     <string name="resurvey_intervals_default">Výchozí</string>
@@ -887,7 +885,6 @@ Pokud jste zavaleni velkým množstvím úkolů, můžete si vždy v nastavení 
     <string name="quest_access_yes">Jakýkoliv člen široké veřejnosti</string>
     <string name="quest_access_customers">Kdokoliv, kdo přijel navštívit určité místo (např. jen zákazníci)</string>
     <string name="quest_access_private">Pouze lidé s povolením</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Jsou časy vybírání této poštovní poštovní schránky správné?</string>
     <string name="quest_bicycle_barrier_type_title">Jaký je tohle druh překážky bránící cyklistům v průjezdu?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonální vzhledem k cestě</string>
     <string name="quest_barrier_bicycle_type_tilted">Zúžený průjezd, menší nahoře</string>
@@ -925,8 +922,6 @@ Také můžete napsat poznámku (s fotografií)</string>
     <string name="quest_fireHydrant_position_sidewalk">Na chodníku</string>
     <string name="quest_fireHydrant_position_parking_lot">Na parkovacím místě</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Ano (přidejte poznámku)</string>
-    <string name="quest_smoothness_square_title">Jak kvalitní je povrch na tomto náměstí/návsi?</string>
-    <string name="quest_smoothness_road_title">Jak kvalitní je tu povrch této cesty?</string>
     <string name="quest_smoothness_title_excellent">Hladký a rovný</string>
     <string name="quest_smoothness_title_good">Víceméně rovný</string>
     <string name="quest_smoothness_title_intermediate">Trochu hrbolatý</string>
@@ -979,7 +974,6 @@ Také můžete napsat poznámku (s fotografií)</string>
     <string name="ar_core_tracking_error_camera_unavailable">Fotoaparát je používán jinou aplikací</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Držák na řidítka</string>
     <string name="quest_bicycle_parking_access_title2">Kdo tu může zaparkovat kolo? Parkování může být zdarma, nebo placené.</string>
-    <string name="quest_playground_access_title2">Kdo může používat toto hřiště?</string>
     <string name="ar_measure">Měření</string>
     <string name="ar_core_tracking_error_too_steep_angle">Příliš velký úhel, trochu ustupte</string>
     <string name="default_disabled_msg_no_ar">Pro vyřešení tohoto úkolu potřebujete svinovací metr, protože měření pomocí fotoaparátu není na tomto zařízení podporováno.</string>
@@ -1035,7 +1029,6 @@ Také můžete napsat poznámku (s fotografií)</string>
     <string name="quest_lit_title">Je to osvětleno?</string>
     <string name="quest_openingHours_title">Jaké jsou tu otevírací hodiny?</string>
     <string name="quest_openingHours_signed_title">Jsou tu uvedeny otevírací hodiny?</string>
-    <string name="quest_openingHours_resurvey_title">Jsou tyto otevírací hodiny stále platné?</string>
     <string name="quest_placeName_title">Jaký je název tohoto místa?</string>
     <string name="quest_shop_type_title2">Jakého typu je tento obchod?</string>
     <string name="quest_smoking_title2">Je tu povoleno kouření?</string>
@@ -1308,8 +1301,6 @@ Informace o dárcovství najdete na našem webu nebo na stránce projektu, Googl
     <string name="default_disabled_msg_visible_sign_moped">Tento typ úkolů je ve výchozím stavu zakázán, protože přístup mopedů je indikován jen specifickými značkami na začátku/konci cyklostezky.</string>
     <string name="quest_arrow_tutorial">Šipky v ilustraci ukazují do směrů, kam cesta na mapě vede od centrální pozice. Zkuste otočit mapu a pochopíte to.</string>
     <string name="info">Více informací</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Je zakázán.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Je povolen.</string>
     <string name="quest_buildingLevels_hint">U budov na svahu začíná počítání podlaží od přízemí na nejnižší straně.
 
 Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Tedy střechy s nulovým počtem podlaží nemusejí být ploché, stačí, že nejsou dost vysoké pro celé podlaží.</string>
@@ -1350,7 +1341,6 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="action_messages">Zobrazit zprávy</string>
     <string name="action_create_new_poi">Vytvořit nový</string>
     <string name="auth_error">Chyba autorizace. Zkuste se přihlásit znovu.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Aktuálně je tu chodník.</string>
     <string name="quest_bicycle_repair_station_services_title">Jaké vybavení na kola je tu k dispozici?</string>
     <string name="quest_bicycle_repair_station_pump">Hustilka</string>
     <string name="quest_bicycle_repair_station_tools">Různé nářadí</string>
@@ -1433,7 +1423,6 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
     <string name="quest_bicycle_charging_station_capacity_title">Kolik jízdních kol tu lze současně nabíjet?</string>
     <string name="quest_charging_station_bicycles_title">Lze tu nabíjet i jízdní kola?</string>
     <string name="quest_charging_station_bicycles_hint">Adaptéry pro nabíjení jízdních kol se zapojují do běžné zásuvky jako v domácnosti.</string>
-    <string name="quest_tower_access_title">Kdo má přístup na tuto věž? Může být zdarma nebo placený.</string>
     <string name="quest_recycling_type_pet_bottles">Láhve PET</string>
     <string name="quest_maxweight_add_sign">Přidat značku</string>
     <string name="quest_maxweight_remove_sign">Odebrat značku</string>
@@ -1506,4 +1495,16 @@ Podlaží se počítají jako střešní, pokud jejich okna jsou ve střeše. Te
 Jinak si můžete v obchodě s aplikacemi stáhnout jinou klávesnici. Na Androidu můžete chtít vyzkoušet FlorisBoard nebo HeliBoard.</string>
     <string name="bicycle_boulevard_is_a2">Je to cyklobulvár</string>
     <string name="bicycle_boulevard_is_not_a2">Není to cyklobulvár</string>
+    <string name="camera_permission_description">K přidávání fotografií k mapovým poznámkám je potřeba oprávnění pro fotoaparát.</string>
+    <string name="resurvey_title">Je tohle stále správně?</string>
+    <string name="add">Přidat</string>
+    <string name="quest_bothway_aerialway_confirm">Opravu může člověk jet tímto výtahem oběma směry?</string>
+    <string name="quest_doctor_type_title">Jací lékaři jsou tu přítomni?</string>
+    <string name="quest_generalFee_title3">Musí se tu za pobyt platit?</string>
+    <string name="quest_access_permit">Držitelé povolení (obecně dostupných)</string>
+    <string name="unit_day">den</string>
+    <string name="unit_hour">hodina</string>
+    <string name="unit_minute">minuta</string>
+    <string name="quest_parking_charge_title">Kolik se tu musí platit za parkování?</string>
+    <string name="quest_parking_charge_time_unit_label">za</string>
 </resources>

@@ -224,9 +224,6 @@
           "name": "تحويل أموال",
           "terms": ["تحويل أموال", "صرافة"]
         },
-        "amenity/bus_station": {
-          "name": "محطة الحافلات / صالة"
-        },
         "amenity/cafe": {
           "name": "مقهى",
           "terms": ["مقهى"]
@@ -348,9 +345,6 @@
         "amenity/driver_training": {
           "name": "أراضي تعليم السيلقة"
         },
-        "amenity/embassy": {
-          "name": "سفارة"
-        },
         "amenity/events_venue": {
           "name": "صالة مناسبات / قصر أفراح",
           "terms": ["صالة مناسبات", "قصر أفراح"]
@@ -404,9 +398,6 @@
         "amenity/fast_food/sandwich": {
           "name": "شطيرة وجبات سريعة",
           "terms": ["إفطار", "مقصف", "عشاء", "طعام"]
-        },
-        "amenity/ferry_terminal": {
-          "name": "محطة / صالة العبارات"
         },
         "amenity/fire_station": {
           "name": "محطة إطفاء حريق",
@@ -510,16 +501,9 @@
         "amenity/nightclub/lgbtq": {
           "name": "LGBTQ+ Nightclub"
         },
-        "amenity/nursing_home": {
-          "name": "دار التمريض"
-        },
         "amenity/parcel_locker": {
           "name": "صناديق استلام الشحنات البريدية",
           "terms": ["صناديق استلام البريد"]
-        },
-        "amenity/parking": {
-          "name": "مكان المواقف",
-          "terms": ["مكان انتظار سيارات"]
         },
         "amenity/parking/multi-storey": {
           "name": "مرآب وقوف متعدد الطوابق",
@@ -1245,13 +1229,6 @@
         "barrier/yes": {
           "name": "حاجز (من نوع غير محدد)"
         },
-        "boundary": {
-          "name": "حدود"
-        },
-        "boundary/administrative": {
-          "name": "حدود إدارية",
-          "terms": ["حدود إدارية", "تقسيمات إدارية"]
-        },
         "boundary/hazard": {
           "name": "منطقة خطرة"
         },
@@ -1487,9 +1464,6 @@
           "name": "جزء من مبنى",
           "terms": ["جزء مختلف من مبنى"]
         },
-        "building_point": {
-          "name": "مبنى"
-        },
         "cemetery/grave": {
           "name": "قبر",
           "terms": ["قبر"]
@@ -1609,9 +1583,6 @@
           "name": "قص ونسخ مفاتيح",
           "terms": ["قص مفاتيح", "نسخ مفاتيح", "ناسخ مفاتيح", "كيلونات", "أقفال"]
         },
-        "craft/locksmith": {
-          "name": "محل بيع أقفال ونسخ مفاتيح"
-        },
         "craft/metal_construction": {
           "name": "صناعات المعادن والمواد الصلبة",
           "terms": ["حديد", "ألمنويم", "معدن", "معادن", "فولاذ", "صلب", "صلبة", "مواد البناء المعدنية", "صناعات حديدية", "زخرفة حديد", "إصلاح"]
@@ -1683,9 +1654,6 @@
         "craft/stonemason": {
           "name": "قطع ونحت وتشكيل الحجارة",
           "terms": ["نحت الحجارة"]
-        },
-        "craft/tailor": {
-          "name": "خياط"
         },
         "craft/tiler": {
           "name": "مبلط",
@@ -1836,9 +1804,6 @@
           "name": "مخاضة -طريق يشق مجرى مائي",
           "terms": ["ممر مائي; ممر; مائي; ماء", "مخاضة", "مجرى الماء فوق الطريق"]
         },
-        "ford_line": {
-          "name": "مخاضة -طريق يشق مجرى مائي"
-        },
         "golf/bunker": {
           "name": "مصيدة الرمال (غولف)",
           "terms": ["مصيدة الرمال (غولف)"]
@@ -1907,14 +1872,6 @@
           "name": "مركز ولادة",
           "terms": ["مركز ولادة"]
         },
-        "healthcare/blood_donation": {
-          "name": "مركز التبرع بالدم",
-          "terms": ["تبرع بالدم"]
-        },
-        "healthcare/counselling": {
-          "name": "مركز استشارات طبية",
-          "terms": ["مركز استشارات طبية"]
-        },
         "healthcare/dentist/orthodontics": {
           "name": "أخصائي تقويم الأسنان",
           "terms": ["أخصائي تقويم الأسنان"]
@@ -1938,10 +1895,6 @@
         "healthcare/optometrist": {
           "name": "أخصائي بصريات",
           "terms": ["أخصائي البصريات", "نظارات", "محل نظارات", "نظارات وعدسات", "عدسات", "عدسات طبية", "فحص نظر"]
-        },
-        "healthcare/physiotherapist": {
-          "name": "علاج طبيعي وتأهيل طبي",
-          "terms": ["أخصائي العلاج الطبيعي", "علاج طبيعي", "تأهيل طبي"]
         },
         "healthcare/podiatrist": {
           "name": "طبيب الأقدام",
@@ -1976,9 +1929,6 @@
         "highway/bus_guideway": {
           "name": "مسار الحافلة الموجهة",
           "terms": ["مسار الحافلة الموجهة", "الحافلة الموجهة"]
-        },
-        "highway/bus_stop": {
-          "name": "محطة توقف حافلات"
         },
         "highway/construction": {
           "name": "الطريق قيد الإنشاء",
@@ -2359,9 +2309,6 @@
           "name": "ممر داخل المبنى",
           "terms": ["ممر داخل المبنى"]
         },
-        "indoor/corridor_line": {
-          "name": "ممر داخل المبنى"
-        },
         "indoor/door": {
           "name": "باب داخل المبنى",
           "terms": ["باب داخل المبنى", "باب داخلي"]
@@ -2401,9 +2348,6 @@
           "name": "مزرعة سمكية",
           "terms": ["مزرعة سمكية"]
         },
-        "landuse/basin": {
-          "name": "أرض حوضية طبيعية تحتوي الماء"
-        },
         "landuse/brownfield": {
           "name": "أرض صناعية سابقة",
           "terms": ["أرض صناعية سابقة"]
@@ -2423,9 +2367,6 @@
           "name": "منطقة بناء تحت الإنشاء",
           "terms": ["تحت الإنشاء"]
         },
-        "landuse/farm": {
-          "name": "أرض زراعية"
-        },
         "landuse/farmland": {
           "name": "أرض زراعية",
           "terms": ["أرض زراعية، فلاحة"]
@@ -2441,10 +2382,6 @@
         "landuse/forest": {
           "name": "الغابات المُدارة",
           "terms": ["الغابات المُدارة"]
-        },
-        "landuse/garages": {
-          "name": "مرائب/كراجات",
-          "terms": ["مرائب", "كراجات", "جراجات", "أراضي مرئاب"]
         },
         "landuse/grass": {
           "name": "عشب",
@@ -2522,9 +2459,6 @@
           "name": "مشتل",
           "terms": ["مشتل"]
         },
-        "landuse/pond": {
-          "name": "بركة ماء"
-        },
         "landuse/quarry": {
           "name": "كسّارة، مقلع حجارة",
           "terms": ["محجر", "مقلع"]
@@ -2540,9 +2474,6 @@
         "landuse/religious": {
           "name": "منطقة دينية",
           "terms": ["منطقة دينية"]
-        },
-        "landuse/reservoir": {
-          "name": "خزان"
         },
         "landuse/residential": {
           "name": "منطقة سكنية",
@@ -2934,9 +2865,6 @@
           "name": "مضمار السباق (غير رياضة السيارات)",
           "terms": ["مضمار السباق (غير رياضة السيارات)"]
         },
-        "leisure/track/athletics/running": {
-          "name": "مسار جري"
-        },
         "leisure/track/cycling": {
           "name": "مسار دراجات هوائية",
           "terms": ["مسار دراجات هوائية"]
@@ -3295,10 +3223,6 @@
         "military/checkpoint": {
           "name": "نقطة تفتيش أو حاجز عسكري",
           "terms": ["نقطة تفتيش عسكرية", "حاجز عسكري"]
-        },
-        "military/nuclear_explosion_site": {
-          "name": "موقع انفجار نووي",
-          "terms": ["موقع انفجار نووي"]
         },
         "military/office": {
           "name": "دائرة/مفوضية عسكرية",
@@ -3659,9 +3583,6 @@
           "name": "مكتب قانوني",
           "terms": ["مكتب محاماة، اﻹدارة القانونية، المحكمة،"]
         },
-        "office/lawyer/notary": {
-          "name": "مكتب كتابة عدل / موثق"
-        },
         "office/moving_company": {
           "name": "مكتب شركة نقل",
           "terms": ["مكتب شركة نقل"]
@@ -3720,9 +3641,6 @@
         "office/therapist": {
           "name": "المعالج",
           "terms": ["معالج، معالج فيزيائي، طبيب، مُمرض"]
-        },
-        "office/travel_agent": {
-          "name": "وكالة السفر"
         },
         "office/water_utility": {
           "name": "مكتب شركة مياه",
@@ -4061,8 +3979,7 @@
           "terms": ["محول الكهربائي"]
         },
         "public_transport/platform": {
-          "name": "منصة انتظار وسائل النقل العام",
-          "terms": ["منصة انتظار وسائل النقل العام", "منصةانتظار وسائل النقل العام", "مكان لركوب الباص", "رصيف انتظار النقل العام"]
+          "name": "منصة انتظار وسائل النقل العام"
         },
         "public_transport/platform/aerialway": {
           "name": "منصة انتظار وسائل النقل بالكابلات",
@@ -4135,12 +4052,10 @@
           "terms": ["محطة توقف حافلة كهربائية"]
         },
         "public_transport/platform_point": {
-          "name": "منصة ركوب وتوقف وسائل النقل العام",
-          "terms": ["منصة ركوب وتوقف وسائل النقل العام"]
+          "name": "منصة ركوب وتوقف وسائل النقل العام"
         },
         "public_transport/station": {
-          "name": "محطة نقل عام",
-          "terms": ["محطة نقل عام"]
+          "name": "محطة نقل عام"
         },
         "public_transport/station_aerialway": {
           "name": "محطة النقل بالكابلات",
@@ -4187,8 +4102,7 @@
           "terms": ["منطقة توقف وسائل نقل عام"]
         },
         "public_transport/stop_position": {
-          "name": "موقع توقف وسائل نقل عام",
-          "terms": ["موقع توقف وسائل نقل عام"]
+          "name": "موقع توقف وسائل نقل عام"
         },
         "public_transport/stop_position_aerialway": {
           "name": "موقع توقف وسائل نقل بالكابلات",
@@ -4253,9 +4167,6 @@
           "name": "مسار قطار جبلي مائل",
           "terms": ["مسار قطار جبلي مائل"]
         },
-        "railway/halt": {
-          "name": "محطة قطار صغيرة (يتوقف عندها القطار عند الطلب)"
-        },
         "railway/level_crossing": {
           "name": "معبر سيارات على السكة الحديدية",
           "terms": ["تقاطع سكة حديدية", "تقاطع طريق سيارات مع سكة حديدية", "مزلقان"]
@@ -4284,9 +4195,6 @@
           "name": "مسار قطار ضيق",
           "terms": ["مسار قطار ضيق"]
         },
-        "railway/platform": {
-          "name": "منصة انتظار وركوب القطار"
-        },
         "railway/preserved": {
           "name": "مسار سكة حديد قديمة/تراثية",
           "terms": ["مسار سكة حديد قديمة/تراثية"]
@@ -4306,9 +4214,6 @@
         "railway/signal": {
           "name": "إشارة مرور السكك الحديدية",
           "terms": ["إشارة مرور السكك الحديدية"]
-        },
-        "railway/station": {
-          "name": "محطة قطار"
         },
         "railway/subway": {
           "name": "مسار مترو الانفاق",
@@ -4348,10 +4253,6 @@
         "relation": {
           "name": "علاقة",
           "terms": ["علاقة"]
-        },
-        "route/ferry": {
-          "name": "مسار عبّارة",
-          "terms": ["مسار سفن", "مسار عبارات"]
         },
         "seamark": {
           "name": "علامة بحرية"
@@ -5393,10 +5294,6 @@
           "name": "مسار خط أنابيب",
           "terms": ["مسار خط أنابيب"]
         },
-        "type/route/power": {
-          "name": "مسار خط كهربائي",
-          "terms": ["مسار الطاقة", "مسار الكهرباء"]
-        },
         "type/route/railway": {
           "name": "مسار السكة الحديدية",
           "terms": ["مسار السكة الحديدية", "مسار سكة القطار"]
@@ -5510,6 +5407,206 @@
         "waterway/weir": {
           "name": "هدار - سد صغير",
           "terms": ["هدار، سد صغير"]
+        },
+        "boundary": {
+          "name": "حدود",
+          "terms": ["حدود"]
+        },
+        "building_point": {
+          "name": "مبنى",
+          "terms": ["مبنى", "بناية", "عمارة", "بناء", "منشأة"]
+        },
+        "ford_line": {
+          "name": "مخاضة -طريق يشق مجرى مائي",
+          "terms": ["ممر مائي; ممر; مائي; ماء", "مخاضة", "مجرى الماء فوق الطريق"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "علامة الحد الأعلى لسرعة الطريق",
+          "terms": ["علامة الحد الأعلى لسرعة الطريق"]
+        },
+        "shop/ice_cream": {
+          "name": "محل بيع المثلجات",
+          "terms": ["مثلجات", "ايس كريم"]
+        },
+        "route/ferry": {
+          "name": "مسار عبّارة",
+          "terms": ["مسار سفن", "مسار عبارات"]
+        },
+        "railway/halt": {
+          "name": "محطة قطار صغيرة (يتوقف عندها القطار عند الطلب)",
+          "terms": ["محطة القطار (توقف/ طلب)"]
+        },
+        "railway/platform": {
+          "name": "منصة انتظار وركوب القطار",
+          "terms": ["منصة انتظار وركوب القطار"]
+        },
+        "railway/station": {
+          "name": "محطة قطار",
+          "terms": ["محطة القطار"]
+        },
+        "office/travel_agent": {
+          "name": "وكالة السفر",
+          "terms": ["وكالة سفر"]
+        },
+        "office/lawyer/notary": {
+          "name": "مكتب كتابة عدل / موثق",
+          "terms": ["كاتب عدل، موثق"]
+        },
+        "natural/wood_point": {
+          "name": "خشب طبيعي",
+          "terms": ["خشب طبيعي"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "مسار جري",
+          "terms": ["مسار جري"]
+        },
+        "landuse/basin": {
+          "name": "أرض حوضية طبيعية تحتوي الماء",
+          "terms": ["أرض حوضية تحتوي الماء", "قلته", "مَجمع مياه", "أرض تجمع المياه", "أرض تحتوي المياه", "وقر", "جلته", "وقبه"]
+        },
+        "landuse/reservoir": {
+          "name": "خزان",
+          "terms": ["بحيرة اصطناعية", "خزان مياه"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "منطقة صناعية",
+          "terms": ["صناعية; صناعي; صناعات; منطقة صناعات; منطقة صناعة; صناعة; صنع"]
+        },
+        "indoor/corridor_line": {
+          "name": "ممر داخل المبنى",
+          "terms": ["ممر داخل المبنى"]
+        },
+        "highway/bus_stop": {
+          "name": "محطة توقف حافلات",
+          "terms": ["محطة توقف حافلات"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "مضمار سباق السيارات",
+          "terms": ["مضمار سباق السيارات"]
+        },
+        "highway/traffic_sign": {
+          "name": "إشارات المرور",
+          "terms": ["إشارة مرورية", "علامات المرور"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "وصلة لطريق سريع",
+          "terms": ["رابط لطريق سريع", "وصلة طريق سريع", "طرق مرتبطة بالطريق السريع"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "وصلة طريق أولي",
+          "terms": ["رابط لطريق أولي", "وصلة طريق أولي"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "وصلة لطريق رئيسي",
+          "terms": ["رابط لشارع رئيسي"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "مسار مشاة و دراجات هوائية",
+          "terms": ["مسار مشاة و دراجات هوائية"]
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "معبر مشاة ودراجات هوائية",
+          "terms": ["معبر مشاة ودراجات هوائية"]
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "معبر دراجات هوائية بعلامات مرورية",
+          "terms": ["معبر دراجات هوائية بعلامات مرورية"]
+        },
+        "craft/locksmith": {
+          "name": "محل بيع أقفال ونسخ مفاتيح",
+          "terms": ["صانع اﻷقفال، أقفال، حداد،"]
+        },
+        "craft/tailor": {
+          "name": "خياط",
+          "terms": ["خياط", "ترزي"]
+        },
+        "building/entrance": {
+          "name": "مدخل / مخرج",
+          "terms": ["مدخل/مخرج", "دخول/خروج", "مخرج", "مدخل", "خروج"]
+        },
+        "building/glasshouse": {
+          "name": "محمية زراعية",
+          "terms": ["دفيئة زراعية", "بيت بلاستيكي", "بيت زجاجي"]
+        },
+        "building/house/detached": {
+          "name": "منزل منفصل",
+          "terms": ["مستقل", "منفصل", "مبنى مستقل"]
+        },
+        "building/house/semi-detached": {
+          "name": "مبنى شبه منفصل",
+          "terms": ["مبنى شبه منفصل", "مبنى شبه منعزل", "مبنى شبه مستقل"]
+        },
+        "boundary/administrative": {
+          "name": "حدود إدارية",
+          "terms": ["حدود إدارية", "تقسيمات إدارية"]
+        },
+        "amenity/bus_station": {
+          "name": "محطة الحافلات / صالة",
+          "terms": ["محطة الحافلات"]
+        },
+        "amenity/coworking_space": {
+          "name": "مساحة عمل مشتركة",
+          "terms": ["مساحة عمل مشتركة"]
+        },
+        "amenity/embassy": {
+          "name": "سفارة",
+          "terms": ["سفارة"]
+        },
+        "amenity/ferry_terminal": {
+          "name": "محطة / صالة العبارات",
+          "terms": ["محطة / صالة العبارات"]
+        },
+        "amenity/nursing_home": {
+          "name": "دار التمريض",
+          "terms": ["دار التمريض"]
+        },
+        "aerialway/station": {
+          "name": "محطة النقل بالكابلات",
+          "terms": ["محطة النقل بالكابلات; محطة تلفريك"]
+        },
+        "@templates/contact": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
+        },
+        "@templates/internet_access": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
+        },
+        "@templates/poi": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
+        },
+        "@templates/crossing/markings": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "نقطة",
+          "terms": ["نقطة"]
         }
       }
     }

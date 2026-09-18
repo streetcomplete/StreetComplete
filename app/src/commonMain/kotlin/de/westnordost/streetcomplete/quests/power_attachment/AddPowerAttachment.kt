@@ -26,7 +26,7 @@ class AddPowerAttachment : OsmFilterQuestType<PowerAttachment>() {
     """
     override val changesetComment = "Specify line_attachment power support"
     override val wikiLink = "Key:line_attachment"
-    override val icon = Res.drawable.quest_power
+    override val icon = Res.drawable.quest_power_line
     override val title = Res.string.quest_powerAttachment_title
     override val achievements = listOf(BUILDING)
     override val defaultDisabledMessage = Res.string.default_disabled_msg_difficult_and_time_consuming

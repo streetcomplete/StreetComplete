@@ -467,7 +467,6 @@ Ez badago seinalerik nabarmendutako zatiari dagokion seinalerik kale osoan, lehe
     <string name="underground">lurrazpian</string>
     <string name="quest_sidewalk_value_yes">espaloia</string>
     <string name="quest_sidewalk_value_no">espaloirik ez</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Oinezkoek debekatuta al dute bide honetan ibiltzea?</string>
     <string name="quest_buildingType_title">Ze motako eraikina da hau?</string>
     <string name="pref_title_theme_select">Hautatu azala</string>
     <string name="theme_light">Argia</string>
@@ -670,7 +669,6 @@ mailak</string>
     <string name="at_housenumber">etxe zenbakia %1$s</string>
     <string name="quest_openingHours_add_off_days">Itxitako egunak gehitu</string>
     <string name="quest_openingHours_off_day">Itxita dagoen eguna</string>
-    <string name="quest_cycleway_resurvey_title">Bizikletentzako bidearen egoerak honela jarraitzen du?</string>
     <string name="pref_title_resurvey_intervals">Berraztertze tarteak</string>
     <string name="resurvey_intervals_less_often">Ez galdetu hain sarritan</string>
     <string name="resurvey_intervals_default">Lehenetsia</string>
@@ -882,7 +880,6 @@ Nekatuta bazaude egiten diren galdera piloarekin, beti duzu aukera galdera mota 
     <string name="quest_access_yes">Publiko orokorreko edozein</string>
     <string name="quest_access_customers">Toki zehatz batera doan oro (adibidez, bezeroak bakarrik)</string>
     <string name="quest_access_private">Baimenduak soilik</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Postontzi honen jasotze orduak zuzenak al dira oraindik?</string>
     <string name="quest_bicycle_barrier_type_title">Zein motakoa da bizikletentzako hesi hau?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Bidearekiko diagonala</string>
     <string name="quest_barrier_bicycle_type_tilted">Pasabide estua, estuagoa goiko aldean</string>
@@ -919,8 +916,6 @@ Bestela, ohar bat utz dezakezu (argazki batekin).</string>
     <string name="quest_fireHydrant_position_sidewalk">Espaloian</string>
     <string name="quest_fireHydrant_position_parking_lot">Aparkaleku batean</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Bai (utzi oharra)</string>
-    <string name="quest_smoothness_square_title">Zein da karratu honen azaleraren kalitatea?</string>
-    <string name="quest_smoothness_road_title">Zein da bide honen azaleraren kalitatea?</string>
     <string name="quest_smoothness_title_excellent">Leuna eta berdina</string>
     <string name="quest_smoothness_title_good">Gehienetan</string>
     <string name="quest_smoothness_title_intermediate">Apur bat gorabeheratsua</string>
@@ -975,7 +970,6 @@ harguneak</string>
     <string name="ar_core_tracking_error_camera_unavailable">Kamera beste aplikazio bat erabiltzen ari da</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Eskulekuaren euskarria</string>
     <string name="quest_bicycle_parking_access_title2">Nok aparka dezake bizikleta hemen? Aparkalekua doakoa edo ordainpekoa izan daiteke.</string>
-    <string name="quest_playground_access_title2">Nork erabili dezake jolastoki hau?</string>
     <string name="ar_measure">Neurria</string>
     <string name="ar_core_tracking_error_too_steep_angle">Oso aldapatsua, aldendu pixka bat</string>
     <string name="default_disabled_msg_no_ar">Zinta neurgailua behar duzu bilaketa hau konpontzeko, kamerarekin neurtzea ez baita onartzen gailu honetan.</string>
@@ -1031,7 +1025,6 @@ harguneak</string>
     <string name="quest_lit_title">Ba al dago argirik hemen?</string>
     <string name="quest_openingHours_title">Zer ordutan irekitzen du?</string>
     <string name="quest_openingHours_signed_title">Irekitzeko ordutegia agerian dago?</string>
-    <string name="quest_openingHours_resurvey_title">Ordutegia zuzena da oraindik?</string>
     <string name="quest_placeName_title">Zein da toki honen izena?</string>
     <string name="quest_shop_type_title2">Zein da denda mota hau?</string>
     <string name="quest_smoking_title2">Ba al dago erretzerik hemen?</string>
@@ -1307,8 +1300,6 @@ Diru-emateko informazioa gure web horrian aurki dezakezu, Google Play-k ez digu 
     <string name="default_disabled_msg_visible_sign_moped">Galdera hau desgaituta dago, ziklomotorren sarbidea bidegorri baten hasieran edo amaieran seinale zehatz batek bakarrik adierazten duelako.</string>
     <string name="quest_arrow_tutorial">Irudiko geziek mapa doan lekura apuntatzen dute, bere pin-aren kokapenaren erdian. Biratu mapa ta hor izango duzu.</string>
     <string name="info">Informazio gehio</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Debekatuta.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Baimenduta.</string>
     <string name="quest_buildingLevels_hint">Aldapa bateko eraikinetarako, alde baxueneko lur mailatik hasi behar da kontatzen.
 
 Maila bat sabai maila da leihoak sabaian dituenean. Beraz, sabai mailarik ez duten sabaiak ez dira nahitaez lauak izan behar, nahikoa da maila oso bat egiteko bezain altuak ez badira</string>
@@ -1354,7 +1345,6 @@ Maila bat sabai maila da leihoak sabaian dituenean. Beraz, sabai mailarik ez dut
     <string name="action_messages">Erakutsi mezuak</string>
     <string name="action_create_new_poi">Sortu berri bat</string>
     <string name="auth_error">Baimen-errorea. Saiatu berriro sartzen.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Egia esan, espaloia dago.</string>
     <string name="quest_bicycle_repair_station_services_title">Zein bizikleta-ekipamendua dago hemen?</string>
     <string name="quest_bicycle_repair_station_pump">Ponpa</string>
     <string name="quest_bicycle_repair_station_tools">Hainbat tresna</string>
@@ -1446,7 +1436,6 @@ Adibidez 1,3 edo 2b,4,6.</string>
     <string name="quest_bicycle_charging_station_capacity_title">Zenbat bizikleta kargatu daitezke bertan denbora berean?</string>
     <string name="quest_charging_station_bicycles_title">Hemen bizikletak ere kargatu daitezke?</string>
     <string name="quest_charging_station_bicycles_hint">Bizikleta-kargagailuen egokigailuak etxeko entxufe arruntetara konektatzen dira.</string>
-    <string name="quest_tower_access_title">Nor sar daiteke dorre honetara? Doakoa edo ordainpekoa da.</string>
     <string name="quest_recycling_type_pet_bottles">PET botilak</string>
     <string name="quest_maxweight_add_sign">Gehitu ikurra</string>
     <string name="quest_maxweight_remove_sign">Kendu ikurra</string>

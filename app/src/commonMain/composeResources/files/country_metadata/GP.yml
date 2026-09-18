@@ -2,4 +2,5 @@
 atmOperators: [La Banque Postale, Crédit Agricole, Crédit Mutuel, Caisse d'Épargne]
 chargingStationOperators: [Green Technologie, Freshmile, EZdrive]
 clothesContainerOperators: [Recyclerie Solidaire]
+domesticSocketTypes: [typee, typec]
 officialLanguages: [fr]

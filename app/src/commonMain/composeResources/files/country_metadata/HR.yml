@@ -1,10 +1,11 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [sr, it]
-atmOperators: [Zagrebačka banka, Euronet, Erste Bank, PBZ, Privredna banka Zagreb, Hrvatska poštanska banka, OTP banka, Erste, HPB, Raiffeisen bank, Auro Domus, Addiko Bank, OTP Bank, Raiffeisen Bank, Euronet Worldwide, ZABA, RBA, Monestiq, Raiffeisen, OTP, OTP Banka, otpbanka, Shitcoins.club, MoneyGet, Splitska Banka, Privredna Banka Zagreb, Splitska banka, Karlovačka banka, Addiko, optbanka, Payten, ATM, Zaba, Raiffeisenbank Austria, Hypo, Erste Banka, Zagrebačka banka d.d., Zagrebačka Banka, Raiffeisenbank, Raiffeisen BANK, Privredna banka, PBZ bankomat, Erste bankomat, Erste Bank Croatia, Agram banka, Agram Banka, otp banka, Sberbank, KentBank, Intesa Sanpaolo, Hypo Alpe Adria, HPB Partner, Cashere, Aura Domus, Addiko bank, zaba, Societe Generale - Splitska banka, Raiffeisen banka, Payout, OTP bankomat, OTP banka d.d., Kreditna banka Zagreb, Jadranska banka, Jadranska Banka, HypoGroup Alpe Adria, HNB, HBP, EuroNet, Euonet, Erste&Steiermärkische Bank, Erste bank, Erste & Steiermärkische banka, ERSTE, Bankomat]
-chargingStationOperators: [ELEN, Qelo, Petrol, Tesla, Ionity, Lidl, Elen, Hrvatski Telekom, Kaufland, MOL, Hrvatski telekom, GreenWay, Absolute, elepert, elen, Electrip, go2bike, 'Tesla, Inc.', T-Mobile, Mol, MOL Plugee, Eurokod]
-chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
-clothesContainerOperators: [Čistoća]
+atmOperators: [Zagrebačka banka, Euronet, Erste Bank, PBZ, Privredna banka Zagreb, Hrvatska poštanska banka, OTP banka, Erste, HPB, Raiffeisen bank, Auro Domus, Addiko Bank, OTP Bank, Raiffeisen Bank, Euronet Worldwide, ZABA, RBA, Monestiq, Raiffeisen, OTP, otpbanka, OTP Banka, Shitcoins.club, MoneyGet, Splitska Banka, Privredna Banka Zagreb, Splitska banka, Karlovačka banka, Addiko, optbanka, Payten, ATM, Zaba, Raiffeisenbank Austria, Hypo, Erste Banka, Agram banka, Zagrebačka banka d.d., Zagrebačka Banka, Raiffeisenbank, Privredna banka, PBZ bankomat, Erste bankomat, Erste Bank Croatia, Agram Banka, otp banka, Sberbank, Raiffeisen BANK, KentBank, Intesa Sanpaolo, Hypo Alpe Adria, HPB Partner, Cashere, Addiko bank, zaba, Societe Generale - Splitska banka, Raiffeisen banka, Payout, OTP bankomat, OTP banka d.d., Kreditna banka Zagreb, Jadranska banka, Jadranska Banka, HypoGroup Alpe Adria, HNB, HBP, EuroNet, Euonet, Erste&Steiermärkische Bank d.d., Erste&Steiermärkische Bank, Erste bank, Erste & Steiermärkische banka, ERSTE, Bankomat, Aura Domus]
+chargingStationOperators: [ELEN, Qelo, Petrol, Tesla, Lidl, Ionity, Elen, Hrvatski Telekom, Kaufland, elen, MOL, Hrvatski telekom, GreenWay, Absolute, elepert, Electrip, E.ON, go2bike, 'Tesla, Inc.', T-Mobile, Mol, MOL Plugee, Eurokod]
+chargingStationSocketTypes: [type2_cable, type2, type2_combo]
+clothesContainerOperators: [Čistoća Rijeka, Čistoća]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typef, typec]
 exclusiveCycleLaneStyle: yellow
 hasAdvisoryCycleLane: false
 hasAdvisorySpeedLimitSign: true
@@ -17,7 +18,7 @@ noParkingSignStyle: vienna
 noStoppingSignStyle: vienna
 officialLanguages: [hr]
 orchardProduces: [grape, olive, walnut, hazelnut, apple, plum, cherry, orange, peach, pear, almond, chilli_pepper, sweet_pepper, fig, tomato, blueberry]
-parcelLockerBrand: [Paket24, Box Now, GLS, GLS Paketomat, DPD Pickup Station, BoxNow, Overseas Express Paketomat, Paketomat, Overseas express, DHL, City Express]
+parcelLockerBrand: [Paket24, Box Now, GLS, GLS Paketomat, DPD Pickup Station, BoxNow, Overseas Express Paketomat, Paketomat, Overseas express, Overseas, DHL, City Express]
 popularSports: [soccer, tennis, basketball, boules, handball]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: bottom

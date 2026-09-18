@@ -1,4 +1,57 @@
 <!-- Do not edit! This file was generated automatically from CHANGELOG.md via UpdateChangelogTask -->
+<h2>64.0-alpha1</h2>
+<p>🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all 
+quest forms, a side effect of the migration to a multiplatform UI framework. An iOS version of the 
+app has now come within reach! (<a href="https://github.com/streetcomplete/StreetComplete/issues/6842">#6842</a>).
+<a href="https://github.com/kiliankoe">kiliankoe</a> (<a href="https://github.com/streetcomplete/StreetComplete/issues/6989">#6989</a>), <a href="https://github.com/maxwellward">maxwellward</a> (<a href="https://github.com/streetcomplete/StreetComplete/issues/7033">#7033</a>), <a href="https://github.com/sargunv">sargunv</a> (<a href="https://github.com/streetcomplete/StreetComplete/issues/7123">#7123</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7124">#7124</a>) helped a bit, too.</p>
+<h3>General</h3>
+<ul>
+<li>Re-did UI for splitting ways: It is now based on the crosshair (like moving node and overlay) instead of tapping where to split</li>
+<li>Improved UI for attaching tracks and images to a note and undoing the same</li>
+<li>Now you must press &quot;back&quot; to close a quest form, clicking on the map will not close the form
+  anymore (this is a bit of a technical limitation of the new implementation)</li>
+<li>Serbian language in Latin script is now available again (<a href="https://github.com/streetcomplete/StreetComplete/issues/6914">#6914</a>)</li>
+<li>All forms with free text input: Visually show error state when input exceeds 255 characters</li>
+<li>Improved quest creation processing speed after download by about 50%! (<a href="https://github.com/streetcomplete/StreetComplete/issues/7099">#7099</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+</ul>
+<h3>New Quests</h3>
+<ul>
+<li><em>&quot;How much do you need to pay to park here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/6653">#6653</a>), thanks <a href="https://github.com/marekkrug">marekkrug</a></li>
+<li><em>&quot;What doctors are present here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/7044">#7044</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+<li><em>&quot;What type of vending machine is this?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/7061">#7061</a>), by <a href="https://github.com/paulklie">paulklie</a>, thanks <a href="https://github.com/Amaanprobably">Amaanprobably</a></li>
+<li><em>&quot;Who may enter here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/7071">#7071</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7109">#7109</a>), by <a href="https://github.com/esilja">esilja</a>. Replaces previous quests that asked for playground and tower access</li>
+</ul>
+<h3>Fixes</h3>
+<ul>
+<li>Fix crash when trying to report another crash via e-mail 😬 (<a href="https://github.com/streetcomplete/StreetComplete/issues/7052">#7052</a>)</li>
+<li>Post box was missing in things overlay (<a href="https://github.com/streetcomplete/StreetComplete/issues/6976">#6976</a>)</li>
+<li>Sharing logs no longer crashes when the log is too large (<a href="https://github.com/streetcomplete/StreetComplete/issues/5561">#5561</a>)</li>
+<li>UI now prevents possibility to create duplicate notes (<a href="https://github.com/streetcomplete/StreetComplete/issues/4853">#4853</a>)</li>
+<li>Context menus now appear at less wrong positions (<a href="https://github.com/streetcomplete/StreetComplete/issues/6665">#6665</a>)</li>
+<li>&quot;Are you sure?&quot; dialog had poor contrast in dark mode (<a href="https://github.com/streetcomplete/StreetComplete/issues/6753">#6753</a>)</li>
+<li>Fix rare crash in places overlay (<a href="https://github.com/streetcomplete/StreetComplete/issues/6648">#6648</a>) </li>
+<li>Quest form used to not have padding for the camera notch (<a href="https://github.com/streetcomplete/StreetComplete/issues/6764">#6764</a>)</li>
+<li>Internet access: &quot;none&quot; option was not exclusive (<a href="https://github.com/streetcomplete/StreetComplete/issues/7016">#7016</a>)</li>
+<li>Fix formatting of links in notes (<a href="https://github.com/streetcomplete/StreetComplete/issues/7048">#7048</a>)</li>
+<li>Fix crash in postbox collection form when sending app to background</li>
+<li>Other small (visual) fixes (<a href="https://github.com/streetcomplete/StreetComplete/issues/6827">#6827</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7007">#7007</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6981">#6981</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7070">#7070</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7074">#7074</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7115">#7115</a>…), thanks <a href="https://github.com/esilja">esilja</a>, <a href="https://github.com/paulklie">paulklie</a></li>
+</ul>
+<h3>Quest improvements</h3>
+<ul>
+<li>Parking fee: Don't ask for customer parking (<a href="https://github.com/streetcomplete/StreetComplete/issues/6996">#6996</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+<li>Parking access: Add &quot;permit&quot; as answer option (<a href="https://github.com/streetcomplete/StreetComplete/issues/2662">#2662</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7058">#7058</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+<li>Crossings: Don't ask for islands and kerb height on continuous crossings (<a href="https://github.com/streetcomplete/StreetComplete/issues/6983">#6983</a>), by <a href="https://github.com/eginhard">eginhard</a></li>
+<li>BBQ fuel: Allow to specify several fuels (<a href="https://github.com/streetcomplete/StreetComplete/issues/6915">#6915</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7028">#7028</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+<li>Toilets fee: Don't ask in Australia and New Zealand (<a href="https://github.com/streetcomplete/StreetComplete/issues/7011">#7011</a>), by <a href="https://github.com/andrewharvey">andrewharvey</a></li>
+<li>Many quests are also asked for relations now (<a href="https://github.com/streetcomplete/StreetComplete/issues/7086">#7086</a>), by <a href="https://github.com/paulklie">paulklie</a></li>
+<li>Toilets fee: Allow answering that there's a fee only for non-customers (<a href="https://github.com/streetcomplete/StreetComplete/issues/7050">#7050</a>), by <a href="https://github.com/esilja">esilja</a></li>
+<li>Add a few icons for various quests (<a href="https://github.com/streetcomplete/StreetComplete/issues/7128">#7128</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7100">#7100</a>), by <a href="https://github.com/Amaanprobably">Amaanprobably</a></li>
+<li>Other small improvements that improve clarity (<a href="https://github.com/streetcomplete/StreetComplete/issues/6991">#6991</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/6984">#6984</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7003">#7003</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7020">#7020</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7027">#7027</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7025">#7025</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7049">#7049</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7072">#7072</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7076">#7076</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7091">#7091</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7118">#7118</a>, <a href="https://github.com/streetcomplete/StreetComplete/issues/7119">#7119</a>), thanks <a href="https://github.com/paulklie">paulklie</a>, <a href="https://github.com/mcliquid">mcliquid</a></li>
+</ul>
+<h3>Problematic Quests removed</h3>
+<ul>
+<li><em>&quot;Are pedestrians forbidden to walk on this road without a sidewalk here?&quot;</em> (<a href="https://github.com/streetcomplete/StreetComplete/issues/7014">#7014</a>)</li>
+</ul>
 <h2>v63.4</h2>
 <p>Fix in certain languages (such as French), presets wouldn't load, which made the app unusable. Regression from v63.3 (<a href="https://github.com/streetcomplete/StreetComplete/issues/6964">#6964</a>)</p>
 <h2>v63.3</h2>
@@ -253,8 +306,8 @@
 </ul>
 <h2>v61.0</h2>
 <h3>Android below 7.1 no longer supported (<a href="https://github.com/streetcomplete/StreetComplete/issues/6210">#6210</a>)</h3>
-<p>In reality, support for Android versions below 7.1 has already been just on-paper for a while now, 
-as more and more issues with old Androids have been popping up lately that cannot be fixed on our 
+<p>In reality, support for Android versions below 7.1 has already been just on-paper for a while now,
+as more and more issues with old Androids have been popping up lately that cannot be fixed on our
 side. Luckily, it seems that &gt;99.6% of app users already use Android 7.1 and above. (See <a href="https://github.com/streetcomplete/StreetComplete/issues/6210">#6210</a>)</p>
 <h3>Main screen improvements (<a href="https://github.com/streetcomplete/StreetComplete/issues/6213">#6213</a>)</h3>
 <p>Cleaned up the appearance of the main screen a bit:</p>

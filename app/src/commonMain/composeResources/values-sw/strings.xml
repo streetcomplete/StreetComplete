@@ -463,7 +463,6 @@ Ikiwa hakuna ishara kwenye barabara nzima zinazotumika kwa sehemu iliyoangaziwa,
     <string name="underground">chini ya ardhi</string>
     <string name="quest_sidewalk_value_yes">Njia ya pembezoni mwa barabara</string>
     <string name="quest_sidewalk_value_no">hakuna njia pembeni mwa barabara</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Je, watembea kwa miguu hawaruhusiwi kutembea kwenye barabara hii hapa?</string>
     <string name="quest_buildingType_title">Jengo hili ni la aina gani?</string>
     <string name="pref_title_theme_select">Chagua mandhari</string>
     <string name="theme_light">Mwanga</string>
@@ -657,7 +656,6 @@ Ikiwa hakuna ishara kwenye barabara nzima zinazotumika kwa sehemu iliyoangaziwa,
     <string name="at_housenumber">nambari ya nyumba %1$s</string>
     <string name="quest_openingHours_add_off_days">Ongeza siku za mzpumziko</string>
     <string name="quest_openingHours_off_day">Siku ya mapumziko</string>
-    <string name="quest_cycleway_resurvey_title">Je, hii bado ni hali ya uendeshaji baiskeli hapa?</string>
     <string name="pref_title_resurvey_intervals">Vipindi vya utafiti</string>
     <string name="resurvey_intervals_less_often">Uliza mara chache</string>
     <string name="resurvey_intervals_default">Chaguomsingi</string>
@@ -868,7 +866,6 @@ Iwapo umezidiwa na idadi ya matukio, unaweza kuweka sawa kila wakati ni tukio ga
     <string name="quest_access_yes">Mwanachama yeyote wa umma kwa ujumla</string>
     <string name="quest_access_customers">Mtu yeyote anatetembelea mahali maalum (mfano wateja pekee)</string>
     <string name="quest_access_private">Mtu au Watu binafsi pekee walio na ruhusa</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Je, muda wa kuchukua kisanduku hiki cha mkusanyiko bado ni sahihi?</string>
     <string name="quest_bicycle_barrier_type_title">Hii ni aina gani ya kizuizi cha baiskeli?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Ulalo kwa njia</string>
     <string name="quest_barrier_bicycle_type_tilted">Njia nyembamba, ndogo kuelekea juu</string>
@@ -905,8 +902,6 @@ Ni vigezo vipi vinavyotumika hasa vinaweza kubainishwa baadaye.</string>
     <string name="quest_fireHydrant_position_sidewalk">Kwenye njia ya kutembea</string>
     <string name="quest_fireHydrant_position_parking_lot">Katika nafasi ya maegesho</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Ndio (acha dokezo)</string>
-    <string name="quest_smoothness_square_title">Je, uso wa mraba huu una ubora gani?</string>
-    <string name="quest_smoothness_road_title">Je, ubora wa barabara hii hapa ni upi?</string>
     <string name="quest_smoothness_title_excellent">Laini na hata</string>
     <string name="quest_smoothness_title_good">Mara nyingi hata</string>
     <string name="quest_smoothness_title_intermediate">haiko sawa kidog</string>
@@ -959,7 +954,6 @@ Ni vigezo vipi vinavyotumika hasa vinaweza kubainishwa baadaye.</string>
     <string name="ar_core_tracking_error_camera_unavailable">Kamera inatumiwa na programu nyingine</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Kishikilia upau wa mikono</string>
     <string name="quest_bicycle_parking_access_title2">Nani anaruhusiwa kuegesha baiskeli hapa? Maegesho yanaweza kuwa ya bure au ya kulipwa.</string>
-    <string name="quest_playground_access_title2">Nani anaruhusiwa kutumia uwanja huu wa michezo?</string>
     <string name="ar_measure">Pima</string>
     <string name="ar_core_tracking_error_too_steep_angle">Mteremko mkali sana, rudi nyuma kidog</string>
     <string name="default_disabled_msg_no_ar">Unahitaji kipimo cha mkanda ili kutatua pambano hili kwa sababu kipimo kwa kamera hakitumiki kwenye kifaa hiki.</string>
@@ -1015,7 +1009,6 @@ Ni vigezo vipi vinavyotumika hasa vinaweza kubainishwa baadaye.</string>
     <string name="quest_lit_title">Je, imewashwa hapa?</string>
     <string name="quest_openingHours_title">Ni saa ngapi za ufunguzi hapa?</string>
     <string name="quest_openingHours_signed_title">Je, saa za ufunguzi hapa zimetiwa sahihi?</string>
-    <string name="quest_openingHours_resurvey_title">Je, saa hizi za ufunguzi bado ni sahihi?</string>
     <string name="quest_placeName_title">Jina la mahali hapa ni lipi?</string>
     <string name="quest_shop_type_title2">Hili ni duka la aina gani?</string>
     <string name="quest_smoking_title2">Je, uvutaji sigara unaruhusiwa hapa?</string>
