@@ -199,6 +199,15 @@ fun MainScreen(
 
     val shownBottomSheet = sheet.shownBottomSheet
     val selectedEdit = editHistory.selectedEdit
+    // The edit history sidebar and a bottom sheet are never shown at the same time.
+    fun showSheet(selection: MainBottomSheetSelection) {
+        editHistory.hide()
+        sheet.show(selection)
+    }
+    fun showEditHistory() {
+        sheet.close()
+        editHistory.show()
+    }
     val highlightedMarkers by produceState<List<Marker>>(emptyList(), shownBottomSheet) {
         value = shownBottomSheet?.let { mainBottomSheetViewModel.getHighlightedMarkers(it) }.orEmpty()
     }
@@ -236,7 +245,7 @@ fun MainScreen(
             onClickPin = { properties ->
                 val key = mapViewModel.getQuestKey(properties)
                 if (key == null || sheet.isOpen) ClickResult.Pass else {
-                    sheet.show(MainBottomSheetSelection.Quest(key))
+                    showSheet(MainBottomSheetSelection.Quest(key))
                     ClickResult.Consume
                 }
             }
@@ -267,7 +276,7 @@ fun MainScreen(
                 val key = mapViewModel.getElementKey(properties)
                 val overlay = selectedOverlay
                 if (key == null || overlay == null || sheet.isOpen) ClickResult.Pass else {
-                    sheet.show(MainBottomSheetSelection.Overlay(overlay.name, key))
+                    showSheet(MainBottomSheetSelection.Overlay(overlay.name, key))
                     ClickResult.Consume
                 }
             },
@@ -306,7 +315,7 @@ fun MainScreen(
         scope.launch { cameraState.zoomBy(amount) }
     }
     fun composeNote(position: LatLon, trackpoints: List<Trackpoint>? = null) {
-        sheet.show(MainBottomSheetSelection.CreateNote(position, trackpoints))
+        showSheet(MainBottomSheetSelection.CreateNote(position, trackpoints))
     }
     fun download() {
         val bounds = mapState.viewport?.visibleBounds?.toStreetCompleteBoundingBox()
@@ -594,7 +603,7 @@ fun MainScreen(
                             if (mapCamera.zoom >= 17.0) {
                                 selectedOverlay?.let { overlay ->
                                     val position = getCrosshairPosition()
-                                    sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
+                                    showSheet(MainBottomSheetSelection.Overlay(overlay.name))
                                     position?.let { cameraState.preserveCrosshairPosition(it) }
                                 }
                             } else {
@@ -604,7 +613,7 @@ fun MainScreen(
 
                         hasEdits = editHistory.hasEdits,
                         isUndoEnabled = !isUploadingOrDownloading,
-                        onClickUndo = { editHistory.show() },
+                        onClickUndo = ::showEditHistory,
 
                         metersPerDp = metersPerDp,
                     )
