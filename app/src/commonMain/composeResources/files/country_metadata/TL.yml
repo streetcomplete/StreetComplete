@@ -2,6 +2,7 @@
 atmOperators: [BNCTL, Mandiri, LOOS24, BNU, Loos24]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [universal_abcdefgio]
 isLeftHandTraffic: true
 mobileCountryCode: 514
 noStoppingSignStyle: australia

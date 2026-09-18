@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [KBZ Bank, KBZ, CB Bank, AYA Bank, AGD Bank, a, CB, MAB, AGD, UAB, AYA, UAB Bank, KBZ ATM, CB bank, CB Bank ATM, C B Bank, Aya Bank, KBZ bank, AYA ATM, MAB Bank, KBZ BANK, Ayeyarwaddy Bank, AYA bank, aa, MAB ATM, CB BANK, CB ATM, Aya Bank ATM, Aya, ATM, ယူနိုက်တက်အမရာဘဏ် UAB ATM, ကမ္ဘောဇဘဏ် KBZ Bank, atm, Myanma Apex Bank, MCB, 1]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [universal_abcdefgio]
 lengthUnits: [meter, foot and inch]
 mobileCountryCode: 414
 noParkingLineStyle: yellow-white on curb

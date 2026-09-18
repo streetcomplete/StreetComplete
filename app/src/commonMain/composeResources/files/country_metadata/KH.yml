@@ -4,6 +4,7 @@ atmOperators: [ABA Bank, Canadia Bank, Sathapana Bank, ANZ Royal Bank, ABA, T, M
 centerLineStyle: yellow
 chargingStationOperators: [Green E-Bike]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [universal_abcdefgio]
 hasBiWeeklyAlternateSideParkingSign: true
 hasDailyAlternateSideParkingSign: true
 mobileCountryCode: 456

@@ -3,6 +3,7 @@ atmOperators: [Banco Continental, Itaú, Itau, Banco Itaú, Banco Itau, BNF, Ban
 centerLineStyle: yellow
 chargingStationOperators: [Petropar]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [universal_abco, universal_ac, typec, typeb, typea, typen]
 mobileCountryCode: 744
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin

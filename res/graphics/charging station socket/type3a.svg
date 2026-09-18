@@ -1,0 +1,9 @@
+<svg width="55.999996mm" height="56.255299mm" version="1.1" viewBox="0 0 55.999996 56.255299" xmlns="http://www.w3.org/2000/svg">
+ <path d="m27.999999 1.59091c-14.585337-6e-7 -26.409089 11.823752-26.409089 26.536738 0 14.712987 11.823752 26.536739 26.409089 26.536739 14.585337-1e-6 26.409087-11.823753 26.409087-26.536739s-11.82375-26.536737-26.409087-26.536738z" fill="none" stroke="#000" stroke-linecap="square" stroke-linejoin="bevel" stroke-width="3.18182"/>
+ <g transform="translate(0,-3.9657262)">
+  <circle cx="14.349998" cy="31.569298" r="3.181818"/>
+  <circle cx="41.713631" cy="31.569298" r="3.181818"/>
+  <circle cx="28.031816" cy="45.254932" r="3.181818"/>
+  <circle cx="27.999998" cy="17.85" r="1.9090908" stroke="#000" stroke-linecap="square" stroke-linejoin="bevel" stroke-width=".381818"/>
+ </g>
+</svg>

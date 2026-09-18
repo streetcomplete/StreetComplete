@@ -3,6 +3,7 @@ atmOperators: [Bancolombia, Davivienda, Servibanca, BBVA, Banco de Bogotá, Banc
 centerLineStyle: yellow
 chargingStationOperators: [Terpel, Codensa, parqueadero, ChargePoint]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [nema_5_15, nema_1_15, nema_5_20]
 hasLivingStreet: true
 livingStreetSignStyle: columbia
 mobileCountryCode: 732

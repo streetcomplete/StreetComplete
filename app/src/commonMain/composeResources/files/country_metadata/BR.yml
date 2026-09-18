@@ -3,6 +3,7 @@ atmOperators: [Banco24Horas, Banco do Brasil, Bradesco, Banco 24 Horas, Caixa Ec
 centerLineStyle: yellow
 chargingStationOperators: [Ipiranga, Sat, Eletrograal, EDP, Petrobras, CPFL, ABB, Taurus, Shell Recharge, Shell, Petrobrás, Ferreira Costa, Copel, BR, BMW]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typen]
 mobileCountryCode: 724
 noEntrySignStyle: arrow
 noParkingSignStyle: mutcd latin

@@ -2,8 +2,8 @@
 additionalStreetsignLanguages: [sr-Latn, en]
 atmOperators: [Payten, AIK banka, Поштанска штедионица, НЛБ Комерцијална банка, Yettel bank, UniCredit Bank, Addiko Bank, OTP banka, Banca Intesa, Raiffeisen bank, Erste Bank, Halkbank, UniCredit, Eurobank, 3 Банка, Beograd, Sokobanja, Poštanska štedionica, NLB]
 chargingStationOperators: [Putevi Srbije, Tesla, Газпром, Charge&Go]
-chargingStationSocketTypes: [type2, type2_cable, type2_combo, chademo]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typef, typec]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true

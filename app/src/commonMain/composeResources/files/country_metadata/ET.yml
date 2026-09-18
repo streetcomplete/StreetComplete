@@ -2,6 +2,7 @@
 additionalStreetsignLanguages: [en]
 atmOperators: [CBE, Government, Dashen Bank, Commercial Bank of Ethiopia, Bank of Abyssinia, Wegagen Bank, cbe, CBE ATM, Zemen Bank, United Bank, Commercial bank of Ethiopia, Awash International Bank, Awash Bank, Addis International Bank]
 centerLineStyle: yellow
+domesticSocketTypes: [typeg, typef, typec]
 mobileCountryCode: 636
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

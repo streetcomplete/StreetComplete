@@ -3,6 +3,7 @@ atmOperators: [SBM, MCB, HSBC, Absa, Mauritius Commercial Bank, Barclays, SBI, M
 centerLineStyle: white
 chargingStationOperators: [E-Motion, TotalEnergies, Total]
 defaultSpeedLimitHasUrbanOrRural: false
+domesticSocketTypes: [typeg, typee, typec]
 edgeLineStyle: short white dashes
 hasLivingStreet: true
 hasSlowZone: true

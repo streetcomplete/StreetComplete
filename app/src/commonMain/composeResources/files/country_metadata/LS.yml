@@ -2,6 +2,7 @@
 atmOperators: [Standard Lesotho Bank Limited, First National Bank of Lesotho Limited, Nedbank Lesotho Limited, Standard Lesotho Bank, Nedbank, Lesotho PostBank Limited]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typem, typen, typec]
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true

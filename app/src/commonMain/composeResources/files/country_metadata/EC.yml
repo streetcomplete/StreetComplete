@@ -3,6 +3,7 @@ atmOperators: [Banco Pichincha, JEP, Cooperativa CREA, Banco del Austro, Banco d
 centerLineStyle: yellow
 chargingStationOperators: [Centro Sur, Corporación Favorita]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 740
 noParkingSignStyle: mutcd latin
 noStoppingSignStyle: mutcd latin

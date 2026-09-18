@@ -4,6 +4,7 @@ atmOperators: [BDO, BPI, Landbank, Metrobank, RCBC, PNB, 7-Eleven, Chinabank, PS
 centerLineStyle: white
 chargingStationOperators: [eSakay, MG, ACMobility]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [universal_ac, universal_abco, typeb, typea, typec]
 hasAdvisorySpeedLimitSign: true
 hasNoStandingSign: true
 mobileCountryCode: 515
