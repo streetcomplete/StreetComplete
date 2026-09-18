@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete
 
 import android.content.res.Configuration
-import android.content.res.Resources
-import android.os.LocaleList
 import android.view.ContextThemeWrapper
 import android.view.View
 import androidx.compose.runtime.Composable
@@ -20,7 +18,6 @@ import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.ui.AppLocale
 import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.util.ktx.findActivity
-import java.util.Locale
 
 @Composable
 actual fun AppEnvironment(
@@ -31,18 +28,9 @@ actual fun AppEnvironment(
 ) {
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
-    val systemLocales = Resources.getSystem().configuration.locales
     val darkTheme = theme.isDark
-    val localeList = remember(systemLocales, language) {
-        val locales = listOfNotNull(language?.let(Locale::forLanguageTag)) +
-            (0 until systemLocales.size()).map { systemLocales[it]!! }
-        LocaleList(*locales.distinct().toTypedArray()).also {
-            // Set during composition on purpose: Locale.current and Compose resources read the JVM
-            // defaults in this same pass, so an effect would leave the first frame in the old language.
-            Locale.setDefault(it[0])
-            LocaleList.setDefault(it)
-        }
-    }
+    // AppLocaleUpdater has already made these the process defaults
+    val localeList = remember(configuration, language) { appLocales(language) }
     val localizedConfiguration = remember(configuration, localeList, darkTheme) {
         Configuration(configuration).apply {
             setLocales(localeList)

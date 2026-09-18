@@ -2,6 +2,7 @@ package de.westnordost.streetcomplete
 
 import android.app.Application
 import android.content.ComponentCallbacks2
+import android.content.res.Configuration
 import de.westnordost.streetcomplete.data.CacheTrimmer
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportsUncaughtExceptionHandler
 import org.koin.android.ext.android.inject
@@ -14,6 +15,7 @@ class StreetCompleteApplication : Application() {
     private val crashReportsUncaughtExceptionHandler: CrashReportsUncaughtExceptionHandler by inject()
     private val cacheTrimmer: CacheTrimmer by inject()
     private val applicationInitializer: ApplicationInitializer by inject()
+    private val appLocaleUpdater: AppLocaleUpdater by inject()
 
     override fun onCreate() {
         super.onCreate()
@@ -27,6 +29,12 @@ class StreetCompleteApplication : Application() {
         crashReportsUncaughtExceptionHandler.install()
 
         applicationInitializer.initialize()
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        // the system resets the default locales to the new configuration
+        appLocaleUpdater.update()
     }
 
     override fun onTrimMemory(level: Int) {

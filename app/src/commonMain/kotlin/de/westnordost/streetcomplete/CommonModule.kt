@@ -230,10 +230,11 @@ private const val STATISTICS_BACKEND_URL = "https://streetcomplete.app/statistic
 
 val commonModule = module {
     viewModel { AppViewModel(get(), get()) }
+    single { AppLocaleUpdater(get()) }
 
     //region basic configuration
 
-    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get()) }
+    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get(), get()) }
 
     single { HttpClient {
         defaultRequest {

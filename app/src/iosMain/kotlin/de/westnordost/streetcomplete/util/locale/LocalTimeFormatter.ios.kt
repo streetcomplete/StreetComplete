@@ -1,7 +1,6 @@
 package de.westnordost.streetcomplete.util.locale
 
 import androidx.compose.ui.text.intl.Locale
-import de.westnordost.streetcomplete.util.ktx.toNSLocale
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
@@ -18,7 +17,7 @@ actual class LocalTimeFormatter actual constructor(
     style: DateTimeFormatStyle,
 ) {
     private val formatter = NSDateFormatter().also {
-        (locale ?: appFormattingLocale)?.let { selected -> it.locale = selected.toNSLocale() }
+        formatterLocale(locale)?.let { selected -> it.locale = selected }
         it.dateStyle = NSDateFormatterNoStyle
         it.timeStyle = style.toNSDateFormatterStyle()
         it.timeZone = timeZone.toNSTimeZone()
