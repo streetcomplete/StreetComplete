@@ -34,17 +34,13 @@ actual fun AppEnvironment(
     keepScreenOn: Boolean,
     content: @Composable () -> Unit,
 ) {
+    // The system language list may have changed in Settings while the app was in the background.
     var localeRevision by remember { mutableIntStateOf(0) }
     LifecycleEventEffect(Lifecycle.Event.ON_RESUME) { localeRevision++ }
-    val locale = remember(language, localeRevision) {
-        val defaults = NSUserDefaults.standardUserDefaults
-        // Read the system list without our previous override, including after returning from Settings.
-        defaults.removeObjectForKey("AppleLanguages")
-        val systemLanguages = NSLocale.preferredLanguages.filterIsInstance<String>()
-        if (language != null) defaults.setObject((listOf(language) + systemLanguages).distinct(), "AppleLanguages")
-        appFormattingLocale = language?.let(::Locale)
-        Locale(language ?: systemLanguages.firstOrNull() ?: "en")
-    }
+    // Applied during composition on purpose: Locale.current and Compose resources read the
+    // preferred languages in this same pass, so an effect would leave the first frame in the old
+    // language.
+    val locale = remember(language, localeRevision) { applyLanguage(language) }
     val controller = LocalUIViewController.current
     SideEffect {
         controller.overrideUserInterfaceStyle = when (theme) {
@@ -65,4 +61,16 @@ actual fun AppEnvironment(
         LocalLayoutDirection provides direction,
         content = content,
     )
+}
+
+/** Puts [language] in front of the system's preferred languages, or restores the system list
+ *  when null, and returns the resulting primary locale. */
+private fun applyLanguage(language: String?): Locale {
+    val defaults = NSUserDefaults.standardUserDefaults
+    // Read the system list without our previous override.
+    defaults.removeObjectForKey("AppleLanguages")
+    val systemLanguages = NSLocale.preferredLanguages.filterIsInstance<String>()
+    if (language != null) defaults.setObject((listOf(language) + systemLanguages).distinct(), "AppleLanguages")
+    appFormattingLocale = language?.let(::Locale)
+    return Locale(language ?: systemLanguages.firstOrNull() ?: "en")
 }

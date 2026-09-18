@@ -17,6 +17,7 @@ import de.westnordost.streetcomplete.screens.main.MainScreen
 import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.settings.SettingsDestination
 import de.westnordost.streetcomplete.screens.settings.settingsGraph
+import de.westnordost.streetcomplete.screens.user.UserDestination
 import de.westnordost.streetcomplete.screens.user.userScreen
 import de.westnordost.streetcomplete.ui.ktx.dir
 import org.koin.compose.viewmodel.koinViewModel
@@ -24,33 +25,29 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun MainNavHost(appViewModel: AppViewModel) {
     val navController = rememberNavController()
+    // The main screen is always at the bottom of the back stack, so its view model lives as long
+    // as the app and can receive requests while another destination is shown.
+    val mainViewModel = koinViewModel<MainViewModel>()
     val dir = LocalLayoutDirection.current.dir
     val uri by appViewModel.pendingUri.collectAsState()
     val openSettings by appViewModel.openSettings.collectAsState()
 
     NavHost(
         navController = navController,
-        startDestination = "main",
+        startDestination = MainDestination.Main,
         enterTransition = { slideInHorizontally(initialOffsetX = { +it * dir }) },
         exitTransition = { slideOutHorizontally(targetOffsetX = { -it * dir }) },
         popEnterTransition = { slideInHorizontally(initialOffsetX = { -it * dir }) },
         popExitTransition = { slideOutHorizontally(targetOffsetX = { +it * dir }) },
     ) {
-        composable("main") {
-            val viewModel = koinViewModel<MainViewModel>()
-            LaunchedEffect(uri) {
-                uri?.let {
-                    viewModel.setUri(it)
-                    appViewModel.consumeUri()
-                }
-            }
+        composable(MainDestination.Main) {
             MainScreen(
                 onClickSettings = { navController.navigate(SettingsDestination.Settings) },
                 onClickQuestSettings = { navController.navigate(SettingsDestination.QuestSelection) },
                 onClickAbout = { navController.navigate(AboutDestination.About) },
-                onClickProfile = { navController.navigate("user") },
-                onClickLogin = { navController.navigate("user?launchAuth=true") },
-                viewModel = viewModel,
+                onClickProfile = { navController.navigate(UserDestination.user()) },
+                onClickLogin = { navController.navigate(UserDestination.user(launchAuth = true)) },
+                viewModel = mainViewModel,
             )
         }
         settingsGraph(navController)
@@ -59,13 +56,21 @@ fun MainNavHost(appViewModel: AppViewModel) {
     }
 
     LaunchedEffect(uri, openSettings) {
-        if (uri != null) navController.popBackStack("main", inclusive = false)
+        uri?.let {
+            navController.popBackStack(MainDestination.Main, inclusive = false)
+            mainViewModel.setUri(it)
+            appViewModel.consumeUri()
+        }
         if (openSettings) {
             navController.navigate(SettingsDestination.Settings) {
-                popUpTo("main")
+                popUpTo(MainDestination.Main)
                 launchSingleTop = true
             }
             appViewModel.consumeSettingsRequest()
         }
     }
+}
+
+object MainDestination {
+    const val Main = "main"
 }

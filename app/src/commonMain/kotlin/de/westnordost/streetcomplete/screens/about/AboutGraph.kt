@@ -12,49 +12,47 @@ import org.koin.compose.viewmodel.koinViewModel
 fun NavGraphBuilder.aboutGraph(navController: NavHostController) {
     fun goBack() { navController.popBackStack() }
 
-    navigation(startDestination = AboutDestination.About, route = "about_graph") {
-        composable(AboutDestination.About) {
-            AboutScreen(
-                onClickChangelog = { navController.navigate(AboutDestination.Changelog) },
-                onClickCredits = { navController.navigate(AboutDestination.Credits) },
-                onClickPrivacyStatement = { navController.navigate(AboutDestination.PrivacyStatement) },
-                onClickLogs = { navController.navigate(AboutDestination.Logs) },
+    composable(AboutDestination.About) {
+        AboutScreen(
+            onClickChangelog = { navController.navigate(AboutDestination.Changelog) },
+            onClickCredits = { navController.navigate(AboutDestination.Credits) },
+            onClickPrivacyStatement = { navController.navigate(AboutDestination.PrivacyStatement) },
+            onClickLogs = { navController.navigate(AboutDestination.Logs) },
+            onClickBack = ::goBack
+        )
+    }
+    composable(AboutDestination.Changelog) {
+        ChangelogScreen(
+            viewModel = koinViewModel(),
+            onClickBack = ::goBack
+        )
+    }
+    composable(AboutDestination.Credits) {
+        CreditsScreen(
+            viewModel = koinViewModel(),
+            onClickBack = ::goBack
+        )
+    }
+    composable(AboutDestination.PrivacyStatement) {
+        PrivacyStatementScreen(
+            onClickBack = ::goBack
+        )
+    }
+    navigation(startDestination = AboutDestination.LogsList, route = AboutDestination.Logs) {
+        composable(AboutDestination.LogsList) {
+            val parentEntry = remember(it) { navController.getBackStackEntry(AboutDestination.Logs) }
+            LogsScreen(
+                viewModel = koinViewModel(viewModelStoreOwner = parentEntry),
+                onClickFilters = { navController.navigate(AboutDestination.LogsFilters) },
                 onClickBack = ::goBack
             )
         }
-        composable(AboutDestination.Changelog) {
-            ChangelogScreen(
-                viewModel = koinViewModel(),
+        composable(AboutDestination.LogsFilters) {
+            val parentEntry = remember(it) { navController.getBackStackEntry(AboutDestination.Logs) }
+            LogsFiltersScreen(
+                viewModel = koinViewModel(viewModelStoreOwner = parentEntry),
                 onClickBack = ::goBack
             )
-        }
-        composable(AboutDestination.Credits) {
-            CreditsScreen(
-                viewModel = koinViewModel(),
-                onClickBack = ::goBack
-            )
-        }
-        composable(AboutDestination.PrivacyStatement) {
-            PrivacyStatementScreen(
-                onClickBack = ::goBack
-            )
-        }
-        navigation(startDestination = AboutDestination.LogsList, route = AboutDestination.Logs) {
-            composable(AboutDestination.LogsList) {
-                val parentEntry = remember(it) { navController.getBackStackEntry(AboutDestination.Logs) }
-                LogsScreen(
-                    viewModel = koinViewModel(viewModelStoreOwner = parentEntry),
-                    onClickFilters = { navController.navigate(AboutDestination.LogsFilters) },
-                    onClickBack = ::goBack
-                )
-            }
-            composable(AboutDestination.LogsFilters) {
-                val parentEntry = remember(it) { navController.getBackStackEntry(AboutDestination.Logs) }
-                LogsFiltersScreen(
-                    viewModel = koinViewModel(viewModelStoreOwner = parentEntry),
-                    onClickBack = ::goBack
-                )
-            }
         }
     }
 }

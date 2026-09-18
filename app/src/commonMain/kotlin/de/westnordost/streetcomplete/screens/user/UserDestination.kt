@@ -15,13 +15,13 @@ import org.koin.compose.viewmodel.koinViewModel
 /** Login and profile share one destination, so logging out cannot leave a profile in the back stack. */
 fun NavGraphBuilder.userScreen(onClickBack: () -> Unit) {
     composable(
-        route = "user?launchAuth={launchAuth}",
-        arguments = listOf(navArgument("launchAuth") { type = NavType.BoolType; defaultValue = false }),
+        route = UserDestination.User + "?${UserDestination.LaunchAuth}={${UserDestination.LaunchAuth}}",
+        arguments = listOf(navArgument(UserDestination.LaunchAuth) { type = NavType.BoolType; defaultValue = false }),
     ) {
         val viewModel = koinViewModel<UserViewModel>()
         val loginViewModel = koinViewModel<LoginViewModel>()
         val isLoggedIn by viewModel.isLoggedIn.collectAsState()
-        val launchAuth = it.arguments?.read { getBoolean("launchAuth") } == true
+        val launchAuth = it.arguments?.read { getBoolean(UserDestination.LaunchAuth) } == true
         LaunchedEffect(Unit) {
             if (launchAuth && !isLoggedIn) loginViewModel.startLogin()
         }
@@ -31,4 +31,11 @@ fun NavGraphBuilder.userScreen(onClickBack: () -> Unit) {
             LoginScreen(viewModel = loginViewModel, onClickBack = onClickBack)
         }
     }
+}
+
+object UserDestination {
+    const val User = "user"
+    const val LaunchAuth = "launchAuth"
+
+    fun user(launchAuth: Boolean = false) = "$User?$LaunchAuth=$launchAuth"
 }

@@ -1,13 +1,10 @@
 package de.westnordost.streetcomplete
 
-import android.app.Activity
-import android.content.Context
-import android.content.ContextWrapper
 import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.LocaleList
 import android.view.ContextThemeWrapper
-import androidx.compose.foundation.isSystemInDarkTheme
+import android.view.View
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
@@ -22,6 +19,7 @@ import androidx.core.view.WindowCompat
 import de.westnordost.streetcomplete.data.preferences.Theme
 import de.westnordost.streetcomplete.ui.AppLocale
 import de.westnordost.streetcomplete.ui.LocalAppLocale
+import de.westnordost.streetcomplete.util.ktx.findActivity
 import java.util.Locale
 
 @Composable
@@ -34,18 +32,18 @@ actual fun AppEnvironment(
     val context = LocalContext.current
     val configuration = LocalConfiguration.current
     val systemLocales = Resources.getSystem().configuration.locales
-    val darkTheme = when (theme) {
-        Theme.LIGHT -> false
-        Theme.DARK -> true
-        Theme.SYSTEM -> isSystemInDarkTheme()
+    val darkTheme = theme.isDark
+    val localeList = remember(systemLocales, language) {
+        val locales = listOfNotNull(language?.let(Locale::forLanguageTag)) +
+            (0 until systemLocales.size()).map { systemLocales[it]!! }
+        LocaleList(*locales.distinct().toTypedArray()).also {
+            // Set during composition on purpose: Locale.current and Compose resources read the JVM
+            // defaults in this same pass, so an effect would leave the first frame in the old language.
+            Locale.setDefault(it[0])
+            LocaleList.setDefault(it)
+        }
     }
-    val localizedConfiguration = remember(configuration, systemLocales, language, darkTheme) {
-        val locales = (listOfNotNull(language?.let(Locale::forLanguageTag)) +
-            (0 until systemLocales.size()).map { systemLocales[it]!! }).distinct()
-        val localeList = LocaleList(*locales.toTypedArray())
-        // Compose Locale.current and non-composable resource/formatting code read these defaults.
-        Locale.setDefault(locales.first())
-        LocaleList.setDefault(localeList)
+    val localizedConfiguration = remember(configuration, localeList, darkTheme) {
         Configuration(configuration).apply {
             setLocales(localeList)
             uiMode = (uiMode and Configuration.UI_MODE_NIGHT_MASK.inv()) or
@@ -58,7 +56,7 @@ actual fun AppEnvironment(
     val view = LocalView.current
     SideEffect {
         view.keepScreenOn = keepScreenOn
-        context.activity()?.window?.let { window ->
+        context.findActivity()?.window?.let { window ->
             WindowCompat.getInsetsController(window, view).apply {
                 isAppearanceLightStatusBars = !darkTheme
                 isAppearanceLightNavigationBars = !darkTheme
@@ -66,17 +64,14 @@ actual fun AppEnvironment(
         }
     }
     DisposableEffect(view) { onDispose { view.keepScreenOn = false } }
+    val layoutDirection =
+        if (localizedConfiguration.layoutDirection == View.LAYOUT_DIRECTION_RTL) LayoutDirection.Rtl
+        else LayoutDirection.Ltr
     CompositionLocalProvider(
         LocalContext provides localizedContext,
         LocalConfiguration provides localizedConfiguration,
-        LocalLayoutDirection provides if (localizedConfiguration.layoutDirection == 1) LayoutDirection.Rtl else LayoutDirection.Ltr,
+        LocalLayoutDirection provides layoutDirection,
         LocalAppLocale provides AppLocale(language, androidx.compose.ui.text.intl.LocaleList.current),
         content = content,
     )
-}
-
-private tailrec fun Context.activity(): Activity? = when (this) {
-    is Activity -> this
-    is ContextWrapper -> baseContext.activity()
-    else -> null
 }

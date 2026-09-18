@@ -15,13 +15,8 @@ fun App(viewModel: AppViewModel = koinViewModel()) {
     val theme by viewModel.theme.collectAsState()
     val language by viewModel.language.collectAsState()
     val keepScreenOn by viewModel.keepScreenOn.collectAsState()
-    val darkTheme = when (theme) {
-        Theme.LIGHT -> false
-        Theme.DARK -> true
-        Theme.SYSTEM -> isSystemInDarkTheme()
-    }
     AppEnvironment(language, theme, keepScreenOn) {
-        AppTheme(darkTheme) {
+        AppTheme(theme.isDark) {
             Surface { MainNavHost(viewModel) }
         }
     }
@@ -35,3 +30,10 @@ expect fun AppEnvironment(
     keepScreenOn: Boolean,
     content: @Composable () -> Unit,
 )
+
+val Theme.isDark: Boolean
+    @Composable get() = when (this) {
+        Theme.LIGHT -> false
+        Theme.DARK -> true
+        Theme.SYSTEM -> isSystemInDarkTheme()
+    }
