@@ -122,8 +122,7 @@ fun MainScreen(
     headingProvider: HeadingProvider = koinInject(),
     systemSettingsLauncher: SystemSettingsLauncher = koinInject(),
 ) {
-    /* state */
-
+    //region state
     val scope = rememberCoroutineScope()
 
     val starsCount by viewModel.starsCount.collectAsState()
@@ -179,9 +178,9 @@ fun MainScreen(
     val location = rememberMainLocationState(locationProvider, headingProvider)
     val selection = sheet.selection
     val shownBottomSheet = sheet.shownBottomSheet
+    //endregion
 
-    /* map */
-
+    //region map
     val downloadedTiles by mapViewModel.downloadedTiles.collectAsStateWithLifecycle()
     val geoUri by viewModel.geoUri.collectAsState()
     var mapOrigin by remember { mutableStateOf(Offset.Zero) }
@@ -230,9 +229,9 @@ fun MainScreen(
     }
     val sheetPadding = Dimensions.getOpenQuestFormMapPadding(windowInfo)
     val cameraPadding = cameraState.padding(sheetPadding)
+    //endregion
 
-    /* actions */
-
+    //region actions
     fun getOffset(position: LatLon): Offset? = mapState.offsetInWindow(position, mapOrigin, density)
     fun getCrosshairPosition(): LatLon? = mapState.crosshairPosition(sheetPadding, layoutDirection)
     fun ClickEvent.toMapClick(): MapClick? =
@@ -313,9 +312,9 @@ fun MainScreen(
             sendErrorReport(report)
         }
     }
+    //endregion
 
-    /* effects */
-
+    //region effects
     LaunchedEffect(geoUri) {
         geoUri?.let {
             cameraState.moveTo(it)
@@ -372,9 +371,9 @@ fun MainScreen(
             viewModel.teamModeChanged = false
         }
     }
+    //endregion
 
-    /* content */
-
+    //region content
     Box(modifier) {
         MainMap(
             state = mapState,
@@ -671,6 +670,7 @@ fun MainScreen(
             onFinished = { viewModel.hasShownTutorial = true },
         )
     }
+    //endregion
 }
 
 /** Asks to grant location permission or to enable location services. Only one is shown at a time. */
