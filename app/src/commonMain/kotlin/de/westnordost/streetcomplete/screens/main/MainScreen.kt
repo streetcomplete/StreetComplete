@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -50,6 +51,7 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
+import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.MainScreenControls
 import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
@@ -76,6 +78,7 @@ import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
 import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
 import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.ToastPopup
+import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.dir
@@ -92,6 +95,7 @@ import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.location.HeadingProvider
 import org.maplibre.compose.location.LocationEvent
+import org.maplibre.compose.location.LocationPermission
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.SystemSettingsLauncher
 import org.maplibre.compose.map.MapRuntime
@@ -156,6 +160,7 @@ fun MainScreen(
     var showIntroTutorial by remember { mutableStateOf(false) }
     var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
+    var locationDialog by remember { mutableStateOf<LocationDialog?>(null) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     var showToast by remember { mutableStateOf<Toast?>(null) }
 
@@ -170,7 +175,7 @@ fun MainScreen(
 
     val sheet = rememberMainSheetState(mainBottomSheetViewModel, editHistoryViewModel)
     val tracks = rememberMainMapTrackState()
-    val location = rememberMainLocationState(locationProvider, headingProvider, systemSettingsLauncher)
+    val location = rememberMainLocationState(locationProvider, headingProvider)
     val selection = sheet.selection
     val shownBottomSheet = sheet.shownBottomSheet
 
@@ -247,8 +252,20 @@ fun MainScreen(
         }
     }
     fun clickLocation() {
-        if (!location.requestLocation(onCannotEnable = { showToast = Toast.NoLocation })) return
-        if (!cameraState.isFollowingPosition) {
+        val permission = locationProvider.permission.value
+        if (permission is LocationPermission.NotGranted) {
+            when {
+                permission.canRequest == false -> {
+                    if (systemSettingsLauncher.canOpenApplicationSettings) locationDialog = LocationDialog.ApplicationSettings
+                    else showToast = Toast.NoLocation
+                }
+                permission.shouldShowRationale -> locationDialog = LocationDialog.PermissionRationale
+                else -> locationProvider.requestPermission()
+            }
+        } else if (location.state == LocationState.ALLOWED) {
+            if (systemSettingsLauncher.canOpenLocationServicesSettings) locationDialog = LocationDialog.LocationSettings
+            else showToast = Toast.NoLocation
+        } else if (!cameraState.isFollowingPosition) {
             followLocation()
         } else scope.launch {
             cameraState.setNavigationMode(!cameraState.isNavigationMode, location.position, getTrackBearing(tracks.currentTrack))
@@ -536,8 +553,24 @@ fun MainScreen(
         },
         offset = lastLongPress?.first ?: DpOffset.Zero,
     )
-    location.dialog?.let { dialog ->
-        LocationDialog(dialog, onDismissRequest = location::dismissDialog, onConfirm = location::confirmDialog)
+    when (locationDialog) {
+        LocationDialog.PermissionRationale -> ConfirmationDialog(
+            onDismissRequest = { locationDialog = null },
+            onConfirmed = { locationProvider.requestPermission() },
+            title = { Text(stringResource(Res.string.no_location_permission_warning_title)) },
+            text = { Text(stringResource(Res.string.no_location_permission_warning)) },
+        )
+        LocationDialog.ApplicationSettings -> ConfirmationDialog(
+            onDismissRequest = { locationDialog = null },
+            onConfirmed = { systemSettingsLauncher.openApplicationSettings() },
+            text = { Text(stringResource(Res.string.turn_on_location_request)) },
+        )
+        LocationDialog.LocationSettings -> ConfirmationDialog(
+            onDismissRequest = { locationDialog = null },
+            onConfirmed = { systemSettingsLauncher.openLocationServicesSettings() },
+            text = { Text(stringResource(Res.string.turn_on_location_request)) },
+        )
+        null -> {}
     }
 
     shownMessage?.let { message ->
@@ -636,6 +669,9 @@ fun MainScreen(
         )
     }
 }
+
+/** Asks to grant location permission or to enable location services. Only one is shown at a time. */
+private enum class LocationDialog { PermissionRationale, ApplicationSettings, LocationSettings }
 
 private enum class Toast {
     Offline,
