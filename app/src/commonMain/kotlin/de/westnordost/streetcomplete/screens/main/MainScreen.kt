@@ -585,8 +585,8 @@ fun MainScreen(
 
                         isRecordingTracks = isRecordingTracks,
                         onClickStopTrackRecording = {
-                            tracks.stopRecording()
-                            displayedLocation?.position?.toLatLon()?.let { composeNote(it, tracks.recordedTrack.takeIf { it.isNotEmpty() }) }
+                            val recorded = tracks.stopRecording()
+                            displayedLocation?.position?.toLatLon()?.let { composeNote(it, recorded.takeIf { it.isNotEmpty() }) }
                         },
 
                         isCreateNodeEnabled = isCreateNodeEnabled,
