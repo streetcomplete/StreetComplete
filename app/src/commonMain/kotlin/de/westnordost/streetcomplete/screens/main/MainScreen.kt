@@ -159,7 +159,9 @@ fun MainScreen(
     var showIntroTutorial by remember { mutableStateOf(false) }
     var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
-    var locationDialog by remember { mutableStateOf<LocationDialog?>(null) }
+    var showLocationPermissionRationaleDialog by remember { mutableStateOf(false) }
+    var showApplicationSettingsDialog by remember { mutableStateOf(false) }
+    var showLocationSettingsDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     var showToast by remember { mutableStateOf<Toast?>(null) }
 
@@ -263,14 +265,14 @@ fun MainScreen(
         if (permission is LocationPermission.NotGranted) {
             when {
                 permission.canRequest == false -> {
-                    if (systemSettingsLauncher.canOpenApplicationSettings) locationDialog = LocationDialog.ApplicationSettings
+                    if (systemSettingsLauncher.canOpenApplicationSettings) showApplicationSettingsDialog = true
                     else showToast = Toast.NoLocation
                 }
-                permission.shouldShowRationale -> locationDialog = LocationDialog.PermissionRationale
+                permission.shouldShowRationale -> showLocationPermissionRationaleDialog = true
                 else -> locationProvider.requestPermission()
             }
         } else if (location.state == LocationState.ALLOWED) {
-            if (systemSettingsLauncher.canOpenLocationServicesSettings) locationDialog = LocationDialog.LocationSettings
+            if (systemSettingsLauncher.canOpenLocationServicesSettings) showLocationSettingsDialog = true
             else showToast = Toast.NoLocation
         } else if (!cameraState.isFollowingPosition) {
             followLocation()
@@ -566,24 +568,27 @@ fun MainScreen(
         },
         offset = lastLongPress?.screenOffset ?: DpOffset.Zero,
     )
-    when (locationDialog) {
-        LocationDialog.PermissionRationale -> ConfirmationDialog(
-            onDismissRequest = { locationDialog = null },
+    if (showLocationPermissionRationaleDialog) {
+        ConfirmationDialog(
+            onDismissRequest = { showLocationPermissionRationaleDialog = false },
             onConfirmed = { locationProvider.requestPermission() },
             title = { Text(stringResource(Res.string.no_location_permission_warning_title)) },
             text = { Text(stringResource(Res.string.no_location_permission_warning)) },
         )
-        LocationDialog.ApplicationSettings -> ConfirmationDialog(
-            onDismissRequest = { locationDialog = null },
+    }
+    if (showApplicationSettingsDialog) {
+        ConfirmationDialog(
+            onDismissRequest = { showApplicationSettingsDialog = false },
             onConfirmed = { systemSettingsLauncher.openApplicationSettings() },
             text = { Text(stringResource(Res.string.turn_on_location_request)) },
         )
-        LocationDialog.LocationSettings -> ConfirmationDialog(
-            onDismissRequest = { locationDialog = null },
+    }
+    if (showLocationSettingsDialog) {
+        ConfirmationDialog(
+            onDismissRequest = { showLocationSettingsDialog = false },
             onConfirmed = { systemSettingsLauncher.openLocationServicesSettings() },
             text = { Text(stringResource(Res.string.turn_on_location_request)) },
         )
-        null -> {}
     }
 
     shownMessage?.let { message ->
@@ -683,9 +688,6 @@ fun MainScreen(
     }
     //endregion
 }
-
-/** Asks to grant location permission or to enable location services. Only one is shown at a time. */
-private enum class LocationDialog { PermissionRationale, ApplicationSettings, LocationSettings }
 
 /** A bottom sheet as shown, with its form's state */
 private data class ShownForm(val id: String, val sheet: ShownBottomSheet, val formState: BottomSheetFormState)
