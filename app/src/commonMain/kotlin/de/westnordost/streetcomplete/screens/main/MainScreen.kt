@@ -63,10 +63,11 @@ import de.westnordost.streetcomplete.screens.main.map.MainMap
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.PinsMode
+import de.westnordost.streetcomplete.screens.main.map.crosshairPosition
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
+import de.westnordost.streetcomplete.screens.main.map.offsetInWindow
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapTrackState
-import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
 import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
@@ -234,20 +235,8 @@ fun MainScreen(
     val isFollowingPosition = cameraState.isFollowingPosition
     val isRecordingTracks = tracks.isRecording
 
-    fun getOffset(position: LatLon): Offset? = mapState.screenLocationFromPosition(position.toPosition())?.let {
-        with(density) { Offset(it.x.toPx(), it.y.toPx()) } + mapOrigin
-    }
-    fun getCrosshairPosition(): LatLon? {
-        val size = viewport?.size ?: return null
-        val left = sheetPadding.calculateLeftPadding(layoutDirection)
-        val right = sheetPadding.calculateRightPadding(layoutDirection)
-        val top = sheetPadding.calculateTopPadding()
-        val bottom = sheetPadding.calculateBottomPadding()
-        return mapState.positionFromScreenLocation(DpOffset(
-            left + (size.width - left - right) / 2,
-            top + (size.height - top - bottom) / 2,
-        ))?.toLatLon()
-    }
+    fun getOffset(position: LatLon): Offset? = mapState.offsetInWindow(position, mapOrigin, density)
+    fun getCrosshairPosition(): LatLon? = mapState.crosshairPosition(sheetPadding, layoutDirection)
     fun followLocation() {
         scope.launch { cameraState.locate(location.position, getTrackBearing(tracks.currentTrack)) }
     }
