@@ -13,7 +13,7 @@ import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import de.westnordost.streetcomplete.data.edithistory.EditKey
-import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
+import de.westnordost.streetcomplete.screens.main.edithistory.EditItemsController
 import de.westnordost.streetcomplete.screens.main.edithistory.EditItem
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
@@ -25,16 +25,16 @@ import kotlin.uuid.Uuid
 
 @Composable
 fun rememberMainSheetState(
-    viewModel: MainBottomSheetViewModel,
-    editHistoryViewModel: EditHistoryViewModel,
+    controller: MainBottomSheetController,
+    editItemsController: EditItemsController,
 ): MainSheetState {
     val formStateHolder = rememberSaveableStateHolder()
     val selection = rememberSaveable(stateSaver = MainBottomSheetSelection.Saver) {
         mutableStateOf<MainBottomSheetSelection?>(null)
     }
     val id = rememberSaveable { mutableStateOf("") }
-    val state = remember(viewModel, editHistoryViewModel) {
-        MainSheetState(viewModel, editHistoryViewModel, formStateHolder, selection, id)
+    val state = remember(controller, editItemsController) {
+        MainSheetState(controller, editItemsController, formStateHolder, selection, id)
     }
     LaunchedEffect(state) { state.observe() }
     return state
@@ -44,8 +44,8 @@ fun rememberMainSheetState(
  *  history sidebar is never shown together with a bottom sheet, so it is one of the selections. */
 @Stable
 class MainSheetState internal constructor(
-    private val viewModel: MainBottomSheetViewModel,
-    private val editHistoryViewModel: EditHistoryViewModel,
+    private val controller: MainBottomSheetController,
+    private val editItemsController: EditItemsController,
     /** Holds the state of the form(s), keyed by [id] */
     val formStateHolder: SaveableStateHolder,
     selection: MutableState<MainBottomSheetSelection?>,
@@ -105,7 +105,7 @@ class MainSheetState internal constructor(
     @OptIn(ExperimentalCoroutinesApi::class)
     internal suspend fun observe(): Unit = coroutineScope {
         launch {
-            editHistoryViewModel.editItems.collect { editItems = it }
+            editItemsController.editItems.collect { editItems = it }
         }
         launch {
             snapshotFlow { selection }.collectLatest { selection ->
@@ -121,7 +121,7 @@ class MainSheetState internal constructor(
     }
 
     private suspend fun observeBottomSheet(selection: MainBottomSheetSelection) {
-        viewModel.bottomSheet(selection).collect { sheet ->
+        controller.bottomSheet(selection).collect { sheet ->
             if (selection is MainBottomSheetSelection.Overlay && sheet is ShownBottomSheet.OsmNoteQuest) {
                 // A note at the element blocks editing it. Selecting the note instead also
                 // closes this sheet when the note is hidden or deleted.
@@ -135,11 +135,11 @@ class MainSheetState internal constructor(
     }
 
     private suspend fun observeEdit(key: EditKey) {
-        editHistoryViewModel.editItems.collect { items ->
+        editItemsController.editItems.collect { items ->
             if (items == null) return@collect
             val edit = items.find { it.edit.key == key }?.edit
             if (edit != null) {
-                shownBottomSheet = ShownBottomSheet.EditHistory(edit, editHistoryViewModel.getEditGeometry(edit))
+                shownBottomSheet = ShownBottomSheet.EditHistory(edit, editItemsController.getEditGeometry(edit))
             } else {
                 // the edit was undone or is synced: select the newest remaining edit, if any
                 val newest = items.lastOrNull()?.edit?.key

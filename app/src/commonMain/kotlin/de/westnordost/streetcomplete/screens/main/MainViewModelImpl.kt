@@ -37,6 +37,8 @@ import de.westnordost.streetcomplete.data.user.statistics.StatisticsSource
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterController
 import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSource
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
+import de.westnordost.streetcomplete.screens.main.edithistory.EditItemsController
+import de.westnordost.streetcomplete.screens.main.map.MainMapSource
 import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
@@ -45,6 +47,7 @@ import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.parseGeoUri
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.channels.awaitClose
@@ -89,7 +92,11 @@ class MainViewModelImpl(
     private val periodicCleaner: PeriodicCleaner,
     private val feedsUpdater: FeedsUpdater,
     private val prefs: Preferences,
-) : MainViewModel() {
+    override val map: MainMapSource,
+    override val bottomSheet: MainBottomSheetController,
+    override val editHistory: EditItemsController,
+    scope: CoroutineScope,
+) : MainViewModel(scope) {
 
     override val initialCamera get() = CameraPosition(
         target = prefs.mapPosition.toPosition(), bearing = prefs.mapRotation,

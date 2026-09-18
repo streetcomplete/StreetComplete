@@ -1,8 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.edithistory
 
 import androidx.compose.runtime.Stable
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditHistoryController
 import de.westnordost.streetcomplete.data.edithistory.EditHistorySource
@@ -14,8 +12,8 @@ import de.westnordost.streetcomplete.data.osm.geometry.ElementPointGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestHidden
-import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.toLocalDateTime
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.IO
@@ -25,12 +23,14 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.transformLatest
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.job
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.LocalDateTime
 import kotlin.time.Instant
 
 @Stable
-abstract class EditHistoryViewModel : ViewModel() {
+abstract class EditItemsController {
     abstract val editItems: StateFlow<List<EditItem>?>
 
     abstract suspend fun getEditElement(edit: Edit): Element?
@@ -47,17 +47,18 @@ data class EditItem(
 )
 
 @Stable
-class EditHistoryViewModelImpl(
+class EditItemsControllerImpl(
     private val mapDataSource: MapDataWithEditsSource,
     private val editHistoryController: EditHistoryController,
-) : EditHistoryViewModel() {
+    private val scope: CoroutineScope,
+) : EditItemsController() {
 
     private val edits = MutableStateFlow<List<Edit>?>(null)
 
     @OptIn(ExperimentalCoroutinesApi::class)
     override val editItems = edits
         .transformLatest { emit(it?.toEditItems()) }
-        .stateIn(viewModelScope, SharingStarted.Lazily, null)
+        .stateIn(scope, SharingStarted.Lazily, null)
 
     override suspend fun getEditElement(edit: Edit): Element? {
         val key = edit.primaryElementKey ?: return null
@@ -71,7 +72,7 @@ class EditHistoryViewModelImpl(
     } ?: ElementPointGeometry(edit.position)
 
     override fun undo(editKey: EditKey) {
-        launch(Dispatchers.IO) {
+        scope.launch(Dispatchers.IO) {
             editHistoryController.undo(editKey)
         }
     }
@@ -113,14 +114,11 @@ class EditHistoryViewModelImpl(
     init {
         updateEdits()
         editHistoryController.addListener(editHistoryListener)
-    }
-
-    override fun onCleared() {
-        editHistoryController.removeListener(editHistoryListener)
+        scope.coroutineContext.job.invokeOnCompletion { editHistoryController.removeListener(editHistoryListener) }
     }
 
     private fun updateEdits() {
-        launch(Dispatchers.IO) {
+        scope.launch(Dispatchers.IO) {
             edits.value = editHistoryController.getAll().sortedBy { it.createdTimestamp }
         }
     }
