@@ -1,6 +1,7 @@
 package de.westnordost.streetcomplete.screens.main
 
 import androidx.compose.runtime.saveable.Saver
+import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
@@ -19,6 +20,10 @@ sealed interface MainBottomSheetSelection {
 
     @Serializable
     data class CreateNote(val position: LatLon, val trackpoints: List<Trackpoint>? = null) : MainBottomSheetSelection
+
+    /** The edit history sidebar is not a bottom sheet, but never shown together with one */
+    @Serializable
+    data class EditHistory(val editKey: EditKey) : MainBottomSheetSelection
 
     companion object {
         val Saver = Saver<MainBottomSheetSelection?, String>(

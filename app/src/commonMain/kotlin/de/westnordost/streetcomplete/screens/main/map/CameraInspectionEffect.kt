@@ -3,9 +3,6 @@ package de.westnordost.streetcomplete.screens.main.map
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.snapshotFlow
-import de.westnordost.streetcomplete.data.edithistory.Edit
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
-import de.westnordost.streetcomplete.screens.main.EditHistoryState
 import de.westnordost.streetcomplete.screens.main.MainBottomSheetSelection
 import de.westnordost.streetcomplete.screens.main.MainLocationState
 import de.westnordost.streetcomplete.screens.main.MainSheetState
@@ -23,21 +20,18 @@ import kotlinx.coroutines.flow.first
 internal fun CameraInspectionEffect(
     cameraState: MainMapCameraState,
     sheet: MainSheetState,
-    editHistory: EditHistoryState,
     location: MainLocationState,
     tracks: MainMapTrackState,
-    getEditGeometry: suspend (Edit) -> ElementGeometry,
 ) {
-    LaunchedEffect(cameraState, sheet.selection, sheet.id, editHistory.isShowing, editHistory.selectedEditKey) {
-        val selection = sheet.selection
-        when {
-            selection != null -> {
+    LaunchedEffect(cameraState, sheet.selection, sheet.id) {
+        when (val selection = sheet.selection) {
+            null -> cameraState.closeInspection()
+            is MainBottomSheetSelection.EditHistory -> cameraState.openEditHistory(selection.editKey)
+            else -> {
                 // Inspecting an existing overlay element must leave the map in place.
                 val existingOverlay = selection is MainBottomSheetSelection.Overlay && selection.elementKey != null
                 cameraState.openSheet(sheet.id, padded = !existingOverlay)
             }
-            editHistory.isShowing -> cameraState.openEditHistory(editHistory.selectedEditKey)
-            else -> cameraState.closeInspection()
         }
     }
     // Runs once per inspected object.
@@ -57,12 +51,9 @@ internal fun CameraInspectionEffect(
                 }
             }
             is CameraMode.EditHistory -> {
-                val key = inspection.key
-                if (key == null) cameraState.inspectEditHistory()
-                else {
-                    val edit = snapshotFlow { editHistory.selectedEdit }.filterNotNull().first()
-                    cameraState.focusEdit(key, getEditGeometry(edit))
-                }
+                val shown = snapshotFlow { sheet.shownBottomSheet as? ShownBottomSheet.EditHistory }
+                    .filterNotNull().first { it.edit.key == inspection.key }
+                cameraState.focusEdit(inspection.key, shown.geometry)
             }
             is CameraMode.Restoring -> cameraState.restore(location.position, getTrackBearing(tracks.currentTrack))
             else -> Unit

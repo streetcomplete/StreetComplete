@@ -10,9 +10,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.text.intl.LocaleList
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
-import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.edithistory.EditKey
-import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.quest.QuestKey
@@ -71,8 +69,6 @@ internal fun MainMapContent(
     hiddenLabels: Set<MapLabel>,
     /** whether the selected overlay's [styledElements] are displayed at all */
     showOverlay: Boolean,
-    selectedEdit: Edit?,
-    highlightedGeometry: ElementGeometry?,
     downloadedTiles: Collection<TilePos>,
     pinsMode: PinsMode,
     /** whether clicking pins and overlay elements selects them. Otherwise, the click falls
@@ -114,6 +110,7 @@ internal fun MainMapContent(
         else -> null
     }
     val selectedOverlayElement = shownBottomSheet as? ShownBottomSheet.Overlay
+    val selectedEdit = (shownBottomSheet as? ShownBottomSheet.EditHistory)?.edit
 
     val languages = LocaleList.current.localeList.map { it.language }.distinct()
     val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
@@ -183,7 +180,7 @@ internal fun MainMapContent(
                     mapImages = mapImages
                 )
             }
-            (highlightedGeometry ?: shownBottomSheet?.geometry)?.let { geometry ->
+            shownBottomSheet?.geometry?.let { geometry ->
                 FocusedGeometryLayers(geometry)
             }
 

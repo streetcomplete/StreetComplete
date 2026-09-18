@@ -161,7 +161,7 @@ class MainMapCameraState internal constructor(
         map.setCameraPosition(map.cameraPosition.copy(target = position.toPosition()))
     }
 
-    fun openEditHistory(key: EditKey?) {
+    fun openEditHistory(key: EditKey) {
         val previous = mode
         if (previous is CameraMode.EditHistory && previous.key == key) return
         mode = CameraMode.EditHistory(key, previous.browsing)
@@ -221,13 +221,6 @@ class MainMapCameraState internal constructor(
         flattenNavigation(sheet.resume)
     }
 
-    suspend fun inspectEditHistory() {
-        val history = mode as? CameraMode.EditHistory ?: return
-        if (history.key != null || history.focused) return
-        mode = history.copy(focused = true)
-        flattenNavigation(history.resume)
-    }
-
     private suspend fun flattenNavigation(resume: CameraMode.Browsing) {
         if (resume.tracking.navigating) {
             map.animateCameraPosition(map.cameraPosition.copy(tilt = 0.0), CameraAnimation.Ease(300.milliseconds))
@@ -282,7 +275,7 @@ internal sealed interface CameraMode {
     }
 
     @Serializable
-    data class EditHistory(val key: EditKey?, val resume: Browsing, val focused: Boolean = false) : CameraMode {
+    data class EditHistory(val key: EditKey, val resume: Browsing, val focused: Boolean = false) : CameraMode {
         override val inspectionKey get() = "edit history $key"
     }
 }

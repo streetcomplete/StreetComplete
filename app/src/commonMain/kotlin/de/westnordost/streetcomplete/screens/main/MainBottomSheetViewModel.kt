@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main
 import androidx.compose.runtime.Stable
 import androidx.lifecycle.ViewModel
 import de.westnordost.osmfeatures.FeatureDictionary
+import de.westnordost.streetcomplete.data.edithistory.Edit
 import de.westnordost.streetcomplete.data.location.SurveyChecker
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
@@ -127,6 +128,8 @@ class MainBottomSheetViewModelImpl(
             else getElementInOverlay(overlay, key)
         }
         is MainBottomSheetSelection.CreateNote -> ShownBottomSheet.CreateOsmNote(selection.trackpoints)
+        // resolved from the edit history instead, see MainSheetState
+        is MainBottomSheetSelection.EditHistory -> null
     }
 
     /** Emits once, then whenever the [selection]'s object may have been removed. Listeners are
@@ -288,6 +291,13 @@ sealed interface ShownBottomSheet {
     ) : ShownBottomSheet {
         override val position get() = null
         override val geometry get() = null
+    }
+
+    data class EditHistory(
+        val edit: Edit,
+        override val geometry: ElementGeometry,
+    ) : ShownBottomSheet {
+        override val position get() = edit.position
     }
 
     val position: LatLon?

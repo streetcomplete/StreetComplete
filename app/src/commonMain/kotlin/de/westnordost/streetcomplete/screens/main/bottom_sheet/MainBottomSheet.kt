@@ -185,6 +185,8 @@ fun MainBottomSheet(
                 modifier = modifier,
             )
         }
+        // shown in the EditHistorySidebar instead
+        is ShownBottomSheet.EditHistory -> {}
     }
 
     confirmEdit?.let { pendingEdit ->

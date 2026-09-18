@@ -168,21 +168,11 @@ fun MainScreen(
     val windowInfo = LocalWindowInfo.current
     val lifecycleOwner = LocalLifecycleOwner.current
 
-    val sheet = rememberMainSheetState(mainBottomSheetViewModel)
-    val editHistory = rememberEditHistoryState(editHistoryViewModel)
+    val sheet = rememberMainSheetState(mainBottomSheetViewModel, editHistoryViewModel)
     val tracks = rememberMainMapTrackState()
     val location = rememberMainLocationState(locationProvider, headingProvider, systemSettingsLauncher)
+    val selection = sheet.selection
     val shownBottomSheet = sheet.shownBottomSheet
-    val selectedEdit = editHistory.selectedEdit
-    // The edit history sidebar and a bottom sheet are never shown at the same time.
-    fun showSheet(selection: MainBottomSheetSelection) {
-        editHistory.hide()
-        sheet.show(selection)
-    }
-    fun showEditHistory() {
-        sheet.close()
-        editHistory.show()
-    }
 
     /* map */
 
@@ -195,14 +185,13 @@ fun MainScreen(
     val markers = sheet.formMarkers ?: highlightedMarkers
     // hidden behind quest forms, which highlight elements themselves, and behind the edit history
     val showOverlay = selectedOverlay != null &&
-        shownBottomSheet !is ShownBottomSheet.OsmQuest &&
-        shownBottomSheet !is ShownBottomSheet.OsmNoteQuest &&
-        !editHistory.isShowing
+        selection !is MainBottomSheetSelection.Quest &&
+        selection !is MainBottomSheetSelection.EditHistory
 
     val initialCamera = remember(viewModel) { viewModel.initialCamera }
-    val pinsMode = when {
-        editHistory.isShowing -> PinsMode.EditHistory
-        !sheet.isOpen || sheet.selection is MainBottomSheetSelection.CreateNote -> PinsMode.Quests
+    val pinsMode = when (selection) {
+        is MainBottomSheetSelection.EditHistory -> PinsMode.EditHistory
+        null, is MainBottomSheetSelection.CreateNote -> PinsMode.Quests
         else -> PinsMode.None
     }
     val mapState = rememberMapState(runtime, BaseStyle.Json(BASE_STYLE), initialCameraPosition = initialCamera) {
@@ -217,15 +206,13 @@ fun MainScreen(
             shownMarkers = markers,
             hiddenLabels = selectedOverlay?.hiddenLabels.orEmpty(),
             showOverlay = showOverlay,
-            selectedEdit = selectedEdit,
-            highlightedGeometry = editHistory.highlightedGeometry,
             downloadedTiles = downloadedTiles,
             pinsMode = pinsMode,
-            isSelectable = !sheet.isOpen,
-            onClickQuest = { showSheet(MainBottomSheetSelection.Quest(it)) },
-            onClickEdit = editHistory::select,
+            isSelectable = !sheet.isFormOpen,
+            onClickQuest = { sheet.show(MainBottomSheetSelection.Quest(it)) },
+            onClickEdit = { sheet.show(MainBottomSheetSelection.EditHistory(it)) },
             onClickElement = { key ->
-                selectedOverlay?.let { showSheet(MainBottomSheetSelection.Overlay(it.name, key)) }
+                selectedOverlay?.let { sheet.show(MainBottomSheetSelection.Overlay(it.name, key)) }
             },
         )
     }
@@ -249,7 +236,7 @@ fun MainScreen(
         scope.launch { cameraState.zoomBy(amount) }
     }
     fun composeNote(position: LatLon, trackpoints: List<Trackpoint>? = null) {
-        showSheet(MainBottomSheetSelection.CreateNote(position, trackpoints))
+        sheet.show(MainBottomSheetSelection.CreateNote(position, trackpoints))
     }
     fun download() {
         val displayedArea = mapState.viewport?.visibleBounds?.toStreetCompleteBoundingBox()
@@ -342,7 +329,7 @@ fun MainScreen(
             }
         }
     }
-    CameraInspectionEffect(cameraState, sheet, editHistory, location, tracks, editHistoryViewModel::getEditGeometry)
+    CameraInspectionEffect(cameraState, sheet, location, tracks)
     LaunchedEffect(selectedOverlay) {
         val selection = sheet.selection as? MainBottomSheetSelection.Overlay
         if (selection != null && selection.name != selectedOverlay?.name) sheet.close()
@@ -376,17 +363,17 @@ fun MainScreen(
             onPan = { cameraState.onPan(location.location != null) },
             onMapClick = { event ->
                 val position = event.position?.toLatLon()
-                if (sheet.isOpen && position != null) {
+                when (sheet.selection) {
+                    null -> {}
+                    is MainBottomSheetSelection.EditHistory -> sheet.close()
                     // forms react to clicks near the click position, e.g. to suggest a name
-                    sheet.lastMapClick = MapClick(position, metersPerDp * 14)
-                } else if (editHistory.isShowing) {
-                    editHistory.hide()
+                    else -> position?.let { sheet.lastMapClick = MapClick(it, metersPerDp * 14) }
                 }
                 ClickResult.Consume
             },
             onMapLongClick = { event ->
                 val position = event.position?.toLatLon()
-                if (!sheet.isOpen && !editHistory.isShowing && position != null) {
+                if (!sheet.isOpen && position != null) {
                     lastLongPress = event.screenOffset to position
                     showMapContextMenu = true
                 }
@@ -397,7 +384,7 @@ fun MainScreen(
                 GeographicLayout(
                     Modifier
                         .windowInsetsPadding(WindowInsets.safeDrawing)
-                        .padding(if (sheet.isOpen) sheetPadding else PaddingValues(0.dp))
+                        .padding(if (sheet.isFormOpen) sheetPadding else PaddingValues(0.dp))
                 ) {
                     if (!showIntroTutorial) {
                         location.location?.position?.let { position ->
@@ -459,7 +446,7 @@ fun MainScreen(
                             if (mapCamera.zoom >= 17.0) {
                                 selectedOverlay?.let { overlay ->
                                     val position = getCrosshairPosition()
-                                    showSheet(MainBottomSheetSelection.Overlay(overlay.name))
+                                    sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
                                     position?.let { cameraState.preserveCrosshairPosition(it) }
                                 }
                             } else {
@@ -467,9 +454,9 @@ fun MainScreen(
                             }
                         },
 
-                        hasEdits = editHistory.hasEdits,
+                        hasEdits = sheet.hasEdits,
                         isUndoEnabled = !isUploadingOrDownloading,
-                        onClickUndo = ::showEditHistory,
+                        onClickUndo = sheet::showEditHistory,
 
                         metersPerDp = metersPerDp,
                     )
@@ -479,22 +466,22 @@ fun MainScreen(
 
         val dir = LocalLayoutDirection.current.dir
         AnimatedVisibility(
-            visible = editHistory.isShowing && editHistory.hasEdits,
+            visible = selection is MainBottomSheetSelection.EditHistory && sheet.hasEdits,
             enter = fadeIn() + slideInHorizontally(initialOffsetX = { -it * dir }),
             exit = fadeOut() + slideOutHorizontally(targetOffsetX = { -it * dir }),
         ) {
             EditHistorySidebar(
-                editItems = editHistory.editItems.orEmpty(),
-                selectedEdit = selectedEdit,
-                onSelectEdit = { editHistory.select(it.key) },
-                onUndoEdit = { editHistory.undo(it.key) },
-                onDismissRequest = editHistory::hide,
+                editItems = sheet.editItems.orEmpty(),
+                selectedEdit = (shownBottomSheet as? ShownBottomSheet.EditHistory)?.edit,
+                onSelectEdit = { sheet.show(MainBottomSheetSelection.EditHistory(it.key)) },
+                onUndoEdit = { editHistoryViewModel.undo(it.key) },
+                onDismissRequest = sheet::close,
                 getEditElement = editHistoryViewModel::getEditElement,
             )
         }
 
         AnimatedContent(
-            targetState = shownBottomSheet?.let { sheet.id to it },
+            targetState = shownBottomSheet?.takeUnless { it is ShownBottomSheet.EditHistory }?.let { sheet.id to it },
             contentKey = { it?.first },
             transitionSpec = {
                 if (initialState != null && targetState != null) {
