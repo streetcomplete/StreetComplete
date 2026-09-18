@@ -92,6 +92,7 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
+import org.maplibre.compose.interaction.ClickEvent
 import org.maplibre.compose.interaction.ClickResult
 import org.maplibre.compose.location.HeadingProvider
 import org.maplibre.compose.location.LocationEvent
@@ -164,7 +165,7 @@ fun MainScreen(
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     var showToast by remember { mutableStateOf<Toast?>(null) }
 
-    var lastLongPress by remember { mutableStateOf<Pair<DpOffset, LatLon>?>(null) }
+    var lastLongPress by remember { mutableStateOf<MapClick?>(null) }
     var showMapContextMenu by remember { mutableStateOf(false) }
     var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
 
@@ -234,6 +235,8 @@ fun MainScreen(
 
     fun getOffset(position: LatLon): Offset? = mapState.offsetInWindow(position, mapOrigin, density)
     fun getCrosshairPosition(): LatLon? = mapState.crosshairPosition(sheetPadding, layoutDirection)
+    fun ClickEvent.toMapClick(): MapClick? =
+        position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = metersPerDp * 14) }
     fun followLocation() {
         scope.launch { cameraState.locate(location.position, getTrackBearing(tracks.currentTrack)) }
     }
@@ -379,20 +382,20 @@ fun MainScreen(
             cameraPadding = cameraPadding,
             onPan = { cameraState.onPan(location.location != null) },
             onMapClick = { event ->
-                val position = event.position?.toLatLon()
                 when (sheet.selection) {
                     null -> {}
                     is MainBottomSheetSelection.EditHistory -> sheet.close()
                     // forms react to clicks near the click position, e.g. to suggest a name
-                    else -> position?.let { sheet.lastMapClick = MapClick(it, metersPerDp * 14) }
+                    else -> event.toMapClick()?.let { sheet.lastMapClick = it }
                 }
                 ClickResult.Consume
             },
             onMapLongClick = { event ->
-                val position = event.position?.toLatLon()
-                if (!sheet.isOpen && position != null) {
-                    lastLongPress = event.screenOffset to position
-                    showMapContextMenu = true
+                if (!sheet.isOpen) {
+                    event.toMapClick()?.let {
+                        lastLongPress = it
+                        showMapContextMenu = true
+                    }
                 }
                 ClickResult.Consume
             },
@@ -544,14 +547,14 @@ fun MainScreen(
         onDismissRequest = { showMapContextMenu = false },
         onClickCreateNote = {
             if (mapState.cameraPosition.zoom < ApplicationConstants.NOTE_MIN_ZOOM) showToast = Toast.ImpreciseNote
-            else lastLongPress?.second?.let { composeNote(it) }
+            else lastLongPress?.let { composeNote(it.position) }
         },
         onClickCreateTrack = { tracks.startRecording() },
         isOpenLocationAvailable = mapAppLauncher.isAvailable(),
         onClickOpenLocation = {
-            lastLongPress?.second?.let { mapAppLauncher.openAt(it, mapState.cameraPosition.zoom) }
+            lastLongPress?.let { mapAppLauncher.openAt(it.position, mapState.cameraPosition.zoom) }
         },
-        offset = lastLongPress?.first ?: DpOffset.Zero,
+        offset = lastLongPress?.screenOffset ?: DpOffset.Zero,
     )
     when (locationDialog) {
         LocationDialog.PermissionRationale -> ConfirmationDialog(
