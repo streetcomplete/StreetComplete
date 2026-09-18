@@ -229,6 +229,8 @@ val OSM_API_URL = if (USE_TEST_API) OSM_API_URL_TEST else OSM_API_URL_LIVE
 private const val STATISTICS_BACKEND_URL = "https://streetcomplete.app/statistics/"
 
 val commonModule = module {
+    viewModel { AppViewModel(get(), get()) }
+
 
     //region basic configuration
 

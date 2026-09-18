@@ -1,6 +1,6 @@
 package de.westnordost.streetcomplete.screens.main.map
 
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -38,8 +38,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import org.maplibre.compose.interaction.ClickResult
-import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.location.LocationMeasurement
+import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.sources.GeoJsonData
 import org.maplibre.compose.sources.rememberGeoJsonSource
 import org.maplibre.compose.util.MaplibreComposable
@@ -113,7 +113,7 @@ internal fun MainMapContent(
     val selectedEdit = (shownBottomSheet as? ShownBottomSheet.EditHistory)?.edit
 
     val languages = LocaleList.current.localeList.map { it.language }.distinct()
-    val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
+    val colors = if (MaterialTheme.colors.isLight) MapColors.Light else MapColors.Night
 
     val mapImages = rememberMapImages(mapState)
     val overlayIcons = remember(styledElements) {

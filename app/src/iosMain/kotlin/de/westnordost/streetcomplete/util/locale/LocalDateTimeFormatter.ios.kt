@@ -16,7 +16,7 @@ actual class LocalDateTimeFormatter actual constructor(
     timeStyle: DateTimeFormatStyle,
 ) {
     private val formatter = NSDateFormatter().also {
-        if (locale != null) it.locale = locale.toNSLocale()
+        (locale ?: appFormattingLocale)?.let { selected -> it.locale = selected.toNSLocale() }
         it.dateStyle = dateStyle.toNSDateFormatterStyle()
         it.timeStyle = timeStyle.toNSDateFormatterStyle()
         it.timeZone = timeZone.toNSTimeZone()

@@ -1,36 +1,18 @@
 package de.westnordost.streetcomplete.screens.about
 
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.navigation.compose.NavHost
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import androidx.navigation.compose.rememberNavController
 import de.westnordost.streetcomplete.screens.about.logs.LogsFiltersScreen
 import de.westnordost.streetcomplete.screens.about.logs.LogsScreen
-import de.westnordost.streetcomplete.ui.ktx.dir
 import org.koin.compose.viewmodel.koinViewModel
 
-@Composable
-fun AboutNavHost(onClickBack: () -> Unit) {
-    val navController = rememberNavController()
-    val dir = LocalLayoutDirection.current.dir
+fun NavGraphBuilder.aboutGraph(navController: NavHostController) {
+    fun goBack() { navController.popBackStack() }
 
-    fun goBack() {
-        if (!navController.popBackStack()) onClickBack()
-    }
-
-    NavHost(
-        navController = navController,
-        startDestination = AboutDestination.About,
-        enterTransition = { slideInHorizontally(initialOffsetX = { +it * dir }) },
-        exitTransition = { slideOutHorizontally(targetOffsetX = { -it * dir }) },
-        popEnterTransition = { slideInHorizontally(initialOffsetX = { -it * dir }) },
-        popExitTransition = { slideOutHorizontally(targetOffsetX = { +it * dir }) }
-    ) {
+    navigation(startDestination = AboutDestination.About, route = "about_graph") {
         composable(AboutDestination.About) {
             AboutScreen(
                 onClickChangelog = { navController.navigate(AboutDestination.Changelog) },

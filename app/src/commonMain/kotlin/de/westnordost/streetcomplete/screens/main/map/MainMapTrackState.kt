@@ -16,11 +16,16 @@ import org.maplibre.spatialk.units.International
 import kotlin.math.max
 
 @Composable
-fun rememberMainMapTrackState(): MainMapTrackState = rememberSaveable(saver = MainMapTrackState.Saver) {
-    MainMapTrackState()
-}
+fun rememberMainMapTrackState(source: MainMapSource): MainMapTrackState = rememberSaveable(
+    saver = Saver(
+        save = { with(MainMapTrackState.Saver) { save(it) } },
+        restore = { source.trackState ?: MainMapTrackState.Saver.restore(it) },
+    ),
+) {
+    source.trackState ?: MainMapTrackState()
+}.also { source.trackState = it }
 
-/** Walked and recorded tracks, owned by the map screen's composition. */
+/** Walked and recorded tracks, retained while the main destination is on the back stack. */
 class MainMapTrackState {
     private class Track(val points: SnapshotStateList<Trackpoint>, val isRecording: Boolean) {
         /** Points before this index are drawn as part of the older tracks. A recording is never

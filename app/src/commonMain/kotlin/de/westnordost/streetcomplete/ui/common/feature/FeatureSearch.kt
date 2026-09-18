@@ -29,6 +29,7 @@ import de.westnordost.osmfeatures.Feature
 import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.osmfeatures.GeometryType
 import de.westnordost.streetcomplete.resources.*
+import de.westnordost.streetcomplete.ui.LocalAppLocale
 import de.westnordost.streetcomplete.ui.common.CenteredLargeTitleHint
 import de.westnordost.streetcomplete.ui.common.ClearIcon
 import de.westnordost.streetcomplete.ui.common.SearchIcon
@@ -54,7 +55,7 @@ fun FeatureSearch(
     }
 
     var search by remember { mutableStateOf("") }
-    val languages = remember { getLanguagesForFeatureDictionary() }
+    val languages = remember(LocalAppLocale.current) { getLanguagesForFeatureDictionary() }
     val defaultFeatures = remember(codesOfDefaultFeatures, featureDictionary, languages, countryCode) {
         codesOfDefaultFeatures.mapNotNull { id ->
             featureDictionary.getById(

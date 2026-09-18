@@ -30,6 +30,9 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 
 abstract class MainMapSource {
+    // Keep full tracks across navigation; the saved-state copy is bounded only for process death.
+    internal var trackState: MainMapTrackState? = null
+
     abstract fun onViewportChanged(zoom: Double, bounds: BoundingBox?)
     abstract fun onLocationChanged(location: Location)
 

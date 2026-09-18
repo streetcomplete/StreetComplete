@@ -169,7 +169,7 @@ fun MainScreen(
     val lifecycleOwner = LocalLifecycleOwner.current
 
     val sheet = rememberMainSheetState(viewModel.bottomSheet, viewModel.editHistory)
-    val tracks = rememberMainMapTrackState()
+    val tracks = rememberMainMapTrackState(viewModel.map)
     val location = rememberMainLocationState(locationProvider, headingProvider)
     val selection = sheet.selection
     val shownBottomSheet = sheet.shownBottomSheet
