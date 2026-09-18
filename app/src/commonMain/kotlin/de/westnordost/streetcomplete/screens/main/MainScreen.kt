@@ -18,9 +18,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.AlertDialog
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -54,7 +51,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.MainBottomSheet
-import de.westnordost.streetcomplete.screens.main.controls.LocationState
 import de.westnordost.streetcomplete.screens.main.controls.MainScreenControls
 import de.westnordost.streetcomplete.screens.main.controls.PointerPinButton
 import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
@@ -84,7 +80,6 @@ import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.theme.Dimensions
-import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toLocation
 import de.westnordost.streetcomplete.util.math.area
@@ -99,26 +94,17 @@ import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.interaction.ClickResult
-import org.maplibre.compose.location.HeadingMeasurement
 import org.maplibre.compose.location.HeadingProvider
-import org.maplibre.compose.location.HeadingRequest
 import org.maplibre.compose.location.LocationEvent
-import org.maplibre.compose.location.LocationMeasurement
-import org.maplibre.compose.location.LocationPermission
 import org.maplibre.compose.location.LocationProvider
-import org.maplibre.compose.location.LocationRequest
-import org.maplibre.compose.location.LocationUnavailableReason
 import org.maplibre.compose.location.SystemSettingsLauncher
 import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.GeographicLayout
 import org.maplibre.compose.style.BaseStyle
-import org.maplibre.spatialk.units.Bearing
-import org.maplibre.spatialk.units.extensions.inDegrees
 import kotlin.math.PI
 import kotlin.math.sqrt
-import kotlin.time.Duration.Companion.milliseconds
 
 /** The map and its controls, forms, and sidebars. */
 @Composable
@@ -183,15 +169,12 @@ fun MainScreen(
     val lifecycleOwner = LocalLifecycleOwner.current
     val sheet = rememberMainSheetState(mainBottomSheetViewModel)
     val editHistory = rememberEditHistoryState(editHistoryViewModel)
-    var displayedLocation by rememberSerializable { mutableStateOf<LocationMeasurement?>(null) }
-    var heading by remember { mutableStateOf<HeadingMeasurement?>(null) }
-    var locationState by remember { mutableStateOf<LocationState?>(LocationState.ENABLED) }
     var lastLongPress by remember { mutableStateOf<Pair<DpOffset, LatLon>?>(null) }
     var showMapContextMenu by remember { mutableStateOf(false) }
     var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
     var mapOrigin by remember { mutableStateOf(Offset.Zero) }
-    var locationDialog by remember { mutableStateOf<LocationDialog?>(null) }
     val tracks = rememberMainMapTrackState()
+    val location = rememberMainLocationState(locationProvider, headingProvider, systemSettingsLauncher)
     val downloadedTiles by mapViewModel.downloadedTiles.collectAsStateWithLifecycle()
     val geoUri by viewModel.geoUri.collectAsState()
     val mapAppLauncher = rememberMapAppLauncher()
@@ -252,8 +235,8 @@ fun MainScreen(
             onClickPin = { ClickResult.Pass }
         }
         MainMapContent(
-            location = displayedLocation,
-            heading = heading?.let { (it.bearing - Bearing.North).inDegrees.toFloat() },
+            location = location.location,
+            heading = location.headingDegrees,
             isRecording = tracks.isRecording,
             trackpoints = tracks.recentTrackPositions,
             oldTrackpointsLists = tracks.olderTrackPositions,
@@ -307,7 +290,7 @@ fun MainScreen(
         ))?.toLatLon()
     }
     fun followLocation() {
-        scope.launch { cameraState.locate(displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack)) }
+        scope.launch { cameraState.locate(location.position, getTrackBearing(tracks.currentTrack)) }
     }
     fun zoomBy(amount: Double) {
         scope.launch { cameraState.zoomBy(amount) }
@@ -334,26 +317,11 @@ fun MainScreen(
         viewModel.download(downloadBounds)
     }
     fun clickLocation() {
-        val permission = locationProvider.permission.value
-        if (permission is LocationPermission.NotGranted) {
-            when {
-                permission.canRequest == false -> {
-                    if (systemSettingsLauncher.canOpenApplicationSettings) locationDialog = LocationDialog.ApplicationSettings
-                    else showToast = Toast.NoLocation
-                }
-                permission.shouldShowRationale -> locationDialog = LocationDialog.PermissionRationale
-                else -> locationProvider.requestPermission()
-            }
-        } else when {
-            locationState == LocationState.ALLOWED -> {
-                if (systemSettingsLauncher.canOpenLocationServicesSettings) locationDialog = LocationDialog.LocationSettings
-                else showToast = Toast.NoLocation
-            }
-            !cameraState.isFollowingPosition -> followLocation()
-            else -> scope.launch {
-                cameraState.setNavigationMode(!cameraState.isNavigationMode,
-                    displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
-            }
+        if (!location.requestLocation(onCannotEnable = { showToast = Toast.NoLocation })) return
+        if (!cameraState.isFollowingPosition) {
+            followLocation()
+        } else scope.launch {
+            cameraState.setNavigationMode(!cameraState.isNavigationMode, location.position, getTrackBearing(tracks.currentTrack))
         }
     }
 
@@ -371,37 +339,23 @@ fun MainScreen(
     LifecycleEventEffect(Lifecycle.Event.ON_STOP) {
         viewModel.saveCamera(mapState.cameraPosition, cameraState.isFollowingPosition, cameraState.isNavigationMode)
     }
-    LaunchedEffect(locationProvider, lifecycleOwner) {
+    LaunchedEffect(location, lifecycleOwner) {
         lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            locationProvider.updates(LocationRequest()).collect { event ->
+            location.collectUpdates { event ->
                 when (event) {
                     is LocationEvent.Update -> {
                         val fix = event.toLocation()
                         // Survey checking receives every fix, including ones too inaccurate for a track.
                         mapViewModel.onLocationChanged(fix)
-                        displayedLocation = event.measurement
-                        locationState = LocationState.UPDATING
                         tracks.addLocation(event.measurement)
                         launch { cameraState.followLocation(fix.position, getTrackBearing(tracks.currentTrack)) }
                     }
                     is LocationEvent.Unavailable -> {
-                        locationState = when (event.reason) {
-                            LocationUnavailableReason.ServicesDisabled -> LocationState.ALLOWED
-                            LocationUnavailableReason.TemporarilyUnavailable -> LocationState.SEARCHING
-                            LocationUnavailableReason.PermissionDenied -> LocationState.DENIED
-                            LocationUnavailableReason.Unsupported, LocationUnavailableReason.UnexpectedFailure -> null
-                        }
-                        displayedLocation = null
                         tracks.clear()
                         launch { cameraState.setNavigationMode(false, null, null) }
                     }
                 }
             }
-        }
-    }
-    LaunchedEffect(headingProvider, lifecycleOwner) {
-        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            headingProvider.updates(HeadingRequest(33.milliseconds)).collect { heading = it }
         }
     }
     LaunchedEffect(cameraState, sheet.selection, sheet.id, editHistory.isShowing, editHistory.selectedEditKey) {
@@ -441,8 +395,7 @@ fun MainScreen(
                     cameraState.focusEdit(key, editHistoryViewModel.getEditGeometry(edit))
                 }
             }
-            is CameraMode.Restoring -> cameraState.restore(
-                displayedLocation?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+            is CameraMode.Restoring -> cameraState.restore(location.position, getTrackBearing(tracks.currentTrack))
             else -> Unit
         }
     }
@@ -513,7 +466,7 @@ fun MainScreen(
             state = mapState,
             modifier = Modifier.fillMaxSize().onGloballyPositioned { mapOrigin = it.positionInWindow() },
             cameraPadding = cameraPadding,
-            onPan = { cameraState.onPan(displayedLocation != null) },
+            onPan = { cameraState.onPan(location.location != null) },
             onMapClick = { event ->
                 val position = event.position?.toLatLon()
                 if (sheet.isOpen && position != null) {
@@ -540,7 +493,7 @@ fun MainScreen(
                         .padding(if (sheet.isOpen) sheetPadding else PaddingValues(0.dp))
                 ) {
                     if (!showIntroTutorial) {
-                        displayedLocation?.position?.let { position ->
+                        location.location?.position?.let { position ->
                             PointerPinButton(targetPosition = position, onClick = ::followLocation) {
                                 Image(painterResource(Res.drawable.location_dot_small), null)
                             }
@@ -583,7 +536,7 @@ fun MainScreen(
                         mapTilt = mapCamera.tilt.toFloat(),
                         onClickCompass = { scope.launch { cameraState.resetCompass() } },
 
-                        locationState = locationState,
+                        locationState = location.state,
                         isNavigationMode = isNavigationMode,
                         isFollowingPosition = isFollowingPosition,
                         onClickLocation = ::clickLocation,
@@ -591,7 +544,7 @@ fun MainScreen(
                         isRecordingTracks = isRecordingTracks,
                         onClickStopTrackRecording = {
                             val recorded = tracks.stopRecording()
-                            displayedLocation?.position?.toLatLon()?.let { composeNote(it, recorded.takeIf { it.isNotEmpty() }) }
+                            location.position?.let { composeNote(it, recorded.takeIf { it.isNotEmpty() }) }
                         },
 
                         isCreateNodeEnabled = isCreateNodeEnabled,
@@ -690,26 +643,8 @@ fun MainScreen(
         },
         offset = lastLongPress?.first ?: DpOffset.Zero,
     )
-    locationDialog?.let { dialog ->
-        AlertDialog(
-            onDismissRequest = { locationDialog = null },
-            title = if (dialog == LocationDialog.PermissionRationale) {
-                { Text(stringResource(Res.string.no_location_permission_warning_title)) }
-            } else null,
-            text = { Text(stringResource(if (dialog == LocationDialog.PermissionRationale)
-                Res.string.no_location_permission_warning else Res.string.turn_on_location_request)) },
-            confirmButton = {
-                TextButton(onClick = {
-                    locationDialog = null
-                    when (dialog) {
-                        LocationDialog.PermissionRationale -> locationProvider.requestPermission()
-                        LocationDialog.ApplicationSettings -> systemSettingsLauncher.openApplicationSettings()
-                        LocationDialog.LocationSettings -> systemSettingsLauncher.openLocationServicesSettings()
-                    }
-                }) { Text(stringResource(Res.string.ok)) }
-            },
-            dismissButton = { TextButton(onClick = { locationDialog = null }) { Text(stringResource(Res.string.cancel)) } },
-        )
+    location.dialog?.let { dialog ->
+        LocationDialog(dialog, onDismissRequest = location::dismissDialog, onConfirm = location::confirmDialog)
     }
 
     shownMessage?.let { message ->
@@ -830,5 +765,3 @@ private val Toast.messageResource: StringResource get() =  when (this) {
     Toast.DownloadAreaTooBig -> Res.string.download_area_too_big
     Toast.NoEmailClient -> Res.string.no_email_client
 }
-
-private enum class LocationDialog { PermissionRationale, ApplicationSettings, LocationSettings }
