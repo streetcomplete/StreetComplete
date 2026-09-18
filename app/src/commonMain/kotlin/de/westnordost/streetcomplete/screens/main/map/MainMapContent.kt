@@ -2,14 +2,20 @@ package de.westnordost.streetcomplete.screens.main.map
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.text.intl.LocaleList
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.edithistory.Edit
+import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
+import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
+import de.westnordost.streetcomplete.data.quest.QuestKey
 import de.westnordost.streetcomplete.resources.Res
 import de.westnordost.streetcomplete.screens.main.ShownBottomSheet
 import de.westnordost.streetcomplete.screens.main.edithistory.icon
@@ -30,6 +36,7 @@ import de.westnordost.streetcomplete.screens.main.map.layers.toGeoJsonFeatures
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.JsonObject
 import org.maplibre.compose.interaction.ClickResult
@@ -43,9 +50,15 @@ import org.maplibre.spatialk.geojson.FeatureCollection
 import org.maplibre.spatialk.geojson.Geometry
 import org.maplibre.spatialk.units.International
 
+/** Which pins the map shows */
+enum class PinsMode { Quests, EditHistory, None }
+
+/** Everything StreetComplete draws on the map. Quest pins, edit history pins and overlay elements
+ *  are only collected from the [viewModel] while they are shown. */
 @Composable
 @MaplibreComposable
 internal fun MainMapContent(
+    viewModel: MainMapViewModel,
     location: LocationMeasurement?,
     /** compass heading in degrees, clockwise from north */
     heading: Float?,
@@ -61,12 +74,40 @@ internal fun MainMapContent(
     selectedEdit: Edit?,
     highlightedGeometry: ElementGeometry?,
     downloadedTiles: Collection<TilePos>,
-    pins: Collection<Pin>,
-    onClickPin: (JsonObject) -> ClickResult,
-    onZoomToCluster: (targetZoom: Double) -> Unit,
-    styledElements: Collection<StyledElement>,
-    onClickElement: (JsonObject) -> ClickResult,
+    pinsMode: PinsMode,
+    /** whether clicking pins and overlay elements selects them. Otherwise, the click falls
+     *  through to the map */
+    isSelectable: Boolean,
+    onClickQuest: (QuestKey) -> Unit,
+    onClickEdit: (EditKey) -> Unit,
+    onClickElement: (ElementKey) -> Unit,
 ) {
+    val mapState = checkNotNull(LocalMapState.current)
+    val showPinsAtZoom by remember(mapState) { derivedStateOf { mapState.cameraPosition.zoom >= 13 } }
+    val showOverlayAtZoom by remember(mapState) { derivedStateOf { mapState.cameraPosition.zoom >= 14 } }
+
+    val pins: Collection<Pin> = if (!showPinsAtZoom) emptyList() else when (pinsMode) {
+        PinsMode.Quests -> viewModel.questPins.collectAsStateWithLifecycle().value
+        PinsMode.EditHistory -> viewModel.editHistoryPins.collectAsStateWithLifecycle().value
+        PinsMode.None -> emptyList()
+    }
+    val styledElements: Collection<StyledElement> = if (showOverlay && showOverlayAtZoom) {
+        viewModel.styleableElements.collectAsStateWithLifecycle().value
+    } else emptyList()
+
+    val scope = rememberCoroutineScope()
+    fun <T : Any> select(key: T?, onSelect: (T) -> Unit): ClickResult =
+        if (key == null || !isSelectable) ClickResult.Pass
+        else { onSelect(key); ClickResult.Consume }
+    val onClickPin: (JsonObject) -> ClickResult = when (pinsMode) {
+        PinsMode.Quests -> { properties -> select(viewModel.getQuestKey(properties), onClickQuest) }
+        PinsMode.EditHistory -> { properties -> select(viewModel.getEditKey(properties), onClickEdit) }
+        PinsMode.None -> { _ -> ClickResult.Pass }
+    }
+    val onClickElementProperties: (JsonObject) -> ClickResult = { properties ->
+        select(viewModel.getElementKey(properties), onClickElement)
+    }
+
     val selectedQuest = when (shownBottomSheet) {
         is ShownBottomSheet.OsmNoteQuest -> shownBottomSheet.quest
         is ShownBottomSheet.OsmQuest -> shownBottomSheet.quest
@@ -77,7 +118,7 @@ internal fun MainMapContent(
     val languages = LocaleList.current.localeList.map { it.language }.distinct()
     val colors = if (isSystemInDarkTheme()) MapColors.Night else MapColors.Light
 
-    val mapImages = rememberMapImages(checkNotNull(LocalMapState.current))
+    val mapImages = rememberMapImages(mapState)
     val overlayIcons = remember(styledElements) {
         styledElements.mapNotNullTo(LinkedHashSet()) { it.style.getIcon() }.toList()
     }
@@ -118,7 +159,7 @@ internal fun MainMapContent(
             if (showOverlay) {
                 StyleableOverlayLayers(
                     source = overlaySource,
-                    onClickElement = onClickElement
+                    onClickElement = onClickElementProperties
                 )
             }
             TracksLayers(trackpoints, isRecording, oldTrackpointsLists)
@@ -132,7 +173,7 @@ internal fun MainMapContent(
                     mapImages = mapImages,
                     color = colors.text,
                     haloColor = colors.textOutline,
-                    onClickElement = onClickElement
+                    onClickElement = onClickElementProperties
                 )
             }
             shownMarkers?.let { markers ->
@@ -158,7 +199,9 @@ internal fun MainMapContent(
                 pins = pins,
                 mapImages = mapImages,
                 onClickPin = onClickPin,
-                onZoomToCluster = onZoomToCluster
+                onZoomToCluster = { zoom ->
+                    scope.launch { mapState.animateCameraPosition(mapState.cameraPosition.copy(zoom = zoom)) }
+                }
             )
 
             if (selectedEdit != null) {

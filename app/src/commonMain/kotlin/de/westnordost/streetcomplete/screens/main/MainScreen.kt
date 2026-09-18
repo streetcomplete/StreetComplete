@@ -63,8 +63,8 @@ import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
 import de.westnordost.streetcomplete.screens.main.map.MainMap
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
+import de.westnordost.streetcomplete.screens.main.map.PinsMode
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
-import de.westnordost.streetcomplete.screens.main.map.layers.Pin
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.toPosition
@@ -86,7 +86,6 @@ import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.JsonObject
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -97,7 +96,6 @@ import org.maplibre.compose.location.HeadingProvider
 import org.maplibre.compose.location.LocationEvent
 import org.maplibre.compose.location.LocationProvider
 import org.maplibre.compose.location.SystemSettingsLauncher
-import org.maplibre.compose.map.LocalMapState
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.GeographicLayout
@@ -200,40 +198,14 @@ fun MainScreen(
         !editHistory.isShowing
 
     val initialCamera = remember(viewModel) { viewModel.initialCamera }
+    val pinsMode = when {
+        editHistory.isShowing -> PinsMode.EditHistory
+        !sheet.isOpen || sheet.selection is MainBottomSheetSelection.CreateNote -> PinsMode.Quests
+        else -> PinsMode.None
+    }
     val mapState = rememberMapState(runtime, BaseStyle.Json(BASE_STYLE), initialCameraPosition = initialCamera) {
-        val state = checkNotNull(LocalMapState.current)
-        val showPinsAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 13 } }
-        val showOverlayAtZoom by remember(state) { derivedStateOf { state.cameraPosition.zoom >= 14 } }
-        val styledElements = if (showOverlay && showOverlayAtZoom) {
-            mapViewModel.styleableElements.collectAsStateWithLifecycle(lifecycleOwner).value
-        } else emptyList()
-        val pins: Collection<Pin>
-        val onClickPin: (JsonObject) -> ClickResult
-        if (editHistory.isShowing) {
-            pins = if (showPinsAtZoom) mapViewModel.editHistoryPins.collectAsStateWithLifecycle(lifecycleOwner).value else emptyList()
-            onClickPin = { properties ->
-                val key = mapViewModel.getEditKey(properties)
-                if (key == null) ClickResult.Pass else {
-                    editHistory.select(key)
-                    ClickResult.Consume
-                }
-            }
-        } else if (!sheet.isOpen || sheet.selection is MainBottomSheetSelection.CreateNote) {
-            pins = if (showPinsAtZoom) {
-                mapViewModel.questPins.collectAsStateWithLifecycle(lifecycleOwner).value
-            } else emptyList()
-            onClickPin = { properties ->
-                val key = mapViewModel.getQuestKey(properties)
-                if (key == null || sheet.isOpen) ClickResult.Pass else {
-                    showSheet(MainBottomSheetSelection.Quest(key))
-                    ClickResult.Consume
-                }
-            }
-        } else {
-            pins = emptyList()
-            onClickPin = { ClickResult.Pass }
-        }
         MainMapContent(
+            viewModel = mapViewModel,
             location = location.location,
             heading = location.headingDegrees,
             isRecording = tracks.isRecording,
@@ -246,19 +218,12 @@ fun MainScreen(
             selectedEdit = selectedEdit,
             highlightedGeometry = editHistory.highlightedGeometry,
             downloadedTiles = downloadedTiles,
-            pins = pins,
-            onClickPin = onClickPin,
-            onZoomToCluster = { zoom ->
-                scope.launch { state.animateCameraPosition(state.cameraPosition.copy(zoom = zoom)) }
-            },
-            styledElements = styledElements,
-            onClickElement = { properties ->
-                val key = mapViewModel.getElementKey(properties)
-                val overlay = selectedOverlay
-                if (key == null || overlay == null || sheet.isOpen) ClickResult.Pass else {
-                    showSheet(MainBottomSheetSelection.Overlay(overlay.name, key))
-                    ClickResult.Consume
-                }
+            pinsMode = pinsMode,
+            isSelectable = !sheet.isOpen,
+            onClickQuest = { showSheet(MainBottomSheetSelection.Quest(it)) },
+            onClickEdit = editHistory::select,
+            onClickElement = { key ->
+                selectedOverlay?.let { showSheet(MainBottomSheetSelection.Overlay(it.name, key)) }
             },
         )
     }
