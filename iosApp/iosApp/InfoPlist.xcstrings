@@ -51,6 +51,18 @@
             "value": "Տեղադրության թույլտվությունը անհրաժեշտ է ձեր դիրքը քարտեզի վրա ցույց տալու համար եւ սկան ձեր հարեւանությամբ որոնումների համար:"
           }
         },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要获得精确定位许可，以便在地图上显示您的位置并下载附近数据。"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "需要精確定位權限才能在地圖上顯示您的位置，並下載周邊區域的資料。"
+          }
+        },
         "uk": {
           "stringUnit": {
             "state": "translated",
@@ -78,7 +90,7 @@
         "el": {
           "stringUnit": {
             "state": "translated",
-            "value": "Η τοποθεσία σας είναι απαραίτητη για την σάρωση αποστολών στην περιοχή σας."
+            "value": "Η άδεια ακριβούς τοποθεσίας είναι απαραίτητη για την εμφάνιση της θέση σου στον χάρτη και λήψη δεδομένων τριγύρω σου."
           }
         },
         "eo": {
@@ -91,12 +103,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "L'accesso alla tua posizione è necessario per cercare le missioni vicine a te."
-          }
-        },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "需要获得精确定位许可，以便在地图上显示您的位置并下载附近数据。"
           }
         },
         "es": {
@@ -237,12 +243,6 @@
             "value": "Cal la vostra ubicació per a cercar missions a prop vostre."
           }
         },
-        "sr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Неопходна је дозвола приступа вашој локацији како би се тражили задаци у вашој непосредној близини."
-          }
-        },
         "sv": {
           "stringUnit": {
             "state": "translated",
@@ -259,12 +259,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ruhusa ya kuoneshea sehemu inahitajika kuonesha sehemu uliopo katika ramani na fanya jitihada ya kutafuta eneo lililo karibu nawe"
-          }
-        },
-        "zh-TW": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "需要精確定位權限才能在地圖上顯示您的位置，並下載周邊區域的資料。"
           }
         },
         "gl": {
@@ -295,6 +289,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pro zobrazení vaší pozice v mapě a hledání úkolů ve vašem okolí je potřeba oprávnění ke zjišťování polohy."
+          }
+        },
+        "sr-Cyrl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Неопходна је дозвола приступа вашој локацији како би се тражили задаци у вашој непосредној близини."
           }
         },
         "es-AR": {
@@ -331,6 +331,70 @@
           "stringUnit": {
             "state": "translated",
             "value": "Haritadaki konumunuzu göstermek ve bölgenizdeki veriyi indirmek için konum izni gerekli."
+          }
+        }
+      }
+    },
+    "NSCameraUsageDescription": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Um Fotos an Kartenhinweise anzuhängen, ist die Kameraberechtigung erforderlich."
+          }
+        },
+        "hr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kako bi se fotografije mogle priložiti bilješkama na karti, potrebno je dozvoliti pristup kameri."
+          }
+        },
+        "uk": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Щоб додавати фотографії до нотаток на мапі, потрібен дозвіл на доступ до камери."
+          }
+        },
+        "el": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Χρειάζεται η άδεια της κάμερας για να επισυνάψετε φωτογραφίες στις σημειώσεις χάρτη."
+          }
+        },
+        "fa": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "برای ضمیمه کردن عکس به یادداشت‌های نقشه، مجوز دوربین لازم است."
+          }
+        },
+        "en-GB": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera permission is needed to attach photos to map notes."
+          }
+        },
+        "fi": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kameran käyttöoikeus vaaditaan, jotta kuvia voi lisätä karttamuistiinpanoihin."
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "L'autorisation d'accès à l'appareil photo est nécessaire pour joindre des photos aux notes."
+          }
+        },
+        "cs": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "K přidávání fotografií k mapovým poznámkám je potřeba oprávnění pro fotoaparát."
+          }
+        },
+        "da": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der kræves tilladelse til at bruge kameraet for at vedhæfte fotos til kortbemærkninger."
           }
         }
       }

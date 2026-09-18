@@ -464,7 +464,6 @@ Parcial significa que se puede entrar con la silla y usar los baños, pero sin b
     <string name="underground">subterránea</string>
     <string name="quest_sidewalk_value_yes">vereda</string>
     <string name="quest_sidewalk_value_no">no hay vereda</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">¿Está prohibido que los peatones circulen por este tramo de camino?</string>
     <string name="quest_buildingType_title">¿Qué tipo de edificio es?</string>
     <string name="pref_title_theme_select">Tema de colores</string>
     <string name="theme_light">Claro</string>
@@ -665,7 +664,6 @@ Tené en cuenta que esta aplicación solo pide el número de puerta de un edific
     <string name="at_housenumber">número de casa %1$s</string>
     <string name="quest_openingHours_add_off_days">Agregar días libres</string>
     <string name="quest_openingHours_off_day">Día libre</string>
-    <string name="quest_cycleway_resurvey_title">¿El carril bici sigue bien marcado?</string>
     <string name="pref_title_resurvey_intervals">Repreguntar para mantener los datos al día</string>
     <string name="resurvey_intervals_less_often">Repreguntar con menos frecuencia</string>
     <string name="resurvey_intervals_default">Frecuencia normal</string>
@@ -878,7 +876,6 @@ Si te abruma la cantidad de misiones, podés ajustar cuáles se muestran y en qu
     <string name="quest_access_yes">Cualquier persona, sin importar su función</string>
     <string name="quest_access_customers">Cualquier persona que esté de visita (por ejemplo; solo para clientes)</string>
     <string name="quest_access_private">Solo aquellos con permiso expreso (privado o particular)</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">¿Las horas de recogida del correo de este buzón siguen bien puestas?</string>
     <string name="quest_bicycle_barrier_type_title">¿Sabés qué tipo de obstáculo para el paso de bicis es?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Obstáculo diagonal en el camino</string>
     <string name="quest_barrier_bicycle_type_tilted">Cruce estrecho, estrechándose por arriba</string>
@@ -915,8 +912,6 @@ También podés dejar una nota (con foto).</string>
     <string name="quest_fireHydrant_position_sidewalk">En la vereda</string>
     <string name="quest_fireHydrant_position_parking_lot">En un estacionamiento</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Sí (dejar nota)</string>
-    <string name="quest_smoothness_square_title">¿Cómo calificarías la superficie de esta plaza?</string>
-    <string name="quest_smoothness_road_title">¿Cómo calificarías la superficie de este camino?</string>
     <string name="quest_smoothness_title_excellent">Superficie llana y fácil de cruzar</string>
     <string name="quest_smoothness_title_good">Más o menos transitable</string>
     <string name="quest_smoothness_title_intermediate">Con algún que otro bache</string>
@@ -969,7 +964,6 @@ También podés dejar una nota (con foto).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Otra aplicación está usando la cámara</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Soporte manillar</string>
     <string name="quest_bicycle_parking_access_title2">¿Quién puede estacionar una bici acá? Puede ser gratis o no.</string>
-    <string name="quest_playground_access_title2">¿Quién puede usar este parque infantil?</string>
     <string name="ar_measure">Medida</string>
     <string name="ar_core_tracking_error_too_steep_angle">Ángulo muy pronunciado, alejate un poco</string>
     <string name="default_disabled_msg_no_ar">Necesitás una cinta métrica para resolver esta pregunta porque la medición con la cámara no es compatible con este dispositivo.</string>
@@ -1025,7 +1019,6 @@ También podés dejar una nota (con foto).</string>
     <string name="quest_lit_title">¿Esto está iluminado?</string>
     <string name="quest_openingHours_title">¿Cuál es su horario de atención?</string>
     <string name="quest_openingHours_signed_title">¿Tiene algún letrero con su horario de atención?</string>
-    <string name="quest_openingHours_resurvey_title">¿Siguen siendo correctos estos horarios de atención?</string>
     <string name="quest_placeName_title">¿Cómo se llama este lugar?</string>
     <string name="quest_shop_type_title2">¿Qué tipo de local es este?</string>
     <string name="quest_smoking_title2">¿Está permitido fumar acá?</string>
@@ -1296,8 +1289,6 @@ Encontrá la información para donar en nuestro sitio web. Las políticas de la 
     <string name="default_disabled_msg_visible_sign_moped">Este tipo de misión está desactivada por defecto, ya que el acceso para ciclomotores solo se indica con señales al inicio y fin de la ciclovía.</string>
     <string name="quest_arrow_tutorial">Las flechas de la ilustración apuntan hacia las direcciones en las que transcurre el camino en el mapa en la ubicación de su referencia central. Probá girando el mapa y se entenderá.</string>
     <string name="info">Más información</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Está prohibido.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Está permitido.</string>
     <string name="quest_buildingLevels_hint">Para los edificios en pendiente, la numeración de niveles comienza a partir del nivel del suelo del lado más bajo.
 
 Un nivel cuenta como altura del techo cuando sus ventanas están en el techo. Por lo que los techos con nivel cero no son necesariamente planos, sino que no son suficientemente altos para un nivel entero.</string>
@@ -1338,7 +1329,6 @@ Un nivel cuenta como altura del techo cuando sus ventanas están en el techo. Po
     <string name="action_messages">Mostrar mensajes</string>
     <string name="action_create_new_poi">Crear nuevo</string>
     <string name="auth_error">Error de autorización. Probá iniciar sesión de nuevo.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">En realidad, hay una vereda.</string>
     <string name="quest_bicycle_repair_station_services_title">¿Qué equipamiento para bicis hay disponible acá?</string>
     <string name="quest_bicycle_repair_station_pump">Inflador</string>
     <string name="quest_bicycle_repair_station_tools">Varias herramientas</string>
@@ -1422,7 +1412,6 @@ Por ejemplo 1,3 o 2b,4,6.</string>
     <string name="quest_bicycle_charging_station_capacity_title">¿Cuántas bicicletas se pueden cargar acá al mismo tiempo?</string>
     <string name="quest_charging_station_bicycles_title">¿También se pueden cargar bicicletas acá?</string>
     <string name="quest_charging_station_bicycles_hint">Los adaptadores de corriente para bicicletas se enchufan en tomas domésticas normales.</string>
-    <string name="quest_tower_access_title">¿Quién puede acceder a esta torre? Puede ser gratis o de pago.</string>
     <string name="quest_recycling_type_pet_bottles">Botellas de PET</string>
     <string name="quest_maxweight_add_sign">Agregar señal</string>
     <string name="quest_maxweight_remove_sign">Eliminar señal</string>

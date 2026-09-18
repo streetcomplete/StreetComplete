@@ -468,7 +468,6 @@ Oznacza to, że osoba na wózku jest w stanie z niej skorzystać, ale nie ma por
     <string name="underground">pod ziemią</string>
     <string name="quest_sidewalk_value_yes">chodnik</string>
     <string name="quest_sidewalk_value_no">brak chodnika</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Czy piesi mają zakaz poruszania się na tej drodze?</string>
     <string name="quest_buildingType_title">Jaki to rodzaj budynku?</string>
     <string name="pref_title_theme_select">Wybierz motyw</string>
     <string name="theme_light">Jasny</string>
@@ -672,7 +671,6 @@ osiągnięć</string>
     <string name="at_housenumber">Numer domu %1$s</string>
     <string name="quest_openingHours_add_off_days">Dodaj dni gdy jest zamknięte</string>
     <string name="quest_openingHours_off_day">Zamknięte</string>
-    <string name="quest_cycleway_resurvey_title">Czy to jest stan ścieżki rowerowej na tym odcinku?</string>
     <string name="pref_title_resurvey_intervals">Jak często weryfikować dane?</string>
     <string name="resurvey_intervals_less_often">Pytaj rzadziej</string>
     <string name="resurvey_intervals_default">Domyślny</string>
@@ -885,7 +883,6 @@ Jeśli jesteś przytłoczony liczbą zadań, zawsze możesz wybrać w ustawienia
     <string name="quest_access_yes">Każdy</string>
     <string name="quest_access_customers">Każdy odwiedzający konkretne miejsce (np. tylko dla klientów)</string>
     <string name="quest_access_private">Tylko osoby z pozwoleniem</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Czy czasy odbioru tej skrzynki pocztowej są nadal poprawne?</string>
     <string name="quest_bicycle_barrier_type_title">Jaki to rodzaj barierki rowerowej?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Ukośnie do ścieżki</string>
     <string name="quest_barrier_bicycle_type_tilted">Wąskie przejście, węższe ku górze</string>
@@ -922,8 +919,6 @@ Jeśli jesteś przytłoczony liczbą zadań, zawsze możesz wybrać w ustawienia
     <string name="quest_fireHydrant_position_sidewalk">Na chodniku</string>
     <string name="quest_fireHydrant_position_parking_lot">Na miejscu parkingowym</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Tak (zostaw notatkę)</string>
-    <string name="quest_smoothness_square_title">Jaka jest jakość nawierzchni tego placu?</string>
-    <string name="quest_smoothness_road_title">Jaka jest jakość nawierzchni drogi w tym miejscu?</string>
     <string name="quest_smoothness_title_excellent">Gładka i równa</string>
     <string name="quest_smoothness_title_good">W większości równa</string>
     <string name="quest_smoothness_title_intermediate">Lekko wyboista</string>
@@ -976,7 +971,6 @@ Jeśli jesteś przytłoczony liczbą zadań, zawsze możesz wybrać w ustawienia
     <string name="ar_core_tracking_error_camera_unavailable">Inny program używa teraz aparatu</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Uchwyt na kierownicę</string>
     <string name="quest_bicycle_parking_access_title2">Kto może zaparkować tu rower? Parkowanie może być odpłatne.</string>
-    <string name="quest_playground_access_title2">Kto może używać tego placu zabaw?</string>
     <string name="ar_measure">Zmierz</string>
     <string name="ar_core_tracking_error_too_steep_angle">Zbyt ostry kąt, odsuń się nieco</string>
     <string name="default_disabled_msg_no_ar">To urządzenie nie wspiera pomiaru przy użyciu aparatu. Musisz wykorzystać metrówkę.</string>
@@ -1032,7 +1026,6 @@ Jeśli jesteś przytłoczony liczbą zadań, zawsze możesz wybrać w ustawienia
     <string name="quest_lit_title">Czy to miejsce jest oświetlone?</string>
     <string name="quest_openingHours_title">Jakie są tutaj godziny otwarcia?</string>
     <string name="quest_openingHours_signed_title">Czy jest tutaj informacja o godzinach otwarcia?</string>
-    <string name="quest_openingHours_resurvey_title">Czy te godziny otwarcia są dalej poprawne?</string>
     <string name="quest_placeName_title">Jaka jest nazwa tego miejsca?</string>
     <string name="quest_shop_type_title2">Jaki jest to rodzaj sklepu?</string>
     <string name="quest_smoking_title2">Czy palenie jest tutaj dozwolone?</string>
@@ -1305,8 +1298,6 @@ Informacje o darowiznach można znaleźć na naszej stronie internetowej lub na 
     <string name="default_disabled_msg_visible_sign_moped">Ten </string>
     <string name="quest_arrow_tutorial">Strzałki na ilustracji wskazują kierunki, w których przebiega droga na mapie w środkowym położeniu pinezki. Spróbuj obrócić mapę, a ci się uda.</string>
     <string name="info">Więcej informacji</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">To jest zabronione.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">To jest dozwolone.</string>
     <string name="quest_buildingLevels_hint">W przypadku budynków na zboczu licznik poziomów zaczyna się od poziomu gruntu najniższej strony. 
 
 Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w związku z tym dachy o zerowych poziomach dachu niekoniecznie są płaskie, po prostu nie są wystarczająco wysokie dla całego poziomu.</string>
@@ -1347,7 +1338,6 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="action_messages">Pokaż wiadomości</string>
     <string name="action_create_new_poi">Utwórz nowy</string>
     <string name="auth_error">Błąd autoryzacji. Spróbuj zalogować się ponownie.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Tak naprawdę chodnik jest.</string>
     <string name="quest_bicycle_repair_station_services_title">Jaki sprzęt rowerowy jest tutaj dostępny?</string>
     <string name="quest_bicycle_repair_station_pump">Pompka</string>
     <string name="quest_bicycle_repair_station_tools">Różne narzędzia</string>
@@ -1430,7 +1420,6 @@ Poziom liczy się jako poziom dachu, gdy jego okna znajdują się w dachu, w zwi
     <string name="quest_bicycle_charging_station_capacity_title">Ile rowerów można tu ładować jednocześnie?</string>
     <string name="quest_charging_station_bicycles_title">Czy można tu również ładować rowery?</string>
     <string name="quest_charging_station_bicycles_hint">Ładowarki rowerowe podłącza się do zwykłych gniazdek.</string>
-    <string name="quest_tower_access_title">Kto może uzyskać dostęp do tej wieży? Wejście może być płatne jak i bezpłatne.</string>
     <string name="quest_recycling_type_pet_bottles">Butelki PET</string>
     <string name="quest_maxweight_add_sign">Dodaj znak</string>
     <string name="quest_maxweight_remove_sign">Usuń znak</string>

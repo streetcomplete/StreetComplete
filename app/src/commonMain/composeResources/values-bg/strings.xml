@@ -466,7 +466,6 @@
     <string name="underground">под земята</string>
     <string name="quest_sidewalk_value_yes">има тротоар</string>
     <string name="quest_sidewalk_value_no">няма тротоар</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Забранено ли е за пешеходци по този път?</string>
     <string name="quest_buildingType_title">Какъв вид сграда е това?</string>
     <string name="pref_title_theme_select">Избор на тема</string>
     <string name="theme_light">Светла</string>
@@ -662,7 +661,6 @@
     <string name="at_housenumber">номер на сграда %1$s</string>
     <string name="quest_openingHours_add_off_days">Добавете почивни дни</string>
     <string name="quest_openingHours_off_day">Почивен ден</string>
-    <string name="quest_cycleway_resurvey_title">Велоалеята същата ли е тук?</string>
     <string name="pref_title_resurvey_intervals">Интервали за повторно изследване</string>
     <string name="resurvey_intervals_less_often">Да се пита по-рядко</string>
     <string name="resurvey_intervals_default">По подразбиране</string>
@@ -874,7 +872,6 @@
     <string name="quest_access_yes">Обществен</string>
     <string name="quest_access_customers">Само за посетители (клиенти)</string>
     <string name="quest_access_private">Само с разрешително</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Времената за събиране още ли са актуални за тази пощенска кутия?</string>
     <string name="quest_bicycle_barrier_type_title">Какъв тип бариера за велосипеди е това?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Диагонална на пътя</string>
     <string name="quest_barrier_bicycle_type_tilted">Стеснение на пътя (по посока на движението)</string>
@@ -911,8 +908,6 @@
     <string name="quest_fireHydrant_position_sidewalk">На тротоар</string>
     <string name="quest_fireHydrant_position_parking_lot">На паркинг</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Да (оставете бележка)</string>
-    <string name="quest_smoothness_square_title">Какво е качеството на настилката на този площад?</string>
-    <string name="quest_smoothness_road_title">Какво е качеството на настилката на този път?</string>
     <string name="quest_smoothness_title_excellent">Гладка и равна повърхност</string>
     <string name="quest_smoothness_title_good">Почти равен</string>
     <string name="quest_smoothness_title_intermediate">Малко неравен</string>
@@ -965,7 +960,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">Камерата се ползва от друго приложение</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Захващане за кормилото</string>
     <string name="quest_bicycle_parking_access_title2">Кой може да паркира велосипед тук? Паркирането може да е безплатно или платено.</string>
-    <string name="quest_playground_access_title2">Кой може да ползва тази площадка?</string>
     <string name="ar_measure">Измерване</string>
     <string name="ar_core_tracking_error_too_steep_angle">Ъгълът е твърде остър, отдалечете се малко.</string>
     <string name="default_disabled_msg_no_ar">Трябва да използвате рулетка или друго средство, измерването с камерата не се поддържа от това устройство.</string>
@@ -1021,7 +1015,6 @@
     <string name="quest_lit_title">Тук осветено ли е?</string>
     <string name="quest_openingHours_title">Какво е работното време?</string>
     <string name="quest_openingHours_signed_title">Работното време обявено ли е?</string>
-    <string name="quest_openingHours_resurvey_title">Това работно време още ли е в сила?</string>
     <string name="quest_placeName_title">Какво е името на това място?</string>
     <string name="quest_shop_type_title2">Какъв вид магазин е това?</string>
     <string name="quest_smoking_title2">Пушенето разрешено ли е тук?</string>
@@ -1294,8 +1287,6 @@
     <string name="default_disabled_msg_visible_sign_moped">Този тип задача по подразбиране е изключен, тъй като достъпът на мотопеди се обозначава само със специални знаци в началото и края на велосипедната пътека.</string>
     <string name="quest_arrow_tutorial">Стрелките на илюстрациите показват направления, в които преминава пътя на картата в нейната централна точка.  Опитайте да обърнете картата и у вас всичко ще се получи.</string>
     <string name="info">Повече информация</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Това е забранено.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Това е разрешено.</string>
     <string name="quest_buildingLevels_hint">За сгради под наклон, отчитането на нивата започва от нивото на земята на най-ниската страна.
 
 Едно ниво се счита за ниво на покрива, когато прозорците му са в покрива. Впоследствие покривите с нулеви нива на покрива не са непременно плоски, просто не са достатъчно високи за цяло ниво.</string>
@@ -1336,7 +1327,6 @@
     <string name="action_messages">Показване на съобщенията</string>
     <string name="action_create_new_poi">Нов обект</string>
     <string name="auth_error">Грешка. Опитайте се да влезете отново.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Всъщност, има тротоар.</string>
     <string name="quest_bicycle_repair_station_services_title">Какво велосипедно оборудване е налично тук?</string>
     <string name="quest_bicycle_repair_station_pump">Помпа</string>
     <string name="quest_bicycle_repair_station_tools">Различни инструменти</string>
@@ -1420,7 +1410,6 @@
     <string name="quest_bicycle_charging_station_capacity_title">Колко велосипеда могат да се зареждат тук едновременно?</string>
     <string name="quest_charging_station_bicycles_title">Могат ли и велосипеди да се зареждат тук?</string>
     <string name="quest_charging_station_bicycles_hint">Зарядните устройства за велосипеди се включват в обикновени контакти.</string>
-    <string name="quest_tower_access_title">Кой има достъп до тази кула? Може да е безплатно или платено.</string>
     <string name="quest_recycling_type_pet_bottles">PET бутилки</string>
     <string name="quest_maxweight_add_sign">Добавяне на знак</string>
     <string name="quest_maxweight_remove_sign">Премахване на знак</string>

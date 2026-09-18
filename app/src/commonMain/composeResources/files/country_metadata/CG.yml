@@ -2,6 +2,7 @@
 atmOperators: [UBA, Ecobank, CDCG, BSCA BANK]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typee, typec]
 edgeLineStyle: short white dashes
 mobileCountryCode: 629
 officialLanguages: [fr, ln, mkw]

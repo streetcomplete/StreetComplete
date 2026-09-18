@@ -467,7 +467,6 @@ Delno pomeni, da voziček ima dostop, stranišče pa nima ročajev ali prilagoje
     <string name="underground">pod zemljo</string>
     <string name="quest_sidewalk_value_yes">pločnik</string>
     <string name="quest_sidewalk_value_no">brez pločnika</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Ali je pešcem prepovedano hoditi po tej cesti brez pločnika?</string>
     <string name="quest_buildingType_title">Kakšne vrste zgradba je to?</string>
     <string name="pref_title_theme_select">Izberi témo</string>
     <string name="theme_light">Svetla</string>
@@ -673,7 +672,6 @@ nivoji</string>
     <string name="at_housenumber">hišna številka %1$s</string>
     <string name="quest_openingHours_add_off_days">Dodaj dneve počitka</string>
     <string name="quest_openingHours_off_day">Dan počitka</string>
-    <string name="quest_cycleway_resurvey_title">Ali ta kolesarska situacija še vedno drži?</string>
     <string name="pref_title_resurvey_intervals">Interval ponovnega preverjanja</string>
     <string name="resurvey_intervals_less_often">Vprašaj manj pogosto</string>
     <string name="resurvey_intervals_default">Privzeto</string>
@@ -887,7 +885,6 @@ Podatki se osvežijo vsakih %1$s dni, neuporabljeni podatki pa se samodejno izbr
     <string name="quest_access_yes">Kdorkoli</string>
     <string name="quest_access_customers">Obiskovalci / gostje / stranke</string>
     <string name="quest_access_private">Samo osebe z dovoljenjem</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Ali so ure praznjenja tega nabiralnika še pravilne?</string>
     <string name="quest_bicycle_barrier_type_title">Kakšen tip kolesarske ovire je to?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonalna na pot</string>
     <string name="quest_barrier_bicycle_type_tilted">Ozek prehod, ki se zmanjša proti vrhu</string>
@@ -924,8 +921,6 @@ Alternativno lahko pustite opombo (s sliko).</string>
     <string name="quest_fireHydrant_position_sidewalk">Na pločniku</string>
     <string name="quest_fireHydrant_position_parking_lot">Na parkirnem mestu</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Da (pusti opombo)</string>
-    <string name="quest_smoothness_square_title">Kakšna je kvaliteta površine na tem trgu?</string>
-    <string name="quest_smoothness_road_title">Kakšna je kvaliteta površine na tej cesti?</string>
     <string name="quest_smoothness_title_excellent">Gladka in enakomerna</string>
     <string name="quest_smoothness_title_good">Pretežno enakomerna</string>
     <string name="quest_smoothness_title_intermediate">Rahlo razbrazdana</string>
@@ -978,7 +973,6 @@ Alternativno lahko pustite opombo (s sliko).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Kamero uporablja druga aplikacija</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Držalo za krmilo</string>
     <string name="quest_bicycle_parking_access_title2">Kdo lahko tukaj parkira kolo? Parkiranje je lahko plačljivo ali brezplačno.</string>
-    <string name="quest_playground_access_title2">Kdo lahko uporablja to igrišče?</string>
     <string name="ar_measure">Izmeri</string>
     <string name="ar_core_tracking_error_too_steep_angle">Prestrm kot, stopite nekoliko stran</string>
     <string name="default_disabled_msg_no_ar">Za reševanje te naloge boste potrebovali tračni meter, saj merjenje s kamero ni podprto na tej napravi.</string>
@@ -1034,7 +1028,6 @@ Alternativno lahko pustite opombo (s sliko).</string>
     <string name="quest_lit_title">Ali je tukaj osvetljeno?</string>
     <string name="quest_openingHours_title">Kdaj je ta kraj odprt?</string>
     <string name="quest_openingHours_signed_title">Ali so odpiralni časi izobešeni?</string>
-    <string name="quest_openingHours_resurvey_title">Ali so ti odpiralni časi še pravilni?</string>
     <string name="quest_placeName_title">Kakšno je ime tega kraja?</string>
     <string name="quest_shop_type_title2">Kakšna vrsta trgovine je to?</string>
     <string name="quest_smoking_title2">Ali je tukaj kajenje dovoljeno?</string>
@@ -1304,8 +1297,6 @@ Podatke o donacijah lahko najdete na naših spletnih straneh; Google Play namre�
     <string name="default_disabled_msg_visible_sign_moped">Ta vrsta naloge je privzeto onemogočena, ker je dostop z mopedom označen le s posebnimi znaki na začetku/koncu kolesarske steze.</string>
     <string name="quest_arrow_tutorial">Puščice na ilustraciji kažejo v smeri, v katerih poteka pot na zemljevidu na sredini žebljička. Poskusite zasukati zemljevid in uspelo vam bo.</string>
     <string name="info">Več informacij</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">To je prepovedano.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Dovoljeno je.</string>
     <string name="quest_buildingLevels_hint">Pri stavbah na pobočju se štetje ravni (nadstropij) začne od nivoja tal na najnižji strani.
 
 Nivo se šteje za nivo strehe, če so njegova okna v strehi. Posledično strehe z ničelnimi strešnimi nivoji niso nujno ravne, preprosto niso dovolj visoke za celotno raven.</string>
@@ -1346,7 +1337,6 @@ Nivo se šteje za nivo strehe, če so njegova okna v strehi. Posledično strehe 
     <string name="action_messages">Prikaži sporočila</string>
     <string name="action_create_new_poi">Ustvari novo</string>
     <string name="auth_error">Napaka avtorizacije. Poskusite se ponovno prijaviti.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Pravzaprav je tam pločnik.</string>
     <string name="quest_bicycle_repair_station_services_title">Kakšna kolesarska oprema je tukaj na voljo?</string>
     <string name="quest_bicycle_repair_station_pump">Črpalka</string>
     <string name="quest_bicycle_repair_station_tools">Različna orodja</string>
@@ -1429,7 +1419,6 @@ Nivo se šteje za nivo strehe, če so njegova okna v strehi. Posledično strehe 
     <string name="quest_bicycle_charging_station_capacity_title">Koliko koles se lahko sočasno polni?</string>
     <string name="quest_charging_station_bicycles_title">Ali je možno polniti tudi kolesa?</string>
     <string name="quest_charging_station_bicycles_hint">Pretvorniki za polnjenje koles se priklopijo v navadne hišne vtičnice.</string>
-    <string name="quest_tower_access_title">Kdo ima dostop do tega stolpa? Lahko je brezplačen ali ne.</string>
     <string name="quest_recycling_type_pet_bottles">Plastenke PET</string>
     <string name="quest_maxweight_add_sign">Dodaj znak</string>
     <string name="quest_maxweight_remove_sign">Odstrani znak</string>

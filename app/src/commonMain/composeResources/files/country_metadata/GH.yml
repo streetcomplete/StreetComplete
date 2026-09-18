@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Absa Bank Ghana Limited, Standard Chartered Ghana, Ecobank, GCB Bank, CalBank, Fidelity Bank, Stanbic Bank, Access Bank, Standard Chartered, UBA, SG-SSB, Prudential Bank, GT Bank, Absa, Republic Bank, GCB, Zenith Bank, Stanbic, ADB, Société Générale, UMB, Republic Bank (Ghana) Limited, Cal Bank, Barclays, Absa Group Limited]
+atmOperators: [Absa Bank Ghana Limited, Standard Chartered Ghana, Ecobank, GCB Bank, CalBank, Fidelity Bank, Stanbic Bank, Access Bank, Standard Chartered, UBA, SG-SSB, Prudential Bank, GT Bank, Zenith Bank, Republic Bank, GCB, Absa, Stanbic, ADB, Société Générale, UMB, Republic Bank (Ghana) Limited, Cal Bank, Barclays, Absa Group Limited]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typeg, universal_abcdefgio]
 mobileCountryCode: 620
 noParkingSignStyle: vienna variant
 noStoppingSignStyle: vienna

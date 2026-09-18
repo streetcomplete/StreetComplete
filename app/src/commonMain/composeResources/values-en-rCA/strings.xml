@@ -467,7 +467,6 @@ Partially means that a wheelchair can enter and use the restroom, but no handrai
     <string name="underground">underground</string>
     <string name="quest_sidewalk_value_yes">sidewalk</string>
     <string name="quest_sidewalk_value_no">no sidewalk</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Are pedestrians forbidden to walk on this road without a sidewalk here?</string>
     <string name="quest_buildingType_title">What kind of building is this?</string>
     <string name="pref_title_theme_select">Theme</string>
     <string name="theme_light">Light</string>

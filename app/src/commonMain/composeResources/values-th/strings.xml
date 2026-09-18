@@ -465,7 +465,6 @@
     <string name="underground">ใต้ดิน</string>
     <string name="quest_sidewalk_value_yes">ทางเท้า</string>
     <string name="quest_sidewalk_value_no">ไม่มีทางเท้า</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">ห้ามคนเดินเท้าบนถนนสายนี้หรือไม่?</string>
     <string name="quest_buildingType_title">นี่คืออาคารแบบไหน?</string>
     <string name="pref_title_theme_select">เลือกชุดตกแต่ง</string>
     <string name="theme_light">สว่าง</string>
@@ -667,7 +666,6 @@
     <string name="at_housenumber">เลขที่บ้าน %1$s</string>
     <string name="quest_openingHours_add_off_days">เพิ่มวันหยุด</string>
     <string name="quest_openingHours_off_day">วันหยุด</string>
-    <string name="quest_cycleway_resurvey_title">สถานะของทางจักรยานยังเหมือนเดิมหรือไม่?</string>
     <string name="pref_title_resurvey_intervals">ช่วงเวลาระหว่างการสำรวจซ้ำ</string>
     <string name="resurvey_intervals_less_often">ถามถี่น้อยลง</string>
     <string name="resurvey_intervals_default">ค่าเริ่มต้น</string>
@@ -879,7 +877,6 @@
     <string name="quest_access_yes">ใครก็ได้</string>
     <string name="quest_access_customers">เฉพาะผู้มาใช้บริการ (เช่น เฉพาะลูกค้าเท่านั้น)</string>
     <string name="quest_access_private">เฉพาะผู้ที่ได้รับอนุญาต</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">เวลาไขตู้ยังถูกรึเปล่า?</string>
     <string name="quest_bicycle_barrier_type_title">รั้วกั้นจักรยานเป็นแบบไหน?</string>
     <string name="quest_barrier_bicycle_type_diagonal">ทแยงมุมกับทาง</string>
     <string name="quest_barrier_bicycle_type_tilted">ด้านบนแคบกว่าด้านล่าง คล้ายตัว A</string>
@@ -916,8 +913,6 @@
     <string name="quest_fireHydrant_position_sidewalk">อยู่บนทางเท้า</string>
     <string name="quest_fireHydrant_position_parking_lot">อยู่ในที่จอดรถ</string>
     <string name="quest_generic_hasFeature_yes_leave_note">มี (ใส่หมายเหตุ)</string>
-    <string name="quest_smoothness_square_title">คุณภาพพื้นผิวของสี่เหลี่ยมตรงนี้เป็นอย่างไร?</string>
-    <string name="quest_smoothness_road_title">คุณภาพพื้นผิวของเส้นทางนี้เป็นอย่างไร?</string>
     <string name="quest_smoothness_title_excellent">เรียบและสม่ำเสมอ</string>
     <string name="quest_smoothness_title_good">เกือบ ๆ จะสม่ำเสมอ</string>
     <string name="quest_smoothness_title_intermediate">ขรุขระนิดหน่อย</string>
@@ -970,7 +965,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">มีแอพอื่นกำลังใช้กล้องอยู่</string>
     <string name="quest_bicycle_parking_type_handlebarholder">ที่ยึดแฮนด์</string>
     <string name="quest_bicycle_parking_access_title2">ใครสามารถนำจักรยานมาจอดได้บ้าง? มีค่าบริการหรือฟรีก็ได้</string>
-    <string name="quest_playground_access_title2">ใครสามารถใช้สนามเด็กเล่นนี้ได้บ้าง?</string>
     <string name="ar_measure">วัดระยะ</string>
     <string name="ar_core_tracking_error_too_steep_angle">มุมชันเกินไป ถอยห่างอีกนิด</string>
     <string name="default_disabled_msg_no_ar">คุณต้องใช้เทปวัดระยะสำหรับภารกิจนี้ เนื่องจากอุปกรณ์นี้ไม่สามารถใช้กล้องเพื่อวัดระยะได้</string>
@@ -1026,7 +1020,6 @@
     <string name="quest_lit_title">มีไฟส่องสว่างไหม?</string>
     <string name="quest_openingHours_title">เปิดให้บริการตอนไหนบ้าง?</string>
     <string name="quest_openingHours_signed_title">มีป้ายบอกเวลาทำการรึเปล่า?</string>
-    <string name="quest_openingHours_resurvey_title">ยังให้บริการเวลานี้อยู่รึเปล่า?</string>
     <string name="quest_placeName_title">มีชื่อของสถานที่รึเปล่า?</string>
     <string name="quest_shop_type_title2">เป็นร้านค้าแบบไหน?</string>
     <string name="quest_smoking_title2">ที่นี่อนุญาตให้สูบบุหรี่รึเปล่า?</string>

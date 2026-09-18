@@ -337,9 +337,11 @@ Os nad oes unrhyw arwyddion ar hyd y stryd cyfan sy'n berthnasol i'r adran a aml
     <string name="quest_postboxCollectionTimes_title">Beth yw amseroedd casglu'r blwch casglu hwn?</string>
     <string name="quest_collectionTimes_add_times">Ychwanegu amser casglu</string>
     <string name="quest_collectionTimes_answer_no_times_specified">Dim amseroedd penodol</string>
+    <string name="quest_construction_road_title">Ydy'r ffordd hon yn gyflawn?</string>
     <string name="quest_construction_cycleway_title">Ai gorffenedig yw'r trac beicio hwn?</string>
     <string name="quest_construction_footway_title">Ai gorffenedig yw'r llwybr troed hwn?</string>
     <string name="quest_construction_generic_title">Ai gorffenedig yw'r llwybr hwn?</string>
+    <string name="quest_construction_building_title">Ydy'r adeilad hwn yn gyflawn?</string>
     <string name="questList_disabled_in_country">Byth yn cael ei ddangos yn %1$s</string>
     <string name="quest_generic_item_confirmation">Wyt ti'n siŵr na alli ei diffinio yn fwy penodol?</string>
     <string name="quest_generic_hasFeature_no_leave_note">Na (gadael nodyn)</string>
@@ -743,8 +745,6 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="quest_fireHydrant_position_sidewalk">Ar balmant</string>
     <string name="quest_fireHydrant_position_parking_lot">Mewn lle parcio</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Ie (gadael nodyn)</string>
-    <string name="quest_smoothness_square_title">Beth yw ansawdd arwyneb y sgwâr yma?</string>
-    <string name="quest_smoothness_road_title">Beth yw ansawdd arwyneb y heol yma?</string>
     <string name="quest_smoothness_title_excellent">Esmwyth a llydan</string>
     <string name="quest_smoothness_title_good">Llydan ar y cyfan</string>
     <string name="quest_smoothness_description_good_paved">Dim ond craciau bach, cyweiriadau neu arwyneb ychydig yn anwastad</string>
@@ -763,7 +763,6 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="ar_core_tracking_error_excessive_motion">Mae gormod o symudiad</string>
     <string name="ar_core_tracking_error_camera_unavailable">Defnyddir y camera gan ap arall</string>
     <string name="quest_bicycle_parking_access_title2">Pwy sy'n gallu parcio beic yma? Gall fod am ddim neu â thâl.</string>
-    <string name="quest_playground_access_title2">Pwy sy'n gallu defnyddio'r ardal chwarae hon?</string>
     <string name="ar_measure">Mesuro</string>
     <string name="quest_cycleway_width_title">Pa mor llydan yw'r trac beicio yma?</string>
     <string name="quest_road_width_title">Pa mor llydan yw'r ffordd yma?</string>
@@ -807,7 +806,6 @@ Os ydych yn teimlo dan bwysau oherwydd nifer y cwestiynau, gallwch fireinio pa g
     <string name="quest_lit_title">Oes yna goleuadau yma?</string>
     <string name="quest_openingHours_title">Beth yw'r oriau agor yma?</string>
     <string name="quest_openingHours_signed_title">Oes arwydd gydag oriau agor yma?</string>
-    <string name="quest_openingHours_resurvey_title">A yw'r oriau agor hyn dal i fod yn gywir?</string>
     <string name="quest_placeName_title">Beth yw enw'r lle hwn?</string>
     <string name="quest_shop_type_title2">Pa fath o siop yw hon?</string>
     <string name="quest_smoking_title2">Allwch chi gael smygu yma?</string>
@@ -975,8 +973,6 @@ Gallwch ddod o hyd i wybodaeth am roddion ar ein gwefan neu hafan ein prosiect, 
     <string name="quest_generic_otherAnswers2">Hm…</string>
     <string name="quest_moped_access_allowed">Nid oes arwydd</string>
     <string name="info">Rhagor o wybodaeth</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Gwaherddir.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Caniateir.</string>
     <string name="quest_parcel_locker_brand">Beth yw brand y locer parseli hwn?</string>
     <string name="quest_bicycle_parking_type_floor">Ardal ddynodedig</string>
     <string name="action_back">Nôl</string>
@@ -1036,7 +1032,6 @@ Gallwch ddod o hyd i wybodaeth am roddion ar ein gwefan neu hafan ein prosiect, 
     <string name="quest_board_type_rules">Rheolau</string>
     <string name="quest_first_aid_kit_location">Ble mae'r pecyn cymorth cyntaf hwn?</string>
     <string name="quest_charging_station_bicycles_title">Oes modd gwefru beiciau yma, hefyd?</string>
-    <string name="quest_tower_access_title">Pwy sy'n gallu mynd i'r tŵr? Gall fod am ddim neu â thâl.</string>
     <string name="quest_recycling_type_pet_bottles">Poteli PET</string>
     <string name="quest_maxweight_add_sign">Ychwanegu arwydd</string>
     <string name="quest_maxweight_remove_sign">Dileu arwydd</string>

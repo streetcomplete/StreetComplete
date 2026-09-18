@@ -45,8 +45,8 @@
     <string name="no_location_permission_warning">需要精確定位權限才能在地圖上顯示您的位置，並下載周邊區域的資料。</string>
     <string name="about_title_authors">開發貢獻者</string>
     <string name="about_title_repository">專案首頁</string>
-    <string name="about_title_report_error">回報問題</string>
-    <string name="about_title_feedback">回報問題或建議</string>
+    <string name="about_title_report_error">回報錯誤</string>
+    <string name="about_title_feedback">意見回饋</string>
     <string name="about_title_license">授權條款</string>
     <string name="offline">你目前處於離線狀態</string>
     <string name="confirmation_authorize_now">你需要登入你的 OSM 帳號才能發佈回答。現在登入嗎？</string>
@@ -62,7 +62,7 @@
     <string name="quest_openingHours_answer_seasonal_opening_hours">依月份而定……</string>
     <string name="quest_openingHours_answer_no_regular_opening_hours">無固定營業時間……</string>
     <string name="quest_openingHours_comment_title">說明營業時間</string>
-    <string name="quest_openingHours_comment_description">​請簡明扼要，若可能的話，請優先採用告示牌上的用語，例如「採預約制」。即使沒有看到告示牌，也不一定代表該處沒有固定的營業時間。</string>
+    <string name="quest_openingHours_comment_description">​請簡明扼要，請儘可能優先採用告示牌上的用語，例如「採預約制」。即使沒有看到告示牌，也不一定代表該處沒有固定的營業時間。</string>
     <string name="quest_roofShape_title">此棟建築物的屋頂形狀是？</string>
     <string name="quest_roofShape_select_one">選擇一個：</string>
     <string name="quest_roofShape_show_more">顯示更多……</string>
@@ -468,13 +468,12 @@
     <string name="underground">地下</string>
     <string name="quest_sidewalk_value_yes">人行道</string>
     <string name="quest_sidewalk_value_no">沒有人行道</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">這條道路禁止行人通行嗎？</string>
     <string name="quest_buildingType_title">這棟建築物的種類是什麼？</string>
     <string name="pref_title_theme_select">選擇主題</string>
-    <string name="theme_light">光亮</string>
-    <string name="theme_dark">黑暗</string>
+    <string name="theme_light">淺色</string>
+    <string name="theme_dark">深色</string>
     <string name="theme_system_default">系統預設</string>
-    <string name="action_open_location">在其他 app 開啟地點</string>
+    <string name="action_open_location">在其他應用程式開啟地點</string>
     <string name="label_housenumber">房屋門牌號碼</string>
     <string name="quest_busStopShelter_covered">整個站牌都有遮蓋</string>
     <string name="quest_ferry_pedestrian_title">這邊的輪船是行人可到達嗎？</string>
@@ -485,10 +484,10 @@
     <string name="quest_leaf_type_needles">針葉</string>
     <string name="quest_leaf_type_broadleaved">闊葉</string>
     <string name="quest_leaf_type_mixed">都有</string>
-    <string name="quest_cyclewayPartSurface_title">自行車道的鋪面材質？</string>
+    <string name="quest_cyclewayPartSurface_title">腳踏車道的鋪面材質？</string>
     <string name="quest_generic_answer_differs_along_the_way">整條路不大一樣…</string>
     <string name="quest_split_way_description">如果沿路都不同的話，第一步是先分割路徑</string>
-    <string name="quest_split_way_too_imprecise">請放更大</string>
+    <string name="quest_split_way_too_imprecise">請繼續放大</string>
     <string name="quest_split_way_many_splits_confirmation_description">有可分割多個地方，你總是可以稍後再度分割路徑。</string>
     <string name="quest_footwayPartSurface_title">人行步道的鋪面材質是什麼？</string>
     <string name="quest_maxweight_title">這裡的承重有上限嗎？</string>
@@ -517,7 +516,7 @@
     <string name="quest_recycling_glass_title">是只有玻璃瓶罐能回收，還是任何類型的玻璃？</string>
     <string name="quest_determineRecyclingGlass_description_any_glass">這些類型的玻璃並不被接受：鋼化玻璃，窗玻璃，玻璃器皿，燈泡或鏡子。</string>
     <string name="about_title_changelog">版本紀錄</string>
-    <string name="title_whats_new">最新功能？</string>
+    <string name="title_whats_new">更新近況</string>
     <string name="about_title_rate">為此應用程式評分</string>
     <string name="about_title_donate">捐款</string>
     <string name="about_summary_donate">給予您的支持！ ❤️</string>
@@ -670,7 +669,6 @@
     <string name="at_housenumber">房屋門牌號碼 %1$s</string>
     <string name="quest_openingHours_add_off_days">增加休息時間</string>
     <string name="quest_openingHours_off_day">休息時間</string>
-    <string name="quest_cycleway_resurvey_title">這裡仍然是單車道情形嗎？</string>
     <string name="pref_title_resurvey_intervals">重新探察的時間區間</string>
     <string name="resurvey_intervals_less_often">詢問更少資訊</string>
     <string name="resurvey_intervals_default">預設</string>
@@ -882,7 +880,6 @@
     <string name="quest_access_yes">所有的大眾成員</string>
     <string name="quest_access_customers">造訪特定地方的所有人 (例如只有顧客)</string>
     <string name="quest_access_private">只有被允許的個人</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">這個郵筒的收件時間是否仍正確？</string>
     <string name="quest_bicycle_barrier_type_title">這個是什麼類型的單車障礙？</string>
     <string name="quest_barrier_bicycle_type_diagonal">對角線到路徑</string>
     <string name="quest_barrier_bicycle_type_tilted">窄通道，越到上面越小</string>
@@ -919,8 +916,6 @@
     <string name="quest_fireHydrant_position_sidewalk">在人行道</string>
     <string name="quest_fireHydrant_position_parking_lot">在停車場空間</string>
     <string name="quest_generic_hasFeature_yes_leave_note">是 (留下註記)</string>
-    <string name="quest_smoothness_square_title">這個廣場的表面狀況如何？</string>
-    <string name="quest_smoothness_road_title">這條道路的表面狀況如何？</string>
     <string name="quest_smoothness_title_excellent">光滑均勻</string>
     <string name="quest_smoothness_title_good">大部分均勻</string>
     <string name="quest_smoothness_title_intermediate">有點顛簸</string>
@@ -973,7 +968,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">相機已被其他程式佔用</string>
     <string name="quest_bicycle_parking_type_handlebarholder">車把架</string>
     <string name="quest_bicycle_parking_access_title2">允許誰在這裡停單車？停在這裡可能免費也可能需要付費。</string>
-    <string name="quest_playground_access_title2">允許誰在使用遊樂場？</string>
     <string name="ar_measure">開始測繪</string>
     <string name="ar_core_tracking_error_too_steep_angle">傾斜角度過大，請稍微退後一點</string>
     <string name="default_disabled_msg_no_ar">你需要捲尺才能完成此任務，因為此裝置的相機不支援 AR 測量功能。</string>
@@ -1029,7 +1023,6 @@
     <string name="quest_lit_title">這裡有照明嗎？</string>
     <string name="quest_openingHours_title">這裡的開放時間是？</string>
     <string name="quest_openingHours_signed_title">這裡有顯示開放時間嗎？</string>
-    <string name="quest_openingHours_resurvey_title">這裡的開放時間仍然正確嗎？</string>
     <string name="quest_placeName_title">這地方的名稱是什麼？</string>
     <string name="quest_shop_type_title2">這裡是那種類型的商家？</string>
     <string name="quest_smoking_title2">這裡是否允許吸菸？</string>
@@ -1301,8 +1294,6 @@
     <string name="default_disabled_msg_visible_sign_moped">這個任務類型預設關閉，因為輕便摩托車通行與否通常只有在單車道的開頭或結尾有標示。</string>
     <string name="quest_arrow_tutorial">在圖中的箭頭指向地圖上的中心標記，試著旋轉地圖你就會懂了。</string>
     <string name="info">更多資訊</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">禁止</string>
-    <string name="quest_accessible_for_pedestrians_allowed">允許</string>
     <string name="quest_buildingLevels_hint">對於斜坡上的建築，從離地面最近的最低樓層開始起算樓層數。
 
 有天花板的屋頂如果有窗戶算是一層樓。再來屋頂是零樓層不意味著平的，只是沒有足夠一整層的高度。</string>
@@ -1343,7 +1334,6 @@
     <string name="action_messages">顯示訊息</string>
     <string name="action_create_new_poi">新增位置</string>
     <string name="auth_error">授權失敗，請嘗試重新登入。</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">其實，這裡有一條人行道</string>
     <string name="quest_bicycle_repair_station_services_title">這裡有提供什麼單車裝備？</string>
     <string name="quest_bicycle_repair_station_pump">打氣筒</string>
     <string name="quest_bicycle_repair_station_tools">多種工具</string>
@@ -1426,7 +1416,6 @@
     <string name="quest_bicycle_charging_station_capacity_title">這邊同一時間可以充幾台單車的電？</string>
     <string name="quest_charging_station_bicycles_title">這裡是否也可以為單單充電嗎？</string>
     <string name="quest_charging_station_bicycles_hint">單車充電座能夠插入一般家戶插座。</string>
-    <string name="quest_tower_access_title">誰可以進入這個塔？免費或是付費。</string>
     <string name="quest_recycling_type_pet_bottles">PET瓶罐</string>
     <string name="quest_maxweight_add_sign">新增告示牌</string>
     <string name="quest_maxweight_remove_sign">移除告示牌</string>
@@ -1487,4 +1476,34 @@
     <string name="link_gomap_description">適用於 iOS 的進階 OSM 編輯器</string>
     <string name="link_terraink_description">為城市或社區製作精美的客製化海報</string>
     <string name="quest_place_vacant_type_title">此處原本為空置狀態。那麼現在這裡變成了什麼？</string>
+    <string name="about_title">關於 %1$s</string>
+    <string name="quest_surface_value_laterite">紅土</string>
+    <string name="leave_note_quest_context_hint">無法回答“%1$s”：</string>
+    <string name="leave_note_overlay_context_hint">在“%1$s”情況的套疊：</string>
+    <string name="quest_split_way_tutorial2">點一下按鈕在十字的位置分割路徑。</string>
+    <string name="quest_leave_new_note_track_delete_title">你要刪除這條記錄的軌跡嗎？</string>
+    <string name="unchanged_tag_action_title">確認 %1$s</string>
+    <string name="quest_streetName_cantType_description2">如果你使用預設鍵盤，你可以在輸入方式設定當中設定要使用的鍵盤配置。
+
+也有可以，你可以從 app store 下載其他鍵盤。在 Android 你也可以試試 FlorisBoard 或是 HeliBoard 鍵盤。</string>
+    <string name="bicycle_boulevard_is_a2">這條是單車大道</string>
+    <string name="bicycle_boulevard_is_not_a2">這條不是單車大道</string>
+    <string name="camera_permission_description">你需要允許相機權限才能附加照片到地圖註記</string>
+    <string name="resurvey_title">仍然正確嗎？</string>
+    <string name="add">新增</string>
+    <string name="quest_bothway_aerialway_confirm">你確定人可以從任何方向乘座纜車？</string>
+    <string name="quest_doctor_type_title">這裡有那種專科醫生？</string>
+    <string name="quest_generalFee_title3">你需要付錢才能待在這裡嗎？</string>
+    <string name="quest_access_permit">證書持有者 (通常都能取得)</string>
+    <string name="unit_day">日</string>
+    <string name="unit_hour">小時</string>
+    <string name="unit_minute">分鐘</string>
+    <string name="quest_parking_charge_title">你需要付多少錢才能在這裡停車？</string>
+    <string name="quest_parking_charge_time_unit_label">每</string>
+    <string name="quest_generalAccess_title">誰可以使用？</string>
+    <string name="quest_generalAccess_title2">誰可以進入這裡？</string>
+    <string name="quest_generalAccess_title3">誰可以待在這裡？</string>
+    <string name="quest_generalAccess_hint">忽略任何費用，如果需要付費則會另外再詢問。</string>
+    <string name="quest_toiletsFee_fee_for_non_customers">只有非顧客才需要付費</string>
+    <string name="quest_vending_machine_type">這是那種類型的販賣機？</string>
 </resources>

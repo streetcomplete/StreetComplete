@@ -468,7 +468,6 @@ la parter</string>
     <string name="underground">subteran</string>
     <string name="quest_sidewalk_value_yes">trotuar</string>
     <string name="quest_sidewalk_value_no">nu este trotuar</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Le este interzis accesul pietonilor pe acest drum?</string>
     <string name="quest_buildingType_title">Ce fel de clădire este?</string>
     <string name="pref_title_theme_select">Selectează tema de culori</string>
     <string name="theme_light">Luminoasă</string>
@@ -671,7 +670,6 @@ activitate</string>
     <string name="at_housenumber">numărul casei %1$s</string>
     <string name="quest_openingHours_add_off_days">Adaugă zile libere</string>
     <string name="quest_openingHours_off_day">Zile libere</string>
-    <string name="quest_cycleway_resurvey_title">Este situația pistei de biciclete aceeași?</string>
     <string name="pref_title_resurvey_intervals">Interval reluare chestionare</string>
     <string name="resurvey_intervals_less_often">Mai rar</string>
     <string name="resurvey_intervals_default">Standard</string>
@@ -883,7 +881,6 @@ Dacă sunteți copleșit de numărul de misiuni, puteți oricând să ajustați 
     <string name="quest_access_yes">Orice persoană din publicul general</string>
     <string name="quest_access_customers">Orice persoană ce vizitează o locație specifică (e.g. doar clienții)</string>
     <string name="quest_access_private">Doar persoane cu permisiune</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Mai sunt corecte orele de colectare pentru această cutie poștală?</string>
     <string name="quest_bicycle_barrier_type_title">Ce tip de barieră pentru biciclete este?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal față de sensul de mers</string>
     <string name="quest_barrier_bicycle_type_tilted">Pasaj îngustat, mai mic în partea de sus</string>
@@ -920,8 +917,6 @@ Alternativ, puteți lăsa o notă (cu fotografie).</string>
     <string name="quest_fireHydrant_position_sidewalk">Pe trotuar</string>
     <string name="quest_fireHydrant_position_parking_lot">Într-un loc de parcare</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Da (lasă o notă)</string>
-    <string name="quest_smoothness_square_title">Care este calitatea suprafeței pieței?</string>
-    <string name="quest_smoothness_road_title">Care este calitatea suprafeței drumului?</string>
     <string name="quest_smoothness_title_excellent">Neted și uniform</string>
     <string name="quest_smoothness_title_good">În mare parte uniform</string>
     <string name="quest_smoothness_title_intermediate">Cu ceva deniverlări</string>
@@ -974,7 +969,6 @@ Alternativ, puteți lăsa o notă (cu fotografie).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Camera este folosită de altă aplicație</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Prindere cu bară</string>
     <string name="quest_bicycle_parking_access_title2">Cine poate parca bicicleta aici? Parcarea poate fi gratuită sau cu plată.</string>
-    <string name="quest_playground_access_title2">Cui îi este permis să folosească locul de joacă?</string>
     <string name="ar_measure">Măsoară</string>
     <string name="ar_core_tracking_error_too_steep_angle">Unghiul este prea mare, îndepărtați-vă puțin</string>
     <string name="default_disabled_msg_no_ar">Vă trebuie o ruletă pentru a rezolva această misiune fiindcă măsurarea cu ajutorul camerei nu este suportată pe acest dispozitiv.</string>
@@ -1030,7 +1024,6 @@ Alternativ, puteți lăsa o notă (cu fotografie).</string>
     <string name="quest_lit_title">Este iluminat aici?</string>
     <string name="quest_openingHours_title">Care sunt orele de funcționare aici?</string>
     <string name="quest_openingHours_signed_title">Sunt afișate orele de funcționare?</string>
-    <string name="quest_openingHours_resurvey_title">Mai sunt corecte orele de funcționare?</string>
     <string name="quest_placeName_title">Care este numele locului?</string>
     <string name="quest_shop_type_title2">Ce tip de magazin este?</string>
     <string name="quest_smoking_title2">Este permis fumatul?</string>
@@ -1303,8 +1296,6 @@ Puteți găsi informații despre donații pe site-ul nostru sau pe pagina de por
     <string name="default_disabled_msg_visible_sign_moped">Acest tip de misiune este dezactivat în mod implicit, deoarece accesul pentru mopede este indicat doar prin semne specifice la începutul/finalul unei piste pentru biciclete.</string>
     <string name="quest_arrow_tutorial">Săgețile din ilustrație indică direcțiile în care se desfășoară traseul pe hartă, în poziția sa centrală. Încercați să rotiți harta și veți obține rezultatul.</string>
     <string name="info">Mai multe informații</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Este interzis.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Este permis.</string>
     <string name="quest_buildingLevels_hint">Pentru clădirile în pantă, numărarea nivelurilor începe de la nivelul solului laturii celei mai joase.
 
 Un nivel este considerat nivel de acoperiș atunci când ferestrele sale sunt în acoperiș. Prin urmare, acoperișurile cu niveluri zero nu sunt neapărat plate, ci pur și simplu nu sunt suficient de înalte pentru un nivel întreg.</string>
@@ -1345,7 +1336,6 @@ Un nivel este considerat nivel de acoperiș atunci când ferestrele sale sunt î
     <string name="action_messages">Afișați mesajele</string>
     <string name="action_create_new_poi">Creați nou</string>
     <string name="auth_error">Eroare de autorizare. Încercați să vă conectați din nou.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">De fapt, există un trotuar.</string>
     <string name="quest_bicycle_repair_station_services_title">Ce echipament pentru biciclete este disponibil aici?</string>
     <string name="quest_bicycle_repair_station_pump">Pompa</string>
     <string name="quest_bicycle_repair_station_tools">Diverse instrumente</string>
@@ -1429,7 +1419,6 @@ De exemplu 1, 3 sau 2b, 4, 6.</string>
     <string name="quest_bicycle_charging_station_capacity_title">Câte biciclete pot fi încărcate aici în același timp?</string>
     <string name="quest_charging_station_bicycles_title">Se pot încărca și bicicletele aici?</string>
     <string name="quest_charging_station_bicycles_hint">Adaptoarele de alimentare pentru încărcătoare de biciclete se conectează la prizele normale de uz casnic.</string>
-    <string name="quest_tower_access_title">Cine poate accesa acest turn? Poate fi gratuit sau cu plată.</string>
     <string name="quest_recycling_type_pet_bottles">Sticle PET</string>
     <string name="quest_maxweight_add_sign">Adăugați semn</string>
     <string name="quest_maxweight_remove_sign">Eliminați semnul</string>

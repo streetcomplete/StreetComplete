@@ -467,7 +467,6 @@ Se non ci sono cartelli lungo tutta la strada nel tratto evidenziato allora si a
     <string name="underground">sottoterra</string>
     <string name="quest_sidewalk_value_yes">percorso pedonale</string>
     <string name="quest_sidewalk_value_no">nessun percorso pedonale</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Ai pedoni è vietato camminare su questa strada?</string>
     <string name="quest_buildingType_title">Che tipo di edificio è questo?</string>
     <string name="pref_title_theme_select">Seleziona tema</string>
     <string name="theme_light">Chiaro</string>
@@ -672,7 +671,6 @@ riconoscimento</string>
     <string name="at_housenumber">numero civico %1$s</string>
     <string name="quest_openingHours_add_off_days">Aggiungi i giorni di riposo</string>
     <string name="quest_openingHours_off_day">Giorno di riposo</string>
-    <string name="quest_cycleway_resurvey_title">La situazione di questa ciclabile è sempre la stessa?</string>
     <string name="pref_title_resurvey_intervals">Intervalli di controllo</string>
     <string name="resurvey_intervals_less_often">Meno spesso</string>
     <string name="resurvey_intervals_default">Predefinito</string>
@@ -884,7 +882,6 @@ Se hai troppe missioni puoi sempre scegliere con attenzione nelle impostazioni q
     <string name="quest_access_yes">Chiunque</string>
     <string name="quest_access_customers">Chiunque voglia visitare un luogo specifico (es. solo clienti)</string>
     <string name="quest_access_private">Solo persone con un permesso</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Gli orari di raccolta di questa cassetta postale sono ancora corretti?</string>
     <string name="quest_bicycle_barrier_type_title">Che tipo di barriera per biciclette è questa?</string>
     <string name="quest_barrier_bicycle_type_diagonal">In diagonale</string>
     <string name="quest_barrier_bicycle_type_tilted">Passaggio stretto, più piccolo in alto</string>
@@ -921,8 +918,6 @@ Altrimenti puoi lasciare una nota (con una foto).</string>
     <string name="quest_fireHydrant_position_sidewalk">Sul marciapiede</string>
     <string name="quest_fireHydrant_position_parking_lot">In un parcheggio</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Sì (lascia una nota)</string>
-    <string name="quest_smoothness_square_title">Qual è la qualità della superficie di questa piazza?</string>
-    <string name="quest_smoothness_road_title">Qual è la qualità della superficie di questa strada in questo tratto?</string>
     <string name="quest_smoothness_title_excellent">Liscio e uniforme</string>
     <string name="quest_smoothness_title_good">Per lo più uniforme</string>
     <string name="quest_smoothness_title_intermediate">Un po' irregolare</string>
@@ -975,7 +970,6 @@ Altrimenti puoi lasciare una nota (con una foto).</string>
     <string name="ar_core_tracking_error_camera_unavailable">La fotocamera è in uso da un'altra applicazione</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Supporto per il manubrio</string>
     <string name="quest_bicycle_parking_access_title2">Chi può parcheggiare una bici qui? Il parcheggio può essere sia libero che a pagamento.</string>
-    <string name="quest_playground_access_title2">Chi può usare questo parco giochi?</string>
     <string name="ar_measure">Misura</string>
     <string name="ar_core_tracking_error_too_steep_angle">Angolazione troppo inclinata, prova a fare qualche passo indietro</string>
     <string name="default_disabled_msg_no_ar">Hai bisogno di un metro per risolvere questa missione perché la misura tramite fotocamera non è supportata da questo dispositivo.</string>
@@ -1031,7 +1025,6 @@ Altrimenti puoi lasciare una nota (con una foto).</string>
     <string name="quest_lit_title">È illuminato qui?</string>
     <string name="quest_openingHours_title">Quali sono gli orari di apertura qui?</string>
     <string name="quest_openingHours_signed_title">Gli orari di apertura sono esposti qui?</string>
-    <string name="quest_openingHours_resurvey_title">Questi orari di apertura sono ancora corretti?</string>
     <string name="quest_placeName_title">Come si chiama questo posto?</string>
     <string name="quest_shop_type_title2">Che tipo di negozio è questo?</string>
     <string name="quest_smoking_title2">È permesso fumare qui?</string>
@@ -1303,8 +1296,6 @@ Troverai le informazioni sulle donazioni sul nostro sito o sulla home del proget
     <string name="default_disabled_msg_visible_sign_moped">Questa missione è disattivata per impostazione predefinita, perché l'accesso dei ciclomotori è indicato solo da una specifica segnaletica all'inizio e alla fine di una pista ciclabile.</string>
     <string name="quest_arrow_tutorial">La freccia nell'immagine indica la direzione verso cui corre la strada sulla mappa. Prova a ruotare la mappa e capirai.</string>
     <string name="info">Maggiori informazioni</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">È proibito.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">È permesso.</string>
     <string name="quest_buildingLevels_hint">Per gli edifici su una pendenza, i piani si contano dal lato più basso.
 
 Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tetto con 0 piani non è necessariamente piatto, ma non sufficientemente alto per un intero piano.</string>
@@ -1345,7 +1336,6 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="action_messages">Mostra messaggi</string>
     <string name="action_create_new_poi">Crea nuovo</string>
     <string name="auth_error">Errore di autorizzazione. Ritenta l'accesso.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Esiste un marciapiede.</string>
     <string name="quest_bicycle_repair_station_services_title">Quali strumenti per le bici sono disponibili qui?</string>
     <string name="quest_bicycle_repair_station_pump">Pompa</string>
     <string name="quest_bicycle_repair_station_tools">Vari strumenti</string>
@@ -1428,7 +1418,6 @@ Un piano del tetto va contato quando ci sono finestre nel tetto. Quindi, un tett
     <string name="quest_bicycle_charging_station_capacity_title">Quante biciclette possono essere caricate qui nello stesso momento?</string>
     <string name="quest_charging_station_bicycles_title">Le biciclette possono essere caricate qui?</string>
     <string name="quest_charging_station_bicycles_hint">Gli adattatori di alimentazione per caricabatterie per biciclette si collegano alle normali prese domestiche.</string>
-    <string name="quest_tower_access_title">Chi può accedere a questa torre? Può essere gratuita o a pagamento.</string>
     <string name="quest_recycling_type_pet_bottles">Bottiglie PET</string>
     <string name="quest_maxweight_add_sign">Aggiungi cartello</string>
     <string name="quest_maxweight_remove_sign">Rimuovi cartello</string>
