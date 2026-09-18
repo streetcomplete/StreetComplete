@@ -31,10 +31,12 @@ android {
         all {
             isMinifyEnabled = true
             isShrinkResources = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            testProguardFile("test-proguard-rules.pro")
         }
         getByName("debug") {
             isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             applicationIdSuffix = ".debug"
         }
         getByName("release") {
