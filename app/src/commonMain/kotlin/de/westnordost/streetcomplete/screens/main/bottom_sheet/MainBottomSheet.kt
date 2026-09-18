@@ -25,7 +25,6 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay.OverlayFo
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
 import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
-import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import org.jetbrains.compose.resources.DrawableResource
 
@@ -35,7 +34,9 @@ import org.jetbrains.compose.resources.DrawableResource
  * It actually ought to be displayed at full size, because bottom sheets may have elements that
  * should be displayed above the acutal bottom sheet form (such as a crosshairs, or the arrow when
  * moving a node). So, the actual sliding up/down of the bottom sheet(s) is handled by the forms
- * individually. */
+ * individually.
+ *
+ * What the forms place on the map is composed in [MainBottomSheetMapOverlay]. */
 @Composable
 fun MainBottomSheet(
     onDismiss: () -> Unit,
@@ -51,7 +52,7 @@ fun MainBottomSheet(
     mapPosition: LatLon,
     mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>?) -> Unit,
-    onSetMapOverlay: (MapOverlayContent?) -> Unit,
+    formState: BottomSheetFormState,
     lastMapClick: MapClick?,
     modifier: Modifier = Modifier
 ) {
@@ -138,7 +139,7 @@ fun MainBottomSheet(
                 mapTilt = mapTilt,
                 mapMetersPerDp = mapMetersPerDp,
                 onSetMapMarkers = onSetMapMarkers,
-                onSetMapOverlay = onSetMapOverlay,
+                formState = formState,
                 lastMapClick = lastMapClick,
                 modifier = modifier,
             )
@@ -180,7 +181,8 @@ fun MainBottomSheet(
                 mapPosition = mapPosition,
                 mapMetersPerDp = mapMetersPerDp,
                 onSetMapMarkers = onSetMapMarkers,
-                onSetMapOverlay = onSetMapOverlay,
+                formState = formState,
+                form = checkNotNull(formState.overlayForm),
                 lastMapClick = lastMapClick,
                 modifier = modifier,
             )

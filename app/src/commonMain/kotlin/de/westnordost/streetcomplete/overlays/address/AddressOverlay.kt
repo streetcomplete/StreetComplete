@@ -1,7 +1,11 @@
 package de.westnordost.streetcomplete.overlays.address
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import de.westnordost.osmfeatures.FeatureDictionary
 import de.westnordost.streetcomplete.data.meta.CountryInfo
+import de.westnordost.streetcomplete.data.meta.NameSuggestionsSource
+import de.westnordost.streetcomplete.data.osm.edits.MapDataWithEditsSource
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.Element
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -11,11 +15,13 @@ import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
 import de.westnordost.streetcomplete.data.overlays.OverlayColor
 import de.westnordost.streetcomplete.data.overlays.OverlayStyle
+import de.westnordost.streetcomplete.data.overlays.ShownOverlayForm
 import de.westnordost.streetcomplete.data.user.achievements.EditTypeAchievement.POSTMAN
 import de.westnordost.streetcomplete.quests.address.AddHousenumber
 import de.westnordost.streetcomplete.screens.main.map.MapLabel
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.util.getShortHouseNumber
+import org.koin.compose.koinInject
 
 class AddressOverlay(
     private val getCountryCodeByLocation: (location: LatLon) -> String?
@@ -61,12 +67,22 @@ class AddressOverlay(
             }
 
     @Composable
+    override fun rememberForm(element: Element?): ShownOverlayForm {
+        val mapDataWithEditsSource = koinInject<MapDataWithEditsSource>()
+        val nameSuggestionsSource = koinInject<NameSuggestionsSource>()
+        val featureDictionary = koinInject<FeatureDictionary>()
+        return remember(element) {
+            AddressOverlayForm(element, mapDataWithEditsSource, nameSuggestionsSource, featureDictionary)
+        }
+    }
+
+    @Composable
     override fun Form(
         on: (OverlayAction) -> Unit,
         element: Element?,
         geometry: ElementGeometry,
         countryInfo: CountryInfo,
     ) {
-        AddressOverlayForm(on, element, geometry, countryInfo)
+        with(rememberForm(element)) { Content(on, geometry, countryInfo) }
     }
 }

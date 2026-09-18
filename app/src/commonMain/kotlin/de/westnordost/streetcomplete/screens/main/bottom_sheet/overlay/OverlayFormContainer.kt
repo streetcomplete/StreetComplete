@@ -4,7 +4,6 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -24,24 +23,22 @@ import de.westnordost.streetcomplete.data.overlays.Action
 import de.westnordost.streetcomplete.data.overlays.Edit
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.overlays.OverlayAction
+import de.westnordost.streetcomplete.data.overlays.ShownOverlayForm
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.BottomSheetFormState
+import de.westnordost.streetcomplete.screens.main.bottom_sheet.BottomSheetSubForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNodeForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.LeaveNoteInsteadForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.split_way.SplitWayForm
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
-import de.westnordost.streetcomplete.ui.common.quest.LocalMapOverlayCallback
-import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
-import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.util.ReplaceBottomSheetTransitionSpec
-import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
-import kotlinx.serialization.Serializable
 import org.koin.compose.koinInject
 
 /** Container in which all overlay forms are housed.
@@ -52,8 +49,7 @@ import org.koin.compose.koinInject
  *  @param onSetMapMarkers is called when the form shown wishes to show markers on the map. E.g. the
  *         split way form shows markers.
  *
- *  @param onSetMapOverlay is called with content the form shown wishes to place on the map,
- *         see [OnMap]
+ *  @param formState which form is shown, shared with what it places on the map
  *  */
 @Composable
 fun OverlayFormContainer(
@@ -68,7 +64,9 @@ fun OverlayFormContainer(
     mapPosition: LatLon,
     mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>?) -> Unit,
-    onSetMapOverlay: (MapOverlayContent?) -> Unit,
+    formState: BottomSheetFormState,
+    /** The overlay's form for [element], see [Overlay.rememberForm] */
+    form: ShownOverlayForm,
     lastMapClick: MapClick?,
     modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
@@ -76,26 +74,23 @@ fun OverlayFormContainer(
 ) {
     val geometry = geometry ?: ElementPointGeometry(mapPosition)
     val countryInfo = remember { countryInfos.get(countryBoundaries, geometry.center) }
-    var state by rememberSerializable { mutableStateOf<OverlayFormState>(OverlayFormState.Overlay) }
-
-    fun showForm(form: OverlayFormState) {
-        state = form
+    fun showForm(form: BottomSheetSubForm) {
+        formState.subForm = form
         onSetMapMarkers(null)
-        onSetMapOverlay(null)
     }
 
     fun onAction(action: OverlayAction) {
         when (action) {
             Action.Dismiss -> onDismiss()
-            Action.LeaveNote -> showForm(OverlayFormState.LeaveNote)
-            Action.SplitWay -> showForm(OverlayFormState.SplitWay)
-            Action.MoveNode -> showForm(OverlayFormState.MoveNode)
+            Action.LeaveNote -> showForm(BottomSheetSubForm.LeaveNote)
+            Action.SplitWay -> showForm(BottomSheetSubForm.SplitWay)
+            Action.MoveNode -> showForm(BottomSheetSubForm.MoveNode)
             is Edit -> onEdit(action.value)
         }
     }
 
     AnimatedContent(
-        targetState = state,
+        targetState = formState.subForm,
         transitionSpec = ReplaceBottomSheetTransitionSpec,
         modifier = modifier,
     ) { currentState ->
@@ -106,19 +101,13 @@ fun OverlayFormContainer(
             LocalMapMetersPerDp provides mapMetersPerDp,
             LocalLastMapClick provides lastMapClick,
             // AnimatedContent keeps the outgoing form alive until its transition ends.
-            LocalMapMarkersCallback provides { if (currentState == state) onSetMapMarkers(it) },
-            LocalMapOverlayCallback provides { if (currentState == state) onSetMapOverlay(it) },
+            LocalMapMarkersCallback provides { if (currentState == formState.subForm) onSetMapMarkers(it) },
         ) {
             when (currentState) {
-                OverlayFormState.Overlay -> {
-                    overlay.Form(
-                        on = ::onAction,
-                        element = element,
-                        geometry = geometry,
-                        countryInfo = countryInfo,
-                    )
+                BottomSheetSubForm.Main -> {
+                    with(form) { Content(::onAction, geometry, countryInfo) }
                 }
-                OverlayFormState.LeaveNote -> {
+                BottomSheetSubForm.LeaveNote -> {
                     LeaveNoteInsteadForm(
                         onLeaveNote = { text, noteImagePaths ->
                             onLeaveNote(text, noteImagePaths)
@@ -128,16 +117,17 @@ fun OverlayFormContainer(
                         element = element,
                     )
                 }
-                OverlayFormState.SplitWay -> {
+                BottomSheetSubForm.SplitWay -> {
                     SplitWayForm(
                         onConfirmed = { onEdit(SplitWayAction(element, it)) },
                         onDismiss = onDismiss,
                         mapPosition = mapPosition,
                         way = element as Way,
                         wayGeometry = geometry as ElementPolylinesGeometry,
+                        snipAnimation = formState.snipAnimation,
                     )
                 }
-                OverlayFormState.MoveNode -> {
+                BottomSheetSubForm.MoveNode -> {
                     MoveNodeForm(
                         onConfirmed = { onEdit(MoveNodeAction(element, it)) },
                         onDismiss = onDismiss,
@@ -150,10 +140,3 @@ fun OverlayFormContainer(
     }
 }
 
-@Serializable
-private enum class OverlayFormState {
-    Overlay,
-    LeaveNote,
-    SplitWay,
-    MoveNode
-}

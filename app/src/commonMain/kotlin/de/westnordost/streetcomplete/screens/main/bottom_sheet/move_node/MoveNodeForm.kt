@@ -28,7 +28,6 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
-import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.length
@@ -40,6 +39,7 @@ import org.maplibre.compose.map.LocalMapState
 import kotlin.math.PI
 import kotlin.math.atan2
 import kotlin.math.sqrt
+import org.maplibre.compose.overlay.MapOverlayScope
 
 /** Form that lets the user move an OSM node.  */
 @OptIn(ExperimentalComposeUiApi::class)
@@ -58,10 +58,6 @@ fun MoveNodeForm(
         val isFeetAndInch = countryInfo.lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH
         if (isFeetAndInch) MeasureDisplayUnitFeetInch(4) else MeasureDisplayUnitMeter(10)
     }
-    val arrowColor = MaterialTheme.colors.primary
-    val arrowWidthPx = 6.dp.toPx()
-    val arrowHeadSizePx = 14.dp.toPx()
-
     val mapPosition = mapPosition ?: node.position
     val distance = mapPosition.distanceTo(node.position)
 
@@ -74,22 +70,6 @@ fun MoveNodeForm(
             onDismiss()
         }
     }
-    // an arrow from the node to the crosshair, i.e. to where it would be moved
-    OnMap {
-        val mapState = checkNotNull(LocalMapState.current)
-        Canvas(Modifier.matchParentSize()) {
-            val start = mapState.screenLocationFromPosition(node.position.toPosition()) ?: return@Canvas
-            val end = mapState.screenLocationFromPosition(mapPosition.toPosition()) ?: return@Canvas
-            drawArrow(
-                color = arrowColor,
-                strokeWidth = arrowWidthPx,
-                arrowHeadSize = arrowHeadSizePx,
-                start = Offset(start.x.toPx(), start.y.toPx()),
-                end = Offset(end.x.toPx(), end.y.toPx()),
-            )
-        }
-    }
-
     Box(modifier = modifier.fillMaxSize()) {
         BottomSheetFormScaffold(
             content = {
@@ -113,6 +93,28 @@ fun MoveNodeForm(
         ConfirmDiscardDialog(
             onDismissRequest = { confirmDiscard = false },
             onConfirmed = { onDismiss() },
+        )
+    }
+}
+
+/** An arrow on the map from the [node] to the crosshair at [mapPosition], i.e. to where it would
+ *  be moved. See [MoveNodeForm]. */
+@Composable
+fun MapOverlayScope.MoveNodeMapOverlay(node: Node, mapPosition: LatLon?) {
+    val mapState = checkNotNull(LocalMapState.current)
+    val arrowColor = MaterialTheme.colors.primary
+    val arrowWidthPx = 6.dp.toPx()
+    val arrowHeadSizePx = 14.dp.toPx()
+    val end = mapPosition ?: node.position
+    Canvas(Modifier.matchParentSize()) {
+        val startOffset = mapState.screenLocationFromPosition(node.position.toPosition()) ?: return@Canvas
+        val endOffset = mapState.screenLocationFromPosition(end.toPosition()) ?: return@Canvas
+        drawArrow(
+            color = arrowColor,
+            strokeWidth = arrowWidthPx,
+            arrowHeadSize = arrowHeadSizePx,
+            start = Offset(startOffset.x.toPx(), startOffset.y.toPx()),
+            end = Offset(endOffset.x.toPx(), endOffset.y.toPx()),
         )
     }
 }
