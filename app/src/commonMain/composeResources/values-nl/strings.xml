@@ -465,7 +465,6 @@ Als er geen verkeersborden staan die van toepassing zijn op het geselecteerde st
     <string name="underground">ondergronds</string>
     <string name="quest_sidewalk_value_yes">trottoir</string>
     <string name="quest_sidewalk_value_no">geen trottoir</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Is het voor voetgangers verboden om op deze weg zonder trottoir te lopen?</string>
     <string name="quest_buildingType_title">Wat voor gebouw is dit?</string>
     <string name="pref_title_theme_select">Selecteer thema</string>
     <string name="theme_light">Licht</string>
@@ -666,7 +665,6 @@ Let op dat deze app pas naar het huisnummer van een gebouw vraagt nadat het gebo
     <string name="at_housenumber">huisnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Voeg sluitingsdagen toe</string>
     <string name="quest_openingHours_off_day">Sluitingsdag</string>
-    <string name="quest_cycleway_resurvey_title">Is dit fietspad nog steeds hier?</string>
     <string name="pref_title_resurvey_intervals">Heronderzoek interval</string>
     <string name="resurvey_intervals_less_often">Vraag minder vaak</string>
     <string name="resurvey_intervals_default">Standaard</string>
@@ -878,7 +876,6 @@ Als het aantal vragen je te veel wordt, kun je in de instellingen kiezen welke v
     <string name="quest_access_yes">Iedereen</string>
     <string name="quest_access_customers">Elke persoon die een specifieke plaats bezoekt (bijvoorbeeld alleen klanten)</string>
     <string name="quest_access_private">Alleen persoon(en) met toestemming</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Zijn de ophaaltijden van deze brievenbus nog steeds correct?</string>
     <string name="quest_bicycle_barrier_type_title">Welk soort fietssluis is dit?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonaal over het pad</string>
     <string name="quest_barrier_bicycle_type_tilted">Smalle doorgang, nauwer naar boven toe.</string>
@@ -915,8 +912,6 @@ U kunt ook een notitie achterlaten (met een foto)</string>
     <string name="quest_fireHydrant_position_sidewalk">Op het voetpad</string>
     <string name="quest_fireHydrant_position_parking_lot">Op een parkeerplaats</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Ja (laat een notitie achter)</string>
-    <string name="quest_smoothness_square_title">Wat is de kwaliteit van het wegdek van dit plein?</string>
-    <string name="quest_smoothness_road_title">Wat is de kwaliteit van het wegdek van deze weg?</string>
     <string name="quest_smoothness_title_excellent">Glad en gelijkmatig</string>
     <string name="quest_smoothness_title_good">Voornamelijk gelijkmatig</string>
     <string name="quest_smoothness_title_intermediate">Een beetje hobbelig</string>
@@ -969,7 +964,6 @@ U kunt ook een notitie achterlaten (met een foto)</string>
     <string name="ar_core_tracking_error_camera_unavailable">Camera wordt door een andere app gebruikt</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Stuurhouder</string>
     <string name="quest_bicycle_parking_access_title2">Wie mag hier een fiets stallen? Parkeren kan gratis of betaald zijn.</string>
-    <string name="quest_playground_access_title2">Wie mag deze speeltuin gebruiken?</string>
     <string name="ar_measure">Meet</string>
     <string name="ar_core_tracking_error_too_steep_angle">Te steile hoek, loop iets verder weg</string>
     <string name="default_disabled_msg_no_ar">Je hebt een meetlint nodig om deze vraag te beantwoorden, omdat meten met de camera niet ondersteund is op dit apparaat.</string>
@@ -1025,7 +1019,6 @@ U kunt ook een notitie achterlaten (met een foto)</string>
     <string name="quest_lit_title">Is het hier verlicht?</string>
     <string name="quest_openingHours_title">Wat zijn hier de openingstijden?</string>
     <string name="quest_openingHours_signed_title">Staan de openingstijden hier aangegeven?</string>
-    <string name="quest_openingHours_resurvey_title">Kloppen deze openingstijden nog?</string>
     <string name="quest_placeName_title">Wat is de naam van deze plaats?</string>
     <string name="quest_shop_type_title2">Wat voor soort winkel is dit?</string>
     <string name="quest_smoking_title2">Mag hier gerookt worden?</string>
@@ -1298,8 +1291,6 @@ Je kunt informatie over doneren terugvinden op onze website of Github. Google Pl
     <string name="default_disabled_msg_visible_sign_moped">Deze vraag staat standaard uit omdat borden voor toegang voor brommers alleen aan het begin/eind van een fietspad staan.</string>
     <string name="quest_arrow_tutorial">De pijlen in het voorbeeld wijzen in de richting waarin de weg loopt op de kaart op de plaats van het merkteken. Probeer de kaart te draaien en je zult het begrijpen.</string>
     <string name="info">Meer informatie</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Het is verboden.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Het is toegestaan.</string>
     <string name="quest_buildingLevels_hint">Voor gebouwen op een helling begint het tellen bij de begane grond van de laagste kant.
 
 Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die niet als verdieping tellen zijn niet noodzakelijk plat, maar alleen maar niet hoog genoeg als verdieping.</string>
@@ -1340,7 +1331,6 @@ Een verdieping telt als dakverdieping als er ramen in het dak zijn. Daken die ni
     <string name="action_messages">Toon berichten</string>
     <string name="action_create_new_poi">Creëer nieuw</string>
     <string name="auth_error">Autorisatie fout. Probeer opnieuw in te loggen. </string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Er is wel een trottoir.</string>
     <string name="quest_bicycle_repair_station_services_title">Welk fietsgereedschap is hier beschikbaar?</string>
     <string name="quest_bicycle_repair_station_pump">Pomp</string>
     <string name="quest_bicycle_repair_station_tools">Verschillende gereedschappen</string>
@@ -1424,7 +1414,6 @@ Bijvoorbeeld 1,3 of 2b,4,6.</string>
     <string name="quest_bicycle_charging_station_capacity_title">Hoeveel fietsen kunnen er hier tegelijk opladen?</string>
     <string name="quest_charging_station_bicycles_title">Kunnen fietsen hier ook opgeladen worden?</string>
     <string name="quest_charging_station_bicycles_hint">Opladers voor fietsen kunnen in een normaal huishoudelijk stopcontact.</string>
-    <string name="quest_tower_access_title">Wie heeft toegang tot deze toren? Het kan gratis of betaald zijn.</string>
     <string name="quest_recycling_type_pet_bottles">PET flessen</string>
     <string name="quest_maxweight_add_sign">Voeg bord toe</string>
     <string name="quest_maxweight_remove_sign">Verwijder bord</string>

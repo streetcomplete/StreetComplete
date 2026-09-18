@@ -2,6 +2,7 @@
 atmOperators: [ABSA, Standard Bank, FNB, Nedbank, Capitec Bank, Capitec, Cash Express, Bitcoin ATM SA, Absa, CashExpress, Stanbic Bank, Shitcoins.club, First National Bank, Bidvest Bank]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typen, typem, typec]
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true
@@ -13,6 +14,6 @@ noStoppingLineStyle: red
 noStoppingSignStyle: sadc
 officialLanguages: [en, zu, xh, af, st, tn, nso, ts]
 orchardProduces: [grape, orange, lemon, lime, apple, avocado, grapefruit, pear, pineapple, peach, chilli_pepper, sweet_pepper, tomato, plum, banana, guava, mango, mangosteen, apricot]
-parcelLockerBrand: [pudo]
+parcelLockerBrand: [pudo, The Courier Guy]
 popularSports: [tennis, soccer, bowls, basketball, golf, cricket, netball, field_hockey, rugby]
 postboxesHaveCollectionTimes: true

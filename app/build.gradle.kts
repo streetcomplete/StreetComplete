@@ -20,7 +20,7 @@ val bcp47ExportLanguages = setOf(
 
 /** Version of the iD presets to use
  *  see https://github.com/openstreetmap/id-tagging-schema/releases for latest version */
-val presetsVersion = "v7.0.1"
+val presetsVersion = "v7.2.0"
 
 /** Version of the Name Suggestion Index to use
  *  see https://github.com/osmlab/name-suggestion-index/tags for latest version (without leading "v"
@@ -365,7 +365,7 @@ tasks.register<UpdateAppTranslationsTask>("updateTranslations") {
     languageCodes = bcp47ExportLanguages
     apiToken = properties["app.streetcomplete.POEditorAPIToken"] as String
     projectId = poEditorProjectId
-    targetFiles = { projectDir.resolve("/src/commonMain/composeResources/values-$it/strings.xml") }
+    targetFiles = { projectDir.resolve("src/commonMain/composeResources/values-$it/strings.xml") }
 }
 
 tasks.register<UpdateAppTranslationCompletenessTask>("updateTranslationCompleteness") {

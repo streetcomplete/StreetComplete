@@ -467,7 +467,6 @@ Se non hai sinais ó longo de toda a rúa á que pertence o treito escollido, em
     <string name="underground">subterráneo</string>
     <string name="quest_sidewalk_value_yes">beirarrúa</string>
     <string name="quest_sidewalk_value_no">sen beirarrúa</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Os peóns teñen prohibido camiñar por esta estrada sen beirarrúa?</string>
     <string name="quest_buildingType_title">Que tipo de edificio é?</string>
     <string name="pref_title_theme_select">Tema</string>
     <string name="theme_light">Claro</string>
@@ -671,7 +670,6 @@ logros</string>
     <string name="at_housenumber">número de edificio %1$s</string>
     <string name="quest_openingHours_add_off_days">Engadir días pechados</string>
     <string name="quest_openingHours_off_day">Día pechado</string>
-    <string name="quest_cycleway_resurvey_title">A infraestrutura ciclista segue sendo esta?</string>
     <string name="pref_title_resurvey_intervals">Frecuencia de revisión</string>
     <string name="resurvey_intervals_less_often">Menos a miúdo</string>
     <string name="resurvey_intervals_default">Predeterminado</string>
@@ -884,7 +882,6 @@ Se sintes que hai demasiadas tarefas sempre podes configurar nos axustes que tip
     <string name="quest_access_yes">Calquera persoa de xeito público</string>
     <string name="quest_access_customers">Calquera persoa que visita un lugar concreto (ex. só clientes)</string>
     <string name="quest_access_private">Só a persoa(s) con autorización</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Seguen sendo correctas as horas de recollida desta caixa de correo?</string>
     <string name="quest_bicycle_barrier_type_title">Que tipo de barreira para bicicletas é esta?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal á ruta</string>
     <string name="quest_barrier_bicycle_type_tilted">Paso estreito, máis aínda na parte superior</string>
@@ -921,8 +918,6 @@ Senón tamén podes deixar unha nota (acompañada dunha foto).</string>
     <string name="quest_fireHydrant_position_sidewalk">Na beirarúa</string>
     <string name="quest_fireHydrant_position_parking_lot">No punto de estacionamento</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Si (deixar nota)</string>
-    <string name="quest_smoothness_square_title">Que calidade ten a superficie desta praza?</string>
-    <string name="quest_smoothness_road_title">Cal é aquí a calidade da superficie da estrada?</string>
     <string name="quest_smoothness_title_excellent">Lisa e uniforme</string>
     <string name="quest_smoothness_title_good">Bastante lisa</string>
     <string name="quest_smoothness_title_intermediate">Algo irregular</string>
@@ -975,7 +970,6 @@ Senón tamén podes deixar unha nota (acompañada dunha foto).</string>
     <string name="ar_core_tracking_error_camera_unavailable">A cámara estaa usando outra aplicación</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Soporte de manillar</string>
     <string name="quest_bicycle_parking_access_title2">Quen pode aparcar unha bici aquí? Pode ser de pago ou de balde.</string>
-    <string name="quest_playground_access_title2">Quen pode usar este parque infantil?</string>
     <string name="ar_measure">Medir</string>
     <string name="ar_core_tracking_error_too_steep_angle">Ángulo demasiado agudo, retrocede un pouco</string>
     <string name="default_disabled_msg_no_ar">Necesitas unha cinta métrica para resolver esta tarefa, xa que a medición coa cámara non é compatible con este dispositivo.</string>
@@ -1031,7 +1025,6 @@ Senón tamén podes deixar unha nota (acompañada dunha foto).</string>
     <string name="quest_lit_title">Está iluminado este lugar?</string>
     <string name="quest_openingHours_title">Cal é o horario de apertura deste sitio?</string>
     <string name="quest_openingHours_signed_title">Hai algún letreiro co horario de apertura deste sitio?</string>
-    <string name="quest_openingHours_resurvey_title">O horario de apertura deste sitio segue sendo correcto?</string>
     <string name="quest_placeName_title">Como se chama este lugar?</string>
     <string name="quest_shop_type_title2">Que tipo de tenda é esta?</string>
     <string name="quest_smoking_title2">Está permitido fumar aquí?</string>
@@ -1304,8 +1297,6 @@ Podes atopar información sobre as doazóns na nosa páxina do proxecto, xa que 
     <string name="default_disabled_msg_visible_sign_moped">Este tipo de tarefa está desactivada de xeito predeterminado porque os accesos a ciclomotores só están sinalizados ao comezo ou final da senda ciclista.</string>
     <string name="quest_arrow_tutorial">As frechas da ilustración apuntan na mesma dirección na que vai a vía no punto onde está a localización do marcador no mapa. Proba a xira-lo mapa e entenderalo.</string>
     <string name="info">Máis información</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Está prohibido.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Está permitido.</string>
     <string name="quest_buildingLevels_hint">Para os edificios que están nunha pendente, empézase a contar desde o nivel do chan da parte máis baixa.
 
 Un andar conta como andar do tellado se as súas fiestras están no tellado. Polo tanto, os tellados con cero andares non teñen por que ser totalmente planos, simplemente non son suficientemente altos como para ter un andar completo.</string>
@@ -1346,7 +1337,6 @@ Un andar conta como andar do tellado se as súas fiestras están no tellado. Pol
     <string name="action_messages">Amosar mensaxes</string>
     <string name="action_create_new_poi">Crear un novo</string>
     <string name="auth_error">Ocorreu un erro de autorización. Proba a iniciar sesión de novo.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">En realidade hai unha beirarrúa.</string>
     <string name="quest_bicycle_repair_station_services_title">Que ferramentas para bicicletas hai aquí?</string>
     <string name="quest_bicycle_repair_station_pump">Bomba de aire</string>
     <string name="quest_bicycle_repair_station_tools">Ferramentas variadas</string>
@@ -1426,7 +1416,6 @@ Un andar conta como andar do tellado se as súas fiestras están no tellado. Pol
     <string name="quest_bicycle_charging_station_capacity_title">Cantas bicicletas se poden cargar aquí ao mesmo tempo?</string>
     <string name="quest_charging_station_bicycles_title">Pódense cargar tamén bicicletas aquí?</string>
     <string name="quest_charging_station_bicycles_hint">Os adaptadores do cargador de bicicletas conéctanse aos enchufes habituais nas casas.</string>
-    <string name="quest_tower_access_title">Quen pode acceder a esta estación? Podería ser gratuíta ou de pago.</string>
     <string name="quest_recycling_type_pet_bottles">Botellas PET</string>
     <string name="quest_maxweight_add_sign">Engadir sinal</string>
     <string name="quest_maxweight_remove_sign">Retirar sinal</string>

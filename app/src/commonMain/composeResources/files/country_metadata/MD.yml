@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [Moldova Agroindbank, Victoriabank, Moldindconbank, Energbank, Mobiasbanca, Eximbank, FinComBank, OTP Bank, Moldincombank, Moldinconbank, MICB, MAIB, EuroCreditBank, Moldindcombank, BCR, micb.md, maib, Victoriabank1, VictoriaBank, MobiasBanca, BCR Chișinău]
+atmOperators: [Moldova Agroindbank, Victoriabank, Moldindconbank, Energbank, Mobiasbanca, Eximbank, OTP Bank, FinComBank, Moldincombank, Moldinconbank, MICB, MAIB, EuroCreditBank, maib, Moldindcombank, BCR, micb.md, Victoriabank1, VictoriaBank, MobiasBanca, BCR Chișinău]
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typef, typec]
 hasAdvisorySpeedLimitSign: true
 hasDailyAlternateSideParkingSign: true
 hasLivingStreet: true
@@ -9,7 +10,7 @@ livingStreetSignStyle: vienna
 mobileCountryCode: 259
 officialLanguages: [ro]
 orchardProduces: [grape, apple, walnut, plum, peach, tomato, cherry, apricot, pear, strawberry, chilli_pepper, sweet_pepper, raspberry, hazelnut, almond]
-parcelLockerBrand: [Nova Poshta]
+parcelLockerBrand: [Nova Post, Nova Poshta]
 postboxesHaveCollectionTimes: true
 slowZoneLabelPosition: top
 slowZoneLabelText: ZONA

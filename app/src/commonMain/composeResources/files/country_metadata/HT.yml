@@ -1,6 +1,7 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 atmOperators: [Sogebank, Unibank, SogeBank, Banque de la République d'Haïti]
 defaultSpeedLimitHasUrbanOrRural: false
+domesticSocketTypes: [typeb, typea]
 mobileCountryCode: 372
 noParkingSignStyle: vienna
 noStoppingSignStyle: vienna

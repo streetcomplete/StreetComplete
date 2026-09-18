@@ -468,7 +468,6 @@
     <string name="underground">地下</string>
     <string name="quest_sidewalk_value_yes">人行道</string>
     <string name="quest_sidewalk_value_no">没有人行道</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">这条没有人行道的路有禁止行人通行吗？</string>
     <string name="quest_buildingType_title">这是什么类型的建筑物？</string>
     <string name="pref_title_theme_select">选择主题</string>
     <string name="theme_light">亮色</string>
@@ -670,7 +669,6 @@
     <string name="at_housenumber">房屋编号 %1$s</string>
     <string name="quest_openingHours_add_off_days">添加休息日</string>
     <string name="quest_openingHours_off_day">休息日</string>
-    <string name="quest_cycleway_resurvey_title">这里还被用作自行车道吗？</string>
     <string name="pref_title_resurvey_intervals">重新调查的时间间隔</string>
     <string name="resurvey_intervals_less_often">减少询问次数</string>
     <string name="resurvey_intervals_default">默认</string>
@@ -883,7 +881,6 @@
     <string name="quest_access_yes">任何公众人士</string>
     <string name="quest_access_customers">访问特定地点的任何人（如仅限顾客）</string>
     <string name="quest_access_private">只有获得许可的个人</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">此邮筒的收取时间仍然正确吗?</string>
     <string name="quest_bicycle_barrier_type_title">这是哪种类型的自行车障碍？</string>
     <string name="quest_barrier_bicycle_type_diagonal">与小路成对角线</string>
     <string name="quest_barrier_bicycle_type_tilted">狭窄的通道，越往顶部越窄</string>
@@ -920,8 +917,6 @@
     <string name="quest_fireHydrant_position_sidewalk">在人行道上</string>
     <string name="quest_fireHydrant_position_parking_lot">在停车场</string>
     <string name="quest_generic_hasFeature_yes_leave_note">是(留言)</string>
-    <string name="quest_smoothness_square_title">这个广场地面的质量如何？</string>
-    <string name="quest_smoothness_road_title">这条道路的表面质量如何？</string>
     <string name="quest_smoothness_title_excellent">平坦而均匀</string>
     <string name="quest_smoothness_title_good">多半平坦</string>
     <string name="quest_smoothness_title_intermediate">稍有颠簸</string>
@@ -975,7 +970,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">相机已被其它应用所使用</string>
     <string name="quest_bicycle_parking_type_handlebarholder">车把手支架</string>
     <string name="quest_bicycle_parking_access_title2">谁可以在这里停放自行车？停车可能是免费或是付费的。</string>
-    <string name="quest_playground_access_title2">谁可以使用这个游乐场？</string>
     <string name="ar_measure">测量</string>
     <string name="ar_core_tracking_error_too_steep_angle">角度太陡了，走远一点</string>
     <string name="default_disabled_msg_no_ar">你需要一个卷尺来解决这个问题，因为该设备不支持用相机进行测量。</string>
@@ -1031,7 +1025,6 @@
     <string name="quest_lit_title">这里有照明吗?</string>
     <string name="quest_openingHours_title">这里什么时候开放？</string>
     <string name="quest_openingHours_signed_title">这里的开放时间是否有标明？</string>
-    <string name="quest_openingHours_resurvey_title">这里的开放时间仍然正确吗？</string>
     <string name="quest_placeName_title">这个地方叫什么名字?</string>
     <string name="quest_shop_type_title2">这个商店是什么类型的？</string>
     <string name="quest_smoking_title2">这里允许吸烟吗?</string>
@@ -1302,8 +1295,6 @@
     <string name="default_disabled_msg_visible_sign_moped">此任务类型默认禁用，因为轻便摩托车的通行权限仅由自行车道起点/终点的特定标志标明。</string>
     <string name="quest_arrow_tutorial">插图中的箭头指向地图中心点位置的路线。尝试旋转地图，您就会明白。</string>
     <string name="info">更多的信息</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">这是被禁止的。</string>
-    <string name="quest_accessible_for_pedestrians_allowed">这是被允许的。</string>
     <string name="quest_buildingLevels_hint">对于建在斜坡上的建筑物，楼层计数应从最低一侧的地面开始。
 
 当窗户位于屋顶内时，该层计为屋顶层。因此，屋顶层数为零的屋顶不一定就是平顶，只是其高度不足以容纳完整的一层。</string>
@@ -1344,7 +1335,6 @@
     <string name="action_messages">显示信息</string>
     <string name="action_create_new_poi">新建</string>
     <string name="auth_error">鉴权时发生错误。请重新尝试登录。</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">实际上，这里有人行道。</string>
     <string name="quest_bicycle_repair_station_services_title">此处提供哪些自行车维修设备？</string>
     <string name="quest_bicycle_repair_station_pump">打气筒</string>
     <string name="quest_bicycle_repair_station_tools">各种工具</string>
@@ -1428,7 +1418,6 @@
     <string name="quest_bicycle_charging_station_capacity_title">这里可以同时给多少辆自行车充电？</string>
     <string name="quest_charging_station_bicycles_title">自行车也可以在这里充电吗？</string>
     <string name="quest_charging_station_bicycles_hint">自行车充电器电源适配器可插入的普通家用插座。</string>
-    <string name="quest_tower_access_title">谁可以进入这座塔？它可能是免费的或付费的。</string>
     <string name="quest_recycling_type_pet_bottles">PET塑料瓶</string>
     <string name="quest_maxweight_add_sign">添加标记</string>
     <string name="quest_maxweight_remove_sign">去除标记</string>
