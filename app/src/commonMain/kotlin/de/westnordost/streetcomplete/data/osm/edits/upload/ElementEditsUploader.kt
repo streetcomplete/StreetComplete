@@ -23,6 +23,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
@@ -42,6 +44,7 @@ class ElementEditsUploader(
 
     suspend fun upload() = mutex.withLock { withContext(Dispatchers.IO) {
         while (true) {
+            currentCoroutineContext().ensureActive()
             val edit = elementEditsController.getOldestUnsynced() ?: break
             val getIdProvider: () -> ElementIdProvider = { elementEditsController.getIdProvider(edit.id) }
             /* the sync of local change -> API and its response should not be cancellable because
