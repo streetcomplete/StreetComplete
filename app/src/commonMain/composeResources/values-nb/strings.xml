@@ -467,7 +467,6 @@ Hvis det ikke fins noe fartsgrenseskilt for veien som den markerte strekningen e
     <string name="underground">underjordisk</string>
     <string name="quest_sidewalk_value_yes">fortau</string>
     <string name="quest_sidewalk_value_no">ingen fortau</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Er det forbudt å gå på denne veien her?</string>
     <string name="quest_buildingType_title">Hva slags bygning er dette?</string>
     <string name="pref_title_theme_select">Velg modus</string>
     <string name="theme_light">Lyst</string>
@@ -673,7 +672,6 @@ nivåer</string>
     <string name="at_housenumber">Husnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Hvilke dager er det stengt?</string>
     <string name="quest_openingHours_off_day">Stengt</string>
-    <string name="quest_cycleway_resurvey_title">Er sykkelveien fortsatt slik?</string>
     <string name="pref_title_resurvey_intervals">Undersøkelsesintervall</string>
     <string name="resurvey_intervals_less_often">Spør sjeldnere</string>
     <string name="resurvey_intervals_default">Standard</string>
@@ -886,7 +884,6 @@ Er du overveldet av alle oppdragene kan du alltid endre på innstillingene for �
     <string name="quest_access_yes">Offentlig tilgjengelig</string>
     <string name="quest_access_customers">Besøk til et sted (f.eks. kunder)</string>
     <string name="quest_access_private">Privat eller med tillatelse</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Er hentetidene for denne postkassa fortsatt korrekte?</string>
     <string name="quest_bicycle_barrier_type_title">Hvilken type sperring er dette?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal over veien</string>
     <string name="quest_barrier_bicycle_type_tilted">Smal passasje, trangest øverst</string>
@@ -923,8 +920,6 @@ Alternativt, lag en merknad (med bilde).</string>
     <string name="quest_fireHydrant_position_sidewalk">På fortauet</string>
     <string name="quest_fireHydrant_position_parking_lot">På en parkeringsplass</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Ja (skriv en merkand)</string>
-    <string name="quest_smoothness_square_title">Hvordan er kvaliteten på overflaten på denne plassen?</string>
-    <string name="quest_smoothness_road_title">Hvordan er kvaliteten på veiens overflate her?</string>
     <string name="quest_smoothness_title_excellent">Glatt og jevn</string>
     <string name="quest_smoothness_title_good">Stort sett jevn</string>
     <string name="quest_smoothness_title_intermediate">Litt humpete</string>
@@ -977,7 +972,6 @@ Alternativt, lag en merknad (med bilde).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Kamera er i bruk av en annen app</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Styreholder</string>
     <string name="quest_bicycle_parking_access_title2">Hvem kan parkere sykkelen her? Enten gratis eller mot betaling.</string>
-    <string name="quest_playground_access_title2">Hvem kan bruke denne lekeplassen?</string>
     <string name="ar_measure">Mål</string>
     <string name="ar_core_tracking_error_too_steep_angle">For bratt vinkel, gå lenger unna</string>
     <string name="default_disabled_msg_no_ar">Du trenger et målebånd for å løse denne oppgaven fordi måling med kameraet ikke er støttet på denne enheten.</string>
@@ -1033,7 +1027,6 @@ Alternativt, lag en merknad (med bilde).</string>
     <string name="quest_lit_title">Er det opplyst her?</string>
     <string name="quest_openingHours_title">Hva er åpningstidene her?</string>
     <string name="quest_openingHours_signed_title">Vises åpningstidene på et skilt?</string>
-    <string name="quest_openingHours_resurvey_title">Er åpningstidene fortsatt riktige?</string>
     <string name="quest_placeName_title">Hva heter dette stedet?</string>
     <string name="quest_shop_type_title2">Hva slags butikk er dette?</string>
     <string name="quest_smoking_title2">Er røyking tillatt her?</string>
@@ -1306,8 +1299,6 @@ Du kan finne informasjon om donasjon på våre nettsider eller "project home", G
     <string name="default_disabled_msg_visible_sign_moped">Denne oppgavetypen er deaktivert som standard siden mopedtilgang kun er markert ved et spesielt skilt på starten/slutten av sykkelfeltet.</string>
     <string name="quest_arrow_tutorial">Pilene i illustrasjonen peker i retningen veien går på kartet. Prøv å rotere kartet, og du vil skjønne det.</string>
     <string name="info">Mer informasjon</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Det er forbudt.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Det er tillatt.</string>
     <string name="quest_buildingLevels_hint">For byggninger i skråning, starter man tellingen fra første etasje på den laveste siden.
 
 En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med null taketasjer nødvendigvis flate, bare ikke høye nok for en hel etasje.</string>
@@ -1348,7 +1339,6 @@ En etasje regnes som taketasje når vinduene er i taket. Deretter er tak med nul
     <string name="action_messages">Vis melding</string>
     <string name="action_create_new_poi">Lag ny</string>
     <string name="auth_error">Autorisasjonsfeil. Prøv å logge inn igjen.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Det er et fortau, faktisk.</string>
     <string name="quest_bicycle_repair_station_services_title">Hva slags sykkelutstyr er tilgjengelig her?</string>
     <string name="quest_bicycle_repair_station_pump">Pumpe</string>
     <string name="quest_bicycle_repair_station_tools">Ulike verktøy</string>

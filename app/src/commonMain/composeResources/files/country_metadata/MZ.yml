@@ -2,6 +2,7 @@
 atmOperators: [BCI, BIM, Standard Bank, FNB, Millennium BIM, Barclays, Millennium bim, Millennium Bim, StandardBank, Moza]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typem, typen, typef, typec]
 edgeLineStyle: yellow
 hasLivingStreet: true
 isLeftHandTraffic: true

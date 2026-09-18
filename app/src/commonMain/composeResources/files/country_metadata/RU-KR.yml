@@ -1,3 +1,4 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
-atmOperators: [ПАО Сбербанк, Банк ВТБ (ПАО), Сбербанк, АО «ТБанк», АО "Альфа-Банк", ВТБ, ПАО "Промсвязьбанк", АО "Россельхозбанк", АО "Райффайзенбанк", Промсвязьбанк, Уралсиб, ПАО "МТС-Банк"]
+atmOperators: [ПАО Сбербанк, Сбербанк, ВТБ, Банк ВТБ (ПАО), АО «ТБанк», АО "Альфа-Банк", Промсвязьбанк, АО "Россельхозбанк", Уралсиб, Райффайзен, ПАО "МТС-Банк", АО "Райффайзенбанк"]
 officialLanguages: [ru, krl, vep, fi]
+parcelLockerBrand: [Ozon Box]

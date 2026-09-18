@@ -188,8 +188,8 @@ Hvis der ikke er skilte langs hele vejen som gælder for den fremhævede strækn
     <string name="quest_wheelchairAccess_limited_description_public_transport">Delvist betyder, at der ikke er mere end et ankelhøjt trin for at få adgang.</string>
     <string name="quest_recycling_type_title">Hvilken type genanvendelsesfacilitet er dette?</string>
     <string name="recycling_centre">Genbrugsplads</string>
-    <string name="overground_recycling_container">Container</string>
-    <string name="underground_recycling_container">Underjordisk container</string>
+    <string name="overground_recycling_container">Container(e)</string>
+    <string name="underground_recycling_container">Underjordisk container(e)</string>
     <string name="quest_streetName_answer_cantType">Kan ikke skrive tegnene på skiltet</string>
     <string name="quest_streetName_cantType_title">Manglende tastaturlayout?</string>
     <string name="quest_streetName_menuItem_nolanguage">(uspecificeret)</string>
@@ -467,7 +467,6 @@ Delvist betyder, at kørestolsbrugeren kan komme ind og bruge toilettet, men at 
     <string name="underground">underjordisk</string>
     <string name="quest_sidewalk_value_yes">fortov</string>
     <string name="quest_sidewalk_value_no">intet fortov</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Er det forbudt for fodgængere at gå på denne vej uden et fortov her?</string>
     <string name="quest_buildingType_title">Hvilken type bygning er dette?</string>
     <string name="pref_title_theme_select">Tema</string>
     <string name="theme_light">Lys</string>
@@ -671,7 +670,6 @@ aktiv</string>
     <string name="at_housenumber">husnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Tilføj lukkedage</string>
     <string name="quest_openingHours_off_day">Lukkedag</string>
-    <string name="quest_cycleway_resurvey_title">Er dette stadig cykelsti-situationen her?</string>
     <string name="pref_title_resurvey_intervals">Interval for ny undersøgelse</string>
     <string name="resurvey_intervals_less_often">Spørg sjældnere</string>
     <string name="resurvey_intervals_default">Standard</string>
@@ -795,19 +793,19 @@ Data fornyes efter %1$s dage og ubrugte data slettes automatisk efter %2$s dage.
     <string name="quest_barrier_type_wire_gate">Flytbar trådsektion</string>
     <string name="quest_barrier_type_cattle_grid">Rist forhindrer husdyr i at gå over</string>
     <string name="quest_barrier_type_block">Stor ubevægelig genstand</string>
-    <string name="quest_barrier_jersey_barrier">Betonklods</string>
+    <string name="quest_barrier_jersey_barrier">Betongris</string>
     <string name="quest_barrier_type_log">Stamme</string>
     <string name="quest_barrier_type_kerb">Kantsten</string>
     <string name="quest_barrier_type_height_restrictor">Højdebarriere</string>
     <string name="quest_barrier_full_height_turnstile">Drejekors i fuld højde</string>
     <string name="quest_barrier_type_turnstile">Drejekors</string>
     <string name="quest_barrier_type_passage">Passage gennem mur/hegn/osv.</string>
-    <string name="quest_barrier_type_debris_pile">Bunke af affald</string>
+    <string name="quest_barrier_type_debris_pile">Bunke af løst materiale</string>
     <string name="quest_barrier_type_stile_squeezer">Stente (snæver passage)</string>
     <string name="quest_barrier_type_stile_ladder">Stente (stige)</string>
     <string name="quest_barrier_type_bicycle_barrier">Cykelchikane</string>
     <string name="quest_barrier_type_kissing_gate">Kissing gate</string>
-    <string name="quest_barrier_type_swing_gate">Vandret bjælke</string>
+    <string name="quest_barrier_type_swing_gate">Svingbom</string>
     <string name="quest_policeType_title">Hvilken slags politistation er dette?</string>
     <string name="quest_barrier_type_kissing_gate_conversion">Omdannet til en 'kissing gate'</string>
     <string name="quest_stile_type_title">Hvilken type stente er dette?</string>
@@ -882,10 +880,9 @@ Hvis du føler dig overvældet af antallet af opgaver, kan du i indstillingerne 
     <string name="restore_confirmation">Gendan</string>
     <string name="restore_dialog_message">Gendan alle opgaver du har skjult?</string>
     <string name="quest_parking_access_title2">Hvem må parkere her? Parkering kan være gratis eller mod betaling.</string>
-    <string name="quest_access_yes">Enhver fra offentligheden</string>
+    <string name="quest_access_yes">Enhver</string>
     <string name="quest_access_customers">Enhver person, der besøger et bestemt sted (f.eks. kun kunder)</string>
-    <string name="quest_access_private">Kun person(er) med tilladelse</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Er tømningstider på denne postkasse stadigvæk korrekte?</string>
+    <string name="quest_access_private">Kun personer med tilladelse</string>
     <string name="quest_bicycle_barrier_type_title">Hvilken type cykelchikane er dette?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonal i forhold til stien</string>
     <string name="quest_barrier_bicycle_type_tilted">Snæver passage, smallere mod toppen</string>
@@ -922,8 +919,6 @@ Alternativt kan du efterlade en bemærkning (med et foto).</string>
     <string name="quest_fireHydrant_position_sidewalk">På gangareal</string>
     <string name="quest_fireHydrant_position_parking_lot">Ved en parkering</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Ja (efterlad bemærkning)</string>
-    <string name="quest_smoothness_square_title">Hvordan er overfladekvaliteten på denne plads?</string>
-    <string name="quest_smoothness_road_title">Hvordan er overfladekvaliteten af denne vej her?</string>
     <string name="quest_smoothness_title_excellent">Jævn og plan</string>
     <string name="quest_smoothness_title_good">Hovedsageligt jævn</string>
     <string name="quest_smoothness_title_intermediate">Lidt ujævn</string>
@@ -976,7 +971,6 @@ Alternativt kan du efterlade en bemærkning (med et foto).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Kameraet bruges af en anden app</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Holder til styr</string>
     <string name="quest_bicycle_parking_access_title2">Hvem må parkere en cykel her? Parkering kan være gratis eller betalt.</string>
-    <string name="quest_playground_access_title2">Hvem må bruge denne legeplads?</string>
     <string name="ar_measure">Lav opmåling</string>
     <string name="ar_core_tracking_error_too_steep_angle">Vinklen er for stejl, træd en smule væk</string>
     <string name="default_disabled_msg_no_ar">Du skal bruge et målebånd for at løse denne opgave, da måling med kameraet ikke understøttes på denne enhed.</string>
@@ -1032,7 +1026,6 @@ Alternativt kan du efterlade en bemærkning (med et foto).</string>
     <string name="quest_lit_title">Er der belysning her?</string>
     <string name="quest_openingHours_title">Hvad er åbningstiderne her?</string>
     <string name="quest_openingHours_signed_title">Er åbningstiderne her skiltet?</string>
-    <string name="quest_openingHours_resurvey_title">Er disse åbningstider stadig korrekte?</string>
     <string name="quest_placeName_title">Hvad er navnet på dette sted?</string>
     <string name="quest_shop_type_title2">Hvilken type butik er det?</string>
     <string name="quest_smoking_title2">Er rygning tilladt her?</string>
@@ -1241,7 +1234,7 @@ Derudover giver nogle overlejringer dig mulighed for at tilføje nye data på po
     <string name="quest_leave_new_note_as_answer">I så fald skal du efterlade en bemærkning, hvor du forklarer situationen.</string>
     <string name="quest_drinking_water_type_title2">Er der adgang til drikkevand her? Hvis ja, hvad er så kilden?</string>
     <string name="quest_is_amenity_inside_title">Er dette indendørs?</string>
-    <string name="quest_bbq_fuel_title">Hvilken energikilde bruger denne grill?</string>
+    <string name="quest_bbq_fuel_title">Hvilket brændstof bruger man til madlavning her?</string>
     <string name="quest_bbq_fuel_wood">Træ</string>
     <string name="quest_bbq_fuel_electric">El</string>
     <string name="quest_bbq_fuel_charcoal">Kul</string>
@@ -1306,8 +1299,6 @@ Du kan finde oplysninger om donationer på vores websted eller projekthjemmeside
     <string name="default_disabled_msg_visible_sign_moped">Denne opgavetype er som standard deaktiveret, fordi knallertadgang kun er angivet med et bestemt skilt ved starten/slutningen af en cykelsti.</string>
     <string name="quest_arrow_tutorial">Pilene i illustrationen peger i de retninger, som linjestrengen løber i på kortet, hvor den er fastgjort i midten. Prøv at rotere kortet, så forstår du det.</string>
     <string name="info">Mere information</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Det er forbudt.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Det er tilladt.</string>
     <string name="quest_buildingLevels_hint">Hvis bygningen ligger på en skråning, starter optællingen af etager fra terrænniveauet på den laveste side.
 
 En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage med nul tagetager ikke nødvendigvis flade, de er bare ikke høje nok til en hel etage.</string>
@@ -1348,7 +1339,6 @@ En etage tæller som en tagetage, når dens vinduer er i taget. Derfor er tage m
     <string name="action_messages">Vis beskeder</string>
     <string name="action_create_new_poi">Opret nyt</string>
     <string name="auth_error">Autorisationsfejl. Prøv at logge ind igen.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Der er faktisk et fortov.</string>
     <string name="quest_bicycle_repair_station_services_title">Hvilket cykeludstyr er der til rådighed her?</string>
     <string name="quest_bicycle_repair_station_pump">Pumpe</string>
     <string name="quest_bicycle_repair_station_tools">Diverse værktøjer</string>
@@ -1432,7 +1422,6 @@ For eksempel 1,3 eller 2b,4,6.</string>
     <string name="quest_bicycle_charging_station_capacity_title">Hvor mange cykler kan der oplades her på samme tid?</string>
     <string name="quest_charging_station_bicycles_title">Kan cykler også oplades her?</string>
     <string name="quest_charging_station_bicycles_hint">Cykelopladerens strømadaptere tilsluttes almindelige stikkontakter.</string>
-    <string name="quest_tower_access_title">Hvem har adgang til dette tårn? Det kan være gratis eller mod betaling.</string>
     <string name="quest_recycling_type_pet_bottles">PET-flasker</string>
     <string name="quest_maxweight_add_sign">Tilføj skilt</string>
     <string name="quest_maxweight_remove_sign">Fjern skilt</string>
@@ -1505,4 +1494,16 @@ For eksempel 1,3 eller 2b,4,6.</string>
 Ellers kan du downloade et andet tastatur fra appbutikken. På Android kan du eventuelt prøve FlorisBoard eller HeliBoard.</string>
     <string name="bicycle_boulevard_is_a2">Det er en cykelgade</string>
     <string name="bicycle_boulevard_is_not_a2">Det er ikke en cykelgade</string>
+    <string name="camera_permission_description">Der kræves tilladelse til at bruge kameraet for at vedhæfte fotos til kortbemærkninger.</string>
+    <string name="resurvey_title">Er dette stadig korrekt?</string>
+    <string name="add">Tilføj</string>
+    <string name="quest_bothway_aerialway_confirm">Er du sikker på, at man kan køre med denne lift i begge retninger?</string>
+    <string name="quest_doctor_type_title">Hvilke læger er til stede her?</string>
+    <string name="quest_generalFee_title3">Skal man betale for at bo her?</string>
+    <string name="quest_access_permit">Indehavere af tilladelser (som generelt kan opnås)</string>
+    <string name="unit_day">dag</string>
+    <string name="unit_hour">time</string>
+    <string name="unit_minute">minut</string>
+    <string name="quest_parking_charge_title">Hvor meget skal man betale for at parkere her?</string>
+    <string name="quest_parking_charge_time_unit_label">pr.</string>
 </resources>

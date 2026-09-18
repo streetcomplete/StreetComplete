@@ -5,7 +5,7 @@
 🍏 This update brings huge changes, albeit they should be mostly invisible. I re-did the UI for all 
 quest forms, a side effect of the migration to a multiplatform UI framework. An iOS version of the 
 app has now come within reach! (#6842).
-@kiliankoe (#6989), @maxwellward (#7033), helped a bit, too.
+@kiliankoe (#6989), @maxwellward (#7033), @sargunv (#7123, #7124) helped a bit, too.
 
 ### General
 
@@ -15,12 +15,14 @@ app has now come within reach! (#6842).
   anymore (this is a bit of a technical limitation of the new implementation)
 - Serbian language in Latin script is now available again (#6914)
 - All forms with free text input: Visually show error state when input exceeds 255 characters
+- Improved quest creation processing speed after download by about 50%! (#7099), by @paulklie
 
 ### New Quests
 
 - _"How much do you need to pay to park here?"_ (#6653), thanks @marekkrug
 - _"What doctors are present here?"_ (#7044), by @paulklie
-- _"What type of vending machine is this?"_ (#7061), by @paulklie
+- _"What type of vending machine is this?"_ (#7061), by @paulklie, thanks @Amaanprobably
+- _"Who may enter here?"_ (#7071, #7109), by @esilja. Replaces previous quests that asked for playground and tower access
 
 ### Fixes
 
@@ -35,7 +37,7 @@ app has now come within reach! (#6842).
 - Internet access: "none" option was not exclusive (#7016)
 - Fix formatting of links in notes (#7048)
 - Fix crash in postbox collection form when sending app to background
-- Other small (visual) fixes (#6827, #7007, #6981, #7070, #7074…), thanks @esilja
+- Other small (visual) fixes (#6827, #7007, #6981, #7070, #7074, #7115…), thanks @esilja, @paulklie
 
 ### Quest improvements
 
@@ -44,7 +46,14 @@ app has now come within reach! (#6842).
 - Crossings: Don't ask for islands and kerb height on continuous crossings (#6983), by @eginhard
 - BBQ fuel: Allow to specify several fuels (#6915, #7028), by @paulklie
 - Toilets fee: Don't ask in Australia and New Zealand (#7011), by @andrewharvey
-- Other small improvements that improve clarity (#6991, #6984, #7003, #7020, #7027, #7025, #7049, #7072, #7076), thanks @paulklie
+- Many quests are also asked for relations now (#7086), by @paulklie
+- Toilets fee: Allow answering that there's a fee only for non-customers (#7050), by @esilja
+- Add a few icons for various quests (#7128, #7100), by @Amaanprobably
+- Other small improvements that improve clarity (#6991, #6984, #7003, #7020, #7027, #7025, #7049, #7072, #7076, #7091, #7118, #7119), thanks @paulklie, @mcliquid
+
+### Problematic Quests removed
+
+- _"Are pedestrians forbidden to walk on this road without a sidewalk here?"_ (#7014)
 
 ## v63.4
 

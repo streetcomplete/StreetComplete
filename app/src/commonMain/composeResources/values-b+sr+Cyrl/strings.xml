@@ -467,7 +467,6 @@
     <string name="underground">под земљом</string>
     <string name="quest_sidewalk_value_yes">има тротоар</string>
     <string name="quest_sidewalk_value_no">нема тротоар</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Да ли је пешацима забрањено да ходају овим путем?</string>
     <string name="quest_buildingType_title">Каква је ово грађевина?</string>
     <string name="pref_title_theme_select">Изаберите тему</string>
     <string name="theme_light">Светла</string>
@@ -672,7 +671,6 @@
     <string name="at_housenumber">кућни број %1$s</string>
     <string name="quest_openingHours_add_off_days">Додајте нерадне дане</string>
     <string name="quest_openingHours_off_day">Нерадни дани</string>
-    <string name="quest_cycleway_resurvey_title">Да ли ово и даље случај са бициклистичом стазом овде?</string>
     <string name="pref_title_resurvey_intervals">Интервал понављања истраживања</string>
     <string name="resurvey_intervals_less_often">Питај ређе</string>
     <string name="resurvey_intervals_default">Уобичајено</string>
@@ -884,7 +882,6 @@
     <string name="quest_access_yes">Било ко</string>
     <string name="quest_access_customers">Свако ко посећује ово место (нпр. само муштерије)</string>
     <string name="quest_access_private">Само особе са дозволом</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Да ли су времена прикупљања овог сандучета и даље исправна?</string>
     <string name="quest_bicycle_barrier_type_title">Која је врста ове бициклистичке препреке?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Дијагонална у односу на стазу</string>
     <string name="quest_barrier_bicycle_type_tilted">Уски пролаз који се сужава ка врху</string>
@@ -921,8 +918,6 @@
     <string name="quest_fireHydrant_position_sidewalk">На тротоару</string>
     <string name="quest_fireHydrant_position_parking_lot">На паркингу</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Да (остави напомену)</string>
-    <string name="quest_smoothness_square_title">Какав је квалитет подлоге на овом тргу?</string>
-    <string name="quest_smoothness_road_title">Какав је квалитет пута овде?</string>
     <string name="quest_smoothness_title_excellent">Глатка и изравната</string>
     <string name="quest_smoothness_title_good">Углавном изравната</string>
     <string name="quest_smoothness_title_intermediate">Мало труцкава</string>
@@ -975,7 +970,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">Нека друга апликација користи камеру</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Држач за корман</string>
     <string name="quest_bicycle_parking_access_title2">Ко овде сме да паркира бицикл? Да ли је са или без наплате?</string>
-    <string name="quest_playground_access_title2">Ко сме да користи ово игралиште?</string>
     <string name="ar_measure">Измери</string>
     <string name="ar_core_tracking_error_too_steep_angle">Превише стрм угао, одмакните се</string>
     <string name="default_disabled_msg_no_ar">За овај задатак Вам треба метар пошто мерење уз помоћ камере није подржано на овом уређају.</string>
@@ -1031,7 +1025,6 @@
     <string name="quest_lit_title">Да ли је овде осветљено?</string>
     <string name="quest_openingHours_title">Које је радно време овде?</string>
     <string name="quest_openingHours_signed_title">Да ли је овде истакнуто радно време?</string>
-    <string name="quest_openingHours_resurvey_title">Да ли је радно време још увек тачно?</string>
     <string name="quest_placeName_title">Који је назив овог места?</string>
     <string name="quest_shop_type_title2">Која је ово врста продавнице?</string>
     <string name="quest_smoking_title2">Да ли је овде дозвољено пушење?</string>
@@ -1303,8 +1296,6 @@
     <string name="default_disabled_msg_visible_sign_moped">Овај задатак је подраз. искључен јер приступ мопедима је назначен специфичним знаковима само на почетку и крају бицикл. стазе.</string>
     <string name="quest_arrow_tutorial">На илустрацији, стрелице показују правац кретања пута на карти у централној тачки чиоде. Пробајте да ротирате карту и схватићете.</string>
     <string name="info">Још информација</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Забрањено је.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Дозвољено је.</string>
     <string name="quest_buildingLevels_hint">За зграде на падини, спратови се броје од нивоа земљишта, са најниже стране.
 
 Спратом се сматра и када су прозори у крову. Стога, кровови без спрата нису нужно равни, већ једноставно нису довољно високи да би постојало поткровље.</string>
@@ -1345,7 +1336,6 @@
     <string name="action_messages">Приказ порука</string>
     <string name="action_create_new_poi">Прављење нове</string>
     <string name="auth_error">Грешка током ауторизације. Покушајте поновно.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Заправо, постоји тротоар.</string>
     <string name="quest_bicycle_repair_station_services_title">Који тип опреме за бицикле се овде налази?</string>
     <string name="quest_bicycle_repair_station_pump">Пумпа</string>
     <string name="quest_bicycle_repair_station_tools">Разни алати</string>
@@ -1428,7 +1418,6 @@
     <string name="quest_bicycle_charging_station_capacity_title">Колико бицикала се може пунити истовремено?</string>
     <string name="quest_charging_station_bicycles_title">Да ли се овде могу пунити и бицикли?</string>
     <string name="quest_charging_station_bicycles_hint">Адаптери за пуњење користе обичне кућне утичнице.</string>
-    <string name="quest_tower_access_title">Ко има приступ овом торњу? Било бесплатно или уз наплату.</string>
     <string name="quest_recycling_type_pet_bottles">PET амбалажа</string>
     <string name="quest_maxweight_add_sign">Додај знак</string>
     <string name="quest_maxweight_remove_sign">Уклони знак</string>

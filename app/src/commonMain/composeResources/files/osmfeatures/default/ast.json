@@ -109,9 +109,6 @@
           "name": "Cambiu de moneda",
           "terms": ["divisa", "cambiu"]
         },
-        "amenity/bus_station": {
-          "name": "Estación d'autobuses / Terminal"
-        },
         "amenity/cafe": {
           "name": "Café",
           "terms": ["cafetería"]
@@ -173,9 +170,6 @@
           "name": "Agua potable",
           "terms": ["fonte", "bebederu"]
         },
-        "amenity/embassy": {
-          "name": "Embaxada"
-        },
         "amenity/fast_food": {
           "name": "Comida rápida",
           "terms": ["comida rápida", "comida basoria"]
@@ -220,9 +214,6 @@
         "amenity/nightclub": {
           "name": "Discoteca",
           "terms": ["disco", "discobar", "baille"]
-        },
-        "amenity/parking": {
-          "name": "Aparcamientu"
         },
         "amenity/parking_space": {
           "name": "Espaciu d'aparcamientu"
@@ -447,12 +438,6 @@
         "barrier/wall": {
           "name": "Muria"
         },
-        "boundary": {
-          "name": "Llende"
-        },
-        "boundary/administrative": {
-          "name": "Llende alministrativa"
-        },
         "building": {
           "name": "Edificiu"
         },
@@ -554,9 +539,6 @@
           "name": "Almacén",
           "terms": ["nave d'almacenamientu"]
         },
-        "building_point": {
-          "name": "Edificiu"
-        },
         "craft": {
           "name": "Oficiu",
           "terms": ["profesional", "negociu"]
@@ -618,9 +600,6 @@
           "name": "Llaves",
           "terms": ["duplicáu de llaves"]
         },
-        "craft/locksmith": {
-          "name": "Cerraxería"
-        },
         "craft/painter": {
           "name": "Pintor"
         },
@@ -667,9 +646,6 @@
         "craft/stonemason": {
           "name": "Canteru"
         },
-        "craft/tailor": {
-          "name": "Sastre"
-        },
         "craft/tiler": {
           "name": "Azulexista"
         },
@@ -709,9 +685,6 @@
           "terms": ["s.o.s.", "teléfonu d'ayuda", "teléfonu de socorru"]
         },
         "ford": {
-          "name": "Vau"
-        },
-        "ford_line": {
           "name": "Vau"
         },
         "golf/bunker": {
@@ -755,9 +728,6 @@
         "healthcare/birthing_center": {
           "name": "Maternidá"
         },
-        "healthcare/blood_donation": {
-          "name": "Centru de donantes de sangre"
-        },
         "healthcare/hospice": {
           "name": "Hospiciu"
         },
@@ -769,9 +739,6 @@
         },
         "healthcare/optometrist": {
           "name": "Ópticu"
-        },
-        "healthcare/physiotherapist": {
-          "name": "Fisioterapeuta"
         },
         "healthcare/podiatrist": {
           "name": "Pediatra"
@@ -944,17 +911,11 @@
         "indoor/corridor": {
           "name": "Pasiellu d'edificiu"
         },
-        "indoor/corridor_line": {
-          "name": "Pasiellu d'edificiu"
-        },
         "junction": {
           "name": "Crucie"
         },
         "landuse/aquaculture": {
           "name": "Acuacultura"
-        },
-        "landuse/basin": {
-          "name": "Acumulación d'agües"
         },
         "landuse/brownfield": {
           "name": "Solar"
@@ -967,9 +928,6 @@
         },
         "landuse/commercial": {
           "name": "Área comercial"
-        },
-        "landuse/farm": {
-          "name": "Tierra de llabor"
         },
         "landuse/farmland": {
           "name": "Tierra de llabor"
@@ -1025,14 +983,8 @@
         "landuse/plant_nursery": {
           "name": "Viveru"
         },
-        "landuse/pond": {
-          "name": "Estanque"
-        },
         "landuse/quarry": {
           "name": "Cantera"
-        },
-        "landuse/reservoir": {
-          "name": "Embalse"
         },
         "landuse/residential": {
           "name": "Área de viviendes"
@@ -1163,9 +1115,6 @@
         "leisure/track": {
           "name": "Circuitu (Deportes sin motor)"
         },
-        "leisure/track/athletics/running": {
-          "name": "Pista d'atletismu"
-        },
         "leisure/track/running": {
           "name": "Pista d'atletismu",
           "terms": ["pista", "circuitu"]
@@ -1276,9 +1225,6 @@
         },
         "military/bunker": {
           "name": "Bunquer militar"
-        },
-        "military/nuclear_explosion_site": {
-          "name": "Llugar d'españíu nuclear"
         },
         "military/office": {
           "name": "Oficina militar"
@@ -1421,9 +1367,6 @@
         "office/lawyer": {
           "name": "Despachu d'abogaos"
         },
-        "office/lawyer/notary": {
-          "name": "Notaría"
-        },
         "office/newspaper": {
           "name": "Redacción de periódicu"
         },
@@ -1442,9 +1385,6 @@
         },
         "office/telecommunication": {
           "name": "Oficina de telecomunicaciones"
-        },
-        "office/travel_agent": {
-          "name": "Axencia de viaxes"
         },
         "place": {
           "name": "Llugar"
@@ -1570,17 +1510,11 @@
         "railway/signal": {
           "name": "Señal de ferrocarril"
         },
-        "railway/station": {
-          "name": "Estación de tren"
-        },
         "railway/subway_entrance": {
           "name": "Boca del metro"
         },
         "relation": {
           "name": "Rellación"
-        },
-        "route/ferry": {
-          "name": "Ruta de ferry"
         },
         "shop": {
           "name": "Tienda"
@@ -2012,10 +1946,6 @@
           "name": "Ruta de tubería",
           "terms": ["ruta de tubería"]
         },
-        "type/route/power": {
-          "name": "Ruta d'enerxía",
-          "terms": ["ruta de llinia d'enerxía"]
-        },
         "type/route/road": {
           "name": "Ruta per carretera",
           "terms": ["ruta de carretera"]
@@ -2088,6 +2018,127 @@
         "waterway/weir": {
           "name": "Ñora",
           "terms": ["ñora", "presa", "banzáu"]
+        },
+        "boundary": {
+          "name": "Llende"
+        },
+        "building_point": {
+          "name": "Edificiu"
+        },
+        "ford_line": {
+          "name": "Vau"
+        },
+        "shop/ice_cream": {
+          "name": "Xeladería"
+        },
+        "route/ferry": {
+          "name": "Ruta de ferry"
+        },
+        "railway/station": {
+          "name": "Estación de tren",
+          "terms": ["terminal ferroviaria"]
+        },
+        "office/travel_agent": {
+          "name": "Axencia de viaxes",
+          "terms": ["viaxes"]
+        },
+        "office/lawyer/notary": {
+          "name": "Notaría"
+        },
+        "leisure/track/athletics/running": {
+          "name": "Pista d'atletismu",
+          "terms": ["pista", "circuitu"]
+        },
+        "landuse/basin": {
+          "name": "Acumulación d'agües"
+        },
+        "landuse/reservoir": {
+          "name": "Embalse"
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Área industrial"
+        },
+        "indoor/corridor_line": {
+          "name": "Pasiellu d'edificiu"
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Enllaz d'autoestrada",
+          "terms": ["salida", "accesu", "enllaz", "autoestrada"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Enllaz de carretera autonómica I",
+          "terms": ["salida", "accesu", "enllaz", "autonómica primaria", "autonómica naranxa"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Enllaz d'estrada nacional",
+          "terms": ["salida", "accesu", "enllaz", "nacional"]
+        },
+        "craft/locksmith": {
+          "name": "Cerraxería",
+          "terms": ["cerradura", "llaves"]
+        },
+        "craft/tailor": {
+          "name": "Sastrería",
+          "terms": ["sastre"]
+        },
+        "building/glasshouse": {
+          "name": "Ivernaderu",
+          "terms": ["cultivu", "plásticu"]
+        },
+        "building/house/detached": {
+          "name": "Casa aisllada"
+        },
+        "building/house/semi-detached": {
+          "name": "Casa semi-aisllada"
+        },
+        "boundary/administrative": {
+          "name": "Llende alministrativa"
+        },
+        "amenity/bus_station": {
+          "name": "Estación / Terminal d'autobuses"
+        },
+        "amenity/coworking_space": {
+          "name": "Espaciu de trabayu compartíu"
+        },
+        "amenity/embassy": {
+          "name": "Embaxada",
+          "terms": ["embaxada", "consuláu", "representación diplomática"]
+        },
+        "aerialway/station": {
+          "name": "Estación de remonte"
+        },
+        "@templates/contact": {
+          "name": "Puntu"
+        },
+        "@templates/internet_access": {
+          "name": "Puntu"
+        },
+        "@templates/poi": {
+          "name": "Puntu"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Puntu"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Puntu"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Puntu"
+        },
+        "@templates/crossing/markings": {
+          "name": "Puntu"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Puntu"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Puntu"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Puntu"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Puntu"
         }
       }
     }

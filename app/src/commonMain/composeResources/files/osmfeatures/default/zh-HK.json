@@ -238,9 +238,6 @@
           "name": "外幣兌換",
           "terms": ["錢幣兌換", "換錢"]
         },
-        "amenity/bus_station": {
-          "name": "巴士總站"
-        },
         "amenity/cafe": {
           "name": "茶座",
           "terms": ["cafe", "㗎啡室", "㗎啡廳", "咖啡", "咖啡室", "咖啡廳", "茶座"]
@@ -320,14 +317,6 @@
         "amenity/community_centre/community_hall": {
           "name": "社区中心",
           "terms": ["社区", "街区", "居委", "社区交流中心", "社区活动中心", "中心", "活动", "会场", "会所", "文化", "娱乐"]
-        },
-        "amenity/community_centre/cultural_centre": {
-          "name": "文化宫",
-          "terms": ["文化", "活动", "交流", "艺术", "美术", "书法", "文艺", "中心", "会所", "会场", "宫"]
-        },
-        "amenity/community_centre/family_centre": {
-          "name": "亲子中心",
-          "terms": ["亲子", "家庭", "父子", "母子", "亲属", "中心", "交流", "活动", "娱乐"]
         },
         "amenity/community_centre/lgbtq": {
           "name": "LGBTQ+ 社區中心",
@@ -501,9 +490,6 @@
           "name": "駕駛訓練場",
           "terms": ["駕駛訓練場", "駕訓場"]
         },
-        "amenity/embassy": {
-          "name": "大使館"
-        },
         "amenity/events_venue": {
           "name": "活動場館",
           "terms": ["活動場館", "活動會場"]
@@ -574,9 +560,6 @@
         "amenity/fast_food/wings": {
           "name": "雞翅",
           "terms": ["雞翅", "速食雞翅"]
-        },
-        "amenity/ferry_terminal": {
-          "name": "渡輪碼頭"
         },
         "amenity/fire_station": {
           "name": "消防局",
@@ -710,16 +693,9 @@
           "name": "LGBTQ+ 夜總會",
           "terms": ["lgbtq+ 夜店", "lgbtq+ 夜總會"]
         },
-        "amenity/nursing_home": {
-          "name": "護養院"
-        },
         "amenity/parcel_locker": {
           "name": "包裹儲物櫃",
           "terms": ["智慧包裹櫃", "包裹保管箱"]
-        },
-        "amenity/parking": {
-          "name": "停車場",
-          "terms": ["car parking", "停車場", "泊車位", "泊車場", "停車位"]
         },
         "amenity/parking/multi-storey": {
           "name": "多層停車場",
@@ -1505,10 +1481,6 @@
           "name": "單人轉門",
           "terms": ["kissing gate", "單人轉門"]
         },
-        "barrier/lift_gate": {
-          "name": "升降柵欄",
-          "terms": ["升降柵欄", "遮斷柵欄", "升降桿", "遮斷機"]
-        },
         "barrier/log": {
           "name": "倒樹",
           "terms": ["倒樹"]
@@ -1566,13 +1538,6 @@
         },
         "barrier/yes": {
           "name": "障礙物 (未註明類型)"
-        },
-        "boundary": {
-          "name": "邊界"
-        },
-        "boundary/administrative": {
-          "name": "行政邊界",
-          "terms": ["administrative boundary", "行政區域界線", "行政區界", "行政界", "行政界線", "行政邊界"]
         },
         "boundary/hazard": {
           "name": "危险区域",
@@ -1838,9 +1803,6 @@
           "name": "建築的一部分",
           "terms": ["建築物的一部分", "建築的一部分", "建物的一部分"]
         },
-        "building_point": {
-          "name": "建築物"
-        },
         "cemetery/grave": {
           "name": "坟墓",
           "terms": ["坟", "墓", "陵", "冢"]
@@ -1848,14 +1810,6 @@
         "cemetery/sector": {
           "name": "公墓分區",
           "terms": ["公墓分區"]
-        },
-        "climbing/crag": {
-          "name": "攀岩点",
-          "terms": ["攀岩", "峭壁", "攀爬"]
-        },
-        "climbing/route": {
-          "name": "攀爬路线",
-          "terms": ["攀岩", "攀爬", "攀爬路线"]
         },
         "climbing/route_bottom": {
           "name": "攀岩路線起點",
@@ -1981,9 +1935,6 @@
           "name": "配匙店",
           "terms": ["鑰匙店", "鎖匙店"]
         },
-        "craft/locksmith": {
-          "name": "鎖匠"
-        },
         "craft/metal_construction": {
           "name": "金屬加工",
           "terms": ["金屬加工"]
@@ -2055,9 +2006,6 @@
         "craft/stonemason": {
           "name": "石匠",
           "terms": ["石工"]
-        },
-        "craft/tailor": {
-          "name": "裁縫"
         },
         "craft/tiler": {
           "name": "鋪瓦工",
@@ -2233,9 +2181,6 @@
           "name": "淺灘",
           "terms": ["水灘"]
         },
-        "ford_line": {
-          "name": "淺灘"
-        },
         "golf/bunker": {
           "name": "沙坑",
           "terms": ["sand trap", "沙坑"]
@@ -2328,14 +2273,6 @@
           "name": "分娩中心",
           "terms": ["birthing center", "留產所"]
         },
-        "healthcare/blood_donation": {
-          "name": "輸血中心",
-          "terms": ["捐血中心", "獻血中心"]
-        },
-        "healthcare/counselling": {
-          "name": "咨询中心",
-          "terms": ["卫生", "健康", "医学", "戒断", "成瘾", "戒毒", "营养", "保健", "咨询", "询问", "商讨", "交流", "沟通", "中心", "诊所", "医院"]
-        },
         "healthcare/dentist/orthodontics": {
           "name": "正畸医师",
           "terms": ["正畸", "牙齿", "口腔", "口腔外科", "颌面外科", "正畸科", "矫正"]
@@ -2359,10 +2296,6 @@
         "healthcare/optometrist": {
           "name": "視光師",
           "terms": ["optometrist", "視光師"]
-        },
-        "healthcare/physiotherapist": {
-          "name": "物理治療師",
-          "terms": ["physiotherapist", "物理治療師"]
         },
         "healthcare/podiatrist": {
           "name": "足病診療師",
@@ -2397,9 +2330,6 @@
         "highway/bus_guideway": {
           "name": "導軌巴士車道",
           "terms": ["導軌巴士車道"]
-        },
-        "highway/bus_stop": {
-          "name": "巴士站"
         },
         "highway/busway": {
           "name": "公交专用道",
@@ -2848,9 +2778,6 @@
           "name": "室內走廊",
           "terms": ["室內通道"]
         },
-        "indoor/corridor_line": {
-          "name": "室內走廊"
-        },
         "indoor/door": {
           "name": "室内屋门",
           "terms": ["室内", "户内", "内部", "屋内", "房门", "屋门", "门", "室内门"]
@@ -2890,9 +2817,6 @@
           "name": "水產養殖",
           "terms": ["aquaculture", "水產"]
         },
-        "landuse/basin": {
-          "name": "盆地"
-        },
         "landuse/brownfield": {
           "name": "棕地",
           "terms": ["brownfield", "棕地"]
@@ -2912,9 +2836,6 @@
           "name": "建设区域",
           "terms": ["建设区域", "建设", "建造", "在建", "施工", "工地", "承建"]
         },
-        "landuse/farm": {
-          "name": "農地"
-        },
         "landuse/farmland": {
           "name": "農地",
           "terms": ["農田", "稻田", "田", "耕地"]
@@ -2930,10 +2851,6 @@
         "landuse/forest": {
           "name": "人工林",
           "terms": ["人工林"]
-        },
-        "landuse/garages": {
-          "name": "车库用地",
-          "terms": ["車庫用地"]
         },
         "landuse/grass": {
           "name": "草地",
@@ -3027,9 +2944,6 @@
           "name": "植物苗圃",
           "terms": ["育苗場", "種苗場"]
         },
-        "landuse/pond": {
-          "name": "池塘"
-        },
         "landuse/quarry": {
           "name": "石礦場",
           "terms": ["quarry", "石礦場", "礦場", "採石場"]
@@ -3045,9 +2959,6 @@
         "landuse/religious": {
           "name": "宗教用地",
           "terms": ["religious area", "宗教設施用地"]
-        },
-        "landuse/reservoir": {
-          "name": "水塘"
         },
         "landuse/residential": {
           "name": "住宅區",
@@ -3534,9 +3445,6 @@
           "name": "撑杆跳跑道",
           "terms": ["撑杆跳", "跳高", "跑道"]
         },
-        "leisure/track/athletics/running": {
-          "name": "緩跑徑"
-        },
         "leisure/track/athletics/sprint": {
           "name": "短跑跑道",
           "terms": ["短跑跑道"]
@@ -3998,10 +3906,6 @@
           "name": "軍事檢查站",
           "terms": ["軍事檢查站"]
         },
-        "military/nuclear_explosion_site": {
-          "name": "核爆場地",
-          "terms": ["nuclear explosion site", "核子爆炸場址", "核子試爆場"]
-        },
         "military/office": {
           "name": "軍事辦公室",
           "terms": ["military office", "軍事辦公室"]
@@ -4410,9 +4314,6 @@
           "name": "律師事務所",
           "terms": ["law office", "律師事務所"]
         },
-        "office/lawyer/notary": {
-          "name": "公證行"
-        },
         "office/moving_company": {
           "name": "搬家公司",
           "terms": ["搬家", "搬床", "搬场", "动迁", "装修"]
@@ -4479,9 +4380,6 @@
         "office/translator": {
           "name": "譯者辦公室",
           "terms": ["翻譯辦公室"]
-        },
-        "office/travel_agent": {
-          "name": "旅行社"
         },
         "office/union": {
           "name": "工會",
@@ -4852,8 +4750,7 @@
           "terms": ["transformer", "火牛房", "變電所"]
         },
         "public_transport/platform": {
-          "name": "月台",
-          "terms": ["月台", "等候區"]
+          "name": "月台"
         },
         "public_transport/platform/aerialway": {
           "name": "纜車等候區",
@@ -4926,12 +4823,10 @@
           "terms": ["無軌電車站牌", "無軌電車站", "無軌電車停靠站"]
         },
         "public_transport/platform_point": {
-          "name": "公共運輸站 / 月台",
-          "terms": ["停靠點 / 等候區", "停靠站 / 月台", "車站 / 月台", "車站 / 等候區"]
+          "name": "公共運輸站 / 月台"
         },
         "public_transport/station": {
-          "name": "公共運輸站",
-          "terms": ["客運站", "車站", "航廈", "碼頭"]
+          "name": "公共運輸站"
         },
         "public_transport/station_aerialway": {
           "name": "纜車站",
@@ -4978,8 +4873,7 @@
           "terms": ["transit stop area", "交通工具停站範圍"]
         },
         "public_transport/stop_position": {
-          "name": "交通工具停止位置",
-          "terms": ["transit stopping location", "交通工具停止位置"]
+          "name": "交通工具停止位置"
         },
         "public_transport/stop_position_aerialway": {
           "name": "纜車停止位置",
@@ -5044,9 +4938,6 @@
           "name": "地面纜車軌道",
           "terms": ["地面纜車軌道"]
         },
-        "railway/halt": {
-          "name": "客運站 (小站 / 招呼站)"
-        },
         "railway/level_crossing": {
           "name": "铁路道路交叉口",
           "terms": ["平交道口"]
@@ -5075,9 +4966,6 @@
           "name": "窄軌鐵路路軌",
           "terms": ["窄軌鐵路軌道"]
         },
-        "railway/platform": {
-          "name": "火車月台"
-        },
         "railway/preserved": {
           "name": "歷史鐵路路軌",
           "terms": ["保存鐵路", "保存路線", "保存線", "觀光鐵路", "觀光路線", "觀光線"]
@@ -5097,9 +4985,6 @@
         "railway/signal": {
           "name": "鐵路訊號",
           "terms": ["railway signal", "鐵道信號", "鐵路信號"]
-        },
-        "railway/station": {
-          "name": "火車站"
         },
         "railway/subway": {
           "name": "地鐵路軌",
@@ -5155,10 +5040,6 @@
         "roller_coaster/track": {
           "name": "雲霄飛車軌道",
           "terms": ["雲霄飛車軌道"]
-        },
-        "route/ferry": {
-          "name": "渡輪航綫",
-          "terms": ["ferry route", "渡輪航線", "航綫", "航線"]
         },
         "seamark": {
           "name": "航海標"
@@ -6264,10 +6145,6 @@
           "name": "管道路綫",
           "terms": ["pipeline route", "供水路綫", "供水路線", "水管路綫", "管道路線"]
         },
-        "type/route/power": {
-          "name": "供電路綫",
-          "terms": ["power route", "供電路綫", "供電路線"]
-        },
         "type/route/railway": {
           "name": "铁路线路",
           "terms": ["鐵路路線"]
@@ -6390,6 +6267,255 @@
         "waterway/weir": {
           "name": "塘堰",
           "terms": ["weir", "堤堰", "堤壩", "堰", "壩", "塘堰", "導流壩"]
+        },
+        "boundary": {
+          "name": "邊界",
+          "terms": ["boundary", "界", "邊界"]
+        },
+        "building_point": {
+          "name": "建築物",
+          "terms": ["building", "屋宇", "建築物"]
+        },
+        "ford_line": {
+          "name": "淺灘",
+          "terms": ["水灘"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "限速標誌",
+          "terms": ["速限標誌", "速限"]
+        },
+        "shop/ice_cream": {
+          "name": "雪榚店",
+          "terms": ["ice cream", "雪榚店", "冰淇淋店"]
+        },
+        "route/ferry": {
+          "name": "渡輪航線",
+          "terms": ["ferry route", "渡輪航線", "航綫"]
+        },
+        "railway/halt": {
+          "name": "客運站 (小站 / 招呼站)",
+          "terms": ["鐵路車站 (小站 / 招呼站)"]
+        },
+        "railway/platform": {
+          "name": "火車月台",
+          "terms": ["鐵路月台"]
+        },
+        "railway/station": {
+          "name": "火車站",
+          "terms": ["鐵路站建築物"]
+        },
+        "office/travel_agent": {
+          "name": "旅行社",
+          "terms": ["travel agency", "旅行社"]
+        },
+        "office/lawyer/notary": {
+          "name": "公證行",
+          "terms": ["notary office", "公證人"]
+        },
+        "natural/wood_point": {
+          "name": "天然樹林",
+          "terms": ["自然林", "自然林地"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "緩跑徑",
+          "terms": ["跑道", "徑賽跑道", "標準跑道"]
+        },
+        "landuse/basin": {
+          "name": "盆地",
+          "terms": ["basin", "水池", "盆地"]
+        },
+        "landuse/reservoir": {
+          "name": "水塘",
+          "terms": ["reservoir", "水塘", "水庫", "貯水庫"]
+        },
+        "landuse/military/danger_area_point": {
+          "name": "军事警戒区",
+          "terms": ["军事", "军队", "部队", "警戒", "戒备", "危险", "危机", "射击", "炮击"]
+        },
+        "landuse/industrial/brewery": {
+          "name": "啤酒工厂",
+          "terms": ["工业啤酒厂", "啤酒厂"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "工業區",
+          "terms": ["工業區", "工業村", "工業邨"]
+        },
+        "indoor/corridor_line": {
+          "name": "室內走廊",
+          "terms": ["室內通道"]
+        },
+        "highway/bus_stop": {
+          "name": "巴士站",
+          "terms": ["bus stop", "公交車站", "公共汽車站", "巴士站"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "賽車賽道",
+          "terms": ["賽車賽道"]
+        },
+        "highway/traffic_sign": {
+          "name": "交通標誌",
+          "terms": ["交通標誌"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "快速公路連接路",
+          "terms": ["motorway link", "高速公路匝道", "高速公路引道", "高速公路駁路", "高速公路連接路"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "市區幹道連接路",
+          "terms": ["primary link", "主要道路匝道", "主要道路連接路", "大路駁路"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "幹線連接路",
+          "terms": ["trunk link", "幹線道路匝道", "幹道連接路", "幹道駁路"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "自行車道與步道",
+          "terms": ["自行車道與步道"]
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "腳踏車與行人庇護島",
+          "terms": ["腳踏車與行人庇護島"]
+        },
+        "highway/path/crossing/informal": {
+          "name": "非正式行人穿越道"
+        },
+        "highway/path/crossing/marked": {
+          "name": "有標線的自行車與行人穿越道"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "自行車與行人穿越道",
+          "terms": ["自行车", "步行", "人行", "过街", "横道"]
+        },
+        "highway/footway/crossing/informal": {
+          "name": "非正式行人穿越道"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "有標線的行人穿越道",
+          "terms": ["有標線的行人穿越道"]
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "有標線的行人穿越道",
+          "terms": ["有標線的行人穿越道"]
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "有標線的自行車穿越道",
+          "terms": ["有標線的自行車穿越道"]
+        },
+        "highway/crossing/marked": {
+          "name": "有標線的行人穿越道",
+          "terms": ["有標線的行人穿越道"]
+        },
+        "highway/crossing/zebra": {
+          "name": "有標線的行人穿越道",
+          "terms": ["有標線的行人穿越道"]
+        },
+        "craft/locksmith": {
+          "name": "鎖匠",
+          "terms": ["locksmith", "鎖匠", "鎖匠鋪", "開鎖佬"]
+        },
+        "craft/tailor": {
+          "name": "裁縫",
+          "terms": ["裁縫", "改衣"]
+        },
+        "climbing/crag": {
+          "name": "攀岩点",
+          "terms": ["攀岩", "峭壁", "攀爬"]
+        },
+        "climbing/route": {
+          "name": "攀爬路线",
+          "terms": ["攀岩", "攀爬", "攀爬路线"]
+        },
+        "building/entrance": {
+          "name": "入口／出口",
+          "terms": ["入口 / 出口"]
+        },
+        "building/glasshouse": {
+          "name": "溫室",
+          "terms": ["溫室"]
+        },
+        "building/house/detached": {
+          "name": "獨立屋",
+          "terms": ["獨立式住宅", "獨立式房子", "獨立式房屋"]
+        },
+        "building/house/semi-detached": {
+          "name": "半獨立屋",
+          "terms": ["半獨立式住宅", "半獨立式房子", "半獨立式房屋"]
+        },
+        "building/house/terrace": {
+          "name": "連棟透天厝",
+          "terms": ["連棟透天厝"]
+        },
+        "boundary/administrative": {
+          "name": "行政邊界",
+          "terms": ["administrative boundary", "行政界線", "行政邊界"]
+        },
+        "amenity/bus_station": {
+          "name": "巴士站／總站",
+          "terms": ["公車轉運站", "公車總站"]
+        },
+        "amenity/coworking_space": {
+          "name": "共同工作空間",
+          "terms": ["coworking space", "共用工作空間"]
+        },
+        "amenity/embassy": {
+          "name": "大使館",
+          "terms": ["embassy", "使館", "大使館", "領事館"]
+        },
+        "amenity/ferry_terminal": {
+          "name": "渡輪碼頭",
+          "terms": ["客運碼頭", "客運渡輪碼頭", "渡輪碼頭"]
+        },
+        "amenity/nursing_home": {
+          "name": "護養院",
+          "terms": ["nursing home", "療養院"]
+        },
+        "aerialway/station": {
+          "name": "纜車站",
+          "terms": ["纜車車站"]
+        },
+        "@templates/contact": {
+          "name": "點",
+          "terms": ["point", "點"]
+        },
+        "@templates/internet_access": {
+          "name": "點",
+          "terms": ["point", "點"]
+        },
+        "@templates/poi": {
+          "name": "點",
+          "terms": ["point", "點"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "點",
+          "terms": ["point", "點"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "點",
+          "terms": ["point", "點"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "點",
+          "terms": ["point", "點"]
+        },
+        "@templates/crossing/markings": {
+          "name": "點",
+          "terms": ["point", "點"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "點",
+          "terms": ["point", "點"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "點",
+          "terms": ["point", "點"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "點",
+          "terms": ["point", "點"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "點",
+          "terms": ["point", "點"]
         }
       }
     }

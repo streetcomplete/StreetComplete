@@ -469,7 +469,6 @@ Ako duž cijele ulice nema znakova koji se odnose na istaknuti odjeljak, primjen
     <string name="underground">ispod površine</string>
     <string name="quest_sidewalk_value_yes">Ima trotoar</string>
     <string name="quest_sidewalk_value_no">Nema trotoar</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Je li pješacima zabranjeno hodati cestom ovdje?</string>
     <string name="quest_buildingType_title">O kakvoj je zgradi riječ?</string>
     <string name="pref_title_theme_select">Odaberite temu</string>
     <string name="theme_light">Svjetla</string>
@@ -671,7 +670,6 @@ Imajte na umu da ova aplikacija pita za kućni broj zgrade tek nakon što se utv
     <string name="at_housenumber">kućni broj %1$s</string>
     <string name="quest_openingHours_add_off_days">Dodaj neradne dane</string>
     <string name="quest_openingHours_off_day">Neradni dani</string>
-    <string name="quest_cycleway_resurvey_title">Je li ovo još uvijek situacija s biciklističkom stazom?</string>
     <string name="pref_title_resurvey_intervals">Interval ponavljanja istraživanja</string>
     <string name="resurvey_intervals_less_often">Pitaj rjeđe</string>
     <string name="resurvey_intervals_default">Uobičajeno</string>
@@ -883,7 +881,6 @@ Ako ste preopterećeni brojem zadataka, u postavkama uvijek možete izmijeniti k
     <string name="quest_access_yes">Bilo tko</string>
     <string name="quest_access_customers">Svaka osoba koja posjećuje određeno mjesto (npr. samo kupci)</string>
     <string name="quest_access_private">Samo pojedinci s posebnom dozvolom</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Jesu li vremena prikupljanja ovog poštanskog sandučića još uvijek ispravna?</string>
     <string name="quest_bicycle_barrier_type_title">Kakva je ovo vrsta biciklističke barijere?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Dijagonalna u odnosu na stazu</string>
     <string name="quest_barrier_bicycle_type_tilted">Uski prolaz, koji se sužava prema vrhu</string>
@@ -920,8 +917,6 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)</string>
     <string name="quest_fireHydrant_position_sidewalk">Na nogostupu</string>
     <string name="quest_fireHydrant_position_parking_lot">Na parkirnom mjestu</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Da (ostavi bilješku)</string>
-    <string name="quest_smoothness_square_title">Kakva je kvaliteta površine ovog trga?</string>
-    <string name="quest_smoothness_road_title">Kakva je kvaliteta površine cesta ovdje?</string>
     <string name="quest_smoothness_title_excellent">Glatka i ravna</string>
     <string name="quest_smoothness_title_good">Uglavnom ravna</string>
     <string name="quest_smoothness_title_intermediate">Malo kvrgava</string>
@@ -974,7 +969,6 @@ Alternativno, možete ostaviti bilješku (sa fotografijom)</string>
     <string name="ar_core_tracking_error_camera_unavailable">Kameru koristi druga aplikacija</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Držač upravljača</string>
     <string name="quest_bicycle_parking_access_title2">Tko ovdje smije parkirati bicikl? Parking može biti sa ili bez naplate.</string>
-    <string name="quest_playground_access_title2">Tko smije koristiti ovo igralište?</string>
     <string name="ar_measure">Mjerenje</string>
     <string name="ar_core_tracking_error_too_steep_angle">Previše strm kut, malo se odmaknite</string>
     <string name="default_disabled_msg_no_ar">Za rješavanje ovog zadatka potrebna vam je mjerna traka jer ovaj uređaj ne podržava mjerenje korištenja kamere.</string>

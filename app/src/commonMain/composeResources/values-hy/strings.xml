@@ -440,7 +440,6 @@
     <string name="underground">ստորգետնյա</string>
     <string name="quest_sidewalk_value_yes">մայթ</string>
     <string name="quest_sidewalk_value_no">ոչ մի մայթ</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Արդյոք հետիոտները արգելվում են այստեղ քայլել այս ճանապարհով:</string>
     <string name="quest_buildingType_title">Ինչպիսի շենք է սա:</string>
     <string name="pref_title_theme_select">Ընտրեք թեման</string>
     <string name="theme_light">Լապտեր</string>
@@ -646,7 +645,6 @@
     <string name="at_housenumber">Տան համարը %1$s</string>
     <string name="quest_openingHours_add_off_days">Ավելացնել օրեր</string>
     <string name="quest_openingHours_off_day">Անշարժ</string>
-    <string name="quest_cycleway_resurvey_title">Սա դեռ այստեղ ցիկլի ճանապարհի իրավիճակն է:</string>
     <string name="pref_title_resurvey_intervals">Վերականգնել ընդմիջումներով</string>
     <string name="resurvey_intervals_less_often">Ավելի քիչ հարցրեք</string>
     <string name="resurvey_intervals_default">Լռելյայն</string>
@@ -858,7 +856,6 @@
     <string name="quest_access_yes">Ընդհանուր հասարակության ցանկացած անդամ</string>
     <string name="quest_access_customers">Հատուկ տեղ է այցելում ցանկացած անձ (միայն E.G. Հաճախորդներ)</string>
     <string name="quest_access_private">Միայն անհատական ​​(ներ), թույլտվությամբ</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Այս փոստարկղի հավաքածուները դեռ ճիշտ են:</string>
     <string name="quest_bicycle_barrier_type_title">Ինչ տեսակի հեծանիվ պատնեշ է սա:</string>
     <string name="quest_barrier_bicycle_type_diagonal">Անկյունագիծ դեպի ուղին</string>
     <string name="quest_barrier_bicycle_type_tilted">Նեղ անցում, ավելի փոքր դեպի վերեւ</string>
@@ -895,8 +892,6 @@
     <string name="quest_fireHydrant_position_sidewalk">Մայթին</string>
     <string name="quest_fireHydrant_position_parking_lot">Կայանատեղիում</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Այո (թողեք նշում)</string>
-    <string name="quest_smoothness_square_title">Որն է այս հրապարակի մակերեսային որակը:</string>
-    <string name="quest_smoothness_road_title">Որն է այստեղ այս ճանապարհի մակերեսային որակը:</string>
     <string name="quest_smoothness_title_excellent">Հարթ եւ նույնիսկ</string>
     <string name="quest_smoothness_title_good">Հիմնականում նույնիսկ</string>
     <string name="quest_smoothness_title_intermediate">Մի փոքր խճճված</string>
@@ -949,7 +944,6 @@
     <string name="ar_core_tracking_error_camera_unavailable">Տեսախցիկը օգտագործվում է մեկ այլ հավելվածի կողմից</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Handlebar Holder</string>
     <string name="quest_bicycle_parking_access_title2">Ով է թույլատրվում այստեղ հեծանիվ կայանել: Ավտոկանգառը կարող է լինել անվճար կամ վճարովի:</string>
-    <string name="quest_playground_access_title2">Ով է թույլատրվում օգտագործել այս խաղահրապարակը:</string>
     <string name="ar_measure">Չափանիշ</string>
     <string name="ar_core_tracking_error_too_steep_angle">Չափազանց կտրուկ անկյուն, մի փոքր հեռու</string>
     <string name="default_disabled_msg_no_ar">Այս որոնման լուծման համար ձեզ հարկավոր է ժապավենի միջոց, քանի որ տեսախցիկի չափումը չի ապահովվում այս սարքի վրա:</string>
@@ -1005,7 +999,6 @@
     <string name="quest_lit_title">Այն լուսավորված է այստեղ:</string>
     <string name="quest_openingHours_title">Որոնք են այստեղ բացման ժամերը:</string>
     <string name="quest_openingHours_signed_title">Այստեղ ստորագրվել են բացման ժամերը:</string>
-    <string name="quest_openingHours_resurvey_title">Արդյոք այս բացման ժամերը դեռ ճիշտ են:</string>
     <string name="quest_placeName_title">Որն է այս վայրի անվանումը:</string>
     <string name="quest_shop_type_title2">Ինչպիսի խանութ է սա:</string>
     <string name="quest_smoking_title2">Այստեղ ծխելը թույլատրվում է:</string>

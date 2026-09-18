@@ -184,9 +184,6 @@
         "amenity/bureau_de_change": {
           "name": "Мењачница"
         },
-        "amenity/bus_station": {
-          "name": "Аутобуска станица"
-        },
         "amenity/cafe": {
           "name": "Кафић",
           "terms": ["kafić", "кафе", "бистро", "кафа", "чај", "фука", "фићка", "kafе", "kafic", "bistro", "kafa", "čaj", "caj", "fuka", "fićka", "ficka"]
@@ -245,12 +242,6 @@
         },
         "amenity/community_centre/community_hall": {
           "name": "Друштвени центар"
-        },
-        "amenity/community_centre/cultural_centre": {
-          "name": "Културни центар"
-        },
-        "amenity/community_centre/family_centre": {
-          "name": "Породични центар"
         },
         "amenity/community_centre/lgbtq": {
           "name": "ЛГБТК+ културни центар"
@@ -382,9 +373,6 @@
           "name": "Полигон за обуку возача",
           "terms": ["терен за обуку возача", "центар за обуку возача"]
         },
-        "amenity/embassy": {
-          "name": "Амбасада"
-        },
         "amenity/events_venue": {
           "name": "Свечана сала",
           "terms": ["место догађаја"]
@@ -435,9 +423,6 @@
         },
         "amenity/fast_food/wings": {
           "name": "Брза храна пилећих крилаца"
-        },
-        "amenity/ferry_terminal": {
-          "name": "Терминал за трајект"
         },
         "amenity/fire_station": {
           "name": "Ватрогасна станица"
@@ -532,15 +517,8 @@
           "name": "ЛГБТК+ ноћни клуб",
           "terms": ["лгбт+ ноћни клуб", "лгбт ноћни клуб"]
         },
-        "amenity/nursing_home": {
-          "name": "Старачки дом"
-        },
         "amenity/parcel_locker": {
           "name": "Пакетомат"
-        },
-        "amenity/parking": {
-          "name": "Паркиралиште",
-          "terms": ["паркинг", "parking"]
         },
         "amenity/parking/multi-storey": {
           "name": "Вишеспратна јавна гаража"
@@ -1097,9 +1075,6 @@
         "barrier/kissing_gate": {
           "name": "Капија са двоје врата"
         },
-        "barrier/lift_gate": {
-          "name": "Браник"
-        },
         "barrier/log": {
           "name": "Пало дрво"
         },
@@ -1146,12 +1121,6 @@
         },
         "barrier/yes": {
           "name": "Препрека (неодређеног типа)"
-        },
-        "boundary": {
-          "name": "Граница"
-        },
-        "boundary/administrative": {
-          "name": "Административна граница"
         },
         "boundary/hazard": {
           "name": "Опасно подручје"
@@ -1225,9 +1194,6 @@
         "building/dormitory": {
           "name": "Студентски дом",
           "terms": ["спаваоница", "студентски дом"]
-        },
-        "building/entrance": {
-          "name": "Улаз/излаз"
         },
         "building/farm": {
           "name": "Сеоска кућа"
@@ -1373,9 +1339,6 @@
         "building_part": {
           "name": "Део зграде"
         },
-        "building_point": {
-          "name": "Зграда"
-        },
         "cemetery/grave": {
           "name": "Гроб"
         },
@@ -1462,9 +1425,6 @@
         "craft/key_cutter": {
           "name": "Нарезивање кључева"
         },
-        "craft/locksmith": {
-          "name": "Бравар"
-        },
         "craft/metal_construction": {
           "name": "Металостругар"
         },
@@ -1523,9 +1483,6 @@
         },
         "craft/stonemason": {
           "name": "Каменорезац"
-        },
-        "craft/tailor": {
-          "name": "Kројач"
         },
         "craft/tiler": {
           "name": "Керамичар"
@@ -1649,9 +1606,6 @@
           "name": "Газ",
           "terms": ["газ", "плићак", "путни газ", "путни плићак"]
         },
-        "ford_line": {
-          "name": "Газ"
-        },
         "golf/bunker": {
           "name": "Пешчана замка"
         },
@@ -1722,12 +1676,6 @@
         "healthcare/birthing_center": {
           "name": "Породилиште"
         },
-        "healthcare/blood_donation": {
-          "name": "Место за давање крви"
-        },
-        "healthcare/counselling": {
-          "name": "Саветовалиште"
-        },
         "healthcare/dentist/orthodontics": {
           "name": "Ортодонт"
         },
@@ -1745,9 +1693,6 @@
         },
         "healthcare/optometrist": {
           "name": "Оптометриста"
-        },
-        "healthcare/physiotherapist": {
-          "name": "Физиотерапеут"
         },
         "healthcare/podiatrist": {
           "name": "Подиатрист"
@@ -1773,9 +1718,6 @@
         },
         "highway/bus_guideway": {
           "name": "Аутобуска вођица"
-        },
-        "highway/bus_stop": {
-          "name": "Аутобуско стајалиште"
         },
         "highway/busway": {
           "name": "Аутобуска трака"
@@ -2005,7 +1947,7 @@
           "name": "Отворена путарина"
         },
         "highway/track": {
-          "name": "Пољски / шумски пут",
+          "name": "Колски пут",
           "terms": ["пољски пут", "шумски пут", "колски пут"]
         },
         "highway/traffic_mirror": {
@@ -2112,9 +2054,6 @@
         "indoor/corridor": {
           "name": "Унутрашњи ходник"
         },
-        "indoor/corridor_line": {
-          "name": "Унутрашњи ходник"
-        },
         "indoor/door": {
           "name": "Унутрашња врата"
         },
@@ -2147,9 +2086,6 @@
         "landuse/aquaculture": {
           "name": "Аквакултура"
         },
-        "landuse/basin": {
-          "name": "Басен"
-        },
         "landuse/brownfield": {
           "name": "Браунфилд",
           "terms": ["запуштена локација", "запуштено место", "запуштена фабрика"]
@@ -2166,9 +2102,6 @@
         },
         "landuse/construction": {
           "name": "Градилиште"
-        },
-        "landuse/farm": {
-          "name": "Пољопривредно земљиште"
         },
         "landuse/farmland": {
           "name": "Пољопривредно земљиште"
@@ -2254,9 +2187,6 @@
           "name": "Расадник",
           "terms": ["расадник", "расадник биљака", "биљни расадник"]
         },
-        "landuse/pond": {
-          "name": "Језерце"
-        },
         "landuse/quarry": {
           "name": "Каменолом"
         },
@@ -2268,9 +2198,6 @@
         },
         "landuse/religious": {
           "name": "Верска област"
-        },
-        "landuse/reservoir": {
-          "name": "Резервоар"
         },
         "landuse/residential": {
           "name": "Стамбена област"
@@ -2625,9 +2552,6 @@
         "leisure/track/athletics/pole_vault": {
           "name": "Стаза за скок са мотком"
         },
-        "leisure/track/athletics/running": {
-          "name": "Тркачка стаза"
-        },
         "leisure/track/athletics/sprint": {
           "name": "Спринт стаза"
         },
@@ -2951,10 +2875,6 @@
         "military/checkpoint": {
           "name": "Војно контролно место"
         },
-        "military/nuclear_explosion_site": {
-          "name": "Место нуклеарне експлозије",
-          "terms": ["место нуклеарне експлозије"]
-        },
         "military/office": {
           "name": "Војна канцеларија"
         },
@@ -3256,9 +3176,6 @@
         "office/lawyer": {
           "name": "Адвокатска канцеларија"
         },
-        "office/lawyer/notary": {
-          "name": "Нотарска канцеларија"
-        },
         "office/moving_company": {
           "name": "Служба за селидбу"
         },
@@ -3306,9 +3223,6 @@
         },
         "office/therapist": {
           "name": "Терапеутска канцеларија"
-        },
-        "office/travel_agent": {
-          "name": "Туристичка агенција"
         },
         "office/union": {
           "name": "Синдикат"
@@ -3729,9 +3643,6 @@
         "railway/funicular": {
           "name": "Пруга успињаче"
         },
-        "railway/halt": {
-          "name": "Железничка станица (на захтев)"
-        },
         "railway/level_crossing": {
           "name": "Укрштање пута и железничке пруге"
         },
@@ -3753,9 +3664,6 @@
         "railway/narrow_gauge": {
           "name": "Ускоколосечна пруга"
         },
-        "railway/platform": {
-          "name": "Железнички перон"
-        },
         "railway/preserved": {
           "name": "Историјска пруга"
         },
@@ -3772,9 +3680,6 @@
         },
         "railway/signal": {
           "name": "Железнички сигнал"
-        },
-        "railway/station": {
-          "name": "Железничка станица"
         },
         "railway/subway": {
           "name": "Метро пруга"
@@ -3808,9 +3713,6 @@
         },
         "relation": {
           "name": "Однос"
-        },
-        "route/ferry": {
-          "name": "Линија трајекта"
         },
         "seamark/buoy_lateral": {
           "name": "Каналска бова",
@@ -4624,9 +4526,6 @@
         "type/route/pipeline": {
           "name": "Цевоводна путања"
         },
-        "type/route/power": {
-          "name": "Високонапонска путања"
-        },
         "type/route/railway": {
           "name": "Траса железничке пруге"
         },
@@ -4712,6 +4611,184 @@
         "waterway/weir": {
           "name": "Преливник",
           "terms": ["брана", "устава", "врша", "преплавна брана", "преливник", "преграда за воду"]
+        },
+        "boundary": {
+          "name": "Граница"
+        },
+        "building_point": {
+          "name": "Зграда",
+          "terms": ["објекат"]
+        },
+        "ford_line": {
+          "name": "Газ",
+          "terms": ["газ", "плићак", "путни газ", "путни плићак"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Ограничење брзине"
+        },
+        "shop/ice_cream": {
+          "name": "Сладоледџиница"
+        },
+        "route/ferry": {
+          "name": "Линија трајектна"
+        },
+        "railway/halt": {
+          "name": "Железничка станица (на захтев)"
+        },
+        "railway/platform": {
+          "name": "Железнички перон"
+        },
+        "railway/station": {
+          "name": "Железничка станица"
+        },
+        "office/travel_agent": {
+          "name": "Туристичка агенција"
+        },
+        "office/lawyer/notary": {
+          "name": "Нотарска канцеларија"
+        },
+        "natural/wood_point": {
+          "name": "Природна шума"
+        },
+        "leisure/track/athletics/running": {
+          "name": "Тркачка стаза"
+        },
+        "landuse/basin": {
+          "name": "Басен"
+        },
+        "landuse/reservoir": {
+          "name": "Резервоар"
+        },
+        "landuse/industrial/brewery": {
+          "name": "Индустријска пивара",
+          "terms": ["индустријска пивара", "пиво", "пивара", "фабрика пива"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Индустријска област"
+        },
+        "indoor/corridor_line": {
+          "name": "Унутрашњи ходник"
+        },
+        "highway/bus_stop": {
+          "name": "Аутобуско стајалиште"
+        },
+        "highway/raceway_unspecific": {
+          "name": "Тркачка стаза"
+        },
+        "highway/traffic_sign": {
+          "name": "Саобраћајни знак"
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Укључење на аутопут",
+          "terms": ["прилаз аутопуту", "укључење на аутопут"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Укључење на примарни пут"
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Укључење на брзи пут"
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Пешачка и бициклистичка стаза"
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "Пешачко и бициклистичко острво"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Пешачки и бициклистички прелаз"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Обележени пешачки прелаз"
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Обележени пешачки прелаз"
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Обележени бициклистички прелаз"
+        },
+        "highway/crossing/marked": {
+          "name": "Обележени пешачки прелаз"
+        },
+        "highway/crossing/zebra": {
+          "name": "Обележени пешачки прелаз"
+        },
+        "craft/locksmith": {
+          "name": "Бравар"
+        },
+        "craft/tailor": {
+          "name": "Kројач"
+        },
+        "building/entrance": {
+          "name": "Улаз/излаз"
+        },
+        "building/glasshouse": {
+          "name": "Стаклена башта",
+          "terms": ["стаклена башта", "стакленик"]
+        },
+        "building/house/detached": {
+          "name": "Самостојећа кућа",
+          "terms": ["одвојена кућа", "самостојећа кућа"]
+        },
+        "building/house/semi-detached": {
+          "name": "Двојна кућа"
+        },
+        "building/house/terrace": {
+          "name": "Ред редних кућа"
+        },
+        "boundary/administrative": {
+          "name": "Административна граница"
+        },
+        "amenity/bus_station": {
+          "name": "Аутобуска станица"
+        },
+        "amenity/coworking_space": {
+          "name": "Дељени радни простор"
+        },
+        "amenity/embassy": {
+          "name": "Амбасада"
+        },
+        "amenity/ferry_terminal": {
+          "name": "Трајектни терминал"
+        },
+        "amenity/nursing_home": {
+          "name": "Старачки дом",
+          "terms": ["старачки дом", "дом за старе"]
+        },
+        "aerialway/station": {
+          "name": "Станица жичаре"
+        },
+        "@templates/contact": {
+          "name": "Чвор"
+        },
+        "@templates/internet_access": {
+          "name": "Чвор"
+        },
+        "@templates/poi": {
+          "name": "Чвор"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Чвор"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Чвор"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Чвор"
+        },
+        "@templates/crossing/markings": {
+          "name": "Чвор"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Чвор"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Чвор"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Чвор"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Чвор"
         }
       }
     }

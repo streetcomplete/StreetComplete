@@ -468,7 +468,6 @@ Kısmen tekerlekli sandalyenin tuvalete girip kullanabileceği anlamına gelir, 
     <string name="underground">Yer altı</string>
     <string name="quest_sidewalk_value_yes">Kaldırım var</string>
     <string name="quest_sidewalk_value_no">Kaldırım yok</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Yayaların bu yolda yürümesi yasak mı?</string>
     <string name="quest_buildingType_title">Bu nasıl bir bina?</string>
     <string name="pref_title_theme_select">Tema seçin</string>
     <string name="theme_light">Aydınlık</string>
@@ -672,7 +671,6 @@ seviyeleri</string>
     <string name="at_housenumber">ev numarası %1$s</string>
     <string name="quest_openingHours_add_off_days">Kapalı günleri ekle</string>
     <string name="quest_openingHours_off_day">Kapalı Günler</string>
-    <string name="quest_cycleway_resurvey_title">Burada hâla bisiklet yolu var mı?</string>
     <string name="pref_title_resurvey_intervals">Anket tekrarı sıklığı</string>
     <string name="resurvey_intervals_less_often">Daha seyrek</string>
     <string name="resurvey_intervals_default">Varsayılan</string>
@@ -883,7 +881,6 @@ Eğer görevlerin sayısı seni bunalttıysa ayarlardan kaç tanesinin gözükec
     <string name="quest_access_yes">Toplumun herhangi bir bireyi</string>
     <string name="quest_access_customers">Bir yeri ziyaret eden belirli kişiler (örn. sadece müşteriler)</string>
     <string name="quest_access_private">Sadece izni olan bireyler</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Bu toplama kutusunun toplanma saatleri hâlâ aynı mı?</string>
     <string name="quest_bicycle_barrier_type_title">Bu ne tür bir bisiklet engeli?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Patikaya göre çapraz</string>
     <string name="quest_barrier_bicycle_type_tilted">Dar giriş, Sona doğru küçülüyor</string>
@@ -920,8 +917,6 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber).</string>
     <string name="quest_fireHydrant_position_sidewalk">Yürüme yolu üzerinde</string>
     <string name="quest_fireHydrant_position_parking_lot">Park yeri üzerinde</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Evet (not bırak)</string>
-    <string name="quest_smoothness_square_title">Bu meydanın yüzey kalitesi nedir?</string>
-    <string name="quest_smoothness_road_title">Buradaki yolun yüzey kalitesi nedir?</string>
     <string name="quest_smoothness_title_excellent">Pürüzsüz ve düz</string>
     <string name="quest_smoothness_title_good">Çoğunlukla düz</string>
     <string name="quest_smoothness_title_intermediate">Biraz tümsekli</string>
@@ -974,7 +969,6 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Kamera başka bir uygulama tarafından kullanılıyor</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Gidon tutucu</string>
     <string name="quest_bicycle_parking_access_title2">Kimler buraya bisikletini park edebilir, ücretli veya ücretsiz?</string>
-    <string name="quest_playground_access_title2">Kimler bu parkı kullanabilir?</string>
     <string name="ar_measure">Ölçü</string>
     <string name="ar_core_tracking_error_too_steep_angle">Çok yakın, biraz uzaklaşın</string>
     <string name="default_disabled_msg_no_ar">Bu soruyu çözmek için bir mezuraya ihtiyacın olacak çünkü cihazın kamera ile ölçüm yapmayı desteklemiyor.</string>
@@ -1030,7 +1024,6 @@ Alternatif olarak, bir not bırakabilirsin (fotoğrafla beraber).</string>
     <string name="quest_lit_title">Burası gece aydınlık mı?</string>
     <string name="quest_openingHours_title">Buranın açılış saatleri nedir?</string>
     <string name="quest_openingHours_signed_title">Buranın mesai saatleri kapıda yazılı mı?</string>
-    <string name="quest_openingHours_resurvey_title">Bu açılış saatleri hala doğru mudur?</string>
     <string name="quest_placeName_title">Bu yerin adı nedir?</string>
     <string name="quest_shop_type_title2">Bu ne tür bir dükkandır?</string>
     <string name="quest_smoking_title2">Burada sigara içmeye izin veriliyor mu?</string>
@@ -1299,8 +1292,6 @@ Google Play uygulama içerisine link koymaya izin vermediği için bağış bilg
     <string name="default_disabled_msg_visible_sign_moped">Bu görev tipi bisiklet yolunda moped kullanı</string>
     <string name="quest_arrow_tutorial">Resimdeki oklar, yolun merkez pimi konumunda haritada ilerlediği yönlere işaret ediyor. Haritayı döndürmeyi deneyin ve göreceksiniz.</string>
     <string name="info">Daha fazla bilgi</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Yasaklı.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">İzin var.</string>
     <string name="quest_buildingLevels_hint">Eğimli bir binada, seviye sayımı en alt tarafın zemin seviyesinden başlar.
 
 Bir seviye, pencereleri çatıda olduğunda bir çatı seviyesi olarak sayılır. Sonuç olarak, sıfır çatı seviyesine sahip çatılar mutlaka düz değildir, sadece tüm bir seviye için yeterince yüksek değildir.</string>
@@ -1341,7 +1332,6 @@ Bir seviye, pencereleri çatıda olduğunda bir çatı seviyesi olarak sayılır
     <string name="action_messages">Mesajları göster</string>
     <string name="action_create_new_poi">Yeni oluştur</string>
     <string name="auth_error">Yetkilendirmede sorun var. Lütfen tekrar giriş yapmayı deneyin.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Aslında burada bir kaldırım var.</string>
     <string name="quest_bicycle_repair_station_services_title">Burada hangi bisiklet ekipmanları var?</string>
     <string name="quest_bicycle_repair_station_pump">Pompa</string>
     <string name="quest_bicycle_repair_station_tools">Alet edevat</string>
@@ -1425,7 +1415,6 @@ Bir seviye, pencereleri çatıda olduğunda bir çatı seviyesi olarak sayılır
     <string name="quest_bicycle_charging_station_capacity_title">Burada aynı anda kaç bisiklet şarj edilebilir?</string>
     <string name="quest_charging_station_bicycles_title">Burada bisikletler de şarj edilebiliyor mu?</string>
     <string name="quest_charging_station_bicycles_hint">Bisiklet şarj cihazı güç adaptörleri normal ev prizlerine takılır.</string>
-    <string name="quest_tower_access_title">Bu kuleye kimler erişebilir? Erişim ücretsiz veya ücretli olabilir.</string>
     <string name="quest_recycling_type_pet_bottles">PET şişeler</string>
     <string name="quest_maxweight_add_sign">İşaret ekle</string>
     <string name="quest_maxweight_remove_sign">İşaret sil</string>

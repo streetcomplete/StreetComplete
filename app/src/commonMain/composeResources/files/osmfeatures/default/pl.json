@@ -248,9 +248,6 @@
           "name": "Kantor",
           "terms": ["kantor wymiany walut", "wymiana walut"]
         },
-        "amenity/bus_station": {
-          "name": "Dworzec autobusowy"
-        },
         "amenity/cafe": {
           "name": "Kawiarnia",
           "terms": ["kawiarnia", "kawiarenka", "kafejka", "bar kawowy", "herbaciarnia", "kawa", "herbata"]
@@ -290,6 +287,10 @@
         "amenity/charging_station": {
           "name": "Stacja ładowania pojazdów",
           "terms": ["stacja ładowania pojazdów", "stacja ładowania samochodów elektrycznych", "ładowanie pojazdów", "ładowanie samochodów", "samochody elektryczne", "pojazdy elektryczne"]
+        },
+        "amenity/charging_station/charging_station_bicycle": {
+          "name": "Stacja ładowania rowerów elektrycznych",
+          "terms": ["stacja ładowania rowerów elektrycznych"]
         },
         "amenity/childcare": {
           "name": "Punkt opieki nad dziećmi",
@@ -532,9 +533,6 @@
           "terms": ["plac do nauki jazdy", "autodrom", "plac manewrowy", "ośrodek doskonalenia techniki jazdy"],
           "aliases": ["Autodrom"]
         },
-        "amenity/embassy": {
-          "name": "Ambasada/konsulat"
-        },
         "amenity/events_venue": {
           "name": "Miejsce imprez",
           "terms": ["miejsce imprez", "sala bankietowa", "bankiety", "sala weselna", "wesela", "przyjęcia", "imprezy", "uroczystości", "stypy", "komunie", "chrzciny", "catering", "restauracja"]
@@ -613,9 +611,6 @@
         "amenity/fast_food/wings": {
           "name": "Bar ze skrzydełkami kurczaka",
           "terms": ["bar ze skrzydełkami kurczaka", "skrzydełka kurczaka", "kurczak"]
-        },
-        "amenity/ferry_terminal": {
-          "name": "Terminal promowy"
         },
         "amenity/fire_station": {
           "name": "Remiza strażacka",
@@ -753,16 +748,13 @@
           "name": "Klub nocny LGBTQ+",
           "terms": ["klub nocny lgbtq+", "klub nocny lgbt", "klub nocny dla homoseksualistów", "klub gejowski"]
         },
-        "amenity/nursing_home": {
-          "name": "Dom pomocy społecznej"
-        },
         "amenity/parcel_locker": {
           "name": "Automat paczkowy",
           "terms": ["paczkomat", "automat przesyłkowy", "automat paczkowy", "inpost", "orlen paczka", "aliexpress", "cainiao", "allegro"]
         },
         "amenity/parking": {
           "name": "Parking samochodowy",
-          "terms": ["parking samochodowy", "plac parkingowy", "miejsca parkingowe", "miejsca postojowe", "parking dla pojazdów", "parking dla samochodów ciężarowych", "parking tir", "parking dla ciężarówek"]
+          "terms": ["parking samochodowy", "miejsca parkingowe", "miejsca postojowe", "parking dla pojazdów", "parking dla samochodów ciężarowych", "parking tir", "parking dla ciężarówek"]
         },
         "amenity/parking/multi-storey": {
           "name": "Parking wielopoziomowy",
@@ -795,6 +787,10 @@
           "name": "Stanowisko parkingowe dla niepełnosprawnych",
           "terms": ["stanowisko parkingowe dla niepełnosprawnych", "stanowisko postojowe dla niepełnosprawnych", "miejsce parkingowe dla niepełnosprawnych", "miejsce postojowe dla niepełnosprawnych", "miejsca parkingowe dla niepełnosprawnych", "miejsca postojowe dla niepełnosprawnych", "niebieska koperta"],
           "aliases": ["Stanowisko postojowe dla niepełnosprawnych", "Miejsce parkingowe dla niepełnosprawnych", "Miejsce postojowe dla niepełnosprawnych", "Miejsce parkingowe dla niepełnosprawnych", "Niebieska koperta"]
+        },
+        "amenity/parking_surface": {
+          "name": "Parking naziemny",
+          "terms": ["parking naziemny", "parking powierzchniowy", "plac parkingowy", "parking odkryty"]
         },
         "amenity/payment_centre": {
           "name": "Centrum płatności",
@@ -1212,6 +1208,10 @@
           "name": "Wypożyczalnia gier i zabawek",
           "terms": ["wypożyczalnia gier i zabawek", "biblioteka", "świetlica", "gra", "gry", "zabawka", "zabawki", "planszówka", "dzieci"]
         },
+        "amenity/traffic_park": {
+          "name": "Miasteczko ruchu drogowego",
+          "terms": ["miasteczko ruchu drogowego"]
+        },
         "amenity/trolley_bay": {
           "name": "Boks na wózki sklepowe",
           "terms": ["boks na wózki sklepowe", "wiata na wózki sklepowe", "parking dla wózków sklepowych", "wózki sklepowe"]
@@ -1373,6 +1373,12 @@
         },
         "area": {
           "name": "Obszar",
+          "relation": {
+            "role_labels": {
+              "inner": "Wewnętrzna",
+              "outer": "Zewnętrzna"
+            }
+          },
           "terms": ["obszar", "obręb", "powierzchnia"]
         },
         "area/footway": {
@@ -1651,13 +1657,6 @@
         "barrier/yes": {
           "name": "Bariera (nieokreślona)"
         },
-        "boundary": {
-          "name": "Granica"
-        },
-        "boundary/administrative": {
-          "name": "Granica administracyjna",
-          "terms": ["granica administracyjna", "granice administracyjne"]
-        },
         "boundary/hazard": {
           "name": "Obszar niebezpieczny",
           "terms": ["obszar niebezpieczny", "obszar niebezpieczeństwa", "zagrożenie", "niebezpieczeństwo"]
@@ -1748,9 +1747,6 @@
         "building/dormitory": {
           "name": "Dom studencki",
           "terms": ["dom studencki", "akademik", "bursa", "internat", "student"]
-        },
-        "building/entrance": {
-          "name": "Wejście / Wyjście"
         },
         "building/farm": {
           "name": "Dom mieszkalny gospodarstwa rolnego",
@@ -1902,6 +1898,10 @@
           "name": "Budynek świątyni",
           "terms": ["budynek świątyni", "świątynia", "kościół"]
         },
+        "building/tent": {
+          "name": "Nieruchomy namiot",
+          "terms": ["nieruchomy namiot", "stały namiot", "hala namiotowa", "hala pneumatyczna", "hala balonowa"]
+        },
         "building/terrace": {
           "name": "Domy szeregowe",
           "terms": ["domy szeregowe", "domki szeregowe", "domy w zabudowie szeregowej", "szeregowce", "szeregówki", "szeregówka"]
@@ -1926,10 +1926,6 @@
           "name": "Część budynku",
           "terms": ["część budynku", "element budynku", "dach", "wieża"]
         },
-        "building_point": {
-          "name": "Budynek",
-          "aliases": ["Gmach", "Dom"]
-        },
         "cemetery/grave": {
           "name": "Grób",
           "terms": ["grób", "nagrobek", "pomnik nagrobny"]
@@ -1937,14 +1933,6 @@
         "cemetery/sector": {
           "name": "Kwatera cmentarza",
           "terms": ["kwatera cmentarza", "kwatera cmentarna"]
-        },
-        "climbing/crag": {
-          "name": "Sektor wspinaczkowy",
-          "terms": ["sektor wspinaczkowy", "skała", "ściana", "skałka"]
-        },
-        "climbing/route": {
-          "name": "Droga wspinaczkowa",
-          "terms": ["droga wspinaczkowa", "trasa wspinaczkowa"]
         },
         "climbing/route_bottom": {
           "name": "Początek drogi wspinaczkowej",
@@ -2072,9 +2060,6 @@
           "name": "Dorabianie kluczy",
           "terms": ["dorabianie kluczy", "klucze", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
         },
-        "craft/locksmith": {
-          "name": "Ślusarz"
-        },
         "craft/metal_construction": {
           "name": "Budowa konstrukcji metalowych",
           "terms": ["konstrukcje metalowe", "obróbka metali", "metale", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
@@ -2147,9 +2132,6 @@
         "craft/stonemason": {
           "name": "Kamieniarz",
           "terms": ["kamieniarz", "kamieniarstwo", "zakład kamieniarski", "nagrobki", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
-        },
-        "craft/tailor": {
-          "name": "Krawiec"
         },
         "craft/tiler": {
           "name": "Glazurnik",
@@ -2374,9 +2356,6 @@
           "name": "Bród",
           "terms": ["bród", "przejście po kamieniach"]
         },
-        "ford_line": {
-          "name": "Bród"
-        },
         "golf/bunker": {
           "name": "Bunkier (golf)",
           "terms": ["sand trap"]
@@ -2474,7 +2453,7 @@
         },
         "healthcare/blood_donation": {
           "name": "Centrum krwiodawstwa",
-          "terms": ["dawstwo krwi", "krwiodawstwo"],
+          "terms": ["centrum krwiodawstwa", "punkt krwiodawstwa", "dawstwo krwi", "krwiodawstwo"],
           "aliases": ["Punkt krwiodawstwa"]
         },
         "healthcare/counselling": {
@@ -2542,9 +2521,6 @@
         "highway/bus_guideway": {
           "name": "Droga dla autobusu torowego",
           "terms": ["droga dla autobusu torowego", "tor autobusowy", "brt", "autobus torowy"]
-        },
-        "highway/bus_stop": {
-          "name": "Przystanek autobusowy"
         },
         "highway/busway": {
           "name": "Jezdnia szybkiej komunikacji autobusowej (BRT)",
@@ -2973,6 +2949,10 @@
           "name": "Stolperstein",
           "terms": ["stolperstein"]
         },
+        "historic/millstone": {
+          "name": "Kamień młyński",
+          "terms": ["kamień młyński"]
+        },
         "historic/monument": {
           "name": "Monument (duży pomnik)",
           "terms": ["monument", "pomnik"]
@@ -3011,9 +2991,6 @@
         "indoor/corridor": {
           "name": "Korytarz (wewnątrz budynku)",
           "terms": ["korytarz", "foyer", "sala", "poczekalnia", "hol", "hall", "lobby", "wewnątrz", "indoor"]
-        },
-        "indoor/corridor_line": {
-          "name": "Korytarz (wewnątrz budynku)"
         },
         "indoor/door": {
           "name": "Drzwi (wewnątrz budynku)",
@@ -3058,9 +3035,6 @@
           "name": "Hodowla ryb",
           "terms": ["hodowla ryb", "gospodarstwo rybackie", "ryby"]
         },
-        "landuse/basin": {
-          "name": "Sztuczny zbiornik wodny"
-        },
         "landuse/brownfield": {
           "name": "Teren poprzemysłowy/powyburzeniowy",
           "terms": ["teren poprzemysłowy", "teren powyburzeniowy", "wyburzenie", "teren pod budowę", "budowa"]
@@ -3084,9 +3058,6 @@
           "name": "Obszar usług edukacyjnych",
           "terms": ["obszar usług edukacyjnych", "obszar szkół", "szkoły", "uczelnia", "kampus"]
         },
-        "landuse/farm": {
-          "name": "Użytki rolne lub zabudowania rolnicze"
-        },
         "landuse/farmland": {
           "name": "Grunty orne",
           "terms": ["grunty orne", "pole uprawne", "pola uprawne", "uprawa", "uprawy", "pole", "zboże", "zboża"]
@@ -3104,8 +3075,8 @@
           "terms": ["las", "drzewa", "las gospodarczy", "bór", "knieja", "gaj", "zagaj", "zagajnik", "młodnik", "młodniak", "zadrzewienie", "zalesienie"]
         },
         "landuse/garages": {
-          "name": "Teren z garażami",
-          "terms": ["teren z garażami", "garaże", "garażowisko", "obszar garaży", "wiaty"]
+          "name": "Teren garaży",
+          "terms": ["teren garaży", "teren z garażami", "garaże", "garażowisko", "obszar garaży", "wiaty"]
         },
         "landuse/grass": {
           "name": "Trawnik",
@@ -3203,9 +3174,6 @@
           "name": "Szkółka (uprawa drzew i krzewów)",
           "terms": ["szkółka", "szkółka leśna", "szkółka sadownicza", "uprawa roślin", "uprawa drzew", "uprawa krzewów"]
         },
-        "landuse/pond": {
-          "name": "Staw"
-        },
         "landuse/quarry": {
           "name": "Kopalnia odkrywkowa / kamieniołom",
           "terms": ["kopalnia odkrywkowa", "kamieniołom", "żwirownia", "kruszywo", "kopalnia piasku", "piaskarnia", "kopalnia", "odkrywka"]
@@ -3221,9 +3189,6 @@
         "landuse/religious": {
           "name": "Teren do celów religijnych",
           "terms": ["teren do celów religijnych", "teren kościelny", "teren religijny"]
-        },
-        "landuse/reservoir": {
-          "name": "Zbiornik retencyjny"
         },
         "landuse/residential": {
           "name": "Teren zabudowy mieszkaniowej",
@@ -3659,6 +3624,10 @@
           "name": "Sauna",
           "terms": ["sauna", "saunarium"]
         },
+        "leisure/schoolyard": {
+          "name": "Podwórko szkolne",
+          "terms": ["podwórko szkolne", "plac szkolny", "podwórzec szkolny", "dziedziniec szkolny"]
+        },
         "leisure/slipway": {
           "name": "Pochylnia (do wodowania)",
           "terms": ["pochylnia"]
@@ -3737,9 +3706,6 @@
         "leisure/track/athletics/pole_vault": {
           "name": "Rozbieg do skoku o tyczce",
           "terms": ["rozbieg do skoku o tyczce", "skok o tyczce"]
-        },
-        "leisure/track/athletics/running": {
-          "name": "Bieżnia lekkoatletyczna"
         },
         "leisure/track/athletics/sprint": {
           "name": "Bieżnia lekkoatletyczna (do sprintów)",
@@ -4047,8 +4013,12 @@
         },
         "man_made/silo": {
           "name": "Silos (wieżowy)",
-          "terms": ["silos wieżowy", "silos zbożowy", "elewator", "zboże", "kukurydza", "pszenica"],
+          "terms": ["silos wieżowy", "elewator"],
           "aliases": ["Elewator"]
+        },
+        "man_made/silo/crop": {
+          "name": "Silos na plony",
+          "terms": ["silos na plony", "silos zbożowy", "elewator", "zboże", "kukurydza", "pszenica"]
         },
         "man_made/ski_jump": {
           "name": "Skocznia narciarska (konstrukcja)",
@@ -4228,10 +4198,6 @@
         "military/checkpoint": {
           "name": "Wojskowy punkt kontrolny",
           "terms": ["wojskowy punkt kontrolny", "siły powietrzne", "armia", "baza", "wojsko", "ochrona", "marynarka", "żołnierze", "wojna"]
-        },
-        "military/nuclear_explosion_site": {
-          "name": "Doświadczalny poligon jądrowy",
-          "terms": ["doświadczalny poligon jądrowy", "atom", "wybuch", "bomba", "detonacja", "miejsce", "poligon", "nuklearny"]
         },
         "military/office": {
           "name": "Biuro wojskowe",
@@ -4648,9 +4614,6 @@
           "name": "Prawnik",
           "terms": ["prawnik", "biuro prawnika", "kancelaria", "adwokat", "radca prawny", "komornik", "rzeczoznawca"]
         },
-        "office/lawyer/notary": {
-          "name": "Notariusz"
-        },
         "office/moving_company": {
           "name": "Biuro firmy przeprowadzkowej",
           "terms": ["biuro firmy przeprowadzkowej", "przeprowadzki"]
@@ -4717,9 +4680,6 @@
         "office/translator": {
           "name": "Tłumacz",
           "terms": ["tłumacz", "biuro tłumaczeniowe"]
-        },
-        "office/travel_agent": {
-          "name": "Biuro podróży"
         },
         "office/union": {
           "name": "Biuro związku zawodowego",
@@ -5007,16 +4967,24 @@
           "terms": ["źródło energii", "generator", "prądnica", "wytwornica", "energetyka", "elektroenergetyka", "prąd"]
         },
         "power/generator/method/photovoltaic": {
-          "name": "Panel słoneczny",
-          "terms": ["panel słoneczny", "moduł fotowoltaiczny", "moduł pv", "światło słoneczne", "energetyka", "elektroenergetyka", "prąd"]
+          "name": "Panel fotowoltaiczny",
+          "terms": ["panel fotowoltaiczny", "ogniwa fotowoltaiczne", "ogniwo fotowoltaiczne", "moduł fotowoltaiczny", "panel słoneczny", "światło słoneczne", "energetyka", "elektroenergetyka", "prąd"]
         },
         "power/generator/method/photovoltaic/building/roof": {
-          "name": "Zadaszenie z paneli słonecznych",
-          "terms": ["zadaszenie z paneli słonecznych", "panele słoneczne"]
+          "name": "Zadaszenie z paneli fotowoltaicznych",
+          "terms": ["zadaszenie z paneli fotowoltaicznych", "zadaszenie z ogniw fotowoltaicznych", "zadaszenie z paneli słonecznych", "panele słoneczne"]
         },
         "power/generator/method/photovoltaic/location/roof": {
-          "name": "Panele słoneczne na dachu",
-          "terms": ["panele słoneczne na dachu"]
+          "name": "Panel fotowoltaiczny na dachu",
+          "terms": ["panel fotowoltaiczny na dachu", "ogniwa fotowoltaiczne na dachu", "ogniwo fotowoltaiczne na dachu", "panele słoneczne na dachu"]
+        },
+        "power/generator/method/solar_thermal_collector": {
+          "name": "Kolektor słoneczny",
+          "terms": ["kolektor słoneczny", "panel słoneczny"]
+        },
+        "power/generator/method/solar_thermal_collector/location/roof": {
+          "name": "Kolektor słoneczny na dachu",
+          "terms": ["kolektor słoneczny na dachu", "panel słoneczny na dachu"]
         },
         "power/generator/source/hydro": {
           "name": "Turbina wodna",
@@ -5107,8 +5075,7 @@
           "terms": ["transformator", "energetyka", "elektroenergetyka", "prąd"]
         },
         "public_transport/platform": {
-          "name": "Przystanek komunikacji publicznej",
-          "terms": ["przystanek", "peron", "transport publiczny", "transport", "przewozy"]
+          "name": "Przystanek komunikacji publicznej"
         },
         "public_transport/platform/aerialway": {
           "name": "Przystanek wyciągu / kolei linowej",
@@ -5181,12 +5148,10 @@
           "terms": ["przystanek trolejbusowy", "peron", "przystanek", "trolejbus"]
         },
         "public_transport/platform_point": {
-          "name": "Przystanek komunikacji publicznej",
-          "terms": ["przystanek", "peron", "transport publiczny", "transport", "przewozy"]
+          "name": "Przystanek komunikacji publicznej"
         },
         "public_transport/station": {
-          "name": "Dworzec",
-          "terms": ["dworzec", "stacja", "transport publiczny", "terminal", "transport", "przewozy", "centrum przesiadkowe", "węzeł przesiadkowy"]
+          "name": "Dworzec"
         },
         "public_transport/station_aerialway": {
           "name": "Stacja wyciągu / kolei linowej",
@@ -5233,8 +5198,7 @@
           "terms": ["zespół przystankowy", "zespół przesiadkowy", "węzeł przesiadkowy", "transport publiczny", "transport", "przewozy"]
         },
         "public_transport/stop_position": {
-          "name": "Miejsce zatrzymania komunikacji publicznej",
-          "terms": ["miejsce zatrzymania", "transport publiczny", "transport", "przewozy"]
+          "name": "Miejsce zatrzymania komunikacji publicznej"
         },
         "public_transport/stop_position_aerialway": {
           "name": "Miejsce zatrzymania się wyciągu / kolei linowej",
@@ -5303,9 +5267,6 @@
           "name": "Tor kolei linowo-terenowej",
           "terms": ["tor kolei linowo-terenowej", "tory kolei linowo-terenowej", "tor kolejowy", "tory kolejowe", "torowisko", "kolej linowo-terenowa", "kolej linowa"]
         },
-        "railway/halt": {
-          "name": "Przystanek kolejowy"
-        },
         "railway/level_crossing": {
           "name": "Przejazd kolejowy",
           "terms": ["przejazd kolejowy", "rogatka", "rogatki"]
@@ -5334,9 +5295,6 @@
           "name": "Tor kolei wąskotorowej",
           "terms": ["tor kolei wąskotorowej", "tory kolei wąskotorowej", "tor kolejowy", "tory kolejowe", "torowisko", "pociąg", "kolej wąskotorowa"]
         },
-        "railway/platform": {
-          "name": "Peron kolejowy"
-        },
         "railway/preserved": {
           "name": "Tor kolei historycznej",
           "terms": ["tor kolei historycznej", "tory kolei historycznej", "tor kolejowy", "tory kolejowe", "torowisko", "pociąg", "kolej historyczna", "kolej turystyczna"]
@@ -5360,9 +5318,6 @@
         "railway/signal_box": {
           "name": "Nastawnia",
           "terms": ["nastawnia"]
-        },
-        "railway/station": {
-          "name": "Stacja kolejowa (osobowa lub osobowo-towarowa)"
         },
         "railway/subway": {
           "name": "Tor metra",
@@ -5419,10 +5374,6 @@
           "name": "Tor kolejki górskiej",
           "terms": ["tor kolejki górskiej"]
         },
-        "route/ferry": {
-          "name": "Trasa promu",
-          "terms": ["trasa promu", "trasa promowa", "promy", "trasa morska"]
-        },
         "seamark": {
           "name": "Znak nawigacyjny"
         },
@@ -5449,6 +5400,10 @@
         "seamark/mooring": {
           "name": "Znak miejsca do cumowania",
           "terms": ["znak miejsca do cumowania", "cumowanie", "kotwicowisko", "przedporcie", "przedmorze", "przedport", "awanport", "delfin", "pal", "słupek", "boja"]
+        },
+        "seamark/offshore_platform": {
+          "name": "Platforma",
+          "terms": ["platforma", "platforma wiertnicza", "fpso"]
         },
         "shop": {
           "name": "Sklep",
@@ -6451,6 +6406,14 @@
         },
         "type/boundary/administrative": {
           "name": "Granica administracyjna",
+          "relation": {
+            "role_labels": {
+              "admin_centre": "Ośrodek administracyjny",
+              "inner": "Wewnętrzna",
+              "label": "Etykieta",
+              "outer": "Zewnętrzna"
+            }
+          },
           "terms": ["granica administracyjna"]
         },
         "type/boundary/protected_area": {
@@ -6475,7 +6438,13 @@
         },
         "type/multipolygon": {
           "name": "Wielokąt złożony",
-          "terms": ["wielokąt złożony", "multipoligon"]
+          "terms": ["wielokąt złożony", "multipoligon"],
+          "relation": {
+            "role_labels": {
+              "inner": "Wewnętrzna",
+              "outer": "Zewnętrzna"
+            }
+          }
         },
         "type/public_transport/stop_area_group": {
           "name": "Grupa zespołów przystankowych",
@@ -6576,10 +6545,6 @@
         "type/route/piste": {
           "name": "Trasa narciarska",
           "terms": ["trasa narciarska", "szlak narciarski", "nartostrada", "trasa biegowa", "narty", "snowboard"]
-        },
-        "type/route/power": {
-          "name": "Trasa linii elektrycznej",
-          "terms": ["trasa linii elektrycznej"]
         },
         "type/route/railway": {
           "name": "Trasa (droga) kolejowa",
@@ -6707,6 +6672,301 @@
         "waterway/weir": {
           "name": "Jaz",
           "terms": ["jaz", "zapora wodna", "tama"]
+        },
+        "boundary": {
+          "name": "Granica",
+          "terms": ["granica"]
+        },
+        "building_point": {
+          "name": "Budynek (nieokreślony)",
+          "terms": ["budynek", "budowla", "dom"]
+        },
+        "ford_line": {
+          "name": "Bród",
+          "terms": ["bród", "przejście po kamieniach"]
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Znak ograniczenia prędkości",
+          "terms": ["znak ograniczenia prędkości", "ograniczenie prędkości", "maksymalna prędkość", "znak drogowy"]
+        },
+        "shop/ice_cream": {
+          "name": "Lodziarnia",
+          "terms": ["lodziarnia", "sklep z lodami", "lody", "sorbety"]
+        },
+        "route/ferry": {
+          "name": "Trasa promu",
+          "terms": ["trasa promu", "trasa promowa", "promy", "trasa morska"]
+        },
+        "railway/halt": {
+          "name": "Przystanek kolejowy",
+          "terms": ["przystanek kolejowy"]
+        },
+        "railway/platform": {
+          "name": "Przystanek kolejowy (peron)",
+          "terms": ["przystanek kolejowy", "peron kolejowy", "peron", "przystanek", "kolej", "tory", "szyny", "pociąg", "transport publiczny", "transport", "przewozy"]
+        },
+        "railway/station": {
+          "name": "Stacja kolejowa (pasażerska)",
+          "terms": ["stacja kolejowa pasażerska", "dworzec kolejowy"]
+        },
+        "office/travel_agent": {
+          "name": "Biuro podróży",
+          "terms": ["biuro podróży", "podróże"]
+        },
+        "office/lawyer/notary": {
+          "name": "Notariusz",
+          "terms": ["notariusz"]
+        },
+        "natural/wood_point": {
+          "name": "Drzewa",
+          "terms": ["drzewa", "las", "puszcza", "tajga", "las pierwotny", "las tropikalny", "dżungla", "bór", "knieja", "gaj", "zagaj", "zagajnik", "młodnik", "młodniak", "zadrzewienie", "zalesienie"]
+        },
+        "man_made/geoglyph_multilinestring": {
+          "name": "Geoglif",
+          "terms": ["geoglif"]
+        },
+        "leisure/track/athletics/running": {
+          "name": "Bieżnia",
+          "terms": ["bieżnia", "bieganie", "tor"]
+        },
+        "landuse/basin": {
+          "name": "Sztuczny zbiornik wodny",
+          "terms": ["sztuczny zbiornik wodny", "drenaż", "retencja", "retencyjny", "infiltracyjny", "odparowujący"]
+        },
+        "landuse/reservoir": {
+          "name": "Zbiornik retencyjny",
+          "terms": ["zbiornik retencyjny", "zbiornik wodny", "zbiornik"]
+        },
+        "landuse/military/danger_area_point": {
+          "name": "Strefa zagrożenia (wojskowa)",
+          "terms": ["strefa zagrożenia", "obszar niebezpieczny", "obszar niebezpieczeństwa", "zagrożenie", "niebezpieczeństwo"]
+        },
+        "landuse/industrial/brewery": {
+          "name": "Browar przemysłowy",
+          "terms": ["browar przemysłowy"]
+        },
+        "landuse/industrial/industrial_point": {
+          "name": "Teren przemysłowy",
+          "terms": ["teren przemysłowy", "obszar przemysłowy", "teren magazynowy", "magazyny", "teren składowy", "składy", "kopalnia", "huta", "przemysł"]
+        },
+        "indoor/corridor_line": {
+          "name": "Korytarz (w budynku)",
+          "terms": ["korytarz", "hall"]
+        },
+        "highway/bus_stop": {
+          "name": "Przystanek autobusowy",
+          "terms": ["przystanek autobusowy", "autobus"]
+        },
+        "highway/raceway_unspecific": {
+          "name": "Tor wyścigowy (sporty motorowe)",
+          "terms": ["tor wyścigowy", "wyścigi", "formuła 1", "nascar", "motocykle", "samochody"]
+        },
+        "highway/traffic_sign": {
+          "name": "Znak drogowy",
+          "terms": ["znak drogowy", "droga", "ulica"]
+        },
+        "highway/motorway_link-US-CA": {
+          "name": "Droga autostradowa – wjazd/wyjazd",
+          "terms": ["wjazd", "wyjazd", "zjazd", "łącznik", "rampa"]
+        },
+        "highway/primary_link-US-CA": {
+          "name": "Łącznik dróg pierwszorzędnych",
+          "terms": ["wjazd", "wyjazd", "zjazd", "łącznik", "rampa"]
+        },
+        "highway/trunk_link-US-CA": {
+          "name": "Droga główna – wjazd/wyjazd",
+          "terms": ["wjazd", "wyjazd", "zjazd", "łącznik", "rampa"]
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Ciąg pieszo-rowerowy",
+          "terms": ["ciąg pieszo-rowerowy", "droga dla pieszych i rowerów", "cpr", "ddrip"]
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "Ciąg pieszo-rowerowy na wyspie azylu",
+          "terms": ["ciąg pieszo-rowerowy na wyspie azylu", "wyspa azylu"]
+        },
+        "highway/path/crossing/informal": {
+          "name": "Nieformalne przejście przez jezdnię"
+        },
+        "highway/path/crossing/marked": {
+          "name": "Oznakowany przejazd pieszo-rowerowy",
+          "aliases": ["Oznakowane przejście pieszo-rowerowe"]
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Przejazd pieszo-rowerowy",
+          "aliases": ["Przejście pieszo-rowerowe"],
+          "terms": ["przejazd pieszo-rowerowy", "przejście pieszo-rowerowe", "przejście dla pieszych i przejazd dla rowerzystów", "cpr", "ddrip"]
+        },
+        "highway/footway/crossing/informal": {
+          "name": "Nieformalne przejście przez jezdnię"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Oznakowane przejście dla pieszych",
+          "terms": ["oznakowane przejście dla pieszych", "zebra", "pasy"]
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Oznakowane przejście dla pieszych",
+          "terms": ["oznakowane przejście dla pieszych", "zebra", "pasy"]
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Oznakowany przejazd rowerowy",
+          "terms": ["oznakowany przejazd rowerowy"]
+        },
+        "highway/crossing/marked": {
+          "name": "Oznakowane przejście dla pieszych",
+          "terms": ["oznakowane przejście dla pieszych", "zebra", "pasy"]
+        },
+        "highway/crossing/zebra": {
+          "name": "Oznakowane przejście dla pieszych",
+          "terms": ["oznakowane przejście dla pieszych", "zebra", "pasy"]
+        },
+        "craft/locksmith": {
+          "name": "Dorabianie kluczy / Ślusarz",
+          "terms": ["dorabianie kluczy", "ślusarz", "klucze", "zamki", "kłódki", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
+        },
+        "craft/tailor": {
+          "name": "Krawiec (usługi krawieckie)",
+          "terms": ["krawiec", "krawcowa", "szycie na miarę", "odzież na miarę", "rzemiosło", "rzemieślnik", "rzemieślnicy"]
+        },
+        "climbing/crag": {
+          "name": "Sektor wspinaczkowy",
+          "terms": ["sektor wspinaczkowy", "skała", "ściana", "skałka"]
+        },
+        "climbing/route": {
+          "name": "Droga wspinaczkowa",
+          "terms": ["droga wspinaczkowa", "trasa wspinaczkowa"]
+        },
+        "building/entrance": {
+          "name": "Wejście / Wyjście",
+          "terms": ["wejście", "wyjście"]
+        },
+        "building/glasshouse": {
+          "name": "Szklarnia",
+          "terms": ["szklarnia", "cieplarnia", "palmiarnia", "palmiera", "oranżeria", "oranżerium", "pomarańczarnia"]
+        },
+        "building/house/detached": {
+          "name": "Dom jednorodzinny wolnostojący",
+          "terms": ["dom jednorodzinny wolnostojący"]
+        },
+        "building/house/semi-detached": {
+          "name": "Dom w zabudowie bliźniaczej",
+          "terms": ["dom w zabudowie bliźniaczej", "dom bliźniaczy", "bliźniak"]
+        },
+        "building/house/terrace": {
+          "name": "Domy szeregowe",
+          "terms": ["domy szeregowe", "domki szeregowe", "domy w zabudowie szeregowej", "szeregowce", "szeregówki", "szeregówka"]
+        },
+        "boundary/administrative": {
+          "name": "Granica administracyjna",
+          "terms": ["granica administracyjna"]
+        },
+        "amenity/bus_station": {
+          "name": "Dworzec autobusowy",
+          "terms": ["dworzec autobusowy", "pks"]
+        },
+        "amenity/college": {
+          "name": "Teren koledżu / szkoły policealnej",
+          "terms": ["teren koledżu", "teren szkoły policealnej", "koledż", "szkoła policelna"]
+        },
+        "amenity/coworking_space": {
+          "name": "Centrum coworkingowe",
+          "terms": ["centrum coworkingowe", "przestrzeń coworkingowa", "coworking", "freelance"]
+        },
+        "amenity/dancing_school": {
+          "name": "Szkoła tańca",
+          "terms": ["szkoła tańca", "szkoła baletowa"]
+        },
+        "amenity/driving_school": {
+          "name": "Szkoła nauki jazdy",
+          "terms": ["szkoła nauki jazdy", "szkoła jazdy"]
+        },
+        "amenity/embassy": {
+          "name": "Ambasada",
+          "terms": ["ambasada", "wysokie przedstawicielstwo", "nuncjatura apostolska"]
+        },
+        "amenity/ferry_terminal": {
+          "name": "Terminal promowy",
+          "terms": ["terminal promowy", "dworzec morski", "prom", "łódź", "dok", "port", "nabrzeże", "pomost", "stacja", "transport publiczny", "przewozy"]
+        },
+        "amenity/kindergarten": {
+          "name": "Teren przedszkola/żłobka",
+          "terms": ["teren przedszkola", "teren żłobka"]
+        },
+        "amenity/language_school": {
+          "name": "Szkoła językowa",
+          "terms": ["szkoła językowa", "szkoła języków obcych"]
+        },
+        "amenity/music_school": {
+          "name": "Szkoła muzyczna",
+          "terms": ["szkoła muzyczna"]
+        },
+        "amenity/nursing_home": {
+          "name": "Dom pomocy społecznej",
+          "terms": ["dom pomocy społecznej", "dom opieki"]
+        },
+        "amenity/prep_school": {
+          "name": "Kursy przygotowawcze",
+          "terms": ["kursy przygotowawcze"]
+        },
+        "amenity/school": {
+          "name": "Teren szkoły podstawowej / średniej",
+          "terms": ["teren szkoły podstawowej", "teren szkoły średniej", "teren liceum", "teren technikum", "teren szkoły branżowej", "szkoła podstawowa", "szkoła średnia", "liceum", "technikum", "szkoła branżowa"]
+        },
+        "amenity/university": {
+          "name": "Teren uczelni",
+          "terms": ["teren uczelni", "teren uniwersytetu", "teren politechniki", "teren akademii", "uniwersytet", "politechnika", "akademia"]
+        },
+        "amenity/charging_station/charging_station_bicycle_designated": {
+          "name": "Stacja ładowania rowerów elektrycznych",
+          "terms": ["stacja ładowania rowerów elektrycznych"]
+        },
+        "aerialway/station": {
+          "name": "Stacja wyciągu / kolei linowej",
+          "terms": ["stacja kolei linowej", "stacja kolejki linowej", "stacja wyciągu", "wyciąg", "kolej linowa", "kolejka linowa", "transport publiczny", "terminal", "przewozy"]
+        },
+        "@templates/contact": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
+        },
+        "@templates/internet_access": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
+        },
+        "@templates/poi": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
+        },
+        "@templates/crossing/defaults": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
+        },
+        "@templates/crossing/markings": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Punkt",
+          "terms": ["punkt", "węzeł"]
         }
       }
     }

@@ -464,7 +464,6 @@ Viss det ikkje finst noko fartsskilt for heile gata (som òg gjeld for den avmer
     <string name="underground">underjordisk</string>
     <string name="quest_sidewalk_value_yes">fortau</string>
     <string name="quest_sidewalk_value_no">ikkje fortau</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Er det forbode for fotgjengarar å gå på denne vegen utan fortau her?</string>
     <string name="quest_buildingType_title">Kva slags bygning er her?</string>
     <string name="pref_title_theme_select">Tema</string>
     <string name="theme_light">Lyst</string>
@@ -658,7 +657,6 @@ Viss det ikkje finst noko fartsskilt for heile gata (som òg gjeld for den avmer
     <string name="at_housenumber">husnummer %1$s</string>
     <string name="quest_openingHours_add_off_days">Legg til unntaksdagar</string>
     <string name="quest_openingHours_off_day">Dag stengd</string>
-    <string name="quest_cycleway_resurvey_title">Er sykkelvegen framleis slik?</string>
     <string name="pref_title_resurvey_intervals">Nykartleggings­frekvens</string>
     <string name="resurvey_intervals_less_often">Sjeldnare</string>
     <string name="resurvey_intervals_default">Standard</string>
@@ -869,7 +867,6 @@ Viss du er overvelda over talet på oppdrag, kan du alltids justera kva oppdrag 
     <string name="quest_access_yes">Kven som helst</string>
     <string name="quest_access_customers">Nokon som vitjar ein spesifikk stad (for eksempel kundar)</string>
     <string name="quest_access_private">Berre personar som har fått løyve</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Er tømmetidene for postkassen framleis rette?</string>
     <string name="quest_bicycle_barrier_type_title">Kva type sykkelsperre er her?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Kryssar vegen på skrå</string>
     <string name="quest_barrier_bicycle_type_tilted">Smal passasje, smalast oppe</string>
@@ -906,8 +903,6 @@ Du kan òg leggja att ein merknad (med foto).</string>
     <string name="quest_fireHydrant_position_sidewalk">På fortauet</string>
     <string name="quest_fireHydrant_position_parking_lot">På ein parkeringsplass</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Ja (legg att ein merknad)</string>
-    <string name="quest_smoothness_square_title">Kva er kvaliteten på overflata/materialet på denne plassen?</string>
-    <string name="quest_smoothness_road_title">Kva er kvaliteten på vegdekket på denne vegen?</string>
     <string name="quest_smoothness_title_excellent">Glatt og jamt</string>
     <string name="quest_smoothness_title_good">Stort sett jamt</string>
     <string name="quest_smoothness_title_intermediate">Litt humpete</string>
@@ -960,7 +955,6 @@ Du kan òg leggja att ein merknad (med foto).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Kameraet vert brukt av ein annan app</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Sykkelstyre-lås</string>
     <string name="quest_bicycle_parking_access_title2">Kven har lov til å parkera syklar her? Anten gratis eller med betaling.</string>
-    <string name="quest_playground_access_title2">Kven kan bruka denne leikeplassen?</string>
     <string name="ar_measure">Gjer måling</string>
     <string name="ar_core_tracking_error_too_steep_angle">Vinkelen er for bratt (prøv å gå litt unna)</string>
     <string name="default_disabled_msg_no_ar">Du treng eit måleband for å løysa dette oppdraget, då måling med kameraet ikkje er støtta på denne eininga.</string>
@@ -1016,7 +1010,6 @@ Du kan òg leggja att ein merknad (med foto).</string>
     <string name="quest_lit_title">Er staden lyssett her?</string>
     <string name="quest_openingHours_title">Kva er opningstidene her?</string>
     <string name="quest_openingHours_signed_title">Står det skilt/lapp med opningstider?</string>
-    <string name="quest_openingHours_resurvey_title">Er opningstidene framleis rette?</string>
     <string name="quest_placeName_title">Kva heiter denne staden?</string>
     <string name="quest_shop_type_title2">Kva type butikk er her?</string>
     <string name="quest_smoking_title2">Er det lov å røykja her?</string>
@@ -1288,8 +1281,6 @@ Du finn informasjon om korleis du kan gje penge­gåver på heimesida og prosjek
     <string name="default_disabled_msg_visible_sign_moped">Denne oppdragstypen vert som standard ikkje vist, då tilgang for moped berre vert vist på skilt i endane av sykkelvegar.</string>
     <string name="quest_arrow_tutorial">Pilene i illustrasjonen peikar i vegretninga på staden der oppdrags­merket vert vist. Prøv å dreia rundt på kartet, så forstår du korleis det fungerer.</string>
     <string name="info">Meir informasjon</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Det er forbode.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Det er tillate.</string>
     <string name="quest_buildingLevels_hint">For bygningar som ligg i ei skråning, tel ein etasjar frå bakkeplan på den lågaste sida.
 
 Ein etasje vert rekna som taketasje når vindauga er i taket. Tak utan taketasjar er dermed ikkje nødvendigvis flate, men dei er ikkje høge nok til å romma ein heil etasje.</string>
@@ -1330,7 +1321,6 @@ Ein etasje vert rekna som taketasje når vindauga er i taket. Tak utan taketasja
     <string name="action_messages">Vis meldingar</string>
     <string name="action_create_new_poi">Registrer ny</string>
     <string name="auth_error">Godkjenningsfeil. Prøv å logga inn på nytt.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Det finst faktisk eit fortau.</string>
     <string name="quest_bicycle_repair_station_services_title">Kva slags sykkelutstyr finst her?</string>
     <string name="quest_bicycle_repair_station_pump">Sykkelpumpe</string>
     <string name="quest_bicycle_repair_station_tools">Ulike verktøy</string>
@@ -1413,7 +1403,6 @@ Ein etasje vert rekna som taketasje når vindauga er i taket. Tak utan taketasja
     <string name="quest_bicycle_charging_station_capacity_title">Kor mange elsyklar kan ladast samtidig her?</string>
     <string name="quest_charging_station_bicycles_title">Kan ein òg lada elsyklar her?</string>
     <string name="quest_charging_station_bicycles_hint">Elsykkel-ladarar passar i vanlege stikkontaktar.</string>
-    <string name="quest_tower_access_title">Kven har tilgang til tårnet? Anten gratis eller med betaling.</string>
     <string name="quest_recycling_type_pet_bottles">PET-flasker</string>
     <string name="quest_maxweight_add_sign">Registrer skilt</string>
     <string name="quest_maxweight_remove_sign">Fjern skilt</string>

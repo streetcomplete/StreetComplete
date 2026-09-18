@@ -36,9 +36,6 @@
         "amenity/bench": {
           "name": "Binse"
         },
-        "amenity/bus_station": {
-          "name": "Stáisiún / Críochfort Bus"
-        },
         "amenity/cafe": {
           "name": "Caifé"
         },
@@ -59,12 +56,6 @@
         },
         "amenity/community_centre/community_hall": {
           "name": "Halla an Phobail"
-        },
-        "amenity/community_centre/cultural_centre": {
-          "name": "Ionad Cultúir"
-        },
-        "amenity/community_centre/family_centre": {
-          "name": "Ionad Teaghlaigh"
         },
         "amenity/community_centre/parish_hall": {
           "name": "Halla an Pharóiste"
@@ -146,9 +137,6 @@
         "amenity/drinking_water": {
           "name": "Uisce Óil"
         },
-        "amenity/embassy": {
-          "name": "Ambasáid"
-        },
         "amenity/fountain": {
           "name": "Scairdeán",
           "aliases": ["Fuarán"]
@@ -165,9 +153,6 @@
         },
         "amenity/nightclub": {
           "name": "Club oíche"
-        },
-        "amenity/parking": {
-          "name": "Carrchlós"
         },
         "amenity/parking_entrance": {
           "name": "Slí Isteach/Amach Garáiste Páirceála"
@@ -299,9 +284,6 @@
         },
         "barrier/wall": {
           "name": "Balla"
-        },
-        "boundary": {
-          "name": "Teorainn"
         },
         "building": {
           "name": "Foirgneamh"
@@ -445,9 +427,6 @@
         "building_part": {
           "name": "Cuid Foirgnimh"
         },
-        "building_point": {
-          "name": "Foirgneamh"
-        },
         "craft/agricultural_engines": {
           "name": "Meicneoir Innill Talmhaíochta"
         },
@@ -511,9 +490,6 @@
         "craft/key_cutter": {
           "name": "Gearrthóir Eochracha"
         },
-        "craft/locksmith": {
-          "name": "Glasadóir"
-        },
         "craft/metal_construction": {
           "name": "Miotalóir"
         },
@@ -555,9 +531,6 @@
         },
         "craft/stonemason": {
           "name": "Saor Cloiche"
-        },
-        "craft/tailor": {
-          "name": "Táilliúir"
         },
         "craft/tiler": {
           "name": "Tíleoir"
@@ -602,9 +575,6 @@
         "ford": {
           "name": "Áth"
         },
-        "ford_line": {
-          "name": "Áth"
-        },
         "healthcare/alternative/homeopathy": {
           "name": "Hoiméapat"
         },
@@ -626,9 +596,6 @@
         "healthcare/optometrist": {
           "name": "Optaiméadraí"
         },
-        "healthcare/physiotherapist": {
-          "name": "Fisiteiripeoir"
-        },
         "healthcare/podiatrist": {
           "name": "Coslia"
         },
@@ -637,9 +604,6 @@
         },
         "healthcare/speech_therapist": {
           "name": "Teiripeoir Urlabhra"
-        },
-        "highway/bus_stop": {
-          "name": "Stad bus"
         },
         "highway/construction": {
           "name": "Bóthar Á Tógáil"
@@ -809,10 +773,6 @@
           "name": "Limistéar Tógála",
           "terms": ["láithreán tógála"]
         },
-        "landuse/farm": {
-          "name": "Talamh Feirme",
-          "aliases": ["Talamh Feilme"]
-        },
         "landuse/farmland": {
           "name": "Talamh Feirme",
           "aliases": ["Talamh Feilme"]
@@ -841,15 +801,8 @@
         "landuse/orchard": {
           "name": "Úllord"
         },
-        "landuse/pond": {
-          "name": "Lochán",
-          "aliases": ["Linn"]
-        },
         "landuse/quarry": {
           "name": "Cairéal"
-        },
-        "landuse/reservoir": {
-          "name": "Taiscumar"
         },
         "landuse/vineyard": {
           "name": "Fíonghort"
@@ -1084,18 +1037,12 @@
         "railway/funicular": {
           "name": "Ráille Iarnróid Cáblach"
         },
-        "railway/halt": {
-          "name": "Stáisiún Traenach (Stad ar iarratas)"
-        },
         "railway/level_crossing": {
           "name": "Crosaire Ianród-Bóthar"
         },
         "railway/narrow_gauge": {
           "name": "Iarnród Caol",
           "aliases": ["Rian Caol"]
-        },
-        "railway/platform": {
-          "name": "Ardán Traenach"
         },
         "railway/rail": {
           "name": "Ráille Traenach"
@@ -1108,9 +1055,6 @@
         },
         "railway/signal": {
           "name": "Comhartha Iarnróid"
-        },
-        "railway/station": {
-          "name": "Stáisiún Traenach"
         },
         "railway/subway": {
           "name": "Ráille Meitreo"
@@ -1306,6 +1250,125 @@
         },
         "waterway/weir": {
           "name": "Cora"
+        },
+        "boundary": {
+          "name": "Teorainn"
+        },
+        "building_point": {
+          "name": "Foirgneamh"
+        },
+        "ford_line": {
+          "name": "Áth"
+        },
+        "traffic_sign/maxspeed-US-CA-LR": {
+          "name": "Comhartha Teorainn Luais"
+        },
+        "railway/halt": {
+          "name": "Stáisiún Traenach (Stad ar iarratas)"
+        },
+        "railway/platform": {
+          "name": "Ardán Traenach"
+        },
+        "railway/station": {
+          "name": "Stáisiún Traenach"
+        },
+        "landuse/reservoir": {
+          "name": "Taiscumar"
+        },
+        "highway/bus_stop": {
+          "name": "Stad bus"
+        },
+        "highway/traffic_sign": {
+          "name": "Comhartha Bóthair"
+        },
+        "highway/path/bicycle_foot": {
+          "name": "Cosán Rothair ⁊ Coisithe"
+        },
+        "highway/path/traffic_island_shared": {
+          "name": "Oileán Tráchta Rothair ⁊ Coisithe",
+          "aliases": ["Tearmann Tráchta Rothair ⁊ Coisithe"],
+          "terms": ["oileán tráchta", "tearmann tráchta"]
+        },
+        "highway/path/crossing/informal": {
+          "name": "Crosaire Neamhfhoirmiúil"
+        },
+        "highway/path/crossing/marked": {
+          "name": "Crosaire Marcáilte Rothair ⁊ Coisithe"
+        },
+        "highway/path/crossing/bicycle_foot": {
+          "name": "Crosaire Rothair ⁊ Coisithe"
+        },
+        "highway/footway/crossing/informal": {
+          "name": "Crosaire Neamhfhoirmiúil"
+        },
+        "highway/footway/crossing/marked": {
+          "name": "Crosaire Marcáilte"
+        },
+        "highway/footway/crossing/zebra": {
+          "name": "Crosaire Marcáilte"
+        },
+        "highway/cycleway/crossing/marked": {
+          "name": "Crosaire Rothair Marcáilte"
+        },
+        "highway/crossing/marked": {
+          "name": "Crosaire Marcáilte"
+        },
+        "highway/crossing/zebra": {
+          "name": "Crosaire Marcáilte"
+        },
+        "craft/locksmith": {
+          "name": "Glasadóir"
+        },
+        "craft/tailor": {
+          "name": "Táilliúir"
+        },
+        "building/glasshouse": {
+          "name": "Teach Gloine"
+        },
+        "building/house/detached": {
+          "name": "Teach Scoite"
+        },
+        "building/house/semi-detached": {
+          "name": "Teach Leathscoite"
+        },
+        "amenity/bus_station": {
+          "name": "Stáisiún / Críochfort Bus"
+        },
+        "amenity/embassy": {
+          "name": "Ambasáid"
+        },
+        "@templates/contact": {
+          "name": "Pointe"
+        },
+        "@templates/internet_access": {
+          "name": "Pointe"
+        },
+        "@templates/poi": {
+          "name": "Pointe"
+        },
+        "@templates/crossing/bicycle_more": {
+          "name": "Pointe"
+        },
+        "@templates/crossing/defaults": {
+          "name": "Pointe"
+        },
+        "@templates/crossing/geometry_way_more": {
+          "name": "Pointe"
+        },
+        "@templates/crossing/markings": {
+          "name": "Pointe"
+        },
+        "@templates/crossing/markings_yes": {
+          "name": "Pointe"
+        },
+        "@templates/crossing/surfacequality": {
+          "name": "Pointe"
+        },
+        "@templates/crossing/traffic_signal": {
+          "name": "Pointe"
+        },
+        "@templates/crossing/traffic_signal_more": {
+          "name": "Pointe"
         }
       }
     }

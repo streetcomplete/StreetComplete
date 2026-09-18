@@ -467,7 +467,6 @@ Parte signifas, ke rulseĝo povas eniri kaj uzi la ripozejon, sed neniu manplato
     <string name="underground">subtere</string>
     <string name="quest_sidewalk_value_yes">Trotuaro</string>
     <string name="quest_sidewalk_value_no">Ne trotuaro</string>
-    <string name="quest_accessible_for_pedestrians_title_prohibited">Ĉu piedirantoj malrajtas iri sur ĉi tiu vojo?</string>
     <string name="quest_buildingType_title">Kia konstruaĵo estas tiu?</string>
     <string name="pref_title_theme_select">Elektu etoson</string>
     <string name="theme_light">Hela</string>
@@ -666,7 +665,6 @@ aktiva</string>
     <string name="at_housenumber">domnumero %1$s</string>
     <string name="quest_openingHours_add_off_days">Aldonu fermitajn tagojn</string>
     <string name="quest_openingHours_off_day">Fermita tago</string>
-    <string name="quest_cycleway_resurvey_title">Ĉu ĉi tio ankoraŭ estas la ciklovoja situacio ĉi tie?</string>
     <string name="pref_title_resurvey_intervals">Intervaloj de enketo</string>
     <string name="resurvey_intervals_less_often">Demandu malpli ofte</string>
     <string name="resurvey_intervals_default">Defaŭlte</string>
@@ -875,7 +873,6 @@ Se vi estas superfortita de la nombro de taskoj, vi ĉiam povas agordi, kiuj tas
     <string name="quest_access_yes">Ajna membro de la ĝenerala publiko</string>
     <string name="quest_access_customers">Ĉiu persono vizitanta specifan lokon (ekz. nur klientoj)</string>
     <string name="quest_access_private">Nur individuo(j) kun permeso</string>
-    <string name="quest_postboxCollectionTimes_resurvey_title">Ĉu la elektaj tempoj de ĉi tiu kolekto-skatolo ankoraŭ ĝustas?</string>
     <string name="quest_bicycle_barrier_type_title">Kia bicikla barilo estas ĉi tio?</string>
     <string name="quest_barrier_bicycle_type_diagonal">Diagonala al la vojo</string>
     <string name="quest_barrier_bicycle_type_tilted">Mallarĝa transirejo, malpli larĝa supre</string>
@@ -912,8 +909,6 @@ Alternative, vi povas lasi noton (kun foto).</string>
     <string name="quest_fireHydrant_position_sidewalk">Sur la trotuaro</string>
     <string name="quest_fireHydrant_position_parking_lot">En parkejo</string>
     <string name="quest_generic_hasFeature_yes_leave_note">Jes (lasi noton)</string>
-    <string name="quest_smoothness_square_title">Kio estas la surfaca kvalito de ĉi tiu placo?</string>
-    <string name="quest_smoothness_road_title">Kiel estas la surfaca kvalito de ĉi tiu vojo ĉi tie?</string>
     <string name="quest_smoothness_title_excellent">Glata kaj ebena</string>
     <string name="quest_smoothness_title_good">Plejparte ebena</string>
     <string name="quest_smoothness_title_intermediate">Iom malebena</string>
@@ -961,7 +956,6 @@ Alternative, vi povas lasi noton (kun foto).</string>
     <string name="ar_core_tracking_error_camera_unavailable">Fotilo estas uzata de alia programo</string>
     <string name="quest_bicycle_parking_type_handlebarholder">Stanga tenilo</string>
     <string name="quest_bicycle_parking_access_title2">Kiu rajtas parki biciklon ĉi tie? Povas esti paga aŭ senpaga.</string>
-    <string name="quest_playground_access_title2">Kiu rajtas uzi ĉi tiun ludejon?</string>
     <string name="ar_measure">Mezuro</string>
     <string name="ar_core_tracking_error_too_steep_angle">Tro kruta angulo, foriru iom</string>
     <string name="default_disabled_msg_no_ar">Vi bezonas mezurilon por solvi ĉi tiun taskon ĉar mezurado per la fotilo ne estas subtenata en ĉi tiu aparato.</string>
@@ -1017,7 +1011,6 @@ Alternative, vi povas lasi noton (kun foto).</string>
     <string name="quest_lit_title">Ĉu estas lumigita ĉi tie?</string>
     <string name="quest_openingHours_title">Kio estas la malfermaj horoj ĉi tie?</string>
     <string name="quest_openingHours_signed_title">Ĉu la malfermaj horoj ĉi tie estas subskribitaj?</string>
-    <string name="quest_openingHours_resurvey_title">Ĉu ĉi tiuj malfermaj horoj ankoraŭ ĝustas?</string>
     <string name="quest_placeName_title">Kiel nomiĝas ĉi tiu loko?</string>
     <string name="quest_shop_type_title2">Kia butiko estas ĉi tiu?</string>
     <string name="quest_smoking_title2">Ĉu oni rajtas fumi ĉi tie?</string>
@@ -1271,8 +1264,6 @@ Aldone kelkaj supertavoloj ebligas aldoni novajn datumojn ĉe la pozicio de la c
     <string name="quest_moped_access_forbidden">Estas signo, kiu malpermesas mopedojn sur tio biciklovojo</string>
     <string name="default_disabled_msg_visible_sign_moped">Ĉi tia tasko estas malebiligita defaŭlte, ĉar la aliro al biciklovojo per mopedoj nur estas indikita per specifaj signoj ĉe la komenco/ fino de la vojo. </string>
     <string name="info">Pluaj informoj</string>
-    <string name="quest_accessible_for_pedestrians_prohibited">Malpermesata.</string>
-    <string name="quest_accessible_for_pedestrians_allowed">Permesata.</string>
     <string name="quest_buildingLevels_hint">Por konstruaĵoj ĉe deklivo, oni komencas kalkuli la etaĝojn ĉe la malpli alta teretaĝo.
 
 Etaĝo estas tegmenta etaĝo (mansardo) se la fenestroj de ĝi estus en la tegmento. Sekve tegmentoj sen etaĝoj ne necese estas plata, nur ne sufiĉe alta por kompleta etaĝo.</string>
@@ -1311,7 +1302,6 @@ Etaĝo estas tegmenta etaĝo (mansardo) se la fenestroj de ĝi estus en la tegme
     <string name="action_messages">Montru mesaĝojn</string>
     <string name="action_create_new_poi">Krei novan</string>
     <string name="auth_error">Rajtiga eraro. Bonvle provu ensaluti denove.</string>
-    <string name="quest_accessible_for_pedestrians_sidewalk">Fakte, tie estas trotuaro.</string>
     <string name="quest_bicycle_repair_station_services_title">Kiaj bicikloripariloj estas ĉi tie?</string>
     <string name="quest_bicycle_repair_station_pump">Pumpilo</string>
     <string name="quest_bicycle_repair_station_tools">Diversaj iloj</string>

@@ -1,8 +1,9 @@
 # Do not edit. Data is from res/country/metadata and https://github.com/streetcomplete/countrymetadata
 additionalStreetsignLanguages: [en]
-atmOperators: [Хаан банк, Хаан, хаан банк, Хаанбанк, Голомт, Төрийн банк, Голомт банк, АТМ, khaan bank, Khan bank, Khan Bank, Khaan bank, Худалдаа хөгжлийн банк, Хаан банк АТМ, Хаан Банк, ХХБ, Голомт Банк, zam, khaanbank, atm, Golomt Bank, Ger, Aa]
+atmOperators: [Хаан банк, Хаан, хаан банк, Хаанбанк, Голомт, Төрийн банк, Khan Bank, Голомт банк, АТМ, khaan bank, Khan bank, Khaan bank, Худалдаа хөгжлийн банк, Хаан банк АТМ, Хаан Банк, ХХБ, Голомт Банк, zam, khaanbank, atm, Ger, Aa]
 centerLineStyle: white
 defaultSpeedLimitHasUrbanOrRural: true
+domesticSocketTypes: [typef, typec, universal_abcdefgio]
 edgeLineStyle: white
 hasAdvisorySpeedLimitSign: true
 hasLivingStreet: true
