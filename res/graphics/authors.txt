@@ -409,6 +409,7 @@ quest/
     playground.svg
     poo.svg                          modified from Twemoji: U+1f4a9
     power.svg
+    power_line.svg                   Amaan Qureshi, License: CC-BY-SA 4.0
     quest.svg
     railway.svg
     recycling.svg                    modified from Twemoji: U+267B
