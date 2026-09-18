@@ -45,7 +45,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.streetcomplete.ApplicationConstants
-import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osmtracks.Trackpoint
@@ -82,8 +81,6 @@ import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toLocation
-import de.westnordost.streetcomplete.util.math.area
-import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.StringResource
@@ -100,8 +97,6 @@ import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.GeographicLayout
 import org.maplibre.compose.style.BaseStyle
-import kotlin.math.PI
-import kotlin.math.sqrt
 
 /** The map and its controls, forms, and sidebars. */
 @Composable
@@ -263,22 +258,12 @@ fun MainScreen(
         showSheet(MainBottomSheetSelection.CreateNote(position, trackpoints))
     }
     fun download() {
-        val bounds = mapState.viewport?.visibleBounds?.toStreetCompleteBoundingBox()
-        if (bounds == null) {
+        val displayedArea = mapState.viewport?.visibleBounds?.toStreetCompleteBoundingBox()
+        if (displayedArea == null) {
             showToast = Toast.CannotFindBounds
-            return
-        }
-        val tilesBounds = bounds.asBoundingBoxOfEnclosingTiles(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
-        val area = tilesBounds.area() / 1_000_000
-        if (area > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) {
+        } else if (!viewModel.download(displayedArea, mapState.cameraPosition.target.toLatLon())) {
             showToast = Toast.DownloadAreaTooBig
-            return
         }
-        val downloadBounds = if (area < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
-            val radius = sqrt(1_000_000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
-            mapState.cameraPosition.target.toLatLon().enclosingBoundingBox(radius)
-        } else tilesBounds
-        viewModel.download(downloadBounds)
     }
     fun clickLocation() {
         if (!location.requestLocation(onCannotEnable = { showToast = Toast.NoLocation })) return

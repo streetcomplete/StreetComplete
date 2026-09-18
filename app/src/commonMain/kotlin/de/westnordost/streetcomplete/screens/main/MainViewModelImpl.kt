@@ -1,10 +1,12 @@
 package de.westnordost.streetcomplete.screens.main
 
 import androidx.lifecycle.viewModelScope
+import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
 import de.westnordost.streetcomplete.data.download.DownloadProgressSource
+import de.westnordost.streetcomplete.data.download.tiles.asBoundingBoxOfEnclosingTiles
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.messages.MessagesSource
 import de.westnordost.streetcomplete.data.osm.edits.EditType
@@ -37,6 +39,8 @@ import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.math.area
+import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.parseGeoUri
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
@@ -53,6 +57,8 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.plus
 import kotlinx.coroutines.withContext
 import org.maplibre.compose.camera.CameraPosition
+import kotlin.math.PI
+import kotlin.math.sqrt
 import kotlin.reflect.KClass
 
 class MainViewModelImpl(
@@ -248,8 +254,16 @@ class MainViewModelImpl(
         launch(Dispatchers.IO) { teamModeQuestFilterController.disableTeamMode() }
     }
 
-    override fun download(bbox: BoundingBox) {
+    override fun download(displayedArea: BoundingBox, center: LatLon): Boolean {
+        val tilesBounds = displayedArea.asBoundingBoxOfEnclosingTiles(ApplicationConstants.DOWNLOAD_TILE_ZOOM)
+        val areaInSqKm = tilesBounds.area() / 1_000_000
+        if (areaInSqKm > ApplicationConstants.MAX_DOWNLOADABLE_AREA_IN_SQKM) return false
+        val bbox = if (areaInSqKm < ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM) {
+            val radius = sqrt(1_000_000 * ApplicationConstants.MIN_DOWNLOADABLE_AREA_IN_SQKM / PI)
+            center.enclosingBoundingBox(radius)
+        } else tilesBounds
         downloadController.download(bbox, true)
+        return true
     }
 
     private val teamModeListener = object : TeamModeQuestFilterSource.Listener {

@@ -3,6 +3,7 @@ package de.westnordost.streetcomplete.screens.main
 import androidx.lifecycle.ViewModel
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.BoundingBox
+import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.overlays.Overlay
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.urlconfig.UrlConfig
@@ -75,7 +76,8 @@ abstract class MainViewModel : ViewModel() {
     abstract fun finishRequestingLogin()
 
     abstract fun upload()
-    abstract fun download(bbox: BoundingBox)
+    /** returns false if the area is too big to download */
+    abstract fun download(displayedArea: BoundingBox, center: LatLon): Boolean
 
     /* stars */
     abstract val starsCount: StateFlow<Int>
