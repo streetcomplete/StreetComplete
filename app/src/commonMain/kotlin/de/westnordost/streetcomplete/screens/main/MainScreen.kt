@@ -65,7 +65,6 @@ import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
 import de.westnordost.streetcomplete.screens.main.map.CameraMode
 import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
 import de.westnordost.streetcomplete.screens.main.map.MainMap
-import de.westnordost.streetcomplete.screens.main.map.MainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.MainMapViewModel
 import de.westnordost.streetcomplete.screens.main.map.getTrackBearing
@@ -218,7 +217,6 @@ fun MainScreen(
         shownBottomSheet !is ShownBottomSheet.OsmNoteQuest &&
         !editHistory.isShowing
 
-    lateinit var cameraState: MainMapCameraState
     val initialCamera = remember(viewModel) { viewModel.initialCamera }
     val mapState = rememberMapState(runtime, BaseStyle.Json(BASE_STYLE), initialCameraPosition = initialCamera) {
         val state = checkNotNull(LocalMapState.current)
@@ -269,7 +267,7 @@ fun MainScreen(
             pins = pins,
             onClickPin = onClickPin,
             onZoomToCluster = { zoom ->
-                scope.launch { cameraState.zoomToCluster(zoom) }
+                scope.launch { state.animateCameraPosition(state.cameraPosition.copy(zoom = zoom)) }
             },
             styledElements = styledElements,
             onClickElement = { properties ->
@@ -282,7 +280,7 @@ fun MainScreen(
             },
         )
     }
-    cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
+    val cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
     val mapCamera = mapState.cameraPosition
     val viewport = mapState.viewport
     val metersPerDp = remember(viewport, mapCamera) {
@@ -417,12 +415,11 @@ fun MainScreen(
             else -> cameraState.closeInspection()
         }
     }
-    // Resolve the selected object after entering inspection. Its padding is now part of the map's
-    // composition, and location updates no longer move the camera while the object loads.
+    // Inspection has two steps: the mode above is entered immediately so that location updates stop
+    // moving the camera and the map is composed with the sheet's padding. The camera then moves to
+    // the inspected object once it has loaded. Runs once per inspected object.
     val inspection = cameraState.inspection
-    LaunchedEffect(cameraState, (inspection as? CameraMode.Sheet)?.id,
-        inspection is CameraMode.EditHistory, (inspection as? CameraMode.EditHistory)?.key,
-        inspection is CameraMode.Restoring) {
+    LaunchedEffect(cameraState, inspection?.inspectionKey) {
         when (inspection) {
             is CameraMode.Sheet -> {
                 if (inspection.id != sheet.id) return@LaunchedEffect
@@ -567,7 +564,6 @@ fun MainScreen(
                         overlays = overlays,
                         selectedOverlay = selectedOverlay,
                         onSelectOverlay = { overlay ->
-                            if (sheet.selection is MainBottomSheetSelection.Overlay) sheet.close()
                             viewModel.selectOverlay(overlay)
                             if (!viewModel.hasShownOverlaysTutorial) {
                                 showOverlaysTutorial = true

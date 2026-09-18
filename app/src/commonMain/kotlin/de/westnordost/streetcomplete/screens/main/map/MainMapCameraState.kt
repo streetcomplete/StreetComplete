@@ -61,10 +61,6 @@ class MainMapCameraState internal constructor(
         map.animateCameraPosition(camera.copy(zoom = camera.zoom + amount), CameraAnimation.Ease(300.milliseconds))
     }
 
-    suspend fun zoomToCluster(zoom: Double) {
-        map.animateCameraPosition(map.cameraPosition.copy(zoom = zoom))
-    }
-
     suspend fun locate(location: LatLon?, bearing: Double?) {
         val browsing = mode as? CameraMode.Browsing
         if (browsing == null) {
@@ -260,8 +256,14 @@ class MainMapCameraState internal constructor(
 
 @Serializable
 internal sealed interface CameraMode {
+    /** Identifies what is inspected. Unlike the mode itself, it does not change with the progress
+     *  of that inspection, so it can key an effect that runs once per inspected object. */
+    val inspectionKey: String?
+
     @Serializable
-    data class Browsing(val tracking: Tracking, val zoomedYet: Boolean = false) : CameraMode
+    data class Browsing(val tracking: Tracking, val zoomedYet: Boolean = false) : CameraMode {
+        override val inspectionKey get() = null
+    }
 
     @Serializable
     data class Sheet(
@@ -270,13 +272,19 @@ internal sealed interface CameraMode {
         val resume: Browsing,
         val previous: FocusCamera? = null,
         val focused: Boolean = false,
-    ) : CameraMode
+    ) : CameraMode {
+        override val inspectionKey get() = "sheet $id"
+    }
 
     @Serializable
-    data class Restoring(val resume: Browsing, val previous: FocusCamera?) : CameraMode
+    data class Restoring(val resume: Browsing, val previous: FocusCamera?) : CameraMode {
+        override val inspectionKey get() = "restoring"
+    }
 
     @Serializable
-    data class EditHistory(val key: EditKey?, val resume: Browsing, val focused: Boolean = false) : CameraMode
+    data class EditHistory(val key: EditKey?, val resume: Browsing, val focused: Boolean = false) : CameraMode {
+        override val inspectionKey get() = "edit history $key"
+    }
 }
 
 private val CameraMode.browsing: CameraMode.Browsing get() = when (this) {
