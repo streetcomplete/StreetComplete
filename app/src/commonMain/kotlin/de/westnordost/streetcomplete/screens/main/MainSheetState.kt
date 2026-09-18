@@ -16,6 +16,7 @@ import de.westnordost.streetcomplete.data.edithistory.EditKey
 import de.westnordost.streetcomplete.screens.main.edithistory.EditItemsController
 import de.westnordost.streetcomplete.screens.main.edithistory.EditItem
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
+import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.coroutineScope
@@ -70,6 +71,9 @@ class MainSheetState internal constructor(
     /** Markers the open form asks the map to display; null uses the quest's default highlights. */
     var formMarkers by mutableStateOf<List<Marker>?>(null)
 
+    /** Content the open form places on the map, e.g. a pin that snaps to a way */
+    var formMapOverlay by mutableStateOf<MapOverlayContent?>(null)
+
     /** Where the user clicked on the map while the form was open */
     var lastMapClick by mutableStateOf<MapClick?>(null)
 
@@ -85,6 +89,7 @@ class MainSheetState internal constructor(
         id = Uuid.random().toString()
         this.selection = selection
         formMarkers = null
+        formMapOverlay = null
         lastMapClick = null
     }
 
@@ -97,6 +102,7 @@ class MainSheetState internal constructor(
     fun close() {
         selection = null
         formMarkers = null
+        formMapOverlay = null
         lastMapClick = null
         formStateHolder.removeState(id)
     }

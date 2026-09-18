@@ -28,7 +28,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Modifier
@@ -394,6 +393,8 @@ fun MainScreen(
                 ClickResult.Consume
             },
             overlay = {
+                sheet.formMapOverlay?.invoke(this)
+
                 // the pointer stays within the map area not covered by system bars or a form
                 GeographicLayout(
                     Modifier
@@ -527,7 +528,7 @@ fun MainScreen(
                         mapPosition = getCrosshairPosition() ?: mapCamera.target.toLatLon(),
                         mapMetersPerDp = metersPerDp,
                         onSetMapMarkers = { if (id == sheet.id) sheet.formMarkers = it?.toList() },
-                        getOffset = ::getOffset,
+                        onSetMapOverlay = { if (id == sheet.id) sheet.formMapOverlay = it },
                         lastMapClick = sheet.lastMapClick,
                     )
                 }

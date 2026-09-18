@@ -130,7 +130,7 @@ fun ShowQuestFormsScreen(
                 mapTilt = 0f,
                 mapMetersPerDp = 0.01,
                 onSetMapMarkers = { /* No map here */ },
-                getOffset = { null },
+                onSetMapOverlay = { /* No map here */ },
                 lastMapClick = null
             )
         }

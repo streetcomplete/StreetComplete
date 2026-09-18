@@ -3,7 +3,6 @@ package de.westnordost.streetcomplete.screens.main.bottom_sheet.split_way
 import androidx.compose.animation.core.Animatable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -18,7 +17,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -37,14 +35,14 @@ import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.AreYouSureDialog
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
-import de.westnordost.streetcomplete.ui.common.quest.LocalGetOffsetCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.Marker
-import de.westnordost.streetcomplete.ui.ktx.pxToDp
+import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.ktx.toPx
 import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.ui.util.rememberSerializable
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import de.westnordost.streetcomplete.util.math.distanceTo
 import de.westnordost.streetcomplete.util.math.getSplitAt
 import kotlinx.coroutines.launch
@@ -106,25 +104,20 @@ fun SplitWayForm(
         }
     }
 
-    Box(modifier = modifier.fillMaxSize()) {
-        if (scissorsPosition != null) {
-            val offset = LocalGetOffsetCallback.current?.invoke(scissorsPosition.pos)
-            if (offset != null) {
-                Image(
-                    painter = scissorsPainter(snipAnimation.value),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .align(AbsoluteAlignment.TopLeft)
-                        .size(72.dp)
-                        .absoluteOffset(
-                            x = offset.x.pxToDp() - 36.dp,
-                            y = offset.y.pxToDp() - 36.dp
-                        )
-                        .rotate(-30f)
-                )
-            }
+    if (scissorsPosition != null) {
+        OnMap {
+            Image(
+                painter = scissorsPainter(snipAnimation.value),
+                contentDescription = null,
+                modifier = Modifier
+                    .placedAt(scissorsPosition.pos.toPosition())
+                    .size(72.dp)
+                    .rotate(-30f)
+            )
         }
+    }
 
+    Box(modifier = modifier.fillMaxSize()) {
         Icon(
             painter = painterResource(Res.drawable.crosshair),
             contentDescription = null,

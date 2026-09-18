@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.screens.main.map.pinPainter
-import de.westnordost.streetcomplete.screens.main.map.toPosition
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.maplibre.compose.expressions.dsl.const

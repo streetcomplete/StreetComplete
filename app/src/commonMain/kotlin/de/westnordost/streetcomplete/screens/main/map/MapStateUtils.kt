@@ -7,6 +7,7 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.LayoutDirection
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import org.maplibre.compose.map.MapState
 
 /** The position under the crosshair, which is drawn at the center of the map area not covered by

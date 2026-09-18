@@ -39,11 +39,11 @@ import de.westnordost.streetcomplete.data.visiblequests.TeamModeQuestFilterSourc
 import de.westnordost.streetcomplete.data.visiblequests.VisibleEditTypeSource
 import de.westnordost.streetcomplete.screens.main.edithistory.EditItemsController
 import de.westnordost.streetcomplete.screens.main.map.MainMapSource
-import de.westnordost.streetcomplete.screens.main.map.toPosition
 import de.westnordost.streetcomplete.util.error_reporting.CrashReportHolder
 import de.westnordost.streetcomplete.util.error_reporting.ErrorReportBuilder
 import de.westnordost.streetcomplete.util.ktx.launch
 import de.westnordost.streetcomplete.util.ktx.toLatLon
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
 import de.westnordost.streetcomplete.util.parseGeoUri

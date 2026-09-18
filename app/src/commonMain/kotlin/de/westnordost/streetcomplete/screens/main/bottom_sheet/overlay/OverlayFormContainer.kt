@@ -8,7 +8,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.get
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
@@ -29,9 +28,11 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node.MoveNod
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.note.LeaveNoteInsteadForm
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.split_way.SplitWayForm
 import de.westnordost.streetcomplete.ui.common.quest.LocalElement
-import de.westnordost.streetcomplete.ui.common.quest.LocalGetOffsetCallback
 import de.westnordost.streetcomplete.ui.common.quest.LocalLastMapClick
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMarkersCallback
+import de.westnordost.streetcomplete.ui.common.quest.LocalMapOverlayCallback
+import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
+import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapMetersPerDp
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapRotation
 import de.westnordost.streetcomplete.ui.common.quest.LocalMapTilt
@@ -51,7 +52,8 @@ import org.koin.compose.koinInject
  *  @param onSetMapMarkers is called when the form shown wishes to show markers on the map. E.g. the
  *         split way form shows markers.
  *
- *  @param getOffset returns the offset on the screen of the given position
+ *  @param onSetMapOverlay is called with content the form shown wishes to place on the map,
+ *         see [OnMap]
  *  */
 @Composable
 fun OverlayFormContainer(
@@ -66,7 +68,7 @@ fun OverlayFormContainer(
     mapPosition: LatLon,
     mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>?) -> Unit,
-    getOffset: (position: LatLon) -> Offset?,
+    onSetMapOverlay: (MapOverlayContent?) -> Unit,
     lastMapClick: MapClick?,
     modifier: Modifier = Modifier,
     countryBoundaries: CountryBoundaries = koinInject(),
@@ -79,6 +81,7 @@ fun OverlayFormContainer(
     fun showForm(form: OverlayFormState) {
         state = form
         onSetMapMarkers(null)
+        onSetMapOverlay(null)
     }
 
     fun onAction(action: OverlayAction) {
@@ -101,12 +104,10 @@ fun OverlayFormContainer(
             LocalMapRotation provides mapRotation,
             LocalMapTilt provides mapTilt,
             LocalMapMetersPerDp provides mapMetersPerDp,
-            LocalGetOffsetCallback provides getOffset,
             LocalLastMapClick provides lastMapClick,
-            LocalMapMarkersCallback provides {
-                // AnimatedContent keeps the outgoing form alive until its transition ends.
-                if (currentState == state) onSetMapMarkers(it)
-            },
+            // AnimatedContent keeps the outgoing form alive until its transition ends.
+            LocalMapMarkersCallback provides { if (currentState == state) onSetMapMarkers(it) },
+            LocalMapOverlayCallback provides { if (currentState == state) onSetMapOverlay(it) },
         ) {
             when (currentState) {
                 OverlayFormState.Overlay -> {

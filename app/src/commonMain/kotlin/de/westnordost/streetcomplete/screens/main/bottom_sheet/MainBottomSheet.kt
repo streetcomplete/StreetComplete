@@ -6,7 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditAction
 import de.westnordost.streetcomplete.data.osm.edits.ElementEditType
 import de.westnordost.streetcomplete.data.osm.geometry.ElementGeometry
@@ -26,6 +25,7 @@ import de.westnordost.streetcomplete.screens.main.bottom_sheet.overlay.OverlayFo
 import de.westnordost.streetcomplete.screens.main.bottom_sheet.quest.OsmQuestFormContainer
 import de.westnordost.streetcomplete.ui.common.dialogs.SurveyConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
+import de.westnordost.streetcomplete.ui.common.quest.MapOverlayContent
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import org.jetbrains.compose.resources.DrawableResource
 
@@ -51,7 +51,7 @@ fun MainBottomSheet(
     mapPosition: LatLon,
     mapMetersPerDp: Double,
     onSetMapMarkers: (Iterable<Marker>?) -> Unit,
-    getOffset: (position: LatLon) -> Offset?,
+    onSetMapOverlay: (MapOverlayContent?) -> Unit,
     lastMapClick: MapClick?,
     modifier: Modifier = Modifier
 ) {
@@ -138,7 +138,7 @@ fun MainBottomSheet(
                 mapTilt = mapTilt,
                 mapMetersPerDp = mapMetersPerDp,
                 onSetMapMarkers = onSetMapMarkers,
-                getOffset = getOffset,
+                onSetMapOverlay = onSetMapOverlay,
                 lastMapClick = lastMapClick,
                 modifier = modifier,
             )
@@ -180,7 +180,7 @@ fun MainBottomSheet(
                 mapPosition = mapPosition,
                 mapMetersPerDp = mapMetersPerDp,
                 onSetMapMarkers = onSetMapMarkers,
-                getOffset = getOffset,
+                onSetMapOverlay = onSetMapOverlay,
                 lastMapClick = lastMapClick,
                 modifier = modifier,
             )

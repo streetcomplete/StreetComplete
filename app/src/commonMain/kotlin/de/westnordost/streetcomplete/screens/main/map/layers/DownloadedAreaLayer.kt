@@ -8,7 +8,7 @@ import de.westnordost.streetcomplete.data.download.tiles.TilePos
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.toPolygon
 import de.westnordost.streetcomplete.resources.*
-import de.westnordost.streetcomplete.screens.main.map.toPosition
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.maplibre.spatialk.geojson.Polygon

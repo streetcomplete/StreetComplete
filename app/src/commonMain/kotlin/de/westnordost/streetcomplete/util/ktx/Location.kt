@@ -17,3 +17,6 @@ fun LocationEvent.Update.toLocation(): Location =
 
 fun org.maplibre.spatialk.geojson.Position.toLatLon(): LatLon =
     LatLon(latitude, longitude)
+
+fun LatLon.toPosition(): org.maplibre.spatialk.geojson.Position =
+    org.maplibre.spatialk.geojson.Position(longitude = longitude, latitude = latitude)

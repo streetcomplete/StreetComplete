@@ -1,32 +1,24 @@
 package de.westnordost.streetcomplete.screens.main.bottom_sheet.move_node
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.backhandler.BackHandler
-import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import androidx.compose.ui.layout.LayoutCoordinates
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.layout.positionInWindow
-import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.center
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.toOffset
 import de.westnordost.streetcomplete.data.meta.CountryInfos
 import de.westnordost.streetcomplete.data.meta.LengthUnit
 import de.westnordost.streetcomplete.data.meta.get
@@ -36,15 +28,15 @@ import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.FloatingOkButton
 import de.westnordost.streetcomplete.ui.common.bottom_sheet.BottomSheetFormScaffold
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmDiscardDialog
-import de.westnordost.streetcomplete.ui.common.quest.LocalGetOffsetCallback
+import de.westnordost.streetcomplete.ui.common.quest.OnMap
 import de.westnordost.streetcomplete.ui.ktx.toPx
-import de.westnordost.streetcomplete.ui.theme.Dimensions
 import de.westnordost.streetcomplete.util.countryboundaries.CountryBoundaries
 import de.westnordost.streetcomplete.util.ktx.length
+import de.westnordost.streetcomplete.util.ktx.toPosition
 import de.westnordost.streetcomplete.util.ktx.translate
 import de.westnordost.streetcomplete.util.math.distanceTo
-import org.jetbrains.compose.resources.painterResource
 import org.koin.compose.koinInject
+import org.maplibre.compose.map.LocalMapState
 import kotlin.math.PI
 import kotlin.math.atan2
 import kotlin.math.sqrt
@@ -61,8 +53,6 @@ fun MoveNodeForm(
     countryBoundaries: CountryBoundaries = koinInject(),
     countryInfos: CountryInfos = koinInject(),
 ) {
-    var layoutCoordinates by remember { mutableStateOf<LayoutCoordinates?>(null) }
-
     val displayUnit = remember {
         val countryInfo = countryInfos.get(countryBoundaries, node.position)
         val isFeetAndInch = countryInfo.lengthUnits.firstOrNull() == LengthUnit.FOOT_AND_INCH
@@ -84,25 +74,23 @@ fun MoveNodeForm(
             onDismiss()
         }
     }
-    val getOffset = LocalGetOffsetCallback.current
-
-    Box(modifier = modifier
-        .fillMaxSize()
-        .onGloballyPositioned { layoutCoordinates = it }
-        .drawBehind {
-            val getOffset = getOffset ?: return@drawBehind
-            val coordinates = layoutCoordinates ?: return@drawBehind
-            val start = getOffset(node.position) ?: return@drawBehind
-            val end = getOffset(mapPosition) ?: return@drawBehind
+    // an arrow from the node to the crosshair, i.e. to where it would be moved
+    OnMap {
+        val mapState = checkNotNull(LocalMapState.current)
+        Canvas(Modifier.matchParentSize()) {
+            val start = mapState.screenLocationFromPosition(node.position.toPosition()) ?: return@Canvas
+            val end = mapState.screenLocationFromPosition(mapPosition.toPosition()) ?: return@Canvas
             drawArrow(
                 color = arrowColor,
                 strokeWidth = arrowWidthPx,
                 arrowHeadSize = arrowHeadSizePx,
-                start = coordinates.windowToLocal(start),
-                end = coordinates.windowToLocal(end)
+                start = Offset(start.x.toPx(), start.y.toPx()),
+                end = Offset(end.x.toPx(), end.y.toPx()),
             )
         }
-    ) {
+    }
+
+    Box(modifier = modifier.fillMaxSize()) {
         BottomSheetFormScaffold(
             content = {
                 MoveNodeFormContent(
