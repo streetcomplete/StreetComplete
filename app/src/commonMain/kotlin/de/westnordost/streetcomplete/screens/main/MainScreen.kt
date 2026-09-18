@@ -58,7 +58,7 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewMod
 import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
-import de.westnordost.streetcomplete.screens.main.map.CameraMode
+import de.westnordost.streetcomplete.screens.main.map.CameraInspectionEffect
 import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
 import de.westnordost.streetcomplete.screens.main.map.MainMap
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
@@ -84,7 +84,6 @@ import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toLocation
 import de.westnordost.streetcomplete.util.math.area
 import de.westnordost.streetcomplete.util.math.enclosingBoundingBox
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.JsonObject
@@ -358,47 +357,7 @@ fun MainScreen(
             }
         }
     }
-    LaunchedEffect(cameraState, sheet.selection, sheet.id, editHistory.isShowing, editHistory.selectedEditKey) {
-        val selection = sheet.selection
-        when {
-            selection != null -> {
-                val existingOverlay = selection is MainBottomSheetSelection.Overlay && selection.elementKey != null
-                cameraState.openSheet(sheet.id, padded = !existingOverlay)
-            }
-            editHistory.isShowing -> cameraState.openEditHistory(editHistory.selectedEditKey)
-            else -> cameraState.closeInspection()
-        }
-    }
-    // Inspection has two steps: the mode above is entered immediately so that location updates stop
-    // moving the camera and the map is composed with the sheet's padding. The camera then moves to
-    // the inspected object once it has loaded. Runs once per inspected object.
-    val inspection = cameraState.inspection
-    LaunchedEffect(cameraState, inspection?.inspectionKey) {
-        when (inspection) {
-            is CameraMode.Sheet -> {
-                if (inspection.id != sheet.id) return@LaunchedEffect
-                val shown = snapshotFlow { sheet.shownBottomSheet }.filterNotNull().first()
-                when (val selection = sheet.selection) {
-                    is MainBottomSheetSelection.CreateNote -> cameraState.composeNote(inspection.id, selection.position)
-                    else -> when (shown) {
-                        is ShownBottomSheet.OsmQuest -> cameraState.focusSheet(inspection.id, shown.quest.geometry)
-                        is ShownBottomSheet.OsmNoteQuest -> cameraState.focusSheet(inspection.id, shown.quest.geometry)
-                        else -> cameraState.inspectSheet(inspection.id)
-                    }
-                }
-            }
-            is CameraMode.EditHistory -> {
-                val key = inspection.key
-                if (key == null) cameraState.inspectEditHistory()
-                else {
-                    val edit = snapshotFlow { editHistory.selectedEdit }.filterNotNull().first()
-                    cameraState.focusEdit(key, editHistoryViewModel.getEditGeometry(edit))
-                }
-            }
-            is CameraMode.Restoring -> cameraState.restore(location.position, getTrackBearing(tracks.currentTrack))
-            else -> Unit
-        }
-    }
+    CameraInspectionEffect(cameraState, sheet, editHistory, location, tracks, editHistoryViewModel::getEditGeometry)
     LaunchedEffect(selectedOverlay) {
         val selection = sheet.selection as? MainBottomSheetSelection.Overlay
         if (selection != null && selection.name != selectedOverlay?.name) sheet.close()
