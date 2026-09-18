@@ -25,10 +25,7 @@ import org.koin.core.scope.Scope
 class MainActivity : BaseActivity(), AndroidScopeComponent {
     override val scope: Scope by activityScope()
 
-    private val autoSyncer: AutoSyncer by inject()
     private val prefs: Preferences by inject()
-    private val feedsUpdater: FeedsUpdater by inject()
-    private val periodicCleaner: PeriodicCleaner by inject()
     private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,10 +33,6 @@ class MainActivity : BaseActivity(), AndroidScopeComponent {
         super.onCreate(savedInstanceState)
 
         if (savedInstanceState == null) handleIntent(intent)
-        lifecycle.addObserver(autoSyncer)
-        feedsUpdater.updateAtMostDaily()
-        // Only enqueue cleanup when the UI starts, not when AppInitializer runs a background job.
-        periodicCleaner.enqueue()
 
         setContentView(ComposeView(this).apply {
             setContent {

@@ -2,6 +2,8 @@ package de.westnordost.streetcomplete.screens.main
 
 import androidx.lifecycle.viewModelScope
 import de.westnordost.streetcomplete.ApplicationConstants
+import de.westnordost.streetcomplete.data.FeedsUpdater
+import de.westnordost.streetcomplete.data.PeriodicCleaner
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.download.DownloadController
@@ -23,6 +25,7 @@ import de.westnordost.streetcomplete.data.overlays.SelectedOverlaySource
 import de.westnordost.streetcomplete.data.preferences.Autosync
 import de.westnordost.streetcomplete.data.preferences.Preferences
 import de.westnordost.streetcomplete.data.presets.EditTypePresetsSource
+import de.westnordost.streetcomplete.data.quest.AutoSyncer
 import de.westnordost.streetcomplete.data.quest.QuestType
 import de.westnordost.streetcomplete.data.quest.QuestTypeRegistry
 import de.westnordost.streetcomplete.data.upload.UploadController
@@ -82,6 +85,9 @@ class MainViewModelImpl(
     private val teamModeQuestFilterController: TeamModeQuestFilterController,
     private val elementEditsSource: ElementEditsSource,
     private val noteEditsSource: NoteEditsSource,
+    private val autoSyncer: AutoSyncer,
+    private val periodicCleaner: PeriodicCleaner,
+    private val feedsUpdater: FeedsUpdater,
     private val prefs: Preferences,
 ) : MainViewModel() {
 
@@ -451,6 +457,15 @@ class MainViewModelImpl(
         launch(Dispatchers.IO) {
             lastCrashReport.value = crashReportHolder.takeCrashReport()
         }
+
+        feedsUpdater.updateAtMostDaily()
+        // this must be enqueued once the UI is started, i.e. not in headless mode. This is why
+        // it is done here, rather than in AppInitializer. Reason is that
+        // AppInitializer.initialize() is also executed when a background job is run. But we don't
+        // want to enqueue the cleanup job again while running the cleanup job, but only once after
+        // the user actually opened the actual app!
+        periodicCleaner.enqueue()
+
         teamModeQuestFilterController.addListener(teamModeListener)
         elementEditsSource.addListener(elementEditsListener)
         noteEditsSource.addListener(noteEditsListener)
@@ -460,5 +475,7 @@ class MainViewModelImpl(
         teamModeQuestFilterController.removeListener(teamModeListener)
         elementEditsSource.removeListener(elementEditsListener)
         noteEditsSource.removeListener(noteEditsListener)
+
+        autoSyncer.onClear()
     }
 }

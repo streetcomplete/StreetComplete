@@ -168,8 +168,6 @@ class Preferences(private val prefs: ObservableSettings) {
     fun onSelectedEditTypePresetChanged(callback: (Long) -> Unit): SettingsListener =
         prefs.addLongListener(SELECTED_EDIT_TYPE_PRESET, 0L, callback)
 
-    var lastEditTime: Long by prefs.long(LAST_EDIT_TIME, 0L)
-
     fun <T> getLastPicked(serializer: KSerializer<List<T>>, key: String): List<T> =
         try {
             prefs.getStringOrNull(LAST_PICKED_PREFIX + key)?.let { Json.decodeFromString(serializer, it) } ?: emptyList()
@@ -279,7 +277,6 @@ class Preferences(private val prefs: ObservableSettings) {
         private const val SELECTED_EDIT_TYPE_PRESET = "selectedQuestsPreset"
         private const val SELECTED_OVERLAY = "selectedOverlay"
         private const val LAST_PICKED_PREFIX = "imageListLastPicked."
-        private const val LAST_EDIT_TIME = "changesets.lastChangeTime"
 
         // profile & statistics screen UI
         private const val USER_DAYS_ACTIVE = "days_active"
