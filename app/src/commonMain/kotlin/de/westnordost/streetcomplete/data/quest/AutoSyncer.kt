@@ -1,9 +1,5 @@
 package de.westnordost.streetcomplete.data.quest
 
-import androidx.lifecycle.DefaultLifecycleObserver
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.repeatOnLifecycle
 import de.westnordost.streetcomplete.data.UnsyncedChangesCountSource
 import de.westnordost.streetcomplete.data.connection.ActiveNetworkConnection
 import de.westnordost.streetcomplete.data.connection.NetworkCapabilities
@@ -51,7 +47,7 @@ class AutoSyncer(
     private val prefs: Preferences,
     private val teamModeQuestFilterSource: TeamModeQuestFilterSource,
     private val downloadedTilesController: DownloadedTilesController
-) : DefaultLifecycleObserver {
+) {
 
     private val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("AutoSyncer"))
 
@@ -98,46 +94,36 @@ class AutoSyncer(
 
     /* ---------------------------------------- Lifecycle --------------------------------------- */
 
-    override fun onCreate(owner: LifecycleOwner) {
+    init {
         unsyncedChangesCountSource.addListener(unsyncedChangesListener)
         downloadProgressSource.addListener(downloadProgressListener)
         userLoginSource.addListener(userLoginStatusListener)
         teamModeQuestFilterSource.addListener(teamModeChangeListener)
 
         coroutineScope.launch {
-            owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                activeNetworkConnection.capabilities.collect { capabilities ->
-                    networkCapabilities.value = capabilities
+            activeNetworkConnection.capabilities.collect { capabilities ->
+                networkCapabilities.value = capabilities
 
-                    if (capabilities?.hasInternet == true) {
-                        triggerAutoSync()
-                    }
+                if (capabilities?.hasInternet == true) {
+                    triggerAutoSync()
                 }
             }
         }
         coroutineScope.launch {
-            owner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                val request = LocationRequest(LocationAccuracy.High, 30.seconds, 100.meters)
-                locationProvider.updatesWithPermissionChanges(request).collect { locationEvent ->
-                    if (locationEvent is LocationEvent.Update) {
-                        val (position, accuracy) = locationEvent.measurement
-                        if (accuracy == null || accuracy < 300.meters) {
-                            pos = LatLon(position.latitude, position.longitude)
-                            triggerAutoDownload()
-                        }
+            val request = LocationRequest(LocationAccuracy.High, 30.seconds, 100.meters)
+            locationProvider.updatesWithPermissionChanges(request).collect { locationEvent ->
+                if (locationEvent is LocationEvent.Update) {
+                    val (position, accuracy) = locationEvent.measurement
+                    if (accuracy == null || accuracy < 300.meters) {
+                        pos = LatLon(position.latitude, position.longitude)
+                        triggerAutoDownload()
                     }
                 }
             }
         }
     }
 
-    override fun onResume(owner: LifecycleOwner) {
-        if (networkCapabilities.value?.hasInternet == true) {
-            triggerAutoSync()
-        }
-    }
-
-    override fun onDestroy(owner: LifecycleOwner) {
+    fun onClear() {
         unsyncedChangesCountSource.removeListener(unsyncedChangesListener)
         downloadProgressSource.removeListener(downloadProgressListener)
         userLoginSource.removeListener(userLoginStatusListener)

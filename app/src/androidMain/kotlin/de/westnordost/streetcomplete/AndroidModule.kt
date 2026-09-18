@@ -20,9 +20,6 @@ import de.westnordost.streetcomplete.data.download.DownloadWorker
 import de.westnordost.streetcomplete.data.initialize
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloader
 import de.westnordost.streetcomplete.data.maptiles.MapTilesDownloaderAndroid
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.AndroidChangesetAutoCloser
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloser
-import de.westnordost.streetcomplete.data.osm.edits.upload.changesets.ChangesetAutoCloserWorker
 import de.westnordost.streetcomplete.data.upload.AndroidUploadController
 import de.westnordost.streetcomplete.data.upload.UploadController
 import de.westnordost.streetcomplete.data.upload.UploadWorker
@@ -121,9 +118,6 @@ val androidModule = module {
 
     single<DownloadController> { AndroidDownloadController(androidContext()) }
     worker { DownloadWorker(get(), androidContext(), get()) }
-
-    factory<ChangesetAutoCloser> { AndroidChangesetAutoCloser(androidContext()) }
-    worker { ChangesetAutoCloserWorker(get(), androidContext(), get()) }
 
     factory<PeriodicCleaner> { AndroidPeriodicCleaner(androidContext()) }
     worker { CleanerWorker(get(), get(), get()) }

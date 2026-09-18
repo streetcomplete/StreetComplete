@@ -15,9 +15,6 @@ import de.westnordost.streetcomplete.util.Mockable
 @Mockable
 class OpenChangesetsDao(private val db: Database) {
 
-    fun getAll(): Collection<OpenChangeset> =
-        db.query(NAME) { it.toOpenChangeset() }
-
     fun put(openChangeset: OpenChangeset) {
         db.replace(NAME, openChangeset.toPairs())
     }

@@ -68,7 +68,7 @@ fun BottomSheetFormScaffold(
                         contentPadding =
                             PaddingValues(start = 16.dp, top = 8.dp, end = 16.dp, bottom = 12.dp),
                         content = {
-                            Column {
+                            Column(Modifier.fillMaxWidth()) {
                                 BottomSheetDragHandle(Modifier.padding(bottom = 8.dp))
                                 Box { header() }
                             }

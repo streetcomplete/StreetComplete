@@ -48,7 +48,6 @@ fun QuestHeader(
     hintText: String?,
     hintImages: List<DrawableResource>,
     modifier: Modifier = Modifier,
-    isResurvey: Boolean = false,
 ) {
     var showInfo by remember { mutableStateOf(false) }
 
@@ -57,15 +56,7 @@ fun QuestHeader(
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
-                if (isResurvey){
-                    CompositionLocalProvider(
-                        LocalTextStyle provides MaterialTheme.typography.titleLarge
-                    ) {
-                        Text(stringResource(Res.string.resurvey_title))
-                }}
-                CompositionLocalProvider(
-                    if (isResurvey) LocalTextStyle provides MaterialTheme.typography.titleMedium else LocalTextStyle provides MaterialTheme.typography.titleLarge,
-                ) {
+                CompositionLocalProvider(LocalTextStyle provides MaterialTheme.typography.titleLarge) {
                     Text(title)
                 }
                 if (subtitle != null) {
