@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import de.westnordost.streetcomplete.screens.about.logs.LogsFiltersScreen
 import de.westnordost.streetcomplete.screens.about.logs.LogsScreen
+import de.westnordost.streetcomplete.screens.tutorial.TutorialDestination
 import org.koin.compose.viewmodel.koinViewModel
 
 fun NavGraphBuilder.aboutGraph(navController: NavHostController) {
@@ -18,6 +19,7 @@ fun NavGraphBuilder.aboutGraph(navController: NavHostController) {
             onClickCredits = { navController.navigate(AboutDestination.Credits) },
             onClickPrivacyStatement = { navController.navigate(AboutDestination.PrivacyStatement) },
             onClickLogs = { navController.navigate(AboutDestination.Logs) },
+            onClickIntroTutorial = { navController.navigate(TutorialDestination.Intro) },
             onClickBack = ::goBack
         )
     }

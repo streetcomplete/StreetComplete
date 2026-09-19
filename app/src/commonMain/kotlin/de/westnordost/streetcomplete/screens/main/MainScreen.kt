@@ -70,11 +70,7 @@ import de.westnordost.streetcomplete.screens.main.map.rememberMainMapCameraState
 import de.westnordost.streetcomplete.screens.main.map.rememberMainMapTrackState
 import de.westnordost.streetcomplete.screens.main.map.toStreetCompleteBoundingBox
 import de.westnordost.streetcomplete.screens.main.messages.MessageDialog
-import de.westnordost.streetcomplete.screens.main.teammode.TeamModeWizard
 import de.westnordost.streetcomplete.screens.main.urlconfig.ApplyUrlConfigEffect
-import de.westnordost.streetcomplete.screens.tutorial.IntroTutorialScreen
-import de.westnordost.streetcomplete.screens.tutorial.OverlaysTutorialScreen
-import de.westnordost.streetcomplete.ui.common.AnimatedScreenVisibility
 import de.westnordost.streetcomplete.ui.common.ToastPopup
 import de.westnordost.streetcomplete.ui.common.dialogs.ConfirmationDialog
 import de.westnordost.streetcomplete.ui.common.quest.MapClick
@@ -110,6 +106,9 @@ fun MainScreen(
     onClickAbout: () -> Unit,
     onClickProfile: () -> Unit,
     onClickLogin: () -> Unit,
+    onClickEnterTeamMode: () -> Unit,
+    onShowIntroTutorial: () -> Unit,
+    onShowOverlaysTutorial: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = koinViewModel(),
     runtime: MapRuntime = koinInject(),
@@ -151,9 +150,6 @@ fun MainScreen(
     val mapAppLauncher = rememberMapAppLauncher()
 
     var confirmReplaceDownload by remember { mutableStateOf(false) }
-    var showOverlaysTutorial by remember { mutableStateOf(false) }
-    var showIntroTutorial by remember { mutableStateOf(false) }
-    var showTeamModeWizard by remember { mutableStateOf(false) }
     var showMainMenuDialog by remember { mutableStateOf(false) }
     var locationDialog by remember { mutableStateOf<LocationDialog?>(null) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
@@ -349,10 +345,8 @@ fun MainScreen(
         if (selection != null && selection.name != selectedOverlay?.name) sheet.close()
     }
 
-    LaunchedEffect(viewModel.hasShownTutorial) {
-        if (!viewModel.hasShownTutorial && !isLoggedIn) {
-            showIntroTutorial = true
-        }
+    LaunchedEffect(Unit) {
+        if (!viewModel.hasShownTutorial && !isLoggedIn) onShowIntroTutorial()
     }
 
     LaunchedEffect(isTeamMode) {
@@ -400,81 +394,72 @@ fun MainScreen(
                         .windowInsetsPadding(WindowInsets.safeDrawing)
                         .padding(if (sheet.isFormOpen) sheetPadding else PaddingValues(0.dp))
                 ) {
-                    if (!showIntroTutorial) {
-                        location.location?.position?.let { position ->
-                            PointerPinButton(targetPosition = position, onClick = ::followLocation) {
-                                Image(painterResource(Res.drawable.location_dot_small), null)
-                            }
+                    location.location?.position?.let { position ->
+                        PointerPinButton(targetPosition = position, onClick = ::followLocation) {
+                            Image(painterResource(Res.drawable.location_dot_small), null)
                         }
                     }
                 }
 
-                // TODO: Alternative to this would be to put the tutorial screens into a separate
-                // navigation destination in a TBD MainNavHost after complete migration to Compose
-                // (see #6255)
-                if (!showIntroTutorial) {
-                    MainScreenControls(
-                        starsCount = starsCount,
-                        isShowingStarsCurrentWeek = isShowingStarsCurrentWeek,
-                        isUploadingOrDownloading = isUploadingOrDownloading,
-                        onToggleShowStarsCurrentWeek = { viewModel.toggleShowingCurrentWeek() },
+                MainScreenControls(
+                    starsCount = starsCount,
+                    isShowingStarsCurrentWeek = isShowingStarsCurrentWeek,
+                    isUploadingOrDownloading = isUploadingOrDownloading,
+                    onToggleShowStarsCurrentWeek = { viewModel.toggleShowingCurrentWeek() },
 
-                        messagesCount = messagesCount,
-                        onClickMessages = { scope.launch { shownMessage = viewModel.popMessage() } },
+                    messagesCount = messagesCount,
+                    onClickMessages = { scope.launch { shownMessage = viewModel.popMessage() } },
 
-                        overlays = overlays,
-                        selectedOverlay = selectedOverlay,
-                        onSelectOverlay = { overlay ->
-                            viewModel.selectOverlay(overlay)
-                            if (!viewModel.hasShownOverlaysTutorial) {
-                                showOverlaysTutorial = true
+                    overlays = overlays,
+                    selectedOverlay = selectedOverlay,
+                    onSelectOverlay = { overlay ->
+                        viewModel.selectOverlay(overlay)
+                        if (!viewModel.hasShownOverlaysTutorial) onShowOverlaysTutorial()
+                    },
+
+                    shownUnsyncedEdits = if (!isAutoSync) unsyncedEditsCount else 0,
+                    shownIndexInTeam = if (isTeamMode) indexInTeam else null,
+                    onClickMainMenu = { showMainMenuDialog = true },
+
+                    showZoomButtons = showZoomButtons,
+                    onClickZoomIn = { zoomBy(1.0) },
+                    onClickZoomOut = { zoomBy(-1.0) },
+                    onZoomDrag = { zoomBy(it / 20.0) },
+
+                    mapRotation = mapCamera.bearing.toFloat(),
+                    mapTilt = mapCamera.tilt.toFloat(),
+                    onClickCompass = { scope.launch { cameraState.resetCompass() } },
+
+                    locationState = location.state,
+                    isNavigationMode = cameraState.isNavigationMode,
+                    isFollowingPosition = cameraState.isFollowingPosition,
+                    onClickLocation = ::clickLocation,
+
+                    isRecordingTracks = tracks.isRecording,
+                    onClickStopTrackRecording = {
+                        val recorded = tracks.stopRecording()
+                        location.position?.let { composeNote(it, recorded.takeIf { it.isNotEmpty() }) }
+                    },
+
+                    isCreateNodeEnabled = isCreateNodeEnabled,
+                    onClickCreate = {
+                        if (mapCamera.zoom >= 17.0) {
+                            selectedOverlay?.let { overlay ->
+                                val position = getCrosshairPosition()
+                                sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
+                                position?.let { cameraState.preserveCrosshairPosition(it) }
                             }
-                        },
+                        } else {
+                            showToast = Toast.DownloadAreaTooBig
+                        }
+                    },
 
-                        shownUnsyncedEdits = if (!isAutoSync) unsyncedEditsCount else 0,
-                        shownIndexInTeam = if (isTeamMode) indexInTeam else null,
-                        onClickMainMenu = { showMainMenuDialog = true },
+                    hasEdits = sheet.hasEdits,
+                    isUndoEnabled = !isUploadingOrDownloading,
+                    onClickUndo = sheet::showEditHistory,
 
-                        showZoomButtons = showZoomButtons,
-                        onClickZoomIn = { zoomBy(1.0) },
-                        onClickZoomOut = { zoomBy(-1.0) },
-                        onZoomDrag = { zoomBy(it / 20.0) },
-
-                        mapRotation = mapCamera.bearing.toFloat(),
-                        mapTilt = mapCamera.tilt.toFloat(),
-                        onClickCompass = { scope.launch { cameraState.resetCompass() } },
-
-                        locationState = location.state,
-                        isNavigationMode = cameraState.isNavigationMode,
-                        isFollowingPosition = cameraState.isFollowingPosition,
-                        onClickLocation = ::clickLocation,
-
-                        isRecordingTracks = tracks.isRecording,
-                        onClickStopTrackRecording = {
-                            val recorded = tracks.stopRecording()
-                            location.position?.let { composeNote(it, recorded.takeIf { it.isNotEmpty() }) }
-                        },
-
-                        isCreateNodeEnabled = isCreateNodeEnabled,
-                        onClickCreate = {
-                            if (mapCamera.zoom >= 17.0) {
-                                selectedOverlay?.let { overlay ->
-                                    val position = getCrosshairPosition()
-                                    sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
-                                    position?.let { cameraState.preserveCrosshairPosition(it) }
-                                }
-                            } else {
-                                showToast = Toast.DownloadAreaTooBig
-                            }
-                        },
-
-                        hasEdits = sheet.hasEdits,
-                        isUndoEnabled = !isUploadingOrDownloading,
-                        onClickUndo = sheet::showEditHistory,
-
-                        metersPerDp = metersPerDp,
-                    )
-                }
+                    metersPerDp = metersPerDp,
+                )
             },
         )
 
@@ -591,7 +576,7 @@ fun MainScreen(
             onClickAbout = onClickAbout,
             onClickDownload = ::onClickDownload,
             onClickUpload = ::onClickUpload,
-            onClickEnterTeamMode = { showTeamModeWizard = true },
+            onClickEnterTeamMode = onClickEnterTeamMode,
             onClickExitTeamMode = { viewModel.disableTeamMode() },
             isLoggedIn = isLoggedIn,
             indexInTeam = if (isTeamMode) indexInTeam else null,
@@ -638,33 +623,6 @@ fun MainScreen(
         )
     }
 
-    AnimatedScreenVisibility(showTeamModeWizard) {
-        val questIcons = remember { viewModel.allQuestTypes.map { it.icon } }
-        TeamModeWizard(
-            onDismissRequest = { showTeamModeWizard = false },
-            onFinished = { teamSize, indexInTeam ->
-                viewModel.enableTeamMode(
-                    teamSize = teamSize,
-                    indexInTeam = indexInTeam
-                )
-            },
-            allQuestIcons = questIcons
-        )
-    }
-
-    AnimatedScreenVisibility(showOverlaysTutorial) {
-        OverlaysTutorialScreen(
-            onDismissRequest = { showOverlaysTutorial = false },
-            onFinished = { viewModel.hasShownOverlaysTutorial = true }
-        )
-    }
-
-    AnimatedScreenVisibility(showIntroTutorial) {
-        IntroTutorialScreen(
-            onDismissRequest = { showIntroTutorial = false },
-            onFinished = { viewModel.hasShownTutorial = true },
-        )
-    }
     //endregion
 }
 
