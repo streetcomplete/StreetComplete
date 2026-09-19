@@ -125,7 +125,6 @@ fun ShowQuestFormsScreen(
                 questType = questType,
                 element = viewModel.mockElement,
                 geometry = viewModel.mockGeometry,
-                geometryOffsetInWindow = null,
                 mapPosition = LatLon(0.0, 0.0),
                 mapRotation = viewModel.mockRotation,
                 mapTilt = 0f,

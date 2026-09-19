@@ -166,12 +166,14 @@ import de.westnordost.streetcomplete.screens.about.CreditsViewModel
 import de.westnordost.streetcomplete.screens.about.CreditsViewModelImpl
 import de.westnordost.streetcomplete.screens.about.logs.LogsViewModel
 import de.westnordost.streetcomplete.screens.about.logs.LogsViewModelImpl
-import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModel
-import de.westnordost.streetcomplete.screens.main.MainBottomSheetViewModelImpl
+import de.westnordost.streetcomplete.screens.main.MainBottomSheetControllerImpl
 import de.westnordost.streetcomplete.screens.main.MainViewModel
 import de.westnordost.streetcomplete.screens.main.MainViewModelImpl
-import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModel
-import de.westnordost.streetcomplete.screens.main.edithistory.EditHistoryViewModelImpl
+import de.westnordost.streetcomplete.screens.main.edithistory.EditItemsControllerImpl
+import de.westnordost.streetcomplete.screens.main.map.MainMapSourceImpl
+import de.westnordost.streetcomplete.screens.main.map.sources.EditHistoryPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.MapQuestPinsSource
+import de.westnordost.streetcomplete.screens.main.map.sources.StyleableOverlaySource
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModel
 import de.westnordost.streetcomplete.screens.settings.SettingsViewModelImpl
 import de.westnordost.streetcomplete.screens.settings.debug.ShowQuestFormsViewModel
@@ -213,6 +215,9 @@ import io.ktor.http.userAgent
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.io.files.FileSystem
 import kotlinx.io.files.SystemFileSystem
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import org.koin.core.module.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -224,10 +229,12 @@ val OSM_API_URL = if (USE_TEST_API) OSM_API_URL_TEST else OSM_API_URL_LIVE
 private const val STATISTICS_BACKEND_URL = "https://streetcomplete.app/statistics/"
 
 val commonModule = module {
+    viewModel { AppViewModel(get(), get()) }
+    single { AppLocaleUpdater(get()) }
 
     //region basic configuration
 
-    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get()) }
+    factory { ApplicationInitializer(get(), get(), get(), get(), get(), get(), get(), get()) }
 
     single { HttpClient {
         defaultRequest {
@@ -587,22 +594,22 @@ val commonModule = module {
 
     //endregion
 
-    //region main screen view models
+    //region main screen view model
 
     viewModel<MainViewModel> {
+        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
         MainViewModelImpl(
             get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
             get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(),
+            map = MainMapSourceImpl(get(), get(), get(), get(), get(), scope),
+            bottomSheet = MainBottomSheetControllerImpl(get(), get(), get(), get(), get(), get(), get(), get(), get(), get(), get(named("FeatureDictionaryLazy")), scope),
+            editHistory = EditItemsControllerImpl(get(), get(), scope),
+            scope = scope,
         )
     }
-
-    viewModel<EditHistoryViewModel> {
-        EditHistoryViewModelImpl(get(), get())
-    }
-
-    viewModel<MainBottomSheetViewModel> {
-        MainBottomSheetViewModelImpl(get(), get(), get(), get(), get(), get(), get(), get())
-    }
+    factory { MapQuestPinsSource(get(), get(), get()) }
+    factory { EditHistoryPinsSource(get()) }
+    factory { StyleableOverlaySource(get(), get()) }
 
     viewModel<ArMeasureViewModel> { ArMeasureViewModelImpl(get(), get()) }
 

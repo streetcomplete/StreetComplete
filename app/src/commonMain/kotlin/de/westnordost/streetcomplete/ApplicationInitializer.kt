@@ -29,12 +29,15 @@ class ApplicationInitializer(
     private val downloadedTilesController: DownloadedTilesController,
     private val prefs: Preferences,
     private val resurveyIntervalsUpdater: ResurveyIntervalsUpdater,
+    private val appLocaleUpdater: AppLocaleUpdater,
 ) {
     private val scope = CoroutineScope(SupervisorJob() + CoroutineName("Application"))
 
     fun initialize() {
 
         setLoggerInstances()
+
+        appLocaleUpdater.start()
 
         resurveyIntervalsUpdater.update()
 
