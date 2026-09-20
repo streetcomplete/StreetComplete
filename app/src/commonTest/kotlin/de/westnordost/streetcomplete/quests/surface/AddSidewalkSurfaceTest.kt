@@ -19,6 +19,11 @@ class AddSidewalkSurfaceTest {
         assertIsNotApplicable("sidewalk" to "no")
     }
 
+    @Test fun `not applicable to road with sidewalk on only one side with bare surface`() {
+        assertIsNotApplicable("highway" to "residential", "sidewalk" to "left", "sidewalk:surface" to "asphalt")
+        assertIsNotApplicable("highway" to "residential", "sidewalk" to "right", "sidewalk:surface" to "asphalt")
+    }
+
     @Test fun `applicable to road with sidewalk on both sides`() {
         assertIsApplicable("highway" to "residential", "sidewalk" to "both")
     }
