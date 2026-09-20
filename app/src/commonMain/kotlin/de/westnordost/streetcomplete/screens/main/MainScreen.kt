@@ -418,81 +418,75 @@ fun MainScreen(
                         .windowInsetsPadding(WindowInsets.safeDrawing)
                         .padding(if (sheet.isFormOpen) sheetPadding else PaddingValues(0.dp))
                 ) {
-                    if (!showIntroTutorial) {
-                        location.location?.position?.let { position ->
-                            PointerPinButton(targetPosition = position, onClick = ::followLocation) {
-                                Image(painterResource(Res.drawable.location_dot_small), null)
-                            }
+                    location.location?.position?.let { position ->
+                        PointerPinButton(targetPosition = position, onClick = ::followLocation) {
+                            Image(painterResource(Res.drawable.location_dot_small), null)
                         }
                     }
                 }
 
-                // TODO: Alternative to this would be to put the tutorial screens into a separate
-                // navigation destination in a TBD MainNavHost after complete migration to Compose
-                // (see #6255)
-                if (!showIntroTutorial) {
-                    MainScreenControls(
-                        starsCount = starsCount,
-                        isShowingStarsCurrentWeek = isShowingStarsCurrentWeek,
-                        isUploadingOrDownloading = isUploadingOrDownloading,
-                        onToggleShowStarsCurrentWeek = { viewModel.toggleShowingCurrentWeek() },
 
-                        messagesCount = messagesCount,
-                        onClickMessages = { scope.launch { shownMessage = viewModel.popMessage() } },
+                MainScreenControls(
+                    starsCount = starsCount,
+                    isShowingStarsCurrentWeek = isShowingStarsCurrentWeek,
+                    isUploadingOrDownloading = isUploadingOrDownloading,
+                    onToggleShowStarsCurrentWeek = { viewModel.toggleShowingCurrentWeek() },
 
-                        overlays = overlays,
-                        selectedOverlay = selectedOverlay,
-                        onSelectOverlay = { overlay ->
-                            viewModel.selectOverlay(overlay)
-                            if (!viewModel.hasShownOverlaysTutorial) {
-                                showOverlaysTutorial = true
+                    messagesCount = messagesCount,
+                    onClickMessages = { scope.launch { shownMessage = viewModel.popMessage() } },
+
+                    overlays = overlays,
+                    selectedOverlay = selectedOverlay,
+                    onSelectOverlay = { overlay ->
+                        viewModel.selectOverlay(overlay)
+                        if (!viewModel.hasShownOverlaysTutorial) {
+                            showOverlaysTutorial = true
+                        }
+                    },
+
+                    shownUnsyncedEdits = if (!isAutoSync) unsyncedEditsCount else 0,
+                    shownIndexInTeam = if (isTeamMode) indexInTeam else null,
+                    onClickMainMenu = { showMainMenuDialog = true },
+
+                    showZoomButtons = showZoomButtons,
+                    onClickZoomIn = { zoomBy(1.0) },
+                    onClickZoomOut = { zoomBy(-1.0) },
+                    onZoomDrag = { zoomBy(it / 20.0) },
+
+                    mapRotation = mapCamera.bearing.toFloat(),
+                    mapTilt = mapCamera.tilt.toFloat(),
+                    onClickCompass = { scope.launch { cameraState.resetCompass() } },
+
+                    locationState = location.state,
+                    isNavigationMode = cameraState.isNavigationMode,
+                    isFollowingPosition = cameraState.isFollowingPosition,
+                    onClickLocation = ::clickLocation,
+
+                    isRecordingTracks = tracks.isRecording,
+                    onClickStopTrackRecording = {
+                        val recorded = tracks.stopRecording()
+                        location.position?.let { composeNote(it, recorded.takeIf { it.isNotEmpty() }) }
+                    },
+
+                    isCreateNodeEnabled = isCreateNodeEnabled,
+                    onClickCreate = {
+                        if (mapCamera.zoom >= 17.0) {
+                            selectedOverlay?.let { overlay ->
+                                val position = getCrosshairPosition()
+                                sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
+                                position?.let { cameraState.preserveCrosshairPosition(it) }
                             }
-                        },
+                        } else {
+                            showToast = Toast.DownloadAreaTooBig
+                        }
+                    },
 
-                        shownUnsyncedEdits = if (!isAutoSync) unsyncedEditsCount else 0,
-                        shownIndexInTeam = if (isTeamMode) indexInTeam else null,
-                        onClickMainMenu = { showMainMenuDialog = true },
+                    hasEdits = sheet.hasEdits,
+                    isUndoEnabled = !isUploadingOrDownloading,
+                    onClickUndo = sheet::showEditHistory,
 
-                        showZoomButtons = showZoomButtons,
-                        onClickZoomIn = { zoomBy(1.0) },
-                        onClickZoomOut = { zoomBy(-1.0) },
-                        onZoomDrag = { zoomBy(it / 20.0) },
-
-                        mapRotation = mapCamera.bearing.toFloat(),
-                        mapTilt = mapCamera.tilt.toFloat(),
-                        onClickCompass = { scope.launch { cameraState.resetCompass() } },
-
-                        locationState = location.state,
-                        isNavigationMode = cameraState.isNavigationMode,
-                        isFollowingPosition = cameraState.isFollowingPosition,
-                        onClickLocation = ::clickLocation,
-
-                        isRecordingTracks = tracks.isRecording,
-                        onClickStopTrackRecording = {
-                            val recorded = tracks.stopRecording()
-                            location.position?.let { composeNote(it, recorded.takeIf { it.isNotEmpty() }) }
-                        },
-
-                        isCreateNodeEnabled = isCreateNodeEnabled,
-                        onClickCreate = {
-                            if (mapCamera.zoom >= 17.0) {
-                                selectedOverlay?.let { overlay ->
-                                    val position = getCrosshairPosition()
-                                    sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
-                                    position?.let { cameraState.preserveCrosshairPosition(it) }
-                                }
-                            } else {
-                                showToast = Toast.DownloadAreaTooBig
-                            }
-                        },
-
-                        hasEdits = sheet.hasEdits,
-                        isUndoEnabled = !isUploadingOrDownloading,
-                        onClickUndo = sheet::showEditHistory,
-
-                        metersPerDp = metersPerDp,
-                    )
-                }
+                    metersPerDp = metersPerDp,
+                )
             },
         )
 
