@@ -35,7 +35,30 @@ internal class SidewalkSurfaceCreatorKtTest {
             ),
         )
     }
-
+    @Test fun `remove generic surface and apply side-specific surface on one-sided sidewalk`() {
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("sidewalk:surface", "asphalt"),
+                StringMapEntryAdd("sidewalk:left:surface", "paving_stones"),
+            ),
+            SidewalkSurface(Sides(PAVING_STONES, null)).appliedTo(mapOf(
+                "sidewalk" to "left",
+                "sidewalk:surface" to "asphalt",
+            ))
+        )
+    }
+    @Test fun `same surface as generic surface on one-sided sidewalk does not create both tag`() {
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("sidewalk:surface", "asphalt"),
+                StringMapEntryAdd("sidewalk:left:surface", "asphalt"),
+            ),
+            SidewalkSurface(Sides(ASPHALT, null)).appliedTo(mapOf(
+                "sidewalk" to "left",
+                "sidewalk:surface" to "asphalt",
+            ))
+        )
+    }
     @Test fun `updates check_date`() {
         assertEquals(
             setOf(
@@ -106,7 +129,19 @@ internal class SidewalkSurfaceCreatorKtTest {
             ))
         )
     }
-
+    @Test fun `remove surface from separately mapped sidewalk side`() {
+        assertEquals(
+            setOf(
+                StringMapEntryDelete("sidewalk:surface", "asphalt"),
+                StringMapEntryAdd("sidewalk:right:surface", "paving_stones"),
+            ),
+            SidewalkSurface(Sides(null, PAVING_STONES)).appliedTo(mapOf(
+                "sidewalk:left" to "separate",
+                "sidewalk:right" to "yes",
+                "sidewalk:surface" to "asphalt",
+            ))
+        )
+    }
     @Test fun `carriageway properties not affected by sidewalk answer`() {
         assertEquals(
             setOf(
