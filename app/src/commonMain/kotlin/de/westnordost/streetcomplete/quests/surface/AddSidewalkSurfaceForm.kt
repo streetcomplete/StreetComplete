@@ -19,6 +19,7 @@ import de.westnordost.streetcomplete.osm.any
 import de.westnordost.streetcomplete.osm.sidewalk.Sidewalk
 import de.westnordost.streetcomplete.osm.sidewalk.parseSidewalkSides
 import de.westnordost.streetcomplete.osm.sidewalk_surface.SidewalkSurface
+import de.westnordost.streetcomplete.osm.sidewalk_surface.parseSidewalksSurface
 import de.westnordost.streetcomplete.osm.surface.Surface
 import de.westnordost.streetcomplete.resources.*
 import de.westnordost.streetcomplete.ui.common.quest.AnswerItem
@@ -54,8 +55,9 @@ fun AddSidewalkSurfaceForm(
             emptyList()
         }
     }
-
-    var sidewalkSurfaces by rememberSerializable(element) { mutableStateOf(Sides<Surface>(null, null)) }
+    var sidewalkSurfaces by rememberSerializable(element) {
+        mutableStateOf(parseSidewalksSurface(element.tags)?.value ?: Sides<Surface>(null, null))
+    }
 
     QuestForm(
         on = on,
