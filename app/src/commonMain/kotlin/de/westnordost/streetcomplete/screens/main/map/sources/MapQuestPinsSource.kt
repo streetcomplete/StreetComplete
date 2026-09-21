@@ -36,6 +36,9 @@ import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.jsonPrimitive
 import kotlinx.serialization.json.long
 
+/** Source for map quest [pins] on the map. Since there can be a very, very large number of quest
+ *  pins on the map, we only show those that are in view. This requires users to call [onMapMoved]
+ *  so that the [pins] are updated when the viewport moves to a new area. */
 @OptIn(ExperimentalCoroutinesApi::class)
 class MapQuestPinsSource(
     private val questTypeOrderSource: QuestTypeOrderSource,
@@ -45,58 +48,60 @@ class MapQuestPinsSource(
     private val displayedRect = MutableStateFlow<TilesRect?>(null)
 
     val pins: Flow<Collection<Pin>> = flow {
-        // Long ways can have a marker in view while their center, which the bounding box query
-        // goes by, is not. Their keys are kept across viewport changes and re-read.
-        var multiMarkerQuestKeys = emptySet<QuestKey>()
+        val pinsByQuest = mutableMapOf<QuestKey, List<Pin>>()
+        var orders = emptyMap<QuestType, Int>()
+
         emitAll(displayedRect.flatMapLatest { rect ->
             if (rect == null) return@flatMapLatest flowOf(emptyList())
-            val view = QuestsInView(rect.asBoundingBox(TILES_ZOOM))
+            val bbox = rect.asBoundingBox(TILES_ZOOM)
             events().map { event ->
                 when (event) {
-                    Event.Reload -> view.reload(multiMarkerQuestKeys)
-                    is Event.Updated -> view.update(event.added, event.removed)
+                    Event.Reload -> {
+                        val types = questTypeRegistry.toMutableList()
+                        withContext(Dispatchers.IO) { questTypeOrderSource.sort(types) }
+                        orders = types.withIndex().associate { it.value to it.index }
+
+                        /* Usually, we would call pinsByQuest.clear() here. However,
+                           quests have only a single position, but may have multiple pins (see
+                           Quest::markerLocations), e.g. at the start and end of a long road. A pin
+                           of a quest whose center is outside the current view may hence be within
+                           the current view. Quest pins like these should not disappear when panning
+                           the map. Therefore, remove all quests that are not in view anymore that
+                           ... (#5802)
+                          */
+                        pinsByQuest.entries.removeAll { (key, pins) ->
+                            // only have one pin (pin position = quest position)
+                            pins.size == 1
+                            // or has no pins in the current view
+                            || pins.none { it.position in bbox }
+                        }
+                        val quests = withContext(Dispatchers.IO) { visibleQuestsSource.getAll(bbox) }
+                        quests.forEach { pinsByQuest[it.key] = it.toPins(orders) }
+                    }
+                    is Event.Updated -> {
+                        event.removed.forEach { pinsByQuest.remove(it) }
+                        for (quest in event.added) {
+                            if (quest.markerLocations.any { it in bbox }) {
+                                pinsByQuest[quest.key] = quest.toPins(orders)
+                            } else {
+                                pinsByQuest.remove(quest.key)
+                            }
+                        }
+                    }
                 }
-                multiMarkerQuestKeys = view.multiMarkerQuestKeys
-                view.pins
+                pinsByQuest.values.flatten()
             }
         })
     }.flowOn(Dispatchers.Default)
 
-    /** The quests in one displayed area and their pins */
-    private inner class QuestsInView(private val bbox: BoundingBox) {
-        private val pinsByQuest = mutableMapOf<QuestKey, List<Pin>>()
-        private var orders = emptyMap<QuestType, Int>()
 
-        val pins: Collection<Pin> get() = pinsByQuest.values.flatten()
-        val multiMarkerQuestKeys: Set<QuestKey> get() = pinsByQuest.filterValues { it.size > 1 }.keys
-
-        suspend fun reload(retainedKeys: Set<QuestKey>) {
-            val (quests, questOrders) = withContext(Dispatchers.IO) {
-                val types = questTypeRegistry.toMutableList()
-                questTypeOrderSource.sort(types)
-                val retained = retainedKeys.mapNotNull { visibleQuestsSource.get(it) }
-                    .filter { quest -> quest.markerLocations.any { it in bbox } }
-                (retained + visibleQuestsSource.getAll(bbox)) to
-                    types.withIndex().associate { it.value to it.index }
-            }
-            orders = questOrders
-            pinsByQuest.clear()
-            quests.forEach { pinsByQuest[it.key] = it.toPins(orders) }
-        }
-
-        fun update(added: Collection<Quest>, removed: Collection<QuestKey>) {
-            removed.forEach { pinsByQuest.remove(it) }
-            for (quest in added) {
-                if (quest.markerLocations.any { it in bbox }) {
-                    pinsByQuest[quest.key] = quest.toPins(orders)
-                } else {
-                    pinsByQuest.remove(quest.key)
-                }
-            }
-        }
-    }
 
     // Callbacks may arrive on different threads; only the collector mutates the displayed data.
+    private sealed interface Event {
+        data object Reload : Event
+        data class Updated(val added: List<Quest>, val removed: List<QuestKey>) : Event
+    }
+
     private fun events(): Flow<Event> = callbackFlow {
         val questsListener = object : VisibleQuestsSource.Listener {
             override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
@@ -133,19 +138,13 @@ class MapQuestPinsSource(
 
     fun getQuestKey(properties: JsonObject): QuestKey? = properties.toQuestKey()
 
-    private fun Quest.toPins(orders: Map<QuestType, Int>): List<Pin> =
-        markerLocations.map { Pin(it, type.icon, key.toProperties(), orders[type] ?: 0) }
-
-    private sealed interface Event {
-        data object Reload : Event
-        data class Updated(val added: List<Quest>, val removed: List<QuestKey>) : Event
-    }
-
     companion object {
         private const val TILES_ZOOM = 16
     }
 }
 
+private fun Quest.toPins(orders: Map<QuestType, Int>): List<Pin> =
+    markerLocations.map { Pin(it, type.icon, key.toProperties(), orders[type] ?: 0) }
 
 private const val MARKER_QUEST_GROUP = "quest_group"
 
