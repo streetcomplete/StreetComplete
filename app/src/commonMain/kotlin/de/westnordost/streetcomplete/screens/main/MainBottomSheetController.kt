@@ -15,7 +15,6 @@ import de.westnordost.streetcomplete.data.osm.mapdata.ElementKey
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
 import de.westnordost.streetcomplete.data.osm.mapdata.LazyMapDataWithGeometry
 import de.westnordost.streetcomplete.data.osm.mapdata.MapDataWithGeometry
-import de.westnordost.streetcomplete.data.osm.mapdata.key
 import de.westnordost.streetcomplete.data.osm.osmquests.OsmQuestSource
 import de.westnordost.streetcomplete.data.osmnotes.Note
 import de.westnordost.streetcomplete.data.osmnotes.edits.NoteEditAction
@@ -56,7 +55,7 @@ import kotlinx.coroutines.withContext
 
 @Stable
 abstract class MainBottomSheetController {
-    abstract fun bottomSheet(selection: MainBottomSheetSelection): Flow<ShownBottomSheet?>
+    abstract fun bottomSheet(selection: MainSheetSelection): Flow<ShownBottomSheet?>
     abstract suspend fun getHighlightedMarkers(sheet: ShownBottomSheet): List<Marker>
 
     abstract fun hideQuest(questKey: QuestKey)
@@ -97,11 +96,11 @@ class MainBottomSheetControllerImpl(
     private val scope: CoroutineScope,
 ) : MainBottomSheetController() {
     @OptIn(ExperimentalCoroutinesApi::class)
-    override fun bottomSheet(selection: MainBottomSheetSelection): Flow<ShownBottomSheet?> {
-        if (selection is MainBottomSheetSelection.CreateNote) {
+    override fun bottomSheet(selection: MainSheetSelection): Flow<ShownBottomSheet?> {
+        if (selection is MainSheetSelection.CreateNote) {
             return flowOf(ShownBottomSheet.CreateOsmNote(selection.trackpoints))
         }
-        if (selection is MainBottomSheetSelection.Overlay && selection.elementKey == null) {
+        if (selection is MainSheetSelection.Overlay && selection.elementKey == null) {
             return flowOf(overlayRegistry.getByName(selection.name)?.let { ShownBottomSheet.Overlay(it, null, null) })
         }
         // Shows the object as it was when selected: updates would swap the open form mid-edit.
@@ -119,33 +118,33 @@ class MainBottomSheetControllerImpl(
         }
     }
 
-    private fun load(selection: MainBottomSheetSelection): ShownBottomSheet? = when (selection) {
-        is MainBottomSheetSelection.Quest -> getQuest(selection.key)
-        is MainBottomSheetSelection.Overlay -> {
+    private fun load(selection: MainSheetSelection): ShownBottomSheet? = when (selection) {
+        is MainSheetSelection.Quest -> getQuest(selection.key)
+        is MainSheetSelection.Overlay -> {
             val overlay = overlayRegistry.getByName(selection.name)
             val key = selection.elementKey
             if (overlay == null) null
             else if (key == null) ShownBottomSheet.Overlay(overlay, null, null)
             else getElementInOverlay(overlay, key)
         }
-        is MainBottomSheetSelection.CreateNote -> ShownBottomSheet.CreateOsmNote(selection.trackpoints)
+        is MainSheetSelection.CreateNote -> ShownBottomSheet.CreateOsmNote(selection.trackpoints)
         // resolved from the edit history instead, see MainSheetState
-        is MainBottomSheetSelection.EditHistory -> null
+        is MainSheetSelection.EditHistory -> null
     }
 
     /** Emits once, then whenever the [selection]'s object may have been removed. Listeners are
      *  registered before the first emission, so no removal is missed. */
-    private fun changes(selection: MainBottomSheetSelection): Flow<Unit> = callbackFlow {
+    private fun changes(selection: MainSheetSelection): Flow<Unit> = callbackFlow {
         val elementKey = when (selection) {
-            is MainBottomSheetSelection.Overlay -> selection.elementKey
-            is MainBottomSheetSelection.Quest -> (selection.key as? OsmQuestKey)?.let {
+            is MainSheetSelection.Overlay -> selection.elementKey
+            is MainSheetSelection.Quest -> (selection.key as? OsmQuestKey)?.let {
                 ElementKey(it.elementType, it.elementId)
             }
             else -> null
         }
         val questListener = object : VisibleQuestsSource.Listener {
             override fun onUpdated(added: Collection<Quest>, removed: Collection<QuestKey>) {
-                if (selection is MainBottomSheetSelection.Quest && selection.key in removed) trySend(Unit)
+                if (selection is MainSheetSelection.Quest && selection.key in removed) trySend(Unit)
             }
             override fun onInvalidated() { trySend(Unit) }
         }

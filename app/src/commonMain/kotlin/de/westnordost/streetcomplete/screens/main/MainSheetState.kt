@@ -29,8 +29,8 @@ fun rememberMainSheetState(
     editItemsController: EditItemsController,
 ): MainSheetState {
     val formStateHolder = rememberSaveableStateHolder()
-    val selection = rememberSaveable(stateSaver = MainBottomSheetSelection.Saver) {
-        mutableStateOf<MainBottomSheetSelection?>(null)
+    val selection = rememberSaveable(stateSaver = MainSheetSelection.Saver) {
+        mutableStateOf<MainSheetSelection?>(null)
     }
     val id = rememberSaveable { mutableStateOf("") }
     val state = remember(controller, editItemsController) {
@@ -40,7 +40,7 @@ fun rememberMainSheetState(
     return state
 }
 
-/** The bottom sheet selection, what it resolved to, and the open form's map interaction. The edit
+/** The sheet selection, what it resolved to, and the open form's map interaction. The edit
  *  history sidebar is never shown together with a bottom sheet, so it is one of the selections. */
 @Stable
 class MainSheetState internal constructor(
@@ -48,7 +48,7 @@ class MainSheetState internal constructor(
     private val editItemsController: EditItemsController,
     /** Holds the state of the form(s), keyed by [id] */
     val formStateHolder: SaveableStateHolder,
-    selection: MutableState<MainBottomSheetSelection?>,
+    selection: MutableState<MainSheetSelection?>,
     id: MutableState<String>,
 ) {
     /** The selected object; saved to survive process death */
@@ -76,11 +76,11 @@ class MainSheetState internal constructor(
     val isOpen: Boolean get() = selection != null
 
     /** Whether a bottom sheet is open, as opposed to the edit history sidebar */
-    val isFormOpen: Boolean get() = selection.let { it != null && it !is MainBottomSheetSelection.EditHistory }
+    val isFormOpen: Boolean get() = selection.let { it != null && it !is MainSheetSelection.EditHistory }
 
     val hasEdits: Boolean get() = !editItems.isNullOrEmpty()
 
-    fun show(selection: MainBottomSheetSelection) {
+    fun show(selection: MainSheetSelection) {
         formStateHolder.removeState(id)
         id = Uuid.random().toString()
         this.selection = selection
@@ -91,7 +91,7 @@ class MainSheetState internal constructor(
     /** Shows the edit history sidebar with the most recent edit selected */
     fun showEditHistory() {
         val newest = editItems?.lastOrNull() ?: return
-        show(MainBottomSheetSelection.EditHistory(newest.edit.key))
+        show(MainSheetSelection.EditHistory(newest.edit.key))
     }
 
     fun close() {
@@ -113,19 +113,19 @@ class MainSheetState internal constructor(
                 shownBottomSheet = null
                 when (selection) {
                     null -> {}
-                    is MainBottomSheetSelection.EditHistory -> observeEdit(selection.editKey)
+                    is MainSheetSelection.EditHistory -> observeEdit(selection.editKey)
                     else -> observeBottomSheet(selection)
                 }
             }
         }
     }
 
-    private suspend fun observeBottomSheet(selection: MainBottomSheetSelection) {
+    private suspend fun observeBottomSheet(selection: MainSheetSelection) {
         controller.bottomSheet(selection).collect { sheet ->
-            if (selection is MainBottomSheetSelection.Overlay && sheet is ShownBottomSheet.OsmNoteQuest) {
+            if (selection is MainSheetSelection.Overlay && sheet is ShownBottomSheet.OsmNoteQuest) {
                 // A note at the element blocks editing it. Selecting the note instead also
                 // closes this sheet when the note is hidden or deleted.
-                this.selection = MainBottomSheetSelection.Quest(sheet.quest.key)
+                this.selection = MainSheetSelection.Quest(sheet.quest.key)
                 return@collect
             }
             shownBottomSheet = sheet
@@ -143,7 +143,7 @@ class MainSheetState internal constructor(
             } else {
                 // the edit was undone or is synced: select the newest remaining edit, if any
                 val newest = items.lastOrNull()?.edit?.key
-                if (newest != null) selection = MainBottomSheetSelection.EditHistory(newest) else close()
+                if (newest != null) selection = MainSheetSelection.EditHistory(newest) else close()
             }
         }
     }

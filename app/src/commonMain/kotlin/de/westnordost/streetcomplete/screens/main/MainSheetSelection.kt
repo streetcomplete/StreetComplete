@@ -10,32 +10,33 @@ import de.westnordost.streetcomplete.screens.main.map.MAX_SAVED_TRACKPOINTS
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 
+/** Which sheet should be shown on the main screen. E.g. a quest form, an overlay form, the form
+ *  to create a note or the edit history. */
 @Serializable
-sealed interface MainBottomSheetSelection {
+sealed interface MainSheetSelection {
     @Serializable
-    data class Quest(val key: QuestKey) : MainBottomSheetSelection
+    data class Quest(val key: QuestKey) : MainSheetSelection
 
     @Serializable
-    data class Overlay(val name: String, val elementKey: ElementKey? = null) : MainBottomSheetSelection
+    data class Overlay(val name: String, val elementKey: ElementKey? = null) : MainSheetSelection
 
     @Serializable
-    data class CreateNote(val position: LatLon, val trackpoints: List<Trackpoint>? = null) : MainBottomSheetSelection
+    data class CreateNote(val position: LatLon, val trackpoints: List<Trackpoint>? = null) : MainSheetSelection
 
-    /** The edit history sidebar is not a bottom sheet, but never shown together with one */
     @Serializable
-    data class EditHistory(val editKey: EditKey) : MainBottomSheetSelection
+    data class EditHistory(val editKey: EditKey) : MainSheetSelection
 
     companion object {
-        val Saver = Saver<MainBottomSheetSelection?, String>(
+        val Saver = Saver<MainSheetSelection?, String>(
             save = { selection ->
                 selection?.let {
                     // Instance state is limited to about 1 MB per transaction, so only the newest
                     // points of a recorded track are saved (see MainMapTrackState.Saver).
                     val saved = if (it is CreateNote) it.copy(trackpoints = it.trackpoints?.takeLast(MAX_SAVED_TRACKPOINTS)) else it
-                    Json.encodeToString<MainBottomSheetSelection>(saved)
+                    Json.encodeToString<MainSheetSelection>(saved)
                 }
             },
-            restore = { Json.decodeFromString<MainBottomSheetSelection>(it) },
+            restore = { Json.decodeFromString<MainSheetSelection>(it) },
         )
     }
 }

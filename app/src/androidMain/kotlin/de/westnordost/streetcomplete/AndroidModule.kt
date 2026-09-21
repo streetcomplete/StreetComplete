@@ -42,9 +42,7 @@ import org.koin.dsl.onClose
 import org.maplibre.compose.location.AndroidHeadingProvider
 import org.maplibre.compose.location.AndroidLocationProvider
 import org.maplibre.compose.location.AndroidSystemSettingsLauncher
-import org.maplibre.compose.location.HeadingProvider
 import org.maplibre.compose.location.LocationProvider
-import org.maplibre.compose.location.SystemSettingsLauncher
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.MapRuntimeOptions
 import org.maplibre.compose.map.createMapRuntime
@@ -98,8 +96,6 @@ val androidModule = module {
     // location
 
     factory<LocationProvider> { AndroidLocationProvider(get()) }
-    factory<HeadingProvider> { AndroidHeadingProvider(get()) }
-    factory<SystemSettingsLauncher> { AndroidSystemSettingsLauncher(get()) }
 
     // settings
 

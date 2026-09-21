@@ -14,10 +14,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -43,9 +43,8 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import de.westnordost.streetcomplete.ApplicationConstants
 import de.westnordost.streetcomplete.data.messages.Message
 import de.westnordost.streetcomplete.data.osm.mapdata.LatLon
@@ -62,8 +61,8 @@ import de.westnordost.streetcomplete.screens.main.edithistory.EditHistorySidebar
 import de.westnordost.streetcomplete.screens.main.errors.LastCrashEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastDownloadErrorEffect
 import de.westnordost.streetcomplete.screens.main.errors.LastUploadErrorEffect
-import de.westnordost.streetcomplete.screens.main.map.CameraInspectionEffect
 import de.westnordost.streetcomplete.screens.main.map.BASE_STYLE
+import de.westnordost.streetcomplete.screens.main.map.CameraInspectionEffect
 import de.westnordost.streetcomplete.screens.main.map.MainMap
 import de.westnordost.streetcomplete.screens.main.map.MainMapContent
 import de.westnordost.streetcomplete.screens.main.map.PinsMode
@@ -86,6 +85,7 @@ import de.westnordost.streetcomplete.ui.common.quest.MapClick
 import de.westnordost.streetcomplete.ui.common.quest.Marker
 import de.westnordost.streetcomplete.ui.ktx.dir
 import de.westnordost.streetcomplete.ui.theme.Dimensions
+import de.westnordost.streetcomplete.ui.util.rememberSerializable
 import de.westnordost.streetcomplete.util.ktx.toLatLon
 import de.westnordost.streetcomplete.util.ktx.toLocation
 import kotlinx.coroutines.launch
@@ -96,15 +96,21 @@ import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 import org.maplibre.compose.interaction.ClickEvent
 import org.maplibre.compose.interaction.ClickResult
-import org.maplibre.compose.location.HeadingProvider
+import org.maplibre.compose.location.HeadingRequest
 import org.maplibre.compose.location.LocationEvent
+import org.maplibre.compose.location.LocationMeasurement
 import org.maplibre.compose.location.LocationPermission
-import org.maplibre.compose.location.LocationProvider
-import org.maplibre.compose.location.SystemSettingsLauncher
+import org.maplibre.compose.location.LocationUnavailableReason
+import org.maplibre.compose.location.rememberDefaultHeadingProvider
+import org.maplibre.compose.location.rememberDefaultLocationProvider
+import org.maplibre.compose.location.rememberSystemSettingsLauncher
 import org.maplibre.compose.map.MapRuntime
 import org.maplibre.compose.map.rememberMapState
 import org.maplibre.compose.overlay.GeographicLayout
 import org.maplibre.compose.style.BaseStyle
+import org.maplibre.spatialk.units.Bearing
+import org.maplibre.spatialk.units.extensions.inDegrees
+import kotlin.time.Duration.Companion.milliseconds
 
 /** The map and its controls, forms, and sidebars. */
 @Composable
@@ -117,12 +123,20 @@ fun MainScreen(
     modifier: Modifier = Modifier,
     viewModel: MainViewModel = koinViewModel(),
     runtime: MapRuntime = koinInject(),
-    locationProvider: LocationProvider = koinInject(),
-    headingProvider: HeadingProvider = koinInject(),
-    systemSettingsLauncher: SystemSettingsLauncher = koinInject(),
 ) {
     //region state
     val scope = rememberCoroutineScope()
+
+    val headingProvider = rememberDefaultHeadingProvider()
+    val locationProvider = rememberDefaultLocationProvider()
+
+    val emailAppLauncher = rememberEmailAppLauncher()
+    val mapAppLauncher = rememberMapAppLauncher()
+    val systemSettingsLauncher = rememberSystemSettingsLauncher()
+
+    val density = LocalDensity.current
+    val layoutDirection = LocalLayoutDirection.current
+    val windowInfo = LocalWindowInfo.current
 
     val starsCount by viewModel.starsCount.collectAsState()
     val isShowingStarsCurrentWeek by viewModel.isShowingStarsCurrentWeek.collectAsState()
@@ -143,6 +157,7 @@ fun MainScreen(
     val isUploadingOrDownloading by viewModel.isUploadingOrDownloading.collectAsState()
 
     val urlConfig by viewModel.urlConfig.collectAsState()
+
     val lastCrashReport by viewModel.lastCrashReport.collectAsState()
     val lastDownloadError by viewModel.lastDownloadError.collectAsState()
     val lastUploadError by viewModel.lastUploadError.collectAsState()
@@ -151,8 +166,7 @@ fun MainScreen(
 
     val isRequestingLogin by viewModel.isRequestingLogin.collectAsState()
 
-    val emailAppLauncher = rememberEmailAppLauncher()
-    val mapAppLauncher = rememberMapAppLauncher()
+    val geoUri by viewModel.geoUri.collectAsState()
 
     var confirmReplaceDownload by remember { mutableStateOf(false) }
     var showOverlaysTutorial by remember { mutableStateOf(false) }
@@ -164,51 +178,58 @@ fun MainScreen(
     var showLocationSettingsDialog by remember { mutableStateOf(false) }
     var shownMessage by remember { mutableStateOf<Message?>(null) }
     var showToast by remember { mutableStateOf<Toast?>(null) }
-
-    var lastLongPress by remember { mutableStateOf<MapClick?>(null) }
-    var showMapContextMenu by remember { mutableStateOf(false) }
+    var lastMapLongClick by remember { mutableStateOf<MapClick?>(null) }
     var lastQuestSolved by remember { mutableStateOf<QuestSolvedEvent?>(null) }
 
-    val density = LocalDensity.current
-    val layoutDirection = LocalLayoutDirection.current
-    val windowInfo = LocalWindowInfo.current
-    val lifecycleOwner = LocalLifecycleOwner.current
+    var location by rememberSerializable { mutableStateOf<LocationMeasurement?>(null) }
+    var heading by remember { mutableStateOf<Float?>(null) }
+    var locationState by remember { mutableStateOf<LocationState?>(null) }
 
     val sheet = rememberMainSheetState(viewModel.bottomSheet, viewModel.editHistory)
     val tracks = rememberMainMapTrackState()
-    val location = rememberMainLocationState(locationProvider, headingProvider)
-    val selection = sheet.selection
+
+    val sheetSelection = sheet.selection
     val shownBottomSheet = sheet.shownBottomSheet
     // The form's state is read both by the bottom sheet and by what the form places on the map.
     val shownForm = shownBottomSheet?.takeUnless { it is ShownBottomSheet.EditHistory }?.let { shown ->
-        key(sheet.id) { ShownForm(sheet.id, shown, rememberBottomSheetFormState(shown)) }
+        key(sheet.id) { ShownForm(sheet.id, shown, rememberBottomSheetFormState(shown)) } // todo review
     }
+
     //endregion
 
-    //region map
+    //region map state
+
     val downloadedTiles by viewModel.map.downloadedTiles.collectAsStateWithLifecycle()
-    val geoUri by viewModel.geoUri.collectAsState()
-    var mapOrigin by remember { mutableStateOf(Offset.Zero) }
-    val highlightedMarkers by produceState<List<Marker>>(emptyList(), shownBottomSheet) {
-        value = shownBottomSheet?.let { viewModel.bottomSheet.getHighlightedMarkers(it) }.orEmpty()
-    }
-    val markers = sheet.formMarkers ?: highlightedMarkers
-    // hidden behind quest forms, which highlight elements themselves, and behind the edit history
-    val showOverlay = selectedOverlay != null &&
-        selection !is MainBottomSheetSelection.Quest &&
-        selection !is MainBottomSheetSelection.EditHistory
+
+    var mapPositionInWindow by remember { mutableStateOf(Offset.Zero) }
 
     val initialCamera = remember(viewModel) { viewModel.initialCamera }
-    val pinsMode = when (selection) {
-        is MainBottomSheetSelection.EditHistory -> PinsMode.EditHistory
-        null, is MainBottomSheetSelection.CreateNote -> PinsMode.Quests
+
+    val highlightedMarkers by produceState<List<Marker>>(emptyList(), shownBottomSheet) {
+        value = shownBottomSheet?.let { viewModel.bottomSheet.getHighlightedMarkers(it) }.orEmpty() // todo review
+    }
+
+    val markers = sheet.formMarkers ?: highlightedMarkers
+
+    val pinsMode = when (sheetSelection) {
+        is MainSheetSelection.EditHistory -> PinsMode.EditHistory
+        null -> PinsMode.Quests// quest pins are only shown if no form is open
         else -> PinsMode.None
     }
-    val mapState = rememberMapState(runtime, BaseStyle.Json(BASE_STYLE), initialCameraPosition = initialCamera) {
+
+    val showOverlay =
+        selectedOverlay != null
+        && sheetSelection == MainSheetSelection.Overlay || sheetSelection == null
+
+    val mapState = rememberMapState(
+        runtime = runtime,
+        baseStyle = BaseStyle.Json(BASE_STYLE),
+        initialCameraPosition = initialCamera
+    ) {
         MainMapContent(
             source = viewModel.map,
-            location = location.location,
-            heading = location.headingDegrees,
+            location = location,
+            heading = heading,
             isRecording = tracks.isRecording,
             trackpoints = tracks.recentTrackPositions,
             oldTrackpointsLists = tracks.olderTrackPositions,
@@ -219,13 +240,14 @@ fun MainScreen(
             downloadedTiles = downloadedTiles,
             pinsMode = pinsMode,
             isSelectable = !sheet.isFormOpen,
-            onClickQuest = { sheet.show(MainBottomSheetSelection.Quest(it)) },
-            onClickEdit = { sheet.show(MainBottomSheetSelection.EditHistory(it)) },
+            onClickQuest = { sheet.show(MainSheetSelection.Quest(it)) },
+            onClickEdit = { sheet.show(MainSheetSelection.EditHistory(it)) },
             onClickElement = { key ->
-                selectedOverlay?.let { sheet.show(MainBottomSheetSelection.Overlay(it.name, key)) }
+                selectedOverlay?.let { sheet.show(MainSheetSelection.Overlay(it.name, key)) }
             },
         )
     }
+
     val cameraState = rememberMainMapCameraState(mapState, viewModel.initiallyFollowing, viewModel.initiallyNavigating)
     val mapCamera = mapState.cameraPosition
     val viewport = mapState.viewport
@@ -236,22 +258,36 @@ fun MainScreen(
     val cameraPadding = cameraState.padding(sheetPadding)
     /** The crosshair's position: what an open form refers to on the map */
     val mapPosition = mapState.crosshairPosition(sheetPadding, layoutDirection) ?: mapCamera.target.toLatLon()
+
     //endregion
 
     //region actions
-    fun getOffset(position: LatLon): Offset? = mapState.offsetInWindow(position, mapOrigin, density)
-    fun getCrosshairPosition(): LatLon? = mapState.crosshairPosition(sheetPadding, layoutDirection)
+
+    fun getOffset(position: LatLon): Offset? =
+        mapState.offsetInWindow(position, mapPositionInWindow, density)
+
+    fun getCrosshairPosition(): LatLon? =
+        mapState.crosshairPosition(sheetPadding, layoutDirection)
+
     fun ClickEvent.toMapClick(): MapClick? =
         position?.let { MapClick(it.toLatLon(), screenOffset, clickAreaSizeInMeters = metersPerDp * 14) }
+
     fun followLocation() {
-        scope.launch { cameraState.locate(location.position, getTrackBearing(tracks.currentTrack)) }
+        scope.launch {
+            cameraState.locate(location?.position?.toLatLon(), getTrackBearing(tracks.currentTrack))
+        }
     }
+
     fun zoomBy(amount: Double) {
-        scope.launch { cameraState.zoomBy(amount) }
+        scope.launch {
+            cameraState.zoomBy(amount)
+        }
     }
+
     fun composeNote(position: LatLon, trackpoints: List<Trackpoint>? = null) {
-        sheet.show(MainBottomSheetSelection.CreateNote(position, trackpoints))
+        sheet.show(MainSheetSelection.CreateNote(position, trackpoints))
     }
+
     fun download() {
         val displayedArea = mapState.viewport?.visibleBounds?.toStreetCompleteBoundingBox()
         if (displayedArea == null) {
@@ -260,7 +296,8 @@ fun MainScreen(
             showToast = Toast.DownloadAreaTooBig
         }
     }
-    fun clickLocation() {
+
+    fun onClickLocation() {
         val permission = locationProvider.permission.value
         if (permission is LocationPermission.NotGranted) {
             when {
@@ -271,13 +308,19 @@ fun MainScreen(
                 permission.shouldShowRationale -> showLocationPermissionRationaleDialog = true
                 else -> locationProvider.requestPermission()
             }
-        } else if (location.state == LocationState.ALLOWED) {
+        } else if (locationState == LocationState.ALLOWED) {
             if (systemSettingsLauncher.canOpenLocationServicesSettings) showLocationSettingsDialog = true
             else showToast = Toast.NoLocation
         } else if (!cameraState.isFollowingPosition) {
             followLocation()
-        } else scope.launch {
-            cameraState.setNavigationMode(!cameraState.isNavigationMode, location.position, getTrackBearing(tracks.currentTrack))
+        } else {
+            scope.launch {
+                cameraState.setNavigationMode(
+                    value = !cameraState.isNavigationMode,
+                    location = location?.position?.toLatLon(),
+                    bearing = getTrackBearing(tracks.currentTrack)
+                )
+            }
         }
     }
 
@@ -322,42 +365,64 @@ fun MainScreen(
     //endregion
 
     //region effects
+
     LaunchedEffect(geoUri) {
         geoUri?.let {
             cameraState.moveTo(it)
             viewModel.consumeGeoUri()
         }
     }
+
     // Apply the MapLibre viewport to StreetComplete's quest and overlay data sources.
     LaunchedEffect(mapState, viewModel.map) {
         snapshotFlow { mapState.cameraPosition.zoom to mapState.viewport?.visibleBounds }
             .collect { (zoom, bounds) -> viewModel.map.onViewportChanged(zoom, bounds?.toStreetCompleteBoundingBox()) }
     }
+
     LifecycleEventEffect(Lifecycle.Event.ON_STOP) {
         viewModel.saveCamera(mapState.cameraPosition, cameraState.isFollowingPosition, cameraState.isNavigationMode)
     }
-    LaunchedEffect(location, lifecycleOwner) {
-        lifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            location.collectUpdates { event ->
-                when (event) {
-                    is LocationEvent.Update -> {
-                        val fix = event.toLocation()
-                        // Survey checking receives every fix, including ones too inaccurate for a track.
-                        viewModel.map.onLocationChanged(fix)
-                        tracks.addLocation(event.measurement)
-                        launch { cameraState.followLocation(fix.position, getTrackBearing(tracks.currentTrack)) }
+
+    LaunchedEffect(headingProvider) {
+        headingProvider.updates(HeadingRequest(33.milliseconds)).collect { headingMeasurement ->
+            heading = (headingMeasurement.bearing - Bearing.North).inDegrees.toFloat()
+        }
+    }
+
+    LaunchedEffect(locationProvider) {
+        locationProvider.updates().collect { event ->
+            when (event) {
+                is LocationEvent.Update -> {
+                    location = event.measurement
+                    locationState = LocationState.UPDATING
+
+                    val fix = event.toLocation()
+                    // Survey checking receives every fix, including ones too inaccurate for a track.
+                    viewModel.map.onLocationChanged(fix)
+                    tracks.addLocation(event.measurement)
+                    launch { cameraState.followLocation(fix.position, getTrackBearing(tracks.currentTrack)) }
+                }
+                is LocationEvent.Unavailable -> {
+                    location = null
+                    locationState = when (event.reason) {
+                        LocationUnavailableReason.ServicesDisabled -> LocationState.ALLOWED
+                        LocationUnavailableReason.TemporarilyUnavailable -> LocationState.SEARCHING
+                        LocationUnavailableReason.PermissionDenied -> LocationState.DENIED
+                        LocationUnavailableReason.Unsupported,
+                        LocationUnavailableReason.UnexpectedFailure -> null
                     }
-                    is LocationEvent.Unavailable -> {
-                        tracks.clear()
-                        launch { cameraState.setNavigationMode(false, null, null) }
-                    }
+
+                    tracks.clear()
+                    launch { cameraState.setNavigationMode(false, null, null) }
                 }
             }
         }
     }
-    CameraInspectionEffect(cameraState, sheet, location, tracks)
+
+    CameraInspectionEffect(cameraState, sheet, location?.position, tracks)
+
     LaunchedEffect(selectedOverlay) {
-        val selection = sheet.selection as? MainBottomSheetSelection.Overlay
+        val selection = sheet.selection as? MainSheetSelection.Overlay
         if (selection != null && selection.name != selectedOverlay?.name) sheet.close()
     }
 
@@ -378,19 +443,33 @@ fun MainScreen(
             viewModel.teamModeChanged = false
         }
     }
+
+    lastDownloadError?.let { error ->
+        LastDownloadErrorEffect(lastError = error, onReportError = ::sendErrorReport)
+    }
+    lastUploadError?.let { error ->
+        LastUploadErrorEffect(lastError = error, onReportError = ::sendErrorReport)
+    }
+    lastCrashReport?.let { report ->
+        LastCrashEffect(lastReport = report, onReport = ::sendErrorReport)
+    }
+
     //endregion
 
     //region content
+
     Box(modifier) {
         MainMap(
             state = mapState,
-            modifier = Modifier.fillMaxSize().onGloballyPositioned { mapOrigin = it.positionInWindow() },
+            modifier = Modifier
+                .fillMaxSize()
+                .onGloballyPositioned { mapPositionInWindow = it.positionInWindow() },
             cameraPadding = cameraPadding,
-            onPan = { cameraState.onPan(location.location != null) },
+            onPan = { cameraState.onPan(location != null) },
             onMapClick = { event ->
                 when (sheet.selection) {
                     null -> {}
-                    is MainBottomSheetSelection.EditHistory -> sheet.close()
+                    is MainSheetSelection.EditHistory -> sheet.close()
                     // forms react to clicks near the click position, e.g. to suggest a name
                     else -> event.toMapClick()?.let { sheet.lastMapClick = it }
                 }
@@ -398,10 +477,7 @@ fun MainScreen(
             },
             onMapLongClick = { event ->
                 if (!sheet.isOpen) {
-                    event.toMapClick()?.let {
-                        lastLongPress = it
-                        showMapContextMenu = true
-                    }
+                    lastMapLongClick = event.toMapClick()
                 }
                 ClickResult.Consume
             },
@@ -418,13 +494,13 @@ fun MainScreen(
                         .windowInsetsPadding(WindowInsets.safeDrawing)
                         .padding(if (sheet.isFormOpen) sheetPadding else PaddingValues(0.dp))
                 ) {
-                    location.location?.position?.let { position ->
+                    val position = location?.position
+                    if (position != null) {
                         PointerPinButton(targetPosition = position, onClick = ::followLocation) {
                             Image(painterResource(Res.drawable.location_dot_small), null)
                         }
                     }
                 }
-
 
                 MainScreenControls(
                     starsCount = starsCount,
@@ -457,15 +533,18 @@ fun MainScreen(
                     mapTilt = mapCamera.tilt.toFloat(),
                     onClickCompass = { scope.launch { cameraState.resetCompass() } },
 
-                    locationState = location.state,
+                    locationState = locationState,
                     isNavigationMode = cameraState.isNavigationMode,
                     isFollowingPosition = cameraState.isFollowingPosition,
-                    onClickLocation = ::clickLocation,
+                    onClickLocation = ::onClickLocation,
 
                     isRecordingTracks = tracks.isRecording,
                     onClickStopTrackRecording = {
                         val recorded = tracks.stopRecording()
-                        location.position?.let { composeNote(it, recorded.takeIf { it.isNotEmpty() }) }
+                        val latLon = location?.position?.toLatLon()
+                        if (latLon != null) {
+                            composeNote(latLon, recorded.takeIf { it.isNotEmpty() })
+                        }
                     },
 
                     isCreateNodeEnabled = isCreateNodeEnabled,
@@ -473,7 +552,7 @@ fun MainScreen(
                         if (mapCamera.zoom >= 17.0) {
                             selectedOverlay?.let { overlay ->
                                 val position = getCrosshairPosition()
-                                sheet.show(MainBottomSheetSelection.Overlay(overlay.name))
+                                sheet.show(MainSheetSelection.Overlay(overlay.name))
                                 position?.let { cameraState.preserveCrosshairPosition(it) }
                             }
                         } else {
@@ -492,14 +571,14 @@ fun MainScreen(
 
         val dir = LocalLayoutDirection.current.dir
         AnimatedVisibility(
-            visible = selection is MainBottomSheetSelection.EditHistory && sheet.hasEdits,
+            visible = sheetSelection is MainSheetSelection.EditHistory && sheet.hasEdits,
             enter = fadeIn() + slideInHorizontally(initialOffsetX = { -it * dir }),
             exit = fadeOut() + slideOutHorizontally(targetOffsetX = { -it * dir }),
         ) {
             EditHistorySidebar(
                 editItems = sheet.editItems.orEmpty(),
                 selectedEdit = (shownBottomSheet as? ShownBottomSheet.EditHistory)?.edit,
-                onSelectEdit = { sheet.show(MainBottomSheetSelection.EditHistory(it.key)) },
+                onSelectEdit = { sheet.show(MainSheetSelection.EditHistory(it.key)) },
                 onUndoEdit = { viewModel.editHistory.undo(it.key) },
                 onDismissRequest = sheet::close,
                 getEditElement = viewModel.editHistory::getEditElement,
@@ -548,20 +627,26 @@ fun MainScreen(
     }
 
     lastQuestSolved?.let { LastQuestSolvedEffect(it) }
+
     MapContextMenu(
-        expanded = showMapContextMenu,
-        onDismissRequest = { showMapContextMenu = false },
+        expanded = lastMapLongClick != null,
+        onDismissRequest = { lastMapLongClick = null },
         onClickCreateNote = {
             if (mapState.cameraPosition.zoom < ApplicationConstants.NOTE_MIN_ZOOM) showToast = Toast.ImpreciseNote
-            else lastLongPress?.let { composeNote(it.position) }
+            else lastMapLongClick?.let { composeNote(it.position) }
         },
         onClickCreateTrack = { tracks.startRecording() },
         isOpenLocationAvailable = mapAppLauncher.isAvailable(),
         onClickOpenLocation = {
-            lastLongPress?.let { mapAppLauncher.openAt(it.position, mapState.cameraPosition.zoom) }
+            lastMapLongClick?.let { mapAppLauncher.openAt(it.position, mapState.cameraPosition.zoom) }
         },
-        offset = lastLongPress?.screenOffset ?: DpOffset.Zero,
+        offset = lastMapLongClick?.screenOffset ?: DpOffset.Zero,
     )
+
+    //endregion
+
+    //region dialogs and toast popups
+
     if (showLocationPermissionRationaleDialog) {
         ConfirmationDialog(
             onDismissRequest = { showLocationPermissionRationaleDialog = false },
@@ -622,15 +707,6 @@ fun MainScreen(
             onApplyUrlConfig = { viewModel.applyUrlConfig(it) }
         )
     }
-    lastDownloadError?.let { error ->
-        LastDownloadErrorEffect(lastError = error, onReportError = ::sendErrorReport)
-    }
-    lastUploadError?.let { error ->
-        LastUploadErrorEffect(lastError = error, onReportError = ::sendErrorReport)
-    }
-    lastCrashReport?.let { report ->
-        LastCrashEffect(lastReport = report, onReport = ::sendErrorReport)
-    }
 
     if (isRequestingLogin) {
         RequestLoginDialog(
@@ -652,6 +728,10 @@ fun MainScreen(
             text = stringResource(message)
         )
     }
+
+    //endregion
+
+    //region full-screen dialogs
 
     AnimatedScreenVisibility(showTeamModeWizard) {
         val questIcons = remember { viewModel.allQuestTypes.map { it.icon } }
