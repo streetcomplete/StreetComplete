@@ -122,28 +122,28 @@ class EditItemsControllerImpl(
             edits.value = editHistoryController.getAll().sortedBy { it.createdTimestamp }
         }
     }
-
-    private fun List<Edit>.toEditItems(): List<EditItem> {
-        var editAboveDateTime: LocalDateTime? = null
-        return map { edit ->
-            val editDateTime = Instant.fromEpochMilliseconds(edit.createdTimestamp).toLocalDateTime()
-            val sameDate = editDateTime.date == editAboveDateTime?.date
-            val sameTime =
-                editDateTime.time.hour == editAboveDateTime?.time?.hour &&
-                    editDateTime.time.minute == editAboveDateTime?.time?.minute
-            editAboveDateTime = editDateTime
-
-            EditItem(
-                edit = edit,
-                showDate = !sameDate,
-                showTime = !sameTime || !sameDate,
-            )
-        }
-    }
 }
 
 private val Edit.primaryElementKey: ElementKey? get() = when (this) {
     is ElementEdit -> action.elementKeys.firstOrNull()
     is OsmQuestHidden -> ElementKey(elementType, elementId)
     else -> null
+}
+
+private fun List<Edit>.toEditItems(): List<EditItem> {
+    var editAboveDateTime: LocalDateTime? = null
+    return map { edit ->
+        val editDateTime = Instant.fromEpochMilliseconds(edit.createdTimestamp).toLocalDateTime()
+        val sameDate = editDateTime.date == editAboveDateTime?.date
+        val sameTime =
+            editDateTime.time.hour == editAboveDateTime?.time?.hour &&
+                editDateTime.time.minute == editAboveDateTime?.time?.minute
+        editAboveDateTime = editDateTime
+
+        EditItem(
+            edit = edit,
+            showDate = !sameDate,
+            showTime = !sameTime || !sameDate,
+        )
+    }
 }
