@@ -27,8 +27,8 @@ class AddSidewalkSurface : OsmFilterQuestType<SidewalkSurfaceAnswer>() {
             or (sidewalk:right = yes and sidewalk:left ~ yes|no|separate)
           )
           and (
-            !sidewalk:both:surface and !sidewalk:left:surface and !sidewalk:right:surface and !sidewalk:surface
-            or (sidewalk:surface older today -8 years and sidewalk !~ left|right)
+            !sidewalk:both:surface and !sidewalk:left:surface and !sidewalk:right:surface
+            or sidewalk:surface older today -8 years
           )
     """
     override val changesetComment = "Specify sidewalk surfaces"
